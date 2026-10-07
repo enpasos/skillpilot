@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "role": "AUTHOR targeted primary science fact checks; not independent material review",
+  "createdAtUTC": "2026-10-06T10:14:25.530291+00:00",
+  "facts": [
+    {
+      "goals": [
+        "5a30273a-98d5-5163-bb16-c250b7ed4e7f"
+      ],
+      "claim": "n-Pentane boils above neopentane; identical molecular formula/molar mass does not explain the difference. Boiling order does not establish melting order.",
+      "primaryUrls": [
+        "https://webbook.nist.gov/cgi/cbook.cgi?ID=C109660&Mask=4",
+        "https://webbook.nist.gov/cgi/cbook.cgi?ID=C463821&Mask=10C"
+      ],
+      "actuallyReadOfficialData": {
+        "nPentane": {
+          "formula": "C5H12",
+          "molarMass_gPerMol": 72.1488,
+          "Tboil_K": 309.2,
+          "TboilUncertainty_K": 0.2,
+          "Tfus_K": 143.4
+        },
+        "neopentane": {
+          "Tboil_K": 282.6,
+          "TboilUncertainty_K": 0.5,
+          "Tfus_K": 255.0
+        }
+      },
+      "retrieval": "NIST primary pages through actual web open/search results; direct local urllib downloads returned403 and are not claimed as snapshots. These numeric values support author checking only; no invented numeric measurements added to model cases."
+    },
+    {
+      "goals": [
+        "973c12d9-d863-5292-8c68-9c80cdacf9e2",
+        "363c5740-8a3c-50b8-8c3a-5548c80c36ea"
+      ],
+      "claim": "Cu(II) reduction gives Cu2O; glucose can yield a positive Fehling result. Tartrate complexation stabilizes Cu(II) against hydroxide precipitation, separately from redox.",
+      "primaryUrls": [
+        "https://zimmer.fresnostate.edu/~davidz/Chem105/LabNotes/LabNotes.html",
+        "https://blamp.sites.truman.edu/files/2016/01/Fehling-final.pdf",
+        "https://www2.chemistry.msu.edu/faculty/reusch/virttxtjml/chapt17.htm"
+      ],
+      "retrieval": "Actual Fresno university course-note HTML received locally; Truman and MSU original university teaching resources read through web search result extracts. No whole source texts or experimental recipes copied.",
+      "fresnoLocalReadBinding": {
+        "path": "/tmp/skillpilot-chem15-author-facts/fehling_fresno.html",
+        "sha256": "sha256:9cf072fdd1602f4cff32dc7b72d1c438fb1cdad91cde01cd1d0036ca39de7777",
+        "bytes": 46025
+      }
+    }
+  ],
+  "newIndependentScientificApproval": false,
+  "humanApproval": false,
+  "newEmpiricalEvidence": false
+}

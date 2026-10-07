@@ -1,0 +1,59 @@
+{
+  "records": [
+    {
+      "goalId": "347110a1-1d2e-5195-8acc-64e7e3893ce5",
+      "operatorDe": "erläutern",
+      "materialOperation": "Explain functional versus structural cellular changes from supplied findings.",
+      "preservedWholeGoalAndPriorWholeP": true,
+      "newMaterialWritten": false
+    },
+    {
+      "goalId": "4f631f78-e13a-58e5-9092-f4db0b8d377a",
+      "operatorDe": "vorgegebene Regel anwenden und Möglichkeiten/Grenzen erläutern",
+      "materialOperation": "Generate connection changes from supplied activity and update rule; compare added saturation condition.",
+      "modelInput": "activities plus supplied learning rule",
+      "learnerOutput": "successive weights plus bounded explanation",
+      "differenceFromGeneral": "An explicit rule is applied, not just a general cellular change explained.",
+      "doesNotRequire": [
+        "free recall of Hebbian laws",
+        "predict output activity without a supplied rule",
+        "identify LTP/LTD from these weights"
+      ]
+    },
+    {
+      "goalId": "a46cafde-7359-5249-8754-19aaa3174ba4",
+      "operatorDe": "an gegebenen Netzmodellen erklären",
+      "materialOperation": "Compare given persistent connection states with identical inputs; explain output difference and inhibitory counterexample.",
+      "modelInput": "connection states plus identical test patterns and given threshold",
+      "learnerOutput": "controlled input/connection/output comparison",
+      "differenceFromGeneral": "Effects of given connection changes on network processing are compared; weights are not generated.",
+      "doesNotRequire": [
+        "Hebbian update rule",
+        "infer molecular training cause",
+        "interpret empirical LTP protocol"
+      ]
+    },
+    {
+      "goalId": "c9a06264-cce2-54dd-9604-46dd5949f02e",
+      "operatorDe": "anhand gegebener Beschreibungen/Versuchsbefunde einordnen und erläutern",
+      "materialOperation": "Interpret controlled time courses of strengthening, weakening, recovery and changed test conditions.",
+      "modelInput": "authored reference data plus explicit test/control conditions",
+      "learnerOutput": "bounded LTP/LTD-compatible inference and cellular-learning-model interpretation",
+      "differenceFromGeneral": "Temporal empirical-model inference uses controlled same-test conditions and opposing/transient outcomes.",
+      "doesNotRequire": [
+        "conduct real experiment",
+        "recall molecular LTP cascade",
+        "claim learning or forgetting by a real person"
+      ]
+    }
+  ],
+  "partialConceptualOverlapExplicit": true,
+  "threeNamesAreNotSeparateOfficialDuties": true,
+  "formalNativeAtomicityApproval": false,
+  "sourceRoute": [
+    "HE/SekII/LK/Q2.3 physical43 printed43",
+    "BY/G9/SekII/year13/elevated-level LB2"
+  ],
+  "historicalGKTagDoesNotEstablishGKSource": true,
+  "a46TagsProposedLKOnly": true
+}

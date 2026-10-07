@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:01ed284cc9512685b4078300739c4f1b5a6bbef1f5049a57a21b4c64c0e44451",
+  "reviewInputFingerprint": "sha256:afcb1e653bc78fb488844d36f2dc258906c817e095fb3fb5856b96e81cbacd3c",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-carrier-image-targeted-v3-a",
+      "roundId": "independent-a",
+      "independenceGroupId": "biologie-carrier-image-targeted-v3-independent-a",
+      "runIds": [
+        "biologie-carrier-hidden-continuity-v3-independent-a-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex GPT-6; exact runtime variant not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-carrier-image-targeted-v3-b",
+      "roundId": "independent-b",
+      "independenceGroupId": "biologie-carrier-image-targeted-v3-independent-b",
+      "runIds": [
+        "biologie-q1-carrier-hidden-continuity-native-d-independent-b-v3.batch-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "ac9e824f-003c-50ac-8751-2b8456004c63",
+      "firstRecordId": "bio-carrier-hidden-continuity-final-v5-d-a-ac9e824f-003c-50ac-8751-2b8456004c63",
+      "secondRecordId": "biologie-q1-carrier-hidden-continuity-native-d-independent-b-v3.carrier",
+      "firstRunId": "biologie-carrier-hidden-continuity-v3-independent-a-run-001",
+      "secondRunId": "biologie-q1-carrier-hidden-continuity-native-d-independent-b-v3.batch-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

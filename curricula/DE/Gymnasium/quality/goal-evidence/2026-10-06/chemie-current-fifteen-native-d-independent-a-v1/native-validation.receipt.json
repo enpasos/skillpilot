@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "checks": [
+    {
+      "name": "native-single-batch-validation",
+      "cmd": "app/node_modules/.bin/tsx app/scripts/validateGoalDescriptionReviewCampaign.ts --bundle curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-atomic-description-positive-gap-author-v1/native-d-fifteen/round-a/review-bundle-manifest.json --input curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-atomic-description-positive-gap-author-v1/native-d-fifteen/round-a/description-review-input.json --campaign curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-atomic-description-positive-gap-author-v1/native-d-fifteen/round-a/description-review-campaign.json --run curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-native-d-independent-a-v1/results/chemie-current-amv-dp-gap-fifteen-20261006-author-v1-first-pass-a.batch-001.run.json --batch-input curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-atomic-description-positive-gap-author-v1/native-d-fifteen/round-a/batches/chemie-current-amv-dp-gap-fifteen-20261006-author-v1-first-pass-a.batch-001.input.jsonl --records curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-native-d-independent-a-v1/results/chemie-current-amv-dp-gap-fifteen-20261006-author-v1-first-pass-a.batch-001.records.jsonl",
+      "chunk_id": "519024",
+      "wall_time_seconds": 0.480308856,
+      "exit_code": 0,
+      "original_token_count": 10,
+      "output": "Goal-description review batch valid: 15\n"
+    },
+    {
+      "name": "native-full-campaign-validation",
+      "cmd": "app/node_modules/.bin/tsx app/scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-atomic-description-positive-gap-author-v1/native-d-fifteen/round-a/review-bundle-manifest.json --input curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-atomic-description-positive-gap-author-v1/native-d-fifteen/round-a/description-review-input.json --campaign curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-atomic-description-positive-gap-author-v1/native-d-fifteen/round-a/description-review-campaign.json --batches-dir curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-atomic-description-positive-gap-author-v1/native-d-fifteen/round-a/batches --results-dir curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-native-d-independent-a-v1/results",
+      "chunk_id": "caeb5b",
+      "wall_time_seconds": 0.499184909,
+      "exit_code": 0,
+      "original_token_count": 13,
+      "output": "Goal-description review campaign results valid: 15\n"
+    }
+  ],
+  "checksAreSchemaAndBindingValidationOnly": true,
+  "scientificVerdictsAreRecordedSeparately": true
+}

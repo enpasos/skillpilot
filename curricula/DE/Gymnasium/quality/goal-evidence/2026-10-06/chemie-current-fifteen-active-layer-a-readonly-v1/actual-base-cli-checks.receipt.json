@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "documentType": "actual-production-layer-a-base-check-cli-receipts",
+  "checks": [
+    {
+      "checkId": "graph",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:graph"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAtUTC": "2026-10-06T20:27:23.815038+00:00",
+      "completedAtUTC": "2026-10-06T20:27:28.668248+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-active-layer-a-readonly-v1/graph.actual.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-active-layer-a-readonly-v1/graph.actual.stderr.txt",
+      "unmodifiedProductionCli": true,
+      "activeWritesByThisCheck": false,
+      "technicalScratchReportsByNativeHelper": null
+    },
+    {
+      "checkId": "view-filters",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:view-filters"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAtUTC": "2026-10-06T20:27:23.815496+00:00",
+      "completedAtUTC": "2026-10-06T20:27:44.034017+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-active-layer-a-readonly-v1/view-filters.actual.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-active-layer-a-readonly-v1/view-filters.actual.stderr.txt",
+      "unmodifiedProductionCli": true,
+      "activeWritesByThisCheck": false,
+      "technicalScratchReportsByNativeHelper": "tmp/applicability"
+    },
+    {
+      "checkId": "composition-views",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:composition-views"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAtUTC": "2026-10-06T20:27:23.817490+00:00",
+      "completedAtUTC": "2026-10-06T20:31:15.713714+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-active-layer-a-readonly-v1/composition-views.actual.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-active-layer-a-readonly-v1/composition-views.actual.stderr.txt",
+      "unmodifiedProductionCli": true,
+      "activeWritesByThisCheck": false,
+      "technicalScratchReportsByNativeHelper": null
+    },
+    {
+      "checkId": "competency-wording",
+      "argv": [
+        "python",
+        "-B",
+        "scripts/validate_competency_wording.py"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAtUTC": "2026-10-06T20:27:28.668331+00:00",
+      "completedAtUTC": "2026-10-06T20:27:52.388352+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-active-layer-a-readonly-v1/competency-wording.actual.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-active-layer-a-readonly-v1/competency-wording.actual.stderr.txt",
+      "unmodifiedProductionCli": true,
+      "activeWritesByThisCheck": false,
+      "technicalScratchReportsByNativeHelper": null
+    },
+    {
+      "checkId": "spelling-helper-contract",
+      "argv": [
+        "node",
+        "--test",
+        "scripts/check_curriculum_spelling.test.mjs"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAtUTC": "2026-10-06T20:27:44.034076+00:00",
+      "completedAtUTC": "2026-10-06T20:27:44.308236+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-active-layer-a-readonly-v1/spelling-helper-contract.actual.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-active-layer-a-readonly-v1/spelling-helper-contract.actual.stderr.txt",
+      "unmodifiedProductionCli": true,
+      "activeWritesByThisCheck": false,
+      "technicalScratchReportsByNativeHelper": null
+    },
+    {
+      "checkId": "spelling-current-native",
+      "argv": [
+        "node",
+        "scripts/check_curriculum_spelling.mjs"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot",
+      "startedAtUTC": "2026-10-06T20:27:44.308273+00:00",
+      "completedAtUTC": "2026-10-06T20:27:44.592785+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-active-layer-a-readonly-v1/spelling-current-native.actual.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-active-layer-a-readonly-v1/spelling-current-native.actual.stderr.txt",
+      "unmodifiedProductionCli": true,
+      "activeWritesByThisCheck": false,
+      "technicalScratchReportsByNativeHelper": null
+    }
+  ],
+  "allChecksExitZero": true,
+  "allCapturedCurrentActiveInputsByteExactAfter": true,
+  "activeCurriculumWrites": false,
+  "nativeViewFiltersActuallyWroteTechnicalScratchReports": true,
+  "noNewScienceReviewOrStatusChange": true
+}

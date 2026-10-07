@@ -1,0 +1,7 @@
+# Independent B: current Chemistry eight-profile positive follow-up v3
+
+Review the actual eight whole bilingual goals, complete eight P2 profiles and sixteen complete DE/EN materials against frozen v2. The immutable own content-v2 stage records the actual content and image review and primary NIST checks. Reuse seven whole unchanged goals/profiles/fourteen whole cases only with native current fingerprint and literal payload equality.
+
+Resolve molecular-formula connectivity limits, a positive explicitly given packing-model fusion explanation, given NIST data versus quantitative prediction, independent suitable method/conditions/observations/controls, actual future supervised practical performance versus supplied fiction, stereoisomer molecule-pair wording, and occupied donor/unoccupied suitable acceptor orbitals. Preserve phase/source/LK boundaries and all whole-source holds.
+
+Use the unchanged production P helper and full closed native P contract checker, including actual selected image byte digests and own run manifest, on isolated current v3 candidate files. Do not read new peer D/P result files. Image bindings do not themselves grant scientific image or D approval. The declared current 363 image/D hold remains independently unresolved even though its corrected paper profile and cases are KEEP. Never close that hold through a fingerprint change. Native candidates remain E1/G1, ai_candidate, needs_human_review; there is no human approval, trial or actual learner performance.

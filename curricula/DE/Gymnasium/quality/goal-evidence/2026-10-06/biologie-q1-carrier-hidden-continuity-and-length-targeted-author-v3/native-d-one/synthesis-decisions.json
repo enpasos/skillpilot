@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "biologie-carrier-user-geometry-reviewed-20261006-v3-root-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex Root after two independent actual single-page image/context reviews; machine synthesis only",
+  "synthesizedAt": "2026-10-06T09:28:44.401Z",
+  "batch": {
+    "batchId": "biologie-carrier-user-geometry-reviewed-20261006-v3",
+    "batchManifestDigest": "sha256:66bdd2509a144003e4f2e4c5808bf4ee955f7b35173d32d82b39f29c526acb28",
+    "configDigest": "sha256:3012e9d2d462a2f45ec605d812e2b3885833a69bae3ab0c1e54578bca6cfe12c",
+    "bundleFingerprint": "sha256:01ed284cc9512685b4078300739c4f1b5a6bbef1f5049a57a21b4c64c0e44451",
+    "bookDigest": "sha256:11c0eff6f577267277919bc152cae88336dd140a64d1fb018eb4a3cd4b05eb81",
+    "reviewInputFingerprint": "sha256:afcb1e653bc78fb488844d36f2dc258906c817e095fb3fb5856b96e81cbacd3c",
+    "dualSummaryDigest": "sha256:9d3f438f6f4fd0f942c978195eb3de36731bf3b16519f5067f3cb1fe7a2c4095",
+    "canonicalLandscapeDigest": "sha256:244d2889ddeeb69cbf97d0a320f3e38cf5444674f3bb17f3e46c0112ac6fbff1"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-carrier-image-targeted-v3-a",
+      "campaignDigest": "sha256:6499d12137c10df9964b9a797172a9a5f7b6ccd41b0d9dc8d3c85395939e0995",
+      "roundId": "independent-a",
+      "independenceGroupId": "biologie-carrier-image-targeted-v3-independent-a",
+      "reviewInputFingerprint": "sha256:afcb1e653bc78fb488844d36f2dc258906c817e095fb3fb5856b96e81cbacd3c",
+      "batchId": "independent-a.batch-001",
+      "batchInputFingerprint": "sha256:03c6c7ddee066d9c28646e5a8d2450475d59a838ef73b8f39070cac7da5f9e9a",
+      "runId": "biologie-carrier-hidden-continuity-v3-independent-a-run-001",
+      "runManifestDigest": "sha256:7dcfba226159308489d51e33cec3150853d38360f1868d1ae67d4f7796bb5375",
+      "resultsDigest": "sha256:e03a9da83fb72864623616234040a3d6dd7954ef5c5971f220f966657cd33819"
+    },
+    "second": {
+      "campaignId": "biologie-carrier-image-targeted-v3-b",
+      "campaignDigest": "sha256:5f788ca78039d6f317ea075d8c39c1984e6da01697cee12c49c945c843fb2473",
+      "roundId": "independent-b",
+      "independenceGroupId": "biologie-carrier-image-targeted-v3-independent-b",
+      "reviewInputFingerprint": "sha256:afcb1e653bc78fb488844d36f2dc258906c817e095fb3fb5856b96e81cbacd3c",
+      "batchId": "independent-b.batch-001",
+      "batchInputFingerprint": "sha256:38c3f07bc9ba9db22ffa2324bc002095333e39500780e94db5c48035f7f476bd",
+      "runId": "biologie-q1-carrier-hidden-continuity-native-d-independent-b-v3.batch-001",
+      "runManifestDigest": "sha256:8828f50fe4956d5c1a179221c9025a9bb6ed32ee87eeff731ff70ca2612e513c",
+      "resultsDigest": "sha256:9601bcaf7dc58d6fa99fc452b6065579e9ce3ecd464942cb8bda2222d5cd29e7"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "biologie-carrier-user-geometry-reviewed-20261006-v3-root-synthesis-decision-001",
+      "goalId": "ac9e824f-003c-50ac-8751-2b8456004c63",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4a313a832aaac7c997370ab9241475a7ad7ac7b8617c422d681a748cef60e916",
+      "pageFingerprint": "sha256:2e1119f6a29c2985b96323bbd91d97d2bdd51ba6c94c8c153670a353af089b4a",
+      "goalReviewContextFingerprint": "sha256:4a7ed3806fee2f023023b6752afd462729fb192db09837d4dce771c4b036e2ff",
+      "finalText": {
+        "titleDe": "DNA, Gen und Chromosom als Informationsträger verknüpfen",
+        "titleEn": "Relate DNA, genes and chromosomes as information carriers",
+        "descriptionDe": "Die lernende Person kann in einem einfachen Modell DNA als Material der Erbinformation, ein Gen als Abschnitt dieses Materials und ein Chromosom als organisierte Trägerstruktur unterscheiden und miteinander verknüpfen.",
+        "descriptionEn": "The learner can use a simple model to distinguish and relate DNA as the material of genetic information, a gene as a section of that material and a chromosome as an organised carrier structure."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "bio-carrier-hidden-continuity-final-v5-d-a-ac9e824f-003c-50ac-8751-2b8456004c63",
+          "recordDigest": "sha256:294232a2eeccf52a1a051837c813aa512b25e105c419b2adceac4b0d7c403157"
+        },
+        "second": {
+          "recordId": "biologie-q1-carrier-hidden-continuity-native-d-independent-b-v3.carrier",
+          "recordDigest": "sha256:95b72ff2c245e1455158703f3bc29a3eb0c33ad43c4adca41869c4b020078b86"
+        }
+      },
+      "rationaleDe": "Zwei voneinander unabhängige gezielte Reviews haben die tatsächlich neu gerenderte Lernzielseite samt korrigierter DNA-Geometrie, Genmarkierung, Alttext und unveränderten vollständigen Materialien geprüft. Die erneuten Nutzerbefunde zu verdeckten Strangfortsetzungen und zu knapper Genmarkierung sind behoben: Beide Rückgrate werden jeweils durch alle verdeckten Kreuzungen mit passenden Tangenten und alternierender Vorder-/Hinterrolle verfolgt. Ein längerer, ausdrücklich stark verkürzt dargestellter DNA-Abschnitt ist ausschließlich mit äußerer Klammer und Hintergrundhalo als Gen markiert; das einfache Stabchromosom und seine innenliegende Zoombox erlauben eine klare Trägerzuordnung. Die Zieltexte, Verständnisanforderungen und beide Materialfälle bleiben gültig. Direkte Quellen bleiben BE/BB; die sechs geprüften Landesansichten kodieren den Carrier in den zusätzlich benötigten vier Ländern ausdrücklich als prerequisiteOnly und erhalten sämtliche übrigen Targets. Die zweite Verständnisfassung wird mit aktueller Seiten-/Bild-/Kontextbindung gewählt. Dies stellt eine fachlich geprüfte Wiederherstellung bestehender Bindungen dar, keinen neuen fachlichen Abschluss und keine menschliche Freigabe.",
+      "rationaleEn": "Two independent targeted reviews inspected the actual newly rendered goal page, corrected DNA geometry, gene marking, alt text and unchanged complete materials. The renewed user findings concerning hidden backbone continuation and the misleadingly short gene mark are resolved: both backbones are individually traced through every hidden crossing with aligned tangents and alternating front/rear roles. A longer, explicitly strongly shortened DNA section is indicated by an external brace and background halo only; a simple rod chromosome and its interior zoom box identify the sampled carrier clearly. The goal texts, understanding demands and both material cases remain valid. Direct sources remain BE/BB; six reviewed country views explicitly assign the carrier prerequisiteOnly in the four additional consuming jurisdictions and preserve every other target. The second understanding formulation is selected with current page/image/context bindings. This is a substantively reviewed restoration of existing bindings, no new scientific completion or human approval."
+    }
+  ],
+  "manifestFingerprint": "sha256:8adc68d503baa223b85cbf7d26e40d1117d147f3ba3cd5e6ae5a6edb3293bc71"
+}

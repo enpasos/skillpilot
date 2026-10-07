@@ -1,0 +1,11 @@
+# Koordinative Bindung: unabhängige V-Runde B, Kandidat v4
+
+**KEEP** für genau `attempt-02.png`, SHA256 `7c2c562d42d59480f71def10d700fd45fd885e1622a515ac171aff74dd0b003e`. Das tatsächliche native PNG (1671 × 941), die realen Browserdarstellungen bei 360/680 Pixeln und das alte Original-JPEG wurden persönlich gesehen. Kein neues Peer-V-A-Ergebnis wurde gelesen.
+
+Ein einzelnes ausgewähltes O-Elektronenpaar des Tartratfragments zeigt zum einen freien passenden Akzeptor am Cu²⁺. Nach Bindung liegen genau zwei Punkte im gemeinsamen Cu–O-Bereich. Cu²⁺ bleibt unverändert; es wird keine Redoxreaktion gezeichnet. Der große sichtbare Begriff **Modellausschnitt** begrenzt die Darstellung ausdrücklich. Es wird kein vollständiger Fehling-Komplex mit unbelegten acht Donorverbindungen mehr behauptet. Die freundliche bestehende Farb-/Comiclandschaft bleibt passend, die nötigen Labels und Motive sind bei beiden realen Breiten lesbar.
+
+Die ursprüngliche HE-PDF-Klausel auf physisch/gedruckt 39 wurde erneut eng gelesen: Der Cu(II)-Tartrat-Kontext ist LK. Der eigene direkt gelesene [Wiley-Originalabstract](https://onlinelibrary.wiley.com/doi/10.1002/zaac.201200458) wird für die begrenzte vorige Koordinationszahlfrage weiterverwendet; Volltext und Supplement sind nicht geprüft. Der aktuelle offizielle [IUPAC-Index zur Koordination](https://goldbook.iupac.org/terms/view/C01329/plain) stützt die gemeinsame Elektronenpaarherkunft aus einem Bindungspartner; der direkte Abruf war 403 und wird nicht als Volltextlektüre ausgegeben.
+
+Die tatsächliche Sicht- und Fachprüfung steht im Review-Receipt. Die vorgeschlagenen fünf nativen AI-Felder sind inert und bestehen den unveränderten vorhandenen Helper; derselbe Helper weist die Übertragung auf das alte aktive JPEG korrekt zurück. Autoren-Freeze: 13 eigene Dateien und acht externe Bindungen exakt. Erzeugung war keine Freigabe.
+
+Aktive Canon-/QA-/Bild-/Registrydateien sind unverändert. Die historische bildgebundene D-BLOCK-Bewertung bleibt erhalten. Erst eine tatsächlich neu geprüfte native Zielseite und aktuelle konkrete P-Bindungen können die jeweiligen Gates schließen. Nettozuwachs, neue aktive Abschlüsse und wiederhergestellte aktive Bindungen jeweils **0**. Menschliche Freigabe, Erprobung und tatsächliche Lernendenleistung werden nicht behauptet.

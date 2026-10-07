@@ -1,0 +1,11 @@
+
+> skillpilot@0.0.0 visualization:prepare
+> node ../scripts/prepare_goal_visualization.mjs 78748ef2-93fb-5ec3-8c1e-90e42b9ea863 --landscape=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-twenty-one-current-continuation-author-v3/stage-02-current-twenty-one-native/current472-neuro21.complete-author-candidate.json --subject=biologie --lang=de --provider=OpenAI / ChatGPT-Codex image generation --review-status=pilot
+
+Prepared prompt package for: Rezeptorpotenziale und Sinneszellen
+SkillPilot ID: 78748ef2-93fb-5ec3-8c1e-90e42b9ea863
+Prompt: tmp/goal-visualizations/78748ef2-93fb-5ec3-8c1e-90e42b9ea863/nano-banana-prompt.de.md
+Metadata: tmp/goal-visualizations/78748ef2-93fb-5ec3-8c1e-90e42b9ea863/metadata.json
+
+After generating and downloading the image, import it with:
+npm --prefix app run visualization:import -- 78748ef2-93fb-5ec3-8c1e-90e42b9ea863 "<downloaded-image-path>"

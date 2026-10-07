@@ -70,6 +70,10 @@ Use this page by role: start with the overview documents, then jump to a review 
 - [Chemie-Achterpaket und 53 aktuelle Beschreibungsbindungen vom 6. Oktober](chemie-biologie-m7-chemistry-53-current-bindings-continuation-2026-10-06.md)
 - [Geprüfte Chemie-/Biologie-Kandidaten und nächste Integration vom 6. Oktober](chemie-biologie-m7-reviewed-candidate-continuation-2026-10-06.md)
 - [Chemie/Biologie: Commit-Zwischenstand und offene Kandidatenbefunde vom 6. Oktober](chemie-biologie-m7-commit-checkpoint-2026-10-06.md)
+- [Q1-Trägerbild und aktuelle Bindungen vom 6. Oktober](chemie-biologie-m7-q1-carrier-and-current-bindings-continuation-2026-10-06.md)
+- [15 weitere aktuelle Chemieziele vom 6. Oktober](chemie-biologie-m7-fifteen-current-chemistry-continuation-2026-10-06.md)
+- [25 weitere aktuelle Chemieziele vom 7. Oktober](chemie-biologie-m7-twenty-five-current-chemistry-continuation-2026-10-07.md)
+- [Aktueller Commit-Zwischenstand vom 7. Oktober: 151/378 Chemie, 74/390 Biologie und offene Bildbefunde](chemie-biologie-m7-commit-checkpoint-2026-10-07.md)
 
 ## Review Lanes
 

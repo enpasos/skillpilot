@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-06T07:58:35.488406+00:00",
+  "role": "actual native checks of root materialization of individual independent scientific decisions; no active integration",
+  "checks": [
+    {
+      "commandArgv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-candidate-v1/full-atomicity.candidate.config.json",
+        "--mode=check"
+      ],
+      "actualExitCode": 0,
+      "actualOutput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-candidate-v1/qa-artifacts/native-atomicity-check.actual.stdout.txt",
+        "sha256": "2423b5a140864ff26480d8fe83913249768980bac251480433d1f97e1ec72506",
+        "bytes": 315
+      },
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-candidate-v1/full-atomicity.candidate.config.json",
+        "sha256": "1b8fd794f2112a4f8ba8f1b15467919334c2ef96444b0965c6042d9f409eb6b9",
+        "bytes": 781
+      },
+      "review": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-candidate-v1/full-atomicity.review.jsonl",
+        "sha256": "b37e92bc41087550361077de5bab81e6732a37bb291316f5d42c04ff5fcebb8b",
+        "bytes": 203648
+      }
+    },
+    {
+      "commandArgv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-candidate-v1/full-memory.candidate.config.json",
+        "--mode=check"
+      ],
+      "actualExitCode": 0,
+      "actualOutput": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-candidate-v1/qa-artifacts/native-memory-check.actual.stdout.txt",
+        "sha256": "893c06e8d235e29a4e2ff9da723ccdb22828274659b90218edd2b588c2a52177",
+        "bytes": 3699
+      },
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-candidate-v1/full-memory.candidate.config.json",
+        "sha256": "d45c32ebb3b0efd60cff0c9f470801ae1a5785bc41816d4647025fd9b65995ae",
+        "bytes": 1458
+      },
+      "review": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-candidate-v1/full-memory.review.jsonl",
+        "sha256": "9cc529dedd91596aada1a85e30254c1e4332fff17158df3b900d0e1e8331c864",
+        "bytes": 254506
+      }
+    }
+  ],
+  "historicalDecisionPreservation": [
+    {
+      "lane": "atomicity",
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-eighteen-current-reviewed-integration-candidate-v2/full-atomicity.review.jsonl",
+        "sha256": "ec9632190ed978cec9b9dbde8a74954889784f7f29c0e916dc144a68833d17a9",
+        "bytes": 199200
+      },
+      "historicalPrefixExact": true,
+      "newRows": 7
+    },
+    {
+      "lane": "memory",
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-eighteen-current-reviewed-integration-candidate-v2/full-memory.review.jsonl",
+        "sha256": "0c66ca0fbd38f6185cd194e6d38b9b58aaa9704be50386c9aa273e326a74c7bb",
+        "bytes": 249199
+      },
+      "historicalPrefixExact": true,
+      "newRows": 7
+    }
+  ],
+  "historicalCards": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-eighteen-current-reviewed-integration-candidate-v2/full-memory.cards.review.jsonl",
+    "sha256": "9d54ca6b5c184b21c6b20d5f045e1231b5ab25ee2bf6cda34b1e09f62b4190f9",
+    "bytes": 19495
+  },
+  "historicalCardsExact": true,
+  "nativeAtomicity": {
+    "current": 390,
+    "missing": 0,
+    "stale": 0,
+    "open": 0
+  },
+  "nativeMemory": {
+    "current": 390,
+    "noMemory": 380,
+    "memoryRequired": 10,
+    "memoryGoals": 3,
+    "keptCards": 27,
+    "checkedVisibleRequiredGoals": 17,
+    "missingVisibleMemory": 0,
+    "missing": 0,
+    "stale": 0,
+    "open": 0
+  },
+  "independentIntegrationReview": "pending",
+  "activeWrites": false,
+  "strictGain": 0,
+  "humanApproval": false,
+  "humanTrial": false
+}

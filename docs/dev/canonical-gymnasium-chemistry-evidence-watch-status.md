@@ -41,11 +41,11 @@ This file is generated from:
 
 | File | Exists | SHA256-12 | Last modified (UTC) |
 | --- | --- | --- | --- |
-| `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json` | `yes` | `9fea23940a6a` | `2026-10-06T04:04:29Z` |
-| `curricula/DE/Gymnasium/composition-views/chemie/de-bb-gk.view.json` | `yes` | `41be795c3ab0` | `2026-05-11T15:47:52Z` |
-| `curricula/DE/Gymnasium/composition-views/chemie/de-bb-lk.view.json` | `yes` | `7b2b8027aa32` | `2026-05-11T15:47:52Z` |
-| `curricula/DE/Gymnasium/composition-views/chemie/de-be-gk.view.json` | `yes` | `00de28f46bfc` | `2026-05-11T15:47:52Z` |
-| `curricula/DE/Gymnasium/composition-views/chemie/de-be-lk.view.json` | `yes` | `a6f8659c8e2c` | `2026-05-11T15:47:52Z` |
+| `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json` | `yes` | `219a7b9c3a14` | `2026-10-07T00:47:21Z` |
+| `curricula/DE/Gymnasium/composition-views/chemie/de-bb-gk.view.json` | `yes` | `304d030ac8c6` | `2026-10-06T22:07:09Z` |
+| `curricula/DE/Gymnasium/composition-views/chemie/de-bb-lk.view.json` | `yes` | `c2a9753bd619` | `2026-10-06T22:07:09Z` |
+| `curricula/DE/Gymnasium/composition-views/chemie/de-be-gk.view.json` | `yes` | `7aa0cc2fd01c` | `2026-10-06T22:07:09Z` |
+| `curricula/DE/Gymnasium/composition-views/chemie/de-be-lk.view.json` | `yes` | `fa0dc13e9304` | `2026-10-06T22:07:09Z` |
 | `curricula/DE/Gymnasium/composition-views/chemie/de-bw-gk.view.json` | `yes` | `47f10802b3ac` | `2026-05-11T15:47:52Z` |
 | `curricula/DE/Gymnasium/composition-views/chemie/de-bw-lk.view.json` | `yes` | `885046fffccb` | `2026-05-11T15:47:52Z` |
 | `curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json` | `yes` | `42c8949bfa16` | `2026-10-05T18:28:15Z` |
@@ -83,8 +83,8 @@ This file is generated from:
 | `curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_CHEMIE_SEKII_RLP_GOST_2022.source-extraction.json` | `yes` | `62c33d8b008d` | `2026-05-15T15:06:30Z` |
 | `curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_CHEMIE_SEKI_RLP_2015.source-extraction.json` | `yes` | `a894336996c0` | `2026-05-15T15:06:30Z` |
 | `curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_CHEMIE_SEKII_RLP_GOST_2022.source-extraction.json` | `yes` | `725fa8b2e3c2` | `2026-05-15T15:06:30Z` |
-| `curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_CHEMIE_SEKI_BP2016_V2.source-extraction.json` | `yes` | `83f91e666aaf` | `2026-05-15T15:06:30Z` |
-| `curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_CHEMIE_SEKII_BP2016_V2.source-extraction.json` | `yes` | `cd568fd6ad8c` | `2026-05-15T15:06:30Z` |
+| `curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_CHEMIE_SEKI_BP2016_V2.source-extraction.json` | `yes` | `79e4b03d7631` | `2026-10-06T23:14:29Z` |
+| `curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_CHEMIE_SEKII_BP2016_V2.source-extraction.json` | `yes` | `3f74205ca89f` | `2026-10-06T22:00:42Z` |
 | `curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_BIOLOGISCH_CHEMISCHES_PRAKTIKUM_GYMNASIUM_LEHRPLANPLUS.source-extraction.json` | `yes` | `2343c4fd2e45` | `2026-05-11T02:37:43Z` |
 | `curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_CHEMIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json` | `yes` | `d8f6b835b007` | `2026-05-11T11:07:28Z` |
 | `curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_CHEMIE_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json` | `yes` | `b777ec5b094e` | `2026-05-15T15:06:30Z` |
@@ -200,7 +200,7 @@ This file is generated from:
 
 | File | Exists | SHA256-12 | Last modified (UTC) |
 | --- | --- | --- | --- |
-| `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json` | `yes` | `9fea23940a6a` | `2026-10-06T04:04:29Z` |
+| `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json` | `yes` | `219a7b9c3a14` | `2026-10-07T00:47:21Z` |
 | `curricula/DE/Gymnasium/provenance/chemistry-bundesland-rollout-tracker.json` | `yes` | `8d5b1a12a19a` | `2026-05-12T01:19:23Z` |
 
 ## `chemistry_source_evidence_watch`
@@ -222,8 +222,8 @@ This file is generated from:
 | `curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_CHEMIE_SEKII_RLP_GOST_2022.source-extraction.json` | `yes` | `62c33d8b008d` | `2026-05-15T15:06:30Z` |
 | `curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_CHEMIE_SEKI_RLP_2015.source-extraction.json` | `yes` | `a894336996c0` | `2026-05-15T15:06:30Z` |
 | `curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_CHEMIE_SEKII_RLP_GOST_2022.source-extraction.json` | `yes` | `725fa8b2e3c2` | `2026-05-15T15:06:30Z` |
-| `curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_CHEMIE_SEKI_BP2016_V2.source-extraction.json` | `yes` | `83f91e666aaf` | `2026-05-15T15:06:30Z` |
-| `curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_CHEMIE_SEKII_BP2016_V2.source-extraction.json` | `yes` | `cd568fd6ad8c` | `2026-05-15T15:06:30Z` |
+| `curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_CHEMIE_SEKI_BP2016_V2.source-extraction.json` | `yes` | `79e4b03d7631` | `2026-10-06T23:14:29Z` |
+| `curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_CHEMIE_SEKII_BP2016_V2.source-extraction.json` | `yes` | `3f74205ca89f` | `2026-10-06T22:00:42Z` |
 | `curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_BIOLOGISCH_CHEMISCHES_PRAKTIKUM_GYMNASIUM_LEHRPLANPLUS.source-extraction.json` | `yes` | `2343c4fd2e45` | `2026-05-11T02:37:43Z` |
 | `curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_CHEMIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json` | `yes` | `d8f6b835b007` | `2026-05-11T11:07:28Z` |
 | `curricula/DE/Gymnasium/input/HB/lower-secondary/source-extraction/DE_HB_CHEMIE_SEKI_BILDUNGSPLAN_2006_2022.source-extraction.json` | `yes` | `b777ec5b094e` | `2026-05-15T15:06:30Z` |
@@ -355,10 +355,10 @@ This file is generated from:
 
 | File | Exists | SHA256-12 | Last modified (UTC) |
 | --- | --- | --- | --- |
-| `curricula/DE/Gymnasium/composition-views/chemie/de-bb-gk.view.json` | `yes` | `41be795c3ab0` | `2026-05-11T15:47:52Z` |
-| `curricula/DE/Gymnasium/composition-views/chemie/de-bb-lk.view.json` | `yes` | `7b2b8027aa32` | `2026-05-11T15:47:52Z` |
-| `curricula/DE/Gymnasium/composition-views/chemie/de-be-gk.view.json` | `yes` | `00de28f46bfc` | `2026-05-11T15:47:52Z` |
-| `curricula/DE/Gymnasium/composition-views/chemie/de-be-lk.view.json` | `yes` | `a6f8659c8e2c` | `2026-05-11T15:47:52Z` |
+| `curricula/DE/Gymnasium/composition-views/chemie/de-bb-gk.view.json` | `yes` | `304d030ac8c6` | `2026-10-06T22:07:09Z` |
+| `curricula/DE/Gymnasium/composition-views/chemie/de-bb-lk.view.json` | `yes` | `c2a9753bd619` | `2026-10-06T22:07:09Z` |
+| `curricula/DE/Gymnasium/composition-views/chemie/de-be-gk.view.json` | `yes` | `7aa0cc2fd01c` | `2026-10-06T22:07:09Z` |
+| `curricula/DE/Gymnasium/composition-views/chemie/de-be-lk.view.json` | `yes` | `fa0dc13e9304` | `2026-10-06T22:07:09Z` |
 | `curricula/DE/Gymnasium/composition-views/chemie/de-bw-gk.view.json` | `yes` | `47f10802b3ac` | `2026-05-11T15:47:52Z` |
 | `curricula/DE/Gymnasium/composition-views/chemie/de-bw-lk.view.json` | `yes` | `885046fffccb` | `2026-05-11T15:47:52Z` |
 | `curricula/DE/Gymnasium/composition-views/chemie/de-de-gym-chemistry-gk.view.json` | `yes` | `42c8949bfa16` | `2026-10-05T18:28:15Z` |

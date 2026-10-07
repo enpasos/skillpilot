@@ -1,0 +1,34 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {dirname,join} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+import {normalizeGoalVisualizationAiReview} from '/home/enpasos/projects/skillpilot/app/scripts/goalVisualizationQaModel.ts';
+import {isAiApprovedForCurrentAsset,aiApprovalStatus} from '/home/enpasos/projects/skillpilot/app/src/utils/goalVisualizationQaStatus.ts';
+import {hasCurrentExactByteAiQaEvidence} from '/home/enpasos/projects/skillpilot/app/scripts/reportGoalVisualizationRolloutStatus.ts';
+import {hasCompletedDeepUnderstandingVisualizationReview} from '/home/enpasos/projects/skillpilot/app/scripts/reportDeepUnderstandingRollout.ts';
+const ROOT='/home/enpasos/projects/skillpilot',OUT=dirname(fileURLToPath(import.meta.url));
+const load=(p:string)=>JSON.parse(readFileSync(p,'utf8'));
+const input=load(join(OUT,'preparation-current-inputs.actual.json'));
+const index=load(join(OUT,'seven-current-whole-resource-only-templates.index.json'));
+const canon=load(join(ROOT,input.canonical.path)); const ledger=load(join(ROOT,input.qa.path));
+assert.equal(canon.goals.length,479);
+const nativeRows=[];
+for(const r of index.rows){
+ const current=canon.goals.find((g:any)=>g.id===r.goalId);assert.deepEqual(current,r.beforeGoal);
+ const qa=load(join(ROOT,r.QAReplacement.path));const before=ledger.records.find((q:any)=>q.goalId===r.goalId);
+ assert.deepEqual(before,input.sevenOldQARecords[r.goalId]);assert.deepEqual(Object.keys(qa).sort(),Object.keys(before).sort());
+ const link=r.afterGoal.resourceLinks[0];assert.equal(link.skillpilotId,r.goalId);assert.equal(link.license,'CC-BY-4.0');assert.equal(link.provider,'OpenAI / ChatGPT-Codex image generation');assert.equal(link.altText.length>0,true);
+ assert.equal(qa.title,current.title);assert.equal(qa.description,current.description);assert.equal(qa.imageUrl,link.url);
+ assert.equal(qa.humanApproved,'no');assert.equal(qa.humanIssueIdentified,'no');assert.equal(qa.humanReviewedAt,null);assert.equal(qa.humanReviewer,'');
+ assert.equal(aiApprovalStatus(qa),'approved');assert.equal(isAiApprovedForCurrentAsset(qa),true);assert.equal(hasCompletedDeepUnderstandingVisualizationReview(qa),true);
+ const normalized=normalizeGoalVisualizationAiReview(qa,qa.assetSha256);for(const key of Object.keys(normalized))assert.equal((normalized as any)[key],qa[key]);
+ assert.equal(hasCurrentExactByteAiQaEvidence({goalId:r.goalId,url:link.url},qa,'chemie',join(OUT,'prospective-install-tree')),true);
+ const paths=[qa.canonicalAssetPath,qa.publicAssetPath,'backend/src/main/resources/static'+link.url];
+ for(const p of paths)assert.equal('sha256:'+createHash('sha256').update(readFileSync(join(OUT,'prospective-install-tree',p))).digest('hex'),qa.assetSha256);
+ const goalWithoutResources=(g:any)=>{const {resourceLinks,...other}=g;return other};assert.deepEqual(goalWithoutResources(r.beforeGoal),goalWithoutResources(r.afterGoal));
+ nativeRows.push({goalId:r.goalId,assetSha256:qa.assetSha256,actualPureNativeAIFieldNormalizationPASS:true,actualNativeCurrentHashApprovalStatus:'approved',actualNativeCurrentExactCanonicalPublicCopiesPASS:true,backendExactCopyPASS:true,wholeGoalOnlyResourceLinksChanged:true,oldHumanFieldsArchivedNewUnreviewed:true});
+}
+const receipt={documentType:'actual pure production helper technical checks; not central/global check or scientific approval',checkedAtUTC:new Date().toISOString(),rows:nativeRows,nativeInputCount:7,wholeCurrentGoalCount:479,allPASS:true,activeWrites:false,newScienceReviews:0,newStrictClosures:0,strictNetGain:0};
+writeFileSync(join(OUT,'actual-native-seven-operative-payload-binding-checks.receipt.json'),JSON.stringify(receipt,null,2)+'\n');
+process.stdout.write(JSON.stringify({checkedSeven:7,actualProductionHelpersPASS:true,actualProspectiveThreeCopiesEachPASS:true,wholeCurrentCount:479,centralOrGlobalBuild:false,activeWrites:false})+'\n');

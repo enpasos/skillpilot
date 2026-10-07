@@ -1,0 +1,11 @@
+
+> skillpilot@0.0.0 visualization:prepare
+> node ../scripts/prepare_goal_visualization.mjs e3fb5f1d-e277-5e28-8883-45821b972607 --landscape=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-twenty-one-current-continuation-author-v3/stage-02-current-twenty-one-native/current472-neuro21.complete-author-candidate.json --subject=biologie --lang=de --provider=OpenAI / ChatGPT-Codex image generation --review-status=pilot
+
+Prepared prompt package for: Ruhepotential aus Ionenverteilungen erklären
+SkillPilot ID: e3fb5f1d-e277-5e28-8883-45821b972607
+Prompt: tmp/goal-visualizations/e3fb5f1d-e277-5e28-8883-45821b972607/nano-banana-prompt.de.md
+Metadata: tmp/goal-visualizations/e3fb5f1d-e277-5e28-8883-45821b972607/metadata.json
+
+After generating and downloading the image, import it with:
+npm --prefix app run visualization:import -- e3fb5f1d-e277-5e28-8883-45821b972607 "<downloaded-image-path>"

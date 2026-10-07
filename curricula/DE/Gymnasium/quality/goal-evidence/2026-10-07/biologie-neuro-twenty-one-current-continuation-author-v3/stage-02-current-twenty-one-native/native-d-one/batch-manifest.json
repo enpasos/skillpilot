@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-neuro-current-one-20261007-author-v3",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-twenty-one-current-continuation-author-v3/stage-02-current-twenty-one-native/native-d-one.batch.config.json",
+  "configDigest": "sha256:a145d8626dd430c072ea1d9ae6126955f2fcc517d0d7c0b2c2201060ecc962be",
+  "goalIds": [
+    "c05e217f-33fc-5a11-ba75-1397fad3ae0a"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 390,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-twenty-one-current-continuation-author-v3/stage-02-current-twenty-one-native/full-candidate390.book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-twenty-one-current-continuation-author-v3/stage-02-current-twenty-one-native/current472-neuro21.complete-author-candidate.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:db2956f4cae39db3307790c419416c7dd6ff450736e926329af45915a80e00a5"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:208256c010011c495363677b1b0293e954da5cd8944da37d60ae1d1ad0741885",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:01d7df7952649d701b28bc46b76d8572b13c44688ded5470104c44dc055a9e6e",
+    "reviewInputFingerprint": "sha256:176f7f426f595bb1afbe5634fb56bfca8e8706582058dd4efb43aedd095b9ed8",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-neuro-current-one-20261007-author-v3-a",
+        "campaignDigest": "sha256:14453d1a6e335270c0c2e2e1f626ef499dae5a14078e3035157317d0897c79b8",
+        "roundId": "biologie-neuro-current-one-20261007-author-v3-first-pass-a",
+        "independenceGroupId": "biologie-neuro-current-one-20261007-author-v3-independent-a",
+        "batchId": "biologie-neuro-current-one-20261007-author-v3-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:afc911058eaf5d9c93da1c85402cd8ee03ed23f04f46cbf02a150fb5a44bde68"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-neuro-current-one-20261007-author-v3-b",
+        "campaignDigest": "sha256:05806717ca25d83e5c815a8e4e235f2f122ed707d328fba303453af7842b7e3a",
+        "roundId": "biologie-neuro-current-one-20261007-author-v3-first-pass-b",
+        "independenceGroupId": "biologie-neuro-current-one-20261007-author-v3-independent-b",
+        "batchId": "biologie-neuro-current-one-20261007-author-v3-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:7337c1f9b698b8f24f6ba2e79aa8f83c8631dd2d433a8011da3d3c464ab4ae99"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

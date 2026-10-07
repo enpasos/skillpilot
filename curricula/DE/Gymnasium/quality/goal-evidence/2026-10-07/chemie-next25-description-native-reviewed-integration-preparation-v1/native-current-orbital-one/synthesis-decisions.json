@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-next25-native-current-orbital-one-technical-synthesis-20261007-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex technical synthesizer; completed existing independent A/B bytes read; no additional scientific review round",
+  "synthesizedAt": "2026-10-06T23:01:34.727Z",
+  "batch": {
+    "batchId": "chemie-next25-orbital-complete-20261007-author-v3",
+    "batchManifestDigest": "sha256:1f21b90e8ba92215598bb81d3253aeb6ab7f935cea40d1930bc11d5322081a91",
+    "configDigest": "sha256:97ee1d06732ca77547e1c5ab18c4639bd1d49fa6f2d97aade75b10536059a027",
+    "bundleFingerprint": "sha256:42ceb0f75fb9385aa4b1e1082c5c28b42f69ae7b40bb29549f3af839d3705c43",
+    "bookDigest": "sha256:ba2b04352e078aefaa441ba7abdde022493ee881cba1673f7361ed0503830f8d",
+    "reviewInputFingerprint": "sha256:00ab75f0e9835535239b0140d65ff9f77d9771d8c7db5049997e9c3ec7b8e232",
+    "dualSummaryDigest": "sha256:33dae1c70e23e8d402915fbac1c06296233896ccad14f60c7db24f262a735775",
+    "canonicalLandscapeDigest": "sha256:94bf767048995316be19da809cfe10f73c459dbb1aae677cee8491270eaa5c79"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-next25-orbital-complete-20261007-author-v3-a",
+      "campaignDigest": "sha256:b6f2c117c3c72c774648e677ab37fdacad921912e2d43c4057702105e715d501",
+      "roundId": "chemie-next25-orbital-complete-20261007-author-v3-first-pass-a",
+      "independenceGroupId": "chemie-next25-orbital-complete-20261007-author-v3-independent-a",
+      "reviewInputFingerprint": "sha256:00ab75f0e9835535239b0140d65ff9f77d9771d8c7db5049997e9c3ec7b8e232",
+      "batchId": "chemie-next25-orbital-complete-20261007-author-v3-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:aeb85dc82bc2b22ed4dbf6360e463b5de8a63ddd88d5fc1a446479c238ce5ed4",
+      "runId": "chemie-next25-orbital-final-targeted-independent-a-20261007-v3",
+      "runManifestDigest": "sha256:eec756f6b4569f3788ed9ee55f9c807650468e8190bf77552a18b09b68b6a841",
+      "resultsDigest": "sha256:91dd26064ab3b7d111edb4d29de424cf131bf174604b6a26858853b19a95fa1a"
+    },
+    "second": {
+      "campaignId": "chemie-next25-orbital-complete-20261007-author-v3-b",
+      "campaignDigest": "sha256:9e2276df99e7610cc251b1c2ae79f0a44c37faf5b81fd05bb7618f75fbaab6ec",
+      "roundId": "chemie-next25-orbital-complete-20261007-author-v3-first-pass-b",
+      "independenceGroupId": "chemie-next25-orbital-complete-20261007-author-v3-independent-b",
+      "reviewInputFingerprint": "sha256:00ab75f0e9835535239b0140d65ff9f77d9771d8c7db5049997e9c3ec7b8e232",
+      "batchId": "chemie-next25-orbital-complete-20261007-author-v3-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:a3e365286c76ed5113ba39c11f90c3a19d6802dcc12213c455302705c00f6f9d",
+      "runId": "chemie-next25-orbital-final-independent-d-b-v3",
+      "runManifestDigest": "sha256:534548e49396b8421f0bc8fe84bfa32d15b4b7b157c79b9009753f2b78da3913",
+      "resultsDigest": "sha256:c69c40082218d85dfef33d0e517ef0f61b1b7d9b36a49b2f871f2d7275fdb3c8"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-next25-native-current-orbital-one-technical-synthesis-20261007-v1-decision-001",
+      "goalId": "0acc8cd2-be6d-567e-a023-1d9e90475510",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d30f2e7b8b3041681b83f936a6566f8b7eb564d7971a3523dc7540c06fb7f070",
+      "pageFingerprint": "sha256:31acf2e8cb903231d73299bad8e3e79d9ca080a5a945885a4ad395fc08035968",
+      "goalReviewContextFingerprint": "sha256:850d939f03e832921bc6952cc2f328d2d2c23783ee23765f7f60b6c8d3e4879e",
+      "finalText": {
+        "titleDe": "Orbitale als Wahrscheinlichkeitsräume beschreiben",
+        "titleEn": "Describe orbitals as probability regions",
+        "descriptionDe": "Die lernende Person kann Orbitale als Ein-Elektronen-Wellenfunktionen beschreiben und das Betragsquadrat der Wellenfunktion als Wahrscheinlichkeitsdichte für Aufenthaltsbereiche deuten.",
+        "descriptionEn": "The learner can describe orbitals as one-electron wave functions and interpret the squared magnitude of the wave function as a probability density for regions of electron presence."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-next25-orbital-final-targeted-independent-a-20261007-v3.0acc8cd2-be6d-567e-a023-1d9e90475510",
+          "recordDigest": "sha256:fffe6acf555deb5316413cf3e673dcec764708ad45f33eaf5ecee722131280d8"
+        },
+        "second": {
+          "recordId": "chemie-next25-orbital-final-independent-d-b-v3.001",
+          "recordDigest": "sha256:ee6789e63902a9ac19f71ee088ab463a72fdd39b1fb391b956302fc8ddf3ba21"
+        }
+      },
+      "rationaleDe": "Beide tatsächlichen v3-Einzelrunden bestätigen die korrigierte DE/EN-Definition als Ein-Elektronen-Wellenfunktion und lösen den historischen gemeinsamen REVISE-Befund ausdrücklich auf. ψ-Vorzeichen, |ψ|²-Dichte, Volumenberücksichtigung und Normierungsgrenze bleiben dieselbe begrenzte Kompetenz; aktuelle HTML/PDF-Seite und unverändertes Original-JPG sind von beiden gesehen. Zwei Voraussetzungen und fünf Aufbauziele erscheinen im Einzelbuch korrekt als externe Links; kein zusätzlicher Schrödinger-Rechenanspruch oder Quellen-Superset-Abschluss.",
+      "rationaleEn": "Both actual v3 single-goal rounds confirm the corrected DE/EN definition as a one-electron wave function and explicitly resolve the historical shared REVISE finding. Wave-function sign, squared-modulus density, volume and normalization limits remain the same bounded competence; both reviewers saw the current HTML/PDF page and unchanged original JPG. Two prerequisites and five dependent goals correctly appear as external links in the single-goal book, without an additional Schrödinger-calculation obligation or source-superset completion."
+    }
+  ],
+  "manifestFingerprint": "sha256:4972f061eb45c28d386899202d45655fc4bd009787645fc165c539f0126b918a"
+}

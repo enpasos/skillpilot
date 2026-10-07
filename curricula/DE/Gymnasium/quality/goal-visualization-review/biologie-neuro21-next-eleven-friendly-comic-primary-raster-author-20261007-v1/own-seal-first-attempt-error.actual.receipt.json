@@ -1,0 +1,15 @@
+{
+  "role": "actual author freeze preparation error; no product finding",
+  "attempt": 1,
+  "exitCode": 1,
+  "error": "AssertionError at source-candidates/extraction-02.author-v2.candidate.json",
+  "actualCause": "Own generic scanner compared a bare digest to an existing sha256:-prefixed digest without normalizing the existing representation.",
+  "existingBinding": "sha256:3932990a396364d307c26deb4515559c5c215e26988deb105ffface4770df400",
+  "actualReadDigest": "3932990a396364d307c26deb4515559c5c215e26988deb105ffface4770df400",
+  "actualBytesMatch": true,
+  "correction": "Normalize only the sha256: representation in the new own scanner; preserve all historical input fields and bytes.",
+  "productionValidatorChanged": false,
+  "actualSourceConflict": false,
+  "newSourceApproval": false,
+  "priorOverinterpretationCommunicatedAndCorrected": true
+}

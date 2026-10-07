@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-next25-orbital-complete-20261007-author-v3",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next25-orbital-nano-targeted-author-v3/native-d-one-orbital-final-current.batch.config.json",
+  "configDigest": "sha256:97ee1d06732ca77547e1c5ab18c4639bd1d49fa6f2d97aade75b10536059a027",
+  "goalIds": [
+    "0acc8cd2-be6d-567e-a023-1d9e90475510"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 378,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next25-orbital-nano-targeted-author-v3/full378.targeted-final-complete-alttext.book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next25-orbital-nano-targeted-author-v3/canonical.targeted-final-complete-alttext.candidate.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:d3d60d6035a9278dce94c9acf502b30b0911f5a49381d8fb6b7015c76341768c"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:ba2b04352e078aefaa441ba7abdde022493ee881cba1673f7361ed0503830f8d",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:42ceb0f75fb9385aa4b1e1082c5c28b42f69ae7b40bb29549f3af839d3705c43",
+    "reviewInputFingerprint": "sha256:00ab75f0e9835535239b0140d65ff9f77d9771d8c7db5049997e9c3ec7b8e232",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-next25-orbital-complete-20261007-author-v3-a",
+        "campaignDigest": "sha256:b6f2c117c3c72c774648e677ab37fdacad921912e2d43c4057702105e715d501",
+        "roundId": "chemie-next25-orbital-complete-20261007-author-v3-first-pass-a",
+        "independenceGroupId": "chemie-next25-orbital-complete-20261007-author-v3-independent-a",
+        "batchId": "chemie-next25-orbital-complete-20261007-author-v3-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:aeb85dc82bc2b22ed4dbf6360e463b5de8a63ddd88d5fc1a446479c238ce5ed4"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-next25-orbital-complete-20261007-author-v3-b",
+        "campaignDigest": "sha256:9e2276df99e7610cc251b1c2ae79f0a44c37faf5b81fd05bb7618f75fbaab6ec",
+        "roundId": "chemie-next25-orbital-complete-20261007-author-v3-first-pass-b",
+        "independenceGroupId": "chemie-next25-orbital-complete-20261007-author-v3-independent-b",
+        "batchId": "chemie-next25-orbital-complete-20261007-author-v3-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:a3e365286c76ed5113ba39c11f90c3a19d6802dcc12213c455302705c00f6f9d"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

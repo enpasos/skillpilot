@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-current-fifteen-native-coordinate-single-synthesis-20261006-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex technical synthesizer: actual existing completed A/B records read; no additional independent review round",
+  "synthesizedAt": "2026-10-06T19:38:26.582Z",
+  "batch": {
+    "batchId": "chemie-current-coordinate-single-targeted-20261006-author-v5",
+    "batchManifestDigest": "sha256:bea57623f9893dcba215ec8129fab49dc3cd59a8defa3a53b52014288f5c4248",
+    "configDigest": "sha256:d0a5f1d47994c1d1c16d542ef54d7431a8bdd18b31a6b6e6e80283b4798068f2",
+    "bundleFingerprint": "sha256:254ddb7c022f28b322fca6cb37fcf803c0760d7b07bc223803989360f4763d5e",
+    "bookDigest": "sha256:6dd1d31a512e2473ccc5d489962ac3b2cb4a1ca57bdc7b4d1a39b4602b2ec92f",
+    "reviewInputFingerprint": "sha256:2619cf1ad2421123382a4f2fd53937c46f6deee886f32761f6881052adc5f530",
+    "dualSummaryDigest": "sha256:f706a65240b1354c6b450caf22971efa4f008a4a1f84f1b521e056dd5a31b2dc",
+    "canonicalLandscapeDigest": "sha256:d229c723d71793f6937492bbbc954f35c99fb81c0066de2aa965ad08982ee138"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-current-coordinate-single-targeted-20261006-author-v5-a",
+      "campaignDigest": "sha256:5cde85ded9caffc82642af68f9e5a5312102098dd4503c5e186164341898b58d",
+      "roundId": "chemie-current-coordinate-single-targeted-20261006-author-v5-first-pass-a",
+      "independenceGroupId": "chemie-current-coordinate-single-targeted-20261006-author-v5-independent-a",
+      "reviewInputFingerprint": "sha256:2619cf1ad2421123382a4f2fd53937c46f6deee886f32761f6881052adc5f530",
+      "batchId": "chemie-current-coordinate-single-targeted-20261006-author-v5-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:2ca1c3ce354fc87ccd4cfdabf983bbcb41bdc9af0c1360395103b212944bc952",
+      "runId": "chemie-coordinate-native-blind-independent-a-20261006-v5",
+      "runManifestDigest": "sha256:685e75d12e1c67b865f280e98daa8dc381e0e3b41058d5a6fe63c308ecfe63e5",
+      "resultsDigest": "sha256:27c7160411e7947effec1282d9af0062ad8ed52bee306c33706e86521e5a9f9a"
+    },
+    "second": {
+      "campaignId": "chemie-current-coordinate-single-targeted-20261006-author-v5-b",
+      "campaignDigest": "sha256:1cd52973e746308d1e1db39815b96f43b20ecfa950711ff1c9b394b291e1cc9f",
+      "roundId": "chemie-current-coordinate-single-targeted-20261006-author-v5-first-pass-b",
+      "independenceGroupId": "chemie-current-coordinate-single-targeted-20261006-author-v5-independent-b",
+      "reviewInputFingerprint": "sha256:2619cf1ad2421123382a4f2fd53937c46f6deee886f32761f6881052adc5f530",
+      "batchId": "chemie-current-coordinate-single-targeted-20261006-author-v5-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:9b4109c5ae20bda6e1c4d1a2689fbee5bb87a6a79997ed5a1bb745cf6f3be777",
+      "runId": "chemie-current-coordinate-final-native-d-independent-b-v5-one-run-001",
+      "runManifestDigest": "sha256:b50b89e85751385a06e02a56dfea95200885beced4654d979434174312178d14",
+      "resultsDigest": "sha256:28b5d12ea079d08c248574e5526a966205c90947cab0e5fbbdfea8d6d3581eb6"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-current-fifteen-native-coordinate-single-synthesis-20261006-v1-decision-001",
+      "goalId": "363c5740-8a3c-50b8-8c3a-5548c80c36ea",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3aa4633c04b3e1753a9baf8eecf678f4aab262773e9a090c8be651e5abf4b113",
+      "pageFingerprint": "sha256:c8bc9610b69eae2fab9338fae3f4e0925d85784693ec9963a06d8e1eaa5ac91a",
+      "goalReviewContextFingerprint": "sha256:5f6c33c375a831c1d256ee1fbefd4d7686d77a6f7aad8cb97162b02e65cca498",
+      "finalText": {
+        "titleDe": "Koordinative Bindung in der Fehling-Probe deuten",
+        "titleEn": "Interpret coordinate bonding in Fehling test",
+        "descriptionDe": "Die lernende Person kann die Ausbildung koordinativer Bindungen zwischen Zentralatom oder Zentralion und Liganden durch unbesetzte Orbitale am Zentralatom oder Zentralion sowie freie Elektronenpaare am Liganden erlaeutern und am Beispiel der Fehling-Probe deuten.",
+        "descriptionEn": "The learner can explain the formation of coordinate bonds between a central atom or ion and ligands using unoccupied orbitals at the central atom or ion and lone pairs at the ligand, and interpret this using the Fehling test as an example."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-coordinate-native-blind-independent-a-20261006-v5-record-001",
+          "recordDigest": "sha256:bb515adfd8a1a119d488396a9b6a9fbc2595945543b9ad356df3fba11d11958a"
+        },
+        "second": {
+          "recordId": "chemie-current-coordinate-final-native-d-independent-b-v5-one-001",
+          "recordDigest": "sha256:e57ae3263cca7cc072f74788277f162719d16a0ff467f94bf17bb64009fe4875"
+        }
+      },
+      "rationaleDe": "Beide aktuellen v5-Einzelrunden bestätigen den tatsächlich gesehenen Modellausschnitt: ein ausgewähltes Tartrat-O-Elektronenpaar, ein geeignetes Cu2+-Akzeptororbital und ein gemeinsames lokales Paar. Keine Vollkomplex-Stöchiometrie, acht Donoren oder vollständige d-Schale. Das B-v3-Bild-BLOCK-Finding ist am neuen exakten Kandidaten aufgelöst, sein historischer Record bleibt unangetastet. HE Q1.2 LK wird nicht zu GK erweitert.",
+      "rationaleEn": "Both current v5 single rounds confirm the actually viewed local model: one selected tartrate O lone pair, one suitable Cu2+ acceptor orbital and one shared local pair. No full-complex stoichiometry, eight donors or full d shell is claimed. The B-v3 image BLOCK finding is resolved in the exact new candidate while its historical record stays unchanged. HE Q1.2 advanced scope is not widened to GK."
+    }
+  ],
+  "manifestFingerprint": "sha256:62a16008157eece2e82beb56871c78f1f11b4cd46d817e9fb3d219a58a2416f5"
+}

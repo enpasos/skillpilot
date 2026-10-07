@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "atUTC": "2026-10-06T21:40:22.525538+00:00",
+  "exitCode": 1,
+  "stdout": "baseline-current: independent pure native derivation/check and complete stored full378/national359/original-source models match\nfuture-metadata-only: independent pure native derivation/check and complete stored full378/national359/original-source models match\n",
+  "stderr": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-bw-metadata-native-binding-independent-technical-audit-v6/independent-native-readonly-probe.mts:88\n  assert.equal(pageB.evidenceReview.status,'none')\n                                    ^\n\n\nTypeError: Cannot read properties of null (reading 'status')\n    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b007-bw-metadata-native-binding-independent-technical-audit-v6/independent-native-readonly-probe.mts:88:37)\n\nNode.js v20.20.2\n",
+  "cause": "Own probe expected evidenceReview.status none, but actual native full-model value is null under evidenceReviewPaths []. No production or author input change needed.",
+  "repair": "Require actual null and record legitimate evidenceProfile null.",
+  "activeWrites": 0
+}

@@ -1,0 +1,13 @@
+# Aromaten: eine unabhängige native Beschreibungsprüfung B, v6
+
+**KEEP** für genau `b8d3b453-d638-5518-aab0-d84ec2e8567c` auf dem versiegelten rohen v6-Eingang. Die neue DE-/EN-Beschreibung verlangt explizit die Begründung der Reaktivität anhand der Elektronendelokalisierung. Das ist eine verständliche, beobachtbare Begründungsbasis derselben atomaren Kompetenz. Bloßes Benennen oder Ablesen des Reaktionstyps genügt nicht. Es werden weder eine neue MO-Konstruktion noch universelle Detailmechanismen für sämtliche Aromaten vorgeschrieben.
+
+Das tatsächliche bestehende Drei-Seiten-PDF wurde auf physischer Zielseite 3 gesehen; die unveränderte echte HTML-Datei wurde mit exakt demselben `0cc19c21…`-PNG im lokalen Chromium angezeigt und ebenfalls gesehen. Neuer Text, unveränderter Alttext und externe Vor-/Nachbedingungsverweise stimmen; alle Bilder sind dekodiert, kein Überlauf oder unerwarteter Request. Das gute vorhandene Bild bleibt KEEP. Die nichtaromatische Areniumdarstellung ist ein Beitrag zum Schulmodell; sie behauptet nicht das Verschwinden jeder lokalen pi-Delokalisierung.
+
+Die ursprüngliche HE-PDF-Seite physisch/gedruckt 38 wurde gezielt gelesen: Q1.1 LK verknüpft Struktur/Reaktivität/Bindungsverhältnisse des Benzens mit dem Mesomeriemodell und führt elektrophile Erstsubstitution an. Die Erklärung wird somit konkret belegt. Kanonischer LK-Pfad und 57 unveränderte SourceAtlas-Zeugen ersetzen keine globale physische nationale Quellenfreigabe.
+
+Reproduktion mit vorhandenen unveränderten Helfern: vorbereiteter nativer Batch PASS1; nativer Record-/Run-/Batch-Validator und Kampagnenergebnis-Validator jeweils Exit 0. Gegen v5 ändern sich genau zwei Beschreibungsfelder/ein ganzes Goal/eine volle Seite. Alle 478 anderen ganzen Goals, 377 übrigen vollen Seiten, 14 übrigen ausgewählten Goal-/Seitenpayloads und 112 aktuellen geschützten ganzen Ziele sind exakt. Alle 48 geordneten Länder-Zielmengen, Quellenzeugen und PNG-Bytes bleiben gleich.
+
+Keine neuen Peer-A-Verdicts, Autoren-Finding-Responses oder P-Autorenmaterialien gelesen. Die anderen vier KEEP wurden fachlich nicht erneut gestartet. Historische Artefakte bleiben unverändert; Ergebnis ist ein neuer echter nativer Kandidatenrecord mit frischem Run, keine bloße Hashfreigabe.
+
+Keine aktiven Canon-/Registry-/QA-/Bild-/Ledger-/Mapping-/Runtimeänderungen, kein Git und kein vollständiger Build. Aktuelle P-Bindung, übrige Gates und Integration stehen separat aus. Nettozuwachs, neue aktive fachliche Abschlüsse und wiederhergestellte aktive Bindungen jeweils **0**. Menschliche Prüfung, Freigabe, Erprobung und tatsächliche Lernendenleistung bleiben getrennt.

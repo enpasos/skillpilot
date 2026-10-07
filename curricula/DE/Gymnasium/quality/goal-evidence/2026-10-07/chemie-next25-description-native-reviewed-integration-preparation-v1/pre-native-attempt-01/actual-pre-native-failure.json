@@ -1,0 +1,10 @@
+{
+  "role": "technical_synthesizer",
+  "actualExitCode": 1,
+  "stage": "physical result copy before any native validator",
+  "exception": "PermissionError: [Errno 13] Permission denied copying A records into physically isolated author round-a/results",
+  "actualCause": "copytree preserves frozen 0555 author directory permissions",
+  "correction": "chmod only physical scratch output directories/files after copytree; original author/reviewer immutable bytes and permissions remain untouched",
+  "productionValidatorInvocations": 0,
+  "activeWrites": 0
+}

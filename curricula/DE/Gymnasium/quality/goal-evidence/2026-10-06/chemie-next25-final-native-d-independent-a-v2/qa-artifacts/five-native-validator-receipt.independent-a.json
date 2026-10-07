@@ -1,0 +1,44 @@
+[
+  {
+    "name": "five-batch",
+    "argv": [
+      "app/node_modules/.bin/tsx",
+      "app/scripts/validateGoalDescriptionReviewCampaign.ts",
+      "--bundle",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next-coherent-current-gap-native-author-v2/native-d-five/bundle/manifest.json",
+      "--input",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next-coherent-current-gap-native-author-v2/native-d-five/round-a/description-review-input.json",
+      "--campaign",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next-coherent-current-gap-native-author-v2/native-d-five/round-a/description-review-campaign.json",
+      "--run",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next25-final-native-d-independent-a-v2/native-d-five/results/chemie-next-coherent-current-five-20261006-author-v2-first-pass-a.batch-001.run.json",
+      "--batch-input",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next-coherent-current-gap-native-author-v2/native-d-five/round-a/batches/chemie-next-coherent-current-five-20261006-author-v2-first-pass-a.batch-001.input.jsonl",
+      "--records",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next25-final-native-d-independent-a-v2/native-d-five/results/chemie-next-coherent-current-five-20261006-author-v2-first-pass-a.batch-001.records.jsonl"
+    ],
+    "exitCode": 0,
+    "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next25-final-native-d-independent-a-v2/qa-artifacts/five-batch.stdout.txt",
+    "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next25-final-native-d-independent-a-v2/qa-artifacts/five-batch.stderr.txt"
+  },
+  {
+    "name": "five-complete-campaign",
+    "argv": [
+      "app/node_modules/.bin/tsx",
+      "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+      "--bundle",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next-coherent-current-gap-native-author-v2/native-d-five/bundle/manifest.json",
+      "--input",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next-coherent-current-gap-native-author-v2/native-d-five/round-a/description-review-input.json",
+      "--campaign",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next-coherent-current-gap-native-author-v2/native-d-five/round-a/description-review-campaign.json",
+      "--batches-dir",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next-coherent-current-gap-native-author-v2/native-d-five/round-a/batches",
+      "--results-dir",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next25-final-native-d-independent-a-v2/native-d-five/results"
+    ],
+    "exitCode": 0,
+    "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next25-final-native-d-independent-a-v2/qa-artifacts/five-complete-campaign.stdout.txt",
+    "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next25-final-native-d-independent-a-v2/qa-artifacts/five-complete-campaign.stderr.txt"
+  }
+]

@@ -1,0 +1,33 @@
+#!/usr/bin/env python3
+"""Actual native dry-run/import only inside owned physical root; no active rebinding."""
+from pathlib import Path
+import datetime,hashlib,json,subprocess
+OUT=Path(__file__).resolve().parent;ROOT=OUT.parents[5];gid='c441d9e8-d9d9-5e55-a189-a37345541321';iso=OUT/'native-root'
+prepared_path=OUT/'current-c441-whole-goal-profile-page-context-original-assets-native-prepared.author.raw.json';raw=json.loads(prepared_path.read_text())
+def bind(p):
+    d=p.read_bytes();return {'path':str(p.relative_to(ROOT)),'sha256':hashlib.sha256(d).hexdigest(),'bytes':len(d)}
+asset=OUT/'c441-gasfoermige-ionen.corrected-original.png';prompt=OUT/'c441-one-word-typo.actual-generation.prompt.txt';before=json.loads((iso/'current-canonical.input.json').read_text());link=raw['wholeCurrentCanonicalGoal']['resourceLinks'][0]
+args=['node','scripts/import_goal_visualization.mjs',gid,str(asset),'--landscape=current-canonical.input.json','--subject=chemie','--lang=de','--provider=OpenAI / ChatGPT-Codex image generation','--review-status=pilot','--license=CC-BY-4.0','--prompt='+str(prompt),'--alt-text='+link['altText'],'--description='+link['description']]
+runs=[]
+for label,argv in [('dry-run',args+['--dry-run']),('inert-import',args)]:
+    start=datetime.datetime.now(datetime.timezone.utc).isoformat();r=subprocess.run(argv,cwd=iso,capture_output=True,text=True);finish=datetime.datetime.now(datetime.timezone.utc).isoformat();stdout=OUT/('native-'+label+'.actual.stdout.txt');stderr=OUT/('native-'+label+'.actual.stderr.txt');stdout.write_text(r.stdout);stderr.write_text(r.stderr);assert r.returncode==0
+    if label=='dry-run':assert 'No files were written.' in r.stdout
+    else:assert 'Imported goal visualization and updated canonical JSON.' in r.stdout
+    routing={}
+    for line in r.stdout.splitlines():
+        if ': ' in line and line.split(': ',1)[0] in ['Canonical image','Public image','Backend image','Canonical prompt','Canonical reconstruction prompt','JSON link URL']:
+            key,value=line.split(': ',1);routing[key]=value
+    assert len(routing)==6
+    runs.append({'operation':label,'argv':argv,'cwd':str(iso),'startedAt':start,'finishedAt':finish,'exitCode':r.returncode,'stdout':bind(stdout),'stderr':bind(stderr),'actualNativeRouting':routing})
+after=json.loads((iso/'current-canonical.input.json').read_text());assert before==after
+future=next(g for g in after['goals'] if g['id']==gid);assert future==raw['wholeCurrentCanonicalGoal']
+copies=[]
+for destination in ['curricula/DE/Gymnasium/visualizations/chemie/'+gid+'/'+gid+'.png','app/public/assets/goal-visualizations/chemie/'+gid+'/'+gid+'.png','backend/src/main/resources/static/assets/goal-visualizations/chemie/'+gid+'/'+gid+'.png']:
+    p=iso/destination;assert p.read_bytes()==asset.read_bytes();copies.append({'inertExactCopy':bind(p),'prospectiveActiveDestinationRootOnly':destination})
+guard=[]
+for previous in raw['externalCurrentInputsGuard']:
+    actual=bind(ROOT/previous['path']);assert actual==previous,'Actual input changed: '+previous['path'];guard.append(actual)
+assert (OUT/'current-c441-whole-positive-record.exact-original-line.jsonl').read_text()==next(l for l in (ROOT/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next25-reviewed-integration-preparation-root-v1/positive24.exact-independent-b.review.jsonl').read_text().splitlines(keepends=True) if json.loads(l)['goalId']==gid)
+obj={'role':'one bounded c441 spelling correction author candidate and inert native import; no independent V/D/P science','goalId':gid,'nativePreparedWholeCurrentInput':bind(prepared_path),'wholeCurrentCanonicalGoal':raw['wholeCurrentCanonicalGoal'],'wholeCurrentPositiveRecordExact':raw['wholeCurrentPositiveRecordExact'],'exactOriginalPositiveLine':raw['exactOriginalPositiveLine'],'wholeActualCurrentNativePageHistoricalForOldAsset':raw['wholeActualCurrentNativePage'],'directPrerequisiteWholeCurrentGoals':raw['directPrerequisiteWholeCurrentGoals'],'reversePrerequisiteWholeCurrentGoals':raw['reversePrerequisiteWholeCurrentGoals'],'directContainingWholeCurrentGoals':raw['directContainingWholeCurrentGoals'],'threeActiveOriginalCopiesAndExactOwnArchives':raw['threeActiveOriginalCopiesAndExactOwnArchives'],'selectedUnchangedGeneratorOriginal':bind(asset),'actualGeneratorMetadata':bind(OUT/'builtin-one-word-typo-edit.actual.metadata.json'),'actualGenerationPrompt':bind(prompt),'actualProvider':'OpenAI / ChatGPT-Codex image generation','actualTool':'ChatGPT/Codex builtin image generation','actualModelVersion':None,'modelVersionDisclosure':'not exposed; unknown','license':'CC-BY-4.0','boundedImageAltTextDeExactCurrent':link['altText'],'actualTypoBefore':'Gasuförmige Ionen:','actualCaptionAfter':'Gasförmige Ionen:','ownAuthorSightOriginalAndBothWidths':True,'actualDisplayWidths':[360,680],'actualDisplays':[bind(OUT/'author-displays'/('c441.'+str(w)+'.png')) for w in [360,680]],'actualDisplayReceipt':bind(OUT/'author-displays/actual-360-680-display.receipt.json'),'ownAuthorActualSightNoteDe':'Der neue Originaloutput und die 360/680-Darstellungen wurden gesehen. Gasförmige Ionen: ist korrekt; die übrigen sichtbaren Formeln, Ladungen, 2|8/2|8|8, Energiezufuhr/-freisetzung, Pfeilrichtungen, tieferer NaCl-Endzustand und ΔH<0 bleiben im Modell erhalten. Die ursprüngliche Informationsdichte und kleine Beschriftungsgröße bei 360 werden nicht durch eine neue pauschale Legibilitätsfreigabe umetikettiert. Keine Behauptung pixelidentischer anderer Regionen nach generativem Edit.','nativePrepareBeforeActualGenerationExit0':True,'actualBuiltinCalls':1,'nativeDryRunThenInertImport':runs,'inertSourcePublicBackendThreeExactCopies':copies,'whole479CanonicalObjectsExactAfterInertImport':True,'wholeCurrentGoalAndPositiveProfileAndBothWholeDEENCasesExact':True,'wholeCurrentContextInputsExact':True,'allExternalCurrentInputGuardsExactAfter':guard,'existingCurrentQARecordNotModified':True,'oldQAFlagsRemainBoundOnlyToOldPNG':True,'newVisualApprovalPending':True,'newCurrentDPageAndPInputRasterBindingPendingRootIndependentReview':True,'noHashRefreshAsScience':True,'activeWrites':False,'runtimeWrites':False,'activeCanonQAAssetRegistryChanges':0,'humanApproval':False,'humanTrial':False,'newStrictCompletion':0}
+(OUT/'one-whole-current-goal-profile-context-caption-original-raster-inert-native-routing.author.raw.json').write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps({'goalId':gid,'nativePrepareExit0':1,'builtinCalls':1,'nativeDryRunExit0':1,'inertImportExit0':1,'threeCandidateCopiesExact':True,'whole479ObjectsExact':True,'currentInputsExactAfter':len(guard),'activeWrites':False,'newStrictCompletion':0}))

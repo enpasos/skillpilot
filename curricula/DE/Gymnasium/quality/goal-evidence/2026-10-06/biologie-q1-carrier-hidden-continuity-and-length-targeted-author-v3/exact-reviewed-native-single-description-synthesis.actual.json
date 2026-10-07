@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-06T09:28:44.688Z",
+  "role": "actual unchanged native generic campaign/dual-round/synthesis/resolution validation on one independently reviewed corrected-image page",
+  "inputFreezePins": [
+    [
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-carrier-hidden-continuity-native-d-independent-a-v3/native-carrier-v5-d-p-independent-a.final.freeze.json",
+      "26007b024c81933f6b6b8d74a17638f09ad0223400639fcedf7bc4f543e3948f"
+    ],
+    [
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-carrier-hidden-continuity-native-d-independent-b-v3/carrier-v5.native-d-p-independent-b.final.freeze.json",
+      "f1ced12ba2126535fc6fddd0ba000f32175a5d072bb2de43b4d803a53d934620"
+    ]
+  ],
+  "exactReviewerResultCopies": [
+    {
+      "source": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-carrier-hidden-continuity-native-d-independent-a-v3/results/independent-a.batch-001.records.jsonl",
+      "target": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-carrier-hidden-continuity-and-length-targeted-author-v3/native-d-one/round-a/results/independent-a.batch-001.records.jsonl",
+      "sha256": "sha256:e03a9da83fb72864623616234040a3d6dd7954ef5c5971f220f966657cd33819"
+    },
+    {
+      "source": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-carrier-hidden-continuity-native-d-independent-a-v3/results/independent-a.batch-001.run.json",
+      "target": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-carrier-hidden-continuity-and-length-targeted-author-v3/native-d-one/round-a/results/independent-a.batch-001.run.json",
+      "sha256": "sha256:bebd81418f96b8a7168b82af7d6fc93c806f547b36a8d4bcf7a99686cd566db9"
+    },
+    {
+      "source": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-carrier-hidden-continuity-native-d-independent-b-v3/results/independent-b.batch-001.records.jsonl",
+      "target": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-carrier-hidden-continuity-and-length-targeted-author-v3/native-d-one/round-b/results/independent-b.batch-001.records.jsonl",
+      "sha256": "sha256:9601bcaf7dc58d6fa99fc452b6065579e9ce3ecd464942cb8bda2222d5cd29e7"
+    },
+    {
+      "source": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-carrier-hidden-continuity-native-d-independent-b-v3/results/independent-b.batch-001.run.json",
+      "target": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-carrier-hidden-continuity-and-length-targeted-author-v3/native-d-one/round-b/results/independent-b.batch-001.run.json",
+      "sha256": "sha256:fd03b6d8f173f89fb9dc2141128d4cb9c9d1d3c5f8bd0d463f4f94e8b2e0cdcd"
+    }
+  ],
+  "dualSummaryCounts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "nativeResolutionCount": 1,
+  "strictCurrentCandidateDCount": 1,
+  "authority": "ai_synthesis",
+  "humanApproval": false,
+  "humanTrial": false,
+  "activeWrites": false,
+  "strictNetGain": 0,
+  "checkedProductionHelpers": [
+    "validateGoalDescriptionReviewCampaignResults",
+    "validateGoalDescriptionReviewDualRound",
+    "validateGoalDescriptionRolloutSynthesisDecisionManifest",
+    "buildGoalDescriptionDualRoundResolution",
+    "validateGoalDescriptionDualRoundResolution"
+  ],
+  "orchestrationScope": "Reviewed single-goal campaigns retain their exact native batchSize1 and all byte bindings. Generic native validators support this size; the optional standalone prepare wrapper assumes batchSize20 and was not used or claimed as passed. No product checker or quality limit was changed."
+}

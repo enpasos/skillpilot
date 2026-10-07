@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-06T08:09:18.497Z",
+  "role": "actual unchanged native generic campaign/dual-round/synthesis/resolution validation on seven independently reviewed pages",
+  "inputFreezePins": [
+    [
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-final-native-review-inputs-author-v1/final-native-review-inputs.author-v1.freeze.json",
+      "7594c80e665828238463b965f12b18df845a3c17fbfe19dc17e1ed35a5247d70"
+    ],
+    [
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-final-native-d-independent-a-v1/independent-d-a.final.freeze.json",
+      "5a145212d6a28432d16f3e5a90e1d1ed954ec81d4a25b51d787c771ff31a805e"
+    ],
+    [
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-final-native-d-independent-b-v1/native-d-independent-b.final.freeze.json",
+      "cabe0e8086badbf29488f7c18184f8669f07d5cf67a7dfca9f6acebf8bf4aadf"
+    ]
+  ],
+  "exactReviewerResultCopies": [
+    {
+      "source": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-final-native-d-independent-a-v1/results/independent-a.batch-001.records.jsonl",
+      "target": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-candidate-v1/native-d-seven/round-a/results/independent-a.batch-001.records.jsonl",
+      "sha256": "sha256:29f7680a0a32f8e88321cced766cad63baffc3f3acec02f60a49acbe5978c106"
+    },
+    {
+      "source": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-final-native-d-independent-a-v1/results/independent-a.batch-001.run.json",
+      "target": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-candidate-v1/native-d-seven/round-a/results/independent-a.batch-001.run.json",
+      "sha256": "sha256:0d31b59996605c0c91b8b5c523b535ee82eef3ceb8c029389981f733ff965638"
+    },
+    {
+      "source": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-final-native-d-independent-b-v1/results/independent-b.batch-001.records.jsonl",
+      "target": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-candidate-v1/native-d-seven/round-b/results/independent-b.batch-001.records.jsonl",
+      "sha256": "sha256:b4016d0996cac903af56cb80ccdcaf70fe7bd2c3abf69af65dc8cc969f329bab"
+    },
+    {
+      "source": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-final-native-d-independent-b-v1/results/independent-b.batch-001.run.json",
+      "target": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-candidate-v1/native-d-seven/round-b/results/independent-b.batch-001.run.json",
+      "sha256": "sha256:df62d1fcec0e5911a929eaf7c93b890fa7cacedae40fe200ed8ad5634741e8ff"
+    }
+  ],
+  "dualSummaryCounts": {
+    "exactAgreement": 0,
+    "disagreement": 7,
+    "unavailable": 0,
+    "requiresSynthesis": 7
+  },
+  "nativeResolutionCount": 7,
+  "strictCurrentCandidateDCount": 7,
+  "authority": "ai_synthesis",
+  "humanApproval": false,
+  "humanTrial": false,
+  "activeWrites": false,
+  "strictNetGain": 0,
+  "checkedProductionHelpers": [
+    "validateGoalDescriptionReviewCampaignResults",
+    "validateGoalDescriptionReviewDualRound",
+    "validateGoalDescriptionRolloutSynthesisDecisionManifest",
+    "buildGoalDescriptionDualRoundResolution",
+    "validateGoalDescriptionDualRoundResolution"
+  ],
+  "orchestrationScope": "Reviewed seven-goal campaigns retain their exact original batchSize7 and all byte bindings. Generic native validators support this size; the optional standalone prepare wrapper assumes batchSize20 and was not used or claimed as passed. No product checker or quality limit was changed."
+}

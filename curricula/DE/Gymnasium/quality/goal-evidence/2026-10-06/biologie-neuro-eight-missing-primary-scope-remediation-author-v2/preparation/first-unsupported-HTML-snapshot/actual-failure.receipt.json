@@ -1,0 +1,9 @@
+{
+  "executedCommand": "app/node_modules/.bin/tsx .../probe-current390-native-restoration.author-v2.mts",
+  "terminalExitCode": 1,
+  "actualError": "Invalid source snapshot path: .../primary/BY13-EA.current-official.html",
+  "cause": "Production sourceDocumentSnapshots contract allows original input PDFs, not HTML snapshot rows. Exact official HTML bytes were seeded in the isolated shadow and can be directly hash-bound without this PDF snapshot shortcut.",
+  "correction": "Remove two HTML-only sourceDocumentSnapshots rows from own future config; retain actual document bytes and direct bindings. No active or production-function change.",
+  "firstRunOutputsAreIncompleteAndNotAccepted": true,
+  "activeWrites": false
+}

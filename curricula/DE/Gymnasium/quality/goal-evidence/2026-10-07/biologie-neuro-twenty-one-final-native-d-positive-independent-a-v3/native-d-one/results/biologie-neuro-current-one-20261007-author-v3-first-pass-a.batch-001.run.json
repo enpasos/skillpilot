@@ -1,0 +1,82 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "bio-neuro-current21-independent-a-one-20261007-v3",
+  "campaignId": "biologie-neuro-current-one-20261007-author-v3-a",
+  "roundId": "biologie-neuro-current-one-20261007-author-v3-first-pass-a",
+  "batchId": "biologie-neuro-current-one-20261007-author-v3-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:afc911058eaf5d9c93da1c85402cd8ee03ed23f04f46cbf02a150fb5a44bde68",
+  "bundleFingerprint": "sha256:01d7df7952649d701b28bc46b76d8572b13c44688ded5470104c44dc055a9e6e",
+  "bookDigest": "sha256:208256c010011c495363677b1b0293e954da5cd8944da37d60ae1d1ad0741885",
+  "provider": "OpenAI",
+  "model": "GPT-6/Codex (exact serving variant not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "biologie-neuro-current21-native-description-positive-independent-a-v3",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:730e89b15978754b4988f6affd438f3281656a892bee0b4393d045594e7319a0",
+  "independenceGroupId": "biologie-neuro-current-one-20261007-author-v3-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "c05e217f-33fc-5a11-ba75-1397fad3ae0a"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:e82077ecce92546e4aa093344a90cf38c329b263906565a61805ec71ba5cdac4"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:78b3fc158d47a62f246e82fd13e4b6b4e9cc1eb83331548ae70b69767d7866ee"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:2725eed06c83b30da58bd7558b07d789404a23069367858276692590a1b2373b"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:046a3b8aea84681827b4f25177020b89b0f03ca609a1d0f47eb8289ecc338cbb"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:3330f6ca5e7169ff986a38ecf343032ba56a22f1452b83ab9f56cbe17605fed0"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:e292dcf5cd4c88afc04634d25b0329e0428823b21d56108804c02fbcb934fbc4"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:19892fe28b37996e0749d68ff44e4279cdf2a0229f024e9df540ae8738ecab56"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:7bf61bd343d0cd8855da30b06d454a823a1f8998db68f88e65e2c9a38efe2d27"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:afc911058eaf5d9c93da1c85402cd8ee03ed23f04f46cbf02a150fb5a44bde68"
+    }
+  ],
+  "startedAt": "2026-10-06T23:03:15.078598+00:00",
+  "completedAt": "2026-10-06T23:13:33.556670+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:60459abfd68e50e04a37a108c44734e7deee9ff6146966da549c8acee4a005b6",
+  "toolchainVersion": "independent-native-D-A-current21-20261007-v3"
+}

@@ -1,0 +1,10 @@
+/home/enpasos/projects/skillpilot/app/scripts/positiveGoalEvidenceReview.ts:313
+    throw new Error(`Invalid positive goal-evidence review config: ${ajv.errorsText(validateConfig.errors)}`)
+          ^
+
+
+Error: Invalid positive goal-evidence review config: data/scope must have required property 'label'
+    at reviewPositiveGoalEvidenceConfig (/home/enpasos/projects/skillpilot/app/scripts/positiveGoalEvidenceReview.ts:313:11)
+    at main (/home/enpasos/projects/skillpilot/app/scripts/materializePositiveGoalEvidenceCandidates.ts:300:20)
+
+Node.js v20.20.2

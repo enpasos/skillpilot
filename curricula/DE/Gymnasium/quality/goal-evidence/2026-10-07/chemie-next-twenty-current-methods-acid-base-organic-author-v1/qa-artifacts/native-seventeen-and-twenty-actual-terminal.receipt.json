@@ -1,0 +1,90 @@
+{
+  "documentType": "Actual tool-observed targeted native terminal results; not independent D/P approval",
+  "recordedAtUTC": "2026-10-06T23:54:34.239321Z",
+  "checks": [
+    {
+      "label": "D20 prepare and current check",
+      "argv": "app/node_modules/.bin/tsx app/scripts/materializeGoalDescriptionRolloutBatch.ts check --config curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next-twenty-current-methods-acid-base-organic-author-v1/native-d-twenty.batch.config.json",
+      "observedExitCode": 0,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next-twenty-current-methods-acid-base-organic-author-v1/qa-artifacts/native-d-twenty-prepare-check.actual.stdout.txt",
+        "sha256": "3579dec45dfd6d9b52d7104461bc31f9be8ea9c1ef58765c8d308b31cb7ce1f8",
+        "bytes": 115
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next-twenty-current-methods-acid-base-organic-author-v1/qa-artifacts/native-d-twenty-prepare-check.actual.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "D17 prepare",
+      "argv": "app/node_modules/.bin/tsx app/scripts/materializeGoalDescriptionRolloutBatch.ts prepare --config curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next-twenty-current-methods-acid-base-organic-author-v1/native-d-seventeen.batch.config.json",
+      "observedExitCode": 0,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next-twenty-current-methods-acid-base-organic-author-v1/qa-artifacts/native-d-seventeen-prepare.actual.stdout.txt",
+        "sha256": "1881c1a959390cd359c66863f7643ad0a5864c0d7df354899663b6e1a253a6f4",
+        "bytes": 280
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next-twenty-current-methods-acid-base-organic-author-v1/qa-artifacts/native-d-seventeen-prepare.actual.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "D17 current check",
+      "argv": "app/node_modules/.bin/tsx app/scripts/materializeGoalDescriptionRolloutBatch.ts check --config curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next-twenty-current-methods-acid-base-organic-author-v1/native-d-seventeen.batch.config.json",
+      "observedExitCode": 0,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next-twenty-current-methods-acid-base-organic-author-v1/qa-artifacts/native-d-seventeen-check.actual.stdout.txt",
+        "sha256": "c115b58387c5b884f60758d08ac2d2ae48fa192fb8f1afa9171f03fcfab70036",
+        "bytes": 118
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next-twenty-current-methods-acid-base-organic-author-v1/qa-artifacts/native-d-seventeen-check.actual.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "P20 final candidate-set exact current native check",
+      "argv": "app/node_modules/.bin/tsx app/scripts/materializePositiveGoalEvidenceCandidates.ts --config curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next-twenty-current-methods-acid-base-organic-author-v1/positive-evidence.twenty.author-candidates.config.json --candidates curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next-twenty-current-methods-acid-base-organic-author-v1/positive-evidence.twenty.author-candidate-set.json",
+      "observedExitCode": 0,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next-twenty-current-methods-acid-base-organic-author-v1/qa-artifacts/native-positive-twenty-final-check.actual.stdout.txt",
+        "sha256": "814c9da23e80acb53bd653ba2665d4039f45008503ce8b4594c3c7ddbf5dfb43",
+        "bytes": 221
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next-twenty-current-methods-acid-base-organic-author-v1/qa-artifacts/native-positive-twenty-final-check.actual.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "P17 native current check",
+      "argv": "app/node_modules/.bin/tsx app/scripts/positiveGoalEvidenceReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next-twenty-current-methods-acid-base-organic-author-v1/positive-evidence.seventeen.author-candidates.config.json --mode=check",
+      "observedExitCode": 0,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next-twenty-current-methods-acid-base-organic-author-v1/qa-artifacts/native-positive-seventeen-check.actual.stdout.txt",
+        "sha256": "3037138fb2102f883c79b6aada51f1aa1269d30b60d50f198d530158144b7ffe",
+        "bytes": 307
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next-twenty-current-methods-acid-base-organic-author-v1/qa-artifacts/native-positive-seventeen-check.actual.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ],
+  "nativeD17Goals": 17,
+  "nativeD20Goals": 20,
+  "nativeP17Candidates": 17,
+  "nativeP20Candidates": 20,
+  "recordSchema17PASS": true,
+  "unchangedSeventeenWholeProfilesAndActualGoalInputFingerprintsComparedToTwenty": true,
+  "unresolvedThreeHolds": true,
+  "strictNetGain": 0,
+  "humanApproval": false
+}

@@ -1,0 +1,554 @@
+{
+  "schemaVersion": 1,
+  "v9OwnArtifactsExact": 8,
+  "v9ExternalBindingsExact": 61,
+  "historicalBindingDifferences": [
+    {
+      "historicalBinding": {
+        "path": "AGENTS.md",
+        "sha256": "08d0332f3395a594312557fadbbb4f01c29c5d33b80aa53b0e764b230805f384",
+        "bytes": 129355
+      },
+      "actualBinding": {
+        "path": "AGENTS.md",
+        "sha256": "b70ecef69785f31e6944f949fdbf5d1a139fdc78d85a2e0c5fc8c34b128e43ec",
+        "bytes": 129781
+      }
+    },
+    {
+      "historicalBinding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+        "sha256": "b3cb528491bde1905fb184f88211da40865cffa4bbfcf7219a978752bb67e300",
+        "bytes": 983399
+      },
+      "actualBinding": {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+        "sha256": "244d2889ddeeb69cbf97d0a320f3e38cf5444674f3bb17f3e46c0112ac6fbff1",
+        "bytes": 1006186
+      }
+    },
+    {
+      "historicalBinding": {
+        "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+        "sha256": "21303dff0ad4a2ffe389629535d6fd1d31c81cd817660d47b38e10c1b434afea",
+        "bytes": 152400
+      },
+      "actualBinding": {
+        "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+        "sha256": "4e99f7e34d9c033e2ca97e71d6271e73a1d119281e3d9325cc2d6e1bad99937a",
+        "bytes": 152702
+      }
+    },
+    {
+      "historicalBinding": {
+        "path": "docs/legal/ai-transparency-inventory.json",
+        "sha256": "76584581f80772b89a2fea21181f52ff67e837c10e4774a38dc226a78d699797",
+        "bytes": 33221
+      },
+      "actualBinding": {
+        "path": "docs/legal/ai-transparency-inventory.json",
+        "sha256": "8fe1e436714d7ec449c57fd2e06d29f53cfb144c8e29b06432f1438513d17756",
+        "bytes": 33268
+      }
+    },
+    {
+      "historicalBinding": {
+        "path": "docs/qa-ci/status/curriculum-quality-status.json",
+        "sha256": "fcc381c7c0fc9b18c78180f241c80aa87152b12931fa6111e7e2bda9e3d7b801",
+        "bytes": 2750953
+      },
+      "actualBinding": {
+        "path": "docs/qa-ci/status/curriculum-quality-status.json",
+        "sha256": "665772fd8b428131be3cf9beec5baea5d097e4bb86cac955ed116538b2c77562",
+        "bytes": 2751628
+      }
+    },
+    {
+      "historicalBinding": {
+        "path": "docs/qa-ci/status/curriculum-quality-status.md",
+        "sha256": "b65045dd35054b8b5e5f2ec72a01999274deed3279a79a47786c1c98e901b0f9",
+        "bytes": 65168
+      },
+      "actualBinding": {
+        "path": "docs/qa-ci/status/curriculum-quality-status.md",
+        "sha256": "b4f9f05e8267ed07d7a82f214f1704f3109c037b16c766e9ed63ce430d9bb023",
+        "bytes": 65168
+      }
+    }
+  ],
+  "currentPolicyDiffBasis": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-mv-heading-location-v8-independent-a-followup-v1/AGENTS-gemini-only-policy-diff.actual.txt",
+    "sha256": "40545f7aee47b4c0fb8574ec9334b20bfeef9ebf84c79d8ed621e3b11ba4c820",
+    "bytes": 1220
+  },
+  "policyAssessment": "Only already documented Gemini installer/download/unaccepted-image policy lines changed externally. Current AGENTS hash is bound. Historical v9 author hash retained; no blanket claim that its historical external bindings are current. Chemistry material/source/M7 requirements unchanged.",
+  "parallelExternalIntegrationAssessment": "Root explicitly confirmed its authorised integration of the seven Biology Q1 goals: Biology canonical, central config and transparency inventory plus regenerated quality-status reports change separately. Historical v9 bindings stay intact and actual current digests are recorded. This scoped chemistry material review makes no independent validation claim about that integration or equality of all19 global inputs.",
+  "rootConfirmedSeparateIntegrationReceipts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-candidate-v1/qa-artifacts/reviewed-seven-active-integration.stage-1.actual.json",
+      "sha256": "7a4abf70a16c9c68476fc53eeb41fd5bda62e5c4bc606856850774c3cde2c7bb",
+      "bytes": 35128
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-candidate-v1/qa-artifacts/reviewed-seven-source-status.stage-2.actual.json",
+      "sha256": "42645d6c6ace95bf7741eeba9029c873d98d00f8af22834163f3337e019abe5e",
+      "bytes": 2509
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-candidate-v1/qa-artifacts/reviewed-seven-st-course-review-status.stage-3.actual.json",
+      "sha256": "131a67cf4b458ea74edec727bb05008f59c962149fce8da8ccc5b525ca77df63",
+      "bytes": 1181
+    }
+  ],
+  "rootReportedSeparateCentralRun": {
+    "exitCode": 0,
+    "MathStrict": "807/807",
+    "PhysicsStrict": "478/478",
+    "ChemistryStrict": "112/378",
+    "BiologyStrict": "74/390",
+    "allSixSubjectsMachineValidationPassed": true,
+    "reportedM7Blockers": 0,
+    "thisReviewerDidNotReexecuteFullRun": true
+  },
+  "currentInputBindings": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "b70ecef69785f31e6944f949fdbf5d1a139fdc78d85a2e0c5fc8c34b128e43ec",
+      "bytes": 129781
+    },
+    {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "1937ee365f8d4a69dc9962feec0858ef3ef63fb2eb165a809ae46e1046e588f0",
+      "bytes": 55340
+    },
+    {
+      "path": "app/scripts/config/curriculum-maturity-floor-policy.json",
+      "sha256": "bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json",
+      "sha256": "665f82867dc9019b7bdb369903b9ebad3ac726b1e8ab2bc08476606032230b2a",
+      "bytes": 16164
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/source-projection.receipt.json",
+      "sha256": "f2b2b514c91db2b56acb77c57a2043d8bccdbeb6996aeecfedb79624ef708d32",
+      "bytes": 7422458
+    },
+    {
+      "path": "app/scripts/sourceCoverageAndApplicabilityRegression.test.ts",
+      "sha256": "36b8ea3f4f17dc29e30abf95255b8c5b45a2117fd5a22dead9d23bd575143864",
+      "bytes": 9288
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "244d2889ddeeb69cbf97d0a320f3e38cf5444674f3bb17f3e46c0112ac6fbff1",
+      "bytes": 1006186
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "764c11d951d28be38709d8b01b5eb6d4b3be71e87d9daf5ea4d1dc46f67529a0",
+      "bytes": 1419221
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "76047cec422c555aacd1e04bff597c4f8a70d8ffed5f214ed7412c828bc34898",
+      "bytes": 3714635
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "ad764d083e390ab60f808ecbffb363ac914026894e82c09c977425311ec7ea44",
+      "bytes": 2511173
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-baseline.json",
+      "sha256": "27416ff078503ffd5b33084a78226c2a83ab5534519bfcf2b74323149339a817",
+      "bytes": 44499
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "4e99f7e34d9c033e2ca97e71d6271e73a1d119281e3d9325cc2d6e1bad99937a",
+      "bytes": 152702
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+      "sha256": "d16aa527265d69c200be7ebd7e7f664a9d6b273af4f8fded64c43b286b5e0f54",
+      "bytes": 153884
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/in-flight-work-ledger.json",
+      "sha256": "e5673e764730268310ebfe100c0963ae2487ce0c8b9bc4509c8bd1597c267874",
+      "bytes": 1743
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b008-nine-source-operator-structural-current-author-candidate-v3/all-national-original-nine-source-obligations.actual.json",
+      "sha256": "a51f97421266fbf2355b386c0e24e65d84b94da9aa51fa1b3429da78d89c4951",
+      "bytes": 13816289
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b008-nine-source-operator-structural-current-author-candidate-v3/primary-inputs/actual-primary-pdf-pages/ni-i-physical-page-054.txt",
+      "sha256": "b43f1cf0ec63fd3cdb3699a329787a26ff6dcc426e1487517af76ce19bf91e4b",
+      "bytes": 1079
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b008-nine-source-operator-structural-current-author-candidate-v3/primary-inputs/actual-primary-pdf-pages/ni-i-physical-page-060.txt",
+      "sha256": "ee04ae7753c8dfaa4f9a11a26865d60fce9492897beefe6212f819f4bd9e3b0b",
+      "bytes": 1568
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b008-nine-source-operator-structural-current-author-candidate-v3/primary-inputs/by11.actual-main.txt",
+      "sha256": "71f0a0d1a96ec179ebb3eeaa3e94f790f5779b010dc018174fe4b89e3241a7f8",
+      "bytes": 22419
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b008-nine-source-operator-structural-current-author-candidate-v3/primary-inputs/by12-ga.actual-main.txt",
+      "sha256": "af063034aff131dae50254312ed27ef20b0cb9c955603e28bea47f92ee7e1432",
+      "bytes": 32151
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-mv-heading-location-v8-independent-a-followup-v1/AGENTS-gemini-only-policy-diff.actual.txt",
+      "sha256": "40545f7aee47b4c0fb8574ec9334b20bfeef9ebf84c79d8ed621e3b11ba4c820",
+      "bytes": 1220
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-candidate-v1/qa-artifacts/reviewed-seven-active-integration.stage-1.actual.json",
+      "sha256": "7a4abf70a16c9c68476fc53eeb41fd5bda62e5c4bc606856850774c3cde2c7bb",
+      "bytes": 35128
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-candidate-v1/qa-artifacts/reviewed-seven-source-status.stage-2.actual.json",
+      "sha256": "42645d6c6ace95bf7741eeba9029c873d98d00f8af22834163f3337e019abe5e",
+      "bytes": 2509
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-candidate-v1/qa-artifacts/reviewed-seven-st-course-review-status.stage-3.actual.json",
+      "sha256": "131a67cf4b458ea74edec727bb05008f59c962149fce8da8ccc5b525ca77df63",
+      "bytes": 1181
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-colour-calibration-domain-targeted-author-v10/README.md",
+      "sha256": "aabac59c9b1fdccb5344bf81508574711b2de400c653c25feeb26f5b16a919a6",
+      "bytes": 1008
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-colour-calibration-domain-targeted-author-v10/author-calibration-domain-v10.final.freeze.json",
+      "sha256": "4d87c6e7ab2ff360979f2ae410ae970258353b23f1506c69c0554e583e1ac347",
+      "bytes": 3674
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-colour-calibration-domain-targeted-author-v10/fifty-two-cases.de-en.author-candidate.json",
+      "sha256": "e06d93a5098cb765b50d174412a0692a3d966f774354acb37d653a3223df5bfb",
+      "bytes": 316441
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-colour-calibration-domain-targeted-author-v10/prepare-targeted-transfer-correction.py",
+      "sha256": "1d7dcdb8106e6aaecb82f9df0362fe4b33c5c2d32e560bd8f124eedbe8754bc0",
+      "bytes": 5389
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-colour-calibration-domain-targeted-author-v10/two-transfer-field-deltas.author.json",
+      "sha256": "5622d57fc80a968aaad625d8afeceb1100fd5e79c187541cc34fda9d4a19c847",
+      "bytes": 5292
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-fifty-two-materials-v8-independent-a-v1/README.md",
+      "sha256": "c8009267d4106d1478bc17a9ca7ca4b577355278d5223174047e93e5fecfde34",
+      "bytes": 3803
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-fifty-two-materials-v8-independent-a-v1/actual-input-byte-bindings-and-preservation.json",
+      "sha256": "1e6f646efeb3dc3fcd0e1244e2969a51d52d6e968303d622b1d97c22970728a0",
+      "bytes": 26026
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-fifty-two-materials-v8-independent-a-v1/fifty-two-actual-case-scientific-decisions.independent-a.json",
+      "sha256": "a2f294e541600ee3614c69c2bdcf1044c86506ddac7fd6641b9f31f030873957",
+      "bytes": 138407
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-fifty-two-materials-v8-independent-a-v1/independent-a.v8-materials.complete.final.freeze.json",
+      "sha256": "ba866739b7ec4c121bfc81d633946b97e44a91d49f9151ed8f713d7e0064e325",
+      "bytes": 2886
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-fifty-two-materials-v8-independent-a-v1/independent-calculations-and-primary-fact-checks.actual.json",
+      "sha256": "e22cfb88f755aff95197fa9ce7c5c75851c771f76a9b3d59c2933b772d559355",
+      "bytes": 22393
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-fifty-two-materials-v8-independent-a-v1/precise-unresolved-findings-and-downstream-gates.json",
+      "sha256": "6a2029412097476899563d5d348c12785a44d6fa1f53beb2fb4c8c1a2c326bec",
+      "bytes": 19689
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-fifty-two-materials-v8-independent-a-v1/twenty-six-actual-profile-operator-context-decisions.independent-a.json",
+      "sha256": "d9cd0d9e3e944412bc63922dbc87000a8217289e3523f89e01cadf377dd0c27c",
+      "bytes": 41041
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-fifty-two-materials-v8-independent-b-v1/README.md",
+      "sha256": "6a60f83f6a3b6cb90134f1f7f709d248741b933f4c174cab9f31587bd03af3b6",
+      "bytes": 5131
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-fifty-two-materials-v8-independent-b-v1/actual-input-bindings-and-consistency.json",
+      "sha256": "d1a16dd22436efcc2729dbe75814e60351fdedf139e4228d4b12dbf64129d2f5",
+      "bytes": 13903
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-fifty-two-materials-v8-independent-b-v1/actual-primary-access-and-scope-boundaries.json",
+      "sha256": "a2f5515959bfc497040df6ec2ddc2747f77a5f57d66f4d0369266f33c6ec0ffd",
+      "bytes": 5246
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-fifty-two-materials-v8-independent-b-v1/check-material-inputs-and-recompute.py",
+      "sha256": "f49307444ca5b06d3591dcb570e2255f9e63af1c7b7478d1c3acf0cae8244c43",
+      "bytes": 12098
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-fifty-two-materials-v8-independent-b-v1/fifty-two-case-scientific-verdicts.actual.json",
+      "sha256": "03930571b41bbb51d94f0c53605ccff16bcc6d7d308fcbe95e82c7865ff9c8ef",
+      "bytes": 70840
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-fifty-two-materials-v8-independent-b-v1/independent-b-v8-materials.final.freeze.json",
+      "sha256": "fb954d56b2f1b0d187843e435b92c72ca8783d4e8f291783974a0a4ea919154d",
+      "bytes": 4212
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-fifty-two-materials-v8-independent-b-v1/independent-calculations.actual.json",
+      "sha256": "4a1f7c28a4c90cc29bdf86b518c78ce48b4b830792b182f4d98a260bd8df22b6",
+      "bytes": 5830
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-fifty-two-materials-v8-independent-b-v1/literal-material-scientific-findings.actual.json",
+      "sha256": "83aec1e002f1b67dc9537a77bf057b5b5b4abeb00d5da0f4a523877329afb91b",
+      "bytes": 13751
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-fifty-two-materials-v8-independent-b-v1/twenty-six-profile-scientific-and-route-verdicts.actual.json",
+      "sha256": "e813e1a3df78b31aaa2d857ed53243a8aae2e47c14620868c32556c024bce5b1",
+      "bytes": 46866
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-four-products-v7-independent-a-followup-v1/same-independent-a.v7-followup.complete.final.freeze.json",
+      "sha256": "6fee139b31e178283e52d98fe94ee8ff5e3d38826fff735690129f6a188837fd",
+      "bytes": 2125
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-four-products-v7-independent-b-followup-v1/independent-b-v7-followup.final.freeze.json",
+      "sha256": "af8895e3abb7781fd4131f29fc623711a6675199024bb3d42d753448fb634e73",
+      "bytes": 2198
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-nine-twenty-six-operator-and-prerequisite-author-v6/actual-K11-primary-line-reference.correction.json",
+      "sha256": "54e65cd892410e381f395d077ab4bacfaff365daecbb98c2006cee2fcd4d5217",
+      "bytes": 739
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-nine-twenty-six-operator-and-prerequisite-author-v6/actual-current-inputs-and-source-controls.json",
+      "sha256": "8db60340c5310b765e409f318d0a0514c7daa75c09ed3b588244f1dd703a6b85",
+      "bytes": 6428
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-targeted-material-corrections-author-v9/README.md",
+      "sha256": "d3fb5120aa0f41f9b1c385a03af80d1b6c198da30eaadb287965bdfb0dd71f4b",
+      "bytes": 5714
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-targeted-material-corrections-author-v9/actual-profile-to-v9-material-review-routing.json",
+      "sha256": "cf773ac7a30a4766ab97b9ff3e621973cd9b878f20c4a4b943ecb8e430432d6a",
+      "bytes": 17025
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-targeted-material-corrections-author-v9/actual-targeted-author-checks-and-calculations.json",
+      "sha256": "9ff98d30b294f4396cc144573c04ab4f2212346155419be3a0015461cb6cc284",
+      "bytes": 6861
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-targeted-material-corrections-author-v9/author-targeted-materials-v9.final.freeze.json",
+      "sha256": "1f345647b538dec5d88ac575643dce1754aee4375a1f0641c48a433a604e941a",
+      "bytes": 20691
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-targeted-material-corrections-author-v9/check-targeted-inputs-and-materials.py",
+      "sha256": "d8712d6ed516180293f62329fdc69b3c0f375dd793cebb93ecdfc6fb204e3c66",
+      "bytes": 10468
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-targeted-material-corrections-author-v9/fifty-two-cases.de-en.author-candidate.json",
+      "sha256": "02df2de06850f30f6e57e6b6aeedb0565cf136b70aded857b9d01d6c958c2660",
+      "bytes": 315597
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-targeted-material-corrections-author-v9/literal-field-delta-and-finding-response.author.json",
+      "sha256": "cdeacaad1d607a3b7c5c4a90621de804e4a2d60c6a9462b5394d62c361fd630d",
+      "bytes": 99608
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-targeted-material-corrections-author-v9/materialize-targeted-corrections.py",
+      "sha256": "409cb92763ea60e9695fc3ed45c535d408680df78b474f2c81fce92c2b5d162f",
+      "bytes": 36926
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-targeted-material-corrections-author-v9/targeted-primary-facts-and-author-decisions.json",
+      "sha256": "2724fd42465a281f5434e19562edc839259a3f31f94eeb91fe5be093e1b2486f",
+      "bytes": 7796
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-literal-operator-prerequisite-author-v7/effective-source-input-controls.json",
+      "sha256": "2791ef595c91a48fd86c603838475d7a9ab3221a0494a8bd115e33c60ba1b9ab",
+      "bytes": 1214
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-literal-operator-prerequisite-author-v7/four-targeted-prototypes.author-v7.final.freeze.json",
+      "sha256": "fba66db68a64a993512575fe00caf97bd56daa414a5b25be8b699a343b350667",
+      "bytes": 1765
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-literal-operator-prerequisite-author-v7/twenty-six-atomic-boundaries.de-en.author-proposal.json",
+      "sha256": "f08543fd0a14a00f9729148106e1c5eb10dd074f6cf1cc429ad7aaec660b81b2",
+      "bytes": 61122
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-operator-v6-independent-b-v1/independent-b.final.freeze.json",
+      "sha256": "5cbc5c8b6403f221c8b469dfd8533f64f4979168c9dd765e6a8d7a72d95563b5",
+      "bytes": 2255
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/README.md",
+      "sha256": "3f3927620e5dda5752c73f454784bb78bf11bda084dc37b42772b5418d97b8cb",
+      "bytes": 3612
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/actual-author-consistency-and-calculations.json",
+      "sha256": "7e60ddd69fc8304b41eb08f95ebde0f5aa038decae83187fd58c0a9493852bd6",
+      "bytes": 9198
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/actual-primary-reading-and-source-boundary-receipt.json",
+      "sha256": "af53af196d1cefde1d9a8aa274378cd45d80395f6acb37cfde1c2deb5f0debfe",
+      "bytes": 3832
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/analogue-model-card-kit.de-en.md",
+      "sha256": "d20a81d1fece8d39822f2582f6707e7830bb022c19b98e494ebaf1fde7c0af8f",
+      "bytes": 1679
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/author-materials-v8.final.freeze.json",
+      "sha256": "a86b11b5de0ea0e858468bc37dccdbdda06f0d4c2461dc10e9cd8eea57ac97e1",
+      "bytes": 8300
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/fifty-two-cases.de-en.author-candidate.json",
+      "sha256": "376c8620ba5f38846953fccff83bf255f5df6feedb39b84fc5764f45a03f740a",
+      "bytes": 293618
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/materialize-author-materials.py",
+      "sha256": "9db5d18e582c6bee4e95f3a40da2105185e881e033e49df1b03b2c0db44fddbc",
+      "bytes": 197785
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/research-dossier/analog-a-acid-model.md",
+      "sha256": "c3bd4c5e6f33256e818b65abc90cda6ee3512269d9b79561ad0433928e059026",
+      "bytes": 1385
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/research-dossier/analog-d-process-model.md",
+      "sha256": "6d02684bf6b982249d2021f3e2ac87b274069b18ac34bd5420d47dbfd423a4c8",
+      "bytes": 1201
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/research-dossier/digital-b-solubility.tsv",
+      "sha256": "016f3c049b03555e862ec6f56b0e4b2ca78a97bd095aef2c011552d1084ec14a",
+      "bytes": 309
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/research-dossier/digital-c-advertisement.md",
+      "sha256": "c2cfe4cc0af3d5d3e6a01ed4a08b1fdef158c9dfca1cbeef50fa001fa0edb7f2",
+      "bytes": 485
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/research-dossier/digital-e-process.tsv",
+      "sha256": "6bda53870fc7f589f9e6afa4d12cb0066b8ef2de1e23907a94fcedbd27cbbd50",
+      "bytes": 266
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/research-dossier/digital-f-policy.md",
+      "sha256": "081b761ea69cc572da60c3dc9459837b4926bdd48dff33927fac8f8f573224f9",
+      "bytes": 427
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/twenty-six-positive-profiles.de-en.author-candidate.json",
+      "sha256": "a841c35a21d8bc6ec7c59640c14dcd4a5f95d067c82289ae18ece4de244dab5b",
+      "bytes": 81032
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/final-current-machine-checks-and-inputs.actual.json",
+      "sha256": "d08e6aa4c47ea7103ab3b8d1860ba6da1935606653f2222efe17e3a71b1e6d05",
+      "bytes": 22764
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-active-integration-verification-v1/final-current-strict-progress-and-preservation.actual.json",
+      "sha256": "40a28b376f4512ed77d3c451fdd563a56fdc186b2478b4caea771efd39b00f3b",
+      "bytes": 9360
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json",
+      "sha256": "9eda9bf03bfc2139e999c469fe3be7532ed3abab80673b6313483eb40d0c0e55",
+      "bytes": 877175
+    },
+    {
+      "path": "docs/concept/skill-graph/atomic-goal-visualizations.md",
+      "sha256": "3acc382f20acf3fcbfe668ecafcf98f4be23aee00a372b169b2d1c392c7a4e7e",
+      "bytes": 30177
+    },
+    {
+      "path": "docs/legal/ai-transparency-inventory.json",
+      "sha256": "8fe1e436714d7ec449c57fd2e06d29f53cfb144c8e29b06432f1438513d17756",
+      "bytes": 33268
+    },
+    {
+      "path": "docs/qa-ci/chemie-biologie-m7-chemistry-53-current-bindings-continuation-2026-10-06.md",
+      "sha256": "a8ecc7cc6bf57a1cfb3753c74592d9ae283ecde49bbc4fad83c2342fc2c4d570",
+      "bytes": 10216
+    },
+    {
+      "path": "docs/qa-ci/chemie-biologie-m7-commit-checkpoint-2026-10-06.md",
+      "sha256": "5b89063c4022c89d9f5407e0f2132b93d4254452e82bf5c1755703ed29f7263f",
+      "bytes": 11022
+    },
+    {
+      "path": "docs/qa-ci/chemie-biologie-m7-goaltext-2026-09-30.md",
+      "sha256": "88108916ac5542dcc43399bb579b984fc11ec6de558a3ba97d46b6164dd483c2",
+      "bytes": 5076
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.json",
+      "sha256": "665772fd8b428131be3cf9beec5baea5d097e4bb86cac955ed116538b2c77562",
+      "bytes": 2751628
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.md",
+      "sha256": "b4f9f05e8267ed07d7a82f214f1704f3109c037b16c766e9ed63ce430d9bb023",
+      "bytes": 65168
+    },
+    {
+      "path": "docs/qa-ci/status/memory-card-review-canonical-chemistry-current378.md",
+      "sha256": "69e72f9510d5e25ec7d1efa437a74bf28d958ccf5a869c12615946148d06e147",
+      "bytes": 46475
+    }
+  ],
+  "all52CaseIDsStatusesAndScopeContractsExact": true,
+  "allCriterionKeysAndCountsExact": 173,
+  "allProtocolKindsAndUnperformedStatusRetained": 14,
+  "actualFuturePracticalProtocolCount": 6,
+  "twoFieldV10DeltaExact": true,
+  "noCurrentIndependentV9V10PeerResultRead": true,
+  "original1646SourceObligations": "Unchanged bound candidate/source inputs retained; targeted material review grants no national coverage or source clearance.",
+  "nativePProfilesOrUUIDAssignmentsCreated": false,
+  "activeWrites": false
+}

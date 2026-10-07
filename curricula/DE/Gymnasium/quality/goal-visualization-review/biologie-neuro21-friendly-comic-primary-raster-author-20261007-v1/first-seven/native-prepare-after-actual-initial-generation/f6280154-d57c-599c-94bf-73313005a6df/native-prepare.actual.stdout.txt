@@ -1,0 +1,11 @@
+
+> skillpilot@0.0.0 visualization:prepare
+> node ../scripts/prepare_goal_visualization.mjs f6280154-d57c-599c-94bf-73313005a6df --landscape=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-twenty-one-current-continuation-author-v3/stage-02-current-twenty-one-native/current472-neuro21.complete-author-candidate.json --subject=biologie --lang=de --provider=OpenAI / ChatGPT-Codex image generation --review-status=pilot
+
+Prepared prompt package for: Stoffeinwirkung auf chemische Synapsen ableiten
+SkillPilot ID: f6280154-d57c-599c-94bf-73313005a6df
+Prompt: tmp/goal-visualizations/f6280154-d57c-599c-94bf-73313005a6df/nano-banana-prompt.de.md
+Metadata: tmp/goal-visualizations/f6280154-d57c-599c-94bf-73313005a6df/metadata.json
+
+After generating and downloading the image, import it with:
+npm --prefix app run visualization:import -- f6280154-d57c-599c-94bf-73313005a6df "<downloaded-image-path>"

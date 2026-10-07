@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/biology_q1_seven_visuals_independent_v",
+  "reviewerRole": "independent machine material reviewer A for Chemistry v9",
+  "authorOfChemistryV9": false,
+  "reviewedAtUTC": "2026-10-06T08:16:31.212325+00:00",
+  "nativeAApproval": false,
+  "nativePositiveUnderstandingEvidenceV2Approval": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "learnerPerformanceRecorded": false,
+  "strictCompletionsAdded": 0,
+  "restoredActiveBindings": 0,
+  "activeWrites": 0,
+  "artifactKind": "actual-targeted-primary-reading-and-independent-calculation-receipt",
+  "primarySourcesActuallyRead": [
+    {
+      "sourceKey": "HACH-1990",
+      "url": "https://www.hach.com/p-conductivity-standard-solution-1990-scm-nacl-100-ml/210542",
+      "primaryPublisher": "Hach",
+      "actualAccess": "Successful fresh official product-page read on 2026-10-06",
+      "locator": "Technical attributes, NaCl concentration / conductivity / reference temperature / tolerance",
+      "supportedFact": "A 1000 mg/L NaCl solution standard is specified as 1990 microS/cm, tolerance plus or minus 20 microS/cm, at 25 C.",
+      "limit": "This verifies the labelled standard and scale anchor. It does not certify the synthetic sample series, actual device accuracy, batch validity or a performed check."
+    },
+    {
+      "sourceKey": "NIST-NACL-ENTHALPY",
+      "url": "https://srd.nist.gov/jpcrdreprint/1.555709.pdf",
+      "primaryPublisher": "NIST SRD / Pitzer, Peiper and Busey, Journal of Physical and Chemical Reference Data 13 (1984)",
+      "actualAccess": "Successful fresh official 103-page primary-paper read on 2026-10-06",
+      "locator": "Table A-11, PDF physical page 66 (zero-based page 65), row 25.0 C, first pressure column 1 bar; definition of standard enthalpy of solution earlier in paper",
+      "supportedFact": "The dimensionless standard enthalpy of solution divided by RT is positive 1.566 at 25 C and 1 bar; the standard-state quantity concerns the dilute/infinite-dilution limit.",
+      "ownInference": "1.566 times R times 298.15 K gives approximately positive 3.88 kJ/mol. Heat uptake and possible slight cooling near these dilute ambient conditions are consistent with this sign.",
+      "limit": "No exact temperature drop, all-concentration statement or all-temperature statement follows."
+    },
+    {
+      "sourceKey": "BRAND-USP-VOLUMETRY",
+      "url": "https://shop.brand.de/media/import/1/27/32406/42485/42649/49101/USP_Volumetric_instruments_EN.pdf",
+      "primaryPublisher": "BRAND",
+      "actualAccess": "Successful fresh official four-page brochure read on 2026-10-06",
+      "locator": "PDF physical page 4, Class AS USP bulb-pipette and Class A USP volumetric-flask tables",
+      "supportedFact": "The tables specify error limits of plus or minus 0.02 mL for a 10 mL bulb pipette and a 20 mL USP volumetric flask.",
+      "limit": "The selected USP specifications do not establish the same limit for every generic Class A 20 mL flask, nor the presence or calibration of actual kit instruments. The candidate correctly requires certified or documented equivalent apparatus."
+    },
+    {
+      "sourceKey": "THERMO-PH-PROCEDURE",
+      "url": "https://documents.thermofisher.com/TFS-Assets/CMD/Product-Bulletins/TN-ph-calibration-procedure-for-optimal-measurement-precision-T-PHCAL-EN.pdf",
+      "primaryPublisher": "Thermo Fisher Scientific",
+      "actualAccess": "Successful fresh official four-page technical-note read on 2026-10-06",
+      "locator": "Pages 1-2 calibration preparation, separate beakers, reference thermometer/ATC, calibration and verification; page 3 buffer temperature table; page 4 matched sample temperature",
+      "supportedFact": "The procedure provides pH 4.01, 7.00 and 10.01 buffers at the reference temperature, temperature measurement or ATC, clean separate rinse/calibration vessels, calibration followed by verification and recorded actual temperature.",
+      "limit": "Buffer labels are not already observed sample pH. Equal sample temperatures and the actual manual-dependent calibration remain execution prerequisites."
+    },
+    {
+      "sourceKey": "SIGMA-PHENOLPHTHALEIN-SOLUTION",
+      "url": "https://www.sigmaaldrich.com/US/en/product/mm/107227",
+      "primaryPublisher": "Merck / Sigma-Aldrich",
+      "actualAccess": "Successful fresh official product-page read on 2026-10-06",
+      "locator": "Product identity and specified transition range",
+      "supportedFact": "The named prepared solution is 1 percent phenolphthalein in ethanol, with indicated transition interval pH 8.2 to 9.8.",
+      "limit": "This identity/range check is not local authorization to use the chemical, and does not alone validate endpoint error for every weak-acid sample."
+    },
+    {
+      "sourceKey": "SIGMA-PHENOLPHTHALEIN-COLOUR",
+      "url": "https://www.sigmaaldrich.com/KI/en/product/sial/105945",
+      "primaryPublisher": "Merck / Sigma-Aldrich",
+      "actualAccess": "Successful fresh official product-page read on 2026-10-06",
+      "locator": "Visual transition interval and description of acid/base colour",
+      "supportedFact": "The ordinary transition proceeds from colourless to red/pink in the stated mildly alkaline region.",
+      "limit": "The independent colour reference does not mean powder is supplied in the candidate. The candidate explicitly supplies prepared solution and requires the local protocol."
+    },
+    {
+      "sourceKey": "SIGMA-METHYL-ORANGE",
+      "url": "https://www.sigmaaldrich.com/US/en/product/mm/101323",
+      "primaryPublisher": "Merck / Sigma-Aldrich",
+      "actualAccess": "Successful fresh official product-page read on 2026-10-06",
+      "locator": "Product identity / transition interval and colour direction",
+      "supportedFact": "The named 0.1 percent methyl-orange solution is specified for pH 3.1 to 4.4 with the red to yellow-orange transition.",
+      "limit": "Its acidic interval does not locate an alkaline weak-acid equivalence point; the measured curve and actual endpoint bias remain necessary."
+    }
+  ],
+  "independentCalculations": {
+    "NaClStandardEnthalpy_kJ_mol_at25C1barDiluteStandardState": 3.882046708285792,
+    "conductivityInitialGap_uS_cm": 500,
+    "conductivityMatchedGap_uS_cm": 2,
+    "statedRepeatScatter_uS_cm": 3,
+    "matchedGapWithinApproximateRepeatScatter": true,
+    "effectiveRelativeTemperatureSlopePerC_fromSyntheticPair": 0.01844444444444444,
+    "titrationReferenceConcentrations_mol_L": [
+      0.008,
+      0.016
+    ],
+    "nominalDilutionFactor": 2.0,
+    "volumeRatioErrorLimitBound_notStatisticalUncertainty": [
+      1.9940119760479043,
+      2.006012024048096
+    ],
+    "standardToleranceInterval_uS_cm": [
+      1970,
+      2010
+    ],
+    "lowRangeCeiling_uS_cm": 2000,
+    "standardUpperBoundRequiresAvailableHigherRange": true,
+    "case9HighestValidatedAbsorbance": 0.49,
+    "case9ConditionalHalfSignalArithmetic_notValidatedPrediction": 0.41000000000000003
+  },
+  "case9DomainFindingIsLogicalInferenceFromSuppliedPremises": true,
+  "manufacturerReferencesDoNotCertifyCandidateApparatusOrExecution": true,
+  "unchangedOtherMaterialScienceNotReopened": true
+}

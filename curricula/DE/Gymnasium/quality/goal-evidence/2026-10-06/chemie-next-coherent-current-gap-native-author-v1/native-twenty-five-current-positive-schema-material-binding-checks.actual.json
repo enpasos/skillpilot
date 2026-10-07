@@ -1,0 +1,853 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-06T21:00:02.187Z",
+  "role": "AUTHOR actual production materializer/schema/semantics/resource-binding checks; not independent P approval",
+  "nativeDStage": "PENDING_MATERIALIZATION_20_PLUS_5",
+  "nativeHelpers": [
+    {
+      "path": "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+      "sha256": "sha256:ae02d37a78fbdd02fbecff6d61c47e86f775c47aeacc6a85367a10c1d2c9cec7",
+      "bytes": 11856
+    },
+    {
+      "path": "app/scripts/positiveGoalEvidenceProfileModel.ts",
+      "sha256": "sha256:33d3005224e75527fab24fd625d15908716a8e028870625a9a002d39820114a6",
+      "bytes": 8448
+    },
+    {
+      "path": "app/scripts/positiveGoalEvidenceReview.ts",
+      "sha256": "sha256:179f602f639479b683c5477462c664dd930a0055960eb6320f3eb33c6d8d9ff6",
+      "bytes": 18781
+    }
+  ],
+  "nativeSchema": {
+    "path": "contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "sha256": "sha256:331d50bf11f99e3de56cf4356034ebbc37fe5b6d47d28d1edd167da57915c944",
+    "bytes": 8707
+  },
+  "nativeConfigSchema": {
+    "path": "contracts/goal-evidence/v2/goal-evidence-review-config.schema.json",
+    "sha256": "sha256:7233823673664115846059a5aab3eaa600c504f5975a9b24f8b7cf860e8b946d",
+    "bytes": 3328
+  },
+  "nativeCriteria": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/chemistry-positive-understanding-evidence-profile-criteria-v1.md",
+    "sha256": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+    "bytes": 2137
+  },
+  "actualMaterials": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next-coherent-current-gap-native-author-v1/fifty-complete-materials.de-en.author-candidates.json",
+    "sha256": "sha256:19ec833150f77dac9fa0efe68daa8866d6da597a47e7e0b0f0244e9ea5a42bef",
+    "bytes": 106247
+  },
+  "actualProfileSpecifications": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next-coherent-current-gap-native-author-v1/twenty-five-positive-profile-specifications.author-candidates.json",
+    "sha256": "sha256:6982377dc512d8f8fc3b9539cf0594067a856087372e5ce33966cc3a783f3ff4",
+    "bytes": 184197
+  },
+  "actualCurrentCanonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "sha256": "sha256:5f289ba5fab2dccb7bf7e9c83a989ed92607d2fb4a2083c696adb571f1639ea5",
+    "bytes": 1419730
+  },
+  "actualCurrentKinds": {
+    "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+    "sha256": "sha256:d7f7a6e40618643a0914ffd69cc1869ab81c3e435808e60cf2cfcce900ecabce",
+    "bytes": 153884
+  },
+  "nativeMaterializer": "PASS25",
+  "nativeFullProfileChecker": "PASS25",
+  "nativeCheckerErrors": [],
+  "nativeCheckerCounts": {
+    "approved": 0,
+    "needsHumanReview": 25,
+    "rejected": 0
+  },
+  "actualMaterialBodies": 50,
+  "rows": [
+    {
+      "goalId": "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca",
+      "title": "Ionenbildung mit der Edelgasregel deuten",
+      "titleEn": "Interpret ion formation using the noble gas rule",
+      "goalFingerprint": "sha256:a0ef508263e61bf85948cb4ee5f7392b62fd03bf594abd93cfe210afd3400c85",
+      "reviewInputFingerprint": "sha256:b85d7ff99ade8475f896d0c99f60b5d65d757b8f0dec690d9687950e738718b8",
+      "profileFingerprint": "sha256:f1375856c42cbf831b7c9e24580998d7a11469692a6df239d3f1a3c6dbfc85fc",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca/a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca.jpg",
+          "sha256": "sha256:100d73af011e539bcf287663d2e774edf14f44003c0c6680602258a61e13c898",
+          "bytes": 2125382
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca/a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca.jpg": "sha256:100d73af011e539bcf287663d2e774edf14f44003c0c6680602258a61e13c898"
+      },
+      "caseIds": [
+        "chem-next25-a1632ea9-case-1",
+        "chem-next25-a1632ea9-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "965ca297-5dbf-5e58-b5f0-6559a4433646",
+      "title": "Salzformeln aus Ionenladungen ableiten",
+      "titleEn": "Derive salt formulas from ion charges",
+      "goalFingerprint": "sha256:a2fcc547b32a1135d607f24f7eceb7f0b5cface70cf4a1d0182812c215af99b9",
+      "reviewInputFingerprint": "sha256:2d7261c877efb5b88b2c79cba4ea8543ff8c6a940e8bc7eda741634eb6cb0c57",
+      "profileFingerprint": "sha256:1e7c22555a7d16a7bd08b9d78b520f2d451400514f077d700690355829f2cc6c",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/965ca297-5dbf-5e58-b5f0-6559a4433646/965ca297-5dbf-5e58-b5f0-6559a4433646.jpg",
+          "sha256": "sha256:f84f419791c1cc03ae887cfaa1a15b9db619a3a18a287d3ffd5d2c6bde523fc7",
+          "bytes": 2331286
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/965ca297-5dbf-5e58-b5f0-6559a4433646/965ca297-5dbf-5e58-b5f0-6559a4433646.jpg": "sha256:f84f419791c1cc03ae887cfaa1a15b9db619a3a18a287d3ffd5d2c6bde523fc7"
+      },
+      "caseIds": [
+        "chem-next25-965ca297-case-1",
+        "chem-next25-965ca297-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "79db6d68-b402-5563-a348-f2784fed8867",
+      "title": "Molekulare und ionogene Verbindungen unterscheiden",
+      "titleEn": "Distinguish molecular and ionic compounds",
+      "goalFingerprint": "sha256:a181942aca9b4f5e8f0b17b83c84f46d50475435cef7ab6ae5634106f3e2330d",
+      "reviewInputFingerprint": "sha256:d68e4039f0e4b1ab7af54911e6405095024571d8390fafb4fa039b71b9461488",
+      "profileFingerprint": "sha256:74dead516e74f2706be30b2b15239d34a217c9563930a5d83dfb87cdf81e4608",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/79db6d68-b402-5563-a348-f2784fed8867/79db6d68-b402-5563-a348-f2784fed8867.jpg",
+          "sha256": "sha256:6792ff80d924609dd7f1343b1654498636dd690049fe40cb03261f7c68f0269c",
+          "bytes": 2470367
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/79db6d68-b402-5563-a348-f2784fed8867/79db6d68-b402-5563-a348-f2784fed8867.jpg": "sha256:6792ff80d924609dd7f1343b1654498636dd690049fe40cb03261f7c68f0269c"
+      },
+      "caseIds": [
+        "chem-next25-79db6d68-case-1",
+        "chem-next25-79db6d68-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+      "title": "Ionen als Ladungsträger erklären",
+      "titleEn": "Explain ions as charge carriers",
+      "goalFingerprint": "sha256:29d359f1dfdfe70d4283316175aa4e2977248948da4d2e6175673198a4b4020f",
+      "reviewInputFingerprint": "sha256:745b29343a716c60f56b5944ccaa8ee8e2c1c885a9215a85d833607d3c6fb2a1",
+      "profileFingerprint": "sha256:39e017318739e7f9268e0fb8749a5b5ad0a5d4fc140766a3a9afba520d0ab101",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/4285d84a-2c9a-4d51-8250-8bed4daf2d2e/4285d84a-2c9a-4d51-8250-8bed4daf2d2e.jpg",
+          "sha256": "sha256:026b98f086589a7c5eb4ec6777755f68219cf299b5d9e67386e70c5f92478d56",
+          "bytes": 2238525
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/4285d84a-2c9a-4d51-8250-8bed4daf2d2e/4285d84a-2c9a-4d51-8250-8bed4daf2d2e.jpg": "sha256:026b98f086589a7c5eb4ec6777755f68219cf299b5d9e67386e70c5f92478d56"
+      },
+      "caseIds": [
+        "chem-next25-4285d84a-case-1",
+        "chem-next25-4285d84a-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "70b12d1c-abaf-45c6-ae9e-b571e9cbc126",
+      "title": "Elektrolyse einfacher Salze deuten",
+      "titleEn": "Interpret electrolysis of simple salts",
+      "goalFingerprint": "sha256:e190224f70f5948a36b5d5015f19afeb252fb926b606671037f3257e8e941612",
+      "reviewInputFingerprint": "sha256:8bf2accaccaeb2686da57696fea7db43c5ded790244b6cb6eeb74c5184226c73",
+      "profileFingerprint": "sha256:6e48228e6cddb107caf5474ada5eca416ce256372474ecd870804aa61f313561",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/70b12d1c-abaf-45c6-ae9e-b571e9cbc126/70b12d1c-abaf-45c6-ae9e-b571e9cbc126.jpg",
+          "sha256": "sha256:078941cb41d9c07cb876a2b0795d690efaef2635c9e5c3ddcb8c769669eacc0b",
+          "bytes": 2146235
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/70b12d1c-abaf-45c6-ae9e-b571e9cbc126/70b12d1c-abaf-45c6-ae9e-b571e9cbc126.jpg": "sha256:078941cb41d9c07cb876a2b0795d690efaef2635c9e5c3ddcb8c769669eacc0b"
+      },
+      "caseIds": [
+        "chem-next25-70b12d1c-case-1",
+        "chem-next25-70b12d1c-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "c441d9e8-d9d9-5e55-a189-a37345541321",
+      "title": "Salzbildung energetisch mit Gitterenergie erklären",
+      "titleEn": "Explain salt formation energetically using lattice energy",
+      "goalFingerprint": "sha256:ebc2025dad09c32208bcfa5b629570111f78963ee258d2af72290bbaa2d9be43",
+      "reviewInputFingerprint": "sha256:1446e9370ec23a0969bc727b90a8c1131163d62f42badf791c27eef0a6b88fc4",
+      "profileFingerprint": "sha256:869e3eb7602fa46cbfa2fdd7999150a7a92ef50ffb019679a2f9bcce145c699f",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/c441d9e8-d9d9-5e55-a189-a37345541321/c441d9e8-d9d9-5e55-a189-a37345541321.jpg",
+          "sha256": "sha256:17e9a391473551a406ddb4361cf93cd1e12dfe39ab30c8f3e29276af4dac501e",
+          "bytes": 2068979
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/c441d9e8-d9d9-5e55-a189-a37345541321/c441d9e8-d9d9-5e55-a189-a37345541321.jpg": "sha256:17e9a391473551a406ddb4361cf93cd1e12dfe39ab30c8f3e29276af4dac501e"
+      },
+      "caseIds": [
+        "chem-next25-c441d9e8-case-1",
+        "chem-next25-c441d9e8-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "5abc5961-6368-52bb-88b9-6a846c3c37a8",
+      "title": "Lösen von Salzen energetisch erklären",
+      "titleEn": "Explain salt dissolution energetically",
+      "goalFingerprint": "sha256:754fcd77069e02bb867ccc3ee8a98245f786986ba7b9cffac27d76408a64e7b0",
+      "reviewInputFingerprint": "sha256:94dc1ea5377aaf140ce1fba171b28add39d103deaf5536e1d8a0337c55f30d0c",
+      "profileFingerprint": "sha256:bf70bcc084babadd4fb9e28eb3ed9c577f25c3ea2bd35656fb4484916a11e833",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/5abc5961-6368-52bb-88b9-6a846c3c37a8/5abc5961-6368-52bb-88b9-6a846c3c37a8.jpg",
+          "sha256": "sha256:2d5dc03531c142f0fee2142be0e77c9e0bef64ea5ff50a57449bd90687fe27e0",
+          "bytes": 1910602
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/5abc5961-6368-52bb-88b9-6a846c3c37a8/5abc5961-6368-52bb-88b9-6a846c3c37a8.jpg": "sha256:2d5dc03531c142f0fee2142be0e77c9e0bef64ea5ff50a57449bd90687fe27e0"
+      },
+      "caseIds": [
+        "chem-next25-5abc5961-case-1",
+        "chem-next25-5abc5961-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "747c5777-07d7-51a9-9be3-7d0d6f51d4e2",
+      "title": "Bindungs- und Molekülpolarität ableiten",
+      "titleEn": "Derive bond and molecular polarity",
+      "goalFingerprint": "sha256:ba242287f5b89ced182f401c6bc9de3d8d6dadbe1c4c7d7181b2196d12e2179a",
+      "reviewInputFingerprint": "sha256:7a61f64bd0f12a95afcd1158f2d019c7a8b9f3d51d261d33070e848c11fc894d",
+      "profileFingerprint": "sha256:d58190a0886110baf890bb18de147e87d580643bb35fab2d662d5d75ab7317e0",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/747c5777-07d7-51a9-9be3-7d0d6f51d4e2/747c5777-07d7-51a9-9be3-7d0d6f51d4e2.jpg",
+          "sha256": "sha256:4cdd7c1a4c14b363051a9ce607fbaf25af8c820d148d8dab7792552646290073",
+          "bytes": 2466714
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/747c5777-07d7-51a9-9be3-7d0d6f51d4e2/747c5777-07d7-51a9-9be3-7d0d6f51d4e2.jpg": "sha256:4cdd7c1a4c14b363051a9ce607fbaf25af8c820d148d8dab7792552646290073"
+      },
+      "caseIds": [
+        "chem-next25-747c5777-case-1",
+        "chem-next25-747c5777-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "bbe038e9-86ed-5ec6-ab33-316758ddb16d",
+      "title": "Elektronenpaarbindung mit Orbitalüberlappung erklären",
+      "titleEn": "Explain covalent bonding using orbital overlap",
+      "goalFingerprint": "sha256:d1ccfae8b009cefacfa199c09987cf12b48231f3f66692541799a427ec264600",
+      "reviewInputFingerprint": "sha256:144efce45a93095d4fcd6252e850cbeac8f8c6983cae90f2e0d4520470a2b581",
+      "profileFingerprint": "sha256:6336e55426acff8ca8186ad8f3153e2e7348a5f96159ba32a6f7222f6e3e5286",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/bbe038e9-86ed-5ec6-ab33-316758ddb16d/bbe038e9-86ed-5ec6-ab33-316758ddb16d.jpg",
+          "sha256": "sha256:fbb4237122c93fdd475c24fd9bbaf7d3317ffb3270c6dc5a768b1d9baf96c980",
+          "bytes": 1935806
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/bbe038e9-86ed-5ec6-ab33-316758ddb16d/bbe038e9-86ed-5ec6-ab33-316758ddb16d.jpg": "sha256:fbb4237122c93fdd475c24fd9bbaf7d3317ffb3270c6dc5a768b1d9baf96c980"
+      },
+      "caseIds": [
+        "chem-next25-bbe038e9-case-1",
+        "chem-next25-bbe038e9-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "e74f5301-70d3-5869-bd3d-79a5763a1718",
+      "title": "Orbitalmodell und Valenzstrichschreibweise anwenden",
+      "titleEn": "Apply orbital model and valence-line notation",
+      "goalFingerprint": "sha256:166593e1352bdd1131676cc495fb1cdfcf274239f7eaf12358a119819b00173a",
+      "reviewInputFingerprint": "sha256:7cd1dc96505bcaeeff568423c7bf22d2915f006962bee3a68a39b90bfb39d161",
+      "profileFingerprint": "sha256:036606a5c0884e33bcb3841e80ecc02b43951226f4fe15d28414c2e80d349e3a",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/e74f5301-70d3-5869-bd3d-79a5763a1718/e74f5301-70d3-5869-bd3d-79a5763a1718.jpg",
+          "sha256": "sha256:ac160e9ba5d8d321097a0f77319cea6c8192c68980ffffab69193bcea43fc9e1",
+          "bytes": 1948478
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/e74f5301-70d3-5869-bd3d-79a5763a1718/e74f5301-70d3-5869-bd3d-79a5763a1718.jpg": "sha256:ac160e9ba5d8d321097a0f77319cea6c8192c68980ffffab69193bcea43fc9e1"
+      },
+      "caseIds": [
+        "chem-next25-e74f5301-case-1",
+        "chem-next25-e74f5301-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+      "title": "Valenzstrichformeln und Mesomerie aufstellen",
+      "titleEn": "Construct valence-line and mesomeric formulas",
+      "goalFingerprint": "sha256:dccbcde1bbd5362b74a082f595ca8c4ff0635f17ae390319ff3ccda0dcac784d",
+      "reviewInputFingerprint": "sha256:799cfacce1ef51bc79651346f2c8c10248ebacf1ad929ec85cc68246813cb677",
+      "profileFingerprint": "sha256:bbeb282258a6674ecf79a50c66a45e87d5eea0106e99bd7fc16141d3a7e011ed",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/23533087-89ea-5f29-8ec1-9f2e01197bb6/23533087-89ea-5f29-8ec1-9f2e01197bb6.jpg",
+          "sha256": "sha256:df1babd1ef158e8e5d1ad5c71739d49024e01d591c39bc257348d045771a589a",
+          "bytes": 2183368
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/23533087-89ea-5f29-8ec1-9f2e01197bb6/23533087-89ea-5f29-8ec1-9f2e01197bb6.jpg": "sha256:df1babd1ef158e8e5d1ad5c71739d49024e01d591c39bc257348d045771a589a"
+      },
+      "caseIds": [
+        "chem-next25-23533087-case-1",
+        "chem-next25-23533087-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "a138d7bf-163a-59e0-a50a-8438ef4f5168",
+      "title": "Ionenladungen von Nebengruppenelementen orbitalenergetisch begründen",
+      "titleEn": "Justify transition-metal ion charges using orbital energetics",
+      "goalFingerprint": "sha256:18a26daefcf49d3f8bc4174eae2876942c1b186f134abeb7a9850c33ef777e2d",
+      "reviewInputFingerprint": "sha256:c70a17985f10d4db811eb2c9cdd1769c4249d451afdefc04fa1326a6a6a83768",
+      "profileFingerprint": "sha256:c85a669f4125dd35edc31107247371ead034d5cb0a314510013ae93ffdd0efa6",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/a138d7bf-163a-59e0-a50a-8438ef4f5168/a138d7bf-163a-59e0-a50a-8438ef4f5168.jpg",
+          "sha256": "sha256:d7e293190db1e98aaa015a93b8d7e4bed2ae8e3e1f80ec8d797f860352847929",
+          "bytes": 1912186
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/a138d7bf-163a-59e0-a50a-8438ef4f5168/a138d7bf-163a-59e0-a50a-8438ef4f5168.jpg": "sha256:d7e293190db1e98aaa015a93b8d7e4bed2ae8e3e1f80ec8d797f860352847929"
+      },
+      "caseIds": [
+        "chem-next25-a138d7bf-case-1",
+        "chem-next25-a138d7bf-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "3bc48951-025c-5144-99b1-924db611a5f9",
+      "title": "Quantenzahlen und Besetzungsregeln zur PSE-Anordnung nutzen",
+      "titleEn": "Use quantum numbers and occupation rules for periodic-table ordering",
+      "goalFingerprint": "sha256:794a7e6c89e0dac38208e18e07ac913a93e48f6e492ee98c09514465d5342478",
+      "reviewInputFingerprint": "sha256:bce5d5e22d823d66f4c9c76a4d1aa82e1a1a94cb2a5b133626be3fc413824187",
+      "profileFingerprint": "sha256:42d9ecfdf59a6811d4306470246b0316e34ed8b4a2a3be303eae88b8d8883ba4",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/3bc48951-025c-5144-99b1-924db611a5f9/3bc48951-025c-5144-99b1-924db611a5f9.jpg",
+          "sha256": "sha256:84ff056013a0d1f773f6d63a3a2475b12673d50cabb374133af74376516216f4",
+          "bytes": 1659187
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/3bc48951-025c-5144-99b1-924db611a5f9/3bc48951-025c-5144-99b1-924db611a5f9.jpg": "sha256:84ff056013a0d1f773f6d63a3a2475b12673d50cabb374133af74376516216f4"
+      },
+      "caseIds": [
+        "chem-next25-3bc48951-case-1",
+        "chem-next25-3bc48951-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "49235cbe-6658-5e7e-8bd4-398416bcebdc",
+      "title": "Unterenergiestufen aus Spektren und Ionisierungsenergien ableiten",
+      "titleEn": "Infer sub-energy levels from spectra and ionization energies",
+      "goalFingerprint": "sha256:617c3d042534b25c18ecf445a3adac6d119f0b5b2f1a4d6605aec7c68f4e70dd",
+      "reviewInputFingerprint": "sha256:f4a4c8fd33ee8f3c9098f403b6ed6d34abdb8d803700134d2305756556de6594",
+      "profileFingerprint": "sha256:f00eb1e299f1217859fcfb3816642a5138e17589577884ebcd9e887102b1b677",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/49235cbe-6658-5e7e-8bd4-398416bcebdc/49235cbe-6658-5e7e-8bd4-398416bcebdc.jpg",
+          "sha256": "sha256:37d020a31c6fe3270d36d162716cfa95481cb9b78ef2cbce4296b245d2172bd3",
+          "bytes": 1598551
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/49235cbe-6658-5e7e-8bd4-398416bcebdc/49235cbe-6658-5e7e-8bd4-398416bcebdc.jpg": "sha256:37d020a31c6fe3270d36d162716cfa95481cb9b78ef2cbce4296b245d2172bd3"
+      },
+      "caseIds": [
+        "chem-next25-49235cbe-case-1",
+        "chem-next25-49235cbe-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "73547696-e225-5f14-839b-c77f54c32bae",
+      "title": "Antreffwahrscheinlichkeit mit Unbestimmtheit begründen",
+      "titleEn": "Justify electron probability with uncertainty",
+      "goalFingerprint": "sha256:073650cf2d11c0947a220acc9f40f61f6d255ca69fe927474d076f2b2b49392a",
+      "reviewInputFingerprint": "sha256:6cbbe9ca4f8d5fe872599cc8f49990b8e4f7d0572d385a6a4b059f2f7bb2b7e1",
+      "profileFingerprint": "sha256:e198397500f00b153267c2cb8a0ef72e70282729ae1272b9c3a33088ff716861",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/73547696-e225-5f14-839b-c77f54c32bae/73547696-e225-5f14-839b-c77f54c32bae.jpg",
+          "sha256": "sha256:641b07dcf4324be31ace929c7905a2c80f1f3e54fc827afc9fc48889b6a9566f",
+          "bytes": 1947968
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/73547696-e225-5f14-839b-c77f54c32bae/73547696-e225-5f14-839b-c77f54c32bae.jpg": "sha256:641b07dcf4324be31ace929c7905a2c80f1f3e54fc827afc9fc48889b6a9566f"
+      },
+      "caseIds": [
+        "chem-next25-73547696-case-1",
+        "chem-next25-73547696-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "e8ec00a8-48d4-5fa3-9f0e-2ae365328a2e",
+      "title": "Bindungslängen und Molekülgeometrien modellgestützt begründen",
+      "titleEn": "Justify bond lengths and molecular geometries using models",
+      "goalFingerprint": "sha256:523bfceb0615d93dcfe56ad3082487de237575bb9578f7058fef926a85a415cf",
+      "reviewInputFingerprint": "sha256:a297fb47279280035cbf3fa2dd71212bebb0b4e685451b12eb78c01c549d0ca0",
+      "profileFingerprint": "sha256:f7acce40fa6878afecb27156a9fb475bd9e5afa2bf2f1c8b38e67cb0010eca0d",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/e8ec00a8-48d4-5fa3-9f0e-2ae365328a2e/e8ec00a8-48d4-5fa3-9f0e-2ae365328a2e.jpg",
+          "sha256": "sha256:a77db434ada4f05bc5d8350c17e60bbfa3130ebf30307ee945c00ec5e9e7cfed",
+          "bytes": 2527148
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/e8ec00a8-48d4-5fa3-9f0e-2ae365328a2e/e8ec00a8-48d4-5fa3-9f0e-2ae365328a2e.jpg": "sha256:a77db434ada4f05bc5d8350c17e60bbfa3130ebf30307ee945c00ec5e9e7cfed"
+      },
+      "caseIds": [
+        "chem-next25-e8ec00a8-case-1",
+        "chem-next25-e8ec00a8-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "2bc1a15b-a677-5612-a564-33e826d11327",
+      "title": "Doppelspaltexperiment quantenmodellhaft einordnen",
+      "titleEn": "Classify the double-slit experiment with quantum models",
+      "goalFingerprint": "sha256:0c7cfd21a622aadbac57896c4b793f41aaf53e7d28bfc3dc1821af94aabe24e3",
+      "reviewInputFingerprint": "sha256:a37e6c1018f807d7b88a88bebc0f2422003da87bc66ffe29782fd8335fc55250",
+      "profileFingerprint": "sha256:bc804f73ee5a1d46d541db562bce9f7f65c8812d9c1b8f3014bf03b44fbc3726",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/2bc1a15b-a677-5612-a564-33e826d11327/2bc1a15b-a677-5612-a564-33e826d11327.jpg",
+          "sha256": "sha256:971e64cd3f8be613ad98ec8988ee9c71151afcc0f9717982fd5534bf7d0ddc9e",
+          "bytes": 2480706
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/2bc1a15b-a677-5612-a564-33e826d11327/2bc1a15b-a677-5612-a564-33e826d11327.jpg": "sha256:971e64cd3f8be613ad98ec8988ee9c71151afcc0f9717982fd5534bf7d0ddc9e"
+      },
+      "caseIds": [
+        "chem-next25-2bc1a15b-case-1",
+        "chem-next25-2bc1a15b-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "386e28af-505a-5eb9-87fe-9c6946f10433",
+      "title": "MO-Energieniveauschemata zur Molekülexistenz auswerten",
+      "titleEn": "Evaluate MO energy diagrams for molecular existence",
+      "goalFingerprint": "sha256:d23894d97d1886d3c2c9451858b52cac43c538328ba46423a29b7e1e031c4813",
+      "reviewInputFingerprint": "sha256:3986aba7f7ffd7b1c63ed00c6c446223cf6f528e3642aebc983bf3d529be2245",
+      "profileFingerprint": "sha256:dab73f53e9cc6b7c04e227881c016d088c4316aa9f730a8a772fc9665cce9627",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/386e28af-505a-5eb9-87fe-9c6946f10433/386e28af-505a-5eb9-87fe-9c6946f10433.jpg",
+          "sha256": "sha256:49efa71bdb31ec61010fdb360e7de2b6d2463784642703c997a1d125cbd33db7",
+          "bytes": 2017431
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/386e28af-505a-5eb9-87fe-9c6946f10433/386e28af-505a-5eb9-87fe-9c6946f10433.jpg": "sha256:49efa71bdb31ec61010fdb360e7de2b6d2463784642703c997a1d125cbd33db7"
+      },
+      "caseIds": [
+        "chem-next25-386e28af-case-1",
+        "chem-next25-386e28af-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "0acc8cd2-be6d-567e-a023-1d9e90475510",
+      "title": "Orbitale als Wahrscheinlichkeitsräume beschreiben",
+      "titleEn": "Describe orbitals as probability regions",
+      "goalFingerprint": "sha256:60e50292c03c62c9f51c915def04dc74d7965b1e5b08d5c88705da08ec501896",
+      "reviewInputFingerprint": "sha256:23355c5b86faf11c86b7d6db9504fc5be5c34b0e62abbc39b457f5378004b3ac",
+      "profileFingerprint": "sha256:efe85b6fad13ad6b09c1f4ed5044b6a41724c232f97e76b971c709325c1aed29",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/0acc8cd2-be6d-567e-a023-1d9e90475510/0acc8cd2-be6d-567e-a023-1d9e90475510.jpg",
+          "sha256": "sha256:1d91ec93d9d84864137beb50d13b1690c51a6ea8724c51e06716e3378a8a3cad",
+          "bytes": 1911493
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/0acc8cd2-be6d-567e-a023-1d9e90475510/0acc8cd2-be6d-567e-a023-1d9e90475510.jpg": "sha256:1d91ec93d9d84864137beb50d13b1690c51a6ea8724c51e06716e3378a8a3cad"
+      },
+      "caseIds": [
+        "chem-next25-0acc8cd2-case-1",
+        "chem-next25-0acc8cd2-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "fbc5a920-05d6-53c8-9fc0-a5f4e57f2c6d",
+      "title": "Wellenfunktionen mit Wahrscheinlichkeitsdichten verknüpfen",
+      "titleEn": "Connect wavefunctions with probability densities",
+      "goalFingerprint": "sha256:b4ba7d44b7b845f707fa71ea576b3fa815245d9acde8c121936dd381135bb428",
+      "reviewInputFingerprint": "sha256:ec3703a271fcbdcc9187e9065d2690aa5b43a52a0c1ad5ee66b24c8754b31ab3",
+      "profileFingerprint": "sha256:f61e12cf1a2a1f968c900b526970cd9b08f5abedeaf0d3a5bb302848e49faf4e",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/fbc5a920-05d6-53c8-9fc0-a5f4e57f2c6d/fbc5a920-05d6-53c8-9fc0-a5f4e57f2c6d.jpg",
+          "sha256": "sha256:258fe2f990213fe72ddd7761293b3fdadbef005f7ea7d6433f73e82154e629d5",
+          "bytes": 2258750
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/fbc5a920-05d6-53c8-9fc0-a5f4e57f2c6d/fbc5a920-05d6-53c8-9fc0-a5f4e57f2c6d.jpg": "sha256:258fe2f990213fe72ddd7761293b3fdadbef005f7ea7d6433f73e82154e629d5"
+      },
+      "caseIds": [
+        "chem-next25-fbc5a920-case-1",
+        "chem-next25-fbc5a920-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "707998c1-872d-582d-a2d6-14e7d967cbdb",
+      "title": "Organische Moleküle mit Molecular Modelling darstellen",
+      "titleEn": "Represent organic molecules with molecular modelling",
+      "goalFingerprint": "sha256:e9e2a83a3c62ecc8b946f688ffd7f623702d1522ef8999b4f884fc660f65e1e2",
+      "reviewInputFingerprint": "sha256:733bc43907a6d88d194fecddfd4a050c760e682a4ac92d83971e4ee13c9f3717",
+      "profileFingerprint": "sha256:b42050ce774fcdfcf8c03773cde6de431f47cc29e71e140faa086b25e40159f6",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/707998c1-872d-582d-a2d6-14e7d967cbdb/707998c1-872d-582d-a2d6-14e7d967cbdb.jpg",
+          "sha256": "sha256:c21975a6960da243d5bcb233d6a82be714f0e38aa2e573bb4f79c25dc8fa91f8",
+          "bytes": 2221397
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/707998c1-872d-582d-a2d6-14e7d967cbdb/707998c1-872d-582d-a2d6-14e7d967cbdb.jpg": "sha256:c21975a6960da243d5bcb233d6a82be714f0e38aa2e573bb4f79c25dc8fa91f8"
+      },
+      "caseIds": [
+        "chem-next25-707998c1-case-1",
+        "chem-next25-707998c1-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "0b6a6a15-b355-5be8-abc9-4ef8df11bcb6",
+      "title": "Stoffklasseneigenschaften bindungsbezogen vergleichen",
+      "titleEn": "Compare substance-class properties through bonding and interactions",
+      "goalFingerprint": "sha256:8e50bf74cac7d382cbe6cafe168875dd6c586c02734d7dc3b68e92770ff77b3b",
+      "reviewInputFingerprint": "sha256:2e15e979a1b4693ee31dd4bca3c8eb081f7d10e75368cccc66c0a475615393dd",
+      "profileFingerprint": "sha256:cc6376d27c56e812cc71b753b4b0b1f18e7c12b087ec1082571da509c2364895",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/0b6a6a15-b355-5be8-abc9-4ef8df11bcb6/0b6a6a15-b355-5be8-abc9-4ef8df11bcb6.jpg",
+          "sha256": "sha256:98145a51514735ae150523da7d6148ef5270f3d9b1f02994d4f032cb7f0bb219",
+          "bytes": 2623087
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/0b6a6a15-b355-5be8-abc9-4ef8df11bcb6/0b6a6a15-b355-5be8-abc9-4ef8df11bcb6.jpg": "sha256:98145a51514735ae150523da7d6148ef5270f3d9b1f02994d4f032cb7f0bb219"
+      },
+      "caseIds": [
+        "chem-next25-0b6a6a15-case-1",
+        "chem-next25-0b6a6a15-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "7a36f2a2-a97e-5a0b-a6e1-a80f72137640",
+      "title": "Eigenschaften von Wasser strukturbezogen erklären",
+      "titleEn": "Explain water properties from structure and hydrogen bonding",
+      "goalFingerprint": "sha256:00a45621a82a1a53fcea0cf98b4b9efafce2bf146e04d8f2339d0b9164350dfe",
+      "reviewInputFingerprint": "sha256:8072662707ffcd497ccee63cb85cb18d39b8593f9d3831c7805c05058360a334",
+      "profileFingerprint": "sha256:14b2c8b0a8c7a585b6363e7c33d8d4dde4d3cce55a09c06d1d896734aeb3dfe6",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/7a36f2a2-a97e-5a0b-a6e1-a80f72137640/7a36f2a2-a97e-5a0b-a6e1-a80f72137640.jpg",
+          "sha256": "sha256:a5301691005dd750b922f0d5ba02fba5496e0d0afd6852447510f008edf74ff0",
+          "bytes": 1669176
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/7a36f2a2-a97e-5a0b-a6e1-a80f72137640/7a36f2a2-a97e-5a0b-a6e1-a80f72137640.jpg": "sha256:a5301691005dd750b922f0d5ba02fba5496e0d0afd6852447510f008edf74ff0"
+      },
+      "caseIds": [
+        "chem-next25-7a36f2a2-case-1",
+        "chem-next25-7a36f2a2-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "5e2eb826-6e60-5273-91d6-c23f6dfa33b1",
+      "title": "Partikelgröße und Oberflächen-Volumen-Verhältnis deuten",
+      "titleEn": "Interpret particle size and surface-area-to-volume effects",
+      "goalFingerprint": "sha256:ebbf80a363adfb46fe36e4a3b60006b26494e358548f7b7694869811592cf218",
+      "reviewInputFingerprint": "sha256:c154d652957015574eaf2877da23311fde28cc757fed1bec4ca01b38a2822c72",
+      "profileFingerprint": "sha256:466e911403e177fce83ab17bb3b98b593e436699ed80560bf220e20bcdc895dd",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/5e2eb826-6e60-5273-91d6-c23f6dfa33b1/5e2eb826-6e60-5273-91d6-c23f6dfa33b1.jpg",
+          "sha256": "sha256:6071f71d94e930c15a20566f4cf99e37915ba1afb45376739cb8ce5ddc1d1c5e",
+          "bytes": 2236706
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/5e2eb826-6e60-5273-91d6-c23f6dfa33b1/5e2eb826-6e60-5273-91d6-c23f6dfa33b1.jpg": "sha256:6071f71d94e930c15a20566f4cf99e37915ba1afb45376739cb8ce5ddc1d1c5e"
+      },
+      "caseIds": [
+        "chem-next25-5e2eb826-case-1",
+        "chem-next25-5e2eb826-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    },
+    {
+      "goalId": "e675fa94-6e23-59c0-b376-4340bf44c00e",
+      "title": "Relative Atommassen und Molekülformeln aus Daten bestimmen",
+      "titleEn": "Determine relative atomic masses and molecular formulas from data",
+      "goalFingerprint": "sha256:525aca33b5d90994a6ea25962f0ea53f22cc616c4670bcca34a6dcc9431c93e9",
+      "reviewInputFingerprint": "sha256:a74c84209f5437b2ce142fb11fc5a7d3bc37778e4da44b3e6e79e7b0f7189c7b",
+      "profileFingerprint": "sha256:f8e85beeb88e2c1df3b9a0de4b327daf0965e9f542f76d38bfcbe94beac5860b",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "currentWholeGoalExact": true,
+      "actualAssetBindings": [
+        {
+          "path": "app/public/assets/goal-visualizations/chemie/e675fa94-6e23-59c0-b376-4340bf44c00e/e675fa94-6e23-59c0-b376-4340bf44c00e.jpg",
+          "sha256": "sha256:8ed9f7b2068c4edf2713a041332390d35fbea1fdfcf3ff1316491cd1a8b903a9",
+          "bytes": 2166899
+        }
+      ],
+      "resourceDigests": {
+        "/assets/goal-visualizations/chemie/e675fa94-6e23-59c0-b376-4340bf44c00e/e675fa94-6e23-59c0-b376-4340bf44c00e.jpg": "sha256:8ed9f7b2068c4edf2713a041332390d35fbea1fdfcf3ff1316491cd1a8b903a9"
+      },
+      "caseIds": [
+        "chem-next25-e675fa94-case-1",
+        "chem-next25-e675fa94-case-2"
+      ],
+      "closedNativeRecordSchema": "PASS",
+      "nativeRecordSemantics": "PASS",
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "independentScientificApproval": false
+    }
+  ],
+  "independentDescriptionReviews": "PENDING_SEPARATE_D_STAGE",
+  "independentMaterialAndProfileReviews": "PENDING_TWO_INDEPENDENT_ROLES",
+  "actualLearnerEvidence": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "strictNetGain": 0,
+  "newScientificClosures": 0,
+  "restoredActiveBindings": 0,
+  "activeWrites": false
+}

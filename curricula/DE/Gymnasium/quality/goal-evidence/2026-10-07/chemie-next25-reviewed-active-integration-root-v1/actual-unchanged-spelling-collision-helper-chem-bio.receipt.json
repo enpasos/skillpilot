@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "documentType": "readonly-existing-spelling-collision-function-application-to-current-chemistry-biology",
+  "helper": "scripts/check_curriculum_spelling.mjs:findReviewedSpellingIssues",
+  "unchangedReviewedCollisionPatterns": [
+    [
+      "fotöffekt",
+      "Fotoeffekt"
+    ],
+    [
+      "photöffekt",
+      "Photoeffekt"
+    ],
+    [
+      "fotölektr",
+      "fotoelektr…"
+    ],
+    [
+      "photölektr",
+      "photoelektr…"
+    ],
+    [
+      "köffizient",
+      "Koeffizient"
+    ]
+  ],
+  "actualInputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "sha256:94bf767048995316be19da809cfe10f73c459dbb1aae677cee8491270eaa5c79",
+      "bytes": 1419220
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "sha256:244d2889ddeeb69cbf97d0a320f3e38cf5444674f3bb17f3e46c0112ac6fbff1",
+      "bytes": 1006186
+    }
+  ],
+  "observations": [
+    {
+      "subject": "CHEMIE",
+      "actualWholeGoalCount": 479,
+      "issues": []
+    },
+    {
+      "subject": "BIOLOGIE",
+      "actualWholeGoalCount": 472,
+      "issues": []
+    }
+  ],
+  "actualIssueCount": 0,
+  "scopeLimit": "Only the existing five reviewed collision prefixes; no German dictionary, no general umlaut/style/scientific review and no autocorrection",
+  "nativeCliDefaultSubjectsRemainMathPhysics": true,
+  "activeCurriculumWrites": false
+}

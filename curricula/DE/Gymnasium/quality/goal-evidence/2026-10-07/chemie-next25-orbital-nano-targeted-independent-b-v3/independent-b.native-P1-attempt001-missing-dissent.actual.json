@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-06T23:01:59.463Z",
+  "actualProductionFunction": "reviewPositiveGoalEvidenceConfig",
+  "isolatedScope": "one current goal, one actual original JPG, three unchanged production helpers; no whole25 restart",
+  "counts": {
+    "approved": 0,
+    "needsHumanReview": 1,
+    "rejected": 0
+  },
+  "errors": [
+    "0acc8cd2-be6d-567e-a023-1d9e90475510: data must have required property 'dissent'",
+    "0acc8cd2-be6d-567e-a023-1d9e90475510: missing review record",
+    "Run manifest inputs/independent-p.run.json (chemie-next25-orbital-final-native-independent-p-b-v3) is not referenced by any review record"
+  ],
+  "status": "FAIL",
+  "record": {
+    "goalId": "0acc8cd2-be6d-567e-a023-1d9e90475510",
+    "goalFingerprint": "sha256:d30f2e7b8b3041681b83f936a6566f8b7eb564d7971a3523dc7540c06fb7f070",
+    "reviewInputFingerprint": "sha256:b70a964725bbf8b0123a186decaecda5a50fa0f42c49635c6426a51f244fc495",
+    "profileFingerprint": "sha256:efe85b6fad13ad6b09c1f4ed5044b6a41724c232f97e76b971c709325c1aed29",
+    "status": "needs_human_review",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [
+      "chemie-next25-orbital-final-native-independent-p-b-v3"
+    ]
+  },
+  "paths": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next25-orbital-nano-targeted-independent-b-v3/native-review-root/inputs/independent-p.config.json",
+      "sha256": "sha256:cc51e8f98124cf2d85bb3d78d0a75d9e8e9b2e41f3c01189b51f126dd1af750a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next25-orbital-nano-targeted-independent-b-v3/native-review-root/inputs/independent-p.records.jsonl",
+      "sha256": "sha256:a0d9627a89c0044410d14cdaf18074b23411f12213eee3347c5234d2860a5b05"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next25-orbital-nano-targeted-independent-b-v3/native-review-root/inputs/independent-p.run.json",
+      "sha256": "sha256:942152a9fa8c4112f7eb6c63da99311e6c87fdfb3ec4de6332d1ccf74248d7ba"
+    }
+  ],
+  "activeWrites": false,
+  "strictNetGain": 0,
+  "humanApproval": false
+}

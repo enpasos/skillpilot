@@ -1,0 +1,74 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-aromatic-native-targeted-independent-a-20261006-v6",
+  "campaignId": "chemie-current-aromatic-delocalization-single-20261006-author-v6-a",
+  "roundId": "chemie-current-aromatic-delocalization-single-20261006-author-v6-first-pass-a",
+  "batchId": "chemie-current-aromatic-delocalization-single-20261006-author-v6-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:1683c50bbd6123314f87b90e4b56d3c9a1194edfb9e18d0d7b01ba0df9495498",
+  "bundleFingerprint": "sha256:55231e8e2670fbd3874149c6636e8afa6296dbab9e9e260105052d9637492906",
+  "bookDigest": "sha256:edc554de2d890dc1893380b739962d8aa3e23510cd3ad45f77c38ef9629599d8",
+  "provider": "OpenAI / Codex direct review",
+  "model": "GPT-6 (exact serving deployment version not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:e2caffa2beb5d161ead7e6fafa32f8535c707bf09050635a82c621dc3cf32c9c",
+  "independenceGroupId": "chemie-current-aromatic-delocalization-single-20261006-author-v6-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "b8d3b453-d638-5518-aab0-d84ec2e8567c"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:34cb7f50d095ae0001ed1f0dbcd4061e47626b6cc6bd255fb1a1657246526151"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:499110431b84edf45cd79c6da707ffabe0bdbc2ecf16fb1b5dbaedb0600b9a91"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:79dec27c8ff66da7520e06335b7d49a0cf72269485c5d4a97fd3a8a51fba3264"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:af7312a274810394b5bf0c487d8fddff4e555d268ff0e16b3aea0d225e1a8e9c"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:ec565af94e2761b7cffffb7740ff793b174e56abd9d0437c079ae2b044924996"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:c64a7a5cc6257da95b57acbec80352707931d8f859db94ab4a1ba215e6bf12fd"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:1683c50bbd6123314f87b90e4b56d3c9a1194edfb9e18d0d7b01ba0df9495498"
+    }
+  ],
+  "startedAt": "2026-10-06T19:46:41Z",
+  "completedAt": "2026-10-06T19:47:36.041689+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:9383e2be70f417b601f26d45a9502a49539a36a9dfea3f11d87e2c8cace2026a",
+  "toolchainVersion": "codex-direct-native-description-review-v6"
+}

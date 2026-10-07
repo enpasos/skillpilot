@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-06T08:29:56.327893+00:00",
+  "calculations": {
+    "NaClStandard": {
+      "concentrationMgPerL": 1000,
+      "concentrationGPerL": "1",
+      "conductivityMicroSPerCm": 1990,
+      "labelErrorMicroSPerCm": 20,
+      "referenceTemperatureC": 25
+    },
+    "conductivityDifferences": {
+      "unmatchedTemperature": 500,
+      "matchedTemperature": 2,
+      "retainedRoughRepeatScatter": 3,
+      "matchedWithinRoughScatter": true,
+      "seriesSuccessiveIncrements": [
+        1017,
+        970,
+        960
+      ],
+      "waterBlankUnscaled": 3,
+      "sucroseBlankUnscaled": 4
+    },
+    "NaClStandardDissolutionEnthalpy": {
+      "tableValueDeltaHDivRT": 1.566,
+      "temperatureK": 298.15,
+      "R_JPerMolK": 8.314462618,
+      "ownCalculatedKJPerMol": 3.882046708285792,
+      "scope": "standard dissolution near25C,1bar; sign supports bounded dilute heat uptake, not universal concentration/temperature or exact sample cooling"
+    },
+    "acidTitrationReference": {
+      "cNaOHmolPerL": "0.0100",
+      "aliquotML": "10.00",
+      "A_cmolPerL": "0.0080",
+      "B_cmolPerL": "0.0160",
+      "ratio": "2",
+      "referenceNotMeasured": true
+    },
+    "colourDomain": {
+      "validCmgPerL": [
+        0,
+        6
+      ],
+      "validModelAMax": "0.490",
+      "transferA": "0.810",
+      "inCalibrationDomain": false,
+      "newDilutedAModelPrediction": null,
+      "newDilutedConcentration": null,
+      "nominalDilutionFactor": "2",
+      "validExampleA": "0.290",
+      "validExampleConcentrationMGperL": "3.5",
+      "actualInRangeMeasurementAndOwnCalibrationRequired": true
+    },
+    "deviceErrorLimitsOnly": {
+      "pipetteML": "10.00 +/-0.02",
+      "flaskML": "20.00 +/-0.02",
+      "nominalFactor": 2,
+      "factorBoundsIfOnlyTheseToleranceLimitsApplied": [
+        1.9940119760479043,
+        2.006012024048096
+      ],
+      "notStatisticalUncertaintyOrFullPracticalErrorBudget": true
+    },
+    "R2": {
+      "newSample": "W3",
+      "eventDate": "2026-10-07",
+      "eventTime": "10:15",
+      "observer": "N",
+      "thermometer": "TH1",
+      "displayResolutionC": "0.1",
+      "waterTemperatureCBeforeSugar": "20.3",
+      "actualMeasuredOrRetrospectiveVerification": false
+    }
+  },
+  "realLearnerMeasurementsGenerated": false,
+  "fictionalSuppliedNumbersRemainModelData": true
+}

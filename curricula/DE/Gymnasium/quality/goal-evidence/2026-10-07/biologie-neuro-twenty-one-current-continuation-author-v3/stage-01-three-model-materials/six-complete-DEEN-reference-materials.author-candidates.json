@@ -1,0 +1,293 @@
+{
+  "schemaVersion": 1,
+  "authoredAtUTC": "2026-10-06T22:41:41.476390+00:00",
+  "role": "author candidate",
+  "goals": [
+    "4f631f78-e13a-58e5-9092-f4db0b8d377a",
+    "a46cafde-7359-5249-8754-19aaa3174ba4",
+    "c9a06264-cce2-54dd-9604-46dd5949f02e"
+  ],
+  "cases": [
+    {
+      "goalId": "4f631f78-e13a-58e5-9092-f4db0b8d377a",
+      "caseId": "initial-bounded-model",
+      "materialType": "authored_reference_model_or_dataset",
+      "titleDe": "Zwei Verbindungen nach einer gegebenen Hebb-Regel",
+      "titleEn": "Two connections under a supplied Hebbian rule",
+      "taskDe": "Ein künstliches Lernmodell besitzt die Eingänge A und B und die Ausgangszelle Y. Die dimensionslosen Anfangsgewichte sind wA=0,3 und wB=0,2. Für jede Runde ist die Lernregel Δwi=0,1·xi·y vorgegeben; das neue Gewicht ist das alte Gewicht plus Δwi. Die binären Aktivitäten sind vollständig gegeben, nicht aus den Gewichten zu berechnen: Runde 1: xA=1, xB=0, y=1; Runde 2: xA=0, xB=1, y=0; Runde 3: xA=1, xB=1, y=1. Bestimme beide Gewichte nach jeder Runde. Erkläre, weshalb die Aktivität von B in Runde 2 dessen Verbindung nicht verstärkt und welche lernähnliche Änderung die Regel modelliert. Benenne eine konkrete Grenze der Aussage.",
+      "taskEn": "An artificial learning model has inputs A and B and output cell Y. Initial dimensionless weights are wA=0.3 and wB=0.2. Each round uses the supplied learning rule Δwi=0.1·xi·y; the new weight is the old weight plus Δwi. The binary activities are fully supplied, not to be computed from the weights: round 1: xA=1, xB=0, y=1; round 2: xA=0, xB=1, y=0; round 3: xA=1, xB=1, y=1. Determine both weights after each round. Explain why activity of B in round 2 does not strengthen its connection and which learning-like change the rule models. State a specific inference limit.",
+      "referenceResponseDe": "Nach den drei Runden ergeben sich (wA,wB)=(0,4;0,2), (0,4;0,2), (0,5;0,3). Bei B ist in Runde 2 y=0, somit ist xB·y=0 trotz aktivem Eingang. Die Regel verstärkt im Modell Verbindungen bei gemeinsam gegebener prä- und postsynaptischer Aktivität. Es gibt hier keine Regel für die Erzeugung der Ausgangsaktivität und keine Gewichtseinheiten einer realen Synapse; die Rechnung belegt weder eine reale Erinnerung noch ein allgemeines biologisches Lerngesetz.",
+      "referenceResponseEn": "After the three rounds, (wA,wB)=(0.4,0.2), (0.4,0.2), (0.5,0.3). For B in round 2, y=0, so xB·y=0 despite the active input. In this model the rule strengthens connections when supplied pre- and postsynaptic activity co-occurs. No rule for producing output activity or units of a real synaptic weight is supplied; the calculation demonstrates neither a real memory nor a universal biological learning law.",
+      "structuredSuppliedData": {
+        "initialWeights": {
+          "A": 0.3,
+          "B": 0.2
+        },
+        "eta": 0.1,
+        "rounds": [
+          {
+            "xA": 1,
+            "xB": 0,
+            "y": 1
+          },
+          {
+            "xA": 0,
+            "xB": 1,
+            "y": 0
+          },
+          {
+            "xA": 1,
+            "xB": 1,
+            "y": 1
+          }
+        ],
+        "activitiesSuppliedNotPredicted": true,
+        "weightUnit": "dimensionless"
+      },
+      "understandingFocusDe": "Regel an einem gegebenen Netz anwenden und gemeinsame Aktivität von bloßer Eingangsaktivität unterscheiden.",
+      "understandingFocusEn": "Apply a rule to a supplied network and distinguish co-activity from input activity alone.",
+      "limitsDe": "Kein freies Erinnern einer universellen Hebb-Regel, keine reale Versuchsdurchführung und keine Ausgangsvorhersage ohne zusätzliche Regel.",
+      "limitsEn": "No recall of a universal Hebbian rule, no real experiment and no output prediction without an additional rule.",
+      "actualExperimentConducted": false,
+      "copiedResearchMeasurements": false,
+      "actualLearnerEvidence": false,
+      "taskQuota": false,
+      "license": "CC-BY-4.0"
+    },
+    {
+      "goalId": "4f631f78-e13a-58e5-9092-f4db0b8d377a",
+      "caseId": "fresh-contextual-transfer",
+      "materialType": "authored_reference_model_or_dataset",
+      "titleDe": "Eine zusätzliche Obergrenze verändert das Lernmodell",
+      "titleEn": "An added upper bound changes the learning model",
+      "taskDe": "Ein neues künstliches Netz hat wA=0,8, wB=0,2 und die vorgegebene Regel Δwi=0,2·xi·y. In zwei aufeinanderfolgenden Runden sind xA=1, xB=0 und y=1 gegeben. Variante U addiert den Zuwachs ohne Obergrenze. Variante K benutzt zusätzlich ausdrücklich wi,neu=min(1; wi,alt+Δwi). Bestimme in beiden Varianten die Gewichte nach jeder Runde, vergleiche die Vorhersagen und erkläre, welche Begrenzung K einführt. Würde U bei beliebig vielen gleichartigen Runden eine biologische Begrenzung darstellen? Begründe und trenne die ursprüngliche Regel von der neuen Modellannahme.",
+      "taskEn": "A fresh artificial network has wA=0.8, wB=0.2 and the supplied rule Δwi=0.2·xi·y. Two successive rounds have supplied activities xA=1, xB=0 and y=1. Variant U adds the increment without an upper bound. Variant K explicitly adds wi,new=min(1, wi,old+Δwi). Determine both weights after each round in both variants, compare predictions and explain the constraint introduced by K. Would U represent a biological limit over arbitrarily many similar rounds? Justify and distinguish the original rule from the new modelling assumption.",
+      "referenceResponseDe": "U ergibt (1,0;0,2) und (1,2;0,2), K ergibt zweimal (1,0;0,2). B bleibt unverändert, weil xB=0. Die Obergrenze begrenzt die Verbindungsstärke im ausdrücklich ergänzten Modell K; U wächst bei wiederholter gemeinsamer Aktivität unbegrenzt. Das ist eine konkrete Grenze dieses einfachen Modells, keine Messung biologischer Gewichte. Die K-Grenze 1 ist eine zusätzliche Annahme und folgt nicht aus der Hebb-Regel selbst.",
+      "referenceResponseEn": "U yields (1.0,0.2) and (1.2,0.2); K yields (1.0,0.2) twice. B is unchanged because xB=0. The bound constrains connection strength in the explicitly extended model K; U grows without bound under repeated co-activity. This is a concrete limitation of the simple model, not a measurement of biological weights. K’s bound of 1 is an added assumption and does not follow from the Hebbian rule itself.",
+      "structuredSuppliedData": {
+        "initialWeights": {
+          "A": 0.8,
+          "B": 0.2
+        },
+        "eta": 0.2,
+        "rounds": [
+          {
+            "xA": 1,
+            "xB": 0,
+            "y": 1
+          },
+          {
+            "xA": 1,
+            "xB": 0,
+            "y": 1
+          }
+        ],
+        "suppliedAlternativeUpperBound": 1,
+        "weightUnit": "dimensionless"
+      },
+      "understandingFocusDe": "Frischer Transfer verändert eine Modellbedingung, nicht nur Zahlen; eine Vorhersage wird mit ihrer zusätzlichen Annahme verknüpft.",
+      "understandingFocusEn": "Fresh transfer changes a model condition, not just numbers; connect a prediction to its added assumption.",
+      "limitsDe": "Die Zahl 1 ist kein amtlicher oder allgemeiner biologischer Sättigungswert. Aus dem Gewicht wird kein tatsächlicher Lernerfolg abgeleitet.",
+      "limitsEn": "The value 1 is neither an official nor a universal biological saturation value. Weight changes do not establish actual learning success.",
+      "actualExperimentConducted": false,
+      "copiedResearchMeasurements": false,
+      "actualLearnerEvidence": false,
+      "taskQuota": false,
+      "license": "CC-BY-4.0"
+    },
+    {
+      "goalId": "a46cafde-7359-5249-8754-19aaa3174ba4",
+      "caseId": "initial-bounded-model",
+      "materialType": "authored_reference_model_or_dataset",
+      "titleDe": "Gleiche Eingänge bei vorgegebenen plastischen Verbindungsänderungen",
+      "titleEn": "Identical inputs under supplied plastic connection changes",
+      "taskDe": "Ein ausdrücklich vereinfachtes neuronales Plastizitätsmodell beschreibt den Testwert u=−70 mV+wA·xA+wB·xB. Die binären Eingänge xA und xB sind gegeben; die Gewichte geben den wirksamen Beitrag in mV bei aktivem Eingang an. Das Modell erzeugt genau dann ein Ausgangssignal, wenn u≥−55 mV. Es vernachlässigt die zeitliche Dynamik und beschreibt kein vollständiges Aktionspotenzial. Das Material gibt eine nach einer Trainingsphase anhaltende Verbindungsänderung vor: vorher wA=6 mV, wB=10 mV; danach wA=16 mV, wB=10 mV. Teste dieselben drei Eingangsmuster (1,0), (0,1), (1,1) vorher und danach. Erkläre, welches Ausgangsverhalten sich durch die gegebene Änderung verändert und weshalb dieser Vergleich keinen bestimmten molekularen Lernmechanismus beweist.",
+      "taskEn": "An explicitly simplified neural plasticity model describes the test value u=−70 mV+wA·xA+wB·xB. Binary inputs xA and xB are supplied; each weight is the effective contribution in mV when its input is active. The model produces an output signal exactly when u≥−55 mV. It omits temporal dynamics and does not describe a complete action potential. The material supplies a persistent connection change after training: before wA=6 mV, wB=10 mV; after wA=16 mV, wB=10 mV. Test the same three input patterns (1,0), (0,1), (1,1) before and after. Explain which output behaviour changes because of the supplied connection change and why the comparison does not establish a particular molecular learning mechanism.",
+      "referenceResponseDe": "Für (1,0) ist u vorher −64 mV ohne und danach −54 mV mit Ausgangssignal. Für (0,1) bleibt u=−60 mV ohne Ausgang. Für (1,1) ergeben sich −54 und −44 mV, jeweils mit Ausgang. Die anhaltend wirksamere Verbindung A bewirkt somit bei unverändertem A-Eingang das Überschreiten der gegebenen Schwelle; B allein bleibt ohne Ausgang. Gleiche Eingänge, Grundwert und Schwelle erlauben diesen kontrollierten Modellvergleich. Die Verbindung wurde im Material als verändert vorgegeben; weder die Ursache dieser Änderung noch eine reale Erinnerung folgt aus der Rechnung.",
+      "referenceResponseEn": "For (1,0), u is −64 mV with no output before and −54 mV with output after. For (0,1), u remains −60 mV with no output. For (1,1), values are −54 and −44 mV, both producing output. Thus the persistently more effective connection A crosses the supplied threshold for the unchanged A input; B alone still produces no output. Fixed inputs, baseline and threshold permit this controlled model comparison. The changed connection is supplied in the material; its cause and a real memory do not follow from the calculation.",
+      "structuredSuppliedData": {
+        "baselineMv": -70,
+        "outputThresholdMv": -55,
+        "beforeWeightsMv": {
+          "A": 6,
+          "B": 10
+        },
+        "afterWeightsMv": {
+          "A": 16,
+          "B": 10
+        },
+        "identicalInputsBeforeAfter": [
+          [
+            1,
+            0
+          ],
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "persistentChangeSuppliedAfterTraining": true,
+        "updateRuleRequired": false
+      },
+      "understandingFocusDe": "Gegebene Verbindungszustände bei identischen Inputs vergleichen und den veränderten Verarbeitungseffekt erklären.",
+      "understandingFocusEn": "Compare supplied connection states with identical inputs and explain the changed processing effect.",
+      "limitsDe": "Vereinfachtes Schwellenmodell; weder Hebb-Gewichte erzeugen noch die reale molekulare Ursache oder ein vollständiges AP bestimmen.",
+      "limitsEn": "Simplified threshold model; do not generate Hebbian weights or determine the real molecular cause or a complete action potential.",
+      "actualExperimentConducted": false,
+      "copiedResearchMeasurements": false,
+      "actualLearnerEvidence": false,
+      "taskQuota": false,
+      "license": "CC-BY-4.0"
+    },
+    {
+      "goalId": "a46cafde-7359-5249-8754-19aaa3174ba4",
+      "caseId": "fresh-contextual-transfer",
+      "materialType": "authored_reference_model_or_dataset",
+      "titleDe": "Anhaltend stärkere Hemmung im selben Modell",
+      "titleEn": "Persistently stronger inhibition in the same model",
+      "taskDe": "Ein zweites gegebenes Plastizitätsmodell benutzt u=−70 mV+wA·xA+wI·xI und dieselbe Ausgangsschwelle −55 mV. A ist erregend, I hemmend. Der Materialvergleich nach zwei Trainingsbedingungen gibt jeweils anhaltende Verbindungszustände vor; der Testinput bleibt xA=xI=1. Zustand P hat wA=16 mV und wI=−1 mV. Zustand Q hat ebenfalls wA=16 mV, aber wI=−6 mV. Erkläre anhand beider Testwerte, weshalb die starke erregende Verbindung A keinen sicheren Ausgang garantiert. Welche Änderung erklärt hier den Unterschied? Welche zusätzliche Beobachtung wäre nötig, um statt einer wirksamen Verstärkung eine neu gebildete Verbindung zu behaupten?",
+      "taskEn": "A second supplied plasticity model uses u=−70 mV+wA·xA+wI·xI and the same output threshold of −55 mV. A is excitatory and I inhibitory. After two training conditions the material supplies persistent connection states; test input stays xA=xI=1. State P has wA=16 mV and wI=−1 mV. State Q also has wA=16 mV but wI=−6 mV. Use both test values to explain why the strong excitatory connection A does not guarantee output. Which change explains the difference here? What additional observation would be needed to claim a newly formed connection rather than a change in effective strength?",
+      "referenceResponseDe": "P ergibt −55 mV und erreicht genau die gegebene Schwelle; Q ergibt −60 mV und bleibt darunter. Bei gleichem Testinput und unverändertem erregendem Beitrag erklärt die im Material vorgegebene stärkere Hemmung das Ausbleiben des Ausgangs. Die Gesamtverarbeitung hängt von gemeinsam wirksamen Verbindungen ab. Aus einem anderen wirksamen Gewicht folgt keine neue Kontaktstelle; dafür wäre etwa ein gegebener struktureller Vorher-nachher-Befund erforderlich. Das Modell liefert keinen Nachweis einer bestimmten realen Erinnerung.",
+      "referenceResponseEn": "P yields −55 mV, exactly reaching the supplied threshold; Q yields −60 mV, below it. With unchanged test input and excitatory contribution, the supplied stronger inhibition explains the absence of output. Overall processing depends on jointly effective connections. A different effective weight does not establish a new contact; that would require, for example, supplied structural before-and-after evidence. The model does not demonstrate a particular real memory.",
+      "structuredSuppliedData": {
+        "baselineMv": -70,
+        "outputThresholdMv": -55,
+        "sameInput": {
+          "A": 1,
+          "I": 1
+        },
+        "statePWeightsMv": {
+          "A": 16,
+          "I": -1
+        },
+        "stateQWeightsMv": {
+          "A": 16,
+          "I": -6
+        },
+        "persistentTrainingConditionDifferencesSupplied": true,
+        "structuralDataSupplied": false
+      },
+      "understandingFocusDe": "Ein qualitativer Kontextwechsel zu Hemmung überprüft denselben kontrollierten Netzwerkvergleich; funktionelle und strukturelle Schlussgrenzen bleiben sichtbar.",
+      "understandingFocusEn": "Changing context to inhibition tests the same controlled network comparison; functional and structural inference limits remain explicit.",
+      "limitsDe": "Kein beliebiger Läsionsfall und keine ungemessene Strukturänderung; alle anhaltenden wirksamen Zustände sind vorgegeben.",
+      "limitsEn": "No arbitrary lesion case or unmeasured structural change; all persistent effective states are supplied.",
+      "actualExperimentConducted": false,
+      "copiedResearchMeasurements": false,
+      "actualLearnerEvidence": false,
+      "taskQuota": false,
+      "license": "CC-BY-4.0"
+    },
+    {
+      "goalId": "c9a06264-cce2-54dd-9604-46dd5949f02e",
+      "caseId": "initial-bounded-model",
+      "materialType": "authored_reference_model_or_dataset",
+      "titleDe": "Langfristig verstärkte synaptische Antwort mit Kontrollpfad",
+      "titleEn": "Long-lasting stronger synaptic response with a control pathway",
+      "taskDe": "Die folgenden Zahlen sind ein erstellter schulischer Referenzdatensatz, keine durchgeführten Messungen. In einer beschriebenen Präparation wird die synaptische Antwort zweier unabhängiger Eingangswege auf denselben schwachen Testreiz verglichen. Im Weg T findet zwischen Basiswert und Minute 5 eine Trainingsserie statt; Weg C bleibt ohne diese Serie. Alle Testreize eines Wegs haben unveränderte Stärke und Frequenz. Die mitgelieferte Verfahrensbeschreibung nennt unverändertes Ruhepotenzial, unveränderten Zugangswiderstand der Ableitung und unveränderte präsynaptische Testantwort. Antwortamplituden in relativen Einheiten, Zeiten Basis/5/30/60 Minuten: T: 2,0/3,2/3,1/3,2; C: 2,0/2,0/1,98/2,0. Ordne den Verlauf ein, begründe die Rolle des Kontrollwegs und erläutere, weshalb der Befund als Modell eines zellulären Lernprozesses dienen kann. Benenne die Aussagegrenze zur Dauer, Ursache und tatsächlichen Erinnerung.",
+      "taskEn": "The following values are an authored school reference dataset, not measurements that were conducted. In a described preparation, the synaptic responses of two independent input pathways to the same weak test stimulus are compared. Path T receives a training series between baseline and minute 5; path C receives no such series. All test stimuli within a pathway have unchanged strength and frequency. The supplied procedure states unchanged resting potential, unchanged recording access resistance and unchanged presynaptic test response. Response amplitudes in relative units, times baseline/5/30/60 minutes: T: 2.0/3.2/3.1/3.2; C: 2.0/2.0/1.98/2.0. Classify the time course, explain the control pathway and explain why the finding can model a cellular learning process. State limits concerning duration, cause and actual memory.",
+      "referenceResponseDe": "T bleibt über 60 Minuten gegenüber seinem Basiswert verstärkt, C bleibt annähernd konstant. Das passt unter den gegebenen Testbedingungen zu einer langfristigen Potenzierung der untersuchten synaptischen Wirksamkeit (LTP). Optionales Normieren ergibt für T 160/155/160 % des Basiswerts; die Zahlen allein sind kein statistischer Signifikanztest. Der unveränderte Test und Kontrollweg sprechen gegen einen allgemeinen Messdrift oder bloß stärkeren Testreiz. Aktivitätsabhängig anhaltend veränderte Übertragung kann einen Aspekt zellulären Lernens modellieren. Die Daten belegen nur den beobachteten Zeitraum; sie zeigen weder eine bestimmte molekulare Ursache noch eine gespeicherte menschliche Erinnerung oder sämtliche Lernprozesse.",
+      "referenceResponseEn": "T remains stronger than baseline across 60 minutes while C is approximately constant. Under the supplied test conditions this is consistent with long-term potentiation of the studied synaptic efficacy (LTP). Optional normalization gives T 160/155/160% of baseline; the numbers alone are not a statistical significance test. Unchanged testing and the control path argue against general measurement drift or merely stronger test stimulation. Activity-dependent persistent changes in transmission can model one aspect of cellular learning. The data establish only the observed period, not a particular molecular cause, a stored human memory or all learning processes.",
+      "structuredSuppliedData": {
+        "timeMinutes": [
+          0,
+          5,
+          30,
+          60
+        ],
+        "pathT": [
+          2.0,
+          3.2,
+          3.1,
+          3.2
+        ],
+        "controlC": [
+          2.0,
+          2.0,
+          1.98,
+          2.0
+        ],
+        "unit": "relative response amplitude",
+        "sameTestWithinEachPath": true,
+        "stableRestingAndAccessResistanceAndPresynapticResponseSupplied": true,
+        "replicateStatisticsSupplied": false
+      },
+      "understandingFocusDe": "Gegebenen anhaltenden Verstärkungsbefund mit seinem Kontrollvergleich und seiner Schlussgrenze einordnen.",
+      "understandingFocusEn": "Interpret a supplied persistent-strengthening finding with its control comparison and inference limit.",
+      "limitsDe": "Keine Versuchsdurchführung, statistische Pflichtrechnung, molekulare Kaskade oder Aussage über unbeobachtete Dauer.",
+      "limitsEn": "No experiment, required statistical calculation, molecular cascade or claim about an unobserved duration.",
+      "actualExperimentConducted": false,
+      "copiedResearchMeasurements": false,
+      "actualLearnerEvidence": false,
+      "taskQuota": false,
+      "license": "CC-BY-4.0"
+    },
+    {
+      "goalId": "c9a06264-cce2-54dd-9604-46dd5949f02e",
+      "caseId": "fresh-contextual-transfer",
+      "materialType": "authored_reference_model_or_dataset",
+      "titleDe": "LTD, vorübergehende Abschwächung und stärkerer Testreiz",
+      "titleEn": "LTD, transient weakening and stronger test stimulation",
+      "taskDe": "Ein neuer erstellter Referenzdatensatz vergleicht drei getrennt beschriebene Ansätze mit Amplituden in relativen Einheiten, jeweils Basis/5/30/60 Minuten. Ansatz D erhält eine beschriebene Trainingsserie: D=4,0/2,0/2,1/2,0, passender Kontrollweg CD=4,0/4,0/4,0/4,0. Ansatz R erhält eine andere Trainingsserie: R=4,0/2,0/3,7/4,0, Kontrollweg CR=4,0/4,0/4,0/4,0. Bei D und R bleiben Teststärke, Testfrequenz, Ruhepotenzial, Zugangswiderstand und präsynaptische Testantwort laut Verfahrensbeschreibung unverändert. Im getrennten Ansatz S wird ohne Trainingsserie der Testreiz nach dem Basiswert absichtlich stärker eingestellt; seine Antwort ist S=4,0/6,0/6,0/6,0. Ordne D und R anhand ihrer Dauer ein. Erkläre, weshalb S trotz später höherer Antwort keinen LTP-Befund unter gleichen Testbedingungen liefert. Begründe die Bedeutung und Grenzen langfristiger Abschwächung als zelluläres Lernmodell.",
+      "taskEn": "A fresh authored reference dataset compares three separately described conditions, with amplitudes in relative units at baseline/5/30/60 minutes. Condition D receives a described training series: D=4.0/2.0/2.1/2.0, matched control CD=4.0/4.0/4.0/4.0. Condition R receives a different series: R=4.0/2.0/3.7/4.0, control CR=4.0/4.0/4.0/4.0. For D and R the procedure supplies unchanged test strength, test frequency, resting potential, access resistance and presynaptic test response. In separate condition S, test stimulation is deliberately increased after baseline without a training series; S=4.0/6.0/6.0/6.0. Classify D and R by duration. Explain why S, despite its higher later response, does not provide LTP evidence under identical test conditions. Explain the relevance and limits of long-term weakening as a cellular learning model.",
+      "referenceResponseDe": "D bleibt bei ungefähr der halben Basisamplitude über 60 Minuten abgeschwächt, bei stabilem Kontrollweg und gleichem Test: vereinbar mit LTD. R erholt sich auf den Basiswert; hier ist nur eine vorübergehende Abschwächung belegt, keine anhaltende LTD im beobachteten späteren Zeitraum. Bei S ist die Testbedingung verändert; daraus lässt sich keine stärkere synaptische Wirksamkeit unter gleichem Eingang ableiten. Sowohl Verstärkung als auch Abschwächung können anhaltende aktivitätsabhängige Änderungen und damit Modelle zellulären Lernens sein. Kein Verlauf allein beweist Vergessen, eine bestimmte molekulare Ursache oder eine konkrete menschliche Gedächtnisleistung.",
+      "referenceResponseEn": "D stays near half its baseline amplitude across 60 minutes, with a stable control and unchanged test: consistent with LTD. R recovers to baseline, establishing transient weakening rather than persistent LTD during the later observed period. S changes the test condition, so it does not establish stronger synaptic efficacy for the same input. Both strengthening and weakening can be persistent activity-dependent changes and therefore cellular learning models. No time course alone establishes forgetting, a particular molecular cause or a specific human memory performance.",
+      "structuredSuppliedData": {
+        "timeMinutes": [
+          0,
+          5,
+          30,
+          60
+        ],
+        "pathD": [
+          4.0,
+          2.0,
+          2.1,
+          2.0
+        ],
+        "controlD": [
+          4.0,
+          4.0,
+          4.0,
+          4.0
+        ],
+        "pathR": [
+          4.0,
+          2.0,
+          3.7,
+          4.0
+        ],
+        "controlR": [
+          4.0,
+          4.0,
+          4.0,
+          4.0
+        ],
+        "pathS": [
+          4.0,
+          6.0,
+          6.0,
+          6.0
+        ],
+        "sameTestWithinD_R": true,
+        "testChangedForS": true,
+        "unit": "relative response amplitude"
+      },
+      "understandingFocusDe": "Frischer Transfer trennt Abschwächungsdauer und geänderte Testbedingung; ein höherer oder niedrigerer Einzelwert genügt nicht.",
+      "understandingFocusEn": "Fresh transfer separates weakening duration from a changed test condition; a single higher or lower value is insufficient.",
+      "limitsDe": "LTD wird nicht mit tatsächlichem Vergessen gleichgesetzt; der Kontrollvergleich liefert keine eigenständige molekulare Erklärung.",
+      "limitsEn": "LTD is not equated with actual forgetting; the control comparison does not independently explain a molecular mechanism.",
+      "actualExperimentConducted": false,
+      "copiedResearchMeasurements": false,
+      "actualLearnerEvidence": false,
+      "taskQuota": false,
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "license": "CC-BY-4.0",
+  "actualLearnerEvidence": false,
+  "humanApproval": false
+}

@@ -125,13 +125,29 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   }
 
   const biology = checkGoalBookSourceAtlasInputs('app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json', root)
-  // Two reviewed atomic splits and 18 NI atoms extend the former 363-goal atlas.
-  assert.deepEqual(biology.receipt.counts, { canonicalCurricularAtomicGoals: 383, publishedCurricularAtomicGoals: 383, sourceViews: 20, unresolvedSourceScopeDecisions: 0, omittedGoals: 0 })
+  // Seven independently reviewed genetics atoms extend the preserved 383-goal atlas.
+  assert.deepEqual(biology.receipt.counts, { canonicalCurricularAtomicGoals: 390, publishedCurricularAtomicGoals: 390, sourceViews: 22, unresolvedSourceScopeDecisions: 0, omittedGoals: 0 })
   // Current direct source bindings add methylation in BY/HE, transcription
   // factors in BY, and the separate bacterial-fission atom in HE LK.
   assert.deepEqual(biology.receipt.scopes.filter(s => s.stage === 'SekII').map(s => [s.key, s.goalIds.length]), [
     ['DE-BY/SekII/GK', 90], ['DE-BY/SekII/LK', 117], ['DE-HE/SekII/GK', 77], ['DE-HE/SekII/LK', 159],
+    ['DE-ST/SekII/GK', 3], ['DE-ST/SekII/LK', 3],
   ])
+  // Direct source scope remains bounded: prerequisite availability does not
+  // become source coverage; ST's common entry phase is projected into both
+  // technical upper-secondary course routes, never into its SekI target set.
+  for (const [goalId, expectedScopes] of [
+    ['ac9e824f-003c-50ac-8751-2b8456004c63', ['DE-BB/SekI/', 'DE-BE/SekI/']],
+    ['5eb7c923-469d-5934-b1e8-292e1bb40d95', ['DE-SN/SekI/', 'DE-TH/SekI/']],
+    ['bfb5dfb6-8e35-5452-b581-96e061d8b826', ['DE-ST/SekII/GK', 'DE-ST/SekII/LK']],
+    ['3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04', ['DE-MV/SekI/', 'DE-ST/SekII/GK', 'DE-ST/SekII/LK']],
+    ['9d830422-acc7-5fa8-aee9-4dae4cedbf49', ['DE-MV/SekI/']],
+    ['d0c3e6a7-581b-57bd-8027-e940c6b77af8', ['DE-MV/SekI/', 'DE-SN/SekI/', 'DE-ST/SekII/GK', 'DE-ST/SekII/LK', 'DE-TH/SekI/']],
+    ['aab2a358-b2ee-57a5-a957-8fb9845506b1', ['DE-TH/SekI/']],
+  ] as const) {
+    assert.deepEqual(biology.receipt.scopes.filter(s => s.goalIds.includes(goalId)).map(s => s.key), expectedScopes, `${goalId}: exact independently reviewed source scope`)
+    assert.ok(biology.receipt.scopes.flatMap(s => s.witnesses.filter(w => w.goalId === goalId)).every(w => w.coverage === 'direct'), `${goalId}: no inherited source-coverage claim`)
+  }
   // The reviewed gel-method binding adds this existing atom to both BY profiles.
   const gelGoalId = '8eb86a82-122d-5cae-8f80-bb2850b29c2f'
   for (const key of ['DE-BY/SekII/GK', 'DE-BY/SekII/LK']) {

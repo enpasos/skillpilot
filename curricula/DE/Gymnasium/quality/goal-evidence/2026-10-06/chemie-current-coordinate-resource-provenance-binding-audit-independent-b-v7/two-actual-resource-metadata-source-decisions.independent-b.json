@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "reviewedAtUTC": "2026-10-06T20:18:44.478682+00:00",
+  "documentType": "independent-targeted-source-metadata-audit",
+  "goalId": "363c5740-8a3c-50b8-8c3a-5548c80c36ea",
+  "authorRole": false,
+  "newPeerSourceAuditARead": false,
+  "decision": "KEEP_TARGETED_TWO_FIELD_CORRECTION",
+  "fieldDecisions": [
+    {
+      "field": "resourceLinks[0].provider",
+      "before": "Google Gemini / Nano Banana Pro",
+      "after": "ChatGPT/Codex builtin image generation",
+      "decision": "KEEP",
+      "actualPrimaryReceipt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-bond-visual-correction-author-v4/actual-selected-raster-science-format-browser-provenance.author.json",
+        "sha256": "sha256:c4a3d0d8d3ff51f34838949da46d2393037da0a382341232ce2e438f4c1f0381",
+        "bytes": 14455
+      },
+      "actualExactPNG": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-bond-visual-correction-author-v4/visual-candidate/attempt-02.png",
+        "sha256": "sha256:7c2c562d42d59480f71def10d700fd45fd885e1622a515ac171aff74dd0b003e",
+        "bytes": 1506878
+      },
+      "rationale": "The exact selected attempt02 raster and actual v4 generation-chain receipt identify ChatGPT/Codex built-in image_gen, so the old Google/Nano label attached to this PNG is incorrect. The new provider identifies that actual tool without inventing an underlying model/version. The original Nano-generated reference image remains historical, not the generator of this corrected selected PNG."
+    },
+    {
+      "field": "resourceLinks[0].license",
+      "before": "AI-generated, SkillPilot-curated",
+      "after": "CC-BY-4.0",
+      "decision": "KEEP",
+      "actualProjectPolicy": {
+        "path": "LICENSING.md",
+        "sha256": "sha256:4441698e58a2bd2f5a8e983eb7111de69aa3ce25f5382911f5d71a6d422ac87e",
+        "bytes": 5621
+      },
+      "actualOwnDidacticSourceReceipt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-bond-visual-correction-author-v4/actual-selected-raster-science-format-browser-provenance.author.json",
+        "sha256": "sha256:c4a3d0d8d3ff51f34838949da46d2393037da0a382341232ce2e438f4c1f0381",
+        "bytes": 14455
+      },
+      "rationale": "The replaced phrase describes generation/curation provenance and is not a license. Current project policy assigns clearly own didactic images to CC-BY-4.0; the actual v4 source receipt explicitly describes this own local schematic learning illustration and its matching content allocation. The SPDX CC-BY-4.0 value matches those inputs. This audit does not infer copyright or universal third-party clearance from AI generation or grant rights beyond project-held rights."
+    }
+  ],
+  "scienceReuse": {
+    "priorIndependentV_BFreeze": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-visual-independent-b-v4/independent-coordinate-visual-b.final.freeze.json",
+      "sha256": "sha256:e8eddbbcb4e82f61efe44f7810b4deba243cd91456789799f4b19834dc95865b",
+      "bytes": 9905
+    },
+    "priorIndependentD_BFreeze": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-d-independent-b-v5/independent-native-four-plus-one-d-b.final.freeze.json",
+      "sha256": "sha256:84efbc858955a9e01b042e54605d8fc3ecfb464d526f51bef057154e86dcbcbd",
+      "bytes": 77612
+    },
+    "actualCurrentNativeHtmlPdfAndPngByteExact": true,
+    "newScientificDOrVReview": false,
+    "noFormalNewDRecordOrRunIssued": true,
+    "nativePScienceOrMaterialsReopened": false,
+    "unchangedNativePositiveStatus": "needs_human_review",
+    "unchangedNativePositiveAuthority": "ai_candidate"
+  },
+  "preservedOtherLimits": [
+    "HEQ1.2LK source qualification and all existing country/source/applicability claims unchanged",
+    "No complete Fehling species or unique stoichiometry claim introduced",
+    "No full GUI/source-superset or central M7 approval",
+    "No runtime/rendering/publication change; no visible provider/license display invented",
+    "Human approval/trial and actual learner evidence remain separate"
+  ],
+  "newScientificClosures": 0,
+  "restoredActiveBindings": 0,
+  "strictNetGain": 0,
+  "activeWrites": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "actualLearnerEvidence": false
+}

@@ -1,0 +1,1909 @@
+{
+  "total_count": 8,
+  "jobs": [
+    {
+      "id": 112461351158,
+      "run_id": 37519612538,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/enpasos/skillpilot/actions/runs/37519612538",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOQVi5788AAAAaLzgI9g",
+      "head_sha": "09ac7070b7aeba7c7ea06034f45c73a9eab8ef05",
+      "url": "https://api.github.com/repos/enpasos/skillpilot/actions/jobs/112461351158",
+      "html_url": "https://github.com/enpasos/skillpilot/actions/runs/37519612538/job/112461351158",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-06T19:31:29Z",
+      "started_at": "2026-10-06T19:31:32Z",
+      "completed_at": "2026-10-06T19:36:06Z",
+      "name": "OpenAI MCP V1 public edge CI",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-06T19:31:33Z",
+          "completed_at": "2026-10-06T19:31:33Z"
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-06T19:31:33Z",
+          "completed_at": "2026-10-06T19:35:38Z"
+        },
+        {
+          "name": "Validate public edge script",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-06T19:35:38Z",
+          "completed_at": "2026-10-06T19:35:38Z"
+        },
+        {
+          "name": "Validate OpenAI V1 mTLS edge verifier",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-06T19:35:38Z",
+          "completed_at": "2026-10-06T19:36:04Z"
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-06T19:36:04Z",
+          "completed_at": "2026-10-06T19:36:04Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-06T19:36:04Z",
+          "completed_at": "2026-10-06T19:36:04Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/enpasos/skillpilot/check-runs/112461351158",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000024405,
+      "runner_name": "GitHub Actions 1000024405",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 112461351454,
+      "run_id": 37519612538,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/enpasos/skillpilot/actions/runs/37519612538",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOQVi5788AAAAaLzgKHg",
+      "head_sha": "09ac7070b7aeba7c7ea06034f45c73a9eab8ef05",
+      "url": "https://api.github.com/repos/enpasos/skillpilot/actions/jobs/112461351454",
+      "html_url": "https://github.com/enpasos/skillpilot/actions/runs/37519612538/job/112461351454",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-06T19:31:29Z",
+      "started_at": "2026-10-06T19:31:32Z",
+      "completed_at": "2026-10-06T19:36:13Z",
+      "name": "Claude Connector V1 CI",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-06T19:31:33Z",
+          "completed_at": "2026-10-06T19:31:34Z"
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-06T19:31:34Z",
+          "completed_at": "2026-10-06T19:35:55Z"
+        },
+        {
+          "name": "Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-06T19:35:55Z",
+          "completed_at": "2026-10-06T19:36:03Z"
+        },
+        {
+          "name": "Install Claude MCP App dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-06T19:36:03Z",
+          "completed_at": "2026-10-06T19:36:04Z"
+        },
+        {
+          "name": "Test and rebuild Claude MCP Apps",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-06T19:36:04Z",
+          "completed_at": "2026-10-06T19:36:06Z"
+        },
+        {
+          "name": "Verify committed Claude MCP App resources",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-06T19:36:06Z",
+          "completed_at": "2026-10-06T19:36:06Z"
+        },
+        {
+          "name": "Audit Claude MCP App dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-06T19:36:06Z",
+          "completed_at": "2026-10-06T19:36:07Z"
+        },
+        {
+          "name": "Validate Claude plugin package",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-06T19:36:07Z",
+          "completed_at": "2026-10-06T19:36:09Z"
+        },
+        {
+          "name": "Verify Claude direct-install beta publication",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-06T19:36:09Z",
+          "completed_at": "2026-10-06T19:36:10Z"
+        },
+        {
+          "name": "Post Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-06T19:36:10Z",
+          "completed_at": "2026-10-06T19:36:10Z"
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-06T19:36:10Z",
+          "completed_at": "2026-10-06T19:36:10Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-06T19:36:10Z",
+          "completed_at": "2026-10-06T19:36:10Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/enpasos/skillpilot/check-runs/112461351454",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000024406,
+      "runner_name": "GitHub Actions 1000024406",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 112461351463,
+      "run_id": 37519612538,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/enpasos/skillpilot/actions/runs/37519612538",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOQVi5788AAAAaLzgKJw",
+      "head_sha": "09ac7070b7aeba7c7ea06034f45c73a9eab8ef05",
+      "url": "https://api.github.com/repos/enpasos/skillpilot/actions/jobs/112461351463",
+      "html_url": "https://github.com/enpasos/skillpilot/actions/runs/37519612538/job/112461351463",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-06T19:31:29Z",
+      "started_at": "2026-10-06T19:31:32Z",
+      "completed_at": "2026-10-06T19:45:46Z",
+      "name": "Learning-goal book build",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-06T19:31:34Z",
+          "completed_at": "2026-10-06T19:31:35Z"
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-06T19:31:35Z",
+          "completed_at": "2026-10-06T19:35:56Z"
+        },
+        {
+          "name": "Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-06T19:35:56Z",
+          "completed_at": "2026-10-06T19:36:06Z"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-06T19:36:06Z",
+          "completed_at": "2026-10-06T19:36:15Z"
+        },
+        {
+          "name": "Use Ubuntu package sources",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-06T19:36:15Z",
+          "completed_at": "2026-10-06T19:36:15Z"
+        },
+        {
+          "name": "Test CI package source isolation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-06T19:36:15Z",
+          "completed_at": "2026-10-06T19:36:16Z"
+        },
+        {
+          "name": "Install PDF and font tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-06T19:36:16Z",
+          "completed_at": "2026-10-06T19:36:34Z"
+        },
+        {
+          "name": "Install pinned Playwright Chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-06T19:36:34Z",
+          "completed_at": "2026-10-06T19:36:57Z"
+        },
+        {
+          "name": "Prepare generated curriculum runtime assets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-06T19:36:57Z",
+          "completed_at": "2026-10-06T19:37:27Z"
+        },
+        {
+          "name": "Reject tracked generated goal-book publications",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-06T19:37:27Z",
+          "completed_at": "2026-10-06T19:37:27Z"
+        },
+        {
+          "name": "Build and validate all four goal-book publications from source",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-06T19:37:27Z",
+          "completed_at": "2026-10-06T19:44:55Z"
+        },
+        {
+          "name": "Verify generated publication bindings",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-06T19:44:55Z",
+          "completed_at": "2026-10-06T19:45:36Z"
+        },
+        {
+          "name": "Share verified goal-book publications with the application checks",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-06T19:45:36Z",
+          "completed_at": "2026-10-06T19:45:41Z"
+        },
+        {
+          "name": "Share only the catalog and models required by backend tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-06T19:45:41Z",
+          "completed_at": "2026-10-06T19:45:43Z"
+        },
+        {
+          "name": "Post Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27,
+          "started_at": "2026-10-06T19:45:43Z",
+          "completed_at": "2026-10-06T19:45:43Z"
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28,
+          "started_at": "2026-10-06T19:45:43Z",
+          "completed_at": "2026-10-06T19:45:43Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-10-06T19:45:43Z",
+          "completed_at": "2026-10-06T19:45:43Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/enpasos/skillpilot/check-runs/112461351463",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000024407,
+      "runner_name": "GitHub Actions 1000024407",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 112461351498,
+      "run_id": 37519612538,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/enpasos/skillpilot/actions/runs/37519612538",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOQVi5788AAAAaLzgKSg",
+      "head_sha": "09ac7070b7aeba7c7ea06034f45c73a9eab8ef05",
+      "url": "https://api.github.com/repos/enpasos/skillpilot/actions/jobs/112461351498",
+      "html_url": "https://github.com/enpasos/skillpilot/actions/runs/37519612538/job/112461351498",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-06T19:31:29Z",
+      "started_at": "2026-10-06T19:31:32Z",
+      "completed_at": "2026-10-06T19:35:54Z",
+      "name": "action-regression-ci",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-06T19:31:32Z",
+          "completed_at": "2026-10-06T19:31:33Z"
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-06T19:31:33Z",
+          "completed_at": "2026-10-06T19:35:40Z"
+        },
+        {
+          "name": "Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-06T19:35:40Z",
+          "completed_at": "2026-10-06T19:35:49Z"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-06T19:35:49Z",
+          "completed_at": "2026-10-06T19:35:49Z"
+        },
+        {
+          "name": "Verify own-project license declarations",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-06T19:35:49Z",
+          "completed_at": "2026-10-06T19:35:49Z"
+        },
+        {
+          "name": "Test Spring-hosted Custom GPT Action control client",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-06T19:35:49Z",
+          "completed_at": "2026-10-06T19:35:50Z"
+        },
+        {
+          "name": "Validate current Custom GPT Action Session contract",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-06T19:35:50Z",
+          "completed_at": "2026-10-06T19:35:50Z"
+        },
+        {
+          "name": "Validate production deployment entrypoint",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-06T19:35:50Z",
+          "completed_at": "2026-10-06T19:35:50Z"
+        },
+        {
+          "name": "Verify Gemini gateway deployment and exact skill download guards",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-06T19:35:50Z",
+          "completed_at": "2026-10-06T19:35:52Z"
+        },
+        {
+          "name": "Post Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-06T19:35:52Z",
+          "completed_at": "2026-10-06T19:35:52Z"
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-06T19:35:52Z",
+          "completed_at": "2026-10-06T19:35:52Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-06T19:35:52Z",
+          "completed_at": "2026-10-06T19:35:52Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/enpasos/skillpilot/check-runs/112461351498",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000024408,
+      "runner_name": "GitHub Actions 1000024408",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 112461351686,
+      "run_id": 37519612538,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/enpasos/skillpilot/actions/runs/37519612538",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOQVi5788AAAAaLzgLBg",
+      "head_sha": "09ac7070b7aeba7c7ea06034f45c73a9eab8ef05",
+      "url": "https://api.github.com/repos/enpasos/skillpilot/actions/jobs/112461351686",
+      "html_url": "https://github.com/enpasos/skillpilot/actions/runs/37519612538/job/112461351686",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-06T19:31:29Z",
+      "started_at": "2026-10-06T19:31:32Z",
+      "completed_at": "2026-10-06T19:36:00Z",
+      "name": "OpenAI MCP Apps CI",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-06T19:31:33Z",
+          "completed_at": "2026-10-06T19:31:33Z"
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-06T19:31:33Z",
+          "completed_at": "2026-10-06T19:35:40Z"
+        },
+        {
+          "name": "Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-06T19:35:40Z",
+          "completed_at": "2026-10-06T19:35:49Z"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-06T19:35:49Z",
+          "completed_at": "2026-10-06T19:35:50Z"
+        },
+        {
+          "name": "Test DE and EN MCP App contracts and workflows",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-06T19:35:50Z",
+          "completed_at": "2026-10-06T19:35:53Z"
+        },
+        {
+          "name": "Test plugin release and CI configuration",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-06T19:35:53Z",
+          "completed_at": "2026-10-06T19:35:54Z"
+        },
+        {
+          "name": "Validate SkillPilot Coach source and current submission contract",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-06T19:35:54Z",
+          "completed_at": "2026-10-06T19:35:55Z"
+        },
+        {
+          "name": "Validate current OpenAI 1.1 plan contract",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-06T19:35:55Z",
+          "completed_at": "2026-10-06T19:35:55Z"
+        },
+        {
+          "name": "Test submission generation, export audit and trace validation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-06T19:35:55Z",
+          "completed_at": "2026-10-06T19:35:55Z"
+        },
+        {
+          "name": "Test OpenAI V1 runtime configuration guard",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-06T19:35:55Z",
+          "completed_at": "2026-10-06T19:35:56Z"
+        },
+        {
+          "name": "Validate exact V1 production boundary configuration",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-06T19:35:56Z",
+          "completed_at": "2026-10-06T19:35:56Z"
+        },
+        {
+          "name": "Audit MCP App dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-06T19:35:56Z",
+          "completed_at": "2026-10-06T19:35:57Z"
+        },
+        {
+          "name": "Retain checked OpenAI submission worksheets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-06T19:35:57Z",
+          "completed_at": "2026-10-06T19:35:57Z"
+        },
+        {
+          "name": "Post Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25,
+          "started_at": "2026-10-06T19:35:57Z",
+          "completed_at": "2026-10-06T19:35:58Z"
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26,
+          "started_at": "2026-10-06T19:35:58Z",
+          "completed_at": "2026-10-06T19:35:58Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27,
+          "started_at": "2026-10-06T19:35:58Z",
+          "completed_at": "2026-10-06T19:35:58Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/enpasos/skillpilot/check-runs/112461351686",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000024409,
+      "runner_name": "GitHub Actions 1000024409",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 112467352206,
+      "run_id": 37519612538,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/enpasos/skillpilot/actions/runs/37519612538",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOQVi5788AAAAaL5Oajg",
+      "head_sha": "09ac7070b7aeba7c7ea06034f45c73a9eab8ef05",
+      "url": "https://api.github.com/repos/enpasos/skillpilot/actions/jobs/112467352206",
+      "html_url": "https://github.com/enpasos/skillpilot/actions/runs/37519612538/job/112467352206",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-06T19:45:47Z",
+      "started_at": "2026-10-06T19:45:50Z",
+      "completed_at": "2026-10-06T20:02:18Z",
+      "name": "backend-ci",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-06T19:45:51Z",
+          "completed_at": "2026-10-06T19:45:54Z"
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-06T19:45:54Z",
+          "completed_at": "2026-10-06T19:51:27Z"
+        },
+        {
+          "name": "Restore same-run verified goal-book catalog and models",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-06T19:51:27Z",
+          "completed_at": "2026-10-06T19:51:29Z"
+        },
+        {
+          "name": "Use Java",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-06T19:51:29Z",
+          "completed_at": "2026-10-06T19:51:54Z"
+        },
+        {
+          "name": "Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-06T19:51:54Z",
+          "completed_at": "2026-10-06T19:51:58Z"
+        },
+        {
+          "name": "Use production Corretto build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-06T19:51:58Z",
+          "completed_at": "2026-10-06T19:52:02Z"
+        },
+        {
+          "name": "Ensure Gradle wrapper is executable",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-06T19:52:02Z",
+          "completed_at": "2026-10-06T19:52:02Z"
+        },
+        {
+          "name": "Run backend tests",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-06T19:52:02Z",
+          "completed_at": "2026-10-06T20:02:08Z"
+        },
+        {
+          "name": "Verify OpenAI V1 release or draft snapshot",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-06T20:02:08Z",
+          "completed_at": "2026-10-06T20:02:14Z"
+        },
+        {
+          "name": "Verify Claude direct-install beta publication",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-06T20:02:14Z",
+          "completed_at": "2026-10-06T20:02:14Z"
+        },
+        {
+          "name": "Post Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-06T20:02:14Z",
+          "completed_at": "2026-10-06T20:02:14Z"
+        },
+        {
+          "name": "Post Use Java",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-06T20:02:14Z",
+          "completed_at": "2026-10-06T20:02:15Z"
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-06T20:02:15Z",
+          "completed_at": "2026-10-06T20:02:15Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-06T20:02:15Z",
+          "completed_at": "2026-10-06T20:02:15Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/enpasos/skillpilot/check-runs/112467352206",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000024417,
+      "runner_name": "GitHub Actions 1000024417",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 112467352217,
+      "run_id": 37519612538,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/enpasos/skillpilot/actions/runs/37519612538",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOQVi5788AAAAaL5OamQ",
+      "head_sha": "09ac7070b7aeba7c7ea06034f45c73a9eab8ef05",
+      "url": "https://api.github.com/repos/enpasos/skillpilot/actions/jobs/112467352217",
+      "html_url": "https://github.com/enpasos/skillpilot/actions/runs/37519612538/job/112467352217",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-06T19:45:47Z",
+      "started_at": "2026-10-06T19:45:50Z",
+      "completed_at": "2026-10-06T20:15:20Z",
+      "name": "Curriculum CI",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-06T19:45:51Z",
+          "completed_at": "2026-10-06T19:45:54Z"
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-06T19:45:54Z",
+          "completed_at": "2026-10-06T19:50:00Z"
+        },
+        {
+          "name": "Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-06T19:50:00Z",
+          "completed_at": "2026-10-06T19:50:07Z"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-06T19:50:07Z",
+          "completed_at": "2026-10-06T19:50:16Z"
+        },
+        {
+          "name": "Use Ubuntu package sources",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-06T19:50:16Z",
+          "completed_at": "2026-10-06T19:50:16Z"
+        },
+        {
+          "name": "Install PDF validation tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-06T19:50:16Z",
+          "completed_at": "2026-10-06T19:50:33Z"
+        },
+        {
+          "name": "Install pinned Playwright Chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-06T19:50:33Z",
+          "completed_at": "2026-10-06T19:50:54Z"
+        },
+        {
+          "name": "Restore same-run verified goal-book publications",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-06T19:50:54Z",
+          "completed_at": "2026-10-06T19:51:00Z"
+        },
+        {
+          "name": "Validate Graph",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-06T19:51:00Z",
+          "completed_at": "2026-10-06T19:51:03Z"
+        },
+        {
+          "name": "Test exam Markdown conventions",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-06T19:51:03Z",
+          "completed_at": "2026-10-06T19:51:04Z"
+        },
+        {
+          "name": "Test reviewed Mathematics checkpoint assessments",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-06T19:51:04Z",
+          "completed_at": "2026-10-06T19:51:04Z"
+        },
+        {
+          "name": "Test HE Q2.5 central-dilation assessment scope",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-06T19:51:04Z",
+          "completed_at": "2026-10-06T19:51:15Z"
+        },
+        {
+          "name": "Test Mathematics Q2 assessment projection and scoring",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-06T19:51:15Z",
+          "completed_at": "2026-10-06T19:51:34Z"
+        },
+        {
+          "name": "Test hard Sek-I/Sek-II learning routes",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-06T19:51:34Z",
+          "completed_at": "2026-10-06T19:51:35Z"
+        },
+        {
+          "name": "Test reviewed canonical Mathematics Sek-I exam routes",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-06T19:51:35Z",
+          "completed_at": "2026-10-06T19:51:35Z"
+        },
+        {
+          "name": "Test Q4 Caterer exam coverage and scope",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-06T19:51:35Z",
+          "completed_at": "2026-10-06T19:51:36Z"
+        },
+        {
+          "name": "Test learner-facing composition labels",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-06T19:51:36Z",
+          "completed_at": "2026-10-06T19:51:36Z"
+        },
+        {
+          "name": "Validate Competency Wording",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-06T19:51:36Z",
+          "completed_at": "2026-10-06T19:51:51Z"
+        },
+        {
+          "name": "Validate optional content packages and migration evidence",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-06T19:51:51Z",
+          "completed_at": "2026-10-06T19:51:52Z"
+        },
+        {
+          "name": "Validate View Filters",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-06T19:51:52Z",
+          "completed_at": "2026-10-06T19:52:02Z"
+        },
+        {
+          "name": "Check Source Landscape Registry",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-06T19:52:02Z",
+          "completed_at": "2026-10-06T19:52:03Z"
+        },
+        {
+          "name": "Check Hessen Math G8/G9 Projection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-10-06T19:52:03Z",
+          "completed_at": "2026-10-06T19:52:03Z"
+        },
+        {
+          "name": "Check generated Math G8/G9 Composition Views",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-10-06T19:52:03Z",
+          "completed_at": "2026-10-06T19:52:08Z"
+        },
+        {
+          "name": "Check generated German Sek-I Composition Views",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-10-06T19:52:08Z",
+          "completed_at": "2026-10-06T19:52:09Z"
+        },
+        {
+          "name": "Check generated History Sek-I Composition Views",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25,
+          "started_at": "2026-10-06T19:52:09Z",
+          "completed_at": "2026-10-06T19:52:10Z"
+        },
+        {
+          "name": "Check Canonical Math Scope Coverage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26,
+          "started_at": "2026-10-06T19:52:10Z",
+          "completed_at": "2026-10-06T19:52:10Z"
+        },
+        {
+          "name": "Check Gymnasium G8/G9 Duration Readiness Report",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27,
+          "started_at": "2026-10-06T19:52:10Z",
+          "completed_at": "2026-10-06T19:52:12Z"
+        },
+        {
+          "name": "Check Mathematics G8/G9 Duration Policy Readiness",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28,
+          "started_at": "2026-10-06T19:52:12Z",
+          "completed_at": "2026-10-06T19:52:14Z"
+        },
+        {
+          "name": "Check M6 G8/G9 Duration Policy Readiness",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-10-06T19:52:14Z",
+          "completed_at": "2026-10-06T19:52:16Z"
+        },
+        {
+          "name": "Check Gymnasium Duration Offerings",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 30,
+          "started_at": "2026-10-06T19:52:16Z",
+          "completed_at": "2026-10-06T19:52:16Z"
+        },
+        {
+          "name": "Check Curriculum Source Coverage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31,
+          "started_at": "2026-10-06T19:52:16Z",
+          "completed_at": "2026-10-06T19:52:27Z"
+        },
+        {
+          "name": "Check Goal Source Rationale Runtime Index",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 32,
+          "started_at": "2026-10-06T19:52:27Z",
+          "completed_at": "2026-10-06T19:52:28Z"
+        },
+        {
+          "name": "Check Goal Source Rationale All-Relevant Report",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 33,
+          "started_at": "2026-10-06T19:52:28Z",
+          "completed_at": "2026-10-06T19:52:28Z"
+        },
+        {
+          "name": "Check Goal Source Rationale Coverage Report",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 34,
+          "started_at": "2026-10-06T19:52:28Z",
+          "completed_at": "2026-10-06T19:52:29Z"
+        },
+        {
+          "name": "Check Goal Source Rationale Gap Issues",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 35,
+          "started_at": "2026-10-06T19:52:29Z",
+          "completed_at": "2026-10-06T19:52:30Z"
+        },
+        {
+          "name": "Check Goal Source Rationale Mapping Batch 01",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 36,
+          "started_at": "2026-10-06T19:52:30Z",
+          "completed_at": "2026-10-06T19:52:30Z"
+        },
+        {
+          "name": "Check Generated Documentation Notices",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 37,
+          "started_at": "2026-10-06T19:52:30Z",
+          "completed_at": "2026-10-06T19:52:30Z"
+        },
+        {
+          "name": "Check Generated Status Registry",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 38,
+          "started_at": "2026-10-06T19:52:30Z",
+          "completed_at": "2026-10-06T19:52:31Z"
+        },
+        {
+          "name": "Check Documentation Links",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39,
+          "started_at": "2026-10-06T19:52:31Z",
+          "completed_at": "2026-10-06T19:52:31Z"
+        },
+        {
+          "name": "Check Documentation Index Coverage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40,
+          "started_at": "2026-10-06T19:52:31Z",
+          "completed_at": "2026-10-06T19:52:32Z"
+        },
+        {
+          "name": "Check Terminology",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41,
+          "started_at": "2026-10-06T19:52:32Z",
+          "completed_at": "2026-10-06T19:52:46Z"
+        },
+        {
+          "name": "Validate Composition Views",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 42,
+          "started_at": "2026-10-06T19:52:46Z",
+          "completed_at": "2026-10-06T19:55:31Z"
+        },
+        {
+          "name": "Test Composition Projection Roles",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 43,
+          "started_at": "2026-10-06T19:55:31Z",
+          "completed_at": "2026-10-06T19:55:43Z"
+        },
+        {
+          "name": "Test Course-Level Mapping Consistency",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 44,
+          "started_at": "2026-10-06T19:55:43Z",
+          "completed_at": "2026-10-06T19:55:44Z"
+        },
+        {
+          "name": "Test Physics Source Method Routes",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 45,
+          "started_at": "2026-10-06T19:55:44Z",
+          "completed_at": "2026-10-06T19:56:56Z"
+        },
+        {
+          "name": "Check Memory-Card Reviews",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 46,
+          "started_at": "2026-10-06T19:56:56Z",
+          "completed_at": "2026-10-06T19:57:00Z"
+        },
+        {
+          "name": "Test strict deep curriculum QA and M7 transitions",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 47,
+          "started_at": "2026-10-06T19:57:00Z",
+          "completed_at": "2026-10-06T19:58:18Z"
+        },
+        {
+          "name": "Verify committed curriculum quality status",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 48,
+          "started_at": "2026-10-06T19:58:18Z",
+          "completed_at": "2026-10-06T20:00:04Z"
+        },
+        {
+          "name": "Prepare generated curriculum runtime assets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 49,
+          "started_at": "2026-10-06T20:00:04Z",
+          "completed_at": "2026-10-06T20:00:33Z"
+        },
+        {
+          "name": "Check goal visualization runtime assets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 50,
+          "started_at": "2026-10-06T20:00:33Z",
+          "completed_at": "2026-10-06T20:00:59Z"
+        },
+        {
+          "name": "Check goal visualization QA freshness",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 51,
+          "started_at": "2026-10-06T20:00:59Z",
+          "completed_at": "2026-10-06T20:01:05Z"
+        },
+        {
+          "name": "Check goal visualization approval coverage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 52,
+          "started_at": "2026-10-06T20:01:05Z",
+          "completed_at": "2026-10-06T20:01:06Z"
+        },
+        {
+          "name": "Check goal visualization rollout coverage",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 53,
+          "started_at": "2026-10-06T20:01:06Z",
+          "completed_at": "2026-10-06T20:01:08Z"
+        },
+        {
+          "name": "Test full standalone curriculum package builder",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 54,
+          "started_at": "2026-10-06T20:01:08Z",
+          "completed_at": "2026-10-06T20:01:09Z"
+        },
+        {
+          "name": "Build integrated application artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 55,
+          "started_at": "2026-10-06T20:01:09Z",
+          "completed_at": "2026-10-06T20:04:18Z"
+        },
+        {
+          "name": "Build package-only consumer frontend",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 56,
+          "started_at": "2026-10-06T20:04:18Z",
+          "completed_at": "2026-10-06T20:04:45Z"
+        },
+        {
+          "name": "Check Goal Source Rationale Build Artifact",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 57,
+          "started_at": "2026-10-06T20:04:45Z",
+          "completed_at": "2026-10-06T20:04:45Z"
+        },
+        {
+          "name": "Set up Python",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 58,
+          "started_at": "2026-10-06T20:04:45Z",
+          "completed_at": "2026-10-06T20:04:45Z"
+        },
+        {
+          "name": "Set up Java for package-consumer smoke",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 59,
+          "started_at": "2026-10-06T20:04:45Z",
+          "completed_at": "2026-10-06T20:05:10Z"
+        },
+        {
+          "name": "Use exact production Corretto build",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 60,
+          "started_at": "2026-10-06T20:05:10Z",
+          "completed_at": "2026-10-06T20:05:14Z"
+        },
+        {
+          "name": "Install package-consumer isolation tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 61,
+          "started_at": "2026-10-06T20:05:14Z",
+          "completed_at": "2026-10-06T20:05:22Z"
+        },
+        {
+          "name": "Enable and verify bubblewrap isolation",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 62,
+          "started_at": "2026-10-06T20:05:22Z",
+          "completed_at": "2026-10-06T20:05:22Z"
+        },
+        {
+          "name": "Install Python dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 63,
+          "started_at": "2026-10-06T20:05:22Z",
+          "completed_at": "2026-10-06T20:05:26Z"
+        },
+        {
+          "name": "Verify curriculum JSON conformance scripts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 64,
+          "started_at": "2026-10-06T20:05:26Z",
+          "completed_at": "2026-10-06T20:05:26Z"
+        },
+        {
+          "name": "Validate Curriculum Package Contracts",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 65,
+          "started_at": "2026-10-06T20:05:26Z",
+          "completed_at": "2026-10-06T20:14:01Z"
+        },
+        {
+          "name": "Validate Schemas",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 66,
+          "started_at": "2026-10-06T20:14:01Z",
+          "completed_at": "2026-10-06T20:15:06Z"
+        },
+        {
+          "name": "Validate Curriculum Goal IDs (UUIDs)",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 67,
+          "started_at": "2026-10-06T20:15:06Z",
+          "completed_at": "2026-10-06T20:15:06Z"
+        },
+        {
+          "name": "Validate Hessen Upper-Secondary Archive Paths",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 68,
+          "started_at": "2026-10-06T20:15:06Z",
+          "completed_at": "2026-10-06T20:15:06Z"
+        },
+        {
+          "name": "Validate Hessen Upper-Secondary Legacy References",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 69,
+          "started_at": "2026-10-06T20:15:06Z",
+          "completed_at": "2026-10-06T20:15:11Z"
+        },
+        {
+          "name": "Validate Hessen Chemistry Exam Pipeline",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 70,
+          "started_at": "2026-10-06T20:15:11Z",
+          "completed_at": "2026-10-06T20:15:11Z"
+        },
+        {
+          "name": "Validate Hessen Lower-Secondary Archive Paths",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 71,
+          "started_at": "2026-10-06T20:15:11Z",
+          "completed_at": "2026-10-06T20:15:11Z"
+        },
+        {
+          "name": "Validate Hessen Lower-Secondary Legacy References",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 72,
+          "started_at": "2026-10-06T20:15:11Z",
+          "completed_at": "2026-10-06T20:15:14Z"
+        },
+        {
+          "name": "Validate Bavaria Gymnasium Archive Paths",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 73,
+          "started_at": "2026-10-06T20:15:14Z",
+          "completed_at": "2026-10-06T20:15:14Z"
+        },
+        {
+          "name": "Validate Bavaria Gymnasium Legacy References",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 74,
+          "started_at": "2026-10-06T20:15:14Z",
+          "completed_at": "2026-10-06T20:15:16Z"
+        },
+        {
+          "name": "Post Set up Java for package-consumer smoke",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 145,
+          "started_at": "2026-10-06T20:15:16Z",
+          "completed_at": "2026-10-06T20:15:16Z"
+        },
+        {
+          "name": "Post Set up Python",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 146,
+          "started_at": "2026-10-06T20:15:16Z",
+          "completed_at": "2026-10-06T20:15:16Z"
+        },
+        {
+          "name": "Post Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 147,
+          "started_at": "2026-10-06T20:15:16Z",
+          "completed_at": "2026-10-06T20:15:16Z"
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 148,
+          "started_at": "2026-10-06T20:15:16Z",
+          "completed_at": "2026-10-06T20:15:17Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 149,
+          "started_at": "2026-10-06T20:15:17Z",
+          "completed_at": "2026-10-06T20:15:17Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/enpasos/skillpilot/check-runs/112467352217",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000024416,
+      "runner_name": "GitHub Actions 1000024416",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    },
+    {
+      "id": 112467352361,
+      "run_id": 37519612538,
+      "workflow_name": "CI",
+      "head_branch": "main",
+      "run_url": "https://api.github.com/repos/enpasos/skillpilot/actions/runs/37519612538",
+      "run_attempt": 1,
+      "node_id": "CR_kwDOQVi5788AAAAaL5ObKQ",
+      "head_sha": "09ac7070b7aeba7c7ea06034f45c73a9eab8ef05",
+      "url": "https://api.github.com/repos/enpasos/skillpilot/actions/jobs/112467352361",
+      "html_url": "https://github.com/enpasos/skillpilot/actions/runs/37519612538/job/112467352361",
+      "status": "completed",
+      "conclusion": "success",
+      "created_at": "2026-10-06T19:45:48Z",
+      "started_at": "2026-10-06T19:45:50Z",
+      "completed_at": "2026-10-06T20:07:25Z",
+      "name": "Application frontend CI",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 1,
+          "started_at": "2026-10-06T19:45:51Z",
+          "completed_at": "2026-10-06T19:45:53Z"
+        },
+        {
+          "name": "Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 2,
+          "started_at": "2026-10-06T19:45:53Z",
+          "completed_at": "2026-10-06T19:50:52Z"
+        },
+        {
+          "name": "Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 3,
+          "started_at": "2026-10-06T19:50:52Z",
+          "completed_at": "2026-10-06T19:51:00Z"
+        },
+        {
+          "name": "Install dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 4,
+          "started_at": "2026-10-06T19:51:00Z",
+          "completed_at": "2026-10-06T19:51:09Z"
+        },
+        {
+          "name": "Use Ubuntu package sources",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 5,
+          "started_at": "2026-10-06T19:51:09Z",
+          "completed_at": "2026-10-06T19:51:09Z"
+        },
+        {
+          "name": "Install FFmpeg and PDF validation tools",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 6,
+          "started_at": "2026-10-06T19:51:09Z",
+          "completed_at": "2026-10-06T19:51:53Z"
+        },
+        {
+          "name": "Install pinned Playwright Chromium",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 7,
+          "started_at": "2026-10-06T19:51:53Z",
+          "completed_at": "2026-10-06T19:52:12Z"
+        },
+        {
+          "name": "Restore same-run verified goal-book publications",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 8,
+          "started_at": "2026-10-06T19:52:12Z",
+          "completed_at": "2026-10-06T19:52:20Z"
+        },
+        {
+          "name": "Test deterministic ZIP32 writer",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 9,
+          "started_at": "2026-10-06T19:52:20Z",
+          "completed_at": "2026-10-06T19:52:20Z"
+        },
+        {
+          "name": "Test package landscape model parity",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 10,
+          "started_at": "2026-10-06T19:52:20Z",
+          "completed_at": "2026-10-06T19:52:21Z"
+        },
+        {
+          "name": "Test runtime curriculum catalog consumer",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 11,
+          "started_at": "2026-10-06T19:52:21Z",
+          "completed_at": "2026-10-06T19:52:21Z"
+        },
+        {
+          "name": "Test root route policy",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 12,
+          "started_at": "2026-10-06T19:52:21Z",
+          "completed_at": "2026-10-06T19:52:22Z"
+        },
+        {
+          "name": "Test Claude v1 first-party start flow",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 13,
+          "started_at": "2026-10-06T19:52:22Z",
+          "completed_at": "2026-10-06T19:52:22Z"
+        },
+        {
+          "name": "Test Claude plugin publication consumer",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 14,
+          "started_at": "2026-10-06T19:52:22Z",
+          "completed_at": "2026-10-06T19:52:38Z"
+        },
+        {
+          "name": "Test service-worker navigation policy",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 15,
+          "started_at": "2026-10-06T19:52:38Z",
+          "completed_at": "2026-10-06T19:52:38Z"
+        },
+        {
+          "name": "Test learning-goal book contracts and publication",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 16,
+          "started_at": "2026-10-06T19:52:38Z",
+          "completed_at": "2026-10-06T19:57:57Z"
+        },
+        {
+          "name": "Test curriculum offering sources",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 17,
+          "started_at": "2026-10-06T19:57:57Z",
+          "completed_at": "2026-10-06T19:57:58Z"
+        },
+        {
+          "name": "Test package goal source evidence consumer",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 18,
+          "started_at": "2026-10-06T19:57:58Z",
+          "completed_at": "2026-10-06T19:57:58Z"
+        },
+        {
+          "name": "Test goal source-rationale deployment smoke modes",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 19,
+          "started_at": "2026-10-06T19:57:58Z",
+          "completed_at": "2026-10-06T19:57:59Z"
+        },
+        {
+          "name": "Test goal visualization QA approval model",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 20,
+          "started_at": "2026-10-06T19:57:59Z",
+          "completed_at": "2026-10-06T19:58:00Z"
+        },
+        {
+          "name": "Test learner goal selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 21,
+          "started_at": "2026-10-06T19:58:00Z",
+          "completed_at": "2026-10-06T19:58:02Z"
+        },
+        {
+          "name": "Check GPT system instruction lengths",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 22,
+          "started_at": "2026-10-06T19:58:02Z",
+          "completed_at": "2026-10-06T19:58:02Z"
+        },
+        {
+          "name": "Test coach variant selection",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 23,
+          "started_at": "2026-10-06T19:58:02Z",
+          "completed_at": "2026-10-06T19:58:03Z"
+        },
+        {
+          "name": "Test optional learner content materials",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 24,
+          "started_at": "2026-10-06T19:58:03Z",
+          "completed_at": "2026-10-06T19:58:11Z"
+        },
+        {
+          "name": "Test contextual AI transparency",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 25,
+          "started_at": "2026-10-06T19:58:11Z",
+          "completed_at": "2026-10-06T19:58:12Z"
+        },
+        {
+          "name": "Test Terms of Use and versioned acceptance",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 26,
+          "started_at": "2026-10-06T19:58:12Z",
+          "completed_at": "2026-10-06T19:58:13Z"
+        },
+        {
+          "name": "Test remote AI transparency artifact crawler",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 27,
+          "started_at": "2026-10-06T19:58:13Z",
+          "completed_at": "2026-10-06T19:58:14Z"
+        },
+        {
+          "name": "Test frontend shell asset verifier",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 28,
+          "started_at": "2026-10-06T19:58:14Z",
+          "completed_at": "2026-10-06T19:58:14Z"
+        },
+        {
+          "name": "Test SkillPilot ID encryption",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 29,
+          "started_at": "2026-10-06T19:58:14Z",
+          "completed_at": "2026-10-06T19:58:15Z"
+        },
+        {
+          "name": "Test session setup",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 30,
+          "started_at": "2026-10-06T19:58:15Z",
+          "completed_at": "2026-10-06T19:58:17Z"
+        },
+        {
+          "name": "Test public FAQ copy",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 31,
+          "started_at": "2026-10-06T19:58:17Z",
+          "completed_at": "2026-10-06T19:58:19Z"
+        },
+        {
+          "name": "Test public landing page and overview",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 32,
+          "started_at": "2026-10-06T19:58:19Z",
+          "completed_at": "2026-10-06T19:59:36Z"
+        },
+        {
+          "name": "Test existing learner linking",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 33,
+          "started_at": "2026-10-06T19:59:36Z",
+          "completed_at": "2026-10-06T20:00:04Z"
+        },
+        {
+          "name": "Test trainer course planning",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 34,
+          "started_at": "2026-10-06T20:00:04Z",
+          "completed_at": "2026-10-06T20:00:32Z"
+        },
+        {
+          "name": "Test learner-owned subject plans and Cockpit status",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 35,
+          "started_at": "2026-10-06T20:00:32Z",
+          "completed_at": "2026-10-06T20:01:01Z"
+        },
+        {
+          "name": "Test quiet and bounded learner cockpit startup",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 36,
+          "started_at": "2026-10-06T20:01:01Z",
+          "completed_at": "2026-10-06T20:01:14Z"
+        },
+        {
+          "name": "Test read-only learning-goal book UI",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 37,
+          "started_at": "2026-10-06T20:01:14Z",
+          "completed_at": "2026-10-06T20:01:27Z"
+        },
+        {
+          "name": "Test compact completed session setup",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 38,
+          "started_at": "2026-10-06T20:01:27Z",
+          "completed_at": "2026-10-06T20:01:42Z"
+        },
+        {
+          "name": "Test trainer navigation history",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 39,
+          "started_at": "2026-10-06T20:01:42Z",
+          "completed_at": "2026-10-06T20:01:52Z"
+        },
+        {
+          "name": "Test trainer Gymnasium scope",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 40,
+          "started_at": "2026-10-06T20:01:52Z",
+          "completed_at": "2026-10-06T20:01:59Z"
+        },
+        {
+          "name": "Test learner data and SkillPilot ID management",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 41,
+          "started_at": "2026-10-06T20:01:59Z",
+          "completed_at": "2026-10-06T20:02:03Z"
+        },
+        {
+          "name": "Test curriculum quality traffic-light interactions",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 42,
+          "started_at": "2026-10-06T20:02:03Z",
+          "completed_at": "2026-10-06T20:02:21Z"
+        },
+        {
+          "name": "Test personal curriculum editor",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 43,
+          "started_at": "2026-10-06T20:02:21Z",
+          "completed_at": "2026-10-06T20:02:23Z"
+        },
+        {
+          "name": "Lint",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 44,
+          "started_at": "2026-10-06T20:02:23Z",
+          "completed_at": "2026-10-06T20:03:11Z"
+        },
+        {
+          "name": "Build application without regenerating curriculum assets",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 45,
+          "started_at": "2026-10-06T20:03:11Z",
+          "completed_at": "2026-10-06T20:05:58Z"
+        },
+        {
+          "name": "Test service-worker update lifecycle",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 46,
+          "started_at": "2026-10-06T20:05:58Z",
+          "completed_at": "2026-10-06T20:06:02Z"
+        },
+        {
+          "name": "Check AI transparency inventory",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 47,
+          "started_at": "2026-10-06T20:06:02Z",
+          "completed_at": "2026-10-06T20:06:19Z"
+        },
+        {
+          "name": "Check frontend shell assets in the built application",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 48,
+          "started_at": "2026-10-06T20:06:19Z",
+          "completed_at": "2026-10-06T20:06:19Z"
+        },
+        {
+          "name": "Check AI transparency in the built application",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 49,
+          "started_at": "2026-10-06T20:06:19Z",
+          "completed_at": "2026-10-06T20:06:20Z"
+        },
+        {
+          "name": "Install browser demo-video tool dependencies",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 50,
+          "started_at": "2026-10-06T20:06:20Z",
+          "completed_at": "2026-10-06T20:06:34Z"
+        },
+        {
+          "name": "Validate reproducible browser demo-video tool",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 51,
+          "started_at": "2026-10-06T20:06:34Z",
+          "completed_at": "2026-10-06T20:07:21Z"
+        },
+        {
+          "name": "Post Use Node.js",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 101,
+          "started_at": "2026-10-06T20:07:21Z",
+          "completed_at": "2026-10-06T20:07:22Z"
+        },
+        {
+          "name": "Post Checkout",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 102,
+          "started_at": "2026-10-06T20:07:22Z",
+          "completed_at": "2026-10-06T20:07:22Z"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success",
+          "number": 103,
+          "started_at": "2026-10-06T20:07:22Z",
+          "completed_at": "2026-10-06T20:07:22Z"
+        }
+      ],
+      "check_run_url": "https://api.github.com/repos/enpasos/skillpilot/check-runs/112467352361",
+      "labels": [
+        "ubuntu-latest"
+      ],
+      "runner_id": 1000024418,
+      "runner_name": "GitHub Actions 1000024418",
+      "runner_group_id": 0,
+      "runner_group_name": "GitHub Actions"
+    }
+  ]
+}

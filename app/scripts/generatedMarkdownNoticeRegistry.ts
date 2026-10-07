@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs'
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { discoverActiveMemoryCardReviewConfigs, discoverMemoryCardReviewConfigs } from './memoryCardReviewConfigDiscovery'
+import { discoverActiveMemoryCardReviewConfigs, discoverRetainedMemoryCardReviewConfigs } from './memoryCardReviewConfigDiscovery'
 
 export interface GeneratedMarkdownNoticeConfig {
   path: string
@@ -345,8 +345,7 @@ function loadMemoryCardReviewRows(): GeneratedStatusRegistryRow[] {
   const configs = discoverActiveMemoryCardReviewConfigs()
   if (configs.length === 0) return []
   const activeReportPaths = new Set(configs.map((configRef) => configRef.reportPath))
-  const historicalConfigs = discoverMemoryCardReviewConfigs()
-    .filter((configRef) => !activeReportPaths.has(configRef.reportPath))
+  const historicalConfigs = discoverRetainedMemoryCardReviewConfigs(activeReportPaths)
 
   return [
     {
@@ -374,8 +373,7 @@ function loadMemoryCardReviewRows(): GeneratedStatusRegistryRow[] {
 function loadMemoryCardReviewNoticeConfigs(): GeneratedMarkdownNoticeConfig[] {
   const activeConfigs = discoverActiveMemoryCardReviewConfigs()
   const activeReportPaths = new Set(activeConfigs.map((configRef) => configRef.reportPath))
-  const historicalConfigs = discoverMemoryCardReviewConfigs()
-    .filter((configRef) => !activeReportPaths.has(configRef.reportPath))
+  const historicalConfigs = discoverRetainedMemoryCardReviewConfigs(activeReportPaths)
   // Retain the original notices of predecessor snapshots without regenerating them.
   return [...activeConfigs, ...historicalConfigs].map((configRef) => {
     const parsed = JSON.parse(readFileSync(resolve(repoRoot, configRef.configPath), 'utf8')) as MemoryCardReviewConfigForNotice

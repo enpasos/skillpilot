@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-06T08:36:48.926Z",
+  "role": "Actual read-only carrier CQR-003/applicability-role diagnosis after bounded integration checks; no overall PASS",
+  "verdict": "REVISE",
+  "goalId": "ac9e824f-003c-50ac-8751-2b8456004c63",
+  "actualCompiledApplicability": {
+    "jurisdiction": [
+      "DE-BB",
+      "DE-BE",
+      "DE-MV",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ]
+  },
+  "actualEvidence": [
+    {
+      "dimension": "jurisdiction",
+      "value": "DE-BB",
+      "kind": "mapping",
+      "source": "curricula/DE/Gymnasium/mapping/DE-BB/source-components/bb_biology_genetics_components.author-v6.review.json",
+      "mappingStrength": "partial"
+    },
+    {
+      "dimension": "jurisdiction",
+      "value": "DE-BE",
+      "kind": "mapping",
+      "source": "curricula/DE/Gymnasium/mapping/DE-BE/source-components/be_biology_genetics_components.author-v6.review.json",
+      "mappingStrength": "partial"
+    },
+    {
+      "dimension": "jurisdiction",
+      "value": "DE-MV",
+      "kind": "requires-closure",
+      "source": "required by 3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04"
+    },
+    {
+      "dimension": "jurisdiction",
+      "value": "DE-MV",
+      "kind": "requires-closure",
+      "source": "required by 9d830422-acc7-5fa8-aee9-4dae4cedbf49"
+    },
+    {
+      "dimension": "jurisdiction",
+      "value": "DE-MV",
+      "kind": "requires-closure",
+      "source": "required by d0c3e6a7-581b-57bd-8027-e940c6b77af8"
+    },
+    {
+      "dimension": "jurisdiction",
+      "value": "DE-SN",
+      "kind": "requires-closure",
+      "source": "required by 5eb7c923-469d-5934-b1e8-292e1bb40d95"
+    },
+    {
+      "dimension": "jurisdiction",
+      "value": "DE-SN",
+      "kind": "requires-closure",
+      "source": "required by d0c3e6a7-581b-57bd-8027-e940c6b77af8"
+    },
+    {
+      "dimension": "jurisdiction",
+      "value": "DE-ST",
+      "kind": "requires-closure",
+      "source": "required by 3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04"
+    },
+    {
+      "dimension": "jurisdiction",
+      "value": "DE-ST",
+      "kind": "requires-closure",
+      "source": "required by bfb5dfb6-8e35-5452-b581-96e061d8b826"
+    },
+    {
+      "dimension": "jurisdiction",
+      "value": "DE-ST",
+      "kind": "requires-closure",
+      "source": "required by d0c3e6a7-581b-57bd-8027-e940c6b77af8"
+    },
+    {
+      "dimension": "jurisdiction",
+      "value": "DE-TH",
+      "kind": "requires-closure",
+      "source": "required by 5eb7c923-469d-5934-b1e8-292e1bb40d95"
+    },
+    {
+      "dimension": "jurisdiction",
+      "value": "DE-TH",
+      "kind": "requires-closure",
+      "source": "required by aab2a358-b2ee-57a5-a957-8fb9845506b1"
+    },
+    {
+      "dimension": "jurisdiction",
+      "value": "DE-TH",
+      "kind": "requires-closure",
+      "source": "required by d0c3e6a7-581b-57bd-8027-e940c6b77af8"
+    }
+  ],
+  "codeReason": "applicabilityCompiler ensureRequiredGoalVisible produces requires-closure availability; CQR falls back to raw available atoms when no jurisdiction composition-view target set exists. sourceContextBoundary has no authored projectionRole semantics.",
+  "existingLegitimateMechanism": "Complete explicit jurisdiction composition views preserving all other target IDs and placing the carrier in a goalEntry with projectionRole prerequisiteOnly. Direct goalEntry roles override inherited subtree roles. CQR/readCompositionViewAtomicGoalIds uses rendered targets; prerequisites remain available for mastery checks.",
+  "readOnlyNativeRoleReproductions": [
+    {
+      "jurisdiction": "DE-MV",
+      "actualRawAvailableAtomicCount": 170,
+      "actualCarrierEvidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "requires-closure",
+          "source": "required by 3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "requires-closure",
+          "source": "required by 9d830422-acc7-5fa8-aee9-4dae4cedbf49"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "requires-closure",
+          "source": "required by d0c3e6a7-581b-57bd-8027-e940c6b77af8"
+        }
+      ],
+      "legitimateExplicitTargetCount": 169,
+      "allOtherRawTargetsRetained": true,
+      "carrierPrerequisiteOnly": true,
+      "nativeCompilationErrors": [],
+      "productionViewAuthoredByThisReviewer": false,
+      "proofIsNotAProductionOrSourceApproval": true
+    },
+    {
+      "jurisdiction": "DE-SN",
+      "actualRawAvailableAtomicCount": 184,
+      "actualCarrierEvidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by 5eb7c923-469d-5934-b1e8-292e1bb40d95"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "requires-closure",
+          "source": "required by d0c3e6a7-581b-57bd-8027-e940c6b77af8"
+        }
+      ],
+      "legitimateExplicitTargetCount": 183,
+      "allOtherRawTargetsRetained": true,
+      "carrierPrerequisiteOnly": true,
+      "nativeCompilationErrors": [],
+      "productionViewAuthoredByThisReviewer": false,
+      "proofIsNotAProductionOrSourceApproval": true
+    },
+    {
+      "jurisdiction": "DE-ST",
+      "actualRawAvailableAtomicCount": 186,
+      "actualCarrierEvidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "requires-closure",
+          "source": "required by 3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "requires-closure",
+          "source": "required by bfb5dfb6-8e35-5452-b581-96e061d8b826"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "requires-closure",
+          "source": "required by d0c3e6a7-581b-57bd-8027-e940c6b77af8"
+        }
+      ],
+      "legitimateExplicitTargetCount": 185,
+      "allOtherRawTargetsRetained": true,
+      "carrierPrerequisiteOnly": true,
+      "nativeCompilationErrors": [],
+      "productionViewAuthoredByThisReviewer": false,
+      "proofIsNotAProductionOrSourceApproval": true
+    },
+    {
+      "jurisdiction": "DE-TH",
+      "actualRawAvailableAtomicCount": 187,
+      "actualCarrierEvidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "requires-closure",
+          "source": "required by 5eb7c923-469d-5934-b1e8-292e1bb40d95"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "requires-closure",
+          "source": "required by aab2a358-b2ee-57a5-a957-8fb9845506b1"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "requires-closure",
+          "source": "required by d0c3e6a7-581b-57bd-8027-e940c6b77af8"
+        }
+      ],
+      "legitimateExplicitTargetCount": 186,
+      "allOtherRawTargetsRetained": true,
+      "carrierPrerequisiteOnly": true,
+      "nativeCompilationErrors": [],
+      "productionViewAuthoredByThisReviewer": false,
+      "proofIsNotAProductionOrSourceApproval": true
+    }
+  ],
+  "sourceMappingsToCarrierStillOnlyBEBB": true,
+  "noExceptionOrInventedSourceEvidence": true,
+  "requiresEdgesMustRemain": true,
+  "nationalFullGUIViewsMustRemain174And443": true,
+  "wholeOriginalSourceHoldsRemain": true,
+  "separateCarrierImageFaultReportedByOwner": true,
+  "affectedCurrentVDPBindingsRequireNewImageAndFinalContextChecks": true,
+  "priorBoundedChecksAreTimestampedEvidenceOnly": true,
+  "activeWrites": false,
+  "humanApproval": false,
+  "sourceFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "244d2889ddeeb69cbf97d0a320f3e38cf5444674f3bb17f3e46c0112ac6fbff1"
+    },
+    {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "1937ee365f8d4a69dc9962feec0858ef3ef63fb2eb165a809ae46e1046e588f0"
+    },
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "af9683a1360d4978084a516775943091d25a19a806673be7d35ecbedb266ccf9"
+    },
+    {
+      "path": "app/src/utils/authoring/compositionViewAuthoring.ts",
+      "sha256": "d7ee9ab670d2d73a3ed82700c2bca2dee3f2da6c8e9517120c5c45acac0d84a7"
+    }
+  ]
+}

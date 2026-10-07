@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "documentType": "four-bounded-raster-correction-requests",
+  "activeWrites": 0,
+  "rows": [
+    {
+      "goalId": "965ca297-5dbf-5e58-b5f0-6559a4433646",
+      "title": "Salzformeln aus Ionenladungen ableiten",
+      "assetHash": "sha256:340e266b81f5c476a2d819bda4beaad4b39d8b5407e63d7529c03e6253fac406",
+      "requests": [
+        {
+          "code": "VA-CHEM-02-MOBILE-CHARGES",
+          "scope": "Bildanordnung und Zeichengröße, keine Änderung der bereits richtigen Mengen",
+          "request": "Die Al3+/O2−-Ladungen und die Ladungssumme bei 360px ohne Vergrößerung eindeutig lesen lassen. Beispielsweise einen großen Hauptfall oder weniger breite Teilfelder verwenden; für Al2O3 stets genau 2 Al3+ und 3 O2− behalten. Nach dem Ersatz beide tatsächlichen Breiten erneut sichten."
+        }
+      ]
+    },
+    {
+      "goalId": "747c5777-07d7-51a9-9be3-7d0d6f51d4e2",
+      "title": "Bindungs- und Molekülpolarität ableiten",
+      "assetHash": "sha256:ed78c377d6abf99d2c40494cf6d272c3f2c0d9a067ce0d6acbd121d7e4f79924",
+      "requests": [
+        {
+          "code": "VA-CHEM-04-MOBILE-SURFACE",
+          "scope": "Deutbarkeit der tatsächlich vorhandenen Oberflächencodierung",
+          "request": "CO2-Oberfläche, δ+/δ− und ihre Bedeutung bei 360px deutlich größer machen; nach Möglichkeit die sehr kleine linke EN-Erklärung zugunsten zweier großer Bindungs-/Molekülfelder reduzieren. Symmetrie, entgegengesetzte gleich große Bondpfeile und Netto-Dipol 0 erhalten. Keine quantitative Elektronendichte aus dem Farbverlauf behaupten."
+        }
+      ]
+    },
+    {
+      "goalId": "49235cbe-6658-5e7e-8bd4-398416bcebdc",
+      "title": "Unterenergiestufen aus Spektren und Ionisierungsenergien ableiten",
+      "assetHash": "sha256:188c5c93503fa2aa77f09b489c1dd41f2efe8d78b398f3c3df1a292ce81756fb",
+      "requests": [
+        {
+          "code": "VA-CHEM-06-MOBILE-AXES-QUANTUM",
+          "scope": "Datenzuordnung und Quantenzahllegende bei 360px",
+          "request": "Plot mit Elementen, kJ/mol und acht Werten sowie n/l-Definition in weniger dichten, größeren Feldern darstellen. Die N/O-Reihenfolge und Werte 1402/1314 erhalten. Die kleine Spektrenfläche darf zugunsten lesbarer Kerndaten verkleinert werden; 360/680px erneut tatsächlich sichten."
+        }
+      ]
+    },
+    {
+      "goalId": "5e2eb826-6e60-5273-91d6-c23f6dfa33b1",
+      "title": "Partikelgröße und Oberflächen-Volumen-Verhältnis deuten",
+      "assetHash": "sha256:0b6f4d4d023490dbfa1dabe593e0d347351d8a1458f2214508b61e81c97c1ba1",
+      "requests": [
+        {
+          "code": "VA-CHEM-07-CUBE-SAME-SCALE",
+          "scope": "Nur unteres Halbierungs-/Oberflächenmodell",
+          "request": "Acht voneinander getrennte kleine Würfel mit derselben Perspektive und genau halber gezeichneter Kantenlänge gegenüber dem großen Würfel darstellen. a- und a/2-Maßpfeile müssen zu diesen Kanten passen; Gesamtvolumen-Erhalt darf nicht lediglich durch den Text behauptet werden. Kleine Molekül-/Makromolekül-Einschränkung und kann-Aussage erhalten. Beide Breiten neu tatsächlich sichten."
+        }
+      ]
+    }
+  ]
+}

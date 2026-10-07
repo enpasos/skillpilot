@@ -1,0 +1,264 @@
+{
+  "schemaVersion": 1,
+  "documentType": "compact inert existing CLI routing for final technical Layer A; not check results",
+  "createdAtUTC": "2026-10-06T23:16:48.454221+00:00",
+  "role": "independent technical integrator reading commands and current data; no new scientific review",
+  "cwd": "/home/enpasos/projects/skillpilot",
+  "inputs": [
+    {
+      "path": "app/package.json",
+      "sha256": "sha256:11df57786f4712d67edc2b201f1cef8a2e768403556ff74b0cfb351fb9da3fe5"
+    },
+    {
+      "path": "app/src/utils/goalBookPublicationRegistry.ts",
+      "sha256": "sha256:e9b26e8821dd86413892dd233b24aa913b29e6bdb565e2488a62fe6b8513b936"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "sha256:d9e8bffaaded9a1a0477bbbf0abeb46e92499f26f0141a8ab0a4b53811176a93"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-active-layer-a-readonly-v1/current-fifteen-active-layer-a-readonly.final.freeze.json",
+      "sha256": "sha256:7d5547860d535e8c752b0e331048005049a6558e2e569c4b184873318b60aee3"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next25-regional-all-required-memory-placement-author-v3/four-all-required-memory-placement-candidates.native-materialization-and-literal-delta.actual.json",
+      "sha256": "sha256:87a12713335f68ffe302b9641554f27811240610861160be1e9a7e8b3ebae68d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "sha256:94bf767048995316be19da809cfe10f73c459dbb1aae677cee8491270eaa5c79"
+    }
+  ],
+  "prerequisite": "Root completed reviewed active integration and asset/source input synchronization; run against one stable final source state",
+  "commands": [
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/buildGoalBookSourceAtlasInputs.ts --config app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json --check",
+      "purpose": "current derived source-atlas bytes and inputs; bounded existing assertions, no new source science",
+      "writeEffectWhenLaterRun": "read-only check",
+      "executedByThisPreparation": false
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/buildGoalBookSourceAtlasInputs.ts --config app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json --check",
+      "purpose": "current derived source-atlas bytes and inputs; bounded existing assertions, no new source science",
+      "writeEffectWhenLaterRun": "read-only check",
+      "executedByThisPreparation": false
+    },
+    {
+      "command": "npm --prefix app run build:goal-books -- --force",
+      "packageScriptExact": "tsx scripts/buildGoalBookPublications.ts",
+      "purpose": "exactly four registered national books: mathematics, physics, chemistry, biology",
+      "writeEffectWhenLaterRun": "writes generated app/public/lernzielbuch model, source index, PDF, render manifest, catalog and cache",
+      "executedByThisPreparation": false,
+      "existingCIEvidence": ".github/workflows/ci.yml:242"
+    },
+    {
+      "command": "npm --prefix app run check:goal-book-publication",
+      "packageScriptExact": "tsx scripts/checkGoalBookPublication.ts",
+      "purpose": "validate all four generated current models, source indices, PDFs, render manifests and catalog",
+      "writeEffectWhenLaterRun": "read-only publication check",
+      "executedByThisPreparation": false
+    },
+    {
+      "command": "npm --prefix app run check:ai-transparency-inventory",
+      "packageScriptExact": "node ../scripts/check_ai_transparency_inventory.mjs",
+      "purpose": "measure seven JPG-to-PNG replacement effects on extension/provider/provenance/media inventory; normal existing check",
+      "writeEffectWhenLaterRun": "read-only normal check; no patch emitted or applied",
+      "executedByThisPreparation": false
+    },
+    {
+      "command": "npm --prefix app run check:gymnasium-duration-readiness",
+      "packageScriptExact": "tsx scripts/reportGymnasiumDurationModelReadiness.ts --check",
+      "purpose": "check committed report against current duration/scope projections",
+      "writeEffectWhenLaterRun": "read-only stale-report check",
+      "executedByThisPreparation": false
+    },
+    {
+      "command": "npm --prefix app run check:m6-duration-policy-readiness",
+      "packageScriptExact": "tsx scripts/reportGymnasiumDurationModelReadiness.ts --check --require-reviewed-m6",
+      "purpose": "retain existing reviewed-M6 duration policies; no new curricular source approval",
+      "writeEffectWhenLaterRun": "read-only existing policy/report check",
+      "executedByThisPreparation": false
+    },
+    {
+      "command": "npm --prefix app run check:gymnasium-duration-offerings",
+      "packageScriptExact": "tsx scripts/generateGymnasiumDurationOfferings.ts --check",
+      "purpose": "check generated G8/G9 offering artifact against current authored inputs",
+      "writeEffectWhenLaterRun": "read-only stale-output check",
+      "executedByThisPreparation": false
+    },
+    {
+      "command": "npm --prefix app run validate:graph",
+      "packageScriptExact": "tsx scripts/validateGraph.ts",
+      "purpose": "retain ordinary DAG, node and relationship checks",
+      "writeEffectWhenLaterRun": "read-only graph validation",
+      "executedByThisPreparation": false
+    },
+    {
+      "command": "npm --prefix app run validate:view-filters",
+      "packageScriptExact": "tsx scripts/validateViewFilters.ts",
+      "purpose": "current applicable target sets including four memory views; preserve existing accepted warnings and diagnostics",
+      "writeEffectWhenLaterRun": "writes native technical scratch under tmp/applicability",
+      "executedByThisPreparation": false
+    },
+    {
+      "command": "npm --prefix app run validate:composition-views",
+      "packageScriptExact": "tsx scripts/validateCompositionViews.ts",
+      "purpose": "all actual current views/roots; four new memory branches and unchanged old source-backed branches",
+      "writeEffectWhenLaterRun": "technical validation; no active curriculum edits",
+      "executedByThisPreparation": false
+    },
+    {
+      "command": "npm --prefix app run test:goal-book-model",
+      "packageScriptExact": "tsx scripts/testGoalBookModel.ts && npm run test:math-distance-reflection-structure && npm run test:math-pythagoras-structure",
+      "purpose": "normal BookModel/projection tests; actually calls testGoalBookInputIsolation(), which calls testGoalBookSourceAtlasInputs(); no historical wrapper writes",
+      "writeEffectWhenLaterRun": "existing tests and private native temporary fixtures",
+      "executedByThisPreparation": false
+    },
+    {
+      "command": "npm --prefix app run test:composition-projection-roles",
+      "packageScriptExact": "tsx scripts/testCompositionProjectionRoles.ts",
+      "purpose": "ordinary target/prerequisiteOnly role semantics",
+      "writeEffectWhenLaterRun": "existing native test fixtures",
+      "executedByThisPreparation": false
+    },
+    {
+      "command": "./gradlew test --tests com.skillpilot.backend.service.LearnerServiceCanonicalProjectionTest --no-daemon --console=plain",
+      "cwd": "backend",
+      "purpose": "existing backend canonical projection assertions; technical integration followup only",
+      "writeEffectWhenLaterRun": "Gradle test/build outputs; no learner-state or curriculum edits",
+      "executedByThisPreparation": false
+    }
+  ],
+  "currentFourMemoryViews": [
+    {
+      "currentActiveView": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bb-gk.view.json",
+        "sha256": "sha256:304d030ac8c656d67b8c8d7e2776a0d79191df915c7618b6c4baccf1236e611e"
+      },
+      "wholeCurrentViewByteExactToReviewedPlacementCandidate": true,
+      "originalTargetCount": 148,
+      "reviewedNewTargetCount": 154,
+      "addedExistingMemoryGoalIDs": [
+        "1e372b97-6f1c-596c-8a8b-fc03193d784a",
+        "1e519951-9850-5a07-ac82-d9f0075e3d05",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca",
+        "31148286-b8db-57a7-8da2-2e0479240a2c",
+        "6122faf0-6718-52b3-b40d-b206a2e963ae",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24"
+      ],
+      "newSourceBackedCurricularGoals": 0,
+      "currentCompilerRunByThisPreparation": false,
+      "countEvidence": "frozen actual compiler/runtime output plus whole current view byte equality"
+    },
+    {
+      "currentActiveView": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-bb-lk.view.json",
+        "sha256": "sha256:c2a9753bd6197b77b9f894f54d082959471c2bd646f9f75fe3e600582b7636a1"
+      },
+      "wholeCurrentViewByteExactToReviewedPlacementCandidate": true,
+      "originalTargetCount": 173,
+      "reviewedNewTargetCount": 179,
+      "addedExistingMemoryGoalIDs": [
+        "1e372b97-6f1c-596c-8a8b-fc03193d784a",
+        "1e519951-9850-5a07-ac82-d9f0075e3d05",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca",
+        "31148286-b8db-57a7-8da2-2e0479240a2c",
+        "6122faf0-6718-52b3-b40d-b206a2e963ae",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24"
+      ],
+      "newSourceBackedCurricularGoals": 0,
+      "currentCompilerRunByThisPreparation": false,
+      "countEvidence": "frozen actual compiler/runtime output plus whole current view byte equality"
+    },
+    {
+      "currentActiveView": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-be-gk.view.json",
+        "sha256": "sha256:7aa0cc2fd01c80149ab6c61ae399f66842b3cad962eaa37a564fbcdb8ce5838d"
+      },
+      "wholeCurrentViewByteExactToReviewedPlacementCandidate": true,
+      "originalTargetCount": 148,
+      "reviewedNewTargetCount": 154,
+      "addedExistingMemoryGoalIDs": [
+        "1e372b97-6f1c-596c-8a8b-fc03193d784a",
+        "1e519951-9850-5a07-ac82-d9f0075e3d05",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca",
+        "31148286-b8db-57a7-8da2-2e0479240a2c",
+        "6122faf0-6718-52b3-b40d-b206a2e963ae",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24"
+      ],
+      "newSourceBackedCurricularGoals": 0,
+      "currentCompilerRunByThisPreparation": false,
+      "countEvidence": "frozen actual compiler/runtime output plus whole current view byte equality"
+    },
+    {
+      "currentActiveView": {
+        "path": "curricula/DE/Gymnasium/composition-views/chemie/de-be-lk.view.json",
+        "sha256": "sha256:fa0dc13e930496a3e8a57a86a3ab3fbd0120869d085ea5b2fd442b2cad5486a0"
+      },
+      "wholeCurrentViewByteExactToReviewedPlacementCandidate": true,
+      "originalTargetCount": 173,
+      "reviewedNewTargetCount": 179,
+      "addedExistingMemoryGoalIDs": [
+        "1e372b97-6f1c-596c-8a8b-fc03193d784a",
+        "1e519951-9850-5a07-ac82-d9f0075e3d05",
+        "1f2021c0-c633-5240-ae97-e58ecc9d48ca",
+        "31148286-b8db-57a7-8da2-2e0479240a2c",
+        "6122faf0-6718-52b3-b40d-b206a2e963ae",
+        "e3e8582a-976b-5f0f-b31b-3cf59a4fff24"
+      ],
+      "newSourceBackedCurricularGoals": 0,
+      "currentCompilerRunByThisPreparation": false,
+      "countEvidence": "frozen actual compiler/runtime output plus whole current view byte equality"
+    }
+  ],
+  "concreteChangesReportedByRoot": {
+    "wholeCanonicalGoalDeltas": 9,
+    "PNGReplacements": 7,
+    "exactSourcePublicBackendCopies": 21,
+    "memoryCompositionViews": 4,
+    "nativeRoutes": [
+      "D25 three separate indices",
+      "P24 plus targeted P1",
+      "A current bindings",
+      "M seven actual scopes",
+      "Kind current bindings"
+    ],
+    "changeScope": "seven resource changes; 3bc EN scope completion; 0acc DE/EN plus alt definition; Nano provenance S13 to S14, overlapping whole-goal deltas"
+  },
+  "currentReadOnlyChemistryAtlasReceiptCounts": {
+    "canonicalCurricularAtomicGoals": 378,
+    "publishedCurricularAtomicGoals": 359,
+    "sourceViews": 48,
+    "unresolvedSourceScopeDecisions": 496,
+    "omittedGoals": 19
+  },
+  "expectedBoundaries": {
+    "chemistryWholeNodes": 479,
+    "chemistryCanonicalCurricularAtomic": 378,
+    "chemistrySourceBackedPublished": 359,
+    "chemistrySourceViews": 48,
+    "unresolvedSourceScopeDecisions": 496,
+    "omittedWholeSourceGoals": 19,
+    "memoryTargetCountsAreNotM7OrSourceCoverageDenominators": true,
+    "allFourMemoryViewsAddOnlySixExistingMemoryTargets": true,
+    "noNewMemoryCardsOrOfficialSRSObligations": true,
+    "mathAndPhysicsScientificM7MustRemainUnchanged": true,
+    "historicalLayerA15PASSIsNotFinal25CurrentPASS": true,
+    "fourNationalBookBuildIsNotFullSourceSupersetOrHumanApproval": true
+  },
+  "concreteRemainingRisks": [
+    "Generated national book cache/PDF/source indices must bind current integrated source after text/image changes; normal force build and publication check provide actual results.",
+    "AI inventory can legitimately drift in PNG/JPG counts, provider counts and C2PA observations after seven replacements; use measured normal-check output, retain provenance conclusions.",
+    "Four active BB/BE CrossStage projections add six existing memory targets: GK148→154 and LK173→179. Progress/target totals change; curricularAtomic/source-backed totals do not.",
+    "Duration/readiness report and projection fixtures can be stale after genuine scope changes; do not lower existing production expectations or treat a report refresh as science.",
+    "Existing SourceAtlas assertions and 378/359/48 counts do not close the 496 unresolved scope decisions, 19 omitted source goals or full GK/LK/national superset claims."
+  ],
+  "globalBuildsOrChecksExecutedByThisPreparation": 0,
+  "nativeScientificReviews": 0,
+  "activeWritesByThisPreparation": 0,
+  "newSpecialValidators": 0,
+  "runtimeEdits": 0,
+  "humanApproval": false,
+  "humanTrial": false
+}

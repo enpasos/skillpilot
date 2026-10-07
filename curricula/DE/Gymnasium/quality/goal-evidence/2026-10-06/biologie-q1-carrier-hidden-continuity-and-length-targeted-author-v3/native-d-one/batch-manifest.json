@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-carrier-user-geometry-reviewed-20261006-v3",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-carrier-hidden-continuity-and-length-targeted-author-v3/single.batch.config.json",
+  "configDigest": "sha256:3012e9d2d462a2f45ec605d812e2b3885833a69bae3ab0c1e54578bca6cfe12c",
+  "goalIds": [
+    "ac9e824f-003c-50ac-8751-2b8456004c63"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 390,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-biology-national-atlas.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:042bc2d635c771a166b899a0fe77177dee870f7db0e670eeca4bc55270a12b10"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:11c0eff6f577267277919bc152cae88336dd140a64d1fb018eb4a3cd4b05eb81",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:01ed284cc9512685b4078300739c4f1b5a6bbef1f5049a57a21b4c64c0e44451",
+    "reviewInputFingerprint": "sha256:afcb1e653bc78fb488844d36f2dc258906c817e095fb3fb5856b96e81cbacd3c",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-carrier-image-targeted-v3-a",
+        "campaignDigest": "sha256:6499d12137c10df9964b9a797172a9a5f7b6ccd41b0d9dc8d3c85395939e0995",
+        "roundId": "independent-a",
+        "independenceGroupId": "biologie-carrier-image-targeted-v3-independent-a",
+        "batchId": "independent-a.batch-001",
+        "batchInputFingerprint": "sha256:03c6c7ddee066d9c28646e5a8d2450475d59a838ef73b8f39070cac7da5f9e9a"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-carrier-image-targeted-v3-b",
+        "campaignDigest": "sha256:5f788ca78039d6f317ea075d8c39c1984e6da01697cee12c49c945c843fb2473",
+        "roundId": "independent-b",
+        "independenceGroupId": "biologie-carrier-image-targeted-v3-independent-b",
+        "batchId": "independent-b.batch-001",
+        "batchInputFingerprint": "sha256:38c3f07bc9ba9db22ffa2324bc002095333e39500780e94db5c48035f7f476bd"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

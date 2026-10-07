@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "independent-b",
+  "reviewedAt": "2026-10-06T09:11:26.854694+00:00",
+  "goalId": "ac9e824f-003c-50ac-8751-2b8456004c63",
+  "scope": "Actual V follow-up only; no D/P review or rebinding",
+  "decision": "REVISE",
+  "decisionReason": "The regular DNA helix is geometrically coherent, but the unexpected X chromosome and joining-zone zoom add unnecessary ambiguity to the simple carrier model. Keep the verified helix and revise the chromosome/zoom context to a clear single rod as the next targeted candidate.",
+  "candidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-carrier-hidden-continuity-and-length-author-20261006-v3/carrier-v4.candidate.png",
+    "sha256": "ea766edf279fd977118453494e2f837a3ccef57a6d1ceca448cf98010f49a63a",
+    "bytes": 1467218
+  },
+  "actualViewedSizes": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-carrier-hidden-continuity-and-length-author-20261006-v3/carrier-v4.candidate.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "ea766edf279fd977118453494e2f837a3ccef57a6d1ceca448cf98010f49a63a"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-carrier-hidden-continuity-and-length-author-20261006-v3/carrier-v4.actual-680.png",
+      "dimensions": [
+        680,
+        383
+      ],
+      "sha256": "75ec8bb9ec3111d22a3ed26ccc2dd3e07c4d728e47fb293d895e823c4168155d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-carrier-hidden-continuity-and-length-author-20261006-v3/carrier-v4.actual-360.png",
+      "dimensions": [
+        360,
+        203
+      ],
+      "sha256": "0bb92d1c3bf736bcb3ac80275fcfc7bbaaf5d37460851a2772a985d8a98ec118"
+    }
+  ],
+  "provider": "ChatGPT/Codex image_gen built-in",
+  "referenceStrategy": "Fresh generated raster without reference bitmap, same lavender material on two backbones; actual geometry separately inspected, not inferred from prompt or color sameness.",
+  "wholeRegularHelix": {
+    "decision": "KEEP",
+    "strandA": "crest1 -> front crossing1 -> trough2 -> rear crossing2 -> crest3 -> front crossing3 -> trough4 -> rear crossing4 -> crest5",
+    "strandB": "trough1 -> rear crossing1 -> crest2 -> front crossing2 -> trough3 -> rear crossing3 -> crest4 -> front crossing4 -> trough5",
+    "reason": "Each curve retains its sinusoidal tangent and continues through the correct side of every internal occlusion. The same individual curve alternates front and rear at consecutive crossings. No splice, reversal or corner is visible."
+  },
+  "allLargeInternalCrossoversInspected": [
+    {
+      "approxX": 730,
+      "approxY": 515,
+      "decision": "KEEP",
+      "foreground": "descending upper-left to lower-right",
+      "rear": "ascending lower-left to upper-right",
+      "reason": "Rear entering/exiting segments align across occlusion with the same positive tangent. Foreground contour is smooth and uninterrupted. Material is lavender throughout; depth shading introduces no new curve."
+    },
+    {
+      "approxX": 980,
+      "approxY": 515,
+      "decision": "KEEP",
+      "foreground": "descending upper-left to lower-right",
+      "rear": "ascending lower-left to upper-right",
+      "reason": "Rear entering/exiting segments align across occlusion with the same positive tangent. Foreground contour is smooth and uninterrupted. Material is lavender throughout; depth shading introduces no new curve."
+    },
+    {
+      "approxX": 1225,
+      "approxY": 515,
+      "decision": "KEEP",
+      "foreground": "descending upper-left to lower-right",
+      "rear": "ascending lower-left to upper-right",
+      "reason": "Rear entering/exiting segments align across occlusion with the same positive tangent. Foreground contour is smooth and uninterrupted. Material is lavender throughout; depth shading introduces no new curve."
+    },
+    {
+      "approxX": 1470,
+      "approxY": 515,
+      "decision": "KEEP",
+      "foreground": "descending upper-left to lower-right",
+      "rear": "ascending lower-left to upper-right",
+      "reason": "Rear entering/exiting segments align across occlusion with the same positive tangent. Foreground contour is smooth and uninterrupted. Material is lavender throughout; depth shading introduces no new curve."
+    }
+  ],
+  "entranceAndExit": {
+    "decision": "KEEP_BOUNDED",
+    "reason": "At the left chromatin-to-DNA entrance, the rear curve emerges behind the descending front curve near x470; the packed fibre is a schematic scale transition and does not display the individual backbones through the chromosome. No exact molecular unpacking mechanism is claimed. At the right crop both backbones continue beyond the frame without splices."
+  },
+  "rungs": {
+    "decision": "KEEP_BOUNDED",
+    "reason": "Paired rods span between opposite backbones; their shorter projections and partial occlusion near crossings agree with the projected model. Colors have no nucleotide letters or biochemical pairing legend, so no specific base-pair assignment is taught."
+  },
+  "geneMark": {
+    "decision": "KEEP_BOUNDED",
+    "actualSpanApproxX": [
+      720,
+      1297
+    ],
+    "fullTurnsApprox": 1.2,
+    "reason": "The bracket selects a continuous substantial middle DNA section with unmarked DNA at both sides, unchanged backbone geometry and readable stark verkürzt at native, 680 and 360. This supports gene-as-section and does not imply an actual small base-pair count. The prompt request for two full turns was not achieved; no claim of two turns is accepted. Extending only bracket/halo is a legitimate next targeted improvement."
+  },
+  "chromosomeZoom": {
+    "decision": "REVISE_DIDACTIC_CLARITY",
+    "reason": "The X is a biologically valid replicated chromosome, not a scientific error by itself. The little box visibly lies near the constricted joining region, with no clear arm-specific selection. A viewer may therefore read the expansion as one double helix for the whole X rather than DNA from a selected chromosome area. The generic carrier goal does not teach chromatids or DNA counts, so a clear rod and interior zoom avoids this extra ambiguity.",
+    "primaryReferenceReceipt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-carrier-hidden-continuity-independent-b-v3/carrier-v4.primary-chromosome-reference.actual.json"
+  },
+  "readabilityStyle": {
+    "decision": "KEEP",
+    "reason": "Chromosom, DNA, Gen and stark verkürzt remain readable at actual360 and680. Friendly wide comic style, sufficient contrast, no required fine print."
+  },
+  "nextScope": "Only the targeted next image may be reviewed for the revised context. The verified regular helix must be actually rechecked for preservation, not assumed unchanged from the edit prompt.",
+  "preservedScope": "Six country views remain separately KEEP at their established frozen digests; no text/source/Memory review restarted.",
+  "limits": {
+    "peerAResultsRead": false,
+    "imageEdited": false,
+    "activeFilesModified": false,
+    "historicalArtifactsModified": false,
+    "DOrPApproved": false,
+    "humanApprovalClaimed": false,
+    "overallM7Claimed": false
+  }
+}

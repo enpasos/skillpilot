@@ -1,0 +1,60 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-q1-seven-final-reviewed-20261006-v1",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-candidate-v1/seven.batch.config.json",
+  "configDigest": "sha256:bbeccba4e85359a479c849108b7fb26e0b3a77abcfd1dcdc8fbf828eaa190288",
+  "goalIds": [
+    "ac9e824f-003c-50ac-8751-2b8456004c63",
+    "5eb7c923-469d-5934-b1e8-292e1bb40d95",
+    "bfb5dfb6-8e35-5452-b581-96e061d8b826",
+    "3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04",
+    "9d830422-acc7-5fa8-aee9-4dae4cedbf49",
+    "d0c3e6a7-581b-57bd-8027-e940c6b77af8",
+    "aab2a358-b2ee-57a5-a957-8fb9845506b1"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 390,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-final-native-review-inputs-author-v1/inputs/book-390.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-final-native-review-inputs-author-v1/inputs/canonical-390.de.candidate.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:5d47d120cfa5f7c5dce7bcc6ca2cd5f2b22b96c7758485c0644518a709eda880"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:2eba1515e6344f5779d12e0457eef23566b55d731a47380213bb622af357df03",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:a7ba39569f7f810d46e6b13ecaa104ab765ceb378e26974f77416bd6f9c35d57",
+    "reviewInputFingerprint": "sha256:3875cdc1f10dc8750ff088ec683a5db40349edbda17ba3433362166c9d22019f",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-q1-seven-final-native-review-author-v1-a",
+        "campaignDigest": "sha256:06870f6704bfeb16aa27cca483cae43a3a7bbf704ba7fef758876cb2db3f3969",
+        "roundId": "independent-a",
+        "independenceGroupId": "biologie-q1-seven-final-independent-a",
+        "batchId": "independent-a.batch-001",
+        "batchInputFingerprint": "sha256:67ea98587ab9cbbe0fa14f1afd5447dc76cf6644cabd1008e8ebce99568cfd7a"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-q1-seven-final-native-review-author-v1-b",
+        "campaignDigest": "sha256:67cbf0faabcfe95b37a8f7a4be4af6e0d478a1532b6d307e0c3322c591e72cdb",
+        "roundId": "independent-b",
+        "independenceGroupId": "biologie-q1-seven-final-independent-b",
+        "batchId": "independent-b.batch-001",
+        "batchInputFingerprint": "sha256:9936ad6ff585049640c34644a303dc37210064a3c74852d61503616f52e3541d"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

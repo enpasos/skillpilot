@@ -1,0 +1,28 @@
+# Neuro8 Author-v2: gezielte Korrektur und bedingte native Vorbereitung
+
+## Erledigt
+
+- **Textkandidat:** Sensorik 8b23 nennt Teilchenebene, den gekoppelten Reiz–Rezeptorpotenzial–Aktionspotenzialmuster-Fall und echte Anwendung auf einen gegebenen sinnesphysiologischen Fall. Die Schnittstellen zu den erhaltenen ganzen Zielen 787/04d sind ausdrücklich beschrieben. Neuropharm f628 ist in DE und EN explizit auf eine erregende Acetylcholin-führende Synapse qualifiziert.
+- **Locators:** Alle 45 BY-Originalrecords und 21 Identitätsanker wurden mit `[id="313324"]` / `[id="314384"]` gegen die bytegenauen amtlichen HTMLs tatsächlich auf exakten Text aufgelöst. URL-Fragmente sind unverändert; eingebettete Kopien verwenden ebenfalls die korrigierten Selektoren.
+- **NW-Teilquellen:** Zwei abgeschlossene unabhängige A/B-KEEPs werden exakt gebunden. Eigene getrennte Extraktions-/Mappingkandidaten und eine path-spezifische, zum bisherigen NW-G9-Beschluss identische Dauerpolicy-Zeile sind vorbereitet. Die tatsächlichen nativen Zeugen sind direkt und liegen unter DE-NW/SekI/G9 ohne Kursprofil. Die geschützten Bakterienziele bleiben ganz unverändert; Plasmid-/DNA-Modellteile werden nicht zu wörtlichen NW-Pflichten erklärt.
+- **Native technische Ableitung:** Die aktuelle 472-Knoten-/390-Ziele-Basis wird verwendet. Produktions-SourceAtlas und BookModel wurden tatsächlich isoliert ausgeführt (letzter Lauf Exit 0), ohne PDF-Build. Baseline und bedingter Gesamtkandidat haben dieselben vollständigen 390 Ziel-IDs, 22 tatsächlich verglichene geordnete Landes-/Stufen-/Kursmengen und jeweils 390 Atlas-Seiten. Dazu wurden zwei vollständige 390-Seiten-Katalogmodelle erzeugt.
+
+## Grenzen
+
+Die NW-Ergänzung allein lässt die acht Neuro-Lücken bestehen: ihr originaler 390-Vertrag scheitert tatsächlich bei 382; dieser Lauf bleibt ausdrücklich eine Diagnose. Erst die **bedingten** acht neuen Routen stellen die aktuelle vollständige 390er-Zielmenge technisch dar. Sie umfassen fünf begrenzte Primärkompetenzen und drei deklarierte Modellspezialisierungen. Die Produktionsfunktion prüft amtlichen Dokumentbezug, Stufe und Kursmetadaten, aber **keine fachliche `sourceKind`-Freigabe**. Die 390er-Menge ist daher keine ganze Quellenfreigabe.
+
+Hebb, gegebene Netzänderungen sowie LTP/LTD bleiben eigene Modellspezialisierungen; weder amtliche Einzelpflicht noch atomare curriculare Genehmigung ist behauptet. Ihre unterscheidbaren Materialleistungen und Rolle gegenüber dem allgemeinen zellulären Lernziel 347110a1 sind offen. Ebenso bleiben die ganzen BY-Sensorik-/Augen-/optischen Phänomen-, Depressions-/Umgang-/Therapie-, HE-GK2- und NW-IF7-/Viruspflichten erhalten. Alle acht aktuellen Ganzziele und ganzen Ursprungsquellen bleiben HOLD. Präzise nächste Operator-/Materialpflichten stehen im eigenen `remaining-whole-source-operator-and-model-role-obligations.author-v2.json`.
+
+189 zuvor vorhandene Landes-/Zielpaare bleiben im normativen HOLD-Overlay verloren. Der neue Kandidat erhält die TH-19-/HH-21-Teilentscheidungen und die konkreten HH22-/HH29-Grenzen: keine direkte Drogen-Sinnesorgan-Wirkung und keine spezielle Kreislaufprävention daraus ableiten. Es gibt keine erfundenen Tier-/Atmungs-/Kreislauf-/Sinnesorgan-Teilansprüche.
+
+Alle **74** aktuell strengen Bio-Ziele behalten ihre ganzen Kanonobjekte, vollständigen Katalogseiten und Atlas-Seitenkontexte exakt. Die 33 im früheren 382-Paket geänderten geschützten Kontexte wurden dort historisch nicht freigegeben; jetzt wurde ihre tatsächliche Gleichheit am vollständigen 390-Kandidaten erneut gemessen. Insgesamt 61 aktuelle Atlas-Seiten ändern sich; diese konkreten Seiten sind im Deltapaket enthalten. Chem127, Math807 und Phys478 werden mit den tatsächlichen aktuellen ganzen Zielobjekten und vorhandenen QS-Inputs geschützt. Die vorhandene Floorpolicy ist bytegenau gebunden; kein neuer Status-/Central-Lauf wird behauptet.
+
+Der Achtziel-Textkandidat hält alle 464 übrigen ganzen Ziele, alle 472 IDs und alle Kanten exakt. Der zusätzliche native Neuro21-HOLD-Kontext verwendet darüber hinaus die 13 unverändert eingefrorenen alten Textkandidaten; dort sind alle 451 ganzen Ziele außerhalb Neuro21 exakt. Fingerprints werden ausschließlich im eigenen technischen Kandidaten nach der Produktionsfunktion aktualisiert; Klassifikationsentscheidungen werden nicht geändert. **D/P, Rollen, Atomarität und gezieltes Quellen-Followup bleiben Kandidatenprüfungen offen.** Keine aktive Kanon-/Config-/Reviewhistorie wurde geändert. Netto strenge Abschlüsse und aktive Bindungsrestaurationen: 0. Keine Human Approval oder Human Trial.
+
+## Rohpaket und historische Erhaltung
+
+Startpunkt für die nächste unabhängige Prüfung ist `eight-current-whole-goals-two-text-corrections-and-NW-G9-native-routing.raw-author-v2-review-input.json`. Es enthält ganze aktuelle und vorgeschlagene DE/EN-Ziele, die exakten beiden Vorentscheidungen, Quellenarten-/Scope-Routing, konkrete Modell-/Zeugen-/Seitenbefunde und offene Pflichten.
+
+Author-v1, beide unabhängigen Quellenfreezes und der tatsächliche alte 382-Bericht bleiben bytegenau erhalten. Die V2-Quellenbasis übernimmt ihre tatsächlich amtlichen Originalbytes und ihre abgeschlossenen begrenzten Entscheidungen; V2 beansprucht keine neuen Downloads oder erneute unabhängige Science-Sichtprüfung. Zwei frühe eigene Probe-Annahmen (HTML als PDF-Snapshot; ein falscher eigener Pagefeldname) sind mit tatsächlich beobachteten Fehlerreceipts erhalten. Die Produktion wurde dafür nicht geändert.
+
+`eight-missing-primary-scope-remediation-author-v2.final.freeze.json` versiegelt nur dieses neue Dossier. Es enthält keine Integration oder formale Quellen-/D/P-/Human-Freigabe.

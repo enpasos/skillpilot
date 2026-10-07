@@ -1,0 +1,76 @@
+{
+  "role": "AUTHOR actual completed production CLI calls; not independent D/P decisions",
+  "commands": [
+    {
+      "command": "npm --prefix app run quality:goal-description-rollout-batch -- prepare --config curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next-coherent-current-gap-native-author-v1/native-d-twenty.batch.config.json",
+      "exitCode": 0,
+      "actualGoalCount": 20,
+      "actualNativeModelDigest": "sha256:c0b0266fbef143d0a6b69c4824b8ea1bb71484e5bc8a7e847a9e0230e7851cb7",
+      "actualNativeBundleDigest": "sha256:0cd264270422991401373e53d8ce916164fe12daf8290637e208b7301610fbd9",
+      "actualOutput": "Standalone goal-description batch prepared: chemie-next-coherent-current-twenty-20261006-author-v1; goals=20; model=sha256:c0b0266fbef143d0a6b69c4824b8ea1bb71484e5bc8a7e847a9e0230e7851cb7; bundle=sha256:0cd264270422991401373e53d8ce916164fe12daf8290637e208b7301610fbd9"
+    },
+    {
+      "command": "npm --prefix app run quality:goal-description-rollout-batch -- check --config curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next-coherent-current-gap-native-author-v1/native-d-twenty.batch.config.json",
+      "exitCode": 0,
+      "actualGoalCount": 20,
+      "actualNativeModelDigest": "sha256:c0b0266fbef143d0a6b69c4824b8ea1bb71484e5bc8a7e847a9e0230e7851cb7",
+      "actualNativeBundleDigest": "sha256:0cd264270422991401373e53d8ce916164fe12daf8290637e208b7301610fbd9",
+      "actualOutput": "Standalone goal-description batch valid: chemie-next-coherent-current-twenty-20261006-author-v1; goals=20"
+    },
+    {
+      "command": "npm --prefix app run quality:goal-description-rollout-batch -- prepare --config curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next-coherent-current-gap-native-author-v1/native-d-five.batch.config.json",
+      "exitCode": 0,
+      "actualGoalCount": 5,
+      "actualNativeModelDigest": "sha256:f43ddc6ea5de515119065b54ce35d7b42bbe56a68384e702b6816f0e28bdc78b",
+      "actualNativeBundleDigest": "sha256:d31ff2b517b3fd9b88496646f9ce8a7009a56ee1e504b4587026c9264fb700b3",
+      "actualOutput": "Standalone goal-description batch prepared: chemie-next-coherent-current-five-20261006-author-v1; goals=5; model=sha256:f43ddc6ea5de515119065b54ce35d7b42bbe56a68384e702b6816f0e28bdc78b; bundle=sha256:d31ff2b517b3fd9b88496646f9ce8a7009a56ee1e504b4587026c9264fb700b3"
+    },
+    {
+      "command": "npm --prefix app run quality:goal-description-rollout-batch -- check --config curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next-coherent-current-gap-native-author-v1/native-d-five.batch.config.json",
+      "exitCode": 0,
+      "actualGoalCount": 5,
+      "actualNativeModelDigest": "sha256:f43ddc6ea5de515119065b54ce35d7b42bbe56a68384e702b6816f0e28bdc78b",
+      "actualNativeBundleDigest": "sha256:d31ff2b517b3fd9b88496646f9ce8a7009a56ee1e504b4587026c9264fb700b3",
+      "actualOutput": "Standalone goal-description batch valid: chemie-next-coherent-current-five-20261006-author-v1; goals=5"
+    },
+    {
+      "command": "npm --prefix app run quality:positive-goal-evidence:check -- --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next-coherent-current-gap-native-author-v1/positive-evidence.twenty-five.author-candidates.config.json",
+      "exitCode": 0,
+      "configuredGoals": 25,
+      "counts": {
+        "approved": 0,
+        "needsHumanReview": 25,
+        "rejected": 0
+      },
+      "blockingIssues": 0,
+      "actualOutput": "# Positive Goal Evidence Review: chemie-next-coherent-current25-positive-author-20261006-v1\nScope: Twenty-five current A/M/V-recorded atomic bonding/structure goals; author P candidates only; seven actual old-raster findings and one EN omission remain open\nConfigured goals: 25\nApproved: 0\nNeeds human review: 25\nRejected: 0\nBlocking issues: 0"
+    }
+  ],
+  "actualNativePDFPhysicalPages": {
+    "twenty": 22,
+    "five": 7
+  },
+  "nativeContractMax20Unmodified": true,
+  "wholeCurrentCanonicalPreserved": true,
+  "protected127CurrentStrictWholeGoalsPreserved": true,
+  "actualMaterialAndNativeProfileCounts": {
+    "profiles": 25,
+    "completeDEENMaterials": 50
+  },
+  "actualOriginalRasterViews": 25,
+  "actual360RasterViews": 25,
+  "actual680RasterViews": 25,
+  "openActualRasterFindings": 7,
+  "openDEENScopeFindings": 1,
+  "independentDA": "PENDING",
+  "independentDB": "PENDING",
+  "independentPA": "PENDING",
+  "independentPB": "PENDING",
+  "independentNewV": "PENDING_FOR_SEVEN_CORRECTIONS",
+  "newScientificClosures": 0,
+  "restoredActiveBindings": 0,
+  "strictNetGain": 0,
+  "humanApproval": false,
+  "humanTrial": false,
+  "activeWrites": false
+}

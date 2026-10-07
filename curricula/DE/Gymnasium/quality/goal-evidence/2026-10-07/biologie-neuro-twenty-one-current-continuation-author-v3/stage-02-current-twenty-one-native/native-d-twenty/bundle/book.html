@@ -1,0 +1,1085 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Biologie – neuronale Informationsverarbeitung (20 Ziele)</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Biologie – neuronale Informationsverarbeitung (20 Ziele)</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>20 atomare Lernziele</dt><dd>4 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:bio-current390-author-review" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-be0ea5e4e841ac45809ea3c3" aria-label="Biologie – kanonische Prüfsicht"><a href="#goal-ce19b80f-d392-5851-ac92-750c85adfb3e"><span class="toc-entry-label">Biologie&#160;<wbr>–&#160;<wbr>kanonische&#160;<wbr>Prüfsicht</span></a></h2>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="goal:e8d54127-d42e-51f5-bfa5-51d826069f95" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-e35b58df5ecbb68b42c77ce2" aria-label="Biologie"><a href="#goal-ce19b80f-d392-5851-ac92-750c85adfb3e"><span class="toc-entry-label">Biologie</span></a></h3>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:d23951c2-4791-5a91-a2de-b72a421a4536" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-317e9ebf311eefad83f8eecc" aria-label="Evolution &amp; Neurobiologie"><a href="#goal-ce19b80f-d392-5851-ac92-750c85adfb3e"><span class="toc-entry-label">Evolution&#160;<wbr>&amp;&#160;<wbr>Neurobiologie</span></a></h4>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-f6f93fad6ac329d48a8446bb" aria-label="Q2.3 Neurobiologie"><a href="#goal-ce19b80f-d392-5851-ac92-750c85adfb3e"><span class="toc-entry-label">Q2.3&#160;<wbr>Neurobiologie</span></a></h5>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-ce19b80f-d392-5851-ac92-750c85adfb3e" data-goal-id="ce19b80f-d392-5851-ac92-750c85adfb3e" data-page-number="1" data-chapter-ids="structure:bio-current390-author-review goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8" aria-labelledby="goal-ce19b80f-d392-5851-ac92-750c85adfb3e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-ce19b80f-d392-5851-ac92-750c85adfb3e-title"><a class="goal-self-link" href="#goal-ce19b80f-d392-5851-ac92-750c85adfb3e">Neuronaler Aufbau</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ce19b80f-d392-5851-ac92-750c85adfb3e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-be0ea5e4e841ac45809ea3c3">Biologie – kanonische Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-f6f93fad6ac329d48a8446bb">Q2.3 Neurobiologie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ce19b80f-d392-5851-ac92-750c85adfb3e-description-heading">
+        <p class="section-heading" id="goal-ce19b80f-d392-5851-ac92-750c85adfb3e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Aufbau einer Nervenzelle modellhaft darstellen und die Funktion ihrer wesentlichen Strukturen für Signalaufnahme, Weiterleitung und Weitergabe erklären.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ce19b80f-d392-5851-ac92-750c85adfb3e-requires-heading">
+          <p class="section-heading" id="goal-ce19b80f-d392-5851-ac92-750c85adfb3e-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-ce19b80f-d392-5851-ac92-750c85adfb3e-reverse-heading">
+          <p class="section-heading" id="goal-ce19b80f-d392-5851-ac92-750c85adfb3e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-ff1bf88f-2413-5668-a071-ce9fc499cba3"><span>Erregende chemische Synapsen erklären</span><code>ff1bf88f-2413-5668-a071-ce9fc499cba3</code><span class="reference-page">S. 2</span></a></li><li><a href="#goal-78748ef2-93fb-5ec3-8c1e-90e42b9ea863"><span>Rezeptorpotenziale und Sinneszellen</span><code>78748ef2-93fb-5ec3-8c1e-90e42b9ea863</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-2381d2bb-176c-5903-8c6e-82f4bd5023a4"><span>Potenzialmessungen planen und auswerten</span><code>2381d2bb-176c-5903-8c6e-82f4bd5023a4</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-ce19b80f-d392-5851-ac92-750c85adfb3e-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ce19b80f-d392-5851-ac92-750c85adfb3e-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-ce19b80f-d392-5851-ac92-750c85adfb3e-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ce19b80f-d392-5851-ac92-750c85adfb3e-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-55045aec-e044-52db-8866-2a8b889079f7" rel="noreferrer noopener"><span>Reaktionszeit, Synapsen und Koffein</span> <code>55045aec-e044-52db-8866-2a8b889079f7</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 20</span>
+      <span>Buch-Digest <code>sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:40e7d3e2be2e611aa72059a52b84ba423913be77ddd068a1123bc4872b768c41</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=biologie-neuro-current-twenty-20261007-author-v3&amp;edition=curricular-atomic-v1&amp;goalId=ce19b80f-d392-5851-ac92-750c85adfb3e&amp;goalFingerprint=sha256%3A40e7d3e2be2e611aa72059a52b84ba423913be77ddd068a1123bc4872b768c41&amp;pageFingerprint=sha256%3A8e481795eac31d51f859293146dec807ff2482e7148a81963efc838166236ed6&amp;bookDigest=sha256%3A6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ff1bf88f-2413-5668-a071-ce9fc499cba3" data-goal-id="ff1bf88f-2413-5668-a071-ce9fc499cba3" data-page-number="2" data-chapter-ids="structure:bio-current390-author-review goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8" aria-labelledby="goal-ff1bf88f-2413-5668-a071-ce9fc499cba3-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-ff1bf88f-2413-5668-a071-ce9fc499cba3-title"><a class="goal-self-link" href="#goal-ff1bf88f-2413-5668-a071-ce9fc499cba3">Erregende chemische Synapsen erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ff1bf88f-2413-5668-a071-ce9fc499cba3</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-be0ea5e4e841ac45809ea3c3">Biologie – kanonische Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-f6f93fad6ac329d48a8446bb">Q2.3 Neurobiologie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ff1bf88f-2413-5668-a071-ce9fc499cba3-description-heading">
+        <p class="section-heading" id="goal-ff1bf88f-2413-5668-a071-ce9fc499cba3-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Übertragung an einer erregenden chemischen Synapse am Beispiel Acetylcholin erklären und die Rolle des Transmitters sowie ligandenabhängiger und spannungsabhängiger Kanäle erläutern.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ff1bf88f-2413-5668-a071-ce9fc499cba3-requires-heading">
+          <p class="section-heading" id="goal-ff1bf88f-2413-5668-a071-ce9fc499cba3-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ce19b80f-d392-5851-ac92-750c85adfb3e"><span>Neuronaler Aufbau</span><code>ce19b80f-d392-5851-ac92-750c85adfb3e</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-ff1bf88f-2413-5668-a071-ce9fc499cba3-reverse-heading">
+          <p class="section-heading" id="goal-ff1bf88f-2413-5668-a071-ce9fc499cba3-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-a46cafde-7359-5249-8754-19aaa3174ba4"><span>Plastische Verbindungsänderungen an gegebenen Netzmodellen erklären</span><code>a46cafde-7359-5249-8754-19aaa3174ba4</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-19758e09-1bc4-5ee4-bf52-89b3bc28e947"><span>Hormonelle Steuerung verknüpfen</span><code>19758e09-1bc4-5ee4-bf52-89b3bc28e947</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-e1117126-4e78-5a37-a645-2debc167219b"><span>Synaptische Integration analysieren</span><code>e1117126-4e78-5a37-a645-2debc167219b</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-485ef1c3-8997-52b7-91f5-b1ddf179013d"><span>Neuronale Erkrankungen einordnen</span><code>485ef1c3-8997-52b7-91f5-b1ddf179013d</code><span class="reference-page">S. 8</span></a></li><li><a href="#goal-afde0001-d7d7-5ed3-8a60-383e8da5620e"><span>Neurophysiologische Verfahren</span><code>afde0001-d7d7-5ed3-8a60-383e8da5620e</code><span class="reference-page">S. 9</span></a></li><li><a href="#goal-f6280154-d57c-599c-94bf-73313005a6df"><span>Stoffeinwirkung auf chemische Synapsen ableiten</span><code>f6280154-d57c-599c-94bf-73313005a6df</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-ff1bf88f-2413-5668-a071-ce9fc499cba3-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ff1bf88f-2413-5668-a071-ce9fc499cba3-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-ff1bf88f-2413-5668-a071-ce9fc499cba3-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ff1bf88f-2413-5668-a071-ce9fc499cba3-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-55045aec-e044-52db-8866-2a8b889079f7" rel="noreferrer noopener"><span>Reaktionszeit, Synapsen und Koffein</span> <code>55045aec-e044-52db-8866-2a8b889079f7</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-9499943f-89b7-54e3-9fe2-e90404beaa4a" rel="noreferrer noopener"><span>Sinnesorgane untersuchen</span> <code>9499943f-89b7-54e3-9fe2-e90404beaa4a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 20</span>
+      <span>Buch-Digest <code>sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:92b271f920a23c9ef0d847ace744e8018d56350049d762bbc8e744df62644d2d</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=biologie-neuro-current-twenty-20261007-author-v3&amp;edition=curricular-atomic-v1&amp;goalId=ff1bf88f-2413-5668-a071-ce9fc499cba3&amp;goalFingerprint=sha256%3A92b271f920a23c9ef0d847ace744e8018d56350049d762bbc8e744df62644d2d&amp;pageFingerprint=sha256%3A48613864c1533c8db0249a5f04dffba7143e45af154dcba3f71bf628c7856619&amp;bookDigest=sha256%3A6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a46cafde-7359-5249-8754-19aaa3174ba4" data-goal-id="a46cafde-7359-5249-8754-19aaa3174ba4" data-page-number="3" data-chapter-ids="structure:bio-current390-author-review goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8" aria-labelledby="goal-a46cafde-7359-5249-8754-19aaa3174ba4-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a46cafde-7359-5249-8754-19aaa3174ba4-title"><a class="goal-self-link" href="#goal-a46cafde-7359-5249-8754-19aaa3174ba4">Plastische Verbindungsänderungen an gegebenen Netzmodellen erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a46cafde-7359-5249-8754-19aaa3174ba4</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-be0ea5e4e841ac45809ea3c3">Biologie – kanonische Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-f6f93fad6ac329d48a8446bb">Q2.3 Neurobiologie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a46cafde-7359-5249-8754-19aaa3174ba4-description-heading">
+        <p class="section-heading" id="goal-a46cafde-7359-5249-8754-19aaa3174ba4-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an gegebenen neuronalen Netzwerkmodellen erklären, wie Änderungen wirksamer Verbindungen die Verarbeitung gleicher Eingangssignale verändern.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a46cafde-7359-5249-8754-19aaa3174ba4-requires-heading">
+          <p class="section-heading" id="goal-a46cafde-7359-5249-8754-19aaa3174ba4-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ff1bf88f-2413-5668-a071-ce9fc499cba3"><span>Erregende chemische Synapsen erklären</span><code>ff1bf88f-2413-5668-a071-ce9fc499cba3</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a46cafde-7359-5249-8754-19aaa3174ba4-reverse-heading">
+          <p class="section-heading" id="goal-a46cafde-7359-5249-8754-19aaa3174ba4-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-c9a06264-cce2-54dd-9604-46dd5949f02e"><span>LTP und LTD an gegebenen Befunden einordnen</span><code>c9a06264-cce2-54dd-9604-46dd5949f02e</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-a46cafde-7359-5249-8754-19aaa3174ba4-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a46cafde-7359-5249-8754-19aaa3174ba4-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-a46cafde-7359-5249-8754-19aaa3174ba4-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a46cafde-7359-5249-8754-19aaa3174ba4-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-55045aec-e044-52db-8866-2a8b889079f7" rel="noreferrer noopener"><span>Reaktionszeit, Synapsen und Koffein</span> <code>55045aec-e044-52db-8866-2a8b889079f7</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 20</span>
+      <span>Buch-Digest <code>sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7c5670d64ad0c32df1a45b3b31e9eb2ee036d5b4a803e333960a2f87266c0d80</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=biologie-neuro-current-twenty-20261007-author-v3&amp;edition=curricular-atomic-v1&amp;goalId=a46cafde-7359-5249-8754-19aaa3174ba4&amp;goalFingerprint=sha256%3A7c5670d64ad0c32df1a45b3b31e9eb2ee036d5b4a803e333960a2f87266c0d80&amp;pageFingerprint=sha256%3Ac247a664382ea87526cf3c26d1f7fe7ff7083010a4dbacf3b1e97bec54c1e583&amp;bookDigest=sha256%3A6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-78748ef2-93fb-5ec3-8c1e-90e42b9ea863" data-goal-id="78748ef2-93fb-5ec3-8c1e-90e42b9ea863" data-page-number="4" data-chapter-ids="structure:bio-current390-author-review goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8" aria-labelledby="goal-78748ef2-93fb-5ec3-8c1e-90e42b9ea863-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-78748ef2-93fb-5ec3-8c1e-90e42b9ea863-title"><a class="goal-self-link" href="#goal-78748ef2-93fb-5ec3-8c1e-90e42b9ea863">Rezeptorpotenziale und Sinneszellen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>78748ef2-93fb-5ec3-8c1e-90e42b9ea863</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-be0ea5e4e841ac45809ea3c3">Biologie – kanonische Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-f6f93fad6ac329d48a8446bb">Q2.3 Neurobiologie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-78748ef2-93fb-5ec3-8c1e-90e42b9ea863-description-heading">
+        <p class="section-heading" id="goal-78748ef2-93fb-5ec3-8c1e-90e42b9ea863-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Rezeptorpotenziale sowie primäre und sekundäre Sinneszellen beschreiben.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-78748ef2-93fb-5ec3-8c1e-90e42b9ea863-requires-heading">
+          <p class="section-heading" id="goal-78748ef2-93fb-5ec3-8c1e-90e42b9ea863-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ce19b80f-d392-5851-ac92-750c85adfb3e"><span>Neuronaler Aufbau</span><code>ce19b80f-d392-5851-ac92-750c85adfb3e</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-78748ef2-93fb-5ec3-8c1e-90e42b9ea863-reverse-heading">
+          <p class="section-heading" id="goal-78748ef2-93fb-5ec3-8c1e-90e42b9ea863-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-8b23f8fb-555d-5720-b5f2-dd6f28a0e786"><span>Sensorische Signaltransduktion und Codierung deuten</span><code>8b23f8fb-555d-5720-b5f2-dd6f28a0e786</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-78748ef2-93fb-5ec3-8c1e-90e42b9ea863-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-78748ef2-93fb-5ec3-8c1e-90e42b9ea863-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-78748ef2-93fb-5ec3-8c1e-90e42b9ea863-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-78748ef2-93fb-5ec3-8c1e-90e42b9ea863-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 20</span>
+      <span>Buch-Digest <code>sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4672c7563f000aed79d90c39cb4c879232f6cc904aac1182b55d6e9b856a6ef9</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=biologie-neuro-current-twenty-20261007-author-v3&amp;edition=curricular-atomic-v1&amp;goalId=78748ef2-93fb-5ec3-8c1e-90e42b9ea863&amp;goalFingerprint=sha256%3A4672c7563f000aed79d90c39cb4c879232f6cc904aac1182b55d6e9b856a6ef9&amp;pageFingerprint=sha256%3A4bdfcff100e6c6d8811315f80e9b3b0865d8989b36444339ff07345f6cdb6d3f&amp;bookDigest=sha256%3A6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-19758e09-1bc4-5ee4-bf52-89b3bc28e947" data-goal-id="19758e09-1bc4-5ee4-bf52-89b3bc28e947" data-page-number="5" data-chapter-ids="structure:bio-current390-author-review goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8" aria-labelledby="goal-19758e09-1bc4-5ee4-bf52-89b3bc28e947-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-19758e09-1bc4-5ee4-bf52-89b3bc28e947-title"><a class="goal-self-link" href="#goal-19758e09-1bc4-5ee4-bf52-89b3bc28e947">Hormonelle Steuerung verknüpfen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>19758e09-1bc4-5ee4-bf52-89b3bc28e947</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-be0ea5e4e841ac45809ea3c3">Biologie – kanonische Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-f6f93fad6ac329d48a8446bb">Q2.3 Neurobiologie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-19758e09-1bc4-5ee4-bf52-89b3bc28e947-description-heading">
+        <p class="section-heading" id="goal-19758e09-1bc4-5ee4-bf52-89b3bc28e947-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann hormonelle und neuronale Steuerkreise gemeinsam erläutern.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-19758e09-1bc4-5ee4-bf52-89b3bc28e947-requires-heading">
+          <p class="section-heading" id="goal-19758e09-1bc4-5ee4-bf52-89b3bc28e947-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ff1bf88f-2413-5668-a071-ce9fc499cba3"><span>Erregende chemische Synapsen erklären</span><code>ff1bf88f-2413-5668-a071-ce9fc499cba3</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-19758e09-1bc4-5ee4-bf52-89b3bc28e947-reverse-heading">
+          <p class="section-heading" id="goal-19758e09-1bc4-5ee4-bf52-89b3bc28e947-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-9b966664-906b-5a5d-8008-cae18de043aa"><span>Neurotransmitter-Verfügbarkeit an einem Beispiel erklären</span><code>9b966664-906b-5a5d-8008-cae18de043aa</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-19758e09-1bc4-5ee4-bf52-89b3bc28e947-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-19758e09-1bc4-5ee4-bf52-89b3bc28e947-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-19758e09-1bc4-5ee4-bf52-89b3bc28e947-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-19758e09-1bc4-5ee4-bf52-89b3bc28e947-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-c05e217f-33fc-5a11-ba75-1397fad3ae0a" rel="noreferrer noopener"><span>Hormonregulation und Stressfolgen erklären</span> <code>c05e217f-33fc-5a11-ba75-1397fad3ae0a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 20</span>
+      <span>Buch-Digest <code>sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:be61201d24f11bc40049dbfdacadaebac3a91cb2b3dd328bdd61d8da9f5c2be6</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=biologie-neuro-current-twenty-20261007-author-v3&amp;edition=curricular-atomic-v1&amp;goalId=19758e09-1bc4-5ee4-bf52-89b3bc28e947&amp;goalFingerprint=sha256%3Abe61201d24f11bc40049dbfdacadaebac3a91cb2b3dd328bdd61d8da9f5c2be6&amp;pageFingerprint=sha256%3Abc0f03b65801242e5a2caf4d6e31e477c28807bb3a0dc9c2d2ff7b07434bf337&amp;bookDigest=sha256%3A6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e1117126-4e78-5a37-a645-2debc167219b" data-goal-id="e1117126-4e78-5a37-a645-2debc167219b" data-page-number="6" data-chapter-ids="structure:bio-current390-author-review goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8" aria-labelledby="goal-e1117126-4e78-5a37-a645-2debc167219b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e1117126-4e78-5a37-a645-2debc167219b-title"><a class="goal-self-link" href="#goal-e1117126-4e78-5a37-a645-2debc167219b">Synaptische Integration analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e1117126-4e78-5a37-a645-2debc167219b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-be0ea5e4e841ac45809ea3c3">Biologie – kanonische Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-f6f93fad6ac329d48a8446bb">Q2.3 Neurobiologie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e1117126-4e78-5a37-a645-2debc167219b-description-heading">
+        <p class="section-heading" id="goal-e1117126-4e78-5a37-a645-2debc167219b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an gegebenen synaptischen Potenzialverläufen erklären, wie erregende und hemmende Eingänge räumlich und zeitlich verrechnet werden und die Auslösung eines Aktionspotenzials beeinflussen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e1117126-4e78-5a37-a645-2debc167219b-requires-heading">
+          <p class="section-heading" id="goal-e1117126-4e78-5a37-a645-2debc167219b-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ff1bf88f-2413-5668-a071-ce9fc499cba3"><span>Erregende chemische Synapsen erklären</span><code>ff1bf88f-2413-5668-a071-ce9fc499cba3</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-e1117126-4e78-5a37-a645-2debc167219b-reverse-heading">
+          <p class="section-heading" id="goal-e1117126-4e78-5a37-a645-2debc167219b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-347110a1-1d2e-5195-8acc-64e7e3893ce5"><span>Zelluläre Lernprozesse</span><code>347110a1-1d2e-5195-8acc-64e7e3893ce5</code><span class="reference-page">S. 7</span></a></li><li><a href="#goal-97b24279-def0-5ce6-8726-a1cac9cd38ad"><span>Gegebene neuronale Verschaltungen analysieren</span><code>97b24279-def0-5ce6-8726-a1cac9cd38ad</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e1117126-4e78-5a37-a645-2debc167219b-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e1117126-4e78-5a37-a645-2debc167219b-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-e1117126-4e78-5a37-a645-2debc167219b-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e1117126-4e78-5a37-a645-2debc167219b-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 20</span>
+      <span>Buch-Digest <code>sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9a55109253d60894f1bd469b4ce4efd9a1ed38cf5140402341946e9cef0fb58b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=biologie-neuro-current-twenty-20261007-author-v3&amp;edition=curricular-atomic-v1&amp;goalId=e1117126-4e78-5a37-a645-2debc167219b&amp;goalFingerprint=sha256%3A9a55109253d60894f1bd469b4ce4efd9a1ed38cf5140402341946e9cef0fb58b&amp;pageFingerprint=sha256%3Aed116e063e73f5f4d1ebfe882ccf8e795b8e75f1dd913661b64973d4fb80ef05&amp;bookDigest=sha256%3A6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-347110a1-1d2e-5195-8acc-64e7e3893ce5" data-goal-id="347110a1-1d2e-5195-8acc-64e7e3893ce5" data-page-number="7" data-chapter-ids="structure:bio-current390-author-review goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8" aria-labelledby="goal-347110a1-1d2e-5195-8acc-64e7e3893ce5-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-347110a1-1d2e-5195-8acc-64e7e3893ce5-title"><a class="goal-self-link" href="#goal-347110a1-1d2e-5195-8acc-64e7e3893ce5">Zelluläre Lernprozesse</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>347110a1-1d2e-5195-8acc-64e7e3893ce5</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-be0ea5e4e841ac45809ea3c3">Biologie – kanonische Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-f6f93fad6ac329d48a8446bb">Q2.3 Neurobiologie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-347110a1-1d2e-5195-8acc-64e7e3893ce5-description-heading">
+        <p class="section-heading" id="goal-347110a1-1d2e-5195-8acc-64e7e3893ce5-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann plastische Veränderungen auf zellulärer Ebene erläutern.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-347110a1-1d2e-5195-8acc-64e7e3893ce5-requires-heading">
+          <p class="section-heading" id="goal-347110a1-1d2e-5195-8acc-64e7e3893ce5-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e1117126-4e78-5a37-a645-2debc167219b"><span>Synaptische Integration analysieren</span><code>e1117126-4e78-5a37-a645-2debc167219b</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-347110a1-1d2e-5195-8acc-64e7e3893ce5-reverse-heading">
+          <p class="section-heading" id="goal-347110a1-1d2e-5195-8acc-64e7e3893ce5-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-4f631f78-e13a-58e5-9092-f4db0b8d377a"><span>Hebb-Regel als gegebenes Lernmodell anwenden</span><code>4f631f78-e13a-58e5-9092-f4db0b8d377a</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-347110a1-1d2e-5195-8acc-64e7e3893ce5-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-347110a1-1d2e-5195-8acc-64e7e3893ce5-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-347110a1-1d2e-5195-8acc-64e7e3893ce5-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-347110a1-1d2e-5195-8acc-64e7e3893ce5-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 20</span>
+      <span>Buch-Digest <code>sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7824dfe4e9a75566c3b211eccc761002b7c923fca3f4099be8f8881a3de8c5fb</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=biologie-neuro-current-twenty-20261007-author-v3&amp;edition=curricular-atomic-v1&amp;goalId=347110a1-1d2e-5195-8acc-64e7e3893ce5&amp;goalFingerprint=sha256%3A7824dfe4e9a75566c3b211eccc761002b7c923fca3f4099be8f8881a3de8c5fb&amp;pageFingerprint=sha256%3A3d5d7c2a7d92b06d3e15371c1b0c1cee4e90296f7d958913c78099b78e2964b6&amp;bookDigest=sha256%3A6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-485ef1c3-8997-52b7-91f5-b1ddf179013d" data-goal-id="485ef1c3-8997-52b7-91f5-b1ddf179013d" data-page-number="8" data-chapter-ids="structure:bio-current390-author-review goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8" aria-labelledby="goal-485ef1c3-8997-52b7-91f5-b1ddf179013d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-485ef1c3-8997-52b7-91f5-b1ddf179013d-title"><a class="goal-self-link" href="#goal-485ef1c3-8997-52b7-91f5-b1ddf179013d">Neuronale Erkrankungen einordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>485ef1c3-8997-52b7-91f5-b1ddf179013d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-be0ea5e4e841ac45809ea3c3">Biologie – kanonische Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-f6f93fad6ac329d48a8446bb">Q2.3 Neurobiologie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-485ef1c3-8997-52b7-91f5-b1ddf179013d-description-heading">
+        <p class="section-heading" id="goal-485ef1c3-8997-52b7-91f5-b1ddf179013d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an einem gegebenen Modell einer neuronalen Erkrankung, zum Beispiel Alzheimer, erklären, wie eine Störung neuronaler Strukturen oder Signalprozesse die Funktion des Systems verändert.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-485ef1c3-8997-52b7-91f5-b1ddf179013d-requires-heading">
+          <p class="section-heading" id="goal-485ef1c3-8997-52b7-91f5-b1ddf179013d-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ff1bf88f-2413-5668-a071-ce9fc499cba3"><span>Erregende chemische Synapsen erklären</span><code>ff1bf88f-2413-5668-a071-ce9fc499cba3</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-485ef1c3-8997-52b7-91f5-b1ddf179013d-reverse-heading">
+          <p class="section-heading" id="goal-485ef1c3-8997-52b7-91f5-b1ddf179013d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-485ef1c3-8997-52b7-91f5-b1ddf179013d-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-485ef1c3-8997-52b7-91f5-b1ddf179013d-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-485ef1c3-8997-52b7-91f5-b1ddf179013d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-485ef1c3-8997-52b7-91f5-b1ddf179013d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-487c79f5-7e4d-5da8-ad8f-f0f96c23a974" rel="noreferrer noopener"><span>Vorschlag C (GK) - Synapse, Reaktionszeit und neurologische Stoerung im Alltag</span> <code>487c79f5-7e4d-5da8-ad8f-f0f96c23a974</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-5e8d3316-c22a-55bc-acca-9e1d15a4152c" rel="noreferrer noopener"><span>Vorschlag C (LK) - Parkinson-Modell zwischen Dopaminmessung, Rezeptorwirkung und Therapie</span> <code>5e8d3316-c22a-55bc-acca-9e1d15a4152c</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 20</span>
+      <span>Buch-Digest <code>sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0f704e43df3094a20fbf5bae4927c18652b28f7a11d8a3990ed427667a7099e7</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=biologie-neuro-current-twenty-20261007-author-v3&amp;edition=curricular-atomic-v1&amp;goalId=485ef1c3-8997-52b7-91f5-b1ddf179013d&amp;goalFingerprint=sha256%3A0f704e43df3094a20fbf5bae4927c18652b28f7a11d8a3990ed427667a7099e7&amp;pageFingerprint=sha256%3A550f0fbecad8ba89dbec09edd1ee795381e0a3b12ffaef10c7c120f703c3d49f&amp;bookDigest=sha256%3A6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-afde0001-d7d7-5ed3-8a60-383e8da5620e" data-goal-id="afde0001-d7d7-5ed3-8a60-383e8da5620e" data-page-number="9" data-chapter-ids="structure:bio-current390-author-review goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8" aria-labelledby="goal-afde0001-d7d7-5ed3-8a60-383e8da5620e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-afde0001-d7d7-5ed3-8a60-383e8da5620e-title"><a class="goal-self-link" href="#goal-afde0001-d7d7-5ed3-8a60-383e8da5620e">Neurophysiologische Verfahren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>afde0001-d7d7-5ed3-8a60-383e8da5620e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-be0ea5e4e841ac45809ea3c3">Biologie – kanonische Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-f6f93fad6ac329d48a8446bb">Q2.3 Neurobiologie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-afde0001-d7d7-5ed3-8a60-383e8da5620e-description-heading">
+        <p class="section-heading" id="goal-afde0001-d7d7-5ed3-8a60-383e8da5620e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann ein bildgebendes Verfahren der Hirnforschung beschreiben.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-afde0001-d7d7-5ed3-8a60-383e8da5620e-requires-heading">
+          <p class="section-heading" id="goal-afde0001-d7d7-5ed3-8a60-383e8da5620e-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ff1bf88f-2413-5668-a071-ce9fc499cba3"><span>Erregende chemische Synapsen erklären</span><code>ff1bf88f-2413-5668-a071-ce9fc499cba3</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-afde0001-d7d7-5ed3-8a60-383e8da5620e-reverse-heading">
+          <p class="section-heading" id="goal-afde0001-d7d7-5ed3-8a60-383e8da5620e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-afde0001-d7d7-5ed3-8a60-383e8da5620e-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-afde0001-d7d7-5ed3-8a60-383e8da5620e-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-afde0001-d7d7-5ed3-8a60-383e8da5620e-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-afde0001-d7d7-5ed3-8a60-383e8da5620e-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 20</span>
+      <span>Buch-Digest <code>sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:02c435ab883a421964ecb9f53c29ab9c07ffea667fdf3ec51110ff9fa2c35573</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=biologie-neuro-current-twenty-20261007-author-v3&amp;edition=curricular-atomic-v1&amp;goalId=afde0001-d7d7-5ed3-8a60-383e8da5620e&amp;goalFingerprint=sha256%3A02c435ab883a421964ecb9f53c29ab9c07ffea667fdf3ec51110ff9fa2c35573&amp;pageFingerprint=sha256%3Ae2dc24ced4cbd7df0412d66f9ecc29c7e757726e1a4772003b58735f9a3e69db&amp;bookDigest=sha256%3A6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2381d2bb-176c-5903-8c6e-82f4bd5023a4" data-goal-id="2381d2bb-176c-5903-8c6e-82f4bd5023a4" data-page-number="10" data-chapter-ids="structure:bio-current390-author-review goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8" aria-labelledby="goal-2381d2bb-176c-5903-8c6e-82f4bd5023a4-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-2381d2bb-176c-5903-8c6e-82f4bd5023a4-title"><a class="goal-self-link" href="#goal-2381d2bb-176c-5903-8c6e-82f4bd5023a4">Potenzialmessungen planen und auswerten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2381d2bb-176c-5903-8c6e-82f4bd5023a4</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-be0ea5e4e841ac45809ea3c3">Biologie – kanonische Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-f6f93fad6ac329d48a8446bb">Q2.3 Neurobiologie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2381d2bb-176c-5903-8c6e-82f4bd5023a4-description-heading">
+        <p class="section-heading" id="goal-2381d2bb-176c-5903-8c6e-82f4bd5023a4-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Messungen von Ruhe- und Aktionspotenzial planen und auswerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2381d2bb-176c-5903-8c6e-82f4bd5023a4-requires-heading">
+          <p class="section-heading" id="goal-2381d2bb-176c-5903-8c6e-82f4bd5023a4-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ce19b80f-d392-5851-ac92-750c85adfb3e"><span>Neuronaler Aufbau</span><code>ce19b80f-d392-5851-ac92-750c85adfb3e</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-2381d2bb-176c-5903-8c6e-82f4bd5023a4-reverse-heading">
+          <p class="section-heading" id="goal-2381d2bb-176c-5903-8c6e-82f4bd5023a4-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2381d2bb-176c-5903-8c6e-82f4bd5023a4-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2381d2bb-176c-5903-8c6e-82f4bd5023a4-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-2381d2bb-176c-5903-8c6e-82f4bd5023a4-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2381d2bb-176c-5903-8c6e-82f4bd5023a4-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 20</span>
+      <span>Buch-Digest <code>sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:eea78b141e97ae7a532e46365a7fa6a3f1e187e768fd65c8972d9c9927cae824</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=biologie-neuro-current-twenty-20261007-author-v3&amp;edition=curricular-atomic-v1&amp;goalId=2381d2bb-176c-5903-8c6e-82f4bd5023a4&amp;goalFingerprint=sha256%3Aeea78b141e97ae7a532e46365a7fa6a3f1e187e768fd65c8972d9c9927cae824&amp;pageFingerprint=sha256%3A7d8148fde205e598f08689b3142dd20eadd4428a586eb4f6e87955d7f19ab1ad&amp;bookDigest=sha256%3A6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c9a06264-cce2-54dd-9604-46dd5949f02e" data-goal-id="c9a06264-cce2-54dd-9604-46dd5949f02e" data-page-number="11" data-chapter-ids="structure:bio-current390-author-review goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8" aria-labelledby="goal-c9a06264-cce2-54dd-9604-46dd5949f02e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c9a06264-cce2-54dd-9604-46dd5949f02e-title"><a class="goal-self-link" href="#goal-c9a06264-cce2-54dd-9604-46dd5949f02e">LTP und LTD an gegebenen Befunden einordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c9a06264-cce2-54dd-9604-46dd5949f02e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-be0ea5e4e841ac45809ea3c3">Biologie – kanonische Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-f6f93fad6ac329d48a8446bb">Q2.3 Neurobiologie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c9a06264-cce2-54dd-9604-46dd5949f02e-description-heading">
+        <p class="section-heading" id="goal-c9a06264-cce2-54dd-9604-46dd5949f02e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann anhand gegebener Beschreibungen und Versuchsbefunde zu langfristiger Verstärkung oder Abschwächung synaptischer Wirksamkeit deren Bedeutung als Modelle zellulärer Lernprozesse erläutern und die Grenzen der Befunde benennen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c9a06264-cce2-54dd-9604-46dd5949f02e-requires-heading">
+          <p class="section-heading" id="goal-c9a06264-cce2-54dd-9604-46dd5949f02e-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a46cafde-7359-5249-8754-19aaa3174ba4"><span>Plastische Verbindungsänderungen an gegebenen Netzmodellen erklären</span><code>a46cafde-7359-5249-8754-19aaa3174ba4</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c9a06264-cce2-54dd-9604-46dd5949f02e-reverse-heading">
+          <p class="section-heading" id="goal-c9a06264-cce2-54dd-9604-46dd5949f02e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-c9a06264-cce2-54dd-9604-46dd5949f02e-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c9a06264-cce2-54dd-9604-46dd5949f02e-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-c9a06264-cce2-54dd-9604-46dd5949f02e-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c9a06264-cce2-54dd-9604-46dd5949f02e-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 20</span>
+      <span>Buch-Digest <code>sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f14a145d706e77c49951f45114a33e92a1c637b526b47333f0342e1112a1ad29</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=biologie-neuro-current-twenty-20261007-author-v3&amp;edition=curricular-atomic-v1&amp;goalId=c9a06264-cce2-54dd-9604-46dd5949f02e&amp;goalFingerprint=sha256%3Af14a145d706e77c49951f45114a33e92a1c637b526b47333f0342e1112a1ad29&amp;pageFingerprint=sha256%3Ad605f0a571322439b3e93e712c126fd99b0ea4009c5125676a895b2e1879c4f0&amp;bookDigest=sha256%3A6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-4f631f78-e13a-58e5-9092-f4db0b8d377a" data-goal-id="4f631f78-e13a-58e5-9092-f4db0b8d377a" data-page-number="12" data-chapter-ids="structure:bio-current390-author-review goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8" aria-labelledby="goal-4f631f78-e13a-58e5-9092-f4db0b8d377a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-4f631f78-e13a-58e5-9092-f4db0b8d377a-title"><a class="goal-self-link" href="#goal-4f631f78-e13a-58e5-9092-f4db0b8d377a">Hebb-Regel als gegebenes Lernmodell anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>4f631f78-e13a-58e5-9092-f4db0b8d377a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-be0ea5e4e841ac45809ea3c3">Biologie – kanonische Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-f6f93fad6ac329d48a8446bb">Q2.3 Neurobiologie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-4f631f78-e13a-58e5-9092-f4db0b8d377a-description-heading">
+        <p class="section-heading" id="goal-4f631f78-e13a-58e5-9092-f4db0b8d377a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann eine vorgegebene Hebb-Regel auf ein einfaches neuronales Modellnetz anwenden und anhand gegebener Fälle die Möglichkeiten und Grenzen dieses Lernmodells erläutern.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-4f631f78-e13a-58e5-9092-f4db0b8d377a-requires-heading">
+          <p class="section-heading" id="goal-4f631f78-e13a-58e5-9092-f4db0b8d377a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-347110a1-1d2e-5195-8acc-64e7e3893ce5"><span>Zelluläre Lernprozesse</span><code>347110a1-1d2e-5195-8acc-64e7e3893ce5</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-4f631f78-e13a-58e5-9092-f4db0b8d377a-reverse-heading">
+          <p class="section-heading" id="goal-4f631f78-e13a-58e5-9092-f4db0b8d377a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-4f631f78-e13a-58e5-9092-f4db0b8d377a-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4f631f78-e13a-58e5-9092-f4db0b8d377a-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-4f631f78-e13a-58e5-9092-f4db0b8d377a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4f631f78-e13a-58e5-9092-f4db0b8d377a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 20</span>
+      <span>Buch-Digest <code>sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9c579b57282544909748af800efee21930f609835cbfe12184c951feba4f7982</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=biologie-neuro-current-twenty-20261007-author-v3&amp;edition=curricular-atomic-v1&amp;goalId=4f631f78-e13a-58e5-9092-f4db0b8d377a&amp;goalFingerprint=sha256%3A9c579b57282544909748af800efee21930f609835cbfe12184c951feba4f7982&amp;pageFingerprint=sha256%3A3cd697be0b7152ed4ea4a27addb03791d3adabbd210ef153088edee3a9e794db&amp;bookDigest=sha256%3A6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-97b24279-def0-5ce6-8726-a1cac9cd38ad" data-goal-id="97b24279-def0-5ce6-8726-a1cac9cd38ad" data-page-number="13" data-chapter-ids="structure:bio-current390-author-review goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8" aria-labelledby="goal-97b24279-def0-5ce6-8726-a1cac9cd38ad-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-97b24279-def0-5ce6-8726-a1cac9cd38ad-title"><a class="goal-self-link" href="#goal-97b24279-def0-5ce6-8726-a1cac9cd38ad">Gegebene neuronale Verschaltungen analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>97b24279-def0-5ce6-8726-a1cac9cd38ad</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-be0ea5e4e841ac45809ea3c3">Biologie – kanonische Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-f6f93fad6ac329d48a8446bb">Q2.3 Neurobiologie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-97b24279-def0-5ce6-8726-a1cac9cd38ad-description-heading">
+        <p class="section-heading" id="goal-97b24279-def0-5ce6-8726-a1cac9cd38ad-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann für gegebene Verschaltungen mehrerer Nervenzellen postsynaptische Potentialänderungen vergleichen und daraus die Notwendigkeit erregender und hemmender Synapsen für eine geregelte Signalübertragung ableiten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-97b24279-def0-5ce6-8726-a1cac9cd38ad-requires-heading">
+          <p class="section-heading" id="goal-97b24279-def0-5ce6-8726-a1cac9cd38ad-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e1117126-4e78-5a37-a645-2debc167219b"><span>Synaptische Integration analysieren</span><code>e1117126-4e78-5a37-a645-2debc167219b</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-97b24279-def0-5ce6-8726-a1cac9cd38ad-reverse-heading">
+          <p class="section-heading" id="goal-97b24279-def0-5ce6-8726-a1cac9cd38ad-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-97b24279-def0-5ce6-8726-a1cac9cd38ad-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-97b24279-def0-5ce6-8726-a1cac9cd38ad-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-97b24279-def0-5ce6-8726-a1cac9cd38ad-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-97b24279-def0-5ce6-8726-a1cac9cd38ad-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 20</span>
+      <span>Buch-Digest <code>sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f2ffb486f7f96518715b0205bd10d571eddda3bd8978d705f805ce2025b866da</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=biologie-neuro-current-twenty-20261007-author-v3&amp;edition=curricular-atomic-v1&amp;goalId=97b24279-def0-5ce6-8726-a1cac9cd38ad&amp;goalFingerprint=sha256%3Af2ffb486f7f96518715b0205bd10d571eddda3bd8978d705f805ce2025b866da&amp;pageFingerprint=sha256%3A584a2e45c4789b6c271a4f308d3c35052284ce9de41b5158bc7d865ac51f1ae0&amp;bookDigest=sha256%3A6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9b966664-906b-5a5d-8008-cae18de043aa" data-goal-id="9b966664-906b-5a5d-8008-cae18de043aa" data-page-number="14" data-chapter-ids="structure:bio-current390-author-review goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8" aria-labelledby="goal-9b966664-906b-5a5d-8008-cae18de043aa-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9b966664-906b-5a5d-8008-cae18de043aa-title"><a class="goal-self-link" href="#goal-9b966664-906b-5a5d-8008-cae18de043aa">Neurotransmitter-Verfügbarkeit an einem Beispiel erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9b966664-906b-5a5d-8008-cae18de043aa</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-be0ea5e4e841ac45809ea3c3">Biologie – kanonische Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-f6f93fad6ac329d48a8446bb">Q2.3 Neurobiologie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9b966664-906b-5a5d-8008-cae18de043aa-description-heading">
+        <p class="section-heading" id="goal-9b966664-906b-5a5d-8008-cae18de043aa-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an einem gegebenen Modell der chemischen Synapse erklären, wie ein Serotonin-Wiederaufnahmehemmer die Verfügbarkeit des Neurotransmitters verändert, und diese Erklärung als begrenzte Komponente eines multifaktoriellen Depressionsmodells einordnen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9b966664-906b-5a5d-8008-cae18de043aa-requires-heading">
+          <p class="section-heading" id="goal-9b966664-906b-5a5d-8008-cae18de043aa-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-19758e09-1bc4-5ee4-bf52-89b3bc28e947"><span>Hormonelle Steuerung verknüpfen</span><code>19758e09-1bc4-5ee4-bf52-89b3bc28e947</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-9b966664-906b-5a5d-8008-cae18de043aa-reverse-heading">
+          <p class="section-heading" id="goal-9b966664-906b-5a5d-8008-cae18de043aa-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-9b966664-906b-5a5d-8008-cae18de043aa-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9b966664-906b-5a5d-8008-cae18de043aa-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-9b966664-906b-5a5d-8008-cae18de043aa-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9b966664-906b-5a5d-8008-cae18de043aa-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 20</span>
+      <span>Buch-Digest <code>sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e9d892a4cdcf4e25ca90094647ee1a084afd67e8b222041d0fc8c8cf702089d8</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=biologie-neuro-current-twenty-20261007-author-v3&amp;edition=curricular-atomic-v1&amp;goalId=9b966664-906b-5a5d-8008-cae18de043aa&amp;goalFingerprint=sha256%3Ae9d892a4cdcf4e25ca90094647ee1a084afd67e8b222041d0fc8c8cf702089d8&amp;pageFingerprint=sha256%3A0d49bdf72204f3719a3eb93994a01302c4821c77e21e41ba3152b61a162625f1&amp;bookDigest=sha256%3A6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f6280154-d57c-599c-94bf-73313005a6df" data-goal-id="f6280154-d57c-599c-94bf-73313005a6df" data-page-number="15" data-chapter-ids="structure:bio-current390-author-review goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8" aria-labelledby="goal-f6280154-d57c-599c-94bf-73313005a6df-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-f6280154-d57c-599c-94bf-73313005a6df-title"><a class="goal-self-link" href="#goal-f6280154-d57c-599c-94bf-73313005a6df">Stoffeinwirkung auf chemische Synapsen ableiten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f6280154-d57c-599c-94bf-73313005a6df</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-be0ea5e4e841ac45809ea3c3">Biologie – kanonische Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-f6f93fad6ac329d48a8446bb">Q2.3 Neurobiologie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f6280154-d57c-599c-94bf-73313005a6df-description-heading">
+        <p class="section-heading" id="goal-f6280154-d57c-599c-94bf-73313005a6df-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aus den Vorgängen an einer erregenden Acetylcholin-führenden chemischen Synapse am Beispiel eines gegebenen Stoffes ableiten, wie die Informationsübertragung beeinflusst wird, und das Prinzip an einer neuromuskulären Synapse erläutern.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f6280154-d57c-599c-94bf-73313005a6df-requires-heading">
+          <p class="section-heading" id="goal-f6280154-d57c-599c-94bf-73313005a6df-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ff1bf88f-2413-5668-a071-ce9fc499cba3"><span>Erregende chemische Synapsen erklären</span><code>ff1bf88f-2413-5668-a071-ce9fc499cba3</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-f6280154-d57c-599c-94bf-73313005a6df-reverse-heading">
+          <p class="section-heading" id="goal-f6280154-d57c-599c-94bf-73313005a6df-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-f6280154-d57c-599c-94bf-73313005a6df-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f6280154-d57c-599c-94bf-73313005a6df-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-f6280154-d57c-599c-94bf-73313005a6df-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f6280154-d57c-599c-94bf-73313005a6df-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 15 von 20</span>
+      <span>Buch-Digest <code>sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5c97b48d1bf1baf7139e2aa5d71af6ad3588b4b3b302be5f475d043ea6ef34b1</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=biologie-neuro-current-twenty-20261007-author-v3&amp;edition=curricular-atomic-v1&amp;goalId=f6280154-d57c-599c-94bf-73313005a6df&amp;goalFingerprint=sha256%3A5c97b48d1bf1baf7139e2aa5d71af6ad3588b4b3b302be5f475d043ea6ef34b1&amp;pageFingerprint=sha256%3Ac21dd9c9d13e2f3931455c0c3a1c985544f9293c086604dafe987b4c93954011&amp;bookDigest=sha256%3A6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8b23f8fb-555d-5720-b5f2-dd6f28a0e786" data-goal-id="8b23f8fb-555d-5720-b5f2-dd6f28a0e786" data-page-number="16" data-chapter-ids="structure:bio-current390-author-review goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8" aria-labelledby="goal-8b23f8fb-555d-5720-b5f2-dd6f28a0e786-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8b23f8fb-555d-5720-b5f2-dd6f28a0e786-title"><a class="goal-self-link" href="#goal-8b23f8fb-555d-5720-b5f2-dd6f28a0e786">Sensorische Signaltransduktion und Codierung deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8b23f8fb-555d-5720-b5f2-dd6f28a0e786</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-be0ea5e4e841ac45809ea3c3">Biologie – kanonische Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-f6f93fad6ac329d48a8446bb">Q2.3 Neurobiologie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8b23f8fb-555d-5720-b5f2-dd6f28a0e786-description-heading">
+        <p class="section-heading" id="goal-8b23f8fb-555d-5720-b5f2-dd6f28a0e786-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an einem gegebenen Sinneszellmodell die Reizantwort von den Vorgängen auf Teilchenebene über das Rezeptorpotenzial zum nachgeschalteten Aktionspotenzialmuster erklären und diesen Zusammenhang auf einen gegebenen sinnesphysiologischen Fall zur Deutung von Reizstärke und Reizdauer anwenden.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8b23f8fb-555d-5720-b5f2-dd6f28a0e786-requires-heading">
+          <p class="section-heading" id="goal-8b23f8fb-555d-5720-b5f2-dd6f28a0e786-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-78748ef2-93fb-5ec3-8c1e-90e42b9ea863"><span>Rezeptorpotenziale und Sinneszellen</span><code>78748ef2-93fb-5ec3-8c1e-90e42b9ea863</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-8b23f8fb-555d-5720-b5f2-dd6f28a0e786-reverse-heading">
+          <p class="section-heading" id="goal-8b23f8fb-555d-5720-b5f2-dd6f28a0e786-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-8b23f8fb-555d-5720-b5f2-dd6f28a0e786-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8b23f8fb-555d-5720-b5f2-dd6f28a0e786-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-8b23f8fb-555d-5720-b5f2-dd6f28a0e786-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8b23f8fb-555d-5720-b5f2-dd6f28a0e786-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 16 von 20</span>
+      <span>Buch-Digest <code>sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ac4ffb20c0819287a9baeed316abb4b6b5c3fc0234b9a7c6fec257a9b28121a9</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=biologie-neuro-current-twenty-20261007-author-v3&amp;edition=curricular-atomic-v1&amp;goalId=8b23f8fb-555d-5720-b5f2-dd6f28a0e786&amp;goalFingerprint=sha256%3Aac4ffb20c0819287a9baeed316abb4b6b5c3fc0234b9a7c6fec257a9b28121a9&amp;pageFingerprint=sha256%3A013b6645d5f71e131549205e83e5870fb433014c4e2179d2021672aca6f10648&amp;bookDigest=sha256%3A6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1b38144f-cdbd-5dfe-a792-94669bdc31d8" data-goal-id="1b38144f-cdbd-5dfe-a792-94669bdc31d8" data-page-number="17" data-chapter-ids="structure:bio-current390-author-review goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8" aria-labelledby="goal-1b38144f-cdbd-5dfe-a792-94669bdc31d8-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1b38144f-cdbd-5dfe-a792-94669bdc31d8-title"><a class="goal-self-link" href="#goal-1b38144f-cdbd-5dfe-a792-94669bdc31d8">Biomembranen und Kompartimenttransport erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1b38144f-cdbd-5dfe-a792-94669bdc31d8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-be0ea5e4e841ac45809ea3c3">Biologie – kanonische Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-f6f93fad6ac329d48a8446bb">Q2.3 Neurobiologie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1b38144f-cdbd-5dfe-a792-94669bdc31d8-description-heading">
+        <p class="section-heading" id="goal-1b38144f-cdbd-5dfe-a792-94669bdc31d8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Aufbau von Biomembranen nach dem Flüssig-Mosaik-Modell beschreiben und damit Transportvorgänge zwischen Kompartimenten erläutern.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1b38144f-cdbd-5dfe-a792-94669bdc31d8-requires-heading">
+          <p class="section-heading" id="goal-1b38144f-cdbd-5dfe-a792-94669bdc31d8-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-1b38144f-cdbd-5dfe-a792-94669bdc31d8-reverse-heading">
+          <p class="section-heading" id="goal-1b38144f-cdbd-5dfe-a792-94669bdc31d8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-e3fb5f1d-e277-5e28-8883-45821b972607"><span>Ruhepotential aus Ionenverteilungen erklären</span><code>e3fb5f1d-e277-5e28-8883-45821b972607</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-1b38144f-cdbd-5dfe-a792-94669bdc31d8-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1b38144f-cdbd-5dfe-a792-94669bdc31d8-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-1b38144f-cdbd-5dfe-a792-94669bdc31d8-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1b38144f-cdbd-5dfe-a792-94669bdc31d8-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 17 von 20</span>
+      <span>Buch-Digest <code>sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:86caff26357c21e9ca37e543764b1e5e95534142b4ccdc4488410411d2219b2e</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=biologie-neuro-current-twenty-20261007-author-v3&amp;edition=curricular-atomic-v1&amp;goalId=1b38144f-cdbd-5dfe-a792-94669bdc31d8&amp;goalFingerprint=sha256%3A86caff26357c21e9ca37e543764b1e5e95534142b4ccdc4488410411d2219b2e&amp;pageFingerprint=sha256%3A4080c698661a466595ef8fe8ab9adc01fa7f764bbcc8a6e3f5424fca3608e033&amp;bookDigest=sha256%3A6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e3fb5f1d-e277-5e28-8883-45821b972607" data-goal-id="e3fb5f1d-e277-5e28-8883-45821b972607" data-page-number="18" data-chapter-ids="structure:bio-current390-author-review goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8" aria-labelledby="goal-e3fb5f1d-e277-5e28-8883-45821b972607-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e3fb5f1d-e277-5e28-8883-45821b972607-title"><a class="goal-self-link" href="#goal-e3fb5f1d-e277-5e28-8883-45821b972607">Ruhepotential aus Ionenverteilungen erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e3fb5f1d-e277-5e28-8883-45821b972607</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-be0ea5e4e841ac45809ea3c3">Biologie – kanonische Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-f6f93fad6ac329d48a8446bb">Q2.3 Neurobiologie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e3fb5f1d-e277-5e28-8883-45821b972607-description-heading">
+        <p class="section-heading" id="goal-e3fb5f1d-e277-5e28-8883-45821b972607-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aus Messdaten zur Ionenverteilung Ladungsverhältnisse an der Nervenzellmembran im Ruhezustand erklären und den Energiebedarf zur Aufrechterhaltung des Ruhepotentials ableiten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e3fb5f1d-e277-5e28-8883-45821b972607-requires-heading">
+          <p class="section-heading" id="goal-e3fb5f1d-e277-5e28-8883-45821b972607-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1b38144f-cdbd-5dfe-a792-94669bdc31d8"><span>Biomembranen und Kompartimenttransport erklären</span><code>1b38144f-cdbd-5dfe-a792-94669bdc31d8</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-e3fb5f1d-e277-5e28-8883-45821b972607-reverse-heading">
+          <p class="section-heading" id="goal-e3fb5f1d-e277-5e28-8883-45821b972607-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-04d770b3-ba5e-5438-88ca-110cbaeba62c"><span>Aktionspotential und Codierung erklären</span><code>04d770b3-ba5e-5438-88ca-110cbaeba62c</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e3fb5f1d-e277-5e28-8883-45821b972607-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e3fb5f1d-e277-5e28-8883-45821b972607-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-e3fb5f1d-e277-5e28-8883-45821b972607-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e3fb5f1d-e277-5e28-8883-45821b972607-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 18 von 20</span>
+      <span>Buch-Digest <code>sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ebc257c115e927b15605cca1adc084c5c007ed64544531cfa70895d1ba831ca4</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=biologie-neuro-current-twenty-20261007-author-v3&amp;edition=curricular-atomic-v1&amp;goalId=e3fb5f1d-e277-5e28-8883-45821b972607&amp;goalFingerprint=sha256%3Aebc257c115e927b15605cca1adc084c5c007ed64544531cfa70895d1ba831ca4&amp;pageFingerprint=sha256%3Ae15ce81159543b480d069370d6ad3a6be269f989325eee6f6bb02fd6662da1c2&amp;bookDigest=sha256%3A6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8&amp;page=18" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-04d770b3-ba5e-5438-88ca-110cbaeba62c" data-goal-id="04d770b3-ba5e-5438-88ca-110cbaeba62c" data-page-number="19" data-chapter-ids="structure:bio-current390-author-review goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8" aria-labelledby="goal-04d770b3-ba5e-5438-88ca-110cbaeba62c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-04d770b3-ba5e-5438-88ca-110cbaeba62c-title"><a class="goal-self-link" href="#goal-04d770b3-ba5e-5438-88ca-110cbaeba62c">Aktionspotential und Codierung erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>04d770b3-ba5e-5438-88ca-110cbaeba62c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-be0ea5e4e841ac45809ea3c3">Biologie – kanonische Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-f6f93fad6ac329d48a8446bb">Q2.3 Neurobiologie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-04d770b3-ba5e-5438-88ca-110cbaeba62c-description-heading">
+        <p class="section-heading" id="goal-04d770b3-ba5e-5438-88ca-110cbaeba62c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Potentialänderungen beim Aktionspotential auf Teilchenebene an der Axonmembran erklären und beschreiben, wie Informationen in Nervenzellen codiert werden.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-04d770b3-ba5e-5438-88ca-110cbaeba62c-requires-heading">
+          <p class="section-heading" id="goal-04d770b3-ba5e-5438-88ca-110cbaeba62c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e3fb5f1d-e277-5e28-8883-45821b972607"><span>Ruhepotential aus Ionenverteilungen erklären</span><code>e3fb5f1d-e277-5e28-8883-45821b972607</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-04d770b3-ba5e-5438-88ca-110cbaeba62c-reverse-heading">
+          <p class="section-heading" id="goal-04d770b3-ba5e-5438-88ca-110cbaeba62c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-080b10c7-f308-57ff-b067-3bd189e37fea"><span>Erregungsleitung an Nervenfasern vergleichen</span><code>080b10c7-f308-57ff-b067-3bd189e37fea</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-04d770b3-ba5e-5438-88ca-110cbaeba62c-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-04d770b3-ba5e-5438-88ca-110cbaeba62c-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-04d770b3-ba5e-5438-88ca-110cbaeba62c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-04d770b3-ba5e-5438-88ca-110cbaeba62c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 19 von 20</span>
+      <span>Buch-Digest <code>sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:04d2cdd545d129abea387d5ffbe5860f1c8e5b68dabb28f92b921580a6c5de70</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=biologie-neuro-current-twenty-20261007-author-v3&amp;edition=curricular-atomic-v1&amp;goalId=04d770b3-ba5e-5438-88ca-110cbaeba62c&amp;goalFingerprint=sha256%3A04d2cdd545d129abea387d5ffbe5860f1c8e5b68dabb28f92b921580a6c5de70&amp;pageFingerprint=sha256%3Aaeb2f28bcd0b353a4ee5c967d57c582579c4cdca3c73e77d2c951d6c8089937c&amp;bookDigest=sha256%3A6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8&amp;page=19" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-080b10c7-f308-57ff-b067-3bd189e37fea" data-goal-id="080b10c7-f308-57ff-b067-3bd189e37fea" data-page-number="20" data-chapter-ids="structure:bio-current390-author-review goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8" aria-labelledby="goal-080b10c7-f308-57ff-b067-3bd189e37fea-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-080b10c7-f308-57ff-b067-3bd189e37fea-title"><a class="goal-self-link" href="#goal-080b10c7-f308-57ff-b067-3bd189e37fea">Erregungsleitung an Nervenfasern vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>080b10c7-f308-57ff-b067-3bd189e37fea</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-be0ea5e4e841ac45809ea3c3">Biologie – kanonische Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-f6f93fad6ac329d48a8446bb">Q2.3 Neurobiologie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-080b10c7-f308-57ff-b067-3bd189e37fea-description-heading">
+        <p class="section-heading" id="goal-080b10c7-f308-57ff-b067-3bd189e37fea-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Weiterleitung von Potentialänderungen an verschiedenen Nervenfasern vergleichen und daraus Leistungsunterschiede von Nervensystemen bei Wirbellosen und Wirbeltieren erklären.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-080b10c7-f308-57ff-b067-3bd189e37fea-requires-heading">
+          <p class="section-heading" id="goal-080b10c7-f308-57ff-b067-3bd189e37fea-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-04d770b3-ba5e-5438-88ca-110cbaeba62c"><span>Aktionspotential und Codierung erklären</span><code>04d770b3-ba5e-5438-88ca-110cbaeba62c</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-080b10c7-f308-57ff-b067-3bd189e37fea-reverse-heading">
+          <p class="section-heading" id="goal-080b10c7-f308-57ff-b067-3bd189e37fea-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-080b10c7-f308-57ff-b067-3bd189e37fea-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-080b10c7-f308-57ff-b067-3bd189e37fea-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-080b10c7-f308-57ff-b067-3bd189e37fea-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-080b10c7-f308-57ff-b067-3bd189e37fea-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 20 von 20</span>
+      <span>Buch-Digest <code>sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:504704718e1a375b0a52dc9a246a0df545abfbf323b11ea23e4d184173138259</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=biologie-neuro-current-twenty-20261007-author-v3&amp;edition=curricular-atomic-v1&amp;goalId=080b10c7-f308-57ff-b067-3bd189e37fea&amp;goalFingerprint=sha256%3A504704718e1a375b0a52dc9a246a0df545abfbf323b11ea23e4d184173138259&amp;pageFingerprint=sha256%3A0ea66cc4401d62247738a698665ad6b100a131a3eff8cca7006ab1a6e9424e1c&amp;bookDigest=sha256%3A6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8&amp;page=20" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

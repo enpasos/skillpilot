@@ -1,0 +1,223 @@
+{
+  "schemaVersion": 1,
+  "role": "targeted author consistency/calculation verification",
+  "actualRunAtUTC": "2026-10-06T07:27:16.871144+00:00",
+  "independentApproval": false,
+  "passed": true,
+  "checkCount": 17,
+  "checks": [
+    {
+      "name": "exact_old_and_new_case_and_profile_bindings",
+      "passed": true,
+      "evidence": "Case/profile/routing inputs resolve to actual exact bytes."
+    },
+    {
+      "name": "v8_author_and_both_independent_freezes_preserved",
+      "passed": true,
+      "evidence": [
+        {
+          "freeze": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/author-materials-v8.final.freeze.json",
+          "bindingCount": 27,
+          "allExact": true
+        },
+        {
+          "freeze": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-fifty-two-materials-v8-independent-a-v1/independent-a.v8-materials.complete.final.freeze.json",
+          "bindingCount": 7,
+          "allExact": true
+        },
+        {
+          "freeze": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-fifty-two-materials-v8-independent-b-v1/independent-b-v8-materials.final.freeze.json",
+          "bindingCount": 11,
+          "allExact": true
+        }
+      ]
+    },
+    {
+      "name": "no_undeclared_material_changes",
+      "passed": true,
+      "evidence": 60
+    },
+    {
+      "name": "only_two_root_metadata_changes",
+      "passed": true,
+      "evidence": "All other root fields preserved."
+    },
+    {
+      "name": "twelve_targeted_cases_forty_preserved",
+      "passed": true,
+      "evidence": [
+        4,
+        6,
+        7,
+        8,
+        9,
+        10,
+        13,
+        16,
+        17,
+        43,
+        44,
+        45
+      ]
+    },
+    {
+      "name": "52_cases_26_profiles_173_criteria_14_protocols",
+      "passed": true,
+      "evidence": "Counts retain the v8 universe."
+    },
+    {
+      "name": "all_case_and_criterion_identifiers_retained",
+      "passed": true,
+      "evidence": "No replacement/deletion/invented goal IDs."
+    },
+    {
+      "name": "candidate_and_execution_status_truthful",
+      "passed": true,
+      "evidence": "No author correction is asserted to be actual execution, native approval or human acceptance."
+    },
+    {
+      "name": "descriptions_essential_contexts_and_profiles_not_rewritten",
+      "passed": true,
+      "evidence": "Unchanged exact v8 profiles are external inputs; only this review material routing is new."
+    },
+    {
+      "name": "all_A_B_finding_groups_addressed_pending_followups",
+      "passed": true,
+      "evidence": [
+        "A-V8-01",
+        "A-V8-02",
+        "A-V8-03",
+        "A-V8-04",
+        "A-V8-05",
+        "B-v8-01",
+        "B-v8-02",
+        "B-v8-03"
+      ]
+    },
+    {
+      "name": "all_six_physical_cases_have_parity_of_material_and_protocol_setup",
+      "passed": true,
+      "evidence": "Supplied actual future setup equals its preparation text in DE/EN."
+    },
+    {
+      "name": "corrected_conductivity_model_consistent",
+      "passed": true,
+      "evidence": {
+        "seriesConcentration_g_L": [
+          0,
+          0.5,
+          1,
+          1.5
+        ],
+        "seriesConductivity_uS_cm": [
+          3,
+          1020,
+          1990,
+          2950
+        ],
+        "blankUnchanged_uS_cm": 3,
+        "sucroseUnchanged_uS_cm": 4,
+        "A20_uS_cm": 1800,
+        "B35_uS_cm": 2300,
+        "A35_uS_cm": 2298,
+        "unmatchedDifference_uS_cm": 500,
+        "matchedDifference_uS_cm": 2,
+        "roughRepeatScatterUnchanged_uS_cm": 3,
+        "A20to35EffectiveRelativePerDegree": 0.01844444444444444,
+        "NaClStandardSolutionEnthalpy_kJ_mol": 3.882046708285792,
+        "nominalDilutionFactor": 2.0,
+        "worstCaseVolumeRatioLow": 1.9940119760479043,
+        "worstCaseVolumeRatioHigh": 2.006012024048096,
+        "modelDilutedConcentration_mg_L": 5,
+        "modelDilutedAbsorbance": 0.41000000000000003,
+        "referenceTitrationConcentrations_mol_L": [
+          0.008,
+          0.016
+        ]
+      }
+    },
+    {
+      "name": "corrected_500_difference_recomputed_in_both_answers",
+      "passed": true,
+      "evidence": 500
+    },
+    {
+      "name": "bounded_NaCl_heat_uptake_positive_primary_anchor",
+      "passed": true,
+      "evidence": 3.882046708285792
+    },
+    {
+      "name": "twofold_volume_ratio_and_in_range_transfer",
+      "passed": true,
+      "evidence": "Labels/tolerances are error limits, not statistical uncertainties; synthetic A.410 is not an actual reading."
+    },
+    {
+      "name": "R2_is_new_fictional_documentation_not_retrospective_or_own_measurement",
+      "passed": true,
+      "evidence": "R1 and its four rows/date gap remain intact; no impossible actual measurement of old fictional samples."
+    },
+    {
+      "name": "19_actual_current_active_bindings_unchanged",
+      "passed": true,
+      "evidence": {
+        "bindingCount": 19,
+        "scope": "central registry, ledger, canons, floors and exact integration inputs; no new full build or central rerun claimed"
+      }
+    }
+  ],
+  "calculations": {
+    "seriesConcentration_g_L": [
+      0,
+      0.5,
+      1,
+      1.5
+    ],
+    "seriesConductivity_uS_cm": [
+      3,
+      1020,
+      1990,
+      2950
+    ],
+    "blankUnchanged_uS_cm": 3,
+    "sucroseUnchanged_uS_cm": 4,
+    "A20_uS_cm": 1800,
+    "B35_uS_cm": 2300,
+    "A35_uS_cm": 2298,
+    "unmatchedDifference_uS_cm": 500,
+    "matchedDifference_uS_cm": 2,
+    "roughRepeatScatterUnchanged_uS_cm": 3,
+    "A20to35EffectiveRelativePerDegree": 0.01844444444444444,
+    "NaClStandardSolutionEnthalpy_kJ_mol": 3.882046708285792,
+    "nominalDilutionFactor": 2.0,
+    "worstCaseVolumeRatioLow": 1.9940119760479043,
+    "worstCaseVolumeRatioHigh": 2.006012024048096,
+    "modelDilutedConcentration_mg_L": 5,
+    "modelDilutedAbsorbance": 0.41000000000000003,
+    "referenceTitrationConcentrations_mol_L": [
+      0.008,
+      0.016
+    ]
+  },
+  "historicalFreezes": [
+    {
+      "freeze": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/author-materials-v8.final.freeze.json",
+      "bindingCount": 27,
+      "allExact": true
+    },
+    {
+      "freeze": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-fifty-two-materials-v8-independent-a-v1/independent-a.v8-materials.complete.final.freeze.json",
+      "bindingCount": 7,
+      "allExact": true
+    },
+    {
+      "freeze": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-fifty-two-materials-v8-independent-b-v1/independent-b-v8-materials.final.freeze.json",
+      "bindingCount": 11,
+      "allExact": true
+    }
+  ],
+  "strictCompletionsAdded": 0,
+  "restoredActiveBindings": 0,
+  "activeWrites": 0,
+  "humanApproval": false,
+  "humanTrial": false
+}

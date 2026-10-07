@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-next25-orbital-final-native-independent-p-b-v3",
+  "bundleFingerprint": "sha256:f602a68f11d40a465b17e4770e7087320a0a1e2370c8898577adb6342dfc1694",
+  "bookDigest": "sha256:d3d60d6035a9278dce94c9acf502b30b0911f5a49381d8fb6b7015c76341768c",
+  "provider": "OpenAI Codex",
+  "model": "GPT-6-based Codex; exact runtime version not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "chemistry-positive-understanding-evidence-profile-v1",
+  "promptFingerprint": "sha256:bd0bd240135798d29e146f8909734577f4e59fb94ef48ee5e3d4874220a6eaab",
+  "criteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "generationParametersFingerprint": "sha256:e7579c91eb3e2e3a4052bb4919fe422c2951ff91014b22c2c1ac1bef552f9cc4",
+  "independenceGroupId": "chemie-next25-orbital-p-independent-b-v3",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "0acc8cd2-be6d-567e-a023-1d9e90475510"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:f602a68f11d40a465b17e4770e7087320a0a1e2370c8898577adb6342dfc1694"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:5797e3ebae420d55bd49e1b7de0377ebe7c17337547301554b1a7974362310c4"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:ee570935f510c7cfc08ce3db94f13940154ead530739f7a7b72d43989074a571"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:bd0bd240135798d29e146f8909734577f4e59fb94ef48ee5e3d4874220a6eaab"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835"
+    }
+  ],
+  "startedAt": "2026-10-06T22:56:12.171966+00:00",
+  "completedAt": "2026-10-06T23:01:33.727618+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:515576357595fb105db9cfff98db5eef50036e11aac79d8ef642e7d30214f341",
+  "toolchainVersion": "positive-understanding-evidence-v2-targeted-independent-b-v3"
+}

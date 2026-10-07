@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:b4d67d00027851e9b60d0aee8ec56553f63517ad16b7e3722fd6650770cdc0af",
+  "reviewInputFingerprint": "sha256:75ed6ad24f585aafb626ddcb681d1c73c5ec40c4b94ca0235b055feaebd4fe9d",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-current-four-excluding-coordinate-blind-20261006-author-v5-a",
+      "roundId": "chemie-current-four-excluding-coordinate-blind-20261006-author-v5-first-pass-a",
+      "independenceGroupId": "chemie-current-four-excluding-coordinate-blind-20261006-author-v5-independent-a",
+      "runIds": [
+        "chemie-current-four-native-blind-independent-a-20261006-v5"
+      ],
+      "providers": [
+        "OpenAI / Codex direct review"
+      ],
+      "modelIdentities": [
+        "OpenAI / Codex direct review::GPT-6 (exact serving deployment version not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-current-four-excluding-coordinate-blind-20261006-author-v5-b",
+      "roundId": "chemie-current-four-excluding-coordinate-blind-20261006-author-v5-first-pass-b",
+      "independenceGroupId": "chemie-current-four-excluding-coordinate-blind-20261006-author-v5-independent-b",
+      "runIds": [
+        "chemie-current-coordinate-final-native-d-independent-b-v5-four-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex GPT-6; exact runtime variant not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "3d3231f9-039d-5ce5-9e8e-af219c7fee08",
+      "firstRecordId": "chemie-current-four-native-blind-independent-a-20261006-v5-record-001",
+      "secondRecordId": "chemie-current-coordinate-final-native-d-independent-b-v5-four-001",
+      "firstRunId": "chemie-current-four-native-blind-independent-a-20261006-v5",
+      "secondRunId": "chemie-current-coordinate-final-native-d-independent-b-v5-four-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b8d3b453-d638-5518-aab0-d84ec2e8567c",
+      "firstRecordId": "chemie-current-four-native-blind-independent-a-20261006-v5-record-002",
+      "secondRecordId": "chemie-current-coordinate-final-native-d-independent-b-v5-four-002",
+      "firstRunId": "chemie-current-four-native-blind-independent-a-20261006-v5",
+      "secondRunId": "chemie-current-coordinate-final-native-d-independent-b-v5-four-run-001",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "proposedDescriptionDe",
+        "proposedDescriptionEn",
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9decc36b-a69a-5599-a9f0-fcebdf0203d8",
+      "firstRecordId": "chemie-current-four-native-blind-independent-a-20261006-v5-record-003",
+      "secondRecordId": "chemie-current-coordinate-final-native-d-independent-b-v5-four-003",
+      "firstRunId": "chemie-current-four-native-blind-independent-a-20261006-v5",
+      "secondRunId": "chemie-current-coordinate-final-native-d-independent-b-v5-four-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "973c12d9-d863-5292-8c68-9c80cdacf9e2",
+      "firstRecordId": "chemie-current-four-native-blind-independent-a-20261006-v5-record-004",
+      "secondRecordId": "chemie-current-coordinate-final-native-d-independent-b-v5-four-004",
+      "firstRunId": "chemie-current-four-native-blind-independent-a-20261006-v5",
+      "secondRunId": "chemie-current-coordinate-final-native-d-independent-b-v5-four-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

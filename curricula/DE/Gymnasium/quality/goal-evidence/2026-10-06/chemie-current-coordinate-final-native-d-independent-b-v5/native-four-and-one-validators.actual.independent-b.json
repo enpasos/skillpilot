@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "role": "Unmodified existing native four and one batch/campaign-result validators; no exceptions",
+  "checks": [
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/validateGoalDescriptionReviewCampaign.ts --bundle curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-review-inputs-author-v5/native-d-four-excluding-coordinate/round-b/review-bundle-manifest.json --input curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-review-inputs-author-v5/native-d-four-excluding-coordinate/round-b/description-review-input.json --campaign curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-review-inputs-author-v5/native-d-four-excluding-coordinate/round-b/description-review-campaign.json --run curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-d-independent-b-v5/native-d-four/results/chemie-current-four-excluding-coordinate-blind-20261006-author-v5-first-pass-b.batch-001.run.json --batch-input curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-review-inputs-author-v5/native-d-four-excluding-coordinate/round-b/batches/chemie-current-four-excluding-coordinate-blind-20261006-author-v5-first-pass-b.batch-001.input.jsonl --records curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-d-independent-b-v5/native-d-four/results/chemie-current-four-excluding-coordinate-blind-20261006-author-v5-first-pass-b.batch-001.records.jsonl",
+      "chunk_id": "7c1857",
+      "wall_time_seconds": 0.546267149,
+      "exit_code": 0,
+      "original_token_count": 10,
+      "output": "Goal-description review batch valid: 4\n"
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-review-inputs-author-v5/native-d-four-excluding-coordinate/round-b/review-bundle-manifest.json --input curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-review-inputs-author-v5/native-d-four-excluding-coordinate/round-b/description-review-input.json --campaign curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-review-inputs-author-v5/native-d-four-excluding-coordinate/round-b/description-review-campaign.json --batches-dir curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-review-inputs-author-v5/native-d-four-excluding-coordinate/round-b/batches --results-dir curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-d-independent-b-v5/native-d-four/results",
+      "chunk_id": "a4b68f",
+      "wall_time_seconds": 0.526128608,
+      "exit_code": 0,
+      "original_token_count": 13,
+      "output": "Goal-description review campaign results valid: 4\n"
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/validateGoalDescriptionReviewCampaign.ts --bundle curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-review-inputs-author-v5/native-d-coordinate-single/round-b/review-bundle-manifest.json --input curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-review-inputs-author-v5/native-d-coordinate-single/round-b/description-review-input.json --campaign curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-review-inputs-author-v5/native-d-coordinate-single/round-b/description-review-campaign.json --run curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-d-independent-b-v5/native-d-one/results/chemie-current-coordinate-single-targeted-20261006-author-v5-first-pass-b.batch-001.run.json --batch-input curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-review-inputs-author-v5/native-d-coordinate-single/round-b/batches/chemie-current-coordinate-single-targeted-20261006-author-v5-first-pass-b.batch-001.input.jsonl --records curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-d-independent-b-v5/native-d-one/results/chemie-current-coordinate-single-targeted-20261006-author-v5-first-pass-b.batch-001.records.jsonl",
+      "chunk_id": "372100",
+      "wall_time_seconds": 0.522671846,
+      "exit_code": 0,
+      "original_token_count": 10,
+      "output": "Goal-description review batch valid: 1\n"
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-review-inputs-author-v5/native-d-coordinate-single/round-b/review-bundle-manifest.json --input curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-review-inputs-author-v5/native-d-coordinate-single/round-b/description-review-input.json --campaign curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-review-inputs-author-v5/native-d-coordinate-single/round-b/description-review-campaign.json --batches-dir curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-review-inputs-author-v5/native-d-coordinate-single/round-b/batches --results-dir curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-coordinate-final-native-d-independent-b-v5/native-d-one/results",
+      "chunk_id": "416a0d",
+      "wall_time_seconds": 0.50844038,
+      "exit_code": 0,
+      "original_token_count": 13,
+      "output": "Goal-description review campaign results valid: 1\n"
+    }
+  ],
+  "allFourFinalExit0": true,
+  "nativeD4Counts": {
+    "KEEP": 4,
+    "BLOCK": 0
+  },
+  "nativeD1Counts": {
+    "KEEP": 1,
+    "BLOCK": 0
+  },
+  "technicalValidationAloneIsNotScienceApproval": true,
+  "activeWrites": false,
+  "humanApproval": false
+}

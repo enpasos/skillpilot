@@ -1,0 +1,836 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-06T19:13:09.860Z",
+  "role": "AUTHOR actual unmodified production materializer/full-checker in isolated filesystem; not active current P approval",
+  "immutableDStage": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-final-native-review-inputs-author-v3/native-d-stage-author-v3.final.freeze.json",
+    "sha256": "sha256:0e7e185266736692edf13628a9e633ccddc1bfb64a1ca17466f9a4ebedb22503",
+    "bytes": 42758
+  },
+  "exactMaterials": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-final-native-review-inputs-author-v3/thirty-complete-materials.de-en.exact-v2.json",
+    "sha256": "sha256:cd838c9d8d3cdbe93b8e90fa05b3f69e95fb8996d267fa8d5429c24cbbb5afd8",
+    "bytes": 80392
+  },
+  "exactScientificProfileSpecifications": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-final-native-review-inputs-author-v3/fifteen-positive-profile-specifications.exact-v2.json",
+    "sha256": "sha256:47f198f715bf005c86f1961f83209aa7c4c0030880174a23e00847672217b4bd",
+    "bytes": 121826
+  },
+  "actualNativeMaterializer": "PASS15",
+  "actualNativeFullChecker": {
+    "status": "PASS15",
+    "errors": [],
+    "counts": {
+      "approved": 0,
+      "needsHumanReview": 15,
+      "rejected": 0
+    }
+  },
+  "actualNativeTargetedChecker": {
+    "status": "PASS8",
+    "errors": [],
+    "counts": {
+      "approved": 0,
+      "needsHumanReview": 8,
+      "rejected": 0
+    }
+  },
+  "actualMaterialBodies": 30,
+  "targetedMaterialBodies": 16,
+  "commonUnchangedDPScienceKEEPReuse7": true,
+  "allFourProspectiveV2FingerprintsExact15": true,
+  "productionHelperBindings": [
+    {
+      "path": "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+      "sha256": "sha256:ae02d37a78fbdd02fbecff6d61c47e86f775c47aeacc6a85367a10c1d2c9cec7",
+      "bytes": 11856
+    },
+    {
+      "path": "app/scripts/positiveGoalEvidenceProfileModel.ts",
+      "sha256": "sha256:33d3005224e75527fab24fd625d15908716a8e028870625a9a002d39820114a6",
+      "bytes": 8448
+    },
+    {
+      "path": "app/scripts/positiveGoalEvidenceReview.ts",
+      "sha256": "sha256:179f602f639479b683c5477462c664dd930a0055960eb6320f3eb33c6d8d9ff6",
+      "bytes": 18781
+    }
+  ],
+  "rows": [
+    {
+      "goalId": "dd58c029-176f-5d99-923e-1c1fda6cf58e",
+      "goalFingerprint": "sha256:d34d999eba9b81efc34e5c5847dafd12942cbb8fde255b9393478fb101a3703b",
+      "reviewInputFingerprint": "sha256:44ad812661770723926c6e0e12e5348278de2ae4363e2f81d8392ade1359cd6a",
+      "profileFingerprint": "sha256:c0ffc163b0b59385d46016f78e3373b05718d288ae1013033245c82a55298124",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "allFourFingerprintBindingsExactProspectiveV2": true,
+      "goalFingerprintExactV1": true,
+      "inputFingerprintExactV1": true,
+      "profileFingerprintExactV1": false,
+      "scientificProfileBodyExactV1": false,
+      "wholeGoalExactV1": true,
+      "fullBookPageExactV1": true,
+      "actualResources": [
+        {
+          "resourceURL": "/assets/goal-visualizations/chemie/dd58c029-176f-5d99-923e-1c1fda6cf58e/dd58c029-176f-5d99-923e-1c1fda6cf58e.jpg",
+          "isolatedRelativePath": "app/public/assets/goal-visualizations/chemie/dd58c029-176f-5d99-923e-1c1fda6cf58e/dd58c029-176f-5d99-923e-1c1fda6cf58e.jpg",
+          "sha256": "sha256:d11094c1dd8a6724fceef8c3a8dabb34d8e3c00e8bce1ed3956e6d5c33bc8480",
+          "bytes": 2143292,
+          "physicallyInsideTemporaryPublicRoot": false,
+          "originalSource": {
+            "path": "app/public/assets/goal-visualizations/chemie/dd58c029-176f-5d99-923e-1c1fda6cf58e/dd58c029-176f-5d99-923e-1c1fda6cf58e.jpg",
+            "sha256": "sha256:d11094c1dd8a6724fceef8c3a8dabb34d8e3c00e8bce1ed3956e6d5c33bc8480",
+            "bytes": 2143292
+          }
+        }
+      ],
+      "caseIds": [
+        "chem-current15-dd58c029-case-1",
+        "chem-current15-dd58c029-case-2"
+      ],
+      "actualCaseDigests": [
+        {
+          "caseId": "chem-current15-dd58c029-case-1",
+          "sha256": "sha256:e1c0d4812add4550ab6cc40e97c04efbdc3b022e6777118074fd4fb5f4323d04",
+          "bodyExactV1": true
+        },
+        {
+          "caseId": "chem-current15-dd58c029-case-2",
+          "sha256": "sha256:9d6e571bf449512471a8ed7aeb23d3b2b8bce4e1c6982628b0f2ea14bbcd4d80",
+          "bodyExactV1": true
+        }
+      ],
+      "freshIndependentPNeeded": true,
+      "commonUnchangedDPScienceKEEPReuse": false,
+      "nativeClosedRecordSchema": "PASS",
+      "nativePureSemantics": "PASS",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "newIndependentApproval": false
+    },
+    {
+      "goalId": "3d3231f9-039d-5ce5-9e8e-af219c7fee08",
+      "goalFingerprint": "sha256:4723ce2f2cc438602bce3221479a8d2e0379e77231caceab889cb44e9b45bbbd",
+      "reviewInputFingerprint": "sha256:27348129e447ea90a5fdd3143448fdf5209db511e5750ef5c7d648fc5b77c20b",
+      "profileFingerprint": "sha256:17cadb7a07f964e791ccf1d8dec02d3ba0fa4a20ab085356445c525bae5901f4",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "allFourFingerprintBindingsExactProspectiveV2": true,
+      "goalFingerprintExactV1": false,
+      "inputFingerprintExactV1": false,
+      "profileFingerprintExactV1": false,
+      "scientificProfileBodyExactV1": false,
+      "wholeGoalExactV1": false,
+      "fullBookPageExactV1": false,
+      "actualResources": [
+        {
+          "resourceURL": "/assets/goal-visualizations/chemie/3d3231f9-039d-5ce5-9e8e-af219c7fee08/3d3231f9-039d-5ce5-9e8e-af219c7fee08.jpg",
+          "isolatedRelativePath": "app/public/assets/goal-visualizations/chemie/3d3231f9-039d-5ce5-9e8e-af219c7fee08/3d3231f9-039d-5ce5-9e8e-af219c7fee08.jpg",
+          "sha256": "sha256:de5de83ca4aff9d4f851b78f9baeb5132ac257241e186e330a761838ce735c70",
+          "bytes": 2294295,
+          "physicallyInsideTemporaryPublicRoot": true,
+          "originalSource": {
+            "path": "app/public/assets/goal-visualizations/chemie/3d3231f9-039d-5ce5-9e8e-af219c7fee08/3d3231f9-039d-5ce5-9e8e-af219c7fee08.jpg",
+            "sha256": "sha256:de5de83ca4aff9d4f851b78f9baeb5132ac257241e186e330a761838ce735c70",
+            "bytes": 2294295
+          }
+        }
+      ],
+      "caseIds": [
+        "chem-current15-3d3231f9-case-1",
+        "chem-current15-3d3231f9-case-2"
+      ],
+      "actualCaseDigests": [
+        {
+          "caseId": "chem-current15-3d3231f9-case-1",
+          "sha256": "sha256:37a9a4c8dd131be5f5dad3c051d7d16ba56bbdf9626624060dfa0d6b4de85688",
+          "bodyExactV1": true
+        },
+        {
+          "caseId": "chem-current15-3d3231f9-case-2",
+          "sha256": "sha256:dd188e9364d3f907804ae512fcedbc3604eb75e4512fc05dcb49d57c1c7f2b15",
+          "bodyExactV1": false
+        }
+      ],
+      "freshIndependentPNeeded": true,
+      "commonUnchangedDPScienceKEEPReuse": false,
+      "nativeClosedRecordSchema": "PASS",
+      "nativePureSemantics": "PASS",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "newIndependentApproval": false
+    },
+    {
+      "goalId": "3be2d0b7-c22f-57d4-886a-10fc04a629f5",
+      "goalFingerprint": "sha256:1946389e1a97f85ecae26a0b5b8e729afeb201ae136e751b1d652946bf6ee689",
+      "reviewInputFingerprint": "sha256:e0803f5f40fc9059e225ecac4b6d3da6cff3077383bccc9353f891e4578bca61",
+      "profileFingerprint": "sha256:601b5e3263f0765763ed75e3256eb7725a145f489b2d3e4a95bfac0498fcf459",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "allFourFingerprintBindingsExactProspectiveV2": true,
+      "goalFingerprintExactV1": true,
+      "inputFingerprintExactV1": true,
+      "profileFingerprintExactV1": true,
+      "scientificProfileBodyExactV1": true,
+      "wholeGoalExactV1": true,
+      "fullBookPageExactV1": true,
+      "actualResources": [
+        {
+          "resourceURL": "/assets/goal-visualizations/chemie/3be2d0b7-c22f-57d4-886a-10fc04a629f5/3be2d0b7-c22f-57d4-886a-10fc04a629f5.jpg",
+          "isolatedRelativePath": "app/public/assets/goal-visualizations/chemie/3be2d0b7-c22f-57d4-886a-10fc04a629f5/3be2d0b7-c22f-57d4-886a-10fc04a629f5.jpg",
+          "sha256": "sha256:4b7ab818947ec275075e6f8dfd758c4c4664938a3ebca16984595cb6f5a788d7",
+          "bytes": 1932009,
+          "physicallyInsideTemporaryPublicRoot": false,
+          "originalSource": {
+            "path": "app/public/assets/goal-visualizations/chemie/3be2d0b7-c22f-57d4-886a-10fc04a629f5/3be2d0b7-c22f-57d4-886a-10fc04a629f5.jpg",
+            "sha256": "sha256:4b7ab818947ec275075e6f8dfd758c4c4664938a3ebca16984595cb6f5a788d7",
+            "bytes": 1932009
+          }
+        }
+      ],
+      "caseIds": [
+        "chem-current15-3be2d0b7-case-1",
+        "chem-current15-3be2d0b7-case-2"
+      ],
+      "actualCaseDigests": [
+        {
+          "caseId": "chem-current15-3be2d0b7-case-1",
+          "sha256": "sha256:a214075593edaf1f858c312c21ec1ade61f78371d7ad79ac807e61f10153280c",
+          "bodyExactV1": true
+        },
+        {
+          "caseId": "chem-current15-3be2d0b7-case-2",
+          "sha256": "sha256:2f1ab716f821a11ef1063d836ecf7b207d6f43ea8ed6bd1123dcac2f21558f8f",
+          "bodyExactV1": true
+        }
+      ],
+      "freshIndependentPNeeded": false,
+      "commonUnchangedDPScienceKEEPReuse": true,
+      "nativeClosedRecordSchema": "PASS",
+      "nativePureSemantics": "PASS",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "newIndependentApproval": false
+    },
+    {
+      "goalId": "e1214210-406e-5075-b83c-086b3972ed66",
+      "goalFingerprint": "sha256:ec8a9e55a927e6abb746dcb5f66ac9fd5de19a8d3e97b46f1e695cc489d5e59a",
+      "reviewInputFingerprint": "sha256:1f3e40568e1b0a11b816ffb7e172f64f7685c37305ebc3462f0fd516edbb4cb6",
+      "profileFingerprint": "sha256:82599e474941ae36880d08a6a535abf09053e0da51d80e0b709ea3921a199d84",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "allFourFingerprintBindingsExactProspectiveV2": true,
+      "goalFingerprintExactV1": true,
+      "inputFingerprintExactV1": true,
+      "profileFingerprintExactV1": true,
+      "scientificProfileBodyExactV1": true,
+      "wholeGoalExactV1": true,
+      "fullBookPageExactV1": true,
+      "actualResources": [
+        {
+          "resourceURL": "/assets/goal-visualizations/chemie/e1214210-406e-5075-b83c-086b3972ed66/e1214210-406e-5075-b83c-086b3972ed66.jpg",
+          "isolatedRelativePath": "app/public/assets/goal-visualizations/chemie/e1214210-406e-5075-b83c-086b3972ed66/e1214210-406e-5075-b83c-086b3972ed66.jpg",
+          "sha256": "sha256:ccdd621e0ebc131ea9eaec2965cde8d7f014c35675032f366d691a6a447acf71",
+          "bytes": 2054534,
+          "physicallyInsideTemporaryPublicRoot": false,
+          "originalSource": {
+            "path": "app/public/assets/goal-visualizations/chemie/e1214210-406e-5075-b83c-086b3972ed66/e1214210-406e-5075-b83c-086b3972ed66.jpg",
+            "sha256": "sha256:ccdd621e0ebc131ea9eaec2965cde8d7f014c35675032f366d691a6a447acf71",
+            "bytes": 2054534
+          }
+        }
+      ],
+      "caseIds": [
+        "chem-current15-e1214210-case-1",
+        "chem-current15-e1214210-case-2"
+      ],
+      "actualCaseDigests": [
+        {
+          "caseId": "chem-current15-e1214210-case-1",
+          "sha256": "sha256:57dde9ca8c5c5a98447783af3eb97906a5b8ba1339377d9dc88f55d7e921b302",
+          "bodyExactV1": true
+        },
+        {
+          "caseId": "chem-current15-e1214210-case-2",
+          "sha256": "sha256:685b4c72af2063ad999134d43cf6d8a13878b8e56d7a1c0d32da32430f5260cc",
+          "bodyExactV1": true
+        }
+      ],
+      "freshIndependentPNeeded": false,
+      "commonUnchangedDPScienceKEEPReuse": true,
+      "nativeClosedRecordSchema": "PASS",
+      "nativePureSemantics": "PASS",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "newIndependentApproval": false
+    },
+    {
+      "goalId": "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+      "goalFingerprint": "sha256:34170e90143ce94a3acc64b91de3b3fc471904ec40c3b413e18f46167510d324",
+      "reviewInputFingerprint": "sha256:90d0a571d1bc9d51747a694fb6833d8365d3b84df179cc802a64ba34a56e5e6d",
+      "profileFingerprint": "sha256:0f859b37164debf6662a9dfd669f6fcbed9730ddfb21b82d3cd2b46bc2ad8627",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "allFourFingerprintBindingsExactProspectiveV2": true,
+      "goalFingerprintExactV1": true,
+      "inputFingerprintExactV1": true,
+      "profileFingerprintExactV1": true,
+      "scientificProfileBodyExactV1": true,
+      "wholeGoalExactV1": true,
+      "fullBookPageExactV1": true,
+      "actualResources": [
+        {
+          "resourceURL": "/assets/goal-visualizations/chemie/448815cc-4127-54b7-96bf-e54b3d2a38c5/448815cc-4127-54b7-96bf-e54b3d2a38c5.jpg",
+          "isolatedRelativePath": "app/public/assets/goal-visualizations/chemie/448815cc-4127-54b7-96bf-e54b3d2a38c5/448815cc-4127-54b7-96bf-e54b3d2a38c5.jpg",
+          "sha256": "sha256:1dc9174f8221bdf0f700bf5fe0bf3c8873352710daedc743ca7a9749d829bdf7",
+          "bytes": 2382188,
+          "physicallyInsideTemporaryPublicRoot": false,
+          "originalSource": {
+            "path": "app/public/assets/goal-visualizations/chemie/448815cc-4127-54b7-96bf-e54b3d2a38c5/448815cc-4127-54b7-96bf-e54b3d2a38c5.jpg",
+            "sha256": "sha256:1dc9174f8221bdf0f700bf5fe0bf3c8873352710daedc743ca7a9749d829bdf7",
+            "bytes": 2382188
+          }
+        }
+      ],
+      "caseIds": [
+        "chem-current15-448815cc-case-1",
+        "chem-current15-448815cc-case-2"
+      ],
+      "actualCaseDigests": [
+        {
+          "caseId": "chem-current15-448815cc-case-1",
+          "sha256": "sha256:6a34af206877a9e28be9845f454e5acb242375268e072e2cf8605f078534a81f",
+          "bodyExactV1": true
+        },
+        {
+          "caseId": "chem-current15-448815cc-case-2",
+          "sha256": "sha256:53008178964a7986882a26a697cabc0863f6d8a57ff73397e94105bb367c4e74",
+          "bodyExactV1": true
+        }
+      ],
+      "freshIndependentPNeeded": false,
+      "commonUnchangedDPScienceKEEPReuse": true,
+      "nativeClosedRecordSchema": "PASS",
+      "nativePureSemantics": "PASS",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "newIndependentApproval": false
+    },
+    {
+      "goalId": "5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+      "goalFingerprint": "sha256:b5a9ae9a7990243a2edea745deea87bdeafa6c961abb1c94664d872f576c1097",
+      "reviewInputFingerprint": "sha256:6d60805870acfbeebd252e06dac44a4399f84e01adf2c07c73cff7481b91102c",
+      "profileFingerprint": "sha256:5db20646941f07fb691263b3ba8b1a1ab802bec3ac5da7a2849b35b86f03e480",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "allFourFingerprintBindingsExactProspectiveV2": true,
+      "goalFingerprintExactV1": true,
+      "inputFingerprintExactV1": true,
+      "profileFingerprintExactV1": false,
+      "scientificProfileBodyExactV1": false,
+      "wholeGoalExactV1": true,
+      "fullBookPageExactV1": true,
+      "actualResources": [
+        {
+          "resourceURL": "/assets/goal-visualizations/chemie/5a30273a-98d5-5163-bb16-c250b7ed4e7f/5a30273a-98d5-5163-bb16-c250b7ed4e7f.jpg",
+          "isolatedRelativePath": "app/public/assets/goal-visualizations/chemie/5a30273a-98d5-5163-bb16-c250b7ed4e7f/5a30273a-98d5-5163-bb16-c250b7ed4e7f.jpg",
+          "sha256": "sha256:114c955a9a44ca97d240d1824aaaacbabad34e45ad8f7d1787eaadae9c416759",
+          "bytes": 2234092,
+          "physicallyInsideTemporaryPublicRoot": false,
+          "originalSource": {
+            "path": "app/public/assets/goal-visualizations/chemie/5a30273a-98d5-5163-bb16-c250b7ed4e7f/5a30273a-98d5-5163-bb16-c250b7ed4e7f.jpg",
+            "sha256": "sha256:114c955a9a44ca97d240d1824aaaacbabad34e45ad8f7d1787eaadae9c416759",
+            "bytes": 2234092
+          }
+        }
+      ],
+      "caseIds": [
+        "chem-current15-5a30273a-case-1",
+        "chem-current15-5a30273a-case-2"
+      ],
+      "actualCaseDigests": [
+        {
+          "caseId": "chem-current15-5a30273a-case-1",
+          "sha256": "sha256:c1ad1e87b103078a91c0ff168f4f7dd729886ca54cc1bf6560f8054386a93c9f",
+          "bodyExactV1": true
+        },
+        {
+          "caseId": "chem-current15-5a30273a-case-2",
+          "sha256": "sha256:4ffa8386b61363add7e8fdcb720901d49fac83218132fbf4391a687aa3a4ce1a",
+          "bodyExactV1": false
+        }
+      ],
+      "freshIndependentPNeeded": true,
+      "commonUnchangedDPScienceKEEPReuse": false,
+      "nativeClosedRecordSchema": "PASS",
+      "nativePureSemantics": "PASS",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "newIndependentApproval": false
+    },
+    {
+      "goalId": "622f09e5-a5bb-5ccf-919f-bae990c7c116",
+      "goalFingerprint": "sha256:66bf2903847d2d77b86c18e6133c00d2596ce5ffe62bd567e995f0914b5e6c28",
+      "reviewInputFingerprint": "sha256:0da26f3c6347a22b1b5aef9dbe1baf4068c7b1141082f1c916f49d4a9bfcc9f7",
+      "profileFingerprint": "sha256:47e048ca387c9e861bba7edd853b87b801f5e91cd2da90dd99d1076f87e4aaf5",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "allFourFingerprintBindingsExactProspectiveV2": true,
+      "goalFingerprintExactV1": true,
+      "inputFingerprintExactV1": true,
+      "profileFingerprintExactV1": false,
+      "scientificProfileBodyExactV1": false,
+      "wholeGoalExactV1": true,
+      "fullBookPageExactV1": true,
+      "actualResources": [
+        {
+          "resourceURL": "/assets/goal-visualizations/chemie/622f09e5-a5bb-5ccf-919f-bae990c7c116/622f09e5-a5bb-5ccf-919f-bae990c7c116.jpg",
+          "isolatedRelativePath": "app/public/assets/goal-visualizations/chemie/622f09e5-a5bb-5ccf-919f-bae990c7c116/622f09e5-a5bb-5ccf-919f-bae990c7c116.jpg",
+          "sha256": "sha256:4c3bf2b78cae97311df96d2ac241a3373d2d21476a3a2d51c46b38cd4a5fd7a4",
+          "bytes": 2316575,
+          "physicallyInsideTemporaryPublicRoot": false,
+          "originalSource": {
+            "path": "app/public/assets/goal-visualizations/chemie/622f09e5-a5bb-5ccf-919f-bae990c7c116/622f09e5-a5bb-5ccf-919f-bae990c7c116.jpg",
+            "sha256": "sha256:4c3bf2b78cae97311df96d2ac241a3373d2d21476a3a2d51c46b38cd4a5fd7a4",
+            "bytes": 2316575
+          }
+        }
+      ],
+      "caseIds": [
+        "chem-current15-622f09e5-case-1",
+        "chem-current15-622f09e5-case-2"
+      ],
+      "actualCaseDigests": [
+        {
+          "caseId": "chem-current15-622f09e5-case-1",
+          "sha256": "sha256:04d6fb53717c056ca6355ba4fa392baea377ca97f55418bd80c2752d86da073d",
+          "bodyExactV1": true
+        },
+        {
+          "caseId": "chem-current15-622f09e5-case-2",
+          "sha256": "sha256:696881ea4bddb83da83f705b02a78fe767bc1cf60a1c2532aa13ff6140a2cfd3",
+          "bodyExactV1": false
+        }
+      ],
+      "freshIndependentPNeeded": true,
+      "commonUnchangedDPScienceKEEPReuse": false,
+      "nativeClosedRecordSchema": "PASS",
+      "nativePureSemantics": "PASS",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "newIndependentApproval": false
+    },
+    {
+      "goalId": "b8d3b453-d638-5518-aab0-d84ec2e8567c",
+      "goalFingerprint": "sha256:063957d59f5b4dc1bb2b98cf95095fdcc80ce55c35d0b39387b3c58c516a12e0",
+      "reviewInputFingerprint": "sha256:4be18cc6247d6fd33dc3bd48565a17ea6181a3348a41581581dd839317fa8181",
+      "profileFingerprint": "sha256:3fa9c119388a6cafb049faa27380a6b2f4133ae7a193a8685971a20b76922cd4",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "allFourFingerprintBindingsExactProspectiveV2": true,
+      "goalFingerprintExactV1": true,
+      "inputFingerprintExactV1": false,
+      "profileFingerprintExactV1": true,
+      "scientificProfileBodyExactV1": true,
+      "wholeGoalExactV1": false,
+      "fullBookPageExactV1": false,
+      "actualResources": [
+        {
+          "resourceURL": "/assets/goal-visualizations/chemie/b8d3b453-d638-5518-aab0-d84ec2e8567c/b8d3b453-d638-5518-aab0-d84ec2e8567c.png",
+          "isolatedRelativePath": "app/public/assets/goal-visualizations/chemie/b8d3b453-d638-5518-aab0-d84ec2e8567c/b8d3b453-d638-5518-aab0-d84ec2e8567c.png",
+          "sha256": "sha256:0cc19c21e012eca536f383a83e016dbff040d28a46379f94436b3341108dbe45",
+          "bytes": 1043918,
+          "physicallyInsideTemporaryPublicRoot": true,
+          "originalSource": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-atomic-description-positive-gap-author-v2/visual-candidates/b8/attempt-01.png",
+            "sha256": "sha256:0cc19c21e012eca536f383a83e016dbff040d28a46379f94436b3341108dbe45",
+            "bytes": 1043918
+          }
+        }
+      ],
+      "caseIds": [
+        "chem-current15-b8d3b453-case-1",
+        "chem-current15-b8d3b453-case-2"
+      ],
+      "actualCaseDigests": [
+        {
+          "caseId": "chem-current15-b8d3b453-case-1",
+          "sha256": "sha256:5733aaff76957c2bb1c85885d52a9e585e00f97b278f22a208ef179bac454951",
+          "bodyExactV1": true
+        },
+        {
+          "caseId": "chem-current15-b8d3b453-case-2",
+          "sha256": "sha256:4cc269b8b866ff1426ac68ae5f2f346f8564929defcd25fca9283bc55839403b",
+          "bodyExactV1": true
+        }
+      ],
+      "freshIndependentPNeeded": true,
+      "commonUnchangedDPScienceKEEPReuse": false,
+      "nativeClosedRecordSchema": "PASS",
+      "nativePureSemantics": "PASS",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "newIndependentApproval": false
+    },
+    {
+      "goalId": "b92bfa45-b500-5647-8fd2-a14b708aaf59",
+      "goalFingerprint": "sha256:468073619a2b44d8fb9a8a4346afca3255d0bec89b32d8e92ceb1b4662ac8669",
+      "reviewInputFingerprint": "sha256:ba55a582018cedb06d19ea1fb2556ae2449e0e1987bf20f45a2f118319f1a6d5",
+      "profileFingerprint": "sha256:4cdf98949b0cef7f008aaf64f5ba2b0e89dd293361d27407f0d7bc372e77f543",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "allFourFingerprintBindingsExactProspectiveV2": true,
+      "goalFingerprintExactV1": true,
+      "inputFingerprintExactV1": true,
+      "profileFingerprintExactV1": true,
+      "scientificProfileBodyExactV1": true,
+      "wholeGoalExactV1": true,
+      "fullBookPageExactV1": true,
+      "actualResources": [
+        {
+          "resourceURL": "/assets/goal-visualizations/chemie/b92bfa45-b500-5647-8fd2-a14b708aaf59/b92bfa45-b500-5647-8fd2-a14b708aaf59.jpg",
+          "isolatedRelativePath": "app/public/assets/goal-visualizations/chemie/b92bfa45-b500-5647-8fd2-a14b708aaf59/b92bfa45-b500-5647-8fd2-a14b708aaf59.jpg",
+          "sha256": "sha256:c5550f068ade5f6273a74912335626de3533e9dbb451a5b228272075b0425153",
+          "bytes": 2011025,
+          "physicallyInsideTemporaryPublicRoot": false,
+          "originalSource": {
+            "path": "app/public/assets/goal-visualizations/chemie/b92bfa45-b500-5647-8fd2-a14b708aaf59/b92bfa45-b500-5647-8fd2-a14b708aaf59.jpg",
+            "sha256": "sha256:c5550f068ade5f6273a74912335626de3533e9dbb451a5b228272075b0425153",
+            "bytes": 2011025
+          }
+        }
+      ],
+      "caseIds": [
+        "chem-current15-b92bfa45-case-1",
+        "chem-current15-b92bfa45-case-2"
+      ],
+      "actualCaseDigests": [
+        {
+          "caseId": "chem-current15-b92bfa45-case-1",
+          "sha256": "sha256:a9790ad34a540a204cc3be456e5eb173fb6eea8a309b3298a5b70289208d2a21",
+          "bodyExactV1": true
+        },
+        {
+          "caseId": "chem-current15-b92bfa45-case-2",
+          "sha256": "sha256:7c33aeb8a6fdc0090c9c0323768c79e394a34be1d05fa360f8820a3f70eb37e3",
+          "bodyExactV1": true
+        }
+      ],
+      "freshIndependentPNeeded": false,
+      "commonUnchangedDPScienceKEEPReuse": true,
+      "nativeClosedRecordSchema": "PASS",
+      "nativePureSemantics": "PASS",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "newIndependentApproval": false
+    },
+    {
+      "goalId": "9decc36b-a69a-5599-a9f0-fcebdf0203d8",
+      "goalFingerprint": "sha256:881725c14f6fdc54b32a2c1c098b57a668e39ddafb8fc4887a42642e7d18730c",
+      "reviewInputFingerprint": "sha256:68757e86b56460ecba986ff0e034b557039fe2f48e227b2f47ff66cddd4e5dde",
+      "profileFingerprint": "sha256:4cca77e1f59ce8ebc854a6ef028d9f4a63b1e6205842eadbed8cedc96aa0d98c",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "allFourFingerprintBindingsExactProspectiveV2": true,
+      "goalFingerprintExactV1": false,
+      "inputFingerprintExactV1": false,
+      "profileFingerprintExactV1": true,
+      "scientificProfileBodyExactV1": true,
+      "wholeGoalExactV1": false,
+      "fullBookPageExactV1": false,
+      "actualResources": [
+        {
+          "resourceURL": "/assets/goal-visualizations/chemie/9decc36b-a69a-5599-a9f0-fcebdf0203d8/9decc36b-a69a-5599-a9f0-fcebdf0203d8.jpg",
+          "isolatedRelativePath": "app/public/assets/goal-visualizations/chemie/9decc36b-a69a-5599-a9f0-fcebdf0203d8/9decc36b-a69a-5599-a9f0-fcebdf0203d8.jpg",
+          "sha256": "sha256:fd5f73b9d4eb6c2354b944a2bc6bef02e5ebad281e2e0edee5454cf3c6801d26",
+          "bytes": 2289869,
+          "physicallyInsideTemporaryPublicRoot": true,
+          "originalSource": {
+            "path": "app/public/assets/goal-visualizations/chemie/9decc36b-a69a-5599-a9f0-fcebdf0203d8/9decc36b-a69a-5599-a9f0-fcebdf0203d8.jpg",
+            "sha256": "sha256:fd5f73b9d4eb6c2354b944a2bc6bef02e5ebad281e2e0edee5454cf3c6801d26",
+            "bytes": 2289869
+          }
+        }
+      ],
+      "caseIds": [
+        "chem-current15-9decc36b-case-1",
+        "chem-current15-9decc36b-case-2"
+      ],
+      "actualCaseDigests": [
+        {
+          "caseId": "chem-current15-9decc36b-case-1",
+          "sha256": "sha256:3f9e6c431b04c1bb0b99d632c09c1e6064d6d95946299389c5b01dc4fbf53a6d",
+          "bodyExactV1": true
+        },
+        {
+          "caseId": "chem-current15-9decc36b-case-2",
+          "sha256": "sha256:c656470920a2b2ff0933ea7f9368b85b7d4bb1af9eb3e2d615914fe406239cbb",
+          "bodyExactV1": true
+        }
+      ],
+      "freshIndependentPNeeded": true,
+      "commonUnchangedDPScienceKEEPReuse": false,
+      "nativeClosedRecordSchema": "PASS",
+      "nativePureSemantics": "PASS",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "newIndependentApproval": false
+    },
+    {
+      "goalId": "345fdca9-038f-51e2-9bea-b6ac416a734a",
+      "goalFingerprint": "sha256:4865b154d0c9034f765b82c4546d80f6a91550489ad690bf592e5c3a90d0f859",
+      "reviewInputFingerprint": "sha256:7c0bbd591e329f0bb87e2243bf2569672ca0e1b3b949fc8a40e82e6a9011cbc1",
+      "profileFingerprint": "sha256:7133d987a4016ab7eb7f4998dee8fa5be318ed0fdcfa7932c1e9d746d7757c12",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "allFourFingerprintBindingsExactProspectiveV2": true,
+      "goalFingerprintExactV1": true,
+      "inputFingerprintExactV1": true,
+      "profileFingerprintExactV1": true,
+      "scientificProfileBodyExactV1": true,
+      "wholeGoalExactV1": true,
+      "fullBookPageExactV1": true,
+      "actualResources": [
+        {
+          "resourceURL": "/assets/goal-visualizations/chemie/345fdca9-038f-51e2-9bea-b6ac416a734a/345fdca9-038f-51e2-9bea-b6ac416a734a.jpg",
+          "isolatedRelativePath": "app/public/assets/goal-visualizations/chemie/345fdca9-038f-51e2-9bea-b6ac416a734a/345fdca9-038f-51e2-9bea-b6ac416a734a.jpg",
+          "sha256": "sha256:3ead77fcb44addfe3574494ceaeace5f151e2e1cb45827dc38cd50dbef932bb5",
+          "bytes": 1941134,
+          "physicallyInsideTemporaryPublicRoot": false,
+          "originalSource": {
+            "path": "app/public/assets/goal-visualizations/chemie/345fdca9-038f-51e2-9bea-b6ac416a734a/345fdca9-038f-51e2-9bea-b6ac416a734a.jpg",
+            "sha256": "sha256:3ead77fcb44addfe3574494ceaeace5f151e2e1cb45827dc38cd50dbef932bb5",
+            "bytes": 1941134
+          }
+        }
+      ],
+      "caseIds": [
+        "chem-current15-345fdca9-case-1",
+        "chem-current15-345fdca9-case-2"
+      ],
+      "actualCaseDigests": [
+        {
+          "caseId": "chem-current15-345fdca9-case-1",
+          "sha256": "sha256:92f205e24213fb070bcfdcf6fc4d3e9f9f74b877a3648eb938c4f2f54008135d",
+          "bodyExactV1": true
+        },
+        {
+          "caseId": "chem-current15-345fdca9-case-2",
+          "sha256": "sha256:075e0929c2f28466aca35c11e02f0e4d0a8d1a62c1bbc1b4d1754c651f090e87",
+          "bodyExactV1": true
+        }
+      ],
+      "freshIndependentPNeeded": false,
+      "commonUnchangedDPScienceKEEPReuse": true,
+      "nativeClosedRecordSchema": "PASS",
+      "nativePureSemantics": "PASS",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "newIndependentApproval": false
+    },
+    {
+      "goalId": "973c12d9-d863-5292-8c68-9c80cdacf9e2",
+      "goalFingerprint": "sha256:78a8148fa4f3fedf0e67de25bec42046482d83524c0f25e5f8e1522e866689b6",
+      "reviewInputFingerprint": "sha256:67442c04e172132969a4f9b7c24df685e943616708336fda3ef428418b15c472",
+      "profileFingerprint": "sha256:13cd7b625a4116a2155eebe0b2824b70b564f31eee564cde239668d86b1ed006",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "allFourFingerprintBindingsExactProspectiveV2": true,
+      "goalFingerprintExactV1": true,
+      "inputFingerprintExactV1": false,
+      "profileFingerprintExactV1": false,
+      "scientificProfileBodyExactV1": false,
+      "wholeGoalExactV1": false,
+      "fullBookPageExactV1": false,
+      "actualResources": [
+        {
+          "resourceURL": "/assets/goal-visualizations/chemie/973c12d9-d863-5292-8c68-9c80cdacf9e2/973c12d9-d863-5292-8c68-9c80cdacf9e2.png",
+          "isolatedRelativePath": "app/public/assets/goal-visualizations/chemie/973c12d9-d863-5292-8c68-9c80cdacf9e2/973c12d9-d863-5292-8c68-9c80cdacf9e2.png",
+          "sha256": "sha256:55a0215cb181abd7a07887b4e9beb531a4c59cf97f31d1f093dc1c8a2b348769",
+          "bytes": 1151921,
+          "physicallyInsideTemporaryPublicRoot": true,
+          "originalSource": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-atomic-description-positive-gap-author-v2/visual-candidates/carbonyl/attempt-01.png",
+            "sha256": "sha256:55a0215cb181abd7a07887b4e9beb531a4c59cf97f31d1f093dc1c8a2b348769",
+            "bytes": 1151921
+          }
+        }
+      ],
+      "caseIds": [
+        "chem-current15-973c12d9-case-1",
+        "chem-current15-973c12d9-case-2"
+      ],
+      "actualCaseDigests": [
+        {
+          "caseId": "chem-current15-973c12d9-case-1",
+          "sha256": "sha256:deccf578ea665a45799c6697c0caacb176d66274eca8bc92639ef4867bdfaea8",
+          "bodyExactV1": false
+        },
+        {
+          "caseId": "chem-current15-973c12d9-case-2",
+          "sha256": "sha256:451f5233d826f5798897a768332319f4b336046389d7fca0a1089b87acb62e27",
+          "bodyExactV1": true
+        }
+      ],
+      "freshIndependentPNeeded": true,
+      "commonUnchangedDPScienceKEEPReuse": false,
+      "nativeClosedRecordSchema": "PASS",
+      "nativePureSemantics": "PASS",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "newIndependentApproval": false
+    },
+    {
+      "goalId": "3899edf4-a809-54b1-8ee7-4e67aa82dc7c",
+      "goalFingerprint": "sha256:ad29cb29db1dd4319610a89e0a4d5ddd63c1a08af90ea94ed34ef2350935583f",
+      "reviewInputFingerprint": "sha256:964484e69939ac98722cfb0ef0e3d0f6564f9ff6683783c3350e33c07f1dff4f",
+      "profileFingerprint": "sha256:1c0dd3c81ced35fec35aa0843b94fdf393d6de734a6655b5d22668750e6b48f2",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "allFourFingerprintBindingsExactProspectiveV2": true,
+      "goalFingerprintExactV1": true,
+      "inputFingerprintExactV1": true,
+      "profileFingerprintExactV1": true,
+      "scientificProfileBodyExactV1": true,
+      "wholeGoalExactV1": true,
+      "fullBookPageExactV1": true,
+      "actualResources": [
+        {
+          "resourceURL": "/assets/goal-visualizations/chemie/3899edf4-a809-54b1-8ee7-4e67aa82dc7c/3899edf4-a809-54b1-8ee7-4e67aa82dc7c.jpg",
+          "isolatedRelativePath": "app/public/assets/goal-visualizations/chemie/3899edf4-a809-54b1-8ee7-4e67aa82dc7c/3899edf4-a809-54b1-8ee7-4e67aa82dc7c.jpg",
+          "sha256": "sha256:52ce8f6315d92fe9a829f59b2635fbb19c7bbfcdd058b7333348d6b1e014958d",
+          "bytes": 2237554,
+          "physicallyInsideTemporaryPublicRoot": false,
+          "originalSource": {
+            "path": "app/public/assets/goal-visualizations/chemie/3899edf4-a809-54b1-8ee7-4e67aa82dc7c/3899edf4-a809-54b1-8ee7-4e67aa82dc7c.jpg",
+            "sha256": "sha256:52ce8f6315d92fe9a829f59b2635fbb19c7bbfcdd058b7333348d6b1e014958d",
+            "bytes": 2237554
+          }
+        }
+      ],
+      "caseIds": [
+        "chem-current15-3899edf4-case-1",
+        "chem-current15-3899edf4-case-2"
+      ],
+      "actualCaseDigests": [
+        {
+          "caseId": "chem-current15-3899edf4-case-1",
+          "sha256": "sha256:74620c44510c5dc9304d53f73d5a0e534daf58b5609a5ce59ac55dfc03f43466",
+          "bodyExactV1": true
+        },
+        {
+          "caseId": "chem-current15-3899edf4-case-2",
+          "sha256": "sha256:51188866236bedb672995924397fcd9af166327ac01c6bff90c239dc6f7c8ab6",
+          "bodyExactV1": true
+        }
+      ],
+      "freshIndependentPNeeded": false,
+      "commonUnchangedDPScienceKEEPReuse": true,
+      "nativeClosedRecordSchema": "PASS",
+      "nativePureSemantics": "PASS",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "newIndependentApproval": false
+    },
+    {
+      "goalId": "d4928773-3be8-5cf1-907c-ef07c96751e8",
+      "goalFingerprint": "sha256:673e44530ec7f32bd2dcbd3c2a78f05e23931e951b4aa692044abb264f43ae5d",
+      "reviewInputFingerprint": "sha256:84e08814ebfab16855d54a77bfcfe366dfb5c3476dc2ad319da429e9b4b54e5a",
+      "profileFingerprint": "sha256:bbf5c7f8b76064bd8e7891934f434abba0c9b98898949bc6fd4f0b4a77629d58",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "allFourFingerprintBindingsExactProspectiveV2": true,
+      "goalFingerprintExactV1": true,
+      "inputFingerprintExactV1": true,
+      "profileFingerprintExactV1": true,
+      "scientificProfileBodyExactV1": true,
+      "wholeGoalExactV1": true,
+      "fullBookPageExactV1": true,
+      "actualResources": [
+        {
+          "resourceURL": "/assets/goal-visualizations/chemie/d4928773-3be8-5cf1-907c-ef07c96751e8/d4928773-3be8-5cf1-907c-ef07c96751e8.jpg",
+          "isolatedRelativePath": "app/public/assets/goal-visualizations/chemie/d4928773-3be8-5cf1-907c-ef07c96751e8/d4928773-3be8-5cf1-907c-ef07c96751e8.jpg",
+          "sha256": "sha256:75506b94cea0252a8085062af0aa441fad0d907a35a1136b378150583a4e2028",
+          "bytes": 2064833,
+          "physicallyInsideTemporaryPublicRoot": false,
+          "originalSource": {
+            "path": "app/public/assets/goal-visualizations/chemie/d4928773-3be8-5cf1-907c-ef07c96751e8/d4928773-3be8-5cf1-907c-ef07c96751e8.jpg",
+            "sha256": "sha256:75506b94cea0252a8085062af0aa441fad0d907a35a1136b378150583a4e2028",
+            "bytes": 2064833
+          }
+        }
+      ],
+      "caseIds": [
+        "chem-current15-d4928773-case-1",
+        "chem-current15-d4928773-case-2"
+      ],
+      "actualCaseDigests": [
+        {
+          "caseId": "chem-current15-d4928773-case-1",
+          "sha256": "sha256:2a958546b36f266dc641d10d8478c11d641b096787844fabe05baecd0847267d",
+          "bodyExactV1": true
+        },
+        {
+          "caseId": "chem-current15-d4928773-case-2",
+          "sha256": "sha256:07d28d7499b2b1d81507b7cbab81dc86803119e7b6379a6e4fe1ec568246748a",
+          "bodyExactV1": true
+        }
+      ],
+      "freshIndependentPNeeded": false,
+      "commonUnchangedDPScienceKEEPReuse": true,
+      "nativeClosedRecordSchema": "PASS",
+      "nativePureSemantics": "PASS",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "newIndependentApproval": false
+    },
+    {
+      "goalId": "363c5740-8a3c-50b8-8c3a-5548c80c36ea",
+      "goalFingerprint": "sha256:3aa4633c04b3e1753a9baf8eecf678f4aab262773e9a090c8be651e5abf4b113",
+      "reviewInputFingerprint": "sha256:4ac66501e4b415b29cb0b4758c561d9e9b3e6e53c824eb0fc2c3608a4fd3e0f0",
+      "profileFingerprint": "sha256:13b28bea6a22a747e87f9b66b50a6d5d3a6aee378ea40dfd12be4f0f8ffddcd5",
+      "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+      "allFourFingerprintBindingsExactProspectiveV2": true,
+      "goalFingerprintExactV1": false,
+      "inputFingerprintExactV1": false,
+      "profileFingerprintExactV1": false,
+      "scientificProfileBodyExactV1": false,
+      "wholeGoalExactV1": false,
+      "fullBookPageExactV1": false,
+      "actualResources": [
+        {
+          "resourceURL": "/assets/goal-visualizations/chemie/363c5740-8a3c-50b8-8c3a-5548c80c36ea/363c5740-8a3c-50b8-8c3a-5548c80c36ea.jpg",
+          "isolatedRelativePath": "app/public/assets/goal-visualizations/chemie/363c5740-8a3c-50b8-8c3a-5548c80c36ea/363c5740-8a3c-50b8-8c3a-5548c80c36ea.jpg",
+          "sha256": "sha256:a94e7c616bf690af967da9eafa375eb4b66d79eef0f1e090c41a3511cc19a481",
+          "bytes": 2226511,
+          "physicallyInsideTemporaryPublicRoot": true,
+          "originalSource": {
+            "path": "app/public/assets/goal-visualizations/chemie/363c5740-8a3c-50b8-8c3a-5548c80c36ea/363c5740-8a3c-50b8-8c3a-5548c80c36ea.jpg",
+            "sha256": "sha256:a94e7c616bf690af967da9eafa375eb4b66d79eef0f1e090c41a3511cc19a481",
+            "bytes": 2226511
+          }
+        }
+      ],
+      "caseIds": [
+        "chem-current15-363c5740-case-1",
+        "chem-current15-363c5740-case-2"
+      ],
+      "actualCaseDigests": [
+        {
+          "caseId": "chem-current15-363c5740-case-1",
+          "sha256": "sha256:339ae6d4a76de0930138082b06ea3e5135f6a74edc51f3977dfdfc893665c370",
+          "bodyExactV1": false
+        },
+        {
+          "caseId": "chem-current15-363c5740-case-2",
+          "sha256": "sha256:35bd98e2c5c3f9a14d680f24e9b630ddb6e3fbf6d8e04ee3c5fc6d4c4100def1",
+          "bodyExactV1": true
+        }
+      ],
+      "freshIndependentPNeeded": true,
+      "commonUnchangedDPScienceKEEPReuse": false,
+      "nativeClosedRecordSchema": "PASS",
+      "nativePureSemantics": "PASS",
+      "status": "needs_human_review",
+      "reviewAuthority": "ai_candidate",
+      "newIndependentApproval": false
+    }
+  ],
+  "activeNativeBinding": "PENDING_INTEGRATION: the two proposed PNGs are only physically present inside the temporary native root, not active app/public",
+  "newIndependentPApproval": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "actualLearnerEvidence": false,
+  "activeWrites": false,
+  "strictNetGain": 0,
+  "newScientificClosures": 0,
+  "restoredActiveBindings": 0
+}

@@ -605,6 +605,7 @@ export const GYMNASIUM_CONTENT_OFFERINGS = {
     'DE-ST': {
       'stages': [
         'SekI',
+        'SekII',
         'CrossStage'
       ],
       'durationModels': [

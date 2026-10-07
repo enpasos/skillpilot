@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-06T22:24:41.762697+00:00",
+  "documentType": "own-preparation-assumption-failure-and-resolved-current-receipt-encoding",
+  "failure": "Python direct-field probe assumed historical future receipt also had witnessGroups; KeyError before a receipt was written. Raw scopes then differed because actual active receipt uses compact witnessGroupRefs.",
+  "resolution": "Read actual production expandGoalBookSourceAtlasReceipt; execute exact native expansion, compare all48 scope fields/ordered goals and each full witness multiset with historical future receipt. PASS, with unchanged counts378/359/48/496/19.",
+  "sourceChangedByThisWork": false,
+  "nativeSuccessfulReceipt": "independent-b.current-entry.source-whole-holds-preserved.actual.json",
+  "newScienceDecision": false,
+  "activeWrites": false
+}

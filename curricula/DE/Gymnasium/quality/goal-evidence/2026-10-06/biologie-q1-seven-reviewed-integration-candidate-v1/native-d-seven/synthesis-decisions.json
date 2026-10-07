@@ -1,0 +1,244 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "biologie-q1-seven-final-reviewed-20261006-v1-root-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex Root after both independently frozen current seven-page reviews; machine synthesis only",
+  "synthesizedAt": "2026-10-06T08:09:18.014Z",
+  "batch": {
+    "batchId": "biologie-q1-seven-final-reviewed-20261006-v1",
+    "batchManifestDigest": "sha256:b8d484279103bd36268db8affe6b12e127797fc9bb4c10dae48d609a24504865",
+    "configDigest": "sha256:bbeccba4e85359a479c849108b7fb26e0b3a77abcfd1dcdc8fbf828eaa190288",
+    "bundleFingerprint": "sha256:a7ba39569f7f810d46e6b13ecaa104ab765ceb378e26974f77416bd6f9c35d57",
+    "bookDigest": "sha256:2eba1515e6344f5779d12e0457eef23566b55d731a47380213bb622af357df03",
+    "reviewInputFingerprint": "sha256:3875cdc1f10dc8750ff088ec683a5db40349edbda17ba3433362166c9d22019f",
+    "dualSummaryDigest": "sha256:bc596c90f7fe321604e566f165ea0abd240e84e4e63d87037547a86b625c5a8d",
+    "canonicalLandscapeDigest": "sha256:244d2889ddeeb69cbf97d0a320f3e38cf5444674f3bb17f3e46c0112ac6fbff1"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-q1-seven-final-native-review-author-v1-a",
+      "campaignDigest": "sha256:06870f6704bfeb16aa27cca483cae43a3a7bbf704ba7fef758876cb2db3f3969",
+      "roundId": "independent-a",
+      "independenceGroupId": "biologie-q1-seven-final-independent-a",
+      "reviewInputFingerprint": "sha256:3875cdc1f10dc8750ff088ec683a5db40349edbda17ba3433362166c9d22019f",
+      "batchId": "independent-a.batch-001",
+      "batchInputFingerprint": "sha256:67ea98587ab9cbbe0fa14f1afd5447dc76cf6644cabd1008e8ebce99568cfd7a",
+      "runId": "biologie-q1-seven-final-native-d-independent-a-v1-run-001",
+      "runManifestDigest": "sha256:0ac133a0a3c3b4f6aa68c1ec87a0ec59328ddc7599792564e95d177ccbbf6661",
+      "resultsDigest": "sha256:29f7680a0a32f8e88321cced766cad63baffc3f3acec02f60a49acbe5978c106"
+    },
+    "second": {
+      "campaignId": "biologie-q1-seven-final-native-review-author-v1-b",
+      "campaignDigest": "sha256:67cbf0faabcfe95b37a8f7a4be4af6e0d478a1532b6d307e0c3322c591e72cdb",
+      "roundId": "independent-b",
+      "independenceGroupId": "biologie-q1-seven-final-independent-b",
+      "reviewInputFingerprint": "sha256:3875cdc1f10dc8750ff088ec683a5db40349edbda17ba3433362166c9d22019f",
+      "batchId": "independent-b.batch-001",
+      "batchInputFingerprint": "sha256:9936ad6ff585049640c34644a303dc37210064a3c74852d61503616f52e3541d",
+      "runId": "biologie-q1-seven-final-native-d-independent-b-v1.batch-001",
+      "runManifestDigest": "sha256:02d2cff23905166f9d43503c6fb40dc81eeca53a25cdfa427eb97f5141e4f0a2",
+      "resultsDigest": "sha256:b4016d0996cac903af56cb80ccdcaf70fe7bd2c3abf69af65dc8cc969f329bab"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "biologie-q1-seven-final-reviewed-20261006-v1-root-synthesis-decision-001",
+      "goalId": "ac9e824f-003c-50ac-8751-2b8456004c63",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4a313a832aaac7c997370ab9241475a7ad7ac7b8617c422d681a748cef60e916",
+      "pageFingerprint": "sha256:f4eff7b8ce56c7e72d0150ec063f83289e18b8000b5b6c5929e916d11e7a88b6",
+      "goalReviewContextFingerprint": "sha256:53199c96c700102d4e02267950f1198c0f13c02717fd5133c78220ab25f6fbd3",
+      "finalText": {
+        "titleDe": "DNA, Gen und Chromosom als Informationsträger verknüpfen",
+        "titleEn": "Relate DNA, genes and chromosomes as information carriers",
+        "descriptionDe": "Die lernende Person kann in einem einfachen Modell DNA als Material der Erbinformation, ein Gen als Abschnitt dieses Materials und ein Chromosom als organisierte Trägerstruktur unterscheiden und miteinander verknüpfen.",
+        "descriptionEn": "The learner can use a simple model to distinguish and relate DNA as the material of genetic information, a gene as a section of that material and a chromosome as an organised carrier structure."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "bio-q1-final-d-a-v1-ac9e824f-003c-50ac-8751-2b8456004c63",
+          "recordDigest": "sha256:c90680c595f5c748673031240e7a5b9659f38ffc15c9796e450898e9f944f7f7"
+        },
+        "second": {
+          "recordId": "biologie-q1-seven-final-native-d-independent-b-v1.goal-01",
+          "recordDigest": "sha256:7e75e489baa12004f41a138df2cf8e80efc9c144b36e3ea70f3913b8bf332189"
+        }
+      },
+      "rationaleDe": "Beide unabhängigen Reviews bestätigen die begründete Material-Abschnitt-Träger-Beziehung am einfachen Modell. Direkte Quelle bleibt BE/BB; die übrigen Länder erhalten ausschließlich die ausdrücklich begrenzte Voraussetzungverfügbarkeit. Die zweite Verständnisfassung wird gewählt; Benennung allein ist kein Leistungsnachweis.",
+      "rationaleEn": "Both independent reviews confirm the justified material-section-carrier relationship in a simple model. Direct source scope remains BE/BB; other jurisdictions retain only the explicitly bounded prerequisite availability. The second understanding formulation is selected; naming alone is no performance evidence."
+    },
+    {
+      "decisionId": "biologie-q1-seven-final-reviewed-20261006-v1-root-synthesis-decision-002",
+      "goalId": "5eb7c923-469d-5934-b1e8-292e1bb40d95",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:204f0cd91bb104e17f3fef13e96fea10fafee75d39ac6e3d0582f0b9ddb82fe8",
+      "pageFingerprint": "sha256:25903999f7c6eb8e154afe44376e4c70d1c02a3979fb9e860c4dd4004b272df5",
+      "goalReviewContextFingerprint": "sha256:b258e463937f1b3820e126a0931b4d732766b09c4440b29f62541fc65994f4c2",
+      "finalText": {
+        "titleDe": "Gen-, Chromosomen- und Genommutationen am Modell unterscheiden",
+        "titleEn": "Distinguish gene, chromosome and genome mutations in models",
+        "descriptionDe": "Die lernende Person kann an vorgegebenen DNA- und Chromosomenmodellen Veränderungen innerhalb eines Gens, der Struktur eines Chromosomenabschnitts und der Chromosomenzahl unterscheiden, ihre Zuordnung zum Gen-, Chromosomen- oder Genomniveau begründen und belegte Ursachen sowie unmittelbare Folgen für die genetische Information erklären.",
+        "descriptionEn": "The learner can use supplied DNA and chromosome models to distinguish changes within a gene, in chromosome-segment structure and in chromosome number, justify their classification as gene, chromosome or genome mutations, and explain evidenced causes and immediate consequences for genetic information."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "bio-q1-final-d-a-v1-5eb7c923-469d-5934-b1e8-292e1bb40d95",
+          "recordDigest": "sha256:e9d1595f078e8703c60f1c0d3fd0b66261d5a5dcabcf712e0669d36d54c336d9"
+        },
+        "second": {
+          "recordId": "biologie-q1-seven-final-native-d-independent-b-v1.goal-02",
+          "recordDigest": "sha256:101f718add0e7467143a619c1713ff20401999699f2a9f2e267ed8ff0c292c5b"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen eine gemeinsame begründete Ebenenklassifikation mit belegten Ursachen und unmittelbaren Informationsfolgen. SN Klasse10/Lernbereich1 und TH2.2.1.3 bleiben die begrenzten Quellen. Die zweite Verständnisfassung bewahrt den vollständigen Erklärungsoperator ohne erfundene Krankheitsprognose.",
+      "rationaleEn": "Both reviews confirm a unified justified classification of levels with evidenced causes and immediate information effects. SN grade10/topic1 and TH2.2.1.3 remain the bounded sources. The second understanding formulation preserves the full explanation demand without inventing a disease prediction."
+    },
+    {
+      "decisionId": "biologie-q1-seven-final-reviewed-20261006-v1-root-synthesis-decision-003",
+      "goalId": "bfb5dfb6-8e35-5452-b581-96e061d8b826",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6b2593f61f6ecf9f1fbee93ef790ad03b947f2c31e3b3c2221bf1ceb27ea174b",
+      "pageFingerprint": "sha256:1d87f8d9687cb7a553a9cd13beaa9679c7e7f61c157d7d5059d5a4c142ab34fd",
+      "goalReviewContextFingerprint": "sha256:ccfe246b6aa3315d18765aa8ad8e45e8bf67aefe298b69a393fd89896c7bb65c",
+      "finalText": {
+        "titleDe": "Punkt- und Genommutationen am Modell einordnen",
+        "titleEn": "Classify point and genome mutations in models",
+        "descriptionDe": "Die lernende Person kann in vorgegebenen Fällen eine Änderung an einer einzelnen Basenpaarposition von einer Änderung der Chromosomenzahl unterscheiden und als Punkt- beziehungsweise Genommutation einordnen.",
+        "descriptionEn": "The learner can distinguish a change at a single base-pair position from a change in chromosome number in supplied cases and classify them as point or genome mutations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "bio-q1-final-d-a-v1-bfb5dfb6-8e35-5452-b581-96e061d8b826",
+          "recordDigest": "sha256:9d038c2611dd2671049d49ff16c62d34cd75b53dacbe3d4e6480c0e97c2a3624"
+        },
+        "second": {
+          "recordId": "biologie-q1-seven-final-native-d-independent-b-v1.goal-03",
+          "recordDigest": "sha256:d03461605b3836bec4e654468e82924d3f8c2726454d7fb948b456ebda8d652e"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen den positionsweisen Vergleich von Basenpaarsubstitution und Chromosomenzahländerung. ST3.5 ist gemeinsame Einführungsphase; GK/LK sind technische Projektionen und keine amtlichen Quellbezeichnungen. Die zweite Verständnisfassung wird gewählt; das Ziel wird keinem reinen SekI-Zielset zugeordnet.",
+      "rationaleEn": "Both reviews confirm the positional comparison of base-pair substitution and chromosome-number change. ST3.5 is the common entry phase; GK/LK are technical projections rather than official source labels. The second understanding formulation is selected; this goal is excluded from pure lower-secondary target sets."
+    },
+    {
+      "decisionId": "biologie-q1-seven-final-reviewed-20261006-v1-root-synthesis-decision-004",
+      "goalId": "3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7865c4194787315a1ca6f95c3557edaf7f848a76369ffe0836c5e18882104109",
+      "pageFingerprint": "sha256:fbe272d0ee7483d4f04e75eb52650ab2ee5a67093bd6fc7bb0fc887ffef102af",
+      "goalReviewContextFingerprint": "sha256:0ed4c3b69c81436108cd6aef7eb0254e83239391ac3261e6cca666b512a21a20",
+      "finalText": {
+        "titleDe": "Mutagene Einflüsse und begründeten Schutz erklären",
+        "titleEn": "Explain mutagenic influences and justified protection",
+        "descriptionDe": "Die lernende Person kann anhand vorgegebener Materialdaten erklären, wie mutagene Einflüsse bleibende Veränderungen der Erbinformation begünstigen können, genetische Risiken in einer konkreten Alltags- oder Umweltsituation nach benannten Kriterien bewerten und Möglichkeiten zur Verringerung der Exposition begründet auswählen.",
+        "descriptionEn": "The learner can use supplied material data to explain how mutagenic influences can favour persistent changes to genetic information, evaluate genetic risks in a concrete everyday or environmental situation using stated criteria and justify choices that reduce exposure."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "bio-q1-final-d-a-v1-3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04",
+          "recordDigest": "sha256:7792f9bf0d1dce8181d2e2e0a87e286b366948c8c8347c537f8cfb9f81223cec"
+        },
+        "second": {
+          "recordId": "biologie-q1-seven-final-native-d-independent-b-v1.goal-04",
+          "recordDigest": "sha256:b7138ae8825952a0576b943ac4fbbb88167d0e9e76c6e2dbb2a589ad7433be7b"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die zusammenhängende datenbelegte Risiko- und Schutzentscheidung einschließlich Kriterien, Abwägung und Grenzen. Vier unveränderte Materialien tragen UV- und Umweltkontexte; das UV-Bild allein deckt sie nicht ab. Die zweite Verständnisfassung wird gewählt; kein Nullrisiko oder reale Gesundheitsleistung wird behauptet.",
+      "rationaleEn": "Both reviews confirm the unified evidence-based risk and protection decision including criteria, trade-offs and limits. Four unchanged materials support UV and environmental contexts; the UV image alone does not cover them. The second understanding formulation is selected; neither zero risk nor real health performance is claimed."
+    },
+    {
+      "decisionId": "biologie-q1-seven-final-reviewed-20261006-v1-root-synthesis-decision-005",
+      "goalId": "9d830422-acc7-5fa8-aee9-4dae4cedbf49",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6815865526b7985549fb5ad705abf02e7a7525d3f7284ce75b8d7983bb1f4f0e",
+      "pageFingerprint": "sha256:982f31f5a135ea77cf298de7796ba7ca3ed73875908cb74a62d4931626f61fc2",
+      "goalReviewContextFingerprint": "sha256:45075893ba0eca3cc84273f9014299988b19b9ada30109da3260163bbae722fd",
+      "finalText": {
+        "titleDe": "Folgen somatischer und Keimbahnmutationen im Zelllinienmodell unterscheiden",
+        "titleEn": "Distinguish somatic and germline mutation consequences in lineage models",
+        "descriptionDe": "Die lernende Person kann an einem vorgegebenen Zelllinienmodell erklären, wie Zeitpunkt und betroffene Zelllinie die Ausbreitung einer Mutation im Organismus und ihre mögliche Weitergabe durch Keimzellen beeinflussen.",
+        "descriptionEn": "The learner can use a supplied lineage model to explain how timing and affected lineage influence a mutation’s spread within an organism and possible transmission through gametes."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "bio-q1-final-d-a-v1-9d830422-acc7-5fa8-aee9-4dae4cedbf49",
+          "recordDigest": "sha256:41f653775ed3ad87de20c4ce3473e4148ce1a2d0da63dd06de64ccb4896c2b4f"
+        },
+        "second": {
+          "recordId": "biologie-q1-seven-final-native-d-independent-b-v1.goal-05",
+          "recordDigest": "sha256:f9bb519a8a9caf5dec4c04e2dd89b476491599df54e5be07244d2967d222e498"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die begründete Zellstammbaumroutine aus Zeitpunkt, betroffener Zelllinie und bedingter Keimzellweitergabe im bereitgestellten Modell. MV-Klasse10 bleibt die begrenzte Quelle. Die zweite Verständnisfassung wird gewählt; somatische Nichtvererbung wird nicht universalisiert und Keimzelländerung nicht als sichere Weitergabe ausgegeben.",
+      "rationaleEn": "Both reviews confirm the justified lineage routine combining timing, affected cell lineage and conditional germline transmission in a supplied model. MV grade10 remains the bounded source. The second understanding formulation is selected; somatic non-inheritance is not universalised and germline change is not treated as certain transmission."
+    },
+    {
+      "decisionId": "biologie-q1-seven-final-reviewed-20261006-v1-root-synthesis-decision-006",
+      "goalId": "d0c3e6a7-581b-57bd-8027-e940c6b77af8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:adb95716e78e578b51722b272d6498fa3190d78239336aaa1cecb94037f32c0b",
+      "pageFingerprint": "sha256:98f51348895765006100873057452460dc80edd215789f33cc2396c2d2a336a2",
+      "goalReviewContextFingerprint": "sha256:3c4e5df3a4225304f39a28213584dc151d1d641f71624a05b75af375a9cd441e",
+      "finalText": {
+        "titleDe": "Mutation und Modifikation mit Kontrolldaten unterscheiden",
+        "titleEn": "Distinguish mutation and modification using controlled data",
+        "descriptionDe": "Die lernende Person kann an vorgegebenen Vergleichsdaten begründen, ob ein Merkmalsunterschied auf einer Änderung genetischer Information oder auf einer Umweltwirkung bei unveränderter genetischer Information beruht, und die Grenzen eines Merkmalsbefunds benennen.",
+        "descriptionEn": "The learner can use supplied comparison data to justify whether a trait difference results from altered genetic information or an environmental influence without such alteration, and state the limits of trait observations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "bio-q1-final-d-a-v1-d0c3e6a7-581b-57bd-8027-e940c6b77af8",
+          "recordDigest": "sha256:668cccd2530ebf4f39935f238c46baab4f53b1fc8609abf52a69f45200e2f9f8"
+        },
+        "second": {
+          "recordId": "biologie-q1-seven-final-native-d-independent-b-v1.goal-06",
+          "recordDigest": "sha256:1b57108b4b74045c6964f223e99952eda3f2be71855fac61feef59d562fc736c"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die kontrollierte kriterienbezogene Unterscheidung von Mutation und Modifikation mit ausdrücklich begrenzten Schlussmöglichkeiten. Die vier einzelnen Länderkomponenten bleiben Teilaspekte. Die zweite Verständnisfassung wird gewählt; Merkmalsunterschied allein belegt keine Mutation und Modellvorgaben sind keine Messbefunde.",
+      "rationaleEn": "Both reviews confirm the controlled criterion-based distinction between mutation and modification with explicit inference limits. The four jurisdiction components remain partial aspects. The second understanding formulation is selected; a trait difference alone establishes no mutation and model stipulations are no measured results."
+    },
+    {
+      "decisionId": "biologie-q1-seven-final-reviewed-20261006-v1-root-synthesis-decision-007",
+      "goalId": "aab2a358-b2ee-57a5-a957-8fb9845506b1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e8f7ea35446ca5c4bce66ba85b2c4f8675481ab26fa9711adfa0f88b99e72749",
+      "pageFingerprint": "sha256:95152c5c2df256a4541bb0eb80d398d152bb40b208bfa3348d5f2f92421e6aae",
+      "goalReviewContextFingerprint": "sha256:c7700009d9d90c9148e007ad857690184dd90483fcde2d71e4f9e16076e4aaba",
+      "finalText": {
+        "titleDe": "Bedeutung von Fehlerkontrolle und DNA-Reparatur erklären",
+        "titleEn": "Explain the significance of error control and DNA repair",
+        "descriptionDe": "Die lernende Person kann an einem einfachen Kopiermodell erklären, wie Fehlerkontrolle und Reparatur zur Erhaltung genetischer Information beitragen, und begründen, weshalb nicht jede fehlerhafte Paarung zu einer bleibenden Mutation wird und Reparatur keinen vollkommenen Schutz garantiert.",
+        "descriptionEn": "The learner can use a simple copying model to explain how error control and repair help preserve genetic information, and justify why not every mispairing becomes a persistent mutation and repair does not guarantee perfect protection."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "bio-q1-final-d-a-v1-aab2a358-b2ee-57a5-a957-8fb9845506b1",
+          "recordDigest": "sha256:0ea20e26f68163aea636965c830af8df1acb83149e437e83fd6c4bce4731ffb2"
+        },
+        "second": {
+          "recordId": "biologie-q1-seven-final-native-d-independent-b-v1.goal-07",
+          "recordDigest": "sha256:1d663fbf500d8fd0fc5c0bc4c839e2250c794b4c5f968d16cec88e14503c103b"
+        }
+      },
+      "rationaleDe": "Beide Reviews bestätigen die begründete Fehlerkontroll- und Reparaturfunktion zur Informationserhaltung im vorgegebenen Kopiermodell mit ihren Grenzen. TH2.2.1.3 bleibt die begrenzte Quelle. Die zweite Verständnisfassung wird gewählt; eine Fehlpaarung ist keine sichere bleibende Mutation und eine vollständige Enzymroutine wird nicht hinzugefügt.",
+      "rationaleEn": "Both reviews confirm the justified error-checking and repair function for preserving information in a supplied copying model, including its limits. TH2.2.1.3 remains the bounded source. The second understanding formulation is selected; a mismatch is no certain permanent mutation and no complete enzyme routine is added."
+    }
+  ],
+  "manifestFingerprint": "sha256:1042015f2d15103facefd486b33b2ff9731d8daa0b21a6e94a40b4bd3d78bd86"
+}

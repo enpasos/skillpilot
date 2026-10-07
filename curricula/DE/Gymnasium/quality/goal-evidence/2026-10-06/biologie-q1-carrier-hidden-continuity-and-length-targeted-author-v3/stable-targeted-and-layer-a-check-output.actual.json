@@ -1,0 +1,71 @@
+{
+  "createdAtUTC": "2026-10-06T09:39:20.189195+00:00",
+  "actualCompletedOutputLogs": [
+    {
+      "logPath": "/tmp/skillpilot-carrier-v5-schema.stdout.txt",
+      "sha256": "01c2b86c7900977bbf12c2792ab421de1394258ec66fbf57c20cd68a16c214ae",
+      "output": "Validating schemas in curricula against docs/landscape-runtime.schema.json...\n----------------------------------------\nChecked 30953 files.\n✅ All files passed schema validation.",
+      "observedReturnCode": 0,
+      "gatePassed": true
+    },
+    {
+      "logPath": "/tmp/skillpilot-carrier-v5-assets.stdout.txt",
+      "sha256": "23cef62b3a32d26357bebc4d3c17c53270b9f83c72ef9a87fdf6e3635a8fd2d9",
+      "output": "> skillpilot@0.0.0 check:goal-visualization-assets\n> node ../scripts/check_goal_visualization_assets.mjs\n\nGoal visualization asset check passed for 1783 link(s) in 21 landscape(s).",
+      "observedReturnCode": 0,
+      "gatePassed": true
+    },
+    {
+      "logPath": "/tmp/skillpilot-carrier-v5-inventory-current.stdout.txt",
+      "sha256": "6c669273fb4077d9d58d128467e21a7af00058a57dc79bb8b19aa492067aa569",
+      "output": "> skillpilot@0.0.0 check:ai-transparency-inventory\n> node ../scripts/check_ai_transparency_inventory.mjs\n\nAI transparency inventory check passed: 1783 visualizations, 1732 with C2PA container markers, 64 other bound runtime images, 730 localized card records, 8 bound audio files.",
+      "observedReturnCode": 0,
+      "gatePassed": true
+    },
+    {
+      "logPath": "/tmp/skillpilot-carrier-v5-floors.stdout.txt",
+      "sha256": "79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "output": "> skillpilot@0.0.0 check:curriculum-maturity-floors\n> tsx scripts/checkCurriculumMaturityFloors.ts\n\ncurriculum maturity floors passed: 9 protected curricula",
+      "observedReturnCode": 0,
+      "gatePassed": true
+    },
+    {
+      "logPath": "/tmp/skillpilot-carrier-v5-duration-write.stdout.txt",
+      "sha256": "424610a3d9cc9ff270871961caea0ca4e3cb4e354f48bbfac0616636a5b056c9",
+      "output": "> skillpilot@0.0.0 report:gymnasium-duration-readiness\n> tsx scripts/reportGymnasiumDurationModelReadiness.ts --write\n\nchanged docs/qa-ci/status/gymnasium-duration-model-readiness.md\nM6 subjects: 9; source scopes touching Sek I: 139; all source scopes: 258",
+      "observedReturnCode": 0,
+      "gatePassed": true
+    },
+    {
+      "logPath": "/tmp/skillpilot-carrier-v5-duration-check.stdout.txt",
+      "sha256": "df6dc0983f0c6e184ca55c81fc5f10b1800ecb9ac65ff4501b59ba211fd82d36",
+      "output": "> skillpilot@0.0.0 check:gymnasium-duration-readiness\n> tsx scripts/reportGymnasiumDurationModelReadiness.ts --check --require-reviewed-m6\n\nok docs/qa-ci/status/gymnasium-duration-model-readiness.md\nM6 subjects: 9; source scopes touching Sek I: 139; all source scopes: 258",
+      "observedReturnCode": 1,
+      "gatePassed": false
+    }
+  ],
+  "bookBuildAndPublicationChecks": {
+    "buildObservedReturnCode": 0,
+    "publicationCheckObservedReturnCode": 0,
+    "publicationCheckActualStdout": "\n> skillpilot@0.0.0 check:goal-book-publication\n> tsx scripts/checkGoalBookPublication.ts\n\nPublished goal book verified: de-gym-mathematik-bundesweit; 807 pages; sha256:952de307e6cf92a24906290075fcd688990b13d0e3dd7d385a581ca706c3193a\nPublished goal book verified: de-gym-physik-bundesweit; 478 pages; sha256:f1aafcdb4d4330fae10e53e9734647b5d6cebb94efec298d27b72e2f130d6da9\nPublished goal book verified: de-gym-chemie-bundesweit; 359 pages; sha256:d6f3e3a3f3224acd4fdce49daacfa8c4e51d49047a4dc6ee8ed051c564029b11\nPublished goal book verified: de-gym-biologie-bundesweit; 390 pages; sha256:380992f8651a2f73d5b5fb2f7d0937fdc0f750a5ab800b72da893947c0fdd6d7\n",
+    "publicationCheckStderr": "",
+    "generatedBooks": 4,
+    "booksActuallyRendered": 1,
+    "externalPublication": false
+  },
+  "sourceAtlasAssertions": {
+    "observedReturnCode": 0,
+    "actualStdout": "PASS source-atlas input derivation, offline snapshot/binding/boundary checks and current Biology/Chemistry coverage without PDF downloads\n",
+    "exportedFunctionActuallyInvoked": true,
+    "earlierDirectModuleLoadCountedAsTest": false
+  },
+  "humanApproval": false,
+  "humanTrial": false,
+  "durationCheckFailure": {
+    "observedReturnCode": 1,
+    "stderrSha256": "4493280a4e91d98072bb2cf1c17f54cb3ba58b4fc00452a12717b286b85ea486",
+    "stderr": "Biologie has unreviewed G8/G9 duration-model source scopes:\n- DE-BB SekI: open:grade-structured-needs-duration-policy (curricula/DE/Gymnasium/input/BB/source-components/DE_BB_BIOLOGIE_GENETICS_COMPONENTS.author-v6.source-extraction.json)\n- DE-BE SekI: open:grade-structured-needs-duration-policy (curricula/DE/Gymnasium/input/BE/source-components/DE_BE_BIOLOGIE_GENETICS_COMPONENTS.author-v6.source-extraction.json)\n- DE-MV SekI: open:grade-structured-needs-duration-policy (curricula/DE/Gymnasium/input/MV/source-components/DE_MV_BIOLOGIE_GENETICS_COMPONENTS.author-v6.source-extraction.json)\n- DE-SN SekI: open:grade-structured-needs-duration-policy (curricula/DE/Gymnasium/input/SN/source-components/DE_SN_BIOLOGIE_GENETICS_COMPONENTS.author-v6.source-extraction.json)\n- DE-TH SekI: open:grade-structured-needs-duration-policy (curricula/DE/Gymnasium/input/TH/source-components/DE_TH_BIOLOGIE_GENETICS_COMPONENTS.author-v6.source-extraction.json)\n",
+    "meaning": "The report-current stdout was successful, but the required reviewed-M6 duration gate failed for five missing exact component policy rows. This is not a passed Layer-A gate. Narrow independent remediation is in progress."
+  },
+  "updatedAtUTC": "2026-10-06T09:51:28.917613+00:00"
+}

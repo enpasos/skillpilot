@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "independent-b",
+  "reviewedAt": "2026-10-06T09:07:01.354962+00:00",
+  "goalId": "ac9e824f-003c-50ac-8751-2b8456004c63",
+  "scope": "Actual candidate V only; no D/P review or rebinding",
+  "decision": "REVISE",
+  "candidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-carrier-hidden-continuity-and-length-author-20261006-v3/carrier-v3.candidate.png",
+    "sha256": "75d200e3d1c56c478c39c62563b2ff054e31537cfbe1fe7c0ea505be07989723",
+    "bytes": 1545536
+  },
+  "actualViewedSizes": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-carrier-hidden-continuity-and-length-author-20261006-v3/carrier-v3.candidate.png",
+      "dimensions": [
+        1672,
+        941
+      ],
+      "sha256": "75d200e3d1c56c478c39c62563b2ff054e31537cfbe1fe7c0ea505be07989723"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-carrier-hidden-continuity-and-length-author-20261006-v3/carrier-v3.actual-680.png",
+      "dimensions": [
+        680,
+        383
+      ],
+      "sha256": "2280ab634823304d714d2ef420c81d824bf7a9d1e39f381106c33466ad458bad"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-carrier-hidden-continuity-and-length-author-20261006-v3/carrier-v3.actual-360.png",
+      "dimensions": [
+        360,
+        203
+      ],
+      "sha256": "0eecc6c29629b7eb20d2ccf03fc6b542c7ee22d4e3f840f928273ca11f71fbb0"
+    }
+  ],
+  "provider": "ChatGPT/Codex image_gen built-in",
+  "referenceStrategy": "Targeted edit from prior carrier image; prompt demands two fixed blue/purple strand identities and geometrically aligned hidden continuations. Author prompt is provenance, not evidence of successful geometry.",
+  "actualPrimaryFinding": {
+    "status": "REVISE",
+    "locationApproxNativePixels": {
+      "x": 730,
+      "y": 525
+    },
+    "observation": "At the first large projected crossover, the descending foreground backbone enters from the upper left blue and continues toward the lower-right trough purple. The occluded rising counterpart enters from lower left blue and reappears upper right purple. Color identities therefore cannot represent two fixed continuous strands.",
+    "requiredCorrection": "Construct two geometrically continuous strand paths, trace each complete path including every hidden continuation, and maintain its identity/material through the whole helix."
+  },
+  "allLargeCrossoversInspected": [
+    {
+      "approxX": 730,
+      "foreground": "descending upper-left to lower-right",
+      "localVerdict": "REVISE",
+      "reason": "Visible blue-to-purple identity change on the same continuous foreground curve; complementary hidden strand likewise changes identity."
+    },
+    {
+      "approxX": 980,
+      "foreground": "descending upper-left to lower-right",
+      "localVerdict": "NOT_CERTIFIED",
+      "reason": "The visible descending front curve is predominantly blue and the rising rear curve predominantly purple. Local tangent directions are plausible, but following fixed original strand identities through the earlier swap and later crests does not yield two consistently colored paths."
+    },
+    {
+      "approxX": 1225,
+      "foreground": "descending upper-left to lower-right",
+      "localVerdict": "NOT_CERTIFIED",
+      "reason": "Another predominantly blue descending foreground and purple rising rear passage; local occlusion cannot repair global identity inconsistency or establish the demanded alternating identity of the front strand."
+    },
+    {
+      "approxX": 1470,
+      "foreground": "descending upper-left to lower-right",
+      "localVerdict": "NOT_CERTIFIED",
+      "reason": "Purple descending foreground and blue rising rear passage is visible, but fixed strand continuity remains broken in the complete drawing; this crossing is not independently accepted as part of a sound whole."
+    }
+  ],
+  "otherFindings": [
+    {
+      "aspect": "Gen bracket and shortened-scale statement",
+      "decision": "REVISE_AUTHOR_CONSTRAINT",
+      "reason": "The longer bracket spans approximately x=930..1450, with unmarked DNA before and after, and stark verkürzt is legible at all sizes. It covers about two consecutive projected crossover intervals, roughly one full helix period, rather than the two full turns explicitly requested by the author prompt. This is a schematic-span issue, not a claim of actual gene length."
+    },
+    {
+      "aspect": "Chromosome / DNA / gene relationship and readability",
+      "decision": "KEEP_BOUNDED",
+      "reason": "The organised purple chromosome, uncoiling DNA and bracketed DNA section communicate the three goal concepts; large labels and shortened-scale note are readable at 360 and 680. This does not override the flawed strand representation."
+    },
+    {
+      "aspect": "Base-pair rods",
+      "decision": "NOT_FINAL_CERTIFIED",
+      "reason": "Rods lie between apparent backbones, but unresolved strand-path geometry prevents approval of the complete helix as a two-strand model."
+    }
+  ],
+  "preservedScope": "Six country-view KEEP reviews remain separate at their prior frozen digests. This image review does not reopen source/text/Memory or unchanged six-goal findings.",
+  "limits": {
+    "peerAResultsRead": false,
+    "imageEdited": false,
+    "activeFilesModified": false,
+    "historicalArtifactsModified": false,
+    "DOrPApproved": false,
+    "humanApprovalClaimed": false,
+    "overallM7Claimed": false
+  }
+}

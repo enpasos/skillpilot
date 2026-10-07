@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-06T19:42:15.894068Z",
+  "role": "Independent bounded factual review of one actual Memory card answer; not active native M/visibility integration",
+  "goalId": "dd58c029-176f-5d99-923e-1c1fda6cf58e",
+  "wholeCurrentGoal": {
+    "id": "dd58c029-176f-5d99-923e-1c1fda6cf58e",
+    "title": "Alkane, Alkene und Alkine beschreiben",
+    "titleEn": "Describe alkanes, alkenes, and alkynes",
+    "description": "Die lernende Person kann Alkane, Alkene und Alkine nomenklatorisch korrekt benennen, Strukturformeln einschließlich Skelettformeln skizzieren, homologe Reihen bilden und einfache Isomerien unterscheiden.",
+    "descriptionEn": "The learner can correctly name alkanes, alkenes, and alkynes, sketch structural formulas including skeletal formulas, form homologous series, and distinguish simple isomerism.",
+    "weight": 0.9,
+    "tags": [
+      "GK",
+      "LK"
+    ],
+    "contains": [],
+    "requires": [
+      "950c73c6-4ed1-488a-9267-1142e95e0055",
+      "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-chemistry",
+      "demandLevel": "AB2",
+      "processCompetencies": [],
+      "guidingIdeas": [
+        "BC_AUFBAU"
+      ],
+      "phase": "E"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "provenance": {
+        "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+        "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+        "sourceGoalId": "e576f45a-ef98-4a39-ad06-b3c7e0d2d4b9"
+      }
+    },
+    "type": "atomic",
+    "examples": [],
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "dd58c029-176f-5d99-923e-1c1fda6cf58e",
+        "title": "Visualisierung: Alkane, Alkene und Alkine beschreiben",
+        "url": "/assets/goal-visualizations/chemie/dd58c029-176f-5d99-923e-1c1fda6cf58e/dd58c029-176f-5d99-923e-1c1fda6cf58e.jpg",
+        "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+        "description": "Visualisierung zum Lernziel: Alkane, Alkene und Alkine beschreiben.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Alkane, Alkene und Alkine beschreiben\". Die lernende Person kann Alkane, Alkene und Alkine nomenklatorisch korrekt benennen, Strukturformeln einschließlich Skelettformeln skizzieren, homologe Reihen bilden und einfache Isomerien unterscheiden.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "accepted"
+      }
+    ]
+  },
+  "deckId": "de_gymnasium_chemistry_organic_q1",
+  "cardId": "chem_org_q1_001",
+  "decision": "KEEP",
+  "wholeBeforeCard": {
+    "id": "chem_org_q1_001",
+    "front": "Alkane, Alkene, Alkine: Bindung und allgemeine Formel?",
+    "back": "Acyclisch:\n\nAlkane: Einfachbindungen, $C_nH_{2n+2}$\n\nAlkene: mindestens eine Doppelbindung, $C_nH_{2n}$\n\nAlkine: mindestens eine Dreifachbindung, $C_nH_{2n-2}$",
+    "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+    "tags": [
+      "GK",
+      "LK",
+      "goal:dd58c029-176f-5d99-923e-1c1fda6cf58e"
+    ]
+  },
+  "wholeCandidateCard": {
+    "id": "chem_org_q1_001",
+    "front": "Alkane, Alkene, Alkine: Bindung und allgemeine Formel?",
+    "back": "Acyclische Kohlenwasserstoffe:\n\nAlkane: nur Einfachbindungen, $C_nH_{2n+2}$\n\nAlkene: genau eine Doppelbindung, sonst Einfachbindungen, $C_nH_{2n}$\n\nAlkine: genau eine Dreifachbindung, sonst Einfachbindungen, $C_nH_{2n-2}$\n\nDie Formeln gelten nicht für Ringe oder mehrere Mehrfachbindungen.",
+    "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+    "tags": [
+      "GK",
+      "LK",
+      "goal:dd58c029-176f-5d99-923e-1c1fda6cf58e"
+    ]
+  },
+  "specificFindingResolved": "The previous at-least-one wording allowed multiple double/triple bonds while assigning mono-unsaturated homologous formulas. Candidate exactly-one and otherwise-single wording restricts these rules to the intended neutral acyclic hydrocarbon series.",
+  "independentActualChecks": {
+    "alkane": "Acyclic hydrocarbon with all single carbon bonds has CnH2n+2; branched chains are included.",
+    "monoalkene": "Exactly one carbon-carbon double bond and otherwise single bonds, no ring: CnH2n.",
+    "monoalkyne": "Exactly one carbon-carbon triple bond and otherwise single bonds, no ring: CnH2n-2.",
+    "finiteCounterexamples": "Buta-1,3-diene CH2=CH–CH=CH2 has C4H6, not C4H8. Buta-1,3-diyne HC≡C–C≡CH has C4H2, not C4H6; these actually expose the old overly broad formula premise.",
+    "formulaLimit": "The explicit exclusion concerns applying these homologous-series rules to structures with rings or additional unsaturations. It does not assert that the same gross formula can never occur in another class or that formula alone determines connectivity.",
+    "frontAndScope": "The unchanged front asks binding and general formula; the new answer directly supplies those limited series, remaining appropriate to the current structural/homologous-series goal. No new learner-facing goal scope or deck/ID/tag/visibility choice is created."
+  },
+  "primarySource": {
+    "title": "IUPAC Class Names: Acyclic Hydrocarbons",
+    "URL": "https://iupac.qmul.ac.uk/class/hydro.html",
+    "actualDirectPageRead": true,
+    "sectionsActuallyUsed": [
+      "alkanes",
+      "alkenes",
+      "alkynes",
+      "dienes"
+    ],
+    "paraphrasedRelevantFacts": "The glossary gives saturated acyclic alkane formulas, the single-double-bond alkene series and the single-triple-bond alkyne series; multiple double/triple bonds are named separately. The hydrocarbons definition excludes heteroatoms.",
+    "directGoldBookTermPages": "Not needed or claimed; prior403 is not converted into a direct term-page review."
+  },
+  "authorFreezeAll4Files1ExternalInputExact": true,
+  "activeOriginalDeckSnapshotByteExact": true,
+  "actualChangedFields": [
+    {
+      "cardId": "chem_org_q1_001",
+      "field": "back"
+    }
+  ],
+  "allOther9WholeCardsExact": true,
+  "other9ScientificReviewsRestarted": false,
+  "peerNewMemoryVerdictsRead": false,
+  "nativeCardSchemaAndVisibilityChecksPendingRoot": true,
+  "nativeMemoryDecisionAndFingerprintIntegrationPendingRoot": true,
+  "noAutomaticFingerprintReviewClaim": true,
+  "activeWrites": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "actualLearnerEvidence": false,
+  "strictNetGain": 0,
+  "newScientificClosures": 0,
+  "restoredActiveBindings": 0
+}

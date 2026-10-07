@@ -1527,6 +1527,8 @@ export const parseSubjectDurationModelPolicy = (
     ? record.decisions
     : fail('durationModelPolicy.decisions must be an array.')
   const byJurisdiction = new Map<string, GoalBookDurationModelPolicyDecision>()
+  const sourcePathsByJurisdiction = new Map<string, Set<string | undefined>>()
+  const jurisdictionsBySourcePath = new Map<string, string>()
   decisions.forEach((rawDecision, index) => {
     const decision = asRecord(rawDecision, `durationModelPolicy.decisions[${index}]`)
     if (decision.subject !== normalizedSubject) return
@@ -1537,9 +1539,6 @@ export const parseSubjectDurationModelPolicy = (
       decision.jurisdiction,
       `durationModelPolicy.decisions[${index}].jurisdiction`,
     )
-    if (byJurisdiction.has(jurisdiction)) {
-      fail(`duration-model policy contains duplicate ${normalizedSubject} decision for ${jurisdiction}.`)
-    }
     const durationModels = uniqueStringArray(
       decision.durationModels,
       `durationModelPolicy.decisions[${index}].durationModels`,
@@ -1578,12 +1577,12 @@ export const parseSubjectDurationModelPolicy = (
     if (stage !== 'SekI' && stage !== 'SekI+SekII') {
       fail(`duration-model policy has unsupported stage ${stage} for ${jurisdiction}.`)
     }
-    const compositionViewIds = Array.isArray(decision.compositionViewIds)
-      ? uniqueStringArray(
+    const compositionViewIds = decision.compositionViewIds === undefined
+      ? []
+      : uniqueStringArray(
         decision.compositionViewIds,
         `durationModelPolicy.decisions[${index}].compositionViewIds`,
       )
-      : []
     compositionViewIds.forEach((viewId) => {
       if (!sourceByViewId.has(viewId)) {
         fail(`duration-model policy for ${jurisdiction} references unbound composition view ${viewId}.`)
@@ -1596,13 +1595,39 @@ export const parseSubjectDurationModelPolicy = (
     } else if (compositionViewIds.length > 0) {
       fail(`${policyDecision} policy for ${jurisdiction} must not bind duration-specific views.`)
     }
-    byJurisdiction.set(jurisdiction, {
+    const effectiveDecision: GoalBookDurationModelPolicyDecision = {
       jurisdiction,
       stage,
       durationModels: normalizedDurations,
       decision: policyDecision as GoalBookDurationModelPolicyDecision['decision'],
       compositionViewIds,
-    })
+    }
+    const sourcePath = decision.sourceExtractionPath === undefined
+      ? undefined
+      : nonEmptyString(
+        decision.sourceExtractionPath,
+        `durationModelPolicy.decisions[${index}].sourceExtractionPath`,
+      )
+    const existing = byJurisdiction.get(jurisdiction)
+    if (existing) {
+      const sourcePaths = sourcePathsByJurisdiction.get(jurisdiction)!
+      if (!sourcePath || sourcePaths.has(undefined)) {
+        fail(`multiple ${normalizedSubject} duration-model decisions for ${jurisdiction} must each declare sourceExtractionPath.`)
+      }
+      if (stableGoalBookJson(existing) !== stableGoalBookJson(effectiveDecision)) {
+        fail(`duration-model policy contains conflicting ${normalizedSubject} decisions for ${jurisdiction}.`)
+      }
+    }
+    if (sourcePath && jurisdictionsBySourcePath.has(sourcePath)) {
+      fail(`duration-model policy contains duplicate ${normalizedSubject} sourceExtractionPath ${sourcePath}.`)
+    }
+    if (sourcePath) jurisdictionsBySourcePath.set(sourcePath, jurisdiction)
+    if (!existing) {
+      byJurisdiction.set(jurisdiction, effectiveDecision)
+      sourcePathsByJurisdiction.set(jurisdiction, new Set())
+    }
+    // Each source row has been validated; only identical effective policies merge.
+    sourcePathsByJurisdiction.get(jurisdiction)!.add(sourcePath)
   })
   const actualJurisdictions = [...byJurisdiction.keys()].sort(compareStrings)
   if (actualJurisdictions.join('\0') !== expectedJurisdictions.join('\0')) {

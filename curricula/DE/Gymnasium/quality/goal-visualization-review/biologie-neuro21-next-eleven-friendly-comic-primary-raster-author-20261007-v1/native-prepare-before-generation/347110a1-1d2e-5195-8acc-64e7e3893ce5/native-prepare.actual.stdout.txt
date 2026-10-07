@@ -1,0 +1,11 @@
+
+> skillpilot@0.0.0 visualization:prepare
+> node ../scripts/prepare_goal_visualization.mjs 347110a1-1d2e-5195-8acc-64e7e3893ce5 --landscape=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-twenty-one-current-continuation-author-v3/stage-02-current-twenty-one-native/current472-neuro21.complete-author-candidate.json --subject=biologie --lang=de --provider=OpenAI / ChatGPT-Codex image generation --review-status=pilot
+
+Prepared prompt package for: Zelluläre Lernprozesse
+SkillPilot ID: 347110a1-1d2e-5195-8acc-64e7e3893ce5
+Prompt: tmp/goal-visualizations/347110a1-1d2e-5195-8acc-64e7e3893ce5/nano-banana-prompt.de.md
+Metadata: tmp/goal-visualizations/347110a1-1d2e-5195-8acc-64e7e3893ce5/metadata.json
+
+After generating and downloading the image, import it with:
+npm --prefix app run visualization:import -- 347110a1-1d2e-5195-8acc-64e7e3893ce5 "<downloaded-image-path>"

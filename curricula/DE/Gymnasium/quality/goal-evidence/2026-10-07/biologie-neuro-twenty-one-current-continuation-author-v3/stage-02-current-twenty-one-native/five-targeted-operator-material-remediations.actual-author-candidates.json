@@ -1,0 +1,298 @@
+{
+  "cases": [
+    {
+      "goalId": "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+      "caseId": "initial-bounded-model",
+      "taskDe": "Ein gegebenes Modell einer erregenden Acetylcholin-führenden chemischen Synapse beschreibt folgende Bauteile: In der präsynaptischen Endigung öffnen spannungsabhängige Ca2+-Kanäle bei Depolarisation. Ca2+-Einstrom löst Vesikelfusion und ACh-Freisetzung aus. ACh diffundiert zum postsynaptischen nicotinischen Rezeptor, einem ligandengesteuerten Kationenkanal; seine Öffnung erzeugt im gegebenen Ruhebereich einen depolarisierenden Netto-Ionenstrom. In der nachgeschalteten Nervenzelle können spannungsabhängige Na+-Kanäle bei Erreichen der Schwelle ein Aktionspotenzial auslösen. ACh-Esterase baut freies ACh ab. Erkläre die Übertragungsfolge nach Ankunft eines präsynaptischen Aktionspotenzials und unterscheide die Rolle des Transmitters, der ligandengesteuerten und der spannungsgesteuerten Kanäle. Folgt aus jedem freigesetzten Vesikel sicher ein postsynaptisches Aktionspotenzial?",
+      "taskEn": "A supplied excitatory acetylcholine-carrying chemical-synapse model describes these components: voltage-gated Ca2+ channels in the presynaptic terminal open on depolarization. Ca2+ influx triggers vesicle fusion and ACh release. ACh diffuses to a postsynaptic nicotinic receptor, a ligand-gated cation channel; opening causes a depolarizing net ion current in the supplied resting range. In the downstream neuron, voltage-gated Na+ channels can trigger an action potential if threshold is reached. ACh esterase breaks down free ACh. Explain transmission after arrival of a presynaptic action potential and distinguish transmitter, ligand-gated and voltage-gated channels. Does every released vesicle guarantee a postsynaptic action potential?",
+      "referenceResponseDe": "Präsynaptische Depolarisation öffnet die spannungsgesteuerten Ca2+-Kanäle; Ca2+ ermöglicht die im Modell angegebene Freisetzung. ACh trägt die chemische Übertragung durch Diffusion und Bindung an den ligandengesteuerten Rezeptorkanal, nicht durch Durchlaufen eines axonalen Kanals. Dessen Ionenstrom depolarisiert die postsynaptische Membran. Ein nachgeschaltetes AP benötigt zusätzlich ausreichende Depolarisation zur Schwelle der spannungsgesteuerten Na+-Kanäle. Eine einzelne Vesikelfreisetzung garantiert das nicht. Der enzymatische Abbau begrenzt die ACh-Verfügbarkeit. Die erregende Wirkung gilt für den ausdrücklich gegebenen Rezeptor-/Zellkontext.",
+      "referenceResponseEn": "Presynaptic depolarization opens voltage-gated Ca2+ channels; Ca2+ enables the supplied release step. ACh mediates chemical transmission by diffusion and binding to a ligand-gated receptor channel, not by passing through an axonal channel. The resulting ion current depolarizes the postsynaptic membrane. A downstream action potential additionally requires sufficient depolarization to the voltage-gated Na+ channel threshold; one vesicle release does not guarantee this. Enzymatic breakdown limits ACh availability. Excitation is specific to the supplied receptor and cell context.",
+      "understandingFocusDe": "Eine zusammenhängende chemische Übertragung mit funktional verschiedenen Kanälen erklären.",
+      "understandingFocusEn": "Explain one chemical-transmission sequence with functionally different channels.",
+      "structuredSuppliedData": {
+        "suppliedAChSynapse": "excitatory nicotinic receptor model",
+        "voltageGatedRoles": [
+          "presynaptic calcium entry",
+          "downstream sodium AP threshold"
+        ],
+        "ligandGatedRole": "postsynaptic nicotinic cation channel",
+        "thresholdReachedByOneVesicleUnknown": true
+      },
+      "materialType": "authored_reference_model_or_dataset",
+      "actualExperimentConducted": false,
+      "actualLearnerEvidence": false,
+      "copiedResearchMeasurements": false,
+      "taskQuota": false,
+      "license": "CC-BY-4.0"
+    },
+    {
+      "goalId": "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+      "caseId": "fresh-contextual-transfer",
+      "taskDe": "Eine frische schematische Darstellung derselben erregenden ACh-Synapse zeigt einen präsynaptischen Spannungsverlauf, ein Ca2+-Signal, ACh im Spalt und eine postsynaptische Depolarisation. Die beobachtbare modellhafte Reihenfolge ist: präsynaptische Depolarisation vor Ca2+-Einstrom, danach ACh-Freisetzung, danach postsynaptischer Ionenstrom. Der postsynaptische Spannungsanstieg bleibt in diesem Fall unter der angegebenen AP-Schwelle. Ordne die vier Signale den Schritten und Kanalarten zu und erläutere, warum trotz erfolgreicher chemischer Übertragung kein nachgeschaltetes AP folgt. Erkläre zusätzlich, was der Ligand an seinem Kanal öffnet und wodurch sich dies vom Öffnungsreiz eines spannungsabhängigen Kanals unterscheidet.",
+      "taskEn": "A fresh schematic of the same excitatory ACh synapse shows a presynaptic voltage trace, a Ca2+ signal, ACh in the cleft and postsynaptic depolarization. The supplied model sequence is presynaptic depolarization before Ca2+ entry, then ACh release, then postsynaptic ion current. In this case the postsynaptic voltage increase stays below the supplied AP threshold. Match the four signals to transmission steps and channel types and explain why successful chemical transmission produces no downstream AP. Also explain what a ligand opens at its channel and how this differs from the opening stimulus for a voltage-gated channel.",
+      "referenceResponseDe": "Der Spannungsverlauf steht vor dem Öffnen präsynaptischer spannungsabhängiger Ca2+-Kanäle; das Ca2+-Signal vor der ACh-Freisetzung. ACh-Bindung öffnet den ligandengesteuerten Rezeptorkanal und ermöglicht den postsynaptischen Ionenstrom. Die Depolarisation bleibt unterschwellig; deshalb fehlt das nachgeschaltete AP, obwohl ACh übertragen wurde. Ligandengesteuert bedeutet Öffnungssteuerung durch passende Bindung, spannungsgesteuert durch die Membranspannung. Dies sind unterschiedliche Funktionen innerhalb einer Übertragung, keine chemische-versus-elektrische Synapsenvergleichspflicht.",
+      "referenceResponseEn": "The voltage trace precedes opening of presynaptic voltage-gated Ca2+ channels; the Ca2+ signal precedes ACh release. ACh binding opens the ligand-gated receptor channel and permits the postsynaptic ion current. Depolarization is subthreshold, so there is no downstream AP despite ACh transmission. Ligand gating is controlled by appropriate binding; voltage gating by membrane voltage. These are different functions within one transmission sequence, not a requirement to compare chemical and electrical synapses.",
+      "understandingFocusDe": "Neue Darstellung mit unterschwelligem Ausgang statt bloßem Wiederholen der Übertragungskette.",
+      "understandingFocusEn": "Fresh representation with subthreshold output rather than merely repeating the transmission sequence.",
+      "structuredSuppliedData": {
+        "sameChemicalAChModel": true,
+        "orderedSignals": [
+          "presynaptic depolarization",
+          "calcium influx",
+          "ACh release",
+          "postsynaptic current"
+        ],
+        "postsynapticAPThresholdNotReached": true
+      },
+      "materialType": "authored_reference_model_or_dataset",
+      "actualExperimentConducted": false,
+      "actualLearnerEvidence": false,
+      "copiedResearchMeasurements": false,
+      "taskQuota": false,
+      "license": "CC-BY-4.0"
+    },
+    {
+      "goalId": "f6280154-d57c-599c-94bf-73313005a6df",
+      "caseId": "initial-bounded-model",
+      "taskDe": "Ein gegebenes Stoffmodell betrifft eine erregende ACh-Synapse mit nicotinischem Rezeptorkanal. Stoff X bindet selektiv so, dass ACh den postsynaptischen Rezeptorkanal nicht mehr öffnet; präsynaptische APs, Ca2+-Einstrom, ACh-Freisetzung und ACh-Abbau bleiben unverändert. Leite die lokale Wirkung auf postsynaptischen Ionenstrom und Depolarisation ab. Übertrage das Prinzip auf eine gegebene neuromuskuläre Synapse: Motorneuron setzt ACh frei, ACh öffnet nicotinische Rezeptorkanäle der Muskelendplatte; ein ausreichendes Endplattenpotenzial löst ein Muskel-AP aus. Was verhindert X in dieser Kette, wenn alle anderen Schritte unverändert bleiben?",
+      "taskEn": "A supplied substance model concerns an excitatory ACh synapse with a nicotinic receptor channel. Substance X selectively prevents ACh from opening the postsynaptic receptor channel; presynaptic APs, Ca2+ influx, ACh release and breakdown are unchanged. Infer the local effects on postsynaptic ion current and depolarization. Transfer the principle to a supplied neuromuscular synapse: the motor neuron releases ACh, ACh opens nicotinic receptor channels at the muscle endplate, and a sufficient endplate potential triggers a muscle AP. What does X prevent in this sequence if all other steps remain unchanged?",
+      "referenceResponseDe": "Obwohl ACh normal freigesetzt wird, kann der gegebene Rezeptorkanal nicht durch ACh geöffnet werden. Der zugehörige postsynaptische Ionenstrom und die davon verursachte Depolarisation fehlen. An der neuromuskulären Synapse fehlt entsprechend der ACh-bedingte Endplattenanstieg; unter den gegebenen Bedingungen kann dieser Weg daher kein Muskel-AP auslösen. Der blockierte Schritt ist Rezeptorwirkung, nicht Transmitterfreisetzung. Aus dem Modell folgen keine Dosierung, Behandlung oder Gesamtwirkung an einem Menschen.",
+      "referenceResponseEn": "Despite normal ACh release, the supplied receptor channel cannot be opened by ACh. The associated postsynaptic ion current and depolarization are absent. At the neuromuscular synapse the ACh-driven endplate increase is likewise absent, so this pathway cannot trigger a muscle AP under the given conditions. Receptor action is blocked, not transmitter release. The model does not establish dosage, treatment or a whole-person outcome.",
+      "understandingFocusDe": "Vorgegebenen ACh-Stoffangriff mechanistisch ableiten und an die neuromuskuläre Synapse übertragen.",
+      "understandingFocusEn": "Infer a supplied ACh substance effect mechanistically and transfer it to the neuromuscular synapse.",
+      "structuredSuppliedData": {
+        "substanceX": "selective nicotinic receptor-opening blockade",
+        "AChReleaseUnchanged": true,
+        "NMJStepsSupplied": true
+      },
+      "materialType": "authored_reference_model_or_dataset",
+      "actualExperimentConducted": false,
+      "actualLearnerEvidence": false,
+      "copiedResearchMeasurements": false,
+      "taskQuota": false,
+      "license": "CC-BY-4.0"
+    },
+    {
+      "goalId": "f6280154-d57c-599c-94bf-73313005a6df",
+      "caseId": "fresh-contextual-transfer",
+      "taskDe": "Im frischen erregenden ACh-/neuromuskulären Modell hemmt Stoff Y selektiv ACh-Esterase im Spalt teilweise. Freisetzung, Rezeptoren und übrige Membrankanäle bleiben unverändert. Im Material ist vorgegeben: verbleibendes freies ACh wird langsamer abgebaut; solange ACh an intakte nicotinische Rezeptoren bindet, kann deren Kationenstrom anhalten. Vergleiche Y mit dem Rezeptorblock X und leite eine mögliche Veränderung der Dauer des Endplattenpotenzials ab. Darf daraus ohne weitere Daten eine größere einzelne AP-Amplitude oder sichere stärkere Muskelkontraktion folgen? Begründe am gegebenen Übertragungsprinzip.",
+      "taskEn": "In a fresh excitatory ACh/neuromuscular model, substance Y selectively and partially inhibits ACh esterase in the cleft. Release, receptors and other membrane channels are unchanged. The material states that remaining free ACh is broken down more slowly; while ACh binds intact nicotinic receptors, their cation current can persist. Compare Y with receptor blockade X and infer a possible change in endplate-potential duration. Without additional data, does this imply a larger individual AP or guaranteed stronger muscle contraction? Justify from the supplied transmission principle.",
+      "referenceResponseDe": "Y verändert den Abbau und kann ACh-Verfügbarkeit und damit Rezeptorwirkung beziehungsweise Endplattenpotenzial verlängern; X verhindert die Rezeptoröffnung trotz vorhandenem ACh. Die Wirkorte unterscheiden sich. Die lokale Verlängerung begründet weder größere Alles-oder-Nichts-APs noch eine sichere Gesamtwirkung auf die Kontraktion; anhaltende Depolarisation und weitere Zellbedingungen wären zusätzlich zu beachten. Hier wird ACh-Abbau behandelt, keine für diese neuromuskuläre Übertragung fälschlich angenommene Rückaufnahme von intaktem ACh.",
+      "referenceResponseEn": "Y changes breakdown and can prolong ACh availability and thus receptor action or endplate depolarization; X prevents receptor opening despite ACh being present. Their sites of action differ. Local prolongation establishes neither larger all-or-none APs nor a guaranteed overall contraction effect; persistent depolarization and other cellular conditions would also matter. This case concerns ACh breakdown, not incorrectly assumed reuptake of intact ACh at the neuromuscular junction.",
+      "understandingFocusDe": "Neuer Stoffwirkort bei derselben ACh-Kette; lokale Zeitwirkung und Gesamtwirkung trennen.",
+      "understandingFocusEn": "Fresh substance site in the same ACh sequence; separate local duration from overall outcome.",
+      "structuredSuppliedData": {
+        "substanceY": "partial ACh esterase inhibition",
+        "intactAChReuptakeModel": false,
+        "NMJContext": true,
+        "clinicalEffectPredicted": false
+      },
+      "materialType": "authored_reference_model_or_dataset",
+      "actualExperimentConducted": false,
+      "actualLearnerEvidence": false,
+      "copiedResearchMeasurements": false,
+      "taskQuota": false,
+      "license": "CC-BY-4.0"
+    },
+    {
+      "goalId": "97b24279-def0-5ce6-8726-a1cac9cd38ad",
+      "caseId": "initial-bounded-model",
+      "taskDe": "Ein vereinfachtes Modell zeigt eine konvergente Verschaltung: die erregenden Nervenzellen E1/E2 und die hemmende Nervenzelle H wirken auf die Zielzelle Z. Im gleichen Testfenster beträgt deren Grundwert −70 mV, die gegebene AP-Schwelle −55 mV. Die Potenzialbeiträge sind zur Vergleichszeit linear addierbar: E1=+8 mV, E2=+9 mV, H=−5 mV. Vergleiche Z bei E1 allein, E1+E2 und E1+E2+H. Leite aus den postsynaptischen Potenzialänderungen ab, weshalb eine hemmende Synapse eine sonst ausgelöste Ausgabe begrenzen kann und warum erregende Synapsen trotzdem für die hier gegebene Ausgabe nötig sind. Keine zeitabhängige Ionenkanalkurve ist zu berechnen.",
+      "taskEn": "A simplified model shows a convergent circuit: excitatory neurons E1/E2 and inhibitory neuron H act on target Z. Within the same test window its baseline is −70 mV and its supplied AP threshold −55 mV. Contributions are linearly additive at the comparison time: E1=+8 mV, E2=+9 mV, H=−5 mV. Compare Z for E1 alone, E1+E2 and E1+E2+H. Use the postsynaptic changes to infer why an inhibitory synapse can constrain an otherwise triggered output and why excitatory synapses are still required for this model output. No time-dependent ion-channel curve is to be calculated.",
+      "referenceResponseDe": "E1 allein ergibt −62 mV, E1+E2 −53 mV und E1+E2+H −58 mV. Nur der zweite Test erreicht die Schwelle. Erregende Beiträge ermöglichen hier die Depolarisation zur Ausgabe; der hemmende Beitrag begrenzt diese trotz gleicher erregender Eingänge. Die Verschaltung benötigt beide Wirkarten für ein modulierbares, geregeltes Ausgangsmuster. Die Aussage folgt aus den gegebenen Potenzialbeiträgen und der Schwelle, nicht allein aus Pfeilzahl oder der Bezeichnung Konvergenz; sie ist kein Beweis, dass jedes denkbare Netz beide Synapsenarten enthält.",
+      "referenceResponseEn": "E1 alone gives −62 mV, E1+E2 −53 mV and E1+E2+H −58 mV. Only the second test reaches threshold. Excitatory contributions enable the supplied output depolarization; the inhibitory contribution constrains it despite unchanged excitatory inputs. Both effect types allow a modulated, regulated output pattern here. The inference uses supplied contributions and threshold, not arrow count or the label convergence alone; it does not establish that every conceivable network contains both synapse types.",
+      "understandingFocusDe": "Verschaltung mit tatsächlichen postsynaptischen Potenzialen vergleichen und erregende/hemmende Regelungsfunktion ableiten.",
+      "understandingFocusEn": "Compare a circuit using actual supplied postsynaptic potentials and infer excitatory/inhibitory regulation.",
+      "structuredSuppliedData": {
+        "baselineMv": -70,
+        "thresholdMv": -55,
+        "contributionsMv": {
+          "E1": 8,
+          "E2": 9,
+          "H": -5
+        },
+        "conditions": [
+          [
+            "E1"
+          ],
+          [
+            "E1",
+            "E2"
+          ],
+          [
+            "E1",
+            "E2",
+            "H"
+          ]
+        ],
+        "weightsChangeOverTime": false
+      },
+      "materialType": "authored_reference_model_or_dataset",
+      "actualExperimentConducted": false,
+      "actualLearnerEvidence": false,
+      "copiedResearchMeasurements": false,
+      "taskQuota": false,
+      "license": "CC-BY-4.0"
+    },
+    {
+      "goalId": "97b24279-def0-5ce6-8726-a1cac9cd38ad",
+      "caseId": "fresh-contextual-transfer",
+      "taskDe": "Eine frische divergente Verschaltung verteilt den gleichen Eingang von E auf Zielzellen Z1 und Z2. Beide haben Grundwert −70 mV und Schwelle −55 mV. E verursacht in Z1 und Z2 jeweils +16 mV. Im beschriebenen zweiten Testfenster wirkt auf Z2 zusätzlich ein separater hemmender Eingang H mit −6 mV, auf Z1 nicht. Vergleiche die postsynaptischen Potenziale beider Zielzellen in beiden Testfenstern. Leite ab, wie Hemmung eine selektive Signalweitergabe ermöglicht, obwohl derselbe erregende Eingang beide Zellen erreicht. Die Verbindungen werden nicht durch Lernen verändert; ihre Wirkungen sind bereits gegeben.",
+      "taskEn": "A fresh divergent circuit distributes the same input from E to targets Z1 and Z2. Both have baseline −70 mV and threshold −55 mV. E contributes +16 mV to each. In the supplied second test window a separate inhibitory input H additionally contributes −6 mV to Z2 but not Z1. Compare both targets’ postsynaptic potentials in both windows. Infer how inhibition permits selective transmission although the same excitatory input reaches both cells. Connections are not changed by learning; their effects are supplied.",
+      "referenceResponseDe": "Ohne H erreichen beide Zellen −54 mV und lösen im Modell ein AP aus. Mit H bleibt Z1 bei −54 mV, Z2 liegt bei −60 mV unter der Schwelle. Hemmung ermöglicht so die im Material beschriebene selektive Ausgabe; gemeinsame Herkunft des E-Signals erzwingt keine identischen Zielantworten. Dies ist ein Vergleich der gegebenen Verschaltung mit verschiedenen aktiven Eingängen, keine plastische Änderung der Verbindungsgewichte und kein Hebb-Lernfall.",
+      "referenceResponseEn": "Without H both cells reach −54 mV and trigger a model AP. With H, Z1 stays at −54 mV while Z2 is −60 mV, below threshold. Inhibition thus permits the supplied selective output; a common E source does not force identical target responses. This compares the supplied circuit with different active inputs, not plastic changes of connection weights or a Hebbian learning case.",
+      "understandingFocusDe": "Neuer Divergenzfall mit Potenzialdaten und selektiver Hemmung; Grenze zum plastischen Netzvergleich a46.",
+      "understandingFocusEn": "Fresh divergence case with potential data and selective inhibition; boundary to a46 plastic network comparison.",
+      "structuredSuppliedData": {
+        "baselineMv": -70,
+        "thresholdMv": -55,
+        "EContributionMv": 16,
+        "HOnZ2ContributionMv": -6,
+        "beforeHActive": false,
+        "afterHActive": true,
+        "plasticConnectionChanges": false
+      },
+      "materialType": "authored_reference_model_or_dataset",
+      "actualExperimentConducted": false,
+      "actualLearnerEvidence": false,
+      "copiedResearchMeasurements": false,
+      "taskQuota": false,
+      "license": "CC-BY-4.0"
+    },
+    {
+      "goalId": "9b966664-906b-5a5d-8008-cae18de043aa",
+      "caseId": "initial-bounded-model",
+      "taskDe": "Ein gegebenes chemisches Synapsenmodell enthält freigesetztes Serotonin, passende postsynaptische Rezeptoren und präsynaptische Serotonin-Transporter, die Serotonin aus dem Spalt zurück aufnehmen. Ein Serotonin-Wiederaufnahmehemmer blockiert im Material einen Teil dieser Transporter. Pro Testschritt werden unverändert 10 relative Serotonin-Einheiten freigesetzt; die modellhafte Rückaufnahme sinkt von 8 auf 3 Einheiten, andere Entfernung beträgt unverändert 1 Einheit. Vergleiche den im Spalt verbleibenden Anteil eines einzelnen Testschritts und erkläre den Wirkmechanismus. Das beigefügte Depressionsmodell nennt zugleich biologische, psychische und soziale Einflussfaktoren sowie unterschiedliche Verläufe. Ordne die synaptische Erklärung darin ein: Welche vollständige Ursache, Diagnose oder Behandlung folgt aus der Rechnung nicht?",
+      "taskEn": "A supplied chemical-synapse model contains released serotonin, matching postsynaptic receptors and presynaptic serotonin transporters that take serotonin back from the cleft. A serotonin reuptake inhibitor blocks some transporters in the material. Each test step releases the same 10 relative serotonin units; model reuptake falls from 8 to 3 units while other removal stays at 1 unit. Compare the amount left in the cleft in one step and explain the mechanism. The accompanying depression model also lists biological, psychological and social influences and differing time courses. Place the synaptic explanation within it: which complete cause, diagnosis or treatment does the calculation not establish?",
+      "referenceResponseDe": "Ohne Hemmung verbleibt im Testschritt 10−8−1=1, mit Hemmung 10−3−1=6 relative Einheiten. Im gegebenen Modell wird vorhandenes Serotonin langsamer entfernt und ist stärker verfügbar; der Hemmer erzeugt nicht selbst Serotonin und blockiert nicht einfach den postsynaptischen Rezeptor. Der modellhafte lokale Mechanismus ist nur eine Komponente im multifaktoriellen Depressionsmodell. Die Zahlen beweisen keine alleinige Serotoninmangel-Ursache, keine Diagnose, sofortige Stimmungsbesserung oder für eine Person geeignete Therapie. Der Einzel-Testschritt ist kein langfristiges Akkumulationsgesetz.",
+      "referenceResponseEn": "Without inhibition, 10−8−1=1 unit remains per step; with inhibition, 10−3−1=6 units remain. In the supplied model existing serotonin is removed more slowly and is more available; the inhibitor does not create serotonin or simply block a postsynaptic receptor. The local mechanism is only one component in a multifactorial depression model. These values establish no sole serotonin-deficiency cause, diagnosis, immediate mood improvement or suitable individual treatment. One test step is not a long-term accumulation law.",
+      "understandingFocusDe": "SSRI-Wirkort und Verfügbarkeit konkret erklären, getrennt von multifaktorieller Erkrankung und Therapieentscheidung.",
+      "understandingFocusEn": "Explain the SSRI site and availability concretely, separately from multifactorial illness and treatment decisions.",
+      "structuredSuppliedData": {
+        "releaseUnits": 10,
+        "beforeReuptakeUnits": 8,
+        "inhibitedReuptakeUnits": 3,
+        "otherRemovalUnits": 1,
+        "singleTestStepNotLongTermAccumulation": true,
+        "depressionFactorsSupplied": [
+          "biological",
+          "psychological",
+          "social"
+        ]
+      },
+      "materialType": "authored_reference_model_or_dataset",
+      "actualExperimentConducted": false,
+      "actualLearnerEvidence": false,
+      "copiedResearchMeasurements": false,
+      "taskQuota": false,
+      "license": "CC-BY-4.0"
+    },
+    {
+      "goalId": "9b966664-906b-5a5d-8008-cae18de043aa",
+      "caseId": "fresh-contextual-transfer",
+      "taskDe": "Ein frisches Material zeigt zwei ausdrücklich vereinfachte Serotonin-Synapsenvarianten. V hat viele funktionsfähige Rückaufnahme-Transporter; nach Freisetzung fällt die modellhafte Serotonin-Verfügbarkeit rasch. W hat durch einen gegebenen Wiederaufnahmehemmer weniger funktionsfähige Transporter; bei gleicher Freisetzung und gleichen übrigen Entfernungswegen fällt die Verfügbarkeit langsamer. Postsynaptische Rezeptoren sind in beiden Varianten intakt. Erkläre den Unterschied und grenze ihn von einer Rezeptorblockade ab. Im zugehörigen multifaktoriellen Depressionsmodell haben zwei Personen die gleiche gegebene synaptische Modelländerung, aber unterschiedliche Belastungen und soziale Unterstützung. Darf man daraus gleiche Symptome oder gleichen Behandlungserfolg vorhersagen? Begründe ohne individuelle Therapieempfehlung.",
+      "taskEn": "Fresh material shows two explicitly simplified serotonin-synapse variants. V has many functional reuptake transporters; serotonin availability declines rapidly after release. W has fewer functional transporters because of a supplied reuptake inhibitor; with equal release and other removal pathways, availability declines more slowly. Postsynaptic receptors are intact in both. Explain the difference and distinguish it from receptor blockade. In the associated multifactorial depression model, two people have the same supplied synaptic model change but different stresses and social support. Does this allow identical symptoms or treatment success to be predicted? Justify without individual treatment advice.",
+      "referenceResponseDe": "W verzögert die Entfernung vorhandenen Serotonins und verlängert dessen Verfügbarkeit im gegebenen lokalen Modell. Das ist ein Eingriff am Transporter; bei Rezeptorblockade könnte verfügbarer Transmitter den blockierten Rezeptor nicht normal aktivieren. Gleiche synaptische Modelländerungen bestimmen im multifaktoriellen Modell nicht allein Symptome oder Behandlungserfolg. Die ausdrücklich verschiedenen weiteren Faktoren begrenzen die Vorhersage. Weder Rezeptorantwort noch Befinden wird durch einen Verfügbarkeitswert vollständig beschrieben.",
+      "referenceResponseEn": "W delays removal of existing serotonin and prolongs its availability in the supplied local model. This acts on the transporter; with receptor blockade, available transmitter could not normally activate the blocked receptor. The same synaptic model change does not alone determine symptoms or treatment success in a multifactorial model. The explicitly differing additional factors limit prediction. Neither receptor response nor wellbeing is fully described by an availability value.",
+      "understandingFocusDe": "Frischer Zeitverlaufsfall und Grenze von lokaler Verfügbarkeit zu multifaktorieller Erklärung.",
+      "understandingFocusEn": "Fresh time-course case and the boundary from local availability to multifactorial explanation.",
+      "structuredSuppliedData": {
+        "releaseAndOtherRemovalIdentical": true,
+        "variantW": "selective reuptake inhibition",
+        "postsynapticReceptorsIntact": true,
+        "socialStressFactorsDiffer": true
+      },
+      "materialType": "authored_reference_model_or_dataset",
+      "actualExperimentConducted": false,
+      "actualLearnerEvidence": false,
+      "copiedResearchMeasurements": false,
+      "taskQuota": false,
+      "license": "CC-BY-4.0"
+    },
+    {
+      "goalId": "8b23f8fb-555d-5720-b5f2-dd6f28a0e786",
+      "caseId": "initial-bounded-model",
+      "taskDe": "Ein gegebenes Modell einer primären mechanosensitiven Sinneszelle beschreibt: Druck öffnet mechanisch gesteuerte Kationenkanäle, Netto-Kationeneinstrom depolarisiert die Membran abgestuft zum Rezeptorpotenzial; im nachgeschalteten axonalen Triggerbereich entsteht bei ausreichender Depolarisation eine Folge gleich hoher Aktionspotenziale. In einem erstellten Referenzfall wird die Haut 2 Sekunden lang schwach gedrückt: Rezeptorpotenzial 2 relative Einheiten, AP-Frequenz 5/s für diese 2 Sekunden. Ein stärkerer Druck dauert ebenfalls 2 Sekunden: 6 Einheiten und 15/s für 2 Sekunden. Erkläre die Kette von Teilchenebene bis AP-Muster, deute die beiden Druckstärken und begründe, weshalb im gegebenen Modell nicht die Höhe eines einzelnen APs die Reizstärke codiert.",
+      "taskEn": "A supplied primary mechanosensory-cell model states that pressure opens mechanically gated cation channels; net cation influx causes graded membrane depolarization, the receptor potential. Sufficient depolarization in the downstream axonal trigger region generates a train of equal-height APs. In an authored reference case, weak pressure lasts 2 seconds: receptor potential 2 relative units, AP frequency 5/s for those 2 seconds. Stronger pressure also lasts 2 seconds: 6 units and 15/s for 2 seconds. Explain the sequence from particle level to AP pattern, interpret the two pressure intensities and explain why individual AP height does not code stimulus intensity in the supplied model.",
+      "referenceResponseDe": "Druck verändert die Kanalöffnung und den Kationenstrom; der abgestufte Spannungsanstieg ist Signaltransduktion zum Rezeptorpotenzial. Größere gegebene Depolarisation geht hier mit höherer AP-Frequenz einher. Da beide Reize gleich lange dauern und einzelne APs gleich hoch sind, unterscheidet die Frequenz die gegebenen Reizstärken. Die zwei Werte begründen keine für alle Sinneszellen lineare Kennlinie und keine vollständige Augen-/Rhodopsinphysiologie.",
+      "referenceResponseEn": "Pressure changes channel opening and cation flow; the graded voltage increase is transduction to a receptor potential. Greater supplied depolarization accompanies higher AP frequency here. Both stimuli have equal duration and individual APs equal height, so frequency distinguishes their supplied intensities. Two values establish neither a linear response for all sensory cells nor complete eye or rhodopsin physiology.",
+      "understandingFocusDe": "Teilchenprozess, abgestuftes Rezeptorpotenzial und Frequenzmuster an einem konkreten Sinnesfall koppeln.",
+      "understandingFocusEn": "Link the particle process, graded receptor potential and frequency pattern in a specific sensory case.",
+      "structuredSuppliedData": {
+        "model": "primary mechanosensory cell with downstream axonal trigger zone",
+        "weak": {
+          "durationSeconds": 2,
+          "receptorPotentialRelative": 2,
+          "frequencyPerSecond": 5
+        },
+        "strong": {
+          "durationSeconds": 2,
+          "receptorPotentialRelative": 6,
+          "frequencyPerSecond": 15
+        },
+        "APHeightSame": true,
+        "universalLinearity": false
+      },
+      "materialType": "authored_reference_model_or_dataset",
+      "actualExperimentConducted": false,
+      "actualLearnerEvidence": false,
+      "copiedResearchMeasurements": false,
+      "taskQuota": false,
+      "license": "CC-BY-4.0"
+    },
+    {
+      "goalId": "8b23f8fb-555d-5720-b5f2-dd6f28a0e786",
+      "caseId": "fresh-contextual-transfer",
+      "taskDe": "Frischer Fall desselben mechanosensorischen Modells: Zwei gleich starke Druckreize erzeugen während ihrer Einwirkung dasselbe Rezeptorpotenzial von 6 relativen Einheiten und APs mit 15/s. Reiz A dauert 1 Sekunde, Reiz B 4 Sekunden; im gegebenen nicht adaptierenden Modell endet die reizabhängige Kanalöffnung mit dem Druck und die AP-Folge unmittelbar danach. Deute Reizstärke und Reizdauer aus beiden Mustern. In einem dritten gegebenen Fall blockiert ein Stoff die mechanisch gesteuerten Kationenkanäle vollständig, während der 4-Sekunden-Druck und die übrigen Regeln unverändert bleiben. Begründe die Folgen für Rezeptorpotenzial und reizabhängige APs. Über spontane Grundaktivität macht das Modell keine Aussage.",
+      "taskEn": "Fresh case in the same mechanosensory model: two equally strong pressures produce the same receptor potential of 6 relative units and 15 APs/s during stimulation. Stimulus A lasts 1 second, B lasts 4 seconds. In this supplied non-adapting model stimulus-dependent channel opening ends with pressure, followed immediately by the end of the AP train. Interpret intensity and duration from both patterns. In a third supplied case a substance completely blocks the mechanically gated cation channels, while the 4-second pressure and other rules stay unchanged. Justify the effects on receptor potential and stimulus-dependent APs. The model does not specify spontaneous baseline activity.",
+      "referenceResponseDe": "Gleiche Frequenz stützt hier gleiche Reizstärke; die unterschiedlich lange AP-Folge unterscheidet die Reizdauer, im gegebenen Modell 1 beziehungsweise 4 Sekunden. Die längere Folge zeigt nicht stärkeren Druck oder höhere einzelne APs. Kanalblockade verhindert den reizabhängigen Kationenstrom, den zugehörigen Rezeptorpotenzialanstieg und damit diese reizabhängigen APs. Der Druck umgeht die blockierte Transduktion nicht. Dies ist eine ausdrücklich nicht adaptierende Modellannahme, keine universelle Regel über alle Rezeptoren; spontane Grundaktivität ist nicht festgelegt.",
+      "referenceResponseEn": "Equal frequency supports equal supplied intensity here; different AP-train lengths distinguish duration, 1 versus 4 seconds in this model. A longer train does not imply stronger pressure or taller APs. Channel blockade prevents stimulus-dependent cation influx, the associated receptor-potential rise and those stimulus-dependent APs. Pressure cannot bypass blocked transduction. Non-adaptation is an explicit model assumption, not a universal receptor rule; spontaneous baseline activity is unspecified.",
+      "understandingFocusDe": "Reizdauer bei gleicher Reizstärke und eine blockierte Teilchenstufe im frischen Sinnesfall deuten.",
+      "understandingFocusEn": "Interpret duration at equal intensity and a blocked particle-level step in a fresh sensory case.",
+      "structuredSuppliedData": {
+        "sameFrequencyPerSecond": 15,
+        "sameReceptorPotentialRelative": 6,
+        "durationASeconds": 1,
+        "durationBSeconds": 4,
+        "noAdaptationExplicitAssumption": true,
+        "thirdCaseMechanosensitiveChannelsBlocked": true,
+        "baselineActivityUnknown": true
+      },
+      "materialType": "authored_reference_model_or_dataset",
+      "actualExperimentConducted": false,
+      "actualLearnerEvidence": false,
+      "copiedResearchMeasurements": false,
+      "taskQuota": false,
+      "license": "CC-BY-4.0"
+    }
+  ],
+  "changedPositiveProfileGoalIds": [
+    "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+    "a46cafde-7359-5249-8754-19aaa3174ba4",
+    "c9a06264-cce2-54dd-9604-46dd5949f02e",
+    "4f631f78-e13a-58e5-9092-f4db0b8d377a",
+    "97b24279-def0-5ce6-8726-a1cac9cd38ad",
+    "9b966664-906b-5a5d-8008-cae18de043aa",
+    "f6280154-d57c-599c-94bf-73313005a6df",
+    "8b23f8fb-555d-5720-b5f2-dd6f28a0e786"
+  ],
+  "exact13PriorInnerProfiles": [
+    "ce19b80f-d392-5851-ac92-750c85adfb3e",
+    "78748ef2-93fb-5ec3-8c1e-90e42b9ea863",
+    "19758e09-1bc4-5ee4-bf52-89b3bc28e947",
+    "e1117126-4e78-5a37-a645-2debc167219b",
+    "347110a1-1d2e-5195-8acc-64e7e3893ce5",
+    "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+    "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+    "2381d2bb-176c-5903-8c6e-82f4bd5023a4",
+    "1b38144f-cdbd-5dfe-a792-94669bdc31d8",
+    "e3fb5f1d-e277-5e28-8883-45821b972607",
+    "04d770b3-ba5e-5438-88ca-110cbaeba62c",
+    "080b10c7-f308-57ff-b067-3bd189e37fea",
+    "c05e217f-33fc-5a11-ba75-1397fad3ae0a"
+  ],
+  "exact26PriorWholeCaseBriefs": true,
+  "firstStageThreeWholeProfilesAndSixCaseBodiesExact": true,
+  "historicalFindingsRemainImmutable": true,
+  "newIndependentScientificAcceptance": false
+}

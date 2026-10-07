@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-neuro-current-twenty-20261007-author-v3",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-twenty-one-current-continuation-author-v3/stage-02-current-twenty-one-native/native-d-twenty.batch.config.json",
+  "configDigest": "sha256:8ac23885d5bc3615b769e838234b9809f7ff6fc0cb99eece20c5b8f27e76531c",
+  "goalIds": [
+    "ce19b80f-d392-5851-ac92-750c85adfb3e",
+    "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+    "a46cafde-7359-5249-8754-19aaa3174ba4",
+    "78748ef2-93fb-5ec3-8c1e-90e42b9ea863",
+    "19758e09-1bc4-5ee4-bf52-89b3bc28e947",
+    "e1117126-4e78-5a37-a645-2debc167219b",
+    "347110a1-1d2e-5195-8acc-64e7e3893ce5",
+    "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+    "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+    "2381d2bb-176c-5903-8c6e-82f4bd5023a4",
+    "c9a06264-cce2-54dd-9604-46dd5949f02e",
+    "4f631f78-e13a-58e5-9092-f4db0b8d377a",
+    "97b24279-def0-5ce6-8726-a1cac9cd38ad",
+    "9b966664-906b-5a5d-8008-cae18de043aa",
+    "f6280154-d57c-599c-94bf-73313005a6df",
+    "8b23f8fb-555d-5720-b5f2-dd6f28a0e786",
+    "1b38144f-cdbd-5dfe-a792-94669bdc31d8",
+    "e3fb5f1d-e277-5e28-8883-45821b972607",
+    "04d770b3-ba5e-5438-88ca-110cbaeba62c",
+    "080b10c7-f308-57ff-b067-3bd189e37fea"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 390,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-twenty-one-current-continuation-author-v3/stage-02-current-twenty-one-native/full-candidate390.book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-twenty-one-current-continuation-author-v3/stage-02-current-twenty-one-native/current472-neuro21.complete-author-candidate.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:db2956f4cae39db3307790c419416c7dd6ff450736e926329af45915a80e00a5"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:86c04ed9b1d74337324712db0cc696e5c91b8356070fa8615dba3bf90ea0537d",
+    "reviewInputFingerprint": "sha256:d9246aeb7558ab067ab55c7d61211a3e96ed89a45ab10d01a8f25b122de99874",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-neuro-current-twenty-20261007-author-v3-a",
+        "campaignDigest": "sha256:11fa2713cf83e85ecf8cc6149d497337708d49c6725e37afd3834e0843bf9c01",
+        "roundId": "biologie-neuro-current-twenty-20261007-author-v3-first-pass-a",
+        "independenceGroupId": "biologie-neuro-current-twenty-20261007-author-v3-independent-a",
+        "batchId": "biologie-neuro-current-twenty-20261007-author-v3-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:2a8c77fd3416b951ccfbb36baae7b71c7151967c52b809dfb5880116dfa4093c"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-neuro-current-twenty-20261007-author-v3-b",
+        "campaignDigest": "sha256:04038640374b3927842df6dace43626be9f6a7ffbf715606b8b964df274745fc",
+        "roundId": "biologie-neuro-current-twenty-20261007-author-v3-first-pass-b",
+        "independenceGroupId": "biologie-neuro-current-twenty-20261007-author-v3-independent-b",
+        "batchId": "biologie-neuro-current-twenty-20261007-author-v3-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:48d4875cfac5359a73b2a4204982da7374f1353ba62d30cc3491e54d96e8d766"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

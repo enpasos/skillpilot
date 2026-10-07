@@ -1,0 +1,11 @@
+# Chemie: drei belegte fachliche Bildbefunde
+
+Review date: 2026-10-07
+
+Die Originale wurden fachlich am tatsächlichen Bild beanstandet und mit exaktem Hash archiviert. Frühere positive Maschinenreviews bleiben erhaltene Historie. Die aktive Bildanzeige ist zurückgezogen. `deferred_quality_review` bleibt offene Bildarbeit und zählt nicht als strenger M7-Abschluss. Menschliche Entscheidungen bleiben getrennt und unverändert.
+
+| Goal ID | Lernziel | Decision | Withdrawn asset SHA-256 | Archived original | Konkreter Befund |
+| --- | --- | --- | --- | --- | --- |
+| `0bf26276-2780-506c-ac34-35dd44a29409` | pH-Werte in Alltag, Technik und Biologie erörtern | `deferred_quality_review` | `sha256:c1d27559399a477ccd768241cc9123e7dd1dc760a4bd4b1c280a3297bc5bb774` | `chemie-three-current-evidenced-quality-holds-20261007-v1/assets/0bf26276-2780-506c-ac34-35dd44a29409/0bf26276-2780-506c-ac34-35dd44a29409.jpg` | The lemon-juice caption says pH 2, while its red arrow points to pH 3 on the drawn scale. Root confirmed the discrepancy on the actual original raster. |
+| `a44af1fa-5988-5b7d-b206-691c6bbf7dd4` | Ionen nachweisen und Salzzusammensetzung bestimmen | `deferred_quality_review` | `sha256:db04ea79750f4ff22b2ef1600315f0de75ec0031516f1aa3a7bf985fb7705c17` | `chemie-three-current-evidenced-quality-holds-20261007-v1/assets/a44af1fa-5988-5b7d-b206-691c6bbf7dd4/a44af1fa-5988-5b7d-b206-691c6bbf7dd4.jpg` | The lower aqueous beakers label Na+ as yellow and K+ as violet, transferring the flame-test colours to the ions in solution. The flame colours themselves are correct; those aqueous colour assignments are misleading. Root confirmed the actual original. |
+| `9751b6d8-cde3-527b-b37c-babb6cee79d2` | Beeinflussung von Säure-Base-Reaktionen erklären | `deferred_quality_review` | `sha256:908a415b5a67c11bc5293a6b0d2898128a9558790e00691e70dee97a65bbc307` | `chemie-three-current-evidenced-quality-holds-20261007-v1/assets/9751b6d8-cde3-527b-b37c-babb6cee79d2/9751b6d8-cde3-527b-b37c-babb6cee79d2.jpg` | For HA+B reversible A-+HB+, the diagram universally claims that adding OH- gives more A- and HB+. OH- can consume protons/deprotonate HB+; a general increase in HB+ does not follow. The correctly drawn HA+OH- reaction below does not resolve this contradictory equilibrium claim. Root confirmed the actual original. |

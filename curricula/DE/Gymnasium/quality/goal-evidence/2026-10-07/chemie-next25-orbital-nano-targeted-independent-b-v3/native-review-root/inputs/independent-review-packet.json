@@ -1,0 +1,219 @@
+{
+  "documentType": "Independent B targeted final orbital actual D/P input packet",
+  "wholeFinalGoal": {
+    "id": "0acc8cd2-be6d-567e-a023-1d9e90475510",
+    "shortKey": "canonical_chemistry_upper_orbitals_wavefunction_density",
+    "title": "Orbitale als Wahrscheinlichkeitsräume beschreiben",
+    "titleEn": "Describe orbitals as probability regions",
+    "description": "Die lernende Person kann Orbitale als Ein-Elektronen-Wellenfunktionen beschreiben und das Betragsquadrat der Wellenfunktion als Wahrscheinlichkeitsdichte für Aufenthaltsbereiche deuten.",
+    "descriptionEn": "The learner can describe orbitals as one-electron wave functions and interpret the squared magnitude of the wave function as a probability density for regions of electron presence.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical",
+      "SekII"
+    ],
+    "contains": [],
+    "requires": [
+      "73547696-e225-5f14-839b-c77f54c32bae",
+      "3bc48951-025c-5144-99b1-924db611a5f9"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-chemistry",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK2_MODELLIEREN",
+        "PK4_KOMMUNIZIEREN"
+      ],
+      "guidingIdeas": [
+        "BC_AUFBAU"
+      ],
+      "phase": "GLOBAL",
+      "area": "Chemische Bindung",
+      "topicCode": "CANONICAL.CHEMISTRY.SEKII.ORBITALS_WAVEFUNCTION_DENSITY"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BY",
+        "DE-HE"
+      ]
+    },
+    "extendedData": {
+      "provenance": {
+        "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+        "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+        "sourceGoalId": "936ae5a8-61f3-59cc-8f8b-348b7a998d6c"
+      }
+    },
+    "type": "atomic",
+    "examples": [],
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "0acc8cd2-be6d-567e-a023-1d9e90475510",
+        "title": "Visualisierung: Orbitale als Wahrscheinlichkeitsräume beschreiben",
+        "url": "/assets/goal-visualizations/chemie/0acc8cd2-be6d-567e-a023-1d9e90475510/0acc8cd2-be6d-567e-a023-1d9e90475510.jpg",
+        "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+        "description": "Visualisierung zum Lernziel: Orbitale als Wahrscheinlichkeitsräume beschreiben.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Orbitale als Wahrscheinlichkeitsräume beschreiben\". Die lernende Person kann Orbitale als Ein-Elektronen-Wellenfunktionen beschreiben und das Betragsquadrat der Wellenfunktion als Wahrscheinlichkeitsdichte für Aufenthaltsbereiche deuten.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "accepted"
+      }
+    ]
+  },
+  "wholeProfile": {
+    "archetype": "representation",
+    "expectations": [
+      {
+        "id": "content-specific-understanding",
+        "essentialUnderstandingDe": "EinOrbital ist eine räumlicheWellenfunktion einesgeeignetenquantenmechanischenModells;|ψ|² isteine nichtnegativeWahrscheinlichkeitsdichte. Aufenthaltswahrscheinlichkeit für einenBereich entsteht ausDichte undBereichsgröße,keine klassischeBahnfläche.",
+        "essentialUnderstandingEn": "An orbital is a spatial wave function of a suitable quantum model;|ψ|² is nonnegative probability density.Probability for a region depends on density and region size,not a classical orbit surface.",
+        "observablePerformanceDe": "DasOrbital liefert eineWellenfunktion,keineBahn. Betragsquadrat nichtnegativ,Summe dergegebenenBereichswahrscheinlichkeiten1. Bei gleichemVolumenDichterangA>B>C>D;C/D bleiben positiveWahrscheinlichkeiten trotz negativemψ. Ladungszeichen werdennicht ausPhasenfarben abgeleitet.",
+        "observablePerformanceEn": "The orbital supplies a wave function,not a trajectory.Modulus squared is nonnegative;the supplied region probabilities sum to1.Equal volumes give density orderA>B>C>D.C/D retain positive probabilities despite negativeψ.Charge signs are not inferred from phase colours."
+      },
+      {
+        "id": "fresh-transfer-and-model-boundary",
+        "essentialUnderstandingDe": "GezeichneteOrbitalwolken sindModellkonturen bzw.Dichtekodierungen;außerhalb einergewähltenKontur istElektronenwahrscheinlichkeit nichtautomatisch null.",
+        "essentialUnderstandingEn": "Orbital clouds are model contours or density encodings;electron probability is not automatically zero outside a chosen contour.",
+        "observablePerformanceDe": "PE=0,2×1=0,2;PF=0,1×3=0,3. E istdichter,F insgesamt wahrscheinlicher;0,2+0,3+0,5=1. Knoten|ψ|²=0. DiePerson verbindetDichte mitVolumen undunterscheidet eineKonturfläche vomfestenElektronenrand.",
+        "observablePerformanceEn": "PE=0.2×1=0.2;PF=0.1×3=0.3.E has higher density,butF higher total probability;0.2+0.3+0.5=1.A node has|ψ|²=0.The learner combines density and volume and distinguishes a contour from a fixed electron boundary."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "content-specific-understanding",
+        "fresh-transfer-and-model-boundary"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "specific-material-variation",
+        "textDe": "Gleichgroße gegenüberunterschiedlichgroßenBereichen;ψ-Vorzeichen undDichte.",
+        "textEn": "Equal versus unequal region volumes;wave-function sign and density."
+      },
+      {
+        "id": "specific-model-limit",
+        "textDe": "GezeichneteOrbitalwolken sindModellkonturen bzw.Dichtekodierungen;außerhalb einergewähltenKontur istElektronenwahrscheinlichkeit nichtautomatisch null.",
+        "textEn": "Orbital clouds are model contours or density encodings;electron probability is not automatically zero outside a chosen contour."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "chem-next25-0acc8cd2-case-1",
+        "taskDemandDe": "EinmodelliertesOrbital besitztviergleichgroße kleineBereicheA–D. Gelieferte normierteBereichswahrscheinlichkeiten:A0,4;B0,3;C0,2;D0,1. Phasenzeichenψ inA/B positiv,inC/D negativ. Sie sindVorzeichen derWellenfunktion,keine elektrischenLadungen. BeschreibeOrbital/|ψ|²,ordne dieDichten dergleichgroßenBereiche undbeurteile„negativePhase bedeutet negativeWahrscheinlichkeit“.",
+        "taskDemandEn": "A model orbital has four equally sized small regionsA–D.Supplied normalised region probabilities:A0.4;B0.3;C0.2;D0.1.Theψ signs are positive inA/B,negative inC/D.They are wave-function signs,not electrical charges. Describe orbital/|ψ|²,rank the densities of equal-sized regions and assess“negative phase means negative probability”.",
+        "expectedPerformanceDe": "DasOrbital liefert eineWellenfunktion,keineBahn. Betragsquadrat nichtnegativ,Summe dergegebenenBereichswahrscheinlichkeiten1. Bei gleichemVolumenDichterangA>B>C>D;C/D bleiben positiveWahrscheinlichkeiten trotz negativemψ. Ladungszeichen werdennicht ausPhasenfarben abgeleitet.",
+        "expectedPerformanceEn": "The orbital supplies a wave function,not a trajectory.Modulus squared is nonnegative;the supplied region probabilities sum to1.Equal volumes give density orderA>B>C>D.C/D retain positive probabilities despite negativeψ.Charge signs are not inferred from phase colours.",
+        "understandingFocusDe": "An einer exaktmathematischenStelle istDichte nicht gleich derWahrscheinlichkeit einesendlichenRaumbereichs.",
+        "understandingFocusEn": "Density at an exact mathematical point is not the probability of a finite spatial region."
+      },
+      {
+        "id": "chem-next25-0acc8cd2-case-2",
+        "taskDemandDe": "FrischerStückkonstanten-Modellfall:BereichE Volumen1mitDichte0,2;BereichF Volumen3mitDichte0,1 in gemeinsamen normiertenModelleinheiten. DieübrigenBereiche tragen zusammen0,5. EinKnoten besitztψ=0. VergleicheDichteundBereichswahrscheinlichkeit,prüfeNormierung unddeute denKnoten. Korrigiere„dunkelsteStelle muss derwahrscheinlichsteGroßbereich sein“.",
+        "taskDemandEn": "Fresh piecewise-constant model:regionE volume1 and density0.2;regionF volume3 and density0.1 in shared normalised model units.The other regions contribute0.5.A node hasψ=0. Compare density and region probability,check normalisation and interpret the node.Correct“the darkest point must be the most probable large region”.",
+        "expectedPerformanceDe": "PE=0,2×1=0,2;PF=0,1×3=0,3. E istdichter,F insgesamt wahrscheinlicher;0,2+0,3+0,5=1. Knoten|ψ|²=0. DiePerson verbindetDichte mitVolumen undunterscheidet eineKonturfläche vomfestenElektronenrand.",
+        "expectedPerformanceEn": "PE=0.2×1=0.2;PF=0.1×3=0.3.E has higher density,butF higher total probability;0.2+0.3+0.5=1.A node has|ψ|²=0.The learner combines density and volume and distinguishes a contour from a fixed electron boundary.",
+        "understandingFocusDe": "GezeichneteOrbitalwolken sindModellkonturen bzw.Dichtekodierungen;außerhalb einergewähltenKontur istElektronenwahrscheinlichkeit nichtautomatisch null.",
+        "understandingFocusEn": "Orbital clouds are model contours or density encodings;electron probability is not automatically zero outside a chosen contour."
+      }
+    ]
+  },
+  "wholeDEENMaterials": [
+    {
+      "caseId": "chem-next25-0acc8cd2-case-1",
+      "goalId": "0acc8cd2-be6d-567e-a023-1d9e90475510",
+      "materialKind": "explicit_authored_school_model_case",
+      "material": {
+        "de": "EinmodelliertesOrbital besitztviergleichgroße kleineBereicheA–D. Gelieferte normierteBereichswahrscheinlichkeiten:A0,4;B0,3;C0,2;D0,1. Phasenzeichenψ inA/B positiv,inC/D negativ. Sie sindVorzeichen derWellenfunktion,keine elektrischenLadungen.",
+        "en": "A model orbital has four equally sized small regionsA–D.Supplied normalised region probabilities:A0.4;B0.3;C0.2;D0.1.Theψ signs are positive inA/B,negative inC/D.They are wave-function signs,not electrical charges."
+      },
+      "taskDemand": {
+        "de": "BeschreibeOrbital/|ψ|²,ordne dieDichten dergleichgroßenBereiche undbeurteile„negativePhase bedeutet negativeWahrscheinlichkeit“.",
+        "en": "Describe orbital/|ψ|²,rank the densities of equal-sized regions and assess“negative phase means negative probability”."
+      },
+      "expectedPerformance": {
+        "de": "DasOrbital liefert eineWellenfunktion,keineBahn. Betragsquadrat nichtnegativ,Summe dergegebenenBereichswahrscheinlichkeiten1. Bei gleichemVolumenDichterangA>B>C>D;C/D bleiben positiveWahrscheinlichkeiten trotz negativemψ. Ladungszeichen werdennicht ausPhasenfarben abgeleitet.",
+        "en": "The orbital supplies a wave function,not a trajectory.Modulus squared is nonnegative;the supplied region probabilities sum to1.Equal volumes give density orderA>B>C>D.C/D retain positive probabilities despite negativeψ.Charge signs are not inferred from phase colours."
+      },
+      "specificBoundaryOrCounterexample": {
+        "de": "An einer exaktmathematischenStelle istDichte nicht gleich derWahrscheinlichkeit einesendlichenRaumbereichs.",
+        "en": "Density at an exact mathematical point is not the probability of a finite spatial region."
+      },
+      "empiricalLearnerEvidence": false,
+      "independentlyScientificallyReviewed": false,
+      "sourceRequirementReference": "actual-current25-primary-scope-and-boundaries.author.json#0acc8cd2-be6d-567e-a023-1d9e90475510"
+    },
+    {
+      "caseId": "chem-next25-0acc8cd2-case-2",
+      "goalId": "0acc8cd2-be6d-567e-a023-1d9e90475510",
+      "materialKind": "explicit_authored_school_model_case",
+      "material": {
+        "de": "FrischerStückkonstanten-Modellfall:BereichE Volumen1mitDichte0,2;BereichF Volumen3mitDichte0,1 in gemeinsamen normiertenModelleinheiten. DieübrigenBereiche tragen zusammen0,5. EinKnoten besitztψ=0.",
+        "en": "Fresh piecewise-constant model:regionE volume1 and density0.2;regionF volume3 and density0.1 in shared normalised model units.The other regions contribute0.5.A node hasψ=0."
+      },
+      "taskDemand": {
+        "de": "VergleicheDichteundBereichswahrscheinlichkeit,prüfeNormierung unddeute denKnoten. Korrigiere„dunkelsteStelle muss derwahrscheinlichsteGroßbereich sein“.",
+        "en": "Compare density and region probability,check normalisation and interpret the node.Correct“the darkest point must be the most probable large region”."
+      },
+      "expectedPerformance": {
+        "de": "PE=0,2×1=0,2;PF=0,1×3=0,3. E istdichter,F insgesamt wahrscheinlicher;0,2+0,3+0,5=1. Knoten|ψ|²=0. DiePerson verbindetDichte mitVolumen undunterscheidet eineKonturfläche vomfestenElektronenrand.",
+        "en": "PE=0.2×1=0.2;PF=0.1×3=0.3.E has higher density,butF higher total probability;0.2+0.3+0.5=1.A node has|ψ|²=0.The learner combines density and volume and distinguishes a contour from a fixed electron boundary."
+      },
+      "specificBoundaryOrCounterexample": {
+        "de": "GezeichneteOrbitalwolken sindModellkonturen bzw.Dichtekodierungen;außerhalb einergewähltenKontur istElektronenwahrscheinlichkeit nichtautomatisch null.",
+        "en": "Orbital clouds are model contours or density encodings;electron probability is not automatically zero outside a chosen contour."
+      },
+      "empiricalLearnerEvidence": false,
+      "independentlyScientificallyReviewed": false,
+      "sourceRequirementReference": "actual-current25-primary-scope-and-boundaries.author.json#0acc8cd2-be6d-567e-a023-1d9e90475510"
+    }
+  ],
+  "exactFinalAuthorFreeze": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next25-orbital-nano-targeted-author-v3/targeted-orbital-nano-author-v3.final.freeze.json",
+    "sha256": "sha256:9b3757ba2b8e93e713684f27c791de5c4a0af503ee998ca70b5234c40d5169af",
+    "bytes": 30928
+  },
+  "nativeOneGoalPDF": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next25-orbital-nano-targeted-author-v3/native-d-one-orbital-final-current/bundle/book.pdf",
+    "sha256": "sha256:ee570935f510c7cfc08ce3db94f13940154ead530739f7a7b72d43989074a571",
+    "bytes": 157337
+  },
+  "nativeOneGoalHTML": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next25-orbital-nano-targeted-author-v3/native-d-one-orbital-final-current/bundle/book.html",
+    "sha256": "sha256:5797e3ebae420d55bd49e1b7de0377ebe7c17337547301554b1a7974362310c4",
+    "bytes": 21047
+  },
+  "nativeFull378": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next25-orbital-nano-targeted-author-v3/full378.targeted-final-complete-alttext.book-model.json",
+    "sha256": "sha256:b361328afa580dcf4f3f504ac3358dd72fe022112b3f1c46c88b119d5e7ccecd",
+    "bytes": 1505163
+  },
+  "originalJPG": {
+    "path": "/tmp/skillpilot-chemie-next25-native-v2-qftjmruh/app/public/assets/goal-visualizations/chemie/0acc8cd2-be6d-567e-a023-1d9e90475510/0acc8cd2-be6d-567e-a023-1d9e90475510.jpg",
+    "sha256": "sha256:1d91ec93d9d84864137beb50d13b1690c51a6ea8724c51e06716e3378a8a3cad",
+    "bytes": 1911493
+  },
+  "scientificVerdict": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next25-orbital-nano-targeted-independent-b-v3/independent-b.orbital-positive-profile-and-two-cases.verdict.json",
+    "sha256": "sha256:6c5dd84e836d29b711a6aab9305d38bae5094d17cf5ab676b6af75a18bec3bd5",
+    "bytes": 27309
+  },
+  "nativeDRecord": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next25-orbital-nano-targeted-independent-b-v3/native-d-one/description-independent-b.records.jsonl",
+    "sha256": "sha256:c69c40082218d85dfef33d0e517ef0f61b1b7d9b36a49b2f871f2d7275fdb3c8",
+    "bytes": 3553
+  },
+  "sourcePrimaryText": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next-coherent-current-gap-native-author-v1/actual-primary-inputs/BY-C12-GA.official-page.text.txt",
+    "sha256": "sha256:fb040b08164b911f748442fd504d224cb0e2c5acd9e767b4afc683bc3f34c4d5",
+    "bytes": 31796
+  }
+}

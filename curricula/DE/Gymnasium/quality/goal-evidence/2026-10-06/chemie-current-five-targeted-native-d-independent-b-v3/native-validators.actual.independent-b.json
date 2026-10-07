@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "role": "Existing native batch and campaign-result validators; technical validity permits BLOCK records",
+  "checks": [
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/validateGoalDescriptionReviewCampaign.ts --bundle curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-final-native-review-inputs-author-v3/native-d-five/round-b/review-bundle-manifest.json --input curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-final-native-review-inputs-author-v3/native-d-five/round-b/description-review-input.json --campaign curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-final-native-review-inputs-author-v3/native-d-five/round-b/description-review-campaign.json --run curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-five-targeted-native-d-independent-b-v3/results/chemie-current-amv-dp-gap-five-targeted-20261006-author-v3-first-pass-b.batch-001.run.json --batch-input curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-final-native-review-inputs-author-v3/native-d-five/round-b/batches/chemie-current-amv-dp-gap-five-targeted-20261006-author-v3-first-pass-b.batch-001.input.jsonl --records curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-five-targeted-native-d-independent-b-v3/results/chemie-current-amv-dp-gap-five-targeted-20261006-author-v3-first-pass-b.batch-001.records.jsonl",
+      "chunk_id": "aa9cf7",
+      "wall_time_seconds": 0.444412446,
+      "exit_code": 0,
+      "original_token_count": 10,
+      "output": "Goal-description review batch valid: 5\n"
+    },
+    {
+      "command": "app/node_modules/.bin/tsx app/scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-final-native-review-inputs-author-v3/native-d-five/round-b/review-bundle-manifest.json --input curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-final-native-review-inputs-author-v3/native-d-five/round-b/description-review-input.json --campaign curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-final-native-review-inputs-author-v3/native-d-five/round-b/description-review-campaign.json --batches-dir curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-final-native-review-inputs-author-v3/native-d-five/round-b/batches --results-dir curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-five-targeted-native-d-independent-b-v3/results",
+      "chunk_id": "eb2d96",
+      "wall_time_seconds": 0.451256919,
+      "exit_code": 0,
+      "original_token_count": 13,
+      "output": "Goal-description review campaign results valid: 5\n"
+    }
+  ],
+  "finalAllExit0": true,
+  "scientificDecisionCounts": {
+    "KEEP": 4,
+    "BLOCK": 1
+  },
+  "initialRecordWriterFailureResolved": "The initial run-manifest artifact role was rejected by the unchanged existing schema. The writer now uses the schema's description_review_batch_input_jsonl enum; no validator or contract was altered.",
+  "qualityGateApproval": false,
+  "humanApproval": false
+}

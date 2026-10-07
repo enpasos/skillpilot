@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-neuro-080b-positive-independent-b-20261007-v4-run",
+  "bundleFingerprint": "sha256:379dd97f831840872ad0119e13c0fd3b99307ba93ccb88e2e5e59670bbc90859",
+  "bookDigest": "sha256:db2956f4cae39db3307790c419416c7dd6ff450736e926329af45915a80e00a5",
+  "provider": "OpenAI Codex",
+  "model": "GPT-6-based Codex; exact runtime version not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "independent-biology-positive-targeted080b-v4",
+  "promptFingerprint": "sha256:3d294146238e01d74ef56f475c2a4247c42b53d3c7cf5376dfa531663c8a09df",
+  "criteriaFingerprint": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8",
+  "generationParametersFingerprint": "sha256:b75f05ac9b2e9421f94bf7b4ede74bda3d573a5c657f5b3bf8ecd7ba34ab6771",
+  "independenceGroupId": "bio080b-current-targeted-p-independent-b-v4",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "080b10c7-f308-57ff-b067-3bd189e37fea"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:379dd97f831840872ad0119e13c0fd3b99307ba93ccb88e2e5e59670bbc90859"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:104aa4a632ebe65b30e22668cc8c96bc67734d3fcf50710b20c5ffc33f6bb9bd"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:06136962d87805449a37004ec2102d4bb5f99102115682c4836ca0c115df0def"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:3d294146238e01d74ef56f475c2a4247c42b53d3c7cf5376dfa531663c8a09df"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8"
+    }
+  ],
+  "startedAt": "2026-10-06T23:32:34.546693+00:00",
+  "completedAt": "2026-10-06T23:32:34.884403+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:595999db43bbf8ec57bc9509581a669abab41fd95becb107375ece56fa382972",
+  "toolchainVersion": "bio080b-targeted-whole-positive-independent-b-v4"
+}

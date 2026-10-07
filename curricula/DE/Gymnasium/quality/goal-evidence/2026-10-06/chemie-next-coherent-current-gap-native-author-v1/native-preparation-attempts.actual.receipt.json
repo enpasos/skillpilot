@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "documentType": "author-actual-native-preparation-attempts",
+  "attempts": [
+    {
+      "mode": "prepare25 --write",
+      "exitCode": 1,
+      "error": "--write is not valid for prepare",
+      "outputWritten": false
+    },
+    {
+      "mode": "prepare25",
+      "exitCode": 1,
+      "error": "data/goalIds must NOT have more than20items",
+      "actualRejectedInputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next-coherent-current-gap-native-author-v1/attempt-25.closed-contract-rejected.batch-config.txt",
+      "outputWritten": false
+    },
+    {
+      "mode": "prepare20 before native prerequisite ordering",
+      "exitCode": 1,
+      "error": "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca precedes 4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+      "actualRejectedInputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next-coherent-current-gap-native-author-v1/attempt-twenty.prerequisite-order-rejected.batch-config.txt",
+      "outputWritten": false
+    },
+    {
+      "mode": "positive native CLI --config path",
+      "exitCode": 1,
+      "error": "Unknown argument: --config",
+      "outputWritten": false
+    },
+    {
+      "mode": "positive native CLI --config=path",
+      "exitCode": 0,
+      "nativeConfigured25": 25,
+      "nativeCounts": {
+        "approved": 0,
+        "needsHumanReview": 25,
+        "rejected": 0
+      },
+      "blockingIssues": 0
+    },
+    {
+      "mode": "prepare20 after order before bounded cover-title adjustment",
+      "exitCode": 1,
+      "error": "Goal-book front-matter overflow detected; publication aborted: book-cover: 968x1123 > 794x1123",
+      "outputWritten": false,
+      "temporaryRenderDirectoryRemovedByNativeHelper": true
+    }
+  ],
+  "nativeMaxItemsContract": 20,
+  "response": "two bounded unchanged-native batches20+5; no production/schema changes"
+}

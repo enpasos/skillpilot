@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "role": "targeted author primary-reading receipt; not source clearance or independent review",
+  "actualReadAtUTC": "2026-10-06T07:26:31.122189+00:00",
+  "primarySources": [
+    {
+      "sourceId": "manufacturer-NaCl-standard",
+      "url": "https://www.hach.com/p-conductivity-standard-solution-1990-scm-nacl-100-ml/210542",
+      "kind": "primary manufacturer reference standard",
+      "actualAccess": "web open succeeded; selected product specification actually read",
+      "readLocator": "lines 632–636",
+      "readFactsParaphrased": "The named NaCl standard has 1000 mg/L and conductivity 1990 µS/cm with labelled ±20 µS/cm at 25 °C.",
+      "authorInference": "At 1 g/L the old 199-µS/cm assignment has a scale defect. The corrected own teaching series is a plausibility model, not a certified calibration. The standard label is only applicable at its reference temperature or with supported temperature information.",
+      "affectedCaseIndices": [
+        4,
+        6,
+        13,
+        17,
+        43
+      ]
+    },
+    {
+      "sourceId": "NIST-Pitzer-Peiper-Busey-1984",
+      "url": "https://srd.nist.gov/jpcrdreprint/1.555709.pdf",
+      "kind": "primary thermodynamic paper hosted by NIST",
+      "actualAccess": "web full PDF opened; selected parsed table caption/header/25-degree row actually read; not all 103 pages reviewed",
+      "readLocator": "PDF index65, Table A-11, parsed lines5774–5781",
+      "readFactsParaphrased": "Table A-11 gives standard solution enthalpy divided by RT; at 25 °C and 1 bar its value is +1.566.",
+      "authorInference": "1.566×8.314462618×298.15/1000 = +3.882046708 kJ/mol. Positive standard dissolution enthalpy supports near-ambient dilute NaCl heat uptake, not an unqualified heat-release continuation. This does not predict every concentration/temperature or an exact learner temperature drop.",
+      "affectedCaseIndices": [
+        44
+      ]
+    },
+    {
+      "sourceId": "manufacturer-phenolphthalein-solution",
+      "url": "https://www.sigmaaldrich.com/US/en/product/mm/107227",
+      "kind": "primary manufacturer product label",
+      "actualAccess": "web open succeeded; identity/form/transition specification actually read",
+      "readLocator": "title and product-name lines20–22,53–55",
+      "readFactsParaphrased": "The supplied-label example is phenolphthalein solution 1% in ethanol, transition interval pH8.2–9.8.",
+      "authorInference": "Declare the actual intended solution identity/range and small teacher-authorised drop provision. Evaluate weak-acid endpoint bias against the actual own pH curve; a label alone is not suitable-method or safety approval.",
+      "affectedCaseIndices": [
+        8
+      ]
+    },
+    {
+      "sourceId": "manufacturer-phenolphthalein-colour",
+      "url": "https://www.sigmaaldrich.com/KI/en/product/sial/105945",
+      "kind": "primary manufacturer indicator physical-property reference",
+      "actualAccess": "web open/find succeeded; visual-transition interval property actually read",
+      "readLocator": "lines162–164",
+      "readFactsParaphrased": "The phenolphthalein substance reference reports a colourless-to-red visual transition.",
+      "authorInference": "The faint initial pink/red appearance is a colour observation to record separately from pH/amount. The powder product is not proposed for learner handling; the actual kit uses the separately named prepared solution.",
+      "affectedCaseIndices": [
+        8
+      ]
+    },
+    {
+      "sourceId": "manufacturer-methyl-orange-solution",
+      "url": "https://www.sigmaaldrich.com/US/en/product/mm/101323",
+      "kind": "primary manufacturer indicator product label",
+      "actualAccess": "web open succeeded; title and product-name specification actually read",
+      "readLocator": "product title/identity specification",
+      "readFactsParaphrased": "Methyl orange solution 0.1% is labelled pH3.1–4.4 with red-to-yellow-orange change.",
+      "authorInference": "This supplies a real comparison menu; its acidic transition is not the alkaline equivalence region of the specified weak-acid titration. Own choice and endpoint justification remain required.",
+      "affectedCaseIndices": [
+        8
+      ]
+    },
+    {
+      "sourceId": "manufacturer-pH-calibration-procedure",
+      "url": "https://documents.thermofisher.com/TFS-Assets/CMD/Product-Bulletins/TN-ph-calibration-procedure-for-optimal-measurement-precision-T-PHCAL-EN.pdf",
+      "kind": "primary manufacturer technical note",
+      "actualAccess": "web PDF opened; selected preparation/calibration/verification sections actually read",
+      "readLocator": "PDF indices0–1, parsed lines9–28,44–96",
+      "readFactsParaphrased": "The procedure supplies pH4.01,7.00,10.01 buffers, thermometer/ATC, separate vessels, equalised temperature, rinse separation, calibration and recorded verification readings. Temperature-specific buffer values are required away from 25 °C.",
+      "authorInference": "Supply these inputs and require an actual future calibration/check log; nominal buffers are not sample readings or evidence that calibration already happened. No current student experiment is claimed.",
+      "affectedCaseIndices": [
+        8
+      ]
+    },
+    {
+      "sourceId": "manufacturer-volumetric-instrument-labels",
+      "url": "https://shop.brand.de/media/import/1/27/32406/42485/42649/49101/USP_Volumetric_instruments_EN.pdf",
+      "kind": "primary manufacturer USP volumetric-instrument specification",
+      "actualAccess": "web PDF opened; parsed capacity/error-limit rows and category labels actually read",
+      "readLocator": "PDF index3, parsed lines158–201",
+      "readFactsParaphrased": "The USP bulb-pipette table gives 10mL with ±0.02mL error limit; the class-A USP flask table includes20mL with ±0.02mL error limit.",
+      "authorInference": "The author future kit names this particular USP specification or documented equivalent, not every generic class-A flask. A10mL aliquot diluted to20mL supplies factor2. Error limits are not automatically statistical uncertainty; actual labels/reference temperature/delivery instructions and own recorded use still matter.",
+      "affectedCaseIndices": [
+        9
+      ]
+    }
+  ],
+  "actualUnavailableAttempt": {
+    "url": "https://www.mt.com/us/en/home/products/Laboratory_Analytics_Browse/pH-meter/pH-buffer-standard-and-electrolyte/pH-buffer/Tech-Buffer-pH-7-00-10L.html",
+    "status": "web open internal error; not counted as read; accessible Thermo Fisher technical note used"
+  },
+  "unmodifiedReviewerFindingInputs": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-fifty-two-materials-v8-independent-a-v1/precise-unresolved-findings-and-downstream-gates.json",
+      "sha256": "6a2029412097476899563d5d348c12785a44d6fa1f53beb2fb4c8c1a2c326bec",
+      "bytes": 19689
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-b008-fifty-two-materials-v8-independent-b-v1/literal-material-scientific-findings.actual.json",
+      "sha256": "83aec1e002f1b67dc9537a77bf057b5b5b4abeb00d5da0f4a523877329afb91b",
+      "bytes": 13751
+    }
+  ],
+  "R2Origin": "new SkillPilot-authored fictional documentation note with a distinct W3 sample/time/observer; no real measurement claimed",
+  "ownKitSpecifications": "author proposed future supplied equipment capacities/resolutions/control conditions; not measurements of an existing kit",
+  "all1646OriginalSourceObligationsRetainActualStatus": true,
+  "nationalSourceApproval": false,
+  "strictCompletionsAdded": 0,
+  "restoredActiveBindings": 0,
+  "activeWrites": 0,
+  "nativeApproval": false,
+  "independentApproval": false,
+  "humanApproval": false,
+  "humanTrial": false
+}

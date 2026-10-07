@@ -1,0 +1,378 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-06T23:01:33.727618+00:00",
+  "decision": "P_KEEP",
+  "goalId": "0acc8cd2-be6d-567e-a023-1d9e90475510",
+  "wholeFinalGoal": {
+    "id": "0acc8cd2-be6d-567e-a023-1d9e90475510",
+    "shortKey": "canonical_chemistry_upper_orbitals_wavefunction_density",
+    "title": "Orbitale als Wahrscheinlichkeitsräume beschreiben",
+    "titleEn": "Describe orbitals as probability regions",
+    "description": "Die lernende Person kann Orbitale als Ein-Elektronen-Wellenfunktionen beschreiben und das Betragsquadrat der Wellenfunktion als Wahrscheinlichkeitsdichte für Aufenthaltsbereiche deuten.",
+    "descriptionEn": "The learner can describe orbitals as one-electron wave functions and interpret the squared magnitude of the wave function as a probability density for regions of electron presence.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical",
+      "SekII"
+    ],
+    "contains": [],
+    "requires": [
+      "73547696-e225-5f14-839b-c77f54c32bae",
+      "3bc48951-025c-5144-99b1-924db611a5f9"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-chemistry",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK2_MODELLIEREN",
+        "PK4_KOMMUNIZIEREN"
+      ],
+      "guidingIdeas": [
+        "BC_AUFBAU"
+      ],
+      "phase": "GLOBAL",
+      "area": "Chemische Bindung",
+      "topicCode": "CANONICAL.CHEMISTRY.SEKII.ORBITALS_WAVEFUNCTION_DENSITY"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BY",
+        "DE-HE"
+      ]
+    },
+    "extendedData": {
+      "provenance": {
+        "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+        "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+        "sourceGoalId": "936ae5a8-61f3-59cc-8f8b-348b7a998d6c"
+      }
+    },
+    "type": "atomic",
+    "examples": [],
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "0acc8cd2-be6d-567e-a023-1d9e90475510",
+        "title": "Visualisierung: Orbitale als Wahrscheinlichkeitsräume beschreiben",
+        "url": "/assets/goal-visualizations/chemie/0acc8cd2-be6d-567e-a023-1d9e90475510/0acc8cd2-be6d-567e-a023-1d9e90475510.jpg",
+        "provider": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+        "description": "Visualisierung zum Lernziel: Orbitale als Wahrscheinlichkeitsräume beschreiben.",
+        "altText": "Didaktische Visualisierung zum Lernziel \"Orbitale als Wahrscheinlichkeitsräume beschreiben\". Die lernende Person kann Orbitale als Ein-Elektronen-Wellenfunktionen beschreiben und das Betragsquadrat der Wellenfunktion als Wahrscheinlichkeitsdichte für Aufenthaltsbereiche deuten.",
+        "lang": "de",
+        "license": "AI-generated, SkillPilot-curated",
+        "reviewStatus": "accepted"
+      }
+    ]
+  },
+  "wholeExactProfile": {
+    "archetype": "representation",
+    "expectations": [
+      {
+        "id": "content-specific-understanding",
+        "essentialUnderstandingDe": "EinOrbital ist eine räumlicheWellenfunktion einesgeeignetenquantenmechanischenModells;|ψ|² isteine nichtnegativeWahrscheinlichkeitsdichte. Aufenthaltswahrscheinlichkeit für einenBereich entsteht ausDichte undBereichsgröße,keine klassischeBahnfläche.",
+        "essentialUnderstandingEn": "An orbital is a spatial wave function of a suitable quantum model;|ψ|² is nonnegative probability density.Probability for a region depends on density and region size,not a classical orbit surface.",
+        "observablePerformanceDe": "DasOrbital liefert eineWellenfunktion,keineBahn. Betragsquadrat nichtnegativ,Summe dergegebenenBereichswahrscheinlichkeiten1. Bei gleichemVolumenDichterangA>B>C>D;C/D bleiben positiveWahrscheinlichkeiten trotz negativemψ. Ladungszeichen werdennicht ausPhasenfarben abgeleitet.",
+        "observablePerformanceEn": "The orbital supplies a wave function,not a trajectory.Modulus squared is nonnegative;the supplied region probabilities sum to1.Equal volumes give density orderA>B>C>D.C/D retain positive probabilities despite negativeψ.Charge signs are not inferred from phase colours."
+      },
+      {
+        "id": "fresh-transfer-and-model-boundary",
+        "essentialUnderstandingDe": "GezeichneteOrbitalwolken sindModellkonturen bzw.Dichtekodierungen;außerhalb einergewähltenKontur istElektronenwahrscheinlichkeit nichtautomatisch null.",
+        "essentialUnderstandingEn": "Orbital clouds are model contours or density encodings;electron probability is not automatically zero outside a chosen contour.",
+        "observablePerformanceDe": "PE=0,2×1=0,2;PF=0,1×3=0,3. E istdichter,F insgesamt wahrscheinlicher;0,2+0,3+0,5=1. Knoten|ψ|²=0. DiePerson verbindetDichte mitVolumen undunterscheidet eineKonturfläche vomfestenElektronenrand.",
+        "observablePerformanceEn": "PE=0.2×1=0.2;PF=0.1×3=0.3.E has higher density,butF higher total probability;0.2+0.3+0.5=1.A node has|ψ|²=0.The learner combines density and volume and distinguishes a contour from a fixed electron boundary."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "content-specific-understanding",
+        "fresh-transfer-and-model-boundary"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "specific-material-variation",
+        "textDe": "Gleichgroße gegenüberunterschiedlichgroßenBereichen;ψ-Vorzeichen undDichte.",
+        "textEn": "Equal versus unequal region volumes;wave-function sign and density."
+      },
+      {
+        "id": "specific-model-limit",
+        "textDe": "GezeichneteOrbitalwolken sindModellkonturen bzw.Dichtekodierungen;außerhalb einergewähltenKontur istElektronenwahrscheinlichkeit nichtautomatisch null.",
+        "textEn": "Orbital clouds are model contours or density encodings;electron probability is not automatically zero outside a chosen contour."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "chem-next25-0acc8cd2-case-1",
+        "taskDemandDe": "EinmodelliertesOrbital besitztviergleichgroße kleineBereicheA–D. Gelieferte normierteBereichswahrscheinlichkeiten:A0,4;B0,3;C0,2;D0,1. Phasenzeichenψ inA/B positiv,inC/D negativ. Sie sindVorzeichen derWellenfunktion,keine elektrischenLadungen. BeschreibeOrbital/|ψ|²,ordne dieDichten dergleichgroßenBereiche undbeurteile„negativePhase bedeutet negativeWahrscheinlichkeit“.",
+        "taskDemandEn": "A model orbital has four equally sized small regionsA–D.Supplied normalised region probabilities:A0.4;B0.3;C0.2;D0.1.Theψ signs are positive inA/B,negative inC/D.They are wave-function signs,not electrical charges. Describe orbital/|ψ|²,rank the densities of equal-sized regions and assess“negative phase means negative probability”.",
+        "expectedPerformanceDe": "DasOrbital liefert eineWellenfunktion,keineBahn. Betragsquadrat nichtnegativ,Summe dergegebenenBereichswahrscheinlichkeiten1. Bei gleichemVolumenDichterangA>B>C>D;C/D bleiben positiveWahrscheinlichkeiten trotz negativemψ. Ladungszeichen werdennicht ausPhasenfarben abgeleitet.",
+        "expectedPerformanceEn": "The orbital supplies a wave function,not a trajectory.Modulus squared is nonnegative;the supplied region probabilities sum to1.Equal volumes give density orderA>B>C>D.C/D retain positive probabilities despite negativeψ.Charge signs are not inferred from phase colours.",
+        "understandingFocusDe": "An einer exaktmathematischenStelle istDichte nicht gleich derWahrscheinlichkeit einesendlichenRaumbereichs.",
+        "understandingFocusEn": "Density at an exact mathematical point is not the probability of a finite spatial region."
+      },
+      {
+        "id": "chem-next25-0acc8cd2-case-2",
+        "taskDemandDe": "FrischerStückkonstanten-Modellfall:BereichE Volumen1mitDichte0,2;BereichF Volumen3mitDichte0,1 in gemeinsamen normiertenModelleinheiten. DieübrigenBereiche tragen zusammen0,5. EinKnoten besitztψ=0. VergleicheDichteundBereichswahrscheinlichkeit,prüfeNormierung unddeute denKnoten. Korrigiere„dunkelsteStelle muss derwahrscheinlichsteGroßbereich sein“.",
+        "taskDemandEn": "Fresh piecewise-constant model:regionE volume1 and density0.2;regionF volume3 and density0.1 in shared normalised model units.The other regions contribute0.5.A node hasψ=0. Compare density and region probability,check normalisation and interpret the node.Correct“the darkest point must be the most probable large region”.",
+        "expectedPerformanceDe": "PE=0,2×1=0,2;PF=0,1×3=0,3. E istdichter,F insgesamt wahrscheinlicher;0,2+0,3+0,5=1. Knoten|ψ|²=0. DiePerson verbindetDichte mitVolumen undunterscheidet eineKonturfläche vomfestenElektronenrand.",
+        "expectedPerformanceEn": "PE=0.2×1=0.2;PF=0.1×3=0.3.E has higher density,butF higher total probability;0.2+0.3+0.5=1.A node has|ψ|²=0.The learner combines density and volume and distinguishes a contour from a fixed electron boundary.",
+        "understandingFocusDe": "GezeichneteOrbitalwolken sindModellkonturen bzw.Dichtekodierungen;außerhalb einergewähltenKontur istElektronenwahrscheinlichkeit nichtautomatisch null.",
+        "understandingFocusEn": "Orbital clouds are model contours or density encodings;electron probability is not automatically zero outside a chosen contour."
+      }
+    ]
+  },
+  "goalFingerprint": "sha256:d30f2e7b8b3041681b83f936a6566f8b7eb564d7971a3523dc7540c06fb7f070",
+  "reviewInputFingerprint": "sha256:b70a964725bbf8b0123a186decaecda5a50fa0f42c49635c6426a51f244fc495",
+  "profileFingerprint": "sha256:efe85b6fad13ad6b09c1f4ed5044b6a41724c232f97e76b971c709325c1aed29",
+  "twoWholeDEENMaterialsActuallyRead": [
+    {
+      "caseId": "chem-next25-0acc8cd2-case-1",
+      "goalId": "0acc8cd2-be6d-567e-a023-1d9e90475510",
+      "materialKind": "explicit_authored_school_model_case",
+      "material": {
+        "de": "EinmodelliertesOrbital besitztviergleichgroße kleineBereicheA–D. Gelieferte normierteBereichswahrscheinlichkeiten:A0,4;B0,3;C0,2;D0,1. Phasenzeichenψ inA/B positiv,inC/D negativ. Sie sindVorzeichen derWellenfunktion,keine elektrischenLadungen.",
+        "en": "A model orbital has four equally sized small regionsA–D.Supplied normalised region probabilities:A0.4;B0.3;C0.2;D0.1.Theψ signs are positive inA/B,negative inC/D.They are wave-function signs,not electrical charges."
+      },
+      "taskDemand": {
+        "de": "BeschreibeOrbital/|ψ|²,ordne dieDichten dergleichgroßenBereiche undbeurteile„negativePhase bedeutet negativeWahrscheinlichkeit“.",
+        "en": "Describe orbital/|ψ|²,rank the densities of equal-sized regions and assess“negative phase means negative probability”."
+      },
+      "expectedPerformance": {
+        "de": "DasOrbital liefert eineWellenfunktion,keineBahn. Betragsquadrat nichtnegativ,Summe dergegebenenBereichswahrscheinlichkeiten1. Bei gleichemVolumenDichterangA>B>C>D;C/D bleiben positiveWahrscheinlichkeiten trotz negativemψ. Ladungszeichen werdennicht ausPhasenfarben abgeleitet.",
+        "en": "The orbital supplies a wave function,not a trajectory.Modulus squared is nonnegative;the supplied region probabilities sum to1.Equal volumes give density orderA>B>C>D.C/D retain positive probabilities despite negativeψ.Charge signs are not inferred from phase colours."
+      },
+      "specificBoundaryOrCounterexample": {
+        "de": "An einer exaktmathematischenStelle istDichte nicht gleich derWahrscheinlichkeit einesendlichenRaumbereichs.",
+        "en": "Density at an exact mathematical point is not the probability of a finite spatial region."
+      },
+      "empiricalLearnerEvidence": false,
+      "independentlyScientificallyReviewed": false,
+      "sourceRequirementReference": "actual-current25-primary-scope-and-boundaries.author.json#0acc8cd2-be6d-567e-a023-1d9e90475510"
+    },
+    {
+      "caseId": "chem-next25-0acc8cd2-case-2",
+      "goalId": "0acc8cd2-be6d-567e-a023-1d9e90475510",
+      "materialKind": "explicit_authored_school_model_case",
+      "material": {
+        "de": "FrischerStückkonstanten-Modellfall:BereichE Volumen1mitDichte0,2;BereichF Volumen3mitDichte0,1 in gemeinsamen normiertenModelleinheiten. DieübrigenBereiche tragen zusammen0,5. EinKnoten besitztψ=0.",
+        "en": "Fresh piecewise-constant model:regionE volume1 and density0.2;regionF volume3 and density0.1 in shared normalised model units.The other regions contribute0.5.A node hasψ=0."
+      },
+      "taskDemand": {
+        "de": "VergleicheDichteundBereichswahrscheinlichkeit,prüfeNormierung unddeute denKnoten. Korrigiere„dunkelsteStelle muss derwahrscheinlichsteGroßbereich sein“.",
+        "en": "Compare density and region probability,check normalisation and interpret the node.Correct“the darkest point must be the most probable large region”."
+      },
+      "expectedPerformance": {
+        "de": "PE=0,2×1=0,2;PF=0,1×3=0,3. E istdichter,F insgesamt wahrscheinlicher;0,2+0,3+0,5=1. Knoten|ψ|²=0. DiePerson verbindetDichte mitVolumen undunterscheidet eineKonturfläche vomfestenElektronenrand.",
+        "en": "PE=0.2×1=0.2;PF=0.1×3=0.3.E has higher density,butF higher total probability;0.2+0.3+0.5=1.A node has|ψ|²=0.The learner combines density and volume and distinguishes a contour from a fixed electron boundary."
+      },
+      "specificBoundaryOrCounterexample": {
+        "de": "GezeichneteOrbitalwolken sindModellkonturen bzw.Dichtekodierungen;außerhalb einergewähltenKontur istElektronenwahrscheinlichkeit nichtautomatisch null.",
+        "en": "Orbital clouds are model contours or density encodings;electron probability is not automatically zero outside a chosen contour."
+      },
+      "empiricalLearnerEvidence": false,
+      "independentlyScientificallyReviewed": false,
+      "sourceRequirementReference": "actual-current25-primary-scope-and-boundaries.author.json#0acc8cd2-be6d-567e-a023-1d9e90475510"
+    }
+  ],
+  "case1IndependentScience": "0.4+0.3+0.2+0.1=1; for equal region volumes the average densities rank A>B>C>D. Negative ψ changes neither nonnegative |ψ|² nor charge. Interpret supplied finite regions, not probability at a point.",
+  "case2IndependentScience": "Piecewise constant density model:0.2×1=0.2 and0.1×3=0.3; total0.2+0.3+0.5=1. E has higher density, F greater integrated regional probability; node ψ=0 means density0. Contour is not a hard electron boundary.",
+  "freshTransferActuallySubstantive": true,
+  "wholeProfileExactOwnV2": true,
+  "targetedFinalGoalAndAltCorrect": "One-electron wave functions / Ein-Elektronen-Wellenfunktionen; no solutions-of-a-wave-function error remains. DE/EN equivalent.",
+  "originalImageActuallyViewed": true,
+  "imageBoundary": "Original 1s schematic qualitatively illustrates ψ and |ψ|²; labels refer to density encoding. It supplies neither all model performance nor proof of radial-shell probability, exact numerical ψ² curve fitting or complete D/P evidence. No fresh full V release.",
+  "retained24OwnPriorPBindings": [
+    {
+      "goalId": "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca",
+      "goalFingerprint": "sha256:a0ef508263e61bf85948cb4ee5f7392b62fd03bf594abd93cfe210afd3400c85",
+      "reviewInputFingerprint": "sha256:6a9d35d7cec88689df5e8ecdf24b0672f8fdef8cca042d56a0e36d5b1bce915d",
+      "profileFingerprint": "sha256:f1375856c42cbf831b7c9e24580998d7a11469692a6df239d3f1a3c6dbfc85fc",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "965ca297-5dbf-5e58-b5f0-6559a4433646",
+      "goalFingerprint": "sha256:a2fcc547b32a1135d607f24f7eceb7f0b5cface70cf4a1d0182812c215af99b9",
+      "reviewInputFingerprint": "sha256:b6273245a1cc57321ec0555574cd10b62b31e2ee07bcffd3d148f84cea9c865f",
+      "profileFingerprint": "sha256:1e7c22555a7d16a7bd08b9d78b520f2d451400514f077d700690355829f2cc6c",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "79db6d68-b402-5563-a348-f2784fed8867",
+      "goalFingerprint": "sha256:a181942aca9b4f5e8f0b17b83c84f46d50475435cef7ab6ae5634106f3e2330d",
+      "reviewInputFingerprint": "sha256:d68e4039f0e4b1ab7af54911e6405095024571d8390fafb4fa039b71b9461488",
+      "profileFingerprint": "sha256:74dead516e74f2706be30b2b15239d34a217c9563930a5d83dfb87cdf81e4608",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+      "goalFingerprint": "sha256:29d359f1dfdfe70d4283316175aa4e2977248948da4d2e6175673198a4b4020f",
+      "reviewInputFingerprint": "sha256:745b29343a716c60f56b5944ccaa8ee8e2c1c885a9215a85d833607d3c6fb2a1",
+      "profileFingerprint": "sha256:39e017318739e7f9268e0fb8749a5b5ad0a5d4fc140766a3a9afba520d0ab101",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "70b12d1c-abaf-45c6-ae9e-b571e9cbc126",
+      "goalFingerprint": "sha256:e190224f70f5948a36b5d5015f19afeb252fb926b606671037f3257e8e941612",
+      "reviewInputFingerprint": "sha256:8bf2accaccaeb2686da57696fea7db43c5ded790244b6cb6eeb74c5184226c73",
+      "profileFingerprint": "sha256:6e48228e6cddb107caf5474ada5eca416ce256372474ecd870804aa61f313561",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "c441d9e8-d9d9-5e55-a189-a37345541321",
+      "goalFingerprint": "sha256:ebc2025dad09c32208bcfa5b629570111f78963ee258d2af72290bbaa2d9be43",
+      "reviewInputFingerprint": "sha256:c6f2cc57b42883d4b7bc0d5f42f60284324521ceb037675226f50c81586aede2",
+      "profileFingerprint": "sha256:869e3eb7602fa46cbfa2fdd7999150a7a92ef50ffb019679a2f9bcce145c699f",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "5abc5961-6368-52bb-88b9-6a846c3c37a8",
+      "goalFingerprint": "sha256:754fcd77069e02bb867ccc3ee8a98245f786986ba7b9cffac27d76408a64e7b0",
+      "reviewInputFingerprint": "sha256:94dc1ea5377aaf140ce1fba171b28add39d103deaf5536e1d8a0337c55f30d0c",
+      "profileFingerprint": "sha256:bf70bcc084babadd4fb9e28eb3ed9c577f25c3ea2bd35656fb4484916a11e833",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "747c5777-07d7-51a9-9be3-7d0d6f51d4e2",
+      "goalFingerprint": "sha256:ba242287f5b89ced182f401c6bc9de3d8d6dadbe1c4c7d7181b2196d12e2179a",
+      "reviewInputFingerprint": "sha256:ce8dd125f5cd9cfca88d818bda834def655b4ec70065cf7796db95009fdaf57a",
+      "profileFingerprint": "sha256:d58190a0886110baf890bb18de147e87d580643bb35fab2d662d5d75ab7317e0",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "bbe038e9-86ed-5ec6-ab33-316758ddb16d",
+      "goalFingerprint": "sha256:d1ccfae8b009cefacfa199c09987cf12b48231f3f66692541799a427ec264600",
+      "reviewInputFingerprint": "sha256:144efce45a93095d4fcd6252e850cbeac8f8c6983cae90f2e0d4520470a2b581",
+      "profileFingerprint": "sha256:6336e55426acff8ca8186ad8f3153e2e7348a5f96159ba32a6f7222f6e3e5286",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "e74f5301-70d3-5869-bd3d-79a5763a1718",
+      "goalFingerprint": "sha256:166593e1352bdd1131676cc495fb1cdfcf274239f7eaf12358a119819b00173a",
+      "reviewInputFingerprint": "sha256:7cd1dc96505bcaeeff568423c7bf22d2915f006962bee3a68a39b90bfb39d161",
+      "profileFingerprint": "sha256:036606a5c0884e33bcb3841e80ecc02b43951226f4fe15d28414c2e80d349e3a",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+      "goalFingerprint": "sha256:dccbcde1bbd5362b74a082f595ca8c4ff0635f17ae390319ff3ccda0dcac784d",
+      "reviewInputFingerprint": "sha256:a32113844c8d9e9ec6937237f6668e4dbb4f2448eeaf64580e5a05c0c8e0bc7b",
+      "profileFingerprint": "sha256:bbeb282258a6674ecf79a50c66a45e87d5eea0106e99bd7fc16141d3a7e011ed",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "a138d7bf-163a-59e0-a50a-8438ef4f5168",
+      "goalFingerprint": "sha256:18a26daefcf49d3f8bc4174eae2876942c1b186f134abeb7a9850c33ef777e2d",
+      "reviewInputFingerprint": "sha256:c70a17985f10d4db811eb2c9cdd1769c4249d451afdefc04fa1326a6a6a83768",
+      "profileFingerprint": "sha256:c85a669f4125dd35edc31107247371ead034d5cb0a314510013ae93ffdd0efa6",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "3bc48951-025c-5144-99b1-924db611a5f9",
+      "goalFingerprint": "sha256:ba55732abf93fced91c7d801a12f90f6d3e49892b75cc79f68d6ce4097cb4c0d",
+      "reviewInputFingerprint": "sha256:b0cd1956734c454fc3c238261c7a71bde2f900694e1155d2c48237f2b2275a7f",
+      "profileFingerprint": "sha256:ebfce906d1841a4f99798db4de55298747e013bef9396429c4d4d3fb8a3c381b",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "49235cbe-6658-5e7e-8bd4-398416bcebdc",
+      "goalFingerprint": "sha256:617c3d042534b25c18ecf445a3adac6d119f0b5b2f1a4d6605aec7c68f4e70dd",
+      "reviewInputFingerprint": "sha256:4589936ca5210f65b936b1c54440f72565909dff47044c6e10bb73356d8e8089",
+      "profileFingerprint": "sha256:f00eb1e299f1217859fcfb3816642a5138e17589577884ebcd9e887102b1b677",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "73547696-e225-5f14-839b-c77f54c32bae",
+      "goalFingerprint": "sha256:073650cf2d11c0947a220acc9f40f61f6d255ca69fe927474d076f2b2b49392a",
+      "reviewInputFingerprint": "sha256:6cbbe9ca4f8d5fe872599cc8f49990b8e4f7d0572d385a6a4b059f2f7bb2b7e1",
+      "profileFingerprint": "sha256:e198397500f00b153267c2cb8a0ef72e70282729ae1272b9c3a33088ff716861",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "e8ec00a8-48d4-5fa3-9f0e-2ae365328a2e",
+      "goalFingerprint": "sha256:523bfceb0615d93dcfe56ad3082487de237575bb9578f7058fef926a85a415cf",
+      "reviewInputFingerprint": "sha256:a297fb47279280035cbf3fa2dd71212bebb0b4e685451b12eb78c01c549d0ca0",
+      "profileFingerprint": "sha256:f7acce40fa6878afecb27156a9fb475bd9e5afa2bf2f1c8b38e67cb0010eca0d",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "2bc1a15b-a677-5612-a564-33e826d11327",
+      "goalFingerprint": "sha256:0c7cfd21a622aadbac57896c4b793f41aaf53e7d28bfc3dc1821af94aabe24e3",
+      "reviewInputFingerprint": "sha256:a37e6c1018f807d7b88a88bebc0f2422003da87bc66ffe29782fd8335fc55250",
+      "profileFingerprint": "sha256:bc804f73ee5a1d46d541db562bce9f7f65c8812d9c1b8f3014bf03b44fbc3726",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "386e28af-505a-5eb9-87fe-9c6946f10433",
+      "goalFingerprint": "sha256:d23894d97d1886d3c2c9451858b52cac43c538328ba46423a29b7e1e031c4813",
+      "reviewInputFingerprint": "sha256:3986aba7f7ffd7b1c63ed00c6c446223cf6f528e3642aebc983bf3d529be2245",
+      "profileFingerprint": "sha256:dab73f53e9cc6b7c04e227881c016d088c4316aa9f730a8a772fc9665cce9627",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "fbc5a920-05d6-53c8-9fc0-a5f4e57f2c6d",
+      "goalFingerprint": "sha256:b4ba7d44b7b845f707fa71ea576b3fa815245d9acde8c121936dd381135bb428",
+      "reviewInputFingerprint": "sha256:ec3703a271fcbdcc9187e9065d2690aa5b43a52a0c1ad5ee66b24c8754b31ab3",
+      "profileFingerprint": "sha256:f61e12cf1a2a1f968c900b526970cd9b08f5abedeaf0d3a5bb302848e49faf4e",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "707998c1-872d-582d-a2d6-14e7d967cbdb",
+      "goalFingerprint": "sha256:e9e2a83a3c62ecc8b946f688ffd7f623702d1522ef8999b4f884fc660f65e1e2",
+      "reviewInputFingerprint": "sha256:733bc43907a6d88d194fecddfd4a050c760e682a4ac92d83971e4ee13c9f3717",
+      "profileFingerprint": "sha256:b42050ce774fcdfcf8c03773cde6de431f47cc29e71e140faa086b25e40159f6",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "0b6a6a15-b355-5be8-abc9-4ef8df11bcb6",
+      "goalFingerprint": "sha256:8e50bf74cac7d382cbe6cafe168875dd6c586c02734d7dc3b68e92770ff77b3b",
+      "reviewInputFingerprint": "sha256:2e15e979a1b4693ee31dd4bca3c8eb081f7d10e75368cccc66c0a475615393dd",
+      "profileFingerprint": "sha256:cc6376d27c56e812cc71b753b4b0b1f18e7c12b087ec1082571da509c2364895",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "7a36f2a2-a97e-5a0b-a6e1-a80f72137640",
+      "goalFingerprint": "sha256:00a45621a82a1a53fcea0cf98b4b9efafce2bf146e04d8f2339d0b9164350dfe",
+      "reviewInputFingerprint": "sha256:8072662707ffcd497ccee63cb85cb18d39b8593f9d3831c7805c05058360a334",
+      "profileFingerprint": "sha256:14b2c8b0a8c7a585b6363e7c33d8d4dde4d3cce55a09c06d1d896734aeb3dfe6",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "5e2eb826-6e60-5273-91d6-c23f6dfa33b1",
+      "goalFingerprint": "sha256:ebbf80a363adfb46fe36e4a3b60006b26494e358548f7b7694869811592cf218",
+      "reviewInputFingerprint": "sha256:265438c76cb7af35029a99a3bb2c8430e1308b2a95936cd33f70f5c06cdffdb5",
+      "profileFingerprint": "sha256:466e911403e177fce83ab17bb3b98b593e436699ed80560bf220e20bcdc895dd",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    },
+    {
+      "goalId": "e675fa94-6e23-59c0-b376-4340bf44c00e",
+      "goalFingerprint": "sha256:525aca33b5d90994a6ea25962f0ea53f22cc616c4670bcca34a6dcc9431c93e9",
+      "reviewInputFingerprint": "sha256:a74c84209f5437b2ce142fb11fc5a7d3bc37778e4da44b3e6e79e7b0f7189c7b",
+      "profileFingerprint": "sha256:c8638d6d87ed42e4c5bc6dc8d2faf00bd543b59c05484aaafdaeebe6cb3e8e73",
+      "retention": "Own frozen V2 P-KEEP exactly bound; not newly scientifically rereviewed"
+    }
+  ],
+  "whole50MaterialsInput": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next-coherent-current-gap-native-author-v2/fifty-complete-materials.de-en.author-candidates.json",
+    "sha256": "sha256:d252535ba7eac503d4eb731acce095a8ea512bee63b4fe4aad540253ca2e2b9f",
+    "bytes": 113532
+  },
+  "ownPriorPFreeze": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-next25-current-positive-profile-independent-b-v2/independent-b.current-positive-profile-v2.final.freeze.json",
+    "sha256": "sha256:22a55cc7bffb284c05808853a5155f60dd2f0bfbddec58a18981a26f30197f31",
+    "bytes": 254040
+  },
+  "noOther24ScienceRestart": true,
+  "sourceRelease": false,
+  "activeWrites": false,
+  "strictNetGain": 0,
+  "humanApproval": false,
+  "humanTrial": false
+}

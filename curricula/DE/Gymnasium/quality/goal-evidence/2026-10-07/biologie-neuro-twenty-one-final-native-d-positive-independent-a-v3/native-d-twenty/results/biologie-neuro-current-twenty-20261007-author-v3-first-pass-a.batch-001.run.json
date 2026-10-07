@@ -1,0 +1,101 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "bio-neuro-current21-independent-a-twenty-20261007-v3",
+  "campaignId": "biologie-neuro-current-twenty-20261007-author-v3-a",
+  "roundId": "biologie-neuro-current-twenty-20261007-author-v3-first-pass-a",
+  "batchId": "biologie-neuro-current-twenty-20261007-author-v3-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:2a8c77fd3416b951ccfbb36baae7b71c7151967c52b809dfb5880116dfa4093c",
+  "bundleFingerprint": "sha256:86c04ed9b1d74337324712db0cc696e5c91b8356070fa8615dba3bf90ea0537d",
+  "bookDigest": "sha256:6f02f829096c56c6dd75a865529a24f4daa0bc3be37b28f4160616b553c127c8",
+  "provider": "OpenAI",
+  "model": "GPT-6/Codex (exact serving variant not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "biologie-neuro-current21-native-description-positive-independent-a-v3",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:730e89b15978754b4988f6affd438f3281656a892bee0b4393d045594e7319a0",
+  "independenceGroupId": "biologie-neuro-current-twenty-20261007-author-v3-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "ce19b80f-d392-5851-ac92-750c85adfb3e",
+    "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+    "a46cafde-7359-5249-8754-19aaa3174ba4",
+    "78748ef2-93fb-5ec3-8c1e-90e42b9ea863",
+    "19758e09-1bc4-5ee4-bf52-89b3bc28e947",
+    "e1117126-4e78-5a37-a645-2debc167219b",
+    "347110a1-1d2e-5195-8acc-64e7e3893ce5",
+    "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+    "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+    "2381d2bb-176c-5903-8c6e-82f4bd5023a4",
+    "c9a06264-cce2-54dd-9604-46dd5949f02e",
+    "4f631f78-e13a-58e5-9092-f4db0b8d377a",
+    "97b24279-def0-5ce6-8726-a1cac9cd38ad",
+    "9b966664-906b-5a5d-8008-cae18de043aa",
+    "f6280154-d57c-599c-94bf-73313005a6df",
+    "8b23f8fb-555d-5720-b5f2-dd6f28a0e786",
+    "1b38144f-cdbd-5dfe-a792-94669bdc31d8",
+    "e3fb5f1d-e277-5e28-8883-45821b972607",
+    "04d770b3-ba5e-5438-88ca-110cbaeba62c",
+    "080b10c7-f308-57ff-b067-3bd189e37fea"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:a075331acfe0f0401de1ab593807e37ebb2d15d6ae662dcdc222cd863cd92751"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:06136962d87805449a37004ec2102d4bb5f99102115682c4836ca0c115df0def"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:522a2507bc58bcbd2485ac27b230bdd757c7d86cb4c75f8a5b7ada8206642f49"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:104aa4a632ebe65b30e22668cc8c96bc67734d3fcf50710b20c5ffc33f6bb9bd"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:025f4d4cada6cba13b5dce3aded0c23a928c639c88c70651656ec06c5cb5b253"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:14937da3f0c2937e7bffa53c6543567f5da1e6a8cd599f20f0e974a1c9506d89"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:f4f9fa395751efb96be72403f6bb27ca399a5fcc77b634dd96cefa2bbaec1659"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:3f6d7f10f25ebe9773301fed101268498bb6eb6fda2d7a4d21dd3a2849e0a9e3"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:2a8c77fd3416b951ccfbb36baae7b71c7151967c52b809dfb5880116dfa4093c"
+    }
+  ],
+  "startedAt": "2026-10-06T23:03:15.078598+00:00",
+  "completedAt": "2026-10-06T23:13:33.556670+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:7b1026814cdeca728056dfbdc2bbdd4951dca0ec6326298039a5582d49248715",
+  "toolchainVersion": "independent-native-D-A-current21-20261007-v3"
+}

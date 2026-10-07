@@ -1,0 +1,141 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-current-fifteen-native-current-three-synthesis-20261006-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex technical synthesizer: actual existing completed A/B records read; no additional independent review round",
+  "synthesizedAt": "2026-10-06T19:38:17.864Z",
+  "batch": {
+    "batchId": "chemie-current-four-excluding-coordinate-blind-20261006-author-v5",
+    "batchManifestDigest": "sha256:aa3e4b86146063068d87871a14310bb0e7d8862e71f1a7e94535e960b7504a0d",
+    "configDigest": "sha256:fee3866d3aa6a996b21820ff55b74e46587c36079753f5db392ebc358e940c01",
+    "bundleFingerprint": "sha256:b4d67d00027851e9b60d0aee8ec56553f63517ad16b7e3722fd6650770cdc0af",
+    "bookDigest": "sha256:b9068deeacc1c5cfeda6b95ddd01c7369444afb7be14aacb715235694f055d88",
+    "reviewInputFingerprint": "sha256:75ed6ad24f585aafb626ddcb681d1c73c5ec40c4b94ca0235b055feaebd4fe9d",
+    "dualSummaryDigest": "sha256:0011f5ce27b240222ef6193dd4bb007d7f84e54165fc2df8a82be5d48cc05a37",
+    "canonicalLandscapeDigest": "sha256:d229c723d71793f6937492bbbc954f35c99fb81c0066de2aa965ad08982ee138"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-current-four-excluding-coordinate-blind-20261006-author-v5-a",
+      "campaignDigest": "sha256:5b2c6907d47c41e954e4b28a0e29c8477ad6362810d621f55aeaae99dc34299f",
+      "roundId": "chemie-current-four-excluding-coordinate-blind-20261006-author-v5-first-pass-a",
+      "independenceGroupId": "chemie-current-four-excluding-coordinate-blind-20261006-author-v5-independent-a",
+      "reviewInputFingerprint": "sha256:75ed6ad24f585aafb626ddcb681d1c73c5ec40c4b94ca0235b055feaebd4fe9d",
+      "batchId": "chemie-current-four-excluding-coordinate-blind-20261006-author-v5-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:77468b7e8ab5f81015ba58deec1cefa895fb797fb89ba71020072ffc170099a0",
+      "runId": "chemie-current-four-native-blind-independent-a-20261006-v5",
+      "runManifestDigest": "sha256:8bf0d1d136b08aac48c47f6dd418bcfd8ed2edf5bab2db4a415b8d676a212afc",
+      "resultsDigest": "sha256:33a0a8f63e32b3523ef3036c255812e858f8c21134a55c69a1be7704e476d869"
+    },
+    "second": {
+      "campaignId": "chemie-current-four-excluding-coordinate-blind-20261006-author-v5-b",
+      "campaignDigest": "sha256:189379dcc9c880950063c8f88b6b2d089d0277c83dab9ea3753f827ea0828548",
+      "roundId": "chemie-current-four-excluding-coordinate-blind-20261006-author-v5-first-pass-b",
+      "independenceGroupId": "chemie-current-four-excluding-coordinate-blind-20261006-author-v5-independent-b",
+      "reviewInputFingerprint": "sha256:75ed6ad24f585aafb626ddcb681d1c73c5ec40c4b94ca0235b055feaebd4fe9d",
+      "batchId": "chemie-current-four-excluding-coordinate-blind-20261006-author-v5-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:f5b6fa7714ffe18f6d5b82d7be79827332ee162a6908076510c02abdfb3968dc",
+      "runId": "chemie-current-coordinate-final-native-d-independent-b-v5-four-run-001",
+      "runManifestDigest": "sha256:acf2454758cc397320a263552d4afa56b4e6409404a2fdb517a589a216609cf2",
+      "resultsDigest": "sha256:6ad7a0a0cc65b1086d82edaf25c0a646fab4a47666b24e247796cdeb97f42d34"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-current-fifteen-native-current-three-synthesis-20261006-v1-decision-001",
+      "goalId": "3d3231f9-039d-5ce5-9e8e-af219c7fee08",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4723ce2f2cc438602bce3221479a8d2e0379e77231caceab889cb44e9b45bbbd",
+      "pageFingerprint": "sha256:ddad25657147c1559a845a5f94f28d7b048fa3d40645fde91b453e7e2bef68cb",
+      "goalReviewContextFingerprint": "sha256:54cacbe830d4914eebe0da4c03b26c34b7b70da44aa1df281bb94f99a067d59b",
+      "finalText": {
+        "titleDe": "Eigenschaften über Wechselwirkungen erklären",
+        "titleEn": "Explain properties via interactions",
+        "descriptionDe": "Die lernende Person kann den Einfluss von Van-der-Waals-Kräften und Wasserstoffbrücken auf Schmelz- und Siedetemperaturen sowie Löslichkeiten ausgewählter Stoffe begründen.",
+        "descriptionEn": "The learner can justify the influence of Van der Waals forces and hydrogen bonds on melting and boiling temperatures as well as solubilities of selected substances."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current-four-native-blind-independent-a-20261006-v5-record-001",
+          "recordDigest": "sha256:77c6178392ccd018327cdd920e986dff625f50c0ee0eae8c733aa2d612e230b7"
+        },
+        "second": {
+          "recordId": "chemie-current-coordinate-final-native-d-independent-b-v5-four-001",
+          "recordDigest": "sha256:06fdfb8eec8acb2dd3ed24c49e2d39d808675c31c053d66ff20c6ba50bfb0fa1"
+        }
+      },
+      "rationaleDe": "Beide aktuellen v5-Runden bestätigen den vollständig gebundenen korrigierten Kraftnamen und eine zusammenhängende Erklärung für ausgewählte Stoffe. Das tatsächliche CH4/CH3Cl/CH3OH-Bild trägt nur einen begrenzten Siedevergleich; Schmelzpackung und Löslichkeitskonkurrenz bleiben im V2-Verständnis. HE E.3/Q1.1/Q1.2 ist begrenzt, keine nationale Quellenfreigabe.",
+      "rationaleEn": "Both current v5 rounds confirm the fully bound corrected force name and one explanation for selected substances. The actual methane/chloromethane/methanol image supports a bounded boiling comparison; melting packing and solubility competition remain in V2 understanding. HE E.3/Q1.1/Q1.2 is bounded, without national source approval."
+    },
+    {
+      "decisionId": "chemie-current-fifteen-native-current-three-synthesis-20261006-v1-decision-002",
+      "goalId": "9decc36b-a69a-5599-a9f0-fcebdf0203d8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:881725c14f6fdc54b32a2c1c098b57a668e39ddafb8fc4887a42642e7d18730c",
+      "pageFingerprint": "sha256:874d9d67143636deab4b7c724894657790516c9f86d7b434d6fa8809944a13ff",
+      "goalReviewContextFingerprint": "sha256:e26f1214a826186c5e7f5e8465e16ac211f378ebafbdf4d84a52b9eb74a20f45",
+      "finalText": {
+        "titleDe": "Stereoisomerietypen zuordnen",
+        "titleEn": "Assign stereoisomer types",
+        "descriptionDe": "Die lernende Person kann an vorgegebenen Molekülpaaren mit gleicher Konstitution anhand ihrer räumlichen Anordnung begründen, ob Stereoisomerie vorliegt, und gegebenenfalls den passenden Stereoisomerietyp zuordnen.",
+        "descriptionEn": "The learner can use supplied pairs of molecules with the same constitution to explain from their spatial arrangements whether stereoisomerism is present and, where applicable, assign the appropriate type of stereoisomerism."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current-four-native-blind-independent-a-20261006-v5-record-003",
+          "recordDigest": "sha256:098b5b29447fae6d19be44c61339fc1eb5e1c267954869477e3a39c1cbb20758"
+        },
+        "second": {
+          "recordId": "chemie-current-coordinate-final-native-d-independent-b-v5-four-003",
+          "recordDigest": "sha256:ba1aa4b80a139e84a0514add81f5713050087fe3c40e41093531595a2c095d01"
+        }
+      },
+      "rationaleDe": "Beide aktuellen v5-Runden bestätigen die neue explizite Paarrelation: gleiche Konstitution, räumliche Beziehung, gegebenenfalls Stereoisomerietyp. Ein identisches Paar darf nein ergeben. HE Q1-LK E/Z und Q2-GK/LK Enantiomerie bleiben verschiedene Quellenbereiche; keine vollständige Taxonomie/R/S- oder nationale GK-Freigabe.",
+      "rationaleEn": "Both current v5 rounds confirm the explicit pair relation: identical constitution, spatial relationship and, where applicable, stereoisomer type. An identical pair may correctly yield no isomerism. HE Q1 advanced E/Z and Q2 GK/LK enantiomerism remain separate source scopes, without complete taxonomy, R/S or national GK approval."
+    },
+    {
+      "decisionId": "chemie-current-fifteen-native-current-three-synthesis-20261006-v1-decision-003",
+      "goalId": "973c12d9-d863-5292-8c68-9c80cdacf9e2",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:78a8148fa4f3fedf0e67de25bec42046482d83524c0f25e5f8e1522e866689b6",
+      "pageFingerprint": "sha256:8af32bfc7cb8cca590f5a37f939c9f7855ff1271ab7ef890fd91821c41df3b7e",
+      "goalReviewContextFingerprint": "sha256:675ae79eddbda1b0edb414804dfd691a9394b426031939df8a6d87b307ce7a04",
+      "finalText": {
+        "titleDe": "Aldehyd- und Keton-Nachweise durchführen und deuten",
+        "titleEn": "Perform and interpret aldehyde and ketone tests",
+        "descriptionDe": "Die lernende Person kann geeignete Nachweisreaktionen zur Unterscheidung von Aldehyden und Ketonen durchführen und deuten.",
+        "descriptionEn": "The learner can perform and interpret suitable tests to distinguish aldehydes from ketones."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-current-four-native-blind-independent-a-20261006-v5-record-004",
+          "recordDigest": "sha256:43ccd0539e357d6cb28abe485934efbc321cb9a2d530a11b839e2a19203c758c"
+        },
+        "second": {
+          "recordId": "chemie-current-coordinate-final-native-d-independent-b-v5-four-004",
+          "recordDigest": "sha256:07eb49e502b9fa08d416c3fd4976195a10fb9d9cd6488e9e5e1224d6b1e0ca4c"
+        }
+      },
+      "rationaleDe": "Beide aktuellen v5-Runden sehen die korrigierte konkrete Ethanal/Propanon-Bildbindung und erhalten die tatsächliche Durchführungs- plus Deutungskompetenz. Kein universeller positiver Aldehydbeweis/negativer Ketonnachweis. HE Q1.2 trägt Fehling; Tollens ist alternative Illustration. Aufsicht, Kontrollen und Schutz/Entsorgung sowie separates P-Durchführungsevidenz bleiben erforderlich.",
+      "rationaleEn": "Both current v5 rounds inspect the corrected concrete ethanal/propanone image binding and retain actual performance plus interpretation. No universal positive aldehyde proof or negative ketone test follows. HE Q1.2 supports Fehling; Tollens is an alternative illustration. Supervision, controls, protection/disposal and separate P execution evidence remain required."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "b8d3b453-d638-5518-aab0-d84ec2e8567c",
+      "firstDecision": "revise",
+      "secondDecision": "keep",
+      "rationaleDe": "Dieser unveränderte historische Batch enthält für diese inzwischen materiell geänderte Seite die originalen A/B-Entscheidungen revise/keep. Sie werden nicht umetikettiert oder als aktueller Abschluss verwendet. Die tatsächlich korrigierte aktuelle Seite besitzt eine getrennte gezielte native A/B-Gruppe; bei b8 gilt ausschließlich v6 mit expliziter Delokalisierung.",
+      "rationaleEn": "This unchanged historical batch retains the original A/B decisions revise/keep for a page since materially changed. They are not relabelled or used as current completion. The actually corrected current page has a separate targeted native A/B group; b8 is completed only by v6 with explicit delocalization."
+    }
+  ],
+  "manifestFingerprint": "sha256:e0373d780215be6005d194a4d70a1fccfabecab21038534a9e292a898ade3dd3"
+}

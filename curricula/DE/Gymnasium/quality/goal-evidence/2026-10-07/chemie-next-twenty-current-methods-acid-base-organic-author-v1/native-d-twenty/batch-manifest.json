@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-next-twenty-methods-acid-base-organic-20261007-author-v1",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next-twenty-current-methods-acid-base-organic-author-v1/native-d-twenty.batch.config.json",
+  "configDigest": "sha256:91d1ad9cad4215e1bb4a2c1eb8bc5fb7912567aa3ef2fef32bafb8c5f8c2da18",
+  "goalIds": [
+    "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+    "e313c1ee-a617-54ed-adea-c183da1e03d8",
+    "0bf26276-2780-506c-ac34-35dd44a29409",
+    "fd309753-4d48-5570-a4ec-09dfeb20ff9c",
+    "c0f1bf09-5a70-5006-b1e9-e91f786a63bf",
+    "95dc0ee5-a0af-5682-af32-d66e36fbeb50",
+    "02dc29ae-4046-556a-b048-d64a0feb8f16",
+    "9b5d6326-d27c-4ece-8c72-debda705464a",
+    "22133f29-ef02-4408-8f8d-2bbea3275d91",
+    "1f30d81c-8a26-5675-8c0a-1cb82e96d3ba",
+    "7a05a1ce-45d3-571e-be51-afcd8dfd33ca",
+    "a44af1fa-5988-5b7d-b206-691c6bbf7dd4",
+    "597ac03c-d25f-5c34-a87c-52c059c87295",
+    "9751b6d8-cde3-527b-b37c-babb6cee79d2",
+    "88ee181f-b2d3-5639-bb5e-3d1a2915171b",
+    "7990387d-f254-5d3b-a589-a3e7ed9502a3",
+    "e14abd24-a0e5-5ab5-ade3-a8ae4f49e935",
+    "466bd2e9-39a5-5221-b620-945934adce00",
+    "6d3a2bad-8c67-5964-a720-375f138adaba",
+    "8edee6b6-9ead-515e-93f5-feada64522b2"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 378,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next-twenty-current-methods-acid-base-organic-author-v1/full-current378.book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:91e97bec9f6fdb03af850ded5615f9979a45052d8dffe8f7dc721a40e7908999"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:371a30a19cdee503227aca3db2a58cf4050b12a2a8ca54f56717a8a20f2bd7b4",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:0cf6054bfc9eb07c6f233679223986fc6c931da413e2ab62febc8b1de2cbe97a",
+    "reviewInputFingerprint": "sha256:cb37f29454f1b35919955aa092b0f6c6b5ace74d417b0e099e5bba29fc76ef37",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-next-twenty-methods-acid-base-organic-20261007-author-v1-a",
+        "campaignDigest": "sha256:4d692225ecb0876da05e6173720651786bd92b4eff556fbb35dfdb031d77604d",
+        "roundId": "chemie-next-twenty-methods-acid-base-organic-20261007-author-v1-first-pass-a",
+        "independenceGroupId": "chemie-next-twenty-methods-acid-base-organic-20261007-author-v1-independent-a",
+        "batchId": "chemie-next-twenty-methods-acid-base-organic-20261007-author-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:95dea5e819db69d43d80ddd68e0f8f4d8f9ae49e131a73f76711b7f5d2470853"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-next-twenty-methods-acid-base-organic-20261007-author-v1-b",
+        "campaignDigest": "sha256:7ff0f693ba1812b64582df1c2a70a67534ada239f38b4b29ec2cef39dc6e87ad",
+        "roundId": "chemie-next-twenty-methods-acid-base-organic-20261007-author-v1-first-pass-b",
+        "independenceGroupId": "chemie-next-twenty-methods-acid-base-organic-20261007-author-v1-independent-b",
+        "batchId": "chemie-next-twenty-methods-acid-base-organic-20261007-author-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:01f0904a388a13f6ab337cbd24f91909353cf94fc466ffbca7b6dea0a595cb0d"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

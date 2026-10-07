@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root/biology_q1_seven_visuals_independent_v",
+  "reviewerRole": "independent machine material reviewer A for Chemistry v9",
+  "authorOfChemistryV9": false,
+  "reviewedAtUTC": "2026-10-06T08:16:31.212325+00:00",
+  "nativeAApproval": false,
+  "nativePositiveUnderstandingEvidenceV2Approval": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "learnerPerformanceRecorded": false,
+  "strictCompletionsAdded": 0,
+  "restoredActiveBindings": 0,
+  "activeWrites": 0,
+  "artifactKind": "targeted-old-finding-resolution-and-new-scientific-finding",
+  "oldFindingResolutions": [
+    {
+      "findingId": "A-V8-01",
+      "caseIndicesZeroBased": [
+        13,
+        17,
+        43
+      ],
+      "decision": "resolved_for_current_targeted_materials",
+      "actualResolution": "The scale and temperature-confounding controls are corrected; blank/control/scatter are not blindly scaled."
+    },
+    {
+      "findingId": "B-v8-01",
+      "caseIndicesZeroBased": [
+        13,
+        17,
+        43
+      ],
+      "decision": "resolved_for_current_targeted_materials",
+      "actualResolution": "Official NaCl standard scale, explicit synthetic origin and matched-temperature control are coherent."
+    },
+    {
+      "findingId": "A-V8-02",
+      "caseIndicesZeroBased": [
+        44
+      ],
+      "decision": "resolved_for_current_targeted_materials",
+      "actualResolution": "The ambient dilute NaCl example now correctly uses heat uptake/cooling, with an appropriately bounded primary anchor."
+    },
+    {
+      "findingId": "A-V8-03",
+      "caseIndicesZeroBased": [
+        16
+      ],
+      "decision": "resolved_for_current_targeted_materials",
+      "actualResolution": "Follow-up specificity is a validation proposal; no missing X/Y identity is invented."
+    },
+    {
+      "findingId": "A-V8-04",
+      "caseIndicesZeroBased": [
+        9
+      ],
+      "decision": "resolved_for_current_targeted_materials",
+      "actualResolution": "The duplicate supplied dye paragraph is removed."
+    },
+    {
+      "findingId": "A-V8-05",
+      "caseIndicesZeroBased": [
+        45
+      ],
+      "decision": "resolved_for_current_targeted_materials",
+      "actualResolution": "The supplied hypothesis no longer requires unsupported comparison of differently bonded same-element substances."
+    },
+    {
+      "findingId": "B-v8-02",
+      "caseIndicesZeroBased": [
+        4,
+        6,
+        7,
+        8,
+        9
+      ],
+      "decision": "old_apparatus_finding_resolved_new_case9_transfer_finding_separate",
+      "actualResolution": "Known standards, actual temperature measurement/control, receiving vessels, named indicators/buffers and real volumetric equipment are provided. This closes the old apparatus omissions; the new out-of-range prediction is separately A-V9-01."
+    },
+    {
+      "findingId": "B-v8-03",
+      "caseIndicesZeroBased": [
+        10
+      ],
+      "decision": "resolved_for_current_targeted_materials",
+      "actualResolution": "R2/W3 is a separate fictional new event/source, never a retrospective measurement or overwritten R1 record."
+    }
+  ],
+  "newUnresolvedFindings": [
+    {
+      "findingId": "A-V9-01",
+      "severity": "scientific_revision_required",
+      "status": "open",
+      "affectedCaseIndexZeroBased": 9,
+      "affectedCaseKey": "upper-hypothesis-investigation-colour-analysis",
+      "affectedJSONPointers": [
+        "/cases/9/transfer/de",
+        "/cases/9/transfer/en"
+      ],
+      "suppliedPremises": {
+        "calibration": "A = 0.010 + 0.080*c, c in mg/L",
+        "validatedConcentrationRange_mg_L": [
+          0,
+          6
+        ],
+        "outOfRangeAbsorbance": 0.81,
+        "nominalTrialDilutionFactor": 2
+      },
+      "actualProblem": "The asserted diluted A approximately 0.410 / c 5.0 does not follow from a calibration explicitly limited to 0-6 mg/L and the out-of-range undiluted signal. Calling the arithmetic a teaching model or non-performance does not independently validate the extension.",
+      "independentCalculation": {
+        "maximumInRangeAbsorbance": 0.49,
+        "outsideRange": true,
+        "unvalidatedInvertedConcentration_mg_L": 10.0,
+        "unvalidatedHalfConcentration_mg_L": 5.0,
+        "conditionalHalfSignalWithBlankPreserved": 0.41
+      },
+      "minimalCorrectionOptions": [
+        "Keep the factor-2 dilution as a justified trial. Remove the predetermined A/c answer and require a newly supplied or actually measured in-range reading; repeat dilution if the reading remains outside the range.",
+        "Supply A = 0.410 explicitly as an additional new synthetic reading after the dilution, not as a prediction derived from A = 0.810. Then (0.410-0.010)/0.080 = 5.0 mg/L and factor-2 back-calculation use only valid new inputs."
+      ],
+      "localizedReviewNeededAfterCorrection": "Only changed DE/EN transfer premises/response and any directly changed derived material fields. Preserve the valid volumetric apparatus, unchanged profiles/descriptions and the other 11 case decisions.",
+      "blocks": "Approval of this v9 transfer field and a complete material clearance for its affected profile; does not invalidate the 40 unchanged historical cases or confer any native gate result."
+    }
+  ],
+  "allCurrentTwelveMaterialsClear": false
+}

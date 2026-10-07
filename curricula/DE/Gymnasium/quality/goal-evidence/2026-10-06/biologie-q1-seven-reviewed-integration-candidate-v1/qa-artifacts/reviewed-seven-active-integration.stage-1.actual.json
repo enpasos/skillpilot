@@ -1,0 +1,707 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-06T08:17:36.337702+00:00",
+  "role": "actual integration of independently reviewed seven-goal candidate; fresh active central/native checks still required",
+  "inputFreezePins": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-final-native-review-inputs-author-v1/final-native-review-inputs.author-v1.freeze.json",
+      "sha256": "7594c80e665828238463b965f12b18df845a3c17fbfe19dc17e1ed35a5247d70"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-final-native-d-independent-a-v1/independent-d-a.final.freeze.json",
+      "sha256": "5a145212d6a28432d16f3e5a90e1d1ed954ec81d4a25b51d787c771ff31a805e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-final-native-d-independent-b-v1/native-d-independent-b.final.freeze.json",
+      "sha256": "cabe0e8086badbf29488f7c18184f8669f07d5cf67a7dfca9f6acebf8bf4aadf"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-final-native-positive-independent-a-v1/independent-p-a.final.freeze.json",
+      "sha256": "ac5d341dcd070f5e04b1529360248238dd216361ec0f39c5fa34c6ac846e0d8d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-final-native-p-independent-b-v1/native-p-independent-b.final.freeze.json",
+      "sha256": "1060c36a615c9bac782a8b8dc8c35846097e4eb919df95ac1ebb23fd7446eac1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-independent-b-v1/targeted-integration-independent-b.final.freeze.json",
+      "sha256": "bae3414415f26bde4bcb6c71ae67cb371bfe2eaae0631a64e9a01752460b86f6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-seven-new-visuals-independent-v-qa-v1/independent-visual-review.final.freeze.json",
+      "sha256": "6320646059702bb78de426ea84a14238fc463a060b664e7e5e5639aa12d685cb"
+    }
+  ],
+  "current19InputsVerifiedBeforeIntegration": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "21303dff0ad4a2ffe389629535d6fd1d31c81cd817660d47b38e10c1b434afea",
+      "bytes": 152400
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/in-flight-work-ledger.json",
+      "sha256": "e5673e764730268310ebfe100c0963ae2487ce0c8b9bc4509c8bd1597c267874",
+      "bytes": 1743
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "764c11d951d28be38709d8b01b5eb6d4b3be71e87d9daf5ea4d1dc46f67529a0",
+      "bytes": 1419221
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "b3cb528491bde1905fb184f88211da40865cffa4bbfcf7219a978752bb67e300",
+      "bytes": 983399
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "76047cec422c555aacd1e04bff597c4f8a70d8ffed5f214ed7412c828bc34898",
+      "bytes": 3714635
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "ad764d083e390ab60f808ecbffb363ac914026894e82c09c977425311ec7ea44",
+      "bytes": 2511173
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+      "sha256": "d16aa527265d69c200be7ebd7e7f664a9d6b273af4f8fded64c43b286b5e0f54",
+      "bytes": 153884
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json",
+      "sha256": "9eda9bf03bfc2139e999c469fe3be7532ed3abab80673b6313483eb40d0c0e55",
+      "bytes": 877175
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-baseline.json",
+      "sha256": "27416ff078503ffd5b33084a78226c2a83ab5534519bfcf2b74323149339a817",
+      "bytes": 44499
+    },
+    {
+      "path": "app/scripts/config/curriculum-maturity-floor-policy.json",
+      "sha256": "bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243
+    },
+    {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "1937ee365f8d4a69dc9962feec0858ef3ef63fb2eb165a809ae46e1046e588f0",
+      "bytes": 55340
+    },
+    {
+      "path": "app/scripts/sourceCoverageAndApplicabilityRegression.test.ts",
+      "sha256": "36b8ea3f4f17dc29e30abf95255b8c5b45a2117fd5a22dead9d23bd575143864",
+      "bytes": 9288
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json",
+      "sha256": "665f82867dc9019b7bdb369903b9ebad3ac726b1e8ab2bc08476606032230b2a",
+      "bytes": 16164
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/source-projection.receipt.json",
+      "sha256": "f2b2b514c91db2b56acb77c57a2043d8bccdbeb6996aeecfedb79624ef708d32",
+      "bytes": 7422458
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.json",
+      "sha256": "fcc381c7c0fc9b18c78180f241c80aa87152b12931fa6111e7e2bda9e3d7b801",
+      "bytes": 2750953
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.md",
+      "sha256": "b65045dd35054b8b5e5f2ec72a01999274deed3279a79a47786c1c98e901b0f9",
+      "bytes": 65168
+    },
+    {
+      "path": "docs/qa-ci/status/memory-card-review-canonical-chemistry-current378.md",
+      "sha256": "69e72f9510d5e25ec7d1efa437a74bf28d958ccf5a869c12615946148d06e147",
+      "bytes": 46475
+    },
+    {
+      "path": "docs/legal/ai-transparency-inventory.json",
+      "sha256": "76584581f80772b89a2fea21181f52ff67e837c10e4774a38dc226a78d699797",
+      "bytes": 33221
+    },
+    {
+      "path": "docs/qa-ci/chemie-biologie-m7-chemistry-53-current-bindings-continuation-2026-10-06.md",
+      "sha256": "a8ecc7cc6bf57a1cfb3753c74592d9ae283ecde49bbc4fad83c2342fc2c4d570",
+      "bytes": 10216
+    }
+  ],
+  "old464IdsPreserved": true,
+  "oldGoalFieldChanges": {
+    "rootContainsOnly": "e8d54127-d42e-51f5-bfa5-51d826069f95"
+  },
+  "sevenNewGoalIds": [
+    "ac9e824f-003c-50ac-8751-2b8456004c63",
+    "5eb7c923-469d-5934-b1e8-292e1bb40d95",
+    "bfb5dfb6-8e35-5452-b581-96e061d8b826",
+    "3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04",
+    "9d830422-acc7-5fa8-aee9-4dae4cedbf49",
+    "d0c3e6a7-581b-57bd-8027-e940c6b77af8",
+    "aab2a358-b2ee-57a5-a957-8fb9845506b1"
+  ],
+  "currentCurricularAtomicCount": 390,
+  "actualCopiedAssets": [
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/curricula/DE/Gymnasium/visualizations/biologie/ac9e824f-003c-50ac-8751-2b8456004c63/ac9e824f-003c-50ac-8751-2b8456004c63.png",
+        "sha256": "3dd79827436f6550ebd24066eb76b1c1df2958c22a6a19252b5ebc37ab361963",
+        "bytes": 1423580
+      },
+      "destination": {
+        "path": "curricula/DE/Gymnasium/visualizations/biologie/ac9e824f-003c-50ac-8751-2b8456004c63/ac9e824f-003c-50ac-8751-2b8456004c63.png",
+        "sha256": "3dd79827436f6550ebd24066eb76b1c1df2958c22a6a19252b5ebc37ab361963",
+        "bytes": 1423580
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/curricula/DE/Gymnasium/visualizations/biologie/ac9e824f-003c-50ac-8751-2b8456004c63/prompt.de.md",
+        "sha256": "1f9c4d4085cac23867c76c7e79f843276e32dda636d7b7bdabd09c18680c8a4c",
+        "bytes": 2597
+      },
+      "destination": {
+        "path": "curricula/DE/Gymnasium/visualizations/biologie/ac9e824f-003c-50ac-8751-2b8456004c63/prompt.de.md",
+        "sha256": "1f9c4d4085cac23867c76c7e79f843276e32dda636d7b7bdabd09c18680c8a4c",
+        "bytes": 2597
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/app/public/assets/goal-visualizations/biologie/ac9e824f-003c-50ac-8751-2b8456004c63/ac9e824f-003c-50ac-8751-2b8456004c63.png",
+        "sha256": "3dd79827436f6550ebd24066eb76b1c1df2958c22a6a19252b5ebc37ab361963",
+        "bytes": 1423580
+      },
+      "destination": {
+        "path": "app/public/assets/goal-visualizations/biologie/ac9e824f-003c-50ac-8751-2b8456004c63/ac9e824f-003c-50ac-8751-2b8456004c63.png",
+        "sha256": "3dd79827436f6550ebd24066eb76b1c1df2958c22a6a19252b5ebc37ab361963",
+        "bytes": 1423580
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/backend/src/main/resources/static/assets/goal-visualizations/biologie/ac9e824f-003c-50ac-8751-2b8456004c63/ac9e824f-003c-50ac-8751-2b8456004c63.png",
+        "sha256": "3dd79827436f6550ebd24066eb76b1c1df2958c22a6a19252b5ebc37ab361963",
+        "bytes": 1423580
+      },
+      "destination": {
+        "path": "backend/src/main/resources/static/assets/goal-visualizations/biologie/ac9e824f-003c-50ac-8751-2b8456004c63/ac9e824f-003c-50ac-8751-2b8456004c63.png",
+        "sha256": "3dd79827436f6550ebd24066eb76b1c1df2958c22a6a19252b5ebc37ab361963",
+        "bytes": 1423580
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/curricula/DE/Gymnasium/visualizations/biologie/bfb5dfb6-8e35-5452-b581-96e061d8b826/bfb5dfb6-8e35-5452-b581-96e061d8b826.png",
+        "sha256": "a5ca1ee2e28de7a3a9f20e6df6f81ce79394a07920b66e1ae1eebd9ef8111c94",
+        "bytes": 1438127
+      },
+      "destination": {
+        "path": "curricula/DE/Gymnasium/visualizations/biologie/bfb5dfb6-8e35-5452-b581-96e061d8b826/bfb5dfb6-8e35-5452-b581-96e061d8b826.png",
+        "sha256": "a5ca1ee2e28de7a3a9f20e6df6f81ce79394a07920b66e1ae1eebd9ef8111c94",
+        "bytes": 1438127
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/curricula/DE/Gymnasium/visualizations/biologie/bfb5dfb6-8e35-5452-b581-96e061d8b826/prompt.de.md",
+        "sha256": "7bb2e97bf3252f2592e6afc896470b7e35de98dda33cfe6bcb7d1710d59a3bbe",
+        "bytes": 2641
+      },
+      "destination": {
+        "path": "curricula/DE/Gymnasium/visualizations/biologie/bfb5dfb6-8e35-5452-b581-96e061d8b826/prompt.de.md",
+        "sha256": "7bb2e97bf3252f2592e6afc896470b7e35de98dda33cfe6bcb7d1710d59a3bbe",
+        "bytes": 2641
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/app/public/assets/goal-visualizations/biologie/bfb5dfb6-8e35-5452-b581-96e061d8b826/bfb5dfb6-8e35-5452-b581-96e061d8b826.png",
+        "sha256": "a5ca1ee2e28de7a3a9f20e6df6f81ce79394a07920b66e1ae1eebd9ef8111c94",
+        "bytes": 1438127
+      },
+      "destination": {
+        "path": "app/public/assets/goal-visualizations/biologie/bfb5dfb6-8e35-5452-b581-96e061d8b826/bfb5dfb6-8e35-5452-b581-96e061d8b826.png",
+        "sha256": "a5ca1ee2e28de7a3a9f20e6df6f81ce79394a07920b66e1ae1eebd9ef8111c94",
+        "bytes": 1438127
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/backend/src/main/resources/static/assets/goal-visualizations/biologie/bfb5dfb6-8e35-5452-b581-96e061d8b826/bfb5dfb6-8e35-5452-b581-96e061d8b826.png",
+        "sha256": "a5ca1ee2e28de7a3a9f20e6df6f81ce79394a07920b66e1ae1eebd9ef8111c94",
+        "bytes": 1438127
+      },
+      "destination": {
+        "path": "backend/src/main/resources/static/assets/goal-visualizations/biologie/bfb5dfb6-8e35-5452-b581-96e061d8b826/bfb5dfb6-8e35-5452-b581-96e061d8b826.png",
+        "sha256": "a5ca1ee2e28de7a3a9f20e6df6f81ce79394a07920b66e1ae1eebd9ef8111c94",
+        "bytes": 1438127
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/curricula/DE/Gymnasium/visualizations/biologie/5eb7c923-469d-5934-b1e8-292e1bb40d95/5eb7c923-469d-5934-b1e8-292e1bb40d95.png",
+        "sha256": "08ace2996270f07c337be25e569ade97b7e008b2ccb822a9b1fd6be11fd27a56",
+        "bytes": 1442203
+      },
+      "destination": {
+        "path": "curricula/DE/Gymnasium/visualizations/biologie/5eb7c923-469d-5934-b1e8-292e1bb40d95/5eb7c923-469d-5934-b1e8-292e1bb40d95.png",
+        "sha256": "08ace2996270f07c337be25e569ade97b7e008b2ccb822a9b1fd6be11fd27a56",
+        "bytes": 1442203
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/curricula/DE/Gymnasium/visualizations/biologie/5eb7c923-469d-5934-b1e8-292e1bb40d95/prompt.de.md",
+        "sha256": "49e7a314d6e2c430282222190083a26265cb2f4960f133a183c22e6ab519135a",
+        "bytes": 2865
+      },
+      "destination": {
+        "path": "curricula/DE/Gymnasium/visualizations/biologie/5eb7c923-469d-5934-b1e8-292e1bb40d95/prompt.de.md",
+        "sha256": "49e7a314d6e2c430282222190083a26265cb2f4960f133a183c22e6ab519135a",
+        "bytes": 2865
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/app/public/assets/goal-visualizations/biologie/5eb7c923-469d-5934-b1e8-292e1bb40d95/5eb7c923-469d-5934-b1e8-292e1bb40d95.png",
+        "sha256": "08ace2996270f07c337be25e569ade97b7e008b2ccb822a9b1fd6be11fd27a56",
+        "bytes": 1442203
+      },
+      "destination": {
+        "path": "app/public/assets/goal-visualizations/biologie/5eb7c923-469d-5934-b1e8-292e1bb40d95/5eb7c923-469d-5934-b1e8-292e1bb40d95.png",
+        "sha256": "08ace2996270f07c337be25e569ade97b7e008b2ccb822a9b1fd6be11fd27a56",
+        "bytes": 1442203
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/backend/src/main/resources/static/assets/goal-visualizations/biologie/5eb7c923-469d-5934-b1e8-292e1bb40d95/5eb7c923-469d-5934-b1e8-292e1bb40d95.png",
+        "sha256": "08ace2996270f07c337be25e569ade97b7e008b2ccb822a9b1fd6be11fd27a56",
+        "bytes": 1442203
+      },
+      "destination": {
+        "path": "backend/src/main/resources/static/assets/goal-visualizations/biologie/5eb7c923-469d-5934-b1e8-292e1bb40d95/5eb7c923-469d-5934-b1e8-292e1bb40d95.png",
+        "sha256": "08ace2996270f07c337be25e569ade97b7e008b2ccb822a9b1fd6be11fd27a56",
+        "bytes": 1442203
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/curricula/DE/Gymnasium/visualizations/biologie/3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04/3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04.png",
+        "sha256": "a0f7f1f1a521d9c89d2658c8557fbb9c09e40cd34cfd52eea5fff58299247f45",
+        "bytes": 1791341
+      },
+      "destination": {
+        "path": "curricula/DE/Gymnasium/visualizations/biologie/3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04/3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04.png",
+        "sha256": "a0f7f1f1a521d9c89d2658c8557fbb9c09e40cd34cfd52eea5fff58299247f45",
+        "bytes": 1791341
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/curricula/DE/Gymnasium/visualizations/biologie/3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04/prompt.de.md",
+        "sha256": "33c615f10e2953b8bf5888cc5d812f5ee47ee75fe5ad88a4763423c150c368dd",
+        "bytes": 2217
+      },
+      "destination": {
+        "path": "curricula/DE/Gymnasium/visualizations/biologie/3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04/prompt.de.md",
+        "sha256": "33c615f10e2953b8bf5888cc5d812f5ee47ee75fe5ad88a4763423c150c368dd",
+        "bytes": 2217
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/app/public/assets/goal-visualizations/biologie/3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04/3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04.png",
+        "sha256": "a0f7f1f1a521d9c89d2658c8557fbb9c09e40cd34cfd52eea5fff58299247f45",
+        "bytes": 1791341
+      },
+      "destination": {
+        "path": "app/public/assets/goal-visualizations/biologie/3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04/3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04.png",
+        "sha256": "a0f7f1f1a521d9c89d2658c8557fbb9c09e40cd34cfd52eea5fff58299247f45",
+        "bytes": 1791341
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/backend/src/main/resources/static/assets/goal-visualizations/biologie/3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04/3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04.png",
+        "sha256": "a0f7f1f1a521d9c89d2658c8557fbb9c09e40cd34cfd52eea5fff58299247f45",
+        "bytes": 1791341
+      },
+      "destination": {
+        "path": "backend/src/main/resources/static/assets/goal-visualizations/biologie/3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04/3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04.png",
+        "sha256": "a0f7f1f1a521d9c89d2658c8557fbb9c09e40cd34cfd52eea5fff58299247f45",
+        "bytes": 1791341
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/curricula/DE/Gymnasium/visualizations/biologie/9d830422-acc7-5fa8-aee9-4dae4cedbf49/9d830422-acc7-5fa8-aee9-4dae4cedbf49.png",
+        "sha256": "cebb8eaf7eb8509675c3f29a4b8fed4ffc73a6066ac5dab09eb8f9ca02b8f5ad",
+        "bytes": 1364000
+      },
+      "destination": {
+        "path": "curricula/DE/Gymnasium/visualizations/biologie/9d830422-acc7-5fa8-aee9-4dae4cedbf49/9d830422-acc7-5fa8-aee9-4dae4cedbf49.png",
+        "sha256": "cebb8eaf7eb8509675c3f29a4b8fed4ffc73a6066ac5dab09eb8f9ca02b8f5ad",
+        "bytes": 1364000
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/curricula/DE/Gymnasium/visualizations/biologie/9d830422-acc7-5fa8-aee9-4dae4cedbf49/prompt.de.md",
+        "sha256": "98a0aebb00c2b53a43d4ac8d2537285e52b753a1cc40e81ba69311e669f4cd9d",
+        "bytes": 2337
+      },
+      "destination": {
+        "path": "curricula/DE/Gymnasium/visualizations/biologie/9d830422-acc7-5fa8-aee9-4dae4cedbf49/prompt.de.md",
+        "sha256": "98a0aebb00c2b53a43d4ac8d2537285e52b753a1cc40e81ba69311e669f4cd9d",
+        "bytes": 2337
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/app/public/assets/goal-visualizations/biologie/9d830422-acc7-5fa8-aee9-4dae4cedbf49/9d830422-acc7-5fa8-aee9-4dae4cedbf49.png",
+        "sha256": "cebb8eaf7eb8509675c3f29a4b8fed4ffc73a6066ac5dab09eb8f9ca02b8f5ad",
+        "bytes": 1364000
+      },
+      "destination": {
+        "path": "app/public/assets/goal-visualizations/biologie/9d830422-acc7-5fa8-aee9-4dae4cedbf49/9d830422-acc7-5fa8-aee9-4dae4cedbf49.png",
+        "sha256": "cebb8eaf7eb8509675c3f29a4b8fed4ffc73a6066ac5dab09eb8f9ca02b8f5ad",
+        "bytes": 1364000
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/backend/src/main/resources/static/assets/goal-visualizations/biologie/9d830422-acc7-5fa8-aee9-4dae4cedbf49/9d830422-acc7-5fa8-aee9-4dae4cedbf49.png",
+        "sha256": "cebb8eaf7eb8509675c3f29a4b8fed4ffc73a6066ac5dab09eb8f9ca02b8f5ad",
+        "bytes": 1364000
+      },
+      "destination": {
+        "path": "backend/src/main/resources/static/assets/goal-visualizations/biologie/9d830422-acc7-5fa8-aee9-4dae4cedbf49/9d830422-acc7-5fa8-aee9-4dae4cedbf49.png",
+        "sha256": "cebb8eaf7eb8509675c3f29a4b8fed4ffc73a6066ac5dab09eb8f9ca02b8f5ad",
+        "bytes": 1364000
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/curricula/DE/Gymnasium/visualizations/biologie/d0c3e6a7-581b-57bd-8027-e940c6b77af8/d0c3e6a7-581b-57bd-8027-e940c6b77af8.png",
+        "sha256": "066393177fc5245452cf8efbea3fe248bb0ffc179dbad7036e8f240748fed0a6",
+        "bytes": 1611499
+      },
+      "destination": {
+        "path": "curricula/DE/Gymnasium/visualizations/biologie/d0c3e6a7-581b-57bd-8027-e940c6b77af8/d0c3e6a7-581b-57bd-8027-e940c6b77af8.png",
+        "sha256": "066393177fc5245452cf8efbea3fe248bb0ffc179dbad7036e8f240748fed0a6",
+        "bytes": 1611499
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/curricula/DE/Gymnasium/visualizations/biologie/d0c3e6a7-581b-57bd-8027-e940c6b77af8/prompt.de.md",
+        "sha256": "24b468df5b0435aae979ebcc20638f3c346aedc80103c9e488fb79c2f67e6557",
+        "bytes": 2723
+      },
+      "destination": {
+        "path": "curricula/DE/Gymnasium/visualizations/biologie/d0c3e6a7-581b-57bd-8027-e940c6b77af8/prompt.de.md",
+        "sha256": "24b468df5b0435aae979ebcc20638f3c346aedc80103c9e488fb79c2f67e6557",
+        "bytes": 2723
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/app/public/assets/goal-visualizations/biologie/d0c3e6a7-581b-57bd-8027-e940c6b77af8/d0c3e6a7-581b-57bd-8027-e940c6b77af8.png",
+        "sha256": "066393177fc5245452cf8efbea3fe248bb0ffc179dbad7036e8f240748fed0a6",
+        "bytes": 1611499
+      },
+      "destination": {
+        "path": "app/public/assets/goal-visualizations/biologie/d0c3e6a7-581b-57bd-8027-e940c6b77af8/d0c3e6a7-581b-57bd-8027-e940c6b77af8.png",
+        "sha256": "066393177fc5245452cf8efbea3fe248bb0ffc179dbad7036e8f240748fed0a6",
+        "bytes": 1611499
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/backend/src/main/resources/static/assets/goal-visualizations/biologie/d0c3e6a7-581b-57bd-8027-e940c6b77af8/d0c3e6a7-581b-57bd-8027-e940c6b77af8.png",
+        "sha256": "066393177fc5245452cf8efbea3fe248bb0ffc179dbad7036e8f240748fed0a6",
+        "bytes": 1611499
+      },
+      "destination": {
+        "path": "backend/src/main/resources/static/assets/goal-visualizations/biologie/d0c3e6a7-581b-57bd-8027-e940c6b77af8/d0c3e6a7-581b-57bd-8027-e940c6b77af8.png",
+        "sha256": "066393177fc5245452cf8efbea3fe248bb0ffc179dbad7036e8f240748fed0a6",
+        "bytes": 1611499
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/curricula/DE/Gymnasium/visualizations/biologie/aab2a358-b2ee-57a5-a957-8fb9845506b1/aab2a358-b2ee-57a5-a957-8fb9845506b1.png",
+        "sha256": "aa13ef1c9f87ad3900b8f2a57896ccf9a26e8a1f3844a44624cc5dff3fb89144",
+        "bytes": 1509565
+      },
+      "destination": {
+        "path": "curricula/DE/Gymnasium/visualizations/biologie/aab2a358-b2ee-57a5-a957-8fb9845506b1/aab2a358-b2ee-57a5-a957-8fb9845506b1.png",
+        "sha256": "aa13ef1c9f87ad3900b8f2a57896ccf9a26e8a1f3844a44624cc5dff3fb89144",
+        "bytes": 1509565
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/curricula/DE/Gymnasium/visualizations/biologie/aab2a358-b2ee-57a5-a957-8fb9845506b1/prompt.de.md",
+        "sha256": "0bc5b30cebddd659fb7968229efd5be4030303067eac5c693c2f43dc499e6dc3",
+        "bytes": 2607
+      },
+      "destination": {
+        "path": "curricula/DE/Gymnasium/visualizations/biologie/aab2a358-b2ee-57a5-a957-8fb9845506b1/prompt.de.md",
+        "sha256": "0bc5b30cebddd659fb7968229efd5be4030303067eac5c693c2f43dc499e6dc3",
+        "bytes": 2607
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/app/public/assets/goal-visualizations/biologie/aab2a358-b2ee-57a5-a957-8fb9845506b1/aab2a358-b2ee-57a5-a957-8fb9845506b1.png",
+        "sha256": "aa13ef1c9f87ad3900b8f2a57896ccf9a26e8a1f3844a44624cc5dff3fb89144",
+        "bytes": 1509565
+      },
+      "destination": {
+        "path": "app/public/assets/goal-visualizations/biologie/aab2a358-b2ee-57a5-a957-8fb9845506b1/aab2a358-b2ee-57a5-a957-8fb9845506b1.png",
+        "sha256": "aa13ef1c9f87ad3900b8f2a57896ccf9a26e8a1f3844a44624cc5dff3fb89144",
+        "bytes": 1509565
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-new-visuals-author-v1/native-helper-output/backend/src/main/resources/static/assets/goal-visualizations/biologie/aab2a358-b2ee-57a5-a957-8fb9845506b1/aab2a358-b2ee-57a5-a957-8fb9845506b1.png",
+        "sha256": "aa13ef1c9f87ad3900b8f2a57896ccf9a26e8a1f3844a44624cc5dff3fb89144",
+        "bytes": 1509565
+      },
+      "destination": {
+        "path": "backend/src/main/resources/static/assets/goal-visualizations/biologie/aab2a358-b2ee-57a5-a957-8fb9845506b1/aab2a358-b2ee-57a5-a957-8fb9845506b1.png",
+        "sha256": "aa13ef1c9f87ad3900b8f2a57896ccf9a26e8a1f3844a44624cc5dff3fb89144",
+        "bytes": 1509565
+      }
+    }
+  ],
+  "sourceChanges": [
+    {
+      "region": "BE",
+      "extraction": {
+        "path": "curricula/DE/Gymnasium/input/BE/source-components/DE_BE_BIOLOGIE_GENETICS_COMPONENTS.author-v6.source-extraction.json",
+        "sha256": "489d173d25c8c449777659a84e05c1f16cd95bb3130d6d79d89ea3c2de1e7952",
+        "bytes": 6195
+      },
+      "mapping": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-BE/source-components/be_biology_genetics_components.author-v6.review.json",
+        "sha256": "1c8a9c8ec378d35d1abedd8d35b8da720e4b268ef6b35ab624319cfb964aa71e",
+        "bytes": 2995
+      },
+      "onlyReviewedMetadataAndPathDeltas": [
+        {
+          "sourceGoalId": "b5a3475c-8c94-5266-9aba-c0311f3b3273",
+          "field": "independentReviewStatus",
+          "before": "pending",
+          "after": "machine_reviewed_by_two_independent_reviews"
+        }
+      ],
+      "wholeOriginalSourceCoverage": false
+    },
+    {
+      "region": "BB",
+      "extraction": {
+        "path": "curricula/DE/Gymnasium/input/BB/source-components/DE_BB_BIOLOGIE_GENETICS_COMPONENTS.author-v6.source-extraction.json",
+        "sha256": "24b5ca964af8d1468bd378931eadd0d34b5ba4624c3d84e68cf89e0a5e30129e",
+        "bytes": 6195
+      },
+      "mapping": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-BB/source-components/bb_biology_genetics_components.author-v6.review.json",
+        "sha256": "a5e0529dbcfaaed824b94d1462c5790ab05160c13496e402ebf5a8905440d85d",
+        "bytes": 2955
+      },
+      "onlyReviewedMetadataAndPathDeltas": [
+        {
+          "sourceGoalId": "a49195cc-484e-5a83-bbd4-5b3ec6b1fc89",
+          "field": "independentReviewStatus",
+          "before": "pending",
+          "after": "machine_reviewed_by_two_independent_reviews"
+        }
+      ],
+      "wholeOriginalSourceCoverage": false
+    },
+    {
+      "region": "SN",
+      "extraction": {
+        "path": "curricula/DE/Gymnasium/input/SN/source-components/DE_SN_BIOLOGIE_GENETICS_COMPONENTS.author-v6.source-extraction.json",
+        "sha256": "30e2898d7da72e3bfa4f4933dfa383289b17fdedab207599902e09f2ec963982",
+        "bytes": 11308
+      },
+      "mapping": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-SN/source-components/sn_biology_genetics_components.author-v6.review.json",
+        "sha256": "50c9839feb99bf94be091c9162a4009b82436cd5a2cb258e01b75aa3deaee0f9",
+        "bytes": 3960
+      },
+      "onlyReviewedMetadataAndPathDeltas": [
+        {
+          "sourceGoalId": "0fad3f2a-c295-51c6-a629-7f6f253be415",
+          "field": "independentReviewStatus",
+          "before": "pending",
+          "after": "machine_reviewed_by_two_independent_reviews"
+        },
+        {
+          "sourceGoalId": "d2808272-cc04-5ed3-a3f2-05e3a23bf363",
+          "field": "independentReviewStatus",
+          "before": "pending",
+          "after": "machine_reviewed_by_two_independent_reviews"
+        }
+      ],
+      "wholeOriginalSourceCoverage": false
+    },
+    {
+      "region": "TH",
+      "extraction": {
+        "path": "curricula/DE/Gymnasium/input/TH/source-components/DE_TH_BIOLOGIE_GENETICS_COMPONENTS.author-v6.source-extraction.json",
+        "sha256": "c98473d387d0318c335b7d8a93d9031f05b80205dc5757104553704a5f4f9e22",
+        "bytes": 15351
+      },
+      "mapping": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-TH/source-components/th_biology_genetics_components.author-v6.review.json",
+        "sha256": "c9aaea55c2e5d769977fc8dc768fe36a87168c6ca4de4224de41caa202c95abe",
+        "bytes": 4856
+      },
+      "onlyReviewedMetadataAndPathDeltas": [
+        {
+          "sourceGoalId": "18546eff-ca07-5859-9cc4-bd3bed02210b",
+          "field": "independentReviewStatus",
+          "before": "pending",
+          "after": "machine_reviewed_by_two_independent_reviews"
+        },
+        {
+          "sourceGoalId": "5c5869b6-61f6-5277-9a90-e99d20479735",
+          "field": "independentReviewStatus",
+          "before": "pending",
+          "after": "machine_reviewed_by_two_independent_reviews"
+        },
+        {
+          "sourceGoalId": "f790bd90-34a2-5ccc-9e53-75420aece69e",
+          "field": "independentReviewStatus",
+          "before": "pending",
+          "after": "machine_reviewed_by_two_independent_reviews"
+        }
+      ],
+      "wholeOriginalSourceCoverage": false
+    },
+    {
+      "region": "MV",
+      "extraction": {
+        "path": "curricula/DE/Gymnasium/input/MV/source-components/DE_MV_BIOLOGIE_GENETICS_COMPONENTS.author-v6.source-extraction.json",
+        "sha256": "f8ec1ab4a2119df1236e0bee20a1d5d5787ab25ee9624266a8f05a3f2a2be8f9",
+        "bytes": 18082
+      },
+      "mapping": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-MV/source-components/mv_biology_genetics_components.author-v6.review.json",
+        "sha256": "9c2bfe5d6fb18b95409f26d0168aa92de271913bf6414ac8d47b7c0b4ecdd192",
+        "bytes": 4862
+      },
+      "onlyReviewedMetadataAndPathDeltas": [
+        {
+          "sourceGoalId": "9fb911ba-27d7-5dda-b7f4-cdf412764f3c",
+          "field": "independentReviewStatus",
+          "before": "pending",
+          "after": "machine_reviewed_by_two_independent_reviews"
+        },
+        {
+          "sourceGoalId": "69296861-8c08-5285-9f50-8263c66df8ec",
+          "field": "independentReviewStatus",
+          "before": "pending",
+          "after": "machine_reviewed_by_two_independent_reviews"
+        },
+        {
+          "sourceGoalId": "0ae9e55e-aef3-5dba-a004-8919e00374f1",
+          "field": "independentReviewStatus",
+          "before": "pending",
+          "after": "machine_reviewed_by_two_independent_reviews"
+        }
+      ],
+      "wholeOriginalSourceCoverage": false
+    },
+    {
+      "region": "ST",
+      "extraction": {
+        "path": "curricula/DE/Gymnasium/input/ST/source-components/DE_ST_BIOLOGIE_GENETICS_COMPONENTS.author-v6.source-extraction.json",
+        "sha256": "175d1fa3e8fa9574c8ff5aadb126aae6e68213fe44b705b31d1e0d411bac8017",
+        "bytes": 16969
+      },
+      "mapping": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-ST/source-components/st_biology_genetics_components.author-v6.review.json",
+        "sha256": "3acdba0b90a8c9ba3ce33a56c4757b12b98b98996341d978bc8b415ac5761b9e",
+        "bytes": 5192
+      },
+      "onlyReviewedMetadataAndPathDeltas": [
+        {
+          "sourceGoalId": "de5c970b-6441-56b1-9e2e-6469858fee0b",
+          "field": "independentReviewStatus",
+          "before": "pending",
+          "after": "machine_reviewed_by_two_independent_reviews"
+        },
+        {
+          "sourceGoalId": "fa656b94-12e7-5bdd-809c-fbef405278ad",
+          "field": "independentReviewStatus",
+          "before": "pending",
+          "after": "machine_reviewed_by_two_independent_reviews"
+        },
+        {
+          "sourceGoalId": "dbe5f84a-86a7-50cf-8761-78ef867aeb44",
+          "field": "independentReviewStatus",
+          "before": "pending",
+          "after": "machine_reviewed_by_two_independent_reviews"
+        }
+      ],
+      "wholeOriginalSourceCoverage": false
+    }
+  ],
+  "wholeOriginalSourceIssuesClosed": 0,
+  "fullCurrentGUIViews": [
+    {
+      "previous": {
+        "path": "curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-biology-gk.view.json",
+        "sha256": "4c6c11ccf1feba7a1cee085aec0db376d638162a8781e9bf74b2066a408ceebc",
+        "bytes": 4882
+      },
+      "candidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-candidate-v1/views/de-de-gym-biology-gk.view.json",
+        "sha256": "f9adebbf326535723fc6b980a9487de09f54c8bedd0bb702faf45de4bec43f08",
+        "bytes": 7467
+      },
+      "current": {
+        "path": "curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-biology-gk.view.json",
+        "sha256": "f9adebbf326535723fc6b980a9487de09f54c8bedd0bb702faf45de4bec43f08",
+        "bytes": 7467
+      }
+    },
+    {
+      "previous": {
+        "path": "curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-seki-biology.view.json",
+        "sha256": "9b179a8157f181a1ba24b0ccbd9e3c7ffe201ad60579290d5f5b0a1fd8e640c6",
+        "bytes": 2490
+      },
+      "candidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-candidate-v1/views/de-de-gym-seki-biology.view.json",
+        "sha256": "620d011dd38488e72dd4cadaf54859e21974ad26377369e1464c71a2574d60ee",
+        "bytes": 4312
+      },
+      "current": {
+        "path": "curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-seki-biology.view.json",
+        "sha256": "620d011dd38488e72dd4cadaf54859e21974ad26377369e1464c71a2574d60ee",
+        "bytes": 4312
+      }
+    }
+  ],
+  "registeredNativeDIndex": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q1-seven-reviewed-integration-candidate-v1/native-d-seven/resolution-index.json",
+  "nativeActiveChecks": "pending",
+  "strictCompletionsCountedNow": 0,
+  "newScientificCompletionsCountedNow": 0,
+  "restoredActiveBindingsCountedNow": 0,
+  "humanApproval": false,
+  "humanTrial": false,
+  "runtimeCodeChanged": false,
+  "publication": false,
+  "deployment": false
+}

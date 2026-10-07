@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-06T19:35:55.280948+00:00",
+  "goalId": "dd58c029-176f-5d99-923e-1c1fda6cf58e",
+  "cardId": "chem_org_q1_001",
+  "role": "New concrete selected-goal Memory card correctness finding while inspecting required existing deck; no general card review restart",
+  "before": {
+    "id": "chem_org_q1_001",
+    "front": "Alkane, Alkene, Alkine: Bindung und allgemeine Formel?",
+    "back": "Acyclisch:\n\nAlkane: Einfachbindungen, $C_nH_{2n+2}$\n\nAlkene: mindestens eine Doppelbindung, $C_nH_{2n}$\n\nAlkine: mindestens eine Dreifachbindung, $C_nH_{2n-2}$",
+    "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+    "tags": [
+      "GK",
+      "LK",
+      "goal:dd58c029-176f-5d99-923e-1c1fda6cf58e"
+    ]
+  },
+  "candidate": {
+    "id": "chem_org_q1_001",
+    "front": "Alkane, Alkene, Alkine: Bindung und allgemeine Formel?",
+    "back": "Acyclische Kohlenwasserstoffe:\n\nAlkane: nur Einfachbindungen, $C_nH_{2n+2}$\n\nAlkene: genau eine Doppelbindung, sonst Einfachbindungen, $C_nH_{2n}$\n\nAlkine: genau eine Dreifachbindung, sonst Einfachbindungen, $C_nH_{2n-2}$\n\nDie Formeln gelten nicht für Ringe oder mehrere Mehrfachbindungen.",
+    "category": "Chemie Q1 - Organische Stoffklassen und Stereochemie",
+    "tags": [
+      "GK",
+      "LK",
+      "goal:dd58c029-176f-5d99-923e-1c1fda6cf58e"
+    ]
+  },
+  "actualPrimarySourceRead": "https://iupac.qmul.ac.uk/class/hydro.html",
+  "primarySectionsActuallyRead": [
+    "alkenes",
+    "alkynes",
+    "alkanes"
+  ],
+  "directGoldBookPagesStatus": "A00224/A00236 web open403 retained truthfully; authoritative IUPAC glossary mirror actually readable",
+  "specificFinding": "At least one double/triple bond is not sufficient for the printed CnH2n / CnH2n-2 formulas. Exactly one such multiple bond with all others single, acyclic hydrocarbon scope, is required.",
+  "concreteCounterexample": "Acyclic buta-1,3-diene has two double bonds and C4H6, not C4H8; buta-1,3-diyne has two triple bonds and C4H2, not C4H6.",
+  "smallestChange": "Only answer field of chem_org_q1_001; all9othercards, title, front, tags, stablecard/deckIDs exact.",
+  "independentScienceReviewPending": true,
+  "nativeMCardAndVisibilityChecksPending": true,
+  "activeWrites": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "newScientificClosures": 0,
+  "strictNetGain": 0,
+  "restoredActiveBindings": 0
+}

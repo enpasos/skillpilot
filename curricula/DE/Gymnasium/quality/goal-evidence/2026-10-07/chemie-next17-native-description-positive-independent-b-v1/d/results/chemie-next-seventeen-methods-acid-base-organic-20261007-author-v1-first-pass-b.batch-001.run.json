@@ -1,0 +1,98 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "provider": "OpenAI",
+  "model": "GPT-6 / Codex; exact serving variant not exposed",
+  "role": "subject_reviewer",
+  "generationParametersFingerprint": "sha256:5dcb122574071d010c8067179ab260d1f51eb1f45d583d0c911aa6b5d3631f63",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+    "e313c1ee-a617-54ed-adea-c183da1e03d8",
+    "0bf26276-2780-506c-ac34-35dd44a29409",
+    "fd309753-4d48-5570-a4ec-09dfeb20ff9c",
+    "c0f1bf09-5a70-5006-b1e9-e91f786a63bf",
+    "95dc0ee5-a0af-5682-af32-d66e36fbeb50",
+    "02dc29ae-4046-556a-b048-d64a0feb8f16",
+    "9b5d6326-d27c-4ece-8c72-debda705464a",
+    "22133f29-ef02-4408-8f8d-2bbea3275d91",
+    "1f30d81c-8a26-5675-8c0a-1cb82e96d3ba",
+    "7a05a1ce-45d3-571e-be51-afcd8dfd33ca",
+    "a44af1fa-5988-5b7d-b206-691c6bbf7dd4",
+    "597ac03c-d25f-5c34-a87c-52c059c87295",
+    "9751b6d8-cde3-527b-b37c-babb6cee79d2",
+    "88ee181f-b2d3-5639-bb5e-3d1a2915171b",
+    "7990387d-f254-5d3b-a589-a3e7ed9502a3",
+    "e14abd24-a0e5-5ab5-ade3-a8ae4f49e935"
+  ],
+  "startedAt": "2026-10-07T00:25:55.484566Z",
+  "completedAt": "2026-10-07T00:25:56.377226Z",
+  "status": "completed",
+  "toolchainVersion": "skillpilot-native-scoped-review-20261007",
+  "independenceGroupId": "chemie-next-seventeen-methods-acid-base-organic-20261007-author-v1-independent-b",
+  "runId": "chemie-next17-native-independent-b-d-v1",
+  "campaignId": "chemie-next-seventeen-methods-acid-base-organic-20261007-author-v1-b",
+  "roundId": "chemie-next-seventeen-methods-acid-base-organic-20261007-author-v1-first-pass-b",
+  "batchId": "chemie-next-seventeen-methods-acid-base-organic-20261007-author-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:610ac18b819b4f638e80f96f75c70d2d0587125a2bdeb2b409db00b2358228bb",
+  "bundleFingerprint": "sha256:134dc57c1fd01307e790c2dc7be9ccc5267704cffdf7d83fbd56d332f9692714",
+  "bookDigest": "sha256:160859a37167e2f60cdde65b2750aebd54dc8df24bcec83e816a859fd6146927",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:f2b8dc85c80e895d6be0ef2683ac36747c91c596344e970ca181728402c1cead"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:2dc4145041d7a0cf8d7f583920bec130390e6c76eea3420b82d3187486fe2344"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:1dfc35295cd8a344f45aa07ad10d3dde2c22d99c14a2c77ae85bf04f900009d0"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:df8dfafa54a106574c9675d4fc1fadd1e489d3b3ff4732bbcb35e3d2606c3b37"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:2351bbae11cd72f08266bf7599d30f26c675c596f32518383cbfd426af8b8bbb"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:299554d31b5516778a90357e733303f3f35501749065682b765c515fdc0ea65b"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:36f1aa52db2882fc5e8662f81df4eed94722dbd81e8f020f9380ea8e8a499c43"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:d5fc25b7312709a33b63a7ca4fcf65829c9f1b99eddac5db8788e2f8dbd6da8b"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:610ac18b819b4f638e80f96f75c70d2d0587125a2bdeb2b409db00b2358228bb"
+    }
+  ],
+  "outputDigest": "sha256:418b0a040a85e87d5a619b33327888db82e28f166eca6117fcc95d069bf6d7a2"
+}

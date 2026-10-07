@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-06T08:54:40.611Z",
+  "generatedAt": "2026-10-07T00:48:08.569Z",
   "generator": "app/scripts/reportGoalVisualizationRolloutStatus.ts",
   "request": {
     "subject": "chemie",
@@ -12,26 +12,26 @@
   "summary": {
     "totalGoals": 479,
     "atomicGoalsInScope": 378,
-    "goalsWithPrimaryVisualization": 361,
-    "coveragePercent": 95.5,
+    "goalsWithPrimaryVisualization": 357,
+    "coveragePercent": 94.4,
     "goalsAccountedForByAssetOrDeferred": 378,
     "accountedCoveragePercent": 100,
     "releaseApprovedVisualizationCount": 0,
     "reviewStatusCounts": {
-      "accepted": 124,
+      "accepted": 123,
       "ai_candidate": 2,
       "ai-reviewed": 5,
       "pending-independent-actual-review": 6,
-      "pilot": 224
+      "pilot": 221
     },
     "linkedVisualizationReviewStatuses": {
-      "accepted": 124,
+      "accepted": 123,
       "ai_candidate": 2,
       "ai-reviewed": 5,
       "pending-independent-actual-review": 6,
-      "pilot": 224
+      "pilot": 221
     },
-    "reviewLedgerFiles": 20,
+    "reviewLedgerFiles": 22,
     "reviewDecisionCounts": {
       "accepted_corrected_candidate": 32,
       "accepted_current": 44,
@@ -42,11 +42,12 @@
       "accepted_pilot_after_third_regeneration": 3,
       "accepted_pilot_after_user_review_correction": 3,
       "deferred_provider_limitation": 130,
+      "deferred_quality_review": 4,
       "rejected_after_user_review_replaced": 2,
       "rejected_regenerated": 33
     },
     "openProviderDeferredGoals": 17,
-    "openQualityDeferredGoals": 0,
+    "openQualityDeferredGoals": 4,
     "openProviderQuotaGoals": 0,
     "blockedProviderQuotaLedgers": 0,
     "regularUnlinkedGoals": 0,
@@ -55,8 +56,8 @@
     "acceptedReviewWithoutLink": 0
   },
   "currentBatch": {
-    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b014-titration-current-rollout-adoption-2026-10-05.md",
-    "latestLedgerStatus": "completed_existing_machine_review_adoption",
+    "latestLedger": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-three-current-evidenced-quality-holds-2026-10-07.md",
+    "latestLedgerStatus": null,
     "resumeFile": "",
     "promptAppendDir": "tmp/goal-visualization-prompt-appends/chemie-deferred-2026-07-17"
   },
@@ -182,7 +183,36 @@
         "notes": "Das Elektrophil ist doppelt positiv beschriftet; der erste gekrümmte Pfeil startet aus dem Aromatenkreis statt eindeutig an einer π-Bindung."
       }
     ],
-    "openQualityDeferred": [],
+    "openQualityDeferred": [
+      {
+        "batch": "chemie-three-current-evidenced-quality-holds-2026-10-07",
+        "goalId": "9751b6d8-cde3-527b-b37c-babb6cee79d2",
+        "title": "Beeinflussung von Säure-Base-Reaktionen erklären",
+        "decision": "deferred_quality_review",
+        "notes": "For HA+B reversible A-+HB+, the diagram universally claims that adding OH- gives more A- and HB+. OH- can consume protons/deprotonate HB+; a general increase in HB+ does not follow. The correctly drawn HA+OH- reaction below does not resolve this contradictory equilibrium claim. Root confirmed the actual original."
+      },
+      {
+        "batch": "chemie-three-current-evidenced-quality-holds-2026-10-07",
+        "goalId": "a44af1fa-5988-5b7d-b206-691c6bbf7dd4",
+        "title": "Ionen nachweisen und Salzzusammensetzung bestimmen",
+        "decision": "deferred_quality_review",
+        "notes": "The lower aqueous beakers label Na+ as yellow and K+ as violet, transferring the flame-test colours to the ions in solution. The flame colours themselves are correct; those aqueous colour assignments are misleading. Root confirmed the actual original."
+      },
+      {
+        "batch": "chemie-three-current-evidenced-quality-holds-2026-10-07",
+        "goalId": "0bf26276-2780-506c-ac34-35dd44a29409",
+        "title": "pH-Werte in Alltag, Technik und Biologie erörtern",
+        "decision": "deferred_quality_review",
+        "notes": "The lemon-juice caption says pH 2, while its red arrow points to pH 3 on the drawn scale. Root confirmed the discrepancy on the actual original raster."
+      },
+      {
+        "batch": "chemie-c441-current-typo-and-mobile-quality-hold-2026-10-07",
+        "goalId": "c441d9e8-d9d9-5e55-a189-a37345541321",
+        "title": "Salzbildung energetisch mit Gitterenergie erklären",
+        "decision": "deferred_quality_review",
+        "notes": "Die aktive PNG enthält Gasuförmige statt Gasförmige Ionen. Der getrennte unveränderte f5af-Tippokandidat korrigiert das Wort, aber notwendige Ionen-/Schalenbeschriftungen bleiben in den tatsächlichen 360-Pixel-Prüfansichten zu klein für verlässliche Lesbarkeit. Keine aktuelle V-Freigabe oder neue D/P-Bildbindung; Korrektur und gezielte Prüfung bleiben offen."
+      }
+    ],
     "openProviderQuota": [],
     "rejectedNotLinked": [],
     "userReviewCorrections": [
@@ -357,7 +387,7 @@
       "phase": "Q1",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/chemie/973c12d9-d863-5292-8c68-9c80cdacf9e2/973c12d9-d863-5292-8c68-9c80cdacf9e2.jpg"
+      "url": "/assets/goal-visualizations/chemie/973c12d9-d863-5292-8c68-9c80cdacf9e2/973c12d9-d863-5292-8c68-9c80cdacf9e2.png"
     },
     {
       "goalId": "e0e201bd-a1fd-5985-ab08-fd24c8655f3d",
@@ -552,14 +582,6 @@
       "url": "/assets/goal-visualizations/chemie/17fe22c4-1248-5f37-9d0c-52ee4571d09f/17fe22c4-1248-5f37-9d0c-52ee4571d09f.jpg"
     },
     {
-      "goalId": "9751b6d8-cde3-527b-b37c-babb6cee79d2",
-      "title": "Beeinflussung von Säure-Base-Reaktionen erklären",
-      "phase": "GLOBAL",
-      "area": "Säure-Base-Chemie",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/chemie/9751b6d8-cde3-527b-b37c-babb6cee79d2/9751b6d8-cde3-527b-b37c-babb6cee79d2.jpg"
-    },
-    {
       "goalId": "4bdbdf32-3021-5a0a-b412-b611166b2d21",
       "title": "Benzolstruktur deuten",
       "phase": "Q2",
@@ -573,7 +595,7 @@
       "phase": "GLOBAL",
       "area": "Atombau und Bindung",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/chemie/747c5777-07d7-51a9-9be3-7d0d6f51d4e2/747c5777-07d7-51a9-9be3-7d0d6f51d4e2.jpg"
+      "url": "/assets/goal-visualizations/chemie/747c5777-07d7-51a9-9be3-7d0d6f51d4e2/747c5777-07d7-51a9-9be3-7d0d6f51d4e2.png"
     },
     {
       "goalId": "622f09e5-a5bb-5ccf-919f-bae990c7c116",
@@ -1592,20 +1614,12 @@
       "url": "/assets/goal-visualizations/chemie/4285d84a-2c9a-4d51-8250-8bed4daf2d2e/4285d84a-2c9a-4d51-8250-8bed4daf2d2e.jpg"
     },
     {
-      "goalId": "a44af1fa-5988-5b7d-b206-691c6bbf7dd4",
-      "title": "Ionen nachweisen und Salzzusammensetzung bestimmen",
-      "phase": "GLOBAL",
-      "area": "Ionen und Elektrolyse",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/chemie/a44af1fa-5988-5b7d-b206-691c6bbf7dd4/a44af1fa-5988-5b7d-b206-691c6bbf7dd4.jpg"
-    },
-    {
       "goalId": "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca",
       "title": "Ionenbildung mit der Edelgasregel deuten",
       "phase": "GLOBAL",
       "area": "Atombau und Bindung",
-      "reviewStatus": "accepted",
-      "url": "/assets/goal-visualizations/chemie/a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca/a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca.jpg"
+      "reviewStatus": "pilot",
+      "url": "/assets/goal-visualizations/chemie/a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca/a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca.png"
     },
     {
       "goalId": "3eada74b-25b8-55dc-811a-acb473196f53",
@@ -1725,7 +1739,7 @@
       "phase": "Q1",
       "area": "Alkanole und Carbonylverbindungen",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/chemie/363c5740-8a3c-50b8-8c3a-5548c80c36ea/363c5740-8a3c-50b8-8c3a-5548c80c36ea.jpg"
+      "url": "/assets/goal-visualizations/chemie/363c5740-8a3c-50b8-8c3a-5548c80c36ea/363c5740-8a3c-50b8-8c3a-5548c80c36ea.png"
     },
     {
       "goalId": "642d5ea5-b62f-50c8-b0bd-cf132619725f",
@@ -2269,7 +2283,7 @@
       "phase": "GLOBAL",
       "area": "Stoffe und Teilchen",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/chemie/5e2eb826-6e60-5273-91d6-c23f6dfa33b1/5e2eb826-6e60-5273-91d6-c23f6dfa33b1.jpg"
+      "url": "/assets/goal-visualizations/chemie/5e2eb826-6e60-5273-91d6-c23f6dfa33b1/5e2eb826-6e60-5273-91d6-c23f6dfa33b1.png"
     },
     {
       "goalId": "94a62b39-d4a2-5882-99d1-6886ead07726",
@@ -2294,14 +2308,6 @@
       "area": "",
       "reviewStatus": "accepted",
       "url": "/assets/goal-visualizations/chemie/e64a79df-7f21-5651-9b5d-e7d17580569e/e64a79df-7f21-5651-9b5d-e7d17580569e.jpg"
-    },
-    {
-      "goalId": "0bf26276-2780-506c-ac34-35dd44a29409",
-      "title": "pH-Werte in Alltag, Technik und Biologie erörtern",
-      "phase": "GLOBAL",
-      "area": "Säure-Base-Chemie",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/chemie/0bf26276-2780-506c-ac34-35dd44a29409/0bf26276-2780-506c-ac34-35dd44a29409.jpg"
     },
     {
       "goalId": "c224281a-f8a3-58cd-8ca3-2c2e134d61ff",
@@ -2517,7 +2523,7 @@
       "phase": "Q1",
       "area": "",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/chemie/b8d3b453-d638-5518-aab0-d84ec2e8567c/b8d3b453-d638-5518-aab0-d84ec2e8567c.jpg"
+      "url": "/assets/goal-visualizations/chemie/b8d3b453-d638-5518-aab0-d84ec2e8567c/b8d3b453-d638-5518-aab0-d84ec2e8567c.png"
     },
     {
       "goalId": "8721d943-8368-5304-bd3c-7d7944099662",
@@ -2624,20 +2630,12 @@
       "url": "/assets/goal-visualizations/chemie/2be9e61a-88ea-56fe-8294-ee46e3c9a8ef/2be9e61a-88ea-56fe-8294-ee46e3c9a8ef.jpg"
     },
     {
-      "goalId": "c441d9e8-d9d9-5e55-a189-a37345541321",
-      "title": "Salzbildung energetisch mit Gitterenergie erklären",
-      "phase": "GLOBAL",
-      "area": "Atombau und Bindung",
-      "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/chemie/c441d9e8-d9d9-5e55-a189-a37345541321/c441d9e8-d9d9-5e55-a189-a37345541321.jpg"
-    },
-    {
       "goalId": "965ca297-5dbf-5e58-b5f0-6559a4433646",
       "title": "Salzformeln aus Ionenladungen ableiten",
       "phase": "GLOBAL",
       "area": "Atombau und Bindung",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/chemie/965ca297-5dbf-5e58-b5f0-6559a4433646/965ca297-5dbf-5e58-b5f0-6559a4433646.jpg"
+      "url": "/assets/goal-visualizations/chemie/965ca297-5dbf-5e58-b5f0-6559a4433646/965ca297-5dbf-5e58-b5f0-6559a4433646.png"
     },
     {
       "goalId": "0908b3a2-9937-57de-8bfb-35a6de54aa1f",
@@ -2981,7 +2979,7 @@
       "phase": "GLOBAL",
       "area": "Atombau und Periodensystem",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/chemie/49235cbe-6658-5e7e-8bd4-398416bcebdc/49235cbe-6658-5e7e-8bd4-398416bcebdc.jpg"
+      "url": "/assets/goal-visualizations/chemie/49235cbe-6658-5e7e-8bd4-398416bcebdc/49235cbe-6658-5e7e-8bd4-398416bcebdc.png"
     },
     {
       "goalId": "3351fe47-5b0c-5407-a3bf-05229cfbf0c5",
@@ -3005,7 +3003,7 @@
       "phase": "GLOBAL",
       "area": "Atombau und Bindung",
       "reviewStatus": "pilot",
-      "url": "/assets/goal-visualizations/chemie/23533087-89ea-5f29-8ec1-9f2e01197bb6/23533087-89ea-5f29-8ec1-9f2e01197bb6.jpg"
+      "url": "/assets/goal-visualizations/chemie/23533087-89ea-5f29-8ec1-9f2e01197bb6/23533087-89ea-5f29-8ec1-9f2e01197bb6.png"
     },
     {
       "goalId": "e0d4f08a-3e67-5e2b-9c4a-06468ec5c3dd",

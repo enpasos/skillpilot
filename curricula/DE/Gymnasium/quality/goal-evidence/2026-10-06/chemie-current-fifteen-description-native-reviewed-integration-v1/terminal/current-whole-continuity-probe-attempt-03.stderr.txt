@@ -1,0 +1,19 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ '{"contentType":"image/webp","publicPath":"/assets/goal-visualizations/chemie/973c12d9-d863-5292-8c68-9c80cdacf9e2/973c12d9-d863-5292-8c68-9c80cdacf9e2.png","renderedBytes":41184,"renderedHeight":675,"renderedSha256":"sha256:c9c5ed31326c84cbd7c83c8364fba57a11db64c48de536cfdaa3bea97b9f2bfb","renderedWidth":1200,"sourceBytes":1151921,"sourceHeight":941,"sourceSha256":"sha256:55a0215cb181abd7a07887b4e9beb531a4c59cf97f31d1f093dc1c8a2b348769","sourceWidth":1672}'
+- '{"contentType":"image/jpeg","publicPath":"/assets/goal-visualizations/chemie/973c12d9-d863-5292-8c68-9c80cdacf9e2/973c12d9-d863-5292-8c68-9c80cdacf9e2.png","renderedBytes":74618,"renderedHeight":675,"renderedSha256":"sha256:a9919896dc61dc00c71f423a70a0d7692038792aeba0069368b7b941350bea0f","renderedWidth":1200,"sourceBytes":1151921,"sourceHeight":941,"sourceSha256":"sha256:55a0215cb181abd7a07887b4e9beb531a4c59cf97f31d1f093dc1c8a2b348769","sourceWidth":1672}'
+    at same (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-description-native-reviewed-integration-v1/probe-current-whole-goal-page-source-bindings.mts:21:38)
+    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-description-native-reviewed-integration-v1/probe-current-whole-goal-page-source-bindings.mts:94:3) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: '{"contentType":"image/webp","publicPath":"/assets/goal-visualizations/chemie/973c12d9-d863-5292-8c68-9c80cdacf9e2/973c12d9-d863-5292-8c68-9c80cdacf9e2.png","renderedBytes":41184,"renderedHeight":675,"renderedSha256":"sha256:c9c5ed31326c84cbd7c83c8364fba57a11db64c48de536cfdaa3bea97b9f2bfb","renderedWidth":1200,"sourceBytes":1151921,"sourceHeight":941,"sourceSha256":"sha256:55a0215cb181abd7a07887b4e9beb531a4c59cf97f31d1f093dc1c8a2b348769","sourceWidth":1672}',
+  expected: '{"contentType":"image/jpeg","publicPath":"/assets/goal-visualizations/chemie/973c12d9-d863-5292-8c68-9c80cdacf9e2/973c12d9-d863-5292-8c68-9c80cdacf9e2.png","renderedBytes":74618,"renderedHeight":675,"renderedSha256":"sha256:a9919896dc61dc00c71f423a70a0d7692038792aeba0069368b7b941350bea0f","renderedWidth":1200,"sourceBytes":1151921,"sourceHeight":941,"sourceSha256":"sha256:55a0215cb181abd7a07887b4e9beb531a4c59cf97f31d1f093dc1c8a2b348769","sourceWidth":1672}',
+  operator: 'strictEqual'
+}
+
+Node.js v20.20.2

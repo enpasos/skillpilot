@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-06T09:19:09.580Z",
+  "goalId": "ac9e824f-003c-50ac-8751-2b8456004c63",
+  "currentWholeGoal": {
+    "id": "ac9e824f-003c-50ac-8751-2b8456004c63",
+    "shortKey": "canonical_biology_classical_genetic_information_carriers_dna_gene_chromosome",
+    "title": "DNA, Gen und Chromosom als Informationsträger verknüpfen",
+    "titleEn": "Relate DNA, genes and chromosomes as information carriers",
+    "description": "Die lernende Person kann in einem einfachen Modell DNA als Material der Erbinformation, ein Gen als Abschnitt dieses Materials und ein Chromosom als organisierte Trägerstruktur unterscheiden und miteinander verknüpfen.",
+    "descriptionEn": "The learner can use a simple model to distinguish and relate DNA as the material of genetic information, a gene as a section of that material and a chromosome as an organised carrier structure.",
+    "weight": 1,
+    "type": "atomic",
+    "tags": [
+      "GK",
+      "LK",
+      "canonical",
+      "source-component"
+    ],
+    "contains": [],
+    "requires": [],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-biology",
+      "demandLevel": "AB2",
+      "processCompetencies": [],
+      "guidingIdeas": [
+        "BIO_INFORMATION_KOMMUNIKATION",
+        "BIO_ENTWICKLUNG"
+      ],
+      "phase": "GLOBAL",
+      "area": "Genetik",
+      "topicCode": "CANONICAL.BIOLOGY.CLASSICAL_GENETIC_INFORMATION_CARRIERS_DNA_GENE_CHROMOSOME"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-MV",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "applicabilityMappingInheritance": "boundary",
+      "sourceContextBoundary": {
+        "nativeProposedStage": "SekI",
+        "canonicalGLOBALDoesNotDecideSourceStage": true,
+        "directScopeFromNewSourceComponentsOnly": true,
+        "broaderV5ContextUnionRemainsRequiredBeforeAdditionalRoutes": true,
+        "additionalJurisdictionsAreExplicitPrerequisiteAvailabilityOnly": [
+          "DE-MV",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      }
+    },
+    "resourceLinks": [
+      {
+        "type": "goal-visualization",
+        "resourceType": "image",
+        "role": "primary",
+        "skillpilotId": "ac9e824f-003c-50ac-8751-2b8456004c63",
+        "title": "Visualisierung: DNA, Gen und Chromosom als Informationsträger verknüpfen",
+        "url": "/assets/goal-visualizations/biologie/ac9e824f-003c-50ac-8751-2b8456004c63/ac9e824f-003c-50ac-8751-2b8456004c63.png",
+        "provider": "ChatGPT/Codex image_gen built-in",
+        "description": "Visualisierung zum Lernziel: DNA, Gen und Chromosom als Informationsträger verknüpfen.",
+        "altText": "Ein schematisches Chromosom wird zur DNA-Doppelhelix entfaltet; ein hervorgehobener DNA-Abschnitt ist als Gen markiert. Größen und Abschnittslänge sind vereinfacht.",
+        "lang": "de",
+        "license": "CC-BY-4.0",
+        "reviewStatus": "ai_candidate"
+      }
+    ]
+  },
+  "fullUnchangedMaterials": [
+    {
+      "JSONPointer": "/components/0/tasks/0",
+      "completeCaseBody": {
+        "caseId": "classical-carriers-a",
+        "dataOrigin": "fictional supplied school model; no performed experiment or learner evidence",
+        "material": "Fiktive Modellkarte einer Tierzelle: Im Zellkern liegen vier Chromosomen. Ein einzelnes Chromosom enthält einen langen DNA-Faden mit mehreren markierten Abschnitten. Abschnitt G trägt im Modell eine Anleitung; G ist ein Gen. DNA bezeichnet das Material, nicht ein zusätzliches Chromosom. Nicht jede DNA-Stelle wird in diesem Modell als Gen bezeichnet.",
+        "task": "Erkläre die Beziehung zwischen Zellkern, Chromosom, DNA und Gen G. Korrigiere die Aussagen „vier Chromosomen bedeuten vier Gene“ und „DNA und Gen sind zwei gleich große getrennte Träger“. Welche Größenangabe über die Zahl aller Gene fehlt?",
+        "solution": "Der Zellkern enthält die vier Chromosomen; DNA ist in deren Struktur organisiert. G ist ein Abschnitt der DNA und kein zusätzlicher Träger neben ihr. Ein Chromosom kann mehrere Gene tragen. Die Chromosomenzahl legt die Gesamtzahl der Gene nicht fest; eine vollständige Abschnittsliste fehlt.",
+        "materialEn": "Fictional animal-cell model: the nucleus contains four chromosomes. One chromosome includes a long DNA thread with several marked sections. G holds an instruction and is a gene. DNA names the material, not an extra chromosome. Not every DNA position is labelled a gene in this model.",
+        "taskEn": "Explain the relationship among nucleus, chromosome, DNA and G. Correct “four chromosomes mean four genes” and “DNA and gene are equally sized separate carriers”. What information about total gene number is absent?",
+        "solutionEn": "The nucleus contains the four chromosomes, with DNA organised in chromosome structure. G is a DNA section, not an additional separate carrier. A chromosome can carry several genes. Chromosome count does not determine total gene count; a complete section list is absent.",
+        "positiveEssentialPassingConditions": [
+          "Relate the three carrier levels using supplied nesting",
+          "Explain why one chromosome can contain multiple genes",
+          "Bound gene-count inference to the incomplete model"
+        ]
+      },
+      "exactValidOwnPriorCaseBodyReused": true
+    },
+    {
+      "JSONPointer": "/components/0/tasks/1",
+      "completeCaseBody": {
+        "caseId": "classical-carriers-b",
+        "dataOrigin": "fictional supplied school model; no performed experiment or learner evidence",
+        "material": "Neues fiktives Modell: Zwei homologe Chromosomen A1 und A2 tragen an gleicher Stelle Gen G. Die G-Abschnitte enthalten unterschiedliche Anleitungsvarianten g1/g2 (Allele); sonstige Chromosomen sind unverändert. In Variante V wird nur g1 durch g3 ersetzt. DNA-Chemie und die Wirkung dieser Anleitung sind nicht dargestellt.",
+        "task": "Erkläre Gen und Allel im Modell und verfolge V. Ändert V allein die Chromosomenzahl? Warum genügt die Angabe eines anderen Allels noch nicht für eine bestimmte Merkmals- oder Krankheitsaussage?",
+        "solution": "G bezeichnet hier den entsprechenden DNA-Abschnitt auf beiden Homologen; g1/g2/g3 sind Varianten dieser Anleitung. V verändert eine Variante am selben Ort, fügt aber kein Chromosom hinzu. Ohne Genprodukt- und Merkmalsdaten folgt kein bestimmtes sichtbares Merkmal und keine Krankheit.",
+        "materialEn": "New fictional model: homologous chromosomes A1/A2 carry G at the same location. G sections hold different instruction variants g1/g2, called alleles; other chromosomes are unchanged. V replaces only g1 by g3. DNA chemistry and the instruction’s effect are not shown.",
+        "taskEn": "Explain gene versus allele and trace V. Does V alone change chromosome number? Why does a different allele not establish a particular trait or disease?",
+        "solutionEn": "G denotes the corresponding DNA section on both homologues; g1/g2/g3 are instruction variants. V changes a variant at the same location without adding a chromosome. No specific visible trait or disease follows without gene-product and trait data.",
+        "positiveEssentialPassingConditions": [
+          "Distinguish gene location from instruction variant",
+          "Keep allele change separate from chromosome-number change",
+          "Explain the absent gene-product/trait evidence"
+        ]
+      },
+      "exactValidOwnPriorCaseBodyReused": true
+    }
+  ],
+  "exactPriorProfile": {
+    "archetype": "concept",
+    "expectations": [
+      {
+        "id": "nested-carrier-roles",
+        "essentialUnderstandingDe": "DNA ist im vorgegebenen einfachen Modell das Material der Erbinformation. Ein Gen ist ein Abschnitt dieser DNA; das Chromosom organisiert und trägt DNA. Die drei Begriffe bezeichnen zusammengehörige Ebenen derselben Darstellung.",
+        "essentialUnderstandingEn": "In the supplied simple model, DNA is the material of genetic information. A gene is a section of that DNA; the chromosome organises and carries DNA. The three terms describe related levels of the same representation.",
+        "observablePerformanceDe": "Die lernende Person ordnet die drei Ebenen selbst zu und erklärt ihre Teil-Ganzes-Beziehung am Modell, statt Gen und DNA als zusätzliche getrennte Träger neben dem Chromosom zu behandeln.",
+        "observablePerformanceEn": "The learner independently identifies the three levels and explains their part-whole relationship in the model, rather than treating a gene and DNA as additional separate carriers beside a chromosome."
+      },
+      {
+        "id": "multiple-sections-one-chromosome",
+        "essentialUnderstandingDe": "Ein Chromosom kann mehrere Genabschnitte tragen. Eine Chromosomenzahl legt ohne vollständige Abschnittsinformation die Zahl aller Gene nicht fest.",
+        "essentialUnderstandingEn": "One chromosome can carry several gene sections. Without complete information about its sections, chromosome number does not determine the total number of genes.",
+        "observablePerformanceDe": "Im Vier-Chromosomen-Modell erklärt die lernende Person, weshalb daraus keine Zahl von vier Genen folgt, und benennt die fehlende vollständige Abschnittsliste als Grenze der Aussage.",
+        "observablePerformanceEn": "In the four-chromosome model, the learner explains why four genes do not follow from that count and identifies the absent complete section list as the limit of the conclusion."
+      },
+      {
+        "id": "preserved-structure-in-variant-model",
+        "essentialUnderstandingDe": "Eine im Material vorgegebene veränderte Anleitung an derselben DNA-Stelle bleibt eine Variante eines Genabschnitts auf dem vorhandenen Chromosom. Eine solche Abschnittsvariante ist kein zusätzliches Chromosom.",
+        "essentialUnderstandingEn": "A changed instruction supplied at the same DNA position remains a variant of a gene section on the existing chromosome. Such a section variant is not an additional chromosome.",
+        "observablePerformanceDe": "Im zweiten Modell verknüpft die lernende Person den auf beiden Homologen bezeichneten Abschnitt G mit deren DNA und Chromosomenstruktur; sie erklärt, weshalb der Austausch g1→g3 allein kein Chromosom hinzufügt.",
+        "observablePerformanceEn": "In the second model, the learner relates section G marked on both homologues to their DNA and chromosome structure, explaining why replacement g1→g3 alone adds no chromosome."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "nested-carrier-roles",
+        "multiple-sections-one-chromosome",
+        "preserved-structure-in-variant-model"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "whole-to-section-view",
+        "textDe": "Zwischen der Übersicht mehrerer Chromosomen und dem Ausschnitt eines DNA-Fadens wechseln; die Material-/Abschnitts-/Trägerbeziehung bleibt erhalten.",
+        "textEn": "Move between the overview of several chromosomes and a DNA-strand detail; preserve the material/section/carrier relationship."
+      },
+      {
+        "id": "same-position-changed-instruction",
+        "textDe": "Vom Genabschnitt auf einem Chromosom zum gleichen Abschnitt auf zwei Homologen mit vorgegebenen unterschiedlichen Anleitungen wechseln, ohne eine zusätzliche Erbgangskompetenz zu verlangen.",
+        "textEn": "Move from a gene section on one chromosome to the same section on two homologues with supplied different instructions, without requiring an additional inheritance-pattern competence."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "classical-carriers-a",
+        "taskDemandDe": "Nutze die unveränderte Modellkarte classical-carriers-a mit vier Chromosomen, einem DNA-Faden und Abschnitt G. Erkläre die Beziehung zwischen Chromosom, DNA und Gen; begründe, welche Aussage zur Gesamtzahl der Gene möglich ist.",
+        "taskDemandEn": "Use the unchanged classical-carriers-a model card with four chromosomes, one DNA strand and section G. Explain the relationship among chromosome, DNA and gene, and justify what can be said about total gene number.",
+        "expectedPerformanceDe": "DNA wird als Material in der organisierten Chromosomenstruktur und G als Teil der DNA verknüpft. Mehrere Gene auf einem Chromosom sind möglich; vier Chromosomen bestimmen nicht vier Gene. Die vollständige Abschnittsliste fehlt.",
+        "expectedPerformanceEn": "DNA is related to the organised chromosome structure as its material, and G as part of that DNA. Several genes on one chromosome are possible; four chromosomes do not determine four genes. A complete section list is absent.",
+        "understandingFocusDe": "Teil-Ganzes-Beziehung und begrenzte Zählaussage am selben vorgegebenen Modell.",
+        "understandingFocusEn": "Part-whole relationship and bounded counting inference within the same supplied model."
+      },
+      {
+        "id": "classical-carriers-b",
+        "taskDemandDe": "Nutze die unveränderte Karte classical-carriers-b: A1/A2 tragen Abschnitt G an derselben Stelle, die vorgegebenen Anleitungen heißen g1/g2; V ersetzt g1 durch g3. Verfolge die Material-/Abschnitts-/Trägerbeziehung und die Chromosomenzahl.",
+        "taskDemandEn": "Use unchanged card classical-carriers-b: A1/A2 carry section G at the same position with supplied instructions g1/g2; V replaces g1 with g3. Trace the material/section/carrier relationship and chromosome number.",
+        "expectedPerformanceDe": "G bleibt ein DNA-Abschnitt auf beiden vorhandenen Homologen; die Anleitung im Abschnitt ändert sich bei V. Es wird kein weiteres Chromosom hinzugefügt. Die Darstellung liefert keine Genprodukt- oder Merkmalsdaten.",
+        "expectedPerformanceEn": "G remains a DNA section on both existing homologues; V changes the instruction within that section. No additional chromosome is added. The representation supplies no gene-product or trait data.",
+        "understandingFocusDe": "Übertragung der gleichen Strukturbeziehung auf vorgegebene Abschnittsvarianten. Alleldefinition, Erbgang und Genproduktwirkung werden nicht als zusätzliche Pflichtkompetenz verlangt.",
+        "understandingFocusEn": "Transfer of the same structural relationship to supplied section variants. Allele definitions, inheritance patterns and gene-product effects are not required as additional competencies."
+      }
+    ]
+  },
+  "currentReviewInputPayload": {
+    "profileSchemaVersion": 2,
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8",
+    "goalInput": {
+      "ruleVersion": "goal-evidence-v1",
+      "goalFingerprint": "sha256:4a313a832aaac7c997370ab9241475a7ad7ac7b8617c422d681a748cef60e916",
+      "requires": [],
+      "contains": [],
+      "examples": [],
+      "goalVisualizations": [
+        {
+          "role": "primary",
+          "url": "/assets/goal-visualizations/biologie/ac9e824f-003c-50ac-8751-2b8456004c63/ac9e824f-003c-50ac-8751-2b8456004c63.png",
+          "altText": "Ein schematisches Chromosom wird zur DNA-Doppelhelix entfaltet; ein hervorgehobener DNA-Abschnitt ist als Gen markiert. Größen und Abschnittslänge sind vereinfacht.",
+          "reviewStatus": "ai_candidate",
+          "digest": "sha256:4e543bef5d79f11dc6866bdd7607f915e1343da5014881f0213b6e7bf8210ede"
+        }
+      ]
+    }
+  },
+  "nativeCurrentPFingerprints": {
+    "goal": "sha256:4a313a832aaac7c997370ab9241475a7ad7ac7b8617c422d681a748cef60e916",
+    "profile": "sha256:3d2afd27a98317860de9d3dd2c768d683a77f758119c5f43159a341147c24e15",
+    "reviewInput": "sha256:5a17653a04574fd49cfb55ff5575707515829e4eda53a1a4ca7feb8327c45e6c",
+    "criteria": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8"
+  },
+  "nativeClosedSchemas": "PASS",
+  "nativeCandidateSemantics": "PASS",
+  "nativeActualCurrentOnePChecker": {
+    "status": "PASS",
+    "errors": [],
+    "counts": {
+      "approved": 0,
+      "needsHumanReview": 1,
+      "rejected": 0
+    }
+  },
+  "actual3AssetCopiesExact": true,
+  "currentVRowExactIndependentFinalV5": true,
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "finalNativeD": "PENDING_NEW_ACTUAL_PAGE",
+  "nativeGUISuperset": "SEPARATE_REQUIRED_GATE",
+  "activeWrites": false,
+  "strictNetGain": 0,
+  "humanApproval": false,
+  "humanTrial": false,
+  "learnerEvidence": false
+}

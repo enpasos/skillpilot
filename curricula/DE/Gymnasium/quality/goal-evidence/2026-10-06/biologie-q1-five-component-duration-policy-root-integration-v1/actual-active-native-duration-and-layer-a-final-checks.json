@@ -1,0 +1,53 @@
+{
+  "createdAtUTC": "2026-10-06T10:00:38.672051+00:00",
+  "role": "Actual completed active duration and dependent Layer-A verification",
+  "checks": [
+    {
+      "check": "current native duration report",
+      "observedReturnCode": 0,
+      "stdout": "\n> skillpilot@0.0.0 report:gymnasium-duration-readiness\n> tsx scripts/reportGymnasiumDurationModelReadiness.ts --write\n\nchanged docs/qa-ci/status/gymnasium-duration-model-readiness.md\nM6 subjects: 9; source scopes touching Sek I: 139; all source scopes: 258\n",
+      "stderr": ""
+    },
+    {
+      "check": "required reviewed M6 duration check",
+      "observedReturnCode": 0,
+      "stdout": "\n> skillpilot@0.0.0 check:m6-duration-policy-readiness\n> tsx scripts/reportGymnasiumDurationModelReadiness.ts --check --require-reviewed-m6\n\nok docs/qa-ci/status/gymnasium-duration-model-readiness.md\nM6 subjects: 9; source scopes touching Sek I: 139; all source scopes: 258\n",
+      "stderr": ""
+    },
+    {
+      "check": "unchanged native offerings generator",
+      "observedReturnCode": 0,
+      "stdout": "\n> skillpilot@0.0.0 generate:gymnasium-duration-offerings\n> tsx scripts/generateGymnasiumDurationOfferings.ts --write\n\n",
+      "stderr": ""
+    },
+    {
+      "check": "current generated offerings check",
+      "observedReturnCode": 0,
+      "stdout": "\n> skillpilot@0.0.0 check:gymnasium-duration-offerings\n> tsx scripts/generateGymnasiumDurationOfferings.ts --check\n\n",
+      "stderr": ""
+    }
+  ],
+  "currentPolicyBinding": {
+    "path": "curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json",
+    "sha256": "e72972b1dc317e09221db6af3ac56b89a960acc2c4bf1adfbbf8cf25ebb8159c",
+    "bytes": 102712
+  },
+  "currentReportBinding": {
+    "path": "docs/qa-ci/status/gymnasium-duration-model-readiness.md",
+    "sha256": "be877d5804f0c53a3ae500168f173c3d0ee47463a480b4dcd8a56c6d79d80bd9",
+    "bytes": 144511
+  },
+  "derivedOfferingDataBinding": {
+    "path": "app/src/generated/gymnasiumDurationOfferings.ts",
+    "sha256": "7715ed4ddfef6542cea4c955db121463e5c7384c2b37d919b411598bd0a5846b",
+    "bytes": 26605
+  },
+  "derivedOfferingDataDelta": "The unchanged generator adds only SekII to existing Biology DE-ST stages to reflect the two already reviewed explicit ST composition views. All duration labels and other subjects remain unchanged. No runtime implementation or provider changes.",
+  "initialActualFailureRetained": "/tmp/skillpilot-carrier-v5-duration-check.stderr.txt; exactly five missing exact policy paths; not counted as an earlier pass",
+  "newScientificClosures": 0,
+  "goalBindingsRestored": 0,
+  "sourceDurationContextBindingsRestored": 5,
+  "netStrictGrowth": 0,
+  "humanApproval": false,
+  "humanTrial": false
+}

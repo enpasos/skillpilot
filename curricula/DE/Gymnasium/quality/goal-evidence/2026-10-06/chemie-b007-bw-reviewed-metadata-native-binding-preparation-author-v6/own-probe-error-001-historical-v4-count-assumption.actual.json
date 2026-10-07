@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "observedAtUTC": "2026-10-06T21:19:25.895459+00:00",
+  "ownPreparationFailure": {
+    "command": "python3 prepare-current-and-future-isolates.py",
+    "exitCode": 1,
+    "line": 79,
+    "assertion": "len(old_v4_protected_differences) == 12",
+    "observedActual": 9
+  },
+  "cause": "Root routing count was treated as exact assertion before actual comparison; own author-script assumption only.",
+  "response": "Replace own count assumption with observed complete delta IDs/fields; retain both actual baselines. Native validators unchanged.",
+  "productOrScientificFailureClaim": false,
+  "activeWrites": 0
+}

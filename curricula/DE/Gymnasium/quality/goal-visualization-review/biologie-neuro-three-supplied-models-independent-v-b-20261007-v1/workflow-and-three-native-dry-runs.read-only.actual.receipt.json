@@ -1,0 +1,169 @@
+{
+  "documentType": "independent-read-of-actual-native-author-workflow",
+  "createdAtUTC": "2026-10-07T00:05:54.027953+00:00",
+  "actualPrepareReceipts": [
+    {
+      "goalId": "4f631f78-e13a-58e5-9092-f4db0b8d377a",
+      "actualReceipt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-three-supplied-models-author-root-20261007-v1/4f631f78-e13a-58e5-9092-f4db0b8d377a.native-prepare.actual.terminal.receipt.json",
+        "sha256": "b5afea6ce6a7fe3cce2bb40f915c3ae3848a78cb9223da10736b154f301b6af8",
+        "bytes": 656
+      },
+      "completedAtUTC": "2026-10-06T23:33:56.420506+00:00",
+      "exitCode": 0
+    },
+    {
+      "goalId": "a46cafde-7359-5249-8754-19aaa3174ba4",
+      "actualReceipt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-three-supplied-models-author-root-20261007-v1/a46cafde-7359-5249-8754-19aaa3174ba4.native-prepare.actual.terminal.receipt.json",
+        "sha256": "73668d9a1ca579aee6c8e8eb8489d1e9e748335b38a4dce3798d7cebc39c4e34",
+        "bytes": 656
+      },
+      "completedAtUTC": "2026-10-06T23:33:56.475876+00:00",
+      "exitCode": 0
+    },
+    {
+      "goalId": "c9a06264-cce2-54dd-9604-46dd5949f02e",
+      "actualReceipt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-three-supplied-models-author-root-20261007-v1/c9a06264-cce2-54dd-9604-46dd5949f02e.native-prepare.actual.terminal.receipt.json",
+        "sha256": "529cba011d126e29a7c9a3fffc5004aca9c98b8be40331fda0cd92ff569244c0",
+        "bytes": 656
+      },
+      "completedAtUTC": "2026-10-06T23:33:56.528289+00:00",
+      "exitCode": 0
+    }
+  ],
+  "savedFirstOutputChronology": [
+    {
+      "goalId": "4f631f78-e13a-58e5-9092-f4db0b8d377a",
+      "prepareCompletedAtUTC": "2026-10-06T23:33:56.420506+00:00",
+      "firstOutputProvenance": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-three-supplied-models-author-root-20261007-v1/4f631f78-hebb-first-original-actual-provenance-and-author-finding.json",
+        "sha256": "b028055795f06108d056ce9a48076798c15e319919806938440aca5f93c76188",
+        "bytes": 1065
+      },
+      "savedOutputRecordCreatedAtUTC": "2026-10-06T23:35:41.912449+00:00",
+      "outputRecordLaterThanPrepare": true
+    },
+    {
+      "goalId": "a46cafde-7359-5249-8754-19aaa3174ba4",
+      "prepareCompletedAtUTC": "2026-10-06T23:33:56.475876+00:00",
+      "firstOutputProvenance": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-three-supplied-models-author-root-20261007-v1/a46cafde-network-v1.actual-provenance-and-author-finding.json",
+        "sha256": "a42702a202c44a745ff66f47a2ec6871efe4a4cd553fcfb29a5f4a103b1adec4",
+        "bytes": 1054
+      },
+      "savedOutputRecordCreatedAtUTC": "2026-10-06T23:48:06.273339+00:00",
+      "outputRecordLaterThanPrepare": true
+    },
+    {
+      "goalId": "c9a06264-cce2-54dd-9604-46dd5949f02e",
+      "prepareCompletedAtUTC": "2026-10-06T23:33:56.528289+00:00",
+      "firstOutputProvenance": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-three-supplied-models-author-root-20261007-v1/c9a06264.actual-generated-original-v1-provenance.json",
+        "sha256": "2e4d8b2b3ab7603a42093a536dcc0ce967b988838aa0ed17f37677dbecad6cba",
+        "bytes": 978
+      },
+      "savedOutputRecordCreatedAtUTC": "2026-10-06T23:49:50.121237+00:00",
+      "outputRecordLaterThanPrepare": true
+    }
+  ],
+  "chronologyScope": "Bound native prepare terminal times and later saved generator-output provenance records actually read. Author states prepare-before-six-built-in-calls; no independent replay of generation or tool-start trace claimed.",
+  "authorReportedBuiltinCalls": 6,
+  "independentGeneratorCalls": 0,
+  "independentNativeImportRuns": 0,
+  "authorNativeDryRunReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-three-supplied-models-author-root-20261007-v1/three-native-imports-dry-run-and-unmodified-candidate.actual.receipt.json",
+    "sha256": "6085270dd59d161005143b8ada1bc94372cf1e6da9bd3e80f43e887c9625d382",
+    "bytes": 5918
+  },
+  "actualAuthorNativeDryRuns": [
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "visualization:import",
+        "--",
+        "4f631f78-e13a-58e5-9092-f4db0b8d377a",
+        "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-three-supplied-models-author-root-20261007-v1/originals/4f631f78-hebb-synapse-efficacy-corrected-v2.png",
+        "--landscape=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-twenty-one-current-continuation-author-v3/stage-02-current-twenty-one-native/current472-neuro21.complete-author-candidate.json",
+        "--subject=biologie",
+        "--provider=OpenAI / ChatGPT-Codex image_gen builtin; model not exposed",
+        "--review-status=pilot",
+        "--license=CC-BY-4.0",
+        "--prompt=curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-three-supplied-models-author-root-20261007-v1/4f631f78-hebb.targeted-synapse-efficacy-edit-v2.prompt.md",
+        "--reconstruction-prompt=curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-three-supplied-models-author-root-20261007-v1/4f631f78-e13a-58e5-9092-f4db0b8d377a.standalone-image-reconstruction-prompt.de.md",
+        "--alt-text=Zwei gleich gebaute Neuronenpaare zeigen ein gegebenes Hebb-Modell: gemeinsame Aktivität ist mit einer stärkeren synaptischen Wirkung verbunden. Axon- und Myelindicke bleiben gleich; die Illustration beweist keinen Lernerfolg.",
+        "--dry-run"
+      ],
+      "startedAtUTC": "2026-10-06T23:55:47.106262+00:00",
+      "completedAtUTC": "2026-10-06T23:55:47.290079+00:00",
+      "exitCode": 0,
+      "dryRunOnly": true,
+      "actualFinalRaster": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-three-supplied-models-author-root-20261007-v1/originals/4f631f78-hebb-synapse-efficacy-corrected-v2.png"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "visualization:import",
+        "--",
+        "a46cafde-7359-5249-8754-19aaa3174ba4",
+        "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-three-supplied-models-author-root-20261007-v1/originals/a46cafde-plastic-network-caption-corrected-v2.png",
+        "--landscape=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-twenty-one-current-continuation-author-v3/stage-02-current-twenty-one-native/current472-neuro21.complete-author-candidate.json",
+        "--subject=biologie",
+        "--provider=OpenAI / ChatGPT-Codex image_gen builtin; model not exposed",
+        "--review-status=pilot",
+        "--license=CC-BY-4.0",
+        "--prompt=curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-three-supplied-models-author-root-20261007-v1/a46cafde-network.targeted-caption-connector-edit-v2.prompt.md",
+        "--reconstruction-prompt=curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-three-supplied-models-author-root-20261007-v1/a46cafde-7359-5249-8754-19aaa3174ba4.standalone-image-reconstruction-prompt.de.md",
+        "--alt-text=Ein gegebenes Netzmodell mit je zwei Eingangsneuronen und einem Ausgangsneuron zeigt bei gleichem Eingang eine andere Antwort nach Änderung einer wirksamen synaptischen Verbindung. Struktur und Richtung des Netzes bleiben erhalten.",
+        "--dry-run"
+      ],
+      "startedAtUTC": "2026-10-06T23:55:47.290414+00:00",
+      "completedAtUTC": "2026-10-06T23:55:47.469035+00:00",
+      "exitCode": 0,
+      "dryRunOnly": true,
+      "actualFinalRaster": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-three-supplied-models-author-root-20261007-v1/originals/a46cafde-plastic-network-caption-corrected-v2.png"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "visualization:import",
+        "--",
+        "c9a06264-cce2-54dd-9604-46dd5949f02e",
+        "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-three-supplied-models-author-root-20261007-v1/originals/c9a06264-ltp-ltd-equal-test-alternative-time-corrected-v2.png",
+        "--landscape=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-twenty-one-current-continuation-author-v3/stage-02-current-twenty-one-native/current472-neuro21.complete-author-candidate.json",
+        "--subject=biologie",
+        "--provider=OpenAI / ChatGPT-Codex image_gen builtin; model not exposed",
+        "--review-status=pilot",
+        "--license=CC-BY-4.0",
+        "--prompt=curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-three-supplied-models-author-root-20261007-v1/c9a06264-ltp-ltd.targeted-equal-test-and-alternative-time-edit-v2.prompt.md",
+        "--reconstruction-prompt=curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-three-supplied-models-author-root-20261007-v1/c9a06264-cce2-54dd-9604-46dd5949f02e.standalone-image-reconstruction-prompt.de.md",
+        "--alt-text=Drei schematische Synapsenkontakte zeigen die Ausgangswirkung und zwei alternative spätere Wirkungen desselben Testreizes: stärkere Antwort bei LTP und schwächere bei LTD. Die Darstellung ersetzt keine experimentelle Zeitreihe.",
+        "--dry-run"
+      ],
+      "startedAtUTC": "2026-10-06T23:55:47.469374+00:00",
+      "completedAtUTC": "2026-10-06T23:55:47.686272+00:00",
+      "exitCode": 0,
+      "dryRunOnly": true,
+      "actualFinalRaster": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-three-supplied-models-author-root-20261007-v1/originals/c9a06264-ltp-ltd-equal-test-alternative-time-corrected-v2.png"
+    }
+  ],
+  "threeDryRunExitZero": true,
+  "candidateBeforeSha256": "5161350cf39b9599b91a2dd05850de6fab36e6d0f167f18542a455c7afe2ed81",
+  "candidateAfterSha256": "5161350cf39b9599b91a2dd05850de6fab36e6d0f167f18542a455c7afe2ed81",
+  "candidateBytesCurrentlyExact": true,
+  "differentFromHistoricalFirstSevenPrepareAfterGenerationDeviation": true,
+  "historicalFirstSevenPreservedNotRewritten": true,
+  "activeWrites": false,
+  "humanApproval": false,
+  "newStrictCompletion": 0
+}

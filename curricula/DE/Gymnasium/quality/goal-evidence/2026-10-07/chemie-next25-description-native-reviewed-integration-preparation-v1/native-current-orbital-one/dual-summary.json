@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:42ceb0f75fb9385aa4b1e1082c5c28b42f69ae7b40bb29549f3af839d3705c43",
+  "reviewInputFingerprint": "sha256:00ab75f0e9835535239b0140d65ff9f77d9771d8c7db5049997e9c3ec7b8e232",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-next25-orbital-complete-20261007-author-v3-a",
+      "roundId": "chemie-next25-orbital-complete-20261007-author-v3-first-pass-a",
+      "independenceGroupId": "chemie-next25-orbital-complete-20261007-author-v3-independent-a",
+      "runIds": [
+        "chemie-next25-orbital-final-targeted-independent-a-20261007-v3"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6/Codex (exact serving variant not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-next25-orbital-complete-20261007-author-v3-b",
+      "roundId": "chemie-next25-orbital-complete-20261007-author-v3-first-pass-b",
+      "independenceGroupId": "chemie-next25-orbital-complete-20261007-author-v3-independent-b",
+      "runIds": [
+        "chemie-next25-orbital-final-independent-d-b-v3"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::GPT-6-based Codex; exact runtime version not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "0acc8cd2-be6d-567e-a023-1d9e90475510",
+      "firstRecordId": "chemie-next25-orbital-final-targeted-independent-a-20261007-v3.0acc8cd2-be6d-567e-a023-1d9e90475510",
+      "secondRecordId": "chemie-next25-orbital-final-independent-d-b-v3.001",
+      "firstRunId": "chemie-next25-orbital-final-targeted-independent-a-20261007-v3",
+      "secondRunId": "chemie-next25-orbital-final-independent-d-b-v3",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

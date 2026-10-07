@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "actualReadRecordedAtUTC": "2026-10-06T08:26:53.020449+00:00",
+  "reviewer": "independent B, not chemistry material author",
+  "independentActualRead": true,
+  "primarySources": [
+    {
+      "id": "Hach-210542",
+      "url": "https://www.hach.com/p-conductivity-standard-solution-1990-scm-nacl-100-ml/210542",
+      "kind": "primary manufacturer standard label",
+      "actualAccess": "web open succeeded, specification selected and read",
+      "locator": "product specification lines632–636",
+      "independentlyReadParaphrase": "NaCl 1000 mg/L standard:1990 µS/cm, labelled tolerance±20 µS/cm, reference25°C.",
+      "ownInference": "Correct units and concentration scale; only a plausibility anchor for own teaching values, not actual kit calibration. Reference-temperature treatment must be supported."
+    },
+    {
+      "id": "NIST-Pitzer-Peiper-Busey-1984",
+      "url": "https://srd.nist.gov/jpcrdreprint/1.555709.pdf",
+      "kind": "primary thermodynamic paper hosted by NIST",
+      "actualAccess": "web PDF opened; caption/header/row read; actual independently downloaded physical page66 visually inspected",
+      "locator": "Table A11 physical66/printed65,25°C,1bar column; parsed lines5774–5781",
+      "independentlyReadParaphrase": "Standard NaCl solution enthalpy divided byRT is positive1.566 at25°C and1bar.",
+      "ownInference": "Independent conversion gives+3.882046708 kJ/mol, supporting near-ambient dilute heat uptake. It is not a universal sign for all temperatures/concentrations or an exact sample temperature change."
+    },
+    {
+      "id": "Sigma-Merck-107227",
+      "url": "https://www.sigmaaldrich.com/US/en/product/mm/107227",
+      "kind": "primary manufacturer prepared indicator solution",
+      "actualAccess": "web open/find succeeded, product identity and label read",
+      "locator": "product heading20–22 and name53–55",
+      "independentlyReadParaphrase": "Prepared phenolphthalein solution1% in ethanol is labelled transitionpH8.2–9.8.",
+      "ownInference": "The future kit declares this solution rather than unspecified powder. Endpoint suitability requires the own weak-acid curve; product information is not classroom safety approval."
+    },
+    {
+      "id": "Sigma-105945-colour-property-only",
+      "url": "https://www.sigmaaldrich.com/KI/en/product/sial/105945",
+      "kind": "primary manufacturer substance reference",
+      "actualAccess": "web open/find succeeded and selected visual-transition property read",
+      "locator": "physical-property lines162–164; colour statement219",
+      "independentlyReadParaphrase": "Phenolphthalein has a colourless-to-red transition; initial pink in basic solution is described.",
+      "ownInference": "Supports recorded faint-colour observation. This powder reference is not the kit solution; its8.0–10 substance interval does not replace the specific prepared-solution8.2–9.8 label."
+    },
+    {
+      "id": "Sigma-Merck-101323",
+      "url": "https://www.sigmaaldrich.com/US/en/product/mm/101323",
+      "kind": "primary manufacturer prepared indicator solution",
+      "actualAccess": "web open/find succeeded; solution specification read",
+      "locator": "heading20–22 and description84",
+      "independentlyReadParaphrase": "Methyl orange solution0.1% is labelledpH3.1–4.4, red-to-yellow-orange.",
+      "ownInference": "Provides a usable comparison menu, with acidic transition distinct from the alkaline weak-acid equivalence region."
+    },
+    {
+      "id": "Thermo-Orion-pH-calibration",
+      "url": "https://documents.thermofisher.com/TFS-Assets/CMD/Product-Bulletins/TN-ph-calibration-procedure-for-optimal-measurement-precision-T-PHCAL-EN.pdf",
+      "kind": "primary manufacturer calibration technical note",
+      "actualAccess": "web PDF opened and selected equipment/preparation/calibration/verification sections read",
+      "locator": "PDF indices0–1,lines9–28,44–49,84–96",
+      "independentlyReadParaphrase": "Procedure includes4.01/7.00/10.01 buffers, temperature input, equal-temperature preparation, separate rinse/calibration vessels and recorded verificationpH/temperature.",
+      "ownInference": "Declared future kit can support actual logged calibration. Nominal buffers and an equipment description are not performed readings; away from25°C use appropriate buffer temperature values."
+    },
+    {
+      "id": "BRAND-BLAUBRAND-USP",
+      "url": "https://shop.brand.de/media/import/1/27/32406/42485/42649/49101/USP_Volumetric_instruments_EN.pdf",
+      "kind": "primary manufacturer USP instrument table",
+      "actualAccess": "web PDF opened, rows/category headers read; separately downloaded actual physical page4 visually inspected",
+      "locator": "physical4,USP bulb pipette10mL row and class-A flask20mL row,parsed174/192/201",
+      "independentlyReadParaphrase": "USP10mL bulb pipette error limit±0.02mL; USP20mL volumetric flask error limit±0.02mL.",
+      "ownInference": "Supports explicitly named apparatus or documented equivalent. Nominal20/10 givesfactor2; error limits are not statistical uncertainty or all ordinary class-A devices."
+    }
+  ],
+  "localWorkingCopiesOnly": [
+    {
+      "localIgnoredWorkingPath": "tmp/chemie-b008-v10-independent-b-primary-working/NIST-NaCl-1984.pdf",
+      "sha256": "2c5f51a2ffd64781b93d16373b8d43415e9cef99d6d90577f0b00feb80f98991",
+      "bytes": 6311098,
+      "selectedPhysicalPage": 66,
+      "actualSelectedPageViewed": false,
+      "thirdPartyOriginalNotCommitted": true
+    },
+    {
+      "localIgnoredWorkingPath": "tmp/chemie-b008-v10-independent-b-primary-working/NIST-NaCl-1984-selected-page.png",
+      "sha256": "a24cb6ffd8935f396fd17aba58170fd8d857c8eaafdc97769ddb708ca5bdc4eb",
+      "bytes": 200366,
+      "selectedPhysicalPage": 66,
+      "actualSelectedPageViewed": true,
+      "thirdPartyOriginalNotCommitted": true
+    },
+    {
+      "localIgnoredWorkingPath": "tmp/chemie-b008-v10-independent-b-primary-working/BRAND-USP.pdf",
+      "sha256": "4fef094687ac99971a5c8ce8fa1b5ab5e57d025836a637929168bf14af56e6ab",
+      "bytes": 1157691,
+      "selectedPhysicalPage": 4,
+      "actualSelectedPageViewed": false,
+      "thirdPartyOriginalNotCommitted": true
+    },
+    {
+      "localIgnoredWorkingPath": "tmp/chemie-b008-v10-independent-b-primary-working/BRAND-USP-selected-page.png",
+      "sha256": "d2b1ad6fe4f447e302170dca029ff62c43913a83b5238f4281000b2dd7b01cbd",
+      "bytes": 510116,
+      "selectedPhysicalPage": 4,
+      "actualSelectedPageViewed": true,
+      "thirdPartyOriginalNotCommitted": true
+    }
+  ],
+  "selectedNISTAndBRANDPagesActuallyViewed": true,
+  "allOtherPDFPagesReviewed": false,
+  "newCurrentIndependentV9V10AReviewRead": false,
+  "authorPrimaryReceiptUsedAsRoutingOnly": true,
+  "nationalSourceClearance": false,
+  "safetyOrHumanApproval": false,
+  "learnerEvidence": false
+}

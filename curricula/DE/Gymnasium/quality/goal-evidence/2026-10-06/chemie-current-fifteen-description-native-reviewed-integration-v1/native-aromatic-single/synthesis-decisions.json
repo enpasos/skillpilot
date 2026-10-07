@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-current-fifteen-native-aromatic-single-synthesis-20261006-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex technical synthesizer: actual existing completed A/B records read; no additional independent review round",
+  "synthesizedAt": "2026-10-06T19:49:41.298Z",
+  "batch": {
+    "batchId": "chemie-current-aromatic-delocalization-single-20261006-author-v6",
+    "batchManifestDigest": "sha256:0c713d7df3c9ea482c0d6838b9ee0e9a902c372218108bd81b32e4d5ae3f4418",
+    "configDigest": "sha256:1352c6188864e4ee8037ea87aa1d323acbac52bf07c0f2f705e398c420a7cac4",
+    "bundleFingerprint": "sha256:55231e8e2670fbd3874149c6636e8afa6296dbab9e9e260105052d9637492906",
+    "bookDigest": "sha256:edc554de2d890dc1893380b739962d8aa3e23510cd3ad45f77c38ef9629599d8",
+    "reviewInputFingerprint": "sha256:c62c3956d7163ce7f8f0db5def3fd63f180c2cd2f7180ff42ef0aff813c9c63f",
+    "dualSummaryDigest": "sha256:6ab7e15b80ac09c1a31651ec20b54032a61318ff343fbf998d736969f943ec7a",
+    "canonicalLandscapeDigest": "sha256:2ffbe445e3f6b5d1c393d0f6f50a61d576b9490091c4c9057c91c8b6e6d26a67"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-current-aromatic-delocalization-single-20261006-author-v6-a",
+      "campaignDigest": "sha256:32c80e69e5d897267e890404b1796be6acbd9ba3227bba799e4da3ba2ab1cfe4",
+      "roundId": "chemie-current-aromatic-delocalization-single-20261006-author-v6-first-pass-a",
+      "independenceGroupId": "chemie-current-aromatic-delocalization-single-20261006-author-v6-independent-a",
+      "reviewInputFingerprint": "sha256:c62c3956d7163ce7f8f0db5def3fd63f180c2cd2f7180ff42ef0aff813c9c63f",
+      "batchId": "chemie-current-aromatic-delocalization-single-20261006-author-v6-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:1683c50bbd6123314f87b90e4b56d3c9a1194edfb9e18d0d7b01ba0df9495498",
+      "runId": "chemie-aromatic-native-targeted-independent-a-20261006-v6",
+      "runManifestDigest": "sha256:8a1770b6a13fc0c5e1e3ef7bbef32ef3367ed996fa5819989d9618276269e742",
+      "resultsDigest": "sha256:9383e2be70f417b601f26d45a9502a49539a36a9dfea3f11d87e2c8cace2026a"
+    },
+    "second": {
+      "campaignId": "chemie-current-aromatic-delocalization-single-20261006-author-v6-b",
+      "campaignDigest": "sha256:e6229cad688fb1abe7985f84db46779d5bad98db76e12362156bcdc5f3f5a0ac",
+      "roundId": "chemie-current-aromatic-delocalization-single-20261006-author-v6-first-pass-b",
+      "independenceGroupId": "chemie-current-aromatic-delocalization-single-20261006-author-v6-independent-b",
+      "reviewInputFingerprint": "sha256:c62c3956d7163ce7f8f0db5def3fd63f180c2cd2f7180ff42ef0aff813c9c63f",
+      "batchId": "chemie-current-aromatic-delocalization-single-20261006-author-v6-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:643883f5b320244e4827f2899570756e710e253544a31ebde8a57b0c4fbf30bb",
+      "runId": "chemie-current-aromatic-one-native-d-independent-b-v6-run-001",
+      "runManifestDigest": "sha256:c72e7ba6400b39e7c2eee2f65dc69649cc2e6b39ecbc166c58c9247f8203fc8d",
+      "resultsDigest": "sha256:66850cffd46a4622cb3e7b769ad2cff8d27e182c43bf2e0c86226e2da6e67410"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-current-fifteen-native-aromatic-single-synthesis-20261006-v1-decision-001",
+      "goalId": "b8d3b453-d638-5518-aab0-d84ec2e8567c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7cfe6610ec81b9510eebe1a403f40740cdb6cf50176512a16397f87b103a6358",
+      "pageFingerprint": "sha256:43f80baec1de97710ac511d07578525af52a17aa3a1791d97cb6d10b931094fd",
+      "goalReviewContextFingerprint": "sha256:b42a42ca925c71287667d2e398ed3a1d83bbb579bb88fcea31ffbdb95ca7e4e3",
+      "finalText": {
+        "titleDe": "Reaktivität aromatischer Systeme begründen",
+        "titleEn": "Explain aromatic reactivity",
+        "descriptionDe": "Die lernende Person kann die Reaktivität aromatischer Systeme anhand ihrer Elektronendelokalisierung begründen.",
+        "descriptionEn": "The learner can explain the reactivity of aromatic systems in terms of their electron delocalization."
+      },
+      "resolutionDecision": "current_after_revision",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-aromatic-native-targeted-independent-a-20261006-v6-record-001",
+          "recordDigest": "sha256:3f5368a23ac255e7e6bbfc7a36d5dcc199a7e77ead5ba0b5147b7e1a6a7a4d44"
+        },
+        "second": {
+          "recordId": "chemie-current-aromatic-one-native-d-independent-b-v6-001",
+          "recordDigest": "sha256:8cc92b480c168cf75c71055cdbb06dd2a8d8b33496d7a56d813af738d01b54ea"
+        }
+      },
+      "rationaleDe": "Beide aktuellen v6-Einzelrunden bestätigen die explizite Elektronendelokalisierung als Begründungsbasis der Reaktivität in den tatsächlichen DE/EN-Texten. Damit ist der eigene v5-A-Textbefund am exakten Kandidaten aufgelöst. Das unveränderte gute PNG zeigt aromatische Ausgangs-/Endringe, einen einfach positiven nichtaromatischen Areniumbeitrag und Rearomatisierung mit H+-Abgabe. HE Q1.1 LK trägt den Zusammenhang; kein allgemeiner Detailmechanismus, Geschwindigkeits-/Regioselektivitätsanspruch oder nationale GK-Freigabe.",
+      "rationaleEn": "Both current v6 single rounds confirm explicit electron delocalization as the basis for explaining reactivity in the actual DE/EN descriptions. This resolves the own v5-A text finding in the exact candidate. The unchanged good PNG shows aromatic starting/product rings, one singly positive nonaromatic arenium contributor and rearomatization by H+ release. HE Q1.1 advanced scope supports this relation without universal detailed mechanisms, rate/regioselectivity claims or national GK approval."
+    }
+  ],
+  "manifestFingerprint": "sha256:75fe82e1f72098055653d5b57373c00e187f2d02ba2aae62720ee9446dbb8f79"
+}

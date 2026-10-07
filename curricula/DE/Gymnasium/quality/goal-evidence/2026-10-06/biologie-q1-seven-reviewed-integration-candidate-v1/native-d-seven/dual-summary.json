@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:a7ba39569f7f810d46e6b13ecaa104ab765ceb378e26974f77416bd6f9c35d57",
+  "reviewInputFingerprint": "sha256:3875cdc1f10dc8750ff088ec683a5db40349edbda17ba3433362166c9d22019f",
+  "goalCount": 7,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-q1-seven-final-native-review-author-v1-a",
+      "roundId": "independent-a",
+      "independenceGroupId": "biologie-q1-seven-final-independent-a",
+      "runIds": [
+        "biologie-q1-seven-final-native-d-independent-a-v1-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex GPT-6; exact runtime variant not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-q1-seven-final-native-review-author-v1-b",
+      "roundId": "independent-b",
+      "independenceGroupId": "biologie-q1-seven-final-independent-b",
+      "runIds": [
+        "biologie-q1-seven-final-native-d-independent-b-v1.batch-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 7,
+    "unavailable": 0,
+    "requiresSynthesis": 7
+  },
+  "goals": [
+    {
+      "goalId": "ac9e824f-003c-50ac-8751-2b8456004c63",
+      "firstRecordId": "bio-q1-final-d-a-v1-ac9e824f-003c-50ac-8751-2b8456004c63",
+      "secondRecordId": "biologie-q1-seven-final-native-d-independent-b-v1.goal-01",
+      "firstRunId": "biologie-q1-seven-final-native-d-independent-a-v1-run-001",
+      "secondRunId": "biologie-q1-seven-final-native-d-independent-b-v1.batch-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5eb7c923-469d-5934-b1e8-292e1bb40d95",
+      "firstRecordId": "bio-q1-final-d-a-v1-5eb7c923-469d-5934-b1e8-292e1bb40d95",
+      "secondRecordId": "biologie-q1-seven-final-native-d-independent-b-v1.goal-02",
+      "firstRunId": "biologie-q1-seven-final-native-d-independent-a-v1-run-001",
+      "secondRunId": "biologie-q1-seven-final-native-d-independent-b-v1.batch-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bfb5dfb6-8e35-5452-b581-96e061d8b826",
+      "firstRecordId": "bio-q1-final-d-a-v1-bfb5dfb6-8e35-5452-b581-96e061d8b826",
+      "secondRecordId": "biologie-q1-seven-final-native-d-independent-b-v1.goal-03",
+      "firstRunId": "biologie-q1-seven-final-native-d-independent-a-v1-run-001",
+      "secondRunId": "biologie-q1-seven-final-native-d-independent-b-v1.batch-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04",
+      "firstRecordId": "bio-q1-final-d-a-v1-3a0d6c82-f9f0-5ad1-bb0b-b948e4450d04",
+      "secondRecordId": "biologie-q1-seven-final-native-d-independent-b-v1.goal-04",
+      "firstRunId": "biologie-q1-seven-final-native-d-independent-a-v1-run-001",
+      "secondRunId": "biologie-q1-seven-final-native-d-independent-b-v1.batch-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9d830422-acc7-5fa8-aee9-4dae4cedbf49",
+      "firstRecordId": "bio-q1-final-d-a-v1-9d830422-acc7-5fa8-aee9-4dae4cedbf49",
+      "secondRecordId": "biologie-q1-seven-final-native-d-independent-b-v1.goal-05",
+      "firstRunId": "biologie-q1-seven-final-native-d-independent-a-v1-run-001",
+      "secondRunId": "biologie-q1-seven-final-native-d-independent-b-v1.batch-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d0c3e6a7-581b-57bd-8027-e940c6b77af8",
+      "firstRecordId": "bio-q1-final-d-a-v1-d0c3e6a7-581b-57bd-8027-e940c6b77af8",
+      "secondRecordId": "biologie-q1-seven-final-native-d-independent-b-v1.goal-06",
+      "firstRunId": "biologie-q1-seven-final-native-d-independent-a-v1-run-001",
+      "secondRunId": "biologie-q1-seven-final-native-d-independent-b-v1.batch-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "aab2a358-b2ee-57a5-a957-8fb9845506b1",
+      "firstRecordId": "bio-q1-final-d-a-v1-aab2a358-b2ee-57a5-a957-8fb9845506b1",
+      "secondRecordId": "biologie-q1-seven-final-native-d-independent-b-v1.goal-07",
+      "firstRunId": "biologie-q1-seven-final-native-d-independent-a-v1-run-001",
+      "secondRunId": "biologie-q1-seven-final-native-d-independent-b-v1.batch-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

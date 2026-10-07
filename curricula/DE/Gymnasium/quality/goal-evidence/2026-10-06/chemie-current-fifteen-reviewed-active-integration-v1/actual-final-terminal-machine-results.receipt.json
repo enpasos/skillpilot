@@ -1,0 +1,202 @@
+{
+  "documentType": "root-actual-terminal-machine-results-stable-integration",
+  "existingTerminalCommands": [
+    {
+      "id": "central",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/reportDeepUnderstandingRollout.ts",
+        "--mode=check",
+        "--format=json"
+      ],
+      "capturedOutputStem": "current-central-five-gate.actual",
+      "exitCode": 0
+    },
+    {
+      "id": "source-atlas",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json"
+      ],
+      "capturedOutputStem": "source-atlas-actual-regeneration",
+      "exitCode": 0
+    },
+    {
+      "id": "schema",
+      "argv": [
+        "python3",
+        "scripts/validate_schemas.py"
+      ],
+      "capturedOutputStem": "current-all-curriculum-schema.actual",
+      "exitCode": 0
+    },
+    {
+      "id": "book-build",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "build:goal-books"
+      ],
+      "capturedOutputStem": "current-four-goal-books.actual",
+      "exitCode": 0
+    },
+    {
+      "id": "assets",
+      "argv": [
+        "node",
+        "scripts/check_goal_visualization_assets.mjs"
+      ],
+      "capturedOutputStem": "current-global-visualization-assets.actual",
+      "exitCode": 0
+    },
+    {
+      "id": "ai-inventory",
+      "argv": [
+        "node",
+        "scripts/check_ai_transparency_inventory.mjs"
+      ],
+      "capturedOutputStem": "ai-transparency-current-final",
+      "exitCode": 0
+    },
+    {
+      "id": "status",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:curriculum-status"
+      ],
+      "capturedOutputStem": "current-curriculum-status.actual",
+      "exitCode": 0
+    },
+    {
+      "id": "floors",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:curriculum-maturity-floors"
+      ],
+      "capturedOutputStem": "current-protected-maturity-floors.actual",
+      "exitCode": 0
+    }
+  ],
+  "additionalActuallyObservedTerminalResults": [
+    {
+      "id": "book-final-check",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-book-publication"
+      ],
+      "capturedOutputStem": "current-four-goal-books-final-check.actual",
+      "exitCode": 0,
+      "logs": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-reviewed-active-integration-v1/current-four-goal-books-final-check.actual.stdout.txt",
+          "sha256": "sha256:38bd2aed1fb17fcc0e0c92dca9146fb489afa71afed8532db28c526715f342c7",
+          "bytes": 653
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-reviewed-active-integration-v1/current-four-goal-books-final-check.actual.stderr.txt",
+          "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "id": "memory-378",
+      "capturedOutputStem": "current378-memory-current-native.actual",
+      "exitCode": 0,
+      "scope": "Existing native check and actual report output for all 378 current Chemie curricularAtomic targets; byte-exact sealed reviewed report retained.",
+      "logs": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-reviewed-active-integration-v1/current378-memory-current-native.actual.stdout.txt",
+          "sha256": "sha256:23a5c378c812a6b0a610afc3883366e58d8b2f6571d6dc7e91a8c66477d90ca4",
+          "bytes": 15594
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-reviewed-active-integration-v1/current378-memory-current-native.actual.stderr.txt",
+          "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "id": "doc-links-corrected",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-links"
+      ],
+      "capturedOutputStem": "current-doc-links.corrected.actual",
+      "exitCode": 0,
+      "priorFailureRetained": true,
+      "logs": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-reviewed-active-integration-v1/current-doc-links.corrected.actual.stdout.txt",
+          "sha256": "sha256:a571cd5d2313c6bf719c781caf4d5e08ccd59fc0cb3a01b1cdb023b271c23635",
+          "bytes": 121
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-reviewed-active-integration-v1/current-doc-links.corrected.actual.stderr.txt",
+          "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "id": "doc-indexes-corrected",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-indexes"
+      ],
+      "capturedOutputStem": "current-doc-indexes.corrected.actual",
+      "exitCode": 0,
+      "priorFailureRetained": true,
+      "logs": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-reviewed-active-integration-v1/current-doc-indexes.corrected.actual.stdout.txt",
+          "sha256": "sha256:2ba0d2aa99b03ea9fd1b2f717a2ad5dfae44e11d2fbb85e8d14551f368c1efe0",
+          "bytes": 131
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-reviewed-active-integration-v1/current-doc-indexes.corrected.actual.stderr.txt",
+          "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      ]
+    },
+    {
+      "id": "git-diff-check",
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "capturedOutputStem": "current-git-diff-check.actual",
+      "exitCode": 0
+    }
+  ],
+  "technicalLayerA": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-active-layer-a-readonly-v1/current-fifteen-active-layer-a-readonly.final.freeze.json",
+    "sha256": "sha256:7d5547860d535e8c752b0e331048005049a6558e2e569c4b184873318b60aee3",
+    "bytes": 62274
+  },
+  "allFrozenLayerAOwnFilesVerified": 30,
+  "initialDocFailuresRetained": true,
+  "noScientificApprovalFromCli": true
+}

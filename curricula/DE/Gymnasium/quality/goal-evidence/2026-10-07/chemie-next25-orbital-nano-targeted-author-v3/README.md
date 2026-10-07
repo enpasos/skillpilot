@@ -1,0 +1,9 @@
+# Chemie25: gezielte endgültige Orbital- und Quellenkorrektur
+
+Nur Kandidaten. Ein belegter Fehler wird in DE/EN und im Bild-Alttext korrigiert: Orbitale sind Ein-Elektronen-Wellenfunktionen. Die vorhandenen zwei Bilder bleiben nach tatsächlicher Original- und 360/680-Pixel-Prüfung erhalten. Nano-Quellenzeile wird von gedruckt13 auf tatsächlich gedruckt14 korrigiert; fachlicher Originaltext unverändert. Die andere Größenordnungszeile steht bereits korrekt auf16.
+
+Finaler neutraler Einstieg: `one-orbital-and-one-nano-final-targeted.raw-review-input.json`. Native D1 Vorbereitung/Check PASS, tatsächlich3 PDF-Seiten; native P25 PASS, alle25 `needs_human_review`. Alle25 Profilkörper/50 Materialfälle exakt gegenüber dem finalen Author-v2. Nur der Orbital-Goal-/P-Input und eine ganze Lernzielbuchseite ändern;377 Seiten exakt. Schutz127 exakt; kein aktiver Write und Netto0. Zwei gezielte unabhängige Nachprüfungen stehen aus.
+
+Frühere unversiegelte Dateien und erfolglose eigene Vorbereitungsschritte bleiben Vorbereitungsgeschichte: zuerst erwarteter EN-Wortlaut falsch, temporärer native Lauf im aktiven Root ohne noch inaktive PNGs, eigener Notiz-Key unvollständig und davon abhängige Konfiguration noch nicht fertig. Die final benannten Dateien enthalten vollständigen Alttext und die aktuellen Bindungen. Die vorbereitenden Fehler sind keine fachlichen Befunde oder CI-Regressionen. Die bereitgestellte temporäre Umgebung verwendet unveränderte native Produktionshelfer und dient ausschließlich dem Prüfen inaktiver Bildkandidaten.
+
+Erzeugung oder Bindungsberechnung ist keine Freigabe. Menschliche Prüfung, Freigabe und Erprobung bleiben getrennt. Die frühere IUPAC-Definition wurde über den Primärquellen-Suchindex gegengeprüft; direkte Seitenabrufe lieferten403, daher wird kein neuer erfolgreicher Rohdownload behauptet. Originale curricularer Quellen bleiben unverändert.

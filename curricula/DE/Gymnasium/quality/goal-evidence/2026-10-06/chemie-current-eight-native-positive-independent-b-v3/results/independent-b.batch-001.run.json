@@ -1,0 +1,57 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-current-eight-native-positive-independent-b-v3.actual-current-native",
+  "bundleFingerprint": "sha256:0ca7a29936fa256ebf6582ce2125df3fac731e435e4667aba91662e0454a2da6",
+  "bookDigest": "sha256:c44580923bff104cbc01dcb99d9ffd079a4e8694347438b873c7013782e5dded",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "chemistry-current-eight-positive-independent-b-actual-science-v3",
+  "promptFingerprint": "sha256:cacc0725417345f5754b63bdc67b86b17b9fa66666a1a152706af6488cddc93b",
+  "criteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "generationParametersFingerprint": "sha256:21fc98797a7137553b8160231fd702eb08a25d73fcfda00da73253cd4699e0a2",
+  "independenceGroupId": "chemie-current-eight-independent-b-whole-science-v3",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "dd58c029-176f-5d99-923e-1c1fda6cf58e",
+    "3d3231f9-039d-5ce5-9e8e-af219c7fee08",
+    "5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+    "622f09e5-a5bb-5ccf-919f-bae990c7c116",
+    "b8d3b453-d638-5518-aab0-d84ec2e8567c",
+    "9decc36b-a69a-5599-a9f0-fcebdf0203d8",
+    "973c12d9-d863-5292-8c68-9c80cdacf9e2",
+    "363c5740-8a3c-50b8-8c3a-5548c80c36ea"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:c44580923bff104cbc01dcb99d9ffd079a4e8694347438b873c7013782e5dded"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:a1734cd6d869c787030d19bc5e525a374671aaab8e8da17b0cc7d19a46b62b7a"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:b58bebd0543260c57804696a6c6d15d51a9c5cc40305701ef7a0b74e3fea3dc1"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:27ab8b792cbb7398e4f9d5e7147dafba7fbe34a85be5000f1ba73660fd4321c1"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:cacc0725417345f5754b63bdc67b86b17b9fa66666a1a152706af6488cddc93b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835"
+    }
+  ],
+  "startedAt": "2026-10-06T19:12:24.153349+00:00",
+  "completedAt": "2026-10-06T19:24:59.308Z",
+  "status": "completed",
+  "outputDigest": "sha256:abb882eee2a954d92f25d6692526287df1de8e70eee6bcf89bbe20ae26674e8f",
+  "toolchainVersion": "skillpilot-unmodified-native-positive-v2-independent-b-v3"
+}

@@ -1,0 +1,13 @@
+# Necessary coordinate-bond visual correction (AUTHOR v4)
+
+Only goal `363c5740-8a3c-50b8-8c3a-5548c80c36ea` has a new inert PNG candidate. Its actual original JPG was viewed and the Albrecht/Klüfers primary Wiley abstract read. The old complete "Fehling-Komplex" diagram showed four tartrate characters with two Cu donor connections each, eight connections. The abstract describes a tetracoordinate bis(diolato) species closest to typical Fehling recipes and two4+1 species; it does not justify that asserted whole eight-donor diagram. A caption alone cannot repair its standalone claim. Original frontend/curricula/backend JPG bytes remain identical and unmodified.
+
+Selected actual PNG: `visual-candidate/attempt-02.png`, native1671×941 (near16:9), SHA2567c2c562d42d59480f71def10d700fd45fd885e1622a515ac171aff74dd0b003e.
+
+The corrected friendly comic depicts one **local** tartrate O donor pair → one appropriate empty Cu²⁺ acceptor → one shared pair in a local Cu–O interaction, under a prominent **Modellausschnitt** label. It claims no complete complex, total donor count, full geometry, exact tartrate structure, all-empty Cu d orbitals or redox. Existing good warm cream/orange, blue Cu and coral ligand style is preserved. The first generated attempt had extra empty orbital circles and compact labels; it is retained with its actual author REVISE finding. The second attempt removes exactly those circles and enlarges the three labels. Both exact prompts, PNGs and generator original paths are recorded. No SVG substitute or programmatic raster edit was used.
+
+Actual Chromium displays of the exact selected PNG at360px and680px are saved and were visually inspected (`visual-candidate/actual-browser-360.png` / `actual-browser-680.png`). Scientific motif, pairs, Cu²⁺/O and short labels remain readable. These are real browser screenshots at DPR1, not an asserted device/human test or active Cockpit acceptance.
+
+The actual whole current goal and frozen v3 prospective text scope, before-image digests, source facts, author science findings, format choice and source/output bindings are in `actual-selected-raster-science-format-browser-provenance.author.json` and `actual-before-and-primary-finding.author.json`. V4 changes no goal text. The two independently reviewed v2 B8/973 PNGs, all frozen v2/v3 files and all historical images/reviews remain exact.
+
+**Generation and author selection are not V approval.** Pending: two actual independent machine V reviews, affected current native D/P/page/resource bindings and integration. No active canonical/QA/registry/ledger/assets/product-code/Git writes, no human approval/trial or actual learner evidence. Net strict increase0; new scientific closures0; restored active bindings0.

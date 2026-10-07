@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-06T09:49:08.633036+00:00",
+  "role": "Isolated author candidate, requires independent root/B review before active integration",
+  "baselinePolicyBinding": {
+    "path": "curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json",
+    "sha256": "71ea186d9a42dad9a814e9de6b29b751531acdd483094bdec8e0dc8860faedd8",
+    "bytes": 96862
+  },
+  "appendDecisions": [
+    {
+      "subject": "Biologie",
+      "jurisdiction": "DE-BB",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BB/source-components/DE_BB_BIOLOGIE_GENETICS_COMPONENTS.author-v6.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "This bounded genetics component uses exactly the same official sourceDocument as the reviewed parent extraction curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_BIOLOGIE_SEKI_RLP_2015.source-extraction.json. Actual primary-page scope: SekI, Gymnasium, Jahrgangsstufen7-10 with E/F/G/H niveau sequence; genetics chapter3.7 is not an invented fixed-grade placement. Retain the parent's reviewed duration-neutral-projection (G8, G9) source/projection semantics; the component introduces no separate G8/G9 grade placement. This duration decision neither expands whole-original-source coverage nor changes target/prerequisiteOnly roles, course profile, school form, grade placement or canonical goals."
+    },
+    {
+      "subject": "Biologie",
+      "jurisdiction": "DE-BE",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BE/source-components/DE_BE_BIOLOGIE_GENETICS_COMPONENTS.author-v6.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "This bounded genetics component uses exactly the same official sourceDocument as the reviewed parent extraction curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_BIOLOGIE_SEKI_RLP_2015.source-extraction.json. Actual primary-page scope: SekI, Gymnasium, Jahrgangsstufen7-10 with E/F/G/H niveau sequence; genetics chapter3.7 is not an invented fixed-grade placement. Retain the parent's reviewed duration-neutral-projection (G8, G9) source/projection semantics; the component introduces no separate G8/G9 grade placement. This duration decision neither expands whole-original-source coverage nor changes target/prerequisiteOnly roles, course profile, school form, grade placement or canonical goals."
+    },
+    {
+      "subject": "Biologie",
+      "jurisdiction": "DE-MV",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/source-components/DE_MV_BIOLOGIE_GENETICS_COMPONENTS.author-v6.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "This bounded genetics component uses exactly the same official sourceDocument as the reviewed parent extraction curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_BIOLOGIE_SEKI_RAHMENPLAN_2022.source-extraction.json. Actual primary-page scope: SekI, Gymnasium/Gesamtschule source, actual Klasse10 under3.2 Unterrichtsinhalte, unnumbered Klassische Genetik. Retain the parent's reviewed single-duration-source (G8) source/projection semantics; the component introduces no separate G8/G9 grade placement. This duration decision neither expands whole-original-source coverage nor changes target/prerequisiteOnly roles, course profile, school form, grade placement or canonical goals."
+    },
+    {
+      "subject": "Biologie",
+      "jurisdiction": "DE-SN",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/source-components/DE_SN_BIOLOGIE_GENETICS_COMPONENTS.author-v6.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "This bounded genetics component uses exactly the same official sourceDocument as the reviewed parent extraction curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_BIOLOGIE_SEKI_LEHRPLAN_GYMNASIUM_2025.source-extraction.json. Actual primary-page scope: SekI Gymnasium, actual Klassenstufe10, Lernbereich1 Genetik. Retain the parent's reviewed single-duration-source (G8) source/projection semantics; the component introduces no separate G8/G9 grade placement. This duration decision neither expands whole-original-source coverage nor changes target/prerequisiteOnly roles, course profile, school form, grade placement or canonical goals."
+    },
+    {
+      "subject": "Biologie",
+      "jurisdiction": "DE-TH",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/source-components/DE_TH_BIOLOGIE_GENETICS_COMPONENTS.author-v6.source-extraction.json",
+      "status": "reviewed",
+      "decision": "single-duration-source",
+      "durationModels": [
+        "G8"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "This bounded genetics component uses exactly the same official sourceDocument as the reviewed parent extraction curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_BIOLOGIE_SEKI_LEHRPLAN_GYMNASIUM_2024.source-extraction.json. Actual primary-page scope: SekI Gymnasium/AHR source, actual Klassenstufen9/10 under2.2, genetics2.2.1.3; selected competencies due by end of Klasse10. Retain the parent's reviewed single-duration-source (G8) source/projection semantics; the component introduces no separate G8/G9 grade placement. This duration decision neither expands whole-original-source coverage nor changes target/prerequisiteOnly roles, course profile, school form, grade placement or canonical goals."
+    }
+  ],
+  "all148ExistingDecisionObjectsExact": true,
+  "allOtherPolicyFieldsExact": true,
+  "activeWrites": false,
+  "independentApproval": false,
+  "humanApproval": false,
+  "strictCompletionsAdded": 0,
+  "restoredActiveBindings": 0
+}

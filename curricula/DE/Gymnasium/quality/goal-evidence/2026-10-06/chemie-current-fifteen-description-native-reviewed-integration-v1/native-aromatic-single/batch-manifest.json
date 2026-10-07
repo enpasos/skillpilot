@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-current-aromatic-delocalization-single-20261006-author-v6",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-aromatic-delocalization-final-native-author-v6/native-d-aromatic-single.batch.config.json",
+  "configDigest": "sha256:1352c6188864e4ee8037ea87aa1d323acbac52bf07c0f2f705e398c420a7cac4",
+  "goalIds": [
+    "b8d3b453-d638-5518-aab0-d84ec2e8567c"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 378,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-aromatic-delocalization-final-native-author-v6/full-prospective378.book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-aromatic-delocalization-final-native-author-v6/prospective-current378.canonical.author-candidate.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:903672154197bb24b9af22bf11a00096f9bdf3de76ac71fc8bf99d46053dae75"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:edc554de2d890dc1893380b739962d8aa3e23510cd3ad45f77c38ef9629599d8",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:55231e8e2670fbd3874149c6636e8afa6296dbab9e9e260105052d9637492906",
+    "reviewInputFingerprint": "sha256:c62c3956d7163ce7f8f0db5def3fd63f180c2cd2f7180ff42ef0aff813c9c63f",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-current-aromatic-delocalization-single-20261006-author-v6-a",
+        "campaignDigest": "sha256:32c80e69e5d897267e890404b1796be6acbd9ba3227bba799e4da3ba2ab1cfe4",
+        "roundId": "chemie-current-aromatic-delocalization-single-20261006-author-v6-first-pass-a",
+        "independenceGroupId": "chemie-current-aromatic-delocalization-single-20261006-author-v6-independent-a",
+        "batchId": "chemie-current-aromatic-delocalization-single-20261006-author-v6-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:1683c50bbd6123314f87b90e4b56d3c9a1194edfb9e18d0d7b01ba0df9495498"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-current-aromatic-delocalization-single-20261006-author-v6-b",
+        "campaignDigest": "sha256:e6229cad688fb1abe7985f84db46779d5bad98db76e12362156bcdc5f3f5a0ac",
+        "roundId": "chemie-current-aromatic-delocalization-single-20261006-author-v6-first-pass-b",
+        "independenceGroupId": "chemie-current-aromatic-delocalization-single-20261006-author-v6-independent-b",
+        "batchId": "chemie-current-aromatic-delocalization-single-20261006-author-v6-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:643883f5b320244e4827f2899570756e710e253544a31ebde8a57b0c4fbf30bb"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}
