@@ -95,7 +95,14 @@ export const testGoalBookSourceAtlasInputs = (): void => {
     assert.throws(() => buildGoalBookSourceAtlasInputs(htmlConfig, fixtureRoot), /Source document snapshot mismatch/)
     rmSync(resolve(fixtureRoot, htmlPath))
     assert.throws(() => buildGoalBookSourceAtlasInputs(config, fixtureRoot), /ENOENT/, 'An undeclared HTML source document remains a required input')
-    for (const path of ['app/official.html', 'curricula/DE/other/official.html', 'curricula/DE/Gymnasium/../official.html']) {
+    for (const path of [
+      'app/official.html',
+      'curricula/DE/other/official.html',
+      'curricula/DE/Gymnasium/../official.html',
+      'curricula/DE/Gymnasium/./quality/official.html',
+      'curricula/DE/Gymnasium//quality/official.html',
+      'curricula/DE/Gymnasium/quality/official.json',
+    ]) {
       assert.throws(() => buildGoalBookSourceAtlasInputs({ ...htmlConfig, sourceDocumentSnapshots: [{ ...htmlSnapshot, path }] }, fixtureRoot), /Invalid source snapshot path/)
     }
     write('source.json', source)
@@ -215,7 +222,6 @@ export const testGoalBookSourceAtlasInputs = (): void => {
     ['DE-BY/SekI/', 91], ['DE-BY/SekII/GK', 111], ['DE-BY/SekII/LK', 142], ['DE-HE/SekII/GK', 112], ['DE-HE/SekII/LK', 141],
   ], 'HE-only integration must preserve BY source coverage and the HE GK scope')
   assert.deepEqual([...new Set(chemistry.receipt.scopes.flatMap(s => s.witnesses.filter(w => w.profileBasis === 'authored-view').map(() => s.jurisdiction)))].sort(), ['DE-BB', 'DE-BE'])
-  const trackedPaths = new Set(execFileSync('git', ['ls-files', '--cached', '-z'], { cwd: root, encoding: 'utf8' }).split('\0').filter(Boolean))
   // Every grouped witness expands back to the exact original provenance record.
   for (const [subject, result] of [['biology', biology], ['chemistry', chemistry]] as const) {
     assert.deepEqual(expandGoalBookSourceAtlasReceipt(compactGoalBookSourceAtlasReceipt(result.receipt)), result.receipt)
@@ -229,9 +235,15 @@ export const testGoalBookSourceAtlasInputs = (): void => {
       // A local ignored file must not conceal a missing deployment input. Copy
       // only Git-tracked mandatory inputs, with declared source caches absent.
       const paths = new Set([configPath, ...result.receipt.inputBindings.map(binding => binding.path), ...Object.keys(result.outputs)])
-      for (const path of paths) if (!snapshotPaths.has(path)) {
+      const mandatoryPaths = [...paths].filter(path => !snapshotPaths.has(path))
+      const resolvedPaths = new Map(mandatoryPaths.map(path => [path, relative(realpathSync(root), realpathSync(resolve(root, path)))]))
+      // Query just this book's input closure: the complete repository index can
+      // exceed the subprocess output limit because it retains review history.
+      const queryPaths = [...new Set([...mandatoryPaths, ...resolvedPaths.values()])]
+      const trackedPaths = new Set(execFileSync('git', ['ls-files', '--cached', '-z', '--', ...queryPaths.map(path => `:(literal)${path}`)], { cwd: root, encoding: 'utf8' }).split('\0').filter(Boolean))
+      for (const path of mandatoryPaths) {
         assert.ok(trackedPaths.has(path), `${subject}: mandatory source-atlas input must be Git-tracked: ${path}`)
-        const resolvedPath = relative(realpathSync(root), realpathSync(resolve(root, path)))
+        const resolvedPath = resolvedPaths.get(path)!
         assert.ok(trackedPaths.has(resolvedPath), `${subject}: mandatory source-atlas input target must be Git-tracked: ${path} -> ${resolvedPath}`)
         mkdirSync(dirname(resolve(checkoutRoot, path)), { recursive: true })
         copyFileSync(resolve(root, path), resolve(checkoutRoot, path))

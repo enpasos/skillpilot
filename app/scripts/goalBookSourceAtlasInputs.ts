@@ -174,7 +174,7 @@ export const buildGoalBookSourceAtlasInputs = (config: GoalBookSourceAtlasInputC
   assert.equal(new Set(config.mappingPaths).size, config.mappingPaths.length)
   const snapshots = new Map((config.sourceDocumentSnapshots ?? []).map(snapshot => {
     assert.ok(/^curricula\/DE\/Gymnasium\/.+\.(?:pdf|html)$/u.test(snapshot.path), `Invalid source snapshot path: ${snapshot.path}`)
-    assert.ok(!snapshot.path.split('/').includes('..') && !snapshot.path.includes('\\'), `Invalid source snapshot path: ${snapshot.path}`)
+    assert.ok(snapshot.path.split('/').every(part => part && part !== '.' && part !== '..') && !snapshot.path.includes('\\'), `Invalid source snapshot path: ${snapshot.path}`)
     local(repoRoot, snapshot.path)
     assert.ok(/^sha256:[a-f0-9]{64}$/u.test(snapshot.sha256), `Invalid source snapshot digest: ${snapshot.path}`)
     const url = new URL(snapshot.url)
