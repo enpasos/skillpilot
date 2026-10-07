@@ -121,7 +121,8 @@ public class GoalMappingService {
 
         try {
             long fingerprint = 1L;
-            for (Path file : Files.walk(dir).filter(Files::isRegularFile).filter(this::isGoalMapFile).sorted().toList()) {
+            for (Path file : Files.walk(dir).filter(Files::isRegularFile)
+                    .filter(path -> isGoalMapFile(dir, path)).sorted().toList()) {
                 try {
                     long lastModified = Files.getLastModifiedTime(file).toMillis();
                     fingerprint = 31L * fingerprint + dir.relativize(file).toString().hashCode();
@@ -156,7 +157,7 @@ public class GoalMappingService {
         try {
             List<Path> files = Files.walk(dir)
                     .filter(Files::isRegularFile)
-                    .filter(this::isGoalMapFile)
+                    .filter(path -> isGoalMapFile(dir, path))
                     .sorted()
                     .toList();
 
@@ -292,13 +293,19 @@ public class GoalMappingService {
                 || root.has("decisions");
     }
 
-    private boolean isGoalMapFile(Path path) {
+    private boolean isGoalMapFile(Path directory, Path path) {
         String filename = path.getFileName() != null ? path.getFileName().toString().toLowerCase(Locale.ROOT) : "";
         if (!filename.endsWith(FILE_SUFFIX)) {
             return false;
         }
         if (filename.endsWith(".review" + FILE_SUFFIX)) {
             return false;
+        }
+        // Quality dossiers retain historical and candidate mappings as evidence, not runtime input.
+        for (Path segment : directory.relativize(path)) {
+            if ("quality".equals(segment.toString())) {
+                return false;
+            }
         }
         for (Path segment : path) {
             if ("mapping".equals(segment.toString())) {

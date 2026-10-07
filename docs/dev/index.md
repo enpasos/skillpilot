@@ -59,6 +59,7 @@ This page is the entry point for developer-facing SkillPilot documentation. Keep
 - [Chemistry Evidence Watch Baseline Review, 7 September 2026](canonical-gymnasium-chemistry-evidence-watch-review-2026-09-07.md)
 - [Chemistry Evidence Watch Baseline Review, 1 October 2026](canonical-gymnasium-chemistry-evidence-watch-review-2026-10-01.md)
 - [Chemistry Evidence Watch Checkpoint Review, 6 October 2026](canonical-gymnasium-chemistry-evidence-watch-review-2026-10-06.md)
+- [Chemistry Evidence Watch Maintenance Review, 7 October 2026](canonical-gymnasium-chemistry-evidence-watch-review-2026-10-07.md)
 
 ## Chemistry State Cutover Audits
 

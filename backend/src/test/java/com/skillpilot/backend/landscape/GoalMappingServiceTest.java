@@ -110,6 +110,69 @@ class GoalMappingServiceTest {
     }
 
     @Test
+    void ignoresConflictingHistoricalMappingsInsideQualityDirectories() throws IOException {
+        Path activeMapping = tempDir.resolve("DE/Gymnasium/mapping/state/runtime.json");
+        writeJson(activeMapping, """
+                {
+                  "version": 1,
+                  "sourceLandscapeId": "legacy-math",
+                  "targetLandscapeId": "canonical-math",
+                  "mappings": [
+                    {
+                      "legacyGoalId": "legacy-1",
+                      "canonicalGoalId": "canon-current",
+                      "matchType": "exact"
+                    }
+                  ]
+                }
+                """);
+        String historicalMapping = """
+                {
+                  "version": 1,
+                  "sourceLandscapeId": "legacy-math",
+                  "targetLandscapeId": "canonical-math",
+                  "mappings": [
+                    {
+                      "legacyGoalId": "legacy-1",
+                      "canonicalGoalId": "canon-historical",
+                      "matchType": "exact"
+                    }
+                  ]
+                }
+                """;
+        writeJson(tempDir.resolve(
+                "DE/Gymnasium/quality/goal-evidence/review/inputs/curricula/DE/Gymnasium/mapping/state/runtime.json"),
+                historicalMapping);
+        writeJson(tempDir.resolve("other-curriculum/quality/review/mapping/runtime.json"), historicalMapping);
+        writeJson(tempDir.resolve("mapping/quality/review/runtime.json"), historicalMapping);
+
+        GoalMappingService service = createService(tempDir);
+
+        assertThat(service.getAllMappings()).hasSize(1);
+        assertThat(service.findByLegacyGoalId("legacy-1"))
+                .get()
+                .extracting(ResolvedGoalMapping::canonicalGoalId, ResolvedGoalMapping::sourceFile)
+                .containsExactly("canon-current", activeMapping.toString());
+    }
+
+    @Test
+    void doesNotParseMalformedHistoricalMappingsInsideQualityDirectories() throws IOException {
+        writeJson(tempDir.resolve("mapping/runtime.json"), """
+                {
+                  "version": 1,
+                  "sourceLandscapeId": "legacy-math",
+                  "targetLandscapeId": "canonical-math",
+                  "mappings": []
+                }
+                """);
+        writeJson(tempDir.resolve("quality/review/inputs/mapping/broken.json"), "{");
+
+        GoalMappingService service = createService(tempDir);
+
+        assertThat(service.getAllMappings()).isEmpty();
+    }
+
+    @Test
     void rejectsConflictingMappingsForSameLegacyGoalId() throws IOException {
         writeJson(tempDir.resolve("mapping/one.json"), """
                 {
