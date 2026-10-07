@@ -173,7 +173,7 @@ export const buildGoalBookSourceAtlasInputs = (config: GoalBookSourceAtlasInputC
   assert.ok(config.expectedJurisdictions.every(j => /^DE-[A-Z]{2}$/u.test(j)))
   assert.equal(new Set(config.mappingPaths).size, config.mappingPaths.length)
   const snapshots = new Map((config.sourceDocumentSnapshots ?? []).map(snapshot => {
-    assert.ok(/^curricula\/DE\/Gymnasium\/input\/.+\.pdf$/u.test(snapshot.path), `Invalid source snapshot path: ${snapshot.path}`)
+    assert.ok(/^curricula\/DE\/Gymnasium\/.+\.(?:pdf|html)$/u.test(snapshot.path), `Invalid source snapshot path: ${snapshot.path}`)
     assert.ok(!snapshot.path.split('/').includes('..') && !snapshot.path.includes('\\'), `Invalid source snapshot path: ${snapshot.path}`)
     local(repoRoot, snapshot.path)
     assert.ok(/^sha256:[a-f0-9]{64}$/u.test(snapshot.sha256), `Invalid source snapshot digest: ${snapshot.path}`)
@@ -264,7 +264,7 @@ export const buildGoalBookSourceAtlasInputs = (config: GoalBookSourceAtlasInputC
       }
       if (!bindings.has(documentPath)) {
         const documentFile = local(repoRoot, documentPath)
-        // Original PDF downloads are gitignored caches, not build inputs. A
+        // Original PDF/HTML downloads are gitignored caches, not build inputs. A
         // committed snapshot preserves their exact provenance offline; when
         // cached bytes are present they must still match, never silently drift.
         if (snapshot && !existsSync(documentFile)) bindings.set(documentPath, snapshot.sha256)

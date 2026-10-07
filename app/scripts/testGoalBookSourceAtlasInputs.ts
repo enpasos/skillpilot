@@ -1,8 +1,9 @@
 import assert from 'node:assert/strict'
+import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
-import { copyFileSync, mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs'
+import { copyFileSync, existsSync, mkdtempSync, mkdirSync, readFileSync, realpathSync, rmSync, writeFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
-import { dirname, resolve } from 'node:path'
+import { dirname, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
 import {
@@ -80,6 +81,23 @@ export const testGoalBookSourceAtlasInputs = (): void => {
     assert.throws(() => buildGoalBookSourceAtlasInputs({ ...snapshotConfig, sourceDocumentSnapshots: [{ ...snapshot, path: 'curricula/DE/Gymnasium/input/../outside.pdf' }] }, fixtureRoot), /Invalid source snapshot path/)
     rmSync(resolve(fixtureRoot, 'source.json'))
     assert.throws(() => buildGoalBookSourceAtlasInputs(snapshotConfig, fixtureRoot), /ENOENT/, 'A snapshot must never replace the required source extraction')
+    const htmlPath = 'curricula/DE/Gymnasium/quality/goal-evidence/fixture/primary/official.html'
+    const htmlBytes = '<!doctype html><html><body>Reviewed official source fixture</body></html>\n'
+    const htmlSnapshot = { path: htmlPath, url: source.sourceDocument.url, sha256: `sha256:${createHash('sha256').update(htmlBytes).digest('hex')}` }
+    const htmlConfig = { ...config, sourceDocumentSnapshots: [htmlSnapshot] }
+    assert.throws(() => buildGoalBookSourceAtlasInputs(htmlConfig, fixtureRoot), /ENOENT/, 'An HTML snapshot must never replace the required source extraction')
+    write('source.json', { ...source, sourceDocument: { ...source.sourceDocument, path: htmlPath } })
+    const offlineHtml = buildGoalBookSourceAtlasInputs(htmlConfig, fixtureRoot)
+    mkdirSync(dirname(resolve(fixtureRoot, htmlPath)), { recursive: true })
+    writeFileSync(resolve(fixtureRoot, htmlPath), htmlBytes)
+    assert.deepEqual(buildGoalBookSourceAtlasInputs(htmlConfig, fixtureRoot), offlineHtml, 'A matching HTML download must preserve the exact offline derivation')
+    writeFileSync(resolve(fixtureRoot, htmlPath), '<html>Corrupted download</html>\n')
+    assert.throws(() => buildGoalBookSourceAtlasInputs(htmlConfig, fixtureRoot), /Source document snapshot mismatch/)
+    rmSync(resolve(fixtureRoot, htmlPath))
+    assert.throws(() => buildGoalBookSourceAtlasInputs(config, fixtureRoot), /ENOENT/, 'An undeclared HTML source document remains a required input')
+    for (const path of ['app/official.html', 'curricula/DE/other/official.html', 'curricula/DE/Gymnasium/../official.html']) {
+      assert.throws(() => buildGoalBookSourceAtlasInputs({ ...htmlConfig, sourceDocumentSnapshots: [{ ...htmlSnapshot, path }] }, fixtureRoot), /Invalid source snapshot path/)
+    }
     write('source.json', source)
     rmSync(resolve(fixtureRoot, 'doc.txt'))
     assert.throws(() => buildGoalBookSourceAtlasInputs(config, fixtureRoot), /ENOENT/, 'Non-snapshot source inputs remain mandatory')
@@ -197,27 +215,32 @@ export const testGoalBookSourceAtlasInputs = (): void => {
     ['DE-BY/SekI/', 91], ['DE-BY/SekII/GK', 111], ['DE-BY/SekII/LK', 142], ['DE-HE/SekII/GK', 112], ['DE-HE/SekII/LK', 141],
   ], 'HE-only integration must preserve BY source coverage and the HE GK scope')
   assert.deepEqual([...new Set(chemistry.receipt.scopes.flatMap(s => s.witnesses.filter(w => w.profileBasis === 'authored-view').map(() => s.jurisdiction)))].sort(), ['DE-BB', 'DE-BE'])
+  const trackedPaths = new Set(execFileSync('git', ['ls-files', '--cached', '-z'], { cwd: root, encoding: 'utf8' }).split('\0').filter(Boolean))
   // Every grouped witness expands back to the exact original provenance record.
   for (const [subject, result] of [['biology', biology], ['chemistry', chemistry]] as const) {
     assert.deepEqual(expandGoalBookSourceAtlasReceipt(compactGoalBookSourceAtlasReceipt(result.receipt)), result.receipt)
     const configPath = `app/scripts/config/goal-books/de-gym-${subject}-national-atlas.inputs.json`
     const config = readGoalBookSourceAtlasInputConfig(configPath, root)
     const snapshotPaths = new Set(config.sourceDocumentSnapshots?.map(snapshot => snapshot.path))
-    // Biology retains its 16 original snapshots and the corrected Hessen KC PDF.
-    assert.equal(snapshotPaths.size, subject === 'biology' ? 17 : 30)
+    // Biology retains all 17 PDF snapshots and the three reviewed HTML sources.
+    assert.equal(snapshotPaths.size, subject === 'biology' ? 20 : 30)
     const checkoutRoot = mkdtempSync(resolve(tmpdir(), 'skillpilot-atlas-without-downloads-'))
     try {
-      // Copy only the required repository inputs and published derivation, not
-      // any authoring PDF cache: both real atlases must pass in a fresh checkout.
+      // A local ignored file must not conceal a missing deployment input. Copy
+      // only Git-tracked mandatory inputs, with declared source caches absent.
       const paths = new Set([configPath, ...result.receipt.inputBindings.map(binding => binding.path), ...Object.keys(result.outputs)])
       for (const path of paths) if (!snapshotPaths.has(path)) {
+        assert.ok(trackedPaths.has(path), `${subject}: mandatory source-atlas input must be Git-tracked: ${path}`)
+        const resolvedPath = relative(realpathSync(root), realpathSync(resolve(root, path)))
+        assert.ok(trackedPaths.has(resolvedPath), `${subject}: mandatory source-atlas input target must be Git-tracked: ${path} -> ${resolvedPath}`)
         mkdirSync(dirname(resolve(checkoutRoot, path)), { recursive: true })
         copyFileSync(resolve(root, path), resolve(checkoutRoot, path))
       }
+      for (const path of snapshotPaths) assert.equal(existsSync(resolve(checkoutRoot, path)), false, `${subject}: the checkout fixture must omit every declared source cache: ${path}`)
       assert.deepEqual(checkGoalBookSourceAtlasInputs(configPath, checkoutRoot), result)
     } finally {
       rmSync(checkoutRoot, { recursive: true, force: true })
     }
   }
-  console.log('PASS source-atlas input derivation, offline snapshot/binding/boundary checks and current Biology/Chemistry coverage without PDF downloads')
+  console.log('PASS source-atlas input derivation, offline PDF/HTML snapshot/binding/boundary checks and current Biology/Chemistry coverage with only Git-tracked mandatory inputs')
 }

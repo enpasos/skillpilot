@@ -136,6 +136,13 @@ labels, and authored preorder of those same goals. The build fails unless that
 navigation view places the atlas target set exactly once without missing or
 additional curricular-atomic goals.
 
+Official PDF and HTML downloads remain local caches. Each source document
+used by the atlas must either be versioned or have an explicit
+`sourceDocumentSnapshots` binding to its reviewed path, official URL and SHA-256.
+A checkout without cached downloads must produce the same atlas; cached bytes
+must match their binding. Source extractions and reviewed mappings remain
+mandatory versioned inputs.
+
 ### 3.2 Positive understanding-evidence profiles
 
 Evidence profiles are separate curriculum-quality artifacts. They explain the
