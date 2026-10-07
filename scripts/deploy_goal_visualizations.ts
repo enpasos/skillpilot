@@ -24,6 +24,41 @@ function walkFiles(dir: string): string[] {
   return files
 }
 
+function ensureRegularOutputDirectory(directory: string): void {
+  const parent = path.dirname(directory)
+  if (parent !== directory) ensureRegularOutputDirectory(parent)
+  const metadata = fs.lstatSync(directory, { throwIfNoEntry: false })
+  if (metadata) {
+    if (metadata.isSymbolicLink() || !metadata.isDirectory()) {
+      throw new Error(`Refusing goal visualization output directory alias: ${directory}`)
+    }
+  } else {
+    fs.mkdirSync(directory)
+  }
+}
+
+export function copyGoalVisualizationAsset(sourcePath: string, targetRoot: string, relativePath: string): void {
+  const outputRoot = path.resolve(targetRoot)
+  const targetPath = path.resolve(outputRoot, relativePath)
+  if (!targetPath.startsWith(`${outputRoot}${path.sep}`)) {
+    throw new Error(`Goal visualization output escapes its directory: ${relativePath}`)
+  }
+  ensureRegularOutputDirectory(path.dirname(targetPath))
+  const previous = fs.lstatSync(targetPath, { throwIfNoEntry: false })
+  if (previous) {
+    if (!previous.isFile() || previous.isSymbolicLink() || previous.nlink !== 1) {
+      throw new Error(`Refusing goal visualization output file alias: ${targetPath}`)
+    }
+    fs.chmodSync(targetPath, (previous.mode & 0o777) | 0o200)
+  }
+  fs.copyFileSync(sourcePath, targetPath)
+  const copied = fs.lstatSync(targetPath)
+  if (!copied.isFile() || copied.isSymbolicLink() || copied.nlink !== 1) {
+    throw new Error(`Goal visualization copy is not a regular output file: ${targetPath}`)
+  }
+  fs.chmodSync(targetPath, (copied.mode & 0o777) | 0o200)
+}
+
 function deployGoalVisualizations() {
   const files = walkFiles(SOURCE_DIR)
   let copied = 0
@@ -31,9 +66,7 @@ function deployGoalVisualizations() {
   for (const sourcePath of files) {
     const relativePath = path.relative(SOURCE_DIR, sourcePath)
     for (const targetDir of TARGET_DIRS) {
-      const targetPath = path.join(targetDir, relativePath)
-      fs.mkdirSync(path.dirname(targetPath), { recursive: true })
-      fs.copyFileSync(sourcePath, targetPath)
+      copyGoalVisualizationAsset(sourcePath, targetDir, relativePath)
       copied += 1
     }
   }
@@ -42,4 +75,6 @@ function deployGoalVisualizations() {
   console.log(`Deployed ${copied} goal visualization asset copy/copies to ${targetList}`)
 }
 
-deployGoalVisualizations()
+if (process.argv[1] && path.resolve(process.argv[1]) === __filename) {
+  deployGoalVisualizations()
+}

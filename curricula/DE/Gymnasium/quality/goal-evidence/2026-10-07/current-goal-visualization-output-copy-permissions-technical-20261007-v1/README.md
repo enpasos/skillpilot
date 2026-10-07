@@ -4,7 +4,7 @@ Technical repair only, 7 October 2026. No new curriculum or image approval; stri
 
 The actual inspection found six Chemie PNGs with mode `0444` in each current output tree: `app/public/assets/goal-visualizations` and `backend/src/main/resources/static/assets/goal-visualizations`. Each tree contained 1,852 regular files, no symbolic links, and writable directories. The repair adds owner-write only to the twelve affected regular output copies, changing `0444` to `0644`.
 
-The helper rejects aliases and multiply linked files before changing permissions. It verifies each affected copy against the corresponding original source image, binds bytes, SHA256, mode and inode, and checks that only the output permission changed. Source images, their original modes, and all historical snapshot files remain unchanged. The original deployment script remains unchanged. Full build, schema and central curriculum gates are separate Root-run checks.
+The helper rejects aliases and multiply linked files before changing permissions. It verifies each affected copy against the corresponding original source image, binds bytes, SHA256, mode and inode, and checks that only the output permission changed. Source images, their original modes, and all historical snapshot files remain unchanged. This initial permission-only application did not change the original deployment script. Full build, schema and central curriculum gates are separate Root-run checks.
 
 ## Rule for future review preparation
 
@@ -18,4 +18,12 @@ Run `python -B restore_current_output_permissions.py --apply` once, then `--veri
 
 The six source PNGs themselves remain `0444`. An isolated actual Node fixture confirms that `fs.copyFileSync` copies that mode onto an existing `0644` target, returning the target to `0444`. The raw stdout, fixture source and terminal receipt are retained here. The fixture changes no repository image or production script.
 
-This permission-only intervention makes the currently affected output copies writable. A later ordinary deployment can copy the protected source mode onto them again. The permanent generic deployment correction belongs to the Root integration: keep source permissions unchanged, reject output aliases, ensure existing regular output copies are writable before overwriting, and retain owner-write on the resulting output copies. The temporary repair is not reported as that production correction or as a passed full build.
+This initial permission-only intervention makes the currently affected output copies writable. The uncorrected deployment could copy the protected source mode onto them again. Its receipt retains the actual earlier statement that production scripts were unchanged; it is not rewritten to claim the subsequent correction or a passed full build.
+
+## Subsequent permanent producer correction
+
+After the recurrence fixture, Root explicitly assigned the narrow production correction. `scripts/deploy_goal_visualizations.ts` now makes existing regular output copies owner-writable before overwriting and restores owner-write after copying. It refuses symbolic directory/file aliases and hard-linked outputs before changing permissions. Source and historical modes and bytes remain unchanged. The CLI still copies the existing discovered image files into the same two output trees; it does not alter images, metadata, curriculum decisions or publication behavior.
+
+`app/scripts/testDeployGoalVisualizations.ts`, run through `npm --prefix app run test:goal-visualization-deploy`, verifies three repeated deployments from a `0444` source into each initially `0444` output; each resulting copy has exact source bytes and mode `0644`, while the source remains `0444`. It also covers a new nested output and protected symbolic file, dangling file, nested directory, root directory and hard-link aliases. Protected target bytes and modes remain intact. The production script exports only its copy helper for this actual regression test and runs normal deployment only when invoked directly.
+
+Targeted command results and production/test/package source hashes are recorded separately from the initial application and from full Root-run build or CI results.
