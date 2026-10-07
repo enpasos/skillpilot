@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-10-07T00:48:08.569Z
+Generated: 2026-10-07T18:02:47.068Z
 
 Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
@@ -16,17 +16,17 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 479 |
+| Alle Ziele in der Landschaft | 480 |
 | Atomare Ziele im Visualisierungs-Scope | 378 |
-| Ziele mit primaerem Visualisierungslink | 357 |
-| Coverage | 94.4% |
+| Ziele mit primaerem Visualisierungslink | 361 |
+| Coverage | 95.5% |
 | Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 378 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
-| Review-Ledger-Dateien | 22 |
+| Review-Ledger-Dateien | 23 |
 | Offene Provider-Deferred-Ziele | 17 |
-| Offene Quality-Deferred-Ziele | 4 |
+| Offene Quality-Deferred-Ziele | 0 |
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 0 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
@@ -40,6 +40,7 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | `accepted` | 123 |
 | `ai_candidate` | 2 |
 | `ai-reviewed` | 5 |
+| `candidate` | 4 |
 | `pending-independent-actual-review` | 6 |
 | `pilot` | 221 |
 
@@ -48,7 +49,7 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | Decision | Count |
 | --- | --- |
 | `accepted_corrected_candidate` | 32 |
-| `accepted_current` | 44 |
+| `accepted_current` | 48 |
 | `accepted_new_candidate` | 276 |
 | `accepted_pilot` | 59 |
 | `accepted_pilot_after_regeneration` | 13 |
@@ -64,8 +65,8 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-three-current-evidenced-quality-holds-2026-10-07.md` |
-| Latest ledger status | - |
+| Latest ledger | `curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-visual-qa-current-paired-corrections-2026-10-07.md` |
+| Latest ledger status | `completed_existing_machine_review_adoption` |
 | Configured resume file | - |
 | Configured prompt append dir | `tmp/goal-visualization-prompt-appends/chemie-deferred-2026-07-17` |
 
@@ -75,7 +76,7 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 - Neue Bilder bleiben erst `--no-import`-Kandidaten und werden erst nach visueller und fachlicher Kontrolle in die Landschaft gelinkt.
 - Das Coverage-Gate erlaubt nur Ziele mit aktivem primaerem Asset oder einer aktuellen dokumentierten `deferred_provider_limitation`- bzw. `deferred_quality_review`-Entscheidung; regulaer fehlende Ziele lassen das Gate scheitern.
 - Beide Deferred-Arten bleiben offene Bildarbeit und erfuellen das strenge M7-Visualisierungsgate nicht. `deferred_quality_review` bezeichnet ein nach fachlicher Pruefung zurueckgezogenes Bild, nicht ein Providerproblem.
-- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind 17 Provider- und 4 Quality-Deferred-Ziel(e).
+- Es gibt keine regulaeren unvisualisierten Ziele ohne Deferred-Status mehr; offen sind 17 Provider- und 0 Quality-Deferred-Ziel(e).
 
 ## Quality Queues
 
@@ -103,12 +104,7 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
 ### Open Quality Deferred
 
-| Batch | Goal ID | Title | Decision |
-| --- | --- | --- | --- |
-| chemie-three-current-evidenced-quality-holds-2026-10-07 | `9751b6d8-cde3-527b-b37c-babb6cee79d2` | Beeinflussung von Säure-Base-Reaktionen erklären | `deferred_quality_review` |
-| chemie-three-current-evidenced-quality-holds-2026-10-07 | `a44af1fa-5988-5b7d-b206-691c6bbf7dd4` | Ionen nachweisen und Salzzusammensetzung bestimmen | `deferred_quality_review` |
-| chemie-three-current-evidenced-quality-holds-2026-10-07 | `0bf26276-2780-506c-ac34-35dd44a29409` | pH-Werte in Alltag, Technik und Biologie erörtern | `deferred_quality_review` |
-| chemie-c441-current-typo-and-mobile-quality-hold-2026-10-07 | `c441d9e8-d9d9-5e55-a189-a37345541321` | Salzbildung energetisch mit Gitterenergie erklären | `deferred_quality_review` |
+Keine Eintraege.
 
 ### Open Provider Quota
 
@@ -146,8 +142,6 @@ Keine Eintraege.
 Keine Eintraege.
 
 ## Next Command
-
-Priority: correct the 4 quality-deferred image(s) named above, inspect each replacement at original resolution, and record a new approval for its exact SHA-256 before re-linking. This is open M7-V work; the provider batch command below is a separate queue.
 
 ```bash
 npm --prefix app run visualization:plan-batch -- --count 6 --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json --output tmp/goal-visualization-chemie-next-batch.txt --include-deferred
