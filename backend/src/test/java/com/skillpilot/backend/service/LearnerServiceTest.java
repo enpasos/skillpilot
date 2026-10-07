@@ -75,6 +75,8 @@ import org.springframework.test.context.ActiveProfiles;
 public class LearnerServiceTest {
 
     private static final int SCOPE_COMPLETION_SAFETY_MARGIN = 5;
+    // Allow full curriculum projections to finish on CI while keeping concurrency waits bounded.
+    private static final int CONCURRENT_COMPLETION_TIMEOUT_SECONDS = 60;
     private static final String CANONICAL_GYMNASIUM_ROOT_ID = "a0e13c56-c25f-4742-9272-3a1a603ee52e";
     private static final String CANONICAL_MATH_LANDSCAPE_ID = "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced";
     private static final String CANONICAL_MATH_ROOT_SCOPE_ID =
@@ -1094,7 +1096,7 @@ public class LearnerServiceTest {
             writer.get(10, TimeUnit.SECONDS);
             long revisionAfterWrite = learnerRepository.findById(learnerId).orElseThrow().getCoachStateRevision();
 
-            var collection = reader.get(10, TimeUnit.SECONDS);
+            var collection = reader.get(CONCURRENT_COMPLETION_TIMEOUT_SECONDS, TimeUnit.SECONDS);
             assertThat(collection.asOf()).isEqualTo(today);
             assertThat(collection.status().periodBasis()).isEqualTo(PeriodBasis.WEEK);
             assertThat(collection.status().statusText())
@@ -3703,8 +3705,8 @@ public class LearnerServiceTest {
             });
             assertThat(ready.await(10, TimeUnit.SECONDS)).isTrue();
             start.countDown();
-            first.get(20, TimeUnit.SECONDS);
-            second.get(20, TimeUnit.SECONDS);
+            first.get(CONCURRENT_COMPLETION_TIMEOUT_SECONDS, TimeUnit.SECONDS);
+            second.get(CONCURRENT_COMPLETION_TIMEOUT_SECONDS, TimeUnit.SECONDS);
         } finally {
             executor.shutdownNow();
         }
