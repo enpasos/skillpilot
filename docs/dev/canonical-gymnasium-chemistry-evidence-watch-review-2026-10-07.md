@@ -39,11 +39,11 @@ Only the two corresponding baseline records and `updatedAt` advance. The other
 The manifest, normalization algorithm, checker and workflow remain unchanged;
 future unacknowledged deltas still fail.
 
-The [technical receipt](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemistry-evidence-watch-current18-bounded-acknowledgement-technical-20261007-v1/bounded-watch-baseline-acknowledgement.actual.receipt.json)
+The [technical receipt](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemistry-evidence-watch-current18-bounded-acknowledgement-technical-20261007-v1/bounded-watch-baseline-acknowledgement.actual.receipt.json)
 records the exact changed fields, existing reviewed plan operations and both
-old/current watch hashes. The [complete prior baseline](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemistry-evidence-watch-current18-bounded-acknowledgement-technical-20261007-v1/before/chemistry-evidence-watch-baseline.json)
+old/current watch hashes. The [complete prior baseline](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemistry-evidence-watch-current18-bounded-acknowledgement-technical-20261007-v1/before/chemistry-evidence-watch-baseline.json)
 is retained unchanged. The
-[actual guarded scientific integration](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-final18-reviewed-active-integration-root-20261007-v1/root-reviewed-and-actual-integrated-boundaries.receipt.json)
+[actual guarded scientific integration](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-final18-reviewed-active-integration-root-20261007-v1/root-reviewed-and-actual-integrated-boundaries.receipt.json)
 remains the integration lineage; this maintenance acknowledgement creates
 **zero new scientific reviews or completions**. Current strict M7 totals require
 the central report. Human approval, practical trials and release acceptance
@@ -55,6 +55,6 @@ The unchanged `bash scripts/run_canonical_chemistry_evidence_watch.sh` completed
 with **Exit 0** at **09:30:15 UTC**, including its self-test,
 `changed=0 added=0 removed=0` and `CHEMISTRY_EVIDENCE_WATCH=OK`. Both watch views
 were regenerated natively. The
-[completed command receipt](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemistry-evidence-watch-current18-bounded-acknowledgement-technical-20261007-v1/full-canonical-chemistry-evidence-watch-after-reviewed-delta.actual.terminal.receipt.json)
+[completed command receipt](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemistry-evidence-watch-current18-bounded-acknowledgement-technical-20261007-v1/full-canonical-chemistry-evidence-watch-after-reviewed-delta.actual.terminal.receipt.json)
 records the actual terminal result. This is local evidence; a new commit and
 GitHub run must verify CI separately.
