@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:f736967561454e31c8fa9f426fcaa90ac231c828cfc065ede3daa91cc88eb572",
+  "reviewInputFingerprint": "sha256:11e20acc7ef552fa4764a813d5061b5560df55b4461fc3251973f350043889c0",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-neuro21-final-one-d-a-20261007",
+      "roundId": "biologie-neuro21-final-one-first-pass-a-20261007",
+      "independenceGroupId": "biologie-neuro21-final-native-d-independent-a-20261007",
+      "runIds": [
+        "biologie-neuro21-final-current-root-independent-d-a-one-20261007-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact serving model/variant not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-neuro21-final-one-d-b-20261007",
+      "roundId": "biologie-neuro21-final-one-first-pass-b-20261007",
+      "independenceGroupId": "biologie-neuro21-final-native-d-independent-b-20261007",
+      "runIds": [
+        "biologie-neuro21-final-one-native-independent-b-20261007.run-001"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::Codex direct review; exact serving model identifier not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "c05e217f-33fc-5a11-ba75-1397fad3ae0a",
+      "firstRecordId": "biologie-neuro21-final-current-root-independent-d-a-one-20261007-v1:c05e217f-33fc-5a11-ba75-1397fad3ae0a",
+      "secondRecordId": "biologie-neuro21-final-native-b-c05e217f-33fc-5a11-ba75-1397fad3ae0a",
+      "firstRunId": "biologie-neuro21-final-current-root-independent-d-a-one-20261007-v1",
+      "secondRunId": "biologie-neuro21-final-one-native-independent-b-20261007.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

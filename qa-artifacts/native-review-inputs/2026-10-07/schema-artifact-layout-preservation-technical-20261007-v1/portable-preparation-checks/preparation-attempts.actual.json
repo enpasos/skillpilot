@@ -1,0 +1,20 @@
+{
+  "rootApplyHelperFirstCheck": {
+    "passed": false,
+    "guard": "original literal",
+    "firstPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-q1-four-current-paired-integration-preparation-technical-20261007-v1/source/inert-input-root/curricula/DE/Gymnasium/input/BY/gymnasium/Biologie.json",
+    "reason": "Separate Bio4 author had already migrated pointer to exact planned relative literal. No apply was called."
+  },
+  "relocationTest": {
+    "passed": true,
+    "allOriginal358LinksVerified": true,
+    "guardBeforeAndAfterRelocationErrors": []
+  },
+  "postRelocationCurrentCountAssertion": {
+    "passed": false,
+    "expectedOriginalAbsoluteCount": 358,
+    "actualAbsoluteCount": 352,
+    "reason": "Six separate-author pointer migrations occurred after original inventory. Complete relocation receipt was written before the stale-count assertion."
+  },
+  "resolution": "Preserve original inventory and guard failure; new application manifest contains remaining 352 original absolute literals only."
+}

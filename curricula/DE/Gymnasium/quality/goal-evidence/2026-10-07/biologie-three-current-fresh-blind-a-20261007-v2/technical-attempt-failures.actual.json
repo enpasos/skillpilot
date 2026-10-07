@@ -1,0 +1,21 @@
+{
+  "retainedExploratoryFailures": [
+    {
+      "commandPurpose": "Locate technical A/M config paths without reading other scientific ledgers",
+      "exitCode": 1,
+      "observedErrors": [
+        "scripts/config/semantic-atomicity-review/biologie.json: No such file or directory",
+        "scripts/config/memory-card-review/biologie.json: No such file or directory"
+      ],
+      "effect": "No config or active ledger was written; independent A/M decisions are in the sealed scientific record."
+    },
+    {
+      "commandPurpose": "rg filename lookup for Biology A/M configs under scripts/config",
+      "exitCode": 1,
+      "observedErrors": [],
+      "effect": "No filename matched; no scientific conclusion inferred."
+    }
+  ],
+  "nativeValidatorFailures": [],
+  "earlierOwnV1PassIncompleteAndRetained": true
+}

@@ -1,0 +1,237 @@
+{
+  "documentType": "Current complete c441 DE/EN goal and unchanged native P profile/case constraints, read without prior V decisions",
+  "wholeCurrentV2Goal": {
+    "id": "c441d9e8-d9d9-5e55-a189-a37345541321",
+    "shortKey": "canonical_chemistry_sek1_salt_formation_lattice_energy",
+    "title": "Salzbildung energetisch mit Gitterenergie erklären",
+    "titleEn": "Explain salt formation energetically using lattice energy",
+    "description": "Die lernende Person kann Salzbildung aus Elementen als Ionenbildung mit Elektronenübergang beschreiben, die Edelgaskonfiguration mithilfe des Energiestufenmodells begründen und den exothermen Verlauf über Gitterenergie als Triebkraft erklären.",
+    "descriptionEn": "The learner can describe salt formation from elements as ion formation through electron transfer, justify noble-gas configuration using the energy level model, and explain the exothermic course through lattice energy as the driving force.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical",
+      "SekI"
+    ],
+    "contains": [],
+    "requires": [
+      "f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+      "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca",
+      "950c73c6-4ed1-488a-9267-1142e95e0055"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-chemistry",
+      "demandLevel": "AB2",
+      "processCompetencies": [
+        "PK2_MODELLIEREN",
+        "PK4_KOMMUNIZIEREN"
+      ],
+      "guidingIdeas": [
+        "BC_AUFBAU",
+        "BC_REAKTION",
+        "BC_ENERGIE"
+      ],
+      "phase": "GLOBAL",
+      "area": "Atombau und Bindung",
+      "topicCode": "CANONICAL.CHEMISTRY.SEK1.SALT_FORMATION_LATTICE_ENERGY"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ]
+    },
+    "extendedData": {
+      "provenance": {
+        "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+        "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+        "sourceGoalId": "dff826a2-8cec-5842-a618-a95ed6f97670"
+      }
+    },
+    "type": "atomic",
+    "examples": [],
+    "resourceLinks": []
+  },
+  "wholeCurrentV2GoalLogicalSha256": "f8c573ee79e7e77e7aee2b8b543d66cff462023d6f82d31768fc77b1628fdff4",
+  "wholeActiveGoalEqualsCurrentV2": true,
+  "currentNativePRecordSelectedFieldsOnly": {
+    "goalId": "c441d9e8-d9d9-5e55-a189-a37345541321",
+    "goalFingerprint": "sha256:ebc2025dad09c32208bcfa5b629570111f78963ee258d2af72290bbaa2d9be43",
+    "profileFingerprint": "sha256:869e3eb7602fa46cbfa2fdd7999150a7a92ef50ffb019679a2f9bcce145c699f",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "profile": {
+      "archetype": "modeling",
+      "expectations": [
+        {
+          "id": "content-specific-understanding",
+          "essentialUnderstandingDe": "Salzbildung umfasst Atom-Ionenbildung und anschließende elektrostatische Gitterbildung; erst die Gesamtenergiebilanz begründet den exothermen Umsatz aus den Elementen.",
+          "essentialUnderstandingEn": "Salt formation involves atomic-ion formation followed by electrostatic lattice formation; only the total energy balance explains an exothermic process from the elements.",
+          "observablePerformanceDe": "Na→Na++e− ergibt2|8, Cl+e−→Cl−2|8|8. Summe108+122+496−349−787=−410 kJ/mol im Modell, daher exotherm. Die kostspielige Ionisierung allein erklärt keine Wärmefreisetzung; Gitterbildung setzt genügend Energie frei.",
+          "observablePerformanceEn": "Na→Na++e− gives2|8; Cl+e−→Cl− gives2|8|8. Sum108+122+496−349−787=−410 kJ/mol in the model, hence exothermic. Costly ionisation alone explains no heat release; lattice formation releases sufficient energy."
+        },
+        {
+          "id": "fresh-transfer-and-model-boundary",
+          "essentialUnderstandingDe": "Edelgaskonfiguration und große Gitterenergie garantieren für beliebige Elemente weder spontane Bildung noch eine bekannte Aktivierungsenergie.",
+          "essentialUnderstandingEn": "Noble-gas configuration and large lattice energy guarantee neither spontaneous formation from arbitrary elements nor a known activation energy.",
+          "observablePerformanceDe": "Mg gibt2 Elektronen ab, O nimmt2 auf; beide Ionen2|8, Verhältnis1:1 zu MgO. Bilanz3000−3600=−600. Elektronenentfernung kostet Energie; auch Elektronenaufnahme muss je Schritt geprüft werden. Exothermie folgt hier aus der gesamten Bilanz.",
+          "observablePerformanceEn": "Mg loses2 electrons and O gains2; both ions2|8,1:1 giving MgO. Balance3000−3600=−600. Electron removal costs energy; each electron-gain step must also be checked. Exothermicity follows here from the full balance."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "content-specific-understanding",
+          "fresh-transfer-and-model-boundary"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "specific-material-variation",
+          "textDe": "NaCl gegenüber MgO; Elektronen-/Ionenverhältnis und endotherme Vorstufen versus exotherme Gitterbildung.",
+          "textEn": "NaCl versus MgO; electron/ion ratios and endothermic preparation versus exothermic lattice formation."
+        },
+        {
+          "id": "specific-model-limit",
+          "textDe": "Edelgaskonfiguration und große Gitterenergie garantieren für beliebige Elemente weder spontane Bildung noch eine bekannte Aktivierungsenergie.",
+          "textEn": "Noble-gas configuration and large lattice energy guarantee neither spontaneous formation from arbitrary elements nor a known activation energy."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "chem-next25-c441d9e8-case-1",
+          "taskDemandDe": "Na:2|8|1; Cl:2|8|7. Gerundetes didaktisches Energiemodell pro mol NaCl:Atomisierung Na+108, halbe Cl2-Spaltung+122, Na-Ionisierung+496, Cl-Elektronenaufnahme−349, Gitterbildung−787 kJ/mol. Diese gelieferten Modellwerte sind kein neues Messergebnis. Erkläre Ionenbildung mit Elektronenübergang/Energiestufen und bilanziere Gesamtenergie. Begründe die Rolle des Gitters.",
+          "taskDemandEn": "Na:2|8|1; Cl:2|8|7. Rounded teaching energy model per mol NaCl:Na atomisation+108, half Cl2 dissociation+122, Na ionisation+496, Cl electron gain−349, lattice formation−787 kJ/mol. These supplied model values are not a new measurement. Explain ion formation using electron transfer/energy levels, balance total energy and explain the lattice’s role.",
+          "expectedPerformanceDe": "Na→Na++e− ergibt2|8, Cl+e−→Cl−2|8|8. Summe108+122+496−349−787=−410 kJ/mol im Modell, daher exotherm. Die kostspielige Ionisierung allein erklärt keine Wärmefreisetzung; Gitterbildung setzt genügend Energie frei.",
+          "expectedPerformanceEn": "Na→Na++e− gives2|8; Cl+e−→Cl− gives2|8|8. Sum108+122+496−349−787=−410 kJ/mol in the model, hence exothermic. Costly ionisation alone explains no heat release; lattice formation releases sufficient energy.",
+          "understandingFocusDe": "Der Energieschritt zu gasförmigen Ionen ist ein Modellweg, keine tatsächliche Reihenfolge isolierter Labor-Zwischenprodukte.",
+          "understandingFocusEn": "The energy path through gaseous ions is a model cycle, not an actual sequence of isolated laboratory intermediates."
+        },
+        {
+          "id": "chem-next25-c441d9e8-case-2",
+          "taskDemandDe": "Frischer Hauptgruppenfall:Mg2|8|2 und O2|6. Gegebenes Modell:alle Schritte bis zu getrennten Mg2+(g)/O2−(g) benötigen insgesamt+3000 kJ/mol; Gitterbildung setzt−3600 kJ/mol frei. Es handelt sich ausdrücklich um illustrative Bilanzwerte, nicht tabellierte MgO-Messdaten. Leite Ionen-/Elektronenverhältnis ab und erkläre, ob das vorgegebene Modell insgesamt exotherm ist. Korrigiere „jede Ionenbildung gibt Energie ab“.",
+          "taskDemandEn": "Fresh main-group case:Mg2|8|2 and O2|6. Supplied model:all steps to separated Mg2+(g)/O2−(g) require+3000 kJ/mol; lattice formation releases−3600. These are explicitly illustrative balance values, not tabulated MgO measurements. Derive ion/electron ratios and explain whether the supplied model is exothermic overall. Correct “every ion formation releases energy”.",
+          "expectedPerformanceDe": "Mg gibt2 Elektronen ab, O nimmt2 auf; beide Ionen2|8, Verhältnis1:1 zu MgO. Bilanz3000−3600=−600. Elektronenentfernung kostet Energie; auch Elektronenaufnahme muss je Schritt geprüft werden. Exothermie folgt hier aus der gesamten Bilanz.",
+          "expectedPerformanceEn": "Mg loses2 electrons and O gains2; both ions2|8,1:1 giving MgO. Balance3000−3600=−600. Electron removal costs energy; each electron-gain step must also be checked. Exothermicity follows here from the full balance.",
+          "understandingFocusDe": "Edelgaskonfiguration und große Gitterenergie garantieren für beliebige Elemente weder spontane Bildung noch eine bekannte Aktivierungsenergie.",
+          "understandingFocusEn": "Noble-gas configuration and large lattice energy guarantee neither spontaneous formation from arbitrary elements nor a known activation energy."
+        }
+      ]
+    }
+  },
+  "PSourceRole": "Existing ai_candidate/E1/G1 needs_human_review science context, no independent current learner evidence",
+  "boundedBYSourceGoal": {
+    "id": "dff826a2-8cec-5842-a618-a95ed6f97670",
+    "passageId": "6016527b-0567-590c-a7e4-f05bc0b7f978",
+    "topicCode": "C9-HG_SG_MUG_WWG_SWG.6",
+    "bulletIndex": 2,
+    "aspectIndex": 1,
+    "title": "erläutern die bei der Salzbildung aus den Elementen beobachteten Veränderungen durch die Entstehung ...",
+    "description": "erläutern die bei der Salzbildung aus den Elementen beobachteten Veränderungen durch die Entstehung von Atom-Ionen, erklären deren Entstehung mithilfe des Energiestufenmodells und begründen den exothermen Verlauf mithilfe der Gitterenergie als Triebkraft der Salzbildung.",
+    "sourceText": "erläutern die bei der Salzbildung aus den Elementen beobachteten Veränderungen durch die Entstehung von Atom-Ionen, erklären deren Entstehung mithilfe des Energiestufenmodells und begründen den exothermen Verlauf mithilfe der Gitterenergie als Triebkraft der Salzbildung.",
+    "sourceSpan": "C9-HG_SG_MUG_WWG_SWG.6.2",
+    "parentBulletText": "erläutern die bei der Salzbildung aus den Elementen beobachteten Veränderungen durch die Entstehung von Atom-Ionen, erklären deren Entstehung mithilfe des Energiestufenmodells und begründen den exothermen Verlauf mithilfe der Gitterenergie als Triebkraft der Salzbildung.",
+    "sourceRef": "LehrplanPLUS Bayern Gymnasium Chemie, C9-HG_SG_MUG_WWG_SWG.6.2",
+    "courseLevel": "unspecified",
+    "granularity": "officialCompetency",
+    "tags": [
+      "courseLevel:unspecified",
+      "jurisdiction:DE-BY",
+      "stage:SekI",
+      "topic:C9-HG_SG_MUG_WWG_SWG.6",
+      "topic:C9-NTG.3"
+    ],
+    "rawSourceText": "erläutern die bei der Salzbildung aus den Elementen beobachteten Veränderungen durch die Entstehung von Atom-Ionen, erklären deren Entstehung mithilfe des Energiestufenmodells und begründen den exothermen Verlauf mithilfe der Gitterenergie als Triebkraft der Salzbildung.",
+    "rawSourceSpan": "C9-HG_SG_MUG_WWG_SWG.6.2",
+    "rawParentBulletText": "erläutern die bei der Salzbildung aus den Elementen beobachteten Veränderungen durch die Entstehung von Atom-Ionen, erklären deren Entstehung mithilfe des Energiestufenmodells und begründen den exothermen Verlauf mithilfe der Gitterenergie als Triebkraft der Salzbildung.",
+    "duplicateSourceGoalCount": 1,
+    "sourceOccurrences": [
+      {
+        "sourceGoalId": "dff826a2-8cec-5842-a618-a95ed6f97670",
+        "passageId": "6016527b-0567-590c-a7e4-f05bc0b7f978",
+        "topicCode": "C9-HG_SG_MUG_WWG_SWG.6",
+        "sourceSpan": "C9-HG_SG_MUG_WWG_SWG.6.2",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Chemie, C9-HG_SG_MUG_WWG_SWG.6.2",
+        "courseLevel": "unspecified",
+        "tags": [
+          "jurisdiction:DE-BY",
+          "stage:SekI",
+          "courseLevel:unspecified",
+          "topic:C9-HG_SG_MUG_WWG_SWG.6"
+        ]
+      },
+      {
+        "sourceGoalId": "8b425715-eb8f-5e8b-94ef-d53fca301f6d",
+        "passageId": "efdb0c83-9098-5af1-9894-7858cdc41897",
+        "topicCode": "C9-NTG.3",
+        "sourceSpan": "C9-NTG.3.2",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Chemie, C9-NTG.3.2",
+        "courseLevel": "unspecified",
+        "tags": [
+          "jurisdiction:DE-BY",
+          "stage:SekI",
+          "courseLevel:unspecified",
+          "topic:C9-NTG.3"
+        ]
+      }
+    ],
+    "mergedTopicCodes": [
+      "C9-HG_SG_MUG_WWG_SWG.6",
+      "C9-NTG.3"
+    ],
+    "mergedSourceSpans": [
+      "C9-HG_SG_MUG_WWG_SWG.6.2",
+      "C9-NTG.3.2"
+    ],
+    "mergedSourceRefs": [
+      "LehrplanPLUS Bayern Gymnasium Chemie, C9-HG_SG_MUG_WWG_SWG.6.2",
+      "LehrplanPLUS Bayern Gymnasium Chemie, C9-NTG.3.2"
+    ]
+  },
+  "physicalPrimaryLiteralMatch": true,
+  "physicalPrimaryLine": 267,
+  "sourceScope": "C9-NTG.3.2 original text only; merged C9-HG provenance not newly separately acquired",
+  "wholeSourceClosure": false,
+  "nationalSourceApproval": false,
+  "sourceBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-four-evidenced-friendly-comic-author-20261007-v1/inputs/whole-four-current-and-science-candidate-goals.json",
+      "sha256": "c9e3434aeeea450509cf7090e097b233c6d0aca1a484e59438d0cf81e10a3a81"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next17-targeted-description-routing-context-author-v2-20261007/candidate/canonical.whole-current-plus-targeted-corrections.json",
+      "sha256": "f5001c4f58b8b50e4ae475a4ef08ee8a1e0c31e8f006538e9d299b397b17783f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-c441-gasfoermige-caption-targeted-author-20261007-v1/current-c441-whole-positive-record.exact-original-line.jsonl",
+      "sha256": "dc4f8ed227e155d2d7e798c3ee3f057a15a643469a8fb5b5730abda6aa4393dc"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next17-targeted-description-routing-context-author-v2-20261007/inputs/current-BY-source-extraction.snapshot.json",
+      "sha256": "d8f6b835b00729a089452e7f2b58f1b5b94a870d3dd8096b558755dc49cd5056"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next17-targeted-description-routing-context-author-v2-20261007/sources/BY-C9-ch-ntg.txt",
+      "sha256": "071d378433c67fdfff29d3b664ce108c478c260491a65495160e9218ff2815fe"
+    }
+  ]
+}

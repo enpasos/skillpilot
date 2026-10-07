@@ -1,0 +1,1 @@
+/home/enpasos/projects/skillpilot/docs/qa-ci/status/gymnasium-duration-model-readiness.md

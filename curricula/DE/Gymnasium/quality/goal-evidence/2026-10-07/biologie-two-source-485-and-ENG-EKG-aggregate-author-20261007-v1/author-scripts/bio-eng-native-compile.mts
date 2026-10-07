@@ -1,0 +1,4 @@
+// SPDX-License-Identifier: Apache-2.0
+import {readFileSync,writeFileSync} from 'node:fs'
+import {buildApplicabilityCompilation} from '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-source-485-and-ENG-EKG-aggregate-author-20261007-v1/native-isolated-repository/app/scripts/applicabilityCompiler'
+const own='/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-source-485-and-ENG-EKG-aggregate-author-20261007-v1';const report=buildApplicabilityCompilation().reports.find(r=>r.landscapeId==='08a43a1b-d97e-522c-9dfa-c950a493364e')!;writeFileSync(own+'/native-applicability.current-author.actual.json',JSON.stringify({summary:report.summary,findings:report.findings,wholeReport:report,globalStatusRun:false,helperUnchanged:true},null,2)+'\n');console.log(JSON.stringify({summary:report.summary,blocking:report.findings.filter(f=>f.severity!=='diagnostic')}));

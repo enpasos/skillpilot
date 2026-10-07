@@ -1,0 +1,35 @@
+{
+  "fixtureFormatVersion": 1,
+  "cases": [
+    {
+      "id": "duplicate-catalog-object-key",
+      "path": "duplicate-catalog-key.json",
+      "expectedErrorCode": "JSON_DUPLICATE_KEY",
+      "expectedDuplicateKey": "catalogFormatVersion"
+    },
+    {
+      "id": "duplicate-schema-object-key",
+      "path": "duplicate-schema-key.schema.json",
+      "expectedErrorCode": "JSON_DUPLICATE_KEY",
+      "expectedDuplicateKey": "$id"
+    },
+    {
+      "id": "nonfinite-catalog-nan",
+      "path": "nonfinite-catalog.json",
+      "expectedErrorCode": "JSON_NONFINITE_CONSTANT",
+      "expectedConstant": "NaN"
+    },
+    {
+      "id": "nonfinite-schema-positive-infinity",
+      "path": "nonfinite-schema-positive.schema.json",
+      "expectedErrorCode": "JSON_NONFINITE_CONSTANT",
+      "expectedConstant": "Infinity"
+    },
+    {
+      "id": "nonfinite-schema-negative-infinity",
+      "path": "nonfinite-schema-negative.schema.json",
+      "expectedErrorCode": "JSON_NONFINITE_CONSTANT",
+      "expectedConstant": "-Infinity"
+    }
+  ]
+}

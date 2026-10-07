@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-neuro21-final-native-paired-one-20261007-v1",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-paired-d-synthesis-technical-preparation-20261007-v1/native-d-one.batch.config.json",
+  "configDigest": "sha256:2d2ee446123ee166d3d3c7b74b03c65735754f912272bff9e4091c77ada74d26",
+  "goalIds": [
+    "c05e217f-33fc-5a11-ba75-1397fad3ae0a"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 390,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/config/full-final390.book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:fa4804d7ec3e2850de5713dcddea15cf3a7f89fd6cffdf574edc2c720443b075"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:c427a8a2fcabc3221b666ebd8cf1165ac9da7ce8bb7e58dc88266d16e2507236",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:f736967561454e31c8fa9f426fcaa90ac231c828cfc065ede3daa91cc88eb572",
+    "reviewInputFingerprint": "sha256:11e20acc7ef552fa4764a813d5061b5560df55b4461fc3251973f350043889c0",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-neuro21-final-one-d-a-20261007",
+        "campaignDigest": "sha256:f6a7166a9b5bf6f8ce21e1636a1951c1e1e350168df7fd590d3e6685e8875052",
+        "roundId": "biologie-neuro21-final-one-first-pass-a-20261007",
+        "independenceGroupId": "biologie-neuro21-final-native-d-independent-a-20261007",
+        "batchId": "biologie-neuro21-final-one-first-pass-a-20261007.batch-001",
+        "batchInputFingerprint": "sha256:4c3ab4950b18f6832c61bf366faca26c2a58cd27a95ae1986e02d952cfaffb10"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-neuro21-final-one-d-b-20261007",
+        "campaignDigest": "sha256:5fa33918da9fe5ee52ddbc1dac206c7d834b0a1fe05a9e6627dda63a6a8ae89a",
+        "roundId": "biologie-neuro21-final-one-first-pass-b-20261007",
+        "independenceGroupId": "biologie-neuro21-final-native-d-independent-b-20261007",
+        "batchId": "biologie-neuro21-final-one-first-pass-b-20261007.batch-001",
+        "batchInputFingerprint": "sha256:46974300ad9e9f0a7c0b744b5fd8ff92a40e08aa61a1980d603da9a79bfec8ed"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

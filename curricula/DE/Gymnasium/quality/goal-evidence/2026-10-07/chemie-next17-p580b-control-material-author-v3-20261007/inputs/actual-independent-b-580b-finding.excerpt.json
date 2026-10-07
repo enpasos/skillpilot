@@ -1,0 +1,28 @@
+{
+  "documentType": "Exact selected finding from sealed independent B; author input, not author independent judgment",
+  "sourceDocument": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next17-targeted-independent-d-b-p-binding-20261007-v1/independent-first-pass.judgments.json",
+    "sha256": "97594bf6f12b1910d7c7638df2e4dee2b714f5457d2548e3450fbb4db4797e56",
+    "bytes": 30861
+  },
+  "sourceFreeze": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next17-targeted-independent-d-b-p-binding-20261007-v1/final-own-files-and-reviewed-inputs.freeze.json",
+    "sha256": "74f4b74bfa94ffdd66921f7d283f6346f413aaa07a9981532cb284520460bef7",
+    "bytes": 49563
+  },
+  "finding": {
+    "findingId": "chem17-targeted-b-gas-air-control-reference-unsupported-damp-splint",
+    "goalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+    "gate": "positive_material",
+    "decision": "revise",
+    "materialCaseId": "chem-next20-580b3616-case-1",
+    "affectedProfilePaths": [
+      "profile.expectations[0].observablePerformanceDe",
+      "profile.expectations[0].observablePerformanceEn",
+      "profile.applicationCaseBriefs[0].expectedPerformanceDe",
+      "profile.applicationCaseBriefs[0].expectedPerformanceEn"
+    ],
+    "observation": "The actual case specifies an air control with no relighting and a CO2-free limewater control. It specifies no damp splint, no splint moisture and no damp-splint control. The reference response nevertheless claims that the controls show a damp splint does not respond without the appropriate gas.",
+    "requiredCorrection": "Replace only the unsupported control sentence in both languages and matching complete-case response. Explain that the supplied air control does not relight the splint under those conditions and the CO2-free blank stays clear; do not infer an unreported moisture control. Recheck the changed material/profile bindings with a new version."
+  }
+}

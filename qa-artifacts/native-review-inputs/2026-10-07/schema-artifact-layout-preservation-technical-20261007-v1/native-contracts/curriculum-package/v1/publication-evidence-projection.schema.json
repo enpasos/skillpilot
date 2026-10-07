@@ -1,0 +1,645 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/publication-evidence-projection.schema.json",
+  "title": "SkillPilot publication-evidence projection profile v1",
+  "description": "Strict authoring-side selection, classification, projection, and expected-drift contract for compiling mappings, official sources, source-goal references, and release-quality evidence. It is not a package manifest.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "documentType",
+    "profileFormatVersion",
+    "profileId",
+    "version",
+    "releaseModelContractVersion",
+    "targetLandscapeId",
+    "sourceDocumentSemantics",
+    "outputArtifacts",
+    "mappingCollections",
+    "legacyDiagnostics",
+    "qualitySources",
+    "classificationPolicy",
+    "fieldClassifications",
+    "expectedCounts"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/publication-evidence-projection.schema.json"
+    },
+    "documentType": {
+      "const": "publication-evidence-projection-profile"
+    },
+    "profileFormatVersion": {
+      "const": 1
+    },
+    "profileId": {
+      "$ref": "#/$defs/stableId"
+    },
+    "version": {
+      "$ref": "#/$defs/semver"
+    },
+    "releaseModelContractVersion": {
+      "const": "1.0"
+    },
+    "targetLandscapeId": {
+      "$ref": "#/$defs/stableId"
+    },
+    "sourceDocumentSemantics": {
+      "$ref": "#/$defs/sourceDocumentSemantics"
+    },
+    "outputArtifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mappings",
+        "sourceIndex",
+        "sourceGoalReferences",
+        "qualityEvidence"
+      ],
+      "properties": {
+        "mappings": {
+          "$ref": "#/$defs/mappingOutput"
+        },
+        "sourceIndex": {
+          "$ref": "#/$defs/sourceIndexOutput"
+        },
+        "sourceGoalReferences": {
+          "$ref": "#/$defs/sourceGoalOutput"
+        },
+        "qualityEvidence": {
+          "$ref": "#/$defs/qualityOutput"
+        }
+      }
+    },
+    "mappingCollections": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1000,
+      "items": {
+        "$ref": "#/$defs/mappingSourceBinding"
+      }
+    },
+    "legacyDiagnostics": {
+      "$ref": "#/$defs/legacyDiagnostics"
+    },
+    "qualitySources": {
+      "$ref": "#/$defs/qualitySources"
+    },
+    "classificationPolicy": {
+      "$ref": "#/$defs/classificationPolicy"
+    },
+    "fieldClassifications": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1000,
+      "items": {
+        "$ref": "#/$defs/fieldClassification"
+      }
+    },
+    "expectedCounts": {
+      "$ref": "#/$defs/expectedCounts"
+    }
+  },
+  "$defs": {
+    "stableId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "semver": {
+      "type": "string",
+      "pattern": "^(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)\\.(?:0|[1-9][0-9]*)(?:-[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "repositoryPath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+    },
+    "packagePath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240,
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+    },
+    "nonBlank": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "outputArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "artifactRole",
+        "normalizationRole",
+        "outputPath",
+        "schemaId",
+        "runtimeRequired",
+        "contentDigest"
+      ],
+      "properties": {
+        "artifactRole": {
+          "type": "string"
+        },
+        "normalizationRole": {
+          "enum": [
+            "source-to-canonical-mappings",
+            "official-source-index",
+            "source-goal-reference-index",
+            "release-quality-evidence"
+          ]
+        },
+        "outputPath": {
+          "$ref": "#/$defs/packagePath"
+        },
+        "schemaId": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://skillpilot\\.com/schemas/"
+        },
+        "runtimeRequired": {
+          "const": false
+        },
+        "contentDigest": {
+          "const": "include-normalized-logical-artifact"
+        }
+      }
+    },
+    "sourceDocumentSemantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unknownRolePolicy",
+        "roles"
+      ],
+      "properties": {
+        "unknownRolePolicy": {
+          "const": "reject"
+        },
+        "roles": {
+          "type": "object",
+          "minProperties": 1,
+          "maxProperties": 100,
+          "propertyNames": {
+            "$ref": "#/$defs/stableId"
+          },
+          "additionalProperties": {
+            "enum": [
+              "curriculum",
+              "supplemental-source"
+            ]
+          }
+        }
+      }
+    },
+    "mappingOutput": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/outputArtifact"
+        },
+        {
+          "properties": {
+            "artifactRole": {
+              "const": "mapping"
+            },
+            "normalizationRole": {
+              "const": "source-to-canonical-mappings"
+            },
+            "schemaId": {
+              "const": "https://skillpilot.com/schemas/curriculum-package/v1/source-to-canonical-mappings.schema.json"
+            }
+          }
+        }
+      ]
+    },
+    "sourceIndexOutput": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/outputArtifact"
+        },
+        {
+          "properties": {
+            "artifactRole": {
+              "const": "source-index"
+            },
+            "normalizationRole": {
+              "const": "official-source-index"
+            },
+            "schemaId": {
+              "const": "https://skillpilot.com/schemas/curriculum-package/v1/official-source-index.schema.json"
+            }
+          }
+        }
+      ]
+    },
+    "sourceGoalOutput": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/outputArtifact"
+        },
+        {
+          "properties": {
+            "artifactRole": {
+              "const": "source-goal-reference-index"
+            },
+            "normalizationRole": {
+              "const": "source-goal-reference-index"
+            },
+            "schemaId": {
+              "const": "https://skillpilot.com/schemas/curriculum-package/v1/source-goal-reference-index.schema.json"
+            }
+          }
+        }
+      ]
+    },
+    "qualityOutput": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/outputArtifact"
+        },
+        {
+          "properties": {
+            "artifactRole": {
+              "const": "quality-evidence"
+            },
+            "normalizationRole": {
+              "const": "release-quality-evidence"
+            },
+            "schemaId": {
+              "const": "https://skillpilot.com/schemas/curriculum-package/v1/release-quality-evidence.schema.json"
+            }
+          }
+        }
+      ]
+    },
+    "mappingSourceBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mappingCollectionId",
+        "reviewPath",
+        "sourceExtractionPath",
+        "legacyMappingPath",
+        "reviewDisposition",
+        "legacyMappingDisposition"
+      ],
+      "properties": {
+        "mappingCollectionId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "reviewPath": {
+          "$ref": "#/$defs/repositoryPath"
+        },
+        "sourceExtractionPath": {
+          "$ref": "#/$defs/repositoryPath"
+        },
+        "legacyMappingPath": {
+          "$ref": "#/$defs/repositoryPath"
+        },
+        "reviewDisposition": {
+          "const": "publication-evidence"
+        },
+        "legacyMappingDisposition": {
+          "const": "authoring-only"
+        }
+      }
+    },
+    "legacyDiagnostics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceGoalMembershipRegistryPath",
+        "disposition"
+      ],
+      "properties": {
+        "sourceGoalMembershipRegistryPath": {
+          "$ref": "#/$defs/repositoryPath"
+        },
+        "disposition": {
+          "const": "authoring-only"
+        }
+      }
+    },
+    "qualityFileBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reviewId",
+        "ruleVersion",
+        "configPath",
+        "reviewPath"
+      ],
+      "properties": {
+        "reviewId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "ruleVersion": {
+          "$ref": "#/$defs/stableId"
+        },
+        "configPath": {
+          "$ref": "#/$defs/repositoryPath"
+        },
+        "reviewPath": {
+          "$ref": "#/$defs/repositoryPath"
+        }
+      }
+    },
+    "qualitySources": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "semanticAtomicity",
+        "memoryCards",
+        "goalVisualizations"
+      ],
+      "properties": {
+        "semanticAtomicity": {
+          "$ref": "#/$defs/qualityFileBinding"
+        },
+        "memoryCards": {
+          "$ref": "#/$defs/memoryQualityFileBinding"
+        },
+        "goalVisualizations": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "reviewId",
+            "ruleVersion",
+            "qaPath"
+          ],
+          "properties": {
+            "reviewId": {
+              "$ref": "#/$defs/stableId"
+            },
+            "ruleVersion": {
+              "$ref": "#/$defs/stableId"
+            },
+            "qaPath": {
+              "$ref": "#/$defs/repositoryPath"
+            }
+          }
+        }
+      }
+    },
+    "memoryQualityFileBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reviewId",
+        "ruleVersion",
+        "configPath",
+        "reviewPath",
+        "cardReviewPath",
+        "removedCardDecisionDisposition"
+      ],
+      "properties": {
+        "reviewId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "ruleVersion": {
+          "$ref": "#/$defs/stableId"
+        },
+        "configPath": {
+          "$ref": "#/$defs/repositoryPath"
+        },
+        "reviewPath": {
+          "$ref": "#/$defs/repositoryPath"
+        },
+        "cardReviewPath": {
+          "$ref": "#/$defs/repositoryPath"
+        },
+        "removedCardDecisionDisposition": {
+          "const": "authoring-only"
+        }
+      }
+    },
+    "classificationPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unknownInputFieldPolicy",
+        "overlapPolicy",
+        "unobservedClassificationPolicy",
+        "runtimeConsumption",
+        "localRepositoryPaths",
+        "generatedBuildFields",
+        "publishedTextBoundaryWhitespace"
+      ],
+      "properties": {
+        "unknownInputFieldPolicy": {
+          "const": "reject"
+        },
+        "overlapPolicy": {
+          "const": "exactly-one-most-specific"
+        },
+        "unobservedClassificationPolicy": {
+          "const": "reject"
+        },
+        "runtimeConsumption": {
+          "const": "publication-evidence-never-runtime-input"
+        },
+        "localRepositoryPaths": {
+          "const": "authoring-only-never-emit"
+        },
+        "generatedBuildFields": {
+          "const": "exclude-from-content-digest"
+        },
+        "publishedTextBoundaryWhitespace": {
+          "const": "trim-leading-and-trailing-unicode-whitespace"
+        }
+      }
+    },
+    "fieldClassification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "classificationId",
+        "inputRole",
+        "pathPattern",
+        "scope",
+        "disposition",
+        "projection",
+        "reason"
+      ],
+      "properties": {
+        "classificationId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "inputRole": {
+          "enum": [
+            "mapping-review",
+            "legacy-mapping",
+            "legacy-membership-registry",
+            "source-extraction",
+            "semantic-atomicity-config",
+            "semantic-atomicity-review",
+            "memory-card-config",
+            "memory-goal-review",
+            "memory-card-review",
+            "goal-visualization-qa"
+          ]
+        },
+        "pathPattern": {
+          "type": "string",
+          "pattern": "^/",
+          "maxLength": 500
+        },
+        "scope": {
+          "enum": [
+            "field",
+            "subtree"
+          ]
+        },
+        "disposition": {
+          "enum": [
+            "runtime-derived",
+            "publication-evidence",
+            "authoring-only",
+            "generated-non-semantic"
+          ]
+        },
+        "projection": {
+          "enum": [
+            "none",
+            "decision-edge-projection-v1",
+            "closed-source-collection-projection-v1",
+            "closed-source-goal-projection-v1",
+            "source-goal-locator-join-v1",
+            "semantic-atomicity-release-projection-v1",
+            "memory-goal-release-projection-v1",
+            "active-memory-card-release-projection-v1",
+            "human-visualization-release-projection-v1"
+          ]
+        },
+        "reason": {
+          "$ref": "#/$defs/nonBlank"
+        }
+      }
+    },
+    "expectedCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mappings",
+        "sources",
+        "quality",
+        "contentIndex"
+      ],
+      "properties": {
+        "mappings": {
+          "$ref": "#/$defs/mappingCounts"
+        },
+        "sources": {
+          "$ref": "#/$defs/sourceCounts"
+        },
+        "quality": {
+          "$ref": "#/$defs/qualityCounts"
+        },
+        "contentIndex": {
+          "$ref": "#/$defs/contentIndexCounts"
+        }
+      }
+    },
+    "mappingCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "collections",
+        "inputDecisions",
+        "decisionEdges",
+        "rawMappingEdges",
+        "decisionEdgesMissingFromRawMappings",
+        "decisionRawMatchTypeConflicts",
+        "decisionMatchTypesDerivedFromRawMappings",
+        "unresolvedDecisionMatchTypes",
+        "legacyPlainMappingRows",
+        "legacyDanglingTargets",
+        "legacySourceIdsOutsideMembership"
+      ],
+      "properties": {
+        "collections": { "type": "integer", "minimum": 1 },
+        "inputDecisions": { "type": "integer", "minimum": 1 },
+        "decisionEdges": { "type": "integer", "minimum": 1 },
+        "rawMappingEdges": { "type": "integer", "minimum": 0 },
+        "decisionEdgesMissingFromRawMappings": { "type": "integer", "minimum": 0 },
+        "decisionRawMatchTypeConflicts": { "type": "integer", "minimum": 0 },
+        "decisionMatchTypesDerivedFromRawMappings": { "type": "integer", "minimum": 0 },
+        "unresolvedDecisionMatchTypes": { "const": 0 },
+        "legacyPlainMappingRows": { "type": "integer", "minimum": 0 },
+        "legacyDanglingTargets": { "type": "integer", "minimum": 0 },
+        "legacySourceIdsOutsideMembership": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "sourceCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "collections",
+        "documents",
+        "curriculumDocuments",
+        "supplementalDocuments",
+        "sourceGoals",
+        "jurisdictions"
+      ],
+      "properties": {
+        "collections": { "type": "integer", "minimum": 1 },
+        "documents": { "type": "integer", "minimum": 1 },
+        "curriculumDocuments": { "type": "integer", "minimum": 1 },
+        "supplementalDocuments": { "type": "integer", "minimum": 0 },
+        "sourceGoals": { "type": "integer", "minimum": 1 },
+        "jurisdictions": { "type": "integer", "minimum": 1, "maximum": 16 }
+      }
+    },
+    "qualityCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "semanticAtomicityDecisions",
+        "memoryGoalDecisions",
+        "noMemoryNeeded",
+        "memoryRequired",
+        "cardLedgerDecisions",
+        "activeKeptCardDecisions",
+        "authoringOnlyRemovedCardDecisions",
+        "visualizationDecisions",
+        "visualizationScopeGoals",
+        "missingGoalVisualizations",
+        "humanApprovedVisualizations",
+        "openVisualizations",
+        "publishedQualityDecisions"
+      ],
+      "properties": {
+        "semanticAtomicityDecisions": { "type": "integer", "minimum": 0 },
+        "memoryGoalDecisions": { "type": "integer", "minimum": 0 },
+        "noMemoryNeeded": { "type": "integer", "minimum": 0 },
+        "memoryRequired": { "type": "integer", "minimum": 0 },
+        "cardLedgerDecisions": { "type": "integer", "minimum": 0 },
+        "activeKeptCardDecisions": { "type": "integer", "minimum": 0 },
+        "authoringOnlyRemovedCardDecisions": { "type": "integer", "minimum": 0 },
+        "visualizationDecisions": { "type": "integer", "minimum": 0 },
+        "visualizationScopeGoals": { "type": "integer", "minimum": 0 },
+        "missingGoalVisualizations": { "type": "integer", "minimum": 0 },
+        "humanApprovedVisualizations": { "type": "integer", "minimum": 0 },
+        "openVisualizations": { "type": "integer", "minimum": 0 },
+        "publishedQualityDecisions": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "contentIndexCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "addedLogicalArtifacts",
+        "totalLogicalArtifacts",
+        "binaryResources"
+      ],
+      "properties": {
+        "addedLogicalArtifacts": { "const": 4 },
+        "totalLogicalArtifacts": { "type": "integer", "minimum": 4 },
+        "binaryResources": { "type": "integer", "minimum": 0 }
+      }
+    }
+  }
+}

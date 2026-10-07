@@ -1,0 +1,283 @@
+{
+  "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-reverse-compilation-report.schema.json",
+  "reportFormatVersion": 1,
+  "validatorId": "skillpilot-fwu-owl-reverse-compilation-validator-v1",
+  "status": "valid",
+  "input": {
+    "fwuOwlPackage": {
+      "path": "tmp/reverse-input/skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.fwu-owl.zip",
+      "bytes": 2362017770,
+      "sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "manifestSha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "contentDigest": "sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101"
+    },
+    "validationReceipt": {
+      "path": "tmp/reverse-input/fwu-owl-package-validation-report.json",
+      "bytes": 32768,
+      "sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+      "validatorId": "skillpilot-fwu-owl-package-validator-v1",
+      "reportFormatVersion": 1,
+      "status": "valid",
+      "packageZipSha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "manifestSha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "gates": [
+        { "id": "archive-security", "status": "passed" },
+        { "id": "manifest-schema", "status": "passed" },
+        { "id": "profile-contract", "status": "passed" },
+        { "id": "inventory", "status": "passed" },
+        { "id": "contract-bindings", "status": "passed" },
+        { "id": "offline-schema-catalog", "status": "passed" },
+        { "id": "semantic-content-index", "status": "passed" },
+        { "id": "field-registry-coverage", "status": "passed" },
+        { "id": "rdf-syntax", "status": "passed" },
+        { "id": "rdf-segment-order", "status": "passed" },
+        { "id": "rdf-bundle", "status": "passed" },
+        { "id": "core-binding", "status": "passed" },
+        { "id": "ontology-profile", "status": "passed" },
+        { "id": "shacl", "status": "passed" },
+        { "id": "owl2-dl", "status": "passed" },
+        { "id": "reasoner", "status": "passed" },
+        { "id": "binary-sidecars", "status": "passed" },
+        { "id": "reproducibility", "status": "passed" }
+      ]
+    }
+  },
+  "compiler": {
+    "id": "skillpilot-fwu-owl-reverse-compiler-v1",
+    "version": "1.0.0",
+    "executable": {
+      "path": "tmp/reverse-compiler-assembly/reverse-compiler.py",
+      "bytes": 1048576,
+      "sha256": "4444444444444444444444444444444444444444444444444444444444444444"
+    }
+  },
+  "runner": {
+    "id": "skillpilot-fwu-owl-reverse-hermetic-runner",
+    "version": "1.0.0",
+    "executable": {
+      "path": "/opt/skillpilot/reverse/run_fwu_owl_reverse_compiler_hermetic.py",
+      "bytes": 196608,
+      "sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+    }
+  },
+  "sandboxEntry": {
+    "id": "skillpilot-fwu-owl-reverse-sandbox-entry",
+    "version": "1.0.0",
+    "executable": {
+      "path": "/opt/skillpilot/reverse/fwu_owl_reverse_compiler_sandbox_entry.py",
+      "bytes": 65536,
+      "sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+    }
+  },
+  "packageValidator": {
+    "id": "skillpilot-full-standalone-package-validator-v2",
+    "version": "2.0.0",
+    "executable": {
+      "path": "scripts/validate_full_standalone_curriculum_package.py",
+      "bytes": 131072,
+      "sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+    }
+  },
+  "isolation": {
+    "status": "passed",
+    "mechanism": "bubblewrap-clearenv-readonly-input-strace-v1",
+    "sandboxTool": {
+      "path": "/usr/bin/bwrap",
+      "bytes": 123456,
+      "sha256": "5555555555555555555555555555555555555555555555555555555555555555"
+    },
+    "traceTool": {
+      "path": "/usr/bin/strace",
+      "bytes": 654321,
+      "sha256": "6666666666666666666666666666666666666666666666666666666666666666"
+    },
+    "pythonRuntime": {
+      "executable": {
+        "path": "/usr/bin/python3.10",
+        "bytes": 5894384,
+        "sha256": "1717171717171717171717171717171717171717171717171717171717171717"
+      },
+      "version": "3.10.12",
+      "minimumVersion": "3.10",
+      "siteEnabled": false,
+      "mountedRoots": [
+        "/usr/lib/python3.10",
+        "/usr/lib/x86_64-linux-gnu",
+        "/usr/lib64"
+      ]
+    },
+    "originalJsonPackageAccessible": false,
+    "authoringCheckoutAccessible": false,
+    "forwardExporterAccessible": false,
+    "networkAccessible": false,
+    "runA": {
+      "path": "tmp/reverse-evidence/run-a.strace",
+      "bytes": 100000,
+      "sha256": "7777777777777777777777777777777777777777777777777777777777777777",
+      "forbiddenReadCount": 0,
+      "networkAttemptCount": 0
+    },
+    "runB": {
+      "path": "tmp/reverse-evidence/run-b.strace",
+      "bytes": 100001,
+      "sha256": "8888888888888888888888888888888888888888888888888888888888888888",
+      "forbiddenReadCount": 0,
+      "networkAttemptCount": 0
+    }
+  },
+  "runs": {
+    "runA": {
+      "output": {
+        "path": "tmp/reverse-run-a/skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.reconstructed.json.zip",
+        "bytes": 1737000000,
+        "sha256": "9999999999999999999999999999999999999999999999999999999999999999",
+        "manifestSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "contentDigest": "sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101",
+        "counts": {
+          "zipEntries": 911,
+          "manifestFiles": 909,
+          "checksumRows": 910,
+          "logicalArtifacts": 111,
+          "binaryResources": 757,
+          "binaryBytes": 1696390279
+        }
+      },
+      "validationReceipt": {
+        "path": "tmp/reverse-evidence/run-a-full-package-validation-report.json",
+        "bytes": 16384,
+        "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "validatorId": "skillpilot-full-standalone-package-validator-v2",
+        "status": "valid",
+        "errorCount": 0,
+        "packageZipSha256": "9999999999999999999999999999999999999999999999999999999999999999",
+        "manifestSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "evidence": {
+        "compilerReport": {
+          "path": "tmp/reverse-evidence/run-a/compiler-report.json",
+          "bytes": 8192,
+          "sha256": "0101010101010101010101010101010101010101010101010101010101010101"
+        },
+        "isolationProbe": {
+          "path": "tmp/reverse-evidence/run-a/isolation-probe.json",
+          "bytes": 4096,
+          "sha256": "0202020202020202020202020202020202020202020202020202020202020202"
+        },
+        "sandboxLog": {
+          "path": "tmp/reverse-evidence/run-a/sandbox.log",
+          "bytes": 1024,
+          "sha256": "0303030303030303030303030303030303030303030303030303030303030303"
+        },
+        "outputTreeManifest": {
+          "path": "tmp/reverse-evidence/run-a/output-tree-manifest.json",
+          "bytes": 2048,
+          "sha256": "0404040404040404040404040404040404040404040404040404040404040404"
+        },
+        "fullValidatorLog": {
+          "path": "tmp/reverse-evidence/run-a/full-validator.log",
+          "bytes": 1024,
+          "sha256": "0505050505050505050505050505050505050505050505050505050505050505"
+        },
+        "runtimeClosureManifest": {
+          "path": "tmp/reverse-evidence/run-a/runtime-closure-manifest.json",
+          "bytes": 12288,
+          "sha256": "0606060606060606060606060606060606060606060606060606060606060606"
+        },
+        "hostRawTrace": {
+          "path": "tmp/reverse-evidence/run-a/host-raw.strace",
+          "bytes": 150000,
+          "sha256": "1919191919191919191919191919191919191919191919191919191919191919"
+        },
+        "traceProcessTreeManifest": {
+          "path": "tmp/reverse-evidence/run-a/trace-process-tree-manifest.json",
+          "bytes": 4096,
+          "sha256": "2020202020202020202020202020202020202020202020202020202020202020"
+        }
+      }
+    },
+    "runB": {
+      "output": {
+        "path": "tmp/reverse-run-b/skillpilot-curriculum-de-gymnasium-mathematik-0.1.0-conformance.3.reconstructed.json.zip",
+        "bytes": 1737000000,
+        "sha256": "9999999999999999999999999999999999999999999999999999999999999999",
+        "manifestSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "contentDigest": "sha256:e83936aaf3645ff5f6e8132c4a801bd4bd66f55d3c0304a5deda3d6a5d194101",
+        "counts": {
+          "zipEntries": 911,
+          "manifestFiles": 909,
+          "checksumRows": 910,
+          "logicalArtifacts": 111,
+          "binaryResources": 757,
+          "binaryBytes": 1696390279
+        }
+      },
+      "validationReceipt": {
+        "path": "tmp/reverse-evidence/run-b-full-package-validation-report.json",
+        "bytes": 16385,
+        "sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+        "validatorId": "skillpilot-full-standalone-package-validator-v2",
+        "status": "valid",
+        "errorCount": 0,
+        "packageZipSha256": "9999999999999999999999999999999999999999999999999999999999999999",
+        "manifestSha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "evidence": {
+        "compilerReport": {
+          "path": "tmp/reverse-evidence/run-b/compiler-report.json",
+          "bytes": 8192,
+          "sha256": "1112111211121112111211121112111211121112111211121112111211121112"
+        },
+        "isolationProbe": {
+          "path": "tmp/reverse-evidence/run-b/isolation-probe.json",
+          "bytes": 4096,
+          "sha256": "1212121212121212121212121212121212121212121212121212121212121212"
+        },
+        "sandboxLog": {
+          "path": "tmp/reverse-evidence/run-b/sandbox.log",
+          "bytes": 1024,
+          "sha256": "1313131313131313131313131313131313131313131313131313131313131313"
+        },
+        "outputTreeManifest": {
+          "path": "tmp/reverse-evidence/run-b/output-tree-manifest.json",
+          "bytes": 2048,
+          "sha256": "1414141414141414141414141414141414141414141414141414141414141414"
+        },
+        "fullValidatorLog": {
+          "path": "tmp/reverse-evidence/run-b/full-validator.log",
+          "bytes": 1024,
+          "sha256": "1515151515151515151515151515151515151515151515151515151515151515"
+        },
+        "runtimeClosureManifest": {
+          "path": "tmp/reverse-evidence/run-b/runtime-closure-manifest.json",
+          "bytes": 12288,
+          "sha256": "0606060606060606060606060606060606060606060606060606060606060606"
+        },
+        "hostRawTrace": {
+          "path": "tmp/reverse-evidence/run-b/host-raw.strace",
+          "bytes": 150001,
+          "sha256": "2121212121212121212121212121212121212121212121212121212121212121"
+        },
+        "traceProcessTreeManifest": {
+          "path": "tmp/reverse-evidence/run-b/trace-process-tree-manifest.json",
+          "bytes": 4097,
+          "sha256": "2222222222222222222222222222222222222222222222222222222222222222"
+        }
+      }
+    }
+  },
+  "reproducibility": {
+    "status": "passed",
+    "sourceDateEpoch": 315532800,
+    "locale": "C.UTF-8",
+    "timezone": "UTC",
+    "zipByteIdentical": true,
+    "manifestByteIdentical": true
+  },
+  "evidenceManifest": {
+    "path": "tmp/reverse-evidence/evidence-manifest.json",
+    "bytes": 16384,
+    "sha256": "1616161616161616161616161616161616161616161616161616161616161616"
+  },
+  "diagnostics": [],
+  "diagnosticsTruncated": false
+}

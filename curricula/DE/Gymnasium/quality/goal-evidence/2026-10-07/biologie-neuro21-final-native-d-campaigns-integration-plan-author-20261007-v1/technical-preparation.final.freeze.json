@@ -1,0 +1,1384 @@
+{
+  "role": "technical preparation payload/input freeze; no independent reviewer verdict",
+  "sealedAt": "2026-10-07T05:56:38.727330+00:00",
+  "declaredInputs": [
+    {
+      "path": "app/scripts/createGoalDescriptionReviewCampaign.ts",
+      "sha256": "sha256:6cbd05f5f9a7e804f1d507a7a467e8be46e647490f78196ec39de3665571728c",
+      "bytes": 13988
+    },
+    {
+      "path": "app/scripts/exportGoalBookReviewBundle.ts",
+      "sha256": "sha256:f770c95012deb7aff1cf2f4964ef94b279df5e6d4655fde81c3abdf546e04d03",
+      "bytes": 23846
+    },
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "sha256": "sha256:0363d5419a765508d82d06e50315c491c7292a02a07c98de1d919bba9386dd53",
+      "bytes": 114361
+    },
+    {
+      "path": "app/scripts/goalBookRenderer.ts",
+      "sha256": "sha256:0ec6fc34f250e90c719db3941d01f46de143f434bc25e22d963f7cc37d792b49",
+      "bytes": 136103
+    },
+    {
+      "path": "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+      "sha256": "sha256:eff84dcf0d823c15b0827cb898b30d44f29c7ee219b67b4d2505b134536529cf",
+      "bytes": 64228
+    },
+    {
+      "path": "app/scripts/renderGoalBook.ts",
+      "sha256": "sha256:ff26a14c52729632e4ad70fb0ccc22cc3e9ebca8165481f4e1d9a1e5d6af4942",
+      "bytes": 4939
+    },
+    {
+      "path": "app/scripts/validateGoalDescriptionReviewCampaign.ts",
+      "sha256": "sha256:59f8f412cbe9be4dc033396581e14960d0b0f12e3b17b5d48c35e5d6fae71e64",
+      "bytes": 35836
+    },
+    {
+      "path": "contracts/goal-description-review/v1/goal-description-review-record.schema.json",
+      "sha256": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+      "bytes": 5872
+    },
+    {
+      "path": "contracts/goal-description-review/v2/goal-description-review-campaign.schema.json",
+      "sha256": "sha256:c0560b98396229195786fa5bb2af6258ec2f3146745fe4817334b4d97313ea08",
+      "bytes": 3700
+    },
+    {
+      "path": "contracts/goal-description-review/v3/goal-description-review-input.schema.json",
+      "sha256": "sha256:ecf64d1000670e55e76c0c9609ef2243edaa1bfb6d9685bba52d4badea0f0b13",
+      "bytes": 7259
+    },
+    {
+      "path": "contracts/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+      "sha256": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "sha256:244d2889ddeeb69cbf97d0a320f3e38cf5444674f3bb17f3e46c0112ac6fbff1",
+      "bytes": 1006186
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "sha256:76047cec422c555aacd1e04bff597c4f8a70d8ffed5f214ed7412c828bc34898",
+      "bytes": 3714635
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "sha256:ad764d083e390ab60f808ecbffb363ac914026894e82c09c977425311ec7ea44",
+      "bytes": 2511173
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-biology-gk.view.json",
+      "sha256": "sha256:d9b0afaced941bd04dd9ad94b961e63772dba0395311116a6bbdd627c72c6f82",
+      "bytes": 6087
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-seki-biology.view.json",
+      "sha256": "sha256:df7793cfcf43b71ab279e271e112f81398d832b13ad1d3e34dd2ddbd47fff9b5",
+      "bytes": 3280
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-mv-gym-seki-biology.view.json",
+      "sha256": "sha256:55de178f1cf9f30aad15bae8774df7685544ec3ba813947e23566b837e243ae9",
+      "bytes": 19371
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-sn-gym-seki-biology.view.json",
+      "sha256": "sha256:c33f966a0fbb0e1fb43d50c3b3b9282e99ea9eb13e3df441b84aa4f5e850b2c7",
+      "bytes": 20925
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-st-gym-seki-biology.view.json",
+      "sha256": "sha256:e60bb31c31a62254da1e6b94389080d80755ee3aeaeb6f92dc8ce11de971ceb1",
+      "bytes": 20655
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-st-gym-sekii-biology-gk.view.json",
+      "sha256": "sha256:a320f51c260c5b71196212e7aee4ce687a32d000375632c941b279e5a0ca17e6",
+      "bytes": 1208
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-st-gym-sekii-biology-lk.view.json",
+      "sha256": "sha256:3980377806d85f60d202279588bf3c314bc0cc739d333434b9fc02ed4bffb812",
+      "bytes": 1208
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-th-gym-seki-biology.view.json",
+      "sha256": "sha256:15167163761df75643ceee4d811c027c3c76fec5940b28d4549adec8f6f9b880",
+      "bytes": 21258
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_BIOLOGIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "sha256": "sha256:b5f85afd2aa84f6dda8a07b8d8f0b0492d5d8baaa8932a9e0d006082cab339d4",
+      "bytes": 733831
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_BIOLOGIE_SEKII_KC2024.m7-ephase-seven-current365-20261005-v2.source-extraction.json",
+      "sha256": "sha256:257a5423099d44f375a578ba7a6b2873b6dcfe87ae8ac26c1748272a633f26d3",
+      "bytes": 232351
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_source_extraction_to_canonical_biology.m7-q1-bacterial-structure-fission-20261005-v1.review.json",
+      "sha256": "sha256:36573018a4d573ec6664c4433b64fe3390e82d340da0b2ebd42c208ef84b99d2",
+      "bytes": 169712
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-ephase-seven-current365-20261005-v2.review.json",
+      "sha256": "sha256:77973a95e4d657130923d4f53e6500f93a685f80713bcfcf25dde22dc4532994",
+      "bytes": 122339
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "sha256:39d2afc15f800b7091db7279207ed0bde26358c2fe3e686dc364936f231a1b61",
+      "bytes": 155730
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/biologie.semantic-kinds.json",
+      "sha256": "sha256:dca719aafb19de62bb515cbde17a119aafbb833298efa322fdefc526e5d15b1e",
+      "bytes": 152121
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-neuro-eight-missing-primary-scope-remediation-author-v2/native-input-candidates/BY-EA.mapping.candidate.json",
+      "sha256": "sha256:1f8756daf6274585da39d0fa184b1cd4d740e9aae682bec32a2f9459b23fc0d3",
+      "bytes": 13870
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-neuro-eight-missing-primary-scope-remediation-author-v2/native-input-candidates/BY-EA.source-extraction.candidate.json",
+      "sha256": "sha256:8d72a38dce889ee316a3312a9898e4bff0743c0f71e8eadde172a415cfb5ae64",
+      "bytes": 59894
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-neuro-eight-missing-primary-scope-remediation-author-v2/native-input-candidates/BY-GA.mapping.candidate.json",
+      "sha256": "sha256:4aaaf07143b7d80f4e510d7540889d9bbc837093c5952f6f5a26fc4c55633970",
+      "bytes": 5498
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-neuro-eight-missing-primary-scope-remediation-author-v2/native-input-candidates/BY-GA.source-extraction.candidate.json",
+      "sha256": "sha256:da43618a0d599ea1d6d6a5e3e27b8e5da86476dd07f1b6b5e00dde2dd6dfd743",
+      "bytes": 25633
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-neuro-eight-missing-primary-scope-remediation-author-v2/native-input-candidates/HE-GK-LK.mapping.candidate.json",
+      "sha256": "sha256:8796d3246b2cd0397db041eb65460932dd885df1c90269a5353b62ae58a9508a",
+      "bytes": 3823
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-neuro-eight-missing-primary-scope-remediation-author-v2/native-input-candidates/HE-GK-LK.source-extraction.candidate.json",
+      "sha256": "sha256:637eec2558673be20ada548ac7e2d2d1a77350433c56dc025430135ca0ad3762",
+      "bytes": 10089
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-neuro-eight-missing-primary-scope-remediation-author-v2/native-input-candidates/HE-LK.mapping.candidate.json",
+      "sha256": "sha256:9977edc28a3acfe3d41de6ce11377258b517ce041dec5091aa9f3b1bef45a2e9",
+      "bytes": 7158
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-neuro-eight-missing-primary-scope-remediation-author-v2/native-input-candidates/HE-LK.source-extraction.candidate.json",
+      "sha256": "sha256:817b2e725ac72af0bb367c7f648a87c2fa5b71a685c823034d4c0b9822e38eb8",
+      "bytes": 14133
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-neuro-eight-missing-primary-scope-remediation-author-v2/remaining-whole-source-operator-and-model-role-obligations.author-v2.json",
+      "sha256": "sha256:0fd754eed13356515102fd9e45cd0793f38daf31c7af358c9bb76bdab2e29295",
+      "bytes": 6361
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/extraction-02.author-v2.candidate.json",
+      "sha256": "sha256:3932990a396364d307c26deb4515559c5c215e26988deb105ffface4770df400",
+      "bytes": 255855
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/mapping-01.author-v2.candidate.json",
+      "sha256": "sha256:5335ec4c8de8b7473c534fd3ff999b0aa8ee215310790430b44d21ca7c76a4d4",
+      "bytes": 181508
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/mapping-02.author-v2.candidate.json",
+      "sha256": "sha256:4e4b0666b79b1c15724caaf74f355feadc7121d2c2aae9fb2ae3a30a5c2a065a",
+      "bytes": 130166
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-campaign-preparation.actual.author.receipt.json",
+      "sha256": "sha256:a4e6538125bf03759812746f6a5ced96bb1c24ca950c1cc2b4185ed8340b8324",
+      "bytes": 5742
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/all390-whole-old-prior-final-pages-contexts-images-diffs.author.json",
+      "sha256": "sha256:84ab90df031bbe490e484bd1bdce4f71682736072757835e52817417614683db",
+      "bytes": 9408654
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/all472-whole-old-prior-final-goal-source-edge-image-diffs.author.json",
+      "sha256": "sha256:4b01c0f489a24be6073643f0a03c690ad9022a93bbc8011aa8bdb16c70ce17f6",
+      "bytes": 4422224
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/candidate-scaffolds/positive21.final-image-candidate.config.json",
+      "sha256": "sha256:9d6d508e2d89fd990868e070d459b34aa9b1e4912949dd6eec497f4921063de0",
+      "bytes": 2489
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/candidate-scaffolds/positive21.final-image-candidate.records.jsonl",
+      "sha256": "sha256:45148c66f4564e32a3658bbeb3ad1b902cbb50f26822040c1fb44437eb0d0927",
+      "bytes": 161867
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/current390-AM-content-decisions-exact-technical-fingerprint-recalculation.author.json",
+      "sha256": "sha256:b0e725487c43dd22b02ab8befccc14177b8c0d5e741dada646e97ac91bbeefdd",
+      "bytes": 311469
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/final-native-preparation.author.freeze.json",
+      "sha256": "sha256:8046c51f45013d2fcffbb5da26e55ed2f83dcc0eaca9b02411b950d1298342ec",
+      "bytes": 212194
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/final21-whole-native-image-page-context-source-material-binding-review-input.author.raw.json",
+      "sha256": "sha256:f0c61333202dc52712b03e24fd7ed97228c8621ee3fd9dca54518a07bc531963",
+      "bytes": 1697525
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/inputs/current-independent-atomicity.config.exact.json",
+      "sha256": "sha256:5ea111aab953fcb3f231b1e55bfde48f23a6bbb5c2c6802f212a531001e43153",
+      "bytes": 864
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/inputs/current-independent-atomicity.full390.exact.jsonl",
+      "sha256": "sha256:96f73b4beba6af81e54c562540019a9cf34d973243899aa0304bd383445a6ef4",
+      "bytes": 208348
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/inputs/current-independent-memory.cards.exact.jsonl",
+      "sha256": "sha256:9d54ca6b5c184b21c6b20d5f045e1231b5ab25ee2bf6cda34b1e09f62b4190f9",
+      "bytes": 19495
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/inputs/current-independent-memory.config.exact.json",
+      "sha256": "sha256:104078fbf687833159219198523a4100f5f49ed2ef3b1b2654c1a94b1a37a477",
+      "bytes": 2431
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/inputs/current-independent-memory.full390.exact.jsonl",
+      "sha256": "sha256:e3c585d6bcfbaeef580d51e245723e1422003cbfd4914b7df28a10c77ea64a25",
+      "bytes": 257886
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/inputs/selected21-source-witness-effective-bindings.exact.json",
+      "sha256": "sha256:9ff51917df2b6e5f0c0357974de5c9a363339b4e5a7c458e9e6578b624113946",
+      "bytes": 360133
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/app/public/assets/goal-visualizations/biologie/04d770b3-ba5e-5438-88ca-110cbaeba62c/04d770b3-ba5e-5438-88ca-110cbaeba62c.png",
+      "sha256": "sha256:ba9f055f6cb7598aafd842d5a367ed20227cc8955ad19046ef7e451ecc19e47a",
+      "bytes": 1788540
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/app/public/assets/goal-visualizations/biologie/080b10c7-f308-57ff-b067-3bd189e37fea/080b10c7-f308-57ff-b067-3bd189e37fea.png",
+      "sha256": "sha256:c9569af2b209d7c5f2b5c91186c4cabed7217b81afda8ea62800ce0094ec91eb",
+      "bytes": 1788188
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/app/public/assets/goal-visualizations/biologie/19758e09-1bc4-5ee4-bf52-89b3bc28e947/19758e09-1bc4-5ee4-bf52-89b3bc28e947.png",
+      "sha256": "sha256:aa9e2e1ca57aa7511a00d145c305740b1e4de12fb531725ee191c2a0a44eb81e",
+      "bytes": 1804558
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/app/public/assets/goal-visualizations/biologie/1b38144f-cdbd-5dfe-a792-94669bdc31d8/1b38144f-cdbd-5dfe-a792-94669bdc31d8.png",
+      "sha256": "sha256:7cd4d628d21efbe606d4f4402fd422569cdca24455f7257debb3c3a5b6ee96f7",
+      "bytes": 1848546
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/app/public/assets/goal-visualizations/biologie/2381d2bb-176c-5903-8c6e-82f4bd5023a4/2381d2bb-176c-5903-8c6e-82f4bd5023a4.png",
+      "sha256": "sha256:8c4bcdacc6d71ce15114b51617dd6feb572d26d28ad6df389ec8ac9a949392c4",
+      "bytes": 1705176
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/app/public/assets/goal-visualizations/biologie/347110a1-1d2e-5195-8acc-64e7e3893ce5/347110a1-1d2e-5195-8acc-64e7e3893ce5.png",
+      "sha256": "sha256:06d3f54e2f73ea64629c023fe709827e94d14a693ee048a2b213fb2d9c7b4de3",
+      "bytes": 1927570
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/app/public/assets/goal-visualizations/biologie/485ef1c3-8997-52b7-91f5-b1ddf179013d/485ef1c3-8997-52b7-91f5-b1ddf179013d.png",
+      "sha256": "sha256:032c34237fd0a8048df6cf8b2f45b3cdec08f10f4c73876a591e2791c631ccb9",
+      "bytes": 1660022
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/app/public/assets/goal-visualizations/biologie/4f631f78-e13a-58e5-9092-f4db0b8d377a/4f631f78-e13a-58e5-9092-f4db0b8d377a.png",
+      "sha256": "sha256:56af2080564f4725b36fab82183eb2c7bc3b44900d50ac98169e6cdac364e5ec",
+      "bytes": 1790501
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/app/public/assets/goal-visualizations/biologie/78748ef2-93fb-5ec3-8c1e-90e42b9ea863/78748ef2-93fb-5ec3-8c1e-90e42b9ea863.png",
+      "sha256": "sha256:538d9ee259209622cf5fa4b9182d02de40c5305647aea2520d7a3cc589643d06",
+      "bytes": 1650578
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/app/public/assets/goal-visualizations/biologie/8b23f8fb-555d-5720-b5f2-dd6f28a0e786/8b23f8fb-555d-5720-b5f2-dd6f28a0e786.png",
+      "sha256": "sha256:cc12298874afb0bab28d9511f9b6de83fb4bb36b11d4349435e39977be3bd516",
+      "bytes": 1862507
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/app/public/assets/goal-visualizations/biologie/97b24279-def0-5ce6-8726-a1cac9cd38ad/97b24279-def0-5ce6-8726-a1cac9cd38ad.png",
+      "sha256": "sha256:87575c5ec1b9afb1a36315018ce06482e8893151eb5578bc0761ea52815fb0c5",
+      "bytes": 1779941
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/app/public/assets/goal-visualizations/biologie/9b966664-906b-5a5d-8008-cae18de043aa/9b966664-906b-5a5d-8008-cae18de043aa.png",
+      "sha256": "sha256:092af9deebaa48744225018c734fb25658a4f564dcf3a46ac78cfd401f547a61",
+      "bytes": 2006193
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/app/public/assets/goal-visualizations/biologie/a46cafde-7359-5249-8754-19aaa3174ba4/a46cafde-7359-5249-8754-19aaa3174ba4.png",
+      "sha256": "sha256:ea90bf47e3277d9e2d0f11b146e64f7481f60cc2decbc7d78995543f095416c0",
+      "bytes": 1908643
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/app/public/assets/goal-visualizations/biologie/afde0001-d7d7-5ed3-8a60-383e8da5620e/afde0001-d7d7-5ed3-8a60-383e8da5620e.png",
+      "sha256": "sha256:92abb33c10530d977c1717473941a3e591c223531d6fc042338a4369fccd8d93",
+      "bytes": 2171986
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/app/public/assets/goal-visualizations/biologie/c05e217f-33fc-5a11-ba75-1397fad3ae0a/c05e217f-33fc-5a11-ba75-1397fad3ae0a.png",
+      "sha256": "sha256:d051ef0dc92476de4ad2aa50b1c80480e574dfc4a8cdb8aa0bc0a47c6bb6a11d",
+      "bytes": 1870348
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/app/public/assets/goal-visualizations/biologie/c9a06264-cce2-54dd-9604-46dd5949f02e/c9a06264-cce2-54dd-9604-46dd5949f02e.png",
+      "sha256": "sha256:0ec90dff9133c2d61297172a8d00c560f000428487222a132576574cd3348c47",
+      "bytes": 1668809
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/app/public/assets/goal-visualizations/biologie/ce19b80f-d392-5851-ac92-750c85adfb3e/ce19b80f-d392-5851-ac92-750c85adfb3e.png",
+      "sha256": "sha256:38b16a4f07ab5490e42700fe31ee33f67a8d63aae09187965e27617c3f15c89c",
+      "bytes": 1803063
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/app/public/assets/goal-visualizations/biologie/e1117126-4e78-5a37-a645-2debc167219b/e1117126-4e78-5a37-a645-2debc167219b.png",
+      "sha256": "sha256:1b7d19e7a53e559af792c86a3bf894b3e8906fe5fae9769f7c5bee7ed41c9f26",
+      "bytes": 1657418
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/app/public/assets/goal-visualizations/biologie/e3fb5f1d-e277-5e28-8883-45821b972607/e3fb5f1d-e277-5e28-8883-45821b972607.png",
+      "sha256": "sha256:a56b919cdf24b3806ef9b7c8a1cbb2f3535798c03e96865ffd543a80e98438c9",
+      "bytes": 1836399
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/app/public/assets/goal-visualizations/biologie/f6280154-d57c-599c-94bf-73313005a6df/f6280154-d57c-599c-94bf-73313005a6df.png",
+      "sha256": "sha256:d33c4dfe8f87df40fa36618a69218fe71f2b9153a55a166e0d34441342c99337",
+      "bytes": 1966093
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/app/public/assets/goal-visualizations/biologie/ff1bf88f-2413-5668-a071-ce9fc499cba3/ff1bf88f-2413-5668-a071-ce9fc499cba3.png",
+      "sha256": "sha256:4d2607bd02b06f4ed9682faf33c69ce9ae6dee9406994f0adf14bc26338fb133",
+      "bytes": 2042089
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/backend/src/main/resources/static/assets/goal-visualizations/biologie/04d770b3-ba5e-5438-88ca-110cbaeba62c/04d770b3-ba5e-5438-88ca-110cbaeba62c.png",
+      "sha256": "sha256:ba9f055f6cb7598aafd842d5a367ed20227cc8955ad19046ef7e451ecc19e47a",
+      "bytes": 1788540
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/backend/src/main/resources/static/assets/goal-visualizations/biologie/080b10c7-f308-57ff-b067-3bd189e37fea/080b10c7-f308-57ff-b067-3bd189e37fea.png",
+      "sha256": "sha256:c9569af2b209d7c5f2b5c91186c4cabed7217b81afda8ea62800ce0094ec91eb",
+      "bytes": 1788188
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/backend/src/main/resources/static/assets/goal-visualizations/biologie/19758e09-1bc4-5ee4-bf52-89b3bc28e947/19758e09-1bc4-5ee4-bf52-89b3bc28e947.png",
+      "sha256": "sha256:aa9e2e1ca57aa7511a00d145c305740b1e4de12fb531725ee191c2a0a44eb81e",
+      "bytes": 1804558
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/backend/src/main/resources/static/assets/goal-visualizations/biologie/1b38144f-cdbd-5dfe-a792-94669bdc31d8/1b38144f-cdbd-5dfe-a792-94669bdc31d8.png",
+      "sha256": "sha256:7cd4d628d21efbe606d4f4402fd422569cdca24455f7257debb3c3a5b6ee96f7",
+      "bytes": 1848546
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/backend/src/main/resources/static/assets/goal-visualizations/biologie/2381d2bb-176c-5903-8c6e-82f4bd5023a4/2381d2bb-176c-5903-8c6e-82f4bd5023a4.png",
+      "sha256": "sha256:8c4bcdacc6d71ce15114b51617dd6feb572d26d28ad6df389ec8ac9a949392c4",
+      "bytes": 1705176
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/backend/src/main/resources/static/assets/goal-visualizations/biologie/347110a1-1d2e-5195-8acc-64e7e3893ce5/347110a1-1d2e-5195-8acc-64e7e3893ce5.png",
+      "sha256": "sha256:06d3f54e2f73ea64629c023fe709827e94d14a693ee048a2b213fb2d9c7b4de3",
+      "bytes": 1927570
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/backend/src/main/resources/static/assets/goal-visualizations/biologie/485ef1c3-8997-52b7-91f5-b1ddf179013d/485ef1c3-8997-52b7-91f5-b1ddf179013d.png",
+      "sha256": "sha256:032c34237fd0a8048df6cf8b2f45b3cdec08f10f4c73876a591e2791c631ccb9",
+      "bytes": 1660022
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/backend/src/main/resources/static/assets/goal-visualizations/biologie/4f631f78-e13a-58e5-9092-f4db0b8d377a/4f631f78-e13a-58e5-9092-f4db0b8d377a.png",
+      "sha256": "sha256:56af2080564f4725b36fab82183eb2c7bc3b44900d50ac98169e6cdac364e5ec",
+      "bytes": 1790501
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/backend/src/main/resources/static/assets/goal-visualizations/biologie/78748ef2-93fb-5ec3-8c1e-90e42b9ea863/78748ef2-93fb-5ec3-8c1e-90e42b9ea863.png",
+      "sha256": "sha256:538d9ee259209622cf5fa4b9182d02de40c5305647aea2520d7a3cc589643d06",
+      "bytes": 1650578
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/backend/src/main/resources/static/assets/goal-visualizations/biologie/8b23f8fb-555d-5720-b5f2-dd6f28a0e786/8b23f8fb-555d-5720-b5f2-dd6f28a0e786.png",
+      "sha256": "sha256:cc12298874afb0bab28d9511f9b6de83fb4bb36b11d4349435e39977be3bd516",
+      "bytes": 1862507
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/backend/src/main/resources/static/assets/goal-visualizations/biologie/97b24279-def0-5ce6-8726-a1cac9cd38ad/97b24279-def0-5ce6-8726-a1cac9cd38ad.png",
+      "sha256": "sha256:87575c5ec1b9afb1a36315018ce06482e8893151eb5578bc0761ea52815fb0c5",
+      "bytes": 1779941
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/backend/src/main/resources/static/assets/goal-visualizations/biologie/9b966664-906b-5a5d-8008-cae18de043aa/9b966664-906b-5a5d-8008-cae18de043aa.png",
+      "sha256": "sha256:092af9deebaa48744225018c734fb25658a4f564dcf3a46ac78cfd401f547a61",
+      "bytes": 2006193
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/backend/src/main/resources/static/assets/goal-visualizations/biologie/a46cafde-7359-5249-8754-19aaa3174ba4/a46cafde-7359-5249-8754-19aaa3174ba4.png",
+      "sha256": "sha256:ea90bf47e3277d9e2d0f11b146e64f7481f60cc2decbc7d78995543f095416c0",
+      "bytes": 1908643
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/backend/src/main/resources/static/assets/goal-visualizations/biologie/afde0001-d7d7-5ed3-8a60-383e8da5620e/afde0001-d7d7-5ed3-8a60-383e8da5620e.png",
+      "sha256": "sha256:92abb33c10530d977c1717473941a3e591c223531d6fc042338a4369fccd8d93",
+      "bytes": 2171986
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/backend/src/main/resources/static/assets/goal-visualizations/biologie/c05e217f-33fc-5a11-ba75-1397fad3ae0a/c05e217f-33fc-5a11-ba75-1397fad3ae0a.png",
+      "sha256": "sha256:d051ef0dc92476de4ad2aa50b1c80480e574dfc4a8cdb8aa0bc0a47c6bb6a11d",
+      "bytes": 1870348
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/backend/src/main/resources/static/assets/goal-visualizations/biologie/c9a06264-cce2-54dd-9604-46dd5949f02e/c9a06264-cce2-54dd-9604-46dd5949f02e.png",
+      "sha256": "sha256:0ec90dff9133c2d61297172a8d00c560f000428487222a132576574cd3348c47",
+      "bytes": 1668809
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/backend/src/main/resources/static/assets/goal-visualizations/biologie/ce19b80f-d392-5851-ac92-750c85adfb3e/ce19b80f-d392-5851-ac92-750c85adfb3e.png",
+      "sha256": "sha256:38b16a4f07ab5490e42700fe31ee33f67a8d63aae09187965e27617c3f15c89c",
+      "bytes": 1803063
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/backend/src/main/resources/static/assets/goal-visualizations/biologie/e1117126-4e78-5a37-a645-2debc167219b/e1117126-4e78-5a37-a645-2debc167219b.png",
+      "sha256": "sha256:1b7d19e7a53e559af792c86a3bf894b3e8906fe5fae9769f7c5bee7ed41c9f26",
+      "bytes": 1657418
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/backend/src/main/resources/static/assets/goal-visualizations/biologie/e3fb5f1d-e277-5e28-8883-45821b972607/e3fb5f1d-e277-5e28-8883-45821b972607.png",
+      "sha256": "sha256:a56b919cdf24b3806ef9b7c8a1cbb2f3535798c03e96865ffd543a80e98438c9",
+      "bytes": 1836399
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/backend/src/main/resources/static/assets/goal-visualizations/biologie/f6280154-d57c-599c-94bf-73313005a6df/f6280154-d57c-599c-94bf-73313005a6df.png",
+      "sha256": "sha256:d33c4dfe8f87df40fa36618a69218fe71f2b9153a55a166e0d34441342c99337",
+      "bytes": 1966093
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/backend/src/main/resources/static/assets/goal-visualizations/biologie/ff1bf88f-2413-5668-a071-ce9fc499cba3/ff1bf88f-2413-5668-a071-ce9fc499cba3.png",
+      "sha256": "sha256:4d2607bd02b06f4ed9682faf33c69ce9ae6dee9406994f0adf14bc26338fb133",
+      "bytes": 2042089
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "sha256:bdb784e3722ab16e0f1d86d722ecbaa63281d5ff68ed91453a7569b5abcc5378",
+      "bytes": 1039165
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/04d770b3-ba5e-5438-88ca-110cbaeba62c/04d770b3-ba5e-5438-88ca-110cbaeba62c.png",
+      "sha256": "sha256:ba9f055f6cb7598aafd842d5a367ed20227cc8955ad19046ef7e451ecc19e47a",
+      "bytes": 1788540
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/04d770b3-ba5e-5438-88ca-110cbaeba62c/prompt.de.md",
+      "sha256": "sha256:ba85b976014813967c27594c0eb2c48eb88573f33fccc4edfe5abcdde213fed8",
+      "bytes": 2237
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/080b10c7-f308-57ff-b067-3bd189e37fea/080b10c7-f308-57ff-b067-3bd189e37fea.png",
+      "sha256": "sha256:c9569af2b209d7c5f2b5c91186c4cabed7217b81afda8ea62800ce0094ec91eb",
+      "bytes": 1788188
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/080b10c7-f308-57ff-b067-3bd189e37fea/prompt.de.md",
+      "sha256": "sha256:a3e2d89dae9fb43b9ba5698503f2f2a0b6c6f79c36a17f9fc7a2ff12dc5c3a43",
+      "bytes": 2181
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/19758e09-1bc4-5ee4-bf52-89b3bc28e947/19758e09-1bc4-5ee4-bf52-89b3bc28e947.png",
+      "sha256": "sha256:aa9e2e1ca57aa7511a00d145c305740b1e4de12fb531725ee191c2a0a44eb81e",
+      "bytes": 1804558
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/19758e09-1bc4-5ee4-bf52-89b3bc28e947/prompt.de.md",
+      "sha256": "sha256:8737984a3b26eddaae678b20d4fa96dfbd3ac27b62788d9432b1e6248c26748b",
+      "bytes": 1661
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/1b38144f-cdbd-5dfe-a792-94669bdc31d8/1b38144f-cdbd-5dfe-a792-94669bdc31d8.png",
+      "sha256": "sha256:7cd4d628d21efbe606d4f4402fd422569cdca24455f7257debb3c3a5b6ee96f7",
+      "bytes": 1848546
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/1b38144f-cdbd-5dfe-a792-94669bdc31d8/prompt.de.md",
+      "sha256": "sha256:8e1cc1596cf4cde02d7f29748b3e4e212965e4fe3a8d83145df6e22aeebde857",
+      "bytes": 2911
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/2381d2bb-176c-5903-8c6e-82f4bd5023a4/2381d2bb-176c-5903-8c6e-82f4bd5023a4.png",
+      "sha256": "sha256:8c4bcdacc6d71ce15114b51617dd6feb572d26d28ad6df389ec8ac9a949392c4",
+      "bytes": 1705176
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/2381d2bb-176c-5903-8c6e-82f4bd5023a4/prompt.de.md",
+      "sha256": "sha256:f7d95c58ee132a282e9ef887758eb4f849ba604b3a81ac375785a5f0282a99f6",
+      "bytes": 3027
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/347110a1-1d2e-5195-8acc-64e7e3893ce5/347110a1-1d2e-5195-8acc-64e7e3893ce5.png",
+      "sha256": "sha256:06d3f54e2f73ea64629c023fe709827e94d14a693ee048a2b213fb2d9c7b4de3",
+      "bytes": 1927570
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/347110a1-1d2e-5195-8acc-64e7e3893ce5/prompt.de.md",
+      "sha256": "sha256:77c6105ce8aa57aeb8eb3a7ab4fb54da80625a33a764b4376637c72ffc1c2263",
+      "bytes": 2896
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/485ef1c3-8997-52b7-91f5-b1ddf179013d/485ef1c3-8997-52b7-91f5-b1ddf179013d.png",
+      "sha256": "sha256:032c34237fd0a8048df6cf8b2f45b3cdec08f10f4c73876a591e2791c631ccb9",
+      "bytes": 1660022
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/485ef1c3-8997-52b7-91f5-b1ddf179013d/prompt.de.md",
+      "sha256": "sha256:38e4e3c69c418abf01a0827f7825b738a8c2402f3a089697a4d77144dd5eb99e",
+      "bytes": 1891
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/4f631f78-e13a-58e5-9092-f4db0b8d377a/4f631f78-e13a-58e5-9092-f4db0b8d377a.png",
+      "sha256": "sha256:56af2080564f4725b36fab82183eb2c7bc3b44900d50ac98169e6cdac364e5ec",
+      "bytes": 1790501
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/4f631f78-e13a-58e5-9092-f4db0b8d377a/prompt.de.md",
+      "sha256": "sha256:1afb9f70b9e6229de62726c9f71c1e86a3090cf0922822a52ca66f19eabe0387",
+      "bytes": 2539
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/78748ef2-93fb-5ec3-8c1e-90e42b9ea863/78748ef2-93fb-5ec3-8c1e-90e42b9ea863.png",
+      "sha256": "sha256:538d9ee259209622cf5fa4b9182d02de40c5305647aea2520d7a3cc589643d06",
+      "bytes": 1650578
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/78748ef2-93fb-5ec3-8c1e-90e42b9ea863/prompt.de.md",
+      "sha256": "sha256:7d56443caf6dd85ae3b2fe7b7ca1f4bd620bd4e67f3a2b55badcd683f25a4936",
+      "bytes": 3040
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/8b23f8fb-555d-5720-b5f2-dd6f28a0e786/8b23f8fb-555d-5720-b5f2-dd6f28a0e786.png",
+      "sha256": "sha256:cc12298874afb0bab28d9511f9b6de83fb4bb36b11d4349435e39977be3bd516",
+      "bytes": 1862507
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/8b23f8fb-555d-5720-b5f2-dd6f28a0e786/prompt.de.md",
+      "sha256": "sha256:b37d80d664410849304f3eb853f400fc65be2227fe40570b1ea37f81e1ab8d73",
+      "bytes": 1913
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/97b24279-def0-5ce6-8726-a1cac9cd38ad/97b24279-def0-5ce6-8726-a1cac9cd38ad.png",
+      "sha256": "sha256:87575c5ec1b9afb1a36315018ce06482e8893151eb5578bc0761ea52815fb0c5",
+      "bytes": 1779941
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/97b24279-def0-5ce6-8726-a1cac9cd38ad/prompt.de.md",
+      "sha256": "sha256:8ae6fee0f813b175e151d4d3665c8234f121d8c5605556ffd450b9997a42234d",
+      "bytes": 3090
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/9b966664-906b-5a5d-8008-cae18de043aa/9b966664-906b-5a5d-8008-cae18de043aa.png",
+      "sha256": "sha256:092af9deebaa48744225018c734fb25658a4f564dcf3a46ac78cfd401f547a61",
+      "bytes": 2006193
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/9b966664-906b-5a5d-8008-cae18de043aa/prompt.de.md",
+      "sha256": "sha256:7de814193016ef70ab66e651611ec7477d8742eabcc5e73d55d97fe3ce3af0cc",
+      "bytes": 1963
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/a46cafde-7359-5249-8754-19aaa3174ba4/a46cafde-7359-5249-8754-19aaa3174ba4.png",
+      "sha256": "sha256:ea90bf47e3277d9e2d0f11b146e64f7481f60cc2decbc7d78995543f095416c0",
+      "bytes": 1908643
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/a46cafde-7359-5249-8754-19aaa3174ba4/prompt.de.md",
+      "sha256": "sha256:7ddae2a53e8d3d48c7ae80a8c93db32c84fb64aaa418c6d49fad96d0c0d0db5c",
+      "bytes": 1782
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/afde0001-d7d7-5ed3-8a60-383e8da5620e/afde0001-d7d7-5ed3-8a60-383e8da5620e.png",
+      "sha256": "sha256:92abb33c10530d977c1717473941a3e591c223531d6fc042338a4369fccd8d93",
+      "bytes": 2171986
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/afde0001-d7d7-5ed3-8a60-383e8da5620e/prompt.de.md",
+      "sha256": "sha256:fee5c068ac0e719621395e05c1c61c3b2a6d4d5c881b8f748b3863a5a90279bf",
+      "bytes": 2779
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/c05e217f-33fc-5a11-ba75-1397fad3ae0a/c05e217f-33fc-5a11-ba75-1397fad3ae0a.png",
+      "sha256": "sha256:d051ef0dc92476de4ad2aa50b1c80480e574dfc4a8cdb8aa0bc0a47c6bb6a11d",
+      "bytes": 1870348
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/c05e217f-33fc-5a11-ba75-1397fad3ae0a/prompt.de.md",
+      "sha256": "sha256:bc38a3f0c827521176a90a28b94d5462f144662d17b0634dc7cdf5baf944f733",
+      "bytes": 3208
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/c9a06264-cce2-54dd-9604-46dd5949f02e/c9a06264-cce2-54dd-9604-46dd5949f02e.png",
+      "sha256": "sha256:0ec90dff9133c2d61297172a8d00c560f000428487222a132576574cd3348c47",
+      "bytes": 1668809
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/c9a06264-cce2-54dd-9604-46dd5949f02e/prompt.de.md",
+      "sha256": "sha256:ece046a2786c874ed5f961cdb75ad9da479a61cc69bb8bf82ec46a03ee2a0bbf",
+      "bytes": 2285
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/ce19b80f-d392-5851-ac92-750c85adfb3e/ce19b80f-d392-5851-ac92-750c85adfb3e.png",
+      "sha256": "sha256:38b16a4f07ab5490e42700fe31ee33f67a8d63aae09187965e27617c3f15c89c",
+      "bytes": 1803063
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/ce19b80f-d392-5851-ac92-750c85adfb3e/prompt.de.md",
+      "sha256": "sha256:dabbdd6671121210ff4c9f2b2addf27476c8403d04d22873d96234f9e4159919",
+      "bytes": 2187
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/e1117126-4e78-5a37-a645-2debc167219b/e1117126-4e78-5a37-a645-2debc167219b.png",
+      "sha256": "sha256:1b7d19e7a53e559af792c86a3bf894b3e8906fe5fae9769f7c5bee7ed41c9f26",
+      "bytes": 1657418
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/e1117126-4e78-5a37-a645-2debc167219b/prompt.de.md",
+      "sha256": "sha256:1f1839783a28160bc88a2b11503b6969fc42eb68245c37fc71f24128a7c92f88",
+      "bytes": 2212
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/e3fb5f1d-e277-5e28-8883-45821b972607/e3fb5f1d-e277-5e28-8883-45821b972607.png",
+      "sha256": "sha256:a56b919cdf24b3806ef9b7c8a1cbb2f3535798c03e96865ffd543a80e98438c9",
+      "bytes": 1836399
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/e3fb5f1d-e277-5e28-8883-45821b972607/prompt.de.md",
+      "sha256": "sha256:c2e5028ba9beec8107713b1cd030335903abf2086c47d2998cd9127bfb2500b2",
+      "bytes": 2373
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/f6280154-d57c-599c-94bf-73313005a6df/f6280154-d57c-599c-94bf-73313005a6df.png",
+      "sha256": "sha256:d33c4dfe8f87df40fa36618a69218fe71f2b9153a55a166e0d34441342c99337",
+      "bytes": 1966093
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/f6280154-d57c-599c-94bf-73313005a6df/prompt.de.md",
+      "sha256": "sha256:39a3dd0521de8654495d85170b678982d88854391a513029b1faedf766b23a08",
+      "bytes": 3021
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/ff1bf88f-2413-5668-a071-ce9fc499cba3/ff1bf88f-2413-5668-a071-ce9fc499cba3.png",
+      "sha256": "sha256:4d2607bd02b06f4ed9682faf33c69ce9ae6dee9406994f0adf14bc26338fb133",
+      "bytes": 2042089
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/curricula/DE/Gymnasium/visualizations/biologie/ff1bf88f-2413-5668-a071-ce9fc499cba3/prompt.de.md",
+      "sha256": "sha256:eaaa0876b29cedc11d4106ceba488cad0c34f5f3a12814fe590bad7b4f4750dd",
+      "bytes": 2158
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/inputs/semantic-kinds.final-image-candidate.json",
+      "sha256": "sha256:15391973f8cb0730a35ae845051e02cec6c7175a3839e3a2c591512fb9601500",
+      "bytes": 152121
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/inputs/visualization-qa.final-image-candidate.json",
+      "sha256": "sha256:f6661727e2eff3572fcf603e3c7e33954f4fcb738d0cd9248f286309ed78c962",
+      "bytes": 503984
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/isolated-repository/outputs/full-final390.book-model.json",
+      "sha256": "sha256:118890b787c9b2b7f743e2311f994ecb309e414e7281a7859700d5b91dfa1c9a",
+      "bytes": 1205213
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/native-final-one/book-model.json",
+      "sha256": "sha256:d6f3e6da0dbfb0a6fd517bf8bad5d884b868df60293c96b685a00aeeb6a7926a",
+      "bytes": 188770
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/native-final-one/book.html",
+      "sha256": "sha256:f7959083d0a963bed38dfbbb8aaf8d34618c85f6dd4197e7a7800a426b8bd509",
+      "bytes": 19751
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/native-final-one/book.html.render-manifest.json",
+      "sha256": "sha256:6ba79725c00cacd0484d7591909bd9dd7478097064b174120eeacf64d33d5b29",
+      "bytes": 3463
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/native-final-one/book.pdf",
+      "sha256": "sha256:c527029ecb9d750a2b8336bbbd4be17208ed66382bf6ed55d394bbd9217738f9",
+      "bytes": 163659
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/native-final-one/book.pdf.render-manifest.json",
+      "sha256": "sha256:a0822f48f3232a634e7e828cf5970f74dad19079cb4b195a176f3534fa0f822b",
+      "bytes": 3462
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/native-final-twenty/book-model.json",
+      "sha256": "sha256:6f2bc914f37ba99e75dfcbc926c133d0a359b9c6f929aec297dfe9bce30b74aa",
+      "bytes": 254559
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/native-final-twenty/book.html",
+      "sha256": "sha256:65def7b68f565da577d6fb14c9f1f13710dd5a348b6bf2b68ca796d6ce13625c",
+      "bytes": 127746
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/native-final-twenty/book.html.render-manifest.json",
+      "sha256": "sha256:b0ec6f8eaf9374f1839b550e65107ac73d8d82b4f507dea9c60aa495379a379d",
+      "bytes": 29744
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/native-final-twenty/book.pdf",
+      "sha256": "sha256:f24b8fd38e64b3b3a675d5f61c2395811cad1bab2c035c14b6194ec5f625f4cc",
+      "bytes": 2195744
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/native-final-twenty/book.pdf.render-manifest.json",
+      "sha256": "sha256:ef85693fd1ef026eeb38c3dda800261c8de0ffab448d03f8dff2ade830d29b99",
+      "bytes": 29738
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/native-isolation-and-imports.actual.author.receipt.json",
+      "sha256": "sha256:6c81a117504b3babf9d05e5e1601b38bf79f1ccaae0ca72c5ef77f8e1b6101d6",
+      "bytes": 751751
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/biology-goal-description-understanding-evidence-review-criteria-v2.md",
+      "sha256": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+      "bytes": 2505
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/goal-description-understanding-evidence-review-v2.md",
+      "sha256": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/biologie.qa.json",
+      "sha256": "sha256:4ef57d79efc2418930f1c7ec791cca83406b789de4d8304bbbad4177f9ee17fb",
+      "bytes": 490128
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+      "sha256": "sha256:1c2d1b73ad268357de76e29b4da679d7a05913150cd43323279f8ed7363652c1",
+      "bytes": 1985790
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/physik.qa.json",
+      "sha256": "sha256:f4bb3494002c6987453dbe21207fff048b4e4919e5fae64d7e110ba0c78bf8cf",
+      "bytes": 1182573
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-ce19-axon-leader-targeted-correction-author-20261007-v2/original-generated-targeted-axon-leader-attempt-02.png",
+      "sha256": "sha256:38b16a4f07ab5490e42700fe31ee33f67a8d63aae09187965e27617c3f15c89c",
+      "bytes": 1803063
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-three-supplied-models-author-root-20261007-v1/originals/4f631f78-hebb-synapse-efficacy-corrected-v2.png",
+      "sha256": "sha256:56af2080564f4725b36fab82183eb2c7bc3b44900d50ac98169e6cdac364e5ec",
+      "bytes": 1790501
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-three-supplied-models-author-root-20261007-v1/originals/a46cafde-plastic-network-caption-corrected-v2.png",
+      "sha256": "sha256:ea90bf47e3277d9e2d0f11b146e64f7481f60cc2decbc7d78995543f095416c0",
+      "bytes": 1908643
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro-three-supplied-models-author-root-20261007-v1/originals/c9a06264-ltp-ltd-equal-test-alternative-time-corrected-v2.png",
+      "sha256": "sha256:0ec90dff9133c2d61297172a8d00c560f000428487222a132576574cd3348c47",
+      "bytes": 1668809
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-friendly-comic-primary-raster-author-20261007-v1/first-seven/generated-originals/04d770b3-ba5e-5438-88ca-110cbaeba62c/original-generated-revision-02.actual.png",
+      "sha256": "sha256:ba9f055f6cb7598aafd842d5a367ed20227cc8955ad19046ef7e451ecc19e47a",
+      "bytes": 1788540
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-friendly-comic-primary-raster-author-20261007-v1/first-seven/generated-originals/1b38144f-cdbd-5dfe-a792-94669bdc31d8/original-generated.actual.png",
+      "sha256": "sha256:7cd4d628d21efbe606d4f4402fd422569cdca24455f7257debb3c3a5b6ee96f7",
+      "bytes": 1848546
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-friendly-comic-primary-raster-author-20261007-v1/first-seven/generated-originals/e1117126-4e78-5a37-a645-2debc167219b/original-generated-revision-02.actual.png",
+      "sha256": "sha256:1b7d19e7a53e559af792c86a3bf894b3e8906fe5fae9769f7c5bee7ed41c9f26",
+      "bytes": 1657418
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-friendly-comic-primary-raster-author-20261007-v1/first-seven/generated-originals/e3fb5f1d-e277-5e28-8883-45821b972607/original-generated-revision-03.actual.png",
+      "sha256": "sha256:a56b919cdf24b3806ef9b7c8a1cbb2f3535798c03e96865ffd543a80e98438c9",
+      "bytes": 1836399
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-friendly-comic-primary-raster-author-20261007-v1/first-seven/generated-originals/f6280154-d57c-599c-94bf-73313005a6df/original-generated.actual.png",
+      "sha256": "sha256:d33c4dfe8f87df40fa36618a69218fe71f2b9153a55a166e0d34441342c99337",
+      "bytes": 1966093
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-friendly-comic-primary-raster-author-20261007-v1/first-seven/generated-originals/ff1bf88f-2413-5668-a071-ce9fc499cba3/original-generated-revision-02.actual.png",
+      "sha256": "sha256:4d2607bd02b06f4ed9682faf33c69ce9ae6dee9406994f0adf14bc26338fb133",
+      "bytes": 2042089
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/080b10c7-f308-57ff-b067-3bd189e37fea/original-generated-attempt-02.png",
+      "sha256": "sha256:c9569af2b209d7c5f2b5c91186c4cabed7217b81afda8ea62800ce0094ec91eb",
+      "bytes": 1788188
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/19758e09-1bc4-5ee4-bf52-89b3bc28e947/original-generated-attempt-02.png",
+      "sha256": "sha256:aa9e2e1ca57aa7511a00d145c305740b1e4de12fb531725ee191c2a0a44eb81e",
+      "bytes": 1804558
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/2381d2bb-176c-5903-8c6e-82f4bd5023a4/original-generated-attempt-01.png",
+      "sha256": "sha256:8c4bcdacc6d71ce15114b51617dd6feb572d26d28ad6df389ec8ac9a949392c4",
+      "bytes": 1705176
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/347110a1-1d2e-5195-8acc-64e7e3893ce5/original-generated-attempt-01.png",
+      "sha256": "sha256:06d3f54e2f73ea64629c023fe709827e94d14a693ee048a2b213fb2d9c7b4de3",
+      "bytes": 1927570
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/485ef1c3-8997-52b7-91f5-b1ddf179013d/original-generated-attempt-03.png",
+      "sha256": "sha256:032c34237fd0a8048df6cf8b2f45b3cdec08f10f4c73876a591e2791c631ccb9",
+      "bytes": 1660022
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/78748ef2-93fb-5ec3-8c1e-90e42b9ea863/original-generated-attempt-01.png",
+      "sha256": "sha256:538d9ee259209622cf5fa4b9182d02de40c5305647aea2520d7a3cc589643d06",
+      "bytes": 1650578
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/8b23f8fb-555d-5720-b5f2-dd6f28a0e786/original-generated-attempt-03.png",
+      "sha256": "sha256:cc12298874afb0bab28d9511f9b6de83fb4bb36b11d4349435e39977be3bd516",
+      "bytes": 1862507
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/97b24279-def0-5ce6-8726-a1cac9cd38ad/original-generated-attempt-01.png",
+      "sha256": "sha256:87575c5ec1b9afb1a36315018ce06482e8893151eb5578bc0761ea52815fb0c5",
+      "bytes": 1779941
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/9b966664-906b-5a5d-8008-cae18de043aa/original-generated-attempt-02.png",
+      "sha256": "sha256:092af9deebaa48744225018c734fb25658a4f564dcf3a46ac78cfd401f547a61",
+      "bytes": 2006193
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/afde0001-d7d7-5ed3-8a60-383e8da5620e/original-generated-attempt-01.png",
+      "sha256": "sha256:92abb33c10530d977c1717473941a3e591c223531d6fc042338a4369fccd8d93",
+      "bytes": 2171986
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/c05e217f-33fc-5a11-ba75-1397fad3ae0a/original-generated-attempt-01.png",
+      "sha256": "sha256:d051ef0dc92476de4ad2aa50b1c80480e574dfc4a8cdb8aa0bc0a47c6bb6a11d",
+      "bytes": 1870348
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-biology-full.cards.review.jsonl",
+      "sha256": "sha256:5fee1fd9fb1a2f85f202dbf8174611824a9715fe6c90cd3e3b84124f840c21f0",
+      "bytes": 11437
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-biology-full.config.json",
+      "sha256": "sha256:8690b5b865399e0d1d2ccd37d74b18100793a919f7c7038c07d48bbfcd41d3a9",
+      "bytes": 1209
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-biology-full.review.jsonl",
+      "sha256": "sha256:ea60e76f409391201311ff5d161380a3488a451809eff8533b96e8001daeef89",
+      "bytes": 232462
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.cards.review.jsonl",
+      "sha256": "sha256:b14bbb860e2e325eed7f42c970dd43a2e4b8735179ee45a37ccb6c71a5d836f7",
+      "bytes": 45566
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.config.json",
+      "sha256": "sha256:5e1e071231587496e7bd5ecab4a8bee07fa51eea1db08d39f2112b0ef7e0fa1e",
+      "bytes": 1017
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-math-full.review.jsonl",
+      "sha256": "sha256:48e7ce0988922b086e654eb534686b8fd705ad4b0a6226b3babe71d65639e0ad",
+      "bytes": 495662
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.cards.review.jsonl",
+      "sha256": "sha256:972e319f5328512d145dcbad778f462adba7ee0388c4a76cb8a50215eb1296d2",
+      "bytes": 108303
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.config.json",
+      "sha256": "sha256:eb0280cdebcf90e9a43532a3a403dd5c1bd7685726c23273b4ca9629cff2e045",
+      "bytes": 1061
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-physics-full.review.jsonl",
+      "sha256": "sha256:39b0a9ca318acd8af1db0ec50c29020bcdd792d2c1e6437eeedefa99204a4c95",
+      "bytes": 317239
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "sha256": "sha256:0a76bfb0b6ede403850a930c3486915bd04bc00ce2bed40d6b88eefba3c9a7b0",
+      "bytes": 404272
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+      "sha256": "sha256:fb766b0a433f5392ab7cbda5d110424b06c596cbae02ac82926681d614574029",
+      "bytes": 247091
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-biology-full.config.json",
+      "sha256": "sha256:601a07cfca1db0f301b5af3b4af227fa0130c66fa0a40f6f7cc59dc43c0e430e",
+      "bytes": 503
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-biology-full.review.jsonl",
+      "sha256": "sha256:0a89effef86842b360c5b9fab2d64bb3343483589746c2ff934bb7df38bd09a6",
+      "bytes": 181508
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.config.json",
+      "sha256": "sha256:90d5511603dc1d31fa33161b7f0a7425469c48e16dd03b96619a0ecb0bd92f9b",
+      "bytes": 503
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-math-full.review.jsonl",
+      "sha256": "sha256:1961b30115afcaf8cc83d965ff54e17ba6c88948e1d53c54522a6e61681b4c55",
+      "bytes": 468754
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.config.json",
+      "sha256": "sha256:1c2277db92a64e76bfedb41da39825ec02d0dda992d001bb4d2b1cf623514b65",
+      "bytes": 501
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/semantic-atomicity/canonical-physics-full.review.jsonl",
+      "sha256": "sha256:0a9b066ba2c8cb3eff9838dfeb4bf044792afeafcc538804aa4bd54a4c64635d",
+      "bytes": 302532
+    }
+  ],
+  "ownPayloads": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/README.md",
+      "sha256": "sha256:69df6b1542ddfddd2fed2edeb819993222ead391770a88e8a61a45ae2fa84c9d",
+      "bytes": 4149
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/build-integration-plan-and-freeze.author.py",
+      "sha256": "sha256:a8dbc962d8b792f586abaa8aaf29166822c9b605acc66907155467c22347bc1d",
+      "bytes": 17893
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/concrete-native-integration-plan.author.json",
+      "sha256": "sha256:af7e47d571c68ce2adc8fbd9ffcaae290f2fdafeb23fa2996ceca24f38add4b0",
+      "bytes": 99330
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-campaign-preparation.actual.author.receipt.json",
+      "sha256": "sha256:a4e6538125bf03759812746f6a5ced96bb1c24ca950c1cc2b4185ed8340b8324",
+      "bytes": 5742
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/bundle/book-model.json",
+      "sha256": "sha256:d6f3e6da0dbfb0a6fd517bf8bad5d884b868df60293c96b685a00aeeb6a7926a",
+      "bytes": 188770
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/bundle/book.html",
+      "sha256": "sha256:f7959083d0a963bed38dfbbb8aaf8d34618c85f6dd4197e7a7800a426b8bd509",
+      "bytes": 19751
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/bundle/book.html.render-manifest.json",
+      "sha256": "sha256:6ba79725c00cacd0484d7591909bd9dd7478097064b174120eeacf64d33d5b29",
+      "bytes": 3463
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/bundle/book.pdf",
+      "sha256": "sha256:c527029ecb9d750a2b8336bbbd4be17208ed66382bf6ed55d394bbd9217738f9",
+      "bytes": 163659
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/bundle/book.pdf.render-manifest.json",
+      "sha256": "sha256:a0822f48f3232a634e7e828cf5970f74dad19079cb4b195a176f3534fa0f822b",
+      "bytes": 3462
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/bundle/contracts/goal-evidence-ai-run-manifest.schema.json",
+      "sha256": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/bundle/contracts/goal-evidence-finding.schema.json",
+      "sha256": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/bundle/criteria.md",
+      "sha256": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+      "bytes": 2505
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/bundle/manifest.json",
+      "sha256": "sha256:43cc13124328acff147c02878d316b6e5086da10ae9e2bfb72e151d934dd2530",
+      "bytes": 3695
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/bundle/prompt.md",
+      "sha256": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/bundle/review-input.json",
+      "sha256": "sha256:6b3b45923f495fbb9a3e483e3cbb0d4510646e8daada4a13bab7757a7822eec7",
+      "bytes": 3945
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/bundle/review-input.jsonl",
+      "sha256": "sha256:dceaa69b9e3707e8e434d7e68b0ff7461144f84afb60a68183d219172017c4b6",
+      "bytes": 2695
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/bundle/review.md",
+      "sha256": "sha256:08136b60382eee782a3ea747f104d73f3ad50c288b636fbe91d7e1d61c53d460",
+      "bytes": 1985
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/round-a/batches/biologie-neuro21-final-one-first-pass-a-20261007.batch-001.input.jsonl",
+      "sha256": "sha256:4c3ab4950b18f6832c61bf366faca26c2a58cd27a95ae1986e02d952cfaffb10",
+      "bytes": 4708
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/round-a/contracts/goal-description-review-record.schema.json",
+      "sha256": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+      "bytes": 5872
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/round-a/criteria.md",
+      "sha256": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+      "bytes": 2505
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/round-a/description-review-campaign.json",
+      "sha256": "sha256:6572b86f13961a746a706fcc3ad393e4d7f22947d52153bb168c5017de45137c",
+      "bytes": 1593
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/round-a/description-review-input.json",
+      "sha256": "sha256:79857ce341afb1619060e709b440d27af6808926f92793d3e7bb2dc7c905e665",
+      "bytes": 5970
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/round-a/native-review-routing.config.author.json",
+      "sha256": "sha256:1b8cb94aee33abb31913e09f606a7b2cc92c8e9c3ad7e87da04194ff335703a4",
+      "bytes": 3633
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/round-a/prompt.md",
+      "sha256": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/round-a/review-bundle-manifest.json",
+      "sha256": "sha256:43cc13124328acff147c02878d316b6e5086da10ae9e2bfb72e151d934dd2530",
+      "bytes": 3695
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/round-b/batches/biologie-neuro21-final-one-first-pass-b-20261007.batch-001.input.jsonl",
+      "sha256": "sha256:46974300ad9e9f0a7c0b744b5fd8ff92a40e08aa61a1980d603da9a79bfec8ed",
+      "bytes": 4708
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/round-b/contracts/goal-description-review-record.schema.json",
+      "sha256": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+      "bytes": 5872
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/round-b/criteria.md",
+      "sha256": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+      "bytes": 2505
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/round-b/description-review-campaign.json",
+      "sha256": "sha256:76b0fda17dacb78b8abefbfbe5a62f8fbb86ce06c994c27f825b21843bb2fa2a",
+      "bytes": 1593
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/round-b/description-review-input.json",
+      "sha256": "sha256:79857ce341afb1619060e709b440d27af6808926f92793d3e7bb2dc7c905e665",
+      "bytes": 5970
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/round-b/native-review-routing.config.author.json",
+      "sha256": "sha256:a43bbf28473a94636f7412452bcbe0d2634722a201ed70446c5e0baa1d3eb090",
+      "bytes": 3647
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/round-b/prompt.md",
+      "sha256": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-one/round-b/review-bundle-manifest.json",
+      "sha256": "sha256:43cc13124328acff147c02878d316b6e5086da10ae9e2bfb72e151d934dd2530",
+      "bytes": 3695
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/bundle/book-model.json",
+      "sha256": "sha256:6f2bc914f37ba99e75dfcbc926c133d0a359b9c6f929aec297dfe9bce30b74aa",
+      "bytes": 254559
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/bundle/book.html",
+      "sha256": "sha256:65def7b68f565da577d6fb14c9f1f13710dd5a348b6bf2b68ca796d6ce13625c",
+      "bytes": 127746
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/bundle/book.html.render-manifest.json",
+      "sha256": "sha256:b0ec6f8eaf9374f1839b550e65107ac73d8d82b4f507dea9c60aa495379a379d",
+      "bytes": 29744
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/bundle/book.pdf",
+      "sha256": "sha256:f24b8fd38e64b3b3a675d5f61c2395811cad1bab2c035c14b6194ec5f625f4cc",
+      "bytes": 2195744
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/bundle/book.pdf.render-manifest.json",
+      "sha256": "sha256:ef85693fd1ef026eeb38c3dda800261c8de0ffab448d03f8dff2ade830d29b99",
+      "bytes": 29738
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/bundle/contracts/goal-evidence-ai-run-manifest.schema.json",
+      "sha256": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/bundle/contracts/goal-evidence-finding.schema.json",
+      "sha256": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/bundle/criteria.md",
+      "sha256": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+      "bytes": 2505
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/bundle/manifest.json",
+      "sha256": "sha256:2242bfa61341eea8b39daefa420f50c24e2d78fd4e70d9d1da44da6131173af3",
+      "bytes": 9816
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/bundle/prompt.md",
+      "sha256": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/bundle/review-input.json",
+      "sha256": "sha256:5c8ee9a08b67baa29dc31f1c1f8dd52830122b4b91db5a3700577a1714647387",
+      "bytes": 67679
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/bundle/review-input.jsonl",
+      "sha256": "sha256:2c2c816985141ea1b63a36bf5cb58ef357a5752f76cb31d37c0112e45df45eeb",
+      "bytes": 55732
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/bundle/review.md",
+      "sha256": "sha256:9599d1351e838b118d4f3cacabc9cc5cfb29642432393048da10e09a3d8c5d02",
+      "bytes": 32577
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/round-a/batches/biologie-neuro21-final-twenty-first-pass-a-20261007.batch-001.input.jsonl",
+      "sha256": "sha256:037d7ca787d957bfd57b6eeaa81c6ea6b63e768f1c3e3938edc08106b2431924",
+      "bytes": 109838
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/round-a/contracts/goal-description-review-record.schema.json",
+      "sha256": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+      "bytes": 5872
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/round-a/criteria.md",
+      "sha256": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+      "bytes": 2505
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/round-a/description-review-campaign.json",
+      "sha256": "sha256:5a34b1131406f98372e0e6716bc64688f39fa10d81d7bde7421c048722fc3b21",
+      "bytes": 2515
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/round-a/description-review-input.json",
+      "sha256": "sha256:0599eb7c0c57fbcb64eb81bfe85450eb12444b4743eeb4fcecc457afa90fb50b",
+      "bytes": 112541
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/round-a/native-review-routing.config.author.json",
+      "sha256": "sha256:08443384317c5df1b755a2c881369384d719d88f556028af91643d6992370fa2",
+      "bytes": 4576
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/round-a/prompt.md",
+      "sha256": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/round-a/review-bundle-manifest.json",
+      "sha256": "sha256:2242bfa61341eea8b39daefa420f50c24e2d78fd4e70d9d1da44da6131173af3",
+      "bytes": 9816
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/round-b/batches/biologie-neuro21-final-twenty-first-pass-b-20261007.batch-001.input.jsonl",
+      "sha256": "sha256:4cc2362e17c9bc549b2b7f028f46823b7520b88c77be3b4f538f8026b5d33157",
+      "bytes": 109838
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/round-b/contracts/goal-description-review-record.schema.json",
+      "sha256": "sha256:b1d5fe108f157ebcb3e6b5c5f0376b3f4d88da935fab9aab79fac8a49b50b7ff",
+      "bytes": 5872
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/round-b/criteria.md",
+      "sha256": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+      "bytes": 2505
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/round-b/description-review-campaign.json",
+      "sha256": "sha256:9ec45b6a77c71c0686e7113fdc76bf21a056e15468b320988e003adcdcfc3528",
+      "bytes": 2515
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/round-b/description-review-input.json",
+      "sha256": "sha256:0599eb7c0c57fbcb64eb81bfe85450eb12444b4743eeb4fcecc457afa90fb50b",
+      "bytes": 112541
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/round-b/native-review-routing.config.author.json",
+      "sha256": "sha256:d51aac5a71be9e03db4031f715d47ea9a69a092070b06f670dfbc1fa3e36bbe5",
+      "bytes": 4590
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/round-b/prompt.md",
+      "sha256": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d-twenty/round-b/review-bundle-manifest.json",
+      "sha256": "sha256:2242bfa61341eea8b39daefa420f50c24e2d78fd4e70d9d1da44da6131173af3",
+      "bytes": 9816
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-d20-plus1-campaigns.neutral-routing.author.json",
+      "sha256": "sha256:4a08ef8387382c2fb90a41d18d67b16c7df600fd582f3007d01662c38e78d990",
+      "bytes": 22787
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-unselected949/book-model.json",
+      "sha256": "sha256:534dd5555fd023ea4fb25df6b014fa9a7a384062cb1b0cee405e8c1d8ba67436",
+      "bytes": 189174
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-unselected949/book.html",
+      "sha256": "sha256:2e35150f6a25ed68b8dfafc4ac9d1deeac8b2fb246a08fad43fe68b7a8a955ab",
+      "bytes": 20414
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-unselected949/book.html.render-manifest.json",
+      "sha256": "sha256:5188434ad93ad039833bce434d624668c7b29ced88ac3227006336ca6071611a",
+      "bytes": 2934
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-unselected949/book.pdf",
+      "sha256": "sha256:3da00b8045288622f1ffb229b93a01f014cc9fa2006e806c643aeaba6fafa38d",
+      "bytes": 117682
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-unselected949/book.pdf.render-manifest.json",
+      "sha256": "sha256:153ef9a2e2e64dc2450b17b1a461a39419e130d676e62e66b46020b0e8f1da93",
+      "bytes": 2933
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native-unselected949/whole-goal-page-context.neutral.author.raw.json",
+      "sha256": "sha256:8b5f41b3e7fca9c1a112a99524019847acc6ff8b50fba7991e85e82630796247",
+      "bytes": 32804
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/native949-single-render.actual.author.receipt.json",
+      "sha256": "sha256:c8ad4c4ed167dd9e31aef2aaa29de7afe40fe2adf4d408108e0163ec50f7fc68",
+      "bytes": 2647
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/planned-active-atomicity.config.author.json",
+      "sha256": "sha256:07aa0934024ccacd565e09f85b50585a557fe1784f6c656f4253b61bd24917fe",
+      "bytes": 585
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/planned-active-memory.config.author.json",
+      "sha256": "sha256:f8b0dfbb649c0dfab9d352c437b9526382fc127298bf4d4a0defd3142c3c1849",
+      "bytes": 2111
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/prepare-native-campaigns-and-949.author.mts",
+      "sha256": "sha256:059bf3700d79d33b1bb243f6336013bc97a9ed3588594f5ab83c149403a2df21",
+      "bytes": 9531
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/protected-Math-Physics-and-current-Bio-registry-bindings.author.json",
+      "sha256": "sha256:1d9d1f155ffa1142e4c0dbbd834d9770c7cad23b3a4b5d2f718e99bc747734ac",
+      "bytes": 24627
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/protected74-planned-exact-whole-goal-page-context-image-AM-fingerprints.author.json",
+      "sha256": "sha256:8707676df0a5e3fb176185171547af5f123a76faf3413254e997a463c95aeb1d",
+      "bytes": 117345
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/sealed-stage03-inputs-and-payloads.actual-verification.author.json",
+      "sha256": "sha256:2a4696aa083eea3761354cda13f5a64e77f0983188b17c898ba493eee8b8f174",
+      "bytes": 539
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-d-campaigns-integration-plan-author-20261007-v1/technical-readiness-and-unchanged-main.actual.author.json",
+      "sha256": "sha256:1a455f0e421fb245d46d3d85ed7f54958ae9bccd546db1d5c59aa6b6f1ad3e09",
+      "bytes": 868
+    }
+  ],
+  "stage03Seal": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1/final-native-preparation.author.freeze.json",
+    "sha256": "sha256:8046c51f45013d2fcffbb5da26e55ed2f83dcc0eaca9b02411b950d1298342ec",
+    "bytes": 212194
+  },
+  "stage03PayloadsAndInputsUnchanged": true,
+  "humanApproval": false,
+  "humanTrial": false,
+  "strictGain": 0,
+  "activeWrites": false,
+  "freezeSelfExcluded": true
+}

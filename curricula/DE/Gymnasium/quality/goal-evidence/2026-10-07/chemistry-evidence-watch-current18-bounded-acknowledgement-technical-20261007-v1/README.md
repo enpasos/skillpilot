@@ -1,0 +1,3 @@
+# Bounded Chemistry evidence-watch acknowledgement
+
+Technical follow-up over the independently reviewed Chemistry 18 integration. Exactly two existing watch records advance after old hashes matched immutable pre-integration snapshots and current bytes matched the guarded reviewed plan. All other 144 complete baseline records are retained. Canonical normalized differences affect only three reviewed goals; Bavaria appends two bounded direct child mappings and changes only their two decision records. No canonical/source review/QA file was changed by this follow-up, no scientific completion or human gate is claimed, and the watch policy remains unchanged. The full unchanged native watch command completed locally with Exit 0.

@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-in-flight-ledger.schema.json",
+  "title": "SkillPilot goal-description rollout in-flight ledger",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "ledgerContract",
+    "activeBatchConfigPaths"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-in-flight-ledger.schema.json"
+    },
+    "schemaVersion": { "const": 1 },
+    "ledgerContract": { "const": "goal-description-rollout-in-flight-ledger-v1" },
+    "activeBatchConfigPaths": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/repoPath" }
+    }
+  },
+  "$defs": {
+    "repoPath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+    }
+  }
+}

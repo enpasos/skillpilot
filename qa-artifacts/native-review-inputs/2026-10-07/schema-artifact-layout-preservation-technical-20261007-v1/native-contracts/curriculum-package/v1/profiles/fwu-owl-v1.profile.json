@@ -1,0 +1,710 @@
+{
+  "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-profile.schema.json",
+  "profileFormatVersion": 1,
+  "profileId": "fwu-owl-v1",
+  "profileVersion": "1.0.0",
+  "description": "Self-contained Core-first FWU-OWL curriculum package with positioned RDF, hashed binary sidecars, offline trust, and deterministic ZIP32 construction.",
+  "compatibility": {
+    "packageFormatVersion": "1.0",
+    "variant": "fwu-owl",
+    "manifestSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-manifest.schema.json",
+    "validationReportSchemaId": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-validation-report.schema.json"
+  },
+  "inventoryPolicy": {
+    "pathBase": "archive-root-relative",
+    "allowUnknownRoles": false,
+    "requireExactFileSet": true,
+    "excludedPaths": [
+      "metadata/manifest.json",
+      "metadata/SHA256SUMS"
+    ]
+  },
+  "archiveLimits": {
+    "outerZipBytes": 3500000000,
+    "entryCount": 60000,
+    "genericEntryBytes": 1000000000,
+    "rdfSegmentBytes": 536870912,
+    "rdfBundleBytes": 1000000000,
+    "binaryResourceBytes": 67108864,
+    "binaryLaneBytes": 3000000000,
+    "totalUncompressedBytes": 8000000000,
+    "archivePathBytes": 240,
+    "jsonEntryBytes": 67108864,
+    "jsonMaxDepth": 128,
+    "jsonMaxNodes": 5000000
+  },
+  "manifestLimits": {
+    "manifestBytes": 67108864,
+    "fileRecords": 59998,
+    "licenseDocuments": 1024
+  },
+  "jsonPolicy": {
+    "encoding": "UTF-8",
+    "duplicateObjectKeys": "reject",
+    "nonFiniteNumbers": "reject",
+    "invalidUnicode": "reject-unpaired-surrogates-controls-u+fffe-u+ffff",
+    "depthLimitSource": "archiveLimits.jsonMaxDepth",
+    "nodeLimitSource": "archiveLimits.jsonMaxNodes",
+    "entryByteLimitSource": "archiveLimits.jsonEntryBytes"
+  },
+  "checksumPolicy": {
+    "path": "metadata/SHA256SUMS",
+    "format": "lowercase-sha256-two-spaces-root-relative-path-lf-v1",
+    "entryOrder": "unicode-code-point-path-order",
+    "coverage": "every-other-archive-entry-including-manifest",
+    "selfEntryAllowed": false,
+    "finalNewline": true
+  },
+  "securityPolicy": {
+    "regularFilesOnly": true,
+    "symlinksAllowed": false,
+    "directoriesAllowed": false,
+    "duplicatePathsAllowed": false,
+    "caseFoldCollisionsAllowed": false,
+    "unicodeNormalizationCollisionsAllowed": false,
+    "absolutePathsAllowed": false,
+    "parentTraversalAllowed": false,
+    "backslashesAllowed": false,
+    "nestedArchivesAllowed": false,
+    "zip64Allowed": false,
+    "dataDescriptorsAllowed": false,
+    "encryptedEntriesAllowed": false,
+    "archiveCommentsAllowed": false,
+    "entryCommentsAllowed": false,
+    "extraFieldsAllowed": false,
+    "localCentralHeaderMismatchAllowed": false,
+    "overlappingEntriesAllowed": false,
+    "trailingBytesAllowed": false,
+    "multiDiskAllowed": false,
+    "fileDirectoryPrefixCollisionsAllowed": false,
+    "reservedPortablePathsAllowed": false,
+    "trailingDotOrSpaceSegmentsAllowed": false
+  },
+  "rdfPolicy": {
+    "segmentSyntax": "application/n-triples",
+    "segmentOrder": [
+      "declarations",
+      "runtime",
+      "landscape",
+      "views",
+      "mappings",
+      "sources",
+      "cards",
+      "assets"
+    ],
+    "bundlePath": "rdf/bundle.nt",
+    "bundleConstruction": "ordered-rdf-segment-byte-concatenation-v1",
+    "fileOrderCarriesSemantics": false,
+    "positionsRequiredForOrderedFields": true,
+    "bundleContributesSeparatelyToContentDigest": false
+  },
+  "declarationPolicy": {
+    "segmentId": "declarations",
+    "vocabularySources": [
+      "fieldSemanticsRegistry",
+      "applicationOntologyProfile"
+    ],
+    "requireEveryUsedApplicationTermDeclared": true,
+    "fieldSemanticsRegistryVocabulary": {
+      "classSources": ["membershipClass", "resourceClass", "recordClass"],
+      "objectPropertySources": ["iri-object-predicates", "owner-predicates", "value-predicates-with-iri-object"],
+      "datatypePropertySources": ["typed-literal-predicates", "language-literal-predicates", "canonical-json-literal-predicates"],
+      "expectedClassCount": 66,
+      "expectedObjectPropertyCount": 108,
+      "expectedDatatypePropertyCount": 313,
+      "expectedTermCount": 487
+    },
+    "applicationOntologyVocabulary": {
+      "sourceBinding": "applicationProfilePolicy",
+      "verification": "exact-explicit-lists-equal-pinned-ontology-rdf-type-declarations",
+      "classes": [
+        "https://skillpilot.de/ns/roundtrip#ActiveCardDecisionEvidence",
+        "https://skillpilot.de/ns/roundtrip#AssessmentData",
+        "https://skillpilot.de/ns/roundtrip#BinaryResource",
+        "https://skillpilot.de/ns/roundtrip#Card",
+        "https://skillpilot.de/ns/roundtrip#CardDeck",
+        "https://skillpilot.de/ns/roundtrip#CardMembership",
+        "https://skillpilot.de/ns/roundtrip#CompositionNode",
+        "https://skillpilot.de/ns/roundtrip#CompositionView",
+        "https://skillpilot.de/ns/roundtrip#ContainsMembership",
+        "https://skillpilot.de/ns/roundtrip#GoalMembership",
+        "https://skillpilot.de/ns/roundtrip#GoalPlacement",
+        "https://skillpilot.de/ns/roundtrip#GoalVisualizationDecisionEvidence",
+        "https://skillpilot.de/ns/roundtrip#GoalVisualizationEvidence",
+        "https://skillpilot.de/ns/roundtrip#LearningGoal",
+        "https://skillpilot.de/ns/roundtrip#MappingCollection",
+        "https://skillpilot.de/ns/roundtrip#MemoryCardEvidence",
+        "https://skillpilot.de/ns/roundtrip#MemoryGoal",
+        "https://skillpilot.de/ns/roundtrip#MemoryGoalDecisionEvidence",
+        "https://skillpilot.de/ns/roundtrip#OfficialSourceCollection",
+        "https://skillpilot.de/ns/roundtrip#OfficialSourceDocument",
+        "https://skillpilot.de/ns/roundtrip#OrientationGoal",
+        "https://skillpilot.de/ns/roundtrip#PositionedMembership",
+        "https://skillpilot.de/ns/roundtrip#PracticeAssessmentGoal",
+        "https://skillpilot.de/ns/roundtrip#ProgramStructureGoal",
+        "https://skillpilot.de/ns/roundtrip#ProgramUnit",
+        "https://skillpilot.de/ns/roundtrip#QualityEvidence",
+        "https://skillpilot.de/ns/roundtrip#RequiresMembership",
+        "https://skillpilot.de/ns/roundtrip#Resource",
+        "https://skillpilot.de/ns/roundtrip#ResourceLink",
+        "https://skillpilot.de/ns/roundtrip#RuntimeSupportGoal",
+        "https://skillpilot.de/ns/roundtrip#ScoringStep",
+        "https://skillpilot.de/ns/roundtrip#SemanticAtomicityDecisionEvidence",
+        "https://skillpilot.de/ns/roundtrip#SemanticAtomicityEvidence",
+        "https://skillpilot.de/ns/roundtrip#SkillLandscape",
+        "https://skillpilot.de/ns/roundtrip#SkillPilotPackage",
+        "https://skillpilot.de/ns/roundtrip#SourceGoalClassification",
+        "https://skillpilot.de/ns/roundtrip#SourceGoalCollection",
+        "https://skillpilot.de/ns/roundtrip#SourceGoalLineage",
+        "https://skillpilot.de/ns/roundtrip#SourceLocator"
+      ],
+      "objectProperties": [
+        "https://skillpilot.de/ns/roundtrip#cardValue",
+        "https://skillpilot.de/ns/roundtrip#compositionGoal",
+        "https://skillpilot.de/ns/roundtrip#containsGoal",
+        "https://skillpilot.de/ns/roundtrip#hasCard",
+        "https://skillpilot.de/ns/roundtrip#hasCompositionChild",
+        "https://skillpilot.de/ns/roundtrip#hasContainsMembership",
+        "https://skillpilot.de/ns/roundtrip#hasGoalMembership",
+        "https://skillpilot.de/ns/roundtrip#hasOfficialSourceDocument",
+        "https://skillpilot.de/ns/roundtrip#hasRequiresMembership",
+        "https://skillpilot.de/ns/roundtrip#hasResourceLink",
+        "https://skillpilot.de/ns/roundtrip#hasScoringStep",
+        "https://skillpilot.de/ns/roundtrip#hasSourceGoal",
+        "https://skillpilot.de/ns/roundtrip#membershipGoal",
+        "https://skillpilot.de/ns/roundtrip#referencesResource",
+        "https://skillpilot.de/ns/roundtrip#requiredGoal",
+        "https://skillpilot.de/ns/roundtrip#stepValue"
+      ],
+      "datatypeProperties": [
+        "https://skillpilot.de/ns/roundtrip#byteLength",
+        "https://skillpilot.de/ns/roundtrip#fieldState",
+        "https://skillpilot.de/ns/roundtrip#goalSemanticKind",
+        "https://skillpilot.de/ns/roundtrip#mediaType",
+        "https://skillpilot.de/ns/roundtrip#order",
+        "https://skillpilot.de/ns/roundtrip#publicReference",
+        "https://skillpilot.de/ns/roundtrip#referenceRole",
+        "https://skillpilot.de/ns/roundtrip#resourceId",
+        "https://skillpilot.de/ns/roundtrip#sha256",
+        "https://skillpilot.de/ns/roundtrip#skillpilotId"
+      ],
+      "expectedClassCount": 39,
+      "expectedObjectPropertyCount": 16,
+      "expectedDatatypePropertyCount": 10,
+      "expectedTermCount": 65
+    },
+    "applicationVocabularyUnion": {
+      "sameKindDuplicatesDeduplicated": true,
+      "crossKindPunningAllowed": false,
+      "expectedClassCount": 84,
+      "expectedObjectPropertyCount": 108,
+      "expectedDatatypePropertyCount": 320,
+      "expectedTermCount": 512
+    },
+    "parserBootstrapProperties": {
+      "purpose": "declare-non-application-predicates-before-standalone-rdf-to-owl-parsing",
+      "verification": "exact-property-kinds-verified-against-pinned-core-or-fixed-external-vocabulary",
+      "objectProperties": [
+        "http://purl.obolibrary.org/obo/BFO_0000051",
+        "https://w3id.org/lehrplan/ontology/LP_0000024",
+        "https://w3id.org/lehrplan/ontology/LP_0000026",
+        "https://w3id.org/lehrplan/ontology/LP_0000041",
+        "https://w3id.org/lehrplan/ontology/LP_0000047",
+        "https://w3id.org/lehrplan/ontology/LP_0000537",
+        "https://w3id.org/lehrplan/ontology/LP_0000812",
+        "https://w3id.org/lehrplan/ontology/LP_0030051",
+        "https://w3id.org/lehrplan/ontology/LP_0030056",
+        "https://w3id.org/lehrplan/ontology/LP_0030057",
+        "https://w3id.org/lehrplan/ontology/LP_0030071",
+        "https://w3id.org/lehrplan/ontology/LP_0030072"
+      ],
+      "datatypeProperties": [
+        "https://schema.org/contentUrl",
+        "https://w3id.org/lehrplan/ontology/LP_0000344",
+        "https://w3id.org/lehrplan/ontology/LP_0000460",
+        "https://w3id.org/lehrplan/ontology/LP_0000463"
+      ],
+      "expectedPropertyCount": 16
+    },
+    "expectedDeclarationTripleCount": 528,
+    "undeclaredEntitiesAllowed": false,
+    "objectDataPropertyPunningAllowed": false,
+    "wholePackageJsonCarrierVocabularyAllowed": false
+  },
+  "coreProjectionPolicy": {
+    "curricularAtomicClass": "https://w3id.org/lehrplan/ontology/LP_0000336",
+    "curricularAreaClass": "https://w3id.org/lehrplan/ontology/LP_0000349",
+    "areaParentPredicate": "http://purl.obolibrary.org/obo/BFO_0000051",
+    "atomicAreaParentRequired": true,
+    "unscopedAtomicAreaPolicy": {
+      "strategy": "single-generated-subject-area",
+      "iriTemplate": "{landscapeIri}/core-projection/unscoped-curricular-area",
+      "areaClass": "https://w3id.org/lehrplan/ontology/LP_0000349",
+      "edgePredicate": "http://purl.obolibrary.org/obo/BFO_0000051",
+      "selection": "curricularAtomic-without-direct-authored-curricularArea-parent",
+      "emitWhenEmpty": false,
+      "authoritativeForReverse": false
+    },
+    "titleOwnerPredicate": "https://w3id.org/lehrplan/ontology/LP_0030056",
+    "additionalTitleOwnerPredicate": "https://w3id.org/lehrplan/ontology/LP_0000024",
+    "titleResourceClass": "https://w3id.org/lehrplan/ontology/LP_0000346",
+    "additionalTitleProjectionAuthoritativeForReverse": false,
+    "prerequisiteClass": "https://w3id.org/lehrplan/ontology/LP_0000554",
+    "referenceSourcePredicate": "https://w3id.org/lehrplan/ontology/LP_0030071",
+    "referenceTargetPredicate": "https://w3id.org/lehrplan/ontology/LP_0030072",
+    "positionedCarrierReuseForCoreReferences": true,
+    "assertedReferenceAlignmentRequired": true,
+    "reasonedCoreEdgesAuthoritativeForReverse": false
+  },
+  "coreBindingPolicy": {
+    "canonicalOntologyIri": "https://w3id.org/lehrplan/ontology/lp/components/lehrplan-core.owl",
+    "sourceRepository": "https://github.com/FWU-DE/lehrplan-ontologie.git",
+    "sourceCommit": "8aa5bce4a5366807d46f18650e31db98f9bfe35d",
+    "sourcePath": "src/ontology/components/lehrplan-core.owl",
+    "bundledPath": "ontology/lehrplan-core.owl",
+    "catalogPath": "catalog-v001.xml",
+    "catalogSourcePath": "contracts/curriculum-package/v1/ontology/fwu-owl-catalog-v001.xml",
+    "catalogMediaType": "application/xml",
+    "catalogBytes": 228,
+    "catalogSha256": "d81fe5d836bd5f3081f7ba9136e68a702f8c751c4dca26a626cdaa5d841284b8",
+    "catalogResolutionPolicy": "exact-local-core-uri-only-no-dtd-entities-delegates-rewrites-or-next-catalog",
+    "mediaType": "text/owl-functional",
+    "syntax": "owl-functional",
+    "bytes": 195917,
+    "sha256": "267838b2dd9625d84b57039028004c4d9fa3edf623336f47d3a922189d4230df",
+    "requireCommit": true,
+    "requireSourcePath": true,
+    "requireByteHash": true,
+    "remoteResolutionAllowed": false
+  },
+  "applicationProfilePolicy": {
+    "ontologyIri": "https://skillpilot.com/ontology/curriculum-package/v1/skillpilot-fwu-profile.owl",
+    "versionIri": "https://skillpilot.com/ontology/curriculum-package/v1/skillpilot-fwu-profile-1.0.0.owl",
+    "version": "1.0.0",
+    "requiredImports": [
+      "https://w3id.org/lehrplan/ontology/lp/components/lehrplan-core.owl"
+    ],
+    "sourcePath": "contracts/curriculum-package/v1/ontology/skillpilot-fwu-profile-1.0.0.ttl",
+    "packagePath": "skillpilot-curriculum-profile.ttl",
+    "mediaType": "text/turtle",
+    "bytes": 5421,
+    "sha256": "c42cd5a9698b438c6cb7c1cb4fba02da46fea70c247be75f2f6d57f126c994c6"
+  },
+  "shapesPolicy": {
+    "shapesIri": "https://skillpilot.com/shapes/curriculum-package/v1/fwu-owl",
+    "versionIri": "https://skillpilot.com/shapes/curriculum-package/v1/fwu-owl-1.0.0",
+    "version": "1.0.0",
+    "sourcePath": "contracts/curriculum-package/v1/ontology/skillpilot-fwu-shapes-1.0.0.ttl",
+    "packagePath": "ontology/shapes.ttl",
+    "mediaType": "text/turtle",
+    "bytes": 6187,
+    "sha256": "cd139efa68fc1f127529b271f8cd69b759f214196e674c3ab6e3120cbfda6b15",
+    "inference": "none",
+    "executableConstraintsAllowed": false,
+    "warningPolicy": "fail"
+  },
+  "schemaCatalogPolicy": {
+    "path": "schemas/catalog.json",
+    "schemaId": "https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json",
+    "dialect": "https://json-schema.org/draft/2020-12/schema",
+    "requiredSchemaIds": [
+      "https://skillpilot.com/schemas/curriculum-package/v1/card-deck.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/card-index.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/compiled-landscape.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/composition-view-index.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/composition-view.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/curriculum-ontology-profile.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/definition-digest-profile.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/dependency-closure.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/embedded-goal-dependency.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/field-semantics-registry.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-manifest.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-profile.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-validation-report.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/migration-aliases.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/official-source-index.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/publication-evidence-projection.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/release-quality-evidence.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/resource-index.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/semantic-content-index.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/semantic-normalization-profile.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/source-goal-reference-index.schema.json",
+      "https://skillpilot.com/schemas/curriculum-package/v1/source-to-canonical-mappings.schema.json"
+    ],
+    "construction": "canonical-json-by-id-from-bootstrap-and-trusted-json-release-profile-v1",
+    "bootstrapBindingNames": [
+      "manifestSchema",
+      "packageProfileSchema",
+      "validationReportSchema",
+      "schemaCatalogSchema",
+      "semanticContentIndexSchema",
+      "definitionDigestProfileSchema"
+    ],
+    "expectedEntryCount": 25,
+    "remoteResolutionAllowed": false,
+    "unknownSchemaIdsAllowed": false,
+    "duplicateSchemaIdsAllowed": false,
+    "duplicateSchemaPathsAllowed": false,
+    "requireExactFileHashBindings": true
+  },
+  "contractPolicy": {
+    "requiredBindings": [
+      "manifestSchema",
+      "packageProfileSchema",
+      "validationReportSchema",
+      "schemaCatalogSchema",
+      "semanticContentIndexSchema",
+      "definitionDigestProfileSchema",
+      "packageProfile",
+      "semanticNormalForm",
+      "fieldSemanticsRegistry",
+      "definitionDigestProfile",
+      "curriculumOntologyProfile",
+      "publicationEvidenceProfile"
+    ],
+    "trustedBootstrapSchemas": [
+      {
+        "bindingName": "manifestSchema",
+        "id": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-manifest.schema.json",
+        "sourcePath": "contracts/curriculum-package/v1/fwu-owl-package-manifest.schema.json",
+        "packagePath": "schemas/fwu-owl-package-manifest.schema.json",
+        "bytes": 28976,
+        "sha256": "cd5d60df721ed0837ba43ad0c772857a2209b6e47d82c166046a17d6fbb925d3"
+      },
+      {
+        "bindingName": "packageProfileSchema",
+        "id": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-profile.schema.json",
+        "sourcePath": "contracts/curriculum-package/v1/fwu-owl-package-profile.schema.json",
+        "packagePath": "schemas/fwu-owl-package-profile.schema.json",
+        "bytes": 43596,
+        "sha256": "3caf8c4af4c3af510e873df9c0621c9587db98d497373d1c8de7de68d4338814"
+      },
+      {
+        "bindingName": "validationReportSchema",
+        "id": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-package-validation-report.schema.json",
+        "sourcePath": "contracts/curriculum-package/v1/fwu-owl-package-validation-report.schema.json",
+        "packagePath": "schemas/fwu-owl-package-validation-report.schema.json",
+        "bytes": 27385,
+        "sha256": "8e2e7d4d88eb1b0233fe2de068794be022e5468d75f9611f9cbbc3efca04616a"
+      },
+      {
+        "bindingName": "schemaCatalogSchema",
+        "id": "https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json",
+        "sourcePath": "contracts/curriculum-package/v1/schema-catalog.schema.json",
+        "packagePath": "schemas/schema-catalog.schema.json",
+        "bytes": 2043,
+        "sha256": "ee77dfe2025c2c0da1a309ecc63d6ce5c688d5dc5534c7949ea3df68240b54e0"
+      },
+      {
+        "bindingName": "semanticContentIndexSchema",
+        "id": "https://skillpilot.com/schemas/curriculum-package/v1/semantic-content-index.schema.json",
+        "sourcePath": "contracts/curriculum-package/v1/semantic-content-index.schema.json",
+        "packagePath": "schemas/semantic-content-index.schema.json",
+        "bytes": 4278,
+        "sha256": "e36cb098d5342335231cfee716e6e45afe333e66ad21c96275d26d337e473b49"
+      },
+      {
+        "bindingName": "definitionDigestProfileSchema",
+        "id": "https://skillpilot.com/schemas/curriculum-package/v1/definition-digest-profile.schema.json",
+        "sourcePath": "contracts/curriculum-package/v1/definition-digest-profile.schema.json",
+        "packagePath": "schemas/definition-digest-profile.schema.json",
+        "bytes": 5674,
+        "sha256": "65a941810f78ae7144167a5e56fd898310d4f9619284c08631e3fab8cf59f37b"
+      }
+    ],
+    "trustedGlobalContracts": [
+      {
+        "bindingName": "semanticNormalForm",
+        "id": "semantic-normal-form-v1",
+        "sourcePath": "contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json",
+        "packagePath": "contracts/semantic-normal-form-v1.profile.json",
+        "bytes": 3877,
+        "sha256": "22e48f2dea55fbc3d6b39fc196c31258ab1559ef6751df4882f43318eadd48ca"
+      },
+      {
+        "bindingName": "fieldSemanticsRegistry",
+        "id": "skillpilot-fwu-field-semantics-v1",
+        "sourcePath": "contracts/curriculum-package/v1/profiles/skillpilot-fwu-field-semantics-v1.registry.json",
+        "packagePath": "contracts/skillpilot-fwu-field-semantics-v1.registry.json",
+        "bytes": 723250,
+        "sha256": "d19497f0b18b0c7733dcaf6f5dc63590352814c2d764c858b333751b5af25e9d"
+      },
+      {
+        "bindingName": "definitionDigestProfile",
+        "id": "canonical-definition-record-v1",
+        "sourcePath": "contracts/curriculum-package/v1/profiles/canonical-definition-record-v1.profile.json",
+        "packagePath": "contracts/canonical-definition-record-v1.profile.json",
+        "bytes": 2222,
+        "sha256": "81af3801965ae571d495709e059219eb22d15cd06db189bcb9ec8b73c5c5254d"
+      }
+    ],
+    "offlineResolutionOnly": true,
+    "packageControlledTrustRootAllowed": false,
+    "unknownFieldMappingAllowed": false,
+    "wholePackageJsonCarrierAllowed": false
+  },
+  "sourceJsonBindingPolicy": {
+    "sourcePackageRequiredForValidation": true,
+    "validationMode": "independent-full-standalone-v1",
+    "packageLocalFallbackAllowed": false,
+    "remoteResolutionAllowed": false,
+    "compareIdentityFields": [
+      "file",
+      "bytes",
+      "sha256",
+      "manifestSha256",
+      "releaseId",
+      "curriculumEdition",
+      "contentDigest",
+      "runtimeContractVersion",
+      "releaseProfileBinding",
+      "supportedSkillpilotSoftware"
+    ],
+    "compareContractBindings": [
+      "semanticNormalForm",
+      "fieldSemanticsRegistry",
+      "definitionDigestProfile",
+      "curriculumOntologyProfile",
+      "publicationEvidenceProfile"
+    ],
+    "compareBindingFields": [
+      "id",
+      "path",
+      "sha256"
+    ]
+  },
+  "semanticContentPolicy": {
+    "indexPath": "metadata/semantic-content-index.json",
+    "indexContributesSeparatelyToContentDigest": false,
+    "requireLogicalArtifactInventory": true,
+    "requireBinaryResourceInventory": true,
+    "requireDigestRecomputation": true,
+    "requireCompleteRegistryCoverage": true
+  },
+  "releaseSupportPolicy": {
+    "jsonContractSchemaCount": 22,
+    "requiredSingletonTypes": [
+      "json-release-profile",
+      "redistribution-review",
+      "source-verification-review",
+      "source-verification-status"
+    ],
+    "assessmentSourceMinimum": 0,
+    "assessmentSourceMaximum": 1000,
+    "logicalJsonPayloadsAllowed": false,
+    "targetPathsUnique": true,
+    "trustedJsonReleaseProfile": {
+      "id": "full-standalone-v1",
+      "sourcePath": "contracts/curriculum-package/v1/profiles/full-standalone-v1.profile.json",
+      "targetPath": "schemas/profiles/full-standalone-v1.profile.json",
+      "packagePath": "support/json/schemas/profiles/full-standalone-v1.profile.json",
+      "mediaType": "application/json",
+      "bytes": 16926,
+      "sha256": "00aaa154e43ea6440a745b53fdd089ae20a2eb89b4208016335fcb784ec2066c",
+      "schemaTrustField": "trustedContractSchemas",
+      "trustedSchemaCount": 22
+    }
+  },
+  "resourceCapabilities": {
+    "embeddedBinaryMediaTypes": [
+      "image/jpeg",
+      "image/png"
+    ],
+    "binaryEncoding": "sidecar",
+    "requireResourceIdentity": true,
+    "requirePublicReference": true,
+    "requireByteHash": true
+  },
+  "roles": [
+    {
+      "role": "rdf-segment",
+      "minimum": 8,
+      "maximum": 8,
+      "mediaTypes": [
+        "application/n-triples"
+      ],
+      "semanticBindingKinds": [
+        "normative-rdf-segment"
+      ]
+    },
+    {
+      "role": "rdf-bundle",
+      "minimum": 1,
+      "maximum": 1,
+      "mediaTypes": [
+        "application/n-triples"
+      ],
+      "semanticBindingKinds": [
+        "generated-rdf-bundle"
+      ]
+    },
+    {
+      "role": "package-profile",
+      "minimum": 1,
+      "maximum": 1,
+      "mediaTypes": [
+        "application/json"
+      ],
+      "semanticBindingKinds": [
+        "contract"
+      ]
+    },
+    {
+      "role": "contract-schema",
+      "minimum": 6,
+      "maximum": 6,
+      "mediaTypes": [
+        "application/schema+json"
+      ],
+      "semanticBindingKinds": [
+        "contract"
+      ]
+    },
+    {
+      "role": "schema-catalog",
+      "minimum": 1,
+      "maximum": 1,
+      "mediaTypes": [
+        "application/json"
+      ],
+      "semanticBindingKinds": [
+        "schema-catalog"
+      ]
+    },
+    {
+      "role": "contract",
+      "minimum": 5,
+      "maximum": 5,
+      "mediaTypes": [
+        "application/json"
+      ],
+      "semanticBindingKinds": [
+        "contract"
+      ]
+    },
+    {
+      "role": "semantic-content-index",
+      "minimum": 1,
+      "maximum": 1,
+      "mediaTypes": [
+        "application/json"
+      ],
+      "semanticBindingKinds": [
+        "semantic-content-index"
+      ]
+    },
+    {
+      "role": "ontology-core",
+      "minimum": 1,
+      "maximum": 1,
+      "mediaTypes": [
+        "text/owl-functional"
+      ],
+      "semanticBindingKinds": [
+        "ontology-core"
+      ]
+    },
+    {
+      "role": "ontology-profile",
+      "minimum": 1,
+      "maximum": 1,
+      "mediaTypes": [
+        "text/turtle"
+      ],
+      "semanticBindingKinds": [
+        "ontology-profile"
+      ]
+    },
+    {
+      "role": "ontology-shapes",
+      "minimum": 1,
+      "maximum": 1,
+      "mediaTypes": [
+        "text/turtle"
+      ],
+      "semanticBindingKinds": [
+        "ontology-shapes"
+      ]
+    },
+    {
+      "role": "ontology-catalog",
+      "minimum": 1,
+      "maximum": 1,
+      "mediaTypes": [
+        "application/xml"
+      ],
+      "semanticBindingKinds": [
+        "ontology-catalog"
+      ]
+    },
+    {
+      "role": "binary-resource",
+      "minimum": 0,
+      "maximum": 50000,
+      "mediaTypes": [
+        "image/jpeg",
+        "image/png"
+      ],
+      "semanticBindingKinds": [
+        "binary-resource"
+      ]
+    },
+    {
+      "role": "release-support",
+      "minimum": 26,
+      "maximum": 1026,
+      "mediaTypes": [
+        "application/json",
+        "application/schema+json",
+        "text/markdown"
+      ],
+      "semanticBindingKinds": [
+        "release-support"
+      ]
+    },
+    {
+      "role": "license",
+      "minimum": 1,
+      "maximum": 1024,
+      "mediaTypes": [
+        "text/plain"
+      ],
+      "semanticBindingKinds": [
+        "license"
+      ]
+    }
+  ],
+  "validationGates": [
+    "archive-security",
+    "manifest-schema",
+    "profile-contract",
+    "inventory",
+    "contract-bindings",
+    "offline-schema-catalog",
+    "semantic-content-index",
+    "field-registry-coverage",
+    "rdf-syntax",
+    "rdf-segment-order",
+    "rdf-bundle",
+    "core-binding",
+    "ontology-profile",
+    "shacl",
+    "owl2-dl",
+    "reasoner",
+    "binary-sidecars",
+    "reproducibility"
+  ],
+  "reproducibility": {
+    "zipFormat": "zip32",
+    "compression": "store",
+    "entryOrder": "unicode-code-point-path-order",
+    "timestampPolicy": "source-date-epoch-utc-clamped-to-zip32",
+    "locale": "C.UTF-8",
+    "timezone": "UTC",
+    "unixMode": "0644",
+    "doubleBuildRequired": true
+  }
+}

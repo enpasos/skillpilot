@@ -1,0 +1,3 @@
+# Independent targeted Chemistry P binding review
+
+Review the frozen author-v2 whole bilingual goals, complete material/task/reference-response/boundary cases, exact current native pages, source and context routes, and retained positive-understanding-evidence-v2 bodies. Keep unchanged valid scientific decisions; independently assess the changed bindings and actual supplied material limits. Record any concrete unsupported reference inference in dissent. Remain blind to current other reviewers' outputs. All records remain ai_candidate, needs_human_review, E1/G1. No actual learner work, source-superset completion, visualization publication approval, human approval/trial, active writes or strict gain is claimed.

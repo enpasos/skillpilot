@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/goal-evidence/v1/goal-public-feedback.schema.json",
+  "title": "SkillPilot public learning-goal feedback envelope v1",
+  "description": "Version-bound, privacy-minimized public feedback for one published learning-goal page. It is intake evidence only and cannot mutate canonical state.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "context",
+    "feedback",
+    "privacyAcknowledged"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/goal-evidence/v1/goal-public-feedback.schema.json"
+    },
+    "schemaVersion": { "const": 1 },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "goalId",
+        "goalFingerprint",
+        "pageFingerprint",
+        "bookId",
+        "bookEdition",
+        "bookDigest",
+        "locale",
+        "scopeLabel",
+        "pageNumber",
+        "canonicalUrl",
+        "publicationManifestFingerprint"
+      ],
+      "properties": {
+        "goalId": { "$ref": "#/$defs/stableId" },
+        "goalFingerprint": { "$ref": "#/$defs/digest" },
+        "pageFingerprint": { "$ref": "#/$defs/digest" },
+        "bookId": { "$ref": "#/$defs/stableId" },
+        "bookEdition": { "$ref": "#/$defs/stableId" },
+        "bookDigest": { "$ref": "#/$defs/digest" },
+        "locale": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 35,
+          "pattern": "^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$"
+        },
+        "scopeLabel": { "$ref": "#/$defs/shortText" },
+        "pageNumber": { "type": "integer", "minimum": 1 },
+        "canonicalUrl": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://"
+        },
+        "publicationManifestFingerprint": { "$ref": "#/$defs/digest" }
+      }
+    },
+    "feedback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "category",
+        "observation",
+        "observableEvidence",
+        "alternativeExplanation",
+        "cueFreeConcern",
+        "missingInformation",
+        "maximumClaimScope"
+      ],
+      "properties": {
+        "category": {
+          "enum": [
+            "missing_facet",
+            "bad_criterion",
+            "misconception",
+            "age_fit",
+            "language",
+            "sequencing",
+            "visual_cue",
+            "factual_error",
+            "accessibility",
+            "other"
+          ]
+        },
+        "observation": { "$ref": "#/$defs/longText" },
+        "observableEvidence": { "$ref": "#/$defs/longText" },
+        "alternativeExplanation": { "$ref": "#/$defs/longText" },
+        "cueFreeConcern": { "$ref": "#/$defs/longText" },
+        "missingInformation": { "$ref": "#/$defs/longText" },
+        "maximumClaimScope": { "enum": ["G0", "G1", "G2", "G3", "G4"] },
+        "reviewerRole": {
+          "enum": ["teacher", "learner", "parent", "researcher", "subject_expert", "other"]
+        }
+      }
+    },
+    "privacyAcknowledged": { "const": true }
+  },
+  "$defs": {
+    "stableId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "shortText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "longText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    }
+  }
+}

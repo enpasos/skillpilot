@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-config.schema.json",
+  "title": "SkillPilot standalone goal-description rollout batch configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schemaVersion",
+    "batchId",
+    "subject",
+    "subjectLabel",
+    "bookId",
+    "title",
+    "baseGoalBookConfigPath",
+    "goalIds",
+    "outputDirectory",
+    "feedbackBaseUrl",
+    "promptPath",
+    "criteriaPath"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-config.schema.json"
+    },
+    "schemaVersion": { "const": 1 },
+    "batchId": { "$ref": "#/$defs/stableId" },
+    "subject": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*$"
+    },
+    "subjectLabel": { "$ref": "#/$defs/nonBlank" },
+    "bookId": { "$ref": "#/$defs/stableId" },
+    "title": { "$ref": "#/$defs/nonBlank" },
+    "baseGoalBookConfigPath": { "$ref": "#/$defs/repoPath" },
+    "goalIds": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/stableId" }
+    },
+    "outputDirectory": { "$ref": "#/$defs/repoPath" },
+    "feedbackBaseUrl": {
+      "type": "string",
+      "pattern": "^https://"
+    },
+    "promptPath": { "$ref": "#/$defs/repoPath" },
+    "criteriaPath": { "$ref": "#/$defs/repoPath" },
+    "publicRoot": { "$ref": "#/$defs/repoPath" },
+    "printDerivativeProfile": {
+      "enum": ["standard", "bounded-atlas"]
+    }
+  },
+  "$defs": {
+    "nonBlank": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "stableId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "repoPath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.(?:/|$)).+$"
+    }
+  }
+}

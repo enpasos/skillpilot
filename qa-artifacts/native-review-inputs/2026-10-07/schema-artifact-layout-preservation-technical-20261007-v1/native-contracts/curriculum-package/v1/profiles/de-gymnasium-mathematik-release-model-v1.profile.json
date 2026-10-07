@@ -1,0 +1,129 @@
+{
+  "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/release-model-build-profile.schema.json",
+  "profileFormatVersion": 1,
+  "profileId": "de-gymnasium-mathematik-release-model-v1",
+  "profileVersion": "1.1.1",
+  "package": {
+    "packageId": "org.skillpilot.curriculum.de.gymnasium.mathematik",
+    "packageVersion": "0.1.0-conformance.3",
+    "releaseId": "org.skillpilot.curriculum.de.gymnasium.mathematik@0.1.0-conformance.3",
+    "curriculumEdition": "DE-Gymnasium-2026-07",
+    "subject": "Mathematik",
+    "locale": "de-DE"
+  },
+  "contracts": {
+    "runtimeContractVersion": "1.0",
+    "fieldSemanticsRegistryPath": "contracts/curriculum-package/v1/profiles/skillpilot-fwu-field-semantics-v1.registry.json",
+    "normalizationProfilePath": "contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json",
+    "ontologyProfilePath": "contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-v1.profile.json",
+    "ontologyProfileSha256": "0bc52768dc968510cf09ffa7faa904bbe6465eb5071969949521ae5518016968",
+    "ontologyNamespaceBindingsSha256": "3ed52cc1de9780d94aa181acd9a567db52af1c414e332ff59ec69af69ed4295a",
+    "publicationEvidenceProfilePath": "contracts/curriculum-package/v1/profiles/de-gymnasium-mathematik-publication-evidence-v1.profile.json",
+    "publicationEvidenceProfileSha256": "a243f9022d5f53fe6444dd6487d30dcdc174d01c5e6bae15b06cf0de4284a1cc"
+  },
+  "canonicalLandscape": {
+    "sourcePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+    "outputPath": "data/canonical/mathematik.landscape.json",
+    "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+    "rootGoalId": "c01b1ce9-a667-4a46-b251-ec33ae602b15",
+    "semanticKindLedgerPath": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json"
+  },
+  "compositionViews": {
+    "sourceDirectory": "curricula/DE/Gymnasium/composition-views/mathematik",
+    "outputDirectory": "data/views",
+    "locale": "de-DE",
+    "defaultViewId": "de-de-gym-math-gk"
+  },
+  "cardDecks": [
+    {
+      "sourcePath": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_analysis_core.de.json",
+      "outputPath": "data/cards/de_gymnasium_math_flashcards_analysis_core.de.json",
+      "locale": "de-DE"
+    },
+    {
+      "sourcePath": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_analysis_core.en.json",
+      "outputPath": "data/cards/de_gymnasium_math_flashcards_analysis_core.en.json",
+      "locale": "en"
+    },
+    {
+      "sourcePath": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_complex_parameter.de.json",
+      "outputPath": "data/cards/de_gymnasium_math_flashcards_complex_parameter.de.json",
+      "locale": "de-DE"
+    },
+    {
+      "sourcePath": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_complex_parameter.en.json",
+      "outputPath": "data/cards/de_gymnasium_math_flashcards_complex_parameter.en.json",
+      "locale": "en"
+    },
+    {
+      "sourcePath": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_functions_basics.de.json",
+      "outputPath": "data/cards/de_gymnasium_math_flashcards_functions_basics.de.json",
+      "locale": "de-DE"
+    },
+    {
+      "sourcePath": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_functions_basics.en.json",
+      "outputPath": "data/cards/de_gymnasium_math_flashcards_functions_basics.en.json",
+      "locale": "en"
+    },
+    {
+      "sourcePath": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_linalg_core.de.json",
+      "outputPath": "data/cards/de_gymnasium_math_flashcards_linalg_core.de.json",
+      "locale": "de-DE"
+    },
+    {
+      "sourcePath": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_linalg_core.en.json",
+      "outputPath": "data/cards/de_gymnasium_math_flashcards_linalg_core.en.json",
+      "locale": "en"
+    },
+    {
+      "sourcePath": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_seki_core.de.json",
+      "outputPath": "data/cards/de_gymnasium_math_flashcards_seki_core.de.json",
+      "locale": "de-DE"
+    },
+    {
+      "sourcePath": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_seki_core.en.json",
+      "outputPath": "data/cards/de_gymnasium_math_flashcards_seki_core.en.json",
+      "locale": "en"
+    },
+    {
+      "sourcePath": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_stochastics_core.de.json",
+      "outputPath": "data/cards/de_gymnasium_math_flashcards_stochastics_core.de.json",
+      "locale": "de-DE"
+    },
+    {
+      "sourcePath": "curricula/DE/Gymnasium/memory-decks/de_gymnasium_math_flashcards_stochastics_core.en.json",
+      "outputPath": "data/cards/de_gymnasium_math_flashcards_stochastics_core.en.json",
+      "locale": "en"
+    }
+  ],
+  "resources": {
+    "publicAssetRoot": "app/public",
+    "embeddedOutputPrefix": "assets/goal-visualizations",
+    "supportedImageMediaTypes": [
+      "image/jpeg",
+      "image/png"
+    ],
+    "externalToolMediaType": "text/html"
+  },
+  "pathRelocations": {
+    "vocabularySourcePrefix": "/data/",
+    "cardOutputPrefix": "data/cards/",
+    "assessmentSourcePrefix": "curricula/DE/Gymnasium/assessments/mathematik/",
+    "assessmentOutputPrefix": "data/assessment-sources"
+  },
+  "expectedCounts": {
+    "landscapes": 1,
+    "goals": 1252,
+    "programUnits": 14,
+    "goalPlacements": 303,
+    "competencyEntries": 6,
+    "views": 88,
+    "decks": 12,
+    "cards": 128,
+    "resourceLinks": 912,
+    "embeddedImages": 836,
+    "externalResources": 76,
+    "embeddedImageBytes": 1638192987,
+    "externalRuntimeDependencies": 0
+  }
+}

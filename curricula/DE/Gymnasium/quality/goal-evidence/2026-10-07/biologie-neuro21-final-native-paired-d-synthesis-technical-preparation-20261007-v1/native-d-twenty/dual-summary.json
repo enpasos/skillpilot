@@ -1,0 +1,393 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:1b181fd4553488539230ca21d2e03f6ff4c61666bf6bc09a76040439a595455f",
+  "reviewInputFingerprint": "sha256:9806a150781d1b148ff7022bb6a1a9e42092eda4ae676e67f99bf4f09739e2a7",
+  "goalCount": 20,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-neuro21-final-twenty-d-a-20261007",
+      "roundId": "biologie-neuro21-final-twenty-first-pass-a-20261007",
+      "independenceGroupId": "biologie-neuro21-final-native-d-independent-a-20261007",
+      "runIds": [
+        "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex (exact serving model/variant not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-neuro21-final-twenty-d-b-20261007",
+      "roundId": "biologie-neuro21-final-twenty-first-pass-b-20261007",
+      "independenceGroupId": "biologie-neuro21-final-native-d-independent-b-20261007",
+      "runIds": [
+        "biologie-neuro21-final-twenty-native-independent-b-20261007.run-001"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::Codex direct review; exact serving model identifier not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 20,
+    "unavailable": 0,
+    "requiresSynthesis": 20
+  },
+  "goals": [
+    {
+      "goalId": "ce19b80f-d392-5851-ac92-750c85adfb3e",
+      "firstRecordId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1:ce19b80f-d392-5851-ac92-750c85adfb3e",
+      "secondRecordId": "biologie-neuro21-final-native-b-ce19b80f-d392-5851-ac92-750c85adfb3e",
+      "firstRunId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1",
+      "secondRunId": "biologie-neuro21-final-twenty-native-independent-b-20261007.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+      "firstRecordId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1:ff1bf88f-2413-5668-a071-ce9fc499cba3",
+      "secondRecordId": "biologie-neuro21-final-native-b-ff1bf88f-2413-5668-a071-ce9fc499cba3",
+      "firstRunId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1",
+      "secondRunId": "biologie-neuro21-final-twenty-native-independent-b-20261007.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a46cafde-7359-5249-8754-19aaa3174ba4",
+      "firstRecordId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1:a46cafde-7359-5249-8754-19aaa3174ba4",
+      "secondRecordId": "biologie-neuro21-final-native-b-a46cafde-7359-5249-8754-19aaa3174ba4",
+      "firstRunId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1",
+      "secondRunId": "biologie-neuro21-final-twenty-native-independent-b-20261007.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "78748ef2-93fb-5ec3-8c1e-90e42b9ea863",
+      "firstRecordId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1:78748ef2-93fb-5ec3-8c1e-90e42b9ea863",
+      "secondRecordId": "biologie-neuro21-final-native-b-78748ef2-93fb-5ec3-8c1e-90e42b9ea863",
+      "firstRunId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1",
+      "secondRunId": "biologie-neuro21-final-twenty-native-independent-b-20261007.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "19758e09-1bc4-5ee4-bf52-89b3bc28e947",
+      "firstRecordId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1:19758e09-1bc4-5ee4-bf52-89b3bc28e947",
+      "secondRecordId": "biologie-neuro21-final-native-b-19758e09-1bc4-5ee4-bf52-89b3bc28e947",
+      "firstRunId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1",
+      "secondRunId": "biologie-neuro21-final-twenty-native-independent-b-20261007.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e1117126-4e78-5a37-a645-2debc167219b",
+      "firstRecordId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1:e1117126-4e78-5a37-a645-2debc167219b",
+      "secondRecordId": "biologie-neuro21-final-native-b-e1117126-4e78-5a37-a645-2debc167219b",
+      "firstRunId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1",
+      "secondRunId": "biologie-neuro21-final-twenty-native-independent-b-20261007.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "347110a1-1d2e-5195-8acc-64e7e3893ce5",
+      "firstRecordId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1:347110a1-1d2e-5195-8acc-64e7e3893ce5",
+      "secondRecordId": "biologie-neuro21-final-native-b-347110a1-1d2e-5195-8acc-64e7e3893ce5",
+      "firstRunId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1",
+      "secondRunId": "biologie-neuro21-final-twenty-native-independent-b-20261007.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+      "firstRecordId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1:485ef1c3-8997-52b7-91f5-b1ddf179013d",
+      "secondRecordId": "biologie-neuro21-final-native-b-485ef1c3-8997-52b7-91f5-b1ddf179013d",
+      "firstRunId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1",
+      "secondRunId": "biologie-neuro21-final-twenty-native-independent-b-20261007.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+      "firstRecordId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1:afde0001-d7d7-5ed3-8a60-383e8da5620e",
+      "secondRecordId": "biologie-neuro21-final-native-b-afde0001-d7d7-5ed3-8a60-383e8da5620e",
+      "firstRunId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1",
+      "secondRunId": "biologie-neuro21-final-twenty-native-independent-b-20261007.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2381d2bb-176c-5903-8c6e-82f4bd5023a4",
+      "firstRecordId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1:2381d2bb-176c-5903-8c6e-82f4bd5023a4",
+      "secondRecordId": "biologie-neuro21-final-native-b-2381d2bb-176c-5903-8c6e-82f4bd5023a4",
+      "firstRunId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1",
+      "secondRunId": "biologie-neuro21-final-twenty-native-independent-b-20261007.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c9a06264-cce2-54dd-9604-46dd5949f02e",
+      "firstRecordId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1:c9a06264-cce2-54dd-9604-46dd5949f02e",
+      "secondRecordId": "biologie-neuro21-final-native-b-c9a06264-cce2-54dd-9604-46dd5949f02e",
+      "firstRunId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1",
+      "secondRunId": "biologie-neuro21-final-twenty-native-independent-b-20261007.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4f631f78-e13a-58e5-9092-f4db0b8d377a",
+      "firstRecordId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1:4f631f78-e13a-58e5-9092-f4db0b8d377a",
+      "secondRecordId": "biologie-neuro21-final-native-b-4f631f78-e13a-58e5-9092-f4db0b8d377a",
+      "firstRunId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1",
+      "secondRunId": "biologie-neuro21-final-twenty-native-independent-b-20261007.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "97b24279-def0-5ce6-8726-a1cac9cd38ad",
+      "firstRecordId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1:97b24279-def0-5ce6-8726-a1cac9cd38ad",
+      "secondRecordId": "biologie-neuro21-final-native-b-97b24279-def0-5ce6-8726-a1cac9cd38ad",
+      "firstRunId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1",
+      "secondRunId": "biologie-neuro21-final-twenty-native-independent-b-20261007.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9b966664-906b-5a5d-8008-cae18de043aa",
+      "firstRecordId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1:9b966664-906b-5a5d-8008-cae18de043aa",
+      "secondRecordId": "biologie-neuro21-final-native-b-9b966664-906b-5a5d-8008-cae18de043aa",
+      "firstRunId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1",
+      "secondRunId": "biologie-neuro21-final-twenty-native-independent-b-20261007.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f6280154-d57c-599c-94bf-73313005a6df",
+      "firstRecordId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1:f6280154-d57c-599c-94bf-73313005a6df",
+      "secondRecordId": "biologie-neuro21-final-native-b-f6280154-d57c-599c-94bf-73313005a6df",
+      "firstRunId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1",
+      "secondRunId": "biologie-neuro21-final-twenty-native-independent-b-20261007.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8b23f8fb-555d-5720-b5f2-dd6f28a0e786",
+      "firstRecordId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1:8b23f8fb-555d-5720-b5f2-dd6f28a0e786",
+      "secondRecordId": "biologie-neuro21-final-native-b-8b23f8fb-555d-5720-b5f2-dd6f28a0e786",
+      "firstRunId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1",
+      "secondRunId": "biologie-neuro21-final-twenty-native-independent-b-20261007.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1b38144f-cdbd-5dfe-a792-94669bdc31d8",
+      "firstRecordId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1:1b38144f-cdbd-5dfe-a792-94669bdc31d8",
+      "secondRecordId": "biologie-neuro21-final-native-b-1b38144f-cdbd-5dfe-a792-94669bdc31d8",
+      "firstRunId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1",
+      "secondRunId": "biologie-neuro21-final-twenty-native-independent-b-20261007.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e3fb5f1d-e277-5e28-8883-45821b972607",
+      "firstRecordId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1:e3fb5f1d-e277-5e28-8883-45821b972607",
+      "secondRecordId": "biologie-neuro21-final-native-b-e3fb5f1d-e277-5e28-8883-45821b972607",
+      "firstRunId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1",
+      "secondRunId": "biologie-neuro21-final-twenty-native-independent-b-20261007.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "04d770b3-ba5e-5438-88ca-110cbaeba62c",
+      "firstRecordId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1:04d770b3-ba5e-5438-88ca-110cbaeba62c",
+      "secondRecordId": "biologie-neuro21-final-native-b-04d770b3-ba5e-5438-88ca-110cbaeba62c",
+      "firstRunId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1",
+      "secondRunId": "biologie-neuro21-final-twenty-native-independent-b-20261007.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "080b10c7-f308-57ff-b067-3bd189e37fea",
+      "firstRecordId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1:080b10c7-f308-57ff-b067-3bd189e37fea",
+      "secondRecordId": "biologie-neuro21-final-native-b-080b10c7-f308-57ff-b067-3bd189e37fea",
+      "firstRunId": "biologie-neuro21-final-current-root-independent-d-a-twenty-20261007-v1",
+      "secondRunId": "biologie-neuro21-final-twenty-native-independent-b-20261007.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

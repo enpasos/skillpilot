@@ -1,0 +1,164 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/embedded-goal-dependency.schema.json",
+  "title": "SkillPilot embedded goal dependency fragment v1",
+  "description": "Non-selectable, source-pinned compiled landscape fragment containing exactly the forward transitive hard-reference closure needed by a host release.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "fragmentFormatVersion",
+    "hostReleaseBinding",
+    "fragmentId",
+    "ownership",
+    "content",
+    "recordBindings",
+    "fragmentDigest"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/embedded-goal-dependency.schema.json"
+    },
+    "fragmentFormatVersion": {
+      "const": "1.0"
+    },
+    "hostReleaseBinding": {
+      "$ref": "#/$defs/releaseBinding"
+    },
+    "fragmentId": {
+      "$ref": "#/$defs/identifier"
+    },
+    "ownership": {
+      "$ref": "#/$defs/ownership"
+    },
+    "content": {
+      "$ref": "https://skillpilot.com/schemas/curriculum-package/v1/compiled-landscape.schema.json"
+    },
+    "recordBindings": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1000000,
+      "items": {
+        "$ref": "#/$defs/recordBinding"
+      }
+    },
+    "fragmentDigest": {
+      "$ref": "#/$defs/sha256Digest",
+      "description": "Digest of ownership plus canonically ordered record bindings and compiled records; excludes fragmentDigest and generated hostReleaseBinding.contentDigest."
+    }
+  },
+  "$defs": {
+    "semanticVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "packageId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*(?:\\.[a-z0-9]+(?:[._-][a-z0-9]+)*)+$",
+      "maxLength": 300
+    },
+    "releaseId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*(?:\\.[a-z0-9]+(?:[._-][a-z0-9]+)*)+@(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$",
+      "maxLength": 500
+    },
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:@+-]*$"
+    },
+    "jsonPointer": {
+      "oneOf": [
+        {
+          "const": ""
+        },
+        {
+          "type": "string",
+          "maxLength": 2000,
+          "pattern": "^(?:/(?:[^~/]|~[01])*)+$"
+        }
+      ]
+    },
+    "sha256Digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "releaseBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "releaseId",
+        "packageId",
+        "packageVersion",
+        "contentDigest"
+      ],
+      "properties": {
+        "releaseId": {
+          "$ref": "#/$defs/releaseId"
+        },
+        "packageId": {
+          "$ref": "#/$defs/packageId"
+        },
+        "packageVersion": {
+          "$ref": "#/$defs/semanticVersion"
+        },
+        "contentDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        }
+      }
+    },
+    "ownership": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ownerPackageId",
+        "sourceReleaseId",
+        "sourceContentDigest",
+        "fragmentOfLandscapeId",
+        "completeness",
+        "completeOwnerLandscape"
+      ],
+      "properties": {
+        "ownerPackageId": {
+          "$ref": "#/$defs/packageId"
+        },
+        "sourceReleaseId": {
+          "$ref": "#/$defs/releaseId"
+        },
+        "sourceContentDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "fragmentOfLandscapeId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "completeness": {
+          "const": "transitive-hard-reference-fragment"
+        },
+        "completeOwnerLandscape": {
+          "const": false
+        }
+      }
+    },
+    "recordBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "key",
+        "jsonPointer",
+        "definitionDigest"
+      ],
+      "properties": {
+        "key": {
+          "$ref": "https://skillpilot.com/schemas/curriculum-package/v1/dependency-closure.schema.json#/$defs/entityKey"
+        },
+        "jsonPointer": {
+          "$ref": "#/$defs/jsonPointer"
+        },
+        "definitionDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        }
+      }
+    }
+  }
+}

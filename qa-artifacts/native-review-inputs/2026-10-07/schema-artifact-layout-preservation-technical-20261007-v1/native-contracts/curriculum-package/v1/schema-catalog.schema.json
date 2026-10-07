@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json",
+  "title": "SkillPilot offline JSON Schema catalog v1",
+  "description": "Closed, package-local mapping from stable JSON Schema identifiers to integrity-bound files. Catalog entries are resolver data, not a remote retrieval policy.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "catalogFormatVersion",
+    "entries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/schema-catalog.schema.json"
+    },
+    "catalogFormatVersion": {
+      "const": 1
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 256,
+      "items": {
+        "$ref": "#/$defs/entry"
+      }
+    }
+  },
+  "$defs": {
+    "schemaId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^https://skillpilot\\.com/schemas/(?!.*//)(?!.*(?:^|/)\\.\\.?(?:/|$))[a-z0-9][a-z0-9._~/-]*\\.schema\\.json$"
+    },
+    "packageRelativePath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 180,
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "path",
+        "dialect",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/schemaId"
+        },
+        "path": {
+          "$ref": "#/$defs/packageRelativePath"
+        },
+        "dialect": {
+          "const": "https://json-schema.org/draft/2020-12/schema"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16777216
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    }
+  }
+}

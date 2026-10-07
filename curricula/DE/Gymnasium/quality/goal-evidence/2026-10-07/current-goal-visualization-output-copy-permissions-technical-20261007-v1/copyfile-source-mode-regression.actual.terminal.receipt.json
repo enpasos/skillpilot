@@ -1,0 +1,21 @@
+{
+  "kind": "actualIsolatedCopyFileModeRegressionFixture",
+  "startedAt": "2026-10-07T09:31:21.341829+00:00",
+  "finishedAt": "2026-10-07T09:31:21.373714+00:00",
+  "argv": [
+    "node",
+    "-"
+  ],
+  "fixtureSourceFile": "copyfile-source-mode-regression.fixture.actual.js",
+  "exitCode": 0,
+  "rootCauseClaim": "fs.copyFileSync propagates readonly source mode to existing target",
+  "scientificApproval": false,
+  "strictNetGain": 0,
+  "actualResult": {
+    "sourceMode": "444",
+    "existingTargetModeBefore": "644",
+    "existingTargetModeAfter": "444",
+    "bugReproduced": true,
+    "productionFilesChanged": false
+  }
+}

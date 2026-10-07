@@ -1,0 +1,113 @@
+[
+  {
+    "label": "native-round-b-batch",
+    "command": [
+      "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+      "/home/enpasos/projects/skillpilot/app/scripts/validateGoalDescriptionReviewCampaign.ts",
+      "--bundle",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-round-b/review-bundle-manifest.json",
+      "--input",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-round-b/description-review-input.json",
+      "--campaign",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-round-b/description-review-campaign.json",
+      "--run",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-round-b/results/biology-three-source-fresh-independent-b-20261007-v1.batch-001.run.json",
+      "--batch-input",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-round-b/batches/biology-three-source-fresh-independent-b-20261007-v1.batch-001.input.jsonl",
+      "--records",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-round-b/results/biology-three-source-fresh-independent-b-20261007-v1.batch-001.records.jsonl"
+    ],
+    "cwd": "/home/enpasos/projects/skillpilot",
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "Record 1: data must have required property '$schema', data must have required property 'schemaVersion'\nRecord 2: data must have required property '$schema', data must have required property 'schemaVersion'\nRecord 3: data must have required property '$schema', data must have required property 'schemaVersion'\n",
+    "observedAt": "2026-10-07T08:51:06.023945+00:00",
+    "unchangedNativeHelpers": true
+  },
+  {
+    "label": "native-round-b-complete-campaign",
+    "command": [
+      "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+      "/home/enpasos/projects/skillpilot/app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+      "--bundle",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-round-b/review-bundle-manifest.json",
+      "--input",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-round-b/description-review-input.json",
+      "--campaign",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-round-b/description-review-campaign.json",
+      "--batches-dir",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-round-b/batches",
+      "--results-dir",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-round-b/results"
+    ],
+    "cwd": "/home/enpasos/projects/skillpilot",
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": "biology-three-source-fresh-independent-b-20261007-v1.batch-001: Record 1: data must have required property '$schema', data must have required property 'schemaVersion'\nbiology-three-source-fresh-independent-b-20261007-v1.batch-001: Record 2: data must have required property '$schema', data must have required property 'schemaVersion'\nbiology-three-source-fresh-independent-b-20261007-v1.batch-001: Record 3: data must have required property '$schema', data must have required property 'schemaVersion'\n",
+    "observedAt": "2026-10-07T08:51:06.680711+00:00",
+    "unchangedNativeHelpers": true
+  },
+  {
+    "label": "native-positive-whole-three",
+    "command": [
+      "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-positive/app/scripts/positiveGoalEvidenceReview.ts",
+      "--config=config/positive.config.json",
+      "--mode=check"
+    ],
+    "cwd": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-positive",
+    "exitCode": 0,
+    "stdout": "# Positive Goal Evidence Review: biology-three-current-fresh-b-positive-20261007-v1\nScope: Independent B sealed current v2 trio positive AI candidate check\nConfigured goals: 3\nApproved: 0\nNeeds human review: 3\nRejected: 0\nBlocking issues: 0\n",
+    "stderr": "",
+    "observedAt": "2026-10-07T08:51:07.317823+00:00",
+    "unchangedNativeHelpers": true
+  },
+  {
+    "label": "native-round-b-batch-corrected",
+    "command": [
+      "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+      "/home/enpasos/projects/skillpilot/app/scripts/validateGoalDescriptionReviewCampaign.ts",
+      "--bundle",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-round-b/review-bundle-manifest.json",
+      "--input",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-round-b/description-review-input.json",
+      "--campaign",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-round-b/description-review-campaign.json",
+      "--run",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-round-b/results/biology-three-source-fresh-independent-b-20261007-v1.batch-001.run.json",
+      "--batch-input",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-round-b/batches/biology-three-source-fresh-independent-b-20261007-v1.batch-001.input.jsonl",
+      "--records",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-round-b/results/biology-three-source-fresh-independent-b-20261007-v1.batch-001.records.jsonl"
+    ],
+    "cwd": "/home/enpasos/projects/skillpilot",
+    "exitCode": 0,
+    "stdout": "Goal-description review batch valid: 3\n",
+    "stderr": "",
+    "observedAt": "2026-10-07T08:51:42.329439+00:00",
+    "unchangedNativeHelpers": true
+  },
+  {
+    "label": "native-round-b-complete-campaign-corrected",
+    "command": [
+      "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+      "/home/enpasos/projects/skillpilot/app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+      "--bundle",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-round-b/review-bundle-manifest.json",
+      "--input",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-round-b/description-review-input.json",
+      "--campaign",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-round-b/description-review-campaign.json",
+      "--batches-dir",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-round-b/batches",
+      "--results-dir",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-two-current-native-fresh-independent-b-20261007-v1/native-round-b/results"
+    ],
+    "cwd": "/home/enpasos/projects/skillpilot",
+    "exitCode": 0,
+    "stdout": "Goal-description review campaign results valid: 3\n",
+    "stderr": "",
+    "observedAt": "2026-10-07T08:51:43.109352+00:00",
+    "unchangedNativeHelpers": true
+  }
+]

@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/semantic-content-index.schema.json",
+  "title": "SkillPilot semantic content index v1",
+  "description": "Canonical, packaging-neutral input to the shared curriculum content digest. Logical JSON artifacts are represented by their normalized byte length and SHA-256; binary resources are represented by stable identity, canonical public reference, media type, length, and file SHA-256.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "indexFormatVersion",
+    "normalizationProfile",
+    "fieldSemanticsRegistry",
+    "logicalArtifacts",
+    "binaryResources",
+    "contentDigest"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/semantic-content-index.schema.json"
+    },
+    "indexFormatVersion": {
+      "const": "1.0"
+    },
+    "normalizationProfile": {
+      "$ref": "#/$defs/versionedContractBinding"
+    },
+    "fieldSemanticsRegistry": {
+      "$ref": "#/$defs/versionedContractBinding"
+    },
+    "logicalArtifacts": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 60000,
+      "items": {
+        "$ref": "#/$defs/logicalArtifact"
+      }
+    },
+    "binaryResources": {
+      "type": "array",
+      "maxItems": 60000,
+      "items": {
+        "$ref": "#/$defs/binaryResource"
+      }
+    },
+    "contentDigest": {
+      "$ref": "#/$defs/sha256Digest"
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "sha256Digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "identifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$"
+    },
+    "mediaType": {
+      "type": "string",
+      "pattern": "^[a-z0-9!#$&^_.+-]+/[a-z0-9!#$&^_.+-]+$"
+    },
+    "versionedContractBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "sha256"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/identifier"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "logicalArtifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "logicalId",
+        "mediaType",
+        "normalizedBytes",
+        "normalizedSha256",
+        "recordSha256"
+      ],
+      "properties": {
+        "role": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "logicalId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "mediaType": {
+          "$ref": "#/$defs/mediaType"
+        },
+        "normalizedBytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "normalizedSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "recordSha256": {
+          "$ref": "#/$defs/sha256",
+          "description": "SHA-256 of the normalization-profile semantic-artifact record including the canonical payload bytes."
+        }
+      }
+    },
+    "binaryResource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resourceId",
+        "canonicalReference",
+        "mediaType",
+        "bytes",
+        "sha256",
+        "recordSha256"
+      ],
+      "properties": {
+        "resourceId": {
+          "$ref": "#/$defs/identifier"
+        },
+        "canonicalReference": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        },
+        "mediaType": {
+          "$ref": "#/$defs/mediaType"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "recordSha256": {
+          "$ref": "#/$defs/sha256",
+          "description": "SHA-256 of the normalization-profile binary-asset record."
+        }
+      }
+    }
+  }
+}

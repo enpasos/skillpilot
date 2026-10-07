@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto'
-import { readFile } from 'node:fs/promises'
+import { mkdir, readFile } from 'node:fs/promises'
 import { fileURLToPath } from 'node:url'
 import { chromium, type Browser, type Page } from 'playwright'
 import tailwindcss from '@tailwindcss/vite'
@@ -386,6 +386,15 @@ try {
   let physicsSourceRequests = 0
   const additionalSourceRequests = new Map<string, number>()
   const compositionViewRequests: URL[] = []
+  let qualityAvailable = true
+  let directQualityRows = false
+  let malformedQualityResponse = false
+  const subjectMaturity = new Map([
+    [MATHEMATICS_LANDSCAPE_ID, 'M7'],
+    [PHYSICS_LANDSCAPE_ID, 'M6'],
+    ['c436b994-8f44-5134-b9f8-0c9f5d6a5ba0', 'M5'],
+    ['08a43a1b-d97e-522c-9dfa-c950a493364e', 'M4'],
+  ])
 
   page.on('pageerror', (error) => browserErrors.push(error.message))
   page.on('console', (message) => {
@@ -395,6 +404,18 @@ try {
     const url = new URL(request.url())
     requests.push({ method: request.method(), pathname: url.pathname })
   })
+
+  await page.route('**/api/ui/curricula', (route) => malformedQualityResponse
+    ? route.fulfill({ contentType: 'application/json', body: '{invalid-json' })
+    : route.fulfill({ json: {
+      curricula: directQualityRows
+        ? [...subjectMaturity].map(([curriculumId, qualityMaturity]) => ({ curriculumId, qualityMaturity }))
+        : [{ curriculumId: 'gymnasium-overview', qualityMaturity: 'M1', subjectQuality:
+          qualityAvailable ? [...subjectMaturity].map(([landscapeId, maturity]) => ({
+            landscapeId, maturity, qualityStatus: 'machine_qa',
+          })) : [],
+        }],
+    } }))
 
   await page.route(`**${INDEX_PATH}`, async (route) => {
     indexRequests += 1
@@ -508,6 +529,19 @@ try {
     })
 
   const goalBookShell = page.getByTestId('goal-book-shell')
+  const qualityStatus = page.getByTestId('goal-book-quality-status')
+  await qualityStatus.locator('[data-maturity="M7"]').waitFor()
+  assert((await qualityStatus.innerText()).includes('Maschinelle QS')
+    && await qualityStatus.getByRole('link', { name: 'Details zur Curriculum-QS' }).getAttribute('href') === '/curricula'
+    && !(await qualityStatus.innerText()).includes('menschlich'),
+  'the book shows its exact canonical machine-QA maturity and the public details link, without inferring human acceptance')
+  await mkdir('../tmp/goal-book-quality-status-ui', { recursive: true })
+  for (const width of [1440, 360, 320]) {
+    await assertNoHorizontalOverflow(page, width)
+    await page.evaluate(() => window.scrollTo(0, 0))
+    await page.screenshot({ path: `../tmp/goal-book-quality-status-ui/math-${width}.png` })
+  }
+  await page.setViewportSize({ width: 1440, height: 900 })
   const shellClasses = (await goalBookShell.getAttribute('class'))?.split(/\s+/u) ?? []
   assert(
     shellClasses.includes('bg-slate-50')
@@ -858,6 +892,9 @@ try {
   )
   await subjectNavigation.getByRole('link', { name: 'Physik', exact: true }).click()
   await page.getByRole('heading', { name: 'Lernzielbuch Physik – bundesweiter Atlas' }).waitFor()
+  await qualityStatus.locator('[data-maturity="M6"]').waitFor()
+  assert(await qualityStatus.locator('[data-maturity="M7"]').count() === 0,
+    'changing subjects switches the canonical quality binding instead of retaining Mathematics M7')
   assert(
     mathModelRequests >= 1
       && physicsModelRequests === 1
@@ -879,6 +916,7 @@ try {
   assert(
     await page.getByRole('heading', { name: 'Lernzielbuch Physik – bundesweiter Atlas' }).count() === 0
       && await page.getByTestId('goal-book-page').count() === 0
+      && await qualityStatus.count() === 0
       && await page.getByTestId('goal-book-pdf').getAttribute('aria-disabled') === 'true',
     'browser history hides the stale subject model, detail, and PDF while the previous subject reloads',
   )
@@ -964,6 +1002,7 @@ try {
       && requests.every(({ pathname }) => (
         !pathname.startsWith('/api/')
         || pathname === '/api/ui/composition-views/match'
+        || pathname === '/api/ui/curricula'
       ))
       && requests.filter(({ pathname }) => pathname.startsWith('/api/')).every(({ pathname }) => (
         !pathname.toLocaleLowerCase('en-US').includes('learner')
@@ -985,6 +1024,10 @@ try {
     await page.getByRole('navigation', { name: 'Fach auswählen' })
       .getByRole('link', { name: fixture.label, exact: true }).click()
     await page.getByRole('heading', { name: fixture.title }).waitFor()
+    const expectedMaturity = fixture.label === 'Chemie' ? 'M5' : 'M4'
+    await qualityStatus.locator(`[data-maturity="${expectedMaturity}"]`).waitFor()
+    assert(await qualityStatus.locator('[data-maturity]').count() === 1,
+      'each book uses the subject row, never the overview maturity or another subject')
     assert(page.url().includes(`?book=${fixture.bookId}`), 'subject navigation keeps the nationwide atlas ID')
     assert(await page.getByTestId('goal-book-pdf').getAttribute('href') === `/lernzielbuch/${fixture.bookId}.pdf`, 'PDF follows the selected subject')
     const atlasFilters = page.getByRole('group', { name: 'Curriculum filtern' })
@@ -1019,6 +1062,42 @@ try {
     await page.getByRole('button', { name: 'DE', exact: true }).click()
     await assertNoHorizontalOverflow(page, 375)
   }
+  qualityAvailable = false
+  const biologyFixtureUrl = `${fixtureUrl}?book=${additionalSubjectFixtures[1].bookId}`
+  const openBiologyFixture = async () => {
+    const qualityResponse = page.waitForResponse((response) => new URL(response.url()).pathname === '/api/ui/curricula')
+    await page.goto(biologyFixtureUrl)
+    await qualityResponse
+    await page.evaluate(() => new Promise<void>((resolve) => requestAnimationFrame(() => requestAnimationFrame(() => resolve()))))
+  }
+  await openBiologyFixture()
+  await page.getByRole('heading', { name: additionalSubjectFixtures[1].title }).waitFor()
+  await qualityStatus.getByText('QS-Status: Prüfstand nicht verfügbar', { exact: true }).waitFor()
+  assert(await qualityStatus.locator('[data-maturity]').count() === 0,
+    'missing subject evidence stays unknown and never inherits the overview or previous maturity')
+  qualityAvailable = true
+  subjectMaturity.set('08a43a1b-d97e-522c-9dfa-c950a493364e', 'M99')
+  await openBiologyFixture()
+  await page.getByRole('heading', { name: additionalSubjectFixtures[1].title }).waitFor()
+  assert(await qualityStatus.locator('[data-maturity]').count() === 0,
+    'an invalid maturity cannot become an approved badge')
+  directQualityRows = true
+  subjectMaturity.set('08a43a1b-d97e-522c-9dfa-c950a493364e', 'M3')
+  await openBiologyFixture()
+  await qualityStatus.locator('[data-maturity="M3"]').waitFor()
+  await page.getByRole('button', { name: 'EN', exact: true }).click()
+  assert((await qualityStatus.innerText()).includes('Automated QA'), 'machine-QA wording follows the selected language')
+  await page.getByRole('button', { name: 'DE', exact: true }).click()
+  await assertNoHorizontalOverflow(page, 360)
+  await page.evaluate(() => window.scrollTo(0, 0))
+  await page.screenshot({ path: '../tmp/goal-book-quality-status-ui/biology-360.png' })
+  malformedQualityResponse = true
+  await openBiologyFixture()
+  await page.getByRole('heading', { name: additionalSubjectFixtures[1].title }).waitFor()
+  await qualityStatus.getByText('QS-Status: Prüfstand nicht verfügbar', { exact: true }).waitFor()
+  assert(await page.getByTestId('goal-book-page').count() === 1
+    && await qualityStatus.locator('[data-maturity]').count() === 0,
+    'a failed quality read withdraws the previous status while the book remains usable')
   assert(browserErrors.length === 0, `browser errors: ${browserErrors.join('\n')}`)
 } finally {
   try {

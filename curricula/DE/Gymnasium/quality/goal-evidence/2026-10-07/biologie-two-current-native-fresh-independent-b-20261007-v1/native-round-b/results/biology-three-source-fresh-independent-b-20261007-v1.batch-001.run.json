@@ -1,0 +1,52 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "bundleFingerprint": "sha256:168aff80f28813e63c5c6a3f1c532c8944ac75533dc2c2f0a38d06020a5b3845",
+  "bookDigest": "sha256:d5abafc3cdcda57af99ee6d0ead3cd495fae1e222c1a71d325ca534c52e757cd",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex; exact runtime version not exposed",
+  "role": "subject_reviewer",
+  "generationParametersFingerprint": "sha256:b870d1d7f097b030c19b43a8e57dc03ea32218ce0bec429cc6d675340f1856bd",
+  "independenceGroupId": "biology-three-source-fresh-independent-b-20261007",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+    "11675f1a-5de2-5926-be78-1e8275f19f5b",
+    "e70d8a85-2dea-5165-919b-200fee9f4db4"
+  ],
+  "startedAt": "2026-10-07T08:43:25.391842+00:00",
+  "completedAt": "2026-10-07T08:50:49.954144+00:00",
+  "status": "completed",
+  "toolchainVersion": "native-unchanged-20261007",
+  "runId": "biology-three-current-fresh-b-description-20261007-v1",
+  "campaignId": "biology-three-source-485-eng-ekg-e70-bw-native-20261007-v2-b",
+  "roundId": "biology-three-source-fresh-independent-b-20261007-v1",
+  "batchId": "biology-three-source-fresh-independent-b-20261007-v1.batch-001",
+  "batchInputFingerprint": "sha256:ba05a2fc820c9285ee57172c8355684792fecda1168c89173f698e22d009d7c2",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:5e3063589a933834573f95cde4c78e17a52f93eddae1f6e95a96a0ea7cea1c69"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:1b1f15f95af1ffd2967fe5851ab9c440a015bc2d5a4eae3c06c24902fd5b0676"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:ba05a2fc820c9285ee57172c8355684792fecda1168c89173f698e22d009d7c2"
+    }
+  ],
+  "outputDigest": "sha256:3b6d0885ada74ba0be9f97fdcb009965d754ac1c231555b510eb76a95b8c3d69"
+}

@@ -1,0 +1,58 @@
+{
+  "receipts": [
+    {
+      "check": "native-batch",
+      "startedAt": "2026-10-07T08:54:06.101774+00:00",
+      "completedAt": "2026-10-07T08:54:06.814142+00:00",
+      "commandArguments": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-three-source-485-ENG-EKG-and-e70-BW-author-20261007-v2/native-isolated-repository/app/scripts/validateGoalDescriptionReviewCampaign.ts",
+        "--bundle",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-three-current-fresh-blind-a-20261007-v2/native-round-a/review-bundle-manifest.json",
+        "--input",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-three-current-fresh-blind-a-20261007-v2/native-round-a/description-review-input.json",
+        "--campaign",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-three-current-fresh-blind-a-20261007-v2/native-round-a/description-review-campaign.json",
+        "--run",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-three-current-fresh-blind-a-20261007-v2/native-round-a/results/biology-three-source-fresh-independent-a-20261007-v1.batch-001.run.json",
+        "--batch-input",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-three-current-fresh-blind-a-20261007-v2/native-round-a/batches/biology-three-source-fresh-independent-a-20261007-v1.batch-001.input.jsonl",
+        "--records",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-three-current-fresh-blind-a-20261007-v2/native-round-a/results/biology-three-source-fresh-independent-a-20261007-v1.batch-001.records.jsonl"
+      ],
+      "exitCode": 0,
+      "stdout": "Goal-description review batch valid: 3\n",
+      "stderr": "",
+      "actualNativeTerminal": true,
+      "helperSha256": "59f8f412cbe9be4dc033396581e14960d0b0f12e3b17b5d48c35e5d6fae71e64",
+      "helperEqualsLiveUnchangedNative": true
+    },
+    {
+      "check": "native-campaign-results",
+      "startedAt": "2026-10-07T08:54:06.102305+00:00",
+      "completedAt": "2026-10-07T08:54:06.807887+00:00",
+      "commandArguments": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-three-source-485-ENG-EKG-and-e70-BW-author-20261007-v2/native-isolated-repository/app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+        "--bundle",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-three-current-fresh-blind-a-20261007-v2/native-round-a/review-bundle-manifest.json",
+        "--input",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-three-current-fresh-blind-a-20261007-v2/native-round-a/description-review-input.json",
+        "--campaign",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-three-current-fresh-blind-a-20261007-v2/native-round-a/description-review-campaign.json",
+        "--batches-dir",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-three-current-fresh-blind-a-20261007-v2/native-round-a/batches",
+        "--results-dir",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-three-current-fresh-blind-a-20261007-v2/native-round-a/results"
+      ],
+      "exitCode": 0,
+      "stdout": "Goal-description review campaign results valid: 3\n",
+      "stderr": "",
+      "actualNativeTerminal": true,
+      "helperSha256": "36f2ac8ab823cd70f4402deb5f4c96d2399f719f90dfa4a95916467b52962df8",
+      "helperEqualsLiveUnchangedNative": true
+    }
+  ],
+  "bothPassed": true,
+  "retainsActualFailures": true
+}

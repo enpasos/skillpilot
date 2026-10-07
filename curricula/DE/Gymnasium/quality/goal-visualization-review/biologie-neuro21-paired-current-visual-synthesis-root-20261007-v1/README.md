@@ -1,0 +1,3 @@
+# Bio21: all current candidate visual reviews paired
+
+Six unchanged first-group PNGs, the separately corrected ce19 v2 PNG, three supplied model PNGs and eleven current original PNGs each have two independent KEEP decisions on their exact raster plus actual360/680 displays. Original first-pass order, authorship, prior REVISE and partial freezes remain immutable; the eleven peer findings were first read only after Root completed and sealed all own A decisions. This is a genuine scientific/visual synthesis, not a new generation or operative import. Final native image/page/context/source bindings and strict D/P/A/M/V integration remain pending. All whole-source and human gates remain separate. Strict net gain0.

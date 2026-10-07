@@ -1,0 +1,98 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "provider": "OpenAI",
+  "model": "Codex; exact session model version not exposed",
+  "role": "subject_reviewer",
+  "generationParametersFingerprint": "sha256:baa4c28535c67103e13f82d47361a2edf0f256fe9cfbbad283a3403057a9e78f",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+    "e313c1ee-a617-54ed-adea-c183da1e03d8",
+    "0bf26276-2780-506c-ac34-35dd44a29409",
+    "fd309753-4d48-5570-a4ec-09dfeb20ff9c",
+    "c0f1bf09-5a70-5006-b1e9-e91f786a63bf",
+    "95dc0ee5-a0af-5682-af32-d66e36fbeb50",
+    "02dc29ae-4046-556a-b048-d64a0feb8f16",
+    "9b5d6326-d27c-4ece-8c72-debda705464a",
+    "22133f29-ef02-4408-8f8d-2bbea3275d91",
+    "1f30d81c-8a26-5675-8c0a-1cb82e96d3ba",
+    "7a05a1ce-45d3-571e-be51-afcd8dfd33ca",
+    "a44af1fa-5988-5b7d-b206-691c6bbf7dd4",
+    "597ac03c-d25f-5c34-a87c-52c059c87295",
+    "9751b6d8-cde3-527b-b37c-babb6cee79d2",
+    "88ee181f-b2d3-5639-bb5e-3d1a2915171b",
+    "7990387d-f254-5d3b-a589-a3e7ed9502a3",
+    "e14abd24-a0e5-5ab5-ade3-a8ae4f49e935"
+  ],
+  "startedAt": "2026-10-07T06:03:46.500336+00:00",
+  "completedAt": "2026-10-07T06:11:29.927339+00:00",
+  "status": "completed",
+  "toolchainVersion": "codex-native-targeted-review-20261007",
+  "runId": "chemie-next17-targeted-independent-d-b-p-binding-20261007-v1.d-b",
+  "campaignId": "chemie-next17-targeted-description-routing-context-author-v2-20261007-b",
+  "roundId": "chemie-next17-targeted-description-routing-context-author-v2-20261007-first-pass-b",
+  "batchId": "chemie-next17-targeted-description-routing-context-author-v2-20261007-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:bcaef8e4fdd54b6cd7d0874eea2b5d3757d3000cde57253383e298e3ffee9b74",
+  "bundleFingerprint": "sha256:b88762d7d78baf29352894f9c585740471fa0661125c4f9872d9a63e55cc93dc",
+  "bookDigest": "sha256:c343d4afb2db777a4201302db4707475635a71ffdeedab0303cf449d22379a49",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "independenceGroupId": "chemie-next17-targeted-description-routing-context-author-v2-20261007-independent-b",
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:e3ff349b1bfb6e6a2b7723a8d04e54ea6247d22e7aa36feaa5b9e1350159e0e2"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:4635397d1fd7971950dd8dbdc5ac34995e8c5d0db92f53276af083ba7abbf9a2"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:30c3abac8ab4c76a8fb14c2ca3fdfb2828ccd189fd3b40f41c210b3ba8b65a1c"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:93af661416bc94e2cc541410bec33cafe0b23e737555b2e60765a4427276486f"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:b47e6ea2922514aae26773f8b864e8066d6fdea4a6f94e68293bd59155c64a9b"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:66352bdaa84e3832c194c4d9cd8e4826869f43558576541e13d27283425871af"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:a8d9c3cba0be7176a937fc92c6294747b09b0803f9e1c564fdaef6c44ee7a0d5"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:a69e4aa834358d2e6c63e8072dd5280d3f6988ce031960733b10e9c75c53a49a"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:bcaef8e4fdd54b6cd7d0874eea2b5d3757d3000cde57253383e298e3ffee9b74"
+    }
+  ],
+  "outputDigest": "sha256:509d58899cc3d0b4c3d740990da397ef00c81e448030868fef8241e445d00544"
+}

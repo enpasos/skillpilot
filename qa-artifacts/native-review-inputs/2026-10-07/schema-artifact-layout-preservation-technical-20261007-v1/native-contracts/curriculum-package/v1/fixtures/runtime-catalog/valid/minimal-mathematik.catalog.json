@@ -1,0 +1,159 @@
+{
+  "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/runtime-catalog.schema.json",
+  "catalogVersion": "1.0",
+  "runtimeContractVersion": "1.0",
+  "releaseBinding": {
+    "releaseId": "org.skillpilot.curriculum.de.gymnasium.mathematik@1.0.0",
+    "contentDigest": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "rootLandscapeIds": [
+    "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced"
+  ],
+  "landscapes": [
+    {
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "role": "root",
+      "artifactPath": "data/canonical/mathematik.landscape.json",
+      "locale": "de-DE",
+      "frameworkId": "canonical-gymnasium-math",
+      "subject": "Mathematik",
+      "country": "DE",
+      "region": "DEU",
+      "schoolForm": "Gymnasium",
+      "defaultOfferingId": "de-he-gym-sekii-math-gk"
+    }
+  ],
+  "scopeDimensions": [
+    {
+      "id": "schoolForm",
+      "values": [
+        "Gymnasium"
+      ]
+    },
+    {
+      "id": "jurisdiction",
+      "values": [
+        "DE-HE"
+      ]
+    },
+    {
+      "id": "stage",
+      "values": [
+        "SekII"
+      ]
+    },
+    {
+      "id": "courseProfile",
+      "values": [
+        "GK",
+        "LK",
+        "GK+LK"
+      ],
+      "composites": [
+        {
+          "value": "GK+LK",
+          "members": [
+            "GK",
+            "LK"
+          ]
+        }
+      ]
+    }
+  ],
+  "views": [
+    {
+      "viewId": "de-he-gym-sekii-math-gk-view",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "artifactPath": "data/views/de-he-gk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      }
+    },
+    {
+      "viewId": "de-he-gym-sekii-math-lk-view",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "artifactPath": "data/views/de-he-lk.view.json",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      }
+    }
+  ],
+  "offeredScopes": [
+    {
+      "offeringId": "de-he-gym-sekii-math-gk",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "viewResolution": {
+        "mode": "single",
+        "viewIds": [
+          "de-he-gym-sekii-math-gk-view"
+        ]
+      }
+    },
+    {
+      "offeringId": "de-he-gym-sekii-math-combined",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-HE",
+        "stage": "SekII",
+        "courseProfile": "GK+LK"
+      },
+      "viewResolution": {
+        "mode": "merge",
+        "mergeDimension": "courseProfile",
+        "viewIds": [
+          "de-he-gym-sekii-math-gk-view",
+          "de-he-gym-sekii-math-lk-view"
+        ]
+      }
+    }
+  ],
+  "decks": [
+    {
+      "deckId": "de_gymnasium_math_analysis_core",
+      "locale": "de-DE",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "artifactPath": "data/cards/de_gymnasium_math_analysis_core.de.json"
+    }
+  ],
+  "resources": [
+    {
+      "resourceId": "goal-visualization:example-goal:primary:1",
+      "resourceKind": "goal-visualization",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "goalId": "4b67bed9-06da-40b2-a306-24e9e7dfd390",
+      "delivery": "embedded",
+      "runtimeRequired": true,
+      "mediaType": "image/png",
+      "artifactPath": "assets/goal-visualizations/example-goal.png"
+    }
+  ],
+  "artifactIndexes": {
+    "compositionViewsPath": "data/views/index.json",
+    "cardsPath": "data/cards/card-index.json",
+    "resourcesPath": "data/resources/resource-index.json",
+    "migrationAliasesPath": "data/runtime/migration-aliases.json"
+  },
+  "dependencyClosure": {
+    "path": "data/runtime/dependency-closure.json",
+    "strategy": "embedded-transitive-v1",
+    "externalRuntimeDependencies": []
+  },
+  "capabilities": [
+    "compositionViews",
+    "memoryCards",
+    "goalVisualizations"
+  ]
+}

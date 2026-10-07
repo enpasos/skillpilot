@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biology-three-source-native-prepared-v2-20261007",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "config/native-three.prepared.config.json",
+  "configDigest": "sha256:e55e768c15cc604897e4dfb5917e9569f2f209a282136252759b2c3c0e3f744b",
+  "goalIds": [
+    "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+    "11675f1a-5de2-5926-be78-1e8275f19f5b",
+    "e70d8a85-2dea-5165-919b-200fee9f4db4"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 391,
+  "source": {
+    "baseGoalBookConfigPath": "config/current391.book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:3a410ea5bf690f582408ffc2c548669ecd5d30ae50678fbe5f7e5a3329dc8746"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:d5abafc3cdcda57af99ee6d0ead3cd495fae1e222c1a71d325ca534c52e757cd",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:168aff80f28813e63c5c6a3f1c532c8944ac75533dc2c2f0a38d06020a5b3845",
+    "reviewInputFingerprint": "sha256:db03b11a3f483c0f5c3cd5dfdbac747e3f723ba6a77a670e751d32c7ac55ec9b",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biology-three-source-485-eng-ekg-e70-bw-native-20261007-v2-a",
+        "campaignDigest": "sha256:5a1f1b4f784535648667d078507b40ff73a096ca7600664b2f706096758e01b8",
+        "roundId": "biology-three-source-fresh-independent-a-20261007-v1",
+        "independenceGroupId": "biology-three-source-fresh-independent-a-20261007",
+        "batchId": "biology-three-source-fresh-independent-a-20261007-v1.batch-001",
+        "batchInputFingerprint": "sha256:e108252f2e0b5acd2748cf1422458ac39894b420c363df7f7aca04c43cd90464"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biology-three-source-485-eng-ekg-e70-bw-native-20261007-v2-b",
+        "campaignDigest": "sha256:fc09f3c7611d959d5469ed70de3385394c81d5c05bba2dc552397e53aa2054fe",
+        "roundId": "biology-three-source-fresh-independent-b-20261007-v1",
+        "independenceGroupId": "biology-three-source-fresh-independent-b-20261007",
+        "batchId": "biology-three-source-fresh-independent-b-20261007-v1.batch-001",
+        "batchInputFingerprint": "sha256:ba05a2fc820c9285ee57172c8355684792fecda1168c89173f698e22d009d7c2"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

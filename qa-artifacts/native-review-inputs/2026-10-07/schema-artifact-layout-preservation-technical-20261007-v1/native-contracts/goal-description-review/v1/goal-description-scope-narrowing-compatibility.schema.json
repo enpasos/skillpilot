@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-scope-narrowing-compatibility.schema.json",
+  "title": "Diagnostic D compatibility for an applicability-only GK scope narrowing",
+  "description": "A separately validated compatibility claim. This is not a dual-round resolution or a human approval.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema", "schemaVersion", "compatibilityId", "compatibilityFingerprint",
+    "goalId", "originalResolutionDigest", "originalReviewInputFingerprint",
+    "originalSubsetBookDigest", "proposedAtlasBookDigest", "proposedSubsetBookDigest",
+    "originalPageFingerprint", "proposedPageFingerprint",
+    "originalPageDigest", "proposedPageDigest", "removedScopeKeys"
+  ],
+  "properties": {
+    "$schema": { "const": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-scope-narrowing-compatibility.schema.json" },
+    "schemaVersion": { "const": 1 },
+    "compatibilityId": { "type": "string", "minLength": 1, "maxLength": 200, "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$" },
+    "compatibilityFingerprint": { "$ref": "#/$defs/digest" },
+    "goalId": { "type": "string", "minLength": 1 },
+    "originalResolutionDigest": { "$ref": "#/$defs/digest" },
+    "originalReviewInputFingerprint": { "$ref": "#/$defs/digest" },
+    "originalSubsetBookDigest": { "$ref": "#/$defs/digest" },
+    "proposedAtlasBookDigest": { "$ref": "#/$defs/digest" },
+    "proposedSubsetBookDigest": { "$ref": "#/$defs/digest" },
+    "originalPageFingerprint": { "$ref": "#/$defs/digest" },
+    "proposedPageFingerprint": { "$ref": "#/$defs/digest" },
+    "originalPageDigest": { "$ref": "#/$defs/digest" },
+    "proposedPageDigest": { "$ref": "#/$defs/digest" },
+    "removedScopeKeys": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "pattern": "^[A-Za-z0-9-]+\\|SekII\\|(G8|G9|)\\|GK$" }
+    }
+  },
+  "$defs": {
+    "digest": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+  }
+}

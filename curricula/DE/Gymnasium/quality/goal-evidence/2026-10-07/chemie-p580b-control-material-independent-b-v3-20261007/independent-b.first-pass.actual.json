@@ -1,0 +1,61 @@
+{
+  "documentType": "Actual independent B targeted scientific resolution of P580b v2 control finding for corrected v3 only",
+  "reviewer": "Codex /root/chem17_targeted_independent_b",
+  "reviewAuthority": "ai_candidate",
+  "status": "needs_human_review",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "goalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+  "decision": "keep",
+  "blindToCurrentIndependentPeerOutputs": true,
+  "wholeBilingualGoalRead": true,
+  "wholeCorrectedProfileRead": true,
+  "bothCompleteBilingualMaterialTaskReferenceBoundaryCasesRead": true,
+  "findingResolution": {
+    "findingId": "chem17-targeted-b-gas-air-control-reference-unsupported-damp-splint",
+    "priorDecision": "revise",
+    "currentDecision": "resolved_for_exact_corrected_v3_profile_only",
+    "observationDe": "Die neue Referenzantwort interpretiert genau die vorgegebene Luftkontrolle ohne Wiederaufflammen und die CO2-freie Kalkwasserkontrolle ohne Trübung. Sie nennt keine nicht dokumentierte Spanfeuchte mehr. Die gemeinsame Vergleichsfunktion bezieht sich zutreffend auf die positiven Beobachtungen A und B; sie behauptet keine zusätzliche H2-Kontrolle.",
+    "observationEn": "The revised reference response interprets exactly the supplied air control without splint relighting and the CO2-free limewater control without clouding. It no longer introduces undocumented splint moisture. Their comparison function correctly concerns positive observations A and B and does not assert an additional hydrogen control.",
+    "changedMaterialFields": ["completeCorrectedMaterialCases[0].expectedPerformance.de", "completeCorrectedMaterialCases[0].expectedPerformance.en"],
+    "changedProfileFields": ["profile.expectations[0].observablePerformanceDe", "profile.expectations[0].observablePerformanceEn", "profile.applicationCaseBriefs[0].expectedPerformanceDe", "profile.applicationCaseBriefs[0].expectedPerformanceEn"],
+    "priorV2ScientificFindingAndFilesRemainUnchanged": true,
+    "blanketHistoricalAcceptance": false
+  },
+  "case1ScientificReview": {
+    "decision": "keep",
+    "reason": "Wiederaufflammen wird als O2-Nachweis gedeutet, Calciumcarbonatbildung als CO2-Nachweis und die beaufsichtigte kleine Probe als H2-Nachweis. CO2 + Ca(OH)2 → CaCO3 + H2O sowie 2 H2 + O2 → 2 H2O sind atomar bilanziert. Der korrigierte DE/EN-Kontrollsatz bleibt bei den tatsächlichen fiktiven Beobachtungen und führt weder Mengen- oder Reinheitsbeweis noch unsichere Eigendurchführung ein."
+  },
+  "case2ScientificReview": {
+    "decision": "keep_unchanged",
+    "reason": "Der ganze unveränderte Gemischfall verlangt einen eigenständigen Transfer von reinen Gasen auf getrennte qualitative Nachweise eines CO2/H2-Gemisches. Die Antwort begrenzt negative Glimmspanbefunde ohne bekannte Nachweisgrenze; sie behauptet weder O2-freies Ausgangsgemisch noch quantitative Anteile. Der Luftsauerstoff der getrennten H2-Probe ist von ursprünglichem Gemisch-O2 unterschieden."
+  },
+  "positiveContract": {
+    "archetype": "experiment",
+    "contentSpecificEssentialUnderstanding": true,
+    "matchingIndependentObservablePerformance": true,
+    "twoDistinctDemonstrations": true,
+    "meaningfulFreshMixtureVariation": true,
+    "independentTransfer": true,
+    "independentOfReviewedImage": true,
+    "bilingualSemanticEquivalence": true,
+    "fictionalTeachingMaterial": true,
+    "actualLearnerWork": false,
+    "actualExperimentAcceptance": false
+  },
+  "reuseBoundary": {
+    "whole580bGoalUnchanged": true,
+    "other16WholePositiveCandidateSpecsUnchanged": true,
+    "other32CompleteMaterialCasesUnchanged": true,
+    "ownPriorP16KeepReuseAllowedForExactUnchangedInputs": true,
+    "ownPriorD17KeepReuseAllowedForExactUnchangedInputs": true,
+    "newDReviewOrBuild": false,
+    "sourceRouteContextVisualizationOrAMChanges": false,
+    "allExistingVisualizationAndExcludedSourceHoldsRemainOpen": true
+  },
+  "humanApproval": false,
+  "humanTrial": false,
+  "activeWrites": false,
+  "strictNetGain": 0,
+  "nextGate": "Pair with independent A for the exact corrected profile; integrate only after current operative bindings and remaining gates are satisfied."
+}

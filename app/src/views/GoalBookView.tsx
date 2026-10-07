@@ -21,6 +21,7 @@ import { ThemeToggle } from '../components/ThemeToggle'
 import { InlineMathText } from '../components/InlineMathText'
 import { GoalBookChapterTree } from '../components/GoalBookChapterTree'
 import { GoalBookOriginalSources } from '../components/GoalBookOriginalSources'
+import { GoalBookQualityStatus } from '../components/GoalBookQualityStatus'
 import { useLanguage } from '../contexts/LanguageContext'
 import {
   assertGoalBookPublicationBinding,
@@ -1081,6 +1082,7 @@ export const GoalBookView: React.FC<GoalBookViewProps> = ({ suppliedChapterProje
             <p className="mt-2 text-lg text-text-secondary">
               {model ? subjectSubtitle(model.book.id, language === 'en' ? 'en' : 'de', c) : c.subtitleFallback}
             </p>
+            {model && <GoalBookQualityStatus landscapeId={model.book.landscapeId} language={language} />}
             {language === 'en' && <p className="mt-1 text-sm text-text-secondary">{c.germanContent}</p>}
           </div>
           <a

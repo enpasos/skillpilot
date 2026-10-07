@@ -1,0 +1,510 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/release-quality-evidence.schema.json",
+  "title": "SkillPilot curriculum release quality evidence v1",
+  "description": "Closed release-facing projection of current semantic-atomicity, memory-card, and goal-visualization decisions. Workbench paths, reviewer identities, timestamps, rationales, generated reports, model triage, and removed-card audit history remain authoring-only.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "qualityEvidenceFormatVersion",
+    "landscapeId",
+    "publicationStatus",
+    "qualityDecisionCount",
+    "lanes"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/release-quality-evidence.schema.json"
+    },
+    "qualityEvidenceFormatVersion": {
+      "const": "1.0"
+    },
+    "landscapeId": {
+      "$ref": "#/$defs/stableId"
+    },
+    "publicationStatus": {
+      "enum": [
+        "ready",
+        "not-ready"
+      ]
+    },
+    "qualityDecisionCount": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10000000
+    },
+    "lanes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "semanticAtomicity",
+        "memoryCards",
+        "goalVisualizations"
+      ],
+      "properties": {
+        "semanticAtomicity": {
+          "$ref": "#/$defs/semanticAtomicityLane"
+        },
+        "memoryCards": {
+          "$ref": "#/$defs/memoryCardLane"
+        },
+        "goalVisualizations": {
+          "$ref": "#/$defs/goalVisualizationLane"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "stableId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "sha256Digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "laneStatus": {
+      "enum": [
+        "passed",
+        "incomplete",
+        "failed"
+      ]
+    },
+    "semanticAtomicityLane": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reviewId",
+        "ruleVersion",
+        "status",
+        "decisionCount",
+        "decisions"
+      ],
+      "properties": {
+        "reviewId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "ruleVersion": {
+          "$ref": "#/$defs/stableId"
+        },
+        "status": {
+          "$ref": "#/$defs/laneStatus"
+        },
+        "decisionCount": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "decisions": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1000000,
+          "items": {
+            "$ref": "#/$defs/semanticAtomicityDecision"
+          }
+        }
+      }
+    },
+    "semanticAtomicityDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "goalId",
+        "goalFingerprint",
+        "status",
+        "semanticAtomic"
+      ],
+      "properties": {
+        "goalId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "goalFingerprint": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "status": {
+          "enum": [
+            "atomic",
+            "needs_developer_review",
+            "non_atomic"
+          ]
+        },
+        "semanticAtomic": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": { "const": "atomic" }
+            },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "semanticAtomic": { "const": true }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": { "const": "non_atomic" }
+            },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "semanticAtomic": { "const": false }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": { "const": "needs_developer_review" }
+            },
+            "required": ["status"]
+          },
+          "then": {
+            "properties": {
+              "semanticAtomic": { "const": null }
+            }
+          }
+        }
+      ]
+    },
+    "memoryCardLane": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reviewId",
+        "ruleVersion",
+        "status",
+        "goalDecisionCount",
+        "activeCardDecisionCount",
+        "goalDecisions",
+        "activeCardDecisions"
+      ],
+      "properties": {
+        "reviewId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "ruleVersion": {
+          "$ref": "#/$defs/stableId"
+        },
+        "status": {
+          "$ref": "#/$defs/laneStatus"
+        },
+        "goalDecisionCount": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "activeCardDecisionCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "goalDecisions": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1000000,
+          "items": {
+            "$ref": "#/$defs/memoryGoalDecision"
+          }
+        },
+        "activeCardDecisions": {
+          "type": "array",
+          "maxItems": 1000000,
+          "items": {
+            "$ref": "#/$defs/activeCardDecision"
+          }
+        }
+      }
+    },
+    "memoryGoalDecision": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/noMemoryGoalDecision"
+        },
+        {
+          "$ref": "#/$defs/memoryRequiredGoalDecision"
+        },
+        {
+          "$ref": "#/$defs/openMemoryGoalDecision"
+        }
+      ]
+    },
+    "memoryGoalDecisionBase": {
+      "type": "object",
+      "required": [
+        "goalId",
+        "goalFingerprint",
+        "status",
+        "memoryUseful"
+      ],
+      "properties": {
+        "goalId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "goalFingerprint": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "status": {
+          "enum": [
+            "no_memory_needed",
+            "memory_required",
+            "needs_developer_review"
+          ]
+        },
+        "memoryUseful": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "memoryGoalIds": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 10000,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/stableId"
+          }
+        },
+        "deckIds": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 10000,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/stableId"
+          }
+        }
+      }
+    },
+    "noMemoryGoalDecision": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/memoryGoalDecisionBase"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "goalId",
+            "goalFingerprint",
+            "status",
+            "memoryUseful"
+          ],
+          "properties": {
+            "goalId": true,
+            "goalFingerprint": true,
+            "status": {
+              "const": "no_memory_needed"
+            },
+            "memoryUseful": {
+              "const": false
+            }
+          }
+        }
+      ]
+    },
+    "memoryRequiredGoalDecision": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/memoryGoalDecisionBase"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "goalId",
+            "goalFingerprint",
+            "status",
+            "memoryUseful",
+            "memoryGoalIds",
+            "deckIds"
+          ],
+          "properties": {
+            "goalId": true,
+            "goalFingerprint": true,
+            "status": {
+              "const": "memory_required"
+            },
+            "memoryUseful": {
+              "const": true
+            },
+            "memoryGoalIds": true,
+            "deckIds": true
+          }
+        }
+      ]
+    },
+    "openMemoryGoalDecision": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/memoryGoalDecisionBase"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "goalId",
+            "goalFingerprint",
+            "status",
+            "memoryUseful"
+          ],
+          "properties": {
+            "goalId": true,
+            "goalFingerprint": true,
+            "status": {
+              "const": "needs_developer_review"
+            },
+            "memoryUseful": {
+              "const": null
+            }
+          }
+        }
+      ]
+    },
+    "activeCardDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "deckId",
+        "cardId",
+        "cardFingerprint",
+        "status",
+        "necessary",
+        "originGoalIds"
+      ],
+      "properties": {
+        "deckId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "cardId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "cardFingerprint": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "status": {
+          "const": "kept"
+        },
+        "necessary": {
+          "const": true
+        },
+        "originGoalIds": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 10000,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/stableId"
+          }
+        }
+      }
+    },
+    "goalVisualizationLane": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reviewId",
+        "ruleVersion",
+        "status",
+        "scopeGoalCount",
+        "missingGoalCount",
+        "missingGoalIds",
+        "decisionCount",
+        "approvedCount",
+        "openCount",
+        "decisions"
+      ],
+      "properties": {
+        "reviewId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "ruleVersion": {
+          "$ref": "#/$defs/stableId"
+        },
+        "status": {
+          "$ref": "#/$defs/laneStatus"
+        },
+        "scopeGoalCount": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "missingGoalCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "missingGoalIds": {
+          "type": "array",
+          "maxItems": 1000000,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/stableId"
+          }
+        },
+        "decisionCount": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "approvedCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "openCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "decisions": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 1000000,
+          "items": {
+            "$ref": "#/$defs/goalVisualizationDecision"
+          }
+        }
+      }
+    },
+    "goalVisualizationDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "goalId",
+        "assetSha256",
+        "status"
+      ],
+      "properties": {
+        "goalId": {
+          "$ref": "#/$defs/stableId"
+        },
+        "assetSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "status": {
+          "enum": [
+            "human-approved",
+            "pending-human-review",
+            "rejected",
+            "deferred-provider-limitation"
+          ]
+        }
+      }
+    }
+  }
+}

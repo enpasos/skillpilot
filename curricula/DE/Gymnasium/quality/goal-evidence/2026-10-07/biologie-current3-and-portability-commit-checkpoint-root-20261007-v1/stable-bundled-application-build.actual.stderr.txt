@@ -1,0 +1,23 @@
+node:fs:3047
+  binding.copyFile(
+          ^
+
+Error: EACCES: permission denied, copyfile '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/visualizations/chemie/23533087-89ea-5f29-8ec1-9f2e01197bb6/23533087-89ea-5f29-8ec1-9f2e01197bb6.png' -> '/home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/chemie/23533087-89ea-5f29-8ec1-9f2e01197bb6/23533087-89ea-5f29-8ec1-9f2e01197bb6.png'
+    at Object.copyFileSync (node:fs:3047:11)
+    at deployGoalVisualizations (/home/enpasos/projects/skillpilot/scripts/deploy_goal_visualizations.ts:36:10)
+    at path (/home/enpasos/projects/skillpilot/scripts/deploy_goal_visualizations.ts:45:1)
+    at Object.<anonymous> (/home/enpasos/projects/skillpilot/scripts/deploy_goal_visualizations.ts:45:26)
+    at Module._compile (node:internal/modules/cjs/loader:1521:14)
+    at Object.transformer (/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-D46fvsV_.cjs:3:1104)
+    at Module.load (node:internal/modules/cjs/loader:1266:32)
+    at Module._load (node:internal/modules/cjs/loader:1091:12)
+    at cjsLoader (node:internal/modules/esm/translators:298:15)
+    at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:240:7) {
+  errno: -13,
+  code: 'EACCES',
+  syscall: 'copyfile',
+  path: '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/visualizations/chemie/23533087-89ea-5f29-8ec1-9f2e01197bb6/23533087-89ea-5f29-8ec1-9f2e01197bb6.png',
+  dest: '/home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/chemie/23533087-89ea-5f29-8ec1-9f2e01197bb6/23533087-89ea-5f29-8ec1-9f2e01197bb6.png'
+}
+
+Node.js v20.20.2

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-four-final-native-targeted-d-independent-b-20261007-v1.p-c441-b",
+  "bundleFingerprint": "sha256:9c9487af80b3711bf58c07af2a179b017b8e487e4c98f8105c3104ab95235107",
+  "bookDigest": "sha256:cf197f3cd5925bbcde51fbe06f72b4a41c9c7c9c77cba5183ba3baa556ad2f3f",
+  "provider": "OpenAI",
+  "model": "unspecified",
+  "role": "assessment_adversarial_reviewer",
+  "promptFamilyId": "chemistry-positive-understanding-evidence-profile-review-v1",
+  "promptFingerprint": "sha256:42448c4d76657964ff545ef2e9d5e6ca09b89017c8391258ac101d8ad27240db",
+  "criteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "generationParametersFingerprint": "sha256:834ed4bd791289be01f829c8c0d634e720085cc9a4cac08785805662f28ca6f1",
+  "independenceGroupId": "chemie-four-final-native-targeted-d-independent-b-20261007-v1.p-c441-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "c441d9e8-d9d9-5e55-a189-a37345541321"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:cf197f3cd5925bbcde51fbe06f72b4a41c9c7c9c77cba5183ba3baa556ad2f3f"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:2428413177dbb91e668c08d6f5785c36e68c561aeae3c72a7407fd26b1a0feab"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:71052afe17ea5bf162e0cccc55a742a606ece53aa141c7f9572f90bb6bc48af8"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:42448c4d76657964ff545ef2e9d5e6ca09b89017c8391258ac101d8ad27240db"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835"
+    }
+  ],
+  "startedAt": "2026-10-07T07:36:22.469154+00:00",
+  "completedAt": "2026-10-07T07:36:22.529455+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:4c34531c4b652beeaafc91d8b3d2ed26606d4d1cd243887a1a108057297a4b48",
+  "toolchainVersion": "codex-current-native-binding-20261007"
+}

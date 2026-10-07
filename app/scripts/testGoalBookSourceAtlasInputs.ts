@@ -125,13 +125,14 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   }
 
   const biology = checkGoalBookSourceAtlasInputs('app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json', root)
-  // Seven independently reviewed genetics atoms extend the preserved 383-goal atlas.
-  assert.deepEqual(biology.receipt.counts, { canonicalCurricularAtomicGoals: 390, publishedCurricularAtomicGoals: 390, sourceViews: 22, unresolvedSourceScopeDecisions: 0, omittedGoals: 0 })
-  // Current direct source bindings add methylation in BY/HE, transcription
-  // factors in BY, and the separate bacterial-fission atom in HE LK.
+  // Reviewed genetics atoms and the current bounded neurobiology routes retain
+  // the complete current 391-goal atlas, including the reviewed ENG/EKG atom.
+  assert.deepEqual(biology.receipt.counts, { canonicalCurricularAtomicGoals: 391, publishedCurricularAtomicGoals: 391, sourceViews: 22, unresolvedSourceScopeDecisions: 0, omittedGoals: 0 })
+  // Current independent source reviews correct the selected neurobiology
+  // scopes and add explicit component routes without closing broad source HOLDs.
   assert.deepEqual(biology.receipt.scopes.filter(s => s.stage === 'SekII').map(s => [s.key, s.goalIds.length]), [
-    ['DE-BY/SekII/GK', 90], ['DE-BY/SekII/LK', 117], ['DE-HE/SekII/GK', 77], ['DE-HE/SekII/LK', 159],
-    ['DE-ST/SekII/GK', 3], ['DE-ST/SekII/LK', 3],
+    ['DE-BY/SekII/GK', 92], ['DE-BY/SekII/LK', 122], ['DE-HE/SekII/GK', 81], ['DE-HE/SekII/LK', 161],
+    ['DE-ST/SekII/GK', 6], ['DE-ST/SekII/LK', 6],
   ])
   // Direct source scope remains bounded: prerequisite availability does not
   // become source coverage; ST's common entry phase is projected into both
@@ -144,6 +145,16 @@ export const testGoalBookSourceAtlasInputs = (): void => {
     ['9d830422-acc7-5fa8-aee9-4dae4cedbf49', ['DE-MV/SekI/']],
     ['d0c3e6a7-581b-57bd-8027-e940c6b77af8', ['DE-MV/SekI/', 'DE-SN/SekI/', 'DE-ST/SekII/GK', 'DE-ST/SekII/LK', 'DE-TH/SekI/']],
     ['aab2a358-b2ee-57a5-a957-8fb9845506b1', ['DE-TH/SekI/']],
+    ['4f631f78-e13a-58e5-9092-f4db0b8d377a', ['DE-BY/SekII/LK', 'DE-HE/SekII/LK']],
+    ['8b23f8fb-555d-5720-b5f2-dd6f28a0e786', ['DE-BY/SekII/LK']],
+    ['97b24279-def0-5ce6-8726-a1cac9cd38ad', ['DE-BY/SekII/LK', 'DE-HE/SekII/LK']],
+    ['9b966664-906b-5a5d-8008-cae18de043aa', ['DE-BY/SekII/GK', 'DE-BY/SekII/LK']],
+    ['485ef1c3-8997-52b7-91f5-b1ddf179013d', ['DE-BY/SekII/LK', 'DE-HE/SekII/LK']],
+    ['afde0001-d7d7-5ed3-8a60-383e8da5620e', ['DE-HE/SekII/LK']],
+    ['11675f1a-5de2-5926-be78-1e8275f19f5b', ['DE-BY/SekII/LK']],
+    ['a46cafde-7359-5249-8754-19aaa3174ba4', ['DE-BY/SekII/LK', 'DE-HE/SekII/LK']],
+    ['c9a06264-cce2-54dd-9604-46dd5949f02e', ['DE-BY/SekII/LK', 'DE-HE/SekII/LK']],
+    ['f6280154-d57c-599c-94bf-73313005a6df', ['DE-BY/SekII/GK', 'DE-BY/SekII/LK', 'DE-HE/SekII/GK', 'DE-HE/SekII/LK']],
   ] as const) {
     assert.deepEqual(biology.receipt.scopes.filter(s => s.goalIds.includes(goalId)).map(s => s.key), expectedScopes, `${goalId}: exact independently reviewed source scope`)
     assert.ok(biology.receipt.scopes.flatMap(s => s.witnesses.filter(w => w.goalId === goalId)).every(w => w.coverage === 'direct'), `${goalId}: no inherited source-coverage claim`)

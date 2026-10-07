@@ -1,0 +1,410 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json",
+  "title": "SkillPilot JSON curriculum package manifest v1",
+  "description": "Strict internal manifest contract for the JSON runtime package variant. Paths are relative to the single archive root.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "packageFormatVersion",
+    "runtimeContractVersion",
+    "releaseProfile",
+    "variant",
+    "releaseId",
+    "packageId",
+    "packageVersion",
+    "curriculumEdition",
+    "contentDigest",
+    "archiveRoot",
+    "supportedSkillpilotSoftware",
+    "licenseDocuments",
+    "contractBindings",
+    "files"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/package-manifest.schema.json"
+    },
+    "packageFormatVersion": {
+      "const": "1.0"
+    },
+    "runtimeContractVersion": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*\\.[0-9]+$"
+    },
+    "releaseProfile": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*$"
+    },
+    "variant": {
+      "const": "json"
+    },
+    "releaseId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*(?:\\.[a-z0-9]+(?:[._-][a-z0-9]+)*)+@[0-9A-Za-z.+-]+$"
+    },
+    "packageId": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)*(?:\\.[a-z0-9]+(?:[._-][a-z0-9]+)*)+$"
+    },
+    "packageVersion": {
+      "$ref": "#/$defs/semanticVersion"
+    },
+    "curriculumEdition": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "contentDigest": {
+      "$ref": "#/$defs/sha256Digest"
+    },
+    "archiveRoot": {
+      "$ref": "#/$defs/portablePathSegment"
+    },
+    "supportedSkillpilotSoftware": {
+      "$ref": "#/$defs/softwareVersionRange"
+    },
+    "licenseDocuments": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 1024,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/licenseDocument"
+      }
+    },
+    "contractBindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifestSchema",
+        "releaseProfile",
+        "runtimeCatalogSchema",
+        "schemaCatalogSchema",
+        "semanticNormalForm",
+        "fieldSemanticsRegistry",
+        "definitionDigestProfile",
+        "curriculumOntologyProfile",
+        "publicationEvidenceProfile"
+      ],
+      "properties": {
+        "manifestSchema": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "releaseProfile": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "runtimeCatalogSchema": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "schemaCatalogSchema": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "semanticNormalForm": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "fieldSemanticsRegistry": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "definitionDigestProfile": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "curriculumOntologyProfile": {
+          "$ref": "#/$defs/contractBinding"
+        },
+        "publicationEvidenceProfile": {
+          "$ref": "#/$defs/contractBinding"
+        }
+      }
+    },
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 59998,
+      "items": {
+        "$ref": "#/$defs/fileRecord"
+      }
+    }
+  },
+  "$defs": {
+    "semanticVersion": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "softwareVersionRange": {
+      "type": "string",
+      "pattern": "^>=(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*) <(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)$"
+    },
+    "sha256Digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "portablePathSegment": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 180,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "packageRelativePath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 180,
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+    },
+    "mediaType": {
+      "type": "string",
+      "pattern": "^[a-z0-9!#$&^_.+-]+/[a-z0-9!#$&^_.+-]+$"
+    },
+    "contractBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "path": {
+          "$ref": "#/$defs/packageRelativePath"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "licenseDocument": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "licenseId",
+        "path"
+      ],
+      "properties": {
+        "licenseId": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9][A-Za-z0-9.+-]*$"
+        },
+        "path": {
+          "$ref": "#/$defs/packageRelativePath"
+        }
+      }
+    },
+    "fileRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "role",
+        "mediaType",
+        "bytes",
+        "sha256",
+        "runtimeRequired",
+        "semanticBinding",
+        "licenseExpression",
+        "provenanceClass",
+        "redistributionStatus"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/packageRelativePath"
+        },
+        "role": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+        },
+        "mediaType": {
+          "$ref": "#/$defs/mediaType"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000000
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "runtimeRequired": {
+          "type": "boolean"
+        },
+        "semanticBinding": {
+          "$ref": "#/$defs/semanticBinding"
+        },
+        "licenseExpression": {
+          "oneOf": [
+            {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 500,
+              "pattern": "^\\S(?:.*\\S)?$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "provenanceClass": {
+          "enum": [
+            "skillpilot-authored",
+            "skillpilot-authored-deterministic-render",
+            "official-source-metadata",
+            "ai-generated-curated",
+            "user-provided-generated-claim",
+            "third-party",
+            "generated-metadata",
+            "software-contract"
+          ]
+        },
+        "redistributionStatus": {
+          "enum": [
+            "allowed",
+            "review-required",
+            "prohibited"
+          ]
+        },
+        "validationSchemaId": {
+          "$ref": "#/$defs/schemaId"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "redistributionStatus": {
+                "const": "allowed"
+              }
+            },
+            "required": [
+              "redistributionStatus"
+            ]
+          },
+          "then": {
+            "properties": {
+              "licenseExpression": {
+                "type": "string"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "licenseExpression": {
+                "type": "null"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "provenanceClass": {
+                "const": "skillpilot-authored-deterministic-render"
+              }
+            },
+            "required": [
+              "provenanceClass"
+            ]
+          },
+          "then": {
+            "properties": {
+              "role": {
+                "const": "binary-asset"
+              },
+              "mediaType": {
+                "const": "image/png"
+              },
+              "semanticBinding": {
+                "$ref": "#/$defs/binaryResourceBinding"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "semanticBinding": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/logicalArtifactBinding"
+        },
+        {
+          "$ref": "#/$defs/binaryResourceBinding"
+        },
+        {
+          "$ref": "#/$defs/excludedGeneratedBinding"
+        }
+      ]
+    },
+    "logicalArtifactBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "logicalId",
+        "normalizationRole"
+      ],
+      "properties": {
+        "kind": {
+          "const": "logical-artifact"
+        },
+        "logicalId": {
+          "$ref": "#/$defs/semanticIdentifier"
+        },
+        "normalizationRole": {
+          "$ref": "#/$defs/artifactRole"
+        }
+      }
+    },
+    "binaryResourceBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "resourceId"
+      ],
+      "properties": {
+        "kind": {
+          "const": "binary-resource"
+        },
+        "resourceId": {
+          "$ref": "#/$defs/semanticIdentifier"
+        }
+      }
+    },
+    "excludedGeneratedBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "const": "excluded-generated"
+        }
+      }
+    },
+    "artifactRole": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "semanticIdentifier": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:/@+-]*$"
+    },
+    "schemaId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^https://skillpilot\\.com/schemas/(?!.*//)(?!.*(?:^|/)\\.\\.?(?:/|$))[a-z0-9][a-z0-9._~/-]*\\.schema\\.json$"
+    }
+  }
+}

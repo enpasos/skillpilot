@@ -1,0 +1,35 @@
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { resolve } from 'node:path';
+import Ajv2020 from '/home/enpasos/projects/skillpilot/app/node_modules/ajv/dist/2020.js';
+import addFormats from '/home/enpasos/projects/skillpilot/app/node_modules/ajv-formats/dist/index.js';
+import { validatePositiveGoalEvidenceRecordSemantics } from '/home/enpasos/projects/skillpilot/app/scripts/positiveGoalEvidenceProfileModel.ts';
+const root='/home/enpasos/projects/skillpilot';
+const own='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-native-independent-d-b-p-binding-20261007-v1';
+const src='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-final-reviewed-images-native-preparation-20261007-v1';
+const load=(p:string)=>JSON.parse(readFileSync(resolve(root,p),'utf8'));
+const raw=load(src+'/final21-whole-native-image-page-context-source-material-binding-review-input.author.raw.json');
+const config=load(own+'/positive21.final-goal-binding.native.config.json');
+const landscape=load(config.landscapePath);const ledger=load(config.semanticKindLedgerPath);
+const report=load(own+'/positive21.current-page-image-bindings.native-api-check.json');
+const ajv=new Ajv2020({allErrors:true});addFormats(ajv);const validate=ajv.compile(load('contracts/goal-evidence/v2/goal-evidence-profile.schema.json'));
+const rows=readFileSync(resolve(root,own,'positive21.final-image-binding.actual.jsonl'),'utf8').trim().split('\n').map(JSON.parse);
+const errors:string[]=[];
+for(const rec of rows){
+ const goal=landscape.goals.find((g:any)=>g.id===rec.goalId);
+ const kind=ledger.decisions.find((d:any)=>d.goalId===rec.goalId);
+ const binding=report.records.find((r:any)=>r.goalId===rec.goalId);
+ const source=raw.records.find((r:any)=>r.goalId===rec.goalId);
+ if(binding.pageFingerprint!==source.nativeFinalSubsetDInput.pageFingerprint||binding.contextFingerprint!==source.nativeFinalSubsetDContextFingerprint)errors.push(rec.goalId+': native page/context binding stale');
+ const link=goal.resourceLinks.find((l:any)=>l.type==='goal-visualization');
+ const imgpath=raw.privatePublicRootForNativeHtmlAndPdf+'/'+link.url.replace(/^\//,'');
+ const imgdigest='sha256:'+createHash('sha256').update(readFileSync(resolve(root,imgpath))).digest('hex');
+ if(imgdigest!==binding.resourceDigests[link.url])errors.push(rec.goalId+': actual raster digest mismatch');
+ const digests={[link.url]:imgdigest};
+ if(!validate(rec))errors.push(rec.goalId+': '+ajv.errorsText(validate.errors));
+ errors.push(...validatePositiveGoalEvidenceRecordSemantics(rec,goal,digests,kind.semanticKind).map(e=>rec.goalId+': '+e));
+ if(rec.status!=='needs_human_review'||rec.reviewAuthority!=='ai_candidate'||rec.evidenceLevel!=='E1'||rec.maximumClaimScope!=='G1')errors.push(rec.goalId+': authority exceeded');
+}
+if(rows.length!==21)errors.push('Scope must be actual21');
+console.log(JSON.stringify({check:'existing native positive v2 schema and semantic validator with actual isolated PNG resource digests and exact final page/context mapping',records:rows.length,approved:0,needsHumanReview:rows.length,errors,sourceHoldsRetained:true,humanApproval:false,humanTrial:false,strictGain:0},null,2));
+if(errors.length)process.exitCode=1;

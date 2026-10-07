@@ -1,0 +1,1089 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-reverse-compilation-report.schema.json",
+  "title": "SkillPilot FWU-OWL reverse compilation report v1",
+  "description": "External receipt for two isolated, reproducible FWU-OWL to installable JSON runtime package compilations. This report does not compare against the original JSON package and is not a dual-release equivalence verdict.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "reportFormatVersion",
+    "validatorId",
+    "status",
+    "diagnostics",
+    "diagnosticsTruncated"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/fwu-owl-reverse-compilation-report.schema.json"
+    },
+    "reportFormatVersion": {
+      "const": 1
+    },
+    "validatorId": {
+      "const": "skillpilot-fwu-owl-reverse-compilation-validator-v1"
+    },
+    "status": {
+      "enum": [
+        "valid",
+        "invalid",
+        "error"
+      ]
+    },
+    "input": {
+      "$ref": "#/$defs/input"
+    },
+    "compiler": {
+      "$ref": "#/$defs/compiler"
+    },
+    "runner": {
+      "$ref": "#/$defs/runner"
+    },
+    "sandboxEntry": {
+      "$ref": "#/$defs/sandboxEntry"
+    },
+    "packageValidator": {
+      "$ref": "#/$defs/packageValidator"
+    },
+    "isolation": {
+      "$ref": "#/$defs/isolation"
+    },
+    "runs": {
+      "$ref": "#/$defs/runs"
+    },
+    "reproducibility": {
+      "$ref": "#/$defs/reproducibility"
+    },
+    "evidenceManifest": {
+      "$ref": "#/$defs/fileBinding"
+    },
+    "diagnostics": {
+      "type": "array",
+      "maxItems": 500,
+      "items": {
+        "$ref": "#/$defs/diagnostic"
+      }
+    },
+    "diagnosticsTruncated": {
+      "type": "boolean"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "valid"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "input",
+          "compiler",
+          "runner",
+          "sandboxEntry",
+          "packageValidator",
+          "isolation",
+          "runs",
+          "reproducibility",
+          "evidenceManifest"
+        ],
+        "properties": {
+          "input": {
+            "$ref": "#/$defs/passedInput"
+          },
+          "isolation": {
+            "$ref": "#/$defs/passedIsolation"
+          },
+          "runs": {
+            "$ref": "#/$defs/passedRuns"
+          },
+          "reproducibility": {
+            "$ref": "#/$defs/passedReproducibility"
+          },
+          "diagnostics": {
+            "maxItems": 0
+          },
+          "diagnosticsTruncated": {
+            "const": false
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "diagnostics": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "prefixedSha256": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "positiveBytes": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10000000000
+    },
+    "nonNegativeBytes": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10000000000
+    },
+    "nonNegativeInteger": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000000
+    },
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096,
+      "pattern": "^[^\\u0000-\\u001f\\u007f]+$"
+    },
+    "fwuOwlZipPath": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/path"
+        },
+        {
+          "pattern": "\\.fwu-owl\\.zip$"
+        }
+      ]
+    },
+    "reconstructedJsonZipPath": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/path"
+        },
+        {
+          "pattern": "\\.reconstructed\\.json\\.zip$"
+        }
+      ]
+    },
+    "fileBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/path"
+        },
+        "bytes": {
+          "$ref": "#/$defs/positiveBytes"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "evidenceFileBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/path"
+        },
+        "bytes": {
+          "$ref": "#/$defs/nonNegativeBytes"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "fwuOwlPackage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256",
+        "manifestSha256",
+        "contentDigest"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/fwuOwlZipPath"
+        },
+        "bytes": {
+          "$ref": "#/$defs/positiveBytes"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "manifestSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "contentDigest": {
+          "$ref": "#/$defs/prefixedSha256"
+        }
+      }
+    },
+    "gateStatus": {
+      "enum": [
+        "passed",
+        "failed",
+        "not-evaluated"
+      ]
+    },
+    "gateBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/$defs/gateStatus"
+        }
+      }
+    },
+    "gate": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/gateBase"
+        }
+      ]
+    },
+    "gates": {
+      "type": "array",
+      "minItems": 18,
+      "maxItems": 18,
+      "prefixItems": [
+        { "$ref": "#/$defs/archiveSecurityGate" },
+        { "$ref": "#/$defs/manifestSchemaGate" },
+        { "$ref": "#/$defs/profileContractGate" },
+        { "$ref": "#/$defs/inventoryGate" },
+        { "$ref": "#/$defs/contractBindingsGate" },
+        { "$ref": "#/$defs/offlineSchemaCatalogGate" },
+        { "$ref": "#/$defs/semanticContentIndexGate" },
+        { "$ref": "#/$defs/fieldRegistryCoverageGate" },
+        { "$ref": "#/$defs/rdfSyntaxGate" },
+        { "$ref": "#/$defs/rdfSegmentOrderGate" },
+        { "$ref": "#/$defs/rdfBundleGate" },
+        { "$ref": "#/$defs/coreBindingGate" },
+        { "$ref": "#/$defs/ontologyProfileGate" },
+        { "$ref": "#/$defs/shaclGate" },
+        { "$ref": "#/$defs/owl2DlGate" },
+        { "$ref": "#/$defs/reasonerGate" },
+        { "$ref": "#/$defs/binarySidecarsGate" },
+        { "$ref": "#/$defs/fwuReproducibilityGate" }
+      ],
+      "items": false
+    },
+    "archiveSecurityGate": {
+      "$ref": "#/$defs/gate",
+      "properties": { "id": { "const": "archive-security" } }
+    },
+    "manifestSchemaGate": {
+      "$ref": "#/$defs/gate",
+      "properties": { "id": { "const": "manifest-schema" } }
+    },
+    "profileContractGate": {
+      "$ref": "#/$defs/gate",
+      "properties": { "id": { "const": "profile-contract" } }
+    },
+    "inventoryGate": {
+      "$ref": "#/$defs/gate",
+      "properties": { "id": { "const": "inventory" } }
+    },
+    "contractBindingsGate": {
+      "$ref": "#/$defs/gate",
+      "properties": { "id": { "const": "contract-bindings" } }
+    },
+    "offlineSchemaCatalogGate": {
+      "$ref": "#/$defs/gate",
+      "properties": { "id": { "const": "offline-schema-catalog" } }
+    },
+    "semanticContentIndexGate": {
+      "$ref": "#/$defs/gate",
+      "properties": { "id": { "const": "semantic-content-index" } }
+    },
+    "fieldRegistryCoverageGate": {
+      "$ref": "#/$defs/gate",
+      "properties": { "id": { "const": "field-registry-coverage" } }
+    },
+    "rdfSyntaxGate": {
+      "$ref": "#/$defs/gate",
+      "properties": { "id": { "const": "rdf-syntax" } }
+    },
+    "rdfSegmentOrderGate": {
+      "$ref": "#/$defs/gate",
+      "properties": { "id": { "const": "rdf-segment-order" } }
+    },
+    "rdfBundleGate": {
+      "$ref": "#/$defs/gate",
+      "properties": { "id": { "const": "rdf-bundle" } }
+    },
+    "coreBindingGate": {
+      "$ref": "#/$defs/gate",
+      "properties": { "id": { "const": "core-binding" } }
+    },
+    "ontologyProfileGate": {
+      "$ref": "#/$defs/gate",
+      "properties": { "id": { "const": "ontology-profile" } }
+    },
+    "shaclGate": {
+      "$ref": "#/$defs/gate",
+      "properties": { "id": { "const": "shacl" } }
+    },
+    "owl2DlGate": {
+      "$ref": "#/$defs/gate",
+      "properties": { "id": { "const": "owl2-dl" } }
+    },
+    "reasonerGate": {
+      "$ref": "#/$defs/gate",
+      "properties": { "id": { "const": "reasoner" } }
+    },
+    "binarySidecarsGate": {
+      "$ref": "#/$defs/gate",
+      "properties": { "id": { "const": "binary-sidecars" } }
+    },
+    "fwuReproducibilityGate": {
+      "$ref": "#/$defs/gate",
+      "properties": { "id": { "const": "reproducibility" } }
+    },
+    "passedGate": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/gate"
+        },
+        {
+          "properties": {
+            "status": {
+              "const": "passed"
+            }
+          }
+        }
+      ]
+    },
+    "passedGates": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/gates"
+        },
+        {
+          "items": {
+            "$ref": "#/$defs/passedGate"
+          }
+        }
+      ]
+    },
+    "fwuValidationReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256",
+        "validatorId",
+        "reportFormatVersion",
+        "status",
+        "packageZipSha256",
+        "manifestSha256",
+        "gates"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/path"
+        },
+        "bytes": {
+          "$ref": "#/$defs/positiveBytes"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "validatorId": {
+          "const": "skillpilot-fwu-owl-package-validator-v1"
+        },
+        "reportFormatVersion": {
+          "const": 1
+        },
+        "status": {
+          "enum": [
+            "valid",
+            "invalid",
+            "error"
+          ]
+        },
+        "packageZipSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "manifestSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "gates": {
+          "$ref": "#/$defs/gates"
+        }
+      }
+    },
+    "passedFwuValidationReceipt": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/fwuValidationReceipt"
+        },
+        {
+          "properties": {
+            "status": {
+              "const": "valid"
+            },
+            "gates": {
+              "$ref": "#/$defs/passedGates"
+            }
+          }
+        }
+      ]
+    },
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fwuOwlPackage",
+        "validationReceipt"
+      ],
+      "properties": {
+        "fwuOwlPackage": {
+          "$ref": "#/$defs/fwuOwlPackage"
+        },
+        "validationReceipt": {
+          "$ref": "#/$defs/fwuValidationReceipt"
+        }
+      }
+    },
+    "passedInput": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/input"
+        },
+        {
+          "properties": {
+            "validationReceipt": {
+              "$ref": "#/$defs/passedFwuValidationReceipt"
+            }
+          }
+        }
+      ]
+    },
+    "compiler": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "executable"
+      ],
+      "properties": {
+        "id": {
+          "const": "skillpilot-fwu-owl-reverse-compiler-v1"
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "executable": {
+          "$ref": "#/$defs/fileBinding"
+        }
+      }
+    },
+    "runner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "executable"
+      ],
+      "properties": {
+        "id": {
+          "const": "skillpilot-fwu-owl-reverse-hermetic-runner"
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "executable": {
+          "$ref": "#/$defs/fileBinding"
+        }
+      }
+    },
+    "sandboxEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "executable"
+      ],
+      "properties": {
+        "id": {
+          "const": "skillpilot-fwu-owl-reverse-sandbox-entry"
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "executable": {
+          "$ref": "#/$defs/fileBinding"
+        }
+      }
+    },
+    "packageValidator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "executable"
+      ],
+      "properties": {
+        "id": {
+          "const": "skillpilot-full-standalone-package-validator-v2"
+        },
+        "version": {
+          "const": "2.0.0"
+        },
+        "executable": {
+          "$ref": "#/$defs/fileBinding"
+        }
+      }
+    },
+    "toolBinding": {
+      "$ref": "#/$defs/fileBinding"
+    },
+    "traceEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256",
+        "forbiddenReadCount",
+        "networkAttemptCount"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/path"
+        },
+        "bytes": {
+          "$ref": "#/$defs/positiveBytes"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "forbiddenReadCount": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "networkAttemptCount": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        }
+      }
+    },
+    "passedTraceEvidence": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/traceEvidence"
+        },
+        {
+          "properties": {
+            "forbiddenReadCount": {
+              "const": 0
+            },
+            "networkAttemptCount": {
+              "const": 0
+            }
+          }
+        }
+      ]
+    },
+    "isolation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "mechanism",
+        "sandboxTool",
+        "traceTool",
+        "pythonRuntime",
+        "originalJsonPackageAccessible",
+        "authoringCheckoutAccessible",
+        "forwardExporterAccessible",
+        "networkAccessible",
+        "runA",
+        "runB"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "passed",
+            "failed",
+            "not-evaluated"
+          ]
+        },
+        "mechanism": {
+          "const": "bubblewrap-clearenv-readonly-input-strace-v1"
+        },
+        "sandboxTool": {
+          "$ref": "#/$defs/toolBinding"
+        },
+        "traceTool": {
+          "$ref": "#/$defs/toolBinding"
+        },
+        "pythonRuntime": {
+          "$ref": "#/$defs/pythonRuntime"
+        },
+        "originalJsonPackageAccessible": {
+          "type": "boolean"
+        },
+        "authoringCheckoutAccessible": {
+          "type": "boolean"
+        },
+        "forwardExporterAccessible": {
+          "type": "boolean"
+        },
+        "networkAccessible": {
+          "type": "boolean"
+        },
+        "runA": {
+          "$ref": "#/$defs/traceEvidence"
+        },
+        "runB": {
+          "$ref": "#/$defs/traceEvidence"
+        }
+      }
+    },
+    "passedIsolation": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/isolation"
+        },
+        {
+          "properties": {
+            "status": {
+              "const": "passed"
+            },
+            "originalJsonPackageAccessible": {
+              "const": false
+            },
+            "authoringCheckoutAccessible": {
+              "const": false
+            },
+            "forwardExporterAccessible": {
+              "const": false
+            },
+            "networkAccessible": {
+              "const": false
+            },
+            "pythonRuntime": {
+              "$ref": "#/$defs/passedPythonRuntime"
+            },
+            "runA": {
+              "$ref": "#/$defs/passedTraceEvidence"
+            },
+            "runB": {
+              "$ref": "#/$defs/passedTraceEvidence"
+            }
+          }
+        }
+      ]
+    },
+    "pythonRuntime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "executable",
+        "version",
+        "minimumVersion",
+        "siteEnabled",
+        "mountedRoots"
+      ],
+      "properties": {
+        "executable": {
+          "$ref": "#/$defs/fileBinding"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+        },
+        "minimumVersion": {
+          "const": "3.10"
+        },
+        "siteEnabled": {
+          "type": "boolean"
+        },
+        "mountedRoots": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^/[A-Za-z0-9._/-]+$"
+          }
+        }
+      }
+    },
+    "passedPythonRuntime": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/pythonRuntime"
+        },
+        {
+          "properties": {
+            "siteEnabled": {
+              "const": false
+            }
+          }
+        }
+      ]
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "zipEntries",
+        "manifestFiles",
+        "checksumRows",
+        "logicalArtifacts",
+        "binaryResources",
+        "binaryBytes"
+      ],
+      "properties": {
+        "zipEntries": {
+          "type": "integer",
+          "minimum": 3,
+          "maximum": 60000
+        },
+        "manifestFiles": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 59998
+        },
+        "checksumRows": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 59999
+        },
+        "logicalArtifacts": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "binaryResources": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 50000
+        },
+        "binaryBytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3000000000
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256",
+        "manifestSha256",
+        "contentDigest",
+        "counts"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/reconstructedJsonZipPath"
+        },
+        "bytes": {
+          "$ref": "#/$defs/positiveBytes"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "manifestSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "contentDigest": {
+          "$ref": "#/$defs/prefixedSha256"
+        },
+        "counts": {
+          "$ref": "#/$defs/counts"
+        }
+      }
+    },
+    "jsonValidationReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256",
+        "validatorId",
+        "status",
+        "errorCount",
+        "packageZipSha256",
+        "manifestSha256"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/path"
+        },
+        "bytes": {
+          "$ref": "#/$defs/positiveBytes"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "validatorId": {
+          "const": "skillpilot-full-standalone-package-validator-v2"
+        },
+        "status": {
+          "enum": [
+            "valid",
+            "invalid",
+            "error"
+          ]
+        },
+        "errorCount": {
+          "$ref": "#/$defs/nonNegativeInteger"
+        },
+        "packageZipSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "manifestSha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "passedJsonValidationReceipt": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/jsonValidationReceipt"
+        },
+        {
+          "properties": {
+            "status": {
+              "const": "valid"
+            },
+            "errorCount": {
+              "const": 0
+            }
+          }
+        }
+      ]
+    },
+    "run": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "output",
+        "validationReceipt",
+        "evidence"
+      ],
+      "properties": {
+        "output": {
+          "$ref": "#/$defs/output"
+        },
+        "validationReceipt": {
+          "$ref": "#/$defs/jsonValidationReceipt"
+        },
+        "evidence": {
+          "$ref": "#/$defs/runEvidence"
+        }
+      }
+    },
+    "runEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "compilerReport",
+        "isolationProbe",
+        "sandboxLog",
+        "outputTreeManifest",
+        "fullValidatorLog",
+        "runtimeClosureManifest",
+        "hostRawTrace",
+        "traceProcessTreeManifest"
+      ],
+      "properties": {
+        "compilerReport": {
+          "$ref": "#/$defs/evidenceFileBinding"
+        },
+        "isolationProbe": {
+          "$ref": "#/$defs/evidenceFileBinding"
+        },
+        "sandboxLog": {
+          "$ref": "#/$defs/evidenceFileBinding"
+        },
+        "outputTreeManifest": {
+          "$ref": "#/$defs/evidenceFileBinding"
+        },
+        "fullValidatorLog": {
+          "$ref": "#/$defs/evidenceFileBinding"
+        },
+        "runtimeClosureManifest": {
+          "$ref": "#/$defs/evidenceFileBinding"
+        },
+        "hostRawTrace": {
+          "$ref": "#/$defs/evidenceFileBinding"
+        },
+        "traceProcessTreeManifest": {
+          "$ref": "#/$defs/evidenceFileBinding"
+        }
+      }
+    },
+    "passedRun": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/run"
+        },
+        {
+          "properties": {
+            "validationReceipt": {
+              "$ref": "#/$defs/passedJsonValidationReceipt"
+            }
+          }
+        }
+      ]
+    },
+    "runs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runA",
+        "runB"
+      ],
+      "properties": {
+        "runA": {
+          "$ref": "#/$defs/run"
+        },
+        "runB": {
+          "$ref": "#/$defs/run"
+        }
+      }
+    },
+    "passedRuns": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/runs"
+        },
+        {
+          "properties": {
+            "runA": {
+              "$ref": "#/$defs/passedRun"
+            },
+            "runB": {
+              "$ref": "#/$defs/passedRun"
+            }
+          }
+        }
+      ]
+    },
+    "reproducibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "sourceDateEpoch",
+        "locale",
+        "timezone",
+        "zipByteIdentical",
+        "manifestByteIdentical"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "passed",
+            "failed",
+            "not-evaluated"
+          ]
+        },
+        "sourceDateEpoch": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 253402300799
+        },
+        "locale": {
+          "const": "C.UTF-8"
+        },
+        "timezone": {
+          "const": "UTC"
+        },
+        "zipByteIdentical": {
+          "type": "boolean"
+        },
+        "manifestByteIdentical": {
+          "type": "boolean"
+        }
+      }
+    },
+    "passedReproducibility": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/reproducibility"
+        },
+        {
+          "properties": {
+            "status": {
+              "const": "passed"
+            },
+            "zipByteIdentical": {
+              "const": true
+            },
+            "manifestByteIdentical": {
+              "const": true
+            }
+          }
+        }
+      ]
+    },
+    "diagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "code",
+        "location",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "^[A-Z][A-Z0-9_]{2,100}$"
+        },
+        "location": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4000
+        }
+      }
+    }
+  }
+}

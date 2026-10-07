@@ -1,0 +1,44 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "bundleFingerprint": "sha256:168aff80f28813e63c5c6a3f1c532c8944ac75533dc2c2f0a38d06020a5b3845",
+  "bookDigest": "sha256:d5abafc3cdcda57af99ee6d0ead3cd495fae1e222c1a71d325ca534c52e757cd",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex; exact runtime version not exposed",
+  "role": "subject_reviewer",
+  "generationParametersFingerprint": "sha256:b870d1d7f097b030c19b43a8e57dc03ea32218ce0bec429cc6d675340f1856bd",
+  "independenceGroupId": "biology-three-source-fresh-independent-b-20261007",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+    "11675f1a-5de2-5926-be78-1e8275f19f5b",
+    "e70d8a85-2dea-5165-919b-200fee9f4db4"
+  ],
+  "startedAt": "2026-10-07T08:43:25.391842+00:00",
+  "completedAt": "2026-10-07T08:50:49.954144+00:00",
+  "status": "completed",
+  "toolchainVersion": "native-unchanged-20261007",
+  "runId": "biology-three-current-fresh-b-positive-20261007-v1",
+  "promptFamilyId": "biology-positive-understanding-evidence-v2",
+  "promptFingerprint": "sha256:4daeb50d016239e161276a73b4f110bf669d59ab9e7f6af7f43a0e05b523a148",
+  "criteriaFingerprint": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8",
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:4daeb50d016239e161276a73b4f110bf669d59ab9e7f6af7f43a0e05b523a148"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:5e3063589a933834573f95cde4c78e17a52f93eddae1f6e95a96a0ea7cea1c69"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:dc3f3a32476ca3b1959c503dfb208d8b961251d2eb7629b707ff022aa5e4d01e"
+    }
+  ],
+  "outputDigest": "sha256:2d4edf415adcbfff4fa6ed7dcb58a06bf880707d54fa92f13b3942ee72fae5c2"
+}

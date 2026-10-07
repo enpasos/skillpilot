@@ -1,0 +1,37 @@
+{
+  "tests": {
+    "command": "python -B scripts/test_validate_schemas_symlinks.py -v",
+    "exitCode": 0,
+    "testCount": 8
+  },
+  "diffCheck": {
+    "exitCode": 0
+  },
+  "currentGuard": {
+    "total": 352,
+    "absolute": 352,
+    "uncommittableTargets": 0,
+    "danglingOrCyclic": 0,
+    "outside": 0
+  },
+  "firstDossierPayloadsVerifiedUnchanged": 387,
+  "firstDossierFreezeSha256": "a631aa758d52bfef8ea9bf61531732f619a78ac30c36b6b5d3874e2723b3cd25",
+  "authorAppliedLinks": 0,
+  "activeSources": [
+    {
+      "path": "scripts/validate_schemas.py",
+      "sha256": "e92ed9b240ec601c6e326d57cd79659414ccadfea88cabe0f63f20bf98246664",
+      "bytes": 26333
+    },
+    {
+      "path": "scripts/test_validate_schemas_symlinks.py",
+      "sha256": "c9caf99540ae9c922149ba749bc517947db61e24e8b50be0a3b93d0a12aa3a5b",
+      "bytes": 4034
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "sha256": "24f704b10435e48cac2b4eefa6fbdb70697efd9636589c9570534b6ed5bde42f",
+      "bytes": 30979
+    }
+  ]
+}

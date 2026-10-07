@@ -1,0 +1,860 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/package-redistribution-review.schema.json",
+  "title": "SkillPilot curriculum package redistribution review v1",
+  "description": "Hash-bound authoring ledger for redistribution decisions. Provenance claims never imply a license, and pending decisions never imply permission to publish.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "reviewFormatVersion",
+    "reviewId",
+    "packageId",
+    "contentDigest",
+    "sourceReleaseModel",
+    "targetReleaseProfile",
+    "rootLicenseEvidence",
+    "projectLicenseGrant",
+    "classDecisions",
+    "pathClassificationOverrides",
+    "assetSetSha256",
+    "assetDecisions",
+    "summary"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/package-redistribution-review.schema.json"
+    },
+    "reviewFormatVersion": {
+      "const": "1.0"
+    },
+    "reviewId": {
+      "const": "de-gymnasium-mathematik-v1"
+    },
+    "packageId": {
+      "const": "org.skillpilot.curriculum.de.gymnasium.mathematik"
+    },
+    "contentDigest": {
+      "$ref": "#/$defs/sha256Digest"
+    },
+    "sourceReleaseModel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profileId",
+        "releaseId",
+        "resourceIndexPath",
+        "resourceIndexSha256",
+        "buildInputsPath",
+        "buildInputsSha256"
+      ],
+      "properties": {
+        "profileId": {
+          "const": "de-gymnasium-mathematik-release-model-v1"
+        },
+        "releaseId": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "resourceIndexPath": {
+          "const": "data/resources/resource-index.json"
+        },
+        "resourceIndexSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "buildInputsPath": {
+          "const": "metadata/build-inputs.json"
+        },
+        "buildInputsSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        }
+      }
+    },
+    "targetReleaseProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profileId",
+        "path",
+        "sha256",
+        "nonBinaryRoles"
+      ],
+      "properties": {
+        "profileId": {
+          "const": "full-standalone-v1"
+        },
+        "path": {
+          "const": "contracts/curriculum-package/v1/profiles/full-standalone-v1.profile.json"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "nonBinaryRoles": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 100,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          }
+        }
+      }
+    },
+    "rootLicenseEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "licenseId",
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "licenseId": {
+          "const": "Apache-2.0"
+        },
+        "path": {
+          "const": "LICENSE"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 1000000
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256Digest"
+        }
+      }
+    },
+    "projectLicenseGrant": {
+      "description": "The owner's Apache-2.0 software grant and CC-BY-4.0 grant for SkillPilot-owned skill landscapes and educational content, including owned portions of data, documentation and illustrations. This does not decide third-party rights or change any redistribution decision.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "softwareLicenseExpression", "contentLicenseExpression", "contentLicenseDocument",
+        "scope", "decisionDate", "decisionAuthority",
+        "decisionReference", "policyPath", "policySha256", "policyBytes",
+        "policyText", "doesNotClearRedistribution"
+      ],
+      "properties": {
+        "softwareLicenseExpression": { "const": "Apache-2.0" },
+        "contentLicenseExpression": { "const": "CC-BY-4.0" },
+        "contentLicenseDocument": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "bytes", "sha256"],
+          "properties": {
+            "path": { "const": "LICENSES/CC-BY-4.0.txt" },
+            "bytes": { "type": "integer", "minimum": 1, "maximum": 100000 },
+            "sha256": { "$ref": "#/$defs/sha256Digest" }
+          }
+        },
+        "scope": { "const": "skillpilot-owned-contributions" },
+        "decisionDate": { "const": "2026-09-21" },
+        "decisionAuthority": { "const": "project-owner" },
+        "decisionReference": { "const": "LICENSING.md#project-rule" },
+        "policyPath": { "const": "LICENSING.md" },
+        "policySha256": { "$ref": "#/$defs/sha256Digest" },
+        "policyBytes": { "type": "integer", "minimum": 1, "maximum": 100000 },
+        "policyText": { "type": "string", "minLength": 1, "maxLength": 100000 },
+        "doesNotClearRedistribution": { "const": true }
+      }
+    },
+    "classDecisions": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "$ref": "#/$defs/classDecision"
+      }
+    },
+    "pathClassificationOverrides": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 20,
+      "items": {
+        "$ref": "#/$defs/pathClassificationOverride"
+      }
+    },
+    "assetSetSha256": {
+      "$ref": "#/$defs/sha256Digest"
+    },
+    "assetDecisions": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 100000,
+      "items": {
+        "$ref": "#/$defs/assetDecision"
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "classDecisionCount",
+        "automaticAllowedClassCount",
+        "pendingClassCount",
+        "humanApprovedClassCount",
+        "prohibitedClassCount",
+        "assetCount",
+        "externalResourceCount",
+        "userProvidedAssetCount",
+        "pendingAssetCount",
+        "humanApprovedAssetCount",
+        "prohibitedAssetCount",
+        "humanReviewItemCount",
+        "publicationReady"
+      ],
+      "properties": {
+        "classDecisionCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "automaticAllowedClassCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "pendingClassCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "humanApprovedClassCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "prohibitedClassCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "assetCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "externalResourceCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "userProvidedAssetCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "pendingAssetCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "humanApprovedAssetCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "prohibitedAssetCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "humanReviewItemCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "publicationReady": {
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "nonBlankText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "nullableNonBlankText": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "sha256Digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "repositoryPath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+    },
+    "artifactPath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240,
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+    },
+    "resourceId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "goalId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "deterministicRenderEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contractId",
+        "sourcePath",
+        "sourceBytes",
+        "sourceSha256",
+        "renderer",
+        "rendererVersion",
+        "width",
+        "height",
+        "format",
+        "command",
+        "outputBytes",
+        "outputSha256"
+      ],
+      "properties": {
+        "contractId": {
+          "const": "rsvg-convert-fixed-png-v1"
+        },
+        "sourcePath": {
+          "$ref": "#/$defs/repositoryPath"
+        },
+        "sourceBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 67108864
+        },
+        "sourceSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "renderer": {
+          "const": "librsvg rsvg-convert"
+        },
+        "rendererVersion": {
+          "type": "string",
+          "pattern": "^[0-9]+(?:\\.[0-9]+){2}$"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16384
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16384
+        },
+        "format": {
+          "const": "png"
+        },
+        "command": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "outputBytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 67108864
+        },
+        "outputSha256": {
+          "$ref": "#/$defs/sha256Digest"
+        }
+      }
+    },
+    "licenseExpression": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 500,
+      "pattern": "^\\S(?:.*\\S)?$"
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind",
+        "reference",
+        "sha256"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "root-license",
+            "project-license-decision",
+            "provider-terms-review",
+            "uploader-rights-attestation",
+            "official-work-legal-review",
+            "rights-holder-license"
+          ]
+        },
+        "reference": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "sha256": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256Digest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "decisionFields": {
+      "type": "object",
+      "required": [
+        "decisionStatus",
+        "redistributionStatus",
+        "licenseExpression",
+        "reviewer",
+        "reviewedAt",
+        "reviewEvidence"
+      ],
+      "properties": {
+        "decisionStatus": {
+          "enum": [
+            "pending-human-review",
+            "automatic-allowed",
+            "human-approved",
+            "prohibited"
+          ]
+        },
+        "redistributionStatus": {
+          "enum": [
+            "allowed",
+            "review-required",
+            "prohibited"
+          ]
+        },
+        "licenseExpression": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/licenseExpression"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reviewer": {
+          "$ref": "#/$defs/nullableNonBlankText"
+        },
+        "reviewedAt": {
+          "oneOf": [
+            {
+              "type": "string",
+              "format": "date-time"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reviewEvidence": {
+          "type": "array",
+          "maxItems": 50,
+          "items": {
+            "$ref": "#/$defs/evidence"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "decisionStatus": {
+                "const": "pending-human-review"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "redistributionStatus": {
+                "const": "review-required"
+              },
+              "licenseExpression": {
+                "type": "null"
+              },
+              "reviewer": {
+                "type": "null"
+              },
+              "reviewedAt": {
+                "type": "null"
+              },
+              "reviewEvidence": {
+                "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "decisionStatus": {
+                "const": "automatic-allowed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "redistributionStatus": {
+                "const": "allowed"
+              },
+              "licenseExpression": {
+                "const": "Apache-2.0"
+              },
+              "reviewer": {
+                "type": "null"
+              },
+              "reviewedAt": {
+                "type": "null"
+              },
+              "reviewEvidence": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "decisionStatus": {
+                "const": "human-approved"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "redistributionStatus": {
+                "const": "allowed"
+              },
+              "licenseExpression": {
+                "$ref": "#/$defs/licenseExpression"
+              },
+              "reviewer": {
+                "$ref": "#/$defs/nonBlankText"
+              },
+              "reviewedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "reviewEvidence": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "decisionStatus": {
+                "const": "prohibited"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "redistributionStatus": {
+                "const": "prohibited"
+              },
+              "reviewer": {
+                "$ref": "#/$defs/nonBlankText"
+              },
+              "reviewedAt": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "reviewEvidence": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "classDecision": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/decisionFields"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "classId",
+            "artifactRoles",
+            "provenanceClass",
+            "classFingerprint",
+            "decisionStatus",
+            "redistributionStatus",
+            "licenseExpression",
+            "reviewer",
+            "reviewedAt",
+            "reviewEvidence"
+          ],
+          "properties": {
+            "classId": {
+              "enum": [
+                "skillpilot-data",
+                "official-source-evidence",
+                "software-contracts",
+                "generated-metadata"
+              ]
+            },
+            "artifactRoles": {
+              "type": "array",
+              "minItems": 1,
+              "maxItems": 50,
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+              }
+            },
+            "provenanceClass": {
+              "enum": [
+                "skillpilot-authored",
+                "official-source-metadata",
+                "generated-metadata",
+                "software-contract"
+              ]
+            },
+            "classFingerprint": {
+              "$ref": "#/$defs/sha256Digest"
+            },
+            "decisionStatus": {},
+            "redistributionStatus": {},
+            "licenseExpression": {},
+            "reviewer": {},
+            "reviewedAt": {},
+            "reviewEvidence": {}
+          }
+        }
+      ]
+    },
+    "pathClassificationOverride": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role",
+        "pathPrefix",
+        "classId",
+        "provenanceClass"
+      ],
+      "properties": {
+        "role": {
+          "const": "package-documentation"
+        },
+        "pathPrefix": {
+          "const": "data/assessment-sources/"
+        },
+        "classId": {
+          "const": "skillpilot-data"
+        },
+        "provenanceClass": {
+          "const": "skillpilot-authored"
+        }
+      }
+    },
+    "userProvidedImportEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["receiptPath", "receiptSha256", "promptNumber", "sourcePath", "sourceSha256"],
+      "properties": {
+        "receiptPath": {"$ref": "#/$defs/repositoryPath"},
+        "receiptSha256": {"$ref": "#/$defs/sha256Digest"},
+        "promptNumber": {"type": "integer", "minimum": 1},
+        "sourcePath": {"$ref": "#/$defs/repositoryPath"},
+        "sourceSha256": {"$ref": "#/$defs/sha256Digest"}
+      }
+    },
+    "assetDecision": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/decisionFields"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "resourceId",
+            "ownerGoalId",
+            "artifactPath",
+            "mediaType",
+            "bytes",
+            "assetSha256",
+            "provider",
+            "legacyLicenseNote",
+            "provenanceClass",
+            "provenanceSource",
+            "userProvided",
+            "promptPath",
+            "promptSha256",
+            "provenanceFingerprint",
+            "decisionStatus",
+            "redistributionStatus",
+            "licenseExpression",
+            "reviewer",
+            "reviewedAt",
+            "reviewEvidence"
+          ],
+          "properties": {
+            "resourceId": {
+              "$ref": "#/$defs/resourceId"
+            },
+            "ownerGoalId": {
+              "$ref": "#/$defs/goalId"
+            },
+            "artifactPath": {
+              "$ref": "#/$defs/artifactPath"
+            },
+            "mediaType": {
+              "enum": [
+                "image/jpeg",
+                "image/png"
+              ]
+            },
+            "bytes": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 67108864
+            },
+            "assetSha256": {
+              "$ref": "#/$defs/sha256Digest"
+            },
+            "provider": {
+              "$ref": "#/$defs/nonBlankText"
+            },
+            "legacyLicenseNote": {
+              "$ref": "#/$defs/nonBlankText"
+            },
+            "provenanceClass": {
+              "enum": [
+                "ai-generated-curated",
+                "ai-assisted-repository-native",
+                "user-provided-generated-claim",
+                "skillpilot-authored-deterministic-render"
+              ]
+            },
+            "provenanceSource": {
+              "enum": [
+                "provider-pipeline-claim",
+                "user-provided-generated-claim",
+                "hash-bound-skillpilot-source-render"
+              ]
+            },
+            "userProvided": {
+              "type": "boolean"
+            },
+            "promptPath": {
+              "$ref": "#/$defs/repositoryPath"
+            },
+            "promptSha256": {
+              "$ref": "#/$defs/sha256Digest"
+            },
+            "deterministicRenderEvidence": {
+              "$ref": "#/$defs/deterministicRenderEvidence"
+            },
+            "userProvidedImportEvidence": {
+              "$ref": "#/$defs/userProvidedImportEvidence"
+            },
+            "provenanceFingerprint": {
+              "$ref": "#/$defs/sha256Digest"
+            },
+            "decisionStatus": {
+              "not": {
+                "const": "automatic-allowed"
+              }
+            },
+            "redistributionStatus": {},
+            "licenseExpression": {},
+            "reviewer": {},
+            "reviewedAt": {},
+            "reviewEvidence": {}
+          }
+        },
+        {
+          "if": {"required": ["userProvidedImportEvidence"]},
+          "then": {
+            "properties": {
+              "provenanceClass": {"const": "user-provided-generated-claim"},
+              "provenanceSource": {"const": "user-provided-generated-claim"},
+              "userProvided": {"const": true}
+            }
+          }
+        },
+        {
+          "if": {
+            "required": ["provenanceClass"],
+            "properties": {
+              "provenanceClass": {"const": "ai-assisted-repository-native"}
+            }
+          },
+          "then": {
+            "properties": {
+              "provider": {
+                "const": "Repository-native SVG / Playwright Chromium (reviewed Nano fallback)"
+              },
+              "legacyLicenseNote": {
+                "enum": [
+                  "AI-assisted repository-native visualization; redistribution review required",
+                  "Repository-native, SkillPilot-curated (AI-assisted)",
+                  "AI-generated, SkillPilot-curated",
+                  "Apache-2.0",
+                  "CC-BY-4.0"
+                ]
+              },
+              "provenanceSource": {"const": "provider-pipeline-claim"},
+              "userProvided": {"const": false}
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "provenanceClass"
+            ],
+            "properties": {
+              "provenanceClass": {
+                "const": "skillpilot-authored-deterministic-render"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "deterministicRenderEvidence"
+            ],
+            "properties": {
+              "legacyLicenseNote": {
+                "enum": ["SkillPilot-authored", "Apache-2.0", "CC-BY-4.0"]
+              },
+              "provenanceSource": {
+                "const": "hash-bound-skillpilot-source-render"
+              },
+              "userProvided": {
+                "const": false
+              }
+            }
+          },
+          "else": {
+            "not": {
+              "required": [
+                "deterministicRenderEvidence"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,436 @@
+[
+  {
+    "finding": {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+      "goalId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+      "title": "Neuronale Erkrankungen einordnen",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field."
+    },
+    "currentWholeGoal": {
+      "id": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+      "title": "Neuronale Erkrankungen einordnen",
+      "titleEn": "Classify neuronal diseases",
+      "description": "Die lernende Person kann an einem gegebenen Modell einer neuronalen Erkrankung, zum Beispiel Alzheimer, erklären, wie eine Störung neuronaler Strukturen oder Signalprozesse die Funktion des Systems verändert.",
+      "descriptionEn": "The learner can use a supplied model of a neuronal disorder, such as Alzheimer's, to explain how a disturbance of neuronal structures or signalling processes changes the function of the system.",
+      "weight": 1.05,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-biology",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BIO_ENTWICKLUNG",
+          "BIO_STEUERUNG_REGELUNG"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+          "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "8c1f802a-d012-5ae9-86d5-a317f353ff75",
+          "originalComponentKeys": [
+            "LK6"
+          ],
+          "retainedAuthoredOperationalisationSourceGoalId": "33c6faf3-ef2c-430e-b0b4-165f2026e209"
+        },
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+          "title": "Visualisierung: Neuronale Erkrankungen einordnen",
+          "url": "/assets/goal-visualizations/biologie/485ef1c3-8997-52b7-91f5-b1ddf179013d/485ef1c3-8997-52b7-91f5-b1ddf179013d.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Modellhafte Illustration: Neuronale Erkrankungen einordnen.",
+          "altText": "Gegebenes Nervenzellnetz im intakten und gestörten Zustand. Eine unterbrochene Verbindung stoppt die gezeichnete Signalroute; der weiterhin vorhandene Kontakt hinter der Unterbrechung zeigt keine aktive Weitergabe.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    "compiled": {
+      "goalId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+      "title": "Neuronale Erkrankungen einordnen",
+      "goalType": "atomic",
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_source_extraction_to_canonical_biology.m7-q1-gel-current-20261005-v1.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_source_extraction_to_canonical_biology.m7-q1-tf-methylation-candidate-20261005-v1.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_source_extraction_to_canonical_biology.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_to_canonical_biology.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by 02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by 1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by 487c79f5-7e4d-5da8-ad8f-f0f96c23a974"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by 5e8d3316-c22a-55bc-acca-9e1d15a4152c"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-e3-trisomy-current-20261001-v3.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-ephase-20260930-v2.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-ephase-seven-current365-20261005-v2.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-q1-bacterial-structure-fission-20261005-v1.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-q1-gel-current-20261005-v1.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-q1-tests-therapy-current-20261004-v1.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-q1-tf-methylation-source-version-correction-20261005-v2.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_to_canonical_biology.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "provenance",
+          "source": "curricula/DE/Gymnasium/input/DE-HE/upper-secondary/ (curricula/DE/Gymnasium/provenance/source-landscape-registry.json#3e56aa75-c76c-4de5-883b-0aac98297846)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 487c79f5-7e4d-5da8-ad8f-f0f96c23a974"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 5e8d3316-c22a-55bc-acca-9e1d15a4152c"
+        }
+      ]
+    }
+  },
+  {
+    "finding": {
+      "code": "APV-203",
+      "severity": "warning",
+      "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+      "goalId": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+      "title": "Neurophysiologische Verfahren",
+      "dimension": "jurisdiction",
+      "message": "Compiled applicability differs from the currently committed applicability field."
+    },
+    "currentWholeGoal": {
+      "id": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+      "title": "Neurophysiologische Verfahren",
+      "titleEn": "Neurophysiological procedures",
+      "description": "Die lernende Person kann ein bildgebendes Verfahren der Hirnforschung beschreiben.",
+      "descriptionEn": "The learner can describe an imaging technique in brain research.",
+      "weight": 1.05,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-biology",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BIO_ENTWICKLUNG",
+          "BIO_STEUERUNG_REGELUNG"
+        ],
+        "phase": "Q2"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+          "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "bfd043fc-7eb7-5ff5-90ab-e2d978d21aa0",
+          "originalComponentKeys": [
+            "LK7"
+          ],
+          "retainedAuthoredOperationalisationSourceGoalId": "d3c19f37-5d9c-4490-830f-07584b8ec2f1"
+        },
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+          "title": "Visualisierung: Neurophysiologische Verfahren",
+          "url": "/assets/goal-visualizations/biologie/afde0001-d7d7-5ed3-8a60-383e8da5620e/afde0001-d7d7-5ed3-8a60-383e8da5620e.png",
+          "provider": "OpenAI / ChatGPT-Codex image generation",
+          "description": "Modellhafte Illustration: Neurophysiologische Verfahren.",
+          "altText": "Schematische fMRT-Illustration: Scanner, indirektes Blutsignal und eine qualitative Gehirnkarte zum Vergleich von Bedingungen. Die Farbkarte ist eine Modellzeichnung, kein gemessener Scan.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    "compiled": {
+      "goalId": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+      "title": "Neurophysiologische Verfahren",
+      "goalType": "atomic",
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_source_extraction_to_canonical_biology.m7-q1-gel-current-20261005-v1.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_source_extraction_to_canonical_biology.m7-q1-tf-methylation-candidate-20261005-v1.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_source_extraction_to_canonical_biology.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_to_canonical_biology.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by 02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "requires-closure",
+          "source": "required by 1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-e3-trisomy-current-20261001-v3.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-ephase-20260930-v2.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-ephase-seven-current365-20261005-v2.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-q1-bacterial-structure-fission-20261005-v1.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-q1-gel-current-20261005-v1.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-q1-tests-therapy-current-20261004-v1.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-q1-tf-methylation-source-version-correction-20261005-v2.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.review.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "mapping",
+          "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_to_canonical_biology.json",
+          "mappingStrength": "exact"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "provenance",
+          "source": "curricula/DE/Gymnasium/input/DE-HE/upper-secondary/ (curricula/DE/Gymnasium/provenance/source-landscape-registry.json#3e56aa75-c76c-4de5-883b-0aac98297846)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "requires-closure",
+          "source": "required by 1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+        }
+      ]
+    }
+  }
+]

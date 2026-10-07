@@ -1,0 +1,29 @@
+/home/enpasos/projects/skillpilot/app/scripts/checkCurriculumMaturityFloors.ts:107
+  throw new Error([
+        ^
+
+
+Error: Curriculum maturity regression detected by canonical-gymnasium-maturity-floors-v1.
+Biologie [08a43a1b-d97e-522c-9dfa-c950a493364e]: current M1 is below protected floor M6
+  global CQR-003 fail: 15/16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.
+    - DE-BY: 1 assigned atomic goal(s) without source-backed Lehrplan evidence
+    - DE-BY: 350/351 source-backed view atomic goal(s)
+  global CQR-004 fail: 7 upper-secondary course-level mapping issue(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed as LK-only.
+    - 41b81d9c-e22d-4af7-8b89-eaf26e1ddaa8 (GK_LK -> GK+LK) maps to Plastische Verbindungsänderungen an gegebenen Netzmodellen erklären [a46cafde-7359-5249-8754-19aaa3174ba4] with tags LK
+    - 41b81d9c-e22d-4af7-8b89-eaf26e1ddaa8 (GK_LK -> GK+LK) maps to Plastische Verbindungsänderungen an gegebenen Netzmodellen erklären [a46cafde-7359-5249-8754-19aaa3174ba4] with tags LK
+    - 41b81d9c-e22d-4af7-8b89-eaf26e1ddaa8 (GK_LK -> GK+LK) maps to Plastische Verbindungsänderungen an gegebenen Netzmodellen erklären [a46cafde-7359-5249-8754-19aaa3174ba4] with tags LK
+    - 41b81d9c-e22d-4af7-8b89-eaf26e1ddaa8 (GK_LK -> GK+LK) maps to Plastische Verbindungsänderungen an gegebenen Netzmodellen erklären [a46cafde-7359-5249-8754-19aaa3174ba4] with tags LK
+    - 41b81d9c-e22d-4af7-8b89-eaf26e1ddaa8 (GK_LK -> GK+LK) maps to Plastische Verbindungsänderungen an gegebenen Netzmodellen erklären [a46cafde-7359-5249-8754-19aaa3174ba4] with tags LK
+    - 41b81d9c-e22d-4af7-8b89-eaf26e1ddaa8 (GK_LK -> GK+LK) maps to Plastische Verbindungsänderungen an gegebenen Netzmodellen erklären [a46cafde-7359-5249-8754-19aaa3174ba4] with tags LK
+    - 41b81d9c-e22d-4af7-8b89-eaf26e1ddaa8 (GK_LK -> GK+LK) maps to Plastische Verbindungsänderungen an gegebenen Netzmodellen erklären [a46cafde-7359-5249-8754-19aaa3174ba4] with tags LK
+  global CQR-501 warn: 2 active and 0 obsolete accepted applicability warning(s) need review; 1349 partial-only diagnostic finding(s) are non-blocking.
+    - non-blocking partial-only applicability diagnostics APV-202: 1349
+    - active warning type APV-203: 2
+    - diagnostic finding type APV-202: 1349
+Restore the fachliche quality gates or obtain an explicit product-owner decision before changing the protected floor.
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/checkCurriculumMaturityFloors.ts:107:9)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v20.20.2

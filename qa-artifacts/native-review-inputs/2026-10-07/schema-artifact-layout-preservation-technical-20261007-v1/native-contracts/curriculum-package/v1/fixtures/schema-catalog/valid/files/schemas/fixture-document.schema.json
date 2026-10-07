@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/fixtures/v1/fixture-document.schema.json",
+  "title": "Offline resolver fixture document",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "https://skillpilot.com/schemas/fixtures/v1/fixture-shared.schema.json#/$defs/stableId"
+    },
+    "child": {
+      "$ref": "#"
+    }
+  }
+}

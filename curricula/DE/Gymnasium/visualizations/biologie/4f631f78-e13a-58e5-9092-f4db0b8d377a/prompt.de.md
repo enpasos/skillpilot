@@ -1,0 +1,28 @@
+# Lernzielvisualisierung: Hebb-Regel als gegebenes Lernmodell anwenden
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `4f631f78-e13a-58e5-9092-f4db0b8d377a`
+- Titel: Hebb-Regel als gegebenes Lernmodell anwenden
+- Beschreibung: Die lernende Person kann eine vorgegebene Hebb-Regel auf ein einfaches neuronales Modellnetz anwenden und anhand gegebener Fälle die Möglichkeiten und Grenzen dieses Lernmodells erläutern.
+
+## Generator
+
+- Provider: OpenAI / ChatGPT-Codex image generation
+- Status: pilot
+- Quellbild: `4f631f78-e13a-58e5-9092-f4db0b8d377a.png`
+- Public Asset: `/assets/goal-visualizations/biologie/4f631f78-e13a-58e5-9092-f4db0b8d377a/4f631f78-e13a-58e5-9092-f4db0b8d377a.png`
+
+## Prompt
+
+```text
+Edit the provided actual Hebb-Modell illustration with one precise scientific correction. Preserve the 16:9 frame, friendly pastel watercolor comic style, cream background, the two before/after scenes, the four neuron shapes, their positions and topology, all large readable lettering and the horizontal transition arrow.
+
+The current right panel wrongly thickens the entire presynaptic axon. Hebbian connection strength must not be confused with larger axon calibre or extra myelin. Make the right axon shaft and every myelin segment exactly the same width and geometry as the left axon. Keep the left and right presynaptic activity identical. The relevant difference belongs only to the synaptic efficacy at the connection to the receiving neuron: in the right panel use a stronger warm glow confined to the synaptic cleft/contact and a stronger receiving response near the receiving neuron's adjacent dendrite. Do not enlarge the whole axon or add neurons, fusion, thicker insulation or a second direction of transmission. Keep a clearly separated presynaptic terminal and receiving dendrite. Do not introduce quantitative values or imply a universal biological learning rule.
+
+Replace only the right scene caption with exactly "Synapse stärker" in the same very large dark comic lettering; preserve exactly "Hebb-Modell" and "Gemeinsam aktiv". No extra text, weights, axes, tiny labels or provider marks. Signal and geometry must be clear at image display widths of 360 and 680 pixels. This remains a simplified supplied model for orientation, not experimental evidence or a guaranteed-memory claim.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

@@ -1,0 +1,788 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/full-package-validation-report.schema.json",
+  "title": "SkillPilot full standalone package validation report v2",
+  "description": "Closed protocol emitted by skillpilot-full-standalone-package-validator-v2. A valid receipt binds the exact ZIP, manifest, dependency closure, and definition index and reports all six gates.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "reportFormatVersion",
+    "validatorId",
+    "status",
+    "input",
+    "package",
+    "counts",
+    "gates",
+    "diagnostics",
+    "diagnosticsTruncated"
+  ],
+  "properties": {
+    "reportFormatVersion": {
+      "const": 2
+    },
+    "validatorId": {
+      "const": "skillpilot-full-standalone-package-validator-v2"
+    },
+    "status": {
+      "enum": [
+        "valid",
+        "invalid",
+        "error"
+      ]
+    },
+    "input": {
+      "$ref": "#/$defs/inputBinding"
+    },
+    "package": {
+      "$ref": "#/$defs/packageBinding"
+    },
+    "counts": {
+      "$ref": "#/$defs/counts"
+    },
+    "gates": {
+      "$ref": "#/$defs/gates"
+    },
+    "diagnostics": {
+      "type": "array",
+      "maxItems": 500,
+      "items": {
+        "$ref": "#/$defs/diagnostic"
+      }
+    },
+    "diagnosticsTruncated": {
+      "type": "boolean"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "valid"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "input": {
+            "$ref": "#/$defs/boundInput"
+          },
+          "package": {
+            "$ref": "#/$defs/boundPackage"
+          },
+          "counts": {
+            "$ref": "#/$defs/validCounts"
+          },
+          "gates": {
+            "$ref": "#/$defs/passedGates"
+          },
+          "diagnostics": {
+            "maxItems": 0
+          },
+          "diagnosticsTruncated": {
+            "const": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "invalid"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "gates": {
+            "not": {
+              "$ref": "#/$defs/passedGates"
+            }
+          },
+          "diagnostics": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "error"
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "properties": {
+          "input": {
+            "$ref": "#/$defs/errorInput"
+          },
+          "package": {
+            "$ref": "#/$defs/unboundPackage"
+          },
+          "counts": {
+            "$ref": "#/$defs/zeroCounts"
+          },
+          "gates": {
+            "$ref": "#/$defs/notEvaluatedGates"
+          },
+          "diagnostics": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 1,
+            "items": {
+              "$ref": "#/$defs/unavailableDiagnostic"
+            }
+          },
+          "diagnosticsTruncated": {
+            "const": false
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "sha256Digest": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "semanticVersion": {
+      "type": "string",
+      "minLength": 5,
+      "maxLength": 128,
+      "pattern": "^(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)\\.(0|[1-9][0-9]*)(?:-(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*)(?:\\.(?:0|[1-9][0-9]*|[0-9]*[A-Za-z-][0-9A-Za-z-]*))*)?(?:\\+[0-9A-Za-z-]+(?:\\.[0-9A-Za-z-]+)*)?$"
+    },
+    "packageId": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 300,
+      "pattern": "^[a-z0-9]+(?:[._-][a-z0-9]+)+$"
+    },
+    "portablePathSegment": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 180,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"
+    },
+    "inputBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "bytes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 3500000000
+        },
+        "sha256": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "boundInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3500000000
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "errorInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 4096
+        },
+        "bytes": {
+          "type": "null"
+        },
+        "sha256": {
+          "type": "null"
+        }
+      }
+    },
+    "packageBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "archiveRoot",
+        "releaseId",
+        "packageId",
+        "packageVersion",
+        "contentDigest",
+        "manifestSha256",
+        "closureDigest",
+        "definitionIndexDigest"
+      ],
+      "properties": {
+        "archiveRoot": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/portablePathSegment"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "releaseId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "packageId": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/packageId"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "packageVersion": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/semanticVersion"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "contentDigest": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256Digest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "manifestSha256": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "closureDigest": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256Digest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "definitionIndexDigest": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sha256Digest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "boundPackage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "archiveRoot",
+        "releaseId",
+        "packageId",
+        "packageVersion",
+        "contentDigest",
+        "manifestSha256",
+        "closureDigest",
+        "definitionIndexDigest"
+      ],
+      "properties": {
+        "archiveRoot": {
+          "$ref": "#/$defs/portablePathSegment"
+        },
+        "releaseId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500
+        },
+        "packageId": {
+          "$ref": "#/$defs/packageId"
+        },
+        "packageVersion": {
+          "$ref": "#/$defs/semanticVersion"
+        },
+        "contentDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "manifestSha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "closureDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        },
+        "definitionIndexDigest": {
+          "$ref": "#/$defs/sha256Digest"
+        }
+      }
+    },
+    "unboundPackage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "archiveRoot",
+        "releaseId",
+        "packageId",
+        "packageVersion",
+        "contentDigest",
+        "manifestSha256",
+        "closureDigest",
+        "definitionIndexDigest"
+      ],
+      "properties": {
+        "archiveRoot": {
+          "type": "null"
+        },
+        "releaseId": {
+          "type": "null"
+        },
+        "packageId": {
+          "type": "null"
+        },
+        "packageVersion": {
+          "type": "null"
+        },
+        "contentDigest": {
+          "type": "null"
+        },
+        "manifestSha256": {
+          "type": "null"
+        },
+        "closureDigest": {
+          "type": "null"
+        },
+        "definitionIndexDigest": {
+          "type": "null"
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "archiveEntries",
+        "manifestFiles",
+        "logicalArtifacts",
+        "binaryResources"
+      ],
+      "properties": {
+        "archiveEntries": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 60000
+        },
+        "manifestFiles": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 59998
+        },
+        "logicalArtifacts": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 59998
+        },
+        "binaryResources": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 59998
+        }
+      }
+    },
+    "validCounts": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/counts"
+        },
+        {
+          "properties": {
+            "archiveEntries": {
+              "minimum": 3
+            },
+            "manifestFiles": {
+              "minimum": 1
+            }
+          }
+        }
+      ]
+    },
+    "zeroCounts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "archiveEntries",
+        "manifestFiles",
+        "logicalArtifacts",
+        "binaryResources"
+      ],
+      "properties": {
+        "archiveEntries": {
+          "const": 0
+        },
+        "manifestFiles": {
+          "const": 0
+        },
+        "logicalArtifacts": {
+          "const": 0
+        },
+        "binaryResources": {
+          "const": 0
+        }
+      }
+    },
+    "gateResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "diagnosticCount",
+        "diagnosticCodes"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "passed",
+            "failed",
+            "not-evaluated"
+          ]
+        },
+        "diagnosticCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "diagnosticCodes": {
+          "type": "array",
+          "maxItems": 500,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200,
+            "pattern": "^[A-Z][A-Z0-9_]*$"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "failed"
+              }
+            },
+            "required": [
+              "status"
+            ]
+          },
+          "then": {
+            "properties": {
+              "diagnosticCount": {
+                "minimum": 1
+              },
+              "diagnosticCodes": {
+                "minItems": 1
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "diagnosticCount": {
+                "const": 0
+              },
+              "diagnosticCodes": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      ]
+    },
+    "passedGate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "diagnosticCount",
+        "diagnosticCodes"
+      ],
+      "properties": {
+        "status": {
+          "const": "passed"
+        },
+        "diagnosticCount": {
+          "const": 0
+        },
+        "diagnosticCodes": {
+          "type": "array",
+          "maxItems": 0
+        }
+      }
+    },
+    "notEvaluatedGate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "diagnosticCount",
+        "diagnosticCodes"
+      ],
+      "properties": {
+        "status": {
+          "const": "not-evaluated"
+        },
+        "diagnosticCount": {
+          "const": 0
+        },
+        "diagnosticCodes": {
+          "type": "array",
+          "maxItems": 0
+        }
+      }
+    },
+    "gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "inventory",
+        "runtimeCatalog",
+        "offlineSchemaCatalog",
+        "hardReferenceClosure",
+        "contentDigest",
+        "assetBytes"
+      ],
+      "properties": {
+        "inventory": {
+          "$ref": "#/$defs/gateResult"
+        },
+        "runtimeCatalog": {
+          "$ref": "#/$defs/gateResult"
+        },
+        "offlineSchemaCatalog": {
+          "$ref": "#/$defs/gateResult"
+        },
+        "hardReferenceClosure": {
+          "$ref": "#/$defs/gateResult"
+        },
+        "contentDigest": {
+          "$ref": "#/$defs/gateResult"
+        },
+        "assetBytes": {
+          "$ref": "#/$defs/gateResult"
+        }
+      }
+    },
+    "passedGates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "inventory",
+        "runtimeCatalog",
+        "offlineSchemaCatalog",
+        "hardReferenceClosure",
+        "contentDigest",
+        "assetBytes"
+      ],
+      "properties": {
+        "inventory": {
+          "$ref": "#/$defs/passedGate"
+        },
+        "runtimeCatalog": {
+          "$ref": "#/$defs/passedGate"
+        },
+        "offlineSchemaCatalog": {
+          "$ref": "#/$defs/passedGate"
+        },
+        "hardReferenceClosure": {
+          "$ref": "#/$defs/passedGate"
+        },
+        "contentDigest": {
+          "$ref": "#/$defs/passedGate"
+        },
+        "assetBytes": {
+          "$ref": "#/$defs/passedGate"
+        }
+      }
+    },
+    "notEvaluatedGates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "inventory",
+        "runtimeCatalog",
+        "offlineSchemaCatalog",
+        "hardReferenceClosure",
+        "contentDigest",
+        "assetBytes"
+      ],
+      "properties": {
+        "inventory": {
+          "$ref": "#/$defs/notEvaluatedGate"
+        },
+        "runtimeCatalog": {
+          "$ref": "#/$defs/notEvaluatedGate"
+        },
+        "offlineSchemaCatalog": {
+          "$ref": "#/$defs/notEvaluatedGate"
+        },
+        "hardReferenceClosure": {
+          "$ref": "#/$defs/notEvaluatedGate"
+        },
+        "contentDigest": {
+          "$ref": "#/$defs/notEvaluatedGate"
+        },
+        "assetBytes": {
+          "$ref": "#/$defs/notEvaluatedGate"
+        }
+      }
+    },
+    "diagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gate",
+        "code",
+        "location",
+        "message"
+      ],
+      "properties": {
+        "gate": {
+          "enum": [
+            "inventory",
+            "runtimeCatalog",
+            "offlineSchemaCatalog",
+            "hardReferenceClosure",
+            "contentDigest",
+            "assetBytes"
+          ]
+        },
+        "code": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200,
+          "pattern": "^[A-Z][A-Z0-9_]*$"
+        },
+        "location": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000,
+          "pattern": "^/"
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        }
+      }
+    },
+    "unavailableDiagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gate",
+        "code",
+        "location",
+        "message"
+      ],
+      "properties": {
+        "gate": {
+          "const": "inventory"
+        },
+        "code": {
+          "const": "VALIDATOR_UNAVAILABLE"
+        },
+        "location": {
+          "const": "/"
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 4096
+        }
+      }
+    }
+  }
+}

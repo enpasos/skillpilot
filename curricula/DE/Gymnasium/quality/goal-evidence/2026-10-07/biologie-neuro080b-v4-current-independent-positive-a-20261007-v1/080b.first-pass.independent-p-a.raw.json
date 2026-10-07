@@ -1,0 +1,724 @@
+{
+  "schemaVersion": 1,
+  "role": "independent-positive-material-review-p-a-first-pass",
+  "reviewerTask": "/root/bio_ce19_v2_visual_b",
+  "createdAt": "2026-10-07T05:37:17.083029+00:00",
+  "goalId": "080b10c7-f308-57ff-b067-3bd189e37fea",
+  "firstPassWrittenBeforeAnyPeerJudgmentAccess": true,
+  "peerJudgmentsAccessed": false,
+  "verdict": "KEEP_AI_CANDIDATE",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "exactProfileBodyReviewed": {
+    "archetype": "modeling",
+    "expectations": [
+      {
+        "id": "bounded-mechanism-and-transfer",
+        "essentialUnderstandingDe": "Kontinuierliche und saltatorische Erregungsleitung unterscheiden sich in der räumlichen Abfolge von passiver Stromausbreitung und regenerierter Aktionspotenzialbildung. Leitungsgeschwindigkeit hängt unter anderem von Myelinisierung und Durchmesser ab; Tiergruppen sind keine pauschale Geschwindigkeitsregel.",
+        "essentialUnderstandingEn": "Continuous and saltatory conduction differ in the spatial sequence of passive current spread and regenerated action potentials. Speed depends on factors including myelination and diameter; animal groups are no universal speed rule.",
+        "observablePerformanceDe": "Die lernende Person vergleicht neue Faser- und Laufzeitdaten explizit zugeordneten Wirbellosen- und Wirbeltier-Modellmaterials, erklärt daraus begrenzte zeitliche Leistungsunterschiede und trennt diese von pauschalen Aussagen über ganze Tiergruppen.",
+        "observablePerformanceEn": "The learner compares fresh fibre and travel-time data explicitly assigned to invertebrate and vertebrate model material, explains bounded temporal performance differences and separates these from universal animal-group claims."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "bounded-mechanism-and-transfer"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "fresh-model-or-dataset",
+        "textDe": "Darstellung, Werte oder untersuchte Verbindung wechseln; die Mechanismuserklärung muss zum neuen gegebenen Material passen.",
+        "textEn": "Change representation, values or studied connection; the mechanism explanation must fit the fresh material."
+      },
+      {
+        "id": "intervention-or-inference-limit",
+        "textDe": "Einen frischen Eingriff, Kontrollvergleich oder Kontexteffekt begründet einordnen und die konkrete Aussagegrenze beachten.",
+        "textEn": "Explain a fresh intervention, control comparison or contextual effect and respect its specific inference limit."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "initial-bounded-model",
+        "taskDemandDe": "Eine synthetische Vergleichstabelle (keine Messdaten) ordnet Modellfaser A einem Wirbellosen und Modellfaser B einem Wirbeltier zu. Beide Modellstrecken sind 0,20 m lang, die Fasern haben im Material denselben Durchmesser und alle weiteren Modellbedingungen sind gleich: A ist unmyelinisiert und leitet mit 2 m/s; B ist myelinisiert und leitet mit 20 m/s. Nach dem Eintreffen des Signals benötigt der weitere sensorisch-motorische Modellweg in beiden Fällen zusätzliche 30 ms. Berechne Leitungs- und gesamte Modellverzögerung, erkläre die räumliche Abfolge kontinuierlicher beziehungsweise saltatorischer Erregungsleitung und den daraus folgenden zeitlichen Leistungsunterschied dieser beiden gegebenen Nervensystemmodelle. Begründe, weshalb dies keine allgemeine Rangordnung aller Wirbellosen und Wirbeltiere oder ihrer Intelligenz beweist.",
+        "taskDemandEn": "A synthetic comparison table (not measured data) assigns model fibre A to an invertebrate and model fibre B to a vertebrate. Both model paths are 0.20 m long, the material gives equal fibre diameters and all other model conditions are equal: A is unmyelinated and conducts at 2 m/s; B is myelinated and conducts at 20 m/s. After the signal arrives, the remaining sensory-motor model path requires a further 30 ms in both cases. Calculate conduction and total model delays, explain the spatial sequence of continuous versus saltatory conduction and the resulting temporal performance difference between these two supplied nervous-system models. Explain why this establishes no universal ranking of all invertebrates and vertebrates or their intelligence.",
+        "expectedPerformanceDe": "A: 0,20/2=0,10 s=100 ms Leitung, insgesamt 130 ms. B: 0,20/20=0,01 s=10 ms Leitung, insgesamt 40 ms. Im gegebenen Wirbeltiermodell kann die Reaktion bei den gleichen übrigen Modellverzögerungen 90 ms früher einsetzen. Bei kontinuierlicher Leitung wird das Aktionspotenzial entlang aufeinanderfolgender Membranbereiche regeneriert; im myelinisierten Modell breitet sich Strom passiv unter isolierenden Abschnitten aus und das Aktionspotenzial wird an den Knoten regeneriert. Weder ein Teilchen noch ein Aktionspotenzial springt unverändert über die Strecke. Das Ergebnis erklärt eine begrenzte zeitliche Leistung im konkreten Modell; es verallgemeinert weder Myelinisierung noch Geschwindigkeit auf sämtliche Fasern einer Tiergruppe und trifft keine Intelligenzaussage. Ganze reale Reaktionszeiten hängen auch von weiteren Signalwegen, Synapsen und Verarbeitung ab.",
+        "expectedPerformanceEn": "A: 0.20/2=0.10 s=100 ms conduction and 130 ms total. B: 0.20/20=0.01 s=10 ms conduction and 40 ms total. Under the same remaining model delays, the supplied vertebrate model can begin reacting 90 ms earlier. Continuous conduction regenerates action potentials along successive membrane regions; in the myelinated model current spreads passively beneath insulating segments and action potentials regenerate at nodes. Neither a particle nor an unchanged action potential jumps along the path. This explains bounded temporal performance in the concrete model; it generalises neither myelination nor speed to all fibres in an animal group and says nothing about intelligence. Entire real reaction times also depend on other paths, synapses and processing.",
+        "understandingFocusDe": "Kontrollierter, ausdrücklich zugeordneter Wirbellosen-/Wirbeltier-Vergleich: Leitungsmechanismus, Modellverzögerung und begrenzte Nervensystemleistung zusammen erklären.",
+        "understandingFocusEn": "Controlled, explicitly assigned invertebrate/vertebrate comparison: explain conduction mechanism, model delay and bounded nervous-system performance together."
+      },
+      {
+        "id": "fresh-contextual-transfer",
+        "taskDemandDe": "Ein frisches synthetisches Material beschreibt einen Wirbellosen mit einer 500 µm dicken unmyelinisierten Modellfaser und gegebenen 20 m/s sowie einen Wirbeltier mit einer 10 µm dünnen myelinisierten Modellfaser und gegebenen 40 m/s. Für beide ist eine Strecke von 0,10 m angegeben; über weitere Verarbeitungszeiten gibt es keine Daten. Berechne die reinen Leitungsverzögerungen und erkläre, wie eine große unmyelinisierte Faser dennoch schnelle Leitung ermöglichen kann und welchen zeitlichen Vorteil die dünne myelinisierte Faser im gegebenen Vergleich hat. Begründe getrennt, warum der erste kontrollierte Vergleich nicht alle Ursachen dieses neuen Unterschieds isoliert und warum weder Tiergruppennamen allein noch die Leitungszeiten eine vollständige Aussage über reale Reaktionszeit oder Gesamtleistung des Nervensystems erlauben.",
+        "taskDemandEn": "Fresh synthetic material describes an invertebrate with a 500 µm thick unmyelinated model fibre conducting at a supplied 20 m/s and a vertebrate with a 10 µm thin myelinated model fibre conducting at a supplied 40 m/s. Both paths are 0.10 m long; no further processing times are given. Calculate conduction delays alone and explain how a large unmyelinated fibre can still enable fast conduction and what temporal advantage the thin myelinated fibre has in this supplied comparison. Explain separately why the first controlled comparison does not isolate every cause of this new difference and why neither animal-group names alone nor conduction times establish entire real reaction time or overall nervous-system performance.",
+        "expectedPerformanceDe": "Die reine Leitungsverzögerung beträgt im Wirbellosenmodell 0,10/20=0,005 s=5 ms, im Wirbeltiermodell 0,10/40=0,0025 s=2,5 ms. Größerer Axondurchmesser kann im gegebenen Leitungsmodell die Ausbreitung begünstigen; fehlendes Myelin bedeutet daher nicht stets langsame Leitung. Die dünne myelinisierte Faser erreicht in diesem konkreten Datensatz die halbe Leitungsverzögerung. Hier variieren Myelinisierung und Durchmesser gleichzeitig; die jeweilige Ursache der Zahlen wird durch diesen Vergleich nicht getrennt bewiesen. Ohne weitere Verarbeitungszeiten ist nur Leitung, keine gesamte Reaktionszeit berechenbar. Es folgt keine universelle Wirbellosen-/Wirbeltier-Rangordnung, keine Intelligenzbehauptung und keine Einordnung aller Fasern anhand ihrer Tiergruppe.",
+        "expectedPerformanceEn": "Conduction delay alone is 0.10/20=0.005 s=5 ms in the invertebrate model and 0.10/40=0.0025 s=2.5 ms in the vertebrate model. A larger axon diameter can favour propagation in the supplied conduction model, so absence of myelin does not always mean slow conduction. The thin myelinated fibre has half the conduction delay in this concrete dataset. Here myelination and diameter vary together, so this comparison does not isolate their respective contributions to the numbers. Without further processing times only conduction, not entire reaction time, can be calculated. There is no universal invertebrate/vertebrate ranking, intelligence claim or classification of all fibres by animal group.",
+        "understandingFocusDe": "Frischer konkret zugeordneter Tiergruppenvergleich mit gleichzeitig veränderten Fasermerkmalen: zeitliche Leistung erklären und kausale sowie gesamte Aussagegrenzen begründen.",
+        "understandingFocusEn": "Fresh explicitly assigned animal-group comparison with simultaneously changed fibre properties: explain temporal performance and justify causal and overall inference limits."
+      }
+    ]
+  },
+  "wholeCurrentBilingualGoalRead": {
+    "id": "080b10c7-f308-57ff-b067-3bd189e37fea",
+    "shortKey": "canonical_biology_sekii_nerve_fiber_propagation_performance",
+    "title": "Erregungsleitung an Nervenfasern vergleichen",
+    "titleEn": "Compare Signal Propagation in Nerve Fibers",
+    "description": "Die lernende Person kann die Weiterleitung von Potentialänderungen an verschiedenen Nervenfasern vergleichen und daraus Leistungsunterschiede von Nervensystemen bei Wirbellosen und Wirbeltieren erklären.",
+    "descriptionEn": "The learner can compare propagation of potential changes in different nerve fibers and use this to explain performance differences in invertebrate and vertebrate nervous systems.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical",
+      "SekII"
+    ],
+    "contains": [],
+    "requires": [
+      "04d770b3-ba5e-5438-88ca-110cbaeba62c",
+      "2d451684-6e53-565e-a987-f362da919d2c"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-biology",
+      "demandLevel": "AB2",
+      "processCompetencies": [],
+      "guidingIdeas": [
+        "BIO_STRUKTUR_FUNKTION",
+        "BIO_ENTWICKLUNG"
+      ],
+      "phase": "GLOBAL",
+      "area": "Neurobiologie",
+      "topicCode": "CANONICAL.BIOLOGY.SEKII.NERVE_FIBER_PROPAGATION_PERFORMANCE"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BY",
+        "DE-HE"
+      ]
+    },
+    "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B13-EA.2.5",
+    "extendedData": {
+      "provenance": {
+        "sourceLandscapeId": "357a7003-b636-570e-a0bd-6bb63518d2f6",
+        "sourceLandscapeTitle": "DE-BY - Biologie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+        "sourceGoalId": "3843a735-191d-5951-aa43-61620b96b8e9"
+      },
+      "applicabilityMappingInheritance": "boundary"
+    },
+    "type": "atomic"
+  },
+  "existingPProfileRead": {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "biologie-neuro-current21-distinct-operator-materials-author-20261007-v3",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "goalId": "080b10c7-f308-57ff-b067-3bd189e37fea",
+    "goalFingerprint": "sha256:504704718e1a375b0a52dc9a246a0df545abfbf323b11ea23e4d184173138259",
+    "reviewInputFingerprint": "sha256:53ed15162e049e771af95b6ca0c161a21d3fcebe6f6de21ff9e1cad1ffe82ab3",
+    "profileFingerprint": "sha256:7b48e820eb648adcf80d976e2836ba608b57c16448c0ab8d9bb1083f66dd42d2",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-06T22:49:36.681683+00:00",
+    "reviewer": "Codex direct author /root/chemie_current_four_and_coordinate_native_d_independent_a; model identifier not supplied",
+    "reason": "AUTHOR v2 synthetic bounded model and fresh variation; source/P remedies based on separately sealed A+B v1 findings. Independent v2 review pending; no observed learner work or approval.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [
+      "Independent current v2 D/P/A/M/V review and source-debt resolution remain required.",
+      "Whole-source, lower-depth and SH2026-entry-cohort claims are not approved.",
+      "No primary goal image exists; no V or strict M7 claim."
+    ],
+    "profile": {
+      "archetype": "modeling",
+      "expectations": [
+        {
+          "id": "bounded-mechanism-and-transfer",
+          "essentialUnderstandingDe": "Kontinuierliche und saltatorische Erregungsleitung unterscheiden sich in der räumlichen Abfolge von passiver Stromausbreitung und regenerierter Aktionspotenzialbildung. Leitungsgeschwindigkeit hängt unter anderem von Myelinisierung und Durchmesser ab; Tiergruppen sind keine pauschale Geschwindigkeitsregel.",
+          "essentialUnderstandingEn": "Continuous and saltatory conduction differ in the spatial sequence of passive current spread and regenerated action potentials. Speed depends on factors including myelination and diameter; animal groups are no universal speed rule.",
+          "observablePerformanceDe": "Die lernende Person vergleicht neue Faser- und Laufzeitdaten und erklärt die Unterschiede mit dem gegebenen Leitungsmodell.",
+          "observablePerformanceEn": "The learner compares fresh fibre and travel-time data and explains differences using the supplied conduction model."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "bounded-mechanism-and-transfer"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "fresh-model-or-dataset",
+          "textDe": "Darstellung, Werte oder untersuchte Verbindung wechseln; die Mechanismuserklärung muss zum neuen gegebenen Material passen.",
+          "textEn": "Change representation, values or studied connection; the mechanism explanation must fit the fresh material."
+        },
+        {
+          "id": "intervention-or-inference-limit",
+          "textDe": "Einen frischen Eingriff, Kontrollvergleich oder Kontexteffekt begründet einordnen und die konkrete Aussagegrenze beachten.",
+          "textEn": "Explain a fresh intervention, control comparison or contextual effect and respect its specific inference limit."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "initial-bounded-model",
+          "taskDemandDe": "Zwei ausdrücklich gleich lange und gleich dicke Modellfasern unterscheiden sich nur in Myelinisierung. Für 1 m sind 10 beziehungsweise 50 m/s angegeben. Berechne die Laufzeiten und erkläre den Unterschied durch kontinuierliche beziehungsweise saltatorische Leitung.",
+          "taskDemandEn": "Two explicitly equal-length and equal-diameter model fibres differ only in myelination. Speeds are 10 and 50 m/s over 1 m. Calculate travel times and explain the difference through continuous versus saltatory conduction.",
+          "expectedPerformanceDe": "Die Laufzeiten betragen 0,1 s und 0,02 s. Die Erklärung verbindet Isolation, passive Ausbreitung zwischen Knoten und erneute Aktionspotenzialbildung an den Knoten; kein Teilchen springt als Ganzes über die Strecke.",
+          "expectedPerformanceEn": "Travel times are 0.1 s and 0.02 s. The explanation connects insulation, passive spread between nodes and regenerated action potentials at nodes; no particle jumps as a whole along the distance.",
+          "understandingFocusDe": "Eigenständig begründete Erklärung des gegebenen Mechanismus und seiner Bedingungen.",
+          "understandingFocusEn": "Independently justified explanation of the supplied mechanism and its conditions."
+        },
+        {
+          "id": "fresh-contextual-transfer",
+          "taskDemandDe": "Ein frischer Tiervergleich stellt eine dicke nicht-myelinisierte und eine dünne myelinisierte Faser gegenüber, ohne Geschwindigkeit anzugeben. Begründe, warum aus den Tiergruppen allein keine sichere Reihenfolge der Leitungsgeschwindigkeit folgt.",
+          "taskDemandEn": "A fresh animal comparison presents a thick unmyelinated and a thin myelinated fibre without speeds. Explain why animal groups alone cannot determine a reliable speed ranking.",
+          "expectedPerformanceDe": "Mehrere Einflussgrößen variieren gleichzeitig; Durchmesser und Myelin müssen gemeinsam betrachtet werden. Der erste kontrollierte Modellvergleich lässt sich nicht als universelle Wirbellosen-/Wirbeltier-Reihenfolge übertragen.",
+          "expectedPerformanceEn": "Several factors vary simultaneously; diameter and myelin must be considered together. The first controlled model comparison cannot establish a universal invertebrate/vertebrate ranking.",
+          "understandingFocusDe": "Frischer Transfer mit konkreter Begrenzung der Schlussfolgerung.",
+          "understandingFocusEn": "Fresh transfer with a specific inference limit."
+        }
+      ]
+    }
+  },
+  "boundedPrimarySourceComponentsRead": [
+    {
+      "goalId": "080b10c7-f308-57ff-b067-3bd189e37fea",
+      "scopeKey": "DE-BY/SekII/GK",
+      "actualWitness": {
+        "mappingPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_source_extraction_to_canonical_biology.m7-q1-bacterial-structure-fission-20261005-v1.review.json",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_BIOLOGIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+        "sourceGoalId": "3843a735-191d-5951-aa43-61620b96b8e9",
+        "mappedTargetGoalId": "080b10c7-f308-57ff-b067-3bd189e37fea",
+        "goalId": "080b10c7-f308-57ff-b067-3bd189e37fea",
+        "coverage": "direct",
+        "profileBasis": "source-metadata"
+      },
+      "exactEffectiveBindings": [
+        {
+          "field": "sourceExtractionPath",
+          "plannedPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_BIOLOGIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "actualFrozenEffectivePath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_BIOLOGIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "binding": {
+            "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_BIOLOGIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+            "sha256": "sha256:b5f85afd2aa84f6dda8a07b8d8f0b0492d5d8baaa8932a9e0d006082cab339d4",
+            "bytes": 733831
+          },
+          "effectiveBytesMatchFrozenNativeReceipt": true
+        },
+        {
+          "field": "mappingPath",
+          "plannedPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_source_extraction_to_canonical_biology.m7-q1-bacterial-structure-fission-20261005-v1.review.json",
+          "actualFrozenEffectivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/mapping-01.author-v2.candidate.json",
+          "binding": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/mapping-01.author-v2.candidate.json",
+            "sha256": "sha256:5335ec4c8de8b7473c534fd3ff999b0aa8ee215310790430b44d21ca7c76a4d4",
+            "bytes": 181508
+          },
+          "effectiveBytesMatchFrozenNativeReceipt": true
+        }
+      ],
+      "wholeSourceApproval": false,
+      "wholeActualBoundSourceGoal": {
+        "id": "3843a735-191d-5951-aa43-61620b96b8e9",
+        "passageId": "by-bio:B13-EA.2",
+        "topicCode": "B13-EA.2",
+        "bulletIndex": 5,
+        "aspectIndex": 1,
+        "title": "beschreiben und vergleichen die Weiterleitung der Potentialänderung an verschiedenen Nervenfa...",
+        "description": "beschreiben und vergleichen die Weiterleitung der Potentialänderung an verschiedenen Nervenfasern, um die unterschiedliche Leistungsfähigkeit von Nervensystemen bei Wirbellosen und Wirbeltieren zu erklären.",
+        "sourceText": "beschreiben und vergleichen die Weiterleitung der Potentialänderung an verschiedenen Nervenfasern, um die unterschiedliche Leistungsfähigkeit von Nervensystemen bei Wirbellosen und Wirbeltieren zu erklären.",
+        "sourceSpan": "B13-EA.2.5",
+        "parentBulletText": "beschreiben und vergleichen die Weiterleitung der Potentialänderung an verschiedenen Nervenfasern, um die unterschiedliche Leistungsfähigkeit von Nervensystemen bei Wirbellosen und Wirbeltieren zu erklären.",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B13-EA.2.5",
+        "courseLevel": "GK_LK+LK",
+        "granularity": "officialCompetency",
+        "tags": [
+          "courseLevel:GK_LK",
+          "courseLevel:LK",
+          "jurisdiction:DE-BY",
+          "stage:SekII",
+          "topic:B13-EA.2",
+          "topic:B13-GA.2"
+        ],
+        "rawSourceText": "beschreiben und vergleichen die Weiterleitung der Potentialänderung an verschiedenen Nervenfasern, um die unterschiedliche Leistungsfähigkeit von Nervensystemen bei Wirbellosen und Wirbeltieren zu erklären.",
+        "rawSourceSpan": "B13-EA.2.5",
+        "rawParentBulletText": "beschreiben und vergleichen die Weiterleitung der Potentialänderung an verschiedenen Nervenfasern, um die unterschiedliche Leistungsfähigkeit von Nervensystemen bei Wirbellosen und Wirbeltieren zu erklären.",
+        "duplicateSourceGoalCount": 1,
+        "sourceOccurrences": [
+          {
+            "sourceGoalId": "3843a735-191d-5951-aa43-61620b96b8e9",
+            "passageId": "by-bio:B13-EA.2",
+            "topicCode": "B13-EA.2",
+            "sourceSpan": "B13-EA.2.5",
+            "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B13-EA.2.5",
+            "courseLevel": "LK",
+            "tags": [
+              "jurisdiction:DE-BY",
+              "stage:SekII",
+              "courseLevel:LK",
+              "topic:B13-EA.2"
+            ]
+          },
+          {
+            "sourceGoalId": "69480042-02f6-5b21-9eb8-446c83030ae9",
+            "passageId": "by-bio:B13-GA.2",
+            "topicCode": "B13-GA.2",
+            "sourceSpan": "B13-GA.2.5",
+            "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B13-GA.2.5",
+            "courseLevel": "GK_LK",
+            "tags": [
+              "jurisdiction:DE-BY",
+              "stage:SekII",
+              "courseLevel:GK_LK",
+              "topic:B13-GA.2"
+            ]
+          }
+        ],
+        "mergedTopicCodes": [
+          "B13-EA.2",
+          "B13-GA.2"
+        ],
+        "mergedSourceSpans": [
+          "B13-EA.2.5",
+          "B13-GA.2.5"
+        ],
+        "mergedSourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Biologie, B13-EA.2.5",
+          "LehrplanPLUS Bayern Gymnasium Biologie, B13-GA.2.5"
+        ]
+      },
+      "wholeActualSourceDocument": {
+        "key": "LEHRPLANPLUS_BIOLOGIE_GYMNASIUM",
+        "title": "LehrplanPLUS Gymnasium Bayern - Biologie",
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologie.json",
+        "role": "binding-core",
+        "official": true,
+        "url": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/biologie"
+      },
+      "actualRetainedDocumentBinding": {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologie.json",
+        "sha256": "sha256:6c99c5a678acbbe4465af44eaa762109459f1a2acf67580533646f7d1af27480",
+        "bytes": 216893
+      }
+    },
+    {
+      "goalId": "080b10c7-f308-57ff-b067-3bd189e37fea",
+      "scopeKey": "DE-BY/SekII/LK",
+      "actualWitness": {
+        "mappingPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_source_extraction_to_canonical_biology.m7-q1-bacterial-structure-fission-20261005-v1.review.json",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_BIOLOGIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+        "sourceGoalId": "3843a735-191d-5951-aa43-61620b96b8e9",
+        "mappedTargetGoalId": "080b10c7-f308-57ff-b067-3bd189e37fea",
+        "goalId": "080b10c7-f308-57ff-b067-3bd189e37fea",
+        "coverage": "direct",
+        "profileBasis": "source-metadata"
+      },
+      "exactEffectiveBindings": [
+        {
+          "field": "sourceExtractionPath",
+          "plannedPath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_BIOLOGIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "actualFrozenEffectivePath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_BIOLOGIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+          "binding": {
+            "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_BIOLOGIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+            "sha256": "sha256:b5f85afd2aa84f6dda8a07b8d8f0b0492d5d8baaa8932a9e0d006082cab339d4",
+            "bytes": 733831
+          },
+          "effectiveBytesMatchFrozenNativeReceipt": true
+        },
+        {
+          "field": "mappingPath",
+          "plannedPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_source_extraction_to_canonical_biology.m7-q1-bacterial-structure-fission-20261005-v1.review.json",
+          "actualFrozenEffectivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/mapping-01.author-v2.candidate.json",
+          "binding": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/mapping-01.author-v2.candidate.json",
+            "sha256": "sha256:5335ec4c8de8b7473c534fd3ff999b0aa8ee215310790430b44d21ca7c76a4d4",
+            "bytes": 181508
+          },
+          "effectiveBytesMatchFrozenNativeReceipt": true
+        }
+      ],
+      "wholeSourceApproval": false,
+      "wholeActualBoundSourceGoal": {
+        "id": "3843a735-191d-5951-aa43-61620b96b8e9",
+        "passageId": "by-bio:B13-EA.2",
+        "topicCode": "B13-EA.2",
+        "bulletIndex": 5,
+        "aspectIndex": 1,
+        "title": "beschreiben und vergleichen die Weiterleitung der Potentialänderung an verschiedenen Nervenfa...",
+        "description": "beschreiben und vergleichen die Weiterleitung der Potentialänderung an verschiedenen Nervenfasern, um die unterschiedliche Leistungsfähigkeit von Nervensystemen bei Wirbellosen und Wirbeltieren zu erklären.",
+        "sourceText": "beschreiben und vergleichen die Weiterleitung der Potentialänderung an verschiedenen Nervenfasern, um die unterschiedliche Leistungsfähigkeit von Nervensystemen bei Wirbellosen und Wirbeltieren zu erklären.",
+        "sourceSpan": "B13-EA.2.5",
+        "parentBulletText": "beschreiben und vergleichen die Weiterleitung der Potentialänderung an verschiedenen Nervenfasern, um die unterschiedliche Leistungsfähigkeit von Nervensystemen bei Wirbellosen und Wirbeltieren zu erklären.",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B13-EA.2.5",
+        "courseLevel": "GK_LK+LK",
+        "granularity": "officialCompetency",
+        "tags": [
+          "courseLevel:GK_LK",
+          "courseLevel:LK",
+          "jurisdiction:DE-BY",
+          "stage:SekII",
+          "topic:B13-EA.2",
+          "topic:B13-GA.2"
+        ],
+        "rawSourceText": "beschreiben und vergleichen die Weiterleitung der Potentialänderung an verschiedenen Nervenfasern, um die unterschiedliche Leistungsfähigkeit von Nervensystemen bei Wirbellosen und Wirbeltieren zu erklären.",
+        "rawSourceSpan": "B13-EA.2.5",
+        "rawParentBulletText": "beschreiben und vergleichen die Weiterleitung der Potentialänderung an verschiedenen Nervenfasern, um die unterschiedliche Leistungsfähigkeit von Nervensystemen bei Wirbellosen und Wirbeltieren zu erklären.",
+        "duplicateSourceGoalCount": 1,
+        "sourceOccurrences": [
+          {
+            "sourceGoalId": "3843a735-191d-5951-aa43-61620b96b8e9",
+            "passageId": "by-bio:B13-EA.2",
+            "topicCode": "B13-EA.2",
+            "sourceSpan": "B13-EA.2.5",
+            "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B13-EA.2.5",
+            "courseLevel": "LK",
+            "tags": [
+              "jurisdiction:DE-BY",
+              "stage:SekII",
+              "courseLevel:LK",
+              "topic:B13-EA.2"
+            ]
+          },
+          {
+            "sourceGoalId": "69480042-02f6-5b21-9eb8-446c83030ae9",
+            "passageId": "by-bio:B13-GA.2",
+            "topicCode": "B13-GA.2",
+            "sourceSpan": "B13-GA.2.5",
+            "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B13-GA.2.5",
+            "courseLevel": "GK_LK",
+            "tags": [
+              "jurisdiction:DE-BY",
+              "stage:SekII",
+              "courseLevel:GK_LK",
+              "topic:B13-GA.2"
+            ]
+          }
+        ],
+        "mergedTopicCodes": [
+          "B13-EA.2",
+          "B13-GA.2"
+        ],
+        "mergedSourceSpans": [
+          "B13-EA.2.5",
+          "B13-GA.2.5"
+        ],
+        "mergedSourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Biologie, B13-EA.2.5",
+          "LehrplanPLUS Bayern Gymnasium Biologie, B13-GA.2.5"
+        ]
+      },
+      "wholeActualSourceDocument": {
+        "key": "LEHRPLANPLUS_BIOLOGIE_GYMNASIUM",
+        "title": "LehrplanPLUS Gymnasium Bayern - Biologie",
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologie.json",
+        "role": "binding-core",
+        "official": true,
+        "url": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/biologie"
+      },
+      "actualRetainedDocumentBinding": {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologie.json",
+        "sha256": "sha256:6c99c5a678acbbe4465af44eaa762109459f1a2acf67580533646f7d1af27480",
+        "bytes": 216893
+      }
+    },
+    {
+      "goalId": "080b10c7-f308-57ff-b067-3bd189e37fea",
+      "scopeKey": "DE-HE/SekII/GK",
+      "actualWitness": {
+        "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-ephase-seven-current365-20261005-v2.review.json",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_BIOLOGIE_SEKII_KC2024.m7-ephase-seven-current365-20261005-v2.source-extraction.json",
+        "sourceGoalId": "6708791e-106b-5fc5-9477-3bfba8d45ba2",
+        "mappedTargetGoalId": "080b10c7-f308-57ff-b067-3bd189e37fea",
+        "goalId": "080b10c7-f308-57ff-b067-3bd189e37fea",
+        "coverage": "direct",
+        "profileBasis": "source-metadata"
+      },
+      "exactEffectiveBindings": [
+        {
+          "field": "sourceExtractionPath",
+          "plannedPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_BIOLOGIE_SEKII_KC2024.m7-ephase-seven-current365-20261005-v2.source-extraction.json",
+          "actualFrozenEffectivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/extraction-02.author-v2.candidate.json",
+          "binding": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/extraction-02.author-v2.candidate.json",
+            "sha256": "sha256:3932990a396364d307c26deb4515559c5c215e26988deb105ffface4770df400",
+            "bytes": 255855
+          },
+          "effectiveBytesMatchFrozenNativeReceipt": true
+        },
+        {
+          "field": "mappingPath",
+          "plannedPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-ephase-seven-current365-20261005-v2.review.json",
+          "actualFrozenEffectivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/mapping-02.author-v2.candidate.json",
+          "binding": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/mapping-02.author-v2.candidate.json",
+            "sha256": "sha256:4e4b0666b79b1c15724caaf74f355feadc7121d2c2aae9fb2ae3a30a5c2a065a",
+            "bytes": 130166
+          },
+          "effectiveBytesMatchFrozenNativeReceipt": true
+        }
+      ],
+      "wholeSourceApproval": false,
+      "wholeActualBoundSourceGoal": {
+        "id": "6708791e-106b-5fc5-9477-3bfba8d45ba2",
+        "passageId": "he-bio-sekii:q2.3",
+        "topicCode": "Q2.3",
+        "title": "Bau und Funktion der Nervenzelle: Ruhepotenzial, Aktionspotenzial, Erregungsleitung",
+        "description": "Bau und Funktion der Nervenzelle: Ruhepotenzial, Aktionspotenzial, Erregungsleitung",
+        "sourceText": "Bau und Funktion der Nervenzelle: Ruhepotenzial, Aktionspotenzial, Erregungsleitung",
+        "rawSourceText": "Bau und Funktion der Nervenzelle: Ruhepotenzial, Aktionspotenzial, Erregungsleitung",
+        "parentBulletText": "Bau und Funktion der Nervenzelle: Ruhepotenzial, Aktionspotenzial, Erregungsleitung",
+        "rawParentBulletText": "Bau und Funktion der Nervenzelle: Ruhepotenzial, Aktionspotenzial, Erregungsleitung",
+        "sourceSpan": "Q2.3.GK1",
+        "rawSourceSpan": "Q2.3.GK1",
+        "sourceRef": "Hessen KC Biologie 2024, gedruckte/physische Seite 43, Originalbullet GK1 (lokaler redaktioneller Schlüssel)",
+        "courseLevel": "GK_LK",
+        "granularity": "officialOriginalBullet",
+        "isOfficialBullet": true,
+        "localEditorialKey": "GK1",
+        "officialNumberingClaim": false,
+        "sourceDocumentKey": "KC2024_BIOLOGIE_SEKII",
+        "printedPage": 43,
+        "physicalPage": 43,
+        "tags": [
+          "jurisdiction:DE-HE",
+          "stage:SekII",
+          "courseLevel:GK_LK",
+          "topic:Q2.3"
+        ]
+      },
+      "wholeActualSourceDocument": {
+        "key": "KC2024_BIOLOGIE_SEKII",
+        "title": "Kerncurriculum Biologie gymnasiale Oberstufe Hessen 2024",
+        "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+        "role": "binding-core",
+        "official": true,
+        "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2025-10/kerncurriculum_gymnasiale_oberstufe-biologie.pdf"
+      },
+      "actualRetainedDocumentBinding": {
+        "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+        "sha256": "sha256:52c278d6f5a7383361631d5251550c42222f13e1bbe2aa16d39ca3b12c5e1558",
+        "bytes": 505276
+      }
+    },
+    {
+      "goalId": "080b10c7-f308-57ff-b067-3bd189e37fea",
+      "scopeKey": "DE-HE/SekII/LK",
+      "actualWitness": {
+        "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-ephase-seven-current365-20261005-v2.review.json",
+        "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_BIOLOGIE_SEKII_KC2024.m7-ephase-seven-current365-20261005-v2.source-extraction.json",
+        "sourceGoalId": "6708791e-106b-5fc5-9477-3bfba8d45ba2",
+        "mappedTargetGoalId": "080b10c7-f308-57ff-b067-3bd189e37fea",
+        "goalId": "080b10c7-f308-57ff-b067-3bd189e37fea",
+        "coverage": "direct",
+        "profileBasis": "source-metadata"
+      },
+      "exactEffectiveBindings": [
+        {
+          "field": "sourceExtractionPath",
+          "plannedPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_BIOLOGIE_SEKII_KC2024.m7-ephase-seven-current365-20261005-v2.source-extraction.json",
+          "actualFrozenEffectivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/extraction-02.author-v2.candidate.json",
+          "binding": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/extraction-02.author-v2.candidate.json",
+            "sha256": "sha256:3932990a396364d307c26deb4515559c5c215e26988deb105ffface4770df400",
+            "bytes": 255855
+          },
+          "effectiveBytesMatchFrozenNativeReceipt": true
+        },
+        {
+          "field": "mappingPath",
+          "plannedPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-ephase-seven-current365-20261005-v2.review.json",
+          "actualFrozenEffectivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/mapping-02.author-v2.candidate.json",
+          "binding": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/mapping-02.author-v2.candidate.json",
+            "sha256": "sha256:4e4b0666b79b1c15724caaf74f355feadc7121d2c2aae9fb2ae3a30a5c2a065a",
+            "bytes": 130166
+          },
+          "effectiveBytesMatchFrozenNativeReceipt": true
+        }
+      ],
+      "wholeSourceApproval": false,
+      "wholeActualBoundSourceGoal": {
+        "id": "6708791e-106b-5fc5-9477-3bfba8d45ba2",
+        "passageId": "he-bio-sekii:q2.3",
+        "topicCode": "Q2.3",
+        "title": "Bau und Funktion der Nervenzelle: Ruhepotenzial, Aktionspotenzial, Erregungsleitung",
+        "description": "Bau und Funktion der Nervenzelle: Ruhepotenzial, Aktionspotenzial, Erregungsleitung",
+        "sourceText": "Bau und Funktion der Nervenzelle: Ruhepotenzial, Aktionspotenzial, Erregungsleitung",
+        "rawSourceText": "Bau und Funktion der Nervenzelle: Ruhepotenzial, Aktionspotenzial, Erregungsleitung",
+        "parentBulletText": "Bau und Funktion der Nervenzelle: Ruhepotenzial, Aktionspotenzial, Erregungsleitung",
+        "rawParentBulletText": "Bau und Funktion der Nervenzelle: Ruhepotenzial, Aktionspotenzial, Erregungsleitung",
+        "sourceSpan": "Q2.3.GK1",
+        "rawSourceSpan": "Q2.3.GK1",
+        "sourceRef": "Hessen KC Biologie 2024, gedruckte/physische Seite 43, Originalbullet GK1 (lokaler redaktioneller Schlüssel)",
+        "courseLevel": "GK_LK",
+        "granularity": "officialOriginalBullet",
+        "isOfficialBullet": true,
+        "localEditorialKey": "GK1",
+        "officialNumberingClaim": false,
+        "sourceDocumentKey": "KC2024_BIOLOGIE_SEKII",
+        "printedPage": 43,
+        "physicalPage": 43,
+        "tags": [
+          "jurisdiction:DE-HE",
+          "stage:SekII",
+          "courseLevel:GK_LK",
+          "topic:Q2.3"
+        ]
+      },
+      "wholeActualSourceDocument": {
+        "key": "KC2024_BIOLOGIE_SEKII",
+        "title": "Kerncurriculum Biologie gymnasiale Oberstufe Hessen 2024",
+        "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+        "role": "binding-core",
+        "official": true,
+        "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2025-10/kerncurriculum_gymnasiale_oberstufe-biologie.pdf"
+      },
+      "actualRetainedDocumentBinding": {
+        "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+        "sha256": "sha256:52c278d6f5a7383361631d5251550c42222f13e1bbe2aa16d39ca3b12c5e1558",
+        "bytes": 505276
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-080b-exact-tiergroup-performance-positive-material-author-root-v4/targeted-whole-two-cases.raw-author-review-input.json",
+      "sha256": "1d6f660efd6cb946d06a004187233d32a092bb5353812e12aadac73e89d2bcf9",
+      "bytes": 10667
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-twenty-one-current-continuation-author-v3/stage-02-current-twenty-one-native/current472-neuro21.complete-author-candidate.json",
+      "sha256": "5161350cf39b9599b91a2dd05850de6fab36e6d0f167f18542a455c7afe2ed81",
+      "bytes": 1019460
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-twenty-one-current-continuation-author-v3/stage-02-current-twenty-one-native/positive-evidence.current21.actual.author-candidate.jsonl",
+      "sha256": "9d763b0d89275396b3a9118fd49dbdd126f8407e6237212460f0cc07ea6a3df2",
+      "bytes": 154237
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-080b-exact-tiergroup-performance-positive-material-author-root-v4/positive1.actual-author-candidate.jsonl",
+      "sha256": "32044dfb246320c6e636c4a1662a2956897a975e5a470feb0d07d97fc8d852d5",
+      "bytes": 10923
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-twenty-one-current-continuation-author-v3/stage-02-current-twenty-one-native/all21-selected-actual-frozen-source-witness-effective-file-bindings.author.json",
+      "sha256": "9ff51917df2b6e5f0c0357974de5c9a363339b4e5a7c458e9e6578b624113946",
+      "bytes": 360133
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-twenty-one-current-continuation-author-v3/stage-02-current-twenty-one-native/final-current21-whole-native-source-context-material-review-inputs.author.raw.json",
+      "sha256": "45e21fcb72a7ca151d033645cc499acdd56ebf17cb9e6eb44909f7d730ca8756",
+      "bytes": 734244
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-080b-exact-tiergroup-performance-positive-material-author-root-v4/positive1.native-author.config.json",
+      "sha256": "075bf69274256ad702a7cea9a29c5dc1ab2e16b0bf608a49008d28318dd5ab5d",
+      "bytes": 1538
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-twenty-one-current-continuation-author-v3/stage-02-current-twenty-one-native/semantic-kinds.current472.neuro21.source-binding.author-candidate.json",
+      "sha256": "bbdca7cf7f8b5e7e9a97aa005649d415d8db79c9d097c8ba3842d02bd03e2f27",
+      "bytes": 152246
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/biology-positive-understanding-evidence-profile-criteria-v1.md",
+      "sha256": "0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8",
+      "bytes": 2245
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/prompts/positive-understanding-evidence-profile-authoring-v2.md",
+      "sha256": "f164aaa2f0c5af439aa62ec9dc333ac01282c6c66c3cffdf37d7d994861e3f29",
+      "bytes": 3876
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "ed7f0ca390d56905b368acdbbb24a4078d7c94a19d830c7d4cb44108f32c49e6",
+      "bytes": 129902
+    }
+  ],
+  "ownFindings": [
+    {
+      "aspect": "current-goal-and-bavaria-operator-match",
+      "result": "KEEP",
+      "reason": "The whole DE/EN goal and bound Bavarian B13-EA.2.5 / B13-GA.2.5 competency require comparing nerve-fibre propagation to explain invertebrate/vertebrate nervous-system performance. Both v4 materials explicitly assign each model to its animal group and request a positive bounded temporal performance explanation. The first model computes onset advantage from known equal remaining delays; the second computes only the pure conduction advantage. They cover the actual comparison-and-explain demand rather than only denying an animal-group ranking."
+    },
+    {
+      "aspect": "mechanism",
+      "result": "KEEP",
+      "reason": "The continuous model regenerates action potentials along successive excitable membrane regions. The saltatory model includes passive spread under insulating internodes and regeneration at nodes. The unchanged-particle/unchanged-action-potential jump is excluded. Diameter can favour propagation in an unmyelinated fibre, so the later model correctly allows a fast thick unmyelinated fibre. These are bounded school-level conduction models, not cable equations, empirical measurements or a universal anatomical taxonomy."
+    },
+    {
+      "aspect": "first-complete-case-calculations",
+      "result": "KEEP",
+      "arithmetic": {
+        "A_conduction_ms": 100,
+        "A_total_ms": 130,
+        "B_conduction_ms": 10,
+        "B_total_ms": 40,
+        "B_model_onset_advantage_ms": 90
+      },
+      "reason": "0.20 m / 2 m/s = 0.10 s = 100 ms; 0.20 / 20 = 0.01 s = 10 ms. Adding the explicitly equal 30 ms remaining model delay gives 130 ms and 40 ms. The 90 ms onset advantage is justified only for these complete supplied model delays. A speed factor of ten is not incorrectly claimed for the total delay."
+    },
+    {
+      "aspect": "second-complete-case-calculations-and-transfer",
+      "result": "KEEP",
+      "arithmetic": {
+        "invertebrate_conduction_ms": 5,
+        "vertebrate_conduction_ms": 2.5,
+        "vertebrate_conduction_advantage_ms": 2.5,
+        "vertebrate_to_invertebrate_conduction_delay_ratio": 0.5
+      },
+      "reason": "0.10 / 20 = 0.005 s = 5 ms; 0.10 / 40 = 0.0025 s = 2.5 ms. Diameter and myelination vary together, unlike the first controlled model. The material therefore supports a bounded conduction advantage, and neither separates causal contributions nor supplies the omitted total processing delay. This is substantive transfer in conditions and inference scope, beyond a numerical substitution."
+    },
+    {
+      "aspect": "materials-and-positive-evidence",
+      "result": "KEEP",
+      "reason": "Both whole cases contain every assigned model value needed for their requested arithmetic and explicitly mark the data synthetic. Equal length, equal diameter and equal remaining conditions in case 1 permit its isolated illustrative comparison. Case 2 provides 500 µm unmyelinated versus 10 µm myelinated fibres and supplied speeds while omitting further times expressly. Observable outputs require learners to calculate, compare and justify the model mechanism and limits in fresh material. The answers describe possible positive evidence and assert no observed learner work."
+    },
+    {
+      "aspect": "german-english-equivalence",
+      "result": "KEEP",
+      "reason": "I read all six DE/EN fields of both complete cases, all expectation fields and both variation axes. Assignments, diameters, path lengths, speeds, remaining delay, requested distinctions and answer arithmetic agree in both languages. English adds no species, method, demand or empirical claim absent from German."
+    },
+    {
+      "aspect": "independent-demonstrations",
+      "result": "KEEP",
+      "reason": "The two cases retain the required expectation, two independently producible demonstrations, fresh variation and independent transfer. These are content-review minima, not a runtime task quota or proof of mastery; coach-led mastery remains evidence-based under AGENTS.md."
+    },
+    {
+      "aspect": "source-and-native-scope-limits",
+      "result": "KEEP_WITH_RETAINED_SOURCE_HOLDS",
+      "reason": "Bavarian official competency supplies the explicit performance comparison. Hessen Q2.3.GK1 is a broader original bullet for neuron structure, resting potential, action potential and conduction; it does not alone establish the full Bavarian comparison operator. The broad HE bullet and the EA/GA merged occurrence are retained as bounded evidence with wholeSourceApproval=false. No lower-depth or all-country view claim is established by sourceRef, mapping metadata or the canonical view. Current page/image binding and a later native21 combined profile remain separate."
+    }
+  ],
+  "blockingFindings": [],
+  "nonblockingLimits": [
+    "Synthetic model speeds and diameters are not real animal measurements or a catalogue of all invertebrate/vertebrate fibres.",
+    "Additional processing delays are illustrative case 1 inputs, not an empirical reaction-time claim.",
+    "Source-ref metadata and four witness scopes do not close whole-source/country-scope holds.",
+    "The current stage02 original native view has no 080b primary image; a later page/image-bound profile requires its own native binding.",
+    "Only the targeted v4 080b P material is judged; the other20 profiles, D/A/M/V and future21 package are not approved here."
+  ],
+  "wholeSourceApproval": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "actualLearnerEvidence": false,
+  "newStrictCompletion": 0,
+  "strictGain": 0,
+  "activeWrites": false,
+  "runtimeWrites": false,
+  "mathPhysicsProtected": true,
+  "nativeApplicableCheckStatus": "pending-own-one-goal-record-check"
+}

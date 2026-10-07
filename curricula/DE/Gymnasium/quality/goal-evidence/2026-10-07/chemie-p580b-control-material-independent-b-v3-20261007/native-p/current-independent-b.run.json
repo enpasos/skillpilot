@@ -1,0 +1,46 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-p580b-control-material-independent-b-v3-20261007.p-b",
+  "bundleFingerprint": "sha256:541557914c81c58b1ea3a43c29238310e890b745a08df5bff62a99ee26a86666",
+  "bookDigest": "sha256:e3ff349b1bfb6e6a2b7723a8d04e54ea6247d22e7aa36feaa5b9e1350159e0e2",
+  "provider": "OpenAI",
+  "model": "Codex; exact session model version not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "chemistry-p580b-control-targeted-positive-review-v3",
+  "promptFingerprint": "sha256:86091fc8e618fa11a88ad386ca8eb1da860a84940616467c5d6aafd9533aefc9",
+  "criteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+  "generationParametersFingerprint": "sha256:85d70127cb1b180835d4239178cf0ca02d2a16f73dd153d1f2c296d5cedf99a3",
+  "independenceGroupId": "chemie-p580b-control-material-independent-b-v3-20261007.independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "580b3616-f121-5d82-ac6b-fc24f145fbdc"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:86091fc8e618fa11a88ad386ca8eb1da860a84940616467c5d6aafd9533aefc9"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:541557914c81c58b1ea3a43c29238310e890b745a08df5bff62a99ee26a86666"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:51b72f9f5f66d23d08d2ded67f11c8133b69e5a59494c14129eff305281bd9a7"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:e3ff349b1bfb6e6a2b7723a8d04e54ea6247d22e7aa36feaa5b9e1350159e0e2"
+    }
+  ],
+  "startedAt": "2026-10-07T06:22:08.936911+00:00",
+  "completedAt": "2026-10-07T06:23:28.925418+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:ef3d99f5f5c9e09f31309385df86daada5a7a90c26b4fb5bf9a1ffdc1da66ae8",
+  "toolchainVersion": "codex-targeted-positive-review-20261007"
+}

@@ -1,0 +1,17 @@
+# Historical technical artifact layout preservation
+
+This is a technical follow-up to the two full-schema failures observed on 7 October 2026. It changes artifact placement only and grants no curriculum, image, human, or release approval. Strict gain: zero.
+
+The copied native `contracts` dependency contains an intentionally malformed negative test fixture. All 126 copied files were first compared byte for byte with the repository contracts. The complete original native snapshot is archived outside `curricula`, under `qa-artifacts/native-review-inputs/2026-10-07/schema-artifact-layout-preservation-technical-20261007-v1/native-contracts`. A relative directory alias retains its historical `native-root/contracts` path. The archived snapshot is independent of later changes to live contracts.
+
+The portable-link preparation contains a failed historical attempt whose raw stdout is an empty file misleadingly named `.json`. Its complete 12-file `checks` directory is archived alongside that snapshot as `portable-preparation-checks`, without changing the empty file or any neighboring payload. A relative directory alias retains every historical `checks/...` path. The original freeze and its original name remain truthful history; the empty file is not promoted to a JSON result or a passing check.
+
+Before and after moving these directories, the helper verifies all 670 Chem frozen own payloads and all 387 portable-preparation frozen payloads. Both original freeze files remain byte exact. The original failed attempt and negative test fixture still reject JSON parsing, as expected for their actual contents. Current target files, cards, image bytes, reviews, and review decisions are unchanged.
+
+The ordinary schema walker continues to parse curriculum JSON and reject invalid JSON. There are no added directory, artifact-name, or file-name exceptions. These repository dependency snapshots and failed raw logs belong in a technical archive outside curriculum discovery. Repository-relative aliases must pass the generic committable-target guard and remain readable after repository relocation.
+
+For future technical artifact preparation, keep dependency snapshots and negative parser fixtures outside curriculum discovery. Save raw stdout/stderr as `.txt`; create a JSON report only after the producer succeeds and the report parses. Preserve failed outputs as raw evidence. Full-schema validation remains a separate Root-run gate; this dossier reports only its actual targeted verification.
+
+Apply once with `python -B preserve_artifact_layout.py --apply`; verify without rewriting historical artifacts with `python -B preserve_artifact_layout.py --verify`. The actual receipt records original and archived paths, hashes, byte lengths, file modes, alias literals, original freeze bindings, and targeted checks. Technical scripts and this procedure document are Apache-2.0 under `LICENSING.md`; copied contracts retain their existing licensing.
+
+The first application archived the contracts snapshot, then failed to move the read-only checks directory. Its actual traceback is retained as `.txt`. The guarded successful continuation verifies the already archived contracts snapshot and temporarily restores directory write permission for moving the checks directory; original directory and file modes are then restored. The receipt distinguishes earlier archived files from files moved during that successful call. The failed call is not described as a passing application.

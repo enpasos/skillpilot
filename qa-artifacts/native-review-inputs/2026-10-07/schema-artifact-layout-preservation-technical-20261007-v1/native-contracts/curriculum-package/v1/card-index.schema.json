@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skillpilot.com/schemas/curriculum-package/v1/card-index.schema.json",
+  "title": "SkillPilot card deck index v1",
+  "description": "Closed discovery index for memory card decks with explicit language and landscape ownership.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "indexFormatVersion",
+    "decks"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "https://skillpilot.com/schemas/curriculum-package/v1/card-index.schema.json"
+    },
+    "indexFormatVersion": {
+      "const": "1.0"
+    },
+    "decks": {
+      "type": "array",
+      "maxItems": 60000,
+      "x-skillpilot-listSemantics": "ordered",
+      "items": {
+        "$ref": "#/$defs/deckRecord"
+      }
+    }
+  },
+  "$defs": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300,
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._:+-]*$"
+    },
+    "languageTag": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 64,
+      "pattern": "^[A-Za-z]{2,8}(?:-[A-Za-z0-9]{1,8})*$"
+    },
+    "nonBlankText": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000,
+      "pattern": "^\\S(?:[\\s\\S]*\\S)?$"
+    },
+    "packageRelativePath": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240,
+      "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+    },
+    "deckRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "deckId",
+        "landscapeId",
+        "language",
+        "title",
+        "cardCount",
+        "artifactPath"
+      ],
+      "properties": {
+        "deckId": {
+          "$ref": "#/$defs/id"
+        },
+        "landscapeId": {
+          "$ref": "#/$defs/id"
+        },
+        "language": {
+          "$ref": "#/$defs/languageTag"
+        },
+        "title": {
+          "$ref": "#/$defs/nonBlankText"
+        },
+        "cardCount": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1000000
+        },
+        "artifactPath": {
+          "$ref": "#/$defs/packageRelativePath"
+        }
+      }
+    }
+  }
+}

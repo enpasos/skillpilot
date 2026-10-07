@@ -1,0 +1,62 @@
+{
+  "actualVerifiedAt": "2026-10-07T09:25:35.437474+00:00",
+  "frozenPayloadChecks": [
+    {
+      "freeze": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-final-images-native-d17-plus-c441-p18-technical-author-20261007-v1/final-own-files-and-reused-inputs.freeze.json",
+        "sha256": "828cd1893368ee6106be20335f022d88e3d6ad7d75fcfdabf8d94c682e4791d9",
+        "bytes": 338396
+      },
+      "verifiedFrozenPayloads": 670
+    },
+    {
+      "freeze": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/portable-curriculum-symlink-repair-preparation-author-20261007-v1/author.final.freeze.json",
+        "sha256": "a631aa758d52bfef8ea9bf61531732f619a78ac30c36b6b5d3874e2723b3cd25",
+        "bytes": 69856
+      },
+      "verifiedFrozenPayloads": 387
+    }
+  ],
+  "targetedLayoutChecks": [
+    {
+      "originalDirectory": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-final-images-native-d17-plus-c441-p18-technical-author-20261007-v1/native-root/contracts",
+      "archiveDirectory": "qa-artifacts/native-review-inputs/2026-10-07/schema-artifact-layout-preservation-technical-20261007-v1/native-contracts",
+      "relativeAliasLiteral": "../../../../../../../../qa-artifacts/native-review-inputs/2026-10-07/schema-artifact-layout-preservation-technical-20261007-v1/native-contracts"
+    },
+    {
+      "originalDirectory": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/portable-curriculum-symlink-repair-preparation-author-20261007-v1/checks",
+      "archiveDirectory": "qa-artifacts/native-review-inputs/2026-10-07/schema-artifact-layout-preservation-technical-20261007-v1/portable-preparation-checks",
+      "relativeAliasLiteral": "../../../../../../../qa-artifacts/native-review-inputs/2026-10-07/schema-artifact-layout-preservation-technical-20261007-v1/portable-preparation-checks"
+    },
+    {
+      "historicalRawPayload": {
+        "path": "qa-artifacts/native-review-inputs/2026-10-07/schema-artifact-layout-preservation-technical-20261007-v1/native-contracts/curriculum-package/v1/fixtures/package-provisioner/raw-invalid/trailing-token.install-record.raw.json",
+        "sha256": "7af5806479ec377afbc96d670a2094cfba18b75ec9975987c2df1a388f1e6807",
+        "bytes": 8
+      },
+      "preservedReason": "intentionally malformed negative test fixture",
+      "actualJSONRejection": "Extra data: line 2 column 1 (char 3)"
+    },
+    {
+      "historicalRawPayload": {
+        "path": "qa-artifacts/native-review-inputs/2026-10-07/schema-artifact-layout-preservation-technical-20261007-v1/portable-preparation-checks/root-apply-helper.check-only.actual.json",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "preservedReason": "zero-byte raw stdout from failed historical attempt",
+      "actualJSONRejection": "Expecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "genericCommittableCurriculumSymlinkErrors": []
+    },
+    {
+      "actualTwoAliasesRelocatedWithArchivedPayloads": 138,
+      "genericBeforeRelocationErrors": [],
+      "genericAfterRelocationErrors": []
+    },
+    {
+      "newTechnicalDossierJSONFilesParsed": 1
+    }
+  ]
+}

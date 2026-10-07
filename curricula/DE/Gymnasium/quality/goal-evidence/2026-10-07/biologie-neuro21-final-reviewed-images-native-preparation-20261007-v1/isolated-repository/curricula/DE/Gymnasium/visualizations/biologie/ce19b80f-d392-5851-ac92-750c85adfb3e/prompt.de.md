@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Neuronaler Aufbau
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `ce19b80f-d392-5851-ac92-750c85adfb3e`
+- Titel: Neuronaler Aufbau
+- Beschreibung: Die lernende Person kann den Aufbau einer Nervenzelle modellhaft darstellen und die Funktion ihrer wesentlichen Strukturen für Signalaufnahme, Weiterleitung und Weitergabe erklären.
+
+## Generator
+
+- Provider: OpenAI / ChatGPT-Codex image generation
+- Status: pilot
+- Quellbild: `ce19b80f-d392-5851-ac92-750c85adfb3e.png`
+- Public Asset: `/assets/goal-visualizations/biologie/ce19b80f-d392-5851-ac92-750c85adfb3e/ce19b80f-d392-5851-ac92-750c85adfb3e.png`
+
+## Prompt
+
+```text
+Correct ONLY the Axon label's black leader and black endpoint dot in this exact image. The present dot near x1307,y504 is still at the last myelin boundary and is ambiguous. Remove the entire present diagonal black Axon leader and that dot cleanly, restore the underlying colors, then draw the replacement leader from the unchanged word “Axon” DOWN AND LEFT to the UNMYELINATED EXPOSED PURPLE AXON NECK BEFORE THE FIRST PALE MYELIN SEGMENT. In this 1672 by 941 image this neck is around x620–675,y480–530, between the cell body and the leftmost pale sheath. Put the black endpoint dot clearly WITHIN that exposed axon neck, for example near x642,y488, on the visible purple upper strip above the orange signal stroke. The dot must be left of every sheath, distinctly separated from the first pale sheath; it must not touch a dendrite, nucleus or the wide cell-body region. Keep the word Axon exactly where it is and route the leader through the ivory background; the final short endpoint meets the exposed purple axon. Preserve everything else, including every pale myelin sheath, all arrows, all four original large labels, cell-body outline, branching, synaptic gap, particles, next cell, colors, size and friendly style. Do not add anatomy or expose new stretches. Change only the label leader/endpoint.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

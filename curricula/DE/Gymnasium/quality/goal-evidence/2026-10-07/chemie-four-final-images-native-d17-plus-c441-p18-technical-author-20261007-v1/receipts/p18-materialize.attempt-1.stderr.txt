@@ -1,0 +1,15 @@
+node:internal/fs/promises:637
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-final-images-native-d17-plus-c441-p18-technical-author-20261007-v1/native-root/candidate/positive18.author-candidates.review.jsonl'
+    at async open (node:internal/fs/promises:637:25)
+    at async readFile (node:internal/fs/promises:1249:14)
+    at async main (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-final-images-native-d17-plus-c441-p18-technical-author-20261007-v1/native-root/app/scripts/materializePositiveGoalEvidenceCandidates.ts:295:25) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-final-images-native-d17-plus-c441-p18-technical-author-20261007-v1/native-root/candidate/positive18.author-candidates.review.jsonl'
+}
+
+Node.js v20.20.2

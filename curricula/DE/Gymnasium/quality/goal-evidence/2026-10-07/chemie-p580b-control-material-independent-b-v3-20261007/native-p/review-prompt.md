@@ -1,0 +1,3 @@
+# Independent targeted P580b control correction review
+
+Read the exact whole bilingual goal, corrected positive-understanding-evidence-v2 profile and two complete bilingual material/task/reference-response/boundary cases. Decide whether the supplied air and CO2-free limewater observations support the corrected control sentence and whether the exact previous damp-splint finding is resolved. Preserve the prior sealed finding for old v2. Verify the unchanged 16 other whole positive candidate specs and exact D17 inputs; do not rebuild or restart those reviews. Remain blind to current independent peer judgments. Only ai_candidate, needs_human_review, E1/G1; no learner-work, human-approval, trial, active integration or strict-progress claim.

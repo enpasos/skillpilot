@@ -1,0 +1,32 @@
+# Lernzielvisualisierung: Zelluläre Lernprozesse
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `347110a1-1d2e-5195-8acc-64e7e3893ce5`
+- Titel: Zelluläre Lernprozesse
+- Beschreibung: Die lernende Person kann plastische Veränderungen auf zellulärer Ebene erläutern.
+
+## Generator
+
+- Provider: OpenAI / ChatGPT-Codex image generation
+- Status: pilot
+- Quellbild: `347110a1-1d2e-5195-8acc-64e7e3893ce5.png`
+- Public Asset: `/assets/goal-visualizations/biologie/347110a1-1d2e-5195-8acc-64e7e3893ce5/347110a1-1d2e-5195-8acc-64e7e3893ce5.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational illustration for German upper-secondary biology.
+Create one original landscape PNG, approximately 16:9, near 1600 by 900 pixels. Warm friendly hand-drawn comic learning illustration, clear slightly organic outlines, welcoming colors, soft ivory background, large well separated structures and directional arrows. Friendly but not childish, anthropomorphic or sterile. This is a bounded model example, not a full textbook page or task sheet.
+Critical display requirement: essential labels and symbols must be clearly readable at ACTUAL IMAGE WIDTH 360 pixels and 680 pixels using max-height 448 pixels and object-contain. Use ONLY the requested short very large labels, ideally around 80 pixels high in a 1600-pixel-wide original. No tiny axis titles, tiny numbers or units, fine print, dense legends or explanatory sentences. Use visual relationships instead of extra text. If a qualitative graph is requested, no numeric ticks or units; axes use short large words. No header/footer/logo/watermark, technical identifier or branding. German spellings and all arrows must be correct. Do not add unrequested medical, clinical or universal claims.
+
+Composition:
+Zwei große Nahansichten desselben Axon-/Dendriten-Kontaktmodells vor und nach einer STRUKTURELLEN plastischen Änderung. Links besitzt der Dendrit zwei klar erkennbare Kontaktfortsätze mit zwei Axonendknöpfchen. Rechts sind dieselben zwei Kontaktstellen unverändert vorhanden und genau EIN zusätzlicher kleiner Dendritenfortsatz trifft auf ein zusätzliches Endknöpfchen desselben gegebenen Axonastes; die neue Kontaktstelle wird mit einem warmen Orangefarbring hervorgehoben. An jeder Kontaktstelle bleibt ein sichtbarer synaptischer Abstand zwischen verschiedenen Zellmembranen. Große Labels „Vorher“, „Nachher“, „neuer Kontakt“. Keine Potenzialkurve oder größere Einzelantwort behaupten, keine Gleichsetzung einer Verbindung mit einer ganzen Erinnerung.
+
+Boundaries:
+Ein zusätzlich gebildeter Kontakt als strukturelles Plastizitätsbeispiel; keine Hebb-Regel oder LTP-/LTD-Induktionsbehauptung.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

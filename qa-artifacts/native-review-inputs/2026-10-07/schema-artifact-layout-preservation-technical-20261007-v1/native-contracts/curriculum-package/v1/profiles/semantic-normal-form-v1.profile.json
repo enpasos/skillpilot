@@ -1,0 +1,122 @@
+{
+  "$schema": "https://skillpilot.com/schemas/curriculum-package/v1/semantic-normalization-profile.schema.json",
+  "profileFormatVersion": 1,
+  "profileId": "semantic-normal-form-v1",
+  "version": "1.0.0",
+  "description": "Variant-independent semantic normal form for equivalent SkillPilot JSON and Lehrplan-Ontologie curriculum packages.",
+  "compatibility": {
+    "releaseModelContractVersion": "1.0",
+    "fieldRegistryFormatVersion": 1,
+    "unknownPropertyPolicy": "reject-unregistered"
+  },
+  "canonicalJson": {
+    "algorithm": "skillpilot-canonical-json-v1",
+    "encoding": "UTF-8",
+    "objectKeyOrder": "unicode-code-point",
+    "arrayOrder": "field-registry-governed",
+    "duplicateObjectKeys": "reject",
+    "unicodeNormalization": "none",
+    "invalidUnicode": [
+      "reject-unpaired-surrogates",
+      "reject-xml-1.0-illegal-controls",
+      "reject-u+fffe-u+ffff"
+    ],
+    "stringEscaping": "rfc8259-minimal",
+    "numberPolicy": {
+      "finiteOnly": true,
+      "negativeZero": "canonicalize-to-zero",
+      "serialization": "ecmascript-shortest-roundtrip"
+    },
+    "missingNullDefault": "distinct-unless-field-registry-declares-equivalence",
+    "finalNewline": false
+  },
+  "pathNormalization": {
+    "base": "archive-root-relative",
+    "separator": "/",
+    "leadingSlash": "reject",
+    "backslash": "reject",
+    "emptySegment": "reject",
+    "dotSegments": "reject",
+    "unicodeNormalization": "none",
+    "caseFolding": "none",
+    "percentDecoding": "none"
+  },
+  "lengthFraming": {
+    "algorithm": "skillpilot-length-frame-v1",
+    "lengthEncoding": "unsigned-64-bit-big-endian",
+    "textEncoding": "UTF-8",
+    "integerEncoding": "unsigned-base10-ascii-no-leading-zeroes",
+    "recordFieldOrderSource": "digest-record-fields-in-declared-order",
+    "frameRule": "uint64-byte-length-followed-by-exact-field-bytes"
+  },
+  "semanticArtifactDigest": {
+    "algorithm": "sha-256",
+    "domain": "skillpilot:semantic-artifact:v1",
+    "payload": "canonical-json-sha256",
+    "recordFields": [
+      "role",
+      "stableId",
+      "mediaType",
+      "byteLength",
+      "payloadSha256"
+    ],
+    "recordOrder": "role-then-stable-id-unicode-code-point",
+    "excludedClassifications": [
+      "generated-non-semantic"
+    ]
+  },
+  "binaryAssetDigest": {
+    "algorithm": "sha-256",
+    "domain": "skillpilot:binary-asset:v1",
+    "byteDigestAlgorithm": "sha-256",
+    "recordFields": [
+      "logicalResourceId",
+      "canonicalPublicReference",
+      "mediaType",
+      "byteLength",
+      "fileSha256"
+    ],
+    "identityField": "logicalResourceId",
+    "recordOrder": "logical-resource-id-unicode-code-point",
+    "excludedPackagingFields": [
+      "variantZipPath",
+      "zipCompressionMetadata"
+    ]
+  },
+  "roleSummaryDigest": {
+    "algorithm": "sha-256",
+    "domain": "skillpilot:role-records:v1",
+    "recordField": "recordSha256",
+    "recordOrder": "logical-id-or-resource-id-unicode-code-point",
+    "emptyRoleAllowed": true
+  },
+  "binaryCollectionDigest": {
+    "algorithm": "sha-256",
+    "domain": "skillpilot:binary-collection:v1",
+    "recordFields": [
+      "logicalResourceId",
+      "fileSha256"
+    ],
+    "recordOrder": "logical-resource-id-unicode-code-point"
+  },
+  "contentDigest": {
+    "algorithm": "sha-256",
+    "domain": "skillpilot:curriculum-content:v1",
+    "outputFormat": "sha256-lowercase-hex-prefixed",
+    "inputGroups": [
+      "semantic-artifact-records",
+      "binary-asset-records"
+    ],
+    "groupOrder": "declared",
+    "recordProjection": "length-frame-record-sha256-in-declared-group-order",
+    "contractBindingOrder": [
+      "normalizationProfile.id",
+      "normalizationProfile.version",
+      "normalizationProfile.sha256",
+      "fieldSemanticsRegistry.id",
+      "fieldSemanticsRegistry.version",
+      "fieldSemanticsRegistry.sha256"
+    ],
+    "variantIndependent": true
+  }
+}

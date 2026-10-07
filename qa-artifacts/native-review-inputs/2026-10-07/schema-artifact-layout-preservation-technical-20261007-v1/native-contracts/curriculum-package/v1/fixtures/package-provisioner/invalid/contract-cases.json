@@ -1,0 +1,339 @@
+{
+  "fixtureFormatVersion": 1,
+  "baseDocuments": {
+    "fullPackageValidationReport": "../valid/full-package-validation-report.json",
+    "installedPackageRecord": "../valid/installed-package-record.json",
+    "activePackageLock": "../valid/active-package-lock.json"
+  },
+  "cases": [
+    {
+      "id": "validation-report-unknown-field",
+      "validation": "full-package-validation-report",
+      "mutations": [
+        {
+          "document": "fullPackageValidationReport",
+          "operation": "set-pointer",
+          "pointer": "/trusted",
+          "value": true
+        }
+      ],
+      "expectedErrorCodes": [
+        "FULL_VALIDATION_REPORT_SCHEMA"
+      ]
+    },
+    {
+      "id": "validation-report-missing-gate",
+      "validation": "full-package-validation-report",
+      "mutations": [
+        {
+          "document": "fullPackageValidationReport",
+          "operation": "remove-pointer",
+          "pointer": "/gates/assetBytes"
+        }
+      ],
+      "expectedErrorCodes": [
+        "FULL_VALIDATION_REPORT_SCHEMA"
+      ]
+    },
+    {
+      "id": "validation-report-unknown-gate",
+      "validation": "full-package-validation-report",
+      "mutations": [
+        {
+          "document": "fullPackageValidationReport",
+          "operation": "set-pointer",
+          "pointer": "/gates/signature",
+          "value": {
+            "status": "passed",
+            "diagnosticCount": 0,
+            "diagnosticCodes": []
+          }
+        }
+      ],
+      "expectedErrorCodes": [
+        "FULL_VALIDATION_REPORT_SCHEMA"
+      ]
+    },
+    {
+      "id": "validation-report-malformed-outer-hash",
+      "validation": "full-package-validation-report",
+      "mutations": [
+        {
+          "document": "fullPackageValidationReport",
+          "operation": "set-pointer",
+          "pointer": "/input/sha256",
+          "value": "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+        }
+      ],
+      "expectedErrorCodes": [
+        "FULL_VALIDATION_REPORT_SCHEMA"
+      ]
+    },
+    {
+      "id": "validation-report-wrong-protocol-version",
+      "validation": "full-package-validation-report",
+      "mutations": [
+        {
+          "document": "fullPackageValidationReport",
+          "operation": "set-pointer",
+          "pointer": "/reportFormatVersion",
+          "value": 1
+        }
+      ],
+      "expectedErrorCodes": [
+        "FULL_VALIDATION_REPORT_SCHEMA"
+      ]
+    },
+    {
+      "id": "validation-report-count-binding",
+      "validation": "full-package-validation-report",
+      "mutations": [
+        {
+          "document": "fullPackageValidationReport",
+          "operation": "set-pointer",
+          "pointer": "/counts/archiveEntries",
+          "value": 13
+        }
+      ],
+      "expectedErrorCodes": [
+        "FULL_REPORT_COUNTS_INCONSISTENT"
+      ]
+    },
+    {
+      "id": "validation-report-release-id-binding",
+      "validation": "full-package-validation-report",
+      "mutations": [
+        {
+          "document": "fullPackageValidationReport",
+          "operation": "set-pointer",
+          "pointer": "/package/releaseId",
+          "value": "org.skillpilot.curriculum.de.gymnasium.mathematik@0.2.0"
+        }
+      ],
+      "expectedErrorCodes": [
+        "FULL_REPORT_RELEASE_ID_MISMATCH"
+      ]
+    },
+    {
+      "id": "install-record-unknown-field",
+      "validation": "installed-package-record",
+      "mutations": [
+        {
+          "document": "installedPackageRecord",
+          "operation": "set-pointer",
+          "pointer": "/installedAt",
+          "value": "2026-07-11T00:00:00Z"
+        }
+      ],
+      "expectedErrorCodes": [
+        "INSTALLED_PACKAGE_RECORD_SCHEMA"
+      ]
+    },
+    {
+      "id": "install-record-malformed-manifest-hash",
+      "validation": "installed-package-record",
+      "mutations": [
+        {
+          "document": "installedPackageRecord",
+          "operation": "set-pointer",
+          "pointer": "/manifestSha256",
+          "value": "not-a-sha256"
+        }
+      ],
+      "expectedErrorCodes": [
+        "INSTALLED_PACKAGE_RECORD_SCHEMA"
+      ]
+    },
+    {
+      "id": "install-record-release-id-binding",
+      "validation": "installed-package-record",
+      "mutations": [
+        {
+          "document": "installedPackageRecord",
+          "operation": "set-pointer",
+          "pointer": "/releaseId",
+          "value": "org.skillpilot.curriculum.de.gymnasium.mathematik@9.9.9"
+        }
+      ],
+      "expectedErrorCodes": [
+        "INSTALL_RECORD_RELEASE_ID_MISMATCH"
+      ]
+    },
+    {
+      "id": "active-lock-unknown-top-level-field",
+      "validation": "active-package-lock",
+      "mutations": [
+        {
+          "document": "activePackageLock",
+          "operation": "set-pointer",
+          "pointer": "/latest",
+          "value": true
+        }
+      ],
+      "expectedErrorCodes": [
+        "ACTIVE_PACKAGE_LOCK_SCHEMA"
+      ]
+    },
+    {
+      "id": "active-lock-unknown-entry-field",
+      "validation": "active-package-lock",
+      "mutations": [
+        {
+          "document": "activePackageLock",
+          "operation": "set-pointer",
+          "pointer": "/packages/0/fallback",
+          "value": true
+        }
+      ],
+      "expectedErrorCodes": [
+        "ACTIVE_PACKAGE_LOCK_SCHEMA"
+      ]
+    },
+    {
+      "id": "active-lock-empty-selection",
+      "validation": "active-package-lock",
+      "mutations": [
+        {
+          "document": "activePackageLock",
+          "operation": "set-pointer",
+          "pointer": "/packages",
+          "value": []
+        }
+      ],
+      "expectedErrorCodes": [
+        "ACTIVE_PACKAGE_LOCK_SCHEMA"
+      ]
+    },
+    {
+      "id": "active-lock-malformed-install-record-hash",
+      "validation": "active-package-lock",
+      "mutations": [
+        {
+          "document": "activePackageLock",
+          "operation": "set-pointer",
+          "pointer": "/packages/0/installRecordSha256",
+          "value": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        }
+      ],
+      "expectedErrorCodes": [
+        "ACTIVE_PACKAGE_LOCK_SCHEMA"
+      ]
+    },
+    {
+      "id": "active-lock-duplicate-package-id",
+      "validation": "active-package-lock",
+      "mutations": [
+        {
+          "document": "activePackageLock",
+          "operation": "append-array-item",
+          "pointer": "/packages",
+          "value": {
+            "packageId": "org.skillpilot.curriculum.de.gymnasium.mathematik",
+            "packageVersion": "0.2.0",
+            "releaseId": "org.skillpilot.curriculum.de.gymnasium.mathematik@0.2.0",
+            "outerZipSha256": "1111111111111111111111111111111111111111111111111111111111111111",
+            "manifestSha256": "2222222222222222222222222222222222222222222222222222222222222222",
+            "contentDigest": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+            "archiveRoot": "skillpilot-curriculum-de-gymnasium-mathematik-0.2.0-json",
+            "closureDigest": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "definitionIndexDigest": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "installRecordSha256": "6666666666666666666666666666666666666666666666666666666666666666"
+          }
+        }
+      ],
+      "expectedErrorCodes": [
+        "ACTIVE_LOCK_PACKAGE_ID_DUPLICATE",
+        "ACTIVE_LOCK_PACKAGE_ORDER"
+      ]
+    },
+    {
+      "id": "active-lock-package-order",
+      "validation": "active-package-lock",
+      "mutations": [
+        {
+          "document": "activePackageLock",
+          "operation": "append-array-item",
+          "pointer": "/packages",
+          "value": {
+            "packageId": "org.skillpilot.curriculum.de.gymnasium.algebra",
+            "packageVersion": "0.1.0",
+            "releaseId": "org.skillpilot.curriculum.de.gymnasium.algebra@0.1.0",
+            "outerZipSha256": "1111111111111111111111111111111111111111111111111111111111111111",
+            "manifestSha256": "2222222222222222222222222222222222222222222222222222222222222222",
+            "contentDigest": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+            "archiveRoot": "skillpilot-curriculum-de-gymnasium-algebra-0.1.0-json",
+            "closureDigest": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+            "definitionIndexDigest": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+            "installRecordSha256": "6666666666666666666666666666666666666666666666666666666666666666"
+          }
+        }
+      ],
+      "expectedErrorCodes": [
+        "ACTIVE_LOCK_PACKAGE_ORDER"
+      ]
+    },
+    {
+      "id": "bundle-validation-report-hash-replay",
+      "validation": "bundle",
+      "mutations": [
+        {
+          "document": "installedPackageRecord",
+          "operation": "set-pointer",
+          "pointer": "/validationReportSha256",
+          "value": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        }
+      ],
+      "expectedErrorCodes": [
+        "INSTALL_VALIDATION_REPORT_SHA256_MISMATCH",
+        "LOCK_INSTALL_RECORD_SHA256_MISMATCH"
+      ]
+    },
+    {
+      "id": "bundle-install-record-hash-replay",
+      "validation": "bundle",
+      "mutations": [
+        {
+          "document": "activePackageLock",
+          "operation": "set-pointer",
+          "pointer": "/packages/0/installRecordSha256",
+          "value": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        }
+      ],
+      "expectedErrorCodes": [
+        "LOCK_INSTALL_RECORD_SHA256_MISMATCH"
+      ]
+    },
+    {
+      "id": "bundle-manifest-binding-substitution",
+      "validation": "bundle",
+      "mutations": [
+        {
+          "document": "installedPackageRecord",
+          "operation": "set-pointer",
+          "pointer": "/manifestSha256",
+          "value": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        }
+      ],
+      "expectedErrorCodes": [
+        "INSTALL_REPORT_MANIFEST_SHA256_MISMATCH",
+        "LOCK_INSTALL_MANIFEST_SHA256_MISMATCH",
+        "LOCK_INSTALL_RECORD_SHA256_MISMATCH"
+      ]
+    },
+    {
+      "id": "bundle-closure-binding-substitution",
+      "validation": "bundle",
+      "mutations": [
+        {
+          "document": "activePackageLock",
+          "operation": "set-pointer",
+          "pointer": "/packages/0/closureDigest",
+          "value": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"
+        }
+      ],
+      "expectedErrorCodes": [
+        "LOCK_INSTALL_CLOSURE_DIGEST_MISMATCH"
+      ]
+    }
+  ]
+}

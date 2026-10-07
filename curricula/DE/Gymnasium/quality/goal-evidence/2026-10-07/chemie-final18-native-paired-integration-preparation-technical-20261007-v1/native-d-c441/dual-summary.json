@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:3380609dfc796e1cc5268d4579656a0a12569ae521261e700858f49c2cae750f",
+  "reviewInputFingerprint": "sha256:d80974e43bb7f9dd4a25b3f4b6ec89ff1bbc38370a75444a0cb224a2b44ef8eb",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-four-final-images-native-d17-plus-c441-p18-technical-author-20261007-v1-c441-a",
+      "roundId": "chemie-four-final-images-native-d17-plus-c441-p18-technical-author-20261007-v1-c441-first-pass-a",
+      "independenceGroupId": "chemie-four-final-images-native-d17-plus-c441-p18-technical-author-20261007-v1-c441-independent-a",
+      "runIds": [
+        "chemie-four-final-current-native-d-independent-root-a-20261007-v1-native-d-c441-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex; exact serving variant not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-four-final-images-native-d17-plus-c441-p18-technical-author-20261007-v1-c441-b",
+      "roundId": "chemie-four-final-images-native-d17-plus-c441-p18-technical-author-20261007-v1-c441-first-pass-b",
+      "independenceGroupId": "chemie-four-final-images-native-d17-plus-c441-p18-technical-author-20261007-v1-c441-independent-b",
+      "runIds": [
+        "chemie-four-final-native-targeted-d-independent-b-20261007-v1.d-c441-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::unspecified::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "c441d9e8-d9d9-5e55-a189-a37345541321",
+      "firstRecordId": "chemie-four-final-current-native-d-independent-root-a-20261007-v1-native-d-c441-run-001-01",
+      "secondRecordId": "chemie-four-final-native-targeted-d-independent-b-20261007-v1.d-b.c441d9e8-d9d9-5e55-a189-a37345541321",
+      "firstRunId": "chemie-four-final-current-native-d-independent-root-a-20261007-v1-native-d-c441-run-001",
+      "secondRunId": "chemie-four-final-native-targeted-d-independent-b-20261007-v1.d-c441-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

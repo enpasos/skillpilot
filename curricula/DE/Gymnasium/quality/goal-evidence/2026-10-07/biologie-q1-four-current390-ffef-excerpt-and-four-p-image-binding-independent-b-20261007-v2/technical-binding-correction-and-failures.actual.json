@@ -1,0 +1,33 @@
+{
+  "role": "Truthful separate technical correction; scientific and machine-source bindings distinguished",
+  "oldAuthorAndOwnV1Bug": "Both author v1 and own v1 technical preparation selected link.type===image. Actual links have type goal-visualization and resourceType image, so resourceDigests was empty. Native validators accepted fingerprints whose image digest fields were null.",
+  "oldV1SchemaSemanticPassWasTruthful": true,
+  "oldV1PassDoesNotEstablishPNGInclusivePBinding": true,
+  "oldV1BindingClaimsSupersededByThisReceipt": true,
+  "actualNativeBindingSelection": "Existing type goal-visualization/resourceType image/role primary URLs resolved to actual selected bytes; selected/inert/native-original digests all agree.",
+  "actualImageDigestCount": 4,
+  "nativePayloadWithNonNullPNGCount": 4,
+  "oldV1FingerprintsAreStaleAgainstActualDigests": [
+    "0daa79f6-8f61-5506-98f9-65db83062ba8: stale reviewInputFingerprint; expected sha256:012f49b7463f4f8ad303324fca00603dbf5f3b8ae2edbc7fed245e315b54495e",
+    "475eebb4-4eb0-524f-b1ec-4a672bf856d2: stale reviewInputFingerprint; expected sha256:03beb84aa56c73eefaa8830b72a15a3457f61f3b3ec07917e9c646bd3e2c5694",
+    "ffef97e3-12d6-5090-9816-46ab9e57fae2: stale reviewInputFingerprint; expected sha256:61c64bbcf608c2389dcbfba584ad5d3e426d0892ff0680676f2f316049d43691",
+    "e70d8a85-2dea-5165-919b-200fee9f4db4: stale reviewInputFingerprint; expected sha256:cfa6cca1654ea582a1431fff0581da31ab5ea8d9b725b47f46a36029676c5a29"
+  ],
+  "currentAuthorV2SchemaSemanticErrors": [],
+  "ownCurrentSchemaSemanticErrors": [],
+  "newOwnRecordAttempt1": {
+    "exitCode": 1,
+    "problem": "Own reviewId accidentally contained uppercase P, rejected by unchanged native slug schema.",
+    "preservedReceipt": "receipts/attempt-1-own-uppercase-reviewid-schema-failure.actual.json",
+    "correction": "Own record identifier changed to lowercase p; no helper/schema or scientific body change."
+  },
+  "finalOwnRecordAttempt2": {
+    "exitCode": 0,
+    "actualImageDigests": 4,
+    "schemaAndSemanticErrors": 0
+  },
+  "noOrdinaryActiveImageCLIPassClaim": true,
+  "unchangedD_A_M_VMeaningAndFingerprints": true,
+  "humanApproval": false,
+  "strictGain": 0
+}

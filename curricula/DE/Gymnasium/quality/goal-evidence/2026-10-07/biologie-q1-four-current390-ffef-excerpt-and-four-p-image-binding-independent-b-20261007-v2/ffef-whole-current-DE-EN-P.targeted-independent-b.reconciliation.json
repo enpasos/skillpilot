@@ -1,0 +1,49 @@
+{
+  "role": "Targeted independent B substantive reconciliation after separately sealed blind first pass",
+  "reviewer": "/root/chem17_fresh_blind_a",
+  "firstPassSeal": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-q1-four-current390-fresh-independent-b-20261007-v1/own.first-pass.freeze.json",
+    "sha256": "af25f4cccb388bdf752f404444238487b045a00573412964c0670852d0abd547",
+    "bytes": 19448
+  },
+  "firstPassVerdictWas": "KEEP4 P science",
+  "peerTrigger": "Only after own seal, Root reported own separately formed PKEEP3/ffef-case2REVISE on a four-amino-acid encoded-enzyme ambiguity. This targeted response is a reconciliation, not a second blind first pass.",
+  "reReadOriginalCase2": "The original15nt sequence ATG TTT GGC AAG TAA gives four amino acids plus stop, but the prompt calls its product an enzyme and assigns activity without longer-gene/excerpt context. The mutation/frame arithmetic and matched-data reasoning are correct, yet that molecular-size context is scientifically misleading.",
+  "retrospectiveOriginalCase2Verdict": "REVISE context",
+  "ownOriginalOversight": "My first pass correctly checked type/frame/copy provenance and function-versus-trait scope but overlooked the short complete-gene/enzyme ambiguity. The original KEEP and native technical pass remain unchanged in their immutable folder.",
+  "currentAuthorV2Freeze": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-q1-four-current390-native-source-operator-candidate-author-20261007-v2/author.final.freeze.json",
+    "sha256": "3e740fd13d68eec24f07a1ab5d8b380c08d0ad3bec8a2104f70ff3425f29a204",
+    "bytes": 119538
+  },
+  "wholeCurrentGoalAndWholeDEENProfileActuallyRead": true,
+  "changedInputs": [
+    {
+      "field": "taskDemandDe",
+      "value": "Gezeigt ist ein markierter Ausschnitt am Ende eines längeren Enzymgens: codierender DNA-Strang 5′-ATG TTT GGC AAG TAA-3′ im vorgegebenen Leserahmen. Der davorliegende Genabschnitt und der von ihm codierte Proteinabschnitt bleiben in allen Varianten unverändert und sind nicht abgebildet; die gezeigte Folge codiert nur den C-terminalen Proteinabschnitt vor dem Stopcodon, kein vollständiges Enzym. Dazu werden vier neue, voneinander getrennte Varianten und eine Code-Tabelle gezeigt: TTT wird zu TCT; das ganze Codon GGC entfällt; nach ATG kommen zwei neue, nicht kopierte Basen AC hinzu; eine Kopierspur zeigt die Verdopplung der ersten A-Base innerhalb von AAG. Für die TTT→TCT-Variante liegen unter gleichen Messbedingungen niedrigere Aktivitätswerte des vollständigen codierten Enzyms als für das unveränderte Referenzprotein vor; für die anderen Varianten liegen keine Funktionsdaten vor. Ordne die vier Änderungen zu, begründe mögliche Proteinfolgen und trenne die Messbeobachtung von Aussagen über Merkmale."
+    },
+    {
+      "field": "taskDemandEn",
+      "value": "A marked excerpt at the end of a longer enzyme gene is shown: coding DNA strand 5′-ATG TTT GGC AAG TAA-3′ in the supplied reading frame. The preceding gene region and the protein region it encodes remain unchanged in all variants and are not shown; the displayed sequence encodes only the C-terminal protein segment before the stop codon, not a complete enzyme. Four new separate variants and a codon table are supplied: TTT becomes TCT; the entire GGC codon is removed; two new noncopied bases AC are added after ATG; and a copy trace shows the first A base within AAG duplicated. For the TTT-to-TCT variant, matched assay conditions yield lower activity of the complete encoded enzyme than of the unchanged reference protein; no function data are provided for the other variants. Classify the four changes, justify possible protein consequences and separate the measured observation from trait claims."
+    }
+  ],
+  "currentWholeFFEFProfileLogicalSHA256": "d072bfb8a9c521514c2b1fd52be6495c1b4b54e03e0c6d1b3c4d07e23d34a3df",
+  "currentFFEFProfileFingerprint": "sha256:50484f736c3aa5c2a01c0b90164282ab6872f2f3d8472458527ba8a2bee0fa2e",
+  "currentWholeCase2LogicalSHA256": "ad469377cfd70e7d158671442f19652bec2b685906ce6ba7c4af33a7cb4bb891",
+  "currentVerdict": "KEEP",
+  "scientificFindings": [
+    "The supplied DNA is explicitly a marked terminal coding excerpt of a longer enzyme gene. The omitted preceding gene region and encoded protein region are unchanged in every variant, so the visible four residues are the C-terminal segment, not a complete enzyme.",
+    "AUG at the beginning of this internal/terminal window supplies methionine in the given frame; it need not be the whole-gene initiation codon. TAA remains the terminal stop in the reference/missense and whole-codon-deletion cases.",
+    "TTT→TCT gives Phe→Ser; removing GGC is a codon deletion without frame shift; AC insertion and documented one-A copy shift the given local frame. Possible downstream effects can be discussed without asserting a full unshown mutant sequence or new protein length.",
+    "The stipulated matched activity measurement now explicitly concerns the complete enzyme for exactly the missense variant; no function or phenotype claim is granted for the other three changes.",
+    "Case1 is an unchanged short sequence-analysis example with no enzyme/function claim. The profile still tests change classification plus context-limited possible protein consequences in two genuinely distinct supplied cases.",
+    "The other three P profiles and other seven complete DE/EN cases are exact; their sealed independent first-pass science is reused with current native image bindings."
+  ],
+  "notLearnerPerformanceEvidence": true,
+  "noWholeCountrySourceClosure": true,
+  "unchangedD_A_M_VSealsReused": true,
+  "humanApproval": false,
+  "humanTrial": false,
+  "activeWrites": false,
+  "strictGain": 0
+}

@@ -1,0 +1,2242 @@
+{
+  "currentTwo": [
+    {
+      "finding": {
+        "code": "APV-203",
+        "severity": "warning",
+        "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+        "goalId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+        "title": "Neuronale Erkrankungen einordnen",
+        "dimension": "jurisdiction",
+        "message": "Compiled applicability differs from the currently committed applicability field."
+      },
+      "currentWholeGoal": {
+        "id": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+        "title": "Neuronale Erkrankungen einordnen",
+        "titleEn": "Classify neuronal diseases",
+        "description": "Die lernende Person kann an einem gegebenen Modell einer neuronalen Erkrankung, zum Beispiel Alzheimer, erklären, wie eine Störung neuronaler Strukturen oder Signalprozesse die Funktion des Systems verändert.",
+        "descriptionEn": "The learner can use a supplied model of a neuronal disorder, such as Alzheimer's, to explain how a disturbance of neuronal structures or signalling processes changes the function of the system.",
+        "weight": 1.05,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-biology",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_ENTWICKLUNG",
+            "BIO_STEUERUNG_REGELUNG"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+            "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "8c1f802a-d012-5ae9-86d5-a317f353ff75",
+            "originalComponentKeys": [
+              "LK6"
+            ],
+            "retainedAuthoredOperationalisationSourceGoalId": "33c6faf3-ef2c-430e-b0b4-165f2026e209"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+            "title": "Visualisierung: Neuronale Erkrankungen einordnen",
+            "url": "/assets/goal-visualizations/biologie/485ef1c3-8997-52b7-91f5-b1ddf179013d/485ef1c3-8997-52b7-91f5-b1ddf179013d.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Modellhafte Illustration: Neuronale Erkrankungen einordnen.",
+            "altText": "Gegebenes Nervenzellnetz im intakten und gestörten Zustand. Eine unterbrochene Verbindung stoppt die gezeichnete Signalroute; der weiterhin vorhandene Kontakt hinter der Unterbrechung zeigt keine aktive Weitergabe.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "compiled": {
+        "goalId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+        "title": "Neuronale Erkrankungen einordnen",
+        "goalType": "atomic",
+        "compiledApplicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE"
+          ]
+        },
+        "evidence": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_source_extraction_to_canonical_biology.m7-q1-gel-current-20261005-v1.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_source_extraction_to_canonical_biology.m7-q1-tf-methylation-candidate-20261005-v1.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_source_extraction_to_canonical_biology.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_to_canonical_biology.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 487c79f5-7e4d-5da8-ad8f-f0f96c23a974"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 5e8d3316-c22a-55bc-acca-9e1d15a4152c"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-e3-trisomy-current-20261001-v3.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-ephase-20260930-v2.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-ephase-seven-current365-20261005-v2.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-q1-bacterial-structure-fission-20261005-v1.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-q1-gel-current-20261005-v1.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-q1-tests-therapy-current-20261004-v1.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-q1-tf-methylation-source-version-correction-20261005-v2.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_to_canonical_biology.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "provenance",
+            "source": "curricula/DE/Gymnasium/input/DE-HE/upper-secondary/ (curricula/DE/Gymnasium/provenance/source-landscape-registry.json#3e56aa75-c76c-4de5-883b-0aac98297846)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 487c79f5-7e4d-5da8-ad8f-f0f96c23a974"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 5e8d3316-c22a-55bc-acca-9e1d15a4152c"
+          }
+        ]
+      }
+    },
+    {
+      "finding": {
+        "code": "APV-203",
+        "severity": "warning",
+        "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+        "goalId": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+        "title": "Neurophysiologische Verfahren",
+        "dimension": "jurisdiction",
+        "message": "Compiled applicability differs from the currently committed applicability field."
+      },
+      "currentWholeGoal": {
+        "id": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+        "title": "Neurophysiologische Verfahren",
+        "titleEn": "Neurophysiological procedures",
+        "description": "Die lernende Person kann ein bildgebendes Verfahren der Hirnforschung beschreiben.",
+        "descriptionEn": "The learner can describe an imaging technique in brain research.",
+        "weight": 1.05,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-biology",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_ENTWICKLUNG",
+            "BIO_STEUERUNG_REGELUNG"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+            "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "bfd043fc-7eb7-5ff5-90ab-e2d978d21aa0",
+            "originalComponentKeys": [
+              "LK7"
+            ],
+            "retainedAuthoredOperationalisationSourceGoalId": "d3c19f37-5d9c-4490-830f-07584b8ec2f1"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+            "title": "Visualisierung: Neurophysiologische Verfahren",
+            "url": "/assets/goal-visualizations/biologie/afde0001-d7d7-5ed3-8a60-383e8da5620e/afde0001-d7d7-5ed3-8a60-383e8da5620e.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Modellhafte Illustration: Neurophysiologische Verfahren.",
+            "altText": "Schematische fMRT-Illustration: Scanner, indirektes Blutsignal und eine qualitative Gehirnkarte zum Vergleich von Bedingungen. Die Farbkarte ist eine Modellzeichnung, kein gemessener Scan.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "compiled": {
+        "goalId": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+        "title": "Neurophysiologische Verfahren",
+        "goalType": "atomic",
+        "compiledApplicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE"
+          ]
+        },
+        "evidence": [
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_source_extraction_to_canonical_biology.m7-q1-gel-current-20261005-v1.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_source_extraction_to_canonical_biology.m7-q1-tf-methylation-candidate-20261005-v1.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_source_extraction_to_canonical_biology.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_to_canonical_biology.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-BY",
+            "kind": "requires-closure",
+            "source": "required by 1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-e3-trisomy-current-20261001-v3.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-ephase-20260930-v2.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-ephase-seven-current365-20261005-v2.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-q1-bacterial-structure-fission-20261005-v1.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-q1-gel-current-20261005-v1.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-q1-tests-therapy-current-20261004-v1.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-q1-tf-methylation-source-version-correction-20261005-v2.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.review.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "mapping",
+            "source": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_to_canonical_biology.json",
+            "mappingStrength": "exact"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "provenance",
+            "source": "curricula/DE/Gymnasium/input/DE-HE/upper-secondary/ (curricula/DE/Gymnasium/provenance/source-landscape-registry.json#3e56aa75-c76c-4de5-883b-0aac98297846)"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8"
+          },
+          {
+            "dimension": "jurisdiction",
+            "value": "DE-HE",
+            "kind": "requires-closure",
+            "source": "required by 1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+          }
+        ]
+      }
+    }
+  ],
+  "frozenAuthorRecords": [
+    {
+      "goalId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+      "wholeCurrentGoal": {
+        "id": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+        "title": "Neuronale Erkrankungen einordnen",
+        "titleEn": "Classify neuronal diseases",
+        "description": "Die lernende Person kann neurodegenerative Erkrankungen wie Alzheimer erklären.",
+        "descriptionEn": "The learner can explain neurodegenerative diseases like Alzheimer's.",
+        "weight": 1.05,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-biology",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_ENTWICKLUNG",
+            "BIO_STEUERUNG_REGELUNG"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+            "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "33c6faf3-ef2c-430e-b0b4-165f2026e209"
+          }
+        },
+        "type": "atomic"
+      },
+      "wholePriorStage02Goal": {
+        "id": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+        "title": "Neuronale Erkrankungen einordnen",
+        "titleEn": "Classify neuronal diseases",
+        "description": "Die lernende Person kann an einem gegebenen Modell einer neuronalen Erkrankung, zum Beispiel Alzheimer, erklären, wie eine Störung neuronaler Strukturen oder Signalprozesse die Funktion des Systems verändert.",
+        "descriptionEn": "The learner can use a supplied model of a neuronal disorder, such as Alzheimer's, to explain how a disturbance of neuronal structures or signalling processes changes the function of the system.",
+        "weight": 1.05,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-biology",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_ENTWICKLUNG",
+            "BIO_STEUERUNG_REGELUNG"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+            "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "8c1f802a-d012-5ae9-86d5-a317f353ff75",
+            "originalComponentKeys": [
+              "LK6"
+            ],
+            "retainedAuthoredOperationalisationSourceGoalId": "33c6faf3-ef2c-430e-b0b4-165f2026e209"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic"
+      },
+      "wholeFinalImageCandidateGoal": {
+        "id": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+        "title": "Neuronale Erkrankungen einordnen",
+        "titleEn": "Classify neuronal diseases",
+        "description": "Die lernende Person kann an einem gegebenen Modell einer neuronalen Erkrankung, zum Beispiel Alzheimer, erklären, wie eine Störung neuronaler Strukturen oder Signalprozesse die Funktion des Systems verändert.",
+        "descriptionEn": "The learner can use a supplied model of a neuronal disorder, such as Alzheimer's, to explain how a disturbance of neuronal structures or signalling processes changes the function of the system.",
+        "weight": 1.05,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-biology",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_ENTWICKLUNG",
+            "BIO_STEUERUNG_REGELUNG"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+            "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "8c1f802a-d012-5ae9-86d5-a317f353ff75",
+            "originalComponentKeys": [
+              "LK6"
+            ],
+            "retainedAuthoredOperationalisationSourceGoalId": "33c6faf3-ef2c-430e-b0b4-165f2026e209"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+            "title": "Visualisierung: Neuronale Erkrankungen einordnen",
+            "url": "/assets/goal-visualizations/biologie/485ef1c3-8997-52b7-91f5-b1ddf179013d/485ef1c3-8997-52b7-91f5-b1ddf179013d.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Modellhafte Illustration: Neuronale Erkrankungen einordnen.",
+            "altText": "Gegebenes Nervenzellnetz im intakten und gestörten Zustand. Eine unterbrochene Verbindung stoppt die gezeichnete Signalroute; der weiterhin vorhandene Kontakt hinter der Unterbrechung zeigt keine aktive Weitergabe.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "actualFullFinal390Page": {
+        "pageNumber": 175,
+        "navigationOrder": 187,
+        "treeOrder": 209,
+        "goalId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+        "anchor": "goal-485ef1c3-8997-52b7-91f5-b1ddf179013d",
+        "title": "Neuronale Erkrankungen einordnen",
+        "description": "Die lernende Person kann an einem gegebenen Modell einer neuronalen Erkrankung, zum Beispiel Alzheimer, erklären, wie eine Störung neuronaler Strukturen oder Signalprozesse die Funktion des Systems verändert.",
+        "breadcrumbs": [
+          "Biologie – kanonische Prüfsicht",
+          "Biologie",
+          "Evolution & Neurobiologie",
+          "Q2.3 Neurobiologie"
+        ],
+        "chapterIds": [
+          "structure:bio-current390-author-review",
+          "goal:e8d54127-d42e-51f5-bfa5-51d826069f95",
+          "goal:d23951c2-4791-5a91-a2de-b72a421a4536",
+          "goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8"
+        ],
+        "requires": [
+          {
+            "goalId": "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+            "title": "Erregende chemische Synapsen erklären",
+            "anchor": "goal-ff1bf88f-2413-5668-a071-ce9fc499cba3",
+            "pageNumber": 169
+          }
+        ],
+        "reverseRequires": [],
+        "externalPrerequisites": [
+          {
+            "goalId": "2d451684-6e53-565e-a987-f362da919d2c",
+            "title": "Warum Biologie? - Relevanz und Orientierung",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a",
+            "title": "Sek-II-Abschlussaufgaben Biologie bearbeiten",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+          },
+          {
+            "goalId": "487c79f5-7e4d-5da8-ad8f-f0f96c23a974",
+            "title": "Vorschlag C (GK) - Synapse, Reaktionszeit und neurologische Stoerung im Alltag",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-487c79f5-7e4d-5da8-ad8f-f0f96c23a974"
+          },
+          {
+            "goalId": "5e8d3316-c22a-55bc-acca-9e1d15a4152c",
+            "title": "Vorschlag C (LK) - Parkinson-Modell zwischen Dopaminmessung, Rezeptorwirkung und Therapie",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-5e8d3316-c22a-55bc-acca-9e1d15a4152c"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Neuronale Erkrankungen einordnen",
+          "url": "/assets/goal-visualizations/biologie/485ef1c3-8997-52b7-91f5-b1ddf179013d/485ef1c3-8997-52b7-91f5-b1ddf179013d.png",
+          "altText": "Gegebenes Nervenzellnetz im intakten und gestörten Zustand. Eine unterbrochene Verbindung stoppt die gezeichnete Signalroute; der weiterhin vorhandene Kontakt hinter der Unterbrechung zeigt keine aktive Weitergabe.",
+          "originalDigest": "sha256:032c34237fd0a8048df6cf8b2f45b3cdec08f10f4c73876a591e2791c631ccb9",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:0f704e43df3094a20fbf5bae4927c18652b28f7a11d8a3990ed427667a7099e7",
+        "pageFingerprint": "sha256:189082439267e3b65c49272792f34df17e52ced601551b7e92e0ffa84ca9cd29"
+      },
+      "nativeFinalSubsetPage": {
+        "pageNumber": 8,
+        "navigationOrder": 7,
+        "treeOrder": 11,
+        "goalId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+        "anchor": "goal-485ef1c3-8997-52b7-91f5-b1ddf179013d",
+        "title": "Neuronale Erkrankungen einordnen",
+        "description": "Die lernende Person kann an einem gegebenen Modell einer neuronalen Erkrankung, zum Beispiel Alzheimer, erklären, wie eine Störung neuronaler Strukturen oder Signalprozesse die Funktion des Systems verändert.",
+        "breadcrumbs": [
+          "Biologie – kanonische Prüfsicht",
+          "Biologie",
+          "Evolution & Neurobiologie",
+          "Q2.3 Neurobiologie"
+        ],
+        "chapterIds": [
+          "structure:bio-current390-author-review",
+          "goal:e8d54127-d42e-51f5-bfa5-51d826069f95",
+          "goal:d23951c2-4791-5a91-a2de-b72a421a4536",
+          "goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8"
+        ],
+        "requires": [
+          {
+            "goalId": "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+            "title": "Erregende chemische Synapsen erklären",
+            "anchor": "goal-ff1bf88f-2413-5668-a071-ce9fc499cba3",
+            "pageNumber": 2
+          }
+        ],
+        "reverseRequires": [],
+        "externalPrerequisites": [
+          {
+            "goalId": "2d451684-6e53-565e-a987-f362da919d2c",
+            "title": "Warum Biologie? - Relevanz und Orientierung",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a",
+            "title": "Sek-II-Abschlussaufgaben Biologie bearbeiten",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+          },
+          {
+            "goalId": "487c79f5-7e4d-5da8-ad8f-f0f96c23a974",
+            "title": "Vorschlag C (GK) - Synapse, Reaktionszeit und neurologische Stoerung im Alltag",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-487c79f5-7e4d-5da8-ad8f-f0f96c23a974"
+          },
+          {
+            "goalId": "5e8d3316-c22a-55bc-acca-9e1d15a4152c",
+            "title": "Vorschlag C (LK) - Parkinson-Modell zwischen Dopaminmessung, Rezeptorwirkung und Therapie",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-5e8d3316-c22a-55bc-acca-9e1d15a4152c"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Neuronale Erkrankungen einordnen",
+          "url": "/assets/goal-visualizations/biologie/485ef1c3-8997-52b7-91f5-b1ddf179013d/485ef1c3-8997-52b7-91f5-b1ddf179013d.png",
+          "altText": "Gegebenes Nervenzellnetz im intakten und gestörten Zustand. Eine unterbrochene Verbindung stoppt die gezeichnete Signalroute; der weiterhin vorhandene Kontakt hinter der Unterbrechung zeigt keine aktive Weitergabe.",
+          "originalDigest": "sha256:032c34237fd0a8048df6cf8b2f45b3cdec08f10f4c73876a591e2791c631ccb9",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:0f704e43df3094a20fbf5bae4927c18652b28f7a11d8a3990ed427667a7099e7",
+        "pageFingerprint": "sha256:83769e1655efcce9db0d8671114a5d0b1b37bca49990502ce5a1f588ee860b89"
+      },
+      "nativeFinalSubsetDInput": {
+        "goalId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+        "goalFingerprint": "sha256:0f704e43df3094a20fbf5bae4927c18652b28f7a11d8a3990ed427667a7099e7",
+        "pageFingerprint": "sha256:83769e1655efcce9db0d8671114a5d0b1b37bca49990502ce5a1f588ee860b89",
+        "currentTitleDe": "Neuronale Erkrankungen einordnen",
+        "currentTitleEn": "Classify neuronal diseases",
+        "currentDescriptionDe": "Die lernende Person kann an einem gegebenen Modell einer neuronalen Erkrankung, zum Beispiel Alzheimer, erklären, wie eine Störung neuronaler Strukturen oder Signalprozesse die Funktion des Systems verändert.",
+        "currentDescriptionEn": "The learner can use a supplied model of a neuronal disorder, such as Alzheimer's, to explain how a disturbance of neuronal structures or signalling processes changes the function of the system.",
+        "canonicalContext": {
+          "shortKey": null,
+          "phase": null,
+          "core": null,
+          "weight": 1.05,
+          "tags": [
+            "LK"
+          ],
+          "competencyRefs": [],
+          "sourceRef": null,
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-biology",
+            "demandLevel": "AB2",
+            "processCompetencies": [],
+            "guidingIdeas": [
+              "BIO_ENTWICKLUNG",
+              "BIO_STEUERUNG_REGELUNG"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-HE"
+            ]
+          },
+          "type": "atomic",
+          "nodeKind": null,
+          "semanticAtomic": null,
+          "semanticKind": null,
+          "applicabilitySemantics": {
+            "fromRequires": null,
+            "mappingInheritance": "boundary",
+            "projection": null
+          },
+          "requires": [
+            "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+            "2d451684-6e53-565e-a987-f362da919d2c"
+          ],
+          "contains": [],
+          "examples": []
+        },
+        "reviewContext": {
+          "page": {
+            "pageNumber": 8,
+            "navigationOrder": 7,
+            "treeOrder": 11,
+            "goalId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+            "anchor": "goal-485ef1c3-8997-52b7-91f5-b1ddf179013d",
+            "title": "Neuronale Erkrankungen einordnen",
+            "description": "Die lernende Person kann an einem gegebenen Modell einer neuronalen Erkrankung, zum Beispiel Alzheimer, erklären, wie eine Störung neuronaler Strukturen oder Signalprozesse die Funktion des Systems verändert.",
+            "breadcrumbs": [
+              "Biologie – kanonische Prüfsicht",
+              "Biologie",
+              "Evolution & Neurobiologie",
+              "Q2.3 Neurobiologie"
+            ],
+            "chapterIds": [
+              "structure:bio-current390-author-review",
+              "goal:e8d54127-d42e-51f5-bfa5-51d826069f95",
+              "goal:d23951c2-4791-5a91-a2de-b72a421a4536",
+              "goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8"
+            ],
+            "requires": [
+              {
+                "goalId": "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+                "title": "Erregende chemische Synapsen erklären",
+                "anchor": "goal-ff1bf88f-2413-5668-a071-ce9fc499cba3",
+                "pageNumber": 2
+              }
+            ],
+            "reverseRequires": [],
+            "externalPrerequisites": [
+              {
+                "goalId": "2d451684-6e53-565e-a987-f362da919d2c",
+                "title": "Warum Biologie? - Relevanz und Orientierung",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c"
+              }
+            ],
+            "externalReverseRequires": [
+              {
+                "goalId": "1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a",
+                "title": "Sek-II-Abschlussaufgaben Biologie bearbeiten",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+              },
+              {
+                "goalId": "487c79f5-7e4d-5da8-ad8f-f0f96c23a974",
+                "title": "Vorschlag C (GK) - Synapse, Reaktionszeit und neurologische Stoerung im Alltag",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-487c79f5-7e4d-5da8-ad8f-f0f96c23a974"
+              },
+              {
+                "goalId": "5e8d3316-c22a-55bc-acca-9e1d15a4152c",
+                "title": "Vorschlag C (LK) - Parkinson-Modell zwischen Dopaminmessung, Rezeptorwirkung und Therapie",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-5e8d3316-c22a-55bc-acca-9e1d15a4152c"
+              }
+            ],
+            "visualization": {
+              "resourceType": "image",
+              "title": "Visualisierung: Neuronale Erkrankungen einordnen",
+              "url": "/assets/goal-visualizations/biologie/485ef1c3-8997-52b7-91f5-b1ddf179013d/485ef1c3-8997-52b7-91f5-b1ddf179013d.png",
+              "altText": "Gegebenes Nervenzellnetz im intakten und gestörten Zustand. Eine unterbrochene Verbindung stoppt die gezeichnete Signalroute; der weiterhin vorhandene Kontakt hinter der Unterbrechung zeigt keine aktive Weitergabe.",
+              "originalDigest": "sha256:032c34237fd0a8048df6cf8b2f45b3cdec08f10f4c73876a591e2791c631ccb9",
+              "qaStatus": "review_candidate",
+              "approvedForPublication": false
+            },
+            "evidenceReview": null,
+            "goalFingerprint": "sha256:0f704e43df3094a20fbf5bae4927c18652b28f7a11d8a3990ed427667a7099e7",
+            "pageFingerprint": "sha256:83769e1655efcce9db0d8671114a5d0b1b37bca49990502ce5a1f588ee860b89"
+          },
+          "evidenceProfile": null
+        }
+      },
+      "nativeFinalSubsetDContextFingerprint": "sha256:5c7bdba406ab77064bbc94e646ea5a848d83735022bd2887de1c2a9caf14b6ae",
+      "nativeFinalSubsetName": "twenty",
+      "actualSubsetPageNumber": 8,
+      "actualPdfPhysicalPageNumber": 10,
+      "nativeSubsetDiffersFromFull390": true,
+      "sourceRefPrintedOnNativePage": false,
+      "actualFrozenSourceWitnessesUnmodified": [
+        {
+          "actualFrozenSourceScopeKey": "DE-HE/SekII/LK",
+          "actualFrozenSourceScope": {
+            "jurisdiction": "DE-HE",
+            "stage": "SekII",
+            "durationModel": null,
+            "courseProfile": "LK"
+          },
+          "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-ephase-seven-current365-20261005-v2.review.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_BIOLOGIE_SEKII_KC2024.m7-ephase-seven-current365-20261005-v2.source-extraction.json",
+          "sourceGoalId": "8c1f802a-d012-5ae9-86d5-a317f353ff75",
+          "mappedTargetGoalId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+          "goalId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        }
+      ],
+      "boundedOfficialPrimaryComponentsUnmodified": [],
+      "wholeOriginalSourceClosureUnmodified": false,
+      "positivePriorScientificProfileBody": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "bounded-mechanism-and-transfer",
+            "essentialUnderstandingDe": "Neurodegenerative Erkrankungen betreffen unter anderem den Verlust oder die Funktion neuronaler Strukturen. Ein vereinfachtes krankheitsbezogenes Modell kann Zusammenhänge zwischen einer gegebenen Veränderung und Funktionsstörungen erklären; es ersetzt keine Diagnose und ist keine vollständige Ursache einer Erkrankung.",
+            "essentialUnderstandingEn": "Neurodegenerative disorders involve, among other changes, loss or dysfunction of neural structures. A simplified disease-related model can explain links between a supplied change and impairment; it replaces neither diagnosis nor a complete account of disease causation.",
+            "observablePerformanceDe": "Die lernende Person erklärt materialgestützt einen begrenzten Zusammenhang zwischen neuronaler Veränderung und einer vorgegebenen Funktionsstörung und benennt die Erklärungslimits.",
+            "observablePerformanceEn": "The learner uses supplied material to explain a bounded relationship between neural change and a stated functional impairment and identifies explanatory limits."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "bounded-mechanism-and-transfer"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "fresh-model-or-dataset",
+            "textDe": "Darstellung, Werte oder untersuchte Verbindung wechseln; die Mechanismuserklärung muss zum neuen gegebenen Material passen.",
+            "textEn": "Change representation, values or studied connection; the mechanism explanation must fit the fresh material."
+          },
+          {
+            "id": "intervention-or-inference-limit",
+            "textDe": "Einen frischen Eingriff, Kontrollvergleich oder Kontexteffekt begründet einordnen und die konkrete Aussagegrenze beachten.",
+            "textEn": "Explain a fresh intervention, control comparison or contextual effect and respect its specific inference limit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "initial-bounded-model",
+            "taskDemandDe": "Ein ausdrücklich vereinfachtes Alzheimer-Modell gibt einen Verlust bestimmter Netzwerkverbindungen und eine schwächere Verarbeitung neu eingehender Information vor. Erkläre den Zusammenhang im Modell und warum aus einer einzelnen Gedächtnisschwierigkeit keine Alzheimer-Diagnose folgt.",
+            "taskDemandEn": "An explicitly simplified Alzheimer model supplies loss of particular network connections and weaker processing of new information. Explain the relationship in the model and why one memory difficulty does not establish an Alzheimer diagnosis.",
+            "expectedPerformanceDe": "Verlust von Verbindungen kann im gegebenen Netz die Verarbeitung beeinträchtigen. Der konkrete Modellbefund ist von unspezifischen Alltagssymptomen und einer individuellen Diagnose zu unterscheiden; weitere krankheitsspezifische Ursachen werden nicht erfunden.",
+            "expectedPerformanceEn": "Lost connections can impair processing in the supplied network. The model finding is distinguished from non-specific everyday symptoms and individual diagnosis; additional disease-specific causes are not invented.",
+            "understandingFocusDe": "Eigenständig begründete Erklärung des gegebenen Mechanismus und seiner Bedingungen.",
+            "understandingFocusEn": "Independently justified explanation of the supplied mechanism and its conditions."
+          },
+          {
+            "id": "fresh-contextual-transfer",
+            "taskDemandDe": "Ein neues Material vergleicht ein degeneratives Verlustmodell mit einer vorübergehend veränderten Transmitterwirkung ohne nachgewiesenen Zellverlust. Erkläre, warum ähnliche Funktionsprobleme nicht beweisen, dass beide Veränderungen dieselbe Erkrankung oder denselben Mechanismus darstellen.",
+            "taskDemandEn": "Fresh material compares a degenerative loss model with temporarily altered transmitter action and no demonstrated cell loss. Explain why similar impairments do not prove the same disorder or mechanism.",
+            "expectedPerformanceDe": "Die Veränderungsebenen unterscheiden sich: Strukturverlust und veränderte Übertragung sind nicht gleichgesetzt. Ähnliche Symptome lassen allein keine eindeutige Ursachen- oder Krankheitszuordnung zu. Depression, Multiple Sklerose und Alzheimer werden nicht als austauschbare Lehrplanbegriffe behandelt.",
+            "expectedPerformanceEn": "The changes occur at different levels: structural loss and altered transmission are not equated. Similar symptoms alone do not uniquely identify cause or disease. Depression, multiple sclerosis and Alzheimer are not treated as interchangeable curriculum terms.",
+            "understandingFocusDe": "Frischer Transfer mit konkreter Begrenzung der Schlussfolgerung.",
+            "understandingFocusEn": "Fresh transfer with a specific inference limit."
+          }
+        ]
+      },
+      "positiveCurrentFinalProfileBody": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "bounded-mechanism-and-transfer",
+            "essentialUnderstandingDe": "Neurodegenerative Erkrankungen betreffen unter anderem den Verlust oder die Funktion neuronaler Strukturen. Ein vereinfachtes krankheitsbezogenes Modell kann Zusammenhänge zwischen einer gegebenen Veränderung und Funktionsstörungen erklären; es ersetzt keine Diagnose und ist keine vollständige Ursache einer Erkrankung.",
+            "essentialUnderstandingEn": "Neurodegenerative disorders involve, among other changes, loss or dysfunction of neural structures. A simplified disease-related model can explain links between a supplied change and impairment; it replaces neither diagnosis nor a complete account of disease causation.",
+            "observablePerformanceDe": "Die lernende Person erklärt materialgestützt einen begrenzten Zusammenhang zwischen neuronaler Veränderung und einer vorgegebenen Funktionsstörung und benennt die Erklärungslimits.",
+            "observablePerformanceEn": "The learner uses supplied material to explain a bounded relationship between neural change and a stated functional impairment and identifies explanatory limits."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "bounded-mechanism-and-transfer"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "fresh-model-or-dataset",
+            "textDe": "Darstellung, Werte oder untersuchte Verbindung wechseln; die Mechanismuserklärung muss zum neuen gegebenen Material passen.",
+            "textEn": "Change representation, values or studied connection; the mechanism explanation must fit the fresh material."
+          },
+          {
+            "id": "intervention-or-inference-limit",
+            "textDe": "Einen frischen Eingriff, Kontrollvergleich oder Kontexteffekt begründet einordnen und die konkrete Aussagegrenze beachten.",
+            "textEn": "Explain a fresh intervention, control comparison or contextual effect and respect its specific inference limit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "initial-bounded-model",
+            "taskDemandDe": "Ein ausdrücklich vereinfachtes Alzheimer-Modell gibt einen Verlust bestimmter Netzwerkverbindungen und eine schwächere Verarbeitung neu eingehender Information vor. Erkläre den Zusammenhang im Modell und warum aus einer einzelnen Gedächtnisschwierigkeit keine Alzheimer-Diagnose folgt.",
+            "taskDemandEn": "An explicitly simplified Alzheimer model supplies loss of particular network connections and weaker processing of new information. Explain the relationship in the model and why one memory difficulty does not establish an Alzheimer diagnosis.",
+            "expectedPerformanceDe": "Verlust von Verbindungen kann im gegebenen Netz die Verarbeitung beeinträchtigen. Der konkrete Modellbefund ist von unspezifischen Alltagssymptomen und einer individuellen Diagnose zu unterscheiden; weitere krankheitsspezifische Ursachen werden nicht erfunden.",
+            "expectedPerformanceEn": "Lost connections can impair processing in the supplied network. The model finding is distinguished from non-specific everyday symptoms and individual diagnosis; additional disease-specific causes are not invented.",
+            "understandingFocusDe": "Eigenständig begründete Erklärung des gegebenen Mechanismus und seiner Bedingungen.",
+            "understandingFocusEn": "Independently justified explanation of the supplied mechanism and its conditions."
+          },
+          {
+            "id": "fresh-contextual-transfer",
+            "taskDemandDe": "Ein neues Material vergleicht ein degeneratives Verlustmodell mit einer vorübergehend veränderten Transmitterwirkung ohne nachgewiesenen Zellverlust. Erkläre, warum ähnliche Funktionsprobleme nicht beweisen, dass beide Veränderungen dieselbe Erkrankung oder denselben Mechanismus darstellen.",
+            "taskDemandEn": "Fresh material compares a degenerative loss model with temporarily altered transmitter action and no demonstrated cell loss. Explain why similar impairments do not prove the same disorder or mechanism.",
+            "expectedPerformanceDe": "Die Veränderungsebenen unterscheiden sich: Strukturverlust und veränderte Übertragung sind nicht gleichgesetzt. Ähnliche Symptome lassen allein keine eindeutige Ursachen- oder Krankheitszuordnung zu. Depression, Multiple Sklerose und Alzheimer werden nicht als austauschbare Lehrplanbegriffe behandelt.",
+            "expectedPerformanceEn": "The changes occur at different levels: structural loss and altered transmission are not equated. Similar symptoms alone do not uniquely identify cause or disease. Depression, multiple sclerosis and Alzheimer are not treated as interchangeable curriculum terms.",
+            "understandingFocusDe": "Frischer Transfer mit konkreter Begrenzung der Schlussfolgerung.",
+            "understandingFocusEn": "Fresh transfer with a specific inference limit."
+          }
+        ]
+      },
+      "positiveFinalTechnicalCandidateRecord": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "biologie-neuro21-final-images-technical-author-scaffold-20261007-v1",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8",
+        "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+        "goalId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+        "goalFingerprint": "sha256:0f704e43df3094a20fbf5bae4927c18652b28f7a11d8a3990ed427667a7099e7",
+        "reviewInputFingerprint": "sha256:b8ad86f77b851b60c8d2481a70393a29296bd9c2c495df29a7b6ab514a4b7080",
+        "profileFingerprint": "sha256:ca853f290c3eb3bb3ccccf9a656ae998321fb9d8db3a9473d4d9f65513d7bbbe",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-10-07T05:36:26.372459+00:00",
+        "reviewer": "Codex technical preparation author; no independent D/P/A/M approval",
+        "reason": "Technical native candidate materialization for image-bound final candidate. Original scientific profile reused exactly; current080b v4 is the only profile-body replacement. No new scientific acceptance. Prior author reason: AUTHOR v2 synthetic bounded model and fresh variation; source/P remedies based on separately sealed A+B v1 findings. Independent v2 review pending; no observed learner work or approval.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [
+          "Whole-source and national-scope HOLDs remain unchanged. Final image/page/context binding review pending. No new D/P/A/M judgment, no human approval/trial or strict M7 gain."
+        ],
+        "profile": {
+          "archetype": "modeling",
+          "expectations": [
+            {
+              "id": "bounded-mechanism-and-transfer",
+              "essentialUnderstandingDe": "Neurodegenerative Erkrankungen betreffen unter anderem den Verlust oder die Funktion neuronaler Strukturen. Ein vereinfachtes krankheitsbezogenes Modell kann Zusammenhänge zwischen einer gegebenen Veränderung und Funktionsstörungen erklären; es ersetzt keine Diagnose und ist keine vollständige Ursache einer Erkrankung.",
+              "essentialUnderstandingEn": "Neurodegenerative disorders involve, among other changes, loss or dysfunction of neural structures. A simplified disease-related model can explain links between a supplied change and impairment; it replaces neither diagnosis nor a complete account of disease causation.",
+              "observablePerformanceDe": "Die lernende Person erklärt materialgestützt einen begrenzten Zusammenhang zwischen neuronaler Veränderung und einer vorgegebenen Funktionsstörung und benennt die Erklärungslimits.",
+              "observablePerformanceEn": "The learner uses supplied material to explain a bounded relationship between neural change and a stated functional impairment and identifies explanatory limits."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "bounded-mechanism-and-transfer"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "fresh-model-or-dataset",
+              "textDe": "Darstellung, Werte oder untersuchte Verbindung wechseln; die Mechanismuserklärung muss zum neuen gegebenen Material passen.",
+              "textEn": "Change representation, values or studied connection; the mechanism explanation must fit the fresh material."
+            },
+            {
+              "id": "intervention-or-inference-limit",
+              "textDe": "Einen frischen Eingriff, Kontrollvergleich oder Kontexteffekt begründet einordnen und die konkrete Aussagegrenze beachten.",
+              "textEn": "Explain a fresh intervention, control comparison or contextual effect and respect its specific inference limit."
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "initial-bounded-model",
+              "taskDemandDe": "Ein ausdrücklich vereinfachtes Alzheimer-Modell gibt einen Verlust bestimmter Netzwerkverbindungen und eine schwächere Verarbeitung neu eingehender Information vor. Erkläre den Zusammenhang im Modell und warum aus einer einzelnen Gedächtnisschwierigkeit keine Alzheimer-Diagnose folgt.",
+              "taskDemandEn": "An explicitly simplified Alzheimer model supplies loss of particular network connections and weaker processing of new information. Explain the relationship in the model and why one memory difficulty does not establish an Alzheimer diagnosis.",
+              "expectedPerformanceDe": "Verlust von Verbindungen kann im gegebenen Netz die Verarbeitung beeinträchtigen. Der konkrete Modellbefund ist von unspezifischen Alltagssymptomen und einer individuellen Diagnose zu unterscheiden; weitere krankheitsspezifische Ursachen werden nicht erfunden.",
+              "expectedPerformanceEn": "Lost connections can impair processing in the supplied network. The model finding is distinguished from non-specific everyday symptoms and individual diagnosis; additional disease-specific causes are not invented.",
+              "understandingFocusDe": "Eigenständig begründete Erklärung des gegebenen Mechanismus und seiner Bedingungen.",
+              "understandingFocusEn": "Independently justified explanation of the supplied mechanism and its conditions."
+            },
+            {
+              "id": "fresh-contextual-transfer",
+              "taskDemandDe": "Ein neues Material vergleicht ein degeneratives Verlustmodell mit einer vorübergehend veränderten Transmitterwirkung ohne nachgewiesenen Zellverlust. Erkläre, warum ähnliche Funktionsprobleme nicht beweisen, dass beide Veränderungen dieselbe Erkrankung oder denselben Mechanismus darstellen.",
+              "taskDemandEn": "Fresh material compares a degenerative loss model with temporarily altered transmitter action and no demonstrated cell loss. Explain why similar impairments do not prove the same disorder or mechanism.",
+              "expectedPerformanceDe": "Die Veränderungsebenen unterscheiden sich: Strukturverlust und veränderte Übertragung sind nicht gleichgesetzt. Ähnliche Symptome lassen allein keine eindeutige Ursachen- oder Krankheitszuordnung zu. Depression, Multiple Sklerose und Alzheimer werden nicht als austauschbare Lehrplanbegriffe behandelt.",
+              "expectedPerformanceEn": "The changes occur at different levels: structural loss and altered transmission are not equated. Similar symptoms alone do not uniquely identify cause or disease. Depression, multiple sclerosis and Alzheimer are not treated as interchangeable curriculum terms.",
+              "understandingFocusDe": "Frischer Transfer mit konkreter Begrenzung der Schlussfolgerung.",
+              "understandingFocusEn": "Fresh transfer with a specific inference limit."
+            }
+          ]
+        }
+      },
+      "exactImageAuthorRoute": {
+        "goalId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+        "role": "image author candidate, no independent V",
+        "wholeStage02CandidateGoal": {
+          "id": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+          "title": "Neuronale Erkrankungen einordnen",
+          "titleEn": "Classify neuronal diseases",
+          "description": "Die lernende Person kann an einem gegebenen Modell einer neuronalen Erkrankung, zum Beispiel Alzheimer, erklären, wie eine Störung neuronaler Strukturen oder Signalprozesse die Funktion des Systems verändert.",
+          "descriptionEn": "The learner can use a supplied model of a neuronal disorder, such as Alzheimer's, to explain how a disturbance of neuronal structures or signalling processes changes the function of the system.",
+          "weight": 1.05,
+          "tags": [
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+            "2d451684-6e53-565e-a987-f362da919d2c"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-biology",
+            "demandLevel": "AB2",
+            "processCompetencies": [],
+            "guidingIdeas": [
+              "BIO_ENTWICKLUNG",
+              "BIO_STEUERUNG_REGELUNG"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-HE"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+              "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "8c1f802a-d012-5ae9-86d5-a317f353ff75",
+              "originalComponentKeys": [
+                "LK6"
+              ],
+              "retainedAuthoredOperationalisationSourceGoalId": "33c6faf3-ef2c-430e-b0b4-165f2026e209"
+            },
+            "applicabilityMappingInheritance": "boundary"
+          },
+          "type": "atomic"
+        },
+        "completeCurrentDEENReferenceCases": [
+          {
+            "goalId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+            "caseId": "initial-bounded-model",
+            "unchangedPriorWholeCaseBrief": {
+              "id": "initial-bounded-model",
+              "taskDemandDe": "Ein ausdrücklich vereinfachtes Alzheimer-Modell gibt einen Verlust bestimmter Netzwerkverbindungen und eine schwächere Verarbeitung neu eingehender Information vor. Erkläre den Zusammenhang im Modell und warum aus einer einzelnen Gedächtnisschwierigkeit keine Alzheimer-Diagnose folgt.",
+              "taskDemandEn": "An explicitly simplified Alzheimer model supplies loss of particular network connections and weaker processing of new information. Explain the relationship in the model and why one memory difficulty does not establish an Alzheimer diagnosis.",
+              "expectedPerformanceDe": "Verlust von Verbindungen kann im gegebenen Netz die Verarbeitung beeinträchtigen. Der konkrete Modellbefund ist von unspezifischen Alltagssymptomen und einer individuellen Diagnose zu unterscheiden; weitere krankheitsspezifische Ursachen werden nicht erfunden.",
+              "expectedPerformanceEn": "Lost connections can impair processing in the supplied network. The model finding is distinguished from non-specific everyday symptoms and individual diagnosis; additional disease-specific causes are not invented.",
+              "understandingFocusDe": "Eigenständig begründete Erklärung des gegebenen Mechanismus und seiner Bedingungen.",
+              "understandingFocusEn": "Independently justified explanation of the supplied mechanism and its conditions."
+            },
+            "taskDe": "Ein ausdrücklich vereinfachtes Alzheimer-Modell gibt einen Verlust bestimmter Netzwerkverbindungen und eine schwächere Verarbeitung neu eingehender Information vor. Erkläre den Zusammenhang im Modell und warum aus einer einzelnen Gedächtnisschwierigkeit keine Alzheimer-Diagnose folgt.",
+            "taskEn": "An explicitly simplified Alzheimer model supplies loss of particular network connections and weaker processing of new information. Explain the relationship in the model and why one memory difficulty does not establish an Alzheimer diagnosis.",
+            "referenceResponseDe": "Verlust von Verbindungen kann im gegebenen Netz die Verarbeitung beeinträchtigen. Der konkrete Modellbefund ist von unspezifischen Alltagssymptomen und einer individuellen Diagnose zu unterscheiden; weitere krankheitsspezifische Ursachen werden nicht erfunden.",
+            "referenceResponseEn": "Lost connections can impair processing in the supplied network. The model finding is distinguished from non-specific everyday symptoms and individual diagnosis; additional disease-specific causes are not invented.",
+            "understandingFocusDe": "Eigenständig begründete Erklärung des gegebenen Mechanismus und seiner Bedingungen.",
+            "understandingFocusEn": "Independently justified explanation of the supplied mechanism and its conditions.",
+            "materialType": "prior_authored_reference_case_exact",
+            "actualExperimentConducted": false,
+            "actualLearnerEvidence": false,
+            "taskQuota": false,
+            "license": "CC-BY-4.0"
+          },
+          {
+            "goalId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+            "caseId": "fresh-contextual-transfer",
+            "unchangedPriorWholeCaseBrief": {
+              "id": "fresh-contextual-transfer",
+              "taskDemandDe": "Ein neues Material vergleicht ein degeneratives Verlustmodell mit einer vorübergehend veränderten Transmitterwirkung ohne nachgewiesenen Zellverlust. Erkläre, warum ähnliche Funktionsprobleme nicht beweisen, dass beide Veränderungen dieselbe Erkrankung oder denselben Mechanismus darstellen.",
+              "taskDemandEn": "Fresh material compares a degenerative loss model with temporarily altered transmitter action and no demonstrated cell loss. Explain why similar impairments do not prove the same disorder or mechanism.",
+              "expectedPerformanceDe": "Die Veränderungsebenen unterscheiden sich: Strukturverlust und veränderte Übertragung sind nicht gleichgesetzt. Ähnliche Symptome lassen allein keine eindeutige Ursachen- oder Krankheitszuordnung zu. Depression, Multiple Sklerose und Alzheimer werden nicht als austauschbare Lehrplanbegriffe behandelt.",
+              "expectedPerformanceEn": "The changes occur at different levels: structural loss and altered transmission are not equated. Similar symptoms alone do not uniquely identify cause or disease. Depression, multiple sclerosis and Alzheimer are not treated as interchangeable curriculum terms.",
+              "understandingFocusDe": "Frischer Transfer mit konkreter Begrenzung der Schlussfolgerung.",
+              "understandingFocusEn": "Fresh transfer with a specific inference limit."
+            },
+            "taskDe": "Ein neues Material vergleicht ein degeneratives Verlustmodell mit einer vorübergehend veränderten Transmitterwirkung ohne nachgewiesenen Zellverlust. Erkläre, warum ähnliche Funktionsprobleme nicht beweisen, dass beide Veränderungen dieselbe Erkrankung oder denselben Mechanismus darstellen.",
+            "taskEn": "Fresh material compares a degenerative loss model with temporarily altered transmitter action and no demonstrated cell loss. Explain why similar impairments do not prove the same disorder or mechanism.",
+            "referenceResponseDe": "Die Veränderungsebenen unterscheiden sich: Strukturverlust und veränderte Übertragung sind nicht gleichgesetzt. Ähnliche Symptome lassen allein keine eindeutige Ursachen- oder Krankheitszuordnung zu. Depression, Multiple Sklerose und Alzheimer werden nicht als austauschbare Lehrplanbegriffe behandelt.",
+            "referenceResponseEn": "The changes occur at different levels: structural loss and altered transmission are not equated. Similar symptoms alone do not uniquely identify cause or disease. Depression, multiple sclerosis and Alzheimer are not treated as interchangeable curriculum terms.",
+            "understandingFocusDe": "Frischer Transfer mit konkreter Begrenzung der Schlussfolgerung.",
+            "understandingFocusEn": "Fresh transfer with a specific inference limit.",
+            "materialType": "prior_authored_reference_case_exact",
+            "actualExperimentConducted": false,
+            "actualLearnerEvidence": false,
+            "taskQuota": false,
+            "license": "CC-BY-4.0"
+          }
+        ],
+        "actualFrozenSourceWitnessEffectiveBindings": [
+          {
+            "goalId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+            "scopeKey": "DE-HE/SekII/LK",
+            "actualWitness": {
+              "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-ephase-seven-current365-20261005-v2.review.json",
+              "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_BIOLOGIE_SEKII_KC2024.m7-ephase-seven-current365-20261005-v2.source-extraction.json",
+              "sourceGoalId": "8c1f802a-d012-5ae9-86d5-a317f353ff75",
+              "mappedTargetGoalId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+              "goalId": "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+              "coverage": "direct",
+              "profileBasis": "source-metadata"
+            },
+            "exactEffectiveBindings": [
+              {
+                "field": "sourceExtractionPath",
+                "plannedPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_BIOLOGIE_SEKII_KC2024.m7-ephase-seven-current365-20261005-v2.source-extraction.json",
+                "actualFrozenEffectivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/extraction-02.author-v2.candidate.json",
+                "binding": {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/extraction-02.author-v2.candidate.json",
+                  "sha256": "sha256:3932990a396364d307c26deb4515559c5c215e26988deb105ffface4770df400",
+                  "bytes": 255855
+                },
+                "effectiveBytesMatchFrozenNativeReceipt": true
+              },
+              {
+                "field": "mappingPath",
+                "plannedPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-ephase-seven-current365-20261005-v2.review.json",
+                "actualFrozenEffectivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/mapping-02.author-v2.candidate.json",
+                "binding": {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/mapping-02.author-v2.candidate.json",
+                  "sha256": "sha256:4e4b0666b79b1c15724caaf74f355feadc7121d2c2aae9fb2ae3a30a5c2a065a",
+                  "bytes": 130166
+                },
+                "effectiveBytesMatchFrozenNativeReceipt": true
+              }
+            ],
+            "wholeSourceApproval": false,
+            "wholeActualBoundSourceGoal": {
+              "id": "8c1f802a-d012-5ae9-86d5-a317f353ff75",
+              "passageId": "he-bio-sekii:q2.3",
+              "topicCode": "Q2.3",
+              "title": "Störungen des neuronalen Systems (Prinzip: zum Beispiel Alzheimer oder Parkinson)",
+              "description": "Störungen des neuronalen Systems (Prinzip: zum Beispiel Alzheimer oder Parkinson)",
+              "sourceText": "Störungen des neuronalen Systems (Prinzip: zum Beispiel Alzheimer oder Parkinson)",
+              "rawSourceText": "Störungen des neuronalen Systems (Prinzip: zum Beispiel Alzheimer oder Parkinson)",
+              "parentBulletText": "Störungen des neuronalen Systems (Prinzip: zum Beispiel Alzheimer oder Parkinson)",
+              "rawParentBulletText": "Störungen des neuronalen Systems (Prinzip: zum Beispiel Alzheimer oder Parkinson)",
+              "sourceSpan": "Q2.3.LK6",
+              "rawSourceSpan": "Q2.3.LK6",
+              "sourceRef": "Hessen KC Biologie 2024, gedruckte/physische Seite 43, Originalbullet LK6 (lokaler redaktioneller Schlüssel)",
+              "courseLevel": "LK",
+              "granularity": "officialOriginalBullet",
+              "isOfficialBullet": true,
+              "localEditorialKey": "LK6",
+              "officialNumberingClaim": false,
+              "sourceDocumentKey": "KC2024_BIOLOGIE_SEKII",
+              "printedPage": 43,
+              "physicalPage": 43,
+              "tags": [
+                "jurisdiction:DE-HE",
+                "stage:SekII",
+                "courseLevel:LK",
+                "topic:Q2.3"
+              ]
+            },
+            "wholeActualSourceDocument": {
+              "key": "KC2024_BIOLOGIE_SEKII",
+              "title": "Kerncurriculum Biologie gymnasiale Oberstufe Hessen 2024",
+              "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+              "role": "binding-core",
+              "official": true,
+              "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2025-10/kerncurriculum_gymnasiale_oberstufe-biologie.pdf"
+            },
+            "actualRetainedDocumentBinding": {
+              "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+              "sha256": "sha256:52c278d6f5a7383361631d5251550c42222f13e1bbe2aa16d39ca3b12c5e1558",
+              "bytes": 505276
+            }
+          }
+        ],
+        "updated080bWholeMaterials": null,
+        "selectedUnchangedOriginalAsset": {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/485ef1c3-8997-52b7-91f5-b1ddf179013d/original-generated-attempt-03.png",
+          "sha256": "032c34237fd0a8048df6cf8b2f45b3cdec08f10f4c73876a591e2791c631ccb9",
+          "bytes": 1660022
+        },
+        "actualPixelDimensions": [
+          1672,
+          941
+        ],
+        "actualFinalGeneratorMetadata": {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/485ef1c3-8997-52b7-91f5-b1ddf179013d/builtin-generator-attempt-03.actual.metadata.json",
+          "sha256": "72780d37e2bf3ef4eca2922da3d6564b3182e9828a884649864f2ede9dbf19d3",
+          "bytes": 1600
+        },
+        "actualFinalGenerationPrompt": {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/prompts/485ef1c3-8997-52b7-91f5-b1ddf179013d.attempt-03.prompt.txt",
+          "sha256": "59adba044cc3f310c67286c09954d4c6d530b0529cae527b6120f6d4b48e42a9",
+          "bytes": 961
+        },
+        "actualAllGenerationHistory": [
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/485ef1c3-8997-52b7-91f5-b1ddf179013d/builtin-generator-attempt-01.actual.metadata.json",
+            "sha256": "6d81f2ffc6c088d8bb06b7b0b483a004a886f2144d63c1d19aba416261620b9f",
+            "bytes": 1254
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/485ef1c3-8997-52b7-91f5-b1ddf179013d/builtin-generator-attempt-02.actual.metadata.json",
+            "sha256": "6a280f49f994e87a2b2272ef7563fb031480d9d109bf59d3ae5144dce41beece",
+            "bytes": 1609
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/485ef1c3-8997-52b7-91f5-b1ddf179013d/builtin-generator-attempt-03.actual.metadata.json",
+            "sha256": "72780d37e2bf3ef4eca2922da3d6564b3182e9828a884649864f2ede9dbf19d3",
+            "bytes": 1600
+          }
+        ],
+        "allOriginalAttempts": [
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/485ef1c3-8997-52b7-91f5-b1ddf179013d/original-generated-attempt-01.png",
+            "sha256": "55ee537e4ad4a86929b1fcbfdc89353acd041b3c25659ad30cc22fe04f03de16",
+            "bytes": 1694269
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/485ef1c3-8997-52b7-91f5-b1ddf179013d/original-generated-attempt-02.png",
+            "sha256": "e22252f946fb90ff5086d8042c7234935dba0b16ac3159b72436ed5f810a0eb5",
+            "bytes": 1531022
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/485ef1c3-8997-52b7-91f5-b1ddf179013d/original-generated-attempt-03.png",
+            "sha256": "032c34237fd0a8048df6cf8b2f45b3cdec08f10f4c73876a591e2791c631ccb9",
+            "bytes": 1660022
+          }
+        ],
+        "selectedAttempt": "03",
+        "actualProvider": "OpenAI / ChatGPT-Codex image generation",
+        "actualTool": "ChatGPT/Codex builtin image generation",
+        "actualModelVersion": null,
+        "modelVersionDisclosure": "not exposed; unknown",
+        "license": "CC-BY-4.0",
+        "boundedImageAltTextDe": "Gegebenes Nervenzellnetz im intakten und gestörten Zustand. Eine unterbrochene Verbindung stoppt die gezeichnete Signalroute; der weiterhin vorhandene Kontakt hinter der Unterbrechung zeigt keine aktive Weitergabe.",
+        "ownAuthorSightNoteDe": "Getrennte Zellen und sichtbare Kontaktspalte. Drei aktive Übergänge links, nur der erste rechts; downstream Kontakt strukturell erhalten, ohne Signalpfeil oder freigesetzte Partikel. Keine Diagnose.",
+        "ownAuthorSightFullSizeAndBothActualWidths": true,
+        "actualDisplayWidths": [
+          360,
+          680
+        ],
+        "actualDisplays": [
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/author-displays/final/485ef1c3-8997-52b7-91f5-b1ddf179013d.360.png",
+            "sha256": "7b9464116ade7760ecdc336fc8d8563531e7ec702da44f84337917ab89d78923",
+            "bytes": 83588
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/author-displays/final/485ef1c3-8997-52b7-91f5-b1ddf179013d.680.png",
+            "sha256": "264037cd7b3ec4e46a59837947e463392f20d9da70cecf6a28d87490aba48280",
+            "bytes": 274260
+          }
+        ],
+        "boundedModelNotWholeGoalPerformance": true,
+        "nativePrepareBeforeAllAttempts": true,
+        "nativePrepareMetadata": {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/native-prepare-before-generation/485ef1c3-8997-52b7-91f5-b1ddf179013d/metadata.json",
+          "sha256": "f65ac612eca3e9723f1d87355deeb6d092c59f32064a72bb1f5a9fa5cf61929d",
+          "bytes": 911
+        },
+        "nativeImportDryRun": {
+          "argv": [
+            "npm",
+            "--prefix",
+            "app",
+            "run",
+            "visualization:import",
+            "--",
+            "485ef1c3-8997-52b7-91f5-b1ddf179013d",
+            "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/485ef1c3-8997-52b7-91f5-b1ddf179013d/original-generated-attempt-03.png",
+            "--landscape=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-twenty-one-current-continuation-author-v3/stage-02-current-twenty-one-native/current472-neuro21.complete-author-candidate.json",
+            "--subject=biologie",
+            "--lang=de",
+            "--provider=OpenAI / ChatGPT-Codex image generation",
+            "--review-status=pilot",
+            "--license=CC-BY-4.0",
+            "--prompt=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/prompts/485ef1c3-8997-52b7-91f5-b1ddf179013d.attempt-03.prompt.txt",
+            "--alt-text=Gegebenes Nervenzellnetz im intakten und gestörten Zustand. Eine unterbrochene Verbindung stoppt die gezeichnete Signalroute; der weiterhin vorhandene Kontakt hinter der Unterbrechung zeigt keine aktive Weitergabe.",
+            "--description=Modellhafte Illustration: Neuronale Erkrankungen einordnen.",
+            "--dry-run"
+          ],
+          "cwd": "/home/enpasos/projects/skillpilot",
+          "startedAt": "2026-10-07T00:05:28.750899+00:00",
+          "finishedAt": "2026-10-07T00:05:28.910117+00:00",
+          "exitCode": 0,
+          "stdout": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/native-import-dry-run/485ef1c3-8997-52b7-91f5-b1ddf179013d/native-import-dry-run.actual.stdout.txt",
+            "sha256": "0a20494709827b93a683f65d7c93e8139522799c05a692861a5d8a5566d469b9",
+            "bytes": 2484
+          },
+          "stderr": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/native-import-dry-run/485ef1c3-8997-52b7-91f5-b1ddf179013d/native-import-dry-run.actual.stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          "routingProducedByUnmodifiedNativeImport": {
+            "Canonical image": "curricula/DE/Gymnasium/visualizations/biologie/485ef1c3-8997-52b7-91f5-b1ddf179013d/485ef1c3-8997-52b7-91f5-b1ddf179013d.png",
+            "Public image": "app/public/assets/goal-visualizations/biologie/485ef1c3-8997-52b7-91f5-b1ddf179013d/485ef1c3-8997-52b7-91f5-b1ddf179013d.png",
+            "Backend image": "backend/src/main/resources/static/assets/goal-visualizations/biologie/485ef1c3-8997-52b7-91f5-b1ddf179013d/485ef1c3-8997-52b7-91f5-b1ddf179013d.png",
+            "Canonical prompt": "curricula/DE/Gymnasium/visualizations/biologie/485ef1c3-8997-52b7-91f5-b1ddf179013d/prompt.de.md",
+            "Canonical reconstruction prompt": "curricula/DE/Gymnasium/visualizations/biologie/485ef1c3-8997-52b7-91f5-b1ddf179013d/image-reconstruction-prompt.de.md",
+            "JSON link URL": "/assets/goal-visualizations/biologie/485ef1c3-8997-52b7-91f5-b1ddf179013d/485ef1c3-8997-52b7-91f5-b1ddf179013d.png"
+          }
+        },
+        "authorDisposition": "candidate_ready_for_two_independent_visual_reviews",
+        "independentVisualApproval": false,
+        "humanApproval": false,
+        "newStrictCompletion": 0
+      },
+      "sourceHOLDsRetained": true,
+      "wholeSourceApproval": false,
+      "noNewIndependentD_P_A_M_VReviewRecorded": true,
+      "humanApproval": false,
+      "humanTrial": false,
+      "newStrictCompletion": 0
+    },
+    {
+      "goalId": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+      "wholeCurrentGoal": {
+        "id": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+        "title": "Neurophysiologische Verfahren",
+        "titleEn": "Neurophysiological procedures",
+        "description": "Die lernende Person kann ein bildgebendes Verfahren der Hirnforschung beschreiben.",
+        "descriptionEn": "The learner can describe an imaging technique in brain research.",
+        "weight": 1.05,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-biology",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_ENTWICKLUNG",
+            "BIO_STEUERUNG_REGELUNG"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+            "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "d3c19f37-5d9c-4490-830f-07584b8ec2f1"
+          }
+        },
+        "type": "atomic"
+      },
+      "wholePriorStage02Goal": {
+        "id": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+        "title": "Neurophysiologische Verfahren",
+        "titleEn": "Neurophysiological procedures",
+        "description": "Die lernende Person kann ein bildgebendes Verfahren der Hirnforschung beschreiben.",
+        "descriptionEn": "The learner can describe an imaging technique in brain research.",
+        "weight": 1.05,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-biology",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_ENTWICKLUNG",
+            "BIO_STEUERUNG_REGELUNG"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+            "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "bfd043fc-7eb7-5ff5-90ab-e2d978d21aa0",
+            "originalComponentKeys": [
+              "LK7"
+            ],
+            "retainedAuthoredOperationalisationSourceGoalId": "d3c19f37-5d9c-4490-830f-07584b8ec2f1"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic"
+      },
+      "wholeFinalImageCandidateGoal": {
+        "id": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+        "title": "Neurophysiologische Verfahren",
+        "titleEn": "Neurophysiological procedures",
+        "description": "Die lernende Person kann ein bildgebendes Verfahren der Hirnforschung beschreiben.",
+        "descriptionEn": "The learner can describe an imaging technique in brain research.",
+        "weight": 1.05,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-biology",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_ENTWICKLUNG",
+            "BIO_STEUERUNG_REGELUNG"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-HE"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+            "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "bfd043fc-7eb7-5ff5-90ab-e2d978d21aa0",
+            "originalComponentKeys": [
+              "LK7"
+            ],
+            "retainedAuthoredOperationalisationSourceGoalId": "d3c19f37-5d9c-4490-830f-07584b8ec2f1"
+          },
+          "applicabilityMappingInheritance": "boundary"
+        },
+        "type": "atomic",
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+            "title": "Visualisierung: Neurophysiologische Verfahren",
+            "url": "/assets/goal-visualizations/biologie/afde0001-d7d7-5ed3-8a60-383e8da5620e/afde0001-d7d7-5ed3-8a60-383e8da5620e.png",
+            "provider": "OpenAI / ChatGPT-Codex image generation",
+            "description": "Modellhafte Illustration: Neurophysiologische Verfahren.",
+            "altText": "Schematische fMRT-Illustration: Scanner, indirektes Blutsignal und eine qualitative Gehirnkarte zum Vergleich von Bedingungen. Die Farbkarte ist eine Modellzeichnung, kein gemessener Scan.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "actualFullFinal390Page": {
+        "pageNumber": 176,
+        "navigationOrder": 188,
+        "treeOrder": 210,
+        "goalId": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+        "anchor": "goal-afde0001-d7d7-5ed3-8a60-383e8da5620e",
+        "title": "Neurophysiologische Verfahren",
+        "description": "Die lernende Person kann ein bildgebendes Verfahren der Hirnforschung beschreiben.",
+        "breadcrumbs": [
+          "Biologie – kanonische Prüfsicht",
+          "Biologie",
+          "Evolution & Neurobiologie",
+          "Q2.3 Neurobiologie"
+        ],
+        "chapterIds": [
+          "structure:bio-current390-author-review",
+          "goal:e8d54127-d42e-51f5-bfa5-51d826069f95",
+          "goal:d23951c2-4791-5a91-a2de-b72a421a4536",
+          "goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8"
+        ],
+        "requires": [
+          {
+            "goalId": "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+            "title": "Erregende chemische Synapsen erklären",
+            "anchor": "goal-ff1bf88f-2413-5668-a071-ce9fc499cba3",
+            "pageNumber": 169
+          }
+        ],
+        "reverseRequires": [],
+        "externalPrerequisites": [
+          {
+            "goalId": "2d451684-6e53-565e-a987-f362da919d2c",
+            "title": "Warum Biologie? - Relevanz und Orientierung",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a",
+            "title": "Sek-II-Abschlussaufgaben Biologie bearbeiten",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Neurophysiologische Verfahren",
+          "url": "/assets/goal-visualizations/biologie/afde0001-d7d7-5ed3-8a60-383e8da5620e/afde0001-d7d7-5ed3-8a60-383e8da5620e.png",
+          "altText": "Schematische fMRT-Illustration: Scanner, indirektes Blutsignal und eine qualitative Gehirnkarte zum Vergleich von Bedingungen. Die Farbkarte ist eine Modellzeichnung, kein gemessener Scan.",
+          "originalDigest": "sha256:92abb33c10530d977c1717473941a3e591c223531d6fc042338a4369fccd8d93",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:02c435ab883a421964ecb9f53c29ab9c07ffea667fdf3ec51110ff9fa2c35573",
+        "pageFingerprint": "sha256:f5a08f6c691dff7c8d3c3af8aae6cf79b5f16e61aea03751d420c92b5f05f8f0"
+      },
+      "nativeFinalSubsetPage": {
+        "pageNumber": 9,
+        "navigationOrder": 8,
+        "treeOrder": 12,
+        "goalId": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+        "anchor": "goal-afde0001-d7d7-5ed3-8a60-383e8da5620e",
+        "title": "Neurophysiologische Verfahren",
+        "description": "Die lernende Person kann ein bildgebendes Verfahren der Hirnforschung beschreiben.",
+        "breadcrumbs": [
+          "Biologie – kanonische Prüfsicht",
+          "Biologie",
+          "Evolution & Neurobiologie",
+          "Q2.3 Neurobiologie"
+        ],
+        "chapterIds": [
+          "structure:bio-current390-author-review",
+          "goal:e8d54127-d42e-51f5-bfa5-51d826069f95",
+          "goal:d23951c2-4791-5a91-a2de-b72a421a4536",
+          "goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8"
+        ],
+        "requires": [
+          {
+            "goalId": "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+            "title": "Erregende chemische Synapsen erklären",
+            "anchor": "goal-ff1bf88f-2413-5668-a071-ce9fc499cba3",
+            "pageNumber": 2
+          }
+        ],
+        "reverseRequires": [],
+        "externalPrerequisites": [
+          {
+            "goalId": "2d451684-6e53-565e-a987-f362da919d2c",
+            "title": "Warum Biologie? - Relevanz und Orientierung",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a",
+            "title": "Sek-II-Abschlussaufgaben Biologie bearbeiten",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Neurophysiologische Verfahren",
+          "url": "/assets/goal-visualizations/biologie/afde0001-d7d7-5ed3-8a60-383e8da5620e/afde0001-d7d7-5ed3-8a60-383e8da5620e.png",
+          "altText": "Schematische fMRT-Illustration: Scanner, indirektes Blutsignal und eine qualitative Gehirnkarte zum Vergleich von Bedingungen. Die Farbkarte ist eine Modellzeichnung, kein gemessener Scan.",
+          "originalDigest": "sha256:92abb33c10530d977c1717473941a3e591c223531d6fc042338a4369fccd8d93",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:02c435ab883a421964ecb9f53c29ab9c07ffea667fdf3ec51110ff9fa2c35573",
+        "pageFingerprint": "sha256:01743c1d81d6f303db0369c9f604bb0f9b895d993f1f48d7cc187dfbd6c8b9d4"
+      },
+      "nativeFinalSubsetDInput": {
+        "goalId": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+        "goalFingerprint": "sha256:02c435ab883a421964ecb9f53c29ab9c07ffea667fdf3ec51110ff9fa2c35573",
+        "pageFingerprint": "sha256:01743c1d81d6f303db0369c9f604bb0f9b895d993f1f48d7cc187dfbd6c8b9d4",
+        "currentTitleDe": "Neurophysiologische Verfahren",
+        "currentTitleEn": "Neurophysiological procedures",
+        "currentDescriptionDe": "Die lernende Person kann ein bildgebendes Verfahren der Hirnforschung beschreiben.",
+        "currentDescriptionEn": "The learner can describe an imaging technique in brain research.",
+        "canonicalContext": {
+          "shortKey": null,
+          "phase": null,
+          "core": null,
+          "weight": 1.05,
+          "tags": [
+            "LK"
+          ],
+          "competencyRefs": [],
+          "sourceRef": null,
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-biology",
+            "demandLevel": "AB2",
+            "processCompetencies": [],
+            "guidingIdeas": [
+              "BIO_ENTWICKLUNG",
+              "BIO_STEUERUNG_REGELUNG"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-HE"
+            ]
+          },
+          "type": "atomic",
+          "nodeKind": null,
+          "semanticAtomic": null,
+          "semanticKind": null,
+          "applicabilitySemantics": {
+            "fromRequires": null,
+            "mappingInheritance": "boundary",
+            "projection": null
+          },
+          "requires": [
+            "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+            "2d451684-6e53-565e-a987-f362da919d2c"
+          ],
+          "contains": [],
+          "examples": []
+        },
+        "reviewContext": {
+          "page": {
+            "pageNumber": 9,
+            "navigationOrder": 8,
+            "treeOrder": 12,
+            "goalId": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+            "anchor": "goal-afde0001-d7d7-5ed3-8a60-383e8da5620e",
+            "title": "Neurophysiologische Verfahren",
+            "description": "Die lernende Person kann ein bildgebendes Verfahren der Hirnforschung beschreiben.",
+            "breadcrumbs": [
+              "Biologie – kanonische Prüfsicht",
+              "Biologie",
+              "Evolution & Neurobiologie",
+              "Q2.3 Neurobiologie"
+            ],
+            "chapterIds": [
+              "structure:bio-current390-author-review",
+              "goal:e8d54127-d42e-51f5-bfa5-51d826069f95",
+              "goal:d23951c2-4791-5a91-a2de-b72a421a4536",
+              "goal:02f8a5a3-9c44-50ec-b9b8-a0b7f402aaa8"
+            ],
+            "requires": [
+              {
+                "goalId": "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+                "title": "Erregende chemische Synapsen erklären",
+                "anchor": "goal-ff1bf88f-2413-5668-a071-ce9fc499cba3",
+                "pageNumber": 2
+              }
+            ],
+            "reverseRequires": [],
+            "externalPrerequisites": [
+              {
+                "goalId": "2d451684-6e53-565e-a987-f362da919d2c",
+                "title": "Warum Biologie? - Relevanz und Orientierung",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c"
+              }
+            ],
+            "externalReverseRequires": [
+              {
+                "goalId": "1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a",
+                "title": "Sek-II-Abschlussaufgaben Biologie bearbeiten",
+                "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+              }
+            ],
+            "visualization": {
+              "resourceType": "image",
+              "title": "Visualisierung: Neurophysiologische Verfahren",
+              "url": "/assets/goal-visualizations/biologie/afde0001-d7d7-5ed3-8a60-383e8da5620e/afde0001-d7d7-5ed3-8a60-383e8da5620e.png",
+              "altText": "Schematische fMRT-Illustration: Scanner, indirektes Blutsignal und eine qualitative Gehirnkarte zum Vergleich von Bedingungen. Die Farbkarte ist eine Modellzeichnung, kein gemessener Scan.",
+              "originalDigest": "sha256:92abb33c10530d977c1717473941a3e591c223531d6fc042338a4369fccd8d93",
+              "qaStatus": "review_candidate",
+              "approvedForPublication": false
+            },
+            "evidenceReview": null,
+            "goalFingerprint": "sha256:02c435ab883a421964ecb9f53c29ab9c07ffea667fdf3ec51110ff9fa2c35573",
+            "pageFingerprint": "sha256:01743c1d81d6f303db0369c9f604bb0f9b895d993f1f48d7cc187dfbd6c8b9d4"
+          },
+          "evidenceProfile": null
+        }
+      },
+      "nativeFinalSubsetDContextFingerprint": "sha256:464b34c306bc3eb350285aa7e6aec892a80a15837064fddbf8b82fd5e7036e89",
+      "nativeFinalSubsetName": "twenty",
+      "actualSubsetPageNumber": 9,
+      "actualPdfPhysicalPageNumber": 11,
+      "nativeSubsetDiffersFromFull390": true,
+      "sourceRefPrintedOnNativePage": false,
+      "actualFrozenSourceWitnessesUnmodified": [
+        {
+          "actualFrozenSourceScopeKey": "DE-HE/SekII/LK",
+          "actualFrozenSourceScope": {
+            "jurisdiction": "DE-HE",
+            "stage": "SekII",
+            "durationModel": null,
+            "courseProfile": "LK"
+          },
+          "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-ephase-seven-current365-20261005-v2.review.json",
+          "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_BIOLOGIE_SEKII_KC2024.m7-ephase-seven-current365-20261005-v2.source-extraction.json",
+          "sourceGoalId": "bfd043fc-7eb7-5ff5-90ab-e2d978d21aa0",
+          "mappedTargetGoalId": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+          "goalId": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+          "coverage": "direct",
+          "profileBasis": "source-metadata"
+        }
+      ],
+      "boundedOfficialPrimaryComponentsUnmodified": [],
+      "wholeOriginalSourceClosureUnmodified": false,
+      "positivePriorScientificProfileBody": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "bounded-mechanism-and-transfer",
+            "essentialUnderstandingDe": "Ein bildgebendes Verfahren der Hirnforschung erzeugt eine indirekte oder strukturelle Darstellung mit methodenspezifischen Grenzen. Eine Aktivierungskarte ist keine Aufnahme einzelner Gedanken oder eine direkte elektrische Messung sämtlicher Nervenzellen.",
+            "essentialUnderstandingEn": "A brain-imaging method produces an indirect or structural representation with method-specific limits. An activation map is neither a photograph of individual thoughts nor a direct electrical measurement of every neuron.",
+            "observablePerformanceDe": "Die lernende Person beschreibt ein gegebenes bildgebendes Messprinzip und deutet einen neuen Vergleichsbefund ohne überzogene Schlussfolgerung.",
+            "observablePerformanceEn": "The learner describes a supplied imaging principle and interprets a fresh comparison without overstating its conclusions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "bounded-mechanism-and-transfer"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "fresh-model-or-dataset",
+            "textDe": "Darstellung, Werte oder untersuchte Verbindung wechseln; die Mechanismuserklärung muss zum neuen gegebenen Material passen.",
+            "textEn": "Change representation, values or studied connection; the mechanism explanation must fit the fresh material."
+          },
+          {
+            "id": "intervention-or-inference-limit",
+            "textDe": "Einen frischen Eingriff, Kontrollvergleich oder Kontexteffekt begründet einordnen und die konkrete Aussagegrenze beachten.",
+            "textEn": "Explain a fresh intervention, control comparison or contextual effect and respect its specific inference limit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "initial-bounded-model",
+            "taskDemandDe": "Ein fMRT-Material erläutert ausdrücklich den indirekten Zusammenhang zwischen dem gemessenen BOLD-Signal, Blutversorgung und neuronaler Aktivität. Eine Karte vergleicht eine Aufgabe mit einer Kontrollbedingung. Beschreibe das Messprinzip und erkläre, was der Unterschied aussagt.",
+            "taskDemandEn": "An fMRI material explicitly explains the indirect relationship between measured BOLD signal, blood supply and neural activity. A map compares a task with a control condition. Describe the principle and explain the difference.",
+            "expectedPerformanceDe": "Der Befund zeigt einen methodenabhängigen Signalunterschied zwischen den Bedingungen. Er ist indirekt und liefert weder ein Bild eines einzelnen Gedankens noch die Aktivität jedes Neurons. Kontrollbedingung und Messprinzip begrenzen die Aussage.",
+            "expectedPerformanceEn": "The finding shows a method-dependent signal difference between conditions. It is indirect and reveals neither an individual thought nor every neuron's activity. Control condition and measurement principle limit the claim.",
+            "understandingFocusDe": "Eigenständig begründete Erklärung des gegebenen Mechanismus und seiner Bedingungen.",
+            "understandingFocusEn": "Independently justified explanation of the supplied mechanism and its conditions."
+          },
+          {
+            "id": "fresh-contextual-transfer",
+            "taskDemandDe": "In einem neuen Material sind eine strukturelle MRT-Aufnahme und eine fMRT-Vergleichskarte nebeneinander dargestellt. Begründe, welche Darstellung eine anatomische Fragestellung und welche einen bedingungsbezogenen Aktivitätsvergleich unterstützt.",
+            "taskDemandEn": "Fresh material presents a structural MRI image beside an fMRI comparison map. Explain which supports an anatomical question and which a condition-related activity comparison.",
+            "expectedPerformanceDe": "Die strukturelle Darstellung stützt die anatomische Frage, die funktionelle Karte den ausdrücklich untersuchten Signalvergleich. Keine der beiden Darstellungen ersetzt automatisch eine Diagnose oder beweist den Inhalt einer Erinnerung.",
+            "expectedPerformanceEn": "The structural image supports anatomy; the functional map supports the specified signal comparison. Neither automatically supplies a diagnosis or proves memory content.",
+            "understandingFocusDe": "Frischer Transfer mit konkreter Begrenzung der Schlussfolgerung.",
+            "understandingFocusEn": "Fresh transfer with a specific inference limit."
+          }
+        ]
+      },
+      "positiveCurrentFinalProfileBody": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "bounded-mechanism-and-transfer",
+            "essentialUnderstandingDe": "Ein bildgebendes Verfahren der Hirnforschung erzeugt eine indirekte oder strukturelle Darstellung mit methodenspezifischen Grenzen. Eine Aktivierungskarte ist keine Aufnahme einzelner Gedanken oder eine direkte elektrische Messung sämtlicher Nervenzellen.",
+            "essentialUnderstandingEn": "A brain-imaging method produces an indirect or structural representation with method-specific limits. An activation map is neither a photograph of individual thoughts nor a direct electrical measurement of every neuron.",
+            "observablePerformanceDe": "Die lernende Person beschreibt ein gegebenes bildgebendes Messprinzip und deutet einen neuen Vergleichsbefund ohne überzogene Schlussfolgerung.",
+            "observablePerformanceEn": "The learner describes a supplied imaging principle and interprets a fresh comparison without overstating its conclusions."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "bounded-mechanism-and-transfer"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "fresh-model-or-dataset",
+            "textDe": "Darstellung, Werte oder untersuchte Verbindung wechseln; die Mechanismuserklärung muss zum neuen gegebenen Material passen.",
+            "textEn": "Change representation, values or studied connection; the mechanism explanation must fit the fresh material."
+          },
+          {
+            "id": "intervention-or-inference-limit",
+            "textDe": "Einen frischen Eingriff, Kontrollvergleich oder Kontexteffekt begründet einordnen und die konkrete Aussagegrenze beachten.",
+            "textEn": "Explain a fresh intervention, control comparison or contextual effect and respect its specific inference limit."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "initial-bounded-model",
+            "taskDemandDe": "Ein fMRT-Material erläutert ausdrücklich den indirekten Zusammenhang zwischen dem gemessenen BOLD-Signal, Blutversorgung und neuronaler Aktivität. Eine Karte vergleicht eine Aufgabe mit einer Kontrollbedingung. Beschreibe das Messprinzip und erkläre, was der Unterschied aussagt.",
+            "taskDemandEn": "An fMRI material explicitly explains the indirect relationship between measured BOLD signal, blood supply and neural activity. A map compares a task with a control condition. Describe the principle and explain the difference.",
+            "expectedPerformanceDe": "Der Befund zeigt einen methodenabhängigen Signalunterschied zwischen den Bedingungen. Er ist indirekt und liefert weder ein Bild eines einzelnen Gedankens noch die Aktivität jedes Neurons. Kontrollbedingung und Messprinzip begrenzen die Aussage.",
+            "expectedPerformanceEn": "The finding shows a method-dependent signal difference between conditions. It is indirect and reveals neither an individual thought nor every neuron's activity. Control condition and measurement principle limit the claim.",
+            "understandingFocusDe": "Eigenständig begründete Erklärung des gegebenen Mechanismus und seiner Bedingungen.",
+            "understandingFocusEn": "Independently justified explanation of the supplied mechanism and its conditions."
+          },
+          {
+            "id": "fresh-contextual-transfer",
+            "taskDemandDe": "In einem neuen Material sind eine strukturelle MRT-Aufnahme und eine fMRT-Vergleichskarte nebeneinander dargestellt. Begründe, welche Darstellung eine anatomische Fragestellung und welche einen bedingungsbezogenen Aktivitätsvergleich unterstützt.",
+            "taskDemandEn": "Fresh material presents a structural MRI image beside an fMRI comparison map. Explain which supports an anatomical question and which a condition-related activity comparison.",
+            "expectedPerformanceDe": "Die strukturelle Darstellung stützt die anatomische Frage, die funktionelle Karte den ausdrücklich untersuchten Signalvergleich. Keine der beiden Darstellungen ersetzt automatisch eine Diagnose oder beweist den Inhalt einer Erinnerung.",
+            "expectedPerformanceEn": "The structural image supports anatomy; the functional map supports the specified signal comparison. Neither automatically supplies a diagnosis or proves memory content.",
+            "understandingFocusDe": "Frischer Transfer mit konkreter Begrenzung der Schlussfolgerung.",
+            "understandingFocusEn": "Fresh transfer with a specific inference limit."
+          }
+        ]
+      },
+      "positiveFinalTechnicalCandidateRecord": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "biologie-neuro21-final-images-technical-author-scaffold-20261007-v1",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8",
+        "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+        "goalId": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+        "goalFingerprint": "sha256:02c435ab883a421964ecb9f53c29ab9c07ffea667fdf3ec51110ff9fa2c35573",
+        "reviewInputFingerprint": "sha256:630dc5cea54ddb98527ce7ffc9c701396897277b8e82de35d7e0dd09020010da",
+        "profileFingerprint": "sha256:2c65cbd1ef2532c9f976c9bab4a49fb336211401ab78858f5c38f2082ff2112c",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-10-07T05:36:26.372459+00:00",
+        "reviewer": "Codex technical preparation author; no independent D/P/A/M approval",
+        "reason": "Technical native candidate materialization for image-bound final candidate. Original scientific profile reused exactly; current080b v4 is the only profile-body replacement. No new scientific acceptance. Prior author reason: AUTHOR v2 synthetic bounded model and fresh variation; source/P remedies based on separately sealed A+B v1 findings. Independent v2 review pending; no observed learner work or approval.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [
+          "Whole-source and national-scope HOLDs remain unchanged. Final image/page/context binding review pending. No new D/P/A/M judgment, no human approval/trial or strict M7 gain."
+        ],
+        "profile": {
+          "archetype": "data",
+          "expectations": [
+            {
+              "id": "bounded-mechanism-and-transfer",
+              "essentialUnderstandingDe": "Ein bildgebendes Verfahren der Hirnforschung erzeugt eine indirekte oder strukturelle Darstellung mit methodenspezifischen Grenzen. Eine Aktivierungskarte ist keine Aufnahme einzelner Gedanken oder eine direkte elektrische Messung sämtlicher Nervenzellen.",
+              "essentialUnderstandingEn": "A brain-imaging method produces an indirect or structural representation with method-specific limits. An activation map is neither a photograph of individual thoughts nor a direct electrical measurement of every neuron.",
+              "observablePerformanceDe": "Die lernende Person beschreibt ein gegebenes bildgebendes Messprinzip und deutet einen neuen Vergleichsbefund ohne überzogene Schlussfolgerung.",
+              "observablePerformanceEn": "The learner describes a supplied imaging principle and interprets a fresh comparison without overstating its conclusions."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "bounded-mechanism-and-transfer"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "fresh-model-or-dataset",
+              "textDe": "Darstellung, Werte oder untersuchte Verbindung wechseln; die Mechanismuserklärung muss zum neuen gegebenen Material passen.",
+              "textEn": "Change representation, values or studied connection; the mechanism explanation must fit the fresh material."
+            },
+            {
+              "id": "intervention-or-inference-limit",
+              "textDe": "Einen frischen Eingriff, Kontrollvergleich oder Kontexteffekt begründet einordnen und die konkrete Aussagegrenze beachten.",
+              "textEn": "Explain a fresh intervention, control comparison or contextual effect and respect its specific inference limit."
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "initial-bounded-model",
+              "taskDemandDe": "Ein fMRT-Material erläutert ausdrücklich den indirekten Zusammenhang zwischen dem gemessenen BOLD-Signal, Blutversorgung und neuronaler Aktivität. Eine Karte vergleicht eine Aufgabe mit einer Kontrollbedingung. Beschreibe das Messprinzip und erkläre, was der Unterschied aussagt.",
+              "taskDemandEn": "An fMRI material explicitly explains the indirect relationship between measured BOLD signal, blood supply and neural activity. A map compares a task with a control condition. Describe the principle and explain the difference.",
+              "expectedPerformanceDe": "Der Befund zeigt einen methodenabhängigen Signalunterschied zwischen den Bedingungen. Er ist indirekt und liefert weder ein Bild eines einzelnen Gedankens noch die Aktivität jedes Neurons. Kontrollbedingung und Messprinzip begrenzen die Aussage.",
+              "expectedPerformanceEn": "The finding shows a method-dependent signal difference between conditions. It is indirect and reveals neither an individual thought nor every neuron's activity. Control condition and measurement principle limit the claim.",
+              "understandingFocusDe": "Eigenständig begründete Erklärung des gegebenen Mechanismus und seiner Bedingungen.",
+              "understandingFocusEn": "Independently justified explanation of the supplied mechanism and its conditions."
+            },
+            {
+              "id": "fresh-contextual-transfer",
+              "taskDemandDe": "In einem neuen Material sind eine strukturelle MRT-Aufnahme und eine fMRT-Vergleichskarte nebeneinander dargestellt. Begründe, welche Darstellung eine anatomische Fragestellung und welche einen bedingungsbezogenen Aktivitätsvergleich unterstützt.",
+              "taskDemandEn": "Fresh material presents a structural MRI image beside an fMRI comparison map. Explain which supports an anatomical question and which a condition-related activity comparison.",
+              "expectedPerformanceDe": "Die strukturelle Darstellung stützt die anatomische Frage, die funktionelle Karte den ausdrücklich untersuchten Signalvergleich. Keine der beiden Darstellungen ersetzt automatisch eine Diagnose oder beweist den Inhalt einer Erinnerung.",
+              "expectedPerformanceEn": "The structural image supports anatomy; the functional map supports the specified signal comparison. Neither automatically supplies a diagnosis or proves memory content.",
+              "understandingFocusDe": "Frischer Transfer mit konkreter Begrenzung der Schlussfolgerung.",
+              "understandingFocusEn": "Fresh transfer with a specific inference limit."
+            }
+          ]
+        }
+      },
+      "exactImageAuthorRoute": {
+        "goalId": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+        "role": "image author candidate, no independent V",
+        "wholeStage02CandidateGoal": {
+          "id": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+          "title": "Neurophysiologische Verfahren",
+          "titleEn": "Neurophysiological procedures",
+          "description": "Die lernende Person kann ein bildgebendes Verfahren der Hirnforschung beschreiben.",
+          "descriptionEn": "The learner can describe an imaging technique in brain research.",
+          "weight": 1.05,
+          "tags": [
+            "LK"
+          ],
+          "contains": [],
+          "requires": [
+            "ff1bf88f-2413-5668-a071-ce9fc499cba3",
+            "2d451684-6e53-565e-a987-f362da919d2c"
+          ],
+          "dimensionTags": {
+            "framework": "hessen-kc-2024-biology",
+            "demandLevel": "AB2",
+            "processCompetencies": [],
+            "guidingIdeas": [
+              "BIO_ENTWICKLUNG",
+              "BIO_STEUERUNG_REGELUNG"
+            ],
+            "phase": "Q2"
+          },
+          "applicability": {
+            "jurisdiction": [
+              "DE-HE"
+            ]
+          },
+          "extendedData": {
+            "provenance": {
+              "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+              "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+              "sourceGoalId": "bfd043fc-7eb7-5ff5-90ab-e2d978d21aa0",
+              "originalComponentKeys": [
+                "LK7"
+              ],
+              "retainedAuthoredOperationalisationSourceGoalId": "d3c19f37-5d9c-4490-830f-07584b8ec2f1"
+            },
+            "applicabilityMappingInheritance": "boundary"
+          },
+          "type": "atomic"
+        },
+        "completeCurrentDEENReferenceCases": [
+          {
+            "goalId": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+            "caseId": "initial-bounded-model",
+            "unchangedPriorWholeCaseBrief": {
+              "id": "initial-bounded-model",
+              "taskDemandDe": "Ein fMRT-Material erläutert ausdrücklich den indirekten Zusammenhang zwischen dem gemessenen BOLD-Signal, Blutversorgung und neuronaler Aktivität. Eine Karte vergleicht eine Aufgabe mit einer Kontrollbedingung. Beschreibe das Messprinzip und erkläre, was der Unterschied aussagt.",
+              "taskDemandEn": "An fMRI material explicitly explains the indirect relationship between measured BOLD signal, blood supply and neural activity. A map compares a task with a control condition. Describe the principle and explain the difference.",
+              "expectedPerformanceDe": "Der Befund zeigt einen methodenabhängigen Signalunterschied zwischen den Bedingungen. Er ist indirekt und liefert weder ein Bild eines einzelnen Gedankens noch die Aktivität jedes Neurons. Kontrollbedingung und Messprinzip begrenzen die Aussage.",
+              "expectedPerformanceEn": "The finding shows a method-dependent signal difference between conditions. It is indirect and reveals neither an individual thought nor every neuron's activity. Control condition and measurement principle limit the claim.",
+              "understandingFocusDe": "Eigenständig begründete Erklärung des gegebenen Mechanismus und seiner Bedingungen.",
+              "understandingFocusEn": "Independently justified explanation of the supplied mechanism and its conditions."
+            },
+            "taskDe": "Ein fMRT-Material erläutert ausdrücklich den indirekten Zusammenhang zwischen dem gemessenen BOLD-Signal, Blutversorgung und neuronaler Aktivität. Eine Karte vergleicht eine Aufgabe mit einer Kontrollbedingung. Beschreibe das Messprinzip und erkläre, was der Unterschied aussagt.",
+            "taskEn": "An fMRI material explicitly explains the indirect relationship between measured BOLD signal, blood supply and neural activity. A map compares a task with a control condition. Describe the principle and explain the difference.",
+            "referenceResponseDe": "Der Befund zeigt einen methodenabhängigen Signalunterschied zwischen den Bedingungen. Er ist indirekt und liefert weder ein Bild eines einzelnen Gedankens noch die Aktivität jedes Neurons. Kontrollbedingung und Messprinzip begrenzen die Aussage.",
+            "referenceResponseEn": "The finding shows a method-dependent signal difference between conditions. It is indirect and reveals neither an individual thought nor every neuron's activity. Control condition and measurement principle limit the claim.",
+            "understandingFocusDe": "Eigenständig begründete Erklärung des gegebenen Mechanismus und seiner Bedingungen.",
+            "understandingFocusEn": "Independently justified explanation of the supplied mechanism and its conditions.",
+            "materialType": "prior_authored_reference_case_exact",
+            "actualExperimentConducted": false,
+            "actualLearnerEvidence": false,
+            "taskQuota": false,
+            "license": "CC-BY-4.0"
+          },
+          {
+            "goalId": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+            "caseId": "fresh-contextual-transfer",
+            "unchangedPriorWholeCaseBrief": {
+              "id": "fresh-contextual-transfer",
+              "taskDemandDe": "In einem neuen Material sind eine strukturelle MRT-Aufnahme und eine fMRT-Vergleichskarte nebeneinander dargestellt. Begründe, welche Darstellung eine anatomische Fragestellung und welche einen bedingungsbezogenen Aktivitätsvergleich unterstützt.",
+              "taskDemandEn": "Fresh material presents a structural MRI image beside an fMRI comparison map. Explain which supports an anatomical question and which a condition-related activity comparison.",
+              "expectedPerformanceDe": "Die strukturelle Darstellung stützt die anatomische Frage, die funktionelle Karte den ausdrücklich untersuchten Signalvergleich. Keine der beiden Darstellungen ersetzt automatisch eine Diagnose oder beweist den Inhalt einer Erinnerung.",
+              "expectedPerformanceEn": "The structural image supports anatomy; the functional map supports the specified signal comparison. Neither automatically supplies a diagnosis or proves memory content.",
+              "understandingFocusDe": "Frischer Transfer mit konkreter Begrenzung der Schlussfolgerung.",
+              "understandingFocusEn": "Fresh transfer with a specific inference limit."
+            },
+            "taskDe": "In einem neuen Material sind eine strukturelle MRT-Aufnahme und eine fMRT-Vergleichskarte nebeneinander dargestellt. Begründe, welche Darstellung eine anatomische Fragestellung und welche einen bedingungsbezogenen Aktivitätsvergleich unterstützt.",
+            "taskEn": "Fresh material presents a structural MRI image beside an fMRI comparison map. Explain which supports an anatomical question and which a condition-related activity comparison.",
+            "referenceResponseDe": "Die strukturelle Darstellung stützt die anatomische Frage, die funktionelle Karte den ausdrücklich untersuchten Signalvergleich. Keine der beiden Darstellungen ersetzt automatisch eine Diagnose oder beweist den Inhalt einer Erinnerung.",
+            "referenceResponseEn": "The structural image supports anatomy; the functional map supports the specified signal comparison. Neither automatically supplies a diagnosis or proves memory content.",
+            "understandingFocusDe": "Frischer Transfer mit konkreter Begrenzung der Schlussfolgerung.",
+            "understandingFocusEn": "Fresh transfer with a specific inference limit.",
+            "materialType": "prior_authored_reference_case_exact",
+            "actualExperimentConducted": false,
+            "actualLearnerEvidence": false,
+            "taskQuota": false,
+            "license": "CC-BY-4.0"
+          }
+        ],
+        "actualFrozenSourceWitnessEffectiveBindings": [
+          {
+            "goalId": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+            "scopeKey": "DE-HE/SekII/LK",
+            "actualWitness": {
+              "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-ephase-seven-current365-20261005-v2.review.json",
+              "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_BIOLOGIE_SEKII_KC2024.m7-ephase-seven-current365-20261005-v2.source-extraction.json",
+              "sourceGoalId": "bfd043fc-7eb7-5ff5-90ab-e2d978d21aa0",
+              "mappedTargetGoalId": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+              "goalId": "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+              "coverage": "direct",
+              "profileBasis": "source-metadata"
+            },
+            "exactEffectiveBindings": [
+              {
+                "field": "sourceExtractionPath",
+                "plannedPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_BIOLOGIE_SEKII_KC2024.m7-ephase-seven-current365-20261005-v2.source-extraction.json",
+                "actualFrozenEffectivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/extraction-02.author-v2.candidate.json",
+                "binding": {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/extraction-02.author-v2.candidate.json",
+                  "sha256": "sha256:3932990a396364d307c26deb4515559c5c215e26988deb105ffface4770df400",
+                  "bytes": 255855
+                },
+                "effectiveBytesMatchFrozenNativeReceipt": true
+              },
+              {
+                "field": "mappingPath",
+                "plannedPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-ephase-seven-current365-20261005-v2.review.json",
+                "actualFrozenEffectivePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/mapping-02.author-v2.candidate.json",
+                "binding": {
+                  "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/biologie-q2-neurobiology-twenty-one-source-p-author-remediation-v2/source-candidates/mapping-02.author-v2.candidate.json",
+                  "sha256": "sha256:4e4b0666b79b1c15724caaf74f355feadc7121d2c2aae9fb2ae3a30a5c2a065a",
+                  "bytes": 130166
+                },
+                "effectiveBytesMatchFrozenNativeReceipt": true
+              }
+            ],
+            "wholeSourceApproval": false,
+            "wholeActualBoundSourceGoal": {
+              "id": "bfd043fc-7eb7-5ff5-90ab-e2d978d21aa0",
+              "passageId": "he-bio-sekii:q2.3",
+              "topicCode": "Q2.3",
+              "title": "neurophysiologische Verfahren (Prinzip: ein bildgebendes Verfahren der Hirnforschung)",
+              "description": "neurophysiologische Verfahren (Prinzip: ein bildgebendes Verfahren der Hirnforschung)",
+              "sourceText": "neurophysiologische Verfahren (Prinzip: ein bildgebendes Verfahren der Hirnforschung)",
+              "rawSourceText": "neurophysiologische Verfahren (Prinzip: ein bildgebendes Verfahren der Hirnforschung)",
+              "parentBulletText": "neurophysiologische Verfahren (Prinzip: ein bildgebendes Verfahren der Hirnforschung)",
+              "rawParentBulletText": "neurophysiologische Verfahren (Prinzip: ein bildgebendes Verfahren der Hirnforschung)",
+              "sourceSpan": "Q2.3.LK7",
+              "rawSourceSpan": "Q2.3.LK7",
+              "sourceRef": "Hessen KC Biologie 2024, gedruckte/physische Seite 43, Originalbullet LK7 (lokaler redaktioneller Schlüssel)",
+              "courseLevel": "LK",
+              "granularity": "officialOriginalBullet",
+              "isOfficialBullet": true,
+              "localEditorialKey": "LK7",
+              "officialNumberingClaim": false,
+              "sourceDocumentKey": "KC2024_BIOLOGIE_SEKII",
+              "printedPage": 43,
+              "physicalPage": 43,
+              "tags": [
+                "jurisdiction:DE-HE",
+                "stage:SekII",
+                "courseLevel:LK",
+                "topic:Q2.3"
+              ]
+            },
+            "wholeActualSourceDocument": {
+              "key": "KC2024_BIOLOGIE_SEKII",
+              "title": "Kerncurriculum Biologie gymnasiale Oberstufe Hessen 2024",
+              "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+              "role": "binding-core",
+              "official": true,
+              "url": "https://kultus.hessen.de/sites/kultus.hessen.de/files/2025-10/kerncurriculum_gymnasiale_oberstufe-biologie.pdf"
+            },
+            "actualRetainedDocumentBinding": {
+              "path": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-biologie.pdf",
+              "sha256": "sha256:52c278d6f5a7383361631d5251550c42222f13e1bbe2aa16d39ca3b12c5e1558",
+              "bytes": 505276
+            }
+          }
+        ],
+        "updated080bWholeMaterials": null,
+        "selectedUnchangedOriginalAsset": {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/afde0001-d7d7-5ed3-8a60-383e8da5620e/original-generated-attempt-01.png",
+          "sha256": "92abb33c10530d977c1717473941a3e591c223531d6fc042338a4369fccd8d93",
+          "bytes": 2171986
+        },
+        "actualPixelDimensions": [
+          1672,
+          941
+        ],
+        "actualFinalGeneratorMetadata": {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/afde0001-d7d7-5ed3-8a60-383e8da5620e/builtin-generator-attempt-01.actual.metadata.json",
+          "sha256": "978d9ce38ffe9cb2cf51631a7f5624d4bb5e3d1df5c9b229c66fb9c769dbf8c3",
+          "bytes": 1254
+        },
+        "actualFinalGenerationPrompt": {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/prompts/afde0001-d7d7-5ed3-8a60-383e8da5620e.prompt.txt",
+          "sha256": "69546136c1b2f9132bf786d01dff0082a1347c62dd84f009f55bfb986999ead9",
+          "bytes": 1984
+        },
+        "actualAllGenerationHistory": [
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/afde0001-d7d7-5ed3-8a60-383e8da5620e/builtin-generator-attempt-01.actual.metadata.json",
+            "sha256": "978d9ce38ffe9cb2cf51631a7f5624d4bb5e3d1df5c9b229c66fb9c769dbf8c3",
+            "bytes": 1254
+          }
+        ],
+        "allOriginalAttempts": [
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/afde0001-d7d7-5ed3-8a60-383e8da5620e/original-generated-attempt-01.png",
+            "sha256": "92abb33c10530d977c1717473941a3e591c223531d6fc042338a4369fccd8d93",
+            "bytes": 2171986
+          }
+        ],
+        "selectedAttempt": "01",
+        "actualProvider": "OpenAI / ChatGPT-Codex image generation",
+        "actualTool": "ChatGPT/Codex builtin image generation",
+        "actualModelVersion": null,
+        "modelVersionDisclosure": "not exposed; unknown",
+        "license": "CC-BY-4.0",
+        "boundedImageAltTextDe": "Schematische fMRT-Illustration: Scanner, indirektes Blutsignal und eine qualitative Gehirnkarte zum Vergleich von Bedingungen. Die Farbkarte ist eine Modellzeichnung, kein gemessener Scan.",
+        "ownAuthorSightNoteDe": "Blutoxygenierungsbezogene indirekte Darstellung; keine direkte Einzelneuronmessung, Gedankenlesung oder klinische Aussage.",
+        "ownAuthorSightFullSizeAndBothActualWidths": true,
+        "actualDisplayWidths": [
+          360,
+          680
+        ],
+        "actualDisplays": [
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/author-displays/final/afde0001-d7d7-5ed3-8a60-383e8da5620e.360.png",
+            "sha256": "a224cf71821572e4adb917a1ab53e287bf1ba2540bade1b09679b3e9fd231978",
+            "bytes": 123836
+          },
+          {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/author-displays/final/afde0001-d7d7-5ed3-8a60-383e8da5620e.680.png",
+            "sha256": "cf8f6e46f163b9902cccc600d7c5cba5abe0accd9b6d1383331d6c53825c4e98",
+            "bytes": 392079
+          }
+        ],
+        "boundedModelNotWholeGoalPerformance": true,
+        "nativePrepareBeforeAllAttempts": true,
+        "nativePrepareMetadata": {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/native-prepare-before-generation/afde0001-d7d7-5ed3-8a60-383e8da5620e/metadata.json",
+          "sha256": "df901a76df8b5f18ad9329be9cb245ee52fb82bdc51c7e1ed84bde0eadc77822",
+          "bytes": 779
+        },
+        "nativeImportDryRun": {
+          "argv": [
+            "npm",
+            "--prefix",
+            "app",
+            "run",
+            "visualization:import",
+            "--",
+            "afde0001-d7d7-5ed3-8a60-383e8da5620e",
+            "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/generated-originals/afde0001-d7d7-5ed3-8a60-383e8da5620e/original-generated-attempt-01.png",
+            "--landscape=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro-twenty-one-current-continuation-author-v3/stage-02-current-twenty-one-native/current472-neuro21.complete-author-candidate.json",
+            "--subject=biologie",
+            "--lang=de",
+            "--provider=OpenAI / ChatGPT-Codex image generation",
+            "--review-status=pilot",
+            "--license=CC-BY-4.0",
+            "--prompt=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/prompts/afde0001-d7d7-5ed3-8a60-383e8da5620e.prompt.txt",
+            "--alt-text=Schematische fMRT-Illustration: Scanner, indirektes Blutsignal und eine qualitative Gehirnkarte zum Vergleich von Bedingungen. Die Farbkarte ist eine Modellzeichnung, kein gemessener Scan.",
+            "--description=Modellhafte Illustration: Neurophysiologische Verfahren.",
+            "--dry-run"
+          ],
+          "cwd": "/home/enpasos/projects/skillpilot",
+          "startedAt": "2026-10-07T00:05:28.927095+00:00",
+          "finishedAt": "2026-10-07T00:05:29.090660+00:00",
+          "exitCode": 0,
+          "stdout": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/native-import-dry-run/afde0001-d7d7-5ed3-8a60-383e8da5620e/native-import-dry-run.actual.stdout.txt",
+            "sha256": "9dd9f58a4efc3fc52df604305eb9d366eba2132efe1463ef3801159b8497b040",
+            "bytes": 2440
+          },
+          "stderr": {
+            "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-neuro21-next-eleven-friendly-comic-primary-raster-author-20261007-v1/native-import-dry-run/afde0001-d7d7-5ed3-8a60-383e8da5620e/native-import-dry-run.actual.stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          },
+          "routingProducedByUnmodifiedNativeImport": {
+            "Canonical image": "curricula/DE/Gymnasium/visualizations/biologie/afde0001-d7d7-5ed3-8a60-383e8da5620e/afde0001-d7d7-5ed3-8a60-383e8da5620e.png",
+            "Public image": "app/public/assets/goal-visualizations/biologie/afde0001-d7d7-5ed3-8a60-383e8da5620e/afde0001-d7d7-5ed3-8a60-383e8da5620e.png",
+            "Backend image": "backend/src/main/resources/static/assets/goal-visualizations/biologie/afde0001-d7d7-5ed3-8a60-383e8da5620e/afde0001-d7d7-5ed3-8a60-383e8da5620e.png",
+            "Canonical prompt": "curricula/DE/Gymnasium/visualizations/biologie/afde0001-d7d7-5ed3-8a60-383e8da5620e/prompt.de.md",
+            "Canonical reconstruction prompt": "curricula/DE/Gymnasium/visualizations/biologie/afde0001-d7d7-5ed3-8a60-383e8da5620e/image-reconstruction-prompt.de.md",
+            "JSON link URL": "/assets/goal-visualizations/biologie/afde0001-d7d7-5ed3-8a60-383e8da5620e/afde0001-d7d7-5ed3-8a60-383e8da5620e.png"
+          }
+        },
+        "authorDisposition": "candidate_ready_for_two_independent_visual_reviews",
+        "independentVisualApproval": false,
+        "humanApproval": false,
+        "newStrictCompletion": 0
+      },
+      "sourceHOLDsRetained": true,
+      "wholeSourceApproval": false,
+      "noNewIndependentD_P_A_M_VReviewRecorded": true,
+      "humanApproval": false,
+      "humanTrial": false,
+      "newStrictCompletion": 0
+    }
+  ]
+}

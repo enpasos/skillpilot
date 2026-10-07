@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-10-07T00:53:13.926Z
+Generated: 2026-10-07T09:30:55.994Z
 Rules version: curriculum-quality-v5
 
 ## Summary
@@ -16,19 +16,19 @@ Rules version: curriculum-quality-v5
 | --- | ---: |
 | Curricula | 21 |
 | M0 | 11 |
-| M1 | 0 |
+| M1 | 1 |
 | M2 | 1 |
 | M3 | 0 |
 | M4 | 0 |
 | M5 | 0 |
-| M6 | 7 |
+| M6 | 6 |
 | M7 | 2 |
 
 ## Curricula
 
 | Curriculum | Maturity | Goals | Atomic | Passage extraction | Bundeslaender | QA scopes | Warn | Fail |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Biologie (Gymnasium, DE) | M6 | 472 | 419 | 17/17 | 16/16 | 1 | 1 | 0 |
+| Biologie (Gymnasium, DE) | M1 | 473 | 420 | 17/22 | 11/16 | 1 | 2 | 2 |
 | Chemie (Gymnasium, DE) | M6 | 479 | 409 | 32/32 | 16/16 | 1 | 1 | 0 |
 | Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Deutsch (Gymnasium, DE) | M6 | 354 | 291 | 31/31 | 16/16 | 1 | 0 | 0 |
@@ -54,19 +54,24 @@ Rules version: curriculum-quality-v5
 
 | Curriculum | Source | Jurisdiction | Original sources | Complete | Current step | Passages | Source goals | Exact | Partial | Exact share | Duration projection | Evidence note |
 | --- | --- | --- | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: | --- | --- |
-| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Brandenburg, gemeinsamer BE/BB-Rahmenlehrplan 2015 Source-Extraction) | DE-BB | 1/1 URL; local cache 0/1 | 3/3 | - | 0 | 33 | 0 | 0 | 0% | - |  |
-| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Berlin, gemeinsamer BE/BB-Rahmenlehrplan 2015 Source-Extraction) | DE-BE | 1/1 URL; local cache 0/1 | 3/3 | - | 0 | 33 | 0 | 0 | 0% | - |  |
+| Biologie (Gymnasium, DE) | 4654eb89-5629-5560-a41c-e30e862cc29d | - | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% | - |  |
+| Biologie (Gymnasium, DE) | 6f148acb-6e11-55a4-a1bd-fda53d757571 | - | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% | - |  |
+| Biologie (Gymnasium, DE) | 736b4fcf-67f4-5d66-8b1a-0d58bc984cac | - | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% | - |  |
+| Biologie (Gymnasium, DE) | 825184bf-e995-5086-b048-91e732e6c0fb | - | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% | - |  |
+| Biologie (Gymnasium, DE) | DE_ST_BIOLOGIE_EPHASE10_Q1_FOUR_BOUNDED_COMPONENTS_AUTHOR_20261007_V1 | - | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% | - |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Brandenburg, gemeinsamer BE/BB-Rahmenlehrplan 2015 Source-Extraction) | DE-BB | 1/1 URL; local cache 0/1 | 3/3 | - | 0 | 33 | 0 | 1 | 0% | - |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Berlin, gemeinsamer BE/BB-Rahmenlehrplan 2015 Source-Extraction) | DE-BE | 1/1 URL; local cache 0/1 | 3/3 | - | 0 | 33 | 0 | 1 | 0% | - |  |
 | Biologie (Gymnasium, DE) | DE-BW - Biologie Sekundarstufe I (Bildungsplan 2016 Gymnasium, V2 2022 Source-Extraction) | DE-BW | 2/2 URL; local cache 0/2 | 3/3 | - | 15 | 111 | 2 | 109 | 2% | - |  |
-| Biologie (Gymnasium, DE) | DE-BY - Biologie Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 URL; local cache 1/1 | 3/3 | - | 32 | 222 | 191 | 31 | 86% | - |  |
+| Biologie (Gymnasium, DE) | DE-BY - Biologie Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 URL; local cache 1/1 | 3/3 | - | 32 | 222 | 188 | 34 | 85% | - |  |
 | Biologie (Gymnasium, DE) | DE-HB - Biologie Sekundarstufe I (Bremen, Bildungsplan 2006/2022 Source-Extraction) | DE-HB | 2/2 URL; local cache 0/2 | 3/3 | - | 6 | 70 | 2 | 68 | 3% | - |  |
-| Biologie (Gymnasium, DE) | Biologie Oberstufe (Hessen, KC 2024 Source-Extraction) | DE-HE | 1/1 URL; local cache 1/1 | 3/3 | - | 19 | 150 | 150 | 0 | 100% | - |  |
+| Biologie (Gymnasium, DE) | Biologie Oberstufe (Hessen, KC 2024 Source-Extraction) | DE-HE | 1/1 URL; local cache 1/1 | 3/3 | - | 19 | 150 | 149 | 1 | 99% | - |  |
 | Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Hessen, G9 Source-Extraction) | DE-HE | 1/1 URL; local cache 1/1 | 3/3 | - | 16 | 66 | 66 | 0 | 100% | - |  |
 | Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Hamburg Bildungsplan Gymnasium 2011 Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 0 | 7 | 0 | 7 | 0% | - |  |
 | Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Mecklenburg-Vorpommern Rahmenplan 2022 Source-Extraction) | DE-MV | 1/1 URL; local cache 0/1 | 3/3 | - | 0 | 12 | 0 | 12 | 0% | - |  |
 | Biologie (Gymnasium, DE) | DE-NI - Biologie Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction) | DE-NI | 1/1 URL; local cache 0/1 | 3/3 | - | 18 | 124 | 4 | 120 | 3% | - |  |
-| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Nordrhein-Westfalen KLP Gymnasium 2019 Source-Extraction) | DE-NW | 1/1 URL; local cache 0/1 | 3/3 | - | 0 | 11 | 0 | 1 | 0% | - |  |
-| Biologie (Gymnasium, DE) | DE-RP - Biologie Sekundarstufe I (Rheinland-Pfalz, Lehrplan BCP 2014 Source-Extraction) | DE-RP | 1/1 URL; local cache 0/1 | 3/3 | - | 12 | 47 | 2 | 45 | 4% | - |  |
-| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Schleswig-Holstein Fachanforderungen 2023 Source-Extraction) | DE-SH | 1/1 URL; local cache 0/1 | 3/3 | - | 0 | 9 | 0 | 1 | 0% | - |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Nordrhein-Westfalen KLP Gymnasium 2019 Source-Extraction) | DE-NW | 1/1 URL; local cache 0/1 | 3/3 | - | 0 | 11 | 0 | 2 | 0% | - |  |
+| Biologie (Gymnasium, DE) | DE-RP - Biologie Sekundarstufe I (Rheinland-Pfalz, Lehrplan BCP 2014 Source-Extraction) | DE-RP | 1/1 URL; local cache 0/1 | 3/3 | - | 12 | 48 | 2 | 46 | 4% | - |  |
+| Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Schleswig-Holstein Fachanforderungen 2023 Source-Extraction) | DE-SH | 1/1 URL; local cache 0/1 | 3/3 | - | 0 | 9 | 0 | 3 | 0% | - |  |
 | Biologie (Gymnasium, DE) | DE-SL - Biologie Sekundarstufe I (Saarland, Naturwissenschaften 5/6 2012 Source-Extraction) | DE-SL | 1/1 URL; local cache 0/1 | 3/3 | - | 9 | 75 | 1 | 74 | 1% | - |  |
 | Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Sachsen Lehrplan Gymnasium 2025 Source-Extraction) | DE-SN | 1/1 URL; local cache 0/1 | 3/3 | - | 0 | 10 | 0 | 10 | 0% | - |  |
 | Biologie (Gymnasium, DE) | Biologie Sekundarstufe I (Sachsen-Anhalt Fachlehrplan Gymnasium 2022 Source-Extraction) | DE-ST | 1/1 URL; local cache 0/1 | 3/3 | - | 0 | 11 | 0 | 11 | 0% | - |  |
@@ -361,7 +366,7 @@ Rules version: curriculum-quality-v5
 
 | Curriculum | Complete | DE source-view atoms | Raw atoms | Source-backed states | Extracted source goals | Registered source originals | Fully covered originals | Unregistered source goals | Extracted source atoms | Unregistered source atoms | Unsupported assignments | Unmapped source atoms | Partial | Error | Max source-backed view coverage |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Biologie (Gymnasium, DE) | 16/16 | 392 | 419 | 16 | 905 | 905 | 905 | 0 | 905 | 0 | 0 | 0 | 0 | 0 | 364 (100%) |
+| Biologie (Gymnasium, DE) | 11/16 | 393 | 420 | 16 | 685 | 685 | 685 | 0 | 685 | 0 | 5 | 0 | 0 | 5 | 364 (100%) |
 | Chemie (Gymnasium, DE) | 16/16 | 338 | 409 | 16 | 5865 | 5865 | 5865 | 0 | 5865 | 0 | 0 | 0 | 0 | 0 | 336 (100%) |
 | Chinesisch (Gymnasium, DE) | 2/16 | 170 | 181 | 2 | 399 | 399 | 399 | 0 | 399 | 0 | 0 | 0 | 0 | 0 | 170 (100%) |
 | Deutsch (Gymnasium, DE) | 16/16 | 268 | 291 | 16 | 6222 | 6222 | 6222 | 0 | 6222 | 0 | 0 | 0 | 0 | 0 | 268 (100%) |

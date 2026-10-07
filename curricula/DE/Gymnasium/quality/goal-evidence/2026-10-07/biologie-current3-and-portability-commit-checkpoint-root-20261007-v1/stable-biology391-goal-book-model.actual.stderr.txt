@@ -1,0 +1,636 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Stale generated atlas input: app/scripts/config/goal-books/navigation/de-gym-chemistry-national-atlas.view.json
++ actual - expected ... Lines skipped
+
+  '{\n' +
+    '  "viewFormatVersion": "1.0",\n' +
+...
+    '          "kind": "structure",\n' +
+    '          "id": "canonical-goal-2da7abbb-7ade-5acc-b7b1-1d98d7334352",\n' +
++   '          "label": "Chemische Erkenntnisgewinnung und Kommunikation",\n' +
+-   '          "label": "Chemische Erkenntnisgewinnung und Kommunikation (Sek I)",\n' +
+    '          "children": [\n' +
+    '            {\n' +
+...
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
++   '              "goalId": "8576b82'... 55432 more characters
+-   '              "goalId": '... 55440 more characters
+    at checkGoalBookSourceAtlasInputs (/home/enpasos/projects/skillpilot/app/scripts/goalBookSourceAtlasInputs.ts:370:12)
+    at testGoalBookSourceAtlasInputs (/home/enpasos/projects/skillpilot/app/scripts/testGoalBookSourceAtlasInputs.ts:172:21)
+    at testGoalBookInputIsolation (/home/enpasos/projects/skillpilot/app/scripts/testGoalBookInputIsolation.ts:41:3)
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/testGoalBookModel.ts:33:7)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: '{\n' +
+    '  "viewFormatVersion": "1.0",\n' +
+    '  "viewId": "de-gym-chemistry-national-atlas",\n' +
+    '  "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",\n' +
+    '  "language": "de-DE",\n' +
+    '  "title": "Kanonische Gliederung Chemie – Gymnasium bundesweit",\n' +
+    '  "scope": {\n' +
+    '    "schoolForm": "Gymnasium",\n' +
+    '    "jurisdiction": "DE",\n' +
+    '    "stage": "CrossStage"\n' +
+    '  },\n' +
+    '  "rootNodes": [\n' +
+    '    {\n' +
+    '      "kind": "structure",\n' +
+    '      "id": "canonical-goal-442c31c5-c561-5c7a-90bb-2335d779175c",\n' +
+    '      "label": "Chemie",\n' +
+    '      "children": [\n' +
+    '        {\n' +
+    '          "kind": "structure",\n' +
+    '          "id": "canonical-goal-3588c15e-adbe-5b81-b3a7-10da20574e3d",\n' +
+    '          "label": "Chemische Grundlagen (Sek I)",\n' +
+    '          "children": [\n' +
+    '            {\n' +
+    '              "kind": "structure",\n' +
+    '              "id": "canonical-goal-266a2b2a-9ee2-52f6-ae09-59343da9a60b",\n' +
+    '              "label": "Arbeitsweisen der Chemie anwenden",\n' +
+    '              "children": [\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "416dfd33-8b43-5c49-903c-9847b95e4208"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "13d4f336-ab16-54a7-9479-c920b458f385"\n' +
+    '                }\n' +
+    '              ]\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "structure",\n' +
+    '              "id": "canonical-goal-c7d4d9f7-d23f-44fc-bf22-3872e0f2b9a0",\n' +
+    '              "label": "Gefahrensymbole und Sicherheit beurteilen",\n' +
+    '              "children": [\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "9e656697-fc05-5aa9-9aca-871af2e89eb7"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "7be6f951-a614-52dc-94d3-2ce0d33765ff"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "ebaae4f5-cc13-5493-98b1-10e1abeb638f"\n' +
+    '                }\n' +
+    '              ]\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "fcc73fb5-7413-557f-aea3-b9692a66ee75"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "5a709938-e0f5-42b7-94f0-cfded08963a2"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "326d45bf-9f77-57d5-a054-93e76b034dd5"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "53fd1bfd-facb-54ae-b2dc-f667ed1414fc"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "e313c1ee-a617-54ed-adea-c183da1e03d8"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "42a84bca-d27e-581f-a43a-eee424f0504d"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "7a36f2a2-a97e-5a0b-a6e1-a80f72137640"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "5abc5961-6368-52bb-88b9-6a846c3c37a8"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "0bf26276-2780-506c-ac34-35dd44a29409"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "fd309753-4d48-5570-a4ec-09dfeb20ff9c"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "structure",\n' +
+    '              "id": "canonical-goal-08b44b8f-e407-5a1f-82dc-e70e598022cf",\n' +
+    '              "label": "Säure-Base-Eignung und Protonenübergänge erklären",\n' +
+    '              "children": [\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "597ac03c-d25f-5c34-a87c-52c059c87295"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "d8bdf486-7295-5393-b6f7-54f6e485c848"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "9751b6d8-cde3-527b-b37c-babb6cee79d2"\n' +
+    '                }\n' +
+    '              ]\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "88ee181f-b2d3-5639-bb5e-3d1a2915171b"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "5e2eb826-6e60-5273-91d6-c23f6dfa33b1"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "structure",\n' +
+    '              "id": "canonical-goal-10ce2814-8796-5633-9bed-f6990d039b91",\n' +
+    '              "label": "Teilchenmodell für Stoff- und Lösungsvorgänge nutzen",\n' +
+    '              "children": [\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "988888bb-1f88-55f9-9a44-f3f60469a297"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "5338b54c-68bc-5892-907c-e025351ffde6"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "78109f6d-c415-52c4-8314-07c0dd888a80"\n' +
+    '                }\n' +
+    '              ]\n' +
+    '            }\n' +
+    '          ]\n' +
+    '        },\n' +
+    '        {\n' +
+    '          "kind": "structure",\n' +
+    '          "id": "canonical-goal-2da7abbb-7ade-5acc-b7b1-1d98d7334352",\n' +
+    '          "label": "Chemische Erkenntnisgewinnung und Kommunikation",\n' +
+    '          "children": [\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "91238ba1-5c63-50c7-a4fd-9bbe492c6b61"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "49b13b33-34b7-5e4e-861c-b21082cb9922"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "f660c91a-fa14-5010-94cf-068d785c7fd2"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "277a3c20-6082-5a95-be08-c1e386efe79b"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "95dc0ee5-a0af-5682-af32-d66e36fbeb50"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "b6327e98-8ab9-5d7f-b826-4023bc1a56a7"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "542822de-cb96-56cf-a487-0fc3b5820f57"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "1df17884-96ae-57d7-9da9-dbebd082596f"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "b3c9c4b8-5575-5200-86cf-26c14ebcc3d8"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "02dc29ae-4046-556a-b048-d64a0feb8f16"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "7a05a1ce-45d3-571e-be51-afcd8dfd33ca"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "c0f1bf09-5a70-5006-b1e9-e91f786a63bf"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "1f354a60-be44-512b-8f8b-f67c8c456035"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "62bdb5b1-4f67-59d4-bf5c-da80ee03eeb2"\n' +
+    '            }\n' +
+    '          ]\n' +
+    '        },\n' +
+    '        {\n' +
+    '          "kind": "structure",\n' +
+    '          "id": "canonical-goal-a00d302b-7762-4b9d-a6d7-de0c58b35540",\n' +
+    '          "label": "Chemische Reaktionen und Energieumsatz (Sek I)",\n' +
+    '          "children": [\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "structure",\n' +
+    '              "id": "canonical-goal-bb707fda-504c-4699-a78c-d0a6c320658f",\n' +
+    '              "label": "Luft, Verbrennung und Löschmittel chemisch deuten",\n' +
+    '              "children": [\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "2dae4132-40a9-5ee3-ac0c-11c5d1302f36"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "fa203f3a-0e81-5bcb-a4c8-e4374b7f04a3"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "350a394f-e0d4-5e42-8e9a-39da9df33518"\n' +
+    '                }\n' +
+    '              ]\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "1286f2fe-89b7-4454-8e11-85b6abd6e278"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "1bdaf7f2-ff3b-455a-a7fb-95a44642762a"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "542d88e9-4cd3-5f90-bd20-b50ab030d72a"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "a530ee7d-1002-5f02-ae05-a9d46410ac78"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "structure",\n' +
+    '              "id": "canonical-goal-871eabde-6e19-59d3-bc7c-60977a9837db",\n' +
+    '              "label": "Brennstoffe und Energieträger bewerten",\n' +
+    '              "children": [\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "4dab7d52-5b89-52ab-a425-17a7707f44c8"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "0503c975-3934-5206-962e-b1c247de0c12"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "9198b4cf-e454-562f-83f0-b1b74e68765d"\n' +
+    '                }\n' +
+    '              ]\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "1f30d81c-8a26-5675-8c0a-1cb82e96d3ba"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "17fe22c4-1248-5f37-9d0c-52ee4571d09f"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "945d69d5-92a7-5195-8f78-4e56f8e7b633"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "8576b82'... 55432 more characters,
+  expected: '{\n' +
+    '  "viewFormatVersion": "1.0",\n' +
+    '  "viewId": "de-gym-chemistry-national-atlas",\n' +
+    '  "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",\n' +
+    '  "language": "de-DE",\n' +
+    '  "title": "Kanonische Gliederung Chemie – Gymnasium bundesweit",\n' +
+    '  "scope": {\n' +
+    '    "schoolForm": "Gymnasium",\n' +
+    '    "jurisdiction": "DE",\n' +
+    '    "stage": "CrossStage"\n' +
+    '  },\n' +
+    '  "rootNodes": [\n' +
+    '    {\n' +
+    '      "kind": "structure",\n' +
+    '      "id": "canonical-goal-442c31c5-c561-5c7a-90bb-2335d779175c",\n' +
+    '      "label": "Chemie",\n' +
+    '      "children": [\n' +
+    '        {\n' +
+    '          "kind": "structure",\n' +
+    '          "id": "canonical-goal-3588c15e-adbe-5b81-b3a7-10da20574e3d",\n' +
+    '          "label": "Chemische Grundlagen (Sek I)",\n' +
+    '          "children": [\n' +
+    '            {\n' +
+    '              "kind": "structure",\n' +
+    '              "id": "canonical-goal-266a2b2a-9ee2-52f6-ae09-59343da9a60b",\n' +
+    '              "label": "Arbeitsweisen der Chemie anwenden",\n' +
+    '              "children": [\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "416dfd33-8b43-5c49-903c-9847b95e4208"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "13d4f336-ab16-54a7-9479-c920b458f385"\n' +
+    '                }\n' +
+    '              ]\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "structure",\n' +
+    '              "id": "canonical-goal-c7d4d9f7-d23f-44fc-bf22-3872e0f2b9a0",\n' +
+    '              "label": "Gefahrensymbole und Sicherheit beurteilen",\n' +
+    '              "children": [\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "9e656697-fc05-5aa9-9aca-871af2e89eb7"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "7be6f951-a614-52dc-94d3-2ce0d33765ff"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "ebaae4f5-cc13-5493-98b1-10e1abeb638f"\n' +
+    '                }\n' +
+    '              ]\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "fcc73fb5-7413-557f-aea3-b9692a66ee75"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "5a709938-e0f5-42b7-94f0-cfded08963a2"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "326d45bf-9f77-57d5-a054-93e76b034dd5"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "53fd1bfd-facb-54ae-b2dc-f667ed1414fc"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "e313c1ee-a617-54ed-adea-c183da1e03d8"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "42a84bca-d27e-581f-a43a-eee424f0504d"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "7a36f2a2-a97e-5a0b-a6e1-a80f72137640"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "5abc5961-6368-52bb-88b9-6a846c3c37a8"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "0bf26276-2780-506c-ac34-35dd44a29409"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "fd309753-4d48-5570-a4ec-09dfeb20ff9c"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "structure",\n' +
+    '              "id": "canonical-goal-08b44b8f-e407-5a1f-82dc-e70e598022cf",\n' +
+    '              "label": "Säure-Base-Eignung und Protonenübergänge erklären",\n' +
+    '              "children": [\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "597ac03c-d25f-5c34-a87c-52c059c87295"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "d8bdf486-7295-5393-b6f7-54f6e485c848"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "9751b6d8-cde3-527b-b37c-babb6cee79d2"\n' +
+    '                }\n' +
+    '              ]\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "88ee181f-b2d3-5639-bb5e-3d1a2915171b"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "5e2eb826-6e60-5273-91d6-c23f6dfa33b1"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "structure",\n' +
+    '              "id": "canonical-goal-10ce2814-8796-5633-9bed-f6990d039b91",\n' +
+    '              "label": "Teilchenmodell für Stoff- und Lösungsvorgänge nutzen",\n' +
+    '              "children": [\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "988888bb-1f88-55f9-9a44-f3f60469a297"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "5338b54c-68bc-5892-907c-e025351ffde6"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "78109f6d-c415-52c4-8314-07c0dd888a80"\n' +
+    '                }\n' +
+    '              ]\n' +
+    '            }\n' +
+    '          ]\n' +
+    '        },\n' +
+    '        {\n' +
+    '          "kind": "structure",\n' +
+    '          "id": "canonical-goal-2da7abbb-7ade-5acc-b7b1-1d98d7334352",\n' +
+    '          "label": "Chemische Erkenntnisgewinnung und Kommunikation (Sek I)",\n' +
+    '          "children": [\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "91238ba1-5c63-50c7-a4fd-9bbe492c6b61"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "49b13b33-34b7-5e4e-861c-b21082cb9922"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "f660c91a-fa14-5010-94cf-068d785c7fd2"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "277a3c20-6082-5a95-be08-c1e386efe79b"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "95dc0ee5-a0af-5682-af32-d66e36fbeb50"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "b6327e98-8ab9-5d7f-b826-4023bc1a56a7"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "542822de-cb96-56cf-a487-0fc3b5820f57"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "1df17884-96ae-57d7-9da9-dbebd082596f"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "b3c9c4b8-5575-5200-86cf-26c14ebcc3d8"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "02dc29ae-4046-556a-b048-d64a0feb8f16"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "7a05a1ce-45d3-571e-be51-afcd8dfd33ca"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "c0f1bf09-5a70-5006-b1e9-e91f786a63bf"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "1f354a60-be44-512b-8f8b-f67c8c456035"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "62bdb5b1-4f67-59d4-bf5c-da80ee03eeb2"\n' +
+    '            }\n' +
+    '          ]\n' +
+    '        },\n' +
+    '        {\n' +
+    '          "kind": "structure",\n' +
+    '          "id": "canonical-goal-a00d302b-7762-4b9d-a6d7-de0c58b35540",\n' +
+    '          "label": "Chemische Reaktionen und Energieumsatz (Sek I)",\n' +
+    '          "children": [\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "structure",\n' +
+    '              "id": "canonical-goal-bb707fda-504c-4699-a78c-d0a6c320658f",\n' +
+    '              "label": "Luft, Verbrennung und Löschmittel chemisch deuten",\n' +
+    '              "children": [\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "2dae4132-40a9-5ee3-ac0c-11c5d1302f36"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "fa203f3a-0e81-5bcb-a4c8-e4374b7f04a3"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "350a394f-e0d4-5e42-8e9a-39da9df33518"\n' +
+    '                }\n' +
+    '              ]\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "1286f2fe-89b7-4454-8e11-85b6abd6e278"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "1bdaf7f2-ff3b-455a-a7fb-95a44642762a"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "542d88e9-4cd3-5f90-bd20-b50ab030d72a"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "a530ee7d-1002-5f02-ae05-a9d46410ac78"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "structure",\n' +
+    '              "id": "canonical-goal-871eabde-6e19-59d3-bc7c-60977a9837db",\n' +
+    '              "label": "Brennstoffe und Energieträger bewerten",\n' +
+    '              "children": [\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "4dab7d52-5b89-52ab-a425-17a7707f44c8"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "0503c975-3934-5206-962e-b1c247de0c12"\n' +
+    '                },\n' +
+    '                {\n' +
+    '                  "kind": "goalEntry",\n' +
+    '                  "goalId": "9198b4cf-e454-562f-83f0-b1b74e68765d"\n' +
+    '                }\n' +
+    '              ]\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "1f30d81c-8a26-5675-8c0a-1cb82e96d3ba"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "17fe22c4-1248-5f37-9d0c-52ee4571d09f"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": "945d69d5-92a7-5195-8f78-4e56f8e7b633"\n' +
+    '            },\n' +
+    '            {\n' +
+    '              "kind": "goalEntry",\n' +
+    '              "goalId": '... 55440 more characters,
+  operator: 'strictEqual'
+}
+
+Node.js v20.20.2
