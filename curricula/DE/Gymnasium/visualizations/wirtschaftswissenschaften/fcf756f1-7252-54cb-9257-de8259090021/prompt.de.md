@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Globale Lieferketten und Resilienz
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `fcf756f1-7252-54cb-9257-de8259090021`
+- Titel: Globale Lieferketten und Resilienz
+- Beschreibung: Die lernende Person kann Verletzlichkeiten globaler Lieferketten und Resilienzstrategien bewerten.
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `fcf756f1-7252-54cb-9257-de8259090021.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/fcf756f1-7252-54cb-9257-de8259090021/fcf756f1-7252-54cb-9257-de8259090021.png`
+
+## Prompt
+
+```text
+Edit the attached actual original PNG minimally. Preserve every person, map, route, risk card and right balancing scale. In the central Alternativen card ONLY replace the fixed counted hourglasses and differing coin stack quantities in all three rows by one equally sized open time-question icon and one equally sized cost-question icon per row. Each row has exactly the SAME neutral open symbols. No universal cost/time ranking among shipment, local production and buffer stock. Preserve ship/factory/stock icons. Friendly clear warm abstract comic illustration, preserve native wide 1672 x 941 or nearby 16:9 PNG, large mobile-readable main motifs at 360 and 680 pixels, no photorealism, no SVG, no tiny mandatory text. Preserve all already good content and composition.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

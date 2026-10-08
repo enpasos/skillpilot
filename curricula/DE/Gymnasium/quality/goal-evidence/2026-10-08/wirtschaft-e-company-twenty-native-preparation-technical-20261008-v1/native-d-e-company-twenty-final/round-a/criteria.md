@@ -1,0 +1,3 @@
+Q4 author candidate criteria
+
+Each whole German goal is retained; English translates its entire operator and scope. Each P-v2 profile must cover every named mechanism through distinct fictional application briefs, with explicit performance and variation conditions. Cases are expectations, not learner observations. Current source pages and primary readings inform authoring; independent DE/EN/P, semantic-atomicity/memory parity, final image and two description reviews remain separate and pending. No automatic mastery quota beyond the existing bounded schema is claimed. Existing source mappings and historical bytes remain intact. Human review/publication is not claimed.

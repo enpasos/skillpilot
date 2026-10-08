@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Erwartungsbildung und Politikglaubwürdigkeit
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `ff58f126-4b2c-5928-82ef-575b249b8efe`
+- Titel: Erwartungsbildung und Politikglaubwürdigkeit
+- Beschreibung: Die lernende Person kann adaptive vs. rationale Erwartungen unterscheiden und deren Rolle für Stabilisierungspolitik erklären.
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `ff58f126-4b2c-5928-82ef-575b249b8efe.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/ff58f126-4b2c-5928-82ef-575b249b8efe/ff58f126-4b2c-5928-82ef-575b249b8efe.png`
+
+## Prompt
+
+```text
+Create one original friendly abstract comic illustration for SkillPilot economics learning. PNG landscape about16:9, about1600x900 or close native generator size. Warm ivory ground, clear dark outlines, rounded shapes, restrained teal, coral and gold accents, ordinary welcoming people. Match the friendly existing school-learning illustration family. Main motif and important details clear at360px and680px width; generous margins and at most3 or4 visual groups. No photorealism, sterile technical blueprint, SVG substitute, official logos or dense legends. No tiny text, pseudo-writing or decorative glyphs. Decorative books and papers have no writing. Any actually used notebook/screen faces its reader correctly; conceptual floating icons are not backwards physical sheets. This motivates the competence without claiming proven learner achievement or current real-world outcome. Learning goal: Erwartungsbildung und Politikglaubwürdigkeit. Die lernende Person kann adaptive vs. rationale Erwartungen unterscheiden und deren Rolle für Stabilisierungspolitik erklären. Scene: Two people imagine future prices: left uses past price observations; right uses past data PLUS policy announcement and market information. Both dotted future clouds contain uncertainty question marks. Only “Aus Erfahrung”, “Mit Informationen”. Neither has perfect foresight; no physical backwards writing.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

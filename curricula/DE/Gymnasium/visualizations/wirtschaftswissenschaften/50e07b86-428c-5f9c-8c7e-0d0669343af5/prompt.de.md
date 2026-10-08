@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Marktgleichgewicht, Elastizitäten und Gesamtwohlfahrt analysieren
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `50e07b86-428c-5f9c-8c7e-0d0669343af5`
+- Titel: Marktgleichgewicht, Elastizitäten und Gesamtwohlfahrt analysieren
+- Beschreibung: Die lernende Person kann Preisbildung auf vollkommenen Märkten mithilfe von Preis-Mengen-Diagrammen, Preisfunktionen, Elastizitäten und Gesamtwohlfahrt analysieren.
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `50e07b86-428c-5f9c-8c7e-0d0669343af5.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/50e07b86-428c-5f9c-8c7e-0d0669343af5/50e07b86-428c-5f9c-8c7e-0d0669343af5.png`
+
+## Prompt
+
+```text
+Erstelle ein neues didaktisches Lernzielbild als PNG, möglichst etwa 1600×900 oder nahe native Generatorgröße, quer circa 16:9. Freundliche abstrakte klare Comic-Illustration mit warmem cremefarbenem Hintergrund, sanften blauen und orangefarbenen Akzenten, großem Hauptmotiv und wenigen aussagekräftigen Details, passend zu SkillPilot Wirtschaft. Keine Photorealistik, keine sterile technische Infografik, keine SVG-Optik. Bei 360px und 680px Bildbreite muss das Motiv verständlich bleiben; höchstens wenige ausdrücklich genannte große Kurzlabels, keine Fließtexte, keine Kleinschrift, keine dekorativen Pseudoformeln. Personen divers und respektvoll, Arbeitsflächen aus Sicht handelnder Personen korrekt orientieren. Das Bild illustriert eine prüfbare Kompetenz und behauptet keinen tatsächlichen empirischen Nachweis. Fachlicher Bezug: Marktgleichgewicht, Elastizitäten und Gesamtwohlfahrt analysieren. Die lernende Person kann Preisbildung auf vollkommenen Märkten mithilfe von Preis-Mengen-Diagrammen, Preisfunktionen, Elastizitäten und Gesamtwohlfahrt analysieren. Bildmotiv: Ein großes übersichtliches Preis-Mengen-Diagramm ist Mittelpunkt, keine kleinen Zahlen. Vertikale Achse deutlich „Preis“, horizontale Achse „Menge“, fallende blaue Nachfragekurve klar als „N“ und steigende warme Angebotskurve „A“; ein einziger richtig positionierter Schnittpunkt. Links oben vom Schnittpunkt unter Nachfrage und oberhalb des Gleichgewichtspreises eine kleine sanft blaue Konsumentenwohlfahrt-Fläche, rechts davon KEINE falsche Fläche; unter Preis und über Angebot eine sanft warme Produzentenwohlfahrt-Fläche jeweils nur bis Gleichgewichtsmenge. Freundliche kaufende und verkaufende Figur seitlich außerhalb des Diagramms, keine Perspektivumkehr. Ein kleiner Vergleichsteil mit zwei unterschiedlich steilen Nachfragekurven als Frage zur Reaktion, ohne berechnete Werte. Diagramm muss bei 360px klar bleiben, wenn zu voll den Vergleichsteil weglassen. Nicht fotorealistisch, Diagramm im comicartigen Motiv integriert.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "actualCheckedAt": "2026-10-08T07:49:18.904Z",
+  "role": "root_actual_current_source_consistency",
+  "nativeFunction": "evaluateCourseLevelMappingConsistency",
+  "before": {
+    "id": "CQR-004",
+    "status": "pass",
+    "summary": "Course-level mapping is clean for 6 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+    "metrics": {
+      "configuredMappingFiles": 2,
+      "sourceGoals": 58,
+      "sourceGoalsWithCourseLevel": 58,
+      "gkLkSourceGoals": 58,
+      "lkSourceGoals": 0,
+      "unspecifiedSourceGoals": 0,
+      "checkedMappingEdges": 6,
+      "defaultedUnspecifiedMappingEdges": 0,
+      "reviewedCourseLevelExceptions": 0,
+      "mismatches": 0,
+      "missingSourceGoals": 0,
+      "missingTargetGoals": 0,
+      "unmappedCourseLevelSourceGoals": 0
+    }
+  },
+  "after": {
+    "id": "CQR-004",
+    "status": "pass",
+    "summary": "Course-level mapping is clean for 6 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+    "metrics": {
+      "configuredMappingFiles": 2,
+      "sourceGoals": 58,
+      "sourceGoalsWithCourseLevel": 58,
+      "gkLkSourceGoals": 58,
+      "lkSourceGoals": 0,
+      "unspecifiedSourceGoals": 0,
+      "checkedMappingEdges": 6,
+      "defaultedUnspecifiedMappingEdges": 0,
+      "reviewedCourseLevelExceptions": 0,
+      "mismatches": 0,
+      "missingSourceGoals": 0,
+      "missingTargetGoals": 0,
+      "unmappedCourseLevelSourceGoals": 0
+    }
+  },
+  "oldAndCandidateMetricsExactlyEqual": true,
+  "originalSourceFilesUnmodified": true,
+  "currentPointersWereExplicitlyAdopted": true,
+  "historicalOriginalMappingBytesUsedForBeforeComparison": true,
+  "actualPageAccuracyEvidence": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q1-seventeen-independent-positive-parity-review-v1/independent-full-positive-translation-and-AM-review.receipt.json",
+  "limits": [
+    "Native check verifies the two explicit pointer candidates, source existence and GK/LK edge consistency; actual original-page accuracy is supported separately by the independent original-PDF reading.",
+    "This fresh check compares preserved exact old mappings with adopted current pointer successors; current integration is separately recorded."
+  ],
+  "activeWrites": 0,
+  "newStrictClosures": 0
+}

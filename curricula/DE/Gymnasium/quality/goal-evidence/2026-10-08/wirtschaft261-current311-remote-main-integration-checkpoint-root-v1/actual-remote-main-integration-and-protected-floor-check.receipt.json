@@ -1,0 +1,65 @@
+{
+  "status": "PASS",
+  "checkedAtUTC": "2026-10-08T16:09:56.548396+00:00",
+  "operation": "git merge --ff-only origin/main, then restore tracked-only local work and resolve one README content conflict",
+  "beforeHead": "0a463c66f2603ca72c3f288b5ddfc574447c0025",
+  "afterHead": "6e6224eaa5e621f39ee20318dcdd6d7404102302",
+  "remoteCommits": 8,
+  "centralCommand": [
+    "npx",
+    "--no-install",
+    "tsx",
+    "scripts/reportDeepUnderstandingRollout.ts",
+    "--config=curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+    "--mode=check",
+    "--format=json"
+  ],
+  "commandCwd": "app",
+  "centralExitCode": 0,
+  "centralCurrentEconomics": {
+    "strictComplete": 261,
+    "denominator": 311,
+    "newSubjectMatterClosuresInMerge": 0,
+    "restoredStrictClosuresInMerge": 0,
+    "lostStrictClosures": 0
+  },
+  "protectedFloors": {
+    "mathematik": {
+      "strictComplete": 807,
+      "denominator": 807
+    },
+    "physik": {
+      "strictComplete": 478,
+      "denominator": 478
+    }
+  },
+  "foreignCurrentProgressPreserved": {
+    "chemie": {
+      "strictComplete": 177,
+      "denominator": 378
+    },
+    "biologie": {
+      "strictComplete": 244,
+      "denominator": 392
+    }
+  },
+  "allFiveSubjectsAllSixCentralChecksPass": true,
+  "registryForeignFourSubjectObjectsRemoteExact": true,
+  "registryEconomicsObjectLocalExact": true,
+  "historicalArtifactsModified": false,
+  "preexistingUserGeminiDocumentPreservedByteExact": true,
+  "localCommitPerformed": false,
+  "pushPerformed": false,
+  "publicationPerformed": false,
+  "humanReviewClaimed": false,
+  "actualFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft261-current311-remote-main-integration-checkpoint-root-v1/full-central-after-remote-main.actual.json",
+      "sha256": "sha256:6444e0f4a68eadcfed233a77b1941413a3b29848807537da2a2c216d08ba3ca1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft261-current311-remote-main-integration-checkpoint-root-v1/actual-post-merge-whole-byte-and-structural-preservation-check.json",
+      "sha256": "sha256:c102462d9462cb7ee0d73ceb0077bfdf49cb54968487937cf323f550219f5d63"
+    }
+  ]
+}

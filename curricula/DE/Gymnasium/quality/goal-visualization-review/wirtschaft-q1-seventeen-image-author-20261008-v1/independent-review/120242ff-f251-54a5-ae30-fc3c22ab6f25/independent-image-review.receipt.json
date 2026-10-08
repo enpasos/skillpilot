@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-08",
+  "reviewedAt": "2026-10-08T07:22:10.499283+00:00",
+  "goalId": "120242ff-f251-54a5-ae30-fc3c22ab6f25",
+  "goalTitle": "Wirtschaftspolitische Denkschulen",
+  "goalDescription": "Die lernende Person kann klassische Denkschulen (z.B. Chicago, Keynes, Ordo) vergleichen.",
+  "decision": "REJECT",
+  "machineApproval": "Rejected AI",
+  "independentReviewer": "OpenAI Codex economics_visual_memory_audit",
+  "reviewerModel": "Codex session; exact serving model identifier not exposed",
+  "imageAuthorIsReviewer": false,
+  "humanApproved": false,
+  "assetPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q1-seventeen-image-author-20261008-v1/120242ff-f251-54a5-ae30-fc3c22ab6f25/120242ff-f251-54a5-ae30-fc3c22ab6f25.png",
+  "assetSha256": "sha256:5eed811e8151c735487263c8d3863900aa94da937420e075cd0560d1db4e60f8",
+  "actualFormat": "PNG",
+  "actualDimensions": {
+    "width": 1672,
+    "height": 941
+  },
+  "aspectRatioDecision": "Close native 16:9 landscape. Actual subject and mobile views support this format; no mechanical normalization.",
+  "provider": "OpenAI Codex image_gen",
+  "generationTool": "image_gen.imagegen",
+  "generationModel": "Image model version not exposed",
+  "generationRecordPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q1-seventeen-image-author-20261008-v1/120242ff-f251-54a5-ae30-fc3c22ab6f25/generation.actual.json",
+  "generationRecordSha256": "sha256:44c93e1ae0c9c24d07d18d475a0429dc62391c6713eabe5d6f7c7239d7ca7fea",
+  "generationIsApproval": false,
+  "actualInspection": {
+    "nativeViewed": true,
+    "width360Viewed": true,
+    "width680Viewed": true,
+    "fachlichePruefung": "Drei Denkschul-Karten zeigen freiwilligen Tausch, Nachfragefrage und Wettbewerbsordnung als vereinfachte Einstiegsmotive. Die Vergleichsperson sitzt jedoch hinter den nach außen dargestellten Fronten. Zusätzlich zeigt der Pfeil Gemeinsamkeiten im Venn-Vergleich tatsächlich in den linken, nicht überlappenden Kreisbereich und stellt damit die gemeinsamen Elemente falsch dar.",
+    "phone": "Chicago, Keynes und Ordo sowie die drei Hauptmotive bleiben bei 360 Pixeln sichtbar. Das kleine Venn-Detail ist als Vergleichshilfe angelegt, aber fachlich falsch markiert.",
+    "desktop": "Bei 680 Pixeln ist deutlich, dass der Gemeinsamkeiten-Pfeil links außerhalb der Schnittmenge endet.",
+    "actorPerspective": "Aufgestellte Denkschul-Karten und das Vergleichsblatt zeigen ihre Fronten zum Publikum; die dahinter sitzende vergleichende Person könnte diese Darstellung nicht lesen.",
+    "style": "Freundliches, klares Comic-Raster mit kräftigen einfachen Hauptmotiven und passender ruhiger Farbgebung.",
+    "mandatorySmallPrint": false
+  },
+  "blockingFindings": [
+    {
+      "severity": "blocking",
+      "kind": "actor-perspective",
+      "description": "Die Person sitzt hinter den ihr abgewandten Denkschul- und Vergleichsfronten.",
+      "targetedCorrection": "Karten und Vergleich mit richtiger Leseperspektive vor die Person setzen, bevorzugt echte Über-Schulter-Sicht."
+    },
+    {
+      "severity": "blocking",
+      "kind": "incorrect-diagram-binding",
+      "description": "Gemeinsamkeiten-Pfeil endet im linken Kreisbereich außerhalb der Überlappung.",
+      "targetedCorrection": "Gemeinsame Schnittmenge eindeutig richtig markieren oder den zusätzlichen Venn-Unterteil entfernen. Keine bloße Label-/Hashänderung als Prüfung."
+    }
+  ],
+  "interpretationLimits": [
+    "Die drei Beispielmotive erschöpfen keine Denkschule. Die Sportbahn in Ordo ist eine abstrakte Regel-/Wettbewerbsmetapher, keine wirtschaftliche Erfolgsrangfolge."
+  ],
+  "goalSemanticSource": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+  "goalTextStatus": "Actual current canonical German title and description inspected; English authored successor and D/P gates not attested by this image review.",
+  "derivatives": [
+    {
+      "width": 360,
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q1-seventeen-image-author-20261008-v1/independent-review/120242ff-f251-54a5-ae30-fc3c22ab6f25/120242ff-f251-54a5-ae30-fc3c22ab6f25.width-360.png",
+      "sha256": "sha256:ecd0a6fe2af6e90008b499341b7954eca8d80a150ddd6cf36df467538fa05f33"
+    },
+    {
+      "width": 680,
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q1-seventeen-image-author-20261008-v1/independent-review/120242ff-f251-54a5-ae30-fc3c22ab6f25/120242ff-f251-54a5-ae30-fc3c22ab6f25.width-680.png",
+      "sha256": "sha256:e09420ce4b6bb59291759e34819153db64d8c7e491845163a75f760b2ee76aec"
+    }
+  ],
+  "notClaimed": [
+    "live QA adoption",
+    "description-review closure",
+    "positive-evidence closure",
+    "central M7 growth",
+    "human release approval",
+    "classroom acceptance"
+  ]
+}

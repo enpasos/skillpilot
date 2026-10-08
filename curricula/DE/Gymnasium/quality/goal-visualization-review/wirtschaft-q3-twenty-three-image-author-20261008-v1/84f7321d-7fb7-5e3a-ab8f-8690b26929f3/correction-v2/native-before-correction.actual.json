@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "command": [
+    "node",
+    "scripts/prepare_goal_visualization.mjs",
+    "84f7321d-7fb7-5e3a-ab8f-8690b26929f3",
+    "--landscape",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "--subject",
+    "wirtschaftswissenschaften",
+    "--lang",
+    "de",
+    "--provider",
+    "OpenAI Codex image_gen",
+    "--review-status",
+    "pilot"
+  ],
+  "startedAt": "2026-10-08T09:02:39.069585+00:00",
+  "completedAt": "2026-10-08T09:02:39.146581+00:00",
+  "exitCode": 0,
+  "copies": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/84f7321d-7fb7-5e3a-ab8f-8690b26929f3/correction-v2/metadata.json",
+      "sha256": "sha256:148c305b06d6af2e95e5ab7cb03b5c129eddf384309c068cab732101b622fc7d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/84f7321d-7fb7-5e3a-ab8f-8690b26929f3/correction-v2/nano-banana-prompt.de.md",
+      "sha256": "sha256:eb22864a7a3b3b6e5d16663eaf7854276e56945dd7187495066894310171afa4"
+    }
+  ],
+  "actualOriginalSeenByRoot": true,
+  "actualIndependentFinding": "Preserve woman, central-bank concept panels, real currency exchange, interest dial and context, style and scene. Correct ONLY physical notebook orientation: the woman behind the open notebook must see its notes upright, while the external viewer sees them upside down. Prefer a few abstract note marks with no small readable text. Remove old viewer-facing checklist and forecast as paper content; if needed use simple abstract marks oriented to the woman. No other conceptual scene changes.",
+  "newImageIsApproval": false
+}

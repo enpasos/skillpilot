@@ -1,0 +1,92 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "wirtschaft-by-eleven-inert-future311-final-v1-20261008-first-pass-a.actual-codex-session",
+  "campaignId": "wirtschaft-by-eleven-inert-future311-final-v1-20261008-a",
+  "roundId": "wirtschaft-by-eleven-inert-future311-final-v1-20261008-first-pass-a",
+  "bundleFingerprint": "sha256:25b49553bc38191e9c93ec9ef7aa7de8d4392aa9345886c9e9147638d71275f5",
+  "bookDigest": "sha256:fca43daa4c8e2d6f2cc224da191c902604f149d16328982b1b402978a723c6e8",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:c5c503c459beb38fbc3b56724fd1382eb8f74332b9ceeb9e252e1f7b57f2992f",
+  "independenceGroupId": "wirtschaft-by-eleven-inert-future311-final-v1-20261008-independent-a",
+  "batchId": "wirtschaft-by-eleven-inert-future311-final-v1-20261008-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:98878e7bad2f8cdb5e7610c5ba5836addca9d13be9824949fd76ecd434143f89",
+  "provider": "OpenAI",
+  "model": "Codex session; exact serving model identifier not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "independent-current-description-review-positive-understanding-v2",
+  "generationParametersFingerprint": "sha256:66de9c61cc35543cce1b488b9704f72f5b1324d23a6f13a728bfb708d1fec73b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "8c3ebc36-22e6-5c9d-a921-e8b3e679261c",
+    "caf3ceaa-b376-519e-bc36-c3f819082402",
+    "83779981-2279-5f96-8ea3-2293e801973f",
+    "1153a5a3-89b7-567b-8b8f-0128a91cde41",
+    "c3512617-8522-5751-8660-5241a6379790",
+    "b08b7a2e-e281-5dc8-b79d-5d44032fb6cc",
+    "273809d9-bc31-5c1b-8a58-149dd61d2ba0",
+    "0e397f08-e472-50f4-a05b-81d76dd6d3fa",
+    "5394d443-e484-5ddd-bded-03d60ab5b71f",
+    "00a4e086-ed5b-5a3f-bcd9-a862d83c60ab",
+    "2d933a56-3e5f-5f0c-a33d-d314d18a6d26"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:8eb9b0989f70ceb631975626c65f536a7925239d266a75967f64e81e1fe69c83"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:4431f85fdcd1e4947fe44f7e81e577e255741c8785b243204ba396e4a697b36f"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:6f42dd1a55cb0c7438eca9419062f266b6669ed70718b984874da474e588ef77"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:8e683717a06022c0247b339723bd8e145fb483805a6575e55a7288bc2cb6053d"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:c6e34763c7e0ffb77f92148e69ea62cedfbb3efe75caa192bb1fdf4fcacc0d12"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:cba78989ba2513d567fd75d93aaa1c391d0426fc03001939ead7f8eb4c4330cb"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:e68576b58544d0d40203f299f7440248f1d52d1e3b89b5e4426e755e27df3615"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:765681a9e021f64f0004b023a07ff59ccff55d998d5ae6dbebb156f93ffa8d72"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:c5c503c459beb38fbc3b56724fd1382eb8f74332b9ceeb9e252e1f7b57f2992f"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:98878e7bad2f8cdb5e7610c5ba5836addca9d13be9824949fd76ecd434143f89"
+    }
+  ],
+  "startedAt": "2026-10-08T11:45:39.409240+00:00",
+  "completedAt": "2026-10-08T11:52:17.947645+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:d1d656dd12c3ba511a5adaf02e5dac778f9fc1760ee78ebeaa551e78bf8e7883",
+  "toolchainVersion": "codex-interactive-independent-description-review-v1"
+}

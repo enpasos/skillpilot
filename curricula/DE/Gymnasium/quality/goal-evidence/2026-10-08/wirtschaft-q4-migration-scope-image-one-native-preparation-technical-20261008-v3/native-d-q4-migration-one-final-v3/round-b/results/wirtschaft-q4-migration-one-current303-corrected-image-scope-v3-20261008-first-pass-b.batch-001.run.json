@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "wirtschaft-q4-migration-one-current303-corrected-image-scope-v3-20261008-first-pass-b.batch-001.economics-layer-a-run-v1",
+  "campaignId": "wirtschaft-q4-migration-one-current303-corrected-image-scope-v3-20261008-b",
+  "roundId": "wirtschaft-q4-migration-one-current303-corrected-image-scope-v3-20261008-first-pass-b",
+  "batchId": "wirtschaft-q4-migration-one-current303-corrected-image-scope-v3-20261008-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:5c36ac05c1488f16e2c939d038d5c1cdb20ee46ef83c62877b0b1acea1745bf6",
+  "bundleFingerprint": "sha256:8ef00caf5bab7c827db4f7295f1d02669eb002acfea1339d7192f6591d7943bd",
+  "bookDigest": "sha256:9bbde9cac4874bfd83af3e24d34bd6567e3a9e2abee5feb69b7bfb4e0da27543",
+  "provider": "OpenAI",
+  "model": "Codex session; exact model identifier not disclosed",
+  "role": "sequencing_representation_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:cd965f38a3766b3f3f623a34a59b803b913dd1fd5d4de32ebec1fd139e709ab0",
+  "generationParametersFingerprint": "sha256:ade498b2310e059eb00c4e6e43716c8843fc361447f27f7c9939e63e2303ade6",
+  "independenceGroupId": "wirtschaft-q4-migration-one-current303-corrected-image-scope-v3-20261008-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "6de44afa-7f91-5fa4-9292-ec06e86e97a4"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:968f0b58644ba71390a9f088e87031e02b35966f855a30f2dacf53ecf69a5ba2"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:f83db134da5e7c08a2e0083982f0c2fd1b7ec86d83c6e5476b0182a50bad76c3"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:de6b1118474cade3da7dea1634fbdf2b8cc00c51e1bf2e268776cadebf8bc5ae"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:5c36ac05c1488f16e2c939d038d5c1cdb20ee46ef83c62877b0b1acea1745bf6"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:cd965f38a3766b3f3f623a34a59b803b913dd1fd5d4de32ebec1fd139e709ab0"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-10-08T11:30:49.494754+00:00",
+  "completedAt": "2026-10-08T11:32:15.813634+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:5095047f94c5600848d19d4e147b6446e617c6d4c73b00d0c76501cc708a4ca4",
+  "toolchainVersion": "codex-interactive-review-20261008-v1"
+}

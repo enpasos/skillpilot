@@ -1,0 +1,70 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "wirtschaftswissenschaften-b001-e1-social-change-current17-author-20261008-v1",
+  "subject": "wirtschaftswissenschaften",
+  "subjectLabel": "Wirtschaftswissenschaften",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-description-review/wirtschaftswissenschaften/2026-10-08/m7-bootstrap-v1/batch-001-e1-social-change-current17.config.json",
+  "configDigest": "sha256:be2079b698aa3b42a4757ee467a9ef2e7b9f16411ebddff00e3dc5eef3909a00",
+  "goalIds": [
+    "8768186a-a52c-50b3-a1d7-a56084aa31e0",
+    "77edbcf9-d14d-547e-8a5f-43863a3e300b",
+    "d7332142-0deb-518c-ab51-0e16cb6f0d1f",
+    "43a90b29-abf8-5430-99fa-b92f3768516b",
+    "7aef0e2f-ca08-5276-a432-906cdb3313b4",
+    "7a3f0ae8-370e-5fc3-afce-09e1f7f35508",
+    "5ccb466f-25c7-5802-bb0a-763ca51cdf62",
+    "c4c5bae8-575a-5a70-ba30-bada55f93abb",
+    "af772e72-57c9-5aab-a500-7fe3ec692abc",
+    "3bf3a322-c8f6-58ad-a1dc-774b05b15a5a",
+    "ae91ad7d-82cb-58e2-bf01-5ef6d9fe445b",
+    "643cb9b3-5b7c-59f6-8383-1af413426c88",
+    "f79decb1-4d32-5d99-b998-e87e34d16527",
+    "21dd1fce-730a-5470-bcc3-76195941ee83",
+    "0eaf70cd-b7b9-582b-8e77-7002b414d494",
+    "3ac589b5-f8a5-5192-b81d-ed94cde4177a",
+    "bf851227-f345-5a6e-9c6a-392d2edd1e91"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 303,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-description-review/wirtschaftswissenschaften/2026-10-08/m7-bootstrap-v1/review-book-full.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "baseBookDigest": "sha256:695e46a25804dd88928556b590c42fbd32b3e7f1c7cf4da529dd708215749696"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:81a4d021d7683070c465f35f876c6d0f795782264b6be255d7a938fb3c1c3ceb",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:d9b3d2b02289620fd1ab602191367711a26020eeb1a71d8d3b3258c1595d39b3",
+    "reviewInputFingerprint": "sha256:969f8fc84a6c2d8a8dbf05ba578f73411dfac53634ec097e42546eb87cba2769",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "wirtschaftswissenschaften-b001-e1-social-change-current17-author-20261008-v1-a",
+        "campaignDigest": "sha256:10899ac733be0ac7b60def7332002a2d9e94758f0aaad433a3176da699b73877",
+        "roundId": "wirtschaftswissenschaften-b001-e1-social-change-current17-author-20261008-v1-first-pass-a",
+        "independenceGroupId": "wirtschaftswissenschaften-b001-e1-social-change-current17-author-20261008-v1-independent-a",
+        "batchId": "wirtschaftswissenschaften-b001-e1-social-change-current17-author-20261008-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:c7c801cc85b592dcf879e38fb91787ba28d5bb9622005b9728b1d31ae8262b60"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "wirtschaftswissenschaften-b001-e1-social-change-current17-author-20261008-v1-b",
+        "campaignDigest": "sha256:e1018276a6f752a9a5db84ad8eadd17064c9ce7b898bf4017740f7006e0016cc",
+        "roundId": "wirtschaftswissenschaften-b001-e1-social-change-current17-author-20261008-v1-first-pass-b",
+        "independenceGroupId": "wirtschaftswissenschaften-b001-e1-social-change-current17-author-20261008-v1-independent-b",
+        "batchId": "wirtschaftswissenschaften-b001-e1-social-change-current17-author-20261008-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:91679826e09b9eb9de996c01692fc688a76eacea27d0246347e4adb8727655a2"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

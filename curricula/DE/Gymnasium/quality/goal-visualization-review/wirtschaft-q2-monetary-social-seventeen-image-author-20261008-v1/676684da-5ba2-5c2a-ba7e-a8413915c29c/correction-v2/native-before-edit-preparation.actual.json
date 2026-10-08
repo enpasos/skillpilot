@@ -1,0 +1,36 @@
+{
+  "role": "actual_native_preparation_before_referenced_image_edit",
+  "goalId": "676684da-5ba2-5c2a-ba7e-a8413915c29c",
+  "command": [
+    "node",
+    "scripts/prepare_goal_visualization.mjs",
+    "676684da-5ba2-5c2a-ba7e-a8413915c29c",
+    "--landscape",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "--subject",
+    "wirtschaftswissenschaften",
+    "--lang",
+    "de",
+    "--provider",
+    "OpenAI Codex image_gen",
+    "--review-status",
+    "pilot"
+  ],
+  "startedAt": "2026-10-08T08:15:54.173248+00:00",
+  "completedAt": "2026-10-08T08:15:54.278338+00:00",
+  "exitCode": 0,
+  "stdout": "Prepared prompt package for: Geldschöpfung und Zinsmechanismus\nSkillPilot ID: 676684da-5ba2-5c2a-ba7e-a8413915c29c\nPrompt: tmp/goal-visualizations/676684da-5ba2-5c2a-ba7e-a8413915c29c/nano-banana-prompt.de.md\nMetadata: tmp/goal-visualizations/676684da-5ba2-5c2a-ba7e-a8413915c29c/metadata.json\n\nAfter generating and downloading the image, import it with:\nnpm --prefix app run visualization:import -- 676684da-5ba2-5c2a-ba7e-a8413915c29c \"<downloaded-image-path>\"\n",
+  "stderr": "",
+  "priorScratchBytesPreserved": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/prior-native-preparation-bytes",
+  "nativeCopiedFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/native-preparation/metadata.json",
+      "sha256": "sha256:0d5955273fadeda5276b5eaddccbe38c1b511618aec4dc929d8598cb1f0918ae"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/correction-v2/native-preparation/nano-banana-prompt.de.md",
+      "sha256": "sha256:c7072ef20c2a51dc20ed7a1e2733ffd0afb0ab4b243ca66471147a61c387b562"
+    }
+  ],
+  "generatedOrApprovedByPreparation": false
+}

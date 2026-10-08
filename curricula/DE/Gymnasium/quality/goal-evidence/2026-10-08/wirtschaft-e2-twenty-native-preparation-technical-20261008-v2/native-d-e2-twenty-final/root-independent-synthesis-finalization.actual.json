@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "executedAt": "2026-10-08T06:46:18.841022+00:00",
+  "actualInspection": "All 40 current goal-specific rationales, all proposed changes and genuine bilingual profiles; source decisions retained.",
+  "commands": [
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-native-preparation-technical-20261008-v2/native-d-e2-twenty.final.batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-native-preparation-technical-20261008-v2/native-d-e2-twenty-final/root-finalization-step-1.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-native-preparation-technical-20261008-v2/native-d-e2-twenty-final/root-finalization-step-1.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-native-preparation-technical-20261008-v2/native-d-e2-twenty.final.batch.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-native-preparation-technical-20261008-v2/native-d-e2-twenty-final/synthesis-authoring.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-native-preparation-technical-20261008-v2/native-d-e2-twenty-final/root-finalization-step-2.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-native-preparation-technical-20261008-v2/native-d-e2-twenty-final/root-finalization-step-2.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-native-preparation-technical-20261008-v2/native-d-e2-twenty.final.batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-native-preparation-technical-20261008-v2/native-d-e2-twenty-final/synthesis-decisions.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-native-preparation-technical-20261008-v2/native-d-e2-twenty-final/root-finalization-step-3.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-native-preparation-technical-20261008-v2/native-d-e2-twenty-final/root-finalization-step-3.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-native-preparation-technical-20261008-v2/native-d-e2-twenty.final.batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-native-preparation-technical-20261008-v2/native-d-e2-twenty-final/root-finalization-step-4.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-native-preparation-technical-20261008-v2/native-d-e2-twenty-final/root-finalization-step-4.stderr.txt"
+    }
+  ],
+  "strictCurrentDescriptions": 19,
+  "explicitlyDeferred": "eef95305-c811-50a4-9157-bfd4e5780c24",
+  "frozenInputsUnchanged": true,
+  "humanApprovalClaimed": false
+}

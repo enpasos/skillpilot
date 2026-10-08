@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "role": "technical_exact_reviewed_own_record_rebase",
+  "actualCheckedAt": "2026-10-08T09:39:09.693318+00:00",
+  "physicalIsolate": "/tmp/skillpilot-wirtschaft-q2-labour-twelve-native-qnj7b9dg",
+  "currentStrictBaseline": 113,
+  "ordinaryDecisions": 303,
+  "selectedOwnReviewedRecordsByteExactPerGate": 12,
+  "otherActiveRecordsByteExactPerGate": 291,
+  "cardsByteExact": 51,
+  "visibilityChecks": 98,
+  "gateRecordRetention": {
+    "atomicity": {
+      "previousActiveConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-reviewed-translation-bindings-v3/atomicity.config.json",
+      "previousActiveRecordsSha256": "sha256:4ceb937d15a267f333c552e05d8b944ee1612953aa7a98eaae832cc15eaeae08",
+      "selectedPriorReviewedSuccessorPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-reviewed-current-source-bindings-v1/atomicity.review.jsonl",
+      "selectedOwnRecordLinesByteExact": 12,
+      "otherActiveRecordLinesByteExact": 291,
+      "candidateRecordsSha256": "sha256:dd80e4c3b92fed8618d0362324df985ce1e90b153352aed8459c846cb104f312"
+    },
+    "memory": {
+      "previousActiveConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-reviewed-translation-bindings-v3/memory.config.json",
+      "previousActiveRecordsSha256": "sha256:cc3e78e359919190bd56ea77431674aab96c6256afa6c87325f18ff8edc23251",
+      "selectedPriorReviewedSuccessorPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-reviewed-current-source-bindings-v1/memory.review.jsonl",
+      "selectedOwnRecordLinesByteExact": 12,
+      "otherActiveRecordLinesByteExact": 291,
+      "candidateRecordsSha256": "sha256:d8d398e7634d7d3d011b99e16574253094fdf6106c975b356c377c6d3ed4112d"
+    }
+  },
+  "actualInputs": [
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_accounting_business_finance.de.json",
+      "sha256": "sha256:b224cae9572d76b364adf3f6e2824e99d14cea344dda716c7c0efbd7cebab679",
+      "role": "actual_deck"
+    },
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_business_law.de.json",
+      "sha256": "sha256:8a379951c08148a4f6633e967c656c736897e073e6089b06d4293fe9961a7a27",
+      "role": "actual_deck"
+    },
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_international_development.de.json",
+      "sha256": "sha256:798c0b83234f9fbf687e8398d4512f8e8e101883c121fd8ccf61f4d779491f53",
+      "role": "actual_deck"
+    },
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_macro_money_policy.de.json",
+      "sha256": "sha256:d85fc8045f7f5fea017f21e7d347ca63a8e7f5e39635ceccab77ed75a3dbe4ec",
+      "role": "actual_deck"
+    },
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_market_order_policy.de.json",
+      "sha256": "sha256:1d70fc4f8b626b8ad6769b28a08bbd0a85ee44f9eaf79974c28b7978b09fb1a8",
+      "role": "actual_deck"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json",
+      "sha256": "sha256:402bd1d6e80504c0e481f8e0ff49fb995e1f730fbb8a8476b5be693517cb51cc",
+      "role": "configured_view"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-lk.view.json",
+      "sha256": "sha256:8ed46d64771e1b61849fd879a3570bda4c1c7c7c7f42dbeebbcd8ca15e437cd2",
+      "role": "configured_view"
+    }
+  ],
+  "commands": [
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-reviewed-current-source-bindings-v2/atomicity.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/tmp/skillpilot-wirtschaft-q2-labour-twelve-native-qnj7b9dg",
+      "actualExitCode": 0
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-reviewed-current-source-bindings-v2/memory.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/tmp/skillpilot-wirtschaft-q2-labour-twelve-native-qnj7b9dg",
+      "actualExitCode": 0
+    }
+  ],
+  "frozenNativeFilesExactlyPreserved": 28,
+  "wholeCurrent113ContextParityReceipt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-reviewed-current-source-bindings-v2/current113-native-wholepage-parity.actual.json",
+  "previousOwnIndependentReviewBindingReceipt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-reviewed-current-source-bindings-v1/native-full-successor-check.actual.json",
+  "independentSubstantiveReviewClaim": false,
+  "fullAMNewReviewClaim": false,
+  "humanApprovalClaimed": false,
+  "activeWrites": 0,
+  "newStrictClosures": 0
+}

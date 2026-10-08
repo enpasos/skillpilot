@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-08",
+  "goalId": "ee36cbaf-6a9d-5263-946f-7bb376aa0dfc",
+  "goalTitle": "Nachhaltigkeitsdiskurse vergleichen",
+  "goalDescription": "Die lernende Person kann unterschiedliche Konzepte von Nachhaltigkeit (sozial/ökologisch/ökonomisch) einordnen.",
+  "decision": "REJECT",
+  "machineApproval": "Rejected AI",
+  "independentReviewer": "OpenAI Codex economics_visual_memory_audit",
+  "reviewerModel": "Codex; exact serving model identifier not exposed",
+  "imageAuthorIsReviewer": false,
+  "humanApproved": false,
+  "assetPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-e2-fourteen-image-author-20261008-v1/ee36cbaf-6a9d-5263-946f-7bb376aa0dfc/ee36cbaf-6a9d-5263-946f-7bb376aa0dfc.png",
+  "assetSha256": "sha256:c450637211f7de79d15ba2b6d2aad12b07c456588e0d85a1b441f7eddc5d541c",
+  "actualFormat": "PNG",
+  "actualDimensions": {
+    "width": 1672,
+    "height": 941
+  },
+  "aspectRatioDecision": "Close native16:9 landscape; no exception needed. Format not mechanically normalized.",
+  "provider": "OpenAI Codex image_gen",
+  "generationTool": "image_gen.imagegen",
+  "generationModel": "Image model version not exposed",
+  "generationRecordPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-e2-fourteen-image-author-20261008-v1/ee36cbaf-6a9d-5263-946f-7bb376aa0dfc/generation.actual.json",
+  "generationRecordSha256": "sha256:d8a8ae2e8808af9f3a620dd5598dc5fa4191cb126b90dc029e1ff6b64df1bed7",
+  "generationIsApproval": false,
+  "actualInspection": {
+    "nativeViewed": true,
+    "width360Viewed": true,
+    "width680Viewed": true,
+    "fachlichePruefung": "Three equally visible environmental, social and economic dimensions are joined around a repair-workshop question. The dimensions are conceptually appropriate and contain no quantitative shares or guaranteed win-win; however, the central actor's labelled planning notebook is facing the audience rather than that actor.",
+    "phone": "At 360 px the three dimension labels, central thinker and repair scenes remain recognisable without the smaller supporting texts.",
+    "desktop": "At 680 px all three dimensions and their repair examples are clear; the notebook text remains visibly audience-facing.",
+    "actorPerspective": "The planning notebook in front of the person has upright audience-facing text. From the seated person's position behind it, this text is upside down, contrary to the explicit actor-perspective requirement.",
+    "style": "Friendly clear comic raster, coherent broad colors and approachable people without photorealism or sterile technical restyling.",
+    "mandatorySmallPrint": false
+  },
+  "blockingFindings": [
+    {
+      "severity": "blocking",
+      "kind": "actor-perspective",
+      "description": "Central planning notebook text is upright for audience but upside down for its seated owner.",
+      "targetedCorrection": "Rotate only the notebook's writing 180 degrees to face the actor, or replace it with an appropriate simple planning symbol without mandatory text; keep dimensions, composition and style."
+    }
+  ],
+  "interpretationLimits": [
+    "The repair workshop is an example relating the dimensions, not a claim every dimension always improves together."
+  ],
+  "goalSemanticSource": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+  "goalTextStatus": "Actual current canonical German title/description inspected; no D/P gate attested by this image review.",
+  "derivatives": [
+    {
+      "width": 360,
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-e2-fourteen-image-author-20261008-v1/independent-review/ee36cbaf-6a9d-5263-946f-7bb376aa0dfc/ee36cbaf-6a9d-5263-946f-7bb376aa0dfc.width-360.png",
+      "sha256": "sha256:44a22a8d2ca4c93d3b3b2d5edc931b72876f95c2809e836b36b0596f08d58a67"
+    },
+    {
+      "width": 680,
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-e2-fourteen-image-author-20261008-v1/independent-review/ee36cbaf-6a9d-5263-946f-7bb376aa0dfc/ee36cbaf-6a9d-5263-946f-7bb376aa0dfc.width-680.png",
+      "sha256": "sha256:f371c47396382864a380cbec9c00e631d56b9203912488115eab7aa83422d0c5"
+    }
+  ],
+  "notClaimed": [
+    "live QA adoption",
+    "description-review closure",
+    "positive-evidence closure",
+    "central M7 growth",
+    "human release approval",
+    "classroom acceptance"
+  ]
+}

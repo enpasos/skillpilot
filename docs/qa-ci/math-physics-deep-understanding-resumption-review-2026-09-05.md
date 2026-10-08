@@ -1,9 +1,23 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
-## Aktuelle Fortsetzung: ausschließlich Chemie und Biologie
+## Aktuelle Zielverfolgung: ausschließlich Wirtschaftswissenschaften
 
-Der [geprüfte Commit-Zwischenstand vom 8. Oktober](chemie-biologie-m7-chemie177-biologie244-commit-checkpoint-2026-10-08.md)
-setzt den Chemie-/Biologie-Auftrag fort: aktuell 177/378 Chemie und 244/392
+Der [Wirtschaftswissenschaften-M7-Fortsetzungsstand vom 8. Oktober](wirtschaft-m7-resumed-2026-10-08.md)
+dokumentiert den aktuellen Auftrag und die Paketzuständigkeiten. Der aktuelle
+Nenner beträgt 311 curricularAtomic-Ziele; davon sind 261 mit gültigen
+D/P/A/M/V-Nachweisen streng abgeschlossen.
+Mathematik 807/807 und Physik 478/478 bleiben geschützte M7-Untergrenzen.
+Menschliche Prüfung, Erprobung und Veröffentlichung bleiben getrennt.
+
+Der [Wirtschafts-Integrations- und Lernzielbuchcheckpoint](wirtschaft-m7-commit-checkpoint-2026-10-08.md)
+ergänzt den aktuellen Stand um die Remote-main-Integration, fünf tatsächlich
+erneuerte Seiten-/Kontextreviews und das fünfte reguläre Lernzielbuch. Der
+strenge Stand bleibt 261/311; CQR-303 und Quellen-/Kursroutenbefunde bleiben offen.
+
+## Aktueller Chemie-/Biologie-Integrationsstand
+
+Der [geprüfte Commit-Zwischenstand vom 8. Oktober](chemie-biologie-m7-chemie177-biologie262-commit-checkpoint-2026-10-08.md)
+setzt den Chemie-/Biologie-Auftrag fort: aktuell 177/378 Chemie und 262/394
 Biologie streng abgeschlossen. Mathematik-M7 und Physik-M7 bleiben erhalten.
 Die folgenden älteren Arbeitsstände und damaligen Nutzersteuerungen sind
 historische Momentaufnahmen; menschliche Release-Gates bleiben getrennt.

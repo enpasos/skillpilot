@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "role": "technical_one_corrected_asset_import_and_current_resource_binding",
+  "actualCheckedAt": "2026-10-08T10:39:20.672018+00:00",
+  "physicalIsolate": "/tmp/skillpilot-wirtschaft-q3-twenty-three-native-kd_f3f9x",
+  "currentRootStrictBaseline": 125,
+  "selectionPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-site-competition-one-independent-image-review-20261008-v2/actual-final-twenty-three-selection-22priorKEEP-1correctedKEEP.receipt.json",
+  "selectionSha256": "sha256:3b3bf8387c32ba530f6adcff00c78e6035cde7bb6638027729d7e7c4b47c29dd",
+  "actualPromptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/7f8f6648-6faa-52c5-9793-3654ef9dc36d/correction-v2/actual-prompt.txt",
+  "actualPromptSha256": "sha256:072bbeb4119bc422d63213ac3425ed14f3605c6049133e1019fa38ec4f7646e2",
+  "actualPromptChronology": "Actual prompt and provider-call argument bytes retained and matched to generation provenance; actual native BEFORE chronology separately recorded in the cited independent receipt.",
+  "correctedGoalId": "7f8f6648-6faa-52c5-9793-3654ef9dc36d",
+  "assetPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/7f8f6648-6faa-52c5-9793-3654ef9dc36d/correction-v2/7f8f6648-6faa-52c5-9793-3654ef9dc36d.png",
+  "assetSha256": "sha256:454cee32ae08b8ca6cddb5997eddc0e88768e31159d4f7d00574833677493876",
+  "independentReviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-site-competition-one-independent-image-review-20261008-v2/7f8f6648-6faa-52c5-9793-3654ef9dc36d/independent-corrected-image-review.receipt.json",
+  "independentReviewSha256": "sha256:223af4689bddae75cd1374fe4c64b2f08633612d828e3dd42b9834f2f64cb341",
+  "activeCurrentSource2MappingPath": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_wirtschaft_upper_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+  "activeCurrentSource2MappingSha256": "sha256:d2dc08524e33d419d0c5c38c2cc43432c880062680acf70c1a8f3c05bb0149eb",
+  "activeCurrentSource2ExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-bw-two-current-source-location-successors-author-v1/upper-secondary/DE_BW_WIRTSCHAFT_SEKII_BP2016.source-extraction.json",
+  "activeCurrentSource2ExtractionSha256": "sha256:8b0f652bd35ee97145f48b7a3c0422a9f5aed8dd6cafabae650c38270ea13be3",
+  "unchangedPriorPositiveRecordsByteExact": 22,
+  "sameSubstantivePositiveProfile": true,
+  "nativePositiveCurrentCandidateRecords": 23,
+  "commands": [
+    {
+      "name": "import-one-corrected-png",
+      "command": [
+        "node",
+        "scripts/import_goal_visualization.mjs",
+        "7f8f6648-6faa-52c5-9793-3654ef9dc36d",
+        "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/7f8f6648-6faa-52c5-9793-3654ef9dc36d/correction-v2/7f8f6648-6faa-52c5-9793-3654ef9dc36d.png",
+        "--landscape",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "--subject",
+        "wirtschaftswissenschaften",
+        "--lang",
+        "de",
+        "--provider",
+        "OpenAI Codex image_gen",
+        "--review-status",
+        "approved_ai",
+        "--license",
+        "CC-BY-4.0",
+        "--alt-text",
+        "Drei Personen vergleichen einen städtischen und einen grüner dargestellten Standort. Fünf gleiche Faktorarten stehen auf beiden Tafeln neben offenen Fragen; Ausbildung, Infrastruktur, Anreize und Budget erscheinen als abzuwägende Politikoptionen.",
+        "--prompt",
+        "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/7f8f6648-6faa-52c5-9793-3654ef9dc36d/correction-v2/actual-prompt.txt"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-q3-twenty-three-native-kd_f3f9x",
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-generate-current-qa303",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "--subject",
+        "wirtschaftswissenschaften"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-q3-twenty-three-native-kd_f3f9x",
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-qa303-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "--subject",
+        "wirtschaftswissenschaften",
+        "--check"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-q3-twenty-three-native-kd_f3f9x",
+      "actualExitCode": 0
+    },
+    {
+      "name": "bind-only-site-kind",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/bind-only-site-current-kind.mts"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-q3-twenty-three-native-kd_f3f9x",
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-materialize-unchanged-positive23",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/positive-materialization-staging.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-global-currency-integration-twenty-three-bilingual-positive-author-v2/positive.candidates.json",
+        "--write"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-q3-twenty-three-native-kd_f3f9x",
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-positive-current23-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/positive-final-resources.candidate.config.json",
+        "--mode=check"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-q3-twenty-three-native-kd_f3f9x",
+      "actualExitCode": 0
+    }
+  ],
+  "independentApprovalByPreparationClaimed": false,
+  "humanApprovalClaimed": false,
+  "activeWrites": 0,
+  "newStrictClosures": 0
+}

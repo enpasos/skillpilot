@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "actualExecutedAt": "2026-10-08T11:34:01.018825+00:00",
+  "actualRootReading": "Both whole fresh6de records actually read including all6fields and bilingual text/rationale; actual whole original27DEEN/P54/AM54/fourcards and targeted officialSource/P2/AM2/independentReadiness reviews retained.",
+  "actualRecords": {
+    "round-a": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-scope-image-one-native-preparation-technical-20261008-v3/native-d-q4-migration-one-final-v3/round-a/results/wirtschaft-q4-migration-one-current303-corrected-image-scope-v3-20261008-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:713aebba4f23fc44d101d0ae1a7822c72ee078739b28a35fe7758292d00b016c"
+    },
+    "round-b": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-scope-image-one-native-preparation-technical-20261008-v3/native-d-q4-migration-one-final-v3/round-b/results/wirtschaft-q4-migration-one-current303-corrected-image-scope-v3-20261008-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:5095047f94c5600848d19d4e147b6446e617c6d4c73b00d0c76501cc708a4ca4"
+    }
+  },
+  "actualCommands": [
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-scope-image-one-native-preparation-technical-20261008-v3/native-d-q4-migration-one.final.batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-scope-image-one-native-preparation-technical-20261008-v3/native-d-q4-migration-one-final-v3/root-finalization-v3-step-1.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-scope-image-one-native-preparation-technical-20261008-v3/native-d-q4-migration-one-final-v3/root-finalization-v3-step-1.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-scope-image-one-native-preparation-technical-20261008-v3/native-d-q4-migration-one.final.batch.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-scope-image-one-native-preparation-technical-20261008-v3/native-d-q4-migration-one-final-v3/root-targeted-one-synthesis-authoring-v3.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-scope-image-one-native-preparation-technical-20261008-v3/native-d-q4-migration-one-final-v3/root-finalization-v3-step-2.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-scope-image-one-native-preparation-technical-20261008-v3/native-d-q4-migration-one-final-v3/root-finalization-v3-step-2.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-scope-image-one-native-preparation-technical-20261008-v3/native-d-q4-migration-one.final.batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-scope-image-one-native-preparation-technical-20261008-v3/native-d-q4-migration-one-final-v3/synthesis-decisions.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-scope-image-one-native-preparation-technical-20261008-v3/native-d-q4-migration-one-final-v3/root-finalization-v3-step-3.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-scope-image-one-native-preparation-technical-20261008-v3/native-d-q4-migration-one-final-v3/root-finalization-v3-step-3.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-scope-image-one-native-preparation-technical-20261008-v3/native-d-q4-migration-one.final.batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-scope-image-one-native-preparation-technical-20261008-v3/native-d-q4-migration-one-final-v3/root-finalization-v3-step-4.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-scope-image-one-native-preparation-technical-20261008-v3/native-d-q4-migration-one-final-v3/root-finalization-v3-step-4.stderr.txt"
+    }
+  ],
+  "currentTargetedDescriptions": 1,
+  "historicalFrozenFilesVerifiedByteExact": 28,
+  "unchangedOtherWholePages": 26,
+  "newSubstantiveGoalDescriptionChanges": 0,
+  "actualSourceCourseReadinessCorrection": true,
+  "currentPageAndImageBindingRestoration": 1,
+  "priorAlreadyStrictGoalRestoration": 0,
+  "humanApprovalClaimed": false,
+  "liveMutations": 0
+}

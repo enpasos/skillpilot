@@ -1,0 +1,70 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "wirtschaft-q3-global-currency-seventeen-current303-final-author-v2-20261008",
+  "subject": "wirtschaftswissenschaften",
+  "subjectLabel": "Wirtschaftswissenschaften",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-twenty-three-native-preparation-technical-20261008-v1/native-d-q3-global-currency-seventeen.final.batch.config.json",
+  "configDigest": "sha256:c83a4a4623a0d919a48c20c7df3f6cf4011f781f704a9010603a88b605834261",
+  "goalIds": [
+    "11c57203-1619-5bba-8905-9c10d7f77d57",
+    "1582ec45-1655-5f7c-a2bd-a3fc00e583fa",
+    "09e58ea8-1920-5600-bd2b-cc1f199d051f",
+    "5e5ed258-dfe5-5ea6-9a40-859e79ef0ce5",
+    "7f8f6648-6faa-52c5-9793-3654ef9dc36d",
+    "fcf756f1-7252-54cb-9257-de8259090021",
+    "8adaa076-10ad-5fbf-8a22-247b52046da4",
+    "3e26fb9e-634c-5454-b11f-1d925201182c",
+    "9267ad99-f474-5fd7-8b6a-bd03fbc70394",
+    "13b20cee-8977-5b3f-938b-2064e96f2a5b",
+    "9ebddb42-c799-5cf3-bfbc-f611ac66207b",
+    "f7034be8-64e9-5f63-9556-d7b8dc59eda7",
+    "cc57df5b-69fd-5774-90d7-aa5ebd3d1632",
+    "84f7321d-7fb7-5e3a-ab8f-8690b26929f3",
+    "b456e539-24bb-5ec5-a996-14c9c77b64d0",
+    "7d632b0b-60b8-5c33-8094-ef1569b313dc",
+    "45bd0edd-3d4e-55f1-88bf-407c4706e860"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 303,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-m7-current-baseline-20261008-v1/review-book-full.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "baseBookDigest": "sha256:26e0ede705c26713bfe300e701f32472bd1f95f9959901cde4fa9e8b3daaf582"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:a56dd3f2e09e5275a97dcc66725d853578dba62a260bb9e27e36ce7ed4645238",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:932faeda1f46ba76dc76ad23bc4355e9105d3c234d8dc881033174ffd2e9a172",
+    "reviewInputFingerprint": "sha256:14197786b34775b6828b1d209ab9a335b008a13fc98e1192edab1de4f417d026",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "wirtschaft-q3-global-currency-seventeen-current303-final-author-v2-20261008-a",
+        "campaignDigest": "sha256:1bd8a72a1e98fd33bddb477975d967d3c94057e73a8159a6f9b86a1cadbb3712",
+        "roundId": "wirtschaft-q3-global-currency-seventeen-current303-final-author-v2-20261008-first-pass-a",
+        "independenceGroupId": "wirtschaft-q3-global-currency-seventeen-current303-final-author-v2-20261008-independent-a",
+        "batchId": "wirtschaft-q3-global-currency-seventeen-current303-final-author-v2-20261008-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:0e723c4d120019f70f3acef60c85e9fee98f15f604df1dbb5bd3099c35c92415"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "wirtschaft-q3-global-currency-seventeen-current303-final-author-v2-20261008-b",
+        "campaignDigest": "sha256:120e6d3357084d039be6afb31acd38794b7b46894a87526a00879feff519c728",
+        "roundId": "wirtschaft-q3-global-currency-seventeen-current303-final-author-v2-20261008-first-pass-b",
+        "independenceGroupId": "wirtschaft-q3-global-currency-seventeen-current303-final-author-v2-20261008-independent-b",
+        "batchId": "wirtschaft-q3-global-currency-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:d36b57692e68c75791a177f80beeb34989017284b6816bc0f1388a900fe6b3e5"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

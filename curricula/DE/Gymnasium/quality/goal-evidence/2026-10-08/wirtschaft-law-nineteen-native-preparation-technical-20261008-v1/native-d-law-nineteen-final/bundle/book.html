@@ -1,0 +1,950 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Wirtschaftswissenschaften: 19 aktuelle Lernziele zu Recht und Verträgen</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Wirtschaftswissenschaften: 19 aktuelle Lernziele zu Recht und Verträgen</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>19 atomare Lernziele</dt><dd>3 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:wirtschaftswissenschaften-m7-review-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-94e1500621eeee0738ad47ab" aria-label="Wirtschaftswissenschaften – kanonische M7-Prüfsicht"><a href="#goal-2aee114f-d0d2-516f-8f95-1b72f707401d"><span class="toc-entry-label">Wirtschaftswissenschaften&#160;<wbr>–&#160;<wbr>kanonische&#160;<wbr>M7-Prüfsicht</span></a></h2>
+          <span class="toc-entry-meta"><span>19 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="goal:96183c48-b499-54d7-8530-578f6ff40207" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-a0dfaba9fba054a714038138" aria-label="Wirtschaftswissenschaften"><a href="#goal-2aee114f-d0d2-516f-8f95-1b72f707401d"><span class="toc-entry-label">Wirtschaftswissenschaften</span></a></h3>
+          <span class="toc-entry-meta"><span>19 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-0697ca062197115c2538b690" aria-label="Rechtlich verantwortliches Handeln"><a href="#goal-2aee114f-d0d2-516f-8f95-1b72f707401d"><span class="toc-entry-label">Rechtlich&#160;<wbr>verantwortliches&#160;<wbr>Handeln</span></a></h4>
+          <span class="toc-entry-meta"><span>19 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-2aee114f-d0d2-516f-8f95-1b72f707401d" data-goal-id="2aee114f-d0d2-516f-8f95-1b72f707401d" data-page-number="1" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-title"><a class="goal-self-link" href="#goal-2aee114f-d0d2-516f-8f95-1b72f707401d">Funktionen rechtlicher Regelungen beurteilen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2aee114f-d0d2-516f-8f95-1b72f707401d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:caf8e91355d55abfb5514dad994b80527d80a7242a2413ddca34b82ffdd06174" data-rendered-digest="sha256:77e21953b2bab9729146bec8bc3115b4528672287cc131e8c2a0eb00888c0ba1" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/2aee114f-d0d2-516f-8f95-1b72f707401d/2aee114f-d0d2-516f-8f95-1b72f707401d.png" alt="Eine Gruppe betrachtet zu einem Konflikt im Park eine gemeinsame Regeltafel; Schutz, Ordnung und Ausgleich erscheinen als große Symbole neben einer möglichen geordneten Nutzung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-description-heading">
+        <p class="section-heading" id="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Notwendigkeit rechtlicher Regelungen vor dem Hintergrund zentraler Funktionen des Rechts beurteilen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-requires-heading">
+          <p class="section-heading" id="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-reverse-heading">
+          <p class="section-heading" id="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-c73bc13e-6871-50c3-82d3-90283f1f54ce"><span>Unerlaubte Handlung und Strafrecht fallbezogen anwenden</span><code>c73bc13e-6871-50c3-82d3-90283f1f54ce</code><span class="reference-page">S. 2</span></a></li><li><a href="#goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e"><span>Rechtssicher im Internet handeln</span><code>3a6568d2-9f94-5574-8996-9ebac0bc0b3e</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5"><span>Verträge und rechtliche Folgen des eigenen Handelns analysieren</span><code>78eeb8fe-fd5c-5d21-81be-75c3990fc4b5</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-bb7f2a2a-95c3-5375-8323-51a808e945e6"><span>Rechtliche Rahmenbedingungen nach Rechtsfunktionen analysieren</span><code>bb7f2a2a-95c3-5375-8323-51a808e945e6</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2aee114f-d0d2-516f-8f95-1b72f707401d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-mem_de_gym_economics_business_law" rel="noreferrer noopener"><span>Lernkarten - Wirtschaftsrecht und Falltechnik</span> <code>mem_de_gym_economics_business_law</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 19</span>
+      <span>Buch-Digest <code>sha256:584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4bde884b0e094cd9a126a7f5db458cf4da78e3e1fd34c6d40983cca16e2ff849</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=2aee114f-d0d2-516f-8f95-1b72f707401d&amp;goalFingerprint=sha256%3A4bde884b0e094cd9a126a7f5db458cf4da78e3e1fd34c6d40983cca16e2ff849&amp;pageFingerprint=sha256%3A33805d1b8dd2a3ac7745d5147433b47691f239f36f0690b8d85f4d1833fb77d6&amp;bookDigest=sha256%3A584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c73bc13e-6871-50c3-82d3-90283f1f54ce" data-goal-id="c73bc13e-6871-50c3-82d3-90283f1f54ce" data-page-number="2" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-c73bc13e-6871-50c3-82d3-90283f1f54ce-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c73bc13e-6871-50c3-82d3-90283f1f54ce-title"><a class="goal-self-link" href="#goal-c73bc13e-6871-50c3-82d3-90283f1f54ce">Unerlaubte Handlung und Strafrecht fallbezogen anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c73bc13e-6871-50c3-82d3-90283f1f54ce</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:fd8c83f7224164162e5cdba9fb841b286b8972736863545a9dfa679257681681" data-rendered-digest="sha256:0540ea06f2ff30762d46ef5af01b18fcc3389519922c00caaf657788b0c0b6de" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/c73bc13e-6871-50c3-82d3-90283f1f54ce/c73bc13e-6871-50c3-82d3-90283f1f54ce.png" alt="Ein beschädigtes Fahrrad führt zu getrennten Überlegungen zu Zivilrecht und Strafrecht; Geld, Normblatt und eine offene Beweisfrage unterstützen den Vergleich.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c73bc13e-6871-50c3-82d3-90283f1f54ce-description-heading">
+        <p class="section-heading" id="goal-c73bc13e-6871-50c3-82d3-90283f1f54ce-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an authentischen Fallbeispielen zur unerlaubten Handlung und zum Strafrecht einschlägige Normen in vereinfachter Form analysieren und anwenden.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c73bc13e-6871-50c3-82d3-90283f1f54ce-requires-heading">
+          <p class="section-heading" id="goal-c73bc13e-6871-50c3-82d3-90283f1f54ce-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-2aee114f-d0d2-516f-8f95-1b72f707401d"><span>Funktionen rechtlicher Regelungen beurteilen</span><code>2aee114f-d0d2-516f-8f95-1b72f707401d</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c73bc13e-6871-50c3-82d3-90283f1f54ce-reverse-heading">
+          <p class="section-heading" id="goal-c73bc13e-6871-50c3-82d3-90283f1f54ce-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f"><span>Rechtliche Konsequenzen widerrechtlichen Handelns abschätzen</span><code>7159ae22-e6ac-54e6-8b62-9b697310cc5f</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 19</span>
+      <span>Buch-Digest <code>sha256:584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7f33ada272f1c4ddb46fe559159d8b465077dab4f1924be026b69251aeefc65e</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=c73bc13e-6871-50c3-82d3-90283f1f54ce&amp;goalFingerprint=sha256%3A7f33ada272f1c4ddb46fe559159d8b465077dab4f1924be026b69251aeefc65e&amp;pageFingerprint=sha256%3Aeb3af4e7e6aa2c25b9b927f28ae22061bcfc25aa0c40f219456053e8d71512d3&amp;bookDigest=sha256%3A584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f" data-goal-id="7159ae22-e6ac-54e6-8b62-9b697310cc5f" data-page-number="3" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f-title"><a class="goal-self-link" href="#goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f">Rechtliche Konsequenzen widerrechtlichen Handelns abschätzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>7159ae22-e6ac-54e6-8b62-9b697310cc5f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:72d9e4c1b0c94308c0f22775fb672d78df21314eee288c98327e2131b5b5a96e" data-rendered-digest="sha256:ec0c6671ce52265ce0add43e663bb2416cb47aea753ee17d50642b55e5fd0d03" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/7159ae22-e6ac-54e6-8b62-9b697310cc5f/7159ae22-e6ac-54e6-8b62-9b697310cc5f.png" alt="Eine Person denkt über eine Handlung am Fahrrad, mögliche materielle und soziale Folgen und eine gesonderte rechtliche Prüfung nach.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f-description-heading">
+        <p class="section-heading" id="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann rechtliche Konsequenzen widerrechtlichen Handelns in lebensnahen Fällen abschätzen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f-requires-heading">
+          <p class="section-heading" id="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-c73bc13e-6871-50c3-82d3-90283f1f54ce"><span>Unerlaubte Handlung und Strafrecht fallbezogen anwenden</span><code>c73bc13e-6871-50c3-82d3-90283f1f54ce</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f-reverse-heading">
+          <p class="section-heading" id="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7159ae22-e6ac-54e6-8b62-9b697310cc5f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-71319337-18ad-5774-8347-4e1a078fc29a" rel="noreferrer noopener"><span>Rechtskompetenzen vertiefen</span> <code>71319337-18ad-5774-8347-4e1a078fc29a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 19</span>
+      <span>Buch-Digest <code>sha256:584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f50f5cb4e802f324e46ee7a976315d7b6837819fb9cc0482eb0000a4e127b5f7</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=7159ae22-e6ac-54e6-8b62-9b697310cc5f&amp;goalFingerprint=sha256%3Af50f5cb4e802f324e46ee7a976315d7b6837819fb9cc0482eb0000a4e127b5f7&amp;pageFingerprint=sha256%3A8bf46f1401cb63dc7a6b056725edf758be046a534e3117aa9d030cc61a3303a7&amp;bookDigest=sha256%3A584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e" data-goal-id="3a6568d2-9f94-5574-8996-9ebac0bc0b3e" data-page-number="4" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e-title"><a class="goal-self-link" href="#goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e">Rechtssicher im Internet handeln</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3a6568d2-9f94-5574-8996-9ebac0bc0b3e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:14111420f7b968e3f88295f8e200f87adfcadeabd2421207692b4abba75c36f4" data-rendered-digest="sha256:02ef0abdd56ded4d8f7f9a0c2dfff02f59ff6799066055009d20459cd88fdade" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/3a6568d2-9f94-5574-8996-9ebac0bc0b3e/3a6568d2-9f94-5574-8996-9ebac0bc0b3e.png" alt="Eine junge Person hält vor einer Onlineentscheidung inne und prüft Einwilligung, Urheberrechte und mehrere Handlungswege.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e-description-heading">
+        <p class="section-heading" id="goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann im Internet rechtssicher handeln, indem sie wesentliche für Jugendliche relevante Rechtsnormen beachtet.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e-requires-heading">
+          <p class="section-heading" id="goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-2aee114f-d0d2-516f-8f95-1b72f707401d"><span>Funktionen rechtlicher Regelungen beurteilen</span><code>2aee114f-d0d2-516f-8f95-1b72f707401d</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e-reverse-heading">
+          <p class="section-heading" id="goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-f6a445cb-50d9-5d22-80af-e669509758b0"><span>Geistiges Eigentum und Persönlichkeitsrechte beachten</span><code>f6a445cb-50d9-5d22-80af-e669509758b0</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-71319337-18ad-5774-8347-4e1a078fc29a" rel="noreferrer noopener"><span>Rechtskompetenzen vertiefen</span> <code>71319337-18ad-5774-8347-4e1a078fc29a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 19</span>
+      <span>Buch-Digest <code>sha256:584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3e94081a982a17493a0a095762ffddb94a51dc6fd919cbe8b0e9206c41a3c164</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=3a6568d2-9f94-5574-8996-9ebac0bc0b3e&amp;goalFingerprint=sha256%3A3e94081a982a17493a0a095762ffddb94a51dc6fd919cbe8b0e9206c41a3c164&amp;pageFingerprint=sha256%3A60caf9c84dfaf27a74434a5a5a746b35ed6bf815ae2087156270cac5fa4dc106&amp;bookDigest=sha256%3A584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f6a445cb-50d9-5d22-80af-e669509758b0" data-goal-id="f6a445cb-50d9-5d22-80af-e669509758b0" data-page-number="5" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-f6a445cb-50d9-5d22-80af-e669509758b0-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-f6a445cb-50d9-5d22-80af-e669509758b0-title"><a class="goal-self-link" href="#goal-f6a445cb-50d9-5d22-80af-e669509758b0">Geistiges Eigentum und Persönlichkeitsrechte beachten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f6a445cb-50d9-5d22-80af-e669509758b0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a05608ede829073e93063481a0f8cc9a9d5399c79a6242dfbdd30f65a266d968" data-rendered-digest="sha256:34fb51d96e741cbd042b649a528d74a1cec1db6a2e8a3e98d794dd05a964b12e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/f6a445cb-50d9-5d22-80af-e669509758b0/f6a445cb-50d9-5d22-80af-e669509758b0.png" alt="Eine Person überlegt zur Nutzung einer Zeichnung und eines Porträts; Urheberrecht und Persönlichkeit sind getrennte Gedankenfelder.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f6a445cb-50d9-5d22-80af-e669509758b0-description-heading">
+        <p class="section-heading" id="goal-f6a445cb-50d9-5d22-80af-e669509758b0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Schutz von geistigem Eigentum und Persönlichkeitsrechten im privaten und schulischen Alltag reflektieren und wesentliche Bestimmungen des Urheberrechts beachten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f6a445cb-50d9-5d22-80af-e669509758b0-requires-heading">
+          <p class="section-heading" id="goal-f6a445cb-50d9-5d22-80af-e669509758b0-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-3a6568d2-9f94-5574-8996-9ebac0bc0b3e"><span>Rechtssicher im Internet handeln</span><code>3a6568d2-9f94-5574-8996-9ebac0bc0b3e</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-f6a445cb-50d9-5d22-80af-e669509758b0-reverse-heading">
+          <p class="section-heading" id="goal-f6a445cb-50d9-5d22-80af-e669509758b0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-f6a445cb-50d9-5d22-80af-e669509758b0-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f6a445cb-50d9-5d22-80af-e669509758b0-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-71319337-18ad-5774-8347-4e1a078fc29a" rel="noreferrer noopener"><span>Rechtskompetenzen vertiefen</span> <code>71319337-18ad-5774-8347-4e1a078fc29a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 19</span>
+      <span>Buch-Digest <code>sha256:584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0231678bc06788129323ce40ee89119712844196daaeb5ec1c3f99c1bc5f0591</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=f6a445cb-50d9-5d22-80af-e669509758b0&amp;goalFingerprint=sha256%3A0231678bc06788129323ce40ee89119712844196daaeb5ec1c3f99c1bc5f0591&amp;pageFingerprint=sha256%3A46ace047aba17fc3c79f4cab39a30fd52a66fff6ac205161072b532578c3fc66&amp;bookDigest=sha256%3A584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5" data-goal-id="78eeb8fe-fd5c-5d21-81be-75c3990fc4b5" data-page-number="6" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5-title"><a class="goal-self-link" href="#goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5">Verträge und rechtliche Folgen des eigenen Handelns analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>78eeb8fe-fd5c-5d21-81be-75c3990fc4b5</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:008ec657707a31677d482b10f25fa71a49d629ab02e8678b790283376e1e455b" data-rendered-digest="sha256:1a5a914a6f694c5c7def76616252a764518fe0b1ea7d4836c89e848448391fa7" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/78eeb8fe-fd5c-5d21-81be-75c3990fc4b5/78eeb8fe-fd5c-5d21-81be-75c3990fc4b5.png" alt="Zwei Personen stimmen in Sprechblasen über dasselbe Fahrrad für300Euro überein; eine weitere Gedankenblase fragt nach vertraglichen Pflichten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5-description-heading">
+        <p class="section-heading" id="goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Zustandekommen und rechtliche Folgen von Verträgen erklären und die rechtlichen Konsequenzen eigenen Handelns analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5-requires-heading">
+          <p class="section-heading" id="goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-2aee114f-d0d2-516f-8f95-1b72f707401d"><span>Funktionen rechtlicher Regelungen beurteilen</span><code>2aee114f-d0d2-516f-8f95-1b72f707401d</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5-reverse-heading">
+          <p class="section-heading" id="goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5"><span>Rechte beschränkt Geschäftsfähiger bei Kaufhandlungen wahrnehmen</span><code>1f5c3e82-dc4a-54cc-838e-66e4d434a7b5</code><span class="reference-page">S. 7</span></a></li><li><a href="#goal-dae93971-726c-56e5-8044-19dbd40febf7"><span>Rechtsnormen auf konkrete Sachverhalte anwenden</span><code>dae93971-726c-56e5-8044-19dbd40febf7</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 19</span>
+      <span>Buch-Digest <code>sha256:584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:13def435ce2a1217a10f02f3ad8770d992e23644024349c296f2c24fd334d1a6</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=78eeb8fe-fd5c-5d21-81be-75c3990fc4b5&amp;goalFingerprint=sha256%3A13def435ce2a1217a10f02f3ad8770d992e23644024349c296f2c24fd334d1a6&amp;pageFingerprint=sha256%3Acb36e773bfa27f96991a072112e57aca8b96589343866b878679ee9c031f71bc&amp;bookDigest=sha256%3A584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5" data-goal-id="1f5c3e82-dc4a-54cc-838e-66e4d434a7b5" data-page-number="7" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5-title"><a class="goal-self-link" href="#goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5">Rechte beschränkt Geschäftsfähiger bei Kaufhandlungen wahrnehmen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1f5c3e82-dc4a-54cc-838e-66e4d434a7b5</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:51b07d1ae7b1b2e46f9ca020567d7df004fa5ac3a9dc8b2f938b72c43e4a07cb" data-rendered-digest="sha256:fdfc50782d0152b09c52224a0371b7c9d79f12a2b67b320a39bbc88492d12e29" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/1f5c3e82-dc4a-54cc-838e-66e4d434a7b5/1f5c3e82-dc4a-54cc-838e-66e4d434a7b5.png" alt="Eine junge Person überlegt beim Kopfhörerkauf zu Alter, Zustimmung einer vertretenden Person und verfügbaren Mitteln; alle Bedingungen bleiben als Fragen offen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5-description-heading">
+        <p class="section-heading" id="goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann bei Kaufhandlungen des täglichen Lebens rechtliche Handlungsmöglichkeiten als beschränkt geschäftsfähige Person erkennen und wahrnehmen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5-requires-heading">
+          <p class="section-heading" id="goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5"><span>Verträge und rechtliche Folgen des eigenen Handelns analysieren</span><code>78eeb8fe-fd5c-5d21-81be-75c3990fc4b5</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5-reverse-heading">
+          <p class="section-heading" id="goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-c4faf50c-8778-5540-8276-87840cc81e05"><span>Verbraucherrechte in Kaufsituationen kommunizieren</span><code>c4faf50c-8778-5540-8276-87840cc81e05</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-mem_de_gym_economics_business_law" rel="noreferrer noopener"><span>Lernkarten - Wirtschaftsrecht und Falltechnik</span> <code>mem_de_gym_economics_business_law</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 19</span>
+      <span>Buch-Digest <code>sha256:584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b3446f4a0852a2a28038f30b5850cf5a3c8b0de4520faa3b1e5393c6aac6a308</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=1f5c3e82-dc4a-54cc-838e-66e4d434a7b5&amp;goalFingerprint=sha256%3Ab3446f4a0852a2a28038f30b5850cf5a3c8b0de4520faa3b1e5393c6aac6a308&amp;pageFingerprint=sha256%3A1983262994395c39b48175f89570eb48596a25c5565f91595c95e5d9d5f33206&amp;bookDigest=sha256%3A584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c4faf50c-8778-5540-8276-87840cc81e05" data-goal-id="c4faf50c-8778-5540-8276-87840cc81e05" data-page-number="8" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-c4faf50c-8778-5540-8276-87840cc81e05-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c4faf50c-8778-5540-8276-87840cc81e05-title"><a class="goal-self-link" href="#goal-c4faf50c-8778-5540-8276-87840cc81e05">Verbraucherrechte in Kaufsituationen kommunizieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c4faf50c-8778-5540-8276-87840cc81e05</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f2f3f2b4662fb75d363fcd9e7e37f30927e405ff88ef9c7c663b1cbfc2146603" data-rendered-digest="sha256:40c385bc60158e707996462c602c39e73d1b2d28041e519f0db93027cce4fd56" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/c4faf50c-8778-5540-8276-87840cc81e05/c4faf50c-8778-5540-8276-87840cc81e05.png" alt="Eine Käuferin bespricht einen beschädigten Toaster mit einem Verkäufer; Reparatur oder Ersatz sind als Nacherfüllung dargestellt, ein weiterer Rechtsfolgenzweig bleibt bedingt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c4faf50c-8778-5540-8276-87840cc81e05-description-heading">
+        <p class="section-heading" id="goal-c4faf50c-8778-5540-8276-87840cc81e05-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in konkreten Problemsituationen beim Kauf passende Verbraucherrechte erkennen und gegenüber Verkäuferinnen und Verkäufern situationsgerecht kommunizieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c4faf50c-8778-5540-8276-87840cc81e05-requires-heading">
+          <p class="section-heading" id="goal-c4faf50c-8778-5540-8276-87840cc81e05-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1f5c3e82-dc4a-54cc-838e-66e4d434a7b5"><span>Rechte beschränkt Geschäftsfähiger bei Kaufhandlungen wahrnehmen</span><code>1f5c3e82-dc4a-54cc-838e-66e4d434a7b5</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c4faf50c-8778-5540-8276-87840cc81e05-reverse-heading">
+          <p class="section-heading" id="goal-c4faf50c-8778-5540-8276-87840cc81e05-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-bd413a7c-775a-5318-813c-0b75578f9a11"><span>Juristische Arbeitstechniken im Kaufrecht anwenden</span><code>bd413a7c-775a-5318-813c-0b75578f9a11</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-c4faf50c-8778-5540-8276-87840cc81e05-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c4faf50c-8778-5540-8276-87840cc81e05-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-d3c11bfa-103c-5b58-8183-561e0b076251" rel="noreferrer noopener"><span>Konsumentscheidungen auf virtuellen Marktplätzen reflektieren</span> <code>d3c11bfa-103c-5b58-8183-561e0b076251</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 19</span>
+      <span>Buch-Digest <code>sha256:584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1457913d49c950d444cf5f57fef3285a68ab859ab5fcb7b43ba23fc0e71c5c53</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=c4faf50c-8778-5540-8276-87840cc81e05&amp;goalFingerprint=sha256%3A1457913d49c950d444cf5f57fef3285a68ab859ab5fcb7b43ba23fc0e71c5c53&amp;pageFingerprint=sha256%3Ae7393d0339df32858ef899e42e4be0a7bc65ffc4816230f7214590614d4905c0&amp;bookDigest=sha256%3A584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-dae93971-726c-56e5-8044-19dbd40febf7" data-goal-id="dae93971-726c-56e5-8044-19dbd40febf7" data-page-number="9" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-dae93971-726c-56e5-8044-19dbd40febf7-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-dae93971-726c-56e5-8044-19dbd40febf7-title"><a class="goal-self-link" href="#goal-dae93971-726c-56e5-8044-19dbd40febf7">Rechtsnormen auf konkrete Sachverhalte anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>dae93971-726c-56e5-8044-19dbd40febf7</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:60b569222021b6f451d6f534d1d6862f32555f3e6b4ba33fbabc14638963ab2e" data-rendered-digest="sha256:908af182d8bb075f3f27e9a76a31e12043f594c112f9a995b9d2ba348418e7b3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/dae93971-726c-56e5-8044-19dbd40febf7/dae93971-726c-56e5-8044-19dbd40febf7.png" alt="Eine Person verbindet eine Norm mit der Prüfung eines Fahrrad-/Autofalls und einer offenen möglichen Rechtsfolge; einzelne Merkmale werden geprüft.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-dae93971-726c-56e5-8044-19dbd40febf7-description-heading">
+        <p class="section-heading" id="goal-dae93971-726c-56e5-8044-19dbd40febf7-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Rechtsnormen auf konkrete Sachverhalte anwenden, indem sie Tatbestandsmerkmale und Rechtsfolgen strukturiert herausarbeitet.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-dae93971-726c-56e5-8044-19dbd40febf7-requires-heading">
+          <p class="section-heading" id="goal-dae93971-726c-56e5-8044-19dbd40febf7-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-78eeb8fe-fd5c-5d21-81be-75c3990fc4b5"><span>Verträge und rechtliche Folgen des eigenen Handelns analysieren</span><code>78eeb8fe-fd5c-5d21-81be-75c3990fc4b5</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-dae93971-726c-56e5-8044-19dbd40febf7-reverse-heading">
+          <p class="section-heading" id="goal-dae93971-726c-56e5-8044-19dbd40febf7-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7"><span>Jugendstrafrechtliche Tatbestände prüfen</span><code>b44892ea-32dc-5a91-8bba-2f422af7c6e7</code><span class="reference-page">S. 13</span></a></li><li><a href="#goal-bd413a7c-775a-5318-813c-0b75578f9a11"><span>Juristische Arbeitstechniken im Kaufrecht anwenden</span><code>bd413a7c-775a-5318-813c-0b75578f9a11</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-dae93971-726c-56e5-8044-19dbd40febf7-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-dae93971-726c-56e5-8044-19dbd40febf7-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-51203e8f-a1f4-5072-8d32-d5b718691592" rel="noreferrer noopener"><span>Recht als Handlungsrahmen vertiefen</span> <code>51203e8f-a1f4-5072-8d32-d5b718691592</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 19</span>
+      <span>Buch-Digest <code>sha256:584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e7f290bee10c9459ccf8dec2750801fbd9f84895d1cf182541e552420eb04fbd</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=dae93971-726c-56e5-8044-19dbd40febf7&amp;goalFingerprint=sha256%3Ae7f290bee10c9459ccf8dec2750801fbd9f84895d1cf182541e552420eb04fbd&amp;pageFingerprint=sha256%3Ae27e8c85fbefdc74b8c74e53173dd24c8a8fa81748d4868f721a8e3c5b2751e3&amp;bookDigest=sha256%3A584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-bb7f2a2a-95c3-5375-8323-51a808e945e6" data-goal-id="bb7f2a2a-95c3-5375-8323-51a808e945e6" data-page-number="10" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-bb7f2a2a-95c3-5375-8323-51a808e945e6-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-bb7f2a2a-95c3-5375-8323-51a808e945e6-title"><a class="goal-self-link" href="#goal-bb7f2a2a-95c3-5375-8323-51a808e945e6">Rechtliche Rahmenbedingungen nach Rechtsfunktionen analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>bb7f2a2a-95c3-5375-8323-51a808e945e6</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:94236848b0a61c860918196f3a68e5986abf9fcde4164135b530940688564e69" data-rendered-digest="sha256:7a99364f0ebee723a83d6549f0b067fbc04fe56d64a02432a9715e69923fd671" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/bb7f2a2a-95c3-5375-8323-51a808e945e6/bb7f2a2a-95c3-5375-8323-51a808e945e6.png" alt="Eine Gruppe analysiert eine rechtliche Regel anhand ihrer Funktionen und prüft mit einer Lupe unterschiedliche mögliche Folgen für Menschen, Umwelt und Kosten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-bb7f2a2a-95c3-5375-8323-51a808e945e6-description-heading">
+        <p class="section-heading" id="goal-bb7f2a2a-95c3-5375-8323-51a808e945e6-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann rechtliche Rahmenbedingungen im Hinblick auf zentrale Funktionen des Rechts analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-bb7f2a2a-95c3-5375-8323-51a808e945e6-requires-heading">
+          <p class="section-heading" id="goal-bb7f2a2a-95c3-5375-8323-51a808e945e6-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-2aee114f-d0d2-516f-8f95-1b72f707401d"><span>Funktionen rechtlicher Regelungen beurteilen</span><code>2aee114f-d0d2-516f-8f95-1b72f707401d</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-bb7f2a2a-95c3-5375-8323-51a808e945e6-reverse-heading">
+          <p class="section-heading" id="goal-bb7f2a2a-95c3-5375-8323-51a808e945e6-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-537a6f0d-0cf9-5a80-82d6-618ec790e7a6"><span>Öffentlich-rechtliche Folgen jugendlichen Handelns analysieren</span><code>537a6f0d-0cf9-5a80-82d6-618ec790e7a6</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-bb7f2a2a-95c3-5375-8323-51a808e945e6-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-bb7f2a2a-95c3-5375-8323-51a808e945e6-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-682facbf-3c9d-5485-88a3-20f2394ed77f" rel="noreferrer noopener"><span>Rechtliche Regelungen und Rechtsstaatlichkeit beurteilen</span> <code>682facbf-3c9d-5485-88a3-20f2394ed77f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-c7b03538-25a2-510b-8fd4-a81bcc3de406" rel="noreferrer noopener"><span>Institutionenökonomische Perspektive auf die Soziale Marktwirtschaft anwenden</span> <code>c7b03538-25a2-510b-8fd4-a81bcc3de406</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 19</span>
+      <span>Buch-Digest <code>sha256:584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9ebeee587c990a5e727421e3c7473420344b8544782e25cda9275f0dc7ef2655</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=bb7f2a2a-95c3-5375-8323-51a808e945e6&amp;goalFingerprint=sha256%3A9ebeee587c990a5e727421e3c7473420344b8544782e25cda9275f0dc7ef2655&amp;pageFingerprint=sha256%3Abe873a886b47595cce7e7bcbdd1cdc7f27d67e1e5f4a7aa201e84f51874d6540&amp;bookDigest=sha256%3A584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-537a6f0d-0cf9-5a80-82d6-618ec790e7a6" data-goal-id="537a6f0d-0cf9-5a80-82d6-618ec790e7a6" data-page-number="11" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-537a6f0d-0cf9-5a80-82d6-618ec790e7a6-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-537a6f0d-0cf9-5a80-82d6-618ec790e7a6-title"><a class="goal-self-link" href="#goal-537a6f0d-0cf9-5a80-82d6-618ec790e7a6">Öffentlich-rechtliche Folgen jugendlichen Handelns analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>537a6f0d-0cf9-5a80-82d6-618ec790e7a6</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d02b1e0a73fbb9badcab023080c3829895a08f3128922df0d54e1779bdf0c6f7" data-rendered-digest="sha256:9621db1f1e7246c64800d5c6a6bbeb341d8dc84d502895069c47ee1731779831" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/537a6f0d-0cf9-5a80-82d6-618ec790e7a6/537a6f0d-0cf9-5a80-82d6-618ec790e7a6.png" alt="Eine Person vergleicht Abfallentsorgung nach einer öffentlichen Regel mit dem Wegwerfen auf den Boden; ein anschließendes Gespräch prüft mögliche Folgen ergebnisoffen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-537a6f0d-0cf9-5a80-82d6-618ec790e7a6-description-heading">
+        <p class="section-heading" id="goal-537a6f0d-0cf9-5a80-82d6-618ec790e7a6-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann rechtliche Konsequenzen jugendlichen Handelns in ausgewählten öffentlich-rechtlichen Situationen analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-537a6f0d-0cf9-5a80-82d6-618ec790e7a6-requires-heading">
+          <p class="section-heading" id="goal-537a6f0d-0cf9-5a80-82d6-618ec790e7a6-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-bb7f2a2a-95c3-5375-8323-51a808e945e6"><span>Rechtliche Rahmenbedingungen nach Rechtsfunktionen analysieren</span><code>bb7f2a2a-95c3-5375-8323-51a808e945e6</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-537a6f0d-0cf9-5a80-82d6-618ec790e7a6-reverse-heading">
+          <p class="section-heading" id="goal-537a6f0d-0cf9-5a80-82d6-618ec790e7a6-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-61da4203-44c1-5e60-8880-5e8a64943675"><span>Öffentlich-rechtliche Regelungen beurteilen</span><code>61da4203-44c1-5e60-8880-5e8a64943675</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-537a6f0d-0cf9-5a80-82d6-618ec790e7a6-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-537a6f0d-0cf9-5a80-82d6-618ec790e7a6-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-5d8c708f-699b-535d-84c7-a92e67f7bac6" rel="noreferrer noopener"><span>Ordnungswidrigkeiten und strafbare Handlungen abgrenzen</span> <code>5d8c708f-699b-535d-84c7-a92e67f7bac6</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 19</span>
+      <span>Buch-Digest <code>sha256:584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f27e8185ebf3078bf167b1611e856bce7736aa04b170128ac9a0acf1dba3225c</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=537a6f0d-0cf9-5a80-82d6-618ec790e7a6&amp;goalFingerprint=sha256%3Af27e8185ebf3078bf167b1611e856bce7736aa04b170128ac9a0acf1dba3225c&amp;pageFingerprint=sha256%3Ac29a61706f36324cd4a8187a5105188b2253b8fee060fd5d9d742414c215c6c0&amp;bookDigest=sha256%3A584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-61da4203-44c1-5e60-8880-5e8a64943675" data-goal-id="61da4203-44c1-5e60-8880-5e8a64943675" data-page-number="12" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-61da4203-44c1-5e60-8880-5e8a64943675-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-61da4203-44c1-5e60-8880-5e8a64943675-title"><a class="goal-self-link" href="#goal-61da4203-44c1-5e60-8880-5e8a64943675">Öffentlich-rechtliche Regelungen beurteilen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>61da4203-44c1-5e60-8880-5e8a64943675</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:60264b1fd527646fbdcff9420b5bd049dfa3441afb7282681152996388fbb1f7" data-rendered-digest="sha256:d5afe39f7961a53ee58da0cf4afa287003ca4de0658bfce045b111d2fe5d9e22" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/61da4203-44c1-5e60-8880-5e8a64943675/61da4203-44c1-5e60-8880-5e8a64943675.png" alt="Eine vielfältige Gruppe bespricht eine öffentliche Regel auf einer gemeinsamen Tafel anhand von Zweck, Gerechtigkeit und gesellschaftlichem Wandel; eine Waage und offene Fragen unterstützen die Beurteilung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-61da4203-44c1-5e60-8880-5e8a64943675-description-heading">
+        <p class="section-heading" id="goal-61da4203-44c1-5e60-8880-5e8a64943675-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Zweck und Ausgestaltung ausgewählter öffentlich-rechtlicher Regelungen im Hinblick auf Rechtsfunktionen, Gerechtigkeit und gesellschaftlichen Wandel beurteilen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-61da4203-44c1-5e60-8880-5e8a64943675-requires-heading">
+          <p class="section-heading" id="goal-61da4203-44c1-5e60-8880-5e8a64943675-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-537a6f0d-0cf9-5a80-82d6-618ec790e7a6"><span>Öffentlich-rechtliche Folgen jugendlichen Handelns analysieren</span><code>537a6f0d-0cf9-5a80-82d6-618ec790e7a6</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-61da4203-44c1-5e60-8880-5e8a64943675-reverse-heading">
+          <p class="section-heading" id="goal-61da4203-44c1-5e60-8880-5e8a64943675-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7"><span>Jugendstrafrechtliche Tatbestände prüfen</span><code>b44892ea-32dc-5a91-8bba-2f422af7c6e7</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 19</span>
+      <span>Buch-Digest <code>sha256:584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0e2c5564373e5182ccbc576ae0cfb701c9411fc8de917d47ff0027006f3caf9d</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=61da4203-44c1-5e60-8880-5e8a64943675&amp;goalFingerprint=sha256%3A0e2c5564373e5182ccbc576ae0cfb701c9411fc8de917d47ff0027006f3caf9d&amp;pageFingerprint=sha256%3Ab4652983508edd48c077407cd3a0cdf4599d8cb4005b3e26b0073f6dfedfebb1&amp;bookDigest=sha256%3A584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7" data-goal-id="b44892ea-32dc-5a91-8bba-2f422af7c6e7" data-page-number="13" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7-title"><a class="goal-self-link" href="#goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7">Jugendstrafrechtliche Tatbestände prüfen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b44892ea-32dc-5a91-8bba-2f422af7c6e7</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:21f109039ff059137d6486e35ca3134b97f1562041a89ea1a75a69a75381b7bc" data-rendered-digest="sha256:fe91cbc7c9ebc668199a4a0bcfdd8174fcfe258675de6fa993c432eeb788798b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/b44892ea-32dc-5a91-8bba-2f422af7c6e7/b44892ea-32dc-5a91-8bba-2f422af7c6e7.png" alt="Eine junge Person prüft gemeinsam mit einer Mentorin Merkmale und Belege eines hypothetischen Schadensfalls; die Prüfung bleibt durch ein großes Fragezeichen offen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7-description-heading">
+        <p class="section-heading" id="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Fälle der Jugendkriminalität mithilfe juristischer Arbeitstechniken auf Tatbestandsmerkmale prüfen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7-requires-heading">
+          <p class="section-heading" id="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-dae93971-726c-56e5-8044-19dbd40febf7"><span>Rechtsnormen auf konkrete Sachverhalte anwenden</span><code>dae93971-726c-56e5-8044-19dbd40febf7</code><span class="reference-page">S. 9</span></a></li><li><a href="#goal-61da4203-44c1-5e60-8880-5e8a64943675"><span>Öffentlich-rechtliche Regelungen beurteilen</span><code>61da4203-44c1-5e60-8880-5e8a64943675</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7-reverse-heading">
+          <p class="section-heading" id="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-d9a3db94-2629-53d0-80c6-801adc0f6641"><span>Rechtsfolgen von Jugendstraftaten beurteilen</span><code>d9a3db94-2629-53d0-80c6-801adc0f6641</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-51203e8f-a1f4-5072-8d32-d5b718691592" rel="noreferrer noopener"><span>Recht als Handlungsrahmen vertiefen</span> <code>51203e8f-a1f4-5072-8d32-d5b718691592</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-be602e0c-2082-5c1a-808b-ca492ba40f2d" rel="noreferrer noopener"><span>Strafbarkeit anhand des Deliktsaufbaus begründen</span> <code>be602e0c-2082-5c1a-808b-ca492ba40f2d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 19</span>
+      <span>Buch-Digest <code>sha256:584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d23cbd38c2f706d5812fc20c45cd51d3bf797a65b102bb2df964be2df993ce8b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=b44892ea-32dc-5a91-8bba-2f422af7c6e7&amp;goalFingerprint=sha256%3Ad23cbd38c2f706d5812fc20c45cd51d3bf797a65b102bb2df964be2df993ce8b&amp;pageFingerprint=sha256%3Ab5909ae997133674ab404e69a1b8d851ad97bf67102746b2889976268c3b2739&amp;bookDigest=sha256%3A584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d9a3db94-2629-53d0-80c6-801adc0f6641" data-goal-id="d9a3db94-2629-53d0-80c6-801adc0f6641" data-page-number="14" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-d9a3db94-2629-53d0-80c6-801adc0f6641-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d9a3db94-2629-53d0-80c6-801adc0f6641-title"><a class="goal-self-link" href="#goal-d9a3db94-2629-53d0-80c6-801adc0f6641">Rechtsfolgen von Jugendstraftaten beurteilen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d9a3db94-2629-53d0-80c6-801adc0f6641</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:748dcadea3c6a568628c2835284565bd4aaa8b08c8a04afe860a675f48019b66" data-rendered-digest="sha256:1359f01ac0dcbbce19bafba0aae57bd916b9ee88863b713f3d88d97d18035d0c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/d9a3db94-2629-53d0-80c6-801adc0f6641/d9a3db94-2629-53d0-80c6-801adc0f6641.png" alt="Eine Jugendliche und eine Mentorin betrachten mögliche erzieherische Reaktionen und soziale Lernwege; eine Waage stellt die begründete Abwägung dar.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d9a3db94-2629-53d0-80c6-801adc0f6641-description-heading">
+        <p class="section-heading" id="goal-d9a3db94-2629-53d0-80c6-801adc0f6641-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Rechtsfolgen von Jugendstraftaten im Hinblick auf den Erziehungsgedanken beurteilen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d9a3db94-2629-53d0-80c6-801adc0f6641-requires-heading">
+          <p class="section-heading" id="goal-d9a3db94-2629-53d0-80c6-801adc0f6641-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-b44892ea-32dc-5a91-8bba-2f422af7c6e7"><span>Jugendstrafrechtliche Tatbestände prüfen</span><code>b44892ea-32dc-5a91-8bba-2f422af7c6e7</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-d9a3db94-2629-53d0-80c6-801adc0f6641-reverse-heading">
+          <p class="section-heading" id="goal-d9a3db94-2629-53d0-80c6-801adc0f6641-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-d9a3db94-2629-53d0-80c6-801adc0f6641-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d9a3db94-2629-53d0-80c6-801adc0f6641-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-57984b50-0dbe-4fb1-a020-0f25953a8b74" rel="noreferrer noopener"><span>E-Phase: Reparaturförderung, Konsumentscheidung und Verbraucherrechte</span> <code>57984b50-0dbe-4fb1-a020-0f25953a8b74</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 19</span>
+      <span>Buch-Digest <code>sha256:584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2dee73691df3dc58a98043d548b6ec147b9e6efd6e39dab3138fda82cc346af2</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=d9a3db94-2629-53d0-80c6-801adc0f6641&amp;goalFingerprint=sha256%3A2dee73691df3dc58a98043d548b6ec147b9e6efd6e39dab3138fda82cc346af2&amp;pageFingerprint=sha256%3Ae54c7c900f096e2e9fa7f6c50d36f363dbdb24f29d630096ec5a07dc4e52152f&amp;bookDigest=sha256%3A584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-bd413a7c-775a-5318-813c-0b75578f9a11" data-goal-id="bd413a7c-775a-5318-813c-0b75578f9a11" data-page-number="15" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-bd413a7c-775a-5318-813c-0b75578f9a11-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-bd413a7c-775a-5318-813c-0b75578f9a11-title"><a class="goal-self-link" href="#goal-bd413a7c-775a-5318-813c-0b75578f9a11">Juristische Arbeitstechniken im Kaufrecht anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>bd413a7c-775a-5318-813c-0b75578f9a11</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2594c84727f25d00fc9009efc35d6a1908711ac738376975a579894c7c102e0c" data-rendered-digest="sha256:39b859d513e6c0205c96230c36433a16d3f728247c11b26659ca54bfb0b79e62" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/bd413a7c-775a-5318-813c-0b75578f9a11/bd413a7c-775a-5318-813c-0b75578f9a11.png" alt="Eine Gruppe nutzt eine gemeinsame BGB-Konzeptkarte mit Vertrags- und Kaufzweig und einem geordneten Weg zur Fallprüfung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-bd413a7c-775a-5318-813c-0b75578f9a11-description-heading">
+        <p class="section-heading" id="goal-bd413a7c-775a-5318-813c-0b75578f9a11-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann zur Klärung rechtlicher Fragestellungen, insbesondere bei Kaufhandlungen, grundlegende juristische Arbeitstechniken und die Systematik des Bürgerlichen Gesetzbuches anwenden.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-bd413a7c-775a-5318-813c-0b75578f9a11-requires-heading">
+          <p class="section-heading" id="goal-bd413a7c-775a-5318-813c-0b75578f9a11-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-c4faf50c-8778-5540-8276-87840cc81e05"><span>Verbraucherrechte in Kaufsituationen kommunizieren</span><code>c4faf50c-8778-5540-8276-87840cc81e05</code><span class="reference-page">S. 8</span></a></li><li><a href="#goal-dae93971-726c-56e5-8044-19dbd40febf7"><span>Rechtsnormen auf konkrete Sachverhalte anwenden</span><code>dae93971-726c-56e5-8044-19dbd40febf7</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-bd413a7c-775a-5318-813c-0b75578f9a11-reverse-heading">
+          <p class="section-heading" id="goal-bd413a7c-775a-5318-813c-0b75578f9a11-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-3897fc05-a8fc-5045-8d7f-9efeabcd098d"><span>Gesetzliche Ansprüche juristisch begründen</span><code>3897fc05-a8fc-5045-8d7f-9efeabcd098d</code><span class="reference-page">S. 16</span></a></li><li><a href="#goal-87e1971d-d153-59eb-81d9-e361caf83a26"><span>Leistungsstörungen im Kaufrecht systematisch analysieren</span><code>87e1971d-d153-59eb-81d9-e361caf83a26</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-bd413a7c-775a-5318-813c-0b75578f9a11-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-bd413a7c-775a-5318-813c-0b75578f9a11-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-mem_de_gym_economics_business_law" rel="noreferrer noopener"><span>Lernkarten - Wirtschaftsrecht und Falltechnik</span> <code>mem_de_gym_economics_business_law</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-78e87088-f467-5541-8239-99d24b3958b3" rel="noreferrer noopener"><span>Tatbestandsmerkmale im Rahmen der Subsumtion abwägen</span> <code>78e87088-f467-5541-8239-99d24b3958b3</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-479fb87a-3a5a-5892-8b3e-dfb1d07e9612" rel="noreferrer noopener"><span>Vertragstypen und Pflichten der Vertragsparteien abgrenzen</span> <code>479fb87a-3a5a-5892-8b3e-dfb1d07e9612</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-be602e0c-2082-5c1a-808b-ca492ba40f2d" rel="noreferrer noopener"><span>Strafbarkeit anhand des Deliktsaufbaus begründen</span> <code>be602e0c-2082-5c1a-808b-ca492ba40f2d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 15 von 19</span>
+      <span>Buch-Digest <code>sha256:584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:84be9b67b3da717bc20544461107316324fc4021bfd15c0c81899f9073e58be6</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=bd413a7c-775a-5318-813c-0b75578f9a11&amp;goalFingerprint=sha256%3A84be9b67b3da717bc20544461107316324fc4021bfd15c0c81899f9073e58be6&amp;pageFingerprint=sha256%3A6d07251562ef3d6da30fcba32c5eec3ed9cc69dcf1ceb7cf690eb156dd47e8ff&amp;bookDigest=sha256%3A584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3897fc05-a8fc-5045-8d7f-9efeabcd098d" data-goal-id="3897fc05-a8fc-5045-8d7f-9efeabcd098d" data-page-number="16" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-3897fc05-a8fc-5045-8d7f-9efeabcd098d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-3897fc05-a8fc-5045-8d7f-9efeabcd098d-title"><a class="goal-self-link" href="#goal-3897fc05-a8fc-5045-8d7f-9efeabcd098d">Gesetzliche Ansprüche juristisch begründen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3897fc05-a8fc-5045-8d7f-9efeabcd098d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:7f4fb744dabe28f7f14fdfdcae315d1b71afd9dd2b85c996bc023a7ca4796874" data-rendered-digest="sha256:de88708c91b669419366ceabb2468aca07da2ac4cdc133bdff53837f81b20f28" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/3897fc05-a8fc-5045-8d7f-9efeabcd098d/3897fc05-a8fc-5045-8d7f-9efeabcd098d.png" alt="Eine Person strukturiert gegenüber einem Verkäufer einen Anspruch, seine Begründung und eine Mitteilung; Normbuch, Lupe und Briefsymbol unterstützen die Schritte.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3897fc05-a8fc-5045-8d7f-9efeabcd098d-description-heading">
+        <p class="section-heading" id="goal-3897fc05-a8fc-5045-8d7f-9efeabcd098d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann gesetzliche Ansprüche in konkreten Fallbeispielen rechtstechnisch begründen und juristisch fundierte Texte zur Durchsetzung dieser Ansprüche formulieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3897fc05-a8fc-5045-8d7f-9efeabcd098d-requires-heading">
+          <p class="section-heading" id="goal-3897fc05-a8fc-5045-8d7f-9efeabcd098d-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-bd413a7c-775a-5318-813c-0b75578f9a11"><span>Juristische Arbeitstechniken im Kaufrecht anwenden</span><code>bd413a7c-775a-5318-813c-0b75578f9a11</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-3897fc05-a8fc-5045-8d7f-9efeabcd098d-reverse-heading">
+          <p class="section-heading" id="goal-3897fc05-a8fc-5045-8d7f-9efeabcd098d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-3ed27350-0257-5690-89d9-5acefeffcf68"><span>Gerechten Interessenausgleich in Rechtsfällen diskutieren</span><code>3ed27350-0257-5690-89d9-5acefeffcf68</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-3897fc05-a8fc-5045-8d7f-9efeabcd098d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3897fc05-a8fc-5045-8d7f-9efeabcd098d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-78e87088-f467-5541-8239-99d24b3958b3" rel="noreferrer noopener"><span>Tatbestandsmerkmale im Rahmen der Subsumtion abwägen</span> <code>78e87088-f467-5541-8239-99d24b3958b3</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-941ea650-6f11-55c0-84f3-120246b9d124" rel="noreferrer noopener"><span>Schadensersatz neben der Leistung bei Nebenpflichtverletzung begründen</span> <code>941ea650-6f11-55c0-84f3-120246b9d124</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-9a5b2913-75d4-59d5-8a10-d255a8af80f4" rel="noreferrer noopener"><span>Ansprüche bei verspäteter und unmöglicher Leistung begründen</span> <code>9a5b2913-75d4-59d5-8a10-d255a8af80f4</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 16 von 19</span>
+      <span>Buch-Digest <code>sha256:584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:739506d52e156543e24c9cc7980df4063cef5e52078c7f30282aba73dde1d491</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=3897fc05-a8fc-5045-8d7f-9efeabcd098d&amp;goalFingerprint=sha256%3A739506d52e156543e24c9cc7980df4063cef5e52078c7f30282aba73dde1d491&amp;pageFingerprint=sha256%3A21d57a2fa9203c5feccd2dd50e27909f3f6fed833fb6d01824d212d2bc4c6150&amp;bookDigest=sha256%3A584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3ed27350-0257-5690-89d9-5acefeffcf68" data-goal-id="3ed27350-0257-5690-89d9-5acefeffcf68" data-page-number="17" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-3ed27350-0257-5690-89d9-5acefeffcf68-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-3ed27350-0257-5690-89d9-5acefeffcf68-title"><a class="goal-self-link" href="#goal-3ed27350-0257-5690-89d9-5acefeffcf68">Gerechten Interessenausgleich in Rechtsfällen diskutieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3ed27350-0257-5690-89d9-5acefeffcf68</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2122ad089afcfa18bc871fba986cf0bde7df2c0e01927e69dd305000237b8e11" data-rendered-digest="sha256:0877d2aed2752ba3a044ea04658464a7a11c4b3a819f4e1cfab0bd7b5bd80d67" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/3ed27350-0257-5690-89d9-5acefeffcf68/3ed27350-0257-5690-89d9-5acefeffcf68.png" alt="Zwei Parteien besprechen ihre unterschiedlichen Interessen vor einer gemeinsamen Regelgrundlage und einer offenen Ausgleichswaage.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3ed27350-0257-5690-89d9-5acefeffcf68-description-heading">
+        <p class="section-heading" id="goal-3ed27350-0257-5690-89d9-5acefeffcf68-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Möglichkeiten eines gerechten Interessenausgleichs anhand praxisnaher Fallbeispiele vor dem Hintergrund einschlägiger gesetzlicher Regelungen diskutieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3ed27350-0257-5690-89d9-5acefeffcf68-requires-heading">
+          <p class="section-heading" id="goal-3ed27350-0257-5690-89d9-5acefeffcf68-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-3897fc05-a8fc-5045-8d7f-9efeabcd098d"><span>Gesetzliche Ansprüche juristisch begründen</span><code>3897fc05-a8fc-5045-8d7f-9efeabcd098d</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-3ed27350-0257-5690-89d9-5acefeffcf68-reverse-heading">
+          <p class="section-heading" id="goal-3ed27350-0257-5690-89d9-5acefeffcf68-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-87e1971d-d153-59eb-81d9-e361caf83a26"><span>Leistungsstörungen im Kaufrecht systematisch analysieren</span><code>87e1971d-d153-59eb-81d9-e361caf83a26</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 17 von 19</span>
+      <span>Buch-Digest <code>sha256:584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7148dde489b45de8cf746cddd5daac11d9f563d6002446e2cbffc9df7076b007</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=3ed27350-0257-5690-89d9-5acefeffcf68&amp;goalFingerprint=sha256%3A7148dde489b45de8cf746cddd5daac11d9f563d6002446e2cbffc9df7076b007&amp;pageFingerprint=sha256%3Adc2308ce7bab9481f1ce0086ec396a8343af544953890ffa9f59150278c76d39&amp;bookDigest=sha256%3A584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-87e1971d-d153-59eb-81d9-e361caf83a26" data-goal-id="87e1971d-d153-59eb-81d9-e361caf83a26" data-page-number="18" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-87e1971d-d153-59eb-81d9-e361caf83a26-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-87e1971d-d153-59eb-81d9-e361caf83a26-title"><a class="goal-self-link" href="#goal-87e1971d-d153-59eb-81d9-e361caf83a26">Leistungsstörungen im Kaufrecht systematisch analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>87e1971d-d153-59eb-81d9-e361caf83a26</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f4fa9b084306ba720bd4e21600d9037f5a8ab842d7b46e3007287d57d4f884d6" data-rendered-digest="sha256:225708bcb1ce91032a236bbb83a244131b026447105d7488f203094649e91f2e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/87e1971d-d153-59eb-81d9-e361caf83a26/87e1971d-d153-59eb-81d9-e361caf83a26.png" alt="Zwei Parteien betrachten einen Vertrag mit drei getrennten Beispielen für Verzug, Unmöglichkeit und Mangel; jeder Zweig führt zu einer offenen Folgenfrage.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-87e1971d-d153-59eb-81d9-e361caf83a26-description-heading">
+        <p class="section-heading" id="goal-87e1971d-d153-59eb-81d9-e361caf83a26-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann anhand konkreter Fälle die grundlegende Systematik des Rechts der Leistungsstörungen nachvollziehen und die gesetzgeberische Intention eines gerechten Interessenausgleichs einordnen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-87e1971d-d153-59eb-81d9-e361caf83a26-requires-heading">
+          <p class="section-heading" id="goal-87e1971d-d153-59eb-81d9-e361caf83a26-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-bd413a7c-775a-5318-813c-0b75578f9a11"><span>Juristische Arbeitstechniken im Kaufrecht anwenden</span><code>bd413a7c-775a-5318-813c-0b75578f9a11</code><span class="reference-page">S. 15</span></a></li><li><a href="#goal-3ed27350-0257-5690-89d9-5acefeffcf68"><span>Gerechten Interessenausgleich in Rechtsfällen diskutieren</span><code>3ed27350-0257-5690-89d9-5acefeffcf68</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-87e1971d-d153-59eb-81d9-e361caf83a26-reverse-heading">
+          <p class="section-heading" id="goal-87e1971d-d153-59eb-81d9-e361caf83a26-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d"><span>Mangelhafte Leistung im Kaufrecht identifizieren</span><code>ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-87e1971d-d153-59eb-81d9-e361caf83a26-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-87e1971d-d153-59eb-81d9-e361caf83a26-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-941ea650-6f11-55c0-84f3-120246b9d124" rel="noreferrer noopener"><span>Schadensersatz neben der Leistung bei Nebenpflichtverletzung begründen</span> <code>941ea650-6f11-55c0-84f3-120246b9d124</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-9a5b2913-75d4-59d5-8a10-d255a8af80f4" rel="noreferrer noopener"><span>Ansprüche bei verspäteter und unmöglicher Leistung begründen</span> <code>9a5b2913-75d4-59d5-8a10-d255a8af80f4</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 18 von 19</span>
+      <span>Buch-Digest <code>sha256:584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:98a99ca9909e60a19b5a81e30cd97deca0cc03f48c95fadc548c5ec292dc7081</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=87e1971d-d153-59eb-81d9-e361caf83a26&amp;goalFingerprint=sha256%3A98a99ca9909e60a19b5a81e30cd97deca0cc03f48c95fadc548c5ec292dc7081&amp;pageFingerprint=sha256%3A1f9ed3ba9a2e96c0bf55976ea2213def900358082bc18f59a1c101686989bfe7&amp;bookDigest=sha256%3A584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a&amp;page=18" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d" data-goal-id="ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d" data-page-number="19" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9d4ca8c5-9190-5698-8e95-8a9b4e7ea5d6" aria-labelledby="goal-ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d-title"><a class="goal-self-link" href="#goal-ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d">Mangelhafte Leistung im Kaufrecht identifizieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-0697ca062197115c2538b690">Rechtlich verantwortliches Handeln</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3df8730161860bbcbdc788f91723c41caa673ae87c6851b68369636e4ea75552" data-rendered-digest="sha256:71ed8a30986c2aa77ceb6efeec914f998a3a7e79a84224b01d473fdcfdd0a333" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d/ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d.png" alt="Eine Käuferin vergleicht bei demselben Stuhl das vereinbarte unbeschädigte Bein mit dem tatsächlich beschädigten Bein und fragt nach einem Mangel.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d-description-heading">
+        <p class="section-heading" id="goal-ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in konkreten Kaufrechtsfällen mangelhafte Leistungen anhand der Systematik der Mangelfreiheit identifizieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d-requires-heading">
+          <p class="section-heading" id="goal-ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-87e1971d-d153-59eb-81d9-e361caf83a26"><span>Leistungsstörungen im Kaufrecht systematisch analysieren</span><code>87e1971d-d153-59eb-81d9-e361caf83a26</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d-reverse-heading">
+          <p class="section-heading" id="goal-ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-fe55b4b3-9eca-46ce-a3a6-f7a0a84daf12" rel="noreferrer noopener"><span>Q3: Lieferkettenresilienz, Währungstrilemma und Kaufrechtsfall</span> <code>fe55b4b3-9eca-46ce-a3a6-f7a0a84daf12</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 19 von 19</span>
+      <span>Buch-Digest <code>sha256:584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ab8c318c5a1194c19b4ab9397b6de4d7f9a9db314e676c525b974eda4bfbb3e8</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d&amp;goalFingerprint=sha256%3Aab8c318c5a1194c19b4ab9397b6de4d7f9a9db314e676c525b974eda4bfbb3e8&amp;pageFingerprint=sha256%3A4d8051d1a60701cfedf86f9c83f743381e779188c21ad99407275b9837af60c1&amp;bookDigest=sha256%3A584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a&amp;page=19" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-08T16:32:01.811339+00:00",
+  "role": "technical_native_current_two_bindings_after_actual_substantive_review",
+  "actualCommands": [
+    {
+      "name": "native-P2-materialize",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-current311-bounded-P2-AM2-native-successor-v1/positive-two-current-native-stage.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-current311-bounded-P2-AM2-native-successor-v1/positive-two-whole-profile-retention.current-candidates.json",
+        "--write"
+      ],
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-P20-current-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-current311-bounded-P2-AM2-native-successor-v1/positive-current-twenty.config.json",
+        "--mode=check"
+      ],
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-atomicity-two-binding-fingerprints",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-current311-bounded-P2-AM2-native-successor-v1/atomicity.config.json",
+        "--mode=check",
+        "--write-fingerprints"
+      ],
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-atomicity-current311-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-current311-bounded-P2-AM2-native-successor-v1/atomicity.config.json",
+        "--mode=check"
+      ],
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-memory-two-binding-fingerprints",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-current311-bounded-P2-AM2-native-successor-v1/memory.config.json",
+        "--mode=check",
+        "--write-fingerprints"
+      ],
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-memory-current311-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-current311-bounded-P2-AM2-native-successor-v1/memory.config.json",
+        "--mode=check"
+      ],
+      "actualExitCode": 0
+    }
+  ],
+  "actualWholeRowParity": [
+    {
+      "label": "P20",
+      "wholeUnchangedRowCount": 18,
+      "wholeChangedRowCount": 2,
+      "actualChangedGoalIds": [
+        "15d18bd1-0ae1-58c8-89fd-623bebe12041",
+        "da43dd2a-693b-5327-811f-c4c19ee064cd"
+      ],
+      "oldPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q-business-macro-twenty-native-preparation-technical-20261008-v2/positive-final-images.records.candidate.jsonl",
+      "newPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-current311-bounded-P2-AM2-native-successor-v1/positive-current-twenty.records.jsonl"
+    },
+    {
+      "label": "A311",
+      "wholeUnchangedRowCount": 309,
+      "wholeChangedRowCount": 2,
+      "actualChangedGoalIds": [
+        "15d18bd1-0ae1-58c8-89fd-623bebe12041",
+        "da43dd2a-693b-5327-811f-c4c19ee064cd"
+      ],
+      "oldPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-eleven-future311-reviewed-current-source-bindings-v4/atomicity.review.jsonl",
+      "newPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-current311-bounded-P2-AM2-native-successor-v1/atomicity.review.jsonl"
+    },
+    {
+      "label": "M311",
+      "wholeUnchangedRowCount": 309,
+      "wholeChangedRowCount": 2,
+      "actualChangedGoalIds": [
+        "15d18bd1-0ae1-58c8-89fd-623bebe12041",
+        "da43dd2a-693b-5327-811f-c4c19ee064cd"
+      ],
+      "oldPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-eleven-future311-reviewed-current-source-bindings-v4/memory.review.jsonl",
+      "newPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-current311-bounded-P2-AM2-native-successor-v1/memory.review.jsonl"
+    }
+  ],
+  "wholeTwoPProfilesAndCasesRetained": true,
+  "whole52CardReviewsRetained": true,
+  "PStatusStillNeedsHumanReviewAiCandidateE1G1": true,
+  "priorReviewsNotRestarted": true,
+  "substantiveReviewReceiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-bounded-P2-AM2-substantive-review-v1/actual-independent-bounded-two-P-AM-prerequisite-review.receipt.json",
+  "substantiveReviewSha256": "e99847d8cf1a034e181340de89958f2c12e6606ba9817cf1a1267ec8a364e9ce",
+  "memoryActualNativeReportPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-current311-bounded-P2-AM2-native-successor-v1/memory.native-report.md",
+  "liveWrites": 0,
+  "newStrictClosures": 0
+}

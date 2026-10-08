@@ -1,0 +1,52 @@
+{
+  "schemaVersion": "economics-independent-native-results-validation-receipt-v1",
+  "receiptId": "wirtschaft-q1-nine-independent-native-results-validation-20261008-v1",
+  "recordedAt": "2026-10-08T08:34:50.724203+00:00",
+  "reviewerAgentId": "/root/economics_layer_a",
+  "reviewer": "OpenAI/Codex session; exact model identifier undisclosed",
+  "runId": "wirtschaft-q1-nine-independent-description-round-b-codex-20261008-v1",
+  "validation": {
+    "command": [
+      "app/node_modules/.bin/tsx",
+      "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+      "--bundle",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q1-nine-native-preparation-technical-20261008-v1/native-d-q1-nine-final/round-b/review-bundle-manifest.json",
+      "--input",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q1-nine-native-preparation-technical-20261008-v1/native-d-q1-nine-final/round-b/description-review-input.json",
+      "--campaign",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q1-nine-native-preparation-technical-20261008-v1/native-d-q1-nine-final/round-b/description-review-campaign.json",
+      "--batches-dir",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q1-nine-native-preparation-technical-20261008-v1/native-d-q1-nine-final/round-b/batches",
+      "--results-dir",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q1-nine-native-preparation-technical-20261008-v1/native-d-q1-nine-final/round-b/results"
+    ],
+    "actualObservedExitCode": 0,
+    "actualObservedStdout": "Goal-description review campaign results valid: 9",
+    "validatedRecords": 9,
+    "scope": "own frozen round-b only; no live canonical mutation"
+  },
+  "bindings": {
+    "bundleFingerprint": "sha256:9cc7cd0e3c2db25611d5e79faa1756ea0dc0189862421e096cf2fa5449113510",
+    "bookModelFingerprint": "sha256:e62430f1d4864beab5b9fc577935fcc0cf43d9638ac2386b9f84f0f42d6a669c",
+    "records": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q1-nine-native-preparation-technical-20261008-v1/native-d-q1-nine-final/round-b/results/wirtschaft-q1-nine-current303-final-author-v2-20261008-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:1d7ec3c6b33fbad2d0c8ae49ab278980717f195a947f2e67e3b8802eb7f7cafc"
+    },
+    "run": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q1-nine-native-preparation-technical-20261008-v1/native-d-q1-nine-final/round-b/results/wirtschaft-q1-nine-current303-final-author-v2-20261008-first-pass-b.batch-001.run.json",
+      "sha256": "sha256:8d432cfa2bb29d4a0c68863689281db322df8f5feeabccd1e817ec70c85a35b6"
+    },
+    "inspectionReceipt": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q1-nine-native-preparation-technical-20261008-v1/native-d-q1-nine-final/round-b/independent-description-page-inspection.actual.json",
+      "sha256": "sha256:58a203f44ac4486a680637c2fbb0fe665a3ed3f9124a1770cd06cdf27ee9b2ba"
+    }
+  },
+  "limits": [
+    "All nine frozen input evidenceProfile and page evidenceReview fields are null; all nine records honestly recommend creation, without asserting a profile was present in the book.",
+    "Separate actual P-v2 evidence and its independent acceptance remain outside this D verdict.",
+    "Observed raw goal tags around GK goal 72 and its LK prerequisites are not treated as effective-scope or readiness proof.",
+    "No human release approval, learner evidence, live integration, strict counting or completion of other gates is claimed."
+  ],
+  "strictCompletionsAdded": 0,
+  "liveFilesMutated": 0
+}

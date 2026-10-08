@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "role": "actual_guard_interruption",
+  "recordedAt": "2026-10-08T08:57:27.511810+00:00",
+  "failedHelper": "create_bounded_author_successor.py",
+  "cause": "Historical v2 foreign-map snapshot SHA differs from current root-approved BW two-source-location-pointer successor. The original guard correctly stopped before writing whole14/canonical/receipts. No live changes.",
+  "retainedPartialFiles": [
+    "source-components/DE_BY_WR_WWG_TWELVE_UNITS_ELEVEN_NEW_ATOMS.author-v3.source-extraction.json",
+    "mapping/twelve-units-to-eleven-new-and-existing-d3.review.candidate.json"
+  ],
+  "recovery": "New helper validates these existing partial bytes exactly, checks unchanged parent mapping edges, records current root-approved BW pointer successor separately and completes remaining inert author outputs.",
+  "activeWrites": 0,
+  "newStrictClosures": 0
+}

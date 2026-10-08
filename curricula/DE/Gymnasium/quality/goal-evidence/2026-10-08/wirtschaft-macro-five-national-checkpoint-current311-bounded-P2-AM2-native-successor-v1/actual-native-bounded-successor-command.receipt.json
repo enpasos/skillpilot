@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-08T16:32:01.803988+00:00",
+  "actualCommands": [
+    {
+      "name": "native-P2-materialize",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-current311-bounded-P2-AM2-native-successor-v1/positive-two-current-native-stage.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-current311-bounded-P2-AM2-native-successor-v1/positive-two-whole-profile-retention.current-candidates.json",
+        "--write"
+      ],
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-P20-current-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-current311-bounded-P2-AM2-native-successor-v1/positive-current-twenty.config.json",
+        "--mode=check"
+      ],
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-atomicity-two-binding-fingerprints",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-current311-bounded-P2-AM2-native-successor-v1/atomicity.config.json",
+        "--mode=check",
+        "--write-fingerprints"
+      ],
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-atomicity-current311-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-current311-bounded-P2-AM2-native-successor-v1/atomicity.config.json",
+        "--mode=check"
+      ],
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-memory-two-binding-fingerprints",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-current311-bounded-P2-AM2-native-successor-v1/memory.config.json",
+        "--mode=check",
+        "--write-fingerprints"
+      ],
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-memory-current311-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-current311-bounded-P2-AM2-native-successor-v1/memory.config.json",
+        "--mode=check"
+      ],
+      "actualExitCode": 0
+    }
+  ],
+  "completed": true,
+  "liveWrites": 0,
+  "newStrictClosures": 0
+}

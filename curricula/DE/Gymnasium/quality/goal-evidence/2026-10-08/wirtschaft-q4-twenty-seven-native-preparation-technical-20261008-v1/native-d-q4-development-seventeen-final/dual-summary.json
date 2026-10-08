@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:d58f27fdab27cce8230d47b696d5ff7c7b643213d5bf393701a95000b2299734",
+  "reviewInputFingerprint": "sha256:0b2d8764e34b42596593343ff716c3e80ed534dc5c5cee847d9a351815bf1907",
+  "goalCount": 17,
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-a",
+      "roundId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-a",
+      "independenceGroupId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-independent-a",
+      "runIds": [
+        "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-a.actual-codex-session"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact serving model identifier not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-b",
+      "roundId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b",
+      "independenceGroupId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-independent-b",
+      "runIds": [
+        "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact model identifier not disclosed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 17,
+    "unavailable": 0,
+    "requiresSynthesis": 17
+  },
+  "goals": [
+    {
+      "goalId": "f1f73ebe-286a-52e8-a2e1-4383ece6e9ec",
+      "firstRecordId": "wirtschaft-q4-independent-round-a-current-f1f73ebe-286a-52e8-a2e1-4383ece6e9ec",
+      "secondRecordId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1.f1f73ebe-286a-52e8-a2e1-4383ece6e9ec",
+      "firstRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4cccf0da-a0f4-593a-9bf3-4a68c790af40",
+      "firstRecordId": "wirtschaft-q4-independent-round-a-current-4cccf0da-a0f4-593a-9bf3-4a68c790af40",
+      "secondRecordId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1.4cccf0da-a0f4-593a-9bf3-4a68c790af40",
+      "firstRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a56d5e8d-fd09-5961-ad88-34cfdef00baa",
+      "firstRecordId": "wirtschaft-q4-independent-round-a-current-a56d5e8d-fd09-5961-ad88-34cfdef00baa",
+      "secondRecordId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1.a56d5e8d-fd09-5961-ad88-34cfdef00baa",
+      "firstRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fed15db6-e700-514d-a65e-6c2a34f1c81a",
+      "firstRecordId": "wirtschaft-q4-independent-round-a-current-fed15db6-e700-514d-a65e-6c2a34f1c81a",
+      "secondRecordId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1.fed15db6-e700-514d-a65e-6c2a34f1c81a",
+      "firstRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "543bf91f-f6c6-5b1b-ba9e-43de321d8c7f",
+      "firstRecordId": "wirtschaft-q4-independent-round-a-current-543bf91f-f6c6-5b1b-ba9e-43de321d8c7f",
+      "secondRecordId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1.543bf91f-f6c6-5b1b-ba9e-43de321d8c7f",
+      "firstRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f440efea-9d86-589f-8ff9-18e8d3b2efd3",
+      "firstRecordId": "wirtschaft-q4-independent-round-a-current-f440efea-9d86-589f-8ff9-18e8d3b2efd3",
+      "secondRecordId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1.f440efea-9d86-589f-8ff9-18e8d3b2efd3",
+      "firstRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "abb13ea9-615f-5d71-92f9-140ff8b4cbfa",
+      "firstRecordId": "wirtschaft-q4-independent-round-a-current-abb13ea9-615f-5d71-92f9-140ff8b4cbfa",
+      "secondRecordId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1.abb13ea9-615f-5d71-92f9-140ff8b4cbfa",
+      "firstRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d6c7d2ad-492a-5027-9d72-44117f621b92",
+      "firstRecordId": "wirtschaft-q4-independent-round-a-current-d6c7d2ad-492a-5027-9d72-44117f621b92",
+      "secondRecordId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1.d6c7d2ad-492a-5027-9d72-44117f621b92",
+      "firstRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "04809186-3f65-579d-b300-af9ed3e100c1",
+      "firstRecordId": "wirtschaft-q4-independent-round-a-current-04809186-3f65-579d-b300-af9ed3e100c1",
+      "secondRecordId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1.04809186-3f65-579d-b300-af9ed3e100c1",
+      "firstRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e21158e7-3bc3-51f2-887f-9eb5a8dd6243",
+      "firstRecordId": "wirtschaft-q4-independent-round-a-current-e21158e7-3bc3-51f2-887f-9eb5a8dd6243",
+      "secondRecordId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1.e21158e7-3bc3-51f2-887f-9eb5a8dd6243",
+      "firstRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c014b11e-66ba-58a6-93f8-b4526d20e3ab",
+      "firstRecordId": "wirtschaft-q4-independent-round-a-current-c014b11e-66ba-58a6-93f8-b4526d20e3ab",
+      "secondRecordId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1.c014b11e-66ba-58a6-93f8-b4526d20e3ab",
+      "firstRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4fef149e-84c0-59af-b056-0a0bf97dbecd",
+      "firstRecordId": "wirtschaft-q4-independent-round-a-current-4fef149e-84c0-59af-b056-0a0bf97dbecd",
+      "secondRecordId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1.4fef149e-84c0-59af-b056-0a0bf97dbecd",
+      "firstRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2",
+      "firstRecordId": "wirtschaft-q4-independent-round-a-current-2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2",
+      "secondRecordId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1.2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2",
+      "firstRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "dc55f829-9c65-5bde-952c-47f5eacdeb5f",
+      "firstRecordId": "wirtschaft-q4-independent-round-a-current-dc55f829-9c65-5bde-952c-47f5eacdeb5f",
+      "secondRecordId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1.dc55f829-9c65-5bde-952c-47f5eacdeb5f",
+      "firstRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6de44afa-7f91-5fa4-9292-ec06e86e97a4",
+      "firstRecordId": "wirtschaft-q4-independent-round-a-current-6de44afa-7f91-5fa4-9292-ec06e86e97a4",
+      "secondRecordId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1.6de44afa-7f91-5fa4-9292-ec06e86e97a4",
+      "firstRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ac76810e-3f06-570a-b770-8b57acb55d1c",
+      "firstRecordId": "wirtschaft-q4-independent-round-a-current-ac76810e-3f06-570a-b770-8b57acb55d1c",
+      "secondRecordId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1.ac76810e-3f06-570a-b770-8b57acb55d1c",
+      "firstRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e4ae5afd-02dc-538b-9ccb-1b15ca794667",
+      "firstRecordId": "wirtschaft-q4-independent-round-a-current-e4ae5afd-02dc-538b-9ccb-1b15ca794667",
+      "secondRecordId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1.e4ae5afd-02dc-538b-9ccb-1b15ca794667",
+      "firstRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.economics-layer-a-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

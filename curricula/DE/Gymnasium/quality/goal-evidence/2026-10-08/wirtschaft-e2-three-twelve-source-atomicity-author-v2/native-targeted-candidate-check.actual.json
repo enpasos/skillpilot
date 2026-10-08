@@ -1,0 +1,103 @@
+{
+  "role": "technical_author_check",
+  "actualCheckedAt": "2026-10-08T07:18:43.046Z",
+  "nativeCanonicalAuthoringDiagnostics": [],
+  "containsAndRequiresDagsPass": true,
+  "allLocalReferencesExist": true,
+  "candidateGoalCount": 382,
+  "newAtomicGoalCount": 12,
+  "oldWholeGoalsUnchangedExceptThreeStableParents": 367,
+  "stableParentChanges": [
+    {
+      "goalId": "6618c8bf-ed9f-5a8a-8cbf-0a7687a15fd6",
+      "fieldDeltas": [
+        "titleEn",
+        "description",
+        "descriptionEn",
+        "weight",
+        "contains",
+        "requires",
+        "extendedData",
+        "type"
+      ],
+      "children": 4,
+      "oldRequires": [
+        "e2ac2cc2-894a-5e61-8acb-f5d88811739d",
+        "e5b070d2-daa5-5b8e-8782-32bb8a6865d2",
+        "e9c4ec6b-9a54-579d-818f-87a7d39d4e3c"
+      ],
+      "newRequires": []
+    },
+    {
+      "goalId": "c49497e8-a139-5bfb-8a47-39aa72d8cbf3",
+      "fieldDeltas": [
+        "titleEn",
+        "description",
+        "descriptionEn",
+        "weight",
+        "contains",
+        "requires",
+        "extendedData",
+        "type"
+      ],
+      "children": 4,
+      "oldRequires": [
+        "8ad94aeb-81ad-58ce-8792-c691f97efd53",
+        "52e6731e-71e9-53b1-8bb9-b03da445decf"
+      ],
+      "newRequires": []
+    },
+    {
+      "goalId": "25c700f8-91cf-5710-8950-bbff79a0ec50",
+      "fieldDeltas": [
+        "titleEn",
+        "description",
+        "descriptionEn",
+        "weight",
+        "contains",
+        "requires",
+        "extendedData",
+        "type"
+      ],
+      "children": 4,
+      "oldRequires": [
+        "13b6317a-d42a-5a13-8358-c85d883cb4c7",
+        "1d989a89-4b1b-53d3-86ab-dd4986fc5839"
+      ],
+      "newRequires": []
+    }
+  ],
+  "nativeExplicitComponentMappingCqr004": {
+    "id": "CQR-004",
+    "status": "pass",
+    "summary": "Course-level mapping is clean for 0 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+    "metrics": {
+      "configuredMappingFiles": 1,
+      "sourceGoals": 0,
+      "sourceGoalsWithCourseLevel": 0,
+      "gkLkSourceGoals": 0,
+      "lkSourceGoals": 0,
+      "unspecifiedSourceGoals": 0,
+      "checkedMappingEdges": 0,
+      "defaultedUnspecifiedMappingEdges": 0,
+      "reviewedCourseLevelExceptions": 0,
+      "mismatches": 0,
+      "missingSourceGoals": 0,
+      "missingTargetGoals": 0,
+      "unmappedCourseLevelSourceGoals": 0
+    }
+  },
+  "pendingMandatoryChecks": [
+    "Independent all15 source/atomicity/memory review",
+    "Actual current foreign mapping and jurisdiction coverage/applicability",
+    "Two reverseRequires goals and one transitive HE-assessment readiness path",
+    "Current full native LayerA on an approved physically isolated integration",
+    "New positivev2/images/two D reviews"
+  ],
+  "limits": [
+    "Native authoring checks prove graph structure and target/source pointer consistency; they do not prove source-semantic completeness or independent approval.",
+    "SekI component mapping is explicit; CQR004 upper-secondary edge count is0, so no GK/LK subject-matter proof is inferred."
+  ],
+  "activeWrites": 0,
+  "newStrictClosures": 0
+}

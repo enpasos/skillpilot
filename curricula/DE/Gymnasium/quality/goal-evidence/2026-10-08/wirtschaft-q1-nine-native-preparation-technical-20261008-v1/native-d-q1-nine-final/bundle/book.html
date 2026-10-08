@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Wirtschaftswissenschaften Q1: 9 aktuelle Lernziele zu Europäischer Union und Steuerpolitik</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Wirtschaftswissenschaften Q1: 9 aktuelle Lernziele zu Europäischer Union und Steuerpolitik</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>9 atomare Lernziele</dt><dd>5 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:e62430f1d4864beab5b9fc577935fcc0cf43d9638ac2386b9f84f0f42d6a669c</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:wirtschaftswissenschaften-m7-review-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-94e1500621eeee0738ad47ab" aria-label="Wirtschaftswissenschaften – kanonische M7-Prüfsicht"><a href="#goal-8c4d53d1-2617-5e5d-9234-f12d19e38322"><span class="toc-entry-label">Wirtschaftswissenschaften&#160;<wbr>–&#160;<wbr>kanonische&#160;<wbr>M7-Prüfsicht</span></a></h2>
+          <span class="toc-entry-meta"><span>9 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="goal:96183c48-b499-54d7-8530-578f6ff40207" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-a0dfaba9fba054a714038138" aria-label="Wirtschaftswissenschaften"><a href="#goal-8c4d53d1-2617-5e5d-9234-f12d19e38322"><span class="toc-entry-label">Wirtschaftswissenschaften</span></a></h3>
+          <span class="toc-entry-meta"><span>9 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:968172f6-cd1c-5733-ba76-aa59817735eb" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-77289101b2350d37198522ff" aria-label="Q1 Demokratie im Mehrebenensystem"><a href="#goal-8c4d53d1-2617-5e5d-9234-f12d19e38322"><span class="toc-entry-label">Q1&#160;<wbr>Demokratie&#160;<wbr>im&#160;<wbr>Mehrebenensystem</span></a></h4>
+          <span class="toc-entry-meta"><span>9 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:3dd3102b-ce1f-5d7d-a766-496deddedaec" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-71905fa80f2c0feeb8268c02" aria-label="Demokratie jenseits des Nationalstaats"><a href="#goal-8c4d53d1-2617-5e5d-9234-f12d19e38322"><span class="toc-entry-label">Demokratie&#160;<wbr>jenseits&#160;<wbr>des&#160;<wbr>Nationalstaats</span></a></h5>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:849bcfc8-5133-51fe-88de-e3c690ba0826" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-55babaab372acde5e358cc03" aria-label="Steuerpolitik und Interessenkonflikte"><a href="#goal-a307a7f1-9f14-50e5-b7ba-1e70c8465ee7"><span class="toc-entry-label">Steuerpolitik&#160;<wbr>und&#160;<wbr>Interessenkonflikte</span></a></h5>
+          <span class="toc-entry-meta"><span>4 Lernziele</span><span>erste zugehörige Lernzielseite 6</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322" data-goal-id="8c4d53d1-2617-5e5d-9234-f12d19e38322" data-page-number="1" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:968172f6-cd1c-5733-ba76-aa59817735eb goal:3dd3102b-ce1f-5d7d-a766-496deddedaec" aria-labelledby="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-title"><a class="goal-self-link" href="#goal-8c4d53d1-2617-5e5d-9234-f12d19e38322">EU-Institutionen und Entscheidungsprozesse</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8c4d53d1-2617-5e5d-9234-f12d19e38322</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-77289101b2350d37198522ff">Q1 Demokratie im Mehrebenensystem</a></li><li><a href="#chapter-71905fa80f2c0feeb8268c02">Demokratie jenseits des Nationalstaats</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:de77e083ec44529b88ed03a0f27ec6986d33f7b507d01a84b8bdef51747eac72" data-rendered-digest="sha256:6b5d17c18b6e244379a10c384b29cd7e734b320fdfdef5b01a433a6f3e93d393" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/8c4d53d1-2617-5e5d-9234-f12d19e38322/8c4d53d1-2617-5e5d-9234-f12d19e38322.png" alt="Eine Kommissionsvertreterin präsentiert einen Vorschlag. Pfeile führen zu Parlament und Rat und von beiden zu einem gemeinsamen Dokument; im Rat sitzen Vertreter mit unterschiedlich farbigen Länderabzeichen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-description-heading">
+        <p class="section-heading" id="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Entscheidungsverfahren und Institutionen der EU analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-requires-heading">
+          <p class="section-heading" id="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-reverse-heading">
+          <p class="section-heading" id="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8c4d53d1-2617-5e5d-9234-f12d19e38322-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-9a88ee21-93d4-4042-b65c-21e287715433" rel="noreferrer noopener"><span>Q1: EU-Reparaturpolitik, Interessenvertretung und Steuergerechtigkeit</span> <code>9a88ee21-93d4-4042-b65c-21e287715433</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 9</span>
+      <span>Buch-Digest <code>sha256:e62430f1d4864beab5b9fc577935fcc0cf43d9638ac2386b9f84f0f42d6a669c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4e17c0f855c3569980c95917501944230cba8e2605704d9a3703d8d02bd81071</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q1-nine-current303-final-author-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=8c4d53d1-2617-5e5d-9234-f12d19e38322&amp;goalFingerprint=sha256%3A4e17c0f855c3569980c95917501944230cba8e2605704d9a3703d8d02bd81071&amp;pageFingerprint=sha256%3A3bd7a2d49c50295355b44c54048539ae59283d461721a9a3344daf3fa8cc2f7f&amp;bookDigest=sha256%3Ae62430f1d4864beab5b9fc577935fcc0cf43d9638ac2386b9f84f0f42d6a669c&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-79edbe3a-7557-5b3b-a0f2-c31f45b6dad7" data-goal-id="79edbe3a-7557-5b3b-a0f2-c31f45b6dad7" data-page-number="2" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:968172f6-cd1c-5733-ba76-aa59817735eb goal:3dd3102b-ce1f-5d7d-a766-496deddedaec" aria-labelledby="goal-79edbe3a-7557-5b3b-a0f2-c31f45b6dad7-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-79edbe3a-7557-5b3b-a0f2-c31f45b6dad7-title"><a class="goal-self-link" href="#goal-79edbe3a-7557-5b3b-a0f2-c31f45b6dad7">Mehrebenen-Governance in der EU</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>79edbe3a-7557-5b3b-a0f2-c31f45b6dad7</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-77289101b2350d37198522ff">Q1 Demokratie im Mehrebenensystem</a></li><li><a href="#chapter-71905fa80f2c0feeb8268c02">Demokratie jenseits des Nationalstaats</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6ad6c82fc7faa8c840f1b5557160f9cb15ae20832505abfe18aa9dcf4f0d762e" data-rendered-digest="sha256:e9a98d0f94b729584ee2a37c9a328af537593014f78914493ca142e48e120807" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/79edbe3a-7557-5b3b-a0f2-c31f45b6dad7/79edbe3a-7557-5b3b-a0f2-c31f45b6dad7.png" alt="Kommune, Staat und EU erscheinen in drei großen Kreisen an einem gemeinsamen Fluss. Links sammeln Menschen Abfall, in den anderen Kreisen besprechen Gruppen den Fluss und seine grenzüberschreitende Lage.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-79edbe3a-7557-5b3b-a0f2-c31f45b6dad7-description-heading">
+        <p class="section-heading" id="goal-79edbe3a-7557-5b3b-a0f2-c31f45b6dad7-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann EU-Mehrebenenprozesse und Subsidiarität beurteilen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-79edbe3a-7557-5b3b-a0f2-c31f45b6dad7-requires-heading">
+          <p class="section-heading" id="goal-79edbe3a-7557-5b3b-a0f2-c31f45b6dad7-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-79edbe3a-7557-5b3b-a0f2-c31f45b6dad7-reverse-heading">
+          <p class="section-heading" id="goal-79edbe3a-7557-5b3b-a0f2-c31f45b6dad7-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-ab556d14-b0c0-5630-8ee3-f07877fa28bd"><span>Beteiligung und Legitimation in der EU</span><code>ab556d14-b0c0-5630-8ee3-f07877fa28bd</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-79edbe3a-7557-5b3b-a0f2-c31f45b6dad7-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-79edbe3a-7557-5b3b-a0f2-c31f45b6dad7-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 9</span>
+      <span>Buch-Digest <code>sha256:e62430f1d4864beab5b9fc577935fcc0cf43d9638ac2386b9f84f0f42d6a669c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7a6828ed20cd07d42b2730e088ec813c132b81c9ed01047cf3f4088134ccb32d</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q1-nine-current303-final-author-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=79edbe3a-7557-5b3b-a0f2-c31f45b6dad7&amp;goalFingerprint=sha256%3A7a6828ed20cd07d42b2730e088ec813c132b81c9ed01047cf3f4088134ccb32d&amp;pageFingerprint=sha256%3A2da2f764f18a86a0c5b8c862c23a9c6a9ca995bfd0c3d9b2ece4b0a3b490e525&amp;bookDigest=sha256%3Ae62430f1d4864beab5b9fc577935fcc0cf43d9638ac2386b9f84f0f42d6a669c&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ab556d14-b0c0-5630-8ee3-f07877fa28bd" data-goal-id="ab556d14-b0c0-5630-8ee3-f07877fa28bd" data-page-number="3" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:968172f6-cd1c-5733-ba76-aa59817735eb goal:3dd3102b-ce1f-5d7d-a766-496deddedaec" aria-labelledby="goal-ab556d14-b0c0-5630-8ee3-f07877fa28bd-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-ab556d14-b0c0-5630-8ee3-f07877fa28bd-title"><a class="goal-self-link" href="#goal-ab556d14-b0c0-5630-8ee3-f07877fa28bd">Beteiligung und Legitimation in der EU</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ab556d14-b0c0-5630-8ee3-f07877fa28bd</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-77289101b2350d37198522ff">Q1 Demokratie im Mehrebenensystem</a></li><li><a href="#chapter-71905fa80f2c0feeb8268c02">Demokratie jenseits des Nationalstaats</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:7350811b28ad8744ea83d3de137803582e7382c28911a23fcdc90ac6186eb9c4" data-rendered-digest="sha256:40a45cfe56b1392f032addb827b439603feafa948e20b340a8ae351f7f93353d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/ab556d14-b0c0-5630-8ee3-f07877fa28bd/ab556d14-b0c0-5630-8ee3-f07877fa28bd.png" alt="Drei Beteiligungswege führen bildlich zu einem EU-Gebäude: ein Wahlzettel wird in eine Urne gesteckt, eine Person unterschreibt eine öffentliche Tafel und eine vielfältige Gruppe diskutiert miteinander.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ab556d14-b0c0-5630-8ee3-f07877fa28bd-description-heading">
+        <p class="section-heading" id="goal-ab556d14-b0c0-5630-8ee3-f07877fa28bd-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann demokratische Beteiligungswege in EU-Strukturen bewerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ab556d14-b0c0-5630-8ee3-f07877fa28bd-requires-heading">
+          <p class="section-heading" id="goal-ab556d14-b0c0-5630-8ee3-f07877fa28bd-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-79edbe3a-7557-5b3b-a0f2-c31f45b6dad7"><span>Mehrebenen-Governance in der EU</span><code>79edbe3a-7557-5b3b-a0f2-c31f45b6dad7</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-ab556d14-b0c0-5630-8ee3-f07877fa28bd-reverse-heading">
+          <p class="section-heading" id="goal-ab556d14-b0c0-5630-8ee3-f07877fa28bd-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-96c2c114-8474-5e4c-bfcf-c9e526c8c9ad"><span>EU-Politikfelder untersuchen</span><code>96c2c114-8474-5e4c-bfcf-c9e526c8c9ad</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 9</span>
+      <span>Buch-Digest <code>sha256:e62430f1d4864beab5b9fc577935fcc0cf43d9638ac2386b9f84f0f42d6a669c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:8f7b5680cd7f0c7b3143530b22c9cc88e9f13f9fead6264afed25eccffd3f521</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q1-nine-current303-final-author-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=ab556d14-b0c0-5630-8ee3-f07877fa28bd&amp;goalFingerprint=sha256%3A8f7b5680cd7f0c7b3143530b22c9cc88e9f13f9fead6264afed25eccffd3f521&amp;pageFingerprint=sha256%3Abc5f6b0b6af4eefc48f1bce4cf1009c832ff39daa8c5dbc8288649eccfbd29f7&amp;bookDigest=sha256%3Ae62430f1d4864beab5b9fc577935fcc0cf43d9638ac2386b9f84f0f42d6a669c&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-96c2c114-8474-5e4c-bfcf-c9e526c8c9ad" data-goal-id="96c2c114-8474-5e4c-bfcf-c9e526c8c9ad" data-page-number="4" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:968172f6-cd1c-5733-ba76-aa59817735eb goal:3dd3102b-ce1f-5d7d-a766-496deddedaec" aria-labelledby="goal-96c2c114-8474-5e4c-bfcf-c9e526c8c9ad-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-96c2c114-8474-5e4c-bfcf-c9e526c8c9ad-title"><a class="goal-self-link" href="#goal-96c2c114-8474-5e4c-bfcf-c9e526c8c9ad">EU-Politikfelder untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>96c2c114-8474-5e4c-bfcf-c9e526c8c9ad</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-77289101b2350d37198522ff">Q1 Demokratie im Mehrebenensystem</a></li><li><a href="#chapter-71905fa80f2c0feeb8268c02">Demokratie jenseits des Nationalstaats</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b81db12ba94cbe22080312dfd068495e0df27ccb2e79a953214444aa6c7b1132" data-rendered-digest="sha256:e8d601e55b5a9a97acb2f1be474a7e82fc45c3ca24223cbc7f24aecde5e318f8" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/96c2c114-8474-5e4c-bfcf-c9e526c8c9ad/96c2c114-8474-5e4c-bfcf-c9e526c8c9ad.png" alt="Menschen betrachten die Motive Landwirtschaft, Flussumwelt und Containerhandel. Ein gemeinsamer Weg verbindet eine örtliche Gruppe, ein staatliches Gebäude und ein EU-Gebäude.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-96c2c114-8474-5e4c-bfcf-c9e526c8c9ad-description-heading">
+        <p class="section-heading" id="goal-96c2c114-8474-5e4c-bfcf-c9e526c8c9ad-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an Beispielen (Agrar-, Umwelt-, Handelspolitik) Mehrebenenentscheidungen analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-96c2c114-8474-5e4c-bfcf-c9e526c8c9ad-requires-heading">
+          <p class="section-heading" id="goal-96c2c114-8474-5e4c-bfcf-c9e526c8c9ad-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ab556d14-b0c0-5630-8ee3-f07877fa28bd"><span>Beteiligung und Legitimation in der EU</span><code>ab556d14-b0c0-5630-8ee3-f07877fa28bd</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-96c2c114-8474-5e4c-bfcf-c9e526c8c9ad-reverse-heading">
+          <p class="section-heading" id="goal-96c2c114-8474-5e4c-bfcf-c9e526c8c9ad-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-1c0d950c-c618-583f-bfa7-be1d4e3578b6"><span>Interessenvertretung auf EU-Ebene</span><code>1c0d950c-c618-583f-bfa7-be1d4e3578b6</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 9</span>
+      <span>Buch-Digest <code>sha256:e62430f1d4864beab5b9fc577935fcc0cf43d9638ac2386b9f84f0f42d6a669c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:269fee7c43ef70aaafcca71e015e2a658abad93a9e3b1de3daa63ffe51344674</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q1-nine-current303-final-author-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=96c2c114-8474-5e4c-bfcf-c9e526c8c9ad&amp;goalFingerprint=sha256%3A269fee7c43ef70aaafcca71e015e2a658abad93a9e3b1de3daa63ffe51344674&amp;pageFingerprint=sha256%3Af9ff1defefbae48a3fea25333e4b70e9ef625d5f76006654de09cc762175f87e&amp;bookDigest=sha256%3Ae62430f1d4864beab5b9fc577935fcc0cf43d9638ac2386b9f84f0f42d6a669c&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1c0d950c-c618-583f-bfa7-be1d4e3578b6" data-goal-id="1c0d950c-c618-583f-bfa7-be1d4e3578b6" data-page-number="5" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:968172f6-cd1c-5733-ba76-aa59817735eb goal:3dd3102b-ce1f-5d7d-a766-496deddedaec" aria-labelledby="goal-1c0d950c-c618-583f-bfa7-be1d4e3578b6-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1c0d950c-c618-583f-bfa7-be1d4e3578b6-title"><a class="goal-self-link" href="#goal-1c0d950c-c618-583f-bfa7-be1d4e3578b6">Interessenvertretung auf EU-Ebene</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1c0d950c-c618-583f-bfa7-be1d4e3578b6</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-77289101b2350d37198522ff">Q1 Demokratie im Mehrebenensystem</a></li><li><a href="#chapter-71905fa80f2c0feeb8268c02">Demokratie jenseits des Nationalstaats</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:36b42dd3133a0e22cc0c40bf59c5b5d5b661326c38fe812d49dce3e0f000b413" data-rendered-digest="sha256:7df69c773c52981c791fdd6a8ee510bcc279b49176be96934675dc669d33da89" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/1c0d950c-c618-583f-bfa7-be1d4e3578b6/1c0d950c-c618-583f-bfa7-be1d4e3578b6.png" alt="Vertreter mit Fabrik-, Blatt- und Arbeitshandschuhsymbolen besprechen ihre Anliegen mit zwei Personen an einem runden Tisch. Leere Vorschlagskarten, ein offenes Fenster und ein EU-Gebäude prägen die Szene.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1c0d950c-c618-583f-bfa7-be1d4e3578b6-description-heading">
+        <p class="section-heading" id="goal-1c0d950c-c618-583f-bfa7-be1d4e3578b6-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Lobbying/Interessenvertretung in EU-Politikfeldern analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1c0d950c-c618-583f-bfa7-be1d4e3578b6-requires-heading">
+          <p class="section-heading" id="goal-1c0d950c-c618-583f-bfa7-be1d4e3578b6-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-96c2c114-8474-5e4c-bfcf-c9e526c8c9ad"><span>EU-Politikfelder untersuchen</span><code>96c2c114-8474-5e4c-bfcf-c9e526c8c9ad</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-1c0d950c-c618-583f-bfa7-be1d4e3578b6-reverse-heading">
+          <p class="section-heading" id="goal-1c0d950c-c618-583f-bfa7-be1d4e3578b6-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-1c0d950c-c618-583f-bfa7-be1d4e3578b6-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1c0d950c-c618-583f-bfa7-be1d4e3578b6-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-9a88ee21-93d4-4042-b65c-21e287715433" rel="noreferrer noopener"><span>Q1: EU-Reparaturpolitik, Interessenvertretung und Steuergerechtigkeit</span> <code>9a88ee21-93d4-4042-b65c-21e287715433</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 9</span>
+      <span>Buch-Digest <code>sha256:e62430f1d4864beab5b9fc577935fcc0cf43d9638ac2386b9f84f0f42d6a669c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:075c6340d09d762505e76dbff41b9b53c0c0e76db5443e6f3cd641382369be1d</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q1-nine-current303-final-author-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=1c0d950c-c618-583f-bfa7-be1d4e3578b6&amp;goalFingerprint=sha256%3A075c6340d09d762505e76dbff41b9b53c0c0e76db5443e6f3cd641382369be1d&amp;pageFingerprint=sha256%3A15d325c1bc56e5bf18cc700ab542ee524ea68effd3fe27d7e70cc7def36bb72c&amp;bookDigest=sha256%3Ae62430f1d4864beab5b9fc577935fcc0cf43d9638ac2386b9f84f0f42d6a669c&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a307a7f1-9f14-50e5-b7ba-1e70c8465ee7" data-goal-id="a307a7f1-9f14-50e5-b7ba-1e70c8465ee7" data-page-number="6" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:968172f6-cd1c-5733-ba76-aa59817735eb goal:849bcfc8-5133-51fe-88de-e3c690ba0826" aria-labelledby="goal-a307a7f1-9f14-50e5-b7ba-1e70c8465ee7-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a307a7f1-9f14-50e5-b7ba-1e70c8465ee7-title"><a class="goal-self-link" href="#goal-a307a7f1-9f14-50e5-b7ba-1e70c8465ee7">Steuerwirkungen abschätzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a307a7f1-9f14-50e5-b7ba-1e70c8465ee7</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-77289101b2350d37198522ff">Q1 Demokratie im Mehrebenensystem</a></li><li><a href="#chapter-55babaab372acde5e358cc03">Steuerpolitik und Interessenkonflikte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:0d20eb88fc2296e5fc93c580ad9ea195f99827884b344c606979fd1c46b68966" data-rendered-digest="sha256:444f4f3e2978c544f68bdd5835f2cc03cc8940f9a428d21e33a419077ace5449" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/a307a7f1-9f14-50e5-b7ba-1e70c8465ee7/a307a7f1-9f14-50e5-b7ba-1e70c8465ee7.png" alt="Zwei Haushalte sind durch Münzpfeile mit einem Gebäude für öffentliche Aufgaben verbunden. Rechts wägt eine Person in einer Werkstatt Beschäftigung und eine technische Investition ab.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a307a7f1-9f14-50e5-b7ba-1e70c8465ee7-description-heading">
+        <p class="section-heading" id="goal-a307a7f1-9f14-50e5-b7ba-1e70c8465ee7-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Verteilungs- und Anreizwirkungen von Steuerpolitik diskutieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a307a7f1-9f14-50e5-b7ba-1e70c8465ee7-requires-heading">
+          <p class="section-heading" id="goal-a307a7f1-9f14-50e5-b7ba-1e70c8465ee7-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-a307a7f1-9f14-50e5-b7ba-1e70c8465ee7-reverse-heading">
+          <p class="section-heading" id="goal-a307a7f1-9f14-50e5-b7ba-1e70c8465ee7-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-a17899b9-f872-5236-a329-ec1a33d427a3"><span>Steuerpolitische Interessenkonflikte</span><code>a17899b9-f872-5236-a329-ec1a33d427a3</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-a307a7f1-9f14-50e5-b7ba-1e70c8465ee7-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a307a7f1-9f14-50e5-b7ba-1e70c8465ee7-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 9</span>
+      <span>Buch-Digest <code>sha256:e62430f1d4864beab5b9fc577935fcc0cf43d9638ac2386b9f84f0f42d6a669c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ed06fe238eec7093a9b736500fa3173f218713a6b51db43235fa24abbf81f47f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q1-nine-current303-final-author-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=a307a7f1-9f14-50e5-b7ba-1e70c8465ee7&amp;goalFingerprint=sha256%3Aed06fe238eec7093a9b736500fa3173f218713a6b51db43235fa24abbf81f47f&amp;pageFingerprint=sha256%3Abdc04d303acb1c1b797f77c0701a684ea6c22dda1e3a0e79ec4c9095080a95aa&amp;bookDigest=sha256%3Ae62430f1d4864beab5b9fc577935fcc0cf43d9638ac2386b9f84f0f42d6a669c&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a17899b9-f872-5236-a329-ec1a33d427a3" data-goal-id="a17899b9-f872-5236-a329-ec1a33d427a3" data-page-number="7" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:968172f6-cd1c-5733-ba76-aa59817735eb goal:849bcfc8-5133-51fe-88de-e3c690ba0826" aria-labelledby="goal-a17899b9-f872-5236-a329-ec1a33d427a3-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a17899b9-f872-5236-a329-ec1a33d427a3-title"><a class="goal-self-link" href="#goal-a17899b9-f872-5236-a329-ec1a33d427a3">Steuerpolitische Interessenkonflikte</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a17899b9-f872-5236-a329-ec1a33d427a3</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-77289101b2350d37198522ff">Q1 Demokratie im Mehrebenensystem</a></li><li><a href="#chapter-55babaab372acde5e358cc03">Steuerpolitik und Interessenkonflikte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:aa616fd56232e46281d219193a5535fda937039f51b8252889ef0e575fa5bc03" data-rendered-digest="sha256:53a3a9ff1956beacafb9ed763514a83c15f23df7776ab965f77bbea9f119b2a6" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/a17899b9-f872-5236-a329-ec1a33d427a3/a17899b9-f872-5236-a329-ec1a33d427a3.png" alt="Vier Personen diskutieren eine Steuerreform am runden Tisch. Gedankenblasen zeigen verschiedene Haushaltsressourcen, Unternehmensinteressen und öffentliche Leistungen; eine Waage stellt Finanzierung und Versorgung gegenüber.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a17899b9-f872-5236-a329-ec1a33d427a3-description-heading">
+        <p class="section-heading" id="goal-a17899b9-f872-5236-a329-ec1a33d427a3-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Zielkonflikte und Interessengruppen in der Steuerpolitik detailliert analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a17899b9-f872-5236-a329-ec1a33d427a3-requires-heading">
+          <p class="section-heading" id="goal-a17899b9-f872-5236-a329-ec1a33d427a3-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a307a7f1-9f14-50e5-b7ba-1e70c8465ee7"><span>Steuerwirkungen abschätzen</span><code>a307a7f1-9f14-50e5-b7ba-1e70c8465ee7</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a17899b9-f872-5236-a329-ec1a33d427a3-reverse-heading">
+          <p class="section-heading" id="goal-a17899b9-f872-5236-a329-ec1a33d427a3-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-51bcbc9e-7a1c-5caa-9766-9ab97fa72f04"><span>Steuerinstrumente vergleichen</span><code>51bcbc9e-7a1c-5caa-9766-9ab97fa72f04</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-a17899b9-f872-5236-a329-ec1a33d427a3-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a17899b9-f872-5236-a329-ec1a33d427a3-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-e474c510-81b1-5c1b-af9c-2e41c02a026a" rel="noreferrer noopener"><span>Vorschlag A (LK) - Steuerstaat, Schuldenbremse und Demokratieresilienz</span> <code>e474c510-81b1-5c1b-af9c-2e41c02a026a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 9</span>
+      <span>Buch-Digest <code>sha256:e62430f1d4864beab5b9fc577935fcc0cf43d9638ac2386b9f84f0f42d6a669c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:6b782430660830b5138ca5a3c55a086c2d8f31fe042aa22927542a3de8715b8f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q1-nine-current303-final-author-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=a17899b9-f872-5236-a329-ec1a33d427a3&amp;goalFingerprint=sha256%3A6b782430660830b5138ca5a3c55a086c2d8f31fe042aa22927542a3de8715b8f&amp;pageFingerprint=sha256%3A1a08944d6b2c611b4b31988d57efee2b8e550e76fbc0270ce7e36ab0cf21fca2&amp;bookDigest=sha256%3Ae62430f1d4864beab5b9fc577935fcc0cf43d9638ac2386b9f84f0f42d6a669c&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-51bcbc9e-7a1c-5caa-9766-9ab97fa72f04" data-goal-id="51bcbc9e-7a1c-5caa-9766-9ab97fa72f04" data-page-number="8" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:968172f6-cd1c-5733-ba76-aa59817735eb goal:849bcfc8-5133-51fe-88de-e3c690ba0826" aria-labelledby="goal-51bcbc9e-7a1c-5caa-9766-9ab97fa72f04-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-51bcbc9e-7a1c-5caa-9766-9ab97fa72f04-title"><a class="goal-self-link" href="#goal-51bcbc9e-7a1c-5caa-9766-9ab97fa72f04">Steuerinstrumente vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>51bcbc9e-7a1c-5caa-9766-9ab97fa72f04</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-77289101b2350d37198522ff">Q1 Demokratie im Mehrebenensystem</a></li><li><a href="#chapter-55babaab372acde5e358cc03">Steuerpolitik und Interessenkonflikte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b10d3be3d531b8045cb7388d683ad80db5c50a3004d3cdcf25717bbc73a373b1" data-rendered-digest="sha256:8fbcb294e7e58a5e7d365ad7c253ad64edc26c1efc22a4174a1f1396635c7300" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/51bcbc9e-7a1c-5caa-9766-9ab97fa72f04/51bcbc9e-7a1c-5caa-9766-9ab97fa72f04.png" alt="Unter Direkt führt ein Münzpfeil von einer Person mit Einkommensumschlag zur Staatskasse. Unter Indirekt bezahlt eine Kundin im Geschäft, von dem ein weiterer Münzpfeil zur Staatskasse führt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-51bcbc9e-7a1c-5caa-9766-9ab97fa72f04-description-heading">
+        <p class="section-heading" id="goal-51bcbc9e-7a1c-5caa-9766-9ab97fa72f04-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann verschiedene Steuertypen (direkt/indirekt) und deren Wirkungen vergleichen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-51bcbc9e-7a1c-5caa-9766-9ab97fa72f04-requires-heading">
+          <p class="section-heading" id="goal-51bcbc9e-7a1c-5caa-9766-9ab97fa72f04-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a17899b9-f872-5236-a329-ec1a33d427a3"><span>Steuerpolitische Interessenkonflikte</span><code>a17899b9-f872-5236-a329-ec1a33d427a3</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-51bcbc9e-7a1c-5caa-9766-9ab97fa72f04-reverse-heading">
+          <p class="section-heading" id="goal-51bcbc9e-7a1c-5caa-9766-9ab97fa72f04-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-72bde56f-a752-5bc7-8472-24272c6075a0"><span>Gerechtigkeit in der Steuerpolitik</span><code>72bde56f-a752-5bc7-8472-24272c6075a0</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-51bcbc9e-7a1c-5caa-9766-9ab97fa72f04-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-51bcbc9e-7a1c-5caa-9766-9ab97fa72f04-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-e474c510-81b1-5c1b-af9c-2e41c02a026a" rel="noreferrer noopener"><span>Vorschlag A (LK) - Steuerstaat, Schuldenbremse und Demokratieresilienz</span> <code>e474c510-81b1-5c1b-af9c-2e41c02a026a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 9</span>
+      <span>Buch-Digest <code>sha256:e62430f1d4864beab5b9fc577935fcc0cf43d9638ac2386b9f84f0f42d6a669c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:fdd290a171130af1faa4b53e9c948d3701e9d4fce0c08ebd478aa4730960a2bf</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q1-nine-current303-final-author-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=51bcbc9e-7a1c-5caa-9766-9ab97fa72f04&amp;goalFingerprint=sha256%3Afdd290a171130af1faa4b53e9c948d3701e9d4fce0c08ebd478aa4730960a2bf&amp;pageFingerprint=sha256%3Aa2eec59038ca852d8bf8c077033d3594d6a294784e6f623bcbb6e2156643117f&amp;bookDigest=sha256%3Ae62430f1d4864beab5b9fc577935fcc0cf43d9638ac2386b9f84f0f42d6a669c&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-72bde56f-a752-5bc7-8472-24272c6075a0" data-goal-id="72bde56f-a752-5bc7-8472-24272c6075a0" data-page-number="9" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:968172f6-cd1c-5733-ba76-aa59817735eb goal:849bcfc8-5133-51fe-88de-e3c690ba0826" aria-labelledby="goal-72bde56f-a752-5bc7-8472-24272c6075a0-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-72bde56f-a752-5bc7-8472-24272c6075a0-title"><a class="goal-self-link" href="#goal-72bde56f-a752-5bc7-8472-24272c6075a0">Gerechtigkeit in der Steuerpolitik</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>72bde56f-a752-5bc7-8472-24272c6075a0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-77289101b2350d37198522ff">Q1 Demokratie im Mehrebenensystem</a></li><li><a href="#chapter-55babaab372acde5e358cc03">Steuerpolitik und Interessenkonflikte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4a69367a318b7fe011a64e4ed42d99a5df00f91bdbc5cc5904590a4261d59724" data-rendered-digest="sha256:30d03d06941474fd90dee705d0b6dd1b774efad3cce522f845db104fc11ce076" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/72bde56f-a752-5bc7-8472-24272c6075a0/72bde56f-a752-5bc7-8472-24272c6075a0.png" alt="Zwei Personen besprechen Steuergerechtigkeit an einer Waage. Oben führen gleich große Einkommensbeutel zu gleichen Beiträgen. Darunter steht ein Einkommensbeutel drei Beuteln gegenüber und führt zu einem kleineren Beitrag. Münzen und öffentliche Gebäude zeigen Beiträge zu gemeinsamen Aufgaben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-72bde56f-a752-5bc7-8472-24272c6075a0-description-heading">
+        <p class="section-heading" id="goal-72bde56f-a752-5bc7-8472-24272c6075a0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Gerechtigkeitsprinzipien auf Steuerarten anwenden.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-72bde56f-a752-5bc7-8472-24272c6075a0-requires-heading">
+          <p class="section-heading" id="goal-72bde56f-a752-5bc7-8472-24272c6075a0-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-51bcbc9e-7a1c-5caa-9766-9ab97fa72f04"><span>Steuerinstrumente vergleichen</span><code>51bcbc9e-7a1c-5caa-9766-9ab97fa72f04</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-72bde56f-a752-5bc7-8472-24272c6075a0-reverse-heading">
+          <p class="section-heading" id="goal-72bde56f-a752-5bc7-8472-24272c6075a0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-72bde56f-a752-5bc7-8472-24272c6075a0-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-72bde56f-a752-5bc7-8472-24272c6075a0-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-916f7816-f7c9-541a-810f-000241b323ff" rel="noreferrer noopener"><span>Vorschlag A (GK) - Steuerreform zwischen Grundrechten und Parteiendemokratie</span> <code>916f7816-f7c9-541a-810f-000241b323ff</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-9a88ee21-93d4-4042-b65c-21e287715433" rel="noreferrer noopener"><span>Q1: EU-Reparaturpolitik, Interessenvertretung und Steuergerechtigkeit</span> <code>9a88ee21-93d4-4042-b65c-21e287715433</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 9</span>
+      <span>Buch-Digest <code>sha256:e62430f1d4864beab5b9fc577935fcc0cf43d9638ac2386b9f84f0f42d6a669c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e37454192287860ff8b3cc6c30d372776dabe8a6c9f35925db3c9a86a8e8b9af</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q1-nine-current303-final-author-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=72bde56f-a752-5bc7-8472-24272c6075a0&amp;goalFingerprint=sha256%3Ae37454192287860ff8b3cc6c30d372776dabe8a6c9f35925db3c9a86a8e8b9af&amp;pageFingerprint=sha256%3Ad53df16f35d4c5ea4e59eb9a34bfb7885f5f271486c44f449303cdfe21ea2c7c&amp;bookDigest=sha256%3Ae62430f1d4864beab5b9fc577935fcc0cf43d9638ac2386b9f84f0f42d6a669c&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

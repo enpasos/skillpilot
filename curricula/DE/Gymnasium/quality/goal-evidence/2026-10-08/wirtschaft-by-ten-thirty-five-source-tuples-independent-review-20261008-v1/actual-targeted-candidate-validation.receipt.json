@@ -1,0 +1,29 @@
+{
+  "reviewer": {
+    "provider": "OpenAI",
+    "tool": "Codex session",
+    "exactModel": "not disclosed",
+    "independentAgent": "/root/economics_layer_a",
+    "status": "ai_candidate"
+  },
+  "recordedAt": "2026-10-08T15:29:45.368643+00:00",
+  "actualValidationToolResultChunk": "682c59",
+  "validationResult": "PASS",
+  "actualAssertions": [
+    "all15 declared input byte digests still current",
+    "all9 declared output digests actual",
+    "35 exact target tuple/decision patches",
+    "21 removals including BW5e4cbb43→7a",
+    "10 BY exact→partial",
+    "4 foreign strict partial only",
+    "all35 decision rationales explicitly reject full-source-coverage claims",
+    "205 non-target same-source tuples preserved"
+  ],
+  "scope": "inert six mapping successor candidates only; no native CQR/schema PASS claimed",
+  "liveWrites": 0,
+  "newStrictClosures": 0,
+  "restoredBindings": 0,
+  "strictNet": 0,
+  "actualInputCount": 15,
+  "actualOutputCount": 9
+}

@@ -1,0 +1,18 @@
+
+node:internal/process/esm_loader:40
+      internalBinding('errors').triggerUncaughtException(
+                                ^
+Error [TransformError]: Transform failed with 1 error:
+/tmp/skillpilot-wirtschaft-q4-migration-terminal-released-current191-0_wk8k_w/app/scripts/actualQ4MachineAcceptedMigrationTerminalNativeProbe20261008v1.ts:6059:619: ERROR: Expected ")" but found "\"curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-m7-current-baseline-20261008-v1/wirtschaftswissenschaften.semantic-kinds.json\""
+    at failureErrorWithLog (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:1467:15)
+    at /home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:736:50
+    at responseCallbacks.<computed> (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:603:9)
+    at handleIncomingPacket (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:658:12)
+    at Socket.readFromStdout (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:581:7)
+    at Socket.emit (node:events:517:28)
+    at addChunk (node:internal/streams/readable:368:12)
+    at readableAddChunk (node:internal/streams/readable:341:9)
+    at Readable.push (node:internal/streams/readable:278:10)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:190:23)
+
+Node.js v18.19.1

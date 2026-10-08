@@ -1,0 +1,79 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "/root",
+  "actualIndependentParityReceipt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e1-seventeen-independent-positive-parity-review-v1/independent-full-positive-and-translation-review.receipt.json",
+  "actualTwoFindingClosureReceipt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e1-seventeen-independent-positive-parity-review-v1/independent-two-findings-successor-closure.receipt.json",
+  "reviews": [
+    {
+      "lane": "atomicity",
+      "recordCount": 303,
+      "reviewedTranslationSuccessorCount": 17,
+      "otherRecordLinesByteExact": 286,
+      "substantiveDecisionsUnchanged": true,
+      "sourceConfig": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-reviewed-translation-bindings-v1/atomicity.config.json",
+      "candidateSha256": "795927baef4033283e820768ad5eb8a96123a3e0fdad7391136fcf4a06431d95"
+    },
+    {
+      "lane": "memory",
+      "recordCount": 303,
+      "reviewedTranslationSuccessorCount": 17,
+      "otherRecordLinesByteExact": 286,
+      "substantiveDecisionsUnchanged": true,
+      "sourceConfig": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-reviewed-translation-bindings-v1/memory.config.json",
+      "candidateSha256": "80099a05acc62d532d72f224bd467a987cecc7e88c7952acdb162687cde3aa9e"
+    }
+  ],
+  "nativeChecks": [
+    {
+      "lane": "atomicity",
+      "mode": "bind",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e1-seventeen-reviewed-translation-bindings-v1/atomicity.config.json",
+        "--write-fingerprints"
+      ],
+      "exitCode": 0
+    },
+    {
+      "lane": "atomicity",
+      "mode": "check",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e1-seventeen-reviewed-translation-bindings-v1/atomicity.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0
+    },
+    {
+      "lane": "memory",
+      "mode": "bind",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e1-seventeen-reviewed-translation-bindings-v1/memory.config.json",
+        "--write-fingerprints"
+      ],
+      "exitCode": 0
+    },
+    {
+      "lane": "memory",
+      "mode": "check",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e1-seventeen-reviewed-translation-bindings-v1/memory.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0
+    }
+  ],
+  "all51CardsByteExact": true,
+  "liveRegistryMutation": false,
+  "humanApprovalClaimed": false
+}

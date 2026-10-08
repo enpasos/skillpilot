@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:3d09a8e72d0e6421960baa9a4663cf8c99481fc3518208c2d7203b9082fb4fde",
+  "reviewInputFingerprint": "sha256:fc363fbd751e8362a7fe9b0554db45953327018555c30831733f287e8afac4cf",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-a",
+      "roundId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-first-pass-a",
+      "independenceGroupId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-independent-a",
+      "runIds": [
+        "wirtschaft-e2-eef-single-round-a-codex-actual-20261008-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact serving model identifier not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-b",
+      "roundId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-first-pass-b",
+      "independenceGroupId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-independent-b",
+      "runIds": [
+        "wirtschaft-eef-single-independent-description-round-b-codex-20261008-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact model identifier not disclosed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "eef95305-c811-50a4-9157-bfd4e5780c24",
+      "firstRecordId": "wirtschaft-e2-eef-single-round-a-current-eef95305-c811-50a4-9157-bfd4e5780c24",
+      "secondRecordId": "wirtschaft-eef-single-independent-description-round-b-codex-20261008-v1.001",
+      "firstRunId": "wirtschaft-e2-eef-single-round-a-codex-actual-20261008-v1",
+      "secondRunId": "wirtschaft-eef-single-independent-description-round-b-codex-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

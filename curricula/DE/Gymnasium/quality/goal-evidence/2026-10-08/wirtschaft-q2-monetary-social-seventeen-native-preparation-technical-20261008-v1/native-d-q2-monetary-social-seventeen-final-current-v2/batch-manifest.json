@@ -1,0 +1,70 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008",
+  "subject": "wirtschaftswissenschaften",
+  "subjectLabel": "Wirtschaftswissenschaften",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-native-preparation-technical-20261008-v1/native-d-q2-monetary-social-seventeen.current-v2.batch.config.json",
+  "configDigest": "sha256:d287109f44452cd28c3ce7db738f5db01a8e7edf29565502056f6e42363ada81",
+  "goalIds": [
+    "f9132615-8166-5e42-ad04-d8b2b75d719d",
+    "676684da-5ba2-5c2a-ba7e-a8413915c29c",
+    "79d244e0-049e-59e9-a2fb-b8f8670b315a",
+    "8ebbbe19-43dd-53ff-a6d0-9d94a5973616",
+    "5b5d1d53-71c3-5fbf-b1cf-977c868b60e3",
+    "25278ecf-2e77-556e-9fe6-8f0b954cc680",
+    "a72ddc94-6b38-5c14-8d8b-661472e4dfba",
+    "66ca6838-c9b3-5ab3-b47a-6a669bc4c21c",
+    "29076abc-83ab-5e01-af81-18b7b3f7cf5a",
+    "577f0e2d-643a-5a0c-833b-301622a6cb00",
+    "d17ff931-085d-56be-932d-3839b5b88ba8",
+    "c5272ab8-baa0-570b-9f31-426d1f4460f2",
+    "9832485e-8431-58cb-b251-9473da415a5e",
+    "424bae9f-8f2e-5093-a17d-ee5eadb6edde",
+    "c7341b02-3da3-50f8-a750-5d10ed7c9958",
+    "7c9efc27-e74f-5a82-bf56-95a9aa21cb94",
+    "da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 303,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-m7-current-baseline-20261008-v1/review-book-full.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "baseBookDigest": "sha256:68eff1d741a33b207272f7933d36eb8af9a40e5985299c4d3ca6ba74551b4f7c"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:e43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:74781abdd53c583e193827f5c57e408eba1e03d397136a934d2bda7b4e8a887a",
+    "reviewInputFingerprint": "sha256:e8acd4519f6f84dfc81fa985d70de89c26bd82604328c2864ff49e56497cba48",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008-a",
+        "campaignDigest": "sha256:f3ab8dada270926e600a389192750b3938255feae4718f0a7cc4394da64be15f",
+        "roundId": "wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008-first-pass-a",
+        "independenceGroupId": "wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008-independent-a",
+        "batchId": "wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:c487dd00170170dd7c334b70e75a51eeef1c1e21330416d29bf448878fb9c458"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008-b",
+        "campaignDigest": "sha256:927e70d34f13878135de275693071eade6d8cebabe7b57de291d9f5e558ef27c",
+        "roundId": "wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008-first-pass-b",
+        "independenceGroupId": "wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008-independent-b",
+        "batchId": "wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:ca39af88af9242a86e6ea3dbed29c8d97cd1a4746a1b0ed3d1e9530709bccc50"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

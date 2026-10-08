@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:0ee3c23628b02df48a8b9cccd31a2bc952b666121ce6107a685d1fe92734b94a",
+  "reviewInputFingerprint": "sha256:6d438409479e61e851edc64c98a997a0286c117380cbcf5562d57193b7911008",
+  "goalCount": 6,
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-q3-europe-integration-six-current303-final-author-v2-20261008-a",
+      "roundId": "wirtschaft-q3-europe-integration-six-current303-final-author-v2-20261008-first-pass-a",
+      "independenceGroupId": "wirtschaft-q3-europe-integration-six-current303-final-author-v2-20261008-independent-a",
+      "runIds": [
+        "wirtschaft-q3-europe-integration6-independent-round-a-actual-20261008"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact serving model identifier not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "wirtschaft-q3-europe-integration-six-current303-final-author-v2-20261008-b",
+      "roundId": "wirtschaft-q3-europe-integration-six-current303-final-author-v2-20261008-first-pass-b",
+      "independenceGroupId": "wirtschaft-q3-europe-integration-six-current303-final-author-v2-20261008-independent-b",
+      "runIds": [
+        "native-d-q3-europe-integration-six-final-independent-description-round-b-codex-20261008-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact model identifier not disclosed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 6,
+    "unavailable": 0,
+    "requiresSynthesis": 6
+  },
+  "goals": [
+    {
+      "goalId": "9ea7d847-7425-5157-a827-ee5f8c2e8c0a",
+      "firstRecordId": "wirtschaft-q3-bounded-round-a-current-9ea7d847-7425-5157-a827-ee5f8c2e8c0a",
+      "secondRecordId": "native-d-q3-europe-integration-six-final-independent-description-round-b-codex-20261008-v1.001",
+      "firstRunId": "wirtschaft-q3-europe-integration6-independent-round-a-actual-20261008",
+      "secondRunId": "native-d-q3-europe-integration-six-final-independent-description-round-b-codex-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2a8b5b56-8c4e-5ed2-81f9-7fea08c98e60",
+      "firstRecordId": "wirtschaft-q3-bounded-round-a-current-2a8b5b56-8c4e-5ed2-81f9-7fea08c98e60",
+      "secondRecordId": "native-d-q3-europe-integration-six-final-independent-description-round-b-codex-20261008-v1.002",
+      "firstRunId": "wirtschaft-q3-europe-integration6-independent-round-a-actual-20261008",
+      "secondRunId": "native-d-q3-europe-integration-six-final-independent-description-round-b-codex-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "167bfd78-9202-5599-9325-66d7a1579185",
+      "firstRecordId": "wirtschaft-q3-bounded-round-a-current-167bfd78-9202-5599-9325-66d7a1579185",
+      "secondRecordId": "native-d-q3-europe-integration-six-final-independent-description-round-b-codex-20261008-v1.003",
+      "firstRunId": "wirtschaft-q3-europe-integration6-independent-round-a-actual-20261008",
+      "secondRunId": "native-d-q3-europe-integration-six-final-independent-description-round-b-codex-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1bddc795-8aeb-5408-90b3-12e4be51e912",
+      "firstRecordId": "wirtschaft-q3-bounded-round-a-current-1bddc795-8aeb-5408-90b3-12e4be51e912",
+      "secondRecordId": "native-d-q3-europe-integration-six-final-independent-description-round-b-codex-20261008-v1.004",
+      "firstRunId": "wirtschaft-q3-europe-integration6-independent-round-a-actual-20261008",
+      "secondRunId": "native-d-q3-europe-integration-six-final-independent-description-round-b-codex-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "b4a82d8d-6311-5575-b222-cbaf6ea90d32",
+      "firstRecordId": "wirtschaft-q3-bounded-round-a-current-b4a82d8d-6311-5575-b222-cbaf6ea90d32",
+      "secondRecordId": "native-d-q3-europe-integration-six-final-independent-description-round-b-codex-20261008-v1.005",
+      "firstRunId": "wirtschaft-q3-europe-integration6-independent-round-a-actual-20261008",
+      "secondRunId": "native-d-q3-europe-integration-six-final-independent-description-round-b-codex-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "648224f4-cc8f-5f41-9cae-6d783cd1ae77",
+      "firstRecordId": "wirtschaft-q3-bounded-round-a-current-648224f4-cc8f-5f41-9cae-6d783cd1ae77",
+      "secondRecordId": "native-d-q3-europe-integration-six-final-independent-description-round-b-codex-20261008-v1.006",
+      "firstRunId": "wirtschaft-q3-europe-integration6-independent-round-a-actual-20261008",
+      "secondRunId": "native-d-q3-europe-integration-six-final-independent-description-round-b-codex-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

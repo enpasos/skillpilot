@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Verfassungs- und Rechtsstaatkonflikte
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `85cb48e1-2e4c-5367-8437-7b8becace601`
+- Titel: Verfassungs- und Rechtsstaatkonflikte
+- Beschreibung: Die lernende Person kann aktuelle Konfliktfälle hinsichtlich Grundrechten und Rechtsstaat diskutieren.
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `85cb48e1-2e4c-5367-8437-7b8becace601.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/85cb48e1-2e4c-5367-8437-7b8becace601/85cb48e1-2e4c-5367-8437-7b8becace601.png`
+
+## Prompt
+
+```text
+Erstelle ein neues didaktisches Lernzielbild als PNG, möglichst etwa 1600×900 oder nahe native Generatorgröße, quer circa 16:9. Freundliche abstrakte klare Comic-Illustration mit warmem cremefarbenem Hintergrund, sanften blauen und orangefarbenen Akzenten, großem Hauptmotiv und wenigen aussagekräftigen Details, passend zu SkillPilot Wirtschaft. Keine Photorealistik, keine sterile technische Infografik, keine SVG-Optik. Bei 360px und 680px Bildbreite muss das Motiv verständlich bleiben; höchstens wenige ausdrücklich genannte große Kurzlabels, keine Fließtexte, keine Kleinschrift, keine dekorativen Pseudoformeln. Personen divers und respektvoll, Arbeitsflächen aus Sicht handelnder Personen korrekt orientieren. Das Bild illustriert eine prüfbare Kompetenz und behauptet keinen tatsächlichen empirischen Nachweis. Fachlicher Bezug: Verfassungs- und Rechtsstaatkonflikte. Die lernende Person kann aktuelle Konfliktfälle hinsichtlich Grundrechten und Rechtsstaat diskutieren. Bildmotiv: Ein fiktiver Stadtplatz: links eine friedliche kleine Versammlung mit leeren Sprechblasen, rechts eine öffentliche Sicherheitsfrage als einfaches Schild. In der Mitte beraten zwei Menschen ruhig anhand einer offenen Waage zwischen den Interessen. Kein echtes Ereignis, keine Gewalt, keine Behauptung dass ein Recht absolut oder die Versammlung verboten sei. Große offene Frage, keine Kleinschrift.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "scope": "technical isolated preparation only",
+  "initialAttempt": "memory.check.stdout.txt",
+  "cause": "Required current deck files and learner views had not yet been copied into the physical isolate; no quality rule changed.",
+  "copiedInputs": [
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_accounting_business_finance.de.json",
+      "sha256": "b224cae9572d76b364adf3f6e2824e99d14cea344dda716c7c0efbd7cebab679",
+      "byteExact": true
+    },
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_business_law.de.json",
+      "sha256": "8a379951c08148a4f6633e967c656c736897e073e6089b06d4293fe9961a7a27",
+      "byteExact": true
+    },
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_international_development.de.json",
+      "sha256": "798c0b83234f9fbf687e8398d4512f8e8e101883c121fd8ccf61f4d779491f53",
+      "byteExact": true
+    },
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_macro_money_policy.de.json",
+      "sha256": "d85fc8045f7f5fea017f21e7d347ca63a8e7f5e39635ceccab77ed75a3dbe4ec",
+      "byteExact": true
+    },
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_market_order_policy.de.json",
+      "sha256": "1d70fc4f8b626b8ad6769b28a08bbd0a85ee44f9eaf79974c28b7978b09fb1a8",
+      "byteExact": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json",
+      "sha256": "402bd1d6e80504c0e481f8e0ff49fb995e1f730fbb8a8476b5be693517cb51cc",
+      "byteExact": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-lk.view.json",
+      "sha256": "8ed46d64771e1b61849fd879a3570bda4c1c7c7c7f42dbeebbcd8ca15e437cd2",
+      "byteExact": true
+    }
+  ],
+  "command": [
+    "node",
+    "app/node_modules/tsx/dist/cli.mjs",
+    "app/scripts/memoryCardReview.ts",
+    "--config",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-reviewed-translation-bindings-v1/memory.config.json"
+  ],
+  "exitCode": 1
+}

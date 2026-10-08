@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "actualExecutedAt": "2026-10-08T15:10:33.018800+00:00",
+  "actualRootReading": "All40 whole independent records read, all six bilingual understanding fields and complete text/rationale; truncated B7–12 actually reread whole before synthesis.",
+  "actualRecordBindings": {
+    "round-a": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-eleven-plus-nine-current-context-native-preparation-technical-20261008-v1/native-d-BY-eleven-nine-final/round-a/results/wirtschaft-BY-eleven-nine-current230-future311-20261008-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:af083fa01b57f7315b16c519dff5754c64f09e9ac4da9e89f0e44f639b21f4c1"
+    },
+    "round-b": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-eleven-plus-nine-current-context-native-preparation-technical-20261008-v1/native-d-BY-eleven-nine-final/round-b/results/wirtschaft-BY-eleven-nine-current230-future311-20261008-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:c638d71555224ae2b653fa6b105b24e61bb43d43155295f88af430d59bda22a9"
+    }
+  },
+  "actualCommands": [
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-eleven-plus-nine-current-context-native-preparation-technical-20261008-v1/native-d-BY-eleven-nine.final.batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-eleven-plus-nine-current-context-native-preparation-technical-20261008-v1/native-d-BY-eleven-nine-final/root-finalization-v1-step-1.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-eleven-plus-nine-current-context-native-preparation-technical-20261008-v1/native-d-BY-eleven-nine-final/root-finalization-v1-step-1.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-eleven-plus-nine-current-context-native-preparation-technical-20261008-v1/native-d-BY-eleven-nine.final.batch.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-eleven-plus-nine-current-context-native-preparation-technical-20261008-v1/native-d-BY-eleven-nine-final/root-twenty-own-synthesis-authoring-v1.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-eleven-plus-nine-current-context-native-preparation-technical-20261008-v1/native-d-BY-eleven-nine-final/root-finalization-v1-step-2.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-eleven-plus-nine-current-context-native-preparation-technical-20261008-v1/native-d-BY-eleven-nine-final/root-finalization-v1-step-2.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-eleven-plus-nine-current-context-native-preparation-technical-20261008-v1/native-d-BY-eleven-nine.final.batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-eleven-plus-nine-current-context-native-preparation-technical-20261008-v1/native-d-BY-eleven-nine-final/synthesis-decisions.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-eleven-plus-nine-current-context-native-preparation-technical-20261008-v1/native-d-BY-eleven-nine-final/root-finalization-v1-step-3.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-eleven-plus-nine-current-context-native-preparation-technical-20261008-v1/native-d-BY-eleven-nine-final/root-finalization-v1-step-3.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-eleven-plus-nine-current-context-native-preparation-technical-20261008-v1/native-d-BY-eleven-nine.final.batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-eleven-plus-nine-current-context-native-preparation-technical-20261008-v1/native-d-BY-eleven-nine-final/root-finalization-v1-step-4.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-eleven-plus-nine-current-context-native-preparation-technical-20261008-v1/native-d-BY-eleven-nine-final/root-finalization-v1-step-4.stderr.txt"
+    }
+  ],
+  "actualCurrentInertDClosures": 20,
+  "elevenNewGoalClosures": 11,
+  "nineChangedContextBindingClosures": 9,
+  "frozenNativeFilesVerifiedRootAndIsolate": 28,
+  "ownLocalAssessmentAuthorshipDisclosed": true,
+  "thirdIndependentDescriptionReviewClaimed": false,
+  "separatePositiveVisualSourceAMReviewsNotReplaced": true,
+  "latest250AM311AndWhole241UnchangedOwnerPagesRetentionRequiredBeforeIntegration": true,
+  "expectedIntegratedStrictCount": 261,
+  "expectedIntegratedAtomicDenominator": 311,
+  "newStrictLiveClosures": 0,
+  "humanApprovalClaimed": false,
+  "liveMutations": 0
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "wirtschaft-e2-eef-single-round-a-codex-actual-20261008-v1",
+  "campaignId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-a",
+  "roundId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-first-pass-a",
+  "batchId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:4a9f14ad201980847b916f84b4682b8991437a542fba17efc05edd368ded7a7c",
+  "bundleFingerprint": "sha256:3d09a8e72d0e6421960baa9a4663cf8c99481fc3518208c2d7203b9082fb4fde",
+  "bookDigest": "sha256:9d773999b781d9e7347bcf5196150df6fce5665261d939abb2a64bbe092b7188",
+  "provider": "OpenAI",
+  "model": "Codex session; exact serving model identifier not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "independent-current-description-review-positive-understanding-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:65f0d9cc4d8b0d4e3a254eab6f6430280fa362f70e2faf3f91bd1df387ca9bc4",
+  "generationParametersFingerprint": "sha256:06e647fa2c61f3565c4eee75591adbe54ca48c7dd51e1ccdb4121db7ffd39a15",
+  "independenceGroupId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "eef95305-c811-50a4-9157-bfd4e5780c24"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:efe41a72d9bb3e3d521aec4fcc743f42787aa0b2de42ee5dd46d5634a966225b"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:82d78add876e3c302e41a3ad36672b8f700de115d6300694e6a0ab3781aeeb03"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:e0c47d52052d189a24c7ca83ba0aec047341a6803e39d8e647f95ef1179d50b7"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:65f0d9cc4d8b0d4e3a254eab6f6430280fa362f70e2faf3f91bd1df387ca9bc4"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:4a9f14ad201980847b916f84b4682b8991437a542fba17efc05edd368ded7a7c"
+    }
+  ],
+  "startedAt": "2026-10-08T07:09:25.195241+00:00",
+  "completedAt": "2026-10-08T07:13:18.705536+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:4c67a45c1cee0436a126f40ba64d153da8ede2acd82b24b78a04aca739f10951",
+  "toolchainVersion": "codex-interactive-independent-description-review-v1"
+}

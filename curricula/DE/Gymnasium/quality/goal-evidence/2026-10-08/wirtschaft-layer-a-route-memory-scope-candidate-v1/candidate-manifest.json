@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "status": "candidate_unreviewed",
+  "reviewer": "codex-layer-a-author",
+  "date": "2026-10-08",
+  "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+  "sourceSha256": "sha256:1cc80f1eb0f1c23be612b7785acd48d7eed4cd1d17ac8a6d0e35dd99bd45f66e",
+  "candidateSha256": "sha256:70a703ffdc7b5104ec52dffe60a24a1d2374fe8e1afccae939475b7eefec31e1",
+  "changes": [
+    {
+      "goalId": "4cd0c6d8-6485-51d0-883d-5d49ac46be70",
+      "field": "requires",
+      "before": [],
+      "after": [
+        "6bf2d1cc-e745-50dd-a617-71c06a6c6945"
+      ],
+      "reason": "Didaktischer Einstieg über den bestehenden Wirtschafts-Motivationsanker. Ökologische Handelsmuster sind als eigenständiger Q3-Zweig prüfbar; Q4-Entwicklungsländerfolgen, Handelsabkommen und Zollbewertungen sind keine universellen fachlichen Voraussetzungen."
+    },
+    {
+      "goalId": "mem_de_gym_economics_accounting_business_finance",
+      "field": "applicability.jurisdiction",
+      "before": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "after": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "reason": "Vorhandener Memory-Knoten folgt bereits gültigen memory_required-Ursprungszielen; nativer Compiler belegt DE-NI über memory-review-origin. Keine neuen Karten, Ziele oder Quellzuordnungen."
+    },
+    {
+      "goalId": "mem_de_gym_economics_business_law",
+      "field": "applicability.jurisdiction",
+      "before": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "after": [
+        "DE-BB",
+        "DE-BE",
+        "DE-BW",
+        "DE-BY",
+        "DE-HB",
+        "DE-HE",
+        "DE-HH",
+        "DE-MV",
+        "DE-NI",
+        "DE-NW",
+        "DE-RP",
+        "DE-SH",
+        "DE-SL",
+        "DE-SN",
+        "DE-ST",
+        "DE-TH"
+      ],
+      "reason": "Vorhandener Memory-Knoten folgt bereits gültigen memory_required-Ursprungszielen; nativer Compiler belegt DE-HB über memory-review-origin. Keine neuen Karten, Ziele oder Quellzuordnungen."
+    }
+  ],
+  "nativeProbeMethod": "Copies existing native functions without changing their bodies. Module imports are resolved to original source; repoRoot stays the repository. Only candidate compiler substitutes the one economics canonical landscape read with the candidate snapshot. Candidate quality probe calls existing graph, type, route, semantic and memory functions. Active files and central status are not written.",
+  "nativeSourceHashes": {
+    "applicabilityCompiler.ts": "sha256:50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd",
+    "generateCurriculumQualityStatus.ts": "sha256:af9683a1360d4978084a516775943091d25a19a806673be7d35ecbedb266ccf9"
+  },
+  "protectedSubjectsUntouched": [
+    "Mathematik",
+    "Physik"
+  ],
+  "notHumanReview": true
+}

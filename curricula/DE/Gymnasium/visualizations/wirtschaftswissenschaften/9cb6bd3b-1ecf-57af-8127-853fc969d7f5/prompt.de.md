@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Entwicklungen der Arbeitswelt beurteilen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `9cb6bd3b-1ecf-57af-8127-853fc969d7f5`
+- Titel: Entwicklungen der Arbeitswelt beurteilen
+- Beschreibung: Die lernende Person kann Chancen und Risiken aktueller Entwicklungen der Arbeitswelt beurteilen und Konsequenzen für die eigene berufliche Orientierung ableiten.
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `9cb6bd3b-1ecf-57af-8127-853fc969d7f5.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/9cb6bd3b-1ecf-57af-8127-853fc969d7f5/9cb6bd3b-1ecf-57af-8127-853fc969d7f5.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational. Create one original raster PNG economics illustration, wide approximately16:9 and1600x900 or near native size. Friendly abstract clear comic, warm ivory, dark clean outlines, rounded shapes, restrained teal/coral/gold, welcoming ordinary people. Three or four spacious main visual groups. Main competence/details readable at360 and680pixels; text ONLY few expressly specified large German labels. No extra headings, small labels, tiny legends, watermarks, signature, project name, slogans, brands, official emblems, health crosses/crescents/diamonds, copied logos, photorealism, sterile technical redesign or SVG. Personal notebooks/worksheets and screens must face their actual active users; preferably floating conceptual symbols or openly shared boards. Fictional conditional teaching contexts, no observed learner work or factual latest statistics. Competence: Entwicklungen der Arbeitswelt beurteilen. Die lernende Person kann Chancen und Risiken aktueller Entwicklungen der Arbeitswelt beurteilen und Konsequenzen für die eigene berufliche Orientierung ableiten. Scene: The SAME employee considers changing workplace conditions, including digital collaboration and altered work/task organization, with separate possible opportunities and risks then a thoughtful personal development route. Only “Chancen”, “Risiken”, “Orientierung”. No guarantee automation creates or destroys all jobs, demographic blame, current empirical trend asserted without data or compulsory private self-disclosure.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Inflation in Fallstudien
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `25278ecf-2e77-556e-9fe6-8f0b954cc680`
+- Titel: Inflation in Fallstudien
+- Beschreibung: Die lernende Person kann Inflationsszenarien historisch/aktuell analysieren.
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `25278ecf-2e77-556e-9fe6-8f0b954cc680.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/25278ecf-2e77-556e-9fe6-8f0b954cc680/25278ecf-2e77-556e-9fe6-8f0b954cc680.png`
+
+## Prompt
+
+```text
+Create one original friendly abstract comic illustration for SkillPilot economics learning. PNG landscape about16:9, about1600x900 or close native generator size. Warm ivory ground, clear dark outlines, rounded shapes, restrained teal, coral and gold accents, ordinary welcoming people. Match the existing friendly school-learning illustration family. Main motif and important details clear at360px and680px width; generous margins, few visual groups. No photorealism, sterile blueprint, SVG substitute, official logos, dense legends, tiny text, pseudo-writing or decorative glyphs. Papers have no writing. Any physically used notebook/screen faces its reader correctly; floating conceptual diagrams are not backwards physical sheets. Motivate the competence without claiming learner achievement or current empirical outcomes. Learning goal: Inflation in Fallstudien. Die lernende Person kann Inflationsszenarien historisch/aktuell analysieren. Scene: Two hypothetical time strips with repeated same goods basket: past scenario combines damaged supply/trade and currency/price uncertainty, present-style fictional scenario combines energy shock and demand recovery. Distinct possible factors, open evidence question, not a current forecast. Only “Material vergleichen”, “Ursachen prüfen”. No historical year, empirical price number or inevitable policy success.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

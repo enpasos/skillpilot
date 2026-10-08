@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-08T16:18:22.730Z",
+  "role": "actual_native_source_true_baseline_and_separate_national_only_candidate_probe",
+  "physicalIsolate": "/tmp/skillpilot-wirtschaft-Macro5-neutral-current311-kp8dhux6",
+  "actualSourceCQR003": {
+    "id": "CQR-003",
+    "status": "pass",
+    "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+    "metrics": {
+      "totalJurisdictions": 16,
+      "coveredJurisdictions": 16,
+      "sourceBackedJurisdictions": 16,
+      "sourceCompleteJurisdictions": 16,
+      "fullCoverageJurisdictions": 16,
+      "uncoveredJurisdictions": 0,
+      "incompleteJurisdictions": 0,
+      "unsupportedAssignmentJurisdictions": 0,
+      "sourceUnmappedJurisdictions": 0,
+      "unsupportedAssignedAtomicGoals": 0,
+      "unmappedSourceAtomicGoals": 0,
+      "sourceAtomicGoals": 2109,
+      "sourceMappedToViewAtomicGoals": 2109,
+      "sourceOriginalGoals": 2109,
+      "sourceFullyCoveredOriginalGoals": 2109,
+      "sourcePartiallyCoveredOriginalGoals": 0,
+      "sourceUncoveredOriginalGoals": 0,
+      "surrogateBackedAtomicGoals": 94,
+      "partialSourceLinkedAtomicGoals": 0,
+      "warningedJurisdictions": 0,
+      "cleanJurisdictions": 16,
+      "partialJurisdictions": 0,
+      "errorJurisdictions": 0,
+      "minSourceBackedAtomicGoals": 63,
+      "maxVisibleAtomicGoals": 269,
+      "maxSourceBackedAtomicGoals": 269,
+      "totalAtomicGoals": 282
+    }
+  },
+  "actualSourceCQR004": {
+    "id": "CQR-004",
+    "status": "pass",
+    "summary": "Course-level mapping is clean for 352 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+    "metrics": {
+      "configuredMappingFiles": 32,
+      "sourceGoals": 1359,
+      "sourceGoalsWithCourseLevel": 1359,
+      "gkLkSourceGoals": 762,
+      "lkSourceGoals": 442,
+      "unspecifiedSourceGoals": 117,
+      "checkedMappingEdges": 352,
+      "defaultedUnspecifiedMappingEdges": 107,
+      "reviewedCourseLevelExceptions": 0,
+      "mismatches": 0,
+      "missingSourceGoals": 0,
+      "missingTargetGoals": 0,
+      "unmappedCourseLevelSourceGoals": 0
+    }
+  },
+  "actualCompilerSummary": {
+    "goals": 386,
+    "errors": 0,
+    "warnings": 0,
+    "diagnostics": 1445
+  },
+  "actualRoute": {
+    "scopeId": "canonical-economics-crossstage",
+    "label": "Sekundarstufe I/II",
+    "selectedAtomicGoals": 311,
+    "maturity": "M0",
+    "rules": [
+      {
+        "id": "CQR-101",
+        "status": "fail",
+        "summary": "Effective route coverage has missing route segments.",
+        "metrics": {
+          "selectedAtomicGoals": 311,
+          "missingMotivationPath": 2,
+          "missingTerminalPath": 3
+        },
+        "details": [
+          "No effective motivation path: Finanzierungsentscheidungen zielbezogen beurteilen [15d18bd1-0ae1-58c8-89fd-623bebe12041]",
+          "No effective motivation path: Unternehmen mit Analyseinstrumenten untersuchen [da43dd2a-693b-5327-811f-c4c19ee064cd]",
+          "No effective terminal path: Break-even-Analysen für Unternehmensentscheidungen nutzen [053f1522-31a7-583f-85f5-366ed724d3c5]",
+          "No effective terminal path: Investitionsalternativen statisch und dynamisch beurteilen [8e8a672e-67c6-52dd-8f87-3c1f2e874a3d]",
+          "No effective terminal path: Finanz- und Ertragslage mit Kennzahlen darstellen [9219c58c-d178-5612-8231-feac373c87df]"
+        ]
+      },
+      {
+        "id": "CQR-102",
+        "status": "warn",
+        "summary": "Direct atomic route coverage still needs migration work.",
+        "metrics": {
+          "selectedAtomicGoals": 311,
+          "missingDirectMotivationPath": 2,
+          "missingDirectTerminalPath": 3
+        },
+        "details": [
+          "No direct atomic motivation path: Finanzierungsentscheidungen zielbezogen beurteilen [15d18bd1-0ae1-58c8-89fd-623bebe12041]",
+          "No direct atomic motivation path: Unternehmen mit Analyseinstrumenten untersuchen [da43dd2a-693b-5327-811f-c4c19ee064cd]",
+          "No direct atomic terminal path: Break-even-Analysen für Unternehmensentscheidungen nutzen [053f1522-31a7-583f-85f5-366ed724d3c5]",
+          "No direct atomic terminal path: Investitionsalternativen statisch und dynamisch beurteilen [8e8a672e-67c6-52dd-8f87-3c1f2e874a3d]",
+          "No direct atomic terminal path: Finanz- und Ertragslage mit Kennzahlen darstellen [9219c58c-d178-5612-8231-feac373c87df]"
+        ]
+      },
+      {
+        "id": "CQR-103",
+        "status": "pass",
+        "summary": "No scoped cluster-level requires remain.",
+        "metrics": {
+          "scopedClusterRequires": 0
+        }
+      },
+      {
+        "id": "CQR-104",
+        "status": "pass",
+        "summary": "Route endpoints are exactly visible in every relevant learner-facing projection scope.",
+        "metrics": {
+          "relevantCompositionViews": 2,
+          "evaluatedProjectionScopes": 2,
+          "requiredMotivationAnchors": 1,
+          "minimumRequiredTerminalAutonomyGoals": 22,
+          "requiredTerminalAutonomyGoals": 22,
+          "projectionScopesMissingMotivationAnchors": 0,
+          "projectionScopesMissingTerminalAutonomyGoals": 0,
+          "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+          "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+          "terminalGoalsMissingCompiledApplicability": 0,
+          "projectionScopesWithInvalidStageStructure": 0,
+          "nationalProjectionScopesUsingJurisdictionStageAuthority": 0,
+          "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+          "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+          "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+          "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+          "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 0,
+          "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+          "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+          "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+          "projectionLocalRouteChecksEnabled": 0,
+          "visibleSelectedAtomicGoalOccurrences": 560,
+          "visibleProfileSelectedAtomicGoalOccurrences": 560,
+          "visibleProjectedRouteTargetGoalOccurrences": 560,
+          "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+          "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+          "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+          "projectionScopesMissingEffectiveMotivationRoutes": 0,
+          "projectionScopesMissingDirectMotivationRoutes": 0,
+          "projectionScopesMissingEffectiveTerminalRoutes": 0,
+          "projectionScopesMissingDirectTerminalRoutes": 0,
+          "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+          "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+          "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+          "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+        }
+      },
+      {
+        "id": "CQR-201",
+        "status": "pass",
+        "summary": "All configured terminal autonomy goals have examData.",
+        "metrics": {
+          "terminalAutonomyGoals": 22,
+          "terminalAutonomyGoalsWithExamData": 22,
+          "terminalAutonomyGoalsWithoutExamData": 0
+        }
+      },
+      {
+        "id": "CQR-202",
+        "status": "pass",
+        "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+        "metrics": {
+          "terminalAutonomyGoals": 22,
+          "concreteExamData": 22,
+          "weakExamData": 0
+        }
+      },
+      {
+        "id": "CQR-203",
+        "status": "pass",
+        "summary": "All terminal autonomy examData has release and coverage metadata.",
+        "metrics": {
+          "terminalAutonomyGoals": 22,
+          "releasedCoverageCompleteExamData": 22,
+          "releaseCoverageIncompleteExamData": 0
+        }
+      }
+    ]
+  },
+  "activeWrites": 0,
+  "newStrictClosures": 0,
+  "variant": "true-live-baseline",
+  "actualExitCode": 0
+}

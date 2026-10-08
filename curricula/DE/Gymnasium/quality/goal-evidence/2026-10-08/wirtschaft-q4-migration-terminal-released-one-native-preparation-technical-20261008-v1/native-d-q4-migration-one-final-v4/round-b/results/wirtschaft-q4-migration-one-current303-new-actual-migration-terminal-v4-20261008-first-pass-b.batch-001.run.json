@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-first-pass-b.actual-codex-b",
+  "campaignId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-b",
+  "roundId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-first-pass-b",
+  "batchId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:e15644ebe834b91a631b07410410951c8f6cfeaff15dcc049f9498a3018e688a",
+  "bundleFingerprint": "sha256:6ba6e38292822433318350560bfd97bcd20ae4569d15d3ae27582ca03b3a1565",
+  "bookDigest": "sha256:7906db302bb3243542d344eb770198407724a52cc5f0daa5d335ea873c812507",
+  "provider": "OpenAI",
+  "model": "Codex session; exact model identifier not disclosed",
+  "role": "sequencing_representation_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:cd965f38a3766b3f3f623a34a59b803b913dd1fd5d4de32ebec1fd139e709ab0",
+  "generationParametersFingerprint": "sha256:4c37494b49ddb1724d6dfb026f00b81700b81f40d3ae0169da7fcd314e16601b",
+  "independenceGroupId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "6de44afa-7f91-5fa4-9292-ec06e86e97a4"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:fe4c920e52159f53c26117ab7b8aa7662c4ec0f091a3d2e82a797ac478db9ef4"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:82f99c00dcea5a331e6b61d41338ed2b48c65d6f2e6ef2e99284b0944e3f0a3e"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:f6fc3d524d38fb5e94da8eb0cb22a953b3d37a740f5d4e8199662396c156434c"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:e15644ebe834b91a631b07410410951c8f6cfeaff15dcc049f9498a3018e688a"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:cd965f38a3766b3f3f623a34a59b803b913dd1fd5d4de32ebec1fd139e709ab0"
+    }
+  ],
+  "startedAt": "2026-10-08T12:14:01.701684+00:00",
+  "completedAt": "2026-10-08T12:15:33.882443+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:7cecc2e55c9624b8672106c9dfb2f5679f066d5ace992879f24d5b565d68d076",
+  "toolchainVersion": "skillpilot-native-description-review-v1"
+}

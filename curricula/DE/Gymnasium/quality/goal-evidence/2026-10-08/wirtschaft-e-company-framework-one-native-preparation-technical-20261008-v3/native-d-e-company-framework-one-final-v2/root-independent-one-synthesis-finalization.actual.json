@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "actualExecutedAt": "2026-10-08T12:49:20.547996+00:00",
+  "actualRootReading": "Both whole corrected1-record sets actually read in full, including all six fields and bilingual descriptions/rationales;one individually authored synthesis judgment.",
+  "actualRecordBindings": {
+    "round-a": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-framework-one-native-preparation-technical-20261008-v3/native-d-e-company-framework-one-final-v2/round-a/results/wirtschaft-e-company-framework-one-current303-corrected-private-plan-v2-20261008-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:a053f7bc70d6df893dca6b78daddcc70bee1b0ed688bc3f97aaa80f22fa4eb63"
+    },
+    "round-b": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-framework-one-native-preparation-technical-20261008-v3/native-d-e-company-framework-one-final-v2/round-b/results/wirtschaft-e-company-framework-one-current303-corrected-private-plan-v2-20261008-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:7a4402af2114ab498e48b4e680a5215317ef5c8b99e5c88bc1cd3198f1f3a83b"
+    }
+  },
+  "actualCommands": [
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-framework-one-native-preparation-technical-20261008-v3/native-d-e-company-framework-one.final.batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-framework-one-native-preparation-technical-20261008-v3/native-d-e-company-framework-one-final-v2/root-finalization-v1-step-1.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-framework-one-native-preparation-technical-20261008-v3/native-d-e-company-framework-one-final-v2/root-finalization-v1-step-1.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-framework-one-native-preparation-technical-20261008-v3/native-d-e-company-framework-one.final.batch.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-framework-one-native-preparation-technical-20261008-v3/native-d-e-company-framework-one-final-v2/root-one-own-synthesis-authoring-v2.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-framework-one-native-preparation-technical-20261008-v3/native-d-e-company-framework-one-final-v2/root-finalization-v1-step-2.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-framework-one-native-preparation-technical-20261008-v3/native-d-e-company-framework-one-final-v2/root-finalization-v1-step-2.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-framework-one-native-preparation-technical-20261008-v3/native-d-e-company-framework-one.final.batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-framework-one-native-preparation-technical-20261008-v3/native-d-e-company-framework-one-final-v2/synthesis-decisions.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-framework-one-native-preparation-technical-20261008-v3/native-d-e-company-framework-one-final-v2/root-finalization-v1-step-3.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-framework-one-native-preparation-technical-20261008-v3/native-d-e-company-framework-one-final-v2/root-finalization-v1-step-3.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-framework-one-native-preparation-technical-20261008-v3/native-d-e-company-framework-one.final.batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-framework-one-native-preparation-technical-20261008-v3/native-d-e-company-framework-one-final-v2/root-finalization-v1-step-4.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-framework-one-native-preparation-technical-20261008-v3/native-d-e-company-framework-one-final-v2/root-finalization-v1-step-4.stderr.txt"
+    }
+  ],
+  "actualCurrentInertDClosures": 1,
+  "frozenNativeFilesVerifiedRootAndIsolate": 28,
+  "original65ImageFindingStillHistorical": true,
+  "fresh65ActualCurrentImageContextFindingClosed": true,
+  "other19WholePageCurrent371ParityAlreadyNativeVerified": true,
+  "separateIndependentP40AndAMReviewsNotReplaced": true,
+  "newStrictLiveClosures": 0,
+  "humanApprovalClaimed": false,
+  "liveMutations": 0
+}

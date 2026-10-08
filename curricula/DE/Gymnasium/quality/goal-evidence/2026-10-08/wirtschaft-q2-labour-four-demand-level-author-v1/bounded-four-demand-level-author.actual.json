@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "role": "bounded_taxonomy_author_candidate",
+  "createdAt": "2026-10-08T08:11:13.393817+00:00",
+  "goalIds": [
+    "60ec0ead-a218-563b-8627-58f5cf661fcc",
+    "85f0b64f-c385-5a4a-82d2-fcfdf61f48a0",
+    "776457c2-8bb3-53b9-838b-a028319175fb",
+    "a5009946-62bb-5e6a-8c92-732d02e8fd70"
+  ],
+  "exactFieldChanges": [
+    {
+      "goalId": "60ec0ead-a218-563b-8627-58f5cf661fcc",
+      "path": "/dimensionTags/demandLevel",
+      "beforeAbsent": true,
+      "candidateAfter": "AB3",
+      "authorReason": "The whole canonical description explicitly requires a criterion-based judgment spanning individual, economic and societal significance and consequences, so AB3 fits the native taxonomy. This is not a claim of uniform official demand classification across jurisdictions."
+    },
+    {
+      "goalId": "85f0b64f-c385-5a4a-82d2-fcfdf61f48a0",
+      "path": "/dimensionTags/demandLevel",
+      "beforeAbsent": true,
+      "candidateAfter": "AB2",
+      "authorReason": "The canonical operation is analysing cases through interests, supplied labour rules and work organisation. Applying relationships and interpreting supplied material is AB2; no new independent normative judgment is added."
+    },
+    {
+      "goalId": "776457c2-8bb3-53b9-838b-a028319175fb",
+      "path": "/dimensionTags/demandLevel",
+      "beforeAbsent": true,
+      "candidateAfter": "AB2",
+      "authorReason": "The canonical operation explains forms, functions and significance of co-determination through a supplied case. AB2 fits relational explanation. The official BW source uses a judgment operator; this metadata candidate follows the current canonical goal and does not purport to newly approve its mapping equivalence or replace that stronger source requirement."
+    },
+    {
+      "goalId": "a5009946-62bb-5e6a-8c92-732d02e8fd70",
+      "path": "/dimensionTags/demandLevel",
+      "beforeAbsent": true,
+      "candidateAfter": "AB3",
+      "authorReason": "The whole goal explicitly judges remuneration forms from both employer and employee perspectives with incentive and distribution effects; balancing criteria and justified judgment fits AB3."
+    }
+  ],
+  "actualWholeGoalsRead": 4,
+  "actualOriginalSourceReads": [
+    {
+      "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_WI.pdf",
+      "sha256": "sha256:f40f3cc71938f8d3e24090847f9d27b35cc4fed70cd7f59307405140c22ee0f5",
+      "oneBasedPdfPages": [
+        18,
+        21,
+        22
+      ],
+      "printedPages": [
+        16,
+        19,
+        20
+      ],
+      "method": "Actual original pypdf extraction and full target-page reading, not extracted summary"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_WBS.pdf",
+      "sha256": "sha256:77791843a55b4d024de75c8a0f7b51bc407e7bd2dd35555071d2d7dd40284718",
+      "oneBasedPdfPages": [
+        19
+      ],
+      "printedPages": [
+        17
+      ],
+      "method": "Actual original pypdf extraction and full target-page reading, not extracted summary"
+    }
+  ],
+  "nativeContract": "contracts/curriculum-quality/v3/canonical-goal-context.schema.json demandLevel AB1/AB2/AB3",
+  "classificationScope": "SkillPilot native taxonomy candidate; not blanket official taxonomy",
+  "wholeTextGraphApplicabilitySourceRefUnchanged": true,
+  "independentReviewRequired": true,
+  "humanApprovalClaimed": false,
+  "activeWrites": 0,
+  "newStrictClosures": 0,
+  "openSourceScopeQuestion": "776457c2 official BW source requires judgment while the current canonical goal explains forms/functions; no fresh coverage adjudication is claimed by this taxonomy author."
+}

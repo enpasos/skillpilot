@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-08T06:13:01.890162+00:00",
+  "localRoot": "/tmp/skillpilot-native-poppler-56ptay2_",
+  "nativePath": "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/bin",
+  "nativeLibraryPath": "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/lib/x86_64-linux-gnu",
+  "packages": [
+    {
+      "name": "libpoppler134_24.02.0-1ubuntu9.10_amd64.deb",
+      "sha256": "sha256:2974536ea4ce7d75e54923b1bab0f251f407d1c291427ddc7c53da65e1c505b7"
+    },
+    {
+      "name": "libopenjp2-7_2.5.0-2ubuntu0.5_amd64.deb",
+      "sha256": "sha256:24b92ce9c4b306f5370e768024d35ec565792001678b510f0d40b6395b43524f"
+    },
+    {
+      "name": "poppler-utils_24.02.0-1ubuntu9.10_amd64.deb",
+      "sha256": "sha256:19ce4557ad89350506a0f1c33ad4c5a6aa7469e48c78aacae351a59b43ee20c6"
+    }
+  ],
+  "runs": [
+    {
+      "command": [
+        "apt-get",
+        "download",
+        "libopenjp2-7"
+      ],
+      "exitCode": 0,
+      "stdout": "Get:1 http://archive.ubuntu.com/ubuntu noble-updates/main amd64 libopenjp2-7 amd64 2.5.0-2ubuntu0.5 [174 kB]\nFetched 174 kB in 1s (168 kB/s)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/bin/pdfinfo",
+        "-v"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "pdfinfo version 24.02.0\nCopyright 2005-2024 The Poppler Developers - http://poppler.freedesktop.org\nCopyright 1996-2011, 2022 Glyph & Cog, LLC\n"
+    },
+    {
+      "command": [
+        "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/bin/pdftohtml",
+        "-v"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": "pdftohtml version 24.02.0\nCopyright 2005-2024 The Poppler Developers - http://poppler.freedesktop.org\nCopyright 1999-2003 Gueorgui Ovtcharov and Rainer Dorsch\nCopyright 1996-2011, 2022 Glyph & Cog, LLC\n\n"
+    }
+  ],
+  "repositoryFilesChanged": 0,
+  "systemInstalled": false,
+  "nativePdfValidationUnchanged": true
+}

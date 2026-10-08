@@ -1,0 +1,5 @@
+# Independent Wirtschaft Q3 trade and finance16 candidate QS
+
+Read every whole original/candidate DE/EN goal, complete P-v2 expectation/performance/variation and both fictional case briefs. Verify all arithmetic and stated conditions. Check current cases require actually supplied dated official sources; never claim such future materials or learner performances were already observed. Independently examine current official normative/primary scope relevant to roles, Basel/stress tests, sanctions, and crypto classification.
+
+Read and compare the32 currently registered historical A/M decisions and3 actual whole physical cards, including origins and narrow actual wording. Preserve unchanged correct decisions and bytes; translation-dependent native bindings and GK/LK visibility remain a separate integration check. Positive candidate acceptance is substantive QS of expectations, not final image/source-bound P, two D rounds, human approval, or an investment recommendation. Reviewer is independent of the separate author; exact serving model is not exposed by this Codex session.

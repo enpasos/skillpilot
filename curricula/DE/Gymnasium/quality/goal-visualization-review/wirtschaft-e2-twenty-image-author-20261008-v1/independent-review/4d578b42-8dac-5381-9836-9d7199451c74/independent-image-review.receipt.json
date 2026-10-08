@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-08",
+  "goalId": "4d578b42-8dac-5381-9836-9d7199451c74",
+  "goalTitle": "Kreislaufwirtschaft und Nachhaltigkeit",
+  "goalDescription": "Die lernende Person kann Konzepte der Kreislaufwirtschaft und nachhaltigen Produktion erläutern.",
+  "decision": "REJECT",
+  "machineApproval": "Rejected AI",
+  "independentReviewer": "OpenAI Codex economics_visual_memory_audit",
+  "reviewerModel": "Codex; exact serving model identifier not exposed",
+  "imageAuthorIsReviewer": false,
+  "humanApproved": false,
+  "assetPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-e2-twenty-image-author-20261008-v1/4d578b42-8dac-5381-9836-9d7199451c74/4d578b42-8dac-5381-9836-9d7199451c74.png",
+  "assetSha256": "sha256:140045e69e5597edf85348bc9b7c0197bd90c5dad635d002e946142722226078",
+  "actualFormat": "PNG",
+  "actualDimensions": {
+    "width": 1672,
+    "height": 941
+  },
+  "aspectRatioDecision": "Close native 16:9 landscape; no exception needed. Existing format not mechanically normalized.",
+  "provider": "OpenAI Codex image_gen",
+  "generationTool": "image_gen.imagegen",
+  "generationModel": "not disclosed in generation metadata",
+  "generationIsApproval": false,
+  "actualInspection": {
+    "nativeViewed": true,
+    "width360Viewed": true,
+    "width680Viewed": true,
+    "fachlichePruefung": "Cycle arrows correctly link repair and recovery to further use and the residual waste branch is plausible. However the scene labelled Nutzen shows factory assembly of an incomplete bicycle frame, not using a complete bicycle. This visibly conflates manufacture with the use phase in a lifecycle image for circular economy.",
+    "phone": "At 360 px the three large headings and cyclic arrows are clear. The mislabeled assembly scene remains recognizable, so reduced size does not remove the conceptual error.",
+    "desktop": "At 680 px the left actor is working on a bare frame at a factory bench, explicitly confirming manufacture rather than product use. The repair and sorting scenes otherwise remain clear.",
+    "actorPerspective": "The repair and sorting work faces the workers appropriately; there are no legible reversed notebook or measurement surfaces. The defect is semantic labeling rather than actor perspective.",
+    "style": "Friendly approachable comic raster, clear broad colors, large conceptual objects; no photorealistic or sterile technical restyling.",
+    "mandatorySmallPrint": false
+  },
+  "blockingFindings": [
+    {
+      "severity": "blocking",
+      "category": "fachliche_Richtigkeit",
+      "location": "Left scene directly above Nutzen",
+      "finding": "The actor assembles an incomplete bicycle frame at a factory bench while the phase is labelled Nutzen. Manufacturing is incorrectly presented as use.",
+      "requiredCorrection": "Replace only that scene with actual use of a complete bicycle, retaining the readable comic cycle if possible. Preserve this rejected candidate and review the corrected PNG anew at native,360 and680 widths."
+    }
+  ],
+  "interpretationLimits": [],
+  "goalSemanticSource": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-bilingual-positive-author-v1/whole-goals.candidate.json",
+  "goalTextStatus": "Current German competence unchanged in the E2 bilingual candidate; this image review does not attest the positive-evidence profile or bilingual description gate.",
+  "derivatives": [
+    {
+      "width": 360,
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-e2-twenty-image-author-20261008-v1/independent-review/4d578b42-8dac-5381-9836-9d7199451c74/4d578b42-8dac-5381-9836-9d7199451c74.width-360.png",
+      "sha256": "sha256:f7ed6bb9546ef34c57c19b0af9a489eaee6b7f8dcf92ea33b25dcc42d679f4ad"
+    },
+    {
+      "width": 680,
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-e2-twenty-image-author-20261008-v1/independent-review/4d578b42-8dac-5381-9836-9d7199451c74/4d578b42-8dac-5381-9836-9d7199451c74.width-680.png",
+      "sha256": "sha256:030b38f4793284219b3463c811f54a03a0c2c2e2201d9f82abd86cee9c1034b0"
+    }
+  ],
+  "notClaimed": [
+    "live QA adoption",
+    "M7 closure",
+    "human approval",
+    "classroom acceptance"
+  ]
+}

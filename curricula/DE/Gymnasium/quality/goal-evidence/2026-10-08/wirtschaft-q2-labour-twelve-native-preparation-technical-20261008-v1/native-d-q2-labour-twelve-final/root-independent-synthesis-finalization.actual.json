@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "actualExecutedAt": "2026-10-08T09:56:37.505623+00:00",
+  "actualRootReading": "All24 whole goal-specific rationales and essential definitions actually read after initial larger technical output truncation; previously actual whole12DEEN/P24/AM24/card/source review remains independently recorded.",
+  "independentRecords": {
+    "round-a": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-native-preparation-technical-20261008-v1/native-d-q2-labour-twelve-final/round-a/results/wirtschaft-q2-labour-twelve-current303-final-author-v2-20261008-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:c73d71ad9c8cd6288ead280d1d9e457a73521e9a53bf0bc360b072319d0fb746"
+    },
+    "round-b": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-native-preparation-technical-20261008-v1/native-d-q2-labour-twelve-final/round-b/results/wirtschaft-q2-labour-twelve-current303-final-author-v2-20261008-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:fc0a03f8c92063548692dd8e0386c9065bc47cf8a0403cf2ca227676fb9e3716"
+    }
+  },
+  "originalFrozenFilesVerifiedExact": 28,
+  "actualCommands": [
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-native-preparation-technical-20261008-v1/native-d-q2-labour-twelve.final.batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-native-preparation-technical-20261008-v1/native-d-q2-labour-twelve-final/root-finalization-step-1.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-native-preparation-technical-20261008-v1/native-d-q2-labour-twelve-final/root-finalization-step-1.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-native-preparation-technical-20261008-v1/native-d-q2-labour-twelve.final.batch.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-native-preparation-technical-20261008-v1/native-d-q2-labour-twelve-final/root-synthesis-authoring-v1.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-native-preparation-technical-20261008-v1/native-d-q2-labour-twelve-final/root-finalization-step-2.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-native-preparation-technical-20261008-v1/native-d-q2-labour-twelve-final/root-finalization-step-2.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-native-preparation-technical-20261008-v1/native-d-q2-labour-twelve.final.batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-native-preparation-technical-20261008-v1/native-d-q2-labour-twelve-final/synthesis-decisions.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-native-preparation-technical-20261008-v1/native-d-q2-labour-twelve-final/root-finalization-step-3.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-native-preparation-technical-20261008-v1/native-d-q2-labour-twelve-final/root-finalization-step-3.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-native-preparation-technical-20261008-v1/native-d-q2-labour-twelve.final.batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-native-preparation-technical-20261008-v1/native-d-q2-labour-twelve-final/root-finalization-step-4.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-native-preparation-technical-20261008-v1/native-d-q2-labour-twelve-final/root-finalization-step-4.stderr.txt"
+    }
+  ],
+  "historicalFrozenDescriptionResolutions": 12,
+  "currentEEEImagePageApprovalNotClaimed": true,
+  "requiredEEESeparateCurrentOneGoalSuccessor": true,
+  "humanApprovalClaimed": false,
+  "liveMutations": 0
+}

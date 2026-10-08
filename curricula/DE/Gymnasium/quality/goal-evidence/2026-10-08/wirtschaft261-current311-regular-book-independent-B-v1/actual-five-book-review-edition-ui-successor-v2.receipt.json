@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "kind": "actual-five-book-economics-review-edition-ui-successor",
+  "reviewedAt": "2026-10-08T17:01:02.668395+00:00",
+  "reviewer": "economics_visual_source_continuation (independent B)",
+  "role": "Synthetic browser UI fixture; no fachlicher Curriculumreview",
+  "successorOf": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft261-current311-regular-book-independent-B-v1/actual-five-book-ui-fixture-browser-test.receipt.json",
+    "sha256": "sha256:2da438b802522eec65a15da2bca319867b6bec93f1362749d373ce1b1ef6b475",
+    "preservedUnchanged": true
+  },
+  "command": "PATH=/tmp/skillpilot-node20-toolchain/node-v20.20.2-linux-x64/bin:$PATH ./node_modules/.bin/tsx scripts/testGoalBookUi.ts",
+  "cwd": "app",
+  "actualSession": 25522,
+  "nodeVersion": "20.20.2",
+  "exitCode": 0,
+  "actualStdout": "goal-book UI browser tests passed\n",
+  "inputBindings": {
+    "app/scripts/testGoalBookUi.ts": "sha256:869904dd1a5c0226535f9f6b6cc2ca5714d3a2e4a7c490801faecbb4fb9f40b4",
+    "app/src/views/GoalBookView.tsx": "sha256:7a5ccb034888cdc756b0d6a0890571382badbf21f0ee573df4ef109d3caf0e49",
+    "app/src/utils/goalBookPublicationRegistry.ts": "sha256:ba827321bda4a7310159156402ee5094cc825d4fe6f43a455d0051eefac9bf86",
+    "app/scripts/config/goal-books/de-gym-economics-current-canonical.json": "sha256:9b4e750f71586152c8878268f8f9430ad4b80453ef322c1120e7847b6e0da25b",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft261-current311-regular-book-independent-B-v1/actual-synthetic-economics-review-edition-ui-360.png": "sha256:24f8e9e56478e53f02b318146502ddc890cc3ff499e259b70635fbe732d9c167"
+  },
+  "visibleTitle": "Lernzielbuch Wirtschaftswissenschaften – Gymnasium Deutschland (Review-Ausgabe)",
+  "fixtureTitleMatchesCurrentEconomicsConfig": true,
+  "viewport": {
+    "width": 360,
+    "deHorizontalOverflowPixels": 0,
+    "enHorizontalOverflowPixels": 0
+  },
+  "checks": [
+    "All prior fifth-subject direct selected model/PDF, isolated synthetic QS lookup, E1/G1 needs_human_review and unchanged Chemistry/Biology atlas fixtures still pass.",
+    "Both German and English fifth-subject labels remain correct.",
+    "Review-Ausgabe is now explicitly asserted in the Economics title.",
+    "Actual new 360px PNG was directly viewed; Root H1 break-words keeps the same exact narrow viewport boundary."
+  ],
+  "screenshot": {
+    "source": "tmp/goal-book-quality-status-ui/economics-review-edition-360.png",
+    "target": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft261-current311-regular-book-independent-B-v1/actual-synthetic-economics-review-edition-ui-360.png",
+    "sha256": "sha256:24f8e9e56478e53f02b318146502ddc890cc3ff499e259b70635fbe732d9c167",
+    "wholeBytesEqual": true,
+    "originalSourcePreserved": true
+  },
+  "limitations": [
+    "Synthetic M2 is solely a distinct lookup-isolation fixture; actual Economics maturity remains M1.",
+    "No new strict goal, source, memory, visual-content or human approval is claimed.",
+    "Final generated PDF label successor is independently audited separately."
+  ]
+}

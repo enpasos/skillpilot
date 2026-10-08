@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "actualExecution": "native detector and native exact occurrence matching/filter block extracted verbatim from unchanged checker; TypeScript transpiled with existing esbuild and evaluated in isolated VM; live files not modified",
+  "sourceChecker": {
+    "path": "app/scripts/checkTerminology.ts",
+    "sha256": "cc8941303bc94fc4cf8bc319cfceee523c77500f376902cf73e38793931173f8"
+  },
+  "nativeRuleDefinitionSourceSha256": "f84ef4fe5c6f36b89c332e44a62dc79bdca20e85f6df55e733f067888c132b62",
+  "nativeDetectorSourceSha256": "c87e0bee21fa5e5771b5c5518cf4db8c622c77583cfe61517f346ef56d4d2f1c",
+  "nativeMatcherSourceSha256": "259a42a3dbde8f74328bb52b62321a86bb55f2dc2359f5da6ab1e19862320976",
+  "baseline37RowsMatchNativeDetectorExactly": true,
+  "cases": [
+    {
+      "scenario": "unchanged exact proposed inputs",
+      "detected": 37,
+      "uncovered": 0,
+      "stale": 0
+    },
+    {
+      "scenario": "changed full line at same occurrence",
+      "detected": 37,
+      "uncovered": 1,
+      "stale": 1
+    },
+    {
+      "scenario": "moved occurrence to different path",
+      "detected": 37,
+      "uncovered": 1,
+      "stale": 1
+    },
+    {
+      "scenario": "additional file with same wording",
+      "detected": 38,
+      "uncovered": 1,
+      "stale": 0
+    },
+    {
+      "scenario": "shifted line number",
+      "detected": 37,
+      "uncovered": 1,
+      "stale": 1
+    },
+    {
+      "scenario": "additional occurrence in an existing line",
+      "detected": 38,
+      "uncovered": 2,
+      "stale": 1
+    }
+  ],
+  "broadExclusionsAdded": false,
+  "liveCodeMutated": false,
+  "liveSourceInputsMutated": false
+}

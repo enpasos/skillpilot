@@ -1,0 +1,19 @@
+node:fs:596
+  handleErrorFromBinding(ctx);
+  ^
+
+Error: ENOENT: no such file or directory, open 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-nineteenteen-native-preparation-technical-20261008-v1/native-d-q2-nineteenteen.final.batch.config.json'
+    at Object.openSync (node:fs:596:3)
+    at readFileSync (node:fs:464:35)
+    at <anonymous> (/tmp/skillpilot-wirtschaft-q2-nineteen-native-wv0lu6lk/tmp/check-current-root68-nineteen-pages.mts:5:162)
+    at ModuleJob.run (node:internal/modules/esm/module_job:195:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:336:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:106:12) {
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-nineteenteen-native-preparation-technical-20261008-v1/native-d-q2-nineteenteen.final.batch.config.json'
+}
+
+Node.js v18.19.1

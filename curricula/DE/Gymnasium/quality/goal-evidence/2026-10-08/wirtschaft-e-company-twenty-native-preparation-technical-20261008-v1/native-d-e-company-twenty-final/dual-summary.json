@@ -1,0 +1,375 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:35dd2ed268cc89d680297d4f88acdbba571e8117684a1862f1d2bd1167361a8c",
+  "reviewInputFingerprint": "sha256:c06f741bef0bb2d52e3c0e0839c171646798dcd771e96d094e60894f8622a001",
+  "goalCount": 20,
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-a",
+      "roundId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a",
+      "independenceGroupId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-independent-a",
+      "runIds": [
+        "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.actual-codex-session"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact serving model identifier not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-b",
+      "roundId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b",
+      "independenceGroupId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-independent-b",
+      "runIds": [
+        "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact model identifier not disclosed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 20,
+    "unavailable": 0,
+    "requiresSynthesis": 20
+  },
+  "goals": [
+    {
+      "goalId": "ae7b709c-6139-5b05-8615-197bff511d9f",
+      "firstRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.ae7b709c",
+      "secondRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b.record-001",
+      "firstRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6d4a38df-527c-534b-8c0a-c6b546dae5b1",
+      "firstRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.6d4a38df",
+      "secondRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b.record-002",
+      "firstRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "aa9db8f6-c81e-5247-8f84-5f2b968ab2c4",
+      "firstRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.aa9db8f6",
+      "secondRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b.record-003",
+      "firstRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2ccb9f7e-1512-5970-85a1-71ec42734eb9",
+      "firstRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.2ccb9f7e",
+      "secondRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b.record-004",
+      "firstRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "860ead33-2b4c-5513-8a38-b291dc387f3a",
+      "firstRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.860ead33",
+      "secondRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b.record-005",
+      "firstRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "75cdc9a3-4cce-57a1-85e2-87c9994244da",
+      "firstRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.75cdc9a3",
+      "secondRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b.record-006",
+      "firstRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8c9f8fb2-18be-5e9c-86bf-3aea14a10b78",
+      "firstRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.8c9f8fb2",
+      "secondRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b.record-007",
+      "firstRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "95f2b860-d21d-5627-8dcd-cd53efd94b7b",
+      "firstRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.95f2b860",
+      "secondRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b.record-008",
+      "firstRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "04c17efe-4451-52bd-8116-1042d1501c41",
+      "firstRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.04c17efe",
+      "secondRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b.record-009",
+      "firstRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "66a0d96f-a231-5b36-894e-2ffb16adf7db",
+      "firstRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.66a0d96f",
+      "secondRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b.record-010",
+      "firstRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c7bd5875-b547-5ba6-8b41-122420cf0bf1",
+      "firstRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.c7bd5875",
+      "secondRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b.record-011",
+      "firstRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9a1a3f9b-909d-53d3-8851-759c416bd763",
+      "firstRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.9a1a3f9b",
+      "secondRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b.record-012",
+      "firstRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ae7b3074-2d62-5156-8862-4584c73ff75f",
+      "firstRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.ae7b3074",
+      "secondRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b.record-013",
+      "firstRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "685624a0-6839-521c-8228-c5914342bc6e",
+      "firstRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.685624a0",
+      "secondRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b.record-014",
+      "firstRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "53829f76-2d9c-5cdd-8521-c249f57f738d",
+      "firstRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.53829f76",
+      "secondRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b.record-015",
+      "firstRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "96ab60e8-7645-5c34-84be-62e1c2a3cb16",
+      "firstRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.96ab60e8",
+      "secondRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b.record-016",
+      "firstRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8328f308-ce55-54b4-8472-0340cb10ba5c",
+      "firstRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.8328f308",
+      "secondRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b.record-017",
+      "firstRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9cb6bd3b-1ecf-57af-8127-853fc969d7f5",
+      "firstRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.9cb6bd3b",
+      "secondRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b.record-018",
+      "firstRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "65d9f38e-d35d-5d84-8b66-3c05e388734f",
+      "firstRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.65d9f38e",
+      "secondRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b.record-019",
+      "firstRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e90586d8-8e0a-5355-87d0-4ecd90dbe021",
+      "firstRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.e90586d8",
+      "secondRecordId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b.record-020",
+      "firstRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.actual-codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

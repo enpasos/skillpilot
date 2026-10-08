@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "kind": "actual-independent-regular-five-book-ui-economics-browser-contract-test",
+  "reviewedAt": "2026-10-08T16:49:45.983897+00:00",
+  "reviewer": "economics_visual_source_continuation (independent B)",
+  "authority": "local_machine_test",
+  "inputBindings": {
+    "app/scripts/testGoalBookUi.ts": "sha256:744faeaae6417ab1ef54bd9727b86287f57c7f6036c069fd87c9a408d7d5b2b6",
+    "app/src/views/GoalBookView.tsx": "sha256:7a5ccb034888cdc756b0d6a0890571382badbf21f0ee573df4ef109d3caf0e49",
+    "app/src/utils/goalBookPublicationRegistry.ts": "sha256:ba827321bda4a7310159156402ee5094cc825d4fe6f43a455d0051eefac9bf86",
+    "tmp/goal-book-quality-status-ui/economics-360.png": "sha256:b42cbec105896f61cd643ebfc8edbabefc456fe40143502fff45d0bf50d3124b"
+  },
+  "command": "PATH=/tmp/skillpilot-node20-toolchain/node-v20.20.2-linux-x64/bin:$PATH ./node_modules/.bin/tsx scripts/testGoalBookUi.ts",
+  "cwd": "app",
+  "nodeVersion": "20.20.2",
+  "actualSession": 20230,
+  "exitCode": 0,
+  "actualStdout": "goal-book UI browser tests passed\n",
+  "checks": [
+    "Five registered subject links, including German Wirtschaftswissenschaften and English Economics",
+    "Dedicated synthetic canonical Economics fixture satisfies actual browser BookModel parser without atlas applicability or source-coverage fields",
+    "Direct Economics book/goal link fetches only selected Economics model and binds Economics PDF",
+    "Distinct synthetic Economics machine maturity is M2; it proves lookup isolation and makes no statement about real Economics maturity",
+    "Synthetic positive-profile presentation remains needs_human_review E1/G1 in both languages; no human approval is inferred",
+    "Existing Chemistry/Biology atlas-specific filters, lazy source metadata and feedback bindings are unchanged and pass",
+    "Economics has no borrowed atlas filters, applicability matrix or original-source requests",
+    "Economics layout has no horizontal overflow at 360px in German and English"
+  ],
+  "resolvedProductFinding": {
+    "file": "app/src/views/GoalBookView.tsx",
+    "issue": "German Economics H1 caused actual 454px document width at 360px viewport",
+    "resolution": "Root added break-words to the same H1. Exact 360px boundary retained; same browser test now passes."
+  },
+  "supersededAttempts": [
+    {
+      "session": 79858,
+      "cause": "Shell default Node18 cannot run installed Vite crypto.hash; test did not reach browser checks"
+    },
+    {
+      "session": 17514,
+      "cause": "New synthetic fixture contract used empty external/source arrays; corrected only test fixture"
+    },
+    {
+      "session": 45507,
+      "cause": "Canonical overview occurs in mobile and desktop elements; corrected only unique existing test selector"
+    },
+    {
+      "session": 51545,
+      "cause": "Confirmed same unique-selector issue with explicit diagnostics"
+    },
+    {
+      "session": 12122,
+      "cause": "Actual 360px German Economics H1 overflow; product correction by Root independently followed by passing rerun"
+    }
+  ],
+  "limitations": [
+    "Synthetic UI pages are not curricular review evidence or current311 target proof.",
+    "This receipt is not a native source-atlas audit, M7 goal closure, human release, learner host acceptance or deployment.",
+    "Actual generated Economics311 model/PDF/manifest audit remains pending final stable five-book build."
+  ]
+}

@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 1,
+  "kind": "actual-targeted-current-Q4-accepted-source-scope-native-Layer-A",
+  "checkedAt": "2026-10-08T11:46:59.415Z",
+  "physicalIsolate": "/tmp/skillpilot-wirtschaft-q4-layer-a-current-source-scope-5gkyjuiw",
+  "officialNativeImplementationBodyByteExact": true,
+  "route": {
+    "scopeId": "canonical-economics-crossstage",
+    "label": "Sekundarstufe I/II",
+    "selectedAtomicGoals": 303,
+    "maturity": "M0",
+    "rules": [
+      {
+        "id": "CQR-101",
+        "status": "fail",
+        "summary": "Effective route coverage has missing route segments.",
+        "metrics": {
+          "selectedAtomicGoals": 303,
+          "missingMotivationPath": 0,
+          "missingTerminalPath": 1
+        },
+        "details": [
+          "No effective terminal path: Brain Drain und Migration [6de44afa-7f91-5fa4-9292-ec06e86e97a4]"
+        ]
+      },
+      {
+        "id": "CQR-102",
+        "status": "warn",
+        "summary": "Direct atomic route coverage still needs migration work.",
+        "metrics": {
+          "selectedAtomicGoals": 303,
+          "missingDirectMotivationPath": 0,
+          "missingDirectTerminalPath": 1
+        },
+        "details": [
+          "No direct atomic terminal path: Brain Drain und Migration [6de44afa-7f91-5fa4-9292-ec06e86e97a4]"
+        ]
+      },
+      {
+        "id": "CQR-103",
+        "status": "pass",
+        "summary": "No scoped cluster-level requires remain.",
+        "metrics": {
+          "scopedClusterRequires": 0
+        }
+      },
+      {
+        "id": "CQR-104",
+        "status": "pass",
+        "summary": "Route endpoints are exactly visible in every relevant learner-facing projection scope.",
+        "metrics": {
+          "relevantCompositionViews": 2,
+          "evaluatedProjectionScopes": 2,
+          "requiredMotivationAnchors": 1,
+          "minimumRequiredTerminalAutonomyGoals": 18,
+          "requiredTerminalAutonomyGoals": 18,
+          "projectionScopesMissingMotivationAnchors": 0,
+          "projectionScopesMissingTerminalAutonomyGoals": 0,
+          "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+          "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+          "terminalGoalsMissingCompiledApplicability": 0,
+          "projectionScopesWithInvalidStageStructure": 0,
+          "nationalProjectionScopesUsingJurisdictionStageAuthority": 0,
+          "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+          "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+          "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+          "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+          "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 0,
+          "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+          "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+          "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+          "projectionLocalRouteChecksEnabled": 0,
+          "visibleSelectedAtomicGoalOccurrences": 544,
+          "visibleProfileSelectedAtomicGoalOccurrences": 544,
+          "visibleProjectedRouteTargetGoalOccurrences": 544,
+          "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+          "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+          "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+          "projectionScopesMissingEffectiveMotivationRoutes": 0,
+          "projectionScopesMissingDirectMotivationRoutes": 0,
+          "projectionScopesMissingEffectiveTerminalRoutes": 0,
+          "projectionScopesMissingDirectTerminalRoutes": 0,
+          "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+          "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+          "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+          "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+        }
+      },
+      {
+        "id": "CQR-201",
+        "status": "pass",
+        "summary": "All configured terminal autonomy goals have examData.",
+        "metrics": {
+          "terminalAutonomyGoals": 18,
+          "terminalAutonomyGoalsWithExamData": 18,
+          "terminalAutonomyGoalsWithoutExamData": 0
+        }
+      },
+      {
+        "id": "CQR-202",
+        "status": "pass",
+        "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+        "metrics": {
+          "terminalAutonomyGoals": 18,
+          "concreteExamData": 18,
+          "weakExamData": 0
+        }
+      },
+      {
+        "id": "CQR-203",
+        "status": "pass",
+        "summary": "All terminal autonomy examData has release and coverage metadata.",
+        "metrics": {
+          "terminalAutonomyGoals": 18,
+          "releasedCoverageCompleteExamData": 18,
+          "releaseCoverageIncompleteExamData": 0
+        }
+      }
+    ]
+  },
+  "sourceCourse": {
+    "id": "CQR-004",
+    "status": "pass",
+    "summary": "Course-level mapping is clean for 352 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+    "metrics": {
+      "configuredMappingFiles": 30,
+      "sourceGoals": 1359,
+      "sourceGoalsWithCourseLevel": 1359,
+      "gkLkSourceGoals": 762,
+      "lkSourceGoals": 442,
+      "unspecifiedSourceGoals": 117,
+      "checkedMappingEdges": 352,
+      "defaultedUnspecifiedMappingEdges": 107,
+      "reviewedCourseLevelExceptions": 0,
+      "mismatches": 0,
+      "missingSourceGoals": 0,
+      "missingTargetGoals": 0,
+      "unmappedCourseLevelSourceGoals": 0
+    }
+  },
+  "graph": {
+    "id": "CQR-001",
+    "status": "pass",
+    "summary": "Basic graph integrity checks pass.",
+    "metrics": {
+      "goals": 370,
+      "localReferenceIssues": 0
+    }
+  },
+  "types": {
+    "id": "CQR-002",
+    "status": "pass",
+    "summary": "Explicit type metadata matches graph structure.",
+    "metrics": {
+      "mismatches": 0
+    }
+  },
+  "semantic": {
+    "id": "CQR-301",
+    "status": "pass",
+    "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+    "metrics": {
+      "configs": 1,
+      "leafGoals": 303,
+      "atomic": 303,
+      "needsDeveloperReview": 0,
+      "nonAtomic": 0,
+      "missing": 0,
+      "stale": 0,
+      "obsolete": 0
+    }
+  },
+  "memory": {
+    "id": "CQR-302",
+    "status": "pass",
+    "summary": "Memory-card review is current: 53/303 ordinary atomic goals intentionally use memorization support, 51/51 primary cards are kept with origin traces, all 5 memory goals are traced, and 98 view-visible memory-required goals resolve to visible memory nodes.",
+    "metrics": {
+      "configs": 1,
+      "reviewedGoals": 303,
+      "noMemoryNeeded": 250,
+      "memoryRequired": 53,
+      "needsDeveloperReview": 0,
+      "missing": 0,
+      "stale": 0,
+      "obsolete": 0,
+      "duplicateRecords": 0,
+      "invalidRecords": 0,
+      "primaryCards": 51,
+      "keptCards": 51,
+      "cardsMarkedRemove": 0,
+      "cardNeedsDeveloperReview": 0,
+      "missingCardReviews": 0,
+      "staleCardReviews": 0,
+      "obsoleteCardReviews": 0,
+      "duplicateCardReviewRecords": 0,
+      "invalidCardReviewRecords": 0,
+      "untracedMemoryRequiredGoals": 0,
+      "visibilityScopes": 2,
+      "visibilityCheckedMemoryRequiredGoals": 98,
+      "visibilityMissingVisibleMemoryGoals": 0,
+      "visibilityErrors": 0,
+      "memoryGoals": 5,
+      "tracedMemoryGoals": 5,
+      "untracedMemoryGoals": 0,
+      "deckIds": 5,
+      "deckFiles": 5,
+      "cardRows": 51
+    },
+    "details": [
+      "canonical-economics-full: audit report curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-reviewed-current-source-bindings-v4/memory.native-report.md"
+    ]
+  },
+  "applicabilitySummary": {
+    "goals": 370,
+    "errors": 0,
+    "warnings": 0,
+    "diagnostics": 1451
+  },
+  "applicabilityNonDiagnosticFindings": [],
+  "nativeActualCourseViews": [
+    {
+      "view": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json",
+      "courseProfile": "GK",
+      "actualFilters": [
+        "GK"
+      ],
+      "targetCount": 217,
+      "assessmentGoalId": "44fb56bb-7b5a-4b34-9ca4-c4052f94da89",
+      "assessmentTags": [
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "assessmentTarget": false,
+      "assessmentIncluded": false,
+      "directPrerequisites": [
+        {
+          "goalId": "ac76810e-3f06-570a-b770-8b57acb55d1c",
+          "target": true,
+          "included": true
+        },
+        {
+          "goalId": "645e6ff8-4ddf-5858-bbae-ce20fdc966ac",
+          "target": false,
+          "included": false
+        },
+        {
+          "goalId": "9b6ef4f1-229b-5560-b692-0a6b6de79de7",
+          "target": false,
+          "included": false
+        },
+        {
+          "goalId": "e5560c43-c25a-5356-a282-c602945219ae",
+          "target": false,
+          "included": false
+        },
+        {
+          "goalId": "b8c7458a-7642-53bf-b20e-d2a715ff6ed7",
+          "target": false,
+          "included": false
+        },
+        {
+          "goalId": "e7542590-40e7-5d06-99f3-f295be1f9e12",
+          "target": false,
+          "included": false
+        },
+        {
+          "goalId": "13705b9f-9623-500b-80ba-4574b753a29c",
+          "target": false,
+          "included": false
+        },
+        {
+          "goalId": "c9847c36-7a66-5cbd-9aee-60f71a8440de",
+          "target": false,
+          "included": false
+        },
+        {
+          "goalId": "36ebee6c-ec32-53e2-a5da-f50185e61a55",
+          "target": false,
+          "included": false
+        },
+        {
+          "goalId": "9df66a0b-eb44-5668-b661-4f09e1d2399f",
+          "target": false,
+          "included": false
+        },
+        {
+          "goalId": "7a55332e-7c1d-531a-8679-e18592e74ea2",
+          "target": false,
+          "included": false
+        }
+      ],
+      "missingDirectPrerequisitesIfTarget": [],
+      "migrationTarget": false
+    },
+    {
+      "view": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-lk.view.json",
+      "courseProfile": "LK",
+      "actualFilters": [
+        "LK"
+      ],
+      "targetCount": 297,
+      "assessmentGoalId": "44fb56bb-7b5a-4b34-9ca4-c4052f94da89",
+      "assessmentTags": [
+        "LK",
+        "Practice",
+        "Assessment"
+      ],
+      "assessmentTarget": true,
+      "assessmentIncluded": true,
+      "directPrerequisites": [
+        {
+          "goalId": "ac76810e-3f06-570a-b770-8b57acb55d1c",
+          "target": true,
+          "included": true
+        },
+        {
+          "goalId": "645e6ff8-4ddf-5858-bbae-ce20fdc966ac",
+          "target": true,
+          "included": true
+        },
+        {
+          "goalId": "9b6ef4f1-229b-5560-b692-0a6b6de79de7",
+          "target": true,
+          "included": true
+        },
+        {
+          "goalId": "e5560c43-c25a-5356-a282-c602945219ae",
+          "target": true,
+          "included": true
+        },
+        {
+          "goalId": "b8c7458a-7642-53bf-b20e-d2a715ff6ed7",
+          "target": true,
+          "included": true
+        },
+        {
+          "goalId": "e7542590-40e7-5d06-99f3-f295be1f9e12",
+          "target": true,
+          "included": true
+        },
+        {
+          "goalId": "13705b9f-9623-500b-80ba-4574b753a29c",
+          "target": true,
+          "included": true
+        },
+        {
+          "goalId": "c9847c36-7a66-5cbd-9aee-60f71a8440de",
+          "target": true,
+          "included": true
+        },
+        {
+          "goalId": "36ebee6c-ec32-53e2-a5da-f50185e61a55",
+          "target": true,
+          "included": true
+        },
+        {
+          "goalId": "9df66a0b-eb44-5668-b661-4f09e1d2399f",
+          "target": true,
+          "included": true
+        },
+        {
+          "goalId": "7a55332e-7c1d-531a-8679-e18592e74ea2",
+          "target": true,
+          "included": true
+        }
+      ],
+      "missingDirectPrerequisitesIfTarget": [],
+      "migrationTarget": true
+    }
+  ],
+  "noHumanApprovalClaim": true,
+  "noNewIndependentReviewClaim": true,
+  "activeWrites": 0
+}

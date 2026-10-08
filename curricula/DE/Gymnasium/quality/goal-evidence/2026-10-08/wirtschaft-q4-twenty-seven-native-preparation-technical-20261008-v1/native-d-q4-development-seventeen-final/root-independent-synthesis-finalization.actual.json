@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "actualExecutedAt": "2026-10-08T11:08:57.625483+00:00",
+  "actualRootReading": "All54 whole independent records actually read in bounded complete outputs including all6 understanding fields and bilingual current text; earlier full27 DEEN/P54/AM54/four actual cards/primary source review remains. Current sixde original V/scope fault explicitly not closed by this historical synthesis",
+  "independentRecords": {
+    "round-a": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/native-d-q4-development-seventeen-final/round-a/results/wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:835c933af8cbaeff81511f69f020a4fa5d6848b63d7bf988fc17447bbbadb6ec"
+    },
+    "round-b": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/native-d-q4-development-seventeen-final/round-b/results/wirtschaft-q4-development-seventeen-current303-final-author-v2-20261008-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:7a09be14465793a77062ee9a0066ea5a0b32b1509641622571fd30385e98d7f6"
+    }
+  },
+  "originalFrozenFilesVerifiedExact": 28,
+  "actualCommands": [
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/native-d-q4-development-seventeen.final.batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/native-d-q4-development-seventeen-final/root-finalization-step-1.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/native-d-q4-development-seventeen-final/root-finalization-step-1.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/native-d-q4-development-seventeen.final.batch.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/native-d-q4-development-seventeen-final/root-independent-synthesis-authoring-v1.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/native-d-q4-development-seventeen-final/root-finalization-step-2.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/native-d-q4-development-seventeen-final/root-finalization-step-2.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/native-d-q4-development-seventeen.final.batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/native-d-q4-development-seventeen-final/synthesis-decisions.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/native-d-q4-development-seventeen-final/root-finalization-step-3.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/native-d-q4-development-seventeen-final/root-finalization-step-3.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/native-d-q4-development-seventeen.final.batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/native-d-q4-development-seventeen-final/root-finalization-step-4.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/native-d-q4-development-seventeen-final/root-finalization-step-4.stderr.txt"
+    }
+  ],
+  "historicalFrozenDescriptionResolutions": 17,
+  "current6deImageAndScopeApprovalNotClaimed": true,
+  "required6deActualSeparateCurrentAffectedPageSuccessor": true,
+  "humanApprovalClaimed": false,
+  "liveMutations": 0
+}

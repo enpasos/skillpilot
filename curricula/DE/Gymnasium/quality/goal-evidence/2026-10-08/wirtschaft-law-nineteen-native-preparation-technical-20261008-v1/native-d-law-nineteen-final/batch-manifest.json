@@ -1,0 +1,72 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008",
+  "subject": "wirtschaftswissenschaften",
+  "subjectLabel": "Wirtschaftswissenschaften",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-native-preparation-technical-20261008-v1/native-d-law-nineteen.final.batch.config.json",
+  "configDigest": "sha256:26a8516e7b5915f6a32a7ddfe13b1b4ea87f31d59d162d2d47b6a7ab7608cc99",
+  "goalIds": [
+    "2aee114f-d0d2-516f-8f95-1b72f707401d",
+    "c73bc13e-6871-50c3-82d3-90283f1f54ce",
+    "7159ae22-e6ac-54e6-8b62-9b697310cc5f",
+    "3a6568d2-9f94-5574-8996-9ebac0bc0b3e",
+    "f6a445cb-50d9-5d22-80af-e669509758b0",
+    "78eeb8fe-fd5c-5d21-81be-75c3990fc4b5",
+    "1f5c3e82-dc4a-54cc-838e-66e4d434a7b5",
+    "c4faf50c-8778-5540-8276-87840cc81e05",
+    "dae93971-726c-56e5-8044-19dbd40febf7",
+    "bb7f2a2a-95c3-5375-8323-51a808e945e6",
+    "537a6f0d-0cf9-5a80-82d6-618ec790e7a6",
+    "61da4203-44c1-5e60-8880-5e8a64943675",
+    "b44892ea-32dc-5a91-8bba-2f422af7c6e7",
+    "d9a3db94-2629-53d0-80c6-801adc0f6641",
+    "bd413a7c-775a-5318-813c-0b75578f9a11",
+    "3897fc05-a8fc-5045-8d7f-9efeabcd098d",
+    "3ed27350-0257-5690-89d9-5acefeffcf68",
+    "87e1971d-d153-59eb-81d9-e361caf83a26",
+    "ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 303,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-m7-current-baseline-20261008-v1/review-book-full.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "baseBookDigest": "sha256:4cc5ee6796d10276a9bf32f3727b21a33abc0a57eaff2fba94bab1fdf1b51c45"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:584bc9bad19bb2fc3250f2551b92b85d22a129d7e28622a7aa35938a00a3137a",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:c91941c2b10b6ec3fdf0ff0c4d6d8fbac14d42516930f30e4f8c501adbc579bd",
+    "reviewInputFingerprint": "sha256:8758fa603c2f5cdfa7376e0f223b65d66ba56cc321c99a9d6340c1b184c01f95",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008-a",
+        "campaignDigest": "sha256:aa43e13d511eb7a3ebea2b13f2a4634d289675a2132a2a7e8345ad502e86f48c",
+        "roundId": "wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008-first-pass-a",
+        "independenceGroupId": "wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008-independent-a",
+        "batchId": "wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:e56551ab663dfb66f3bd3ff639fb52ee8b72ebd30f7c7d30219d3357830b531c"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008-b",
+        "campaignDigest": "sha256:6d0ebb373cb326e23a6ace0f9aa9f664e49f31af50a2b66d43df387c8984c06d",
+        "roundId": "wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008-first-pass-b",
+        "independenceGroupId": "wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008-independent-b",
+        "batchId": "wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:2900a102ca630ffcd181c5b7ebbcba98a069da70c5280fc9f50972c4e98d50db"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

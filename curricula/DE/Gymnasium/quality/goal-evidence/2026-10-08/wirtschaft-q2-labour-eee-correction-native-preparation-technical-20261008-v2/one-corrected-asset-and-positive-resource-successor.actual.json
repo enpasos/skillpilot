@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "role": "technical_one_corrected_asset_import_and_current_resource_binding",
+  "actualCheckedAt": "2026-10-08T09:42:58.685368+00:00",
+  "physicalIsolate": "/tmp/skillpilot-wirtschaft-q2-labour-twelve-native-qnj7b9dg",
+  "currentRootStrictBaseline": 113,
+  "selectionPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-labour-twelve-independent-image-review-20261008-v1/actual-final-twelve-KEEP-after-two-corrections.receipt.json",
+  "selectionSha256": "sha256:f8cb4304e0750bd515e5429811893d6d595e962687affcefd8c4337c682c58b4",
+  "actualPromptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-labour-twelve-image-author-20261008-v1/eee7217a-c2fb-58b6-ba84-2a8d5235edb5/correction-v2/actual-prompt.txt",
+  "actualPromptSha256": "sha256:fcc04e59d4a8d6e6d2d4823312cca088582e39548a75bb5bd11fcae29b14bd31",
+  "actualPromptPersistedAfterGeneration": "True per actual-imagegen-call.args.json; native BEFORE preparation remains separately genuine. No earlier prompt-file chronology claimed.",
+  "correctedGoalId": "eee7217a-c2fb-58b6-ba84-2a8d5235edb5",
+  "assetPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-labour-twelve-image-author-20261008-v1/eee7217a-c2fb-58b6-ba84-2a8d5235edb5/correction-v2/eee7217a-c2fb-58b6-ba84-2a8d5235edb5.png",
+  "assetSha256": "sha256:a5ed0ba27eb8270cb98a950d6d61b2d2f041b2ca768e5e7bcd58c505cf4b3413",
+  "independentReviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-labour-twelve-independent-image-review-20261008-v1/eee7217a-c2fb-58b6-ba84-2a8d5235edb5/correction-v2/independent-image-review.receipt.json",
+  "independentReviewSha256": "sha256:f0dc7b379eccb85ce03dc46b3d8e5fb658dfd7ecccd12a43b6510353dab07c88",
+  "activeCurrentSource2MappingPath": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_wirtschaft_upper_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+  "activeCurrentSource2MappingSha256": "sha256:d2dc08524e33d419d0c5c38c2cc43432c880062680acf70c1a8f3c05bb0149eb",
+  "activeCurrentSource2ExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-bw-two-current-source-location-successors-author-v1/upper-secondary/DE_BW_WIRTSCHAFT_SEKII_BP2016.source-extraction.json",
+  "activeCurrentSource2ExtractionSha256": "sha256:8b0f652bd35ee97145f48b7a3c0422a9f5aed8dd6cafabae650c38270ea13be3",
+  "unchangedPriorPositiveRecordsByteExact": 11,
+  "sameSubstantivePositiveProfile": true,
+  "nativePositiveCurrentCandidateRecords": 12,
+  "commands": [
+    {
+      "name": "import-one-corrected-png",
+      "command": [
+        "node",
+        "scripts/import_goal_visualization.mjs",
+        "eee7217a-c2fb-58b6-ba84-2a8d5235edb5",
+        "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-labour-twelve-image-author-20261008-v1/eee7217a-c2fb-58b6-ba84-2a8d5235edb5/correction-v2/eee7217a-c2fb-58b6-ba84-2a8d5235edb5.png",
+        "--landscape",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "--subject",
+        "wirtschaftswissenschaften",
+        "--lang",
+        "de",
+        "--provider",
+        "OpenAI Codex image_gen",
+        "--review-status",
+        "approved_ai",
+        "--license",
+        "CC-BY-4.0",
+        "--alt-text",
+        "Eine Person betrachtet einen Plan von Problem über Maßnahme zum Prüfen. Große Bildfelder zeigen Weiterbildung, Vermittlung und ein Beschäftigungsprojekt; daneben stehen offene Zielgruppen-, Kosten- und Evidenzfragen. Das Vordergrundheft enthält keine lesepflichtigen Notizen.",
+        "--prompt",
+        "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-labour-twelve-image-author-20261008-v1/eee7217a-c2fb-58b6-ba84-2a8d5235edb5/correction-v2/actual-prompt.txt"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-q2-labour-twelve-native-qnj7b9dg",
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-generate-current-qa303",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "--subject",
+        "wirtschaftswissenschaften"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-q2-labour-twelve-native-qnj7b9dg",
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-qa303-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "--subject",
+        "wirtschaftswissenschaften",
+        "--check"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-q2-labour-twelve-native-qnj7b9dg",
+      "actualExitCode": 0
+    },
+    {
+      "name": "bind-only-eee-kind",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-eee-correction-native-preparation-technical-20261008-v2/bind-only-eee-current-kind.mts"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-q2-labour-twelve-native-qnj7b9dg",
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-materialize-unchanged-positive12",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-eee-correction-native-preparation-technical-20261008-v2/positive-materialization-staging.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-bilingual-positive-author-v2/positive.candidates.json",
+        "--write"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-q2-labour-twelve-native-qnj7b9dg",
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-positive-current12-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-eee-correction-native-preparation-technical-20261008-v2/positive-final-resources.candidate.config.json",
+        "--mode=check"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-q2-labour-twelve-native-qnj7b9dg",
+      "actualExitCode": 0
+    }
+  ],
+  "independentApprovalByPreparationClaimed": false,
+  "humanApprovalClaimed": false,
+  "activeWrites": 0,
+  "newStrictClosures": 0
+}

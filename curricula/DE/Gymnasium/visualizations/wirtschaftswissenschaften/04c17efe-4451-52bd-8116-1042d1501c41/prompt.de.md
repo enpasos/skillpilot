@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Vereinfachte Bilanz erstellen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `04c17efe-4451-52bd-8116-1042d1501c41`
+- Titel: Vereinfachte Bilanz erstellen
+- Beschreibung: Die lernende Person kann eine vereinfachte Bilanz erstellen, indem sie Vermögenswerte und Kapitalquellen gegenüberstellt.
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `04c17efe-4451-52bd-8116-1042d1501c41.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/04c17efe-4451-52bd-8116-1042d1501c41/04c17efe-4451-52bd-8116-1042d1501c41.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational. Create one original raster PNG economics illustration, wide approximately16:9 and1600x900 or near native size. Friendly abstract clear comic, warm ivory, dark clean outlines, rounded shapes, restrained teal/coral/gold, welcoming ordinary people. Three or four spacious main visual groups. Main competence/details readable at360 and680pixels; text ONLY few expressly specified large German labels. No extra headings, small labels, tiny legends, watermarks, signature, project name, slogans, brands, official emblems, health crosses/crescents/diamonds, copied logos, photorealism, sterile technical redesign or SVG. Personal notebooks/worksheets and screens must face their actual active users; preferably floating conceptual symbols or openly shared boards. Fictional conditional teaching contexts, no observed learner work or factual latest statistics. Competence: Vereinfachte Bilanz erstellen. Die lernende Person kann eine vereinfachte Bilanz erstellen, indem sie Vermögenswerte und Kapitalquellen gegenüberstellt. Scene: A large simplified conceptual balance sheet has two equally sized sides: Aktiva shows original machine, inventory and cash asset icons; Passiva shows owner/equity funding and lender/debt-claim icons, NOT cash on the liability side. Only “Aktiva”, “Passiva”, “Vermögen”, “Kapitalquellen”. Equality represents assets funded by equity and liabilities; no fake regulatory numbers, asymmetrical totals or claim capital equals cash.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-08T06:12:45.555311+00:00",
+  "localRoot": "/tmp/skillpilot-native-poppler-56ptay2_",
+  "packages": [
+    {
+      "name": "libpoppler134_24.02.0-1ubuntu9.10_amd64.deb",
+      "sha256": "sha256:2974536ea4ce7d75e54923b1bab0f251f407d1c291427ddc7c53da65e1c505b7"
+    },
+    {
+      "name": "poppler-utils_24.02.0-1ubuntu9.10_amd64.deb",
+      "sha256": "sha256:19ce4557ad89350506a0f1c33ad4c5a6aa7469e48c78aacae351a59b43ee20c6"
+    }
+  ],
+  "runs": [
+    {
+      "command": [
+        "apt-get",
+        "download",
+        "poppler-utils",
+        "libpoppler134"
+      ],
+      "exitCode": 0,
+      "stdout": "Get:1 http://security.ubuntu.com/ubuntu noble-security/main amd64 libpoppler134 amd64 24.02.0-1ubuntu9.10 [1115 kB]\nGet:2 http://security.ubuntu.com/ubuntu noble-security/main amd64 poppler-utils amd64 24.02.0-1ubuntu9.10 [212 kB]\nFetched 1326 kB in 12s (107 kB/s)\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "apt-cache",
+        "depends",
+        "libpoppler134"
+      ],
+      "exitCode": 0,
+      "stdout": "libpoppler134\n  Depends: libc6\n  Depends: libcurl3t64-gnutls\n  Depends: libfontconfig1\n  Depends: libfreetype6\n  Depends: libjpeg8\n  Depends: liblcms2-2\n  Depends: libnspr4\n  Depends: libnss3\n  Depends: libopenjp2-7\n  Depends: libpng16-16t64\n  Depends: libstdc++6\n  Depends: libtiff6\n  Depends: zlib1g\n  Recommends: poppler-data\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "ldd",
+        "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/bin/pdfinfo"
+      ],
+      "exitCode": 0,
+      "stdout": "\tlinux-vdso.so.1 (0x00007ac48989d000)\n\tlibpoppler.so.134 => not found\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007ac489600000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007ac489200000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007ac489517000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007ac48989f000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007ac4894e9000)\n",
+      "stderr": ""
+    }
+  ],
+  "repositoryFilesChanged": 0,
+  "systemInstalled": false,
+  "nativePdfValidationUnchanged": true
+}

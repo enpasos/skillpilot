@@ -1,0 +1,4 @@
+// Apache-2.0. Actual native source/applicability checks, with truthful current candidate limits.
+import{writeFile}from'node:fs/promises';import{buildApplicabilityCompilation}from'../../../../../../../app/scripts/applicabilityCompiler.ts';
+const result=buildApplicabilityCompilation();await writeFile("curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-eleven-future311-source-layer-impact-technical-v1"+'/native-economics-only-applicability-v3.full.actual.json',JSON.stringify(result,null,2)+String.fromCharCode(10),{flag:'wx'});
+const findings=(result as any).findings??[];const count:any={};for(const f of findings){const k=f.code+':'+f.severity;count[k]=(count[k]??0)+1}console.log(JSON.stringify({actualNativeCompiler:'buildApplicabilityCompilation',findings:count,resultKeys:Object.keys(result),activeWrites:0}));

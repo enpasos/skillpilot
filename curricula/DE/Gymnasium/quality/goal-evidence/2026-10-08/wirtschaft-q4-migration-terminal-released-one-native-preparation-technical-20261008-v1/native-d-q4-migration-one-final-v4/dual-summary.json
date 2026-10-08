@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:6ba6e38292822433318350560bfd97bcd20ae4569d15d3ae27582ca03b3a1565",
+  "reviewInputFingerprint": "sha256:92a719c0d7fa9ea20f1b08d61c9c0d951bb50810109e8daffbfd189c6af5981b",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-a",
+      "roundId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-first-pass-a",
+      "independenceGroupId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-independent-a",
+      "runIds": [
+        "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-first-pass-a.actual-codex-session"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact serving model identifier not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-b",
+      "roundId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-first-pass-b",
+      "independenceGroupId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-independent-b",
+      "runIds": [
+        "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-first-pass-b.actual-codex-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact model identifier not disclosed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "6de44afa-7f91-5fa4-9292-ec06e86e97a4",
+      "firstRecordId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-first-pass-a.6de44afa",
+      "secondRecordId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-first-pass-b.actual-codex-b.record-001",
+      "firstRunId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-first-pass-b.actual-codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

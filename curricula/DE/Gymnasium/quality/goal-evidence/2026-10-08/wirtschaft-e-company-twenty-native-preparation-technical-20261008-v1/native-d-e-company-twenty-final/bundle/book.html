@@ -1,0 +1,981 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Wirtschaftswissenschaften: 20 aktuelle Lernziele zu Unternehmen und berufliche Orientierung</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Wirtschaftswissenschaften: 20 aktuelle Lernziele zu Unternehmen und berufliche Orientierung</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>20 atomare Lernziele</dt><dd>3 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:wirtschaftswissenschaften-m7-review-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-94e1500621eeee0738ad47ab" aria-label="Wirtschaftswissenschaften – kanonische M7-Prüfsicht"><a href="#goal-ae7b709c-6139-5b05-8615-197bff511d9f"><span class="toc-entry-label">Wirtschaftswissenschaften&#160;<wbr>–&#160;<wbr>kanonische&#160;<wbr>M7-Prüfsicht</span></a></h2>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="goal:96183c48-b499-54d7-8530-578f6ff40207" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-a0dfaba9fba054a714038138" aria-label="Wirtschaftswissenschaften"><a href="#goal-ae7b709c-6139-5b05-8615-197bff511d9f"><span class="toc-entry-label">Wirtschaftswissenschaften</span></a></h3>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:3489941f-3f99-5c7c-8bc7-b5228fbe5e76" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-330b96d7d96f3e197a29bc25" aria-label="Unternehmerisch denken und entscheiden"><a href="#goal-ae7b709c-6139-5b05-8615-197bff511d9f"><span class="toc-entry-label">Unternehmerisch&#160;<wbr>denken&#160;<wbr>und&#160;<wbr>entscheiden</span></a></h4>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-ae7b709c-6139-5b05-8615-197bff511d9f" data-goal-id="ae7b709c-6139-5b05-8615-197bff511d9f" data-page-number="1" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:3489941f-3f99-5c7c-8bc7-b5228fbe5e76" aria-labelledby="goal-ae7b709c-6139-5b05-8615-197bff511d9f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-ae7b709c-6139-5b05-8615-197bff511d9f-title"><a class="goal-self-link" href="#goal-ae7b709c-6139-5b05-8615-197bff511d9f">Spezialisierung, Kooperation und Koordination anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ae7b709c-6139-5b05-8615-197bff511d9f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-330b96d7d96f3e197a29bc25">Unternehmerisch denken und entscheiden</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:60168667e186b864a3c75e203dae77c64637b62ded578a8bf5c7295572d0f7b7" data-rendered-digest="sha256:f12bff34258369269640f9ea888c9154dfea2a157838e8645eae85ab03c652ae" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/ae7b709c-6139-5b05-8615-197bff511d9f/ae7b709c-6139-5b05-8615-197bff511d9f.png" alt="Drei Menschen bereiten gemeinsam Backwaren vor, teilen Arbeitsschritte und koordinieren Übergaben mit einer Uhr. Eine offene Frage lädt zur Verbesserung ein.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ae7b709c-6139-5b05-8615-197bff511d9f-description-heading">
+        <p class="section-heading" id="goal-ae7b709c-6139-5b05-8615-197bff511d9f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Spezialisierung, Kooperation und Koordination als Grundprinzipien arbeitsteiliger Abläufe erklären und auf Verbesserungen im eigenen Lebensumfeld anwenden.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ae7b709c-6139-5b05-8615-197bff511d9f-requires-heading">
+          <p class="section-heading" id="goal-ae7b709c-6139-5b05-8615-197bff511d9f-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-ae7b709c-6139-5b05-8615-197bff511d9f-reverse-heading">
+          <p class="section-heading" id="goal-ae7b709c-6139-5b05-8615-197bff511d9f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-6d4a38df-527c-534b-8c0a-c6b546dae5b1"><span>Grundlegenden Unternehmensaufbau darstellen</span><code>6d4a38df-527c-534b-8c0a-c6b546dae5b1</code><span class="reference-page">S. 2</span></a></li><li><a href="#goal-aa9db8f6-c81e-5247-8f84-5f2b968ab2c4"><span>Kern- und Unterstützungsprozesse in Unternehmen analysieren</span><code>aa9db8f6-c81e-5247-8f84-5f2b968ab2c4</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-ae7b709c-6139-5b05-8615-197bff511d9f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ae7b709c-6139-5b05-8615-197bff511d9f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 20</span>
+      <span>Buch-Digest <code>sha256:7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4fdca08d63ff179487d1f4a9790c4a0b818645ce6f1190e7d8d9e878ebc28335</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e-company-twenty-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=ae7b709c-6139-5b05-8615-197bff511d9f&amp;goalFingerprint=sha256%3A4fdca08d63ff179487d1f4a9790c4a0b818645ce6f1190e7d8d9e878ebc28335&amp;pageFingerprint=sha256%3A5bcca15b2124f2a12b730e8a130f49399b4c32a543b0fd89e5a60c5cd0a99deb&amp;bookDigest=sha256%3A7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6d4a38df-527c-534b-8c0a-c6b546dae5b1" data-goal-id="6d4a38df-527c-534b-8c0a-c6b546dae5b1" data-page-number="2" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:3489941f-3f99-5c7c-8bc7-b5228fbe5e76" aria-labelledby="goal-6d4a38df-527c-534b-8c0a-c6b546dae5b1-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6d4a38df-527c-534b-8c0a-c6b546dae5b1-title"><a class="goal-self-link" href="#goal-6d4a38df-527c-534b-8c0a-c6b546dae5b1">Grundlegenden Unternehmensaufbau darstellen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6d4a38df-527c-534b-8c0a-c6b546dae5b1</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-330b96d7d96f3e197a29bc25">Unternehmerisch denken und entscheiden</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f73915f1041ebbdd875298bb5fdcb78a2ef9e4c22acc78da9883f380bc360722" data-rendered-digest="sha256:fb54a3e9948608ca9dae1d3b7cb0a44213025e9d29059ea1fbb700bf1dcd1cd9" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/6d4a38df-527c-534b-8c0a-c6b546dae5b1/6d4a38df-527c-534b-8c0a-c6b546dae5b1.png" alt="Beschaffung, Herstellung und Verkauf eines Vogelhauses sind verbunden. Eine unterstützende Verwaltungsstelle mit Finanz-, Personal- und Organisationssymbolen begleitet die Funktionsbereiche.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6d4a38df-527c-534b-8c0a-c6b546dae5b1-description-heading">
+        <p class="section-heading" id="goal-6d4a38df-527c-534b-8c0a-c6b546dae5b1-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den grundlegenden Aufbau von Unternehmen mit zentralen Funktionsbereichen und deren Zusammenwirken darstellen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6d4a38df-527c-534b-8c0a-c6b546dae5b1-requires-heading">
+          <p class="section-heading" id="goal-6d4a38df-527c-534b-8c0a-c6b546dae5b1-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ae7b709c-6139-5b05-8615-197bff511d9f"><span>Spezialisierung, Kooperation und Koordination anwenden</span><code>ae7b709c-6139-5b05-8615-197bff511d9f</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-6d4a38df-527c-534b-8c0a-c6b546dae5b1-reverse-heading">
+          <p class="section-heading" id="goal-6d4a38df-527c-534b-8c0a-c6b546dae5b1-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-aa9db8f6-c81e-5247-8f84-5f2b968ab2c4"><span>Kern- und Unterstützungsprozesse in Unternehmen analysieren</span><code>aa9db8f6-c81e-5247-8f84-5f2b968ab2c4</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-860ead33-2b4c-5513-8a38-b291dc387f3a"><span>Unternehmenspräsentationen adressatenbezogen analysieren</span><code>860ead33-2b4c-5513-8a38-b291dc387f3a</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-75cdc9a3-4cce-57a1-85e2-87c9994244da"><span>Bedeutung des Marketings für Unternehmen einschätzen</span><code>75cdc9a3-4cce-57a1-85e2-87c9994244da</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-96ab60e8-7645-5c34-84be-62e1c2a3cb16"><span>Unternehmerische Persönlichkeitsanforderungen reflektieren</span><code>96ab60e8-7645-5c34-84be-62e1c2a3cb16</code><span class="reference-page">S. 16</span></a></li><li><a href="#goal-8328f308-ce55-54b4-8472-0340cb10ba5c"><span>Unternehmenslandschaft datenbasiert analysieren</span><code>8328f308-ce55-54b4-8472-0340cb10ba5c</code><span class="reference-page">S. 17</span></a></li><li><a href="#goal-9cb6bd3b-1ecf-57af-8127-853fc969d7f5"><span>Entwicklungen der Arbeitswelt beurteilen</span><code>9cb6bd3b-1ecf-57af-8127-853fc969d7f5</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 20</span>
+      <span>Buch-Digest <code>sha256:7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3f6d3313cad01ddb814b87562d9cea92f2707bcc21621fb1931fa3f0d9f0194d</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e-company-twenty-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=6d4a38df-527c-534b-8c0a-c6b546dae5b1&amp;goalFingerprint=sha256%3A3f6d3313cad01ddb814b87562d9cea92f2707bcc21621fb1931fa3f0d9f0194d&amp;pageFingerprint=sha256%3A5d1afd3c71b716d2f2a456db001ebd51edf08855fd41f443710a9a70d879c994&amp;bookDigest=sha256%3A7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-aa9db8f6-c81e-5247-8f84-5f2b968ab2c4" data-goal-id="aa9db8f6-c81e-5247-8f84-5f2b968ab2c4" data-page-number="3" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:3489941f-3f99-5c7c-8bc7-b5228fbe5e76" aria-labelledby="goal-aa9db8f6-c81e-5247-8f84-5f2b968ab2c4-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-aa9db8f6-c81e-5247-8f84-5f2b968ab2c4-title"><a class="goal-self-link" href="#goal-aa9db8f6-c81e-5247-8f84-5f2b968ab2c4">Kern- und Unterstützungsprozesse in Unternehmen analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>aa9db8f6-c81e-5247-8f84-5f2b968ab2c4</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-330b96d7d96f3e197a29bc25">Unternehmerisch denken und entscheiden</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3c672a2889805f1452cb6faa52312631cd44e72b56efad5072715d18285affa8" data-rendered-digest="sha256:c2f277cba8cef4a26482b7e8621e0443346d65d3446a74cb7841fddd5462c8d7" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/aa9db8f6-c81e-5247-8f84-5f2b968ab2c4/aa9db8f6-c81e-5247-8f84-5f2b968ab2c4.png" alt="Eine Bäckerei verbindet Lieferung, Backen, Verpacken und Verkauf als Kernprozess. Personalverwaltung, Buchhaltung und IT unterstützen denselben Ablauf von einer getrennten unteren Ebene.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-aa9db8f6-c81e-5247-8f84-5f2b968ab2c4-description-heading">
+        <p class="section-heading" id="goal-aa9db8f6-c81e-5247-8f84-5f2b968ab2c4-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Unternehmen nach Kernprozessen der Leistungserstellung und unterstützenden Geschäftsprozessen analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-aa9db8f6-c81e-5247-8f84-5f2b968ab2c4-requires-heading">
+          <p class="section-heading" id="goal-aa9db8f6-c81e-5247-8f84-5f2b968ab2c4-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ae7b709c-6139-5b05-8615-197bff511d9f"><span>Spezialisierung, Kooperation und Koordination anwenden</span><code>ae7b709c-6139-5b05-8615-197bff511d9f</code><span class="reference-page">S. 1</span></a></li><li><a href="#goal-6d4a38df-527c-534b-8c0a-c6b546dae5b1"><span>Grundlegenden Unternehmensaufbau darstellen</span><code>6d4a38df-527c-534b-8c0a-c6b546dae5b1</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-aa9db8f6-c81e-5247-8f84-5f2b968ab2c4-reverse-heading">
+          <p class="section-heading" id="goal-aa9db8f6-c81e-5247-8f84-5f2b968ab2c4-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-2ccb9f7e-1512-5970-85a1-71ec42734eb9"><span>Betriebliche Abläufe und Produktion analysieren</span><code>2ccb9f7e-1512-5970-85a1-71ec42734eb9</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-53829f76-2d9c-5cdd-8521-c249f57f738d"><span>Geschäftsmodell und unternehmerische Grundentscheidungen darstellen</span><code>53829f76-2d9c-5cdd-8521-c249f57f738d</code><span class="reference-page">S. 15</span></a></li><li><a href="#goal-04c17efe-4451-52bd-8116-1042d1501c41"><span>Vereinfachte Bilanz erstellen</span><code>04c17efe-4451-52bd-8116-1042d1501c41</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-aa9db8f6-c81e-5247-8f84-5f2b968ab2c4-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-aa9db8f6-c81e-5247-8f84-5f2b968ab2c4-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-8964ef4b-5056-5449-8a6c-7c5d97f698be" rel="noreferrer noopener"><span>Unternehmenskompetenzen vertiefen</span> <code>8964ef4b-5056-5449-8a6c-7c5d97f698be</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 20</span>
+      <span>Buch-Digest <code>sha256:7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e855a1b06740522911be70eeb3363f682b83dfd49334ebbd0f68a6fc2da59606</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e-company-twenty-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=aa9db8f6-c81e-5247-8f84-5f2b968ab2c4&amp;goalFingerprint=sha256%3Ae855a1b06740522911be70eeb3363f682b83dfd49334ebbd0f68a6fc2da59606&amp;pageFingerprint=sha256%3A9d870416855e96a073e495dfb8eef7467bafa5d65afb1307d5f18cdc64753863&amp;bookDigest=sha256%3A7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2ccb9f7e-1512-5970-85a1-71ec42734eb9" data-goal-id="2ccb9f7e-1512-5970-85a1-71ec42734eb9" data-page-number="4" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:3489941f-3f99-5c7c-8bc7-b5228fbe5e76" aria-labelledby="goal-2ccb9f7e-1512-5970-85a1-71ec42734eb9-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-2ccb9f7e-1512-5970-85a1-71ec42734eb9-title"><a class="goal-self-link" href="#goal-2ccb9f7e-1512-5970-85a1-71ec42734eb9">Betriebliche Abläufe und Produktion analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2ccb9f7e-1512-5970-85a1-71ec42734eb9</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-330b96d7d96f3e197a29bc25">Unternehmerisch denken und entscheiden</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:35540f0315a8fd30f6e0eaf45a0573b8736a6c354f0b8bc75e7ec7d79cf551cf" data-rendered-digest="sha256:70e194e18d411b312956879cbe0d25835deebd10aa51f1cd5f198bb4fb4880da" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/2ccb9f7e-1512-5970-85a1-71ec42734eb9/2ccb9f7e-1512-5970-85a1-71ec42734eb9.png" alt="Eine Werkstatt zeigt die Schritte vom Holz zum fertigen Hocker. Verschiedene Personen sägen, montieren, bearbeiten und bewegen Produkte; IT-Symbole unterstützen dieselben Abläufe.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2ccb9f7e-1512-5970-85a1-71ec42734eb9-description-heading">
+        <p class="section-heading" id="goal-2ccb9f7e-1512-5970-85a1-71ec42734eb9-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann betriebliche Abläufe, Arbeitsteilung, Produktionsgestaltung und informationstechnologische Unterstützung an konkreten Unternehmensbeispielen analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2ccb9f7e-1512-5970-85a1-71ec42734eb9-requires-heading">
+          <p class="section-heading" id="goal-2ccb9f7e-1512-5970-85a1-71ec42734eb9-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-aa9db8f6-c81e-5247-8f84-5f2b968ab2c4"><span>Kern- und Unterstützungsprozesse in Unternehmen analysieren</span><code>aa9db8f6-c81e-5247-8f84-5f2b968ab2c4</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-2ccb9f7e-1512-5970-85a1-71ec42734eb9-reverse-heading">
+          <p class="section-heading" id="goal-2ccb9f7e-1512-5970-85a1-71ec42734eb9-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-2ccb9f7e-1512-5970-85a1-71ec42734eb9-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2ccb9f7e-1512-5970-85a1-71ec42734eb9-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-57984b50-0dbe-4fb1-a020-0f25953a8b74" rel="noreferrer noopener"><span>E-Phase: Reparaturförderung, Konsumentscheidung und Verbraucherrechte</span> <code>57984b50-0dbe-4fb1-a020-0f25953a8b74</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 20</span>
+      <span>Buch-Digest <code>sha256:7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7e82eaa041518eca6f94cd14c60d5155307e559adfa1c1be78ccaaa05e7bc0b4</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e-company-twenty-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=2ccb9f7e-1512-5970-85a1-71ec42734eb9&amp;goalFingerprint=sha256%3A7e82eaa041518eca6f94cd14c60d5155307e559adfa1c1be78ccaaa05e7bc0b4&amp;pageFingerprint=sha256%3Afa51badd20282e1d5a70aeb4c393a46a9c76a79e3156ba1aeeaa6f503e1178e7&amp;bookDigest=sha256%3A7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-860ead33-2b4c-5513-8a38-b291dc387f3a" data-goal-id="860ead33-2b4c-5513-8a38-b291dc387f3a" data-page-number="5" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:3489941f-3f99-5c7c-8bc7-b5228fbe5e76" aria-labelledby="goal-860ead33-2b4c-5513-8a38-b291dc387f3a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-860ead33-2b4c-5513-8a38-b291dc387f3a-title"><a class="goal-self-link" href="#goal-860ead33-2b4c-5513-8a38-b291dc387f3a">Unternehmenspräsentationen adressatenbezogen analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>860ead33-2b4c-5513-8a38-b291dc387f3a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-330b96d7d96f3e197a29bc25">Unternehmerisch denken und entscheiden</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:1afd0bd79484efd93918759c4cf56911395f06bcd0a3a6659529738174e0db39" data-rendered-digest="sha256:21fa716c6d63d2ce5db4568f7460586acbf3ceaad90b6decdb315f79c6be721e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/860ead33-2b4c-5513-8a38-b291dc387f3a/860ead33-2b4c-5513-8a38-b291dc387f3a.png" alt="Eine Frau präsentiert eine Trinkflasche und deren möglichen Nutzen für unterschiedliche Menschen. Das Publikum denkt über Adressaten, Klarheit und die offene Frage nach der Wirkung nach.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-860ead33-2b4c-5513-8a38-b291dc387f3a-description-heading">
+        <p class="section-heading" id="goal-860ead33-2b4c-5513-8a38-b291dc387f3a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Unternehmenspräsentationen hinsichtlich Adressatenwirkung und Kriterien erfolgreicher Präsentation analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-860ead33-2b4c-5513-8a38-b291dc387f3a-requires-heading">
+          <p class="section-heading" id="goal-860ead33-2b4c-5513-8a38-b291dc387f3a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-6d4a38df-527c-534b-8c0a-c6b546dae5b1"><span>Grundlegenden Unternehmensaufbau darstellen</span><code>6d4a38df-527c-534b-8c0a-c6b546dae5b1</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-860ead33-2b4c-5513-8a38-b291dc387f3a-reverse-heading">
+          <p class="section-heading" id="goal-860ead33-2b4c-5513-8a38-b291dc387f3a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-860ead33-2b4c-5513-8a38-b291dc387f3a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-860ead33-2b4c-5513-8a38-b291dc387f3a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-57984b50-0dbe-4fb1-a020-0f25953a8b74" rel="noreferrer noopener"><span>E-Phase: Reparaturförderung, Konsumentscheidung und Verbraucherrechte</span> <code>57984b50-0dbe-4fb1-a020-0f25953a8b74</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 20</span>
+      <span>Buch-Digest <code>sha256:7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f4fdd4b894c9a6c6bc93c47d3961eb8c4ab899152302da4013451f5589ee9c60</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e-company-twenty-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=860ead33-2b4c-5513-8a38-b291dc387f3a&amp;goalFingerprint=sha256%3Af4fdd4b894c9a6c6bc93c47d3961eb8c4ab899152302da4013451f5589ee9c60&amp;pageFingerprint=sha256%3A1a6ab847d7ffaf592c1fff67af8f3ba32276abc3af3848c1d56e4622ef3171d5&amp;bookDigest=sha256%3A7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-75cdc9a3-4cce-57a1-85e2-87c9994244da" data-goal-id="75cdc9a3-4cce-57a1-85e2-87c9994244da" data-page-number="6" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:3489941f-3f99-5c7c-8bc7-b5228fbe5e76" aria-labelledby="goal-75cdc9a3-4cce-57a1-85e2-87c9994244da-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-75cdc9a3-4cce-57a1-85e2-87c9994244da-title"><a class="goal-self-link" href="#goal-75cdc9a3-4cce-57a1-85e2-87c9994244da">Bedeutung des Marketings für Unternehmen einschätzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>75cdc9a3-4cce-57a1-85e2-87c9994244da</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-330b96d7d96f3e197a29bc25">Unternehmerisch denken und entscheiden</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:080ca70d13bd61b8165f09886e93fa374107a7dd6ecb5f713b77ca31d015a8d1" data-rendered-digest="sha256:355743a094b25c63f3c790d0ee0f6516c951facbfce29530c7168b5faac6b972" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/75cdc9a3-4cce-57a1-85e2-87c9994244da/75cdc9a3-4cce-57a1-85e2-87c9994244da.png" alt="Ein Rucksackangebot wird über verschiedene Medien vorgestellt. Eine Zielgruppe überlegt den Nutzen; ein Unternehmer betrachtet die offene Frage nach dem Geschäftserfolg.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-75cdc9a3-4cce-57a1-85e2-87c9994244da-description-heading">
+        <p class="section-heading" id="goal-75cdc9a3-4cce-57a1-85e2-87c9994244da-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an konkreten Produkten aus ihrer Erfahrungswelt die Bedeutung von Marketing für den Unternehmenserfolg einschätzen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-75cdc9a3-4cce-57a1-85e2-87c9994244da-requires-heading">
+          <p class="section-heading" id="goal-75cdc9a3-4cce-57a1-85e2-87c9994244da-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-6d4a38df-527c-534b-8c0a-c6b546dae5b1"><span>Grundlegenden Unternehmensaufbau darstellen</span><code>6d4a38df-527c-534b-8c0a-c6b546dae5b1</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-75cdc9a3-4cce-57a1-85e2-87c9994244da-reverse-heading">
+          <p class="section-heading" id="goal-75cdc9a3-4cce-57a1-85e2-87c9994244da-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-8c9f8fb2-18be-5e9c-86bf-3aea14a10b78"><span>Marketingmaßnahmen zielbezogen analysieren</span><code>8c9f8fb2-18be-5e9c-86bf-3aea14a10b78</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 20</span>
+      <span>Buch-Digest <code>sha256:7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f6d0a3ef23ffabc0c4d300ed9ed85ad055ea5125403a5ddf9b110d0494d3f6c3</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e-company-twenty-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=75cdc9a3-4cce-57a1-85e2-87c9994244da&amp;goalFingerprint=sha256%3Af6d0a3ef23ffabc0c4d300ed9ed85ad055ea5125403a5ddf9b110d0494d3f6c3&amp;pageFingerprint=sha256%3A48446234dff616d6766e187ed12be4bd04752f682673fe9f6e602226ce21bdd3&amp;bookDigest=sha256%3A7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8c9f8fb2-18be-5e9c-86bf-3aea14a10b78" data-goal-id="8c9f8fb2-18be-5e9c-86bf-3aea14a10b78" data-page-number="7" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:3489941f-3f99-5c7c-8bc7-b5228fbe5e76" aria-labelledby="goal-8c9f8fb2-18be-5e9c-86bf-3aea14a10b78-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8c9f8fb2-18be-5e9c-86bf-3aea14a10b78-title"><a class="goal-self-link" href="#goal-8c9f8fb2-18be-5e9c-86bf-3aea14a10b78">Marketingmaßnahmen zielbezogen analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8c9f8fb2-18be-5e9c-86bf-3aea14a10b78</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-330b96d7d96f3e197a29bc25">Unternehmerisch denken und entscheiden</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6e122ad590566b735853757fbbf0432f62d79d0dbe371cefda47ee42a851da42" data-rendered-digest="sha256:257d6654a47db2ab36e6234a7058528a6ab12cabbd122e101df4a3b11112f7f2" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/8c9f8fb2-18be-5e9c-86bf-3aea14a10b78/8c9f8fb2-18be-5e9c-86bf-3aea14a10b78.png" alt="Um eine Trinkflasche gruppieren sich Produktmerkmale, Preisalternativen, Vertriebswege und Kommunikationsmittel. Menschen überlegen dazu unterschiedliche Bedürfnisse und Entscheidungen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8c9f8fb2-18be-5e9c-86bf-3aea14a10b78-description-heading">
+        <p class="section-heading" id="goal-8c9f8fb2-18be-5e9c-86bf-3aea14a10b78-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann konkrete Maßnahmen verschiedener Marketingbereiche nach Zielen, Ausgestaltung und Wirkungsweise analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8c9f8fb2-18be-5e9c-86bf-3aea14a10b78-requires-heading">
+          <p class="section-heading" id="goal-8c9f8fb2-18be-5e9c-86bf-3aea14a10b78-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-75cdc9a3-4cce-57a1-85e2-87c9994244da"><span>Bedeutung des Marketings für Unternehmen einschätzen</span><code>75cdc9a3-4cce-57a1-85e2-87c9994244da</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-8c9f8fb2-18be-5e9c-86bf-3aea14a10b78-reverse-heading">
+          <p class="section-heading" id="goal-8c9f8fb2-18be-5e9c-86bf-3aea14a10b78-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-95f2b860-d21d-5627-8dcd-cd53efd94b7b"><span>Einfaches Marketingkonzept kriterienbezogen entwickeln</span><code>95f2b860-d21d-5627-8dcd-cd53efd94b7b</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 20</span>
+      <span>Buch-Digest <code>sha256:7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2b10ba7a6f207166310d7c69cce4f0daed6bc254ba3a8d004ea97f8a7f12241d</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e-company-twenty-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=8c9f8fb2-18be-5e9c-86bf-3aea14a10b78&amp;goalFingerprint=sha256%3A2b10ba7a6f207166310d7c69cce4f0daed6bc254ba3a8d004ea97f8a7f12241d&amp;pageFingerprint=sha256%3A616fce485c998a067317731bd8122937c048397d8ed21425786446568ded8d49&amp;bookDigest=sha256%3A7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-95f2b860-d21d-5627-8dcd-cd53efd94b7b" data-goal-id="95f2b860-d21d-5627-8dcd-cd53efd94b7b" data-page-number="8" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:3489941f-3f99-5c7c-8bc7-b5228fbe5e76" aria-labelledby="goal-95f2b860-d21d-5627-8dcd-cd53efd94b7b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-95f2b860-d21d-5627-8dcd-cd53efd94b7b-title"><a class="goal-self-link" href="#goal-95f2b860-d21d-5627-8dcd-cd53efd94b7b">Einfaches Marketingkonzept kriterienbezogen entwickeln</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>95f2b860-d21d-5627-8dcd-cd53efd94b7b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-330b96d7d96f3e197a29bc25">Unternehmerisch denken und entscheiden</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:ed8c0a41b3e3f2d30618f1413a466d348947e6de38cb092a3d12f5459ca78614" data-rendered-digest="sha256:ac0b4af18697172759bafa4ef41ab5dc47d9eb4a47d4a0f50d13fed776ab6b03" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/95f2b860-d21d-5627-8dcd-cd53efd94b7b/95f2b860-d21d-5627-8dcd-cd53efd94b7b.png" alt="Ein Team stimmt Produkt, Preis, Vertrieb und Kommunikation für eine Trinkflasche auf eine Zielgruppe ab. Eine gemeinsame Übersicht lenkt den Blick auf Abstimmung und Begründung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-95f2b860-d21d-5627-8dcd-cd53efd94b7b-description-heading">
+        <p class="section-heading" id="goal-95f2b860-d21d-5627-8dcd-cd53efd94b7b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann für ausgewählte Produkte aufeinander abgestimmte Marketingmaßnahmen zu einem einfachen Marketingkonzept zusammenstellen und die Auswahl kriterienbezogen begründen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-95f2b860-d21d-5627-8dcd-cd53efd94b7b-requires-heading">
+          <p class="section-heading" id="goal-95f2b860-d21d-5627-8dcd-cd53efd94b7b-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8c9f8fb2-18be-5e9c-86bf-3aea14a10b78"><span>Marketingmaßnahmen zielbezogen analysieren</span><code>8c9f8fb2-18be-5e9c-86bf-3aea14a10b78</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-95f2b860-d21d-5627-8dcd-cd53efd94b7b-reverse-heading">
+          <p class="section-heading" id="goal-95f2b860-d21d-5627-8dcd-cd53efd94b7b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-53829f76-2d9c-5cdd-8521-c249f57f738d"><span>Geschäftsmodell und unternehmerische Grundentscheidungen darstellen</span><code>53829f76-2d9c-5cdd-8521-c249f57f738d</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-95f2b860-d21d-5627-8dcd-cd53efd94b7b-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-95f2b860-d21d-5627-8dcd-cd53efd94b7b-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-8964ef4b-5056-5449-8a6c-7c5d97f698be" rel="noreferrer noopener"><span>Unternehmenskompetenzen vertiefen</span> <code>8964ef4b-5056-5449-8a6c-7c5d97f698be</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 20</span>
+      <span>Buch-Digest <code>sha256:7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c5a7c1ed93725a47c3e8a777d1e893e91030935fc056ce3b58fb646208a16c09</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e-company-twenty-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=95f2b860-d21d-5627-8dcd-cd53efd94b7b&amp;goalFingerprint=sha256%3Ac5a7c1ed93725a47c3e8a777d1e893e91030935fc056ce3b58fb646208a16c09&amp;pageFingerprint=sha256%3Aae7761e2d013524e67e0821aa24114a3924b1628e52ce177d16efa37a616fb19&amp;bookDigest=sha256%3A7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-04c17efe-4451-52bd-8116-1042d1501c41" data-goal-id="04c17efe-4451-52bd-8116-1042d1501c41" data-page-number="9" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:3489941f-3f99-5c7c-8bc7-b5228fbe5e76" aria-labelledby="goal-04c17efe-4451-52bd-8116-1042d1501c41-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-04c17efe-4451-52bd-8116-1042d1501c41-title"><a class="goal-self-link" href="#goal-04c17efe-4451-52bd-8116-1042d1501c41">Vereinfachte Bilanz erstellen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>04c17efe-4451-52bd-8116-1042d1501c41</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-330b96d7d96f3e197a29bc25">Unternehmerisch denken und entscheiden</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:dea0ec343e123477aba7445810fbb861615ee8aab6d5f8361f66a24e694574d0" data-rendered-digest="sha256:5a1fc15c79a4a4d37fb79b81b5c2737fc547a54690a76a86bfdbcf18d442fb59" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/04c17efe-4451-52bd-8116-1042d1501c41/04c17efe-4451-52bd-8116-1042d1501c41.png" alt="Eine ausgeglichene Waage stellt Aktiva mit Maschine, Waren und Geld den Passiva mit Eigentümerfinanzierung und Fremdkapitalansprüchen gegenüber.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-04c17efe-4451-52bd-8116-1042d1501c41-description-heading">
+        <p class="section-heading" id="goal-04c17efe-4451-52bd-8116-1042d1501c41-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann eine vereinfachte Bilanz erstellen, indem sie Vermögenswerte und Kapitalquellen gegenüberstellt.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-04c17efe-4451-52bd-8116-1042d1501c41-requires-heading">
+          <p class="section-heading" id="goal-04c17efe-4451-52bd-8116-1042d1501c41-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-aa9db8f6-c81e-5247-8f84-5f2b968ab2c4"><span>Kern- und Unterstützungsprozesse in Unternehmen analysieren</span><code>aa9db8f6-c81e-5247-8f84-5f2b968ab2c4</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-04c17efe-4451-52bd-8116-1042d1501c41-reverse-heading">
+          <p class="section-heading" id="goal-04c17efe-4451-52bd-8116-1042d1501c41-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-66a0d96f-a231-5b36-894e-2ffb16adf7db"><span>Geschäftsvorfälle in der Bilanz darstellen</span><code>66a0d96f-a231-5b36-894e-2ffb16adf7db</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-04c17efe-4451-52bd-8116-1042d1501c41-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-04c17efe-4451-52bd-8116-1042d1501c41-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-mem_de_gym_economics_accounting_business_finance" rel="noreferrer noopener"><span>Lernkarten - Unternehmen, Rechnungswesen und Finanzierung</span> <code>mem_de_gym_economics_accounting_business_finance</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 20</span>
+      <span>Buch-Digest <code>sha256:7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92</code></span>
+      <span>Ziel-Fingerprint <code>sha256:fdcf946dcbf986d52ea09b785f0df81ce8f1d442b172fb8312aedcd50c3160c5</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e-company-twenty-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=04c17efe-4451-52bd-8116-1042d1501c41&amp;goalFingerprint=sha256%3Afdcf946dcbf986d52ea09b785f0df81ce8f1d442b172fb8312aedcd50c3160c5&amp;pageFingerprint=sha256%3A2611afad841e415364835edbdbd18b5e11568f7e31130cb011a2ea80c65c4432&amp;bookDigest=sha256%3A7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-66a0d96f-a231-5b36-894e-2ffb16adf7db" data-goal-id="66a0d96f-a231-5b36-894e-2ffb16adf7db" data-page-number="10" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:3489941f-3f99-5c7c-8bc7-b5228fbe5e76" aria-labelledby="goal-66a0d96f-a231-5b36-894e-2ffb16adf7db-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-66a0d96f-a231-5b36-894e-2ffb16adf7db-title"><a class="goal-self-link" href="#goal-66a0d96f-a231-5b36-894e-2ffb16adf7db">Geschäftsvorfälle in der Bilanz darstellen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>66a0d96f-a231-5b36-894e-2ffb16adf7db</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-330b96d7d96f3e197a29bc25">Unternehmerisch denken und entscheiden</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:8885ffe7dda8b94a7dd7f5e9118d766b703eb8d35f1c44933bb0446fd22dd0bc" data-rendered-digest="sha256:ed1d40991ebc4746f0391f9392e541c8f88bbff3930a2b7e69ea78f7da84776f" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/66a0d96f-a231-5b36-894e-2ffb16adf7db/66a0d96f-a231-5b36-894e-2ffb16adf7db.png" alt="Ein Unternehmen erhält einen Bankkredit. In der vereinfachten Bilanz steigen Vermögen und Schulden um denselben beispielhaften Betrag; die Waage bleibt im Gleichgewicht.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-66a0d96f-a231-5b36-894e-2ffb16adf7db-description-heading">
+        <p class="section-heading" id="goal-66a0d96f-a231-5b36-894e-2ffb16adf7db-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Auswirkungen einfacher Geschäftsvorfälle auf die Bilanz darstellen und das Grundprinzip der doppelten Buchführung einordnen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-66a0d96f-a231-5b36-894e-2ffb16adf7db-requires-heading">
+          <p class="section-heading" id="goal-66a0d96f-a231-5b36-894e-2ffb16adf7db-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-04c17efe-4451-52bd-8116-1042d1501c41"><span>Vereinfachte Bilanz erstellen</span><code>04c17efe-4451-52bd-8116-1042d1501c41</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-66a0d96f-a231-5b36-894e-2ffb16adf7db-reverse-heading">
+          <p class="section-heading" id="goal-66a0d96f-a231-5b36-894e-2ffb16adf7db-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-c7bd5875-b547-5ba6-8b41-122420cf0bf1"><span>Erfolgswirksame Geschäftsvorfälle beschreiben</span><code>c7bd5875-b547-5ba6-8b41-122420cf0bf1</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 20</span>
+      <span>Buch-Digest <code>sha256:7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92</code></span>
+      <span>Ziel-Fingerprint <code>sha256:42ae5621c25e458b87eb480b9eceae48983d47b7665639c16aaee64d77adfe61</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e-company-twenty-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=66a0d96f-a231-5b36-894e-2ffb16adf7db&amp;goalFingerprint=sha256%3A42ae5621c25e458b87eb480b9eceae48983d47b7665639c16aaee64d77adfe61&amp;pageFingerprint=sha256%3A6b16fc7d001ef3cb6a296463b84dcf722d52c8af7b74b3eaa0d454c07a1e8b5a&amp;bookDigest=sha256%3A7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c7bd5875-b547-5ba6-8b41-122420cf0bf1" data-goal-id="c7bd5875-b547-5ba6-8b41-122420cf0bf1" data-page-number="11" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:3489941f-3f99-5c7c-8bc7-b5228fbe5e76" aria-labelledby="goal-c7bd5875-b547-5ba6-8b41-122420cf0bf1-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c7bd5875-b547-5ba6-8b41-122420cf0bf1-title"><a class="goal-self-link" href="#goal-c7bd5875-b547-5ba6-8b41-122420cf0bf1">Erfolgswirksame Geschäftsvorfälle beschreiben</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c7bd5875-b547-5ba6-8b41-122420cf0bf1</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-330b96d7d96f3e197a29bc25">Unternehmerisch denken und entscheiden</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:07134699b3e004be9d6f35aadcca67e040a2cf94e31cb960c68761433e387e8a" data-rendered-digest="sha256:388ae14315ceeae888d8a238eba362696ce6e559312aec8f3bb0da77851d12af" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/c7bd5875-b547-5ba6-8b41-122420cf0bf1/c7bd5875-b547-5ba6-8b41-122420cf0bf1.png" alt="Ein Verkauf erzeugt Ertrag und erhöht das Eigenkapital; verbrauchte Ressourcen verursachen Aufwand und mindern es. Eine separate Uhr fragt nach dem Zeitpunkt der Zahlung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c7bd5875-b547-5ba6-8b41-122420cf0bf1-description-heading">
+        <p class="section-heading" id="goal-c7bd5875-b547-5ba6-8b41-122420cf0bf1-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Auswirkungen einfacher erfolgswirksamer Geschäftsvorfälle beschreiben und Erfolgskonten als Unterkonten des Eigenkapitals einordnen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c7bd5875-b547-5ba6-8b41-122420cf0bf1-requires-heading">
+          <p class="section-heading" id="goal-c7bd5875-b547-5ba6-8b41-122420cf0bf1-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-66a0d96f-a231-5b36-894e-2ffb16adf7db"><span>Geschäftsvorfälle in der Bilanz darstellen</span><code>66a0d96f-a231-5b36-894e-2ffb16adf7db</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c7bd5875-b547-5ba6-8b41-122420cf0bf1-reverse-heading">
+          <p class="section-heading" id="goal-c7bd5875-b547-5ba6-8b41-122420cf0bf1-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-9a1a3f9b-909d-53d3-8851-759c416bd763"><span>Unternehmenserfolg mit der GuV ermitteln</span><code>9a1a3f9b-909d-53d3-8851-759c416bd763</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 20</span>
+      <span>Buch-Digest <code>sha256:7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92</code></span>
+      <span>Ziel-Fingerprint <code>sha256:242bf5d2ccaa234839ac081d4c43e140f2a132df7a679b07f23becdb3d6653ff</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e-company-twenty-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=c7bd5875-b547-5ba6-8b41-122420cf0bf1&amp;goalFingerprint=sha256%3A242bf5d2ccaa234839ac081d4c43e140f2a132df7a679b07f23becdb3d6653ff&amp;pageFingerprint=sha256%3A24ca6f7410f70f2b84c77ca91b48528b311fbfbb205bfaed1819f73c4a3dddaa&amp;bookDigest=sha256%3A7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9a1a3f9b-909d-53d3-8851-759c416bd763" data-goal-id="9a1a3f9b-909d-53d3-8851-759c416bd763" data-page-number="12" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:3489941f-3f99-5c7c-8bc7-b5228fbe5e76" aria-labelledby="goal-9a1a3f9b-909d-53d3-8851-759c416bd763-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9a1a3f9b-909d-53d3-8851-759c416bd763-title"><a class="goal-self-link" href="#goal-9a1a3f9b-909d-53d3-8851-759c416bd763">Unternehmenserfolg mit der GuV ermitteln</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9a1a3f9b-909d-53d3-8851-759c416bd763</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-330b96d7d96f3e197a29bc25">Unternehmerisch denken und entscheiden</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:7badc7e088323652e325f47b1796a6c9c8ae9ea5e8ae931e5d30802f55f72609" data-rendered-digest="sha256:02cdb71273904e4453685f14199966716a91babca1dfb08bded2bfd31aa76927" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/9a1a3f9b-909d-53d3-8851-759c416bd763/9a1a3f9b-909d-53d3-8851-759c416bd763.png" alt="Eine Gruppe betrachtet eine gemeinsame Tafel: Von Erträgen100 werden Aufwendungen80 abgezogen; der beispielhafte Gewinn beträgt20.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9a1a3f9b-909d-53d3-8851-759c416bd763-description-heading">
+        <p class="section-heading" id="goal-9a1a3f9b-909d-53d3-8851-759c416bd763-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Erfolg eines Unternehmens ermitteln, indem sie Aufwendungen und Erträge in der Gewinn- und Verlustrechnung gegenüberstellt.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9a1a3f9b-909d-53d3-8851-759c416bd763-requires-heading">
+          <p class="section-heading" id="goal-9a1a3f9b-909d-53d3-8851-759c416bd763-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-c7bd5875-b547-5ba6-8b41-122420cf0bf1"><span>Erfolgswirksame Geschäftsvorfälle beschreiben</span><code>c7bd5875-b547-5ba6-8b41-122420cf0bf1</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-9a1a3f9b-909d-53d3-8851-759c416bd763-reverse-heading">
+          <p class="section-heading" id="goal-9a1a3f9b-909d-53d3-8851-759c416bd763-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-ae7b3074-2d62-5156-8862-4584c73ff75f"><span>Bilanz und GuV mit Kennzahlen analysieren</span><code>ae7b3074-2d62-5156-8862-4584c73ff75f</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-9a1a3f9b-909d-53d3-8851-759c416bd763-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9a1a3f9b-909d-53d3-8851-759c416bd763-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-mem_de_gym_economics_accounting_business_finance" rel="noreferrer noopener"><span>Lernkarten - Unternehmen, Rechnungswesen und Finanzierung</span> <code>mem_de_gym_economics_accounting_business_finance</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 20</span>
+      <span>Buch-Digest <code>sha256:7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92</code></span>
+      <span>Ziel-Fingerprint <code>sha256:25d2469987856b762fea9d6b4d54e8c09d22b56f367d5778101c9b2d565dbc70</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e-company-twenty-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=9a1a3f9b-909d-53d3-8851-759c416bd763&amp;goalFingerprint=sha256%3A25d2469987856b762fea9d6b4d54e8c09d22b56f367d5778101c9b2d565dbc70&amp;pageFingerprint=sha256%3Abb0a19e73105d3a88c6e25ff927140c88f5f5afb9ef827fe7b9ee1e203c447e6&amp;bookDigest=sha256%3A7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ae7b3074-2d62-5156-8862-4584c73ff75f" data-goal-id="ae7b3074-2d62-5156-8862-4584c73ff75f" data-page-number="13" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:3489941f-3f99-5c7c-8bc7-b5228fbe5e76" aria-labelledby="goal-ae7b3074-2d62-5156-8862-4584c73ff75f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-ae7b3074-2d62-5156-8862-4584c73ff75f-title"><a class="goal-self-link" href="#goal-ae7b3074-2d62-5156-8862-4584c73ff75f">Bilanz und GuV mit Kennzahlen analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ae7b3074-2d62-5156-8862-4584c73ff75f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-330b96d7d96f3e197a29bc25">Unternehmerisch denken und entscheiden</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d1c9e2b751b82a263c0e4e2afe5a3ea239d5120d3deba8c273b8e63724317d5c" data-rendered-digest="sha256:5ae4d31c7e4fb3e372ed2bff094cc30d64bb5799110335b6e4ed22e2d83fb619" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/ae7b3074-2d62-5156-8862-4584c73ff75f/ae7b3074-2d62-5156-8862-4584c73ff75f.png" alt="Menschen aus einer Bäckerei und einem Industriebetrieb betrachten Bilanz und GuV durch dieselbe Kennzahllupe. Eine offene Frage fordert die Einordnung nach der Branche.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ae7b3074-2d62-5156-8862-4584c73ff75f-description-heading">
+        <p class="section-heading" id="goal-ae7b3074-2d62-5156-8862-4584c73ff75f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Bilanz und Gewinn- und Verlustrechnung in vereinfachter Form analysieren, ausgewählte Kennzahlen ermitteln und branchenspezifisch interpretieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ae7b3074-2d62-5156-8862-4584c73ff75f-requires-heading">
+          <p class="section-heading" id="goal-ae7b3074-2d62-5156-8862-4584c73ff75f-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-9a1a3f9b-909d-53d3-8851-759c416bd763"><span>Unternehmenserfolg mit der GuV ermitteln</span><code>9a1a3f9b-909d-53d3-8851-759c416bd763</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-ae7b3074-2d62-5156-8862-4584c73ff75f-reverse-heading">
+          <p class="section-heading" id="goal-ae7b3074-2d62-5156-8862-4584c73ff75f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-685624a0-6839-521c-8228-c5914342bc6e"><span>Bilanz- und GuV-Informationen grafisch darstellen</span><code>685624a0-6839-521c-8228-c5914342bc6e</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-ae7b3074-2d62-5156-8862-4584c73ff75f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ae7b3074-2d62-5156-8862-4584c73ff75f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-9219c58c-d178-5612-8231-feac373c87df" rel="noreferrer noopener"><span>Finanz- und Ertragslage mit Kennzahlen darstellen</span> <code>9219c58c-d178-5612-8231-feac373c87df</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 20</span>
+      <span>Buch-Digest <code>sha256:7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92</code></span>
+      <span>Ziel-Fingerprint <code>sha256:cd1dda5d212a9960dbfeaad1269113cba86e33495ccedde7a0079d98af56bf15</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e-company-twenty-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=ae7b3074-2d62-5156-8862-4584c73ff75f&amp;goalFingerprint=sha256%3Acd1dda5d212a9960dbfeaad1269113cba86e33495ccedde7a0079d98af56bf15&amp;pageFingerprint=sha256%3A8c20a87b221beaba082924431cca8905a2fa5bf1f64636bcb7a7537e0d23f4a8&amp;bookDigest=sha256%3A7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-685624a0-6839-521c-8228-c5914342bc6e" data-goal-id="685624a0-6839-521c-8228-c5914342bc6e" data-page-number="14" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:3489941f-3f99-5c7c-8bc7-b5228fbe5e76" aria-labelledby="goal-685624a0-6839-521c-8228-c5914342bc6e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-685624a0-6839-521c-8228-c5914342bc6e-title"><a class="goal-self-link" href="#goal-685624a0-6839-521c-8228-c5914342bc6e">Bilanz- und GuV-Informationen grafisch darstellen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>685624a0-6839-521c-8228-c5914342bc6e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-330b96d7d96f3e197a29bc25">Unternehmerisch denken und entscheiden</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:1b12150eec68b29a64fbb25daee538fa1398312ef95eec8a259cd61bd4044387" data-rendered-digest="sha256:ed71e7e8a1794a8dc2408af7c64cf81c3470053a7e73ec9f153b19dad195d373" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/685624a0-6839-521c-8228-c5914342bc6e/685624a0-6839-521c-8228-c5914342bc6e.png" alt="Eine Person erklärt auf einem gemeinsamen Bildschirm, wie Tabelleninformationen zu Bilanz und GuV in unterschiedliche Diagramme überführt und einer Zielgruppe dargestellt werden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-685624a0-6839-521c-8228-c5914342bc6e-description-heading">
+        <p class="section-heading" id="goal-685624a0-6839-521c-8228-c5914342bc6e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Informationen aus Bilanz und GuV oder deren Entwicklung zielgruppenorientiert mit einem Tabellenkalkulationsprogramm grafisch darstellen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-685624a0-6839-521c-8228-c5914342bc6e-requires-heading">
+          <p class="section-heading" id="goal-685624a0-6839-521c-8228-c5914342bc6e-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ae7b3074-2d62-5156-8862-4584c73ff75f"><span>Bilanz und GuV mit Kennzahlen analysieren</span><code>ae7b3074-2d62-5156-8862-4584c73ff75f</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-685624a0-6839-521c-8228-c5914342bc6e-reverse-heading">
+          <p class="section-heading" id="goal-685624a0-6839-521c-8228-c5914342bc6e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-685624a0-6839-521c-8228-c5914342bc6e-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-685624a0-6839-521c-8228-c5914342bc6e-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-57984b50-0dbe-4fb1-a020-0f25953a8b74" rel="noreferrer noopener"><span>E-Phase: Reparaturförderung, Konsumentscheidung und Verbraucherrechte</span> <code>57984b50-0dbe-4fb1-a020-0f25953a8b74</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 20</span>
+      <span>Buch-Digest <code>sha256:7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92</code></span>
+      <span>Ziel-Fingerprint <code>sha256:412afed3249bbd5a7bd12dd50ef330553c2de31063fd8f345e63758443c17ae9</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e-company-twenty-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=685624a0-6839-521c-8228-c5914342bc6e&amp;goalFingerprint=sha256%3A412afed3249bbd5a7bd12dd50ef330553c2de31063fd8f345e63758443c17ae9&amp;pageFingerprint=sha256%3A3461c3121147f87625f07673c5e1e555d35a52642d155d36d80211afe7a1f2d5&amp;bookDigest=sha256%3A7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-53829f76-2d9c-5cdd-8521-c249f57f738d" data-goal-id="53829f76-2d9c-5cdd-8521-c249f57f738d" data-page-number="15" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:3489941f-3f99-5c7c-8bc7-b5228fbe5e76" aria-labelledby="goal-53829f76-2d9c-5cdd-8521-c249f57f738d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-53829f76-2d9c-5cdd-8521-c249f57f738d-title"><a class="goal-self-link" href="#goal-53829f76-2d9c-5cdd-8521-c249f57f738d">Geschäftsmodell und unternehmerische Grundentscheidungen darstellen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>53829f76-2d9c-5cdd-8521-c249f57f738d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-330b96d7d96f3e197a29bc25">Unternehmerisch denken und entscheiden</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:242e463c60b37b8d043351f603e963e2a7367cbf02759cb99c03eea71e54a001" data-rendered-digest="sha256:274e78bcb802e939a4fa56e6548a3f6a29402a53e69e1be6af710ab7519483f7" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/53829f76-2d9c-5cdd-8521-c249f57f738d/53829f76-2d9c-5cdd-8521-c249f57f738d.png" alt="Ein Projektteam bespricht ein Geschäftsmodell mit Bedarf, einem Flaschenangebot und grundlegenden Entscheidungen zu Ressourcen, Geld sowie sozialen und ökologischen Gesichtspunkten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-53829f76-2d9c-5cdd-8521-c249f57f738d-description-heading">
+        <p class="section-heading" id="goal-53829f76-2d9c-5cdd-8521-c249f57f738d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann im Rahmen eines Projekts ein eigenes Geschäftsmodell mit wesentlichen Elementen eines erfolgreichen Unternehmens, Kernprozess und grundlegenden unternehmerischen Entscheidungen systematisch darstellen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-53829f76-2d9c-5cdd-8521-c249f57f738d-requires-heading">
+          <p class="section-heading" id="goal-53829f76-2d9c-5cdd-8521-c249f57f738d-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-aa9db8f6-c81e-5247-8f84-5f2b968ab2c4"><span>Kern- und Unterstützungsprozesse in Unternehmen analysieren</span><code>aa9db8f6-c81e-5247-8f84-5f2b968ab2c4</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-95f2b860-d21d-5627-8dcd-cd53efd94b7b"><span>Einfaches Marketingkonzept kriterienbezogen entwickeln</span><code>95f2b860-d21d-5627-8dcd-cd53efd94b7b</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-53829f76-2d9c-5cdd-8521-c249f57f738d-reverse-heading">
+          <p class="section-heading" id="goal-53829f76-2d9c-5cdd-8521-c249f57f738d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-65d9f38e-d35d-5d84-8b66-3c05e388734f"><span>Staatliche Rahmenbedingungen für Unternehmen beurteilen</span><code>65d9f38e-d35d-5d84-8b66-3c05e388734f</code><span class="reference-page">S. 19</span></a></li><li><a href="#goal-e90586d8-8e0a-5355-87d0-4ecd90dbe021"><span>Unternehmerisches Handeln aus Stakeholder-Perspektiven bewerten</span><code>e90586d8-8e0a-5355-87d0-4ecd90dbe021</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-53829f76-2d9c-5cdd-8521-c249f57f738d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-53829f76-2d9c-5cdd-8521-c249f57f738d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-0d8cb18d-7fd9-56f5-8009-8045d44f4127" rel="noreferrer noopener"><span>Projektmanagement im Team anwenden</span> <code>0d8cb18d-7fd9-56f5-8009-8045d44f4127</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-f90e4741-368b-5524-8053-417d06197c80" rel="noreferrer noopener"><span>Unternehmen in Wirtschaft und Gesellschaft vertiefen</span> <code>f90e4741-368b-5524-8053-417d06197c80</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 15 von 20</span>
+      <span>Buch-Digest <code>sha256:7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e3650ac486224f16f1d3bd8137f299f7839d587b48b8395ec9d8a7ed08593c3b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e-company-twenty-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=53829f76-2d9c-5cdd-8521-c249f57f738d&amp;goalFingerprint=sha256%3Ae3650ac486224f16f1d3bd8137f299f7839d587b48b8395ec9d8a7ed08593c3b&amp;pageFingerprint=sha256%3A97e3ab91f593a59073b0f646ec05975940c1bdd6ac784a22c69d66fb24bf2f86&amp;bookDigest=sha256%3A7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-96ab60e8-7645-5c34-84be-62e1c2a3cb16" data-goal-id="96ab60e8-7645-5c34-84be-62e1c2a3cb16" data-page-number="16" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:3489941f-3f99-5c7c-8bc7-b5228fbe5e76" aria-labelledby="goal-96ab60e8-7645-5c34-84be-62e1c2a3cb16-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-96ab60e8-7645-5c34-84be-62e1c2a3cb16-title"><a class="goal-self-link" href="#goal-96ab60e8-7645-5c34-84be-62e1c2a3cb16">Unternehmerische Persönlichkeitsanforderungen reflektieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>96ab60e8-7645-5c34-84be-62e1c2a3cb16</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-330b96d7d96f3e197a29bc25">Unternehmerisch denken und entscheiden</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:29754915749410137621299299994291d45f18f704358a0537b2f133b0c14aa2" data-rendered-digest="sha256:cda0dd3eb6f82cb8156a5190b30993b839dd724eb64bc535a7d52ffcbd7ed4ac" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/96ab60e8-7645-5c34-84be-62e1c2a3cb16/96ab60e8-7645-5c34-84be-62e1c2a3cb16.png" alt="Eine Person vergleicht Interessen und Stärken mit Anforderungen unternehmerischer und angestellter Arbeit. Das persönliche Heft bleibt textfrei; zwei Rollenbilder und offene Wege begleiten die Reflexion.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-96ab60e8-7645-5c34-84be-62e1c2a3cb16-description-heading">
+        <p class="section-heading" id="goal-96ab60e8-7645-5c34-84be-62e1c2a3cb16-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann eigene Interessen und Stärken mit Anforderungen an Unternehmerinnen und Unternehmer sowie an Beschäftigte in Unternehmen vergleichen und für die berufliche Orientierung nutzen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-96ab60e8-7645-5c34-84be-62e1c2a3cb16-requires-heading">
+          <p class="section-heading" id="goal-96ab60e8-7645-5c34-84be-62e1c2a3cb16-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-6d4a38df-527c-534b-8c0a-c6b546dae5b1"><span>Grundlegenden Unternehmensaufbau darstellen</span><code>6d4a38df-527c-534b-8c0a-c6b546dae5b1</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-96ab60e8-7645-5c34-84be-62e1c2a3cb16-reverse-heading">
+          <p class="section-heading" id="goal-96ab60e8-7645-5c34-84be-62e1c2a3cb16-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-96ab60e8-7645-5c34-84be-62e1c2a3cb16-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-96ab60e8-7645-5c34-84be-62e1c2a3cb16-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-57984b50-0dbe-4fb1-a020-0f25953a8b74" rel="noreferrer noopener"><span>E-Phase: Reparaturförderung, Konsumentscheidung und Verbraucherrechte</span> <code>57984b50-0dbe-4fb1-a020-0f25953a8b74</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 16 von 20</span>
+      <span>Buch-Digest <code>sha256:7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92</code></span>
+      <span>Ziel-Fingerprint <code>sha256:57e186fa2dd46769e3bd3b52f6857490fba06b1584f231b83c65d425b3c2ccf1</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e-company-twenty-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=96ab60e8-7645-5c34-84be-62e1c2a3cb16&amp;goalFingerprint=sha256%3A57e186fa2dd46769e3bd3b52f6857490fba06b1584f231b83c65d425b3c2ccf1&amp;pageFingerprint=sha256%3A85808c134415aba557bb30c2fb9dab58b0fd34f3f8b2741b9312bbe20a90c71c&amp;bookDigest=sha256%3A7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8328f308-ce55-54b4-8472-0340cb10ba5c" data-goal-id="8328f308-ce55-54b4-8472-0340cb10ba5c" data-page-number="17" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:3489941f-3f99-5c7c-8bc7-b5228fbe5e76" aria-labelledby="goal-8328f308-ce55-54b4-8472-0340cb10ba5c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8328f308-ce55-54b4-8472-0340cb10ba5c-title"><a class="goal-self-link" href="#goal-8328f308-ce55-54b4-8472-0340cb10ba5c">Unternehmenslandschaft datenbasiert analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8328f308-ce55-54b4-8472-0340cb10ba5c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-330b96d7d96f3e197a29bc25">Unternehmerisch denken und entscheiden</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f423a668717a495b8a2b9094cf62406f5fbecacf2d9deb86bc1d4190e68742bb" data-rendered-digest="sha256:b74ea59b59308adfcffa4f38bd6f0dd97b90e846dcbfd4d6820682ed0393ad1e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/8328f308-ce55-54b4-8472-0340cb10ba5c/8328f308-ce55-54b4-8472-0340cb10ba5c.png" alt="Eine Person betrachtet Daten und verschiedene Unternehmen auf einer schematischen Deutschlandkarte. Eine offene Frage verbindet die Analyse mit möglichen Berufs- und Unternehmensentscheidungen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8328f308-ce55-54b4-8472-0340cb10ba5c-description-heading">
+        <p class="section-heading" id="goal-8328f308-ce55-54b4-8472-0340cb10ba5c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die deutsche Unternehmenslandschaft mit quantitativen Daten analysieren, Diagramme mithilfe einer Tabellenkalkulation erstellen und daraus Schlüsse für Berufs- und Unternehmensentscheidungen ziehen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8328f308-ce55-54b4-8472-0340cb10ba5c-requires-heading">
+          <p class="section-heading" id="goal-8328f308-ce55-54b4-8472-0340cb10ba5c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-6d4a38df-527c-534b-8c0a-c6b546dae5b1"><span>Grundlegenden Unternehmensaufbau darstellen</span><code>6d4a38df-527c-534b-8c0a-c6b546dae5b1</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-8328f308-ce55-54b4-8472-0340cb10ba5c-reverse-heading">
+          <p class="section-heading" id="goal-8328f308-ce55-54b4-8472-0340cb10ba5c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-8328f308-ce55-54b4-8472-0340cb10ba5c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8328f308-ce55-54b4-8472-0340cb10ba5c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-57984b50-0dbe-4fb1-a020-0f25953a8b74" rel="noreferrer noopener"><span>E-Phase: Reparaturförderung, Konsumentscheidung und Verbraucherrechte</span> <code>57984b50-0dbe-4fb1-a020-0f25953a8b74</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 17 von 20</span>
+      <span>Buch-Digest <code>sha256:7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92</code></span>
+      <span>Ziel-Fingerprint <code>sha256:37fb364199897f86762a2a832dd4d6a2518cba35c326ce736b0c14116a13a03d</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e-company-twenty-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=8328f308-ce55-54b4-8472-0340cb10ba5c&amp;goalFingerprint=sha256%3A37fb364199897f86762a2a832dd4d6a2518cba35c326ce736b0c14116a13a03d&amp;pageFingerprint=sha256%3A47a73d6ef59db5be1da0415aa98f05f3b6949bf59e38babc45aa4c2e0762b2fb&amp;bookDigest=sha256%3A7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9cb6bd3b-1ecf-57af-8127-853fc969d7f5" data-goal-id="9cb6bd3b-1ecf-57af-8127-853fc969d7f5" data-page-number="18" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:3489941f-3f99-5c7c-8bc7-b5228fbe5e76" aria-labelledby="goal-9cb6bd3b-1ecf-57af-8127-853fc969d7f5-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9cb6bd3b-1ecf-57af-8127-853fc969d7f5-title"><a class="goal-self-link" href="#goal-9cb6bd3b-1ecf-57af-8127-853fc969d7f5">Entwicklungen der Arbeitswelt beurteilen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9cb6bd3b-1ecf-57af-8127-853fc969d7f5</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-330b96d7d96f3e197a29bc25">Unternehmerisch denken und entscheiden</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:80132cb7624b2a0ae1618ddc19660833fff29d81cd1e3648b23431b9e01aecec" data-rendered-digest="sha256:f2015b5da31febf5954984c14f80807f32fadbbbce5b018e1f950c967b7fe1fa" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/9cb6bd3b-1ecf-57af-8127-853fc969d7f5/9cb6bd3b-1ecf-57af-8127-853fc969d7f5.png" alt="Eine Person wägt Chancen und Risiken veränderter Arbeit ab, darunter digitale Zusammenarbeit und mögliche Belastungen. Ein offener Weg verbindet die Überlegungen mit beruflicher Orientierung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9cb6bd3b-1ecf-57af-8127-853fc969d7f5-description-heading">
+        <p class="section-heading" id="goal-9cb6bd3b-1ecf-57af-8127-853fc969d7f5-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Chancen und Risiken aktueller Entwicklungen der Arbeitswelt beurteilen und Konsequenzen für die eigene berufliche Orientierung ableiten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9cb6bd3b-1ecf-57af-8127-853fc969d7f5-requires-heading">
+          <p class="section-heading" id="goal-9cb6bd3b-1ecf-57af-8127-853fc969d7f5-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-6d4a38df-527c-534b-8c0a-c6b546dae5b1"><span>Grundlegenden Unternehmensaufbau darstellen</span><code>6d4a38df-527c-534b-8c0a-c6b546dae5b1</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-9cb6bd3b-1ecf-57af-8127-853fc969d7f5-reverse-heading">
+          <p class="section-heading" id="goal-9cb6bd3b-1ecf-57af-8127-853fc969d7f5-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-9cb6bd3b-1ecf-57af-8127-853fc969d7f5-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9cb6bd3b-1ecf-57af-8127-853fc969d7f5-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-60ec0ead-a218-563b-8627-58f5cf661fcc" rel="noreferrer noopener"><span>Bedeutung von Arbeit und prekärer Beschäftigung beurteilen</span> <code>60ec0ead-a218-563b-8627-58f5cf661fcc</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 18 von 20</span>
+      <span>Buch-Digest <code>sha256:7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2aee1f754f3d0b2387a64cab2c85dd6f94a649bba7a35ad488b729a7c0287703</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e-company-twenty-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=9cb6bd3b-1ecf-57af-8127-853fc969d7f5&amp;goalFingerprint=sha256%3A2aee1f754f3d0b2387a64cab2c85dd6f94a649bba7a35ad488b729a7c0287703&amp;pageFingerprint=sha256%3Aea2c8bc61361632182cd804ed093ba637c3d18a96a8cf15238491b28682647f0&amp;bookDigest=sha256%3A7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92&amp;page=18" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-65d9f38e-d35d-5d84-8b66-3c05e388734f" data-goal-id="65d9f38e-d35d-5d84-8b66-3c05e388734f" data-page-number="19" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:3489941f-3f99-5c7c-8bc7-b5228fbe5e76" aria-labelledby="goal-65d9f38e-d35d-5d84-8b66-3c05e388734f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-65d9f38e-d35d-5d84-8b66-3c05e388734f-title"><a class="goal-self-link" href="#goal-65d9f38e-d35d-5d84-8b66-3c05e388734f">Staatliche Rahmenbedingungen für Unternehmen beurteilen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>65d9f38e-d35d-5d84-8b66-3c05e388734f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-330b96d7d96f3e197a29bc25">Unternehmerisch denken und entscheiden</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:54aa9e1d732409d703616a94a38e3ca95d2e0dfb85acc16ef043dffbcc4aaa2b" data-rendered-digest="sha256:53ad3dd732f0ed028ce2a57c010eeddad0ee7e4b60b5fdb7f84c660e1f74df95" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/65d9f38e-d35d-5d84-8b66-3c05e388734f/65d9f38e-d35d-5d84-8b66-3c05e388734f.png" alt="Eine Unternehmerin wägt Infrastruktur, Regeln und finanzielle Rahmenbedingungen ab und verbindet sie mit unterschiedlichen Unternehmensentscheidungen und betroffenen Menschen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-65d9f38e-d35d-5d84-8b66-3c05e388734f-description-heading">
+        <p class="section-heading" id="goal-65d9f38e-d35d-5d84-8b66-3c05e388734f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann beurteilen, wie staatliche Rahmenbedingungen unternehmerisches Handeln beeinflussen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-65d9f38e-d35d-5d84-8b66-3c05e388734f-requires-heading">
+          <p class="section-heading" id="goal-65d9f38e-d35d-5d84-8b66-3c05e388734f-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-53829f76-2d9c-5cdd-8521-c249f57f738d"><span>Geschäftsmodell und unternehmerische Grundentscheidungen darstellen</span><code>53829f76-2d9c-5cdd-8521-c249f57f738d</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-65d9f38e-d35d-5d84-8b66-3c05e388734f-reverse-heading">
+          <p class="section-heading" id="goal-65d9f38e-d35d-5d84-8b66-3c05e388734f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-65d9f38e-d35d-5d84-8b66-3c05e388734f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-65d9f38e-d35d-5d84-8b66-3c05e388734f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-57984b50-0dbe-4fb1-a020-0f25953a8b74" rel="noreferrer noopener"><span>E-Phase: Reparaturförderung, Konsumentscheidung und Verbraucherrechte</span> <code>57984b50-0dbe-4fb1-a020-0f25953a8b74</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 19 von 20</span>
+      <span>Buch-Digest <code>sha256:7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2f6aa99d03feb0a7400d2cd6927dde54feb210311a7cfac5ae830c259b5b5687</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e-company-twenty-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=65d9f38e-d35d-5d84-8b66-3c05e388734f&amp;goalFingerprint=sha256%3A2f6aa99d03feb0a7400d2cd6927dde54feb210311a7cfac5ae830c259b5b5687&amp;pageFingerprint=sha256%3Ae0c5a199b15c173466cd1bf89fe9ead5f7f3e4fdd7db6b63ea986dd7708c0476&amp;bookDigest=sha256%3A7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92&amp;page=19" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e90586d8-8e0a-5355-87d0-4ecd90dbe021" data-goal-id="e90586d8-8e0a-5355-87d0-4ecd90dbe021" data-page-number="20" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:3489941f-3f99-5c7c-8bc7-b5228fbe5e76" aria-labelledby="goal-e90586d8-8e0a-5355-87d0-4ecd90dbe021-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e90586d8-8e0a-5355-87d0-4ecd90dbe021-title"><a class="goal-self-link" href="#goal-e90586d8-8e0a-5355-87d0-4ecd90dbe021">Unternehmerisches Handeln aus Stakeholder-Perspektiven bewerten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e90586d8-8e0a-5355-87d0-4ecd90dbe021</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-330b96d7d96f3e197a29bc25">Unternehmerisch denken und entscheiden</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:401377b9dcb9f2db5561423c38370c216a3a91cf68b0044d0dc725504d23ce8f" data-rendered-digest="sha256:5c6843aeb17a83adfc4a10bddaa5759578a75a6a914d579ac599cd52041cb364" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/e90586d8-8e0a-5355-87d0-4ecd90dbe021/e90586d8-8e0a-5355-87d0-4ecd90dbe021.png" alt="Ein Unternehmen wird aus Sicht von Kundschaft, Beschäftigten, Eigentümern und lokaler Gemeinschaft betrachtet. Eine offene Waage verbindet unterschiedliche Interessen mit gesellschaftlicher Verantwortung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e90586d8-8e0a-5355-87d0-4ecd90dbe021-description-heading">
+        <p class="section-heading" id="goal-e90586d8-8e0a-5355-87d0-4ecd90dbe021-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann unternehmerisches Handeln aus der Sicht verschiedener Stakeholder bewerten und dabei gesellschaftliche Verantwortung sowie Bedeutung von Unternehmen für Wirtschaft und Gesellschaft einbeziehen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e90586d8-8e0a-5355-87d0-4ecd90dbe021-requires-heading">
+          <p class="section-heading" id="goal-e90586d8-8e0a-5355-87d0-4ecd90dbe021-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-53829f76-2d9c-5cdd-8521-c249f57f738d"><span>Geschäftsmodell und unternehmerische Grundentscheidungen darstellen</span><code>53829f76-2d9c-5cdd-8521-c249f57f738d</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-e90586d8-8e0a-5355-87d0-4ecd90dbe021-reverse-heading">
+          <p class="section-heading" id="goal-e90586d8-8e0a-5355-87d0-4ecd90dbe021-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-e90586d8-8e0a-5355-87d0-4ecd90dbe021-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e90586d8-8e0a-5355-87d0-4ecd90dbe021-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-f90e4741-368b-5524-8053-417d06197c80" rel="noreferrer noopener"><span>Unternehmen in Wirtschaft und Gesellschaft vertiefen</span> <code>f90e4741-368b-5524-8053-417d06197c80</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-b215bd82-2b6b-5b00-8a0b-85c7ff249bc2" rel="noreferrer noopener"><span>Unternehmerische Zielsetzungen stakeholderbezogen analysieren</span> <code>b215bd82-2b6b-5b00-8a0b-85c7ff249bc2</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 20 von 20</span>
+      <span>Buch-Digest <code>sha256:7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5a525bfbc498f1470212d06f0a4685bb7b4bbd33e31303020aa5654c60ae103e</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e-company-twenty-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=e90586d8-8e0a-5355-87d0-4ecd90dbe021&amp;goalFingerprint=sha256%3A5a525bfbc498f1470212d06f0a4685bb7b4bbd33e31303020aa5654c60ae103e&amp;pageFingerprint=sha256%3A963914fafcb09209ba753705ccc67c88b2cbc6903a1df0b5d5fca2c98152c355&amp;bookDigest=sha256%3A7a5a48f5646f168ad0dafe64dc11c0d93d0b4e68bc7a662c025e47531147cc92&amp;page=20" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

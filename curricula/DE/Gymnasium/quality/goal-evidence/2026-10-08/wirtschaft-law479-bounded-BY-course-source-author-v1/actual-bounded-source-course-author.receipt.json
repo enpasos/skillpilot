@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "role": "inert_author_bounded_source_metadata_correction_not_independent_approval",
+  "createdAt": "2026-10-08T12:15:25.330555+00:00",
+  "sourceGoalId": "2d2c784c-3a1e-5b32-a72f-ef2c22169b85",
+  "goalId": "479fb87a-3a5a-5892-8b3e-dfb1d07e9612",
+  "actualSourceReads": [
+    {
+      "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/13/wirtschaft-und-recht/erhoeht",
+      "actualRead": "Entire WR13 elevated1.1 competency and associated contents, plus current original source row. Contract types and obligations distinguished from sale are explicit here."
+    },
+    {
+      "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/13/wirtschaft-und-recht/grundlegend",
+      "actualRead": "Entire WR13 basic1.1 competency and associated contents. Sales-law performance disturbances and defects are present; distinguishing further contract types from sale is absent."
+    }
+  ],
+  "technicalCourseLabelMeaning": "LK is the existing SkillPilot technical elevated projection label here; it is not a newly asserted Bavarian selectable Leistungskurs course name.",
+  "originalSourcePath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_WIRTSCHAFT_UND_RECHT_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+  "originalSourceSha256": "sha256:53462162007b5029a189bfba4675bf46f2ff73f4d8c8fec2ad083ab429404c20",
+  "candidateSourcePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law479-bounded-BY-course-source-author-v1/gymnasium/DE_BY_WIRTSCHAFT_UND_RECHT_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+  "candidateSourceSha256": "sha256:15143e202bc105c8524f3a18063d335868f609ddbc3643c65d8ca8758ab0b28a",
+  "originalMappingPath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_wirtschaft_und_recht_source_extraction_to_canonical_wirtschaft.review.json",
+  "originalMappingSha256": "sha256:2fc953519865b0cfc1ef934b6964b70a678dd982ae473cff8dbb8f9a53c79211",
+  "candidateMappingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law479-bounded-BY-course-source-author-v1/mapping/bavaria_wirtschaft_und_recht_source_extraction_to_canonical_wirtschaft.review.candidate.json",
+  "candidateMappingSha256": "sha256:a65952ecad051f7b2f3d95a8699e630075efb5e81f96e317ee29fb4d15644dc0",
+  "actualStructuralDiff": {
+    "sourceFields": [
+      "courseLevel",
+      "tags"
+    ],
+    "mappingFields": [
+      "sourceExtractionPath"
+    ],
+    "canonicalFields": []
+  },
+  "unchangedSourceRows": 183,
+  "allPassagesExactEqual": true,
+  "allSourceWordsIdsSpansParentsPreserved": true,
+  "allMappingEdgesAndHistoricalDecisionsPreserved": true,
+  "canonicalSha256Before": "sha256:05db6c3063aaad8b87c43bfb5344c0eace437b7e939902303d13e186e704b6b3",
+  "regionalProjectionFindingStillOpen": "Current canonical GK/LK tags and the national GK composition view still expose479 as a target for BY-GK. Correct source metadata alone does not resolve that authored regional scope fault. The independent regional view representability probe is an inert proposal, not a complete regional curriculum review.",
+  "otherJurisdictionsPreserved": [
+    "DE-BW",
+    "DE-BY",
+    "DE-HE",
+    "DE-TH"
+  ],
+  "otherSourceScopeLimits": "Actual20direct rows: BY1exact; BW1partial, TH18partial. Broad partial bundle mappings preserve legitimate related legal instruction, but are not an explicit official requirement for the whole Werk/Dienst/other-contract comparison. HE has no direct479source edge; an ancestor mapping and a Q3 assessment prerequisite are not exact source coverage.",
+  "independentApprovalClaimed": false,
+  "activeWrites": 0,
+  "newStrictCompletions": 0,
+  "humanApprovalClaimed": false
+}

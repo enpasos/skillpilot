@@ -92,8 +92,8 @@ const registryFixture = {
 }
 assert.equal(
   parseGoalBookPublicationIndex(JSON.stringify(registryFixture)).books.length,
-  4,
-  'the closed registry accepts all four nationwide subject atlases',
+  5,
+  'the closed registry accepts all five registered subject books',
 )
 const nationwideJurisdictions = [
   'DE-BB', 'DE-BE', 'DE-BW', 'DE-BY', 'DE-HB', 'DE-HE', 'DE-HH', 'DE-MV',

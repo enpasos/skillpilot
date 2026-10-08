@@ -54,10 +54,10 @@ try {
   }), /font preflight failed.*fc-match unavailable.*fontconfig/u)
 
   assert.deepEqual(GOAL_BOOK_PUBLICATION_REGISTRY.map(({ subject }) => subject), [
-    'mathematics', 'physics', 'chemistry', 'biology',
+    'mathematics', 'physics', 'chemistry', 'biology', 'economics',
   ])
   const names = GOAL_BOOK_PUBLICATION_REGISTRY.flatMap(goalBookBuildArtifactNames)
-  assert.equal(names.length, 16, 'all four books have model, original sources, PDF and render manifest')
+  assert.equal(names.length, 20, 'all five books have model, original sources, PDF and render manifest')
   assert.equal(new Set(names).size, names.length, 'publication artifact names cannot collide')
   for (const definition of GOAL_BOOK_PUBLICATION_REGISTRY) {
     assert.ok(goalBookBuildArtifactNames(definition).includes(`${definition.artifactStem}.pdf`))
@@ -75,6 +75,37 @@ try {
     'an active Biology image must be bound to its current QA record in the review book')
   assert.equal(biologyMethodsPage?.visualization?.approvedForPublication, false,
     'machine image review must not imply human publication approval')
+
+  const economicsConfigPath = fileURLToPath(new URL(
+    './config/goal-books/de-gym-economics-current-canonical.json',
+    import.meta.url,
+  ))
+  const economicsConfig = JSON.parse(await readFile(economicsConfigPath, 'utf8'))
+  const economicsLedger = JSON.parse(await readFile(fileURLToPath(new URL(
+    `../../${economicsConfig.semanticKindLedgerPath}`,
+    import.meta.url,
+  )), 'utf8')) as { decisions: Array<{ goalId: string; semanticKind: string }> }
+  const economicsBook = (await loadGoalBookBuildInputs(economicsConfigPath)).model
+  const expectedEconomicsIds = economicsLedger.decisions
+    .filter(({ semanticKind }) => semanticKind === 'curricularAtomic')
+    .map(({ goalId }) => goalId).sort()
+  assert.deepEqual(economicsBook.pages.map(({ goalId }) => goalId).sort(), expectedEconomicsIds,
+    'the registered Economics book covers exactly the current curricular atoms, excluding orientation, memory and assessments')
+  assert.equal(economicsBook.book.publicationMode, 'review',
+    'the catalog entry does not imply human release or completed Economics M7')
+  assert.match(economicsBook.book.title, /Review-Ausgabe/u,
+    'the Economics PDF cover must visibly identify the review edition')
+  const economicsEvidencePages = economicsBook.pages.filter(({ evidenceReview }) => evidenceReview)
+  assert.ok(economicsEvidencePages.length > 0, 'the book carries current positive-understanding v2 evidence')
+  for (const page of economicsEvidencePages) {
+    assert.equal(page.evidenceReview?.status, 'needs_human_review')
+    assert.equal(page.evidenceReview?.evidenceLevel, 'E1')
+    assert.equal(page.evidenceReview?.maximumClaimScope, 'G1')
+  }
+  for (const { visualization } of economicsBook.pages) {
+    if (visualization) assert.equal(visualization.approvedForPublication, false,
+      'machine Economics image review must retain the separate human publication gate')
+  }
 
   const cached = join(temporaryRoot, 'cached')
   await mkdir(cached)

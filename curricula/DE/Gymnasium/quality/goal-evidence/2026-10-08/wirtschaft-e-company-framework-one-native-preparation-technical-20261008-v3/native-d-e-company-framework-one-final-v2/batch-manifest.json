@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "wirtschaft-e-company-framework-one-current303-corrected-private-plan-v2-20261008",
+  "subject": "wirtschaftswissenschaften",
+  "subjectLabel": "Wirtschaftswissenschaften",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-framework-one-native-preparation-technical-20261008-v3/native-d-e-company-framework-one.final.batch.config.json",
+  "configDigest": "sha256:3d7c9335012c7cfe3ce9fc8e3a3faf8aab7d505cfc31f49ba8b0d2942f0254b6",
+  "goalIds": [
+    "65d9f38e-d35d-5d84-8b66-3c05e388734f"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 303,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-m7-current-baseline-20261008-v1/review-book-full.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "baseBookDigest": "sha256:5e1b55f8b2abf1ef826590d3fa1004db63deab5567f2dc6e78bac2cad70641fd"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:b4d20f4ef8ca78f053d654aa807dbf35a2800dbfb8fb054293b9c2c1a3947e54",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:9c46086107f894aeb4a7ca196203b462cdc906c8b3319d0c6f271785a8054b20",
+    "reviewInputFingerprint": "sha256:ccf5e14ac22c152c02d6f1bb08fccdd2131efbcbfd39e2b632a2c18809708e8b",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "wirtschaft-e-company-framework-one-current303-corrected-private-plan-v2-20261008-a",
+        "campaignDigest": "sha256:2c9f3a776998d227f59abc57d4e63c37d44c29ce1de883ad01a35946ebd19c70",
+        "roundId": "wirtschaft-e-company-framework-one-current303-corrected-private-plan-v2-20261008-first-pass-a",
+        "independenceGroupId": "wirtschaft-e-company-framework-one-current303-corrected-private-plan-v2-20261008-independent-a",
+        "batchId": "wirtschaft-e-company-framework-one-current303-corrected-private-plan-v2-20261008-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:7fcb7de44b832aa1a5b35193e926ca28aa4a496bc18e6ab25df4a9fea5bbb8c4"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "wirtschaft-e-company-framework-one-current303-corrected-private-plan-v2-20261008-b",
+        "campaignDigest": "sha256:68c8c389c8b4693bad5808d9e02380e4d07530d58d5da14f18e70e4724022f0c",
+        "roundId": "wirtschaft-e-company-framework-one-current303-corrected-private-plan-v2-20261008-first-pass-b",
+        "independenceGroupId": "wirtschaft-e-company-framework-one-current303-corrected-private-plan-v2-20261008-independent-b",
+        "batchId": "wirtschaft-e-company-framework-one-current303-corrected-private-plan-v2-20261008-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:0ad17b8383e74d5b8f4d39a2759504277f9390683714abe4ca2f8a66d00f646d"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

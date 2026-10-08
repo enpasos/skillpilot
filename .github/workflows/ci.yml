@@ -238,7 +238,7 @@ jobs:
             git ls-files -- public/lernzielbuch
             exit 1
           fi
-      - name: Build and validate all four goal-book publications from source
+      - name: Build and validate all registered goal-book publications from source
         run: npm run build:goal-books -- --force
       - name: Verify generated publication bindings
         run: npm run check:goal-book-publication

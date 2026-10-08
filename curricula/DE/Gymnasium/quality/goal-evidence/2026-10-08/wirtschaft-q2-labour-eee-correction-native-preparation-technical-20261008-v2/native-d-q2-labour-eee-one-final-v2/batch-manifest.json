@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "wirtschaft-q2-labour-eee-one-current303-corrected-image-v2-20261008",
+  "subject": "wirtschaftswissenschaften",
+  "subjectLabel": "Wirtschaftswissenschaften",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-eee-correction-native-preparation-technical-20261008-v2/native-d-q2-labour-eee-one.final.batch.config.json",
+  "configDigest": "sha256:04c9e3ce56b4f22c00c8418524c24c0c2edf2b4f45d4f58bbfa0569d9757bdbd",
+  "goalIds": [
+    "eee7217a-c2fb-58b6-ba84-2a8d5235edb5"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 303,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-m7-current-baseline-20261008-v1/review-book-full.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "baseBookDigest": "sha256:85fb978406d9ca952fdebf45df442e952dfbdcf8d6035ed852f59e45e94faa3d"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:0058a2f2c6803a6da29fd69f75e3c28ffefc8cc34553f16a92fe79a5669f9bf9",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:49fdebff3db21fa3c337b3cc3b8ff5ea0522a4fb3f489ae8ce361ae24b546321",
+    "reviewInputFingerprint": "sha256:c11a9150bfb2737faa5387a701b0ce5d810a7352f45c6feb53e85c4a53cfe86e",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "wirtschaft-q2-labour-eee-one-current303-corrected-image-v2-20261008-a",
+        "campaignDigest": "sha256:7f17a8500d6feaeecc152e4663f2327649466ad29214b241629a1ba14b7d4a8c",
+        "roundId": "wirtschaft-q2-labour-eee-one-current303-corrected-image-v2-20261008-first-pass-a",
+        "independenceGroupId": "wirtschaft-q2-labour-eee-one-current303-corrected-image-v2-20261008-independent-a",
+        "batchId": "wirtschaft-q2-labour-eee-one-current303-corrected-image-v2-20261008-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:db13a3327928ed684b53468c116c408211a550a055a1118093105271305a9064"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "wirtschaft-q2-labour-eee-one-current303-corrected-image-v2-20261008-b",
+        "campaignDigest": "sha256:a1782e533d2152871c768b775b341a29bcb3752d0fc5b9a65303eef63967ab52",
+        "roundId": "wirtschaft-q2-labour-eee-one-current303-corrected-image-v2-20261008-first-pass-b",
+        "independenceGroupId": "wirtschaft-q2-labour-eee-one-current303-corrected-image-v2-20261008-independent-b",
+        "batchId": "wirtschaft-q2-labour-eee-one-current303-corrected-image-v2-20261008-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:b897b676ef88356ad97656bc7795c487f6592c3032d609baa4b9c46148fae030"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

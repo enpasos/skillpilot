@@ -1,0 +1,11 @@
+# Wirtschaft Q1: drei vollständige Cluster, 17 inerte Kandidaten
+
+Dieses Authorpaket umfasst Verfassung/Rechtsstaat 5, Parteiendemokratie 5 und marktwirtschaftliche Ideen 7, einschließlich der beiden aktuell enthaltenen BW-Atome zu wirtschaftspolitischer Partizipation und Marktanalyse. Alle deutschen Ziele und Graphfelder bleiben unverändert. Nur titleEn/descriptionEn werden tatsächlich mit gleicher Kompetenz übersetzt.
+
+Die 17 individuell verfassten P-v2-Profile mit 34 vollständigen bilingualen Fallbriefs erklären beobachtbare begriffliche Unterscheidungen, Variation und unabhängigen Transfer. Aktuelle Rechts-/Politikfälle verlangen ausdrücklich zeitnah aktualisierte, datierte Unterrichtsmaterialien; das Authorpaket erfindet keine aktuelle Rechtslage oder gerichtlichen Ausgänge. Fiktive Wahlregeln sind keine Behauptung über reales heutiges Wahlrecht. Schule/Leitbildvergleich verlangt die jeweiligen kausalen Argumente statt bloßer Etiketten. Der Marktfall behandelt alle geforderten Modellaspekte einschließlich der ökonomischen Informations-, Anreiz- und Koordinationsfunktion von Preisen.
+
+Die tatsächliche Originalquellenlektüre ist separat mit Pfaden und SHA dokumentiert: Hessens KC S. 40–41; BW-WBS gedruckt 21/PDF 23 für 3.1.3(8) und BW-Wirtschaft gedruckt 14/PDF 16 für 3.1.1(4). Zwei präzise Ortsbefunde gegen historische Source-Extraction-Verweise sind mit einem inerten, vorab geguardeten Zweifeld-Mini-Patch dokumentiert. Abschnittsanfang-Seiten bleiben korrekt und unverändert. Originalextraktionen wurden nicht überschrieben; unabhängige Quellenadjudikation und gezielte betroffene Bindungsprüfung stehen vor finalem D-Freeze aus.
+
+Der tatsächliche native geschlossene V2-Schematest mit Fingerprint-/Semantikfunktionen prüft alle 17 als authoritative curricularAtomic; er ist keine unabhängige Fachprüfung. Vor der Bildgenerierung wurden alle 17 Native-Promptpakete ausdrücklich für OpenAI Codex image_gen vorbereitet, mit tatsächlichen Ausgaben/Metadaten und unverändertem Canonical. Erzeugung oder Vorbereitung sind keine Bildfreigabe.
+
+Status: ai_candidate/needs_human_review, E1/G1. Noch keine finale Ressourcenbindung, unabhängigen D-Runden, menschliche Freigabe oder strengen Abschlüsse. Live Canonical, Registry und Ledger bleiben ausschließlich in Root-Verantwortung. Historische Mathematik-/Physikarbeiten werden nicht bearbeitet.

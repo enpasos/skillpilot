@@ -32,10 +32,12 @@ import {
 import { aiApprovalStatus } from '../src/utils/goalVisualizationQaStatus'
 import {
   fingerprintGoalForEvidence,
-  type GoalEvidenceReviewRecord,
   type GoalEvidenceReviewStatus,
-  validateGoalEvidenceRecordSemantics,
 } from './goalEvidenceProfileModel'
+import {
+  parseGoalBookEvidenceReviewRecord,
+  validateGoalBookEvidenceReviewRecordSemantics,
+} from './goalBookEvidenceReviewLoader'
 
 export const GOAL_BOOK_MODEL_SCHEMA_VERSION = '1.1.0' as const
 export const GOAL_BOOK_CONFIG_SCHEMA_VERSION = 1 as const
@@ -69,10 +71,6 @@ const GOAL_BOOK_SOURCE_MANIFEST_SCHEMA_PATH = resolve(
 const SEMANTIC_KIND_LEDGER_SCHEMA_PATH = resolve(
   REPOSITORY_ROOT,
   'contracts/curriculum-package/v1/curriculum-ontology-profile.schema.json',
-)
-const GOAL_EVIDENCE_PROFILE_SCHEMA_PATH = resolve(
-  REPOSITORY_ROOT,
-  'contracts/goal-evidence/v1/goal-evidence-profile.schema.json',
 )
 export const SEMANTIC_KIND_SOURCE_FINGERPRINT_CONTRACT_ID = (
   'semantic-kind-source-fingerprint-v1'
@@ -115,7 +113,6 @@ const createSchemaValidator = (schemaPath: string, includeFormats = false) => {
 }
 
 let cachedGoalBookSchemaValidator: ReturnType<typeof createSchemaValidator> | null = null
-let cachedEvidenceSchemaValidator: ReturnType<typeof createSchemaValidator> | null = null
 let cachedSourceManifestSchemaValidator: ReturnType<typeof createSchemaValidator> | null = null
 let cachedSemanticKindLedgerSchemaValidator: ReturnType<typeof createSchemaValidator> | null = null
 let semanticKindFingerprintProfileVerified = false
@@ -974,21 +971,7 @@ const parseEvidenceReviewSources = (
 
     records.forEach((rawRecord, recordIndex) => {
       const label = `${path} record ${recordIndex + 1}`
-      const schemaValidator = cachedEvidenceSchemaValidator
-        ?? (cachedEvidenceSchemaValidator = createSchemaValidator(
-          GOAL_EVIDENCE_PROFILE_SCHEMA_PATH,
-          true,
-        ))
-      if (!schemaValidator.validate(rawRecord)) {
-        fail(`${label} violates the closed goal-evidence schema: ${schemaValidator.ajv.errorsText(
-          schemaValidator.validate.errors,
-          { separator: '; ' },
-        )}.`)
-      }
-      const record = rawRecord as GoalEvidenceReviewRecord
-      if (record.ruleVersion !== GOAL_BOOK_GOAL_FINGERPRINT_RULE_VERSION) {
-        fail(`${label}.ruleVersion must be ${GOAL_BOOK_GOAL_FINGERPRINT_RULE_VERSION}.`)
-      }
+      const record = parseGoalBookEvidenceReviewRecord(rawRecord, label)
       if (record.landscapeId !== landscape.landscapeId) {
         fail(`${label} targets ${record.landscapeId}, expected ${landscape.landscapeId}.`)
       }
@@ -1002,7 +985,7 @@ const parseEvidenceReviewSources = (
       const resourceDigests: Record<string, string> = {}
       const qaRecord = qaRecordsByGoalId.get(goalId)
       if (qaRecord) resourceDigests[qaRecord.imageUrl] = qaRecord.assetSha256
-      const semanticErrors = validateGoalEvidenceRecordSemantics(
+      const semanticErrors = validateGoalBookEvidenceReviewRecordSemantics(
         record,
         goal as unknown as LearningGoal,
         resourceDigests,

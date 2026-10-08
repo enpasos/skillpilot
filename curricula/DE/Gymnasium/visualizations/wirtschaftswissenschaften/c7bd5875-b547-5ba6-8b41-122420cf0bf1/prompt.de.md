@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Erfolgswirksame Geschäftsvorfälle beschreiben
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `c7bd5875-b547-5ba6-8b41-122420cf0bf1`
+- Titel: Erfolgswirksame Geschäftsvorfälle beschreiben
+- Beschreibung: Die lernende Person kann Auswirkungen einfacher erfolgswirksamer Geschäftsvorfälle beschreiben und Erfolgskonten als Unterkonten des Eigenkapitals einordnen.
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `c7bd5875-b547-5ba6-8b41-122420cf0bf1.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/c7bd5875-b547-5ba6-8b41-122420cf0bf1/c7bd5875-b547-5ba6-8b41-122420cf0bf1.png`
+
+## Prompt
+
+```text
+Use case: precise-object-edit. Edit the supplied local PNG only in the specified bounded regions. Preserve its friendly abstract clear comic, warm ivory, teal/coral/gold, dark outlines and native wide approximately16:9 PNG dimensions. No photorealism, sterile redesign, tiny new writing, technical IDs, logos, watermarks or branding. Change ONLY the central Equity depiction and the signs on its two connections. Replace the open Eigenkapital coin-filled box with a large neutral conceptual accounting tile/capital account bearing ONLY the large label Eigenkapital, no coins, cash, piggy bank or money pile inside it. Keep the existing left revenue/sale and right expense/resource-consumption scenes and their arrows, but put a large clear PLUS sign on the revenue-to-equity relationship and a large clear MINUS sign on the expense-to-equity relationship so opposite effects are unmistakable. Preserve lower payment timing/clock/question distinction, all people, goods, layout, original large Ertrag/Aufwand labels, scale and welcoming ivory/teal/coral/gold comic. No new text except the existing Eigenkapital label and plus/minus; no guarantee equity is cash or a payment is automatically revenue/expense.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

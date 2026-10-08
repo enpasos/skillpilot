@@ -1,0 +1,13 @@
+# Independent E2 positive-profile and bilingual-parity review
+
+All 20 whole German/English goals, all 20 bilingual understanding/performance expectations, every variation axis and all 41 application cases in both languages were actually read. This review concerns the author candidates from `wirtschaft-e2-twenty-bilingual-positive-author-v1`; it is not a description round, image review or live integration.
+
+The original input has 18 profiles accepted as AI candidates and two bounded findings: a debt-service calculation needs its available cash defined before interest/principal repayments, and the market-failure expectation must require all three mechanisms named by the goal. `minimal-positive-correction.patch.json` provides exactly four bilingual field corrections. These findings remain open until an immutable materialised successor is actually reread. They cannot be closed by the presence of a patch or by native validation.
+
+All 20 English goal translations preserve the existing German competence. The actual original atomicity and memory records were read: 20 atomic decisions, 14 no-memory decisions and six memory-required decisions. Their substantive decisions and linked memory/deck/visibility semantics are unchanged by these translations. The native source hashes do include English fields: integration requires 20 precisely evidenced successor atomicity bindings and 20 memory bindings while preserving history. This is a semantic-parity continuation, not a new full atomicity or memory review.
+
+`native-independent-candidate-check.actual.json` records a passing check of the real closed V2 schema, native positive source/profile fingerprints and all 40 original A/M fingerprints. Source profiles remain `ai_candidate`, `needs_human_review`, E1/G1. They describe didactic expectations, not observed learner work, human review or classroom trial. Missing final image/resource bindings are explicitly recorded; no current M7 completion is claimed.
+
+The substantive receipt records per-ID positive findings, every examined case ID, scope/uncertainty limits, DE/EN parity, original A/M decisions and both negative findings. Relevant printed KC pages 36–38 were actually read from the local official PDF. UNDP, UBA, §36GWB and §765BGB were read as primary sources; failed remote retrievals are identified rather than treated as evidence.
+
+Strict progress from this isolated review: zero new completions and zero restored active bindings. Next: actually reread both corrected whole profiles, document immutable finding closures, then conduct the separately assigned D-B round only on final frozen page/context/image inputs.

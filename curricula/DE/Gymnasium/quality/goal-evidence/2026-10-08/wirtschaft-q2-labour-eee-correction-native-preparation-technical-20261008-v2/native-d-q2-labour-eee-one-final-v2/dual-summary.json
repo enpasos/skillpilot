@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:49fdebff3db21fa3c337b3cc3b8ff5ea0522a4fb3f489ae8ce361ae24b546321",
+  "reviewInputFingerprint": "sha256:c11a9150bfb2737faa5387a701b0ce5d810a7352f45c6feb53e85c4a53cfe86e",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-q2-labour-eee-one-current303-corrected-image-v2-20261008-a",
+      "roundId": "wirtschaft-q2-labour-eee-one-current303-corrected-image-v2-20261008-first-pass-a",
+      "independenceGroupId": "wirtschaft-q2-labour-eee-one-current303-corrected-image-v2-20261008-independent-a",
+      "runIds": [
+        "wirtschaft-q2-labour-eee-v2-independent-round-a-actual-20261008"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact serving model identifier not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "wirtschaft-q2-labour-eee-one-current303-corrected-image-v2-20261008-b",
+      "roundId": "wirtschaft-q2-labour-eee-one-current303-corrected-image-v2-20261008-first-pass-b",
+      "independenceGroupId": "wirtschaft-q2-labour-eee-one-current303-corrected-image-v2-20261008-independent-b",
+      "runIds": [
+        "wirtschaft-q2-labour-eee-one-independent-description-round-b-codex-20261008-v2"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact model identifier not disclosed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "eee7217a-c2fb-58b6-ba84-2a8d5235edb5",
+      "firstRecordId": "wirtschaft-labour-eee-image-v2-round-a-current-eee7217a-c2fb-58b6-ba84-2a8d5235edb5",
+      "secondRecordId": "wirtschaft-q2-labour-eee-one-independent-description-round-b-codex-20261008-v2.001",
+      "firstRunId": "wirtschaft-q2-labour-eee-v2-independent-round-a-actual-20261008",
+      "secondRunId": "wirtschaft-q2-labour-eee-one-independent-description-round-b-codex-20261008-v2",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

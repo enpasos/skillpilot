@@ -1,0 +1,1277 @@
+{
+  "schemaVersion": 1,
+  "kind": "targeted-native-layer-a-candidate-check",
+  "isActiveIntegration": false,
+  "sourceRoute": {
+    "scopeId": "canonical-economics-crossstage",
+    "label": "Sekundarstufe I/II",
+    "selectedAtomicGoals": 303,
+    "maturity": "M0",
+    "rules": [
+      {
+        "id": "CQR-101",
+        "status": "fail",
+        "summary": "Effective route coverage has missing route segments.",
+        "metrics": {
+          "selectedAtomicGoals": 303,
+          "missingMotivationPath": 1,
+          "missingTerminalPath": 0
+        },
+        "details": [
+          "No effective motivation path: Ökologische Effekte des Welthandels [4cd0c6d8-6485-51d0-883d-5d49ac46be70]"
+        ]
+      },
+      {
+        "id": "CQR-102",
+        "status": "warn",
+        "summary": "Direct atomic route coverage still needs migration work.",
+        "metrics": {
+          "selectedAtomicGoals": 303,
+          "missingDirectMotivationPath": 1,
+          "missingDirectTerminalPath": 0
+        },
+        "details": [
+          "No direct atomic motivation path: Ökologische Effekte des Welthandels [4cd0c6d8-6485-51d0-883d-5d49ac46be70]"
+        ]
+      },
+      {
+        "id": "CQR-103",
+        "status": "pass",
+        "summary": "No scoped cluster-level requires remain.",
+        "metrics": {
+          "scopedClusterRequires": 0
+        }
+      },
+      {
+        "id": "CQR-104",
+        "status": "pass",
+        "summary": "Route endpoints are exactly visible in every relevant learner-facing projection scope.",
+        "metrics": {
+          "relevantCompositionViews": 2,
+          "evaluatedProjectionScopes": 2,
+          "requiredMotivationAnchors": 1,
+          "minimumRequiredTerminalAutonomyGoals": 18,
+          "requiredTerminalAutonomyGoals": 18,
+          "projectionScopesMissingMotivationAnchors": 0,
+          "projectionScopesMissingTerminalAutonomyGoals": 0,
+          "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+          "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+          "terminalGoalsMissingCompiledApplicability": 0,
+          "projectionScopesWithInvalidStageStructure": 0,
+          "nationalProjectionScopesUsingJurisdictionStageAuthority": 0,
+          "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+          "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+          "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+          "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+          "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 0,
+          "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+          "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+          "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+          "projectionLocalRouteChecksEnabled": 0,
+          "visibleSelectedAtomicGoalOccurrences": 544,
+          "visibleProfileSelectedAtomicGoalOccurrences": 544,
+          "visibleProjectedRouteTargetGoalOccurrences": 544,
+          "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+          "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+          "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+          "projectionScopesMissingEffectiveMotivationRoutes": 0,
+          "projectionScopesMissingDirectMotivationRoutes": 0,
+          "projectionScopesMissingEffectiveTerminalRoutes": 0,
+          "projectionScopesMissingDirectTerminalRoutes": 0,
+          "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+          "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+          "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+          "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+        }
+      },
+      {
+        "id": "CQR-201",
+        "status": "pass",
+        "summary": "All configured terminal autonomy goals have examData.",
+        "metrics": {
+          "terminalAutonomyGoals": 18,
+          "terminalAutonomyGoalsWithExamData": 18,
+          "terminalAutonomyGoalsWithoutExamData": 0
+        }
+      },
+      {
+        "id": "CQR-202",
+        "status": "pass",
+        "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+        "metrics": {
+          "terminalAutonomyGoals": 18,
+          "concreteExamData": 18,
+          "weakExamData": 0
+        }
+      },
+      {
+        "id": "CQR-203",
+        "status": "pass",
+        "summary": "All terminal autonomy examData has release and coverage metadata.",
+        "metrics": {
+          "terminalAutonomyGoals": 18,
+          "releasedCoverageCompleteExamData": 18,
+          "releaseCoverageIncompleteExamData": 0
+        }
+      }
+    ]
+  },
+  "candidateRoute": {
+    "scopeId": "canonical-economics-crossstage",
+    "label": "Sekundarstufe I/II",
+    "selectedAtomicGoals": 303,
+    "maturity": "M4",
+    "rules": [
+      {
+        "id": "CQR-101",
+        "status": "pass",
+        "summary": "Effective route coverage is complete for the configured scope.",
+        "metrics": {
+          "selectedAtomicGoals": 303,
+          "missingMotivationPath": 0,
+          "missingTerminalPath": 0
+        }
+      },
+      {
+        "id": "CQR-102",
+        "status": "pass",
+        "summary": "Direct atomic route coverage is complete for the configured scope.",
+        "metrics": {
+          "selectedAtomicGoals": 303,
+          "missingDirectMotivationPath": 0,
+          "missingDirectTerminalPath": 0
+        }
+      },
+      {
+        "id": "CQR-103",
+        "status": "pass",
+        "summary": "No scoped cluster-level requires remain.",
+        "metrics": {
+          "scopedClusterRequires": 0
+        }
+      },
+      {
+        "id": "CQR-104",
+        "status": "pass",
+        "summary": "Route endpoints are exactly visible in every relevant learner-facing projection scope.",
+        "metrics": {
+          "relevantCompositionViews": 2,
+          "evaluatedProjectionScopes": 2,
+          "requiredMotivationAnchors": 1,
+          "minimumRequiredTerminalAutonomyGoals": 18,
+          "requiredTerminalAutonomyGoals": 18,
+          "projectionScopesMissingMotivationAnchors": 0,
+          "projectionScopesMissingTerminalAutonomyGoals": 0,
+          "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+          "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+          "terminalGoalsMissingCompiledApplicability": 0,
+          "projectionScopesWithInvalidStageStructure": 0,
+          "nationalProjectionScopesUsingJurisdictionStageAuthority": 0,
+          "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+          "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+          "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+          "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+          "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 0,
+          "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+          "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+          "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+          "projectionLocalRouteChecksEnabled": 0,
+          "visibleSelectedAtomicGoalOccurrences": 544,
+          "visibleProfileSelectedAtomicGoalOccurrences": 544,
+          "visibleProjectedRouteTargetGoalOccurrences": 544,
+          "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+          "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+          "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+          "projectionScopesMissingEffectiveMotivationRoutes": 0,
+          "projectionScopesMissingDirectMotivationRoutes": 0,
+          "projectionScopesMissingEffectiveTerminalRoutes": 0,
+          "projectionScopesMissingDirectTerminalRoutes": 0,
+          "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+          "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+          "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+          "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+        }
+      },
+      {
+        "id": "CQR-201",
+        "status": "pass",
+        "summary": "All configured terminal autonomy goals have examData.",
+        "metrics": {
+          "terminalAutonomyGoals": 18,
+          "terminalAutonomyGoalsWithExamData": 18,
+          "terminalAutonomyGoalsWithoutExamData": 0
+        }
+      },
+      {
+        "id": "CQR-202",
+        "status": "pass",
+        "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+        "metrics": {
+          "terminalAutonomyGoals": 18,
+          "concreteExamData": 18,
+          "weakExamData": 0
+        }
+      },
+      {
+        "id": "CQR-203",
+        "status": "pass",
+        "summary": "All terminal autonomy examData has release and coverage metadata.",
+        "metrics": {
+          "terminalAutonomyGoals": 18,
+          "releasedCoverageCompleteExamData": 18,
+          "releaseCoverageIncompleteExamData": 0
+        }
+      }
+    ]
+  },
+  "candidateGraph": {
+    "id": "CQR-001",
+    "status": "pass",
+    "summary": "Basic graph integrity checks pass.",
+    "metrics": {
+      "goals": 370,
+      "localReferenceIssues": 0
+    }
+  },
+  "candidateType": {
+    "id": "CQR-002",
+    "status": "pass",
+    "summary": "Explicit type metadata matches graph structure.",
+    "metrics": {
+      "mismatches": 0
+    }
+  },
+  "candidateSemantic": {
+    "id": "CQR-301",
+    "status": "pass",
+    "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+    "metrics": {
+      "configs": 1,
+      "leafGoals": 303,
+      "atomic": 303,
+      "needsDeveloperReview": 0,
+      "nonAtomic": 0,
+      "missing": 0,
+      "stale": 0,
+      "obsolete": 0
+    }
+  },
+  "candidateMemory": {
+    "id": "CQR-302",
+    "status": "pass",
+    "summary": "Memory-card review is current: 53/303 ordinary atomic goals intentionally use memorization support, 51/51 primary cards are kept with origin traces, all 5 memory goals are traced, and 98 view-visible memory-required goals resolve to visible memory nodes.",
+    "metrics": {
+      "configs": 1,
+      "reviewedGoals": 303,
+      "noMemoryNeeded": 250,
+      "memoryRequired": 53,
+      "needsDeveloperReview": 0,
+      "missing": 0,
+      "stale": 0,
+      "obsolete": 0,
+      "duplicateRecords": 0,
+      "invalidRecords": 0,
+      "primaryCards": 51,
+      "keptCards": 51,
+      "cardsMarkedRemove": 0,
+      "cardNeedsDeveloperReview": 0,
+      "missingCardReviews": 0,
+      "staleCardReviews": 0,
+      "obsoleteCardReviews": 0,
+      "duplicateCardReviewRecords": 0,
+      "invalidCardReviewRecords": 0,
+      "untracedMemoryRequiredGoals": 0,
+      "visibilityScopes": 2,
+      "visibilityCheckedMemoryRequiredGoals": 98,
+      "visibilityMissingVisibleMemoryGoals": 0,
+      "visibilityErrors": 0,
+      "memoryGoals": 5,
+      "tracedMemoryGoals": 5,
+      "untracedMemoryGoals": 0,
+      "deckIds": 5,
+      "deckFiles": 5,
+      "cardRows": 51
+    },
+    "details": [
+      "canonical-economics-full: audit report docs/qa-ci/status/memory-card-review-canonical-economics-full.md"
+    ]
+  },
+  "candidateApplicabilitySummary": {
+    "goals": 370,
+    "errors": 0,
+    "warnings": 0,
+    "diagnostics": 1451
+  },
+  "candidateApplicabilityFindings": [],
+  "changedMemoryEvidence": [
+    {
+      "goalId": "mem_de_gym_economics_accounting_business_finance",
+      "title": "Lernkarten - Unternehmen, Rechnungswesen und Finanzierung",
+      "goalType": "atomic",
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:04c17efe-4451-52bd-8116-1042d1501c41 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:053f1522-31a7-583f-85f5-366ed724d3c5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:53829f76-2d9c-5cdd-8521-c249f57f738d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:66a0d96f-a231-5b36-894e-2ffb16adf7db (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:8e8a672e-67c6-52dd-8f87-3c1f2e874a3d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:9219c58c-d178-5612-8231-feac373c87df (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:95f2b860-d21d-5627-8dcd-cd53efd94b7b (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:9a1a3f9b-909d-53d3-8851-759c416bd763 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:aa9db8f6-c81e-5247-8f84-5f2b968ab2c4 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:e7fbbb64-9f10-5d5d-8946-710aedc6794a (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:04c17efe-4451-52bd-8116-1042d1501c41 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:053f1522-31a7-583f-85f5-366ed724d3c5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:53829f76-2d9c-5cdd-8521-c249f57f738d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:66a0d96f-a231-5b36-894e-2ffb16adf7db (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:8e8a672e-67c6-52dd-8f87-3c1f2e874a3d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:9219c58c-d178-5612-8231-feac373c87df (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:95f2b860-d21d-5627-8dcd-cd53efd94b7b (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:9a1a3f9b-909d-53d3-8851-759c416bd763 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:aa9db8f6-c81e-5247-8f84-5f2b968ab2c4 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:e7fbbb64-9f10-5d5d-8946-710aedc6794a (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:04c17efe-4451-52bd-8116-1042d1501c41 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:053f1522-31a7-583f-85f5-366ed724d3c5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:53829f76-2d9c-5cdd-8521-c249f57f738d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:66a0d96f-a231-5b36-894e-2ffb16adf7db (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:8e8a672e-67c6-52dd-8f87-3c1f2e874a3d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:9219c58c-d178-5612-8231-feac373c87df (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:95f2b860-d21d-5627-8dcd-cd53efd94b7b (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:9a1a3f9b-909d-53d3-8851-759c416bd763 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:aa9db8f6-c81e-5247-8f84-5f2b968ab2c4 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:e7fbbb64-9f10-5d5d-8946-710aedc6794a (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:04c17efe-4451-52bd-8116-1042d1501c41 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:053f1522-31a7-583f-85f5-366ed724d3c5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:53829f76-2d9c-5cdd-8521-c249f57f738d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:66a0d96f-a231-5b36-894e-2ffb16adf7db (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:8e8a672e-67c6-52dd-8f87-3c1f2e874a3d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:9219c58c-d178-5612-8231-feac373c87df (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:95f2b860-d21d-5627-8dcd-cd53efd94b7b (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:9a1a3f9b-909d-53d3-8851-759c416bd763 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:aa9db8f6-c81e-5247-8f84-5f2b968ab2c4 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:e7fbbb64-9f10-5d5d-8946-710aedc6794a (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HB",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:53829f76-2d9c-5cdd-8521-c249f57f738d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HB",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:95f2b860-d21d-5627-8dcd-cd53efd94b7b (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HB",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:aa9db8f6-c81e-5247-8f84-5f2b968ab2c4 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:04c17efe-4451-52bd-8116-1042d1501c41 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:053f1522-31a7-583f-85f5-366ed724d3c5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:53829f76-2d9c-5cdd-8521-c249f57f738d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:66a0d96f-a231-5b36-894e-2ffb16adf7db (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:8e8a672e-67c6-52dd-8f87-3c1f2e874a3d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:9219c58c-d178-5612-8231-feac373c87df (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:95f2b860-d21d-5627-8dcd-cd53efd94b7b (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:9a1a3f9b-909d-53d3-8851-759c416bd763 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:aa9db8f6-c81e-5247-8f84-5f2b968ab2c4 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:e7fbbb64-9f10-5d5d-8946-710aedc6794a (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:53829f76-2d9c-5cdd-8521-c249f57f738d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:95f2b860-d21d-5627-8dcd-cd53efd94b7b (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:aa9db8f6-c81e-5247-8f84-5f2b968ab2c4 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:53829f76-2d9c-5cdd-8521-c249f57f738d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:95f2b860-d21d-5627-8dcd-cd53efd94b7b (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:aa9db8f6-c81e-5247-8f84-5f2b968ab2c4 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:53829f76-2d9c-5cdd-8521-c249f57f738d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:95f2b860-d21d-5627-8dcd-cd53efd94b7b (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:aa9db8f6-c81e-5247-8f84-5f2b968ab2c4 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:53829f76-2d9c-5cdd-8521-c249f57f738d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:95f2b860-d21d-5627-8dcd-cd53efd94b7b (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:aa9db8f6-c81e-5247-8f84-5f2b968ab2c4 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:53829f76-2d9c-5cdd-8521-c249f57f738d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:95f2b860-d21d-5627-8dcd-cd53efd94b7b (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:aa9db8f6-c81e-5247-8f84-5f2b968ab2c4 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:53829f76-2d9c-5cdd-8521-c249f57f738d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:95f2b860-d21d-5627-8dcd-cd53efd94b7b (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:aa9db8f6-c81e-5247-8f84-5f2b968ab2c4 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:53829f76-2d9c-5cdd-8521-c249f57f738d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:95f2b860-d21d-5627-8dcd-cd53efd94b7b (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:aa9db8f6-c81e-5247-8f84-5f2b968ab2c4 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:53829f76-2d9c-5cdd-8521-c249f57f738d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:95f2b860-d21d-5627-8dcd-cd53efd94b7b (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:aa9db8f6-c81e-5247-8f84-5f2b968ab2c4 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:04c17efe-4451-52bd-8116-1042d1501c41 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:053f1522-31a7-583f-85f5-366ed724d3c5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:53829f76-2d9c-5cdd-8521-c249f57f738d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:66a0d96f-a231-5b36-894e-2ffb16adf7db (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:8e8a672e-67c6-52dd-8f87-3c1f2e874a3d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:9219c58c-d178-5612-8231-feac373c87df (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:95f2b860-d21d-5627-8dcd-cd53efd94b7b (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:9a1a3f9b-909d-53d3-8851-759c416bd763 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:aa9db8f6-c81e-5247-8f84-5f2b968ab2c4 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:e7fbbb64-9f10-5d5d-8946-710aedc6794a (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        }
+      ]
+    },
+    {
+      "goalId": "mem_de_gym_economics_business_law",
+      "title": "Lernkarten - Wirtschaftsrecht und Falltechnik",
+      "goalType": "atomic",
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BB",
+          "DE-BE",
+          "DE-BW",
+          "DE-BY",
+          "DE-HB",
+          "DE-HE",
+          "DE-HH",
+          "DE-MV",
+          "DE-NI",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SL",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
+        ]
+      },
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:1f5c3e82-dc4a-54cc-838e-66e4d434a7b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:2aee114f-d0d2-516f-8f95-1b72f707401d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:78eeb8fe-fd5c-5d21-81be-75c3990fc4b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:87e1971d-d153-59eb-81d9-e361caf83a26 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BB",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:bd413a7c-775a-5318-813c-0b75578f9a11 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:1f5c3e82-dc4a-54cc-838e-66e4d434a7b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:2aee114f-d0d2-516f-8f95-1b72f707401d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:78eeb8fe-fd5c-5d21-81be-75c3990fc4b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:87e1971d-d153-59eb-81d9-e361caf83a26 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:bd413a7c-775a-5318-813c-0b75578f9a11 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:1f5c3e82-dc4a-54cc-838e-66e4d434a7b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:2aee114f-d0d2-516f-8f95-1b72f707401d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:479fb87a-3a5a-5892-8b3e-dfb1d07e9612 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:78eeb8fe-fd5c-5d21-81be-75c3990fc4b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:bd413a7c-775a-5318-813c-0b75578f9a11 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:f6a445cb-50d9-5d22-80af-e669509758b0 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:1f5c3e82-dc4a-54cc-838e-66e4d434a7b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:2aee114f-d0d2-516f-8f95-1b72f707401d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:479fb87a-3a5a-5892-8b3e-dfb1d07e9612 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:78eeb8fe-fd5c-5d21-81be-75c3990fc4b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:87e1971d-d153-59eb-81d9-e361caf83a26 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:b44892ea-32dc-5a91-8bba-2f422af7c6e7 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:bd413a7c-775a-5318-813c-0b75578f9a11 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:be602e0c-2082-5c1a-808b-ca492ba40f2d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BY",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:f6a445cb-50d9-5d22-80af-e669509758b0 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HB",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:1f5c3e82-dc4a-54cc-838e-66e4d434a7b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HB",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:2aee114f-d0d2-516f-8f95-1b72f707401d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HB",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:78eeb8fe-fd5c-5d21-81be-75c3990fc4b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:1f5c3e82-dc4a-54cc-838e-66e4d434a7b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:2aee114f-d0d2-516f-8f95-1b72f707401d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:479fb87a-3a5a-5892-8b3e-dfb1d07e9612 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:78eeb8fe-fd5c-5d21-81be-75c3990fc4b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:87e1971d-d153-59eb-81d9-e361caf83a26 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:b44892ea-32dc-5a91-8bba-2f422af7c6e7 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:bd413a7c-775a-5318-813c-0b75578f9a11 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:be602e0c-2082-5c1a-808b-ca492ba40f2d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HE",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:f6a445cb-50d9-5d22-80af-e669509758b0 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-HH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:2aee114f-d0d2-516f-8f95-1b72f707401d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-MV",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:2aee114f-d0d2-516f-8f95-1b72f707401d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:1f5c3e82-dc4a-54cc-838e-66e4d434a7b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:2aee114f-d0d2-516f-8f95-1b72f707401d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:78eeb8fe-fd5c-5d21-81be-75c3990fc4b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NI",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:bd413a7c-775a-5318-813c-0b75578f9a11 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:1f5c3e82-dc4a-54cc-838e-66e4d434a7b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:2aee114f-d0d2-516f-8f95-1b72f707401d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-NW",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:78eeb8fe-fd5c-5d21-81be-75c3990fc4b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:1f5c3e82-dc4a-54cc-838e-66e4d434a7b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:2aee114f-d0d2-516f-8f95-1b72f707401d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-RP",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:78eeb8fe-fd5c-5d21-81be-75c3990fc4b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:1f5c3e82-dc4a-54cc-838e-66e4d434a7b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:2aee114f-d0d2-516f-8f95-1b72f707401d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:78eeb8fe-fd5c-5d21-81be-75c3990fc4b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:1f5c3e82-dc4a-54cc-838e-66e4d434a7b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:2aee114f-d0d2-516f-8f95-1b72f707401d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SL",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:78eeb8fe-fd5c-5d21-81be-75c3990fc4b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-SN",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:2aee114f-d0d2-516f-8f95-1b72f707401d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-ST",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:2aee114f-d0d2-516f-8f95-1b72f707401d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:1f5c3e82-dc4a-54cc-838e-66e4d434a7b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:2aee114f-d0d2-516f-8f95-1b72f707401d (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:479fb87a-3a5a-5892-8b3e-dfb1d07e9612 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:78eeb8fe-fd5c-5d21-81be-75c3990fc4b5 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:87e1971d-d153-59eb-81d9-e361caf83a26 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        },
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-TH",
+          "kind": "memory-review-origin",
+          "source": "canonical-economics-full:bd413a7c-775a-5318-813c-0b75578f9a11 (curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.review.jsonl)"
+        }
+      ]
+    }
+  ]
+}

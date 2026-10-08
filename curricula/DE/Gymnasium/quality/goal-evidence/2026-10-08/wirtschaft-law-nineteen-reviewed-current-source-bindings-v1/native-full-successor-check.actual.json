@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "role": "technical_reviewed_source_translation_and_metadata_binding_successor",
+  "currentStrictBaseline": 191,
+  "priorOwnAMSuccessorExists": false,
+  "versionLabelExplanation": "Initial own19 independently reviewed Law bilingual and individual taxonomy bindings on actual activeQ4-191/new migration terminal371; other284 current records including open479 retained byte exactly.",
+  "checkedAt": "2026-10-08T12:28:31.130867+00:00",
+  "physicalIsolate": "/tmp/skillpilot-wirtschaft-law19-final-current371-root191-a0mgyda1",
+  "independentlyReviewedTranslationSuccessors": 19,
+  "ordinaryDecisions": 303,
+  "unchangedRecordsByteExactPerGate": 284,
+  "cardsByteExact": 51,
+  "visibilityChecks": 98,
+  "actualInputs": [
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_accounting_business_finance.de.json",
+      "sha256": "sha256:b224cae9572d76b364adf3f6e2824e99d14cea344dda716c7c0efbd7cebab679",
+      "bytes": 6738,
+      "role": "actual_deck"
+    },
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_business_law.de.json",
+      "sha256": "sha256:8a379951c08148a4f6633e967c656c736897e073e6089b06d4293fe9961a7a27",
+      "bytes": 5406,
+      "role": "actual_deck"
+    },
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_international_development.de.json",
+      "sha256": "sha256:798c0b83234f9fbf687e8398d4512f8e8e101883c121fd8ccf61f4d779491f53",
+      "bytes": 6476,
+      "role": "actual_deck"
+    },
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_macro_money_policy.de.json",
+      "sha256": "sha256:d85fc8045f7f5fea017f21e7d347ca63a8e7f5e39635ceccab77ed75a3dbe4ec",
+      "bytes": 6918,
+      "role": "actual_deck"
+    },
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_market_order_policy.de.json",
+      "sha256": "sha256:1d70fc4f8b626b8ad6769b28a08bbd0a85ee44f9eaf79974c28b7978b09fb1a8",
+      "bytes": 6571,
+      "role": "actual_deck"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json",
+      "sha256": "sha256:402bd1d6e80504c0e481f8e0ff49fb995e1f730fbb8a8476b5be693517cb51cc",
+      "bytes": 7237,
+      "role": "configured_visibility_view"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-lk.view.json",
+      "sha256": "sha256:8ed46d64771e1b61849fd879a3570bda4c1c7c7c7f42dbeebbcd8ca15e437cd2",
+      "bytes": 7237,
+      "role": "configured_visibility_view"
+    }
+  ],
+  "commands": [
+    {
+      "stage": "fingerprint-staging",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-reviewed-current-source-bindings-v1/native-fingerprint-staging-only/atomicity.config.json",
+        "--mode=check",
+        "--write-fingerprints"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-law19-final-current371-root191-a0mgyda1",
+      "exitCode": 0,
+      "nativeEntrypointSha256": "sha256:b3052145387d8fd9414af100e0aa61f2ec083875d852c9c87ea4aa2ed91f56d9"
+    },
+    {
+      "stage": "native-check",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-reviewed-current-source-bindings-v1/atomicity.config.json",
+        "--mode=check"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-law19-final-current371-root191-a0mgyda1",
+      "exitCode": 0,
+      "nativeEntrypointSha256": "sha256:b3052145387d8fd9414af100e0aa61f2ec083875d852c9c87ea4aa2ed91f56d9"
+    },
+    {
+      "stage": "fingerprint-staging",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-reviewed-current-source-bindings-v1/native-fingerprint-staging-only/memory.config.json",
+        "--mode=check",
+        "--write-fingerprints"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-law19-final-current371-root191-a0mgyda1",
+      "exitCode": 0,
+      "nativeEntrypointSha256": "sha256:9e06425851e85d22b284530e81a459c120c200fd0a019446ff87953c538c2672"
+    },
+    {
+      "stage": "native-check",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-reviewed-current-source-bindings-v1/memory.config.json",
+        "--mode=check"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-law19-final-current371-root191-a0mgyda1",
+      "exitCode": 0,
+      "nativeEntrypointSha256": "sha256:9e06425851e85d22b284530e81a459c120c200fd0a019446ff87953c538c2672"
+    }
+  ],
+  "gateRecordRetention": {
+    "atomicity": {
+      "ordinaryDecisions": 303,
+      "changedGoalIds": [
+        "1f5c3e82-dc4a-54cc-838e-66e4d434a7b5",
+        "2aee114f-d0d2-516f-8f95-1b72f707401d",
+        "3897fc05-a8fc-5045-8d7f-9efeabcd098d",
+        "3a6568d2-9f94-5574-8996-9ebac0bc0b3e",
+        "3ed27350-0257-5690-89d9-5acefeffcf68",
+        "537a6f0d-0cf9-5a80-82d6-618ec790e7a6",
+        "61da4203-44c1-5e60-8880-5e8a64943675",
+        "7159ae22-e6ac-54e6-8b62-9b697310cc5f",
+        "78eeb8fe-fd5c-5d21-81be-75c3990fc4b5",
+        "87e1971d-d153-59eb-81d9-e361caf83a26",
+        "b44892ea-32dc-5a91-8bba-2f422af7c6e7",
+        "bb7f2a2a-95c3-5375-8323-51a808e945e6",
+        "bd413a7c-775a-5318-813c-0b75578f9a11",
+        "c4faf50c-8778-5540-8276-87840cc81e05",
+        "c73bc13e-6871-50c3-82d3-90283f1f54ce",
+        "d9a3db94-2629-53d0-80c6-801adc0f6641",
+        "dae93971-726c-56e5-8044-19dbd40febf7",
+        "f6a445cb-50d9-5d22-80af-e669509758b0",
+        "ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d"
+      ],
+      "unchangedRecordsByteExact": 284,
+      "previousConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-reviewed-current-source-bindings-v4/atomicity.config.json",
+      "previousRecordsSha256": "sha256:f687e9f3c617f6a98b39b347e5221db6e2309b5b99da8e66e160c12ae372f1fd",
+      "candidateRecordsSha256": "sha256:c2fcc402963b60ace9df69c8bbcafff3138718ebfc57b9c1aae6886798c0074a"
+    },
+    "memory": {
+      "ordinaryDecisions": 303,
+      "changedGoalIds": [
+        "1f5c3e82-dc4a-54cc-838e-66e4d434a7b5",
+        "2aee114f-d0d2-516f-8f95-1b72f707401d",
+        "3897fc05-a8fc-5045-8d7f-9efeabcd098d",
+        "3a6568d2-9f94-5574-8996-9ebac0bc0b3e",
+        "3ed27350-0257-5690-89d9-5acefeffcf68",
+        "537a6f0d-0cf9-5a80-82d6-618ec790e7a6",
+        "61da4203-44c1-5e60-8880-5e8a64943675",
+        "7159ae22-e6ac-54e6-8b62-9b697310cc5f",
+        "78eeb8fe-fd5c-5d21-81be-75c3990fc4b5",
+        "87e1971d-d153-59eb-81d9-e361caf83a26",
+        "b44892ea-32dc-5a91-8bba-2f422af7c6e7",
+        "bb7f2a2a-95c3-5375-8323-51a808e945e6",
+        "bd413a7c-775a-5318-813c-0b75578f9a11",
+        "c4faf50c-8778-5540-8276-87840cc81e05",
+        "c73bc13e-6871-50c3-82d3-90283f1f54ce",
+        "d9a3db94-2629-53d0-80c6-801adc0f6641",
+        "dae93971-726c-56e5-8044-19dbd40febf7",
+        "f6a445cb-50d9-5d22-80af-e669509758b0",
+        "ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d"
+      ],
+      "unchangedRecordsByteExact": 284,
+      "previousConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-reviewed-current-source-bindings-v4/memory.config.json",
+      "previousRecordsSha256": "sha256:31a243a64f99e35c0cfd277637e27bf0da8616995800bc262099e99b3bbe3ce6",
+      "candidateRecordsSha256": "sha256:bea9e9c46e3b161b4d912cf9721aa0349f1ebdbe3e25a375589c43c1831d17dd"
+    }
+  },
+  "independentReviewPaths": [
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-law-and-contract-twenty-independent-DEEN-P-AM-taxonomy-review-v2/independent-whole-Law20-DEEN-P40-AM40-cards8-taxonomy20.actual.receipt.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-law-and-contract-twenty-independent-bounded-successor-review-v3/independent-bounded-two-profile-four-case-AM-taxonomy-closure.actual.receipt.json"
+  ],
+  "nativeFingerprintMutationScope": "new physical temporary staging files only; only19 current bindings returned",
+  "independentSubstantiveReviewClaim": false,
+  "fullAMNewReviewClaim": false,
+  "humanApprovalClaimed": false,
+  "activeWrites": 0,
+  "newStrictClosures": 0,
+  "checkedFrozenOutputField": "byteExactReturnedNativeFiles",
+  "byteExactReturnedNativeFileCount": 28,
+  "frozenRootAndIsolateHashesVerifiedBeforeAndAfter": true
+}

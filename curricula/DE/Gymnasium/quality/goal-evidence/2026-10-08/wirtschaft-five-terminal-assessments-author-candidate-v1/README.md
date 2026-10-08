@@ -1,0 +1,17 @@
+# Five economics terminal assessments — author candidate, 8 October 2026
+
+The independent bootstrap audit identified five already-labelled `released` assessments that contained only a generic task request and a generic quality sentence. Their `coveredGoalIds` copied 131 readiness prerequisite IDs despite no concrete tasks. This package replaces those five placeholders with original fictional teaching materials, four subtasks per phase, substantive worked answers and task-specific 30-point rubrics. The passing threshold remains 18 points.
+
+`candidate.landscape.json.snapshot` is deliberately isolated and all five assessment packages are `draft`. No independent fachliche acceptance, active release, M7 completion, human review or trial is claimed here. The before snapshot preserves the exact authoring baseline, including the already-integrated three Layer-A route/memory fixes. The live canonical source is not modified by this package.
+
+The manifest maps each of 21 actual direct competency claims to its task and evidence criterion: E5, Q1 4, Q2 4, Q3 4, Q4 4. Two explicitly historical/current-case competencies are intentionally omitted from the coverage claim because the new tasks use fictional cases. All 303 ordinary curricular goals, existing prerequisite/containment edges, applicability, tags and scoring threshold are unchanged.
+
+The five existing readiness fronts remain as authored conservative conditions for these terminal routes. They are intentionally separate from tested coverage. Their prerequisite closures do not exactly equal complete phases, and this package makes no complete-phase claim. Successful assessment completion does not establish mastery of prerequisites or all listed ordinary goals. Independent review must explicitly judge the preserved readiness criterion as well as tasks, answers, exact coverage and rubrics.
+
+The actual primary sources consulted and the scope of each consultation are in `candidate-manifest.json`. Legal passages are short paraphrases and the case excludes complications not assessed. Original fictional data are own CC-BY-4.0 learning content, attributed to SkillPilot; external law and research remain separately sourced.
+
+`native-targeted-check.actual.json` was produced using native rule logic and the native applicability compiler, with only the economics source substituted by this isolated candidate. The draft correctly makes CQR-202 fail and CQR-203 warn solely on `reviewStatus`. All five records have no placeholder or incomplete scoring finding. In a labelled in-memory simulation that only changes those five statuses to `released`, CQR-101/102/103/104/201/202/203 all pass. That simulation is neither release nor independent review. Graph, type, existing semantic atomicity and memory checks pass unchanged. No full build or global status regeneration was run.
+
+`native-exact-delta-and-bindings.actual.json` confirms exactly five assessment changes and 303 unchanged ordinary curricular atoms using the native source-fingerprint implementation. Integrating accepted released assessments requires exactly five reviewed semantic-kind source-binding successor records. Historical bootstrap and placeholder records must remain intact. No ordinary D/P/A/M/V evidence may be refreshed merely for these assessment-only changes.
+
+Reproduce the author artifacts with `python3 build-candidate.py`; reproduce the scoped checks from the repository root with `app/node_modules/.bin/tsx .../native-quality-candidate-probe.ts` and `app/node_modules/.bin/tsx .../native-exact-delta-check.mts`.

@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "wirtschaft-eef-single-concept-keep-keep-root-synthesis-20261008-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "/root; independent synthesis of actual blind round-a and round-b records",
+  "synthesizedAt": "2026-10-08T07:14:12.000Z",
+  "batch": {
+    "batchId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1",
+    "batchManifestDigest": "sha256:4c023e5636f499c1452a131303822f73a92227db2faeaa8c312519cda06ffef0",
+    "configDigest": "sha256:5abd109cf6f04a75abe6f447e6a37f147fd83888eadf10b0ee5a74441edb8edc",
+    "bundleFingerprint": "sha256:3d09a8e72d0e6421960baa9a4663cf8c99481fc3518208c2d7203b9082fb4fde",
+    "bookDigest": "sha256:9d773999b781d9e7347bcf5196150df6fce5665261d939abb2a64bbe092b7188",
+    "reviewInputFingerprint": "sha256:fc363fbd751e8362a7fe9b0554db45953327018555c30831733f287e8afac4cf",
+    "dualSummaryDigest": "sha256:ec5cb1d42e88ca98f62dc0cc654beb7324c3911de4c3ae10afcdf21b70bac72a",
+    "canonicalLandscapeDigest": "sha256:f4e22dcad243c5449f5bf7cf852ec8d53b4171353f15cf688d75728f2498f35c"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-a",
+      "campaignDigest": "sha256:1c44f9244fbf52621a980ee48c024bd074382d8e69ee1521497c59f0de02d751",
+      "roundId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-first-pass-a",
+      "independenceGroupId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-independent-a",
+      "reviewInputFingerprint": "sha256:fc363fbd751e8362a7fe9b0554db45953327018555c30831733f287e8afac4cf",
+      "batchId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:4a9f14ad201980847b916f84b4682b8991437a542fba17efc05edd368ded7a7c",
+      "runId": "wirtschaft-e2-eef-single-round-a-codex-actual-20261008-v1",
+      "runManifestDigest": "sha256:c67e1adcf0efd13fd1eae8c594b6c0ad334ec435763cb6eedc6257e9c2623ad8",
+      "resultsDigest": "sha256:4c67a45c1cee0436a126f40ba64d153da8ede2acd82b24b78a04aca739f10951"
+    },
+    "second": {
+      "campaignId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-b",
+      "campaignDigest": "sha256:4d77de6b93d9cfd8c4baf54ff53e7f83aadfc90ce935e168dee2fbeab0420cbd",
+      "roundId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-first-pass-b",
+      "independenceGroupId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-independent-b",
+      "reviewInputFingerprint": "sha256:fc363fbd751e8362a7fe9b0554db45953327018555c30831733f287e8afac4cf",
+      "batchId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:c206282aedbd300cc7ff00c04612e0d1bd1722f5d321595146e163484a79e41f",
+      "runId": "wirtschaft-eef-single-independent-description-round-b-codex-20261008-v1",
+      "runManifestDigest": "sha256:7b11d8aaa00c1cb808cb49466e5d90221fb88301c5a051464b2c51799fe20c54",
+      "resultsDigest": "sha256:9a67bbd0943dff9eaa29130a1fa87af3fa037dccb5d0b93f15f3642bd603d62d"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "wirtschaft-eef-single-concept-keep-keep-root-synthesis-20261008-v1-decision-001",
+      "goalId": "eef95305-c811-50a4-9157-bfd4e5780c24",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7ebbd3a14a0af5386838d00eebaa22dde1ff34eb09d23b9baf6c0f3bf2519f3f",
+      "pageFingerprint": "sha256:90a94313635e405510a1bdc99273d78e58da5e81deeb4d59ea87d64310ddfc76",
+      "goalReviewContextFingerprint": "sha256:0f4a44b3b16ad39cb51742e0a237d6ae0d512d0851ca635947918020d7233653",
+      "finalText": {
+        "titleDe": "Entscheidungsbias im Konsum",
+        "titleEn": "Apply decision-bias concepts to consumption",
+        "descriptionDe": "Die lernende Person kann Konzepte wie Status-quo-Bias, Framing oder Anchoring auf Konsumentscheidungen anwenden.",
+        "descriptionEn": "The learner can apply concepts such as status-quo bias, framing, or anchoring to consumption decisions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "wirtschaft-e2-eef-single-round-a-current-eef95305-c811-50a4-9157-bfd4e5780c24",
+          "recordDigest": "sha256:74e7358ce95644b74d2837a30f6d9c2189e2e575c9ebc7d3058b6704d23474bf"
+        },
+        "second": {
+          "recordId": "wirtschaft-eef-single-independent-description-round-b-codex-20261008-v1.001",
+          "recordDigest": "sha256:db82563457095ddcd730b132f7c9c7ef3451099ff17de3d2d71f7c09b6c41b52"
+        }
+      },
+      "rationaleDe": "Die ausdrückliche Konzeptanwendung beseitigt die echte Mehrdeutigkeit. Beide frischen unabhängigen Runden erhalten alternative Biasmechanismen als integrierte Konsumanalyse; ein einzelner Kauf beweist keinen Bias. Die tatsächliche erneute Bild-/Seitenprüfung und der unabhängige ganze P-/A/M-Impact schließen die betroffenen Bindungen fachlich. Beide unabhängigen aktuellen Beschreibungsreviews sind KEEP. Beide tatsächlichen Eingänge enthalten P=null und empfehlen create; das separat fachlich geprüfte, native gebundene P-v2 bleibt E1/G1/ai_candidate/needs_human_review und wird als eigener P-Nachweis integriert.",
+      "rationaleEn": "Explicit application of concepts resolves the actual ambiguity. Both fresh independent rounds retain alternative bias mechanisms as one consumer analysis; a single purchase does not prove a bias. Actual renewed image/page inspection and independent whole-profile/A/M impact review substantively close affected bindings. Both independent current description reviews are KEEP. Both actual inputs contain P=null and recommend create; the separately substantively reviewed and natively bound P-v2 remains E1/G1/ai_candidate/needs_human_review and is integrated as separate positive evidence."
+    }
+  ],
+  "manifestFingerprint": "sha256:f8be225d59354493e62628eba6adb0904d0b0bbd9853f5fda8c55bfd30acf04a"
+}

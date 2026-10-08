@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-08T16:42:47.508889+00:00",
+  "actualResults": [
+    {
+      "name": "native-current-P20",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-current311-bounded-P2-AM2-native-successor-v1/positive-current-twenty.config.json",
+        "--mode=check"
+      ],
+      "actualExitCode": 0,
+      "stdoutSummary": "# Positive Goal Evidence Review: canonical-economics-q-business-macro-twenty-positive-author-20261008-v1\nScope: Economics20 final images and independently reviewed wholeTax/P content; machine candidate only\nConfigured goals: 20\nApproved: 0\nNeeds human review: 20\nRejected: 0\nBlocking issues: 0\n",
+      "stderr": ""
+    },
+    {
+      "name": "native-current-A311",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-current311-bounded-P2-AM2-native-successor-v1/atomicity.config.json",
+        "--mode=check"
+      ],
+      "actualExitCode": 0,
+      "stdoutSummary": "# Semantic Atomicity Review: canonical-economics-full\nScope: Canonical economics full landscape\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 311\nCurrent reviewed atomic: 311\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\n",
+      "stderr": ""
+    },
+    {
+      "name": "native-current-M311",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-current311-bounded-P2-AM2-native-successor-v1/memory.config.json",
+        "--mode=check"
+      ],
+      "actualExitCode": 0,
+      "stdoutSummary": "# Memory Card Review: canonical-economics-full\nScope: Canonical economics full landscape\nRule: memory-card-review-v1\nOrdinary atomic goals in scope: 311\nCurrent no-memory decisions: 257\nCurrent memory-required decisions: 54\nCurrent needs developer review: 0\nMemory goals in scope: 5\nTraced memory goals: 5\nKnown deck IDs: 5\nDeck files: 5\nCard rows: 52\nPrimary cards in scope: 52\nKept primary cards: 52\nCards marked remove: 0\nCards needing developer review: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\nMissing card review records: 0\nStale card review records: 0\nObsolete card review records: 0\nComposition visibility scopes: 2\nMemory-required goals checked in views: 100\nMemory-required goals without visible memory node: 0\n\nMemory-required decisions\n- Akteure im Weltfinanzsystem [667b75ad-2d20-5f22-ad57-46be5b7c53c7]: Memory-Anteil streng begrenzt auf wenige wirtschaftliche Grundbegriffe, Rechnungswesen- und Rechtsbegriffe, Modellanker, Kennzahlen, Formeln, Institutionen und Instrumente; Analyse, Rechnen, Fall",
+      "stderr": ""
+    },
+    {
+      "name": "native-current-D5-prepared",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-final-native-D5-preparation-v3/native-d-macro-five-national-checkpoint.final.batch.config.json"
+      ],
+      "actualExitCode": 0,
+      "stdoutSummary": "Standalone goal-description batch valid: wirtschaft-macro-five-national-checkpoint-current311-20261008; goals=5\n",
+      "stderr": ""
+    },
+    {
+      "name": "native-current-D5-index",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-final-native-D5-preparation-v3/native-d-macro-five-national-checkpoint.final.batch.config.json"
+      ],
+      "actualExitCode": 1,
+      "stdoutSummary": "",
+      "stderr": "Extra campaign-result artifact: independent-b-five-v1\n"
+    }
+  ],
+  "allActualNativeExitCodesZero": false,
+  "wholeLiveInputsBeforeAfterExact": true,
+  "protected6MathPhysicsBeforeAfterExact": true,
+  "noHistoricalReviewsRestarted": true,
+  "activeWrites": 0,
+  "newOrdinaryClosures": 0
+}

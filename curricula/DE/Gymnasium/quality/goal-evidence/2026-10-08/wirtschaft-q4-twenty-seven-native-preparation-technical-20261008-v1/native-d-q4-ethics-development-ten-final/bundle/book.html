@@ -1,0 +1,663 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Wirtschaftswissenschaften Q4: 10 aktuelle Lernziele zu Entwicklung und Ethik, Teil2</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Wirtschaftswissenschaften Q4: 10 aktuelle Lernziele zu Entwicklung und Ethik, Teil2</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>10 atomare Lernziele</dt><dd>6 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:9aecf913a3c500f4601d4eb206942053a49d53260c22d1c23918dc46f5d7e1fa</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:wirtschaftswissenschaften-m7-review-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-94e1500621eeee0738ad47ab" aria-label="Wirtschaftswissenschaften – kanonische M7-Prüfsicht"><a href="#goal-645e6ff8-4ddf-5858-bbae-ce20fdc966ac"><span class="toc-entry-label">Wirtschaftswissenschaften&#160;<wbr>–&#160;<wbr>kanonische&#160;<wbr>M7-Prüfsicht</span></a></h2>
+          <span class="toc-entry-meta"><span>10 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="goal:96183c48-b499-54d7-8530-578f6ff40207" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-a0dfaba9fba054a714038138" aria-label="Wirtschaftswissenschaften"><a href="#goal-645e6ff8-4ddf-5858-bbae-ce20fdc966ac"><span class="toc-entry-label">Wirtschaftswissenschaften</span></a></h3>
+          <span class="toc-entry-meta"><span>10 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:a08fcb48-f38d-5acc-b8c1-1502daaada7e" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-082d9f7769f8723ddedca2e2" aria-label="Q4 Wirtschaftsethik &amp; Entwicklung"><a href="#goal-645e6ff8-4ddf-5858-bbae-ce20fdc966ac"><span class="toc-entry-label">Q4&#160;<wbr>Wirtschaftsethik&#160;<wbr>&amp;&#160;<wbr>Entwicklung</span></a></h4>
+          <span class="toc-entry-meta"><span>10 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:d0ad0bbf-93ab-52f4-adda-9bb4e3571928" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-484e58e5a382b0c4fe3baca5" aria-label="Volkswirtschaft eines Entwicklungslandes"><a href="#goal-9b6ef4f1-229b-5560-b692-0a6b6de79de7"><span class="toc-entry-label">Volkswirtschaft&#160;<wbr>eines&#160;<wbr>Entwicklungslandes</span></a></h5>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:42b3f1db-023f-50ac-8a15-76619b8c0866" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-19077f1b40d728b8b1afdc25" aria-label="Chancen und Grenzen der Globalisierung"><a href="#goal-e7542590-40e7-5d06-99f3-f295be1f9e12"><span class="toc-entry-label">Chancen&#160;<wbr>und&#160;<wbr>Grenzen&#160;<wbr>der&#160;<wbr>Globalisierung</span></a></h5>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 5</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:169c87f8-536c-50f6-86d7-ef4567706cec" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-c1a299f220260848d77ac5f3" aria-label="Ethische Herausforderungen"><a href="#goal-645e6ff8-4ddf-5858-bbae-ce20fdc966ac"><span class="toc-entry-label">Ethische&#160;<wbr>Herausforderungen</span></a></h5>
+          <span class="toc-entry-meta"><span>4 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-645e6ff8-4ddf-5858-bbae-ce20fdc966ac" data-goal-id="645e6ff8-4ddf-5858-bbae-ce20fdc966ac" data-page-number="1" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:a08fcb48-f38d-5acc-b8c1-1502daaada7e goal:169c87f8-536c-50f6-86d7-ef4567706cec" aria-labelledby="goal-645e6ff8-4ddf-5858-bbae-ce20fdc966ac-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-645e6ff8-4ddf-5858-bbae-ce20fdc966ac-title"><a class="goal-self-link" href="#goal-645e6ff8-4ddf-5858-bbae-ce20fdc966ac">Konfliktlösungsansätze in der Wirtschaftsethik</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>645e6ff8-4ddf-5858-bbae-ce20fdc966ac</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-082d9f7769f8723ddedca2e2">Q4 Wirtschaftsethik &amp; Entwicklung</a></li><li><a href="#chapter-c1a299f220260848d77ac5f3">Ethische Herausforderungen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c3e851c2649a7f52589394a8dc6fb42ee87ea39249063e54923a09d5262e618c" data-rendered-digest="sha256:0340da03a2567a86974e687ffc000b104d4bf04349db4537f9ea44c5616d78b8" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/645e6ff8-4ddf-5858-bbae-ce20fdc966ac/645e6ff8-4ddf-5858-bbae-ce20fdc966ac.png" alt="Eine problematische Arbeitssituation wird mit Verhandlungen, Regeln und möglichen Abhilfen verbunden. Kosten, Zuständigkeit, Dauer und Grenzen bleiben offene Prüfungsfragen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-645e6ff8-4ddf-5858-bbae-ce20fdc966ac-description-heading">
+        <p class="section-heading" id="goal-645e6ff8-4ddf-5858-bbae-ce20fdc966ac-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann ethische Konfliktlösungen und Governance-Modelle auf Fallstudien anwenden.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-645e6ff8-4ddf-5858-bbae-ce20fdc966ac-requires-heading">
+          <p class="section-heading" id="goal-645e6ff8-4ddf-5858-bbae-ce20fdc966ac-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-645e6ff8-4ddf-5858-bbae-ce20fdc966ac-reverse-heading">
+          <p class="section-heading" id="goal-645e6ff8-4ddf-5858-bbae-ce20fdc966ac-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-645e6ff8-4ddf-5858-bbae-ce20fdc966ac-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-645e6ff8-4ddf-5858-bbae-ce20fdc966ac-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-dc55f829-9c65-5bde-952c-47f5eacdeb5f" rel="noreferrer noopener"><span>Globale Ethik und Governance</span> <code>dc55f829-9c65-5bde-952c-47f5eacdeb5f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-645e6ff8-4ddf-5858-bbae-ce20fdc966ac-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-645e6ff8-4ddf-5858-bbae-ce20fdc966ac-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-44fb56bb-7b5a-4b34-9ca4-c4052f94da89" rel="noreferrer noopener"><span>Q4: Rohstoffabhängigkeit, Mikrofinanzwirkung und faire Governance</span> <code>44fb56bb-7b5a-4b34-9ca4-c4052f94da89</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 10</span>
+      <span>Buch-Digest <code>sha256:9aecf913a3c500f4601d4eb206942053a49d53260c22d1c23918dc46f5d7e1fa</code></span>
+      <span>Ziel-Fingerprint <code>sha256:19bd359366f6e354d269f348967d265337173962a6dce5064a3a1b73e9756d2f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q4-ethics-development-ten-current303-final-author-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=645e6ff8-4ddf-5858-bbae-ce20fdc966ac&amp;goalFingerprint=sha256%3A19bd359366f6e354d269f348967d265337173962a6dce5064a3a1b73e9756d2f&amp;pageFingerprint=sha256%3A861ba15d7bfd083632a5be55f1357d1bf69015bc724095318f4360e847de736f&amp;bookDigest=sha256%3A9aecf913a3c500f4601d4eb206942053a49d53260c22d1c23918dc46f5d7e1fa&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9b6ef4f1-229b-5560-b692-0a6b6de79de7" data-goal-id="9b6ef4f1-229b-5560-b692-0a6b6de79de7" data-page-number="2" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:a08fcb48-f38d-5acc-b8c1-1502daaada7e goal:d0ad0bbf-93ab-52f4-adda-9bb4e3571928" aria-labelledby="goal-9b6ef4f1-229b-5560-b692-0a6b6de79de7-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9b6ef4f1-229b-5560-b692-0a6b6de79de7-title"><a class="goal-self-link" href="#goal-9b6ef4f1-229b-5560-b692-0a6b6de79de7">Rohstofffluch und Diversifizierung</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9b6ef4f1-229b-5560-b692-0a6b6de79de7</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-082d9f7769f8723ddedca2e2">Q4 Wirtschaftsethik &amp; Entwicklung</a></li><li><a href="#chapter-484e58e5a382b0c4fe3baca5">Volkswirtschaft eines Entwicklungslandes</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:31041a40711426a096a82488c080a5793a71da2f7bbe5ebffa4a05a7e05541df" data-rendered-digest="sha256:f7810a0d1f3f575252e58b0aaa4623a935bfa1306383d40f8313963c69b0f049" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/9b6ef4f1-229b-5560-b692-0a6b6de79de7/9b6ef4f1-229b-5560-b692-0a6b6de79de7.png" alt="Rohstoffgewinnung und Einnahmen stehen möglichen Risiken gegenüber. Daneben werden Produktion, Bildung, Energie und andere Diversifizierungswege als offene Optionen betrachtet.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9b6ef4f1-229b-5560-b692-0a6b6de79de7-description-heading">
+        <p class="section-heading" id="goal-9b6ef4f1-229b-5560-b692-0a6b6de79de7-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Rohstofffluch erklären und Diversifizierungsstrategien diskutieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9b6ef4f1-229b-5560-b692-0a6b6de79de7-requires-heading">
+          <p class="section-heading" id="goal-9b6ef4f1-229b-5560-b692-0a6b6de79de7-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-9b6ef4f1-229b-5560-b692-0a6b6de79de7-reverse-heading">
+          <p class="section-heading" id="goal-9b6ef4f1-229b-5560-b692-0a6b6de79de7-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-9b6ef4f1-229b-5560-b692-0a6b6de79de7-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9b6ef4f1-229b-5560-b692-0a6b6de79de7-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-f1f73ebe-286a-52e8-a2e1-4383ece6e9ec" rel="noreferrer noopener"><span>Sektorstrukturen eines Entwicklungslandes</span> <code>f1f73ebe-286a-52e8-a2e1-4383ece6e9ec</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-9b6ef4f1-229b-5560-b692-0a6b6de79de7-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9b6ef4f1-229b-5560-b692-0a6b6de79de7-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-44fb56bb-7b5a-4b34-9ca4-c4052f94da89" rel="noreferrer noopener"><span>Q4: Rohstoffabhängigkeit, Mikrofinanzwirkung und faire Governance</span> <code>44fb56bb-7b5a-4b34-9ca4-c4052f94da89</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 10</span>
+      <span>Buch-Digest <code>sha256:9aecf913a3c500f4601d4eb206942053a49d53260c22d1c23918dc46f5d7e1fa</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e249641450d60f7c4ad00c48c827d2f771201977cd15cd09f7f369f8e80297de</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q4-ethics-development-ten-current303-final-author-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=9b6ef4f1-229b-5560-b692-0a6b6de79de7&amp;goalFingerprint=sha256%3Ae249641450d60f7c4ad00c48c827d2f771201977cd15cd09f7f369f8e80297de&amp;pageFingerprint=sha256%3A6d8f00414723395712eccdd28b0607fd8d95988b1f007b17d553992a4820f179&amp;bookDigest=sha256%3A9aecf913a3c500f4601d4eb206942053a49d53260c22d1c23918dc46f5d7e1fa&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e5560c43-c25a-5356-a282-c602945219ae" data-goal-id="e5560c43-c25a-5356-a282-c602945219ae" data-page-number="3" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:a08fcb48-f38d-5acc-b8c1-1502daaada7e goal:d0ad0bbf-93ab-52f4-adda-9bb4e3571928" aria-labelledby="goal-e5560c43-c25a-5356-a282-c602945219ae-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e5560c43-c25a-5356-a282-c602945219ae-title"><a class="goal-self-link" href="#goal-e5560c43-c25a-5356-a282-c602945219ae">Mikrofinanz und soziale Wirkung</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e5560c43-c25a-5356-a282-c602945219ae</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-082d9f7769f8723ddedca2e2">Q4 Wirtschaftsethik &amp; Entwicklung</a></li><li><a href="#chapter-484e58e5a382b0c4fe3baca5">Volkswirtschaft eines Entwicklungslandes</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:24f5e588ee0c2d1181a8d61c30cd1bb162108897efb860141e98e0a43c377d51" data-rendered-digest="sha256:e4d47a47f2e32d0db012ce68959a0e98a9188b21bd38fa8c840e54a0205efead" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/e5560c43-c25a-5356-a282-c602945219ae/e5560c43-c25a-5356-a282-c602945219ae.png" alt="Ein Mikrokredit fließt zum selben möglichen Kreditnehmer, Rückzahlung mit Zinsen zurück zum Kreditgeber. Zugang, Schuldenrisiken und mögliche Wirkungen werden als Fragen dargestellt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e5560c43-c25a-5356-a282-c602945219ae-description-heading">
+        <p class="section-heading" id="goal-e5560c43-c25a-5356-a282-c602945219ae-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Mikrofinanzmodelle und deren Entwicklungswirkung bewerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e5560c43-c25a-5356-a282-c602945219ae-requires-heading">
+          <p class="section-heading" id="goal-e5560c43-c25a-5356-a282-c602945219ae-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-e5560c43-c25a-5356-a282-c602945219ae-reverse-heading">
+          <p class="section-heading" id="goal-e5560c43-c25a-5356-a282-c602945219ae-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e5560c43-c25a-5356-a282-c602945219ae-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e5560c43-c25a-5356-a282-c602945219ae-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-543bf91f-f6c6-5b1b-ba9e-43de321d8c7f" rel="noreferrer noopener"><span>Armut und Entwicklung</span> <code>543bf91f-f6c6-5b1b-ba9e-43de321d8c7f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-e5560c43-c25a-5356-a282-c602945219ae-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e5560c43-c25a-5356-a282-c602945219ae-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-44fb56bb-7b5a-4b34-9ca4-c4052f94da89" rel="noreferrer noopener"><span>Q4: Rohstoffabhängigkeit, Mikrofinanzwirkung und faire Governance</span> <code>44fb56bb-7b5a-4b34-9ca4-c4052f94da89</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 10</span>
+      <span>Buch-Digest <code>sha256:9aecf913a3c500f4601d4eb206942053a49d53260c22d1c23918dc46f5d7e1fa</code></span>
+      <span>Ziel-Fingerprint <code>sha256:db95adc027dd5f3fc9da5fc02e9b67b3ad14669ee1f6ae952ec6a2835835a70b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q4-ethics-development-ten-current303-final-author-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=e5560c43-c25a-5356-a282-c602945219ae&amp;goalFingerprint=sha256%3Adb95adc027dd5f3fc9da5fc02e9b67b3ad14669ee1f6ae952ec6a2835835a70b&amp;pageFingerprint=sha256%3Ace594051afbcafb8d2cb9bf5a7c25d133639ca3a90089f27b279f3f27e62c4cb&amp;bookDigest=sha256%3A9aecf913a3c500f4601d4eb206942053a49d53260c22d1c23918dc46f5d7e1fa&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b8c7458a-7642-53bf-b20e-d2a715ff6ed7" data-goal-id="b8c7458a-7642-53bf-b20e-d2a715ff6ed7" data-page-number="4" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:a08fcb48-f38d-5acc-b8c1-1502daaada7e goal:d0ad0bbf-93ab-52f4-adda-9bb4e3571928" aria-labelledby="goal-b8c7458a-7642-53bf-b20e-d2a715ff6ed7-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b8c7458a-7642-53bf-b20e-d2a715ff6ed7-title"><a class="goal-self-link" href="#goal-b8c7458a-7642-53bf-b20e-d2a715ff6ed7">Wirksamkeit von Entwicklungsprogrammen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b8c7458a-7642-53bf-b20e-d2a715ff6ed7</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-082d9f7769f8723ddedca2e2">Q4 Wirtschaftsethik &amp; Entwicklung</a></li><li><a href="#chapter-484e58e5a382b0c4fe3baca5">Volkswirtschaft eines Entwicklungslandes</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:edc82b0fe0a03dc6c0ddce45b48a00f21d57bbb275e4d771d04be653027b10c6" data-rendered-digest="sha256:8cda05ef9598faa661189bcc7fee01d285a8d42566bdf7188ff29204846bb566" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/b8c7458a-7642-53bf-b20e-d2a715ff6ed7/b8c7458a-7642-53bf-b20e-d2a715ff6ed7.png" alt="Eine Person untersucht Aufwand, erbrachte Leistungen und offene Wirkungsfragen eines Entwicklungsprogramms. Zwei hypothetische Alternativen mit und ohne Programm zeigen dieselbe nachdenkliche Frau und jeweils eine Pflanze mit Fragezeichen; eine Lupe steht für den Vergleich von Nachweisen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b8c7458a-7642-53bf-b20e-d2a715ff6ed7-description-heading">
+        <p class="section-heading" id="goal-b8c7458a-7642-53bf-b20e-d2a715ff6ed7-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Wirksamkeit internationaler Entwicklungsprogramme kritisch diskutieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b8c7458a-7642-53bf-b20e-d2a715ff6ed7-requires-heading">
+          <p class="section-heading" id="goal-b8c7458a-7642-53bf-b20e-d2a715ff6ed7-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-b8c7458a-7642-53bf-b20e-d2a715ff6ed7-reverse-heading">
+          <p class="section-heading" id="goal-b8c7458a-7642-53bf-b20e-d2a715ff6ed7-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-b8c7458a-7642-53bf-b20e-d2a715ff6ed7-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b8c7458a-7642-53bf-b20e-d2a715ff6ed7-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-04809186-3f65-579d-b300-af9ed3e100c1" rel="noreferrer noopener"><span>Entwicklungsstrategien bewerten</span> <code>04809186-3f65-579d-b300-af9ed3e100c1</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-b8c7458a-7642-53bf-b20e-d2a715ff6ed7-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b8c7458a-7642-53bf-b20e-d2a715ff6ed7-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-44fb56bb-7b5a-4b34-9ca4-c4052f94da89" rel="noreferrer noopener"><span>Q4: Rohstoffabhängigkeit, Mikrofinanzwirkung und faire Governance</span> <code>44fb56bb-7b5a-4b34-9ca4-c4052f94da89</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 10</span>
+      <span>Buch-Digest <code>sha256:9aecf913a3c500f4601d4eb206942053a49d53260c22d1c23918dc46f5d7e1fa</code></span>
+      <span>Ziel-Fingerprint <code>sha256:de7c4312340828e7a519b14d60d0a335b43958da31149a1aafca97e404a2ce98</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q4-ethics-development-ten-current303-final-author-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=b8c7458a-7642-53bf-b20e-d2a715ff6ed7&amp;goalFingerprint=sha256%3Ade7c4312340828e7a519b14d60d0a335b43958da31149a1aafca97e404a2ce98&amp;pageFingerprint=sha256%3Ac842085a780cc74486a4b6341e2f62f4ef2f6e3585f8d0a2ba86f0d2b6326463&amp;bookDigest=sha256%3A9aecf913a3c500f4601d4eb206942053a49d53260c22d1c23918dc46f5d7e1fa&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e7542590-40e7-5d06-99f3-f295be1f9e12" data-goal-id="e7542590-40e7-5d06-99f3-f295be1f9e12" data-page-number="5" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:a08fcb48-f38d-5acc-b8c1-1502daaada7e goal:42b3f1db-023f-50ac-8a15-76619b8c0866" aria-labelledby="goal-e7542590-40e7-5d06-99f3-f295be1f9e12-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e7542590-40e7-5d06-99f3-f295be1f9e12-title"><a class="goal-self-link" href="#goal-e7542590-40e7-5d06-99f3-f295be1f9e12">Global Governance und Institutionen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e7542590-40e7-5d06-99f3-f295be1f9e12</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-082d9f7769f8723ddedca2e2">Q4 Wirtschaftsethik &amp; Entwicklung</a></li><li><a href="#chapter-19077f1b40d728b8b1afdc25">Chancen und Grenzen der Globalisierung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:77590c53499a2955e090882e8fe278aa21f4d4683768e76bb9c281d4c1958432" data-rendered-digest="sha256:88d5337b3deeb072a40cedac57fd8397195b45941fad02cf15331982c5b995b9" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/e7542590-40e7-5d06-99f3-f295be1f9e12/e7542590-40e7-5d06-99f3-f295be1f9e12.png" alt="Vier große Tafeln stellen WTO-Handelsregeln, IWF-Unterstützung bei Zahlungsbilanzkrisen, Weltbank-Entwicklungsfinanzierung und UN-Zusammenarbeit mit jeweils begrenzter Wirkung dar. Vier Lernende beraten an einer Weltkugel; die Weltbank-Tafel nennt die Abhängigkeit von der Umsetzung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e7542590-40e7-5d06-99f3-f295be1f9e12-description-heading">
+        <p class="section-heading" id="goal-e7542590-40e7-5d06-99f3-f295be1f9e12-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Rolle und Grenzen internationaler Institutionen (WTO, IWF, Weltbank, UN) einordnen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e7542590-40e7-5d06-99f3-f295be1f9e12-requires-heading">
+          <p class="section-heading" id="goal-e7542590-40e7-5d06-99f3-f295be1f9e12-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-e7542590-40e7-5d06-99f3-f295be1f9e12-reverse-heading">
+          <p class="section-heading" id="goal-e7542590-40e7-5d06-99f3-f295be1f9e12-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e7542590-40e7-5d06-99f3-f295be1f9e12-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e7542590-40e7-5d06-99f3-f295be1f9e12-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-f440efea-9d86-589f-8ff9-18e8d3b2efd3" rel="noreferrer noopener"><span>Globale Governance-Strukturen</span> <code>f440efea-9d86-589f-8ff9-18e8d3b2efd3</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-e7542590-40e7-5d06-99f3-f295be1f9e12-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e7542590-40e7-5d06-99f3-f295be1f9e12-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-44fb56bb-7b5a-4b34-9ca4-c4052f94da89" rel="noreferrer noopener"><span>Q4: Rohstoffabhängigkeit, Mikrofinanzwirkung und faire Governance</span> <code>44fb56bb-7b5a-4b34-9ca4-c4052f94da89</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 10</span>
+      <span>Buch-Digest <code>sha256:9aecf913a3c500f4601d4eb206942053a49d53260c22d1c23918dc46f5d7e1fa</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c58083731aab6f6ae129a76f10c544c789b7629eb0727c3b3a9d0af078765983</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q4-ethics-development-ten-current303-final-author-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=e7542590-40e7-5d06-99f3-f295be1f9e12&amp;goalFingerprint=sha256%3Ac58083731aab6f6ae129a76f10c544c789b7629eb0727c3b3a9d0af078765983&amp;pageFingerprint=sha256%3Aad8103b3678e645a2cd5b0dc3c66c3c86ef656694afe72fce248b961949ec684&amp;bookDigest=sha256%3A9aecf913a3c500f4601d4eb206942053a49d53260c22d1c23918dc46f5d7e1fa&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-13705b9f-9623-500b-80ba-4574b753a29c" data-goal-id="13705b9f-9623-500b-80ba-4574b753a29c" data-page-number="6" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:a08fcb48-f38d-5acc-b8c1-1502daaada7e goal:42b3f1db-023f-50ac-8a15-76619b8c0866" aria-labelledby="goal-13705b9f-9623-500b-80ba-4574b753a29c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-13705b9f-9623-500b-80ba-4574b753a29c-title"><a class="goal-self-link" href="#goal-13705b9f-9623-500b-80ba-4574b753a29c">Globale Nachhaltigkeitsgovernance</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>13705b9f-9623-500b-80ba-4574b753a29c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-082d9f7769f8723ddedca2e2">Q4 Wirtschaftsethik &amp; Entwicklung</a></li><li><a href="#chapter-19077f1b40d728b8b1afdc25">Chancen und Grenzen der Globalisierung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:272d099312f81179fbcd1501e4de3ad030576f38edfb02b82089f41e4dda1ef3" data-rendered-digest="sha256:7818db08da2206242a91b117fc919b6643cfcf71e57562d6a32966f535ff85af" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/13705b9f-9623-500b-80ba-4574b753a29c/13705b9f-9623-500b-80ba-4574b753a29c.png" alt="Vier Personen beraten über das Pariser Klimaabkommen und Nachhaltigkeitsziele. Große Symbole verbinden Ziele, Mittel und offene Umsetzungsfragen; eigene Motive zeigen beispielhaft Armut, Bildung, Umwelt und Zusammenarbeit neben Finanzierung und Evidenz.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-13705b9f-9623-500b-80ba-4574b753a29c-description-heading">
+        <p class="section-heading" id="goal-13705b9f-9623-500b-80ba-4574b753a29c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann internationale Klima- und Nachhaltigkeitsvereinbarungen (SDGs, Paris) ökonomisch bewerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-13705b9f-9623-500b-80ba-4574b753a29c-requires-heading">
+          <p class="section-heading" id="goal-13705b9f-9623-500b-80ba-4574b753a29c-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-13705b9f-9623-500b-80ba-4574b753a29c-reverse-heading">
+          <p class="section-heading" id="goal-13705b9f-9623-500b-80ba-4574b753a29c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-13705b9f-9623-500b-80ba-4574b753a29c-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-13705b9f-9623-500b-80ba-4574b753a29c-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-e21158e7-3bc3-51f2-887f-9eb5a8dd6243" rel="noreferrer noopener"><span>Fair-Trade und Handelsregime</span> <code>e21158e7-3bc3-51f2-887f-9eb5a8dd6243</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-13705b9f-9623-500b-80ba-4574b753a29c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-13705b9f-9623-500b-80ba-4574b753a29c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-44fb56bb-7b5a-4b34-9ca4-c4052f94da89" rel="noreferrer noopener"><span>Q4: Rohstoffabhängigkeit, Mikrofinanzwirkung und faire Governance</span> <code>44fb56bb-7b5a-4b34-9ca4-c4052f94da89</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 10</span>
+      <span>Buch-Digest <code>sha256:9aecf913a3c500f4601d4eb206942053a49d53260c22d1c23918dc46f5d7e1fa</code></span>
+      <span>Ziel-Fingerprint <code>sha256:15750d4e69f34da2ef04ae7fff8109b58749ccacfa1156fcd277d1b88b38a593</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q4-ethics-development-ten-current303-final-author-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=13705b9f-9623-500b-80ba-4574b753a29c&amp;goalFingerprint=sha256%3A15750d4e69f34da2ef04ae7fff8109b58749ccacfa1156fcd277d1b88b38a593&amp;pageFingerprint=sha256%3A57dacb9f78382a2d0d7fd2615f34a851ac5c382c27ff92c680cb90a755461a7f&amp;bookDigest=sha256%3A9aecf913a3c500f4601d4eb206942053a49d53260c22d1c23918dc46f5d7e1fa&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de" data-goal-id="c9847c36-7a66-5cbd-9aee-60f71a8440de" data-page-number="7" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:a08fcb48-f38d-5acc-b8c1-1502daaada7e goal:42b3f1db-023f-50ac-8a15-76619b8c0866" aria-labelledby="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-title"><a class="goal-self-link" href="#goal-c9847c36-7a66-5cbd-9aee-60f71a8440de">Geoökonomie und Machtprojektion</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c9847c36-7a66-5cbd-9aee-60f71a8440de</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-082d9f7769f8723ddedca2e2">Q4 Wirtschaftsethik &amp; Entwicklung</a></li><li><a href="#chapter-19077f1b40d728b8b1afdc25">Chancen und Grenzen der Globalisierung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:83ebb97677ea2fa30c56f5a433d4a048a8499d43f99721161e9eb6501ac258db" data-rendered-digest="sha256:b5ea2e0c57390c2355daa2b3bd7eda97f0e57c18ea4914509f57f88ee967d86e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/c9847c36-7a66-5cbd-9aee-60f71a8440de/c9847c36-7a66-5cbd-9aee-60f71a8440de.png" alt="Drei Personen wägen wirtschaftliche Chancen gegen Sicherheit und Resilienz ab. Zwei große Bildfelder unterscheiden beschränkten Marktzugang von einer Investitionsprüfung mit den möglichen Ergebnissen Zulassen, Auflagen und Ablehnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-description-heading">
+        <p class="section-heading" id="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann geoökonomische Strategien (z. B. Maßnahmen an Märkten, Investitionsscreening) analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-requires-heading">
+          <p class="section-heading" id="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-reverse-heading">
+          <p class="section-heading" id="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2" rel="noreferrer noopener"><span>Rolle von NGOs</span> <code>2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c9847c36-7a66-5cbd-9aee-60f71a8440de-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-44fb56bb-7b5a-4b34-9ca4-c4052f94da89" rel="noreferrer noopener"><span>Q4: Rohstoffabhängigkeit, Mikrofinanzwirkung und faire Governance</span> <code>44fb56bb-7b5a-4b34-9ca4-c4052f94da89</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 10</span>
+      <span>Buch-Digest <code>sha256:9aecf913a3c500f4601d4eb206942053a49d53260c22d1c23918dc46f5d7e1fa</code></span>
+      <span>Ziel-Fingerprint <code>sha256:44e819e1c6cbc33d13ab1e5a7491fdc29a03abba75292da4723189dbfb464629</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q4-ethics-development-ten-current303-final-author-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=c9847c36-7a66-5cbd-9aee-60f71a8440de&amp;goalFingerprint=sha256%3A44e819e1c6cbc33d13ab1e5a7491fdc29a03abba75292da4723189dbfb464629&amp;pageFingerprint=sha256%3Aaaaf06f6548ccf8e9b18bc794ec2a2115f355bcc9ec3044979e5fd303d53ecfb&amp;bookDigest=sha256%3A9aecf913a3c500f4601d4eb206942053a49d53260c22d1c23918dc46f5d7e1fa&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-36ebee6c-ec32-53e2-a5da-f50185e61a55" data-goal-id="36ebee6c-ec32-53e2-a5da-f50185e61a55" data-page-number="8" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:a08fcb48-f38d-5acc-b8c1-1502daaada7e goal:169c87f8-536c-50f6-86d7-ef4567706cec" aria-labelledby="goal-36ebee6c-ec32-53e2-a5da-f50185e61a55-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-36ebee6c-ec32-53e2-a5da-f50185e61a55-title"><a class="goal-self-link" href="#goal-36ebee6c-ec32-53e2-a5da-f50185e61a55">Unternehmensverantwortung und Lieferkettengesetze</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>36ebee6c-ec32-53e2-a5da-f50185e61a55</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-082d9f7769f8723ddedca2e2">Q4 Wirtschaftsethik &amp; Entwicklung</a></li><li><a href="#chapter-c1a299f220260848d77ac5f3">Ethische Herausforderungen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d7ce07d49651689210ab15572758c633d29894d335da70110bf722cb6f939826" data-rendered-digest="sha256:4f364181ac763cd11f0a79226e12c7b7df08816b1a033d321426d531cea68a94" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/36ebee6c-ec32-53e2-a5da-f50185e61a55/36ebee6c-ec32-53e2-a5da-f50185e61a55.png" alt="Freiwilliges Engagement, Sorgfaltspflichten und offene Wirkungsfragen stehen nebeneinander. Eine Lieferkette verbindet Arbeitsorte, Transport und Verkauf; Menschen fragen nach Anwendungsbereich und tatsächlichen Folgen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-36ebee6c-ec32-53e2-a5da-f50185e61a55-description-heading">
+        <p class="section-heading" id="goal-36ebee6c-ec32-53e2-a5da-f50185e61a55-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Corporate-Responsibility-Konzepte und Lieferkettengesetze bewerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-36ebee6c-ec32-53e2-a5da-f50185e61a55-requires-heading">
+          <p class="section-heading" id="goal-36ebee6c-ec32-53e2-a5da-f50185e61a55-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-36ebee6c-ec32-53e2-a5da-f50185e61a55-reverse-heading">
+          <p class="section-heading" id="goal-36ebee6c-ec32-53e2-a5da-f50185e61a55-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-36ebee6c-ec32-53e2-a5da-f50185e61a55-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-36ebee6c-ec32-53e2-a5da-f50185e61a55-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-abb13ea9-615f-5d71-92f9-140ff8b4cbfa" rel="noreferrer noopener"><span>Unternehmensethik und CSR</span> <code>abb13ea9-615f-5d71-92f9-140ff8b4cbfa</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-36ebee6c-ec32-53e2-a5da-f50185e61a55-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-36ebee6c-ec32-53e2-a5da-f50185e61a55-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-44fb56bb-7b5a-4b34-9ca4-c4052f94da89" rel="noreferrer noopener"><span>Q4: Rohstoffabhängigkeit, Mikrofinanzwirkung und faire Governance</span> <code>44fb56bb-7b5a-4b34-9ca4-c4052f94da89</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 10</span>
+      <span>Buch-Digest <code>sha256:9aecf913a3c500f4601d4eb206942053a49d53260c22d1c23918dc46f5d7e1fa</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c9dce6f95081d84c44801ca12a8b24c685cf34f6ca98fa7ad8aaa02c78719876</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q4-ethics-development-ten-current303-final-author-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=36ebee6c-ec32-53e2-a5da-f50185e61a55&amp;goalFingerprint=sha256%3Ac9dce6f95081d84c44801ca12a8b24c685cf34f6ca98fa7ad8aaa02c78719876&amp;pageFingerprint=sha256%3A1d393f4f2dad6e9529934b463fb649e4fe78be9cd86b7985316d4b109bf8c492&amp;bookDigest=sha256%3A9aecf913a3c500f4601d4eb206942053a49d53260c22d1c23918dc46f5d7e1fa&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9df66a0b-eb44-5668-b661-4f09e1d2399f" data-goal-id="9df66a0b-eb44-5668-b661-4f09e1d2399f" data-page-number="9" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:a08fcb48-f38d-5acc-b8c1-1502daaada7e goal:169c87f8-536c-50f6-86d7-ef4567706cec" aria-labelledby="goal-9df66a0b-eb44-5668-b661-4f09e1d2399f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9df66a0b-eb44-5668-b661-4f09e1d2399f-title"><a class="goal-self-link" href="#goal-9df66a0b-eb44-5668-b661-4f09e1d2399f">Impact Investing und ESG</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9df66a0b-eb44-5668-b661-4f09e1d2399f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-082d9f7769f8723ddedca2e2">Q4 Wirtschaftsethik &amp; Entwicklung</a></li><li><a href="#chapter-c1a299f220260848d77ac5f3">Ethische Herausforderungen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:0be66d63ab0c8cb1e295f261595de8170573c558b8bcda6f8cd1d34a78fb7452" data-rendered-digest="sha256:a44b664075596a41a92cd565d818e8f09f86d290590a92f72aa76043efd15db5" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/9df66a0b-eb44-5668-b661-4f09e1d2399f/9df66a0b-eb44-5668-b661-4f09e1d2399f.png" alt="Drei große Felder unterscheiden ESG-Kriterien, beabsichtigte Wirkung und Nachweise. Eine Person fragt nach Messung, Grenzen und möglichen anderen Ursachen beobachteter Veränderungen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9df66a0b-eb44-5668-b661-4f09e1d2399f-description-heading">
+        <p class="section-heading" id="goal-9df66a0b-eb44-5668-b661-4f09e1d2399f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann ESG-Kriterien und Impact-Investing-Ansätze kritisch prüfen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9df66a0b-eb44-5668-b661-4f09e1d2399f-requires-heading">
+          <p class="section-heading" id="goal-9df66a0b-eb44-5668-b661-4f09e1d2399f-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-9df66a0b-eb44-5668-b661-4f09e1d2399f-reverse-heading">
+          <p class="section-heading" id="goal-9df66a0b-eb44-5668-b661-4f09e1d2399f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-9df66a0b-eb44-5668-b661-4f09e1d2399f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9df66a0b-eb44-5668-b661-4f09e1d2399f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-c014b11e-66ba-58a6-93f8-b4526d20e3ab" rel="noreferrer noopener"><span>Menschenrechte und Wirtschaftsethik</span> <code>c014b11e-66ba-58a6-93f8-b4526d20e3ab</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-9df66a0b-eb44-5668-b661-4f09e1d2399f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9df66a0b-eb44-5668-b661-4f09e1d2399f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-44fb56bb-7b5a-4b34-9ca4-c4052f94da89" rel="noreferrer noopener"><span>Q4: Rohstoffabhängigkeit, Mikrofinanzwirkung und faire Governance</span> <code>44fb56bb-7b5a-4b34-9ca4-c4052f94da89</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 10</span>
+      <span>Buch-Digest <code>sha256:9aecf913a3c500f4601d4eb206942053a49d53260c22d1c23918dc46f5d7e1fa</code></span>
+      <span>Ziel-Fingerprint <code>sha256:289eed54f74f513583056234423d68afa8119377c8e1cef324d00523c53df0a8</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q4-ethics-development-ten-current303-final-author-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=9df66a0b-eb44-5668-b661-4f09e1d2399f&amp;goalFingerprint=sha256%3A289eed54f74f513583056234423d68afa8119377c8e1cef324d00523c53df0a8&amp;pageFingerprint=sha256%3A537436938637f3d2cd56e54fd4ac42faf9d477e48bbc3e35e3c2e33677f9be9a&amp;bookDigest=sha256%3A9aecf913a3c500f4601d4eb206942053a49d53260c22d1c23918dc46f5d7e1fa&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-7a55332e-7c1d-531a-8679-e18592e74ea2" data-goal-id="7a55332e-7c1d-531a-8679-e18592e74ea2" data-page-number="10" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:a08fcb48-f38d-5acc-b8c1-1502daaada7e goal:169c87f8-536c-50f6-86d7-ef4567706cec" aria-labelledby="goal-7a55332e-7c1d-531a-8679-e18592e74ea2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-7a55332e-7c1d-531a-8679-e18592e74ea2-title"><a class="goal-self-link" href="#goal-7a55332e-7c1d-531a-8679-e18592e74ea2">Technologie, Daten und Ethik</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>7a55332e-7c1d-531a-8679-e18592e74ea2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-082d9f7769f8723ddedca2e2">Q4 Wirtschaftsethik &amp; Entwicklung</a></li><li><a href="#chapter-c1a299f220260848d77ac5f3">Ethische Herausforderungen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b3f7a00db667ecf22c30d5cbdf172600576f9fc60bdd2ad35dcd91fb2e0816b6" data-rendered-digest="sha256:c10b8476e94566697d3b077f61622295a57ce1d75511964a32761f427d9c61fc" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/7a55332e-7c1d-531a-8679-e18592e74ea2/7a55332e-7c1d-531a-8679-e18592e74ea2.png" alt="Menschen betrachten einen abstrakten KI-Helfer mit Datenströmen. Große Symbole fragen nach Datenkontrolle, Fairness und Verantwortung; ein Gesundheitsgebäude trägt ein türkisfarbenes Herz als neutrales Zeichen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-7a55332e-7c1d-531a-8679-e18592e74ea2-description-heading">
+        <p class="section-heading" id="goal-7a55332e-7c1d-531a-8679-e18592e74ea2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann datengetriebene Geschäftsmodelle und KI-Anwendungen ethisch bewerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-7a55332e-7c1d-531a-8679-e18592e74ea2-requires-heading">
+          <p class="section-heading" id="goal-7a55332e-7c1d-531a-8679-e18592e74ea2-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-7a55332e-7c1d-531a-8679-e18592e74ea2-reverse-heading">
+          <p class="section-heading" id="goal-7a55332e-7c1d-531a-8679-e18592e74ea2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-7a55332e-7c1d-531a-8679-e18592e74ea2-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7a55332e-7c1d-531a-8679-e18592e74ea2-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-fed15db6-e700-514d-a65e-6c2a34f1c81a" rel="noreferrer noopener"><span>Entwicklungsindikatoren vertiefen</span> <code>fed15db6-e700-514d-a65e-6c2a34f1c81a</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-7a55332e-7c1d-531a-8679-e18592e74ea2-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7a55332e-7c1d-531a-8679-e18592e74ea2-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-44fb56bb-7b5a-4b34-9ca4-c4052f94da89" rel="noreferrer noopener"><span>Q4: Rohstoffabhängigkeit, Mikrofinanzwirkung und faire Governance</span> <code>44fb56bb-7b5a-4b34-9ca4-c4052f94da89</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 10</span>
+      <span>Buch-Digest <code>sha256:9aecf913a3c500f4601d4eb206942053a49d53260c22d1c23918dc46f5d7e1fa</code></span>
+      <span>Ziel-Fingerprint <code>sha256:212bb5208ed0998e977cc3dfaff950c2f8122ca0bae1ea161f185a83e4042e50</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q4-ethics-development-ten-current303-final-author-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=7a55332e-7c1d-531a-8679-e18592e74ea2&amp;goalFingerprint=sha256%3A212bb5208ed0998e977cc3dfaff950c2f8122ca0bae1ea161f185a83e4042e50&amp;pageFingerprint=sha256%3A7a708f783c114eb1b8df7c966694c18e3fe993108c2646e8ebdbc9647dd4c954&amp;bookDigest=sha256%3A9aecf913a3c500f4601d4eb206942053a49d53260c22d1c23918dc46f5d7e1fa&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

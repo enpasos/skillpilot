@@ -1,0 +1,997 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Wirtschaftswissenschaften E2: 20 aktuelle Lernziele zu Wachstum und Lebensqualität</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Wirtschaftswissenschaften E2: 20 aktuelle Lernziele zu Wachstum und Lebensqualität</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>20 atomare Lernziele</dt><dd>3 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:eeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:wirtschaftswissenschaften-m7-review-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-94e1500621eeee0738ad47ab" aria-label="Wirtschaftswissenschaften – kanonische M7-Prüfsicht"><a href="#goal-1d38aa8d-c667-5edf-85c1-4111999f03d4"><span class="toc-entry-label">Wirtschaftswissenschaften&#160;<wbr>–&#160;<wbr>kanonische&#160;<wbr>M7-Prüfsicht</span></a></h2>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="goal:96183c48-b499-54d7-8530-578f6ff40207" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-a0dfaba9fba054a714038138" aria-label="Wirtschaftswissenschaften"><a href="#goal-1d38aa8d-c667-5edf-85c1-4111999f03d4"><span class="toc-entry-label">Wirtschaftswissenschaften</span></a></h3>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-17a1fa238ffd69bc4b8c475a" aria-label="E2 Wachstum &amp; Lebensqualität"><a href="#goal-1d38aa8d-c667-5edf-85c1-4111999f03d4"><span class="toc-entry-label">E2&#160;<wbr>Wachstum&#160;<wbr>&amp;&#160;<wbr>Lebensqualität</span></a></h4>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-1d38aa8d-c667-5edf-85c1-4111999f03d4" data-goal-id="1d38aa8d-c667-5edf-85c1-4111999f03d4" data-page-number="1" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-1d38aa8d-c667-5edf-85c1-4111999f03d4-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1d38aa8d-c667-5edf-85c1-4111999f03d4-title"><a class="goal-self-link" href="#goal-1d38aa8d-c667-5edf-85c1-4111999f03d4">Wachstum und Lebensqualität messen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1d38aa8d-c667-5edf-85c1-4111999f03d4</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:5179e12b38457c170a5020b21edc370454900b8e6344964a3bb300323aac3a63" data-rendered-digest="sha256:6900f9e6bb7c37d04641269cecfa040a2ed951b9d06611c94bceb467d555285c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/1d38aa8d-c667-5edf-85c1-4111999f03d4/1d38aa8d-c667-5edf-85c1-4111999f03d4.png" alt="Zwei Ansichten derselben Stadt: Produktion und Handel mit einem schematischen Wachstumssymbol sowie Familie, Schule, Gesundheit und Grünflächen als verschiedene Dimensionen der Lebensqualität.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1d38aa8d-c667-5edf-85c1-4111999f03d4-description-heading">
+        <p class="section-heading" id="goal-1d38aa8d-c667-5edf-85c1-4111999f03d4-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Indikatoren für Wachstum und Lebensqualität vergleichen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1d38aa8d-c667-5edf-85c1-4111999f03d4-requires-heading">
+          <p class="section-heading" id="goal-1d38aa8d-c667-5edf-85c1-4111999f03d4-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-1d38aa8d-c667-5edf-85c1-4111999f03d4-reverse-heading">
+          <p class="section-heading" id="goal-1d38aa8d-c667-5edf-85c1-4111999f03d4-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-cb21bcbe-755d-5b0d-b02a-be22c9d26e43"><span>Konzentration bewerten</span><code>cb21bcbe-755d-5b0d-b02a-be22c9d26e43</code><span class="reference-page">S. 2</span></a></li><li><a href="#goal-80c92945-155b-56ea-8aa2-46ee72852303"><span>Ökologische Herausforderungen</span><code>80c92945-155b-56ea-8aa2-46ee72852303</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-5b5ed3cb-7c2c-5b0f-a515-c967d8d23644"><span>Verbraucherverhalten verstehen</span><code>5b5ed3cb-7c2c-5b0f-a515-c967d8d23644</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-e7fbbb64-9f10-5d5d-8946-710aedc6794a"><span>Unternehmensfinanzierung</span><code>e7fbbb64-9f10-5d5d-8946-710aedc6794a</code><span class="reference-page">S. 7</span></a></li><li><a href="#goal-5262a0ba-0ede-5f47-a6a2-4778d24fc95a"><span>Wohlstand differenziert messen</span><code>5262a0ba-0ede-5f47-a6a2-4778d24fc95a</code><span class="reference-page">S. 8</span></a></li><li><a href="#goal-8b28e36b-79ec-5869-9359-45ff68e28f64"><span>Umwelt- und Lebensqualitätsindikatoren</span><code>8b28e36b-79ec-5869-9359-45ff68e28f64</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-1d38aa8d-c667-5edf-85c1-4111999f03d4-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1d38aa8d-c667-5edf-85c1-4111999f03d4-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-1d38aa8d-c667-5edf-85c1-4111999f03d4-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1d38aa8d-c667-5edf-85c1-4111999f03d4-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-bac0f1d3-e671-5c2b-bd6d-2947f1fe6d9b" rel="noreferrer noopener"><span>Nachhaltigen Konsum und Lebensqualitaet bewerten</span> <code>bac0f1d3-e671-5c2b-bd6d-2947f1fe6d9b</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 20</span>
+      <span>Buch-Digest <code>sha256:eeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1f4c09eddc694da65754781d3c76e0acd40be0a8d0404e894176e0a6a3f81058</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e2-twenty-current303-final-context-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=1d38aa8d-c667-5edf-85c1-4111999f03d4&amp;goalFingerprint=sha256%3A1f4c09eddc694da65754781d3c76e0acd40be0a8d0404e894176e0a6a3f81058&amp;pageFingerprint=sha256%3A4300199b2c199e1d4177ee675a15bc0a3f63620d05defb18af0f1474ce34f735&amp;bookDigest=sha256%3Aeeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-cb21bcbe-755d-5b0d-b02a-be22c9d26e43" data-goal-id="cb21bcbe-755d-5b0d-b02a-be22c9d26e43" data-page-number="2" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-cb21bcbe-755d-5b0d-b02a-be22c9d26e43-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-cb21bcbe-755d-5b0d-b02a-be22c9d26e43-title"><a class="goal-self-link" href="#goal-cb21bcbe-755d-5b0d-b02a-be22c9d26e43">Konzentration bewerten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>cb21bcbe-755d-5b0d-b02a-be22c9d26e43</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:7c96fe833b2fa5a381b694af393ee89f17e450af01ef394836e96ce152ea8964" data-rendered-digest="sha256:03e269b568be00f4aef4f2040e9f225b33682829ff95de25dc8d86f0b2604004" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/cb21bcbe-755d-5b0d-b02a-be22c9d26e43/cb21bcbe-755d-5b0d-b02a-be22c9d26e43.png" alt="Mehrere unabhängige Fahrradgeschäfte stehen weniger Anbietern gegenüber. Eine Waage mit Produktions- und Auswahlmotiven erinnert an mögliche Effizienzvorteile und Wettbewerbsrisiken.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-cb21bcbe-755d-5b0d-b02a-be22c9d26e43-description-heading">
+        <p class="section-heading" id="goal-cb21bcbe-755d-5b0d-b02a-be22c9d26e43-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Chancen und Risiken von Unternehmenskonzentration erläutern.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-cb21bcbe-755d-5b0d-b02a-be22c9d26e43-requires-heading">
+          <p class="section-heading" id="goal-cb21bcbe-755d-5b0d-b02a-be22c9d26e43-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1d38aa8d-c667-5edf-85c1-4111999f03d4"><span>Wachstum und Lebensqualität messen</span><code>1d38aa8d-c667-5edf-85c1-4111999f03d4</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-cb21bcbe-755d-5b0d-b02a-be22c9d26e43-reverse-heading">
+          <p class="section-heading" id="goal-cb21bcbe-755d-5b0d-b02a-be22c9d26e43-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-af709beb-2a7e-5df0-bc91-f8f0e0cb99f8"><span>Wettbewerbspolitische Maßnahmen beurteilen</span><code>af709beb-2a7e-5df0-bc91-f8f0e0cb99f8</code><span class="reference-page">S. 9</span></a></li><li><a href="#goal-21dc877b-e281-5269-8244-05be788f7771"><span>Wettbewerbspolitische Eingriffe einordnen</span><code>21dc877b-e281-5269-8244-05be788f7771</code><span class="reference-page">S. 16</span></a></li><li><a href="#goal-1826fe19-4d06-5183-9b41-9121ae1cc219"><span>Formen von Marktversagen</span><code>1826fe19-4d06-5183-9b41-9121ae1cc219</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 20</span>
+      <span>Buch-Digest <code>sha256:eeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad</code></span>
+      <span>Ziel-Fingerprint <code>sha256:abb542dda6505052cfc42165b393e0e37669d154be27b27ebe0e8ffb1b2e1ca4</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e2-twenty-current303-final-context-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=cb21bcbe-755d-5b0d-b02a-be22c9d26e43&amp;goalFingerprint=sha256%3Aabb542dda6505052cfc42165b393e0e37669d154be27b27ebe0e8ffb1b2e1ca4&amp;pageFingerprint=sha256%3Ae5eecf1acd95179427d8a07a91d57831ec14860b2944b8ad12aa1bc07a1063c3&amp;bookDigest=sha256%3Aeeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-80c92945-155b-56ea-8aa2-46ee72852303" data-goal-id="80c92945-155b-56ea-8aa2-46ee72852303" data-page-number="3" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-80c92945-155b-56ea-8aa2-46ee72852303-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-80c92945-155b-56ea-8aa2-46ee72852303-title"><a class="goal-self-link" href="#goal-80c92945-155b-56ea-8aa2-46ee72852303">Ökologische Herausforderungen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>80c92945-155b-56ea-8aa2-46ee72852303</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:44223a9730606de34d44c76a7a3816b8f23142e0a5ba7cc795f5ad61e5004a90" data-rendered-digest="sha256:bb6b8c65a01f27d9fd3408be8bdd47d88ce0d702f5ac4124c4ee4d5bdbd928d3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/80c92945-155b-56ea-8aa2-46ee72852303/80c92945-155b-56ea-8aa2-46ee72852303.png" alt="Eine Fahrradwerkstatt erzeugt nützliche Produkte; Rauch und ein Abfluss reichen in die gemeinsame Luft- und Flussumgebung der Nachbarschaft.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-80c92945-155b-56ea-8aa2-46ee72852303-description-heading">
+        <p class="section-heading" id="goal-80c92945-155b-56ea-8aa2-46ee72852303-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann ökologische Probleme marktwirtschaftlicher Systeme skizzieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-80c92945-155b-56ea-8aa2-46ee72852303-requires-heading">
+          <p class="section-heading" id="goal-80c92945-155b-56ea-8aa2-46ee72852303-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1d38aa8d-c667-5edf-85c1-4111999f03d4"><span>Wachstum und Lebensqualität messen</span><code>1d38aa8d-c667-5edf-85c1-4111999f03d4</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-80c92945-155b-56ea-8aa2-46ee72852303-reverse-heading">
+          <p class="section-heading" id="goal-80c92945-155b-56ea-8aa2-46ee72852303-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-c3cb822e-f219-5a66-9714-db73b50d0487"><span>Umweltpolitik im Mehrebenensystem</span><code>c3cb822e-f219-5a66-9714-db73b50d0487</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-4d578b42-8dac-5381-9836-9d7199451c74"><span>Kreislaufwirtschaft und Nachhaltigkeit</span><code>4d578b42-8dac-5381-9836-9d7199451c74</code><span class="reference-page">S. 12</span></a></li><li><a href="#goal-bad728f2-e375-5f98-8f65-511a9e2e6751"><span>Externe Effekte analysieren</span><code>bad728f2-e375-5f98-8f65-511a9e2e6751</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-80c92945-155b-56ea-8aa2-46ee72852303-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-80c92945-155b-56ea-8aa2-46ee72852303-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-ee36cbaf-6a9d-5263-946f-7bb376aa0dfc" rel="noreferrer noopener"><span>Nachhaltigkeitsdiskurse vergleichen</span> <code>ee36cbaf-6a9d-5263-946f-7bb376aa0dfc</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 20</span>
+      <span>Buch-Digest <code>sha256:eeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad</code></span>
+      <span>Ziel-Fingerprint <code>sha256:bf6ef2d78a593cbf3f10b1916d1beb34f790c796229ada12f75bee3bc7b515bb</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e2-twenty-current303-final-context-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=80c92945-155b-56ea-8aa2-46ee72852303&amp;goalFingerprint=sha256%3Abf6ef2d78a593cbf3f10b1916d1beb34f790c796229ada12f75bee3bc7b515bb&amp;pageFingerprint=sha256%3A7d4924ead56f297da8b9570a5671ff034a31f1ec220f9e9b827be9a5963339be&amp;bookDigest=sha256%3Aeeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c3cb822e-f219-5a66-9714-db73b50d0487" data-goal-id="c3cb822e-f219-5a66-9714-db73b50d0487" data-page-number="4" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-c3cb822e-f219-5a66-9714-db73b50d0487-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c3cb822e-f219-5a66-9714-db73b50d0487-title"><a class="goal-self-link" href="#goal-c3cb822e-f219-5a66-9714-db73b50d0487">Umweltpolitik im Mehrebenensystem</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c3cb822e-f219-5a66-9714-db73b50d0487</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:92a940a50a0b71447c4c0b84f8e81df359e6ec02e4eed7739bb4c6b51614ac22" data-rendered-digest="sha256:ac37c94c6c593ad06181fa578dbce0dfd65da7307220e34003dc556f911ee816" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/c3cb822e-f219-5a66-9714-db73b50d0487/c3cb822e-f219-5a66-9714-db73b50d0487.png" alt="Kommune, Bund und EU sind als beispielhafte politische Ebenen durch gegenseitige Abstimmungspfeile über einer gemeinsamen Umwelt verbunden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c3cb822e-f219-5a66-9714-db73b50d0487-description-heading">
+        <p class="section-heading" id="goal-c3cb822e-f219-5a66-9714-db73b50d0487-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Instrumente und Konflikte der Umweltpolitik beschreiben.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c3cb822e-f219-5a66-9714-db73b50d0487-requires-heading">
+          <p class="section-heading" id="goal-c3cb822e-f219-5a66-9714-db73b50d0487-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-80c92945-155b-56ea-8aa2-46ee72852303"><span>Ökologische Herausforderungen</span><code>80c92945-155b-56ea-8aa2-46ee72852303</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c3cb822e-f219-5a66-9714-db73b50d0487-reverse-heading">
+          <p class="section-heading" id="goal-c3cb822e-f219-5a66-9714-db73b50d0487-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-b7633a54-6980-566b-bf8b-262e1841bd7d"><span>Umweltpolitische Debatten</span><code>b7633a54-6980-566b-bf8b-262e1841bd7d</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-625b61ec-8561-5179-b59e-d3742b19c0e2"><span>Umweltpolitische Instrumente vergleichen</span><code>625b61ec-8561-5179-b59e-d3742b19c0e2</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-c3cb822e-f219-5a66-9714-db73b50d0487-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c3cb822e-f219-5a66-9714-db73b50d0487-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-e3cd6940-26f0-55a9-a348-4a90c245266c" rel="noreferrer noopener"><span>Konflikte in der Umweltpolitik herausarbeiten</span> <code>e3cd6940-26f0-55a9-a348-4a90c245266c</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 20</span>
+      <span>Buch-Digest <code>sha256:eeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f6847b1a5f3908bbde0bf5be86e857d0c3d9c15f03a6576b8d7a94daad284f60</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e2-twenty-current303-final-context-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=c3cb822e-f219-5a66-9714-db73b50d0487&amp;goalFingerprint=sha256%3Af6847b1a5f3908bbde0bf5be86e857d0c3d9c15f03a6576b8d7a94daad284f60&amp;pageFingerprint=sha256%3Ac345853820163aef8aeddd0ebdba5a543a23432ef48f95b5d65508e9b9f6e533&amp;bookDigest=sha256%3Aeeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b7633a54-6980-566b-bf8b-262e1841bd7d" data-goal-id="b7633a54-6980-566b-bf8b-262e1841bd7d" data-page-number="5" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-b7633a54-6980-566b-bf8b-262e1841bd7d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b7633a54-6980-566b-bf8b-262e1841bd7d-title"><a class="goal-self-link" href="#goal-b7633a54-6980-566b-bf8b-262e1841bd7d">Umweltpolitische Debatten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b7633a54-6980-566b-bf8b-262e1841bd7d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9a7b4d0ef2c07cf10839305bbf195f6f7653be87a0275e24ae99eb230d9b405a" data-rendered-digest="sha256:e70797027f7123814dc75911e3e9287824f3c20f2090028bc9b6b448d8160eb3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/b7633a54-6980-566b-bf8b-262e1841bd7d/b7633a54-6980-566b-bf8b-262e1841bd7d.png" alt="Menschen diskutieren um ein gemeinsames Stadt- und Flussmodell. Gedankenmotive für Produktion, Umwelt und Abwägung verdeutlichen unterschiedliche Interessen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b7633a54-6980-566b-bf8b-262e1841bd7d-description-heading">
+        <p class="section-heading" id="goal-b7633a54-6980-566b-bf8b-262e1841bd7d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann politische Konflikte um Umweltpolitik analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b7633a54-6980-566b-bf8b-262e1841bd7d-requires-heading">
+          <p class="section-heading" id="goal-b7633a54-6980-566b-bf8b-262e1841bd7d-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-c3cb822e-f219-5a66-9714-db73b50d0487"><span>Umweltpolitik im Mehrebenensystem</span><code>c3cb822e-f219-5a66-9714-db73b50d0487</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-b7633a54-6980-566b-bf8b-262e1841bd7d-reverse-heading">
+          <p class="section-heading" id="goal-b7633a54-6980-566b-bf8b-262e1841bd7d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-b7633a54-6980-566b-bf8b-262e1841bd7d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b7633a54-6980-566b-bf8b-262e1841bd7d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-57984b50-0dbe-4fb1-a020-0f25953a8b74" rel="noreferrer noopener"><span>E-Phase: Reparaturförderung, Konsumentscheidung und Verbraucherrechte</span> <code>57984b50-0dbe-4fb1-a020-0f25953a8b74</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 20</span>
+      <span>Buch-Digest <code>sha256:eeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad</code></span>
+      <span>Ziel-Fingerprint <code>sha256:990eee3bf934dba78a68ca460ae052e1b8808b9cada514ba510b5f5df52fdd95</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e2-twenty-current303-final-context-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=b7633a54-6980-566b-bf8b-262e1841bd7d&amp;goalFingerprint=sha256%3A990eee3bf934dba78a68ca460ae052e1b8808b9cada514ba510b5f5df52fdd95&amp;pageFingerprint=sha256%3Ab0c812094ba5c9cd9464115937de04a05975d6636379b439dd316a342c6b243c&amp;bookDigest=sha256%3Aeeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5b5ed3cb-7c2c-5b0f-a515-c967d8d23644" data-goal-id="5b5ed3cb-7c2c-5b0f-a515-c967d8d23644" data-page-number="6" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-5b5ed3cb-7c2c-5b0f-a515-c967d8d23644-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5b5ed3cb-7c2c-5b0f-a515-c967d8d23644-title"><a class="goal-self-link" href="#goal-5b5ed3cb-7c2c-5b0f-a515-c967d8d23644">Verbraucherverhalten verstehen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5b5ed3cb-7c2c-5b0f-a515-c967d8d23644</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9ee7ea76811c0a91193470ca1b092ca79d023c8399b30c88166dd55b670fbf04" data-rendered-digest="sha256:21ca4beae5a1598787acf34b5ade535d7c3418e302f305847da9b9269102e17f" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/5b5ed3cb-7c2c-5b0f-a515-c967d8d23644/5b5ed3cb-7c2c-5b0f-a515-c967d8d23644.png" alt="Eine Person vergleicht zwei Rucksäcke und denkt dabei an ihr Budget, den praktischen Nutzen und ihr soziales Umfeld.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5b5ed3cb-7c2c-5b0f-a515-c967d8d23644-description-heading">
+        <p class="section-heading" id="goal-5b5ed3cb-7c2c-5b0f-a515-c967d8d23644-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Entscheidungsmuster von Konsumenten diskutieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5b5ed3cb-7c2c-5b0f-a515-c967d8d23644-requires-heading">
+          <p class="section-heading" id="goal-5b5ed3cb-7c2c-5b0f-a515-c967d8d23644-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1d38aa8d-c667-5edf-85c1-4111999f03d4"><span>Wachstum und Lebensqualität messen</span><code>1d38aa8d-c667-5edf-85c1-4111999f03d4</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-5b5ed3cb-7c2c-5b0f-a515-c967d8d23644-reverse-heading">
+          <p class="section-heading" id="goal-5b5ed3cb-7c2c-5b0f-a515-c967d8d23644-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-84955a75-16b7-50c1-9257-7054d813cd2f"><span>Verhaltensökonomische Aspekte des Konsums</span><code>84955a75-16b7-50c1-9257-7054d813cd2f</code><span class="reference-page">S. 10</span></a></li><li><a href="#goal-c386592a-b259-538c-9929-25775af99b83"><span>Verbraucherschutz und Regulierung</span><code>c386592a-b259-538c-9929-25775af99b83</code><span class="reference-page">S. 14</span></a></li><li><a href="#goal-eef95305-c811-50a4-9157-bfd4e5780c24"><span>Entscheidungsbias im Konsum</span><code>eef95305-c811-50a4-9157-bfd4e5780c24</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-5b5ed3cb-7c2c-5b0f-a515-c967d8d23644-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5b5ed3cb-7c2c-5b0f-a515-c967d8d23644-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-bac0f1d3-e671-5c2b-bd6d-2947f1fe6d9b" rel="noreferrer noopener"><span>Nachhaltigen Konsum und Lebensqualitaet bewerten</span> <code>bac0f1d3-e671-5c2b-bd6d-2947f1fe6d9b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-e2ac2cc2-894a-5e61-8acb-f5d88811739d" rel="noreferrer noopener"><span>Zahlungsarten situationsbezogen auswählen</span> <code>e2ac2cc2-894a-5e61-8acb-f5d88811739d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-e5b070d2-daa5-5b8e-8782-32bb8a6865d2" rel="noreferrer noopener"><span>Haushaltsbudget und Sparziele planen</span> <code>e5b070d2-daa5-5b8e-8782-32bb8a6865d2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-a60e0541-80e1-5f94-86fd-073f5a00bee8" rel="noreferrer noopener"><span>Konsumentscheidungen kritisch reflektieren</span> <code>a60e0541-80e1-5f94-86fd-073f5a00bee8</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-8ad94aeb-81ad-58ce-8792-c691f97efd53" rel="noreferrer noopener"><span>Marktmodell anwenden und kritisch einordnen</span> <code>8ad94aeb-81ad-58ce-8792-c691f97efd53</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-13b6317a-d42a-5a13-8358-c85d883cb4c7" rel="noreferrer noopener"><span>Begrenzte Rationalität in Entscheidungen erklären</span> <code>13b6317a-d42a-5a13-8358-c85d883cb4c7</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-9267ad99-f474-5fd7-8b6a-bd03fbc70394" rel="noreferrer noopener"><span>Globale Konsumkultur und kulturelle Anpassungen analysieren</span> <code>9267ad99-f474-5fd7-8b6a-bd03fbc70394</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 20</span>
+      <span>Buch-Digest <code>sha256:eeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad</code></span>
+      <span>Ziel-Fingerprint <code>sha256:430b30a99bf7066da9e29524012a3698c0e4881feb9e3d75b61738a772968f49</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e2-twenty-current303-final-context-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=5b5ed3cb-7c2c-5b0f-a515-c967d8d23644&amp;goalFingerprint=sha256%3A430b30a99bf7066da9e29524012a3698c0e4881feb9e3d75b61738a772968f49&amp;pageFingerprint=sha256%3A2ae9c60d4f7f874b299c778443ed347d979d3899c76cb26b1039bd7b1b90c15c&amp;bookDigest=sha256%3Aeeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e7fbbb64-9f10-5d5d-8946-710aedc6794a" data-goal-id="e7fbbb64-9f10-5d5d-8946-710aedc6794a" data-page-number="7" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-e7fbbb64-9f10-5d5d-8946-710aedc6794a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e7fbbb64-9f10-5d5d-8946-710aedc6794a-title"><a class="goal-self-link" href="#goal-e7fbbb64-9f10-5d5d-8946-710aedc6794a">Unternehmensfinanzierung</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e7fbbb64-9f10-5d5d-8946-710aedc6794a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f0fa285d7ba5914d21f1f92907fd0ace561a5e451ce6e7e590a564f8b7436570" data-rendered-digest="sha256:2feb2ba407df0f04bc22bcdef0223ec4f2403bce6e7b452c9f95f1dbe3bdd4dc" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/e7fbbb64-9f10-5d5d-8946-710aedc6794a/e7fbbb64-9f10-5d5d-8946-710aedc6794a.png" alt="Eigenkapital und Kredit fließen als getrennte Finanzierungswege in eine Werkstatt. Ein Rückfluss zum Kreditgeber und ein Haftungsfragesymbol ergänzen die Darstellung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e7fbbb64-9f10-5d5d-8946-710aedc6794a-description-heading">
+        <p class="section-heading" id="goal-e7fbbb64-9f10-5d5d-8946-710aedc6794a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Finanzierungs- und Haftungsfragen von Unternehmen erläutern.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e7fbbb64-9f10-5d5d-8946-710aedc6794a-requires-heading">
+          <p class="section-heading" id="goal-e7fbbb64-9f10-5d5d-8946-710aedc6794a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1d38aa8d-c667-5edf-85c1-4111999f03d4"><span>Wachstum und Lebensqualität messen</span><code>1d38aa8d-c667-5edf-85c1-4111999f03d4</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-e7fbbb64-9f10-5d5d-8946-710aedc6794a-reverse-heading">
+          <p class="section-heading" id="goal-e7fbbb64-9f10-5d5d-8946-710aedc6794a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-4c7c7297-b4bb-56cd-bbfe-85d4cdb784e8"><span>Finanzierungs- und Haftungsformen vertiefen</span><code>4c7c7297-b4bb-56cd-bbfe-85d4cdb784e8</code><span class="reference-page">S. 13</span></a></li><li><a href="#goal-c4f27b51-958c-5416-a2de-d96a6e59e8b5"><span>Kapitalgeber und Haftung</span><code>c4f27b51-958c-5416-a2de-d96a6e59e8b5</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 20</span>
+      <span>Buch-Digest <code>sha256:eeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad</code></span>
+      <span>Ziel-Fingerprint <code>sha256:eff841fcd369ccf1e3bb44a5d862d1716eb695ba7ca7a56642409d25d2d8e74c</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e2-twenty-current303-final-context-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=e7fbbb64-9f10-5d5d-8946-710aedc6794a&amp;goalFingerprint=sha256%3Aeff841fcd369ccf1e3bb44a5d862d1716eb695ba7ca7a56642409d25d2d8e74c&amp;pageFingerprint=sha256%3Afbf0147e3adfe3aa98c7c0e5d0fe97f16343252455533b9f7a18babe53b6835a&amp;bookDigest=sha256%3Aeeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5262a0ba-0ede-5f47-a6a2-4778d24fc95a" data-goal-id="5262a0ba-0ede-5f47-a6a2-4778d24fc95a" data-page-number="8" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-5262a0ba-0ede-5f47-a6a2-4778d24fc95a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5262a0ba-0ede-5f47-a6a2-4778d24fc95a-title"><a class="goal-self-link" href="#goal-5262a0ba-0ede-5f47-a6a2-4778d24fc95a">Wohlstand differenziert messen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5262a0ba-0ede-5f47-a6a2-4778d24fc95a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c14c828af93e5002928db8a9a2a546e1474a1c8550cda568d57412ce9ff95fc2" data-rendered-digest="sha256:df854a30cc79ca1e1e2ced1e9570acf522441d478f9665811c0da2126460cd1e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/5262a0ba-0ede-5f47-a6a2-4778d24fc95a/5262a0ba-0ede-5f47-a6a2-4778d24fc95a.png" alt="Drei große Betrachtungslinsen über derselben Stadt zeigen Produktion unter BIP, beispielhaft Bildung und Gesundheit unter HDI sowie Umweltmotive.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5262a0ba-0ede-5f47-a6a2-4778d24fc95a-description-heading">
+        <p class="section-heading" id="goal-5262a0ba-0ede-5f47-a6a2-4778d24fc95a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann BIP, HDI und ökologische Indikatoren unterscheiden und interpretieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5262a0ba-0ede-5f47-a6a2-4778d24fc95a-requires-heading">
+          <p class="section-heading" id="goal-5262a0ba-0ede-5f47-a6a2-4778d24fc95a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1d38aa8d-c667-5edf-85c1-4111999f03d4"><span>Wachstum und Lebensqualität messen</span><code>1d38aa8d-c667-5edf-85c1-4111999f03d4</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-5262a0ba-0ede-5f47-a6a2-4778d24fc95a-reverse-heading">
+          <p class="section-heading" id="goal-5262a0ba-0ede-5f47-a6a2-4778d24fc95a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-5262a0ba-0ede-5f47-a6a2-4778d24fc95a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5262a0ba-0ede-5f47-a6a2-4778d24fc95a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-57984b50-0dbe-4fb1-a020-0f25953a8b74" rel="noreferrer noopener"><span>E-Phase: Reparaturförderung, Konsumentscheidung und Verbraucherrechte</span> <code>57984b50-0dbe-4fb1-a020-0f25953a8b74</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 20</span>
+      <span>Buch-Digest <code>sha256:eeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad</code></span>
+      <span>Ziel-Fingerprint <code>sha256:cd43f154517b912afa904aa6b4789509eb7df32d4de2a68e1f124fceb9d1d30a</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e2-twenty-current303-final-context-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=5262a0ba-0ede-5f47-a6a2-4778d24fc95a&amp;goalFingerprint=sha256%3Acd43f154517b912afa904aa6b4789509eb7df32d4de2a68e1f124fceb9d1d30a&amp;pageFingerprint=sha256%3A24f07945a36c49b9520d0d2cd93355cb86057dc35bdaa3b421acab9bf08fa36a&amp;bookDigest=sha256%3Aeeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-af709beb-2a7e-5df0-bc91-f8f0e0cb99f8" data-goal-id="af709beb-2a7e-5df0-bc91-f8f0e0cb99f8" data-page-number="9" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-af709beb-2a7e-5df0-bc91-f8f0e0cb99f8-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-af709beb-2a7e-5df0-bc91-f8f0e0cb99f8-title"><a class="goal-self-link" href="#goal-af709beb-2a7e-5df0-bc91-f8f0e0cb99f8">Wettbewerbspolitische Maßnahmen beurteilen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>af709beb-2a7e-5df0-bc91-f8f0e0cb99f8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:753d52c87cc429977f9b2cc3372f6a4e7713fbaf92455e2343667ec612514811" data-rendered-digest="sha256:23057cda311262022ff197ca8f9d9fb5fecd6adc39520c812fb99c442c22bd87" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/af709beb-2a7e-5df0-bc91-f8f0e0cb99f8/af709beb-2a7e-5df0-bc91-f8f0e0cb99f8.png" alt="Eine neutrale Wettbewerbsaufsicht untersucht eine Eintrittsbarriere zwischen Fahrradgeschäften und wägt Zugang und Produktion ab.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-af709beb-2a7e-5df0-bc91-f8f0e0cb99f8-description-heading">
+        <p class="section-heading" id="goal-af709beb-2a7e-5df0-bc91-f8f0e0cb99f8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Instrumente gegen Konzentration bewerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-af709beb-2a7e-5df0-bc91-f8f0e0cb99f8-requires-heading">
+          <p class="section-heading" id="goal-af709beb-2a7e-5df0-bc91-f8f0e0cb99f8-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-cb21bcbe-755d-5b0d-b02a-be22c9d26e43"><span>Konzentration bewerten</span><code>cb21bcbe-755d-5b0d-b02a-be22c9d26e43</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-af709beb-2a7e-5df0-bc91-f8f0e0cb99f8-reverse-heading">
+          <p class="section-heading" id="goal-af709beb-2a7e-5df0-bc91-f8f0e0cb99f8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-af709beb-2a7e-5df0-bc91-f8f0e0cb99f8-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-af709beb-2a7e-5df0-bc91-f8f0e0cb99f8-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-57984b50-0dbe-4fb1-a020-0f25953a8b74" rel="noreferrer noopener"><span>E-Phase: Reparaturförderung, Konsumentscheidung und Verbraucherrechte</span> <code>57984b50-0dbe-4fb1-a020-0f25953a8b74</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 20</span>
+      <span>Buch-Digest <code>sha256:eeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad</code></span>
+      <span>Ziel-Fingerprint <code>sha256:92a050657f55e49ad706263fdbe551db65661e41a08edc34714ab64c200a6b50</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e2-twenty-current303-final-context-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=af709beb-2a7e-5df0-bc91-f8f0e0cb99f8&amp;goalFingerprint=sha256%3A92a050657f55e49ad706263fdbe551db65661e41a08edc34714ab64c200a6b50&amp;pageFingerprint=sha256%3A7c829bbfbec6d298894ecaf1b8c37e4ea8496fe1d4f44ccaf8e65aff3bf17724&amp;bookDigest=sha256%3Aeeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-84955a75-16b7-50c1-9257-7054d813cd2f" data-goal-id="84955a75-16b7-50c1-9257-7054d813cd2f" data-page-number="10" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-84955a75-16b7-50c1-9257-7054d813cd2f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-84955a75-16b7-50c1-9257-7054d813cd2f-title"><a class="goal-self-link" href="#goal-84955a75-16b7-50c1-9257-7054d813cd2f">Verhaltensökonomische Aspekte des Konsums</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>84955a75-16b7-50c1-9257-7054d813cd2f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e6c1fd380975cb4f16a0236074e4fae52a5805dc93e2afb3d73155844faa2c59" data-rendered-digest="sha256:a2ce5fb7718d2b581d4ab0ef4df61b51d7d1393cd59e66584ed431af8560148c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/84955a75-16b7-50c1-9257-7054d813cd2f/84955a75-16b7-50c1-9257-7054d813cd2f.png" alt="Eine Person plant einen Rucksackkauf und betrachtet ein auffälliges Aktionsschild neben einem weiteren Produkt. Die Szene lädt zum Prüfen von Entscheidungseinflüssen ein.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-84955a75-16b7-50c1-9257-7054d813cd2f-description-heading">
+        <p class="section-heading" id="goal-84955a75-16b7-50c1-9257-7054d813cd2f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann typische Konsumentscheidungen und Biases erklären.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-84955a75-16b7-50c1-9257-7054d813cd2f-requires-heading">
+          <p class="section-heading" id="goal-84955a75-16b7-50c1-9257-7054d813cd2f-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-5b5ed3cb-7c2c-5b0f-a515-c967d8d23644"><span>Verbraucherverhalten verstehen</span><code>5b5ed3cb-7c2c-5b0f-a515-c967d8d23644</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-84955a75-16b7-50c1-9257-7054d813cd2f-reverse-heading">
+          <p class="section-heading" id="goal-84955a75-16b7-50c1-9257-7054d813cd2f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-84955a75-16b7-50c1-9257-7054d813cd2f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-84955a75-16b7-50c1-9257-7054d813cd2f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-57984b50-0dbe-4fb1-a020-0f25953a8b74" rel="noreferrer noopener"><span>E-Phase: Reparaturförderung, Konsumentscheidung und Verbraucherrechte</span> <code>57984b50-0dbe-4fb1-a020-0f25953a8b74</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 20</span>
+      <span>Buch-Digest <code>sha256:eeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad</code></span>
+      <span>Ziel-Fingerprint <code>sha256:6d5d97aeb7ca350795fbaddd39fac82c7bdce0fddde3f25188d357a0dfa26cb5</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e2-twenty-current303-final-context-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=84955a75-16b7-50c1-9257-7054d813cd2f&amp;goalFingerprint=sha256%3A6d5d97aeb7ca350795fbaddd39fac82c7bdce0fddde3f25188d357a0dfa26cb5&amp;pageFingerprint=sha256%3A077ddc59e29b459cb4bd3e0ccfaa65a49ed1ae7f0bceda463f8e41445ed84016&amp;bookDigest=sha256%3Aeeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-625b61ec-8561-5179-b59e-d3742b19c0e2" data-goal-id="625b61ec-8561-5179-b59e-d3742b19c0e2" data-page-number="11" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-625b61ec-8561-5179-b59e-d3742b19c0e2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-625b61ec-8561-5179-b59e-d3742b19c0e2-title"><a class="goal-self-link" href="#goal-625b61ec-8561-5179-b59e-d3742b19c0e2">Umweltpolitische Instrumente vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>625b61ec-8561-5179-b59e-d3742b19c0e2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:762564da84048d1607683fa87a2e82ef0cdb36baf9ac42fee6a485e92752d761" data-rendered-digest="sha256:0e09197e487e95ad67e0f49257e5e804ca3ab0664f03ad9febf5a4ca8e98af53" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/625b61ec-8561-5179-b59e-d3742b19c0e2/625b61ec-8561-5179-b59e-d3742b19c0e2.png" alt="Drei Bildfelder vergleichen eine Umweltabgabe, den Handel mit Zertifikaten unter einer gemeinsamen Grenze und verbindliche Regeln mit Kontrolle.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-625b61ec-8561-5179-b59e-d3742b19c0e2-description-heading">
+        <p class="section-heading" id="goal-625b61ec-8561-5179-b59e-d3742b19c0e2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Steuern, Zertifikate, Gebote/Verbote in verschiedenen Ebenen (EU/Bund/Land) bewerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-625b61ec-8561-5179-b59e-d3742b19c0e2-requires-heading">
+          <p class="section-heading" id="goal-625b61ec-8561-5179-b59e-d3742b19c0e2-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-c3cb822e-f219-5a66-9714-db73b50d0487"><span>Umweltpolitik im Mehrebenensystem</span><code>c3cb822e-f219-5a66-9714-db73b50d0487</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-625b61ec-8561-5179-b59e-d3742b19c0e2-reverse-heading">
+          <p class="section-heading" id="goal-625b61ec-8561-5179-b59e-d3742b19c0e2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-625b61ec-8561-5179-b59e-d3742b19c0e2-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-625b61ec-8561-5179-b59e-d3742b19c0e2-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-bac0f1d3-e671-5c2b-bd6d-2947f1fe6d9b" rel="noreferrer noopener"><span>Nachhaltigen Konsum und Lebensqualitaet bewerten</span> <code>bac0f1d3-e671-5c2b-bd6d-2947f1fe6d9b</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 20</span>
+      <span>Buch-Digest <code>sha256:eeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad</code></span>
+      <span>Ziel-Fingerprint <code>sha256:fc0fe82f9da345c562754390b77b057c8a40c34d4e1e1ac2c67e4f4b220ff55e</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e2-twenty-current303-final-context-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=625b61ec-8561-5179-b59e-d3742b19c0e2&amp;goalFingerprint=sha256%3Afc0fe82f9da345c562754390b77b057c8a40c34d4e1e1ac2c67e4f4b220ff55e&amp;pageFingerprint=sha256%3Af3cfb3ee7a5e0dcfb3939170d8dc91251cfefd8c155201855b0c97cc38ebfc06&amp;bookDigest=sha256%3Aeeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-4d578b42-8dac-5381-9836-9d7199451c74" data-goal-id="4d578b42-8dac-5381-9836-9d7199451c74" data-page-number="12" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-4d578b42-8dac-5381-9836-9d7199451c74-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-4d578b42-8dac-5381-9836-9d7199451c74-title"><a class="goal-self-link" href="#goal-4d578b42-8dac-5381-9836-9d7199451c74">Kreislaufwirtschaft und Nachhaltigkeit</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>4d578b42-8dac-5381-9836-9d7199451c74</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a4d356f9f0b686d87274d07162b3d943d47e827d48506b1c24234b7c30d301ac" data-rendered-digest="sha256:8809bba7f716540945f571e8dd9b322709d7f035dc173faea0e72a4603c5dbd3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/4d578b42-8dac-5381-9836-9d7199451c74/4d578b42-8dac-5381-9836-9d7199451c74.png" alt="Große Kreispfeile verbinden die Nutzung eines Fahrrads, seine Reparatur und das Recycling von Teilen und Materialien. Ein eigener Abfallzweig zeigt verbleibende Materialverluste.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-4d578b42-8dac-5381-9836-9d7199451c74-description-heading">
+        <p class="section-heading" id="goal-4d578b42-8dac-5381-9836-9d7199451c74-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Konzepte der Kreislaufwirtschaft und nachhaltigen Produktion erläutern.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-4d578b42-8dac-5381-9836-9d7199451c74-requires-heading">
+          <p class="section-heading" id="goal-4d578b42-8dac-5381-9836-9d7199451c74-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-80c92945-155b-56ea-8aa2-46ee72852303"><span>Ökologische Herausforderungen</span><code>80c92945-155b-56ea-8aa2-46ee72852303</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-4d578b42-8dac-5381-9836-9d7199451c74-reverse-heading">
+          <p class="section-heading" id="goal-4d578b42-8dac-5381-9836-9d7199451c74-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-4d578b42-8dac-5381-9836-9d7199451c74-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4d578b42-8dac-5381-9836-9d7199451c74-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-57984b50-0dbe-4fb1-a020-0f25953a8b74" rel="noreferrer noopener"><span>E-Phase: Reparaturförderung, Konsumentscheidung und Verbraucherrechte</span> <code>57984b50-0dbe-4fb1-a020-0f25953a8b74</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 20</span>
+      <span>Buch-Digest <code>sha256:eeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5afbc33d3c713016334c673d9a4ed2dec3146ce4883fe5a770ef1ee003b4dba8</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e2-twenty-current303-final-context-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=4d578b42-8dac-5381-9836-9d7199451c74&amp;goalFingerprint=sha256%3A5afbc33d3c713016334c673d9a4ed2dec3146ce4883fe5a770ef1ee003b4dba8&amp;pageFingerprint=sha256%3A7a63bbe62449db9129342769a54ba4cce121725e5054bb5ca32af99b6c45216e&amp;bookDigest=sha256%3Aeeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-4c7c7297-b4bb-56cd-bbfe-85d4cdb784e8" data-goal-id="4c7c7297-b4bb-56cd-bbfe-85d4cdb784e8" data-page-number="13" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-4c7c7297-b4bb-56cd-bbfe-85d4cdb784e8-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-4c7c7297-b4bb-56cd-bbfe-85d4cdb784e8-title"><a class="goal-self-link" href="#goal-4c7c7297-b4bb-56cd-bbfe-85d4cdb784e8">Finanzierungs- und Haftungsformen vertiefen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>4c7c7297-b4bb-56cd-bbfe-85d4cdb784e8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f45309bd2374d2e264faf0c5b7f1fc76e6f34c7fc19dac4686cbe24d48f46e0e" data-rendered-digest="sha256:ad959b6d45cbaead01e192030c744b1b15d1bef4e04e72f33bdc38bdbcb94505" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/4c7c7297-b4bb-56cd-bbfe-85d4cdb784e8/4c7c7297-b4bb-56cd-bbfe-85d4cdb784e8.png" alt="Zwei getrennte Betrachtungen zeigen die Finanzierung einer Werkstatt und die Frage nach gefährdetem privatem oder betrieblichem Vermögen bei Haftung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-4c7c7297-b4bb-56cd-bbfe-85d4cdb784e8-description-heading">
+        <p class="section-heading" id="goal-4c7c7297-b4bb-56cd-bbfe-85d4cdb784e8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Finanzierungswege (Eigen-/Fremdkapital) und Haftungsszenarien kritischer diskutieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-4c7c7297-b4bb-56cd-bbfe-85d4cdb784e8-requires-heading">
+          <p class="section-heading" id="goal-4c7c7297-b4bb-56cd-bbfe-85d4cdb784e8-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e7fbbb64-9f10-5d5d-8946-710aedc6794a"><span>Unternehmensfinanzierung</span><code>e7fbbb64-9f10-5d5d-8946-710aedc6794a</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-4c7c7297-b4bb-56cd-bbfe-85d4cdb784e8-reverse-heading">
+          <p class="section-heading" id="goal-4c7c7297-b4bb-56cd-bbfe-85d4cdb784e8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-4c7c7297-b4bb-56cd-bbfe-85d4cdb784e8-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4c7c7297-b4bb-56cd-bbfe-85d4cdb784e8-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-57984b50-0dbe-4fb1-a020-0f25953a8b74" rel="noreferrer noopener"><span>E-Phase: Reparaturförderung, Konsumentscheidung und Verbraucherrechte</span> <code>57984b50-0dbe-4fb1-a020-0f25953a8b74</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 20</span>
+      <span>Buch-Digest <code>sha256:eeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7a8d6cd4537d888e3e4ca4fa9d81f3105b92a9e1ee8f19763f555d0e6d86eefa</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e2-twenty-current303-final-context-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=4c7c7297-b4bb-56cd-bbfe-85d4cdb784e8&amp;goalFingerprint=sha256%3A7a8d6cd4537d888e3e4ca4fa9d81f3105b92a9e1ee8f19763f555d0e6d86eefa&amp;pageFingerprint=sha256%3A3380369e799aa19cccdb70c73b253c4af04dfbc6505d5d34c2341d21d52693d2&amp;bookDigest=sha256%3Aeeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c386592a-b259-538c-9929-25775af99b83" data-goal-id="c386592a-b259-538c-9929-25775af99b83" data-page-number="14" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-c386592a-b259-538c-9929-25775af99b83-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c386592a-b259-538c-9929-25775af99b83-title"><a class="goal-self-link" href="#goal-c386592a-b259-538c-9929-25775af99b83">Verbraucherschutz und Regulierung</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c386592a-b259-538c-9929-25775af99b83</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:7dcacd9fec6339549515164057789acfec6ccf666606bbf1bf1b0a20e380d0fd" data-rendered-digest="sha256:090b1ca164708ec9558aa0917b504b44e0991892bfe496071da36d6aac2859fc" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/c386592a-b259-538c-9929-25775af99b83/c386592a-b259-538c-9929-25775af99b83.png" alt="Eine kaufende Person bespricht einen Produktmangel mit Verkauf und Beratung; Informations- und Schutzmotive veranschaulichen mögliche Verbraucherschutzinstrumente.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c386592a-b259-538c-9929-25775af99b83-description-heading">
+        <p class="section-heading" id="goal-c386592a-b259-538c-9929-25775af99b83-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Instrumente des Verbraucherschutzes und Regulierung von Märkten erläutern.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c386592a-b259-538c-9929-25775af99b83-requires-heading">
+          <p class="section-heading" id="goal-c386592a-b259-538c-9929-25775af99b83-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-5b5ed3cb-7c2c-5b0f-a515-c967d8d23644"><span>Verbraucherverhalten verstehen</span><code>5b5ed3cb-7c2c-5b0f-a515-c967d8d23644</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c386592a-b259-538c-9929-25775af99b83-reverse-heading">
+          <p class="section-heading" id="goal-c386592a-b259-538c-9929-25775af99b83-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-c386592a-b259-538c-9929-25775af99b83-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c386592a-b259-538c-9929-25775af99b83-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-a2eda0df-6c5e-5fb5-bc64-8f6127eae50b" rel="noreferrer noopener"><span>Vertragliche Verbraucherrechte</span> <code>a2eda0df-6c5e-5fb5-bc64-8f6127eae50b</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 20</span>
+      <span>Buch-Digest <code>sha256:eeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a7c5830c23d4eb3c2a525207c830a11c297688fa10a79457b7237b9b8f481fc8</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e2-twenty-current303-final-context-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=c386592a-b259-538c-9929-25775af99b83&amp;goalFingerprint=sha256%3Aa7c5830c23d4eb3c2a525207c830a11c297688fa10a79457b7237b9b8f481fc8&amp;pageFingerprint=sha256%3A5b5927ffb2a7056afac1433c1a0336fe468ce789d5da8fc611a1a7e5fedb5938&amp;bookDigest=sha256%3Aeeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8b28e36b-79ec-5869-9359-45ff68e28f64" data-goal-id="8b28e36b-79ec-5869-9359-45ff68e28f64" data-page-number="15" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-8b28e36b-79ec-5869-9359-45ff68e28f64-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8b28e36b-79ec-5869-9359-45ff68e28f64-title"><a class="goal-self-link" href="#goal-8b28e36b-79ec-5869-9359-45ff68e28f64">Umwelt- und Lebensqualitätsindikatoren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8b28e36b-79ec-5869-9359-45ff68e28f64</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9c953f4ac3f773b5bfbc21ff753eda2cd756a53c918a25abed6c9c51780fb8b8" data-rendered-digest="sha256:ba214f1aa93edb4a4766623d706c6d756730bba9868d3a15e0366a0622225f11" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/8b28e36b-79ec-5869-9359-45ff68e28f64/8b28e36b-79ec-5869-9359-45ff68e28f64.png" alt="Über einer gemeinsamen Stadt stehen Umweltmotive für Luft, Wasser und Natur sowie Lebensqualitätsmotive für Gesellschaft, Gesundheit und Bildung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8b28e36b-79ec-5869-9359-45ff68e28f64-description-heading">
+        <p class="section-heading" id="goal-8b28e36b-79ec-5869-9359-45ff68e28f64-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Umwelt- und Lebensqualitätsindikatoren interpretieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8b28e36b-79ec-5869-9359-45ff68e28f64-requires-heading">
+          <p class="section-heading" id="goal-8b28e36b-79ec-5869-9359-45ff68e28f64-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1d38aa8d-c667-5edf-85c1-4111999f03d4"><span>Wachstum und Lebensqualität messen</span><code>1d38aa8d-c667-5edf-85c1-4111999f03d4</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-8b28e36b-79ec-5869-9359-45ff68e28f64-reverse-heading">
+          <p class="section-heading" id="goal-8b28e36b-79ec-5869-9359-45ff68e28f64-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-8b28e36b-79ec-5869-9359-45ff68e28f64-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8b28e36b-79ec-5869-9359-45ff68e28f64-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-57984b50-0dbe-4fb1-a020-0f25953a8b74" rel="noreferrer noopener"><span>E-Phase: Reparaturförderung, Konsumentscheidung und Verbraucherrechte</span> <code>57984b50-0dbe-4fb1-a020-0f25953a8b74</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 15 von 20</span>
+      <span>Buch-Digest <code>sha256:eeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f8eadd2c64c14a7f7c7df352ea44181aa5375d033a93e230423243161984f2c3</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e2-twenty-current303-final-context-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=8b28e36b-79ec-5869-9359-45ff68e28f64&amp;goalFingerprint=sha256%3Af8eadd2c64c14a7f7c7df352ea44181aa5375d033a93e230423243161984f2c3&amp;pageFingerprint=sha256%3A43ee92a3cbc381d7bd7eb3ada1339820c3f9657408c72d00b86df623827bf94a&amp;bookDigest=sha256%3Aeeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-21dc877b-e281-5269-8244-05be788f7771" data-goal-id="21dc877b-e281-5269-8244-05be788f7771" data-page-number="16" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-21dc877b-e281-5269-8244-05be788f7771-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-21dc877b-e281-5269-8244-05be788f7771-title"><a class="goal-self-link" href="#goal-21dc877b-e281-5269-8244-05be788f7771">Wettbewerbspolitische Eingriffe einordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>21dc877b-e281-5269-8244-05be788f7771</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:82cbfcf608b8c4d282f5c469a74885257db493fad3a91ea7f2845fec772882bb" data-rendered-digest="sha256:999f4538b91bf8c1818df0272c3ec0597354ec8a4d1f12c33651672a23e3627f" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/21dc877b-e281-5269-8244-05be788f7771/21dc877b-e281-5269-8244-05be788f7771.png" alt="Eine Wettbewerbsaufsicht betrachtet selbstständige Fahrradgeschäfte, eine mögliche geschäftliche Absprache und Zugangshindernisse als Fragen für eine begründete Prüfung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-21dc877b-e281-5269-8244-05be788f7771-description-heading">
+        <p class="section-heading" id="goal-21dc877b-e281-5269-8244-05be788f7771-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann kartellrechtliche Maßnahmen und Fusionskontrollen begründen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-21dc877b-e281-5269-8244-05be788f7771-requires-heading">
+          <p class="section-heading" id="goal-21dc877b-e281-5269-8244-05be788f7771-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-cb21bcbe-755d-5b0d-b02a-be22c9d26e43"><span>Konzentration bewerten</span><code>cb21bcbe-755d-5b0d-b02a-be22c9d26e43</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-21dc877b-e281-5269-8244-05be788f7771-reverse-heading">
+          <p class="section-heading" id="goal-21dc877b-e281-5269-8244-05be788f7771-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-21dc877b-e281-5269-8244-05be788f7771-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-21dc877b-e281-5269-8244-05be788f7771-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-57984b50-0dbe-4fb1-a020-0f25953a8b74" rel="noreferrer noopener"><span>E-Phase: Reparaturförderung, Konsumentscheidung und Verbraucherrechte</span> <code>57984b50-0dbe-4fb1-a020-0f25953a8b74</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 16 von 20</span>
+      <span>Buch-Digest <code>sha256:eeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c1ae0801ac5ca200f38abf006b66bfe7c2c97454480fa3de76e8725316fe4119</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e2-twenty-current303-final-context-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=21dc877b-e281-5269-8244-05be788f7771&amp;goalFingerprint=sha256%3Ac1ae0801ac5ca200f38abf006b66bfe7c2c97454480fa3de76e8725316fe4119&amp;pageFingerprint=sha256%3Acf68392881208d742c8a9795de102a4c75d52db63bb6c5ebc762a1a90e4505de&amp;bookDigest=sha256%3Aeeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-eef95305-c811-50a4-9157-bfd4e5780c24" data-goal-id="eef95305-c811-50a4-9157-bfd4e5780c24" data-page-number="17" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-eef95305-c811-50a4-9157-bfd4e5780c24-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-eef95305-c811-50a4-9157-bfd4e5780c24-title"><a class="goal-self-link" href="#goal-eef95305-c811-50a4-9157-bfd4e5780c24">Entscheidungsbias im Konsum</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>eef95305-c811-50a4-9157-bfd4e5780c24</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:dee63b6581ef9db02fdfceb445345a6f4fa9e4ce461c8bbce8bcbab2e1d55ca0" data-rendered-digest="sha256:298b2ad2dac3361e1587c5bc918d6e2834b97dffdffee17e708488c37e1ece13" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/eef95305-c811-50a4-9157-bfd4e5780c24/eef95305-c811-50a4-9157-bfd4e5780c24.png" alt="Zwei gleiche Rucksäcke werden unterschiedlich hervorgehoben; einer trägt eine Empfehlung. Die kaufende Person denkt zugleich an Budget und Verwendung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-eef95305-c811-50a4-9157-bfd4e5780c24-description-heading">
+        <p class="section-heading" id="goal-eef95305-c811-50a4-9157-bfd4e5780c24-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Biases wie Status-quo, Framing oder Anchoring auf Konsumentscheidungen anwenden.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-eef95305-c811-50a4-9157-bfd4e5780c24-requires-heading">
+          <p class="section-heading" id="goal-eef95305-c811-50a4-9157-bfd4e5780c24-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-5b5ed3cb-7c2c-5b0f-a515-c967d8d23644"><span>Verbraucherverhalten verstehen</span><code>5b5ed3cb-7c2c-5b0f-a515-c967d8d23644</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-eef95305-c811-50a4-9157-bfd4e5780c24-reverse-heading">
+          <p class="section-heading" id="goal-eef95305-c811-50a4-9157-bfd4e5780c24-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-eef95305-c811-50a4-9157-bfd4e5780c24-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-eef95305-c811-50a4-9157-bfd4e5780c24-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-57984b50-0dbe-4fb1-a020-0f25953a8b74" rel="noreferrer noopener"><span>E-Phase: Reparaturförderung, Konsumentscheidung und Verbraucherrechte</span> <code>57984b50-0dbe-4fb1-a020-0f25953a8b74</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 17 von 20</span>
+      <span>Buch-Digest <code>sha256:eeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad</code></span>
+      <span>Ziel-Fingerprint <code>sha256:00cba5c1faa4f16de6c8c37244fe0bd032c2cd938554f85feabfc0b6742d5a12</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e2-twenty-current303-final-context-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=eef95305-c811-50a4-9157-bfd4e5780c24&amp;goalFingerprint=sha256%3A00cba5c1faa4f16de6c8c37244fe0bd032c2cd938554f85feabfc0b6742d5a12&amp;pageFingerprint=sha256%3Accc0dbd8467dd4de0ef38a74497ce5fc17926c393a2e14edbb9731adc999976b&amp;bookDigest=sha256%3Aeeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c4f27b51-958c-5416-a2de-d96a6e59e8b5" data-goal-id="c4f27b51-958c-5416-a2de-d96a6e59e8b5" data-page-number="18" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-c4f27b51-958c-5416-a2de-d96a6e59e8b5-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c4f27b51-958c-5416-a2de-d96a6e59e8b5-title"><a class="goal-self-link" href="#goal-c4f27b51-958c-5416-a2de-d96a6e59e8b5">Kapitalgeber und Haftung</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c4f27b51-958c-5416-a2de-d96a6e59e8b5</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3263fbaec2f8cddcd56f22c1ee642ef025d237edd135628dbe257a2a418a8e91" data-rendered-digest="sha256:b1bad495dbedb8f88951d73035165f2a9d734b6794978f53247859b33f41b4da" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/c4f27b51-958c-5416-a2de-d96a6e59e8b5/c4f27b51-958c-5416-a2de-d96a6e59e8b5.png" alt="Eigentümer und Bank stellen einer Werkstatt Kapital bereit. Getrennte Vermögensmotive und eine Frage nach dem Risiko verdeutlichen die zusätzliche Haftungsfrage.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c4f27b51-958c-5416-a2de-d96a6e59e8b5-description-heading">
+        <p class="section-heading" id="goal-c4f27b51-958c-5416-a2de-d96a6e59e8b5-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Rechte/Pflichten von Kapitalgebern und Haftungsrisiken beschreiben.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c4f27b51-958c-5416-a2de-d96a6e59e8b5-requires-heading">
+          <p class="section-heading" id="goal-c4f27b51-958c-5416-a2de-d96a6e59e8b5-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e7fbbb64-9f10-5d5d-8946-710aedc6794a"><span>Unternehmensfinanzierung</span><code>e7fbbb64-9f10-5d5d-8946-710aedc6794a</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c4f27b51-958c-5416-a2de-d96a6e59e8b5-reverse-heading">
+          <p class="section-heading" id="goal-c4f27b51-958c-5416-a2de-d96a6e59e8b5-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-c4f27b51-958c-5416-a2de-d96a6e59e8b5-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c4f27b51-958c-5416-a2de-d96a6e59e8b5-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-57984b50-0dbe-4fb1-a020-0f25953a8b74" rel="noreferrer noopener"><span>E-Phase: Reparaturförderung, Konsumentscheidung und Verbraucherrechte</span> <code>57984b50-0dbe-4fb1-a020-0f25953a8b74</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 18 von 20</span>
+      <span>Buch-Digest <code>sha256:eeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad</code></span>
+      <span>Ziel-Fingerprint <code>sha256:428507480dade5577c7b8d31a95672fefc2ef23c994ab63e153391641c5149e6</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e2-twenty-current303-final-context-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=c4f27b51-958c-5416-a2de-d96a6e59e8b5&amp;goalFingerprint=sha256%3A428507480dade5577c7b8d31a95672fefc2ef23c994ab63e153391641c5149e6&amp;pageFingerprint=sha256%3A17c4f479e03ee33b62d7f7f4c9cc1943af4a9ce90c21f203fce27337a8891248&amp;bookDigest=sha256%3Aeeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad&amp;page=18" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-bad728f2-e375-5f98-8f65-511a9e2e6751" data-goal-id="bad728f2-e375-5f98-8f65-511a9e2e6751" data-page-number="19" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-bad728f2-e375-5f98-8f65-511a9e2e6751-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-bad728f2-e375-5f98-8f65-511a9e2e6751-title"><a class="goal-self-link" href="#goal-bad728f2-e375-5f98-8f65-511a9e2e6751">Externe Effekte analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>bad728f2-e375-5f98-8f65-511a9e2e6751</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b04be3836c68d64947b6a0f3c41efafc712fdbcba49304763b80ac47927036fe" data-rendered-digest="sha256:ce381f732774270ba2fb5d9f4d2175f401b251ba5eb4f7d49cd8cfc81c6cbfeb" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/bad728f2-e375-5f98-8f65-511a9e2e6751/bad728f2-e375-5f98-8f65-511a9e2e6751.png" alt="Eine gestrichelte Grenze umfasst den bezahlten Werkstatttausch. Rauch erreicht eine Nachbarperson außerhalb dieses Geschäfts, die keinen Zahlungsausgleich erhält.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-bad728f2-e375-5f98-8f65-511a9e2e6751-description-heading">
+        <p class="section-heading" id="goal-bad728f2-e375-5f98-8f65-511a9e2e6751-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann externe Kosten/Nutzen identifizieren und internalisierende Maßnahmen erläutern.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-bad728f2-e375-5f98-8f65-511a9e2e6751-requires-heading">
+          <p class="section-heading" id="goal-bad728f2-e375-5f98-8f65-511a9e2e6751-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-80c92945-155b-56ea-8aa2-46ee72852303"><span>Ökologische Herausforderungen</span><code>80c92945-155b-56ea-8aa2-46ee72852303</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-bad728f2-e375-5f98-8f65-511a9e2e6751-reverse-heading">
+          <p class="section-heading" id="goal-bad728f2-e375-5f98-8f65-511a9e2e6751-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-bad728f2-e375-5f98-8f65-511a9e2e6751-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-bad728f2-e375-5f98-8f65-511a9e2e6751-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-bac0f1d3-e671-5c2b-bd6d-2947f1fe6d9b" rel="noreferrer noopener"><span>Nachhaltigen Konsum und Lebensqualitaet bewerten</span> <code>bac0f1d3-e671-5c2b-bd6d-2947f1fe6d9b</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 19 von 20</span>
+      <span>Buch-Digest <code>sha256:eeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad</code></span>
+      <span>Ziel-Fingerprint <code>sha256:04a401c0389fbffb592b8898592847df745d42edad2dd069331f4ff61464971f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e2-twenty-current303-final-context-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=bad728f2-e375-5f98-8f65-511a9e2e6751&amp;goalFingerprint=sha256%3A04a401c0389fbffb592b8898592847df745d42edad2dd069331f4ff61464971f&amp;pageFingerprint=sha256%3A5463b5fe70fd43e617324122abfde8a66a39f8c405de10df959b1416d61b3946&amp;bookDigest=sha256%3Aeeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad&amp;page=19" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1826fe19-4d06-5183-9b41-9121ae1cc219" data-goal-id="1826fe19-4d06-5183-9b41-9121ae1cc219" data-page-number="20" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:f14dcf9f-66c5-5907-9e06-08f59a9a0e13" aria-labelledby="goal-1826fe19-4d06-5183-9b41-9121ae1cc219-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1826fe19-4d06-5183-9b41-9121ae1cc219-title"><a class="goal-self-link" href="#goal-1826fe19-4d06-5183-9b41-9121ae1cc219">Formen von Marktversagen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1826fe19-4d06-5183-9b41-9121ae1cc219</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-17a1fa238ffd69bc4b8c475a">E2 Wachstum &amp; Lebensqualität</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:ea1274bc4ca784af91ff9aef2cf4d8379b2775a673ce46c1a8c82cfb2ffcf496" data-rendered-digest="sha256:f43a532b79e5adacf53eecee92c107763c77167939bf1b604af5b9e96888a8e6" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/1826fe19-4d06-5183-9b41-9121ae1cc219/1826fe19-4d06-5183-9b41-9121ae1cc219.png" alt="Drei Beispiele zeigen ungleiches Wissen über einen Rucksack, ein gemeinsam hörbares Hochwasserwarnsignal und einen einzigen Fahrradanbieter mit einer Barriere für neue Anbieter.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1826fe19-4d06-5183-9b41-9121ae1cc219-description-heading">
+        <p class="section-heading" id="goal-1826fe19-4d06-5183-9b41-9121ae1cc219-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Informationsasymmetrien, öffentliche Güter und Monopole als Marktversagen erklären.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1826fe19-4d06-5183-9b41-9121ae1cc219-requires-heading">
+          <p class="section-heading" id="goal-1826fe19-4d06-5183-9b41-9121ae1cc219-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-cb21bcbe-755d-5b0d-b02a-be22c9d26e43"><span>Konzentration bewerten</span><code>cb21bcbe-755d-5b0d-b02a-be22c9d26e43</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-1826fe19-4d06-5183-9b41-9121ae1cc219-reverse-heading">
+          <p class="section-heading" id="goal-1826fe19-4d06-5183-9b41-9121ae1cc219-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-1826fe19-4d06-5183-9b41-9121ae1cc219-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1826fe19-4d06-5183-9b41-9121ae1cc219-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-57984b50-0dbe-4fb1-a020-0f25953a8b74" rel="noreferrer noopener"><span>E-Phase: Reparaturförderung, Konsumentscheidung und Verbraucherrechte</span> <code>57984b50-0dbe-4fb1-a020-0f25953a8b74</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 20 von 20</span>
+      <span>Buch-Digest <code>sha256:eeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad</code></span>
+      <span>Ziel-Fingerprint <code>sha256:298df21e06392ddd3e5c27bc373aa6c3e337ee54af5eb1c9409a29ede8aefcd9</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-e2-twenty-current303-final-context-v2-20261008&amp;edition=curricular-atomic-v1&amp;goalId=1826fe19-4d06-5183-9b41-9121ae1cc219&amp;goalFingerprint=sha256%3A298df21e06392ddd3e5c27bc373aa6c3e337ee54af5eb1c9409a29ede8aefcd9&amp;pageFingerprint=sha256%3A0798e54585780775c487a08ac9e59037a919c16991e6788a0bf1ffeecd431522&amp;bookDigest=sha256%3Aeeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad&amp;page=20" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

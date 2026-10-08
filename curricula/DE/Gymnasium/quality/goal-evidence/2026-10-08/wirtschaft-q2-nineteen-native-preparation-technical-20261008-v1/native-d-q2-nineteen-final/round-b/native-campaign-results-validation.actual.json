@@ -1,0 +1,58 @@
+{
+  "schemaVersion": "economics-independent-native-results-validation-receipt-v1",
+  "receiptId": "wirtschaft-q2-nineteen-independent-native-results-validation-20261008-v1",
+  "recordedAt": "2026-10-08T08:44:49.013221+00:00",
+  "reviewerAgentId": "/root/economics_layer_a",
+  "reviewer": "OpenAI/Codex session; exact model identifier undisclosed",
+  "runId": "wirtschaft-q2-nineteen-independent-description-round-b-codex-20261008-v1",
+  "validation": {
+    "command": [
+      "app/node_modules/.bin/tsx",
+      "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+      "--bundle",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-nineteen-native-preparation-technical-20261008-v1/native-d-q2-nineteen-final/round-b/review-bundle-manifest.json",
+      "--input",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-nineteen-native-preparation-technical-20261008-v1/native-d-q2-nineteen-final/round-b/description-review-input.json",
+      "--campaign",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-nineteen-native-preparation-technical-20261008-v1/native-d-q2-nineteen-final/round-b/description-review-campaign.json",
+      "--batches-dir",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-nineteen-native-preparation-technical-20261008-v1/native-d-q2-nineteen-final/round-b/batches",
+      "--results-dir",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-nineteen-native-preparation-technical-20261008-v1/native-d-q2-nineteen-final/round-b/results"
+    ],
+    "actualObservedExitCode": 0,
+    "actualObservedStdout": "Goal-description review campaign results valid: 19",
+    "validatedRecords": 19,
+    "scope": "own frozen round-b only"
+  },
+  "bindings": {
+    "bundleFingerprint": "sha256:44339d26d6c610d330c0e40bf20c4e5bb4d7d167b59a5e27fdb15dc13af02066",
+    "bookDigest": "sha256:ffade464de8d75a76674656d94cc0803808a59639d944ecccbc5b4c42112fb8e",
+    "records": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-nineteen-native-preparation-technical-20261008-v1/native-d-q2-nineteen-final/round-b/results/wirtschaft-q2-nineteen-current303-final-author-v1-20261008-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:e71e5a0ec7a476b2611ed7a7175eb5ee67b916e0d186364cf860379ebca780e9"
+    },
+    "run": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-nineteen-native-preparation-technical-20261008-v1/native-d-q2-nineteen-final/round-b/results/wirtschaft-q2-nineteen-current303-final-author-v1-20261008-first-pass-b.batch-001.run.json",
+      "sha256": "sha256:0774d9d5458713a1a60d15b734484425e0da3506f820fc9511c60d901cd32561"
+    },
+    "inspection": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-nineteen-native-preparation-technical-20261008-v1/native-d-q2-nineteen-final/round-b/independent-description-page-inspection.actual.json",
+      "sha256": "sha256:d130908b4f40e1b3d63a9d9ce8771f36fea9c8620999fc74d297d620c894ac6f"
+    }
+  },
+  "results": {
+    "keep": 19,
+    "revise": 0,
+    "split_review": 0,
+    "block": 0,
+    "profileRecommendationCreate": 19
+  },
+  "limits": [
+    "All19 actual frozen evidenceProfile/evidenceReview values null; no P19 profile or38case reading claimed in this D round.",
+    "Current whole19 DE/EN and contexts actually read, all19PDFgoalpages actually visually inspected, primary reading and retrieval limitations documented.",
+    "No effective scope, complete mapping, live integration, other-gate or human/learner approval inferred."
+  ],
+  "strictCompletionsAdded": 0,
+  "liveFilesMutated": 0
+}

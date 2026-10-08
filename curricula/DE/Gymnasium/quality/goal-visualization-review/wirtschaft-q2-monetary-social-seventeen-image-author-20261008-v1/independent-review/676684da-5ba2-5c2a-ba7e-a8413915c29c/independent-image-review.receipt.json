@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-08",
+  "reviewedAt": "2026-10-08T08:14:05.343839+00:00",
+  "goalId": "676684da-5ba2-5c2a-ba7e-a8413915c29c",
+  "goalTitle": "Geldschöpfung und Zinsmechanismus",
+  "goalDescription": "Die lernende Person kann Geldschöpfung, Zinssteuerung und Inflationsziele erläutern.",
+  "decision": "REJECT",
+  "machineApproval": "Rejected AI",
+  "independentReviewer": "OpenAI Codex economics_visual_memory_audit",
+  "reviewerModel": "Codex session; exact serving model identifier not exposed",
+  "imageAuthorIsReviewer": false,
+  "humanApproved": false,
+  "assetPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/676684da-5ba2-5c2a-ba7e-a8413915c29c.png",
+  "assetSha256": "sha256:c86f2b3d197bfbf180387b6cb4bca13edea538f69d74c0af79f6414b64766803",
+  "actualFormat": "PNG",
+  "actualDimensions": {
+    "width": 1672,
+    "height": 941
+  },
+  "aspectRatioDecision": "Close native 16:9 landscape. Actual subject and mobile views support this format; no mechanical normalization.",
+  "provider": "OpenAI Codex image_gen",
+  "generationTool": "image_gen.imagegen",
+  "generationModel": "Image model version not exposed",
+  "generationRecordPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/676684da-5ba2-5c2a-ba7e-a8413915c29c/generation.actual.json",
+  "generationRecordSha256": "sha256:39b448663ec4529d008fc8674f248b9570421d038da7d0987a1930abd8e6d742",
+  "generationIsApproval": false,
+  "actualInspection": {
+    "nativeViewed": true,
+    "width360Viewed": true,
+    "width680Viewed": true,
+    "fachlichePruefung": "Die tatsächlich sichtbare linke Kreditdarstellung verzweigt mit zwei gleichen kräftigen Pfeilen auf Bankreserven und Kundeneinlage. Sie zeigt damit Bankreserven als durch Geschäftsbankkredit gemeinsam mit einer Kundeneinlage erzeugtes Ergebnis. Reserven sind jedoch Zentralbankgeld und werden nicht durch die Kreditbuchung der Geschäftsbank geschaffen. Die bloße gestrichelte Trennlinie zwischen Reserve und Einlage behebt diese falsche Ereignisbindung nicht. Rechts stehen Zinssteuerung, Finanzierungsbedingungen und Warenkorb getrennt, aber ohne eindeutige konditionale Wirkungsmarkierung.",
+    "phone": "Auch bei 360 Pixeln bleibt gerade die falsche Kreditverzweigung auf Reserve und Einlage klar sichtbar. Die Bankrollen und die Motive rechts sind groß genug.",
+    "desktop": "Bei 680 Pixeln sind der Reservetresor, seine Beschriftung und der direkt aus der Kreditsituation kommende Pfeil zweifelsfrei erkennbar.",
+    "actorPerspective": "Der Monitor steht passend zur Bankmitarbeiterin; das Kreditblatt wird im Gespräch zum Kunden gezeigt, keine erkennbare relevante falsch orientierte Lesefront.",
+    "style": "Freundliches, klares Comic-Raster mit kräftigen einfachen Hauptmotiven und passender ruhiger Farbgebung.",
+    "mandatorySmallPrint": false
+  },
+  "blockingFindings": [
+    {
+      "severity": "blocking",
+      "kind": "fachliche_Richtigkeit_Bankgeld_vs_Zentralbankreserven",
+      "description": "Geschäftsbankkredit wird mit gleichem direktem Ergebnispfeil als Quelle sowohl neuer Kundeneinlage als auch neuer Bankreserven dargestellt.",
+      "targetedCorrection": "Nur linken Reserventresor samt zugehörigem Kreditpfeil entfernen oder in tatsächlich getrenntes Zentralbankgeld-/Abwicklungsverhältnis ohne Entstehungspfeil aus dem Kundenkredit ändern. Beim Kreditereignis ausschließlich Kreditforderung und passende Kundeneinlage darstellen. Restliche Bank-/Zentralbanktrennung und Stil behalten; rechts eine offene Wirkungsfrage statt festem automatischem Preisresultat ergänzen."
+    }
+  ],
+  "interpretationLimits": [
+    "Nicht die bloße Existenz eines Reservemotivs ist der Fehler, sondern der ausdrücklich aus derselben Geschäftsbank-Kreditsituation auf Reserven führende Erzeugungspfeil."
+  ],
+  "goalSemanticSource": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+  "goalTextStatus": "Actual current German canonical description and supplied bilingual author successor inspected for image semantic fit; this image review is not a D/P closure.",
+  "derivatives": [
+    {
+      "width": 360,
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/676684da-5ba2-5c2a-ba7e-a8413915c29c/676684da-5ba2-5c2a-ba7e-a8413915c29c.width-360.png",
+      "sha256": "sha256:d3fb0406e3707b02b3ddcd5732bb6043dd4b4b03515a4b7d390eca9556814658"
+    },
+    {
+      "width": 680,
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q2-monetary-social-seventeen-image-author-20261008-v1/independent-review/676684da-5ba2-5c2a-ba7e-a8413915c29c/676684da-5ba2-5c2a-ba7e-a8413915c29c.width-680.png",
+      "sha256": "sha256:5007526ff158c0e7ebe940501cd86db2c058ee2791e5485f9a20116ed12bf0a6"
+    }
+  ],
+  "notClaimed": [
+    "live QA adoption",
+    "description-review closure",
+    "positive-evidence closure",
+    "central M7 growth",
+    "human release approval",
+    "classroom acceptance"
+  ],
+  "authorCandidateBilingualGoalPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-bilingual-positive-author-v1/whole-goals.candidate.json",
+  "authorCandidateBilingualGoalSha256": "sha256:34cba76182ed25582dae2b3d8e641d58719db6099b2ef6adff6c215b699e1476",
+  "authorCandidateEnglishTitle": "Money creation and the interest-rate mechanism",
+  "authorCandidateEnglishDescription": "The learner can explain money creation, interest-rate steering and inflation targets.",
+  "nativeBeforeGenerationReceiptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-bilingual-positive-author-v1/native-image-preparation/native-seventeen-preparation.actual.json",
+  "nativeBeforeGenerationReceiptSha256": "sha256:5c0730e63c54d2add045e34399c0a9817cda4cb0d1d3b52d2668f2e949c8dd8d",
+  "generationActualStartedAt": "2026-10-08T08:05:09.622Z",
+  "generationActualCompletedAt": "2026-10-08T08:06:14.546Z"
+}

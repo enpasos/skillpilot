@@ -1,0 +1,892 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Wirtschaftswissenschaften Q2: 17 aktuelle Lernziele zu Geldpolitik und sozialer Ungleichheit</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Wirtschaftswissenschaften Q2: 17 aktuelle Lernziele zu Geldpolitik und sozialer Ungleichheit</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>17 atomare Lernziele</dt><dd>5 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:e43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:wirtschaftswissenschaften-m7-review-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-94e1500621eeee0738ad47ab" aria-label="Wirtschaftswissenschaften – kanonische M7-Prüfsicht"><a href="#goal-f9132615-8166-5e42-ad04-d8b2b75d719d"><span class="toc-entry-label">Wirtschaftswissenschaften&#160;<wbr>–&#160;<wbr>kanonische&#160;<wbr>M7-Prüfsicht</span></a></h2>
+          <span class="toc-entry-meta"><span>17 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="goal:96183c48-b499-54d7-8530-578f6ff40207" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-a0dfaba9fba054a714038138" aria-label="Wirtschaftswissenschaften"><a href="#goal-f9132615-8166-5e42-ad04-d8b2b75d719d"><span class="toc-entry-label">Wirtschaftswissenschaften</span></a></h3>
+          <span class="toc-entry-meta"><span>17 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-51d12ebcbe6adcd82e288d4c" aria-label="Q2 Wirtschaft und Wirtschaftspolitik"><a href="#goal-f9132615-8166-5e42-ad04-d8b2b75d719d"><span class="toc-entry-label">Q2&#160;<wbr>Wirtschaft&#160;<wbr>und&#160;<wbr>Wirtschaftspolitik</span></a></h4>
+          <span class="toc-entry-meta"><span>17 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:a073b7ae-687a-5b46-8d81-713bc61f573b" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-83ff15342bfae7f22fd4b47d" aria-label="Preisniveaustabilität in der EWU"><a href="#goal-f9132615-8166-5e42-ad04-d8b2b75d719d"><span class="toc-entry-label">Preisniveaustabilität&#160;<wbr>in&#160;<wbr>der&#160;<wbr>EWU</span></a></h5>
+          <span class="toc-entry-meta"><span>9 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:6f428330-81ad-56f9-a998-521eea7a216d" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-b4fe6312a81f2b92c0885e17" aria-label="Sozialpolitik und Staatsfinanzen"><a href="#goal-577f0e2d-643a-5a0c-833b-301622a6cb00"><span class="toc-entry-label">Sozialpolitik&#160;<wbr>und&#160;<wbr>Staatsfinanzen</span></a></h5>
+          <span class="toc-entry-meta"><span>8 Lernziele</span><span>erste zugehörige Lernzielseite 10</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-f9132615-8166-5e42-ad04-d8b2b75d719d" data-goal-id="f9132615-8166-5e42-ad04-d8b2b75d719d" data-page-number="1" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:a073b7ae-687a-5b46-8d81-713bc61f573b" aria-labelledby="goal-f9132615-8166-5e42-ad04-d8b2b75d719d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-f9132615-8166-5e42-ad04-d8b2b75d719d-title"><a class="goal-self-link" href="#goal-f9132615-8166-5e42-ad04-d8b2b75d719d">Geldpolitische Instrumente erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f9132615-8166-5e42-ad04-d8b2b75d719d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-83ff15342bfae7f22fd4b47d">Preisniveaustabilität in der EWU</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d361faeabb4a31945960c111363bc98a9d9f1038b47acaeb6109db86d0120756" data-rendered-digest="sha256:bb2ac2c93be6f868c636e0a3f7d52b68f722df5d549b004772e5eb9dd78e30e3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/f9132615-8166-5e42-ad04-d8b2b75d719d/f9132615-8166-5e42-ad04-d8b2b75d719d.png" alt="Eine Zentralbank mit Zinsregler, Geld-/Papiermotiv und Wertpapier steht getrennt von Geschäftsbanken. Ein gestrichelter Weg mit Wirkungsfrage führt zu Banken, Haushalt und Werkstatt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f9132615-8166-5e42-ad04-d8b2b75d719d-description-heading">
+        <p class="section-heading" id="goal-f9132615-8166-5e42-ad04-d8b2b75d719d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Instrumente der EZB und deren Wirkungen beschreiben.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f9132615-8166-5e42-ad04-d8b2b75d719d-requires-heading">
+          <p class="section-heading" id="goal-f9132615-8166-5e42-ad04-d8b2b75d719d-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-f9132615-8166-5e42-ad04-d8b2b75d719d-reverse-heading">
+          <p class="section-heading" id="goal-f9132615-8166-5e42-ad04-d8b2b75d719d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-676684da-5ba2-5c2a-ba7e-a8413915c29c"><span>Geldschöpfung und Zinsmechanismus</span><code>676684da-5ba2-5c2a-ba7e-a8413915c29c</code><span class="reference-page">S. 2</span></a></li><li><a href="#goal-a72ddc94-6b38-5c14-8d8b-661472e4dfba"><span>Transmissionsmechanismen der Geldpolitik</span><code>a72ddc94-6b38-5c14-8d8b-661472e4dfba</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-f9132615-8166-5e42-ad04-d8b2b75d719d-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f9132615-8166-5e42-ad04-d8b2b75d719d-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-f9132615-8166-5e42-ad04-d8b2b75d719d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f9132615-8166-5e42-ad04-d8b2b75d719d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-1758e57b-779f-5e16-8f35-47ada351ee2b" rel="noreferrer noopener"><span>Vorschlag B (GK) - Konjunkturpaket, Wettbewerb und Sozialhaushalt</span> <code>1758e57b-779f-5e16-8f35-47ada351ee2b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-mem_de_gym_economics_macro_money_policy" rel="noreferrer noopener"><span>Lernkarten - Makroökonomie, Geld und Wirtschaftspolitik</span> <code>mem_de_gym_economics_macro_money_policy</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 17</span>
+      <span>Buch-Digest <code>sha256:e43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4a09f7628ed4167ce5ba5014cd0f8b7f1297ad323a2ca61fc68d05d94cf22399</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=f9132615-8166-5e42-ad04-d8b2b75d719d&amp;goalFingerprint=sha256%3A4a09f7628ed4167ce5ba5014cd0f8b7f1297ad323a2ca61fc68d05d94cf22399&amp;pageFingerprint=sha256%3Acedeb221cc1ba9a8d71dca44e5e15f60aab011bd95570ef0932a53d509d72e6a&amp;bookDigest=sha256%3Ae43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-676684da-5ba2-5c2a-ba7e-a8413915c29c" data-goal-id="676684da-5ba2-5c2a-ba7e-a8413915c29c" data-page-number="2" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:a073b7ae-687a-5b46-8d81-713bc61f573b" aria-labelledby="goal-676684da-5ba2-5c2a-ba7e-a8413915c29c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-676684da-5ba2-5c2a-ba7e-a8413915c29c-title"><a class="goal-self-link" href="#goal-676684da-5ba2-5c2a-ba7e-a8413915c29c">Geldschöpfung und Zinsmechanismus</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>676684da-5ba2-5c2a-ba7e-a8413915c29c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-83ff15342bfae7f22fd4b47d">Preisniveaustabilität in der EWU</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:bfd9966aa7754264c8365e4f5b92e3f8a328c088af6c6b37f47797acb7af7aca" data-rendered-digest="sha256:df6c41a4d9b41a531a146a9a2933131cf8097c8f3bbbaf39fac66f5bb8ec59e9" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/676684da-5ba2-5c2a-ba7e-a8413915c29c/676684da-5ba2-5c2a-ba7e-a8413915c29c.png" alt="Links führt eine Geschäftsbankkreditvergabe gleichzeitig zu einer Kreditforderung und einer Kundeneinlage. Rechts verbindet eine getrennte Zentralbank Zinsvarianten über gestrichelte Wege mit Finanzierungsbedingungen und einer offenen Preisfrage über einem Warenkorb.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-676684da-5ba2-5c2a-ba7e-a8413915c29c-description-heading">
+        <p class="section-heading" id="goal-676684da-5ba2-5c2a-ba7e-a8413915c29c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Geldschöpfung, Zinssteuerung und Inflationsziele erläutern.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-676684da-5ba2-5c2a-ba7e-a8413915c29c-requires-heading">
+          <p class="section-heading" id="goal-676684da-5ba2-5c2a-ba7e-a8413915c29c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-f9132615-8166-5e42-ad04-d8b2b75d719d"><span>Geldpolitische Instrumente erläutern</span><code>f9132615-8166-5e42-ad04-d8b2b75d719d</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-676684da-5ba2-5c2a-ba7e-a8413915c29c-reverse-heading">
+          <p class="section-heading" id="goal-676684da-5ba2-5c2a-ba7e-a8413915c29c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-79d244e0-049e-59e9-a2fb-b8f8670b315a"><span>Herausforderungen der EWU</span><code>79d244e0-049e-59e9-a2fb-b8f8670b315a</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3"><span>Geldschöpfung praktisch modellieren</span><code>5b5d1d53-71c3-5fbf-b1cf-977c868b60e3</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-66ca6838-c9b3-5ab3-b47a-6a669bc4c21c"><span>Bilanzpolitiken (QE, QT) einordnen</span><code>66ca6838-c9b3-5ab3-b47a-6a669bc4c21c</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 17</span>
+      <span>Buch-Digest <code>sha256:e43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b3badca1ed7e10bc6299869005a74b63b79114c91c322992ef520a4764e29d8b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=676684da-5ba2-5c2a-ba7e-a8413915c29c&amp;goalFingerprint=sha256%3Ab3badca1ed7e10bc6299869005a74b63b79114c91c322992ef520a4764e29d8b&amp;pageFingerprint=sha256%3Ae3f925c7f65e957e1da6df956af417355baad052217cdf7391636bba3ff99400&amp;bookDigest=sha256%3Ae43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-79d244e0-049e-59e9-a2fb-b8f8670b315a" data-goal-id="79d244e0-049e-59e9-a2fb-b8f8670b315a" data-page-number="3" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:a073b7ae-687a-5b46-8d81-713bc61f573b" aria-labelledby="goal-79d244e0-049e-59e9-a2fb-b8f8670b315a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-79d244e0-049e-59e9-a2fb-b8f8670b315a-title"><a class="goal-self-link" href="#goal-79d244e0-049e-59e9-a2fb-b8f8670b315a">Herausforderungen der EWU</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>79d244e0-049e-59e9-a2fb-b8f8670b315a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-83ff15342bfae7f22fd4b47d">Preisniveaustabilität in der EWU</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:650c3b5db0c6f0be024c7a6f7198f7f18dcd96b74286d5e54af0daeed3b8ba4b" data-rendered-digest="sha256:73aa8e5d43451149e089c270e7c8eb487d9bd0886b0552d7d0c7bd3fd003eeb2" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/79d244e0-049e-59e9-a2fb-b8f8670b315a/79d244e0-049e-59e9-a2fb-b8f8670b315a.png" alt="Zwei Länderinseln mit eigenen Finanzministerien und unterschiedlich großen Schockwolken sind mit einer gemeinsamen Geldpolitik verbunden. Zwei Personen betrachten eine Reformwerkzeugkiste mit Waage und Fragezeichen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-79d244e0-049e-59e9-a2fb-b8f8670b315a-description-heading">
+        <p class="section-heading" id="goal-79d244e0-049e-59e9-a2fb-b8f8670b315a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Stabilitäts- und Schuldenkrise sowie Reformvorschläge im Euroraum diskutieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-79d244e0-049e-59e9-a2fb-b8f8670b315a-requires-heading">
+          <p class="section-heading" id="goal-79d244e0-049e-59e9-a2fb-b8f8670b315a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-676684da-5ba2-5c2a-ba7e-a8413915c29c"><span>Geldschöpfung und Zinsmechanismus</span><code>676684da-5ba2-5c2a-ba7e-a8413915c29c</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-79d244e0-049e-59e9-a2fb-b8f8670b315a-reverse-heading">
+          <p class="section-heading" id="goal-79d244e0-049e-59e9-a2fb-b8f8670b315a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-8ebbbe19-43dd-53ff-a6d0-9d94a5973616"><span>Inflationsursachen und -dynamik</span><code>8ebbbe19-43dd-53ff-a6d0-9d94a5973616</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 17</span>
+      <span>Buch-Digest <code>sha256:e43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a005af72b447b21de0b692c034f5dfd2e7e4df38b9fdd652a2d0ef86e2990236</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=79d244e0-049e-59e9-a2fb-b8f8670b315a&amp;goalFingerprint=sha256%3Aa005af72b447b21de0b692c034f5dfd2e7e4df38b9fdd652a2d0ef86e2990236&amp;pageFingerprint=sha256%3Aaa8c2a8adbbd45bd27a12f745a2982da44c378be05fb41315b00ec22bc52610d&amp;bookDigest=sha256%3Ae43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8ebbbe19-43dd-53ff-a6d0-9d94a5973616" data-goal-id="8ebbbe19-43dd-53ff-a6d0-9d94a5973616" data-page-number="4" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:a073b7ae-687a-5b46-8d81-713bc61f573b" aria-labelledby="goal-8ebbbe19-43dd-53ff-a6d0-9d94a5973616-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8ebbbe19-43dd-53ff-a6d0-9d94a5973616-title"><a class="goal-self-link" href="#goal-8ebbbe19-43dd-53ff-a6d0-9d94a5973616">Inflationsursachen und -dynamik</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8ebbbe19-43dd-53ff-a6d0-9d94a5973616</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-83ff15342bfae7f22fd4b47d">Preisniveaustabilität in der EWU</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9f38dff4fc0f968991b27603ecc8800574676b731e4143596ab6bb5b4b28ca34" data-rendered-digest="sha256:d4bb828cfac171cc7a85932fa483124b15d0844196dc5f73bd9711bd769497b3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/8ebbbe19-43dd-53ff-a6d0-9d94a5973616/8ebbbe19-43dd-53ff-a6d0-9d94a5973616.png" alt="Drei Felder zeigen Nachfrage, Energie- und Inputkosten sowie Erwartungen. Gestrichelte Wege führen zu einem Warenkorb mit mehreren Preissteigerungsmotiven; daneben steht eine Kiste möglicher Gegenmaßnahmen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8ebbbe19-43dd-53ff-a6d0-9d94a5973616-description-heading">
+        <p class="section-heading" id="goal-8ebbbe19-43dd-53ff-a6d0-9d94a5973616-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Ursachen von Inflation erläutern und Gegenmaßnahmen bewerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8ebbbe19-43dd-53ff-a6d0-9d94a5973616-requires-heading">
+          <p class="section-heading" id="goal-8ebbbe19-43dd-53ff-a6d0-9d94a5973616-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-79d244e0-049e-59e9-a2fb-b8f8670b315a"><span>Herausforderungen der EWU</span><code>79d244e0-049e-59e9-a2fb-b8f8670b315a</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-8ebbbe19-43dd-53ff-a6d0-9d94a5973616-reverse-heading">
+          <p class="section-heading" id="goal-8ebbbe19-43dd-53ff-a6d0-9d94a5973616-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-25278ecf-2e77-556e-9fe6-8f0b954cc680"><span>Inflation in Fallstudien</span><code>25278ecf-2e77-556e-9fe6-8f0b954cc680</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-29076abc-83ab-5e01-af81-18b7b3f7cf5a"><span>Inflationserwartungen steuern</span><code>29076abc-83ab-5e01-af81-18b7b3f7cf5a</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-8ebbbe19-43dd-53ff-a6d0-9d94a5973616-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8ebbbe19-43dd-53ff-a6d0-9d94a5973616-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-ff93ca09-0619-569f-8120-39d22585232a" rel="noreferrer noopener"><span>Vorschlag B (LK) - Stagflation, EZB und Sozialstaat</span> <code>ff93ca09-0619-569f-8120-39d22585232a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 17</span>
+      <span>Buch-Digest <code>sha256:e43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ec4a0a75b1701ef1b6c48cc88c250bb4a49be07a038eeb20e44f53c67f355b23</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=8ebbbe19-43dd-53ff-a6d0-9d94a5973616&amp;goalFingerprint=sha256%3Aec4a0a75b1701ef1b6c48cc88c250bb4a49be07a038eeb20e44f53c67f355b23&amp;pageFingerprint=sha256%3Af9ec4e1eba9b2bb5b600d4bee361135b652e7fa51187977b74fab02e4fd3e36f&amp;bookDigest=sha256%3Ae43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3" data-goal-id="5b5d1d53-71c3-5fbf-b1cf-977c868b60e3" data-page-number="5" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:a073b7ae-687a-5b46-8d81-713bc61f573b" aria-labelledby="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3-title"><a class="goal-self-link" href="#goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3">Geldschöpfung praktisch modellieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5b5d1d53-71c3-5fbf-b1cf-977c868b60e3</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-83ff15342bfae7f22fd4b47d">Preisniveaustabilität in der EWU</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:522a76eb125adc7bdf506d94fb110aeb40218efa64b2c8f72dd440c70a5d23d2" data-rendered-digest="sha256:c4256f4f96060d6f9d477d62889b1f734fc07122da59f91b3ddf4b46d704fada" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/5b5d1d53-71c3-5fbf-b1cf-977c868b60e3/5b5d1d53-71c3-5fbf-b1cf-977c868b60e3.png" alt="Zwei vereinfachte Bilanzen zeigen denselben neuen Kredit: Bei der Bank steigen Kreditforderung auf der Aktivseite und Einlage auf der Passivseite. Beim Kunden steigen Einlage auf der Aktivseite und Schuld auf der Passivseite.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3-description-heading">
+        <p class="section-heading" id="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Geldschöpfung in Bilanzmodellen nachvollziehen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3-requires-heading">
+          <p class="section-heading" id="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-676684da-5ba2-5c2a-ba7e-a8413915c29c"><span>Geldschöpfung und Zinsmechanismus</span><code>676684da-5ba2-5c2a-ba7e-a8413915c29c</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3-reverse-heading">
+          <p class="section-heading" id="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-c7f78820-f5e3-55ac-9a49-9ff747c6bfaa" rel="noreferrer noopener"><span>Digitale Märkte und Wettbewerbspolitik</span> <code>c7f78820-f5e3-55ac-9a49-9ff747c6bfaa</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 17</span>
+      <span>Buch-Digest <code>sha256:e43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1f57567b0b43dc8362cfb290c773ce8803167cc661aac9d543bbd4f98006713c</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=5b5d1d53-71c3-5fbf-b1cf-977c868b60e3&amp;goalFingerprint=sha256%3A1f57567b0b43dc8362cfb290c773ce8803167cc661aac9d543bbd4f98006713c&amp;pageFingerprint=sha256%3A19f8e5a3e8a9ddd48ed80c3610cc6f63a2b0bb8ba5027f0a11c33d5047010640&amp;bookDigest=sha256%3Ae43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680" data-goal-id="25278ecf-2e77-556e-9fe6-8f0b954cc680" data-page-number="6" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:a073b7ae-687a-5b46-8d81-713bc61f573b" aria-labelledby="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680-title"><a class="goal-self-link" href="#goal-25278ecf-2e77-556e-9fe6-8f0b954cc680">Inflation in Fallstudien</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>25278ecf-2e77-556e-9fe6-8f0b954cc680</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-83ff15342bfae7f22fd4b47d">Preisniveaustabilität in der EWU</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:7830af5d229835813c140848b8d7116f5efbbccc6fb4001c4e87bb04db375535" data-rendered-digest="sha256:c7edd5850b689d8bfa12e02bf84a3922bd40b9adc0a70717223fdf9eb3ad8d2d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/25278ecf-2e77-556e-9fe6-8f0b954cc680/25278ecf-2e77-556e-9fe6-8f0b954cc680.png" alt="Zwei Fallfelder zeigen frühere Krisenmotive und ausdrücklich ein heutiges fiktives Szenario mit Energie- und Nachfragemotiven. Gleiche Warenkörbe, ein Fragezeichen und zwei Karten laden zum Materialvergleich und zur Ursachenprüfung ein.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680-description-heading">
+        <p class="section-heading" id="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Inflationsszenarien historisch/aktuell analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680-requires-heading">
+          <p class="section-heading" id="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8ebbbe19-43dd-53ff-a6d0-9d94a5973616"><span>Inflationsursachen und -dynamik</span><code>8ebbbe19-43dd-53ff-a6d0-9d94a5973616</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680-reverse-heading">
+          <p class="section-heading" id="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-b851482c-5d7e-4228-aea8-3d277f897297" rel="noreferrer noopener"><span>Q2: Investitionspaket, Modellgrenzen und geldpolitische Transmission</span> <code>b851482c-5d7e-4228-aea8-3d277f897297</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 17</span>
+      <span>Buch-Digest <code>sha256:e43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1</code></span>
+      <span>Ziel-Fingerprint <code>sha256:bf59644e88fc3a72578732aec77affec702b43a1eca067f7c4a8a01ee05d13b9</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=25278ecf-2e77-556e-9fe6-8f0b954cc680&amp;goalFingerprint=sha256%3Abf59644e88fc3a72578732aec77affec702b43a1eca067f7c4a8a01ee05d13b9&amp;pageFingerprint=sha256%3Af228c47a5a69a3468d4e66f837bf18608eeea2e6cc9ab3d935081f2844cffe66&amp;bookDigest=sha256%3Ae43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a72ddc94-6b38-5c14-8d8b-661472e4dfba" data-goal-id="a72ddc94-6b38-5c14-8d8b-661472e4dfba" data-page-number="7" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:a073b7ae-687a-5b46-8d81-713bc61f573b" aria-labelledby="goal-a72ddc94-6b38-5c14-8d8b-661472e4dfba-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a72ddc94-6b38-5c14-8d8b-661472e4dfba-title"><a class="goal-self-link" href="#goal-a72ddc94-6b38-5c14-8d8b-661472e4dfba">Transmissionsmechanismen der Geldpolitik</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a72ddc94-6b38-5c14-8d8b-661472e4dfba</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-83ff15342bfae7f22fd4b47d">Preisniveaustabilität in der EWU</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a8eb40847c10b9dd99f3219586c4f652cd31f271774f755e2558e3f186970344" data-rendered-digest="sha256:57e9600057a72fef88f09fc6eb0b3c4a2a83cd1e8dd34a9e78b792bed22831bb" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/a72ddc94-6b38-5c14-8d8b-661472e4dfba/a72ddc94-6b38-5c14-8d8b-661472e4dfba.png" alt="Von einer Zentralbank führen vier getrennte Wege mit Fragezeichen zu Zins, Kredit, Erwartungen und Wechselkurs. Die Wege sind mit Finanzierungs-, Investitions-, Gedanken- und Importwarenmotiven verbunden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a72ddc94-6b38-5c14-8d8b-661472e4dfba-description-heading">
+        <p class="section-heading" id="goal-a72ddc94-6b38-5c14-8d8b-661472e4dfba-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Zins-, Kredit-, Erwartungs- und Wechselkurskanal der Geldpolitik vergleichen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a72ddc94-6b38-5c14-8d8b-661472e4dfba-requires-heading">
+          <p class="section-heading" id="goal-a72ddc94-6b38-5c14-8d8b-661472e4dfba-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-f9132615-8166-5e42-ad04-d8b2b75d719d"><span>Geldpolitische Instrumente erläutern</span><code>f9132615-8166-5e42-ad04-d8b2b75d719d</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a72ddc94-6b38-5c14-8d8b-661472e4dfba-reverse-heading">
+          <p class="section-heading" id="goal-a72ddc94-6b38-5c14-8d8b-661472e4dfba-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-a72ddc94-6b38-5c14-8d8b-661472e4dfba-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a72ddc94-6b38-5c14-8d8b-661472e4dfba-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-b851482c-5d7e-4228-aea8-3d277f897297" rel="noreferrer noopener"><span>Q2: Investitionspaket, Modellgrenzen und geldpolitische Transmission</span> <code>b851482c-5d7e-4228-aea8-3d277f897297</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 17</span>
+      <span>Buch-Digest <code>sha256:e43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1</code></span>
+      <span>Ziel-Fingerprint <code>sha256:28d4a44a3b9a20f04e929e8e6fd171b9f9647ad408728d22a1e1a193cfb1034f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=a72ddc94-6b38-5c14-8d8b-661472e4dfba&amp;goalFingerprint=sha256%3A28d4a44a3b9a20f04e929e8e6fd171b9f9647ad408728d22a1e1a193cfb1034f&amp;pageFingerprint=sha256%3Ae899c8d362847c707c5d83eb4504605813c269b46f1daf8e0af6e93910ff9db6&amp;bookDigest=sha256%3Ae43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-66ca6838-c9b3-5ab3-b47a-6a669bc4c21c" data-goal-id="66ca6838-c9b3-5ab3-b47a-6a669bc4c21c" data-page-number="8" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:a073b7ae-687a-5b46-8d81-713bc61f573b" aria-labelledby="goal-66ca6838-c9b3-5ab3-b47a-6a669bc4c21c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-66ca6838-c9b3-5ab3-b47a-6a669bc4c21c-title"><a class="goal-self-link" href="#goal-66ca6838-c9b3-5ab3-b47a-6a669bc4c21c">Bilanzpolitiken (QE, QT) einordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>66ca6838-c9b3-5ab3-b47a-6a669bc4c21c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-83ff15342bfae7f22fd4b47d">Preisniveaustabilität in der EWU</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9214b2bebef8792b17937b0fa1412ed36acec58ddf531aa9d0d8a94e1cf3e021" data-rendered-digest="sha256:089d1ff7f4ce3a381765a2c388fb0720324626d219a431c6ed51f8d191bb0d19" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/66ca6838-c9b3-5ab3-b47a-6a669bc4c21c/66ca6838-c9b3-5ab3-b47a-6a669bc4c21c.png" alt="QE zeigt eine Anleiheübertragung zur Zentralbank gegen Reserven für die Geschäftsbank. Die dargestellte aktive QT-Verkaufsvariante zeigt sinkende Anleihen und Reserven bei der Zentralbank sowie steigende Anleihen und sinkende Reserven bei der kaufenden Geschäftsbank.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-66ca6838-c9b3-5ab3-b47a-6a669bc4c21c-description-heading">
+        <p class="section-heading" id="goal-66ca6838-c9b3-5ab3-b47a-6a669bc4c21c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann unkonventionelle Geldpolitik (QE/QT) und deren Bilanzwirkungen analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-66ca6838-c9b3-5ab3-b47a-6a669bc4c21c-requires-heading">
+          <p class="section-heading" id="goal-66ca6838-c9b3-5ab3-b47a-6a669bc4c21c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-676684da-5ba2-5c2a-ba7e-a8413915c29c"><span>Geldschöpfung und Zinsmechanismus</span><code>676684da-5ba2-5c2a-ba7e-a8413915c29c</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-66ca6838-c9b3-5ab3-b47a-6a669bc4c21c-reverse-heading">
+          <p class="section-heading" id="goal-66ca6838-c9b3-5ab3-b47a-6a669bc4c21c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-66ca6838-c9b3-5ab3-b47a-6a669bc4c21c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-66ca6838-c9b3-5ab3-b47a-6a669bc4c21c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-b851482c-5d7e-4228-aea8-3d277f897297" rel="noreferrer noopener"><span>Q2: Investitionspaket, Modellgrenzen und geldpolitische Transmission</span> <code>b851482c-5d7e-4228-aea8-3d277f897297</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 17</span>
+      <span>Buch-Digest <code>sha256:e43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1</code></span>
+      <span>Ziel-Fingerprint <code>sha256:fec4e19011e7197cf01cf3f42ad1748ab47faf6a45eb519f9b227cf4e19ca317</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=66ca6838-c9b3-5ab3-b47a-6a669bc4c21c&amp;goalFingerprint=sha256%3Afec4e19011e7197cf01cf3f42ad1748ab47faf6a45eb519f9b227cf4e19ca317&amp;pageFingerprint=sha256%3A84d0b160a63f63b5201d05fe5118ed8527740632ab65987f4e99085668712aa1&amp;bookDigest=sha256%3Ae43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-29076abc-83ab-5e01-af81-18b7b3f7cf5a" data-goal-id="29076abc-83ab-5e01-af81-18b7b3f7cf5a" data-page-number="9" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:a073b7ae-687a-5b46-8d81-713bc61f573b" aria-labelledby="goal-29076abc-83ab-5e01-af81-18b7b3f7cf5a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-29076abc-83ab-5e01-af81-18b7b3f7cf5a-title"><a class="goal-self-link" href="#goal-29076abc-83ab-5e01-af81-18b7b3f7cf5a">Inflationserwartungen steuern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>29076abc-83ab-5e01-af81-18b7b3f7cf5a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-83ff15342bfae7f22fd4b47d">Preisniveaustabilität in der EWU</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:99b22be81f2aa053008088b8581d76fd5cc7d7a543dfa5ec2ddd0284276f3570" data-rendered-digest="sha256:f6c9ad856f829c24a8b72094dd3e1a9f82b2c6bfc2f681aa3c763dfe8a13c822" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/29076abc-83ab-5e01-af81-18b7b3f7cf5a/29076abc-83ab-5e01-af81-18b7b3f7cf5a.png" alt="Eine Zentralbanksprecherin stellt eine Wenn-Bedingung vor; ein gestrichelter Weg führt zu einem möglichen künftigen Preismotiv. Mehrere Personen hören zu und diskutieren Nachrichten unter einem großen Fragezeichen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-29076abc-83ab-5e01-af81-18b7b3f7cf5a-description-heading">
+        <p class="section-heading" id="goal-29076abc-83ab-5e01-af81-18b7b3f7cf5a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Kommunikations- und Forward-Guidance-Strategien zur Steuerung von Inflationserwartungen beurteilen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-29076abc-83ab-5e01-af81-18b7b3f7cf5a-requires-heading">
+          <p class="section-heading" id="goal-29076abc-83ab-5e01-af81-18b7b3f7cf5a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8ebbbe19-43dd-53ff-a6d0-9d94a5973616"><span>Inflationsursachen und -dynamik</span><code>8ebbbe19-43dd-53ff-a6d0-9d94a5973616</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-29076abc-83ab-5e01-af81-18b7b3f7cf5a-reverse-heading">
+          <p class="section-heading" id="goal-29076abc-83ab-5e01-af81-18b7b3f7cf5a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-29076abc-83ab-5e01-af81-18b7b3f7cf5a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-29076abc-83ab-5e01-af81-18b7b3f7cf5a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-b851482c-5d7e-4228-aea8-3d277f897297" rel="noreferrer noopener"><span>Q2: Investitionspaket, Modellgrenzen und geldpolitische Transmission</span> <code>b851482c-5d7e-4228-aea8-3d277f897297</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 17</span>
+      <span>Buch-Digest <code>sha256:e43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1</code></span>
+      <span>Ziel-Fingerprint <code>sha256:01a75aa1347593ff7eaaa29888ff61eabc0e5d3a01177d14ba009e53af114007</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=29076abc-83ab-5e01-af81-18b7b3f7cf5a&amp;goalFingerprint=sha256%3A01a75aa1347593ff7eaaa29888ff61eabc0e5d3a01177d14ba009e53af114007&amp;pageFingerprint=sha256%3A52f0028895628b411fd1c498640831f7aca702ace0752dc85fbbef06ab040ee6&amp;bookDigest=sha256%3Ae43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-577f0e2d-643a-5a0c-833b-301622a6cb00" data-goal-id="577f0e2d-643a-5a0c-833b-301622a6cb00" data-page-number="10" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:6f428330-81ad-56f9-a998-521eea7a216d" aria-labelledby="goal-577f0e2d-643a-5a0c-833b-301622a6cb00-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-577f0e2d-643a-5a0c-833b-301622a6cb00-title"><a class="goal-self-link" href="#goal-577f0e2d-643a-5a0c-833b-301622a6cb00">Gerechtigkeitskonzepte vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>577f0e2d-643a-5a0c-833b-301622a6cb00</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-b4fe6312a81f2b92c0885e17">Sozialpolitik und Staatsfinanzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:0d5e3079e75188b933470d079200becbeea55a82f5aa6e2d2eb7eb2072772d3a" data-rendered-digest="sha256:bb1ab1f65d020adbb5e3be93db0a12135a025b4666dde7edbf15f0c541632d85" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/577f0e2d-643a-5a0c-833b-301622a6cb00/577f0e2d-643a-5a0c-833b-301622a6cb00.png" alt="Drei Gedankenfelder zeigen Bedarf, Gleichbehandlung und Chancen. Vier Personen diskutieren um einen öffentlichen Haushaltsbeutel mit verschiedenen Ausgabensymbolen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-577f0e2d-643a-5a0c-833b-301622a6cb00-description-heading">
+        <p class="section-heading" id="goal-577f0e2d-643a-5a0c-833b-301622a6cb00-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Modelle zu Sozialpolitik und Staatsfinanzen diskutieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-577f0e2d-643a-5a0c-833b-301622a6cb00-requires-heading">
+          <p class="section-heading" id="goal-577f0e2d-643a-5a0c-833b-301622a6cb00-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-577f0e2d-643a-5a0c-833b-301622a6cb00-reverse-heading">
+          <p class="section-heading" id="goal-577f0e2d-643a-5a0c-833b-301622a6cb00-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-d17ff931-085d-56be-932d-3839b5b88ba8"><span>Ziele des Sozialstaats abwägen</span><code>d17ff931-085d-56be-932d-3839b5b88ba8</code><span class="reference-page">S. 11</span></a></li><li><a href="#goal-7c9efc27-e74f-5a82-bf56-95a9aa21cb94"><span>Verteilungswirkungen von Sozialpolitik</span><code>7c9efc27-e74f-5a82-bf56-95a9aa21cb94</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-577f0e2d-643a-5a0c-833b-301622a6cb00-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-577f0e2d-643a-5a0c-833b-301622a6cb00-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-577f0e2d-643a-5a0c-833b-301622a6cb00-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-577f0e2d-643a-5a0c-833b-301622a6cb00-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-58cc062b-31b4-5879-a6c5-4ea60ce9e13c" rel="noreferrer noopener"><span>Pflegeversicherung zwischen Demografie und Beitragssatz</span> <code>58cc062b-31b4-5879-a6c5-4ea60ce9e13c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-c19ee0d7-0ab2-5c6f-8828-bc098a495b09" rel="noreferrer noopener"><span>Bundeshaushalt zwischen Sozialstaat und Schuldenbremse</span> <code>c19ee0d7-0ab2-5c6f-8828-bc098a495b09</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 17</span>
+      <span>Buch-Digest <code>sha256:e43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ab82366dac01190477ac3d69efcc6e9cf630a476e2a78b7b7e0f1c66da2fc397</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=577f0e2d-643a-5a0c-833b-301622a6cb00&amp;goalFingerprint=sha256%3Aab82366dac01190477ac3d69efcc6e9cf630a476e2a78b7b7e0f1c66da2fc397&amp;pageFingerprint=sha256%3A61ab465dc56ea2ee8368912ec1afd8e12047604ca09f6dcbe2d1370dad302a59&amp;bookDigest=sha256%3Ae43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d17ff931-085d-56be-932d-3839b5b88ba8" data-goal-id="d17ff931-085d-56be-932d-3839b5b88ba8" data-page-number="11" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:6f428330-81ad-56f9-a998-521eea7a216d" aria-labelledby="goal-d17ff931-085d-56be-932d-3839b5b88ba8-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d17ff931-085d-56be-932d-3839b5b88ba8-title"><a class="goal-self-link" href="#goal-d17ff931-085d-56be-932d-3839b5b88ba8">Ziele des Sozialstaats abwägen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d17ff931-085d-56be-932d-3839b5b88ba8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-b4fe6312a81f2b92c0885e17">Sozialpolitik und Staatsfinanzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:de8932399775ffa4e64887249baef68b8defd94a674ade035b1489c0b800ded2" data-rendered-digest="sha256:11f76c5702c669d928d967206948faf09e71f5b330c79b007bf5ceba04b15d8f" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/d17ff931-085d-56be-932d-3839b5b88ba8/d17ff931-085d-56be-932d-3839b5b88ba8.png" alt="Eine Waage stellt soziale Absicherung und Effizienzmotiven wie Tätigkeit und Produktion gegenüber. Zwei passende Puzzleteile über der Waage veranschaulichen mögliche Ergänzungen; mehrere Personen diskutieren die Abwägung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d17ff931-085d-56be-932d-3839b5b88ba8-description-heading">
+        <p class="section-heading" id="goal-d17ff931-085d-56be-932d-3839b5b88ba8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Zielkonflikte zwischen Effizienz und Gerechtigkeit in der Sozialpolitik analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d17ff931-085d-56be-932d-3839b5b88ba8-requires-heading">
+          <p class="section-heading" id="goal-d17ff931-085d-56be-932d-3839b5b88ba8-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-577f0e2d-643a-5a0c-833b-301622a6cb00"><span>Gerechtigkeitskonzepte vergleichen</span><code>577f0e2d-643a-5a0c-833b-301622a6cb00</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-d17ff931-085d-56be-932d-3839b5b88ba8-reverse-heading">
+          <p class="section-heading" id="goal-d17ff931-085d-56be-932d-3839b5b88ba8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-c5272ab8-baa0-570b-9f31-426d1f4460f2"><span>Staatsfinanzierung und Verschuldung</span><code>c5272ab8-baa0-570b-9f31-426d1f4460f2</code><span class="reference-page">S. 12</span></a></li><li><a href="#goal-424bae9f-8f2e-5093-a17d-ee5eadb6edde"><span>Verteilungsmodelle quantifizieren</span><code>424bae9f-8f2e-5093-a17d-ee5eadb6edde</code><span class="reference-page">S. 14</span></a></li><li><a href="#goal-da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0"><span>Armutsbekämpfung und Teilhabe</span><code>da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-d17ff931-085d-56be-932d-3839b5b88ba8-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d17ff931-085d-56be-932d-3839b5b88ba8-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-1758e57b-779f-5e16-8f35-47ada351ee2b" rel="noreferrer noopener"><span>Vorschlag B (GK) - Konjunkturpaket, Wettbewerb und Sozialhaushalt</span> <code>1758e57b-779f-5e16-8f35-47ada351ee2b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-58cc062b-31b4-5879-a6c5-4ea60ce9e13c" rel="noreferrer noopener"><span>Pflegeversicherung zwischen Demografie und Beitragssatz</span> <code>58cc062b-31b4-5879-a6c5-4ea60ce9e13c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-c19ee0d7-0ab2-5c6f-8828-bc098a495b09" rel="noreferrer noopener"><span>Bundeshaushalt zwischen Sozialstaat und Schuldenbremse</span> <code>c19ee0d7-0ab2-5c6f-8828-bc098a495b09</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 17</span>
+      <span>Buch-Digest <code>sha256:e43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f8515510b8a2751a08c41fdb1b5e35e63d04c86722fb4b04104986bb65482856</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=d17ff931-085d-56be-932d-3839b5b88ba8&amp;goalFingerprint=sha256%3Af8515510b8a2751a08c41fdb1b5e35e63d04c86722fb4b04104986bb65482856&amp;pageFingerprint=sha256%3Aead36e33d8cb300827e7eec5406f2a5f60c8f4a30fc47b4ba9f08e2a9eb4807d&amp;bookDigest=sha256%3Ae43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c5272ab8-baa0-570b-9f31-426d1f4460f2" data-goal-id="c5272ab8-baa0-570b-9f31-426d1f4460f2" data-page-number="12" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:6f428330-81ad-56f9-a998-521eea7a216d" aria-labelledby="goal-c5272ab8-baa0-570b-9f31-426d1f4460f2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c5272ab8-baa0-570b-9f31-426d1f4460f2-title"><a class="goal-self-link" href="#goal-c5272ab8-baa0-570b-9f31-426d1f4460f2">Staatsfinanzierung und Verschuldung</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c5272ab8-baa0-570b-9f31-426d1f4460f2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-b4fe6312a81f2b92c0885e17">Sozialpolitik und Staatsfinanzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a8ea62fab5b6962db6221d5551e62082ecd9c3aa7a2e0626f8f81550ded0c3a3" data-rendered-digest="sha256:743f85bbe9077a70389786941928325281f857d1e2a154185b16c7e026ca0577" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/c5272ab8-baa0-570b-9f31-426d1f4460f2/c5272ab8-baa0-570b-9f31-426d1f4460f2.png" alt="Steuern und Kredite führen als getrennte Finanzierungswege zum Staatshaushalt. Darunter stehen Bildung, Gesundheit und Verkehr; daneben erinnern Kalender und Münzen an spätere Zahlungsverpflichtungen und eine Frage an Verschuldungsgrenzen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c5272ab8-baa0-570b-9f31-426d1f4460f2-description-heading">
+        <p class="section-heading" id="goal-c5272ab8-baa0-570b-9f31-426d1f4460f2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Finanzierungsformen und Verschuldungsgrenzen diskutieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c5272ab8-baa0-570b-9f31-426d1f4460f2-requires-heading">
+          <p class="section-heading" id="goal-c5272ab8-baa0-570b-9f31-426d1f4460f2-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-d17ff931-085d-56be-932d-3839b5b88ba8"><span>Ziele des Sozialstaats abwägen</span><code>d17ff931-085d-56be-932d-3839b5b88ba8</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c5272ab8-baa0-570b-9f31-426d1f4460f2-reverse-heading">
+          <p class="section-heading" id="goal-c5272ab8-baa0-570b-9f31-426d1f4460f2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-9832485e-8431-58cb-b251-9473da415a5e"><span>Reformen des Sozialstaats</span><code>9832485e-8431-58cb-b251-9473da415a5e</code><span class="reference-page">S. 13</span></a></li><li><a href="#goal-c7341b02-3da3-50f8-a750-5d10ed7c9958"><span>Rentenfinanzierung und Nachhaltigkeit</span><code>c7341b02-3da3-50f8-a750-5d10ed7c9958</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-c5272ab8-baa0-570b-9f31-426d1f4460f2-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c5272ab8-baa0-570b-9f31-426d1f4460f2-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-58cc062b-31b4-5879-a6c5-4ea60ce9e13c" rel="noreferrer noopener"><span>Pflegeversicherung zwischen Demografie und Beitragssatz</span> <code>58cc062b-31b4-5879-a6c5-4ea60ce9e13c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-c19ee0d7-0ab2-5c6f-8828-bc098a495b09" rel="noreferrer noopener"><span>Bundeshaushalt zwischen Sozialstaat und Schuldenbremse</span> <code>c19ee0d7-0ab2-5c6f-8828-bc098a495b09</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 17</span>
+      <span>Buch-Digest <code>sha256:e43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9015e943438d02c476902d222c223dfee94f375c7260ddd12cec937e961e5653</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=c5272ab8-baa0-570b-9f31-426d1f4460f2&amp;goalFingerprint=sha256%3A9015e943438d02c476902d222c223dfee94f375c7260ddd12cec937e961e5653&amp;pageFingerprint=sha256%3Ad862e9dba6742d4f127d6448e099b57405ef4067678212a32b0cc5d33b656172&amp;bookDigest=sha256%3Ae43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9832485e-8431-58cb-b251-9473da415a5e" data-goal-id="9832485e-8431-58cb-b251-9473da415a5e" data-page-number="13" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:6f428330-81ad-56f9-a998-521eea7a216d" aria-labelledby="goal-9832485e-8431-58cb-b251-9473da415a5e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9832485e-8431-58cb-b251-9473da415a5e-title"><a class="goal-self-link" href="#goal-9832485e-8431-58cb-b251-9473da415a5e">Reformen des Sozialstaats</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9832485e-8431-58cb-b251-9473da415a5e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-b4fe6312a81f2b92c0885e17">Sozialpolitik und Staatsfinanzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b017eb70846019b5ad26e81c34887c58c0ff171e6948025b363cc4c22865fb58" data-rendered-digest="sha256:9d462acdc5d5d84ea3dab9f33727b3b281ec2abdecda412fa14d515151bf1afb" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/9832485e-8431-58cb-b251-9473da415a5e/9832485e-8431-58cb-b251-9473da415a5e.png" alt="Zwei Tafeln für Reform A und Reform B vergleichen Ziele, Finanzierung und offene Folgen. Menschen mehrerer Generationen diskutieren die Alternativen um ein gemeinsames Absicherungssymbol.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9832485e-8431-58cb-b251-9473da415a5e-description-heading">
+        <p class="section-heading" id="goal-9832485e-8431-58cb-b251-9473da415a5e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Reformpfade (z.B. Renten-/Gesundheitsreform) diskutieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9832485e-8431-58cb-b251-9473da415a5e-requires-heading">
+          <p class="section-heading" id="goal-9832485e-8431-58cb-b251-9473da415a5e-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-c5272ab8-baa0-570b-9f31-426d1f4460f2"><span>Staatsfinanzierung und Verschuldung</span><code>c5272ab8-baa0-570b-9f31-426d1f4460f2</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-9832485e-8431-58cb-b251-9473da415a5e-reverse-heading">
+          <p class="section-heading" id="goal-9832485e-8431-58cb-b251-9473da415a5e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-9832485e-8431-58cb-b251-9473da415a5e-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9832485e-8431-58cb-b251-9473da415a5e-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-b851482c-5d7e-4228-aea8-3d277f897297" rel="noreferrer noopener"><span>Q2: Investitionspaket, Modellgrenzen und geldpolitische Transmission</span> <code>b851482c-5d7e-4228-aea8-3d277f897297</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 17</span>
+      <span>Buch-Digest <code>sha256:e43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b60349f17a73c9e298ec56d264072831d57b183777ee07d8f86cd23f61c5e17b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=9832485e-8431-58cb-b251-9473da415a5e&amp;goalFingerprint=sha256%3Ab60349f17a73c9e298ec56d264072831d57b183777ee07d8f86cd23f61c5e17b&amp;pageFingerprint=sha256%3A3be181106480d2ce8dd5693c92c88ef5b007429175951f942d38c89b65c1f1e6&amp;bookDigest=sha256%3Ae43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-424bae9f-8f2e-5093-a17d-ee5eadb6edde" data-goal-id="424bae9f-8f2e-5093-a17d-ee5eadb6edde" data-page-number="14" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:6f428330-81ad-56f9-a998-521eea7a216d" aria-labelledby="goal-424bae9f-8f2e-5093-a17d-ee5eadb6edde-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-424bae9f-8f2e-5093-a17d-ee5eadb6edde-title"><a class="goal-self-link" href="#goal-424bae9f-8f2e-5093-a17d-ee5eadb6edde">Verteilungsmodelle quantifizieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>424bae9f-8f2e-5093-a17d-ee5eadb6edde</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-b4fe6312a81f2b92c0885e17">Sozialpolitik und Staatsfinanzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c50edb2271c4fbac059d133e61ee767031783fa4d23c3b47fa5bc99f0e54e796" data-rendered-digest="sha256:6a039c9f7ba19bbc9032ab68068a1e72af30ed4b5f2cf39a7d1e80e940625c96" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/424bae9f-8f2e-5093-a17d-ee5eadb6edde/424bae9f-8f2e-5093-a17d-ee5eadb6edde.png" alt="Ein schematisches Lorenzdiagramm zeigt Bevölkerung horizontal und Einkommen vertikal. Eine konvexe Kurve liegt unter der gestrichelten Gleichverteilungsdiagonale; beide beginnen im selben Ursprung und enden im selben oberen rechten Punkt. Haushalts- und Münzmotive ergänzen das Diagramm.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-424bae9f-8f2e-5093-a17d-ee5eadb6edde-description-heading">
+        <p class="section-heading" id="goal-424bae9f-8f2e-5093-a17d-ee5eadb6edde-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Verteilungsmodelle rechnerisch anwenden (z.B. Lorenz/GINI).</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-424bae9f-8f2e-5093-a17d-ee5eadb6edde-requires-heading">
+          <p class="section-heading" id="goal-424bae9f-8f2e-5093-a17d-ee5eadb6edde-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-d17ff931-085d-56be-932d-3839b5b88ba8"><span>Ziele des Sozialstaats abwägen</span><code>d17ff931-085d-56be-932d-3839b5b88ba8</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-424bae9f-8f2e-5093-a17d-ee5eadb6edde-reverse-heading">
+          <p class="section-heading" id="goal-424bae9f-8f2e-5093-a17d-ee5eadb6edde-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-424bae9f-8f2e-5093-a17d-ee5eadb6edde-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-424bae9f-8f2e-5093-a17d-ee5eadb6edde-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-b851482c-5d7e-4228-aea8-3d277f897297" rel="noreferrer noopener"><span>Q2: Investitionspaket, Modellgrenzen und geldpolitische Transmission</span> <code>b851482c-5d7e-4228-aea8-3d277f897297</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 17</span>
+      <span>Buch-Digest <code>sha256:e43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ead5333f6868d05e10dffe05ecdfc82a01df9703e96c514632cc7f8f210e5a3c</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=424bae9f-8f2e-5093-a17d-ee5eadb6edde&amp;goalFingerprint=sha256%3Aead5333f6868d05e10dffe05ecdfc82a01df9703e96c514632cc7f8f210e5a3c&amp;pageFingerprint=sha256%3A80a94dcb5652c32a1f1e13c9704949b556c217ab70f5f5405b95773b9120c9f7&amp;bookDigest=sha256%3Ae43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c7341b02-3da3-50f8-a750-5d10ed7c9958" data-goal-id="c7341b02-3da3-50f8-a750-5d10ed7c9958" data-page-number="15" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:6f428330-81ad-56f9-a998-521eea7a216d" aria-labelledby="goal-c7341b02-3da3-50f8-a750-5d10ed7c9958-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c7341b02-3da3-50f8-a750-5d10ed7c9958-title"><a class="goal-self-link" href="#goal-c7341b02-3da3-50f8-a750-5d10ed7c9958">Rentenfinanzierung und Nachhaltigkeit</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c7341b02-3da3-50f8-a750-5d10ed7c9958</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-b4fe6312a81f2b92c0885e17">Sozialpolitik und Staatsfinanzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:50228b81b64e12b1cee9f86452dd782b91f96bfbb8833cf18f6bb5546cacc93d" data-rendered-digest="sha256:86c2ad3eebd7751dc6e34bd0d73aba46fb39f4ccb9697b557e3fa3aee2e91b21" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/c7341b02-3da3-50f8-a750-5d10ed7c9958/c7341b02-3da3-50f8-a750-5d10ed7c9958.png" alt="Drei Felder zeigen Rentenfinanzierung: laufende Beiträge Berufstätiger an aktuelle Rentenbeziehende, einen steuerfinanzierten öffentlichen Haushalt und angelegtes Vermögen für spätere Rente. Die Kapitaldeckung steht unter einer schwankenden Kurve mit Fragezeichen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c7341b02-3da3-50f8-a750-5d10ed7c9958-description-heading">
+        <p class="section-heading" id="goal-c7341b02-3da3-50f8-a750-5d10ed7c9958-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Umlage-, Steuer- und Kapitaldeckungsverfahren in der Rentenpolitik vergleichen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c7341b02-3da3-50f8-a750-5d10ed7c9958-requires-heading">
+          <p class="section-heading" id="goal-c7341b02-3da3-50f8-a750-5d10ed7c9958-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-c5272ab8-baa0-570b-9f31-426d1f4460f2"><span>Staatsfinanzierung und Verschuldung</span><code>c5272ab8-baa0-570b-9f31-426d1f4460f2</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c7341b02-3da3-50f8-a750-5d10ed7c9958-reverse-heading">
+          <p class="section-heading" id="goal-c7341b02-3da3-50f8-a750-5d10ed7c9958-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-c7341b02-3da3-50f8-a750-5d10ed7c9958-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c7341b02-3da3-50f8-a750-5d10ed7c9958-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-b851482c-5d7e-4228-aea8-3d277f897297" rel="noreferrer noopener"><span>Q2: Investitionspaket, Modellgrenzen und geldpolitische Transmission</span> <code>b851482c-5d7e-4228-aea8-3d277f897297</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 15 von 17</span>
+      <span>Buch-Digest <code>sha256:e43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1</code></span>
+      <span>Ziel-Fingerprint <code>sha256:86a2300d68431e00ee2c4d275ffb0121265a2c6e868dd48d885b051f66e25804</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=c7341b02-3da3-50f8-a750-5d10ed7c9958&amp;goalFingerprint=sha256%3A86a2300d68431e00ee2c4d275ffb0121265a2c6e868dd48d885b051f66e25804&amp;pageFingerprint=sha256%3A012ef6da4698f302c70074ced56934220054b657318a88a46eb831f8bd812565&amp;bookDigest=sha256%3Ae43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-7c9efc27-e74f-5a82-bf56-95a9aa21cb94" data-goal-id="7c9efc27-e74f-5a82-bf56-95a9aa21cb94" data-page-number="16" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:6f428330-81ad-56f9-a998-521eea7a216d" aria-labelledby="goal-7c9efc27-e74f-5a82-bf56-95a9aa21cb94-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-7c9efc27-e74f-5a82-bf56-95a9aa21cb94-title"><a class="goal-self-link" href="#goal-7c9efc27-e74f-5a82-bf56-95a9aa21cb94">Verteilungswirkungen von Sozialpolitik</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>7c9efc27-e74f-5a82-bf56-95a9aa21cb94</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-b4fe6312a81f2b92c0885e17">Sozialpolitik und Staatsfinanzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:17e7fec907163161c0552e8bf090dcd5d78b578b42c7d628549707ca45f1fe5d" data-rendered-digest="sha256:fa1f7c2aa78bdc74dc4cad814159cbfff37d04e3902f203ff6d7cef81a923847" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/7c9efc27-e74f-5a82-bf56-95a9aa21cb94/7c9efc27-e74f-5a82-bf56-95a9aa21cb94.png" alt="Zwei Transferalternativen vergleichen dieselben drei fiktiven Haushalte vor und nach Unterstützung anhand von Münzmotiven. Eine Waage mit Fragezeichen und ein öffentlicher Haushalt mit Finanzierungsfrage halten die Bewertung offen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-7c9efc27-e74f-5a82-bf56-95a9aa21cb94-description-heading">
+        <p class="section-heading" id="goal-7c9efc27-e74f-5a82-bf56-95a9aa21cb94-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Verteilungswirkungen verschiedener Sozialtransfers quantitativ/qualitativ beurteilen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-7c9efc27-e74f-5a82-bf56-95a9aa21cb94-requires-heading">
+          <p class="section-heading" id="goal-7c9efc27-e74f-5a82-bf56-95a9aa21cb94-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-577f0e2d-643a-5a0c-833b-301622a6cb00"><span>Gerechtigkeitskonzepte vergleichen</span><code>577f0e2d-643a-5a0c-833b-301622a6cb00</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-7c9efc27-e74f-5a82-bf56-95a9aa21cb94-reverse-heading">
+          <p class="section-heading" id="goal-7c9efc27-e74f-5a82-bf56-95a9aa21cb94-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-7c9efc27-e74f-5a82-bf56-95a9aa21cb94-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7c9efc27-e74f-5a82-bf56-95a9aa21cb94-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-b851482c-5d7e-4228-aea8-3d277f897297" rel="noreferrer noopener"><span>Q2: Investitionspaket, Modellgrenzen und geldpolitische Transmission</span> <code>b851482c-5d7e-4228-aea8-3d277f897297</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-ff93ca09-0619-569f-8120-39d22585232a" rel="noreferrer noopener"><span>Vorschlag B (LK) - Stagflation, EZB und Sozialstaat</span> <code>ff93ca09-0619-569f-8120-39d22585232a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 16 von 17</span>
+      <span>Buch-Digest <code>sha256:e43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9ebf6f81de743749f7335fbcc8eba689cd86bfd1127db7b0e94bc60e565709f8</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=7c9efc27-e74f-5a82-bf56-95a9aa21cb94&amp;goalFingerprint=sha256%3A9ebf6f81de743749f7335fbcc8eba689cd86bfd1127db7b0e94bc60e565709f8&amp;pageFingerprint=sha256%3Abdd99edbf022e83a56016e3fd2e1c97c52012b4ba62344bee15b27ea75c235e4&amp;bookDigest=sha256%3Ae43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0" data-goal-id="da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0" data-page-number="17" data-chapter-ids="structure:wirtschaftswissenschaften-m7-review-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:6f428330-81ad-56f9-a998-521eea7a216d" aria-labelledby="goal-da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0-title"><a class="goal-self-link" href="#goal-da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0">Armutsbekämpfung und Teilhabe</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-94e1500621eeee0738ad47ab">Wirtschaftswissenschaften – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-b4fe6312a81f2b92c0885e17">Sozialpolitik und Staatsfinanzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:19f647c84df582877b03a678dc119e06c9d71018bcc487cee1167e83b572fc28" data-rendered-digest="sha256:22da9fa5fab50aad5d088f2904d287b164bdc9ca13dab7e07ec3cf3bbafa0ee2" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0/da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0.png" alt="Drei Felder zeigen materielle Sicherung, Zugang zu Bildung und Arbeit sowie Verkehr und Dienstleistungen. Farbige Wege führen zu einem gemeinsamen öffentlichen Raum, in dem Menschen unterschiedlichen Alters und unterschiedlicher Mobilität teilnehmen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0-description-heading">
+        <p class="section-heading" id="goal-da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Strategien zur Armutsbekämpfung und sozialen Teilhabe bewerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0-requires-heading">
+          <p class="section-heading" id="goal-da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-d17ff931-085d-56be-932d-3839b5b88ba8"><span>Ziele des Sozialstaats abwägen</span><code>d17ff931-085d-56be-932d-3839b5b88ba8</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0-reverse-heading">
+          <p class="section-heading" id="goal-da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-b851482c-5d7e-4228-aea8-3d277f897297" rel="noreferrer noopener"><span>Q2: Investitionspaket, Modellgrenzen und geldpolitische Transmission</span> <code>b851482c-5d7e-4228-aea8-3d277f897297</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 17 von 17</span>
+      <span>Buch-Digest <code>sha256:e43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d1ad7be5d1f601c754d906548e93a2885f89faee5266edd7edaf02fa1756f87d</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-wirtschaft-q2-monetary-social-seventeen-current303-final-author-v1-20261008&amp;edition=curricular-atomic-v1&amp;goalId=da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0&amp;goalFingerprint=sha256%3Ad1ad7be5d1f601c754d906548e93a2885f89faee5266edd7edaf02fa1756f87d&amp;pageFingerprint=sha256%3Ad3c21807c8396e2a446b0172a8faa4f41d036618812956c0cbb4797a8183b03b&amp;bookDigest=sha256%3Ae43e3eacb4acb94c2dc2a2d3954a240ca889ff432d6f9c48a11c3e7470c40ac1&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

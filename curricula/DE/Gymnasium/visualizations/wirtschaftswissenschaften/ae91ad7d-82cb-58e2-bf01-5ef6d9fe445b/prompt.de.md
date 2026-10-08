@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Ungleichheit und Differenzierung analysieren
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `ae91ad7d-82cb-58e2-bf01-5ef6d9fe445b`
+- Titel: Ungleichheit und Differenzierung analysieren
+- Beschreibung: Die lernende Person kann soziale Ungleichheit, Einkommens- und Bildungsverteilung beschreiben und Ursachen diskutieren.
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `ae91ad7d-82cb-58e2-bf01-5ef6d9fe445b.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/ae91ad7d-82cb-58e2-bf01-5ef6d9fe445b/ae91ad7d-82cb-58e2-bf01-5ef6d9fe445b.png`
+
+## Prompt
+
+```text
+Edit the supplied friendly abstract comic illustration of unequal learning resources with one targeted didactic correction. The current picture wrongly correlates good resources exclusively with a light-skinned boy and poor resources exclusively with a dark-skinned girl. These circumstances are hypothetical and must not teach a demographic association. Represent THE SAME identifiable adolescent girl in BOTH hypothetical circumstances A and B: the same medium-brown skin, short curly dark hair, same facial identity, same orange-and-teal school clothing and teal backpack. Replace the light-skinned boy in the left homework vignette with this same girl and replace the boy walking on the left path with the same girl who walks on the right. Keep the right girl's appearance coherent between homework and walking, adjusting clothes only as needed for identical identity. The scenario is one learner under two possible resource conditions, not two demographic types. Add only two small but clear large labels 'A' and 'B' at the respective home vignettes if helpful. Preserve the school, smooth left path, harder right path, resource icons (books, money, time), 'Ruhige Lernumgebung' and 'Lautes Zuhause' labels, title 'Unterschiedliche Chancen', friendly approachable palette and large uncluttered motifs. Keep both variants positively motivated walking towards school; do not imply inevitable failure. Keep notebooks oriented correctly from learner perspective. Do not add statistics, causal guarantees or any mandatory fine print. PNG same landscape aspect ratio, abstract friendly clear comic, not photorealistic.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

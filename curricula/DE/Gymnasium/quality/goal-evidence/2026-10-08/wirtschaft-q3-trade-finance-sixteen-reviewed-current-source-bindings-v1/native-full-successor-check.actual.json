@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "role": "technical_reviewed_source_translation_and_metadata_binding_successor",
+  "currentStrictBaseline": 125,
+  "priorOwnAMSuccessorExists": false,
+  "versionLabelExplanation": "Initial own16 independently reviewed translation binding on actual activeLabour125; prior foreign current records retained byte exactly.",
+  "checkedAt": "2026-10-08T10:44:07.016556+00:00",
+  "physicalIsolate": "/tmp/skillpilot-wirtschaft-q3-trade-finance-sixteen-native-m1j35kaq",
+  "independentlyReviewedTranslationSuccessors": 16,
+  "ordinaryDecisions": 303,
+  "unchangedRecordsByteExactPerGate": 287,
+  "cardsByteExact": 51,
+  "visibilityChecks": 98,
+  "actualInputs": [
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_accounting_business_finance.de.json",
+      "sha256": "sha256:b224cae9572d76b364adf3f6e2824e99d14cea344dda716c7c0efbd7cebab679",
+      "bytes": 6738,
+      "role": "actual_deck"
+    },
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_business_law.de.json",
+      "sha256": "sha256:8a379951c08148a4f6633e967c656c736897e073e6089b06d4293fe9961a7a27",
+      "bytes": 5406,
+      "role": "actual_deck"
+    },
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_international_development.de.json",
+      "sha256": "sha256:798c0b83234f9fbf687e8398d4512f8e8e101883c121fd8ccf61f4d779491f53",
+      "bytes": 6476,
+      "role": "actual_deck"
+    },
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_macro_money_policy.de.json",
+      "sha256": "sha256:d85fc8045f7f5fea017f21e7d347ca63a8e7f5e39635ceccab77ed75a3dbe4ec",
+      "bytes": 6918,
+      "role": "actual_deck"
+    },
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_market_order_policy.de.json",
+      "sha256": "sha256:1d70fc4f8b626b8ad6769b28a08bbd0a85ee44f9eaf79974c28b7978b09fb1a8",
+      "bytes": 6571,
+      "role": "actual_deck"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json",
+      "sha256": "sha256:402bd1d6e80504c0e481f8e0ff49fb995e1f730fbb8a8476b5be693517cb51cc",
+      "bytes": 7237,
+      "role": "configured_visibility_view"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-lk.view.json",
+      "sha256": "sha256:8ed46d64771e1b61849fd879a3570bda4c1c7c7c7f42dbeebbcd8ca15e437cd2",
+      "bytes": 7237,
+      "role": "configured_visibility_view"
+    }
+  ],
+  "commands": [
+    {
+      "stage": "fingerprint-staging",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-trade-finance-sixteen-reviewed-current-source-bindings-v1/native-fingerprint-staging-only/atomicity.config.json",
+        "--mode=check",
+        "--write-fingerprints"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-q3-trade-finance-sixteen-native-m1j35kaq",
+      "exitCode": 0,
+      "nativeEntrypointSha256": "sha256:b3052145387d8fd9414af100e0aa61f2ec083875d852c9c87ea4aa2ed91f56d9"
+    },
+    {
+      "stage": "native-check",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-trade-finance-sixteen-reviewed-current-source-bindings-v1/atomicity.config.json",
+        "--mode=check"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-q3-trade-finance-sixteen-native-m1j35kaq",
+      "exitCode": 0,
+      "nativeEntrypointSha256": "sha256:b3052145387d8fd9414af100e0aa61f2ec083875d852c9c87ea4aa2ed91f56d9"
+    },
+    {
+      "stage": "fingerprint-staging",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-trade-finance-sixteen-reviewed-current-source-bindings-v1/native-fingerprint-staging-only/memory.config.json",
+        "--mode=check",
+        "--write-fingerprints"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-q3-trade-finance-sixteen-native-m1j35kaq",
+      "exitCode": 0,
+      "nativeEntrypointSha256": "sha256:9e06425851e85d22b284530e81a459c120c200fd0a019446ff87953c538c2672"
+    },
+    {
+      "stage": "native-check",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-trade-finance-sixteen-reviewed-current-source-bindings-v1/memory.config.json",
+        "--mode=check"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-q3-trade-finance-sixteen-native-m1j35kaq",
+      "exitCode": 0,
+      "nativeEntrypointSha256": "sha256:9e06425851e85d22b284530e81a459c120c200fd0a019446ff87953c538c2672"
+    }
+  ],
+  "gateRecordRetention": {
+    "atomicity": {
+      "ordinaryDecisions": 303,
+      "changedGoalIds": [
+        "0509ae79-abb4-5e6b-8db2-521c1bccacf4",
+        "0b6db337-3fc6-5c30-860d-c8fbd535cb5c",
+        "43acb850-7685-5e53-acf6-6675120120d1",
+        "4cd0c6d8-6485-51d0-883d-5d49ac46be70",
+        "54049ed4-9364-5564-a55a-3959193d9018",
+        "5ae551bf-942c-5896-b8e0-93aad36fe9b0",
+        "604cde3e-4095-50c3-b712-e6bd7cea4717",
+        "606c4050-d196-509e-9a95-53733d6b06bb",
+        "667b75ad-2d20-5f22-ad57-46be5b7c53c7",
+        "7d0c69c6-0c67-5221-9ccc-d55e3eb2c303",
+        "87ee2b5a-8d10-51e4-a288-539e5ac251ea",
+        "bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4",
+        "d22433a8-fa0a-5db5-b65f-9d47b801f2d9",
+        "ebbce1c2-51b3-5215-8bcb-fbb74affdd62",
+        "f0b0a96f-65ed-5647-a6f8-bfe7aa4a5d91",
+        "fb249488-944c-5123-a21e-5cb9a0431e8b"
+      ],
+      "unchangedRecordsByteExact": 287,
+      "previousConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-reviewed-current-source-bindings-v2/atomicity.config.json",
+      "previousRecordsSha256": "sha256:dd80e4c3b92fed8618d0362324df985ce1e90b153352aed8459c846cb104f312",
+      "candidateRecordsSha256": "sha256:7eada5a77c9710a164377654c4311a441b75839816895e48270d067b81819a81"
+    },
+    "memory": {
+      "ordinaryDecisions": 303,
+      "changedGoalIds": [
+        "0509ae79-abb4-5e6b-8db2-521c1bccacf4",
+        "0b6db337-3fc6-5c30-860d-c8fbd535cb5c",
+        "43acb850-7685-5e53-acf6-6675120120d1",
+        "4cd0c6d8-6485-51d0-883d-5d49ac46be70",
+        "54049ed4-9364-5564-a55a-3959193d9018",
+        "5ae551bf-942c-5896-b8e0-93aad36fe9b0",
+        "604cde3e-4095-50c3-b712-e6bd7cea4717",
+        "606c4050-d196-509e-9a95-53733d6b06bb",
+        "667b75ad-2d20-5f22-ad57-46be5b7c53c7",
+        "7d0c69c6-0c67-5221-9ccc-d55e3eb2c303",
+        "87ee2b5a-8d10-51e4-a288-539e5ac251ea",
+        "bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4",
+        "d22433a8-fa0a-5db5-b65f-9d47b801f2d9",
+        "ebbce1c2-51b3-5215-8bcb-fbb74affdd62",
+        "f0b0a96f-65ed-5647-a6f8-bfe7aa4a5d91",
+        "fb249488-944c-5123-a21e-5cb9a0431e8b"
+      ],
+      "unchangedRecordsByteExact": 287,
+      "previousConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-reviewed-current-source-bindings-v2/memory.config.json",
+      "previousRecordsSha256": "sha256:d8d398e7634d7d3d011b99e16574253094fdf6106c975b356c377c6d3ed4112d",
+      "candidateRecordsSha256": "sha256:8044a9ab6214c4e58a056913660953cd8b1b890b47cb30a8e061bf7953ada749"
+    }
+  },
+  "independentReviewPaths": [
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-trade-finance-sixteen-independent-DEEN-P-AM-review-v1/independent-whole-sixteen-DEEN-P-AM-card-QS.v2.actual.receipt.json"
+  ],
+  "nativeFingerprintMutationScope": "new physical temporary staging files only; only 16 current bindings returned",
+  "independentSubstantiveReviewClaim": false,
+  "fullAMNewReviewClaim": false,
+  "humanApprovalClaimed": false,
+  "activeWrites": 0,
+  "newStrictClosures": 0,
+  "checkedFrozenOutputField": "byteExactReturnedNativeFiles",
+  "byteExactReturnedNativeFileCount": 28,
+  "frozenRootAndIsolateHashesVerifiedBeforeAndAfter": true
+}

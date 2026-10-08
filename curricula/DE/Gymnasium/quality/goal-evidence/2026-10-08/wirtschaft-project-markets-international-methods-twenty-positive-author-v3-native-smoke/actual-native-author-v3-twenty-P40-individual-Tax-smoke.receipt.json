@@ -1,0 +1,42 @@
+{
+  "role": "actual_native_closed_P20_author_v3_smoke_not_independent_review_or_final_resources",
+  "checkedAt": "2026-10-08T14:34:55.885931+00:00",
+  "physicalIsolate": "/tmp/skillpilot-wirtschaft-Methods20-positive-v3-native-enum-smoke-bq8mkx4j",
+  "sourceAuthorV3Sha256": "sha256:c2d2d7be8064ccb9141ec3456882e312dc5a85d623b13f381dd46dbdf9c9b4f9",
+  "actualWholeIndividualTaxCandidateSha256": "sha256:fd41175001b716b7e36651c5d8dcf0a43a188ea447898136bbf383a86405fdd3",
+  "actualCommands": [
+    {
+      "name": "native-materialize-author-v3-twenty-closed-P-profiles",
+      "actualCommand": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-project-markets-international-methods-twenty-positive-author-v3-native-smoke/positive-author-v3-individual-Tax-smoke.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-project-markets-international-methods-twenty-bilingual-author-v1/positive.candidates.author-v3.json",
+        "--write"
+      ],
+      "actualExitCode": 0,
+      "cwd": "/tmp/skillpilot-wirtschaft-Methods20-positive-v3-native-enum-smoke-bq8mkx4j"
+    },
+    {
+      "name": "native-closed-P20-current-individual-Tax-schema-semantics-bindings",
+      "actualCommand": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-project-markets-international-methods-twenty-positive-author-v3-native-smoke/positive-author-v3-individual-Tax-smoke.config.json",
+        "--mode=check"
+      ],
+      "actualExitCode": 0,
+      "cwd": "/tmp/skillpilot-wirtschaft-Methods20-positive-v3-native-enum-smoke-bq8mkx4j"
+    }
+  ],
+  "closedSchemaAndSemanticsAndTwentyCurrentInputFingerprints": "PASS",
+  "actualSixBoundedContentCorrectionsRetained": true,
+  "actualV2toV3OnlyFiveInvalidEnumRepairs": true,
+  "allEvidenceE1G1AiCandidateNeedsHumanReview": true,
+  "finalSelectedV20NotYetImported": true,
+  "DGateOrHumanApprovalClaimed": false,
+  "newStrictClosures": 0,
+  "activeWrites": 0
+}

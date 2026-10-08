@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-08",
+  "goalId": "e9c4ec6b-9a54-579d-818f-87a7d39d4e3c",
+  "goalTitle": "Überschuldungsrisiken beurteilen",
+  "goalDescription": "Die lernende Person kann finanzielle Folgen von Konsumentscheidungen beurteilen und Risiken von Kreditnutzung und Überschuldung erklären.",
+  "decision": "REJECT",
+  "machineApproval": "Rejected AI",
+  "independentReviewer": "OpenAI Codex economics_visual_memory_audit",
+  "reviewerModel": "Codex; exact serving model identifier not exposed",
+  "imageAuthorIsReviewer": false,
+  "humanApproved": false,
+  "assetPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-e2-fourteen-image-author-20261008-v1/e9c4ec6b-9a54-579d-818f-87a7d39d4e3c/e9c4ec6b-9a54-579d-818f-87a7d39d4e3c.png",
+  "assetSha256": "sha256:095236f3e587301fac42ae9a89aa1299567fdc8724ba5d7b72744026c23bb132",
+  "actualFormat": "PNG",
+  "actualDimensions": {
+    "width": 1672,
+    "height": 941
+  },
+  "aspectRatioDecision": "Close native16:9 landscape; no exception needed. Format not mechanically normalized.",
+  "provider": "OpenAI Codex image_gen",
+  "generationTool": "image_gen.imagegen",
+  "generationModel": "Image model version not exposed",
+  "generationRecordPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-e2-fourteen-image-author-20261008-v1/e9c4ec6b-9a54-579d-818f-87a7d39d4e3c/generation.actual.json",
+  "generationRecordSha256": "sha256:f083c699fbacd7660047a8c36e870b8ca201aa28a1db60af36ad242e4b6f957c",
+  "generationIsApproval": false,
+  "actualInspection": {
+    "nativeViewed": true,
+    "width360Viewed": true,
+    "width680Viewed": true,
+    "fachlichePruefung": "The desired headphones are separated from future obligations, a limited budget is weighed against commitments, and advice is friendly rather than shaming. However, the scale's Raten pan also contains housing and groceries, conflating repayments and ordinary living costs. The actor's purchase calendar and flat checklist are facing the audience instead of the actor.",
+    "phone": "At 360 px purchase wish, constrained budget, cost scale and advice door remain clear. The Raten label wrongly generalises the mixed cost group; detailed checklist is not needed to understand the scene.",
+    "desktop": "At 680 px house/grocery icons on the Raten scale pan visibly conflict with the separate front labels Miete and Lebensmittel. The actor-facing private paper orientation is also evident.",
+    "actorPerspective": "The standing purchase calendar shows its written face toward the audience while its user is seated behind it. The flat checklist text is similarly upright for the audience and upside down for the seated user. The laptop itself faces the actor correctly.",
+    "style": "Friendly clear comic raster, coherent broad colors and approachable people without photorealism or sterile technical restyling.",
+    "mandatorySmallPrint": false
+  },
+  "blockingFindings": [
+    {
+      "severity": "blocking",
+      "kind": "financial-distinction",
+      "description": "The Raten scale pan groups repayment, rent/housing and grocery costs under one repayment label.",
+      "targetedCorrection": "Use an accurate combined label such as Raten + Lebenshaltung, while keeping the separate labelled repayment and normal-cost envelopes."
+    },
+    {
+      "severity": "blocking",
+      "kind": "actor-perspective",
+      "description": "Purchase calendar and flat checklist are readable toward audience instead of their seated user.",
+      "targetedCorrection": "Correct both private paper reading directions or remove their actor-facing text planes and keep the purchase/plan idea as a separate conceptual symbol."
+    }
+  ],
+  "interpretationLimits": [
+    "No inevitable bankruptcy or claim that every credit use is harmful is represented. The scale is conceptual, not a numerical affordability calculation."
+  ],
+  "goalSemanticSource": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+  "goalTextStatus": "Actual current canonical German title/description inspected; no D/P gate attested by this image review.",
+  "derivatives": [
+    {
+      "width": 360,
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-e2-fourteen-image-author-20261008-v1/independent-review/e9c4ec6b-9a54-579d-818f-87a7d39d4e3c/e9c4ec6b-9a54-579d-818f-87a7d39d4e3c.width-360.png",
+      "sha256": "sha256:0bad6693244a629a37735570e07e21ea70da688880f8ec2989d22dafddf12393"
+    },
+    {
+      "width": 680,
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-e2-fourteen-image-author-20261008-v1/independent-review/e9c4ec6b-9a54-579d-818f-87a7d39d4e3c/e9c4ec6b-9a54-579d-818f-87a7d39d4e3c.width-680.png",
+      "sha256": "sha256:47ed45bdfd486fcc7b550355ec0a57142ca740d755874bb6de4d42af355e8a64"
+    }
+  ],
+  "notClaimed": [
+    "live QA adoption",
+    "description-review closure",
+    "positive-evidence closure",
+    "central M7 growth",
+    "human release approval",
+    "classroom acceptance"
+  ]
+}

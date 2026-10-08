@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "command": [
+    "node",
+    "scripts/prepare_goal_visualization.mjs",
+    "9ebddb42-c799-5cf3-bfbc-f611ac66207b",
+    "--landscape",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "--subject",
+    "wirtschaftswissenschaften",
+    "--lang",
+    "de",
+    "--provider",
+    "OpenAI Codex image_gen",
+    "--review-status",
+    "pilot"
+  ],
+  "startedAt": "2026-10-08T09:02:38.915938+00:00",
+  "completedAt": "2026-10-08T09:02:38.991560+00:00",
+  "exitCode": 0,
+  "copies": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/9ebddb42-c799-5cf3-bfbc-f611ac66207b/correction-v2/metadata.json",
+      "sha256": "sha256:2a6427fa93f91e2792a8ac0afd18cad86215bee3505142a8919ec87553c22502"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/9ebddb42-c799-5cf3-bfbc-f611ac66207b/correction-v2/nano-banana-prompt.de.md",
+      "sha256": "sha256:852e69244e2e97ee4784e8b820cd9f8000e7a5dd73cf435088169174d3aa053b"
+    }
+  ],
+  "actualOriginalSeenByRoot": true,
+  "actualIndependentFinding": "Preserve the people, central bank, reserve and interest panels and existing open comparison. Correct ONLY the right side of the Zielkonflikt scale: the shopping basket is a PRICE/inflation motif, not employment, so replace the wrong Jobs label by the short clearly readable open question Preise?. Keep the actual basket, no new deterministic effect law. Left domestic-credit motif stays a possible consideration, not an asserted automatic response.",
+  "newImageIsApproval": false
+}

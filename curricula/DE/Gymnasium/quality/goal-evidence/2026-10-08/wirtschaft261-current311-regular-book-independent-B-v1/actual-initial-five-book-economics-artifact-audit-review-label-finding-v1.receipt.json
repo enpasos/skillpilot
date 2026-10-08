@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "kind": "actual-initial-regular-five-book-economics-artifact-audit",
+  "reviewedAt": "2026-10-08T17:00:09.271574+00:00",
+  "reviewer": "economics_visual_source_continuation (independent B)",
+  "result": "PASS_WITH_ONE_VISIBLE_PDF_REVIEW_LABEL_FINDING",
+  "actualGeneratedArtifactBindings": {
+    "modelSha256": "sha256:4f513833ad8702e506fccc467f08674ed57a9d13756440637250bc2218c3c5f2",
+    "modelDigest": "sha256:b6c6d71379e926a5388e0743da90537949c4be68eda8d9790a33c8d052b2eb59",
+    "pdfSha256": "sha256:24ba6f6aa26cad5a53049d28a1aae9bc0b48d56a5cadb83572431f7c1a0de225",
+    "renderManifestSha256": "sha256:aa56393ee28a5ad732652f6cb6bb8c1c60c0aa2c681ef16f58586f8e324885d1",
+    "originalSourcesSha256": "sha256:b706fcadc93709da6c582a26c5d474014155aee5606dd798c262a761bffe046c"
+  },
+  "actualChecks": {
+    "indexSubjects": 5,
+    "currentEconomicsOrdinaryIDsUniqueExact": 311,
+    "positiveEvidenceV2E1G1NeedsHumanReview": 261,
+    "withoutPositiveEvidence": 50,
+    "reviewCandidateImages": 261,
+    "humanApprovedImages": 0,
+    "pagesWithoutReviewCandidateImage": 50,
+    "pdfGoalPages": 311,
+    "pdfFrontMatterPages": 3,
+    "pdfPhysicalPages": 314,
+    "pdfBytes": 30004171,
+    "pdfPageFormat": "A4 portrait",
+    "pdfTagged": true,
+    "all311OwnerIDsOnExpectedPdfPhysicalPage": true,
+    "actualPdfTextBoxes": 8900,
+    "actualPdfTextBoxesBeyondPageBounds": 0,
+    "textBoxTolerancePixels": 1,
+    "foreignRegistryDefinitionsExactlyHEAD": 4,
+    "allTwentyGeneratedArtifactByteAndModelBindingsPassed": true,
+    "economicsHasAtlasManifest": false,
+    "economicsApplicabilityPages": 0,
+    "economicsSourceDocuments": 0,
+    "economicsSourceEvidenceRows": 0,
+    "economicsSourceGoalEntries": 311
+  },
+  "nativeTargetedPublicationVerification": {
+    "actualSession": 91970,
+    "exitCode": 0,
+    "stdout": "{\"bookId\":\"de-gym-wirtschaftswissenschaften-bundesweit\",\"goalPages\":311,\"modelDigest\":\"sha256:b6c6d71379e926a5388e0743da90537949c4be68eda8d9790a33c8d052b2eb59\",\"nativePublicationGate\":\"PASS\",\"humanRelease\":\"pending\"}",
+    "toolchain": "Node20.20.2 + retained real Poppler binaries/libpoppler134"
+  },
+  "actualPdfVisualSamples": [
+    {
+      "goalId": "8768186a-a52c-50b3-a1d7-a56084aa31e0",
+      "goalPage": 1,
+      "physicalPage": 4,
+      "path": "tmp/wirtschaft-regular-economics-real-pdf-first-owner-actual.png",
+      "finding": "Actually viewed: heading, main illustration, description, prerequisite/assessment references and footer are present and uncropped.",
+      "sha256": "sha256:2f5242d0790f3d8b1e9d0c51b9fe18bd44a597efdd6f97d2563ce6fd80f8fca2"
+    },
+    {
+      "goalId": "15d18bd1-0ae1-58c8-89fd-623bebe12041",
+      "goalPage": 262,
+      "physicalPage": 265,
+      "path": "tmp/wirtschaft-regular-economics-real-pdf-macro-financing-actual.png",
+      "finding": "Actually viewed: long heading wraps safely, shared financing illustration is visible, current description and outside-book orientation/assessment references remain readable and uncropped.",
+      "sha256": "sha256:afa0a66b8de413c03ab5855fa99a69a8032e461843257f12922d7a42e2bb34c0"
+    }
+  ],
+  "visibleReviewLabelFinding": {
+    "observed": "Actual entire PDF text contains no Review/in Prüfung/Freigabe label; cover reads Kanonische Kapitelsicht. BookModel/manifest correctly use review and the UI shows REVIEW-PILOT.",
+    "normativeReference": "docs/concept/skill-graph/learning-goal-book-and-evidence-review-pipeline.md:539-552 requires a visibly labelled review edition.",
+    "status": "Reported to Root; a bounded Economics-only title successor with (Review-Ausgabe) is being built. No silent rewrite of this initial audit."
+  },
+  "scopeLimits": [
+    "No historical description/image/source reviews restarted.",
+    "No new strict Economics goal closure or M7 is claimed.",
+    "Real Economics maturity is M1, separate from the synthetic M2 UI lookup fixture.",
+    "This canonical review book makes no complete source-atlas coverage claim; the 50 missing P/V pages remain explicit.",
+    "Human release and actual host/deployment acceptance remain pending.",
+    "PDF visual findings cover only the two actual rendered samples; the full314-page machine check covers text bounds and native page/link/digest contracts."
+  ]
+}

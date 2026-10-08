@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "actualExecutedAt": "2026-10-08T12:24:47.192269+00:00",
+  "role": "actual_targeted_post_integration_native_layer_a_countercheck",
+  "physicalIsolate": "/tmp/skillpilot-wirtschaft-q4-migration-terminal-released-current191-0_wk8k_w",
+  "actualCurrentRootInputs": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "sha256:7bd5bb2355ff8e2c1fc6c687066e86bbb6f98563d90d4f098c5954db868d6f87",
+      "isolateExactlyEqualsCurrentRoot": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-m7-current-baseline-20261008-v1/wirtschaftswissenschaften.semantic-kinds.json",
+      "sha256": "sha256:828ffb51022e8f779804965584f31a3fda257e6671f4e409e04d964e897bff96",
+      "isolateExactlyEqualsCurrentRoot": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/wirtschaftswissenschaften.qa.json",
+      "sha256": "sha256:3065b3f8c99f3fd3816144c5384b58d17abfa14c216f66ae1ce9ec29d1690fe7",
+      "isolateExactlyEqualsCurrentRoot": true
+    },
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "sha256:af9683a1360d4978084a516775943091d25a19a806673be7d35ecbedb266ccf9",
+      "isolateExactlyEqualsCurrentRoot": true
+    }
+  ],
+  "actualCommand": [
+    "node",
+    "app/node_modules/tsx/dist/cli.mjs",
+    "app/scripts/actualRootCurrentQ4TerminalLayerACountercheck20261008v5.ts"
+  ],
+  "actualExitCode": 0,
+  "evaluatorRulesAltered": false,
+  "technicalProbeDelta": "Only two exclusive write destinations and the baseline-only kind snapshot pointer changed. Official native evaluator functions unchanged; original before370 snapshot really paired with its exact retained kinds.",
+  "actualCurrentSevenRules": [
+    [
+      "CQR-101",
+      "pass"
+    ],
+    [
+      "CQR-102",
+      "pass"
+    ],
+    [
+      "CQR-103",
+      "pass"
+    ],
+    [
+      "CQR-104",
+      "pass"
+    ],
+    [
+      "CQR-201",
+      "pass"
+    ],
+    [
+      "CQR-202",
+      "pass"
+    ],
+    [
+      "CQR-203",
+      "pass"
+    ]
+  ],
+  "actualApplicability": {
+    "goals": 371,
+    "errors": 0,
+    "warnings": 0,
+    "diagnostics": 1451
+  },
+  "nativeFrozenFilesByteExactBeforeAfter": 28,
+  "ordinaryDenominator": 303,
+  "newStrictClosures": 0,
+  "bindingRestorations": 1,
+  "humanApprovalClaimed": false,
+  "publicationPerformed": false
+}

@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-08T16:39:32.439123+00:00",
+  "role": "actual_native_after_root_whole_five_owner_pages_and_ten_unique_round_records_adjudication",
+  "rootActualAdjudicationAuthoringPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-final-native-D5-preparation-v3/native-d-macro-five-national-checkpoint-final/synthesis-authoring.json",
+  "rootAuthoringDigest": "sha256:a493c83eebd403d10d1a41e40a1f4c041f7123e510d24e0de09260b28b7462d1",
+  "actualCommands": [
+    {
+      "name": "native-root-authored-synthesis-manifest",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-final-native-D5-preparation-v3/native-d-macro-five-national-checkpoint.final.batch.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-final-native-D5-preparation-v3/native-d-macro-five-national-checkpoint-final/synthesis-authoring.json",
+        "--write"
+      ],
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-root-authored-five-resolutions",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-final-native-D5-preparation-v3/native-d-macro-five-national-checkpoint.final.batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-final-native-D5-preparation-v3/native-d-macro-five-national-checkpoint-final/synthesis-decisions.json",
+        "--write"
+      ],
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-current-five-resolution-index",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-final-native-D5-preparation-v3/native-d-macro-five-national-checkpoint.final.batch.config.json",
+        "--write"
+      ],
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-current-five-index-exact-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-final-native-D5-preparation-v3/native-d-macro-five-national-checkpoint.final.batch.config.json"
+      ],
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-current-five-prepared-exact-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-final-native-D5-preparation-v3/native-d-macro-five-national-checkpoint.final.batch.config.json"
+      ],
+      "actualExitCode": 0
+    }
+  ],
+  "newNativeArtifactsByteExactReturned": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-final-native-D5-preparation-v3/native-d-macro-five-national-checkpoint-final/resolution-index.json",
+      "digest": "sha256:4316600707548294f445b409245e764899b2c4e36516092e1b944cbab44714ea"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-final-native-D5-preparation-v3/native-d-macro-five-national-checkpoint-final/synthesis-decisions.json",
+      "digest": "sha256:8f36018affd5d67ccabe0be5479d435760f32830700b511dde90566e61cab13f"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-final-native-D5-preparation-v3/native-d-macro-five-national-checkpoint-final/resolutions/15d18bd1-0ae1-58c8-89fd-623bebe12041.resolution.json",
+      "digest": "sha256:72c832857278b2a98668c8773b1dd44c150f8987f6e1045b20e735edd39694b8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-final-native-D5-preparation-v3/native-d-macro-five-national-checkpoint-final/resolutions/da43dd2a-693b-5327-811f-c4c19ee064cd.resolution.json",
+      "digest": "sha256:b850731b50c93e26e908e7a04947ab5219bab1e77b97ede30e1736b3f0519594"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-final-native-D5-preparation-v3/native-d-macro-five-national-checkpoint-final/resolutions/9219c58c-d178-5612-8231-feac373c87df.resolution.json",
+      "digest": "sha256:1018363ca52fbda849339215d6427ac059d517293f10a9336871fde800f9eb40"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-final-native-D5-preparation-v3/native-d-macro-five-national-checkpoint-final/resolutions/053f1522-31a7-583f-85f5-366ed724d3c5.resolution.json",
+      "digest": "sha256:ef92960c188f5881544bb2138737ec9b1e1019cc867a7577665e4049c1b3c896"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-final-native-D5-preparation-v3/native-d-macro-five-national-checkpoint-final/resolutions/8e8a672e-67c6-52dd-8f87-3c1f2e874a3d.resolution.json",
+      "digest": "sha256:ce525fbe4f452f64aada8139a0d880c22143a0745c7b32ee08b52b7b032e183b"
+    }
+  ],
+  "whole28FrozenInputsBeforeAndAfterExact": true,
+  "ownIndependentSubstantiveDescriptionApprovalClaimed": false,
+  "humanOrLearnerApprovalClaimed": false,
+  "activeWrites": 0,
+  "newOrdinaryStrictClosures": 0,
+  "currentOrdinaryDenominator": 311,
+  "priorCurrentStrictCount": 261,
+  "expectedRestoredDescriptionBindingCount": 5,
+  "nationalGK8e8And9219ScopeBlockersRemain": true,
+  "complete": true
+}

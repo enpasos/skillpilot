@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "role": "actual_native_Root_authored_P19_closed_schema_and_binding_smoke_not_substantive_or_independent_approval",
+  "checkedAt": "2026-10-08T15:01:16.612010+00:00",
+  "physicalIsolate": "/tmp/skillpilot-wirtschaft-Final19-P38-native-author-import-v2-7nsh0l6i",
+  "sourceOriginalAuthorPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-concrete-nineteen-bilingual-author-v1/positive.candidates.author-v1.json",
+  "sourceOriginalAuthorSha256": "sha256:9a028e8907dadb011eefe19975eedbbb74d660e62ada98a2b6546499eefa19ca",
+  "technicalNativeImportPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-concrete-nineteen-bilingual-author-v1/positive.candidates.native-author-import.v2.json",
+  "technicalNativeImportSha256": "sha256:1c250acc3b965ee4888db6d1810cbc9a278dd587244d9f91bd2480cea5c2d220",
+  "actualOnlyAddedMetadataField": "reviewer",
+  "all19WholeProfileRowsAnd38CasesOriginalAuthorExact": true,
+  "wholeIndividualTaxGoalCandidateSha256": "sha256:b3d2a0f40818b921a19cb69a8fbddf73c3521ed2ae0cd5cb68c23c550511491d",
+  "actualProfileCount": 19,
+  "actualWholeBilingualCaseCount": 38,
+  "actualCommands": [
+    {
+      "name": "native-materialize-Root-author-nineteen-closed-P38",
+      "actualCommand": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-concrete-nineteen-positive-native-author-import-v2-smoke/positive-author-v1-individual-Tax-smoke.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-concrete-nineteen-bilingual-author-v1/positive.candidates.native-author-import.v2.json",
+        "--write"
+      ],
+      "actualExitCode": 0,
+      "cwd": "/tmp/skillpilot-wirtschaft-Final19-P38-native-author-import-v2-7nsh0l6i"
+    },
+    {
+      "name": "native-check-nineteen-P38-individual-Tax-schema-semantics-fingerprints",
+      "actualCommand": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-concrete-nineteen-positive-native-author-import-v2-smoke/positive-author-v1-individual-Tax-smoke.config.json",
+        "--mode=check"
+      ],
+      "actualExitCode": 0,
+      "cwd": "/tmp/skillpilot-wirtschaft-Final19-P38-native-author-import-v2-7nsh0l6i"
+    }
+  ],
+  "closedSchemaAndSemanticsAndCurrentWholeCandidateFingerprints": "PASS",
+  "allEvidenceE1G1AiCandidateNeedsHumanReview": true,
+  "finalSelectedImagesNotImported": true,
+  "sourceTaxAMSubstantiveCounterreviewPending": true,
+  "technicalKindSourceBindingsDoNotClaimNewClassificationReview": true,
+  "DOrHumanApprovalClaimed": false,
+  "activeWrites": 0,
+  "newStrictClosures": 0
+}

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "actualCommand": [
+    "app/node_modules/.bin/tsx",
+    "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+    "--bundle",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/native-d-q3-site-one-final-v2/round-b/review-bundle-manifest.json",
+    "--input",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/native-d-q3-site-one-final-v2/round-b/description-review-input.json",
+    "--campaign",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/native-d-q3-site-one-final-v2/round-b/description-review-campaign.json",
+    "--batches-dir",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/native-d-q3-site-one-final-v2/round-b/batches",
+    "--results-dir",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/native-d-q3-site-one-final-v2/round-b/results"
+  ],
+  "actualExitCode": 0,
+  "actualStdout": "Goal-description review campaign results valid: 1\n",
+  "actualStderr": "",
+  "actualCompletedAt": "2026-10-08T10:54:07.212230+00:00",
+  "recordSha256": "sha256:dec3d00ed8ab2288553bad9c2207b6f83d97be647d9235528cf93f066914b6c3",
+  "runSha256": "sha256:7146505f99a47d114b141d9d3fa0c744d19c2e7b9b6b34b0ee7fa8040a4251d5",
+  "inspectionSha256": "sha256:1ca5d99559d3a84507e565f4177bea75ecf51fa9b348300cb64c03e2f9a3f9e3",
+  "scope": "Frozen self-contained own round B only; no live mutation",
+  "precedingMaterializationError": "Existing empty prepared results directory triggered FileExistsError before any result writes; corrected mkdir exist_ok=True. No prior results overwritten."
+}

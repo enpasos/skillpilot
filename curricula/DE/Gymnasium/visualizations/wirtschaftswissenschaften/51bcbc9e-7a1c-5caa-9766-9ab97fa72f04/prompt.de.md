@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Steuerinstrumente vergleichen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `51bcbc9e-7a1c-5caa-9766-9ab97fa72f04`
+- Titel: Steuerinstrumente vergleichen
+- Beschreibung: Die lernende Person kann verschiedene Steuertypen (direkt/indirekt) und deren Wirkungen vergleichen.
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `51bcbc9e-7a1c-5caa-9766-9ab97fa72f04.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/51bcbc9e-7a1c-5caa-9766-9ab97fa72f04/51bcbc9e-7a1c-5caa-9766-9ab97fa72f04.png`
+
+## Prompt
+
+```text
+Create one original friendly abstract comic illustration for SkillPilot economics learning. PNG landscape about16:9, about1600x900 or close native generator size. Warm ivory ground, clear dark outlines, rounded shapes, restrained teal, coral and gold accents, ordinary welcoming people. Match a friendly existing school-learning illustration family. Clear large main motif readable at360px and680px wide; generous empty margins, at most3 or4 large visual groups, no tiny labels or dense legend. No photorealism, no sterile technical blueprint, no SVG substitute, no official logos or party brands. Decorative clocks/papers have NO text or glyphs. Any notebook, diagram or display actually used by a person faces that person correctly; do not put actor-readable writing facing the viewer. No decorative pseudo-writing. This image motivates the competence; it does not claim observed achievement or a real law. Learning goal: Steuerinstrumente vergleichen. Die lernende Person kann verschiedene Steuertypen (direkt/indirekt) und deren Wirkungen vergleichen. Scene: A clear two-path comparison of direct and indirect taxes, side by side with equal visual weight. Left a wage/income envelope icon passes some coins directly to a public treasury icon; right a shopper buys a product at a shop and part of the payment moves from the shop to the same type of treasury icon. Only two large exact labels “Direkt” and “Indirekt”. Arrows make the payment routes unambiguous, no percentages and no implication that legal payment route alone decides economic burden. Two uncluttered large scenes, correctly oriented actors.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

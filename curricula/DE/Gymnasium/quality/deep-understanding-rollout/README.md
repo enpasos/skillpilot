@@ -1,11 +1,16 @@
 # Deep-understanding rollout progress
 
 This directory configures the central deterministic five-gate report for
-Mathematics, Physics, Chemistry and Biology. Current work targets Chemistry and
-Biology; the achieved Mathematics and Physics M7 floors remain protected.
+Mathematics, Physics, Chemistry, Biology and Economics. Current work targets
+Economics only; the achieved Mathematics and Physics M7 floors remain protected.
 
 Current continuation:
-[Chemistry/Biology: verified commit checkpoint, 177/378 Chemistry and 244/392 Biology, 8 October](https://github.com/enpasos/skillpilot/blob/main/docs/qa-ci/chemie-biologie-m7-chemie177-biologie244-commit-checkpoint-2026-10-08.md).
+[Economics: active machine-M7 plan and package tracking, 8 October](../../../../../docs/qa-ci/wirtschaft-m7-resumed-2026-10-08.md).
+The [Economics integration and regular goal-book checkpoint](../../../../../docs/qa-ci/wirtschaft-m7-commit-checkpoint-2026-10-08.md)
+records the unchanged 261/311 strict count, five freshly reviewed context
+bindings, the fifth registered review book, and remaining source/course-route findings.
+The [current Chemistry/Biology commit checkpoint, 177/378 Chemistry and 262/394 Biology, 8 October](../../../../../docs/qa-ci/chemie-biologie-m7-chemie177-biologie262-commit-checkpoint-2026-10-08.md)
+and its independent in-flight ownership remain preserved.
 
 A curricular-atomic goal counts only when all five gates are current at once:
 

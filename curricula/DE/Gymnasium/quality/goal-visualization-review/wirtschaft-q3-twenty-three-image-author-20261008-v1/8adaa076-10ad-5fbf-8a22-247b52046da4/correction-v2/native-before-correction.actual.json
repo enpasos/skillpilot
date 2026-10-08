@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "command": [
+    "node",
+    "scripts/prepare_goal_visualization.mjs",
+    "8adaa076-10ad-5fbf-8a22-247b52046da4",
+    "--landscape",
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "--subject",
+    "wirtschaftswissenschaften",
+    "--lang",
+    "de",
+    "--provider",
+    "OpenAI Codex image_gen",
+    "--review-status",
+    "pilot"
+  ],
+  "startedAt": "2026-10-08T09:02:08.905478+00:00",
+  "completedAt": "2026-10-08T09:02:08.979907+00:00",
+  "exitCode": 0,
+  "copies": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/8adaa076-10ad-5fbf-8a22-247b52046da4/correction-v2/metadata.json",
+      "sha256": "sha256:ad433d76e93bc246d06b8d334987d082247d724335cf35ddc8ca6077b2afe2e6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q3-twenty-three-image-author-20261008-v1/8adaa076-10ad-5fbf-8a22-247b52046da4/correction-v2/nano-banana-prompt.de.md",
+      "sha256": "sha256:8bc8cf79357095241baad7853580b17e417c00118f9d8cc9f86d5030cff79673"
+    }
+  ],
+  "actualOriginalSeenByRoot": true,
+  "actualIndependentFinding": "Preserve three geographic Fern/Nah/Im Inland cards, person, locations and paths. ONLY replace every fixed rating dot row for Kosten/Risiko/Lieferung by the SAME large neutral open question marker at each site, keeping those three category icons and labels; no numeric or colour ranking or implied distance law. Also correct the physical notebook: writing must face the woman who sits behind it, thus appear upside down to the external viewer, or use a few abstract marks without readable text. No misleading ticked completion or new ownership claim.",
+  "newImageIsApproval": false
+}

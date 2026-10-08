@@ -1,0 +1,38 @@
+{
+  "artifactKind": "actual-native-independent-description-round-validation-v1",
+  "recordedAt": "2026-10-08T06:39:34Z",
+  "reviewerAgent": "/root/economics_layer_a",
+  "runId": "wirtschaft-e2-twenty-final-d-b-codex-layer-a-20261008-v1",
+  "bundleFingerprint": "sha256:db2232bd33532020e851c57485fd19cf76a4dc3dd867ad00aa8b9dd6394cb65e",
+  "bookDigest": "sha256:eeb25522e226f4ed774ebba38627b4ab64f44b961fdcd08bfc67fd6865f2c7ad",
+  "recordsDigest": "sha256:31582673439764cfbad5b65f0dd1a702086c8ee1d312c5b99073021297349f90",
+  "runManifestDigest": "sha256:262c750d1493d0344d5fadb5f5f201192cd01e6f30ba07df18f4ef1571635212",
+  "inspectionReceiptDigest": "sha256:acc17c659126a88b788c4c8d3a596aa9eb16468c7ce4bc3d10c500dd6c7e38e9",
+  "observedParametersDigest": "sha256:466c7864e961980c9a4913e0213984dcc1d7d6e1644e656d9d52748ba046e801",
+  "validation": {
+    "validator": "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+    "scope": "Own frozen round-b manifest, bilingual input, campaign, batch directory and result directory; self-contained D bundle. No current-live canonical mutation or round-a read.",
+    "command": "app/node_modules/.bin/tsx app/scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-native-preparation-technical-20261008-v2/native-d-e2-twenty-final/round-b/review-bundle-manifest.json --input curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-native-preparation-technical-20261008-v2/native-d-e2-twenty-final/round-b/description-review-input.json --campaign curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-native-preparation-technical-20261008-v2/native-d-e2-twenty-final/round-b/description-review-campaign.json --batches-dir curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-native-preparation-technical-20261008-v2/native-d-e2-twenty-final/round-b/batches --results-dir curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-native-preparation-technical-20261008-v2/native-d-e2-twenty-final/round-b/results",
+    "exitCode": 0,
+    "actualStdout": "Goal-description review campaign results valid: 20\n",
+    "recordCount": 20,
+    "schemaAndExactBindingsPass": true,
+    "firstAttempt": "A toolchainVersion string containing spaces failed the native stable-ID pattern. The unaccepted run draft is retained under inspection/technical-run-before-contract-field-correction.json; only that technical field was corrected, and native validation was rerun successfully. No record or frozen input changed."
+  },
+  "independentTechnicalChecks": {
+    "allTwelveBundleArtifactByteCountsAndDigestsMatch": true,
+    "exactBilingualGoalPageTextBindings": 20,
+    "allTwentyAbsentFrozenProfilesHonestlyRecommendCreate": true,
+    "individualPageDerivativesActuallyInspected": 20
+  },
+  "reviewSummary": {
+    "keep": 20,
+    "revise": 0,
+    "splitReview": 0,
+    "block": 0,
+    "profileCreateRecommendations": 20,
+    "newStrictCentralClosures": 0,
+    "restoredBindingsClaimed": 0
+  },
+  "limits": "This verifies honest candidate records and this agent's actual inspection receipt. Two independent rounds, synthesis, explicit resolution of the book's absent profiles using actual separate current P evidence, and native integration remain required. It grants no human approval, publication acceptance, Atomicity/Memory re-review, learner observation or classroom trial."
+}

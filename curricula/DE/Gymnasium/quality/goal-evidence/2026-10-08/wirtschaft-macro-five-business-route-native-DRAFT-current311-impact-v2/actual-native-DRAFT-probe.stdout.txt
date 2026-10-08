@@ -1,0 +1,133 @@
+{
+  "route": [
+    {
+      "id": "CQR-101",
+      "status": "pass",
+      "details": []
+    },
+    {
+      "id": "CQR-102",
+      "status": "pass",
+      "details": []
+    },
+    {
+      "id": "CQR-103",
+      "status": "pass",
+      "details": []
+    },
+    {
+      "id": "CQR-104",
+      "status": "pass",
+      "details": []
+    },
+    {
+      "id": "CQR-201",
+      "status": "pass",
+      "details": []
+    },
+    {
+      "id": "CQR-202",
+      "status": "fail",
+      "details": [
+        "Weak examData: Q2 BWL: Gewinnschwellen und Preis-/Kostenänderungen [69d74bd1-9ef1-5a46-bea5-104324317ded] (reviewStatus=draft)",
+        "Weak examData: Q2 LK BWL: Gewinnschwelle, Investition und Finanzkennzahlen [241d7c79-efdf-5425-8c03-115739dce004] (reviewStatus=draft)"
+      ]
+    },
+    {
+      "id": "CQR-203",
+      "status": "warn",
+      "details": [
+        "Incomplete exam release/coverage: Q2 BWL: Gewinnschwellen und Preis-/Kostenänderungen [69d74bd1-9ef1-5a46-bea5-104324317ded] (reviewStatus is not released)",
+        "Incomplete exam release/coverage: Q2 LK BWL: Gewinnschwelle, Investition und Finanzkennzahlen [241d7c79-efdf-5425-8c03-115739dce004] (reviewStatus is not released)"
+      ]
+    }
+  ],
+  "source": "pass",
+  "graph": "pass",
+  "types": "pass",
+  "compiler": {
+    "goals": 389,
+    "errors": 0,
+    "warnings": 0,
+    "diagnostics": 1445
+  },
+  "readiness": [
+    {
+      "id": "69d74bd1-9ef1-5a46-bea5-104324317ded",
+      "direct": 1,
+      "effective": 1,
+      "inherited": [],
+      "transitive": 11,
+      "cycles": 0
+    },
+    {
+      "id": "241d7c79-efdf-5425-8c03-115739dce004",
+      "direct": 3,
+      "effective": 3,
+      "inherited": [],
+      "transitive": 18,
+      "cycles": 0
+    }
+  ],
+  "views": [
+    {
+      "view": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json",
+      "courseProfile": "GK",
+      "navActuallyRendered": true,
+      "navVisibleParents": [
+        "composition:de-de-gym-economics-gk:structure:economics-q2"
+      ],
+      "terminalTargets": [
+        {
+          "goalId": "69d74bd1-9ef1-5a46-bea5-104324317ded",
+          "actuallyTarget": true,
+          "actualVisibleParents": [
+            "5982abda-0b0e-51a5-930f-1f58bd757f30"
+          ],
+          "immediatePrerequisitesMissingFromTargets": []
+        },
+        {
+          "goalId": "241d7c79-efdf-5425-8c03-115739dce004",
+          "actuallyTarget": false,
+          "actualVisibleParents": [],
+          "immediatePrerequisitesMissingFromTargets": []
+        }
+      ],
+      "targetAtomicCount": 229
+    },
+    {
+      "view": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-lk.view.json",
+      "courseProfile": "LK",
+      "navActuallyRendered": true,
+      "navVisibleParents": [
+        "composition:de-de-gym-economics-lk:structure:economics-q2"
+      ],
+      "terminalTargets": [
+        {
+          "goalId": "69d74bd1-9ef1-5a46-bea5-104324317ded",
+          "actuallyTarget": true,
+          "actualVisibleParents": [
+            "5982abda-0b0e-51a5-930f-1f58bd757f30"
+          ],
+          "immediatePrerequisitesMissingFromTargets": []
+        },
+        {
+          "goalId": "241d7c79-efdf-5425-8c03-115739dce004",
+          "actuallyTarget": true,
+          "actualVisibleParents": [
+            "5982abda-0b0e-51a5-930f-1f58bd757f30"
+          ],
+          "immediatePrerequisitesMissingFromTargets": []
+        }
+      ],
+      "targetAtomicCount": 311
+    }
+  ],
+  "changedOrdinaryGoalIds": [
+    "053f1522-31a7-583f-85f5-366ed724d3c5",
+    "8e8a672e-67c6-52dd-8f87-3c1f2e874a3d",
+    "15d18bd1-0ae1-58c8-89fd-623bebe12041",
+    "9219c58c-d178-5612-8231-feac373c87df",
+    "da43dd2a-693b-5327-811f-c4c19ee064cd"
+  ]
+}

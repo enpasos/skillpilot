@@ -1,0 +1,83 @@
+{
+  "schemaVersion": 1,
+  "actualExecutedAt": "2026-10-08T11:01:37.355742+00:00",
+  "actualRootReading": "Both whole new independent site records actually read, including all6understanding fields, bilingual goal and whole rationale; previous actual whole23DEEN/P46/AM46/three whole cards/source reviews remain.",
+  "actualRecords": {
+    "round-a": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/native-d-q3-site-one-final-v2/round-a/results/wirtschaft-q3-site-one-current303-corrected-image-v2-20261008-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:f7a9fd5cd1970e056ec60f82b3540a6593c7ba0af3314d1638233bc534d836cd"
+    },
+    "round-b": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/native-d-q3-site-one-final-v2/round-b/results/wirtschaft-q3-site-one-current303-corrected-image-v2-20261008-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:dec3d00ed8ab2288553bad9c2207b6f83d97be647d9235528cf93f066914b6c3"
+    }
+  },
+  "actualCommands": [
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/native-d-q3-site-one.final.batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/native-d-q3-site-one-final-v2/root-finalization-v2-step-1.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/native-d-q3-site-one-final-v2/root-finalization-v2-step-1.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/native-d-q3-site-one.final.batch.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/native-d-q3-site-one-final-v2/root-targeted-one-synthesis-authoring-v2.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/native-d-q3-site-one-final-v2/root-finalization-v2-step-2.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/native-d-q3-site-one-final-v2/root-finalization-v2-step-2.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/native-d-q3-site-one.final.batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/native-d-q3-site-one-final-v2/synthesis-decisions.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/native-d-q3-site-one-final-v2/root-finalization-v2-step-3.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/native-d-q3-site-one-final-v2/root-finalization-v2-step-3.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/native-d-q3-site-one.final.batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/native-d-q3-site-one-final-v2/root-finalization-v2-step-4.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-site-one-correction-native-preparation-technical-20261008-v2/native-d-q3-site-one-final-v2/root-finalization-v2-step-4.stderr.txt"
+    }
+  ],
+  "currentTargetedDescriptions": 1,
+  "historicalFrozenFilesVerifiedByteExact": 28,
+  "unchangedOtherWholePages": 22,
+  "newSubstantiveGoalDescriptionChanges": 0,
+  "currentPageAndImageBindingRestoration": 1,
+  "priorAlreadyStrictGoalRestoration": 0,
+  "humanApprovalClaimed": false,
+  "liveMutations": 0
+}

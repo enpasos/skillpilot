@@ -1,0 +1,22 @@
+node:fs:596
+  handleErrorFromBinding(ctx);
+  ^
+
+Error: ENOENT: no such file or directory, open '/tmp/skillpilot-wirtschaft-BY-current311-native-QA-kcgmgwla/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'
+    at Object.openSync (node:fs:596:3)
+    at readFileSync (node:fs:464:35)
+    at discoverActiveMemoryCardReviewConfigs (/tmp/skillpilot-wirtschaft-BY-current311-native-QA-kcgmgwla/app/scripts/memoryCardReviewConfigDiscovery.ts:149:34)
+    at loadMemoryReviewOriginReferences (/tmp/skillpilot-wirtschaft-BY-current311-native-QA-kcgmgwla/app/scripts/applicabilityCompiler.ts:482:23)
+    at buildApplicabilityCompilation (/tmp/skillpilot-wirtschaft-BY-current311-native-QA-kcgmgwla/app/scripts/applicabilityCompiler.ts:798:55)
+    at <anonymous> (/tmp/skillpilot-wirtschaft-BY-current311-native-QA-kcgmgwla/app/scripts/economics-current311-post-BY-actual-native-layerA.ts:6058:150)
+    at ModuleJob.run (node:internal/modules/esm/module_job:195:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:336:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:106:12) {
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: '/tmp/skillpilot-wirtschaft-BY-current311-native-QA-kcgmgwla/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json'
+}
+
+Node.js v18.19.1

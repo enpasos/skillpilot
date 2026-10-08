@@ -1,0 +1,199 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:9cc7cd0e3c2db25611d5e79faa1756ea0dc0189862421e096cf2fa5449113510",
+  "reviewInputFingerprint": "sha256:63d67c7fa6791c84b9f248731087a053d9a0b85094307632f957746bc6451348",
+  "goalCount": 9,
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-q1-nine-current303-final-author-v2-20261008-a",
+      "roundId": "wirtschaft-q1-nine-current303-final-author-v2-20261008-first-pass-a",
+      "independenceGroupId": "wirtschaft-q1-nine-current303-final-author-v2-20261008-independent-a",
+      "runIds": [
+        "wirtschaft-q1-nine-round-a-codex-actual-20261008-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact serving model identifier not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "wirtschaft-q1-nine-current303-final-author-v2-20261008-b",
+      "roundId": "wirtschaft-q1-nine-current303-final-author-v2-20261008-first-pass-b",
+      "independenceGroupId": "wirtschaft-q1-nine-current303-final-author-v2-20261008-independent-b",
+      "runIds": [
+        "wirtschaft-q1-nine-independent-description-round-b-codex-20261008-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact model identifier not disclosed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 9,
+    "unavailable": 0,
+    "requiresSynthesis": 9
+  },
+  "goals": [
+    {
+      "goalId": "8c4d53d1-2617-5e5d-9234-f12d19e38322",
+      "firstRecordId": "wirtschaft-q1-nine-round-a-current-8c4d53d1-2617-5e5d-9234-f12d19e38322",
+      "secondRecordId": "wirtschaft-q1-nine-independent-description-round-b-codex-20261008-v1.001",
+      "firstRunId": "wirtschaft-q1-nine-round-a-codex-actual-20261008-v1",
+      "secondRunId": "wirtschaft-q1-nine-independent-description-round-b-codex-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "79edbe3a-7557-5b3b-a0f2-c31f45b6dad7",
+      "firstRecordId": "wirtschaft-q1-nine-round-a-current-79edbe3a-7557-5b3b-a0f2-c31f45b6dad7",
+      "secondRecordId": "wirtschaft-q1-nine-independent-description-round-b-codex-20261008-v1.002",
+      "firstRunId": "wirtschaft-q1-nine-round-a-codex-actual-20261008-v1",
+      "secondRunId": "wirtschaft-q1-nine-independent-description-round-b-codex-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ab556d14-b0c0-5630-8ee3-f07877fa28bd",
+      "firstRecordId": "wirtschaft-q1-nine-round-a-current-ab556d14-b0c0-5630-8ee3-f07877fa28bd",
+      "secondRecordId": "wirtschaft-q1-nine-independent-description-round-b-codex-20261008-v1.003",
+      "firstRunId": "wirtschaft-q1-nine-round-a-codex-actual-20261008-v1",
+      "secondRunId": "wirtschaft-q1-nine-independent-description-round-b-codex-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "96c2c114-8474-5e4c-bfcf-c9e526c8c9ad",
+      "firstRecordId": "wirtschaft-q1-nine-round-a-current-96c2c114-8474-5e4c-bfcf-c9e526c8c9ad",
+      "secondRecordId": "wirtschaft-q1-nine-independent-description-round-b-codex-20261008-v1.004",
+      "firstRunId": "wirtschaft-q1-nine-round-a-codex-actual-20261008-v1",
+      "secondRunId": "wirtschaft-q1-nine-independent-description-round-b-codex-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1c0d950c-c618-583f-bfa7-be1d4e3578b6",
+      "firstRecordId": "wirtschaft-q1-nine-round-a-current-1c0d950c-c618-583f-bfa7-be1d4e3578b6",
+      "secondRecordId": "wirtschaft-q1-nine-independent-description-round-b-codex-20261008-v1.005",
+      "firstRunId": "wirtschaft-q1-nine-round-a-codex-actual-20261008-v1",
+      "secondRunId": "wirtschaft-q1-nine-independent-description-round-b-codex-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a307a7f1-9f14-50e5-b7ba-1e70c8465ee7",
+      "firstRecordId": "wirtschaft-q1-nine-round-a-current-a307a7f1-9f14-50e5-b7ba-1e70c8465ee7",
+      "secondRecordId": "wirtschaft-q1-nine-independent-description-round-b-codex-20261008-v1.006",
+      "firstRunId": "wirtschaft-q1-nine-round-a-codex-actual-20261008-v1",
+      "secondRunId": "wirtschaft-q1-nine-independent-description-round-b-codex-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a17899b9-f872-5236-a329-ec1a33d427a3",
+      "firstRecordId": "wirtschaft-q1-nine-round-a-current-a17899b9-f872-5236-a329-ec1a33d427a3",
+      "secondRecordId": "wirtschaft-q1-nine-independent-description-round-b-codex-20261008-v1.007",
+      "firstRunId": "wirtschaft-q1-nine-round-a-codex-actual-20261008-v1",
+      "secondRunId": "wirtschaft-q1-nine-independent-description-round-b-codex-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "51bcbc9e-7a1c-5caa-9766-9ab97fa72f04",
+      "firstRecordId": "wirtschaft-q1-nine-round-a-current-51bcbc9e-7a1c-5caa-9766-9ab97fa72f04",
+      "secondRecordId": "wirtschaft-q1-nine-independent-description-round-b-codex-20261008-v1.008",
+      "firstRunId": "wirtschaft-q1-nine-round-a-codex-actual-20261008-v1",
+      "secondRunId": "wirtschaft-q1-nine-independent-description-round-b-codex-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "72bde56f-a752-5bc7-8472-24272c6075a0",
+      "firstRecordId": "wirtschaft-q1-nine-round-a-current-72bde56f-a752-5bc7-8472-24272c6075a0",
+      "secondRecordId": "wirtschaft-q1-nine-independent-description-round-b-codex-20261008-v1.009",
+      "firstRunId": "wirtschaft-q1-nine-round-a-codex-actual-20261008-v1",
+      "secondRunId": "wirtschaft-q1-nine-independent-description-round-b-codex-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

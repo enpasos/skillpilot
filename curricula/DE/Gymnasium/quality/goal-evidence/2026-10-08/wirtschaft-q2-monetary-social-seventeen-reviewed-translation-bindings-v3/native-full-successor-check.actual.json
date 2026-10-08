@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "role": "technical_reviewed_translation_and_metadata_binding_successor",
+  "checkedAt": "2026-10-08T08:49:54.190405+00:00",
+  "physicalIsolate": "/tmp/skillpilot-wirtschaft-q2-monetary-social-seventeen-native-yvp_uv2p",
+  "independentlyReviewedTranslationSuccessors": 17,
+  "ordinaryDecisions": 303,
+  "unchangedRecordsByteExactPerGate": 286,
+  "cardsByteExact": 51,
+  "visibilityChecks": 98,
+  "actualInputs": [
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_accounting_business_finance.de.json",
+      "sha256": "sha256:b224cae9572d76b364adf3f6e2824e99d14cea344dda716c7c0efbd7cebab679",
+      "bytes": 6738,
+      "role": "actual_deck"
+    },
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_business_law.de.json",
+      "sha256": "sha256:8a379951c08148a4f6633e967c656c736897e073e6089b06d4293fe9961a7a27",
+      "bytes": 5406,
+      "role": "actual_deck"
+    },
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_international_development.de.json",
+      "sha256": "sha256:798c0b83234f9fbf687e8398d4512f8e8e101883c121fd8ccf61f4d779491f53",
+      "bytes": 6476,
+      "role": "actual_deck"
+    },
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_macro_money_policy.de.json",
+      "sha256": "sha256:d85fc8045f7f5fea017f21e7d347ca63a8e7f5e39635ceccab77ed75a3dbe4ec",
+      "bytes": 6918,
+      "role": "actual_deck"
+    },
+    {
+      "path": "app/public/data/de_gymnasium_economics_flashcards_market_order_policy.de.json",
+      "sha256": "sha256:1d70fc4f8b626b8ad6769b28a08bbd0a85ee44f9eaf79974c28b7978b09fb1a8",
+      "bytes": 6571,
+      "role": "actual_deck"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json",
+      "sha256": "sha256:402bd1d6e80504c0e481f8e0ff49fb995e1f730fbb8a8476b5be693517cb51cc",
+      "bytes": 7237,
+      "role": "configured_visibility_view"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-lk.view.json",
+      "sha256": "sha256:8ed46d64771e1b61849fd879a3570bda4c1c7c7c7f42dbeebbcd8ca15e437cd2",
+      "bytes": 7237,
+      "role": "configured_visibility_view"
+    }
+  ],
+  "commands": [
+    {
+      "stage": "fingerprint-staging",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-reviewed-translation-bindings-v3/native-fingerprint-staging-only/atomicity.config.json",
+        "--mode=check",
+        "--write-fingerprints"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-q2-monetary-social-seventeen-native-yvp_uv2p",
+      "exitCode": 0,
+      "nativeEntrypointSha256": "sha256:b3052145387d8fd9414af100e0aa61f2ec083875d852c9c87ea4aa2ed91f56d9"
+    },
+    {
+      "stage": "native-check",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-reviewed-translation-bindings-v3/atomicity.config.json",
+        "--mode=check"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-q2-monetary-social-seventeen-native-yvp_uv2p",
+      "exitCode": 0,
+      "nativeEntrypointSha256": "sha256:b3052145387d8fd9414af100e0aa61f2ec083875d852c9c87ea4aa2ed91f56d9"
+    },
+    {
+      "stage": "fingerprint-staging",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-reviewed-translation-bindings-v3/native-fingerprint-staging-only/memory.config.json",
+        "--mode=check",
+        "--write-fingerprints"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-q2-monetary-social-seventeen-native-yvp_uv2p",
+      "exitCode": 0,
+      "nativeEntrypointSha256": "sha256:9e06425851e85d22b284530e81a459c120c200fd0a019446ff87953c538c2672"
+    },
+    {
+      "stage": "native-check",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-monetary-social-seventeen-reviewed-translation-bindings-v3/memory.config.json",
+        "--mode=check"
+      ],
+      "workingDirectory": "/tmp/skillpilot-wirtschaft-q2-monetary-social-seventeen-native-yvp_uv2p",
+      "exitCode": 0,
+      "nativeEntrypointSha256": "sha256:9e06425851e85d22b284530e81a459c120c200fd0a019446ff87953c538c2672"
+    }
+  ],
+  "gateRecordRetention": {
+    "atomicity": {
+      "ordinaryDecisions": 303,
+      "changedGoalIds": [
+        "25278ecf-2e77-556e-9fe6-8f0b954cc680",
+        "29076abc-83ab-5e01-af81-18b7b3f7cf5a",
+        "424bae9f-8f2e-5093-a17d-ee5eadb6edde",
+        "577f0e2d-643a-5a0c-833b-301622a6cb00",
+        "5b5d1d53-71c3-5fbf-b1cf-977c868b60e3",
+        "66ca6838-c9b3-5ab3-b47a-6a669bc4c21c",
+        "676684da-5ba2-5c2a-ba7e-a8413915c29c",
+        "79d244e0-049e-59e9-a2fb-b8f8670b315a",
+        "7c9efc27-e74f-5a82-bf56-95a9aa21cb94",
+        "8ebbbe19-43dd-53ff-a6d0-9d94a5973616",
+        "9832485e-8431-58cb-b251-9473da415a5e",
+        "a72ddc94-6b38-5c14-8d8b-661472e4dfba",
+        "c5272ab8-baa0-570b-9f31-426d1f4460f2",
+        "c7341b02-3da3-50f8-a750-5d10ed7c9958",
+        "d17ff931-085d-56be-932d-3839b5b88ba8",
+        "da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0",
+        "f9132615-8166-5e42-ad04-d8b2b75d719d"
+      ],
+      "unchangedRecordsByteExact": 286,
+      "previousConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-nineteen-reviewed-translation-bindings-v1/atomicity.config.json",
+      "previousRecordsSha256": "sha256:295c2100dc00ada833a2af9648d5e983f6f4ce10c7f77ae37d8fe541d3dfc7f3",
+      "candidateRecordsSha256": "sha256:4ceb937d15a267f333c552e05d8b944ee1612953aa7a98eaae832cc15eaeae08"
+    },
+    "memory": {
+      "ordinaryDecisions": 303,
+      "changedGoalIds": [
+        "25278ecf-2e77-556e-9fe6-8f0b954cc680",
+        "29076abc-83ab-5e01-af81-18b7b3f7cf5a",
+        "424bae9f-8f2e-5093-a17d-ee5eadb6edde",
+        "577f0e2d-643a-5a0c-833b-301622a6cb00",
+        "5b5d1d53-71c3-5fbf-b1cf-977c868b60e3",
+        "66ca6838-c9b3-5ab3-b47a-6a669bc4c21c",
+        "676684da-5ba2-5c2a-ba7e-a8413915c29c",
+        "79d244e0-049e-59e9-a2fb-b8f8670b315a",
+        "7c9efc27-e74f-5a82-bf56-95a9aa21cb94",
+        "8ebbbe19-43dd-53ff-a6d0-9d94a5973616",
+        "9832485e-8431-58cb-b251-9473da415a5e",
+        "a72ddc94-6b38-5c14-8d8b-661472e4dfba",
+        "c5272ab8-baa0-570b-9f31-426d1f4460f2",
+        "c7341b02-3da3-50f8-a750-5d10ed7c9958",
+        "d17ff931-085d-56be-932d-3839b5b88ba8",
+        "da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0",
+        "f9132615-8166-5e42-ad04-d8b2b75d719d"
+      ],
+      "unchangedRecordsByteExact": 286,
+      "previousConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-nineteen-reviewed-translation-bindings-v1/memory.config.json",
+      "previousRecordsSha256": "sha256:64af7ce4e26f524adcd66a8dbf9b8e425ff8992d2cb87657589278931abfa68a",
+      "candidateRecordsSha256": "sha256:cc3e78e359919190bd56ea77431674aab96c6256afa6c87325f18ff8edc23251"
+    }
+  },
+  "independentReviewPaths": [
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-seventeen-independent-positive-parity-review-v1/independent-full-seventeen-positive-translation-AM-review.receipt.json"
+  ],
+  "nativeFingerprintMutationScope": "new physical temporary staging files only; only 17 current bindings returned",
+  "independentSubstantiveReviewClaim": false,
+  "fullAMNewReviewClaim": false,
+  "humanApprovalClaimed": false,
+  "activeWrites": 0,
+  "newStrictClosures": 0,
+  "checkedFrozenOutputField": "byteExactReturnedNativeFiles",
+  "byteExactReturnedNativeFileCount": 28,
+  "frozenRootAndIsolateHashesVerifiedBeforeAndAfter": true
+}

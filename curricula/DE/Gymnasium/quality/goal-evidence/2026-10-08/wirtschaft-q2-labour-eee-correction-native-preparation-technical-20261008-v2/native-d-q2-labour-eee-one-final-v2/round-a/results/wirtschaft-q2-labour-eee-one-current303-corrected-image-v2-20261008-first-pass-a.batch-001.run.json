@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "wirtschaft-q2-labour-eee-v2-independent-round-a-actual-20261008",
+  "campaignId": "wirtschaft-q2-labour-eee-one-current303-corrected-image-v2-20261008-a",
+  "roundId": "wirtschaft-q2-labour-eee-one-current303-corrected-image-v2-20261008-first-pass-a",
+  "batchId": "wirtschaft-q2-labour-eee-one-current303-corrected-image-v2-20261008-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:db13a3327928ed684b53468c116c408211a550a055a1118093105271305a9064",
+  "bundleFingerprint": "sha256:49fdebff3db21fa3c337b3cc3b8ff5ea0522a4fb3f489ae8ce361ae24b546321",
+  "bookDigest": "sha256:0058a2f2c6803a6da29fd69f75e3c28ffefc8cc34553f16a92fe79a5669f9bf9",
+  "provider": "OpenAI",
+  "model": "Codex session; exact serving model identifier not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "independent-targeted-current-description-positive-v2-image-successor",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:405f74a6d8de42befd7dd680fae8e1aa4e7bb799dc012988faa2c4a84bf0ee55",
+  "generationParametersFingerprint": "sha256:11327f3a93c0a5ff97fa5f780c9c90c09db8e6f7f473fd4a235fc2645989effa",
+  "independenceGroupId": "wirtschaft-q2-labour-eee-one-current303-corrected-image-v2-20261008-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "eee7217a-c2fb-58b6-ba84-2a8d5235edb5"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:eaa2de0e034c81ab34fe6043bf0da748d454931baf1fd030855fac094638acdb"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:8f1f78cf867b7d3b861163b0676a2e0e879715d0470cd7753025a3e98a8c1e7d"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:405f74a6d8de42befd7dd680fae8e1aa4e7bb799dc012988faa2c4a84bf0ee55"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:db13a3327928ed684b53468c116c408211a550a055a1118093105271305a9064"
+    }
+  ],
+  "startedAt": "2026-10-08T09:51:00.332659+00:00",
+  "completedAt": "2026-10-08T09:53:27.957773+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:607b6edf11be6465a86dbc3417ae04ea334cbbdf5591cce1b01b2d0b1041fd84",
+  "toolchainVersion": "codex-interactive-independent-description-review-v1"
+}

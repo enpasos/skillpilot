@@ -1,0 +1,13 @@
+// Apache-2.0. Actual whole native pages, current113 context; no historical rewrite.
+import {readFile,writeFile} from 'node:fs/promises'
+import {createHash}from'node:crypto'
+import {loadGoalBookBuildInputs}from'../../../../../../../app/scripts/goalBookModel.ts'
+import {buildGoalDescriptionRolloutSubsetModel}from'../../../../../../../app/scripts/materializeGoalDescriptionRolloutBatch.ts'
+const root=process.cwd(),iso="/tmp/skillpilot-wirtschaft-q2-labour-twelve-native-qnj7b9dg",own="curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-reviewed-current-source-bindings-v2",configs=["curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-native-preparation-technical-20261008-v1/native-d-q2-labour-twelve.final.batch.config.json"]
+const read=async(p:string)=>JSON.parse(await readFile(p,'utf8'))
+const rows=[]
+for(const config of configs){const c=await read(config);const original=await read(c.outputDirectory+'/bundle/book-model.json');const base=await loadGoalBookBuildInputs(c.baseGoalBookConfigPath,iso);const model=buildGoalDescriptionRolloutSubsetModel({baseModel:base.model,goalIds:c.goalIds,bookId:c.bookId,title:c.title});for(let i=0;i<original.pages.length;i++){const a=original.pages[i],b=model.pages[i];rows.push({goalId:a.goalId,originalPageFingerprint:a.pageFingerprint,currentPageFingerprint:b.pageFingerprint,actualWholePageByteEquivalent:JSON.stringify(a)===JSON.stringify(b),changedFields:Object.keys(a).filter(k=>JSON.stringify(a[k])!==JSON.stringify(b[k]))})}}
+if(!rows.every(r=>r.actualWholePageByteEquivalent))throw Error(JSON.stringify(rows.filter(r=>!r.actualWholePageByteEquivalent)))
+await writeFile(own+'/current113-native-wholepage-parity.actual.json',JSON.stringify({schemaVersion:1,checkedAt:new Date().toISOString(),physicalIsolate:iso,currentStrictBaseline:113,wholePageCount:rows.length,actualWholePageComparisons:rows,allWholePagesExactlyUnchanged:true,scope:'Actual production loader and bounded subset builder; no D restart for identical pages.',independentReviewClaim:false,activeWrites:0},null,2)+'
+',{flag:'wx'})
+console.log(JSON.stringify({currentStrictBaseline:113,wholePages:rows.length,allWholePagesExactlyUnchanged:true}))

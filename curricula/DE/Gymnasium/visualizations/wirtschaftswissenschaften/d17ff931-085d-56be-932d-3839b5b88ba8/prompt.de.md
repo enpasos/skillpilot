@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Ziele des Sozialstaats abwägen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `d17ff931-085d-56be-932d-3839b5b88ba8`
+- Titel: Ziele des Sozialstaats abwägen
+- Beschreibung: Die lernende Person kann Zielkonflikte zwischen Effizienz und Gerechtigkeit in der Sozialpolitik analysieren.
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `d17ff931-085d-56be-932d-3839b5b88ba8.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/d17ff931-085d-56be-932d-3839b5b88ba8/d17ff931-085d-56be-932d-3839b5b88ba8.png`
+
+## Prompt
+
+```text
+Create one original friendly abstract comic illustration for SkillPilot economics learning. PNG landscape about16:9, about1600x900 or close native generator size. Warm ivory ground, clear dark outlines, rounded shapes, restrained teal, coral and gold accents, ordinary welcoming people. Match the existing friendly school-learning illustration family. Main motif and important details clear at360px and680px width; generous margins, few visual groups. No photorealism, sterile blueprint, SVG substitute, official logos, dense legends, tiny text, pseudo-writing or decorative glyphs. Papers have no writing. Any physically used notebook/screen faces its reader correctly; floating conceptual diagrams are not backwards physical sheets. Motivate the competence without claiming learner achievement or current empirical outcomes. Learning goal: Ziele des Sozialstaats abwägen. Die lernende Person kann Zielkonflikte zwischen Effizienz und Gerechtigkeit in der Sozialpolitik analysieren. Scene: Friendly public-policy discussion around a balance with protected basic support on one side and work/incentive/production opportunity on the other. Alternative policies in open question clouds show possible complementarities and conflicts. Only “Gerechtigkeit”, “Effizienz”. No inevitable opposition, poverty blame or caricature of beneficiaries.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

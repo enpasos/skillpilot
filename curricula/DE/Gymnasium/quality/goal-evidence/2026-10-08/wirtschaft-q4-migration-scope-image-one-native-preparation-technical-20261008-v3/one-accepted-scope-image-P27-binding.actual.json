@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 1,
+  "role": "technical_current_bounded_source_scope_image_successor",
+  "actualCheckedAt": "2026-10-08T11:25:54.039282+00:00",
+  "physicalIsolate": "/tmp/skillpilot-wirtschaft-q4-sixde-scope-image-one-current164-knrvavt0",
+  "currentRootStrictBaseline": 164,
+  "selectedGoalId": "6de44afa-7f91-5fa4-9292-ec06e86e97a4",
+  "assetSha256": "sha256:1bd5f2b6fa6547e89447da9bc03fddd8a09a6b3b4c3965c18c43b04d0a94d746",
+  "actualIndependentScopeRootReceipt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-current-source-positive-AM-root-review-v2/actual-bounded-source-course-P2-AM2-independent-root-review.receipt.json",
+  "actualIndependentScopeRootReceiptSha256": "sha256:b88e4c588bc1c1b14ac6aac91afade5e323487c274e0d86fb004b1309e63e492",
+  "actualIndependentScopeBReceipt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-course-and-readiness-independent-review-b-v1/independent-complete-bounded-source-course-and-readiness-v2.actual.receipt.json",
+  "actualIndependentScopeBReceiptSha256": "sha256:a4570c270b7f5f50f246ce19b3c20e2c570bc8fb321ec9c3252969c616e22cd6",
+  "actualCurrentFinal27SelectionPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q4-twenty-seven-image-author-20261008-v1/independent-final-twenty-seven-selection-v2/actual-final-twenty-seven-KEEP-selection.v2.receipt.json",
+  "actualCurrentFinal27SelectionSha256": "sha256:cdb4770e76ab48f589e5c8a79d15885cdbb948b6095a4fbcb7e8d02e1e940cc5",
+  "actualCurrentImageReviewPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q4-twenty-seven-image-author-20261008-v1/independent-sixde-correction-v2-review/independent-sixde-correction-v2-image-review.actual.receipt.json",
+  "actualCurrentImageReviewSha256": "sha256:b5fe7444b6c92d8c86bba3584380cae6bfae960ffcfe2d932bee340c9091507d",
+  "actualPromptPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q4-twenty-seven-image-author-20261008-v1/6de44afa-7f91-5fa4-9292-ec06e86e97a4/correction-v2/actual-prompt.txt",
+  "actualPromptSha256": "sha256:67c3509083395c709f2e2be74622e14ff8005bf83a4d34e78e7925402dcee6d4",
+  "currentNativeP27ConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-scope-image-one-native-preparation-technical-20261008-v3/positive-final-source-resources.candidate.config.json",
+  "currentNativeP27RecordPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-scope-image-one-native-preparation-technical-20261008-v3/positive-final-source-resources.records.candidate.jsonl",
+  "unchangedPriorPRecordLinesByteExact": 26,
+  "all27SubstantivePositiveProfilesUnchanged": true,
+  "newPStatus": "needs_human_review",
+  "newPAuthority": "ai_candidate",
+  "positiveInLegacyDbook": false,
+  "humanApprovalClaimed": false,
+  "actualNativeCommands": [
+    {
+      "name": "native-import-sixde-corrected-png",
+      "command": [
+        "node",
+        "scripts/import_goal_visualization.mjs",
+        "6de44afa-7f91-5fa4-9292-ec06e86e97a4",
+        "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q4-twenty-seven-image-author-20261008-v1/6de44afa-7f91-5fa4-9292-ec06e86e97a4/correction-v2/6de44afa-7f91-5fa4-9292-ec06e86e97a4.png",
+        "--landscape",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+        "--subject",
+        "wirtschaftswissenschaften",
+        "--lang",
+        "de",
+        "--provider",
+        "OpenAI Codex image_gen",
+        "--review-status",
+        "approved_ai",
+        "--license",
+        "CC-BY-4.0",
+        "--alt-text",
+        "Dieselben vier Menschen erscheinen in Herkunftsregion, Wanderung und Zielregion. Große Pfeile und Symbole stellen Fachkräfteverlust, mögliche Folgen und Wissensrückflüsse als offene Fragen dar; zwei Gesundheitsgebäude tragen neutrale türkisfarbene Herzen.",
+        "--prompt",
+        "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q4-twenty-seven-image-author-20261008-v1/6de44afa-7f91-5fa4-9292-ec06e86e97a4/correction-v2/actual-prompt.txt"
+      ],
+      "cwd": "/tmp/skillpilot-wirtschaft-q4-sixde-scope-image-one-current164-knrvavt0",
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-generate-current-qa303",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "--subject",
+        "wirtschaftswissenschaften"
+      ],
+      "cwd": "/tmp/skillpilot-wirtschaft-q4-sixde-scope-image-one-current164-knrvavt0",
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-qa303-current-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "--subject",
+        "wirtschaftswissenschaften",
+        "--check"
+      ],
+      "cwd": "/tmp/skillpilot-wirtschaft-q4-sixde-scope-image-one-current164-knrvavt0",
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-current-sixde-kind-binding",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-scope-image-one-native-preparation-technical-20261008-v3/bind-only-current-sixde-kind.mts"
+      ],
+      "cwd": "/tmp/skillpilot-wirtschaft-q4-sixde-scope-image-one-current164-knrvavt0",
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-materialize-current-unchanged-P27",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-scope-image-one-native-preparation-technical-20261008-v3/positive-native-staging.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-development-ethics-twenty-seven-bilingual-positive-author-v2/positive.candidates.json",
+        "--write"
+      ],
+      "cwd": "/tmp/skillpilot-wirtschaft-q4-sixde-scope-image-one-current164-knrvavt0",
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-current-P27-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-scope-image-one-native-preparation-technical-20261008-v3/positive-final-source-resources.candidate.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/tmp/skillpilot-wirtschaft-q4-sixde-scope-image-one-current164-knrvavt0",
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-current-atomicity303",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-reviewed-current-source-bindings-v4/atomicity.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/tmp/skillpilot-wirtschaft-q4-sixde-scope-image-one-current164-knrvavt0",
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-current-memory303",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-reviewed-current-source-bindings-v4/memory.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/tmp/skillpilot-wirtschaft-q4-sixde-scope-image-one-current164-knrvavt0",
+      "actualExitCode": 0
+    }
+  ],
+  "old56FrozenFilesUnchanged": true,
+  "oldQ4EnvironmentMutated": false,
+  "activeWrites": 0,
+  "newStrictClosures": 0
+}

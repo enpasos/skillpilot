@@ -1,0 +1,13 @@
+// Apache-2.0. Actual entire twelve native pages compared; no source-locator lane invented.
+import{readFile,writeFile}from'node:fs/promises'
+import{loadGoalBookBuildInputs}from'../../../../../../../app/scripts/goalBookModel.ts'
+import{buildGoalDescriptionRolloutSubsetModel}from'../../../../../../../app/scripts/materializeGoalDescriptionRolloutBatch.ts'
+const iso="/tmp/skillpilot-wirtschaft-q2-labour-twelve-native-qnj7b9dg",own="curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-eee-correction-native-preparation-technical-20261008-v2",prior="curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-labour-twelve-native-preparation-technical-20261008-v1",gid="eee7217a-c2fb-58b6-ba84-2a8d5235edb5"
+const read=async(p:string)=>JSON.parse(await readFile(p,'utf8'))
+const c=await read(prior+'/native-d-q2-labour-twelve.final.batch.config.json'),old=await read(c.outputDirectory+'/bundle/book-model.json'),base=await loadGoalBookBuildInputs(c.baseGoalBookConfigPath,iso)
+const current=buildGoalDescriptionRolloutSubsetModel({baseModel:base.model,goalIds:c.goalIds,bookId:c.bookId,title:c.title})
+const comparisons=old.pages.map((p:any,i:number)=>({goalId:p.goalId,title:p.title,oldPageFingerprint:p.pageFingerprint,currentPageFingerprint:current.pages[i].pageFingerprint,entirePageByteEquivalent:JSON.stringify(p)===JSON.stringify(current.pages[i]),changedFields:Object.keys(p).filter(k=>JSON.stringify(p[k])!==JSON.stringify(current.pages[i][k]))}))
+const changed=comparisons.filter((x:any)=>!x.entirePageByteEquivalent)
+if(changed.length!==1||changed[0].goalId!==gid)throw Error(JSON.stringify(comparisons))
+await writeFile(own+'/native-independent-round-a-whole-eleven-parity.actual.json',JSON.stringify({schemaVersion:1,checkedAt:new Date().toISOString(),physicalIsolate:iso,currentRootStrictBaseline:113,wholePagesCompared:12,unchangedWholePages:11,changedWholePageGoalIds:[gid],actualComparisons:comparisons,source2Lane:'No separate source-review verdict is inferred from this entire page comparison.',independentSubstantiveReviewClaim:false,activeWrites:0},null,2)+String.fromCharCode(10),{flag:'wx'})
+console.log('Actual native whole12 comparison: only eee page changed, eleven byteequivalent.')

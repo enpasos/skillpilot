@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "wirtschaft-macro-five-national-checkpoint-current311-20261008",
+  "subject": "wirtschaftswissenschaften",
+  "subjectLabel": "Wirtschaftswissenschaften",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-final-native-D5-preparation-v3/native-d-macro-five-national-checkpoint.final.batch.config.json",
+  "configDigest": "sha256:814ee5ab92f3646cb6e13bcb2b352d94d9a9a7f14161f1078bbe71b7144dc8e9",
+  "goalIds": [
+    "053f1522-31a7-583f-85f5-366ed724d3c5",
+    "8e8a672e-67c6-52dd-8f87-3c1f2e874a3d",
+    "15d18bd1-0ae1-58c8-89fd-623bebe12041",
+    "9219c58c-d178-5612-8231-feac373c87df",
+    "da43dd2a-693b-5327-811f-c4c19ee064cd"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 311,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-m7-current-baseline-20261008-v1/review-book-full.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "baseBookDigest": "sha256:238cb8e566aaabcc33b585152e9b73d76e5ecfb0c2a811ce9fcd9252de99ba13"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:6fa4bc1641acd2a0c43384c3f51433aac787f260eb96afbe961f2d6321fe86a0",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:3c06f65e07270fb25a034478930b259b30cd898292bd32fde5ab139b0e29dadd",
+    "reviewInputFingerprint": "sha256:1e6b90f736b39d3a322cb62a37e701ac54c8839248940c678f9266de9484e70f",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "wirtschaft-macro-five-national-checkpoint-current311-20261008-a",
+        "campaignDigest": "sha256:ecf9468edbb619f353de806c971daf813f2ca4038522a227545bb92c93e127d4",
+        "roundId": "wirtschaft-macro-five-national-checkpoint-current311-20261008-first-pass-a",
+        "independenceGroupId": "wirtschaft-macro-five-national-checkpoint-current311-20261008-independent-a",
+        "batchId": "wirtschaft-macro-five-national-checkpoint-current311-20261008-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:6920b6220e362dbfbcf2895b64b4cf467bdbab9d316970f1e1cfcc170b7e5285"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "wirtschaft-macro-five-national-checkpoint-current311-20261008-b",
+        "campaignDigest": "sha256:3eb3626435ccb8e1701ce6cd98368c1b15a419af167fa6c7fa32adb5381a457a",
+        "roundId": "wirtschaft-macro-five-national-checkpoint-current311-20261008-first-pass-b",
+        "independenceGroupId": "wirtschaft-macro-five-national-checkpoint-current311-20261008-independent-b",
+        "batchId": "wirtschaft-macro-five-national-checkpoint-current311-20261008-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:44124151b25d4e6a93decb9e8b035708b02f6c1e69314dee96e1bb5348e17da4"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

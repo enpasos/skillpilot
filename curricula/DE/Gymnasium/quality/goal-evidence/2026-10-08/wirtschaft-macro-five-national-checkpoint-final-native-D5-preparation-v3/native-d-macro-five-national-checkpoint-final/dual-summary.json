@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:3c06f65e07270fb25a034478930b259b30cd898292bd32fde5ab139b0e29dadd",
+  "reviewInputFingerprint": "sha256:1e6b90f736b39d3a322cb62a37e701ac54c8839248940c678f9266de9484e70f",
+  "goalCount": 5,
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-macro-five-national-checkpoint-current311-20261008-a",
+      "roundId": "wirtschaft-macro-five-national-checkpoint-current311-20261008-first-pass-a",
+      "independenceGroupId": "wirtschaft-macro-five-national-checkpoint-current311-20261008-independent-a",
+      "runIds": [
+        "wirtschaft-macro-five-national-checkpoint-independent-a-actual-20261008"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (Codex; exact serving model identifier not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "wirtschaft-macro-five-national-checkpoint-current311-20261008-b",
+      "roundId": "wirtschaft-macro-five-national-checkpoint-current311-20261008-first-pass-b",
+      "independenceGroupId": "wirtschaft-macro-five-national-checkpoint-current311-20261008-independent-b",
+      "runIds": [
+        "wirtschaft-macro-five-current311-independent-b-20261008-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact model not disclosed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 5,
+    "unavailable": 0,
+    "requiresSynthesis": 5
+  },
+  "goals": [
+    {
+      "goalId": "053f1522-31a7-583f-85f5-366ed724d3c5",
+      "firstRecordId": "wirtschaft-macro-five-national-checkpoint-independent-a-actual-20261008:053f1522-31a7-583f-85f5-366ed724d3c5",
+      "secondRecordId": "wirtschaft-macro-five-current311-independent-b-20261008-v1:053f1522-31a7-583f-85f5-366ed724d3c5",
+      "firstRunId": "wirtschaft-macro-five-national-checkpoint-independent-a-actual-20261008",
+      "secondRunId": "wirtschaft-macro-five-current311-independent-b-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8e8a672e-67c6-52dd-8f87-3c1f2e874a3d",
+      "firstRecordId": "wirtschaft-macro-five-national-checkpoint-independent-a-actual-20261008:8e8a672e-67c6-52dd-8f87-3c1f2e874a3d",
+      "secondRecordId": "wirtschaft-macro-five-current311-independent-b-20261008-v1:8e8a672e-67c6-52dd-8f87-3c1f2e874a3d",
+      "firstRunId": "wirtschaft-macro-five-national-checkpoint-independent-a-actual-20261008",
+      "secondRunId": "wirtschaft-macro-five-current311-independent-b-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "15d18bd1-0ae1-58c8-89fd-623bebe12041",
+      "firstRecordId": "wirtschaft-macro-five-national-checkpoint-independent-a-actual-20261008:15d18bd1-0ae1-58c8-89fd-623bebe12041",
+      "secondRecordId": "wirtschaft-macro-five-current311-independent-b-20261008-v1:15d18bd1-0ae1-58c8-89fd-623bebe12041",
+      "firstRunId": "wirtschaft-macro-five-national-checkpoint-independent-a-actual-20261008",
+      "secondRunId": "wirtschaft-macro-five-current311-independent-b-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9219c58c-d178-5612-8231-feac373c87df",
+      "firstRecordId": "wirtschaft-macro-five-national-checkpoint-independent-a-actual-20261008:9219c58c-d178-5612-8231-feac373c87df",
+      "secondRecordId": "wirtschaft-macro-five-current311-independent-b-20261008-v1:9219c58c-d178-5612-8231-feac373c87df",
+      "firstRunId": "wirtschaft-macro-five-national-checkpoint-independent-a-actual-20261008",
+      "secondRunId": "wirtschaft-macro-five-current311-independent-b-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "da43dd2a-693b-5327-811f-c4c19ee064cd",
+      "firstRecordId": "wirtschaft-macro-five-national-checkpoint-independent-a-actual-20261008:da43dd2a-693b-5327-811f-c4c19ee064cd",
+      "secondRecordId": "wirtschaft-macro-five-current311-independent-b-20261008-v1:da43dd2a-693b-5327-811f-c4c19ee064cd",
+      "firstRunId": "wirtschaft-macro-five-national-checkpoint-independent-a-actual-20261008",
+      "secondRunId": "wirtschaft-macro-five-current311-independent-b-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "role": "actual_native_targeted_checks_observation",
+  "checkedAt": "2026-10-08T11:16:31.875Z",
+  "reviewerAgent": "/root/economics_visual_memory_audit",
+  "provider": "OpenAI",
+  "model": "Codex session; exact serving model identifier not exposed",
+  "commands": [
+    "./node_modules/.bin/tsx ../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-twenty-independent-DEEN-P-AM-taxonomy-review-v1/verify-own-native-positive-inputs.mts",
+    "./node_modules/.bin/tsx scripts/semanticAtomicityReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-twenty-independent-DEEN-P-AM-taxonomy-review-v1/atomicity.prior-targeted.config.json --mode=check",
+    "./node_modules/.bin/tsx scripts/memoryCardReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-twenty-independent-DEEN-P-AM-taxonomy-review-v1/memory.prior-targeted.config.json --mode=check --write-report"
+  ],
+  "workingDirectory": "/home/enpasos/projects/skillpilot/app",
+  "actualResults": [
+    {
+      "lane": 0,
+      "chunk_id": "5da3ee",
+      "wall_time_seconds": 0.37368415,
+      "exit_code": 0,
+      "original_token_count": 13,
+      "output": "{\"passed\":true,\"goals\":20,\"cases\":40,\"errors\":[]}\n"
+    },
+    {
+      "lane": 1,
+      "chunk_id": "be5641",
+      "wall_time_seconds": 0.211596657,
+      "exit_code": 0,
+      "original_token_count": 97,
+      "output": "# Semantic Atomicity Review: canonical-economics-full\nScope: Company20 original-input technical binding; no substantive re-review of four unchanged deck companions\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 20\nCurrent reviewed atomic: 20\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\n"
+    },
+    {
+      "lane": 2,
+      "chunk_id": "98df75",
+      "wall_time_seconds": 0.220510425,
+      "exit_code": 0,
+      "original_token_count": 1199,
+      "output": "# Memory Card Review: canonical-economics-full\nScope: Company20 original-input technical binding; no substantive re-review of four unchanged deck companions\nRule: memory-card-review-v1\nOrdinary atomic goals in scope: 24\nCurrent no-memory decisions: 14\nCurrent memory-required decisions: 10\nCurrent needs developer review: 0\nMemory goals in scope: 1\nTraced memory goals: 1\nKnown deck IDs: 5\nDeck files: 5\nCard rows: 51\nPrimary cards in scope: 11\nKept primary cards: 11\nCards marked remove: 0\nCards needing developer review: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\nMissing card review records: 0\nStale card review records: 0\nObsolete card review records: 0\nComposition visibility scopes: 2\nMemory-required goals checked in views: 20\nMemory-required goals without visible memory node: 0\n\nMemory-required decisions\n- Break-even-Analysen für Unternehmensentscheidungen nutzen [053f1522-31a7-583f-85f5-366ed724d3c5]: Memory-Anteil streng begrenzt auf wenige wirtschaftliche Grundbegriffe, Rechnungswesen- und Rechtsbegriffe, Modellanker, Kennzahlen, Formeln, Institutionen und Instrumente; Analyse, Rechnen, Fallsubsumtion, Modellkritik und Urteil bleiben führend.\n- Einfaches Marketingkonzept kriterienbezogen entwickeln [95f2b860-d21d-5627-8dcd-cd53efd94b7b]: Memory-Anteil streng begrenzt auf wenige wirtschaftliche Grundbegriffe, Rechnungswesen- und Rechtsbegriffe, Modellanker, Kennzahlen, Formeln, Institutionen und Instrumente; Analyse, Rechnen, Fallsubsumtion, Modellkritik und Urteil bleiben führend.\n- Finanz- und Ertragslage mit Kennzahlen darstellen [9219c58c-d178-5612-8231-feac373c87df]: Memory-Anteil streng begrenzt auf wenige wirtschaftliche Grundbegriffe, Rechnungswesen- und Rechtsbegriffe, Modellanker, Kennzahlen, Formeln, Institutionen und Instrumente; Analyse, Rechnen, Fallsubsumtion, Modellkritik und Urteil bleiben führend.\n- Geschäftsmodell und unternehmerische Grundentscheidungen darstellen [53829f76-2d9c-5cdd-8521-c249f57f738d]: Memory-Anteil streng begrenzt auf wenige wirtschaftliche Grundbegriffe, Rechnungswesen- und Rechtsbegriffe, Modellanker, Kennzahlen, Formeln, Institutionen und Instrumente; Analyse, Rechnen, Fallsubsumtion, Modellkritik und Urteil bleiben führend.\n- Geschäftsvorfälle in der Bilanz darstellen [66a0d96f-a231-5b36-894e-2ffb16adf7db]: Memory-Anteil streng begrenzt auf wenige wirtschaftliche Grundbegriffe, Rechnungswesen- und Rechtsbegriffe, Modellanker, Kennzahlen, Formeln, Institutionen und Instrumente; Analyse, Rechnen, Fallsubsumtion, Modellkritik und Urteil bleiben führend.\n- Investitionsalternativen statisch und dynamisch beurteilen [8e8a672e-67c6-52dd-8f87-3c1f2e874a3d]: Memory-Anteil streng begrenzt auf wenige wirtschaftliche Grundbegriffe, Rechnungswesen- und Rechtsbegriffe, Modellanker, Kennzahlen, Formeln, Institutionen und Instrumente; Analyse, Rechnen, Fallsubsumtion, Modellkritik und Urteil bleiben führend.\n- Kern- und Unterstützungsprozesse in Unternehmen analysieren [aa9db8f6-c81e-5247-8f84-5f2b968ab2c4]: Memory-Anteil streng begrenzt auf wenige wirtschaftliche Grundbegriffe, Rechnungswesen- und Rechtsbegriffe, Modellanker, Kennzahlen, Formeln, Institutionen und Instrumente; Analyse, Rechnen, Fallsubsumtion, Modellkritik und Urteil bleiben führend.\n- Unternehmenserfolg mit der GuV ermitteln [9a1a3f9b-909d-53d3-8851-759c416bd763]: Memory-Anteil streng begrenzt auf wenige wirtschaftliche Grundbegriffe, Rechnungswesen- und Rechtsbegriffe, Modellanker, Kennzahlen, Formeln, Institutionen und Instrumente; Analyse, Rechnen, Fallsubsumtion, Modellkritik und Urteil bleiben führend.\n- Unternehmensfinanzierung [e7fbbb64-9f10-5d5d-8946-710aedc6794a]: Memory-Anteil streng begrenzt auf wenige wirtschaftliche Grundbegriffe, Rechnungswesen- und Rechtsbegriffe, Modellanker, Kennzahlen, Formeln, Institutionen und Instrumente; Analyse, Rechnen, Fallsubsumtion, Modellkritik und Urteil bleiben führend. The unchanged German competence and genuine English successor were independently read on 2026-10-08; retain this substantive decision and bind the reviewed equivalent source. Parity receipt: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-independent-positive-parity-review-v1/independent-full-positive-and-translation-review.receipt.json\n- Vereinfachte Bilanz erstellen [04c17efe-4451-52bd-8116-1042d1501c41]: Memory-Anteil streng begrenzt auf wenige wirtschaftliche Grundbegriffe, Rechnungswesen- und Rechtsbegriffe, Modellanker, Kennzahlen, Formeln, Institutionen und Instrumente; Analyse, Rechnen, Fallsubsumtion, Modellkritik und Urteil bleiben führend.\n\nWrote curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-twenty-independent-DEEN-P-AM-taxonomy-review-v1/memory.prior-targeted.native-report.md\n"
+    }
+  ],
+  "passed": true,
+  "originalTargetAMBindingOnly": true,
+  "changedCandidateEnWillRequireFreshNativeAMBindings": true,
+  "substantiveFindingsNotOverriddenBySchemaPass": true,
+  "newStrictClosures": 0,
+  "humanApprovalClaimed": false,
+  "liveWrites": 0
+}

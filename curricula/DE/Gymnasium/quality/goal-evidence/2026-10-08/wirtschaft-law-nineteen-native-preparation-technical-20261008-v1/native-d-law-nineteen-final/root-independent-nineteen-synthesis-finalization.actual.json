@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "actualExecutedAt": "2026-10-08T12:56:13.558462+00:00",
+  "actualRootReading": "Both whole independent19-record sets actually read in bounded chunks, all six fields and full bilingual descriptions/rationales;19 own substantive synthesis judgments.",
+  "actualRecordBindings": {
+    "round-a": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-native-preparation-technical-20261008-v1/native-d-law-nineteen-final/round-a/results/wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:297e863d018d24132afce5a71cd46296d1452032b7719e2655935d539bd2dea3"
+    },
+    "round-b": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-native-preparation-technical-20261008-v1/native-d-law-nineteen-final/round-b/results/wirtschaft-law-nineteen-current303-source479-excluded-v1-20261008-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:03d594b18a301b5af591ca8b3cdf9ce6dfc4a192bed5ea616d430dc88cc7d328"
+    }
+  },
+  "actualCommands": [
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-native-preparation-technical-20261008-v1/native-d-law-nineteen.final.batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-native-preparation-technical-20261008-v1/native-d-law-nineteen-final/root-finalization-v1-step-1.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-native-preparation-technical-20261008-v1/native-d-law-nineteen-final/root-finalization-v1-step-1.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-native-preparation-technical-20261008-v1/native-d-law-nineteen.final.batch.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-native-preparation-technical-20261008-v1/native-d-law-nineteen-final/root-nineteen-own-synthesis-authoring-v1.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-native-preparation-technical-20261008-v1/native-d-law-nineteen-final/root-finalization-v1-step-2.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-native-preparation-technical-20261008-v1/native-d-law-nineteen-final/root-finalization-v1-step-2.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-native-preparation-technical-20261008-v1/native-d-law-nineteen.final.batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-native-preparation-technical-20261008-v1/native-d-law-nineteen-final/synthesis-decisions.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-native-preparation-technical-20261008-v1/native-d-law-nineteen-final/root-finalization-v1-step-3.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-native-preparation-technical-20261008-v1/native-d-law-nineteen-final/root-finalization-v1-step-3.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-native-preparation-technical-20261008-v1/native-d-law-nineteen.final.batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-native-preparation-technical-20261008-v1/native-d-law-nineteen-final/root-finalization-v1-step-4.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-native-preparation-technical-20261008-v1/native-d-law-nineteen-final/root-finalization-v1-step-4.stderr.txt"
+    }
+  ],
+  "actualCurrentInertDClosures": 19,
+  "frozenNativeFilesVerifiedRootAndIsolate": 28,
+  "source479ExcludedFromThisScope": true,
+  "source479ApprovalClaimed": false,
+  "separateActualIndependentWholeP40AndV3ClosureNotReplaced": true,
+  "actualCurrent211WholePageParityStillRequired": true,
+  "actualAM303LatestCompany20RetentionStillRequired": true,
+  "newStrictLiveClosures": 0,
+  "humanApprovalClaimed": false,
+  "liveMutations": 0
+}

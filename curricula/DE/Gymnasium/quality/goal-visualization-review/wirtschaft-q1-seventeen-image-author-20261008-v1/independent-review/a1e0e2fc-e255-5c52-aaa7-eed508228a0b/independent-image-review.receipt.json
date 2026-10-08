@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-08",
+  "reviewedAt": "2026-10-08T07:18:04.676594+00:00",
+  "goalId": "a1e0e2fc-e255-5c52-aaa7-eed508228a0b",
+  "goalTitle": "Parteien- und Wahlsysteme vergleichen",
+  "goalDescription": "Die lernende Person kann Parteiensysteme und Wahlverfahren analysieren.",
+  "decision": "REJECT",
+  "machineApproval": "Rejected AI",
+  "independentReviewer": "OpenAI Codex economics_visual_memory_audit",
+  "reviewerModel": "Codex session; exact serving model identifier not exposed",
+  "imageAuthorIsReviewer": false,
+  "humanApproved": false,
+  "assetPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q1-seventeen-image-author-20261008-v1/a1e0e2fc-e255-5c52-aaa7-eed508228a0b/a1e0e2fc-e255-5c52-aaa7-eed508228a0b.png",
+  "assetSha256": "sha256:b504fb27d0299ad3430f595ca237aa205a59c3fb7cb4d6d45e7074be6b60337d",
+  "actualFormat": "PNG",
+  "actualDimensions": {
+    "width": 1672,
+    "height": 941
+  },
+  "aspectRatioDecision": "Close native 16:9 landscape. Actual subject and mobile views support this format; no mechanical normalization.",
+  "provider": "OpenAI Codex image_gen",
+  "generationTool": "image_gen.imagegen",
+  "generationModel": "Image model version not exposed",
+  "generationRecordPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q1-seventeen-image-author-20261008-v1/a1e0e2fc-e255-5c52-aaa7-eed508228a0b/generation.actual.json",
+  "generationRecordSha256": "sha256:cbb11c5ad780fe2cd48c5cb0e7ff4923c70226e8bd03c170b5c18b6c675f20c4",
+  "generationIsApproval": false,
+  "actualInspection": {
+    "nativeViewed": true,
+    "width360Viewed": true,
+    "width680Viewed": true,
+    "fachlichePruefung": "Die fachliche Grundidee eines Sitzes je Wahlkreis gegenüber einer gemeinsamen Stimmenaggregation und verschiedenfarbiger Sitzrepräsentation ist als abstrakter Modellvergleich erkennbar. Die beschrifteten, auf dem Tisch stehenden Vergleichstafeln zeigen jedoch beide Fronten zum Publikum, während die mit Lupe analysierende Person dahinter sitzt; sie kann die dargestellten Fronten nicht betrachten.",
+    "phone": "Wahlkreise, Urne, Sitze und Gesamtstimmen bleiben bei 360 Pixeln groß erkennbar, die Perspektivschwäche ist unabhängig von Kleinschrift.",
+    "desktop": "Bei 680 Pixeln sind Tafeln und analysierende Person gut zu sehen; gerade dadurch ist die verkehrte Sichtbindung klar.",
+    "actorPerspective": "Die Person sitzt hinter den zum Publikum geneigten Tafelfronten und hält die Lupe an diese Frontdarstellung, ohne sich davor zu befinden.",
+    "style": "Freundliches, klares Comic-Raster mit kräftigen einfachen Hauptmotiven und passender ruhiger Farbgebung.",
+    "mandatorySmallPrint": false
+  },
+  "blockingFindings": [
+    {
+      "severity": "blocking",
+      "kind": "actor-perspective",
+      "description": "Die analysierende Person und Lupe sind hinter den nach außen dargestellten Frontseiten beider Vergleichstafeln.",
+      "targetedCorrection": "Person als Rücken-/Über-Schulter- oder klare Seitenfigur vor den richtig zu ihr gewandten Tafeln zeigen; beide Wahlmodelle und deren Unterschiede erhalten."
+    }
+  ],
+  "interpretationLimits": [
+    "Die unterschiedlich vielen Stimmkarten werden ohne Zahlentabelle als abstrakte Modelle gelesen, nicht als empirisch gleicher Stimmensatz oder exakte Sitzberechnung. Keine Behauptung über Sperrklauseln oder reale Parteien."
+  ],
+  "goalSemanticSource": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+  "goalTextStatus": "Actual current canonical German title and description inspected; English authored successor and D/P gates not attested by this image review.",
+  "derivatives": [
+    {
+      "width": 360,
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q1-seventeen-image-author-20261008-v1/independent-review/a1e0e2fc-e255-5c52-aaa7-eed508228a0b/a1e0e2fc-e255-5c52-aaa7-eed508228a0b.width-360.png",
+      "sha256": "sha256:f81231fcb53824d31e9baec75bc993e161cf24f513cf8d100be67f42d18debd1"
+    },
+    {
+      "width": 680,
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q1-seventeen-image-author-20261008-v1/independent-review/a1e0e2fc-e255-5c52-aaa7-eed508228a0b/a1e0e2fc-e255-5c52-aaa7-eed508228a0b.width-680.png",
+      "sha256": "sha256:9b02e272a7323bb4ab0bb087a6b5df4cefdaac6cfc7a05a09a3bbb5be1df63a3"
+    }
+  ],
+  "notClaimed": [
+    "live QA adoption",
+    "description-review closure",
+    "positive-evidence closure",
+    "central M7 growth",
+    "human release approval",
+    "classroom acceptance"
+  ]
+}

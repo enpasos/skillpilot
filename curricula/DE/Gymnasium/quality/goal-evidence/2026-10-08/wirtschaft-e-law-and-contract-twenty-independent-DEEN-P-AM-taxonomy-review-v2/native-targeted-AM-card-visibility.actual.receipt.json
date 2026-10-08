@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "role": "actual_native_targeted_checks_observation",
+  "actualAt": "2026-10-08T11:38:59.926Z",
+  "priorPreparationIssue": "An over-strict setup assertion incorrectly required an ordinary memory review row for the memorization node; the node belongs in scope but has no ordinary review row. No substantive binding was changed. Initial missing-config validator error and later actual success retained.",
+  "initialAttempt": {
+    "cmds": [
+      "./node_modules/.bin/tsx scripts/semanticAtomicityReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-law-and-contract-twenty-independent-DEEN-P-AM-taxonomy-review-v2/atomicity.prior-targeted.config.json --mode=check",
+      "./node_modules/.bin/tsx scripts/memoryCardReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-law-and-contract-twenty-independent-DEEN-P-AM-taxonomy-review-v2/memory.prior-targeted.config.json --mode=check --write-report"
+    ],
+    "results": [
+      {
+        "chunk_id": "234cf5",
+        "wall_time_seconds": 0.161232896,
+        "exit_code": 0,
+        "original_token_count": 103,
+        "output": "# Semantic Atomicity Review: canonical-economics-full\nScope: Law20 current prior decision binding; one unchanged business-law companion included only for complete existing deck visibility\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 20\nCurrent reviewed atomic: 20\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\n"
+      },
+      {
+        "chunk_id": "749720",
+        "wall_time_seconds": 0.154568248,
+        "exit_code": 1,
+        "original_token_count": 302,
+        "output": "node:fs:596\n  handleErrorFromBinding(ctx);\n  ^\n\nError: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-law-and-contract-twenty-independent-DEEN-P-AM-taxonomy-review-v2/memory.prior-targeted.config.json'\n    at Object.openSync (node:fs:596:3)\n    at readFileSync (node:fs:464:35)\n    at loadJson (/home/enpasos/projects/skillpilot/app/scripts/memoryCardReview.ts:145:21)\n    at main (/home/enpasos/projects/skillpilot/app/scripts/memoryCardReview.ts:887:18)\n    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/memoryCardReview.ts:1173:1)\n    at ModuleJob.run (node:internal/modules/esm/module_job:195:25)\n    at async ModuleLoader.import (node:internal/modules/esm/loader:336:24)\n    at async loadESM (node:internal/process/esm_loader:34:7)\n    at async handleMainPromise (node:internal/modules/run_main:106:12) {\n  errno: -2,\n  syscall: 'open',\n  code: 'ENOENT',\n  path: '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-law-and-contract-twenty-independent-DEEN-P-AM-taxonomy-review-v2/memory.prior-targeted.config.json'\n}\n\nNode.js v18.19.1\n"
+      }
+    ]
+  },
+  "correctedMemoryAttempt": {
+    "chunk_id": "39bc3d",
+    "wall_time_seconds": 0.154883662,
+    "exit_code": 0,
+    "original_token_count": 1036,
+    "output": "# Memory Card Review: canonical-economics-full\nScope: Law20 current prior binding; one unchanged companion included only for complete existing deck visibility\nRule: memory-card-review-v1\nOrdinary atomic goals in scope: 21\nCurrent no-memory decisions: 12\nCurrent memory-required decisions: 9\nCurrent needs developer review: 0\nMemory goals in scope: 1\nTraced memory goals: 1\nKnown deck IDs: 5\nDeck files: 5\nCard rows: 51\nPrimary cards in scope: 9\nKept primary cards: 9\nCards marked remove: 0\nCards needing developer review: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\nMissing card review records: 0\nStale card review records: 0\nObsolete card review records: 0\nComposition visibility scopes: 2\nMemory-required goals checked in views: 18\nMemory-required goals without visible memory node: 0\n\nMemory-required decisions\n- Funktionen rechtlicher Regelungen beurteilen [2aee114f-d0d2-516f-8f95-1b72f707401d]: Memory-Anteil streng begrenzt auf wenige wirtschaftliche Grundbegriffe, Rechnungswesen- und Rechtsbegriffe, Modellanker, Kennzahlen, Formeln, Institutionen und Instrumente; Analyse, Rechnen, Fallsubsumtion, Modellkritik und Urteil bleiben führend.\n- Geistiges Eigentum und Persönlichkeitsrechte beachten [f6a445cb-50d9-5d22-80af-e669509758b0]: Memory-Anteil streng begrenzt auf wenige wirtschaftliche Grundbegriffe, Rechnungswesen- und Rechtsbegriffe, Modellanker, Kennzahlen, Formeln, Institutionen und Instrumente; Analyse, Rechnen, Fallsubsumtion, Modellkritik und Urteil bleiben führend.\n- Jugendstrafrechtliche Tatbestände prüfen [b44892ea-32dc-5a91-8bba-2f422af7c6e7]: Memory-Anteil streng begrenzt auf wenige wirtschaftliche Grundbegriffe, Rechnungswesen- und Rechtsbegriffe, Modellanker, Kennzahlen, Formeln, Institutionen und Instrumente; Analyse, Rechnen, Fallsubsumtion, Modellkritik und Urteil bleiben führend.\n- Juristische Arbeitstechniken im Kaufrecht anwenden [bd413a7c-775a-5318-813c-0b75578f9a11]: Memory-Anteil streng begrenzt auf wenige wirtschaftliche Grundbegriffe, Rechnungswesen- und Rechtsbegriffe, Modellanker, Kennzahlen, Formeln, Institutionen und Instrumente; Analyse, Rechnen, Fallsubsumtion, Modellkritik und Urteil bleiben führend.\n- Leistungsstörungen im Kaufrecht systematisch analysieren [87e1971d-d153-59eb-81d9-e361caf83a26]: Memory-Anteil streng begrenzt auf wenige wirtschaftliche Grundbegriffe, Rechnungswesen- und Rechtsbegriffe, Modellanker, Kennzahlen, Formeln, Institutionen und Instrumente; Analyse, Rechnen, Fallsubsumtion, Modellkritik und Urteil bleiben führend.\n- Rechte beschränkt Geschäftsfähiger bei Kaufhandlungen wahrnehmen [1f5c3e82-dc4a-54cc-838e-66e4d434a7b5]: Memory-Anteil streng begrenzt auf wenige wirtschaftliche Grundbegriffe, Rechnungswesen- und Rechtsbegriffe, Modellanker, Kennzahlen, Formeln, Institutionen und Instrumente; Analyse, Rechnen, Fallsubsumtion, Modellkritik und Urteil bleiben führend.\n- Strafbarkeit anhand des Deliktsaufbaus begründen [be602e0c-2082-5c1a-808b-ca492ba40f2d]: Memory-Anteil streng begrenzt auf wenige wirtschaftliche Grundbegriffe, Rechnungswesen- und Rechtsbegriffe, Modellanker, Kennzahlen, Formeln, Institutionen und Instrumente; Analyse, Rechnen, Fallsubsumtion, Modellkritik und Urteil bleiben führend.\n- Verträge und rechtliche Folgen des eigenen Handelns analysieren [78eeb8fe-fd5c-5d21-81be-75c3990fc4b5]: Memory-Anteil streng begrenzt auf wenige wirtschaftliche Grundbegriffe, Rechnungswesen- und Rechtsbegriffe, Modellanker, Kennzahlen, Formeln, Institutionen und Instrumente; Analyse, Rechnen, Fallsubsumtion, Modellkritik und Urteil bleiben führend.\n- Vertragstypen und Pflichten der Vertragsparteien abgrenzen [479fb87a-3a5a-5892-8b3e-dfb1d07e9612]: Memory-Anteil streng begrenzt auf wenige wirtschaftliche Grundbegriffe, Rechnungswesen- und Rechtsbegriffe, Modellanker, Kennzahlen, Formeln, Institutionen und Instrumente; Analyse, Rechnen, Fallsubsumtion, Modellkritik und Urteil bleiben führend.\n\nWrote curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-law-and-contract-twenty-independent-DEEN-P-AM-taxonomy-review-v2/memory.prior-targeted.native-report.md\n"
+  },
+  "originalTargetBindingOnly": true,
+  "changedCandidateEnglishRequiresFreshBindings": true,
+  "sourceCourseFindingNotOverriddenByNativeTechnicalPass": true,
+  "humanApprovalClaimed": false,
+  "activeWrites": 0
+}

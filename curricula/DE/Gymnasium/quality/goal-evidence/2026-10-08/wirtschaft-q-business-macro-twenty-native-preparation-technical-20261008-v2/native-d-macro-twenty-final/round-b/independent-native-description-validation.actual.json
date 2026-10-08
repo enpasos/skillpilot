@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "actualRecordedAt": "2026-10-08T14:33:17.983972+00:00",
+  "reviewer": {
+    "provider": "OpenAI",
+    "agent": "/root/economics_layer_a",
+    "model": "Codex session; exact model identifier not disclosed",
+    "status": "ai_candidate",
+    "humanApproval": false
+  },
+  "role": "Actual independent full20 description inspection completion and actual native campaign validator PASS",
+  "blindRoundB": true,
+  "roundARead": false,
+  "actualCommand": [
+    "app/node_modules/.bin/tsx",
+    "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+    "--bundle",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q-business-macro-twenty-native-preparation-technical-20261008-v2/native-d-macro-twenty-final/round-b/review-bundle-manifest.json",
+    "--input",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q-business-macro-twenty-native-preparation-technical-20261008-v2/native-d-macro-twenty-final/round-b/description-review-input.json",
+    "--campaign",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q-business-macro-twenty-native-preparation-technical-20261008-v2/native-d-macro-twenty-final/round-b/description-review-campaign.json",
+    "--batches-dir",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q-business-macro-twenty-native-preparation-technical-20261008-v2/native-d-macro-twenty-final/round-b/batches",
+    "--results-dir",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q-business-macro-twenty-native-preparation-technical-20261008-v2/native-d-macro-twenty-final/round-b/results"
+  ],
+  "actualWorkdir": "/tmp/skillpilot-wirtschaft-Macro20-current303-final-requires-v2-ebb9sa81",
+  "actualNativeResult": {
+    "exitCode": 0,
+    "stdout": "Goal-description review campaign results valid: 20\n",
+    "toolChunkId": "3282c9"
+  },
+  "artifacts": {
+    "results/wirtschaft-macro-twenty-current303-requires-v2-20261008-first-pass-b.batch-001.records.jsonl": "sha256:1b843ee3a55d371de7e1b02c579f1967213b5cad129f1865b3704af94f6d74a0",
+    "results/wirtschaft-macro-twenty-current303-requires-v2-20261008-first-pass-b.batch-001.run.json": "sha256:6de385b423f91c60a13aa4b75598f069950b18ce284a513fda621b8a5d0b2eb7",
+    "independent-actual-whole-twenty-description-inspection.receipt.json": "sha256:0b7ae6364bf44f4d5b129e37bf1d244cf47af96b25a7de75104f48beae9201c8",
+    "independent-native-validation-initial-role-digest-failure-and-guarded-successor.receipt.json": "sha256:03cd17e82802788604a60a21aad3ed3442efb0cfa7e3abe1b964e485dd4cce19",
+    "historical-initial-run-metadata-wrong-review-input-role-digest.json": "sha256:bc9a02f815dd7d774705665dafe2ff10b23a1c79d7b2d07d5d6617eec6178506"
+  },
+  "actualInspectedWholeGoals": 20,
+  "actualNativePDFPagesViewed": 22,
+  "decisionCounts": {
+    "KEEP": 20,
+    "positiveUnderstandingCreateRecommendations": 20
+  },
+  "bookEvidenceProfileNullCount": 20,
+  "separateCurrentPv2NotClaimedAsBookContent": true,
+  "substantiveBlockersFound": 0,
+  "initialNativeArtifactRoleFailurePreserved": true,
+  "onlyRunRoleDigestCorrected": true,
+  "technicalCorrectionIsNotSubstantiveReview": true,
+  "inspectionReceiptWasWrittenBeforeFinalNativeValidationAndRemainsUnchanged": true,
+  "liveMutations": 0,
+  "ownStrictCountIncrease": 0,
+  "limits": "Candidate machine review only; strict completion requires independent other round, synthesis, current positive-evidence binding and root native integration. No human or learner acceptance and no full regional source/projection release."
+}

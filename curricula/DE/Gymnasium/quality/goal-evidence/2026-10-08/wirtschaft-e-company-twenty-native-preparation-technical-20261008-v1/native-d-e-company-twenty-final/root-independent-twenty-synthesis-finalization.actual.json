@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "actualExecutedAt": "2026-10-08T12:49:14.086505+00:00",
+  "actualRootReading": "Both whole20-record sets actually read in full, including all six fields and bilingual descriptions/rationales;20 individually authored synthesis judgments.",
+  "actualRecordBindings": {
+    "round-a": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-twenty-native-preparation-technical-20261008-v1/native-d-e-company-twenty-final/round-a/results/wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-a.batch-001.records.jsonl",
+      "sha256": "sha256:519aba04f0a4b154ff955933f6a8a91bccea219170ab3b716c243eef5a7a3f61"
+    },
+    "round-b": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-twenty-native-preparation-technical-20261008-v1/native-d-e-company-twenty-final/round-b/results/wirtschaft-e-company-twenty-current303-final-author-v1-20261008-first-pass-b.batch-001.records.jsonl",
+      "sha256": "sha256:5713eb5f6abd61ea30d119723af1f384775fe482c0148c0702d458f20c5467c7"
+    }
+  },
+  "actualCommands": [
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-twenty-native-preparation-technical-20261008-v1/native-d-e-company-twenty.final.batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-twenty-native-preparation-technical-20261008-v1/native-d-e-company-twenty-final/root-finalization-v1-step-1.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-twenty-native-preparation-technical-20261008-v1/native-d-e-company-twenty-final/root-finalization-v1-step-1.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-twenty-native-preparation-technical-20261008-v1/native-d-e-company-twenty.final.batch.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-twenty-native-preparation-technical-20261008-v1/native-d-e-company-twenty-final/root-twenty-own-synthesis-authoring-v1.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-twenty-native-preparation-technical-20261008-v1/native-d-e-company-twenty-final/root-finalization-v1-step-2.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-twenty-native-preparation-technical-20261008-v1/native-d-e-company-twenty-final/root-finalization-v1-step-2.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-twenty-native-preparation-technical-20261008-v1/native-d-e-company-twenty.final.batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-twenty-native-preparation-technical-20261008-v1/native-d-e-company-twenty-final/synthesis-decisions.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-twenty-native-preparation-technical-20261008-v1/native-d-e-company-twenty-final/root-finalization-v1-step-3.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-twenty-native-preparation-technical-20261008-v1/native-d-e-company-twenty-final/root-finalization-v1-step-3.stderr.txt"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-twenty-native-preparation-technical-20261008-v1/native-d-e-company-twenty.final.batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-twenty-native-preparation-technical-20261008-v1/native-d-e-company-twenty-final/root-finalization-v1-step-4.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-company-twenty-native-preparation-technical-20261008-v1/native-d-e-company-twenty-final/root-finalization-v1-step-4.stderr.txt"
+    }
+  ],
+  "actualCurrentInertDClosures": 20,
+  "frozenNativeFilesVerifiedRootAndIsolate": 28,
+  "original65ImageFindingStillHistorical": true,
+  "fresh65OneIndexRequiredForCurrentIntegration": true,
+  "other19WholePageCurrent371ParityAlreadyNativeVerified": true,
+  "separateIndependentP40AndAMReviewsNotReplaced": true,
+  "newStrictLiveClosures": 0,
+  "humanApprovalClaimed": false,
+  "liveMutations": 0
+}

@@ -1,4 +1,4 @@
-export type GoalBookSubject = 'mathematics' | 'physics' | 'chemistry' | 'biology'
+export type GoalBookSubject = 'mathematics' | 'physics' | 'chemistry' | 'biology' | 'economics'
 
 export interface GoalBookPublicationDefinition {
   bookId: string
@@ -41,6 +41,14 @@ export const GOAL_BOOK_PUBLICATION_REGISTRY = Object.freeze([
     subject: 'biology',
     artifactStem: 'de-gym-biologie-bundesweit',
     configPath: 'scripts/config/goal-books/de-gym-biology-national-atlas.json',
+  }),
+  Object.freeze({
+    bookId: 'de-gym-wirtschaftswissenschaften-bundesweit',
+    landscapeId: '605bdaf6-32d5-56fd-8d92-5a80c2fd2901',
+    edition: 'curricular-atomic-v1',
+    subject: 'economics',
+    artifactStem: 'de-gym-wirtschaftswissenschaften-bundesweit',
+    configPath: 'scripts/config/goal-books/de-gym-economics-current-canonical.json',
   }),
 ]) satisfies readonly GoalBookPublicationDefinition[]
 

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-08T16:28:45.798013+00:00",
+  "physicalIsolate": "/tmp/skillpilot-wirtschaft-Macro5-neutral-current311-kp8dhux6",
+  "actualCommands": [
+    {
+      "name": "native-prepare-D5",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "prepare",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-final-native-D5-preparation-v3/native-d-macro-five-national-checkpoint.final.batch.config.json"
+      ],
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-check-D5",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-macro-five-national-checkpoint-final-native-D5-preparation-v3/native-d-macro-five-national-checkpoint.final.batch.config.json"
+      ],
+      "actualExitCode": 0
+    }
+  ],
+  "activeWrites": 0,
+  "newStrictClosures": 0
+}

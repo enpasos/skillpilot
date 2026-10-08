@@ -1,17 +1,24 @@
 # Lernzielbücher: Build-Artefakte statt Git-Binärdateien
 
-Stand: 7. September 2026. Die fachliche Curriculum-QS bleibt während dieser
-Prozessumstellung pausiert.
+Buildstand: 8. Oktober 2026. Die unten dokumentierte Historienbereinigung und
+die damalige QS-Pause beziehen sich auf die Prozessumstellung vom
+7. September 2026. Der aktuelle Katalog enthält zusätzlich die kanonische
+Wirtschaftsausgabe im Review-Modus; ihre Aufnahme behauptet weder M7 noch
+eine menschliche Freigabe oder Veröffentlichung.
 
 ## Quellen und Veröffentlichungen
 
 Die Quellen bleiben versioniert: kanonische Curricula, Kompositionsansichten,
 Quellenzuordnungen, Review-Ledgers, Visualisierungsquellen, Buchkonfigurationen
 und Renderer. Das geschlossene Buchregister definiert Mathematik, Physik,
-Chemie und Biologie. Historische fachliche Reviewbelege werden nicht gelöscht.
+Chemie, Biologie und Wirtschaftswissenschaften. Historische fachliche Reviewbelege
+werden nicht gelöscht. Die Wirtschaftsausgabe umfasst die jeweils aktuellen
+curricularAtomic-Ziele, ohne aus den noch offenen regionalen Quellenprüfungen
+eine vollständige Geltungsmatrix abzuleiten. Aktuelle P-v2-Nachweise behalten
+ihren tatsächlichen Status; KI-Prüfungen ersetzen keine menschlichen Release-Gates.
 
 `app/public/lernzielbuch/` ist dagegen vollständig generiert und Git-ignoriert:
-vier PDFs, vier BookModels, vier Originalquellen-Indizes, vier Render-Manifeste,
+fünf PDFs, fünf BookModels, fünf Originalquellen-Indizes, fünf Render-Manifeste,
 der gemeinsame Publikationsindex und ein rein technischer Build-Cachebeleg.
 Diese Dateien weder manuell bearbeiten noch mit `git add -f` einchecken.
 Die öffentlichen Buch- und PDF-URLs bleiben unverändert.
@@ -58,7 +65,7 @@ zusätzlich werden sämtliche Ausgabedateien und die normale Publikationsprüfun
 kontrolliert. Zeitstempel oder die bloße Existenz einer PDF reichen nicht aus.
 Fehlende oder veränderte Artefakte werden neu gebaut, nicht durchgewunken.
 
-Alle vier Bücher entstehen zunächst in einem benachbarten Stagingverzeichnis.
+Alle registrierten Bücher entstehen zunächst in einem benachbarten Stagingverzeichnis.
 Erst nach erfolgreicher Prüfung aller Bücher wird die Veröffentlichung ersetzt.
 Ein Fehler erhält den vorherigen vollständigen Stand. Fremde Dateien und
 Symlinks im Zielverzeichnis werden nicht überschrieben. Nach einem abgebrochenen

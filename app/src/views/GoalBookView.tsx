@@ -73,6 +73,7 @@ const copy = {
     physics: 'Physik',
     chemistry: 'Chemie',
     biology: 'Biologie',
+    economics: 'Wirtschaftswissenschaften',
     filters: 'Curriculum filtern',
     filterHint: 'G8 und G9 werden nur innerhalb des gewählten Bundeslands angeboten.',
     jurisdiction: 'Bundesland',
@@ -157,6 +158,7 @@ const copy = {
     physics: 'Physics',
     chemistry: 'Chemistry',
     biology: 'Biology',
+    economics: 'Economics',
     filters: 'Filter curriculum',
     filterHint: 'G8 and G9 are offered only within the selected German state.',
     jurisdiction: 'German state',
@@ -1076,7 +1078,7 @@ export const GoalBookView: React.FC<GoalBookViewProps> = ({ suppliedChapterProje
                 })}
               </nav>
             )}
-            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-slate-800 dark:text-slate-100 sm:text-4xl">
+            <h1 className="mt-2 break-words text-3xl font-semibold tracking-tight text-slate-800 dark:text-slate-100 sm:text-4xl">
               {model?.book.title ?? c.titleFallback}
             </h1>
             <p className="mt-2 text-lg text-text-secondary">

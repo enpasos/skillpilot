@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:9c46086107f894aeb4a7ca196203b462cdc906c8b3319d0c6f271785a8054b20",
+  "reviewInputFingerprint": "sha256:ccf5e14ac22c152c02d6f1bb08fccdd2131efbcbfd39e2b632a2c18809708e8b",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-e-company-framework-one-current303-corrected-private-plan-v2-20261008-a",
+      "roundId": "wirtschaft-e-company-framework-one-current303-corrected-private-plan-v2-20261008-first-pass-a",
+      "independenceGroupId": "wirtschaft-e-company-framework-one-current303-corrected-private-plan-v2-20261008-independent-a",
+      "runIds": [
+        "company65-current-image-v2-independent-description-a-20261008"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact serving model identifier not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "wirtschaft-e-company-framework-one-current303-corrected-private-plan-v2-20261008-b",
+      "roundId": "wirtschaft-e-company-framework-one-current303-corrected-private-plan-v2-20261008-first-pass-b",
+      "independenceGroupId": "wirtschaft-e-company-framework-one-current303-corrected-private-plan-v2-20261008-independent-b",
+      "runIds": [
+        "wirtschaft-e-company-framework-one-current303-corrected-private-plan-v2-20261008-first-pass-b.actual-codex-b"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact model identifier not disclosed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "65d9f38e-d35d-5d84-8b66-3c05e388734f",
+      "firstRecordId": "company65-current-image-v2-independent-description-a-20261008:65d9f38e-d35d-5d84-8b66-3c05e388734f",
+      "secondRecordId": "wirtschaft-e-company-framework-one-current303-corrected-private-plan-v2-20261008-first-pass-b.actual-codex-b.record-001",
+      "firstRunId": "company65-current-image-v2-independent-description-a-20261008",
+      "secondRunId": "wirtschaft-e-company-framework-one-current303-corrected-private-plan-v2-20261008-first-pass-b.actual-codex-b",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

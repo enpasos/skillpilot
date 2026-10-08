@@ -1,0 +1,15 @@
+/tmp/skillpilot-wirtschaft-q4-migration-terminal-draft-current191-wlluzbv_/app/scripts/goalBookModel.ts:440
+  throw new Error(`Goal-book model: ${message}`)
+        ^
+
+
+Error: Goal-book model: stale semantic-kind decision for goal 5113c64b-405d-5f4b-bae9-70fe530b5e69; expected sha256:4a68f3b8188cfb2b3c320b7b931b749b43321e9d5277c5690f257755a8c0a19f.
+    at fail (/tmp/skillpilot-wirtschaft-q4-migration-terminal-draft-current191-wlluzbv_/app/scripts/goalBookModel.ts:440:9)
+    at <anonymous> (/tmp/skillpilot-wirtschaft-q4-migration-terminal-draft-current191-wlluzbv_/app/scripts/goalBookModel.ts:862:7)
+    at Array.forEach (<anonymous>)
+    at parseSemanticKindLedger (/tmp/skillpilot-wirtschaft-q4-migration-terminal-draft-current191-wlluzbv_/app/scripts/goalBookModel.ts:841:13)
+    at buildGoalBookModel (/tmp/skillpilot-wirtschaft-q4-migration-terminal-draft-current191-wlluzbv_/app/scripts/goalBookModel.ts:1889:30)
+    at loadGoalBookBuildInputs (/tmp/skillpilot-wirtschaft-q4-migration-terminal-draft-current191-wlluzbv_/app/scripts/goalBookModel.ts:2777:17)
+    at <anonymous> (/tmp/skillpilot-wirtschaft-q4-migration-terminal-draft-current191-wlluzbv_/app/scripts/actualQ4NewMigrationTerminalDraftRouteImpactProbe20261008v1.ts:6063:419)
+
+Node.js v18.19.1

@@ -42,6 +42,11 @@ Use this page by role: start with the overview documents, then jump to a review 
 - [Documentation Guidelines](../dev/documentation-guidelines.md)
   Rules for document roles, generated artifacts, runbooks, and dated pilot records.
 
+## Wirtschaftswissenschaften M7: datierte Arbeitsstände
+
+- [Fortsetzung und aktuelle Paketnachweise vom 8. Oktober](wirtschaft-m7-resumed-2026-10-08.md)
+- [Integrations- und regulärer Lernzielbuchcheckpoint vom 8. Oktober](wirtschaft-m7-commit-checkpoint-2026-10-08.md)
+
 ## Chemie/Biologie M7: datierte Arbeitsstände
 
 - [Zieltext](chemie-biologie-m7-goaltext-2026-09-30.md)

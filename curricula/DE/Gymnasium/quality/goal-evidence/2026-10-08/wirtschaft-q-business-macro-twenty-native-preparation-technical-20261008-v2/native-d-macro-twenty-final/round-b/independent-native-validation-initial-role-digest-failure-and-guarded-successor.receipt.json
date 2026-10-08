@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "actualRecordedAt": "2026-10-08T14:29:35.307669+00:00",
+  "role": "actual initial native validator FAIL and bounded honest run-input-artifact role correction; no substantive rereview or new decision",
+  "actualInitialExitCode": 1,
+  "actualInitialStdout": "wirtschaft-macro-twenty-current303-requires-v2-20261008-first-pass-b.batch-001: Run input artifact review_input_json digest does not match the review bundle\n",
+  "actualCause": "Run review_input_json artifact role was mistakenly bound to richer description-review-input.json instead of the manifest-named neutral bundle/review-input.json. Both whole20 page contexts were actually read; native all20 equality was subsequently checked.",
+  "originalRunMetadataPreserved": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q-business-macro-twenty-native-preparation-technical-20261008-v2/native-d-macro-twenty-final/round-b/historical-initial-run-metadata-wrong-review-input-role-digest.json",
+    "digest": "sha256:bc9a02f815dd7d774705665dafe2ff10b23a1c79d7b2d07d5d6617eec6178506"
+  },
+  "onlyChangedRunField": "inputArtifacts[role=review_input_json].digest",
+  "before": {
+    "role": "review_input_json",
+    "digest": "sha256:79daf40a6b23f36f54fe7bc88f1811bc1f2df4b83340c9d4cf0b03d8a0be9959"
+  },
+  "after": {
+    "role": "review_input_json",
+    "digest": "sha256:f1c78918532ccd624a08540a6202eab0bdded9c88c2e373d949fc9041aed6470"
+  },
+  "wholeTwentyNativeContextRowsByteEquivalentAsObjects": true,
+  "richerOwnDEENInputUnchanged": true,
+  "recordsByteUnchangedByTechnicalCorrection": true,
+  "recordDigest": "sha256:1b843ee3a55d371de7e1b02c579f1967213b5cad129f1865b3704af94f6d74a0",
+  "allFrozenInputsUnchanged": true,
+  "noQualityRulesChanged": true,
+  "substantiveVerdictsRemain20KEEP/create20": true,
+  "repeatNativeValidationRequired": true,
+  "roundARead": false,
+  "liveMutations": 0
+}

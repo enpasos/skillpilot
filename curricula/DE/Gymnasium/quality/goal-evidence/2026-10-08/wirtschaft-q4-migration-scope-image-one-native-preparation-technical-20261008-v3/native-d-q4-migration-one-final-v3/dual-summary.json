@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:8ef00caf5bab7c827db4f7295f1d02669eb002acfea1339d7192f6591d7943bd",
+  "reviewInputFingerprint": "sha256:7cf4b05c14d0e06a86c81dbbd770b0edd07a52529a2b0c1029be9530a5635b68",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-q4-migration-one-current303-corrected-image-scope-v3-20261008-a",
+      "roundId": "wirtschaft-q4-migration-one-current303-corrected-image-scope-v3-20261008-first-pass-a",
+      "independenceGroupId": "wirtschaft-q4-migration-one-current303-corrected-image-scope-v3-20261008-independent-a",
+      "runIds": [
+        "wirtschaft-q4-migration-one-current303-corrected-image-scope-v3-20261008-first-pass-a.actual-codex-session"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact serving model identifier not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "wirtschaft-q4-migration-one-current303-corrected-image-scope-v3-20261008-b",
+      "roundId": "wirtschaft-q4-migration-one-current303-corrected-image-scope-v3-20261008-first-pass-b",
+      "independenceGroupId": "wirtschaft-q4-migration-one-current303-corrected-image-scope-v3-20261008-independent-b",
+      "runIds": [
+        "wirtschaft-q4-migration-one-current303-corrected-image-scope-v3-20261008-first-pass-b.batch-001.economics-layer-a-run-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex session; exact model identifier not disclosed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "6de44afa-7f91-5fa4-9292-ec06e86e97a4",
+      "firstRecordId": "wirtschaft-q4-migration-one-current303-corrected-image-scope-v3-20261008-first-pass-a.6de44afa",
+      "secondRecordId": "wirtschaft-q4-migration-one-current303-corrected-image-scope-v3-20261008-first-pass-b.batch-001.economics-layer-a-run-v1.6de44afa-7f91-5fa4-9292-ec06e86e97a4",
+      "firstRunId": "wirtschaft-q4-migration-one-current303-corrected-image-scope-v3-20261008-first-pass-a.actual-codex-session",
+      "secondRunId": "wirtschaft-q4-migration-one-current303-corrected-image-scope-v3-20261008-first-pass-b.batch-001.economics-layer-a-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

@@ -1,8 +1,10 @@
-# SkillPilot in Gemini – lokaler Integrationskandidat
+# SkillPilot in Gemini – Integrationskandidat für kontrollierte Tests
 
 **Stand: 6. Oktober 2026.** Diese Integration verbindet die reale SkillPilot-
 Lernlogik mit einer Gemini Custom App und einem importierbaren Coach-Skill.
-Sie ist ein lokaler Kandidat, keine veröffentlichte oder ausgerollte Beta.
+Sie bleibt ein Integrationskandidat mit offener Host-Abnahme. Der Product Owner
+hat inzwischen den normalen Produktionsrollout von WebGUI und gemeinsamem
+Backend gemeldet; die eigene Gemini-Verbindung benötigt weitere Aktivierung.
 Die [synthetische PoC-Bewertung](gemini-custom-apps-poc.md) bleibt als eigener
 historischer Befund erhalten. Das separate
 [Integrations-Prüfprotokoll](gemini-integration-evidence-2026-10-06.json)
@@ -18,7 +20,8 @@ Transportnachweis, keine Abnahme der Bildintegration. Erforderlich ist die
 tatsächliche Anzeige des Lernzielbilds direkt im Gemini-Chat; sie bleibt
 ungelöst. Kartenübung, Verified Recall,
 Prüfungen und negative Sicherheitsfälle benötigen zusätzlich zu ihren lokalen
-Tests eigene Host-Abnahme. Eine Produktionsbereitstellung wurde nicht vorgenommen.
+Tests eigene Host-Abnahme. Die gemeldete Produktionsbereitstellung des normalen
+SkillPilot-Releases bestätigt noch keine produktive Gemini-Verbindung.
 
 Für den anschließenden kontrollierten Testbetrieb auf `skillpilot.com` sind
 ein wiederholbar ausführbarer Installer, eine eigene Gateway-Unit und
@@ -28,6 +31,27 @@ Konfiguration, TLS und den exakt gemessenen Google-Callback. Diese Vorbereitung
 aktiviert keine Produktionsdienste. Der normale Rollout prüft zudem die
 unveränderte Skill-ZIP im Build und über den öffentlichen Download; HTML an
 dieser Adresse wird als Fehler behandelt.
+
+### Öffentlich geprüfter Rollout-Stand am 6. Oktober 2026
+
+Nach der Meldung des Product Owners bestätigte eine lesende Prüfung die
+öffentliche WebGUI-Version
+`9e16b50f6972e130b0e62e545eddf83f50fc23d3`, gebaut um **11:22:53 Uhr Berliner
+Zeit (CEST, UTC+2)**, mit `dirty=true` in den Versionsmetadaten. Die gemeinsame
+Readiness antwortete mit HTTP 200 und
+`status=UP`. Der Gemini-Skill-Download antwortete ohne Weiterleitung mit HTTP
+200, `Content-Type: application/zip` und 9.391 Bytes. Der ausführbare
+Download-Checker bestätigte den unveränderten SHA256
+`2a5f5de47cd04345196cd21f0ab4dc4e0b3247b509a9deaaa0e2f8cd74d30a40`.
+
+Am vorgesehenen Gateway `https://mcp-gemini-v1.skillpilot.com` scheiterten
+Health, OAuth-Metadaten, Ressourcen-Metadaten und MCP dagegen an der strikten
+TLS-Prüfung: Das ausgelieferte Zertifikat gilt nicht für diesen Hostnamen.
+Diese Prüfung belegt den öffentlichen Frontend- und Download-Stand sowie die
+gemeinsame Readiness; sie identifiziert weder den laufenden Backend-Build
+noch die Aktivierung der Gemini-Lane. Die stabile Gateway-Verbindung und die
+Bildanzeige im tatsächlichen Gemini-Chat bleiben offen. Die historischen
+lokalen Prüfprotokolle und Paket-Hashes wurden dabei nicht verändert.
 
 Ein zusätzlicher Test mit einer tatsächlich in der WebGUI erzeugten und
 kopierten Startnachricht erreichte zunächst erfolgreiche OAuth-Erneuerung,
@@ -51,6 +75,23 @@ beobachtete Alternative bei fehlendem Werkzeugzugriff, keine nachgewiesene
 Voraussetzung für alle Konten. Die historischen Prüfprotokolle und Paket-Hashes
 bleiben unverändert; dieser Anschlussversuch ersetzt deren Befunde nicht.
 
+Zusätzliche private, lesende Transportkontrollen am selben Tag nutzten ein
+unverändertes kleines SkillPilot-PNG mit **2.858 Bytes**. Im normalen Gemini-Chat
+lieferte der isolierte MCP-Server um **09:45:50 UTC** einen nativen
+`ImageContent`-Block und um **09:52:33 UTC** denselben Bildblock mit
+`annotations.audience = ["user", "assistant"]`. Um **10:01:01 UTC** folgte
+eine weitere Kontrolle mit demselben annotierten Bild vor dem unveränderten
+Textblock. Die SDK-Kontrolle bestätigte jeweils die originalen Bildbytes;
+alle drei Host-Antworten wurden abgeschlossen,
+enthielten aber kein sichtbares Bild. Geminis Behauptung, das Werkzeug habe nur
+Text geliefert, widerspricht der geprüften Serverantwort und lokalisiert den
+Fehler nicht. Auch die geänderte Blockreihenfolge erzielte keine Bildanzeige.
+Separate Spark-Diagnosetasks erreichten in den begrenzten
+Testfenstern keinen nachweisbaren Bildwerkzeug-Aufruf; sie erlauben deshalb
+keine Abnahme oder Ablehnung dieses Bildformats in Spark. Die Kontrollen lesen
+keine Lernsession und ändern keinen Lernstand. Produktadapter, Coach-Archiv und
+kanonische Lernzielbilder wurden dafür nicht verändert.
+
 ## Komponenten und Grenzen
 
 | Komponente | Aufgabe |
@@ -68,7 +109,8 @@ keine zweite Mastery-Datenbank. Die bestehenden Claude-/OpenAI-Pakete und
 veröffentlichten UI-Ressourcen werden nicht verändert. Lernantworten,
 Chattranskripte und Modellbegründungen werden nicht an SkillPilot gesendet.
 
-Der Gemini Adapter bietet native Text-/JSON-Antworten und autorisierte Bilder.
+Der Gemini Adapter liefert Text-/JSON-Antworten und beschreibt freigegebene
+Lernzielbilder mit URL und Alternativtext. Die direkte Host-Anzeige ist offen.
 Er setzt keine Claude- oder ChatGPT-HTML-Widgets voraus. Normale Kartenübung
 hat eine separate Antwortfreigabe und ausdrückliche Selbsteinschätzung;
 Verified Recall und Prüfungen behalten ihre geschützten Antwortgrenzen.
@@ -544,5 +586,8 @@ Echte Kontextaufrufe luden den gespeicherten Zustand und zeigten das richtige
 Nachfolgeziel. Das beweist diesen geprüften Ablauf, keine allgemeine
 Verfügbarkeitsgarantie für andere Konten oder spätere Host-Versionen.
 
-Die lokale Umsetzung autorisiert keine Produktionsbereitstellung, öffentliche
-Beta-Verteilung, Portal-Veröffentlichung oder Änderung bestehender Credentials.
+Der Product Owner hat den kontrollierten Produktions-Testbetrieb ausdrücklich
+autorisiert und übernimmt das produktive Deployment. Diese Freigabe und der
+gemeldete normale Rollout ersetzen keine Gateway- oder Gemini-Host-Abnahme.
+Öffentliche Mehrnutzer-Beta, Portal-Veröffentlichung und Änderungen bestehender
+Provider-Credentials sind weiterhin eigenständige Schritte.

@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Lebenswelten vergleichen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `f79decb1-4d32-5d99-b998-e87e34d16527`
+- Titel: Lebenswelten vergleichen
+- Beschreibung: Die lernende Person kann unterschiedliche gesellschaftliche Gruppenperspektiven darstellen (z.B. Jugend, Zuwanderung, Geschlechterrollen).
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `f79decb1-4d32-5d99-b998-e87e34d16527.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/f79decb1-4d32-5d99-b998-e87e34d16527/f79decb1-4d32-5d99-b998-e87e34d16527.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational. Create ONE friendly abstract clear comic PNG orientation illustration for German Gymnasium economics/social-economics. Landscape near16:9, approximately1600x900 or close native size. Cream background, navy outlines, teal and warm orange accents, large simple main objects/actions readable at360px phone width and680px desktop. Diverse friendly people with equal dignity. No photorealism, sterile technical designs, crowding, tiny compulsory writing, stereotypes about gender, culture, age or migration, invented numeric data, real logos, watermarks or technical IDs. No implicit claims of a historical trend or universal causation: these are illustrative hypothetical situations. Only specified large short German labels; correctly oriented boards/documents from actor's viewpoint, preferably avoid readable documents. THREE diverse people of different ages around one neighborhood model with school, accessible bus stop and workbench. Each holds a distinct LARGE viewfinder looking at the SAME model: one emphasizes learning/time, one accessibility/work, one family/care. Heading 'Perspektiven vergleichen'. Do not assign concerns deterministically by gender, skin color or origin; every person has thoughtful dignity. No universal group claims or tiny speech.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

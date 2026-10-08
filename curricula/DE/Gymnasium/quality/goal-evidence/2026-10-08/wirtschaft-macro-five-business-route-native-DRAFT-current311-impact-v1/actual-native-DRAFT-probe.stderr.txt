@@ -1,0 +1,21 @@
+node:fs:596
+  handleErrorFromBinding(ctx);
+  ^
+
+Error: ENOENT: no such file or directory, open '/tmp/skillpilot-wirtschaft-Macro-five-route-DRAFT-current311-iyj_ai4y/contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json'
+    at Object.openSync (node:fs:596:3)
+    at readFileSync (node:fs:464:35)
+    at assertPinnedSemanticKindFingerprintProfile (/tmp/skillpilot-wirtschaft-Macro-five-route-DRAFT-current311-iyj_ai4y/app/scripts/goalBookModel.ts:603:17)
+    at fingerprintSemanticKindSourceGoal (/tmp/skillpilot-wirtschaft-Macro-five-route-DRAFT-current311-iyj_ai4y/app/scripts/goalBookModel.ts:631:3)
+    at <anonymous> (/tmp/skillpilot-wirtschaft-Macro-five-route-DRAFT-current311-iyj_ai4y/app/scripts/economics-macro-five-DRAFT-native-route-impact.ts:6065:212)
+    at ModuleJob.run (node:internal/modules/esm/module_job:195:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:336:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:106:12) {
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: '/tmp/skillpilot-wirtschaft-Macro-five-route-DRAFT-current311-iyj_ai4y/contracts/curriculum-package/v1/profiles/semantic-normal-form-v1.profile.json'
+}
+
+Node.js v18.19.1

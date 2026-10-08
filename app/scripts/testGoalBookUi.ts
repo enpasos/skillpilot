@@ -5,6 +5,7 @@ import { chromium, type Browser, type Page } from 'playwright'
 import tailwindcss from '@tailwindcss/vite'
 import { startViteTestServer } from './viteTestServer'
 import type { GoalBookOriginalSourcesPayload } from '../src/utils/goalBookOriginalSources'
+import { parseGoalBookRuntimeModel } from '../src/utils/goalBookRuntime'
 
 const FIRST_GOAL_ID = '11111111-1111-4111-8111-111111111111'
 const SECOND_GOAL_ID = '22222222-2222-4222-8222-222222222222'
@@ -14,10 +15,14 @@ const MODEL_PATH = '/lernzielbuch/de-gym-mathematik-bundesweit.book-model.json'
 const PDF_PATH = '/lernzielbuch/de-gym-mathematik-bundesweit.pdf'
 const PHYSICS_MODEL_PATH = '/lernzielbuch/de-gym-physik-bundesweit.book-model.json'
 const PHYSICS_PDF_PATH = '/lernzielbuch/de-gym-physik-bundesweit.pdf'
+const ECONOMICS_BOOK_ID = 'de-gym-wirtschaftswissenschaften-bundesweit'
+const ECONOMICS_MODEL_PATH = `/lernzielbuch/${ECONOMICS_BOOK_ID}.book-model.json`
+const ECONOMICS_PDF_PATH = `/lernzielbuch/${ECONOMICS_BOOK_ID}.pdf`
 const SOURCES_PATH = '/lernzielbuch/de-gym-mathematik-bundesweit.original-sources.json'
 const PHYSICS_SOURCES_PATH = '/lernzielbuch/de-gym-physik-bundesweit.original-sources.json'
 const MATHEMATICS_LANDSCAPE_ID = '68a8ac50-f5f5-4e24-8aa9-5e408ca01ced'
 const PHYSICS_LANDSCAPE_ID = '7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a'
+const ECONOMICS_LANDSCAPE_ID = '605bdaf6-32d5-56fd-8d92-5a80c2fd2901'
 
 function assert(condition: unknown, message: string): asserts condition {
   if (!condition) throw new Error(message)
@@ -241,6 +246,77 @@ const additionalSubjectFixtures = [
   return { bookId, label, labelEn, title: fixture.book.title, body, digest: fixture.digest,
     sha256: `sha256:${createHash('sha256').update(body).digest('hex')}` }
 })
+
+// Synthetic browser-contract pages, separate from the real current-ID build
+// test. Economics uses its canonical review navigation, without borrowing the
+// atlas scopes or source coverage of the Mathematics/Chemistry/Biology fixtures.
+const economicsModel = JSON.parse(modelFixture.replaceAll(
+  MATHEMATICS_LANDSCAPE_ID, ECONOMICS_LANDSCAPE_ID,
+).replaceAll('"mathematik"', '"economics-ui-root"')
+  .replaceAll('"algebra"', '"economics-ui-company"')
+  .replaceAll('"geometrie"', '"economics-ui-models"'))
+economicsModel.book.id = ECONOMICS_BOOK_ID
+economicsModel.book.title = 'Lernzielbuch Wirtschaftswissenschaften – Gymnasium Deutschland (Review-Ausgabe)'
+economicsModel.book.scope = { schoolForm: 'Gymnasium', stage: 'CrossStage' }
+economicsModel.source = {
+  compositionViewPath: 'app/scripts/config/goal-books/navigation/de-gym-economics-current-canonical.view.json',
+  compositionViewSources: [{
+    path: 'app/scripts/config/goal-books/navigation/de-gym-economics-current-canonical.view.json',
+    viewId: 'de-gym-economics-current-canonical',
+    scope: { schoolForm: 'Gymnasium', stage: 'CrossStage' },
+    digest: `sha256:${'7'.repeat(64)}`,
+    projectionFingerprint: `sha256:${'8'.repeat(64)}`,
+  }],
+}
+economicsModel.navigation.canonicalProjectionSource = {
+  ...economicsModel.navigation.canonicalProjectionSource,
+  path: economicsModel.source.compositionViewPath,
+  viewId: 'de-gym-economics-current-canonical',
+  title: 'Kanonische Gliederung Wirtschaftswissenschaften – Gymnasium Deutschland',
+  scope: { schoolForm: 'Gymnasium', stage: 'CrossStage' },
+}
+const economicsTitles = new Map([
+  ['economics-ui-root', 'Wirtschaftswissenschaften'],
+  ['economics-ui-company', 'Unternehmen'],
+  ['economics-ui-models', 'Modelle'],
+  [FIRST_GOAL_ID, 'Gewinn als Differenz von Erlös und Kosten deuten'],
+  [SECOND_GOAL_ID, 'Opportunitätskosten einer Entscheidung erläutern'],
+  [THIRD_GOAL_ID, 'Wirtschaftliche Modelle auf Annahmen prüfen'],
+])
+economicsModel.navigation.goalGraph.title = 'Wirtschaftswissenschaften'
+for (const goal of economicsModel.navigation.goalGraph.goals) {
+  goal.title = economicsTitles.get(goal.id)
+}
+for (const chapter of economicsModel.chapters) {
+  chapter.label = economicsTitles.get(chapter.chapterId)
+}
+for (const goalPage of economicsModel.pages) {
+  goalPage.title = economicsTitles.get(goalPage.goalId)
+  goalPage.description = `Die lernende Person kann ${String(goalPage.title).toLocaleLowerCase('de-DE')}.`
+  goalPage.breadcrumbs = goalPage.chapterIds.map((chapterId: string) => economicsTitles.get(chapterId))
+  for (const relation of [...goalPage.requires, ...goalPage.reverseRequires]) {
+    relation.title = economicsTitles.get(relation.goalId)
+  }
+  goalPage.externalPrerequisites = []
+  goalPage.externalReverseRequires = []
+  delete goalPage.applicability
+  goalPage.visualization = null
+  goalPage.evidenceReview = {
+    reviewId: `synthetic-economics-ui-${goalPage.goalId}`,
+    status: 'needs_human_review',
+    reviewInputFingerprint: `sha256:${'4'.repeat(64)}`,
+    profileFingerprint: `sha256:${'5'.repeat(64)}`,
+    evidenceLevel: 'E1',
+    maximumClaimScope: 'G1',
+  }
+}
+economicsModel.digest = stableDigest({
+  book: economicsModel.book, navigation: economicsModel.navigation, pages: economicsModel.pages,
+})
+const economicsFixture = `${JSON.stringify(economicsModel, null, 2)}\n`
+const economicsFixtureSha256 = `sha256:${createHash('sha256').update(economicsFixture).digest('hex')}`
+assert(parseGoalBookRuntimeModel(economicsModel).book.landscapeId === ECONOMICS_LANDSCAPE_ID,
+  'the synthetic canonical Economics fixture must satisfy the actual browser model contract')
 const sourcesFixture: GoalBookOriginalSourcesPayload = {
   schemaVersion: '1.0.0', bookId: 'de-gym-mathematik-bundesweit', bookDigest: String(mathModel.digest),
   documents: [
@@ -305,6 +381,17 @@ additionalSubjectFixtures.forEach(({ bookId, title, sha256, digest }) => index.b
     renderManifestUrl: `/lernzielbuch/${bookId}.pdf.render-manifest.json`,
     renderManifestSha256: `sha256:${'f'.repeat(64)}` },
 }))
+index.books.push({
+  bookId: ECONOMICS_BOOK_ID,
+  title: economicsModel.book.title,
+  locale: 'de-DE',
+  publicationMode: 'review',
+  pageCount: 3,
+  model: { url: ECONOMICS_MODEL_PATH, sha256: economicsFixtureSha256, modelDigest: economicsModel.digest },
+  pdf: { url: ECONOMICS_PDF_PATH, sha256: `sha256:${'e'.repeat(64)}`,
+    renderManifestUrl: `${ECONOMICS_PDF_PATH}.render-manifest.json`,
+    renderManifestSha256: `sha256:${'f'.repeat(64)}` },
+})
 const indexFixture = JSON.stringify(index)
 const server = await startViteTestServer(
   appRoot,
@@ -380,6 +467,7 @@ try {
   let indexRequests = 0
   let mathModelRequests = 0
   let physicsModelRequests = 0
+  let economicsModelRequests = 0
   let delayNextMathModelResponse = false
   let imageRequests = 0
   let sourceRequests = 0
@@ -394,6 +482,8 @@ try {
     [PHYSICS_LANDSCAPE_ID, 'M6'],
     ['c436b994-8f44-5134-b9f8-0c9f5d6a5ba0', 'M5'],
     ['08a43a1b-d97e-522c-9dfa-c950a493364e', 'M4'],
+    // Distinct synthetic API status verifies binding, not actual Economics maturity.
+    [ECONOMICS_LANDSCAPE_ID, 'M2'],
   ])
 
   page.on('pageerror', (error) => browserErrors.push(error.message))
@@ -444,6 +534,10 @@ try {
       contentType: 'application/json; charset=utf-8',
       body: physicsFixture,
     })
+  })
+  await page.route(`**${ECONOMICS_MODEL_PATH}`, async (route) => {
+    economicsModelRequests += 1
+    await route.fulfill({ status: 200, contentType: 'application/json', body: economicsFixture })
   })
   for (const fixture of additionalSubjectFixtures) {
     await page.route(`**/lernzielbuch/${fixture.bookId}.book-model.json`, async (route) => {
@@ -887,7 +981,8 @@ try {
     await subjectNavigation.getByRole('link', { name: 'Mathematik', exact: true }).getAttribute('aria-current') === 'page'
       && await subjectNavigation.getByRole('link', { name: 'Physik', exact: true }).count() === 1
       && await subjectNavigation.getByRole('link', { name: 'Chemie', exact: true }).count() === 1
-      && await subjectNavigation.getByRole('link', { name: 'Biologie', exact: true }).count() === 1,
+      && await subjectNavigation.getByRole('link', { name: 'Biologie', exact: true }).count() === 1
+      && await subjectNavigation.getByRole('link', { name: 'Wirtschaftswissenschaften', exact: true }).count() === 1,
     'the complete closed publication catalog is presented as a subject selector',
   )
   await subjectNavigation.getByRole('link', { name: 'Physik', exact: true }).click()
@@ -1062,6 +1157,59 @@ try {
     await page.getByRole('button', { name: 'DE', exact: true }).click()
     await assertNoHorizontalOverflow(page, 375)
   }
+
+  const beforeEconomicsRequests = requests.length
+  const beforeEconomicsMathModels = mathModelRequests
+  const beforeEconomicsPhysicsModels = physicsModelRequests
+  await page.goto(`${fixtureUrl}?book=${ECONOMICS_BOOK_ID}#goal-${FIRST_GOAL_ID}`)
+  await page.getByRole('heading', { name: economicsModel.book.title, exact: true }).waitFor()
+  assert((await page.getByRole('heading', { name: economicsModel.book.title, exact: true }).innerText())
+    .includes('(Review-Ausgabe)'), 'the Economics title visibly identifies its review edition')
+  await page.getByRole('heading', { name: economicsTitles.get(FIRST_GOAL_ID), exact: true }).waitFor()
+  await qualityStatus.locator('[data-maturity="M2"]').waitFor()
+  assert(
+    economicsModelRequests === 1
+      && mathModelRequests === beforeEconomicsMathModels
+      && physicsModelRequests === beforeEconomicsPhysicsModels
+      && requests.slice(beforeEconomicsRequests).filter(({ pathname }) => pathname.endsWith('.book-model.json'))
+        .every(({ pathname }) => pathname === ECONOMICS_MODEL_PATH)
+      && await page.getByTestId('goal-book-pdf').getAttribute('href') === ECONOMICS_PDF_PATH
+      && page.url().endsWith(`#goal-${FIRST_GOAL_ID}`),
+    'a direct Economics book/goal link loads only its model and binds its own PDF and selected goal',
+  )
+  assert(
+    await qualityStatus.locator('[data-maturity]').count() === 1
+      && await qualityStatus.locator('[data-maturity="M7"]').count() === 0
+      && (await qualityStatus.innerText()).includes('Maschinelle QS')
+      && await page.getByText('Didaktisches Evidenzprofil in Prüfung · E1/G1', { exact: true }).count() === 1
+      && await page.getByText('Didaktisches Evidenzprofil geprüft', { exact: false }).count() === 0,
+    'Economics retains its own machine-QA status and pending E1/G1 review, without inheriting Mathematics M7 or human approval',
+  )
+  const economicsCanonicalChecks = {
+    selectedSubject: await page.getByRole('navigation', { name: 'Fach auswählen' })
+      .getByRole('link', { name: 'Wirtschaftswissenschaften', exact: true }).getAttribute('aria-current') === 'page',
+    noAtlasFilters: await page.getByRole('group', { name: 'Curriculum filtern' }).count() === 0,
+    noApplicabilityMatrix: await page.getByRole('heading', { name: 'Curriculare Geltung', exact: true }).count() === 0,
+    canonicalOverview: await page.getByTestId('goal-book-view-label').innerText() === 'Kanonische Gesamtsicht',
+    noAtlasSourceRequests: requests.slice(beforeEconomicsRequests)
+      .every(({ pathname }) => !pathname.endsWith('.original-sources.json')),
+  }
+  assert(Object.values(economicsCanonicalChecks).every(Boolean),
+    `the canonical Economics fixture does not advertise borrowed atlas applicability or original-source coverage: ${JSON.stringify(economicsCanonicalChecks)}`)
+  await assertNoHorizontalOverflow(page, 360)
+  await page.evaluate(() => window.scrollTo(0, 0))
+  await page.screenshot({ path: '../tmp/goal-book-quality-status-ui/economics-review-edition-360.png' })
+  await page.getByRole('button', { name: 'EN', exact: true }).click()
+  assert(
+    await page.getByRole('navigation', { name: 'Select subject' })
+      .getByRole('link', { name: 'Economics', exact: true }).getAttribute('aria-current') === 'page'
+      && (await qualityStatus.innerText()).includes('Automated QA')
+      && await page.getByText('Didactic evidence profile under review · E1/G1', { exact: true }).count() === 1
+      && await page.getByTestId('goal-book-pdf').getAttribute('href') === ECONOMICS_PDF_PATH,
+    'English Economics labels preserve the same selected model, PDF and pending evidence status',
+  )
+  await assertNoHorizontalOverflow(page, 360)
+  await page.getByRole('button', { name: 'DE', exact: true }).click()
   qualityAvailable = false
   const biologyFixtureUrl = `${fixtureUrl}?book=${additionalSubjectFixtures[1].bookId}`
   const openBiologyFixture = async () => {

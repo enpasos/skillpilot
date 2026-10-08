@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-10-08T16:36:43.649Z
+Generated: 2026-10-08T17:10:14.590Z
 Rules version: curriculum-quality-v5
 
 ## Summary
@@ -16,8 +16,8 @@ Rules version: curriculum-quality-v5
 | --- | ---: |
 | Curricula | 21 |
 | M0 | 11 |
-| M1 | 0 |
-| M2 | 1 |
+| M1 | 1 |
+| M2 | 0 |
 | M3 | 0 |
 | M4 | 0 |
 | M5 | 0 |
@@ -48,7 +48,7 @@ Rules version: curriculum-quality-v5
 | Russisch (Gymnasium, DE) | M0 | 8 | 7 | 0/1 | 0/16 | 0 | 1 | 1 |
 | Spanisch (Gymnasium, DE) | M0 | 83 | 59 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Tschechisch (Gymnasium, DE) | M0 | 5 | 4 | 0/1 | 0/16 | 0 | 1 | 1 |
-| Wirtschaftswissenschaften (Gymnasium, DE) | M2 | 370 | 333 | 30/30 | 16/16 | 1 | 2 | 1 |
+| Wirtschaftswissenschaften (Gymnasium, DE) | M1 | 389 | 347 | 30/30 | 16/16 | 1 | 2 | 0 |
 
 ## Mapping Pipeline
 
@@ -299,8 +299,8 @@ Rules version: curriculum-quality-v5
 | Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaft Sekundarstufe II (Berlin, GOST FULL Source-Extraction) | DE-BE | 2/2 URL; local cache 0/2 | 3/3 | - | 32 | 156 | 2 | 154 | 1% | - |  |
 | Politik und Wirtschaft (Gymnasium, DE) | Gemeinschaftskunde Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 22 | 145 | 13 | 132 | 9% | - |  |
 | Politik und Wirtschaft (Gymnasium, DE) | Gemeinschaftskunde Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 13 | 81 | 0 | 81 | 0% | - |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Wirtschaft / Berufs- und Studienorientierung Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 5 | 43 | 9 | 34 | 21% | - |  |
-| Politik und Wirtschaft (Gymnasium, DE) | Wirtschaft Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 7 | 58 | 16 | 42 | 28% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Wirtschaft / Berufs- und Studienorientierung Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 5 | 43 | 6 | 37 | 14% | - |  |
+| Politik und Wirtschaft (Gymnasium, DE) | Wirtschaft Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 7 | 58 | 10 | 48 | 17% | - |  |
 | Politik und Wirtschaft (Gymnasium, DE) | Politik und Gesellschaft (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 URL; local cache 1/1 | 3/3 | - | 46 | 345 | 277 | 68 | 80% | - |  |
 | Politik und Wirtschaft (Gymnasium, DE) | Politik und WAT Sekundarstufe I (Bremen, Bildungsplan FULL Source-Extraction) | DE-HB | 2/2 URL; local cache 0/2 | 3/3 | - | 11 | 71 | 0 | 71 | 0% | - |  |
 | Politik und Wirtschaft (Gymnasium, DE) | Politik und Wirtschaftslehre Sekundarstufe II (Bremen, Bildungsplan FULL Source-Extraction) | DE-HB | 2/2 URL; local cache 0/2 | 3/3 | - | 9 | 70 | 0 | 70 | 0% | - |  |
@@ -332,15 +332,15 @@ Rules version: curriculum-quality-v5
 | Spanisch (Gymnasium, DE) | Spanisch Oberstufe (Hessen, KC 2024) | DE-HE | 1/1 URL; local cache 1/1 | 3/3 | - | 24 | 44 | 44 | 0 | 100% | - |  |
 | Tschechisch (Gymnasium, DE) | Tschechisch (Gymnasium) | DE-BY | No extraction | 0/3 | MAPPING-1 | 0 | 0 | 0 | 0 | 0% | - |  |
 | Wirtschaftswissenschaften (Gymnasium, DE) | WAT Sekundarstufe I - wirtschaftliche Inhaltsbereiche (Brandenburg, RLP 2015 Source-Extraction) | DE-BB | 1/1 URL; local cache 0/1 | 3/3 | - | 8 | 48 | 6 | 42 | 13% | - |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftswissenschaft Sekundarstufe II (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 1/1 URL; local cache 0/1 | 3/3 | - | 24 | 100 | 33 | 67 | 33% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftswissenschaft Sekundarstufe II (Brandenburg, RLP GOST 2022 Source-Extraction) | DE-BB | 1/1 URL; local cache 0/1 | 2/3 | MAPPING-2 | 24 | 100 | 33 | 67 | 33% | - |  |
 | Wirtschaftswissenschaften (Gymnasium, DE) | WAT Sekundarstufe I - wirtschaftliche Inhaltsbereiche (Berlin, RLP 2015 Source-Extraction) | DE-BE | 1/1 URL; local cache 0/1 | 3/3 | - | 8 | 48 | 6 | 42 | 13% | - |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftswissenschaft Sekundarstufe II (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 1/1 URL; local cache 0/1 | 3/3 | - | 24 | 100 | 33 | 67 | 33% | - |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft / Berufs- und Studienorientierung Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 5 | 43 | 9 | 34 | 21% | - |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 7 | 58 | 16 | 42 | 28% | - |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft und Recht (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 URL; local cache 1/1 | 3/3 | - | 35 | 184 | 172 | 12 | 93% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftswissenschaft Sekundarstufe II (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 1/1 URL; local cache 0/1 | 2/3 | MAPPING-2 | 24 | 100 | 33 | 67 | 33% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft / Berufs- und Studienorientierung Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 5 | 43 | 6 | 37 | 14% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft Kursstufe (Baden-Wuerttemberg, BP2016 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 7 | 58 | 10 | 48 | 17% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft und Recht (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 URL; local cache 1/1 | 2/3 | MAPPING-2 | 35 | 184 | 172 | 12 | 93% | - |  |
 | Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaft-Arbeit-Technik Sekundarstufe I (Bremen, Bildungsplan 2006 Source-Extraction) | DE-HB | 1/1 URL; local cache 0/1 | 3/3 | - | 4 | 29 | 0 | 29 | 0% | - |  |
 | Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftslehre Gymnasiale Oberstufe (Bremen, Bildungsplan 2008 Source-Extraction) | DE-HB | 1/1 URL; local cache 0/1 | 3/3 | - | 4 | 28 | 0 | 28 | 0% | - |  |
-| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftswissenschaften Oberstufe (Hessen, KC 2024) | DE-HE | 2/2 URL; local cache 1/2 | 3/3 | - | 20 | 173 | 173 | 0 | 100% | - |  |
+| Wirtschaftswissenschaften (Gymnasium, DE) | Wirtschaftswissenschaften Oberstufe (Hessen, KC 2024) | DE-HE | 2/2 URL; local cache 1/2 | 2/3 | MAPPING-3 | 20 | 173 | 0 | 0 | 0% | - |  |
 | Wirtschaftswissenschaften (Gymnasium, DE) | PGW Sekundarstufe I - wirtschaftliche Inhaltsfelder (Hamburg, Bildungsplan Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 4 | 30 | 0 | 30 | 0% | - |  |
 | Wirtschaftswissenschaften (Gymnasium, DE) | PGW Studienstufe - wirtschaftliche Module (Hamburg, Bildungsplan Source-Extraction) | DE-HH | 1/1 URL; local cache 0/1 | 3/3 | - | 3 | 60 | 0 | 60 | 0% | - |  |
 | Wirtschaftswissenschaften (Gymnasium, DE) | Sozialkunde Sekundarstufe I - wirtschaftliche Inhaltsbereiche (Mecklenburg-Vorpommern, Rahmenplan Source-Extraction) | DE-MV | 1/1 URL; local cache 0/1 | 4/4 | - | 6 | 61 | 0 | 61 | 0% | - |  |
@@ -386,7 +386,7 @@ Rules version: curriculum-quality-v5
 | Russisch (Gymnasium, DE) | 0/16 | 6 | 7 | 1 | 0 | 8 | 8 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 6 (100%) |
 | Spanisch (Gymnasium, DE) | 2/16 | 44 | 59 | 2 | 50 | 50 | 50 | 0 | 50 | 0 | 0 | 0 | 0 | 0 | 44 (100%) |
 | Tschechisch (Gymnasium, DE) | 0/16 | 3 | 4 | 1 | 0 | 5 | 5 | 0 | 0 | 0 | 0 | 0 | 0 | 1 | 3 (100%) |
-| Wirtschaftswissenschaften (Gymnasium, DE) | 16/16 | 274 | 333 | 16 | 2109 | 2109 | 2109 | 0 | 2109 | 0 | 0 | 0 | 0 | 0 | 272 (100%) |
+| Wirtschaftswissenschaften (Gymnasium, DE) | 16/16 | 282 | 347 | 16 | 2109 | 2109 | 2109 | 0 | 2109 | 0 | 0 | 0 | 0 | 0 | 269 (100%) |
 
 ## Rule Catalog
 

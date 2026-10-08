@@ -1,0 +1,23 @@
+{
+  "role": "author_bounded_native_contract_finding",
+  "recordedAt": "2026-10-08T07:46:56.932004+00:00",
+  "goalIds": [
+    "7179f558-b05f-5ebd-8799-28ffaaf2da05",
+    "50e07b86-428c-5f9c-8c7e-0d0669343af5"
+  ],
+  "actualNativePrepareFailure": "Generated description-review campaign is invalid: Input: data/goals/15/canonicalContext/dimensionTags/demandLevel must be equal to one of the allowed values, data/goals/16/canonicalContext/dimensionTags/demandLevel must be equal to one of the allowed values",
+  "nativeCommandResultsPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q1-seventeen-native-preparation-technical-20261008-v1/actual-native-d-preparation-logs/command-results.actual.json",
+  "nativeCommandResultsSha256": "sha256:3cbdbc5050d92af80cc065b84f62e7e1b030c4f104738686ad1a3c6413e442cb",
+  "currentSchemaContractPath": "contracts/goal-description-review/v3/goal-description-review-input.schema.json",
+  "currentSchemaContractSha256": "sha256:ecf64d1000670e55e76c0c9609ef2243edaa1bfb6d9685bba52d4badea0f0b13",
+  "canonicalContextBuilderPath": "app/scripts/validateGoalDescriptionReviewCampaign.ts",
+  "cause": "The canonical supplement goals omit demandLevel. The unchanged native builder converts that absence to the empty string; the bounded current contract rejects it.",
+  "candidateChanges": "Exactly two demandLevel fields added. DE/EN semantics, graph, sourceRef, applicability, P-v2 content and imagery unchanged.",
+  "candidateClassification": "AB2 inferred from actual unchanged Einordnen/Analysieren goal operators and independently read contextualisation/model-analysis cases. Existing demand-level-free author-v2 bytes remain untouched.",
+  "requiredIndependentWork": "Independently inspect both whole goals and the bounded AB2 choice before adopting either. Then successor source/semkind/QA/P/A/M bindings and native D preparation are required.",
+  "changedCheckerOrContract": false,
+  "activeWrites": 0,
+  "descriptionFreezeExists": false,
+  "newStrictClosures": 0,
+  "humanApprovalClaimed": false
+}

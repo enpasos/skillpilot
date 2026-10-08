@@ -1,0 +1,202 @@
+{
+  "phase": "six-map-candidate",
+  "wholeGoals": 386,
+  "route": [
+    {
+      "id": "CQR-101",
+      "status": "fail",
+      "metrics": {
+        "selectedAtomicGoals": 311,
+        "missingMotivationPath": 2,
+        "missingTerminalPath": 3
+      }
+    },
+    {
+      "id": "CQR-102",
+      "status": "warn",
+      "metrics": {
+        "selectedAtomicGoals": 311,
+        "missingDirectMotivationPath": 2,
+        "missingDirectTerminalPath": 3
+      }
+    },
+    {
+      "id": "CQR-103",
+      "status": "pass",
+      "metrics": {
+        "scopedClusterRequires": 0
+      }
+    },
+    {
+      "id": "CQR-104",
+      "status": "pass",
+      "metrics": {
+        "relevantCompositionViews": 2,
+        "evaluatedProjectionScopes": 2,
+        "requiredMotivationAnchors": 1,
+        "minimumRequiredTerminalAutonomyGoals": 22,
+        "requiredTerminalAutonomyGoals": 22,
+        "projectionScopesMissingMotivationAnchors": 0,
+        "projectionScopesMissingTerminalAutonomyGoals": 0,
+        "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+        "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+        "terminalGoalsMissingCompiledApplicability": 0,
+        "projectionScopesWithInvalidStageStructure": 0,
+        "nationalProjectionScopesUsingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+        "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+        "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+        "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 0,
+        "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+        "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+        "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+        "projectionLocalRouteChecksEnabled": 0,
+        "visibleSelectedAtomicGoalOccurrences": 560,
+        "visibleProfileSelectedAtomicGoalOccurrences": 560,
+        "visibleProjectedRouteTargetGoalOccurrences": 560,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+        "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+        "projectionScopesMissingEffectiveMotivationRoutes": 0,
+        "projectionScopesMissingDirectMotivationRoutes": 0,
+        "projectionScopesMissingEffectiveTerminalRoutes": 0,
+        "projectionScopesMissingDirectTerminalRoutes": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+      }
+    },
+    {
+      "id": "CQR-201",
+      "status": "pass",
+      "metrics": {
+        "terminalAutonomyGoals": 22,
+        "terminalAutonomyGoalsWithExamData": 22,
+        "terminalAutonomyGoalsWithoutExamData": 0
+      }
+    },
+    {
+      "id": "CQR-202",
+      "status": "pass",
+      "metrics": {
+        "terminalAutonomyGoals": 22,
+        "concreteExamData": 22,
+        "weakExamData": 0
+      }
+    },
+    {
+      "id": "CQR-203",
+      "status": "pass",
+      "metrics": {
+        "terminalAutonomyGoals": 22,
+        "releasedCoverageCompleteExamData": 22,
+        "releaseCoverageIncompleteExamData": 0
+      }
+    }
+  ],
+  "sourceCourse": {
+    "id": "CQR-004",
+    "status": "pass",
+    "summary": "Course-level mapping is clean for 346 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+    "metrics": {
+      "configuredMappingFiles": 32,
+      "sourceGoals": 1359,
+      "sourceGoalsWithCourseLevel": 1359,
+      "gkLkSourceGoals": 762,
+      "lkSourceGoals": 442,
+      "unspecifiedSourceGoals": 117,
+      "checkedMappingEdges": 346,
+      "defaultedUnspecifiedMappingEdges": 101,
+      "reviewedCourseLevelExceptions": 0,
+      "mismatches": 0,
+      "missingSourceGoals": 0,
+      "missingTargetGoals": 0,
+      "unmappedCourseLevelSourceGoals": 0
+    }
+  },
+  "jurisdictionCoverage": {
+    "id": "CQR-003",
+    "status": "fail",
+    "summary": "14/16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+    "metrics": {
+      "totalJurisdictions": 16,
+      "coveredJurisdictions": 16,
+      "sourceBackedJurisdictions": 16,
+      "sourceCompleteJurisdictions": 14,
+      "fullCoverageJurisdictions": 14,
+      "uncoveredJurisdictions": 0,
+      "incompleteJurisdictions": 0,
+      "unsupportedAssignmentJurisdictions": 0,
+      "sourceUnmappedJurisdictions": 2,
+      "unsupportedAssignedAtomicGoals": 0,
+      "unmappedSourceAtomicGoals": 4,
+      "sourceAtomicGoals": 2109,
+      "sourceMappedToViewAtomicGoals": 2105,
+      "sourceOriginalGoals": 2109,
+      "sourceFullyCoveredOriginalGoals": 2105,
+      "sourcePartiallyCoveredOriginalGoals": 0,
+      "sourceUncoveredOriginalGoals": 4,
+      "surrogateBackedAtomicGoals": 94,
+      "partialSourceLinkedAtomicGoals": 0,
+      "warningedJurisdictions": 0,
+      "cleanJurisdictions": 14,
+      "partialJurisdictions": 0,
+      "errorJurisdictions": 2,
+      "minSourceBackedAtomicGoals": 63,
+      "maxVisibleAtomicGoals": 269,
+      "maxSourceBackedAtomicGoals": 269,
+      "totalAtomicGoals": 282
+    },
+    "details": [
+      "DE-BB: 2 source Lehrplan atom(s) do not map into the Bundesland view",
+      "DE-BE: 2 source Lehrplan atom(s) do not map into the Bundesland view"
+    ]
+  },
+  "sourceSnapshot": {
+    "id": "CQR-000",
+    "status": "pass",
+    "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+    "metrics": {
+      "totalJurisdictions": 16,
+      "completeSourceJurisdictions": 16,
+      "emptySourceJurisdictions": 0,
+      "missingReadableSourceInventoryJurisdictions": 0,
+      "originalSourceUrlIssues": 0,
+      "sourceExtractedGoals": 2109,
+      "sourceOriginalGoals": 2109,
+      "sourceUnregisteredGoals": 0,
+      "sourceExtractedAtomicGoals": 2109,
+      "sourceUnregisteredAtomicGoals": 0
+    }
+  },
+  "sourceCount": {
+    "id": "CQR-005",
+    "status": "pass",
+    "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+    "metrics": {
+      "sourceExtractionSources": 30,
+      "peerBaselineChecks": 0,
+      "failedPeerBaselineChecks": 0,
+      "granularityChecks": 0,
+      "failedGranularityChecks": 0
+    }
+  },
+  "compiler": {
+    "goals": 386,
+    "errors": 0,
+    "warnings": 2,
+    "diagnostics": 1442
+  },
+  "graph": "pass",
+  "types": "pass"
+}

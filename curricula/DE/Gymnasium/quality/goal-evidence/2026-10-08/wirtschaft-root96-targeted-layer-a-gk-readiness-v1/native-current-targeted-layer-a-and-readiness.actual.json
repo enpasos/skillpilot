@@ -1,0 +1,402 @@
+{
+  "schemaVersion": 1,
+  "kind": "actual-current-root96-targeted-native-layer-a-and-gk-readiness-check",
+  "checkedAt": "2026-10-08T09:06:02.066Z",
+  "sourceBodyParityReceipt": "native-official-function-body-parity.actual.json",
+  "route": {
+    "scopeId": "canonical-economics-crossstage",
+    "label": "Sekundarstufe I/II",
+    "selectedAtomicGoals": 303,
+    "maturity": "M4",
+    "rules": [
+      {
+        "id": "CQR-101",
+        "status": "pass",
+        "summary": "Effective route coverage is complete for the configured scope.",
+        "metrics": {
+          "selectedAtomicGoals": 303,
+          "missingMotivationPath": 0,
+          "missingTerminalPath": 0
+        }
+      },
+      {
+        "id": "CQR-102",
+        "status": "pass",
+        "summary": "Direct atomic route coverage is complete for the configured scope.",
+        "metrics": {
+          "selectedAtomicGoals": 303,
+          "missingDirectMotivationPath": 0,
+          "missingDirectTerminalPath": 0
+        }
+      },
+      {
+        "id": "CQR-103",
+        "status": "pass",
+        "summary": "No scoped cluster-level requires remain.",
+        "metrics": {
+          "scopedClusterRequires": 0
+        }
+      },
+      {
+        "id": "CQR-104",
+        "status": "pass",
+        "summary": "Route endpoints are exactly visible in every relevant learner-facing projection scope.",
+        "metrics": {
+          "relevantCompositionViews": 2,
+          "evaluatedProjectionScopes": 2,
+          "requiredMotivationAnchors": 1,
+          "minimumRequiredTerminalAutonomyGoals": 18,
+          "requiredTerminalAutonomyGoals": 18,
+          "projectionScopesMissingMotivationAnchors": 0,
+          "projectionScopesMissingTerminalAutonomyGoals": 0,
+          "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+          "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+          "terminalGoalsMissingCompiledApplicability": 0,
+          "projectionScopesWithInvalidStageStructure": 0,
+          "nationalProjectionScopesUsingJurisdictionStageAuthority": 0,
+          "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+          "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+          "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+          "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 0,
+          "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 0,
+          "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+          "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+          "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+          "projectionLocalRouteChecksEnabled": 0,
+          "visibleSelectedAtomicGoalOccurrences": 544,
+          "visibleProfileSelectedAtomicGoalOccurrences": 544,
+          "visibleProjectedRouteTargetGoalOccurrences": 544,
+          "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+          "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+          "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+          "projectionScopesMissingEffectiveMotivationRoutes": 0,
+          "projectionScopesMissingDirectMotivationRoutes": 0,
+          "projectionScopesMissingEffectiveTerminalRoutes": 0,
+          "projectionScopesMissingDirectTerminalRoutes": 0,
+          "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+          "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+          "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+          "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+          "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+          "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+        }
+      },
+      {
+        "id": "CQR-201",
+        "status": "pass",
+        "summary": "All configured terminal autonomy goals have examData.",
+        "metrics": {
+          "terminalAutonomyGoals": 18,
+          "terminalAutonomyGoalsWithExamData": 18,
+          "terminalAutonomyGoalsWithoutExamData": 0
+        }
+      },
+      {
+        "id": "CQR-202",
+        "status": "pass",
+        "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+        "metrics": {
+          "terminalAutonomyGoals": 18,
+          "concreteExamData": 18,
+          "weakExamData": 0
+        }
+      },
+      {
+        "id": "CQR-203",
+        "status": "pass",
+        "summary": "All terminal autonomy examData has release and coverage metadata.",
+        "metrics": {
+          "terminalAutonomyGoals": 18,
+          "releasedCoverageCompleteExamData": 18,
+          "releaseCoverageIncompleteExamData": 0
+        }
+      }
+    ]
+  },
+  "graph": {
+    "id": "CQR-001",
+    "status": "pass",
+    "summary": "Basic graph integrity checks pass.",
+    "metrics": {
+      "goals": 370,
+      "localReferenceIssues": 0
+    }
+  },
+  "types": {
+    "id": "CQR-002",
+    "status": "pass",
+    "summary": "Explicit type metadata matches graph structure.",
+    "metrics": {
+      "mismatches": 0
+    }
+  },
+  "semantic": {
+    "id": "CQR-301",
+    "status": "pass",
+    "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+    "metrics": {
+      "configs": 1,
+      "leafGoals": 303,
+      "atomic": 303,
+      "needsDeveloperReview": 0,
+      "nonAtomic": 0,
+      "missing": 0,
+      "stale": 0,
+      "obsolete": 0
+    }
+  },
+  "memory": {
+    "id": "CQR-302",
+    "status": "pass",
+    "summary": "Memory-card review is current: 53/303 ordinary atomic goals intentionally use memorization support, 51/51 primary cards are kept with origin traces, all 5 memory goals are traced, and 98 view-visible memory-required goals resolve to visible memory nodes.",
+    "metrics": {
+      "configs": 1,
+      "reviewedGoals": 303,
+      "noMemoryNeeded": 250,
+      "memoryRequired": 53,
+      "needsDeveloperReview": 0,
+      "missing": 0,
+      "stale": 0,
+      "obsolete": 0,
+      "duplicateRecords": 0,
+      "invalidRecords": 0,
+      "primaryCards": 51,
+      "keptCards": 51,
+      "cardsMarkedRemove": 0,
+      "cardNeedsDeveloperReview": 0,
+      "missingCardReviews": 0,
+      "staleCardReviews": 0,
+      "obsoleteCardReviews": 0,
+      "duplicateCardReviewRecords": 0,
+      "invalidCardReviewRecords": 0,
+      "untracedMemoryRequiredGoals": 0,
+      "visibilityScopes": 2,
+      "visibilityCheckedMemoryRequiredGoals": 98,
+      "visibilityMissingVisibleMemoryGoals": 0,
+      "visibilityErrors": 0,
+      "memoryGoals": 5,
+      "tracedMemoryGoals": 5,
+      "untracedMemoryGoals": 0,
+      "deckIds": 5,
+      "deckFiles": 5,
+      "cardRows": 51
+    },
+    "details": [
+      "canonical-economics-full: audit report curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-nineteen-reviewed-translation-bindings-v1/memory.native-report.md"
+    ]
+  },
+  "applicabilitySummary": {
+    "goals": 370,
+    "errors": 0,
+    "warnings": 0,
+    "diagnostics": 1451
+  },
+  "applicabilityNonDiagnosticFindings": [],
+  "nativeCompositionReadiness": [
+    {
+      "viewFile": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json",
+      "courseProfile": "GK",
+      "actualScopeFilters": [
+        "GK"
+      ],
+      "targetAtomicCount": 219,
+      "includingPrerequisiteOnlyCount": 219,
+      "readinessGoal": {
+        "goalId": "72bde56f-a752-5bc7-8472-24272c6075a0",
+        "title": "Gerechtigkeit in der Steuerpolitik",
+        "requires": [
+          "51bcbc9e-7a1c-5caa-9766-9ab97fa72f04"
+        ],
+        "target": false,
+        "included": false
+      },
+      "requiredClosure": [
+        {
+          "goalId": "51bcbc9e-7a1c-5caa-9766-9ab97fa72f04",
+          "title": "Steuerinstrumente vergleichen",
+          "tags": [
+            "LK"
+          ],
+          "target": false,
+          "included": false
+        },
+        {
+          "goalId": "a17899b9-f872-5236-a329-ec1a33d427a3",
+          "title": "Steuerpolitische Interessenkonflikte",
+          "tags": [
+            "LK"
+          ],
+          "target": false,
+          "included": false
+        },
+        {
+          "goalId": "a307a7f1-9f14-50e5-b7ba-1e70c8465ee7",
+          "title": "Steuerwirkungen abschätzen",
+          "tags": [
+            "LK"
+          ],
+          "target": false,
+          "included": false
+        },
+        {
+          "goalId": "6bf2d1cc-e745-50dd-a617-71c06a6c6945",
+          "title": "Warum Wirtschaftswissenschaften? - Relevanz und Orientierung",
+          "tags": [
+            "GK",
+            "LK",
+            "Motivation",
+            "Orientation"
+          ],
+          "target": true,
+          "included": true
+        }
+      ],
+      "missingRequiredGoalsWithinView": [
+        "51bcbc9e-7a1c-5caa-9766-9ab97fa72f04",
+        "a17899b9-f872-5236-a329-ec1a33d427a3",
+        "a307a7f1-9f14-50e5-b7ba-1e70c8465ee7"
+      ],
+      "isSourceAdjudication": false
+    },
+    {
+      "viewFile": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-lk.view.json",
+      "courseProfile": "LK",
+      "actualScopeFilters": [
+        "LK"
+      ],
+      "targetAtomicCount": 297,
+      "includingPrerequisiteOnlyCount": 297,
+      "readinessGoal": {
+        "goalId": "72bde56f-a752-5bc7-8472-24272c6075a0",
+        "title": "Gerechtigkeit in der Steuerpolitik",
+        "requires": [
+          "51bcbc9e-7a1c-5caa-9766-9ab97fa72f04"
+        ],
+        "target": true,
+        "included": true
+      },
+      "requiredClosure": [
+        {
+          "goalId": "51bcbc9e-7a1c-5caa-9766-9ab97fa72f04",
+          "title": "Steuerinstrumente vergleichen",
+          "tags": [
+            "LK"
+          ],
+          "target": true,
+          "included": true
+        },
+        {
+          "goalId": "a17899b9-f872-5236-a329-ec1a33d427a3",
+          "title": "Steuerpolitische Interessenkonflikte",
+          "tags": [
+            "LK"
+          ],
+          "target": true,
+          "included": true
+        },
+        {
+          "goalId": "a307a7f1-9f14-50e5-b7ba-1e70c8465ee7",
+          "title": "Steuerwirkungen abschätzen",
+          "tags": [
+            "LK"
+          ],
+          "target": true,
+          "included": true
+        },
+        {
+          "goalId": "6bf2d1cc-e745-50dd-a617-71c06a6c6945",
+          "title": "Warum Wirtschaftswissenschaften? - Relevanz und Orientierung",
+          "tags": [
+            "GK",
+            "LK",
+            "Motivation",
+            "Orientation"
+          ],
+          "target": true,
+          "included": true
+        }
+      ],
+      "missingRequiredGoalsWithinView": [],
+      "isSourceAdjudication": false
+    },
+    {
+      "viewFile": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-seki-economics.view.json",
+      "courseProfile": "LK",
+      "actualScopeFilters": [
+        "LK"
+      ],
+      "targetAtomicCount": 131,
+      "includingPrerequisiteOnlyCount": 131,
+      "readinessGoal": {
+        "goalId": "72bde56f-a752-5bc7-8472-24272c6075a0",
+        "title": "Gerechtigkeit in der Steuerpolitik",
+        "requires": [
+          "51bcbc9e-7a1c-5caa-9766-9ab97fa72f04"
+        ],
+        "target": false,
+        "included": false
+      },
+      "requiredClosure": [
+        {
+          "goalId": "51bcbc9e-7a1c-5caa-9766-9ab97fa72f04",
+          "title": "Steuerinstrumente vergleichen",
+          "tags": [
+            "LK"
+          ],
+          "target": false,
+          "included": false
+        },
+        {
+          "goalId": "a17899b9-f872-5236-a329-ec1a33d427a3",
+          "title": "Steuerpolitische Interessenkonflikte",
+          "tags": [
+            "LK"
+          ],
+          "target": false,
+          "included": false
+        },
+        {
+          "goalId": "a307a7f1-9f14-50e5-b7ba-1e70c8465ee7",
+          "title": "Steuerwirkungen abschätzen",
+          "tags": [
+            "LK"
+          ],
+          "target": false,
+          "included": false
+        },
+        {
+          "goalId": "6bf2d1cc-e745-50dd-a617-71c06a6c6945",
+          "title": "Warum Wirtschaftswissenschaften? - Relevanz und Orientierung",
+          "tags": [
+            "GK",
+            "LK",
+            "Motivation",
+            "Orientation"
+          ],
+          "target": true,
+          "included": true
+        }
+      ],
+      "missingRequiredGoalsWithinView": [
+        "51bcbc9e-7a1c-5caa-9766-9ab97fa72f04",
+        "a17899b9-f872-5236-a329-ec1a33d427a3",
+        "a307a7f1-9f14-50e5-b7ba-1e70c8465ee7"
+      ],
+      "isSourceAdjudication": false
+    }
+  ],
+  "activeSemanticConfigs": [
+    null
+  ],
+  "activeMemoryConfigs": [
+    null
+  ],
+  "noM7Claim": true,
+  "noHumanApprovalClaim": true
+}

@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Rechtliche Konsequenzen widerrechtlichen Handelns abschätzen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `7159ae22-e6ac-54e6-8b62-9b697310cc5f`
+- Titel: Rechtliche Konsequenzen widerrechtlichen Handelns abschätzen
+- Beschreibung: Die lernende Person kann rechtliche Konsequenzen widerrechtlichen Handelns in lebensnahen Fällen abschätzen.
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `7159ae22-e6ac-54e6-8b62-9b697310cc5f.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/7159ae22-e6ac-54e6-8b62-9b697310cc5f/7159ae22-e6ac-54e6-8b62-9b697310cc5f.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational. Create one original raster PNG economics illustration, wide approximately16:9 and1600x900 or near native size. Friendly abstract clear comic, warm ivory, dark clean outlines, rounded shapes, restrained teal/coral/gold, welcoming ordinary people. Three or four spacious main visual groups. Main competence/details readable at360 and680pixels; text ONLY few expressly specified large German labels. No extra headings, small labels, tiny legends, watermarks, signature, project name, slogans, brands, official emblems, health crosses/crescents/diamonds, copied logos, photorealism, sterile technical redesign or SVG. Personal notebooks/worksheets and screens must face their actual active users; preferably floating conceptual symbols or openly shared boards. Fictional conditional teaching contexts, no observed learner work or factual latest statistics. Competence: Rechtliche Konsequenzen widerrechtlichen Handelns abschätzen. Die lernende Person kann rechtliche Konsequenzen widerrechtlichen Handelns in lebensnahen Fällen abschätzen. Scene: The SAME person considers consequences of a hypothetical harmful everyday action through separated repair/compensation and potential public-response thought groups, each conditional. Only “Handlung”, “Folgen?”, “Prüfung”. No automatic prison, guilt by identity, punishment scale or legal verdict without facts.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

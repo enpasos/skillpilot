@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008",
+  "subject": "wirtschaftswissenschaften",
+  "subjectLabel": "Wirtschaftswissenschaften",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-terminal-released-one-native-preparation-technical-20261008-v1/native-d-q4-migration-one.final.batch.config.json",
+  "configDigest": "sha256:ff28b628b75cf6fd3716f7d6932a43b08bb2e0e65d61491a0e3f94f041bd08a0",
+  "goalIds": [
+    "6de44afa-7f91-5fa4-9292-ec06e86e97a4"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 303,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-m7-current-baseline-20261008-v1/review-book-full.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "baseBookDigest": "sha256:ad4ae33bc06c8e1182b10074459c95bd8b431d2750c184a5f591492ca6c1286e"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:7906db302bb3243542d344eb770198407724a52cc5f0daa5d335ea873c812507",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:6ba6e38292822433318350560bfd97bcd20ae4569d15d3ae27582ca03b3a1565",
+    "reviewInputFingerprint": "sha256:92a719c0d7fa9ea20f1b08d61c9c0d951bb50810109e8daffbfd189c6af5981b",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-a",
+        "campaignDigest": "sha256:cf714c0670ccfb18575f5821d95a7e467aa87f5445d2b9b250d1b18015880132",
+        "roundId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-first-pass-a",
+        "independenceGroupId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-independent-a",
+        "batchId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:8e92479c4d3a05def85da5f540fafa3d80c7f1365c00ba6308b5686bb724ffeb"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-b",
+        "campaignDigest": "sha256:1614834a741a23bffb768f0804c5930db32552c7347b316a4713ddd4d68e292b",
+        "roundId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-first-pass-b",
+        "independenceGroupId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-independent-b",
+        "batchId": "wirtschaft-q4-migration-one-current303-new-actual-migration-terminal-v4-20261008-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:e15644ebe834b91a631b07410410951c8f6cfeaff15dcc049f9498a3018e688a"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

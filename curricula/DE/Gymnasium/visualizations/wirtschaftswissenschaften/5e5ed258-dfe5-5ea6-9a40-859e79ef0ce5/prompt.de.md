@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Ethische Aspekte der Globalisierung
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `5e5ed258-dfe5-5ea6-9a40-859e79ef0ce5`
+- Titel: Ethische Aspekte der Globalisierung
+- Beschreibung: Die lernende Person kann ethische Konflikte globaler Produktion und Konsumtion analysieren.
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `5e5ed258-dfe5-5ea6-9a40-859e79ef0ce5.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/5e5ed258-dfe5-5ea6-9a40-859e79ef0ce5/5e5ed258-dfe5-5ea6-9a40-859e79ef0ce5.png`
+
+## Prompt
+
+```text
+Create one original friendly abstract comic illustration for SkillPilot economics learning. PNG landscape about16:9, about1600x900 or close native generator size. Warm ivory, clear dark outlines, rounded shapes, restrained teal/coral/gold accents, welcoming ordinary people. Match the existing friendly learning illustrations. Main motif and important details clear at360px and680px; generous margins, few large visual groups. No photorealism, sterile blueprint, SVG, official logos, tiny text, dense legends, pseudo-writing or decorative glyphs. Any physically used notebook/screen faces its reader correctly; floating concepts are not backwards physical sheets. Motivate competence without claiming learner mastery or empirical policy success. Learning goal: Ethische Aspekte der Globalisierung. Die lernende Person kann ethische Konflikte globaler Produktion und Konsumtion analysieren. Scene: Consumer considers a product linked to friendly factory workers and a clean river/leaf. Affordable price, decent work and environment represented as open competing criteria, neither company nor consumer assigned automatic moral blame. Only “Preis”, “Arbeit”, “Umwelt”. No real brand or claim of a certified ethical product.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

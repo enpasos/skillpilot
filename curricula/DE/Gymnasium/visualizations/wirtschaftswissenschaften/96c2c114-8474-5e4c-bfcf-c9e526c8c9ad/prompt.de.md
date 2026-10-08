@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: EU-Politikfelder untersuchen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `96c2c114-8474-5e4c-bfcf-c9e526c8c9ad`
+- Titel: EU-Politikfelder untersuchen
+- Beschreibung: Die lernende Person kann an Beispielen (Agrar-, Umwelt-, Handelspolitik) Mehrebenenentscheidungen analysieren.
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `96c2c114-8474-5e4c-bfcf-c9e526c8c9ad.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/96c2c114-8474-5e4c-bfcf-c9e526c8c9ad/96c2c114-8474-5e4c-bfcf-c9e526c8c9ad.png`
+
+## Prompt
+
+```text
+Create one original friendly abstract comic illustration for SkillPilot economics learning. PNG landscape about16:9, about1600x900 or close native generator size. Warm ivory ground, clear dark outlines, rounded shapes, restrained teal, coral and gold accents, ordinary welcoming people. Match a friendly existing school-learning illustration family. Clear large main motif readable at360px and680px wide; generous empty margins, at most3 or4 large visual groups, no tiny labels or dense legend. No photorealism, no sterile technical blueprint, no SVG substitute, no official logos or party brands. Decorative clocks/papers have NO text or glyphs. Any notebook, diagram or display actually used by a person faces that person correctly; do not put actor-readable writing facing the viewer. No decorative pseudo-writing. This image motivates the competence; it does not claim observed achievement or a real law. Learning goal: EU-Politikfelder untersuchen. Die lernende Person kann an Beispielen (Agrar-, Umwelt-, Handelspolitik) Mehrebenenentscheidungen analysieren. Scene: Three large policy windows in one welcoming shared civic scene: agriculture as a farmer with crops, environment as a river and leaf, trade as two containers crossing an open border. Large community, national government and EU institution icons along a simple shared path connect the windows, illustrating coordination across levels. No automatic claim about exclusive powers or actual laws. No text needed except one large “EU” on the shared institution. Avoid making a cramped nine-cell flow chart.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

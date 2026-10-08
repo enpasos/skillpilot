@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Globale Konsumkultur und kulturelle Anpassungen analysieren
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `9267ad99-f474-5fd7-8b6a-bd03fbc70394`
+- Titel: Globale Konsumkultur und kulturelle Anpassungen analysieren
+- Beschreibung: Die lernende Person kann globales Konsumverhalten im Spannungsfeld von Homogenisierung, Lokalisierung und Kreolisierung analysieren.
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `9267ad99-f474-5fd7-8b6a-bd03fbc70394.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/9267ad99-f474-5fd7-8b6a-bd03fbc70394/9267ad99-f474-5fd7-8b6a-bd03fbc70394.png`
+
+## Prompt
+
+```text
+Create one original friendly abstract comic illustration for SkillPilot economics learning. PNG landscape about16:9, about1600x900 or close native generator size. Warm ivory, clear dark outlines, rounded shapes, restrained teal/coral/gold accents, welcoming ordinary people. Match the existing friendly learning illustrations. Main motif and important details clear at360px and680px; generous margins, few large visual groups. No photorealism, sterile blueprint, SVG, official logos, tiny text, dense legends, pseudo-writing or decorative glyphs. Any physically used notebook/screen faces its reader correctly; floating concepts are not backwards physical sheets. Motivate competence without claiming learner mastery or empirical policy success. Learning goal: Globale Konsumkultur und kulturelle Anpassungen analysieren. Die lernende Person kann globales Konsumverhalten im Spannungsfeld von Homogenisierung, Lokalisierung und Kreolisierung analysieren. Scene: Three clearly distinct cultural-consumption processes shown through neutral food/product shapes: one globally similar product, that product adapted locally, and a new hybrid mixing different influences. No flags or ethnic stereotype. Only “Ähnlichkeit”, “Anpassung”, “Mischung”. Do not confuse adaptation with mere export.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

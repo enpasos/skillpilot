@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1",
+  "subject": "wirtschaftswissenschaften",
+  "subjectLabel": "Wirtschaftswissenschaften",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-bias-concept-clarification-native-preparation-20261008-v1/native-d-eef-single.final.batch.config.json",
+  "configDigest": "sha256:5abd109cf6f04a75abe6f447e6a37f147fd83888eadf10b0ee5a74441edb8edc",
+  "goalIds": [
+    "eef95305-c811-50a4-9157-bfd4e5780c24"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 303,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-m7-current-baseline-20261008-v1/review-book-full.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "baseBookDigest": "sha256:fdcdc2d9537588539f9afa7c4b028c26f447234542bf965f8a046cf7c10e6a99"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:9d773999b781d9e7347bcf5196150df6fce5665261d939abb2a64bbe092b7188",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:3d09a8e72d0e6421960baa9a4663cf8c99481fc3518208c2d7203b9082fb4fde",
+    "reviewInputFingerprint": "sha256:fc363fbd751e8362a7fe9b0554db45953327018555c30831733f287e8afac4cf",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-a",
+        "campaignDigest": "sha256:1c44f9244fbf52621a980ee48c024bd074382d8e69ee1521497c59f0de02d751",
+        "roundId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-first-pass-a",
+        "independenceGroupId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-independent-a",
+        "batchId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:4a9f14ad201980847b916f84b4682b8991437a542fba17efc05edd368ded7a7c"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-b",
+        "campaignDigest": "sha256:4d77de6b93d9cfd8c4baf54ff53e7f83aadfc90ce935e168dee2fbeab0420cbd",
+        "roundId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-first-pass-b",
+        "independenceGroupId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-independent-b",
+        "batchId": "wirtschaft-e2-bias-concept-clarification-single-current303-20261008-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:c206282aedbd300cc7ff00c04612e0d1bd1722f5d321595146e163484a79e41f"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

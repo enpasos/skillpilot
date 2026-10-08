@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "wirtschaft-macro-five-national-checkpoint-independent-a-actual-20261008",
+  "campaignId": "wirtschaft-macro-five-national-checkpoint-current311-20261008-a",
+  "roundId": "wirtschaft-macro-five-national-checkpoint-current311-20261008-first-pass-a",
+  "batchId": "wirtschaft-macro-five-national-checkpoint-current311-20261008-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:6920b6220e362dbfbcf2895b64b4cf467bdbab9d316970f1e1cfcc170b7e5285",
+  "bundleFingerprint": "sha256:3c06f65e07270fb25a034478930b259b30cd898292bd32fde5ab139b0e29dadd",
+  "bookDigest": "sha256:6fa4bc1641acd2a0c43384c3f51433aac787f260eb96afbe961f2d6321fe86a0",
+  "provider": "OpenAI",
+  "model": "GPT-6 (Codex; exact serving model identifier not exposed)",
+  "role": "didactic_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:f65b9eeffebd7df6a2f1802843aabb1112c46c584c6f4d61d0d8b72ba92b6757",
+  "generationParametersFingerprint": "sha256:a607311d57e9bf0a6e535db540d80a0ea10df073c772fc332f22847300ad811f",
+  "independenceGroupId": "wirtschaft-macro-five-national-checkpoint-current311-20261008-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "053f1522-31a7-583f-85f5-366ed724d3c5",
+    "8e8a672e-67c6-52dd-8f87-3c1f2e874a3d",
+    "15d18bd1-0ae1-58c8-89fd-623bebe12041",
+    "9219c58c-d178-5612-8231-feac373c87df",
+    "da43dd2a-693b-5327-811f-c4c19ee064cd"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:25f99cbcb2dac3cbed4fb3ac0f93431fddaac2b831bf591cbdc245eb4a30ebe8"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:f65b9eeffebd7df6a2f1802843aabb1112c46c584c6f4d61d0d8b72ba92b6757"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:6920b6220e362dbfbcf2895b64b4cf467bdbab9d316970f1e1cfcc170b7e5285"
+    }
+  ],
+  "startedAt": "2026-10-08T16:34:01Z",
+  "completedAt": "2026-10-08T16:35:47Z",
+  "status": "completed",
+  "outputDigest": "sha256:0003434e65b96481d9fd7c7b8380c978c343365e16ab3f583f5992a92f6adaba",
+  "toolchainVersion": "goal-description-review-v2-independent-actual"
+}
