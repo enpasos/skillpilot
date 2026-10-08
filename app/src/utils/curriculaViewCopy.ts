@@ -8,6 +8,8 @@ import type {
 export interface CurriculaViewCopy {
   pageTitle: string
   pageSubtitle: string
+  loadError: string
+  retry: string
   feedbackTitle: string
   feedbackDescription: string
   feedbackSteps: string
@@ -41,6 +43,8 @@ export const getCurriculaViewCopy = (language: LabelLanguage): CurriculaViewCopy
     ? {
         pageTitle: 'Improve curricula together',
         pageSubtitle: 'Your experience with a learning goal helps improve its content, wording and clarity.',
+        loadError: 'The curricula could not be loaded. Please try again.',
+        retry: 'Retry',
         feedbackTitle: 'Feedback directly on a learning goal',
         feedbackDescription: 'Found an error, a gap or something unclear? Send your feedback from the goal it concerns.',
         feedbackSteps: 'Open an available goal book, choose a learning goal, then select “Feedback on this learning goal”. The feedback includes the goal and its current version.',
@@ -81,6 +85,8 @@ export const getCurriculaViewCopy = (language: LabelLanguage): CurriculaViewCopy
     : {
         pageTitle: 'Curricula gemeinsam verbessern',
         pageSubtitle: 'Deine Erfahrung mit einem Lernziel hilft, Inhalte, Formulierungen und Verständlichkeit zu verbessern.',
+        loadError: 'Die Curricula konnten nicht geladen werden. Bitte versuche es erneut.',
+        retry: 'Erneut versuchen',
         feedbackTitle: 'Feedback direkt am Lernziel',
         feedbackDescription: 'Ein Fehler, eine Lücke oder etwas unklar? Sende deine Rückmeldung direkt bei dem Lernziel, um das es geht.',
         feedbackSteps: 'Öffne ein verfügbares Lernzielbuch, wähle ein Lernziel und dort „Feedback zu diesem Lernziel“. Die Rückmeldung enthält das Ziel und seine aktuelle Fassung.',

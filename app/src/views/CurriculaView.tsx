@@ -88,8 +88,20 @@ interface CurriculumEntry {
 
 interface CurriculaData {
   curricula: CurriculumEntry[]
-  defaultCurriculumId: string
+  defaultCurriculumId: string | null
   lastUpdatedAt: string
+}
+
+const isCurriculaData = (value: unknown): value is CurriculaData => {
+  if (value === null || typeof value !== 'object') return false
+  const curricula = (value as Record<string, unknown>).curricula
+  return Array.isArray(curricula) && curricula.every((curriculum: unknown) => {
+    if (curriculum === null || typeof curriculum !== 'object') return false
+    const entry = curriculum as Record<string, unknown>
+    return typeof entry.curriculumId === 'string'
+      && typeof entry.title === 'string'
+      && Array.isArray(entry.champions)
+  })
 }
 
 interface DeregisterCurriculumGroup {
@@ -127,6 +139,7 @@ export const CurriculaView: React.FC = () => {
   const [data, setData] = useState<CurriculaData | null>(null)
   const [selectedCurriculumId, setSelectedCurriculumId] = useState<string>('')
   const [loading, setLoading] = useState(true)
+  const [loadError, setLoadError] = useState(false)
   const [submitError, setSubmitError] = useState<string>('')
   const [submitSuccess, setSubmitSuccess] = useState<string>('')
   const [submitting, setSubmitting] = useState(false)
@@ -297,18 +310,22 @@ export const CurriculaView: React.FC = () => {
     }
   }, [fetchUser])
 
-  const loadData = useCallback(() => {
+  const loadData = useCallback(async () => {
     setLoading(true)
-    fetch('/api/ui/curricula')
-      .then((res) => res.json())
-      .then((payload: CurriculaData) => {
-        setData(payload)
-        setLoading(false)
-      })
-      .catch((err) => {
-        console.error('Failed to load curricula', err)
-        setLoading(false)
-      })
+    setLoadError(false)
+    try {
+      const response = await fetch('/api/ui/curricula')
+      if (!response.ok) throw new Error(`Curricula unavailable (HTTP ${response.status})`)
+      const payload: unknown = await response.json()
+      if (!isCurriculaData(payload)) throw new Error('Invalid curricula response')
+      setData(payload)
+    } catch (err) {
+      console.error('Failed to load curricula', err)
+      setData(null)
+      setLoadError(true)
+    } finally {
+      setLoading(false)
+    }
   }, [])
 
   useEffect(() => {
@@ -587,7 +604,7 @@ export const CurriculaView: React.FC = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-chat-bg text-text-primary p-6 flex items-center justify-center">
+      <div role="status" className="min-h-screen bg-chat-bg text-text-primary p-6 flex items-center justify-center">
         {t.curriculaPage.loading}
       </div>
     )
@@ -603,7 +620,18 @@ export const CurriculaView: React.FC = () => {
         <h1 className="text-3xl font-bold text-slate-700 dark:text-slate-200">
           {t.startPage.cards.curricula?.title || 'Curricula'}
         </h1>
-        <p className="text-text-secondary">{t.curriculaPage.noData.title}</p>
+        {loadError ? (
+          <>
+            <p role="alert" className="text-text-secondary">{curriculaViewCopy.loadError}</p>
+            <button
+              type="button"
+              onClick={() => void loadData()}
+              className="min-h-11 rounded-lg border border-border-color px-4 py-2 font-medium text-text-primary"
+            >
+              {curriculaViewCopy.retry}
+            </button>
+          </>
+        ) : <p className="text-text-secondary">{t.curriculaPage.noData.title}</p>}
         <Link
           to="/"
           className="px-6 py-2 bg-slate-200/50 dark:bg-slate-700/50 hover:bg-slate-300/50 dark:hover:bg-slate-600/50 rounded-full border border-border-color transition-colors text-text-primary"

@@ -1,6 +1,6 @@
 import { fileURLToPath } from 'node:url'
 import tailwindcss from '@tailwindcss/vite'
-import { chromium, type Browser, type Page } from 'playwright'
+import { chromium, type Browser, type Page, type Route } from 'playwright'
 import { CANONICAL_GYMNASIUM_ROOT_ID } from '../src/utils/curriculumDisplay'
 import { goalBookDefinitionById, goalBookRoute } from '../src/utils/goalBookPublicationRegistry'
 import { startViteTestServer } from './viteTestServer'
@@ -72,14 +72,141 @@ const server = await startViteTestServer(
   { plugins: [tailwindcss()] },
 )
 
-const configurePage = async (page: Page, theme = 'light') => {
-  await page.addInitScript((theme) => {
-    localStorage.setItem('skillpilot_lang', 'de')
+const configurePage = async (page: Page, theme = 'light', language = 'de') => {
+  await page.addInitScript(({ theme, language }) => {
+    localStorage.setItem('skillpilot_lang', language)
     localStorage.setItem('skillpilot_theme', theme)
-  }, theme)
+  }, { theme, language })
   await page.route('**/api/ui/curricula/champions/me', (route) => route.fulfill({ status: 401, json: {} }))
   await page.route('**/api/ui/curricula/*/topics', (route) => route.fulfill({ json: [] }))
   await page.route('**/api/ui/curricula', (route) => route.fulfill({ json: curriculaPayload }))
+}
+
+const loadFailureCases: { name: string; respond: (route: Route) => Promise<void> }[] = [
+  {
+    name: 'HTTP 500 JSON error',
+    respond: (route) => route.fulfill({ status: 500, json: {
+      status: 500, error: 'Internal Server Error', path: '/api/ui/curricula',
+    } }),
+  },
+  {
+    name: 'HTTP 500 with an empty curricula array',
+    respond: (route) => route.fulfill({ status: 500, json: { curricula: [] } }),
+  },
+  {
+    name: 'HTTP 200 without curricula',
+    respond: (route) => route.fulfill({ json: { lastUpdatedAt: curriculaPayload.lastUpdatedAt } }),
+  },
+  {
+    name: 'HTTP 200 with nonarray curricula',
+    respond: (route) => route.fulfill({ json: { curricula: {} } }),
+  },
+  {
+    name: 'HTTP 200 with a null curriculum',
+    respond: (route) => route.fulfill({ json: { curricula: [null] } }),
+  },
+  {
+    name: 'HTTP 200 with unavailable champions',
+    respond: (route) => route.fulfill({ json: {
+      curricula: [{ ...curriculaPayload.curricula[0], champions: null }],
+    } }),
+  },
+  {
+    name: 'network failure',
+    respond: (route) => route.abort('failed'),
+  },
+  {
+    name: 'HTML response',
+    respond: (route) => route.fulfill({ contentType: 'text/html', body: '<!doctype html><h1>Unavailable</h1>' }),
+  },
+  {
+    name: 'invalid JSON response',
+    respond: (route) => route.fulfill({ contentType: 'application/json', body: '{"curricula":' }),
+  },
+]
+
+const loadingCopy = {
+  de: {
+    error: 'Die Curricula konnten nicht geladen werden. Bitte versuche es erneut.',
+    retry: 'Erneut versuchen',
+    noData: 'Noch keine Curricula verfügbar.',
+    home: 'Zurück zur Startseite',
+  },
+  en: {
+    error: 'The curricula could not be loaded. Please try again.',
+    retry: 'Retry',
+    noData: 'No curricula available yet.',
+    home: 'Back to Home',
+  },
+} as const
+
+const testLoadingFailures = async (browser: Browser) => {
+  for (const language of ['de', 'en'] as const) {
+    const copy = loadingCopy[language]
+    // Cover every failure shape in German, then the production HTTP error and
+    // successful recovery in English as well. Both use a narrow mobile viewport.
+    const cases = language === 'de' ? loadFailureCases : loadFailureCases.slice(0, 1)
+    for (const failure of cases) {
+      const page = await browser.newPage({
+        locale: language === 'de' ? 'de-DE' : 'en-US',
+        viewport: { width: 375, height: 900 },
+      })
+      const pageErrors: string[] = []
+      page.on('pageerror', (error) => pageErrors.push(`${error.name}: ${error.message}`))
+      await configurePage(page, 'light', language)
+      let failing = true
+      let requestCount = 0
+      await page.route('**/api/ui/curricula', async (route) => {
+        requestCount++
+        if (failing) await failure.respond(route)
+        else await route.fulfill({ json: curriculaPayload })
+      })
+      await page.goto(`${server.baseUrl}/scripts/fixtures/curriculaQualityLayoutUi.html`)
+
+      const alert = page.getByRole('alert')
+      await alert.waitFor()
+      assert(await alert.innerText() === copy.error, `${failure.name} shows a readable ${language} loading error`)
+      assert(await page.getByText(copy.noData, { exact: true }).count() === 0, `${failure.name} must not imply an empty directory`)
+      assert(await page.getByRole('link', { name: copy.home, exact: true }).getAttribute('href') === '/', `${failure.name} retains navigation home`)
+      const retry = page.getByRole('button', { name: copy.retry, exact: true })
+      assert(await retry.isVisible() && await retry.isEnabled(), `${failure.name} offers an enabled retry`)
+      const pageWidth = await page.evaluate(() => ({
+        client: document.documentElement.clientWidth,
+        scroll: document.documentElement.scrollWidth,
+      }))
+      assert(pageWidth.scroll === pageWidth.client, `${failure.name} error and retry fit at 375px in ${language}`)
+      assert(pageErrors.length === 0, `${failure.name} causes no uncaught errors: ${pageErrors.join('; ')}`)
+
+      const requestsBeforeRetry = requestCount
+      failing = false
+      await retry.click()
+      const card = page.getByTestId('curriculum-quality-overview-card')
+      await card.waitFor()
+      assert(requestCount > requestsBeforeRetry, `${failure.name} retry makes a fresh API request`)
+      assert(await page.getByTestId('curriculum-quality-row').count() === subjectMaturities.length, `${failure.name} retry loads the existing complete curriculum fixture`)
+      assert(await page.getByRole('alert').count() === 0, `${failure.name} successful retry removes the loading error`)
+      assert(await page.getByRole('button', { name: copy.retry, exact: true }).count() === 0, `${failure.name} successful retry removes the retry action`)
+      assert(pageErrors.length === 0, `${failure.name} recovery causes no uncaught errors: ${pageErrors.join('; ')}`)
+      await page.close()
+    }
+
+    const page = await browser.newPage({
+      locale: language === 'de' ? 'de-DE' : 'en-US',
+      viewport: { width: 375, height: 900 },
+    })
+    const pageErrors: string[] = []
+    page.on('pageerror', (error) => pageErrors.push(`${error.name}: ${error.message}`))
+    await configurePage(page, 'light', language)
+    await page.route('**/api/ui/curricula', (route) => route.fulfill({ json: {
+      defaultCurriculumId: null, lastUpdatedAt: curriculaPayload.lastUpdatedAt, curricula: [],
+    } }))
+    await page.goto(`${server.baseUrl}/scripts/fixtures/curriculaQualityLayoutUi.html`)
+    await page.getByText(copy.noData, { exact: true }).waitFor()
+    assert(await page.getByRole('alert').count() === 0, `a valid empty directory is not a loading error in ${language}`)
+    assert(await page.getByRole('button', { name: copy.retry, exact: true }).count() === 0, `a valid empty directory has no error retry in ${language}`)
+    assert(pageErrors.length === 0, `a valid empty directory causes no uncaught errors: ${pageErrors.join('; ')}`)
+    await page.close()
+  }
 }
 
 let browser: Browser | null = null
@@ -95,6 +222,8 @@ try {
       '--no-sandbox',
     ],
   })
+
+  await testLoadingFailures(browser)
 
   for (const expected of [
     { width: 320, columns: 1, theme: 'light' },
