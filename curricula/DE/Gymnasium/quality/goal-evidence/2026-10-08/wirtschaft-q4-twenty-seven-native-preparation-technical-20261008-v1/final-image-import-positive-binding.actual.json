@@ -1,0 +1,338 @@
+{
+  "schemaVersion": 1,
+  "role": "technical_preparer",
+  "startedAt": "2026-10-08T10:32:10.297907+00:00",
+  "completedAt": "2026-10-08T10:32:13.195692+00:00",
+  "physicalIsolate": "/tmp/skillpilot-wirtschaft-q4-twenty-seven-native-1msa7bpb",
+  "selectionPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q4-twenty-seven-image-author-20261008-v1/independent-final-twenty-seven-selection-v1/actual-final-twenty-seven-KEEP-selection.receipt.json",
+  "selectionSha256": "sha256:a1f2c1e5bf11178143b8f0e4070fe7e262f10aeace07beda9800e33e4c763a8e",
+  "altTextPath": "curricula/DE/Gymnasium/quality/goal-visualization-review/wirtschaft-q4-twenty-seven-image-author-20261008-v1/independent-final-twenty-seven-selection-v1/alt-texts.author.json",
+  "altTextSha256": "sha256:4210262b537889dea48592b6e8447337199945017cb5d78c3d38f8d456711159",
+  "selectedActualAssetCount": 27,
+  "importedAssetCount": 27,
+  "candidateQaRecords": 303,
+  "machineApprovedCurrentImages": 27,
+  "inheritedRootMachineApprovedImageGoals": 125,
+  "humanApprovedImages": 0,
+  "positiveCurrentAiCandidates": 27,
+  "independentDescriptionReviews": 0,
+  "preparedDescriptionBatches": 0,
+  "activeWrites": 0,
+  "newStrictClosures": 0,
+  "capturedRootInputHashesBefore": {
+    "canonical": "sha256:4c9700bb248371210fe61e31997caaa7c7d44a6310e816405b8ed14003db1c0a",
+    "qa": "sha256:5f25a461022d3900fb3de6b327aab210387974b3dadef47250ff4faac5c0e978",
+    "semkind": "sha256:5d6db606fdd4ebccc8ee3a49a98c0f8b6f5ba88bf7782fc6d203df96246ffca6"
+  },
+  "currentRootInputHashesAfter": {
+    "canonical": "sha256:4c9700bb248371210fe61e31997caaa7c7d44a6310e816405b8ed14003db1c0a",
+    "qa": "sha256:5f25a461022d3900fb3de6b327aab210387974b3dadef47250ff4faac5c0e978",
+    "semkind": "sha256:5d6db606fdd4ebccc8ee3a49a98c0f8b6f5ba88bf7782fc6d203df96246ffca6"
+  },
+  "concurrentRootContextChanged": false,
+  "nativeCommandsActuallyExecutedInThisResumption": [
+    {
+      "name": "generate-current-qa303",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "--subject",
+        "wirtschaftswissenschaften"
+      ],
+      "cwd": "/tmp/skillpilot-wirtschaft-q4-twenty-seven-native-1msa7bpb",
+      "startedAt": "2026-10-08T10:32:10.540060+00:00",
+      "completedAt": "2026-10-08T10:32:11.121830+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-resumption-logs-v3/generate-current-qa303.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-resumption-logs-v3/generate-current-qa303.stderr.txt"
+    },
+    {
+      "name": "qa-current-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "--subject",
+        "wirtschaftswissenschaften",
+        "--check"
+      ],
+      "cwd": "/tmp/skillpilot-wirtschaft-q4-twenty-seven-native-1msa7bpb",
+      "startedAt": "2026-10-08T10:32:11.178974+00:00",
+      "completedAt": "2026-10-08T10:32:11.761401+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-resumption-logs-v3/qa-current-check.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-resumption-logs-v3/qa-current-check.stderr.txt"
+    },
+    {
+      "name": "candidate-semkind-final-image-binding",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/bind-candidate-semkind.mts"
+      ],
+      "cwd": "/tmp/skillpilot-wirtschaft-q4-twenty-seven-native-1msa7bpb",
+      "startedAt": "2026-10-08T10:32:11.761643+00:00",
+      "completedAt": "2026-10-08T10:32:12.147305+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-resumption-logs-v3/candidate-semkind-final-image-binding.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-resumption-logs-v3/candidate-semkind-final-image-binding.stderr.txt"
+    },
+    {
+      "name": "materialize-positive-final-image-candidates",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/positive-final-images.candidate.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-development-ethics-twenty-seven-bilingual-positive-author-v2/positive.candidates.json",
+        "--write"
+      ],
+      "cwd": "/tmp/skillpilot-wirtschaft-q4-twenty-seven-native-1msa7bpb",
+      "startedAt": "2026-10-08T10:32:12.151261+00:00",
+      "completedAt": "2026-10-08T10:32:12.717552+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-resumption-logs-v3/materialize-positive-final-image-candidates.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-resumption-logs-v3/materialize-positive-final-image-candidates.stderr.txt"
+    },
+    {
+      "name": "positive-final-image-current-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/positive-final-images.candidate.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/tmp/skillpilot-wirtschaft-q4-twenty-seven-native-1msa7bpb",
+      "startedAt": "2026-10-08T10:32:12.717715+00:00",
+      "completedAt": "2026-10-08T10:32:13.191471+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-resumption-logs-v3/positive-final-image-current-check.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-resumption-logs-v3/positive-final-image-current-check.stderr.txt"
+    }
+  ],
+  "previousCompletedImageImportActualLogs": [
+    {
+      "goalId": "f1f73ebe-286a-52e8-a2e1-4383ece6e9ec",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-01-f1f73ebe-286a-52e8-a2e1-4383ece6e9ec.stdout.txt",
+      "stdoutSha256": "sha256:09af0fe7f380460016c168d06e654b16bfaf9d00800b56714b7e88d1a232760f",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-01-f1f73ebe-286a-52e8-a2e1-4383ece6e9ec.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "4cccf0da-a0f4-593a-9bf3-4a68c790af40",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-02-4cccf0da-a0f4-593a-9bf3-4a68c790af40.stdout.txt",
+      "stdoutSha256": "sha256:4ab3fc64751aa778746f2b004ef1de61e8f3425a90d681f022a3fd5b457bdbed",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-02-4cccf0da-a0f4-593a-9bf3-4a68c790af40.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "a56d5e8d-fd09-5961-ad88-34cfdef00baa",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-03-a56d5e8d-fd09-5961-ad88-34cfdef00baa.stdout.txt",
+      "stdoutSha256": "sha256:bf8cfb44ba355d0ff973d32159d011a8ee4b008a578d6b0a8ad78ac4a86cc20a",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-03-a56d5e8d-fd09-5961-ad88-34cfdef00baa.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "fed15db6-e700-514d-a65e-6c2a34f1c81a",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-04-fed15db6-e700-514d-a65e-6c2a34f1c81a.stdout.txt",
+      "stdoutSha256": "sha256:173b3eb4a5717cadf658ec2507e25c6c4e328afd5b7f139ea316c571a8a63d73",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-04-fed15db6-e700-514d-a65e-6c2a34f1c81a.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "543bf91f-f6c6-5b1b-ba9e-43de321d8c7f",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-05-543bf91f-f6c6-5b1b-ba9e-43de321d8c7f.stdout.txt",
+      "stdoutSha256": "sha256:c77cc65e327bfe810df63023b174abdbcf53f5432a1e2f40e8caf11dc6a79542",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-05-543bf91f-f6c6-5b1b-ba9e-43de321d8c7f.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "f440efea-9d86-589f-8ff9-18e8d3b2efd3",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-06-f440efea-9d86-589f-8ff9-18e8d3b2efd3.stdout.txt",
+      "stdoutSha256": "sha256:7615c0086767a833fc9f5cb3169bb0ad6785c3effb196b3bd7cf946c5e8ca672",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-06-f440efea-9d86-589f-8ff9-18e8d3b2efd3.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "abb13ea9-615f-5d71-92f9-140ff8b4cbfa",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-07-abb13ea9-615f-5d71-92f9-140ff8b4cbfa.stdout.txt",
+      "stdoutSha256": "sha256:fe96de54ef7cc18222aee88f091c05a27bb49d5b8a256a083461acad5b05920f",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-07-abb13ea9-615f-5d71-92f9-140ff8b4cbfa.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "d6c7d2ad-492a-5027-9d72-44117f621b92",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-08-d6c7d2ad-492a-5027-9d72-44117f621b92.stdout.txt",
+      "stdoutSha256": "sha256:8f6f24e2875cb8e75ab1b738531017f903ba1f64bada9cc2503ec282aa9709fb",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-08-d6c7d2ad-492a-5027-9d72-44117f621b92.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "04809186-3f65-579d-b300-af9ed3e100c1",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-09-04809186-3f65-579d-b300-af9ed3e100c1.stdout.txt",
+      "stdoutSha256": "sha256:2a41350efa88a3db87875596688f6173271d6976f28ed3093a8765472e5a39e2",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-09-04809186-3f65-579d-b300-af9ed3e100c1.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "e21158e7-3bc3-51f2-887f-9eb5a8dd6243",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-10-e21158e7-3bc3-51f2-887f-9eb5a8dd6243.stdout.txt",
+      "stdoutSha256": "sha256:59c3785082137b1ee1cfdcfa68e9897ba2c6e1f821900122d958a81d2582d15f",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-10-e21158e7-3bc3-51f2-887f-9eb5a8dd6243.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "c014b11e-66ba-58a6-93f8-b4526d20e3ab",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-11-c014b11e-66ba-58a6-93f8-b4526d20e3ab.stdout.txt",
+      "stdoutSha256": "sha256:e241253dc2791cb55b05f5d2331abfd2ee168c6990a67ce1ede38c57932e80ae",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-11-c014b11e-66ba-58a6-93f8-b4526d20e3ab.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "4fef149e-84c0-59af-b056-0a0bf97dbecd",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-12-4fef149e-84c0-59af-b056-0a0bf97dbecd.stdout.txt",
+      "stdoutSha256": "sha256:b4ce8d042176c53032a6bb5df0d5546a7d57740f8205cf3d2e957d77944129a1",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-12-4fef149e-84c0-59af-b056-0a0bf97dbecd.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-13-2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2.stdout.txt",
+      "stdoutSha256": "sha256:9d124aa8c0acc3b19ce61fc7506e4f39348e89cbbb22aa93533e2d3f8a6fff59",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-13-2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "dc55f829-9c65-5bde-952c-47f5eacdeb5f",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-14-dc55f829-9c65-5bde-952c-47f5eacdeb5f.stdout.txt",
+      "stdoutSha256": "sha256:3d09aaca73684dd3111883f3798c8aea099d1ac1e470ae3c3481ae59cc77a3cf",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-14-dc55f829-9c65-5bde-952c-47f5eacdeb5f.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "6de44afa-7f91-5fa4-9292-ec06e86e97a4",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-15-6de44afa-7f91-5fa4-9292-ec06e86e97a4.stdout.txt",
+      "stdoutSha256": "sha256:a1357c69fcdfec3960bd92a184ae13e85bfc1c5dd484fe7b835cf4fd61b2fc87",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-15-6de44afa-7f91-5fa4-9292-ec06e86e97a4.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "ac76810e-3f06-570a-b770-8b57acb55d1c",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-16-ac76810e-3f06-570a-b770-8b57acb55d1c.stdout.txt",
+      "stdoutSha256": "sha256:30fb2da6a1e0f709d481f6d14c53dfb2952b4b6e208fb10a44e82900ce7ad624",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-16-ac76810e-3f06-570a-b770-8b57acb55d1c.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "e4ae5afd-02dc-538b-9ccb-1b15ca794667",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-17-e4ae5afd-02dc-538b-9ccb-1b15ca794667.stdout.txt",
+      "stdoutSha256": "sha256:1fe8a3bfdeab2ec9904f9e4e20a1236a7bdb4735236aa85e5ba64e2b1dfa03e7",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-17-e4ae5afd-02dc-538b-9ccb-1b15ca794667.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "645e6ff8-4ddf-5858-bbae-ce20fdc966ac",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-18-645e6ff8-4ddf-5858-bbae-ce20fdc966ac.stdout.txt",
+      "stdoutSha256": "sha256:86bd238da53f3d1545fe8b8fb1be47b2d8e7b271ea4e4f70269a6c533ceeb5e1",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-18-645e6ff8-4ddf-5858-bbae-ce20fdc966ac.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "9b6ef4f1-229b-5560-b692-0a6b6de79de7",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-19-9b6ef4f1-229b-5560-b692-0a6b6de79de7.stdout.txt",
+      "stdoutSha256": "sha256:5fcfc9893c8a23b2f727496b562b21c418771240bd0d123b58fe9343611e870e",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-19-9b6ef4f1-229b-5560-b692-0a6b6de79de7.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "e5560c43-c25a-5356-a282-c602945219ae",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-20-e5560c43-c25a-5356-a282-c602945219ae.stdout.txt",
+      "stdoutSha256": "sha256:b12d5b36b9b414943f6ea16e52736574e9c402ec43e63ec33627d62d1aab95aa",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-20-e5560c43-c25a-5356-a282-c602945219ae.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "b8c7458a-7642-53bf-b20e-d2a715ff6ed7",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-21-b8c7458a-7642-53bf-b20e-d2a715ff6ed7.stdout.txt",
+      "stdoutSha256": "sha256:581eb00aefba3de314be4f04462ff5909a3f40567ae437a7789775aa43ad987b",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-21-b8c7458a-7642-53bf-b20e-d2a715ff6ed7.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "e7542590-40e7-5d06-99f3-f295be1f9e12",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-22-e7542590-40e7-5d06-99f3-f295be1f9e12.stdout.txt",
+      "stdoutSha256": "sha256:3a120211e17ec78ad89ae3e5c5773ce0e1cc32210278e46b994047df409498f0",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-22-e7542590-40e7-5d06-99f3-f295be1f9e12.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "13705b9f-9623-500b-80ba-4574b753a29c",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-23-13705b9f-9623-500b-80ba-4574b753a29c.stdout.txt",
+      "stdoutSha256": "sha256:26c743040ea13e2cbdde35afd9f650b02cd2acd770dc0a66c1fc0183d3610a80",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-23-13705b9f-9623-500b-80ba-4574b753a29c.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "c9847c36-7a66-5cbd-9aee-60f71a8440de",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-24-c9847c36-7a66-5cbd-9aee-60f71a8440de.stdout.txt",
+      "stdoutSha256": "sha256:01f92618b45cd94915267658c44b8e3b0c12104583e937432965b16c27ac0138",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-24-c9847c36-7a66-5cbd-9aee-60f71a8440de.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "36ebee6c-ec32-53e2-a5da-f50185e61a55",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-25-36ebee6c-ec32-53e2-a5da-f50185e61a55.stdout.txt",
+      "stdoutSha256": "sha256:85ecd3dc08fce1770905a31c2be0533c0a4e23e0598eb677450d127bfef80174",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-25-36ebee6c-ec32-53e2-a5da-f50185e61a55.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "9df66a0b-eb44-5668-b661-4f09e1d2399f",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-26-9df66a0b-eb44-5668-b661-4f09e1d2399f.stdout.txt",
+      "stdoutSha256": "sha256:ed51aa3509710b7fa47de596c5b887107ae9d2848f85b54b7e89b3039fdc8fd9",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-26-9df66a0b-eb44-5668-b661-4f09e1d2399f.stderr.txt",
+      "actualDualAssetsByteExact": true
+    },
+    {
+      "goalId": "7a55332e-7c1d-531a-8679-e18592e74ea2",
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-27-7a55332e-7c1d-531a-8679-e18592e74ea2.stdout.txt",
+      "stdoutSha256": "sha256:0a5e766cc4d75b9b57fdb9798563c1aa205771dfa89b1e924d2f9bd8bac30bc0",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/image-27-7a55332e-7c1d-531a-8679-e18592e74ea2.stderr.txt",
+      "actualDualAssetsByteExact": true
+    }
+  ],
+  "priorQaFailureRetained": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/actual-native-import-logs/qa-current-check.stderr.txt",
+  "priorFailureExplanation": "QA notes had repeated whitespace rejected by the native normalizer; only text whitespace was normalized in the isolate, with genuine prior27nativeimports and their outputs retained.",
+  "returnedInertSnapshots": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/candidate-canonical.final-images.inert.json",
+      "sha256": "sha256:b685f82ac4c271f85ed8ed193c80c5d4714672768409eedd6f29b227e140ecd9",
+      "isolateSourcePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/candidate-semantic-kinds.final-images.inert.json",
+      "sha256": "sha256:73475473d4fdb4f9dd261eb16cf7857b11d940988b568227b2e1208248d4ff9d",
+      "isolateSourcePath": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-m7-current-baseline-20261008-v1/wirtschaftswissenschaften.semantic-kinds.json"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/candidate-qa303.final-images.inert.json",
+      "sha256": "sha256:1be27a76faebe10a2572f4004dc652e633ddf31de70cbbc4e999bbebae9ce986",
+      "isolateSourcePath": "curricula/DE/Gymnasium/quality/goal-visualization-qa/wirtschaftswissenschaften.qa.json"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/positive-final-images.candidate.config.json",
+      "sha256": "sha256:46adb644fe19c080ce9509654d5861f66e10ec7fdebb5b431750ff3dbc8d9b8c",
+      "isolateSourcePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/positive-final-images.candidate.config.json"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/positive-final-images.records.candidate.jsonl",
+      "sha256": "sha256:e288cae16aaeb4bde4c750d83a9a3a24e75e466bc5ced901f47382d0c057ce6c",
+      "isolateSourcePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-twenty-seven-native-preparation-technical-20261008-v1/positive-final-images.records.candidate.jsonl"
+    }
+  ],
+  "limits": [
+    "Actual image approval is the cited independent machine review, not this import.",
+    "Positive profiles remain needs_human_review/ai_candidate with no fabricated runs.",
+    "Candidate-only semantic-kind source bindings preserve classifications, not claim fachliche re-review.",
+    "Final native D prepare still requires author package acceptance and preserves separate independent rounds."
+  ]
+}
