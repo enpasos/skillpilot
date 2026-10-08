@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatCode;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.mock;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import java.nio.file.Files;
@@ -27,7 +28,7 @@ class GoalFeedbackPublishedCatalogTest {
     private final Path publicRoot = Path.of("../app/public").toAbsolutePath().normalize();
 
     @Test
-    void loadsAllFourRealPublishedSubjectsWithoutAnAdditionalBackendAllowlist() {
+    void loadsAllRegisteredRealPublishedSubjectsWithoutAnAdditionalBackendAllowlist() throws Exception {
         Set<String> loaded = new HashSet<>();
         ResourceLoader loader = publicationLoader(loaded, null);
         assertThatCode(() -> registry(loader)).doesNotThrowAnyException();
@@ -36,7 +37,12 @@ class GoalFeedbackPublishedCatalogTest {
                 "lernzielbuch/de-gym-mathematik-bundesweit.book-model.json",
                 "lernzielbuch/de-gym-physik-bundesweit.book-model.json",
                 "lernzielbuch/de-gym-chemie-bundesweit.book-model.json",
-                "lernzielbuch/de-gym-biologie-bundesweit.book-model.json"));
+                "lernzielbuch/de-gym-biologie-bundesweit.book-model.json",
+                "lernzielbuch/de-gym-wirtschaftswissenschaften-bundesweit.book-model.json"));
+        JsonNode economicsBook = mapper.readTree(Files.readAllBytes(publicRoot.resolve(
+                "lernzielbuch/de-gym-wirtschaftswissenschaften-bundesweit.book-model.json"))).path("book");
+        assertThat(economicsBook.path("id").asText()).isEqualTo("de-gym-wirtschaftswissenschaften-bundesweit");
+        assertThat(economicsBook.path("landscapeId").asText()).isEqualTo("605bdaf6-32d5-56fd-8d92-5a80c2fd2901");
     }
 
     @Test
