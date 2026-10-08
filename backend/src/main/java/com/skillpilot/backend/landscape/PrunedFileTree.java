@@ -1,6 +1,7 @@
 package com.skillpilot.backend.landscape;
 
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.nio.file.FileVisitResult;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -38,7 +39,19 @@ final class PrunedFileTree {
                 if (excludedDirectory.test(file)) {
                     return FileVisitResult.CONTINUE;
                 }
-                return super.visitFileFailed(file, exception);
+                // Files.walk reports root failures directly and later traversal failures unchecked.
+                if (file.equals(root)) {
+                    throw exception;
+                }
+                throw new UncheckedIOException(exception);
+            }
+
+            @Override
+            public FileVisitResult postVisitDirectory(Path directory, IOException exception) {
+                if (exception != null) {
+                    throw new UncheckedIOException(exception);
+                }
+                return FileVisitResult.CONTINUE;
             }
         });
         return files;
