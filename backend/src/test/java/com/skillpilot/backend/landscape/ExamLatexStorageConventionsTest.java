@@ -31,6 +31,8 @@ class ExamLatexStorageConventionsTest {
 
     @BeforeAll
     static void inspectExamData() throws IOException {
+        delimiterViolations.clear();
+        currencyViolations.clear();
         // Both checks cover the same files and fields. Parse each file once, including
         // historical QA inputs, and retain each check's complete list of findings.
         try (Stream<Path> files = Files.walk(resolveCurriculaDir())) {

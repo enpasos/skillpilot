@@ -653,8 +653,29 @@ jobs:
           "${install_dir}/bin/java" -version
       - name: Ensure Gradle wrapper is executable
         run: chmod +x ./gradlew
+      - name: Test backend CI failure prioritization
+        run: python3 -B -m unittest discover -s ../scripts -p test_run_backend_ci.py
+      - name: Restore previous backend failure selectors
+        id: backend-failures-cache
+        uses: actions/cache/restore@v4
+        continue-on-error: true
+        with:
+          path: ${{ runner.temp }}/skillpilot-backend-ci/failed-test-selectors.json
+          key: backend-failures-v1-${{ runner.os }}-${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            backend-failures-v1-${{ runner.os }}-${{ github.ref }}-
       - name: Run backend tests
-        run: ./gradlew check
+        id: backend-tests
+        env:
+          BACKEND_FAILURE_MANIFEST: ${{ runner.temp }}/skillpilot-backend-ci/failed-test-selectors.json
+        run: python3 -B ../scripts/run_backend_ci.py --manifest "${BACKEND_FAILURE_MANIFEST}"
+      - name: Save current backend failure selectors
+        if: ${{ always() && !cancelled() && (steps.backend-tests.outcome == 'success' || steps.backend-tests.outcome == 'failure') }}
+        uses: actions/cache/save@v4
+        continue-on-error: true
+        with:
+          path: ${{ runner.temp }}/skillpilot-backend-ci/failed-test-selectors.json
+          key: backend-failures-v1-${{ runner.os }}-${{ github.ref }}-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Verify OpenAI V1 release or draft snapshot
         working-directory: .
         run: node scripts/openai_plugin_release.mjs verify
