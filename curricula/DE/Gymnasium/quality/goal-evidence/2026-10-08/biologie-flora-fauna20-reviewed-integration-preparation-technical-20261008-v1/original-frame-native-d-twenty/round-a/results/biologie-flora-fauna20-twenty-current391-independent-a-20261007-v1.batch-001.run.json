@@ -1,0 +1,77 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-flora-fauna20-final-raster-native-independent-a-20261008-v1",
+  "campaignId": "biologie-flora-fauna20-twenty-current391-campaign-a-20261007-v1",
+  "roundId": "biologie-flora-fauna20-twenty-current391-independent-a-20261007-v1",
+  "batchId": "biologie-flora-fauna20-twenty-current391-independent-a-20261007-v1.batch-001",
+  "batchInputFingerprint": "sha256:5a796c5e8e6aaa923ae5d4fc53c185e8d509e5f23dc5d76cb063a5998bf2332b",
+  "bundleFingerprint": "sha256:44bde5e6568caf348a8a2b0277749734da19e0a5b4e1cf974db0ba0039844c8b",
+  "bookDigest": "sha256:9408c249af7dfc90d0c0c6e5dfa9323302aa228614a5a257feaaa389c2390bde",
+  "provider": "OpenAI",
+  "model": "Codex independent A; exact serving revision not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:d8189309eeb244e1c8720a3615c05f1dc7921d74191465830c1f7c9e2129f058",
+  "independenceGroupId": "biologie-flora-fauna20-twenty-current391-independent-a-20261007-v1",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5f39afac-897c-5ed3-95b5-89ccf66b2532",
+    "bdbb1a13-f448-5536-86ab-894805e2f6be",
+    "ac69483b-6a77-573d-a7c0-add32bb867e2",
+    "9263ee6c-bf62-531c-bb09-78a4a51b8ed7",
+    "bac3e333-d044-559e-8d8e-b8eff4af2b56",
+    "19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d",
+    "892a1d3a-9923-5ac2-affa-f2d5c38e3c54",
+    "be06115e-96e8-537e-b18a-313056e6cbe8",
+    "350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd",
+    "7eeb9de9-9a8e-5932-8f60-183367c87d09",
+    "4e12ba43-a58c-5611-8c43-3cc0c8465e33",
+    "8e1300bb-14a1-5155-884a-144c88f1c04b",
+    "8a56672b-b662-5bcd-9f43-8ffc4abc4f01",
+    "321ea315-37fe-5f9e-8fa8-dd631bb447c7",
+    "2f462b79-4ebc-5ab5-9e72-91135c5252c7",
+    "6faa6c23-00c9-5758-bd98-01825692abb2",
+    "6e2dae03-9ea9-5466-b93e-13adcfb01245",
+    "66967754-3934-58b3-b79e-d0f867dae070",
+    "ac7f0a5a-dff6-570b-b0fd-10cb0f33be29",
+    "06e91b97-e7cc-5698-a854-8a946a4bb7d0"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:5a551b4f876381531edb23950e58e5af93ea20052ea15a68f669613f035d96c6"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:6c0b7b75fb9bd6ff9392a18f1c305cd7fb32649947c411652a859624bf53d248"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:ead1736bf1e5feef075f8e62f5ed21c6875adc29bcf7286c00469e02bff7e8ec"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:0f715554a1379deccc9c648105ac3ca67c5ff78c40f9bad2d3c97a4651649cee"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:5a796c5e8e6aaa923ae5d4fc53c185e8d509e5f23dc5d76cb063a5998bf2332b"
+    }
+  ],
+  "startedAt": "2026-10-07T22:13:07.857249+00:00",
+  "completedAt": "2026-10-07T22:22:46.896341+00:00",
+  "outputDigest": "sha256:fdf43c97aa19d475efcff48c92ec99e58c302a55fee58c59e7c7868f576d6d70",
+  "status": "completed",
+  "toolchainVersion": "skillpilot-goal-description-review-v1"
+}

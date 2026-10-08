@@ -1,0 +1,72 @@
+{
+  "actualCommands": [
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:positive-goal-evidence-candidates",
+        "--",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-q4-evolution-eighteen-whole-science-author-20261008-v1/P18.whole-current-author.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-q4-evolution-eighteen-whole-science-author-20261008-v1/P18.thirty-six-whole-DEEN-cases.author.candidates.json",
+        "--write"
+      ],
+      "exitCode": 1,
+      "recordedAt": "2026-10-08T01:25:29.889918+00:00"
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-q4-evolution-eighteen-whole-science-author-20261008-v1/check-whole-P18-author-native.actual.mts"
+      ],
+      "exitCode": 1,
+      "recordedAt": "2026-10-08T01:25:30.241988+00:00"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:positive-goal-evidence:check",
+        "--",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-q4-evolution-eighteen-whole-science-author-20261008-v1/P18.whole-current-author.config.json"
+      ],
+      "exitCode": 1,
+      "recordedAt": "2026-10-08T01:25:30.759474+00:00"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:semantic-atomicity:check",
+        "--",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-q4-evolution-eighteen-whole-science-author-20261008-v1/A18.exact-retained-current.config.json"
+      ],
+      "exitCode": 0,
+      "recordedAt": "2026-10-08T01:25:31.139690+00:00"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:memory-card-review:check",
+        "--",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-q4-evolution-eighteen-whole-science-author-20261008-v1/M18.exact-retained-current.config.json"
+      ],
+      "exitCode": 0,
+      "recordedAt": "2026-10-08T01:25:31.525163+00:00"
+    }
+  ],
+  "allPassed": false,
+  "newIndependentReviews": 0,
+  "newStrictClosures": 0
+}

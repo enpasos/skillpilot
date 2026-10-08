@@ -1,0 +1,38 @@
+{
+  "artifactKind": "actual retained-current A20/M20 checks on exact future474 canonical resource-only candidate",
+  "runs": [
+    {
+      "gate": "A",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-human20-reviewed-integration-preparation-technical-20261007-v1/retained-current-AM/A20.future-inactive.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-human20-reviewed-integration-preparation-technical-20261007-v1/checks/A20.inactive.stdout.actual.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-human20-reviewed-integration-preparation-technical-20261007-v1/checks/A20.inactive.stderr.actual.txt"
+    },
+    {
+      "gate": "M",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-human20-reviewed-integration-preparation-technical-20261007-v1/retained-current-AM/M20.future-inactive.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-human20-reviewed-integration-preparation-technical-20261007-v1/checks/M20.inactive.stdout.actual.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-human20-reviewed-integration-preparation-technical-20261007-v1/checks/M20.inactive.stderr.actual.txt"
+    }
+  ],
+  "goalBodiesAndScienceRowsUnchanged": true,
+  "allVisibilityScopesRetained": true,
+  "inScopeNewCards": 0,
+  "scientificReviewRuns": 0,
+  "activeWrites": 0,
+  "humanApproval": false,
+  "strictGainClaimed": 0
+}

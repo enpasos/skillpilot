@@ -1,0 +1,1053 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-v1&quot;,&quot;maxWidthPixels&quot;:1600,&quot;maxHeightPixels&quot;:1200,&quot;jpegQuality&quot;:0.82,&quot;webpQuality&quot;:0.9,&quot;maxBytes&quot;:1500000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Biologie Flora/Fauna20: unabhängiger aktueller Beschreibungsreview A, Vorbildstand</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Biologie Flora/Fauna20: unabhängiger aktueller Beschreibungsreview A, Vorbildstand</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>20 atomare Lernziele</dt><dd>5 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-4f5d4296002eb1bc70a26646" aria-label="Biologie"><a href="#goal-5f39afac-897c-5ed3-95b5-89ccf66b2532"><span class="toc-entry-label">Biologie</span></a></h2>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-b530a382-2786-5794-8821-3e01a62d88fd" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-a6e58d8976cd040ee78f15da" aria-label="Biologische Grundlagen (Sek I)"><a href="#goal-5f39afac-897c-5ed3-95b5-89ccf66b2532"><span class="toc-entry-label">Biologische&#160;<wbr>Grundlagen&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h3>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-30e93515-f535-5ca4-9ed2-8fdf41838772" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-51746a07c96a9afcbebf6d69" aria-label="Säugetiere und menschlicher Körper (Sek I)"><a href="#goal-bdbb1a13-f448-5536-86ab-894805e2f6be"><span class="toc-entry-label">Säugetiere&#160;<wbr>und&#160;<wbr>menschlicher&#160;<wbr>Körper&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h3>
+          <span class="toc-entry-meta"><span>4 Lernziele</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-6bfe8cec-df77-5284-a5f7-2480f1ebd9a7" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-9d6fe064f1a8f964f72df9da" aria-label="Blütenpflanzen und Nutzpflanzen (Sek I)"><a href="#goal-19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d"><span class="toc-entry-label">Blütenpflanzen&#160;<wbr>und&#160;<wbr>Nutzpflanzen&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h3>
+          <span class="toc-entry-meta"><span>4 Lernziele</span><span>erste zugehörige Lernzielseite 6</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-f2bb2b91-2fda-57b6-9f57-ba94b2758dd7" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-553df1b5b4fdb7b03f1a752c" aria-label="Wirbeltiere, Angepasstheit und Tierhaltung (Sek I)"><a href="#goal-7eeb9de9-9a8e-5932-8f60-183367c87d09"><span class="toc-entry-label">Wirbeltiere,&#160;<wbr>Angepasstheit&#160;<wbr>und&#160;<wbr>Tierhaltung&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h3>
+          <span class="toc-entry-meta"><span>11 Lernziele</span><span>erste zugehörige Lernzielseite 10</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-5f39afac-897c-5ed3-95b5-89ccf66b2532" data-goal-id="5f39afac-897c-5ed3-95b5-89ccf66b2532" data-page-number="1" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-b530a382-2786-5794-8821-3e01a62d88fd" aria-labelledby="goal-5f39afac-897c-5ed3-95b5-89ccf66b2532-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5f39afac-897c-5ed3-95b5-89ccf66b2532-title"><a class="goal-self-link" href="#goal-5f39afac-897c-5ed3-95b5-89ccf66b2532">Vielfalt und Artensterben</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5f39afac-897c-5ed3-95b5-89ccf66b2532</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-a6e58d8976cd040ee78f15da">Biologische Grundlagen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5f39afac-897c-5ed3-95b5-89ccf66b2532-description-heading">
+        <p class="section-heading" id="goal-5f39afac-897c-5ed3-95b5-89ccf66b2532-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Vielfalt von Arten benennen und auf Aussterben und Entdeckung neuer Arten eingehen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-5f39afac-897c-5ed3-95b5-89ccf66b2532" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5f39afac-897c-5ed3-95b5-89ccf66b2532-requires-heading">
+          <p class="section-heading" id="goal-5f39afac-897c-5ed3-95b5-89ccf66b2532-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-5f39afac-897c-5ed3-95b5-89ccf66b2532-reverse-heading">
+          <p class="section-heading" id="goal-5f39afac-897c-5ed3-95b5-89ccf66b2532-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-5f39afac-897c-5ed3-95b5-89ccf66b2532-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5f39afac-897c-5ed3-95b5-89ccf66b2532-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba" rel="noreferrer noopener"><span>Kennzeichen von Lebewesen ordnen</span> <code>55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-5f39afac-897c-5ed3-95b5-89ccf66b2532-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5f39afac-897c-5ed3-95b5-89ccf66b2532-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-632b6042-0c0e-5bb6-a879-f03ad4be6eee" rel="noreferrer noopener"><span>Modernen Menschen erdgeschichtlich einordnen</span> <code>632b6042-0c0e-5bb6-a879-f03ad4be6eee</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 20</span>
+      <span>Buch-Digest <code>sha256:97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:662524427376eb3236dfbd62538f94a9c301767af08d376f51085634646c2d56</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-flora-fauna20-current391-independent-a-20261007-v1&amp;edition=curricular-atomic-v1&amp;goalId=5f39afac-897c-5ed3-95b5-89ccf66b2532&amp;goalFingerprint=sha256%3A662524427376eb3236dfbd62538f94a9c301767af08d376f51085634646c2d56&amp;pageFingerprint=sha256%3A8e32c210776d51f66e389e3ba8566ce0889f24341f3a084b0195d19d08e622a9&amp;bookDigest=sha256%3A97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-bdbb1a13-f448-5536-86ab-894805e2f6be" data-goal-id="bdbb1a13-f448-5536-86ab-894805e2f6be" data-page-number="2" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-30e93515-f535-5ca4-9ed2-8fdf41838772" aria-labelledby="goal-bdbb1a13-f448-5536-86ab-894805e2f6be-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-bdbb1a13-f448-5536-86ab-894805e2f6be-title"><a class="goal-self-link" href="#goal-bdbb1a13-f448-5536-86ab-894805e2f6be">Gestalt und Merkmale</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>bdbb1a13-f448-5536-86ab-894805e2f6be</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-51746a07c96a9afcbebf6d69">Säugetiere und menschlicher Körper (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-bdbb1a13-f448-5536-86ab-894805e2f6be-description-heading">
+        <p class="section-heading" id="goal-bdbb1a13-f448-5536-86ab-894805e2f6be-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Struktur und Funktion von Organen eines Säugetiers zuordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-bdbb1a13-f448-5536-86ab-894805e2f6be" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-bdbb1a13-f448-5536-86ab-894805e2f6be-requires-heading">
+          <p class="section-heading" id="goal-bdbb1a13-f448-5536-86ab-894805e2f6be-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-bdbb1a13-f448-5536-86ab-894805e2f6be-reverse-heading">
+          <p class="section-heading" id="goal-bdbb1a13-f448-5536-86ab-894805e2f6be-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-ac69483b-6a77-573d-a7c0-add32bb867e2"><span>Angepasstheit an Lebensraum</span><code>ac69483b-6a77-573d-a7c0-add32bb867e2</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-bdbb1a13-f448-5536-86ab-894805e2f6be-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-bdbb1a13-f448-5536-86ab-894805e2f6be-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-b530a382-2786-5794-8821-3e01a62d88fd" rel="noreferrer noopener"><span>Biologische Grundlagen (Sek I)</span> <code>b530a382-2786-5794-8821-3e01a62d88fd</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-bdbb1a13-f448-5536-86ab-894805e2f6be-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-bdbb1a13-f448-5536-86ab-894805e2f6be-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2" rel="noreferrer noopener"><span>Nahrungsaufnahme und Verdauung</span> <code>4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-dc1c2eff-5e42-50f1-ab75-b180b4f58907" rel="noreferrer noopener"><span>Körperhaltung und Bewegung</span> <code>dc1c2eff-5e42-50f1-ab75-b180b4f58907</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 20</span>
+      <span>Buch-Digest <code>sha256:97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ce0cbfda89b1fbe51c9ae49f09ef34e54e67583729893b89dd5c75ae9949bb56</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-flora-fauna20-current391-independent-a-20261007-v1&amp;edition=curricular-atomic-v1&amp;goalId=bdbb1a13-f448-5536-86ab-894805e2f6be&amp;goalFingerprint=sha256%3Ace0cbfda89b1fbe51c9ae49f09ef34e54e67583729893b89dd5c75ae9949bb56&amp;pageFingerprint=sha256%3Ac8789844f52b94167ebb523aebc96071292bab357266991bf8824ea606496d8f&amp;bookDigest=sha256%3A97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ac69483b-6a77-573d-a7c0-add32bb867e2" data-goal-id="ac69483b-6a77-573d-a7c0-add32bb867e2" data-page-number="3" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-30e93515-f535-5ca4-9ed2-8fdf41838772" aria-labelledby="goal-ac69483b-6a77-573d-a7c0-add32bb867e2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-ac69483b-6a77-573d-a7c0-add32bb867e2-title"><a class="goal-self-link" href="#goal-ac69483b-6a77-573d-a7c0-add32bb867e2">Angepasstheit an Lebensraum</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ac69483b-6a77-573d-a7c0-add32bb867e2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-51746a07c96a9afcbebf6d69">Säugetiere und menschlicher Körper (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ac69483b-6a77-573d-a7c0-add32bb867e2-description-heading">
+        <p class="section-heading" id="goal-ac69483b-6a77-573d-a7c0-add32bb867e2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Merkmale eines Säugetiers als Anpassung an seinen Lebensraum deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-ac69483b-6a77-573d-a7c0-add32bb867e2" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ac69483b-6a77-573d-a7c0-add32bb867e2-requires-heading">
+          <p class="section-heading" id="goal-ac69483b-6a77-573d-a7c0-add32bb867e2-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-bdbb1a13-f448-5536-86ab-894805e2f6be"><span>Gestalt und Merkmale</span><code>bdbb1a13-f448-5536-86ab-894805e2f6be</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-ac69483b-6a77-573d-a7c0-add32bb867e2-reverse-heading">
+          <p class="section-heading" id="goal-ac69483b-6a77-573d-a7c0-add32bb867e2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-9263ee6c-bf62-531c-bb09-78a4a51b8ed7"><span>Ethogramm erstellen</span><code>9263ee6c-bf62-531c-bb09-78a4a51b8ed7</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-7eeb9de9-9a8e-5932-8f60-183367c87d09"><span>Angepasstheit beschreiben</span><code>7eeb9de9-9a8e-5932-8f60-183367c87d09</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 20</span>
+      <span>Buch-Digest <code>sha256:97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:bdd9a3cf69d926a82aa694913ffc31a48847361719168715aec6101d6a8a7a34</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-flora-fauna20-current391-independent-a-20261007-v1&amp;edition=curricular-atomic-v1&amp;goalId=ac69483b-6a77-573d-a7c0-add32bb867e2&amp;goalFingerprint=sha256%3Abdd9a3cf69d926a82aa694913ffc31a48847361719168715aec6101d6a8a7a34&amp;pageFingerprint=sha256%3Afe14d0e87ef779ce61e89139fdcfe49bf12cdf80d9529eaf1af57a1b1737bce0&amp;bookDigest=sha256%3A97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9263ee6c-bf62-531c-bb09-78a4a51b8ed7" data-goal-id="9263ee6c-bf62-531c-bb09-78a4a51b8ed7" data-page-number="4" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-30e93515-f535-5ca4-9ed2-8fdf41838772" aria-labelledby="goal-9263ee6c-bf62-531c-bb09-78a4a51b8ed7-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9263ee6c-bf62-531c-bb09-78a4a51b8ed7-title"><a class="goal-self-link" href="#goal-9263ee6c-bf62-531c-bb09-78a4a51b8ed7">Ethogramm erstellen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9263ee6c-bf62-531c-bb09-78a4a51b8ed7</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-51746a07c96a9afcbebf6d69">Säugetiere und menschlicher Körper (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9263ee6c-bf62-531c-bb09-78a4a51b8ed7-description-heading">
+        <p class="section-heading" id="goal-9263ee6c-bf62-531c-bb09-78a4a51b8ed7-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Verhaltensweisen beobachten, in einem Ethogramm festhalten und deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HE, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-9263ee6c-bf62-531c-bb09-78a4a51b8ed7" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9263ee6c-bf62-531c-bb09-78a4a51b8ed7-requires-heading">
+          <p class="section-heading" id="goal-9263ee6c-bf62-531c-bb09-78a4a51b8ed7-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ac69483b-6a77-573d-a7c0-add32bb867e2"><span>Angepasstheit an Lebensraum</span><code>ac69483b-6a77-573d-a7c0-add32bb867e2</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-9263ee6c-bf62-531c-bb09-78a4a51b8ed7-reverse-heading">
+          <p class="section-heading" id="goal-9263ee6c-bf62-531c-bb09-78a4a51b8ed7-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-bac3e333-d044-559e-8d8e-b8eff4af2b56"><span>Evolution und Domestikation</span><code>bac3e333-d044-559e-8d8e-b8eff4af2b56</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-9263ee6c-bf62-531c-bb09-78a4a51b8ed7-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9263ee6c-bf62-531c-bb09-78a4a51b8ed7-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-3d822550-c14a-52ee-9908-6bcb873afdd6" rel="noreferrer noopener"><span>Verhalten mit Attrappenversuchen untersuchen</span> <code>3d822550-c14a-52ee-9908-6bcb873afdd6</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 20</span>
+      <span>Buch-Digest <code>sha256:97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:8b9eb397981d27957299e3781dc574076d34714e4dff4a0d229b0aa017b6bb3a</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-flora-fauna20-current391-independent-a-20261007-v1&amp;edition=curricular-atomic-v1&amp;goalId=9263ee6c-bf62-531c-bb09-78a4a51b8ed7&amp;goalFingerprint=sha256%3A8b9eb397981d27957299e3781dc574076d34714e4dff4a0d229b0aa017b6bb3a&amp;pageFingerprint=sha256%3Aaa5344db81e9e4ceb1829757df33166a5f321532cc5509198e4c6a846de808d7&amp;bookDigest=sha256%3A97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-bac3e333-d044-559e-8d8e-b8eff4af2b56" data-goal-id="bac3e333-d044-559e-8d8e-b8eff4af2b56" data-page-number="5" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-30e93515-f535-5ca4-9ed2-8fdf41838772" aria-labelledby="goal-bac3e333-d044-559e-8d8e-b8eff4af2b56-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-bac3e333-d044-559e-8d8e-b8eff4af2b56-title"><a class="goal-self-link" href="#goal-bac3e333-d044-559e-8d8e-b8eff4af2b56">Evolution und Domestikation</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>bac3e333-d044-559e-8d8e-b8eff4af2b56</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-51746a07c96a9afcbebf6d69">Säugetiere und menschlicher Körper (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-bac3e333-d044-559e-8d8e-b8eff4af2b56-description-heading">
+        <p class="section-heading" id="goal-bac3e333-d044-559e-8d8e-b8eff4af2b56-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Entwicklungs- und Domestikationsaspekte eines Säugetiers beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HE, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-bac3e333-d044-559e-8d8e-b8eff4af2b56" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-bac3e333-d044-559e-8d8e-b8eff4af2b56-requires-heading">
+          <p class="section-heading" id="goal-bac3e333-d044-559e-8d8e-b8eff4af2b56-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-9263ee6c-bf62-531c-bb09-78a4a51b8ed7"><span>Ethogramm erstellen</span><code>9263ee6c-bf62-531c-bb09-78a4a51b8ed7</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-bac3e333-d044-559e-8d8e-b8eff4af2b56-reverse-heading">
+          <p class="section-heading" id="goal-bac3e333-d044-559e-8d8e-b8eff4af2b56-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 20</span>
+      <span>Buch-Digest <code>sha256:97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:56f5f3d45e1bf57f4636c3ce6c40303f38b9c8eac9b4208fa1ccfe667d49a971</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-flora-fauna20-current391-independent-a-20261007-v1&amp;edition=curricular-atomic-v1&amp;goalId=bac3e333-d044-559e-8d8e-b8eff4af2b56&amp;goalFingerprint=sha256%3A56f5f3d45e1bf57f4636c3ce6c40303f38b9c8eac9b4208fa1ccfe667d49a971&amp;pageFingerprint=sha256%3A63f87e1c39f5a85b2a6a79ac6fee0e9b520cfac0dcb81b64837641cbe6d6aabb&amp;bookDigest=sha256%3A97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d" data-goal-id="19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d" data-page-number="6" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-6bfe8cec-df77-5284-a5f7-2480f1ebd9a7" aria-labelledby="goal-19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d-title"><a class="goal-self-link" href="#goal-19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d">Keimung und Wachstum</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9d6fe064f1a8f964f72df9da">Blütenpflanzen und Nutzpflanzen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d-description-heading">
+        <p class="section-heading" id="goal-19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Keimungsbedingungen beschreiben und Wachstumsschritte verfolgen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d-requires-heading">
+          <p class="section-heading" id="goal-19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d-reverse-heading">
+          <p class="section-heading" id="goal-19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-892a1d3a-9923-5ac2-affa-f2d5c38e3c54"><span>Bau von Wurzel, Spross und Blatt</span><code>892a1d3a-9923-5ac2-affa-f2d5c38e3c54</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-e0d04e58-1591-5230-bfa6-5c685b56d25b" rel="noreferrer noopener"><span>Bau der Pflanzenzelle beschreiben</span> <code>e0d04e58-1591-5230-bfa6-5c685b56d25b</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 20</span>
+      <span>Buch-Digest <code>sha256:97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:78ee6944e7ea229bfcad448890038829f447b0a98407a81344b1265a4a0ee227</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-flora-fauna20-current391-independent-a-20261007-v1&amp;edition=curricular-atomic-v1&amp;goalId=19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d&amp;goalFingerprint=sha256%3A78ee6944e7ea229bfcad448890038829f447b0a98407a81344b1265a4a0ee227&amp;pageFingerprint=sha256%3A7256e94aaf6b0b631f70f2e6e5610d2d37a6a93c26072fd9b2eab989491b4a6f&amp;bookDigest=sha256%3A97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-892a1d3a-9923-5ac2-affa-f2d5c38e3c54" data-goal-id="892a1d3a-9923-5ac2-affa-f2d5c38e3c54" data-page-number="7" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-6bfe8cec-df77-5284-a5f7-2480f1ebd9a7" aria-labelledby="goal-892a1d3a-9923-5ac2-affa-f2d5c38e3c54-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-892a1d3a-9923-5ac2-affa-f2d5c38e3c54-title"><a class="goal-self-link" href="#goal-892a1d3a-9923-5ac2-affa-f2d5c38e3c54">Bau von Wurzel, Spross und Blatt</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>892a1d3a-9923-5ac2-affa-f2d5c38e3c54</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9d6fe064f1a8f964f72df9da">Blütenpflanzen und Nutzpflanzen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-892a1d3a-9923-5ac2-affa-f2d5c38e3c54-description-heading">
+        <p class="section-heading" id="goal-892a1d3a-9923-5ac2-affa-f2d5c38e3c54-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Bau und Funktion von Wurzel, Spross und Blatt einer Blütenpflanze erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-892a1d3a-9923-5ac2-affa-f2d5c38e3c54" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-892a1d3a-9923-5ac2-affa-f2d5c38e3c54-requires-heading">
+          <p class="section-heading" id="goal-892a1d3a-9923-5ac2-affa-f2d5c38e3c54-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d"><span>Keimung und Wachstum</span><code>19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-892a1d3a-9923-5ac2-affa-f2d5c38e3c54-reverse-heading">
+          <p class="section-heading" id="goal-892a1d3a-9923-5ac2-affa-f2d5c38e3c54-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-be06115e-96e8-537e-b18a-313056e6cbe8"><span>Blütenaufbau und Funktion</span><code>be06115e-96e8-537e-b18a-313056e6cbe8</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 20</span>
+      <span>Buch-Digest <code>sha256:97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2f18f1c140389efd77cdac5567f150396137b10e71c21bcb29a6f46ce6044a9e</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-flora-fauna20-current391-independent-a-20261007-v1&amp;edition=curricular-atomic-v1&amp;goalId=892a1d3a-9923-5ac2-affa-f2d5c38e3c54&amp;goalFingerprint=sha256%3A2f18f1c140389efd77cdac5567f150396137b10e71c21bcb29a6f46ce6044a9e&amp;pageFingerprint=sha256%3A5c01a868f2dc35631c5e52354a6ceafb518e8d355d8d58fdbe84c65bb5577af6&amp;bookDigest=sha256%3A97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-be06115e-96e8-537e-b18a-313056e6cbe8" data-goal-id="be06115e-96e8-537e-b18a-313056e6cbe8" data-page-number="8" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-6bfe8cec-df77-5284-a5f7-2480f1ebd9a7" aria-labelledby="goal-be06115e-96e8-537e-b18a-313056e6cbe8-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-be06115e-96e8-537e-b18a-313056e6cbe8-title"><a class="goal-self-link" href="#goal-be06115e-96e8-537e-b18a-313056e6cbe8">Blütenaufbau und Funktion</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>be06115e-96e8-537e-b18a-313056e6cbe8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9d6fe064f1a8f964f72df9da">Blütenpflanzen und Nutzpflanzen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-be06115e-96e8-537e-b18a-313056e6cbe8-description-heading">
+        <p class="section-heading" id="goal-be06115e-96e8-537e-b18a-313056e6cbe8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Blütenbestandteile benennen und ihre Funktion bei der Fortpflanzung erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HB:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li><li><strong>SH, SL:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-be06115e-96e8-537e-b18a-313056e6cbe8" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-be06115e-96e8-537e-b18a-313056e6cbe8-requires-heading">
+          <p class="section-heading" id="goal-be06115e-96e8-537e-b18a-313056e6cbe8-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-892a1d3a-9923-5ac2-affa-f2d5c38e3c54"><span>Bau von Wurzel, Spross und Blatt</span><code>892a1d3a-9923-5ac2-affa-f2d5c38e3c54</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-be06115e-96e8-537e-b18a-313056e6cbe8-reverse-heading">
+          <p class="section-heading" id="goal-be06115e-96e8-537e-b18a-313056e6cbe8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd"><span>Wild- und Nutzpflanzen kennen lernen</span><code>350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 20</span>
+      <span>Buch-Digest <code>sha256:97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b9d0374cddc6a903cbfa03d9a6adf862a93d7bda7ae96d1c57cad027d4ca4e30</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-flora-fauna20-current391-independent-a-20261007-v1&amp;edition=curricular-atomic-v1&amp;goalId=be06115e-96e8-537e-b18a-313056e6cbe8&amp;goalFingerprint=sha256%3Ab9d0374cddc6a903cbfa03d9a6adf862a93d7bda7ae96d1c57cad027d4ca4e30&amp;pageFingerprint=sha256%3A74d6957baef4017f168ce8f397456ea68ef08c0a71fe9719c36b5debe30f6dc7&amp;bookDigest=sha256%3A97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd" data-goal-id="350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd" data-page-number="9" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-6bfe8cec-df77-5284-a5f7-2480f1ebd9a7" aria-labelledby="goal-350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd-title"><a class="goal-self-link" href="#goal-350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd">Wild- und Nutzpflanzen kennen lernen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9d6fe064f1a8f964f72df9da">Blütenpflanzen und Nutzpflanzen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd-description-heading">
+        <p class="section-heading" id="goal-350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Wild- und Nutzpflanzen unterscheiden und einfache Bestimmungsmerkmale nutzen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HB:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li><li><strong>SL:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd-requires-heading">
+          <p class="section-heading" id="goal-350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-be06115e-96e8-537e-b18a-313056e6cbe8"><span>Blütenaufbau und Funktion</span><code>be06115e-96e8-537e-b18a-313056e6cbe8</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd-reverse-heading">
+          <p class="section-heading" id="goal-350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 20</span>
+      <span>Buch-Digest <code>sha256:97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:05bdcea8d51bf53d666e3cc8fd13d65897b32aa6c760fae673ba60093cabdefb</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-flora-fauna20-current391-independent-a-20261007-v1&amp;edition=curricular-atomic-v1&amp;goalId=350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd&amp;goalFingerprint=sha256%3A05bdcea8d51bf53d666e3cc8fd13d65897b32aa6c760fae673ba60093cabdefb&amp;pageFingerprint=sha256%3A8292ecf35ac189c6ba165fd7965880f8890dd621fcc17de83f6221e995d3a922&amp;bookDigest=sha256%3A97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-7eeb9de9-9a8e-5932-8f60-183367c87d09" data-goal-id="7eeb9de9-9a8e-5932-8f60-183367c87d09" data-page-number="10" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-f2bb2b91-2fda-57b6-9f57-ba94b2758dd7" aria-labelledby="goal-7eeb9de9-9a8e-5932-8f60-183367c87d09-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-7eeb9de9-9a8e-5932-8f60-183367c87d09-title"><a class="goal-self-link" href="#goal-7eeb9de9-9a8e-5932-8f60-183367c87d09">Angepasstheit beschreiben</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>7eeb9de9-9a8e-5932-8f60-183367c87d09</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-553df1b5b4fdb7b03f1a752c">Wirbeltiere, Angepasstheit und Tierhaltung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-7eeb9de9-9a8e-5932-8f60-183367c87d09-description-heading">
+        <p class="section-heading" id="goal-7eeb9de9-9a8e-5932-8f60-183367c87d09-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Bau- und Funktionsmerkmale als Anpassung an Lebensräume deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-7eeb9de9-9a8e-5932-8f60-183367c87d09" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-7eeb9de9-9a8e-5932-8f60-183367c87d09-requires-heading">
+          <p class="section-heading" id="goal-7eeb9de9-9a8e-5932-8f60-183367c87d09-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ac69483b-6a77-573d-a7c0-add32bb867e2"><span>Angepasstheit an Lebensraum</span><code>ac69483b-6a77-573d-a7c0-add32bb867e2</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-7eeb9de9-9a8e-5932-8f60-183367c87d09-reverse-heading">
+          <p class="section-heading" id="goal-7eeb9de9-9a8e-5932-8f60-183367c87d09-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-4e12ba43-a58c-5611-8c43-3cc0c8465e33"><span>Fortpflanzungsstrategien</span><code>4e12ba43-a58c-5611-8c43-3cc0c8465e33</code><span class="reference-page">S. 11</span></a></li><li><a href="#goal-8e1300bb-14a1-5155-884a-144c88f1c04b"><span>Leichtbau und Feder</span><code>8e1300bb-14a1-5155-884a-144c88f1c04b</code><span class="reference-page">S. 12</span></a></li><li><a href="#goal-8a56672b-b662-5bcd-9f43-8ffc4abc4f01"><span>Stromlinienform und Kiemen</span><code>8a56672b-b662-5bcd-9f43-8ffc4abc4f01</code><span class="reference-page">S. 13</span></a></li><li><a href="#goal-06e91b97-e7cc-5698-a854-8a946a4bb7d0"><span>Artgerechte Haltung</span><code>06e91b97-e7cc-5698-a854-8a946a4bb7d0</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 20</span>
+      <span>Buch-Digest <code>sha256:97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:13dca4408f8b60da637eeec79cc7508edaccfde7b0d6c5f94e10dadfaf73e484</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-flora-fauna20-current391-independent-a-20261007-v1&amp;edition=curricular-atomic-v1&amp;goalId=7eeb9de9-9a8e-5932-8f60-183367c87d09&amp;goalFingerprint=sha256%3A13dca4408f8b60da637eeec79cc7508edaccfde7b0d6c5f94e10dadfaf73e484&amp;pageFingerprint=sha256%3A72b01ea0f66c64c16c89986c57d52cc7317221b0f0a3ae579d6896a720734734&amp;bookDigest=sha256%3A97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-4e12ba43-a58c-5611-8c43-3cc0c8465e33" data-goal-id="4e12ba43-a58c-5611-8c43-3cc0c8465e33" data-page-number="11" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-f2bb2b91-2fda-57b6-9f57-ba94b2758dd7" aria-labelledby="goal-4e12ba43-a58c-5611-8c43-3cc0c8465e33-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-4e12ba43-a58c-5611-8c43-3cc0c8465e33-title"><a class="goal-self-link" href="#goal-4e12ba43-a58c-5611-8c43-3cc0c8465e33">Fortpflanzungsstrategien</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>4e12ba43-a58c-5611-8c43-3cc0c8465e33</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-553df1b5b4fdb7b03f1a752c">Wirbeltiere, Angepasstheit und Tierhaltung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-4e12ba43-a58c-5611-8c43-3cc0c8465e33-description-heading">
+        <p class="section-heading" id="goal-4e12ba43-a58c-5611-8c43-3cc0c8465e33-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Fortpflanzungsstrategien von Vögeln oder Fischen vergleichen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE, NI, NW:</strong> Sek. I · G9</li><li><strong>HH, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>SH, SL:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-4e12ba43-a58c-5611-8c43-3cc0c8465e33" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-4e12ba43-a58c-5611-8c43-3cc0c8465e33-requires-heading">
+          <p class="section-heading" id="goal-4e12ba43-a58c-5611-8c43-3cc0c8465e33-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-7eeb9de9-9a8e-5932-8f60-183367c87d09"><span>Angepasstheit beschreiben</span><code>7eeb9de9-9a8e-5932-8f60-183367c87d09</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-4e12ba43-a58c-5611-8c43-3cc0c8465e33-reverse-heading">
+          <p class="section-heading" id="goal-4e12ba43-a58c-5611-8c43-3cc0c8465e33-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-321ea315-37fe-5f9e-8fa8-dd631bb447c7"><span>Entwicklung und Vergleich</span><code>321ea315-37fe-5f9e-8fa8-dd631bb447c7</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 20</span>
+      <span>Buch-Digest <code>sha256:97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5c2654d32f365e6f67a2980c760b621054e5d786f0ec40fe2fe88029303bb542</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-flora-fauna20-current391-independent-a-20261007-v1&amp;edition=curricular-atomic-v1&amp;goalId=4e12ba43-a58c-5611-8c43-3cc0c8465e33&amp;goalFingerprint=sha256%3A5c2654d32f365e6f67a2980c760b621054e5d786f0ec40fe2fe88029303bb542&amp;pageFingerprint=sha256%3Ad2f1c06dbc4ff8194c405b6422103ae4b4fa4b4c0770f5a58f2a0f5e41f40f87&amp;bookDigest=sha256%3A97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8e1300bb-14a1-5155-884a-144c88f1c04b" data-goal-id="8e1300bb-14a1-5155-884a-144c88f1c04b" data-page-number="12" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-f2bb2b91-2fda-57b6-9f57-ba94b2758dd7" aria-labelledby="goal-8e1300bb-14a1-5155-884a-144c88f1c04b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8e1300bb-14a1-5155-884a-144c88f1c04b-title"><a class="goal-self-link" href="#goal-8e1300bb-14a1-5155-884a-144c88f1c04b">Leichtbau und Feder</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8e1300bb-14a1-5155-884a-144c88f1c04b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-553df1b5b4fdb7b03f1a752c">Wirbeltiere, Angepasstheit und Tierhaltung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8e1300bb-14a1-5155-884a-144c88f1c04b-description-heading">
+        <p class="section-heading" id="goal-8e1300bb-14a1-5155-884a-144c88f1c04b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Leichtbauweise und Federfunktion von Vögeln erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-8e1300bb-14a1-5155-884a-144c88f1c04b" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8e1300bb-14a1-5155-884a-144c88f1c04b-requires-heading">
+          <p class="section-heading" id="goal-8e1300bb-14a1-5155-884a-144c88f1c04b-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-7eeb9de9-9a8e-5932-8f60-183367c87d09"><span>Angepasstheit beschreiben</span><code>7eeb9de9-9a8e-5932-8f60-183367c87d09</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-8e1300bb-14a1-5155-884a-144c88f1c04b-reverse-heading">
+          <p class="section-heading" id="goal-8e1300bb-14a1-5155-884a-144c88f1c04b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 20</span>
+      <span>Buch-Digest <code>sha256:97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:82c4b259a3ec94550c858c1025dd41f12167cd9ed5bed8a17788e7278eccf77e</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-flora-fauna20-current391-independent-a-20261007-v1&amp;edition=curricular-atomic-v1&amp;goalId=8e1300bb-14a1-5155-884a-144c88f1c04b&amp;goalFingerprint=sha256%3A82c4b259a3ec94550c858c1025dd41f12167cd9ed5bed8a17788e7278eccf77e&amp;pageFingerprint=sha256%3A7aeff2ee2d72ea5eaff3f80fa3ed1b271d0f98e586ac2c3fa893a35f0738b322&amp;bookDigest=sha256%3A97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8a56672b-b662-5bcd-9f43-8ffc4abc4f01" data-goal-id="8a56672b-b662-5bcd-9f43-8ffc4abc4f01" data-page-number="13" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-f2bb2b91-2fda-57b6-9f57-ba94b2758dd7" aria-labelledby="goal-8a56672b-b662-5bcd-9f43-8ffc4abc4f01-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8a56672b-b662-5bcd-9f43-8ffc4abc4f01-title"><a class="goal-self-link" href="#goal-8a56672b-b662-5bcd-9f43-8ffc4abc4f01">Stromlinienform und Kiemen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8a56672b-b662-5bcd-9f43-8ffc4abc4f01</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-553df1b5b4fdb7b03f1a752c">Wirbeltiere, Angepasstheit und Tierhaltung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8a56672b-b662-5bcd-9f43-8ffc4abc4f01-description-heading">
+        <p class="section-heading" id="goal-8a56672b-b662-5bcd-9f43-8ffc4abc4f01-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Stromlinienform, Kiemen und Schwimmblase von Fischen beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE, NW:</strong> Sek. I · G9</li><li><strong>SL:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-8a56672b-b662-5bcd-9f43-8ffc4abc4f01" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8a56672b-b662-5bcd-9f43-8ffc4abc4f01-requires-heading">
+          <p class="section-heading" id="goal-8a56672b-b662-5bcd-9f43-8ffc4abc4f01-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-7eeb9de9-9a8e-5932-8f60-183367c87d09"><span>Angepasstheit beschreiben</span><code>7eeb9de9-9a8e-5932-8f60-183367c87d09</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-8a56672b-b662-5bcd-9f43-8ffc4abc4f01-reverse-heading">
+          <p class="section-heading" id="goal-8a56672b-b662-5bcd-9f43-8ffc4abc4f01-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-6e2dae03-9ea9-5466-b93e-13adcfb01245"><span>Haut- und Lungenatmung</span><code>6e2dae03-9ea9-5466-b93e-13adcfb01245</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 20</span>
+      <span>Buch-Digest <code>sha256:97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e3e9de873247681c76befedcd4c1969721a989b39df3baa6eb80b2344df024e1</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-flora-fauna20-current391-independent-a-20261007-v1&amp;edition=curricular-atomic-v1&amp;goalId=8a56672b-b662-5bcd-9f43-8ffc4abc4f01&amp;goalFingerprint=sha256%3Ae3e9de873247681c76befedcd4c1969721a989b39df3baa6eb80b2344df024e1&amp;pageFingerprint=sha256%3A87f7211d54408641ea8c4e93991f9500ea6e2ee724451214b1df4cef47d23f4c&amp;bookDigest=sha256%3A97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-321ea315-37fe-5f9e-8fa8-dd631bb447c7" data-goal-id="321ea315-37fe-5f9e-8fa8-dd631bb447c7" data-page-number="14" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-f2bb2b91-2fda-57b6-9f57-ba94b2758dd7" aria-labelledby="goal-321ea315-37fe-5f9e-8fa8-dd631bb447c7-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-321ea315-37fe-5f9e-8fa8-dd631bb447c7-title"><a class="goal-self-link" href="#goal-321ea315-37fe-5f9e-8fa8-dd631bb447c7">Entwicklung und Vergleich</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>321ea315-37fe-5f9e-8fa8-dd631bb447c7</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-553df1b5b4fdb7b03f1a752c">Wirbeltiere, Angepasstheit und Tierhaltung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-321ea315-37fe-5f9e-8fa8-dd631bb447c7-description-heading">
+        <p class="section-heading" id="goal-321ea315-37fe-5f9e-8fa8-dd631bb447c7-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Reptilienentwicklung beschreiben und mit Vögeln vergleichen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE, NI, NW:</strong> Sek. I · G9</li><li><strong>HH, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>SH:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-321ea315-37fe-5f9e-8fa8-dd631bb447c7" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-321ea315-37fe-5f9e-8fa8-dd631bb447c7-requires-heading">
+          <p class="section-heading" id="goal-321ea315-37fe-5f9e-8fa8-dd631bb447c7-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-4e12ba43-a58c-5611-8c43-3cc0c8465e33"><span>Fortpflanzungsstrategien</span><code>4e12ba43-a58c-5611-8c43-3cc0c8465e33</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-321ea315-37fe-5f9e-8fa8-dd631bb447c7-reverse-heading">
+          <p class="section-heading" id="goal-321ea315-37fe-5f9e-8fa8-dd631bb447c7-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-321ea315-37fe-5f9e-8fa8-dd631bb447c7-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-321ea315-37fe-5f9e-8fa8-dd631bb447c7-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-e4791f8d-ea87-504b-979e-2f976e72e66d" rel="noreferrer noopener"><span>Verbreitung und Umweltfaktoren</span> <code>e4791f8d-ea87-504b-979e-2f976e72e66d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 20</span>
+      <span>Buch-Digest <code>sha256:97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:cf8c6d2e21cad21fa5ed08e6a33f2a5978b0846b79c63e0d4f96c2943d220387</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-flora-fauna20-current391-independent-a-20261007-v1&amp;edition=curricular-atomic-v1&amp;goalId=321ea315-37fe-5f9e-8fa8-dd631bb447c7&amp;goalFingerprint=sha256%3Acf8c6d2e21cad21fa5ed08e6a33f2a5978b0846b79c63e0d4f96c2943d220387&amp;pageFingerprint=sha256%3A2a4cc978981aeea39c0bf9f0c39c3b31583d4707fa227bc1a386926538663146&amp;bookDigest=sha256%3A97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2f462b79-4ebc-5ab5-9e72-91135c5252c7" data-goal-id="2f462b79-4ebc-5ab5-9e72-91135c5252c7" data-page-number="15" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-f2bb2b91-2fda-57b6-9f57-ba94b2758dd7" aria-labelledby="goal-2f462b79-4ebc-5ab5-9e72-91135c5252c7-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-2f462b79-4ebc-5ab5-9e72-91135c5252c7-title"><a class="goal-self-link" href="#goal-2f462b79-4ebc-5ab5-9e72-91135c5252c7">Körpertemperatur regulieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2f462b79-4ebc-5ab5-9e72-91135c5252c7</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-553df1b5b4fdb7b03f1a752c">Wirbeltiere, Angepasstheit und Tierhaltung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2f462b79-4ebc-5ab5-9e72-91135c5252c7-description-heading">
+        <p class="section-heading" id="goal-2f462b79-4ebc-5ab5-9e72-91135c5252c7-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Strategien wechselwarmer Tiere zur Temperaturregulation beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2f462b79-4ebc-5ab5-9e72-91135c5252c7" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2f462b79-4ebc-5ab5-9e72-91135c5252c7-requires-heading">
+          <p class="section-heading" id="goal-2f462b79-4ebc-5ab5-9e72-91135c5252c7-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-2f462b79-4ebc-5ab5-9e72-91135c5252c7-reverse-heading">
+          <p class="section-heading" id="goal-2f462b79-4ebc-5ab5-9e72-91135c5252c7-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-6faa6c23-00c9-5758-bd98-01825692abb2"><span>Wärmesinnesorgan</span><code>6faa6c23-00c9-5758-bd98-01825692abb2</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2f462b79-4ebc-5ab5-9e72-91135c5252c7-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2f462b79-4ebc-5ab5-9e72-91135c5252c7-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-e4791f8d-ea87-504b-979e-2f976e72e66d" rel="noreferrer noopener"><span>Verbreitung und Umweltfaktoren</span> <code>e4791f8d-ea87-504b-979e-2f976e72e66d</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 15 von 20</span>
+      <span>Buch-Digest <code>sha256:97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:eabbedc9f4c578057a5dc86e34dc6f5d899ac462818c6909cd87de736c212871</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-flora-fauna20-current391-independent-a-20261007-v1&amp;edition=curricular-atomic-v1&amp;goalId=2f462b79-4ebc-5ab5-9e72-91135c5252c7&amp;goalFingerprint=sha256%3Aeabbedc9f4c578057a5dc86e34dc6f5d899ac462818c6909cd87de736c212871&amp;pageFingerprint=sha256%3Aa03d650e869c39035fdfd3347ac813d853e36ec223bef597f58857476eb5fae3&amp;bookDigest=sha256%3A97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6faa6c23-00c9-5758-bd98-01825692abb2" data-goal-id="6faa6c23-00c9-5758-bd98-01825692abb2" data-page-number="16" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-f2bb2b91-2fda-57b6-9f57-ba94b2758dd7" aria-labelledby="goal-6faa6c23-00c9-5758-bd98-01825692abb2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6faa6c23-00c9-5758-bd98-01825692abb2-title"><a class="goal-self-link" href="#goal-6faa6c23-00c9-5758-bd98-01825692abb2">Wärmesinnesorgan</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6faa6c23-00c9-5758-bd98-01825692abb2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-553df1b5b4fdb7b03f1a752c">Wirbeltiere, Angepasstheit und Tierhaltung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6faa6c23-00c9-5758-bd98-01825692abb2-description-heading">
+        <p class="section-heading" id="goal-6faa6c23-00c9-5758-bd98-01825692abb2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Wärmesinnesorgan z.B. der Klapperschlange erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-6faa6c23-00c9-5758-bd98-01825692abb2" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6faa6c23-00c9-5758-bd98-01825692abb2-requires-heading">
+          <p class="section-heading" id="goal-6faa6c23-00c9-5758-bd98-01825692abb2-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-2f462b79-4ebc-5ab5-9e72-91135c5252c7"><span>Körpertemperatur regulieren</span><code>2f462b79-4ebc-5ab5-9e72-91135c5252c7</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-6faa6c23-00c9-5758-bd98-01825692abb2-reverse-heading">
+          <p class="section-heading" id="goal-6faa6c23-00c9-5758-bd98-01825692abb2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 16 von 20</span>
+      <span>Buch-Digest <code>sha256:97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ce44e3f46f1e67cec49c71ee98d905ad1a587af42ee46ef293600daf216c2b38</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-flora-fauna20-current391-independent-a-20261007-v1&amp;edition=curricular-atomic-v1&amp;goalId=6faa6c23-00c9-5758-bd98-01825692abb2&amp;goalFingerprint=sha256%3Ace44e3f46f1e67cec49c71ee98d905ad1a587af42ee46ef293600daf216c2b38&amp;pageFingerprint=sha256%3A5bb6dda3d3f9c9f566b0563605d23c84d35b39988d8bc1812f1a5ac4fe598a82&amp;bookDigest=sha256%3A97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6e2dae03-9ea9-5466-b93e-13adcfb01245" data-goal-id="6e2dae03-9ea9-5466-b93e-13adcfb01245" data-page-number="17" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-f2bb2b91-2fda-57b6-9f57-ba94b2758dd7" aria-labelledby="goal-6e2dae03-9ea9-5466-b93e-13adcfb01245-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6e2dae03-9ea9-5466-b93e-13adcfb01245-title"><a class="goal-self-link" href="#goal-6e2dae03-9ea9-5466-b93e-13adcfb01245">Haut- und Lungenatmung</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6e2dae03-9ea9-5466-b93e-13adcfb01245</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-553df1b5b4fdb7b03f1a752c">Wirbeltiere, Angepasstheit und Tierhaltung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6e2dae03-9ea9-5466-b93e-13adcfb01245-description-heading">
+        <p class="section-heading" id="goal-6e2dae03-9ea9-5466-b93e-13adcfb01245-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Sauerstoffversorgung über Haut und Lunge bei Amphibien erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HB:</strong> Sek. I · G8</li><li><strong>HE, NW:</strong> Sek. I · G9</li><li><strong>SL:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-6e2dae03-9ea9-5466-b93e-13adcfb01245" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6e2dae03-9ea9-5466-b93e-13adcfb01245-requires-heading">
+          <p class="section-heading" id="goal-6e2dae03-9ea9-5466-b93e-13adcfb01245-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8a56672b-b662-5bcd-9f43-8ffc4abc4f01"><span>Stromlinienform und Kiemen</span><code>8a56672b-b662-5bcd-9f43-8ffc4abc4f01</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-6e2dae03-9ea9-5466-b93e-13adcfb01245-reverse-heading">
+          <p class="section-heading" id="goal-6e2dae03-9ea9-5466-b93e-13adcfb01245-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-66967754-3934-58b3-b79e-d0f867dae070"><span>Metamorphose steuern</span><code>66967754-3934-58b3-b79e-d0f867dae070</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 17 von 20</span>
+      <span>Buch-Digest <code>sha256:97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1cf629706139847a8cfd297d01848fea8b26b06e7a41d6d0d120b7c410a6f2e0</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-flora-fauna20-current391-independent-a-20261007-v1&amp;edition=curricular-atomic-v1&amp;goalId=6e2dae03-9ea9-5466-b93e-13adcfb01245&amp;goalFingerprint=sha256%3A1cf629706139847a8cfd297d01848fea8b26b06e7a41d6d0d120b7c410a6f2e0&amp;pageFingerprint=sha256%3Ad759eaa9bb28caafc209789c3da218b47bd59145732f6d3f13adbd257672a8ce&amp;bookDigest=sha256%3A97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-66967754-3934-58b3-b79e-d0f867dae070" data-goal-id="66967754-3934-58b3-b79e-d0f867dae070" data-page-number="18" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-f2bb2b91-2fda-57b6-9f57-ba94b2758dd7" aria-labelledby="goal-66967754-3934-58b3-b79e-d0f867dae070-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-66967754-3934-58b3-b79e-d0f867dae070-title"><a class="goal-self-link" href="#goal-66967754-3934-58b3-b79e-d0f867dae070">Metamorphose steuern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>66967754-3934-58b3-b79e-d0f867dae070</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-553df1b5b4fdb7b03f1a752c">Wirbeltiere, Angepasstheit und Tierhaltung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-66967754-3934-58b3-b79e-d0f867dae070-description-heading">
+        <p class="section-heading" id="goal-66967754-3934-58b3-b79e-d0f867dae070-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann hormonelle Steuerung der Metamorphose beschreiben und Versuchsergebnisse deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HB:</strong> Sek. I · G8</li><li><strong>HE, NW:</strong> Sek. I · G9</li><li><strong>SL:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-66967754-3934-58b3-b79e-d0f867dae070" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-66967754-3934-58b3-b79e-d0f867dae070-requires-heading">
+          <p class="section-heading" id="goal-66967754-3934-58b3-b79e-d0f867dae070-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-6e2dae03-9ea9-5466-b93e-13adcfb01245"><span>Haut- und Lungenatmung</span><code>6e2dae03-9ea9-5466-b93e-13adcfb01245</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-66967754-3934-58b3-b79e-d0f867dae070-reverse-heading">
+          <p class="section-heading" id="goal-66967754-3934-58b3-b79e-d0f867dae070-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-ac7f0a5a-dff6-570b-b0fd-10cb0f33be29"><span>Brutpflege und Fortpflanzung</span><code>ac7f0a5a-dff6-570b-b0fd-10cb0f33be29</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-66967754-3934-58b3-b79e-d0f867dae070-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-66967754-3934-58b3-b79e-d0f867dae070-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-fcc20f50-8eb3-5d6c-b37f-5be13c7d314e" rel="noreferrer noopener"><span>Individualentwicklung von Insekten und Wirbeltieren vergleichen</span> <code>fcc20f50-8eb3-5d6c-b37f-5be13c7d314e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 18 von 20</span>
+      <span>Buch-Digest <code>sha256:97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0c68ffe100e9a12e9e5562f7911577e673bf6f45319ce675bf7fb3a3fcc26640</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-flora-fauna20-current391-independent-a-20261007-v1&amp;edition=curricular-atomic-v1&amp;goalId=66967754-3934-58b3-b79e-d0f867dae070&amp;goalFingerprint=sha256%3A0c68ffe100e9a12e9e5562f7911577e673bf6f45319ce675bf7fb3a3fcc26640&amp;pageFingerprint=sha256%3A43454759f25455a1c8f10e0bf003c70df279272c6d15885bda2fb4fee71b493b&amp;bookDigest=sha256%3A97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c&amp;page=18" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ac7f0a5a-dff6-570b-b0fd-10cb0f33be29" data-goal-id="ac7f0a5a-dff6-570b-b0fd-10cb0f33be29" data-page-number="19" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-f2bb2b91-2fda-57b6-9f57-ba94b2758dd7" aria-labelledby="goal-ac7f0a5a-dff6-570b-b0fd-10cb0f33be29-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-ac7f0a5a-dff6-570b-b0fd-10cb0f33be29-title"><a class="goal-self-link" href="#goal-ac7f0a5a-dff6-570b-b0fd-10cb0f33be29">Brutpflege und Fortpflanzung</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ac7f0a5a-dff6-570b-b0fd-10cb0f33be29</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-553df1b5b4fdb7b03f1a752c">Wirbeltiere, Angepasstheit und Tierhaltung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ac7f0a5a-dff6-570b-b0fd-10cb0f33be29-description-heading">
+        <p class="section-heading" id="goal-ac7f0a5a-dff6-570b-b0fd-10cb0f33be29-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Brutpflegeformen und Eizahlen von Amphibien vergleichen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE, NW:</strong> Sek. I · G9</li><li><strong>SL:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-ac7f0a5a-dff6-570b-b0fd-10cb0f33be29" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ac7f0a5a-dff6-570b-b0fd-10cb0f33be29-requires-heading">
+          <p class="section-heading" id="goal-ac7f0a5a-dff6-570b-b0fd-10cb0f33be29-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-66967754-3934-58b3-b79e-d0f867dae070"><span>Metamorphose steuern</span><code>66967754-3934-58b3-b79e-d0f867dae070</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-ac7f0a5a-dff6-570b-b0fd-10cb0f33be29-reverse-heading">
+          <p class="section-heading" id="goal-ac7f0a5a-dff6-570b-b0fd-10cb0f33be29-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-ac7f0a5a-dff6-570b-b0fd-10cb0f33be29-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-ac7f0a5a-dff6-570b-b0fd-10cb0f33be29-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-cd1fa548-9b27-54df-89be-6a6ee3629eb9" rel="noreferrer noopener"><span>Gefährdung und Schutz</span> <code>cd1fa548-9b27-54df-89be-6a6ee3629eb9</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 19 von 20</span>
+      <span>Buch-Digest <code>sha256:97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:113071e22da3af91d8a61860a715ffe46717006ad1c7c7ef146cf63c6f6390ad</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-flora-fauna20-current391-independent-a-20261007-v1&amp;edition=curricular-atomic-v1&amp;goalId=ac7f0a5a-dff6-570b-b0fd-10cb0f33be29&amp;goalFingerprint=sha256%3A113071e22da3af91d8a61860a715ffe46717006ad1c7c7ef146cf63c6f6390ad&amp;pageFingerprint=sha256%3A57050430f0f15dab1ddd1e119d5e52ff40f0971ffd204cdb23c0ea8d97bb416b&amp;bookDigest=sha256%3A97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c&amp;page=19" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-06e91b97-e7cc-5698-a854-8a946a4bb7d0" data-goal-id="06e91b97-e7cc-5698-a854-8a946a4bb7d0" data-page-number="20" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-f2bb2b91-2fda-57b6-9f57-ba94b2758dd7" aria-labelledby="goal-06e91b97-e7cc-5698-a854-8a946a4bb7d0-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-06e91b97-e7cc-5698-a854-8a946a4bb7d0-title"><a class="goal-self-link" href="#goal-06e91b97-e7cc-5698-a854-8a946a4bb7d0">Artgerechte Haltung</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>06e91b97-e7cc-5698-a854-8a946a4bb7d0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-553df1b5b4fdb7b03f1a752c">Wirbeltiere, Angepasstheit und Tierhaltung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization goal-visualization--missing" role="img" aria-label="Für dieses Lernziel liegt keine Visualisierung vor.">
+        <div>Für dieses Lernziel liegt keine Visualisierung vor.</div>
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-06e91b97-e7cc-5698-a854-8a946a4bb7d0-description-heading">
+        <p class="section-heading" id="goal-06e91b97-e7cc-5698-a854-8a946a4bb7d0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Anforderungen an artgerechte Haltung kennen und anwenden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE, NI, NW:</strong> Sek. I · G9</li><li><strong>SL:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-06e91b97-e7cc-5698-a854-8a946a4bb7d0" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-06e91b97-e7cc-5698-a854-8a946a4bb7d0-requires-heading">
+          <p class="section-heading" id="goal-06e91b97-e7cc-5698-a854-8a946a4bb7d0-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-7eeb9de9-9a8e-5932-8f60-183367c87d09"><span>Angepasstheit beschreiben</span><code>7eeb9de9-9a8e-5932-8f60-183367c87d09</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-06e91b97-e7cc-5698-a854-8a946a4bb7d0-reverse-heading">
+          <p class="section-heading" id="goal-06e91b97-e7cc-5698-a854-8a946a4bb7d0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-06e91b97-e7cc-5698-a854-8a946a4bb7d0-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-06e91b97-e7cc-5698-a854-8a946a4bb7d0-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-ccb1fe9a-d8e0-54bf-a447-c0b427b654da" rel="noreferrer noopener"><span>Verantwortung für Tiere</span> <code>ccb1fe9a-d8e0-54bf-a447-c0b427b654da</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 20 von 20</span>
+      <span>Buch-Digest <code>sha256:97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ca595878ea61c1d14069ca13237303d2797f50e4dd6f3048047d8aa1a93d09ab</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-flora-fauna20-current391-independent-a-20261007-v1&amp;edition=curricular-atomic-v1&amp;goalId=06e91b97-e7cc-5698-a854-8a946a4bb7d0&amp;goalFingerprint=sha256%3Aca595878ea61c1d14069ca13237303d2797f50e4dd6f3048047d8aa1a93d09ab&amp;pageFingerprint=sha256%3Aeb0227fdd028eb01586c1888c1e1eb283ef5a68d5c2888a402604a311a19ee9a&amp;bookDigest=sha256%3A97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c&amp;page=20" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "independent-b-single-whole-case-answer-pair-followup",
+  "recordedAt": "2026-10-07T20:58:01.009805+00:00",
+  "reviewerRole": "independent-b",
+  "reviewStatus": "ai_candidate",
+  "humanApproval": false,
+  "activeWrites": 0,
+  "strictGrowth": 0,
+  "affectedGoalId": "350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd",
+  "affectedCaseId": "flora-fauna20-09-case-2",
+  "verdict": "PASS-targeted-restfinding-resolved",
+  "actualScienceReading": {
+    "scope": "One corrected whole bounded plant-identification case in DE and EN; corresponding complete native P profile; untouched cases carried from prior actual whole-science reviews.",
+    "material": {
+      "de": "Eigene begrenzte Referenztabelle: Das gezeigte Eichenblatt hat einen ungeteilten gelappten Umriss, das gezeigte Lindenblatt ist herzförmig und das gezeigte Eschenblatt aus vielen schmalen Fiederblättchen zusammengesetzt. Davon getrennte unbekannte Blattproben: X ist eine ungeteilte gelappte Blattfläche, Y eine herzförmige Blattfläche, Z ein zusammengesetztes Blatt mit vielen schmalen Fiederblättchen. Die Tabelle ordnet keine Probencodes zu. Ergänzender Nutzungsfall: Eine Linde wächst wild am Waldrand, eine andere wird im Garten gezielt für einen Nutzungszweck gepflanzt.",
+      "en": "Own bounded reference table: the depicted oak leaf has a single lobed blade, the depicted linden leaf is heart-shaped and the depicted ash leaf is compound with many narrow leaflets. Separate unknown leaf specimens: X is a single lobed blade, Y a heart-shaped blade and Z a compound leaf with many narrow leaflets. The table assigns no specimen codes. Additional use case: one linden grows wild at a woodland edge and another is intentionally planted in a garden for a use."
+    },
+    "task": {
+      "de": "Bestimme X, Y und Z im begrenzten Referenzsatz und begründe jede Zuordnung mit dem Blattmerkmal. Unterscheide anschließend Vorkommen und Nutzung und erläutere Grenzen einer Bestimmung anhand eines einzigen Merkmals.",
+      "en": "Identify X, Y and Z within the bounded reference set and justify each assignment with its leaf feature. Then distinguish occurrence from use and explain the limits of identifying from one feature."
+    },
+    "modelAnswer": {
+      "de": "Im begrenzten Satz passen X zur gelappten Eichenform,Y aufgrund der herzförmigen Blattfläche zur Linde und Z zum zusammengesetzten Eschenblatt. Dieselbe Pflanzenart kann wild vorkommen und genutzt werden; die Nutzungsrolle ist keine eigene Abstammungsgruppe. Weitere Merkmale wie Blattstellung, Blüte oder Frucht und passende Bestimmungshilfen stärken eine Zuordnung. Eine einzelne Form ist kein universeller Schlüssel oder Nachweis sicherer Verwendbarkeit.",
+      "en": "Within this bounded set X matches lobed oak leaves,Y to linden through its heart-shaped blade and Z compound ash leaves. The same species can occur wild and be used; a human use role is no separate lineage. Additional traits such as arrangement, flowers/fruits and suitable guides strengthen identification. One shape is neither a universal key nor proof of safe use."
+    },
+    "findingResolution": "Y is now explicitly assigned to linden because of its heart-shaped blade in both whole answers and both native expectedPerformance fields. All X/Y/Z assignments are justified by the supplied distinguishing leaf traits. Reference names and unknown codes remain separate, so the assignment is still the learner performance. The bounded key does not claim universal identification or edibility. Wild occurrence and cultivated use remain separate criteria.",
+    "profileAlignment": "Full case material/task/model answers agree with native taskDemand/expectedPerformance; observable asks exactly this bounded each-feature justification. No curriculum-choice performance introduced."
+  },
+  "preservationChecks": {
+    "wholeGoalObjectsAndSourceChoiceMetadataUnchanged": 20,
+    "otherWholeCasesUnchanged": 39,
+    "otherInnerProfilesUnchanged": 19,
+    "taskAndMaterialOfAffectedCaseUnchanged": true,
+    "priorBlindAndV3HoldPreserved": true
+  },
+  "nativePositiveEvidenceActual": {
+    "command": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "quality:positive-goal-evidence:check",
+      "--",
+      "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-flora-fauna20-targeted-P-remediation-root-author-v4/P20.targeted-one-answer.author-v4.config.json"
+    ],
+    "exitCode": 0,
+    "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-flora-fauna20-targeted-P-v4-independent-b-20261007-v1/checks/P20.stdout.actual.txt",
+    "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-flora-fauna20-targeted-P-v4-independent-b-20261007-v1/checks/P20.stderr.actual.txt",
+    "acceptanceLimit": "Structural/current-binding success; all20 still ai_candidate/needs_human_review, not human-approved."
+  },
+  "remainingLocalSubstantivePFindings": 0,
+  "carriedScopedP10Verdict": "PASS from sealed targeted-v3 recheck; unchanged exact inner profile."
+}

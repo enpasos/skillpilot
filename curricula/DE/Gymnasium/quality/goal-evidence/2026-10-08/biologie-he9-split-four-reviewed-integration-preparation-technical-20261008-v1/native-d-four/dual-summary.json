@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:88c1c67d1e1f877cda7abea07ef1bdd6de82d0f0928056b5a615e2b56750beeb",
+  "reviewInputFingerprint": "sha256:ba588b4aa74136cbd525e5a57087b705282cd6d7ea7383875c3992def5eb5e55",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-he9-split-four-current392-campaign-a-20261008-v1",
+      "roundId": "biologie-he9-split-four-current392-independent-a-20261008-v1",
+      "independenceGroupId": "biologie-he9-split-four-current392-independent-a-20261008-v1",
+      "runIds": [
+        "biologie-he9-split-four-final-raster-native-independent-a-20261008-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex actual independent A; serving revision not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-he9-split-four-current392-campaign-b-20261008-v1",
+      "roundId": "biologie-he9-split-four-current392-independent-b-20261008-v1",
+      "independenceGroupId": "biologie-he9-split-four-current392-independent-b-20261008-v1",
+      "runIds": [
+        "biologie-he9-split-four-final-raster-native-independent-b-20261008-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex actual independent B; exact serving revision not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "249f4c5d-fd23-57c7-ac62-773d62c33b49",
+      "firstRecordId": "biologie-he9-split-four-final-raster-native-independent-a-20261008-v1.249f4c5d-fd23-57c7-ac62-773d62c33b49",
+      "secondRecordId": "biologie-he9-split-four-final-raster-native-independent-b-20261008-v1.249f4c5d-fd23-57c7-ac62-773d62c33b49",
+      "firstRunId": "biologie-he9-split-four-final-raster-native-independent-a-20261008-v1",
+      "secondRunId": "biologie-he9-split-four-final-raster-native-independent-b-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9d3f71d7-5273-5e50-b1ba-4e291edbf114",
+      "firstRecordId": "biologie-he9-split-four-final-raster-native-independent-a-20261008-v1.9d3f71d7-5273-5e50-b1ba-4e291edbf114",
+      "secondRecordId": "biologie-he9-split-four-final-raster-native-independent-b-20261008-v1.9d3f71d7-5273-5e50-b1ba-4e291edbf114",
+      "firstRunId": "biologie-he9-split-four-final-raster-native-independent-a-20261008-v1",
+      "secondRunId": "biologie-he9-split-four-final-raster-native-independent-b-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "dd923eeb-eef0-5796-b372-a5d4f5be21f7",
+      "firstRecordId": "biologie-he9-split-four-final-raster-native-independent-a-20261008-v1.dd923eeb-eef0-5796-b372-a5d4f5be21f7",
+      "secondRecordId": "biologie-he9-split-four-final-raster-native-independent-b-20261008-v1.dd923eeb-eef0-5796-b372-a5d4f5be21f7",
+      "firstRunId": "biologie-he9-split-four-final-raster-native-independent-a-20261008-v1",
+      "secondRunId": "biologie-he9-split-four-final-raster-native-independent-b-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4b7fdc2c-9dbe-5439-8d84-295abc240eec",
+      "firstRecordId": "biologie-he9-split-four-final-raster-native-independent-a-20261008-v1.4b7fdc2c-9dbe-5439-8d84-295abc240eec",
+      "secondRecordId": "biologie-he9-split-four-final-raster-native-independent-b-20261008-v1.4b7fdc2c-9dbe-5439-8d84-295abc240eec",
+      "firstRunId": "biologie-he9-split-four-final-raster-native-independent-a-20261008-v1",
+      "secondRunId": "biologie-he9-split-four-final-raster-native-independent-b-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

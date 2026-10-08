@@ -1,0 +1,87 @@
+{
+  "actualChecks": [
+    {
+      "check": "D1",
+      "actualArgv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+        "--bundle",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-genetic-method19-current-raster-native-author-root-v3/native-raster-candidate/one/round-a/review-bundle-manifest.json",
+        "--input",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-genetic-method19-current-raster-native-author-root-v3/native-raster-candidate/one/round-a/description-review-input.json",
+        "--campaign",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-genetic-method19-current-raster-native-author-root-v3/native-raster-candidate/one/round-a/description-review-campaign.json",
+        "--batches-dir",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-genetic-method19-current-raster-native-author-root-v3/native-raster-candidate/one/round-a/batches",
+        "--results-dir",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-genetic-method19-current-raster-native-independent-a-20261008-v1/round-a/results"
+      ],
+      "startedAt": "2026-10-08T00:09:54.236964+00:00",
+      "finishedAt": "2026-10-08T00:09:54.946535+00:00",
+      "actualTerminalExitCode": 0,
+      "actualStdout": "Goal-description review campaign results valid: 1\n",
+      "actualStderr": "",
+      "unchangedNativeValidators": true,
+      "activeWrites": 0,
+      "strictGainClaimed": 0
+    },
+    {
+      "check": "P1",
+      "actualArgv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-genetic-method19-current-raster-native-independent-a-20261008-v1/check-exact-inactive-P1.independent-a.mts"
+      ],
+      "startedAt": "2026-10-08T00:09:54.237386+00:00",
+      "finishedAt": "2026-10-08T00:09:54.749106+00:00",
+      "actualTerminalExitCode": 0,
+      "actualStdout": "Native inactive P1 closed-schema and current-raster semantic API passed:1needs_human_review/0approved/0errors. Public CLI awaits integration.\n",
+      "actualStderr": "",
+      "unchangedNativeValidators": true,
+      "activeWrites": 0,
+      "strictGainClaimed": 0
+    },
+    {
+      "check": "A1",
+      "actualArgv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-genetic-method19-current-raster-native-independent-a-20261008-v1/A1.native.config.json",
+        "--mode=check"
+      ],
+      "startedAt": "2026-10-08T00:09:54.238066+00:00",
+      "finishedAt": "2026-10-08T00:09:54.565015+00:00",
+      "actualTerminalExitCode": 0,
+      "actualStdout": "# Semantic Atomicity Review: canonical-biology-full\nScope: One genuinely independently reviewed current gene-technology goal\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 1\nCurrent reviewed atomic: 1\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\n",
+      "actualStderr": "",
+      "unchangedNativeValidators": true,
+      "activeWrites": 0,
+      "strictGainClaimed": 0
+    },
+    {
+      "check": "M1",
+      "actualArgv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-genetic-method19-current-raster-native-independent-a-20261008-v1/M1.native.config.json",
+        "--mode=check",
+        "--write-report"
+      ],
+      "startedAt": "2026-10-08T00:09:54.239414+00:00",
+      "finishedAt": "2026-10-08T00:09:54.575305+00:00",
+      "actualTerminalExitCode": 0,
+      "actualStdout": "# Memory Card Review: canonical-biology-full\nScope: One genuinely independently reviewed current gene-technology goal\nRule: memory-card-review-v1\nOrdinary atomic goals in scope: 1\nCurrent no-memory decisions: 1\nCurrent memory-required decisions: 0\nCurrent needs developer review: 0\nMemory goals in scope: 0\nTraced memory goals: 0\nKnown deck IDs: 3\nDeck files: 6\nCard rows: 54\nPrimary cards in scope: 0\nKept primary cards: 0\nCards marked remove: 0\nCards needing developer review: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\nMissing card review records: 0\nStale card review records: 0\nObsolete card review records: 0\nComposition visibility scopes: 8\nMemory-required goals checked in views: 0\nMemory-required goals without visible memory node: 0\n\nWrote curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-genetic-method19-current-raster-native-independent-a-20261008-v1/M1.native.report.actual.md\n",
+      "actualStderr": "",
+      "unchangedNativeValidators": true,
+      "activeWrites": 0,
+      "strictGainClaimed": 0
+    }
+  ],
+  "genuineOwnFirstScientificSealPrecedesChecks": true,
+  "peerCurrentNativeBRead": false,
+  "activeWrites": 0,
+  "humanApproval": false
+}

@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Chemie: Kontaktkorrosion und Korrosionsverhalten</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Chemie: Kontaktkorrosion und Korrosionsverhalten</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>2 atomare Lernziele</dt><dd>4 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:759ae1fd5e853517d3752b2ac91a2c6e69885bb38c616082663ad0fb1d1e9d56</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:chemie-m7-review-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-fd713faf6c8502b7e7241677" aria-label="Chemie – kanonische M7-Prüfsicht"><a href="#goal-9f0d6d4c-f918-5a44-a9a2-7732c4e338f3"><span class="toc-entry-label">Chemie&#160;<wbr>–&#160;<wbr>kanonische&#160;<wbr>M7-Prüfsicht</span></a></h2>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:candidate-chemistry-root" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-65c2c4f07514968236c55557" aria-label="Chemie"><a href="#goal-9f0d6d4c-f918-5a44-a9a2-7732c4e338f3"><span class="toc-entry-label">Chemie</span></a></h3>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:633f4fd4-1c36-5377-8fe6-44d8eeac3c56" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-d8590b45dfe283b69bf955ba" aria-label="Chemisches Gleichgewicht"><a href="#goal-9f0d6d4c-f918-5a44-a9a2-7732c4e338f3"><span class="toc-entry-label">Chemisches&#160;<wbr>Gleichgewicht</span></a></h4>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:33766473-86a1-5f82-afc9-bdb8ed6a2ab6" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-fc2b8a194f8362b8bf487ef8" aria-label="Q3.3 Redoxgleichgewichte"><a href="#goal-9f0d6d4c-f918-5a44-a9a2-7732c4e338f3"><span class="toc-entry-label">Q3.3&#160;<wbr>Redoxgleichgewichte</span></a></h5>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-9f0d6d4c-f918-5a44-a9a2-7732c4e338f3" data-goal-id="9f0d6d4c-f918-5a44-a9a2-7732c4e338f3" data-page-number="1" data-chapter-ids="structure:chemie-m7-review-root structure:candidate-chemistry-root goal:633f4fd4-1c36-5377-8fe6-44d8eeac3c56 goal:33766473-86a1-5f82-afc9-bdb8ed6a2ab6" aria-labelledby="goal-9f0d6d4c-f918-5a44-a9a2-7732c4e338f3-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9f0d6d4c-f918-5a44-a9a2-7732c4e338f3-title"><a class="goal-self-link" href="#goal-9f0d6d4c-f918-5a44-a9a2-7732c4e338f3">Kontaktkorrosion erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9f0d6d4c-f918-5a44-a9a2-7732c4e338f3</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-65c2c4f07514968236c55557">Chemie</a></li><li><a href="#chapter-d8590b45dfe283b69bf955ba">Chemisches Gleichgewicht</a></li><li><a href="#chapter-fc2b8a194f8362b8bf487ef8">Q3.3 Redoxgleichgewichte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a8b823f1c3d3406888bf7aea217339ca984e42c5c8e7cee8e1e8113f105c5c67" data-rendered-digest="sha256:9a6a862770b31efab02abf5b1669a680074a231ccb9afa0d2974fee95f666e62" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/9f0d6d4c-f918-5a44-a9a2-7732c4e338f3/9f0d6d4c-f918-5a44-a9a2-7732c4e338f3.jpg" alt="Didaktische Visualisierung zum Lernziel &quot;Kontaktkorrosion erklären&quot;. Die lernende Person kann Kontaktkorrosion als elektrochemisches Lokalelement zwischen unterschiedlichen Metallen erklären und Anode, Kathode sowie Elektronenfluss fachlich deuten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9f0d6d4c-f918-5a44-a9a2-7732c4e338f3-description-heading">
+        <p class="section-heading" id="goal-9f0d6d4c-f918-5a44-a9a2-7732c4e338f3-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Kontaktkorrosion als elektrochemisches Lokalelement zwischen unterschiedlichen Metallen erklären und Anode, Kathode sowie Elektronenfluss fachlich deuten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9f0d6d4c-f918-5a44-a9a2-7732c4e338f3-requires-heading">
+          <p class="section-heading" id="goal-9f0d6d4c-f918-5a44-a9a2-7732c4e338f3-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-9f0d6d4c-f918-5a44-a9a2-7732c4e338f3-reverse-heading">
+          <p class="section-heading" id="goal-9f0d6d4c-f918-5a44-a9a2-7732c4e338f3-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-c95f6059-d7c2-5bcd-b61e-95e3577efdb2"><span>Korrosionsverhalten von Metallen beurteilen</span><code>c95f6059-d7c2-5bcd-b61e-95e3577efdb2</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-9f0d6d4c-f918-5a44-a9a2-7732c4e338f3-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9f0d6d4c-f918-5a44-a9a2-7732c4e338f3-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-8be14f15-2258-58e6-ae4e-38953f5d0570" rel="noreferrer noopener"><span>Spannungsreihen nutzen</span> <code>8be14f15-2258-58e6-ae4e-38953f5d0570</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-0908b3a2-9937-57de-8bfb-35a6de54aa1f" rel="noreferrer noopener"><span>Sauerstoff- und Säurekorrosion auf Teilchenebene erklären</span> <code>0908b3a2-9937-57de-8bfb-35a6de54aa1f</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-9f0d6d4c-f918-5a44-a9a2-7732c4e338f3-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9f0d6d4c-f918-5a44-a9a2-7732c4e338f3-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Chemie bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 2</span>
+      <span>Buch-Digest <code>sha256:759ae1fd5e853517d3752b2ac91a2c6e69885bb38c616082663ad0fb1d1e9d56</code></span>
+      <span>Ziel-Fingerprint <code>sha256:30cb3404ed0a25fe5ebf902f715bf5bc308563426621bf748a34784a4907b0d6</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=chemie-q3-two-corrosion-current378-native-author-v2&amp;edition=curricular-atomic-v1&amp;goalId=9f0d6d4c-f918-5a44-a9a2-7732c4e338f3&amp;goalFingerprint=sha256%3A30cb3404ed0a25fe5ebf902f715bf5bc308563426621bf748a34784a4907b0d6&amp;pageFingerprint=sha256%3A77de517fd791db6fd462852ab5d6bfa6c961683c20ca170848c594aebd90dce2&amp;bookDigest=sha256%3A759ae1fd5e853517d3752b2ac91a2c6e69885bb38c616082663ad0fb1d1e9d56&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c95f6059-d7c2-5bcd-b61e-95e3577efdb2" data-goal-id="c95f6059-d7c2-5bcd-b61e-95e3577efdb2" data-page-number="2" data-chapter-ids="structure:chemie-m7-review-root structure:candidate-chemistry-root goal:633f4fd4-1c36-5377-8fe6-44d8eeac3c56 goal:33766473-86a1-5f82-afc9-bdb8ed6a2ab6" aria-labelledby="goal-c95f6059-d7c2-5bcd-b61e-95e3577efdb2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c95f6059-d7c2-5bcd-b61e-95e3577efdb2-title"><a class="goal-self-link" href="#goal-c95f6059-d7c2-5bcd-b61e-95e3577efdb2">Korrosionsverhalten von Metallen beurteilen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c95f6059-d7c2-5bcd-b61e-95e3577efdb2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-65c2c4f07514968236c55557">Chemie</a></li><li><a href="#chapter-d8590b45dfe283b69bf955ba">Chemisches Gleichgewicht</a></li><li><a href="#chapter-fc2b8a194f8362b8bf487ef8">Q3.3 Redoxgleichgewichte</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c2b9f04acd7d2f3fe8bfa2cde3d152e16803c364ba6d420e0d9b386ca090f35b" data-rendered-digest="sha256:c0dd4c7e3f087c9c321a146b2abf14cd874f7c9ab40e271a4727c951ff7cefac" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/chemie/c95f6059-d7c2-5bcd-b61e-95e3577efdb2/c95f6059-d7c2-5bcd-b61e-95e3577efdb2.png" alt="Didaktische Visualisierung zum Lernziel &quot;Korrosionsverhalten von Metallen beurteilen&quot;. Die lernende Person kann Abweichungen vom erwarteten Korrosionsverhalten erklären und daraus unterschiedliche Verwendungsmöglichkeiten von Metallen und Legierungen ableiten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c95f6059-d7c2-5bcd-b61e-95e3577efdb2-description-heading">
+        <p class="section-heading" id="goal-c95f6059-d7c2-5bcd-b61e-95e3577efdb2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Abweichungen vom erwarteten Korrosionsverhalten erklären und daraus unterschiedliche Verwendungsmöglichkeiten von Metallen und Legierungen ableiten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c95f6059-d7c2-5bcd-b61e-95e3577efdb2-requires-heading">
+          <p class="section-heading" id="goal-c95f6059-d7c2-5bcd-b61e-95e3577efdb2-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-9f0d6d4c-f918-5a44-a9a2-7732c4e338f3"><span>Kontaktkorrosion erklären</span><code>9f0d6d4c-f918-5a44-a9a2-7732c4e338f3</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c95f6059-d7c2-5bcd-b61e-95e3577efdb2-reverse-heading">
+          <p class="section-heading" id="goal-c95f6059-d7c2-5bcd-b61e-95e3577efdb2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-c95f6059-d7c2-5bcd-b61e-95e3577efdb2-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c95f6059-d7c2-5bcd-b61e-95e3577efdb2-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Chemie bearbeiten</span> <code>14577339-9e0c-5b44-8e47-91e1a4947367</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-94a62b39-d4a2-5882-99d1-6886ead07726" rel="noreferrer noopener"><span>Passiven und aktiven Korrosionsschutz bewerten</span> <code>94a62b39-d4a2-5882-99d1-6886ead07726</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 2</span>
+      <span>Buch-Digest <code>sha256:759ae1fd5e853517d3752b2ac91a2c6e69885bb38c616082663ad0fb1d1e9d56</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5c748019730b688ac5e71e7c21b975b15c6c63e187e04061949672b099c4ac9e</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=chemie-q3-two-corrosion-current378-native-author-v2&amp;edition=curricular-atomic-v1&amp;goalId=c95f6059-d7c2-5bcd-b61e-95e3577efdb2&amp;goalFingerprint=sha256%3A5c748019730b688ac5e71e7c21b975b15c6c63e187e04061949672b099c4ac9e&amp;pageFingerprint=sha256%3A63e71aaddfa71fd9e47995dcd621f61475377f605eb9bcb5618c7a4672682ed3&amp;bookDigest=sha256%3A759ae1fd5e853517d3752b2ac91a2c6e69885bb38c616082663ad0fb1d1e9d56&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

@@ -1,0 +1,1294 @@
+{
+  "schemaVersion": 1,
+  "contentLicense": "CC-BY-4.0",
+  "caseCount": 8,
+  "goalCount": 4,
+  "cases": [
+    {
+      "caseId": "q3-06-a",
+      "goalId": "d9cce642-4f89-57f8-832a-abeb62586195",
+      "title": {
+        "de": "Schnelleres Estergleichgewicht",
+        "en": "Faster ester equilibrium"
+      },
+      "wholeCurrentGoal": {
+        "id": "d9cce642-4f89-57f8-832a-abeb62586195",
+        "title": "Katalysatoren beurteilen",
+        "titleEn": "Assess catalysts",
+        "description": "Die lernende Person kann erläutern, wie Katalysatoren die Einstellung eines Gleichgewichts beeinflussen und Beispiele für homogene und heterogene Katalyse nennen.",
+        "descriptionEn": "The learner can explain how catalysts influence the establishment of an equilibrium and name examples of homogeneous and heterogeneous catalysis.",
+        "weight": 1.1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "5a24dae0-6d33-5227-8d8b-e8f74c2ccc4c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BC_ENERGIE"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-NI",
+            "DE-NW"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "11c20e66-1287-434e-8766-09b37350bf9e"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "d9cce642-4f89-57f8-832a-abeb62586195",
+            "title": "Visualisierung: Katalysatoren beurteilen",
+            "url": "/assets/goal-visualizations/chemie/d9cce642-4f89-57f8-832a-abeb62586195/d9cce642-4f89-57f8-832a-abeb62586195.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Katalysatoren beurteilen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Katalysatoren beurteilen\". Die lernende Person kann erläutern, wie Katalysatoren die Einstellung eines Gleichgewichts beeinflussen und Beispiele für homogene und heterogene Katalyse nennen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "material": {
+        "de": "Synthetische homogene Estermischungen bei gleichem T und Start erreichen ohne Katalysator nach60min, mit gelöstem Säurekatalysator nach10min denselben Endumsatz70%. Vergleichsprozess: gasförmige N₂/H₂-Reaktion an festem Eisen. Keine Versuchsanleitung.",
+        "en": "Synthetic homogeneous ester mixtures at the same T and start reach the same70% final conversion after60min without catalyst and10min with dissolved acid catalyst. Comparison process: gaseous N₂/H₂ reaction on solid iron. No experiment instructions."
+      },
+      "task": {
+        "de": "Erkläre Teilchenmodell, Gleichgewichtseinstellung und unveränderten Endzustand. Ordne beide Beispiele homogener bzw. heterogener Katalyse zu und widerlege „mehr Produkt, weil K steigt“.",
+        "en": "Explain particle model, equilibration and unchanged endpoint. Classify both examples as homogeneous or heterogeneous catalysis and refute “more product because K rises”."
+      },
+      "modelResponse": {
+        "de": "Ein katalytischer Reaktionsweg besitzt geringere Aktivierungsbarrieren und beschleunigt Hin- und Rückreaktion. Das gleiche thermodynamische Gleichgewicht wird früher erreicht; K und70% Endumsatz bleiben bei T gleich. Gelöster Säurekatalysator und Reaktionsgemisch sind in einer Phase: homogen. Festes Eisen und Gasphase sind verschiedene Phasen: heterogen. In endlicher Zeit kann mehr Produkt vorliegen, ohne höhere Gleichgewichtsausbeute.",
+        "en": "A catalytic pathway has lower activation barriers and accelerates forward and reverse reactions. The same thermodynamic equilibrium is reached sooner; K and70% final conversion stay unchanged at T. Dissolved acid catalyst and reacting mixture share a phase: homogeneous. Solid iron and gas differ in phase: heterogeneous. More product may be present at a finite time without greater equilibrium yield."
+      },
+      "scoring": {
+        "maximumPoints": 10,
+        "criteria": [
+          {
+            "id": "c1",
+            "points": 2,
+            "criterion": {
+              "de": "Alternativen Weg/Barrieren und beide Richtungen erklären.",
+              "en": "Explain alternative pathway/barriers and both directions."
+            }
+          },
+          {
+            "id": "c2",
+            "points": 2,
+            "criterion": {
+              "de": "Zeit bis Gleichgewicht von Endausbeute/K trennen.",
+              "en": "Distinguish time to equilibrium and final yield/K."
+            }
+          },
+          {
+            "id": "c3",
+            "points": 2,
+            "criterion": {
+              "de": "Homogenes Beispiel anhand Phase einordnen.",
+              "en": "Classify homogeneous example by phase."
+            }
+          },
+          {
+            "id": "c4",
+            "points": 2,
+            "criterion": {
+              "de": "Heterogenes Beispiel anhand Phase einordnen.",
+              "en": "Classify heterogeneous example by phase."
+            }
+          },
+          {
+            "id": "fresh-transfer",
+            "points": 2,
+            "criterion": {
+              "de": "Keine Netto-Gleichgewichtsverschiebung; schnellere mikroskopische Hin-/Rückumsätze können dennoch auftreten.",
+              "en": "No net equilibrium shift; faster microscopic forward/reverse turnover may nevertheless occur."
+            }
+          }
+        ],
+        "rule": {
+          "de": "Punkte ausschließlich für ausdrücklich gezeigte Fachleistung. Volle Punkte pro Kriterium nur bei Begründung und korrekter Darstellung; ein richtiger Fachbegriff allein genügt nicht. Modellantworten sind Autorenbeispiele, keine Lernendenleistung.",
+          "en": "Award points only for explicitly demonstrated scientific performance. Full credit per criterion requires reasoning and correct representation; a correct term alone is insufficient. Model responses are author examples, not learner performance."
+        }
+      },
+      "freshTransfer": {
+        "task": {
+          "de": "Frisch: beide Proben sind schon im Gleichgewicht; nur einer wird Katalysator zugesetzt, T unverändert.",
+          "en": "Fresh: both samples are already at equilibrium; catalyst is added to one, T unchanged."
+        },
+        "modelResponse": {
+          "de": "Keine Netto-Gleichgewichtsverschiebung; schnellere mikroskopische Hin-/Rückumsätze können dennoch auftreten.",
+          "en": "No net equilibrium shift; faster microscopic forward/reverse turnover may nevertheless occur."
+        },
+        "independentAdministration": true,
+        "releaseModelOnlyAfterSubmission": true
+      },
+      "evidence": {
+        "level": "E1",
+        "maximumClaimScope": "G1",
+        "kind": "synthetic-author-witness",
+        "humanTrial": false,
+        "performedExperiment": false,
+        "actualLearnerPerformance": false
+      }
+    },
+    {
+      "caseId": "q3-06-b",
+      "goalId": "d9cce642-4f89-57f8-832a-abeb62586195",
+      "title": {
+        "de": "Gleichgewichtsmodell mit Energieprofil",
+        "en": "Equilibrium model with energy profile"
+      },
+      "wholeCurrentGoal": {
+        "id": "d9cce642-4f89-57f8-832a-abeb62586195",
+        "title": "Katalysatoren beurteilen",
+        "titleEn": "Assess catalysts",
+        "description": "Die lernende Person kann erläutern, wie Katalysatoren die Einstellung eines Gleichgewichts beeinflussen und Beispiele für homogene und heterogene Katalyse nennen.",
+        "descriptionEn": "The learner can explain how catalysts influence the establishment of an equilibrium and name examples of homogeneous and heterogeneous catalysis.",
+        "weight": 1.1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "5a24dae0-6d33-5227-8d8b-e8f74c2ccc4c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BC_ENERGIE"
+          ],
+          "phase": "Q3"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-NI",
+            "DE-NW"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "11c20e66-1287-434e-8766-09b37350bf9e"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "d9cce642-4f89-57f8-832a-abeb62586195",
+            "title": "Visualisierung: Katalysatoren beurteilen",
+            "url": "/assets/goal-visualizations/chemie/d9cce642-4f89-57f8-832a-abeb62586195/d9cce642-4f89-57f8-832a-abeb62586195.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Katalysatoren beurteilen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Katalysatoren beurteilen\". Die lernende Person kann erläutern, wie Katalysatoren die Einstellung eines Gleichgewichts beeinflussen und Beispiele für homogene und heterogene Katalyse nennen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "material": {
+        "de": "A⇌B, Energien A0 und B−20kJ/mol. Unkatalysierter Übergangszustand80, katalysierter40kJ/mol relativ zu A. Beispiele: löslicher Katalysator im Flüssiggemisch und fester Platinkatalysator für Gasreaktion. Dieselbe Temperatur, keine Nebenreaktionen.",
+        "en": "A⇌B with energies A0 and B−20kJ/mol. Uncatalysed transition state80, catalysed40kJ/mol relative to A. Examples: soluble catalyst in a liquid mixture and solid platinum for a gas reaction. Same temperature, no side reactions."
+      },
+      "task": {
+        "de": "Vergleiche Aktivierungsbarrieren in beiden Richtungen, Gleichgewichtskonstante und Einstellzeit. Erläutere die Katalyseformen an den Beispielen.",
+        "en": "Compare activation barriers in both directions, equilibrium constant and equilibration time. Explain catalysis types using the examples."
+      },
+      "modelResponse": {
+        "de": "Hinbarriere sinkt80→40, Rückbarriere100→60kJ/mol; die Energiedifferenz der Zustände bleibt−20. Beide Richtungen werden schneller, Einstellung früher, K unverändert. Löslicher Katalysator in derselben Flüssigphase ist homogen; Gas an festem Pt heterogen. Aus den Barrieren allein folgt kein numerischer neuer K-Wert oder universell gleicher Beschleunigungsfaktor.",
+        "en": "Forward barrier drops80→40 and reverse100→60kJ/mol; state energy difference stays−20. Both directions accelerate, equilibrium is reached sooner and K is unchanged. Soluble catalyst in the same liquid phase is homogeneous; gas on solid Pt heterogeneous. Barriers alone do not give a numerical new K or universally identical acceleration factors."
+      },
+      "scoring": {
+        "maximumPoints": 10,
+        "criteria": [
+          {
+            "id": "c1",
+            "points": 2,
+            "criterion": {
+              "de": "Beide Barrierendifferenzen richtig bestimmen.",
+              "en": "Determine both barrier differences correctly."
+            }
+          },
+          {
+            "id": "c2",
+            "points": 2,
+            "criterion": {
+              "de": "Unveränderte Zustandsdifferenz und K erklären.",
+              "en": "Explain unchanged state difference and K."
+            }
+          },
+          {
+            "id": "c3",
+            "points": 2,
+            "criterion": {
+              "de": "Einstellzeit mit beiden Reaktionsrichtungen verknüpfen.",
+              "en": "Connect equilibration time with both directions."
+            }
+          },
+          {
+            "id": "c4",
+            "points": 2,
+            "criterion": {
+              "de": "Beide Phasenbeispiele fachlich einordnen.",
+              "en": "Classify both phase examples scientifically."
+            }
+          },
+          {
+            "id": "fresh-transfer",
+            "points": 2,
+            "criterion": {
+              "de": "Nein; Temperatur kann K verändern. Die Variablen müssen getrennt werden, bevor die reine Katalysatorwirkung bewertet wird.",
+              "en": "No; temperature can change K. Variables must be separated before evaluating catalyst effect alone."
+            }
+          }
+        ],
+        "rule": {
+          "de": "Punkte ausschließlich für ausdrücklich gezeigte Fachleistung. Volle Punkte pro Kriterium nur bei Begründung und korrekter Darstellung; ein richtiger Fachbegriff allein genügt nicht. Modellantworten sind Autorenbeispiele, keine Lernendenleistung.",
+          "en": "Award points only for explicitly demonstrated scientific performance. Full credit per criterion requires reasoning and correct representation; a correct term alone is insufficient. Model responses are author examples, not learner performance."
+        }
+      },
+      "freshTransfer": {
+        "task": {
+          "de": "Frisch: Beim Katalysatorzusatz wird zugleich erwärmt. Kann ein geänderter Endumsatz allein dem Katalysator zugeschrieben werden?",
+          "en": "Fresh: catalyst addition also heats the mixture. Can a changed endpoint be attributed solely to catalyst?"
+        },
+        "modelResponse": {
+          "de": "Nein; Temperatur kann K verändern. Die Variablen müssen getrennt werden, bevor die reine Katalysatorwirkung bewertet wird.",
+          "en": "No; temperature can change K. Variables must be separated before evaluating catalyst effect alone."
+        },
+        "independentAdministration": true,
+        "releaseModelOnlyAfterSubmission": true
+      },
+      "evidence": {
+        "level": "E1",
+        "maximumClaimScope": "G1",
+        "kind": "synthetic-author-witness",
+        "humanTrial": false,
+        "performedExperiment": false,
+        "actualLearnerPerformance": false
+      }
+    },
+    {
+      "caseId": "q3-08-a",
+      "goalId": "3eada74b-25b8-55dc-811a-acb473196f53",
+      "title": {
+        "de": "Modell einer wässrigen Chloridlösung",
+        "en": "Model aqueous chloride solution"
+      },
+      "wholeCurrentGoal": {
+        "id": "3eada74b-25b8-55dc-811a-acb473196f53",
+        "shortKey": "canonical_chemistry_q3_electrolysis_voltage_limits",
+        "title": "Ionenentladung und Überspannung deuten",
+        "titleEn": "Interpret ion discharge and overvoltage",
+        "description": "Die lernende Person kann bei Elektrolysen die Reihenfolge der Ionenentladung beschreiben, erwartbare Elektrodenreaktionen ableiten und Abweichungen mithilfe von Zersetzungsspannung und Überspannung begründen.",
+        "descriptionEn": "The learner can describe ion discharge order in electrolysis, derive expected electrode reactions, and justify deviations using decomposition voltage and overvoltage.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU"
+          ],
+          "phase": "Q3",
+          "area": "Redoxgleichgewichte",
+          "topicCode": "CANONICAL.CHEMISTRY.Q3.ELECTROLYSIS_VOLTAGE_LIMITS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-NI",
+            "DE-NW"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "he-chem-sekii-q3-3-b09-a01-a728efd6"
+          }
+        },
+        "contains": [],
+        "requires": [
+          "0c9fe376-0fbd-5dc1-b8d4-d56d658a00e3",
+          "8be14f15-2258-58e6-ae4e-38953f5d0570"
+        ],
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "3eada74b-25b8-55dc-811a-acb473196f53",
+            "title": "Visualisierung: Ionenentladung und Überspannung deuten",
+            "url": "/assets/goal-visualizations/chemie/3eada74b-25b8-55dc-811a-acb473196f53/3eada74b-25b8-55dc-811a-acb473196f53.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Ionenentladung und Überspannung deuten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Ionenentladung und Überspannung deuten\". Die lernende Person kann bei Elektrolysen die Reihenfolge der Ionenentladung beschreiben, erwartbare Elektrodenreaktionen ableiten und Abweichungen mithilfe von Zersetzungsspannung und Überspannung begründen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "material": {
+        "de": "Nur für den gegebenen Modellzustand: kathodische Gleichgewichtspotenziale Na⁺/Na−2,71V und H₂O/H₂−0,83V; Wasserstoff-Überspannung0,20V. Anodische Schwellen vor Überspannung: O₂1,23V, Cl₂1,36V; ηO₂0,60V,ηCl₂0,10V. Ohmscher Spannungsverlust0,20V. Werte sind vorgegeben, keine Universalwerte oder Versuchsanleitung.",
+        "en": "Only for the supplied model state: cathodic equilibrium potentials Na⁺/Na−2.71V and H₂O/H₂−0.83V; hydrogen overpotential0.20V. Anodic thresholds before overpotential: O₂1.23V, Cl₂1.36V; ηO₂0.60V,ηCl₂0.10V. Ohmic voltage loss0.20V. Values are supplied, not universal values or experiment instructions."
+      },
+      "task": {
+        "de": "Leite mögliche Halbgleichungen und Entladungsreihenfolge thermodynamisch und mit Überspannung ab. Berechne die modellhafte notwendige Spannung einschließlich ohmschem Verlust.",
+        "en": "Derive possible half-equations and thermodynamic discharge order, then include overpotential. Calculate model required voltage including ohmic loss."
+      },
+      "modelResponse": {
+        "de": "Kathode:2H₂O+2e⁻→H₂+2OH⁻ ist bei−1,03V günstiger als Na⁺+e⁻→Na bei−2,71V. Anode:2Cl⁻→Cl₂+2e⁻ bei1,46V wird vor2H₂O→O₂+4H⁺+4e⁻ bei1,83V möglich, obwohl O₂ ohne η die niedrigere Schwelle hat. Modellhafte Spannung1,46−(−1,03)+0,20=2,69V. Auswahl hängt von Bedingungen und Elektrodenmaterial ab.",
+        "en": "Cathode:2H₂O+2e⁻→H₂+2OH⁻ at−1.03V is favoured over Na⁺+e⁻→Na at−2.71V. Anode:2Cl⁻→Cl₂+2e⁻ at1.46V becomes possible before2H₂O→O₂+4H⁺+4e⁻ at1.83V, although O₂ has the lower threshold without η. Model voltage1.46−(−1.03)+0.20=2.69V. Selection depends on conditions and electrode material."
+      },
+      "scoring": {
+        "maximumPoints": 10,
+        "criteria": [
+          {
+            "id": "c1",
+            "points": 2,
+            "criterion": {
+              "de": "Kathodische Kandidaten und Auswahl mit richtigen Vorzeichen.",
+              "en": "Cathodic candidates and selection with correct signs."
+            }
+          },
+          {
+            "id": "c2",
+            "points": 2,
+            "criterion": {
+              "de": "Anodische Halbgleichungen ladungs-/stoffbilanziert.",
+              "en": "Anodic half-equations balanced for charge and atoms."
+            }
+          },
+          {
+            "id": "c3",
+            "points": 2,
+            "criterion": {
+              "de": "Umgekehrte Anodenauswahl durch Überspannung erklären.",
+              "en": "Explain reversed anode selection due to overpotential."
+            }
+          },
+          {
+            "id": "c4",
+            "points": 2,
+            "criterion": {
+              "de": "2,69V und Grenzen der Modellwerte begründen.",
+              "en": "Explain2.69V and limits of model values."
+            }
+          },
+          {
+            "id": "fresh-transfer",
+            "points": 2,
+            "criterion": {
+              "de": "O₂ bei1,28V statt Cl₂ bei1,46V. Modellspannung1,28+1,03+0,20=2,51V; Standardpotenziale allein reichen nicht.",
+              "en": "O₂ at1.28V rather than Cl₂ at1.46V. Model voltage1.28+1.03+0.20=2.51V; standard potentials alone are insufficient."
+            }
+          }
+        ],
+        "rule": {
+          "de": "Punkte ausschließlich für ausdrücklich gezeigte Fachleistung. Volle Punkte pro Kriterium nur bei Begründung und korrekter Darstellung; ein richtiger Fachbegriff allein genügt nicht. Modellantworten sind Autorenbeispiele, keine Lernendenleistung.",
+          "en": "Award points only for explicitly demonstrated scientific performance. Full credit per criterion requires reasoning and correct representation; a correct term alone is insufficient. Model responses are author examples, not learner performance."
+        }
+      },
+      "freshTransfer": {
+        "task": {
+          "de": "Frische Elektrode: ηO₂ sinkt auf0,05V, übrige Daten unverändert. Welches Anodenprodukt wird zuerst möglich?",
+          "en": "Fresh electrode: ηO₂ falls to0.05V, other data unchanged. Which anode product becomes possible first?"
+        },
+        "modelResponse": {
+          "de": "O₂ bei1,28V statt Cl₂ bei1,46V. Modellspannung1,28+1,03+0,20=2,51V; Standardpotenziale allein reichen nicht.",
+          "en": "O₂ at1.28V rather than Cl₂ at1.46V. Model voltage1.28+1.03+0.20=2.51V; standard potentials alone are insufficient."
+        },
+        "independentAdministration": true,
+        "releaseModelOnlyAfterSubmission": true
+      },
+      "evidence": {
+        "level": "E1",
+        "maximumClaimScope": "G1",
+        "kind": "synthetic-author-witness",
+        "humanTrial": false,
+        "performedExperiment": false,
+        "actualLearnerPerformance": false
+      }
+    },
+    {
+      "caseId": "q3-08-b",
+      "goalId": "3eada74b-25b8-55dc-811a-acb473196f53",
+      "title": {
+        "de": "Kupfer und Bromid mit lokalen Schwellen",
+        "en": "Copper and bromide with local thresholds"
+      },
+      "wholeCurrentGoal": {
+        "id": "3eada74b-25b8-55dc-811a-acb473196f53",
+        "shortKey": "canonical_chemistry_q3_electrolysis_voltage_limits",
+        "title": "Ionenentladung und Überspannung deuten",
+        "titleEn": "Interpret ion discharge and overvoltage",
+        "description": "Die lernende Person kann bei Elektrolysen die Reihenfolge der Ionenentladung beschreiben, erwartbare Elektrodenreaktionen ableiten und Abweichungen mithilfe von Zersetzungsspannung und Überspannung begründen.",
+        "descriptionEn": "The learner can describe ion discharge order in electrolysis, derive expected electrode reactions, and justify deviations using decomposition voltage and overvoltage.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU"
+          ],
+          "phase": "Q3",
+          "area": "Redoxgleichgewichte",
+          "topicCode": "CANONICAL.CHEMISTRY.Q3.ELECTROLYSIS_VOLTAGE_LIMITS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-NI",
+            "DE-NW"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "he-chem-sekii-q3-3-b09-a01-a728efd6"
+          }
+        },
+        "contains": [],
+        "requires": [
+          "0c9fe376-0fbd-5dc1-b8d4-d56d658a00e3",
+          "8be14f15-2258-58e6-ae4e-38953f5d0570"
+        ],
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "3eada74b-25b8-55dc-811a-acb473196f53",
+            "title": "Visualisierung: Ionenentladung und Überspannung deuten",
+            "url": "/assets/goal-visualizations/chemie/3eada74b-25b8-55dc-811a-acb473196f53/3eada74b-25b8-55dc-811a-acb473196f53.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Ionenentladung und Überspannung deuten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Ionenentladung und Überspannung deuten\". Die lernende Person kann bei Elektrolysen die Reihenfolge der Ionenentladung beschreiben, erwartbare Elektrodenreaktionen ableiten und Abweichungen mithilfe von Zersetzungsspannung und Überspannung begründen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "material": {
+        "de": "Gegebener saurer Modellzustand: ECu²⁺/Cu0,34V; EH⁺/H₂0V,ηH₂0,30V; anodisch EBr₂/Br⁻1,07V,ηBr₂0,10V,EO₂/H₂O1,23V,ηO₂0,15V. Cu-Abscheidungsüberspannung hier vernachlässigt. IR-Verlust0,12V; inerte Elektroden.",
+        "en": "Supplied acidic model state: ECu²⁺/Cu0.34V; EH⁺/H₂0V,ηH₂0.30V; anodic EBr₂/Br⁻1.07V,ηBr₂0.10V,EO₂/H₂O1.23V,ηO₂0.15V. Copper deposition overpotential neglected here. IR loss0.12V; inert electrodes."
+      },
+      "task": {
+        "de": "Beschreibe Reihenfolge, Halbgleichungen und Bedeutung der Überspannung. Berechne die erste modellhafte Gesamtspannung; erkläre, was nach starker Cu²⁺-Verarmung neu geprüft werden muss.",
+        "en": "Describe order, half-equations and meaning of overpotential. Calculate initial model total voltage; explain what needs rechecking after major Cu²⁺ depletion."
+      },
+      "modelResponse": {
+        "de": "Cu²⁺+2e⁻→Cu tritt vor2H⁺+2e⁻→H₂ auf:0,34V liegt über−0,30V. Anodisch2Br⁻→Br₂+2e⁻ bei1,17V vor O₂ bei1,38V. U≈1,17−0,34+0,12=0,95V. Überspannung ist zusätzlicher kinetischer Bedarf, nicht Änderung des Standardpotenzials. Verarmung verändert lokale Potenziale und Stofftransport; anfängliche Reihenfolge gilt nicht garantiert weiter.",
+        "en": "Cu²⁺+2e⁻→Cu precedes2H⁺+2e⁻→H₂:0.34V exceeds−0.30V. Anodically2Br⁻→Br₂+2e⁻ at1.17V precedes O₂ at1.38V. U≈1.17−0.34+0.12=0.95V. Overpotential is additional kinetic demand, not a change in standard potential. Depletion changes local potentials and transport; initial order is not guaranteed to persist."
+      },
+      "scoring": {
+        "maximumPoints": 10,
+        "criteria": [
+          {
+            "id": "c1",
+            "points": 2,
+            "criterion": {
+              "de": "Kathodenreihenfolge richtig begründen.",
+              "en": "Explain cathode order correctly."
+            }
+          },
+          {
+            "id": "c2",
+            "points": 2,
+            "criterion": {
+              "de": "Anodenreihenfolge und bilanzierte Gleichungen zeigen.",
+              "en": "Show anode order and balanced equations."
+            }
+          },
+          {
+            "id": "c3",
+            "points": 2,
+            "criterion": {
+              "de": "Spannung mit η/IR berechnen.",
+              "en": "Calculate voltage with η/IR."
+            }
+          },
+          {
+            "id": "c4",
+            "points": 2,
+            "criterion": {
+              "de": "Thermodynamik, Kinetik und lokale Stoffversorgung trennen.",
+              "en": "Distinguish thermodynamics, kinetics and local supply."
+            }
+          },
+          {
+            "id": "fresh-transfer",
+            "points": 2,
+            "criterion": {
+              "de": "O₂:1,38V<1,57V. Überspannung kann die allein aus Gleichgewichtspotenzialen erwartete Reihenfolge ändern.",
+              "en": "O₂:1.38V<1.57V. Overpotential can change the order expected from equilibrium potentials alone."
+            }
+          }
+        ],
+        "rule": {
+          "de": "Punkte ausschließlich für ausdrücklich gezeigte Fachleistung. Volle Punkte pro Kriterium nur bei Begründung und korrekter Darstellung; ein richtiger Fachbegriff allein genügt nicht. Modellantworten sind Autorenbeispiele, keine Lernendenleistung.",
+          "en": "Award points only for explicitly demonstrated scientific performance. Full credit per criterion requires reasoning and correct representation; a correct term alone is insufficient. Model responses are author examples, not learner performance."
+        }
+      },
+      "freshTransfer": {
+        "task": {
+          "de": "Frisch: ηBr₂0,50V; welches Anodenprodukt ist im Modell günstiger?",
+          "en": "Fresh: ηBr₂0.50V; which anode product is favoured in the model?"
+        },
+        "modelResponse": {
+          "de": "O₂:1,38V<1,57V. Überspannung kann die allein aus Gleichgewichtspotenzialen erwartete Reihenfolge ändern.",
+          "en": "O₂:1.38V<1.57V. Overpotential can change the order expected from equilibrium potentials alone."
+        },
+        "independentAdministration": true,
+        "releaseModelOnlyAfterSubmission": true
+      },
+      "evidence": {
+        "level": "E1",
+        "maximumClaimScope": "G1",
+        "kind": "synthetic-author-witness",
+        "humanTrial": false,
+        "performedExperiment": false,
+        "actualLearnerPerformance": false
+      }
+    },
+    {
+      "caseId": "q3-14-a",
+      "goalId": "0908b3a2-9937-57de-8bfb-35a6de54aa1f",
+      "title": {
+        "de": "Eisen unter feuchter Luft und in saurer Modelllösung",
+        "en": "Iron in moist air and acidic model solution"
+      },
+      "wholeCurrentGoal": {
+        "id": "0908b3a2-9937-57de-8bfb-35a6de54aa1f",
+        "shortKey": "canonical_chemistry_by_oxygen_acid_corrosion",
+        "title": "Sauerstoff- und Säurekorrosion auf Teilchenebene erklären",
+        "titleEn": "Explain oxygen and acid corrosion at particle level",
+        "description": "Die lernende Person kann Sauerstoff- und Säurekorrosion auf Teilchenebene mit Oxidation, Reduktion, Lokalelementen und dem Donator-Akzeptor-Konzept erläutern.",
+        "descriptionEn": "The learner can explain oxygen and acid corrosion at particle level using oxidation, reduction, local cells, and the donor-acceptor concept.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+          "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BC_REAKTION"
+          ],
+          "phase": "Q3",
+          "area": "Redoxgleichgewichte",
+          "topicCode": "CANONICAL.CHEMISTRY.Q3.OXYGEN_ACID_CORROSION"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "DE-BY - Chemie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+            "sourceGoalId": "b799ee45-c69e-5d49-9fff-974e5793adc3"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "0908b3a2-9937-57de-8bfb-35a6de54aa1f",
+            "title": "Visualisierung: Sauerstoff- und Säurekorrosion auf Teilchenebene erklären",
+            "url": "/assets/goal-visualizations/chemie/0908b3a2-9937-57de-8bfb-35a6de54aa1f/0908b3a2-9937-57de-8bfb-35a6de54aa1f.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Sauerstoff- und Säurekorrosion auf Teilchenebene erklären.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Sauerstoff- und Säurekorrosion auf Teilchenebene erklären\". Die lernende Person kann Sauerstoff- und Säurekorrosion auf Teilchenebene mit Oxidation, Reduktion, Lokalelementen und dem Donator-Akzeptor-Konzept erläutern.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "material": {
+        "de": "Zwei reine Denkmodelle für Eisen: X neutrale wasserhaltige Schicht mit O₂, Y sauerstofffreie saure Lösung mit H⁺. Metall leitet Elektronen, Flüssigkeit Ionen. Kein Laborauftrag. Fe²⁺ ist anfängliches Oxidationsprodukt; Rostbildung umfasst weitere Schritte.",
+        "en": "Two pure thought models for iron: X neutral aqueous film with O₂,Y oxygen-free acidic solution with H⁺. Metal conducts electrons,liquid ions. No laboratory task. Fe²⁺ is the initial oxidation product; rust formation involves further steps."
+      },
+      "task": {
+        "de": "Erkläre beide Korrosionsarten mit Donator/Akzeptor, lokalen Anoden/Kathoden und bilanzierten Halbgleichungen. Unterscheide Elektronenleitung, Ionentransport und spätere Rostbildung.",
+        "en": "Explain both corrosion types using donor/acceptor,local anodes/cathodes and balanced half-equations. Distinguish electron conduction,ion transport and later rust formation."
+      },
+      "modelResponse": {
+        "de": "Beide:Fe→Fe²⁺+2e⁻, Eisen ist Donator und lokale Anode. X:O₂+2H₂O+4e⁻→4OH⁻ an lokalen Kathoden; O₂ ist Akzeptor. 2Fe²⁺+4OH⁻→2Fe(OH)₂, weitere Oxidation führt zu Rost. Y:2H⁺+2e⁻→H₂, H⁺ Akzeptor. Elektronen laufen im Metall, Ionen in der Flüssigkeit. Sauerstoff ist für die saure Modellkorrosion nicht erforderlich; bloße Auflösung ohne Redoxbilanz erklärt die Vorgänge nicht.",
+        "en": "Both:Fe→Fe²⁺+2e⁻,iron is donor and local anode. X:O₂+2H₂O+4e⁻→4OH⁻ at local cathodes;O₂ is acceptor. 2Fe²⁺+4OH⁻→2Fe(OH)₂,further oxidation forms rust. Y:2H⁺+2e⁻→H₂,H⁺ acceptor. Electrons travel in metal,ions in liquid. Oxygen is not required for acidic model corrosion;mere dissolution without redox balance does not explain the processes."
+      },
+      "scoring": {
+        "maximumPoints": 10,
+        "criteria": [
+          {
+            "id": "c1",
+            "points": 2,
+            "criterion": {
+              "de": "Anodische Eisenoxidation und Donator richtig erklären.",
+              "en": "Explain anodic iron oxidation and donor correctly."
+            }
+          },
+          {
+            "id": "c2",
+            "points": 2,
+            "criterion": {
+              "de": "Neutrale Sauerstoffreduktion korrekt bilanzieren.",
+              "en": "Balance neutral oxygen reduction correctly."
+            }
+          },
+          {
+            "id": "c3",
+            "points": 2,
+            "criterion": {
+              "de": "Saure Protonenreduktion richtig von Sauerstoffreaktion unterscheiden.",
+              "en": "Distinguish acidic proton reduction from oxygen reaction correctly."
+            }
+          },
+          {
+            "id": "c4",
+            "points": 2,
+            "criterion": {
+              "de": "Lokale Zelle, zwei Transportwege und Folgerostbildung trennen.",
+              "en": "Distinguish local cell,two transport paths and later rust formation."
+            }
+          },
+          {
+            "id": "fresh-transfer",
+            "points": 2,
+            "criterion": {
+              "de": "Nein; Y hat H⁺ als anderen Elektronenakzeptor. Akzeptor und Umgebung müssen angegeben werden; aus O₂-Mangel folgt kein universeller Korrosionsstopp.",
+              "en": "No;Y has H⁺ as another electron acceptor. Acceptor and environment must be specified;absence of O₂ does not imply universal cessation of corrosion."
+            }
+          }
+        ],
+        "rule": {
+          "de": "Punkte ausschließlich für ausdrücklich gezeigte Fachleistung. Volle Punkte pro Kriterium nur bei Begründung und korrekter Darstellung; ein richtiger Fachbegriff allein genügt nicht. Modellantworten sind Autorenbeispiele, keine Lernendenleistung.",
+          "en": "Award points only for explicitly demonstrated scientific performance. Full credit per criterion requires reasoning and correct representation; a correct term alone is insufficient. Model responses are author examples, not learner performance."
+        }
+      },
+      "freshTransfer": {
+        "task": {
+          "de": "Frisch: O₂ fehlt in neutralem Modell X. Sind damit die Reaktionen von Y ebenfalls ausgeschlossen?",
+          "en": "Fresh: O₂ is absent in neutral model X. Are Y reactions also excluded?"
+        },
+        "modelResponse": {
+          "de": "Nein; Y hat H⁺ als anderen Elektronenakzeptor. Akzeptor und Umgebung müssen angegeben werden; aus O₂-Mangel folgt kein universeller Korrosionsstopp.",
+          "en": "No;Y has H⁺ as another electron acceptor. Acceptor and environment must be specified;absence of O₂ does not imply universal cessation of corrosion."
+        },
+        "independentAdministration": true,
+        "releaseModelOnlyAfterSubmission": true
+      },
+      "evidence": {
+        "level": "E1",
+        "maximumClaimScope": "G1",
+        "kind": "synthetic-author-witness",
+        "humanTrial": false,
+        "performedExperiment": false,
+        "actualLearnerPerformance": false
+      }
+    },
+    {
+      "caseId": "q3-14-b",
+      "goalId": "0908b3a2-9937-57de-8bfb-35a6de54aa1f",
+      "title": {
+        "de": "Lokale Bereiche unter einem Wassertropfen",
+        "en": "Local regions beneath a water droplet"
+      },
+      "wholeCurrentGoal": {
+        "id": "0908b3a2-9937-57de-8bfb-35a6de54aa1f",
+        "shortKey": "canonical_chemistry_by_oxygen_acid_corrosion",
+        "title": "Sauerstoff- und Säurekorrosion auf Teilchenebene erklären",
+        "titleEn": "Explain oxygen and acid corrosion at particle level",
+        "description": "Die lernende Person kann Sauerstoff- und Säurekorrosion auf Teilchenebene mit Oxidation, Reduktion, Lokalelementen und dem Donator-Akzeptor-Konzept erläutern.",
+        "descriptionEn": "The learner can explain oxygen and acid corrosion at particle level using oxidation, reduction, local cells, and the donor-acceptor concept.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+          "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BC_REAKTION"
+          ],
+          "phase": "Q3",
+          "area": "Redoxgleichgewichte",
+          "topicCode": "CANONICAL.CHEMISTRY.Q3.OXYGEN_ACID_CORROSION"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "DE-BY - Chemie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+            "sourceGoalId": "b799ee45-c69e-5d49-9fff-974e5793adc3"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "0908b3a2-9937-57de-8bfb-35a6de54aa1f",
+            "title": "Visualisierung: Sauerstoff- und Säurekorrosion auf Teilchenebene erklären",
+            "url": "/assets/goal-visualizations/chemie/0908b3a2-9937-57de-8bfb-35a6de54aa1f/0908b3a2-9937-57de-8bfb-35a6de54aa1f.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Sauerstoff- und Säurekorrosion auf Teilchenebene erklären.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Sauerstoff- und Säurekorrosion auf Teilchenebene erklären\". Die lernende Person kann Sauerstoff- und Säurekorrosion auf Teilchenebene mit Oxidation, Reduktion, Lokalelementen und dem Donator-Akzeptor-Konzept erläutern.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "material": {
+        "de": "Synthetisches Metallmodell: unter einem neutralen belüfteten Tropfen liegt O₂-armer Innenbereich und O₂-reicher Rand. Eisen ist zusammenhängend leitend; Fe²⁺ entsteht innen, OH⁻ am Rand. Vergleich: saures sauerstofffreies Modell bildet H₂.",
+        "en": "Synthetic metal model: beneath a neutral aerated droplet the centre is O₂-poor and rim O₂-rich. Iron forms a conducting continuum;Fe²⁺ forms centrally,OH⁻ at rim. Comparison: acidic oxygen-free model forms H₂."
+      },
+      "task": {
+        "de": "Leite Lokalelement und Donator-Akzeptor-Vorgänge ab, bilanziere Gleichungen für beide Umgebungen und erkläre die räumliche Trennung.",
+        "en": "Derive local cell and donor-acceptor processes,balance equations for both environments and explain spatial separation."
+      },
+      "modelResponse": {
+        "de": "Innen lokale Anode Fe→Fe²⁺+2e⁻; Rand lokale Kathode O₂+2H₂O+4e⁻→4OH⁻. Metall leitet Elektronen innen→Rand, Flüssigkeit trägt Ionen und ermöglicht Ladungsausgleich. Gesamt zunächst2Fe+O₂+2H₂O→2Fe(OH)₂; später weitere Rostreaktionen. Sauerstofffreies saures Modell:Fe+2H⁺→Fe²⁺+H₂. Beide sind Donator-Akzeptor-Prozesse mit verschiedenem Akzeptor.",
+        "en": "Centre local anode Fe→Fe²⁺+2e⁻;rim local cathode O₂+2H₂O+4e⁻→4OH⁻. Metal conducts electrons centre→rim;liquid carries ions and balances charge. Initial overall2Fe+O₂+2H₂O→2Fe(OH)₂;later additional rust reactions. Oxygen-free acidic model:Fe+2H⁺→Fe²⁺+H₂. Both are donor-acceptor processes with different acceptors."
+      },
+      "scoring": {
+        "maximumPoints": 10,
+        "criteria": [
+          {
+            "id": "c1",
+            "points": 2,
+            "criterion": {
+              "de": "Räumliche Anode und Kathode aus Daten zuordnen.",
+              "en": "Assign spatial anode and cathode from data."
+            }
+          },
+          {
+            "id": "c2",
+            "points": 2,
+            "criterion": {
+              "de": "Sauerstoff-Halbgleichungen/ersten Stoffumsatz bilanzieren.",
+              "en": "Balance oxygen half-equations/initial conversion."
+            }
+          },
+          {
+            "id": "c3",
+            "points": 2,
+            "criterion": {
+              "de": "Säurekorrosion samt Akzeptor und H₂ erklären.",
+              "en": "Explain acid corrosion including acceptor and H₂."
+            }
+          },
+          {
+            "id": "c4",
+            "points": 2,
+            "criterion": {
+              "de": "Elektronen im Metall von Ionen in Lösung trennen.",
+              "en": "Distinguish electrons in metal and ions in solution."
+            }
+          },
+          {
+            "id": "fresh-transfer",
+            "points": 2,
+            "criterion": {
+              "de": "Der Elektronenleitungsweg zwischen diesen Orten fehlt; das betrachtete gekoppelte Lokalelement wird unterbrochen. Andere lokale Reaktionsorte werden dadurch nicht generell ausgeschlossen.",
+              "en": "The electron-conduction path between those sites is missing;this coupled local cell is interrupted. Other local reaction sites are not universally excluded."
+            }
+          }
+        ],
+        "rule": {
+          "de": "Punkte ausschließlich für ausdrücklich gezeigte Fachleistung. Volle Punkte pro Kriterium nur bei Begründung und korrekter Darstellung; ein richtiger Fachbegriff allein genügt nicht. Modellantworten sind Autorenbeispiele, keine Lernendenleistung.",
+          "en": "Award points only for explicitly demonstrated scientific performance. Full credit per criterion requires reasoning and correct representation; a correct term alone is insufficient. Model responses are author examples, not learner performance."
+        }
+      },
+      "freshTransfer": {
+        "task": {
+          "de": "Frisch: elektrischer Metallkontakt zwischen beiden Modellbereichen wird getrennt, sonst gleich. Was fehlt dem Lokalelement?",
+          "en": "Fresh: electrical metal contact between model regions is broken,all else equal. What is missing from the local cell?"
+        },
+        "modelResponse": {
+          "de": "Der Elektronenleitungsweg zwischen diesen Orten fehlt; das betrachtete gekoppelte Lokalelement wird unterbrochen. Andere lokale Reaktionsorte werden dadurch nicht generell ausgeschlossen.",
+          "en": "The electron-conduction path between those sites is missing;this coupled local cell is interrupted. Other local reaction sites are not universally excluded."
+        },
+        "independentAdministration": true,
+        "releaseModelOnlyAfterSubmission": true
+      },
+      "evidence": {
+        "level": "E1",
+        "maximumClaimScope": "G1",
+        "kind": "synthetic-author-witness",
+        "humanTrial": false,
+        "performedExperiment": false,
+        "actualLearnerPerformance": false
+      }
+    },
+    {
+      "caseId": "q3-17-a",
+      "goalId": "94a62b39-d4a2-5882-99d1-6886ead07726",
+      "title": {
+        "de": "Beschichtung und Opferanode vergleichen",
+        "en": "Compare coating and sacrificial anode"
+      },
+      "wholeCurrentGoal": {
+        "id": "94a62b39-d4a2-5882-99d1-6886ead07726",
+        "shortKey": "canonical_chemistry_by_corrosion_protection_evaluation",
+        "title": "Passiven und aktiven Korrosionsschutz bewerten",
+        "titleEn": "Evaluate passive and active corrosion protection",
+        "description": "Die lernende Person kann passive und aktive Korrosionsschutzmaßnahmen, insbesondere Beschichtungen, Schutzschichten, galvanische Kopplung und Opferanoden, erläutern und ökologisch sowie ökonomisch bewerten.",
+        "descriptionEn": "The learner can explain passive and active corrosion protection measures, including coatings, protective layers, galvanic coupling, and sacrificial anodes, and evaluate them ecologically and economically.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "c95f6059-d7c2-5bcd-b61e-95e3577efdb2"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK5_BEWERTEN"
+          ],
+          "guidingIdeas": [
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q3",
+          "area": "Redoxgleichgewichte",
+          "topicCode": "CANONICAL.CHEMISTRY.Q3.CORROSION_PROTECTION_EVALUATION"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "DE-BY - Chemie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+            "sourceGoalId": "12fe7899-c91e-593a-9bcc-78872e68a1e3"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "94a62b39-d4a2-5882-99d1-6886ead07726",
+            "title": "Visualisierung: Passiven und aktiven Korrosionsschutz bewerten",
+            "url": "/assets/goal-visualizations/chemie/94a62b39-d4a2-5882-99d1-6886ead07726/94a62b39-d4a2-5882-99d1-6886ead07726.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Passiven und aktiven Korrosionsschutz bewerten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Passiven und aktiven Korrosionsschutz bewerten\". Die lernende Person kann passive und aktive Korrosionsschutzmaßnahmen, insbesondere Beschichtungen, Schutzschichten, galvanische Kopplung und Opferanoden, erläutern und ökologisch sowie ökonomisch bewerten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "material": {
+        "de": "Modell Stahlteil in neutraler feuchter Umgebung. Optionen: Polymerbeschichtung Kosten2, intakt Barriere, beschädigt lokale freie Fe-Fläche; Zn-Opferanode Kosten3, metallisch gekoppelt und ionischer Kontakt, Zn²⁺/Zn−0,76V<Fe²⁺/Fe−0,44V, begrenzter Verbrauchsvorrat. Umweltbelastungen von Beschichtung und Metallfreisetzung sind nicht quantitativ gegeben.",
+        "en": "Model steel part in neutral moist environment. Options:polymer coating cost2,intact barrier,damaged local exposedFe area;Zn sacrificial anode cost3,metallic coupling and ionic contact,Zn²⁺/Zn−0.76V<Fe²⁺/Fe−0.44V,finite consumable supply. Environmental impacts of coating and metal release are not quantified."
+      },
+      "task": {
+        "de": "Erläutere passive und aktive Schutzmechanismen einschließlich Schutzfilm,galvanischer Kopplung und Opferanode. Bewerte ökologisch und ökonomisch unter Beschädigungs-/Wartungsbedingungen.",
+        "en": "Explain passive and active protection including protective film,galvanic coupling and sacrificial anode. Evaluate ecologically and economically under damage/maintenance conditions."
+      },
+      "modelResponse": {
+        "de": "Intakte Beschichtung trennt Fe von Umgebung; dichte Schutzschichten hemmen Transport. Beschädigung kann Barrierewirkung verlieren. Zn oxidiert gekoppelt als Anode, liefert Elektronen an kathodisch geschütztes Fe; Lösung trägt Ionen. Zn wird verbraucht, deshalb Wartung nötig. Beschichtung ist günstiger, Opferanode kann Defekte tolerieren, beide haben Material-/Entsorgungsaufwand. Ohne Umweltzahlen ist kein allgemeiner Gesamtsieger begründet; Lebensdauer und Wartungszugang bestimmen das Urteil.",
+        "en": "Intact coating separatesFe from environment;dense protective layers inhibit transport. Damage can remove barrier protection. CoupledZn oxidizes as anode,supplying electrons to cathodically protectedFe;solution carries ions. Zn is consumed,so maintenance is needed. Coating is cheaper,sacrificial anode may tolerate defects,and both have material/disposal demand. Without environmental numbers no universal winner is justified;service life and maintenance access shape judgment."
+      },
+      "scoring": {
+        "maximumPoints": 10,
+        "criteria": [
+          {
+            "id": "c1",
+            "points": 2,
+            "criterion": {
+              "de": "Passive Barriere/Schutzfilm und Defektgrenze erklären.",
+              "en": "Explain passive barrier/film and defect limit."
+            }
+          },
+          {
+            "id": "c2",
+            "points": 2,
+            "criterion": {
+              "de": "Galvanische Polarität,Elektronen-/Ionenweg richtig.",
+              "en": "Give correct galvanic polarity,electron/ion paths."
+            }
+          },
+          {
+            "id": "c3",
+            "points": 2,
+            "criterion": {
+              "de": "Opferanodenverbrauch und Wartung erläutern.",
+              "en": "Explain sacrificial-anode consumption and maintenance."
+            }
+          },
+          {
+            "id": "c4",
+            "points": 2,
+            "criterion": {
+              "de": "Ökologie/Ökonomie materialgestützt bedingt abwägen.",
+              "en": "Weigh ecology/economics conditionally using material."
+            }
+          },
+          {
+            "id": "fresh-transfer",
+            "points": 2,
+            "criterion": {
+              "de": "Nein; aktive Elektronenquelle fehlt, passive Barriere ist lokal offen. Eine konkrete Wartungs-/Neubewertung ist nötig, kein unbefristeter Schutz.",
+              "en": "No;active electron source is absent and passive barrier locally open. Specific maintenance/reassessment is needed,no indefinite protection."
+            }
+          }
+        ],
+        "rule": {
+          "de": "Punkte ausschließlich für ausdrücklich gezeigte Fachleistung. Volle Punkte pro Kriterium nur bei Begründung und korrekter Darstellung; ein richtiger Fachbegriff allein genügt nicht. Modellantworten sind Autorenbeispiele, keine Lernendenleistung.",
+          "en": "Award points only for explicitly demonstrated scientific performance. Full credit per criterion requires reasoning and correct representation; a correct term alone is insufficient. Model responses are author examples, not learner performance."
+        }
+      },
+      "freshTransfer": {
+        "task": {
+          "de": "Frisch: Zn ist verbraucht; Beschichtung beschädigt. Besteht Schutz automatisch weiter?",
+          "en": "Fresh:Zn is consumed and coating damaged. Does protection automatically continue?"
+        },
+        "modelResponse": {
+          "de": "Nein; aktive Elektronenquelle fehlt, passive Barriere ist lokal offen. Eine konkrete Wartungs-/Neubewertung ist nötig, kein unbefristeter Schutz.",
+          "en": "No;active electron source is absent and passive barrier locally open. Specific maintenance/reassessment is needed,no indefinite protection."
+        },
+        "independentAdministration": true,
+        "releaseModelOnlyAfterSubmission": true
+      },
+      "evidence": {
+        "level": "E1",
+        "maximumClaimScope": "G1",
+        "kind": "synthetic-author-witness",
+        "humanTrial": false,
+        "performedExperiment": false,
+        "actualLearnerPerformance": false
+      }
+    },
+    {
+      "caseId": "q3-17-b",
+      "goalId": "94a62b39-d4a2-5882-99d1-6886ead07726",
+      "title": {
+        "de": "Edle Beschichtung kann am Defekt schaden",
+        "en": "Noble coating can harm at a defect"
+      },
+      "wholeCurrentGoal": {
+        "id": "94a62b39-d4a2-5882-99d1-6886ead07726",
+        "shortKey": "canonical_chemistry_by_corrosion_protection_evaluation",
+        "title": "Passiven und aktiven Korrosionsschutz bewerten",
+        "titleEn": "Evaluate passive and active corrosion protection",
+        "description": "Die lernende Person kann passive und aktive Korrosionsschutzmaßnahmen, insbesondere Beschichtungen, Schutzschichten, galvanische Kopplung und Opferanoden, erläutern und ökologisch sowie ökonomisch bewerten.",
+        "descriptionEn": "The learner can explain passive and active corrosion protection measures, including coatings, protective layers, galvanic coupling, and sacrificial anodes, and evaluate them ecologically and economically.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "c95f6059-d7c2-5bcd-b61e-95e3577efdb2"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB3",
+          "processCompetencies": [
+            "PK5_BEWERTEN"
+          ],
+          "guidingIdeas": [
+            "BC_REAKTION",
+            "BC_ENERGIE"
+          ],
+          "phase": "Q3",
+          "area": "Redoxgleichgewichte",
+          "topicCode": "CANONICAL.CHEMISTRY.Q3.CORROSION_PROTECTION_EVALUATION"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "DE-BY - Chemie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+            "sourceGoalId": "12fe7899-c91e-593a-9bcc-78872e68a1e3"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "94a62b39-d4a2-5882-99d1-6886ead07726",
+            "title": "Visualisierung: Passiven und aktiven Korrosionsschutz bewerten",
+            "url": "/assets/goal-visualizations/chemie/94a62b39-d4a2-5882-99d1-6886ead07726/94a62b39-d4a2-5882-99d1-6886ead07726.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Passiven und aktiven Korrosionsschutz bewerten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Passiven und aktiven Korrosionsschutz bewerten\". Die lernende Person kann passive und aktive Korrosionsschutzmaßnahmen, insbesondere Beschichtungen, Schutzschichten, galvanische Kopplung und Opferanoden, erläutern und ökologisch sowie ökonomisch bewerten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "material": {
+        "de": "Fiktiver Stahl:OptionA Cu-Beschichtung Kosten2,OptionB Zn-Beschichtung Kosten3,OptionC dichte haftende Oxid-/Polymerbarriere Kosten2,5. Metallkontakt und leitende Feuchtigkeit am Defekt. E°Zn−0,76,Fe−0,44,Cu+0,34V; Film-/Oberflächeneffekte hier vernachlässigt.",
+        "en": "Fictional steel:optionA Cu coating cost2,optionB Zn coating cost3,optionC dense adhering oxide/polymer barrier cost2.5. Metallic contact and conducting moisture at defect. E°Zn−0.76,Fe−0.44,Cu+0.34V;film/surface effects neglected here."
+      },
+      "task": {
+        "de": "Erkläre intakte passive Wirkung,aktive Schutzwirkung und galvanischen Defektfall für alle Optionen. Beurteile Kosten,Materialverbrauch und Umweltdatenbedarf.",
+        "en": "Explain intact passive effect,active protection and galvanic defect case for all options. Evaluate cost,material consumption and environmental data needs."
+      },
+      "modelResponse": {
+        "de": "Intakt dienen alle Beschichtungen als Barriere. Am Cu-Defekt ist Fe Anode,Cu Kathode; Elektronen Fe→Cu können Fe-Angriff verstärken. Am Zn-Defekt oxidiertZn und schütztFe kathodisch,solange metallischer/ionischer Kontakt und Vorrat bestehen. C wirkt über Filmbarriere,keine automatisch zugesicherte Opferwirkung. Zn-Verbrauch und Erneuerung kosten Material;Cu kostet weniger im Modell,Defektschaden kann Lebenszykluskosten erhöhen. Ökologisches Urteil braucht Herstellung,Freisetzung und Entsorgung.",
+        "en": "When intact all coatings act as barriers. At aCu defectFe is anode,Cu cathode;electronsFe→Cu may intensifyFe attack. At aZn defectZn oxidizes and protectsFe cathodically while metallic/ionic contact and supply persist. C acts through film barrier,without guaranteed sacrificial action. Zn consumption and renewal use material;Cu is cheaper in the model but defect damage may raise life-cycle cost. Ecological judgment needs manufacture,release and disposal."
+      },
+      "scoring": {
+        "maximumPoints": 10,
+        "criteria": [
+          {
+            "id": "c1",
+            "points": 2,
+            "criterion": {
+              "de": "Barriere/Filmwirkung aller Optionen erklären.",
+              "en": "Explain barrier/film action of all options."
+            }
+          },
+          {
+            "id": "c2",
+            "points": 2,
+            "criterion": {
+              "de": "Cu-Defekt als schädliche galvanische Kopplung deuten.",
+              "en": "InterpretCu defect as harmful galvanic coupling."
+            }
+          },
+          {
+            "id": "c3",
+            "points": 2,
+            "criterion": {
+              "de": "Zn-Opferwirkung mit richtiger Elektronenrichtung erklären.",
+              "en": "ExplainZn sacrificial action with correct electron direction."
+            }
+          },
+          {
+            "id": "c4",
+            "points": 2,
+            "criterion": {
+              "de": "Kosten und Umwelturteil mit Grenzen begründen.",
+              "en": "Explain cost and environmental judgment with limits."
+            }
+          },
+          {
+            "id": "fresh-transfer",
+            "points": 2,
+            "criterion": {
+              "de": "Nein; ElektronenwegZn→Fe fehlt. Eine intakte isolierte Schicht kann noch passiv abschirmen,was eine andere Schutzwirkung ist.",
+              "en": "No;the electron pathZn→Fe is absent. An intact isolated layer may still provide passive shielding,which is a different protection effect."
+            }
+          }
+        ],
+        "rule": {
+          "de": "Punkte ausschließlich für ausdrücklich gezeigte Fachleistung. Volle Punkte pro Kriterium nur bei Begründung und korrekter Darstellung; ein richtiger Fachbegriff allein genügt nicht. Modellantworten sind Autorenbeispiele, keine Lernendenleistung.",
+          "en": "Award points only for explicitly demonstrated scientific performance. Full credit per criterion requires reasoning and correct representation; a correct term alone is insufficient. Model responses are author examples, not learner performance."
+        }
+      },
+      "freshTransfer": {
+        "task": {
+          "de": "Frisch: Zn-Schicht elektrisch von Fe isoliert. Gibt es weiterhin aktive Opferanodenwirkung?",
+          "en": "Fresh:Zn coating electrically isolated fromFe. Does active sacrificial protection persist?"
+        },
+        "modelResponse": {
+          "de": "Nein; ElektronenwegZn→Fe fehlt. Eine intakte isolierte Schicht kann noch passiv abschirmen,was eine andere Schutzwirkung ist.",
+          "en": "No;the electron pathZn→Fe is absent. An intact isolated layer may still provide passive shielding,which is a different protection effect."
+        },
+        "independentAdministration": true,
+        "releaseModelOnlyAfterSubmission": true
+      },
+      "evidence": {
+        "level": "E1",
+        "maximumClaimScope": "G1",
+        "kind": "synthetic-author-witness",
+        "humanTrial": false,
+        "performedExperiment": false,
+        "actualLearnerPerformance": false
+      }
+    }
+  ],
+  "status": "original-genuine-pair-science-KEEP-source-followup-pending",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "humanTrial": false,
+  "performedExperiment": false,
+  "actualLearnerPerformance": false
+}

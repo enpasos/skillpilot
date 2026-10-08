@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:7ec2be9b2e761e10830362dac394c0d30dfc24f4a2299fb99b80c9ddb2da7714",
+  "reviewInputFingerprint": "sha256:c229eb077199b01699307e5c2e6ca73a6c91fadf4e351df0afc0883b1e790aee",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-he-evolution-one-current-subset-first-a-20261008-v3",
+      "roundId": "current-subset-first-a-20261008-v3",
+      "independenceGroupId": "biologie-he-evolution-one-current-subset-independent-a-20261008-v3",
+      "runIds": [
+        "biologie-he-evolution-one-cat-anatomy-targeted-independent-a-20261008-v2.corrected-current-one-first-pass"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex actual independent A; serving revision not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-he-evolution-one-current-subset-first-b-20261008-v3",
+      "roundId": "current-subset-first-b-20261008-v3",
+      "independenceGroupId": "biologie-he-evolution-one-current-subset-independent-b-20261008-v3",
+      "runIds": [
+        "biologie-he-evolution-one-cat-raster-native-independent-b-targeted-20261008-v2.current-one-first-pass-b-v3"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex actual independent B; exact serving revision not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "7008979d-7890-5f7b-ad07-27b8bb597cbe",
+      "firstRecordId": "biologie-he-evolution-one-cat-anatomy-targeted-independent-a-20261008-v2.corrected-current-one-first-pass.7008979d-7890-5f7b-ad07-27b8bb597cbe",
+      "secondRecordId": "biologie-he-evolution-one-cat-raster-native-independent-b-targeted-20261008-v2.current-one-first-pass-b-v3.7008979d-7890-5f7b-ad07-27b8bb597cbe",
+      "firstRunId": "biologie-he-evolution-one-cat-anatomy-targeted-independent-a-20261008-v2.corrected-current-one-first-pass",
+      "secondRunId": "biologie-he-evolution-one-cat-raster-native-independent-b-targeted-20261008-v2.current-one-first-pass-b-v3",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

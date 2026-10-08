@@ -1,0 +1,73 @@
+{
+  "role": "read-only code and candidate structure audit; no runtime mutation or learner-data inspection",
+  "frozenInputs": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "sha256": "6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab",
+      "bytes": 529427
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/landscape/LandscapeService.java",
+      "sha256": "17d2132a11623bc90e99941ae5bec6ca62b153ff6eb1bcfe28de781e69889071",
+      "bytes": 101234
+    },
+    {
+      "path": "app/src/hooks/useMasteryCalculation.ts",
+      "sha256": "95b4800ae3fa38df57ba61798313489b2761a7cdae142e76dcc3da97f59c1600",
+      "bytes": 2336
+    },
+    {
+      "path": "app/src/utils/localTeacherCoursePlan.test.ts",
+      "sha256": "6f18002312c119c14682f1ce67050dcf1f5b64dcce79e3d9de834047ed536cba",
+      "bytes": 48272
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_biology_lower_secondary_to_canonical_biology.json",
+      "sha256": "e332459099bf366f811e4c51b7c4cac467b63c19b524d013c43a6a9140a675ea",
+      "bytes": 11861
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-contraception-parenthood-scope-preserving-split-author-20261008-v1/candidate/canonical.476-split-author.json",
+      "sha256": "834bf80bdbad96074049caba46bccce08781a2c6b4d412c1fe9911fecdc68b90",
+      "bytes": 1131873
+    }
+  ],
+  "preservedHistoricalStableParentId": "3ee4b55c-81c3-5826-9d26-1a8c22cbd0b8",
+  "newChildIds": [
+    "9d3f71d7-5273-5e50-b1ba-4e291edbf114",
+    "dd923eeb-eef0-5796-b372-a5d4f5be21f7"
+  ],
+  "parentCompleteOriginalBilingualScopeAndPrerequisitesRetained": true,
+  "actualExactLegacyMappingRows": [
+    {
+      "legacyGoalId": "73fec5f9-c553-4252-9905-72dfca8c8ffe",
+      "canonicalGoalId": "3ee4b55c-81c3-5826-9d26-1a8c22cbd0b8",
+      "matchType": "exact"
+    }
+  ],
+  "canonicalSplitOriginGoalIdIsHistoricalMetadataOnly": true,
+  "runtimeSplitFromCanonicalGoalIdAbsentForBothChildren": true,
+  "newChildHasNoExistingGlobalProvenanceRegistryEntry": true,
+  "behaviorFromActuallyReadCurrentCode": {
+    "backend": "Exact legacy mapping projects to existing stable parent; descendant propagation requires the different exact provenance key splitFromCanonicalGoalId, absent on both proposed children. No new child mastery is derived by this mapping.",
+    "frontend": "For a cluster, useMasteryCalculation recursively aggregates its atomic descendants using each atomic UUID or distinct shortKey; the stored old parent value is not used as a child value.",
+    "teacherPlanning": "Existing pure regression fixtures retain captured publication scope/history and do not silently include new split children."
+  },
+  "actualExistingFrontendRegression": {
+    "command": "node node_modules/tsx/dist/cli.mjs src/utils/localTeacherCoursePlan.test.ts",
+    "cwd": "app",
+    "exitCode": 0,
+    "observedStdout": "Learner planning-scope client tests passed.\nLocal teacher course-plan tests passed.\n"
+  },
+  "storedOldParentEvidenceDeleted": false,
+  "newChildLearnerMasteryInvented": false,
+  "runtimeFilesChanged": false,
+  "privateLearnerSessionChatDataRead": false,
+  "conclusion": "PASS for the reviewed candidate structure, conditioned on keeping both child provenance bodies, the existing exact mapping, and runtime files unchanged. New children remain unassessed. Actual deployment or human trial is not claimed.",
+  "otherPendingGates": [
+    "current392 native projection and scope",
+    "new child D/P/V images/pages",
+    "true HE11/HE13 page-context rebindings",
+    "paired whole source classification AM technical adoption"
+  ]
+}

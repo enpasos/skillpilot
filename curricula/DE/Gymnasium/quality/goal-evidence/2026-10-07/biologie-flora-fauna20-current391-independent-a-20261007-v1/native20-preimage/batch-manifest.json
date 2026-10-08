@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-flora-fauna20-current391-independent-a-20261007-v1",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-flora-fauna20-current391-independent-a-20261007-v1/native20.preimage.independent-a.batch.config.json",
+  "configDigest": "sha256:6d441135d996a9287111f0596907b2e8891e841f882d78ac15c8ce602aaea2b3",
+  "goalIds": [
+    "5f39afac-897c-5ed3-95b5-89ccf66b2532",
+    "bdbb1a13-f448-5536-86ab-894805e2f6be",
+    "ac69483b-6a77-573d-a7c0-add32bb867e2",
+    "9263ee6c-bf62-531c-bb09-78a4a51b8ed7",
+    "bac3e333-d044-559e-8d8e-b8eff4af2b56",
+    "19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d",
+    "892a1d3a-9923-5ac2-affa-f2d5c38e3c54",
+    "be06115e-96e8-537e-b18a-313056e6cbe8",
+    "350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd",
+    "7eeb9de9-9a8e-5932-8f60-183367c87d09",
+    "4e12ba43-a58c-5611-8c43-3cc0c8465e33",
+    "8e1300bb-14a1-5155-884a-144c88f1c04b",
+    "8a56672b-b662-5bcd-9f43-8ffc4abc4f01",
+    "321ea315-37fe-5f9e-8fa8-dd631bb447c7",
+    "2f462b79-4ebc-5ab5-9e72-91135c5252c7",
+    "6faa6c23-00c9-5758-bd98-01825692abb2",
+    "6e2dae03-9ea9-5466-b93e-13adcfb01245",
+    "66967754-3934-58b3-b79e-d0f867dae070",
+    "ac7f0a5a-dff6-570b-b0fd-10cb0f33be29",
+    "06e91b97-e7cc-5698-a854-8a946a4bb7d0"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 391,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-ecology20-current391-reviewed-integration-preparation-technical-v1/native-full391.future-active.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:24c6bb597b873532f9ac69ef739edade19d1841088ac4e1caacdf87e85d2b858"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:97703765395c5ec3578354d883d1dd50131f1deb40cd69c9eb816f51f963780c",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:80275922ecca17593d054406cec9987941f015752e89ffb417b55824d2d7ce52",
+    "reviewInputFingerprint": "sha256:3e17ede34e0190b4bfb5d39d65883839273326b0ed234af20f711bfe087356fa",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-flora-fauna20-current391-independent-a-20261007-v1-a",
+        "campaignDigest": "sha256:7787be99294a518e83a24504fe8526b2503310624638542a0a7f7555cf1a9219",
+        "roundId": "biologie-flora-fauna20-current391-independent-a-20261007-v1-first-pass-a",
+        "independenceGroupId": "biologie-flora-fauna20-current391-independent-a-20261007-v1-independent-a",
+        "batchId": "biologie-flora-fauna20-current391-independent-a-20261007-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:6473124933b6cdfdf76414a19e25a1b90170b36a88f69b69af0ced7f10f602c9"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-flora-fauna20-current391-independent-a-20261007-v1-b",
+        "campaignDigest": "sha256:96da2beb4de97d2e76934e98c75966117772f8befbc8a35cb80c121c65f4adc1",
+        "roundId": "biologie-flora-fauna20-current391-independent-a-20261007-v1-first-pass-b",
+        "independenceGroupId": "biologie-flora-fauna20-current391-independent-a-20261007-v1-independent-b",
+        "batchId": "biologie-flora-fauna20-current391-independent-a-20261007-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:4d8f944fdaf1a7f516008f14922bcd5b416be8089e5ef83d936a6b486a5156c6"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

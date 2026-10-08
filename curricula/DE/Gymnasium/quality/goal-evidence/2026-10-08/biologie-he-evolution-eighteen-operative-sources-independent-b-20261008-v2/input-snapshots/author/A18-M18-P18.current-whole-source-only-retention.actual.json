@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "actualCommands": [
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:semantic-atomicity:check",
+        "--",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-evolution-eighteen-operative-sources-author-20261008-v2/A18.current-whole-source-v2.native-config.actual.json"
+      ],
+      "exitCode": 0,
+      "recordedAt": "2026-10-08T02:12:48.936238+00:00"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:memory-card-review:check",
+        "--",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-evolution-eighteen-operative-sources-author-20261008-v2/M18.current-whole-source-v2.native-config.actual.json"
+      ],
+      "exitCode": 0,
+      "recordedAt": "2026-10-08T02:12:49.337922+00:00"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:positive-goal-evidence:check",
+        "--",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-evolution-eighteen-operative-sources-author-20261008-v2/P18.current-whole-source-v2.native-config.actual.json"
+      ],
+      "exitCode": 1,
+      "recordedAt": "2026-10-08T02:12:49.855660+00:00"
+    }
+  ],
+  "allPassed": false,
+  "candidateScope": "Existing genuine independent A judged two wording repairs, exact retained16; 36 science cases unchanged. Source-only candidate integration not approved.",
+  "sourceIndependentReviewCount": 0,
+  "humanApproval": false,
+  "activeWrites": 0
+}

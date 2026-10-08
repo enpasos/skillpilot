@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:f53cb70f2904123c7c8c3a56b5585778840d0db12229d513d7e255b18ae0339a",
+  "reviewInputFingerprint": "sha256:bb80e9e1fa2662a568a7dbbbd0449d4f788c3961cff76b7e50d67b1a3a2650af",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-q3-final-two-current378-raster-campaign-a-20261008-v2",
+      "roundId": "chemie-q3-final-two-current378-raster-independent-a-20261008-v2",
+      "independenceGroupId": "chemie-q3-final-two-current378-raster-independent-a-20261008-v2",
+      "runIds": [
+        "chemie-q3-two-corrosion-final-raster-native-independent-a-20261008-v2.genuine-current-two-first-pass"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex actual independent A; serving revision not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-q3-final-two-current378-raster-campaign-b-20261008-v2",
+      "roundId": "chemie-q3-final-two-current378-raster-independent-b-20261008-v2",
+      "independenceGroupId": "chemie-q3-final-two-current378-raster-independent-b-20261008-v2",
+      "runIds": [
+        "chemie-q3-two-corrosion-final-raster-native-independent-b-20261008-v2"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex actual independent B; exact serving revision not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "9f0d6d4c-f918-5a44-a9a2-7732c4e338f3",
+      "firstRecordId": "chemie-q3-two-corrosion-final-raster-native-independent-a-20261008-v2.genuine-current-two-first-pass.9f0d6d4c-f918-5a44-a9a2-7732c4e338f3",
+      "secondRecordId": "chemie-q3-two-corrosion-final-raster-native-independent-b-20261008-v2.9f0d6d4c-f918-5a44-a9a2-7732c4e338f3",
+      "firstRunId": "chemie-q3-two-corrosion-final-raster-native-independent-a-20261008-v2.genuine-current-two-first-pass",
+      "secondRunId": "chemie-q3-two-corrosion-final-raster-native-independent-b-20261008-v2",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c95f6059-d7c2-5bcd-b61e-95e3577efdb2",
+      "firstRecordId": "chemie-q3-two-corrosion-final-raster-native-independent-a-20261008-v2.genuine-current-two-first-pass.c95f6059-d7c2-5bcd-b61e-95e3577efdb2",
+      "secondRecordId": "chemie-q3-two-corrosion-final-raster-native-independent-b-20261008-v2.c95f6059-d7c2-5bcd-b61e-95e3577efdb2",
+      "firstRunId": "chemie-q3-two-corrosion-final-raster-native-independent-a-20261008-v2.genuine-current-two-first-pass",
+      "secondRunId": "chemie-q3-two-corrosion-final-raster-native-independent-b-20261008-v2",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

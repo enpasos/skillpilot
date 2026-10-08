@@ -1,0 +1,78 @@
+{
+  "artifactKind": "independent-b-targeted-four-whole-cases-two-profiles-v3-recheck",
+  "recordedAt": "2026-10-07T20:53:11.334034+00:00",
+  "role": "Independent reviewer B, no author edits and no historical review restart",
+  "actuallyRead": {
+    "wholeDEENCases": 4,
+    "wholePositiveProfiles": 2,
+    "exactAuthorFreezeFiles": 6
+  },
+  "unchangedVerified": {
+    "wholeGoalBodies": 20,
+    "wholeCases": 36,
+    "profileContents": 18,
+    "goalAndReviewInputFingerprints": 20,
+    "conditionalFishAlternatives": "The v3 remediation retains the exact separate v2 conditional case artifact and unchanged source-choice dissent; no new fish cases serialized as mandatory."
+  },
+  "records": [
+    {
+      "goalId": "350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd",
+      "profileFingerprint": "sha256:34fe99ff9a515dcd219da8d51697ac2a3ea11ec9fd5b22492d585fbad3ec1507",
+      "status": "targeted_hold_one_residual_answer_justification",
+      "resolvedOriginalFinding": "The reference guide and unknown specimens are now separate and no specimen-code/name assignments are supplied. Both tasks require reasoned feature matching; case1 gives all three requested feature-based justifications. Wild/crop context, bounded identification and no edibility inference remain accurate.",
+      "remainingFinding": {
+        "findingId": "B-v3-P09-case2-Y-feature-justification",
+        "caseId": "flora-fauna20-09-case-2",
+        "fields": [
+          "modelAnswer.de",
+          "modelAnswer.en",
+          "applicationCaseBriefs.case2.expectedPerformanceDe",
+          "applicationCaseBriefs.case2.expectedPerformanceEn"
+        ],
+        "actualTextDe": "Im begrenzten Satz passen X zur gelappten Eichenform,Y zur Linde und Z zum zusammengesetzten Eschenblatt.",
+        "actualTextEn": "Within this bounded set X matches lobed oak leaves,Y linden and Z compound ash leaves.",
+        "reason": "The corrected task and observable performance require each X/Y/Z assignment to be justified using the leaf feature. X is justified by lobing and Z by compound leaves, but Y is named without its heart-shaped feature. The model/rubric therefore omits one explicitly required observable justification.",
+        "necessaryTargetedCorrection": "Name the heart-shaped leaf blade as the reason for Y matching linden in both language answers and corresponding positive case briefs.",
+        "scope": "Only this complete case2 answer/profile expectation binding remains open; no canonical text or other case changes requested."
+      }
+    },
+    {
+      "goalId": "7eeb9de9-9a8e-5932-8f60-183367c87d09",
+      "profileFingerprint": "sha256:f870afce6ca05adefb12e5cbcb33f578dcb3dbdfd43b54a5b1f7e4d55b3ce6e7",
+      "status": "PASS_TARGETED_WHOLE_SCIENCE_RECHECK",
+      "resolvedFinding": "Tasks, observable performances, transfer understanding and model answers now assess only biological structure/function–habitat relationships, limited fish comparison, differing bird traits, no universal flying/webbed-foot rule and no intentional individual adaptation. HE6.2 choice constraints are retained in reviewer dissent rather than requiring learners to know curriculum permissions. The four material/function contrasts are biologically consistent in both languages.",
+      "sourceBoundary": "The selected bird examples remain bounded; the original bird OR fish depth choice is not converted into universally mandatory dual depth.",
+      "newFindings": []
+    }
+  ],
+  "nativePositiveCheck": {
+    "actualCommand": "npm --prefix app run quality:positive-goal-evidence:check -- --config=<v3 author>/P20.targeted-two-profiles.author-v3.config.json",
+    "exitCode": 0,
+    "result": "20 configured,20 needs_human_review,0 approved,0 blockers; a structural fingerprint/contract check, not clearance of the residual scientific coverage finding.",
+    "stdout": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-flora-fauna20-targeted-P-v3-independent-b-20261007-v1/checks/P20.stdout.actual.txt",
+      "sha256": "d263157cf693fee8d4d29a50a75f51a96f299ddd72e601a0f86ffe29c08224b4",
+      "bytes": 601
+    },
+    "stderr": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-flora-fauna20-targeted-P-v3-independent-b-20261007-v1/checks/P20.stderr.actual.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    }
+  },
+  "priorBlindSealPreserved": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-flora-fauna20-current391-independent-b-20261007-v1/first-independent-b-verdict.exact-input-output.freeze.json",
+    "sha256": "72280809695997894d4ca901ca61638316fd98c6d34f239ea850ed99df9911c7",
+    "bytes": 26930
+  },
+  "priorFollowUpSealPreserved": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-flora-fauna20-current391-independent-b-20261007-v1/two-targeted-P-findings-follow-up.exact-input-output.freeze.json",
+    "sha256": "087ca9f00f50aca601ba965c8572b95da3910b0310b115b4b7fb8ec956f4fa50",
+    "bytes": 1497
+  },
+  "remainingTargetedFindings": 1,
+  "sourceOrImageReviewRestarted": false,
+  "activeWrites": 0,
+  "strictGrowth": 0,
+  "humanApproval": false
+}

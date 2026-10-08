@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-he9-current19-genuine-paired-one-technical-20261008-v1",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-genetic-method19-reviewed-integration-preparation-technical-20261008-v1/native-d-one.batch.config.json",
+  "configDigest": "sha256:d929623aa44894df1870b1eb99dd09530aadc34e596a3edfa20187e626f18277",
+  "goalIds": [
+    "1b7f08a1-33df-5779-af66-430c91d699b7"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 391,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-genetic-method19-current-raster-native-author-root-v3/native-raster-candidate/full391.book.config.author.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-genetic-method19-current-raster-native-author-root-v3/candidate/canonical.current474-one-new-raster-author.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:6438688de4e1dc3de026d020f4735da900db27b1e8e0357802491d8c8fb06355"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:a76cc8eb827a780739a79aacc9f4a2295a516602f0c234bd68ae20b9c3ed06e1",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:9fb81dbdaeb8a0d7eaaec896ee637c1393ba9119f8ce70fffc65ebaab705decd",
+    "reviewInputFingerprint": "sha256:e29b5db9327d45928f85a41b89f445b21358e17931d4f4ae8e6bc11b938d5837",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-he9-genetic-method19-v3-one-current391-campaign-a-20261008-v1",
+        "campaignDigest": "sha256:0d148f807f20e167ec64ebd77cc2c2f196bea4de550e960887133cb51edf90f0",
+        "roundId": "biologie-he9-genetic-method19-v3-one-current391-independent-a-20261008-v1",
+        "independenceGroupId": "biologie-he9-genetic-method19-v3-one-current391-independent-a-20261008-v1",
+        "batchId": "biologie-he9-genetic-method19-v3-one-current391-independent-a-20261008-v1.batch-001",
+        "batchInputFingerprint": "sha256:f6807315eda7831649133ec19be1593fa45807116f356e56782deaf2368caa09"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-he9-genetic-method19-v3-one-current391-campaign-b-20261008-v1",
+        "campaignDigest": "sha256:dde8f26cc791479cde1290c8100549b99df94d7bf9aa57a5cc1f275df726c0ad",
+        "roundId": "biologie-he9-genetic-method19-v3-one-current391-independent-b-20261008-v1",
+        "independenceGroupId": "biologie-he9-genetic-method19-v3-one-current391-independent-b-20261008-v1",
+        "batchId": "biologie-he9-genetic-method19-v3-one-current391-independent-b-20261008-v1.batch-001",
+        "batchInputFingerprint": "sha256:a04820293f14432c5f3e1e00557bc1594f8db5810e566b7ddfe582d766b7e1ec"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

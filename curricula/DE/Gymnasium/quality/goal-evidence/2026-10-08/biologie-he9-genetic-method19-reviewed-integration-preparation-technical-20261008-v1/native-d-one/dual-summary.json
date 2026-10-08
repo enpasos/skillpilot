@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:9fb81dbdaeb8a0d7eaaec896ee637c1393ba9119f8ce70fffc65ebaab705decd",
+  "reviewInputFingerprint": "sha256:e29b5db9327d45928f85a41b89f445b21358e17931d4f4ae8e6bc11b938d5837",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-he9-genetic-method19-v3-one-current391-campaign-a-20261008-v1",
+      "roundId": "biologie-he9-genetic-method19-v3-one-current391-independent-a-20261008-v1",
+      "independenceGroupId": "biologie-he9-genetic-method19-v3-one-current391-independent-a-20261008-v1",
+      "runIds": [
+        "biologie-he9-genetic-method19-current-raster-native-independent-a-20261008-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex actual independent A; serving revision not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-he9-genetic-method19-v3-one-current391-campaign-b-20261008-v1",
+      "roundId": "biologie-he9-genetic-method19-v3-one-current391-independent-b-20261008-v1",
+      "independenceGroupId": "biologie-he9-genetic-method19-v3-one-current391-independent-b-20261008-v1",
+      "runIds": [
+        "biologie-he9-genetic-method19-current-raster-native-independent-b-20261008-v3"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex independent B; exact serving revision not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "1b7f08a1-33df-5779-af66-430c91d699b7",
+      "firstRecordId": "biologie-he9-genetic-method19-current-raster-native-independent-a-20261008-v1.1b7f08a1-33df-5779-af66-430c91d699b7",
+      "secondRecordId": "biologie-he9-genetic-method19-current-raster-native-independent-b-20261008-v3.1b7f08a1-33df-5779-af66-430c91d699b7",
+      "firstRunId": "biologie-he9-genetic-method19-current-raster-native-independent-a-20261008-v1",
+      "secondRunId": "biologie-he9-genetic-method19-current-raster-native-independent-b-20261008-v3",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

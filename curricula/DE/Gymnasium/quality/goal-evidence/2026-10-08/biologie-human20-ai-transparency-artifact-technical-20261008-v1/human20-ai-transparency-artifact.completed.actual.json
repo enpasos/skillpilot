@@ -1,0 +1,120 @@
+{
+  "artifactKind": "completed Human20 standard measured AI-transparency inventory and existing local artifact followup",
+  "completedAt": "2026-10-07T22:07:52.560308+00:00",
+  "activeIntegrationAndActualTerminalCentralReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-human20-reviewed-active-integration-root-v1/active-after-human20-central.actual.json",
+    "sha256": "sha256:dc2d65cb67d2316bd56b56dadc633bdd5b1be1a8b02da34c777ba95877fbd0ba",
+    "bytes": 182410
+  },
+  "protectedCurrentStrictCountsFromRootActualTerminal": {
+    "mathematik": {
+      "strictComplete": 807,
+      "denominator": 807
+    },
+    "physik": {
+      "strictComplete": 478,
+      "denominator": 478
+    },
+    "chemie": {
+      "strictComplete": 173,
+      "denominator": 378
+    },
+    "biologie": {
+      "strictComplete": 154,
+      "denominator": 391
+    }
+  },
+  "standardPatchExactlyApplied": true,
+  "changedGeneratedFiles": [
+    "docs/legal/ai-transparency-inventory.json"
+  ],
+  "changedMeasuredLayerAFields": [
+    {
+      "path": "artifactClasses.goalVisualizations.c2paStructure.detected",
+      "before": 1792,
+      "after": 1812
+    },
+    {
+      "path": "artifactClasses.goalVisualizations.count",
+      "before": 1843,
+      "after": 1863
+    },
+    {
+      "path": "artifactClasses.goalVisualizations.fileExtensions.png",
+      "before": 507,
+      "after": 527
+    },
+    {
+      "path": "artifactClasses.goalVisualizations.providerCounts.ChatGPT/Codex builtin image_gen",
+      "before": null,
+      "after": 20
+    }
+  ],
+  "actualStandardTerminalChecks": [
+    {
+      "command": [
+        "node",
+        "scripts/check_ai_transparency_inventory.mjs",
+        "--emit-layer-a-patch"
+      ],
+      "startedAt": "2026-10-07T22:05:58.966790+00:00",
+      "completedAt": "2026-10-07T22:06:16.791093+00:00",
+      "exitCode": 0,
+      "patch": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-human20-ai-transparency-artifact-technical-20261008-v1/measured-layer-a.exact.patch",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-human20-ai-transparency-artifact-technical-20261008-v1/measured-layer-a.stderr.actual.txt"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:ai-transparency-inventory"
+      ],
+      "startedAt": "2026-10-07T22:07:17.043648+00:00",
+      "completedAt": "2026-10-07T22:07:34.711870+00:00",
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-human20-ai-transparency-artifact-technical-20261008-v1/inventory-after.stdout.actual.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-human20-ai-transparency-artifact-technical-20261008-v1/inventory-after.stderr.actual.txt"
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:ai-transparency-artifact"
+      ],
+      "startedAt": "2026-10-07T22:05:50.731464+00:00",
+      "completedAt": "2026-10-07T22:05:51.196675+00:00",
+      "exitCode": 0,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-human20-ai-transparency-artifact-technical-20261008-v1/artifact.stdout.actual.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-human20-ai-transparency-artifact-technical-20261008-v1/artifact.stderr.actual.txt",
+      "source": "existing local backend static artifact, no fresh app build or deployment claimed"
+    }
+  ],
+  "gitDiffCheck": "exit0",
+  "unchangedCanonicalRegistryAndQAExactBindings": {
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json": true,
+    "curricula/DE/Gymnasium/quality/goal-visualization-qa/biologie.qa.json": true,
+    "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json": true
+  },
+  "actual20NewPNGCopiesExact": true,
+  "inventoryCurrent": {
+    "canonicalLandscapeFiles": 21,
+    "canonicalGoals": 5918,
+    "visualizationLinks": 1863,
+    "jpg": 1336,
+    "png": 527,
+    "shallowC2paMarkers": 1812,
+    "urlsWithoutMarker": 51
+  },
+  "artifactCheckScope": "existing local backend static JS/index copy includes required AI transparency copy; not a fresh build or deployment or host acceptance",
+  "newArtifactRebuildRequiredForInventoryOnlyUpdate": false,
+  "reviewedNoFloraImagesOrScience": true,
+  "noCanonicalRegistryRasterQAReviewWrites": true,
+  "noFullBuild": true,
+  "noCommitOrPublication": true,
+  "scientificReviewOrHumanApprovalClaim": false,
+  "humanTrialClaim": false
+}

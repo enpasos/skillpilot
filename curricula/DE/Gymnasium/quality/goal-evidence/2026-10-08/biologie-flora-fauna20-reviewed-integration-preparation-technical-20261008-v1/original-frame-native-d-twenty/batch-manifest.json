@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-flora-fauna20-original-reviewed-frame-pending14-technical-20261008-v1-twenty",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-flora-fauna20-reviewed-integration-preparation-technical-20261008-v1/original-frame-native-d-twenty.batch.config.json",
+  "configDigest": "sha256:e311b1010217323eacfda855a5709f198e9038aa529e5c7023371a60cfe66bf7",
+  "goalIds": [
+    "5f39afac-897c-5ed3-95b5-89ccf66b2532",
+    "bdbb1a13-f448-5536-86ab-894805e2f6be",
+    "ac69483b-6a77-573d-a7c0-add32bb867e2",
+    "9263ee6c-bf62-531c-bb09-78a4a51b8ed7",
+    "bac3e333-d044-559e-8d8e-b8eff4af2b56",
+    "19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d",
+    "892a1d3a-9923-5ac2-affa-f2d5c38e3c54",
+    "be06115e-96e8-537e-b18a-313056e6cbe8",
+    "350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd",
+    "7eeb9de9-9a8e-5932-8f60-183367c87d09",
+    "4e12ba43-a58c-5611-8c43-3cc0c8465e33",
+    "8e1300bb-14a1-5155-884a-144c88f1c04b",
+    "8a56672b-b662-5bcd-9f43-8ffc4abc4f01",
+    "321ea315-37fe-5f9e-8fa8-dd631bb447c7",
+    "2f462b79-4ebc-5ab5-9e72-91135c5252c7",
+    "6faa6c23-00c9-5758-bd98-01825692abb2",
+    "6e2dae03-9ea9-5466-b93e-13adcfb01245",
+    "66967754-3934-58b3-b79e-d0f867dae070",
+    "ac7f0a5a-dff6-570b-b0fd-10cb0f33be29",
+    "06e91b97-e7cc-5698-a854-8a946a4bb7d0"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 391,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-flora-fauna20-final-raster-native-author-root-20261007-v1/native-raster-candidate/full391.book.config.author.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-flora-fauna20-final-raster-native-author-root-20261007-v1/candidate/canonical.current474-twenty-new-raster-author.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:81b97e4f18e8213bc8b105fd3bdd6014e3312455f2cbdad09e02c0f1fe6199c4"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:9408c249af7dfc90d0c0c6e5dfa9323302aa228614a5a257feaaa389c2390bde",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:44bde5e6568caf348a8a2b0277749734da19e0a5b4e1cf974db0ba0039844c8b",
+    "reviewInputFingerprint": "sha256:fc5e2ec9e290200d930767db372a2bcaed2e60797718c5dfb1f8b894ce6a0a9f",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-flora-fauna20-twenty-current391-campaign-a-20261007-v1",
+        "campaignDigest": "sha256:1154e90676c1eba4391cd30c72c296baadf828b26f6185004152ed54e233c1e9",
+        "roundId": "biologie-flora-fauna20-twenty-current391-independent-a-20261007-v1",
+        "independenceGroupId": "biologie-flora-fauna20-twenty-current391-independent-a-20261007-v1",
+        "batchId": "biologie-flora-fauna20-twenty-current391-independent-a-20261007-v1.batch-001",
+        "batchInputFingerprint": "sha256:5a796c5e8e6aaa923ae5d4fc53c185e8d509e5f23dc5d76cb063a5998bf2332b"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-flora-fauna20-twenty-current391-campaign-b-20261007-v1",
+        "campaignDigest": "sha256:e3df99bff35ccabeae2102392b651cac170968b414569dc9cbf8c1d8841a7daf",
+        "roundId": "biologie-flora-fauna20-twenty-current391-independent-b-20261007-v1",
+        "independenceGroupId": "biologie-flora-fauna20-twenty-current391-independent-b-20261007-v1",
+        "batchId": "biologie-flora-fauna20-twenty-current391-independent-b-20261007-v1.batch-001",
+        "batchInputFingerprint": "sha256:fa5ae53201d7679541f54c26c4718e3ed6d0c472e4efc6e402328a82351a4002"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

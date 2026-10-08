@@ -150,9 +150,9 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   }
 
   const biology = checkGoalBookSourceAtlasInputs('app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json', root)
-  // Reviewed genetics atoms and the current bounded neurobiology routes retain
-  // the complete current 391-goal atlas, including the reviewed ENG/EKG atom.
-  assert.deepEqual(biology.receipt.counts, { canonicalCurricularAtomicGoals: 391, publishedCurricularAtomicGoals: 391, sourceViews: 22, unresolvedSourceScopeDecisions: 0, omittedGoals: 0 })
+  // The independently reviewed contraception/parenthood split adds one atom
+  // to the current atlas, preserving genetics and bounded neurobiology routes.
+  assert.deepEqual(biology.receipt.counts, { canonicalCurricularAtomicGoals: 392, publishedCurricularAtomicGoals: 392, sourceViews: 22, unresolvedSourceScopeDecisions: 0, omittedGoals: 0 })
   // Current independent source reviews correct the selected neurobiology
   // scopes and add explicit component routes without closing broad source HOLDs.
   assert.deepEqual(biology.receipt.scopes.filter(s => s.stage === 'SekII').map(s => [s.key, s.goalIds.length]), [

@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-evolution-eighteen-operative-sources-independent-a-20261008-v2/check-independent-native-source18-and-full144.actual.py", line 38, in <module>
+    write(name+'.native-closed.candidate.json',value);out.append({'schemaPath':str(sp.relative_to(ROOT)),'schemaSha256':hashlib.sha256(sp.read_bytes()).hexdigest(),'outputPath':str((OWN/(name+'.native-closed.candidate.json')).relative_to(ROOT)),'nativeSchemaPassed':True})
+                                                                                                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/pathlib.py", line 682, in relative_to
+    raise ValueError(f"{str(self)!r} is not in the subpath of {str(other)!r}")
+ValueError: 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-evolution-eighteen-operative-sources-independent-a-20261008-v2/source-to-canonical-mappings.native-closed.candidate.json' is not in the subpath of '/home/enpasos/projects/skillpilot'

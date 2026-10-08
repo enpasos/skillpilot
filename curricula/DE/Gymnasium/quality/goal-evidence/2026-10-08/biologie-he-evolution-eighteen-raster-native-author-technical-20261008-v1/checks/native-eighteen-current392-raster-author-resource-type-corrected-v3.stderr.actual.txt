@@ -1,0 +1,9 @@
+/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-evolution-eighteen-raster-native-author-technical-20261008-v1/materialize-current-eighteen-native-raster.author.v2.technical.mts:67
+ for(const batch of campaign.batches){const b=serializeGoalDescriptionReviewBatchInput({bundleFingerprint:bundle.manifest.bundleFingerprint,bookDigest:bundle.manifest.bookModelDigest,reviewInputFingerprint:input.reviewInputFingerprint,inputSchemaVersion:input.schemaVersion,recordSchemaDigest:campaign.recordSchemaDigest,batchId:batch.batchId,goalIds:batch.goalIds,goals:input.goals});write(resolve(folder,'batches',batch.batchId+'.input.jsonl'),b);assert.equal(sha(b),batch.batchInputFingerprint);assert.equal(b.trim().split('\n').length,18)}
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ^
+
+
+TypeError: b.trim is not a function
+    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-evolution-eighteen-raster-native-author-technical-20261008-v1/materialize-current-eighteen-native-raster.author.v2.technical.mts:67:514)
+
+Node.js v20.20.2

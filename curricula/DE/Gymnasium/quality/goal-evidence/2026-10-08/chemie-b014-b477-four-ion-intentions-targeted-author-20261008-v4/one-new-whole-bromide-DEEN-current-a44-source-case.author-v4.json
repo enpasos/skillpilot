@@ -1,0 +1,61 @@
+{
+  "role": "Third specific source witness after actual current-scope check; old accepted413 is not assigned invisible operative scope",
+  "wholeCaseCount": 1,
+  "wholeCase": {
+    "sourceGoalIds": [
+      "bb-chemistry-sekii-rlp-3-2-6-inhalte-004-5571b00f",
+      "be-chemistry-sekii-rlp-3-2-6-inhalte-004-5571b00f"
+    ],
+    "canonicalWitnessCandidateGoalId": "a44af1fa-5988-5b7d-b206-691c6bbf7dd4",
+    "status": "inactive_source_witness_author_candidate",
+    "reviewAuthority": "ai_candidate",
+    "humanReviewStatus": "needs_human_review",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "actualLearnerOrExperimentEvidence": false,
+    "referenceResponseNature": "Own synthetic model answer, not observed learner work",
+    "license": "CC-BY-4.0",
+    "caseLocalKey": "bbbe-bromide-silver-controlled-salt-intention-author-v4",
+    "intentionSpecies": "Br−",
+    "material": {
+      "de": [
+        "Eigener schriftlicher Modellfall bei25°C, kein tatsächlich durchgeführter Versuch. Die farblose Reinsalzprobe S ist ausdrücklich entweder KBr oder KCl. Für getrennte Teilproben sind fachgerecht beaufsichtigte fiktive Befunde vorgegeben: geeignete verdünnte Salpetersäurevorbehandlung, anschließend Silberion-Reagenz; S bildet einen cremefarbenen/hellgelben Niederschlag. Reagenz-Leerprobe bleibt klar, KBr-Referenz reagiert gleich S, KCl-Referenz bildet unter denselben Bedingungen einen weißen Niederschlag.",
+        "Gegebenes Modell: Ag++Br− → AgBr↓ und Ag++Cl− → AgCl↓. Die Säurevorbehandlung begrenzt störende Carbonatfällung in der untersuchten Modellprobe. Reagenzverunreinigung, andere Silberionen-fällende Bestandteile und störende Eigenfarben sind für diese binäre Auswahl ausgeschlossen. Keine Angaben über Stoffmengen oder tatsächliche praktische Lernendenleistungen liegen vor."
+      ],
+      "en": [
+        "An original written model at25°C, not an actually performed experiment. The colorless pure-salt sample S is explicitly either KBr or KCl. Professionally supervised fictional observations are supplied for separate portions: appropriate dilute nitric-acid pretreatment followed by silver-ion reagent; S forms a cream/pale-yellow precipitate. The reagent blank stays clear, the KBr reference responds like S and the KCl reference forms a white precipitate under the same conditions.",
+        "The supplied model is Ag++Br− → AgBr↓ and Ag++Cl− → AgCl↓. Acid pretreatment limits interfering carbonate precipitation in the modeled sample. Reagent contamination, other silver-precipitating constituents and intrinsic color interference are excluded from this binary set. No substance amounts or actual learner practical performance are provided."
+      ]
+    },
+    "learnerTask": {
+      "de": "Wähle aus dem Material die passende getrennte Nachweis-/Kontrollfolge, bestimme S innerhalb der Auswahl und erkläre den Niederschlag mit einer ladungsbilanzierten Ionengleichung. Trennt der Befund eine Bromidion-Aussage von einer Kalium- oder Mengen-Aussage? Eine andere Person ersetzt HNO3 in einer frischen Cl−-freien Probe durch HCl: Warum kann dann weißer Niederschlag kein sicherer Nachweis ursprünglich vorhandenen Chlorids sein?",
+      "en": "Select the relevant separate detection/control sequence, identify S within the supplied set and explain its precipitate using a charge-balanced ionic equation. Distinguish bromide evidence from potassium or amount claims. Another person substitutes HCl for HNO3 in a fresh initially Cl−-free sample: why does a subsequent white precipitate fail to prove initially present chloride?"
+    },
+    "modelAnswer": {
+      "de": "Im ausdrücklich eingeschränkten Modell ist S KBr. Der zugeordnete Niederschlag ist AgBr: Ag++Br− → AgBr↓ erhält Atome und ergibt auf beiden Seiten Gesamtladung0. Gleiche Referenzbedingungen, passende Vorbehandlung sowie Leer-/Positivkontrollen stützen die qualitative Bromidzuordnung. Die K+-Zuordnung folgt nur aus der Kandidatenauswahl; Silberionen liefern keinen Kalium-Nachweis und die Farbe liefert keine Stoffmenge. In der frischen Probe bringt HCl selbst Cl− ein, das AgCl bilden kann. Ein weißer Niederschlag belegt dort nicht ohne geeignete Reagenz-/Vorherkontrolle ursprünglich vorhandenes Chlorid. HNO3-Vorbehandlung wird daher im gegebenen Modell nicht durch die chloridhaltige Säure ersetzt. Außerhalb der vorgegebenen Kandidaten-/Störungsgrenzen wäre eine Niederschlagsfarbe allein keine eindeutige komplette Ionen- oder Salzidentifikation.",
+      "en": "In the explicitly restricted model S is KBr. Its assigned precipitate is AgBr: Ag++Br− → AgBr↓ conserves atoms and gives total charge0 on both sides. Matched reference conditions, suitable pretreatment and blank/positive controls support qualitative bromide assignment. K+ follows only from the candidate set; silver ions do not test potassium, and color supplies no amount. In the fresh case HCl itself adds Cl− capable of forming AgCl. A white precipitate does not establish initially present chloride without suitable reagent/before controls. Nitric-acid pretreatment is therefore not replaced with chloride-containing acid in this supplied model. Outside its candidate/interference bounds, precipitate color alone is no unique complete ion or salt identification."
+    },
+    "transfer": {
+      "de": {
+        "task": "Eine frische Probe ist jetzt ausdrücklich ein unbekanntes Gemisch, und nach demselben Test ist der Niederschlag cremeweiß. Sind „nur Br− vorhanden“, „reines KBr“ oder ein Bromid-Massenanteil dadurch belegt?",
+        "expected": "Keine dieser Behauptungen folgt allein aus der Mischfarbe. Der ursprüngliche binäre Reinstoffschluss darf nicht auf das Gemisch übertragen werden. Geeignete weitere selektive Differenzierung und Kontrollen können qualitative Teilbehauptungen prüfen; Gegenionen, Reinheit und Anteile brauchen jeweils eigene passende Evidenz. Eine neue Zusatzaufgabenquote folgt daraus nicht."
+      },
+      "en": {
+        "task": "A fresh sample is now explicitly an unknown mixture and its precipitate is cream-white. Does that establish “only Br− present”, “pure KBr” or a bromide mass fraction?",
+        "expected": "None follows from mixed color alone. The original binary pure-substance inference cannot be transferred to the mixture. Appropriate additional selective discrimination and controls can test qualitative component claims; counterions, purity and amounts need their own suitable evidence. This creates no extra task quota."
+      }
+    },
+    "positiveUnderstandingEdge": {
+      "de": "Bromid wird in der tatsächlich vorgesehenen Salz-Nachweisabsicht anhand eigener Kontrollen und Teilchenreaktion erklärt; die Quelle wird nicht auf den nicht sichtbaren Substitutionszweig umgebogen.",
+      "en": "Bromide is explained within the actual salt-detection intention using its own controls and ionic reaction; the source is not rerouted through the unselected substitution branch."
+    },
+    "materialAndSourceLimits": [
+      "Actual source45 names Br− among the original Q intentions. New host a44 is already a current target in BB/BE GK/LK; its whole original body/profile is not rewritten.",
+      "Existing strict413 full P is retained as supplementary chemical test/control knowledge. Actual scope checks show it is not selected in some current BB/BE views, so it is excluded from the operative source union.",
+      "Own synthetic source case, pending two genuinely independent targeted reviews; no laboratory execution, human approval, full source closure or new M7 goal approval."
+    ]
+  },
+  "independentApprovals": 0,
+  "activeWrites": 0,
+  "humanApproval": false
+}

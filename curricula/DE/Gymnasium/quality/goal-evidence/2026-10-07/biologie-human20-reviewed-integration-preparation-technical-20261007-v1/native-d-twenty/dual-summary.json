@@ -1,0 +1,373 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:93b1933baac4a654cdc5805b15ebc42cec9d0664ed61ab478c8948054314a7dc",
+  "reviewInputFingerprint": "sha256:6dd0e37d2bd5560f88eab178a4d3c1c599b5fcf25fe501735cfce2fef1b450e6",
+  "goalCount": 20,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-human20-twenty-current391-campaign-a-20261007-v1",
+      "roundId": "biologie-human20-twenty-current391-independent-a-20261007-v1",
+      "independenceGroupId": "biologie-human20-twenty-current391-independent-a-20261007-v1",
+      "runIds": [
+        "biologie-human20-final-raster-native-independent-a-20261007-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex independent A; exact serving revision not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-human20-twenty-current391-campaign-b-20261007-v1",
+      "roundId": "biologie-human20-twenty-current391-independent-b-20261007-v1",
+      "independenceGroupId": "biologie-human20-twenty-current391-independent-b-20261007-v1",
+      "runIds": [
+        "biologie-human20-final-raster-native-independent-b-20261007-v1-run"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::GPT-6 family; exact serving revision not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 20,
+    "unavailable": 0,
+    "requiresSynthesis": 20
+  },
+  "goals": [
+    {
+      "goalId": "4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2",
+      "firstRecordId": "biologie-human20-final-raster-native-independent-a-20261007-v1.4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2",
+      "secondRecordId": "human20-final-b-4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2",
+      "firstRunId": "biologie-human20-final-raster-native-independent-a-20261007-v1",
+      "secondRunId": "biologie-human20-final-raster-native-independent-b-20261007-v1-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "dc1c2eff-5e42-50f1-ab75-b180b4f58907",
+      "firstRecordId": "biologie-human20-final-raster-native-independent-a-20261007-v1.dc1c2eff-5e42-50f1-ab75-b180b4f58907",
+      "secondRecordId": "human20-final-b-dc1c2eff-5e42-50f1-ab75-b180b4f58907",
+      "firstRunId": "biologie-human20-final-raster-native-independent-a-20261007-v1",
+      "secondRunId": "biologie-human20-final-raster-native-independent-b-20261007-v1-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c25a1bc9-c664-53d7-b2d8-500741da773c",
+      "firstRecordId": "biologie-human20-final-raster-native-independent-a-20261007-v1.c25a1bc9-c664-53d7-b2d8-500741da773c",
+      "secondRecordId": "human20-final-b-c25a1bc9-c664-53d7-b2d8-500741da773c",
+      "firstRunId": "biologie-human20-final-raster-native-independent-a-20261007-v1",
+      "secondRunId": "biologie-human20-final-raster-native-independent-b-20261007-v1-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d773ac89-37ef-51cd-a6ee-a75a6b10c43b",
+      "firstRecordId": "biologie-human20-final-raster-native-independent-a-20261007-v1.d773ac89-37ef-51cd-a6ee-a75a6b10c43b",
+      "secondRecordId": "human20-final-b-d773ac89-37ef-51cd-a6ee-a75a6b10c43b",
+      "firstRunId": "biologie-human20-final-raster-native-independent-a-20261007-v1",
+      "secondRunId": "biologie-human20-final-raster-native-independent-b-20261007-v1-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bb6fb806-ee15-5881-8529-2425cadfb5a1",
+      "firstRecordId": "biologie-human20-final-raster-native-independent-a-20261007-v1.bb6fb806-ee15-5881-8529-2425cadfb5a1",
+      "secondRecordId": "human20-final-b-bb6fb806-ee15-5881-8529-2425cadfb5a1",
+      "firstRunId": "biologie-human20-final-raster-native-independent-a-20261007-v1",
+      "secondRunId": "biologie-human20-final-raster-native-independent-b-20261007-v1-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "73624d0c-bc6f-5b5d-baf5-099ca62fab79",
+      "firstRecordId": "biologie-human20-final-raster-native-independent-a-20261007-v1.73624d0c-bc6f-5b5d-baf5-099ca62fab79",
+      "secondRecordId": "human20-final-b-73624d0c-bc6f-5b5d-baf5-099ca62fab79",
+      "firstRunId": "biologie-human20-final-raster-native-independent-a-20261007-v1",
+      "secondRunId": "biologie-human20-final-raster-native-independent-b-20261007-v1-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ed84c759-62e5-537f-90b8-4e8c2dbfd9bb",
+      "firstRecordId": "biologie-human20-final-raster-native-independent-a-20261007-v1.ed84c759-62e5-537f-90b8-4e8c2dbfd9bb",
+      "secondRecordId": "human20-final-b-ed84c759-62e5-537f-90b8-4e8c2dbfd9bb",
+      "firstRunId": "biologie-human20-final-raster-native-independent-a-20261007-v1",
+      "secondRunId": "biologie-human20-final-raster-native-independent-b-20261007-v1-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "30a1d736-77ca-5087-b640-b756c249bc40",
+      "firstRecordId": "biologie-human20-final-raster-native-independent-a-20261007-v1.30a1d736-77ca-5087-b640-b756c249bc40",
+      "secondRecordId": "human20-final-b-30a1d736-77ca-5087-b640-b756c249bc40",
+      "firstRunId": "biologie-human20-final-raster-native-independent-a-20261007-v1",
+      "secondRunId": "biologie-human20-final-raster-native-independent-b-20261007-v1-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bf2abe42-07bb-5c35-9118-d6141076c299",
+      "firstRecordId": "biologie-human20-final-raster-native-independent-a-20261007-v1.bf2abe42-07bb-5c35-9118-d6141076c299",
+      "secondRecordId": "human20-final-b-bf2abe42-07bb-5c35-9118-d6141076c299",
+      "firstRunId": "biologie-human20-final-raster-native-independent-a-20261007-v1",
+      "secondRunId": "biologie-human20-final-raster-native-independent-b-20261007-v1-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7e26c129-91f7-52de-8114-2361411c80f8",
+      "firstRecordId": "biologie-human20-final-raster-native-independent-a-20261007-v1.7e26c129-91f7-52de-8114-2361411c80f8",
+      "secondRecordId": "human20-final-b-7e26c129-91f7-52de-8114-2361411c80f8",
+      "firstRunId": "biologie-human20-final-raster-native-independent-a-20261007-v1",
+      "secondRunId": "biologie-human20-final-raster-native-independent-b-20261007-v1-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "848fcbe0-dc25-53eb-a1a8-38313b65cf6d",
+      "firstRecordId": "biologie-human20-final-raster-native-independent-a-20261007-v1.848fcbe0-dc25-53eb-a1a8-38313b65cf6d",
+      "secondRecordId": "human20-final-b-848fcbe0-dc25-53eb-a1a8-38313b65cf6d",
+      "firstRunId": "biologie-human20-final-raster-native-independent-a-20261007-v1",
+      "secondRunId": "biologie-human20-final-raster-native-independent-b-20261007-v1-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "498f082d-742c-5f21-9d09-16feeb4276a6",
+      "firstRecordId": "biologie-human20-final-raster-native-independent-a-20261007-v1.498f082d-742c-5f21-9d09-16feeb4276a6",
+      "secondRecordId": "human20-final-b-498f082d-742c-5f21-9d09-16feeb4276a6",
+      "firstRunId": "biologie-human20-final-raster-native-independent-a-20261007-v1",
+      "secondRunId": "biologie-human20-final-raster-native-independent-b-20261007-v1-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "668c01c7-0887-5a54-84ff-648facd8e962",
+      "firstRecordId": "biologie-human20-final-raster-native-independent-a-20261007-v1.668c01c7-0887-5a54-84ff-648facd8e962",
+      "secondRecordId": "human20-final-b-668c01c7-0887-5a54-84ff-648facd8e962",
+      "firstRunId": "biologie-human20-final-raster-native-independent-a-20261007-v1",
+      "secondRunId": "biologie-human20-final-raster-native-independent-b-20261007-v1-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8f9dc189-e875-56dd-bd97-996c8bf0cdc4",
+      "firstRecordId": "biologie-human20-final-raster-native-independent-a-20261007-v1.8f9dc189-e875-56dd-bd97-996c8bf0cdc4",
+      "secondRecordId": "human20-final-b-8f9dc189-e875-56dd-bd97-996c8bf0cdc4",
+      "firstRunId": "biologie-human20-final-raster-native-independent-a-20261007-v1",
+      "secondRunId": "biologie-human20-final-raster-native-independent-b-20261007-v1-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f9597bb0-1b33-53df-8359-cdd43180307b",
+      "firstRecordId": "biologie-human20-final-raster-native-independent-a-20261007-v1.f9597bb0-1b33-53df-8359-cdd43180307b",
+      "secondRecordId": "human20-final-b-f9597bb0-1b33-53df-8359-cdd43180307b",
+      "firstRunId": "biologie-human20-final-raster-native-independent-a-20261007-v1",
+      "secondRunId": "biologie-human20-final-raster-native-independent-b-20261007-v1-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1abf08d7-6fc1-5705-b2d4-21cb44ceeba0",
+      "firstRecordId": "biologie-human20-final-raster-native-independent-a-20261007-v1.1abf08d7-6fc1-5705-b2d4-21cb44ceeba0",
+      "secondRecordId": "human20-final-b-1abf08d7-6fc1-5705-b2d4-21cb44ceeba0",
+      "firstRunId": "biologie-human20-final-raster-native-independent-a-20261007-v1",
+      "secondRunId": "biologie-human20-final-raster-native-independent-b-20261007-v1-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "41467314-3611-5ee3-98c5-f1e8eca2efc2",
+      "firstRecordId": "biologie-human20-final-raster-native-independent-a-20261007-v1.41467314-3611-5ee3-98c5-f1e8eca2efc2",
+      "secondRecordId": "human20-final-b-41467314-3611-5ee3-98c5-f1e8eca2efc2",
+      "firstRunId": "biologie-human20-final-raster-native-independent-a-20261007-v1",
+      "secondRunId": "biologie-human20-final-raster-native-independent-b-20261007-v1-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1f65f78e-b528-5d88-ad00-8e8714a2303e",
+      "firstRecordId": "biologie-human20-final-raster-native-independent-a-20261007-v1.1f65f78e-b528-5d88-ad00-8e8714a2303e",
+      "secondRecordId": "human20-final-b-1f65f78e-b528-5d88-ad00-8e8714a2303e",
+      "firstRunId": "biologie-human20-final-raster-native-independent-a-20261007-v1",
+      "secondRunId": "biologie-human20-final-raster-native-independent-b-20261007-v1-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "c7e2d7e5-ce6b-53e0-806d-66ae4d7846dd",
+      "firstRecordId": "biologie-human20-final-raster-native-independent-a-20261007-v1.c7e2d7e5-ce6b-53e0-806d-66ae4d7846dd",
+      "secondRecordId": "human20-final-b-c7e2d7e5-ce6b-53e0-806d-66ae4d7846dd",
+      "firstRunId": "biologie-human20-final-raster-native-independent-a-20261007-v1",
+      "secondRunId": "biologie-human20-final-raster-native-independent-b-20261007-v1-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bd5e675f-61cc-593d-913e-383e1d3f8783",
+      "firstRecordId": "biologie-human20-final-raster-native-independent-a-20261007-v1.bd5e675f-61cc-593d-913e-383e1d3f8783",
+      "secondRecordId": "human20-final-b-bd5e675f-61cc-593d-913e-383e1d3f8783",
+      "firstRunId": "biologie-human20-final-raster-native-independent-a-20261007-v1",
+      "secondRunId": "biologie-human20-final-raster-native-independent-b-20261007-v1-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

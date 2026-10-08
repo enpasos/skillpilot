@@ -1,0 +1,521 @@
+{
+  "role": "Exact retained current whole profiles; no fresh review of valid historical cases",
+  "records": [
+    {
+      "goalId": "41396457-d97b-55f3-9804-2af1bb188e79",
+      "configBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b002-q1-organic-current-9-v2.config.json",
+        "sha256": "5df718ecf05d76c60d57466dd14aea7ad22a3941f4c6f53e1e0bfb5bf0cdf7e2",
+        "bytes": 1580
+      },
+      "reviewBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b002-q1-organic-current-9-v2.review.jsonl",
+        "sha256": "8529c90bc1cccdce7aeb0716921b997cc96a9dea935ce3a241f7242e6130c529",
+        "bytes": 42031
+      },
+      "wholeRecordDigest": "14739255743d11386ba39b6f3c915b3c81bae47455711f3c88867a326f793d0d",
+      "wholeRecord": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "canonical-chemistry-positive-evidence-b002-q1-organic-current-9-v2",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "41396457-d97b-55f3-9804-2af1bb188e79",
+        "goalFingerprint": "sha256:47d0c86d818239c266fda78eaf08ff3fe3a9fbfc44b957e0132f262d4604d213",
+        "reviewInputFingerprint": "sha256:234b3b278e9193352dfc5d6e6438b357763e0c3d40d594cfb8fbcb895ebc651e",
+        "profileFingerprint": "sha256:799934bf80cd5390769eb307218b5e8afdb2750877122c43b4d2045a4378d7db",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-09-30T16:15:46Z",
+        "reviewer": "codex-gpt-6-chemistry-b002-positive-profile-author-after-independent-qa",
+        "reason": "Eine kontextgebundene Nachweisdeutung; die Visualisierung wird nicht als eindeutiger Universaltest oder Handlungsanleitung gewertet. Zwei vom Bild unabhängige Anwendungsfälle prüfen frischen Transfer. Dieser KI-Kandidat bleibt needs_human_review und ersetzt keine menschliche Freigabe.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [],
+        "profile": {
+          "archetype": "data",
+          "expectations": [
+            {
+              "id": "b002-41396457-core",
+              "essentialUnderstandingDe": "Bei nukleophiler Substitution kann eine abgehende Halogenidion-Spezies mit Silberionen einen charakteristischen Niederschlag bilden; der Befund ist an die Probe und Störionen gebunden.",
+              "essentialUnderstandingEn": "In nucleophilic substitution, a released halide ion may form a characteristic precipitate with silver ions; the result depends on the sample and interfering ions.",
+              "observablePerformanceDe": "Die lernende Person deutet für eine bereitgestellte Reaktionslösung einen passenden Silbernitratbefund und verbindet das Halogenidion mit der Abgangsgruppe.",
+              "observablePerformanceEn": "The learner interprets a supplied silver-nitrate result for a reaction solution and links the halide ion to the leaving group."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "b002-41396457-core"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "halide",
+              "textDe": "Bromid- und Chloridion liefern unterschiedliche Silberhalogenidbefunde.",
+              "textEn": "Bromide and chloride give different silver-halide observations."
+            },
+            {
+              "id": "control",
+              "textDe": "Eine Blindprobe prüft bereits vorhandenes Halogenid.",
+              "textEn": "A blank control checks pre-existing halide."
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "bromoethane-product-test",
+              "taskDemandDe": "Nach einer vorgegebenen nukleophilen Substitution von Bromethan zeigt die wässrige Produktlösung mit Silbernitrat einen hellgelben Niederschlag. Deute dessen Bezug zur Abgangsgruppe.",
+              "taskDemandEn": "After a supplied nucleophilic substitution of bromoethane, the aqueous product solution gives a pale-yellow precipitate with silver nitrate. Interpret its relation to the leaving group.",
+              "expectedPerformanceDe": "Die lernende Person deutet den Befund als Hinweis auf Bromidionen und verbindet Br− mit der C-Br-Spaltung, ohne daraus allein die vollständige organische Produktstruktur abzuleiten.",
+              "expectedPerformanceEn": "The learner interprets the result as evidence of bromide and links Br− to C-Br cleavage without deriving the full organic product structure from the precipitate alone.",
+              "understandingFocusDe": "Der Nachweis stützt eine Teilbehauptung über die Substitution.",
+              "understandingFocusEn": "The test supports a bounded claim about substitution."
+            },
+            {
+              "id": "fresh-chloride-control",
+              "taskDemandDe": "In einem neuen Chlorethan-Fall enthält schon die Ausgangsprobe Chlorid; nach Reaktion entsteht ebenfalls ein weißer Silbernitratniederschlag. Welche zusätzliche Vergleichsprobe ist für den Reaktionsschluss nötig?",
+              "taskDemandEn": "In a fresh chloroethane case, the starting sample already contains chloride; a white silver-nitrate precipitate also appears after reaction. Which extra comparison is needed to infer reaction?",
+              "expectedPerformanceDe": "Die lernende Person fordert eine geeignete Blind- oder Vorherprobe und erklärt, dass der weiße Niederschlag allein keine neu freigesetzten Cl−-Ionen beweist.",
+              "expectedPerformanceEn": "The learner asks for a suitable blank or before sample and explains that the white precipitate alone does not prove newly released Cl−.",
+              "understandingFocusDe": "Kontrolle trennt Nachweis von unzulässiger Kausalbehauptung.",
+              "understandingFocusEn": "A control separates detection from an unsupported causal claim."
+            }
+          ]
+        }
+      },
+      "wholeCurrentGoal": {
+        "id": "41396457-d97b-55f3-9804-2af1bb188e79",
+        "shortKey": "canonical_chemistry_q1_halide_ion_detection",
+        "title": "Halogenidionen-Nachweise deuten",
+        "titleEn": "Interpret halide ion tests",
+        "description": "Die lernende Person kann Nachweise für Halogenidionen im Kontext nukleophiler Substitution fachlich deuten.",
+        "descriptionEn": "The learner can interpret tests for halide ions in the context of nucleophilic substitution.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "d4928773-3be8-5cf1-907c-ef07c96751e8"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BC_REAKTION"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "dbbbfa75-635a-44f7-9dca-c8f38a56794d",
+            "splitFromCanonicalGoalId": "c2d3f72b-e28a-5cae-b52a-7ffaa39d17c2",
+            "splitReviewId": "canonical-chemistry-q1-alkanols-carbonyls"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "41396457-d97b-55f3-9804-2af1bb188e79",
+            "title": "Visualisierung: Halogenidionen-Nachweise deuten",
+            "url": "/assets/goal-visualizations/chemie/41396457-d97b-55f3-9804-2af1bb188e79/41396457-d97b-55f3-9804-2af1bb188e79.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Halogenidionen-Nachweise deuten.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Halogenidionen-Nachweise deuten\". Die lernende Person kann Nachweise für Halogenidionen im Kontext nukleophiler Substitution fachlich deuten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "existingStrictCurrent": true,
+      "scientificReReview": false,
+      "newWholeGoalApproval": false,
+      "newProfileOrStatus": false
+    },
+    {
+      "goalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+      "configBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-final18-native-paired-integration-preparation-technical-20261007-v1/positive/current18.future-active.config.json",
+        "sha256": "5116a08c122ddf5d0c38c4b62be85d3764857d563b0951663d34be03fe515b4d",
+        "bytes": 2091
+      },
+      "reviewBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-final18-native-paired-integration-preparation-technical-20261007-v1/positive/current18.records.jsonl",
+        "sha256": "771d703261271f63628efff27c2e0280bde1bc2548dd99e74d66da37dce2a6bf",
+        "bytes": 179603
+      },
+      "wholeRecordDigest": "1cbb66c91747009bb3612acc386fb95b5da9bc929fb8e095ed7fd4ddd5c2612c",
+      "wholeRecord": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "chemie-final18-current-paired-reviewed-body-binding-technical-20261007-v1",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+        "goalFingerprint": "sha256:afc82985c112c5bbc2aadd3a2be4980f2f6f5ed085053c736f3c99540ae812d7",
+        "reviewInputFingerprint": "sha256:817270afb88940f76dfd77fee51b31f5d381f93b2ea35f8fd7aafb39207c791e",
+        "profileFingerprint": "sha256:c2bdeb48c826337f8ca8deabc6ddd08b7e2baad1717e99c0b571a78ec1fea61d",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-10-07T07:45:57.880Z",
+        "reviewer": "Codex technical integrator; factual materialization of sealed independent scientific profiles, no new review or human approval",
+        "reason": "Exact supplied whole profile body retained from paired sealed scientific reviews, with exact current native image-inclusive review input. Prior17: blind A17/B16, and corrected P580b v3 independent B route; no new seventeen-profile science review. Human false, E1/G1 AI candidate; no generation approval or strict gain.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [],
+        "profile": {
+          "archetype": "experiment",
+          "expectations": [
+            {
+              "id": "core-understanding",
+              "essentialUnderstandingDe": "Gasidentifikation verlangt einen zum Gas passenden Nachweis und die Deutung der positiven Beobachtung. Glimmspan, Kalkwasser und kleine kontrollierte Knallgasprobe unterscheiden O2, CO2 und H2; ein Einzeltest beweist nicht die Reinheit eines Gemisches.",
+              "essentialUnderstandingEn": "Gas identification requires an appropriate test and interpretation of the positive observation. A glowing splint, limewater and a small controlled hydrogen ignition test distinguish O2, CO2 and H2; a single test does not prove mixture purity.",
+              "observablePerformanceDe": "A ist O2: Sauerstoff unterstützt die Verbrennung des Glimmspans. B ist CO2: CO2 + Ca(OH)2 → CaCO3↓ + H2O; die Trübung ist ausgefälltes Calciumcarbonat. C ist H2: 2 H2 + O2 → 2 H2O, die schnelle Reaktion einer kleinen Probe mit Luftsauerstoff verursacht das Geräusch. Die Luftkontrolle zeigt unter den dokumentierten Bedingungen kein Wiederaufflammen des Spans und die CO2-freie Kontrolle klares Kalkwasser; beide dienen als Vergleich für die positiven Beobachtungen bei A und B. Keine Probe wird direkt gerochen oder in einer unbekannten großen Menge gezündet.",
+              "observablePerformanceEn": "A is O2: oxygen supports combustion of the glowing splint. B is CO2: CO2 + Ca(OH)2 → CaCO3↓ + H2O; precipitated calcium carbonate causes the cloud. C is H2: 2 H2 + O2 → 2 H2O; rapid reaction of a small sample with atmospheric oxygen causes the sound. Under the documented conditions, the air control shows no splint relighting and the CO2-free control leaves limewater clear; both provide a comparison with the positive observations for A and B. No sample is smelled directly or ignited in an unknown large quantity."
+            },
+            {
+              "id": "fresh-transfer-and-limit",
+              "essentialUnderstandingDe": "Drei reine unbekannte Gase gegenüber einem feuchten CO2/H2-Gemisch; Testreihenfolge, negative Kontrolle und Grenzen negativer Befunde. Positiver Nachweis eines Bestandteils ist kein Reinheitsnachweis; das O2 der H2-Probe kann aus der Luft stammen.",
+              "essentialUnderstandingEn": "Three unknown pure gases versus a moist CO2/H2 mixture; test order, negative control and limits of negative findings. Positive detection of one component does not prove purity; oxygen for the hydrogen test may come from air.",
+              "observablePerformanceDe": "Der erste Test belegt CO2 durch Bildung von CaCO3. Der spätere Test belegt H2 im Restgas durch die Reaktion mit O2 aus der Testumgebung. Daher war das ursprüngliche Gas kein reines CO2. Der negative Glimmspantest liefert unter diesen Bedingungen keinen positiven O2-Nachweis, schließt einen kleinen O2-Anteil aber ohne Nachweisgrenze nicht sicher aus. Anteile oder vollständige Zusammensetzung lassen sich aus qualitativen Tests nicht berechnen.",
+              "observablePerformanceEn": "The first test supports CO2 through CaCO3 formation. The later test supports H2 in the residual gas through reaction with O2 supplied by the test environment. Thus the original gas was not pure CO2. Under these conditions the negative splint test gives no positive O2 detection, but does not exclude a small O2 fraction without a detection limit. Qualitative tests do not provide component amounts or a complete composition."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "core-understanding",
+              "fresh-transfer-and-limit"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "specific-system-variation",
+              "textDe": "Drei reine unbekannte Gase gegenüber einem feuchten CO2/H2-Gemisch; Testreihenfolge, negative Kontrolle und Grenzen negativer Befunde.",
+              "textEn": "Three unknown pure gases versus a moist CO2/H2 mixture; test order, negative control and limits of negative findings."
+            },
+            {
+              "id": "model-boundary",
+              "textDe": "Positiver Nachweis eines Bestandteils ist kein Reinheitsnachweis; das O2 der H2-Probe kann aus der Luft stammen.",
+              "textEn": "Positive detection of one component does not prove purity; oxygen for the hydrogen test may come from air."
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "chem-next20-580b3616-case-1",
+              "taskDemandDe": "Fiktives beaufsichtigtes Demonstrationsprotokoll; keine Durchführung durch Lernende verlangt. A lässt einen glimmenden Span wieder aufflammen. B erzeugt beim Einleiten in frisches Kalkwasser eine weiße Trübung. C ergibt bei einer sehr kleinen fachgerecht geprüften Probe ein kurzes charakteristisches Plopp. Luftkontrolle: kein Wiederaufflammen; CO2-freie Kontrolle: Kalkwasser klar. Ordne A, B und C zu. Erkläre die Beobachtungen, formuliere die CO2- und H2-Nachweisreaktionen und begründe den Nutzen der Kontrollen.",
+              "taskDemandEn": "Fictional supervised demonstration record; learners are not asked to perform it. A relights a glowing splint. B produces a white cloud when passed into fresh limewater. A very small professionally checked sample of C produces a brief characteristic pop. Air control: no relighting; CO2-free control: limewater remains clear. Identify A, B and C. Explain the observations, write the CO2 and H2 test reactions and justify the controls.",
+              "expectedPerformanceDe": "A ist O2: Sauerstoff unterstützt die Verbrennung des Glimmspans. B ist CO2: CO2 + Ca(OH)2 → CaCO3↓ + H2O; die Trübung ist ausgefälltes Calciumcarbonat. C ist H2: 2 H2 + O2 → 2 H2O, die schnelle Reaktion einer kleinen Probe mit Luftsauerstoff verursacht das Geräusch. Die Luftkontrolle zeigt unter den dokumentierten Bedingungen kein Wiederaufflammen des Spans und die CO2-freie Kontrolle klares Kalkwasser; beide dienen als Vergleich für die positiven Beobachtungen bei A und B. Keine Probe wird direkt gerochen oder in einer unbekannten großen Menge gezündet.",
+              "expectedPerformanceEn": "A is O2: oxygen supports combustion of the glowing splint. B is CO2: CO2 + Ca(OH)2 → CaCO3↓ + H2O; precipitated calcium carbonate causes the cloud. C is H2: 2 H2 + O2 → 2 H2O; rapid reaction of a small sample with atmospheric oxygen causes the sound. Under the documented conditions, the air control shows no splint relighting and the CO2-free control leaves limewater clear; both provide a comparison with the positive observations for A and B. No sample is smelled directly or ignited in an unknown large quantity.",
+              "understandingFocusDe": "Ein Wiederaufflammen ist keine Stoffmengenmessung; ein negatives Ergebnis allein beweist keine Abwesenheit unter allen Versuchsbedingungen.",
+              "understandingFocusEn": "Relighting is not an amount measurement; a negative result alone does not prove absence under every experimental condition."
+            },
+            {
+              "id": "chem-next20-580b3616-case-2",
+              "taskDemandDe": "Frischer fiktiver Fall: Ein Gasgemisch trübt zuerst frisches Kalkwasser. Nach der dokumentierten CO2-Abtrennung bleibt ein Gas zurück, das in einer getrennten kleinen Lehrerprobe den H2-Nachweis zeigt. Der Glimmspan-Nachweis ist vor und nach Abtrennung negativ. Die Nachweisgrenzen und die Mengenanteile sind nicht bekannt. Deute beide positiven Tests auf Teilchenebene. Beurteile die Behauptung: „Das ursprüngliche Gas war reines CO2, und O2 ist sicher vollständig abwesend.“",
+              "taskDemandEn": "Fresh fictional case: a mixture initially clouds fresh limewater. After documented removal of CO2, a remaining gas gives a positive H2 test in a separate small teacher demonstration. The glowing-splint test is negative before and after removal. Detection limits and component amounts are unknown. Interpret both positive tests at particle level. Evaluate: “The original gas was pure CO2 and O2 is certainly completely absent.”",
+              "expectedPerformanceDe": "Der erste Test belegt CO2 durch Bildung von CaCO3. Der spätere Test belegt H2 im Restgas durch die Reaktion mit O2 aus der Testumgebung. Daher war das ursprüngliche Gas kein reines CO2. Der negative Glimmspantest liefert unter diesen Bedingungen keinen positiven O2-Nachweis, schließt einen kleinen O2-Anteil aber ohne Nachweisgrenze nicht sicher aus. Anteile oder vollständige Zusammensetzung lassen sich aus qualitativen Tests nicht berechnen.",
+              "expectedPerformanceEn": "The first test supports CO2 through CaCO3 formation. The later test supports H2 in the residual gas through reaction with O2 supplied by the test environment. Thus the original gas was not pure CO2. Under these conditions the negative splint test gives no positive O2 detection, but does not exclude a small O2 fraction without a detection limit. Qualitative tests do not provide component amounts or a complete composition.",
+              "understandingFocusDe": "Positiver Nachweis eines Bestandteils ist kein Reinheitsnachweis; das O2 der H2-Probe kann aus der Luft stammen.",
+              "understandingFocusEn": "Positive detection of one component does not prove purity; oxygen for the hydrogen test may come from air."
+            }
+          ]
+        }
+      },
+      "wholeCurrentGoal": {
+        "id": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+        "shortKey": "canonical_chemistry_sek1_gas_detection_o2_co2_h2",
+        "title": "Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen",
+        "titleEn": "Detect oxygen, carbon dioxide, and hydrogen",
+        "description": "Die lernende Person kann Sauerstoff, Kohlenstoffdioxid und Wasserstoff mithilfe einfacher Nachweisreaktionen identifizieren und die Beobachtungen fachlich deuten.",
+        "descriptionEn": "The learner can identify oxygen, carbon dioxide, and hydrogen using simple detection reactions and interpret the observations chemically.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekI"
+        ],
+        "contains": [],
+        "requires": [
+          "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+          "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK1_EXPERIMENTIEREN",
+            "PK2_MODELLIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION"
+          ],
+          "phase": "GLOBAL",
+          "area": "Grundlagen",
+          "topicCode": "CANONICAL.CHEMISTRY.SEK1.GAS_DETECTION_O2_CO2_H2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "8cdc267f-febe-58b8-a018-3f856b543d43"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+            "title": "Visualisierung: Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen",
+            "url": "/assets/goal-visualizations/chemie/580b3616-f121-5d82-ac6b-fc24f145fbdc/580b3616-f121-5d82-ac6b-fc24f145fbdc.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen\". Die lernende Person kann Sauerstoff, Kohlenstoffdioxid und Wasserstoff mithilfe einfacher Nachweisreaktionen identifizieren und die Beobachtungen fachlich deuten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "accepted"
+          }
+        ]
+      },
+      "existingStrictCurrent": true,
+      "scientificReReview": false,
+      "newWholeGoalApproval": false,
+      "newProfileOrStatus": false
+    },
+    {
+      "goalId": "a44af1fa-5988-5b7d-b206-691c6bbf7dd4",
+      "configBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-final18-native-paired-integration-preparation-technical-20261007-v1/positive/current18.future-active.config.json",
+        "sha256": "5116a08c122ddf5d0c38c4b62be85d3764857d563b0951663d34be03fe515b4d",
+        "bytes": 2091
+      },
+      "reviewBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-final18-native-paired-integration-preparation-technical-20261007-v1/positive/current18.records.jsonl",
+        "sha256": "771d703261271f63628efff27c2e0280bde1bc2548dd99e74d66da37dce2a6bf",
+        "bytes": 179603
+      },
+      "wholeRecordDigest": "49ed8e5f3287ea01fa2d7602167da707f30450efa5d64b1f6ab3e93c2468810c",
+      "wholeRecord": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "chemie-final18-current-paired-reviewed-body-binding-technical-20261007-v1",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "a44af1fa-5988-5b7d-b206-691c6bbf7dd4",
+        "goalFingerprint": "sha256:b6b3898c7bb32bb9201ddcde9af540a4cd13df2b94f29a3b30889884bc72742c",
+        "reviewInputFingerprint": "sha256:74ea6c90084126765530f5701eba7724b72fa622fbfba76a3e7f2a24d1c1e6c6",
+        "profileFingerprint": "sha256:7d0388e55bd199336ad23173be071f9b630850f65d19c28caf13575404b8abf3",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-10-07T07:45:57.988Z",
+        "reviewer": "Codex technical integrator; factual materialization of sealed independent scientific profiles, no new review or human approval",
+        "reason": "Exact supplied whole profile body retained from paired sealed scientific reviews, with exact current native image-inclusive review input. Prior17: blind A17/B16, and corrected P580b v3 independent B route; no new seventeen-profile science review. Human false, E1/G1 AI candidate; no generation approval or strict gain.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [],
+        "profile": {
+          "archetype": "experiment",
+          "expectations": [
+            {
+              "id": "core-understanding",
+              "essentialUnderstandingDe": "Qualitative Ionenanalyse benötigt selektive Nachweise, getrennte Proben, Kontrollen und eine begrenzte Stoffhypothese. Positive Teilnachweise belegen ausgewählte Bestandteile; Zusammensetzung, Stoffmengen und Herkunft lassen sich daraus nicht beliebig eindeutig rekonstruieren.",
+              "essentialUnderstandingEn": "Qualitative ion analysis requires selective tests, separate portions, controls and bounded composition hypotheses. Positive tests support selected components; amounts, provenance and exact composition cannot be inferred without limits.",
+              "observablePerformanceDe": "Unter der ausdrücklich binären Reinstoffannahme ist A NaCl. Ag+ + Cl− → AgCl↓ erklärt den weißen Niederschlag. Der negative Sulfattest widerspricht hier Na2SO4, sofern die durch Kontrollen geprüfte Empfindlichkeit ausreicht. Ba2+ + SO42− → BaSO4↓ wäre die positive Sulfatreaktion. Leerproben begrenzen Reagenzverunreinigung, positive Kontrollen prüfen Funktionsfähigkeit. Der Natrium-Nachweis unterscheidet die beiden Kandidaten nicht. Ohne die vorgegebene Auswahl wären weitere Ionen und Störungen möglich.",
+              "observablePerformanceEn": "Within the explicit binary pure-substance assumption A is NaCl. Ag+ + Cl− → AgCl↓ explains the white precipitate. The negative sulfate test argues against Na2SO4 here if sensitivity confirmed by controls is sufficient. A positive sulfate test would be Ba2+ + SO42− → BaSO4↓. Blanks check reagent contamination and positive controls check functioning. The sodium test does not distinguish these candidates. Without the stated candidate restriction, additional ions and interferences could occur."
+            },
+            {
+              "id": "fresh-transfer-and-limit",
+              "essentialUnderstandingDe": "Ein erlaubter Zweistoff-Salzkandidat mit Chlorid- und Sulfatkontrollen gegenüber einem unbekannten Produktgemisch mit belegten Ionen und offenem Mischungsverhältnis. Vorhandene Ionen in Lösung beweisen keine eindeutige Paarung im ursprünglichen Salzgemisch.",
+              "essentialUnderstandingEn": "A restricted two-salt candidate set with chloride and sulfate controls versus an unknown product mixture with supported ions but an unresolved mixing ratio. Detected solution ions do not establish unique pairings in the original salt mixture.",
+              "observablePerformanceDe": "Natrium und Chlorid sind mit der NaCl-Angabe vereinbar; sie beweisen bei einem beliebigen Gemisch aber nicht allein, dass sämtliches Natrium mit Chlorid verknüpft aus NaCl stammt. Der gültige positive Sulfattest widerspricht „keine Sulfate“. Chlorid, Sulfat und Natrium sind qualitativ belegt; weitere Kationen, genaue Salzarten und Massenanteile bleiben offen. In Lösung sind Ionen getrennt vorhanden; das ursprüngliche Salzgemisch ist ohne zusätzliche Einschränkungen nicht eindeutig rekonstruierbar. Mengenbehauptungen brauchen quantitative Analyse. C ist sauer mit überwiegendem H3O+, D basisch mit überwiegendem OH−; beide widersprechen der angegebenen Neutralität. Natrium-/Chloridnachweise erfassen diese Protonen-/Hydroxidverhältnisse nicht. Als mögliche, nicht bewiesene Modellbeispiele wären NaCl plus HCl beziehungsweise NaCl plus NaOH vereinbar; pH allein identifiziert weder die zugrunde liegende Säure/Base noch deren Gesamtkonzentration.",
+              "observablePerformanceEn": "Sodium and chloride are compatible with NaCl, but in an arbitrary mixture do not prove that all these ions originated together as NaCl. A valid positive sulfate result contradicts “no sulfates.” Chloride, sulfate and sodium are qualitatively supported; other cations, original salts and mass fractions remain unknown. Solution ions do not uniquely reconstruct the original salt mixture; amount claims need quantitative analysis. C is acidic with predominant H3O+ and D basic with predominant OH−; both contradict stated neutrality. Sodium/chloride tests do not measure these proton/hydroxide ratios. Possible, unproven model examples are NaCl plus HCl and NaCl plus NaOH respectively; pH alone identifies neither the source acid/base nor its total concentration."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "core-understanding",
+              "fresh-transfer-and-limit"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "specific-system-variation",
+              "textDe": "Ein erlaubter Zweistoff-Salzkandidat mit Chlorid- und Sulfatkontrollen gegenüber einem unbekannten Produktgemisch mit belegten Ionen und offenem Mischungsverhältnis.",
+              "textEn": "A restricted two-salt candidate set with chloride and sulfate controls versus an unknown product mixture with supported ions but an unresolved mixing ratio."
+            },
+            {
+              "id": "model-boundary",
+              "textDe": "Vorhandene Ionen in Lösung beweisen keine eindeutige Paarung im ursprünglichen Salzgemisch.",
+              "textEn": "Detected solution ions do not establish unique pairings in the original salt mixture."
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "chem-next20-a44af1fa-case-1",
+              "taskDemandDe": "Fiktive Auswertung einer bereits fachgerecht durchgeführten Analyse, keine Durchführung verlangt: Probe A ist laut Aufgabenannahme entweder reines NaCl oder reines Na2SO4. Bei einer geeignet vorbehandelten getrennten Teilprobe ergibt der Chloridtest mit Ag+-Reagenz einen weißen Niederschlag; der Sulfattest mit Ba2+-Reagenz ist negativ. Reagenz-Leerproben sind negativ, positive Kontrolllösungen reagieren erwartungsgemäß. Beide Salze liefern denselben Natrium-Nachweis. Bestimme A innerhalb der erlaubten Kandidaten und formuliere die Nachweisgleichung. Erkläre die Funktion der Kontrollen und die Grenze der Natrium-Beobachtung.",
+              "taskDemandEn": "Fictional evaluation of an already professionally performed analysis, not a request to perform it: under the supplied assumption sample A is either pure NaCl or pure Na2SO4. In a suitably pretreated separate portion, an Ag+ chloride test gives a white precipitate; a Ba2+ sulfate test is negative. Reagent blanks are negative and positive controls react as expected. Both salts give the same sodium test. Identify A within the allowed candidates and write the detection equation. Explain the controls and the limit of the sodium observation.",
+              "expectedPerformanceDe": "Unter der ausdrücklich binären Reinstoffannahme ist A NaCl. Ag+ + Cl− → AgCl↓ erklärt den weißen Niederschlag. Der negative Sulfattest widerspricht hier Na2SO4, sofern die durch Kontrollen geprüfte Empfindlichkeit ausreicht. Ba2+ + SO42− → BaSO4↓ wäre die positive Sulfatreaktion. Leerproben begrenzen Reagenzverunreinigung, positive Kontrollen prüfen Funktionsfähigkeit. Der Natrium-Nachweis unterscheidet die beiden Kandidaten nicht. Ohne die vorgegebene Auswahl wären weitere Ionen und Störungen möglich.",
+              "expectedPerformanceEn": "Within the explicit binary pure-substance assumption A is NaCl. Ag+ + Cl− → AgCl↓ explains the white precipitate. The negative sulfate test argues against Na2SO4 here if sensitivity confirmed by controls is sufficient. A positive sulfate test would be Ba2+ + SO42− → BaSO4↓. Blanks check reagent contamination and positive controls check functioning. The sodium test does not distinguish these candidates. Without the stated candidate restriction, additional ions and interferences could occur.",
+              "understandingFocusDe": "Ein weißer Niederschlag ohne Reagenz-, Vorbehandlungs- und Kandidateninformation ist keine eindeutige Identifikation.",
+              "understandingFocusEn": "A white precipitate without reagent, pretreatment and candidate information is not a unique identification."
+            },
+            {
+              "id": "chem-next20-a44af1fa-case-2",
+              "taskDemandDe": "Frisches fiktives Produktetikett: „Enthält Natriumchlorid; keine Sulfate“. Bei geeigneten getrennten Proben zeigen Chlorid- und Sulfatnachweise positive Ergebnisse; zugehörige Kontrollen sind gültig. Der Natrium-Nachweis ist ebenfalls positiv. Andere Kationen sind nicht geprüft; quantitative Messdaten fehlen. Zwei weitere wässrige Produktproben C und D enthalten ebenfalls Natrium- und Chloridionen. Ein separat kalibrierter pH-Nachweis gibt C: pH 2, D: pH 12 bei 25 °C. Beide Etiketten behaupten „neutrale reine Kochsalzlösung“; Störstoffe der pH-Messung sind im Modell ausgeschlossen. Prüfe alle Etikettaussagen. Formuliere die belegte Zusammensetzung und die offenen Mischungsverhältnisse. Deute C und D zusätzlich über H3O+/OH− und erkläre, warum Natrium-/Chloridnachweise den sauren oder basischen Anteil nicht ausschließen.",
+              "taskDemandEn": "Fresh fictional product label: “Contains sodium chloride; no sulfates.” Suitable separate portions test positive for chloride and sulfate, with valid controls. Sodium is also detected. Other cations have not been tested and no quantitative measurements exist. Two further aqueous product samples C and D also contain sodium and chloride. A separately calibrated pH measurement gives C: pH 2, D: pH 12 at 25 °C. Both labels claim “neutral pure table-salt solution”; the model excludes pH-measurement interference. Evaluate all label statements. State supported composition and unknown mixture proportions. Interpret C and D using H3O+/OH− and explain why sodium/chloride tests do not exclude acidic or basic components.",
+              "expectedPerformanceDe": "Natrium und Chlorid sind mit der NaCl-Angabe vereinbar; sie beweisen bei einem beliebigen Gemisch aber nicht allein, dass sämtliches Natrium mit Chlorid verknüpft aus NaCl stammt. Der gültige positive Sulfattest widerspricht „keine Sulfate“. Chlorid, Sulfat und Natrium sind qualitativ belegt; weitere Kationen, genaue Salzarten und Massenanteile bleiben offen. In Lösung sind Ionen getrennt vorhanden; das ursprüngliche Salzgemisch ist ohne zusätzliche Einschränkungen nicht eindeutig rekonstruierbar. Mengenbehauptungen brauchen quantitative Analyse. C ist sauer mit überwiegendem H3O+, D basisch mit überwiegendem OH−; beide widersprechen der angegebenen Neutralität. Natrium-/Chloridnachweise erfassen diese Protonen-/Hydroxidverhältnisse nicht. Als mögliche, nicht bewiesene Modellbeispiele wären NaCl plus HCl beziehungsweise NaCl plus NaOH vereinbar; pH allein identifiziert weder die zugrunde liegende Säure/Base noch deren Gesamtkonzentration.",
+              "expectedPerformanceEn": "Sodium and chloride are compatible with NaCl, but in an arbitrary mixture do not prove that all these ions originated together as NaCl. A valid positive sulfate result contradicts “no sulfates.” Chloride, sulfate and sodium are qualitatively supported; other cations, original salts and mass fractions remain unknown. Solution ions do not uniquely reconstruct the original salt mixture; amount claims need quantitative analysis. C is acidic with predominant H3O+ and D basic with predominant OH−; both contradict stated neutrality. Sodium/chloride tests do not measure these proton/hydroxide ratios. Possible, unproven model examples are NaCl plus HCl and NaCl plus NaOH respectively; pH alone identifies neither the source acid/base nor its total concentration.",
+              "understandingFocusDe": "Vorhandene Ionen in Lösung beweisen keine eindeutige Paarung im ursprünglichen Salzgemisch.",
+              "understandingFocusEn": "Detected solution ions do not establish unique pairings in the original salt mixture."
+            }
+          ]
+        }
+      },
+      "wholeCurrentGoal": {
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekI"
+        ],
+        "contains": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-NI",
+            "DE-NW"
+          ]
+        },
+        "type": "atomic",
+        "id": "a44af1fa-5988-5b7d-b206-691c6bbf7dd4",
+        "shortKey": "canonical_chemistry_sek1_ion_detection_salt_composition",
+        "title": "Ionen nachweisen und Salzzusammensetzung bestimmen",
+        "titleEn": "Detect ions and determine salt composition",
+        "description": "Die lernende Person kann ausgewählte Ionen experimentell nachweisen, daraus die Zusammensetzung von Salzen, Salzgemischen sowie sauren und basischen Lösungen qualitativ bestimmen und Informationen zur Zusammensetzung von Alltagsprodukten überprüfen.",
+        "descriptionEn": "The learner can experimentally detect selected ions, qualitatively determine the composition of salts, salt mixtures, and acidic or basic solutions, and check information about the composition of everyday products.",
+        "requires": [
+          "950c73c6-4ed1-488a-9267-1142e95e0055",
+          "266a2b2a-9ee2-52f6-ae09-59343da9a60b"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK1_EXPERIMENTIEREN",
+            "PK2_MODELLIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU"
+          ],
+          "phase": "GLOBAL",
+          "area": "Ionen und Elektrolyse",
+          "topicCode": "CANONICAL.CHEMISTRY.SEK1.ION_DETECTION_SALT_COMPOSITION"
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "b7a43776-3795-549f-ab94-916b38dedca5"
+          }
+        },
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "a44af1fa-5988-5b7d-b206-691c6bbf7dd4",
+            "title": "Visualisierung: Ionen nachweisen und Salzzusammensetzung bestimmen",
+            "url": "/assets/goal-visualizations/chemie/a44af1fa-5988-5b7d-b206-691c6bbf7dd4/a44af1fa-5988-5b7d-b206-691c6bbf7dd4.png",
+            "provider": "OpenAI / ChatGPT-Codex built-in image_gen",
+            "description": "Visualisierung zum Lernziel: Ionen nachweisen und Salzzusammensetzung bestimmen.",
+            "altText": "Ausgewählte Ionennachweise: Flammenproben zeigen Na+ gelb, K+ violett und Cu2+ blaugrün. Ein Chlorid-Beispiel zeigt nach HNO3 und AgNO3 weißen AgCl-Niederschlag. Für das gezeigte Reinsalz führen Na+ und Cl− im Verhältnis1:1 zu NaCl; bei einem Gemisch folgt aus nachgewiesenen Ionen keine eindeutige Zuordnung von Salzpaaren.",
+            "lang": "de",
+            "license": "CC-BY-4.0",
+            "reviewStatus": "candidate"
+          }
+        ]
+      },
+      "existingStrictCurrent": true,
+      "scientificReReview": false,
+      "newWholeGoalApproval": false,
+      "newProfileOrStatus": false
+    }
+  ]
+}

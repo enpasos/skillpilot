@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-he-evolution-one-genuine-current-subset-reviewed-root-20261008-v3-one-current-subset-v4",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-evolution-eighteen-reviewed-integration-preparation-root-20261008-v1/original-frame-native-d-one-current-subset-v4.batch.config.json",
+  "configDigest": "sha256:07741cc674c74bca7bc19936c16453c92f369979bf5ad94c29222b53314119b7",
+  "goalIds": [
+    "7008979d-7890-5f7b-ad07-27b8bb597cbe"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 392,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-evolution-eighteen-raster-native-author-technical-20261008-v1/candidate/book.current392.actual-raster.inactive.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-evolution-eighteen-raster-native-author-technical-20261008-v1/candidate/canonical.current476.actual-raster.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:be24ba5173ca1429ebed65eeb887280344420689c204fd9213a5ec99d8a0e20d"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:3a0db74d170c87f3089d1a1d75449896be3b5218d6ffe377369f0e4e3a0656f3",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:7ec2be9b2e761e10830362dac394c0d30dfc24f4a2299fb99b80c9ddb2da7714",
+    "reviewInputFingerprint": "sha256:c229eb077199b01699307e5c2e6ca73a6c91fadf4e351df0afc0883b1e790aee",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-he-evolution-one-current-subset-first-a-20261008-v3",
+        "campaignDigest": "sha256:b9ab7b89ac62949dcca4a06bd87213111727b0327403432bb34f15ff3a96f26b",
+        "roundId": "current-subset-first-a-20261008-v3",
+        "independenceGroupId": "biologie-he-evolution-one-current-subset-independent-a-20261008-v3",
+        "batchId": "current-subset-first-a-20261008-v3.batch-001",
+        "batchInputFingerprint": "sha256:5389e21c5b6220a474d3f50072039d0679938c15044b1e314c4cca4f5f9ac488"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-he-evolution-one-current-subset-first-b-20261008-v3",
+        "campaignDigest": "sha256:844176b7e8ae36da3c63a2ce616086696bba2fa1a71c3297a8b05489fee234a2",
+        "roundId": "current-subset-first-b-20261008-v3",
+        "independenceGroupId": "biologie-he-evolution-one-current-subset-independent-b-20261008-v3",
+        "batchId": "current-subset-first-b-20261008-v3.batch-001",
+        "batchInputFingerprint": "sha256:3a0450096a6e579c8df5c6e03c9e1e5b2d48eaf605605f6325abef1f513bf2b5"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

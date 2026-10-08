@@ -1,0 +1,647 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Biologie: Grundlagen, Zellen und Fotosynthese</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Biologie: Grundlagen, Zellen und Fotosynthese</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>10 atomare Lernziele</dt><dd>3 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:1bdda3911db5d4dfa7587029a40614cab4ad4fa672b6d2c33de8c4d0ad55d0e7</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-4f5d4296002eb1bc70a26646" aria-label="Biologie"><a href="#goal-8d35381e-d646-512c-b0c2-bb90c4974208"><span class="toc-entry-label">Biologie</span></a></h2>
+          <span class="toc-entry-meta"><span>10 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-b530a382-2786-5794-8821-3e01a62d88fd" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-a6e58d8976cd040ee78f15da" aria-label="Biologische Grundlagen (Sek I)"><a href="#goal-8d35381e-d646-512c-b0c2-bb90c4974208"><span class="toc-entry-label">Biologische&#160;<wbr>Grundlagen&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h3>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-860c80f9-e463-598b-8ef8-79f65c12f235" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-8290eb0c516ee5d888cba674" aria-label="Fotosynthese und Zellatmung (Sek I)"><a href="#goal-fc89ed54-1a78-55a9-8e54-751d6d46dad6"><span class="toc-entry-label">Fotosynthese&#160;<wbr>und&#160;<wbr>Zellatmung&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h3>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 6</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-8d35381e-d646-512c-b0c2-bb90c4974208" data-goal-id="8d35381e-d646-512c-b0c2-bb90c4974208" data-page-number="1" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-b530a382-2786-5794-8821-3e01a62d88fd" aria-labelledby="goal-8d35381e-d646-512c-b0c2-bb90c4974208-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8d35381e-d646-512c-b0c2-bb90c4974208-title"><a class="goal-self-link" href="#goal-8d35381e-d646-512c-b0c2-bb90c4974208">Biologie als Wissenschaft vom Leben beschreiben</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8d35381e-d646-512c-b0c2-bb90c4974208</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-a6e58d8976cd040ee78f15da">Biologische Grundlagen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:900ef27e8c339ed01fae399a2eaf4bc6999d06a175694b846fedb90a7f3ad047" data-rendered-digest="sha256:97726c8aed58b7f017ee0279301d536eaf826dc1a4404357b8880d08eb9c411e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/8d35381e-d646-512c-b0c2-bb90c4974208/8d35381e-d646-512c-b0c2-bb90c4974208.png" alt="Ein Kind beobachtet eine blühende Pflanze; Tiere veranschaulichen weitere Gegenstände der Biologie.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8d35381e-d646-512c-b0c2-bb90c4974208-description-heading">
+        <p class="section-heading" id="goal-8d35381e-d646-512c-b0c2-bb90c4974208-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Fach Biologie als Wissenschaft vom Leben beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-8d35381e-d646-512c-b0c2-bb90c4974208" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8d35381e-d646-512c-b0c2-bb90c4974208-requires-heading">
+          <p class="section-heading" id="goal-8d35381e-d646-512c-b0c2-bb90c4974208-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-8d35381e-d646-512c-b0c2-bb90c4974208-reverse-heading">
+          <p class="section-heading" id="goal-8d35381e-d646-512c-b0c2-bb90c4974208-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba"><span>Kennzeichen von Lebewesen ordnen</span><code>55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-8d35381e-d646-512c-b0c2-bb90c4974208-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8d35381e-d646-512c-b0c2-bb90c4974208-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-8d35381e-d646-512c-b0c2-bb90c4974208-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8d35381e-d646-512c-b0c2-bb90c4974208-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-11e90f71-a9a4-5a57-b619-ad5d81e81f96" rel="noreferrer noopener"><span>Kennzeichen des Lebens erläutern</span> <code>11e90f71-a9a4-5a57-b619-ad5d81e81f96</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-d71e2310-2331-5e66-b7df-c2807fccb329" rel="noreferrer noopener"><span>Organisationsstufen eines Vielzellers erläutern</span> <code>d71e2310-2331-5e66-b7df-c2807fccb329</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 10</span>
+      <span>Buch-Digest <code>sha256:1bdda3911db5d4dfa7587029a40614cab4ad4fa672b6d2c33de8c4d0ad55d0e7</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b26f2869e96d921e0319b0adaf463deaec7e8958fda043d84af15dbc01daeedd</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he7-ten-ten-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=8d35381e-d646-512c-b0c2-bb90c4974208&amp;goalFingerprint=sha256%3Ab26f2869e96d921e0319b0adaf463deaec7e8958fda043d84af15dbc01daeedd&amp;pageFingerprint=sha256%3Ab914ec0c597f19eb6105fbe79832741b393d5c8a7f182e1b7fc2a81441eec1d2&amp;bookDigest=sha256%3A1bdda3911db5d4dfa7587029a40614cab4ad4fa672b6d2c33de8c4d0ad55d0e7&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba" data-goal-id="55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba" data-page-number="2" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-b530a382-2786-5794-8821-3e01a62d88fd" aria-labelledby="goal-55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba-title"><a class="goal-self-link" href="#goal-55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba">Kennzeichen von Lebewesen ordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-a6e58d8976cd040ee78f15da">Biologische Grundlagen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:106c82bfee3277544f09dee1d641f25ccce876e40f95193a5461ab31b4b6d978" data-rendered-digest="sha256:09d475ded8bd0d54432f2dccb09d3f7bd87270dc4200019681e5cbe361466d16" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba/55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba.png" alt="Pflanze und Schnecke mit Motiven für Wachstum, Ernährung, Fortpflanzung, Zellen und Reaktion auf Licht.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba-description-heading">
+        <p class="section-heading" id="goal-55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann grundlegende Kennzeichen von Lebewesen sammeln und ordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba-requires-heading">
+          <p class="section-heading" id="goal-55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8d35381e-d646-512c-b0c2-bb90c4974208"><span>Biologie als Wissenschaft vom Leben beschreiben</span><code>8d35381e-d646-512c-b0c2-bb90c4974208</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba-reverse-heading">
+          <p class="section-heading" id="goal-55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-5f39afac-897c-5ed3-95b5-89ccf66b2532" rel="noreferrer noopener"><span>Vielfalt und Artensterben</span> <code>5f39afac-897c-5ed3-95b5-89ccf66b2532</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-11e90f71-a9a4-5a57-b619-ad5d81e81f96" rel="noreferrer noopener"><span>Kennzeichen des Lebens erläutern</span> <code>11e90f71-a9a4-5a57-b619-ad5d81e81f96</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 10</span>
+      <span>Buch-Digest <code>sha256:1bdda3911db5d4dfa7587029a40614cab4ad4fa672b6d2c33de8c4d0ad55d0e7</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0b99c96202d8bb39562ffb32461338cd952ae9d114184e49a7b059a8c4c2b2bd</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he7-ten-ten-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba&amp;goalFingerprint=sha256%3A0b99c96202d8bb39562ffb32461338cd952ae9d114184e49a7b059a8c4c2b2bd&amp;pageFingerprint=sha256%3A4bfd75f0e7f73dd6d7de0009db70936ac55c4b0b91845b0283ca2e4efec4ff73&amp;bookDigest=sha256%3A1bdda3911db5d4dfa7587029a40614cab4ad4fa672b6d2c33de8c4d0ad55d0e7&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-91df35c7-e384-50d6-bb3a-37e74a6086f1" data-goal-id="91df35c7-e384-50d6-bb3a-37e74a6086f1" data-page-number="3" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-b530a382-2786-5794-8821-3e01a62d88fd" aria-labelledby="goal-91df35c7-e384-50d6-bb3a-37e74a6086f1-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-91df35c7-e384-50d6-bb3a-37e74a6086f1-title"><a class="goal-self-link" href="#goal-91df35c7-e384-50d6-bb3a-37e74a6086f1">Mikroskop sachgerecht nutzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>91df35c7-e384-50d6-bb3a-37e74a6086f1</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-a6e58d8976cd040ee78f15da">Biologische Grundlagen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:1bfc4f861c8863b9f7283fc8a477cec27ed97da97287abc40532c0089e01b792" data-rendered-digest="sha256:80edaffccd247c8fe65bbc4fbdc338a5c6c6cd28fb0fb76efe371df3f0a57832" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/91df35c7-e384-50d6-bb3a-37e74a6086f1/91df35c7-e384-50d6-bb3a-37e74a6086f1.png" alt="Schulmikroskop, einfaches Zwiebelhautpräparat und mikroskopischer Zellenausschnitt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-91df35c7-e384-50d6-bb3a-37e74a6086f1-description-heading">
+        <p class="section-heading" id="goal-91df35c7-e384-50d6-bb3a-37e74a6086f1-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann ein Mikroskop als Arbeitsgerät bedienen und einfache Präparate herstellen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, HE, NI, NW:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-91df35c7-e384-50d6-bb3a-37e74a6086f1" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-91df35c7-e384-50d6-bb3a-37e74a6086f1-requires-heading">
+          <p class="section-heading" id="goal-91df35c7-e384-50d6-bb3a-37e74a6086f1-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-91df35c7-e384-50d6-bb3a-37e74a6086f1-reverse-heading">
+          <p class="section-heading" id="goal-91df35c7-e384-50d6-bb3a-37e74a6086f1-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-e0d04e58-1591-5230-bfa6-5c685b56d25b"><span>Bau der Pflanzenzelle beschreiben</span><code>e0d04e58-1591-5230-bfa6-5c685b56d25b</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-91df35c7-e384-50d6-bb3a-37e74a6086f1-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-91df35c7-e384-50d6-bb3a-37e74a6086f1-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-91df35c7-e384-50d6-bb3a-37e74a6086f1-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-91df35c7-e384-50d6-bb3a-37e74a6086f1-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1c3470ae-83f8-52e9-98ae-b0a712755b66" rel="noreferrer noopener"><span>Pflanzenzellen im Gewebe</span> <code>1c3470ae-83f8-52e9-98ae-b0a712755b66</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 10</span>
+      <span>Buch-Digest <code>sha256:1bdda3911db5d4dfa7587029a40614cab4ad4fa672b6d2c33de8c4d0ad55d0e7</code></span>
+      <span>Ziel-Fingerprint <code>sha256:eb23a6c0054d89c633c6db3944bbdafd7229d2035c7f0fd02db8f2c03aed0b57</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he7-ten-ten-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=91df35c7-e384-50d6-bb3a-37e74a6086f1&amp;goalFingerprint=sha256%3Aeb23a6c0054d89c633c6db3944bbdafd7229d2035c7f0fd02db8f2c03aed0b57&amp;pageFingerprint=sha256%3A666afe1484cb3c51a7c0dc6b3c3492e77356875dfc8cd8bab842b53d52f4b0c6&amp;bookDigest=sha256%3A1bdda3911db5d4dfa7587029a40614cab4ad4fa672b6d2c33de8c4d0ad55d0e7&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e0d04e58-1591-5230-bfa6-5c685b56d25b" data-goal-id="e0d04e58-1591-5230-bfa6-5c685b56d25b" data-page-number="4" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-b530a382-2786-5794-8821-3e01a62d88fd" aria-labelledby="goal-e0d04e58-1591-5230-bfa6-5c685b56d25b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e0d04e58-1591-5230-bfa6-5c685b56d25b-title"><a class="goal-self-link" href="#goal-e0d04e58-1591-5230-bfa6-5c685b56d25b">Bau der Pflanzenzelle beschreiben</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e0d04e58-1591-5230-bfa6-5c685b56d25b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-a6e58d8976cd040ee78f15da">Biologische Grundlagen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:ec5499da29830c047e341dede9485764399447cca7c3eececf25b7714ac28b4c" data-rendered-digest="sha256:46f4cafcdba2fba2271ccca5aa19d020647f1768f3b20144c078215a510fadb9" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/e0d04e58-1591-5230-bfa6-5c685b56d25b/e0d04e58-1591-5230-bfa6-5c685b56d25b.png" alt="Vereinfachte grüne Blattzelle mit Zellwand, Zellmembran, Zellkern, Zentralvakuole, Chloroplasten und Mitochondrien.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e0d04e58-1591-5230-bfa6-5c685b56d25b-description-heading">
+        <p class="section-heading" id="goal-e0d04e58-1591-5230-bfa6-5c685b56d25b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Bestandteile einer Pflanzenzelle benennen und ihre Funktionen erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-e0d04e58-1591-5230-bfa6-5c685b56d25b" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e0d04e58-1591-5230-bfa6-5c685b56d25b-requires-heading">
+          <p class="section-heading" id="goal-e0d04e58-1591-5230-bfa6-5c685b56d25b-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-91df35c7-e384-50d6-bb3a-37e74a6086f1"><span>Mikroskop sachgerecht nutzen</span><code>91df35c7-e384-50d6-bb3a-37e74a6086f1</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-e0d04e58-1591-5230-bfa6-5c685b56d25b-reverse-heading">
+          <p class="section-heading" id="goal-e0d04e58-1591-5230-bfa6-5c685b56d25b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-b1dff57f-329e-5264-b2b9-2db71a0b2172"><span>Pflanzen- und Tierzellen vergleichen</span><code>b1dff57f-329e-5264-b2b9-2db71a0b2172</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-fc89ed54-1a78-55a9-8e54-751d6d46dad6"><span>Lichtabhängigkeit der Fotosynthese nachweisen</span><code>fc89ed54-1a78-55a9-8e54-751d6d46dad6</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-e0d04e58-1591-5230-bfa6-5c685b56d25b-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e0d04e58-1591-5230-bfa6-5c685b56d25b-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-d71e2310-2331-5e66-b7df-c2807fccb329" rel="noreferrer noopener"><span>Organisationsstufen eines Vielzellers erläutern</span> <code>d71e2310-2331-5e66-b7df-c2807fccb329</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-fc8c4b02-02f2-5ad6-b481-224d36121da1" rel="noreferrer noopener"><span>Zellorganellen zuordnen</span> <code>fc8c4b02-02f2-5ad6-b481-224d36121da1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d" rel="noreferrer noopener"><span>Keimung und Wachstum</span> <code>19f806d2-d4e3-5ad4-98a8-1d61bdd81e3d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 10</span>
+      <span>Buch-Digest <code>sha256:1bdda3911db5d4dfa7587029a40614cab4ad4fa672b6d2c33de8c4d0ad55d0e7</code></span>
+      <span>Ziel-Fingerprint <code>sha256:66924cc3a250f4cfb5026d218ee73fef3329141437595c45d1eddda5099dbcb9</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he7-ten-ten-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=e0d04e58-1591-5230-bfa6-5c685b56d25b&amp;goalFingerprint=sha256%3A66924cc3a250f4cfb5026d218ee73fef3329141437595c45d1eddda5099dbcb9&amp;pageFingerprint=sha256%3Acb8858fe963b364b77113470bfb534ea984deefb6f210aa3c5dfe6d396893425&amp;bookDigest=sha256%3A1bdda3911db5d4dfa7587029a40614cab4ad4fa672b6d2c33de8c4d0ad55d0e7&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b1dff57f-329e-5264-b2b9-2db71a0b2172" data-goal-id="b1dff57f-329e-5264-b2b9-2db71a0b2172" data-page-number="5" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-b530a382-2786-5794-8821-3e01a62d88fd" aria-labelledby="goal-b1dff57f-329e-5264-b2b9-2db71a0b2172-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b1dff57f-329e-5264-b2b9-2db71a0b2172-title"><a class="goal-self-link" href="#goal-b1dff57f-329e-5264-b2b9-2db71a0b2172">Pflanzen- und Tierzellen vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b1dff57f-329e-5264-b2b9-2db71a0b2172</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-a6e58d8976cd040ee78f15da">Biologische Grundlagen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:1dbb58b4cf206bc89410e323a090383bf259b659468e4f860b863c8e6527e6a6" data-rendered-digest="sha256:8fd0099ce20909c85c7a997a0727c192e450641c2a061b81f8cfbd1cac79a4a1" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/b1dff57f-329e-5264-b2b9-2db71a0b2172/b1dff57f-329e-5264-b2b9-2db71a0b2172.png" alt="Vergleich einer grünen Blattzelle mit einer Tierzelle; gemeinsame und verschiedene Strukturen sind erkennbar.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b1dff57f-329e-5264-b2b9-2db71a0b2172-description-heading">
+        <p class="section-heading" id="goal-b1dff57f-329e-5264-b2b9-2db71a0b2172-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Gemeinsamkeiten und Unterschiede von Pflanzen- und Tierzellen darlegen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-b1dff57f-329e-5264-b2b9-2db71a0b2172" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b1dff57f-329e-5264-b2b9-2db71a0b2172-requires-heading">
+          <p class="section-heading" id="goal-b1dff57f-329e-5264-b2b9-2db71a0b2172-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e0d04e58-1591-5230-bfa6-5c685b56d25b"><span>Bau der Pflanzenzelle beschreiben</span><code>e0d04e58-1591-5230-bfa6-5c685b56d25b</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-b1dff57f-329e-5264-b2b9-2db71a0b2172-reverse-heading">
+          <p class="section-heading" id="goal-b1dff57f-329e-5264-b2b9-2db71a0b2172-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-b1dff57f-329e-5264-b2b9-2db71a0b2172-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b1dff57f-329e-5264-b2b9-2db71a0b2172-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-b4176012-f93a-5dd2-84b3-edd6a9932367" rel="noreferrer noopener"><span>Genetik, Vererbung und Gentechnik (Sek I)</span> <code>b4176012-f93a-5dd2-84b3-edd6a9932367</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f" rel="noreferrer noopener"><span>Zelltypen unterscheiden</span> <code>7c6bf0cc-6ed8-56b1-b44a-642f7a069a5f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-4a8a6cec-a2cc-56fe-b3ab-7ca017f640cf" rel="noreferrer noopener"><span>Biotechnologische Nutzbarkeit von Mikroorganismen erklären</span> <code>4a8a6cec-a2cc-56fe-b3ab-7ca017f640cf</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1d2b1038-dcd5-529a-b085-9e14f1d58c76" rel="noreferrer noopener"><span>Mitose und Meiose</span> <code>1d2b1038-dcd5-529a-b085-9e14f1d58c76</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-0263fb84-33b1-52a3-a47e-dad56be7c9bc" rel="noreferrer noopener"><span>Gen, Genprodukt und Merkmal im einfachen Modell verknüpfen</span> <code>0263fb84-33b1-52a3-a47e-dad56be7c9bc</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-36d3bf01-e68b-55be-8e20-5652ada36a51" rel="noreferrer noopener"><span>Erbgleichheit durch Mitose am Chromosomenmodell begründen</span> <code>36d3bf01-e68b-55be-8e20-5652ada36a51</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-0b55e592-3335-52e4-8b4f-79c53f32400b" rel="noreferrer noopener"><span>Unabhängige Chromosomenverteilung bei der Meiose erläutern</span> <code>0b55e592-3335-52e4-8b4f-79c53f32400b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-9e459608-bdea-55a1-b9c5-214bbd741be6" rel="noreferrer noopener"><span>Abschnittsaustausch bei der Meiose erläutern</span> <code>9e459608-bdea-55a1-b9c5-214bbd741be6</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 10</span>
+      <span>Buch-Digest <code>sha256:1bdda3911db5d4dfa7587029a40614cab4ad4fa672b6d2c33de8c4d0ad55d0e7</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0761918d85e43747bf025d5425d2a09b2d085afa14c9c0e26e0ef5b960ed907f</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he7-ten-ten-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=b1dff57f-329e-5264-b2b9-2db71a0b2172&amp;goalFingerprint=sha256%3A0761918d85e43747bf025d5425d2a09b2d085afa14c9c0e26e0ef5b960ed907f&amp;pageFingerprint=sha256%3Aba3cdd62fd6becda54ec4349677c9bf8a00704ba5ea6c01a553c3a832e5cf672&amp;bookDigest=sha256%3A1bdda3911db5d4dfa7587029a40614cab4ad4fa672b6d2c33de8c4d0ad55d0e7&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-fc89ed54-1a78-55a9-8e54-751d6d46dad6" data-goal-id="fc89ed54-1a78-55a9-8e54-751d6d46dad6" data-page-number="6" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-860c80f9-e463-598b-8ef8-79f65c12f235" aria-labelledby="goal-fc89ed54-1a78-55a9-8e54-751d6d46dad6-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-fc89ed54-1a78-55a9-8e54-751d6d46dad6-title"><a class="goal-self-link" href="#goal-fc89ed54-1a78-55a9-8e54-751d6d46dad6">Lichtabhängigkeit der Fotosynthese nachweisen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>fc89ed54-1a78-55a9-8e54-751d6d46dad6</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-8290eb0c516ee5d888cba674">Fotosynthese und Zellatmung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f8c252ce44b216b2541004ccb396b7ba9d91c6d4414b64ccdcf76ef14e60643b" data-rendered-digest="sha256:e2f5388ac3b58b64568383e5d72ca31892cae4ea2949388f46928163ee8a3d2b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/fc89ed54-1a78-55a9-8e54-751d6d46dad6/fc89ed54-1a78-55a9-8e54-751d6d46dad6.png" alt="Ein teilweise lichtdicht abgedecktes Blatt und die unterschiedliche Stärkefärbung nach dem Test.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-fc89ed54-1a78-55a9-8e54-751d6d46dad6-description-heading">
+        <p class="section-heading" id="goal-fc89ed54-1a78-55a9-8e54-751d6d46dad6-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Einfluss von Licht auf die Fotosynthese experimentell nachweisen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-fc89ed54-1a78-55a9-8e54-751d6d46dad6" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-fc89ed54-1a78-55a9-8e54-751d6d46dad6-requires-heading">
+          <p class="section-heading" id="goal-fc89ed54-1a78-55a9-8e54-751d6d46dad6-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e0d04e58-1591-5230-bfa6-5c685b56d25b"><span>Bau der Pflanzenzelle beschreiben</span><code>e0d04e58-1591-5230-bfa6-5c685b56d25b</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-fc89ed54-1a78-55a9-8e54-751d6d46dad6-reverse-heading">
+          <p class="section-heading" id="goal-fc89ed54-1a78-55a9-8e54-751d6d46dad6-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-0d96a802-2a8d-5445-a7fa-02387f6b1f2d"><span>Kohlenstoffdioxid und Wasser als Voraussetzungen zeigen</span><code>0d96a802-2a8d-5445-a7fa-02387f6b1f2d</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 10</span>
+      <span>Buch-Digest <code>sha256:1bdda3911db5d4dfa7587029a40614cab4ad4fa672b6d2c33de8c4d0ad55d0e7</code></span>
+      <span>Ziel-Fingerprint <code>sha256:15724aed44d06b9c576c9089fb3e6078621b7eb30eed77951b6f0b00be099d09</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he7-ten-ten-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=fc89ed54-1a78-55a9-8e54-751d6d46dad6&amp;goalFingerprint=sha256%3A15724aed44d06b9c576c9089fb3e6078621b7eb30eed77951b6f0b00be099d09&amp;pageFingerprint=sha256%3Abca780f028cf420650bded2f18af8e9951f332b94f44a397655c9598c22ec602&amp;bookDigest=sha256%3A1bdda3911db5d4dfa7587029a40614cab4ad4fa672b6d2c33de8c4d0ad55d0e7&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0d96a802-2a8d-5445-a7fa-02387f6b1f2d" data-goal-id="0d96a802-2a8d-5445-a7fa-02387f6b1f2d" data-page-number="7" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-860c80f9-e463-598b-8ef8-79f65c12f235" aria-labelledby="goal-0d96a802-2a8d-5445-a7fa-02387f6b1f2d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-0d96a802-2a8d-5445-a7fa-02387f6b1f2d-title"><a class="goal-self-link" href="#goal-0d96a802-2a8d-5445-a7fa-02387f6b1f2d">Kohlenstoffdioxid und Wasser als Voraussetzungen zeigen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0d96a802-2a8d-5445-a7fa-02387f6b1f2d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-8290eb0c516ee5d888cba674">Fotosynthese und Zellatmung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d647b70ca5de47a6691db5d6692768e63449a10732de6577bde64dda0ee0a069" data-rendered-digest="sha256:36b555340d2ba521e25afcdbc8ccb68e15c061505c1a2b063d1c7a6688870684" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/0d96a802-2a8d-5445-a7fa-02387f6b1f2d/0d96a802-2a8d-5445-a7fa-02387f6b1f2d.png" alt="Zwei gleich beleuchtete, mit Wasser versorgte Pflanzen unter Glasglocken; nur rechts wird Kohlenstoffdioxid absorbiert.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0d96a802-2a8d-5445-a7fa-02387f6b1f2d-description-heading">
+        <p class="section-heading" id="goal-0d96a802-2a8d-5445-a7fa-02387f6b1f2d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Bedarf von Kohlenstoffdioxid und Wasser für die Fotosynthese experimentell zeigen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, HE, NI, NW:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-0d96a802-2a8d-5445-a7fa-02387f6b1f2d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0d96a802-2a8d-5445-a7fa-02387f6b1f2d-requires-heading">
+          <p class="section-heading" id="goal-0d96a802-2a8d-5445-a7fa-02387f6b1f2d-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-fc89ed54-1a78-55a9-8e54-751d6d46dad6"><span>Lichtabhängigkeit der Fotosynthese nachweisen</span><code>fc89ed54-1a78-55a9-8e54-751d6d46dad6</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-0d96a802-2a8d-5445-a7fa-02387f6b1f2d-reverse-heading">
+          <p class="section-heading" id="goal-0d96a802-2a8d-5445-a7fa-02387f6b1f2d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-e6f128c8-b38e-5167-9367-77e079a994c3"><span>Stärkeproduktion und Sauerstoffentwicklung nachweisen</span><code>e6f128c8-b38e-5167-9367-77e079a994c3</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 10</span>
+      <span>Buch-Digest <code>sha256:1bdda3911db5d4dfa7587029a40614cab4ad4fa672b6d2c33de8c4d0ad55d0e7</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7d8b2c9584ba77e7c591ae3816b8d0f010116a1729218dda7d747d678398cdf8</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he7-ten-ten-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=0d96a802-2a8d-5445-a7fa-02387f6b1f2d&amp;goalFingerprint=sha256%3A7d8b2c9584ba77e7c591ae3816b8d0f010116a1729218dda7d747d678398cdf8&amp;pageFingerprint=sha256%3A663c0346f55261386eaaec48ff3079cfa7629751d2e1c3929e6e3774b6fd7d16&amp;bookDigest=sha256%3A1bdda3911db5d4dfa7587029a40614cab4ad4fa672b6d2c33de8c4d0ad55d0e7&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e6f128c8-b38e-5167-9367-77e079a994c3" data-goal-id="e6f128c8-b38e-5167-9367-77e079a994c3" data-page-number="8" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-860c80f9-e463-598b-8ef8-79f65c12f235" aria-labelledby="goal-e6f128c8-b38e-5167-9367-77e079a994c3-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e6f128c8-b38e-5167-9367-77e079a994c3-title"><a class="goal-self-link" href="#goal-e6f128c8-b38e-5167-9367-77e079a994c3">Stärkeproduktion und Sauerstoffentwicklung nachweisen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e6f128c8-b38e-5167-9367-77e079a994c3</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-8290eb0c516ee5d888cba674">Fotosynthese und Zellatmung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a2299137c092794682efb3c93a9a95acb15d3cc057845054995eab4d25dc4104" data-rendered-digest="sha256:9c7484b6cb7abdcf9b3a125103b774df7e26bc9a572e79f03a1d6a88243f3b04" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/e6f128c8-b38e-5167-9367-77e079a994c3/e6f128c8-b38e-5167-9367-77e079a994c3.png" alt="Stärkenachweis am entfärbten Blatt und getrennte Gasgewinnung mit anschließender positiver Glimmspanprobe.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e6f128c8-b38e-5167-9367-77e079a994c3-description-heading">
+        <p class="section-heading" id="goal-e6f128c8-b38e-5167-9367-77e079a994c3-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Stärkeproduktion und Sauerstoffentwicklung als Ergebnisse der Fotosynthese nachweisen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-e6f128c8-b38e-5167-9367-77e079a994c3" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e6f128c8-b38e-5167-9367-77e079a994c3-requires-heading">
+          <p class="section-heading" id="goal-e6f128c8-b38e-5167-9367-77e079a994c3-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-0d96a802-2a8d-5445-a7fa-02387f6b1f2d"><span>Kohlenstoffdioxid und Wasser als Voraussetzungen zeigen</span><code>0d96a802-2a8d-5445-a7fa-02387f6b1f2d</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-e6f128c8-b38e-5167-9367-77e079a994c3-reverse-heading">
+          <p class="section-heading" id="goal-e6f128c8-b38e-5167-9367-77e079a994c3-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-576d59e2-397a-5654-b853-7c0c4870fbd3"><span>Wortgleichung der Fotosynthese angeben und deuten</span><code>576d59e2-397a-5654-b853-7c0c4870fbd3</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 10</span>
+      <span>Buch-Digest <code>sha256:1bdda3911db5d4dfa7587029a40614cab4ad4fa672b6d2c33de8c4d0ad55d0e7</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3f2a58c3abcdfc843f7bb008ef88c1504e2749370c921f66484404e33e0ece7f</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he7-ten-ten-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=e6f128c8-b38e-5167-9367-77e079a994c3&amp;goalFingerprint=sha256%3A3f2a58c3abcdfc843f7bb008ef88c1504e2749370c921f66484404e33e0ece7f&amp;pageFingerprint=sha256%3A9a6cc0b5094337166cbf28b5ef9cfceaa3f6edc4ed309d48a4912d162a878649&amp;bookDigest=sha256%3A1bdda3911db5d4dfa7587029a40614cab4ad4fa672b6d2c33de8c4d0ad55d0e7&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-576d59e2-397a-5654-b853-7c0c4870fbd3" data-goal-id="576d59e2-397a-5654-b853-7c0c4870fbd3" data-page-number="9" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-860c80f9-e463-598b-8ef8-79f65c12f235" aria-labelledby="goal-576d59e2-397a-5654-b853-7c0c4870fbd3-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-576d59e2-397a-5654-b853-7c0c4870fbd3-title"><a class="goal-self-link" href="#goal-576d59e2-397a-5654-b853-7c0c4870fbd3">Wortgleichung der Fotosynthese angeben und deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>576d59e2-397a-5654-b853-7c0c4870fbd3</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-8290eb0c516ee5d888cba674">Fotosynthese und Zellatmung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9c1132ecf855c8cb3187e21e397cc6f0d23709b5d778273895e165450a9e4d4c" data-rendered-digest="sha256:8b8adbcda47c055c973817cced8fb5a40b05f0d34c04654494b6cc4ce423b4d7" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/576d59e2-397a-5654-b853-7c0c4870fbd3/576d59e2-397a-5654-b853-7c0c4870fbd3.png" alt="Wortgleichung der Fotosynthese: Kohlenstoffdioxid und Wasser werden unter Licht zu Traubenzucker und Sauerstoff.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-576d59e2-397a-5654-b853-7c0c4870fbd3-description-heading">
+        <p class="section-heading" id="goal-576d59e2-397a-5654-b853-7c0c4870fbd3-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Wortgleichung der Fotosynthese angeben und inhaltlich deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-576d59e2-397a-5654-b853-7c0c4870fbd3" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-576d59e2-397a-5654-b853-7c0c4870fbd3-requires-heading">
+          <p class="section-heading" id="goal-576d59e2-397a-5654-b853-7c0c4870fbd3-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e6f128c8-b38e-5167-9367-77e079a994c3"><span>Stärkeproduktion und Sauerstoffentwicklung nachweisen</span><code>e6f128c8-b38e-5167-9367-77e079a994c3</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-576d59e2-397a-5654-b853-7c0c4870fbd3-reverse-heading">
+          <p class="section-heading" id="goal-576d59e2-397a-5654-b853-7c0c4870fbd3-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-8678d0b5-8b74-5b01-8143-91bfea1e4482"><span>Bedeutung von Fotosynthese und Zellatmung erklären</span><code>8678d0b5-8b74-5b01-8143-91bfea1e4482</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-576d59e2-397a-5654-b853-7c0c4870fbd3-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-576d59e2-397a-5654-b853-7c0c4870fbd3-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-32f47903-0788-5c27-ac88-7464f481f2f7" rel="noreferrer noopener"><span>Fotosynthese modellieren</span> <code>32f47903-0788-5c27-ac88-7464f481f2f7</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 10</span>
+      <span>Buch-Digest <code>sha256:1bdda3911db5d4dfa7587029a40614cab4ad4fa672b6d2c33de8c4d0ad55d0e7</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2fc8b4c84496f676dc30eeae07c7d9f4c44ffd84bc5090131c4a856b350246c4</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he7-ten-ten-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=576d59e2-397a-5654-b853-7c0c4870fbd3&amp;goalFingerprint=sha256%3A2fc8b4c84496f676dc30eeae07c7d9f4c44ffd84bc5090131c4a856b350246c4&amp;pageFingerprint=sha256%3A2940e2348227744f189be4aee4e68abce3f0a9d392550acdc66c9adc113eb5c8&amp;bookDigest=sha256%3A1bdda3911db5d4dfa7587029a40614cab4ad4fa672b6d2c33de8c4d0ad55d0e7&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8678d0b5-8b74-5b01-8143-91bfea1e4482" data-goal-id="8678d0b5-8b74-5b01-8143-91bfea1e4482" data-page-number="10" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-860c80f9-e463-598b-8ef8-79f65c12f235" aria-labelledby="goal-8678d0b5-8b74-5b01-8143-91bfea1e4482-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8678d0b5-8b74-5b01-8143-91bfea1e4482-title"><a class="goal-self-link" href="#goal-8678d0b5-8b74-5b01-8143-91bfea1e4482">Bedeutung von Fotosynthese und Zellatmung erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8678d0b5-8b74-5b01-8143-91bfea1e4482</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-8290eb0c516ee5d888cba674">Fotosynthese und Zellatmung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:0e005aca689bacceeff7e71dc65bbbdb893fcb6be139ffdb38e4103224114478" data-rendered-digest="sha256:96290f35e0272d21c44a999cad3834207f21a1ee2e96430e661ac7d975153dc2" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/8678d0b5-8b74-5b01-8143-91bfea1e4482/8678d0b5-8b74-5b01-8143-91bfea1e4482.png" alt="Fotosynthese liefert organische Stoffe und Sauerstoff; Pflanze und Tier nutzen organische Stoffe und Sauerstoff für die Zellatmung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8678d0b5-8b74-5b01-8143-91bfea1e4482-description-heading">
+        <p class="section-heading" id="goal-8678d0b5-8b74-5b01-8143-91bfea1e4482-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Bedeutung der Fotosynthese für Wachstum, Ernährung und Sauerstoffversorgung erklären und sie mit Zellatmung in Beziehung setzen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-8678d0b5-8b74-5b01-8143-91bfea1e4482" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8678d0b5-8b74-5b01-8143-91bfea1e4482-requires-heading">
+          <p class="section-heading" id="goal-8678d0b5-8b74-5b01-8143-91bfea1e4482-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-576d59e2-397a-5654-b853-7c0c4870fbd3"><span>Wortgleichung der Fotosynthese angeben und deuten</span><code>576d59e2-397a-5654-b853-7c0c4870fbd3</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-8678d0b5-8b74-5b01-8143-91bfea1e4482-reverse-heading">
+          <p class="section-heading" id="goal-8678d0b5-8b74-5b01-8143-91bfea1e4482-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-8678d0b5-8b74-5b01-8143-91bfea1e4482-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8678d0b5-8b74-5b01-8143-91bfea1e4482-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-135447a0-5d55-564a-afc3-3e3fbed77819" rel="noreferrer noopener"><span>Grundlagen der Zellatmung</span> <code>135447a0-5d55-564a-afc3-3e3fbed77819</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-8f9dc189-e875-56dd-bd97-996c8bf0cdc4" rel="noreferrer noopener"><span>Glucoseabbau und ATP erläutern</span> <code>8f9dc189-e875-56dd-bd97-996c8bf0cdc4</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-4a8a6cec-a2cc-56fe-b3ab-7ca017f640cf" rel="noreferrer noopener"><span>Biotechnologische Nutzbarkeit von Mikroorganismen erklären</span> <code>4a8a6cec-a2cc-56fe-b3ab-7ca017f640cf</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 10</span>
+      <span>Buch-Digest <code>sha256:1bdda3911db5d4dfa7587029a40614cab4ad4fa672b6d2c33de8c4d0ad55d0e7</code></span>
+      <span>Ziel-Fingerprint <code>sha256:799b6a5bc3fd66ca448afc74f6dab23ae7f35099a65eb5b4295be7a69a98fec8</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he7-ten-ten-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=8678d0b5-8b74-5b01-8143-91bfea1e4482&amp;goalFingerprint=sha256%3A799b6a5bc3fd66ca448afc74f6dab23ae7f35099a65eb5b4295be7a69a98fec8&amp;pageFingerprint=sha256%3A9b1fc6cf618b4e2aeb82a8eb26eb9fb2f10dd9cb177ff1c91e3dfcbd0339adb5&amp;bookDigest=sha256%3A1bdda3911db5d4dfa7587029a40614cab4ad4fa672b6d2c33de8c4d0ad55d0e7&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

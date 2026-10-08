@@ -1,0 +1,6 @@
+{
+  "recordedAt": "2026-10-08T02:07:06.202597+00:00",
+  "exitCode": 1,
+  "error": "__file__ was absolute; assertion incorrectly expected relative path. No input or sealed file was changed; fix is to resolve script parent against current repository root.",
+  "correctiveAction": "Path(__file__).resolve().parent.relative_to(Path.cwd().resolve())"
+}

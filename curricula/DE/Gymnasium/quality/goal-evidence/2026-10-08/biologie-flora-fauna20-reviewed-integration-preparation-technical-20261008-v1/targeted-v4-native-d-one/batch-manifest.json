@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-flora-fauna20-targeted-v4-reviewed-current14-technical-20261008-v1-one",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-flora-fauna20-reviewed-integration-preparation-technical-20261008-v1/targeted-v4-native-d-one.batch.config.json",
+  "configDigest": "sha256:b5e574f91875ab066a9ded270a0e6da8e018d40e799cdfd4bfb81ea4b7eadc17",
+  "goalIds": [
+    "321ea315-37fe-5f9e-8fa8-dd631bb447c7"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 391,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-flora-fauna20-amnion14-raster-native-targeted-author-root-v3/native-raster-candidate/full391.book.config.author.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-flora-fauna20-amnion14-raster-native-targeted-author-root-v3/candidate/canonical.current474-twenty-new-raster-author.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:4414e5428c4ea6caaeb40060a265ae96bc0165888ff697a28c381365c82cd2a8"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:b87e02b105b66345ead2e620d55ccb9f5627ab2373b8390225017148437af813",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:0e2687b6f1609cea852d94bfc8d4668b52452d659d1f5e4940ac00f4f2a64810",
+    "reviewInputFingerprint": "sha256:b4fd4816007a2cd51317b9c68e78a79c044314c8c0a0e5d1cf9dd48b1db5ebe8",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-flora-fauna20-targeted-amnion14-campaign-a-20261008-v3",
+        "campaignDigest": "sha256:cd14b008077c872a40be6ce501c27652ec9e1b87b0e23f411e998499fb7922be",
+        "roundId": "biologie-flora-fauna20-targeted-amnion14-independent-a-20261008-v3",
+        "independenceGroupId": "biologie-flora-fauna20-targeted-amnion14-independent-a-20261008-v3",
+        "batchId": "biologie-flora-fauna20-targeted-amnion14-independent-a-20261008-v3.batch-001",
+        "batchInputFingerprint": "sha256:8738a901f32f0a92153f4dc62f3e3ad3cb95221b409db9e11e83af630d65355f"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-flora-fauna20-targeted-amnion14-campaign-b-20261008-v3",
+        "campaignDigest": "sha256:a940e8b8efa0f5d749ea5e28436d04a8528c91a8dfdb8c759edf70dde69540fc",
+        "roundId": "biologie-flora-fauna20-targeted-amnion14-independent-b-20261008-v3",
+        "independenceGroupId": "biologie-flora-fauna20-targeted-amnion14-independent-b-20261008-v3",
+        "batchId": "biologie-flora-fauna20-targeted-amnion14-independent-b-20261008-v3.batch-001",
+        "batchInputFingerprint": "sha256:82d75b5a4e0211732b1f40196f632dcd987860b3c059025b286ff780cb8dc729"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

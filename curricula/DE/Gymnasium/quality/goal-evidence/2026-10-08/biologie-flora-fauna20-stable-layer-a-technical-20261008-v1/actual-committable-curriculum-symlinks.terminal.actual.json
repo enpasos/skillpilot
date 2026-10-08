@@ -1,0 +1,25 @@
+{
+  "label": "actual-committable-curriculum-symlinks",
+  "argv": [
+    "python",
+    "-c",
+    "import sys,json;sys.path.insert(0,'scripts');import validate_schemas;e=validate_schemas.curriculum_symlink_errors();print(json.dumps({'errors':e,'errorCount':len(e),'standardAPI':'curriculum_symlink_errors'}));sys.exit(bool(e))"
+  ],
+  "cwd": ".",
+  "startedAt": "2026-10-07T23:32:34.607400+00:00",
+  "completedAt": "2026-10-07T23:32:36.816311+00:00",
+  "elapsedSeconds": 2.208916636001959,
+  "exitCode": 0,
+  "stdout": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-flora-fauna20-stable-layer-a-technical-20261008-v1/actual-committable-curriculum-symlinks.stdout.actual.txt",
+    "sha256": "e42eb5737788e448bc0a915f43c63363f4ec755111a5e8d7c172b933816c580f",
+    "bytes": 76
+  },
+  "stderr": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-flora-fauna20-stable-layer-a-technical-20261008-v1/actual-committable-curriculum-symlinks.stderr.actual.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "newScientificReview": false,
+  "humanApproval": false
+}

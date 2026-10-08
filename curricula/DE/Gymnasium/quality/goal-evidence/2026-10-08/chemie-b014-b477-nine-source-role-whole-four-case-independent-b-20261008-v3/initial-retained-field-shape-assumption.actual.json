@@ -1,0 +1,7 @@
+{
+  "actualObservedTerminalExitCode": 1,
+  "toolOutputChunkId": "0b73a3",
+  "actualError": "AssertionError at line91: assert row['P']['retained'] is True",
+  "cause": "Reviewer technical helper assumed boolean; sealed author retained field actually contains an exact existing whole record object. No scientific case failed.",
+  "correction": "Use the actual retained record structure and require whole-record equality in the current ledger without re-reviewing old cases."
+}

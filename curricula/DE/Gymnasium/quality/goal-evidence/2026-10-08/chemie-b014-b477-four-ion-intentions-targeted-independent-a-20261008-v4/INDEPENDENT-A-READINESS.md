@@ -1,0 +1,9 @@
+# Independent A: four-ion source remediation v4
+
+The three complete new DE/EN bromide, carbonate and ammonium cases are KEEP within their stated candidate, control and interference limits. Both original BB/BE source unions receive a bounded KEEP for the six named ion intentions. This is a genuine scientific judgment, made before any new peer B output was read. The exact author seal and all 67 author outputs were verified.
+
+The whole current a44/1c/fd goal bodies, supplementary bodies, five relevant whole current positive profiles, retained complete chloride and water-ion cases, and whole BB/BE primary pages17,26,44–46 were read. The independent native P3, four actual scope compilers and DAG checks exited0. All three proposed union partners are existing actual targets in every current BB/BE GK/LK view. The absent d2/413 selections and absent9dee applicability are not substituted with tags or new view entries.
+
+The RSC teacher and student PDFs were actually fetched with HTTP200 and read in full. They support the chemical methods, controls and professional safety boundaries; they impose no German curriculum duty. Their exact bytes remain outside the repository. The web-tool405 diagnostics are reported accurately. [Teacher method](https://edu.rsc.org/download?ac=523338) and [student method](https://edu.rsc.org/download?ac=523339).
+
+The original Q-phase practical intentions remain binding. Written synthetic E1/G1 model cases do not establish an actual experiment or learner performance. Old valid science and first-review artifacts remain unchanged. Whole B477 atomicity and whole national481-source closure remain open. Second eligible review, guarded current source integration and affected binding checks remain required. No active content, registry, D/P/V approval, human acceptance or M7 count was changed.

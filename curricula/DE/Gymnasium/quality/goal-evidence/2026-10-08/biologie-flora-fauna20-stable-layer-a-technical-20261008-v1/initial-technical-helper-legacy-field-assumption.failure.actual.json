@@ -1,0 +1,16 @@
+{
+  "argv": [
+    "python",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-flora-fauna20-stable-layer-a-technical-20261008-v1/run-stable-layer-a-technical.py",
+    "prepare"
+  ],
+  "exitCode": 1,
+  "observedActualToolInvocation": true,
+  "stdout": "",
+  "stderr": "AssertionError at line62: contentApprovedChatGpt/umlautsCorrectChatGpt expected yes",
+  "failingHelperSha256": "32897f29a06d4a4bb7d2ecead429f2ceafb6c097f06c657a7fe599a9906c59e9",
+  "cause": "Local technical helper mistakenly used legacy ChatGPT approval fields. Active machine V correctly uses aiApproved/aiApprovedAssetSha256. No underlying image or QA record correction required.",
+  "fixScope": "Own helper only; standard AI approval fields will be checked, legacy/human fields preserved.",
+  "activeContentMutation": false,
+  "humanApproval": false
+}

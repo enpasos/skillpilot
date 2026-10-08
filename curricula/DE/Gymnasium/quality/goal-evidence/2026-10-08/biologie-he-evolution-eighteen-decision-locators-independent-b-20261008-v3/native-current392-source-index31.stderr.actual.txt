@@ -1,0 +1,21 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Source-supported atlas goal count changed
+
+392 !== 391
+
+    at buildGoalBookSourceAtlasInputs (/home/enpasos/projects/skillpilot/app/scripts/goalBookSourceAtlasInputs.ts:326:10)
+    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-evolution-eighteen-decision-locators-independent-b-20261008-v3/check-native-current392-source-index-and31-consumers.independent-b.actual.mts:11:14)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 392,
+  expected: 391,
+  operator: 'strictEqual'
+}
+
+Node.js v20.20.2

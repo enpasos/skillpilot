@@ -1,0 +1,51 @@
+{
+  "artifactKind": "independent-b-targeted-reconsideration-after-first-blind-seal",
+  "recordedAt": "2026-10-07T20:46:49.449870+00:00",
+  "role": "Independent B rechecked the original whole cases/profile fields after learning A independently reported two findings; first verdict preserved.",
+  "firstBlindSeal": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-flora-fauna20-current391-independent-b-20261007-v1/first-independent-b-verdict.exact-input-output.freeze.json",
+    "sha256": "72280809695997894d4ca901ca61638316fd98c6d34f239ea850ed99df9911c7",
+    "bytes": 26930
+  },
+  "reviewerAFindingsReceivedOnlyAfterFirstBlindSeal": true,
+  "wholeOriginalInputsPersonallyReinspected": true,
+  "findings": [
+    {
+      "findingId": "B-follow-up-P09-cued-identification",
+      "goalId": "350c8fab-5f95-5cf0-b8a9-dbc5f425b6fd",
+      "originalProfileFingerprint": "sha256:3ddbfc5d725de957a3504675081f94d6af5e98a8e40ff9bccb374f08e31947f8",
+      "severity": "needs_targeted_P_remediation",
+      "confirmed": true,
+      "originalEvidence": [
+        "flora-fauna20-09-case-1 material gives A=Gänseblümchen/B=Klee/C=Gartenbohne alongside all assigned traits.",
+        "flora-fauna20-09-case-2 material gives X=Eiche/Y=Linde/Z=Esche with the presented leaf traits."
+      ],
+      "substantiveIssue": "Both supplied examples reveal every requested specimen identity. A learner can repeat the assignment instead of independently applying distinguishing features to a new unknown specimen. The model biology and bounded-key caveats are correct, but these two cases do not adequately evidence the identification aspect of the whole current goal.",
+      "requiredCorrection": "Retain an explicit bounded reference key but give unassigned unknown specimens with sufficient observable distinguishing features; require the justified path/assignment in each meaningful variation. Keep wild/use distinction and limits.",
+      "canonicalDescriptionChangeRequired": false,
+      "resolutionStatus": "open_pending_exact_root_remediation_and_recheck"
+    },
+    {
+      "findingId": "B-follow-up-P10-reviewer-choice-as-performance",
+      "goalId": "7eeb9de9-9a8e-5932-8f60-183367c87d09",
+      "originalProfileFingerprint": "sha256:409614074861c287e669f71aaa1b5301f96a576eb97cda11aa8e9f9ec6557578",
+      "severity": "needs_targeted_P_remediation",
+      "confirmed": true,
+      "originalEvidence": [
+        "Required transfer essentialUnderstandingDe includes the source permission of bird OR fish depth rather than exclusively biological understanding.",
+        "Core task/observable includes avoiding an asserted mandatory dual depth.",
+        "Both model answers include HE6.2/common-depth/source-choice commentary."
+      ],
+      "substantiveIssue": "Knowing or discussing a curriculum choice is not biological learner performance for this adaptation goal. Mixing it into required understanding/observable/model-answer fields introduces an additional competence and obscures the actual structural-functional habitat interpretation. Biological bird/fish limits remain correct.",
+      "requiredCorrection": "Preserve original-source choice and optional fish route in dissent/reviewer metadata. Keep required understanding, observations, tasks and model answers solely on structural-functional adaptation, medium/lifestyle variation, non-universal bird traits and bounded conclusions.",
+      "canonicalDescriptionChangeRequired": false,
+      "resolutionStatus": "open_pending_exact_root_remediation_and_recheck"
+    }
+  ],
+  "unchangedOtherWholeGoals": 18,
+  "scientificBiologyErrorsFound": 0,
+  "positiveEvidenceDesignFindingsConfirmed": 2,
+  "originalBlindPassNowQualifiedForTwoGoals": true,
+  "newStrictClosures": 0,
+  "humanApproval": false
+}

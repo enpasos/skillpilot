@@ -1,0 +1,43 @@
+node:assert:90
+  throw new AssertionError(obj);
+  ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
+  {
++   canonicalCurricularAtomicGoals: 392,
+-   canonicalCurricularAtomicGoals: 391,
+    omittedGoals: 0,
++   publishedCurricularAtomicGoals: 392,
+-   publishedCurricularAtomicGoals: 391,
+    sourceViews: 22,
+    unresolvedSourceScopeDecisions: 0
+  }
+    at testGoalBookSourceAtlasInputs (/home/enpasos/projects/skillpilot/app/scripts/testGoalBookSourceAtlasInputs.ts:155:10)
+    at [eval]:2:72
+    at runScriptInThisContext (node:internal/vm:209:10)
+    at node:internal/process/execution:118:14
+    at [eval]-wrapper:6:24
+    at runScript (node:internal/process/execution:101:62)
+    at asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:11) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: {
+    canonicalCurricularAtomicGoals: 392,
+    publishedCurricularAtomicGoals: 392,
+    sourceViews: 22,
+    unresolvedSourceScopeDecisions: 0,
+    omittedGoals: 0
+  },
+  expected: {
+    canonicalCurricularAtomicGoals: 391,
+    publishedCurricularAtomicGoals: 391,
+    sourceViews: 22,
+    unresolvedSourceScopeDecisions: 0,
+    omittedGoals: 0
+  },
+  operator: 'deepStrictEqual'
+}
+
+Node.js v20.20.2

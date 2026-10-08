@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "python",
+    "-c",
+    "import sys,json;sys.path.insert(0,'scripts');import validate_schemas;e=validate_schemas.curriculum_symlink_errors();print(json.dumps({'errorCount':len(e),'errors':e}));sys.exit(bool(e))"
+  ],
+  "startedAtUTC": "2026-10-08T02:54:47.752549+00:00",
+  "finishedAtUTC": "2026-10-08T02:54:50.196296+00:00",
+  "actualExitCode": 0,
+  "elapsedSeconds": 2.4457714700038196,
+  "stdout": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-current204-stable-layer-a-root-20261008-v1/ordinary-committable-symlink-check.stdout.actual.txt",
+    "sha256": "87b94bac2e48c9913d45db339b2eb7a000f019bfa67dbf9a71eeb466bb60c011",
+    "bytes": 32
+  },
+  "stderr": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-current204-stable-layer-a-root-20261008-v1/ordinary-committable-symlink-check.stderr.actual.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "actualStableBiologyCanonicalSha256": "82e0a67ecd7a1b765336349b66eb60279f91ea67a169c8667a08c93e5d68137d",
+  "humanApproval": false
+}

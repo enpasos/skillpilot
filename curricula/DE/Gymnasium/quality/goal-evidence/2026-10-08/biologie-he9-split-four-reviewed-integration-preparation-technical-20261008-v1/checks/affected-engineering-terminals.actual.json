@@ -1,0 +1,102 @@
+{
+  "terminals": [
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-split-four-reviewed-integration-preparation-technical-20261008-v1/check-current-reviewed-D4.technical.mts"
+      ],
+      "startedAt": "2026-10-08T02:16:39.921861+00:00",
+      "finishedAt": "2026-10-08T02:16:41.045291+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-split-four-reviewed-integration-preparation-technical-20261008-v1/checks/D4-native-current.stdout.actual.log",
+      "activeWrites": 0,
+      "newScienceReview": false,
+      "humanApproval": false
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-split-four-reviewed-integration-preparation-technical-20261008-v1/prepare-paired-V4-P2.technical.mts"
+      ],
+      "startedAt": "2026-10-08T02:16:39.922376+00:00",
+      "finishedAt": "2026-10-08T02:16:40.514306+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-split-four-reviewed-integration-preparation-technical-20261008-v1/checks/P2-V4-native-schema.stdout.actual.log",
+      "activeWrites": 0,
+      "newScienceReview": false,
+      "humanApproval": false
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:semantic-atomicity:check",
+        "--",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-split-four-reviewed-integration-preparation-technical-20261008-v1/candidate/A.current392-reviewed.inactive.config.json"
+      ],
+      "startedAt": "2026-10-08T02:16:39.923997+00:00",
+      "finishedAt": "2026-10-08T02:16:40.405206+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-split-four-reviewed-integration-preparation-technical-20261008-v1/checks/A392-native.stdout.actual.log",
+      "activeWrites": 0,
+      "newScienceReview": false,
+      "humanApproval": false
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:memory-card-review:check",
+        "--",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-split-four-reviewed-integration-preparation-technical-20261008-v1/candidate/M.current392-reviewed.inactive.config.json"
+      ],
+      "startedAt": "2026-10-08T02:16:39.924491+00:00",
+      "finishedAt": "2026-10-08T02:16:40.420491+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-split-four-reviewed-integration-preparation-technical-20261008-v1/checks/M392-native.stdout.actual.log",
+      "activeWrites": 0,
+      "newScienceReview": false,
+      "humanApproval": false
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/inactive/biologie-he9-split-four-reviewed-20261008-v1/atlas.inputs.json",
+        "--check"
+      ],
+      "startedAt": "2026-10-08T02:16:40.405726+00:00",
+      "finishedAt": "2026-10-08T02:16:41.216005+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-split-four-reviewed-integration-preparation-technical-20261008-v1/checks/SourceAtlas392-native-check.stdout.actual.log",
+      "activeWrites": 0,
+      "newScienceReview": false,
+      "humanApproval": false
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-split-four-reviewed-integration-preparation-technical-20261008-v1/check-real-derived-atlas392-model.v2.technical.mts"
+      ],
+      "startedAt": "2026-10-08T02:16:40.421264+00:00",
+      "finishedAt": "2026-10-08T02:16:42.847867+00:00",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-split-four-reviewed-integration-preparation-technical-20261008-v1/checks/Derived392-scopes-and-chapter-bindings.stdout.actual.log",
+      "activeWrites": 0,
+      "newScienceReview": false,
+      "humanApproval": false
+    }
+  ],
+  "allActualExit0": true,
+  "activeWrites": 0,
+  "strictGainClaimed": 0
+}

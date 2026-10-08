@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T01:57:13.112370+00:00",
+  "actualExitCode": 1,
+  "stderr": "Traceback (most recent call last): File <stdin>, line36, in <module>; AssertionError",
+  "failedStep": "Final packaging aggregation expected all terminal receipts to use actualExitCode; the four earlier receipts actually use exitCode. No native/source/science check failed.",
+  "diagnostic": "All122 first-sealed files unchanged; exactly3 textfield differences across2 goalIDs; A/M/P each16 records byte-exact; all9 terminal receipts have exitCode or actualExitCode=0.",
+  "filesAlreadyWrittenPreserved": [
+    "independent-primary-science-source-reading.actual.json"
+  ],
+  "recovery": "Normalize only the aggregator read of actualExitCode/exitCode. Earlier sealed receipts stay byte-exact."
+}

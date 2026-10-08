@@ -1,0 +1,11 @@
+# Chemie B014: eight reviewed source roles
+
+Actual protected baseline: Chemistry **173/378**, Biology202/391, Mathematics807/807, Physics478/478, terminal central exit0. This plan claims **zero new goals or strict gain**. Genuine independently first-sealed source A/B decisions support six bounded role drops and two BB/BE 1c/fd/a44 unions. Three complete DE/EN supplemental ion cases retain synthetic E1/G1 ai_candidate / needs_human_review status; no whole a44 P approval or actual practical performance is supplied.
+
+Five inactive mappings change exactly eight decisions and their corresponding edges; all other rows, edges, source text, course/stage fields, canonical480, class/A/M records, profiles and pictures are preserved. The ordinary isolated source-atlas generator and48 native view compiles passed with359 pages,378 canonical atoms and496 unresolved source-scope decisions unchanged. Seven generated view memberships narrow B477; its whole page changes only applicability and derived pageFingerprint. Other358 whole atlas pages are exact. Normalized original-source bindings change for3de, a44, B477 andfd.
+
+Existing current registered a44/fd D2 and P2 pass native verification; their whole pages and profiles are unchanged. Three existing image bindings remain exact; missing3de image remains open. B477 and HB-Q require a later genuine whole-source/compound D/P follow-up using the actual narrowed page. Whole481 also remains open. No accepted old science or picture was re-reviewed.
+
+Operative dependencies and standard native bundles pass actual git check-ignore and broken-symlink checks. Both isolated atlas builds exercised the established pinned offline source-document contract without raw PDF/HTML copies or exceptions. An initial inert-input ENOENT for two ordinary JSON original-documents is preserved; those actual unchanged JSON inputs were supplied and the standard check then passed. A draft wrong HB-Q hold identifier is explicitly corrected in a separate receipt, preserving the draft and original whole row.
+
+Root must apply under the plan guards, use the ordinary generator, verify exact eight derived outputs and affected current bindings, and bundle final publication/full checks at a stable integration. Separate human approval/trial remain open.

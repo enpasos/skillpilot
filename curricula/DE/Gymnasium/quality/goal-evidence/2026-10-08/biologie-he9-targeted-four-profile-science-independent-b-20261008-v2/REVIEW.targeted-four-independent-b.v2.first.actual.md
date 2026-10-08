@@ -1,0 +1,17 @@
+# HE9: gezieltes unabhängiges Science-first-V2-Urteil B
+
+Die vier ganzen geänderten Profile Ord1/2/4/7 wurden einschließlich Erwartungspaaren, normativer Deckung, Variation, aller zugehörigen vollständigen DE/EN-Material-/Aufgaben-/Modellantwortfälle und Dissent gelesen. Aktuelle42-Fall-Kontinuität: 36 vollständige Fälle sind exakt aus dem eigenen versiegelten Ganzreview retained, zwei geänderte Fälle und vier neue konditionale Ohrfälle wurden hier vollständig gelesen. Alle42 Fälle sind exakt an die nativen Profile gebunden. 19 ganze Zielkörper und 15 übrige ganze Profilkörper/Fingerprints bleiben unverändert. Diese Exaktheit ergänzt die inhaltliche Prüfung; sie ersetzt sie nicht.
+
+Gezieltes Ergebnis: vier KEEP, kein neuer gezielter HOLD.
+
+- Ord1/2: Eine gemeinsame Modell-Erwartung plus genau eine alternative Gruppe aus ganzem Augenweg oder ganzem Ohrweg erhalten die normative ODER-Struktur. Fragmente beider Wege ersetzen keine vollständige gewählte Organleistung. Die neuen Ohrfälle beschreiben räumliche Grundbauteile, eine gedrehte Fehlbeschriftung, mechanische Schallübertragung gegenüber Haarzell-Umwandlung und eine Funktionsgrenze bei fehlender Übertragung beziehungsweise fehlender Umwandlung. Augenfälle werden beim Ohrweg nicht zusätzlich verlangt. Die Quelle Auge ODER Ohr wurde auf den ganzen Seiten erneut gelesen. Der vereinfachte Hörweg stimmt mit der [NIDCD-Erklärung](https://www.nidcd.nih.gov/health/how-do-we-hear) überein.
+- Ord4: Gleicher äußerer Schalldruckpegel am Ohr wird ausdrücklich von gleicher subjektiver Lautheit getrennt. Der25kHz-Fall liefert einen begrenzten Modellvergleich und keine pauschal bessere Hörleistung aller Hunde.
+- Ord7: In Modell A fehlen Leukozyten nun ausdrücklich im deutschen und englischen Material. Dadurch ist die unveränderte Folgerung zur eingeschränkten zellulären Abwehr aus den gegebenen Informationen ableitbar. Der eigene enge Material-HOLD ist nur für diese geänderte Fassung aufgelöst; das ursprüngliche Ersturteil bleibt unverändert versiegelt.
+
+Eigene tatsächliche Terminal-Prüfungen: native geschlossene P19-Schemata und Semantik für15 eigene retained Records plus vier eigene neue gezielte Records Exit0; Standard-CLI für die eigenen vier neuen Records Exit0, 0 approved, 4 needs_human_review, 0 rejected und 0 technische Blocking Issues. Geschlossene technische Verträge und Schemata blieben unverändert. Die früheren fehlerhaften Autor-Invozierungen bleiben als Eingabehistorie erhalten; ausschließlich der im neutralen Entry genannte gültige operative Stand wurde geprüft.
+
+Die gemeinsame Modellanforderung ist kein zusätzlicher Wahltest. Die vorhandenen Variationen sind Evidenzangebote; ausreichend nachgewiesene Meisterschaft löst keine zusätzliche Aufgabenquote aus. Augenabbildungen beweisen keine Ohrleistung. Es wurden keine echten Patienten-/Versuchsdaten oder Lernendenleistungen behauptet.
+
+Der von Root berichtete separate offene Atomicity-/SPLIT_REVIEW-Befund zu Verhütung/Elternschaft, Ziel12, bleibt offen und wird durch diese gezielten vier Science-Urteile nicht geschlossen. Keine neue Fachentscheidung über die15 unveränderten Profile. Keine Gesamtfreigabe der19 Ziele. Keine Peer-A-V2-Ausgabe wurde vor diesem eigenen Erstseal gelesen oder diskutiert.
+
+Finale tatsächliche PNG-/360-/680-/PDF-Inputs und native D/V-Urteile stehen weiter aus. P bleibt E1/G1, ai_candidate und needs_human_review. Keine aktive Datei, kein Commit, kein strikter M7-Zuwachs und keine menschliche Freigabe.

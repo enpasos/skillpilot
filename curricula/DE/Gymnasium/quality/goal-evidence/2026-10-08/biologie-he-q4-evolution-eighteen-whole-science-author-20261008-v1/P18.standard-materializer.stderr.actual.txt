@@ -1,0 +1,10 @@
+/home/enpasos/projects/skillpilot/app/scripts/positiveGoalEvidenceReview.ts:313
+    throw new Error(`Invalid positive goal-evidence review config: ${ajv.errorsText(validateConfig.errors)}`)
+          ^
+
+
+Error: Invalid positive goal-evidence review config: data/reviewPath must match pattern "^(?!/)(?!.*(?:^|/)\.\.(?:/|$))\S(?:[\s\S]*\S)?$"
+    at reviewPositiveGoalEvidenceConfig (/home/enpasos/projects/skillpilot/app/scripts/positiveGoalEvidenceReview.ts:313:11)
+    at main (/home/enpasos/projects/skillpilot/app/scripts/materializePositiveGoalEvidenceCandidates.ts:300:20)
+
+Node.js v20.20.2

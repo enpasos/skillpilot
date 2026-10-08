@@ -1,0 +1,66 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-flora-fauna20-amnion14-v4-targeted-native-independent-b-20261008-v2",
+  "campaignId": "biologie-flora-fauna20-targeted-amnion14-campaign-b-20261008-v3",
+  "roundId": "biologie-flora-fauna20-targeted-amnion14-independent-b-20261008-v3",
+  "batchId": "biologie-flora-fauna20-targeted-amnion14-independent-b-20261008-v3.batch-001",
+  "batchInputFingerprint": "sha256:82d75b5a4e0211732b1f40196f632dcd987860b3c059025b286ff780cb8dc729",
+  "bundleFingerprint": "sha256:0e2687b6f1609cea852d94bfc8d4668b52452d659d1f5e4940ac00f4f2a64810",
+  "bookDigest": "sha256:b87e02b105b66345ead2e620d55ccb9f5627ab2373b8390225017148437af813",
+  "provider": "OpenAI Codex conversation",
+  "model": "GPT-6 Codex (runtime version not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:d421fc2d5b8ff4959db8a845f86fcc435223cea95cb88a7797ecf30c88f137a9",
+  "independenceGroupId": "biologie-flora-fauna20-targeted-amnion14-independent-b-20261008-v3",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "321ea315-37fe-5f9e-8fa8-dd631bb447c7"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:2ca4c04abea1bd9dc374d70b6f2d224ac9305abc8f6b51b03bf03bc864c82119"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:66819b6dc93ead6f318c53ef25b3bc4586b096a72cf3990781f5b3e984fefd2b"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:024bfdc95240de0f2c4ba942ff5e347c80e2a31f142126c414d1fa6f8fce14ee"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:c234d04c75af58b2aa4a4a60d152138ee39d29799419dad84c044d505c901368"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:6fb0f1abef58b37062e096ce30551caf65f89ec46b826d1135e1af0de730c37e"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:82d75b5a4e0211732b1f40196f632dcd987860b3c059025b286ff780cb8dc729"
+    }
+  ],
+  "startedAt": "2026-10-07T22:56:25Z",
+  "completedAt": "2026-10-07T22:59:16.322424+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:8c81b69c79718d7a8006459c8f84f2a788036b1535736903219abea0bed8ca5e",
+  "toolchainVersion": "independent-codex-conversation-native-v1"
+}

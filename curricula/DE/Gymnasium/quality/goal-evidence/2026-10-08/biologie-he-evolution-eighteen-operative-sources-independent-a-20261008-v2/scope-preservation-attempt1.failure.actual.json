@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-08T02:35:14.847451+00:00",
+  "actualExitCode": 1,
+  "stderr": "AssertionError in reviewer scope preservation aggregation",
+  "actualCause": "Reviewer incorrectly required the new version mapping reviewId to equal the prior version reviewId. The requested stable identity is extractionId and144source IDs. Both are unchanged; candidate reviewId explicitly identifies the new version. All126 source-row and decision-object byte comparisons were true.",
+  "recovery": "Remove unrelated identical-reviewId assertion and explicitly bind both version review IDs; no source content or native check altered."
+}

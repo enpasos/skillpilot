@@ -1,0 +1,22 @@
+"""Bind the actual own first substantive decisions to standard inactive A/M rows."""
+from pathlib import Path
+import json,datetime,subprocess,hashlib
+from concurrent.futures import ThreadPoolExecutor
+ROOT=Path.cwd();OWN=Path(__file__).resolve().parent;AUTHOR=OWN.parent/'biologie-he9-contraception-parenthood-scope-preserving-split-author-20261008-v1'
+def rel(p):return str(Path(p).relative_to(ROOT))
+def bind(p):
+ b=Path(p).read_bytes();return {'path':rel(p),'sha256':hashlib.sha256(b).hexdigest(),'bytes':len(b)}
+def read(p):return json.loads(Path(p).read_text())
+def write(p,o):assert not p.exists();p.write_text((o if isinstance(o,str) else json.dumps(o,ensure_ascii=False,indent=2))+'\n');return bind(p)
+first=OWN/'first-whole-two-child-source-class-AM-split.independent-a.exact.freeze.json';assert bind(first)['sha256']=='86ddb5de6487a3822f2157345c00e01ea74e738f619abff9e2c1112c44093616';v=read(OWN/'first-whole-two-child-source-class-AM-split.independent-a.verdict.json');by={r['goalId']:r for r in v['records']};now=datetime.datetime.now(datetime.timezone.utc).isoformat();reviewId='biologie-he9-contraception-parenthood-split-genuine-science-independent-a-20261008-v1'
+for name,key in [('A2','atomicityDecision'),('M2','memoryDecision')]:
+ rows=[json.loads(s) for s in (AUTHOR/f'{name}.open-author-proposals.review.jsonl').read_text().splitlines()]
+ for r in rows:
+  d=by[r['goalId']][key];r.update({'reviewId':reviewId,'reviewedAt':now,'reviewer':'Codex actual independent A whole-source/split/kind/case science reviewer; not author of this variant','status':d['status'],'reason':d['reason']+' Actual substantive first seal: '+rel(first)+'. Final native D/P/V, current392 rebase and route/context bindings remain separate pending gates.'});r['semanticAtomic' if name=='A2' else 'memoryUseful']=d['semanticAtomic' if name=='A2' else 'memoryUseful']
+ rp=OWN/f'{name}.genuine-scientific-current-row.independent-a.jsonl';write(rp,'\n'.join(json.dumps(r,ensure_ascii=False,separators=(',',':')) for r in rows));c=read(AUTHOR/f'{name}.open-author-proposals.config.json');c.update({'reviewId':reviewId,'reviewPath':rel(rp),'scope':{'label':'Two genuinely independently source/scope/case-reviewed new child decisions; final integration remains pending','leafGoalIds':list(by)},'reportPath':rel(OWN/f'{name}.native.report.actual.md')});write(OWN/f'{name}.genuine-inactive-native.config.json',c)
+def run(name,script):
+ argv=['node','app/node_modules/tsx/dist/cli.mjs',script,'--config='+rel(OWN/f'{name}.genuine-inactive-native.config.json'),'--mode=check']+(['--write-report'] if name=='M2' else []);start=datetime.datetime.now(datetime.timezone.utc).isoformat();r=subprocess.run(argv,capture_output=True,text=True);o={'check':name,'actualArgv':argv,'startedAt':start,'finishedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'actualTerminalExitCode':r.returncode,'actualStdout':r.stdout,'actualStderr':r.stderr,'currentOwnScienceBoundToExactAuthorCandidate':True,'authoritativeLiveKindsOrFinal392Approval':False,'activeWrites':0};write(OWN/f'{name}.native-check.terminal.actual.json',o);return o
+with ThreadPoolExecutor(max_workers=2) as pool:rs=list(pool.map(lambda x:run(*x),[('A2','app/scripts/semanticAtomicityReview.ts'),('M2','app/scripts/memoryCardReview.ts')]))
+assert all(r['actualTerminalExitCode']==0 for r in rs),rs
+files=[p for p in sorted(OWN.rglob('*')) if p.is_file()];r=subprocess.run(['git','check-ignore','--no-index','--stdin'],input='\n'.join(rel(p) for p in files)+'\n',capture_output=True,text=True);assert r.returncode==1 and not r.stdout
+freeze=write(OWN/'completed-science-source-class-A2-M2-native-bindings.independent-a.exact.freeze.json',{'artifactKind':'genuine independent A whole split source/kind/case science and actual inactive native A2/M2 bindings','recordedAt':datetime.datetime.now(datetime.timezone.utc).isoformat(),'frozenFiles':[bind(p) for p in files],'originalFirstScientificSeal':bind(first),'actualNativeA2M2Exits':{r['check']:r['actualTerminalExitCode'] for r in rs},'strictFinalDVP392Pending':True,'parentCurricularAreaAndChildrenAtomicGenuineScientificDecisions':True,'newCards0':True,'peerSplitBReadBeforeOwnFirstSeal':False,'requiredOutputsIgnored':[],'actualGitCheckIgnoreExitCode':r.returncode,'activeWrites':0,'strictGainClaimed':0,'humanApproval':False});print(json.dumps({'finalActualSeal':freeze,'A2M2ActualExit0':True,'finalDVP392Pending':True,'activeWrites':0}))

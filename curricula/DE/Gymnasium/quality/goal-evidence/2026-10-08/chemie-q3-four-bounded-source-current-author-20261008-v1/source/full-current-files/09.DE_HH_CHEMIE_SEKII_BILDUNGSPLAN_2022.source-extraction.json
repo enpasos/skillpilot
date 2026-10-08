@@ -1,0 +1,2895 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE-HH-CHEMIE-SEKII-BILDUNGSPLAN-2022",
+  "title": "DE-HH - Chemie Studienstufe (Hamburg, Bildungsplan 2022 Source-Extraction)",
+  "sourceLandscapeId": "7516a41d-2eb2-5ce4-8f38-31570f0ffa81",
+  "jurisdiction": "DE-HH",
+  "subject": "Chemie",
+  "stage": "SekII",
+  "sourceDocument": {
+    "key": "HH-CHEMIE-GYO-2022",
+    "title": "Hamburg Bildungsplan Studienstufe Chemie 2022",
+    "path": "curricula/DE/Gymnasium/input/HH/chemie-gyo-2022-data.pdf",
+    "url": "https://www.hamburg.de/resource/blob/123042/e19828c45238e198fc9cfc2a73777685/chemie-gyo-2022-data.pdf",
+    "official": true
+  },
+  "method": {
+    "passageExtraction": "Hamburger Studienstufe Chemie 2022: die 12 Themen des Kerncurriculums wurden aus den amtlichen PDF-Tabellen S. 24-35 transkribiert und gruppiert.",
+    "sourceGoalExtraction": "ein Source-Ziel pro konkret benannter Kompetenz-, Inhalts- oder Kerncurriculum-Bullet; Kontext-, Leitperspektiven- und Umsetzungshilfe-Abschnitte werden nicht als eigenstaendige fachliche Source-Ziele gezaehlt."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "details": "97 Source-Ziele; Hamburg Sek II liegt im Korridor der geprüften direkten Chemie-Sek-II-Inventare BW (126), NW (154), SH (165) und HE (202)."
+    }
+  },
+  "expectedTopicCodes": [
+    "1.1",
+    "1.2",
+    "1.3",
+    "2.1",
+    "2.2",
+    "2.3",
+    "2.4",
+    "3.1",
+    "3.2",
+    "3.3",
+    "4.1",
+    "4.2"
+  ],
+  "pipelineStatus": {
+    "currentStep": "MAPPING-3",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliches Hamburger Chemie-PDF liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/HH/chemie-gyo-2022-data.pdf"
+          },
+          {
+            "id": "expected-topic-coverage",
+            "label": "Alle vorgesehenen Hamburger Chemie-Passagegruppen wurden extrahiert",
+            "passed": true,
+            "details": "12/12 Passagegruppen."
+          },
+          {
+            "id": "official-source-extraction",
+            "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle statt Legacy-Snapshot",
+            "passed": true,
+            "details": "Quelle: curricula/DE/Gymnasium/input/HH/chemie-gyo-2022-data.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Source-Ziele aus den Hamburger Chemie-Lehrplanpassagen erzeugt",
+            "passed": true,
+            "details": "97 Source-Ziele"
+          },
+          {
+            "id": "source-goal-count-peer-baseline",
+            "label": "Source-Ziel-Anzahl ist gegen gepruefte Chemie-Inventare plausibilisiert",
+            "passed": true,
+            "details": "97 Source-Ziele; Hamburg Sek II liegt im Korridor der geprüften direkten Chemie-Sek-II-Inventare BW (126), NW (154), SH (165) und HE (202)."
+          },
+          {
+            "id": "source-goal-ids-unique",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -"
+          },
+          {
+            "id": "source-goals-reference-passages",
+            "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+            "passed": true,
+            "details": "Ohne Passage: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "incomplete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "mapping-2-complete",
+            "label": "MAPPING-2 abgeschlossen",
+            "passed": true,
+            "details": "97 Source-Ziele liegen vor; MAPPING-3 muss nun fachlich reviewed werden."
+          },
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-HH/upper-secondary/hh_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+          },
+          {
+            "id": "m3-review-decisions-reference-source-goals",
+            "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+            "passed": false,
+            "details": "Wird aus der Review-Datei berechnet."
+          },
+          {
+            "id": "m3-review-targets-exist",
+            "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+            "passed": false,
+            "details": "Wird aus der Review-Datei berechnet."
+          },
+          {
+            "id": "m3-all-source-goals-reviewed",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": false,
+            "details": "MAPPING-3 ist noch nicht fachlich reviewed."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": false,
+            "details": "MAPPING-3 ist noch nicht fachlich reviewed."
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022:1-1",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "topicCode": "1.1",
+      "title": "1.1 Grundwissen der Organik",
+      "page": 24,
+      "rawText": "- Kohlenwasserstoffe und ihre Oxidationsprodukte als Grundlagen der organischen Chemie beschreiben\n- radikalische Substitution an Alkanen als Reaktionsmechanismus beschreiben\n- elektrophile Addition an Alkenen als Reaktionsmechanismus beschreiben\n- Nachweisreaktionen funktioneller Gruppen anwenden\n- aromatische Systeme ueber Struktur und Elektronenverteilung beschreiben\n- Mesomerie bei Benzen beziehungsweise Benzol beschreiben\n- Erstsubstitution am Aromaten am Beispiel der Halogenierung mit elektrophiler Substitution beschreiben",
+      "sourceGoalIds": [
+        "de-hh-chemie-sekii-bildungsplan-2022-1-1-001-2ee6cb21",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-1-002-3f80d8c7",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-1-003-ab73efb7",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-1-004-4326d819",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-1-005-ac28b93d",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-1-006-b2970e73",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-1-007-8e6ce602"
+      ]
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "topicCode": "1.2",
+      "title": "1.2 Natuerliche Makromolekuele - Fette",
+      "page": 25,
+      "rawText": "- Fette als Triglyceride aufbauen und beschreiben\n- gesaettigte und ungesaettigte Fettsaeuren unterscheiden\n- Estersynthese aus Glycerin und Fettsaeuren sowie Veresterung beschreiben\n- hydrolytische Spaltung der Fette beschreiben\n- den Reaktionsmechanismus der Veresterung als nukleophile Substitution beschreiben\n- hydrophobe beziehungsweise lipophile Eigenschaften der Fette beschreiben\n- Schmelzbereich der Fette und Van-der-Waals-Wechselwirkungen erklaeren\n- essenzielle Fettsaeuren und Omega-3-Fettsaeuren in Nahrungsmitteln einordnen\n- Fette als Energiespeicher beschreiben\n- Fetthaertung und trans-Fettsaeuren chemisch einordnen\n- die Iodzahl mit Iodometrie als Redoxtitration bestimmen\n- Kennzahlen von Fetten wie Verseifungszahl und Saeurezahl verwenden",
+      "sourceGoalIds": [
+        "de-hh-chemie-sekii-bildungsplan-2022-1-2-008-4baf539a",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-2-009-894658c4",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-2-010-e34262b7",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-2-011-e4d33ab6",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-2-012-06456ca4",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-2-013-8742f56d",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-2-014-8efd6493",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-2-015-44ac4bfe",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-2-016-bfcca2b3",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-2-017-bed5ddc5",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-2-018-3004f227",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-2-019-fe6a2b94"
+      ]
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "topicCode": "1.3",
+      "title": "1.3 Natuerliche Makromolekuele - Proteine",
+      "page": 26,
+      "rawText": "- funktionelle Gruppen und allgemeine Strukturformel einer alpha-L-Aminosaeure beschreiben\n- Aminosaeuren nach physikalisch-chemischen Eigenschaften einteilen\n- Spiegelbildisomerie und optische Aktivitaet der Aminosaeuren beschreiben\n- Zwitterion, isoelektrischen Punkt und Pufferwirkung von Aminosaeuremolekuelen beschreiben\n- Peptidbindung durch Kondensationsreaktion beschreiben\n- mesomere Grenzformeln der Peptidgruppe verwenden\n- Strukturebenen von Proteinen anhand intra- und intermolekularer Wechselwirkungen beschreiben\n- koordinative Bindung am Beispiel der Quartaerstruktur im Haemoglobin beschreiben\n- Denaturierung von Proteinen beschreiben\n- Polarimetrie als Analyseverfahren allgemein beschreiben\n- qualitative Nachweise von Proteinen und Aminosaeuren mit Ninhydrin und Biuret einordnen\n- Chromatographie als Analyseverfahren inklusive Rf-Werten beschreiben",
+      "sourceGoalIds": [
+        "de-hh-chemie-sekii-bildungsplan-2022-1-3-020-3f59219e",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-3-021-29992525",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-3-022-7a6edcb8",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-3-023-c666bfde",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-3-024-6a5102f0",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-3-025-5debb6d4",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-3-026-f12deb45",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-3-027-8b9d2998",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-3-028-61bb46b4",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-3-029-72f4f1e9",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-3-030-bd2a9e88",
+        "de-hh-chemie-sekii-bildungsplan-2022-1-3-031-7793e0a6"
+      ]
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022:2-1",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "topicCode": "2.1",
+      "title": "2.1 Energie chemischer Reaktionen",
+      "page": 27,
+      "rawText": "- Energieumwandlung, Energieerhaltung und Kalorimetrie bei chemischen Reaktionen beschreiben\n- Reaktionswaerme experimentell bestimmen\n- den ersten Hauptsatz der Thermodynamik mit Enthalpie und Satz von Hess anwenden\n- Standard-Reaktionsenthalpien berechnen\n- Brennwert und Heizwert verschiedener Energietraeger fakultativ einordnen\n- Entropie und Gibbs-Helmholtz-Gleichung als zweiten Hauptsatz der Thermodynamik nutzen\n- freie Reaktionsenthalpie berechnen",
+      "sourceGoalIds": [
+        "de-hh-chemie-sekii-bildungsplan-2022-2-1-032-35313854",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-1-033-c275d85a",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-1-034-5167fcce",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-1-035-867eec66",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-1-036-6ca7a6fb",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-1-037-69221872",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-1-038-40a3b6c7"
+      ]
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022:2-2",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "topicCode": "2.2",
+      "title": "2.2 Kinetische Aspekte chemischer Reaktionen",
+      "page": 28,
+      "rawText": "- Reaktionsgeschwindigkeit mithilfe der Stosstheorie beschreiben\n- Abhaengigkeit der Reaktionsgeschwindigkeit von Zerteilungsgrad, Temperatur und Konzentration beschreiben\n- Katalyse als Einfluss auf die Reaktionsgeschwindigkeit beschreiben",
+      "sourceGoalIds": [
+        "de-hh-chemie-sekii-bildungsplan-2022-2-2-039-e8c43bed",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-2-040-eaf1103f",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-2-041-72dfc276"
+      ]
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022:2-3",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "topicCode": "2.3",
+      "title": "2.3 Gleichgewicht chemischer Reaktionen",
+      "page": 29,
+      "rawText": "- dynamisches chemisches Gleichgewicht beschreiben\n- Gleichgewichtslage und Massenwirkungsgesetz anwenden\n- das Prinzip von Le Chatelier anwenden\n- chemisches Gleichgewicht an einem Beispiel in der Natur beschreiben\n- Konzentrationsberechnungen mit dem Massenwirkungsgesetz durchfuehren\n- das Haber-Bosch-Verfahren unter Gleichgewichtsaspekten beschreiben\n- Loeslichkeitsgleichgewicht qualitativ und quantitativ betrachten\n- Loeslichkeitsprodukt verwenden",
+      "sourceGoalIds": [
+        "de-hh-chemie-sekii-bildungsplan-2022-2-3-042-64913f0f",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-3-043-eb5ca37c",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-3-044-7c750b14",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-3-045-4eff834e",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-3-046-52a3e704",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-3-047-4ceecc57",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-3-048-dc68a0b2",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-3-049-840afcc1"
+      ]
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "topicCode": "2.4",
+      "title": "2.4 Protonenuebergaenge bei chemischen Reaktionen",
+      "page": 30,
+      "rawText": "- Saeure-Base-Konzept nach Broensted beschreiben\n- Autoprotolyse und Ionenprodukt des Wassers beschreiben\n- pH-Wert und pOH-Wert verwenden\n- Saeure-Base-Konstanten qualitativ betrachten\n- pH-Wert-Berechnungen waessriger Loesungen von Saeuren und Basen bei vollstaendiger Protolyse durchfuehren\n- Saeure-Base-Konstanten quantitativ betrachten\n- pH-Wert-Berechnungen bei unvollstaendiger Protolyse durchfuehren\n- Konzentrationsbestimmung mit Umschlagspunkt bei starken Saeuren und Basen durchfuehren\n- Saeure-Base-Titrationen rechnerisch auswerten\n- Saeure-Base-Titration mit Titrationskurve auswerten\n- Titrationen schwacher und mehrprotoniger Saeuren sowie schwacher Basen auswerten\n- charakteristische Punkte von Titrationskurven rechnerisch bestimmen\n- Puffersysteme in Zusammensetzung, Wirkungsprinzip und Bedeutung beschreiben\n- Puffersysteme mit der Henderson-Hasselbalch-Gleichung quantitativ betrachten",
+      "sourceGoalIds": [
+        "de-hh-chemie-sekii-bildungsplan-2022-2-4-050-abf35343",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-4-051-1361dafb",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-4-052-5d26d648",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-4-053-ccb0fe02",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-4-054-9f9a6c97",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-4-055-53b43458",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-4-056-ef511601",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-4-057-a665f501",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-4-058-219d10ba",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-4-059-2b6043d8",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-4-060-8b1a60b6",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-4-061-6a685f02",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-4-062-0eff4d69",
+        "de-hh-chemie-sekii-bildungsplan-2022-2-4-063-c3485a51"
+      ]
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "topicCode": "3.1",
+      "title": "3.1 Elektronenuebergaenge und elektrochemische Spannungsquellen",
+      "page": 31,
+      "rawText": "- Redoxreaktionen als Elektronenuebergaenge mit Teilreaktionen beschreiben\n- Reaktionsgleichungen mit Oxidationszahlen aufstellen\n- Grundbauprinzip einer galvanischen Zelle und elektrochemische Spannungsreihe beschreiben\n- Zellspannung unter Standardbedingungen berechnen\n- galvanische Zellen als Zelldiagramm darstellen\n- Nernst-Gleichung und konzentrationsabhaengige Zellspannung anwenden\n- Aufbau und Reaktionen verschiedener Batterien beschreiben\n- Grundprinzip eines Akkumulators und elektrochemischer Energiespeicherung beschreiben\n- Entsorgung und Recycling von Batterien und Akkumulatoren bewerten\n- Aufbau und Reaktionen eines Akkumulators beschreiben\n- Funktionsprinzip und Aufbau des Lithium-Ionen-Akkumulators beschreiben",
+      "sourceGoalIds": [
+        "de-hh-chemie-sekii-bildungsplan-2022-3-1-064-45ac6de5",
+        "de-hh-chemie-sekii-bildungsplan-2022-3-1-065-0abf7fa4",
+        "de-hh-chemie-sekii-bildungsplan-2022-3-1-066-cb37e9a9",
+        "de-hh-chemie-sekii-bildungsplan-2022-3-1-067-fc029a58",
+        "de-hh-chemie-sekii-bildungsplan-2022-3-1-068-a152e7b1",
+        "de-hh-chemie-sekii-bildungsplan-2022-3-1-069-0e00e966",
+        "de-hh-chemie-sekii-bildungsplan-2022-3-1-070-94780f35",
+        "de-hh-chemie-sekii-bildungsplan-2022-3-1-071-facf05cf",
+        "de-hh-chemie-sekii-bildungsplan-2022-3-1-072-b84cc8ad",
+        "de-hh-chemie-sekii-bildungsplan-2022-3-1-073-b6373ac6",
+        "de-hh-chemie-sekii-bildungsplan-2022-3-1-074-db193fd0"
+      ]
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022:3-2",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "topicCode": "3.2",
+      "title": "3.2 Elektrolyse und Korrosion",
+      "page": 32,
+      "rawText": "- Elektrolyse als erzwungene Redoxreaktion mit Grundprinzip beschreiben\n- Elektrolysen quantitativ mithilfe der Faraday-Gesetze betrachten\n- Prinzip der Ueberspannung beschreiben\n- industrielle Elektrolysen zur Rohstoffgewinnung und -verarbeitung beschreiben\n- Prinzip der Metallkorrosion als Sauerstoffkorrosion beschreiben\n- kathodischen Korrosionsschutz beschreiben",
+      "sourceGoalIds": [
+        "de-hh-chemie-sekii-bildungsplan-2022-3-2-075-18367477",
+        "de-hh-chemie-sekii-bildungsplan-2022-3-2-076-193dae34",
+        "de-hh-chemie-sekii-bildungsplan-2022-3-2-077-2aed7e0e",
+        "de-hh-chemie-sekii-bildungsplan-2022-3-2-078-7c947b72",
+        "de-hh-chemie-sekii-bildungsplan-2022-3-2-079-8e1b0577",
+        "de-hh-chemie-sekii-bildungsplan-2022-3-2-080-bf3a7565"
+      ]
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022:3-3",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "topicCode": "3.3",
+      "title": "3.3 Alternative Energietraeger",
+      "page": 33,
+      "rawText": "- Wasserstoff als Energietraeger und seine Gewinnung beschreiben\n- Treibstoffe aus nachwachsenden Rohstoffen beispielhaft beschreiben\n- Einsatzmoeglichkeiten von Wasserstoff und innovative Zukunftstechnologien einordnen\n- allgemeines Funktionsprinzip einer Brennstoffzelle beschreiben\n- Brennstoffzelle mit klassischer Verbrennung vergleichen",
+      "sourceGoalIds": [
+        "de-hh-chemie-sekii-bildungsplan-2022-3-3-081-e2788417",
+        "de-hh-chemie-sekii-bildungsplan-2022-3-3-082-7eac2ff0",
+        "de-hh-chemie-sekii-bildungsplan-2022-3-3-083-f722baa6",
+        "de-hh-chemie-sekii-bildungsplan-2022-3-3-084-bc9f5910",
+        "de-hh-chemie-sekii-bildungsplan-2022-3-3-085-39b53be7"
+      ]
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022:4-1",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "topicCode": "4.1",
+      "title": "4.1 Synthetische Makromolekuele - Kunststoffe",
+      "page": 34,
+      "rawText": "- Einteilung und Struktur von Kunststoffen beschreiben\n- Verhalten von Kunststoffen bei thermischer und mechanischer Beanspruchung beschreiben\n- Polymere und moderne Werkstoffe verwendungsbezogen einordnen\n- Grundprinzipien von Polymerisation, Polyaddition und Polykondensation beschreiben\n- Mechanismus der radikalischen Polymerisation beschreiben\n- werkstoffliches und rohstoffliches Recycling sowie thermische Verwertung von Kunststoffen beschreiben\n- oekonomische und oekologische Aspekte des Kunststoffrecyclings bewerten\n- Wertstoffkreislauf an einem Beispiel beschreiben",
+      "sourceGoalIds": [
+        "de-hh-chemie-sekii-bildungsplan-2022-4-1-086-51544b47",
+        "de-hh-chemie-sekii-bildungsplan-2022-4-1-087-f7b38e9b",
+        "de-hh-chemie-sekii-bildungsplan-2022-4-1-088-3968303c",
+        "de-hh-chemie-sekii-bildungsplan-2022-4-1-089-0eef160c",
+        "de-hh-chemie-sekii-bildungsplan-2022-4-1-090-d051123a",
+        "de-hh-chemie-sekii-bildungsplan-2022-4-1-091-fa6b1bfc",
+        "de-hh-chemie-sekii-bildungsplan-2022-4-1-092-c928b71f",
+        "de-hh-chemie-sekii-bildungsplan-2022-4-1-093-67e74ba0"
+      ]
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022:4-2",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "topicCode": "4.2",
+      "title": "4.2 Nanomaterialien",
+      "page": 35,
+      "rawText": "- Nanomaterial ueber Partikelgroesse und Dimensionalitaet definieren\n- Nanostruktur und Oberflaecheneigenschaft an einem Beispiel beschreiben\n- Verwendung von Nanomaterialien an einem Beispiel beschreiben\n- Risiken der Nanotechnologie bewerten",
+      "sourceGoalIds": [
+        "de-hh-chemie-sekii-bildungsplan-2022-4-2-094-365032c3",
+        "de-hh-chemie-sekii-bildungsplan-2022-4-2-095-a18fc58a",
+        "de-hh-chemie-sekii-bildungsplan-2022-4-2-096-4e293501",
+        "de-hh-chemie-sekii-bildungsplan-2022-4-2-097-d9b3d262"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-1-001-2ee6cb21",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-1",
+      "topicCode": "1.1",
+      "title": "Kohlenwasserstoffe und ihre Oxidationsprodukte als Grundlagen der organischen Chemie beschreiben",
+      "description": "Die lernende Person kann Kohlenwasserstoffe und ihre Oxidationsprodukte als Grundlagen der organischen Chemie beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.1, S. 24.",
+      "sourceText": "Kohlenwasserstoffe und ihre Oxidationsprodukte als Grundlagen der organischen Chemie beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-1",
+        "label": "1.1, S. 24: Kohlenwasserstoffe und ihre Oxidationsprodukte als Grundlagen der organischen Chemie beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-1",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-1-002-3f80d8c7",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-1",
+      "topicCode": "1.1",
+      "title": "radikalische Substitution an Alkanen als Reaktionsmechanismus beschreiben",
+      "description": "Die lernende Person kann radikalische Substitution an Alkanen als Reaktionsmechanismus beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.1, S. 24.",
+      "sourceText": "radikalische Substitution an Alkanen als Reaktionsmechanismus beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-1",
+        "label": "1.1, S. 24: radikalische Substitution an Alkanen als Reaktionsmechanismus beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-1",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-1-003-ab73efb7",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-1",
+      "topicCode": "1.1",
+      "title": "elektrophile Addition an Alkenen als Reaktionsmechanismus beschreiben",
+      "description": "Die lernende Person kann elektrophile Addition an Alkenen als Reaktionsmechanismus beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.1, S. 24.",
+      "sourceText": "elektrophile Addition an Alkenen als Reaktionsmechanismus beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-1",
+        "label": "1.1, S. 24: elektrophile Addition an Alkenen als Reaktionsmechanismus beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-1",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-1-004-4326d819",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-1",
+      "topicCode": "1.1",
+      "title": "Nachweisreaktionen funktioneller Gruppen anwenden",
+      "description": "Die lernende Person kann Nachweisreaktionen funktioneller Gruppen anwenden.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.1, S. 24.",
+      "sourceText": "Nachweisreaktionen funktioneller Gruppen anwenden",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-1",
+        "label": "1.1, S. 24: Nachweisreaktionen funktioneller Gruppen anwenden"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-1",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-1-005-ac28b93d",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-1",
+      "topicCode": "1.1",
+      "title": "aromatische Systeme ueber Struktur und Elektronenverteilung beschreiben",
+      "description": "Die lernende Person kann aromatische Systeme ueber Struktur und Elektronenverteilung beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.1, S. 24.",
+      "sourceText": "aromatische Systeme ueber Struktur und Elektronenverteilung beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-1",
+        "label": "1.1, S. 24: aromatische Systeme ueber Struktur und Elektronenverteilung beschreiben"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-1",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-1-006-b2970e73",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-1",
+      "topicCode": "1.1",
+      "title": "Mesomerie bei Benzen beziehungsweise Benzol beschreiben",
+      "description": "Die lernende Person kann Mesomerie bei Benzen beziehungsweise Benzol beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.1, S. 24.",
+      "sourceText": "Mesomerie bei Benzen beziehungsweise Benzol beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-1",
+        "label": "1.1, S. 24: Mesomerie bei Benzen beziehungsweise Benzol beschreiben"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-1",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-1-007-8e6ce602",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-1",
+      "topicCode": "1.1",
+      "title": "Erstsubstitution am Aromaten am Beispiel der Halogenierung mit elektrophiler Substitution beschreiben",
+      "description": "Die lernende Person kann Erstsubstitution am Aromaten am Beispiel der Halogenierung mit elektrophiler Substitution beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.1, S. 24.",
+      "sourceText": "Erstsubstitution am Aromaten am Beispiel der Halogenierung mit elektrophiler Substitution beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-1",
+        "label": "1.1, S. 24: Erstsubstitution am Aromaten am Beispiel der Halogenierung mit elektrophiler Substitution beschreiben"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-1",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-2-008-4baf539a",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+      "topicCode": "1.2",
+      "title": "Fette als Triglyceride aufbauen und beschreiben",
+      "description": "Die lernende Person kann Fette als Triglyceride aufbauen und beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.2, S. 25.",
+      "sourceText": "Fette als Triglyceride aufbauen und beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+        "label": "1.2, S. 25: Fette als Triglyceride aufbauen und beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-2",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-2-009-894658c4",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+      "topicCode": "1.2",
+      "title": "gesaettigte und ungesaettigte Fettsaeuren unterscheiden",
+      "description": "Die lernende Person kann gesaettigte und ungesaettigte Fettsaeuren unterscheiden.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.2, S. 25.",
+      "sourceText": "gesaettigte und ungesaettigte Fettsaeuren unterscheiden",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+        "label": "1.2, S. 25: gesaettigte und ungesaettigte Fettsaeuren unterscheiden"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-2",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-2-010-e34262b7",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+      "topicCode": "1.2",
+      "title": "Estersynthese aus Glycerin und Fettsaeuren sowie Veresterung beschreiben",
+      "description": "Die lernende Person kann Estersynthese aus Glycerin und Fettsaeuren sowie Veresterung beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.2, S. 25.",
+      "sourceText": "Estersynthese aus Glycerin und Fettsaeuren sowie Veresterung beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+        "label": "1.2, S. 25: Estersynthese aus Glycerin und Fettsaeuren sowie Veresterung beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-2",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-2-011-e4d33ab6",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+      "topicCode": "1.2",
+      "title": "hydrolytische Spaltung der Fette beschreiben",
+      "description": "Die lernende Person kann hydrolytische Spaltung der Fette beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.2, S. 25.",
+      "sourceText": "hydrolytische Spaltung der Fette beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+        "label": "1.2, S. 25: hydrolytische Spaltung der Fette beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-2",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-2-012-06456ca4",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+      "topicCode": "1.2",
+      "title": "den Reaktionsmechanismus der Veresterung als nukleophile Substitution beschreiben",
+      "description": "Die lernende Person kann den Reaktionsmechanismus der Veresterung als nukleophile Substitution beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.2, S. 25.",
+      "sourceText": "den Reaktionsmechanismus der Veresterung als nukleophile Substitution beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+        "label": "1.2, S. 25: den Reaktionsmechanismus der Veresterung als nukleophile Substitution beschreiben"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-2",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-2-013-8742f56d",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+      "topicCode": "1.2",
+      "title": "hydrophobe beziehungsweise lipophile Eigenschaften der Fette beschreiben",
+      "description": "Die lernende Person kann hydrophobe beziehungsweise lipophile Eigenschaften der Fette beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.2, S. 25.",
+      "sourceText": "hydrophobe beziehungsweise lipophile Eigenschaften der Fette beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+        "label": "1.2, S. 25: hydrophobe beziehungsweise lipophile Eigenschaften der Fette beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-2",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-2-014-8efd6493",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+      "topicCode": "1.2",
+      "title": "Schmelzbereich der Fette und Van-der-Waals-Wechselwirkungen erklaeren",
+      "description": "Die lernende Person kann Schmelzbereich der Fette und Van-der-Waals-Wechselwirkungen erklaeren.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.2, S. 25.",
+      "sourceText": "Schmelzbereich der Fette und Van-der-Waals-Wechselwirkungen erklaeren",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+        "label": "1.2, S. 25: Schmelzbereich der Fette und Van-der-Waals-Wechselwirkungen erklaeren"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-2",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-2-015-44ac4bfe",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+      "topicCode": "1.2",
+      "title": "essenzielle Fettsaeuren und Omega-3-Fettsaeuren in Nahrungsmitteln einordnen",
+      "description": "Die lernende Person kann essenzielle Fettsaeuren und Omega-3-Fettsaeuren in Nahrungsmitteln einordnen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.2, S. 25.",
+      "sourceText": "essenzielle Fettsaeuren und Omega-3-Fettsaeuren in Nahrungsmitteln einordnen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+        "label": "1.2, S. 25: essenzielle Fettsaeuren und Omega-3-Fettsaeuren in Nahrungsmitteln einordnen"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-2",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-2-016-bfcca2b3",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+      "topicCode": "1.2",
+      "title": "Fette als Energiespeicher beschreiben",
+      "description": "Die lernende Person kann Fette als Energiespeicher beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.2, S. 25.",
+      "sourceText": "Fette als Energiespeicher beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+        "label": "1.2, S. 25: Fette als Energiespeicher beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-2",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-2-017-bed5ddc5",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+      "topicCode": "1.2",
+      "title": "Fetthaertung und trans-Fettsaeuren chemisch einordnen",
+      "description": "Die lernende Person kann Fetthaertung und trans-Fettsaeuren chemisch einordnen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.2, S. 25.",
+      "sourceText": "Fetthaertung und trans-Fettsaeuren chemisch einordnen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+        "label": "1.2, S. 25: Fetthaertung und trans-Fettsaeuren chemisch einordnen"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-2",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-2-018-3004f227",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+      "topicCode": "1.2",
+      "title": "die Iodzahl mit Iodometrie als Redoxtitration bestimmen",
+      "description": "Die lernende Person kann die Iodzahl mit Iodometrie als Redoxtitration bestimmen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.2, S. 25.",
+      "sourceText": "die Iodzahl mit Iodometrie als Redoxtitration bestimmen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+        "label": "1.2, S. 25: die Iodzahl mit Iodometrie als Redoxtitration bestimmen"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-2",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-2-019-fe6a2b94",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+      "topicCode": "1.2",
+      "title": "Kennzahlen von Fetten wie Verseifungszahl und Saeurezahl verwenden",
+      "description": "Die lernende Person kann Kennzahlen von Fetten wie Verseifungszahl und Saeurezahl verwenden.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.2, S. 25.",
+      "sourceText": "Kennzahlen von Fetten wie Verseifungszahl und Saeurezahl verwenden",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-2",
+        "label": "1.2, S. 25: Kennzahlen von Fetten wie Verseifungszahl und Saeurezahl verwenden"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-2",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-3-020-3f59219e",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+      "topicCode": "1.3",
+      "title": "funktionelle Gruppen und allgemeine Strukturformel einer alpha-L-Aminosaeure beschreiben",
+      "description": "Die lernende Person kann funktionelle Gruppen und allgemeine Strukturformel einer alpha-L-Aminosaeure beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.3, S. 26.",
+      "sourceText": "funktionelle Gruppen und allgemeine Strukturformel einer alpha-L-Aminosaeure beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+        "label": "1.3, S. 26: funktionelle Gruppen und allgemeine Strukturformel einer alpha-L-Aminosaeure beschreiben"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-3",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-3-021-29992525",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+      "topicCode": "1.3",
+      "title": "Aminosaeuren nach physikalisch-chemischen Eigenschaften einteilen",
+      "description": "Die lernende Person kann Aminosaeuren nach physikalisch-chemischen Eigenschaften einteilen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.3, S. 26.",
+      "sourceText": "Aminosaeuren nach physikalisch-chemischen Eigenschaften einteilen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+        "label": "1.3, S. 26: Aminosaeuren nach physikalisch-chemischen Eigenschaften einteilen"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-3",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-3-022-7a6edcb8",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+      "topicCode": "1.3",
+      "title": "Spiegelbildisomerie und optische Aktivitaet der Aminosaeuren beschreiben",
+      "description": "Die lernende Person kann Spiegelbildisomerie und optische Aktivitaet der Aminosaeuren beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.3, S. 26.",
+      "sourceText": "Spiegelbildisomerie und optische Aktivitaet der Aminosaeuren beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+        "label": "1.3, S. 26: Spiegelbildisomerie und optische Aktivitaet der Aminosaeuren beschreiben"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-3",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-3-023-c666bfde",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+      "topicCode": "1.3",
+      "title": "Zwitterion, isoelektrischen Punkt und Pufferwirkung von Aminosaeuremolekuelen beschreiben",
+      "description": "Die lernende Person kann Zwitterion, isoelektrischen Punkt und Pufferwirkung von Aminosaeuremolekuelen beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.3, S. 26.",
+      "sourceText": "Zwitterion, isoelektrischen Punkt und Pufferwirkung von Aminosaeuremolekuelen beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+        "label": "1.3, S. 26: Zwitterion, isoelektrischen Punkt und Pufferwirkung von Aminosaeuremolekuelen beschreiben"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-3",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-3-024-6a5102f0",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+      "topicCode": "1.3",
+      "title": "Peptidbindung durch Kondensationsreaktion beschreiben",
+      "description": "Die lernende Person kann Peptidbindung durch Kondensationsreaktion beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.3, S. 26.",
+      "sourceText": "Peptidbindung durch Kondensationsreaktion beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+        "label": "1.3, S. 26: Peptidbindung durch Kondensationsreaktion beschreiben"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-3",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-3-025-5debb6d4",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+      "topicCode": "1.3",
+      "title": "mesomere Grenzformeln der Peptidgruppe verwenden",
+      "description": "Die lernende Person kann mesomere Grenzformeln der Peptidgruppe verwenden.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.3, S. 26.",
+      "sourceText": "mesomere Grenzformeln der Peptidgruppe verwenden",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+        "label": "1.3, S. 26: mesomere Grenzformeln der Peptidgruppe verwenden"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-3",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-3-026-f12deb45",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+      "topicCode": "1.3",
+      "title": "Strukturebenen von Proteinen anhand intra- und intermolekularer Wechselwirkungen beschreiben",
+      "description": "Die lernende Person kann Strukturebenen von Proteinen anhand intra- und intermolekularer Wechselwirkungen beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.3, S. 26.",
+      "sourceText": "Strukturebenen von Proteinen anhand intra- und intermolekularer Wechselwirkungen beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+        "label": "1.3, S. 26: Strukturebenen von Proteinen anhand intra- und intermolekularer Wechselwirkungen beschreiben"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-3",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-3-027-8b9d2998",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+      "topicCode": "1.3",
+      "title": "koordinative Bindung am Beispiel der Quartaerstruktur im Haemoglobin beschreiben",
+      "description": "Die lernende Person kann koordinative Bindung am Beispiel der Quartaerstruktur im Haemoglobin beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.3, S. 26.",
+      "sourceText": "koordinative Bindung am Beispiel der Quartaerstruktur im Haemoglobin beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+        "label": "1.3, S. 26: koordinative Bindung am Beispiel der Quartaerstruktur im Haemoglobin beschreiben"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-3",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-3-028-61bb46b4",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+      "topicCode": "1.3",
+      "title": "Denaturierung von Proteinen beschreiben",
+      "description": "Die lernende Person kann Denaturierung von Proteinen beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.3, S. 26.",
+      "sourceText": "Denaturierung von Proteinen beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+        "label": "1.3, S. 26: Denaturierung von Proteinen beschreiben"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-3",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-3-029-72f4f1e9",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+      "topicCode": "1.3",
+      "title": "Polarimetrie als Analyseverfahren allgemein beschreiben",
+      "description": "Die lernende Person kann Polarimetrie als Analyseverfahren allgemein beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.3, S. 26.",
+      "sourceText": "Polarimetrie als Analyseverfahren allgemein beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+        "label": "1.3, S. 26: Polarimetrie als Analyseverfahren allgemein beschreiben"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-3",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-3-030-bd2a9e88",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+      "topicCode": "1.3",
+      "title": "qualitative Nachweise von Proteinen und Aminosaeuren mit Ninhydrin und Biuret einordnen",
+      "description": "Die lernende Person kann qualitative Nachweise von Proteinen und Aminosaeuren mit Ninhydrin und Biuret einordnen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.3, S. 26.",
+      "sourceText": "qualitative Nachweise von Proteinen und Aminosaeuren mit Ninhydrin und Biuret einordnen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+        "label": "1.3, S. 26: qualitative Nachweise von Proteinen und Aminosaeuren mit Ninhydrin und Biuret einordnen"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-3",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-1-3-031-7793e0a6",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+      "topicCode": "1.3",
+      "title": "Chromatographie als Analyseverfahren inklusive Rf-Werten beschreiben",
+      "description": "Die lernende Person kann Chromatographie als Analyseverfahren inklusive Rf-Werten beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 1.3, S. 26.",
+      "sourceText": "Chromatographie als Analyseverfahren inklusive Rf-Werten beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:1-3",
+        "label": "1.3, S. 26: Chromatographie als Analyseverfahren inklusive Rf-Werten beschreiben"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:1-3",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "1.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-1-032-35313854",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-1",
+      "topicCode": "2.1",
+      "title": "Energieumwandlung, Energieerhaltung und Kalorimetrie bei chemischen Reaktionen beschreiben",
+      "description": "Die lernende Person kann Energieumwandlung, Energieerhaltung und Kalorimetrie bei chemischen Reaktionen beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.1, S. 27.",
+      "sourceText": "Energieumwandlung, Energieerhaltung und Kalorimetrie bei chemischen Reaktionen beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-1",
+        "label": "2.1, S. 27: Energieumwandlung, Energieerhaltung und Kalorimetrie bei chemischen Reaktionen beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-1",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-1-033-c275d85a",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-1",
+      "topicCode": "2.1",
+      "title": "Reaktionswaerme experimentell bestimmen",
+      "description": "Die lernende Person kann Reaktionswaerme experimentell bestimmen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.1, S. 27.",
+      "sourceText": "Reaktionswaerme experimentell bestimmen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-1",
+        "label": "2.1, S. 27: Reaktionswaerme experimentell bestimmen"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-1",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-1-034-5167fcce",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-1",
+      "topicCode": "2.1",
+      "title": "den ersten Hauptsatz der Thermodynamik mit Enthalpie und Satz von Hess anwenden",
+      "description": "Die lernende Person kann den ersten Hauptsatz der Thermodynamik mit Enthalpie und Satz von Hess anwenden.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.1, S. 27.",
+      "sourceText": "den ersten Hauptsatz der Thermodynamik mit Enthalpie und Satz von Hess anwenden",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-1",
+        "label": "2.1, S. 27: den ersten Hauptsatz der Thermodynamik mit Enthalpie und Satz von Hess anwenden"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-1",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-1-035-867eec66",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-1",
+      "topicCode": "2.1",
+      "title": "Standard-Reaktionsenthalpien berechnen",
+      "description": "Die lernende Person kann Standard-Reaktionsenthalpien berechnen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.1, S. 27.",
+      "sourceText": "Standard-Reaktionsenthalpien berechnen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-1",
+        "label": "2.1, S. 27: Standard-Reaktionsenthalpien berechnen"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-1",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-1-036-6ca7a6fb",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-1",
+      "topicCode": "2.1",
+      "title": "Brennwert und Heizwert verschiedener Energietraeger fakultativ einordnen",
+      "description": "Die lernende Person kann Brennwert und Heizwert verschiedener Energietraeger fakultativ einordnen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.1, S. 27.",
+      "sourceText": "Brennwert und Heizwert verschiedener Energietraeger fakultativ einordnen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-1",
+        "label": "2.1, S. 27: Brennwert und Heizwert verschiedener Energietraeger fakultativ einordnen"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-1",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-1-037-69221872",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-1",
+      "topicCode": "2.1",
+      "title": "Entropie und Gibbs-Helmholtz-Gleichung als zweiten Hauptsatz der Thermodynamik nutzen",
+      "description": "Die lernende Person kann Entropie und Gibbs-Helmholtz-Gleichung als zweiten Hauptsatz der Thermodynamik nutzen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.1, S. 27.",
+      "sourceText": "Entropie und Gibbs-Helmholtz-Gleichung als zweiten Hauptsatz der Thermodynamik nutzen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-1",
+        "label": "2.1, S. 27: Entropie und Gibbs-Helmholtz-Gleichung als zweiten Hauptsatz der Thermodynamik nutzen"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-1",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-1-038-40a3b6c7",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-1",
+      "topicCode": "2.1",
+      "title": "freie Reaktionsenthalpie berechnen",
+      "description": "Die lernende Person kann freie Reaktionsenthalpie berechnen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.1, S. 27.",
+      "sourceText": "freie Reaktionsenthalpie berechnen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-1",
+        "label": "2.1, S. 27: freie Reaktionsenthalpie berechnen"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-1",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-2-039-e8c43bed",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-2",
+      "topicCode": "2.2",
+      "title": "Reaktionsgeschwindigkeit mithilfe der Stosstheorie beschreiben",
+      "description": "Die lernende Person kann Reaktionsgeschwindigkeit mithilfe der Stosstheorie beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.2, S. 28.",
+      "sourceText": "Reaktionsgeschwindigkeit mithilfe der Stosstheorie beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-2",
+        "label": "2.2, S. 28: Reaktionsgeschwindigkeit mithilfe der Stosstheorie beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-2",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-2-040-eaf1103f",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-2",
+      "topicCode": "2.2",
+      "title": "Abhaengigkeit der Reaktionsgeschwindigkeit von Zerteilungsgrad, Temperatur und Konzentration beschreiben",
+      "description": "Die lernende Person kann Abhaengigkeit der Reaktionsgeschwindigkeit von Zerteilungsgrad, Temperatur und Konzentration beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.2, S. 28.",
+      "sourceText": "Abhaengigkeit der Reaktionsgeschwindigkeit von Zerteilungsgrad, Temperatur und Konzentration beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-2",
+        "label": "2.2, S. 28: Abhaengigkeit der Reaktionsgeschwindigkeit von Zerteilungsgrad, Temperatur und Konzentration beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-2",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-2-041-72dfc276",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-2",
+      "topicCode": "2.2",
+      "title": "Katalyse als Einfluss auf die Reaktionsgeschwindigkeit beschreiben",
+      "description": "Die lernende Person kann Katalyse als Einfluss auf die Reaktionsgeschwindigkeit beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.2, S. 28.",
+      "sourceText": "Katalyse als Einfluss auf die Reaktionsgeschwindigkeit beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-2",
+        "label": "2.2, S. 28: Katalyse als Einfluss auf die Reaktionsgeschwindigkeit beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-2",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-3-042-64913f0f",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-3",
+      "topicCode": "2.3",
+      "title": "dynamisches chemisches Gleichgewicht beschreiben",
+      "description": "Die lernende Person kann dynamisches chemisches Gleichgewicht beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.3, S. 29.",
+      "sourceText": "dynamisches chemisches Gleichgewicht beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-3",
+        "label": "2.3, S. 29: dynamisches chemisches Gleichgewicht beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-3",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-3-043-eb5ca37c",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-3",
+      "topicCode": "2.3",
+      "title": "Gleichgewichtslage und Massenwirkungsgesetz anwenden",
+      "description": "Die lernende Person kann Gleichgewichtslage und Massenwirkungsgesetz anwenden.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.3, S. 29.",
+      "sourceText": "Gleichgewichtslage und Massenwirkungsgesetz anwenden",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-3",
+        "label": "2.3, S. 29: Gleichgewichtslage und Massenwirkungsgesetz anwenden"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-3",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-3-044-7c750b14",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-3",
+      "topicCode": "2.3",
+      "title": "das Prinzip von Le Chatelier anwenden",
+      "description": "Die lernende Person kann das Prinzip von Le Chatelier anwenden.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.3, S. 29.",
+      "sourceText": "das Prinzip von Le Chatelier anwenden",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-3",
+        "label": "2.3, S. 29: das Prinzip von Le Chatelier anwenden"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-3",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-3-045-4eff834e",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-3",
+      "topicCode": "2.3",
+      "title": "chemisches Gleichgewicht an einem Beispiel in der Natur beschreiben",
+      "description": "Die lernende Person kann chemisches Gleichgewicht an einem Beispiel in der Natur beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.3, S. 29.",
+      "sourceText": "chemisches Gleichgewicht an einem Beispiel in der Natur beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-3",
+        "label": "2.3, S. 29: chemisches Gleichgewicht an einem Beispiel in der Natur beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-3",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-3-046-52a3e704",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-3",
+      "topicCode": "2.3",
+      "title": "Konzentrationsberechnungen mit dem Massenwirkungsgesetz durchfuehren",
+      "description": "Die lernende Person kann Konzentrationsberechnungen mit dem Massenwirkungsgesetz durchfuehren.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.3, S. 29.",
+      "sourceText": "Konzentrationsberechnungen mit dem Massenwirkungsgesetz durchfuehren",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-3",
+        "label": "2.3, S. 29: Konzentrationsberechnungen mit dem Massenwirkungsgesetz durchfuehren"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-3",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-3-047-4ceecc57",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-3",
+      "topicCode": "2.3",
+      "title": "das Haber-Bosch-Verfahren unter Gleichgewichtsaspekten beschreiben",
+      "description": "Die lernende Person kann das Haber-Bosch-Verfahren unter Gleichgewichtsaspekten beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.3, S. 29.",
+      "sourceText": "das Haber-Bosch-Verfahren unter Gleichgewichtsaspekten beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-3",
+        "label": "2.3, S. 29: das Haber-Bosch-Verfahren unter Gleichgewichtsaspekten beschreiben"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-3",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-3-048-dc68a0b2",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-3",
+      "topicCode": "2.3",
+      "title": "Loeslichkeitsgleichgewicht qualitativ und quantitativ betrachten",
+      "description": "Die lernende Person kann Loeslichkeitsgleichgewicht qualitativ und quantitativ betrachten.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.3, S. 29.",
+      "sourceText": "Loeslichkeitsgleichgewicht qualitativ und quantitativ betrachten",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-3",
+        "label": "2.3, S. 29: Loeslichkeitsgleichgewicht qualitativ und quantitativ betrachten"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-3",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-3-049-840afcc1",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-3",
+      "topicCode": "2.3",
+      "title": "Loeslichkeitsprodukt verwenden",
+      "description": "Die lernende Person kann Loeslichkeitsprodukt verwenden.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.3, S. 29.",
+      "sourceText": "Loeslichkeitsprodukt verwenden",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-3",
+        "label": "2.3, S. 29: Loeslichkeitsprodukt verwenden"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-3",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-4-050-abf35343",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+      "topicCode": "2.4",
+      "title": "Saeure-Base-Konzept nach Broensted beschreiben",
+      "description": "Die lernende Person kann Saeure-Base-Konzept nach Broensted beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.4, S. 30.",
+      "sourceText": "Saeure-Base-Konzept nach Broensted beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+        "label": "2.4, S. 30: Saeure-Base-Konzept nach Broensted beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-4",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.4"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-4-051-1361dafb",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+      "topicCode": "2.4",
+      "title": "Autoprotolyse und Ionenprodukt des Wassers beschreiben",
+      "description": "Die lernende Person kann Autoprotolyse und Ionenprodukt des Wassers beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.4, S. 30.",
+      "sourceText": "Autoprotolyse und Ionenprodukt des Wassers beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+        "label": "2.4, S. 30: Autoprotolyse und Ionenprodukt des Wassers beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-4",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.4"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-4-052-5d26d648",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+      "topicCode": "2.4",
+      "title": "pH-Wert und pOH-Wert verwenden",
+      "description": "Die lernende Person kann pH-Wert und pOH-Wert verwenden.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.4, S. 30.",
+      "sourceText": "pH-Wert und pOH-Wert verwenden",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+        "label": "2.4, S. 30: pH-Wert und pOH-Wert verwenden"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-4",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.4"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-4-053-ccb0fe02",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+      "topicCode": "2.4",
+      "title": "Saeure-Base-Konstanten qualitativ betrachten",
+      "description": "Die lernende Person kann Saeure-Base-Konstanten qualitativ betrachten.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.4, S. 30.",
+      "sourceText": "Saeure-Base-Konstanten qualitativ betrachten",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+        "label": "2.4, S. 30: Saeure-Base-Konstanten qualitativ betrachten"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-4",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.4"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-4-054-9f9a6c97",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+      "topicCode": "2.4",
+      "title": "pH-Wert-Berechnungen waessriger Loesungen von Saeuren und Basen bei vollstaendiger Protolyse durchfuehren",
+      "description": "Die lernende Person kann pH-Wert-Berechnungen waessriger Loesungen von Saeuren und Basen bei vollstaendiger Protolyse durchfuehren.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.4, S. 30.",
+      "sourceText": "pH-Wert-Berechnungen waessriger Loesungen von Saeuren und Basen bei vollstaendiger Protolyse durchfuehren",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+        "label": "2.4, S. 30: pH-Wert-Berechnungen waessriger Loesungen von Saeuren und Basen bei vollstaendiger Protolyse durchfuehren"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-4",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.4"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-4-055-53b43458",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+      "topicCode": "2.4",
+      "title": "Saeure-Base-Konstanten quantitativ betrachten",
+      "description": "Die lernende Person kann Saeure-Base-Konstanten quantitativ betrachten.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.4, S. 30.",
+      "sourceText": "Saeure-Base-Konstanten quantitativ betrachten",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+        "label": "2.4, S. 30: Saeure-Base-Konstanten quantitativ betrachten"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-4",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.4"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-4-056-ef511601",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+      "topicCode": "2.4",
+      "title": "pH-Wert-Berechnungen bei unvollstaendiger Protolyse durchfuehren",
+      "description": "Die lernende Person kann pH-Wert-Berechnungen bei unvollstaendiger Protolyse durchfuehren.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.4, S. 30.",
+      "sourceText": "pH-Wert-Berechnungen bei unvollstaendiger Protolyse durchfuehren",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+        "label": "2.4, S. 30: pH-Wert-Berechnungen bei unvollstaendiger Protolyse durchfuehren"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-4",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.4"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-4-057-a665f501",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+      "topicCode": "2.4",
+      "title": "Konzentrationsbestimmung mit Umschlagspunkt bei starken Saeuren und Basen durchfuehren",
+      "description": "Die lernende Person kann Konzentrationsbestimmung mit Umschlagspunkt bei starken Saeuren und Basen durchfuehren.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.4, S. 30.",
+      "sourceText": "Konzentrationsbestimmung mit Umschlagspunkt bei starken Saeuren und Basen durchfuehren",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+        "label": "2.4, S. 30: Konzentrationsbestimmung mit Umschlagspunkt bei starken Saeuren und Basen durchfuehren"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-4",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.4"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-4-058-219d10ba",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+      "topicCode": "2.4",
+      "title": "Saeure-Base-Titrationen rechnerisch auswerten",
+      "description": "Die lernende Person kann Saeure-Base-Titrationen rechnerisch auswerten.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.4, S. 30.",
+      "sourceText": "Saeure-Base-Titrationen rechnerisch auswerten",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+        "label": "2.4, S. 30: Saeure-Base-Titrationen rechnerisch auswerten"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-4",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.4"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-4-059-2b6043d8",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+      "topicCode": "2.4",
+      "title": "Saeure-Base-Titration mit Titrationskurve auswerten",
+      "description": "Die lernende Person kann Saeure-Base-Titration mit Titrationskurve auswerten.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.4, S. 30.",
+      "sourceText": "Saeure-Base-Titration mit Titrationskurve auswerten",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+        "label": "2.4, S. 30: Saeure-Base-Titration mit Titrationskurve auswerten"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-4",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.4"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-4-060-8b1a60b6",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+      "topicCode": "2.4",
+      "title": "Titrationen schwacher und mehrprotoniger Saeuren sowie schwacher Basen auswerten",
+      "description": "Die lernende Person kann Titrationen schwacher und mehrprotoniger Saeuren sowie schwacher Basen auswerten.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.4, S. 30.",
+      "sourceText": "Titrationen schwacher und mehrprotoniger Saeuren sowie schwacher Basen auswerten",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+        "label": "2.4, S. 30: Titrationen schwacher und mehrprotoniger Saeuren sowie schwacher Basen auswerten"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-4",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.4"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-4-061-6a685f02",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+      "topicCode": "2.4",
+      "title": "charakteristische Punkte von Titrationskurven rechnerisch bestimmen",
+      "description": "Die lernende Person kann charakteristische Punkte von Titrationskurven rechnerisch bestimmen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.4, S. 30.",
+      "sourceText": "charakteristische Punkte von Titrationskurven rechnerisch bestimmen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+        "label": "2.4, S. 30: charakteristische Punkte von Titrationskurven rechnerisch bestimmen"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-4",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.4"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-4-062-0eff4d69",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+      "topicCode": "2.4",
+      "title": "Puffersysteme in Zusammensetzung, Wirkungsprinzip und Bedeutung beschreiben",
+      "description": "Die lernende Person kann Puffersysteme in Zusammensetzung, Wirkungsprinzip und Bedeutung beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.4, S. 30.",
+      "sourceText": "Puffersysteme in Zusammensetzung, Wirkungsprinzip und Bedeutung beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+        "label": "2.4, S. 30: Puffersysteme in Zusammensetzung, Wirkungsprinzip und Bedeutung beschreiben"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-4",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.4"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-2-4-063-c3485a51",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+      "topicCode": "2.4",
+      "title": "Puffersysteme mit der Henderson-Hasselbalch-Gleichung quantitativ betrachten",
+      "description": "Die lernende Person kann Puffersysteme mit der Henderson-Hasselbalch-Gleichung quantitativ betrachten.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 2.4, S. 30.",
+      "sourceText": "Puffersysteme mit der Henderson-Hasselbalch-Gleichung quantitativ betrachten",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:2-4",
+        "label": "2.4, S. 30: Puffersysteme mit der Henderson-Hasselbalch-Gleichung quantitativ betrachten"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:2-4",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "2.4"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-3-1-064-45ac6de5",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+      "topicCode": "3.1",
+      "title": "Redoxreaktionen als Elektronenuebergaenge mit Teilreaktionen beschreiben",
+      "description": "Die lernende Person kann Redoxreaktionen als Elektronenuebergaenge mit Teilreaktionen beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 3.1, S. 31.",
+      "sourceText": "Redoxreaktionen als Elektronenuebergaenge mit Teilreaktionen beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+        "label": "3.1, S. 31: Redoxreaktionen als Elektronenuebergaenge mit Teilreaktionen beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:3-1",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-3-1-065-0abf7fa4",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+      "topicCode": "3.1",
+      "title": "Reaktionsgleichungen mit Oxidationszahlen aufstellen",
+      "description": "Die lernende Person kann Reaktionsgleichungen mit Oxidationszahlen aufstellen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 3.1, S. 31.",
+      "sourceText": "Reaktionsgleichungen mit Oxidationszahlen aufstellen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+        "label": "3.1, S. 31: Reaktionsgleichungen mit Oxidationszahlen aufstellen"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:3-1",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-3-1-066-cb37e9a9",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+      "topicCode": "3.1",
+      "title": "Grundbauprinzip einer galvanischen Zelle und elektrochemische Spannungsreihe beschreiben",
+      "description": "Die lernende Person kann Grundbauprinzip einer galvanischen Zelle und elektrochemische Spannungsreihe beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 3.1, S. 31.",
+      "sourceText": "Grundbauprinzip einer galvanischen Zelle und elektrochemische Spannungsreihe beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+        "label": "3.1, S. 31: Grundbauprinzip einer galvanischen Zelle und elektrochemische Spannungsreihe beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:3-1",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-3-1-067-fc029a58",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+      "topicCode": "3.1",
+      "title": "Zellspannung unter Standardbedingungen berechnen",
+      "description": "Die lernende Person kann Zellspannung unter Standardbedingungen berechnen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 3.1, S. 31.",
+      "sourceText": "Zellspannung unter Standardbedingungen berechnen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+        "label": "3.1, S. 31: Zellspannung unter Standardbedingungen berechnen"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:3-1",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-3-1-068-a152e7b1",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+      "topicCode": "3.1",
+      "title": "galvanische Zellen als Zelldiagramm darstellen",
+      "description": "Die lernende Person kann galvanische Zellen als Zelldiagramm darstellen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 3.1, S. 31.",
+      "sourceText": "galvanische Zellen als Zelldiagramm darstellen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+        "label": "3.1, S. 31: galvanische Zellen als Zelldiagramm darstellen"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:3-1",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-3-1-069-0e00e966",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+      "topicCode": "3.1",
+      "title": "Nernst-Gleichung und konzentrationsabhaengige Zellspannung anwenden",
+      "description": "Die lernende Person kann Nernst-Gleichung und konzentrationsabhaengige Zellspannung anwenden.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 3.1, S. 31.",
+      "sourceText": "Nernst-Gleichung und konzentrationsabhaengige Zellspannung anwenden",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+        "label": "3.1, S. 31: Nernst-Gleichung und konzentrationsabhaengige Zellspannung anwenden"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:3-1",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-3-1-070-94780f35",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+      "topicCode": "3.1",
+      "title": "Aufbau und Reaktionen verschiedener Batterien beschreiben",
+      "description": "Die lernende Person kann Aufbau und Reaktionen verschiedener Batterien beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 3.1, S. 31.",
+      "sourceText": "Aufbau und Reaktionen verschiedener Batterien beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+        "label": "3.1, S. 31: Aufbau und Reaktionen verschiedener Batterien beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:3-1",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-3-1-071-facf05cf",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+      "topicCode": "3.1",
+      "title": "Grundprinzip eines Akkumulators und elektrochemischer Energiespeicherung beschreiben",
+      "description": "Die lernende Person kann Grundprinzip eines Akkumulators und elektrochemischer Energiespeicherung beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 3.1, S. 31.",
+      "sourceText": "Grundprinzip eines Akkumulators und elektrochemischer Energiespeicherung beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+        "label": "3.1, S. 31: Grundprinzip eines Akkumulators und elektrochemischer Energiespeicherung beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:3-1",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-3-1-072-b84cc8ad",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+      "topicCode": "3.1",
+      "title": "Entsorgung und Recycling von Batterien und Akkumulatoren bewerten",
+      "description": "Die lernende Person kann Entsorgung und Recycling von Batterien und Akkumulatoren bewerten.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 3.1, S. 31.",
+      "sourceText": "Entsorgung und Recycling von Batterien und Akkumulatoren bewerten",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+        "label": "3.1, S. 31: Entsorgung und Recycling von Batterien und Akkumulatoren bewerten"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:3-1",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-3-1-073-b6373ac6",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+      "topicCode": "3.1",
+      "title": "Aufbau und Reaktionen eines Akkumulators beschreiben",
+      "description": "Die lernende Person kann Aufbau und Reaktionen eines Akkumulators beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 3.1, S. 31.",
+      "sourceText": "Aufbau und Reaktionen eines Akkumulators beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+        "label": "3.1, S. 31: Aufbau und Reaktionen eines Akkumulators beschreiben"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:3-1",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-3-1-074-db193fd0",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+      "topicCode": "3.1",
+      "title": "Funktionsprinzip und Aufbau des Lithium-Ionen-Akkumulators beschreiben",
+      "description": "Die lernende Person kann Funktionsprinzip und Aufbau des Lithium-Ionen-Akkumulators beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 3.1, S. 31.",
+      "sourceText": "Funktionsprinzip und Aufbau des Lithium-Ionen-Akkumulators beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-1",
+        "label": "3.1, S. 31: Funktionsprinzip und Aufbau des Lithium-Ionen-Akkumulators beschreiben"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:3-1",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-3-2-075-18367477",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-2",
+      "topicCode": "3.2",
+      "title": "Elektrolyse als erzwungene Redoxreaktion mit Grundprinzip beschreiben",
+      "description": "Die lernende Person kann Elektrolyse als erzwungene Redoxreaktion mit Grundprinzip beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 3.2, S. 32.",
+      "sourceText": "Elektrolyse als erzwungene Redoxreaktion mit Grundprinzip beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-2",
+        "label": "3.2, S. 32: Elektrolyse als erzwungene Redoxreaktion mit Grundprinzip beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:3-2",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-3-2-076-193dae34",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-2",
+      "topicCode": "3.2",
+      "title": "Elektrolysen quantitativ mithilfe der Faraday-Gesetze betrachten",
+      "description": "Die lernende Person kann Elektrolysen quantitativ mithilfe der Faraday-Gesetze betrachten.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 3.2, S. 32.",
+      "sourceText": "Elektrolysen quantitativ mithilfe der Faraday-Gesetze betrachten",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-2",
+        "label": "3.2, S. 32: Elektrolysen quantitativ mithilfe der Faraday-Gesetze betrachten"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:3-2",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-3-2-077-2aed7e0e",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-2",
+      "topicCode": "3.2",
+      "title": "Prinzip der Ueberspannung beschreiben",
+      "description": "Die lernende Person kann Prinzip der Ueberspannung beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 3.2, S. 32.",
+      "sourceText": "Prinzip der Ueberspannung beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-2",
+        "label": "3.2, S. 32: Prinzip der Ueberspannung beschreiben"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:3-2",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-3-2-078-7c947b72",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-2",
+      "topicCode": "3.2",
+      "title": "industrielle Elektrolysen zur Rohstoffgewinnung und -verarbeitung beschreiben",
+      "description": "Die lernende Person kann industrielle Elektrolysen zur Rohstoffgewinnung und -verarbeitung beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 3.2, S. 32.",
+      "sourceText": "industrielle Elektrolysen zur Rohstoffgewinnung und -verarbeitung beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-2",
+        "label": "3.2, S. 32: industrielle Elektrolysen zur Rohstoffgewinnung und -verarbeitung beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:3-2",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-3-2-079-8e1b0577",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-2",
+      "topicCode": "3.2",
+      "title": "Prinzip der Metallkorrosion als Sauerstoffkorrosion beschreiben",
+      "description": "Die lernende Person kann Prinzip der Metallkorrosion als Sauerstoffkorrosion beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 3.2, S. 32.",
+      "sourceText": "Prinzip der Metallkorrosion als Sauerstoffkorrosion beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-2",
+        "label": "3.2, S. 32: Prinzip der Metallkorrosion als Sauerstoffkorrosion beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:3-2",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-3-2-080-bf3a7565",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-2",
+      "topicCode": "3.2",
+      "title": "kathodischen Korrosionsschutz beschreiben",
+      "description": "Die lernende Person kann kathodischen Korrosionsschutz beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 3.2, S. 32.",
+      "sourceText": "kathodischen Korrosionsschutz beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-2",
+        "label": "3.2, S. 32: kathodischen Korrosionsschutz beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:3-2",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-3-3-081-e2788417",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-3",
+      "topicCode": "3.3",
+      "title": "Wasserstoff als Energietraeger und seine Gewinnung beschreiben",
+      "description": "Die lernende Person kann Wasserstoff als Energietraeger und seine Gewinnung beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 3.3, S. 33.",
+      "sourceText": "Wasserstoff als Energietraeger und seine Gewinnung beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-3",
+        "label": "3.3, S. 33: Wasserstoff als Energietraeger und seine Gewinnung beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:3-3",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-3-3-082-7eac2ff0",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-3",
+      "topicCode": "3.3",
+      "title": "Treibstoffe aus nachwachsenden Rohstoffen beispielhaft beschreiben",
+      "description": "Die lernende Person kann Treibstoffe aus nachwachsenden Rohstoffen beispielhaft beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 3.3, S. 33.",
+      "sourceText": "Treibstoffe aus nachwachsenden Rohstoffen beispielhaft beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-3",
+        "label": "3.3, S. 33: Treibstoffe aus nachwachsenden Rohstoffen beispielhaft beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:3-3",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-3-3-083-f722baa6",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-3",
+      "topicCode": "3.3",
+      "title": "Einsatzmoeglichkeiten von Wasserstoff und innovative Zukunftstechnologien einordnen",
+      "description": "Die lernende Person kann Einsatzmoeglichkeiten von Wasserstoff und innovative Zukunftstechnologien einordnen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 3.3, S. 33.",
+      "sourceText": "Einsatzmoeglichkeiten von Wasserstoff und innovative Zukunftstechnologien einordnen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-3",
+        "label": "3.3, S. 33: Einsatzmoeglichkeiten von Wasserstoff und innovative Zukunftstechnologien einordnen"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:3-3",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-3-3-084-bc9f5910",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-3",
+      "topicCode": "3.3",
+      "title": "allgemeines Funktionsprinzip einer Brennstoffzelle beschreiben",
+      "description": "Die lernende Person kann allgemeines Funktionsprinzip einer Brennstoffzelle beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 3.3, S. 33.",
+      "sourceText": "allgemeines Funktionsprinzip einer Brennstoffzelle beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-3",
+        "label": "3.3, S. 33: allgemeines Funktionsprinzip einer Brennstoffzelle beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:3-3",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-3-3-085-39b53be7",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-3",
+      "topicCode": "3.3",
+      "title": "Brennstoffzelle mit klassischer Verbrennung vergleichen",
+      "description": "Die lernende Person kann Brennstoffzelle mit klassischer Verbrennung vergleichen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 3.3, S. 33.",
+      "sourceText": "Brennstoffzelle mit klassischer Verbrennung vergleichen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:3-3",
+        "label": "3.3, S. 33: Brennstoffzelle mit klassischer Verbrennung vergleichen"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:3-3",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "3.3"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-4-1-086-51544b47",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-1",
+      "topicCode": "4.1",
+      "title": "Einteilung und Struktur von Kunststoffen beschreiben",
+      "description": "Die lernende Person kann Einteilung und Struktur von Kunststoffen beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 4.1, S. 34.",
+      "sourceText": "Einteilung und Struktur von Kunststoffen beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-1",
+        "label": "4.1, S. 34: Einteilung und Struktur von Kunststoffen beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:4-1",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "4.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-4-1-087-f7b38e9b",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-1",
+      "topicCode": "4.1",
+      "title": "Verhalten von Kunststoffen bei thermischer und mechanischer Beanspruchung beschreiben",
+      "description": "Die lernende Person kann Verhalten von Kunststoffen bei thermischer und mechanischer Beanspruchung beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 4.1, S. 34.",
+      "sourceText": "Verhalten von Kunststoffen bei thermischer und mechanischer Beanspruchung beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-1",
+        "label": "4.1, S. 34: Verhalten von Kunststoffen bei thermischer und mechanischer Beanspruchung beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:4-1",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "4.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-4-1-088-3968303c",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-1",
+      "topicCode": "4.1",
+      "title": "Polymere und moderne Werkstoffe verwendungsbezogen einordnen",
+      "description": "Die lernende Person kann Polymere und moderne Werkstoffe verwendungsbezogen einordnen.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 4.1, S. 34.",
+      "sourceText": "Polymere und moderne Werkstoffe verwendungsbezogen einordnen",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-1",
+        "label": "4.1, S. 34: Polymere und moderne Werkstoffe verwendungsbezogen einordnen"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:4-1",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "4.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-4-1-089-0eef160c",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-1",
+      "topicCode": "4.1",
+      "title": "Grundprinzipien von Polymerisation, Polyaddition und Polykondensation beschreiben",
+      "description": "Die lernende Person kann Grundprinzipien von Polymerisation, Polyaddition und Polykondensation beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 4.1, S. 34.",
+      "sourceText": "Grundprinzipien von Polymerisation, Polyaddition und Polykondensation beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-1",
+        "label": "4.1, S. 34: Grundprinzipien von Polymerisation, Polyaddition und Polykondensation beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:4-1",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "4.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-4-1-090-d051123a",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-1",
+      "topicCode": "4.1",
+      "title": "Mechanismus der radikalischen Polymerisation beschreiben",
+      "description": "Die lernende Person kann Mechanismus der radikalischen Polymerisation beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 4.1, S. 34.",
+      "sourceText": "Mechanismus der radikalischen Polymerisation beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-1",
+        "label": "4.1, S. 34: Mechanismus der radikalischen Polymerisation beschreiben"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:4-1",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "4.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-4-1-091-fa6b1bfc",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-1",
+      "topicCode": "4.1",
+      "title": "werkstoffliches und rohstoffliches Recycling sowie thermische Verwertung von Kunststoffen beschreiben",
+      "description": "Die lernende Person kann werkstoffliches und rohstoffliches Recycling sowie thermische Verwertung von Kunststoffen beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 4.1, S. 34.",
+      "sourceText": "werkstoffliches und rohstoffliches Recycling sowie thermische Verwertung von Kunststoffen beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-1",
+        "label": "4.1, S. 34: werkstoffliches und rohstoffliches Recycling sowie thermische Verwertung von Kunststoffen beschreiben"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:4-1",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "4.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-4-1-092-c928b71f",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-1",
+      "topicCode": "4.1",
+      "title": "oekonomische und oekologische Aspekte des Kunststoffrecyclings bewerten",
+      "description": "Die lernende Person kann oekonomische und oekologische Aspekte des Kunststoffrecyclings bewerten.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 4.1, S. 34.",
+      "sourceText": "oekonomische und oekologische Aspekte des Kunststoffrecyclings bewerten",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-1",
+        "label": "4.1, S. 34: oekonomische und oekologische Aspekte des Kunststoffrecyclings bewerten"
+      },
+      "courseLevel": "GK_LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:4-1",
+        "courseLevel:GK_LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "4.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-4-1-093-67e74ba0",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-1",
+      "topicCode": "4.1",
+      "title": "Wertstoffkreislauf an einem Beispiel beschreiben",
+      "description": "Die lernende Person kann Wertstoffkreislauf an einem Beispiel beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 4.1, S. 34.",
+      "sourceText": "Wertstoffkreislauf an einem Beispiel beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-1",
+        "label": "4.1, S. 34: Wertstoffkreislauf an einem Beispiel beschreiben"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:4-1",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "4.1"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-4-2-094-365032c3",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-2",
+      "topicCode": "4.2",
+      "title": "Nanomaterial ueber Partikelgroesse und Dimensionalitaet definieren",
+      "description": "Die lernende Person kann Nanomaterial ueber Partikelgroesse und Dimensionalitaet definieren.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 4.2, S. 35.",
+      "sourceText": "Nanomaterial ueber Partikelgroesse und Dimensionalitaet definieren",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-2",
+        "label": "4.2, S. 35: Nanomaterial ueber Partikelgroesse und Dimensionalitaet definieren"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:4-2",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "4.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-4-2-095-a18fc58a",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-2",
+      "topicCode": "4.2",
+      "title": "Nanostruktur und Oberflaecheneigenschaft an einem Beispiel beschreiben",
+      "description": "Die lernende Person kann Nanostruktur und Oberflaecheneigenschaft an einem Beispiel beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 4.2, S. 35.",
+      "sourceText": "Nanostruktur und Oberflaecheneigenschaft an einem Beispiel beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-2",
+        "label": "4.2, S. 35: Nanostruktur und Oberflaecheneigenschaft an einem Beispiel beschreiben"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:4-2",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "4.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-4-2-096-4e293501",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-2",
+      "topicCode": "4.2",
+      "title": "Verwendung von Nanomaterialien an einem Beispiel beschreiben",
+      "description": "Die lernende Person kann Verwendung von Nanomaterialien an einem Beispiel beschreiben.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 4.2, S. 35.",
+      "sourceText": "Verwendung von Nanomaterialien an einem Beispiel beschreiben",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-2",
+        "label": "4.2, S. 35: Verwendung von Nanomaterialien an einem Beispiel beschreiben"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:4-2",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "4.2"
+      }
+    },
+    {
+      "id": "de-hh-chemie-sekii-bildungsplan-2022-4-2-097-d9b3d262",
+      "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-2",
+      "topicCode": "4.2",
+      "title": "Risiken der Nanotechnologie bewerten",
+      "description": "Die lernende Person kann Risiken der Nanotechnologie bewerten.",
+      "sourceDocumentKey": "HH-CHEMIE-GYO-2022",
+      "sourceRef": "Hamburg Bildungsplan Studienstufe Chemie 2022, 4.2, S. 35.",
+      "sourceText": "Risiken der Nanotechnologie bewerten",
+      "sourceSpan": {
+        "passageId": "de-hh-chemie-sekii-bildungsplan-2022:4-2",
+        "label": "4.2, S. 35: Risiken der Nanotechnologie bewerten"
+      },
+      "courseLevel": "LK",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-HH",
+        "stage:SekII",
+        "section:4-2",
+        "courseLevel:LK"
+      ],
+      "metadata": {
+        "extractionMethod": "manual-transcription-from-official-hamburg-pdf-passages",
+        "sectionCode": "4.2"
+      }
+    }
+  ]
+}

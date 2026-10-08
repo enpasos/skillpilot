@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:0e2687b6f1609cea852d94bfc8d4668b52452d659d1f5e4940ac00f4f2a64810",
+  "reviewInputFingerprint": "sha256:b4fd4816007a2cd51317b9c68e78a79c044314c8c0a0e5d1cf9dd48b1db5ebe8",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-flora-fauna20-targeted-amnion14-campaign-a-20261008-v3",
+      "roundId": "biologie-flora-fauna20-targeted-amnion14-independent-a-20261008-v3",
+      "independenceGroupId": "biologie-flora-fauna20-targeted-amnion14-independent-a-20261008-v3",
+      "runIds": [
+        "biologie-flora-fauna20-amnion14-targeted-independent-a-20261008-v3"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex independent A; exact serving revision not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-flora-fauna20-targeted-amnion14-campaign-b-20261008-v3",
+      "roundId": "biologie-flora-fauna20-targeted-amnion14-independent-b-20261008-v3",
+      "independenceGroupId": "biologie-flora-fauna20-targeted-amnion14-independent-b-20261008-v3",
+      "runIds": [
+        "biologie-flora-fauna20-amnion14-v4-targeted-native-independent-b-20261008-v2"
+      ],
+      "providers": [
+        "OpenAI Codex conversation"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex conversation::GPT-6 Codex (runtime version not exposed)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "321ea315-37fe-5f9e-8fa8-dd631bb447c7",
+      "firstRecordId": "biologie-flora-fauna20-amnion14-targeted-independent-a-20261008-v3.321ea315-37fe-5f9e-8fa8-dd631bb447c7",
+      "secondRecordId": "biologie-flora-fauna20-amnion14-v4-targeted-native-independent-b-20261008-v2.14",
+      "firstRunId": "biologie-flora-fauna20-amnion14-targeted-independent-a-20261008-v3",
+      "secondRunId": "biologie-flora-fauna20-amnion14-v4-targeted-native-independent-b-20261008-v2",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

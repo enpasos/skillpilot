@@ -1,0 +1,63 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-he7-ten-genuine-paired-current192-technical-20261008-v1",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he7-ten-reviewed-integration-preparation-technical-20261008-v1/native-d-ten.batch.config.json",
+  "configDigest": "sha256:f38c1599d7a21ca94675a4fc18b5a1582573dc9d3caf803d717055df72feb643",
+  "goalIds": [
+    "8d35381e-d646-512c-b0c2-bb90c4974208",
+    "55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba",
+    "91df35c7-e384-50d6-bb3a-37e74a6086f1",
+    "e0d04e58-1591-5230-bfa6-5c685b56d25b",
+    "b1dff57f-329e-5264-b2b9-2db71a0b2172",
+    "fc89ed54-1a78-55a9-8e54-751d6d46dad6",
+    "0d96a802-2a8d-5445-a7fa-02387f6b1f2d",
+    "e6f128c8-b38e-5167-9367-77e079a994c3",
+    "576d59e2-397a-5654-b853-7c0c4870fbd3",
+    "8678d0b5-8b74-5b01-8143-91bfea1e4482"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 391,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he7-ten-final-raster-native-author-root-20261008-v1/native-raster-candidate/full391.book.config.author.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he7-ten-final-raster-native-author-root-20261008-v1/candidate/canonical.current474-ten-new-raster-author.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:e4728213932d1e6fabf78fc13252f261499c9c3e063823b0b8dff36d2f5714a3"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:1bdda3911db5d4dfa7587029a40614cab4ad4fa672b6d2c33de8c4d0ad55d0e7",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:e66758465260350b3691699399698ae5af2ac00770ffdedc6464c20887c4d1fa",
+    "reviewInputFingerprint": "sha256:483929177c823d3de3bce33bfcb2825552add7d28d012a97b880c75230443e7d",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-he7-ten-ten-current391-campaign-a-20261008-v1",
+        "campaignDigest": "sha256:6069c3a9f0d746fc0d7f955085fbdf7e434a8599e7525c2d1f515af1bdab2572",
+        "roundId": "biologie-he7-ten-ten-current391-independent-a-20261008-v1",
+        "independenceGroupId": "biologie-he7-ten-ten-current391-independent-a-20261008-v1",
+        "batchId": "biologie-he7-ten-ten-current391-independent-a-20261008-v1.batch-001",
+        "batchInputFingerprint": "sha256:cc62c22d747c3c53e6f7c6b694f779b06aaecd9a32763b4dc45755c0073289aa"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-he7-ten-ten-current391-campaign-b-20261008-v1",
+        "campaignDigest": "sha256:eb38d07061ed4a64517084a9b7dfd5078efc44a27daf37cc2a0d0cb81fbb3e57",
+        "roundId": "biologie-he7-ten-ten-current391-independent-b-20261008-v1",
+        "independenceGroupId": "biologie-he7-ten-ten-current391-independent-b-20261008-v1",
+        "batchId": "biologie-he7-ten-ten-current391-independent-b-20261008-v1.batch-001",
+        "batchInputFingerprint": "sha256:832e51015a4cf77d71efcabfd5fe80580f825fa213d16610a7080c4ada229d7f"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

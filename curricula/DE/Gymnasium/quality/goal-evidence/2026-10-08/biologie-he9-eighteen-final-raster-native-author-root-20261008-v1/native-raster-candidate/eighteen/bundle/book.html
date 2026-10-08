@@ -1,0 +1,971 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Biologie: achtzehn aktuelle Ziele zu Flora und Fauna</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Biologie: achtzehn aktuelle Ziele zu Flora und Fauna</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>18 atomare Lernziele</dt><dd>5 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:cc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-4f5d4296002eb1bc70a26646" aria-label="Biologie"><a href="#goal-249f4c5d-fd23-57c7-ac62-773d62c33b49"><span class="toc-entry-label">Biologie</span></a></h2>
+          <span class="toc-entry-meta"><span>18 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-a13a7d2b-a11b-5d34-b29e-88cf786ca983" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-f4b85c873f06f0b9c2eee7c9" aria-label="Sexualität, Entwicklung und Verantwortung (Sek I)"><a href="#goal-249f4c5d-fd23-57c7-ac62-773d62c33b49"><span class="toc-entry-label">Sexualität,&#160;<wbr>Entwicklung&#160;<wbr>und&#160;<wbr>Verantwortung&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h3>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-f84ef338-a19a-59cf-864a-91ef07b765e5" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-208e70ae6bd73b0c36d0287d" aria-label="Sinnesorgane, Reizverarbeitung und Gesundheit (Sek I)"><a href="#goal-1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30"><span class="toc-entry-label">Sinnesorgane,&#160;<wbr>Reizverarbeitung&#160;<wbr>und&#160;<wbr>Gesundheit&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h3>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-90825b40-ac4d-5e85-993e-314e84f33f90" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-9e4de026b625798c6d1be604" aria-label="Blut, Immunität und Infektionen (Sek I)"><a href="#goal-480146f6-4749-52e3-a5e5-d08629e0c38f"><span class="toc-entry-label">Blut,&#160;<wbr>Immunität&#160;<wbr>und&#160;<wbr>Infektionen&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h3>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 9</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-b4176012-f93a-5dd2-84b3-edd6a9932367" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-4977846395f7dee76f9bcb1d" aria-label="Genetik, Vererbung und Gentechnik (Sek I)"><a href="#goal-1d2b1038-dcd5-529a-b085-9e14f1d58c76"><span class="toc-entry-label">Genetik,&#160;<wbr>Vererbung&#160;<wbr>und&#160;<wbr>Gentechnik&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h3>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 14</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-249f4c5d-fd23-57c7-ac62-773d62c33b49" data-goal-id="249f4c5d-fd23-57c7-ac62-773d62c33b49" data-page-number="1" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-a13a7d2b-a11b-5d34-b29e-88cf786ca983" aria-labelledby="goal-249f4c5d-fd23-57c7-ac62-773d62c33b49-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-249f4c5d-fd23-57c7-ac62-773d62c33b49-title"><a class="goal-self-link" href="#goal-249f4c5d-fd23-57c7-ac62-773d62c33b49">Hormonale Steuerung</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>249f4c5d-fd23-57c7-ac62-773d62c33b49</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-f4b85c873f06f0b9c2eee7c9">Sexualität, Entwicklung und Verantwortung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9be2226f8ef56d022cfdb660d31d4cf1e786dbe590376ac3ab69216dbfa4c682" data-rendered-digest="sha256:cf486ec1282b376fcf12cf8e2af48dfbd2d243e32da700536a27adeebd983a3f" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/249f4c5d-fd23-57c7-ac62-773d62c33b49/249f4c5d-fd23-57c7-ac62-773d62c33b49.png" alt="Ein vereinfachter Eierstock zeigt Follikel, den durch LH ausgelösten Eisprung und den folgenden Gelbkörper.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-249f4c5d-fd23-57c7-ac62-773d62c33b49-description-heading">
+        <p class="section-heading" id="goal-249f4c5d-fd23-57c7-ac62-773d62c33b49-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann hormonelle Steuerung der körperlichen Reifung und des Zyklus beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, HE, NI, NW:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-249f4c5d-fd23-57c7-ac62-773d62c33b49" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-249f4c5d-fd23-57c7-ac62-773d62c33b49-requires-heading">
+          <p class="section-heading" id="goal-249f4c5d-fd23-57c7-ac62-773d62c33b49-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-249f4c5d-fd23-57c7-ac62-773d62c33b49-reverse-heading">
+          <p class="section-heading" id="goal-249f4c5d-fd23-57c7-ac62-773d62c33b49-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-f7fd8d03-aea2-530a-a384-0f63d270f5f6"><span>Regelkreismodelle anwenden</span><code>f7fd8d03-aea2-530a-a384-0f63d270f5f6</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-249f4c5d-fd23-57c7-ac62-773d62c33b49-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-249f4c5d-fd23-57c7-ac62-773d62c33b49-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-91f62a7b-3b6a-5918-94ca-3f345f1f6584" rel="noreferrer noopener"><span>Veränderungen in der Pubertät</span> <code>91f62a7b-3b6a-5918-94ca-3f345f1f6584</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-249f4c5d-fd23-57c7-ac62-773d62c33b49-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-249f4c5d-fd23-57c7-ac62-773d62c33b49-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-3ee4b55c-81c3-5826-9d26-1a8c22cbd0b8" rel="noreferrer noopener"><span>Familienplanung und Verhütung</span> <code>3ee4b55c-81c3-5826-9d26-1a8c22cbd0b8</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 18</span>
+      <span>Buch-Digest <code>sha256:cc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:422b460a72639ed58fac01e23723fc07626edcf2c91fdaeb154826b427d841c8</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he9-eighteen-eighteen-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=249f4c5d-fd23-57c7-ac62-773d62c33b49&amp;goalFingerprint=sha256%3A422b460a72639ed58fac01e23723fc07626edcf2c91fdaeb154826b427d841c8&amp;pageFingerprint=sha256%3A3c77b805c7b41f41a638639341b68c0eb41f9ec9d0694fd0fa21931a902c6817&amp;bookDigest=sha256%3Acc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-4b7fdc2c-9dbe-5439-8d84-295abc240eec" data-goal-id="4b7fdc2c-9dbe-5439-8d84-295abc240eec" data-page-number="2" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-a13a7d2b-a11b-5d34-b29e-88cf786ca983" aria-labelledby="goal-4b7fdc2c-9dbe-5439-8d84-295abc240eec-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-4b7fdc2c-9dbe-5439-8d84-295abc240eec-title"><a class="goal-self-link" href="#goal-4b7fdc2c-9dbe-5439-8d84-295abc240eec">Sexualverhalten reflektieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>4b7fdc2c-9dbe-5439-8d84-295abc240eec</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-f4b85c873f06f0b9c2eee7c9">Sexualität, Entwicklung und Verantwortung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:0c878a92420b9fd3aece169528ae6a7cbacc4c15925e00ad9b695f78c724ba7e" data-rendered-digest="sha256:61723d0bf851462528d433940f09b1fb8c88d1cae730de6a6cadede68a68a61d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/4b7fdc2c-9dbe-5439-8d84-295abc240eec/4b7fdc2c-9dbe-5439-8d84-295abc240eec.png" alt="Zwei bekleidete Erwachsene respektieren eine deutlich ausgesprochene persönliche Grenze.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-4b7fdc2c-9dbe-5439-8d84-295abc240eec-description-heading">
+        <p class="section-heading" id="goal-4b7fdc2c-9dbe-5439-8d84-295abc240eec-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Sexualverhalten unter sozialen und ethischen Aspekten diskutieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-4b7fdc2c-9dbe-5439-8d84-295abc240eec" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-4b7fdc2c-9dbe-5439-8d84-295abc240eec-requires-heading">
+          <p class="section-heading" id="goal-4b7fdc2c-9dbe-5439-8d84-295abc240eec-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-4b7fdc2c-9dbe-5439-8d84-295abc240eec-reverse-heading">
+          <p class="section-heading" id="goal-4b7fdc2c-9dbe-5439-8d84-295abc240eec-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-4b7fdc2c-9dbe-5439-8d84-295abc240eec-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4b7fdc2c-9dbe-5439-8d84-295abc240eec-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-3ee4b55c-81c3-5826-9d26-1a8c22cbd0b8" rel="noreferrer noopener"><span>Familienplanung und Verhütung</span> <code>3ee4b55c-81c3-5826-9d26-1a8c22cbd0b8</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-4b7fdc2c-9dbe-5439-8d84-295abc240eec-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4b7fdc2c-9dbe-5439-8d84-295abc240eec-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-d6727804-a8d4-5438-9b98-4aea8e7f4f80" rel="noreferrer noopener"><span>Respektvoll über Sexualität kommunizieren</span> <code>d6727804-a8d4-5438-9b98-4aea8e7f4f80</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-6add2bde-b647-577d-a899-6fd62497656a" rel="noreferrer noopener"><span>Sexuelle Selbstbestimmung und Medienbilder beurteilen</span> <code>6add2bde-b647-577d-a899-6fd62497656a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 18</span>
+      <span>Buch-Digest <code>sha256:cc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:31736baca2ba98d7f9c9f09fa8c9520964b582df71498441cd5eb420cb675eee</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he9-eighteen-eighteen-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=4b7fdc2c-9dbe-5439-8d84-295abc240eec&amp;goalFingerprint=sha256%3A31736baca2ba98d7f9c9f09fa8c9520964b582df71498441cd5eb420cb675eee&amp;pageFingerprint=sha256%3Adaf9d00dea47525b0ce74d88c6a0c2018b33ac4b45e28e497b7da275f11eb6ec&amp;bookDigest=sha256%3Acc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f7fd8d03-aea2-530a-a384-0f63d270f5f6" data-goal-id="f7fd8d03-aea2-530a-a384-0f63d270f5f6" data-page-number="3" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-a13a7d2b-a11b-5d34-b29e-88cf786ca983" aria-labelledby="goal-f7fd8d03-aea2-530a-a384-0f63d270f5f6-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-f7fd8d03-aea2-530a-a384-0f63d270f5f6-title"><a class="goal-self-link" href="#goal-f7fd8d03-aea2-530a-a384-0f63d270f5f6">Regelkreismodelle anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f7fd8d03-aea2-530a-a384-0f63d270f5f6</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-f4b85c873f06f0b9c2eee7c9">Sexualität, Entwicklung und Verantwortung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d5a5c26414247fb495b082318c04e910f73d780db70d16d363fc6d94016113a3" data-rendered-digest="sha256:3f6e8af5b636547c9497fe11813bdffc8596c6d1e1da1fb9557cfe04d7497bae" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/f7fd8d03-aea2-530a-a384-0f63d270f5f6/f7fd8d03-aea2-530a-a384-0f63d270f5f6.png" alt="TSH stimuliert im vereinfachten Modell die Schilddrüse; T4 wirkt hemmend auf die weitere TSH-Freisetzung zurück.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f7fd8d03-aea2-530a-a384-0f63d270f5f6-description-heading">
+        <p class="section-heading" id="goal-f7fd8d03-aea2-530a-a384-0f63d270f5f6-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann einfache hormonelle Regelkreise modellieren und interpretieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. I · G9</li><li><strong>HH, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>SH:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-f7fd8d03-aea2-530a-a384-0f63d270f5f6" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f7fd8d03-aea2-530a-a384-0f63d270f5f6-requires-heading">
+          <p class="section-heading" id="goal-f7fd8d03-aea2-530a-a384-0f63d270f5f6-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-249f4c5d-fd23-57c7-ac62-773d62c33b49"><span>Hormonale Steuerung</span><code>249f4c5d-fd23-57c7-ac62-773d62c33b49</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-f7fd8d03-aea2-530a-a384-0f63d270f5f6-reverse-heading">
+          <p class="section-heading" id="goal-f7fd8d03-aea2-530a-a384-0f63d270f5f6-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 18</span>
+      <span>Buch-Digest <code>sha256:cc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:6d20884b7eeb733bd6610b6d3ff7cc80fe57e713ecd02441a0910917111dd67d</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he9-eighteen-eighteen-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=f7fd8d03-aea2-530a-a384-0f63d270f5f6&amp;goalFingerprint=sha256%3A6d20884b7eeb733bd6610b6d3ff7cc80fe57e713ecd02441a0910917111dd67d&amp;pageFingerprint=sha256%3A38f0aabe73647e3d6975f6042634c91e2fb4d044218e2a740355e1f9af2a62da&amp;bookDigest=sha256%3Acc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30" data-goal-id="1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30" data-page-number="4" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-f84ef338-a19a-59cf-864a-91ef07b765e5" aria-labelledby="goal-1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30-title"><a class="goal-self-link" href="#goal-1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30">Bau von Auge oder Ohr</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-208e70ae6bd73b0c36d0287d">Sinnesorgane, Reizverarbeitung und Gesundheit (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:821188bd294f4d467425d39f2d56509c514833ff4d0635d257d1b29b41bbb147" data-rendered-digest="sha256:7f14c1953aa27b304e97e3f384a1e491f58af14455ccfdc92a03ee8dfd32bd4a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30/1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30.png" alt="Vereinfachter Augenschnitt mit Hornhaut, Irisöffnung, Linse, Netzhaut und Sehnerv.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30-description-heading">
+        <p class="section-heading" id="goal-1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Bau von Auge oder Ohr beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30-requires-heading">
+          <p class="section-heading" id="goal-1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30-reverse-heading">
+          <p class="section-heading" id="goal-1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-9ac89f04-4483-5aac-8636-65c9d967048a"><span>Abbildung und Reizaufnahme</span><code>9ac89f04-4483-5aac-8636-65c9d967048a</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-b530a382-2786-5794-8821-3e01a62d88fd" rel="noreferrer noopener"><span>Biologische Grundlagen (Sek I)</span> <code>b530a382-2786-5794-8821-3e01a62d88fd</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 18</span>
+      <span>Buch-Digest <code>sha256:cc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:77854a833037fcda79f5112998621b46de2311d5a52f18b54a11b60105ab3aff</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he9-eighteen-eighteen-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30&amp;goalFingerprint=sha256%3A77854a833037fcda79f5112998621b46de2311d5a52f18b54a11b60105ab3aff&amp;pageFingerprint=sha256%3A086920b181fc9ae5e6890897cca6ef6e2c39b43f63de201e9884a8c05a2abf67&amp;bookDigest=sha256%3Acc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9ac89f04-4483-5aac-8636-65c9d967048a" data-goal-id="9ac89f04-4483-5aac-8636-65c9d967048a" data-page-number="5" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-f84ef338-a19a-59cf-864a-91ef07b765e5" aria-labelledby="goal-9ac89f04-4483-5aac-8636-65c9d967048a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9ac89f04-4483-5aac-8636-65c9d967048a-title"><a class="goal-self-link" href="#goal-9ac89f04-4483-5aac-8636-65c9d967048a">Abbildung und Reizaufnahme</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9ac89f04-4483-5aac-8636-65c9d967048a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-208e70ae6bd73b0c36d0287d">Sinnesorgane, Reizverarbeitung und Gesundheit (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:8e8c4e71e757e5c5aa352a337f4054372deae89b28126b99022dcd42ae9f299a" data-rendered-digest="sha256:b6c92b292616fbd0feabccd2232a084a98966b51f74addd53d4d8b0fc3d03261" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/9ac89f04-4483-5aac-8636-65c9d967048a/9ac89f04-4483-5aac-8636-65c9d967048a.png" alt="Ein Lichtstrahl tritt durch die Pupille und Linse und erreicht das umgekehrte Netzhautbild; ein Ausschnitt zeigt die Umwandlung von Licht in Nervensignale.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9ac89f04-4483-5aac-8636-65c9d967048a-description-heading">
+        <p class="section-heading" id="goal-9ac89f04-4483-5aac-8636-65c9d967048a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Abbildung auf Netzhaut oder Schallempfang erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-9ac89f04-4483-5aac-8636-65c9d967048a" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9ac89f04-4483-5aac-8636-65c9d967048a-requires-heading">
+          <p class="section-heading" id="goal-9ac89f04-4483-5aac-8636-65c9d967048a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30"><span>Bau von Auge oder Ohr</span><code>1d8d64b6-b2d8-526a-8e24-23e8b6e9eb30</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-9ac89f04-4483-5aac-8636-65c9d967048a-reverse-heading">
+          <p class="section-heading" id="goal-9ac89f04-4483-5aac-8636-65c9d967048a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-33262175-0139-5d8a-a3f2-641191459f71"><span>Verarbeitung im Nervensystem</span><code>33262175-0139-5d8a-a3f2-641191459f71</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 18</span>
+      <span>Buch-Digest <code>sha256:cc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:dac66f4f30b3268950fd49215029f3d4cccac785d38c694c4a5168a5a2c84303</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he9-eighteen-eighteen-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=9ac89f04-4483-5aac-8636-65c9d967048a&amp;goalFingerprint=sha256%3Adac66f4f30b3268950fd49215029f3d4cccac785d38c694c4a5168a5a2c84303&amp;pageFingerprint=sha256%3A3a98a35c7405d7feeabd831b39eeae34fedffd1481bdff98209f28c66ddcae4a&amp;bookDigest=sha256%3Acc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-33262175-0139-5d8a-a3f2-641191459f71" data-goal-id="33262175-0139-5d8a-a3f2-641191459f71" data-page-number="6" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-f84ef338-a19a-59cf-864a-91ef07b765e5" aria-labelledby="goal-33262175-0139-5d8a-a3f2-641191459f71-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-33262175-0139-5d8a-a3f2-641191459f71-title"><a class="goal-self-link" href="#goal-33262175-0139-5d8a-a3f2-641191459f71">Verarbeitung im Nervensystem</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>33262175-0139-5d8a-a3f2-641191459f71</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-208e70ae6bd73b0c36d0287d">Sinnesorgane, Reizverarbeitung und Gesundheit (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2ada1a6b856ded0681e3c3ceead2c8544be4bcbb9db48acbaad9ea19cc170296" data-rendered-digest="sha256:d2251eb5f387d87fc6d4f24c3f62dff85b9c6bcd9cc574dc5ab7b70d74f44cf3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/33262175-0139-5d8a-a3f2-641191459f71/33262175-0139-5d8a-a3f2-641191459f71.png" alt="Ein Sinneseindruck wird im Gehirn verarbeitet und führt zu einer bewussten Bewegung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-33262175-0139-5d8a-a3f2-641191459f71-description-heading">
+        <p class="section-heading" id="goal-33262175-0139-5d8a-a3f2-641191459f71-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Reizweiterleitung und einfache Verarbeitung beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-33262175-0139-5d8a-a3f2-641191459f71" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-33262175-0139-5d8a-a3f2-641191459f71-requires-heading">
+          <p class="section-heading" id="goal-33262175-0139-5d8a-a3f2-641191459f71-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-9ac89f04-4483-5aac-8636-65c9d967048a"><span>Abbildung und Reizaufnahme</span><code>9ac89f04-4483-5aac-8636-65c9d967048a</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-33262175-0139-5d8a-a3f2-641191459f71-reverse-heading">
+          <p class="section-heading" id="goal-33262175-0139-5d8a-a3f2-641191459f71-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-eee09949-587f-51d2-8f51-aa6c40c71bbf"><span>Wahrnehmung und Unterschiede</span><code>eee09949-587f-51d2-8f51-aa6c40c71bbf</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 18</span>
+      <span>Buch-Digest <code>sha256:cc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b6941268553b7764afbf2c0bfe927668cbb184f81244334187a288953fd54a3d</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he9-eighteen-eighteen-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=33262175-0139-5d8a-a3f2-641191459f71&amp;goalFingerprint=sha256%3Ab6941268553b7764afbf2c0bfe927668cbb184f81244334187a288953fd54a3d&amp;pageFingerprint=sha256%3A5680111543dee6e0c94db5c9fc1c22565241a7cf14c9960d74436c0db17ac34d&amp;bookDigest=sha256%3Acc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-eee09949-587f-51d2-8f51-aa6c40c71bbf" data-goal-id="eee09949-587f-51d2-8f51-aa6c40c71bbf" data-page-number="7" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-f84ef338-a19a-59cf-864a-91ef07b765e5" aria-labelledby="goal-eee09949-587f-51d2-8f51-aa6c40c71bbf-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-eee09949-587f-51d2-8f51-aa6c40c71bbf-title"><a class="goal-self-link" href="#goal-eee09949-587f-51d2-8f51-aa6c40c71bbf">Wahrnehmung und Unterschiede</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>eee09949-587f-51d2-8f51-aa6c40c71bbf</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-208e70ae6bd73b0c36d0287d">Sinnesorgane, Reizverarbeitung und Gesundheit (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:5312f6ccf8b8e70541a232ee214282899f4703b1206b594d97de4c299f3c8f00" data-rendered-digest="sha256:aee66fc12935da1de90e254c32e5a40711f73579e88c522367214a53247201bb" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/eee09949-587f-51d2-8f51-aa6c40c71bbf/eee09949-587f-51d2-8f51-aa6c40c71bbf.png" alt="Ein ausdrücklich vereinfachtes Modell vergleicht menschliche Farbwahrnehmung und die Wahrnehmung ultravioletter Blütenmuster bei einer Biene.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-eee09949-587f-51d2-8f51-aa6c40c71bbf-description-heading">
+        <p class="section-heading" id="goal-eee09949-587f-51d2-8f51-aa6c40c71bbf-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Wahrnehmungsunterschiede verschiedener Lebewesen erläutern und Modelle nutzen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-eee09949-587f-51d2-8f51-aa6c40c71bbf" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-eee09949-587f-51d2-8f51-aa6c40c71bbf-requires-heading">
+          <p class="section-heading" id="goal-eee09949-587f-51d2-8f51-aa6c40c71bbf-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-33262175-0139-5d8a-a3f2-641191459f71"><span>Verarbeitung im Nervensystem</span><code>33262175-0139-5d8a-a3f2-641191459f71</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-eee09949-587f-51d2-8f51-aa6c40c71bbf-reverse-heading">
+          <p class="section-heading" id="goal-eee09949-587f-51d2-8f51-aa6c40c71bbf-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-967b666d-aed4-50d8-be73-70269cb306db"><span>Gesundheit und Gefährdungen</span><code>967b666d-aed4-50d8-be73-70269cb306db</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 18</span>
+      <span>Buch-Digest <code>sha256:cc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:76e8263f2e43c8c0e32139db8cb9df0720d18a1800f5be5abfb39e556fc2426d</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he9-eighteen-eighteen-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=eee09949-587f-51d2-8f51-aa6c40c71bbf&amp;goalFingerprint=sha256%3A76e8263f2e43c8c0e32139db8cb9df0720d18a1800f5be5abfb39e556fc2426d&amp;pageFingerprint=sha256%3A8bcab91f6526b1f63e1865e0f432aec1b80215b945f70c999bd055a39af2826f&amp;bookDigest=sha256%3Acc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-967b666d-aed4-50d8-be73-70269cb306db" data-goal-id="967b666d-aed4-50d8-be73-70269cb306db" data-page-number="8" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-f84ef338-a19a-59cf-864a-91ef07b765e5" aria-labelledby="goal-967b666d-aed4-50d8-be73-70269cb306db-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-967b666d-aed4-50d8-be73-70269cb306db-title"><a class="goal-self-link" href="#goal-967b666d-aed4-50d8-be73-70269cb306db">Gesundheit und Gefährdungen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>967b666d-aed4-50d8-be73-70269cb306db</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-208e70ae6bd73b0c36d0287d">Sinnesorgane, Reizverarbeitung und Gesundheit (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3fd226ddfdd6e24db1f62f5eea0a55b9fa9721b3faf5501ec4cdaae6656d0a5a" data-rendered-digest="sha256:acfef668eda4da2ddf469087aefbe88910544c9979c3192853763001ab96b713" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/967b666d-aed4-50d8-be73-70269cb306db/967b666d-aed4-50d8-be73-70269cb306db.png" alt="Schutzbrille und angepasste Lautstärke verdeutlichen Sinnesorganschutz; ein Warnmotiv steht für beeinträchtigte Verarbeitung durch Drogen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-967b666d-aed4-50d8-be73-70269cb306db-description-heading">
+        <p class="section-heading" id="goal-967b666d-aed4-50d8-be73-70269cb306db-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Gesundheitsgefährdungen und Einfluss von Drogen auf Sinnesorgane erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-967b666d-aed4-50d8-be73-70269cb306db" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-967b666d-aed4-50d8-be73-70269cb306db-requires-heading">
+          <p class="section-heading" id="goal-967b666d-aed4-50d8-be73-70269cb306db-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-eee09949-587f-51d2-8f51-aa6c40c71bbf"><span>Wahrnehmung und Unterschiede</span><code>eee09949-587f-51d2-8f51-aa6c40c71bbf</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-967b666d-aed4-50d8-be73-70269cb306db-reverse-heading">
+          <p class="section-heading" id="goal-967b666d-aed4-50d8-be73-70269cb306db-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 18</span>
+      <span>Buch-Digest <code>sha256:cc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:24e5cf1c2fa9310c783ac93728d48503dc434dd495bd2d18e1755f135fe68b10</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he9-eighteen-eighteen-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=967b666d-aed4-50d8-be73-70269cb306db&amp;goalFingerprint=sha256%3A24e5cf1c2fa9310c783ac93728d48503dc434dd495bd2d18e1755f135fe68b10&amp;pageFingerprint=sha256%3Ac4a0597f87bd537a7415bb1bdc09dfa4ad02262b10d7469fae802141798f7c3d&amp;bookDigest=sha256%3Acc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-480146f6-4749-52e3-a5e5-d08629e0c38f" data-goal-id="480146f6-4749-52e3-a5e5-d08629e0c38f" data-page-number="9" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-90825b40-ac4d-5e85-993e-314e84f33f90" aria-labelledby="goal-480146f6-4749-52e3-a5e5-d08629e0c38f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-480146f6-4749-52e3-a5e5-d08629e0c38f-title"><a class="goal-self-link" href="#goal-480146f6-4749-52e3-a5e5-d08629e0c38f">Bau des Blutes</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>480146f6-4749-52e3-a5e5-d08629e0c38f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9e4de026b625798c6d1be604">Blut, Immunität und Infektionen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:1061bc306df14d6100aab7abc2c02565b1032bb627f4b5c5b5b8b24a003a3577" data-rendered-digest="sha256:11e04db7082e391222d284aea4e427b8158a6b4f4a9420f46dfa2c10f2f201d2" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/480146f6-4749-52e3-a5e5-d08629e0c38f/480146f6-4749-52e3-a5e5-d08629e0c38f.png" alt="Rote Blutkörperchen ohne Zellkern, ein weißes Blutkörperchen mit Zellkern und kleine Blutplättchen sind im Plasma schematisch unterschieden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-480146f6-4749-52e3-a5e5-d08629e0c38f-description-heading">
+        <p class="section-heading" id="goal-480146f6-4749-52e3-a5e5-d08629e0c38f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Blutbestandteile benennen und Eigenschaften beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-480146f6-4749-52e3-a5e5-d08629e0c38f" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-480146f6-4749-52e3-a5e5-d08629e0c38f-requires-heading">
+          <p class="section-heading" id="goal-480146f6-4749-52e3-a5e5-d08629e0c38f-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-480146f6-4749-52e3-a5e5-d08629e0c38f-reverse-heading">
+          <p class="section-heading" id="goal-480146f6-4749-52e3-a5e5-d08629e0c38f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8"><span>Funktionen der Blutbestandteile</span><code>3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-480146f6-4749-52e3-a5e5-d08629e0c38f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-480146f6-4749-52e3-a5e5-d08629e0c38f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-d773ac89-37ef-51cd-a6ee-a75a6b10c43b" rel="noreferrer noopener"><span>Blutkreislauf und Atmung</span> <code>d773ac89-37ef-51cd-a6ee-a75a6b10c43b</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 18</span>
+      <span>Buch-Digest <code>sha256:cc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:02f79824874f597a5119fee5ff25dfc7f5376c2db9f64c9f94b233fd508b4fc1</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he9-eighteen-eighteen-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=480146f6-4749-52e3-a5e5-d08629e0c38f&amp;goalFingerprint=sha256%3A02f79824874f597a5119fee5ff25dfc7f5376c2db9f64c9f94b233fd508b4fc1&amp;pageFingerprint=sha256%3Ac66f45b0a4e601252fc71b2136667fa53c0c2e19cc7e66e87184c24b1142c89a&amp;bookDigest=sha256%3Acc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8" data-goal-id="3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8" data-page-number="10" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-90825b40-ac4d-5e85-993e-314e84f33f90" aria-labelledby="goal-3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8-title"><a class="goal-self-link" href="#goal-3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8">Funktionen der Blutbestandteile</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9e4de026b625798c6d1be604">Blut, Immunität und Infektionen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d3aba1eb1a52fc89b04021bed61ee40a56cf1c48ab2d51684a70b2e8c7d35eaa" data-rendered-digest="sha256:a77e86b0f4d6278ea3d3f07b008c9d34c6b3799866a09b0b68e7252d01c19897" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8/3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8.png" alt="Sauerstofftransport, Blutstillung und Abwehr sind als unterschiedliche Blutaufgaben schematisch dargestellt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8-description-heading">
+        <p class="section-heading" id="goal-3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Funktionen von Blutzellen und Plasma für Transport, Gerinnung und Immunität erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8-requires-heading">
+          <p class="section-heading" id="goal-3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-480146f6-4749-52e3-a5e5-d08629e0c38f"><span>Bau des Blutes</span><code>480146f6-4749-52e3-a5e5-d08629e0c38f</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8-reverse-heading">
+          <p class="section-heading" id="goal-3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-ba9b6ed1-553c-5096-abf7-1e2cba8cfcfd"><span>Blutgruppen verstehen</span><code>ba9b6ed1-553c-5096-abf7-1e2cba8cfcfd</code><span class="reference-page">S. 11</span></a></li><li><a href="#goal-dcc9d2e5-16f4-5813-ab66-7095c8a165a6"><span>Immunabwehr beschreiben</span><code>dcc9d2e5-16f4-5813-ab66-7095c8a165a6</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 18</span>
+      <span>Buch-Digest <code>sha256:cc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d978a3ed31fe5bfcd8bb142f24c43331cffbfd939fba2d42cd2c395c32b499e0</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he9-eighteen-eighteen-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8&amp;goalFingerprint=sha256%3Ad978a3ed31fe5bfcd8bb142f24c43331cffbfd939fba2d42cd2c395c32b499e0&amp;pageFingerprint=sha256%3Ae5d448c7145e1cd3f8c9af9e6c4a7125ff2529b35b3c8b81732338f8d3596752&amp;bookDigest=sha256%3Acc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ba9b6ed1-553c-5096-abf7-1e2cba8cfcfd" data-goal-id="ba9b6ed1-553c-5096-abf7-1e2cba8cfcfd" data-page-number="11" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-90825b40-ac4d-5e85-993e-314e84f33f90" aria-labelledby="goal-ba9b6ed1-553c-5096-abf7-1e2cba8cfcfd-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-ba9b6ed1-553c-5096-abf7-1e2cba8cfcfd-title"><a class="goal-self-link" href="#goal-ba9b6ed1-553c-5096-abf7-1e2cba8cfcfd">Blutgruppen verstehen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ba9b6ed1-553c-5096-abf7-1e2cba8cfcfd</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9e4de026b625798c6d1be604">Blut, Immunität und Infektionen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:70b7eccc49d89a9418495f4113a8dcc9937214cda6e557cf84d5f750c469f194" data-rendered-digest="sha256:16942b45abebca9715dad14029e0416289e69f27bb23d57a8150d7d1cf6ec2aa" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/ba9b6ed1-553c-5096-abf7-1e2cba8cfcfd/ba9b6ed1-553c-5096-abf7-1e2cba8cfcfd.png" alt="Anti-B bindet im vereinfachten Modell über seine beiden Armenden an B-Merkmale zweier roter Blutkörperchen; A-Merkmale bleiben ungebunden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ba9b6ed1-553c-5096-abf7-1e2cba8cfcfd-description-heading">
+        <p class="section-heading" id="goal-ba9b6ed1-553c-5096-abf7-1e2cba8cfcfd-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann AB0- und Rhesus-System erläutern und bei Transfusion berücksichtigen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HE:</strong> Sek. I · G9</li><li><strong>MV, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-ba9b6ed1-553c-5096-abf7-1e2cba8cfcfd" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ba9b6ed1-553c-5096-abf7-1e2cba8cfcfd-requires-heading">
+          <p class="section-heading" id="goal-ba9b6ed1-553c-5096-abf7-1e2cba8cfcfd-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8"><span>Funktionen der Blutbestandteile</span><code>3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-ba9b6ed1-553c-5096-abf7-1e2cba8cfcfd-reverse-heading">
+          <p class="section-heading" id="goal-ba9b6ed1-553c-5096-abf7-1e2cba8cfcfd-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 18</span>
+      <span>Buch-Digest <code>sha256:cc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:8e2de4ef49055edc0359b56820900a64f4798c02123b50a2b89cb4afcd241cc8</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he9-eighteen-eighteen-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=ba9b6ed1-553c-5096-abf7-1e2cba8cfcfd&amp;goalFingerprint=sha256%3A8e2de4ef49055edc0359b56820900a64f4798c02123b50a2b89cb4afcd241cc8&amp;pageFingerprint=sha256%3A6a9b5eb3c869ac5d93461e774de078d76636816ac4897d46bcaa987c7f6fe03c&amp;bookDigest=sha256%3Acc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-dcc9d2e5-16f4-5813-ab66-7095c8a165a6" data-goal-id="dcc9d2e5-16f4-5813-ab66-7095c8a165a6" data-page-number="12" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-90825b40-ac4d-5e85-993e-314e84f33f90" aria-labelledby="goal-dcc9d2e5-16f4-5813-ab66-7095c8a165a6-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-dcc9d2e5-16f4-5813-ab66-7095c8a165a6-title"><a class="goal-self-link" href="#goal-dcc9d2e5-16f4-5813-ab66-7095c8a165a6">Immunabwehr beschreiben</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>dcc9d2e5-16f4-5813-ab66-7095c8a165a6</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9e4de026b625798c6d1be604">Blut, Immunität und Infektionen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:938271dbc85551288ce79087025c7e7b49d5a7aed4654199a6a50cdf11226fa0" data-rendered-digest="sha256:5285e2fa309dba9445a51b93f342caf70f2f432ee0f342c57beca2b3c0ee9938" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/dcc9d2e5-16f4-5813-ab66-7095c8a165a6/dcc9d2e5-16f4-5813-ab66-7095c8a165a6.png" alt="Vereinfachte Abwehrmotive unterscheiden aufgenommene Krankheitserreger von der Reaktion gegen fremdes gesundes Transplantatgewebe.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-dcc9d2e5-16f4-5813-ab66-7095c8a165a6-description-heading">
+        <p class="section-heading" id="goal-dcc9d2e5-16f4-5813-ab66-7095c8a165a6-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Immunreaktionen bei Infektionen und Transplantationen beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-dcc9d2e5-16f4-5813-ab66-7095c8a165a6" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-dcc9d2e5-16f4-5813-ab66-7095c8a165a6-requires-heading">
+          <p class="section-heading" id="goal-dcc9d2e5-16f4-5813-ab66-7095c8a165a6-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8"><span>Funktionen der Blutbestandteile</span><code>3e913f00-c3d7-5bbe-a73e-36bdc0d4a6e8</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-dcc9d2e5-16f4-5813-ab66-7095c8a165a6-reverse-heading">
+          <p class="section-heading" id="goal-dcc9d2e5-16f4-5813-ab66-7095c8a165a6-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-ba96880f-d31e-54c2-8139-4a748fc9541a"><span>HIV und AIDS einordnen</span><code>ba96880f-d31e-54c2-8139-4a748fc9541a</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-dcc9d2e5-16f4-5813-ab66-7095c8a165a6-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-dcc9d2e5-16f4-5813-ab66-7095c8a165a6-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1f65f78e-b528-5d88-ad00-8e8714a2303e" rel="noreferrer noopener"><span>Unspezifische, spezifische Abwehr und Allergien erläutern</span> <code>1f65f78e-b528-5d88-ad00-8e8714a2303e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 18</span>
+      <span>Buch-Digest <code>sha256:cc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:bffe449e68307c2096ebedf8dd181f99ab023221603b2b6263a949e45e7bf984</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he9-eighteen-eighteen-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=dcc9d2e5-16f4-5813-ab66-7095c8a165a6&amp;goalFingerprint=sha256%3Abffe449e68307c2096ebedf8dd181f99ab023221603b2b6263a949e45e7bf984&amp;pageFingerprint=sha256%3A0d0c53dd7b00b19d09c05f8d364b8655bc332a7197081b22a674aa06c63d0ead&amp;bookDigest=sha256%3Acc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ba96880f-d31e-54c2-8139-4a748fc9541a" data-goal-id="ba96880f-d31e-54c2-8139-4a748fc9541a" data-page-number="13" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-90825b40-ac4d-5e85-993e-314e84f33f90" aria-labelledby="goal-ba96880f-d31e-54c2-8139-4a748fc9541a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-ba96880f-d31e-54c2-8139-4a748fc9541a-title"><a class="goal-self-link" href="#goal-ba96880f-d31e-54c2-8139-4a748fc9541a">HIV und AIDS einordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ba96880f-d31e-54c2-8139-4a748fc9541a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9e4de026b625798c6d1be604">Blut, Immunität und Infektionen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:7a907927bd4b2f3e9bcd96b2807a44741818115c5b0eb4019ba92fcf35275de1" data-rendered-digest="sha256:51b1579793c3f7227fc2dea82dc3ffaffe18f6997a3ac8c2341ae5832281bbb7" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/ba96880f-d31e-54c2-8139-4a748fc9541a/ba96880f-d31e-54c2-8139-4a748fc9541a.png" alt="Ein vereinfachtes HIV-Modell zeigt eine betroffene Abwehrzelle und die Begrenzung neuer Viruspartikel durch Therapie, ohne Heilung zu behaupten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ba96880f-d31e-54c2-8139-4a748fc9541a-description-heading">
+        <p class="section-heading" id="goal-ba96880f-d31e-54c2-8139-4a748fc9541a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann HIV-Infektion und AIDS erklären und Präventionsaspekte darstellen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE:</strong> Sek. I · G9</li><li><strong>SH:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-ba96880f-d31e-54c2-8139-4a748fc9541a" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ba96880f-d31e-54c2-8139-4a748fc9541a-requires-heading">
+          <p class="section-heading" id="goal-ba96880f-d31e-54c2-8139-4a748fc9541a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-dcc9d2e5-16f4-5813-ab66-7095c8a165a6"><span>Immunabwehr beschreiben</span><code>dcc9d2e5-16f4-5813-ab66-7095c8a165a6</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-ba96880f-d31e-54c2-8139-4a748fc9541a-reverse-heading">
+          <p class="section-heading" id="goal-ba96880f-d31e-54c2-8139-4a748fc9541a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 18</span>
+      <span>Buch-Digest <code>sha256:cc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:bcb742983f85790f867541459792a17e8e31797729ab98d400751ad750a5dde0</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he9-eighteen-eighteen-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=ba96880f-d31e-54c2-8139-4a748fc9541a&amp;goalFingerprint=sha256%3Abcb742983f85790f867541459792a17e8e31797729ab98d400751ad750a5dde0&amp;pageFingerprint=sha256%3A4f3254885e4ae317863f60177b0bd019822f3b529ef4ac39d656c3606c602832&amp;bookDigest=sha256%3Acc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1d2b1038-dcd5-529a-b085-9e14f1d58c76" data-goal-id="1d2b1038-dcd5-529a-b085-9e14f1d58c76" data-page-number="14" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-b4176012-f93a-5dd2-84b3-edd6a9932367" aria-labelledby="goal-1d2b1038-dcd5-529a-b085-9e14f1d58c76-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1d2b1038-dcd5-529a-b085-9e14f1d58c76-title"><a class="goal-self-link" href="#goal-1d2b1038-dcd5-529a-b085-9e14f1d58c76">Mitose und Meiose</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1d2b1038-dcd5-529a-b085-9e14f1d58c76</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-4977846395f7dee76f9bcb1d">Genetik, Vererbung und Gentechnik (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4c85f57e232f3f5f1b0ebc32d04d5674b714d06f4d1c902ad5b1bd36089280b2" data-rendered-digest="sha256:38f20a639aacbf726ffd3d7e565a0934c9fc70eac41220567adb0dff1d8cdaf5" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/1d2b1038-dcd5-529a-b085-9e14f1d58c76/1d2b1038-dcd5-529a-b085-9e14f1d58c76.png" alt="Ein vereinfachtes Modell mit zwei homologen Chromosomenpaaren vergleicht zwei diploide mitotische Tochterzellen mit vier haploiden meiotischen Gameten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1d2b1038-dcd5-529a-b085-9e14f1d58c76-description-heading">
+        <p class="section-heading" id="goal-1d2b1038-dcd5-529a-b085-9e14f1d58c76-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Mitose und vereinfachte Meiose beschreiben und Keimzellbildung einordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, HE, NI, NW:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1d2b1038-dcd5-529a-b085-9e14f1d58c76" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1d2b1038-dcd5-529a-b085-9e14f1d58c76-requires-heading">
+          <p class="section-heading" id="goal-1d2b1038-dcd5-529a-b085-9e14f1d58c76-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-1d2b1038-dcd5-529a-b085-9e14f1d58c76-reverse-heading">
+          <p class="section-heading" id="goal-1d2b1038-dcd5-529a-b085-9e14f1d58c76-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-b8fc739d-f5de-5f83-92fe-28dc6597add5"><span>Erbgaenge einfacher Merkmale</span><code>b8fc739d-f5de-5f83-92fe-28dc6597add5</code><span class="reference-page">S. 15</span></a></li><li><a href="#goal-74740709-fc77-5a54-88a6-bb14c3777941"><span>Karyogramm und Chromosomenfehler</span><code>74740709-fc77-5a54-88a6-bb14c3777941</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-1d2b1038-dcd5-529a-b085-9e14f1d58c76-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1d2b1038-dcd5-529a-b085-9e14f1d58c76-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-b1dff57f-329e-5264-b2b9-2db71a0b2172" rel="noreferrer noopener"><span>Pflanzen- und Tierzellen vergleichen</span> <code>b1dff57f-329e-5264-b2b9-2db71a0b2172</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-1d2b1038-dcd5-529a-b085-9e14f1d58c76-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1d2b1038-dcd5-529a-b085-9e14f1d58c76-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-797a233c-56ed-58a0-b451-5ae5d4bd21bf" rel="noreferrer noopener"><span>Genommutationen durch Meiosefehler erklären</span> <code>797a233c-56ed-58a0-b451-5ae5d4bd21bf</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 18</span>
+      <span>Buch-Digest <code>sha256:cc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e68a61b4ae561e84fea65d01fdcf2f4d052b628fc1225ed25b41bb71b1f12ecb</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he9-eighteen-eighteen-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=1d2b1038-dcd5-529a-b085-9e14f1d58c76&amp;goalFingerprint=sha256%3Ae68a61b4ae561e84fea65d01fdcf2f4d052b628fc1225ed25b41bb71b1f12ecb&amp;pageFingerprint=sha256%3A679669d1c8aa775be0cbeb9f712e183aff62b2cb8589337613c5da6cad06478a&amp;bookDigest=sha256%3Acc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b8fc739d-f5de-5f83-92fe-28dc6597add5" data-goal-id="b8fc739d-f5de-5f83-92fe-28dc6597add5" data-page-number="15" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-b4176012-f93a-5dd2-84b3-edd6a9932367" aria-labelledby="goal-b8fc739d-f5de-5f83-92fe-28dc6597add5-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b8fc739d-f5de-5f83-92fe-28dc6597add5-title"><a class="goal-self-link" href="#goal-b8fc739d-f5de-5f83-92fe-28dc6597add5">Erbgaenge einfacher Merkmale</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b8fc739d-f5de-5f83-92fe-28dc6597add5</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-4977846395f7dee76f9bcb1d">Genetik, Vererbung und Gentechnik (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f2c872293fa9f9f6c5a35874a22b5f672ed643495ea996dd0f14196b556654d7" data-rendered-digest="sha256:8836372949d1038283f0dfa6c31fedc0084c21558ac39f1554b187ccdbd8a1cf" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/b8fc739d-f5de-5f83-92fe-28dc6597add5/b8fc739d-f5de-5f83-92fe-28dc6597add5.png" alt="Eine ausdrücklich hypothetische Pflanzenkreuzung Aa mal Aa zeigt die möglichen Allelkombinationen AA, Aa, Aa und aa.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b8fc739d-f5de-5f83-92fe-28dc6597add5-description-heading">
+        <p class="section-heading" id="goal-b8fc739d-f5de-5f83-92fe-28dc6597add5-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Erbgänge einfacher Merkmale analysieren (dominant/rezessiv).</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-b8fc739d-f5de-5f83-92fe-28dc6597add5" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b8fc739d-f5de-5f83-92fe-28dc6597add5-requires-heading">
+          <p class="section-heading" id="goal-b8fc739d-f5de-5f83-92fe-28dc6597add5-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1d2b1038-dcd5-529a-b085-9e14f1d58c76"><span>Mitose und Meiose</span><code>1d2b1038-dcd5-529a-b085-9e14f1d58c76</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-b8fc739d-f5de-5f83-92fe-28dc6597add5-reverse-heading">
+          <p class="section-heading" id="goal-b8fc739d-f5de-5f83-92fe-28dc6597add5-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-8be0001b-4fe0-5ea1-9d61-b3c4bbb16660"><span>Erbgang krankhafter Merkmale</span><code>8be0001b-4fe0-5ea1-9d61-b3c4bbb16660</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-b8fc739d-f5de-5f83-92fe-28dc6597add5-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b8fc739d-f5de-5f83-92fe-28dc6597add5-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-440854be-7f06-5678-91cb-ba8dcab56959" rel="noreferrer noopener"><span>Stammbäume analysieren</span> <code>440854be-7f06-5678-91cb-ba8dcab56959</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 15 von 18</span>
+      <span>Buch-Digest <code>sha256:cc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d15a38959c94239e73bf868ed0b9b782e1690284e395c668e6a5e14a943d11eb</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he9-eighteen-eighteen-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=b8fc739d-f5de-5f83-92fe-28dc6597add5&amp;goalFingerprint=sha256%3Ad15a38959c94239e73bf868ed0b9b782e1690284e395c668e6a5e14a943d11eb&amp;pageFingerprint=sha256%3Aee043116aacf6a1ddad1492ebe2c4bd581bde3bf63c2f74ba1d082aab8881af9&amp;bookDigest=sha256%3Acc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8be0001b-4fe0-5ea1-9d61-b3c4bbb16660" data-goal-id="8be0001b-4fe0-5ea1-9d61-b3c4bbb16660" data-page-number="16" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-b4176012-f93a-5dd2-84b3-edd6a9932367" aria-labelledby="goal-8be0001b-4fe0-5ea1-9d61-b3c4bbb16660-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8be0001b-4fe0-5ea1-9d61-b3c4bbb16660-title"><a class="goal-self-link" href="#goal-8be0001b-4fe0-5ea1-9d61-b3c4bbb16660">Erbgang krankhafter Merkmale</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8be0001b-4fe0-5ea1-9d61-b3c4bbb16660</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-4977846395f7dee76f9bcb1d">Genetik, Vererbung und Gentechnik (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c66d7c029a204846ff751184b091b0dc0c9e9c23d31daeee93f4c738bc7a2c81" data-rendered-digest="sha256:97a5af0a1b72e0522da6a95be5c9d03ad647699474b40e0eb0c03813083313b7" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/8be0001b-4fe0-5ea1-9d61-b3c4bbb16660/8be0001b-4fe0-5ea1-9d61-b3c4bbb16660.png" alt="Ein hypothetischer Stammbaum zeigt ein rezessives Merkmal bei einem Kind zweier heterozygoter, nicht betroffener Eltern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8be0001b-4fe0-5ea1-9d61-b3c4bbb16660-description-heading">
+        <p class="section-heading" id="goal-8be0001b-4fe0-5ea1-9d61-b3c4bbb16660-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Beispiele genetisch bedingter Krankheiten anhand von Stammbäumen deuten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-8be0001b-4fe0-5ea1-9d61-b3c4bbb16660" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8be0001b-4fe0-5ea1-9d61-b3c4bbb16660-requires-heading">
+          <p class="section-heading" id="goal-8be0001b-4fe0-5ea1-9d61-b3c4bbb16660-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-b8fc739d-f5de-5f83-92fe-28dc6597add5"><span>Erbgaenge einfacher Merkmale</span><code>b8fc739d-f5de-5f83-92fe-28dc6597add5</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-8be0001b-4fe0-5ea1-9d61-b3c4bbb16660-reverse-heading">
+          <p class="section-heading" id="goal-8be0001b-4fe0-5ea1-9d61-b3c4bbb16660-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-1b7f08a1-33df-5779-af66-430c91d699b7"><span>Grundbegriffe der Gentechnik</span><code>1b7f08a1-33df-5779-af66-430c91d699b7</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 16 von 18</span>
+      <span>Buch-Digest <code>sha256:cc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:83d3625d417f9967b2b1af58747bafd5467b0b665f4e67b7c04106ad5b47022a</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he9-eighteen-eighteen-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=8be0001b-4fe0-5ea1-9d61-b3c4bbb16660&amp;goalFingerprint=sha256%3A83d3625d417f9967b2b1af58747bafd5467b0b665f4e67b7c04106ad5b47022a&amp;pageFingerprint=sha256%3A3af60a8ca2e94b4a1eff20962904061f81519e2bc27d3a08d3ac1bce57623af4&amp;bookDigest=sha256%3Acc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-74740709-fc77-5a54-88a6-bb14c3777941" data-goal-id="74740709-fc77-5a54-88a6-bb14c3777941" data-page-number="17" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-b4176012-f93a-5dd2-84b3-edd6a9932367" aria-labelledby="goal-74740709-fc77-5a54-88a6-bb14c3777941-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-74740709-fc77-5a54-88a6-bb14c3777941-title"><a class="goal-self-link" href="#goal-74740709-fc77-5a54-88a6-bb14c3777941">Karyogramm und Chromosomenfehler</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>74740709-fc77-5a54-88a6-bb14c3777941</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-4977846395f7dee76f9bcb1d">Genetik, Vererbung und Gentechnik (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:5e3687e33528a978eab6d3b253644f39aebca15b8e5b088ebd57b155d2039f4f" data-rendered-digest="sha256:7f9eef75a7b4c2bb91fd89b17ee7a677209cd2888d27215c9fa52926bf897d87" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/74740709-fc77-5a54-88a6-bb14c3777941/74740709-fc77-5a54-88a6-bb14c3777941.png" alt="Ein als Ausschnitt bezeichnetes Karyogramm vergleicht zwei und drei Exemplare des Chromosoms21.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-74740709-fc77-5a54-88a6-bb14c3777941-description-heading">
+        <p class="section-heading" id="goal-74740709-fc77-5a54-88a6-bb14c3777941-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann ein Karyogramm interpretieren und numerische Aberrationen wie Trisomie 21 benennen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-74740709-fc77-5a54-88a6-bb14c3777941" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-74740709-fc77-5a54-88a6-bb14c3777941-requires-heading">
+          <p class="section-heading" id="goal-74740709-fc77-5a54-88a6-bb14c3777941-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1d2b1038-dcd5-529a-b085-9e14f1d58c76"><span>Mitose und Meiose</span><code>1d2b1038-dcd5-529a-b085-9e14f1d58c76</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-74740709-fc77-5a54-88a6-bb14c3777941-reverse-heading">
+          <p class="section-heading" id="goal-74740709-fc77-5a54-88a6-bb14c3777941-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-1b7f08a1-33df-5779-af66-430c91d699b7"><span>Grundbegriffe der Gentechnik</span><code>1b7f08a1-33df-5779-af66-430c91d699b7</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 17 von 18</span>
+      <span>Buch-Digest <code>sha256:cc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b507ad64de05fc9113fa0c37db65a50bb1a96241a150ca5c667cff32f2183700</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he9-eighteen-eighteen-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=74740709-fc77-5a54-88a6-bb14c3777941&amp;goalFingerprint=sha256%3Ab507ad64de05fc9113fa0c37db65a50bb1a96241a150ca5c667cff32f2183700&amp;pageFingerprint=sha256%3A812ace38caab9d003be6ff2fd8ab7afa430f1720eacba3e15596f090024a6b4b&amp;bookDigest=sha256%3Acc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1b7f08a1-33df-5779-af66-430c91d699b7" data-goal-id="1b7f08a1-33df-5779-af66-430c91d699b7" data-page-number="18" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-b4176012-f93a-5dd2-84b3-edd6a9932367" aria-labelledby="goal-1b7f08a1-33df-5779-af66-430c91d699b7-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1b7f08a1-33df-5779-af66-430c91d699b7-title"><a class="goal-self-link" href="#goal-1b7f08a1-33df-5779-af66-430c91d699b7">Grundbegriffe der Gentechnik</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1b7f08a1-33df-5779-af66-430c91d699b7</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-4977846395f7dee76f9bcb1d">Genetik, Vererbung und Gentechnik (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2f99ed69b15dcf1bb16328e56430a18e82b1f35593eba5540907dfdb7f3a8139" data-rendered-digest="sha256:34e4e63455cf58920caa634064398c7bd7f5a8b0a6916929de34de0788ed6e3b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/1b7f08a1-33df-5779-af66-430c91d699b7/1b7f08a1-33df-5779-af66-430c91d699b7.png" alt="Drei getrennte Motive unterscheiden Gentest, somatische Gentherapie und die Vermehrung gleicher DNA-Kopien in Bakterien.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1b7f08a1-33df-5779-af66-430c91d699b7-description-heading">
+        <p class="section-heading" id="goal-1b7f08a1-33df-5779-af66-430c91d699b7-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann grundlegende gentechnische Methoden und Anwendungen skizzieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HE, NI:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1b7f08a1-33df-5779-af66-430c91d699b7" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1b7f08a1-33df-5779-af66-430c91d699b7-requires-heading">
+          <p class="section-heading" id="goal-1b7f08a1-33df-5779-af66-430c91d699b7-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8be0001b-4fe0-5ea1-9d61-b3c4bbb16660"><span>Erbgang krankhafter Merkmale</span><code>8be0001b-4fe0-5ea1-9d61-b3c4bbb16660</code><span class="reference-page">S. 16</span></a></li><li><a href="#goal-74740709-fc77-5a54-88a6-bb14c3777941"><span>Karyogramm und Chromosomenfehler</span><code>74740709-fc77-5a54-88a6-bb14c3777941</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-1b7f08a1-33df-5779-af66-430c91d699b7-reverse-heading">
+          <p class="section-heading" id="goal-1b7f08a1-33df-5779-af66-430c91d699b7-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 18 von 18</span>
+      <span>Buch-Digest <code>sha256:cc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a2e1b296cddf71bdfe3b8f0ff84ddd7315025987591ffca3e500809d98ae49a7</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he9-eighteen-eighteen-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=1b7f08a1-33df-5779-af66-430c91d699b7&amp;goalFingerprint=sha256%3Aa2e1b296cddf71bdfe3b8f0ff84ddd7315025987591ffca3e500809d98ae49a7&amp;pageFingerprint=sha256%3A6e42b3f680ae0ba03f5c7f6b703af8db891a9ea3521818cff9c23952e08c5ff3&amp;bookDigest=sha256%3Acc37667e7ab57e7345c57fd2d45dca1de20586fc344a46ca283bf91e6a474a4f&amp;page=18" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

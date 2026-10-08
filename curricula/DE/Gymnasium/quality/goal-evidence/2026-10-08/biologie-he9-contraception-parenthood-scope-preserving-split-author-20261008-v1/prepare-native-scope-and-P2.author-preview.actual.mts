@@ -1,0 +1,67 @@
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import { createHash } from 'node:crypto'
+import Ajv from '../../../../../../../app/node_modules/ajv/dist/2020.js'
+import addFormats from '../../../../../../../app/node_modules/ajv-formats/dist/index.js'
+import { buildGoalBookModel, fingerprintSemanticKindSourceGoal, loadGoalBookBuildInputs } from '../../../../../../../app/scripts/goalBookModel.ts'
+import { normalizeCanonicalLandscape, validateCanonicalLandscape } from '../../../../../../../app/src/utils/authoring/canonicalAuthoring.ts'
+import { normalizeCompositionView, compileCompositionView, collectCompositionProjectionRoleGoalIds } from '../../../../../../../app/src/utils/authoring/compositionViewAuthoring.ts'
+import { POSITIVE_GOAL_EVIDENCE_SCHEMA_URL, POSITIVE_GOAL_EVIDENCE_SCHEMA_VERSION, POSITIVE_GOAL_EVIDENCE_GOAL_FINGERPRINT_RULE_VERSION, POSITIVE_GOAL_EVIDENCE_PROFILE_RULE_VERSION, fingerprintGoalForPositiveEvidence, fingerprintPositiveGoalEvidenceReviewInput, fingerprintPositiveGoalEvidenceProfile, validatePositiveGoalEvidenceRecordSemantics } from '../../../../../../../app/scripts/positiveGoalEvidenceProfileModel.ts'
+
+const repo=process.cwd()
+const own=path.relative(repo,path.dirname(new URL(import.meta.url).pathname))
+try{await fs.access(path.join(repo,own,'scope-preserving-split-whole-author-input-output.first.freeze.json'));throw new Error('Author freeze exists; never mutate frozen author package')}catch(e:any){if(e.code!=='ENOENT')throw e}
+const read=async(p:string)=>JSON.parse(await fs.readFile(path.join(repo,p),'utf8'))
+const write=async(p:string,o:unknown)=>{await fs.mkdir(path.dirname(path.join(repo,p)),{recursive:true});const bytes=JSON.stringify(o,null,2)+'\n';try{await fs.writeFile(path.join(repo,p),bytes,{flag:'wx'})}catch(e:any){if(e.code!=='EEXIST'||await fs.readFile(path.join(repo,p),'utf8')!==bytes)throw e}}
+const sha=(b:Buffer|string)=>'sha256:'+createHash('sha256').update(b).digest('hex')
+const equal=(a:unknown,b:unknown)=>JSON.stringify(a)===JSON.stringify(b)
+const assert=(v:unknown,m:string)=>{if(!v)throw new Error(m)}
+const snapshot=await read(own+'/author-input-snapshot-manifest.actual.json')
+const snapshots=new Map<string,string>(snapshot.inputs.map((x:any)=>[x.path,x.snapshotPath]))
+const originalCanonical='curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json'
+const beforePath=snapshots.get(originalCanonical)!
+const afterPath=own+'/candidate/canonical.476-split-author.json'
+const before=await read(beforePath),after=await read(afterPath)
+const old='3ee4b55c-81c3-5826-9d26-1a8c22cbd0b8'
+const children=['9d3f71d7-5273-5e50-b1ba-4e291edbf114','dd923eeb-eef0-5796-b372-a5d4f5be21f7']
+const beforeGoals=new Map(before.goals.map((g:any)=>[g.id,g])),afterGoals=new Map(after.goals.map((g:any)=>[g.id,g]))
+assert(before.goals.length===474 && after.goals.length===476,'Whole counts')
+assert(before.goals.filter((g:any)=>g.id!==old).every((g:any)=>equal(g,afterGoals.get(g.id))),'473 other whole bodies')
+const ledger=await read(snapshots.get('curricula/DE/Gymnasium/quality/goal-book-publication/biologie.semantic-kinds.json')!)
+const proposed=structuredClone(ledger);proposed.sourceLandscapePath=afterPath;proposed.reviewMethod='open-scope-preserving-split-author-proposal-not-reviewed'
+const oldDecision=proposed.decisions.find((d:any)=>d.goalId===old)
+Object.assign(oldDecision,{semanticKind:'curricularArea',decisionStatus:'candidate',sourceFingerprint:fingerprintSemanticKindSourceGoal(afterGoals.get(old) as any),decisionBasis:'Author proposes aggregate of the exact two former clauses; two genuine independent reviews pending.'})
+for(const id of children)proposed.decisions.push({goalId:id,sourceFingerprint:fingerprintSemanticKindSourceGoal(afterGoals.get(id) as any),semanticKind:'curricularAtomic',decisionStatus:'candidate',decisionBasis:'One former clause proposed by author; two genuine independent source/scope/atomicity reviews pending.'})
+proposed.counts.curricularAtomic=392;proposed.counts.curricularArea=45;proposed.counts.total=476
+await write(own+'/candidate/semantic-kinds.open-author-proposal.json',proposed)
+// The proposed semantic kinds remain candidate. The native publication compiler
+// rejects this open state; no authoritative/compiler-assumption ledger is made.
+const pendingConfig={schemaVersion:1,bookId:'de-gym-biologie-bundesweit',title:'Lernzielbuch Biologie – Gymnasium bundesweit',landscapePath:afterPath,compositionViewManifestPath:own+'/candidate/atlas.sources.392-author.json',semanticKindLedgerPath:own+'/candidate/semantic-kinds.open-author-proposal.json',goalVisualizationQaPath:snapshots.get('curricula/DE/Gymnasium/quality/goal-visualization-qa/biologie.qa.json')!,publicationMode:'review',atlasBaseUrl:'https://skillpilot.com/lernzielbuch',evidenceReviewPaths:[],outputPath:own+'/technical-preview/full392.open-author-blocked'}
+await write(own+'/technical-preview/full392.open-author-blocked.config.json',pendingConfig)
+const beforeModel=await read(own+'/technical-preview/full391.before.pure.book-model.json')
+assert(beforeModel.pages.length===391,'actual retained native before denominator')
+let native392Error=''
+try{await loadGoalBookBuildInputs(own+'/technical-preview/full392.open-author-blocked.config.json',repo)}catch(e:any){native392Error=String(e.message)}
+assert(native392Error.includes('semantic-kind ledger violates its closed JSON Schema'),'open candidate native compiler must remain blocked')
+await write(own+'/technical-preview/native392.open-author-compiler-block.actual.json',{nativeApi:'loadGoalBookBuildInputs',actualRejected:true,error:native392Error,reason:'Changed/new semantic classifications are candidate; native closed schema only accepts genuinely reviewed authoritative decisions. No accepted model, pages, raster or QA approval generated.',denominatorCandidate:392,actualIndependentReviewCount:0,classificationCandidateGoalIds:[old,...children],activeWrites:false})
+const viewProposals=await read(own+'/scope-preserving-view-reference-proposals.author.json')
+const proposalByPath=new Map(viewProposals.proposals.map((p:any)=>[p.activePath,p.candidatePath]))
+const viewPaths=[...snapshots.keys()].filter(p=>p.endsWith('.view.json'))
+const allViews:any[]=[]
+for(const originalPath of viewPaths){const b=normalizeCompositionView(await read(snapshots.get(originalPath)!)),a=normalizeCompositionView(await read((proposalByPath.get(originalPath)||snapshots.get(originalPath)) as string));const nb=normalizeCanonicalLandscape(before),na=normalizeCanonicalLandscape(after);const bc=compileCompositionView(b,nb),ac=compileCompositionView(a,na);assert(bc.findings.every((f:any)=>f.severity!=='error'),originalPath+' before compiler '+JSON.stringify(bc.findings));assert(ac.findings.every((f:any)=>f.severity!=='error'),originalPath+' after compiler '+JSON.stringify(ac.findings));const bb=new Map(before.goals.map((g:any)=>[g.id,g])),aa=new Map(after.goals.map((g:any)=>[g.id,g]));const bp=collectCompositionProjectionRoleGoalIds(b.rootNodes,bb as any),ap=collectCompositionProjectionRoleGoalIds(a.rootNodes,aa as any);const atomicBefore=[...bp.targetGoalIds].filter(id=>ledger.decisions.some((d:any)=>d.goalId===id&&d.semanticKind==='curricularAtomic')).sort();const atomicAfter=[...ap.targetGoalIds].filter(id=>proposed.decisions.some((d:any)=>d.goalId===id&&d.semanticKind==='curricularAtomic')).sort();const expected=atomicBefore.filter(id=>id!==old);if(atomicBefore.includes(old))expected.push(...children);expected.sort();assert(equal(expected,atomicAfter),'target loss or extra '+originalPath);allViews.push({originalPath,beforeViewId:b.viewId,scope:b.scope,rewrittenOpaqueEntry:proposalByPath.has(originalPath),beforeTargetAtomicCount:atomicBefore.length,afterTargetAtomicCount:atomicAfter.length,atomicTargetDelta:atomicAfter.length-atomicBefore.length,onlyFormerClauseSplitTargetChange:true,beforeFindings:bc.findings,afterFindings:ac.findings,prerequisiteOnlyBefore:[...bp.prerequisiteOnlyGoalIds].sort(),prerequisiteOnlyAfter:[...ap.prerequisiteOnlyGoalIds].sort()})}
+const normalized=normalizeCanonicalLandscape(after);const diagnostics=validateCanonicalLandscape(normalized)
+assert(!diagnostics.some(d=>d.severity==='error'),'native canonical DAG diagnostics')
+const dag=(field:string)=>{const active=new Set<string>(),done=new Set<string>();const visit=(id:string)=>{if(active.has(id))throw new Error(field+' cycle '+id);if(done.has(id))return;active.add(id);for(const next of (afterGoals.get(id) as any)[field]||[]){assert(afterGoals.has(next),'missing '+field+' '+next);visit(next)}active.delete(id);done.add(id)};for(const id of afterGoals.keys())visit(id as string);return {field,nodes:done.size,cycles:0,missingReferences:0}}
+await write(own+'/technical-preview/all-views-projections-DAG.actual.json',{inactiveAuthorCandidate:true,viewCount:allViews.length,rewrittenViewCount:viewProposals.changedViewFileCount,allNativeCompiledNoErrors:true,allAtomicTargetsScopePreserved:true,views:allViews,nativeCanonicalDiagnostics:diagnostics,graphs:[dag('contains'),dag('requires')],existingContainsParentUnchanged:true,existingRequiresConsumerUnchanged:true,prerequisiteScope:'Both new children retain the old hormonal-control prerequisite. Existing sexual-behaviour consumer still requires the stable aggregate, representing both old components; no learner state inferred.'})
+const candidateSet=await read(own+'/P2.whole-child-scope.author.candidates.json')
+const criteriaPath='curricula/DE/Gymnasium/quality/goal-evidence/prompts/biology-positive-understanding-evidence-profile-criteria-v1.md'
+const criteriaBytes=await fs.readFile(path.join(repo,criteriaPath));try{await fs.writeFile(path.join(repo,own,'input-snapshots/biology-positive-understanding-evidence-profile-criteria-v1.md'),criteriaBytes,{flag:'wx'})}catch(e:any){if(e.code!=='EEXIST'||!(await fs.readFile(path.join(repo,own,'input-snapshots/biology-positive-understanding-evidence-profile-criteria-v1.md'))).equals(criteriaBytes))throw e}
+const criteriaFingerprint=sha(criteriaBytes)
+const schema=await read('contracts/goal-evidence/v2/goal-evidence-profile.schema.json');const ajv=new Ajv({strict:true,allErrors:true});addFormats(ajv);const validate=ajv.compile(schema)
+const records=candidateSet.goals.map((c:any)=>{const g=afterGoals.get(c.goalId) as any;return {$schema:POSITIVE_GOAL_EVIDENCE_SCHEMA_URL,schemaVersion:POSITIVE_GOAL_EVIDENCE_SCHEMA_VERSION,reviewId:candidateSet.reviewId,goalFingerprintRuleVersion:POSITIVE_GOAL_EVIDENCE_GOAL_FINGERPRINT_RULE_VERSION,profileRuleVersion:POSITIVE_GOAL_EVIDENCE_PROFILE_RULE_VERSION,reviewCriteriaFingerprint:criteriaFingerprint,landscapeId:after.landscapeId,goalId:c.goalId,goalFingerprint:fingerprintGoalForPositiveEvidence(g,'curricularAtomic'),reviewInputFingerprint:fingerprintPositiveGoalEvidenceReviewInput(g,criteriaFingerprint,{},'curricularAtomic'),profileFingerprint:fingerprintPositiveGoalEvidenceProfile(c.profile),status:'needs_human_review',reviewAuthority:'ai_candidate',reviewedAt:candidateSet.reviewedAt,reviewer:candidateSet.reviewer,reason:c.reason,evidenceLevel:'E1',maximumClaimScope:'G1',reviewRunIds:[],dissent:c.dissent,profile:c.profile}})
+const validation=records.map((r:any)=>({goalId:r.goalId,closedSchemaValid:validate(r),schemaErrors:structuredClone(validate.errors),nativeSemanticErrors:validatePositiveGoalEvidenceRecordSemantics(r,afterGoals.get(r.goalId) as any,{},'curricularAtomic')}))
+assert(validation.every((v:any)=>v.closedSchemaValid&&v.nativeSemanticErrors.length===0),'native P2 validation')
+const recordBytes=records.map((r:any)=>JSON.stringify(r)).join('\n')+'\n';try{await fs.writeFile(path.join(repo,own,'P2.author-native.review.jsonl'),recordBytes,{flag:'wx'})}catch(e:any){if(e.code!=='EEXIST'||await fs.readFile(path.join(repo,own,'P2.author-native.review.jsonl'),'utf8')!==recordBytes)throw e}
+await write(own+'/P2.author-native.schema-semantic.actual.json',{exitCode:0,validation,criteriaPath,criteriaFingerprint,recordCount:2,wholeCases:4,profileBodiesRetainedExact:records.every((r:any,i:number)=>equal(r.profile,candidateSet.goals[i].profile)),semanticKindArgumentIsAuthorProposedPartitionNotIndependentApproval:true,status:'needs_human_review',authority:'ai_candidate',evidenceLevel:'E1',maximumClaimScope:'G1',independentReviewCount:0,humanApprovalCount:0,learnerData:false})
+await write(own+'/P2.open-author-proposals.config.json',{$schema:'https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-review-config.schema.json',schemaVersion:2,reviewId:candidateSet.reviewId,goalFingerprintRuleVersion:'goal-evidence-v1',profileRuleVersion:'positive-understanding-evidence-v2',landscapeId:after.landscapeId,landscapePath:afterPath,semanticKindLedgerPath:own+'/candidate/semantic-kinds.open-author-proposal.json',reviewCriteriaPath:own+'/input-snapshots/biology-positive-understanding-evidence-profile-criteria-v1.md',reviewPath:own+'/P2.author-native.review.jsonl',reviewRunManifestPaths:[],reviewedResourceTypes:[],requireApproved:false,scope:{label:'Two child author candidates: authoritative semantic-kind decisions pending; not accepted',goalIds:children}})
+console.log(JSON.stringify({nativeBeforePages:391,native392Compiler:'BLOCKED: classification candidate',views:allViews.length,rewrittenViews:viewProposals.changedViewFileCount,P2ClosedSchemaAndNativeSemantic:validation.length,containsDag:'PASS',requiresDag:'PASS',newAandM:'UNRESOLVED',actualIndependentReviews:0}))

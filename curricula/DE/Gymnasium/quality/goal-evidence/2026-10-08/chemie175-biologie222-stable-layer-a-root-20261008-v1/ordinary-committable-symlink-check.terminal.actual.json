@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "python",
+    "-c",
+    "import sys,json;sys.path.insert(0,'scripts');import validate_schemas;e=validate_schemas.curriculum_symlink_errors();print(json.dumps({'errorCount':len(e),'errors':e}));sys.exit(bool(e))"
+  ],
+  "startedAtUTC": "2026-10-08T05:23:30.569199+00:00",
+  "finishedAtUTC": "2026-10-08T05:23:33.199914+00:00",
+  "actualExitCode": 0,
+  "elapsedSeconds": 2.630719389002479,
+  "stdout": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie175-biologie222-stable-layer-a-root-20261008-v1/ordinary-committable-symlink-check.stdout.actual.txt",
+    "sha256": "87b94bac2e48c9913d45db339b2eb7a000f019bfa67dbf9a71eeb466bb60c011",
+    "bytes": 32
+  },
+  "stderr": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie175-biologie222-stable-layer-a-root-20261008-v1/ordinary-committable-symlink-check.stderr.actual.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "actualStableBiologyCanonicalSha256": "4ba55e4eccaf1892d4f541a0ef20eb0402170b1c6f2543e05ce7b00e30fa30a5",
+  "humanApproval": false
+}

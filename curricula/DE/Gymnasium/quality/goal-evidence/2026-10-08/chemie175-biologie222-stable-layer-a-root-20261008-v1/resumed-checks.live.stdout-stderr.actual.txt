@@ -1,0 +1,9 @@
+START full-validate-schemas-resumed-after-confirmed-interruption
+START stable-full-application-build-resumed-after-confirmed-interruption
+END stable-full-application-build-resumed-after-confirmed-interruption actualExitCode=1
+END full-validate-schemas-resumed-after-confirmed-interruption actualExitCode=0
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie175-biologie222-stable-layer-a-root-20261008-v1/run-confirmed-interrupted-checks.actual.v2.py", line 44, in <module>
+    assert all(x==0 for x in results),results
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [0, 1]

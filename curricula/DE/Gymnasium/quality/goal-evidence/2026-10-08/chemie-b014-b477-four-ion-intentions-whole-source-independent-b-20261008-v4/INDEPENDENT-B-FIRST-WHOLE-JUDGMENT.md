@@ -1,0 +1,11 @@
+Review B accepts the three complete DE/EN source witnesses and the exact current 1c/fd/a44 union as bounded E1/G1 AI evidence. The first whole judgment was reached without reading current peer verdicts.
+
+Bromide: the binary controlled KBr/KCl case, silver equation, nitric-acid pretreatment and fresh HCl/mixture limits are coherent. Carbonate: acid protonation, a separate controlled CO2 test and the bicarbonate/excess-CO2 limits are coherent. Ammonium: controlled hydroxide release, neutral NH3, damp-paper chemistry and alkaline-contact/pre-existing-gas limits are coherent. All three languages pairs preserve those bounds.
+
+The official BB/BE PDF was refreshed and the complete pages 17, 26, 44, 45 and 46 read as text and images. Q experiments are binding; E recommendations do not apply to Q3. The six common GK intentions also apply to LK. The complete RSC teacher/student PDFs were freshly fetched and read; they support chemistry, not additional regional duties. Written model observations do not certify practical execution.
+
+Native reviewer checks passed for retained P3, four actual scopes, both 480-node DAGs, two additional current water profiles and exact three-case manifest bindings. The first native script failed on its extraction field accessor; that diagnostic is retained, and the corrected run passed. All union members are current targets and applicable in BB/BE GK/LK. d2, 413 and 580 are unselected there; 9dee is also inapplicable. Their retained science is not reopened or assigned an invented operative route.
+
+The whole central registry differs because Biology appended one config/index; independent object comparison confirms unchanged Chemistry. All other 108 author-freeze bindings match. This is not a hash-only review.
+
+Whole a44 was read against its two retained whole chloride cases and the three new whole cases. The five-case union supports selected-ion source components without a new whole-goal P, full source completion, quantitative claim or extra task quota. The practical Q intention, B477 semantic-compound hold, whole481 and all historical holds remain open. Later mapping application requires current integration checks. Active writes, strict gain and human approval are zero.

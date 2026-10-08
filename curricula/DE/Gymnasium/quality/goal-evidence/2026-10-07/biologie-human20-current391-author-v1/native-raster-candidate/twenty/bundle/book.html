@@ -1,0 +1,1029 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Biologie: zwanzig aktuelle Ziele zu Mensch und Gesundheit</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Biologie: zwanzig aktuelle Ziele zu Mensch und Gesundheit</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>20 atomare Lernziele</dt><dd>3 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-4f5d4296002eb1bc70a26646" aria-label="Biologie"><a href="#goal-4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2"><span class="toc-entry-label">Biologie</span></a></h2>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-30e93515-f535-5ca4-9ed2-8fdf41838772" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-51746a07c96a9afcbebf6d69" aria-label="Säugetiere und menschlicher Körper (Sek I)"><a href="#goal-4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2"><span class="toc-entry-label">Säugetiere&#160;<wbr>und&#160;<wbr>menschlicher&#160;<wbr>Körper&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h3>
+          <span class="toc-entry-meta"><span>15 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-90825b40-ac4d-5e85-993e-314e84f33f90" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-9e4de026b625798c6d1be604" aria-label="Blut, Immunität und Infektionen (Sek I)"><a href="#goal-1abf08d7-6fc1-5705-b2d4-21cb44ceeba0"><span class="toc-entry-label">Blut,&#160;<wbr>Immunität&#160;<wbr>und&#160;<wbr>Infektionen&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h3>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 16</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2" data-goal-id="4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2" data-page-number="1" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-30e93515-f535-5ca4-9ed2-8fdf41838772" aria-labelledby="goal-4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2-title"><a class="goal-self-link" href="#goal-4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2">Nahrungsaufnahme und Verdauung</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-51746a07c96a9afcbebf6d69">Säugetiere und menschlicher Körper (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:fb587c00e92c481809155f113a2cdd2dcc262b64853a78bc65897cd381c0993d" data-rendered-digest="sha256:8ecd6b27d641a1d99304e0d67dd7e10d38eb3b1e07ba90d084ba5bf6c499f0ab" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2/4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2.png" alt="Rind und Hund mit schematischen Verdauungssystemen; beim Rind greifen untere Schneidezähne gegen eine obere Zahnplatte, und Mikroorganismen unterstützen den Abbau pflanzlicher Nahrung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2-description-heading">
+        <p class="section-heading" id="goal-4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Nahrungsaufnahme und Verdauung eines Säugetiers erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2-requires-heading">
+          <p class="section-heading" id="goal-4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2-reverse-heading">
+          <p class="section-heading" id="goal-4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-c25a1bc9-c664-53d7-b2d8-500741da773c"><span>Ernährung und Verdauung</span><code>c25a1bc9-c664-53d7-b2d8-500741da773c</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-bdbb1a13-f448-5536-86ab-894805e2f6be" rel="noreferrer noopener"><span>Gestalt und Merkmale</span> <code>bdbb1a13-f448-5536-86ab-894805e2f6be</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 20</span>
+      <span>Buch-Digest <code>sha256:948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:fbfed522eb8bb28fdd6b4884d3ef014fd732881549844a2a071630eae3cadfef</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-human20-twenty-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2&amp;goalFingerprint=sha256%3Afbfed522eb8bb28fdd6b4884d3ef014fd732881549844a2a071630eae3cadfef&amp;pageFingerprint=sha256%3A91047eb3f2ef0c58ce62db1cde913c447c597e2efcfb2ec0cad4f66a0b44a684&amp;bookDigest=sha256%3A948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-dc1c2eff-5e42-50f1-ab75-b180b4f58907" data-goal-id="dc1c2eff-5e42-50f1-ab75-b180b4f58907" data-page-number="2" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-30e93515-f535-5ca4-9ed2-8fdf41838772" aria-labelledby="goal-dc1c2eff-5e42-50f1-ab75-b180b4f58907-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-dc1c2eff-5e42-50f1-ab75-b180b4f58907-title"><a class="goal-self-link" href="#goal-dc1c2eff-5e42-50f1-ab75-b180b4f58907">Körperhaltung und Bewegung</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>dc1c2eff-5e42-50f1-ab75-b180b4f58907</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-51746a07c96a9afcbebf6d69">Säugetiere und menschlicher Körper (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:01df439406aefa24544105917430c2eaea6f3f2314177ad2cbe865acf6d980da" data-rendered-digest="sha256:2c9530f93387d17f2c8493efad78c614cac26d3aecc87fa61b20efb1f98ded80" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/dc1c2eff-5e42-50f1-ab75-b180b4f58907/dc1c2eff-5e42-50f1-ab75-b180b4f58907.png" alt="Schematische Knochen, Gelenk und gegensinnig arbeitende Armmuskeln neben einer Person, die Sitzen durch Bewegungspausen und Gehen unterbricht.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-dc1c2eff-5e42-50f1-ab75-b180b4f58907-description-heading">
+        <p class="section-heading" id="goal-dc1c2eff-5e42-50f1-ab75-b180b4f58907-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Bewegungsapparat beschreiben und Haltungsvorsorge begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, SN, ST:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-dc1c2eff-5e42-50f1-ab75-b180b4f58907" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-dc1c2eff-5e42-50f1-ab75-b180b4f58907-requires-heading">
+          <p class="section-heading" id="goal-dc1c2eff-5e42-50f1-ab75-b180b4f58907-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-dc1c2eff-5e42-50f1-ab75-b180b4f58907-reverse-heading">
+          <p class="section-heading" id="goal-dc1c2eff-5e42-50f1-ab75-b180b4f58907-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-dc1c2eff-5e42-50f1-ab75-b180b4f58907-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-dc1c2eff-5e42-50f1-ab75-b180b4f58907-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-bdbb1a13-f448-5536-86ab-894805e2f6be" rel="noreferrer noopener"><span>Gestalt und Merkmale</span> <code>bdbb1a13-f448-5536-86ab-894805e2f6be</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 20</span>
+      <span>Buch-Digest <code>sha256:948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:09422c462d4cfba4905c2706d9f5235b04ed14dd66eef2b87210b59b849342a2</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-human20-twenty-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=dc1c2eff-5e42-50f1-ab75-b180b4f58907&amp;goalFingerprint=sha256%3A09422c462d4cfba4905c2706d9f5235b04ed14dd66eef2b87210b59b849342a2&amp;pageFingerprint=sha256%3A983a2c383206ef9a7eba07b4c10374b4c5eb4df81c2c2f132060cc56d6bc3639&amp;bookDigest=sha256%3A948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c25a1bc9-c664-53d7-b2d8-500741da773c" data-goal-id="c25a1bc9-c664-53d7-b2d8-500741da773c" data-page-number="3" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-30e93515-f535-5ca4-9ed2-8fdf41838772" aria-labelledby="goal-c25a1bc9-c664-53d7-b2d8-500741da773c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c25a1bc9-c664-53d7-b2d8-500741da773c-title"><a class="goal-self-link" href="#goal-c25a1bc9-c664-53d7-b2d8-500741da773c">Ernährung und Verdauung</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c25a1bc9-c664-53d7-b2d8-500741da773c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-51746a07c96a9afcbebf6d69">Säugetiere und menschlicher Körper (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f3683b6bfe4fe4533c43ff3ff099bd758246d285f7f726ce4a6f2b27130b0a62" data-rendered-digest="sha256:7893889f444a9d9aa9a6ae125eb03c193e16e95358cc9c6ef0e226625e57712a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/c25a1bc9-c664-53d7-b2d8-500741da773c/c25a1bc9-c664-53d7-b2d8-500741da773c.png" alt="Verschiedene Nahrungsmittel neben der schematischen Verdauungsroute vom Mund über Magen zum Darm und einem vergrößerten Abschnitt der Nährstoffaufnahme.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c25a1bc9-c664-53d7-b2d8-500741da773c-description-heading">
+        <p class="section-heading" id="goal-c25a1bc9-c664-53d7-b2d8-500741da773c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Grundlagen ausgewogener Ernährung und Verdauungsabläufe erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-c25a1bc9-c664-53d7-b2d8-500741da773c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c25a1bc9-c664-53d7-b2d8-500741da773c-requires-heading">
+          <p class="section-heading" id="goal-c25a1bc9-c664-53d7-b2d8-500741da773c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2"><span>Nahrungsaufnahme und Verdauung</span><code>4b3b0cd7-47d2-5213-b1ce-4e829ccbb6a2</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c25a1bc9-c664-53d7-b2d8-500741da773c-reverse-heading">
+          <p class="section-heading" id="goal-c25a1bc9-c664-53d7-b2d8-500741da773c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-d773ac89-37ef-51cd-a6ee-a75a6b10c43b"><span>Blutkreislauf und Atmung</span><code>d773ac89-37ef-51cd-a6ee-a75a6b10c43b</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-c25a1bc9-c664-53d7-b2d8-500741da773c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c25a1bc9-c664-53d7-b2d8-500741da773c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2c60c8ad-04d3-5395-8a27-400646eb1612" rel="noreferrer noopener"><span>Menschen als offenes Stoffwechselsystem beschreiben</span> <code>2c60c8ad-04d3-5395-8a27-400646eb1612</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5" rel="noreferrer noopener"><span>Blutzucker hormonell regulieren</span> <code>1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 20</span>
+      <span>Buch-Digest <code>sha256:948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4b17dace92384fcf26ef4facfd8746b60bb4fac36615499be19d20e0e1d29ca0</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-human20-twenty-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=c25a1bc9-c664-53d7-b2d8-500741da773c&amp;goalFingerprint=sha256%3A4b17dace92384fcf26ef4facfd8746b60bb4fac36615499be19d20e0e1d29ca0&amp;pageFingerprint=sha256%3Aef2a583e4c759efd862fc54c67ae27f4ff3c60972e46d65c0cd8b177d3c6606f&amp;bookDigest=sha256%3A948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d773ac89-37ef-51cd-a6ee-a75a6b10c43b" data-goal-id="d773ac89-37ef-51cd-a6ee-a75a6b10c43b" data-page-number="4" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-30e93515-f535-5ca4-9ed2-8fdf41838772" aria-labelledby="goal-d773ac89-37ef-51cd-a6ee-a75a6b10c43b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d773ac89-37ef-51cd-a6ee-a75a6b10c43b-title"><a class="goal-self-link" href="#goal-d773ac89-37ef-51cd-a6ee-a75a6b10c43b">Blutkreislauf und Atmung</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d773ac89-37ef-51cd-a6ee-a75a6b10c43b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-51746a07c96a9afcbebf6d69">Säugetiere und menschlicher Körper (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:5672105ca3ca412ec15e2e7ed1bce7a18a28004196462e1427f7bca58466ee61" data-rendered-digest="sha256:465aa95351358016517da6136424e673059249858cf007838f07a47f0b55508a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/d773ac89-37ef-51cd-a6ee-a75a6b10c43b/d773ac89-37ef-51cd-a6ee-a75a6b10c43b.png" alt="Lungenbläschen und Blutkapillare zeigen entgegengesetzten Sauerstoff- und Kohlenstoffdioxidtransport; Körpergefäße transportieren Blut zu Zellen und zurück zum Herzen. Rauchfreiheit ist als Gesundheitsbezug dargestellt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d773ac89-37ef-51cd-a6ee-a75a6b10c43b-description-heading">
+        <p class="section-heading" id="goal-d773ac89-37ef-51cd-a6ee-a75a6b10c43b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Blutkreislauf und Atmung beschreiben und Gesundheitsbezüge herstellen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-d773ac89-37ef-51cd-a6ee-a75a6b10c43b" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d773ac89-37ef-51cd-a6ee-a75a6b10c43b-requires-heading">
+          <p class="section-heading" id="goal-d773ac89-37ef-51cd-a6ee-a75a6b10c43b-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-c25a1bc9-c664-53d7-b2d8-500741da773c"><span>Ernährung und Verdauung</span><code>c25a1bc9-c664-53d7-b2d8-500741da773c</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-d773ac89-37ef-51cd-a6ee-a75a6b10c43b-reverse-heading">
+          <p class="section-heading" id="goal-d773ac89-37ef-51cd-a6ee-a75a6b10c43b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-848fcbe0-dc25-53eb-a1a8-38313b65cf6d"><span>Gasaustausch durch Diffusion erklären</span><code>848fcbe0-dc25-53eb-a1a8-38313b65cf6d</code><span class="reference-page">S. 11</span></a></li><li><a href="#goal-1abf08d7-6fc1-5705-b2d4-21cb44ceeba0"><span>Mikrobiom und Gesundheit erklären</span><code>1abf08d7-6fc1-5705-b2d4-21cb44ceeba0</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-d773ac89-37ef-51cd-a6ee-a75a6b10c43b-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d773ac89-37ef-51cd-a6ee-a75a6b10c43b-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-90825b40-ac4d-5e85-993e-314e84f33f90" rel="noreferrer noopener"><span>Blut, Immunität und Infektionen (Sek I)</span> <code>90825b40-ac4d-5e85-993e-314e84f33f90</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-480146f6-4749-52e3-a5e5-d08629e0c38f" rel="noreferrer noopener"><span>Bau des Blutes</span> <code>480146f6-4749-52e3-a5e5-d08629e0c38f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-6ff8baef-ba6f-51ca-adb7-b9f785cf5b35" rel="noreferrer noopener"><span>Stofftransport und Stoffaustausch bei Insekten vergleichen</span> <code>6ff8baef-ba6f-51ca-adb7-b9f785cf5b35</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 20</span>
+      <span>Buch-Digest <code>sha256:948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:79f0262388a9f92b7ae96e132662b537a34405491b31a8ece54dcf01448effa6</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-human20-twenty-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=d773ac89-37ef-51cd-a6ee-a75a6b10c43b&amp;goalFingerprint=sha256%3A79f0262388a9f92b7ae96e132662b537a34405491b31a8ece54dcf01448effa6&amp;pageFingerprint=sha256%3A290450c96e191cadffeda2d6dbe91650a8cb0add691c02c9d3b8cf632bb24fdd&amp;bookDigest=sha256%3A948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-bb6fb806-ee15-5881-8529-2425cadfb5a1" data-goal-id="bb6fb806-ee15-5881-8529-2425cadfb5a1" data-page-number="5" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-30e93515-f535-5ca4-9ed2-8fdf41838772" aria-labelledby="goal-bb6fb806-ee15-5881-8529-2425cadfb5a1-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-bb6fb806-ee15-5881-8529-2425cadfb5a1-title"><a class="goal-self-link" href="#goal-bb6fb806-ee15-5881-8529-2425cadfb5a1">Nahrungsbestandteile molekular zuordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>bb6fb806-ee15-5881-8529-2425cadfb5a1</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-51746a07c96a9afcbebf6d69">Säugetiere und menschlicher Körper (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:fc8639a4b098a2a70940768896f5c3a70f488a56a988b9ee6d1c68db9854f187" data-rendered-digest="sha256:e469e263367cdb4b9e161fe77bd16b48e1f4e9676ddf39e42fe16c45a132ce0d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/bb6fb806-ee15-5881-8529-2425cadfb5a1/bb6fb806-ee15-5881-8529-2425cadfb5a1.png" alt="Abstrahierte molekulare Darstellungen von Kohlenhydraten, Fetten und Proteinen stehen bei passenden Nahrungsmittelbeispielen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-bb6fb806-ee15-5881-8529-2425cadfb5a1-description-heading">
+        <p class="section-heading" id="goal-bb6fb806-ee15-5881-8529-2425cadfb5a1-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann ausgewählte Nahrungsbestandteile anhand ihres molekularen Baus den Makronährstoffgruppen Kohlenhydrate, Fette und Proteine zuordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW:</strong> Sek. I · G9</li><li><strong>HB, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-bb6fb806-ee15-5881-8529-2425cadfb5a1" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-bb6fb806-ee15-5881-8529-2425cadfb5a1-requires-heading">
+          <p class="section-heading" id="goal-bb6fb806-ee15-5881-8529-2425cadfb5a1-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-bb6fb806-ee15-5881-8529-2425cadfb5a1-reverse-heading">
+          <p class="section-heading" id="goal-bb6fb806-ee15-5881-8529-2425cadfb5a1-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-73624d0c-bc6f-5b5d-baf5-099ca62fab79"><span>Ausgewogenes Ernährungskonzept ableiten</span><code>73624d0c-bc6f-5b5d-baf5-099ca62fab79</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-ed84c759-62e5-537f-90b8-4e8c2dbfd9bb"><span>Verdauungsenzyme mit Energie- und Schlüssel-Schloss-Modell erklären</span><code>ed84c759-62e5-537f-90b8-4e8c2dbfd9bb</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-bb6fb806-ee15-5881-8529-2425cadfb5a1-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-bb6fb806-ee15-5881-8529-2425cadfb5a1-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2c60c8ad-04d3-5395-8a27-400646eb1612" rel="noreferrer noopener"><span>Menschen als offenes Stoffwechselsystem beschreiben</span> <code>2c60c8ad-04d3-5395-8a27-400646eb1612</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 20</span>
+      <span>Buch-Digest <code>sha256:948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ed5caf2f78582953b9f1922637799ecde460a2adf1cdb7175e474462f9f66dcc</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-human20-twenty-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=bb6fb806-ee15-5881-8529-2425cadfb5a1&amp;goalFingerprint=sha256%3Aed5caf2f78582953b9f1922637799ecde460a2adf1cdb7175e474462f9f66dcc&amp;pageFingerprint=sha256%3Ad97a6dead24954ca01a4b4f8850fd36d25fe9d9b32416fbe1754a4f68c446901&amp;bookDigest=sha256%3A948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-73624d0c-bc6f-5b5d-baf5-099ca62fab79" data-goal-id="73624d0c-bc6f-5b5d-baf5-099ca62fab79" data-page-number="6" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-30e93515-f535-5ca4-9ed2-8fdf41838772" aria-labelledby="goal-73624d0c-bc6f-5b5d-baf5-099ca62fab79-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-73624d0c-bc6f-5b5d-baf5-099ca62fab79-title"><a class="goal-self-link" href="#goal-73624d0c-bc6f-5b5d-baf5-099ca62fab79">Ausgewogenes Ernährungskonzept ableiten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>73624d0c-bc6f-5b5d-baf5-099ca62fab79</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-51746a07c96a9afcbebf6d69">Säugetiere und menschlicher Körper (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:65cd9086c017721a5c06543f4262d3f7cc2492eb1b368ab242080f3e05a0d51b" data-rendered-digest="sha256:14e67489dfbe87379ea2c4b9ab52dd15acf5e0fcc9b519f79c891a7e7669d5c8" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/73624d0c-bc6f-5b5d-baf5-099ca62fab79/73624d0c-bc6f-5b5d-baf5-099ca62fab79.png" alt="Verschiedene Nahrungsmittelgruppen werden auf eine alltagstaugliche ausgewogene Ernährung bezogen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-73624d0c-bc6f-5b5d-baf5-099ca62fab79-description-heading">
+        <p class="section-heading" id="goal-73624d0c-bc6f-5b5d-baf5-099ca62fab79-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aus Funktionen von Makro- und Mikronährstoffen sowie Nahrungsmittelzusammensetzungen ein an Lebensumstände angepasstes Ernährungskonzept ableiten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NW:</strong> Sek. I · G9</li><li><strong>HB, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-73624d0c-bc6f-5b5d-baf5-099ca62fab79" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-73624d0c-bc6f-5b5d-baf5-099ca62fab79-requires-heading">
+          <p class="section-heading" id="goal-73624d0c-bc6f-5b5d-baf5-099ca62fab79-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-bb6fb806-ee15-5881-8529-2425cadfb5a1"><span>Nahrungsbestandteile molekular zuordnen</span><code>bb6fb806-ee15-5881-8529-2425cadfb5a1</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-73624d0c-bc6f-5b5d-baf5-099ca62fab79-reverse-heading">
+          <p class="section-heading" id="goal-73624d0c-bc6f-5b5d-baf5-099ca62fab79-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 20</span>
+      <span>Buch-Digest <code>sha256:948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:57b7df532ba939e5778154bf42f5d0982991fa74ec32c0ef238f420b058c8430</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-human20-twenty-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=73624d0c-bc6f-5b5d-baf5-099ca62fab79&amp;goalFingerprint=sha256%3A57b7df532ba939e5778154bf42f5d0982991fa74ec32c0ef238f420b058c8430&amp;pageFingerprint=sha256%3Ab0defafb15152ca55692fd1c25c995157063c82c4c45c67e24e82446c8eac327&amp;bookDigest=sha256%3A948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-ed84c759-62e5-537f-90b8-4e8c2dbfd9bb" data-goal-id="ed84c759-62e5-537f-90b8-4e8c2dbfd9bb" data-page-number="7" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-30e93515-f535-5ca4-9ed2-8fdf41838772" aria-labelledby="goal-ed84c759-62e5-537f-90b8-4e8c2dbfd9bb-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-ed84c759-62e5-537f-90b8-4e8c2dbfd9bb-title"><a class="goal-self-link" href="#goal-ed84c759-62e5-537f-90b8-4e8c2dbfd9bb">Verdauungsenzyme mit Energie- und Schlüssel-Schloss-Modell erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>ed84c759-62e5-537f-90b8-4e8c2dbfd9bb</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-51746a07c96a9afcbebf6d69">Säugetiere und menschlicher Körper (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4d6364c53e6aeccf53ffab5e96af2f6230556b9f7fe8bd8ec532819a85964b23" data-rendered-digest="sha256:0a0bba14f63b77d19b394205bc1e545ebd81a0fa2c1af4bc168ce0ce0c3e4ed8" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/ed84c759-62e5-537f-90b8-4e8c2dbfd9bb/ed84c759-62e5-537f-90b8-4e8c2dbfd9bb.png" alt="Ein schematisches Verdauungsenzym bindet passende Substratbausteine und erleichtert deren Spaltung; ein Energiemodell veranschaulicht die gesenkte Aktivierungsbarriere.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-ed84c759-62e5-537f-90b8-4e8c2dbfd9bb-description-heading">
+        <p class="section-heading" id="goal-ed84c759-62e5-537f-90b8-4e8c2dbfd9bb-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann am Beispiel der Verdauung die Wirkungsweise von Enzymen auf Stoff- und Teilchenebene mit Energiekonzept und Schlüssel-Schloss-Modell erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW:</strong> Sek. I · G9</li><li><strong>HB, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-ed84c759-62e5-537f-90b8-4e8c2dbfd9bb" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-ed84c759-62e5-537f-90b8-4e8c2dbfd9bb-requires-heading">
+          <p class="section-heading" id="goal-ed84c759-62e5-537f-90b8-4e8c2dbfd9bb-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-bb6fb806-ee15-5881-8529-2425cadfb5a1"><span>Nahrungsbestandteile molekular zuordnen</span><code>bb6fb806-ee15-5881-8529-2425cadfb5a1</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-ed84c759-62e5-537f-90b8-4e8c2dbfd9bb-reverse-heading">
+          <p class="section-heading" id="goal-ed84c759-62e5-537f-90b8-4e8c2dbfd9bb-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-30a1d736-77ca-5087-b640-b756c249bc40"><span>Enzymaktivität durch Außenfaktoren erläutern</span><code>30a1d736-77ca-5087-b640-b756c249bc40</code><span class="reference-page">S. 8</span></a></li><li><a href="#goal-bf2abe42-07bb-5c35-9118-d6141076c299"><span>Verdauungssystem und enzymatischen Abbau erklären</span><code>bf2abe42-07bb-5c35-9118-d6141076c299</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 20</span>
+      <span>Buch-Digest <code>sha256:948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4b41e0c49b0657b023de376cd1b033750abcd92eefce1b65bfabbd2f3dc0a006</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-human20-twenty-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=ed84c759-62e5-537f-90b8-4e8c2dbfd9bb&amp;goalFingerprint=sha256%3A4b41e0c49b0657b023de376cd1b033750abcd92eefce1b65bfabbd2f3dc0a006&amp;pageFingerprint=sha256%3A190c0605fdfec0ed73bf85e29f9f5ec03bc727f5659361a78047220d1e189346&amp;bookDigest=sha256%3A948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-30a1d736-77ca-5087-b640-b756c249bc40" data-goal-id="30a1d736-77ca-5087-b640-b756c249bc40" data-page-number="8" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-30e93515-f535-5ca4-9ed2-8fdf41838772" aria-labelledby="goal-30a1d736-77ca-5087-b640-b756c249bc40-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-30a1d736-77ca-5087-b640-b756c249bc40-title"><a class="goal-self-link" href="#goal-30a1d736-77ca-5087-b640-b756c249bc40">Enzymaktivität durch Außenfaktoren erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>30a1d736-77ca-5087-b640-b756c249bc40</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-51746a07c96a9afcbebf6d69">Säugetiere und menschlicher Körper (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:020499d63ffad2f36ff1e910dc4f09913baae5be3917b243cf7d685e38b03ed2" data-rendered-digest="sha256:d8afe7098d0a8e46e63877ee55fce33403d6c068fd035d682882fc102ff39024" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/30a1d736-77ca-5087-b640-b756c249bc40/30a1d736-77ca-5087-b640-b756c249bc40.png" alt="Schematische Einflüsse äußerer Bedingungen auf ein Verdauungsenzym und seine Substratumsetzung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-30a1d736-77ca-5087-b640-b756c249bc40-description-heading">
+        <p class="section-heading" id="goal-30a1d736-77ca-5087-b640-b756c249bc40-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Enzymausstattung des Menschen als Angepasstheit erläutern, indem sie Einflüsse äußerer Faktoren auf Enzymaktivität beschreibt.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW:</strong> Sek. I · G9</li><li><strong>HB, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-30a1d736-77ca-5087-b640-b756c249bc40" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-30a1d736-77ca-5087-b640-b756c249bc40-requires-heading">
+          <p class="section-heading" id="goal-30a1d736-77ca-5087-b640-b756c249bc40-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ed84c759-62e5-537f-90b8-4e8c2dbfd9bb"><span>Verdauungsenzyme mit Energie- und Schlüssel-Schloss-Modell erklären</span><code>ed84c759-62e5-537f-90b8-4e8c2dbfd9bb</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-30a1d736-77ca-5087-b640-b756c249bc40-reverse-heading">
+          <p class="section-heading" id="goal-30a1d736-77ca-5087-b640-b756c249bc40-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 20</span>
+      <span>Buch-Digest <code>sha256:948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ff6bd1b730dd9bb9d84f63c775d187a2f08eec5b12111d1a5e3ce0374b7ae661</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-human20-twenty-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=30a1d736-77ca-5087-b640-b756c249bc40&amp;goalFingerprint=sha256%3Aff6bd1b730dd9bb9d84f63c775d187a2f08eec5b12111d1a5e3ce0374b7ae661&amp;pageFingerprint=sha256%3A3dd28ab22fbaa53c84ea028ed7285cbe0730ed1ad57c115018300c845de71137&amp;bookDigest=sha256%3A948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-bf2abe42-07bb-5c35-9118-d6141076c299" data-goal-id="bf2abe42-07bb-5c35-9118-d6141076c299" data-page-number="9" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-30e93515-f535-5ca4-9ed2-8fdf41838772" aria-labelledby="goal-bf2abe42-07bb-5c35-9118-d6141076c299-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-bf2abe42-07bb-5c35-9118-d6141076c299-title"><a class="goal-self-link" href="#goal-bf2abe42-07bb-5c35-9118-d6141076c299">Verdauungssystem und enzymatischen Abbau erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>bf2abe42-07bb-5c35-9118-d6141076c299</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-51746a07c96a9afcbebf6d69">Säugetiere und menschlicher Körper (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f3cf9f7111007d89ed42f6d8526351e31646d8a315d48f04410ccd671f0a4a58" data-rendered-digest="sha256:0a75dfef6f1a1183128639a1beb4270a105392db31dbd7a357f48098e33613c5" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/bf2abe42-07bb-5c35-9118-d6141076c299/bf2abe42-07bb-5c35-9118-d6141076c299.png" alt="Ein schematisches Verdauungssystem verbindet den Weg des Nahrungsbreis mit dem enzymatischen Abbau verschiedener Nährstoffe.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-bf2abe42-07bb-5c35-9118-d6141076c299-description-heading">
+        <p class="section-heading" id="goal-bf2abe42-07bb-5c35-9118-d6141076c299-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Zusammenwirken des Verdauungssystems beim Transport des Nahrungsbreis und beim enzymatischen Abbau von Kohlenhydraten, Fetten und Proteinen erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW:</strong> Sek. I · G9</li><li><strong>HB, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-bf2abe42-07bb-5c35-9118-d6141076c299" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-bf2abe42-07bb-5c35-9118-d6141076c299-requires-heading">
+          <p class="section-heading" id="goal-bf2abe42-07bb-5c35-9118-d6141076c299-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-ed84c759-62e5-537f-90b8-4e8c2dbfd9bb"><span>Verdauungsenzyme mit Energie- und Schlüssel-Schloss-Modell erklären</span><code>ed84c759-62e5-537f-90b8-4e8c2dbfd9bb</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-bf2abe42-07bb-5c35-9118-d6141076c299-reverse-heading">
+          <p class="section-heading" id="goal-bf2abe42-07bb-5c35-9118-d6141076c299-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-7e26c129-91f7-52de-8114-2361411c80f8"><span>Dünndarmwand und Resorption struktur-funktional erläutern</span><code>7e26c129-91f7-52de-8114-2361411c80f8</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 20</span>
+      <span>Buch-Digest <code>sha256:948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:bf4e88ceacb38a9459a0c072d0880c33a03253f9271df9fc094c81d86123839c</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-human20-twenty-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=bf2abe42-07bb-5c35-9118-d6141076c299&amp;goalFingerprint=sha256%3Abf4e88ceacb38a9459a0c072d0880c33a03253f9271df9fc094c81d86123839c&amp;pageFingerprint=sha256%3A08ff1c9c19e4fde29bee4215cf9b1e37eca8f4854de8fe04d3a1322c52c71399&amp;bookDigest=sha256%3A948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-7e26c129-91f7-52de-8114-2361411c80f8" data-goal-id="7e26c129-91f7-52de-8114-2361411c80f8" data-page-number="10" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-30e93515-f535-5ca4-9ed2-8fdf41838772" aria-labelledby="goal-7e26c129-91f7-52de-8114-2361411c80f8-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-7e26c129-91f7-52de-8114-2361411c80f8-title"><a class="goal-self-link" href="#goal-7e26c129-91f7-52de-8114-2361411c80f8">Dünndarmwand und Resorption struktur-funktional erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>7e26c129-91f7-52de-8114-2361411c80f8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-51746a07c96a9afcbebf6d69">Säugetiere und menschlicher Körper (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e980a3400726588f5e926cfdc1a0146bbc02a3d87edb28c32a3c303fdb93c9d8" data-rendered-digest="sha256:313e058a71946a20ad92d6bc9eedce1f2675f09780bffb40369b1620f5d047d0" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/7e26c129-91f7-52de-8114-2361411c80f8/7e26c129-91f7-52de-8114-2361411c80f8.png" alt="Darmzotte mit vergrößerter Oberfläche: kleine Nährstoffbausteine gelangen über das Epithel in Blutgefäße, Fetttransport wird getrennt über ein Lymphgefäß veranschaulicht.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-7e26c129-91f7-52de-8114-2361411c80f8-description-heading">
+        <p class="section-heading" id="goal-7e26c129-91f7-52de-8114-2361411c80f8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Aufbau der Dünndarmwand beschreiben und mithilfe des Struktur-Funktions-Konzepts die Resorption erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW:</strong> Sek. I · G9</li><li><strong>MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-7e26c129-91f7-52de-8114-2361411c80f8" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-7e26c129-91f7-52de-8114-2361411c80f8-requires-heading">
+          <p class="section-heading" id="goal-7e26c129-91f7-52de-8114-2361411c80f8-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-bf2abe42-07bb-5c35-9118-d6141076c299"><span>Verdauungssystem und enzymatischen Abbau erklären</span><code>bf2abe42-07bb-5c35-9118-d6141076c299</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-7e26c129-91f7-52de-8114-2361411c80f8-reverse-heading">
+          <p class="section-heading" id="goal-7e26c129-91f7-52de-8114-2361411c80f8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 20</span>
+      <span>Buch-Digest <code>sha256:948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c0182da57c7d588f9366130d25b137332e8f024d63f5c0e55738372a5de1ca20</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-human20-twenty-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=7e26c129-91f7-52de-8114-2361411c80f8&amp;goalFingerprint=sha256%3Ac0182da57c7d588f9366130d25b137332e8f024d63f5c0e55738372a5de1ca20&amp;pageFingerprint=sha256%3A6675c9f9c407ab4156aa1eccbccf453612e4e1fca89d6c1164c70d9f65114810&amp;bookDigest=sha256%3A948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-848fcbe0-dc25-53eb-a1a8-38313b65cf6d" data-goal-id="848fcbe0-dc25-53eb-a1a8-38313b65cf6d" data-page-number="11" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-30e93515-f535-5ca4-9ed2-8fdf41838772" aria-labelledby="goal-848fcbe0-dc25-53eb-a1a8-38313b65cf6d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-848fcbe0-dc25-53eb-a1a8-38313b65cf6d-title"><a class="goal-self-link" href="#goal-848fcbe0-dc25-53eb-a1a8-38313b65cf6d">Gasaustausch durch Diffusion erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>848fcbe0-dc25-53eb-a1a8-38313b65cf6d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-51746a07c96a9afcbebf6d69">Säugetiere und menschlicher Körper (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f2c885c27733acf9191ef67ecff1576f0ab9a3d6f8e252d071d0456c8fcc3e4d" data-rendered-digest="sha256:e7e6ffacfc9f87dad94ab48cb40a2fe90aaead556bdf243bf23f473f9e481036" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/848fcbe0-dc25-53eb-a1a8-38313b65cf6d/848fcbe0-dc25-53eb-a1a8-38313b65cf6d.png" alt="Sauerstoff diffundiert in der Lunge ins Blut und im Gewebe zu Zellen; Kohlenstoffdioxid nimmt jeweils den entgegengesetzten Weg.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-848fcbe0-dc25-53eb-a1a8-38313b65cf6d-description-heading">
+        <p class="section-heading" id="goal-848fcbe0-dc25-53eb-a1a8-38313b65cf6d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Gasaustausch durch Diffusion mithilfe des Struktur-Funktions-Konzepts erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-848fcbe0-dc25-53eb-a1a8-38313b65cf6d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-848fcbe0-dc25-53eb-a1a8-38313b65cf6d-requires-heading">
+          <p class="section-heading" id="goal-848fcbe0-dc25-53eb-a1a8-38313b65cf6d-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-d773ac89-37ef-51cd-a6ee-a75a6b10c43b"><span>Blutkreislauf und Atmung</span><code>d773ac89-37ef-51cd-a6ee-a75a6b10c43b</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-848fcbe0-dc25-53eb-a1a8-38313b65cf6d-reverse-heading">
+          <p class="section-heading" id="goal-848fcbe0-dc25-53eb-a1a8-38313b65cf6d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-498f082d-742c-5f21-9d09-16feeb4276a6"><span>Herz-Kreislauf-System als Transportsystem erläutern</span><code>498f082d-742c-5f21-9d09-16feeb4276a6</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 20</span>
+      <span>Buch-Digest <code>sha256:948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:7c2af85512cd7193ac43321b2d9f15c4788d30076ed0fe3344e4467ab26cec3b</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-human20-twenty-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=848fcbe0-dc25-53eb-a1a8-38313b65cf6d&amp;goalFingerprint=sha256%3A7c2af85512cd7193ac43321b2d9f15c4788d30076ed0fe3344e4467ab26cec3b&amp;pageFingerprint=sha256%3A669659eb9deaa6e8e86992b74b31a1f1b4a10c731249a0234157387c6983b212&amp;bookDigest=sha256%3A948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-498f082d-742c-5f21-9d09-16feeb4276a6" data-goal-id="498f082d-742c-5f21-9d09-16feeb4276a6" data-page-number="12" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-30e93515-f535-5ca4-9ed2-8fdf41838772" aria-labelledby="goal-498f082d-742c-5f21-9d09-16feeb4276a6-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-498f082d-742c-5f21-9d09-16feeb4276a6-title"><a class="goal-self-link" href="#goal-498f082d-742c-5f21-9d09-16feeb4276a6">Herz-Kreislauf-System als Transportsystem erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>498f082d-742c-5f21-9d09-16feeb4276a6</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-51746a07c96a9afcbebf6d69">Säugetiere und menschlicher Körper (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:8ee0e34cb7891ab068db4f2c3484eeaeb47183d91304f692ce539501c0e7dd98" data-rendered-digest="sha256:0b824ffe178ae3fcad50ecdde0450dbba6de6e044c235ea502e12c5cedb8a7a2" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/498f082d-742c-5f21-9d09-16feeb4276a6/498f082d-742c-5f21-9d09-16feeb4276a6.png" alt="Zwei schematische Kreisläufe verbinden Lunge, geschlossenes Herzsymbol und Körperzellen. Sauerstoffärmeres Blut gelangt vom Körper über das Herz zur Lunge, sauerstoffreicheres Blut von dort über das Herz zum Körper; Innenkammern sind nicht dargestellt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-498f082d-742c-5f21-9d09-16feeb4276a6-description-heading">
+        <p class="section-heading" id="goal-498f082d-742c-5f21-9d09-16feeb4276a6-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann das Herz-Kreislauf-System als Transportsystem zwischen Umgebung und Körperzellen bei Stoffaufnahme und Stoffabgabe erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-498f082d-742c-5f21-9d09-16feeb4276a6" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-498f082d-742c-5f21-9d09-16feeb4276a6-requires-heading">
+          <p class="section-heading" id="goal-498f082d-742c-5f21-9d09-16feeb4276a6-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-848fcbe0-dc25-53eb-a1a8-38313b65cf6d"><span>Gasaustausch durch Diffusion erklären</span><code>848fcbe0-dc25-53eb-a1a8-38313b65cf6d</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-498f082d-742c-5f21-9d09-16feeb4276a6-reverse-heading">
+          <p class="section-heading" id="goal-498f082d-742c-5f21-9d09-16feeb4276a6-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-668c01c7-0887-5a54-84ff-648facd8e962"><span>Lungen- und Herz-Kreislauf-Gesundheit begründen</span><code>668c01c7-0887-5a54-84ff-648facd8e962</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 20</span>
+      <span>Buch-Digest <code>sha256:948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:89ceffffa59cb2dab09e0a57c8393fe2b8174372ae8bfc424caa1debf4968909</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-human20-twenty-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=498f082d-742c-5f21-9d09-16feeb4276a6&amp;goalFingerprint=sha256%3A89ceffffa59cb2dab09e0a57c8393fe2b8174372ae8bfc424caa1debf4968909&amp;pageFingerprint=sha256%3A98645c3729d21e7d6bf16e63685357aa7fec165f5d03d9ed0340d37bd33c36f8&amp;bookDigest=sha256%3A948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-668c01c7-0887-5a54-84ff-648facd8e962" data-goal-id="668c01c7-0887-5a54-84ff-648facd8e962" data-page-number="13" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-30e93515-f535-5ca4-9ed2-8fdf41838772" aria-labelledby="goal-668c01c7-0887-5a54-84ff-648facd8e962-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-668c01c7-0887-5a54-84ff-648facd8e962-title"><a class="goal-self-link" href="#goal-668c01c7-0887-5a54-84ff-648facd8e962">Lungen- und Herz-Kreislauf-Gesundheit begründen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>668c01c7-0887-5a54-84ff-648facd8e962</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-51746a07c96a9afcbebf6d69">Säugetiere und menschlicher Körper (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:337995c6a71966ad0df3038d50349c1440c8728af89bb5620a7176e172d134c9" data-rendered-digest="sha256:70ea3f3a825be44b0f7dc3919b4416e3b4330e99add865b4e14f18210f47523d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/668c01c7-0887-5a54-84ff-648facd8e962/668c01c7-0887-5a54-84ff-648facd8e962.png" alt="Eine Person bewegt sich im Freien; Symbole für Rauchfreiheit und Alltagspflege stehen einer ärztlichen Erklärung allgemeiner Behandlungsmöglichkeiten gegenüber.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-668c01c7-0887-5a54-84ff-648facd8e962-description-heading">
+        <p class="section-heading" id="goal-668c01c7-0887-5a54-84ff-648facd8e962-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aktive Gesundheitsvorsorge zur Vermeidung von Schädigungen und Erkrankungen der Lunge und des Herz-Kreislauf-Systems erklären und medizinische Behandlungsmöglichkeiten erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NW:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-668c01c7-0887-5a54-84ff-648facd8e962" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-668c01c7-0887-5a54-84ff-648facd8e962-requires-heading">
+          <p class="section-heading" id="goal-668c01c7-0887-5a54-84ff-648facd8e962-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-498f082d-742c-5f21-9d09-16feeb4276a6"><span>Herz-Kreislauf-System als Transportsystem erläutern</span><code>498f082d-742c-5f21-9d09-16feeb4276a6</code><span class="reference-page">S. 12</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-668c01c7-0887-5a54-84ff-648facd8e962-reverse-heading">
+          <p class="section-heading" id="goal-668c01c7-0887-5a54-84ff-648facd8e962-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 20</span>
+      <span>Buch-Digest <code>sha256:948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1f5fb2778820db44950242e8eab35ffdd8268f21d237dbdd2665fb2312b1f008</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-human20-twenty-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=668c01c7-0887-5a54-84ff-648facd8e962&amp;goalFingerprint=sha256%3A1f5fb2778820db44950242e8eab35ffdd8268f21d237dbdd2665fb2312b1f008&amp;pageFingerprint=sha256%3A8a86683502130175f099e120fe053d46c822b58a7e6dfac7d5f23e39989951ac&amp;bookDigest=sha256%3A948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8f9dc189-e875-56dd-bd97-996c8bf0cdc4" data-goal-id="8f9dc189-e875-56dd-bd97-996c8bf0cdc4" data-page-number="14" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-30e93515-f535-5ca4-9ed2-8fdf41838772" aria-labelledby="goal-8f9dc189-e875-56dd-bd97-996c8bf0cdc4-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8f9dc189-e875-56dd-bd97-996c8bf0cdc4-title"><a class="goal-self-link" href="#goal-8f9dc189-e875-56dd-bd97-996c8bf0cdc4">Glucoseabbau und ATP erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8f9dc189-e875-56dd-bd97-996c8bf0cdc4</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-51746a07c96a9afcbebf6d69">Säugetiere und menschlicher Körper (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9305335eee6a904bb47144a69950fe8200a2c08b2ff7069a1ee644726631fb11" data-rendered-digest="sha256:ded24ab9b213fb9f7d3cac995231164576832c3d927847b6e6b5952d5bb9cb1c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/8f9dc189-e875-56dd-bd97-996c8bf0cdc4/8f9dc189-e875-56dd-bd97-996c8bf0cdc4.png" alt="Schematische Glucoseoxidation mit Sauerstoff, Kohlenstoffdioxid, Wasser und Wärmeabgabe koppelt freiwerdende Energie an ATP-Bildung; ATP-Umsetzung unterstützt Muskelarbeit.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8f9dc189-e875-56dd-bd97-996c8bf0cdc4-description-heading">
+        <p class="section-heading" id="goal-8f9dc189-e875-56dd-bd97-996c8bf0cdc4-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Glucoseabbau als exotherme Redoxreaktion beschreiben, bei der Energie im Energieträger ATP gespeichert wird, und die Bedeutung von ATP erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI:</strong> Sek. I · G9</li><li><strong>MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-8f9dc189-e875-56dd-bd97-996c8bf0cdc4" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8f9dc189-e875-56dd-bd97-996c8bf0cdc4-requires-heading">
+          <p class="section-heading" id="goal-8f9dc189-e875-56dd-bd97-996c8bf0cdc4-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-8f9dc189-e875-56dd-bd97-996c8bf0cdc4-reverse-heading">
+          <p class="section-heading" id="goal-8f9dc189-e875-56dd-bd97-996c8bf0cdc4-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-f9597bb0-1b33-53df-8359-cdd43180307b"><span>Aeroben und anaeroben Glucoseabbau vergleichen</span><code>f9597bb0-1b33-53df-8359-cdd43180307b</code><span class="reference-page">S. 15</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-8f9dc189-e875-56dd-bd97-996c8bf0cdc4-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8f9dc189-e875-56dd-bd97-996c8bf0cdc4-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-8678d0b5-8b74-5b01-8143-91bfea1e4482" rel="noreferrer noopener"><span>Bedeutung von Fotosynthese und Zellatmung erklären</span> <code>8678d0b5-8b74-5b01-8143-91bfea1e4482</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2c60c8ad-04d3-5395-8a27-400646eb1612" rel="noreferrer noopener"><span>Menschen als offenes Stoffwechselsystem beschreiben</span> <code>2c60c8ad-04d3-5395-8a27-400646eb1612</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 20</span>
+      <span>Buch-Digest <code>sha256:948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:42a3fb0e8cfac775e8119ab459847138262b5e06aa4ab80c0b8e2d3a5383f96c</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-human20-twenty-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=8f9dc189-e875-56dd-bd97-996c8bf0cdc4&amp;goalFingerprint=sha256%3A42a3fb0e8cfac775e8119ab459847138262b5e06aa4ab80c0b8e2d3a5383f96c&amp;pageFingerprint=sha256%3Aa9fda68a8d182abc600b483e09c276c8514f585bfebb72be00d3f5c46cb8c0eb&amp;bookDigest=sha256%3A948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f9597bb0-1b33-53df-8359-cdd43180307b" data-goal-id="f9597bb0-1b33-53df-8359-cdd43180307b" data-page-number="15" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-30e93515-f535-5ca4-9ed2-8fdf41838772" aria-labelledby="goal-f9597bb0-1b33-53df-8359-cdd43180307b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-f9597bb0-1b33-53df-8359-cdd43180307b-title"><a class="goal-self-link" href="#goal-f9597bb0-1b33-53df-8359-cdd43180307b">Aeroben und anaeroben Glucoseabbau vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f9597bb0-1b33-53df-8359-cdd43180307b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-51746a07c96a9afcbebf6d69">Säugetiere und menschlicher Körper (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:bf1c84ef9c95da9f5c6fcfba06d4eaca8fa52a9f5647368f13711007b9e92679" data-rendered-digest="sha256:865eda8f90b30783ac80d94c4b1758e588906cd8a083ed636d7e45c44b367bb6" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/f9597bb0-1b33-53df-8359-cdd43180307b/f9597bb0-1b33-53df-8359-cdd43180307b.png" alt="Aerober Glucoseabbau nutzt Sauerstoff, bildet Kohlenstoffdioxid und Wasser und liefert mehr ATP als der dargestellte anaerobe Weg mit Lactatbildung; Symbole zeigen keine exakten Mengen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f9597bb0-1b33-53df-8359-cdd43180307b-description-heading">
+        <p class="section-heading" id="goal-f9597bb0-1b33-53df-8359-cdd43180307b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Stoff- und Energiebilanz des aeroben und anaeroben Glucoseabbaus in menschlichen Zellen vergleichen und deren Bedeutung für den Organismus erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI:</strong> Sek. I · G9</li><li><strong>MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-f9597bb0-1b33-53df-8359-cdd43180307b" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f9597bb0-1b33-53df-8359-cdd43180307b-requires-heading">
+          <p class="section-heading" id="goal-f9597bb0-1b33-53df-8359-cdd43180307b-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8f9dc189-e875-56dd-bd97-996c8bf0cdc4"><span>Glucoseabbau und ATP erläutern</span><code>8f9dc189-e875-56dd-bd97-996c8bf0cdc4</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-f9597bb0-1b33-53df-8359-cdd43180307b-reverse-heading">
+          <p class="section-heading" id="goal-f9597bb0-1b33-53df-8359-cdd43180307b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 15 von 20</span>
+      <span>Buch-Digest <code>sha256:948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e507e636c326b1717c5d1b5b542eb6701301972ed63670d90c1ad68355d04946</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-human20-twenty-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=f9597bb0-1b33-53df-8359-cdd43180307b&amp;goalFingerprint=sha256%3Ae507e636c326b1717c5d1b5b542eb6701301972ed63670d90c1ad68355d04946&amp;pageFingerprint=sha256%3Ab3d26213e2f77acdb4787ab49a67fce6bcbdcba9225cf736d53c31196310b708&amp;bookDigest=sha256%3A948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1abf08d7-6fc1-5705-b2d4-21cb44ceeba0" data-goal-id="1abf08d7-6fc1-5705-b2d4-21cb44ceeba0" data-page-number="16" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-90825b40-ac4d-5e85-993e-314e84f33f90" aria-labelledby="goal-1abf08d7-6fc1-5705-b2d4-21cb44ceeba0-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1abf08d7-6fc1-5705-b2d4-21cb44ceeba0-title"><a class="goal-self-link" href="#goal-1abf08d7-6fc1-5705-b2d4-21cb44ceeba0">Mikrobiom und Gesundheit erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1abf08d7-6fc1-5705-b2d4-21cb44ceeba0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9e4de026b625798c6d1be604">Blut, Immunität und Infektionen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f667a779be5c56e53525146b8048baa5ff68728ce14c85a38f0563dda03c3d0e" data-rendered-digest="sha256:84dea319a373c7620c4312162a94ab81918b428b24878abf8c0005adc8559480" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/1abf08d7-6fc1-5705-b2d4-21cb44ceeba0/1abf08d7-6fc1-5705-b2d4-21cb44ceeba0.png" alt="Eine menschliche Silhouette mit vergrößerten schematischen Bereichen für Mikroorganismen auf Haut, im Darm und im Mund.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1abf08d7-6fc1-5705-b2d4-21cb44ceeba0-description-heading">
+        <p class="section-heading" id="goal-1abf08d7-6fc1-5705-b2d4-21cb44ceeba0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Wechselbeziehungen zwischen dem Menschen und Mikroorganismen auf und im Körper beschreiben und daraus gesundheitsbewusste Verhaltensweisen ableiten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NW:</strong> Sek. I · G9</li><li><strong>HB, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1abf08d7-6fc1-5705-b2d4-21cb44ceeba0" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1abf08d7-6fc1-5705-b2d4-21cb44ceeba0-requires-heading">
+          <p class="section-heading" id="goal-1abf08d7-6fc1-5705-b2d4-21cb44ceeba0-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-d773ac89-37ef-51cd-a6ee-a75a6b10c43b"><span>Blutkreislauf und Atmung</span><code>d773ac89-37ef-51cd-a6ee-a75a6b10c43b</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-1abf08d7-6fc1-5705-b2d4-21cb44ceeba0-reverse-heading">
+          <p class="section-heading" id="goal-1abf08d7-6fc1-5705-b2d4-21cb44ceeba0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-41467314-3611-5ee3-98c5-f1e8eca2efc2"><span>Bakterielle und virale Infektionen unterscheiden</span><code>41467314-3611-5ee3-98c5-f1e8eca2efc2</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 16 von 20</span>
+      <span>Buch-Digest <code>sha256:948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:bb91bd64c356b5b10ed5ecbf6e643f68dc2ad01fe1fb9034649baf005e9b2294</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-human20-twenty-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=1abf08d7-6fc1-5705-b2d4-21cb44ceeba0&amp;goalFingerprint=sha256%3Abb91bd64c356b5b10ed5ecbf6e643f68dc2ad01fe1fb9034649baf005e9b2294&amp;pageFingerprint=sha256%3A7375e7ccf8a50bd84b371ad102fa252e87d71a1acebb609412a2ba8d87769b85&amp;bookDigest=sha256%3A948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-41467314-3611-5ee3-98c5-f1e8eca2efc2" data-goal-id="41467314-3611-5ee3-98c5-f1e8eca2efc2" data-page-number="17" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-90825b40-ac4d-5e85-993e-314e84f33f90" aria-labelledby="goal-41467314-3611-5ee3-98c5-f1e8eca2efc2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-41467314-3611-5ee3-98c5-f1e8eca2efc2-title"><a class="goal-self-link" href="#goal-41467314-3611-5ee3-98c5-f1e8eca2efc2">Bakterielle und virale Infektionen unterscheiden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>41467314-3611-5ee3-98c5-f1e8eca2efc2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9e4de026b625798c6d1be604">Blut, Immunität und Infektionen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:13af77fbc8cec59f174c832a0fe4410b137a18f23d435b32f21df888042dc72a" data-rendered-digest="sha256:45875523764d37a2bdc3d2ec8af91e6eadca496801e8f9eda39c5179956d6371" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/41467314-3611-5ee3-98c5-f1e8eca2efc2/41467314-3611-5ee3-98c5-f1e8eca2efc2.png" alt="Bakterien und Viren stehen mit unterschiedlichen Infektionswegen und Behandlungsmöglichkeiten nebeneinander; Antibiotika betreffen bakterielle Infektionen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-41467314-3611-5ee3-98c5-f1e8eca2efc2-description-heading">
+        <p class="section-heading" id="goal-41467314-3611-5ee3-98c5-f1e8eca2efc2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann bakterielle und virale Infektionen an Beispielen unterscheiden, Verläufe beschreiben sowie Möglichkeiten und Grenzen von Infektionsschutz und Therapie beurteilen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NW:</strong> Sek. I · G9</li><li><strong>MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-41467314-3611-5ee3-98c5-f1e8eca2efc2" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-41467314-3611-5ee3-98c5-f1e8eca2efc2-requires-heading">
+          <p class="section-heading" id="goal-41467314-3611-5ee3-98c5-f1e8eca2efc2-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1abf08d7-6fc1-5705-b2d4-21cb44ceeba0"><span>Mikrobiom und Gesundheit erklären</span><code>1abf08d7-6fc1-5705-b2d4-21cb44ceeba0</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-41467314-3611-5ee3-98c5-f1e8eca2efc2-reverse-heading">
+          <p class="section-heading" id="goal-41467314-3611-5ee3-98c5-f1e8eca2efc2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-bd5e675f-61cc-593d-913e-383e1d3f8783"><span>Antibiotika im Ökosystem Mensch beurteilen</span><code>bd5e675f-61cc-593d-913e-383e1d3f8783</code><span class="reference-page">S. 20</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 17 von 20</span>
+      <span>Buch-Digest <code>sha256:948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9606c1f80a4e3362fae50023986a5257ea6b8c0b4514a213cbf86b36c0ad81ad</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-human20-twenty-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=41467314-3611-5ee3-98c5-f1e8eca2efc2&amp;goalFingerprint=sha256%3A9606c1f80a4e3362fae50023986a5257ea6b8c0b4514a213cbf86b36c0ad81ad&amp;pageFingerprint=sha256%3A8a8d8655138bfc208aa60fdc0297902efda8acf11562770b6a4dd6663c98650b&amp;bookDigest=sha256%3A948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1f65f78e-b528-5d88-ad00-8e8714a2303e" data-goal-id="1f65f78e-b528-5d88-ad00-8e8714a2303e" data-page-number="18" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-90825b40-ac4d-5e85-993e-314e84f33f90" aria-labelledby="goal-1f65f78e-b528-5d88-ad00-8e8714a2303e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1f65f78e-b528-5d88-ad00-8e8714a2303e-title"><a class="goal-self-link" href="#goal-1f65f78e-b528-5d88-ad00-8e8714a2303e">Unspezifische, spezifische Abwehr und Allergien erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1f65f78e-b528-5d88-ad00-8e8714a2303e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9e4de026b625798c6d1be604">Blut, Immunität und Infektionen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9efcdcacc43cfebf2359dbbfca82e71f85a4005d38050f4858ea9bfb40caa430" data-rendered-digest="sha256:69c557f294c6dedd302ffb1bb58118567db9d572869b9d49c24beeda83a531a6" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/1f65f78e-b528-5d88-ad00-8e8714a2303e/1f65f78e-b528-5d88-ad00-8e8714a2303e.png" alt="Schematische Abwehrzellen unterscheiden unspezifische Abwehr, spezifische Reaktion gegen infizierte Körperzellen und eine allergische Fehlreaktion.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1f65f78e-b528-5d88-ad00-8e8714a2303e-description-heading">
+        <p class="section-heading" id="goal-1f65f78e-b528-5d88-ad00-8e8714a2303e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann unspezifische und spezifische Abwehrmechanismen gegen Parasiten und Krankheitserreger erläutern und Allergien als Fehlreaktionen des Immunsystems beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1f65f78e-b528-5d88-ad00-8e8714a2303e" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1f65f78e-b528-5d88-ad00-8e8714a2303e-requires-heading">
+          <p class="section-heading" id="goal-1f65f78e-b528-5d88-ad00-8e8714a2303e-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-1f65f78e-b528-5d88-ad00-8e8714a2303e-reverse-heading">
+          <p class="section-heading" id="goal-1f65f78e-b528-5d88-ad00-8e8714a2303e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-c7e2d7e5-ce6b-53e0-806d-66ae4d7846dd"><span>Aktive und passive Immunisierung begründen</span><code>c7e2d7e5-ce6b-53e0-806d-66ae4d7846dd</code><span class="reference-page">S. 19</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-1f65f78e-b528-5d88-ad00-8e8714a2303e-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1f65f78e-b528-5d88-ad00-8e8714a2303e-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-dcc9d2e5-16f4-5813-ab66-7095c8a165a6" rel="noreferrer noopener"><span>Immunabwehr beschreiben</span> <code>dcc9d2e5-16f4-5813-ab66-7095c8a165a6</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 18 von 20</span>
+      <span>Buch-Digest <code>sha256:948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a3aba061e253ddd2aa91d75df46df917b9ff6f616710d96e3317fac268e9f414</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-human20-twenty-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=1f65f78e-b528-5d88-ad00-8e8714a2303e&amp;goalFingerprint=sha256%3Aa3aba061e253ddd2aa91d75df46df917b9ff6f616710d96e3317fac268e9f414&amp;pageFingerprint=sha256%3Adc38fd081f45ddfaec07cbed6f90cba990c03be69b58b4001c7063274a329a88&amp;bookDigest=sha256%3A948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c&amp;page=18" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c7e2d7e5-ce6b-53e0-806d-66ae4d7846dd" data-goal-id="c7e2d7e5-ce6b-53e0-806d-66ae4d7846dd" data-page-number="19" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-90825b40-ac4d-5e85-993e-314e84f33f90" aria-labelledby="goal-c7e2d7e5-ce6b-53e0-806d-66ae4d7846dd-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c7e2d7e5-ce6b-53e0-806d-66ae4d7846dd-title"><a class="goal-self-link" href="#goal-c7e2d7e5-ce6b-53e0-806d-66ae4d7846dd">Aktive und passive Immunisierung begründen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c7e2d7e5-ce6b-53e0-806d-66ae4d7846dd</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9e4de026b625798c6d1be604">Blut, Immunität und Infektionen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:7ccc89e285a3646162335d630fdd3393d7af94376ba5d89bbfb659021557c2db" data-rendered-digest="sha256:680d361bf85bfffa36bf39e78a3828e5345e1f99449a1ecf8682d6d7eb2ad131" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/c7e2d7e5-ce6b-53e0-806d-66ae4d7846dd/c7e2d7e5-ce6b-53e0-806d-66ae4d7846dd.png" alt="Aktive Immunisierung stößt eine eigene Abwehrantwort mit Gedächtnis an; bei passiver Immunisierung werden fertige Antikörper übertragen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c7e2d7e5-ce6b-53e0-806d-66ae4d7846dd-description-heading">
+        <p class="section-heading" id="goal-c7e2d7e5-ce6b-53e0-806d-66ae4d7846dd-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aktive und passive Immunisierung unterscheiden, die Notwendigkeit vorbeugender Schutzimpfungen erläutern und Impfentscheidungen sachgerecht begründen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-c7e2d7e5-ce6b-53e0-806d-66ae4d7846dd" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c7e2d7e5-ce6b-53e0-806d-66ae4d7846dd-requires-heading">
+          <p class="section-heading" id="goal-c7e2d7e5-ce6b-53e0-806d-66ae4d7846dd-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1f65f78e-b528-5d88-ad00-8e8714a2303e"><span>Unspezifische, spezifische Abwehr und Allergien erläutern</span><code>1f65f78e-b528-5d88-ad00-8e8714a2303e</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c7e2d7e5-ce6b-53e0-806d-66ae4d7846dd-reverse-heading">
+          <p class="section-heading" id="goal-c7e2d7e5-ce6b-53e0-806d-66ae4d7846dd-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 19 von 20</span>
+      <span>Buch-Digest <code>sha256:948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3f76aa09d5273af61bf25b2b98137d9e10308cb3d8339daa40a8e14e00cfb938</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-human20-twenty-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=c7e2d7e5-ce6b-53e0-806d-66ae4d7846dd&amp;goalFingerprint=sha256%3A3f76aa09d5273af61bf25b2b98137d9e10308cb3d8339daa40a8e14e00cfb938&amp;pageFingerprint=sha256%3Aa6316d006201d5dada451fe05fbf1d448edc624948bbc4efd9152d78046c54ef&amp;bookDigest=sha256%3A948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c&amp;page=19" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-bd5e675f-61cc-593d-913e-383e1d3f8783" data-goal-id="bd5e675f-61cc-593d-913e-383e1d3f8783" data-page-number="20" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-90825b40-ac4d-5e85-993e-314e84f33f90" aria-labelledby="goal-bd5e675f-61cc-593d-913e-383e1d3f8783-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-bd5e675f-61cc-593d-913e-383e1d3f8783-title"><a class="goal-self-link" href="#goal-bd5e675f-61cc-593d-913e-383e1d3f8783">Antibiotika im Ökosystem Mensch beurteilen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>bd5e675f-61cc-593d-913e-383e1d3f8783</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-9e4de026b625798c6d1be604">Blut, Immunität und Infektionen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:5d276ec5fa1d393b19fce02013c60054629020256214beb1f8c7f9f6b408d36c" data-rendered-digest="sha256:7ca520f3500132edcc024f2b4d499f10a5192650107afe9ee135801fa6252d8e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/bd5e675f-61cc-593d-913e-383e1d3f8783/bd5e675f-61cc-593d-913e-383e1d3f8783.png" alt="Schematische Körpermikroorganismen veranschaulichen Auswirkungen von Antibiotika auf die Biozönose des Menschen und die Auswahl resistenter Bakterien.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-bd5e675f-61cc-593d-913e-383e1d3f8783-description-heading">
+        <p class="section-heading" id="goal-bd5e675f-61cc-593d-913e-383e1d3f8783-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Einsatz von Antibiotika als Eingriff in die Biozönose des Ökosystems Mensch beurteilen und Risiken unsachgemäßer Anwendung erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY, NW:</strong> Sek. I · G9</li><li><strong>RP:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-bd5e675f-61cc-593d-913e-383e1d3f8783" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-bd5e675f-61cc-593d-913e-383e1d3f8783-requires-heading">
+          <p class="section-heading" id="goal-bd5e675f-61cc-593d-913e-383e1d3f8783-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-41467314-3611-5ee3-98c5-f1e8eca2efc2"><span>Bakterielle und virale Infektionen unterscheiden</span><code>41467314-3611-5ee3-98c5-f1e8eca2efc2</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-bd5e675f-61cc-593d-913e-383e1d3f8783-reverse-heading">
+          <p class="section-heading" id="goal-bd5e675f-61cc-593d-913e-383e1d3f8783-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 20 von 20</span>
+      <span>Buch-Digest <code>sha256:948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0cd4156d6cf8733b6dcfde7bc6c822bd3c605cbda1320ffb5e93f3e7ad6f4b76</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-human20-twenty-current391-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=bd5e675f-61cc-593d-913e-383e1d3f8783&amp;goalFingerprint=sha256%3A0cd4156d6cf8733b6dcfde7bc6c822bd3c605cbda1320ffb5e93f3e7ad6f4b76&amp;pageFingerprint=sha256%3A1c9db4e0247193b594758ecdd57f4dc0adc95766aebe750b0e38cc64ad868637&amp;bookDigest=sha256%3A948396d763c40e0851389fdbaf9f5f6de973fd9b49724c433afd67a6b051d94c&amp;page=20" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

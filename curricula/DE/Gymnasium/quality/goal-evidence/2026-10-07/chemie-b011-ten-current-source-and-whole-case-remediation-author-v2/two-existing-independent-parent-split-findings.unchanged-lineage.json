@@ -1,0 +1,84 @@
+{
+  "schemaVersion": 1,
+  "role": "preserve actual A/B split findings on unchanged whole parent descriptions; no historical review restart",
+  "entries": [
+    {
+      "recordPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-04/batch-011-ephase-fuels-energy-current-13-v1/round-a/results/chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-a.batch-001.records.jsonl",
+      "recordLine": 2,
+      "wholeRecord": {
+        "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json",
+        "schemaVersion": 1,
+        "recordId": "chemie-energy13-current-20261005-d-first-pass-a.002",
+        "runId": "chemie-energy13-current-20261005-d-first-pass-a",
+        "campaignId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-a",
+        "roundId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-a",
+        "bundleFingerprint": "sha256:8fc4dbcca9c5f9e45264276a893a3055773c4a728d40c49d1f361af825a208e3",
+        "bookDigest": "sha256:a3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a",
+        "goalId": "8ceb1749-fce0-584f-a2b8-0a309282329a",
+        "goalFingerprint": "sha256:fd439e6043e209dd0c527be4c70810e318d2a0a812e589473802b03a43339e3b",
+        "pageFingerprint": "sha256:a7a5c30aea318d3cb7568db3da905464a973551cac7e41c213e8f3f4181ff387",
+        "currentTitleDe": "Fraktionierung und Cracken erklären",
+        "currentTitleEn": "Explain fractionation and cracking",
+        "currentDescriptionDe": "Die lernende Person kann die fraktionierte Destillation sowie das thermische Cracken qualitativ beschreiben und typische Produkte zuordnen.",
+        "currentDescriptionEn": "The learner can qualitatively describe fractional distillation as well as thermal cracking and assign typical products.",
+        "decision": "split_review",
+        "understandingEvidence": {
+          "essentialUnderstandingDe": "Fraktionierte Destillation trennt vorhandene Moleküle nach unterschiedlichen Siedebereichen; thermisches Cracken verändert ihre Bindungen und bildet andere, meist kürzere Kohlenwasserstoffe.",
+          "essentialUnderstandingEn": "Fractional distillation separates existing molecules by different boiling ranges; thermal cracking changes their bonds and forms different, usually shorter hydrocarbons.",
+          "observablePerformanceDe": "Die lernende Person erklärt für eine vorgelegte Rohölmischung die physikalische Trennung und begründet separat bei einem langen Kohlenwasserstoff die chemische Umwandlung sowie geeignete Produkte.",
+          "observablePerformanceEn": "The learner explains physical separation for a supplied crude-oil mixture and separately justifies chemical conversion of a long hydrocarbon and suitable products.",
+          "transferExpectationDe": "In einer frischen Aufgabe mit verändertem Siedeverhalten und einer unabhängig vorgelegten veränderten Molekülstruktur begründet die lernende Person getrennt die Fraktionszuordnung und die möglichen Crackprodukte.",
+          "transferExpectationEn": "In a fresh task with changed boiling behaviour and a separately supplied changed molecular structure, the learner separately justifies fraction allocation and possible cracking products."
+        },
+        "rationale": "HE E.4#B02A01 nennt beide Verfahren, garantiert aber keine semantische Atomarität. Das aktuelle Ziel fordert zwei unabhängig prüfbare Erklärungsroutinen: Trennung eines Gemischs und Bindungsumbau. Die PDF-Seite zeigt entsprechend zwei eigenständige Panels. Ein bloßes Umformulieren als Vergleich würde die getrennten Leistungen verdecken. Entwicklerprüfung der Zielaufteilung ist nötig; keine Graphänderung wird hier vorgenommen. DE/EN sind äquivalent.",
+        "evidenceProfileContract": "positive-understanding-evidence-v2",
+        "evidenceProfileRecommendation": "create",
+        "recordStatus": "candidate",
+        "reviewAuthority": "ai_candidate"
+      },
+      "wholeRecordSha256": "02bc45848436c7203c83aefa73280b97c4ad2176694ab1067c8e4e0f82c4150a",
+      "sameCurrentWholeDescription": true,
+      "status": "retained genuine prior split finding; historical page/input hashes not promoted to current child approval"
+    },
+    {
+      "recordPath": "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-04/batch-011-ephase-fuels-energy-current-13-v1/round-b/results/chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-b.batch-001.records.jsonl",
+      "recordLine": 2,
+      "wholeRecord": {
+        "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json",
+        "schemaVersion": 1,
+        "recordId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-b.codex-b-20261005-v1.goal-002",
+        "runId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-b.codex-b-20261005-v1",
+        "campaignId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-b",
+        "roundId": "chemie-rollout-v1-batch-011-ephase-fuels-energy-current-13-v1-20261004-first-pass-b",
+        "bundleFingerprint": "sha256:8fc4dbcca9c5f9e45264276a893a3055773c4a728d40c49d1f361af825a208e3",
+        "bookDigest": "sha256:a3c08b0a21961a4e65c65e8b546d00e3fc667964825a90add19c2d6965bba00a",
+        "goalId": "8ceb1749-fce0-584f-a2b8-0a309282329a",
+        "goalFingerprint": "sha256:fd439e6043e209dd0c527be4c70810e318d2a0a812e589473802b03a43339e3b",
+        "pageFingerprint": "sha256:a7a5c30aea318d3cb7568db3da905464a973551cac7e41c213e8f3f4181ff387",
+        "currentTitleDe": "Fraktionierung und Cracken erklären",
+        "currentTitleEn": "Explain fractionation and cracking",
+        "currentDescriptionDe": "Die lernende Person kann die fraktionierte Destillation sowie das thermische Cracken qualitativ beschreiben und typische Produkte zuordnen.",
+        "currentDescriptionEn": "The learner can qualitatively describe fractional distillation as well as thermal cracking and assign typical products.",
+        "decision": "split_review",
+        "understandingEvidence": {
+          "essentialUnderstandingDe": "Fraktionierte Destillation trennt ein bestehendes Kohlenwasserstoffgemisch aufgrund unterschiedlicher Siedebereiche ohne Änderung der Molekülidentität. Thermisches Cracken verändert die Moleküle durch Bindungsumbau und liefert kürzere Kohlenwasserstoffe, darunter Alkene; dies sind zwei unterschiedliche Verfahrenskompetenzen.",
+          "essentialUnderstandingEn": "Fractional distillation separates an existing hydrocarbon mixture by differing boiling ranges without changing molecular identity. Thermal cracking changes molecules through bond rearrangement and yields shorter hydrocarbons, including alkenes; these are two distinct process competencies.",
+          "observablePerformanceDe": "Die Person erklärt selbstständig eine Destillationsverteilung mit Siedebereichen und ordnet passende Fraktionen zu. Davon getrennt begründet sie an einem Modell das Entstehen neuer kürzerer Moleküle beim Cracken und prüft eine mögliche Produktkombination auf Erhaltung der Atome; ein Destillationserfolg belegt den Crackprozess nicht.",
+          "observablePerformanceEn": "The learner independently explains a distillation distribution using boiling ranges and assigns suitable fractions. Separately, they explain from a model why cracking produces new shorter molecules and check a possible product combination for atom conservation; successful distillation work does not establish understanding of cracking.",
+          "transferExpectationDe": "Eine frische Aufgabe verändert die Siedebereichsverteilung des Gemischs; eine weitere unterscheidet sich durch die Struktur des eingesetzten langkettigen Moleküls. Die Person überträgt jeweils die passende Trenn- oder Umwandlungsbegründung, ohne ein gelerntes Raffinerieschema zu kopieren.",
+          "transferExpectationEn": "A fresh task changes the mixture boiling-range distribution; another changes the structure of the long-chain feed molecule. The learner transfers the appropriate separation or transformation explanation in each case without copying a learned refinery scheme."
+        },
+        "rationale": "HE E.4 p36 nennt beide Verfahren in einem Quellenabschnitt, macht sie damit aber nicht semantisch atomar. Der aktuelle Text fordert mit „sowie“ zwei unabhängig prüfbare Routinen; Trennung über Siedebereiche und chemischer Bindungsumbau können unabhängig beherrscht oder verfehlt werden. Die fachlich passende Gegenüberstellung im Bild belegt ebenfalls zwei Verfahren. AGENTS 7.1 verlangt eine fachliche Split-Prüfung; eine bloße sprachliche Überarbeitung würde diese Entscheidung verdecken.",
+        "evidenceProfileContract": "positive-understanding-evidence-v2",
+        "evidenceProfileRecommendation": "create",
+        "recordStatus": "candidate",
+        "reviewAuthority": "ai_candidate"
+      },
+      "wholeRecordSha256": "27d502bb5e0c7e6620c98339f0ee977168d2974c129442114f35c8fab839387b",
+      "sameCurrentWholeDescription": true,
+      "status": "retained genuine prior split finding; historical page/input hashes not promoted to current child approval"
+    }
+  ],
+  "newChildDescriptionApprovals": 0,
+  "currentPageBindingClaimed": false
+}

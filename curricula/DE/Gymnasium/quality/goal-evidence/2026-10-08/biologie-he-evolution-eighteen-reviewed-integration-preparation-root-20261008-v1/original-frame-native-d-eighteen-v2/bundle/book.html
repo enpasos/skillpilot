@@ -1,0 +1,1087 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Biologie: Evolutionsbelege, Artbildung und Evolutionstheorie</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Biologie: Evolutionsbelege, Artbildung und Evolutionstheorie</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>18 atomare Lernziele</dt><dd>8 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:cdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-4f5d4296002eb1bc70a26646" aria-label="Biologie"><a href="#goal-0f4f3635-c0e9-517c-9a9d-1635b0d5fab5"><span class="toc-entry-label">Biologie</span></a></h2>
+          <span class="toc-entry-meta"><span>18 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-2b4d73a61ba32a62c1aca0be" aria-label="Genetik und Gentechnik"><a href="#goal-0f4f3635-c0e9-517c-9a9d-1635b0d5fab5"><span class="toc-entry-label">Genetik&#160;<wbr>und&#160;<wbr>Gentechnik</span></a></h3>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-goal-9eb03a1e-33e2-5a40-9307-7769d5df08e9" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-e13767e8a6e9184b494e2aa5" aria-label="Q1.1 Speicherung und Realisierung genetischer Information"><a href="#goal-0f4f3635-c0e9-517c-9a9d-1635b0d5fab5"><span class="toc-entry-label">Q1.1&#160;<wbr>Speicherung&#160;<wbr>und&#160;<wbr>Realisierung&#160;<wbr>genetischer&#160;<wbr>Information</span></a></h4>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-d23951c2-4791-5a91-a2de-b72a421a4536" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-b40435c085e780f38f107231" aria-label="Evolution &amp; Neurobiologie"><a href="#goal-7008979d-7890-5f7b-ad07-27b8bb597cbe"><span class="toc-entry-label">Evolution&#160;<wbr>&amp;&#160;<wbr>Neurobiologie</span></a></h3>
+          <span class="toc-entry-meta"><span>12 Lernziele</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-goal-bc6c8751-d761-5a5b-97ef-65e3b88ba866" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-ed07d497952ab6fa9a59c373" aria-label="Q2.1 Entstehung und Entwicklung des Lebens"><a href="#goal-7008979d-7890-5f7b-ad07-27b8bb597cbe"><span class="toc-entry-label">Q2.1&#160;<wbr>Entstehung&#160;<wbr>und&#160;<wbr>Entwicklung&#160;<wbr>des&#160;<wbr>Lebens</span></a></h4>
+          <span class="toc-entry-meta"><span>8 Lernziele</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-goal-cdb64924-1832-5036-b051-6dfcbbd98edf" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-191f12d0c0a5a9e7254989cb" aria-label="Q2.2 Spannungsfeld Evolutionstheorie"><a href="#goal-934d496d-eda4-5835-96d6-389885b93a51"><span class="toc-entry-label">Q2.2&#160;<wbr>Spannungsfeld&#160;<wbr>Evolutionstheorie</span></a></h4>
+          <span class="toc-entry-meta"><span>4 Lernziele</span><span>erste zugehörige Lernzielseite 12</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-cbde2ff0-3488-55ef-a652-e0c0aa7937cb" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-01ead4a4815786785794c07b" aria-label="Ökologie &amp; Stoffwechsel"><a href="#goal-34b06272-e997-59af-b12b-0a5e05d7d45f"><span class="toc-entry-label">Ökologie&#160;<wbr>&amp;&#160;<wbr>Stoffwechsel</span></a></h3>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 16</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-goal-b9a070f6-cc8b-5d84-b226-bb14223670e1" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-739bef587be9dbd92186bdd1" aria-label="Q3.3 Anpassungen an die Umwelt"><a href="#goal-34b06272-e997-59af-b12b-0a5e05d7d45f"><span class="toc-entry-label">Q3.3&#160;<wbr>Anpassungen&#160;<wbr>an&#160;<wbr>die&#160;<wbr>Umwelt</span></a></h4>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 16</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-0f4f3635-c0e9-517c-9a9d-1635b0d5fab5" data-goal-id="0f4f3635-c0e9-517c-9a9d-1635b0d5fab5" data-page-number="1" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b structure:canonical-goal-9eb03a1e-33e2-5a40-9307-7769d5df08e9" aria-labelledby="goal-0f4f3635-c0e9-517c-9a9d-1635b0d5fab5-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-0f4f3635-c0e9-517c-9a9d-1635b0d5fab5-title"><a class="goal-self-link" href="#goal-0f4f3635-c0e9-517c-9a9d-1635b0d5fab5">Populationsgenetik Grundlagen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0f4f3635-c0e9-517c-9a9d-1635b0d5fab5</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-2b4d73a61ba32a62c1aca0be">Genetik und Gentechnik</a></li><li><a href="#chapter-e13767e8a6e9184b494e2aa5">Q1.1 Speicherung und Realisierung genetischer Information</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:bff45a379ea7d50160f682e3a08911828c87b50344b9ec7a9f4dcbc06393e5c0" data-rendered-digest="sha256:73fcf9194be5125ed23d94211c97840ae3a30e7fe5e4a4b904a7c3451679734d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/0f4f3635-c0e9-517c-9a9d-1635b0d5fab5/0f4f3635-c0e9-517c-9a9d-1635b0d5fab5.png" alt="Lernzielillustration: Populationsgenetik Grundlagen">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0f4f3635-c0e9-517c-9a9d-1635b0d5fab5-description-heading">
+        <p class="section-heading" id="goal-0f4f3635-c0e9-517c-9a9d-1635b0d5fab5-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Allelfrequenzen und Populationen als genetische Systeme beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li><li><strong>SH:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-0f4f3635-c0e9-517c-9a9d-1635b0d5fab5" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0f4f3635-c0e9-517c-9a9d-1635b0d5fab5-requires-heading">
+          <p class="section-heading" id="goal-0f4f3635-c0e9-517c-9a9d-1635b0d5fab5-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-0f4f3635-c0e9-517c-9a9d-1635b0d5fab5-reverse-heading">
+          <p class="section-heading" id="goal-0f4f3635-c0e9-517c-9a9d-1635b0d5fab5-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-3accc03b-3daf-5119-9f33-93af6f709919"><span>Hardy-Weinberg anwenden</span><code>3accc03b-3daf-5119-9f33-93af6f709919</code><span class="reference-page">S. 2</span></a></li><li><a href="#goal-05a4f839-6b10-581e-a942-ba4497e6a279"><span>Genetische Drift und Flaschenhälse</span><code>05a4f839-6b10-581e-a942-ba4497e6a279</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-0f4f3635-c0e9-517c-9a9d-1635b0d5fab5-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0f4f3635-c0e9-517c-9a9d-1635b0d5fab5-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-ffef97e3-12d6-5090-9816-46ab9e57fae2" rel="noreferrer noopener"><span>Genmutationen analysieren</span> <code>ffef97e3-12d6-5090-9816-46ab9e57fae2</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-0f4f3635-c0e9-517c-9a9d-1635b0d5fab5-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0f4f3635-c0e9-517c-9a9d-1635b0d5fab5-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-e5f97788-c2ac-5f42-b5a5-55605b563a79" rel="noreferrer noopener"><span>Genfluss und Migration</span> <code>e5f97788-c2ac-5f42-b5a5-55605b563a79</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 18</span>
+      <span>Buch-Digest <code>sha256:cdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b2eab558779bc99a2aaaccb32e7914fe867a9284270e77f8e1b7e290d5d56baa</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he-evolution-eighteen-current392-raster-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=0f4f3635-c0e9-517c-9a9d-1635b0d5fab5&amp;goalFingerprint=sha256%3Ab2eab558779bc99a2aaaccb32e7914fe867a9284270e77f8e1b7e290d5d56baa&amp;pageFingerprint=sha256%3A04a68fad106ace8f16caa33b6985d0ce6b36373fe261e16fb42b68066a4e5ba6&amp;bookDigest=sha256%3Acdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3accc03b-3daf-5119-9f33-93af6f709919" data-goal-id="3accc03b-3daf-5119-9f33-93af6f709919" data-page-number="2" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b structure:canonical-goal-9eb03a1e-33e2-5a40-9307-7769d5df08e9" aria-labelledby="goal-3accc03b-3daf-5119-9f33-93af6f709919-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-3accc03b-3daf-5119-9f33-93af6f709919-title"><a class="goal-self-link" href="#goal-3accc03b-3daf-5119-9f33-93af6f709919">Hardy-Weinberg anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3accc03b-3daf-5119-9f33-93af6f709919</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-2b4d73a61ba32a62c1aca0be">Genetik und Gentechnik</a></li><li><a href="#chapter-e13767e8a6e9184b494e2aa5">Q1.1 Speicherung und Realisierung genetischer Information</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3620d93659e0b40f25aa9e6f35c4c9a5967946f339731eeb62c14993cf4bc8f1" data-rendered-digest="sha256:bb00f2c119c1bf9bfd11da6b149ebb732ef691f33b595b54cd43dadb69a83c9f" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/3accc03b-3daf-5119-9f33-93af6f709919/3accc03b-3daf-5119-9f33-93af6f709919.png" alt="Lernzielillustration: Hardy-Weinberg anwenden">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3accc03b-3daf-5119-9f33-93af6f709919-description-heading">
+        <p class="section-heading" id="goal-3accc03b-3daf-5119-9f33-93af6f709919-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Hardy-Weinberg-Gleichgewichte berechnen und Abweichungen interpretieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-3accc03b-3daf-5119-9f33-93af6f709919" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3accc03b-3daf-5119-9f33-93af6f709919-requires-heading">
+          <p class="section-heading" id="goal-3accc03b-3daf-5119-9f33-93af6f709919-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-0f4f3635-c0e9-517c-9a9d-1635b0d5fab5"><span>Populationsgenetik Grundlagen</span><code>0f4f3635-c0e9-517c-9a9d-1635b0d5fab5</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-3accc03b-3daf-5119-9f33-93af6f709919-reverse-heading">
+          <p class="section-heading" id="goal-3accc03b-3daf-5119-9f33-93af6f709919-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-3accc03b-3daf-5119-9f33-93af6f709919-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3accc03b-3daf-5119-9f33-93af6f709919-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-3accc03b-3daf-5119-9f33-93af6f709919-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3accc03b-3daf-5119-9f33-93af6f709919-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 18</span>
+      <span>Buch-Digest <code>sha256:cdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:357d517c7ef480d20e403c7f0d995a620fd5b973f019553227ab2d2fda887be0</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he-evolution-eighteen-current392-raster-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=3accc03b-3daf-5119-9f33-93af6f709919&amp;goalFingerprint=sha256%3A357d517c7ef480d20e403c7f0d995a620fd5b973f019553227ab2d2fda887be0&amp;pageFingerprint=sha256%3Aeb7d53a4b3e2ec08274da318a1b2d6d32adb12503a9b82fd9e511b9de9e93ad6&amp;bookDigest=sha256%3Acdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-05a4f839-6b10-581e-a942-ba4497e6a279" data-goal-id="05a4f839-6b10-581e-a942-ba4497e6a279" data-page-number="3" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b structure:canonical-goal-9eb03a1e-33e2-5a40-9307-7769d5df08e9" aria-labelledby="goal-05a4f839-6b10-581e-a942-ba4497e6a279-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-05a4f839-6b10-581e-a942-ba4497e6a279-title"><a class="goal-self-link" href="#goal-05a4f839-6b10-581e-a942-ba4497e6a279">Genetische Drift und Flaschenhälse</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>05a4f839-6b10-581e-a942-ba4497e6a279</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-2b4d73a61ba32a62c1aca0be">Genetik und Gentechnik</a></li><li><a href="#chapter-e13767e8a6e9184b494e2aa5">Q1.1 Speicherung und Realisierung genetischer Information</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b374a616c6d6735ba940f6b2530d67bbdf9803bb885b9a04b3e29705b8bfc0b7" data-rendered-digest="sha256:5c38582e7600edfc80f37cb83ab5e1c2f531c2411e3d2f3d28be7c03b4436209" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/05a4f839-6b10-581e-a942-ba4497e6a279/05a4f839-6b10-581e-a942-ba4497e6a279.png" alt="Lernzielillustration: Genetische Drift und Flaschenhälse">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-05a4f839-6b10-581e-a942-ba4497e6a279-description-heading">
+        <p class="section-heading" id="goal-05a4f839-6b10-581e-a942-ba4497e6a279-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Drift, Flaschenhals- und Gründereffekte erklären und berechnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-05a4f839-6b10-581e-a942-ba4497e6a279" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-05a4f839-6b10-581e-a942-ba4497e6a279-requires-heading">
+          <p class="section-heading" id="goal-05a4f839-6b10-581e-a942-ba4497e6a279-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-0f4f3635-c0e9-517c-9a9d-1635b0d5fab5"><span>Populationsgenetik Grundlagen</span><code>0f4f3635-c0e9-517c-9a9d-1635b0d5fab5</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-05a4f839-6b10-581e-a942-ba4497e6a279-reverse-heading">
+          <p class="section-heading" id="goal-05a4f839-6b10-581e-a942-ba4497e6a279-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-05a4f839-6b10-581e-a942-ba4497e6a279-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-05a4f839-6b10-581e-a942-ba4497e6a279-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-05a4f839-6b10-581e-a942-ba4497e6a279-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-05a4f839-6b10-581e-a942-ba4497e6a279-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 18</span>
+      <span>Buch-Digest <code>sha256:cdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:97c257ccd525a54854b29d21ce8122f78a0bd53f20f825e7d0e5e4b15dfe9903</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he-evolution-eighteen-current392-raster-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=05a4f839-6b10-581e-a942-ba4497e6a279&amp;goalFingerprint=sha256%3A97c257ccd525a54854b29d21ce8122f78a0bd53f20f825e7d0e5e4b15dfe9903&amp;pageFingerprint=sha256%3A31792ba16890ec3e942a63ed670fb157e23950e5162aa3a9e62e31aa9071b37f&amp;bookDigest=sha256%3Acdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-7008979d-7890-5f7b-ad07-27b8bb597cbe" data-goal-id="7008979d-7890-5f7b-ad07-27b8bb597cbe" data-page-number="4" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-d23951c2-4791-5a91-a2de-b72a421a4536 structure:canonical-goal-bc6c8751-d761-5a5b-97ef-65e3b88ba866" aria-labelledby="goal-7008979d-7890-5f7b-ad07-27b8bb597cbe-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-7008979d-7890-5f7b-ad07-27b8bb597cbe-title"><a class="goal-self-link" href="#goal-7008979d-7890-5f7b-ad07-27b8bb597cbe">Evolutionsbelege bewerten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>7008979d-7890-5f7b-ad07-27b8bb597cbe</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-b40435c085e780f38f107231">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-ed07d497952ab6fa9a59c373">Q2.1 Entstehung und Entwicklung des Lebens</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:bfc186962afc35d8e9ec40ef4feb1d38f14ee8e442995c454c0f9c2d7895156b" data-rendered-digest="sha256:dc4d28c2097c76f018bb394bed781d4a632d71d2940617851305cb2661788ea8" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/7008979d-7890-5f7b-ad07-27b8bb597cbe/7008979d-7890-5f7b-ad07-27b8bb597cbe.png" alt="Lernzielillustration: Evolutionsbelege bewerten">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-7008979d-7890-5f7b-ad07-27b8bb597cbe-description-heading">
+        <p class="section-heading" id="goal-7008979d-7890-5f7b-ad07-27b8bb597cbe-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Fossilien, Homologien und Endosymbiontentheorie als Belege nutzen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NW:</strong> Sek. I · G9</li><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-7008979d-7890-5f7b-ad07-27b8bb597cbe" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-7008979d-7890-5f7b-ad07-27b8bb597cbe-requires-heading">
+          <p class="section-heading" id="goal-7008979d-7890-5f7b-ad07-27b8bb597cbe-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-7008979d-7890-5f7b-ad07-27b8bb597cbe-reverse-heading">
+          <p class="section-heading" id="goal-7008979d-7890-5f7b-ad07-27b8bb597cbe-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-002543f9-2d14-5c57-99b4-fb4bf7e53734"><span>Artbildungsmechanismen erklären</span><code>002543f9-2d14-5c57-99b4-fb4bf7e53734</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-80b42b5f-4b20-5035-907f-974a4a88618b"><span>Molekulare Uhren anwenden</span><code>80b42b5f-4b20-5035-907f-974a4a88618b</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-7008979d-7890-5f7b-ad07-27b8bb597cbe-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7008979d-7890-5f7b-ad07-27b8bb597cbe-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-7008979d-7890-5f7b-ad07-27b8bb597cbe-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7008979d-7890-5f7b-ad07-27b8bb597cbe-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-e3167331-f855-5030-9673-29f55a7b4230" rel="noreferrer noopener"><span>Fossildaten und Datierung</span> <code>e3167331-f855-5030-9673-29f55a7b4230</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-9dff0360-c2e9-5e43-af8b-87e264281cf7" rel="noreferrer noopener"><span>Systematikansätze vergleichen und beurteilen</span> <code>9dff0360-c2e9-5e43-af8b-87e264281cf7</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 18</span>
+      <span>Buch-Digest <code>sha256:cdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a0665f7dfa9784e0aa6a63167605041a4005a68a862d4cad668bf3bb789b7119</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he-evolution-eighteen-current392-raster-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=7008979d-7890-5f7b-ad07-27b8bb597cbe&amp;goalFingerprint=sha256%3Aa0665f7dfa9784e0aa6a63167605041a4005a68a862d4cad668bf3bb789b7119&amp;pageFingerprint=sha256%3A7e5885434ae8358ee4e765f09d2c7ce5abe78b6b04bce3a3c994c3210b3de2d1&amp;bookDigest=sha256%3Acdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-002543f9-2d14-5c57-99b4-fb4bf7e53734" data-goal-id="002543f9-2d14-5c57-99b4-fb4bf7e53734" data-page-number="5" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-d23951c2-4791-5a91-a2de-b72a421a4536 structure:canonical-goal-bc6c8751-d761-5a5b-97ef-65e3b88ba866" aria-labelledby="goal-002543f9-2d14-5c57-99b4-fb4bf7e53734-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-002543f9-2d14-5c57-99b4-fb4bf7e53734-title"><a class="goal-self-link" href="#goal-002543f9-2d14-5c57-99b4-fb4bf7e53734">Artbildungsmechanismen erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>002543f9-2d14-5c57-99b4-fb4bf7e53734</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-b40435c085e780f38f107231">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-ed07d497952ab6fa9a59c373">Q2.1 Entstehung und Entwicklung des Lebens</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a5520890eba581209ac2607892dbfcf895e41021a499abe878c3d08e02b3d0f0" data-rendered-digest="sha256:acbd551904ad0071d75dcb63d9debbbeb9c39438fabc8ca9a32bfd1f67a9e9be" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/002543f9-2d14-5c57-99b4-fb4bf7e53734/002543f9-2d14-5c57-99b4-fb4bf7e53734.png" alt="Lernzielillustration: Artbildungsmechanismen erklären">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-002543f9-2d14-5c57-99b4-fb4bf7e53734-description-heading">
+        <p class="section-heading" id="goal-002543f9-2d14-5c57-99b4-fb4bf7e53734-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann allopatrische vs. sympatrische Artbildung erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW:</strong> Sek. I · G9</li><li><strong>HE:</strong> Sek. II · GK; Sek. II · LK</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-002543f9-2d14-5c57-99b4-fb4bf7e53734" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-002543f9-2d14-5c57-99b4-fb4bf7e53734-requires-heading">
+          <p class="section-heading" id="goal-002543f9-2d14-5c57-99b4-fb4bf7e53734-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-7008979d-7890-5f7b-ad07-27b8bb597cbe"><span>Evolutionsbelege bewerten</span><code>7008979d-7890-5f7b-ad07-27b8bb597cbe</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-002543f9-2d14-5c57-99b4-fb4bf7e53734-reverse-heading">
+          <p class="section-heading" id="goal-002543f9-2d14-5c57-99b4-fb4bf7e53734-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-302c6d6d-bf10-5dbc-adda-65e4b5c63e49"><span>Evolution des Menschen nachvollziehen</span><code>302c6d6d-bf10-5dbc-adda-65e4b5c63e49</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-c5ffd083-2596-5726-ac1c-a8e2c06c1139"><span>Mechanismen der Artbildung vertiefen</span><code>c5ffd083-2596-5726-ac1c-a8e2c06c1139</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-002543f9-2d14-5c57-99b4-fb4bf7e53734-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-002543f9-2d14-5c57-99b4-fb4bf7e53734-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-002543f9-2d14-5c57-99b4-fb4bf7e53734-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-002543f9-2d14-5c57-99b4-fb4bf7e53734-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-435961b5-b02b-581c-b113-7368df2a44a9" rel="noreferrer noopener"><span>Synthetische Evolutionstheorie auf Biodiversität und Artbildung anwenden</span> <code>435961b5-b02b-581c-b113-7368df2a44a9</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-ac40db32-5dc7-5c43-8771-bf805d24aa3b" rel="noreferrer noopener"><span>Theorien vergleichen</span> <code>ac40db32-5dc7-5c43-8771-bf805d24aa3b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-ea5d75af-d97f-593a-bea4-722a41d12eb8" rel="noreferrer noopener"><span>Trophische Beziehungen erklären</span> <code>ea5d75af-d97f-593a-bea4-722a41d12eb8</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 18</span>
+      <span>Buch-Digest <code>sha256:cdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e2dd0874dd7222fde787413b01bde8ef723bc0bdb8f97c45ddc720ef15173f31</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he-evolution-eighteen-current392-raster-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=002543f9-2d14-5c57-99b4-fb4bf7e53734&amp;goalFingerprint=sha256%3Ae2dd0874dd7222fde787413b01bde8ef723bc0bdb8f97c45ddc720ef15173f31&amp;pageFingerprint=sha256%3Abea42c5988725dd5d1a71a7d63b6c2371929a6769920e25e7830e4f97ba51a56&amp;bookDigest=sha256%3Acdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-302c6d6d-bf10-5dbc-adda-65e4b5c63e49" data-goal-id="302c6d6d-bf10-5dbc-adda-65e4b5c63e49" data-page-number="6" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-d23951c2-4791-5a91-a2de-b72a421a4536 structure:canonical-goal-bc6c8751-d761-5a5b-97ef-65e3b88ba866" aria-labelledby="goal-302c6d6d-bf10-5dbc-adda-65e4b5c63e49-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-302c6d6d-bf10-5dbc-adda-65e4b5c63e49-title"><a class="goal-self-link" href="#goal-302c6d6d-bf10-5dbc-adda-65e4b5c63e49">Evolution des Menschen nachvollziehen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>302c6d6d-bf10-5dbc-adda-65e4b5c63e49</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-b40435c085e780f38f107231">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-ed07d497952ab6fa9a59c373">Q2.1 Entstehung und Entwicklung des Lebens</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c0b002500e990a4a5e164a990e9e4969d4a0a4ae76c93430e56c2b92489d1b48" data-rendered-digest="sha256:473e531aa4e1254165afbd18c6bc447d6b38032180825b7e68c1dfc4879d2e8d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/302c6d6d-bf10-5dbc-adda-65e4b5c63e49/302c6d6d-bf10-5dbc-adda-65e4b5c63e49.png" alt="Lernzielillustration: Evolution des Menschen nachvollziehen">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-302c6d6d-bf10-5dbc-adda-65e4b5c63e49-description-heading">
+        <p class="section-heading" id="goal-302c6d6d-bf10-5dbc-adda-65e4b5c63e49-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Fossilgeschichte, hypothetische Stammbäume und Verbreitung des modernen Menschen beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HE:</strong> Sek. II · LK</li><li><strong>HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-302c6d6d-bf10-5dbc-adda-65e4b5c63e49" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-302c6d6d-bf10-5dbc-adda-65e4b5c63e49-requires-heading">
+          <p class="section-heading" id="goal-302c6d6d-bf10-5dbc-adda-65e4b5c63e49-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-002543f9-2d14-5c57-99b4-fb4bf7e53734"><span>Artbildungsmechanismen erklären</span><code>002543f9-2d14-5c57-99b4-fb4bf7e53734</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-302c6d6d-bf10-5dbc-adda-65e4b5c63e49-reverse-heading">
+          <p class="section-heading" id="goal-302c6d6d-bf10-5dbc-adda-65e4b5c63e49-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-0c999ebb-b4cb-5da3-90a1-69e3c6614db1"><span>Kulturelle Evolution analysieren</span><code>0c999ebb-b4cb-5da3-90a1-69e3c6614db1</code><span class="reference-page">S. 7</span></a></li><li><a href="#goal-a305bb18-69a3-5d92-9cfa-abf94b2eb051"><span>Sozialverhalten von Primaten untersuchen</span><code>a305bb18-69a3-5d92-9cfa-abf94b2eb051</code><span class="reference-page">S. 8</span></a></li><li><a href="#goal-3718c6fe-0b58-5ff7-996c-25ca45b609d2"><span>Menschliche Evolution vertiefen</span><code>3718c6fe-0b58-5ff7-996c-25ca45b609d2</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-302c6d6d-bf10-5dbc-adda-65e4b5c63e49-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-302c6d6d-bf10-5dbc-adda-65e4b5c63e49-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-302c6d6d-bf10-5dbc-adda-65e4b5c63e49-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-302c6d6d-bf10-5dbc-adda-65e4b5c63e49-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1e78d6eb-1f49-59c1-9617-6ea445d3fe65" rel="noreferrer noopener"><span>Synthetische Evolutionstheorie auf Biodiversität und Primaten anwenden</span> <code>1e78d6eb-1f49-59c1-9617-6ea445d3fe65</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 18</span>
+      <span>Buch-Digest <code>sha256:cdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ee817adf68a27e104569b9fcef5a52dfdd48cb968b25f10c523757698aa070d8</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he-evolution-eighteen-current392-raster-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=302c6d6d-bf10-5dbc-adda-65e4b5c63e49&amp;goalFingerprint=sha256%3Aee817adf68a27e104569b9fcef5a52dfdd48cb968b25f10c523757698aa070d8&amp;pageFingerprint=sha256%3A4af388eeb5b69aaa78e0d8dc04326ff75dda02725c4ff004cfc5661249737e5c&amp;bookDigest=sha256%3Acdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0c999ebb-b4cb-5da3-90a1-69e3c6614db1" data-goal-id="0c999ebb-b4cb-5da3-90a1-69e3c6614db1" data-page-number="7" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-d23951c2-4791-5a91-a2de-b72a421a4536 structure:canonical-goal-bc6c8751-d761-5a5b-97ef-65e3b88ba866" aria-labelledby="goal-0c999ebb-b4cb-5da3-90a1-69e3c6614db1-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-0c999ebb-b4cb-5da3-90a1-69e3c6614db1-title"><a class="goal-self-link" href="#goal-0c999ebb-b4cb-5da3-90a1-69e3c6614db1">Kulturelle Evolution analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0c999ebb-b4cb-5da3-90a1-69e3c6614db1</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-b40435c085e780f38f107231">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-ed07d497952ab6fa9a59c373">Q2.1 Entstehung und Entwicklung des Lebens</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:18eb6d567635da698424eff0145391c5ee2b9a57cc3298a070348bb402bee6f4" data-rendered-digest="sha256:84dc68182597339bd3c469adb3fcd377fb0f6d461d7389ce99b52d823289c7fe" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/0c999ebb-b4cb-5da3-90a1-69e3c6614db1/0c999ebb-b4cb-5da3-90a1-69e3c6614db1.png" alt="Lernzielillustration: Kulturelle Evolution analysieren">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0c999ebb-b4cb-5da3-90a1-69e3c6614db1-description-heading">
+        <p class="section-heading" id="goal-0c999ebb-b4cb-5da3-90a1-69e3c6614db1-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Bedeutung von Werkzeuggebrauch und Sprachentwicklung darstellen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · LK</li><li><strong>MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-0c999ebb-b4cb-5da3-90a1-69e3c6614db1" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0c999ebb-b4cb-5da3-90a1-69e3c6614db1-requires-heading">
+          <p class="section-heading" id="goal-0c999ebb-b4cb-5da3-90a1-69e3c6614db1-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-302c6d6d-bf10-5dbc-adda-65e4b5c63e49"><span>Evolution des Menschen nachvollziehen</span><code>302c6d6d-bf10-5dbc-adda-65e4b5c63e49</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-0c999ebb-b4cb-5da3-90a1-69e3c6614db1-reverse-heading">
+          <p class="section-heading" id="goal-0c999ebb-b4cb-5da3-90a1-69e3c6614db1-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-0c999ebb-b4cb-5da3-90a1-69e3c6614db1-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0c999ebb-b4cb-5da3-90a1-69e3c6614db1-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-0c999ebb-b4cb-5da3-90a1-69e3c6614db1-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0c999ebb-b4cb-5da3-90a1-69e3c6614db1-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-c2f8c542-9386-5a18-bf7e-52698b932242" rel="noreferrer noopener"><span>Kulturelle Evolution als Selektionsvorteil erklären</span> <code>c2f8c542-9386-5a18-bf7e-52698b932242</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 18</span>
+      <span>Buch-Digest <code>sha256:cdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e10e53aaec403b9e264ffeb809baef48cb2311b8b15961f84b99e6bc16dc1e3c</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he-evolution-eighteen-current392-raster-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=0c999ebb-b4cb-5da3-90a1-69e3c6614db1&amp;goalFingerprint=sha256%3Ae10e53aaec403b9e264ffeb809baef48cb2311b8b15961f84b99e6bc16dc1e3c&amp;pageFingerprint=sha256%3A509c7fb364d0dfd28e4956df8c17f824464c195e4e87d3adc635c027f998758f&amp;bookDigest=sha256%3Acdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a305bb18-69a3-5d92-9cfa-abf94b2eb051" data-goal-id="a305bb18-69a3-5d92-9cfa-abf94b2eb051" data-page-number="8" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-d23951c2-4791-5a91-a2de-b72a421a4536 structure:canonical-goal-bc6c8751-d761-5a5b-97ef-65e3b88ba866" aria-labelledby="goal-a305bb18-69a3-5d92-9cfa-abf94b2eb051-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a305bb18-69a3-5d92-9cfa-abf94b2eb051-title"><a class="goal-self-link" href="#goal-a305bb18-69a3-5d92-9cfa-abf94b2eb051">Sozialverhalten von Primaten untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a305bb18-69a3-5d92-9cfa-abf94b2eb051</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-b40435c085e780f38f107231">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-ed07d497952ab6fa9a59c373">Q2.1 Entstehung und Entwicklung des Lebens</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:667b393197ecaee231d7eb8659a9abf5385df2a7304b5e37682bf37a1e76c779" data-rendered-digest="sha256:b33b9aa035464161d656f6976af75b4d2a667735c899c8816ce71471fb90eefd" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/a305bb18-69a3-5d92-9cfa-abf94b2eb051/a305bb18-69a3-5d92-9cfa-abf94b2eb051.png" alt="Lernzielillustration: Sozialverhalten von Primaten untersuchen">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a305bb18-69a3-5d92-9cfa-abf94b2eb051-description-heading">
+        <p class="section-heading" id="goal-a305bb18-69a3-5d92-9cfa-abf94b2eb051-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann exogene und endogene Ursachen sozialen Verhaltens bei Primaten erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-a305bb18-69a3-5d92-9cfa-abf94b2eb051" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a305bb18-69a3-5d92-9cfa-abf94b2eb051-requires-heading">
+          <p class="section-heading" id="goal-a305bb18-69a3-5d92-9cfa-abf94b2eb051-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-302c6d6d-bf10-5dbc-adda-65e4b5c63e49"><span>Evolution des Menschen nachvollziehen</span><code>302c6d6d-bf10-5dbc-adda-65e4b5c63e49</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a305bb18-69a3-5d92-9cfa-abf94b2eb051-reverse-heading">
+          <p class="section-heading" id="goal-a305bb18-69a3-5d92-9cfa-abf94b2eb051-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-a305bb18-69a3-5d92-9cfa-abf94b2eb051-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a305bb18-69a3-5d92-9cfa-abf94b2eb051-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-a305bb18-69a3-5d92-9cfa-abf94b2eb051-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a305bb18-69a3-5d92-9cfa-abf94b2eb051-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-691403ae-b19d-5d9b-bcff-94bb4324d096" rel="noreferrer noopener"><span>Vorschlag D (LK) - Agrarlandschaft zwischen Bestaeuberverhalten, Genpool und Biodiversitaetsmanagement</span> <code>691403ae-b19d-5d9b-bcff-94bb4324d096</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-89b627cd-ee66-5bd2-9c24-c513ec2f8560" rel="noreferrer noopener"><span>Primaten-Sozialverhalten für menschliches Verhalten kritisch analysieren</span> <code>89b627cd-ee66-5bd2-9c24-c513ec2f8560</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 18</span>
+      <span>Buch-Digest <code>sha256:cdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ae22ea4997b9412f7cdcc80fb5cbe497a01b70e9390b129b9c9f4e790717666c</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he-evolution-eighteen-current392-raster-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=a305bb18-69a3-5d92-9cfa-abf94b2eb051&amp;goalFingerprint=sha256%3Aae22ea4997b9412f7cdcc80fb5cbe497a01b70e9390b129b9c9f4e790717666c&amp;pageFingerprint=sha256%3A2c87509dffcffbc21a6229a4ea453cc875c2331bee1eb394f9dbb024d8fc2a27&amp;bookDigest=sha256%3Acdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c5ffd083-2596-5726-ac1c-a8e2c06c1139" data-goal-id="c5ffd083-2596-5726-ac1c-a8e2c06c1139" data-page-number="9" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-d23951c2-4791-5a91-a2de-b72a421a4536 structure:canonical-goal-bc6c8751-d761-5a5b-97ef-65e3b88ba866" aria-labelledby="goal-c5ffd083-2596-5726-ac1c-a8e2c06c1139-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c5ffd083-2596-5726-ac1c-a8e2c06c1139-title"><a class="goal-self-link" href="#goal-c5ffd083-2596-5726-ac1c-a8e2c06c1139">Mechanismen der Artbildung vertiefen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c5ffd083-2596-5726-ac1c-a8e2c06c1139</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-b40435c085e780f38f107231">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-ed07d497952ab6fa9a59c373">Q2.1 Entstehung und Entwicklung des Lebens</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:be077c8650e2d7a50b79bb8d2e1325848d7318d66ae4272e5d36f7d4d90c47ac" data-rendered-digest="sha256:e09cfbea72c0db9bc2d0ced90c6c3328bf7a835bfad0fc14143ab3b62c5c677b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/c5ffd083-2596-5726-ac1c-a8e2c06c1139/c5ffd083-2596-5726-ac1c-a8e2c06c1139.png" alt="Lernzielillustration: Mechanismen der Artbildung vertiefen">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c5ffd083-2596-5726-ac1c-a8e2c06c1139-description-heading">
+        <p class="section-heading" id="goal-c5ffd083-2596-5726-ac1c-a8e2c06c1139-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann sympatrische/allopatrische Artbildungsmechanismen und Hybridisierung vergleichen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-c5ffd083-2596-5726-ac1c-a8e2c06c1139" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c5ffd083-2596-5726-ac1c-a8e2c06c1139-requires-heading">
+          <p class="section-heading" id="goal-c5ffd083-2596-5726-ac1c-a8e2c06c1139-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-002543f9-2d14-5c57-99b4-fb4bf7e53734"><span>Artbildungsmechanismen erklären</span><code>002543f9-2d14-5c57-99b4-fb4bf7e53734</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-c5ffd083-2596-5726-ac1c-a8e2c06c1139-reverse-heading">
+          <p class="section-heading" id="goal-c5ffd083-2596-5726-ac1c-a8e2c06c1139-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-c5ffd083-2596-5726-ac1c-a8e2c06c1139-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c5ffd083-2596-5726-ac1c-a8e2c06c1139-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-c5ffd083-2596-5726-ac1c-a8e2c06c1139-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c5ffd083-2596-5726-ac1c-a8e2c06c1139-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 18</span>
+      <span>Buch-Digest <code>sha256:cdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:f0d0664b92810cb87c3b386955758afeaec23f766b971263687b2a739cd33dc3</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he-evolution-eighteen-current392-raster-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=c5ffd083-2596-5726-ac1c-a8e2c06c1139&amp;goalFingerprint=sha256%3Af0d0664b92810cb87c3b386955758afeaec23f766b971263687b2a739cd33dc3&amp;pageFingerprint=sha256%3A8378aabb7e7386dfbe9a4f3ba40efdc72ca5062c99c029183c38c6d12be2fba7&amp;bookDigest=sha256%3Acdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-80b42b5f-4b20-5035-907f-974a4a88618b" data-goal-id="80b42b5f-4b20-5035-907f-974a4a88618b" data-page-number="10" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-d23951c2-4791-5a91-a2de-b72a421a4536 structure:canonical-goal-bc6c8751-d761-5a5b-97ef-65e3b88ba866" aria-labelledby="goal-80b42b5f-4b20-5035-907f-974a4a88618b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-80b42b5f-4b20-5035-907f-974a4a88618b-title"><a class="goal-self-link" href="#goal-80b42b5f-4b20-5035-907f-974a4a88618b">Molekulare Uhren anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>80b42b5f-4b20-5035-907f-974a4a88618b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-b40435c085e780f38f107231">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-ed07d497952ab6fa9a59c373">Q2.1 Entstehung und Entwicklung des Lebens</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9073ed5c9309f81b7764b654e581034f6f7529e650706c8fee2e1f9f09301df5" data-rendered-digest="sha256:6267a3364ad66f7d4cab1b2cfdebf701bf54ddb6960a2a9deb9d6538dbd2a8b0" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/80b42b5f-4b20-5035-907f-974a4a88618b/80b42b5f-4b20-5035-907f-974a4a88618b.png" alt="Lernzielillustration: Molekulare Uhren anwenden">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-80b42b5f-4b20-5035-907f-974a4a88618b-description-heading">
+        <p class="section-heading" id="goal-80b42b5f-4b20-5035-907f-974a4a88618b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann molekulare Uhren zur Abschätzung von Abspaltungszeiten nutzen und einordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-80b42b5f-4b20-5035-907f-974a4a88618b" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-80b42b5f-4b20-5035-907f-974a4a88618b-requires-heading">
+          <p class="section-heading" id="goal-80b42b5f-4b20-5035-907f-974a4a88618b-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-7008979d-7890-5f7b-ad07-27b8bb597cbe"><span>Evolutionsbelege bewerten</span><code>7008979d-7890-5f7b-ad07-27b8bb597cbe</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-80b42b5f-4b20-5035-907f-974a4a88618b-reverse-heading">
+          <p class="section-heading" id="goal-80b42b5f-4b20-5035-907f-974a4a88618b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-80b42b5f-4b20-5035-907f-974a4a88618b-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-80b42b5f-4b20-5035-907f-974a4a88618b-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-80b42b5f-4b20-5035-907f-974a4a88618b-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-80b42b5f-4b20-5035-907f-974a4a88618b-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 18</span>
+      <span>Buch-Digest <code>sha256:cdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0fb5acaab8de1090fa335917be7f8aa2d87c69763988eb6b97f32916294b5c94</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he-evolution-eighteen-current392-raster-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=80b42b5f-4b20-5035-907f-974a4a88618b&amp;goalFingerprint=sha256%3A0fb5acaab8de1090fa335917be7f8aa2d87c69763988eb6b97f32916294b5c94&amp;pageFingerprint=sha256%3Aa5dc964616879934335f87a28ee42510bb17acc4034f1e1ab51c6273746ae57a&amp;bookDigest=sha256%3Acdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3718c6fe-0b58-5ff7-996c-25ca45b609d2" data-goal-id="3718c6fe-0b58-5ff7-996c-25ca45b609d2" data-page-number="11" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-d23951c2-4791-5a91-a2de-b72a421a4536 structure:canonical-goal-bc6c8751-d761-5a5b-97ef-65e3b88ba866" aria-labelledby="goal-3718c6fe-0b58-5ff7-996c-25ca45b609d2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-3718c6fe-0b58-5ff7-996c-25ca45b609d2-title"><a class="goal-self-link" href="#goal-3718c6fe-0b58-5ff7-996c-25ca45b609d2">Menschliche Evolution vertiefen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3718c6fe-0b58-5ff7-996c-25ca45b609d2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-b40435c085e780f38f107231">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-ed07d497952ab6fa9a59c373">Q2.1 Entstehung und Entwicklung des Lebens</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f0964ded970d3fa9d6b406da939d81fa6070728042c11f9a5497ab368faef305" data-rendered-digest="sha256:e8406bb73b213fb3d141f5f878bea46985574315f5c4342ea7e8c42ae40feeae" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/3718c6fe-0b58-5ff7-996c-25ca45b609d2/3718c6fe-0b58-5ff7-996c-25ca45b609d2.png" alt="Lernzielillustration: Menschliche Evolution vertiefen">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3718c6fe-0b58-5ff7-996c-25ca45b609d2-description-heading">
+        <p class="section-heading" id="goal-3718c6fe-0b58-5ff7-996c-25ca45b609d2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Hypothesen zu Hominidenentwicklung und kultureller Evolution differenziert diskutieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · LK</li><li><strong>MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-3718c6fe-0b58-5ff7-996c-25ca45b609d2" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3718c6fe-0b58-5ff7-996c-25ca45b609d2-requires-heading">
+          <p class="section-heading" id="goal-3718c6fe-0b58-5ff7-996c-25ca45b609d2-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-302c6d6d-bf10-5dbc-adda-65e4b5c63e49"><span>Evolution des Menschen nachvollziehen</span><code>302c6d6d-bf10-5dbc-adda-65e4b5c63e49</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-3718c6fe-0b58-5ff7-996c-25ca45b609d2-reverse-heading">
+          <p class="section-heading" id="goal-3718c6fe-0b58-5ff7-996c-25ca45b609d2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-3718c6fe-0b58-5ff7-996c-25ca45b609d2-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3718c6fe-0b58-5ff7-996c-25ca45b609d2-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-3718c6fe-0b58-5ff7-996c-25ca45b609d2-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3718c6fe-0b58-5ff7-996c-25ca45b609d2-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-c2f8c542-9386-5a18-bf7e-52698b932242" rel="noreferrer noopener"><span>Kulturelle Evolution als Selektionsvorteil erklären</span> <code>c2f8c542-9386-5a18-bf7e-52698b932242</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 18</span>
+      <span>Buch-Digest <code>sha256:cdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0ce763e602201598ff17f7b80f6a72fabf0fce3a8713ee763e89fcc8c0efde95</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he-evolution-eighteen-current392-raster-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=3718c6fe-0b58-5ff7-996c-25ca45b609d2&amp;goalFingerprint=sha256%3A0ce763e602201598ff17f7b80f6a72fabf0fce3a8713ee763e89fcc8c0efde95&amp;pageFingerprint=sha256%3A826dc985fe34f25f30568cc0365bd6f20847a6f42c154407ea7eee1a38a5eaed&amp;bookDigest=sha256%3Acdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-934d496d-eda4-5835-96d6-389885b93a51" data-goal-id="934d496d-eda4-5835-96d6-389885b93a51" data-page-number="12" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-d23951c2-4791-5a91-a2de-b72a421a4536 structure:canonical-goal-cdb64924-1832-5036-b051-6dfcbbd98edf" aria-labelledby="goal-934d496d-eda4-5835-96d6-389885b93a51-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-934d496d-eda4-5835-96d6-389885b93a51-title"><a class="goal-self-link" href="#goal-934d496d-eda4-5835-96d6-389885b93a51">Missbrauch der Evolutionstheorie analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>934d496d-eda4-5835-96d6-389885b93a51</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-b40435c085e780f38f107231">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-191f12d0c0a5a9e7254989cb">Q2.2 Spannungsfeld Evolutionstheorie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:37d371ff95cfaa9f697e605203c329b07986e2e9ded59ea54d15d44dfe25302e" data-rendered-digest="sha256:32e82f2d4a1b591faebe2075036f54c7e9b26ce7636f33f468d8605fbfdffa5b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/934d496d-eda4-5835-96d6-389885b93a51/934d496d-eda4-5835-96d6-389885b93a51.png" alt="Lernzielillustration: Missbrauch der Evolutionstheorie analysieren">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-934d496d-eda4-5835-96d6-389885b93a51-description-heading">
+        <p class="section-heading" id="goal-934d496d-eda4-5835-96d6-389885b93a51-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann historische Beispiele wie den Nationalsozialismus kritisch einordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · LK</li><li><strong>ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-934d496d-eda4-5835-96d6-389885b93a51" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-934d496d-eda4-5835-96d6-389885b93a51-requires-heading">
+          <p class="section-heading" id="goal-934d496d-eda4-5835-96d6-389885b93a51-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-934d496d-eda4-5835-96d6-389885b93a51-reverse-heading">
+          <p class="section-heading" id="goal-934d496d-eda4-5835-96d6-389885b93a51-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-934d496d-eda4-5835-96d6-389885b93a51-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-934d496d-eda4-5835-96d6-389885b93a51-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-ac40db32-5dc7-5c43-8771-bf805d24aa3b" rel="noreferrer noopener"><span>Theorien vergleichen</span> <code>ac40db32-5dc7-5c43-8771-bf805d24aa3b</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-934d496d-eda4-5835-96d6-389885b93a51-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-934d496d-eda4-5835-96d6-389885b93a51-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 18</span>
+      <span>Buch-Digest <code>sha256:cdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0ea3abfa41f12053ac91510b347becdf55466d40db09806da8e9f89c655aba11</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he-evolution-eighteen-current392-raster-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=934d496d-eda4-5835-96d6-389885b93a51&amp;goalFingerprint=sha256%3A0ea3abfa41f12053ac91510b347becdf55466d40db09806da8e9f89c655aba11&amp;pageFingerprint=sha256%3A7f89ef1b73141f6b514568302261e8fe01f48044fcc20a63695a564ea49f801b&amp;bookDigest=sha256%3Acdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6bfcb8da-e337-5395-a50a-848f6a3abf4d" data-goal-id="6bfcb8da-e337-5395-a50a-848f6a3abf4d" data-page-number="13" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-d23951c2-4791-5a91-a2de-b72a421a4536 structure:canonical-goal-cdb64924-1832-5036-b051-6dfcbbd98edf" aria-labelledby="goal-6bfcb8da-e337-5395-a50a-848f6a3abf4d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6bfcb8da-e337-5395-a50a-848f6a3abf4d-title"><a class="goal-self-link" href="#goal-6bfcb8da-e337-5395-a50a-848f6a3abf4d">Selektionsmodi vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6bfcb8da-e337-5395-a50a-848f6a3abf4d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-b40435c085e780f38f107231">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-191f12d0c0a5a9e7254989cb">Q2.2 Spannungsfeld Evolutionstheorie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f22dad26758f91a07e7c77749faba58d23dd5c6866dca2c0edcb03ef11e00782" data-rendered-digest="sha256:67b5e3409284a0f8288d5f5fa31d0b3e9815f3ebd8cb4c29353c5ffcf1d5b302" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/6bfcb8da-e337-5395-a50a-848f6a3abf4d/6bfcb8da-e337-5395-a50a-848f6a3abf4d.png" alt="Lernzielillustration: Selektionsmodi vergleichen">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6bfcb8da-e337-5395-a50a-848f6a3abf4d-description-heading">
+        <p class="section-heading" id="goal-6bfcb8da-e337-5395-a50a-848f6a3abf4d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann stabilisierende, gerichtete und disruptive Selektion anhand von Beispielen erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-6bfcb8da-e337-5395-a50a-848f6a3abf4d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6bfcb8da-e337-5395-a50a-848f6a3abf4d-requires-heading">
+          <p class="section-heading" id="goal-6bfcb8da-e337-5395-a50a-848f6a3abf4d-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-6bfcb8da-e337-5395-a50a-848f6a3abf4d-reverse-heading">
+          <p class="section-heading" id="goal-6bfcb8da-e337-5395-a50a-848f6a3abf4d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-28b4ae51-e3f7-5abc-a363-022114f50f0f"><span>Fitnesslandschaften interpretieren</span><code>28b4ae51-e3f7-5abc-a363-022114f50f0f</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-6bfcb8da-e337-5395-a50a-848f6a3abf4d-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6bfcb8da-e337-5395-a50a-848f6a3abf4d-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-ac40db32-5dc7-5c43-8771-bf805d24aa3b" rel="noreferrer noopener"><span>Theorien vergleichen</span> <code>ac40db32-5dc7-5c43-8771-bf805d24aa3b</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-6bfcb8da-e337-5395-a50a-848f6a3abf4d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6bfcb8da-e337-5395-a50a-848f6a3abf4d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 18</span>
+      <span>Buch-Digest <code>sha256:cdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:13e02935dcfba408443c902542e45bc3e247df9bbcfb3df53e25df3e34e1f9b9</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he-evolution-eighteen-current392-raster-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=6bfcb8da-e337-5395-a50a-848f6a3abf4d&amp;goalFingerprint=sha256%3A13e02935dcfba408443c902542e45bc3e247df9bbcfb3df53e25df3e34e1f9b9&amp;pageFingerprint=sha256%3A784a5dbf657a51f10af37bd076357179499a5622fa01144191e48dc4f0b173c4&amp;bookDigest=sha256%3Acdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-28b4ae51-e3f7-5abc-a363-022114f50f0f" data-goal-id="28b4ae51-e3f7-5abc-a363-022114f50f0f" data-page-number="14" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-d23951c2-4791-5a91-a2de-b72a421a4536 structure:canonical-goal-cdb64924-1832-5036-b051-6dfcbbd98edf" aria-labelledby="goal-28b4ae51-e3f7-5abc-a363-022114f50f0f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-28b4ae51-e3f7-5abc-a363-022114f50f0f-title"><a class="goal-self-link" href="#goal-28b4ae51-e3f7-5abc-a363-022114f50f0f">Fitnesslandschaften interpretieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>28b4ae51-e3f7-5abc-a363-022114f50f0f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-b40435c085e780f38f107231">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-191f12d0c0a5a9e7254989cb">Q2.2 Spannungsfeld Evolutionstheorie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:a58a87cbf67d5be5f46616bd585667f7d3ba511c7b1f447a4bbd132ef5ec427b" data-rendered-digest="sha256:10c2694562cdbf94694f80af9d029f0a1c7f8acd5633592e26e1e4f7c5f4ef23" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/28b4ae51-e3f7-5abc-a363-022114f50f0f/28b4ae51-e3f7-5abc-a363-022114f50f0f.png" alt="Lernzielillustration: Fitnesslandschaften interpretieren">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-28b4ae51-e3f7-5abc-a363-022114f50f0f-description-heading">
+        <p class="section-heading" id="goal-28b4ae51-e3f7-5abc-a363-022114f50f0f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Fitnesslandschaften nutzen, um adaptive Pfade und Lokale Optima zu diskutieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-28b4ae51-e3f7-5abc-a363-022114f50f0f" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-28b4ae51-e3f7-5abc-a363-022114f50f0f-requires-heading">
+          <p class="section-heading" id="goal-28b4ae51-e3f7-5abc-a363-022114f50f0f-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-6bfcb8da-e337-5395-a50a-848f6a3abf4d"><span>Selektionsmodi vergleichen</span><code>6bfcb8da-e337-5395-a50a-848f6a3abf4d</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-28b4ae51-e3f7-5abc-a363-022114f50f0f-reverse-heading">
+          <p class="section-heading" id="goal-28b4ae51-e3f7-5abc-a363-022114f50f0f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-28b4ae51-e3f7-5abc-a363-022114f50f0f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-28b4ae51-e3f7-5abc-a363-022114f50f0f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-28b4ae51-e3f7-5abc-a363-022114f50f0f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-28b4ae51-e3f7-5abc-a363-022114f50f0f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 18</span>
+      <span>Buch-Digest <code>sha256:cdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:6b5e1907b620ed9c38c871d383972193da4fea9450bf3c972b70efd1d5215ad3</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he-evolution-eighteen-current392-raster-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=28b4ae51-e3f7-5abc-a363-022114f50f0f&amp;goalFingerprint=sha256%3A6b5e1907b620ed9c38c871d383972193da4fea9450bf3c972b70efd1d5215ad3&amp;pageFingerprint=sha256%3A8c49dcb4fafd5b03e8d15f81cb0a93e87fd2fdf76f878afd4a6b05c0ebb00697&amp;bookDigest=sha256%3Acdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9fb0a26b-abb0-505f-b92a-320b2e6290e9" data-goal-id="9fb0a26b-abb0-505f-b92a-320b2e6290e9" data-page-number="15" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-d23951c2-4791-5a91-a2de-b72a421a4536 structure:canonical-goal-cdb64924-1832-5036-b051-6dfcbbd98edf" aria-labelledby="goal-9fb0a26b-abb0-505f-b92a-320b2e6290e9-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9fb0a26b-abb0-505f-b92a-320b2e6290e9-title"><a class="goal-self-link" href="#goal-9fb0a26b-abb0-505f-b92a-320b2e6290e9">Koevolution analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9fb0a26b-abb0-505f-b92a-320b2e6290e9</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-b40435c085e780f38f107231">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-191f12d0c0a5a9e7254989cb">Q2.2 Spannungsfeld Evolutionstheorie</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:11161085fe4886a513e9811fa0bae698a52ea7850c391abd8c803ae4b584d305" data-rendered-digest="sha256:0381f0038b68c9d9cd27db60978f0dd451b6ac0d157e9a807c641ae09c4a23bf" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/9fb0a26b-abb0-505f-b92a-320b2e6290e9/9fb0a26b-abb0-505f-b92a-320b2e6290e9.png" alt="Lernzielillustration: Koevolution analysieren">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9fb0a26b-abb0-505f-b92a-320b2e6290e9-description-heading">
+        <p class="section-heading" id="goal-9fb0a26b-abb0-505f-b92a-320b2e6290e9-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann koevolutionäre Beziehungen (z. B. Räuber-Beute, Wirt-Parasit, Bestäubung) untersuchen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HE:</strong> Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-9fb0a26b-abb0-505f-b92a-320b2e6290e9" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9fb0a26b-abb0-505f-b92a-320b2e6290e9-requires-heading">
+          <p class="section-heading" id="goal-9fb0a26b-abb0-505f-b92a-320b2e6290e9-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-9fb0a26b-abb0-505f-b92a-320b2e6290e9-reverse-heading">
+          <p class="section-heading" id="goal-9fb0a26b-abb0-505f-b92a-320b2e6290e9-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-9fb0a26b-abb0-505f-b92a-320b2e6290e9-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9fb0a26b-abb0-505f-b92a-320b2e6290e9-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-eb48ba5b-eaa9-52bc-a579-841fc2566182" rel="noreferrer noopener"><span>Gesellschaftlichen Diskurs führen</span> <code>eb48ba5b-eaa9-52bc-a579-841fc2566182</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-9fb0a26b-abb0-505f-b92a-320b2e6290e9-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9fb0a26b-abb0-505f-b92a-320b2e6290e9-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 15 von 18</span>
+      <span>Buch-Digest <code>sha256:cdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:675d73bbe4f9de8dba444426593aabfe0d08dc62b8c4ef129da5e20a9efbb578</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he-evolution-eighteen-current392-raster-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=9fb0a26b-abb0-505f-b92a-320b2e6290e9&amp;goalFingerprint=sha256%3A675d73bbe4f9de8dba444426593aabfe0d08dc62b8c4ef129da5e20a9efbb578&amp;pageFingerprint=sha256%3Affd8665ca743330ef3c9bf0fafb096e0045339c53c58c77ba78353b8731b66e1&amp;bookDigest=sha256%3Acdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-34b06272-e997-59af-b12b-0a5e05d7d45f" data-goal-id="34b06272-e997-59af-b12b-0a5e05d7d45f" data-page-number="16" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-cbde2ff0-3488-55ef-a652-e0c0aa7937cb structure:canonical-goal-b9a070f6-cc8b-5d84-b226-bb14223670e1" aria-labelledby="goal-34b06272-e997-59af-b12b-0a5e05d7d45f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-34b06272-e997-59af-b12b-0a5e05d7d45f-title"><a class="goal-self-link" href="#goal-34b06272-e997-59af-b12b-0a5e05d7d45f">Sexuelle Selektion</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>34b06272-e997-59af-b12b-0a5e05d7d45f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-01ead4a4815786785794c07b">Ökologie &amp; Stoffwechsel</a></li><li><a href="#chapter-739bef587be9dbd92186bdd1">Q3.3 Anpassungen an die Umwelt</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:77c3bf11991c72bdbc1d45a6bc2c7a4ed3bdffd0340226374923581d0e880e00" data-rendered-digest="sha256:3687f33c21d0ca7c272c1071e3f47d52f0c8254258096b5f905c1fcfec42934c" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/34b06272-e997-59af-b12b-0a5e05d7d45f/34b06272-e997-59af-b12b-0a5e05d7d45f.png" alt="Lernzielillustration: Sexuelle Selektion">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-34b06272-e997-59af-b12b-0a5e05d7d45f-description-heading">
+        <p class="section-heading" id="goal-34b06272-e997-59af-b12b-0a5e05d7d45f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann sexuelle Selektion und Fitnessfolgen erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-34b06272-e997-59af-b12b-0a5e05d7d45f" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-34b06272-e997-59af-b12b-0a5e05d7d45f-requires-heading">
+          <p class="section-heading" id="goal-34b06272-e997-59af-b12b-0a5e05d7d45f-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-34b06272-e997-59af-b12b-0a5e05d7d45f-reverse-heading">
+          <p class="section-heading" id="goal-34b06272-e997-59af-b12b-0a5e05d7d45f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-34b06272-e997-59af-b12b-0a5e05d7d45f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-34b06272-e997-59af-b12b-0a5e05d7d45f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-5bfb8ede-235c-580f-b2c9-4eb84bba4d0a" rel="noreferrer noopener"><span>Tierische Anpassungen</span> <code>5bfb8ede-235c-580f-b2c9-4eb84bba4d0a</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-34b06272-e997-59af-b12b-0a5e05d7d45f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-34b06272-e997-59af-b12b-0a5e05d7d45f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 16 von 18</span>
+      <span>Buch-Digest <code>sha256:cdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0004b0838533303536ee1689d188c7edfc9abfcadfc5d549c51143c3c9c19ff1</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he-evolution-eighteen-current392-raster-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=34b06272-e997-59af-b12b-0a5e05d7d45f&amp;goalFingerprint=sha256%3A0004b0838533303536ee1689d188c7edfc9abfcadfc5d549c51143c3c9c19ff1&amp;pageFingerprint=sha256%3A156f9d45e2b998c3d1e163c965b8dc1cec3cb379123f54af2079c91bdab03f2c&amp;bookDigest=sha256%3Acdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-35b016d8-ed2c-570c-ab64-ac39f8f962b2" data-goal-id="35b016d8-ed2c-570c-ab64-ac39f8f962b2" data-page-number="17" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-cbde2ff0-3488-55ef-a652-e0c0aa7937cb structure:canonical-goal-b9a070f6-cc8b-5d84-b226-bb14223670e1" aria-labelledby="goal-35b016d8-ed2c-570c-ab64-ac39f8f962b2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-35b016d8-ed2c-570c-ab64-ac39f8f962b2-title"><a class="goal-self-link" href="#goal-35b016d8-ed2c-570c-ab64-ac39f8f962b2">Phylogenie-Methoden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>35b016d8-ed2c-570c-ab64-ac39f8f962b2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-01ead4a4815786785794c07b">Ökologie &amp; Stoffwechsel</a></li><li><a href="#chapter-739bef587be9dbd92186bdd1">Q3.3 Anpassungen an die Umwelt</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:67d2cee9d281c6aaac408a9823f473e46d5fcbc01c6c2395a5cfc46e6e24dfd2" data-rendered-digest="sha256:cdef393a59b7b0a857b4d7fc184da922c10dc70cfabf5eba97f8c06e254a0043" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/35b016d8-ed2c-570c-ab64-ac39f8f962b2/35b016d8-ed2c-570c-ab64-ac39f8f962b2.png" alt="Lernzielillustration: Phylogenie-Methoden">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-35b016d8-ed2c-570c-ab64-ac39f8f962b2-description-heading">
+        <p class="section-heading" id="goal-35b016d8-ed2c-570c-ab64-ac39f8f962b2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Kladistik und molekulare Methoden zur Stammbaumkonstruktion anwenden.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-35b016d8-ed2c-570c-ab64-ac39f8f962b2" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-35b016d8-ed2c-570c-ab64-ac39f8f962b2-requires-heading">
+          <p class="section-heading" id="goal-35b016d8-ed2c-570c-ab64-ac39f8f962b2-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-35b016d8-ed2c-570c-ab64-ac39f8f962b2-reverse-heading">
+          <p class="section-heading" id="goal-35b016d8-ed2c-570c-ab64-ac39f8f962b2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-4abd762a-3c24-5909-a5d4-c8dfbcfe6275"><span>Molekulare Phylogenie</span><code>4abd762a-3c24-5909-a5d4-c8dfbcfe6275</code><span class="reference-page">S. 18</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-35b016d8-ed2c-570c-ab64-ac39f8f962b2-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-35b016d8-ed2c-570c-ab64-ac39f8f962b2-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-b56a5408-ed84-57f2-a9dd-d1a67496fdd1" rel="noreferrer noopener"><span>Artkonzepte vergleichen</span> <code>b56a5408-ed84-57f2-a9dd-d1a67496fdd1</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-35b016d8-ed2c-570c-ab64-ac39f8f962b2-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-35b016d8-ed2c-570c-ab64-ac39f8f962b2-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 17 von 18</span>
+      <span>Buch-Digest <code>sha256:cdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5813d2ae334531a36df2715483de53d188f10c2e8f6cfa50d58bf50d03999050</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he-evolution-eighteen-current392-raster-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=35b016d8-ed2c-570c-ab64-ac39f8f962b2&amp;goalFingerprint=sha256%3A5813d2ae334531a36df2715483de53d188f10c2e8f6cfa50d58bf50d03999050&amp;pageFingerprint=sha256%3A2d21b71301b9b0895031969e5c96b4926a08ad4c947d790942d93cee3d5c53ce&amp;bookDigest=sha256%3Acdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-4abd762a-3c24-5909-a5d4-c8dfbcfe6275" data-goal-id="4abd762a-3c24-5909-a5d4-c8dfbcfe6275" data-page-number="18" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-cbde2ff0-3488-55ef-a652-e0c0aa7937cb structure:canonical-goal-b9a070f6-cc8b-5d84-b226-bb14223670e1" aria-labelledby="goal-4abd762a-3c24-5909-a5d4-c8dfbcfe6275-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-4abd762a-3c24-5909-a5d4-c8dfbcfe6275-title"><a class="goal-self-link" href="#goal-4abd762a-3c24-5909-a5d4-c8dfbcfe6275">Molekulare Phylogenie</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>4abd762a-3c24-5909-a5d4-c8dfbcfe6275</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-01ead4a4815786785794c07b">Ökologie &amp; Stoffwechsel</a></li><li><a href="#chapter-739bef587be9dbd92186bdd1">Q3.3 Anpassungen an die Umwelt</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:228839f0eb14670e9138d37f264ce570465efbc44c15713ddbb7eb04c42e4808" data-rendered-digest="sha256:2b2738271bb04176a746cd3b05d95b52a26e1fc7a0aff7ab3a70bb1abe51c8e4" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/biologie/4abd762a-3c24-5909-a5d4-c8dfbcfe6275/4abd762a-3c24-5909-a5d4-c8dfbcfe6275.png" alt="Lernzielillustration: Molekulare Phylogenie">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-4abd762a-3c24-5909-a5d4-c8dfbcfe6275-description-heading">
+        <p class="section-heading" id="goal-4abd762a-3c24-5909-a5d4-c8dfbcfe6275-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Sequenzdaten für phylogenetische Analysen interpretieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>HE:</strong> Sek. II · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-4abd762a-3c24-5909-a5d4-c8dfbcfe6275" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-4abd762a-3c24-5909-a5d4-c8dfbcfe6275-requires-heading">
+          <p class="section-heading" id="goal-4abd762a-3c24-5909-a5d4-c8dfbcfe6275-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-35b016d8-ed2c-570c-ab64-ac39f8f962b2"><span>Phylogenie-Methoden</span><code>35b016d8-ed2c-570c-ab64-ac39f8f962b2</code><span class="reference-page">S. 17</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-4abd762a-3c24-5909-a5d4-c8dfbcfe6275-reverse-heading">
+          <p class="section-heading" id="goal-4abd762a-3c24-5909-a5d4-c8dfbcfe6275-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-4abd762a-3c24-5909-a5d4-c8dfbcfe6275-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4abd762a-3c24-5909-a5d4-c8dfbcfe6275-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-4abd762a-3c24-5909-a5d4-c8dfbcfe6275-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-4abd762a-3c24-5909-a5d4-c8dfbcfe6275-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 18 von 18</span>
+      <span>Buch-Digest <code>sha256:cdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb</code></span>
+      <span>Ziel-Fingerprint <code>sha256:384312d7e239f26c2c794210b806c6a2f914ece1cf366a73f52d1281ca1deb68</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-he-evolution-eighteen-current392-raster-author-v1&amp;edition=curricular-atomic-v1&amp;goalId=4abd762a-3c24-5909-a5d4-c8dfbcfe6275&amp;goalFingerprint=sha256%3A384312d7e239f26c2c794210b806c6a2f914ece1cf366a73f52d1281ca1deb68&amp;pageFingerprint=sha256%3A97f590b84231e02953f335946d3b3e39dfd90d48ea3e789ee8b9e6af31599b57&amp;bookDigest=sha256%3Acdf4cc60fabaa082ca88ab7bd4de54347ccdc2a4198441f479ca2e603bac7dfb&amp;page=18" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

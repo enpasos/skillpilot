@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "head": "0a463c66f2603ca72c3f288b5ddfc574447c0025",
+  "actualCurrentCentral": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-q3-two-reviewed-active-integration-root-20261008-v1/affected-central.stdout.actual.txt",
+    "sha256": "9a4822cc7ff9025baa4013e4b9edfbb14398c9ed7d07b24d47ddf72ae9a7be92",
+    "bytes": 185818
+  },
+  "protectedWholeFilesEqualHEAD": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "76047cec422c555aacd1e04bff597c4f8a70d8ffed5f214ed7412c828bc34898",
+      "bytes": 3714635
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "ad764d083e390ab60f808ecbffb363ac914026894e82c09c977425311ec7ea44",
+      "bytes": 2511173
+    },
+    {
+      "path": "app/scripts/config/curriculum-maturity-floor-policy.json",
+      "sha256": "bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/in-flight-work-ledger.json",
+      "sha256": "2c99a3dc1fac00964e6ce5c52a566f3af1cc68a1d43e522ade0fc49c81e6a40e",
+      "bytes": 1385
+    }
+  ],
+  "subjectRows": [
+    {
+      "subject": "Biologie",
+      "beforeStrict": 134,
+      "currentStrict": 222,
+      "currentDenominator": 392,
+      "netCountGrowth": 88,
+      "currentMaturity": "M6",
+      "CQR303Status": "warn",
+      "wholeCurrentRule": {
+        "id": "CQR-303",
+        "status": "warn",
+        "summary": "Deep curriculum QA is incomplete: 222/392 current curricularAtomic goals strictly complete.",
+        "metrics": {
+          "expectedGoals": 392,
+          "remaining": 170,
+          "strictComplete": 222,
+          "currentDescriptionResolutions": 222,
+          "currentPositiveEvidenceProfiles": 222,
+          "currentSemanticAtomicityDecisions": 392,
+          "currentMemoryReviewDecisions": 392,
+          "currentVisualizationQaRecords": 222,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      }
+    },
+    {
+      "subject": "Chemie",
+      "beforeStrict": 173,
+      "currentStrict": 175,
+      "currentDenominator": 378,
+      "netCountGrowth": 2,
+      "currentMaturity": "M6",
+      "CQR303Status": "warn",
+      "wholeCurrentRule": {
+        "id": "CQR-303",
+        "status": "warn",
+        "summary": "Deep curriculum QA is incomplete: 175/378 current curricularAtomic goals strictly complete.",
+        "metrics": {
+          "expectedGoals": 378,
+          "remaining": 203,
+          "strictComplete": 175,
+          "currentDescriptionResolutions": 175,
+          "currentPositiveEvidenceProfiles": 175,
+          "currentSemanticAtomicityDecisions": 203,
+          "currentMemoryReviewDecisions": 378,
+          "currentVisualizationQaRecords": 359,
+          "deferredVisualizations": 17,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        },
+        "details": [
+          "17 current goals have deferred necessary visualization work; technical provider deferrals do not complete gate V."
+        ]
+      }
+    }
+  ],
+  "currentCentralBlockingIssueCount": 0,
+  "allFourCurrentStrictCountsConfirmed": true,
+  "candidateEvidenceExcludedFromStrictCounts": true,
+  "machineOnly": true,
+  "humanApproval": false,
+  "humanTrial": false,
+  "finalBuildPending": true
+}

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-q3-reviewed-two-corrosion-current378-technical-20261008-v1-two-current",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-q3-two-reviewed-integration-preparation-technical-20261008-v1/native-d-two-current.batch.config.json",
+  "configDigest": "sha256:208009705f3368f566985b20bc2bf11bc00e0c900df04a8276bb8c48cb159611",
+  "goalIds": [
+    "9f0d6d4c-f918-5a44-a9a2-7732c4e338f3",
+    "c95f6059-d7c2-5bcd-b61e-95e3577efdb2"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 378,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-q3-whole-twenty-raster-native-remediation-technical-20261008-v2/candidate/book.full378.final-two-raster.inactive.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-q3-whole-twenty-raster-native-remediation-technical-20261008-v2/candidate/canonical.current480.only-one-reviewed-correction-link.inactive.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:04863a3c84544531b64990b550a2845543ba4e0c630d928659a1654ff76d57bf"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:759ae1fd5e853517d3752b2ac91a2c6e69885bb38c616082663ad0fb1d1e9d56",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:f53cb70f2904123c7c8c3a56b5585778840d0db12229d513d7e255b18ae0339a",
+    "reviewInputFingerprint": "sha256:bb80e9e1fa2662a568a7dbbbd0449d4f788c3961cff76b7e50d67b1a3a2650af",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-q3-final-two-current378-raster-campaign-a-20261008-v2",
+        "campaignDigest": "sha256:a651aeb9e3067586a935a3b6411802e771405c2d8cfedeb5d72e5a60fa6fa6a8",
+        "roundId": "chemie-q3-final-two-current378-raster-independent-a-20261008-v2",
+        "independenceGroupId": "chemie-q3-final-two-current378-raster-independent-a-20261008-v2",
+        "batchId": "chemie-q3-final-two-current378-raster-independent-a-20261008-v2.batch-001",
+        "batchInputFingerprint": "sha256:8e8adfe899e8db4a2d06c277bd24b698ffa58ef5f47f223be5ffbd0ebf9ca8b3"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-q3-final-two-current378-raster-campaign-b-20261008-v2",
+        "campaignDigest": "sha256:bdfe700af7c14dbe25d880952285fc2ea6a8502ddc98a743054596d2d23fe4cd",
+        "roundId": "chemie-q3-final-two-current378-raster-independent-b-20261008-v2",
+        "independenceGroupId": "chemie-q3-final-two-current378-raster-independent-b-20261008-v2",
+        "batchId": "chemie-q3-final-two-current378-raster-independent-b-20261008-v2.batch-001",
+        "batchInputFingerprint": "sha256:1a8e1aeec7a14a179639f67eeb001c585484b2ab56b4bdf8a781e575f6109132"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

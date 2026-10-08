@@ -1,0 +1,57 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-he9-split-four-genuine-paired-current202-technical-20261008-v1",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-split-four-reviewed-integration-preparation-technical-20261008-v1/native-d-four.batch.config.json",
+  "configDigest": "sha256:f09342adcd906c1ff2a5f9673e05e4922d87aa788965e30a889dc61b60830f6f",
+  "goalIds": [
+    "249f4c5d-fd23-57c7-ac62-773d62c33b49",
+    "9d3f71d7-5273-5e50-b1ba-4e291edbf114",
+    "dd923eeb-eef0-5796-b372-a5d4f5be21f7",
+    "4b7fdc2c-9dbe-5439-8d84-295abc240eec"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 392,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-split-four-final-raster-native-author-technical-20261008-v1/native-raster-candidate-v2/full392.actual-raster.inactive.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-split-four-final-raster-native-author-technical-20261008-v1/candidate/canonical.current476.reviewed-split.actual-raster.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:29c259aad40f5455e211aac4ae0edbd6fefc8687c5fedd7762f7ead28ca1fd80"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:86ecdacb8a513a96ffb2c7550cdc82f5a1fe1f145d3e368945ad19408d6a9f75",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:88c1c67d1e1f877cda7abea07ef1bdd6de82d0f0928056b5a615e2b56750beeb",
+    "reviewInputFingerprint": "sha256:ba588b4aa74136cbd525e5a57087b705282cd6d7ea7383875c3992def5eb5e55",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-he9-split-four-current392-campaign-a-20261008-v1",
+        "campaignDigest": "sha256:cded5c3dee936f03d63604d123d6ff0bc5bc1571bed8e5e10b3f0862d5a34439",
+        "roundId": "biologie-he9-split-four-current392-independent-a-20261008-v1",
+        "independenceGroupId": "biologie-he9-split-four-current392-independent-a-20261008-v1",
+        "batchId": "biologie-he9-split-four-current392-independent-a-20261008-v1.batch-001",
+        "batchInputFingerprint": "sha256:f4929324ae832ed1066348b6d5caae1e93768d351e4556376178aef9f3adc2af"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-he9-split-four-current392-campaign-b-20261008-v1",
+        "campaignDigest": "sha256:00b000e2cb3aec13abd53d9109362be9ee0b401299c82b6d5e11e2fb0cc12959",
+        "roundId": "biologie-he9-split-four-current392-independent-b-20261008-v1",
+        "independenceGroupId": "biologie-he9-split-four-current392-independent-b-20261008-v1",
+        "batchId": "biologie-he9-split-four-current392-independent-b-20261008-v1.batch-001",
+        "batchInputFingerprint": "sha256:1c1af951abfdacc8bb602c76b587c482f5e0be24d9f464c5b15592e75bdf5a13"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

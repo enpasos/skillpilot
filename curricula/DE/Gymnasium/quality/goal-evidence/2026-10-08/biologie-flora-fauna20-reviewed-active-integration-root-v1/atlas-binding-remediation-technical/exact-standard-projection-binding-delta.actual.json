@@ -1,0 +1,33 @@
+{
+  "argv": [
+    "node",
+    "app/node_modules/tsx/dist/cli.mjs",
+    "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+    "--config",
+    "app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json"
+  ],
+  "exitCode": 0,
+  "elapsedSeconds": 0.7819972038269043,
+  "newScientificReviews": 0,
+  "strictGainClaimed": 0,
+  "changedGeneratedOutputPaths": [
+    "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/source-projection.receipt.json"
+  ],
+  "exactChangedReceiptFields": [
+    ".inputBindings[0].sha256"
+  ],
+  "changedInputBindings": [
+    [
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+        "sha256": "sha256:007d968e828f198bbd6c45c1b4a01c948c2eb3c88d4a9170a25c4a9bf104a8c5"
+      },
+      {
+        "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+        "sha256": "sha256:ac2c3a825e48c4392364e9f3bd6abc9c0bbbf7040880f746c7fa49bd16426493"
+      }
+    ]
+  ],
+  "allOtherGeneratedOutputFilesByteExact": true,
+  "sourceRolesAndCountsExactlyUnchanged": true
+}

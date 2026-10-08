@@ -1,0 +1,181 @@
+
+> skillpilot@0.0.0 build:application
+> npm run build:goal-books && npm run check:goal-book-publication && tsc -b && vite build
+
+
+> skillpilot@0.0.0 build:goal-books
+> tsx scripts/buildGoalBookPublications.ts
+
+Goal-book print fonts verified: Arial -> Liberation Sans; Courier New -> Liberation Mono (Regular, Bold, Italic, Bold Italic)
+Goal book reused after input/output hash checks: de-gym-mathematik-bundesweit
+Goal book reused after input/output hash checks: de-gym-physik-bundesweit
+Building goal book: de-gym-chemie-bundesweit; 359 goal pages
+Building goal book: de-gym-biologie-bundesweit; 392 goal pages
+Goal-book publication verified: de-gym-mathematik-bundesweit
+Goal-book publication verified: de-gym-physik-bundesweit
+Goal-book publication verified: de-gym-chemie-bundesweit
+Goal-book publication verified: de-gym-biologie-bundesweit
+Goal-book publication ready: 4 books; 2 rendered; /home/enpasos/projects/skillpilot/app/public/lernzielbuch
+
+> skillpilot@0.0.0 check:goal-book-publication
+> tsx scripts/checkGoalBookPublication.ts
+
+Published goal book verified: de-gym-mathematik-bundesweit; 807 pages; sha256:ff741e698ccb5670ac3e04613d47b6f1d7b4083dfacb5bc26fc88663f0d0c78b
+Published goal book verified: de-gym-physik-bundesweit; 478 pages; sha256:d18aef6f73f9aa4712860f9da60dca7534e94058ce594d2319be13d8b4b09437
+Published goal book verified: de-gym-chemie-bundesweit; 359 pages; sha256:c5a6cf03f9fb38ef3d579284568b6af742a2a7da165ac6a33e5020ef6796ffa0
+Published goal book verified: de-gym-biologie-bundesweit; 392 pages; sha256:82313870f398ed0bd02e778fe16b72e1a88b4a715730fc3cc3b1689deac38436
+vite v7.3.1 building client environment for production...
+transforming...
+✓ 2527 modules transformed.
+rendering chunks...
+computing gzip size...
+../backend/src/main/resources/static/version.json                                           0.31 kB │ gzip:   0.21 kB
+../backend/src/main/resources/static/manifest.webmanifest                                   0.45 kB
+../backend/src/main/resources/static/index.html                                             2.89 kB │ gzip:   0.99 kB
+../backend/src/main/resources/static/assets/KaTeX_Size3-Regular-CTq5MqoE.woff               4.42 kB
+../backend/src/main/resources/static/assets/KaTeX_Size4-Regular-Dl5lxZxV.woff2              4.93 kB
+../backend/src/main/resources/static/assets/KaTeX_Size2-Regular-Dy4dx90m.woff2              5.21 kB
+../backend/src/main/resources/static/assets/KaTeX_Size1-Regular-mCD8mA8B.woff2              5.47 kB
+../backend/src/main/resources/static/assets/KaTeX_Size4-Regular-BF-4gkZK.woff               5.98 kB
+../backend/src/main/resources/static/assets/KaTeX_Size2-Regular-oD1tc_U0.woff               6.19 kB
+../backend/src/main/resources/static/assets/KaTeX_Size1-Regular-C195tn64.woff               6.50 kB
+../backend/src/main/resources/static/assets/KaTeX_Caligraphic-Regular-Di6jR-x-.woff2        6.91 kB
+../backend/src/main/resources/static/assets/KaTeX_Caligraphic-Bold-Dq_IR9rO.woff2           6.91 kB
+../backend/src/main/resources/static/assets/KaTeX_Size3-Regular-DgpXs0kz.ttf                7.59 kB
+../backend/src/main/resources/static/assets/KaTeX_Caligraphic-Regular-CTRA-rTL.woff         7.66 kB
+../backend/src/main/resources/static/assets/KaTeX_Caligraphic-Bold-BEiXGLvX.woff            7.72 kB
+../backend/src/main/resources/static/assets/KaTeX_Script-Regular-D3wIWfF6.woff2             9.64 kB
+../backend/src/main/resources/static/assets/KaTeX_SansSerif-Regular-DDBCnlJ7.woff2         10.34 kB
+../backend/src/main/resources/static/assets/KaTeX_Size4-Regular-DWFBv043.ttf               10.36 kB
+../backend/src/main/resources/static/assets/KaTeX_Script-Regular-D5yQViql.woff             10.59 kB
+../backend/src/main/resources/static/assets/KaTeX_Fraktur-Regular-CTYiF6lA.woff2           11.32 kB
+../backend/src/main/resources/static/assets/KaTeX_Fraktur-Bold-CL6g_b3V.woff2              11.35 kB
+../backend/src/main/resources/static/assets/KaTeX_Size2-Regular-B7gKUWhC.ttf               11.51 kB
+../backend/src/main/resources/static/assets/KaTeX_SansSerif-Italic-C3H0VqGB.woff2          12.03 kB
+../backend/src/main/resources/static/assets/KaTeX_SansSerif-Bold-D1sUS0GD.woff2            12.22 kB
+../backend/src/main/resources/static/assets/KaTeX_Size1-Regular-Dbsnue_I.ttf               12.23 kB
+../backend/src/main/resources/static/assets/KaTeX_SansSerif-Regular-CS6fqUqJ.woff          12.32 kB
+../backend/src/main/resources/static/assets/KaTeX_Caligraphic-Regular-wX97UBjC.ttf         12.34 kB
+../backend/src/main/resources/static/assets/KaTeX_Caligraphic-Bold-ATXxdsX0.ttf            12.37 kB
+../backend/src/main/resources/static/assets/KaTeX_Fraktur-Regular-Dxdc4cR9.woff            13.21 kB
+../backend/src/main/resources/static/assets/KaTeX_Fraktur-Bold-BsDP51OF.woff               13.30 kB
+../backend/src/main/resources/static/assets/KaTeX_Typewriter-Regular-CO6r4hn1.woff2        13.57 kB
+../backend/src/main/resources/static/assets/KaTeX_SansSerif-Italic-DN2j7dab.woff           14.11 kB
+../backend/src/main/resources/static/assets/KaTeX_SansSerif-Bold-DbIhKOiC.woff             14.41 kB
+../backend/src/main/resources/static/assets/KaTeX_Typewriter-Regular-C0xS9mPB.woff         16.03 kB
+../backend/src/main/resources/static/assets/KaTeX_Math-BoldItalic-CZnvNsCZ.woff2           16.40 kB
+../backend/src/main/resources/static/assets/KaTeX_Math-Italic-t53AETM-.woff2               16.44 kB
+../backend/src/main/resources/static/assets/KaTeX_Script-Regular-C5JkGWo-.ttf              16.65 kB
+../backend/src/main/resources/static/assets/KaTeX_Main-BoldItalic-DxDJ3AOS.woff2           16.78 kB
+../backend/src/main/resources/static/assets/KaTeX_Main-Italic-NWA7e6Wa.woff2               16.99 kB
+../backend/src/main/resources/static/assets/KaTeX_Math-BoldItalic-iY-2wyZ7.woff            18.67 kB
+../backend/src/main/resources/static/assets/KaTeX_Math-Italic-DA0__PXp.woff                18.75 kB
+../backend/src/main/resources/static/assets/KaTeX_Main-BoldItalic-SpSLRI95.woff            19.41 kB
+../backend/src/main/resources/static/assets/KaTeX_SansSerif-Regular-BNo7hRIc.ttf           19.44 kB
+../backend/src/main/resources/static/assets/KaTeX_Fraktur-Regular-CB_wures.ttf             19.57 kB
+../backend/src/main/resources/static/assets/KaTeX_Fraktur-Bold-BdnERNNW.ttf                19.58 kB
+../backend/src/main/resources/static/assets/KaTeX_Main-Italic-BMLOBm91.woff                19.68 kB
+../backend/src/main/resources/static/assets/KaTeX_SansSerif-Italic-YYjJ1zSn.ttf            22.36 kB
+../backend/src/main/resources/static/assets/KaTeX_SansSerif-Bold-CFMepnvq.ttf              24.50 kB
+../backend/src/main/resources/static/assets/KaTeX_Main-Bold-Cx986IdX.woff2                 25.32 kB
+../backend/src/main/resources/static/assets/KaTeX_Main-Regular-B22Nviop.woff2              26.27 kB
+../backend/src/main/resources/static/assets/KaTeX_Typewriter-Regular-D3Ib7_Hf.ttf          27.56 kB
+../backend/src/main/resources/static/assets/KaTeX_AMS-Regular-BQhdFMY1.woff2               28.08 kB
+../backend/src/main/resources/static/assets/KaTeX_Main-Bold-Jm3AIy58.woff                  29.91 kB
+../backend/src/main/resources/static/assets/KaTeX_Main-Regular-Dr94JaBh.woff               30.77 kB
+../backend/src/main/resources/static/assets/KaTeX_Math-BoldItalic-B3XSjfu4.ttf             31.20 kB
+../backend/src/main/resources/static/assets/KaTeX_Math-Italic-flOr_0UB.ttf                 31.31 kB
+../backend/src/main/resources/static/assets/KaTeX_Main-BoldItalic-DzxPMmG6.ttf             32.97 kB
+../backend/src/main/resources/static/assets/KaTeX_AMS-Regular-DMm9YOAa.woff                33.52 kB
+../backend/src/main/resources/static/assets/KaTeX_Main-Italic-3WenGoN9.ttf                 33.58 kB
+../backend/src/main/resources/static/assets/KaTeX_Main-Bold-waoOVXN0.ttf                   51.34 kB
+../backend/src/main/resources/static/assets/KaTeX_Main-Regular-ypZvNtVU.ttf                53.58 kB
+../backend/src/main/resources/static/assets/KaTeX_AMS-Regular-DRggAlZN.ttf                 63.63 kB
+../backend/src/main/resources/static/assets/elk-worker.min-DGCccKuH.js                  1,613.73 kB
+../backend/src/main/resources/static/assets/RequiresReactFlowBoard-BZV40eAE.css            15.85 kB │ gzip:   2.66 kB
+../backend/src/main/resources/static/assets/index-hAMGEL1a.css                            234.70 kB │ gzip:  36.85 kB
+../backend/src/main/resources/static/assets/index-C0nIhReW.js                               0.07 kB │ gzip:   0.08 kB
+../backend/src/main/resources/static/assets/arrow-left-kKgkFLRL.js                          0.16 kB │ gzip:   0.16 kB
+../backend/src/main/resources/static/assets/search-DXtGBm-g.js                              0.16 kB │ gzip:   0.16 kB
+../backend/src/main/resources/static/assets/authoringClient-BXWkCHRF.js                     0.17 kB │ gzip:   0.15 kB
+../backend/src/main/resources/static/assets/circle-check-DYmfAqoP.js                        0.17 kB │ gzip:   0.17 kB
+../backend/src/main/resources/static/assets/gauge-hzsnX1Te.js                               0.17 kB │ gzip:   0.17 kB
+../backend/src/main/resources/static/assets/circle-x-DNsk8aQN.js                            0.20 kB │ gzip:   0.17 kB
+../backend/src/main/resources/static/assets/index-CtXnX3Xp.js                               0.22 kB │ gzip:   0.19 kB
+../backend/src/main/resources/static/assets/interpolateTemplate-iMDyqAeA.js                 0.22 kB │ gzip:   0.17 kB
+../backend/src/main/resources/static/assets/copy-DEbTQkSg.js                                0.23 kB │ gzip:   0.21 kB
+../backend/src/main/resources/static/assets/split-5sCcvVNy.js                               0.26 kB │ gzip:   0.20 kB
+../backend/src/main/resources/static/assets/image-BJjge2q-.js                               0.27 kB │ gzip:   0.22 kB
+../backend/src/main/resources/static/assets/list-checks-CQb0PXby.js                         0.28 kB │ gzip:   0.19 kB
+../backend/src/main/resources/static/assets/house-BvYVDQXC.js                               0.29 kB │ gzip:   0.22 kB
+../backend/src/main/resources/static/assets/users-BlDHPwby.js                               0.30 kB │ gzip:   0.23 kB
+../backend/src/main/resources/static/assets/badge-check-DzqWPqCv.js                         0.31 kB │ gzip:   0.21 kB
+../backend/src/main/resources/static/assets/refresh-cw-TNIVzt_Z.js                          0.32 kB │ gzip:   0.23 kB
+../backend/src/main/resources/static/assets/save-DhdODSEy.js                                0.32 kB │ gzip:   0.23 kB
+../backend/src/main/resources/static/assets/file-text-BRb-DmOB.js                           0.33 kB │ gzip:   0.22 kB
+../backend/src/main/resources/static/assets/book-open-check-Bjef4XkW.js                     0.33 kB │ gzip:   0.23 kB
+../backend/src/main/resources/static/assets/chevron-right-Dr4Q9bFJ.js                       0.35 kB │ gzip:   0.24 kB
+../backend/src/main/resources/static/assets/layers-B7aMDX3y.js                              0.42 kB │ gzip:   0.24 kB
+../backend/src/main/resources/static/assets/InlineMathText-CTHPBKg0.js                      0.43 kB │ gzip:   0.26 kB
+../backend/src/main/resources/static/assets/PublicPageHeader-DWP71ntj.js                    0.56 kB │ gzip:   0.36 kB
+../backend/src/main/resources/static/assets/goalFeedbackReturnNavigation-I0t01YGC.js        0.70 kB │ gzip:   0.48 kB
+../backend/src/main/resources/static/assets/FlashcardMarkdown-D47qzwP0.js                   0.97 kB │ gzip:   0.51 kB
+../backend/src/main/resources/static/assets/ConfirmModal-BRDbrteS.js                        1.10 kB │ gzip:   0.56 kB
+../backend/src/main/resources/static/assets/NeighborSection-Bvzt9eYq.js                     1.31 kB │ gzip:   0.68 kB
+../backend/src/main/resources/static/assets/goalBookPublicationRegistry-D2vZC8kg.js         1.48 kB │ gzip:   0.55 kB
+../backend/src/main/resources/static/assets/FlashcardFlipCard-DU_go_eb.js                   1.82 kB │ gzip:   0.74 kB
+../backend/src/main/resources/static/assets/CurriculumQualityBadge-MifcN9qV.js              2.30 kB │ gzip:   1.02 kB
+../backend/src/main/resources/static/assets/ImprintView-DhxO1a-K.js                         2.40 kB │ gzip:   1.03 kB
+../backend/src/main/resources/static/assets/StatsView-CMzStdnd.js                           2.70 kB │ gzip:   1.01 kB
+../backend/src/main/resources/static/assets/repositoryGoalSourceRationales-YnQ_IquF.js      2.73 kB │ gzip:   1.19 kB
+../backend/src/main/resources/static/assets/markdownDocumentViewCopy-9zbb4kTh.js            4.10 kB │ gzip:   2.03 kB
+../backend/src/main/resources/static/assets/StoryView-Cp8p1V0N.js                           4.70 kB │ gzip:   2.29 kB
+../backend/src/main/resources/static/assets/SuccessView-B_twrAPp.js                         4.78 kB │ gzip:   1.90 kB
+../backend/src/main/resources/static/assets/elk-api-DWLhNGvz.js                             4.94 kB │ gzip:   2.04 kB
+../backend/src/main/resources/static/assets/goalBookFeedback-BXUklsUm.js                    5.49 kB │ gzip:   2.32 kB
+../backend/src/main/resources/static/assets/workbox-window.prod.es5-BIl4cyR9.js             5.76 kB │ gzip:   2.37 kB
+../backend/src/main/resources/static/assets/UsersView-DNFOl5kc.js                           7.76 kB │ gzip:   2.80 kB
+../backend/src/main/resources/static/assets/ExplorerView-e9O5YbmW.js                        9.00 kB │ gzip:   2.95 kB
+../backend/src/main/resources/static/assets/coachLaunch-Bi2hhTpi.js                        10.64 kB │ gzip:   4.25 kB
+../backend/src/main/resources/static/assets/WhitepaperView-CauBWsei.js                     14.19 kB │ gzip:   5.01 kB
+../backend/src/main/resources/static/assets/RequiresFlowMap-CtY03vKN.js                    14.56 kB │ gzip:   4.85 kB
+../backend/src/main/resources/static/assets/WorkbenchView-Byr7D-Sj.js                      14.95 kB │ gzip:   4.39 kB
+../backend/src/main/resources/static/assets/Abi26MatheStartView-CsCfoyLc.js                15.85 kB │ gzip:   4.74 kB
+../backend/src/main/resources/static/assets/FlashcardEditorView-CHbhKCc_.js                20.17 kB │ gzip:   5.85 kB
+../backend/src/main/resources/static/assets/GoalBookFeedbackPilotView-uEDs_JcR.js          21.93 kB │ gzip:   7.28 kB
+../backend/src/main/resources/static/assets/goalBookRuntime-ROf0OZCe.js                    22.04 kB │ gzip:   7.42 kB
+../backend/src/main/resources/static/assets/CanonicalClusterEditorView-a0Hjbkfm.js         22.14 kB │ gzip:   5.60 kB
+../backend/src/main/resources/static/assets/purify.es-CovBOfck.js                          22.58 kB │ gzip:   8.67 kB
+../backend/src/main/resources/static/assets/GraphEditorView-jVi07EJz.js                    24.35 kB │ gzip:   6.70 kB
+../backend/src/main/resources/static/assets/SemanticAtomicityReviewView-Cof2XNl-.js        26.25 kB │ gzip:   6.90 kB
+../backend/src/main/resources/static/assets/GoalVisualizationQaView-CDILfGl3.js            29.92 kB │ gzip:   8.24 kB
+../backend/src/main/resources/static/assets/CompositionViewEditorView-kYaKk1mX.js          32.10 kB │ gzip:   6.09 kB
+../backend/src/main/resources/static/assets/CurriculumMappingWorkbenchView-CRwQ_3BG.js     33.11 kB │ gzip:   7.46 kB
+../backend/src/main/resources/static/assets/FaqView-CLCeFZMJ.js                            34.39 kB │ gzip:  11.18 kB
+../backend/src/main/resources/static/assets/learnerLearningPlanApi-B5OpXlEc.js             36.91 kB │ gzip:  12.55 kB
+../backend/src/main/resources/static/assets/LogoutButton-CWrgfkZd.js                       37.18 kB │ gzip:  10.89 kB
+../backend/src/main/resources/static/assets/index-D6Z9A4Yd.js                              39.09 kB │ gzip:  11.82 kB
+../backend/src/main/resources/static/assets/CurriculaView-DV6KYNW3.js                      43.95 kB │ gzip:  12.55 kB
+../backend/src/main/resources/static/assets/LegalView-WCmpflh7.js                          44.87 kB │ gzip:  16.49 kB
+../backend/src/main/resources/static/assets/PrivacyView-BV4mb05a.js                        48.76 kB │ gzip:  16.89 kB
+../backend/src/main/resources/static/assets/CurriculumQualityDashboardView-t_pkhZEg.js     50.34 kB │ gzip:  11.70 kB
+../backend/src/main/resources/static/assets/CoachProviderMatrixView-CoxCwdBB.js            51.93 kB │ gzip:  11.49 kB
+../backend/src/main/resources/static/assets/PluginCatalogView-DLpJSIpi.js                  55.22 kB │ gzip:  16.42 kB
+../backend/src/main/resources/static/assets/GoalBookView-BKFZPd7B.js                       57.79 kB │ gzip:  17.15 kB
+../backend/src/main/resources/static/assets/svg2pdf.es.min-CVLhiVYs.js                     87.18 kB │ gzip:  25.62 kB
+../backend/src/main/resources/static/assets/LearnerView-BDbhq521.js                       148.47 kB │ gzip:  43.83 kB
+../backend/src/main/resources/static/assets/index.es-DA8BhAs9.js                          158.62 kB │ gzip:  52.95 kB
+../backend/src/main/resources/static/assets/RequiresReactFlowBoard-dx2v_eZi.js            186.52 kB │ gzip:  61.38 kB
+../backend/src/main/resources/static/assets/html2canvas.esm-DXEQVQnt.js                   201.04 kB │ gzip:  47.43 kB
+../backend/src/main/resources/static/assets/TrainerView-DqxS5rRY.js                       212.47 kB │ gzip:  62.30 kB
+../backend/src/main/resources/static/assets/index-1XqU_EvI.js                             280.23 kB │ gzip:  83.44 kB
+../backend/src/main/resources/static/assets/jspdf.es.min-DgFflgyl.js                      386.04 kB │ gzip: 126.34 kB
+../backend/src/main/resources/static/assets/index-bKcJdXQT.js                             685.13 kB │ gzip: 210.53 kB
+✓ built in 54.92s
+
+PWA v1.2.0
+mode      generateSW
+precache  89 entries (5041.86 KiB)
+files generated
+  ../backend/src/main/resources/static/sw.js
+  ../backend/src/main/resources/static/workbox-1ef09536.js

@@ -1,0 +1,46 @@
+{
+  "recordedAt": "2026-10-07T23:11:03.614051+00:00",
+  "activeWrites": 0,
+  "strictGainClaimed": 0,
+  "humanApproval": false,
+  "newScientificRuns": 0,
+  "artifactKind": "observed completed native A20 and M20 retained decision-card-visibility checks",
+  "runs": [
+    {
+      "gate": "A",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-flora-fauna20-reviewed-integration-preparation-technical-20261008-v1/retained-current-AM/A20.future-inactive.config.json",
+        "--mode=check"
+      ],
+      "actualTerminalExitCode": 0,
+      "reviewedAtomic20": 20,
+      "missing0Stale0NonAtomic0": true
+    },
+    {
+      "gate": "M",
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-flora-fauna20-reviewed-integration-preparation-technical-20261008-v1/retained-current-AM/M20.future-inactive.config.json",
+        "--mode=check"
+      ],
+      "actualTerminalExitCode": 0,
+      "ordinaryScope27FromSelected20PlusExistingSharedDeckOrigins": 27,
+      "noMemory19": 19,
+      "memoryRequired8": 8,
+      "memoryNodes1": 1,
+      "keptPrimaryExistingCards17": 17,
+      "cardRows54": 54,
+      "visibilityScopes8": 8,
+      "visibleMemoryGoalChecks33": 33,
+      "missing0Stale0Untraced0": true
+    }
+  ],
+  "goalBodiesAndScienceRowsUnchanged": true,
+  "allVisibilityScopesRetained": true,
+  "newCards0": 0
+}
