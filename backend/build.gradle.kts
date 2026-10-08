@@ -1,4 +1,5 @@
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
+import org.gradle.api.tasks.bundling.Zip
 import org.gradle.jvm.toolchain.JvmVendorSpec
 
 plugins {
@@ -27,6 +28,11 @@ providers.environmentVariable("SKILLPILOT_BACKEND_BUILD_DIR")
     .orNull
     ?.takeIf { it.isNotBlank() }
     ?.let { layout.buildDirectory.set(file(it)) }
+
+// Reviewed images and goal books can exceed the standard ZIP limit in both JARs.
+tasks.withType<Zip>().configureEach {
+    isZip64 = true
+}
 
 java {
     toolchain {
