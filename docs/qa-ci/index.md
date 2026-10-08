@@ -178,6 +178,8 @@ These are generated audit views for configured `CQR-302` reviews. The registry l
 
 These documents capture one-off investigations, remediation slices, or dated PoC evidence. They are useful context, not durable process contracts.
 
+- [Backend-CI: Laufzeit und Fehlerpriorisierung vom 8. Oktober](backend-ci-runtime-review-2026-10-08.md)
+  Gebundener Laufzeitvergleich, erhaltene QS und vollständige lokale Abschlussprüfungen.
 - [Mathematik: HE-Sek-I-Modellbeziehungen und Scope](math-he-seki-model-relations-scope-correction-2026-09-27.md)
   Gezielte Quellen- und Sichtkorrektur ohne pauschale Landesgeltung.
 - [Mathematik: Stammfunktionsbild 31be](math-m7-31be-image-candidate-2026-09-27.md)
