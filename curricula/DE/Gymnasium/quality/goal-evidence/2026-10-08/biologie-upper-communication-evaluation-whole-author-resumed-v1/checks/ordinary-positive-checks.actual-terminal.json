@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "role": "ordinary technical validation only, no independent scientific verdict",
+  "runs": [
+    {
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-upper-communication-evaluation-whole-author-resumed-v1/sixteen-whole-positive-understanding.author-candidate.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-upper-communication-evaluation-whole-author-resumed-v1/sixteen-whole-profile-candidates.author-candidates.json"
+      ],
+      "cwd": "app",
+      "exitCode": 0,
+      "output": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-upper-communication-evaluation-whole-author-resumed-v1/checks/ordinary-positive-check-1.actual.stdout.txt",
+        "sha256": "sha256:e180e5c0f18e4117a52745c5828e9ba542d3ce8c75a89c28dca0413bfc10f783",
+        "bytes": 233
+      }
+    },
+    {
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-upper-communication-evaluation-whole-author-resumed-v1/sixteen-whole-positive-understanding.author-candidate.config.json",
+        "--mode=check"
+      ],
+      "cwd": "app",
+      "exitCode": 0,
+      "output": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-upper-communication-evaluation-whole-author-resumed-v1/checks/ordinary-positive-check-2.actual.stdout.txt",
+        "sha256": "sha256:fc81188daf73fc0159cf20b8708c9809b6145ed1207195fe1e3f706be75c41d4",
+        "bytes": 308
+      }
+    }
+  ],
+  "exitCode": 0,
+  "independentApproval": false
+}

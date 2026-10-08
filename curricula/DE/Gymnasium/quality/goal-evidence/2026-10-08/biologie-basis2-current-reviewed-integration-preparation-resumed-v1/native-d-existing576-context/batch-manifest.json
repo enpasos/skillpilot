@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-stoffwechsel-reviewed-basic2-context394-technical-20261008-v1-existing576-context",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-current-reviewed-integration-preparation-resumed-v1/native-d-existing576-context.batch.config.json",
+  "configDigest": "sha256:93882f813abbd901e79057c63f8166783ef407f0353c268124b7d7bf3cdb6ae5",
+  "goalIds": [
+    "576d59e2-397a-5654-b853-7c0c4870fbd3"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 394,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-current-reviewed-integration-preparation-resumed-v1/native-d-final-primary-refined.base-book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-two-basic-companions-complete-author-20261008-v2/candidate/canonical.shadow478.basic2-after-three-rasters.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:2a57c0610266fd4ff1530d2cb4c2e35b752616e125b9a5df005562742b18d431"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:fd764f713a0148f55120dd433d3aa808b6418093049ad2a53e69ef9b67c5f8ba",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:81d025a0721ee269efd30ec26134c5749a0aac84e6b9dda8857c4ac46dccde81",
+    "reviewInputFingerprint": "sha256:832560a365a8bad7b2bd4484c903b048d0b7a22f031bc48e6a0d223b34b20b6d",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "bio-existing-word-basic2-context-20261008-independent-a-campaign",
+        "campaignDigest": "sha256:a87b655d04af73dfc76f32bc2a3201d2944468446963a1d432b8d0b0fe0e5df2",
+        "roundId": "bio-existing-word-basic2-context-20261008-independent-a",
+        "independenceGroupId": "bio-existing-word-basic2-context-20261008-independent-a",
+        "batchId": "bio-existing-word-basic2-context-20261008-independent-a.batch-001",
+        "batchInputFingerprint": "sha256:94c544af0ccd421db26268c06dd0e1f46394ff1522968f490cfe5029924cbbb0"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "bio-existing-word-basic2-context-20261008-independent-b-campaign",
+        "campaignDigest": "sha256:02621c3ec548002db73b9fbba9ec12c0efab8ee81a9175f2cd5421d52e409d97",
+        "roundId": "bio-existing-word-basic2-context-20261008-independent-b",
+        "independenceGroupId": "bio-existing-word-basic2-context-20261008-independent-b",
+        "batchId": "bio-existing-word-basic2-context-20261008-independent-b.batch-001",
+        "batchInputFingerprint": "sha256:ed9ecd733160eebdfa4e92f5f737fab7c0eb122043bbeb6aa3777464f02b27ea"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

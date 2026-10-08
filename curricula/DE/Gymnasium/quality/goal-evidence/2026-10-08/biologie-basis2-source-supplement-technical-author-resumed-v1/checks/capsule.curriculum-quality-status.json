@@ -1,0 +1,2337 @@
+{
+  "schemaVersion": 1,
+  "rulesVersion": "curriculum-quality-v5",
+  "generatedAt": "2026-10-08T14:40:18.924Z",
+  "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
+  "sources": {
+    "canonicalRoot": "curricula/DE/Gymnasium/canonical",
+    "sourceExtractionRoot": "curricula/DE/Gymnasium/input",
+    "semanticAtomicityRoot": "curricula/DE/Gymnasium/quality/semantic-atomicity",
+    "memoryCardReviewRoot": "curricula/DE/Gymnasium/quality/memory-card-review",
+    "goalVisualizationQaRoot": "curricula/DE/Gymnasium/quality/goal-visualization-qa",
+    "deepUnderstandingReportGenerator": "app/scripts/reportDeepUnderstandingRollout.ts",
+    "compositionViewRoot": "curricula/DE/Gymnasium/composition-views",
+    "acceptedWarningsPath": "docs/qa-ci/applicability-accepted-warnings.json",
+    "sourceLandscapeRegistryPath": "curricula/DE/Gymnasium/provenance/source-landscape-registry.json",
+    "sourceGoalMembershipRegistryPath": "curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json",
+    "sourceGoalClosureRegistryPath": "curricula/DE/Gymnasium/provenance/source-goal-closure-registry.json",
+    "surrogateEvidencePath": "curricula/DE/Gymnasium/provenance/canonical-goal-surrogate-evidence-registry.json"
+  },
+  "summary": {
+    "curricula": 1,
+    "maturity": {
+      "M0": 1,
+      "M1": 0,
+      "M2": 0,
+      "M3": 0,
+      "M4": 0,
+      "M5": 0,
+      "M6": 0,
+      "M7": 0
+    },
+    "ruleStatus": {
+      "pass": 13,
+      "warn": 1,
+      "fail": 2,
+      "not_configured": 1
+    }
+  },
+  "ruleCatalog": [
+    {
+      "id": "CQR-000",
+      "label": "Source inventory ingestion",
+      "category": "applicability",
+      "maturityTarget": "M1",
+      "description": "Original source inventories are readable, linked to official HTTP(S) source URLs, and their extracted goals are registered in the source membership/closure ledger."
+    },
+    {
+      "id": "CQR-001",
+      "label": "Basic graph integrity",
+      "category": "graph",
+      "maturityTarget": "M0",
+      "description": "Goal IDs, local references, self-reference guards, and direct DAG checks are clean."
+    },
+    {
+      "id": "CQR-002",
+      "label": "Explicit type consistency",
+      "category": "graph",
+      "maturityTarget": "M0",
+      "description": "Stored type metadata agrees with structural atomic/cluster classification."
+    },
+    {
+      "id": "CQR-003",
+      "label": "Bundesland atomic coverage",
+      "category": "applicability",
+      "maturityTarget": "M2",
+      "description": "Bundesland composition-view source-coverage atoms are source-backed and registered source original goals are fully covered by view atoms."
+    },
+    {
+      "id": "CQR-004",
+      "label": "Course-level mapping consistency",
+      "category": "applicability",
+      "maturityTarget": "M2",
+      "description": "Upper-secondary GK/LK source-goal levels map only to canonical goals with compatible GK/LK tags; unspecified upper-secondary source goals default to GK/LK unless an LK-only decision is explicitly reviewed."
+    },
+    {
+      "id": "CQR-005",
+      "label": "Source-goal count plausibility",
+      "category": "applicability",
+      "maturityTarget": "M2",
+      "description": "Source-extraction goal counts are plausible against the reviewed HE/BW peer baseline or explicitly reviewed when they deviate strongly."
+    },
+    {
+      "id": "CQR-101",
+      "label": "Effective full route coverage",
+      "category": "route",
+      "maturityTarget": "M3",
+      "description": "Configured route scopes connect motivation anchors to terminal autonomy goals through effective requires."
+    },
+    {
+      "id": "CQR-102",
+      "label": "Atomic direct route coverage",
+      "category": "route",
+      "maturityTarget": "M3",
+      "description": "Configured route scopes connect motivation anchors to terminal autonomy goals through direct atomic requires."
+    },
+    {
+      "id": "CQR-103",
+      "label": "No scoped cluster requires",
+      "category": "route",
+      "maturityTarget": "M3",
+      "description": "Configured route scopes no longer depend on cluster-level requires for ordinary didactic sequencing."
+    },
+    {
+      "id": "CQR-104",
+      "label": "Route endpoint composition visibility",
+      "category": "route",
+      "maturityTarget": "M3",
+      "description": "Configured route scopes expose motivation anchors and terminal autonomy goals in relevant learner-facing composition views."
+    },
+    {
+      "id": "CQR-201",
+      "label": "Terminal autonomy exam data presence",
+      "category": "assessment",
+      "maturityTarget": "M4",
+      "description": "Terminal autonomy goals in configured scopes carry examData."
+    },
+    {
+      "id": "CQR-202",
+      "label": "Concrete exam task readiness",
+      "category": "assessment",
+      "maturityTarget": "M4",
+      "description": "Terminal autonomy examData is concrete enough for hard exam mode and is not placeholder prose."
+    },
+    {
+      "id": "CQR-203",
+      "label": "Exam release and coverage metadata",
+      "category": "assessment",
+      "maturityTarget": "M4",
+      "description": "Terminal autonomy examData has release status, covered goals, covered strands, and demand-level metadata."
+    },
+    {
+      "id": "CQR-301",
+      "label": "Semantic atomicity review freshness",
+      "category": "review",
+      "maturityTarget": "M5",
+      "description": "Configured semantic-atomicity ledgers are complete, current, and free of unresolved review queue entries."
+    },
+    {
+      "id": "CQR-302",
+      "label": "Memory-card decision trace",
+      "category": "review",
+      "maturityTarget": "M6",
+      "description": "Configured memory-card ledgers explicitly decide for ordinary atomic goals whether memorization is justified; every kept primary card traces to such a decision, every existing memory deck remains traced, and configured composition views expose referenced memory nodes where memory-required goals are visible."
+    },
+    {
+      "id": "CQR-303",
+      "label": "Deep curriculum QA completion",
+      "category": "review",
+      "maturityTarget": "M7",
+      "description": "The central five-gate report proves a nonempty current curricularAtomic scope, complete D/P/A/M/V intersection, successful required validation checks, and no blocking findings. Technical visualization deferrals remain incomplete; AI evidence never becomes human approval."
+    },
+    {
+      "id": "CQR-401",
+      "label": "Composition view availability",
+      "category": "view",
+      "maturityTarget": "M5",
+      "description": "The curriculum has at least one reviewed learner-facing composition view."
+    },
+    {
+      "id": "CQR-501",
+      "label": "Applicability warning debt",
+      "category": "applicability",
+      "maturityTarget": "M5",
+      "description": "Active applicability warnings are resolved and accepted warning records still match current findings."
+    }
+  ],
+  "curricula": [
+    {
+      "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+      "title": "Biologie (Gymnasium, DE)",
+      "subject": "Biologie",
+      "frameworkId": "canonical-gymnasium-biology",
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "maturity": "M0",
+      "humanTrialBlockingFindings": 1,
+      "goals": 479,
+      "atomicGoals": 424,
+      "clusterGoals": 55,
+      "jurisdictionCoverage": {
+        "dimension": "jurisdiction",
+        "totalJurisdictions": 16,
+        "totalAtomicGoals": 394,
+        "rawAtomicGoals": 424,
+        "coveredJurisdictions": 16,
+        "sourceBackedJurisdictions": 16,
+        "sourceCompleteJurisdictions": 0,
+        "cleanJurisdictions": 0,
+        "partialJurisdictions": 0,
+        "errorJurisdictions": 16,
+        "maxVisibleAtomicGoals": 365,
+        "maxSourceBackedAtomicGoals": 365,
+        "maxAtomicCoveragePercent": 92.6,
+        "maxSourceBackedCoveragePercent": 100,
+        "unsupportedAssignedAtomicGoals": 4,
+        "surrogateBackedAtomicGoals": 4,
+        "partialSourceLinkedAtomicGoals": 0,
+        "sourceAtomicGoals": 1178,
+        "sourceMappedToViewAtomicGoals": 1176,
+        "unmappedSourceAtomicGoals": 2,
+        "sourceExtractedGoals": 0,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 0,
+        "sourceUnregisteredAtomicGoals": 0,
+        "sourceOriginalGoals": 1269,
+        "sourceFullyCoveredOriginalGoals": 1264,
+        "sourcePartiallyCoveredOriginalGoals": 3,
+        "sourceUncoveredOriginalGoals": 2,
+        "jurisdictions": [
+          {
+            "jurisdiction": "DE-BW",
+            "labelDe": "Baden-Württemberg",
+            "labelEn": "Baden-Wuerttemberg",
+            "visibleGoals": 156,
+            "visibleAtomicGoals": 126,
+            "visibleClusterGoals": 30,
+            "viewAtomicGoals": 126,
+            "sourceBackedAtomicGoals": 126,
+            "surrogateBackedAtomicGoals": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "partialSourceLinkedAtomicGoals": 0,
+            "sourceAtomicGoals": 111,
+            "sourceMappedToViewAtomicGoals": 111,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceExtractedGoals": 0,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 0,
+            "sourceUnregisteredAtomicGoals": 0,
+            "sourceOriginalGoals": 111,
+            "sourceFullyCoveredOriginalGoals": 111,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "errors": 0,
+            "warnings": 0,
+            "diagnosticPartialOnlyWarnings": 125,
+            "atomicCoveragePercent": 32,
+            "sourceBackedCoveragePercent": 100,
+            "sourceReverseCoveragePercent": 100,
+            "status": "error"
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "labelDe": "Hessen",
+            "labelEn": "Hesse",
+            "visibleGoals": 444,
+            "visibleAtomicGoals": 365,
+            "visibleClusterGoals": 79,
+            "viewAtomicGoals": 365,
+            "sourceBackedAtomicGoals": 365,
+            "surrogateBackedAtomicGoals": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "partialSourceLinkedAtomicGoals": 0,
+            "sourceAtomicGoals": 240,
+            "sourceMappedToViewAtomicGoals": 238,
+            "unmappedSourceAtomicGoals": 2,
+            "sourceExtractedGoals": 0,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 0,
+            "sourceUnregisteredAtomicGoals": 0,
+            "sourceOriginalGoals": 293,
+            "sourceFullyCoveredOriginalGoals": 288,
+            "sourcePartiallyCoveredOriginalGoals": 3,
+            "sourceUncoveredOriginalGoals": 2,
+            "errors": 0,
+            "warnings": 0,
+            "diagnosticPartialOnlyWarnings": 6,
+            "atomicCoveragePercent": 92.6,
+            "sourceBackedCoveragePercent": 100,
+            "sourceReverseCoveragePercent": 99.2,
+            "status": "error"
+          },
+          {
+            "jurisdiction": "DE-BY",
+            "labelDe": "Bayern",
+            "labelEn": "Bavaria",
+            "visibleGoals": 424,
+            "visibleAtomicGoals": 352,
+            "visibleClusterGoals": 72,
+            "viewAtomicGoals": 352,
+            "sourceBackedAtomicGoals": 352,
+            "surrogateBackedAtomicGoals": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "partialSourceLinkedAtomicGoals": 0,
+            "sourceAtomicGoals": 363,
+            "sourceMappedToViewAtomicGoals": 363,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceExtractedGoals": 0,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 0,
+            "sourceUnregisteredAtomicGoals": 0,
+            "sourceOriginalGoals": 401,
+            "sourceFullyCoveredOriginalGoals": 401,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "errors": 0,
+            "warnings": 0,
+            "diagnosticPartialOnlyWarnings": 6,
+            "atomicCoveragePercent": 89.3,
+            "sourceBackedCoveragePercent": 100,
+            "sourceReverseCoveragePercent": 100,
+            "status": "error"
+          },
+          {
+            "jurisdiction": "DE-BB",
+            "labelDe": "Brandenburg",
+            "labelEn": "Brandenburg",
+            "visibleGoals": 162,
+            "visibleAtomicGoals": 126,
+            "visibleClusterGoals": 36,
+            "viewAtomicGoals": 126,
+            "sourceBackedAtomicGoals": 126,
+            "surrogateBackedAtomicGoals": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "partialSourceLinkedAtomicGoals": 0,
+            "sourceAtomicGoals": 34,
+            "sourceMappedToViewAtomicGoals": 34,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceExtractedGoals": 0,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 0,
+            "sourceUnregisteredAtomicGoals": 0,
+            "sourceOriginalGoals": 34,
+            "sourceFullyCoveredOriginalGoals": 34,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "errors": 0,
+            "warnings": 0,
+            "diagnosticPartialOnlyWarnings": 3,
+            "atomicCoveragePercent": 32,
+            "sourceBackedCoveragePercent": 100,
+            "sourceReverseCoveragePercent": 100,
+            "status": "error"
+          },
+          {
+            "jurisdiction": "DE-BE",
+            "labelDe": "Berlin",
+            "labelEn": "Berlin",
+            "visibleGoals": 162,
+            "visibleAtomicGoals": 126,
+            "visibleClusterGoals": 36,
+            "viewAtomicGoals": 126,
+            "sourceBackedAtomicGoals": 126,
+            "surrogateBackedAtomicGoals": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "partialSourceLinkedAtomicGoals": 0,
+            "sourceAtomicGoals": 34,
+            "sourceMappedToViewAtomicGoals": 34,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceExtractedGoals": 0,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 0,
+            "sourceUnregisteredAtomicGoals": 0,
+            "sourceOriginalGoals": 34,
+            "sourceFullyCoveredOriginalGoals": 34,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "errors": 0,
+            "warnings": 0,
+            "diagnosticPartialOnlyWarnings": 3,
+            "atomicCoveragePercent": 32,
+            "sourceBackedCoveragePercent": 100,
+            "sourceReverseCoveragePercent": 100,
+            "status": "error"
+          },
+          {
+            "jurisdiction": "DE-NI",
+            "labelDe": "Niedersachsen",
+            "labelEn": "Lower Saxony",
+            "visibleGoals": 194,
+            "visibleAtomicGoals": 157,
+            "visibleClusterGoals": 37,
+            "viewAtomicGoals": 157,
+            "sourceBackedAtomicGoals": 157,
+            "surrogateBackedAtomicGoals": 2,
+            "unsupportedAssignedAtomicGoals": 0,
+            "partialSourceLinkedAtomicGoals": 0,
+            "sourceAtomicGoals": 124,
+            "sourceMappedToViewAtomicGoals": 124,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceExtractedGoals": 0,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 0,
+            "sourceUnregisteredAtomicGoals": 0,
+            "sourceOriginalGoals": 124,
+            "sourceFullyCoveredOriginalGoals": 124,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "errors": 0,
+            "warnings": 0,
+            "diagnosticPartialOnlyWarnings": 127,
+            "atomicCoveragePercent": 39.8,
+            "sourceBackedCoveragePercent": 100,
+            "sourceReverseCoveragePercent": 100,
+            "status": "error"
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "labelDe": "Nordrhein-Westfalen",
+            "labelEn": "North Rhine-Westphalia",
+            "visibleGoals": 184,
+            "visibleAtomicGoals": 148,
+            "visibleClusterGoals": 36,
+            "viewAtomicGoals": 148,
+            "sourceBackedAtomicGoals": 148,
+            "surrogateBackedAtomicGoals": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "partialSourceLinkedAtomicGoals": 0,
+            "sourceAtomicGoals": 11,
+            "sourceMappedToViewAtomicGoals": 11,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceExtractedGoals": 0,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 0,
+            "sourceUnregisteredAtomicGoals": 0,
+            "sourceOriginalGoals": 11,
+            "sourceFullyCoveredOriginalGoals": 11,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "errors": 0,
+            "warnings": 0,
+            "diagnosticPartialOnlyWarnings": 2,
+            "atomicCoveragePercent": 37.6,
+            "sourceBackedCoveragePercent": 100,
+            "sourceReverseCoveragePercent": 100,
+            "status": "error"
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "labelDe": "Schleswig-Holstein",
+            "labelEn": "Schleswig-Holstein",
+            "visibleGoals": 181,
+            "visibleAtomicGoals": 143,
+            "visibleClusterGoals": 38,
+            "viewAtomicGoals": 143,
+            "sourceBackedAtomicGoals": 143,
+            "surrogateBackedAtomicGoals": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "partialSourceLinkedAtomicGoals": 0,
+            "sourceAtomicGoals": 9,
+            "sourceMappedToViewAtomicGoals": 9,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceExtractedGoals": 0,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 0,
+            "sourceUnregisteredAtomicGoals": 0,
+            "sourceOriginalGoals": 9,
+            "sourceFullyCoveredOriginalGoals": 9,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "errors": 0,
+            "warnings": 0,
+            "diagnosticPartialOnlyWarnings": 2,
+            "atomicCoveragePercent": 36.3,
+            "sourceBackedCoveragePercent": 100,
+            "sourceReverseCoveragePercent": 100,
+            "status": "error"
+          },
+          {
+            "jurisdiction": "DE-HB",
+            "labelDe": "Bremen",
+            "labelEn": "Bremen",
+            "visibleGoals": 114,
+            "visibleAtomicGoals": 96,
+            "visibleClusterGoals": 18,
+            "viewAtomicGoals": 96,
+            "sourceBackedAtomicGoals": 96,
+            "surrogateBackedAtomicGoals": 2,
+            "unsupportedAssignedAtomicGoals": 0,
+            "partialSourceLinkedAtomicGoals": 0,
+            "sourceAtomicGoals": 70,
+            "sourceMappedToViewAtomicGoals": 70,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceExtractedGoals": 0,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 0,
+            "sourceUnregisteredAtomicGoals": 0,
+            "sourceOriginalGoals": 70,
+            "sourceFullyCoveredOriginalGoals": 70,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "errors": 0,
+            "warnings": 0,
+            "diagnosticPartialOnlyWarnings": 93,
+            "atomicCoveragePercent": 24.4,
+            "sourceBackedCoveragePercent": 100,
+            "sourceReverseCoveragePercent": 100,
+            "status": "error"
+          },
+          {
+            "jurisdiction": "DE-HH",
+            "labelDe": "Hamburg",
+            "labelEn": "Hamburg",
+            "visibleGoals": 150,
+            "visibleAtomicGoals": 115,
+            "visibleClusterGoals": 35,
+            "viewAtomicGoals": 115,
+            "sourceBackedAtomicGoals": 115,
+            "surrogateBackedAtomicGoals": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "partialSourceLinkedAtomicGoals": 0,
+            "sourceAtomicGoals": 7,
+            "sourceMappedToViewAtomicGoals": 7,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceExtractedGoals": 0,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 0,
+            "sourceUnregisteredAtomicGoals": 0,
+            "sourceOriginalGoals": 7,
+            "sourceFullyCoveredOriginalGoals": 7,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "errors": 0,
+            "warnings": 0,
+            "diagnosticPartialOnlyWarnings": 116,
+            "atomicCoveragePercent": 29.2,
+            "sourceBackedCoveragePercent": 100,
+            "sourceReverseCoveragePercent": 100,
+            "status": "error"
+          },
+          {
+            "jurisdiction": "DE-MV",
+            "labelDe": "Mecklenburg-Vorpommern",
+            "labelEn": "Mecklenburg-Western Pomerania",
+            "visibleGoals": 211,
+            "visibleAtomicGoals": 170,
+            "visibleClusterGoals": 41,
+            "viewAtomicGoals": 170,
+            "sourceBackedAtomicGoals": 169,
+            "surrogateBackedAtomicGoals": 0,
+            "unsupportedAssignedAtomicGoals": 1,
+            "partialSourceLinkedAtomicGoals": 0,
+            "sourceAtomicGoals": 15,
+            "sourceMappedToViewAtomicGoals": 15,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceExtractedGoals": 0,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 0,
+            "sourceUnregisteredAtomicGoals": 0,
+            "sourceOriginalGoals": 15,
+            "sourceFullyCoveredOriginalGoals": 15,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "errors": 0,
+            "warnings": 0,
+            "diagnosticPartialOnlyWarnings": 170,
+            "atomicCoveragePercent": 43.1,
+            "sourceBackedCoveragePercent": 99.4,
+            "sourceReverseCoveragePercent": 100,
+            "status": "error"
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "labelDe": "Rheinland-Pfalz",
+            "labelEn": "Rhineland-Palatinate",
+            "visibleGoals": 131,
+            "visibleAtomicGoals": 101,
+            "visibleClusterGoals": 30,
+            "viewAtomicGoals": 101,
+            "sourceBackedAtomicGoals": 101,
+            "surrogateBackedAtomicGoals": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "partialSourceLinkedAtomicGoals": 0,
+            "sourceAtomicGoals": 48,
+            "sourceMappedToViewAtomicGoals": 48,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceExtractedGoals": 0,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 0,
+            "sourceUnregisteredAtomicGoals": 0,
+            "sourceOriginalGoals": 48,
+            "sourceFullyCoveredOriginalGoals": 48,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "errors": 0,
+            "warnings": 0,
+            "diagnosticPartialOnlyWarnings": 100,
+            "atomicCoveragePercent": 25.6,
+            "sourceBackedCoveragePercent": 100,
+            "sourceReverseCoveragePercent": 100,
+            "status": "error"
+          },
+          {
+            "jurisdiction": "DE-SL",
+            "labelDe": "Saarland",
+            "labelEn": "Saarland",
+            "visibleGoals": 77,
+            "visibleAtomicGoals": 62,
+            "visibleClusterGoals": 15,
+            "viewAtomicGoals": 62,
+            "sourceBackedAtomicGoals": 62,
+            "surrogateBackedAtomicGoals": 0,
+            "unsupportedAssignedAtomicGoals": 0,
+            "partialSourceLinkedAtomicGoals": 0,
+            "sourceAtomicGoals": 75,
+            "sourceMappedToViewAtomicGoals": 75,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceExtractedGoals": 0,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 0,
+            "sourceUnregisteredAtomicGoals": 0,
+            "sourceOriginalGoals": 75,
+            "sourceFullyCoveredOriginalGoals": 75,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "errors": 0,
+            "warnings": 0,
+            "diagnosticPartialOnlyWarnings": 61,
+            "atomicCoveragePercent": 15.7,
+            "sourceBackedCoveragePercent": 100,
+            "sourceReverseCoveragePercent": 100,
+            "status": "error"
+          },
+          {
+            "jurisdiction": "DE-SN",
+            "labelDe": "Sachsen",
+            "labelEn": "Saxony",
+            "visibleGoals": 230,
+            "visibleAtomicGoals": 185,
+            "visibleClusterGoals": 45,
+            "viewAtomicGoals": 185,
+            "sourceBackedAtomicGoals": 184,
+            "surrogateBackedAtomicGoals": 0,
+            "unsupportedAssignedAtomicGoals": 1,
+            "partialSourceLinkedAtomicGoals": 0,
+            "sourceAtomicGoals": 12,
+            "sourceMappedToViewAtomicGoals": 12,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceExtractedGoals": 0,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 0,
+            "sourceUnregisteredAtomicGoals": 0,
+            "sourceOriginalGoals": 12,
+            "sourceFullyCoveredOriginalGoals": 12,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "errors": 0,
+            "warnings": 0,
+            "diagnosticPartialOnlyWarnings": 184,
+            "atomicCoveragePercent": 47,
+            "sourceBackedCoveragePercent": 99.5,
+            "sourceReverseCoveragePercent": 100,
+            "status": "error"
+          },
+          {
+            "jurisdiction": "DE-ST",
+            "labelDe": "Sachsen-Anhalt",
+            "labelEn": "Saxony-Anhalt",
+            "visibleGoals": 231,
+            "visibleAtomicGoals": 186,
+            "visibleClusterGoals": 45,
+            "viewAtomicGoals": 186,
+            "sourceBackedAtomicGoals": 185,
+            "surrogateBackedAtomicGoals": 0,
+            "unsupportedAssignedAtomicGoals": 1,
+            "partialSourceLinkedAtomicGoals": 0,
+            "sourceAtomicGoals": 14,
+            "sourceMappedToViewAtomicGoals": 14,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceExtractedGoals": 0,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 0,
+            "sourceUnregisteredAtomicGoals": 0,
+            "sourceOriginalGoals": 14,
+            "sourceFullyCoveredOriginalGoals": 14,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "errors": 0,
+            "warnings": 0,
+            "diagnosticPartialOnlyWarnings": 185,
+            "atomicCoveragePercent": 47.2,
+            "sourceBackedCoveragePercent": 99.5,
+            "sourceReverseCoveragePercent": 100,
+            "status": "error"
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "labelDe": "Thüringen",
+            "labelEn": "Thuringia",
+            "visibleGoals": 232,
+            "visibleAtomicGoals": 187,
+            "visibleClusterGoals": 45,
+            "viewAtomicGoals": 187,
+            "sourceBackedAtomicGoals": 186,
+            "surrogateBackedAtomicGoals": 0,
+            "unsupportedAssignedAtomicGoals": 1,
+            "partialSourceLinkedAtomicGoals": 0,
+            "sourceAtomicGoals": 11,
+            "sourceMappedToViewAtomicGoals": 11,
+            "unmappedSourceAtomicGoals": 0,
+            "sourceExtractedGoals": 0,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 0,
+            "sourceUnregisteredAtomicGoals": 0,
+            "sourceOriginalGoals": 11,
+            "sourceFullyCoveredOriginalGoals": 11,
+            "sourcePartiallyCoveredOriginalGoals": 0,
+            "sourceUncoveredOriginalGoals": 0,
+            "errors": 0,
+            "warnings": 0,
+            "diagnosticPartialOnlyWarnings": 187,
+            "atomicCoveragePercent": 47.5,
+            "sourceBackedCoveragePercent": 99.5,
+            "sourceReverseCoveragePercent": 100,
+            "status": "error"
+          }
+        ]
+      },
+      "mappingPipeline": {
+        "totalSources": 22,
+        "completeSources": 0,
+        "incompleteSources": 0,
+        "blockedSources": 22,
+        "maxCompletedSteps": 0,
+        "totalSteps": 3,
+        "currentStep": "MAPPING-1",
+        "sources": [
+          {
+            "sourceLandscapeId": "4654eb89-5629-5560-a41c-e30e862cc29d",
+            "title": "4654eb89-5629-5560-a41c-e30e862cc29d",
+            "jurisdiction": "",
+            "path": "curricula/DE/Gymnasium/mapping/DE-HE/source-components/he-gk-lk_biology_neurobiology_bounded_components.reviewed-20261007-v1.review.json",
+            "sourceKind": "missing-extraction",
+            "currentStep": "MAPPING-1",
+            "completedSteps": 0,
+            "totalSteps": 3,
+            "sourceGoals": 0,
+            "passages": 0,
+            "steps": [
+              {
+                "id": "MAPPING-1",
+                "label": "Original-Lehrplanpassagen extrahiert",
+                "status": "incomplete",
+                "dependsOn": [],
+                "checks": [
+                  {
+                    "id": "source-extraction-file-present",
+                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
+                    "passed": false,
+                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-2",
+                "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-1"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-1-complete",
+                    "label": "MAPPING-1 abgeschlossen",
+                    "passed": false,
+                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-3",
+                "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-2"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-2-complete",
+                    "label": "MAPPING-2 abgeschlossen",
+                    "passed": false,
+                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sourceLandscapeId": "6f148acb-6e11-55a4-a1bd-fda53d757571",
+            "title": "6f148acb-6e11-55a4-a1bd-fda53d757571",
+            "jurisdiction": "",
+            "path": "curricula/DE/Gymnasium/mapping/DE-BY/source-components/by-ea_biology_neurobiology_bounded_components.reviewed-20261007-v1.review.json",
+            "sourceKind": "missing-extraction",
+            "currentStep": "MAPPING-1",
+            "completedSteps": 0,
+            "totalSteps": 3,
+            "sourceGoals": 0,
+            "passages": 0,
+            "steps": [
+              {
+                "id": "MAPPING-1",
+                "label": "Original-Lehrplanpassagen extrahiert",
+                "status": "incomplete",
+                "dependsOn": [],
+                "checks": [
+                  {
+                    "id": "source-extraction-file-present",
+                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
+                    "passed": false,
+                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-2",
+                "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-1"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-1-complete",
+                    "label": "MAPPING-1 abgeschlossen",
+                    "passed": false,
+                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-3",
+                "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-2"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-2-complete",
+                    "label": "MAPPING-2 abgeschlossen",
+                    "passed": false,
+                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sourceLandscapeId": "736b4fcf-67f4-5d66-8b1a-0d58bc984cac",
+            "title": "736b4fcf-67f4-5d66-8b1a-0d58bc984cac",
+            "jurisdiction": "",
+            "path": "curricula/DE/Gymnasium/mapping/DE-BY/source-components/by-ga_biology_neurobiology_bounded_components.reviewed-20261007-v1.review.json",
+            "sourceKind": "missing-extraction",
+            "currentStep": "MAPPING-1",
+            "completedSteps": 0,
+            "totalSteps": 3,
+            "sourceGoals": 0,
+            "passages": 0,
+            "steps": [
+              {
+                "id": "MAPPING-1",
+                "label": "Original-Lehrplanpassagen extrahiert",
+                "status": "incomplete",
+                "dependsOn": [],
+                "checks": [
+                  {
+                    "id": "source-extraction-file-present",
+                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
+                    "passed": false,
+                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-2",
+                "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-1"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-1-complete",
+                    "label": "MAPPING-1 abgeschlossen",
+                    "passed": false,
+                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-3",
+                "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-2"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-2-complete",
+                    "label": "MAPPING-2 abgeschlossen",
+                    "passed": false,
+                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sourceLandscapeId": "825184bf-e995-5086-b048-91e732e6c0fb",
+            "title": "825184bf-e995-5086-b048-91e732e6c0fb",
+            "jurisdiction": "",
+            "path": "curricula/DE/Gymnasium/mapping/DE-HE/source-components/he-lk_biology_neurobiology_bounded_components.reviewed-20261007-v1.review.json",
+            "sourceKind": "missing-extraction",
+            "currentStep": "MAPPING-1",
+            "completedSteps": 0,
+            "totalSteps": 3,
+            "sourceGoals": 0,
+            "passages": 0,
+            "steps": [
+              {
+                "id": "MAPPING-1",
+                "label": "Original-Lehrplanpassagen extrahiert",
+                "status": "incomplete",
+                "dependsOn": [],
+                "checks": [
+                  {
+                    "id": "source-extraction-file-present",
+                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
+                    "passed": false,
+                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-2",
+                "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-1"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-1-complete",
+                    "label": "MAPPING-1 abgeschlossen",
+                    "passed": false,
+                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-3",
+                "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-2"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-2-complete",
+                    "label": "MAPPING-2 abgeschlossen",
+                    "passed": false,
+                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sourceLandscapeId": "DE_ST_BIOLOGIE_EPHASE10_Q1_FOUR_BOUNDED_COMPONENTS_AUTHOR_20261007_V1",
+            "title": "DE_ST_BIOLOGIE_EPHASE10_Q1_FOUR_BOUNDED_COMPONENTS_AUTHOR_20261007_V1",
+            "jurisdiction": "",
+            "path": "curricula/DE/Gymnasium/mapping/DE-ST/source-components/st_biology_q1_four_bounded_stage_components.author-20261007-v1.review.json",
+            "sourceKind": "missing-extraction",
+            "currentStep": "MAPPING-1",
+            "completedSteps": 0,
+            "totalSteps": 3,
+            "sourceGoals": 0,
+            "passages": 0,
+            "steps": [
+              {
+                "id": "MAPPING-1",
+                "label": "Original-Lehrplanpassagen extrahiert",
+                "status": "incomplete",
+                "dependsOn": [],
+                "checks": [
+                  {
+                    "id": "source-extraction-file-present",
+                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
+                    "passed": false,
+                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-2",
+                "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-1"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-1-complete",
+                    "label": "MAPPING-1 abgeschlossen",
+                    "passed": false,
+                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-3",
+                "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-2"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-2-complete",
+                    "label": "MAPPING-2 abgeschlossen",
+                    "passed": false,
+                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sourceLandscapeId": "4ed0e12e-4cf3-5a8b-8b3b-ab39cfc894bb",
+            "title": "Biologie Sekundarstufe I (Brandenburg, gemeinsamer BE/BB-Rahmenlehrplan 2015 Source-Extraction)",
+            "jurisdiction": "DE-BB",
+            "path": "curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_biology_lower_secondary_source_extraction_to_canonical_biology.review.json",
+            "sourceKind": "missing-extraction",
+            "currentStep": "MAPPING-1",
+            "completedSteps": 0,
+            "totalSteps": 3,
+            "sourceGoals": 0,
+            "passages": 0,
+            "steps": [
+              {
+                "id": "MAPPING-1",
+                "label": "Original-Lehrplanpassagen extrahiert",
+                "status": "incomplete",
+                "dependsOn": [],
+                "checks": [
+                  {
+                    "id": "source-extraction-file-present",
+                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
+                    "passed": false,
+                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-2",
+                "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-1"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-1-complete",
+                    "label": "MAPPING-1 abgeschlossen",
+                    "passed": false,
+                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-3",
+                "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-2"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-2-complete",
+                    "label": "MAPPING-2 abgeschlossen",
+                    "passed": false,
+                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sourceLandscapeId": "226bcd50-df1a-5ea5-8b20-d88e9604f321",
+            "title": "Biologie Sekundarstufe I (Berlin, gemeinsamer BE/BB-Rahmenlehrplan 2015 Source-Extraction)",
+            "jurisdiction": "DE-BE",
+            "path": "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_biology_lower_secondary_source_extraction_to_canonical_biology.review.json",
+            "sourceKind": "missing-extraction",
+            "currentStep": "MAPPING-1",
+            "completedSteps": 0,
+            "totalSteps": 3,
+            "sourceGoals": 0,
+            "passages": 0,
+            "steps": [
+              {
+                "id": "MAPPING-1",
+                "label": "Original-Lehrplanpassagen extrahiert",
+                "status": "incomplete",
+                "dependsOn": [],
+                "checks": [
+                  {
+                    "id": "source-extraction-file-present",
+                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
+                    "passed": false,
+                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-2",
+                "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-1"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-1-complete",
+                    "label": "MAPPING-1 abgeschlossen",
+                    "passed": false,
+                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-3",
+                "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-2"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-2-complete",
+                    "label": "MAPPING-2 abgeschlossen",
+                    "passed": false,
+                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sourceLandscapeId": "4cf4d9ae-ec61-51aa-868a-493e799cc1fa",
+            "title": "Biologie Sekundarstufe I (Baden-Wuerttemberg, Bildungsplan 2016 Gymnasium V2 Source-Extraction)",
+            "jurisdiction": "DE-BW",
+            "path": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_biology_lower_secondary_source_extraction_to_canonical_biology.review.json",
+            "sourceKind": "missing-extraction",
+            "currentStep": "MAPPING-1",
+            "completedSteps": 0,
+            "totalSteps": 3,
+            "sourceGoals": 0,
+            "passages": 0,
+            "steps": [
+              {
+                "id": "MAPPING-1",
+                "label": "Original-Lehrplanpassagen extrahiert",
+                "status": "incomplete",
+                "dependsOn": [],
+                "checks": [
+                  {
+                    "id": "source-extraction-file-present",
+                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
+                    "passed": false,
+                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-2",
+                "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-1"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-1-complete",
+                    "label": "MAPPING-1 abgeschlossen",
+                    "passed": false,
+                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-3",
+                "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-2"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-2-complete",
+                    "label": "MAPPING-2 abgeschlossen",
+                    "passed": false,
+                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sourceLandscapeId": "357a7003-b636-570e-a0bd-6bb63518d2f6",
+            "title": "Biologie (Gymnasium)",
+            "jurisdiction": "DE-BY",
+            "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_biology_source_extraction_to_canonical_biology.m7-q1-bacterial-structure-fission-20261005-v1.review.json",
+            "sourceKind": "missing-extraction",
+            "currentStep": "MAPPING-1",
+            "completedSteps": 0,
+            "totalSteps": 3,
+            "sourceGoals": 0,
+            "passages": 0,
+            "steps": [
+              {
+                "id": "MAPPING-1",
+                "label": "Original-Lehrplanpassagen extrahiert",
+                "status": "incomplete",
+                "dependsOn": [],
+                "checks": [
+                  {
+                    "id": "source-extraction-file-present",
+                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
+                    "passed": false,
+                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-2",
+                "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-1"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-1-complete",
+                    "label": "MAPPING-1 abgeschlossen",
+                    "passed": false,
+                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-3",
+                "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-2"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-2-complete",
+                    "label": "MAPPING-2 abgeschlossen",
+                    "passed": false,
+                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sourceLandscapeId": "4d233e6e-95f0-5058-8319-6777bd16c7cf",
+            "title": "Biologie Sekundarstufe I (Bremen, Bildungsplan 2006/2022 Source-Extraction)",
+            "jurisdiction": "DE-HB",
+            "path": "curricula/DE/Gymnasium/mapping/DE-HB/lower-secondary/hb_biology_lower_secondary_source_extraction_to_canonical_biology.review.json",
+            "sourceKind": "missing-extraction",
+            "currentStep": "MAPPING-1",
+            "completedSteps": 0,
+            "totalSteps": 3,
+            "sourceGoals": 0,
+            "passages": 0,
+            "steps": [
+              {
+                "id": "MAPPING-1",
+                "label": "Original-Lehrplanpassagen extrahiert",
+                "status": "incomplete",
+                "dependsOn": [],
+                "checks": [
+                  {
+                    "id": "source-extraction-file-present",
+                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
+                    "passed": false,
+                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-2",
+                "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-1"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-1-complete",
+                    "label": "MAPPING-1 abgeschlossen",
+                    "passed": false,
+                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-3",
+                "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-2"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-2-complete",
+                    "label": "MAPPING-2 abgeschlossen",
+                    "passed": false,
+                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+            "title": "Biologie Oberstufe (Hessen, KC 2024)",
+            "jurisdiction": "DE-HE",
+            "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_biology_upper_secondary_source_extraction_to_canonical_biology.m7-e3-trisomy-current-20261001-v3.review.json",
+            "sourceKind": "missing-extraction",
+            "currentStep": "MAPPING-1",
+            "completedSteps": 0,
+            "totalSteps": 3,
+            "sourceGoals": 0,
+            "passages": 0,
+            "steps": [
+              {
+                "id": "MAPPING-1",
+                "label": "Original-Lehrplanpassagen extrahiert",
+                "status": "incomplete",
+                "dependsOn": [],
+                "checks": [
+                  {
+                    "id": "source-extraction-file-present",
+                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
+                    "passed": false,
+                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-2",
+                "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-1"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-1-complete",
+                    "label": "MAPPING-1 abgeschlossen",
+                    "passed": false,
+                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-3",
+                "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-2"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-2-complete",
+                    "label": "MAPPING-2 abgeschlossen",
+                    "passed": false,
+                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sourceLandscapeId": "71438941-0ceb-46ee-ad31-773cee700779",
+            "title": "Biologie Sekundarstufe I (Hessen, G9)",
+            "jurisdiction": "DE-HE",
+            "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_biology_lower_secondary_source_extraction_to_canonical_biology.review.json",
+            "sourceKind": "missing-extraction",
+            "currentStep": "MAPPING-1",
+            "completedSteps": 0,
+            "totalSteps": 3,
+            "sourceGoals": 0,
+            "passages": 0,
+            "steps": [
+              {
+                "id": "MAPPING-1",
+                "label": "Original-Lehrplanpassagen extrahiert",
+                "status": "incomplete",
+                "dependsOn": [],
+                "checks": [
+                  {
+                    "id": "source-extraction-file-present",
+                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
+                    "passed": false,
+                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-2",
+                "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-1"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-1-complete",
+                    "label": "MAPPING-1 abgeschlossen",
+                    "passed": false,
+                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-3",
+                "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-2"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-2-complete",
+                    "label": "MAPPING-2 abgeschlossen",
+                    "passed": false,
+                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sourceLandscapeId": "a888e177-da7a-5466-8f93-6d39231be0ea",
+            "title": "Biologie Sekundarstufe I (Hamburg Bildungsplan Gymnasium 2011 Source-Extraction)",
+            "jurisdiction": "DE-HH",
+            "path": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_biology_lower_secondary_source_extraction_to_canonical_biology.review.json",
+            "sourceKind": "missing-extraction",
+            "currentStep": "MAPPING-1",
+            "completedSteps": 0,
+            "totalSteps": 3,
+            "sourceGoals": 0,
+            "passages": 0,
+            "steps": [
+              {
+                "id": "MAPPING-1",
+                "label": "Original-Lehrplanpassagen extrahiert",
+                "status": "incomplete",
+                "dependsOn": [],
+                "checks": [
+                  {
+                    "id": "source-extraction-file-present",
+                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
+                    "passed": false,
+                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-2",
+                "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-1"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-1-complete",
+                    "label": "MAPPING-1 abgeschlossen",
+                    "passed": false,
+                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-3",
+                "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-2"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-2-complete",
+                    "label": "MAPPING-2 abgeschlossen",
+                    "passed": false,
+                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sourceLandscapeId": "b8af8cde-68e3-5fb6-8bfb-99372267fdaf",
+            "title": "Biologie Sekundarstufe I (Mecklenburg-Vorpommern Rahmenplan 2022 Source-Extraction)",
+            "jurisdiction": "DE-MV",
+            "path": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_biology_lower_secondary_source_extraction_to_canonical_biology.m7-q1-bacterial-structure-fission-20261005-v1.review.json",
+            "sourceKind": "missing-extraction",
+            "currentStep": "MAPPING-1",
+            "completedSteps": 0,
+            "totalSteps": 3,
+            "sourceGoals": 0,
+            "passages": 0,
+            "steps": [
+              {
+                "id": "MAPPING-1",
+                "label": "Original-Lehrplanpassagen extrahiert",
+                "status": "incomplete",
+                "dependsOn": [],
+                "checks": [
+                  {
+                    "id": "source-extraction-file-present",
+                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
+                    "passed": false,
+                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-2",
+                "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-1"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-1-complete",
+                    "label": "MAPPING-1 abgeschlossen",
+                    "passed": false,
+                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-3",
+                "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-2"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-2-complete",
+                    "label": "MAPPING-2 abgeschlossen",
+                    "passed": false,
+                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sourceLandscapeId": "0b27a054-e81e-5423-aa71-d3d8d9d8f0db",
+            "title": "Biologie Sekundarstufe I (Niedersachsen, KC 2015 Source-Extraction)",
+            "jurisdiction": "DE-NI",
+            "path": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_biology_lower_secondary_source_extraction_to_canonical_biology.m7-e3-recombination-20261001-v2.review.json",
+            "sourceKind": "missing-extraction",
+            "currentStep": "MAPPING-1",
+            "completedSteps": 0,
+            "totalSteps": 3,
+            "sourceGoals": 0,
+            "passages": 0,
+            "steps": [
+              {
+                "id": "MAPPING-1",
+                "label": "Original-Lehrplanpassagen extrahiert",
+                "status": "incomplete",
+                "dependsOn": [],
+                "checks": [
+                  {
+                    "id": "source-extraction-file-present",
+                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
+                    "passed": false,
+                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-2",
+                "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-1"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-1-complete",
+                    "label": "MAPPING-1 abgeschlossen",
+                    "passed": false,
+                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-3",
+                "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-2"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-2-complete",
+                    "label": "MAPPING-2 abgeschlossen",
+                    "passed": false,
+                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sourceLandscapeId": "7908e97d-5a4e-57ce-876f-78e121256991",
+            "title": "Biologie Sekundarstufe I (Nordrhein-Westfalen KLP Gymnasium 2019 Source-Extraction)",
+            "jurisdiction": "DE-NW",
+            "path": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_biology_lower_secondary_source_extraction_to_canonical_biology.m7-q1-bacterial-structure-fission-20261005-v1.review.json",
+            "sourceKind": "missing-extraction",
+            "currentStep": "MAPPING-1",
+            "completedSteps": 0,
+            "totalSteps": 3,
+            "sourceGoals": 0,
+            "passages": 0,
+            "steps": [
+              {
+                "id": "MAPPING-1",
+                "label": "Original-Lehrplanpassagen extrahiert",
+                "status": "incomplete",
+                "dependsOn": [],
+                "checks": [
+                  {
+                    "id": "source-extraction-file-present",
+                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
+                    "passed": false,
+                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-2",
+                "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-1"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-1-complete",
+                    "label": "MAPPING-1 abgeschlossen",
+                    "passed": false,
+                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-3",
+                "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-2"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-2-complete",
+                    "label": "MAPPING-2 abgeschlossen",
+                    "passed": false,
+                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sourceLandscapeId": "1fcb0808-0a16-5f33-8124-97c345f9903c",
+            "title": "Biologie Sekundarstufe I (Rheinland-Pfalz, Lehrplan BCP 2014 Source-Extraction)",
+            "jurisdiction": "DE-RP",
+            "path": "curricula/DE/Gymnasium/mapping/DE-RP/lower-secondary/rp_biology_lower_secondary_source_extraction_to_canonical_biology.review.json",
+            "sourceKind": "missing-extraction",
+            "currentStep": "MAPPING-1",
+            "completedSteps": 0,
+            "totalSteps": 3,
+            "sourceGoals": 0,
+            "passages": 0,
+            "steps": [
+              {
+                "id": "MAPPING-1",
+                "label": "Original-Lehrplanpassagen extrahiert",
+                "status": "incomplete",
+                "dependsOn": [],
+                "checks": [
+                  {
+                    "id": "source-extraction-file-present",
+                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
+                    "passed": false,
+                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-2",
+                "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-1"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-1-complete",
+                    "label": "MAPPING-1 abgeschlossen",
+                    "passed": false,
+                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-3",
+                "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-2"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-2-complete",
+                    "label": "MAPPING-2 abgeschlossen",
+                    "passed": false,
+                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sourceLandscapeId": "7b8cf796-04c9-5f04-856c-579ec6a95d12",
+            "title": "Biologie Sekundarstufe I (Schleswig-Holstein Fachanforderungen 2023 Source-Extraction)",
+            "jurisdiction": "DE-SH",
+            "path": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_biology_lower_secondary_source_extraction_to_canonical_biology.m7-q1-bacterial-structure-fission-20261005-v1.review.json",
+            "sourceKind": "missing-extraction",
+            "currentStep": "MAPPING-1",
+            "completedSteps": 0,
+            "totalSteps": 3,
+            "sourceGoals": 0,
+            "passages": 0,
+            "steps": [
+              {
+                "id": "MAPPING-1",
+                "label": "Original-Lehrplanpassagen extrahiert",
+                "status": "incomplete",
+                "dependsOn": [],
+                "checks": [
+                  {
+                    "id": "source-extraction-file-present",
+                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
+                    "passed": false,
+                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-2",
+                "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-1"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-1-complete",
+                    "label": "MAPPING-1 abgeschlossen",
+                    "passed": false,
+                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-3",
+                "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-2"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-2-complete",
+                    "label": "MAPPING-2 abgeschlossen",
+                    "passed": false,
+                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sourceLandscapeId": "2280368c-3b81-5a74-8cac-c0bc6cc4ce7a",
+            "title": "Biologie Sekundarstufe I (Saarland, Naturwissenschaften 5/6 2012 Source-Extraction)",
+            "jurisdiction": "DE-SL",
+            "path": "curricula/DE/Gymnasium/mapping/DE-SL/lower-secondary/sl_biology_lower_secondary_source_extraction_to_canonical_biology.review.json",
+            "sourceKind": "missing-extraction",
+            "currentStep": "MAPPING-1",
+            "completedSteps": 0,
+            "totalSteps": 3,
+            "sourceGoals": 0,
+            "passages": 0,
+            "steps": [
+              {
+                "id": "MAPPING-1",
+                "label": "Original-Lehrplanpassagen extrahiert",
+                "status": "incomplete",
+                "dependsOn": [],
+                "checks": [
+                  {
+                    "id": "source-extraction-file-present",
+                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
+                    "passed": false,
+                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-2",
+                "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-1"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-1-complete",
+                    "label": "MAPPING-1 abgeschlossen",
+                    "passed": false,
+                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-3",
+                "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-2"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-2-complete",
+                    "label": "MAPPING-2 abgeschlossen",
+                    "passed": false,
+                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sourceLandscapeId": "bfa29aab-c913-51c3-8bec-bfd2eb227a38",
+            "title": "Biologie Sekundarstufe I (Sachsen Lehrplan Gymnasium 2025 Source-Extraction)",
+            "jurisdiction": "DE-SN",
+            "path": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_biology_lower_secondary_source_extraction_to_canonical_biology.m7-q1-bacterial-structure-fission-20261005-v1.review.json",
+            "sourceKind": "missing-extraction",
+            "currentStep": "MAPPING-1",
+            "completedSteps": 0,
+            "totalSteps": 3,
+            "sourceGoals": 0,
+            "passages": 0,
+            "steps": [
+              {
+                "id": "MAPPING-1",
+                "label": "Original-Lehrplanpassagen extrahiert",
+                "status": "incomplete",
+                "dependsOn": [],
+                "checks": [
+                  {
+                    "id": "source-extraction-file-present",
+                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
+                    "passed": false,
+                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-2",
+                "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-1"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-1-complete",
+                    "label": "MAPPING-1 abgeschlossen",
+                    "passed": false,
+                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-3",
+                "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-2"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-2-complete",
+                    "label": "MAPPING-2 abgeschlossen",
+                    "passed": false,
+                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sourceLandscapeId": "4282f314-e1bd-527c-8c35-38d989ffe53e",
+            "title": "Biologie Sekundarstufe I (Sachsen-Anhalt Fachlehrplan Gymnasium 2022 Source-Extraction)",
+            "jurisdiction": "DE-ST",
+            "path": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_biology_lower_secondary_source_extraction_to_canonical_biology.m7-q1-bacterial-structure-fission-20261005-v1.review.json",
+            "sourceKind": "missing-extraction",
+            "currentStep": "MAPPING-1",
+            "completedSteps": 0,
+            "totalSteps": 3,
+            "sourceGoals": 0,
+            "passages": 0,
+            "steps": [
+              {
+                "id": "MAPPING-1",
+                "label": "Original-Lehrplanpassagen extrahiert",
+                "status": "incomplete",
+                "dependsOn": [],
+                "checks": [
+                  {
+                    "id": "source-extraction-file-present",
+                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
+                    "passed": false,
+                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-2",
+                "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-1"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-1-complete",
+                    "label": "MAPPING-1 abgeschlossen",
+                    "passed": false,
+                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-3",
+                "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-2"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-2-complete",
+                    "label": "MAPPING-2 abgeschlossen",
+                    "passed": false,
+                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "sourceLandscapeId": "9ba41959-3580-5872-8230-af955a70ece0",
+            "title": "Biologie Sekundarstufe I (Thueringen Lehrplan Gymnasium 2024 Source-Extraction)",
+            "jurisdiction": "DE-TH",
+            "path": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_biology_lower_secondary_source_extraction_to_canonical_biology.review.json",
+            "sourceKind": "missing-extraction",
+            "currentStep": "MAPPING-1",
+            "completedSteps": 0,
+            "totalSteps": 3,
+            "sourceGoals": 0,
+            "passages": 0,
+            "steps": [
+              {
+                "id": "MAPPING-1",
+                "label": "Original-Lehrplanpassagen extrahiert",
+                "status": "incomplete",
+                "dependsOn": [],
+                "checks": [
+                  {
+                    "id": "source-extraction-file-present",
+                    "label": "Persistiertes Source-Extraction-Artefakt vorhanden",
+                    "passed": false,
+                    "details": "Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-2",
+                "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-1"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-1-complete",
+                    "label": "MAPPING-1 abgeschlossen",
+                    "passed": false,
+                    "details": "Source-Ziele dürfen erst nach vollständig extrahierten Originalpassagen als abgeschlossen gelten."
+                  }
+                ]
+              },
+              {
+                "id": "MAPPING-3",
+                "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+                "status": "blocked",
+                "dependsOn": [
+                  "MAPPING-2"
+                ],
+                "checks": [
+                  {
+                    "id": "mapping-2-complete",
+                    "label": "MAPPING-2 abgeschlossen",
+                    "passed": false,
+                    "details": "Das Mapping auf SkillPilot-Ziele darf erst nach geprüften Source-Zielen als abgeschlossen gelten."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "scopes": [
+        {
+          "scopeId": "canonical-biology-sek2",
+          "label": "Sekundarstufe II",
+          "selectedAtomicGoals": 239,
+          "maturity": "M4",
+          "rules": [
+            {
+              "id": "CQR-101",
+              "status": "pass",
+              "summary": "Effective route coverage is complete for the configured scope.",
+              "metrics": {
+                "selectedAtomicGoals": 239,
+                "missingMotivationPath": 0,
+                "missingTerminalPath": 0
+              }
+            },
+            {
+              "id": "CQR-102",
+              "status": "pass",
+              "summary": "Direct atomic route coverage is complete for the configured scope.",
+              "metrics": {
+                "selectedAtomicGoals": 239,
+                "missingDirectMotivationPath": 0,
+                "missingDirectTerminalPath": 0
+              }
+            },
+            {
+              "id": "CQR-103",
+              "status": "pass",
+              "summary": "No scoped cluster-level requires remain.",
+              "metrics": {
+                "scopedClusterRequires": 0
+              }
+            },
+            {
+              "id": "CQR-201",
+              "status": "pass",
+              "summary": "All configured terminal autonomy goals have examData.",
+              "metrics": {
+                "terminalAutonomyGoals": 18,
+                "terminalAutonomyGoalsWithExamData": 18,
+                "terminalAutonomyGoalsWithoutExamData": 0
+              }
+            },
+            {
+              "id": "CQR-202",
+              "status": "pass",
+              "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+              "metrics": {
+                "terminalAutonomyGoals": 18,
+                "concreteExamData": 18,
+                "weakExamData": 0
+              }
+            },
+            {
+              "id": "CQR-203",
+              "status": "pass",
+              "summary": "All terminal autonomy examData has release and coverage metadata.",
+              "metrics": {
+                "terminalAutonomyGoals": 18,
+                "releasedCoverageCompleteExamData": 18,
+                "releaseCoverageIncompleteExamData": 0
+              }
+            }
+          ]
+        }
+      ],
+      "rules": [
+        {
+          "id": "CQR-001",
+          "status": "pass",
+          "summary": "Basic graph integrity checks pass.",
+          "metrics": {
+            "goals": 479,
+            "localReferenceIssues": 0
+          }
+        },
+        {
+          "id": "CQR-002",
+          "status": "pass",
+          "summary": "Explicit type metadata matches graph structure.",
+          "metrics": {
+            "mismatches": 0
+          }
+        },
+        {
+          "id": "CQR-000",
+          "status": "fail",
+          "summary": "0/16 declared Bundesland source inventories are readable and fully registered; 0 original source URL issue(s).",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "completeSourceJurisdictions": 0,
+            "emptySourceJurisdictions": 0,
+            "missingReadableSourceInventoryJurisdictions": 16,
+            "originalSourceUrlIssues": 0,
+            "sourceExtractedGoals": 0,
+            "sourceOriginalGoals": 1269,
+            "sourceUnregisteredGoals": 0,
+            "sourceExtractedAtomicGoals": 0,
+            "sourceUnregisteredAtomicGoals": 0
+          },
+          "details": [
+            "DE-BW: 111 source original goal(s) are registered, but no readable source inventory goals were extracted",
+            "DE-HE: 293 source original goal(s) are registered, but no readable source inventory goals were extracted",
+            "DE-BY: 401 source original goal(s) are registered, but no readable source inventory goals were extracted",
+            "DE-BB: 34 source original goal(s) are registered, but no readable source inventory goals were extracted",
+            "DE-BE: 34 source original goal(s) are registered, but no readable source inventory goals were extracted",
+            "DE-NI: 124 source original goal(s) are registered, but no readable source inventory goals were extracted",
+            "DE-NW: 11 source original goal(s) are registered, but no readable source inventory goals were extracted",
+            "DE-SH: 9 source original goal(s) are registered, but no readable source inventory goals were extracted",
+            "DE-HB: 70 source original goal(s) are registered, but no readable source inventory goals were extracted",
+            "DE-HH: 7 source original goal(s) are registered, but no readable source inventory goals were extracted",
+            "DE-MV: 15 source original goal(s) are registered, but no readable source inventory goals were extracted",
+            "DE-RP: 48 source original goal(s) are registered, but no readable source inventory goals were extracted",
+            "DE-SL: 75 source original goal(s) are registered, but no readable source inventory goals were extracted",
+            "DE-SN: 12 source original goal(s) are registered, but no readable source inventory goals were extracted",
+            "DE-ST: 14 source original goal(s) are registered, but no readable source inventory goals were extracted",
+            "DE-TH: 11 source original goal(s) are registered, but no readable source inventory goals were extracted"
+          ]
+        },
+        {
+          "id": "CQR-003",
+          "status": "fail",
+          "summary": "0/16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+          "metrics": {
+            "totalJurisdictions": 16,
+            "coveredJurisdictions": 16,
+            "sourceBackedJurisdictions": 16,
+            "sourceCompleteJurisdictions": 0,
+            "fullCoverageJurisdictions": 0,
+            "uncoveredJurisdictions": 0,
+            "incompleteJurisdictions": 4,
+            "unsupportedAssignmentJurisdictions": 4,
+            "sourceUnmappedJurisdictions": 1,
+            "unsupportedAssignedAtomicGoals": 4,
+            "unmappedSourceAtomicGoals": 2,
+            "sourceAtomicGoals": 1178,
+            "sourceMappedToViewAtomicGoals": 1176,
+            "sourceOriginalGoals": 1269,
+            "sourceFullyCoveredOriginalGoals": 1264,
+            "sourcePartiallyCoveredOriginalGoals": 3,
+            "sourceUncoveredOriginalGoals": 2,
+            "surrogateBackedAtomicGoals": 4,
+            "partialSourceLinkedAtomicGoals": 0,
+            "warningedJurisdictions": 0,
+            "cleanJurisdictions": 0,
+            "partialJurisdictions": 0,
+            "errorJurisdictions": 16,
+            "minSourceBackedAtomicGoals": 62,
+            "maxVisibleAtomicGoals": 365,
+            "maxSourceBackedAtomicGoals": 365,
+            "totalAtomicGoals": 394
+          },
+          "details": [
+            "DE-MV: 1 assigned atomic goal(s) without source-backed Lehrplan evidence",
+            "DE-SN: 1 assigned atomic goal(s) without source-backed Lehrplan evidence",
+            "DE-ST: 1 assigned atomic goal(s) without source-backed Lehrplan evidence",
+            "DE-TH: 1 assigned atomic goal(s) without source-backed Lehrplan evidence",
+            "DE-HE: 2 source Lehrplan atom(s) do not map into the Bundesland view",
+            "DE-MV: 169/170 source-backed view atomic goal(s)",
+            "DE-SN: 184/185 source-backed view atomic goal(s)",
+            "DE-ST: 185/186 source-backed view atomic goal(s)",
+            "DE-TH: 186/187 source-backed view atomic goal(s)"
+          ]
+        },
+        {
+          "id": "CQR-004",
+          "status": "pass",
+          "summary": "Course-level mapping is clean for 1111 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "metrics": {
+            "configuredMappingFiles": 53,
+            "sourceGoals": 768,
+            "sourceGoalsWithCourseLevel": 768,
+            "gkLkSourceGoals": 356,
+            "lkSourceGoals": 412,
+            "unspecifiedSourceGoals": 6,
+            "checkedMappingEdges": 1111,
+            "defaultedUnspecifiedMappingEdges": 0,
+            "reviewedCourseLevelExceptions": 0,
+            "mismatches": 0,
+            "missingSourceGoals": 0,
+            "missingTargetGoals": 0,
+            "unmappedCourseLevelSourceGoals": 0
+          }
+        },
+        {
+          "id": "CQR-005",
+          "status": "pass",
+          "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+          "metrics": {
+            "sourceExtractionSources": 0,
+            "peerBaselineChecks": 0,
+            "failedPeerBaselineChecks": 0,
+            "granularityChecks": 0,
+            "failedGranularityChecks": 0
+          }
+        },
+        {
+          "id": "CQR-301",
+          "status": "pass",
+          "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+          "metrics": {
+            "configs": 1,
+            "leafGoals": 394,
+            "atomic": 394,
+            "needsDeveloperReview": 0,
+            "nonAtomic": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0
+          }
+        },
+        {
+          "id": "CQR-302",
+          "status": "pass",
+          "summary": "Memory-card review is current: 10/394 ordinary atomic goals intentionally use memorization support, 27/27 primary cards are kept with origin traces, all 3 memory goals are traced, and 37 view-visible memory-required goals resolve to visible memory nodes.",
+          "metrics": {
+            "configs": 1,
+            "reviewedGoals": 394,
+            "noMemoryNeeded": 384,
+            "memoryRequired": 10,
+            "needsDeveloperReview": 0,
+            "missing": 0,
+            "stale": 0,
+            "obsolete": 0,
+            "duplicateRecords": 0,
+            "invalidRecords": 0,
+            "primaryCards": 27,
+            "keptCards": 27,
+            "cardsMarkedRemove": 0,
+            "cardNeedsDeveloperReview": 0,
+            "missingCardReviews": 0,
+            "staleCardReviews": 0,
+            "obsoleteCardReviews": 0,
+            "duplicateCardReviewRecords": 0,
+            "invalidCardReviewRecords": 0,
+            "untracedMemoryRequiredGoals": 0,
+            "visibilityScopes": 8,
+            "visibilityCheckedMemoryRequiredGoals": 37,
+            "visibilityMissingVisibleMemoryGoals": 0,
+            "visibilityErrors": 0,
+            "memoryGoals": 3,
+            "tracedMemoryGoals": 3,
+            "untracedMemoryGoals": 0,
+            "deckIds": 3,
+            "deckFiles": 6,
+            "cardRows": 54
+          },
+          "details": [
+            "canonical-biology-full: audit report docs/qa-ci/status/memory-card-review-canonical-biology-full.md"
+          ]
+        },
+        {
+          "id": "CQR-303",
+          "status": "warn",
+          "summary": "Deep curriculum QA is incomplete: 246/394 current curricularAtomic goals strictly complete.",
+          "metrics": {
+            "expectedGoals": 394,
+            "remaining": 148,
+            "strictComplete": 246,
+            "currentDescriptionResolutions": 246,
+            "currentPositiveEvidenceProfiles": 246,
+            "currentSemanticAtomicityDecisions": 394,
+            "currentMemoryReviewDecisions": 394,
+            "currentVisualizationQaRecords": 246,
+            "deferredVisualizations": 0,
+            "requiredChecksPassed": 6,
+            "requiredChecksTotal": 6,
+            "blockingIssues": 0
+          }
+        },
+        {
+          "id": "CQR-401",
+          "status": "not_configured",
+          "summary": "No composition view is registered for this curriculum.",
+          "metrics": {
+            "compositionViews": 0
+          }
+        },
+        {
+          "id": "CQR-501",
+          "status": "pass",
+          "summary": "No active applicability warning debt is visible.",
+          "metrics": {
+            "activeWarnings": 0,
+            "rawActiveWarnings": 0,
+            "diagnosticPartialOnlyWarnings": 1370,
+            "acceptedWarnings": 0,
+            "obsoleteAcceptedWarnings": 0
+          },
+          "details": [
+            "non-blocking partial-only applicability diagnostics APV-202: 1370",
+            "diagnostic finding type APV-202: 1370"
+          ]
+        }
+      ]
+    }
+  ]
+}

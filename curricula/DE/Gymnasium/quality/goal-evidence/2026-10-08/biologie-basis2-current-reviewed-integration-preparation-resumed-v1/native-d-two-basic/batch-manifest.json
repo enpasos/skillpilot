@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-stoffwechsel-reviewed-basic2-context394-technical-20261008-v1-two-basic",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-current-reviewed-integration-preparation-resumed-v1/native-d-two-basic.batch.config.json",
+  "configDigest": "sha256:4c36a0d0d4954c7493490198adec8d90db83d17784c2f2e322bb6c9cf0d7e51a",
+  "goalIds": [
+    "0f50cad3-8c4e-5bc4-8833-3a1ecdd71d38",
+    "32483d30-2162-50a5-a6cc-05b7f2467ab1"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 394,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-current-reviewed-integration-preparation-resumed-v1/native-d-final-primary-refined.base-book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-two-basic-companions-complete-author-20261008-v2/candidate/canonical.shadow478.basic2-after-three-rasters.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:2a57c0610266fd4ff1530d2cb4c2e35b752616e125b9a5df005562742b18d431"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:788c4dfb896160fc420bc347b62af8aed9c7ad1d35b8b119bca7cf73ea2032a4",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:87a36290041c472580d628665e9084d351d5113bdda73e967cfb299eb2e74410",
+    "reviewInputFingerprint": "sha256:45cb31ee855fd4eb3cc8c07151ab141e60b160e6e0e9c0736b7787ab0e8da457",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "bio-two-basic-primary-refined-20261008-v2-independent-a-campaign",
+        "campaignDigest": "sha256:235d1c11b233844868ba3f4eb56f93916bcb20059cde5d827d6f2a4719076e38",
+        "roundId": "bio-two-basic-primary-refined-20261008-v2-independent-a",
+        "independenceGroupId": "bio-two-basic-primary-refined-20261008-v2-independent-a",
+        "batchId": "bio-two-basic-primary-refined-20261008-v2-independent-a.batch-001",
+        "batchInputFingerprint": "sha256:396c273f86227f31fc2e73d38668bea794a9c944de57c150bcc88d276d25a3ac"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "bio-two-basic-primary-refined-20261008-v2-independent-b-campaign",
+        "campaignDigest": "sha256:8df2e915c180f485dc265546e1c5e9cad06b7e4c533d2e34005d6bac782ae923",
+        "roundId": "bio-two-basic-primary-refined-20261008-v2-independent-b",
+        "independenceGroupId": "bio-two-basic-primary-refined-20261008-v2-independent-b",
+        "batchId": "bio-two-basic-primary-refined-20261008-v2-independent-b.batch-001",
+        "batchInputFingerprint": "sha256:b7c7c4307c3684bf435d596d55d4751a4f59c88b258b5d3ef24f3d98e3df009b"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

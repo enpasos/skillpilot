@@ -1,0 +1,148 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual ordinary compiler and native material boundary checks, separate from science reviews",
+  "createdAtUTC": "2026-10-08T14:48:31.100Z",
+  "capsuleRoot": "tmp/chemie-b008-bw-paired-source-atlas-continuation-technical-resumed-v1-capsule",
+  "normalAtlasOutcomes": [
+    {
+      "case": "paired-bw-original-sl",
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-bw-paired-source-atlas-continuation-technical-resumed-v1/checks/paired-bw-original-sl.ordinary-source-atlas.config.json",
+        "sha256": "e97e2b99404efde6695b3612722d6ce96df4c707b95827533c9942c4b3c157a0",
+        "bytes": 16455
+      },
+      "status": "HOLD",
+      "exactOrdinaryError": "Source-supported atlas goal count changed\n\n357 !== 395\n",
+      "guard395Unchanged": true,
+      "guard496Unchanged": true,
+      "returnedAtlasOutputs": false,
+      "generatedAtlasFilesWritten": 0
+    },
+    {
+      "case": "paired-bw-pending-sl",
+      "config": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-bw-paired-source-atlas-continuation-technical-resumed-v1/checks/paired-bw-pending-sl.ordinary-source-atlas.config.json",
+        "sha256": "e4552211fefa9e04baf789a0b6e4ee45362f1e5887307fbd4f980fb10cd64aa0",
+        "bytes": 16572
+      },
+      "status": "HOLD",
+      "exactOrdinaryError": "Missing reviewed mapping decision metadata: sl-chem-seki-sl-ch-seki-8-2024-p013-004-e3b97259",
+      "guard395Unchanged": true,
+      "guard496Unchanged": true,
+      "returnedAtlasOutputs": false,
+      "generatedAtlasFilesWritten": 0
+    }
+  ],
+  "diagnosticScopedUnion": 357,
+  "diagnosticMissingWholeGoals": 38,
+  "full395ExpectedGuardUnchanged": true,
+  "sourceScope496ExpectedGuardUnchanged": true,
+  "actualNativeModels": [
+    {
+      "name": "full395",
+      "pages": 395,
+      "ordinaryLoader": true,
+      "exactModel": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-bw-paired-source-atlas-continuation-technical-resumed-v1/native/full395.pure-model.json",
+        "sha256": "2596d1750752a47766fb42e68d193e195836ffd5025c9b8f30c0cd3aae7451fe",
+        "bytes": 1548761
+      },
+      "allNativePageBodiesExactRetained": true,
+      "newDOrPApproval": false,
+      "modelIncludesEvidenceReviewPaths": []
+    },
+    {
+      "name": "bw-seki-bounded",
+      "pages": 97,
+      "ordinaryLoader": true,
+      "exactModel": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-bw-paired-source-atlas-continuation-technical-resumed-v1/native/bw-seki-bounded.pure-model.json",
+        "sha256": "5b7e6f9b1060ab93465bc8584979aa27bbdf79dba16d04a9616e6041797ce8ea",
+        "bytes": 501545
+      },
+      "allNativePageBodiesExactRetained": true,
+      "newDOrPApproval": false,
+      "modelIncludesEvidenceReviewPaths": []
+    }
+  ],
+  "ordinaryRuntimeSchemaPassed": true,
+  "actualBWViewFindings": [],
+  "BWTargetCount": 97,
+  "BWPrerequisiteOnlyCount": 1,
+  "whole26ScienceProfiles52CasesUnmodified": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-bw-source-placement-independent-a-resumed-v1/own-bw-nine-normal-mapping-decision-fields.independent-proposal.json",
+      "sha256": "6447c7adb366664e1247c1761bed1d422e96a1f9b85298302944ebd84aca30f6",
+      "bytes": 44067
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-bw-source-placement-independent-b-resumed-v1/own-bw-nine-normal-mapping-decision-fields.independent-proposal.json",
+      "sha256": "903f7cae08b4ecaa9df20bf5c546ab1b08ef9d93a904db9530059bbca526412e",
+      "bytes": 19641
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-bw-source-placement-independent-a-resumed-v1/own-bw-source-placement.first-independent-verdict.json",
+      "sha256": "27c75f3295c12c7a8b347cd144342e20328cde9a4e6f4532c067c4d4ea4ba79d",
+      "bytes": 27250
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-bw-source-placement-independent-b-resumed-v1/own-bw-source-placement.first-independent-verdict.json",
+      "sha256": "9ffcaa2e0c159113c6dbb0d2eda65ffebe28f28ff9b6114e5372e4230cd47a1e",
+      "bytes": 23783
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-bw-source-placement-independent-b-resumed-v1/neutral-independent-bw-review-b.completed.entry.json",
+      "sha256": "dc9a9e4554d5982f684425024c34d0b37261feb0c7fcbd30c4330c85cb0369da",
+      "bytes": 4471
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-source-view-placements-author-resumed-v1/candidate-source-mappings/BW-SekI.source-mapping.author-candidate.json",
+      "sha256": "ef7b111aa134f4da0bf53631a014258fcd0f219acd30bad00ab510a2d8c4e6ca",
+      "bytes": 79012
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "sha256": "2f72d20e10b5a0c353aa246a6e0bfb3ab1abcf8d0498288ba532b530b6bcd934",
+      "bytes": 68500
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-b008-current169-routing-placement-author-v12/exact-original1646-current-source-witness-and-primary-review-routes.author-input.json",
+      "sha256": "798244a53e00f68b7a25960e06deca90a72d1a568c3f7a31fd4de6b87c36c116",
+      "bytes": 4928865
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-source-view-placements-author-resumed-v1/candidate/canonical.current504-bw-source-view.author-candidate.json",
+      "sha256": "55aac2c874bf44482015f29e04d11d0b206bfd736b23dfba5a93788a66acc811",
+      "bytes": 1481161
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-twenty-six-images-author-20261008-v1/all26-whole-goals-and-unchanged26P52cases.readonly-inputs.snapshot.json",
+      "sha256": "09bcbb499c7acb377e900ff163e9467075783877f18835b6c3c777e398562725",
+      "bytes": 482533
+    }
+  ],
+  "all1646OriginalDutyBasisUnmodified": true,
+  "noNormalAtlasFilesProducedBecauseActualGateHeld": true,
+  "helperBindings": [
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "sha256": "0363d5419a765508d82d06e50315c491c7292a02a07c98de1d919bba9386dd53",
+      "bytes": 114361
+    },
+    {
+      "path": "app/scripts/goalBookSourceAtlasInputs.ts",
+      "sha256": "0b6761c9847c1a39b49ebba597149b39e78fec791fa64f1179a9e8056fe1f0f5",
+      "bytes": 25775
+    },
+    {
+      "path": "app/src/utils/authoring/compositionViewAuthoring.ts",
+      "sha256": "d7ee9ab670d2d73a3ed82700c2bca2dee3f2da6c8e9517120c5c45acac0d84a7",
+      "bytes": 22096
+    }
+  ],
+  "newScientificVerdicts": 0,
+  "strictGain": 0,
+  "activeWrites": 0,
+  "humanApproval": false,
+  "humanTrial": false
+}

@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 1,
+  "actualStatusExitCode": 0,
+  "actualFloorCheckExitCode": 0,
+  "bioCQR003": {
+    "id": "CQR-003",
+    "status": "pass",
+    "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+    "metrics": {
+      "totalJurisdictions": 16,
+      "coveredJurisdictions": 16,
+      "sourceBackedJurisdictions": 16,
+      "sourceCompleteJurisdictions": 16,
+      "fullCoverageJurisdictions": 16,
+      "uncoveredJurisdictions": 0,
+      "incompleteJurisdictions": 0,
+      "unsupportedAssignmentJurisdictions": 0,
+      "sourceUnmappedJurisdictions": 0,
+      "unsupportedAssignedAtomicGoals": 0,
+      "unmappedSourceAtomicGoals": 0,
+      "sourceAtomicGoals": 685,
+      "sourceMappedToViewAtomicGoals": 685,
+      "sourceOriginalGoals": 685,
+      "sourceFullyCoveredOriginalGoals": 685,
+      "sourcePartiallyCoveredOriginalGoals": 0,
+      "sourceUncoveredOriginalGoals": 0,
+      "surrogateBackedAtomicGoals": 4,
+      "partialSourceLinkedAtomicGoals": 0,
+      "warningedJurisdictions": 0,
+      "cleanJurisdictions": 16,
+      "partialJurisdictions": 0,
+      "errorJurisdictions": 0,
+      "minSourceBackedAtomicGoals": 62,
+      "maxVisibleAtomicGoals": 365,
+      "maxSourceBackedAtomicGoals": 365,
+      "totalAtomicGoals": 394
+    }
+  },
+  "bioCQR301": {
+    "id": "CQR-301",
+    "status": "pass",
+    "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+    "metrics": {
+      "configs": 1,
+      "leafGoals": 394,
+      "atomic": 394,
+      "needsDeveloperReview": 0,
+      "nonAtomic": 0,
+      "missing": 0,
+      "stale": 0,
+      "obsolete": 0
+    }
+  },
+  "bioCQR302": {
+    "id": "CQR-302",
+    "status": "pass",
+    "summary": "Memory-card review is current: 10/394 ordinary atomic goals intentionally use memorization support, 27/27 primary cards are kept with origin traces, all 3 memory goals are traced, and 37 view-visible memory-required goals resolve to visible memory nodes.",
+    "metrics": {
+      "configs": 1,
+      "reviewedGoals": 394,
+      "noMemoryNeeded": 384,
+      "memoryRequired": 10,
+      "needsDeveloperReview": 0,
+      "missing": 0,
+      "stale": 0,
+      "obsolete": 0,
+      "duplicateRecords": 0,
+      "invalidRecords": 0,
+      "primaryCards": 27,
+      "keptCards": 27,
+      "cardsMarkedRemove": 0,
+      "cardNeedsDeveloperReview": 0,
+      "missingCardReviews": 0,
+      "staleCardReviews": 0,
+      "obsoleteCardReviews": 0,
+      "duplicateCardReviewRecords": 0,
+      "invalidCardReviewRecords": 0,
+      "untracedMemoryRequiredGoals": 0,
+      "visibilityScopes": 8,
+      "visibilityCheckedMemoryRequiredGoals": 37,
+      "visibilityMissingVisibleMemoryGoals": 0,
+      "visibilityErrors": 0,
+      "memoryGoals": 3,
+      "tracedMemoryGoals": 3,
+      "untracedMemoryGoals": 0,
+      "deckIds": 3,
+      "deckFiles": 6,
+      "cardRows": 54
+    },
+    "details": [
+      "canonical-biology-full: audit report docs/qa-ci/status/memory-card-review-canonical-biology-full.md"
+    ]
+  },
+  "bioCQR303": {
+    "id": "CQR-303",
+    "status": "warn",
+    "summary": "Deep curriculum QA is incomplete: 246/394 current curricularAtomic goals strictly complete.",
+    "metrics": {
+      "expectedGoals": 394,
+      "remaining": 148,
+      "strictComplete": 246,
+      "currentDescriptionResolutions": 246,
+      "currentPositiveEvidenceProfiles": 246,
+      "currentSemanticAtomicityDecisions": 394,
+      "currentMemoryReviewDecisions": 394,
+      "currentVisualizationQaRecords": 246,
+      "deferredVisualizations": 0,
+      "requiredChecksPassed": 6,
+      "requiredChecksTotal": 6,
+      "blockingIssues": 0
+    }
+  },
+  "allNineProtectedFloorsPassed": true,
+  "protectedFloors": [
+    {
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "subject": "Mathematik",
+      "minimumMaturity": "M6",
+      "actualMaturity": "M7"
+    },
+    {
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "subject": "Physik",
+      "minimumMaturity": "M6",
+      "actualMaturity": "M7"
+    },
+    {
+      "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+      "subject": "Biologie",
+      "minimumMaturity": "M6",
+      "actualMaturity": "M6"
+    },
+    {
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "subject": "Chemie",
+      "minimumMaturity": "M6",
+      "actualMaturity": "M6"
+    },
+    {
+      "landscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+      "subject": "Deutsch",
+      "minimumMaturity": "M6",
+      "actualMaturity": "M6"
+    },
+    {
+      "landscapeId": "92406d94-e3c1-58ec-b7c6-12122278d25a",
+      "subject": "Geschichte",
+      "minimumMaturity": "M6",
+      "actualMaturity": "M6"
+    },
+    {
+      "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+      "subject": "Informatik",
+      "minimumMaturity": "M6",
+      "actualMaturity": "M6"
+    },
+    {
+      "landscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+      "subject": "Latein",
+      "minimumMaturity": "M6",
+      "actualMaturity": "M6"
+    },
+    {
+      "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+      "subject": "Politik und Wirtschaft",
+      "minimumMaturity": "M6",
+      "actualMaturity": "M6"
+    }
+  ],
+  "statusArtifact": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-supplement-reviewed-integration-preparation-resumed-v2/checks/capsule.curriculum-quality-status.json",
+    "sha256": "e1c2646f29e25dffcf94c55d9ded674bc36ed984030eb5a59c52cf4d23504124",
+    "bytes": 2763384
+  },
+  "machineM7NotYetAchievedForBiology": true,
+  "humanApproval": false,
+  "humanTrial": false,
+  "activeWrites": 0
+}

@@ -1,0 +1,368 @@
+{
+  "schemaVersion": 1,
+  "kind": "technical-backend-projection-targeted-junit-terminal",
+  "actualExitCode": 0,
+  "status": "PASS",
+  "command": [
+    "./gradlew",
+    "test",
+    "--tests",
+    "com.skillpilot.backend.controller.LearnerControllerIntegrationTest.learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals"
+  ],
+  "workingDirectory": "backend",
+  "buildDurationReported": "4m 35s",
+  "junit": {
+    "suite": "com.skillpilot.backend.controller.LearnerControllerIntegrationTest",
+    "method": "learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals()",
+    "tests": 1,
+    "skipped": 0,
+    "failures": 0,
+    "errors": 0,
+    "timestamp": "2026-10-08T16:37:43.289Z",
+    "suiteSeconds": 199.127,
+    "methodSeconds": 173.11
+  },
+  "junitOriginalKeptLocal": {
+    "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.controller.LearnerControllerIntegrationTest.xml",
+    "sha256": "44c62aa61c4d37fb891b6bc53ad85084c0d3238dc0f550bf6f004c7decb75cc7",
+    "fullXmlNotExported": true
+  },
+  "localLogsKeptLocalOnly": [
+    "tmp/biologie-basis2-runtime-view-proof/current-42-scopes.junit-run2.stdout.local.txt",
+    "tmp/biologie-basis2-runtime-view-proof/current-42-scopes.junit-run2.stderr.local.txt"
+  ],
+  "localJvm": {
+    "observedRunningTestExecutorExecutable": "/home/enpasos/.local/share/amazon-corretto-25.0.1.9.1-linux-x64/bin/java",
+    "actualVersionCommand": "openjdk version \"25.0.1\"; Corretto-25.0.1.9.1 (build 25.0.1+9-LTS)",
+    "junitXmlJvmPropertiesAvailable": false,
+    "repositoryJavaVersionPin": "25.0.2",
+    "repositoryCorrettoVersionPin": "25.0.2.10.1",
+    "isActualGitHubCiRun": false
+  },
+  "reviewedScopeAssertions": {
+    "scopeRows": 42,
+    "g8G9TotalAtomicCounterAssertions": 84,
+    "original33RowsAllExact": true,
+    "originalRows": [
+      {
+        "subject": "Biologie",
+        "jurisdiction": "DE-BW",
+        "expectedG8": 83,
+        "expectedG9": 83
+      },
+      {
+        "subject": "Biologie",
+        "jurisdiction": "DE-BY",
+        "expectedG8": 130,
+        "expectedG9": 130
+      },
+      {
+        "subject": "Biologie",
+        "jurisdiction": "DE-HB",
+        "expectedG8": 98,
+        "expectedG9": 98
+      },
+      {
+        "subject": "Biologie",
+        "jurisdiction": "DE-HE",
+        "expectedG8": 130,
+        "expectedG9": 130
+      },
+      {
+        "subject": "Biologie",
+        "jurisdiction": "DE-NI",
+        "expectedG8": 109,
+        "expectedG9": 109
+      },
+      {
+        "subject": "Biologie",
+        "jurisdiction": "DE-RP",
+        "expectedG8": 78,
+        "expectedG9": 78
+      },
+      {
+        "subject": "Biologie",
+        "jurisdiction": "DE-SL",
+        "expectedG8": 61,
+        "expectedG9": 61
+      },
+      {
+        "subject": "Chemie",
+        "jurisdiction": "DE-BB",
+        "expectedG8": 83,
+        "expectedG9": 83
+      },
+      {
+        "subject": "Chemie",
+        "jurisdiction": "DE-BE",
+        "expectedG8": 83,
+        "expectedG9": 83
+      },
+      {
+        "subject": "Chemie",
+        "jurisdiction": "DE-BW",
+        "expectedG8": 74,
+        "expectedG9": 74
+      },
+      {
+        "subject": "Chemie",
+        "jurisdiction": "DE-BY",
+        "expectedG8": 89,
+        "expectedG9": 89
+      },
+      {
+        "subject": "Chemie",
+        "jurisdiction": "DE-HB",
+        "expectedG8": 74,
+        "expectedG9": 74
+      },
+      {
+        "subject": "Chemie",
+        "jurisdiction": "DE-HE",
+        "expectedG8": 89,
+        "expectedG9": 89
+      },
+      {
+        "subject": "Chemie",
+        "jurisdiction": "DE-HH",
+        "expectedG8": 58,
+        "expectedG9": 58
+      },
+      {
+        "subject": "Chemie",
+        "jurisdiction": "DE-MV",
+        "expectedG8": 57,
+        "expectedG9": 57
+      },
+      {
+        "subject": "Chemie",
+        "jurisdiction": "DE-NI",
+        "expectedG8": 78,
+        "expectedG9": 78
+      },
+      {
+        "subject": "Chemie",
+        "jurisdiction": "DE-NW",
+        "expectedG8": 59,
+        "expectedG9": 59
+      },
+      {
+        "subject": "Chemie",
+        "jurisdiction": "DE-RP",
+        "expectedG8": 58,
+        "expectedG9": 58
+      },
+      {
+        "subject": "Chemie",
+        "jurisdiction": "DE-SH",
+        "expectedG8": 58,
+        "expectedG9": 58
+      },
+      {
+        "subject": "Chemie",
+        "jurisdiction": "DE-SL",
+        "expectedG8": 58,
+        "expectedG9": 58
+      },
+      {
+        "subject": "Chemie",
+        "jurisdiction": "DE-SN",
+        "expectedG8": 58,
+        "expectedG9": 58
+      },
+      {
+        "subject": "Chemie",
+        "jurisdiction": "DE-ST",
+        "expectedG8": 58,
+        "expectedG9": 58
+      },
+      {
+        "subject": "Chemie",
+        "jurisdiction": "DE-TH",
+        "expectedG8": 58,
+        "expectedG9": 58
+      },
+      {
+        "subject": "Physik",
+        "jurisdiction": "DE-BW",
+        "expectedG8": 151,
+        "expectedG9": 151
+      },
+      {
+        "subject": "Physik",
+        "jurisdiction": "DE-BY",
+        "expectedG8": 111,
+        "expectedG9": 111
+      },
+      {
+        "subject": "Physik",
+        "jurisdiction": "DE-HB",
+        "expectedG8": 142,
+        "expectedG9": 142
+      },
+      {
+        "subject": "Physik",
+        "jurisdiction": "DE-HE",
+        "expectedG8": 150,
+        "expectedG9": 150
+      },
+      {
+        "subject": "Physik",
+        "jurisdiction": "DE-HH",
+        "expectedG8": 142,
+        "expectedG9": 142
+      },
+      {
+        "subject": "Physik",
+        "jurisdiction": "DE-MV",
+        "expectedG8": 148,
+        "expectedG9": 148
+      },
+      {
+        "subject": "Physik",
+        "jurisdiction": "DE-SL",
+        "expectedG8": 150,
+        "expectedG9": 150
+      },
+      {
+        "subject": "Physik",
+        "jurisdiction": "DE-SN",
+        "expectedG8": 150,
+        "expectedG9": 150
+      },
+      {
+        "subject": "Physik",
+        "jurisdiction": "DE-ST",
+        "expectedG8": 148,
+        "expectedG9": 148
+      },
+      {
+        "subject": "Physik",
+        "jurisdiction": "DE-TH",
+        "expectedG8": 146,
+        "expectedG9": 146
+      }
+    ],
+    "nineNewBiologyRows": [
+      {
+        "jurisdiction": "DE-BB",
+        "expectedG8": 82,
+        "expectedG9": 82
+      },
+      {
+        "jurisdiction": "DE-BE",
+        "expectedG8": 82,
+        "expectedG9": 82
+      },
+      {
+        "jurisdiction": "DE-HH",
+        "expectedG8": 78,
+        "expectedG9": 78
+      },
+      {
+        "jurisdiction": "DE-MV",
+        "expectedG8": 156,
+        "expectedG9": 156
+      },
+      {
+        "jurisdiction": "DE-NW",
+        "expectedG8": 102,
+        "expectedG9": 102
+      },
+      {
+        "jurisdiction": "DE-SH",
+        "expectedG8": 95,
+        "expectedG9": 95
+      },
+      {
+        "jurisdiction": "DE-SN",
+        "expectedG8": 170,
+        "expectedG9": 170
+      },
+      {
+        "jurisdiction": "DE-ST",
+        "expectedG8": 167,
+        "expectedG9": 167
+      },
+      {
+        "jurisdiction": "DE-TH",
+        "expectedG8": 172,
+        "expectedG9": 172
+      }
+    ],
+    "biologyJurisdictions": 16,
+    "biologyG8G9TargetSetChecks": 32,
+    "individualSupplementMembershipAssertions": 64,
+    "originalFamilyPlanningTargetSetChecks": 14,
+    "respirationGoalId": "0f50cad3-8c4e-5bc4-8833-3a1ecdd71d38",
+    "respirationTargetJurisdictions": [
+      "DE-BB",
+      "DE-BE",
+      "DE-MV",
+      "DE-NW",
+      "DE-SH",
+      "DE-SN",
+      "DE-ST",
+      "DE-TH"
+    ],
+    "couplingGoalId": "32483d30-2162-50a5-a6cc-05b7f2467ab1",
+    "couplingTargetJurisdictions": [
+      "DE-SN"
+    ],
+    "allOtherBiologyJurisdictionsExplicitlyExcluded": true
+  },
+  "outsideTargetMethodAndNewSupplementHelperByteExactToHead": true,
+  "testSource": {
+    "path": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+    "sha256": "89847c128171cc695e78e5aaf02a908e57f5ec2d270beb2874c266ea7ac5d750",
+    "bytes": 111372
+  },
+  "fiveActiveViewsExactReviewedCandidates": [
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-seki-biology.view.json",
+      "sha256": "a126cdf231805adaa7bfe71c2e6d811a7f9ddd67e222acde24901c8231cf8ecb",
+      "bytes": 3374
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-mv-gym-seki-biology.view.json",
+      "sha256": "f261e67b3845f58275e5d88bfbbd4aa2a716170bf5b2122febedec9302a6234d",
+      "bytes": 19489
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-sn-gym-seki-biology.view.json",
+      "sha256": "3e3bc05aa207bf4fb33f57da5614a8aabc3e60871f5281afb43bb9e8c9eedc73",
+      "bytes": 21154
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-st-gym-seki-biology.view.json",
+      "sha256": "dca8020fd64605cf20f44ef560e92b18af1b0ac594b956ac134ce8da5b259100",
+      "bytes": 20773
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/biologie/de-th-gym-seki-biology.view.json",
+      "sha256": "d32f1449dd36bb3b0f8056dff0cb75e25dc7c8dbdbf951272bf7dc18abaf94ce",
+      "bytes": 21376
+    }
+  ],
+  "protectedCanonQaKindsRegistryAmSourcesAndBackendImagesRemainExact": true,
+  "wholeNational394FrameBeforeAfterReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-reviewed-backend-projection-checkpoint-root-v1/whole394-national-book-frame.after-view-completion.exact.actual.json",
+    "sha256": "208451963b54dcf6f16ed61e0761e52238dd740edcb9b126d0c4496913141d46",
+    "bytes": 592
+  },
+  "originalFirstInterruptedRunRetained": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-reviewed-backend-projection-checkpoint-root-v1/targeted-backend-junit-first-run.interrupted.actual.json",
+    "sha256": "6a4f6e6fe2694cc38577bc10ab8b2b0a4e547781a6bb9b2911b953943dcfff43",
+    "bytes": 1200
+  },
+  "previous96ScopeNormalBackendLoaderProof": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-reviewed-backend-projection-checkpoint-root-v1/actual-normal-loader-before-after-96-scopes.proof.json",
+    "sha256": "0effee69b5ae5a7494acca0945e3ac3d72e51bbf84e53d736f552ce00033883c",
+    "bytes": 1083464
+  },
+  "privateLearnerSessionChatDataExported": false,
+  "runtimeCompilerOrFallbackChanges": false,
+  "newScientificReview": false,
+  "humanApproval": false,
+  "scope": "Normal targeted backend integration test verifies reviewed authored composition-view source boundaries and preserves previous counts. It is machine curriculum QS and does not assert human release acceptance."
+}

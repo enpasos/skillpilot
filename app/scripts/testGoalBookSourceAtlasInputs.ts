@@ -150,9 +150,9 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   }
 
   const biology = checkGoalBookSourceAtlasInputs('app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json', root)
-  // The independently reviewed contraception/parenthood split adds one atom
-  // to the current atlas, preserving genetics and bounded neurobiology routes.
-  assert.deepEqual(biology.receipt.counts, { canonicalCurricularAtomicGoals: 392, publishedCurricularAtomicGoals: 392, sourceViews: 22, unresolvedSourceScopeDecisions: 0, omittedGoals: 0 })
+  // Two independently reviewed basic metabolism companions add bounded direct
+  // source routes; all earlier current atoms remain in the atlas.
+  assert.deepEqual(biology.receipt.counts, { canonicalCurricularAtomicGoals: 394, publishedCurricularAtomicGoals: 394, sourceViews: 22, unresolvedSourceScopeDecisions: 0, omittedGoals: 0 })
   // Current independent source reviews correct the selected neurobiology
   // scopes and add explicit component routes without closing broad source HOLDs.
   assert.deepEqual(biology.receipt.scopes.filter(s => s.stage === 'SekII').map(s => [s.key, s.goalIds.length]), [
@@ -171,6 +171,8 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   // become source coverage; ST's common entry phase is projected into both
   // technical upper-secondary course routes, never into its SekI target set.
   for (const [goalId, expectedScopes] of [
+    ['0f50cad3-8c4e-5bc4-8833-3a1ecdd71d38', ['DE-BB/SekI/', 'DE-BE/SekI/', 'DE-MV/SekI/', 'DE-NW/SekI/', 'DE-SH/SekI/', 'DE-SN/SekI/', 'DE-ST/SekI/', 'DE-TH/SekI/']],
+    ['32483d30-2162-50a5-a6cc-05b7f2467ab1', ['DE-SN/SekI/']],
     ['ac9e824f-003c-50ac-8751-2b8456004c63', ['DE-BB/SekI/', 'DE-BE/SekI/']],
     ['5eb7c923-469d-5934-b1e8-292e1bb40d95', ['DE-SN/SekI/', 'DE-TH/SekI/']],
     ['bfb5dfb6-8e35-5452-b581-96e061d8b826', ['DE-ST/SekII/GK', 'DE-ST/SekII/LK']],

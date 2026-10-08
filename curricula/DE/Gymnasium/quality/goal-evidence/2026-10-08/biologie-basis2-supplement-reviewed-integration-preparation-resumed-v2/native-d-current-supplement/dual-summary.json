@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:dc3e3ff5b68bf2f7853494f569b702edbc4e6d17c0dfb1d58b754de3b3640567",
+  "reviewInputFingerprint": "sha256:3d0fb31e778b4594771367b8cb1eba85369ce30314c97f4ff86abc07a909aa1a",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "bio-basis2-source-supplement-context-20261008-v1-independent-a-campaign",
+      "roundId": "bio-basis2-source-supplement-context-20261008-v1-independent-a",
+      "independenceGroupId": "bio-basis2-source-supplement-context-20261008-v1-independent-a",
+      "runIds": [
+        "bio-basis2-source-supplement-context-20261008-v1-independent-a.batch-001.context-first-run"
+      ],
+      "providers": [
+        "OpenAI / Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI / Codex::Codex current-session model; exact backend model identifier is not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "bio-basis2-source-supplement-context-20261008-v1-independent-b-campaign",
+      "roundId": "bio-basis2-source-supplement-context-20261008-v1-independent-b",
+      "independenceGroupId": "bio-basis2-source-supplement-context-20261008-v1-independent-b",
+      "runIds": [
+        "bio-basis2-supplement-context-independent-b-20261008-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "0f50cad3-8c4e-5bc4-8833-3a1ecdd71d38",
+      "firstRecordId": "bio-basis2-supplement-context-independent-a-01",
+      "secondRecordId": "bio-basis2-supplement-context-independent-b-20261008-v1.0f50cad3-8c4e-5bc4-8833-3a1ecdd71d38",
+      "firstRunId": "bio-basis2-source-supplement-context-20261008-v1-independent-a.batch-001.context-first-run",
+      "secondRunId": "bio-basis2-supplement-context-independent-b-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "32483d30-2162-50a5-a6cc-05b7f2467ab1",
+      "firstRecordId": "bio-basis2-supplement-context-independent-a-02",
+      "secondRecordId": "bio-basis2-supplement-context-independent-b-20261008-v1.32483d30-2162-50a5-a6cc-05b7f2467ab1",
+      "firstRunId": "bio-basis2-source-supplement-context-20261008-v1-independent-a.batch-001.context-first-run",
+      "secondRunId": "bio-basis2-supplement-context-independent-b-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

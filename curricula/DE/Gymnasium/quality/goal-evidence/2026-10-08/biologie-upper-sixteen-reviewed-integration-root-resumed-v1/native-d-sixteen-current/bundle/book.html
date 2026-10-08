@@ -1,0 +1,969 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-v1&quot;,&quot;maxWidthPixels&quot;:1600,&quot;maxHeightPixels&quot;:1200,&quot;jpegQuality&quot;:0.82,&quot;webpQuality&quot;:0.9,&quot;maxBytes&quot;:1500000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Biologie: Kommunikation und Bewertung – sechzehn vollständige Prüfseiten</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Biologie: Kommunikation und Bewertung – sechzehn vollständige Prüfseiten</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>16 atomare Lernziele</dt><dd>2 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:d8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-4f5d4296002eb1bc70a26646" aria-label="Biologie"><a href="#goal-38c0259a-cba2-5305-a352-20023afc2dfc"><span class="toc-entry-label">Biologie</span></a></h2>
+          <span class="toc-entry-meta"><span>16 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-3d52f179-2be7-5882-bc9b-50d04b958355" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-35fa60c7c11185f541ee3a95" aria-label="Biologische Erkenntnisgewinnung und Wissenschaftsverständnis (Sek II)"><a href="#goal-38c0259a-cba2-5305-a352-20023afc2dfc"><span class="toc-entry-label">Biologische&#160;<wbr>Erkenntnisgewinnung&#160;<wbr>und&#160;<wbr>Wissenschaftsverständnis&#160;<wbr>(Sek&#160;<wbr>II)</span></a></h3>
+          <span class="toc-entry-meta"><span>16 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-38c0259a-cba2-5305-a352-20023afc2dfc" data-goal-id="38c0259a-cba2-5305-a352-20023afc2dfc" data-page-number="1" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3d52f179-2be7-5882-bc9b-50d04b958355" aria-labelledby="goal-38c0259a-cba2-5305-a352-20023afc2dfc-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-38c0259a-cba2-5305-a352-20023afc2dfc-title"><a class="goal-self-link" href="#goal-38c0259a-cba2-5305-a352-20023afc2dfc">Zu biologischen Fragestellungen zielgerichtet recherchieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>38c0259a-cba2-5305-a352-20023afc2dfc</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-35fa60c7c11185f541ee3a95">Biologische Erkenntnisgewinnung und Wissenschaftsverständnis (Sek II)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6ddbc616833a8c62012e28cd6586eb17c6f7fa4a1c81f35ef054c5ba1acf6f20" data-rendered-digest="sha256:ffd07cf047104138396936100f484ab441c488cfac81d1e0bcafdf9dbf3cfec5" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/38c0259a-cba2-5305-a352-20023afc2dfc/38c0259a-cba2-5305-a352-20023afc2dfc.png" alt="Eine Schülerin vergleicht eine gedruckte Broschüre und eine Website zu Bienen an Blüten und achtet auf Hinweise zur Absicht und Herkunft beider Quellen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-38c0259a-cba2-5305-a352-20023afc2dfc-description-heading">
+        <p class="section-heading" id="goal-38c0259a-cba2-5305-a352-20023afc2dfc-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann zu biologischen Sachverhalten und anwendungsbezogenen Fragestellungen zielgerichtet in analogen und digitalen Medien recherchieren, passende Quellen auswählen und relevante Informationen aus Darstellungsformen unterschiedlicher Komplexität erschließen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-38c0259a-cba2-5305-a352-20023afc2dfc" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-38c0259a-cba2-5305-a352-20023afc2dfc-requires-heading">
+          <p class="section-heading" id="goal-38c0259a-cba2-5305-a352-20023afc2dfc-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-38c0259a-cba2-5305-a352-20023afc2dfc-reverse-heading">
+          <p class="section-heading" id="goal-38c0259a-cba2-5305-a352-20023afc2dfc-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-38e1cc26-513e-5e71-9f7e-de2ce35ce19b"><span>Quellenqualität und Autorintention prüfen</span><code>38e1cc26-513e-5e71-9f7e-de2ce35ce19b</code><span class="reference-page">S. 2</span></a></li><li><a href="#goal-12511dc3-b214-5f55-8d05-70cd2db784b9"><span>Informationen strukturieren und Darstellungen wechseln</span><code>12511dc3-b214-5f55-8d05-70cd2db784b9</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-cb218858-a468-5d3f-83e0-b60f83368af7"><span>Urheberschaft und Quellen korrekt kennzeichnen</span><code>cb218858-a468-5d3f-83e0-b60f83368af7</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-38c0259a-cba2-5305-a352-20023afc2dfc-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-38c0259a-cba2-5305-a352-20023afc2dfc-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-5a47f591-f2ac-5457-872a-22c89c2dbe93" rel="noreferrer noopener"><span>Quellen zu biologischen Fragestellungen auswerten</span> <code>5a47f591-f2ac-5457-872a-22c89c2dbe93</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-38c0259a-cba2-5305-a352-20023afc2dfc-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-38c0259a-cba2-5305-a352-20023afc2dfc-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 16</span>
+      <span>Buch-Digest <code>sha256:d8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c968d5e5fbdf3d3981889d4f37929708521e4c8287d85d4c37f6d5a8a99ecac4</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1&amp;edition=curricular-atomic-v1&amp;goalId=38c0259a-cba2-5305-a352-20023afc2dfc&amp;goalFingerprint=sha256%3Ac968d5e5fbdf3d3981889d4f37929708521e4c8287d85d4c37f6d5a8a99ecac4&amp;pageFingerprint=sha256%3A5d4e4b4e181e066854b115bc2ee3eb630a5ba650ec3a3a5a31b7ea7fb565d198&amp;bookDigest=sha256%3Ad8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-38e1cc26-513e-5e71-9f7e-de2ce35ce19b" data-goal-id="38e1cc26-513e-5e71-9f7e-de2ce35ce19b" data-page-number="2" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3d52f179-2be7-5882-bc9b-50d04b958355" aria-labelledby="goal-38e1cc26-513e-5e71-9f7e-de2ce35ce19b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-38e1cc26-513e-5e71-9f7e-de2ce35ce19b-title"><a class="goal-self-link" href="#goal-38e1cc26-513e-5e71-9f7e-de2ce35ce19b">Quellenqualität und Autorintention prüfen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>38e1cc26-513e-5e71-9f7e-de2ce35ce19b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-35fa60c7c11185f541ee3a95">Biologische Erkenntnisgewinnung und Wissenschaftsverständnis (Sek II)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6ddbc616833a8c62012e28cd6586eb17c6f7fa4a1c81f35ef054c5ba1acf6f20" data-rendered-digest="sha256:ffd07cf047104138396936100f484ab441c488cfac81d1e0bcafdf9dbf3cfec5" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/38e1cc26-513e-5e71-9f7e-de2ce35ce19b/38e1cc26-513e-5e71-9f7e-de2ce35ce19b.png" alt="Eine Schülerin vergleicht eine gedruckte Broschüre und eine Website zu Bienen an Blüten und achtet auf Hinweise zur Absicht und Herkunft beider Quellen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-38e1cc26-513e-5e71-9f7e-de2ce35ce19b-description-heading">
+        <p class="section-heading" id="goal-38e1cc26-513e-5e71-9f7e-de2ce35ce19b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Herkunft, Qualität und Vertrauenswürdigkeit verwendeter Quellen und Medien sowie deren Darstellungsformen im Zusammenhang mit der Autorintention analysieren und Aussagen verschiedener Quellen abgleichen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-38e1cc26-513e-5e71-9f7e-de2ce35ce19b" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-38e1cc26-513e-5e71-9f7e-de2ce35ce19b-requires-heading">
+          <p class="section-heading" id="goal-38e1cc26-513e-5e71-9f7e-de2ce35ce19b-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-38c0259a-cba2-5305-a352-20023afc2dfc"><span>Zu biologischen Fragestellungen zielgerichtet recherchieren</span><code>38c0259a-cba2-5305-a352-20023afc2dfc</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-38e1cc26-513e-5e71-9f7e-de2ce35ce19b-reverse-heading">
+          <p class="section-heading" id="goal-38e1cc26-513e-5e71-9f7e-de2ce35ce19b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f"><span>Evidenzbasiert biologisch argumentieren</span><code>0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f</code><span class="reference-page">S. 8</span></a></li><li><a href="#goal-e4899fc6-5f0b-587d-af7d-5534dc772c63"><span>Quellen nach Interessenlagen beurteilen</span><code>e4899fc6-5f0b-587d-af7d-5534dc772c63</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-38e1cc26-513e-5e71-9f7e-de2ce35ce19b-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-38e1cc26-513e-5e71-9f7e-de2ce35ce19b-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-38e1cc26-513e-5e71-9f7e-de2ce35ce19b-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-38e1cc26-513e-5e71-9f7e-de2ce35ce19b-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 16</span>
+      <span>Buch-Digest <code>sha256:d8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:cebd6a6d6ce776714cf382cb5578d4d1ee270ab48b46e7fc075502c9b4735bc3</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1&amp;edition=curricular-atomic-v1&amp;goalId=38e1cc26-513e-5e71-9f7e-de2ce35ce19b&amp;goalFingerprint=sha256%3Acebd6a6d6ce776714cf382cb5578d4d1ee270ab48b46e7fc075502c9b4735bc3&amp;pageFingerprint=sha256%3Abdc5a1cad8ac314bd6c7505237a8c7f8e3aa33c0c8918711a7bf3bf0f26fdc8b&amp;bookDigest=sha256%3Ad8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-12511dc3-b214-5f55-8d05-70cd2db784b9" data-goal-id="12511dc3-b214-5f55-8d05-70cd2db784b9" data-page-number="3" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3d52f179-2be7-5882-bc9b-50d04b958355" aria-labelledby="goal-12511dc3-b214-5f55-8d05-70cd2db784b9-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-12511dc3-b214-5f55-8d05-70cd2db784b9-title"><a class="goal-self-link" href="#goal-12511dc3-b214-5f55-8d05-70cd2db784b9">Informationen strukturieren und Darstellungen wechseln</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>12511dc3-b214-5f55-8d05-70cd2db784b9</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-35fa60c7c11185f541ee3a95">Biologische Erkenntnisgewinnung und Wissenschaftsverständnis (Sek II)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:619250d086010c363ee50cec886c7eba7d74db2125ced2566d8e82fa5fce6abd" data-rendered-digest="sha256:6e049bc4739bb5ed5dcdc200bb2435d8238422c6ff31af874f035e9576d3d2a4" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/12511dc3-b214-5f55-8d05-70cd2db784b9/12511dc3-b214-5f55-8d05-70cd2db784b9.png" alt="Comicgrafik mit der Überschrift Schema: Links enthält eine Tabelle die Tage 1, 2 und 3 mit 2, 4 und 6 Keimlingen. Ein Pfeil führt rechts zu einer Kurve mit denselben drei Punkten und den Achsen Tag und Keimlinge.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-12511dc3-b214-5f55-8d05-70cd2db784b9-description-heading">
+        <p class="section-heading" id="goal-12511dc3-b214-5f55-8d05-70cd2db784b9-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann ausgewählte Informationen strukturieren, interpretieren, Schlussfolgerungen ableiten und geeignete Darstellungsformen nutzen oder ineinander überführen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-12511dc3-b214-5f55-8d05-70cd2db784b9" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-12511dc3-b214-5f55-8d05-70cd2db784b9-requires-heading">
+          <p class="section-heading" id="goal-12511dc3-b214-5f55-8d05-70cd2db784b9-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-38c0259a-cba2-5305-a352-20023afc2dfc"><span>Zu biologischen Fragestellungen zielgerichtet recherchieren</span><code>38c0259a-cba2-5305-a352-20023afc2dfc</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-12511dc3-b214-5f55-8d05-70cd2db784b9-reverse-heading">
+          <p class="section-heading" id="goal-12511dc3-b214-5f55-8d05-70cd2db784b9-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-13874fa5-1370-5c51-990a-7dfb5f583c70"><span>Informationen adressaten- und situationsgerecht verarbeiten</span><code>13874fa5-1370-5c51-990a-7dfb5f583c70</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-12511dc3-b214-5f55-8d05-70cd2db784b9-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-12511dc3-b214-5f55-8d05-70cd2db784b9-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-12511dc3-b214-5f55-8d05-70cd2db784b9-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-12511dc3-b214-5f55-8d05-70cd2db784b9-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 16</span>
+      <span>Buch-Digest <code>sha256:d8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:429e7cf9fb397375dccb884958e0cf188153b304ca7ae330a18cfea548b66148</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1&amp;edition=curricular-atomic-v1&amp;goalId=12511dc3-b214-5f55-8d05-70cd2db784b9&amp;goalFingerprint=sha256%3A429e7cf9fb397375dccb884958e0cf188153b304ca7ae330a18cfea548b66148&amp;pageFingerprint=sha256%3A48500bf80596b7ab7561329d3a64f4e160a3275ad411f1ccfb73ba107f5ff8fb&amp;bookDigest=sha256%3Ad8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1407c8fe-c13c-5847-aeb3-1fe0885926eb" data-goal-id="1407c8fe-c13c-5847-aeb3-1fe0885926eb" data-page-number="4" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3d52f179-2be7-5882-bc9b-50d04b958355" aria-labelledby="goal-1407c8fe-c13c-5847-aeb3-1fe0885926eb-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1407c8fe-c13c-5847-aeb3-1fe0885926eb-title"><a class="goal-self-link" href="#goal-1407c8fe-c13c-5847-aeb3-1fe0885926eb">Biologische Erklärsprache differenzieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1407c8fe-c13c-5847-aeb3-1fe0885926eb</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-35fa60c7c11185f541ee3a95">Biologische Erkenntnisgewinnung und Wissenschaftsverständnis (Sek II)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:1bc186ec6deae39c57ec1e4d329730521fc1a59e29a9a501bac98a4e9e1aa04b" data-rendered-digest="sha256:a3892ef1544ba8ebce1c3d3b4687b662e7c35d9767465648344317107855ad64" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/1407c8fe-c13c-5847-aeb3-1fe0885926eb/1407c8fe-c13c-5847-aeb3-1fe0885926eb.png" alt="Ein grüner Spross krümmt sich zum Licht rechts. Links zeigt eine Linse mit Mechanismus längere Zellen auf der schattigen und kürzere auf der beleuchteten Seite. Rechts stehen unter Evolution unterschiedlich geformte Pflanzen bei Variation und eine kleinere Pflanzengruppe bei Selektion mit Fragezeichen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1407c8fe-c13c-5847-aeb3-1fe0885926eb-description-heading">
+        <p class="section-heading" id="goal-1407c8fe-c13c-5847-aeb3-1fe0885926eb-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann zwischen Alltags- und Fachsprache sowie funktionalen und kausalen Erklärungen unterscheiden und Sachverhalte aus proximater und ultimater Sicht ohne finale Begründungen erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>NI:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1407c8fe-c13c-5847-aeb3-1fe0885926eb" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1407c8fe-c13c-5847-aeb3-1fe0885926eb-requires-heading">
+          <p class="section-heading" id="goal-1407c8fe-c13c-5847-aeb3-1fe0885926eb-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-1407c8fe-c13c-5847-aeb3-1fe0885926eb-reverse-heading">
+          <p class="section-heading" id="goal-1407c8fe-c13c-5847-aeb3-1fe0885926eb-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-1407c8fe-c13c-5847-aeb3-1fe0885926eb-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1407c8fe-c13c-5847-aeb3-1fe0885926eb-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-0beb4ca2-2437-557a-9db2-ccda1cbcfa0a" rel="noreferrer noopener"><span>Biologische Sachverhalte mit Basiskonzepten erschließen</span> <code>0beb4ca2-2437-557a-9db2-ccda1cbcfa0a</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-1407c8fe-c13c-5847-aeb3-1fe0885926eb-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1407c8fe-c13c-5847-aeb3-1fe0885926eb-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 16</span>
+      <span>Buch-Digest <code>sha256:d8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4f3b299afea1a9ad51bf5e5b491f3abf230780bf0503afb3a842ec579219fa3d</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1&amp;edition=curricular-atomic-v1&amp;goalId=1407c8fe-c13c-5847-aeb3-1fe0885926eb&amp;goalFingerprint=sha256%3A4f3b299afea1a9ad51bf5e5b491f3abf230780bf0503afb3a842ec579219fa3d&amp;pageFingerprint=sha256%3A8af55b99ee9edd24f90260f6c92962a5c8c10c721c2d584caeef93fa9c790ceb&amp;bookDigest=sha256%3Ad8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-13874fa5-1370-5c51-990a-7dfb5f583c70" data-goal-id="13874fa5-1370-5c51-990a-7dfb5f583c70" data-page-number="5" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3d52f179-2be7-5882-bc9b-50d04b958355" aria-labelledby="goal-13874fa5-1370-5c51-990a-7dfb5f583c70-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-13874fa5-1370-5c51-990a-7dfb5f583c70-title"><a class="goal-self-link" href="#goal-13874fa5-1370-5c51-990a-7dfb5f583c70">Informationen adressaten- und situationsgerecht verarbeiten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>13874fa5-1370-5c51-990a-7dfb5f583c70</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-35fa60c7c11185f541ee3a95">Biologische Erkenntnisgewinnung und Wissenschaftsverständnis (Sek II)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2f57968fd5d895acfb233c38b2641fae1a5198d834f99f5b94b92cd5b3c6422e" data-rendered-digest="sha256:45cf1bc35ffae5a85a8964a001a1d6e131393be0ac4b4e3b10c41e2367fb881f" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/13874fa5-1370-5c51-990a-7dfb5f583c70/13874fa5-1370-5c51-990a-7dfb5f583c70.png" alt="Ein Jugendlicher präsentiert ein Teichbild. Links betrachten Besucher eine große Übersicht von Teich, Wasserpflanzen und Fisch. Rechts betrachtet eine Fachgruppe denselben Teich und getrennte Detailbilder von Wasserpflanze, Schnecke und Fisch. Die Tafeln tragen die Wörter Besucher und Fachgruppe.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-13874fa5-1370-5c51-990a-7dfb5f583c70-description-heading">
+        <p class="section-heading" id="goal-13874fa5-1370-5c51-990a-7dfb5f583c70-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Informationen zu biologischen Sachverhalten sach-, adressaten- und situationsgerecht verarbeiten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-13874fa5-1370-5c51-990a-7dfb5f583c70" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-13874fa5-1370-5c51-990a-7dfb5f583c70-requires-heading">
+          <p class="section-heading" id="goal-13874fa5-1370-5c51-990a-7dfb5f583c70-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-12511dc3-b214-5f55-8d05-70cd2db784b9"><span>Informationen strukturieren und Darstellungen wechseln</span><code>12511dc3-b214-5f55-8d05-70cd2db784b9</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-13874fa5-1370-5c51-990a-7dfb5f583c70-reverse-heading">
+          <p class="section-heading" id="goal-13874fa5-1370-5c51-990a-7dfb5f583c70-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-6d931dd9-11cf-5275-8d91-1c844e7960dc"><span>Biologische Ergebnisse mediengerecht präsentieren</span><code>6d931dd9-11cf-5275-8d91-1c844e7960dc</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-13874fa5-1370-5c51-990a-7dfb5f583c70-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-13874fa5-1370-5c51-990a-7dfb5f583c70-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-13874fa5-1370-5c51-990a-7dfb5f583c70-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-13874fa5-1370-5c51-990a-7dfb5f583c70-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 16</span>
+      <span>Buch-Digest <code>sha256:d8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:c9125099f7b36275a40b97fb4b28de2fc507f9a0aea271f44afc106695c2a9d5</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1&amp;edition=curricular-atomic-v1&amp;goalId=13874fa5-1370-5c51-990a-7dfb5f583c70&amp;goalFingerprint=sha256%3Ac9125099f7b36275a40b97fb4b28de2fc507f9a0aea271f44afc106695c2a9d5&amp;pageFingerprint=sha256%3A00d19497001b61e868aa6ecaa59dd558de83af45ebb3433d58b38afbb25c184a&amp;bookDigest=sha256%3Ad8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6d931dd9-11cf-5275-8d91-1c844e7960dc" data-goal-id="6d931dd9-11cf-5275-8d91-1c844e7960dc" data-page-number="6" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3d52f179-2be7-5882-bc9b-50d04b958355" aria-labelledby="goal-6d931dd9-11cf-5275-8d91-1c844e7960dc-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6d931dd9-11cf-5275-8d91-1c844e7960dc-title"><a class="goal-self-link" href="#goal-6d931dd9-11cf-5275-8d91-1c844e7960dc">Biologische Ergebnisse mediengerecht präsentieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6d931dd9-11cf-5275-8d91-1c844e7960dc</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-35fa60c7c11185f541ee3a95">Biologische Erkenntnisgewinnung und Wissenschaftsverständnis (Sek II)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:41a303753b3dbc8ffce111da306bbda98f3fb16f26642a53edbaa03e232b9866" data-rendered-digest="sha256:61490fb79f8097b39e53f8d39f7c26c1e15f246ba33a0ada94481edb09817521" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/6d931dd9-11cf-5275-8d91-1c844e7960dc/6d931dd9-11cf-5275-8d91-1c844e7960dc.png" alt="Ein Jugendlicher präsentiert vor zwei Zuhörenden ein Plakat mit Analog und einen Bildschirm mit Digital. Beide zeigen eine Biene an einer violetten Blüte, eine vergrößerte Blütendarstellung und ein Symbol für Beobachtungsnotizen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6d931dd9-11cf-5275-8d91-1c844e7960dc-description-heading">
+        <p class="section-heading" id="goal-6d931dd9-11cf-5275-8d91-1c844e7960dc-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann biologische Sachverhalte sowie Lern- und Arbeitsergebnisse mit sach-, adressaten- und situationsgerechten Darstellungsformen in analogen und digitalen Medien präsentieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-6d931dd9-11cf-5275-8d91-1c844e7960dc" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6d931dd9-11cf-5275-8d91-1c844e7960dc-requires-heading">
+          <p class="section-heading" id="goal-6d931dd9-11cf-5275-8d91-1c844e7960dc-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-13874fa5-1370-5c51-990a-7dfb5f583c70"><span>Informationen adressaten- und situationsgerecht verarbeiten</span><code>13874fa5-1370-5c51-990a-7dfb5f583c70</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-6d931dd9-11cf-5275-8d91-1c844e7960dc-reverse-heading">
+          <p class="section-heading" id="goal-6d931dd9-11cf-5275-8d91-1c844e7960dc-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f"><span>Evidenzbasiert biologisch argumentieren</span><code>0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-6d931dd9-11cf-5275-8d91-1c844e7960dc-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6d931dd9-11cf-5275-8d91-1c844e7960dc-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-6d931dd9-11cf-5275-8d91-1c844e7960dc-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6d931dd9-11cf-5275-8d91-1c844e7960dc-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 16</span>
+      <span>Buch-Digest <code>sha256:d8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:55c1e114d5cf33a0112d895ae270de7fa8dd2654e3630fa999d42963194db7d4</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1&amp;edition=curricular-atomic-v1&amp;goalId=6d931dd9-11cf-5275-8d91-1c844e7960dc&amp;goalFingerprint=sha256%3A55c1e114d5cf33a0112d895ae270de7fa8dd2654e3630fa999d42963194db7d4&amp;pageFingerprint=sha256%3A66ea06af29c62b3b5f96743c106a744d6dc609b82ebfefa4b74a14a4c173f9e0&amp;bookDigest=sha256%3Ad8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-cb218858-a468-5d3f-83e0-b60f83368af7" data-goal-id="cb218858-a468-5d3f-83e0-b60f83368af7" data-page-number="7" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3d52f179-2be7-5882-bc9b-50d04b958355" aria-labelledby="goal-cb218858-a468-5d3f-83e0-b60f83368af7-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-cb218858-a468-5d3f-83e0-b60f83368af7-title"><a class="goal-self-link" href="#goal-cb218858-a468-5d3f-83e0-b60f83368af7">Urheberschaft und Quellen korrekt kennzeichnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>cb218858-a468-5d3f-83e0-b60f83368af7</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-35fa60c7c11185f541ee3a95">Biologische Erkenntnisgewinnung und Wissenschaftsverständnis (Sek II)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:7f15ec572480ce974804455a1cae1f83714c6370060043a8bccfca298ae35220" data-rendered-digest="sha256:caec4376f0dec7c496ddf201dc3caff601287c173d6fa3f4a361583356d4b312" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/cb218858-a468-5d3f-83e0-b60f83368af7/cb218858-a468-5d3f-83e0-b60f83368af7.png" alt="Drei Bereiche heißen Urheber, Quelle und Zitat. Eine Lupe hebt M. Beispiel auf einem Buch über Keimung hervor. Ein Pfeil führt zum Buch und ein weiterer zu einer Karte mit dem Zitat „Keimung erforschen.“ und derselben Urheberangabe.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-cb218858-a468-5d3f-83e0-b60f83368af7-description-heading">
+        <p class="section-heading" id="goal-cb218858-a468-5d3f-83e0-b60f83368af7-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Urheberschaft prüfen, verwendete Quellen belegen und Zitate korrekt kennzeichnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-cb218858-a468-5d3f-83e0-b60f83368af7" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-cb218858-a468-5d3f-83e0-b60f83368af7-requires-heading">
+          <p class="section-heading" id="goal-cb218858-a468-5d3f-83e0-b60f83368af7-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-38c0259a-cba2-5305-a352-20023afc2dfc"><span>Zu biologischen Fragestellungen zielgerichtet recherchieren</span><code>38c0259a-cba2-5305-a352-20023afc2dfc</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-cb218858-a468-5d3f-83e0-b60f83368af7-reverse-heading">
+          <p class="section-heading" id="goal-cb218858-a468-5d3f-83e0-b60f83368af7-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-cb218858-a468-5d3f-83e0-b60f83368af7-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-cb218858-a468-5d3f-83e0-b60f83368af7-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-cb218858-a468-5d3f-83e0-b60f83368af7-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-cb218858-a468-5d3f-83e0-b60f83368af7-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 16</span>
+      <span>Buch-Digest <code>sha256:d8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4db13d982067b86b3f552b686db0f9d079dc9107521d963708b8491a0e9c72a3</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1&amp;edition=curricular-atomic-v1&amp;goalId=cb218858-a468-5d3f-83e0-b60f83368af7&amp;goalFingerprint=sha256%3A4db13d982067b86b3f552b686db0f9d079dc9107521d963708b8491a0e9c72a3&amp;pageFingerprint=sha256%3Afb435142f5d6d992f3df84dbf54ba33a155594136ad36792bb41f84d372ae22a&amp;bookDigest=sha256%3Ad8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f" data-goal-id="0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f" data-page-number="8" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3d52f179-2be7-5882-bc9b-50d04b958355" aria-labelledby="goal-0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f-title"><a class="goal-self-link" href="#goal-0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f">Evidenzbasiert biologisch argumentieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-35fa60c7c11185f541ee3a95">Biologische Erkenntnisgewinnung und Wissenschaftsverständnis (Sek II)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f382df97c769643bf67e9c386bba76a66ed77074a0583b3386790f647566347d" data-rendered-digest="sha256:d80fc365b24be3b259b40d5f53d17ea4081da6ec11a9df4d4a57389b98c866ad" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f/0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f.png" alt="Zwei Jugendliche diskutieren vor einer Tafel mit Schema und zwei unterschiedlich stark vermoosten Steinen. Ihre Sprechblasen heißen Beleg und Begründung. Darunter verbinden Pfeile ein Fragezeichen in einer Lupe mit dem Wort Prüfen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f-description-heading">
+        <p class="section-heading" id="goal-0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann sich konstruktiv über biologische Sachverhalte austauschen, wissenschaftlich kriterien- und evidenzbasiert argumentieren und den eigenen Standpunkt vertreten, reflektieren und gegebenenfalls korrigieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f-requires-heading">
+          <p class="section-heading" id="goal-0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-38e1cc26-513e-5e71-9f7e-de2ce35ce19b"><span>Quellenqualität und Autorintention prüfen</span><code>38e1cc26-513e-5e71-9f7e-de2ce35ce19b</code><span class="reference-page">S. 2</span></a></li><li><a href="#goal-6d931dd9-11cf-5275-8d91-1c844e7960dc"><span>Biologische Ergebnisse mediengerecht präsentieren</span><code>6d931dd9-11cf-5275-8d91-1c844e7960dc</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f-reverse-heading">
+          <p class="section-heading" id="goal-0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-bc68d606-799a-5bb7-b55d-ded2bdd61791"><span>Bewertungsrelevanz und Perspektiven analysieren</span><code>bc68d606-799a-5bb7-b55d-ded2bdd61791</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 16</span>
+      <span>Buch-Digest <code>sha256:d8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0398bcfa52734928d8733df6773b496d840227ca761a07a62ff0393e3ca9844c</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1&amp;edition=curricular-atomic-v1&amp;goalId=0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f&amp;goalFingerprint=sha256%3A0398bcfa52734928d8733df6773b496d840227ca761a07a62ff0393e3ca9844c&amp;pageFingerprint=sha256%3A50233caa4ae49f9b1de4dace45dc641d67ba01356d72d0944836f3cef66b975e&amp;bookDigest=sha256%3Ad8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-bc68d606-799a-5bb7-b55d-ded2bdd61791" data-goal-id="bc68d606-799a-5bb7-b55d-ded2bdd61791" data-page-number="9" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3d52f179-2be7-5882-bc9b-50d04b958355" aria-labelledby="goal-bc68d606-799a-5bb7-b55d-ded2bdd61791-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-bc68d606-799a-5bb7-b55d-ded2bdd61791-title"><a class="goal-self-link" href="#goal-bc68d606-799a-5bb7-b55d-ded2bdd61791">Bewertungsrelevanz und Perspektiven analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>bc68d606-799a-5bb7-b55d-ded2bdd61791</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-35fa60c7c11185f541ee3a95">Biologische Erkenntnisgewinnung und Wissenschaftsverständnis (Sek II)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e04bbd51067cfda45c90623b12601f3b4386e48b817d18c4b977808d991f9aa6" data-rendered-digest="sha256:78586ad703df570330933fd7f42e198e1df751b65194378a10d72b7f4f16fe99" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/bc68d606-799a-5bb7-b55d-ded2bdd61791/bc68d606-799a-5bb7-b55d-ded2bdd61791.png" alt="Ökologie, Ökonomie, Politik und Soziales sind als vier Perspektiven um eine Waage zum Abwägen angeordnet.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-bc68d606-799a-5bb7-b55d-ded2bdd61791-description-heading">
+        <p class="section-heading" id="goal-bc68d606-799a-5bb7-b55d-ded2bdd61791-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Sachverhalte hinsichtlich ihrer Bewertungsrelevanz analysieren und relevante Aspekte aus unterschiedlichen Perspektiven betrachten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-bc68d606-799a-5bb7-b55d-ded2bdd61791" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-bc68d606-799a-5bb7-b55d-ded2bdd61791-requires-heading">
+          <p class="section-heading" id="goal-bc68d606-799a-5bb7-b55d-ded2bdd61791-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f"><span>Evidenzbasiert biologisch argumentieren</span><code>0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-bc68d606-799a-5bb7-b55d-ded2bdd61791-reverse-heading">
+          <p class="section-heading" id="goal-bc68d606-799a-5bb7-b55d-ded2bdd61791-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-49ed2589-de3d-550e-8091-b8616c5536bc"><span>Deskriptive und normative Aussagen unterscheiden</span><code>49ed2589-de3d-550e-8091-b8616c5536bc</code><span class="reference-page">S. 10</span></a></li><li><a href="#goal-a2fdcc15-8a41-5406-9900-850829498b3b"><span>Bewertungskriterien aufstellen</span><code>a2fdcc15-8a41-5406-9900-850829498b3b</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-bc68d606-799a-5bb7-b55d-ded2bdd61791-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-bc68d606-799a-5bb7-b55d-ded2bdd61791-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-bc68d606-799a-5bb7-b55d-ded2bdd61791-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-bc68d606-799a-5bb7-b55d-ded2bdd61791-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 16</span>
+      <span>Buch-Digest <code>sha256:d8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:8daf9d06d2a0c1211212d037a3da117124be672f8d23ca5bebecec6c31d7dc6e</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1&amp;edition=curricular-atomic-v1&amp;goalId=bc68d606-799a-5bb7-b55d-ded2bdd61791&amp;goalFingerprint=sha256%3A8daf9d06d2a0c1211212d037a3da117124be672f8d23ca5bebecec6c31d7dc6e&amp;pageFingerprint=sha256%3A0e120f4cbc8f1bef524dd610d881f5e283036ca6ca19822bcc6d422c2a6dbe3b&amp;bookDigest=sha256%3Ad8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-49ed2589-de3d-550e-8091-b8616c5536bc" data-goal-id="49ed2589-de3d-550e-8091-b8616c5536bc" data-page-number="10" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3d52f179-2be7-5882-bc9b-50d04b958355" aria-labelledby="goal-49ed2589-de3d-550e-8091-b8616c5536bc-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-49ed2589-de3d-550e-8091-b8616c5536bc-title"><a class="goal-self-link" href="#goal-49ed2589-de3d-550e-8091-b8616c5536bc">Deskriptive und normative Aussagen unterscheiden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>49ed2589-de3d-550e-8091-b8616c5536bc</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-35fa60c7c11185f541ee3a95">Biologische Erkenntnisgewinnung und Wissenschaftsverständnis (Sek II)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:944c5afd4a26b54dda184a80ec65b765bbe2c85fc52dbd10f866517590d98d59" data-rendered-digest="sha256:3c852a41fd0f98308ea9fe928787ce92153d053cdb89a0b28008396a7fdc222b" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/49ed2589-de3d-550e-8091-b8616c5536bc/49ed2589-de3d-550e-8091-b8616c5536bc.png" alt="Links steht unter Ist die Aussage Der Teich ist trüb. zu einer trüben Wasserprobe. Rechts steht unter Soll Tiere sollen geschützt werden. neben Teichtieren und einer Herzkarte mit Tierwohl. Die beiden Bereiche sind gleichwertig dargestellt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-49ed2589-de3d-550e-8091-b8616c5536bc-description-heading">
+        <p class="section-heading" id="goal-49ed2589-de3d-550e-8091-b8616c5536bc-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann deskriptive und normative Aussagen unterscheiden und Werte identifizieren, die normativen Aussagen zugrunde liegen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-49ed2589-de3d-550e-8091-b8616c5536bc" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-49ed2589-de3d-550e-8091-b8616c5536bc-requires-heading">
+          <p class="section-heading" id="goal-49ed2589-de3d-550e-8091-b8616c5536bc-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-bc68d606-799a-5bb7-b55d-ded2bdd61791"><span>Bewertungsrelevanz und Perspektiven analysieren</span><code>bc68d606-799a-5bb7-b55d-ded2bdd61791</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-49ed2589-de3d-550e-8091-b8616c5536bc-reverse-heading">
+          <p class="section-heading" id="goal-49ed2589-de3d-550e-8091-b8616c5536bc-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-49ed2589-de3d-550e-8091-b8616c5536bc-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-49ed2589-de3d-550e-8091-b8616c5536bc-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-49ed2589-de3d-550e-8091-b8616c5536bc-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-49ed2589-de3d-550e-8091-b8616c5536bc-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 16</span>
+      <span>Buch-Digest <code>sha256:d8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:93dd0533619487bb0952b4e9bc851fe3c967980374dc7fd6e68d71514968c6ff</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1&amp;edition=curricular-atomic-v1&amp;goalId=49ed2589-de3d-550e-8091-b8616c5536bc&amp;goalFingerprint=sha256%3A93dd0533619487bb0952b4e9bc851fe3c967980374dc7fd6e68d71514968c6ff&amp;pageFingerprint=sha256%3A967925667a1de0bd351ab3ce8804f60014eac45c41fe4dc3253c29ac40070d48&amp;bookDigest=sha256%3Ad8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e4899fc6-5f0b-587d-af7d-5534dc772c63" data-goal-id="e4899fc6-5f0b-587d-af7d-5534dc772c63" data-page-number="11" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3d52f179-2be7-5882-bc9b-50d04b958355" aria-labelledby="goal-e4899fc6-5f0b-587d-af7d-5534dc772c63-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e4899fc6-5f0b-587d-af7d-5534dc772c63-title"><a class="goal-self-link" href="#goal-e4899fc6-5f0b-587d-af7d-5534dc772c63">Quellen nach Interessenlagen beurteilen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e4899fc6-5f0b-587d-af7d-5534dc772c63</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-35fa60c7c11185f541ee3a95">Biologische Erkenntnisgewinnung und Wissenschaftsverständnis (Sek II)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6ddbc616833a8c62012e28cd6586eb17c6f7fa4a1c81f35ef054c5ba1acf6f20" data-rendered-digest="sha256:ffd07cf047104138396936100f484ab441c488cfac81d1e0bcafdf9dbf3cfec5" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/e4899fc6-5f0b-587d-af7d-5534dc772c63/e4899fc6-5f0b-587d-af7d-5534dc772c63.png" alt="Eine Schülerin vergleicht eine gedruckte Broschüre und eine Website zu Bienen an Blüten und achtet auf Hinweise zur Absicht und Herkunft beider Quellen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e4899fc6-5f0b-587d-af7d-5534dc772c63-description-heading">
+        <p class="section-heading" id="goal-e4899fc6-5f0b-587d-af7d-5534dc772c63-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Quellen hinsichtlich ihrer Herkunft und spezifischer Interessenlagen beurteilen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-e4899fc6-5f0b-587d-af7d-5534dc772c63" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e4899fc6-5f0b-587d-af7d-5534dc772c63-requires-heading">
+          <p class="section-heading" id="goal-e4899fc6-5f0b-587d-af7d-5534dc772c63-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-38e1cc26-513e-5e71-9f7e-de2ce35ce19b"><span>Quellenqualität und Autorintention prüfen</span><code>38e1cc26-513e-5e71-9f7e-de2ce35ce19b</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-e4899fc6-5f0b-587d-af7d-5534dc772c63-reverse-heading">
+          <p class="section-heading" id="goal-e4899fc6-5f0b-587d-af7d-5534dc772c63-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e4899fc6-5f0b-587d-af7d-5534dc772c63-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e4899fc6-5f0b-587d-af7d-5534dc772c63-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-e4899fc6-5f0b-587d-af7d-5534dc772c63-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e4899fc6-5f0b-587d-af7d-5534dc772c63-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 16</span>
+      <span>Buch-Digest <code>sha256:d8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4702431c58cbae4b89cf30feb22f099ed0b36d3684ba9f4c6b602da2ef7d0ca7</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1&amp;edition=curricular-atomic-v1&amp;goalId=e4899fc6-5f0b-587d-af7d-5534dc772c63&amp;goalFingerprint=sha256%3A4702431c58cbae4b89cf30feb22f099ed0b36d3684ba9f4c6b602da2ef7d0ca7&amp;pageFingerprint=sha256%3Ad0a73a9e956d1705bccf9fb421f42a832b991aa1965bf96d54513699e62f9630&amp;bookDigest=sha256%3Ad8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-fde81c1b-f31d-507d-a3c7-19566cefc406" data-goal-id="fde81c1b-f31d-507d-a3c7-19566cefc406" data-page-number="12" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3d52f179-2be7-5882-bc9b-50d04b958355" aria-labelledby="goal-fde81c1b-f31d-507d-a3c7-19566cefc406-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-fde81c1b-f31d-507d-a3c7-19566cefc406-title"><a class="goal-self-link" href="#goal-fde81c1b-f31d-507d-a3c7-19566cefc406">Möglichkeiten und Grenzen biologischer Sichtweisen beurteilen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>fde81c1b-f31d-507d-a3c7-19566cefc406</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-35fa60c7c11185f541ee3a95">Biologische Erkenntnisgewinnung und Wissenschaftsverständnis (Sek II)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e04bbd51067cfda45c90623b12601f3b4386e48b817d18c4b977808d991f9aa6" data-rendered-digest="sha256:78586ad703df570330933fd7f42e198e1df751b65194378a10d72b7f4f16fe99" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/fde81c1b-f31d-507d-a3c7-19566cefc406/fde81c1b-f31d-507d-a3c7-19566cefc406.png" alt="Ökologie, Ökonomie, Politik und Soziales sind als vier Perspektiven um eine Waage zum Abwägen angeordnet.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-fde81c1b-f31d-507d-a3c7-19566cefc406-description-heading">
+        <p class="section-heading" id="goal-fde81c1b-f31d-507d-a3c7-19566cefc406-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Möglichkeiten und Grenzen biologischer Sichtweisen beurteilen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-fde81c1b-f31d-507d-a3c7-19566cefc406" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-fde81c1b-f31d-507d-a3c7-19566cefc406-requires-heading">
+          <p class="section-heading" id="goal-fde81c1b-f31d-507d-a3c7-19566cefc406-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-fde81c1b-f31d-507d-a3c7-19566cefc406-reverse-heading">
+          <p class="section-heading" id="goal-fde81c1b-f31d-507d-a3c7-19566cefc406-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-fde81c1b-f31d-507d-a3c7-19566cefc406-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-fde81c1b-f31d-507d-a3c7-19566cefc406-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-41c14647-9747-58d8-b97d-d1dce33e980e" rel="noreferrer noopener"><span>Erkenntnisprozesse wissenschaftstheoretisch reflektieren</span> <code>41c14647-9747-58d8-b97d-d1dce33e980e</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-fde81c1b-f31d-507d-a3c7-19566cefc406-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-fde81c1b-f31d-507d-a3c7-19566cefc406-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 16</span>
+      <span>Buch-Digest <code>sha256:d8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:82fa9887e4204ce90d7a63966ab6f37af698c1cb38bcaf432292553188703981</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1&amp;edition=curricular-atomic-v1&amp;goalId=fde81c1b-f31d-507d-a3c7-19566cefc406&amp;goalFingerprint=sha256%3A82fa9887e4204ce90d7a63966ab6f37af698c1cb38bcaf432292553188703981&amp;pageFingerprint=sha256%3Af4de683810a111ee7c90f9e90e4e98d544a8ba93bd5d19e5ababd0623cce8c93&amp;bookDigest=sha256%3Ad8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a2fdcc15-8a41-5406-9900-850829498b3b" data-goal-id="a2fdcc15-8a41-5406-9900-850829498b3b" data-page-number="13" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3d52f179-2be7-5882-bc9b-50d04b958355" aria-labelledby="goal-a2fdcc15-8a41-5406-9900-850829498b3b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a2fdcc15-8a41-5406-9900-850829498b3b-title"><a class="goal-self-link" href="#goal-a2fdcc15-8a41-5406-9900-850829498b3b">Bewertungskriterien aufstellen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a2fdcc15-8a41-5406-9900-850829498b3b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-35fa60c7c11185f541ee3a95">Biologische Erkenntnisgewinnung und Wissenschaftsverständnis (Sek II)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e04bbd51067cfda45c90623b12601f3b4386e48b817d18c4b977808d991f9aa6" data-rendered-digest="sha256:78586ad703df570330933fd7f42e198e1df751b65194378a10d72b7f4f16fe99" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/a2fdcc15-8a41-5406-9900-850829498b3b/a2fdcc15-8a41-5406-9900-850829498b3b.png" alt="Ökologie, Ökonomie, Politik und Soziales sind als vier Perspektiven um eine Waage zum Abwägen angeordnet.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a2fdcc15-8a41-5406-9900-850829498b3b-description-heading">
+        <p class="section-heading" id="goal-a2fdcc15-8a41-5406-9900-850829498b3b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Bewertungskriterien auch unter Berücksichtigung außerfachlicher Aspekte aufstellen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-a2fdcc15-8a41-5406-9900-850829498b3b" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a2fdcc15-8a41-5406-9900-850829498b3b-requires-heading">
+          <p class="section-heading" id="goal-a2fdcc15-8a41-5406-9900-850829498b3b-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-bc68d606-799a-5bb7-b55d-ded2bdd61791"><span>Bewertungsrelevanz und Perspektiven analysieren</span><code>bc68d606-799a-5bb7-b55d-ded2bdd61791</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a2fdcc15-8a41-5406-9900-850829498b3b-reverse-heading">
+          <p class="section-heading" id="goal-a2fdcc15-8a41-5406-9900-850829498b3b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-f0969375-476b-5de3-91c0-3031de7c50d1"><span>Kriteriengeleitete Entscheidungen treffen</span><code>f0969375-476b-5de3-91c0-3031de7c50d1</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-a2fdcc15-8a41-5406-9900-850829498b3b-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a2fdcc15-8a41-5406-9900-850829498b3b-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-a2fdcc15-8a41-5406-9900-850829498b3b-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a2fdcc15-8a41-5406-9900-850829498b3b-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-9ea70581-3cef-5a6b-b22b-33cc6df4d7af" rel="noreferrer noopener"><span>Stammzellen in Forschung und Medizin bewerten</span> <code>9ea70581-3cef-5a6b-b22b-33cc6df4d7af</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-031fd4f3-906e-5919-ae7f-a2b0b9220604" rel="noreferrer noopener"><span>Genetische Familienberatung ethisch bewerten</span> <code>031fd4f3-906e-5919-ae7f-a2b0b9220604</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2ef8b0c2-8ba3-54b7-99ff-8c743a4efa63" rel="noreferrer noopener"><span>DNA-Analytik beim Menschen ethisch einordnen</span> <code>2ef8b0c2-8ba3-54b7-99ff-8c743a4efa63</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 16</span>
+      <span>Buch-Digest <code>sha256:d8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:92ed9fc3392acbdf805e809b7578cb510fbd1c2c52161b1e9d113f8e382909e8</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1&amp;edition=curricular-atomic-v1&amp;goalId=a2fdcc15-8a41-5406-9900-850829498b3b&amp;goalFingerprint=sha256%3A92ed9fc3392acbdf805e809b7578cb510fbd1c2c52161b1e9d113f8e382909e8&amp;pageFingerprint=sha256%3A1001ff276480c7013b73fa7aa2f6d5dee1bae5df07e5557a64735f31c3895f79&amp;bookDigest=sha256%3Ad8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f0969375-476b-5de3-91c0-3031de7c50d1" data-goal-id="f0969375-476b-5de3-91c0-3031de7c50d1" data-page-number="14" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3d52f179-2be7-5882-bc9b-50d04b958355" aria-labelledby="goal-f0969375-476b-5de3-91c0-3031de7c50d1-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-f0969375-476b-5de3-91c0-3031de7c50d1-title"><a class="goal-self-link" href="#goal-f0969375-476b-5de3-91c0-3031de7c50d1">Kriteriengeleitete Entscheidungen treffen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f0969375-476b-5de3-91c0-3031de7c50d1</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-35fa60c7c11185f541ee3a95">Biologische Erkenntnisgewinnung und Wissenschaftsverständnis (Sek II)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e04bbd51067cfda45c90623b12601f3b4386e48b817d18c4b977808d991f9aa6" data-rendered-digest="sha256:78586ad703df570330933fd7f42e198e1df751b65194378a10d72b7f4f16fe99" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/f0969375-476b-5de3-91c0-3031de7c50d1/f0969375-476b-5de3-91c0-3031de7c50d1.png" alt="Ökologie, Ökonomie, Politik und Soziales sind als vier Perspektiven um eine Waage zum Abwägen angeordnet.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f0969375-476b-5de3-91c0-3031de7c50d1-description-heading">
+        <p class="section-heading" id="goal-f0969375-476b-5de3-91c0-3031de7c50d1-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Handlungsoptionen auf Basis reflektierter Wertvorstellungen abwägen, sich kriteriengeleitet eine Meinung bilden und Entscheidungen auf Grundlage von Sachinformationen und Werten treffen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-f0969375-476b-5de3-91c0-3031de7c50d1" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f0969375-476b-5de3-91c0-3031de7c50d1-requires-heading">
+          <p class="section-heading" id="goal-f0969375-476b-5de3-91c0-3031de7c50d1-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a2fdcc15-8a41-5406-9900-850829498b3b"><span>Bewertungskriterien aufstellen</span><code>a2fdcc15-8a41-5406-9900-850829498b3b</code><span class="reference-page">S. 13</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-f0969375-476b-5de3-91c0-3031de7c50d1-reverse-heading">
+          <p class="section-heading" id="goal-f0969375-476b-5de3-91c0-3031de7c50d1-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-241825f3-c26c-5ddd-9c3b-1f0460384390"><span>Folgen von Entscheidungen lokal und global reflektieren</span><code>241825f3-c26c-5ddd-9c3b-1f0460384390</code><span class="reference-page">S. 15</span></a></li><li><a href="#goal-9a0b6a24-2946-50ca-8a2a-703735650e5a"><span>Bewertungsprozesse ethisch reflektieren</span><code>9a0b6a24-2946-50ca-8a2a-703735650e5a</code><span class="reference-page">S. 16</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-f0969375-476b-5de3-91c0-3031de7c50d1-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f0969375-476b-5de3-91c0-3031de7c50d1-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-f0969375-476b-5de3-91c0-3031de7c50d1-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f0969375-476b-5de3-91c0-3031de7c50d1-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 16</span>
+      <span>Buch-Digest <code>sha256:d8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:fa328ee5a4fbe9850829a3e0df461770f74cded6b5d095667337da5105cb5792</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1&amp;edition=curricular-atomic-v1&amp;goalId=f0969375-476b-5de3-91c0-3031de7c50d1&amp;goalFingerprint=sha256%3Afa328ee5a4fbe9850829a3e0df461770f74cded6b5d095667337da5105cb5792&amp;pageFingerprint=sha256%3Afb9d377df32bd92cb26eddc4a307cdfdb0d53af40eeb2e8b978ee644645712fa&amp;bookDigest=sha256%3Ad8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-241825f3-c26c-5ddd-9c3b-1f0460384390" data-goal-id="241825f3-c26c-5ddd-9c3b-1f0460384390" data-page-number="15" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3d52f179-2be7-5882-bc9b-50d04b958355" aria-labelledby="goal-241825f3-c26c-5ddd-9c3b-1f0460384390-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-241825f3-c26c-5ddd-9c3b-1f0460384390-title"><a class="goal-self-link" href="#goal-241825f3-c26c-5ddd-9c3b-1f0460384390">Folgen von Entscheidungen lokal und global reflektieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>241825f3-c26c-5ddd-9c3b-1f0460384390</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-35fa60c7c11185f541ee3a95">Biologische Erkenntnisgewinnung und Wissenschaftsverständnis (Sek II)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:dca9644cbd270ad24adb774bd37d5dc3c2bc69a06a385263b243060277554ede" data-rendered-digest="sha256:fe347c1318b512f80764a2b09e05cf2ce02fbff30e8f27f9e32db2b504080b74" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/241825f3-c26c-5ddd-9c3b-1f0460384390/241825f3-c26c-5ddd-9c3b-1f0460384390.png" alt="Vier Felder kombinieren Lokal und Global mit Jetzt und Später. Eine Parklampe verbindet örtliche Szenen mit Menschen, Nachtfalter und Blumen sowie globale Szenen mit Erde und Energieversorgung. Fragezeichen lassen spätere Folgen offen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-241825f3-c26c-5ddd-9c3b-1f0460384390-description-heading">
+        <p class="section-heading" id="goal-241825f3-c26c-5ddd-9c3b-1f0460384390-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann kurz- und langfristige sowie lokale und globale Folgen eigener und gesellschaftlicher Entscheidungen reflektieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>MV, SN, ST, TH:</strong> Sek. I · G8</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-241825f3-c26c-5ddd-9c3b-1f0460384390" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-241825f3-c26c-5ddd-9c3b-1f0460384390-requires-heading">
+          <p class="section-heading" id="goal-241825f3-c26c-5ddd-9c3b-1f0460384390-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-f0969375-476b-5de3-91c0-3031de7c50d1"><span>Kriteriengeleitete Entscheidungen treffen</span><code>f0969375-476b-5de3-91c0-3031de7c50d1</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-241825f3-c26c-5ddd-9c3b-1f0460384390-reverse-heading">
+          <p class="section-heading" id="goal-241825f3-c26c-5ddd-9c3b-1f0460384390-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-241825f3-c26c-5ddd-9c3b-1f0460384390-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-241825f3-c26c-5ddd-9c3b-1f0460384390-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-241825f3-c26c-5ddd-9c3b-1f0460384390-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-241825f3-c26c-5ddd-9c3b-1f0460384390-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-f2306104-e846-5c25-bfbf-5f3e33db623a" rel="noreferrer noopener"><span>Anwendungen der Biologie nachhaltig bewerten</span> <code>f2306104-e846-5c25-bfbf-5f3e33db623a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 15 von 16</span>
+      <span>Buch-Digest <code>sha256:d8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3e3bfb950e84ca9b8c327df068243e69f567dc4cddbd3258264594ca32963611</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1&amp;edition=curricular-atomic-v1&amp;goalId=241825f3-c26c-5ddd-9c3b-1f0460384390&amp;goalFingerprint=sha256%3A3e3bfb950e84ca9b8c327df068243e69f567dc4cddbd3258264594ca32963611&amp;pageFingerprint=sha256%3A82124a3a00f4c0d67cc673903395a5660274755bcaed3f7138ecfe06c46c797a&amp;bookDigest=sha256%3Ad8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9a0b6a24-2946-50ca-8a2a-703735650e5a" data-goal-id="9a0b6a24-2946-50ca-8a2a-703735650e5a" data-page-number="16" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3d52f179-2be7-5882-bc9b-50d04b958355" aria-labelledby="goal-9a0b6a24-2946-50ca-8a2a-703735650e5a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9a0b6a24-2946-50ca-8a2a-703735650e5a-title"><a class="goal-self-link" href="#goal-9a0b6a24-2946-50ca-8a2a-703735650e5a">Bewertungsprozesse ethisch reflektieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9a0b6a24-2946-50ca-8a2a-703735650e5a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-35fa60c7c11185f541ee3a95">Biologische Erkenntnisgewinnung und Wissenschaftsverständnis (Sek II)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:158ddfad2b32aa60b684c0cd434fe495bfda851d6d2d5fcc1b4a104cd83f1c97" data-rendered-digest="sha256:88c4c145edf2775d146c1b1d53a8dec586eeb0e35184e972666fbf252647d939" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/9a0b6a24-2946-50ca-8a2a-703735650e5a/9a0b6a24-2946-50ca-8a2a-703735650e5a.png" alt="Eine nachdenkliche Jugendliche betrachtet eine Feuchtwiesenkarte. Drei Bereiche heißen Ich, Wir und Werte und zeigen eigene Interessen, mehrere Beteiligte sowie eine offene Waage mit Natur- und Fairnesssymbolen. Ein Pfeilkreis mit Prüfen führt zu den Perspektiven zurück.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9a0b6a24-2946-50ca-8a2a-703735650e5a-description-heading">
+        <p class="section-heading" id="goal-9a0b6a24-2946-50ca-8a2a-703735650e5a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Prozess der Bewertung aus persönlicher, gesellschaftlicher und ethischer Perspektive reflektieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BW:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>MV, SN, ST, TH:</strong> Sek. I · G8</li><li class="applicability-more">+ 1 weitere Ländergruppen</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-9a0b6a24-2946-50ca-8a2a-703735650e5a" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9a0b6a24-2946-50ca-8a2a-703735650e5a-requires-heading">
+          <p class="section-heading" id="goal-9a0b6a24-2946-50ca-8a2a-703735650e5a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-f0969375-476b-5de3-91c0-3031de7c50d1"><span>Kriteriengeleitete Entscheidungen treffen</span><code>f0969375-476b-5de3-91c0-3031de7c50d1</code><span class="reference-page">S. 14</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-9a0b6a24-2946-50ca-8a2a-703735650e5a-reverse-heading">
+          <p class="section-heading" id="goal-9a0b6a24-2946-50ca-8a2a-703735650e5a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-9a0b6a24-2946-50ca-8a2a-703735650e5a-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9a0b6a24-2946-50ca-8a2a-703735650e5a-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-9a0b6a24-2946-50ca-8a2a-703735650e5a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9a0b6a24-2946-50ca-8a2a-703735650e5a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-f2306104-e846-5c25-bfbf-5f3e33db623a" rel="noreferrer noopener"><span>Anwendungen der Biologie nachhaltig bewerten</span> <code>f2306104-e846-5c25-bfbf-5f3e33db623a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 16 von 16</span>
+      <span>Buch-Digest <code>sha256:d8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b24b720c7ec738e30ee9ab4c21ab969fcaa16c474424d76d9148a29e21a31356</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1&amp;edition=curricular-atomic-v1&amp;goalId=9a0b6a24-2946-50ca-8a2a-703735650e5a&amp;goalFingerprint=sha256%3Ab24b720c7ec738e30ee9ab4c21ab969fcaa16c474424d76d9148a29e21a31356&amp;pageFingerprint=sha256%3A6284646d5d7522d9387da0005af437ed1ab42d5d38ead1606a0d30a8510b54b9&amp;bookDigest=sha256%3Ad8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

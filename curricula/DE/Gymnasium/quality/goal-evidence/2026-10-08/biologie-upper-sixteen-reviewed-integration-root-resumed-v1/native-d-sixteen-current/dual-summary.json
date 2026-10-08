@@ -1,0 +1,310 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:61289869d9144c010ae6273e09b39d089267d2a7d717e813eed27844987d82ea",
+  "reviewInputFingerprint": "sha256:8934245cb6b9a87ae17cb4ecc397223f5d6efd3568e6bcc4a032792f1b7d6dea",
+  "goalCount": 16,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1-campaign-a",
+      "roundId": "biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1-independent-a",
+      "independenceGroupId": "biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1-independent-a",
+      "runIds": [
+        "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::Codex session GPT-6; exact model version not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1-campaign-b",
+      "roundId": "biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1-independent-b",
+      "independenceGroupId": "biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1-independent-b",
+      "runIds": [
+        "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run"
+      ],
+      "providers": [
+        "OpenAI Codex independent delegated reviewer"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex independent delegated reviewer::GPT-6 inherited session model; no separate provider invocation or model-version claim::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 16,
+    "unavailable": 0,
+    "requiresSynthesis": 16
+  },
+  "goals": [
+    {
+      "goalId": "38c0259a-cba2-5305-a352-20023afc2dfc",
+      "firstRecordId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first.38c0259a-cba2-5305-a352-20023afc2dfc",
+      "secondRecordId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run.d-01",
+      "firstRunId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first",
+      "secondRunId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "38e1cc26-513e-5e71-9f7e-de2ce35ce19b",
+      "firstRecordId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first.38e1cc26-513e-5e71-9f7e-de2ce35ce19b",
+      "secondRecordId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run.d-02",
+      "firstRunId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first",
+      "secondRunId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "12511dc3-b214-5f55-8d05-70cd2db784b9",
+      "firstRecordId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first.12511dc3-b214-5f55-8d05-70cd2db784b9",
+      "secondRecordId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run.d-03",
+      "firstRunId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first",
+      "secondRunId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1407c8fe-c13c-5847-aeb3-1fe0885926eb",
+      "firstRecordId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first.1407c8fe-c13c-5847-aeb3-1fe0885926eb",
+      "secondRecordId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run.d-04",
+      "firstRunId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first",
+      "secondRunId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "13874fa5-1370-5c51-990a-7dfb5f583c70",
+      "firstRecordId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first.13874fa5-1370-5c51-990a-7dfb5f583c70",
+      "secondRecordId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run.d-05",
+      "firstRunId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first",
+      "secondRunId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6d931dd9-11cf-5275-8d91-1c844e7960dc",
+      "firstRecordId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first.6d931dd9-11cf-5275-8d91-1c844e7960dc",
+      "secondRecordId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run.d-06",
+      "firstRunId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first",
+      "secondRunId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "cb218858-a468-5d3f-83e0-b60f83368af7",
+      "firstRecordId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first.cb218858-a468-5d3f-83e0-b60f83368af7",
+      "secondRecordId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run.d-07",
+      "firstRunId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first",
+      "secondRunId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f",
+      "firstRecordId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first.0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f",
+      "secondRecordId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run.d-08",
+      "firstRunId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first",
+      "secondRunId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "bc68d606-799a-5bb7-b55d-ded2bdd61791",
+      "firstRecordId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first.bc68d606-799a-5bb7-b55d-ded2bdd61791",
+      "secondRecordId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run.d-09",
+      "firstRunId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first",
+      "secondRunId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "49ed2589-de3d-550e-8091-b8616c5536bc",
+      "firstRecordId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first.49ed2589-de3d-550e-8091-b8616c5536bc",
+      "secondRecordId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run.d-10",
+      "firstRunId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first",
+      "secondRunId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e4899fc6-5f0b-587d-af7d-5534dc772c63",
+      "firstRecordId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first.e4899fc6-5f0b-587d-af7d-5534dc772c63",
+      "secondRecordId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run.d-11",
+      "firstRunId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first",
+      "secondRunId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "fde81c1b-f31d-507d-a3c7-19566cefc406",
+      "firstRecordId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first.fde81c1b-f31d-507d-a3c7-19566cefc406",
+      "secondRecordId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run.d-12",
+      "firstRunId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first",
+      "secondRunId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a2fdcc15-8a41-5406-9900-850829498b3b",
+      "firstRecordId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first.a2fdcc15-8a41-5406-9900-850829498b3b",
+      "secondRecordId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run.d-13",
+      "firstRunId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first",
+      "secondRunId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "f0969375-476b-5de3-91c0-3031de7c50d1",
+      "firstRecordId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first.f0969375-476b-5de3-91c0-3031de7c50d1",
+      "secondRecordId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run.d-14",
+      "firstRunId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first",
+      "secondRunId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "241825f3-c26c-5ddd-9c3b-1f0460384390",
+      "firstRecordId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first.241825f3-c26c-5ddd-9c3b-1f0460384390",
+      "secondRecordId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run.d-15",
+      "firstRunId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first",
+      "secondRunId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "9a0b6a24-2946-50ca-8a2a-703735650e5a",
+      "firstRecordId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first.9a0b6a24-2946-50ca-8a2a-703735650e5a",
+      "secondRecordId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run.d-16",
+      "firstRunId": "biologie-upper-sixteen-whole-native-independent-a-resumed-20261008-first",
+      "secondRunId": "biologie-upper-sixteen-whole-independent-b-resumed-v1.actual-first-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

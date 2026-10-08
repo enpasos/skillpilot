@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "command": [
+    "./gradlew",
+    "test",
+    "--tests",
+    "com.skillpilot.backend.controller.LearnerControllerIntegrationTest.learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals"
+  ],
+  "actualExitCode": 130,
+  "state": "INTERRUPTED_BEFORE_JUNIT_DURING_PARALLEL_PUBLICATION_BUILD",
+  "reason": "Root reported concurrent normal goal-book PDF writes to backend/static while processResources was not yet complete. The one targeted Gradle wrapper was interrupted using SIGINT to avoid copying transient publication outputs.",
+  "reportedCompletedTasks": [
+    "compileJava UP-TO-DATE",
+    "generateClaudePluginPublication UP-TO-DATE"
+  ],
+  "testExecutorObserved": false,
+  "junitResultClaimed": false,
+  "rerunRequirement": "Same exact targeted method after root full application publication build completes.",
+  "privateWholeLogsKeptLocal": true,
+  "localStdoutPath": "tmp/biologie-basis2-runtime-view-proof/current-42-scopes.junit.stdout.local.txt",
+  "localStderrPath": "tmp/biologie-basis2-runtime-view-proof/current-42-scopes.junit.stderr.local.txt",
+  "technicalInterruptionOnly": true,
+  "runtimeOrCompilerChange": false,
+  "humanApproval": false
+}

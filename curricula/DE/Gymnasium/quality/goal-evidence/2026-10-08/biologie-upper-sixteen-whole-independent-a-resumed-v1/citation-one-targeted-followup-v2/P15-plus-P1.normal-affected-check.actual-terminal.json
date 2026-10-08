@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-10-08T15:23:38.225805+00:00",
+  "status": "PASS",
+  "capsulePath": "tmp/biologie-sixteen-independent-a-P15-plus-corrected-P1-normal-check-v2",
+  "actualCommands": [
+    {
+      "scope": "P15",
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-upper-sixteen-whole-independent-a-resumed-v1/citation-one-targeted-followup-v2/P15.independent-a.inactive.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdout": "# Positive Goal Evidence Review: biologie-upper-fifteen-independent-a-whole-first-materialized-v1\nScope: 15 retained actual first review judgments, no repeated science review\nConfigured goals: 15\nApproved: 0\nNeeds human review: 15\nRejected: 0\nBlocking issues: 0\n",
+      "stderr": ""
+    },
+    {
+      "scope": "P1",
+      "command": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-upper-sixteen-whole-independent-a-resumed-v1/citation-one-targeted-followup-v2/P1.independent-a.inactive.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdout": "# Positive Goal Evidence Review: biologie-upper-citation-one-independent-a-targeted-followup-v2\nScope: One genuine targeted corrected whole citation followup by independent A\nConfigured goals: 1\nApproved: 0\nNeeds human review: 1\nRejected: 0\nBlocking issues: 0\n",
+      "stderr": ""
+    }
+  ],
+  "normalProfileSchemasAndSemantics": "PASS",
+  "P15FirstActualReviewsRetainedWithoutRepeatedScience": 15,
+  "P1GenuineTargetedReview": 1,
+  "positiveApproved": 0,
+  "positiveNeedsHumanReview": 16,
+  "changedFirstSealPayloads": [],
+  "firstOriginalSealPayloadCount": 92,
+  "targetedFollowupSealPayloadCount": 4,
+  "temporaryCapsuleUsesRegularFilesOnly": true,
+  "activeWrites": 0,
+  "strictGain": 0,
+  "humanApproval": false,
+  "humanTrial": false
+}

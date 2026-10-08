@@ -1,0 +1,111 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:c15fd6f0b641052a77c5aa5b0375e3771ee2bce705973eaf9cb0058820099d88",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "biologie-basis2-source-supplement-context-20261008-v1",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 2,
+  "goals": [
+    {
+      "goalId": "0f50cad3-8c4e-5bc4-8833-3a1ecdd71d38",
+      "pageNumber": 1,
+      "goalFingerprint": "sha256:b55e97f931fb521b1652ac3e78fe7ce2fb62456db92efa8b73e54a2c38dded5d",
+      "pageFingerprint": "sha256:59af1cb59e07d7fea75cf977b8681124edcbca22dfc6320f7ee9204a8a82ff74",
+      "evidenceReview": null
+    },
+    {
+      "goalId": "32483d30-2162-50a5-a6cc-05b7f2467ab1",
+      "pageNumber": 2,
+      "goalFingerprint": "sha256:7b3fd2363df27e0eddec7b83d6b292aa0e06cc11ae7565724b509929076bc765",
+      "pageFingerprint": "sha256:e133b321bd1988eab3c69c89884dc8237799cccbdbe73efa16100e2d72da0fcb",
+      "evidenceReview": null
+    }
+  ],
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:44b756808247974bdc0eab7a10a05ecb669309f62368aadc4366c834ced9f37c",
+      "bytes": 208437
+    },
+    {
+      "role": "book_pdf",
+      "path": "book.pdf",
+      "digest": "sha256:2ff03d3967a2c882981edf0ac3b24cf4de620643f86e57d05776cd0656f5273b",
+      "bytes": 2364782
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "path": "book.pdf.render-manifest.json",
+      "digest": "sha256:648ee75be882b39999f4bf615992c7d9d48a7d04ddee501da1a5d3e078b118bb",
+      "bytes": 3991
+    },
+    {
+      "role": "book_html",
+      "path": "book.html",
+      "digest": "sha256:5ac721024a721fc51498581cdd8031f38b7809bb8b84e363cbbbc85c6640cafb",
+      "bytes": 22385
+    },
+    {
+      "role": "book_html_render_manifest",
+      "path": "book.html.render-manifest.json",
+      "digest": "sha256:f232e15a44434ef46653cc5c743dc1b27d9ee5fe7f19c39201c8b18eadd8e5a7",
+      "bytes": 3992
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:10930fcd22e96f7141a3f5bd133f7505efb32488ae83b6a038e84eddcf06ba40",
+      "bytes": 7964
+    },
+    {
+      "role": "review_input_jsonl",
+      "path": "review-input.jsonl",
+      "digest": "sha256:022fa4535787690c64d0b25469d3d70984ca9ef135f2c19d9d0d5042c9aea0d2",
+      "bytes": 5146
+    },
+    {
+      "role": "review_markdown",
+      "path": "review.md",
+      "digest": "sha256:3bcbe027701214ddd57ade6fe211ff9dd7494d9d642d03aa1688446579108a7b",
+      "bytes": 3145
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+      "bytes": 2505
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:dc3e3ff5b68bf2f7853494f569b702edbc4e6d17c0dfb1d58b754de3b3640567"
+}

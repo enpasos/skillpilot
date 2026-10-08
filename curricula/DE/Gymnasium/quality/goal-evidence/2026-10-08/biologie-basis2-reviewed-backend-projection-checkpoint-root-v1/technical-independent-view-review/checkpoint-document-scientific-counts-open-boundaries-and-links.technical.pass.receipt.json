@@ -1,0 +1,411 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "independent-technical-checkpoint-document-plausibility-review",
+  "reviewer": "/root/checkpoint_view_review",
+  "completedAtUtc": "2026-10-08T16:42:12.989973+00:00",
+  "result": "PASS",
+  "reviewedDocumentSnapshot": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-reviewed-backend-projection-checkpoint-root-v1/technical-independent-view-review/checkpoint-document.current-reviewed-input.snapshot.md",
+    "sha256": "9662458ff7232dca75f914645cc4c0dd413b97beaa583f78f33a9c49679f396d",
+    "bytes": 11756
+  },
+  "activeDocumentationPathAtReview": "docs/qa-ci/chemie-biologie-m7-chemie177-biologie262-commit-checkpoint-2026-10-08.md",
+  "scope": "Technical plausibility and truthful status review only; no new scientific D/P/V/source review, no active-file writes.",
+  "sourceReportBindings": {
+    "actualCentral": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-central-all-four-stable.stdout.actual.txt",
+      "sha256": "a10807da76ec59c6b98bdde6433962a8b30d7102106ecad91182f0387b42e98e",
+      "bytes": 187930
+    },
+    "netScientificClosures": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-strict-eighteen-new-closures.actual.json",
+      "sha256": "51a71ffa043cd93faafaa56244762280d73040acce46fef6eb2895acad1b4946",
+      "bytes": 2788
+    },
+    "actualPAndVPairing": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-upper-sixteen-reviewed-integration-root-resumed-v1/checks/current-sixteen-PV-pair.actual.json",
+      "sha256": "286a8178ac39e50632a83224c91461dc2d3e1324c9ab110383b3696d7009f47c",
+      "bytes": 38854
+    },
+    "inactiveChemistryHandoff": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-all-twenty-six-image-pairing-technical-resumed-v1/neutral-v26-technical-pairing-fifteen-complete-eleven-open.handoff.entry.json",
+      "sha256": "7229c88c53746688b16e8160c54b7c1fb17c953a915f4b7be4d94e46c4104bd7",
+      "bytes": 3484
+    },
+    "inactiveChemistryPairingMatrix": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-all-twenty-six-image-pairing-technical-resumed-v1/all26-current-selected-raster-role-pairing.actual.json",
+      "sha256": "2fed69ffc67047ce9f6b3abcc8535e15f563b39edc9402ea96327e9110974828",
+      "bytes": 114661
+    },
+    "actual38CandidateSourceGaps": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-bw-paired-source-atlas-continuation-technical-resumed-v1/focused38-next-source-placement-review-gaps.neutral.json",
+      "sha256": "acffddd7459265cb1ffebf9ab4a3c06a32a9dd6fc79617cbed12e552a6d1c19b",
+      "bytes": 799626
+    },
+    "actualHistoricalPartnerTruth": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-supplement-reviewed-integration-preparation-resumed-v2/checks/current-source-partner-preservation.corrected-baseline-comparison.actual.json",
+      "sha256": "6c1765208047809585aeccd2f3aa0fa956c65924aff57f20f1d138ce3a8a71f2",
+      "bytes": 20644
+    }
+  },
+  "checks": {
+    "subjects": [
+      {
+        "subject": "mathematik",
+        "strictComplete": 807,
+        "denominator": 807,
+        "remaining": 0,
+        "percentage": "100.0%"
+      },
+      {
+        "subject": "physik",
+        "strictComplete": 478,
+        "denominator": 478,
+        "remaining": 0,
+        "percentage": "100.0%"
+      },
+      {
+        "subject": "chemie",
+        "strictComplete": 177,
+        "denominator": 378,
+        "remaining": 201,
+        "percentage": "46.8%"
+      },
+      {
+        "subject": "biologie",
+        "strictComplete": 262,
+        "denominator": 394,
+        "remaining": 132,
+        "percentage": "66.5%"
+      }
+    ],
+    "baselineGitHead": "6e6224eaa5e621f39ee20318dcdd6d7404102302",
+    "baselineCQR303Statuses": [
+      {
+        "subject": "Biologie",
+        "maturity": "M6",
+        "CQR303": {
+          "id": "CQR-303",
+          "status": "warn",
+          "summary": "Deep curriculum QA is incomplete: 244/392 current curricularAtomic goals strictly complete.",
+          "metrics": {
+            "expectedGoals": 392,
+            "remaining": 148,
+            "strictComplete": 244,
+            "currentDescriptionResolutions": 244,
+            "currentPositiveEvidenceProfiles": 244,
+            "currentSemanticAtomicityDecisions": 392,
+            "currentMemoryReviewDecisions": 392,
+            "currentVisualizationQaRecords": 244,
+            "deferredVisualizations": 0,
+            "requiredChecksPassed": 6,
+            "requiredChecksTotal": 6,
+            "blockingIssues": 0
+          }
+        }
+      },
+      {
+        "subject": "Chemie",
+        "maturity": "M6",
+        "CQR303": {
+          "id": "CQR-303",
+          "status": "warn",
+          "summary": "Deep curriculum QA is incomplete: 177/378 current curricularAtomic goals strictly complete.",
+          "metrics": {
+            "expectedGoals": 378,
+            "remaining": 201,
+            "strictComplete": 177,
+            "currentDescriptionResolutions": 177,
+            "currentPositiveEvidenceProfiles": 177,
+            "currentSemanticAtomicityDecisions": 205,
+            "currentMemoryReviewDecisions": 378,
+            "currentVisualizationQaRecords": 359,
+            "deferredVisualizations": 17,
+            "requiredChecksPassed": 6,
+            "requiredChecksTotal": 6,
+            "blockingIssues": 0
+          },
+          "details": [
+            "17 current goals have deferred necessary visualization work; technical provider deferrals do not complete gate V."
+          ]
+        }
+      },
+      {
+        "subject": "Mathematik",
+        "maturity": "M7",
+        "CQR303": {
+          "id": "CQR-303",
+          "status": "pass",
+          "summary": "Deep curriculum QA is complete for all 807 current curricularAtomic goals.",
+          "metrics": {
+            "expectedGoals": 807,
+            "remaining": 0,
+            "strictComplete": 807,
+            "currentDescriptionResolutions": 807,
+            "currentPositiveEvidenceProfiles": 807,
+            "currentSemanticAtomicityDecisions": 807,
+            "currentMemoryReviewDecisions": 807,
+            "currentVisualizationQaRecords": 807,
+            "deferredVisualizations": 0,
+            "requiredChecksPassed": 6,
+            "requiredChecksTotal": 6,
+            "blockingIssues": 0
+          }
+        }
+      },
+      {
+        "subject": "Physik",
+        "maturity": "M7",
+        "CQR303": {
+          "id": "CQR-303",
+          "status": "pass",
+          "summary": "Deep curriculum QA is complete for all 478 current curricularAtomic goals.",
+          "metrics": {
+            "expectedGoals": 478,
+            "remaining": 0,
+            "strictComplete": 478,
+            "currentDescriptionResolutions": 478,
+            "currentPositiveEvidenceProfiles": 478,
+            "currentSemanticAtomicityDecisions": 478,
+            "currentMemoryReviewDecisions": 478,
+            "currentVisualizationQaRecords": 478,
+            "deferredVisualizations": 0,
+            "requiredChecksPassed": 6,
+            "requiredChecksTotal": 6,
+            "blockingIssues": 0
+          }
+        }
+      }
+    ],
+    "requiredCentralChecksPassedPerSubject": 6,
+    "centralBlockingIssues": 0,
+    "newScientificClosureCount": 18,
+    "denominatorDelta": 2,
+    "bindingOnlyNetGain": 0,
+    "all244OldBiologyClosuresRetained": true,
+    "sixteenWholePositiveProfilePairs": 16,
+    "sixteenActualRasterPairs": 16,
+    "oneTargetedCitationCorrectionResolvedByBothExistingReviews": true,
+    "historicalPartnerCounts": {
+      "historical": 268,
+      "currentOperative": 248,
+      "previouslyRefined": 20
+    },
+    "oldActiveMappingRowsRetained": 3084,
+    "newPartialMappingRows": 10,
+    "inactiveChemistry": {
+      "pairedImageRoles": 15,
+      "currentRoles": 26,
+      "missingIndependentB": 11,
+      "sourceGaps": 38,
+      "gapGroups": {
+        "eleven-historical-HE-RP-content-direct-source-binding-gaps": 11,
+        "nineteen-B008-boundary-child-source-binding-gaps": 19,
+        "eight-BY-practical-authored-course-policy-gaps": 8
+      },
+      "strictGain": 0,
+      "wholeSourceAndNativeVApprovalNotAsserted": true
+    },
+    "noHumanOrHumanTrialOrNewCommitCIOrDeploymentClaimFound": true,
+    "passedRowsSupportedByActualExitZeroTerminals": true,
+    "explicitlyPendingRowsAtSnapshot": [
+      "| Gezielt betroffener Backend-Projektionstest | Abschluss nach stabilem Buchbuild läuft |"
+    ],
+    "commitReadinessNotCertifiedByThisDocumentationReview": true
+  },
+  "portableLocalMarkdownLinkChecks": [
+    {
+      "label": "vorherigen Zwischenstand",
+      "markdownTarget": "chemie-biologie-m7-chemie177-biologie244-commit-checkpoint-2026-10-08.md",
+      "localRepositoryTarget": "docs/qa-ci/chemie-biologie-m7-chemie177-biologie244-commit-checkpoint-2026-10-08.md",
+      "existsLocally": true,
+      "kind": "relative documentation target"
+    },
+    {
+      "label": "aktuelle zentrale Fünf-Gate-Bericht",
+      "markdownTarget": "https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-central-all-four-stable.stdout.actual.txt",
+      "localRepositoryTarget": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-central-all-four-stable.stdout.actual.txt",
+      "existsLocally": true,
+      "kind": "same-repository GitHub target; remote publication of new files not claimed"
+    },
+    {
+      "label": "aktuellen Ziel-IDs und Netto-Deltas",
+      "markdownTarget": "https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-strict-eighteen-new-closures.actual.json",
+      "localRepositoryTarget": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-strict-eighteen-new-closures.actual.json",
+      "existsLocally": true,
+      "kind": "same-repository GitHub target; remote publication of new files not claimed"
+    },
+    {
+      "label": "aktuelle P-/V-Paarung",
+      "markdownTarget": "https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-upper-sixteen-reviewed-integration-root-resumed-v1/checks/current-sixteen-PV-pair.actual.json",
+      "localRepositoryTarget": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-upper-sixteen-reviewed-integration-root-resumed-v1/checks/current-sixteen-PV-pair.actual.json",
+      "existsLocally": true,
+      "kind": "same-repository GitHub target; remote publication of new files not claimed"
+    },
+    {
+      "label": "exakten Original-/Indexbytes",
+      "markdownTarget": "https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/exact-original-source-index-bytes.actual.json",
+      "localRepositoryTarget": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/exact-original-source-index-bytes.actual.json",
+      "existsLocally": true,
+      "kind": "same-repository GitHub target; remote publication of new files not claimed"
+    },
+    {
+      "label": "Zentraler Abschluss des aktuellen Berichts",
+      "markdownTarget": "https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-central-all-four-stable.terminal.actual.json",
+      "localRepositoryTarget": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-central-all-four-stable.terminal.actual.json",
+      "existsLocally": true,
+      "kind": "same-repository GitHub target; remote publication of new files not claimed"
+    },
+    {
+      "label": "Vollständige Schemavalidierung",
+      "markdownTarget": "https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-full-validate-schemas.terminal.actual.json",
+      "localRepositoryTarget": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-full-validate-schemas.terminal.actual.json",
+      "existsLocally": true,
+      "kind": "same-repository GitHub target; remote publication of new files not claimed"
+    },
+    {
+      "label": "Vollständiger Build nach Wiederherstellung normaler Arbeitskopien",
+      "markdownTarget": "https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-complete-application-build-after-ordinary-output-restoration-v2.terminal.actual.json",
+      "localRepositoryTarget": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-complete-application-build-after-ordinary-output-restoration-v2.terminal.actual.json",
+      "existsLocally": true,
+      "kind": "same-repository GitHub target; remote publication of new files not claimed"
+    },
+    {
+      "label": "Normaler Modelltest mit aktuellen 394 Biologie-Seiten",
+      "markdownTarget": "https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-goal-book-model-after-current394-publication-v2.terminal.actual.json",
+      "localRepositoryTarget": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-goal-book-model-after-current394-publication-v2.terminal.actual.json",
+      "existsLocally": true,
+      "kind": "same-repository GitHub target; remote publication of new files not claimed"
+    },
+    {
+      "label": "Fünf integrierte authored Views und 96 echte Backend-Vergleiche",
+      "markdownTarget": "https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/five-reviewed-authored-views-applied.actual.json",
+      "localRepositoryTarget": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/five-reviewed-authored-views-applied.actual.json",
+      "existsLocally": true,
+      "kind": "same-repository GitHub target; remote publication of new files not claimed"
+    },
+    {
+      "label": "Unabhängige technische View-/Quellenprüfung",
+      "markdownTarget": "https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-reviewed-backend-projection-checkpoint-root-v1/technical-independent-view-review/five-views-96-scopes-and-source-bindings.independent-technical.pass.receipt.json",
+      "localRepositoryTarget": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-reviewed-backend-projection-checkpoint-root-v1/technical-independent-view-review/five-views-96-scopes-and-source-bindings.independent-technical.pass.receipt.json",
+      "existsLocally": true,
+      "kind": "same-repository GitHub target; remote publication of new files not claimed"
+    },
+    {
+      "label": "Unveränderte vollständige nationale 394-Ziele-Seiten",
+      "markdownTarget": "https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-reviewed-backend-projection-checkpoint-root-v1/whole394-national-book-frame.after-view-completion.exact.actual.json",
+      "localRepositoryTarget": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-reviewed-backend-projection-checkpoint-root-v1/whole394-national-book-frame.after-view-completion.exact.actual.json",
+      "existsLocally": true,
+      "kind": "same-repository GitHub target; remote publication of new files not claimed"
+    },
+    {
+      "label": "Chemie: 15 tatsächliche Bildpaarungen und elf offene Rollen",
+      "markdownTarget": "https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-all-twenty-six-image-pairing-technical-resumed-v1/neutral-v26-technical-pairing-fifteen-complete-eleven-open.handoff.entry.json",
+      "localRepositoryTarget": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-all-twenty-six-image-pairing-technical-resumed-v1/neutral-v26-technical-pairing-fifteen-complete-eleven-open.handoff.entry.json",
+      "existsLocally": true,
+      "kind": "same-repository GitHub target; remote publication of new files not claimed"
+    },
+    {
+      "label": "Chemie Source19: ausdrücklich ungeprüfter Zwischenstand",
+      "markdownTarget": "https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-nineteen-boundary-source-contributions-author-resumed-v1/unfinished-source19.checkpoint.final.freeze.json",
+      "localRepositoryTarget": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-nineteen-boundary-source-contributions-author-resumed-v1/unfinished-source19.checkpoint.final.freeze.json",
+      "existsLocally": true,
+      "kind": "same-repository GitHub target; remote publication of new files not claimed"
+    }
+  ],
+  "actualPassedTerminalBindingsChecked": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-full-validate-schemas.terminal.actual.json",
+      "sha256": "0299a6597da4835926fc21d688bcfbfc348723365ad6407508022a20ef667ad5",
+      "bytes": 764
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-goal-book-mandatory-source-inputs.terminal.actual.json",
+      "sha256": "3ab1b0ff35a8edfb78cce775beaf41122cbed3c4b8b1dcb0d2dfd8f7b7a5fe00",
+      "bytes": 868
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-normal-schema-symlink-regressions.terminal.actual.json",
+      "sha256": "eea89ad9299bf906cf6673638a79321b85449193e8b7aed0f0d7358a159e2a07",
+      "bytes": 823
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-duration-readiness-after-authored-view-integration.terminal.actual.json",
+      "sha256": "f107112617df334ed09d30092294e0f7622fe9402921a21c1d74aff4f21fb056",
+      "bytes": 865
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-source-coverage-audit-after-authored-view-integration.terminal.actual.json",
+      "sha256": "cabee0d65485487a6ca314c5397e3c7d7a04e4304b61217f79cbbe01467ca3a3",
+      "bytes": 874
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-all-nine-protected-maturity-floors.terminal.actual.json",
+      "sha256": "d826d2ff53c29646e08da9aff49fc2c94dbdd9262943da6beb918dad8d6fdb20",
+      "bytes": 833
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-installed-images-after-exact-two-backend-mirrors.terminal.actual.json",
+      "sha256": "a47f6c595bada12b9c0507614a80742c50283e4e8880d43aefec83676c33d2ed",
+      "bytes": 833
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-measured-transparency-inventory.terminal.actual.json",
+      "sha256": "11712a960851a878ea6403a19bbcee1751fbd90d8a6d56df71b0090bc1aa4c34",
+      "bytes": 799
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-memory-reports-all.terminal.actual.json",
+      "sha256": "137916b3ead181086505825ef7a30c1db1859396aab7fcfba11cd87e42cc3a55",
+      "bytes": 808
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-deep-understanding-transition-regressions.terminal.actual.json",
+      "sha256": "beaf8bb7eade585519f1fc64933621f0cbbb419ce19f567fdf61098e3d1478f4",
+      "bytes": 845
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-complete-application-build-after-ordinary-output-restoration-v2.terminal.actual.json",
+      "sha256": "f22e0dae90af36abfe1032a7bab55c504df6f57506501b88b4cda774adb1cb9d",
+      "bytes": 866
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-goal-book-model-after-current394-publication-v2.terminal.actual.json",
+      "sha256": "8f9aafc6468b86850bde047cf1a0cb183c544372dcb75bbbc2f5bffc0966f4b3",
+      "bytes": 845
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-normal-authored-composition-validation.terminal.actual.json",
+      "sha256": "58daba8c7b97fb5f7912b9d7ad0820184ad53d8d033401902c159d50a69a95e6",
+      "bytes": 834
+    }
+  ],
+  "regressionSourceInspection": {
+    "sourceAtlasTest": {
+      "path": "app/scripts/testGoalBookSourceAtlasInputs.ts",
+      "sha256": "4a5e7c654765e844ad1c84f6dd303dbfe96b27ec68e4415c5c14f786703a2836",
+      "bytes": 23169
+    },
+    "exactRespirationEightCountrySekIAndCouplingSNOnlyAssertionsPresent": true,
+    "JUnitSource": {
+      "path": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+      "sha256": "89847c128171cc695e78e5aaf02a908e57f5ec2d270beb2874c266ea7ac5d750",
+      "bytes": 111372
+    },
+    "old33ScopeExpectationsRetained": true,
+    "current42Scopes": {
+      "Biologie": 16,
+      "Chemie": 16,
+      "Physik": 10
+    },
+    "all32BioDurationCountsAgreeWithActualBackendProbe": true,
+    "normalHTTPAndLearnerServiceAPIsUsed": true,
+    "testRuntimePassNotInferredFromCodeInspection": true
+  },
+  "limitations": [
+    "Root must update remaining pending rows only from actual terminal checks. Later active-document bytes are not covered by this immutable reviewed snapshot.",
+    "Same-repository links resolve locally; remote GitHub availability before commit/push is not claimed.",
+    "Existing genuine machine scientific reviews remain authoritative; this technical receipt adds no new scientific or human approval."
+  ],
+  "activeWritesByThisReviewer": 0
+}

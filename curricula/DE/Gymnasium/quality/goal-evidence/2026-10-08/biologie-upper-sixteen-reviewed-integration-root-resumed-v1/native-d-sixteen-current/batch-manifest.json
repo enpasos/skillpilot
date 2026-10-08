@@ -1,0 +1,69 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-stoffwechsel-reviewed-sixteen-current392-technical-20261008-v1-sixteen-current",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-upper-sixteen-reviewed-integration-root-resumed-v1/native-d-sixteen-current.batch.config.json",
+  "configDigest": "sha256:c6c05d5937c174ff75c76819b4b3b25649308bdd9878b64f34f970e14f8c9bee",
+  "goalIds": [
+    "38c0259a-cba2-5305-a352-20023afc2dfc",
+    "38e1cc26-513e-5e71-9f7e-de2ce35ce19b",
+    "12511dc3-b214-5f55-8d05-70cd2db784b9",
+    "1407c8fe-c13c-5847-aeb3-1fe0885926eb",
+    "13874fa5-1370-5c51-990a-7dfb5f583c70",
+    "6d931dd9-11cf-5275-8d91-1c844e7960dc",
+    "cb218858-a468-5d3f-83e0-b60f83368af7",
+    "0a9ee5c0-6196-5d16-ac65-dc516a3e0d0f",
+    "bc68d606-799a-5bb7-b55d-ded2bdd61791",
+    "49ed2589-de3d-550e-8091-b8616c5536bc",
+    "e4899fc6-5f0b-587d-af7d-5534dc772c63",
+    "fde81c1b-f31d-507d-a3c7-19566cefc406",
+    "a2fdcc15-8a41-5406-9900-850829498b3b",
+    "f0969375-476b-5de3-91c0-3031de7c50d1",
+    "241825f3-c26c-5ddd-9c3b-1f0460384390",
+    "9a0b6a24-2946-50ca-8a2a-703735650e5a"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 392,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-upper-communication-evaluation-sixteen-native-author-technical-resumed-v1/candidate/book.current392.sixteen-resource.inactive.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-upper-communication-evaluation-sixteen-native-author-technical-resumed-v1/candidate/canonical.current476.sixteen-resource-candidates.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:cf59a3f265e170a6f93bbd23eed6b669c5b956881ce58aeecc784b8628c34424"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:d8f5a9020aedfcd370dcbee8884ab9f7f5c6f6411bde71c3875a8f3d092ee5a2",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:61289869d9144c010ae6273e09b39d089267d2a7d717e813eed27844987d82ea",
+    "reviewInputFingerprint": "sha256:8934245cb6b9a87ae17cb4ecc397223f5d6efd3568e6bcc4a032792f1b7d6dea",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1-campaign-a",
+        "campaignDigest": "sha256:d988b248bcce86e38f6494de3864abf817041cd238fe7f45863f0ed46a1ce0d1",
+        "roundId": "biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1-independent-a",
+        "independenceGroupId": "biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1-independent-a",
+        "batchId": "biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1-independent-a.batch-001",
+        "batchInputFingerprint": "sha256:429131b332489da9a6692fd62afe0424b1c08ea5faa3f15faf2762c81710d898"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1-campaign-b",
+        "campaignDigest": "sha256:5e77e43ac904ee93c62716d9f400747dacace807362f601d82e197df92e44d6c",
+        "roundId": "biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1-independent-b",
+        "independenceGroupId": "biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1-independent-b",
+        "batchId": "biologie-upper-communication-evaluation-sixteen-current392-native-resumed-v1-independent-b.batch-001",
+        "batchInputFingerprint": "sha256:52fc3a2c00df21167b937774bd8c0091b200a8854ba6416b6864aa6dfc982b96"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,0 +1,21 @@
+
+> skillpilot@0.0.0 build
+> npm run prepare:runtime-assets && npm run build:application
+
+
+> skillpilot@0.0.0 prepare:runtime-assets
+> npm run generate:gymnasium-duration-offerings && npm run deploy:assets && npm run prepare:gemini-skill
+
+
+> skillpilot@0.0.0 generate:gymnasium-duration-offerings
+> tsx scripts/generateGymnasiumDurationOfferings.ts --write
+
+
+> skillpilot@0.0.0 deploy:assets
+> ./node_modules/.bin/tsx ../scripts/deploy_curriculum_decks.ts && ./node_modules/.bin/tsx ../scripts/deploy_exam_assets.ts && ./node_modules/.bin/tsx ../scripts/deploy_goal_visualizations.ts && ./node_modules/.bin/tsx ../scripts/deploy_whitepaper.ts && python3 ../scripts/deploy_story.py
+
+Deployed 112 curriculum deck copy operations to /home/enpasos/projects/skillpilot/app/public/data, /home/enpasos/projects/skillpilot/backend/src/main/resources/static/data
+Starting image deployment...
+Source: /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/input/HE/abi/Mathe/Klausurbeispiel2026_1
+Target: /home/enpasos/projects/skillpilot/app/public/assets/abi/2026_1
+Image deployment completed successfully.

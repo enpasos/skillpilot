@@ -1486,6 +1486,8 @@ public class LearnerControllerIntegrationTest {
     void learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals() throws Exception {
         // Family planning now has two reviewed atoms under its former atomic ID.
         // Scopes containing that branch therefore gain one curricular target.
+        // The source-bounded respiration supplement belongs to eight Sek-I
+        // jurisdictions; the light/dark-reaction supplement belongs only to SN.
         String[][] scopes = {
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BW", "83", "83" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BY", "130", "130" },
@@ -1494,6 +1496,15 @@ public class LearnerControllerIntegrationTest {
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-NI", "109", "109" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-RP", "78", "78" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-SL", "61", "61" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BB", "82", "82" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BE", "82", "82" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-HH", "78", "78" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-MV", "156", "156" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-NW", "102", "102" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-SH", "95", "95" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-SN", "170", "170" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-ST", "167", "167" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-TH", "172", "172" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BB", "83", "83" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BE", "83", "83" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BW", "74", "74" },
@@ -1539,7 +1550,10 @@ public class LearnerControllerIntegrationTest {
                     "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
             int g8Total = g8State.path("goals").path("personalized").path("total_atomic").asInt();
             if (CANONICAL_BIOLOGY_ID.equals(subjectLandscapeId)) {
-                assertReviewedBiologyFamilyPlanningSplit(learner, "G8");
+                if (Set.of("DE-BW", "DE-BY", "DE-HB", "DE-HE", "DE-NI", "DE-RP", "DE-SL").contains(jurisdiction)) {
+                    assertReviewedBiologyFamilyPlanningSplit(learner, "G8");
+                }
+                assertReviewedBiologySourceSupplement(learner, jurisdiction, "G8");
             }
 
             learner.setPersonalCurriculum(canonicalGymnasiumSubjectPersonalCurriculum(
@@ -1550,7 +1564,10 @@ public class LearnerControllerIntegrationTest {
                     "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
             int g9Total = g9State.path("goals").path("personalized").path("total_atomic").asInt();
             if (CANONICAL_BIOLOGY_ID.equals(subjectLandscapeId)) {
-                assertReviewedBiologyFamilyPlanningSplit(learner, "G9");
+                if (Set.of("DE-BW", "DE-BY", "DE-HB", "DE-HE", "DE-NI", "DE-RP", "DE-SL").contains(jurisdiction)) {
+                    assertReviewedBiologyFamilyPlanningSplit(learner, "G9");
+                }
+                assertReviewedBiologySourceSupplement(learner, jurisdiction, "G9");
             }
 
             assertThat(jsonTextValues(g8State.path("activeFilters"))).contains(jurisdiction, "G8", "GK");
@@ -1571,6 +1588,26 @@ public class LearnerControllerIntegrationTest {
                         "9d3f71d7-5273-5e50-b1ba-4e291edbf114", // contraception methods
                         "dd923eeb-eef0-5796-b372-a5d4f5be21f7") // responsible parenthood
                 .doesNotContain("3ee4b55c-81c3-5826-9d26-1a8c22cbd0b8"); // now a cluster
+    }
+
+    private void assertReviewedBiologySourceSupplement(Learner learner, String jurisdiction, String durationModel) {
+        Set<String> targets = learnerService.getFilteredAtomicGoalIds(
+                CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), null, false);
+        String respirationGoal = "0f50cad3-8c4e-5bc4-8833-3a1ecdd71d38";
+        String couplingGoal = "32483d30-2162-50a5-a6cc-05b7f2467ab1";
+        if (Set.of("DE-BB", "DE-BE", "DE-MV", "DE-NW", "DE-SH", "DE-SN", "DE-ST", "DE-TH").contains(jurisdiction)) {
+            assertThat(targets).as("source-bounded respiration target for %s %s", jurisdiction, durationModel)
+                    .contains(respirationGoal);
+        } else {
+            assertThat(targets).as("respiration target excluded outside reviewed source scope for %s %s", jurisdiction, durationModel)
+                    .doesNotContain(respirationGoal);
+        }
+        if ("DE-SN".equals(jurisdiction)) {
+            assertThat(targets).as("SN light/dark-reaction target for %s", durationModel).contains(couplingGoal);
+        } else {
+            assertThat(targets).as("light/dark-reaction target excluded outside SN for %s %s", jurisdiction, durationModel)
+                    .doesNotContain(couplingGoal);
+        }
     }
 
     @Test

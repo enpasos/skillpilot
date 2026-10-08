@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:81d025a0721ee269efd30ec26134c5749a0aac84e6b9dda8857c4ac46dccde81",
+  "reviewInputFingerprint": "sha256:832560a365a8bad7b2bd4484c903b048d0b7a22f031bc48e6a0d223b34b20b6d",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "bio-existing-word-basic2-context-20261008-independent-a-campaign",
+      "roundId": "bio-existing-word-basic2-context-20261008-independent-a",
+      "independenceGroupId": "bio-existing-word-basic2-context-20261008-independent-a",
+      "runIds": [
+        "bio-basic2-context576-independent-a-actual-20261008-v2"
+      ],
+      "providers": [
+        "OpenAI Codex interactive agent"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex interactive agent::GPT-6 agent; exact serving model variant not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "bio-existing-word-basic2-context-20261008-independent-b-campaign",
+      "roundId": "bio-existing-word-basic2-context-20261008-independent-b",
+      "independenceGroupId": "bio-existing-word-basic2-context-20261008-independent-b",
+      "runIds": [
+        "bio-word576-context-independent-b-first-20261008-v1"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::Codex; exact model version not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "576d59e2-397a-5654-b853-7c0c4870fbd3",
+      "firstRecordId": "bio-basic2-context576-independent-a-actual-20261008-v2.01",
+      "secondRecordId": "bio-word576-context-independent-b-first-20261008-v1-goal-1",
+      "firstRunId": "bio-basic2-context576-independent-a-actual-20261008-v2",
+      "secondRunId": "bio-word576-context-independent-b-first-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

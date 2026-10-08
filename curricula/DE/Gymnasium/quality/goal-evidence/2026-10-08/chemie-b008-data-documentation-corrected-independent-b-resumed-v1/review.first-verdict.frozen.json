@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "role": "independent B first scientific and actual visual review of one inactive corrected PNG; frozen before reading another review or generation provenance",
+  "reviewer": "Codex independent agent /root/chem_b008_corrected_data_image_independent_b",
+  "firstJudgmentAtUtc": "2026-10-08T13:32:56.828141+00:00",
+  "frozenFirstVerdict": true,
+  "candidateKey": "data-documentation",
+  "goalId": "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+  "assetSha256": "9da4f37439f7e380c0ff4a1007c16ab414e105edc392894e648731a3c5614ca0",
+  "decision": "HOLD",
+  "reviewLabel": "rejected_regenerate",
+  "decisionScope": "This exact inactive PNG and the supplied DE caption/alt reviewed against the full DE/EN goal, positive profile and both case bodies. This is an AI scientific/visual judgment, not an active gate-V entry or a native-page/context review.",
+  "independence": {
+    "otherReviewVerdictsReadBeforeFirstJudgment": false,
+    "authorDecisionOrGenerationProvenanceFindingReadBeforeFirstJudgment": false,
+    "neutralEntryCaptionsTreatedAsInputsNotAcceptance": true,
+    "actualOriginalPngViewed": true,
+    "actual360PngViewed": true,
+    "actual680PngViewed": true,
+    "wholeDeEnGoalRead": true,
+    "wholePositiveProfileRead": true,
+    "wholeBothDeEnCaseBodiesRead": true
+  },
+  "observedScientificChecks": {
+    "means": {
+      "rows": [
+        [
+          20,
+          60,
+          58,
+          59
+        ],
+        [
+          30,
+          45,
+          47,
+          46
+        ],
+        [
+          40,
+          30,
+          32,
+          31
+        ]
+      ],
+      "arithmetic": "(60+58)/2=59; (45+47)/2=46; (30+32)/2=31",
+      "result": "PASS"
+    },
+    "graph": {
+      "xQuantity": "temperature",
+      "xUnit": "°C",
+      "yQuantity": "time",
+      "yUnit": "s",
+      "visiblePoints": [
+        [
+          20,
+          59
+        ],
+        [
+          30,
+          46
+        ],
+        [
+          40,
+          31
+        ]
+      ],
+      "axisAndTableAgreement": "PASS",
+      "trace": "The three x positions align with 20, 30 and 40, and their y positions show the tabulated means on the 0/20/40/60 scale."
+    },
+    "descriptionVersusCausalExplanation": {
+      "localTrendWording": "The repeated falling-time sentence is explicitly labelled Beschreibung, with no stated causal particle explanation.",
+      "textAlone": "PASS",
+      "illustratedHypothesisStatus": "HOLD: a checked box beside Hypothese passt? visually suggests an affirmative/completed validation despite the question mark; no hypothesis or test evidence is supplied."
+    },
+    "goalAndCaseFit": "A table-to-graph representation fits structured documentation of quantities and units. The schematic 20/30/40 °C and 59/46/31 s values are not the R1 or D2 case values; the image is orientation, not either case solution or evidence. Missing provenance/conditions in the drawing are honest in the supplied caption and remain required in the full goal/profile/cases.",
+    "caseArithmeticCrossCheck": "D2 mean=(0.291+0.289)/2=0.290; calibration slope=0.080 L/mg, blank/intercept=0.010; diluted sample=(0.290-0.010)/0.080=3.50 mg/L; original at factor 2 is 7.00 mg/L. No case-body edit or case approval is made."
+  },
+  "findings": [
+    {
+      "findingKey": "open-hypothesis-checked",
+      "severity": "blocker",
+      "visibleLocation": "lower right, checked box immediately before Hypothese passt?; a similar checked box precedes Messfehler?",
+      "observation": "Both already checked boxes are visible in the full, 680 and 360 images. The check beside the hypothesis question can be read as a successful hypothesis test although the drawing supplies neither a specific hypothesis nor explanatory evidence.",
+      "whyItMatters": "The current goal expressly distinguishes descriptive observation from explanatory interpretation. A question mark and an external caption do not make the affirmative graphic status unambiguous, especially in the image-only view.",
+      "neededAction": "Use an unmarked/open check item or a question without a positive checkmark, so pending error assessment and pending explanatory interpretation remain visibly open."
+    },
+    {
+      "findingKey": "phone-core-distinction-small",
+      "severity": "blocker_for_360_review",
+      "visibleLocation": "360 × 203 preview, description sentence beneath the tablet and inside the plot; small table headers and units",
+      "observation": "The table, arrow and falling graph remain recognizable, and the main heading is readable. The long duplicated Beschreibung statement and detailed headers/units are too small for reliable comfortable reading at native 360 px width. In particular the category label carrying the observation-versus-explanation distinction is a required conceptual cue, not a decorative detail.",
+      "desktop680": "At 680 px, values, units, axis labels and description text are readable.",
+      "neededAction": "Simplify the text and enlarge the essential description-versus-open-explanation cue; preserve a readable main table/graph at 360 px. Validate a new candidate at both actual widths."
+    }
+  ],
+  "captionAndAlt": {
+    "descriptionDe": "Eine Tabelle dokumentiert Temperatur, zwei Zeitmessungen und Mittelwerte, ein Diagramm stellt dieselben Mittelwerte dar. Die Aussage zum fallenden Zeittrend ist ausdrücklich eine Beschreibung. Offene Fragen nach Messfehlern und Hypothesen sind keine belegte Erklärung. Die Zahlen sind schematische Lehrbeispiele; Herkunft, Bedingungen und eine begründete Deutung bleiben Gegenstand des vollständigen Lernziels.",
+    "altTextDe": "Datentabelle und Diagramm zu Temperatur und Reaktionszeit; der abnehmende Trend ist als Beschreibung gekennzeichnet, eine erklärende Deutung bleibt offen.",
+    "textAssessment": "The supplied caption and alt correctly identify the local decreasing trend as descriptive and do not claim a confirmed cause or hypothesis. They do not resolve the conflicting checked visual hypothesis status.",
+    "requiredCaseUnionRelaxed": false
+  },
+  "inputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-data-documentation-targeted-image-correction-author-root-v2/neutral-one-corrected.actual-image.author.entry.json",
+      "sha256": "57bba601ef553366d353345ef107dec018768e608c58a2d21fd9a021f01682e8",
+      "bytes": 6668
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-twenty-six-images-author-20261008-v1/all26-whole-goals-and-unchanged26P52cases.readonly-inputs.snapshot.json",
+      "sha256": "09bcbb499c7acb377e900ff163e9467075783877f18835b6c3c777e398562725",
+      "bytes": 482533
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-data-documentation-targeted-image-correction-author-root-v2/images/9fc800d1-92d1-5ef6-81c1-33960ae034dd/9fc800d1-92d1-5ef6-81c1-33960ae034dd.png",
+      "sha256": "9da4f37439f7e380c0ff4a1007c16ab414e105edc392894e648731a3c5614ca0",
+      "bytes": 1500871,
+      "format": "PNG",
+      "dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-data-documentation-targeted-image-correction-author-root-v2/qa/data-documentation-360.png",
+      "sha256": "8c5f6d7c768b5a93f745971e5ec065306fcc46922863bb912e1285012bf266ca",
+      "bytes": 85828,
+      "format": "PNG",
+      "dimensions": [
+        360,
+        203
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-data-documentation-targeted-image-correction-author-root-v2/qa/data-documentation-680.png",
+      "sha256": "9648eaf37af70df089069dc88afde7401f485b1de624a537e5f602f10f061337",
+      "bytes": 278162,
+      "format": "PNG",
+      "dimensions": [
+        680,
+        383
+      ]
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "ed7f0ca390d56905b368acdbbb24a4078d7c94a19d830c7d4cb44108f32c49e6",
+      "bytes": 129902
+    },
+    {
+      "path": "docs/concept/skill-graph/atomic-goal-visualizations.md",
+      "sha256": "3acc382f20acf3fcbfe668ecafcf98f4be23aee00a372b169b2d1c392c7a4e7e",
+      "bytes": 30177
+    }
+  ],
+  "selectedBodyCanonicalSha256": "1e6e3e6cbb8d8daa3e55a56cf6ba03ab4aada877df823c18d1e51e007af18f03",
+  "wholeGoalCanonicalSha256": "d9c53960a7a913d9ed7b7a8c9587182241f2fe59dd1eae227892c80a4bfc093d",
+  "wholeProfileCanonicalSha256": "9f10a61c127c2efe4868d36234007af972ba6bb4decb680ff36a85e3a65a343a",
+  "caseCanonicalSha256ByKey": {
+    "data-documentation-raw-dissolution": "67d21ee25ec5fc1ed7b48b6a5ce7be998528e4466641fa41411d8ecf568dd545",
+    "data-documentation-research-calibration": "2870bf03854a803a5e68d6c6b5606d30d7067b4551fbb351b162553d4adc1b5c"
+  },
+  "nativeCurrentGoalPageReviewed": false,
+  "nativeCurrentPageAndContextBinding": "PENDING; not supplied or fabricated in this review",
+  "activeWrites": 0,
+  "activeGateVWrites": 0,
+  "strictGain": 0,
+  "fullVApproval": false,
+  "machineApproval": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "candidateImageModified": false,
+  "generationProvenanceReviewed": false,
+  "originalAggregateImageReviewed": false
+}

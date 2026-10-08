@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "actualEarlierAttempts": [
+    {
+      "tool": "python verify-own-inputs.technical.py",
+      "exitCode": 1,
+      "error": "AssertionError on historical BB source partner32f47903 absent from current atlas mappings",
+      "correction": "Found actual248/268 current historical mappings;20 already scope-refined. Keep accurate current counter and preserve268 whole historical reading rows."
+    },
+    {
+      "tool": "python verify-own-inputs.technical.py",
+      "exitCode": 1,
+      "error": "KeyError: goals on the actual source-extraction structure",
+      "correction": "Read actual sourceGoals property; no source artifact changed."
+    },
+    {
+      "tool": "tsx check-current-word-subset.technical.mts",
+      "exitCode": 1,
+      "error": "ERR_MODULE_NOT_FOUND under /home/enpasos/projects/app due to one excess relative parent segment",
+      "correction": "Corrected own helper import only, then actual ordinary builder verification passed."
+    },
+    {
+      "tool": "normal Campaign A results validator",
+      "exitCode": 1,
+      "error": "Both original records lacked $schema/schemaVersion",
+      "preservedActualTerminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-supplement-context-independent-a-resumed-v1/checks/normal-campaign-a.terminal.actual.json",
+        "sha256": "576f0d9f4f34809f717664dd0178dcd935874cb8ddb2c40dc7897eae077fac9d",
+        "bytes": 1152
+      },
+      "correctionReceipt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-supplement-context-independent-a-resumed-v1/checks/normal-campaign-a.contract-only-header-correction.receipt.json",
+        "sha256": "58108ee91b9bb4c4bd7250b44fba1e4e6743a7bd81dc25304998404111a50f4d",
+        "bytes": 1369
+      }
+    }
+  ],
+  "noChangedScientificJudgments": true,
+  "createdAtUtc": "2026-10-08T15:17:31.050677+00:00"
+}

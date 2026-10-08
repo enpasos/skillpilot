@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:87a36290041c472580d628665e9084d351d5113bdda73e967cfb299eb2e74410",
+  "reviewInputFingerprint": "sha256:45cb31ee855fd4eb3cc8c07151ab141e60b160e6e0e9c0736b7787ab0e8da457",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "bio-two-basic-primary-refined-20261008-v2-independent-a-campaign",
+      "roundId": "bio-two-basic-primary-refined-20261008-v2-independent-a",
+      "independenceGroupId": "bio-two-basic-primary-refined-20261008-v2-independent-a",
+      "runIds": [
+        "bio-basic2-basis2-independent-a-actual-20261008-v2"
+      ],
+      "providers": [
+        "OpenAI Codex interactive agent"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex interactive agent::GPT-6 agent; exact serving model variant not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "bio-two-basic-primary-refined-20261008-v2-independent-b-campaign",
+      "roundId": "bio-two-basic-primary-refined-20261008-v2-independent-b",
+      "independenceGroupId": "bio-two-basic-primary-refined-20261008-v2-independent-b",
+      "runIds": [
+        "bio-basic2-native-independent-b-first-20261008-v1"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::Codex; exact model version not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "0f50cad3-8c4e-5bc4-8833-3a1ecdd71d38",
+      "firstRecordId": "bio-basic2-basis2-independent-a-actual-20261008-v2.01",
+      "secondRecordId": "bio-basic2-native-independent-b-first-20261008-v1-goal-1",
+      "firstRunId": "bio-basic2-basis2-independent-a-actual-20261008-v2",
+      "secondRunId": "bio-basic2-native-independent-b-first-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "32483d30-2162-50a5-a6cc-05b7f2467ab1",
+      "firstRecordId": "bio-basic2-basis2-independent-a-actual-20261008-v2.02",
+      "secondRecordId": "bio-basic2-native-independent-b-first-20261008-v1-goal-2",
+      "firstRunId": "bio-basic2-basis2-independent-a-actual-20261008-v2",
+      "secondRunId": "bio-basic2-native-independent-b-first-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}
