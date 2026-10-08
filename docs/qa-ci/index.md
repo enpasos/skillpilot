@@ -76,6 +76,19 @@ Use this page by role: start with the overview documents, then jump to a review 
 - [Commit-Zwischenstand vom 7. Oktober: 151/378 Chemie, 74/390 Biologie und offene Bildbefunde](chemie-biologie-m7-commit-checkpoint-2026-10-07.md)
 - [Aktuelle Neuro21-Fortsetzung: 151/378 Chemie, 95/390 Biologie und erhaltene M7-Untergrenzen](chemie-biologie-m7-neuro21-continuation-2026-10-07.md)
 - [Aktueller Commit-Zwischenstand: 173/378 Chemie, 134/391 Biologie und gesicherte offene Kandidaten](chemie-biologie-m7-ecology34-commit-checkpoint-2026-10-07.md)
+- [Biologie: Mensch und Gesundheit, Fortsetzung vom 8. Oktober](chemie-biologie-m7-human20-continuation-2026-10-08.md)
+- [Biologie: Flora und Fauna, Fortsetzung vom 8. Oktober](chemie-biologie-m7-flora-fauna20-continuation-2026-10-08.md)
+- [Biologie: HE7-Zehnerpaket vom 8. Oktober](chemie-biologie-m7-he7-ten-continuation-2026-10-08.md)
+- [Biologie: HE9-Siebzehnerpaket vom 8. Oktober](chemie-biologie-m7-he9-seventeen-continuation-2026-10-08.md)
+- [Biologie: aktuelles Gentechnik-Ziel vom 8. Oktober](chemie-biologie-m7-he9-gentechnik-one-continuation-2026-10-08.md)
+- [Chemie: acht geprüfte Quellenrollen vom 8. Oktober](chemie-biologie-m7-eight-source-roles-continuation-2026-10-08.md)
+- [Biologie: zwei Teilziele zu Familienplanung vom 8. Oktober](chemie-biologie-m7-he9-two-child-split-continuation-2026-10-08.md)
+- [Biologie: Evolution, 18 aktuelle Abschlüsse vom 8. Oktober](chemie-biologie-m7-evolution-eighteen-continuation-2026-10-08.md)
+- [Chemie: zwei Korrosionsziele vom 8. Oktober](chemie-biologie-m7-corrosion-two-continuation-2026-10-08.md)
+- [Commit-Zwischenstand vom 8. Oktober: 175/378 Chemie und 222/392 Biologie](chemie-biologie-m7-commit-checkpoint-2026-10-08.md)
+- [21 weitere fachliche Abschlüsse vom 8. Oktober](chemie-biologie-m7-source-roles-twentyone-continuation-2026-10-08.md)
+- [Biologie: drei weitere Stoffwechsel-Abschlüsse vom 8. Oktober](chemie-biologie-m7-stoffwechsel-three-continuation-2026-10-08.md)
+- [Commit-Zwischenstand vom 8. Oktober: 177/378 Chemie und 244/392 Biologie](chemie-biologie-m7-chemie177-biologie244-commit-checkpoint-2026-10-08.md)
 
 ## Review Lanes
 
