@@ -53,6 +53,81 @@ try {
     await page.close()
   }
 
+  for (const language of ['de', 'en'] as const) {
+    const page = await browser.newPage({ viewport: { width: 375, height: 900 } })
+    const errors: string[] = []
+    page.on('pageerror', (error) => errors.push(error.message))
+    await page.addInitScript((language) => {
+      localStorage.setItem('skillpilot_lang', language)
+      localStorage.setItem('skillpilot_theme', 'light')
+    }, language)
+    await page.goto(`${server.baseUrl}/scripts/fixtures/curriculumQualityTrafficLightUi.html`)
+    const fixture = page.getByTestId('quality-recovery-fixture')
+    const dropdown = fixture.getByTestId('quality-recovery-dropdown')
+    const copy = getCurriculumQualityCopy(language)
+    const unavailableText = language === 'de'
+      ? 'QS-Status derzeit nicht verfügbar. Alle Curricula dieser Kategorie werden angezeigt.'
+      : 'QA status is currently unavailable. All curricula in this category are shown.'
+    const noMatchesText = language === 'de'
+      ? 'Keine Curricula mit diesem QS-Status in dieser Kategorie.'
+      : 'No curricula with this QA status in this category.'
+    const options = () => dropdown.locator('select option').evaluateAll((nodes) => (
+      nodes.map((node) => (node as HTMLOptionElement).value).filter(Boolean).sort()
+    ))
+    const allButton = dropdown.getByRole('button', { name: copy.filterOptions.all, exact: true })
+    const humanButton = dropdown.getByRole('button', { name: copy.filterOptions.human_trial_in_progress, exact: true })
+    await humanButton.waitFor()
+    assert.equal(await humanButton.isEnabled(), true, 'valid subject-level QA alone makes the category filter available')
+    assert.equal(await humanButton.getAttribute('aria-pressed'), 'true')
+    assert.deepEqual(await options(), ['subject-status', 'unknown'], 'the subject-level human trial matches and the selected unknown curriculum remains')
+    assert.equal(await dropdown.getByText(unavailableText, { exact: true }).count(), 0)
+
+    await fixture.getByRole('button', { name: 'Simulate QA outage', exact: true }).click()
+    const unavailable = dropdown.getByRole('status').filter({ hasText: unavailableText })
+    await unavailable.waitFor()
+    assert.deepEqual(await options(), ['subject-status', 'unknown', 'unreviewed-school'], 'valid QA in another category or hidden views does not suppress the visible category fallback')
+    assert.equal(await allButton.getAttribute('aria-pressed'), 'true', 'the displayed filter falls back to All')
+    assert.equal(await allButton.isEnabled(), true, 'All remains available for explicitly changing the parent filter')
+    for (const status of curriculumQualityStatuses) {
+      const button = dropdown.getByRole('button', { name: copy.filterOptions[status], exact: true })
+      assert.equal(await button.isDisabled(), true, `unavailable evidence disables ${status}`)
+      assert.equal(await button.getAttribute('aria-pressed'), 'false', `unavailable evidence must not imply ${status}`)
+    }
+    assert.equal(await dropdown.locator('select').inputValue(), 'unknown', 'the existing curriculum selection survives the outage')
+    assert.equal(await fixture.getByTestId('quality-recovery-selection').textContent(), 'unknown')
+    await fixture.getByRole('button', { name: 'Clear selection', exact: true }).click()
+    assert.equal(await dropdown.locator('select').inputValue(), '', 'the screenshot case has no current curriculum selected')
+    assert.deepEqual(await options(), ['subject-status', 'unknown', 'unreviewed-school'], 'missing QA still shows all school options with no selected ID to preserve')
+    await dropdown.locator('select').selectOption('unknown')
+    assert.equal(await fixture.getByTestId('quality-recovery-selection').textContent(), 'unknown')
+    assert.equal(await dropdown.getByText(noMatchesText, { exact: true }).count(), 0, 'unknown QA is distinguished from a valid filter with no matches')
+    const geometry = await dropdown.evaluate((element) => ({
+      left: element.getBoundingClientRect().left,
+      right: element.getBoundingClientRect().right,
+      scroll: element.scrollWidth,
+      client: element.clientWidth,
+    }))
+    assert(geometry.left >= 0 && geometry.right <= 375 && geometry.scroll <= geometry.client, `${language} unavailable notice and filter fit at 375px`)
+
+    await fixture.getByRole('button', { name: 'Restore QA data', exact: true }).click()
+    await unavailable.waitFor({ state: 'hidden' })
+    assert.equal(await humanButton.isEnabled(), true)
+    assert.equal(await humanButton.getAttribute('aria-pressed'), 'true', 'recovery restores the previously requested human-trial filter')
+    assert.equal(await allButton.getAttribute('aria-pressed'), 'false')
+    assert.deepEqual(await options(), ['subject-status', 'unknown'], 'recovered subject QA filters the school category again')
+    assert.equal(await dropdown.locator('select').inputValue(), 'unknown', 'recovery preserves the existing curriculum selection')
+
+    await dropdown.getByRole('button', { name: copy.filterOptions.human_trial_completed, exact: true }).click()
+    await dropdown.getByRole('status').filter({ hasText: noMatchesText }).waitFor()
+    assert.deepEqual(await options(), ['unknown'], 'a hidden human-tested view is not a filter match; the selected curriculum remains')
+    assert.equal(await dropdown.locator('select').inputValue(), 'unknown')
+    assert.equal(await fixture.getByTestId('quality-recovery-selection').textContent(), 'unknown')
+    assert.equal(await dropdown.getByText(unavailableText, { exact: true }).count(), 0, 'valid evidence with no match is not an outage')
+    assert.equal(await humanButton.isEnabled(), true, 'a zero-match filter leaves the valid status filters available')
+    assert.deepEqual(errors, [], `${language} outage and recovery cause no uncaught browser errors`)
+    await page.close()
+  }
+
   const page = await browser.newPage()
   await page.addInitScript(() => localStorage.setItem('skillpilot_lang', 'de'))
   const rows = [{ landscapeId: 'math', title: 'Mathematik', maturity: 'M6', complete: 472 }, { landscapeId: 'physics', title: 'Physik', maturity: 'M7', complete: 478 }]

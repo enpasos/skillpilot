@@ -14,6 +14,7 @@ import {
 import {
     CURRICULUM_QUALITY_FILTER_AVAILABLE,
     filterCurriculaByQuality,
+    getCurriculumQualityStatus,
     type CurriculumQualityFilter,
 } from '../utils/curriculumQualityTrafficLight'
 import type { CurriculumQualityProjection } from '../utils/curriculumQualityPresentation'
@@ -189,10 +190,22 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
 
     // Filter by Category
     const categoryFilteredLandscapes = filteredLandscapes.filter(l => getCategory(l) === category)
+    const visibleCategoryLandscapes = categoryFilteredLandscapes.filter((landscape) => (
+        showCompatibilityViews
+        || landscape.curriculumId === currentLandscapeId
+        || (!isCompatibilityOnlyCurriculum(landscape.curriculumId, landscape.compatibilityOnly)
+            && !isLegacyHiddenByDefaultCurriculum(landscape.curriculumId, landscape.legacyHiddenByDefault))
+    ))
+    const qualityStatusAvailable = visibleCategoryLandscapes.some((landscape) => (
+        getCurriculumQualityStatus(landscape) !== null
+        || (landscape.subjectQuality ?? []).some((subject) => getCurriculumQualityStatus(subject) !== null)
+    ))
+    const effectiveQualityFilter = qualityStatusAvailable ? qualityFilter : 'all'
+    const hasQualityMatches = filterCurriculaByQuality(visibleCategoryLandscapes, qualityFilter).length > 0
     const qualityFilteredLandscapes = qualityFilterEnabled
         ? filterCurriculaByQuality(
             categoryFilteredLandscapes,
-            qualityFilter,
+            effectiveQualityFilter,
             currentLandscapeId,
         )
         : categoryFilteredLandscapes
@@ -273,11 +286,21 @@ export const CurriculumDropdown: React.FC<CurriculumDropdownProps> = ({
                     <div className="mb-1 text-[11px] uppercase tracking-wider text-text-secondary">
                         {dropdownCopy.qualityFilterLabel}
                     </div>
-                    <QualityFilter value={qualityFilter} language={language} disabled={disabled}
+                    <QualityFilter value={effectiveQualityFilter} language={language} disabled={disabled} statusAvailable={qualityStatusAvailable}
                         onChange={(filter) => {
                             setInternalQualityFilter(filter)
                             onQualityFilterChange?.(filter)
                         }} />
+                    {!qualityStatusAvailable && visibleCategoryLandscapes.length > 0 && (
+                        <p role="status" className="mt-2 text-sm text-text-secondary">
+                            {dropdownCopy.qualityStatusUnavailable}
+                        </p>
+                    )}
+                    {qualityStatusAvailable && qualityFilter !== 'all' && !hasQualityMatches && (
+                        <p role="status" className="mt-2 text-sm text-text-secondary">
+                            {dropdownCopy.noQualityMatches}
+                        </p>
+                    )}
                 </div>
             )}
 

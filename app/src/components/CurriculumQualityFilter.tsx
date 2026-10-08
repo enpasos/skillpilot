@@ -4,13 +4,13 @@ import {
   type CurriculumQualityFilter as Filter,
 } from '../utils/curriculumQualityPresentation'
 
-export const CurriculumQualityFilter = ({ value, onChange, language = 'de', disabled = false }: {
-  value: Filter; onChange: (value: Filter) => void; language?: 'de' | 'en'; disabled?: boolean
+export const CurriculumQualityFilter = ({ value, onChange, language = 'de', disabled = false, statusAvailable = true }: {
+  value: Filter; onChange: (value: Filter) => void; language?: 'de' | 'en'; disabled?: boolean; statusAvailable?: boolean
 }): React.ReactElement => {
   const copy = getCurriculumQualityCopy(language)
   return <div role="group" aria-label={copy.label} className="flex flex-wrap gap-1.5">
     {(['all', ...curriculumQualityStatuses] as const).map((filter) => <button
-      key={filter} type="button" disabled={disabled} aria-pressed={value === filter}
+      key={filter} type="button" disabled={disabled || (filter !== 'all' && !statusAvailable)} aria-pressed={value === filter}
       onClick={() => onChange(filter)}
       className={`rounded-md px-2.5 py-1 text-xs font-medium transition-colors disabled:opacity-50 ${value === filter
         ? qualityFilterActiveClass[filter]

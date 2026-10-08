@@ -10,6 +10,8 @@ export interface CurriculumDropdownCopy {
   legacyGroupLabel: string
   qualityFilterLabel: string
   qualityFilterOptions: Record<CurriculumQualityFilter, string>
+  qualityStatusUnavailable: string
+  noQualityMatches: string
 }
 
 export const getCurriculumDropdownCopy = (
@@ -26,6 +28,8 @@ export const getCurriculumDropdownCopy = (
         legacyGroupLabel: 'Legacy-Ansichten',
         qualityFilterLabel: getCurriculumQualityCopy(language).label,
         qualityFilterOptions: getCurriculumQualityCopy(language).filterOptions,
+        qualityStatusUnavailable: 'QS-Status derzeit nicht verfügbar. Alle Curricula dieser Kategorie werden angezeigt.',
+        noQualityMatches: 'Keine Curricula mit diesem QS-Status in dieser Kategorie.',
       }
     : {
         categoryLabels: {
@@ -37,5 +41,7 @@ export const getCurriculumDropdownCopy = (
         legacyGroupLabel: 'Legacy views',
         qualityFilterLabel: getCurriculumQualityCopy(language).label,
         qualityFilterOptions: getCurriculumQualityCopy(language).filterOptions,
+        qualityStatusUnavailable: 'QA status is currently unavailable. All curricula in this category are shown.',
+        noQualityMatches: 'No curricula with this QA status in this category.',
       }
 )
