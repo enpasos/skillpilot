@@ -122,6 +122,7 @@
     "docs:generated-status-registry": "tsx scripts/generateGeneratedStatusRegistry.ts",
     "check:generated-status-registry": "tsx scripts/generateGeneratedStatusRegistry.ts --check",
     "check:gpt-system-instruction-lengths": "node ../scripts/check_gpt_system_instruction_lengths.mjs",
+    "prequality:curriculum-status": "npm run quality:memory-card-review:report:all",
     "quality:curriculum-status": "tsx scripts/generateCurriculumQualityStatus.ts",
     "quality:curriculum-status:check": "tsx scripts/generateCurriculumQualityStatus.ts --check && npm run check:curriculum-maturity-floors",
     "check:curriculum-maturity-floors": "tsx scripts/checkCurriculumMaturityFloors.ts",

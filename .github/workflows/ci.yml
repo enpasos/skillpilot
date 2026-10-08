@@ -518,7 +518,6 @@ jobs:
         run: npm run test:deep-understanding-rollout
       - name: Verify committed curriculum quality status
         run: |
-          npm run quality:memory-card-review:report:all
           npm run quality:curriculum-status
           npm run check:curriculum-maturity-floors
           git diff --exit-code -- ../docs/qa-ci/status

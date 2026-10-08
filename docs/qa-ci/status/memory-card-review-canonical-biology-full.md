@@ -40,11 +40,11 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 | Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
 | --- | --- | --- | --- | --- | --- |
 | Biologie Gymnasium GK (DE) | `curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-biology-gk.view.json` | 446 | 3 | 10 | 0 |
-| Biologie Gymnasium SekI (DE) | `curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-seki-biology.view.json` | 176 | 3 | 7 | 0 |
-| de-mv-gym-seki-biology.view.json | `curricula/DE/Gymnasium/composition-views/biologie/de-mv-gym-seki-biology.view.json` | 171 | 1 | 5 | 0 |
-| de-sn-gym-seki-biology.view.json | `curricula/DE/Gymnasium/composition-views/biologie/de-sn-gym-seki-biology.view.json` | 185 | 1 | 5 | 0 |
-| de-th-gym-seki-biology.view.json | `curricula/DE/Gymnasium/composition-views/biologie/de-th-gym-seki-biology.view.json` | 188 | 1 | 5 | 0 |
-| de-st-gym-seki-biology.view.json | `curricula/DE/Gymnasium/composition-views/biologie/de-st-gym-seki-biology.view.json` | 184 | 1 | 5 | 0 |
+| Biologie Gymnasium SekI (DE) | `curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-seki-biology.view.json` | 179 | 3 | 7 | 0 |
+| de-mv-gym-seki-biology.view.json | `curricula/DE/Gymnasium/composition-views/biologie/de-mv-gym-seki-biology.view.json` | 172 | 1 | 5 | 0 |
+| de-sn-gym-seki-biology.view.json | `curricula/DE/Gymnasium/composition-views/biologie/de-sn-gym-seki-biology.view.json` | 187 | 1 | 5 | 0 |
+| de-th-gym-seki-biology.view.json | `curricula/DE/Gymnasium/composition-views/biologie/de-th-gym-seki-biology.view.json` | 189 | 1 | 5 | 0 |
+| de-st-gym-seki-biology.view.json | `curricula/DE/Gymnasium/composition-views/biologie/de-st-gym-seki-biology.view.json` | 185 | 1 | 5 | 0 |
 | de-st-gym-sekii-biology-gk.view.json | `curricula/DE/Gymnasium/composition-views/biologie/de-st-gym-sekii-biology-gk.view.json` | 5 | 1 | 0 | 0 |
 | de-st-gym-sekii-biology-lk.view.json | `curricula/DE/Gymnasium/composition-views/biologie/de-st-gym-sekii-biology-lk.view.json` | 5 | 1 | 0 | 0 |
 
