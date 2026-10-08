@@ -723,7 +723,8 @@ public class LandscapeService {
         boolean criticalParseError = false;
 
         try {
-            List<Path> files = Files.walk(dir)
+            List<Path> files = PrunedFileTree.files(dir,
+                            path -> path.startsWith(dir.resolve(QUALITY_REVIEW_ARTIFACTS_PATH))).stream()
                     .filter(p -> isRuntimeLandscapeJson(dir, p))
                     .sorted()
                     .collect(Collectors.toList());
@@ -1846,7 +1847,8 @@ public class LandscapeService {
             return -1L;
         }
         try {
-            return Files.walk(dir)
+            return PrunedFileTree.files(dir,
+                            path -> path.startsWith(dir.resolve(QUALITY_REVIEW_ARTIFACTS_PATH))).stream()
                     .filter(p -> isRuntimeLandscapeJson(dir, p))
                     .mapToLong(p -> {
                         try {

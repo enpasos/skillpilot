@@ -121,7 +121,9 @@ public class GoalMappingService {
 
         try {
             long fingerprint = 1L;
-            for (Path file : Files.walk(dir).filter(Files::isRegularFile)
+            for (Path file : PrunedFileTree.files(dir,
+                            path -> !path.equals(dir) && "quality".equals(path.getFileName().toString())).stream()
+                    .filter(Files::isRegularFile)
                     .filter(path -> isGoalMapFile(dir, path)).sorted().toList()) {
                 try {
                     long lastModified = Files.getLastModifiedTime(file).toMillis();
@@ -155,7 +157,8 @@ public class GoalMappingService {
         long fingerprint = 1L;
 
         try {
-            List<Path> files = Files.walk(dir)
+            List<Path> files = PrunedFileTree.files(dir,
+                            path -> !path.equals(dir) && "quality".equals(path.getFileName().toString())).stream()
                     .filter(Files::isRegularFile)
                     .filter(path -> isGoalMapFile(dir, path))
                     .sorted()
