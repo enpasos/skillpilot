@@ -1,0 +1,210 @@
+{
+  "finishedAt": "2026-10-08T09:48:49.788932+00:00",
+  "central": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-reviewed-integration-root-20261008-v1/affected-central.stdout.actual.txt",
+    "sha256": "8a06b2af5c531c7678058ae56f4dca856dc5f87f6d05ec969d219a4682989024",
+    "bytes": 186826
+  },
+  "checks": [
+    {
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--write-report",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-plus-d2cc-reviewed-integration-preparation-technical-20261007-v1/memory/current378.real-views.future-active.config.json"
+      ],
+      "actualExitCode": 0,
+      "elapsedSeconds": 0.3199843470065389,
+      "endedAt": "2026-10-08T09:38:59.815655+00:00",
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-reviewed-integration-root-20261008-v1/stable-memory-report-chemie.stdout.actual.txt",
+        "sha256": "b367b87195022187c57f3407f04c90861f94fd366ab41bf81ec6f3744d24aeb8",
+        "bytes": 17182
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-reviewed-integration-root-20261008-v1/stable-memory-report-chemie.stderr.actual.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/memoryCardReview.ts",
+        "--write-report",
+        "--config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-biology-full.config.json"
+      ],
+      "actualExitCode": 0,
+      "elapsedSeconds": 0.30064330798632,
+      "endedAt": "2026-10-08T09:39:00.117057+00:00",
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-reviewed-integration-root-20261008-v1/stable-memory-report-biologie.stdout.actual.txt",
+        "sha256": "b5f751951f54392e761e44aceffdecf302ab60752fe99ecc30fecf5c84f0dac1",
+        "bytes": 3769
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-reviewed-integration-root-20261008-v1/stable-memory-report-biologie.stderr.actual.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/generateCurriculumQualityStatus.ts"
+      ],
+      "actualExitCode": 0,
+      "elapsedSeconds": 129.25193202699302,
+      "endedAt": "2026-10-08T09:41:09.364022+00:00",
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-reviewed-integration-root-20261008-v1/stable-curriculum-status.stdout.actual.txt",
+        "sha256": "389ceee89ed1081de6f1d3d5ad7fdcb5b5500928914a89ab424ec89b103be861",
+        "bytes": 108
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-reviewed-integration-root-20261008-v1/stable-curriculum-status.stderr.actual.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/checkCurriculumMaturityFloors.ts"
+      ],
+      "actualExitCode": 0,
+      "elapsedSeconds": 0.2682877030019881,
+      "endedAt": "2026-10-08T09:41:09.633124+00:00",
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-reviewed-integration-root-20261008-v1/stable-protected-maturity-floors.stdout.actual.txt",
+        "sha256": "338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+        "bytes": 57
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-reviewed-integration-root-20261008-v1/stable-protected-maturity-floors.stderr.actual.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "argv": [
+        "node",
+        "scripts/check_ai_transparency_inventory.mjs"
+      ],
+      "actualExitCode": 0,
+      "elapsedSeconds": 18.19163048500195,
+      "endedAt": "2026-10-08T09:41:27.823748+00:00",
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-reviewed-integration-root-20261008-v1/stable-ai-inventory.stdout.actual.txt",
+        "sha256": "411eaf40832b31baa009923b87749719978baecefcc7e7e65efc3f4dcb0c743d",
+        "bytes": 175
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-reviewed-integration-root-20261008-v1/stable-ai-inventory.stderr.actual.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/validate_schemas.py"
+      ],
+      "actualExitCode": 0,
+      "elapsedSeconds": 97.38981459000206,
+      "endedAt": "2026-10-08T09:43:05.210079+00:00",
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-reviewed-integration-root-20261008-v1/stable-full-validate-schemas.stdout.actual.txt",
+        "sha256": "d2884bf9a1599665635700475d95cefd90c2b802f509820e299fd8699b10d705",
+        "bytes": 180
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-reviewed-integration-root-20261008-v1/stable-full-validate-schemas.stderr.actual.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "build:application"
+      ],
+      "actualExitCode": 0,
+      "elapsedSeconds": 344.03857291200256,
+      "endedAt": "2026-10-08T09:48:49.231610+00:00",
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-reviewed-integration-root-20261008-v1/stable-full-application-build.stdout.actual.txt",
+        "sha256": "5d1efea5d2b139fd302532fb4ca028ea50bc979e1016fc83688b02754a04bc82",
+        "bytes": 17782
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-reviewed-integration-root-20261008-v1/stable-full-application-build.stderr.actual.txt",
+        "sha256": "b9f99a1c0f6ff2c022ba306b9d9d1d783a5c37fc4ce62b7547d4bc1abd81cb02",
+        "bytes": 524
+      }
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "actualExitCode": 0,
+      "elapsedSeconds": 0.5553243600006681,
+      "endedAt": "2026-10-08T09:48:49.788022+00:00",
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-reviewed-integration-root-20261008-v1/stable-diff-whitespace.stdout.actual.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-reviewed-integration-root-20261008-v1/stable-diff-whitespace.stderr.actual.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ],
+  "allTerminalExitCodesZero": true,
+  "subjects": [
+    {
+      "subject": "mathematik",
+      "strictComplete": 807,
+      "denominator": 807,
+      "percentage": "100.0%",
+      "remaining": 0
+    },
+    {
+      "subject": "physik",
+      "strictComplete": 478,
+      "denominator": 478,
+      "percentage": "100.0%",
+      "remaining": 0
+    },
+    {
+      "subject": "chemie",
+      "strictComplete": 177,
+      "denominator": 378,
+      "percentage": "46.8%",
+      "remaining": 201
+    },
+    {
+      "subject": "biologie",
+      "strictComplete": 241,
+      "denominator": 392,
+      "percentage": "61.5%",
+      "remaining": 151
+    }
+  ],
+  "fullM7GoalStillOpen": true,
+  "humanReleaseGatesUnchanged": true,
+  "humanApproval": false,
+  "humanTrial": false,
+  "noCommitPushDeploymentOrPublication": true
+}

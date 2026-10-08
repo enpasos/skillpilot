@@ -1,0 +1,111 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:788c4dfb896160fc420bc347b62af8aed9c7ad1d35b8b119bca7cf73ea2032a4",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "bio-two-basic-primary-refined-20261008-v2",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 2,
+  "goals": [
+    {
+      "goalId": "0f50cad3-8c4e-5bc4-8833-3a1ecdd71d38",
+      "pageNumber": 1,
+      "goalFingerprint": "sha256:b55e97f931fb521b1652ac3e78fe7ce2fb62456db92efa8b73e54a2c38dded5d",
+      "pageFingerprint": "sha256:d516da090a041d3bbe100e9d68605689d68c1a7e91b1dac34e7d936710139c81",
+      "evidenceReview": null
+    },
+    {
+      "goalId": "32483d30-2162-50a5-a6cc-05b7f2467ab1",
+      "pageNumber": 2,
+      "goalFingerprint": "sha256:7b3fd2363df27e0eddec7b83d6b292aa0e06cc11ae7565724b509929076bc765",
+      "pageFingerprint": "sha256:7796e25e629f1f803fc4dac6cb2be3286945d762a699ae62c50dadd228ab2cc2",
+      "evidenceReview": null
+    }
+  ],
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:2f8497c5fdb76ef26bf60338160b84b2b90a3bfa0ec5ae91cad857b0ba7477ed",
+      "bytes": 209254
+    },
+    {
+      "role": "book_pdf",
+      "path": "book.pdf",
+      "digest": "sha256:e5c13bbcd63b7ce4f12a4d6db61f148da444fd4c6e4a6b2482cd5a833cb91115",
+      "bytes": 2362979
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "path": "book.pdf.render-manifest.json",
+      "digest": "sha256:2b97741d9c4f2c35ca4d65a81d04c9d716835e968d619f3b6cf8217f67e5ec6d",
+      "bytes": 3951
+    },
+    {
+      "role": "book_html",
+      "path": "book.html",
+      "digest": "sha256:a6cc7f1985b3d35353276f16966b003449dea7e3371733c89069fc1340123c9e",
+      "bytes": 22185
+    },
+    {
+      "role": "book_html_render_manifest",
+      "path": "book.html.render-manifest.json",
+      "digest": "sha256:556c03fb8256c34feaca42d370b0e28c2466db8a9aab5c7a01433b7761749e55",
+      "bytes": 3952
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:a0e484e23dd02f69b1dc3a01a26b0a3c6a3ab5a0acff53ce10abb09109b4e71d",
+      "bytes": 7879
+    },
+    {
+      "role": "review_input_jsonl",
+      "path": "review-input.jsonl",
+      "digest": "sha256:a24a8be513ee6b114a1591629b1065dd24914ce2fd4549b8e42d57a6e33786f6",
+      "bytes": 5066
+    },
+    {
+      "role": "review_markdown",
+      "path": "review.md",
+      "digest": "sha256:8a29e09ba60a276bb194ae9f110315225e3b5e2d7cd4a8127590b096101603f4",
+      "bytes": 3060
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+      "bytes": 5974
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+      "bytes": 2505
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:87a36290041c472580d628665e9084d351d5113bdda73e967cfb299eb2e74410"
+}

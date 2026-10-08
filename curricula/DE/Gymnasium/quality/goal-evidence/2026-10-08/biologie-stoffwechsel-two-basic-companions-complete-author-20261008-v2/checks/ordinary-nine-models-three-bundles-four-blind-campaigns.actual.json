@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual ordinary technical checks, not independent scientific review",
+  "models": [
+    {
+      "path": "native/full392.current-before.actual-loader.exact-model.json",
+      "goalPages": 392
+    },
+    {
+      "path": "native/full394.basic2-after-source3.actual-model.json",
+      "goalPages": 394
+    },
+    {
+      "path": "native/original-three-native-frame.after-basic2.actual-model.json",
+      "goalPages": 3
+    },
+    {
+      "path": "native-two/book-model.json",
+      "goalPages": 2
+    },
+    {
+      "path": "native-two/bundle/book-model.json",
+      "goalPages": 2
+    },
+    {
+      "path": "existing-word-context/before/book-model.json",
+      "goalPages": 1
+    },
+    {
+      "path": "existing-word-context/before/bundle/book-model.json",
+      "goalPages": 1
+    },
+    {
+      "path": "existing-word-context/after/book-model.json",
+      "goalPages": 1
+    },
+    {
+      "path": "existing-word-context/after/bundle/book-model.json",
+      "goalPages": 1
+    }
+  ],
+  "bundles": [
+    {
+      "path": "native-two/bundle/review-bundle-manifest.json",
+      "actualWholeArtifactBytesVerified": true
+    },
+    {
+      "path": "existing-word-context/before/bundle/review-bundle-manifest.json",
+      "actualWholeArtifactBytesVerified": true
+    },
+    {
+      "path": "existing-word-context/after/bundle/review-bundle-manifest.json",
+      "actualWholeArtifactBytesVerified": true
+    }
+  ],
+  "campaigns": [
+    {
+      "path": "native-two/round-a/description-review-campaign.json",
+      "closedSchemaAndOrdinaryCampaignErrors": 0,
+      "blindToOtherReviews": true,
+      "actualIndependentResults": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "native-two/round-b/description-review-campaign.json",
+      "closedSchemaAndOrdinaryCampaignErrors": 0,
+      "blindToOtherReviews": true,
+      "actualIndependentResults": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "existing-word-context/after/round-a/description-review-campaign.json",
+      "closedSchemaAndOrdinaryCampaignErrors": 0,
+      "blindToOtherReviews": true,
+      "actualIndependentResults": 0,
+      "reviewStatus": "pending"
+    },
+    {
+      "path": "existing-word-context/after/round-b/description-review-campaign.json",
+      "closedSchemaAndOrdinaryCampaignErrors": 0,
+      "blindToOtherReviews": true,
+      "actualIndependentResults": 0,
+      "reviewStatus": "pending"
+    }
+  ],
+  "wholeP2ClosedSchemaAndNativeSemanticsErrors": 0,
+  "actualNative2PhysicalPdfPages": 4,
+  "actualExistingWordContextPhysicalPdfPages": 3,
+  "allIndependentResultsPending": true,
+  "activeWrites": 0,
+  "newStrictClosures": 0,
+  "humanApproval": false,
+  "humanTrial": false
+}

@@ -1,0 +1,19 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: biology: mandatory source-atlas input must be Git-tracked: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-operative-scope-author-20261008-v1/candidate/mappings/01-bb_biology_lower_secondary_source_extraction_to_canonical_biology.review.json
+    at testGoalBookSourceAtlasInputs (/home/enpasos/projects/skillpilot/app/scripts/testGoalBookSourceAtlasInputs.ts:253:16)
+    at testGoalBookInputIsolation (/home/enpasos/projects/skillpilot/app/scripts/testGoalBookInputIsolation.ts:41:3)
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/testGoalBookModel.ts:33:7)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '=='
+}
+
+Node.js v20.20.2

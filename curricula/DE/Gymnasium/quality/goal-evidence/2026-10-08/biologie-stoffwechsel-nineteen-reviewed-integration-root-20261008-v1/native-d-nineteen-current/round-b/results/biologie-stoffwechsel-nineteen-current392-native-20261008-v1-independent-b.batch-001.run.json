@@ -1,0 +1,100 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-native19-independent-b-first-pass-20261008-v1",
+  "campaignId": "biologie-stoffwechsel-nineteen-current392-native-20261008-v1-campaign-b",
+  "roundId": "biologie-stoffwechsel-nineteen-current392-native-20261008-v1-independent-b",
+  "batchId": "biologie-stoffwechsel-nineteen-current392-native-20261008-v1-independent-b.batch-001",
+  "batchInputFingerprint": "sha256:dd96a1119074dd4750cc156b3d0a79a9faf08d076bb46a5d31ff5eb7aced355a",
+  "bundleFingerprint": "sha256:a19363e5b08d87f6fda421d9abc692c5e0e50b0ccef7673a06b1a971a7f9c944",
+  "bookDigest": "sha256:a2545112a303ba49d972fa81b7f9bdb730412bad7687a9ffa3ca0e6261a9aeea",
+  "provider": "OpenAI Codex",
+  "model": "Codex; exact model version not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:28aec408de760985c551232a62488044999a12710780a8858c348ec9f59da218",
+  "independenceGroupId": "biologie-stoffwechsel-nineteen-current392-native-20261008-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "de1c19a2-2f8a-57bf-bd58-ecc460f47987",
+    "691b0711-4427-5b39-b2ef-20f607d15c13",
+    "6020a221-ad96-50dc-9b99-b0bf6815366f",
+    "de5ba3a5-7c5f-5ee3-89d3-c97a0d4eeaf0",
+    "ce6550f0-4ec3-5dd9-ab02-0296da98a371",
+    "462de7c8-b5fb-52f0-82db-63eb019fad29",
+    "280bab15-94e8-59fb-9359-c1c0f8384b2a",
+    "97d409c8-b3bc-5c7c-8619-2c5592d2a796",
+    "9f074006-74e8-5f09-884d-038bd9b4f0ec",
+    "3cb5f199-3c9a-5f01-a4ba-373bdef0112e",
+    "b56a5408-ed84-57f2-a9dd-d1a67496fdd1",
+    "eccf935c-48e3-53dd-b472-5e794241279b",
+    "71b21aef-796b-5506-a593-8d96b3d4b636",
+    "7749de90-68f4-53a6-b474-b6414f16f09e",
+    "4ef85d98-5e20-540b-9adf-89592febc438",
+    "f36a52b8-acd7-5a3d-83e2-0af74acc9c96",
+    "e3c7cd8b-8c6c-5c4b-8c7f-e0d1a6284f94",
+    "64a31f9a-27b2-5321-b2a8-47188d001c6b",
+    "b7b84b6a-1c99-5474-99c5-9a72a1cd505b"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:3caf42dff6b33e16134a26d258e249ec43124d8576a871c0f80a0875cc87e0fe"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:b5a78004c864636336db4549b7b6b2c6410e595e9c10e371a8d2f9b7f0a0e5f2"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:26687ca9a1d770ece5bb421e756de1b2365422b1c35e43badcba2e82f1e6aaa5"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:a1ef624a4aa69995ee88514facf354ccc136dad329905ae6a0c982ea07002767"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:97e453284de4ef4b0c14a6b035797573adcced1dbcc2d60605236ec8edd084da"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:2fba7c4e9d5b1d291198963b812a13296a8c1b2bc9fd66f17f3a58b7635592fd"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:d2cac86a5ea09360239670472364296e04d8a2fb341658498cd5cc8b73c81921"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:b60101616763df8dd0e20522b04a3cba1f9cb627237635d34ac31ccbbd0dc7c7"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:dd96a1119074dd4750cc156b3d0a79a9faf08d076bb46a5d31ff5eb7aced355a"
+    }
+  ],
+  "startedAt": "2026-10-08T08:53:21.218679+00:00",
+  "completedAt": "2026-10-08T09:11:22.515047+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:25f540f0afddbe67f09be040daff6edb0c4a210a3f878575fea7b033f272cd83",
+  "toolchainVersion": "codex-independent-review-v1"
+}

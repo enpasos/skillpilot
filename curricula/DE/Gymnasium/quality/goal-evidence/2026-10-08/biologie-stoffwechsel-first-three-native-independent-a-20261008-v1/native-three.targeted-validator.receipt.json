@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "verifiedAtUtc": "2026-10-08T10:51:14.481Z",
+  "descriptionCampaignValidation": {
+    "schemaVersion": 1,
+    "tool": "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+    "actualExecResult": {
+      "chunk_id": "06dd0a",
+      "wall_time_seconds": 0.425439517,
+      "exit_code": 0,
+      "original_token_count": 13,
+      "output": "Goal-description review campaign results valid: 3\n"
+    }
+  },
+  "positiveValidation": {
+    "ordinaryAPI": "validatePositiveGoalEvidenceRecordSemantics",
+    "schema": "contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "scope": "exact3 current inactive candidate whole goals; actual selected PNG digests passed to unchanged API",
+    "errors": [],
+    "records": 3,
+    "completeProfileBodiesExact": 3
+  },
+  "inputFilesExact": 357,
+  "rows": [
+    {
+      "goalId": "32f47903-0788-5c27-ac88-7464f481f2f7",
+      "goalFingerprint": "sha256:834f6186e2b1834d2bce5f6be01abf9e711330bd73925c26e9184ae56e68fc7c",
+      "reviewInputFingerprint": "sha256:494e45a140b42920e491942e9c1269dcb1ae2d7bb8591d25f678d13b59ce65fa",
+      "profileFingerprint": "sha256:de3c28b4510fe7bbc87b15a6cee92a190f724763e49e0e96e582695beb54e0cb",
+      "actualPNG": "sha256:a0e5ad59e128ab313e9b884c9ec01156a82ee41c3f9b2473bf4639a28233652d",
+      "wholeProfileExact": true
+    },
+    {
+      "goalId": "135447a0-5d55-564a-afc3-3e3fbed77819",
+      "goalFingerprint": "sha256:009e46b71162cefd6f1adc6757eb6751c626b51bab334d8781e3570836dca1eb",
+      "reviewInputFingerprint": "sha256:ee32695d32095e04c714388f1a488bd1e4e2f5439b219bf2fcd0d02674abcb03",
+      "profileFingerprint": "sha256:1174f30704743c2d355761a88e432b3d2451536a45146ed5d15c0defb451da6a",
+      "actualPNG": "sha256:84b3b22f8493fbe9b1ae686eb2c973a351e41c3e797fe3dc6c86bc64394356a7",
+      "wholeProfileExact": true
+    },
+    {
+      "goalId": "ec782ce3-475e-5628-b3fe-947d72e74a74",
+      "goalFingerprint": "sha256:17370dd242d438e6ece7d1045b9474f5bb0563f117fa40b235c96edb1114b0a6",
+      "reviewInputFingerprint": "sha256:c661c81b23943f517e99bf26c07591710f097bcb3365439aaf811757f84952d3",
+      "profileFingerprint": "sha256:0c2db26cb4224b2a920d5615d227f19663db2813c81fa9e0cff1cbe64f77d938",
+      "actualPNG": "sha256:319b3f62fc2056410c0188f7b49bc8fcaad704b0a4c74073f28b98626ebbee20",
+      "wholeProfileExact": true
+    }
+  ],
+  "activeWrites": 0,
+  "newStrictClosureClaims": 0,
+  "humanApproval": false
+}

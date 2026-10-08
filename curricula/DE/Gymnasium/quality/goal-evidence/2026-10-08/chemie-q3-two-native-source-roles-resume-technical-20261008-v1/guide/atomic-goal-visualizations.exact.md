@@ -1,0 +1,495 @@
+# Atomic Goal Visualizations
+
+This document defines the production and integration convention for visualizing atomic learning goals in SkillPilot. Initial rollout scope: canonical `DE Gymnasium Mathematik`.
+
+## Purpose
+
+Atomic goal visualizations are compact didactic images that help learners
+recognize the core idea of one atomic learning goal. They are not tasks,
+solutions, or curriculum evidence. A visualization supports orientation in the
+cockpit and, for the multilingual OpenAI V1 MCP App, as an optional image-only
+MCP Apps UI. The graph goal remains the source of truth.
+
+## Canonical JSON Format
+
+If a learning goal has an approved or pilot visualization, the reference is stored directly on that goal in canonical `resourceLinks`.
+
+Required fields for a goal visualization link:
+
+```json
+{
+  "type": "goal-visualization",
+  "resourceType": "image",
+  "role": "primary",
+  "skillpilotId": "<same value as goal.id>",
+  "title": "Visualisierung: <goal title>",
+  "url": "/assets/goal-visualizations/<subject>/<skillpilotId>/<skillpilotId>.png",
+  "provider": "<generator or production provider>",
+  "description": "<short caption>",
+  "altText": "<screen-reader description>",
+  "lang": "de",
+  "license": "<asset/license note>",
+  "reviewStatus": "pilot"
+}
+```
+
+Rules:
+
+- `skillpilotId` must equal the containing goal's `id`.
+- Use `type: "goal-visualization"` and `resourceType: "image"`; do not introduce another top-level goal field for images.
+- The public `url` must be root-relative under `/assets/goal-visualizations/...` so the cockpit can render it locally.
+- The image filename must be the SkillPilot ID plus extension: `<skillpilotId>.<ext>`. Keep language in the link metadata (`lang`), not in the filename. This keeps copied assets self-identifying without exceeding Windows path limits.
+- The multilingual OpenAI V1 adapter may expose a visualization only for the active
+  atomic goal and only when the canonical link has `type:
+  "goal-visualization"`, `resourceType: "image"`, and a `skillpilotId` matching
+  that goal. Other AI integrations continue to use a normal cockpit deep link
+  unless they define and review an equivalent safe UI projection.
+- A goal may have multiple visualization links, but at most one `role: "primary"` per language should be visible in ordinary learner views.
+- `reviewStatus: "pilot"` is allowed for integration pilots. Broad rollout should use reviewed assets only.
+
+## OpenAI MCP Apps Image Delivery
+
+The still-unpublished `SkillPilot Coach v1` draft `1.0.0` binds exactly one
+active, hash-bound MCP Apps HTML resource for goal images. Its resource URI
+contains the SHA-256 of the self-contained HTML bytes. `resources/list` and
+`resources/read` expose the active resource plus every previously advertised
+URI with its exact historical bytes, including the original version-addressed
+`1.0.0` URI and all later hash URIs, reviewed widget domain, and CSP.
+
+The dedicated read-only `render_skillpilot_goal_visualization` tool is the only
+V1 tool whose descriptor carries `ui.resourceUri` and the
+`openai/outputTemplate` compatibility alias. Both point to that same active
+resource. Ordinary context, mutation, recall, and exam tools have no UI binding
+and cannot create an empty component. The renderer does not rely on naked MCP
+`ImageContent` as a guaranteed inline presentation; its visible presentation is
+the explicitly bound MCP Apps UI.
+
+This boundary follows the official OpenAI component contract: selected tools
+link a registered `text/html;profile=mcp-app` resource through
+`_meta.ui.resourceUri`, while `_meta["openai/outputTemplate"]` is the ChatGPT
+compatibility alias. OpenAI's troubleshooting guide explicitly diagnoses
+"structured content only, no component" by checking that binding and the
+registered HTML resource. Generic MCP content therefore carries no assumed
+ChatGPT visibility guarantee here:
+
+- <https://developers.openai.com/plugins/build/chatgpt-ui>
+- <https://developers.openai.com/plugins/deploy/troubleshooting#server-side-issues>
+
+The renderer is offered only when the learner preference is enabled and the
+current context contains a safe visualization projection. Each previously
+unseen pair of the full context's `goalVisualization.goalId` and the authorizing
+result's top-level `stateVersion` in a result that permits the renderer creates
+a separate one-shot authorization. Invoke it once for that pair—even if an
+earlier pair in the conversation was already rendered. A repeated pair creates
+no automatic call; an explicit learner request to show the current image again
+creates one new one-shot call after a fresh qualifying result. Copy the context
+goal and top-level version unchanged into `goalId` and `expectedStateVersion`.
+Do not reuse stale authorization or retry otherwise.
+A required mastery handoff remains before
+the successor section; render immediately before coaching the associated active
+goal. Its receipt does not replace the preceding full context. The renderer
+supplies the following bounded `structuredContent` to the image-only widget:
+
+```json
+{
+  "goalVisualization": {
+    "goalId": "<active atomic goal ID>",
+    "title": "<goal title>",
+    "description": "<optional goal description>",
+    "imageUrl": "https://skillpilot.com/assets/goal-visualizations/...",
+    "altText": "<accessible image description>",
+    "cockpitUrl": "https://skillpilot.com/?l=<curriculumId>&goal=<goalId>"
+  }
+}
+```
+
+The projection and image result obey these constraints:
+
+- the learner's default-on `showGoalVisualizationsInChat` preference must not
+  be disabled;
+- the active goal must be atomic;
+- its canonical visualization link must match the same goal ID and resolve to a
+  safe public SkillPilot image URL;
+- the projected HTTPS URL must resolve to an approved public SkillPilot image
+  below `/assets/goal-visualizations/` and remain within the resource CSP;
+- the safe projection may retain goal metadata for validation, but the widget
+  uses only `imageUrl` and `altText` for presentation. It displays exactly the
+  image; title, description, goal ID, and cockpit link are never rendered;
+- the widget starts collapsed and becomes visible only after a valid image has
+  loaded. Missing or malformed data and failed image loads keep it collapsed
+  and request teardown, so ordinary tools and unavailable images do not leave
+  empty or permanently loading boxes;
+- eligible contexts offer `goalVisualization` and the renderer permission
+  surface-neutrally. The server and widget do not inspect
+  `openai/userAgent`,
+  infer Desktop/Mobile/App/Browser, or apply any client-surface presentation
+  gate. A host may render or decline the optional UI resource, while the
+  complete ordinary text response remains available;
+- session coordination and idempotent replay preserve the same surface-neutral
+  image authorization. No caller-specific presentation filter mutates a fresh
+  or replayed result;
+- after an authorized attempt, do not delay ordinary coaching or retry.
+  Test renderer invocation and visible host behaviour independently, without
+  changing the protocol result by client surface;
+- a widget change creates a new active hash-bound URI. Every URI previously
+  advertised to a real test client remains immutable and readable as a passive
+  retained resource because provider metadata and chats may fetch it later.
+  Only the current URI is tool-bound; refresh the plugin and verify a fresh chat
+  after deployment as an additional current-contract check;
+- the image is orientation only. It is not evidence, a task, a solution, an
+  assessment, or a mastery signal, and the model must not invent unreadable
+  image details.
+
+Because `1.0.0` has not been published in the OpenAI portal, this correction is
+part of the same mutable release draft and does not cause a version increment.
+
+Learners can change the preference in the cockpit under **Mein Lehrplan →
+Lerneinstellungen → Lernzielbilder im Chat anzeigen**. The persisted setting is
+learner-scoped, defaults to `true`, and is updated through the existing partial
+preferences endpoint. The backend preference applies across devices and chat
+sessions; it does not promise UI availability or cross-device UI rehydration on
+every ChatGPT surface. Requests that omit the field preserve its current value.
+
+Future OpenAI delivery of memory-card images or interactive memory-card views
+must follow the same explicit-boundary rule: a dedicated renderer binds a
+reviewed, purpose-specific MCP Apps UI resource. Ordinary memory-card tools must
+not return generic MCP `ImageContent` as an implicit presentation channel.
+
+## Asset Layout
+
+For each approved or pilot image, keep a traceable source directory:
+
+```text
+curricula/DE/Gymnasium/visualizations/mathematik/<skillpilotId>/
+  <skillpilotId>.png
+  prompt.de.md
+  image-reconstruction-prompt.de.md
+```
+
+`prompt.de.md` records the original provider prompt. `image-reconstruction-prompt.de.md` records a standalone alternative prompt derived from the generated image itself; the QA workbench can use it as an alternate correction base when the human review identifies an error. If this file is missing for an older image, the local QA workbench can generate it on demand from the image only.
+
+Public runtime copies live under:
+
+```text
+app/public/assets/goal-visualizations/mathematik/<skillpilotId>/<skillpilotId>.png
+backend/src/main/resources/static/assets/goal-visualizations/mathematik/<skillpilotId>/<skillpilotId>.png
+```
+
+`npm run deploy:assets` runs `scripts/deploy_goal_visualizations.ts` and copies approved visualization assets from the curriculum source directory into both `app/public/assets/goal-visualizations` and `backend/src/main/resources/static/assets/goal-visualizations`. The Vite production build also writes public assets to `backend/src/main/resources/static`, but the explicit backend copy keeps local static-asset checks consistent before a full frontend build.
+
+Reference pools of example tasks or image inspirations may be kept locally under `tmp/`, but must not be committed if licensing is unclear. They must never be copied into final assets.
+
+### Format and responsive legibility for new images
+
+For necessary new or corrected learning-goal images, use PNG with a 16:9 landscape composition as the default (about 1600 × 900 px; a generator's close native 16:9 size is fine). Existing good images remain KEEP regardless of file format, provider, dimensions, or aspect ratio. Use another ratio only when an actual desktop and phone review shows a didactic advantage; do not change an otherwise good image solely to normalize its format.
+
+Review the actual image at roughly 360 px phone width and at the desktop image limit of 680 px. The current GoalCard display uses `object-fit: contain` with a 28 rem height cap and does not crop the image. At a 680 px wide desktop card, a 4:3 image therefore appears at about 597 × 448 px, while a 16:9 image can use the full 680 px width. Also inspect any format exception at its actual capped desktop size. At phone width, 16:9 is only about 203 px high: keep the important action and objects large, avoid crowded panels and text that must be read at a tiny size, and provide a meaningful alt text. Check the depicted person's perspective as well as the outside viewer's: notes, sketches, instruments, and other directional details must be correct for the person using them. Record any format exception and its visual review with the image decision.
+
+## Production Pipeline
+
+### Provider priority and exception policy
+
+**Effective 13 September 2026, by Product Owner decision.** This policy replaces
+the former Nano-Banana-first requirement and its retroactive provider-conversion
+rule for Mathematik and Physik. Historical decisions, sealed review receipts and
+earlier rejected attempts remain unchanged; they do not constrain the provider
+for a new attempt. This policy update does not resume a paused QS goal, create
+review approvals, change progress counts or authorize publication.
+
+**KEEP is the default.** Retain good existing images regardless of provider.
+Generate only to fill a didactically useful gap or correct a documented weakness.
+A newer generator, easier implementation or more deterministic rendering is not
+by itself a reason to replace an existing asset or repeat a still-current review.
+
+For necessary new images and corrections, **prefer ChatGPT/Codex image
+generation**. Acceptance depends on the actual result: subject-matter correctness,
+didactic usefulness, suitable representation, age fit, legibility and continuity
+with the existing visual landscape. For newly generated Mathematik and Physik
+raster illustrations, prefer a friendly, abstract, clear, comic-like image
+language over photorealism or sterile technical-chart aesthetics unless the
+learning goal demonstrably requires another representation. Inspect suitable existing images as style
+references; preserve the approachable image language, coherent colors and
+appropriate information density. Choose the representation to suit the content
+rather than forcing every goal into one diagram or illustration template.
+
+**Nano Banana Pro remains an allowed alternative**, including when it is better
+suited to the desired representation or style, or the preferred generator is
+unavailable. No failed attempt with either provider is a prerequisite. Select
+and assess targeted candidates; do not run both providers merely to satisfy an
+obsolete ordering rule.
+
+Programmatically drawn diagrams/SVGs are distinct from ChatGPT/Codex image
+generation. They remain narrow, documented exceptions justified by the actual
+content and required precision, not by convenience alone. They must meet the
+same visual-integration and legibility requirements. Exact temporary diagrams
+may also be used as reference inputs without becoming the final image.
+
+**Generation is not approval.** A separate visual and fachlicher review must
+inspect the actual output against the current learning goal and style references,
+including geometry, calculations, notation, units, labels and misleading visual
+implications. Record the actual provider and model/tool (only as known), actual
+prompt/reference strategy, candidate and active-image hashes, rejected defects
+and the review decision under `goal-visualization-review/`. Do not infer provider
+provenance from helper defaults or filenames. Preserve existing transparency,
+licensing, accessibility and human/AI approval requirements.
+
+After a substantive image change, recheck the affected goal, page, context and
+evidence bindings. A hash refresh alone is not a content review. Unchanged,
+still-current records remain valid; a policy change alone is neither a new review
+nor a reason to invalidate them. Public curriculum content and permitted style
+references may be used in external prompts; private class, learner, session or
+chat data must remain local, and technical IDs must stay out of provider prompts.
+
+When an atomic goal is split, preserve a good existing aggregate image as an
+overview on the retained cluster whenever it still accurately represents the
+combined scope. Add more specific child images without mechanically deleting
+the overview asset.
+
+1. Select an atomic goal and record its SkillPilot ID, title, description, phase, and intended learner audience.
+2. Draft a compact image prompt from the goal itself. The prompt may add concrete representations, but must not add extra curriculum content beyond the goal.
+3. Generate a targeted candidate with the chosen image provider; make further attempts only to address identified shortcomings.
+4. Review candidates against the quality checklist below.
+5. Store the selected asset and prompt metadata under `curricula/.../visualizations/...`.
+6. Add the optional `resourceLinks` entry to the canonical goal JSON.
+7. Copy or deploy the public asset into `app/public/assets/...` and backend static assets.
+8. Validate graph JSON, cockpit rendering, the hash-bound image-only MCP Apps
+   renderer, and normal cockpit deep-link behavior outside that renderer.
+
+## Automated Nano Banana Pro Workflow
+
+When Nano Banana Pro is selected under the policy above, use its existing
+automated workflow:
+
+```bash
+GEMINI_API_KEY="<key>" npm --prefix app run visualization:generate:nano-banana -- "<goal-id-or-unique-title-fragment>"
+```
+
+The command:
+
+- resolves the goal from the canonical math landscape,
+- builds the provider prompt from the goal title and description, without sending the SkillPilot ID to the image model,
+- keeps provider-facing prompt constraints neutral where possible, for example `no technical IDs` instead of naming SkillPilot,
+- calls the Gemini image API with model `gemini-3-pro-image`,
+- saves a traceable generated candidate under `tmp/goal-visualizations/<skillpilotId>/generated/`,
+- asks Gemini to derive a standalone image-reconstruction prompt for the generated candidate and stores it beside the candidate,
+- imports the selected image into the canonical visualization asset layout,
+- copies the selected candidate's reconstruction prompt to `image-reconstruction-prompt.de.md`,
+- updates the canonical goal's primary `goal-visualization` link.
+
+Use this first as a no-network rehearsal:
+
+```bash
+npm --prefix app run visualization:generate:nano-banana -- "<goal-id-or-unique-title-fragment>" --dry-run
+```
+
+Configuration options:
+
+```bash
+npm --prefix app run visualization:generate:nano-banana -- \
+  "<skillpilotId>" \
+  --aspect-ratio="16:9" \
+  --image-size="2K" \
+  --mime-type="image/jpeg" \
+  --prompt-append="Keine langen Formeln; Text sehr kurz halten." \
+  --review-status="pilot"
+```
+
+For longer or carefully reviewed instructions, prefer a prompt append file over a long shell argument:
+
+```bash
+npm --prefix app run visualization:generate:nano-banana -- \
+  "<skillpilotId>" \
+  --prompt-append-file="tmp/goal-visualization-prompts/<skillpilotId>.md"
+```
+
+Use `--skip-reconstruction-prompt` only for explicit debugging; normal generated assets should keep the reconstruction prompt so `/goal-visualization-qa` can offer it as a correction base. The QA workbench also has an on-demand action to create a missing reconstruction prompt for an already imported image.
+
+For older imported images, generate missing reconstruction prompts in controlled batches from the active canonical primary links:
+
+```bash
+npm --prefix app run visualization:generate-reconstruction-prompts -- \
+  --subject=mathematik \
+  --limit=25 \
+  --continue-on-error
+```
+
+Run with `--dry-run` first to inspect the planned images. The script reads active primary links from the canonical landscapes under `curricula/DE/Gymnasium/canonical/`, including linked context or memory images outside the ordinary-atomic QA scope. It validates the exact `<subject>/<goalId>/<goalId>.<ext>` path shape, skips existing prompts by default, writes `image-reconstruction-prompt.de.md` beside the canonical source image, and stores provider response traces under `tmp/`.
+
+The API key must come from `GEMINI_API_KEY` or `GOOGLE_API_KEY`. The generator also reads these variables from a local, ignored `.env.local` or `app/.env.local` file:
+
+```text
+GEMINI_API_KEY=<key>
+```
+
+Do not commit keys or generated provider scratch files. The `tmp/` directory is intentionally ignored by Git.
+
+Small batch generation uses the same single-goal pipeline:
+
+```bash
+npm --prefix app run visualization:plan-batch -- --count=10
+
+npm --prefix app run visualization:generate:nano-banana:batch -- \
+  --file tmp/goal-visualization-next-batch.txt \
+  --continue-on-error
+```
+
+Batch options:
+
+- `visualization:plan-batch -- --count=<n>` writes the next unvisualized atomic goals to `tmp/goal-visualization-next-batch.txt`.
+- `visualization:plan-batch -- --phase=J5 --count=<n>` restricts planning to one phase if phase metadata is available.
+- `visualization:plan-batch` skips goals marked `deferred_provider_limitation` in the review ledgers. Use `--include-deferred` only for an explicit retry.
+- `--dry-run` creates the prompt and request packages for all goals without API calls.
+- `--no-import` saves generated images under `tmp/.../generated/` but does not update canonical JSON.
+- `--continue-on-error` continues after a failed goal and reports failures at the end.
+- Temporary provider quota or rate-limit errors such as Gemini `429` stop the batch even with `--continue-on-error`, so remaining goals are not requested until quota is available again.
+- On a temporary provider failure, the batch command writes a resume file containing the failed goal plus all not-yet-started goals. With `--file tmp/goal-visualization-batch-036.txt`, the default resume file is `tmp/goal-visualization-batch-036.resume.txt`; override this with `--resume-file <path>` if needed.
+- Re-running a generated resume file is idempotent: `--file tmp/goal-visualization-batch-036.resume.txt` reuses that same resume file on another temporary provider failure instead of creating `*.resume.resume.txt`.
+- `--prompt-append-file <path>` applies one shared prompt append file to every goal in the batch.
+- `--prompt-append-dir <path>` lets the batch use per-goal prompt append files named `<skillpilotId>.md`, `<skillpilotId>.txt`, `<skillpilotId>.prompt.md`, or `<skillpilotId>.prompt.txt`. A per-goal file takes precedence over a shared `--prompt-append-file`.
+- `--file <path>` reads one goal ID or unique title fragment per line; `#` starts a comment.
+
+Before a prepared batch is sent to the provider, check the prompt append directory:
+
+```bash
+npm --prefix app run visualization:check-prompt-appends -- \
+  --file tmp/goal-visualization-batch-036.txt \
+  --prompt-append-dir tmp/goal-visualization-prompt-appends/batch-036
+```
+
+The check verifies that each batch goal has a prompt append file, the files contain explicit required/avoidance sections, and the final provider prompts do not contain concrete goal IDs or the string `SkillPilot`.
+
+Every production batch must be visually reviewed before it is considered more than a technical import. Store the review note under:
+
+```text
+curricula/DE/Gymnasium/quality/goal-visualization-review/
+```
+
+The review note must record accepted assets, rejected/regenerated assets, visible mathematical issues, and validation checks. Keep `reviewStatus: "pilot"` in canonical JSON until the asset has passed the intended release review.
+
+The subject QA ledgers can additionally record an explicit AI review. `aiApproved: "yes"` is valid only when `aiApprovedAssetSha256` exactly matches the record's current `assetSha256`; replacing the image therefore invalidates the AI approval. `aiReviewedAt`, `aiReviewer`, and `aiNotes` describe that hash-bound review. The older `umlautsCorrectChatGpt` and `contentApprovedChatGpt` fields remain available as triage and compatibility data and are not promoted automatically. AI approval is useful technical and subject-matter review evidence, but it never replaces a mandatory `humanApproved` release gate. Under the [current quality and human-trial concept](../curriculum-quality-and-human-trial.md), M7 now means complete deep curriculum QA, with image QA as one of five gates. Gate V is machine-only: it requires an allowed AI review bound to the exact current asset hash, while `humanApproved` and `humanIssueIdentified` neither satisfy nor veto V or M7. Human release decisions and findings remain separate. Technical provider deferrals remain incomplete. Historical image approvals and release evidence retain their original meaning.
+
+## Low-Friction Manual Provider Workflow
+
+For ChatGPT/Codex image generation or another manually/tool-generated candidate,
+use the existing helper scripts rather than hand-building filenames, folders or
+JSON links. Explicitly identify the actual provider in **both** preparation and
+import; the helpers retain a Nano Banana compatibility default that is not the
+current provider-selection policy:
+
+```bash
+npm --prefix app run visualization:prepare -- "<goal-id-or-unique-title-fragment>" \
+  --provider="OpenAI / ChatGPT-Codex image generation"
+```
+
+This writes a prompt package to:
+
+```text
+tmp/goal-visualizations/<skillpilotId>/nano-banana-prompt.de.md
+tmp/goal-visualizations/<skillpilotId>/metadata.json
+```
+
+The `nano-banana-prompt` filename is historical, not a provider restriction.
+Send only the prompt body, not the package metadata containing technical IDs.
+Inspect and supply appropriate style references, generate the candidate and
+save the **actual final prompt** used, including any targeted corrections. Then
+import the reviewed candidate with explicit provenance:
+
+```bash
+npm --prefix app run visualization:import -- "<skillpilotId>" "<generated-image-path>" \
+  --provider="OpenAI / ChatGPT-Codex image generation" \
+  --prompt="<actual-generation-prompt.md>"
+```
+
+Use the actual provider/tool name for other generators and record the model
+version when it is available; do not invent one. The preparation helper's
+printed minimal import hint omits these overrides, so retain them explicitly.
+The helpers default to Mathematics. For Physics, pass
+`--landscape=curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json`
+and `--subject=physik` to **both** commands. Import and deployment are not review
+approvals; complete the existing hash-bound QA and release gates separately.
+
+The import script:
+
+- resolves the goal from the canonical math landscape,
+- renames the image to `<skillpilotId>.<ext>`,
+- copies it to `curricula/DE/Gymnasium/visualizations/...`,
+- copies the runtime asset to `app/public/assets/goal-visualizations/...`,
+- writes or refreshes `prompt.de.md`,
+- writes `image-reconstruction-prompt.de.md` when a sibling reconstruction prompt or `--reconstruction-prompt` input exists; otherwise it removes any stale reconstruction prompt for that asset,
+- adds or replaces the primary `goal-visualization` link on the goal.
+
+Optional overrides:
+
+```bash
+npm --prefix app run visualization:import -- \
+  "<skillpilotId>" \
+  "<downloaded-image-path>" \
+  --reconstruction-prompt="<standalone-image-prompt.md>" \
+  --alt-text="<specific screen-reader description>" \
+  --description="<short caption>" \
+  --review-status="pilot"
+```
+
+Use `--dry-run` to inspect the planned paths and JSON URL before writing files.
+
+## Quality Checklist
+
+- The image addresses exactly one atomic goal.
+- Mathematical notation is correct and not misleading.
+- The image has no copied third-party worksheet, logo, character, or protected layout.
+- The context is plausible and age-appropriate for the goal.
+- The representation suits the content, and its image language, colors and information density fit appropriate existing style references.
+- Text is readable at cockpit card width and does not dominate the image.
+- The image works in the cockpit goal card and in the multilingual OpenAI
+  renderer's dedicated active, hash-bound image-only MCP Apps UI resource. Only
+  the renderer binds this image resource; no ordinary tool creates an empty UI
+  component. Other dedicated UI tools use their own resources.
+- The visual does not replace the need for explanation, practice, or assessment.
+- `altText` is specific enough for non-visual use.
+- `skillpilotId`, `url`, `provider`, `lang`, `license`, and `reviewStatus` are present.
+- The `url` filename is the same `skillpilotId` plus image extension.
+
+## Hard Review Gate
+
+Generated images are useful but not trustworthy by default. A generated asset is only a technical import until it has been visually reviewed against the checklist. The review must be recorded in the batch ledger before the asset may be treated as curated pilot content.
+
+Mandatory rejection or regeneration triggers:
+
+- wrong calculation, wrong formula, wrong comparison, or wrong unit conversion
+- misleading mathematical representation, even if the text is correct
+- mismatched labels and drawings, for example marked digits, angle sizes, coordinates, number-line positions, or side properties
+- invalid or ambiguous notation that could teach a misconception
+- extra topics that distract from or distort the atomic goal
+- unreadable or dominant text, especially when the image is shown at cockpit card width
+- visible technical IDs, watermarks, provider artifacts, or copied third-party layout
+- target-age mismatch, such as concepts clearly above the current year level
+
+Review decisions should use these labels:
+
+- `accepted_pilot` - no gross mathematical issue is visible; suitable for controlled pilot use
+- `accepted_pilot_after_regeneration` - at least one generated attempt was rejected and replaced
+- `rejected_regenerate` - current image must not be used; generate a targeted replacement
+- `deferred_provider_limitation` - repeated provider attempts stayed fachlich wrong; remove the `resourceLinks` image reference and revisit when the provider improves
+- `needs_external_review` - no obvious blocker, but the image is too subtle or high-risk for self-review only
+
+If targeted attempts still contain a gross mathematical or tool-use error,
+reject the candidate and use an allowed alternative under the provider policy
+above. A provider change is permitted, but its provenance and review must be
+explicit. Document any programmatic-diagram exception with its fachliche reason;
+do not invent failed attempts to justify it. If no candidate meets the same
+fachliche and visual-quality bar, retain the rejected attempts as evidence and
+record the appropriate unresolved or `deferred_provider_limitation` decision.
+Remove any demonstrably unsuitable active image link and published copies while
+archiving their evidence. A failed replacement attempt never justifies removing
+a good existing image. A missing technical capability or unavailable generator
+is not itself evidence that an image is fachlich wrong.
+
+Keep `reviewStatus: "pilot"` until the intended release review has passed. Do not infer approval from the existence of a generated file, a public asset, or a `resourceLinks` entry.
+
+## Pilot
+
+Pilot goal:
+
+- SkillPilot ID: `502ecaa7-cca6-5c51-a1cc-da09a7b2382c`
+- Title: `Definitionsmenge einer Funktion bestimmen`
+- Public asset: `/assets/goal-visualizations/mathematik/502ecaa7-cca6-5c51-a1cc-da09a7b2382c/502ecaa7-cca6-5c51-a1cc-da09a7b2382c.png`

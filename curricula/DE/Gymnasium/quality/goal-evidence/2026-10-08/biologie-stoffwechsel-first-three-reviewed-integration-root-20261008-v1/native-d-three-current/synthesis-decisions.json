@@ -1,0 +1,132 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "biologie-stoffwechsel-reviewed-three-current392-technical-20261008-v1-three-current-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex technical integrator; Root-delegated factual sealed A/B KEEP synthesis, no new scientific reviewer",
+  "synthesizedAt": "2026-10-08T11:04:07.081Z",
+  "batch": {
+    "batchId": "biologie-stoffwechsel-reviewed-three-current392-technical-20261008-v1-three-current",
+    "batchManifestDigest": "sha256:afe60b5fb242eeb0ed24568beac35a036bf5aa07aaaa8fddf5e2748d47adff9d",
+    "configDigest": "sha256:422161596bb8ad8b96199abaaac0cfa3628c7fcb6d515a329b50cce0589cbf37",
+    "bundleFingerprint": "sha256:b358b78544f358d05949555231744c3735560e4e6bc75e38359aa201f755b7ff",
+    "bookDigest": "sha256:9a7e15782ffbdfeebef67979e7f29b285bf1c53a6485f5b0d01a4dae822aed55",
+    "reviewInputFingerprint": "sha256:97e7de76e0fc3c8aa3737151529aa25855728feed5555b08753d4d8b963dbfc0",
+    "dualSummaryDigest": "sha256:55dd46bebc633041d20a2afc273394d36845c7eaaf40d22efe4361e244ffad06",
+    "canonicalLandscapeDigest": "sha256:e0dacf1f99b04e264bfe649a1d521a4ea015915b9478c9c922c869477d2847dd"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-stoffwechsel-first-three-current392-native-20261008-v1-campaign-a",
+      "campaignDigest": "sha256:728551ee7a30d59b409606dabedc17e5a6c39cfb81dd15ba618b52fd450262fb",
+      "roundId": "biologie-stoffwechsel-first-three-current392-native-20261008-v1-independent-a",
+      "independenceGroupId": "biologie-stoffwechsel-first-three-current392-native-20261008-v1-independent-a",
+      "reviewInputFingerprint": "sha256:97e7de76e0fc3c8aa3737151529aa25855728feed5555b08753d4d8b963dbfc0",
+      "batchId": "biologie-stoffwechsel-first-three-current392-native-20261008-v1-independent-a.batch-001",
+      "batchInputFingerprint": "sha256:0b4115eac0828fac0cfb7ab0cb700dfe3219de212b32807a9c67f95bc5edf4e6",
+      "runId": "biologie-native-first-three-independent-a-actual-20261008-v1",
+      "runManifestDigest": "sha256:728a5065e1e64ca282da653c084e6303926b48de9a2226bcacd45de7f8b92c5a",
+      "resultsDigest": "sha256:5c1115af77ac12a24ebae2fadc7c80ebb473db660a921d2e8e744dd871ecc69c"
+    },
+    "second": {
+      "campaignId": "biologie-stoffwechsel-first-three-current392-native-20261008-v1-campaign-b",
+      "campaignDigest": "sha256:08dc5022c4509b99236ddddd7d470b12e032dea32d78baaaaf717b4fc0748228",
+      "roundId": "biologie-stoffwechsel-first-three-current392-native-20261008-v1-independent-b",
+      "independenceGroupId": "biologie-stoffwechsel-first-three-current392-native-20261008-v1-independent-b",
+      "reviewInputFingerprint": "sha256:97e7de76e0fc3c8aa3737151529aa25855728feed5555b08753d4d8b963dbfc0",
+      "batchId": "biologie-stoffwechsel-first-three-current392-native-20261008-v1-independent-b.batch-001",
+      "batchInputFingerprint": "sha256:5aafcc5f065ec6f44dab1ef23eab5ff554cb67e79be19fbdcc9a57da585d1373",
+      "runId": "biologie-native-three-independent-b-first-pass-20261008-v1",
+      "runManifestDigest": "sha256:61bb195fdcbfa84ad865470c0630d92983b2f5c1509359df8895abac1a5d54ec",
+      "resultsDigest": "sha256:abece3089874dc29ea0236dad1a6fc2098859e334f532e774e8d0bc02133d355"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "biologie-stoffwechsel-reviewed-three-current392-technical-20261008-v1-three-current-decision-32f47903-0788-5c27-ac88-7464f481f2f7",
+      "goalId": "32f47903-0788-5c27-ac88-7464f481f2f7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:834f6186e2b1834d2bce5f6be01abf9e711330bd73925c26e9184ae56e68fc7c",
+      "pageFingerprint": "sha256:a592e45eb5afe9811bdbacc81850c1420c2128db0c780735b6ffb81ee352a809",
+      "goalReviewContextFingerprint": "sha256:0c152999c6fa212e1dd0b4f5e0f5d6a015536aa1dbe43c615c87d2a80146efd1",
+      "finalText": {
+        "titleDe": "Fotosynthese modellieren",
+        "titleEn": "Model photosynthesis",
+        "descriptionDe": "Die lernende Person kann Licht- und Dunkelreaktion sowie Einflussfaktoren erklären.",
+        "descriptionEn": "The learner can explain light and dark reactions as well as influencing factors."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "biologie-native-first-three-independent-a-actual-20261008-v1.01",
+          "recordDigest": "sha256:002a1b76fdfb9a645d55b21799f228e0b6d9c2894774f04aa841b957704d787d"
+        },
+        "second": {
+          "recordId": "bio-native-three-b-01-first-20261008",
+          "recordDigest": "sha256:c5ac21fb38690ef5cb0e5b564fc0f569e914d42c75ff50fe1b8d28809b5042bd"
+        }
+      },
+      "rationaleDe": "Technische Zusammenführung zweier tatsächlich vollständiger blinder unabhängiger Biologie-KEEP-Records für denselben ganzen aktuellen DE/EN-Ziel-, Seiten- und Kontexteingang. Beide Originalrecord- und Runbytes bleiben unverändert. Die tatsächlichen aktuellen3 PNGs, v5-Profile und sechs vollständigen v4-DE/EN-Fälle bleiben an die geprüfte Nativevorlage gebunden. Die3 geprüften Quellenrollen sind partielle Beiträge; die vier ursprünglichen vollständigen Operatorpflichten, zwei nötige regionale Basis-Companions und alle regionalen Gesamtpflichten bleiben getrennt offen. Dies übernimmt wirkliche unabhängige Urteile; es ist keine neue Fachprüfung oder menschliche Freigabe. A: Eigene tatsächliche Prüfung der physischen PDF-Seite3, ihres gesamten aktuellen Bild-/Alt-/Seiten-/Voraussetzungskontexts und beider vollständiger bilingualer Fallkörper mit Bewertung und getrenntem Konzepttransfer: Der kurze DE/EN-Zieltext bleibt kompetenzgleich; der neue Kontext erzeugt keinen lokalen fachlichen oder didaktischen Widerspruch. Die vollständige unveränderte P-Struktur wird ausschließlich an die realen aktuellen Ressourcen gebunden. Die tatsächliche PDF-Geltung BY/HE SekII GK/LK folgt dem gesondert gebundenen operativen Source-Kandidaten. BY Wild-/Nutzpflanzenfolgenbeurteilung bleibt eine ganze offene Quellpflicht; die entfernten SekI-Gesamtzuordnungen und das ungeprüfte Basisziel werden nicht durch diese Seite freigegeben. Bild und synthetische Modellantworten beweisen keine tatsächliche Lernendenleistung; E1/G1, needs_human_review bleiben. B: Eigenes B-Urteil nach Sichtprüfung der tatsächlichen PDF-Seite 3/5, ganzen aktuellen DE/EN-Zieltexten, vollständigem Kontext und ganzem v5-Profil mit zwei vollständigen DE/EN-Fällen und frischem Transfer. Lichtreaktion und Calvin-Zyklus sind über ATP/NADPH sowie deren Rückführung gekoppelt; Licht, CO2 und Temperatur begrenzen die gemeinsame Fotosyntheseleistung. Die Dunkelreaktion ist nicht auf die Nacht festgelegt. Die Person erklärt im eigenen Modell die Orte, Stoff- und Energieweitergabe und begründet ein kontrolliertes Licht-/CO2-Plateau. Eine zusammenhängende Kompetenz; keine unabhängigen Nachbarziele im kurzen Text. Das Bild ist erklärende Unterstützung, kein Leistungsnachweis. Der gewöhnliche Seitenkontext zeigt die tatsächlich korrigierte Bereichszuordnung; ursprüngliche vier regionalen Operatorpflichten und zwei Basis-Companions bleiben separat offen. Keine neue wissenschaftliche Regraduierung oder regionale Whole-Coverage.",
+      "rationaleEn": "Technical synthesis of two genuine complete blind independent biology KEEP records over the identical whole current bilingual goal, actual native page and full context. Exact source record and run byte streams are preserved. The current3 PNGs, retained v5 profiles and six full v4 bilingual cases stay bound to the actually reviewed native frame. The3 accepted source roles are partial contributions; four original whole operator duties, two genuine pending regional basic companions and regional whole duties remain separately open. This adopts real independent judgments and is not a new scientific review or human approval. A: Light reactions provide ATP and NADPH; the stromal Calvin cycle requires both and CO₂. Light, substrate availability and temperature-dependent enzyme activity can each limit the process. B: Light reactions and the Calvin cycle are coupled through ATP/NADPH and their return carriers; light, CO2 and temperature limit the joint photosynthetic process. Dark reactions are not restricted to night."
+    },
+    {
+      "decisionId": "biologie-stoffwechsel-reviewed-three-current392-technical-20261008-v1-three-current-decision-135447a0-5d55-564a-afc3-3e3fbed77819",
+      "goalId": "135447a0-5d55-564a-afc3-3e3fbed77819",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:009e46b71162cefd6f1adc6757eb6751c626b51bab334d8781e3570836dca1eb",
+      "pageFingerprint": "sha256:cdfe965d0c95dbb007345d0b2a40562f5555c3ab15b4aecdec552fe627f7b7a8",
+      "goalReviewContextFingerprint": "sha256:afc02181d140b6a012fea71c60d26a5af5e48c6648092b29a99438ce6e4549ad",
+      "finalText": {
+        "titleDe": "Grundlagen der Zellatmung",
+        "titleEn": "Fundamentals of cell respiration",
+        "descriptionDe": "Die lernende Person kann Glykolyse, Citratzyklus und Atmungskette skizzieren.",
+        "descriptionEn": "The learner can sketch glycolysis, the citric acid cycle, and the electron transport chain."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "biologie-native-first-three-independent-a-actual-20261008-v1.02",
+          "recordDigest": "sha256:8365d5ceab15201cb00e241a956e98446f4fedb72562754471d0f61c14298112"
+        },
+        "second": {
+          "recordId": "bio-native-three-b-02-first-20261008",
+          "recordDigest": "sha256:3667b966a20db925c4cb5d05a71b0108d66acbcb3f156b6ef2865612e1ac45ac"
+        }
+      },
+      "rationaleDe": "Technische Zusammenführung zweier tatsächlich vollständiger blinder unabhängiger Biologie-KEEP-Records für denselben ganzen aktuellen DE/EN-Ziel-, Seiten- und Kontexteingang. Beide Originalrecord- und Runbytes bleiben unverändert. Die tatsächlichen aktuellen3 PNGs, v5-Profile und sechs vollständigen v4-DE/EN-Fälle bleiben an die geprüfte Nativevorlage gebunden. Die3 geprüften Quellenrollen sind partielle Beiträge; die vier ursprünglichen vollständigen Operatorpflichten, zwei nötige regionale Basis-Companions und alle regionalen Gesamtpflichten bleiben getrennt offen. Dies übernimmt wirkliche unabhängige Urteile; es ist keine neue Fachprüfung oder menschliche Freigabe. A: Eigene tatsächliche Prüfung der physischen PDF-Seite4, ihres gesamten aktuellen Bild-/Alt-/Seiten-/Voraussetzungskontexts und beider vollständiger bilingualer Fallkörper mit Bewertung und getrenntem Konzepttransfer: Der kurze DE/EN-Zieltext bleibt kompetenzgleich; der neue Kontext erzeugt keinen lokalen fachlichen oder didaktischen Widerspruch. Die vollständige unveränderte P-Struktur wird ausschließlich an die realen aktuellen Ressourcen gebunden. BY/HE SekII GK/LK bleibt die effektive Seitenprojektion. Der BY-Vergleich mit aufbauendem Stoffwechsel samt Ableitung ist nur teilweise getragen. Das zusätzliche grundlegende SekI-Zellatmungsziel bleibt außerhalb392 ungeprüft; der ST-Gärungsversuch ist nicht durchgeführt. Bild und synthetische Modellantworten beweisen keine tatsächliche Lernendenleistung; E1/G1, needs_human_review bleiben. B: Eigenes B-Urteil nach Sichtprüfung der tatsächlichen PDF-Seite 4/5, ganzen aktuellen DE/EN-Zieltexten, vollständigem Kontext und ganzem v5-Profil mit zwei vollständigen DE/EN-Fällen und frischem Transfer. Glykolyse, Citratzyklus und Atmungskette bilden einen verbundenen Abbauweg: Kohlenstofffluss und Redoxenergietransport sind verschieden; oxidative Decarboxylierung verbindet Pyruvat und Acetyl-CoA. Die Person skizziert die Prozesse an Cytosol, Matrix und innerer Membran und erklärt CO2, NADH/FADH2, O2 und ATP kausal. Eine zusammenhängende Kompetenz; keine unabhängigen Nachbarziele im kurzen Text. Das Bild ist erklärende Unterstützung, kein Leistungsnachweis. Der gewöhnliche Seitenkontext zeigt die tatsächlich korrigierte Bereichszuordnung; ursprüngliche vier regionalen Operatorpflichten und zwei Basis-Companions bleiben separat offen. Keine neue wissenschaftliche Regraduierung oder regionale Whole-Coverage.",
+      "rationaleEn": "Technical synthesis of two genuine complete blind independent biology KEEP records over the identical whole current bilingual goal, actual native page and full context. Exact source record and run byte streams are preserved. The current3 PNGs, retained v5 profiles and six full v4 bilingual cases stay bound to the actually reviewed native frame. The3 accepted source roles are partial contributions; four original whole operator duties, two genuine pending regional basic companions and regional whole duties remain separately open. This adopts real independent judgments and is not a new scientific review or human approval. A: Cytosolic glycolysis, oxidative matrix steps and the membrane-bound respiratory chain are coupled through material and carrier flows; CO₂ formation differs from terminal O₂ reduction. B: Glycolysis, the citric acid cycle and the respiratory chain form a connected catabolic route: carbon flow differs from redox energy transfer; oxidative decarboxylation links pyruvate and acetyl-CoA."
+    },
+    {
+      "decisionId": "biologie-stoffwechsel-reviewed-three-current392-technical-20261008-v1-three-current-decision-ec782ce3-475e-5628-b3fe-947d72e74a74",
+      "goalId": "ec782ce3-475e-5628-b3fe-947d72e74a74",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:17370dd242d438e6ece7d1045b9474f5bb0563f117fa40b235c96edb1114b0a6",
+      "pageFingerprint": "sha256:c304015c7812f36b0a3cd76cdb2e30692de378bbfb4f03691f119a1efe9103aa",
+      "goalReviewContextFingerprint": "sha256:2b518270d64be29b1c47fbb5c3ce7404e2f9efd51f3884de30529298b2917542",
+      "finalText": {
+        "titleDe": "Lichtsammelkomplexe beschreiben",
+        "titleEn": "Describe light-harvesting complexes",
+        "descriptionDe": "Die lernende Person kann Aufbau und Funktion von Lichtsammelkomplexen erläutern.",
+        "descriptionEn": "The learner can explain the structure and function of light-harvesting complexes."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "biologie-native-first-three-independent-a-actual-20261008-v1.03",
+          "recordDigest": "sha256:1c74fe5bf81951243b0dc93e2b00d829c479835ec782de34d5289efeb7bed97e"
+        },
+        "second": {
+          "recordId": "bio-native-three-b-03-first-20261008",
+          "recordDigest": "sha256:0a373eca2a23c95e090a45fae5fc3e9700622569c6bf4cb90849472239e29507"
+        }
+      },
+      "rationaleDe": "Technische Zusammenführung zweier tatsächlich vollständiger blinder unabhängiger Biologie-KEEP-Records für denselben ganzen aktuellen DE/EN-Ziel-, Seiten- und Kontexteingang. Beide Originalrecord- und Runbytes bleiben unverändert. Die tatsächlichen aktuellen3 PNGs, v5-Profile und sechs vollständigen v4-DE/EN-Fälle bleiben an die geprüfte Nativevorlage gebunden. Die3 geprüften Quellenrollen sind partielle Beiträge; die vier ursprünglichen vollständigen Operatorpflichten, zwei nötige regionale Basis-Companions und alle regionalen Gesamtpflichten bleiben getrennt offen. Dies übernimmt wirkliche unabhängige Urteile; es ist keine neue Fachprüfung oder menschliche Freigabe. A: Eigene tatsächliche Prüfung der physischen PDF-Seite5, ihres gesamten aktuellen Bild-/Alt-/Seiten-/Voraussetzungskontexts und beider vollständiger bilingualer Fallkörper mit Bewertung und getrenntem Konzepttransfer: Der kurze DE/EN-Zieltext bleibt kompetenzgleich; der neue Kontext erzeugt keinen lokalen fachlichen oder didaktischen Widerspruch. Die vollständige unveränderte P-Struktur wird ausschließlich an die realen aktuellen Ressourcen gebunden. Die Seite zeigt ausschließlich HE SekII LK; BY GK/LK entfällt in der gesonderten operativen Projektion. Der echte BY-Chromatographieoperator bleibt offen. Das tatsächliche v3 mit zwei grünen Relayknoten wird gebunden, nicht das verworfene v2. Bild und synthetische Modellantworten beweisen keine tatsächliche Lernendenleistung; E1/G1, needs_human_review bleiben. B: Eigenes B-Urteil nach Sichtprüfung der tatsächlichen PDF-Seite 5/5, ganzen aktuellen DE/EN-Zieltexten, vollständigem Kontext und ganzem v5-Profil mit zwei vollständigen DE/EN-Fällen und frischem Transfer. Proteinassoziierte Pigmente erweitern Lichtabsorption; Anregungsenergie gelangt zum Reaktionszentrum, wo Ladungstrennung erfolgt. Antennenweitergabe ist keine Wanderung desselben Elektrons und erzeugt nicht direkt ATP. Die Person erklärt Aufbau und Funktion mit eigenem Modell und unterscheidet Absorption, Energietransfer und photochemischen Elektronentransfer. Eine zusammenhängende Kompetenz; keine unabhängigen Nachbarziele im kurzen Text. Das Bild ist erklärende Unterstützung, kein Leistungsnachweis. Der gewöhnliche Seitenkontext zeigt die tatsächlich korrigierte Bereichszuordnung; ursprüngliche vier regionalen Operatorpflichten und zwei Basis-Companions bleiben separat offen. Keine neue wissenschaftliche Regraduierung oder regionale Whole-Coverage.",
+      "rationaleEn": "Technical synthesis of two genuine complete blind independent biology KEEP records over the identical whole current bilingual goal, actual native page and full context. Exact source record and run byte streams are preserved. The current3 PNGs, retained v5 profiles and six full v4 bilingual cases stay bound to the actually reviewed native frame. The3 accepted source roles are partial contributions; four original whole operator duties, two genuine pending regional basic companions and regional whole duties remain separately open. This adopts real independent judgments and is not a new scientific review or human approval. A: Protein-bound antenna pigments broaden light capture and transfer excitation energy; the separate reaction center produces charge separation and does not replace the other ATP-producing membrane processes. B: Protein-associated pigments extend light absorption; excitation energy reaches the reaction center, where charge separation occurs. Antenna transfer is not migration of the same electron and does not directly produce ATP."
+    }
+  ],
+  "manifestFingerprint": "sha256:4ff6e96a3b91cb9641f5ce203716a4d0fe4261e9073834de585e4e76f56d88cf"
+}

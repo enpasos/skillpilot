@@ -23,10 +23,10 @@ Alle notwendigen neuen Bilder wurden in die drei vorhandenen Assetwurzeln übern
 
 ## Tatsächliche Nachweise
 
-- [Zentraler aktueller Bericht](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-evolution-eighteen-reviewed-integration-preparation-root-20261008-v1/affected-central.stdout.actual.txt)
-- [Nettozuwachs und erhaltene Ziel-IDs](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-evolution-eighteen-reviewed-integration-preparation-root-20261008-v1/strict-current-eighteen-new-scientific-closures.actual.json)
-- [Tatsächliche unveränderte Seiten und Bindungen](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-evolution-eighteen-reviewed-integration-preparation-root-20261008-v1/actual-active392-book-and-preserved204-bindings.technical.json)
-- [Gezielte Integrationsprüfung und Originalbelege](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-evolution-eighteen-reviewed-integration-preparation-root-20261008-v1/reviewed-eighteen-pre-apply-guard.actual.json)
+- [Zentraler aktueller Bericht](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-evolution-eighteen-reviewed-integration-preparation-root-20261008-v1/affected-central.stdout.actual.txt)
+- [Nettozuwachs und erhaltene Ziel-IDs](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-evolution-eighteen-reviewed-integration-preparation-root-20261008-v1/strict-current-eighteen-new-scientific-closures.actual.json)
+- [Tatsächliche unveränderte Seiten und Bindungen](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-evolution-eighteen-reviewed-integration-preparation-root-20261008-v1/actual-active392-book-and-preserved204-bindings.technical.json)
+- [Gezielte Integrationsprüfung und Originalbelege](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-evolution-eighteen-reviewed-integration-preparation-root-20261008-v1/reviewed-eighteen-pre-apply-guard.actual.json)
 
 Quellengenerierung und Aktualität, Visualisierungsnormalisierung und Aktualität, A392, M392, aktuelles P18 und der Assetcheck sind tatsächlich grün. Der anfänglich fehlerhafte eigene P-Konfigurationsversuch bleibt als Diagnose erhalten; die operative korrigierte V2 verwendet den unveränderten geschlossenen Vertrag und keine D-Run-IDs als P-Run-Nachweise. Vollständige Layer-A-Läufe werden am nächsten stabilen Integrationsstand gebündelt.
 

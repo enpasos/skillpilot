@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:2dae28733519c0d2e394029b612c85457604278cdc174631e9734d031c683b74",
+  "reviewInputFingerprint": "sha256:6ac3d78b4db0f16163a1aadad778918c830530a2fc6ee2c796142000e669d153",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-two-current-source-roles-native-campaign-a-20261008-v1",
+      "roundId": "chemie-two-current-source-roles-native-independent-a-20261008-v1",
+      "independenceGroupId": "chemie-two-current-source-roles-native-independent-a-20261008-v1",
+      "runIds": [
+        "chemie-two-current-source-roles-native-independent-a-20261008-v1.root.run-001"
+      ],
+      "providers": [
+        "OpenAI Codex integrated independent root review"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex integrated independent root review::Integrated session model; exact model version not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-two-current-source-roles-native-campaign-b-20261008-v1",
+      "roundId": "chemie-two-current-source-roles-native-independent-b-20261008-v1",
+      "independenceGroupId": "chemie-two-current-source-roles-native-independent-b-20261008-v1",
+      "runIds": [
+        "chemie-two-native-independent-b-first-pass-20261008-v1"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::Codex; exact model version not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "d9cce642-4f89-57f8-832a-abeb62586195",
+      "firstRecordId": "chemie-two-current-source-roles-native-independent-a-20261008-v1.root.run-001.record-1",
+      "secondRecordId": "chemie-two-native-independent-b-first-pass-20261008-v1.goal-1",
+      "firstRunId": "chemie-two-current-source-roles-native-independent-a-20261008-v1.root.run-001",
+      "secondRunId": "chemie-two-native-independent-b-first-pass-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3eada74b-25b8-55dc-811a-acb473196f53",
+      "firstRecordId": "chemie-two-current-source-roles-native-independent-a-20261008-v1.root.run-001.record-2",
+      "secondRecordId": "chemie-two-native-independent-b-first-pass-20261008-v1.goal-2",
+      "firstRunId": "chemie-two-current-source-roles-native-independent-a-20261008-v1.root.run-001",
+      "secondRunId": "chemie-two-native-independent-b-first-pass-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

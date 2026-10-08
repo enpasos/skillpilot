@@ -1,0 +1,72 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-stoffwechsel-reviewed-nineteen-current392-technical-20261008-v1-nineteen-current",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-reviewed-integration-root-20261008-v1/native-d-nineteen-current.batch.config.json",
+  "configDigest": "sha256:7c7c59fc721a4dfc681e04635c0d8fcd4850ff2cd3a9fc0d836df81c6a78c96e",
+  "goalIds": [
+    "de1c19a2-2f8a-57bf-bd58-ecc460f47987",
+    "691b0711-4427-5b39-b2ef-20f607d15c13",
+    "6020a221-ad96-50dc-9b99-b0bf6815366f",
+    "de5ba3a5-7c5f-5ee3-89d3-c97a0d4eeaf0",
+    "ce6550f0-4ec3-5dd9-ab02-0296da98a371",
+    "462de7c8-b5fb-52f0-82db-63eb019fad29",
+    "280bab15-94e8-59fb-9359-c1c0f8384b2a",
+    "97d409c8-b3bc-5c7c-8619-2c5592d2a796",
+    "9f074006-74e8-5f09-884d-038bd9b4f0ec",
+    "3cb5f199-3c9a-5f01-a4ba-373bdef0112e",
+    "b56a5408-ed84-57f2-a9dd-d1a67496fdd1",
+    "eccf935c-48e3-53dd-b472-5e794241279b",
+    "71b21aef-796b-5506-a593-8d96b3d4b636",
+    "7749de90-68f4-53a6-b474-b6414f16f09e",
+    "4ef85d98-5e20-540b-9adf-89592febc438",
+    "f36a52b8-acd7-5a3d-83e2-0af74acc9c96",
+    "e3c7cd8b-8c6c-5c4b-8c7f-e0d1a6284f94",
+    "64a31f9a-27b2-5321-b2a8-47188d001c6b",
+    "b7b84b6a-1c99-5474-99c5-9a72a1cd505b"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 392,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-native-technical-20261008-v1/candidate/book.current392.raster.inactive.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-native-technical-20261008-v1/candidate/canonical.current476.nineteen-rasters.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:c79c7f298e443e10ff937904518633bddd6876e74fc8a5f59727ac8ced593f75"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:a2545112a303ba49d972fa81b7f9bdb730412bad7687a9ffa3ca0e6261a9aeea",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:a19363e5b08d87f6fda421d9abc692c5e0e50b0ccef7673a06b1a971a7f9c944",
+    "reviewInputFingerprint": "sha256:182beaa3d7e50c2ad2284f797af6f1536b7c304287505c1f6fc5142dd5854833",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-stoffwechsel-nineteen-current392-native-20261008-v1-campaign-a",
+        "campaignDigest": "sha256:2fe74d8b374a07442fae6a1ad79eda3254b911d4fdad191ba4e05661dd7707f9",
+        "roundId": "biologie-stoffwechsel-nineteen-current392-native-20261008-v1-independent-a",
+        "independenceGroupId": "biologie-stoffwechsel-nineteen-current392-native-20261008-v1-independent-a",
+        "batchId": "biologie-stoffwechsel-nineteen-current392-native-20261008-v1-independent-a.batch-001",
+        "batchInputFingerprint": "sha256:e1d8104c9bb65ec69484665e608bc960e6b4442b9a62a0d844c1f3ebb8e168cd"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-stoffwechsel-nineteen-current392-native-20261008-v1-campaign-b",
+        "campaignDigest": "sha256:f5fc78feedb3f29efb3df6c663842351641c7d35a4467213c0d6cf125941a3da",
+        "roundId": "biologie-stoffwechsel-nineteen-current392-native-20261008-v1-independent-b",
+        "independenceGroupId": "biologie-stoffwechsel-nineteen-current392-native-20261008-v1-independent-b",
+        "batchId": "biologie-stoffwechsel-nineteen-current392-native-20261008-v1-independent-b.batch-001",
+        "batchInputFingerprint": "sha256:dd96a1119074dd4750cc156b3d0a79a9faf08d076bb46a5d31ff5eb7aced355a"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

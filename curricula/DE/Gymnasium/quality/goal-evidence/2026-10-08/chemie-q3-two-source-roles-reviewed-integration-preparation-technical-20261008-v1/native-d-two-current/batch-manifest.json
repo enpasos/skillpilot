@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-q3-reviewed-two-source-roles-current378-technical-20261008-v1-two-current",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-q3-two-source-roles-reviewed-integration-preparation-technical-20261008-v1/native-d-two-current.batch.config.json",
+  "configDigest": "sha256:f6e1710a79115e69ad23fed00664334006d43dc2dbce479605d6a40aac35a2d1",
+  "goalIds": [
+    "d9cce642-4f89-57f8-832a-abeb62586195",
+    "3eada74b-25b8-55dc-811a-acb473196f53"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 378,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-q3-two-native-source-roles-resume-technical-20261008-v1/candidate/full378-native.inactive.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-q3-two-native-source-roles-resume-technical-20261008-v1/candidate/canonical.current480.two-resource-links.inactive.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:9ec1fca226f93a39abfe1687f31bb1a9cbaf9297afe9d244d173136518cbcd82"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:bb243d69574d7e05856c56cd4743a39a745d49c45b93617ce95277c43bd17405",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:2dae28733519c0d2e394029b612c85457604278cdc174631e9734d031c683b74",
+    "reviewInputFingerprint": "sha256:6ac3d78b4db0f16163a1aadad778918c830530a2fc6ee2c796142000e669d153",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-two-current-source-roles-native-campaign-a-20261008-v1",
+        "campaignDigest": "sha256:3fee95cd4abea7e78916d8509f97e6e1d92d76afb5cdcb76218dd3f718c9977f",
+        "roundId": "chemie-two-current-source-roles-native-independent-a-20261008-v1",
+        "independenceGroupId": "chemie-two-current-source-roles-native-independent-a-20261008-v1",
+        "batchId": "chemie-two-current-source-roles-native-independent-a-20261008-v1.batch-001",
+        "batchInputFingerprint": "sha256:581a98babb1fd7e2830213a91f2df5fc1534775b9f054bd2be4296be9e1b10c4"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-two-current-source-roles-native-campaign-b-20261008-v1",
+        "campaignDigest": "sha256:a67d77b3c0e1268ed141b8a34c1836e279f47cbdd3e4cdd3b2fa353a3bb4e3fd",
+        "roundId": "chemie-two-current-source-roles-native-independent-b-20261008-v1",
+        "independenceGroupId": "chemie-two-current-source-roles-native-independent-b-20261008-v1",
+        "batchId": "chemie-two-current-source-roles-native-independent-b-20261008-v1.batch-001",
+        "batchInputFingerprint": "sha256:7d3e219c0e07e25092d3db4aa156bbc872802e3689c3aba7b56900e61b0cd9a9"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

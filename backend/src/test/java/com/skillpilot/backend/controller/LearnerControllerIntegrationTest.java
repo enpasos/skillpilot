@@ -1484,14 +1484,16 @@ public class LearnerControllerIntegrationTest {
 
     @Test
     void learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals() throws Exception {
+        // Family planning now has two reviewed atoms under its former atomic ID.
+        // Scopes containing that branch therefore gain one curricular target.
         String[][] scopes = {
-                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BW", "82", "82" },
-                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BY", "129", "129" },
-                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-HB", "97", "97" },
-                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-HE", "129", "129" },
-                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-NI", "108", "108" },
-                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-RP", "77", "77" },
-                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-SL", "60", "60" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BW", "83", "83" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BY", "130", "130" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-HB", "98", "98" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-HE", "130", "130" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-NI", "109", "109" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-RP", "78", "78" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-SL", "61", "61" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BB", "83", "83" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BE", "83", "83" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BW", "74", "74" },
@@ -1536,6 +1538,9 @@ public class LearnerControllerIntegrationTest {
             JsonNode g8State = objectMapper.readTree(getRequest(
                     "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
             int g8Total = g8State.path("goals").path("personalized").path("total_atomic").asInt();
+            if (CANONICAL_BIOLOGY_ID.equals(subjectLandscapeId)) {
+                assertReviewedBiologyFamilyPlanningSplit(learner, "G8");
+            }
 
             learner.setPersonalCurriculum(canonicalGymnasiumSubjectPersonalCurriculum(
                     subjectLandscapeId, jurisdiction, "G9", "GK", true, false));
@@ -1544,6 +1549,9 @@ public class LearnerControllerIntegrationTest {
             JsonNode g9State = objectMapper.readTree(getRequest(
                     "/api/ui/learners/" + learner.getSkillpilotId() + "/state").body());
             int g9Total = g9State.path("goals").path("personalized").path("total_atomic").asInt();
+            if (CANONICAL_BIOLOGY_ID.equals(subjectLandscapeId)) {
+                assertReviewedBiologyFamilyPlanningSplit(learner, "G9");
+            }
 
             assertThat(jsonTextValues(g8State.path("activeFilters"))).contains(jurisdiction, "G8", "GK");
             assertThat(jsonTextValues(g9State.path("activeFilters"))).contains(jurisdiction, "G9", "GK");
@@ -1553,6 +1561,16 @@ public class LearnerControllerIntegrationTest {
                     .isEqualTo(Integer.parseInt(scope[4]));
         }
         softly.assertAll();
+    }
+
+    private void assertReviewedBiologyFamilyPlanningSplit(Learner learner, String durationModel) {
+        assertThat(learnerService.getFilteredAtomicGoalIds(
+                CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), null, false))
+                .as("family planning split for %s %s", learner.getSkillpilotId(), durationModel)
+                .contains(
+                        "9d3f71d7-5273-5e50-b1ba-4e291edbf114", // contraception methods
+                        "dd923eeb-eef0-5796-b372-a5d4f5be21f7") // responsible parenthood
+                .doesNotContain("3ee4b55c-81c3-5826-9d26-1a8c22cbd0b8"); // now a cluster
     }
 
     @Test

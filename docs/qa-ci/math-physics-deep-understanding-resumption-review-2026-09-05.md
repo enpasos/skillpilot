@@ -2,8 +2,8 @@
 
 ## Aktuelle Fortsetzung: ausschließlich Chemie und Biologie
 
-Der [Commit-Zwischenstand vom 7. Oktober](chemie-biologie-m7-ecology34-commit-checkpoint-2026-10-07.md)
-setzt den Chemie-/Biologie-Auftrag fort: aktuell 173/378 Chemie und 134/391
+Der [geprüfte Commit-Zwischenstand vom 8. Oktober](chemie-biologie-m7-chemie177-biologie244-commit-checkpoint-2026-10-08.md)
+setzt den Chemie-/Biologie-Auftrag fort: aktuell 177/378 Chemie und 244/392
 Biologie streng abgeschlossen. Mathematik-M7 und Physik-M7 bleiben erhalten.
 Die folgenden älteren Arbeitsstände und damaligen Nutzersteuerungen sind
 historische Momentaufnahmen; menschliche Release-Gates bleiben getrennt.

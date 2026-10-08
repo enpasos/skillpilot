@@ -1,0 +1,78 @@
+{
+  "checks": [
+    {
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/generateCurriculumQualityStatus.ts"
+      ],
+      "actualExitCode": 0,
+      "elapsedSeconds": 127.62878300299053,
+      "endedAt": "2026-10-08T11:12:40.856366+00:00",
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-reviewed-integration-root-20261008-v1/current-curriculum-status.stdout.actual.txt",
+        "sha256": "389ceee89ed1081de6f1d3d5ad7fdcb5b5500928914a89ab424ec89b103be861",
+        "bytes": 108
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-reviewed-integration-root-20261008-v1/current-curriculum-status.stderr.actual.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "argv": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/checkCurriculumMaturityFloors.ts"
+      ],
+      "actualExitCode": 0,
+      "elapsedSeconds": 0.2605258359981235,
+      "endedAt": "2026-10-08T11:12:41.117588+00:00",
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-reviewed-integration-root-20261008-v1/current-protected-maturity-floors.stdout.actual.txt",
+        "sha256": "338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+        "bytes": 57
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-reviewed-integration-root-20261008-v1/current-protected-maturity-floors.stderr.actual.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "actualExitCode": 0,
+      "elapsedSeconds": 0.4751287139952183,
+      "endedAt": "2026-10-08T11:12:41.593482+00:00",
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-reviewed-integration-root-20261008-v1/current-whitespace.stdout.actual.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-reviewed-integration-root-20261008-v1/current-whitespace.stderr.actual.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ],
+  "allTerminalExitCodesZero": true,
+  "currentCentralReport": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-reviewed-integration-root-20261008-v1/affected-central.stdout.actual.txt",
+    "sha256": "f69413f76aec064a69db2042b0f9844641ea65815345a36299b4f3477d43ddf6",
+    "bytes": 186970
+  },
+  "statusJSON": {
+    "path": "docs/qa-ci/status/curriculum-quality-status.json",
+    "sha256": "29a500bbe5d4fbfafcf533bd28c20cbbcb6c2a5d4e94240ec49f8d5f7e5652b3",
+    "bytes": 2763347
+  },
+  "protectedFloorPolicyUnchanged": true,
+  "humanGatesUnchanged": true,
+  "fullGoalStillOpen": true
+}

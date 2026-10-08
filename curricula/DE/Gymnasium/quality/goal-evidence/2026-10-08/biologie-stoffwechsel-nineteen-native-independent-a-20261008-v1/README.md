@@ -1,0 +1,9 @@
+# Biologie – unabhängige native D/P-Prüfung A
+
+Die tatsächlich versiegelte aktuelle19-Seiten-Vorlage wurde geprüft:21 physische PDF-Seiten einschließlich beider Vorspannseiten, ganze19 aktuelle Ziele mit Kontext, ganze19 erhaltene P-v5-Profile und38 DE/EN-Fälle.17 ganze Materialpakete waren bereits durch denselben Prüfer in den vorherigen echten V-A-Blöcken gelesen; die restlichen beiden Pakete15/20 wurden hier vollständig gelesen. Alle73 Vorlagendateien und366 Inputs sind exakt bestätigt. Keine Peer-D/P-Entscheidung wurde vor diesem Erstseal gelesen.
+
+19 D-keep-Erstentscheidungen und19 eigene vollständige P-Records. Reguläre Kampagnenprüfung:19 gültig. Bestehende P-Schema-/Semantik-API:19 gültige aktuelle PNG-/Ziel-/Profilbindungen, ganze Profilkörper exakt unverändert. Keine eigenen blockierenden neuen Seiten-/PNG-Kontextbefunde. Die generische Kurve19 ist keine Wiedergabe der linearen numerischen P-Fallfunktion;24 operationalisiert Widerstand und Rücklauf ohne universelle Rangfolge. Tracer bleibt Beschreiben des experimentellen Aufklärungswegs, nicht Durchführung oder beste Methode.
+
+Die eigenen bisherigen V-Pfade sind im Entry ausgewiesen:17 aktuelle Raster und der kleine21-Beschriftungsnachtrag. Ord15/20 erhalten hier keine erfundene neue eigenständige V-Erstentscheidung; deren vorhandene andere eigene V-Prüfung wird separat durch Root gebunden. Alle Quellenbeiträge bleiben begrenzt; praktische9-Durchführung und die fünf ausgeschlossenen Whole-Holds sowie Legacy-Neuro-GK2 bleiben bestehen. Kein Whole-Union-Abschluss.
+
+Alle Ergebnisse bleiben ai_candidate / needs_human_review / E1 / G1, reviewRunIds sind leer: D-Runs sind keine P-Runmanifeste. Keine aktive Registry/QA/Canon-Änderung, menschliche Freigabe, Human Trial oder zentrale strenge Schließung. Technische Dokumentation Apache-2.0; didaktische eigene Inhalte CC-BY-4.0 nach LICENSING.md.

@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-08T10:06:24.952791+00:00",
+  "reviewer": "independent-b",
+  "scope": "Two new actual corrected v2 rasters and own retained Bio1v1; whole current 3 goals/full3 profiles/full6 DEEN cases retained.",
+  "images": [
+    {
+      "goalId": "32f47903-0788-5c27-ac88-7464f481f2f7",
+      "ordinal": 1,
+      "version": "v1",
+      "decision": "KEEP_RETAINED",
+      "actualPNG": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-images-author-20261008-v1/images/32f47903-0788-5c27-ac88-7464f481f2f7/v1/32f47903-0788-5c27-ac88-7464f481f2f7.png",
+        "sha256": "a0e5ad59e128ab313e9b884c9ec01156a82ee41c3f9b2473bf4639a28233652d",
+        "bytes": 1969464
+      },
+      "ownPriorReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-photosynthesis-visualization-independent-b-20261008-v1/part-01-actual-visualization.independent-b.first-verdict.json",
+      "ownPriorFirstSealPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-photosynthesis-visualization-independent-b-20261008-v1/part-01-visualization-b.first-verdict.seal.json",
+      "reviewCountClaim": "Exact prior own raster judgment retained, not a new review."
+    },
+    {
+      "goalId": "135447a0-5d55-564a-afc3-3e3fbed77819",
+      "ordinal": 2,
+      "version": "v2",
+      "decision": "KEEP",
+      "actualPNG": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-images-author-20261008-v1/images/135447a0-5d55-564a-afc3-3e3fbed77819/v2/135447a0-5d55-564a-afc3-3e3fbed77819.png",
+        "sha256": "84b3b22f8493fbe9b1ae686eb2c973a351e41c3e797fe3dc6c86bc64394356a7",
+        "bytes": 1855528
+      },
+      "actualScienceAndRepresentationObservations": [
+        "Three groups correctly locate glycolysis in cytosol, citric acid cycle in matrix, and chain at folded inner mitochondrial membrane.",
+        "The green carbon route connects glucose/pyruvate, the pyruvate-to-acetyl-CoA bridge and citric cycle. Blue NADH and NADH/FADH2 routes separately feed the chain, rather than showing glucose as a direct chain substrate.",
+        "O2 enters the chain and H2O leaves. CO2 leaves the matrix cycle; no drawn arrow derives CO2 from O2.",
+        "ATP at glycolysis/cycle and larger ATP downstream of the chain are a qualitative overview without fixed numerical yield. The omitted oxidative-decarboxylation CO2/NADH and explicit ATP-synthase/proton mechanism remain in the complete unchanged P2 cases; the diagram does not assert these omitted products/processes are absent.",
+        "Glucose and pyruvate are now single abstract ovals, with no pseudo atom count, chain, ring or structure-formula claim. This is a valid process schematic and cutaway perspective, not molecular/anatomical scale evidence."
+      ],
+      "actualReadability": {
+        "original": "All main and supporting labels clear.",
+        "width680": "Three process names, compartment labels, arrows and carrier routes readable.",
+        "width360": "Three numbered groups and carbon/energy paths recognizable; small bridge/carrier/subscript/compartment detail requires enlargement for comfortable reading."
+      },
+      "metadataAndAlttextDecision": "KEEP: directions, compartments, broad ATP production and abstract non-structural nodes described accurately. No unexposed provider model inferred.",
+      "blockingFindings": []
+    },
+    {
+      "goalId": "ec782ce3-475e-5628-b3fe-947d72e74a74",
+      "ordinal": 3,
+      "version": "v2",
+      "decision": "HOLD",
+      "actualPNG": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-images-author-20261008-v1/images/ec782ce3-475e-5628-b3fe-947d72e74a74/v2/ec782ce3-475e-5628-b3fe-947d72e74a74.png",
+        "sha256": "2969924b650fc2fb9d40233821af3f733e8c1d906762e68e8c75886cae51b2a5",
+        "bytes": 1790998
+      },
+      "actualScienceAndRepresentationObservations": [
+        "Protein-bound pigment antenna is visually distinct from the reaction center, correctly labelled Pigmente + Proteine.",
+        "Yellow excitation-energy arrows remain distinct from the only blue e- arrow leaving the reaction center to the negative acceptor; reaction center remains positive after electron transfer. No ATP is drawn as a direct antenna product.",
+        "Red light now reaches a green pigment and blue light an orange pigment; the obvious v1 light-input color mismatch is corrected in this actual v2.",
+        "A remaining green-to-orange-to-RC productive-relay ambiguity is concrete in the original and both previews. Its scientific/inference boundary is documented in the independent finding."
+      ],
+      "actualReadability": {
+        "original": "Antenna/protein pigments, excitation arrows, RC, electron arrow and charge signs clear.",
+        "width680": "Main labels, pigment-color routes and separate electron arrow readable.",
+        "width360": "Antenna versus RC, yellow energy route and blue electron-transfer route recognizable; subordinate text needs enlargement. The held route remains visually present at this width."
+      },
+      "metadataAndAlttextDecision": "Main location, energy/electron distinction and charge signs accurate. Pigment-role colors need to agree with an unambiguous productive path after correction.",
+      "blockingFindings": [
+        {
+          "id": "BIO-V-B-03-V2-PRODUCTIVE-CHL-ACCESSORY-RELAY-AMBIGUITY",
+          "goalId": "ec782ce3-475e-5628-b3fe-947d72e74a74",
+          "severity": "blocking_for_this_raster",
+          "assetSha256": "2969924b650fc2fb9d40233821af3f733e8c1d906762e68e8c75886cae51b2a5",
+          "actualOriginalLocations": [
+            {
+              "approximateBoundsPx": {
+                "left": 680,
+                "top": 405,
+                "right": 1130,
+                "bottom": 555
+              },
+              "observed": "Yellow arrow from central green pigment into orange pigment immediately before the reaction center, followed by a yellow arrow from that orange pigment to the reaction center."
+            },
+            {
+              "approximateBoundsPx": {
+                "left": 215,
+                "top": 410,
+                "right": 625,
+                "bottom": 560
+              },
+              "observed": "Lower branch also shows green pigment feeding an orange pigment before merging toward the center."
+            }
+          ],
+          "evidence": "The candidate reconstruction prompt says colors convey chlorophyll/accessory functions; the complete P3 material explicitly uses chlorophyll and carotenoid pigments. Alttext names green chlorophyll and orange accessory symbols. Thus these colors are not simply untyped network nodes. The ordinary directed yellow route can teach a productive chlorophyll-to-carotenoid-to-RC relay without separating energy dissipation.",
+          "scientificDistinction": "Carotenoid-to-chlorophyll transfer supplements light harvesting; chlorophyll-to-carotenoid pathways can instead dissipate excitation for protection. The review does not claim all reverse transfer is physically impossible. The issue is drawing it as the unqualified productive route for this explanatory diagram.",
+          "primaryEvidencePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-visualization-independent-b-final-20261008-v1/LHC-pigment-direction-primary-research.targeted-independent-b.reading-notes.json",
+          "preserveGoodContent": [
+            "Protein-bound antenna pigments",
+            "Red excitation of green chlorophyll symbol",
+            "Blue excitation of orange accessory symbol",
+            "Yellow excitation transfer distinct from blue electron transfer",
+            "Positive reaction-center/negative acceptor charge separation",
+            "No ATP production directly by antenna"
+          ],
+          "minimalSafeCorrection": "Make the productive route unambiguous: retain the blue-illuminated orange accessory donor feeding a green chlorophyll route, and remove green-to-orange hops on the ordinary productive funnel. For example recolor only the two unilluminated orange relay nodes green while preserving the actual light-input assignment, arrows, RC, layout and text. Update reconstruction prompt/alttext if necessary. A new actual PNG/version requires a separate bound review; this is not pre-approval.",
+          "humanApproval": false
+        }
+      ]
+    }
+  ],
+  "currentKEEPCount": 2,
+  "currentHOLDCount": 1,
+  "newActualRasterReviews": 2,
+  "retainedActualRasterReviews": 1,
+  "nativeBlockingFindings": [
+    {
+      "id": "BIO-V-B-03-V2-PRODUCTIVE-CHL-ACCESSORY-RELAY-AMBIGUITY",
+      "goalId": "ec782ce3-475e-5628-b3fe-947d72e74a74",
+      "severity": "blocking_for_this_raster",
+      "assetSha256": "2969924b650fc2fb9d40233821af3f733e8c1d906762e68e8c75886cae51b2a5",
+      "actualOriginalLocations": [
+        {
+          "approximateBoundsPx": {
+            "left": 680,
+            "top": 405,
+            "right": 1130,
+            "bottom": 555
+          },
+          "observed": "Yellow arrow from central green pigment into orange pigment immediately before the reaction center, followed by a yellow arrow from that orange pigment to the reaction center."
+        },
+        {
+          "approximateBoundsPx": {
+            "left": 215,
+            "top": 410,
+            "right": 625,
+            "bottom": 560
+          },
+          "observed": "Lower branch also shows green pigment feeding an orange pigment before merging toward the center."
+        }
+      ],
+      "evidence": "The candidate reconstruction prompt says colors convey chlorophyll/accessory functions; the complete P3 material explicitly uses chlorophyll and carotenoid pigments. Alttext names green chlorophyll and orange accessory symbols. Thus these colors are not simply untyped network nodes. The ordinary directed yellow route can teach a productive chlorophyll-to-carotenoid-to-RC relay without separating energy dissipation.",
+      "scientificDistinction": "Carotenoid-to-chlorophyll transfer supplements light harvesting; chlorophyll-to-carotenoid pathways can instead dissipate excitation for protection. The review does not claim all reverse transfer is physically impossible. The issue is drawing it as the unqualified productive route for this explanatory diagram.",
+      "primaryEvidencePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-visualization-independent-b-final-20261008-v1/LHC-pigment-direction-primary-research.targeted-independent-b.reading-notes.json",
+      "preserveGoodContent": [
+        "Protein-bound antenna pigments",
+        "Red excitation of green chlorophyll symbol",
+        "Blue excitation of orange accessory symbol",
+        "Yellow excitation transfer distinct from blue electron transfer",
+        "Positive reaction-center/negative acceptor charge separation",
+        "No ATP production directly by antenna"
+      ],
+      "minimalSafeCorrection": "Make the productive route unambiguous: retain the blue-illuminated orange accessory donor feeding a green chlorophyll route, and remove green-to-orange hops on the ordinary productive funnel. For example recolor only the two unilluminated orange relay nodes green while preserving the actual light-input assignment, arrows, RC, layout and text. Update reconstruction prompt/alttext if necessary. A new actual PNG/version requires a separate bound review; this is not pre-approval.",
+      "humanApproval": false
+    }
+  ],
+  "wholeInputSnapshotPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-visualization-independent-b-final-20261008-v1/whole-current-three-goals-three-profiles-six-DEEN-cases.exact-retained.snapshot.json",
+  "technicalCheckPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-visualization-independent-b-final-20261008-v1/final-current-three-PNG-author-freeze-current-goal-profile.actual-independent-b.check.json",
+  "peerCurrentVisualAReadBeforeFirstSeal": false,
+  "retainedSciencePAMNotNewReviews": true,
+  "sourceConstraintsRetained": [
+    "four-original-operator-HOLDs",
+    "BIO123-B-OPERATIVE-PROJECTION-UNCHANGED"
+  ],
+  "sourceWholeCoverageApprovalClaimed": false,
+  "nativeDPReviewSupplied": false,
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "status": "ai_candidate",
+  "humanReviewStatus": "needs_human_review",
+  "humanApproval": false,
+  "humanTrial": false,
+  "performedExperiment": false,
+  "activeWrites": 0,
+  "strictGainClaimed": 0
+}

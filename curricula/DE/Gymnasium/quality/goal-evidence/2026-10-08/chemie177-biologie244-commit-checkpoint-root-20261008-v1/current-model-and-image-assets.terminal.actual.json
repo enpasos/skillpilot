@@ -1,0 +1,29 @@
+{
+  "checks": [
+    {
+      "name": "current-goal-book-model",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:goal-book-model"
+      ],
+      "exitCode": 1,
+      "elapsedSeconds": 0.958
+    },
+    {
+      "name": "current-image-assets",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-visualization-assets"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 59.21
+    }
+  ],
+  "allTerminalExitCodesZero": false
+}

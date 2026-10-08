@@ -5,7 +5,7 @@ Mathematics, Physics, Chemistry and Biology. Current work targets Chemistry and
 Biology; the achieved Mathematics and Physics M7 floors remain protected.
 
 Current continuation:
-[Chemistry/Biology: current commit checkpoint, 151/378 Chemistry and 74/390 Biology, 7 October](https://github.com/enpasos/skillpilot/blob/main/docs/qa-ci/chemie-biologie-m7-commit-checkpoint-2026-10-07.md).
+[Chemistry/Biology: verified commit checkpoint, 177/378 Chemistry and 244/392 Biology, 8 October](https://github.com/enpasos/skillpilot/blob/main/docs/qa-ci/chemie-biologie-m7-chemie177-biologie244-commit-checkpoint-2026-10-08.md).
 
 A curricular-atomic goal counts only when all five gates are current at once:
 

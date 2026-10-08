@@ -35,8 +35,8 @@ Der Zwischenstand ist lokal commitfähig. Menschliche Prüfung, Freigabe, Erprob
 
 ## Aktuelle Belege
 
-- [Abschlussmanifest](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie175-biologie222-commit-checkpoint-root-20261008-v1/commit-ready-checkpoint.actual.json)
-- [Aktueller zentraler Fünf-Gate-Bericht](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-q3-two-reviewed-active-integration-root-20261008-v1/affected-central.stdout.actual.txt)
-- [Aktuelle ID-Mengen und Nettozuwachs seit HEAD](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie175-biologie222-commit-checkpoint-root-20261008-v1/actual-current-id-net-growth-since-head.json)
-- [Endgültige vollständige Schemavalidierung](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie175-biologie222-commit-checkpoint-root-20261008-v1/final-settled-worktree-full-validate-schemas.terminal.actual.json)
-- [Vollständig abgeschlossener Build](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie175-biologie222-stable-layer-a-root-20261008-v1/stable-full-application-build-after-empty-stale-lock-recovery.terminal.actual.json)
+- [Abschlussmanifest](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie175-biologie222-commit-checkpoint-root-20261008-v1/commit-ready-checkpoint.actual.json)
+- [Aktueller zentraler Fünf-Gate-Bericht](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-q3-two-reviewed-active-integration-root-20261008-v1/affected-central.stdout.actual.txt)
+- [Aktuelle ID-Mengen und Nettozuwachs seit HEAD](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie175-biologie222-commit-checkpoint-root-20261008-v1/actual-current-id-net-growth-since-head.json)
+- [Endgültige vollständige Schemavalidierung](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie175-biologie222-commit-checkpoint-root-20261008-v1/final-settled-worktree-full-validate-schemas.terminal.actual.json)
+- [Vollständig abgeschlossener Build](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie175-biologie222-stable-layer-a-root-20261008-v1/stable-full-application-build-after-empty-stale-lock-recovery.terminal.actual.json)

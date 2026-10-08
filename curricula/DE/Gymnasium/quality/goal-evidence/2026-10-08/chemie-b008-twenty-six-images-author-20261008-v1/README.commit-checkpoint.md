@@ -1,0 +1,5 @@
+# B008 image author checkpoint
+
+This is inactive author work. The first-nine entry and seal remain byte exact. A separate three-image entry preserves three original HOLD attempts and their minimal actual raster corrections. Twelve routine image candidates are now available: eight existing assets retained, one new theory PNG, and three corrected new PNGs. Fourteen further image roles remain unprepared. All current26 goal/P bodies and52 scientific cases remain unchanged; independent V, native current binding and integration remain pending. No active Canon/QA/Registry/runtime write and no strict increase, source/P/human approval are claimed.
+
+Use `neutral-first-nine.actual-images.author.entry.json` plus `neutral-three-corrected.actual-images.author.entry.json`. Every selected image has portable bytes, actual provider metadata, original/edit prompts, standalone reconstruction and actual author full/360/680 views. Preserved originals and failed first content attempts are not silently replaced. The user requested a commit-capable checkpoint, so no further image role began after the three already-started corrections.

@@ -1,0 +1,3 @@
+# Independent B current SL framework addendum
+
+Own first SOURCE/PLACEMENT decisions on the actual new KMK AHR2020/MSA2024/historical2004 and SL subject/media originals, blind to new A. The old v21 first seal remains immutable. Two upper routines obtain bounded Hauptphase GK/LK source acceptance from concrete new AHR standards. The lower question/hypothesis whole grade-bound target remains HOLD; this addendum explicitly narrows the earlier B whole-placement flag for that atom while preserving its partial source role. Whole current source duties/partners and valid26 profiles/52 DEEN cases remain unchanged reuse. No operative Atlas adoption, active integration, Human approval or strict gain is asserted.

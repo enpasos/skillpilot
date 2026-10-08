@@ -1,0 +1,2 @@
+Use case: precise-object-edit / scientific-educational.
+Targeted scientific edit. Preserve entire image, big Calvin cycle, ATP/NADPH supply, light reaction icon, enzyme switch/temperature and large labels. Replace ONLY ALL ball-and-stick CO₂ glyphs inside the left cloud by three simple smooth neutral blue dots without bonds, or remove them; retain the large correct „CO₂“ text and incoming blue supply arrow. No apparent molecular structure, since the current two-sphere CO₂ glyphs are chemically wrong. No other content changes; friendly comic PNG with same dimensions.

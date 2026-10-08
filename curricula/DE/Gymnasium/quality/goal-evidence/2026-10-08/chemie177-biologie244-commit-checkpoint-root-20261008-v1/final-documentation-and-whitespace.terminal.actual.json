@@ -1,0 +1,38 @@
+{
+  "checks": [
+    {
+      "name": "final-docs-links",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-links"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.635
+    },
+    {
+      "name": "final-whitespace",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.369
+    },
+    {
+      "name": "final-index-whitespace",
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exitCode": 2,
+      "elapsedSeconds": 0.115
+    }
+  ],
+  "allTerminalExitCodesZero": false
+}

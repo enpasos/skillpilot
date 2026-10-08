@@ -1,0 +1,101 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:b358b78544f358d05949555231744c3735560e4e6bc75e38359aa201f755b7ff",
+  "reviewInputFingerprint": "sha256:97e7de76e0fc3c8aa3737151529aa25855728feed5555b08753d4d8b963dbfc0",
+  "goalCount": 3,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-stoffwechsel-first-three-current392-native-20261008-v1-campaign-a",
+      "roundId": "biologie-stoffwechsel-first-three-current392-native-20261008-v1-independent-a",
+      "independenceGroupId": "biologie-stoffwechsel-first-three-current392-native-20261008-v1-independent-a",
+      "runIds": [
+        "biologie-native-first-three-independent-a-actual-20261008-v1"
+      ],
+      "providers": [
+        "OpenAI Codex interactive agent"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex interactive agent::GPT-6 agent; exact serving model variant not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-stoffwechsel-first-three-current392-native-20261008-v1-campaign-b",
+      "roundId": "biologie-stoffwechsel-first-three-current392-native-20261008-v1-independent-b",
+      "independenceGroupId": "biologie-stoffwechsel-first-three-current392-native-20261008-v1-independent-b",
+      "runIds": [
+        "biologie-native-three-independent-b-first-pass-20261008-v1"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::Codex; exact model version not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 3,
+    "unavailable": 0,
+    "requiresSynthesis": 3
+  },
+  "goals": [
+    {
+      "goalId": "32f47903-0788-5c27-ac88-7464f481f2f7",
+      "firstRecordId": "biologie-native-first-three-independent-a-actual-20261008-v1.01",
+      "secondRecordId": "bio-native-three-b-01-first-20261008",
+      "firstRunId": "biologie-native-first-three-independent-a-actual-20261008-v1",
+      "secondRunId": "biologie-native-three-independent-b-first-pass-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "135447a0-5d55-564a-afc3-3e3fbed77819",
+      "firstRecordId": "biologie-native-first-three-independent-a-actual-20261008-v1.02",
+      "secondRecordId": "bio-native-three-b-02-first-20261008",
+      "firstRunId": "biologie-native-first-three-independent-a-actual-20261008-v1",
+      "secondRunId": "biologie-native-three-independent-b-first-pass-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ec782ce3-475e-5628-b3fe-947d72e74a74",
+      "firstRecordId": "biologie-native-first-three-independent-a-actual-20261008-v1.03",
+      "secondRecordId": "bio-native-three-b-03-first-20261008",
+      "firstRunId": "biologie-native-first-three-independent-a-actual-20261008-v1",
+      "secondRunId": "biologie-native-three-independent-b-first-pass-20261008-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

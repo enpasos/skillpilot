@@ -1,0 +1,1 @@
+{"actualNativeViews":43,"beforeCPV009":43,"afterCPV009":35,"inactiveWholeGoals":504,"freshCurrentPurePages":378,"candidatePurePages":395,"SLSourcePurePages":[["de-gym-chemie-bundesweit-source-de-sl-seki",98],["de-gym-chemie-bundesweit-source-de-sl-sekii-gk",157],["de-gym-chemie-bundesweit-source-de-sl-sekii-lk",168]],"actualProtectedContextHolds":8,"strictGain":0}

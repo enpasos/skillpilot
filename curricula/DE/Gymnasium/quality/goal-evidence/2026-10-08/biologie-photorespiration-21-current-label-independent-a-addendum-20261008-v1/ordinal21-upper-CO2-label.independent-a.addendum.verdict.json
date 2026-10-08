@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "kind": "targeted-independent-visual-A-label-addendum-after-first-seal",
+  "createdAtUtc": "2026-10-08T08:39:38.568888+00:00",
+  "reviewerTask": "/root/curricula_live_diagnosis",
+  "ordinal": 21,
+  "goalId": "97d409c8-b3bc-5c7c-8619-2c5592d2a796",
+  "assetSha256": "sha256:face29d2d120a12e1dc2e13eca4f040ad1d3afd2d67fe70b1d5003a345991c1b",
+  "previousFirstVerdict": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nine-actual-visual-independent-a-20261008-v1/nine-actual-visual-independent-a.first.verdicts.json",
+    "sha256": "sha256:cdf3d411b93469dd8f26cc14e400b523484264009405495433c131a5b1572f58",
+    "bytes": 78354
+  },
+  "previousFirstSeal": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nine-actual-visual-independent-a-20261008-v1/nine-actual-visual-independent-a.first-verdict.freeze.json",
+    "sha256": "sha256:5739c90431ef707920e0a009e8cfc4f9d250660fdd0b227f97daabcd59d6b5cb",
+    "bytes": 24436
+  },
+  "trigger": "Image author notified root after A first seal of a possible extra accent-like stroke above the upper CO2 token; peer V-B was not read.",
+  "actualInspection": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-photorespiration-21-current-label-independent-a-addendum-20261008-v1/actual-inspection-crop.receipt.json",
+    "sha256": "sha256:a40a51ac3d3969b8794170486faeb693068bddd799acd7b3fac222dbaa14d6e5",
+    "bytes": 911
+  },
+  "actualFindingsDe": [
+    "Der Originalgrößen-Ausschnitt bestätigt einen kurzen schrägen dunklen Fremdstrich oberhalb zwischen C und O des oberen CO₂-Tokens. Das ist kein nur vermuteter Befund.",
+    "Der Strich ist ein typografischer Schönheitsfehler. C,O und tiefgestellte2 sind selbst klar lesbar; am unteren Freisetzungs-Token und im Stomata-Inset ist CO₂ korrekt geschrieben.",
+    "Im ganzen Raster und360/680px-Kontext bleibt die Identität Kohlenstoffdioxid eindeutig. Der kleine Strich erzeugt kein anderes Element, keine Isotopenzahl, keine Ladung und keinen neuen Stoffpfeil.",
+    "Die überarbeitete ATP-Verbrauchsrichtung und die getrennten Rubisco-Routen sind von diesem Schriftartefakt nicht betroffen."
+  ],
+  "ownDecision": "RETAIN_AI_VISUAL_GATE_EXACT_CURRENT_RASTER_WITH_NONBLOCKING_TYPOGRAPHIC_BLEMISH",
+  "aiVisualApproved": true,
+  "blockingScientificOrReadabilityFindings": [],
+  "nonblockingFindings": [
+    {
+      "kind": "stray-accent-like-stroke",
+      "location": "Upper green CO2 input token, original glyph baseline vicinityx735/y85",
+      "severity": "minor-nonblocking",
+      "disposition": "Current image remains unambiguous at required widths. If the author removes the stroke, the resulting new raster needs its own hash binding; this finding does not approve an unseen correction."
+    }
+  ],
+  "firstVerdictRewritten": false,
+  "peerV_B_Read": false,
+  "activeWrites": 0,
+  "humanApproval": false,
+  "humanTrial": false,
+  "centralStrictClosureClaim": false
+}

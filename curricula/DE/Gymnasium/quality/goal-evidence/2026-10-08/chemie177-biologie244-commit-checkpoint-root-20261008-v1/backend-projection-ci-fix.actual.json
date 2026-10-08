@@ -1,0 +1,242 @@
+{
+  "artifactType": "backend-projection-ci-fix-actual-proof-v1",
+  "createdAtUtc": "2026-10-08T12:06:04.198782+00:00",
+  "headCommit": "eff7e5acbadc6457bff2e1d03b72108d7793f989",
+  "sourceCi": {
+    "runId": 37741113299,
+    "jobId": 113196560308,
+    "jobUrl": "https://github.com/enpasos/skillpilot/actions/runs/37741113299/job/113196560308",
+    "actualConclusion": "failure",
+    "testsCompleted": 2300,
+    "failedTests": 1,
+    "skippedTests": 9,
+    "failureType": "stale fourteen biology SekI G8/G9 expected totals after an integrated semantic split",
+    "timeoutOrDiskFailureObserved": false
+  },
+  "cause": {
+    "canonicalPath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "integratedSplitCommit": "dc583ce54c2bc597e54226495c4802d610ab0137",
+    "beforeCanonicalGoalRecordCount": 474,
+    "integratedCanonicalGoalRecordCount": 476,
+    "splitNetAtomicIncrease": 1,
+    "splitBindings": [
+      {
+        "id": "3ee4b55c-81c3-5826-9d26-1a8c22cbd0b8",
+        "title": "Familienplanung und Verhütung",
+        "beforeType": "atomic",
+        "integratedType": "cluster",
+        "currentType": "cluster",
+        "currentContains": [
+          "9d3f71d7-5273-5e50-b1ba-4e291edbf114",
+          "dd923eeb-eef0-5796-b372-a5d4f5be21f7"
+        ],
+        "currentRequires": [
+          "249f4c5d-fd23-57c7-ac62-773d62c33b49"
+        ],
+        "currentTypeContainsRequiresMatchIntegratedSplit": true
+      },
+      {
+        "id": "9d3f71d7-5273-5e50-b1ba-4e291edbf114",
+        "title": "Verhütungsmethoden beurteilen",
+        "beforeType": null,
+        "integratedType": "atomic",
+        "currentType": "atomic",
+        "currentContains": [],
+        "currentRequires": [
+          "249f4c5d-fd23-57c7-ac62-773d62c33b49"
+        ],
+        "currentTypeContainsRequiresMatchIntegratedSplit": true
+      },
+      {
+        "id": "dd923eeb-eef0-5796-b372-a5d4f5be21f7",
+        "title": "Verantwortliche Elternschaft reflektieren",
+        "beforeType": null,
+        "integratedType": "atomic",
+        "currentType": "atomic",
+        "currentContains": [],
+        "currentRequires": [
+          "249f4c5d-fd23-57c7-ac62-773d62c33b49"
+        ],
+        "currentTypeContainsRequiresMatchIntegratedSplit": true
+      }
+    ]
+  },
+  "fix": {
+    "path": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+    "sha256": "27fa747541491638dc054259384c5ff6455e79e0adafe91a7fa8b47f0e356c35",
+    "biologyExpectationRowsChanged": 7,
+    "affectedDurationAssertions": 14,
+    "explicitWitnessAssertionsAddedForBothDurations": true,
+    "chemistryAndPhysicsExpectedRowsChanged": 0,
+    "curriculumRuntimeImplementationChanged": false,
+    "activeCurriculumOrM7EvidenceChangedByThisFix": false
+  },
+  "localVerification": {
+    "command": "./gradlew test --tests com.skillpilot.backend.controller.LearnerControllerIntegrationTest.learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals",
+    "workingDirectory": "backend",
+    "actualExitCode": 0,
+    "buildResult": "BUILD SUCCESSFUL",
+    "buildElapsedSeconds": 211,
+    "junitTests": 1,
+    "junitFailures": 0,
+    "junitErrors": 0,
+    "junitSkipped": 0,
+    "junitTimestamp": "2026-10-08T12:01:53.731Z",
+    "junitSuiteElapsedSeconds": 150.994,
+    "testMethodElapsedSeconds": 118.017,
+    "scopeRowsChecked": 33,
+    "G8AndG9StateTotalsChecked": 66,
+    "biologicalWitnessRowsChecked": 14,
+    "localJvm": "Amazon Corretto 25.0.1.9.1",
+    "actualCiJvmPin": "Amazon Corretto 25.0.2.10.1",
+    "affectedRows": [
+      {
+        "jurisdiction": "DE-BW",
+        "durationModel": "G8",
+        "previousExpectedAtomicTotal": 82,
+        "actualCiAtomicTotal": 83,
+        "currentExpectedAtomicTotal": 83,
+        "localCurrentCounterAssertion": "PASS",
+        "localBothNewAtomicIdWitnesses": "PASS",
+        "localFormerIdExcludedFromAtomicIds": "PASS"
+      },
+      {
+        "jurisdiction": "DE-BW",
+        "durationModel": "G9",
+        "previousExpectedAtomicTotal": 82,
+        "actualCiAtomicTotal": 83,
+        "currentExpectedAtomicTotal": 83,
+        "localCurrentCounterAssertion": "PASS",
+        "localBothNewAtomicIdWitnesses": "PASS",
+        "localFormerIdExcludedFromAtomicIds": "PASS"
+      },
+      {
+        "jurisdiction": "DE-BY",
+        "durationModel": "G8",
+        "previousExpectedAtomicTotal": 129,
+        "actualCiAtomicTotal": 130,
+        "currentExpectedAtomicTotal": 130,
+        "localCurrentCounterAssertion": "PASS",
+        "localBothNewAtomicIdWitnesses": "PASS",
+        "localFormerIdExcludedFromAtomicIds": "PASS"
+      },
+      {
+        "jurisdiction": "DE-BY",
+        "durationModel": "G9",
+        "previousExpectedAtomicTotal": 129,
+        "actualCiAtomicTotal": 130,
+        "currentExpectedAtomicTotal": 130,
+        "localCurrentCounterAssertion": "PASS",
+        "localBothNewAtomicIdWitnesses": "PASS",
+        "localFormerIdExcludedFromAtomicIds": "PASS"
+      },
+      {
+        "jurisdiction": "DE-HB",
+        "durationModel": "G8",
+        "previousExpectedAtomicTotal": 97,
+        "actualCiAtomicTotal": 98,
+        "currentExpectedAtomicTotal": 98,
+        "localCurrentCounterAssertion": "PASS",
+        "localBothNewAtomicIdWitnesses": "PASS",
+        "localFormerIdExcludedFromAtomicIds": "PASS"
+      },
+      {
+        "jurisdiction": "DE-HB",
+        "durationModel": "G9",
+        "previousExpectedAtomicTotal": 97,
+        "actualCiAtomicTotal": 98,
+        "currentExpectedAtomicTotal": 98,
+        "localCurrentCounterAssertion": "PASS",
+        "localBothNewAtomicIdWitnesses": "PASS",
+        "localFormerIdExcludedFromAtomicIds": "PASS"
+      },
+      {
+        "jurisdiction": "DE-HE",
+        "durationModel": "G8",
+        "previousExpectedAtomicTotal": 129,
+        "actualCiAtomicTotal": 130,
+        "currentExpectedAtomicTotal": 130,
+        "localCurrentCounterAssertion": "PASS",
+        "localBothNewAtomicIdWitnesses": "PASS",
+        "localFormerIdExcludedFromAtomicIds": "PASS"
+      },
+      {
+        "jurisdiction": "DE-HE",
+        "durationModel": "G9",
+        "previousExpectedAtomicTotal": 129,
+        "actualCiAtomicTotal": 130,
+        "currentExpectedAtomicTotal": 130,
+        "localCurrentCounterAssertion": "PASS",
+        "localBothNewAtomicIdWitnesses": "PASS",
+        "localFormerIdExcludedFromAtomicIds": "PASS"
+      },
+      {
+        "jurisdiction": "DE-NI",
+        "durationModel": "G8",
+        "previousExpectedAtomicTotal": 108,
+        "actualCiAtomicTotal": 109,
+        "currentExpectedAtomicTotal": 109,
+        "localCurrentCounterAssertion": "PASS",
+        "localBothNewAtomicIdWitnesses": "PASS",
+        "localFormerIdExcludedFromAtomicIds": "PASS"
+      },
+      {
+        "jurisdiction": "DE-NI",
+        "durationModel": "G9",
+        "previousExpectedAtomicTotal": 108,
+        "actualCiAtomicTotal": 109,
+        "currentExpectedAtomicTotal": 109,
+        "localCurrentCounterAssertion": "PASS",
+        "localBothNewAtomicIdWitnesses": "PASS",
+        "localFormerIdExcludedFromAtomicIds": "PASS"
+      },
+      {
+        "jurisdiction": "DE-RP",
+        "durationModel": "G8",
+        "previousExpectedAtomicTotal": 77,
+        "actualCiAtomicTotal": 78,
+        "currentExpectedAtomicTotal": 78,
+        "localCurrentCounterAssertion": "PASS",
+        "localBothNewAtomicIdWitnesses": "PASS",
+        "localFormerIdExcludedFromAtomicIds": "PASS"
+      },
+      {
+        "jurisdiction": "DE-RP",
+        "durationModel": "G9",
+        "previousExpectedAtomicTotal": 77,
+        "actualCiAtomicTotal": 78,
+        "currentExpectedAtomicTotal": 78,
+        "localCurrentCounterAssertion": "PASS",
+        "localBothNewAtomicIdWitnesses": "PASS",
+        "localFormerIdExcludedFromAtomicIds": "PASS"
+      },
+      {
+        "jurisdiction": "DE-SL",
+        "durationModel": "G8",
+        "previousExpectedAtomicTotal": 60,
+        "actualCiAtomicTotal": 61,
+        "currentExpectedAtomicTotal": 61,
+        "localCurrentCounterAssertion": "PASS",
+        "localBothNewAtomicIdWitnesses": "PASS",
+        "localFormerIdExcludedFromAtomicIds": "PASS"
+      },
+      {
+        "jurisdiction": "DE-SL",
+        "durationModel": "G9",
+        "previousExpectedAtomicTotal": 60,
+        "actualCiAtomicTotal": 61,
+        "currentExpectedAtomicTotal": 61,
+        "localCurrentCounterAssertion": "PASS",
+        "localBothNewAtomicIdWitnesses": "PASS",
+        "localFormerIdExcludedFromAtomicIds": "PASS"
+      }
+    ]
+  },
+  "boundaries": {
+    "newGitHubGreenRunObserved": false,
+    "commitCreated": false,
+    "pushPerformed": false,
+    "privateLearnerSessionChatOrWholeTestLogCopied": false,
+    "humanReleaseApprovalClaimed": false
+  }
+}

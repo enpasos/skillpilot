@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-stoffwechsel-reviewed-three-current392-technical-20261008-v1-three-current",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-reviewed-integration-root-20261008-v1/native-d-three-current.batch.config.json",
+  "configDigest": "sha256:422161596bb8ad8b96199abaaac0cfa3628c7fcb6d515a329b50cce0589cbf37",
+  "goalIds": [
+    "32f47903-0788-5c27-ac88-7464f481f2f7",
+    "135447a0-5d55-564a-afc3-3e3fbed77819",
+    "ec782ce3-475e-5628-b3fe-947d72e74a74"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 392,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-native-technical-20261008-v1/candidate/book.current392.three-source-raster.inactive.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-native-technical-20261008-v1/candidate/canonical.current476.three-rasters.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:f71323d8073ec30559d92143e02512149b6e83b459314ddb926740600230f592"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:9a7e15782ffbdfeebef67979e7f29b285bf1c53a6485f5b0d01a4dae822aed55",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:b358b78544f358d05949555231744c3735560e4e6bc75e38359aa201f755b7ff",
+    "reviewInputFingerprint": "sha256:97e7de76e0fc3c8aa3737151529aa25855728feed5555b08753d4d8b963dbfc0",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-stoffwechsel-first-three-current392-native-20261008-v1-campaign-a",
+        "campaignDigest": "sha256:728551ee7a30d59b409606dabedc17e5a6c39cfb81dd15ba618b52fd450262fb",
+        "roundId": "biologie-stoffwechsel-first-three-current392-native-20261008-v1-independent-a",
+        "independenceGroupId": "biologie-stoffwechsel-first-three-current392-native-20261008-v1-independent-a",
+        "batchId": "biologie-stoffwechsel-first-three-current392-native-20261008-v1-independent-a.batch-001",
+        "batchInputFingerprint": "sha256:0b4115eac0828fac0cfb7ab0cb700dfe3219de212b32807a9c67f95bc5edf4e6"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-stoffwechsel-first-three-current392-native-20261008-v1-campaign-b",
+        "campaignDigest": "sha256:08dc5022c4509b99236ddddd7d470b12e032dea32d78baaaaf717b4fc0748228",
+        "roundId": "biologie-stoffwechsel-first-three-current392-native-20261008-v1-independent-b",
+        "independenceGroupId": "biologie-stoffwechsel-first-three-current392-native-20261008-v1-independent-b",
+        "batchId": "biologie-stoffwechsel-first-three-current392-native-20261008-v1-independent-b.batch-001",
+        "batchInputFingerprint": "sha256:5aafcc5f065ec6f44dab1ef23eab5ff554cb67e79be19fbdcc9a57da585d1373"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

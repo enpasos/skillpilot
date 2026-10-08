@@ -1,0 +1,3 @@
+# Independent B BY16 current source-facet review
+
+Twenty bounded partial components are accepted at the actual native source tracks: C11 NTG and separate biologisch-chemisches Praktikum12/13. Sixteen ordinary route placements remain pending explicit reviewed course views and whole decision/partner projection. Fifteen unique original source duties and all12 current whole partners remain visible. No whole source-union, normal GK/LK, real practical-performance, Science/P restart, Human approval or strict gain is asserted. Three full official LB1 texts and practical-choice notices were read from actual frozen HTML. Different12/13 SourceIDs are retained without independent-performance double counting; C11.1.3 remains one SourceID with two family routes.

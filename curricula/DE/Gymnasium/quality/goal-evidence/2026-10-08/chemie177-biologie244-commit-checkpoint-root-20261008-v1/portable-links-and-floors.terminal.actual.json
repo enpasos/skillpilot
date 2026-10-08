@@ -1,0 +1,28 @@
+{
+  "checks": [
+    {
+      "name": "portable-curriculum-symlinks",
+      "command": [
+        "python",
+        "-B",
+        "scripts/test_validate_schemas_symlinks.py",
+        "-v"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.303
+    },
+    {
+      "name": "protected-maturity-floors",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:curriculum-maturity-floors"
+      ],
+      "exitCode": 0,
+      "elapsedSeconds": 0.413
+    }
+  ],
+  "allTerminalExitCodesZero": true
+}

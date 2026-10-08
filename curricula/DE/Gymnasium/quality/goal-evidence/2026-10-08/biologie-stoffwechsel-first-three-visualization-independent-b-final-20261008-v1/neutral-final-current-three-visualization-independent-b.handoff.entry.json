@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "independent-b",
+  "firstSealPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-visualization-independent-b-final-20261008-v1/final-three-visualization-b.first-verdict.seal.json",
+  "resultsDirectory": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-visualization-independent-b-final-20261008-v1",
+  "visualizationReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-visualization-independent-b-final-20261008-v1/final-current-three-actual-visualization.independent-b.first-verdict.json",
+  "peerVisualReadBeforeFirstSeal": false,
+  "imageDecisions": [
+    {
+      "goalId": "32f47903-0788-5c27-ac88-7464f481f2f7",
+      "version": "v1",
+      "decision": "KEEP_RETAINED",
+      "sha256": "a0e5ad59e128ab313e9b884c9ec01156a82ee41c3f9b2473bf4639a28233652d"
+    },
+    {
+      "goalId": "135447a0-5d55-564a-afc3-3e3fbed77819",
+      "version": "v2",
+      "decision": "KEEP",
+      "sha256": "84b3b22f8493fbe9b1ae686eb2c973a351e41c3e797fe3dc6c86bc64394356a7"
+    },
+    {
+      "goalId": "ec782ce3-475e-5628-b3fe-947d72e74a74",
+      "version": "v2",
+      "decision": "HOLD",
+      "sha256": "2969924b650fc2fb9d40233821af3f733e8c1d906762e68e8c75886cae51b2a5"
+    }
+  ],
+  "nativeBlockingFindings": [
+    {
+      "id": "BIO-V-B-03-V2-PRODUCTIVE-CHL-ACCESSORY-RELAY-AMBIGUITY",
+      "goalId": "ec782ce3-475e-5628-b3fe-947d72e74a74",
+      "severity": "blocking_for_this_raster",
+      "assetSha256": "2969924b650fc2fb9d40233821af3f733e8c1d906762e68e8c75886cae51b2a5",
+      "actualOriginalLocations": [
+        {
+          "approximateBoundsPx": {
+            "left": 680,
+            "top": 405,
+            "right": 1130,
+            "bottom": 555
+          },
+          "observed": "Yellow arrow from central green pigment into orange pigment immediately before the reaction center, followed by a yellow arrow from that orange pigment to the reaction center."
+        },
+        {
+          "approximateBoundsPx": {
+            "left": 215,
+            "top": 410,
+            "right": 625,
+            "bottom": 560
+          },
+          "observed": "Lower branch also shows green pigment feeding an orange pigment before merging toward the center."
+        }
+      ],
+      "evidence": "The candidate reconstruction prompt says colors convey chlorophyll/accessory functions; the complete P3 material explicitly uses chlorophyll and carotenoid pigments. Alttext names green chlorophyll and orange accessory symbols. Thus these colors are not simply untyped network nodes. The ordinary directed yellow route can teach a productive chlorophyll-to-carotenoid-to-RC relay without separating energy dissipation.",
+      "scientificDistinction": "Carotenoid-to-chlorophyll transfer supplements light harvesting; chlorophyll-to-carotenoid pathways can instead dissipate excitation for protection. The review does not claim all reverse transfer is physically impossible. The issue is drawing it as the unqualified productive route for this explanatory diagram.",
+      "primaryEvidencePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-visualization-independent-b-final-20261008-v1/LHC-pigment-direction-primary-research.targeted-independent-b.reading-notes.json",
+      "preserveGoodContent": [
+        "Protein-bound antenna pigments",
+        "Red excitation of green chlorophyll symbol",
+        "Blue excitation of orange accessory symbol",
+        "Yellow excitation transfer distinct from blue electron transfer",
+        "Positive reaction-center/negative acceptor charge separation",
+        "No ATP production directly by antenna"
+      ],
+      "minimalSafeCorrection": "Make the productive route unambiguous: retain the blue-illuminated orange accessory donor feeding a green chlorophyll route, and remove green-to-orange hops on the ordinary productive funnel. For example recolor only the two unilluminated orange relay nodes green while preserving the actual light-input assignment, arrows, RC, layout and text. Update reconstruction prompt/alttext if necessary. A new actual PNG/version requires a separate bound review; this is not pre-approval.",
+      "humanApproval": false
+    }
+  ],
+  "reviewRunIds": [],
+  "nativeDPReviewSupplied": false,
+  "sourceWholeCoverageApprovalClaimed": false,
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "status": "ai_candidate",
+  "humanReviewStatus": "needs_human_review",
+  "activeWrites": 0,
+  "strictGainClaimed": 0,
+  "humanApproval": false,
+  "humanTrial": false
+}

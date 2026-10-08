@@ -1,0 +1,10 @@
+# Biologie: drei begrenzte Quellenkandidaten
+
+Die unveränderten Ziele Fotosynthese modellieren, Grundlagen der Zellatmung und Lichtsammelkomplexe beschreiben werden von tatsächlichen begrenzten HE-Q3.2-Komponenten getragen. Die beiden echten ursprünglichen Wissenschafts-/P-Urteile, drei ganzen Profile und sechs ganzen bilingualen Fälle bleiben erhalten. Es wird kein solcher Review neu gestartet.
+
+20 ganze aktuelle Quellenpflichten,25 direkte Zielrollen und268 ganze aktuelle Partnerzeilen sind erhalten.30 vollständige lokale Original-PDF-Seiten und die echten aktuellen BY13-EA-/GA-HTML-Bytes sind gesichert. Für jede geänderte Rolle sind tatsächliche Stage-/Kurs-/Operatorgrenzen und konkrete originale Textstellen angegeben. SN Klasse9 nennt wirklich die Wechselwirkung lichtabhängiger und lichtunabhängiger Reaktion; dieser Beitrag wird erhalten. Stärkere Sek-II- oder MV-Klasse10-Passagen werden nicht auf schwächere originale Sek-I-Zuordnungen übertragen.
+
+Vier vorhandene vollständige Pflichten bleiben ausdrücklich offen: BY-Wild-/Nutzpflanzenfolgen beurteilen, BY-Zellatmung mit Fotosynthese vergleichen, BY-Blattpigmente tatsächlich chromatographisch trennen und ST-Temperaturversuche zur Hefe-Gärung planen/durchführen/protokollieren. Die zwei vorhandenen Chromatographie-Partner decken die konkrete Methode nicht; kein passender aktueller Chromatographie-Zielkörper wird erfunden. Ein eigener echt geprüfter praktischer Begleiter bleibt erforderlich. Die theoretischen Ziele bleiben als nützliche begrenzte Beiträge erhalten.
+
+Dies ist ein Autorenpaket mit ai_candidate/needs_human_review. Alle20 Originalentscheidungen und ganze Partnerunionen sind exakt erhalten; ein historisches mapped/exact wird nicht als neuer unabhängiger Quellenabschluss ausgegeben. Die25 Rollen brauchen zwei echte getrennte aktuelle Quellen-Followups. Danach folgen reale Bilder und ganze aktuelle Native-D/P/V-Prüfungen für diese drei IDs. Ordinal8/16-Splits und ihre offenen Pflichten werden getrennt bearbeitet.0 aktive Änderungen,0 strenger Zuwachs und keine menschliche Freigabe oder Erprobung.
+

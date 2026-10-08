@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "policyId": "canonical-gymnasium-maturity-floors-v1",
+  "baselineDate": "2026-08-20",
+  "changePolicy": "Protected floors remain stable. A temporary reduction requires a separate, time-bounded exception that names the landscape, allowed minimum, affected CQR rules, fachliche reason, product-owner decision and expiry; canonical content changes must not silently lower a floor.",
+  "exceptions": [],
+  "knownPreBaselineRegressions": [
+    {
+      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+      "subject": "Wirtschaftswissenschaften",
+      "formerMaturity": "M6",
+      "currentMaturityAtBaseline": "M2",
+      "introducedByCommit": "ec7550fd9",
+      "disposition": "Deferred existing debt outside the Mathematics M6 repair; establish a floor only after the fachliche route issue is repaired."
+    }
+  ],
+  "floors": [
+    {
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "frameworkId": "canonical-gymnasium-math",
+      "subject": "Mathematik",
+      "minimumMaturity": "M6",
+      "reason": "Established canonical mathematics maturity baseline with completed semantic-atomicity and memory-card layers."
+    },
+    {
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "frameworkId": "canonical-gymnasium-physics",
+      "subject": "Physik",
+      "minimumMaturity": "M6",
+      "reason": "Established canonical Gymnasium maturity baseline."
+    },
+    {
+      "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+      "frameworkId": "canonical-gymnasium-biology",
+      "subject": "Biologie",
+      "minimumMaturity": "M6",
+      "reason": "Established canonical Gymnasium maturity baseline."
+    },
+    {
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "frameworkId": "canonical-gymnasium-chemistry",
+      "subject": "Chemie",
+      "minimumMaturity": "M6",
+      "reason": "Established canonical Gymnasium maturity baseline."
+    },
+    {
+      "landscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+      "frameworkId": "canonical-gymnasium-german",
+      "subject": "Deutsch",
+      "minimumMaturity": "M6",
+      "reason": "Established canonical Gymnasium maturity baseline."
+    },
+    {
+      "landscapeId": "92406d94-e3c1-58ec-b7c6-12122278d25a",
+      "frameworkId": "canonical-gymnasium-history",
+      "subject": "Geschichte",
+      "minimumMaturity": "M6",
+      "reason": "Established canonical Gymnasium maturity baseline."
+    },
+    {
+      "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+      "frameworkId": "canonical-gymnasium-informatics",
+      "subject": "Informatik",
+      "minimumMaturity": "M6",
+      "reason": "Established canonical Gymnasium maturity baseline."
+    },
+    {
+      "landscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+      "frameworkId": "canonical-gymnasium-latin",
+      "subject": "Latein",
+      "minimumMaturity": "M6",
+      "reason": "Established canonical Gymnasium maturity baseline."
+    },
+    {
+      "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+      "frameworkId": "canonical-gymnasium-politics-economics",
+      "subject": "Politik und Wirtschaft",
+      "minimumMaturity": "M6",
+      "reason": "Established canonical Gymnasium maturity baseline."
+    }
+  ]
+}

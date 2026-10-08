@@ -1,0 +1,18 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Source-supported atlas goal count changed
+
+394 !== 392
+
+    at buildGoalBookSourceAtlasInputs (/home/enpasos/projects/skillpilot/app/scripts/goalBookSourceAtlasInputs.ts:326:10)
+    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-two-basic-companions-complete-author-20261008-v2/materialize-ordinary-two-basic.shadow-native.mts:89:13) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 394,
+  expected: 392,
+  operator: 'strictEqual'
+}
+
+Node.js v20.20.2

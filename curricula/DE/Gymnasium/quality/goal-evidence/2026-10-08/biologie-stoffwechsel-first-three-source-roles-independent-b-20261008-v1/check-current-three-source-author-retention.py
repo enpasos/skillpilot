@@ -1,0 +1,42 @@
+import pathlib,json,hashlib,datetime,subprocess,collections
+q=pathlib.Path('curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08');a=q/'biologie-stoffwechsel-first-three-regional-source-remediation-author-20261008-v1';o=q/'biologie-stoffwechsel-first-three-source-roles-independent-b-20261008-v1';old=q/'biologie-he-metabolism-ecology-twenty-four-whole-science-author-20261008-v1';ownold=q/'biologie-he-metabolism-ecology-twenty-four-whole-science-independent-b-20261008-v1'
+load=lambda p:json.loads(pathlib.Path(p).read_text());sha=lambda p:hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest();rec=lambda p:{'path':str(p),'sha256':'sha256:'+sha(p),'bytes':pathlib.Path(p).stat().st_size}
+e=load(a/'neutral-three-regional-source-role-remediation.author.corrected-count.entry.json');roles=load(e['sourceRoles']['path']);duties=load(e['originalWhole20SourceDuty268PartnerRows']['path']);partners=load(e['all268WholeCurrentPartnerBodies']['path']);guard=load(e['originalCurrentSourceGuards']['path']);captures=load(e['actualWholePrimaryOriginals']['path']);contexts=load(e['wholeCurrentThreeGoalContexts']['path']);profiles=load(e['unchangedThreeProfiles']['path']);cases=load(e['unchangedSixWholeCases']['path']);residuals=load(e['stillOpenOriginalOperatorDuties']['path'])
+canon=load('curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json');cm={g['id']:g for g in canon['goals']};selected=set(e['goalIds'])
+assert len(roles['rows'])==len(duties['wholeSourceDuties'])==20 and len(duties['wholeDirectEdges'])==25 and len(partners['rows'])==268
+assert sum(len(r['selectedTargetRoles'])for r in roles['rows'])==25
+assert len({r['sourceKey']for r in roles['rows']})==20
+historical=load(ownold/'whole45-duty-all293-original-partners.independent-b.first.verdicts.json');hm={r['sourceKey']:r for r in historical['entries']};whole_checks=[]
+for i,r in enumerate(duties['wholeSourceDuties'],1):
+ h=hm[r['sourceKey']];mapping=load(r['mappingPath']);extraction=load(r['sourceExtractionPath']);mid=r['wholeCurrentDecision']['sourceGoalId'];dec=next(x for x in mapping['decisions']if x['sourceGoalId']==mid);sg=next(x for x in extraction['sourceGoals']if x['id']==mid)
+ checks={'sourceOrdinal':i,'sourceKey':r['sourceKey'],'originalWholeSourceExact':r['wholeRetainedExtractionGoal']==h['wholeSourceRow']==sg,'allPartnerRowsExact':r['allPartnerRows']==h['everyOriginalPartnerRow'],'operativeWholeDecisionExact':r['wholeCurrentDecision']==dec,'operativeTargetsEqualWholePartnerUnion':set(dec['canonicalGoalIds'])=={p['canonicalGoalId']for p in r['allPartnerRows']}}
+ assert all(checks[k]for k in ['originalWholeSourceExact','allPartnerRowsExact','operativeWholeDecisionExact','operativeTargetsEqualWholePartnerUnion']),checks
+ whole_checks.append(checks)
+file_checks=[]
+for r in guard['sourceWholeFileGuards']:
+ orig=r['original'];copy=r['portableWholeCopy'];p=pathlib.Path(orig['path']);z=pathlib.Path(copy['path']);ok=p.read_bytes()==z.read_bytes()and sha(p)==orig['sha256'].removeprefix('sha256:')and sha(z)==copy['sha256'].removeprefix('sha256:');assert ok,str(p);file_checks.append({'original':orig,'portableCopy':copy,'byteExact':ok})
+assert all(r['wholeGoal']==cm[r['wholeGoal']['id']]for r in contexts['goals'])
+partner_changed=[]
+for r in partners['rows']:
+ g=r['wholeCurrentCanonicalPartnerBody'];curr=cm[g['id']]
+ if g!=curr:partner_changed.append({'goalId':g['id'],'changedFields':[k for k in set(g)|set(curr)if g.get(k)!=curr.get(k)]})
+# Root is independently integrating final19 images. No selected whole3 changes or scientific text/relations changes are accepted here.
+assert all(set(r['changedFields'])<={'resourceLinks'} and r['goalId']not in selected for r in partner_changed),partner_changed
+old_profiles=load(old/'P24.whole48-complete-DEEN-author.candidates.json');op={r['goalId']:r['profile']for r in old_profiles['goals']};assert len(profiles['goals'])==3 and all(r['profile']==op[r['goalId']]for r in profiles['goals'])
+old_cases=load(old/'whole48.material-task-model-scoring-independent-fresh-transfer.DEEN.author.json');oc={r['caseId']:r for r in old_cases['cases']};assert len(cases['cases'])==6 and all(r==oc[r['caseId']]for r in cases['cases'])
+assert len(residuals['residuals'])==4 and all(r['status'].startswith('HOLD_')for r in residuals['residuals'])
+pdf_checks=[];by_checks=[]
+for r in captures['captures']:
+ if 'physicalPage'in r:
+  raw=pathlib.Path(r['wholeOriginalPDF']['path']);text=pathlib.Path(r['wholeOriginalPage']['path']);n=r['physicalPage'];direct=subprocess.run(['pdftotext','-f',str(n),'-l',str(n),'-layout',str(raw),'-'],stdout=subprocess.PIPE,check=True).stdout;ok=direct==text.read_bytes();assert ok,str(text);pdf_checks.append({'jurisdiction':r['jurisdiction'],'physicalPage':n,'officialURL':r['officialURL'],'originalPDF':rec(raw),'wholeOriginalPage':rec(text),'directOriginalPDFTextExact':ok})
+ else:
+  course=r['actualOfficialCourse'];text=pathlib.Path(r['completeRetainedReadableText']['path']);prior=old/'primary'/f'BY13-{course}-official.actual-text.txt';ok=text.read_bytes()==prior.read_bytes();assert ok;raw=pathlib.Path(r['rawOfficialHTMLBytes']['path']);html=raw.read_text();required=['trennen die verschiedenen Photosynthesefarbstoffe','durch Chromatographie','aufbauenden Stoffwechselwegen der Photosynthese','Folgen für Wild- und Nutzpflanzen'];assert all(t in html for t in required)
+  if course=='EA':assert 'Lichtsammelkomplexe'in html
+  by_checks.append({'course':course,'officialURL':r['officialURL'],'rawCurrentOriginalHTML':rec(raw),'completeReadableOriginalText':rec(text),'wholeTextExactToAlreadyReadOriginal':ok,'originalCompetenceOperatorsPresentInActualHTML':True})
+assert len(pdf_checks)==28 and len(by_checks)==2
+# Ordinary ignore behavior uses index membership and permits raw official cache PDFs; all portable text/HTML copies are eligible.
+portable_paths=sorted({r['path']for r in load(a/'three-regional-source-role-remediation.author.first-input.freeze.json')['files']}|{str(p)for p in o.rglob('*')if p.is_file()})
+r=subprocess.run(['git','check-ignore','-z','--stdin'],input=b'\0'.join(p.encode()for p in portable_paths)+b'\0',stdout=subprocess.PIPE,check=False);ignored=[p.decode()for p in r.stdout.split(b'\0')if p];assert not ignored,ignored
+r=subprocess.run(['git','ls-files','-z','--',*portable_paths],stdout=subprocess.PIPE,check=True);tracked={p.decode()for p in r.stdout.split(b'\0')if p}
+result={'schemaVersion':1,'checkedAtUtc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'role':'Independent B scoped direct primary/source/current whole science retention; no whole QA or active writes','wholeSourceDutyCount':20,'concreteCurrentTargetRoleCount':25,'wholePartnerRowCount':268,'uniqueWholePartnerGoalBodiesRead':len({r['wholeCurrentCanonicalPartnerBody']['id']for r in partners['rows']}),'all20WholeSourceDutyAndPartnerUnionsExact':True,'sourceDutyChecks':whole_checks,'all20CurrentSourceWholeFilesAndPortableCopiesExact':True,'wholeFileChecks':file_checks,'allCurrentSelected3WholeGoalsExact':True,'wholeSelected3SourceKindAndCaseScopesPreserved':True,'unchanged3WholeValidProfilesExact':True,'unchanged6WholeDEENCasesExact':True,'currentOtherPartnerResourceOnlyDriftDueRootConcurrent19ImageIntegration':partner_changed,'otherPartnerScientificTextAndRelationsDrift':False,'sourceRoleCategories':dict(collections.Counter(x['role']for r in roles['rows']for x in r['selectedTargetRoles'])),'fourOriginalRealOperatorHoldsPreserved':True,'directActualWholeOriginalPDFPageChecks':pdf_checks,'currentOfficialBYCourseHTMLChecks':by_checks,'portableAuthorOwnPathCount':len(portable_paths),'trackedCount':len(tracked),'ordinaryGitIgnorePortableInputFailures':ignored,'rawOriginalPDFCachesPermittedLocalWithDurableURLAndPortableWholeReadTexts':True,'originalAuthorCountCorrectionAffectsBoilerplateOnly':True,'operativeMappingsChangedByThisCandidate':False,'newARemediationVerdictsRead':False,'activeWrites':0,'strictGain':0,'allPassed':True}
+(o/'three-source-b.actual-primary-whole-duty-retention-and-portability.check.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print(json.dumps({'allPassed':True,'wholeDuties':20,'roles':25,'partnerRows':268,'uniqueWholePartners':result['uniqueWholePartnerGoalBodiesRead'],'actualDirectPDFPages':28,'BYHTML':2,'originalOperatorHolds':4,'portableIgnored':ignored,'otherPartnerResourceOnlyDriftCount':len(partner_changed),'categories':result['sourceRoleCategories']}))

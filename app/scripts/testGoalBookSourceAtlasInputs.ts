@@ -156,9 +156,17 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   // Current independent source reviews correct the selected neurobiology
   // scopes and add explicit component routes without closing broad source HOLDs.
   assert.deepEqual(biology.receipt.scopes.filter(s => s.stage === 'SekII').map(s => [s.key, s.goalIds.length]), [
-    ['DE-BY/SekII/GK', 92], ['DE-BY/SekII/LK', 122], ['DE-HE/SekII/GK', 81], ['DE-HE/SekII/LK', 161],
+    ['DE-BY/SekII/GK', 91], ['DE-BY/SekII/LK', 121], ['DE-HE/SekII/GK', 81], ['DE-HE/SekII/LK', 161],
     ['DE-ST/SekII/GK', 6], ['DE-ST/SekII/LK', 6],
   ])
+  // The reviewed BY chromatography duty does not cover light-harvesting
+  // complex structure/function; retain its removal from both source routes.
+  const lightHarvestingGoalId = 'ec782ce3-475e-5628-b3fe-947d72e74a74'
+  for (const key of ['DE-BY/SekII/GK', 'DE-BY/SekII/LK']) {
+    const scope = biology.receipt.scopes.find(s => s.key === key)!
+    assert.ok(!scope.goalIds.includes(lightHarvestingGoalId), `Chromatography must not place light-harvesting complexes in ${key}`)
+    assert.ok(scope.witnesses.every(w => w.goalId !== lightHarvestingGoalId), `No false light-harvesting source witness in ${key}`)
+  }
   // Direct source scope remains bounded: prerequisite availability does not
   // become source coverage; ST's common entry phase is projected into both
   // technical upper-secondary course routes, never into its SekI target set.

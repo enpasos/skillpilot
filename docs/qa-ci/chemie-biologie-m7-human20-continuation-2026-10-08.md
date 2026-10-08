@@ -11,7 +11,7 @@ Stand: 8. Oktober 2026. Ausschließlich maschinelle Curriculum-QS; menschliche P
 | Mathematik, geschützte Untergrenze | 807 / 807 | 100 % | 0 |
 | Physik, geschützte Untergrenze | 478 / 478 | 100 % | 0 |
 
-Maßgeblich ist die tatsächlich abgeschlossene zentrale Prüfung: [`active-after-human20-central.actual.json`](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-human20-reviewed-active-integration-root-v1/active-after-human20-central.actual.json), Exit 0, keine zentralen Blocking Issues. Chemie und Biologie sind weiterhin M6; CQR-303/M7 ist noch nicht erreicht.
+Maßgeblich ist die tatsächlich abgeschlossene zentrale Prüfung: [`active-after-human20-central.actual.json`](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-human20-reviewed-active-integration-root-v1/active-after-human20-central.actual.json), Exit 0, keine zentralen Blocking Issues. Chemie und Biologie sind weiterhin M6; CQR-303/M7 ist noch nicht erreicht.
 
 ## Integriertes Paket
 
@@ -19,7 +19,7 @@ Die zwanzig Ziele zu Mensch und Gesundheit ergeben **20 neue fachliche Abschlüs
 
 Positive Evidenz bleibt wahrheitsgemäß `ai_candidate`, `needs_human_review`, E1/G1. Die Reviews behaupten keine tatsächliche Lernendenleistung und keine menschliche Freigabe. Herkunft, abgelehnte Bildvarianten und gezielte Korrekturen sind getrennt erhalten.
 
-Die [guardierte Integration](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-human20-reviewed-active-integration-root-v1/guarded-active-twenty-integration.actual.json) ergänzt ausschließlich zwanzig Biologie-Bildbindungen und geprüfte D/P/V-Artefakte. 454 übrige Zielkörper, die zuvor 134 strengen Biologie-Ziele, Chemie sowie Mathematik/Physik bleiben erhalten. Die Bilder liegen bytegleich im Kanon, Frontend und Backend.
+Die [guardierte Integration](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-human20-reviewed-active-integration-root-v1/guarded-active-twenty-integration.actual.json) ergänzt ausschließlich zwanzig Biologie-Bildbindungen und geprüfte D/P/V-Artefakte. 454 übrige Zielkörper, die zuvor 134 strengen Biologie-Ziele, Chemie sowie Mathematik/Physik bleiben erhalten. Die Bilder liegen bytegleich im Kanon, Frontend und Backend.
 
 ## Tatsächlich bestandene betroffene Prüfungen
 
@@ -38,4 +38,4 @@ Flora/Fauna: zwanzig aktuelle unveränderte Ziele; unabhängige frühere fachlic
 
 Chemie: begonnene B007/B011/B014-Pakete und kleine Quellen-/Operator-Pakete werden parallel anhand vollständiger Primärquellen und konkreter Aufgabenfälle weiterbearbeitet. Inaktive Splitkandidaten, ungelöste Quellenrollen und bloße Positions-/Hash-Anpassungen zählen als **0 neue Abschlüsse**. Das bestehende Ledger und historische Artefakte bleiben erhalten.
 
-Fortsetzung auf der [zentralen Registry](../../curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json), dem bestehenden In-flight-Ledger und den dort verlinkten jüngsten Fortsetzungsständen. Der Auftrag bleibt 100 % Chemie/Biologie mit den vollständigen Maschinen- und Layer-A-Gates; separate menschliche Release-Gates bleiben offen.
+Fortsetzung auf der [zentralen Registry](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json), dem bestehenden In-flight-Ledger und den dort verlinkten jüngsten Fortsetzungsständen. Der Auftrag bleibt 100 % Chemie/Biologie mit den vollständigen Maschinen- und Layer-A-Gates; separate menschliche Release-Gates bleiben offen.

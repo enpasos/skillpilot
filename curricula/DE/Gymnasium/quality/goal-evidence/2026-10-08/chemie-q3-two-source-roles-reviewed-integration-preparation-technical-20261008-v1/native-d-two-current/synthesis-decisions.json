@@ -1,0 +1,104 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "chemie-q3-reviewed-two-source-roles-current378-technical-20261008-v1-two-current-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex technical integrator; Root-delegated factual sealed A/B KEEP synthesis, no new scientific reviewer",
+  "synthesizedAt": "2026-10-08T08:53:19.482Z",
+  "batch": {
+    "batchId": "chemie-q3-reviewed-two-source-roles-current378-technical-20261008-v1-two-current",
+    "batchManifestDigest": "sha256:da98a6ee1340e4e64c1e85edce239637ff480a6e900deed2309bce2f0a5b841a",
+    "configDigest": "sha256:f6e1710a79115e69ad23fed00664334006d43dc2dbce479605d6a40aac35a2d1",
+    "bundleFingerprint": "sha256:2dae28733519c0d2e394029b612c85457604278cdc174631e9734d031c683b74",
+    "bookDigest": "sha256:bb243d69574d7e05856c56cd4743a39a745d49c45b93617ce95277c43bd17405",
+    "reviewInputFingerprint": "sha256:6ac3d78b4db0f16163a1aadad778918c830530a2fc6ee2c796142000e669d153",
+    "dualSummaryDigest": "sha256:14955a92483dbf76d13bed86a6d58f1ee78927c8978c9e6ee082a911d259fada",
+    "canonicalLandscapeDigest": "sha256:c5e6d0647e057d6a35f61af94f84cf7b87343ddc321fd5d758d84c1f89d68fe6"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-two-current-source-roles-native-campaign-a-20261008-v1",
+      "campaignDigest": "sha256:3fee95cd4abea7e78916d8509f97e6e1d92d76afb5cdcb76218dd3f718c9977f",
+      "roundId": "chemie-two-current-source-roles-native-independent-a-20261008-v1",
+      "independenceGroupId": "chemie-two-current-source-roles-native-independent-a-20261008-v1",
+      "reviewInputFingerprint": "sha256:6ac3d78b4db0f16163a1aadad778918c830530a2fc6ee2c796142000e669d153",
+      "batchId": "chemie-two-current-source-roles-native-independent-a-20261008-v1.batch-001",
+      "batchInputFingerprint": "sha256:581a98babb1fd7e2830213a91f2df5fc1534775b9f054bd2be4296be9e1b10c4",
+      "runId": "chemie-two-current-source-roles-native-independent-a-20261008-v1.root.run-001",
+      "runManifestDigest": "sha256:f6df4b57ab0d69e490178fc6c321ebc66d568f9b6aae1948b46b1269235da38b",
+      "resultsDigest": "sha256:c8955a305c8ff13283576da4ceb7d3f27b35b27a2436ca77c5ce2010b88079d6"
+    },
+    "second": {
+      "campaignId": "chemie-two-current-source-roles-native-campaign-b-20261008-v1",
+      "campaignDigest": "sha256:a67d77b3c0e1268ed141b8a34c1836e279f47cbdd3e4cdd3b2fa353a3bb4e3fd",
+      "roundId": "chemie-two-current-source-roles-native-independent-b-20261008-v1",
+      "independenceGroupId": "chemie-two-current-source-roles-native-independent-b-20261008-v1",
+      "reviewInputFingerprint": "sha256:6ac3d78b4db0f16163a1aadad778918c830530a2fc6ee2c796142000e669d153",
+      "batchId": "chemie-two-current-source-roles-native-independent-b-20261008-v1.batch-001",
+      "batchInputFingerprint": "sha256:7d3e219c0e07e25092d3db4aa156bbc872802e3689c3aba7b56900e61b0cd9a9",
+      "runId": "chemie-two-native-independent-b-first-pass-20261008-v1",
+      "runManifestDigest": "sha256:58916d35390292821b5cdaac90f07bc3a28efe4232171a54b1ca353001bbab44",
+      "resultsDigest": "sha256:125ebd24c392969ee81b439eae336c5e42b7cba6917555baf2dec173c2c4defd"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "chemie-q3-reviewed-two-source-roles-current378-technical-20261008-v1-two-current-decision-d9cce642-4f89-57f8-832a-abeb62586195",
+      "goalId": "d9cce642-4f89-57f8-832a-abeb62586195",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9c8c2cf563cb4db20a5ca128d0f250eb43091f66cdf9c203fedf86ff6fab09e5",
+      "pageFingerprint": "sha256:11c4b0a0f8420248c8cdbce9ec09782c90f7d99f0867f9a09bc35d09a03444dc",
+      "goalReviewContextFingerprint": "sha256:1ee493ede953232c740380462c5c2328692a1cce53d4c393ee8b401e3327a088",
+      "finalText": {
+        "titleDe": "Katalysatoren beurteilen",
+        "titleEn": "Assess catalysts",
+        "descriptionDe": "Die lernende Person kann erläutern, wie Katalysatoren die Einstellung eines Gleichgewichts beeinflussen und Beispiele für homogene und heterogene Katalyse nennen.",
+        "descriptionEn": "The learner can explain how catalysts influence the establishment of an equilibrium and name examples of homogeneous and heterogeneous catalysis."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-two-current-source-roles-native-independent-a-20261008-v1.root.run-001.record-1",
+          "recordDigest": "sha256:3af64a00667afe0fd7352f58c9057b677846e6da385a3ac5fd0a263d1b856285"
+        },
+        "second": {
+          "recordId": "chemie-two-native-independent-b-first-pass-20261008-v1.goal-1",
+          "recordDigest": "sha256:2b36d9acd911284f0777cccabde400bb8cb6516995ed42c053574899d2409fbb"
+        }
+      },
+      "rationaleDe": "Technische Zusammenführung zweier tatsächlich vollständiger blinder unabhängiger Chemie-KEEP-Records für das identische ganze aktuelle DE/EN-Ziel, die echte zweizielige Seite und den vollständigen Kontext. Beide eigenen Record- und Runbytes bleiben unverändert. Die tatsächlich geprüfte Katalyse-PNGv2 und die aktuellen bildspezifischen Linktexte werden übernommen; der gute originale Ionenentladungs-JPEG bleibt KEEP. Beide Prüfer haben die ganzen unveränderten bilingualen P-Profile und vier vollständigen Fälle tatsächlich bewertet. Alle49 Quellenpflichten und259 Partnerzeilen bleiben verlustfrei und in ihren begrenzten Rollen erhalten; die16 vollständigen Quellenpflicht-HOLDs bleiben offen. Dies materialisiert diese wirklichen Urteile, keine neue Autoren-Fachprüfung und keine menschliche Freigabe.",
+      "rationaleEn": "Technical synthesis of two genuinely complete blind independent chemistry KEEP records for the identical whole current bilingual goal, real two-goal native page and full context. Both own record and run byte streams remain unchanged. The actually reviewed catalyst PNGv2 and current image-specific link texts are adopted; the good original ion-discharge JPEG is retained. Both reviewers actually checked the entire unchanged bilingual profiles and four complete cases. All49 source duties and259 partner rows remain lossless in their bounded roles; the16 whole-source-duty holds stay open. This materializes those actual judgments, not a new scientific review by the technical author or human approval."
+    },
+    {
+      "decisionId": "chemie-q3-reviewed-two-source-roles-current378-technical-20261008-v1-two-current-decision-3eada74b-25b8-55dc-811a-acb473196f53",
+      "goalId": "3eada74b-25b8-55dc-811a-acb473196f53",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:68989d415c269b8559e08c197bdf2b1778fbeca22007ed89e0100e5cc6761a55",
+      "pageFingerprint": "sha256:b9c2d097ef05dce176ed2116b92c75580dddfcf3a7efc8bf4ad112c3a06d5b3b",
+      "goalReviewContextFingerprint": "sha256:d4a39f65bf7837e563d0eae17baa376ed48c5eaae1db528f8a38cab71b105d39",
+      "finalText": {
+        "titleDe": "Ionenentladung und Überspannung deuten",
+        "titleEn": "Interpret ion discharge and overvoltage",
+        "descriptionDe": "Die lernende Person kann bei Elektrolysen die Reihenfolge der Ionenentladung beschreiben, erwartbare Elektrodenreaktionen ableiten und Abweichungen mithilfe von Zersetzungsspannung und Überspannung begründen.",
+        "descriptionEn": "The learner can describe ion discharge order in electrolysis, derive expected electrode reactions, and justify deviations using decomposition voltage and overvoltage."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-two-current-source-roles-native-independent-a-20261008-v1.root.run-001.record-2",
+          "recordDigest": "sha256:93cce98b6ecb032c3538e9e09df795992a3c37fe811a8b281722bef9724d130b"
+        },
+        "second": {
+          "recordId": "chemie-two-native-independent-b-first-pass-20261008-v1.goal-2",
+          "recordDigest": "sha256:3f8695a3c2eb22440edbf77ff0216e9125d9263715d14df9f29b412e2bb66c96"
+        }
+      },
+      "rationaleDe": "Technische Zusammenführung zweier tatsächlich vollständiger blinder unabhängiger Chemie-KEEP-Records für das identische ganze aktuelle DE/EN-Ziel, die echte zweizielige Seite und den vollständigen Kontext. Beide eigenen Record- und Runbytes bleiben unverändert. Die tatsächlich geprüfte Katalyse-PNGv2 und die aktuellen bildspezifischen Linktexte werden übernommen; der gute originale Ionenentladungs-JPEG bleibt KEEP. Beide Prüfer haben die ganzen unveränderten bilingualen P-Profile und vier vollständigen Fälle tatsächlich bewertet. Alle49 Quellenpflichten und259 Partnerzeilen bleiben verlustfrei und in ihren begrenzten Rollen erhalten; die16 vollständigen Quellenpflicht-HOLDs bleiben offen. Dies materialisiert diese wirklichen Urteile, keine neue Autoren-Fachprüfung und keine menschliche Freigabe.",
+      "rationaleEn": "Technical synthesis of two genuinely complete blind independent chemistry KEEP records for the identical whole current bilingual goal, real two-goal native page and full context. Both own record and run byte streams remain unchanged. The actually reviewed catalyst PNGv2 and current image-specific link texts are adopted; the good original ion-discharge JPEG is retained. Both reviewers actually checked the entire unchanged bilingual profiles and four complete cases. All49 source duties and259 partner rows remain lossless in their bounded roles; the16 whole-source-duty holds stay open. This materializes those actual judgments, not a new scientific review by the technical author or human approval."
+    }
+  ],
+  "manifestFingerprint": "sha256:f3e6e3c216ef508059c5750eb59172bd8e12e9674b3e0f535d69b065c4a79ce2"
+}
