@@ -13,6 +13,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 class ExamLatexStorageConventionsTest {
@@ -25,6 +26,22 @@ class ExamLatexStorageConventionsTest {
                     + "[ \\t]*[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:pt|pc|in|bp|cm|mm|dd|cc|sp|ex|em)[ \\t]*"
                     + Pattern.quote("]"));
     private static final String UPRIGHT_EURO = "\\,\\mathrm{EUR}";
+    private static final List<String> delimiterViolations = new ArrayList<>();
+    private static final List<String> currencyViolations = new ArrayList<>();
+
+    @BeforeAll
+    static void inspectExamData() throws IOException {
+        // Both checks cover the same files and fields. Parse each file once, including
+        // historical QA inputs, and retain each check's complete list of findings.
+        try (Stream<Path> files = Files.walk(resolveCurriculaDir())) {
+            for (Path file : files
+                    .filter(Files::isRegularFile)
+                    .filter(p -> p.getFileName().toString().endsWith(".json"))
+                    .collect(Collectors.toList())) {
+                checkFile(file);
+            }
+        }
+    }
 
     @Test
     void matrixRowSpacingMustNotBeConfusedWithOverEscapedDisplayMath() {
@@ -40,46 +57,22 @@ class ExamLatexStorageConventionsTest {
     }
 
     @Test
-    void examDataMustNotContainOverEscapedLatexDelimiters() throws Exception {
-        Path curriculaDir = resolveCurriculaDir();
-        List<String> violations = new ArrayList<>();
-
-        try (Stream<Path> files = Files.walk(curriculaDir)) {
-            for (Path file : files
-                    .filter(Files::isRegularFile)
-                    .filter(p -> p.getFileName().toString().endsWith(".json"))
-                    .collect(Collectors.toList())) {
-                checkFileForViolations(file, violations);
-            }
-        }
-
-        assertThat(violations)
-                .withFailMessage("Found over-escaped LaTeX delimiters in examData:\n%s", String.join("\n", violations))
+    void examDataMustNotContainOverEscapedLatexDelimiters() {
+        assertThat(delimiterViolations)
+                .withFailMessage("Found over-escaped LaTeX delimiters in examData:\n%s", String.join("\n", delimiterViolations))
                 .isEmpty();
     }
 
     @Test
-    void examDataMathCurrencyMustUseUprightEuroTypesetting() throws Exception {
-        Path curriculaDir = resolveCurriculaDir();
-        List<String> violations = new ArrayList<>();
-
-        try (Stream<Path> files = Files.walk(curriculaDir)) {
-            for (Path file : files
-                    .filter(Files::isRegularFile)
-                    .filter(p -> p.getFileName().toString().endsWith(".json"))
-                    .collect(Collectors.toList())) {
-                checkFileForCurrencyViolations(file, violations);
-            }
-        }
-
-        assertThat(violations)
+    void examDataMathCurrencyMustUseUprightEuroTypesetting() {
+        assertThat(currencyViolations)
                 .withFailMessage(
                         "Found EUR inside examData math without the exact \\,\\mathrm{EUR} typesetting:\n%s",
-                        String.join("\n", violations))
+                        String.join("\n", currencyViolations))
                 .isEmpty();
     }
 
-    private static void checkFileForCurrencyViolations(Path file, List<String> violations) {
+    private static void checkFile(Path file) {
         JsonNode root;
         try {
             root = MAPPER.readTree(file.toFile());
@@ -98,10 +91,10 @@ class ExamLatexStorageConventionsTest {
                 continue;
             }
             String goalId = goal.path("id").asText("unknown-goal");
-            checkCurrencyField(file, goalId, examData, "taskContent", violations);
-            checkCurrencyField(file, goalId, examData, "solutionContent", violations);
-            checkCurrencyField(file, goalId, examData, "taskContentEn", violations);
-            checkCurrencyField(file, goalId, examData, "solutionContentEn", violations);
+            for (String field : List.of("taskContent", "solutionContent", "taskContentEn", "solutionContentEn")) {
+                checkField(file, goalId, examData, field, delimiterViolations);
+                checkCurrencyField(file, goalId, examData, field, currencyViolations);
+            }
         }
     }
 
@@ -120,32 +113,6 @@ class ExamLatexStorageConventionsTest {
                 violations.add(file + " | goal=" + goalId + " | field=" + field + " | math=$"
                         + expression.replace("\n", "\\n") + "$");
             }
-        }
-    }
-
-    private static void checkFileForViolations(Path file, List<String> violations) {
-        JsonNode root;
-        try {
-            root = MAPPER.readTree(file.toFile());
-        } catch (IOException e) {
-            return;
-        }
-
-        JsonNode goals = root.get("goals");
-        if (goals == null || !goals.isArray()) {
-            return;
-        }
-
-        for (JsonNode goal : goals) {
-            JsonNode examData = goal.get("examData");
-            if (examData == null || !examData.isObject()) {
-                continue;
-            }
-            String goalId = goal.path("id").asText("unknown-goal");
-            checkField(file, goalId, examData, "taskContent", violations);
-            checkField(file, goalId, examData, "solutionContent", violations);
-            checkField(file, goalId, examData, "taskContentEn", violations);
-            checkField(file, goalId, examData, "solutionContentEn", violations);
         }
     }
 
