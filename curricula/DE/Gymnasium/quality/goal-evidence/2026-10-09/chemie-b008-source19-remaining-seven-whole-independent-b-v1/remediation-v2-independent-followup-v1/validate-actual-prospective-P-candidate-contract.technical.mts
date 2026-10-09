@@ -1,0 +1,37 @@
+import { readFileSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { dirname, resolve, relative } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import Ajv2020 from '../../../../../../../../app/node_modules/ajv/dist/2020.js';
+import addFormats from '../../../../../../../../app/node_modules/ajv-formats/dist/index.js';
+import { validatePositiveGoalEvidenceRecordSemantics } from '../../../../../../../../app/scripts/positiveGoalEvidenceProfileModel';
+
+const own = dirname(fileURLToPath(import.meta.url));
+const root = resolve(own, '../../../../../../../..');
+const author = resolve(own, '../../chemie-b008-source19-remaining-seven-whole-author-v1/remediation-v2');
+const recordsPath = resolve(author, 'remaining-seven.positive-understanding-evidence-v2.author-candidates.v2.jsonl');
+const specsPath = resolve(author, 'remaining-seven.normal-positive-profile-bodies.v2.author-candidate.json');
+const schemaPath = resolve(root, 'contracts/goal-evidence/v2/goal-evidence-profile.schema.json');
+const sha = (b: Buffer) => `sha256:${createHash('sha256').update(b).digest('hex')}`;
+const bind = (p: string) => ({ path: relative(root, p), sha256: sha(readFileSync(p)), bytes: readFileSync(p).length });
+const entries = JSON.parse(readFileSync(specsPath, 'utf8')).entries;
+const records = readFileSync(recordsPath, 'utf8').trim().split('\n').map(x => JSON.parse(x));
+const ajv = new Ajv2020({ allErrors: true, strict: false });
+addFormats(ajv);
+const validate = ajv.compile(JSON.parse(readFileSync(schemaPath, 'utf8')));
+const results = records.map((record: any) => {
+  const entry = entries.find((x: any) => x.goal.id === record.goalId);
+  if (!entry) throw new Error(`Missing exact goal: ${record.goalId}`);
+  if (entry.goal.resourceLinks.length !== 0) throw new Error('Prospective scope unexpectedly has resources');
+  const errors = [] as string[];
+  if (!validate(record)) errors.push(...(validate.errors ?? []).map(e => `${e.instancePath}: ${e.message}`));
+  errors.push(...validatePositiveGoalEvidenceRecordSemantics(record, entry.goal, {}, 'curricularAtomic'));
+  if (JSON.stringify(record.profile) !== JSON.stringify(entry.profile)) errors.push('Record/spec profile values differ');
+  if (record.status !== 'needs_human_review' || record.reviewAuthority !== 'ai_candidate' || record.evidenceLevel !== 'E1' || record.maximumClaimScope !== 'G1' || record.reviewRunIds.length !== 0) errors.push('Author metadata exceeds candidate scope');
+  return { goalId: record.goalId, errors };
+});
+const errors = results.flatMap(x => x.errors.map(e => `${x.goalId}: ${e}`));
+const receipt = { schemaVersion: 1, role: 'Independent B actual ordinary profile schema and semantic helper check, prospective author scope only', scope: 'prospective-empty-resource-author-candidate', inputBindings: [bind(recordsPath), bind(specsPath), bind(schemaPath), bind(resolve(root, 'app/scripts/positiveGoalEvidenceProfileModel.ts'))], records: records.length, results, errors, currentNativePApproval: false, humanApproval: false, strictGain: 0 };
+writeFileSync(resolve(own, 'actual-prospective-P-candidate-contract.technical.receipt.json'), JSON.stringify(receipt, null, 2) + '\n', { flag: 'wx' });
+console.log(JSON.stringify({ records: records.length, errors, currentNativePApproval: false }));
+if (errors.length) process.exitCode = 1;

@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "authoringContract": "positive-understanding-evidence-candidates-v1",
+  "reviewId": "chemie-current-one-MV-KpKc-independent-b-20261009-v1",
+  "reviewedAt": "2026-10-09T08:37:06.262Z",
+  "reviewer": "/root/biology_resume_candidate independent Kp/Kc reviewer B",
+  "goals": [
+    {
+      "goalId": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "ideal-partial-pressure-derivation",
+            "essentialUnderstandingDe": "Der Zusammenhang folgt aus jedem idealen Partialdruck und den stöchiometrischen Exponenten des gleichen Gleichgewichts.",
+            "essentialUnderstandingEn": "The relationship follows from each ideal partial pressure and the stoichiometric exponents of the same equilibrium.",
+            "observablePerformanceDe": "Leitet p_i=c_iRT und Kp=Kc(RT)^Δn_g nachvollziehbar her und erklärt, warum nur Gase zu Δn_g beitragen.",
+            "observablePerformanceEn": "Derives p_i=c_iRT and Kp=Kc(RT)^Δn_g explicitly and explains why only gases contribute to Δn_g."
+          },
+          {
+            "id": "consistent-units-and-standard-states",
+            "essentialUnderstandingDe": "Umrechnung setzt identische Reaktion und Temperatur sowie konsistente Einheiten/Definitionsformen voraus.",
+            "essentialUnderstandingEn": "Conversion requires the same reaction and temperature plus consistent units/definitions.",
+            "observablePerformanceDe": "Berechnet und kontrolliert Konstanten für positive, null und negative Δn_g; unterscheidet dimensionalen Schulansatz und dimensionslose Standardzustände und korrigiert eine echte Einheiten-/Richtungsabweichung.",
+            "observablePerformanceEn": "Calculates/checks constants for positive, zero and negative Δn_g; distinguishes dimensional school definitions from dimensionless standard states and corrects a concrete unit/direction change."
+          },
+          {
+            "id": "limits-and-independent-transfer",
+            "essentialUnderstandingDe": "Idealität, reine Phasen und Temperaturbindung begrenzen die Schlussfolgerung; gleiche Zahlen an einem T sind keine universelle Aussage.",
+            "essentialUnderstandingEn": "Ideality, pure phases and temperature binding limit inference; equal numbers at one T are not universal.",
+            "observablePerformanceDe": "Begründet Grenzen bei Nichtidealität/Temperaturänderung, lässt einen reinen Feststoff korrekt aus und überträgt die Herleitung auf eine neue Gasstöchiometrie.",
+            "observablePerformanceEn": "Justifies nonideality/temperature limits, correctly excludes a pure solid and transfers the derivation to new gas stoichiometry."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "ideal-partial-pressure-derivation",
+            "consistent-units-and-standard-states",
+            "limits-and-independent-transfer"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "gas-stoichiometry",
+            "textDe": "Positive, null und negative Differenz gasförmiger Koeffizienten, umgekehrte Reaktion, ausgeschlossener Feststoff.",
+            "textEn": "Positive/zero/negative gaseous coefficient differences, reversed reaction and an excluded solid."
+          },
+          {
+            "id": "unit-definition",
+            "textDe": "bar/L versus Pa/m³; dimensionale gegenüber standardzustandsnormierten Definitionen.",
+            "textEn": "bar/L versus Pa/m³; dimensional versus standard-state-normalised definitions."
+          },
+          {
+            "id": "model-domain",
+            "textDe": "Absolute Temperatur, gleiche Gleichgewichtsbedingungen und Grenze zur Nichtidealität.",
+            "textEn": "Absolute temperature, identical equilibrium conditions and the nonideality boundary."
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "ideal-dimer-derivation-and-unit-transfer",
+            "taskDemandDe": "Konstruiertes Rechenmodell, keine Messung und keine Laboranleitung: N2O4(g)⇌2NO2(g), T=300K, R=0,08314L·bar·mol⁻¹·K⁻¹. Unnormiertes Kc=[NO2]²/[N2O4]=0,050mol·L⁻¹. Gleichgewichtsdrücke werden inbar angegeben; beide Gase werden ideal behandelt. Für eine separate dimensionslose Darstellung sind c°=1mol·L⁻¹ und p°=1bar gegeben. Leite die Beziehung aus p_iV=n_iRT her, statt nur eine Formel einzusetzen. Begründe den Exponenten und berechne Kp samt Einheit. Stelle daneben die dimensionslose Beziehung mit den gegebenen Standardzuständen auf. Prüfe dann ein Blatt, das stattdessenR=8,314Pa·m³·mol⁻¹·K⁻¹, aber weiter0,050mol·L⁻¹ einsetzt und das Ergebnis alsbar beschriftet. Neue Bedingung: Schreibe die umgekehrte Reaktion2NO2(g)⇌N2O4(g) bei demselben300K. Leite die neuen Konzentrations- und Druckprodukte mit ihren Einheiten her. Ein zweites Blatt benutzt27°C statt300K; ist seine Umrechnung zulässig?",
+            "taskDemandEn": "Constructed calculation model, not a measurement or laboratory protocol: N2O4(g)⇌2NO2(g), T=300K, R=0.08314L·bar·mol⁻¹·K⁻¹. Unnormalised Kc=[NO2]²/[N2O4]=0.050mol·L⁻¹. Equilibrium pressures usebar and both gases are ideal. For a separate dimensionless representation, c°=1mol·L⁻¹ and p°=1bar. Derive the relation from p_iV=n_iRT rather than just quoting a formula. Justify the exponent and calculate Kp with units. Separately write the dimensionless relation using the supplied standard states. Evaluate a worksheet usingR=8.314Pa·m³·mol⁻¹·K⁻¹ with0.050mol·L⁻¹ unchanged and then labelling its resultbar. Fresh condition: reverse the reaction to2NO2(g)⇌N2O4(g) at the same300K. Derive the new concentration/pressure products and units. Another sheet uses27°C instead of300K in the formula; is that conversion valid?",
+            "expectedPerformanceDe": "Vollständige Partialdruck-Herleitung; Δn_g=1, 1,2471bar; dimensionslose Standardzustände getrennt; SI-Konzentration50mol·m⁻³, 124710Pa; inverse Reaktion mitΔn_g=−1 und reziproken Einheiten. Neue Temperatur-/Einheitsbedingung selbst begründet.",
+            "expectedPerformanceEn": "Complete partial-pressure derivation; Δn_g=1, 1.2471bar; dimensionless standard states separate; SI concentration50mol·m⁻³, 124710Pa; reversed reaction withΔn_g=−1 and reciprocal units. New temperature/unit conditions justified independently.",
+            "understandingFocusDe": "Aus Modellannahmen herleiten und Definitionen/Einheiten kontrollieren, statt nur die Formel reproduzieren.",
+            "understandingFocusEn": "Derive from assumptions and check definitions/units rather than merely reproduce a formula."
+          },
+          {
+            "id": "zero-gas-difference-new-stoichiometry-and-model-limits",
+            "taskDemandDe": "Zweites konstruiertes Gleichgewichtsmodell: CO(g)+H2O(g)⇌CO2(g)+H2(g), T=600K. Gegeben sindc(CO)=0,001, c(H2O)=0,002, c(CO2)=0,001 undc(H2)=0,0024mol·L⁻¹. R=0,08314L·bar·mol⁻¹·K⁻¹, alle Speziesgasförmig/ideal. Das Modell liefert Gleichgewichtsdaten, keine reale Apparatur oder gemessene Ausbeute. Leite aus den vier idealen Partialdrücken die Druckproduktbeziehung her, berechne Kc und Kp und erkläre das Wegfallen desRT-Faktors. Beurteile die Behauptungen „Kp=Kc, daher temperaturunabhängig“ und „bei beliebig hohem Druck gilt immer diese ideale Umrechnung“. Neue Reaktion1: N2(g)+3H2(g)⇌2NH3(g) bei500K, gegeben Kc=0,400L²·mol⁻². Neue Reaktion2: C(s)+2H2(g)⇌CH4(g) bei demselben500K, reiner Feststoff mit Aktivität1 und gegeben Kc=c(CH4)/c(H2)²=0,200L·mol⁻¹. Leite jeweilsΔn_g undKp samtEinheit her. Ein Blatt zählt den Feststoff als Gas und erhält fürReaktion2 denExponenten−2; prüfe es.",
+            "taskDemandEn": "Second constructed equilibrium model: CO(g)+H2O(g)⇌CO2(g)+H2(g) at 600K. Suppliedc(CO)=0.001, c(H2O)=0.002, c(CO2)=0.001 andc(H2)=0.0024mol·L⁻¹. R=0.08314L·bar·mol⁻¹·K⁻¹; all species are gaseous/ideal. These are supplied equilibrium-model data, not an apparatus or measured yield. Derive the pressure product from the four ideal partial pressures, calculateKc/Kp and explain why theRT factor cancels. Evaluate “Kp=Kc therefore temperature-independent” and “the ideal conversion always holds at arbitrarily high pressure”. Fresh reaction1: N2(g)+3H2(g)⇌2NH3(g) at500K withKc=0.400L²·mol⁻². Fresh reaction2: C(s)+2H2(g)⇌CH4(g) at the same500K, pure solid activity1, suppliedKc=c(CH4)/c(H2)²=0.200L·mol⁻¹. DeriveΔn_g andKp with units for each. A sheet counts the solid asgas and uses−2 for reaction2; evaluate it.",
+            "expectedPerformanceDe": "RT kürzt sich beiΔn_g=0; Kc=Kp=1,2 am gegebenen600K, keine Temperaturunabhängigkeit. Neue Koeffizienten−2 beim Ammoniakmodell,−1 beim Feststoff/Gas-Modell; Zahlen, Einheiten, Aktivität1 und Nichtidealitätsgrenzen korrekt begründet.",
+            "expectedPerformanceEn": "RT cancels atΔn_g=0; Kc=Kp=1.2 at the supplied600K, with no temperature-independence inference. New coefficients−2 for ammonia and−1 for solid/gas; calculations, units, activity1 and nonideality bounds justified.",
+            "understandingFocusDe": "Eine neue stöchiometrische und physikalische Bedingung eigenständig auf das Modell zurückführen.",
+            "understandingFocusEn": "Independently connect new stoichiometric and physical conditions to the model."
+          }
+        ]
+      },
+      "reason": "Own first-sealed scientific whole DEEN goal/profile/two-case review and independent arithmetic accept this bounded ideal-gas derivation/conversion/domain competence. At least two substantive demonstrations and chemically changed conditions preserve ordinary min2 criteria. Actual MV physical27/printed23 supplies only qualification-phase LK derivation. No actual experiment, learner performance, native-page approval or current-raster approval is claimed; existing raster HOLD remains separate.",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "dissent": []
+    }
+  ]
+}

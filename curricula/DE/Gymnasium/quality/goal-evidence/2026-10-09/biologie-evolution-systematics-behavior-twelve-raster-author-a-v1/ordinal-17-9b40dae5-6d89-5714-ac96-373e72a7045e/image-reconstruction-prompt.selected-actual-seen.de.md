@@ -1,0 +1,7 @@
+# Eigenständige Rekonstruktion aus tatsächlichem Autorenbild
+
+Erzeuge ein einziges freundliches abstraktes Comic-Raster im Querformat nahe16:9, weißer Hintergrund, kräftige dunkle Konturen, große klar lesbare deutsche Kurzlabels. Keine IDs, Logos, Zahlenmessungen oder winzigen Zusatztexte. Diese Beschreibung ist nachträglich aus dem tatsächlich gesehenen ausgewählten PNG abgeleitet; kein ausgeführter Auftrag und kein historischer Originalprompt. 
+
+Links große DNA-Symbolhelix mit Hox-Gene. Schwarzer Pfeil zum blau gerahmten Kasten Genregulation; darin Ort mit Positionsmarker über kurzer gegliederter Form und Zeit mit Uhr/Schieberegler. Pfeil nach rechts zu zwei gekrümmten ähnlichen schematischen Embryoformen mit unterschiedlichen blau beziehungsweise grün markierten Zonen unter Entwicklungsmuster. Unten gepunktete bedingte Brücke Variation möglich zu zwei abstrakten gegliederten Körperformicons mit markierten Bereichen und verschiedenen hinteren Formen. Keine reale Spezies, präzise Segment-/Hoxkartierung, unveränderlich mitwandernden Allelmarker oder experimentelle Expressionsergebnisse behaupten; Regulation ist orts-/zeitabhängig, keine bewusste Bedürfnissteuerung. Dotted bridge bleibt bedingt, keine unmittelbare Artentstehung oder neue beliebige Organe garantieren.
+
+Die Darstellung unterstützt Orientierung zum ganzen aktuellen Lernziel. Sie beweist weder menschliches Können noch Experimente, Quellen-/Kursfreigabe oder M7.

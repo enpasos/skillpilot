@@ -1,0 +1,67 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-upper-science-reviewed-native-d-20261009-v1-fourteen-original",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/integration-preparation-v1/native-d-fourteen-original.batch.config.json",
+  "configDigest": "sha256:c0ac342f4984de94bc3372318bb71e4dd89c418ebfeb18149e471c7a30f7d497",
+  "goalIds": [
+    "19fe5734-ea3e-5e3f-bd69-692955787168",
+    "0beb4ca2-2437-557a-9db2-ccda1cbcfa0a",
+    "fe8cb55a-00e9-5964-880a-2634125cfd41",
+    "4d1b2991-9279-591f-a0b1-0ff184ffd8e5",
+    "4edb6169-1202-5651-b23f-dcb6eddb58ba",
+    "d5548c48-7c0a-562e-b09b-b101c6ed732b",
+    "82acfbde-9ce8-5658-892e-4dcfb1c3a1f1",
+    "328fd9d3-d3c3-5731-a8da-a909143d3962",
+    "19bcea3a-af7a-5feb-b083-d11bd51303a0",
+    "b66372fc-f72d-5686-9570-1939ed3fbd2a",
+    "8375310d-1f7e-542d-9969-55ad4bd37f7c",
+    "4f741ece-e38e-5c6d-ae59-c0f017753177",
+    "788cda1f-8ca3-5241-8d73-50d9952e9da3",
+    "41c14647-9747-58d8-b97d-d1dce33e980e"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 394,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/native-preparation-v1/candidate/book.current394.fourteen-resource.inactive.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/native-preparation-v1/candidate/canonical.current479.fourteen-resource-candidates.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:287426a8fe6a307d4150be6b52ae743b4293bbf695b33f31e1a4f56b8bf9379b"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:6179b7f1cf3cfdb872f5d17f29cd3feb39ac1f226567ded713b21ec912766b91",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:46b4e497e6e3f9686d719c6abc1ed7389c8127cf02ea3baa10f7b94e58b1ac51",
+    "reviewInputFingerprint": "sha256:cc46c6f89a942468bfe2fe9fb7202b1b18bd0c4d97e9922cfda7509f7721ad07",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-upper-science-fourteen-current394-native-v1-campaign-a",
+        "campaignDigest": "sha256:d9d8147c9b8a4d4f9ad2948a7328309aa730dc9ac6f84006886bae207a9f78e6",
+        "roundId": "biologie-upper-science-fourteen-current394-native-v1-independent-a",
+        "independenceGroupId": "biologie-upper-science-fourteen-current394-native-v1-independent-a",
+        "batchId": "biologie-upper-science-fourteen-current394-native-v1-independent-a.batch-001",
+        "batchInputFingerprint": "sha256:4e2ca6ca94a5917ee1247033eb00981be55d47d3c36289ace803053bd35debc1"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-upper-science-fourteen-current394-native-v1-campaign-b",
+        "campaignDigest": "sha256:9c15e50cf7461a22785dec449d409d7d9186237d96447a3b5038062ff782915c",
+        "roundId": "biologie-upper-science-fourteen-current394-native-v1-independent-b",
+        "independenceGroupId": "biologie-upper-science-fourteen-current394-native-v1-independent-b",
+        "batchId": "biologie-upper-science-fourteen-current394-native-v1-independent-b.batch-001",
+        "batchInputFingerprint": "sha256:c6a328e55621491e4c9c717de7e3bf3beb3c272d3ed07b1dea27f13fb64a4c2b"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

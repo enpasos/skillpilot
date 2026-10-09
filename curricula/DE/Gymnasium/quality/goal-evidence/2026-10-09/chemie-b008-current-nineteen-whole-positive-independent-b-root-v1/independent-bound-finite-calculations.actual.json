@@ -1,0 +1,76 @@
+{
+  "schemaVersion": 1,
+  "role": "Independent B finite calculation receipt, not automatic scientific or native approval",
+  "csvInputs": [
+    {
+      "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-current-nineteen-whole-positive-author-v1/author-reference-kinetics-original-and-fresh.csv",
+      "sha256": "e0de73099aa9f9b1ababe0a376b434037733a9c2dfb884bf5856890f2a0c8527",
+      "bytes": 689
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-current-nineteen-whole-positive-author-v1/author-reference-equilibrium-K1-K2.csv",
+      "sha256": "bd2578533c3c688882337aacc11dabf4c1ebb2581990b3b650f1d3d1d6b0cd5a",
+      "bytes": 345
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-current-nineteen-whole-positive-author-v1/author-reference-occupancy-Kd2.csv",
+      "sha256": "d650b11153cb645790630640756c5a6be783fe63f2c9704748fdc72788995a24",
+      "bytes": 100
+    },
+    {
+      "path": "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-current-nineteen-whole-positive-author-v1/author-reference-calibration-domain.csv",
+      "sha256": "12dea51269e722d8b8194f165961c3389232504539614d5445d3e52ffa180b81",
+      "bytes": 272
+    }
+  ],
+  "numericComparisons": 70,
+  "errors": [],
+  "kinetics": {
+    "original": {
+      "slopePerMinute": -0.05000299098904327,
+      "intercept": 1.2403582376308009e-05,
+      "residuals": [
+        -1.2403582376308009e-05,
+        -3.304428997574771e-05,
+        0.00010329932708075251,
+        -5.785145472847475e-05
+      ]
+    },
+    "fresh": {
+      "slopePerMinute": -0.04693502162592864,
+      "intercept": 0.03069209721352273,
+      "residuals": [
+        -0.03069209721352273,
+        -0.06139243155226848,
+        0.2148611547451048,
+        -0.12277662597931371
+      ]
+    }
+  },
+  "fresh20VersusOriginalIdealLine": 0.3068528194400547,
+  "idealFirstOrderHalfLifeMinutes": 13.862943611198904,
+  "equilibriumK2AdmissibleExtent": 0.3944487245360109,
+  "volumeFactorBoundsOnly": [
+    1.9940119760479043,
+    2.006012024048096
+  ],
+  "acidStandardRelativeHighBias": 0.11111111111111116,
+  "freshProcessAccepted20": {
+    "freshSolventKgPerKg": 2.0,
+    "circulatedKgPerKg": 3.0,
+    "energyKWhPerKg": 3.15,
+    "freshReduction": 0.6,
+    "energyIncrease": 0.26
+  },
+  "conductivityStandardNominalBoundsMicrosiemensPerCm": [
+    1970,
+    2010
+  ],
+  "lowerRangeUpperBoundMicrosiemensPerCm": 2000,
+  "completeStandardIntervalCoveredByLowerRange": false,
+  "learnerPerformanceRecorded": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "nativeApproved": false,
+  "strictGain": 0
+}

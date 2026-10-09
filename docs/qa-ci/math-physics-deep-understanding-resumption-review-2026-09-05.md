@@ -22,6 +22,11 @@ Biologie streng abgeschlossen. Mathematik-M7 und Physik-M7 bleiben erhalten.
 Die folgenden älteren Arbeitsstände und damaligen Nutzersteuerungen sind
 historische Momentaufnahmen; menschliche Release-Gates bleiben getrennt.
 
+Die [Chemie-/Biologie-Fortsetzung vom 9. Oktober](chemie-biologie-m7-science-and-source-continuation-2026-10-09.md)
+ergänzt die unabhängig geprüften begrenzten Quellenrollen und das aktuelle
+Wissenschafts-/Bildpaket. Noch inaktive oder nicht vollständig gebundene
+Kandidaten erhöhen den strengen Ausgangsstand 177/378 und 262/394 nicht.
+
 ## Aktueller Auftrag: Mathematik bis M7, Physik M7 erhalten
 
 Am 20. September wurde ausdrücklich beauftragt, Mathematik nach denselben

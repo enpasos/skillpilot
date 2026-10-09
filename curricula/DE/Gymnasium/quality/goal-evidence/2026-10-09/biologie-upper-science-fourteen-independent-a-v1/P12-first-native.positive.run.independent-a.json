@@ -1,0 +1,61 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-upper-science-fourteen-independent-a-first-p12-v1",
+  "bundleFingerprint": "sha256:46b4e497e6e3f9686d719c6abc1ed7389c8127cf02ea3baa10f7b94e58b1ac51",
+  "bookDigest": "sha256:6179b7f1cf3cfdb872f5d17f29cd3feb39ac1f226567ded713b21ec912766b91",
+  "provider": "OpenAI Codex",
+  "model": "exact runtime variant unexposed (Codex GPT-6 family declared)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "positive-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8",
+  "generationParametersFingerprint": "sha256:bf553e1809c04f54a7f70736746b7f9928dcede0b248f6ce789bcf9e4dfe97da",
+  "independenceGroupId": "bio14-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "19fe5734-ea3e-5e3f-bd69-692955787168",
+    "0beb4ca2-2437-557a-9db2-ccda1cbcfa0a",
+    "fe8cb55a-00e9-5964-880a-2634125cfd41",
+    "4d1b2991-9279-591f-a0b1-0ff184ffd8e5",
+    "4edb6169-1202-5651-b23f-dcb6eddb58ba",
+    "d5548c48-7c0a-562e-b09b-b101c6ed732b",
+    "82acfbde-9ce8-5658-892e-4dcfb1c3a1f1",
+    "328fd9d3-d3c3-5731-a8da-a909143d3962",
+    "19bcea3a-af7a-5feb-b083-d11bd51303a0",
+    "4f741ece-e38e-5c6d-ae59-c0f017753177",
+    "788cda1f-8ca3-5241-8d73-50d9952e9da3",
+    "41c14647-9747-58d8-b97d-d1dce33e980e"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:b0de064357c9eb8ff38dad0790f133dbf05f3c485754709e0dd63ba4862985b1"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:063f91b02d123bece0d191547accd9c3126df818d87f4e71c1a083678e813d4d"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:261e240a7d8ba977924f5b09f8296e0088fc5389a8cff76d08c6205436d4e41e"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:7d5c7775839736cea64655cb82e7809479314d01d00fc57e2125acf9089263e7"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8"
+    }
+  ],
+  "startedAt": "2026-10-08T23:38:02.876606+00:00",
+  "completedAt": "2026-10-08T23:45:57.157086+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:643d1a07f0ce2c65f6b26af698ee5f89ceb365ab31230bee2c4a82597b7ed77b",
+  "toolchainVersion": "positive-understanding-evidence-v2"
+}

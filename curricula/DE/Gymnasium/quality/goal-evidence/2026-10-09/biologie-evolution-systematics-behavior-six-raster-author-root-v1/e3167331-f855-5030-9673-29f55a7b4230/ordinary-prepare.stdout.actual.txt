@@ -1,0 +1,11 @@
+
+> skillpilot@0.0.0 visualization:prepare
+> node ../scripts/prepare_goal_visualization.mjs e3167331-f855-5030-9673-29f55a7b4230 --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json --subject biologie --provider built-in ChatGPT/Codex image_gen
+
+Prepared prompt package for: Fossildaten und Datierung
+SkillPilot ID: e3167331-f855-5030-9673-29f55a7b4230
+Prompt: tmp/goal-visualizations/e3167331-f855-5030-9673-29f55a7b4230/nano-banana-prompt.de.md
+Metadata: tmp/goal-visualizations/e3167331-f855-5030-9673-29f55a7b4230/metadata.json
+
+After generating and downloading the image, import it with:
+npm --prefix app run visualization:import -- e3167331-f855-5030-9673-29f55a7b4230 "<downloaded-image-path>"

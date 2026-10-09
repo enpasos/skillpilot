@@ -75,6 +75,11 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    // Cached failure selectors may outlive JUnit discovery after a source edit.
+    // Only the advisory preflight tolerates no matches; the full check stays strict.
+    if (providers.gradleProperty("backendFailurePriorityPreflight").orNull == "true") {
+        filter.isFailOnNoMatchingTests = false
+    }
     // Each Spring test context retains the current curriculum and publication models.
     // Bound their retained count within the test JVM's existing heap budget.
     systemProperty("spring.test.context.cache.maxSize", "4")

@@ -1,0 +1,14 @@
+{
+  "role": "actual_failed_ordinary_schema_probe",
+  "recordedAt": "2026-10-09T06:55:23.459682+00:00",
+  "exitCode": 1,
+  "exception": "jsonschema.exceptions.ValidationError",
+  "field": "rationale",
+  "actualCause": "Trailing whitespace from concatenating empty targeted clauses; normal schema requires nonblank text without leading/trailing whitespace.",
+  "actualFirstFailedScriptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-twenty-three-native-independent-b-v1/materialize-own-native23-first-D-records.py",
+  "scientificVerdictFileWritten": false,
+  "normalRecordsFileWritten": false,
+  "remedy": "Preserve the original attempted script; new successor strips only assembled rationale whitespace and retains independently authored scientific text.",
+  "activeWrites": false,
+  "strictGain": 0
+}

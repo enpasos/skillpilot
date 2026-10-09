@@ -1,0 +1,3 @@
+# Rekonstruktion aus dem tatsächlich gesehenen PNG
+
+Gestalte eine freundliche abstrakte Comicillustration quer etwa16:9: großer gelappter grüner Eichenblattzweig mit Eichel links; großer roter Marienkäfer mit schwarzen Punkten, zwei Fühlern und sechs Beinen rechts. Zwei große Lupen vergrößern Blatt- und Flügeldeckenmerkmale. Oben liegt eine offene bebilderte Bestimmungshilfe mit zwei einfachen Verzweigungen und alternativen Blatt-/Käferbildern, ohne Wörter. Heller Naturhintergrund, weiche dunkelblaue Konturen. Die Illustrationsschlüssel sind schematisch und behaupten keinen global sicheren Artnamen. Hauptmotive bei360px erkennbar; keine kleinteilige Texttabelle.

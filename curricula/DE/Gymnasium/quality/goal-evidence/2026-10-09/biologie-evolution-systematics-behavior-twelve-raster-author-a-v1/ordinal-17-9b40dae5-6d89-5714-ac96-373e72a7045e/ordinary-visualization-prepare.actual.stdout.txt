@@ -1,0 +1,11 @@
+
+> skillpilot@0.0.0 visualization:prepare
+> node ../scripts/prepare_goal_visualization.mjs 9b40dae5-6d89-5714-ac96-373e72a7045e --landscape curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-eighteen-whole-author-v1/input/current-canonical479-root23-successor.snapshot.json --subject biologie --provider Built-in ChatGPT/Codex image_gen
+
+Prepared prompt package for: Evo-Devo Perspektiven
+SkillPilot ID: 9b40dae5-6d89-5714-ac96-373e72a7045e
+Prompt: tmp/goal-visualizations/9b40dae5-6d89-5714-ac96-373e72a7045e/nano-banana-prompt.de.md
+Metadata: tmp/goal-visualizations/9b40dae5-6d89-5714-ac96-373e72a7045e/metadata.json
+
+After generating and downloading the image, import it with:
+npm --prefix app run visualization:import -- 9b40dae5-6d89-5714-ac96-373e72a7045e "<downloaded-image-path>"

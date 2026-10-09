@@ -1,0 +1,24 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ {
++   height: 940,
++   width: 1672
++ }
+- [
+-   1672,
+-   940
+- ]
+    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-twenty-three-native-preparation-author-v1/materialize-native-twenty-three.technical.mts:42:315) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: { width: 1672, height: 940 },
+  expected: [ 1672, 940 ],
+  operator: 'deepStrictEqual'
+}
+
+Node.js v20.20.2

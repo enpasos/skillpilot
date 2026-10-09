@@ -1,0 +1,464 @@
+{
+  "schemaVersion": 1,
+  "ordinal": 8,
+  "role": "author raster input; whole scientific materials remain pending genuine independent reviews",
+  "wholeCurrentGoal": {
+    "id": "a0166445-9d3a-5ea3-a681-44f350501834",
+    "shortKey": "canonical_biology_upper_behavior_fitness_explain",
+    "title": "Verhaltensweisen über Gesamtfitness erklären",
+    "titleEn": "Explain Behaviors Through Overall Fitness",
+    "description": "Die lernende Person kann das Auftreten verschiedener Verhaltensweisen erklären, indem sie deren Einfluss auf die Gesamtfitness des Lebewesens beurteilt.",
+    "descriptionEn": "The learner can explain the occurrence of different behaviors by evaluating their influence on the organism's overall fitness.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK",
+      "canonical",
+      "SekII"
+    ],
+    "contains": [],
+    "requires": [
+      "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+      "2d451684-6e53-565e-a987-f362da919d2c"
+    ],
+    "dimensionTags": {
+      "framework": "canonical-gymnasium-biology",
+      "demandLevel": "AB3",
+      "processCompetencies": [],
+      "guidingIdeas": [
+        "BIO_ENTWICKLUNG",
+        "BIO_INFORMATION_KOMMUNIKATION"
+      ],
+      "phase": "GLOBAL",
+      "area": "Evolution und Verhaltensökologie",
+      "topicCode": "CANONICAL.BIOLOGY.UPPER_BEHAVIOR_FITNESS_EXPLAIN"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BY",
+        "DE-HE"
+      ]
+    },
+    "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B12-EA.4.1",
+    "extendedData": {
+      "provenance": {
+        "sourceLandscapeId": "357a7003-b636-570e-a0bd-6bb63518d2f6",
+        "sourceLandscapeTitle": "DE-BY - Biologie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+        "sourceGoalId": "1a12e377-cf64-553b-aac5-56e6591a3c19"
+      }
+    },
+    "type": "atomic"
+  },
+  "wholeProfile": {
+    "archetype": "modeling",
+    "expectations": [
+      {
+        "id": "essential-1",
+        "essentialUnderstandingDe": "Gesamtfitness verbindet direkte reproduktive Beiträge und verwandtschaftsgewichtete indirekte Beiträge; Verhaltensnutzen hängt von Bedingungen und Lebenszeit ab.",
+        "essentialUnderstandingEn": "Inclusive fitness combines direct reproductive contributions and relatedness-weighted indirect ones; behavioural benefit depends on conditions and lifetime.",
+        "observablePerformanceDe": "Berechnet die vorgegebene Hilfe- und Pflegebilanz, unterscheidet direkte/indirekte Beiträge und erklärt den Einfluss der Verhaltensweisen auf Gesamtfitness.",
+        "observablePerformanceEn": "Computes supplied helping/care balances, distinguishes direct/indirect contributions and explains behavioural influence on inclusive fitness."
+      },
+      {
+        "id": "essential-2",
+        "essentialUnderstandingDe": "Überleben, Pflegezeit oder aktueller Nachwuchs allein sind kein vollständiges Gesamtfitnessmaß; Modellannahmen müssen geprüft werden.",
+        "essentialUnderstandingEn": "Survival, care time or current offspring alone are not complete inclusive-fitness measures; test model premises.",
+        "observablePerformanceDe": "Revidiert bei geändertem Verwandtennutzen/Wetter und begrenzt Aussagen bei bloßen Schlupfzahlen; schreibt keinem Tier bewusstes Fitnessrechnen zu.",
+        "observablePerformanceEn": "Revises for changed kin benefit/weather and limits claims from hatchling counts; attributes no conscious fitness calculation to animals."
+      }
+    ],
+    "coverageExpectations": {
+      "requiredExpectationIds": [
+        "essential-1",
+        "essential-2"
+      ],
+      "alternativeExpectationGroups": [],
+      "minimumIndependentDemonstrations": 2,
+      "freshVariationRequired": true,
+      "independentTransferRequired": true
+    },
+    "variationAxes": [
+      {
+        "id": "two-distinct-material-contexts",
+        "textDe": "Unterschiedliche Sach-/Belegkontexte mit eigener Begründung: fitness-related-helping und fitness-parental-effort-tradeoff.",
+        "textEn": "Distinct subject/evidence contexts with independent reasoning: fitness-related-helping and fitness-parental-effort-tradeoff."
+      },
+      {
+        "id": "changed-premise-or-counterevidence",
+        "textDe": "Neue Merkmalslücke,Kontextänderung oder Gegenevidenz verändert die zulässige Folgerung;es genügt keine Wiederholung einer Musterantwort.",
+        "textEn": "A missing trait,context change or counterevidence changes the justified inference;repeating a worked answer is insufficient."
+      }
+    ],
+    "applicationCaseBriefs": [
+      {
+        "id": "fitness-related-helping",
+        "taskDemandDe": "Explizit vereinfachtes Fitnessmodell in Nachkommenäquivalenten: Ein Helfer verliert erwartungsgemäß 1 eigenen reproduktiven Nachkommen (C=1); ein Geschwister erhält dadurch 3 zusätzliche reproduktive Nachkommen (B=3, r=0,5). Ein zweiter Helfer hat denselben Aufwand, hilft aber einer unverwandten Person (r=0). Weitere Wechselwirkungen und spätere Gegenseitigkeit sind im Modell ausgeschlossen.\n\nAuftrag: Beurteile beide Verhaltensweisen über direkte und indirekte reproduktive Beiträge. Erkläre Gesamtfitness und benenne die Grenze der rB−C-Bilanz.\n\nFrische Variation: Der Geschwister-Nutzen fällt auf 1, während C=1 bleibt. Ändert sich die bedingte Erklärung?",
+        "taskDemandEn": "Explicitly simplified fitness model in reproductive offspring equivalents: helping costs 1 own reproductive offspring (C=1), while a sibling gains 3 additional reproductive offspring (B=3, r=0.5). A second helper pays the same cost but helps an unrelated recipient (r=0). Other interactions and later reciprocity are excluded.\n\nTask: Assess the behaviours using direct and indirect reproductive contributions. Explain inclusive fitness and limits of the rB−C balance.\n\nFresh variation: Sibling benefit falls to 1 while C remains 1. Does the conditional explanation change?",
+        "expectedPerformanceDe": "Bei Geschwisterhilfe: direkter Beitrag−1, verwandtschaftsgewichteter indirekter Zusatz 0,5·3=1,5; Bilanz+0,5. Im angegebenen Modell kann die erbliche Hilfevariante begünstigt sein. Bei r=0 ist die Bilanz−1, wenn alle weiteren Vorteile fehlen. Gesamtfitness umfasst direkte und indirekte Beiträge; kein bewusstes Rechnen der Tiere und keine universelle Erklärung jedes Altruismus. Kosten/Nutzen/Verwandtschaft und Vergleichsverhalten müssen passend bestimmt sein.\n\nTransfer: rB−C=0,5−1=−0,5. Verwandtschaft allein reicht dann nicht; ohne weitere Vorteile wird Hilfe in diesem Modell nicht begünstigt. Überleben des Empfängers allein ist noch kein reproduktiver Nutzen.",
+        "expectedPerformanceEn": "Sibling help: direct change−1, relatedness-weighted indirect gain 0.5·3=1.5; net+0.5. Under these premises an inherited helping variant may be favoured. With r=0 the balance is−1 if other benefits are absent. Inclusive fitness includes direct and indirect contributions; animals need not calculate consciously, and this explains no universal altruism. Costs, benefits, relatedness and counterfactual behaviour must be appropriately estimated.\n\nTransfer: rB−C=0.5−1=−0.5. Relatedness alone is insufficient; absent other benefits helping is not favoured in this model. Recipient survival alone is not yet reproductive benefit.",
+        "understandingFocusDe": "Gesamtfitness verbindet direkte reproduktive Beiträge und verwandtschaftsgewichtete indirekte Beiträge; Verhaltensnutzen hängt von Bedingungen und Lebenszeit ab. Überleben, Pflegezeit oder aktueller Nachwuchs allein sind kein vollständiges Gesamtfitnessmaß; Modellannahmen müssen geprüft werden.",
+        "understandingFocusEn": "Inclusive fitness combines direct reproductive contributions and relatedness-weighted indirect ones; behavioural benefit depends on conditions and lifetime. Survival, care time or current offspring alone are not complete inclusive-fitness measures; test model premises."
+      },
+      {
+        "id": "fitness-parental-effort-tradeoff",
+        "taskDemandDe": "Konstruiertes Modell zweier elterlicher Verhaltensweisen: intensive Brutpflege führt zu 4 reproduktiv erfolgreichen Nachkommen jetzt und 1 später; geringe Pflege zu 2 jetzt und 4 später. Erwartungswerte unter gleicher Lebensdauer und ohne indirekte Beiträge. Bei feuchter Witterung steigt bei intensiver Pflege der jetzige Erfolg auf 6; spätere Werte bleiben 1 bzw.4. Keine realen Tiermessungen.\n\nAuftrag: Vergleiche Verhaltensweisen über Lebenszeitfitness, erkläre den Kosten-Nutzen-Konflikt und beurteile die Umweltvariation. Weshalb darfst du aus Pflegeintensität allein keine Fitness ableiten?\n\nFrische Variation: Die Angaben zählen nur geschlüpfte Junge, nicht später fortpflanzende Nachkommen. Kannst du die gleiche Rangfolge behaupten?",
+        "taskDemandEn": "Constructed parental-behaviour model: intensive care yields 4 reproductively successful offspring now and 1 later; low care yields 2 now and 4 later. Expected values assume equal lifespan and no indirect contributions. In wet weather intensive care raises current success to 6; later values remain 1 versus 4. Not real animal measurements.\n\nTask: Compare lifetime fitness, explain the cost–benefit tradeoff and assess the environmental variation. Why does care intensity alone not determine fitness?\n\nFresh variation: Values now count hatchlings only, not later reproducing offspring. Can the same ranking be asserted?",
+        "expectedPerformanceDe": "Im Ausgangsmodell intensiv 4+1=5, gering 2+4=6: geringe Pflege hat den höheren direkten Lebenszeitbeitrag trotz weniger aktueller Jungen. In der Variation intensiv 6+1=7 gegenüber 6: die Bilanz dreht sich um. Energie-/Zeitaufwand kann späteren Erfolg verändern; aktuell überlebende Junge sind kein vollständiges Fitnessmaß. Indirekte Beiträge fehlen hier per Modell, nicht allgemein.\n\nTransfer: Nein. Unterschiedliche Juvenilüberlebens- und Fortpflanzungsraten könnten sie ändern. Die Bilanz ist dann ein Bruterfolgsvergleich; für reproduktive Gesamtfitness werden zusätzliche Beiträge benötigt.",
+        "expectedPerformanceEn": "Initially intensive 4+1=5 versus low 2+4=6: low care has higher direct lifetime contribution despite fewer current offspring. With variation intensive 6+1=7 versus 6, the balance reverses. Energy/time investment can alter later success; current surviving young are not a complete fitness measure. Indirect contributions are absent by model assumption, not universally.\n\nTransfer: No. Different juvenile survival/reproduction rates could change it. The balance then compares hatching success; reproductive inclusive fitness requires additional contributions.",
+        "understandingFocusDe": "Gesamtfitness verbindet direkte reproduktive Beiträge und verwandtschaftsgewichtete indirekte Beiträge; Verhaltensnutzen hängt von Bedingungen und Lebenszeit ab. Überleben, Pflegezeit oder aktueller Nachwuchs allein sind kein vollständiges Gesamtfitnessmaß; Modellannahmen müssen geprüft werden.",
+        "understandingFocusEn": "Inclusive fitness combines direct reproductive contributions and relatedness-weighted indirect ones; behavioural benefit depends on conditions and lifetime. Survival, care time or current offspring alone are not complete inclusive-fitness measures; test model premises."
+      }
+    ]
+  },
+  "wholeTwoCases": [
+    {
+      "caseId": "fitness-related-helping",
+      "materialDe": "Explizit vereinfachtes Fitnessmodell in Nachkommenäquivalenten: Ein Helfer verliert erwartungsgemäß 1 eigenen reproduktiven Nachkommen (C=1); ein Geschwister erhält dadurch 3 zusätzliche reproduktive Nachkommen (B=3, r=0,5). Ein zweiter Helfer hat denselben Aufwand, hilft aber einer unverwandten Person (r=0). Weitere Wechselwirkungen und spätere Gegenseitigkeit sind im Modell ausgeschlossen.",
+      "materialEn": "Explicitly simplified fitness model in reproductive offspring equivalents: helping costs 1 own reproductive offspring (C=1), while a sibling gains 3 additional reproductive offspring (B=3, r=0.5). A second helper pays the same cost but helps an unrelated recipient (r=0). Other interactions and later reciprocity are excluded.",
+      "taskDe": "Beurteile beide Verhaltensweisen über direkte und indirekte reproduktive Beiträge. Erkläre Gesamtfitness und benenne die Grenze der rB−C-Bilanz.",
+      "taskEn": "Assess the behaviours using direct and indirect reproductive contributions. Explain inclusive fitness and limits of the rB−C balance.",
+      "workedResponseDe": "Bei Geschwisterhilfe: direkter Beitrag−1, verwandtschaftsgewichteter indirekter Zusatz 0,5·3=1,5; Bilanz+0,5. Im angegebenen Modell kann die erbliche Hilfevariante begünstigt sein. Bei r=0 ist die Bilanz−1, wenn alle weiteren Vorteile fehlen. Gesamtfitness umfasst direkte und indirekte Beiträge; kein bewusstes Rechnen der Tiere und keine universelle Erklärung jedes Altruismus. Kosten/Nutzen/Verwandtschaft und Vergleichsverhalten müssen passend bestimmt sein.",
+      "workedResponseEn": "Sibling help: direct change−1, relatedness-weighted indirect gain 0.5·3=1.5; net+0.5. Under these premises an inherited helping variant may be favoured. With r=0 the balance is−1 if other benefits are absent. Inclusive fitness includes direct and indirect contributions; animals need not calculate consciously, and this explains no universal altruism. Costs, benefits, relatedness and counterfactual behaviour must be appropriately estimated.",
+      "freshTransferTaskDe": "Der Geschwister-Nutzen fällt auf 1, während C=1 bleibt. Ändert sich die bedingte Erklärung?",
+      "freshTransferTaskEn": "Sibling benefit falls to 1 while C remains 1. Does the conditional explanation change?",
+      "workedFreshTransferDe": "rB−C=0,5−1=−0,5. Verwandtschaft allein reicht dann nicht; ohne weitere Vorteile wird Hilfe in diesem Modell nicht begünstigt. Überleben des Empfängers allein ist noch kein reproduktiver Nutzen.",
+      "workedFreshTransferEn": "rB−C=0.5−1=−0.5. Relatedness alone is insufficient; absent other benefits helping is not favoured in this model. Recipient survival alone is not yet reproductive benefit.",
+      "materialStatus": "constructed_synthetic_didactic_material",
+      "actualExperimentPerformed": false,
+      "actualLearnerPerformance": false,
+      "rubric": [
+        {
+          "expectationId": "essential-1",
+          "rubricScope": "pair_reference_not_single_case_quota",
+          "criterionDe": "Berechnet die vorgegebene Hilfe- und Pflegebilanz, unterscheidet direkte/indirekte Beiträge und erklärt den Einfluss der Verhaltensweisen auf Gesamtfitness.",
+          "criterionEn": "Computes supplied helping/care balances, distinguishes direct/indirect contributions and explains behavioural influence on inclusive fitness.",
+          "actualEvidenceLocations": [
+            "workedResponseDe",
+            "workedResponseEn",
+            "workedFreshTransferDe",
+            "workedFreshTransferEn"
+          ],
+          "rubricNoteDe": "Die Kriterien beschreiben zusammen die gesamte Kompetenz. Nur tatsächlich im eigenen Fall bearbeitete Aspekte zählen;zusätzliche Fälle sind keine feste Quote, wenn ausreichende eigenständige Evidenz bereits vorliegt.",
+          "rubricNoteEn": "Together these criteria describe the whole competence. Count only aspects actually demonstrated in this case;additional cases are no fixed quota once sufficient independent evidence exists."
+        },
+        {
+          "expectationId": "essential-2",
+          "rubricScope": "pair_reference_not_single_case_quota",
+          "criterionDe": "Revidiert bei geändertem Verwandtennutzen/Wetter und begrenzt Aussagen bei bloßen Schlupfzahlen; schreibt keinem Tier bewusstes Fitnessrechnen zu.",
+          "criterionEn": "Revises for changed kin benefit/weather and limits claims from hatchling counts; attributes no conscious fitness calculation to animals.",
+          "actualEvidenceLocations": [
+            "workedResponseDe",
+            "workedResponseEn",
+            "workedFreshTransferDe",
+            "workedFreshTransferEn"
+          ],
+          "rubricNoteDe": "Die Kriterien beschreiben zusammen die gesamte Kompetenz. Nur tatsächlich im eigenen Fall bearbeitete Aspekte zählen;zusätzliche Fälle sind keine feste Quote, wenn ausreichende eigenständige Evidenz bereits vorliegt.",
+          "rubricNoteEn": "Together these criteria describe the whole competence. Count only aspects actually demonstrated in this case;additional cases are no fixed quota once sufficient independent evidence exists."
+        }
+      ]
+    },
+    {
+      "caseId": "fitness-parental-effort-tradeoff",
+      "materialDe": "Konstruiertes Modell zweier elterlicher Verhaltensweisen: intensive Brutpflege führt zu 4 reproduktiv erfolgreichen Nachkommen jetzt und 1 später; geringe Pflege zu 2 jetzt und 4 später. Erwartungswerte unter gleicher Lebensdauer und ohne indirekte Beiträge. Bei feuchter Witterung steigt bei intensiver Pflege der jetzige Erfolg auf 6; spätere Werte bleiben 1 bzw.4. Keine realen Tiermessungen.",
+      "materialEn": "Constructed parental-behaviour model: intensive care yields 4 reproductively successful offspring now and 1 later; low care yields 2 now and 4 later. Expected values assume equal lifespan and no indirect contributions. In wet weather intensive care raises current success to 6; later values remain 1 versus 4. Not real animal measurements.",
+      "taskDe": "Vergleiche Verhaltensweisen über Lebenszeitfitness, erkläre den Kosten-Nutzen-Konflikt und beurteile die Umweltvariation. Weshalb darfst du aus Pflegeintensität allein keine Fitness ableiten?",
+      "taskEn": "Compare lifetime fitness, explain the cost–benefit tradeoff and assess the environmental variation. Why does care intensity alone not determine fitness?",
+      "workedResponseDe": "Im Ausgangsmodell intensiv 4+1=5, gering 2+4=6: geringe Pflege hat den höheren direkten Lebenszeitbeitrag trotz weniger aktueller Jungen. In der Variation intensiv 6+1=7 gegenüber 6: die Bilanz dreht sich um. Energie-/Zeitaufwand kann späteren Erfolg verändern; aktuell überlebende Junge sind kein vollständiges Fitnessmaß. Indirekte Beiträge fehlen hier per Modell, nicht allgemein.",
+      "workedResponseEn": "Initially intensive 4+1=5 versus low 2+4=6: low care has higher direct lifetime contribution despite fewer current offspring. With variation intensive 6+1=7 versus 6, the balance reverses. Energy/time investment can alter later success; current surviving young are not a complete fitness measure. Indirect contributions are absent by model assumption, not universally.",
+      "freshTransferTaskDe": "Die Angaben zählen nur geschlüpfte Junge, nicht später fortpflanzende Nachkommen. Kannst du die gleiche Rangfolge behaupten?",
+      "freshTransferTaskEn": "Values now count hatchlings only, not later reproducing offspring. Can the same ranking be asserted?",
+      "workedFreshTransferDe": "Nein. Unterschiedliche Juvenilüberlebens- und Fortpflanzungsraten könnten sie ändern. Die Bilanz ist dann ein Bruterfolgsvergleich; für reproduktive Gesamtfitness werden zusätzliche Beiträge benötigt.",
+      "workedFreshTransferEn": "No. Different juvenile survival/reproduction rates could change it. The balance then compares hatching success; reproductive inclusive fitness requires additional contributions.",
+      "materialStatus": "constructed_synthetic_didactic_material",
+      "actualExperimentPerformed": false,
+      "actualLearnerPerformance": false,
+      "rubric": [
+        {
+          "expectationId": "essential-1",
+          "rubricScope": "pair_reference_not_single_case_quota",
+          "criterionDe": "Berechnet die vorgegebene Hilfe- und Pflegebilanz, unterscheidet direkte/indirekte Beiträge und erklärt den Einfluss der Verhaltensweisen auf Gesamtfitness.",
+          "criterionEn": "Computes supplied helping/care balances, distinguishes direct/indirect contributions and explains behavioural influence on inclusive fitness.",
+          "actualEvidenceLocations": [
+            "workedResponseDe",
+            "workedResponseEn",
+            "workedFreshTransferDe",
+            "workedFreshTransferEn"
+          ],
+          "rubricNoteDe": "Die Kriterien beschreiben zusammen die gesamte Kompetenz. Nur tatsächlich im eigenen Fall bearbeitete Aspekte zählen;zusätzliche Fälle sind keine feste Quote, wenn ausreichende eigenständige Evidenz bereits vorliegt.",
+          "rubricNoteEn": "Together these criteria describe the whole competence. Count only aspects actually demonstrated in this case;additional cases are no fixed quota once sufficient independent evidence exists."
+        },
+        {
+          "expectationId": "essential-2",
+          "rubricScope": "pair_reference_not_single_case_quota",
+          "criterionDe": "Revidiert bei geändertem Verwandtennutzen/Wetter und begrenzt Aussagen bei bloßen Schlupfzahlen; schreibt keinem Tier bewusstes Fitnessrechnen zu.",
+          "criterionEn": "Revises for changed kin benefit/weather and limits claims from hatchling counts; attributes no conscious fitness calculation to animals.",
+          "actualEvidenceLocations": [
+            "workedResponseDe",
+            "workedResponseEn",
+            "workedFreshTransferDe",
+            "workedFreshTransferEn"
+          ],
+          "rubricNoteDe": "Die Kriterien beschreiben zusammen die gesamte Kompetenz. Nur tatsächlich im eigenen Fall bearbeitete Aspekte zählen;zusätzliche Fälle sind keine feste Quote, wenn ausreichende eigenständige Evidenz bereits vorliegt.",
+          "rubricNoteEn": "Together these criteria describe the whole competence. Count only aspects actually demonstrated in this case;additional cases are no fixed quota once sufficient independent evidence exists."
+        }
+      ]
+    }
+  ],
+  "wholeOriginalDuties": [
+    {
+      "rowId": "source-duty-0135",
+      "mappingBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-operative-scope-author-20261008-v1/candidate/mappings/04-bavaria_biology_source_extraction_to_canonical_biology.m7-q1-bacterial-structure-fission-20261005-v1.review.json",
+        "sha256": "sha256:8a7c9ee0fdfc51047cf2ec9cf6b95296c2a871f72e82872e32bd8a93ee74abd2",
+        "bytes": 181141
+      },
+      "decisionJsonPointer": "/decisions/213",
+      "wholeOriginalDecision": {
+        "sourceGoalId": "1a12e377-cf64-553b-aac5-56e6591a3c19",
+        "topicCode": "B12-EA.4",
+        "sourceSpan": "B12-EA.4.1",
+        "decision": "mapped",
+        "canonicalGoalIds": [
+          "a0166445-9d3a-5ea3-a681-44f350501834"
+        ],
+        "matchType": "exact",
+        "rationale": "Das neu ergänzte kanonische Sek-II-Verhaltensökologieziel übernimmt das bayerische Source-Ziel einschließlich der GK-/LK-Dopplung in semantisch gleicher Granularitaet.",
+        "reviewedAt": "2026-05-12",
+        "reviewer": "codex"
+      },
+      "wholeOriginalMatchingEdges": [
+        {
+          "legacyGoalId": "1a12e377-cf64-553b-aac5-56e6591a3c19",
+          "canonicalGoalId": "a0166445-9d3a-5ea3-a681-44f350501834",
+          "matchType": "exact",
+          "reviewDecisionId": "1a12e377-cf64-553b-aac5-56e6591a3c19"
+        }
+      ],
+      "extractionBinding": {
+        "path": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_BIOLOGIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+        "sha256": "sha256:6775fd09b34fef380f9b6b4cca181a6b6cfdb1c83c2278a803bf2c0e317b702d",
+        "bytes": 734583
+      },
+      "wholeResolvedSourceGoal": {
+        "id": "1a12e377-cf64-553b-aac5-56e6591a3c19",
+        "passageId": "by-bio:B12-EA.4",
+        "topicCode": "B12-EA.4",
+        "bulletIndex": 1,
+        "aspectIndex": 1,
+        "title": "erklären das Auftreten verschiedener Verhaltensweisen, indem sie deren Einfluss auf die Gesam...",
+        "description": "erklären das Auftreten verschiedener Verhaltensweisen, indem sie deren Einfluss auf die Gesamtfitness des Lebewesens beurteilen.",
+        "sourceText": "erklären das Auftreten verschiedener Verhaltensweisen, indem sie deren Einfluss auf die Gesamtfitness des Lebewesens beurteilen.",
+        "sourceSpan": "B12-EA.4.1",
+        "parentBulletText": "erklären das Auftreten verschiedener Verhaltensweisen, indem sie deren Einfluss auf die Gesamtfitness des Lebewesens beurteilen.",
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B12-EA.4.1",
+        "courseLevel": "GK_LK+LK",
+        "granularity": "officialCompetency",
+        "tags": [
+          "courseLevel:GK_LK",
+          "courseLevel:LK",
+          "jurisdiction:DE-BY",
+          "stage:SekII",
+          "topic:B12-EA.4",
+          "topic:B12-GA.4"
+        ],
+        "rawSourceText": "erklären das Auftreten verschiedener Verhaltensweisen, indem sie deren Einfluss auf die Gesamtfitness des Lebewesens beurteilen.",
+        "rawSourceSpan": "B12-EA.4.1",
+        "rawParentBulletText": "erklären das Auftreten verschiedener Verhaltensweisen, indem sie deren Einfluss auf die Gesamtfitness des Lebewesens beurteilen.",
+        "duplicateSourceGoalCount": 1,
+        "sourceOccurrences": [
+          {
+            "sourceGoalId": "1a12e377-cf64-553b-aac5-56e6591a3c19",
+            "passageId": "by-bio:B12-EA.4",
+            "topicCode": "B12-EA.4",
+            "sourceSpan": "B12-EA.4.1",
+            "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B12-EA.4.1",
+            "courseLevel": "LK",
+            "tags": [
+              "jurisdiction:DE-BY",
+              "stage:SekII",
+              "courseLevel:LK",
+              "topic:B12-EA.4"
+            ]
+          },
+          {
+            "sourceGoalId": "631dc286-59e6-58a4-b7bf-da263388c31e",
+            "passageId": "by-bio:B12-GA.4",
+            "topicCode": "B12-GA.4",
+            "sourceSpan": "B12-GA.4.1",
+            "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B12-GA.4.1",
+            "courseLevel": "GK_LK",
+            "tags": [
+              "jurisdiction:DE-BY",
+              "stage:SekII",
+              "courseLevel:GK_LK",
+              "topic:B12-GA.4"
+            ]
+          }
+        ],
+        "mergedTopicCodes": [
+          "B12-EA.4",
+          "B12-GA.4"
+        ],
+        "mergedSourceSpans": [
+          "B12-EA.4.1",
+          "B12-GA.4.1"
+        ],
+        "mergedSourceRefs": [
+          "LehrplanPLUS Bayern Gymnasium Biologie, B12-EA.4.1",
+          "LehrplanPLUS Bayern Gymnasium Biologie, B12-GA.4.1"
+        ]
+      },
+      "wholeResolvedPassage": {
+        "id": "by-bio:B12-EA.4",
+        "topicCode": "B12-EA.4",
+        "title": "Biologie 12 (erhöhtes Anforderungsniveau): B12 Lernbereich 4: Verhaltensökologie – Evolution und Angepasstheit von Verhalten (ca. 24 Std.)",
+        "text": "1) erklären das Auftreten verschiedener Verhaltensweisen, indem sie deren Einfluss auf die Gesamtfitness des Lebewesens beurteilen.\n2) wenden Methoden der verhaltensökologischen Forschung an, um Verhaltensweisen zum Überleben des Individuums bei Kooperation, Kommunikation, Aggression und Fortpflanzung zu analysieren und deren Bedeutung für die Weitergabe der genetischen Information zu erklären.\n3) analysieren das Sozialverhalten der Primaten im Hinblick auf exogene und endogene Ursachen, um ausgewählte menschliche Verhaltensweisen zu erklären. Dabei treten sie einseitig biologistischen Erklärungsansätzen kritisch gegenüber.",
+        "sourcePath": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologie.json",
+        "sourceUrl": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/biologie",
+        "rawText": "Biologie 12 (erhöhtes Anforderungsniveau): B12 Lernbereich 4: Verhaltensökologie – Evolution und Angepasstheit von Verhalten (ca. 24 Std.)",
+        "sourceGoalIds": [
+          "1a12e377-cf64-553b-aac5-56e6591a3c19",
+          "317634d4-e406-5105-81a2-b46fa315cdc1",
+          "490877b0-809e-5ba7-bf56-d91053b3ec80"
+        ]
+      },
+      "originalSourceDocuments": [
+        {
+          "key": "LEHRPLANPLUS_BIOLOGIE_GYMNASIUM",
+          "title": "LehrplanPLUS Gymnasium Bayern - Biologie",
+          "path": "curricula/DE/Gymnasium/input/BY/gymnasium/Biologie.json",
+          "role": "binding-core",
+          "official": true,
+          "url": "https://www.lehrplanplus.bayern.de/schulart/gymnasium/fach/biologie"
+        }
+      ],
+      "wholeCanonicalPartnerGoalIds": [
+        "a0166445-9d3a-5ea3-a681-44f350501834"
+      ],
+      "linkedOpenGoals": [
+        {
+          "goalId": "a0166445-9d3a-5ea3-a681-44f350501834",
+          "bindingOrigin": "direct"
+        }
+      ],
+      "newSourceApproval": false
+    }
+  ],
+  "wholePartners": [
+    {
+      "goalId": "a0166445-9d3a-5ea3-a681-44f350501834",
+      "wholeCurrentGoal": {
+        "id": "a0166445-9d3a-5ea3-a681-44f350501834",
+        "shortKey": "canonical_biology_upper_behavior_fitness_explain",
+        "title": "Verhaltensweisen über Gesamtfitness erklären",
+        "titleEn": "Explain Behaviors Through Overall Fitness",
+        "description": "Die lernende Person kann das Auftreten verschiedener Verhaltensweisen erklären, indem sie deren Einfluss auf die Gesamtfitness des Lebewesens beurteilt.",
+        "descriptionEn": "The learner can explain the occurrence of different behaviors by evaluating their influence on the organism's overall fitness.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-biology",
+          "demandLevel": "AB3",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_ENTWICKLUNG",
+            "BIO_INFORMATION_KOMMUNIKATION"
+          ],
+          "phase": "GLOBAL",
+          "area": "Evolution und Verhaltensökologie",
+          "topicCode": "CANONICAL.BIOLOGY.UPPER_BEHAVIOR_FITNESS_EXPLAIN"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE"
+          ]
+        },
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B12-EA.4.1",
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "357a7003-b636-570e-a0bd-6bb63518d2f6",
+            "sourceLandscapeTitle": "DE-BY - Biologie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+            "sourceGoalId": "1a12e377-cf64-553b-aac5-56e6591a3c19"
+          }
+        },
+        "type": "atomic"
+      },
+      "wholeOriginalFrameGoal": {
+        "id": "a0166445-9d3a-5ea3-a681-44f350501834",
+        "shortKey": "canonical_biology_upper_behavior_fitness_explain",
+        "title": "Verhaltensweisen über Gesamtfitness erklären",
+        "titleEn": "Explain Behaviors Through Overall Fitness",
+        "description": "Die lernende Person kann das Auftreten verschiedener Verhaltensweisen erklären, indem sie deren Einfluss auf die Gesamtfitness des Lebewesens beurteilt.",
+        "descriptionEn": "The learner can explain the occurrence of different behaviors by evaluating their influence on the organism's overall fitness.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-biology",
+          "demandLevel": "AB3",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_ENTWICKLUNG",
+            "BIO_INFORMATION_KOMMUNIKATION"
+          ],
+          "phase": "GLOBAL",
+          "area": "Evolution und Verhaltensökologie",
+          "topicCode": "CANONICAL.BIOLOGY.UPPER_BEHAVIOR_FITNESS_EXPLAIN"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE"
+          ]
+        },
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B12-EA.4.1",
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "357a7003-b636-570e-a0bd-6bb63518d2f6",
+            "sourceLandscapeTitle": "DE-BY - Biologie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+            "sourceGoalId": "1a12e377-cf64-553b-aac5-56e6591a3c19"
+          }
+        },
+        "type": "atomic"
+      },
+      "wholeOriginalFrameEqualCurrent": true
+    }
+  ],
+  "originalWhole35SourceFrame": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-eighteen-whole-author-v1/input/whole-current18-source35-and-whole-partners30.exact-neutral-input.json",
+    "sha256": "sha256:03c54270b04d449d7dae8410a95c5f69f6026bb31e24e5821d39b30c27fa2902",
+    "bytes": 548003
+  },
+  "actualCanonical479": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-eighteen-whole-author-v1/input/current-canonical479-root23-successor.snapshot.json",
+    "sha256": "sha256:27d223d9c576d064d9041ded713b5992543014ca1104c5c56ca63b4f9832d645",
+    "bytes": 1256446
+  },
+  "sourceCourseBoundaries": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-eighteen-whole-author-v1/whole-source-course-operator-boundaries.author-candidate.json",
+    "sha256": "sha256:c998ccf8230059033a888fd9c5be1b41a6f1cba1b78ecef781c0a09bf4f867b6",
+    "bytes": 9270
+  },
+  "independentApproval": false,
+  "humanApproval": false
+}

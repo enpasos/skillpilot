@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "role": "ordinary_existing_cli_and_schema_probes_after_own_semantic_FIRST",
+  "schemaProbes": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-twenty-three-native-independent-b-v1/positive-normal/part-1-current-native/profiles.independent-b.config.json",
+      "sha256": "sha256:bc31245666b7e035412e8bd1935aa949cb3f848d69801bb447e70515756a1f43",
+      "schemaErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-twenty-three-native-independent-b-v1/positive-normal/part-1-current-native/profiles.independent-b.run.json",
+      "sha256": "sha256:50f8afcb14590860e6adacecb022601fdff595f70d85f72e23658ad784b6a5b4",
+      "schemaErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-twenty-three-native-independent-b-v1/positive-normal/part-1-current-native/profiles.independent-b.jsonl",
+      "sha256": "sha256:861207ade1a97661b3b6914de416aa78cb87b0f05c0abd375f82ff3ed89af316",
+      "profileSchemaErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-twenty-three-native-independent-b-v1/positive-normal/part-2-current-native/profiles.independent-b.config.json",
+      "sha256": "sha256:67d430bfced88b1383af082fe782f062ce342d50e33e71bbf501263b44e3e7e3",
+      "schemaErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-twenty-three-native-independent-b-v1/positive-normal/part-2-current-native/profiles.independent-b.run.json",
+      "sha256": "sha256:c53fcec4337529c29b2a55f1db5740cc8f7926136f6dac65a68733a92a1b0a82",
+      "schemaErrors": []
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-twenty-three-native-independent-b-v1/positive-normal/part-2-current-native/profiles.independent-b.jsonl",
+      "sha256": "sha256:d11bec4e987f37af0ecaf63b5a196581a79d70622318aed77d546d46f7e447ca",
+      "profileSchemaErrors": []
+    }
+  ],
+  "ordinaryCliProbes": [
+    {
+      "actualCommand": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-twenty-three-native-independent-b-v1/positive-normal/part-1-current-native/profiles.independent-b.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 1,
+      "stdout": "# Positive Goal Evidence Review: biologie-molecular-genetics-native23-part-1-positive-independent-b-v1\nScope: Independent B actual current native part 1; E1/G1 finite candidate, separate text/pixel/source holds retained\nConfigured goals: 12\nApproved: 0\nNeeds human review: 12\nRejected: 0\nBlocking issues: 24\n- 6744e33f-c810-52b6-b781-2936011de016: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/6744e33f-c810-52b6-b781-2936011de016/6744e33f-c810-52b6-b781-2936011de016.png\n- 6744e33f-c810-52b6-b781-2936011de016: stale reviewInputFingerprint; expected sha256:08ba39aa21cb6153bc043ed988554fe2c7e0dab6eca1d6499ebaa54341a3db0d\n- e349d8c4-2ba3-5360-bd44-13457e5c0aa3: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/e349d8c4-2ba3-5360-bd44-13457e5c0aa3/e349d8c4-2ba3-5360-bd44-13457e5c0aa3.png\n- e349d8c4-2ba3-5360-bd44-13457e5c0aa3: stale reviewInputFingerprint; expected sha256:6e09e11876a8ce76f5440bc4d5ced9403b2bb4cbc8a3bb554273d859d2659737\n- 1ec4e3c2-f302-5246-b531-f2cebc3efb1d: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/1ec4e3c2-f302-5246-b531-f2cebc3efb1d/1ec4e3c2-f302-5246-b531-f2cebc3efb1d.png\n- 1ec4e3c2-f302-5246-b531-f2cebc3efb1d: stale reviewInputFingerprint; expected sha256:508df9d6af690cd9b17727d5fb0ebb4acbddbbd997122043956f59c2c27eb38e\n- 18b3540e-4379-5d13-b3ec-dc7fe21c5e6a: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/18b3540e-4379-5d13-b3ec-dc7fe21c5e6a/18b3540e-4379-5d13-b3ec-dc7fe21c5e6a.png\n- 18b3540e-4379-5d13-b3ec-dc7fe21c5e6a: stale reviewInputFingerprint; expected sha256:ad7907a6850006292862eb34efee7eff84da7b66a450a90a64229723fcb91bc2\n- 0eddd781-90aa-5120-a24f-c7e38327162c: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/0eddd781-90aa-5120-a24f-c7e38327162c/0eddd781-90aa-5120-a24f-c7e38327162c.png\n- 0eddd781-90aa-5120-a24f-c7e38327162c: stale reviewInputFingerprint; expected sha256:3a9534860e27a1498a0f47884c26609b75de2b4d916c533a13e946100c4cd548\n- 41a52327-75a8-55b4-b924-7968f1bade8d: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/41a52327-75a8-55b4-b924-7968f1bade8d/41a52327-75a8-55b4-b924-7968f1bade8d.png\n- 41a52327-75a8-55b4-b924-7968f1bade8d: stale reviewInputFingerprint; expected sha256:47a06b05921f398dc872a582686731db7ca7901ca7c5888fda0a3fe56766efc1\n- 5f01403c-6560-5515-aa76-03860aa52315: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/5f01403c-6560-5515-aa76-03860aa52315/5f01403c-6560-5515-aa76-03860aa52315.png\n- 5f01403c-6560-5515-aa76-03860aa52315: stale reviewInputFingerprint; expected sha256:472d80753123362091575cc10193270c631f95f6c8f670996b2a764fea2c9f17\n- a515e493-6f90-5371-9470-28a0cf50f087: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/a515e493-6f90-5371-9470-28a0cf50f087/a515e493-6f90-5371-9470-28a0cf50f087.png\n- a515e493-6f90-5371-9470-28a0cf50f087: stale reviewInputFingerprint; expected sha256:726a6ed3a269d27aaf8a836d3eb91a2e97dbe58087be7e39f4a8594f84ce3b19\n- a9493b6d-5810-5d52-b32c-54ce32fd0dd8: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/a9493b6d-5810-5d52-b32c-54ce32fd0dd8/a9493b6d-5810-5d52-b32c-54ce32fd0dd8.png\n- a9493b6d-5810-5d52-b32c-54ce32fd0dd8: stale reviewInputFingerprint; expected sha256:244dd4f2c18f1ee22e0da05e6a7ce6d2f444846ffedd363fc736b7d4875a3192\n- a6d94a96-6a36-57dd-81db-f4bfdc4306ee: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/a6d94a96-6a36-57dd-81db-f4bfdc4306ee/a6d94a96-6a36-57dd-81db-f4bfdc4306ee.png\n- a6d94a96-6a36-57dd-81db-f4bfdc4306ee: stale reviewInputFingerprint; expected sha256:40ede86eaa8bcbac55a1e44246ff0359bfb07de88de17ac88d0160c46684a009\n- 76ad2d40-496b-5fa8-97e8-7711f9859738: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/76ad2d40-496b-5fa8-97e8-7711f9859738/76ad2d40-496b-5fa8-97e8-7711f9859738.png\n- 76ad2d40-496b-5fa8-97e8-7711f9859738: stale reviewInputFingerprint; expected sha256:fd699ba3a00829a384e1e3ef46cc8c9c6e163d754094cf76fc3025500b778e23\n- 8e4bfb9e-b176-5e7a-a7db-d6077d71237a: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/8e4bfb9e-b176-5e7a-a7db-d6077d71237a/8e4bfb9e-b176-5e7a-a7db-d6077d71237a.png\n- 8e4bfb9e-b176-5e7a-a7db-d6077d71237a: stale reviewInputFingerprint; expected sha256:ca89334613357b935b9199345f4ef495a6f6a2f8408d7865df2f827b7085104f\n",
+      "stderr": "",
+      "checkedAt": "2026-10-09T07:04:23.382862+00:00"
+    },
+    {
+      "actualCommand": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-twenty-three-native-independent-b-v1/positive-normal/part-2-current-native/profiles.independent-b.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 1,
+      "stdout": "# Positive Goal Evidence Review: biologie-molecular-genetics-native23-part-2-positive-independent-b-v1\nScope: Independent B actual current native part 2; E1/G1 finite candidate, separate text/pixel/source holds retained\nConfigured goals: 11\nApproved: 0\nNeeds human review: 11\nRejected: 0\nBlocking issues: 22\n- ab96bec3-ee34-5209-bcc9-5c7c8280429c: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/ab96bec3-ee34-5209-bcc9-5c7c8280429c/ab96bec3-ee34-5209-bcc9-5c7c8280429c.png\n- ab96bec3-ee34-5209-bcc9-5c7c8280429c: stale reviewInputFingerprint; expected sha256:9e2a694a79baab5da8d8e95612383e2c55cddfc3a98046e343330a4744af87d0\n- 22711af8-1184-584c-9707-1192799bfa22: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/22711af8-1184-584c-9707-1192799bfa22/22711af8-1184-584c-9707-1192799bfa22.png\n- 22711af8-1184-584c-9707-1192799bfa22: stale reviewInputFingerprint; expected sha256:f630a752299ad864ac4a4d418b7c78409e1a769ebf1e691aab294def3f1db07f\n- 183f3c47-ec20-5b98-8024-77ebd1c48abf: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/183f3c47-ec20-5b98-8024-77ebd1c48abf/183f3c47-ec20-5b98-8024-77ebd1c48abf.png\n- 183f3c47-ec20-5b98-8024-77ebd1c48abf: stale reviewInputFingerprint; expected sha256:5cbf660e218c19d7a637f2f25c4e18bafbe26740164f5d30b418f6e0da9c614d\n- 8fb0e4eb-9822-564a-9c2d-f3a16f86a7f6: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/8fb0e4eb-9822-564a-9c2d-f3a16f86a7f6/8fb0e4eb-9822-564a-9c2d-f3a16f86a7f6.png\n- 8fb0e4eb-9822-564a-9c2d-f3a16f86a7f6: stale reviewInputFingerprint; expected sha256:335e11b5a6155cf85da2e77ab308df75e5cdea77a78c4e50b36fc4270ab20e4f\n- 4cc92913-386c-5909-9d43-bb30f706ed24: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/4cc92913-386c-5909-9d43-bb30f706ed24/4cc92913-386c-5909-9d43-bb30f706ed24.png\n- 4cc92913-386c-5909-9d43-bb30f706ed24: stale reviewInputFingerprint; expected sha256:1a53ff74b430ec74039d9a3b8548bf7f8a4c58448981d2976a0e3922ea7def3d\n- d42c8cf0-9225-5f05-816a-914fc3caa116: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/d42c8cf0-9225-5f05-816a-914fc3caa116/d42c8cf0-9225-5f05-816a-914fc3caa116.png\n- d42c8cf0-9225-5f05-816a-914fc3caa116: stale reviewInputFingerprint; expected sha256:14833910ba04114069790a693872ffd7d29b5811054e6d9af0a95832c53c9582\n- ab489050-c165-5901-b420-bfeb33511eb5: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/ab489050-c165-5901-b420-bfeb33511eb5/ab489050-c165-5901-b420-bfeb33511eb5.png\n- ab489050-c165-5901-b420-bfeb33511eb5: stale reviewInputFingerprint; expected sha256:eaccf3d19fea123333657032f88914ed2c9f289bd6fe448ecd96ca7510caca57\n- 6f6ee02f-65f4-5fb4-b859-8f8c8fda0865: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/6f6ee02f-65f4-5fb4-b859-8f8c8fda0865/6f6ee02f-65f4-5fb4-b859-8f8c8fda0865.png\n- 6f6ee02f-65f4-5fb4-b859-8f8c8fda0865: stale reviewInputFingerprint; expected sha256:3edfe6d84b64415a4dee2a115a6ef87be511453efbcf0de596523d31f9b277f9\n- 6f313681-5e31-5c82-b388-336d85ab1663: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/6f313681-5e31-5c82-b388-336d85ab1663/6f313681-5e31-5c82-b388-336d85ab1663.png\n- 6f313681-5e31-5c82-b388-336d85ab1663: stale reviewInputFingerprint; expected sha256:8c89de41393655453e9c58c349de3c28187594dd54a53acd57ec075cc3425596\n- 797a233c-56ed-58a0-b451-5ae5d4bd21bf: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/797a233c-56ed-58a0-b451-5ae5d4bd21bf/797a233c-56ed-58a0-b451-5ae5d4bd21bf.png\n- 797a233c-56ed-58a0-b451-5ae5d4bd21bf: stale reviewInputFingerprint; expected sha256:f1c3733e0640d54a8d798264c9f56429b5bdf1023074e3b70c320a9ac4547dfd\n- 2a5b22f5-5ef3-5d95-8f75-21ca76ad1ce2: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/2a5b22f5-5ef3-5d95-8f75-21ca76ad1ce2/2a5b22f5-5ef3-5d95-8f75-21ca76ad1ce2.png\n- 2a5b22f5-5ef3-5d95-8f75-21ca76ad1ce2: stale reviewInputFingerprint; expected sha256:6680b0e83b51de8f88b12ee833525f9d6bd3099c2dc1124316d3b970b40a6b61\n",
+      "stderr": "",
+      "checkedAt": "2026-10-09T07:04:23.386475+00:00"
+    },
+    {
+      "actualCommand": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-twenty-three-native-independent-b-v1/splice-normal/atomicity.independent-b.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdout": "# Semantic Atomicity Review: biologie-molecular-genetics-current-splice-atomicity-independent-b-v1\nScope: Current splice semantic clarification only; other393 historical scope retained\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 1\nCurrent reviewed atomic: 1\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\n",
+      "stderr": "",
+      "checkedAt": "2026-10-09T07:04:23.221167+00:00"
+    },
+    {
+      "actualCommand": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-twenty-three-native-independent-b-v1/splice-normal/memory.independent-b.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdout": "# Memory Card Review: biologie-molecular-genetics-current-splice-memory-independent-b-v1\nScope: Current splice semantic clarification only; other393 historical scope retained\nRule: memory-card-review-v1\nOrdinary atomic goals in scope: 1\nCurrent no-memory decisions: 1\nCurrent memory-required decisions: 0\nCurrent needs developer review: 0\nMemory goals in scope: 0\nTraced memory goals: 0\nKnown deck IDs: 3\nDeck files: 6\nCard rows: 54\nPrimary cards in scope: 0\nKept primary cards: 0\nCards marked remove: 0\nCards needing developer review: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\nMissing card review records: 0\nStale card review records: 0\nObsolete card review records: 0\nComposition visibility scopes: 0\nMemory-required goals checked in views: 0\nMemory-required goals without visible memory node: 0\n",
+      "stderr": "",
+      "checkedAt": "2026-10-09T07:04:23.202680+00:00"
+    }
+  ],
+  "portableCandidateSemanticsPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-twenty-three-native-independent-b-v1/normal-current-P23-and-splice-AM.materialization.actual.receipt.json",
+  "noPublicAssetAliasOrMonkeypatch": true,
+  "noReviewedResourceRelaxation": true,
+  "humanApproval": false,
+  "strictGain": 0,
+  "activeWrites": false
+}

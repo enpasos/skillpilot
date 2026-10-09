@@ -1,0 +1,9 @@
+# Tatsächlicher Native6-Nachlauf B
+
+Alle acht physischen PDF-Seiten einschließlich sechs ganzer Zielseiten wurden einzeln angesehen; ganze aktuelle DE/EN-Ziele und HTML-Kontexte wurden gelesen. Die normalen D6-Records bestehen den gewöhnlichen Campaign-Validator. Genau sechs Originalrecords werden ersetzt; 17 vorherige unabhängige Records bleiben unter ihren tatsächlichen zwei Buchkontexten.
+
+Fünf neue Seiten unterstützen die ganze unveränderte Kompetenz. Auf Seite15 bleibt der tatsächliche dritte zentrale blau/rote Stab unten gelb/orange statt grün. Die zentrale Gruppe bewahrt daher die Allelzahlen nicht. Die neue Population-/Generationen-/Vererbungs-/Selektionsbrücke ist tatsächlich sichtbar; der Markerfehler bleibt ein eigenständiger D/V-HOLD bis zum wirklichen gezielten Nachfolger. Der frühere eigene V6-Erstbefund bleibt unverändert und wird durch den dokumentierten aktuellen Gegenbefund konservativ ergänzt.
+
+Die normalen P23-Dateien sind disjunkt: P6 aktuelles Sechserheft, P1 tatsächlicher v7-Karyogramm-Textnachlauf unter unverändertem ursprünglichem zweitem Heft, P10/P6 wortgleiche ursprüngliche Records. Alle ganzen Profile sind wertgleich und bleiben AI-Kandidaten mit needs_human_review/E1/G1. Schema und vorhandene semantische API mit tatsächlichen Rasterdigests melden keine Fehler. Gewöhnliche aktive P-Checks bleiben wegen fehlender echter app/public-Assets offen; keine Alias-/Mock-/Scope-Absenkung. Zwei erste technische Formatversuche und ein ungeeigneter historische-Fälle-Schlüsselzugriff sind erhalten.
+
+Die tatsächlichen zwei Caption-/Alt-/Prompt-Metabindungen5/7 und die zwei aktuellen v7-EN-Karyogramm-Rubrikstrings sind gezielt geprüft. Gültige Pixelurteile und Splice-Kind/A/M-Urteile werden nur bei exakter Bindung wiederverwendet. Ganze394 Seiten, 388 unveränderte Seiten, Quelle38/Partner44, alle479 nichtmedialen Zielfelder und alle394 Human-QA-Felder bleiben erhalten. Keine neue Whole23-/WholeSource-/Kurs-/Human-/M7-Freigabe.

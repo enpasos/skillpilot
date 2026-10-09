@@ -1,0 +1,7 @@
+# Eigenständige Rekonstruktion aus tatsächlichem Autorenbild
+
+Erzeuge ein einziges freundliches abstraktes Comic-Raster im Querformat nahe16:9, weißer Hintergrund, kräftige dunkle Konturen, große klar lesbare deutsche Kurzlabels. Keine IDs, Logos, Zahlenmessungen oder winzigen Zusatztexte. Diese Beschreibung ist nachträglich aus dem tatsächlich gesehenen ausgewählten PNG abgeleitet; kein ausgeführter Auftrag und kein historischer Originalprompt. 
+
+Drei gleichgroße gerahmte Spalten Fossile Funde / Hypothesen / Kultur. Links zwei schematische Teilfossilzeichen, Schädel-/Kiefer und Becken-/Beinfragment; relative waagerechte Zeitleiste Älter links, Jünger rechts ohne Daten. Blauer Pfeil zur mittleren verzweigten Verwandtschaftsgrafik mit festen und gepunkteten alternativen Ästen, mehreren Fragezeichen und dem Zusatz Mehrere mögliche Verwandtschaftsverhältnisse. Gepunktete Verbindung zum rechten Symbolfeld: zwei Menschen erläutern ein Steinwerkzeug, Sprechblase und geöffnetes Lehrbuch mit einfachen Werkzeugicons. Unten Wissen durch Lernen und Weitergeben. Keine echte Fossilart, Provenienz, Datierung oder prähistorische Buchbehauptung; rechte Szene ist eine überzeitliche didaktische Lernmetapher, keine Fundrekonstruktion. Keine Menschenleiter.
+
+Die Darstellung unterstützt Orientierung zum ganzen aktuellen Lernziel. Sie beweist weder menschliches Können noch Experimente, Quellen-/Kursfreigabe oder M7.

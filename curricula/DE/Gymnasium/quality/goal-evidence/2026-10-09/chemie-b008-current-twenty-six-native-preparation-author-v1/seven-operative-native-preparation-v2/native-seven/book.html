@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-v1&quot;,&quot;maxWidthPixels&quot;:1600,&quot;maxHeightPixels&quot;:1200,&quot;jpegQuality&quot;:0.82,&quot;webpQuality&quot;:0.9,&quot;maxBytes&quot;:1500000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Chemie: sieben vollständige operative Kandidatenprüfseiten</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Chemie: sieben vollständige operative Kandidatenprüfseiten</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>7 atomare Lernziele</dt><dd>8 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:9e93b7242bcac91597d473b6f5a54170ead27872f4bcf8fa644cf731dd087ea8</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:chemie-m7-review-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-fd713faf6c8502b7e7241677" aria-label="Chemie – kanonische M7-Prüfsicht"><a href="#goal-9fc800d1-92d1-5ef6-81c1-33960ae034dd"><span class="toc-entry-label">Chemie&#160;<wbr>–&#160;<wbr>kanonische&#160;<wbr>M7-Prüfsicht</span></a></h2>
+          <span class="toc-entry-meta"><span>7 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="goal:442c31c5-c561-5c7a-90bb-2335d779175c" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-61e1c5b7a0d4217b4782dbac" aria-label="Chemie"><a href="#goal-9fc800d1-92d1-5ef6-81c1-33960ae034dd"><span class="toc-entry-label">Chemie</span></a></h3>
+          <span class="toc-entry-meta"><span>7 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:49b13b33-34b7-5e4e-861c-b21082cb9922" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-110eed4900dbfa3b1e328dc0" aria-label="Chemische Daten dokumentieren und deuten"><a href="#goal-9fc800d1-92d1-5ef6-81c1-33960ae034dd"><span class="toc-entry-label">Chemische&#160;<wbr>Daten&#160;<wbr>dokumentieren&#160;<wbr>und&#160;<wbr>deuten</span></a></h4>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:f660c91a-fa14-5010-94cf-068d785c7fd2" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-7be3b474c1303ad9bf7ab11f" aria-label="Chemische Erkenntniswege einordnen"><a href="#goal-a8800c36-d13c-5f63-962c-cf18c3795c63"><span class="toc-entry-label">Chemische&#160;<wbr>Erkenntniswege&#160;<wbr>einordnen</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:b6327e98-8ab9-5d7f-b826-4023bc1a56a7" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-40b5473885f3e18ab18598b7" aria-label="Quellen und Argumente zu chemischen Sachverhalten auswerten"><a href="#goal-431a0f03-f28a-5e56-a61f-000336d0b410"><span class="toc-entry-label">Quellen&#160;<wbr>und&#160;<wbr>Argumente&#160;<wbr>zu&#160;<wbr>chemischen&#160;<wbr>Sachverhalten&#160;<wbr>auswerten</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 4</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:542822de-cb96-56cf-a487-0fc3b5820f57" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-c685cd7688064a55a893d65c" aria-label="Chemie in Gesellschaft und Berufsfeldern einordnen"><a href="#goal-6c9adc36-b6d0-57fa-8e02-5e156aebfecc"><span class="toc-entry-label">Chemie&#160;<wbr>in&#160;<wbr>Gesellschaft&#160;<wbr>und&#160;<wbr>Berufsfeldern&#160;<wbr>einordnen</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 5</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:b3c9c4b8-5575-5200-86cf-26c14ebcc3d8" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-b3799fd858d1bfd059589271" aria-label="Einflüsse auf naturwissenschaftliches Wissen bewerten"><a href="#goal-e5a5dcd8-053c-55fd-b5c7-bba93779da53"><span class="toc-entry-label">Einflüsse&#160;<wbr>auf&#160;<wbr>naturwissenschaftliches&#160;<wbr>Wissen&#160;<wbr>bewerten</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 6</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:277a3c20-6082-5a95-be08-c1e386efe79b" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-2973dd24457433ab6a68e546" aria-label="Chemische Modelle nutzen und kritisch vergleichen"><a href="#goal-6c7ce93c-7675-51da-bc0c-7d0257f7ff7d"><span class="toc-entry-label">Chemische&#160;<wbr>Modelle&#160;<wbr>nutzen&#160;<wbr>und&#160;<wbr>kritisch&#160;<wbr>vergleichen</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 7</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-9fc800d1-92d1-5ef6-81c1-33960ae034dd" data-goal-id="9fc800d1-92d1-5ef6-81c1-33960ae034dd" data-page-number="1" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:49b13b33-34b7-5e4e-861c-b21082cb9922" aria-labelledby="goal-9fc800d1-92d1-5ef6-81c1-33960ae034dd-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9fc800d1-92d1-5ef6-81c1-33960ae034dd-title"><a class="goal-self-link" href="#goal-9fc800d1-92d1-5ef6-81c1-33960ae034dd">Chemische Daten nachvollziehbar dokumentieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9fc800d1-92d1-5ef6-81c1-33960ae034dd</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-110eed4900dbfa3b1e328dc0">Chemische Daten dokumentieren und deuten</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:470ca386b735383103c7b9c458015f4ea3354587bd8e41dde4cbb30fa97f3dc0" data-rendered-digest="sha256:2f8a69c8f3040e5b2ee276b2104dec48a9cd1e60f8254dc4baaa9fcd6075dc34" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/chemie/9fc800d1-92d1-5ef6-81c1-33960ae034dd/9fc800d1-92d1-5ef6-81c1-33960ae034dd.png" alt="Große Datentabelle und passendes Temperatur-Zeit-Diagramm; Beschreibung des abnehmenden Zeittrends dieser Lehrbeispiele, ohne Hypothesenbestätigung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9fc800d1-92d1-5ef6-81c1-33960ae034dd-description-heading">
+        <p class="section-heading" id="goal-9fc800d1-92d1-5ef6-81c1-33960ae034dd-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann experimentell erhobene oder recherchierte chemische Daten strukturiert und nachvollziehbar dokumentieren, Größen und Einheiten, Herkunft und relevante Untersuchungsbedingungen angeben sowie beobachtende Beschreibung und deutende Erklärung unterscheiden.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9fc800d1-92d1-5ef6-81c1-33960ae034dd-requires-heading">
+          <p class="section-heading" id="goal-9fc800d1-92d1-5ef6-81c1-33960ae034dd-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-9fc800d1-92d1-5ef6-81c1-33960ae034dd-reverse-heading">
+          <p class="section-heading" id="goal-9fc800d1-92d1-5ef6-81c1-33960ae034dd-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6"><span>Chemische Daten auswerten und auf Hypothesen beziehen</span><code>7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-9fc800d1-92d1-5ef6-81c1-33960ae034dd-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9fc800d1-92d1-5ef6-81c1-33960ae034dd-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-4aa3a130-b517-5ac5-87b2-147fe432cadd" rel="noreferrer noopener"><span>Die Aussagekraft chemischer Daten beurteilen</span> <code>4aa3a130-b517-5ac5-87b2-147fe432cadd</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-fb41c82c-12c3-5f9a-9e8d-40f10c9fade9" rel="noreferrer noopener"><span>Untersuchungsergebnisse adressaten- und sachgerecht darstellen</span> <code>fb41c82c-12c3-5f9a-9e8d-40f10c9fade9</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-cfa5c1e4-6714-5be7-9a57-a24b201b6231" rel="noreferrer noopener"><span>Stoffgemische und unbekannte Reinstoffe analytisch untersuchen</span> <code>cfa5c1e4-6714-5be7-9a57-a24b201b6231</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 7</span>
+      <span>Buch-Digest <code>sha256:9e93b7242bcac91597d473b6f5a54170ead27872f4bcf8fa644cf731dd087ea8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2aa9dab12809d30dca3bf4003bc71d9f861e08289a7c0b9270df816f9a6d1012</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=chemie-b008-seven-operative-v2-native-science-candidate-20261009-v1&amp;edition=curricular-atomic-v1&amp;goalId=9fc800d1-92d1-5ef6-81c1-33960ae034dd&amp;goalFingerprint=sha256%3A2aa9dab12809d30dca3bf4003bc71d9f861e08289a7c0b9270df816f9a6d1012&amp;pageFingerprint=sha256%3A2cd2763690e11fc19f06ebd0453bc4d0f377898b1127168cf1a2b543e12ed65a&amp;bookDigest=sha256%3A9e93b7242bcac91597d473b6f5a54170ead27872f4bcf8fa644cf731dd087ea8&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6" data-goal-id="7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6" data-page-number="2" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:49b13b33-34b7-5e4e-861c-b21082cb9922" aria-labelledby="goal-7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6-title"><a class="goal-self-link" href="#goal-7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6">Chemische Daten auswerten und auf Hypothesen beziehen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-110eed4900dbfa3b1e328dc0">Chemische Daten dokumentieren und deuten</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:5d0bd0692667e0dbc912ca19adab557782501feb572936a4e44253e626416b45" data-rendered-digest="sha256:e97a7ded8e5556b7ef0ec323e43b63dc1decfb9865874d5c0944f00b96d5a920" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/chemie/7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6/7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6.jpg" alt="Vier Comicfelder zeigen Frage, Hypothese, Vergleichsversuch mit Schutzbrille und eine Tabelle mit Temperatur und Zeit.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6-description-heading">
+        <p class="section-heading" id="goal-7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann erhobene oder recherchierte chemische Daten in geeigneten Tabellen oder Diagrammen auswerten, erkennbare Trends und Beziehungen erläutern und begründen, inwiefern die Daten die Ausgangshypothese stützen oder ihr widersprechen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6-requires-heading">
+          <p class="section-heading" id="goal-7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-9fc800d1-92d1-5ef6-81c1-33960ae034dd"><span>Chemische Daten nachvollziehbar dokumentieren</span><code>9fc800d1-92d1-5ef6-81c1-33960ae034dd</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6-reverse-heading">
+          <p class="section-heading" id="goal-7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-a8800c36-d13c-5f63-962c-cf18c3795c63"><span>Chemische Erkenntniswege und ihre Reichweite erklären</span><code>a8800c36-d13c-5f63-962c-cf18c3795c63</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-9e3fae29-84d5-5600-bfb3-82d49ea3f1b5" rel="noreferrer noopener"><span>Chemische Daten quantitativ und hypothesenbezogen auswerten</span> <code>9e3fae29-84d5-5600-bfb3-82d49ea3f1b5</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-4aa3a130-b517-5ac5-87b2-147fe432cadd" rel="noreferrer noopener"><span>Die Aussagekraft chemischer Daten beurteilen</span> <code>4aa3a130-b517-5ac5-87b2-147fe432cadd</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-99d41b0f-e958-54cf-a077-9bed1704a303" rel="noreferrer noopener"><span>Eigene chemische Untersuchungen reflektieren</span> <code>99d41b0f-e958-54cf-a077-9bed1704a303</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 7</span>
+      <span>Buch-Digest <code>sha256:9e93b7242bcac91597d473b6f5a54170ead27872f4bcf8fa644cf731dd087ea8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:afe23ba7646722dc98db2ac6ba1182b7416971532c2e37c3ed7965f84fb26fca</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=chemie-b008-seven-operative-v2-native-science-candidate-20261009-v1&amp;edition=curricular-atomic-v1&amp;goalId=7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6&amp;goalFingerprint=sha256%3Aafe23ba7646722dc98db2ac6ba1182b7416971532c2e37c3ed7965f84fb26fca&amp;pageFingerprint=sha256%3Ad07920b28b5afb1ca4e3d1ef65a21c2813ed76ac00559a60227aaf880358b949&amp;bookDigest=sha256%3A9e93b7242bcac91597d473b6f5a54170ead27872f4bcf8fa644cf731dd087ea8&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a8800c36-d13c-5f63-962c-cf18c3795c63" data-goal-id="a8800c36-d13c-5f63-962c-cf18c3795c63" data-page-number="3" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:f660c91a-fa14-5010-94cf-068d785c7fd2" aria-labelledby="goal-a8800c36-d13c-5f63-962c-cf18c3795c63-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a8800c36-d13c-5f63-962c-cf18c3795c63-title"><a class="goal-self-link" href="#goal-a8800c36-d13c-5f63-962c-cf18c3795c63">Chemische Erkenntniswege und ihre Reichweite erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a8800c36-d13c-5f63-962c-cf18c3795c63</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-7be3b474c1303ad9bf7ab11f">Chemische Erkenntniswege einordnen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:5d0bd0692667e0dbc912ca19adab557782501feb572936a4e44253e626416b45" data-rendered-digest="sha256:e97a7ded8e5556b7ef0ec323e43b63dc1decfb9865874d5c0944f00b96d5a920" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/chemie/a8800c36-d13c-5f63-962c-cf18c3795c63/a8800c36-d13c-5f63-962c-cf18c3795c63.jpg" alt="Vier Comicfelder zeigen Frage, Hypothese, Vergleichsversuch mit Schutzbrille und eine Tabelle mit Temperatur und Zeit.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a8800c36-d13c-5f63-962c-cf18c3795c63-description-heading">
+        <p class="section-heading" id="goal-a8800c36-d13c-5f63-962c-cf18c3795c63-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an einem vorgegebenen chemischen Erkenntnisweg erklären, wie Fragestellung, Methoden, Beobachtungen und Interpretation zusammenwirken, welche Fragen damit chemisch beantwortbar sind und welche Unsicherheiten oder Grenzen bestehen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a8800c36-d13c-5f63-962c-cf18c3795c63-requires-heading">
+          <p class="section-heading" id="goal-a8800c36-d13c-5f63-962c-cf18c3795c63-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6"><span>Chemische Daten auswerten und auf Hypothesen beziehen</span><code>7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a8800c36-d13c-5f63-962c-cf18c3795c63-reverse-heading">
+          <p class="section-heading" id="goal-a8800c36-d13c-5f63-962c-cf18c3795c63-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-e5a5dcd8-053c-55fd-b5c7-bba93779da53"><span>Einflüsse auf die Entwicklung chemischen Wissens bewerten</span><code>e5a5dcd8-053c-55fd-b5c7-bba93779da53</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-a8800c36-d13c-5f63-962c-cf18c3795c63-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a8800c36-d13c-5f63-962c-cf18c3795c63-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-a0080b5f-13ff-56bc-b8ff-2ff6273e2ec1" rel="noreferrer noopener"><span>Wissenschaftliche Gültigkeitskriterien anwenden</span> <code>a0080b5f-13ff-56bc-b8ff-2ff6273e2ec1</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 7</span>
+      <span>Buch-Digest <code>sha256:9e93b7242bcac91597d473b6f5a54170ead27872f4bcf8fa644cf731dd087ea8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:b7fcb0bf294ec17da0bdf822629b0499aec3e84e6ad50aa799fbc1dbda843ed7</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=chemie-b008-seven-operative-v2-native-science-candidate-20261009-v1&amp;edition=curricular-atomic-v1&amp;goalId=a8800c36-d13c-5f63-962c-cf18c3795c63&amp;goalFingerprint=sha256%3Ab7fcb0bf294ec17da0bdf822629b0499aec3e84e6ad50aa799fbc1dbda843ed7&amp;pageFingerprint=sha256%3Aa18e20252761a40e280b7cc31827a3f63b201b06d0e97b8ec081ce00598ffa1a&amp;bookDigest=sha256%3A9e93b7242bcac91597d473b6f5a54170ead27872f4bcf8fa644cf731dd087ea8&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-431a0f03-f28a-5e56-a61f-000336d0b410" data-goal-id="431a0f03-f28a-5e56-a61f-000336d0b410" data-page-number="4" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:b6327e98-8ab9-5d7f-b826-4023bc1a56a7" aria-labelledby="goal-431a0f03-f28a-5e56-a61f-000336d0b410-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-431a0f03-f28a-5e56-a61f-000336d0b410-title"><a class="goal-self-link" href="#goal-431a0f03-f28a-5e56-a61f-000336d0b410">Chemische Pro- und Kontra-Argumente abwägen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>431a0f03-f28a-5e56-a61f-000336d0b410</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-40b5473885f3e18ab18598b7">Quellen und Argumente zu chemischen Sachverhalten auswerten</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:697d3f4ba134ccb6094266610a0663e07ad621d3a44b31499dd9a732021e0ac3" data-rendered-digest="sha256:ac5f52411103fe7f8fd6f5c91be4566f1a52c14efee900fc684f1ef49035fdca" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/chemie/431a0f03-f28a-5e56-a61f-000336d0b410/431a0f03-f28a-5e56-a61f-000336d0b410.png" alt="Große Pro- und Kontra-Karten mit je einem Belegbuch und einem neutralen Kolben flankieren eine leere ausgeglichene Waage. Darunter stehen die Kriterien Umwelt, Sicherheit und Kosten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-431a0f03-f28a-5e56-a61f-000336d0b410-description-heading">
+        <p class="section-heading" id="goal-431a0f03-f28a-5e56-a61f-000336d0b410-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann zu einem chemischen Sachverhalt relevante Bewertungskriterien recherchieren oder erkennen, fachlich belegte Pro- und Kontra-Argumente selbst finden, sie mit bereitgestellten Argumenten vergleichen und deren Gewicht kriteriengeleitet begründet abwägen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-431a0f03-f28a-5e56-a61f-000336d0b410-requires-heading">
+          <p class="section-heading" id="goal-431a0f03-f28a-5e56-a61f-000336d0b410-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-431a0f03-f28a-5e56-a61f-000336d0b410-reverse-heading">
+          <p class="section-heading" id="goal-431a0f03-f28a-5e56-a61f-000336d0b410-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-431a0f03-f28a-5e56-a61f-000336d0b410-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-431a0f03-f28a-5e56-a61f-000336d0b410-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-5b1bb5d9-07b1-5ba9-b320-cc97be917c60" rel="noreferrer noopener"><span>Chemische Informationen aus Quellen erschließen</span> <code>5b1bb5d9-07b1-5ba9-b320-cc97be917c60</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-431a0f03-f28a-5e56-a61f-000336d0b410-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-431a0f03-f28a-5e56-a61f-000336d0b410-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-1df17884-96ae-57d7-9da9-dbebd082596f" rel="noreferrer noopener"><span>Chemische Handlungsoptionen kriteriengeleitet bewerten</span> <code>1df17884-96ae-57d7-9da9-dbebd082596f</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 7</span>
+      <span>Buch-Digest <code>sha256:9e93b7242bcac91597d473b6f5a54170ead27872f4bcf8fa644cf731dd087ea8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:6ddcfd8416fa7d7295255874133e3eab40d19427f1a99abdffb703da778e9ea5</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=chemie-b008-seven-operative-v2-native-science-candidate-20261009-v1&amp;edition=curricular-atomic-v1&amp;goalId=431a0f03-f28a-5e56-a61f-000336d0b410&amp;goalFingerprint=sha256%3A6ddcfd8416fa7d7295255874133e3eab40d19427f1a99abdffb703da778e9ea5&amp;pageFingerprint=sha256%3Abe42c668dfc5fbc2a53f55f0a535805071fc37c78321a759108284222e99af45&amp;bookDigest=sha256%3A9e93b7242bcac91597d473b6f5a54170ead27872f4bcf8fa644cf731dd087ea8&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6c9adc36-b6d0-57fa-8e02-5e156aebfecc" data-goal-id="6c9adc36-b6d0-57fa-8e02-5e156aebfecc" data-page-number="5" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:542822de-cb96-56cf-a487-0fc3b5820f57" aria-labelledby="goal-6c9adc36-b6d0-57fa-8e02-5e156aebfecc-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6c9adc36-b6d0-57fa-8e02-5e156aebfecc-title"><a class="goal-self-link" href="#goal-6c9adc36-b6d0-57fa-8e02-5e156aebfecc">Chemische Berufsfelder in eine begründete Berufswahl einbeziehen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6c9adc36-b6d0-57fa-8e02-5e156aebfecc</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-c685cd7688064a55a893d65c">Chemie in Gesellschaft und Berufsfeldern einordnen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:571deccce9e1dea8b029d0ee4d6c2fac572f8b9199dede11ab2caef038346b97" data-rendered-digest="sha256:8b70e736fa88b51bb3e59db849fcb65ff8a0320d3f1619362cfa67fc93166ece" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/chemie/6c9adc36-b6d0-57fa-8e02-5e156aebfecc/6c9adc36-b6d0-57fa-8e02-5e156aebfecc.png" alt="Drei chemische Tätigkeitsfelder mit offenen Orientierungsfragen: Labor, Produktion und Umweltanalytik.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6c9adc36-b6d0-57fa-8e02-5e156aebfecc-description-heading">
+        <p class="section-heading" id="goal-6c9adc36-b6d0-57fa-8e02-5e156aebfecc-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann vielfältige chemische Berufsfelder anhand ihrer Aufgaben, Anwendungsbereiche und Anforderungen vergleichen, ihren Zusammenhang mit chemischen Anwendungen und gesellschaftlichen Entwicklungen erläutern und diese Informationen in eine begründete Berufsorientierung oder Berufswahl einbeziehen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6c9adc36-b6d0-57fa-8e02-5e156aebfecc-requires-heading">
+          <p class="section-heading" id="goal-6c9adc36-b6d0-57fa-8e02-5e156aebfecc-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-6c9adc36-b6d0-57fa-8e02-5e156aebfecc-reverse-heading">
+          <p class="section-heading" id="goal-6c9adc36-b6d0-57fa-8e02-5e156aebfecc-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-6c9adc36-b6d0-57fa-8e02-5e156aebfecc-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6c9adc36-b6d0-57fa-8e02-5e156aebfecc-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6" rel="noreferrer noopener"><span>Chemische Anwendungen und ihre gesellschaftliche Bedeutung diskutieren</span> <code>7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 7</span>
+      <span>Buch-Digest <code>sha256:9e93b7242bcac91597d473b6f5a54170ead27872f4bcf8fa644cf731dd087ea8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0891c34d743bf02ee8ffbcb380066674d144b5fe001c531ec00b35db320d3f97</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=chemie-b008-seven-operative-v2-native-science-candidate-20261009-v1&amp;edition=curricular-atomic-v1&amp;goalId=6c9adc36-b6d0-57fa-8e02-5e156aebfecc&amp;goalFingerprint=sha256%3A0891c34d743bf02ee8ffbcb380066674d144b5fe001c531ec00b35db320d3f97&amp;pageFingerprint=sha256%3A293f710af013f3634c9710b40bace7c03a0dcca4870348e03843bbb5d3999f58&amp;bookDigest=sha256%3A9e93b7242bcac91597d473b6f5a54170ead27872f4bcf8fa644cf731dd087ea8&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e5a5dcd8-053c-55fd-b5c7-bba93779da53" data-goal-id="e5a5dcd8-053c-55fd-b5c7-bba93779da53" data-page-number="6" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:b3c9c4b8-5575-5200-86cf-26c14ebcc3d8" aria-labelledby="goal-e5a5dcd8-053c-55fd-b5c7-bba93779da53-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e5a5dcd8-053c-55fd-b5c7-bba93779da53-title"><a class="goal-self-link" href="#goal-e5a5dcd8-053c-55fd-b5c7-bba93779da53">Einflüsse auf die Entwicklung chemischen Wissens bewerten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e5a5dcd8-053c-55fd-b5c7-bba93779da53</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-b3799fd858d1bfd059589271">Einflüsse auf naturwissenschaftliches Wissen bewerten</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:906b41bfaed00644888c875ec718eb7174667e20f55c1e47503456a0d07d7dd2" data-rendered-digest="sha256:e79c54229d3c3921e9e64f7c3782ec6edc82b90fb00002db2df55e2cf39f3db8" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/chemie/e5a5dcd8-053c-55fd-b5c7-bba93779da53/e5a5dcd8-053c-55fd-b5c7-bba93779da53.png" alt="Vier Bereiche Technik, Gesellschaft, Umwelt und Wirtschaft führen mit Pfeilen zu einer Forscherin; darunter steht Befunde prüfen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e5a5dcd8-053c-55fd-b5c7-bba93779da53-description-heading">
+        <p class="section-heading" id="goal-e5a5dcd8-053c-55fd-b5c7-bba93779da53-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an chemischen Beispielen soziale, kulturelle, technologische, historische, ökologische und ökonomische Einflüsse auf die Entwicklung naturwissenschaftlichen Wissens beschreiben und begründet bewerten, ohne empirische Gültigkeit mit gesellschaftlicher Zustimmung gleichzusetzen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e5a5dcd8-053c-55fd-b5c7-bba93779da53-requires-heading">
+          <p class="section-heading" id="goal-e5a5dcd8-053c-55fd-b5c7-bba93779da53-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a8800c36-d13c-5f63-962c-cf18c3795c63"><span>Chemische Erkenntniswege und ihre Reichweite erklären</span><code>a8800c36-d13c-5f63-962c-cf18c3795c63</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-e5a5dcd8-053c-55fd-b5c7-bba93779da53-reverse-heading">
+          <p class="section-heading" id="goal-e5a5dcd8-053c-55fd-b5c7-bba93779da53-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e5a5dcd8-053c-55fd-b5c7-bba93779da53-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e5a5dcd8-053c-55fd-b5c7-bba93779da53-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-36666b4a-97af-51fc-9983-56cdcc7a8229" rel="noreferrer noopener"><span>Chemische Quellen und Darstellungen kritisch prüfen</span> <code>36666b4a-97af-51fc-9983-56cdcc7a8229</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 7</span>
+      <span>Buch-Digest <code>sha256:9e93b7242bcac91597d473b6f5a54170ead27872f4bcf8fa644cf731dd087ea8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9073c842efd80e56ab3c4b9b4d68470c2867b4f0a94ae5b09570b3f3b0b55eea</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=chemie-b008-seven-operative-v2-native-science-candidate-20261009-v1&amp;edition=curricular-atomic-v1&amp;goalId=e5a5dcd8-053c-55fd-b5c7-bba93779da53&amp;goalFingerprint=sha256%3A9073c842efd80e56ab3c4b9b4d68470c2867b4f0a94ae5b09570b3f3b0b55eea&amp;pageFingerprint=sha256%3Abd3c7b8a0dfd4fbe48ccc0b43176d59809edef7b54881fc6555fc9ea243eee60&amp;bookDigest=sha256%3A9e93b7242bcac91597d473b6f5a54170ead27872f4bcf8fa644cf731dd087ea8&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6c7ce93c-7675-51da-bc0c-7d0257f7ff7d" data-goal-id="6c7ce93c-7675-51da-bc0c-7d0257f7ff7d" data-page-number="7" data-chapter-ids="structure:chemie-m7-review-root goal:442c31c5-c561-5c7a-90bb-2335d779175c goal:277a3c20-6082-5a95-be08-c1e386efe79b" aria-labelledby="goal-6c7ce93c-7675-51da-bc0c-7d0257f7ff7d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6c7ce93c-7675-51da-bc0c-7d0257f7ff7d-title"><a class="goal-self-link" href="#goal-6c7ce93c-7675-51da-bc0c-7d0257f7ff7d">Chemische Modelle nutzen und kritisch vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6c7ce93c-7675-51da-bc0c-7d0257f7ff7d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-61e1c5b7a0d4217b4782dbac">Chemie</a></li><li><a href="#chapter-2973dd24457433ab6a68e546">Chemische Modelle nutzen und kritisch vergleichen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:add6f10b3fccddca4cce0c1f467e036aa25e7090f0c7717f4a07a94a5467030c" data-rendered-digest="sha256:c12973cd45612f4f39ec1d61752eda74b820f564bd6f746ea700ecc1f34678a9" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/chemie/6c7ce93c-7675-51da-bc0c-7d0257f7ff7d/6c7ce93c-7675-51da-bc0c-7d0257f7ff7d.jpg" alt="Drei Darstellungen eines Wassermoleküls mit unterschiedlichen Modellstärken und Grenzen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6c7ce93c-7675-51da-bc0c-7d0257f7ff7d-description-heading">
+        <p class="section-heading" id="goal-6c7ce93c-7675-51da-bc0c-7d0257f7ff7d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann für eine chemische Fragestellung hypothesengeleitet geeignete analoge oder digitale Modelle und Simulationen zu Materie, chemischen Reaktionen, Bindungen und Wechselwirkungen auswählen und nutzen, ihre Aussagen mit Beobachtungen und miteinander vergleichen, Grenzen benennen und begründen, weshalb ein Modell hinterfragt oder weiterentwickelt werden muss.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6c7ce93c-7675-51da-bc0c-7d0257f7ff7d-requires-heading">
+          <p class="section-heading" id="goal-6c7ce93c-7675-51da-bc0c-7d0257f7ff7d-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-6c7ce93c-7675-51da-bc0c-7d0257f7ff7d-reverse-heading">
+          <p class="section-heading" id="goal-6c7ce93c-7675-51da-bc0c-7d0257f7ff7d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-6c7ce93c-7675-51da-bc0c-7d0257f7ff7d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6c7ce93c-7675-51da-bc0c-7d0257f7ff7d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-86d34f1f-692d-5522-a9a4-a71c65b24de7" rel="noreferrer noopener"><span>Chemische Modelle theoriegestützt nutzen und kritisch vergleichen</span> <code>86d34f1f-692d-5522-a9a4-a71c65b24de7</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 7</span>
+      <span>Buch-Digest <code>sha256:9e93b7242bcac91597d473b6f5a54170ead27872f4bcf8fa644cf731dd087ea8</code></span>
+      <span>Ziel-Fingerprint <code>sha256:512f64ab6581d0afea08dee825b7dfcbb2d9375ac6ff1595195d1ba830a96796</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=chemie-b008-seven-operative-v2-native-science-candidate-20261009-v1&amp;edition=curricular-atomic-v1&amp;goalId=6c7ce93c-7675-51da-bc0c-7d0257f7ff7d&amp;goalFingerprint=sha256%3A512f64ab6581d0afea08dee825b7dfcbb2d9375ac6ff1595195d1ba830a96796&amp;pageFingerprint=sha256%3Af9ffd55174951fc975eb390d1116faf8e99881a617da4b588e2d34d2b8b221c9&amp;bookDigest=sha256%3A9e93b7242bcac91597d473b6f5a54170ead27872f4bcf8fa644cf731dd087ea8&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

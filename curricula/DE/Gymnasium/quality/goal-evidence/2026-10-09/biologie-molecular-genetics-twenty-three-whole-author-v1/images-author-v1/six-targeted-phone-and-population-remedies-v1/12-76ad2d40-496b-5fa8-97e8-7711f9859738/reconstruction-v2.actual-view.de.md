@@ -1,0 +1,5 @@
+# Eigenständiger Rekonstruktionsprompt aus dem tatsächlich gesehenen Bild
+
+Abgeleitet nach Original-/360-/680-Ansicht; kein ursprünglicher Generatorprompt. Freundlich abstrakte Comicgrafik, 1672×941, dunkle klare Linien und große lesbare Beschriftungen.
+
+Drei große Spalten mit Replikation, PCR, Reparatur. Links blaue DNA-Vorlage mit Gabel nach rechts offen, grüne Helikase links an der Öffnung, zwei violette Polymerasen an roten neuen Strängen; oberer Verlängerungspfeil links zur Gabel, unterer rechts von der Gabel weg. Große Leiterlabels Helikase und Polymerase. Mitte ohne PCR-Maschine: drei sehr große vertikale Temperaturkästen 95 °C→55 °C→72 °C, Rückschleife von 72 zu95. Darunter großer DNA-Doppelstrang mit grünem Primer links oben und rechts unten, Pfeile nach innen; darunter zwei große schematische Doppelstrangkopien, keine genaue Zyklusanzahl behaupten. Rechts vier aufeinanderfolgende DNA-Motive mit betroffener Base, Entfernung, vorlagegerechtem Ersatz und geschlossener Stelle. Keine neuen Basensequenzen oder universellen Temperaturen erfinden.

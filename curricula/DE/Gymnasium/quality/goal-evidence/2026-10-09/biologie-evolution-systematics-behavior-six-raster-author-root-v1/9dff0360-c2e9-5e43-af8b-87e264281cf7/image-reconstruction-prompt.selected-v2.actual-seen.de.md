@@ -1,0 +1,3 @@
+# Rekonstruktion aus dem tatsächlich gesehenen PNG
+
+Freundliche Comicillustration quer etwa16:9, zwei große mintblaue Vergleichsfelder. Links Überschrift „Flügel“: Vogel und Fledermaus gemeinsam im gelben ovalen Merkmalsfeld, Katze und Frosch außerhalb. Rechts Überschrift „Verwandtschaft“: wurzelgerichteter dunkelblauer Stammbaum, der zuerst den Frosch abzweigt, dann den Vogel und zuletzt einen gemeinsamen Säugetierast in Katze und Fledermaus. Vier Tiere an vier zeitgleichen Enden, kein aktuelles Tier ist Vorfahr eines anderen. Kurze große Tierlabels „Frosch“, „Vogel“, „Katze“, „Fledermaus“. Korrekten sichtbaren Verlauf auch hinter Zweiganschlüssen erhalten; keine mathematisch falsche Gruppe. Hauptgruppen und Baum bei360px erkennbar.

@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "role": "Author operative meter-range correction plus unchanged own-plan fixture consistency audit",
+  "guidedCase": {
+    "oldAssignedStandardRange_uS_cm": [
+      0,
+      2000
+    ],
+    "newDedicatedStandardRange_uS_cm": [
+      0,
+      5000
+    ],
+    "nominalStandard_uS_cm": 1990,
+    "labelPlusMinus_uS_cm": 20,
+    "entireLabelInterval_uS_cm": [
+      1970,
+      2010
+    ],
+    "referenceTemperature_C": 25,
+    "newDisplayResolution_uS_cm": 1,
+    "resolutionIsAccuracy": false,
+    "actualStandardChecked": false
+  },
+  "ownPlan423ConsistencyAudit": {
+    "goalId": "42391b16-bbae-5c77-84e1-d488e714167b",
+    "caseKey": "lower-independently-planned-hypothesis-investigation-ion-series",
+    "profileUnchangedValueSha256": "9578cc4d644a7cf0e9fc3555900d3e42000a0aeca5d756e51c99900c0485251b",
+    "originalWholeCaseUnchanged": true,
+    "actualExistingAvailableHigherRange_mS_cm": [
+      0,
+      100
+    ],
+    "displayResolution_mS_cm": 0.01,
+    "standardIntervalIn_mS_cm": [
+      1.97,
+      2.01
+    ],
+    "wholeStandardIntervalFitsHigherRange": true,
+    "standardExclusivelyAssignedToLowRange": false,
+    "auditConclusion": "Existing whole own-plan kit already offers a genuinely adequate higher range; choose and record an available range covering the complete interval, according to actual manufacturer accuracy/check instructions. Do not force the deficient low range or claim acceptance/precision from10uS display steps.",
+    "newActualFailureOrPrecisionClaim": false
+  },
+  "originalSourceWholeRows21Edges36Occurrences79Unchanged": true,
+  "originalRoot70NumericReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-current-nineteen-whole-positive-independent-b-root-v1/independent-bound-finite-calculations.actual.json",
+    "sha256": "976f5984e0c41accf0f47d3a4f07077b7c9baf16dc8919ee06065a2704b35d23",
+    "bytes": 2808
+  },
+  "actualPhysicalExperimentPerformed": false,
+  "humanApproval": false,
+  "strictGain": 0
+}

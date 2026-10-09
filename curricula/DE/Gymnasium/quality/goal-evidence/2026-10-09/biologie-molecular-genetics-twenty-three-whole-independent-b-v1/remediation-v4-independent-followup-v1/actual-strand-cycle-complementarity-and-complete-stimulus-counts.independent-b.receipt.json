@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "method": "Independent reviewer finite complementary-sequence and whole-type/count calculations, not an authored checker verdict",
+  "sequences": [
+    {
+      "oldUpper5to3": "ATGCCTAAAGGT",
+      "oldLowerAligned3to5": "TACGGATTTCCA",
+      "newUpper5to3": "ATGCCTAAAGGT",
+      "newLowerAligned3to5": "TACGGATTTCCA",
+      "newLowerSynthesis5to3RightToLeft": "ACCTTTAGGCAT",
+      "forwardPrimer5to3": "ATG",
+      "reversePrimer5to3": "ACC",
+      "bothPrimerEndsComplementary": true
+    },
+    {
+      "oldUpper5to3": "GCATTACCGAAT",
+      "oldLowerAligned3to5": "CGTAATGGCTTA",
+      "newUpper5to3": "GCATTACCGAAT",
+      "newLowerAligned3to5": "CGTAATGGCTTA",
+      "newLowerSynthesis5to3RightToLeft": "ATTCGGTAATGC",
+      "forwardPrimer5to3": "GCA",
+      "reversePrimer5to3": "ATT",
+      "bothPrimerEndsComplementary": true
+    }
+  ],
+  "PCRfromOne": {
+    "cycle1Duplexes": 2,
+    "cycle2Duplexes": 4,
+    "originalStrandsRetained": 2,
+    "cycle2DuplexesWithOriginalStrand": 2,
+    "cycle2DuplexesWithOnlyCycle1and2Strands": 2
+  },
+  "PCRfromTwo": {
+    "cycle1": 4,
+    "cycle2": 8,
+    "cycle5": 64
+  },
+  "repairIndependentPCRfromThreeCycle4": 48,
+  "efficiency80pctFrom10TwoCycles": 32.400000000000006,
+  "ideal100pctFrom10TwoCycles": 40,
+  "wrongReversePrimerAligned3to5": "AAA",
+  "upperEnd5to3": "AAT",
+  "noncomplementaryPositionsOneBasedIncludingPrimer3prime": [
+    1,
+    2
+  ],
+  "strictModelWrongReverseNoNewLower": true,
+  "newUpperSingleStrandsFromTwoOriginalLowerAfterThreeCycles": 6,
+  "whole24TypeTotals": {
+    "A": 46,
+    "B": 47,
+    "C": 45,
+    "D": 69,
+    "T": 47,
+    "T2": 47,
+    "R": 46,
+    "Q": 47
+  },
+  "plant20FourSets": 20,
+  "actualLearnerPerformance": false,
+  "actualExperimentPerformed": false
+}

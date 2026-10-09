@@ -1,0 +1,87 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "bio23-native6-a-actual-review-v1",
+  "campaignId": "biologie-molecular-genetics-six-current394-native-successor-v1-campaign-a",
+  "roundId": "biologie-molecular-genetics-six-current394-native-successor-v1-independent-a",
+  "batchId": "biologie-molecular-genetics-six-current394-native-successor-v1-independent-a.batch-001",
+  "batchInputFingerprint": "sha256:fc6dc1c09ca68eab20bafaddd69ab348734de6099e3d2de5e8bf89183ca4ff2d",
+  "bundleFingerprint": "sha256:3778f4a140f329780e5f9ca8f628f5fe0e61b8ba2965142a4faee790d5030287",
+  "bookDigest": "sha256:5331e150b3eee23c3f92f62aa189567206d339f9f64f8664ce8004872ce1a6e6",
+  "provider": "OpenAI/Codex",
+  "model": "declaredModelUnexposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:ccd029179557ef7e0762122f34c224067bd71514d32a443151db38772b33b491",
+  "independenceGroupId": "biologie-molecular-genetics-six-current394-native-successor-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "5f01403c-6560-5515-aa76-03860aa52315",
+    "76ad2d40-496b-5fa8-97e8-7711f9859738",
+    "ab96bec3-ee34-5209-bcc9-5c7c8280429c",
+    "183f3c47-ec20-5b98-8024-77ebd1c48abf",
+    "8fb0e4eb-9822-564a-9c2d-f3a16f86a7f6",
+    "6f6ee02f-65f4-5fb4-b859-8f8c8fda0865"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:40ddd6e6608c51994846db14ddd833c777d6f2bffd6e81b9912f814e14b183cb"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:f457b1b3cf1953867b87dedbab634dbbc4e8dc75312c03cae2463ec4b4d0ff28"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:5a0327228b8b49e363a734b6b5f3bd29d7d5c4c955bd89decb99129c94d0dc27"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:33a3fd7fbed90539144c12e51fd7831cdb2c65470414a5edc8b8cad3a1e65930"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:75e9b50fcb5435aef2b87d7e38625f4bcc45eba86573fc7578f12fb84904cf08"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:3c53e944c8bb06110a900ddeaf4d767379d844900733e37a305d5c5a34b888ea"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:7cda25166609b336eb67ef9ac94328127bc8133a0b4756e55c16ad9843ced2cc"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:033d117063ecd35c28c180372186ba73e39734c4e1fff67574bba4ca669a87c7"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:fc6dc1c09ca68eab20bafaddd69ab348734de6099e3d2de5e8bf89183ca4ff2d"
+    }
+  ],
+  "startedAt": "2026-10-09T07:30:56.902480+00:00",
+  "completedAt": "2026-10-09T07:37:24.426773+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:dccf792ea9dabf9b126c296ac14d8b8cada0e948f6ea3e98af12a906953b5fcb",
+  "toolchainVersion": "existing-repository-ordinary-goal-description-validator"
+}

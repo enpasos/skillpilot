@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-09T01:47:15.582244+00:00",
+  "role": "Separate current-source delta check after unchanged snapshot-specific SL9 semantic first seal",
+  "actualPrimarySite": "https://www.saarland.de/mbk/DE/portale/bildungsserver/schulen-und-bildungswege/lehrplaene/lehrplaene.allgemeinbildende/gymnasiale-oberstufe.lehrplaene",
+  "actualPrimarySiteOpenedToday": true,
+  "observedPrimaryChemistryListing": [
+    "GK 2023, redaktionell 2025, ab Abitur 2027 ff.",
+    "LK 2023, redaktionell 2025, ab Abitur 2027 ff.",
+    "Additional curriculum adaptations 2026, ab Abiturjahrgang 2027"
+  ],
+  "new2026LinkLabel": "Lehrplananpassungen im Fach Chemie für die gymnasiale Oberstufe ab dem Abiturjahrgang 2027 (2026)",
+  "actualOfficialHref": "https://www.saarland.de/SharedDocs/Downloads/DE/mbk/Lehrplaene/Lehrplaene_GOS_ab_2019_2020/Chemie/LPanpassungenG8_CH_GOS_2026.pdf?__blob=publicationFile&v=1",
+  "primaryListingPDFSizeLabel": "161KB",
+  "listedAbiturApplicability": "from Abitur cohort 2027",
+  "filenameDurationHint": "G8; filename alone is not an authored applicability decision for other duration models",
+  "actualPDFRead": false,
+  "actualPDFBytesOrSha256Known": false,
+  "attempts": [
+    {
+      "method": "web click from actual primary listing",
+      "result": "HTTP 403 Forbidden"
+    },
+    {
+      "method": "urllib official exact URL with ordinary User-Agent",
+      "result": "HTTP 403 Forbidden"
+    },
+    {
+      "method": "urllib official path encoding variant",
+      "result": "HTTP 403 Forbidden"
+    },
+    {
+      "method": "web direct document and publicationFile URL",
+      "result": "not accessible"
+    }
+  ],
+  "decision": "HOLD_CURRENT_2026_CONTENT_DELTA",
+  "findingId": "SL9A-CURRENT-2026-001",
+  "reviewNotes": "Primary-site applicability is concrete: the additional 2026 chemistry adaptation is listed for Abitur from 2027, alongside both existing GK/LK 2025 curricula. The content itself could not be read because the official download rejects access. Whether the 2026 document changes GK/LK framework, content, operator or practical duties remains unresolved. The exact 2023/2025 + KMK2020 snapshot-specific nine partial contribution judgments stay immutable. This is not evidence that the 2026 changes are absent or irrelevant.",
+  "requiredNextEvidence": "Actual original 2026 adaptation PDF; read its stage/course/duration and all changed mandatory versus suggested clauses, then issue a separate bound delta judgment.",
+  "changesToOldFirstSeal": false,
+  "wholeCurrentSLSourceAndCourseApproved": false,
+  "nativeDPApproved": false,
+  "humanApproval": false,
+  "strictGain": 0
+}

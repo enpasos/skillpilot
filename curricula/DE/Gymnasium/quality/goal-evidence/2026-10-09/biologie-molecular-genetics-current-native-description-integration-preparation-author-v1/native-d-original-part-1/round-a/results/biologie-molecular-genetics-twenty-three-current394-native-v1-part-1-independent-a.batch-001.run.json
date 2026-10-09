@@ -1,0 +1,93 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "bio23-current-native-A-part-1-actual-review-v1",
+  "campaignId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-1-campaign-a",
+  "roundId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-1-independent-a",
+  "batchId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-1-independent-a.batch-001",
+  "batchInputFingerprint": "sha256:989259c81df48d51ba47007e13d13d51e3b28ea7d5de6e3f9720c2fbe68cae28",
+  "bundleFingerprint": "sha256:fb30d8403faf2677fc552cf619719238f7ffb6a9673dd67a89048d40bc89a501",
+  "bookDigest": "sha256:7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c",
+  "provider": "OpenAI Codex",
+  "model": "declaredModelUnexposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:80778dd46c6238ca65cda9276a5bdddd01b73b42db0b0528f3ea6f595ff2618b",
+  "independenceGroupId": "biologie-molecular-genetics-twenty-three-current394-native-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "6744e33f-c810-52b6-b781-2936011de016",
+    "e349d8c4-2ba3-5360-bd44-13457e5c0aa3",
+    "1ec4e3c2-f302-5246-b531-f2cebc3efb1d",
+    "18b3540e-4379-5d13-b3ec-dc7fe21c5e6a",
+    "0eddd781-90aa-5120-a24f-c7e38327162c",
+    "41a52327-75a8-55b4-b924-7968f1bade8d",
+    "5f01403c-6560-5515-aa76-03860aa52315",
+    "a515e493-6f90-5371-9470-28a0cf50f087",
+    "a9493b6d-5810-5d52-b32c-54ce32fd0dd8",
+    "a6d94a96-6a36-57dd-81db-f4bfdc4306ee",
+    "76ad2d40-496b-5fa8-97e8-7711f9859738",
+    "8e4bfb9e-b176-5e7a-a7db-d6077d71237a"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:c85abd2ddccbd19d51f984b19a6e518b939cf3b113573b53b1713366bae14e6b"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:6b3217ff7b138b7410e89b74a7fe2b147d47dbc8ba8558b6836b30b7900587e0"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:aefad48edb0d3a2870da07f06778fcbbf0b557f761b2b4596bec5fac65dffe19"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:3a4382f905173b4fe18767e1fa2c1810801f5f97e09f4ab616e4bc9ee5819a5a"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:b9b46c5b2107451a2ef98ad44a3840f4b4b53722a8f32e98c56005098bd1bf26"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:134d5782b161f7dfa9b3fbc1fd183727a8f3abe618006663f1df441b2a072723"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:403ed95da36d3924865e61d542120d2195cf3189fb79ba4e1ff56f7aa300bfed"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:49a8ea300a60d1d289f11603de1b3640899a4588b751abbd3e2d94990441ecb7"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:989259c81df48d51ba47007e13d13d51e3b28ea7d5de6e3f9720c2fbe68cae28"
+    }
+  ],
+  "startedAt": "2026-10-09T06:37:40.340937+00:00",
+  "completedAt": "2026-10-09T06:49:13.956895+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:f5830041229db54f2dc69bb22daf6f6746d1a72aa6bb0aefb7901568ad9b2b97",
+  "toolchainVersion": "existing-repository-ordinary-goal-description-validator"
+}

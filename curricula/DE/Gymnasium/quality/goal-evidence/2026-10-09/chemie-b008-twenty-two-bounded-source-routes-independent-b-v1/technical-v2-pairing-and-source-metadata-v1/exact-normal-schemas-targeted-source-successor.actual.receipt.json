@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "role": "Targeted actual AJV 2020 validation against exact existing exported schema definitions; not an export-package build or approval",
+  "schemaChecks": {
+    "schemaSource": {
+      "path": "app/scripts/buildSkillpilotExportPackage.ts",
+      "sha256": "a25aaaed22bd4fd5d708beb48156a272d3d0327ffa037e753f3d3e8ee0ae97a8",
+      "bytes": 103356
+    },
+    "authorMappingHistoricalFailure": {
+      "existingSchemaConstant": "MAPPING_SCHEMA",
+      "initializerSHA256": "15eb6522f2b55e2f3c8f85ab43e9ab1787f561d3c8b72e6fc4184c58838349ba",
+      "valid": false,
+      "errors": [
+        {
+          "instancePath": "/status",
+          "schemaPath": "#/properties/status/type",
+          "keyword": "type",
+          "params": {
+            "type": "object"
+          },
+          "message": "must be object"
+        }
+      ]
+    },
+    "ordinarySuccessorMapping": {
+      "existingSchemaConstant": "MAPPING_SCHEMA",
+      "initializerSHA256": "15eb6522f2b55e2f3c8f85ab43e9ab1787f561d3c8b72e6fc4184c58838349ba",
+      "valid": true,
+      "errors": []
+    },
+    "unchangedSourceExtraction": {
+      "existingSchemaConstant": "SOURCE_EXTRACTION_SCHEMA",
+      "initializerSHA256": "47fdc5878437423e27f46184b72f748e993e5ea68a40cc0dfa96516c3648f6e6",
+      "valid": true,
+      "errors": []
+    }
+  },
+  "authorStatusStringFailureRetained": true,
+  "successorStatusObjectOnlyMetadataCorrection": true,
+  "humanApproval": false,
+  "strictGain": 0
+}

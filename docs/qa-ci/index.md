@@ -95,6 +95,7 @@ Use this page by role: start with the overview documents, then jump to a review 
 - [Biologie: drei weitere Stoffwechsel-Abschlüsse vom 8. Oktober](chemie-biologie-m7-stoffwechsel-three-continuation-2026-10-08.md)
 - [Commit-Zwischenstand vom 8. Oktober: 177/378 Chemie und 244/392 Biologie](chemie-biologie-m7-chemie177-biologie244-commit-checkpoint-2026-10-08.md)
 - [Zwischenstand vom 8. Oktober: 177/378 Chemie und 262/394 Biologie](chemie-biologie-m7-chemie177-biologie262-commit-checkpoint-2026-10-08.md)
+- [Wissenschafts- und Quellenpakete vom 9. Oktober: aktuelle Nenner, unabhängige Kandidatenreviews und gezielte Bildkorrekturen](chemie-biologie-m7-science-and-source-continuation-2026-10-09.md)
 
 ## Review Lanes
 

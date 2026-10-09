@@ -1,0 +1,11 @@
+
+> skillpilot@0.0.0 visualization:prepare
+> node ../scripts/prepare_goal_visualization.mjs 5c7f0085-7ca8-5a67-bc87-57319acec749 --landscape curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-eighteen-whole-author-v1/input/current-canonical479-root23-successor.snapshot.json --subject biologie --provider Built-in ChatGPT/Codex image_gen
+
+Prepared prompt package for: Homo sapiens systematisch einordnen
+SkillPilot ID: 5c7f0085-7ca8-5a67-bc87-57319acec749
+Prompt: tmp/goal-visualizations/5c7f0085-7ca8-5a67-bc87-57319acec749/nano-banana-prompt.de.md
+Metadata: tmp/goal-visualizations/5c7f0085-7ca8-5a67-bc87-57319acec749/metadata.json
+
+After generating and downloading the image, import it with:
+npm --prefix app run visualization:import -- 5c7f0085-7ca8-5a67-bc87-57319acec749 "<downloaded-image-path>"

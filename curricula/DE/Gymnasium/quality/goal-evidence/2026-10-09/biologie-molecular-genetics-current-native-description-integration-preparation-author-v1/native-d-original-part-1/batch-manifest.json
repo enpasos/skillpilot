@@ -1,0 +1,65 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-molecular-genetics-reviewed-native-d-20261009-v1-original-part-1",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-current-native-description-integration-preparation-author-v1/native-d-original-part-1.batch.config.json",
+  "configDigest": "sha256:baead4018eb6340633d14f2bff6ba94aa9ca32eb50c199a02132e33c370b927b",
+  "goalIds": [
+    "6744e33f-c810-52b6-b781-2936011de016",
+    "e349d8c4-2ba3-5360-bd44-13457e5c0aa3",
+    "1ec4e3c2-f302-5246-b531-f2cebc3efb1d",
+    "18b3540e-4379-5d13-b3ec-dc7fe21c5e6a",
+    "0eddd781-90aa-5120-a24f-c7e38327162c",
+    "41a52327-75a8-55b4-b924-7968f1bade8d",
+    "5f01403c-6560-5515-aa76-03860aa52315",
+    "a515e493-6f90-5371-9470-28a0cf50f087",
+    "a9493b6d-5810-5d52-b32c-54ce32fd0dd8",
+    "a6d94a96-6a36-57dd-81db-f4bfdc4306ee",
+    "76ad2d40-496b-5fa8-97e8-7711f9859738",
+    "8e4bfb9e-b176-5e7a-a7db-d6077d71237a"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 394,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-twenty-three-native-preparation-author-v1/candidate/book.current394.twenty-three-resource.inactive.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-twenty-three-native-preparation-author-v1/candidate/canonical.current479.twenty-three-resource-and-splice-DEEN.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:a602f7e3d0f6b4b1c6408bf32b6dd706eb8d45ea769caa19f95e351a2ee9e218"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:fb30d8403faf2677fc552cf619719238f7ffb6a9673dd67a89048d40bc89a501",
+    "reviewInputFingerprint": "sha256:b3295f48fdfff9f7b08350f77a3b4102be056fbfc336203e15e140d43b56a6e0",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-1-campaign-a",
+        "campaignDigest": "sha256:d5901ee5ce343b304a918792233cd3a9b1a77804cd290b09ccc35506f0e8546e",
+        "roundId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-1-independent-a",
+        "independenceGroupId": "biologie-molecular-genetics-twenty-three-current394-native-v1-independent-a",
+        "batchId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-1-independent-a.batch-001",
+        "batchInputFingerprint": "sha256:989259c81df48d51ba47007e13d13d51e3b28ea7d5de6e3f9720c2fbe68cae28"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-1-campaign-b",
+        "campaignDigest": "sha256:3fab4e02eefaf6aa49add43636d89d376a45609d77338217ea1a4a82a3c1f626",
+        "roundId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-1-independent-b",
+        "independenceGroupId": "biologie-molecular-genetics-twenty-three-current394-native-v1-independent-b",
+        "batchId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-1-independent-b.batch-001",
+        "batchInputFingerprint": "sha256:f1f6829a8c89e9b3739d351ce590753339c5cc44a602ed4334246295a23131c8"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "biologie-upper-science-reviewed-native-d-20261009-v1-two-targeted-synthesis",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex technical integrator; Root-delegated factual sealed A/B KEEP synthesis, no new scientific reviewer",
+  "synthesizedAt": "2026-10-09T00:07:00.344Z",
+  "batch": {
+    "batchId": "biologie-upper-science-reviewed-native-d-20261009-v1-two-targeted",
+    "batchManifestDigest": "sha256:0045e6f575161f42fb3b1b50b71b61d9d1da91e8a730e06b590230a1913473ee",
+    "configDigest": "sha256:6a264d022bd439908147748a563af8314ea0e8fcbe780e4710cd673bb78c25b7",
+    "bundleFingerprint": "sha256:d84b37ef1c3cf4bb29036dd5e595720d2a3cddf77ae8b1ad6a89dde7700e1bc7",
+    "bookDigest": "sha256:25a0cadf54b13a65cfe993ed6daad824519c6f35cab191c4dd0e40a6294126b9",
+    "reviewInputFingerprint": "sha256:f742995d7a7ea911994c44e970888ea0a3ab40ccd8ead6f84ee7918b64cacc1d",
+    "dualSummaryDigest": "sha256:a049a844fb27ca2ee9efc296f68a93041b25f61eee6443519fd9daaaab4edaf8",
+    "canonicalLandscapeDigest": "sha256:815bfb17414489f40807e59b9a9cb54bd4bed47faca3d2b44627a0b7fdbf8d99"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-upper-science-targeted-two-current394-native-v2-campaign-a",
+      "campaignDigest": "sha256:b23d30f52f134939fc076ca1c75dc3b8b3608a7bc5e0ee9a62b5f62c35634af4",
+      "roundId": "biologie-upper-science-targeted-two-current394-native-v2-independent-a",
+      "independenceGroupId": "biologie-upper-science-targeted-two-current394-native-v2-independent-a",
+      "reviewInputFingerprint": "sha256:f742995d7a7ea911994c44e970888ea0a3ab40ccd8ead6f84ee7918b64cacc1d",
+      "batchId": "biologie-upper-science-targeted-two-current394-native-v2-independent-a.batch-001",
+      "batchInputFingerprint": "sha256:801efd56ec6757360b17de662f35cefffec6c35a5adb6ca22196a232090b5c79",
+      "runId": "biologie-upper-science-two-independent-a-native-v2-d-v1",
+      "runManifestDigest": "sha256:eb513b5d7198625aee47af9d0b03fe1883e428ba578b08dfaf4ead0edb18b6bb",
+      "resultsDigest": "sha256:297b30cc36324f054f9199bb6174c82606ef06b2ad988bda92df1fec745af671"
+    },
+    "second": {
+      "campaignId": "biologie-upper-science-targeted-two-current394-native-v2-campaign-b",
+      "campaignDigest": "sha256:88ae240d9659cea0b3afbfe77d5ea5bd894266d4c465514039a475413d580e8f",
+      "roundId": "biologie-upper-science-targeted-two-current394-native-v2-independent-b",
+      "independenceGroupId": "biologie-upper-science-targeted-two-current394-native-v2-independent-b",
+      "reviewInputFingerprint": "sha256:f742995d7a7ea911994c44e970888ea0a3ab40ccd8ead6f84ee7918b64cacc1d",
+      "batchId": "biologie-upper-science-targeted-two-current394-native-v2-independent-b.batch-001",
+      "batchInputFingerprint": "sha256:a7f9eb0a52c88ba09f4770c3c173a8e57c796ca91ddff122d1ec66e0c5780dd5",
+      "runId": "biologie-upper-science-targeted-two-current394-native-v2-independent-b.batch-001.independent-b-native-review",
+      "runManifestDigest": "sha256:e1a2ed5ffe34d789fbe1d44305949b6237d84313a7e68a70d7a3e72694dc8c49",
+      "resultsDigest": "sha256:eaf78a36f51fc6350ac5d628ab738a8431ebd41e5b23a5680d363c2d0ebe7c77"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "biologie-upper-science-reviewed-native-d-20261009-v1-two-targeted-decision-b66372fc-f72d-5686-9570-1939ed3fbd2a",
+      "goalId": "b66372fc-f72d-5686-9570-1939ed3fbd2a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:8793aa92383e97b178133b36c539c6627c233dddfa5b115d6cbf42b4b1beae5a",
+      "pageFingerprint": "sha256:23acab6f23aa5930e9611cdab9aa6fbddaf1cdbc4d422f2ef5ef149ddcd8041b",
+      "goalReviewContextFingerprint": "sha256:b858c77c7811f4f042623a5eaee4acd8f0dc4cc7334d65c836d9df8d7121cf2e",
+      "finalText": {
+        "titleDe": "Datenstrukturen theoriebezogen deuten",
+        "titleEn": "Interpret Data Structures with Theory",
+        "descriptionDe": "Die lernende Person kann in erhobenen oder recherchierten Daten Strukturen, Beziehungen und Trends finden, theoriebezogen erklären und daraus Schlussfolgerungen ziehen.",
+        "descriptionEn": "The learner can identify structures, relationships, and trends in collected or researched data, explain them using theory, and draw conclusions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "biologie-upper-science-two-independent-a-native-v2-d-v1.b66372fc-f72d-5686-9570-1939ed3fbd2a",
+          "recordDigest": "sha256:f68a49f97083f57b9be8332ebaad399bc63ff4d1bb48527e1432e70b3a17e6ec"
+        },
+        "second": {
+          "recordId": "biologie-upper-science-targeted-two-current394-native-v2-independent-b.batch-001.independent-b-native-review.goal-01",
+          "recordDigest": "sha256:31831d03089b00d0625e4b79c6e620fea138825e11c9a57dbfc735077e38fd21"
+        }
+      },
+      "rationaleDe": "Technische Zusammenführung zweier tatsächlicher separat erstversiegelter unabhängiger KEEP-Records für denselben ganzen aktuellen DE/EN-Biologie-Ziel-, nativen Seiten- und Kontexteingang. Originale Records und Runs bytegenau erhalten. P-Fallmaterial und V-Bilder haben eigene unabhängige Nachweise; der gezielt korrigierte eigene Ergebnis-/Reflexionsfall benötigt seine aktuelle P-Folgeprüfung. Gültige unveränderte Quellen-, Atomaritäts- und Memoryentscheidungen bleiben erhalten. Diese technische Synthese behauptet keine neue Fachprüfung oder menschliche Freigabe. A: The actual full native page now visibly names gross oxygen formation rate under equal conditions, so the saturation sketch supports a bounded theory-based interpretation without implying endpoint concentration or net dark production. The whole DE/EN competence, direct graph/source scope and unchanged full enzyme/population P cases remain coherent and atomic. The image is teaching support, not learner evidence. B: Ganzer unveränderter DE/EN-Operatorenverbund aus Datenstrukturen finden, theoriebezogen erklären und begrenzt schließen bleibt angemessen. Die tatsächliche neue Druckseite beschriftet nun sichtbar Brutto-Sauerstoffrate und Gleiche Bedingungen; die endliche Illustration zeigt keine Konzentrationskurve oder negative Dunkel-Nettobilanz. Zwei ganze heterogene Fälle mit Transfer wurden bereits tatsächlich geprüft; ihr P-Körper ist exakt erhalten.",
+      "rationaleEn": "Technical synthesis of two genuine separately sealed independent KEEP records for the identical whole current bilingual biology goal, actual native page and context. Original record and run bytes are preserved. P case materials and V rasters require their own genuine current independent evidence, including the targeted own-results case and visible gross-rate raster. Unchanged valid source, atomicity and memory decisions are retained. This technical synthesis is not a new scientific review or human approval."
+    },
+    {
+      "decisionId": "biologie-upper-science-reviewed-native-d-20261009-v1-two-targeted-decision-8375310d-1f7e-542d-9969-55ad4bd37f7c",
+      "goalId": "8375310d-1f7e-542d-9969-55ad4bd37f7c",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:bdd7c2ce67e3d5addd716f0caaf51f1c925c1a46806e16e0e9e840210edf593f",
+      "pageFingerprint": "sha256:25502e644a1ef0971c708537f471ba2006937c3f9075394a9d1736584b41a69c",
+      "goalReviewContextFingerprint": "sha256:4aaf6b1a58a9b4b354d7eee690dfbe2e8720faed94ebd570783e9454f5b319ac",
+      "finalText": {
+        "titleDe": "Datenvalidität, Fehlerquellen und Modellgrenzen reflektieren",
+        "titleEn": "Reflect Data Validity, Error Sources, and Model Limits",
+        "descriptionDe": "Die lernende Person kann eigene Ergebnisse und den Erkenntnisprozess reflektieren, indem sie die Gültigkeit von Daten beurteilt, Fehlerquellen ermittelt und Möglichkeiten sowie Grenzen von Modellen diskutiert.",
+        "descriptionEn": "The learner can reflect on their own results and their own inquiry process by judging data validity, identifying error sources, and discussing possibilities and limits of models."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "biologie-upper-science-two-independent-a-native-v2-d-v1.8375310d-1f7e-542d-9969-55ad4bd37f7c",
+          "recordDigest": "sha256:419b97e3bfd2fe5827bafc9f63fab1b39b4912699e007a0d382aa5f920cabee7"
+        },
+        "second": {
+          "recordId": "biologie-upper-science-targeted-two-current394-native-v2-independent-b.batch-001.independent-b-native-review.goal-02",
+          "recordDigest": "sha256:a028e674518f94d0125d2cfc79f40fcbefa1a0393cde143424e3469271608def"
+        }
+      },
+      "rationaleDe": "Technische Zusammenführung zweier tatsächlicher separat erstversiegelter unabhängiger KEEP-Records für denselben ganzen aktuellen DE/EN-Biologie-Ziel-, nativen Seiten- und Kontexteingang. Originale Records und Runs bytegenau erhalten. P-Fallmaterial und V-Bilder haben eigene unabhängige Nachweise; der gezielt korrigierte eigene Ergebnis-/Reflexionsfall benötigt seine aktuelle P-Folgeprüfung. Gültige unveränderte Quellen-, Atomaritäts- und Memoryentscheidungen bleiben erhalten. Diese technische Synthese behauptet keine neue Fachprüfung oder menschliche Freigabe. A: Actual final native2 retains the concise DE/EN own-results and own-inquiry goal. Both full sensor/leaf-model cases now require own traceable outputs and decisions, then specific reflection of those own results. Mandatory P expectations, worked responses, fresh structural transfer and rubrics agree. One coherent reflection routine remains atomic; synthetic analysis is not a physical measurement or actual learner result. B: Die verbindlichen eigenen Ergebnisse und der eigene Erkenntnisprozess bleiben vollständig DE/EN und auf der tatsächlichen Druckseite erhalten. Der neue exakt geprüfte P-v3 verlangt eigene Sensor-Korrekturtabellen/Entscheidungsprotokolle und eigene Blatt-Train/Test-Modelle sowie die Reflexion genau eigener Entscheidungen und Resultate. Frische Varianten erfordern eigene neue Ergebnisse und begründete Revision; die Beschreibung und das unveränderte Bild sind vollständig und sachgerecht. Der ursprüngliche P11-HOLD bleibt historisch unverändert; dieses Urteil gilt nur dem neuen tatsächlichen Kandidaten.",
+      "rationaleEn": "Technical synthesis of two genuine separately sealed independent KEEP records for the identical whole current bilingual biology goal, actual native page and context. Original record and run bytes are preserved. P case materials and V rasters require their own genuine current independent evidence, including the targeted own-results case and visible gross-rate raster. Unchanged valid source, atomicity and memory decisions are retained. This technical synthesis is not a new scientific review or human approval."
+    }
+  ],
+  "manifestFingerprint": "sha256:77ee2f93033cf842a3a23ff0a163328f5c4b5f6a0406168c088d2cbf231210ef"
+}

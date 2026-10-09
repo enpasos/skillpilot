@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual original HTML portability check after observed line-ending conversion",
+  "checkedAt": "2026-10-09T04:12:45.835459+00:00",
+  "originalFailure": "The first staging attempt normalized 12 CRLF bytes in the 64017-byte BcP primary to 64005 bytes. A second ordinary add retained the stat-cached entry; the actual renormalize command was required. FIRST input unchanged.",
+  "correctivePolicy": "General *.actual-official.html -text preserves actual captured response bytes. No dated or goal-specific attribute exception.",
+  "actualRepairCommand": "git add --renormalize -f -- <affected actual-official.html>",
+  "gitattributes": {
+    "path": ".gitattributes",
+    "sha256": "97fab7b39622e96c8dcc648cc9501350dcc014b38d8b1d445db843a50071db1f",
+    "bytes": 795
+  },
+  "originals": [
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-rest-twenty-source-content-and-program-author-root-v1/primary/BY-BcP12-13.actual-official.html",
+        "sha256": "c22c46214112f1413aedc3974d8fa53cdc39a07ef7c533c0f1bd815ba9b7086f",
+        "bytes": 64017
+      },
+      "indexSHA256": "c22c46214112f1413aedc3974d8fa53cdc39a07ef7c533c0f1bd815ba9b7086f",
+      "indexBytes": 64017,
+      "indexEqualsActualPrimaryBytes": true
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-rest-twenty-source-content-and-program-author-root-v1/primary/BY-C11-NTG.actual-official.html",
+        "sha256": "59d8c6c8d272e87bea15cc914416df90b508b0e62012f5e8c85f1c4019ac9bff",
+        "bytes": 113922
+      },
+      "indexSHA256": "59d8c6c8d272e87bea15cc914416df90b508b0e62012f5e8c85f1c4019ac9bff",
+      "indexBytes": 113922,
+      "indexEqualsActualPrimaryBytes": true
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-rest-twenty-source-content-and-program-author-root-v1/primary/BY-optional-additional-subjects.actual-official.html",
+        "sha256": "ef8b63932236659a9ee02b05246298d6dd500572c7d9879c16c6d9ea1049a764",
+        "bytes": 29215
+      },
+      "indexSHA256": "ef8b63932236659a9ee02b05246298d6dd500572c7d9879c16c6d9ea1049a764",
+      "indexBytes": 29215,
+      "indexEqualsActualPrimaryBytes": true
+    }
+  ],
+  "historicalFirstRewritten": false,
+  "sourceContentsChanged": false,
+  "scientificApproval": false,
+  "strictGain": 0
+}

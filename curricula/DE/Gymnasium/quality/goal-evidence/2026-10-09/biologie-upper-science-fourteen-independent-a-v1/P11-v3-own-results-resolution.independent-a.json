@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-08T23:47:49.721585+00:00",
+  "reviewId": "bio14-independent-a-p11-own-results-targeted-v3",
+  "mode": "targeted_remediation_review",
+  "goalId": "8375310d-1f7e-542d-9969-55ad4bd37f7c",
+  "goalFingerprint": "sha256:bdd7c2ce67e3d5addd716f0caaf51f1c925c1a46806e16e0e9e840210edf593f",
+  "reviewInputFingerprint": "sha256:6e3c6dbe3139a6e0deda18b7fc00bfa4efe32a8d3bfc597fe1e6d7b989899a21",
+  "profileFingerprint": "sha256:3246d201fb6776d1b6e8887ebc31445e233288563b325eac65ef25f58280d3fa",
+  "neutralEntry": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/remediation-v3-p11/neutral-P11-own-results-two-whole-cases.independent-review.entry.json",
+    "sha256": "sha256:8d66556f15416e4d51407267310201891ebe7a686d65e27d165114f1ea8d8ac5",
+    "bytes": 5829
+  },
+  "wholeCaseInput": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/remediation-v3-p11/P11-two-whole-bilingual-cases.neutral-input.json",
+    "sha256": "sha256:e01e1056cbb329b7009442700e37e0b5fa9aa311b3260871be20291f97b7a4b2",
+    "bytes": 23620
+  },
+  "profileRecordInput": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/remediation-v3-p11/P11-own-results.author-candidate.review.jsonl",
+    "sha256": "sha256:9e237151ad4e107f8541df262ce3d0349c83fbce81f4ef2342ae5d5f02eaf182",
+    "bytes": 20216
+  },
+  "immutableFirstNativeVerdict": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-independent-a-v1/native-first-DPV-verdict.independent-a.json",
+    "sha256": "sha256:79bcef8efde701a23d998c1a646bcda2756196c55bdaa1154f826bf117bd5a6c",
+    "bytes": 149192
+  },
+  "resolvedFindingId": "BIO14-A-NATIVE-P11-OWN-RESULTS",
+  "decision": "KEEP",
+  "independentPositiveApproval": true,
+  "criteriaPass": {
+    "wholeGoalFidelity": true,
+    "mandatoryOwnResultAndProcessTrace": true,
+    "bothCompleteBilingualCasesAndRubricsRead": true,
+    "heterogeneousOwnAnalysisAndOwnTrainTestModel": true,
+    "allThreeMandatoryExpectationsCovered": true,
+    "workedAndIndependentFreshTransferCalculationsCorrect": true,
+    "profileCondensedWorkedPerformanceKeepsAllEssentialOwnActionsAndLimits": true,
+    "syntheticInputNotExternalOrPhysicalExperimentEvidence": true,
+    "ownResultsAnalysisDoesNotInventPhysicalObservation": true,
+    "original69Duties68PartnersAndOther13Profiles27CasesRetained": true
+  },
+  "reason": "The missing operator is now genuinely operationalized: in both whole cases the learner first produces an own result/decision record and then reflects those exact own values and decisions. The sensor case requires an own raw/corrected table, calibration rule, mean/range and bounded endpoint interpretation; transfer requires new temperature-specific rows and explicitly revises the learner’s own rule without retrospectively changing old calibration. The leaf case requires own k parameterization using a training set, an independent held-out prediction/residual, explicit classification uncertainty and a documented own model decision; transfer requires own2N+5 model/35 prediction and reflection of the learner’s earlier zero-baseline choice. Own analysis results from transparent synthetic inputs match this reflection goal; no physical data acquisition is claimed.",
+  "preciseCasePointers": [
+    "P11-two-whole-bilingual-cases.neutral-input.json#/authoredCases/0/material",
+    "P11-two-whole-bilingual-cases.neutral-input.json#/authoredCases/0/task",
+    "P11-two-whole-bilingual-cases.neutral-input.json#/authoredCases/0/workedResponse",
+    "P11-two-whole-bilingual-cases.neutral-input.json#/authoredCases/0/freshTransferWorkedResponse",
+    "P11-two-whole-bilingual-cases.neutral-input.json#/authoredCases/1/task",
+    "P11-two-whole-bilingual-cases.neutral-input.json#/authoredCases/1/workedResponse",
+    "P11-two-whole-bilingual-cases.neutral-input.json#/authoredCases/1/freshTransferWorkedResponse",
+    "P11-own-results.author-candidate.review.jsonl#/profile/expectations"
+  ],
+  "independentCalculations": {
+    "initialCorrected": [
+      6.9,
+      7,
+      7.1
+    ],
+    "initialMean": 7.0,
+    "initialRange": 0.1999999999999993,
+    "freshCorrected": [
+      7.5,
+      6.8,
+      7.699999999999999
+    ],
+    "freshMean": 7.333333333333333,
+    "trainingSlopes": [
+      2.0,
+      2.0,
+      2.0
+    ],
+    "testPrediction": 40,
+    "testResidual": -10,
+    "relativeMismatchMagnitude": 0.25,
+    "uncertainPredictionInterval": [
+      36,
+      40
+    ],
+    "freshBaseline": 5,
+    "freshSlopes": [
+      2.0,
+      2.0
+    ],
+    "freshOwnPrediction": 35
+  },
+  "currentGoalResourcesAndNativePageUnchanged": true,
+  "allOther27WholeCasesExact": true,
+  "ordinaryProfileStatus": "needs_human_review",
+  "ordinaryProfileAuthority": "ai_candidate",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "nativeSuccessorBindingStillPending": true,
+  "currentStrictApproval": false,
+  "nativeMachineM7": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "actualLearnerPerformance": false,
+  "actualPhysicalInvestigation": false,
+  "activeWrites": []
+}

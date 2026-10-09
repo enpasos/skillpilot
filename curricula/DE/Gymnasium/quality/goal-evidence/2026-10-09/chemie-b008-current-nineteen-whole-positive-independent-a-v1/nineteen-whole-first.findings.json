@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "OpenAI Codex independent A /root/bio_science14_independent_a",
+  "sealedBeforePairing": true,
+  "findings": [
+    {
+      "findingId": "CHEM19A-001",
+      "severity": "blocking_for_this_candidate_case",
+      "goalId": "86d34f1f-692d-5522-a9a4-a71c65b24de7",
+      "candidateKey": "upper-model-use-criticism",
+      "status": "HOLD",
+      "scope": "mandatory complex-organic geometry/receptor case readiness only",
+      "exactInputs": [
+        {
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-current-twenty-six-native-preparation-author-v1/input/whole26-raw-profiles-and52-whole-cases.exact-neutral-input.json",
+            "sha256": "09bcbb499c7acb377e900ff163e9467075783877f18835b6c3c777e398562725",
+            "bytes": 482533
+          },
+          "jsonPointer": "/routineBodies/23/wholeTwoCases/1/suppliedMaterial"
+        },
+        {
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-current-twenty-six-native-preparation-author-v1/input/whole26-raw-profiles-and52-whole-cases.exact-neutral-input.json",
+            "sha256": "09bcbb499c7acb377e900ff163e9467075783877f18835b6c3c777e398562725",
+            "bytes": 482533
+          },
+          "jsonPointer": "/routineBodies/23/wholeTwoCases/1/learnerTask"
+        },
+        {
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-current-nineteen-whole-positive-author-v1/author-candidates.jsonl",
+            "sha256": "945ffcbe81665a5acfc24982413c0d87789163247c9652be73315b313fbb8088",
+            "bytes": 211123
+          },
+          "jsonlRecordIndex": 16,
+          "field": "profile.expectations/bonding-complex-geometry and receptor-and-enzyme"
+        },
+        {
+          "input": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/../2026-10-06/chemie-b008-twenty-six-positive-materials-author-v8/analogue-model-card-kit.de-en.md",
+            "sha256": "d20a81d1fece8d39822f2582f6707e7830bb022c19b98e494ebaf1fde7c0af8f",
+            "bytes": 1679
+          },
+          "section": "Upper complex-organic geometry / receptor and S/E kit"
+        }
+      ],
+      "observedProblem": "The original bilingual task describes L/L2 as supplied different spatial poses and requires an actual analogue spacing comparison. The available kit instead calls for a teacher-supplied spatial kit/cards, states that L2 is deliberately misaligned and leaves the arrangement unprovided. No finite actual L/L2 pose pair, receptor contact layout, distances/coordinates or unambiguous physical construction/contact rule was found. Thus a learner can repeat the supplied fit label but cannot independently test that supplied pair from these exact materials.",
+      "requiredTargetedRemediation": "Provide a finite reproducible receptor-contact layout and both posed versions of the same hypothetical amide/phenyl ligand, with explicit matching/spacing rules and amide/tetrahedral/phenyl constraints; bind the operative case/material and retain the original archive. A clearly supplied printable/analogue construction that lets the learner test rather than receive the fit verdict is sufficient. Keep the digital K/occupancy work, full context union and unchanged valid image assets.",
+      "noOtherGoalHoldInferred": true,
+      "physicalExperimentOrLearnerPerformanceClaimed": false,
+      "humanApproval": false
+    }
+  ],
+  "additionalGlobalOpenGates": [
+    "Whole Source19/current national source/course/target frames remain HOLD; no original partial role is promoted.",
+    "Native pages and exact current resource/P/D/A/M bindings have not been reviewed in this first component verdict."
+  ],
+  "humanApproval": false
+}

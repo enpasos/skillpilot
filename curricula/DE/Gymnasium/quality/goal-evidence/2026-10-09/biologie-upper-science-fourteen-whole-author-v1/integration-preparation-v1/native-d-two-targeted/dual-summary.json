@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:d84b37ef1c3cf4bb29036dd5e595720d2a3cddf77ae8b1ad6a89dde7700e1bc7",
+  "reviewInputFingerprint": "sha256:f742995d7a7ea911994c44e970888ea0a3ab40ccd8ead6f84ee7918b64cacc1d",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-upper-science-targeted-two-current394-native-v2-campaign-a",
+      "roundId": "biologie-upper-science-targeted-two-current394-native-v2-independent-a",
+      "independenceGroupId": "biologie-upper-science-targeted-two-current394-native-v2-independent-a",
+      "runIds": [
+        "biologie-upper-science-two-independent-a-native-v2-d-v1"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::exact runtime variant unexposed (Codex GPT-6 family declared)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-upper-science-targeted-two-current394-native-v2-campaign-b",
+      "roundId": "biologie-upper-science-targeted-two-current394-native-v2-independent-b",
+      "independenceGroupId": "biologie-upper-science-targeted-two-current394-native-v2-independent-b",
+      "runIds": [
+        "biologie-upper-science-targeted-two-current394-native-v2-independent-b.batch-001.independent-b-native-review"
+      ],
+      "providers": [
+        "OpenAI Codex agent session"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex agent session::Codex; exact provider model identifier not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "b66372fc-f72d-5686-9570-1939ed3fbd2a",
+      "firstRecordId": "biologie-upper-science-two-independent-a-native-v2-d-v1.b66372fc-f72d-5686-9570-1939ed3fbd2a",
+      "secondRecordId": "biologie-upper-science-targeted-two-current394-native-v2-independent-b.batch-001.independent-b-native-review.goal-01",
+      "firstRunId": "biologie-upper-science-two-independent-a-native-v2-d-v1",
+      "secondRunId": "biologie-upper-science-targeted-two-current394-native-v2-independent-b.batch-001.independent-b-native-review",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8375310d-1f7e-542d-9969-55ad4bd37f7c",
+      "firstRecordId": "biologie-upper-science-two-independent-a-native-v2-d-v1.8375310d-1f7e-542d-9969-55ad4bd37f7c",
+      "secondRecordId": "biologie-upper-science-targeted-two-current394-native-v2-independent-b.batch-001.independent-b-native-review.goal-02",
+      "firstRunId": "biologie-upper-science-two-independent-a-native-v2-d-v1",
+      "secondRunId": "biologie-upper-science-targeted-two-current394-native-v2-independent-b.batch-001.independent-b-native-review",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

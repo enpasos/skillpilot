@@ -65,7 +65,7 @@ class BackendCiFailurePriorityTests(unittest.TestCase):
             self.report("com.skillpilot.FormerFailureTest", error=True)
             return 1
         self.assertEqual(1, self.invoke(priority))
-        self.assertEqual([["./gradlew", "test", "--fail-fast", "--tests", "com.skillpilot.FormerFailureTest"]], self.commands)
+        self.assertEqual([["./gradlew", "test", "--fail-fast", "-PbackendFailurePriorityPreflight=true", "--tests", "com.skillpilot.FormerFailureTest"]], self.commands)
         self.assertEqual(["com.skillpilot.FormerFailureTest"], run_backend_ci.read_failed_selectors(self.manifest))
 
     def test_successful_priority_run_always_runs_unfiltered_check_and_clears_cache(self):
@@ -78,8 +78,28 @@ class BackendCiFailurePriorityTests(unittest.TestCase):
                 self.assertFalse(self.reports.exists())
             return 0
         self.assertEqual(0, self.invoke(run))
-        self.assertEqual(["./gradlew", "check"], self.commands[1])
+        self.assertEqual([
+            ["./gradlew", "test", "--fail-fast", "-PbackendFailurePriorityPreflight=true", "--tests", "com.skillpilot.FormerFailureTest"],
+            ["./gradlew", "check"],
+        ], self.commands)
         self.assertEqual([], run_backend_ci.read_failed_selectors(self.manifest))
+
+    def test_no_discovered_priority_match_still_runs_full_check_and_preserves_its_result(self):
+        # A former @Test can remain declared as an ordinary helper method.
+        for full_exit in [0, 3]:
+            with self.subTest(full_exit=full_exit):
+                self.commands.clear()
+                self.cached_classes(["com.skillpilot.ExampleTest.failingMethod"])
+                def run(command):
+                    if command[1] == "test":
+                        self.assertIn("-PbackendFailurePriorityPreflight=true", command)
+                        return 0  # No current JUnit report for the obsolete selector.
+                    self.assertEqual(["./gradlew", "check"], command)
+                    self.report("com.skillpilot.FormerFailureTest", failure=full_exit != 0)
+                    return full_exit
+                self.assertEqual(full_exit, self.invoke(run))
+                self.assertEqual(2, len(self.commands))
+                self.assertEqual(["com.skillpilot.FormerFailureTest"] if full_exit else [], run_backend_ci.read_failed_selectors(self.manifest))
 
     def test_full_suite_failure_replaces_successful_priority_reports(self):
         self.cached_classes(["com.skillpilot.FormerFailureTest"])
@@ -111,7 +131,7 @@ class BackendCiFailurePriorityTests(unittest.TestCase):
     def test_parameterized_methods_and_duplicates_select_class_not_method(self):
         self.cached_classes(["com.skillpilot.ExampleTest$Nested", "com.skillpilot.ExampleTest$Nested"])
         self.assertEqual(0, self.invoke(lambda command: 0))
-        self.assertEqual(["./gradlew", "test", "--fail-fast", "--tests", "com.skillpilot.ExampleTest$Nested"], self.commands[0])
+        self.assertEqual(["./gradlew", "test", "--fail-fast", "-PbackendFailurePriorityPreflight=true", "--tests", "com.skillpilot.ExampleTest$Nested"], self.commands[0])
         self.report(method="parameterCase[1: compound description]", error=True)
         self.assertEqual(["com.skillpilot.ExampleTest"], run_backend_ci.failed_selectors_from_junit(self.reports))
 
@@ -135,7 +155,7 @@ class BackendCiFailurePriorityTests(unittest.TestCase):
         self.assertEqual(["com.skillpilot.ExampleTest.failingMethod"], run_backend_ci.failed_selectors_from_junit(self.reports))
         self.cached_classes(run_backend_ci.failed_selectors_from_junit(self.reports))
         self.assertEqual(1, self.invoke(lambda command: 1))
-        self.assertEqual([["./gradlew", "test", "--fail-fast", "--tests", "com.skillpilot.ExampleTest.failingMethod"]], self.commands)
+        self.assertEqual([["./gradlew", "test", "--fail-fast", "-PbackendFailurePriorityPreflight=true", "--tests", "com.skillpilot.ExampleTest.failingMethod"]], self.commands)
 
     def test_failed_suite_does_not_add_whole_class_to_method_selector(self):
         self.reports.mkdir(parents=True)
@@ -145,17 +165,17 @@ class BackendCiFailurePriorityTests(unittest.TestCase):
     def test_removed_or_renamed_method_falls_back_to_current_class(self):
         self.cached_classes(["com.skillpilot.ExampleTest.removedMethod"])
         self.assertEqual(1, self.invoke(lambda command: 1))
-        self.assertEqual([["./gradlew", "test", "--fail-fast", "--tests", "com.skillpilot.ExampleTest"]], self.commands)
+        self.assertEqual([["./gradlew", "test", "--fail-fast", "-PbackendFailurePriorityPreflight=true", "--tests", "com.skillpilot.ExampleTest"]], self.commands)
 
     def test_removed_nested_method_falls_back_to_existing_nested_class(self):
         self.cached_classes(["com.skillpilot.ExampleTest$Nested.removedMethod"])
         self.assertEqual(1, self.invoke(lambda command: 1))
-        self.assertEqual([["./gradlew", "test", "--fail-fast", "--tests", "com.skillpilot.ExampleTest$Nested"]], self.commands)
+        self.assertEqual([["./gradlew", "test", "--fail-fast", "-PbackendFailurePriorityPreflight=true", "--tests", "com.skillpilot.ExampleTest$Nested"]], self.commands)
 
     def test_removed_nested_class_falls_back_to_existing_outer_class(self):
         self.cached_classes(["com.skillpilot.ExampleTest$Removed"])
         self.assertEqual(1, self.invoke(lambda command: 1))
-        self.assertEqual([["./gradlew", "test", "--fail-fast", "--tests", "com.skillpilot.ExampleTest"]], self.commands)
+        self.assertEqual([["./gradlew", "test", "--fail-fast", "-PbackendFailurePriorityPreflight=true", "--tests", "com.skillpilot.ExampleTest"]], self.commands)
 
     def test_fail_fast_keeps_known_failures_not_yet_exercised(self):
         self.cached_classes(["com.skillpilot.ExampleTest.failingMethod", "com.skillpilot.FormerFailureTest"])

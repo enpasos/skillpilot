@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "role": "author correction before first candidate seal; not new independent review",
+  "finding": "Initial finite fresh50C row incorrectly inherited sugar/water values from baseline despite transfer requiring conditions to be checked.",
+  "before": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-source19-remaining-seven-whole-author-v1/finite-materials/temperature-trend.synthetic.csv",
+    "sha256": "sha256:1b62e4c60ba2d779a8291da8b5f1c2b29aec4c2e95954dcb28b2e932988d7e41",
+    "bytes": 168
+  },
+  "after": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-source19-remaining-seven-whole-author-v1/finite-materials/temperature-trend.synthetic.csv",
+    "sha256": "sha256:8d739ca231261d263a56ba0eac5b1b3ca02134013c3dcbcc90cce1170f3e0b11",
+    "bytes": 165
+  },
+  "correctedBoundary": "Keep only supplied temperature/time; mass/volume missing and stirring unknown. Baseline three rows unchanged.",
+  "normalPRecordsChanged": false,
+  "normalPBodiesChanged": false,
+  "originalWhole14CasesChanged": false,
+  "originalExact7GoalsChanged": false,
+  "firstActualInputFreezeChanged": false,
+  "updatedSideBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-source19-remaining-seven-whole-author-v1/finite-seven-materials.author.index.json",
+      "sha256": "sha256:398228fbe58be5b30933855bc8d7aadeb9b7f6cc6adddb9e616d66a0a97f7c6a",
+      "bytes": 4016
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-source19-remaining-seven-whole-author-v1/remaining-seven.normal-positive-profile-bodies.author-candidate.json",
+      "sha256": "sha256:d24c8fa72cae7924b6a413dece1460f7df41319c175ecc6f0cdcbdcfd61b87ec",
+      "bytes": 142078
+    }
+  ],
+  "priorSchemaReceiptRole": "Original materialization history; final consistency is checked in final-author-package.consistency.receipt.json.",
+  "humanApproval": false,
+  "humanTrial": false
+}

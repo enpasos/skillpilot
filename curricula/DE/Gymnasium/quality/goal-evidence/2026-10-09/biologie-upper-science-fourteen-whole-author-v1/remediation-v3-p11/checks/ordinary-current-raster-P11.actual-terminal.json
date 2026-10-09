@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "runs": [
+    {
+      "argv": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/remediation-v3-p11/P11-own-results.author-candidate.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/remediation-v3-p11/P11-own-results-whole-profile.author-candidates.json",
+        "--write"
+      ],
+      "cwd": "tmp/biologie-upper-science-native14-current394-capsule/app",
+      "exitCode": 0,
+      "output": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/remediation-v3-p11/checks/ordinary-current-raster-P11-1.actual.stdout.txt",
+        "sha256": "sha256:0ff0e13eccaedc4036787d1923c7dd27862bfbe37be9baff459f95b5fa781737",
+        "bytes": 211
+      }
+    },
+    {
+      "argv": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/remediation-v3-p11/P11-own-results.author-candidate.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/remediation-v3-p11/P11-own-results-whole-profile.author-candidates.json"
+      ],
+      "cwd": "tmp/biologie-upper-science-native14-current394-capsule/app",
+      "exitCode": 0,
+      "output": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/remediation-v3-p11/checks/ordinary-current-raster-P11-2.actual.stdout.txt",
+        "sha256": "sha256:31c04a5812b2592fc86af72b312563a87479e928aca5597418cfb2d19bd78d51",
+        "bytes": 214
+      }
+    },
+    {
+      "argv": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/remediation-v3-p11/P11-own-results.author-candidate.config.json",
+        "--mode=check"
+      ],
+      "cwd": "tmp/biologie-upper-science-native14-current394-capsule/app",
+      "exitCode": 0,
+      "output": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/remediation-v3-p11/checks/ordinary-current-raster-P11-3.actual.stdout.txt",
+        "sha256": "sha256:c2a25af24d848aee20539ac07b14aeeaa51dce8e5286b07608ee45e85253e260",
+        "bytes": 266
+      }
+    }
+  ],
+  "exitCode": 0,
+  "scientificApproval": false
+}

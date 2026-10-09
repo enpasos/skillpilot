@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:80b1f959c7d68a1799bcd10b3653294646de1207b3c98d0bf8ad85a3ccf3640a",
+  "reviewInputFingerprint": "sha256:dcdb61019cb47c30b2493b803c4fcfee679ae0f47c2916b3abeac82b56e94d7a",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-molecular-genetics-one15-current394-native-successor-v1-campaign-a",
+      "roundId": "biologie-molecular-genetics-one15-current394-native-successor-v1-independent-a",
+      "independenceGroupId": "biologie-molecular-genetics-one15-current394-native-successor-v1-independent-a",
+      "runIds": [
+        "bio23-native-one15-a-actual-review-v1"
+      ],
+      "providers": [
+        "OpenAI/Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI/Codex::declaredModelUnexposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-molecular-genetics-one15-current394-native-successor-v1-campaign-b",
+      "roundId": "biologie-molecular-genetics-one15-current394-native-successor-v1-independent-b",
+      "independenceGroupId": "biologie-molecular-genetics-one15-current394-native-successor-v1-independent-b",
+      "runIds": [
+        "biologie-molecular-genetics-one15-current394-native-successor-v1-independent-b.actual-native-review"
+      ],
+      "providers": [
+        "OpenAI Codex agent session"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex agent session::Codex; exact provider model identifier not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "183f3c47-ec20-5b98-8024-77ebd1c48abf",
+      "firstRecordId": "bio23-native-one15-a-actual-review-v1.183f3c47-ec20-5b98-8024-77ebd1c48abf",
+      "secondRecordId": "biologie-molecular-genetics-one15-current394-native-successor-v1-independent-b.actual-native-review.goal-01",
+      "firstRunId": "bio23-native-one15-a-actual-review-v1",
+      "secondRunId": "biologie-molecular-genetics-one15-current394-native-successor-v1-independent-b.actual-native-review",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

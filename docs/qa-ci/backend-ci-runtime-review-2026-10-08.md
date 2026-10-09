@@ -78,3 +78,22 @@ Curriculum-Paket (ein Fall) beziehungsweise eine PostgreSQL-Testumgebung
 unabhängigen Reviews prüfen Scan-Semantik, JFR-Vergleich und CI-Fehlerweitergabe.
 Rohprofile und synthetische Testlogs verbleiben lokal. GitHub-CI wird gesondert
 durch den terminalen Status des integrierten Main-Laufs nachgewiesen.
+
+## Ergänzung: veraltete Testauswahl, 9. Oktober 2026
+
+Eine frühere Testmethode kann nach Entfernen von `@Test` als Hilfsmethode
+erhalten bleiben. Ein gespeicherter Selektor findet dann trotz vorhandener
+Methodendeklaration keinen JUnit-Test. Ausschließlich der Priorisierungsvorlauf
+setzt deshalb `-PbackendFailurePriorityPreflight=true` und erlaubt über
+Gradles reguläre [TestFilter-Einstellung](https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/testing/TestFilter.html#isFailOnNoMatchingTests())
+eine Auswahl ohne Treffer. Danach folgt weiterhin zwingend das ungefilterte
+`./gradlew check` ohne diese Property. Echte Test- und Buildfehler im Vorlauf
+werden weitergereicht.
+
+Die ergänzte Ablaufprüfung besteht mit 23/23 Fällen. Mit dem vorhandenen
+Backend-Testbestand und Corretto `25.0.2.10.1` wurde außerdem der tatsächliche
+Gradle-Ablauf geprüft: derselbe ungültige Methodenselektor besteht im Vorlauf
+und scheitert ohne Property wie erwartet; ein gültiger Selektor führt den
+Chemie-Modellhash-Test aus und besteht. Diese gezielten Aufrufe überspringen
+die unveränderte Ressourcenverarbeitung (`-x processResources`) und sind
+keine neue vollständige Backend-QS oder GitHub-Freigabe.

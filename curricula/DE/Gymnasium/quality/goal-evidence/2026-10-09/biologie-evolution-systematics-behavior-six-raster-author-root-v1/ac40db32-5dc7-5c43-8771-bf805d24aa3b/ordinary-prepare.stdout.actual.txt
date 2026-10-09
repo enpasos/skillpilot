@@ -1,0 +1,11 @@
+
+> skillpilot@0.0.0 visualization:prepare
+> node ../scripts/prepare_goal_visualization.mjs ac40db32-5dc7-5c43-8771-bf805d24aa3b --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json --subject biologie --provider built-in ChatGPT/Codex image_gen
+
+Prepared prompt package for: Theorien vergleichen
+SkillPilot ID: ac40db32-5dc7-5c43-8771-bf805d24aa3b
+Prompt: tmp/goal-visualizations/ac40db32-5dc7-5c43-8771-bf805d24aa3b/nano-banana-prompt.de.md
+Metadata: tmp/goal-visualizations/ac40db32-5dc7-5c43-8771-bf805d24aa3b/metadata.json
+
+After generating and downloading the image, import it with:
+npm --prefix app run visualization:import -- ac40db32-5dc7-5c43-8771-bf805d24aa3b "<downloaded-image-path>"

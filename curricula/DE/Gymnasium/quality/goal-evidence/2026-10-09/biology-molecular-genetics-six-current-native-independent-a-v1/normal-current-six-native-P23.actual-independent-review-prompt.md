@@ -1,0 +1,5 @@
+# Genuine targeted Native6 current P23 review
+
+Inspect the six actual changed native HTML/PDF target pages, complete six DE/EN contexts and current exact image/alt/caption bindings. Reuse the actually judged unchanged23 whole P-v2 profiles and complete46 operative bilingual case bodies; inspect the only two Karyogram English rubric word boundaries. Confirm all388 unchanged full394 page contexts,17 previous actual native pages, original38 source duties and44 partners remain exact. Preserve the genuine Splice kind/A/M and other393 current atomic kinds. Record actual target15 marker and reconstruction HOLD separately from the correct unchanged positive material. Never turn positive material reuse, hashes, synthetic cases or image generation into learner performance, experiment, current whole source/course/native/V or Human Approval.
+
+Output ordinary own ai_candidate/needs_human_review P23 records under current exact full394 model/resources. This documents the actually performed targeted review, not a fresh whole23 science or17 pixel review.

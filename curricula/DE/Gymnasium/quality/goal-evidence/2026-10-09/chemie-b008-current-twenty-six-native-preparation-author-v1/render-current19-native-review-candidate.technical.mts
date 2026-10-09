@@ -1,0 +1,123 @@
+// SPDX-License-Identifier: Apache-2.0
+// Normal native D candidates. No source-course closure or scientific approval is inferred.
+import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
+import { existsSync, lstatSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { dirname, relative, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { stableGoalBookJson } from '../../../../../../../app/scripts/goalBookModel.ts'
+import { buildGoalDescriptionRolloutSubsetModel } from '../../../../../../../app/scripts/materializeGoalDescriptionRolloutBatch.ts'
+import { writeGoalBookHtml, writeGoalBookPdf, writeGoalBookRenderManifest } from '../../../../../../../app/scripts/goalBookRenderer.ts'
+import { buildGoalBookReviewBundle } from '../../../../../../../app/scripts/exportGoalBookReviewBundle.ts'
+import { createGoalDescriptionReviewCampaignArtifacts } from '../../../../../../../app/scripts/createGoalDescriptionReviewCampaign.ts'
+
+const root = resolve('.'), own = dirname(fileURLToPath(import.meta.url))
+const cap = resolve(root, 'tmp/chemie-b008-current26-native-preparation-20261009-v1-capsule')
+const rel = (p: string) => relative(root, p)
+const sha = (bytes: Buffer | string) => 'sha256:' + createHash('sha256').update(bytes).digest('hex')
+const bind = (p: string) => { assert.equal(lstatSync(p).isSymbolicLink(), false); const bytes = readFileSync(p); return { path: rel(p), sha256: sha(bytes), bytes: bytes.length } }
+const read = (p: string) => JSON.parse(readFileSync(p, 'utf8'))
+const write = (p: string, value: any) => {
+  assert.ok(p.startsWith(own + '/'))
+  const bytes = Buffer.isBuffer(value) ? value : Buffer.from(typeof value === 'string' ? value : JSON.stringify(value, null, 2) + '\n')
+  if (existsSync(p)) assert.ok(readFileSync(p).equals(bytes), 'Preserve differing output ' + p)
+  else { mkdirSync(dirname(p), { recursive: true }); writeFileSync(p, bytes) }
+  return bind(p)
+}
+const entryPath = resolve(own, 'positive/neutral-current19-profile-and-worked-case-author-bindings.entry.json')
+const entry = read(entryPath)
+assert.equal(entry.authorProfileCount, 19)
+assert.equal(entry.wholeOriginalCaseCount, 38)
+assert.equal(entry.authoredWorkedFreshTransferCount, 38)
+const profileRows = readFileSync(resolve(root, entry.actualCurrentP19RecordPath), 'utf8').trim().split('\n').map(line => JSON.parse(line))
+assert.equal(profileRows.length, 19)
+assert.ok(profileRows.every(r => r.reviewAuthority === 'ai_candidate' && r.status === 'needs_human_review' && r.evidenceLevel === 'E1' && r.maximumClaimScope === 'G1' && r.reviewRunIds.length === 0))
+const fullModelPath = resolve(own, 'native/whole395.inactive-review-only.book-model.json')
+const full = read(fullModelPath)
+const ids: string[] = entry.goalIds
+assert.equal(full.pages.length, 395)
+assert.equal(new Set(ids).size, 19)
+const ordered: string[] = full.pages.filter((p: any) => ids.includes(p.goalId)).map((p: any) => p.goalId)
+assert.equal(ordered.length, 19)
+assert.deepEqual([...ordered].sort(), [...ids].sort())
+const batchId = 'chemie-b008-current19-native-science-candidate-20261009-v1'
+const subset = buildGoalDescriptionRolloutSubsetModel({ baseModel: full, goalIds: ordered, bookId: batchId,
+  title: 'Chemie: Erkenntnisgewinnung, Kommunikation und Bewertung – vollständige Kandidatenprüfseiten' })
+const native = resolve(own, 'native-nineteen'), modelPath = resolve(native, 'book-model.json')
+const htmlPath = resolve(native, 'book.html'), pdfPath = resolve(native, 'book.pdf')
+write(modelPath, subset)
+const options = { chromiumExecutablePath: '/home/enpasos/.cache/ms-playwright/chromium-1217/chrome-linux64/chrome', publicRoot: resolve(cap, 'app/public'), feedbackBaseUrl: 'https://skillpilot.com/feedback', printDerivativeProfile: 'standard' as const }
+await writeGoalBookRenderManifest(await writeGoalBookHtml(subset, htmlPath, options), htmlPath + '.render-manifest.json')
+const pdf = await writeGoalBookPdf(subset, pdfPath, options)
+await writeGoalBookRenderManifest(pdf, pdfPath + '.render-manifest.json')
+assert.equal(pdf.goalPageCount, 19)
+const bundleDir = resolve(native, 'bundle')
+const bundle = await buildGoalBookReviewBundle(subset, { modelPath, pdfPath, pdfRenderManifestPath: pdfPath + '.render-manifest.json',
+  htmlPath, htmlRenderManifestPath: htmlPath + '.render-manifest.json', outputDirectory: bundleDir,
+  promptPath: resolve(root, 'curricula/DE/Gymnasium/quality/goal-evidence/prompts/goal-description-understanding-evidence-review-v2.md'),
+  criteriaPath: resolve(root, 'curricula/DE/Gymnasium/quality/goal-evidence/prompts/chemistry-goal-description-understanding-evidence-review-criteria-v1.md'), goalIds: ordered })
+for (const file of bundle.files) write(resolve(bundleDir, file.relativePath), file.content)
+write(resolve(bundleDir, 'review-bundle-manifest.json'), bundle.manifest)
+const artifact = (role: string) => { const found = bundle.manifest.artifacts.find(a => a.role === role); assert.ok(found); return found }
+const campaigns = []
+for (const side of ['a', 'b']) {
+  const directory = resolve(native, 'round-' + side)
+  const result = await createGoalDescriptionReviewCampaignArtifacts({ bundleBytes: readFileSync(resolve(bundleDir, 'review-bundle-manifest.json')),
+    bookModelBytes: readFileSync(resolve(bundleDir, artifact('book_model').path)),
+    reviewInputBytes: readFileSync(resolve(bundleDir, artifact('review_input_json').path)), bundleDirectory: bundleDir, outputDirectory: directory,
+    campaignOptions: { campaignId: batchId + '-campaign-' + side, roundId: batchId + '-independent-' + side,
+      reviewerRole: 'internal_ai_reviewer', reviewPass: 'first_pass', independenceGroupId: batchId + '-independent-' + side,
+      blindToOtherReviews: true, batchSize: 20 } })
+  assert.equal(result.campaign.batches.length, 1)
+  assert.deepEqual(result.campaign.batches.flatMap(b => b.goalIds), ordered)
+  campaigns.push({ side, campaignPath: rel(resolve(directory, 'description-review-campaign.json')),
+    inputPath: rel(resolve(directory, 'description-review-input.json')), batchesDirectory: rel(resolve(directory, 'batches')),
+    independenceGroupId: result.campaign.independenceGroupId, resultCount: 0 })
+}
+const selectedPages = subset.pages.map((p: any) => ({ goalId: p.goalId, wholePage: p }))
+assert.ok(selectedPages.every((p: any) => p.wholePage.visualization))
+const fields = selectedPages.map((p: any) => { const initial = full.pages.find((r: any) => r.goalId === p.goalId);
+  const difference = Object.keys({ ...initial, ...p.wholePage }).filter(k => stableGoalBookJson(initial[k]) !== stableGoalBookJson(p.wholePage[k]));
+  return { goalId: p.goalId, exactOrdinarySubsetChangedFields: difference } })
+write(resolve(own, 'pending/current19-native-results-and-resolutions.pending.json'), { schemaVersion: 1, goalIds: ordered,
+  independentResults: 0, nativeResolutionCount: 0, requiredIndependentNativeReviewers: 2,
+  ordinarySourceAtlasReady: false, sourceCoursePlacementStillHeld: true, scientificM7Closure: false, humanApproval: false })
+const actualOriginals = [htmlPath, pdfPath, resolve(bundleDir, artifact('book_html').path), resolve(bundleDir, artifact('book_pdf').path)].map(bind)
+write(resolve(own, 'native/four-required-native19-originals.exact-index-request.json'), { schemaVersion: 1, files: actualOriginals,
+  ordinaryRequiredOriginalsOnly: true, gitIgnoreExceptionsRequested: false, symlinksCreated: 0, strictGain: 0 })
+write(resolve(own, 'neutral-current19-native-independent-review.entry.json'), { schemaVersion: 1,
+  role: 'Neutral 19 actual native author pages, whole descriptions/38 original cases/38 worked fresh transfers; separate7 held and whole source-partner frames; source/course placement remains unresolved',
+  goalIds: ordered, activeCanonicalGoalCount: 480, activeCurricularAtomicCount: 378,
+  inactiveCanonicalGoalCount: 504, inactiveCurricularAtomicCount: 395, actualNationalBeforeBookPages: 359,
+  nativeScopeKind: 'ordinary_cross_stage_canonical_review_only_not_national_or_course_scope_approval',
+  actualFullCandidateModelPath: rel(fullModelPath), actualWholeCurrent378ModelPath: rel(resolve(own, 'native/whole378.same-canonical-root.before.book-model.json')),
+  actualNational359BeforeModelPath: rel(resolve(own, 'native/national359.actual-current-national-loader.book-model.json')),
+  whole378To395SubstantivePageDiffPath: rel(resolve(own, 'native/whole378-to-inactive395.substantive-page-context-deltas.actual.json')),
+  rawWholePageAndPaginationDiffPath: rel(resolve(own, 'native/whole378-to-inactive395.same-review-root.actual-page-context-diff.json')),
+  wholeProfileAndWorkedCaseBindingPath: rel(entryPath), wholeCaseMaterialsPath: entry.wholeCasesAndWorkedTransfersPath,
+  originalWhole26RawProfile52CasePath: rel(resolve(own, 'input/whole26-raw-profiles-and52-whole-cases.exact-neutral-input.json')),
+  whole21BYSourceDuties36Edges79OccurrencesPath: rel(resolve(own, 'input/whole21-BY-source-duties36-edges79-occurrences.exact-neutral-input.json')),
+  wholeCurrentSourcePartnerAtomicityMemoryFramePath: rel(resolve(own, 'input/current-whole-source-partner-atomicity-memory-frame.neutral.json')),
+  separateSevenPositiveProfilesNotMaterialized: true, separateSevenWholeScienceAndPStatus: 'HOLD awaiting actual new neutral remediation',
+  actualCurrentSourceAtlasProbePath: rel(resolve(own, 'source-atlas/ordinary-current504-source-probe.actual.json')),
+  current26ImageOnlyPairingPath: 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-twenty-six-current-visual-pairing-technical-v1/all26-actual-role-pairing.current-inactive.v2.json',
+  currentExistingImageReviewsRetained: 19, retainedGoodRasters: 18, justifiablyCorrectedRasters: 1,
+  positiveConfigPath: entry.actualCurrentP19ConfigPath, positiveRecordPath: entry.actualCurrentP19RecordPath,
+  candidateCanonicalPath: rel(resolve(own, 'candidate/canonical504-current26-resource-links.inactive.json')),
+  candidateKindPath: rel(resolve(own, 'candidate/semantic-kinds.current504.technical-review-input.json')),
+  candidateVisualizationQAPath: rel(resolve(own, 'candidate/visualization-qa.current504.native-unapproved.json')),
+  candidateBookConfigPath: rel(resolve(own, 'candidate/whole395.inactive-review-only.config.json')),
+  actualNativeBundlePath: rel(resolve(bundleDir, 'review-bundle-manifest.json')),
+  actualNativePDF: bind(resolve(bundleDir, artifact('book_pdf').path)), actualNativeHTML: bind(resolve(bundleDir, artifact('book_html').path)),
+  physicalPageMap: ordered.map((goalId, i) => ({ goalId, physicalPage: pdf.frontMatterPageCount + i + 1 })),
+  actualNormalSubsetFieldChanges: fields, campaigns, independentNativeResults: 0,
+  independentSourceCoursePlacementApproval: false, wholeSource19Approval: false,
+  pendingAtomicityScientificDecisions: 25, pendingMemoryScientificDecisions: 25,
+  actualExistingAtomicityAndMemoryUnchangedReuseGoalId: '1f354a60-be44-512b-8f8b-f67c8c456035',
+  protectedCurrent177SubstantiveContextReviewHolds: 8, ordinarySourceViewCPV009Findings: 35, ordinaryAffectedSourceViews: 16,
+  currentSourceMetadataHold: 'sl-chem-seki-sl-ch-seki-8-2024-p013-004-e3b97259',
+  nativeApprovals: false, humanApproval: false, humanTrial: false, activeWrites: [],
+  newScientificClosures: 0, restoredBindings: 0, netStrictGain: 0, authorVerdictTextIncluded: false })
+console.log(JSON.stringify({ actualNativePages: 19, wholeBilingualOriginalCases: 38, authoredWorkedFreshTransfers: 38,
+  normalP19CurrentCandidates: true, independentDResults: 0, ordinarySourceAtlas: 'HOLD',
+  currentAtomics: 378, candidateInactiveAtomics: 395, activeWrites: 0, strictGain: 0 }))

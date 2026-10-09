@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual ordinary existing CLI --check; no write branch executed",
+  "createdAt": "2026-10-09T03:45:45.389719+00:00",
+  "command": [
+    "app/node_modules/.bin/tsx",
+    "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+    "--config",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-twenty-two-bounded-source-routes-independent-b-v1/technical-v2-pairing-and-source-metadata-v1/whole395-source22-reviewed-metadata.ordinary-inputs.candidate-only.json",
+    "--check"
+  ],
+  "actualProcessExitCode": 1,
+  "stdout": "",
+  "stderr": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Source-scope uncertainty changed; inspect rather than guess\n\n497 !== 496\n\n    at buildGoalBookSourceAtlasInputs (/home/enpasos/projects/skillpilot/app/scripts/goalBookSourceAtlasInputs.ts:304:10)\n    at checkGoalBookSourceAtlasInputs (/home/enpasos/projects/skillpilot/app/scripts/goalBookSourceAtlasInputs.ts:367:18)\n    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/buildGoalBookSourceAtlasInputs.ts:11:40)\n    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)\n    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 497,\n  expected: 496,\n  operator: 'strictEqual'\n}\n\nNode.js v20.20.2\n",
+  "395ExpectedUniverseUnchanged": true,
+  "496ExpectedUncertaintyUnchanged": true,
+  "actualC11SourceCourseUnspecifiedNotSuppressed": true,
+  "activeWrites": [],
+  "humanApproval": false,
+  "strictGain": 0
+}

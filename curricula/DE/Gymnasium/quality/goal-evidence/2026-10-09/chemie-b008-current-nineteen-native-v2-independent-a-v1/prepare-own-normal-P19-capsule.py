@@ -1,0 +1,30 @@
+from pathlib import Path
+from datetime import datetime,timezone
+import json,hashlib,shutil,re
+R=Path('/home/enpasos/projects/skillpilot');O=Path(__file__).resolve().parent;B=R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09';N=B/'chemie-b008-current-twenty-six-native-preparation-author-v1/nineteen-operative-native-preparation-v2';C=O/'ordinary-P19-validation-capsule';C.mkdir();AC=R/'tmp/chemie-b008-current26-native-preparation-20261009-v1-capsule';notes=[]
+def b(p):return {'path':str(p.relative_to(R)),'sha256':'sha256:'+hashlib.sha256(p.read_bytes()).hexdigest(),'bytes':p.stat().st_size}
+def w(p,j):
+ with p.open('x') as f:f.write(json.dumps(j,ensure_ascii=False,indent=2)+'\n')
+def link(src,dst):
+ dst.parent.mkdir(parents=True,exist_ok=True);dst.symlink_to(src);notes.append({'capsulePath':str(dst.relative_to(C)),'actualInputPath':str(src.relative_to(R)),'actualDigest':b(src)['sha256'] if src.exists() else 'will_be_written_by_this_actual_run','kind':'symlink'})
+def copy(p):
+ dst=C/p.relative_to(R);dst.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(p,dst);assert dst.read_bytes()==p.read_bytes();notes.append({'capsulePath':str(dst.relative_to(C)),'normalSource':b(p),'byteExact':True})
+for f in ['materializePositiveGoalEvidenceCandidates.ts','positiveGoalEvidenceReview.ts','positiveGoalEvidenceProfileModel.ts','goalEvidenceProfileModel.ts']:copy(R/'app/scripts'/f)
+copy(R/'app/src/landscapeTypes.ts')
+for f in ['contracts/goal-evidence/v2/goal-evidence-profile.schema.json','contracts/goal-evidence/v2/goal-evidence-review-config.schema.json','contracts/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json']:copy(R/f)
+(C/'app/node_modules').symlink_to(R/'app/node_modules',target_is_directory=True)
+p=O/'current-nineteen-P-frame.actual-effective-review-prompt.md'
+with p.open('x') as f:f.write('''# Independent actual current Native19 P-frame review\n\nUse the closed positive-understanding-evidence-v2 contract and the bound Chemistry criteria. This is the actual task instruction used for the independent frame run; materialized here for normal run metadata.\n\nReuse only this reviewer\'s own sealed original16 and targeted3 actual scientific material judgments after value comparison of the complete chosen profile bodies. Read all19 current whole DE/EN goals and actual native pages/context, current required expectations/coverage/variation, and the actual4 whole operative successor cases. Check actual candidate resource/model/body bindings and full source/stage/course/physical/digital duty limits. No peer current-native result or author recommendation may supply a decision. Preserve whole original cases and practical/own research/digital/model/presentation/discussion duties.\n\nCopy the actual independently judged19 profile bodies exactly into ordinary candidate records with genuine own reasons, current actual fingerprints from the normal implementation and the real run ID. E1/G1, needs_human_review, ai_candidate only. The whole-source/course/Atlas/protected-context gates remain separately HOLD; no active integration, new V approval, human approval, learner execution or empirical success is claimed.\n''')
+parameters=O/'current-nineteen-P-frame.actual-generation-parameters.json';w(parameters,{'schemaVersion':1,'actualToolModel':None,'declaredModelUnexposed':True,'provider':'OpenAI','temperature':None,'seed':None,'modelVersion':None,'notes':'Current native P19 judgment was independently firstsealed before ordinary JSONL materialization; exact model variant and generation settings are unavailable. Own prior material judgments were explicit bounded reuse; other current native runs remain unread.','humanApproval':False})
+cs=json.loads((O/'current-nineteen-P-frame.first.independent-A.candidate-set.json').read_text());cfg=json.loads((N/'P19.actual-current-raster.ordinary-author-candidate.config.json').read_text());cfg.update(reviewId=cs['reviewId'],reviewPath=str((O/'current-nineteen-P-frame.normal.records.jsonl').relative_to(R)),reviewRunManifestPaths=[str((O/'current-nineteen-P-frame.normal.run.json').relative_to(R))]);cfg['scope']={'label':'Independent actual current native P19 frame with original16/targeted3 scientific material reuse; all separate source-course-Atlas-human gates pending','goalIds':[s['goalId'] for s in cs['goals']]};w(O/'current-nineteen-P-frame.normal.config.json',cfg)
+for src in [R/cfg['landscapePath'],R/cfg['semanticKindLedgerPath'],R/cfg['reviewCriteriaPath'],O/'current-nineteen-P-frame.first.independent-A.candidate-set.json',O/'current-nineteen-P-frame.normal.config.json',O/'current-nineteen-P-frame.normal.records.jsonl',O/'current-nineteen-P-frame.normal.run.json']:
+ link(src,C/src.relative_to(R))
+resource=json.loads((O/'current-nineteen-native-resources-and-model.actual-binding-checks.json').read_text())
+for row in resource['records']:
+ src=R/row['actualAsset']['path'];url=row['currentPrimaryResourceLink']['url'];link(src,C/'app/public'/url.lstrip('/'))
+# Actual additional finite inputs are read/bound without duplicating the repository.
+idx=B/'chemie-b008-current-nineteen-whole-positive-author-v1/remediation-v2/targeted-three-operative-materials.actual-index.json';finite=[]
+for row in json.loads(idx.read_text())['files']:
+ src=R/row['path'];assert hashlib.sha256(src.read_bytes()).hexdigest()==row['sha256'];finite.append(b(src))
+w(O/'current-nineteen-P-frame.normal-capsule.actual-inputs.json',{'schemaVersion':1,'createdAt':datetime.now(timezone.utc).isoformat(),'role':'Small isolated exact normal toolchain and actual selected asset/input symlinks; no active writes or whole repository copy','capsule':str(C.relative_to(R)),'ordinaryExportConfig':b(O/'current-nineteen-P-frame.normal.config.json'),'effectiveReviewPrompt':b(p),'generationParameters':b(parameters),'bindings':notes,'actualFinite11Preserved':finite,'normalModuleBytesUnchanged':True,'actualAppPublicIntegration':False,'humanApproval':False,'strictGain':0})
+print('Prepared own exact normal P19 capsule and actual bindings')

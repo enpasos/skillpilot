@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-molecular-genetics-one15-positive-independent-b-v1.actual-targeted-review",
+  "bundleFingerprint": "sha256:80b1f959c7d68a1799bcd10b3653294646de1207b3c98d0bf8ad85a3ccf3640a",
+  "bookDigest": "sha256:72c0db60ab064a17f5ef16d079b29bb8494216a91f55cfe28b3ad4d44065f1ad",
+  "provider": "OpenAI Codex agent session",
+  "model": "Codex; exact provider model identifier not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "biology-positive-understanding-evidence-profile-v1",
+  "promptFingerprint": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8",
+  "criteriaFingerprint": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8",
+  "generationParametersFingerprint": "sha256:139b2a6453158623927750e53f79f31aded5d63d1acb329734e47ab7014f94c8",
+  "independenceGroupId": "biologie-molecular-genetics-one15-current394-native-successor-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "183f3c47-ec20-5b98-8024-77ebd1c48abf"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:72c0db60ab064a17f5ef16d079b29bb8494216a91f55cfe28b3ad4d44065f1ad"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:9c5dead77f93d9f55154a4c48265103ce12f545144a45cea887063afa6613d87"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:957098f34543a7b9200b31c77bb53d4345d46300a41b10e4b330817e2faeb58a"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:1d7a1bcf48d94173c61ddaa355d707705ca8dc15c1fcf0f52c650ac0b1c44cdb"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:40754cf8f2f5a0351d87eaba1d76b20c0db19f3b364fb9fbb96cc3a8998f0e02"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:670367dd3859a31134c83cedf2d24b49a4b1707091a3afd3c8795fcd9ae94c75"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8"
+    }
+  ],
+  "startedAt": "2026-10-09T08:00:38.987629+00:00",
+  "completedAt": "2026-10-09T08:05:25.732Z",
+  "status": "completed",
+  "outputDigest": "sha256:addcea0280ae02ebe2bcfaa5c8b7d092e2ed034c4cba9f89f3f4c6c9a841f6bb",
+  "toolchainVersion": "codex-independent-b-native-one15-positive-v1"
+}

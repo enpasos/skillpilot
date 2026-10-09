@@ -1,0 +1,26 @@
+# Bildrekonstruktionsprompt: Meiose geschlechtsspezifisch erklären
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `ab96bec3-ee34-5209-bcc9-5c7c8280429c`
+- Titel: Meiose geschlechtsspezifisch erklären
+- Beschreibung: Die lernende Person kann den Ablauf der Meiose bei unterschiedlichen Geschlechtern beschreiben und ihre Bedeutung für die geschlechtliche Fortpflanzung erklären.
+
+## Generator
+
+- Provider: built-in ChatGPT/Codex image_gen
+- Quellbild: `ab96bec3-ee34-5209-bcc9-5c7c8280429c.png`
+
+## Zweck
+
+Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptbasis für spätere Korrekturen. Er ist keine fachliche Freigabe und ersetzt nicht den Review.
+
+## Prompt
+
+```text
+# Eigenständiger Rekonstruktionsprompt aus dem tatsächlich gesehenen Bild
+
+Abgeleitet nach Original-/360-/680-Ansicht; kein ursprünglicher Generatorprompt. Freundlich abstrakte Comicgrafik, 1672×941, dunkle klare Linien und große lesbare Beschriftungen.
+
+Breite Grafik mit hellblauer linker und hellrosa rechter Hälfte, großes Meiose oben. Je eine Anfangszelle mit blauem X und rotem X, groß 2n. Erste Teilung mit je zwei klaren Pfeilen in blaue-X- und rote-X-Zelle; zentral I: Homologe / trennen. Zweite Teilung links jede X-Zelle mit genau zwei Pfeilen in einzelne blaue beziehungsweise rote Stäbe; vier gleiche Spermien n. Rechts blaue-X-Zelle mit genau zwei Pfeilen zur großen blauen Einzelstab-Eizelle und zum kleinen blauen Einzelstab-Polkörper. Rote-X-Zelle mit genau zwei Pfeilen zu zwei roten Einzelstab-Polkörpern, kein Rot→Blau-Pfeil. Zentral II: Chromatiden / trennen. Rechts Eizelle n und Polkörper n. Keine dekorativen Porträts. Nur ein homologes Paar und möglicher vollständiger Endzustand, keine Behauptung vollständiger weiblicher Meiose II vor Befruchtung.
+```

@@ -1,0 +1,11 @@
+
+> skillpilot@0.0.0 visualization:prepare
+> node ../scripts/prepare_goal_visualization.mjs 89b627cd-ee66-5bd2-9c24-c513ec2f8560 --landscape curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-eighteen-whole-author-v1/input/current-canonical479-root23-successor.snapshot.json --subject biologie --provider Built-in ChatGPT/Codex image_gen
+
+Prepared prompt package for: Primaten-Sozialverhalten für menschliches Verhalten kritisch analysieren
+SkillPilot ID: 89b627cd-ee66-5bd2-9c24-c513ec2f8560
+Prompt: tmp/goal-visualizations/89b627cd-ee66-5bd2-9c24-c513ec2f8560/nano-banana-prompt.de.md
+Metadata: tmp/goal-visualizations/89b627cd-ee66-5bd2-9c24-c513ec2f8560/metadata.json
+
+After generating and downloading the image, import it with:
+npm --prefix app run visualization:import -- 89b627cd-ee66-5bd2-9c24-c513ec2f8560 "<downloaded-image-path>"

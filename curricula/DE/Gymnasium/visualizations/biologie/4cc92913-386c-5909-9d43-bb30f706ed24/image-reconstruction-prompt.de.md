@@ -1,0 +1,26 @@
+# Bildrekonstruktionsprompt: Kreuzungsexperimente statistisch auswerten
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `4cc92913-386c-5909-9d43-bb30f706ed24`
+- Titel: Kreuzungsexperimente statistisch auswerten
+- Beschreibung: Die lernende Person kann Kreuzungsexperimente auswerten, um den statistischen Charakter der Vererbung abzuleiten.
+
+## Generator
+
+- Provider: built-in ChatGPT/Codex image_gen
+- Quellbild: `4cc92913-386c-5909-9d43-bb30f706ed24.png`
+
+## Zweck
+
+Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptbasis für spätere Korrekturen. Er ist keine fachliche Freigabe und ersetzt nicht den Review.
+
+## Prompt
+
+```text
+# Rekonstruktion aus dem tatsächlich betrachteten PNG
+
+Querformat-Comic mit lernender Person links, Gedankenblase Zufall mit zwei Würfeln und zwei Samenschalen unten. Die kleine Schale enthält genau sechs gelbe und zwei grüne Samen, beschriftet Kleine Stichprobe (8 Samen). Die große Schale enthält vier Reihen mit je sieben gelben und drei grünen Samen, insgesamt 40. Oben rechts eine große reine Zahlentabelle ohne Balken oder Achsen: Spalten Erwartung und Stichprobe; Zeile gelb mit 75 % und 70 %, Zeile grün mit 25 % und 30 %. Darunter bei Stichprobe 28 : 12. Zahlen sehr groß und klar. Blaue Pfeile verbinden die Schalen mit dem Vergleich, das Notizbuch zeigt unaufdringliche generische Handschrift. Keine exakten falschen Balkenhöhen oder feste Aussage, eine große Stichprobe müsse genau den Erwartungswert treffen.
+
+Dieser Prompt wurde aus der tatsächlichen Originalansicht und den Ansichten mit 360 und 680 Pixeln Breite abgeleitet. Er ist kein ursprünglicher Erzeugungsprompt und wurde nicht zur Erzeugung dieses PNG verwendet.
+```

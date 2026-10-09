@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-09T05:20:56.651682+00:00",
+  "reviewer": "/root/bio_science14_independent_b",
+  "actualInput": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-kp-kc-actual-MV-primary-author-root-v1/one-whole-KpKc-goal-actual-MV-clause-and-original-gas-partner.author-candidate.json",
+    "sha256": "sha256:b717d71195bc483b21585de7a45e419d6587e3999f93939c23057f9319ebf686",
+    "bytes": 19754
+  },
+  "neutralInputFIRST": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-one-MV-KpKc-primary-independent-b-v1/one-MV-KpKc.independent-b.input.first.freeze.json",
+    "sha256": "sha256:aaa9ce66a3ec1aa096204f4f395a03cd8662dd1a261597d1a053df6501fe0538",
+    "bytes": 3795
+  },
+  "allInputBytesStillExact": true,
+  "wholeValueCounterchecks": {
+    "targetWholeValueExactCanonical": true,
+    "gasWholeValueExactCanonical": true,
+    "sourceWholeValueExactOriginal": true,
+    "passageWholeValueExactOriginal": true,
+    "decisionWholeValueExactOriginal": true,
+    "oldEdgesValueExactOriginal": true,
+    "all12OtherGasEdgesUnchanged": true
+  },
+  "actualPrimaryPDF": {
+    "path": "curricula/DE/Gymnasium/input/MV/Chemie_Gymnasium_11_12_Erprobungsfassung.pdf",
+    "sha256": "dcc123a0291510ae149c98a2129fef196fa76686174859cca24b96e03a1de769",
+    "bytes": 1770524
+  },
+  "ownActualPageTextRead": [
+    5,
+    7,
+    26,
+    27
+  ],
+  "ownActualPageImagesViewed": [
+    26,
+    27
+  ],
+  "actualPageForClause": {
+    "physical": 27,
+    "printed": 23,
+    "column": "Hinweise und Anregungen",
+    "courseBlock": "zusätzlich für den Leistungskurs"
+  },
+  "actualPage22DoesNotContainKpKcClause": true,
+  "freshOfficialPrimaryURLVerified": "https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_CHE_SEK2_erprobungsfassung.pdf",
+  "primaryEdition": "2022 Erprobungsfassung; exact served edition, no general current-legal applicability assertion",
+  "wholeTargetValueDigest": "sha256:1c75373032ce05f4f3ec1ffb92002e977ff4a8ee7136728c0a8519536c5cd95c",
+  "wholeGasValueDigest": "sha256:ddec447600cef41a354ddf576f12101e7b3d69fa36555ee3547af50b5bfbeae3",
+  "wholeSourceValueDigest": "sha256:69e5ebfb6664286ee592aa658842fa85dfe3656a6e0e00f0008c098b2371c908",
+  "otherOriginalGasEdges": {
+    "count": 12,
+    "unchanged": true,
+    "sourceTextsReadForRetention": true,
+    "newScientificApproval": false
+  },
+  "numericProbeScope": "Own mathematical inspection of the proposed conversion mechanism; not authored learner evidence, not P cases, not measured experiments.",
+  "numericProbes": [
+    {
+      "reaction": "2NO2(g) <=> N2O4(g)",
+      "deltaNuGas": -1,
+      "temperatureK": 300.0,
+      "roundedR_L_bar_per_mol_K": 0.08314,
+      "concentrations_mol_per_L": [
+        0.2,
+        0.1
+      ],
+      "pressures_bar": [
+        4.9884,
+        2.4942
+      ],
+      "dimensionalKc": 2.5,
+      "dimensionalKpDirect": 0.10023253949162055,
+      "dimensionalKpConverted": 0.10023253949162056,
+      "KcUnits": "(mol/L)^-1",
+      "KpUnits": "bar^-1",
+      "forwardAndReverseConsistent": true
+    },
+    {
+      "reaction": "N2O4(g) <=> 2NO2(g)",
+      "deltaNuGas": 1,
+      "temperatureK": 300.0,
+      "roundedR_L_bar_per_mol_K": 0.08314,
+      "concentrations_mol_per_L": [
+        0.1,
+        0.2
+      ],
+      "pressures_bar": [
+        2.4942,
+        4.9884
+      ],
+      "dimensionalKc": 0.4000000000000001,
+      "dimensionalKpDirect": 9.976799999999999,
+      "dimensionalKpConverted": 9.976800000000003,
+      "KcUnits": "(mol/L)^1",
+      "KpUnits": "bar^1",
+      "forwardAndReverseConsistent": true
+    },
+    {
+      "reaction": "H2(g) + I2(g) <=> 2HI(g)",
+      "deltaNuGas": 0,
+      "temperatureK": 300.0,
+      "roundedR_L_bar_per_mol_K": 0.08314,
+      "concentrations_mol_per_L": [
+        0.1,
+        0.2,
+        0.3
+      ],
+      "pressures_bar": [
+        2.4942,
+        4.9884,
+        7.4826
+      ],
+      "dimensionalKc": 4.5,
+      "dimensionalKpDirect": 4.499999999999998,
+      "dimensionalKpConverted": 4.5,
+      "KcUnits": "(mol/L)^0",
+      "KpUnits": "bar^0",
+      "forwardAndReverseConsistent": true
+    }
+  ],
+  "normalizedDerivationCountercheck": "Using p_i/p0 and c_i/c0, substitute p_i=c_iRT individually before multiplying powers: Kp/Kc=(RT*c0/p0)^deltaNuGas. Both ratios are dimensionless. This is not the unnormalised quotient formula unless the reference standards and unit conventions are explicitly fixed.",
+  "normalSourceOrProtectedContextChecksExecuted": false,
+  "activeWrites": 0,
+  "strictGain": 0,
+  "humanApproval": false
+}

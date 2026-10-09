@@ -1,0 +1,11 @@
+
+> skillpilot@0.0.0 visualization:prepare
+> node ../scripts/prepare_goal_visualization.mjs 435961b5-b02b-581c-b113-7368df2a44a9 --landscape curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-eighteen-whole-author-v1/input/current-canonical479-root23-successor.snapshot.json --subject biologie --provider Built-in ChatGPT/Codex image_gen
+
+Prepared prompt package for: Synthetische Evolutionstheorie auf Biodiversität und Artbildung anwenden
+SkillPilot ID: 435961b5-b02b-581c-b113-7368df2a44a9
+Prompt: tmp/goal-visualizations/435961b5-b02b-581c-b113-7368df2a44a9/nano-banana-prompt.de.md
+Metadata: tmp/goal-visualizations/435961b5-b02b-581c-b113-7368df2a44a9/metadata.json
+
+After generating and downloading the image, import it with:
+npm --prefix app run visualization:import -- 435961b5-b02b-581c-b113-7368df2a44a9 "<downloaded-image-path>"

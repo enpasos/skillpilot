@@ -1,0 +1,3 @@
+# Rekonstruktion aus dem tatsächlich gesehenen PNG
+
+Freundliche klare Comicillustration quer etwa16:9 über Erdoberfläche und Himmel. Große gelbe Überschrift „Schematische Zeitspur“. Eine einzige lange horizontale Pfeilspur führt von frühen Mikroben links über einen Fisch zu einem sehr kleinen rot markierten Endabschnitt rechts. In der historischen Hintergrundmitte liegen ein Dinosaurier und ein fliegendes Reptil. Eine große Lupe rechts vergrößert ausschließlich den jüngsten Endabschnitt mit zwei modernen Menschen. Keine Alterszahlen oder exakten Längenverhältnisse; Symbole markieren frühes Auftreten und keine direkte Vorfahrenleiter. Menschen und Dinosaurier nicht als gleichzeitig lebende Nachbarn. Große Motive auch bei360px erkennbar.

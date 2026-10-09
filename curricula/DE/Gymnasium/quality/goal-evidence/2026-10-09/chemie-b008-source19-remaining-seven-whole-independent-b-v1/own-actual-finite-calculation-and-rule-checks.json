@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "role": "actual AI reviewer finite-model calculations, not learner or experimental evidence",
+  "performedAt": "2026-10-09T00:53:58.625825+00:00",
+  "calibration": {
+    "slope": 0.08,
+    "meanAbsorbance": 0.29,
+    "diluted_mg_L": 3.4999999999999996,
+    "factor2Original_mg_L": 6.999999999999999,
+    "factor4CorrectedOriginal_mg_L": 13.999999999999998
+  },
+  "temperatureMeans_s": [
+    92.0,
+    64.0,
+    49.0
+  ],
+  "fresh50C": {
+    "mean_s": 62.5,
+    "range_s": 35,
+    "massVolumeStirConditionsConfirmed": false
+  },
+  "modelRuleChecks": [
+    {
+      "input": {
+        "test_id": "1",
+        "ion_label": "Na+",
+        "ion_charge": "1",
+        "facing_end": "O-end",
+        "facing_partial_charge": "-1",
+        "learner_formula": "",
+        "learner_result": "",
+        "observation_comparison": "",
+        "model_limit": ""
+      },
+      "ownReviewerFiniteComputedResult": "attracting"
+    },
+    {
+      "input": {
+        "test_id": "2",
+        "ion_label": "Na+",
+        "ion_charge": "1",
+        "facing_end": "H-end",
+        "facing_partial_charge": "1",
+        "learner_formula": "",
+        "learner_result": "",
+        "observation_comparison": "",
+        "model_limit": ""
+      },
+      "ownReviewerFiniteComputedResult": "repelling"
+    },
+    {
+      "input": {
+        "test_id": "3",
+        "ion_label": "Cl-",
+        "ion_charge": "-1",
+        "facing_end": "O-end",
+        "facing_partial_charge": "-1",
+        "learner_formula": "",
+        "learner_result": "",
+        "observation_comparison": "",
+        "model_limit": ""
+      },
+      "ownReviewerFiniteComputedResult": "repelling"
+    },
+    {
+      "input": {
+        "test_id": "4",
+        "ion_label": "Cl-",
+        "ion_charge": "-1",
+        "facing_end": "H-end",
+        "facing_partial_charge": "1",
+        "learner_formula": "",
+        "learner_result": "",
+        "observation_comparison": "",
+        "model_limit": ""
+      },
+      "ownReviewerFiniteComputedResult": "attracting"
+    },
+    {
+      "input": {
+        "test_id": "5",
+        "ion_label": "U",
+        "ion_charge": "0",
+        "facing_end": "O-end",
+        "facing_partial_charge": "-1",
+        "learner_formula": "",
+        "learner_result": "",
+        "observation_comparison": "",
+        "model_limit": ""
+      },
+      "ownReviewerFiniteComputedResult": "undetermined"
+    },
+    {
+      "input": {
+        "test_id": "6",
+        "ion_label": "U",
+        "ion_charge": "0",
+        "facing_end": "H-end",
+        "facing_partial_charge": "1",
+        "learner_formula": "",
+        "learner_result": "",
+        "observation_comparison": "",
+        "model_limit": ""
+      },
+      "ownReviewerFiniteComputedResult": "undetermined"
+    }
+  ],
+  "atomConservation": {
+    "left": {
+      "H": 4,
+      "O": 2
+    },
+    "right": {
+      "H": 4,
+      "O": 2
+    },
+    "reaction": "2 H2 + O2 -> 2 H2O"
+  },
+  "metalDisplacement": {
+    "reaction": "Fe + Cu2+ -> Fe2+ + Cu",
+    "leftCharge": 2,
+    "rightCharge": 2,
+    "colourAloneProvesProductIdentity": false
+  },
+  "learnerSoftwareExecution": false,
+  "physicalExperimentPerformed": false,
+  "actualLearnerPerformance": false
+}

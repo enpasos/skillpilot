@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "runs": [
+    {
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/remediation-v2/fourteen-whole-positive-understanding.author-candidate.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/remediation-v2/fourteen-whole-profile-candidates.author-candidates.json",
+        "--write"
+      ],
+      "cwd": "app",
+      "exitCode": 0,
+      "output": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/remediation-v2/checks/ordinary-remediated-positive-1.actual.stdout.txt",
+        "sha256": "sha256:b1614cb191a6e38600feabae71c66fbc8e4402ef42f825f2c80c49cb8bba7c43",
+        "bytes": 230
+      }
+    },
+    {
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/remediation-v2/fourteen-whole-positive-understanding.author-candidate.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/remediation-v2/fourteen-whole-profile-candidates.author-candidates.json"
+      ],
+      "cwd": "app",
+      "exitCode": 0,
+      "output": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/remediation-v2/checks/ordinary-remediated-positive-2.actual.stdout.txt",
+        "sha256": "sha256:5bc384fb6b4258d0e081fa24e644c326f46d6f71269c912b1334a6338df13cd4",
+        "bytes": 233
+      }
+    },
+    {
+      "argv": [
+        "./node_modules/.bin/tsx",
+        "scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/remediation-v2/fourteen-whole-positive-understanding.author-candidate.config.json",
+        "--mode=check"
+      ],
+      "cwd": "app",
+      "exitCode": 0,
+      "output": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/remediation-v2/checks/ordinary-remediated-positive-3.actual.stdout.txt",
+        "sha256": "sha256:40a62ed539c582235f3c363d8bb48a8617ecaf353a465e158ee6d60795000203",
+        "bytes": 278
+      }
+    }
+  ],
+  "exitCode": 0,
+  "scientificApproval": false
+}

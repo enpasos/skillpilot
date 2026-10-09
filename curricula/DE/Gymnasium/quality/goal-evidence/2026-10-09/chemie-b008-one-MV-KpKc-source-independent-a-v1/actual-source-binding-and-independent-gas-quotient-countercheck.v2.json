@@ -1,0 +1,299 @@
+{
+  "schemaVersion": 1,
+  "role": "actual independent input and numerical model consistency checks; no new source/course/P approval",
+  "createdAt": "2026-10-09T05:13:12.262090+00:00",
+  "entry": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-kp-kc-actual-MV-primary-author-root-v1/neutral-one-MV-KpKc-primary-clause-and-preserved-original-gas-goal.author-review.entry.json",
+    "sha256": "64cd63bec21a92dfd2c543d6cfc890817a2a3ceed3194f64cfc566426e05cd06",
+    "bytes": 1003
+  },
+  "wholeInput": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-kp-kc-actual-MV-primary-author-root-v1/one-whole-KpKc-goal-actual-MV-clause-and-original-gas-partner.author-candidate.json",
+    "sha256": "b717d71195bc483b21585de7a45e419d6587e3999f93939c23057f9319ebf686",
+    "bytes": 19754
+  },
+  "checks": [
+    {
+      "name": "input exact bytes curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-source-atlas-rest-twenty-neutral-planning-a-v1/next-source-atlas-rest20-whole-source-context.planning-candidate.input.json",
+      "pass_": true,
+      "details": null
+    },
+    {
+      "name": "input exact bytes curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-current-twenty-six-native-preparation-author-v1/candidate/canonical504-current26-resource-links.inactive.json",
+      "pass_": true,
+      "details": null
+    },
+    {
+      "name": "input exact bytes curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_CHEMIE_SEKII_RAHMENPLAN_ERPROBUNGSFASSUNG_2022.source-extraction.json",
+      "pass_": true,
+      "details": null
+    },
+    {
+      "name": "input exact bytes curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+      "pass_": true,
+      "details": null
+    },
+    {
+      "name": "input exact bytes curricula/DE/Gymnasium/input/MV/Chemie_Gymnasium_11_12_Erprobungsfassung.pdf",
+      "pass_": true,
+      "details": null
+    },
+    {
+      "name": "input exact bytes curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-kp-kc-actual-MV-primary-author-root-v1/primary/MV-actual-physical-page-026.txt",
+      "pass_": true,
+      "details": null
+    },
+    {
+      "name": "input exact bytes curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-kp-kc-actual-MV-primary-author-root-v1/primary/MV-actual-physical-page-027.txt",
+      "pass_": true,
+      "details": null
+    },
+    {
+      "name": "input exact bytes curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-kp-kc-actual-MV-primary-author-root-v1/primary/MV-actual-physical-page-027.png",
+      "pass_": true,
+      "details": null
+    },
+    {
+      "name": "wholeCurrentProspectiveTarget exact current full goal",
+      "pass_": true,
+      "details": {
+        "canonicalPointer": "/goals/345"
+      }
+    },
+    {
+      "name": "wholeOriginalPartner exact current full goal",
+      "pass_": true,
+      "details": {
+        "canonicalPointer": "/goals/11"
+      }
+    },
+    {
+      "name": "whole original source clause exact",
+      "pass_": true,
+      "details": {
+        "sourcePointer": "/sourceGoals/60"
+      }
+    },
+    {
+      "name": "whole original passage exact",
+      "pass_": true,
+      "details": {
+        "sourcePointer": "/passages/6"
+      }
+    },
+    {
+      "name": "old decision exact /decisions/60",
+      "pass_": true,
+      "details": null
+    },
+    {
+      "name": "old wrong edge exact /mappings/268",
+      "pass_": true,
+      "details": null
+    },
+    {
+      "name": "all 12 other original MV gas-goal mapping edges exact",
+      "pass_": true,
+      "details": {
+        "count": 12,
+        "semanticsApproved": false
+      }
+    },
+    {
+      "name": "proposed edge is precisely one partial KpKc contribution",
+      "pass_": true,
+      "details": null
+    },
+    {
+      "name": "physical page 26 own whole extraction equal after trailing page-break/newline normalization",
+      "pass_": true,
+      "details": null
+    },
+    {
+      "name": "physical page 26 printed folio",
+      "pass_": true,
+      "details": null
+    },
+    {
+      "name": "physical page 27 own whole extraction equal after trailing page-break/newline normalization",
+      "pass_": true,
+      "details": null
+    },
+    {
+      "name": "physical page 27 printed folio",
+      "pass_": true,
+      "details": null
+    },
+    {
+      "name": "actual page27 has ideal-gas derivation and explicit LK block",
+      "pass_": true,
+      "details": null
+    },
+    {
+      "name": "independent quotient comparison 2NO2 <=> N2O4",
+      "pass_": true,
+      "details": {
+        "reaction": "2NO2 <=> N2O4",
+        "gasExponents": {
+          "NO2": -2,
+          "N2O4": 1
+        },
+        "deltaNuGas": -1,
+        "concentrations_mol_per_L": {
+          "NO2": 0.2,
+          "N2O4": 0.08
+        },
+        "pressure_bar": {
+          "NO2": 4.9579140591134,
+          "N2O4": 1.98316562364536
+        },
+        "R_L_bar_per_mol_K": 0.08314462618,
+        "temperature_K": 298.15,
+        "dimensionalKc": 1.9999999999999998,
+        "dimensionalKp": 0.08067909109169392,
+        "derivedKp": 0.08067909109169391,
+        "relativeError": 1.720121982043896e-16,
+        "reviewerSyntheticCalculation": true
+      }
+    },
+    {
+      "name": "dimensionless standard-normalized comparison 2NO2 <=> N2O4",
+      "pass_": true,
+      "details": {
+        "c0_mol_per_L": 0.5,
+        "p0_bar": 2.0,
+        "dimensionlessKc": 0.9999999999999999,
+        "dimensionlessKp": 0.16135818218338785,
+        "derived": 0.16135818218338782
+      }
+    },
+    {
+      "name": "independent quotient comparison N2O4 <=> 2NO2",
+      "pass_": true,
+      "details": {
+        "reaction": "N2O4 <=> 2NO2",
+        "gasExponents": {
+          "N2O4": -1,
+          "NO2": 2
+        },
+        "deltaNuGas": 1,
+        "concentrations_mol_per_L": {
+          "NO2": 0.2,
+          "N2O4": 0.08
+        },
+        "pressure_bar": {
+          "NO2": 4.9579140591134,
+          "N2O4": 1.98316562364536
+        },
+        "R_L_bar_per_mol_K": 0.08314462618,
+        "temperature_K": 298.15,
+        "dimensionalKc": 0.5000000000000001,
+        "dimensionalKp": 12.3947851477835,
+        "derivedKp": 12.394785147783503,
+        "relativeError": 2.8662971051465265e-16,
+        "reviewerSyntheticCalculation": true
+      }
+    },
+    {
+      "name": "dimensionless standard-normalized comparison N2O4 <=> 2NO2",
+      "pass_": true,
+      "details": {
+        "c0_mol_per_L": 0.5,
+        "p0_bar": 2.0,
+        "dimensionlessKc": 1.0000000000000002,
+        "dimensionlessKp": 6.19739257389175,
+        "derived": 6.197392573891752
+      }
+    },
+    {
+      "name": "independent quotient comparison H2 + I2(g) <=> 2HI",
+      "pass_": true,
+      "details": {
+        "reaction": "H2 + I2(g) <=> 2HI",
+        "gasExponents": {
+          "H2": -1,
+          "I2": -1,
+          "HI": 2
+        },
+        "deltaNuGas": 0,
+        "concentrations_mol_per_L": {
+          "H2": 0.2,
+          "I2": 0.1,
+          "HI": 0.3
+        },
+        "pressure_bar": {
+          "H2": 4.9579140591134,
+          "I2": 2.4789570295567,
+          "HI": 7.4368710886701
+        },
+        "R_L_bar_per_mol_K": 0.08314462618,
+        "temperature_K": 298.15,
+        "dimensionalKc": 4.5,
+        "dimensionalKp": 4.5,
+        "derivedKp": 4.5,
+        "relativeError": 0.0,
+        "reviewerSyntheticCalculation": true
+      }
+    },
+    {
+      "name": "dimensionless standard-normalized comparison H2 + I2(g) <=> 2HI",
+      "pass_": true,
+      "details": {
+        "c0_mol_per_L": 0.5,
+        "p0_bar": 2.0,
+        "dimensionlessKc": 4.5,
+        "dimensionlessKp": 4.5,
+        "derived": 4.5
+      }
+    },
+    {
+      "name": "independent quotient comparison CaCO3(s) <=> CaO(s) + CO2(g), gas quotient only",
+      "pass_": true,
+      "details": {
+        "reaction": "CaCO3(s) <=> CaO(s) + CO2(g), gas quotient only",
+        "gasExponents": {
+          "CO2": 1
+        },
+        "deltaNuGas": 1,
+        "concentrations_mol_per_L": {
+          "CO2": 0.02
+        },
+        "pressure_bar": {
+          "CO2": 0.49579140591134
+        },
+        "R_L_bar_per_mol_K": 0.08314462618,
+        "temperature_K": 298.15,
+        "dimensionalKc": 0.02,
+        "dimensionalKp": 0.49579140591134,
+        "derivedKp": 0.49579140591134,
+        "relativeError": 0.0,
+        "reviewerSyntheticCalculation": true
+      }
+    },
+    {
+      "name": "dimensionless standard-normalized comparison CaCO3(s) <=> CaO(s) + CO2(g), gas quotient only",
+      "pass_": true,
+      "details": {
+        "c0_mol_per_L": 0.5,
+        "p0_bar": 2.0,
+        "dimensionlessKc": 0.04,
+        "dimensionlessKp": 0.24789570295567,
+        "derived": 0.24789570295567
+      }
+    },
+    {
+      "name": "reverse balanced reactions have reciprocal Kc/Kp",
+      "pass_": true,
+      "details": null
+    }
+  ],
+  "checkCount": 30,
+  "errors": [],
+  "mathematicalReviewInputsAreSynthetic": true,
+  "actualLearnerWork": false,
+  "physicalExperiment": false,
+  "currentOrdinary395SourceAtlasValidated": false,
+  "freshPeerOrAuthorVerdictsRead": false,
+  "activeWrites": false,
+  "strictGain": 0
+}

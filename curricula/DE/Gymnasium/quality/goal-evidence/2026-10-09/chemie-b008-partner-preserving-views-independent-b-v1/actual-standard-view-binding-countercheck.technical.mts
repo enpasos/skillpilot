@@ -1,0 +1,31 @@
+// SPDX-License-Identifier: Apache-2.0
+import {readFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+import {compileCompositionView,collectCompositionProjectionRoleGoalIds} from '../../../../../../../app/src/utils/authoring/compositionViewAuthoring.ts';
+const base='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-current-twenty-six-native-preparation-author-v1/source-view-author/';
+const own='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-partner-preserving-views-independent-b-v1/';
+const read=(p:string)=>JSON.parse(readFileSync(p,'utf8'));
+const bind=(p:string)=>{const b=readFileSync(p);return {path:p,sha256:'sha256:'+createHash('sha256').update(b).digest('hex'),bytes:b.length}};
+const entry=read(base+'neutral-twenty-eight-partner-preserving-source-view.author.entry.json');
+const proof=read(entry.actualOrdinaryCompilerAndTargetSetProof.path);
+const canonical=read(entry.canonical504CandidateBinding.path),kinds=read(entry.existingKindInput.path),byKind=new Map(kinds.decisions.map((r:any)=>[r.goalId,r.semanticKind]));
+const classified={...canonical,goals:canonical.goals.map((g:any)=>({...g,semanticKind:byKind.get(g.id)}))};
+const goalMap=new Map(canonical.goals.map((g:any)=>[g.id,g]));
+const atomic=new Set(kinds.decisions.filter((r:any)=>r.semanticKind==='curricularAtomic').map((r:any)=>r.goalId));
+const rows=proof.views.map((v:any)=>{
+ const before=read(v.beforeBinding.path),after=read(v.candidateBinding.path),removalPaths=new Set(v.onlyCandidateNodeRemovals.map((r:any)=>r.nodePath));
+ const filter=(ns:any[],prefix=''):any[]=>ns.flatMap((n:any,i:number)=>{const p=(prefix?prefix+'.':'')+i;if(removalPaths.has(p))return [];return [{...n,...(n.children?{children:filter(n.children,p)}:{})}]});
+ assert.deepEqual(after,{...before,rootNodes:filter(before.rootNodes)});
+ const br=collectCompositionProjectionRoleGoalIds(before.rootNodes,goalMap as any),ar=collectCompositionProjectionRoleGoalIds(after.rootNodes,goalMap as any);
+ const sortAtoms=(xs:Set<string>)=>[...xs].filter(x=>atomic.has(x)).sort();
+ assert.deepEqual(sortAtoms(br.targetGoalIds),sortAtoms(ar.targetGoalIds));
+ assert.deepEqual(sortAtoms(br.prerequisiteOnlyGoalIds),sortAtoms(ar.prerequisiteOnlyGoalIds));
+ assert.deepEqual(sortAtoms(ar.targetGoalIds),v.actualAfterAtomicTargetIds);
+ const errors=compileCompositionView(after,classified).findings.filter((x:any)=>x.severity==='error');
+ assert.deepEqual(errors,v.afterNormalErrors);
+ return {viewId:v.viewId,beforeBinding:bind(v.beforeBinding.path),candidateBinding:bind(v.candidateBinding.path),wholeScope:after.scope,onlyExactDeclaredRemovals:true,allRemainingNodeObjectsValueExact:true,atomicTargetSetsEqual:true,atomicPrerequisiteOnlySetsEqual:true,atomicTargetCount:ar.targetGoalIds.size,normalCompilerErrors:errors,wholeSourceApproval:false};
+});
+const receipt={schemaVersion:1,role:'Own B actual unchanged normal compiler/roles countercheck, separate from source semantic verdict',inputs:[bind(base+'neutral-twenty-eight-partner-preserving-source-view.author.entry.json'),bind(entry.actualOrdinaryCompilerAndTargetSetProof.path),bind(entry.canonical504CandidateBinding.path),bind(entry.existingKindInput.path),bind('app/src/utils/authoring/compositionViewAuthoring.ts')],views:rows,actualNormalErrorFreeViews:rows.filter(r=>r.normalCompilerErrors.length===0).length,actualStillHeldViews:rows.filter(r=>r.normalCompilerErrors.length>0).length,actualStillHeldNodes:rows.reduce((n,r)=>n+r.normalCompilerErrors.length,0),sourceOperatorApproval:false,qualityGateRelaxed:false,sourceMetadataInferred:false,activeWrites:[],strictGain:0,humanApproval:false};
+writeFileSync(own+'actual-standard-view-binding-countercheck.receipt.json',JSON.stringify(receipt,null,2)+'\n',{flag:'wx'});
+console.log(JSON.stringify({normalErrorFreeViews:receipt.actualNormalErrorFreeViews,normalHeldViews:receipt.actualStillHeldViews,normalHeldNodes:receipt.actualStillHeldNodes,remainingObjectsExact:true,targetAndPrerequisiteRolesExact:true,sourceApproval:false}));

@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "role": "post-seal provenance verification B; separate from immutable first visual verdict",
+  "checkedAtUtc": "2026-10-08T22:54:55.989654+00:00",
+  "goalId": "1f354a60-be44-512b-8f8b-f67c8c456035",
+  "firstSeal": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b008-current-one-fresh-independent-v-b-20261009-v1/first-seal.json",
+    "sha256": "96977d2f2279e8c491c66ec15481b43502034cbd1bb94c49528889d54975b3ef",
+    "bytes": 1138,
+    "matchesOriginalSealSha256": true
+  },
+  "firstVerdictRecords": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b008-current-one-fresh-independent-v-b-20261009-v1/first-verdict.json",
+      "sha256": "f030931fc9139b08b3cafd581bd6a5d0a5d913c33248cf24a32f5341897ab052",
+      "bytes": 12698,
+      "matchesSealedSha256": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b008-current-one-fresh-independent-v-b-20261009-v1/first-verdict.md",
+      "sha256": "fb7dc223a50a08e0866e30ce01adf8d589efc3ce3eff067c7ef30a7f17a95295",
+      "bytes": 2168,
+      "matchesSealedSha256": true
+    }
+  ],
+  "firstVerdictUnchanged": true,
+  "firstVisualDecision": "HOLD",
+  "historicalProvenanceOpenedOnlyAfterSeal": true,
+  "linkedProvenance": [
+    {
+      "purpose": "promptPath",
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-twenty-six-images-author-20261008-v1/images/1f354a60-be44-512b-8f8b-f67c8c456035/prompt.de.md",
+      "sha256": "25fda01f918125dacce575ea050ce3396d6b9064862e7eeb599c10bbe9a6ac71",
+      "bytes": 3328,
+      "matchesEntrySha256AndBytes": true,
+      "readAfterFirstSeal": true
+    },
+    {
+      "purpose": "reconstructionPromptPath",
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-b008-twenty-six-images-author-20261008-v1/images/1f354a60-be44-512b-8f8b-f67c8c456035/image-reconstruction-prompt.de.md",
+      "sha256": "a374f9331249bed12129c2a531a55dab4ab95a10b74a7965fa961c8b1019d4eb",
+      "bytes": 496,
+      "matchesEntrySha256AndBytes": true,
+      "readAfterFirstSeal": true
+    }
+  ],
+  "providerVerification": {
+    "result": "documented_provider_match_only",
+    "providerAsDocumented": "Google Gemini / Nano Banana Pro (gemini-3-pro-image)",
+    "metadataLocation": "Generator section of hash-matched retained prompt.de.md",
+    "modelNameIsDocumentedNotIndependentlyRunVerified": true,
+    "rawGenerationRequestOrReceiptInspected": false,
+    "historicalAcceptedFieldReadAfterSeal": true,
+    "historicalAcceptedFieldUsedAsQualityEvidence": false
+  },
+  "promptAndRasterRelationship": {
+    "result": "documented_strategy_matches_core_content",
+    "findings": [
+      "Retained generation prompt prescribes the four assertion/evidence/reason/standpoint cards, vinegar/marble example, bubble observation, negative conclusion and crossed-out bare opinion seen in the actual raster.",
+      "Reconstruction prompt describes the same friendly laboratory comic, cards and chain. It explicitly distinguishes the example from actual performed dialogue.",
+      "The desired group count in the historical prompt is not exactly reproduced: the raster visibly has five people rather than its three learners plus one teacher. This is not a scientific or didactic blocker.",
+      "Faint decorative chemical-style ring sketches appear at the bottom although the historical prompt discouraged molecular structures. They carry no readable molecular identity or assessed assertion and did not produce a scientific correctness issue in the sealed first review.",
+      "Historical instructions to keep labels readable at small display size do not establish that the actual 360 px image succeeded. The observed critical-text limitation remains."
+    ]
+  },
+  "limits": {
+    "fullElevenSnapshotOpened": false,
+    "authorOrPeerVisualReviewReportsOpened": false,
+    "sourceClearanceProven": false,
+    "providerExecutionProven": false,
+    "humanApproval": false,
+    "humanTrial": false,
+    "strictCompletionsAdded": 0,
+    "currentStrictGain": 0,
+    "activeCanonicalOrQaLedgerMutated": false,
+    "imageRegenerated": false,
+    "buildsRun": false,
+    "githubTouched": false
+  }
+}

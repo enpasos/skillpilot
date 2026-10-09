@@ -1,0 +1,599 @@
+{
+  "schemaVersion": 1,
+  "role": "six missing raster author inputs; generation and independent V pending",
+  "author": "/root",
+  "currentCanonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "sha256": "27d223d9c576d064d9041ded713b5992543014ca1104c5c56ca63b4f9832d645",
+    "bytes": 1256446
+  },
+  "actualMissingInputs": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-eighteen-whole-author-v1/eighteen-images-documented-missing-primary-links.separate-open-list.json",
+    "sha256": "24b98fb442fdb00c285e14b7522198b3b7db67bcde9985295d404b5af1b789b7",
+    "bytes": 48304
+  },
+  "plans": [
+    {
+      "ordinal": 1,
+      "goalId": "0db20819-ee94-54c6-8ecb-aff8c9b7419e",
+      "wholeGoal": {
+        "id": "0db20819-ee94-54c6-8ecb-aff8c9b7419e",
+        "shortKey": "canonical_biology_upper_species_identification_animals_plants",
+        "title": "Tier- und Pflanzenarten bestimmen",
+        "titleEn": "Identify Animal and Plant Species",
+        "description": "Die lernende Person kann unterschiedliche Tier- und Pflanzenarten mithilfe geeigneter Merkmale und Bestimmungshilfen bestimmen.",
+        "descriptionEn": "The learner can identify different animal and plant species using suitable traits and identification aids.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "0380f992-723a-513d-8c3f-8ca7f8e0394f",
+          "9dff0360-c2e9-5e43-af8b-87e264281cf7",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-biology",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_STRUKTUR_FUNKTION",
+            "BIO_INFORMATION_KOMMUNIKATION"
+          ],
+          "phase": "GLOBAL",
+          "area": "Evolution, Systematik und Biodiversität",
+          "topicCode": "CANONICAL.BIOLOGY.UPPER_SPECIES_IDENTIFICATION_ANIMALS_PLANTS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-MV",
+            "DE-NI",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B12-EA.3.3",
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "357a7003-b636-570e-a0bd-6bb63518d2f6",
+            "sourceLandscapeTitle": "DE-BY - Biologie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+            "sourceGoalId": "b201be13-27a4-5d82-b407-85e930e3a7fa"
+          }
+        },
+        "type": "atomic"
+      },
+      "prompt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-six-raster-author-root-v1/0db20819-ee94-54c6-8ecb-aff8c9b7419e/actual-generator-prompt.de.txt",
+        "sha256": "fcf7c6df0d1220fc5c09c517c9e3143b36f11cf466bc73a26d25a7f6a484d17f",
+        "bytes": 1185
+      },
+      "generatorPrompt": "Erzeuge ein einzelnes didaktisches PNG, quer etwa 16:9, nahe 1600 × 900 Pixel. Freundliche, klare, abstrakte Comicillustration: dunkelblaue weiche Konturen, helle Blau-, Mint-, Apricot- und Gelbtöne, heller Hintergrund, dezente plastische Schattierung. Wenige große Hauptobjekte, auch bei 360 Pixel Bildbreite erkennbar; kein überfülltes Lehrposter. Keine Fotorealistik, keine sterile technische Neugestaltung, keine Logos oder technischen IDs. Das Bild ist eine Orientierung, keine Aufgabe, keine Musterlösung und kein Beleg eines Experiments. Notwendige Beschriftungen sind groß und kurz; keine Kleinschrift. Tier- und Pflanzenarten bestimmen. Zwei große beobachtete Naturgegenstände: links ein gelappter Eichenblattzweig mit passender Eichel, rechts ein naturgetreu abstrahierter Marienkäfer mit sechs Beinen, zwei Fühlern und zwei Flügeldecken. Eine große Lupe hebt die charakteristischen Blatt- beziehungsweise Käfermerkmale hervor. Im Hintergrund eine einfache offene Bestimmungshilfe mit zwei deutlich erkennbaren Bildalternativen je Weg und verzweigten Entscheidungspfaden, ohne lesepflichtige Wörter. Kein aus einem Bild behauptetes sicheres Artnamen-Ergebnis.\n",
+      "captionCandidate": "Merkmale an Pflanzen und Tieren beobachten und mit einer Bestimmungshilfe vergleichen.",
+      "altTextCandidate": "Comicillustration eines Eichenblattzweigs mit Eichel und eines sechsbeinigen Marienkäfers; eine Lupe und eine verzweigte bebilderte Bestimmungshilfe verdeutlichen den Merkmalsvergleich.",
+      "provider": "built-in ChatGPT/Codex image_gen",
+      "model": null,
+      "license": "CC-BY-4.0",
+      "ordinaryPrepareCommand": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "visualization:prepare",
+        "--",
+        "0db20819-ee94-54c6-8ecb-aff8c9b7419e",
+        "--landscape",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+        "--subject",
+        "biologie",
+        "--provider",
+        "built-in ChatGPT/Codex image_gen"
+      ],
+      "ordinaryPrepareExit": 0,
+      "ordinaryPreparedMetadata": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-six-raster-author-root-v1/0db20819-ee94-54c6-8ecb-aff8c9b7419e/ordinary-prepare.metadata.json",
+        "sha256": "d63e8cba88beefa56c232a13cf81c0a3e37dcca38b592e04fe1b8c3223d856f8",
+        "bytes": 821
+      },
+      "ordinaryPreparedPrompt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-six-raster-author-root-v1/0db20819-ee94-54c6-8ecb-aff8c9b7419e/ordinary-prepare.nano-banana-prompt.de.md",
+        "sha256": "62f770480ac84ac580c7e7130fa5177a3ca68791a91b52a2842e088db7960830",
+        "bytes": 1731
+      },
+      "imageGenerated": false,
+      "imageApproved": false,
+      "activeImport": false
+    },
+    {
+      "ordinal": 2,
+      "goalId": "9dff0360-c2e9-5e43-af8b-87e264281cf7",
+      "wholeGoal": {
+        "id": "9dff0360-c2e9-5e43-af8b-87e264281cf7",
+        "shortKey": "canonical_biology_upper_systematics_historical_current_approaches",
+        "title": "Systematikansätze vergleichen und beurteilen",
+        "titleEn": "Compare and Evaluate Systematics Approaches",
+        "description": "Die lernende Person kann historische und aktuelle Ansätze zur Systematisierung von Lebewesen vergleichen und deren Aussagekraft beurteilen.",
+        "descriptionEn": "The learner can compare historical and current approaches to classifying organisms and evaluate their explanatory value.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekII"
+        ],
+        "contains": [],
+        "requires": [
+          "440854be-7f06-5678-91cb-ba8dcab56959",
+          "7008979d-7890-5f7b-ad07-27b8bb597cbe",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-biology",
+          "demandLevel": "AB3",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_ENTWICKLUNG",
+            "BIO_INFORMATION_KOMMUNIKATION"
+          ],
+          "phase": "GLOBAL",
+          "area": "Evolution, Systematik und Biodiversität",
+          "topicCode": "CANONICAL.BIOLOGY.UPPER_SYSTEMATICS_HISTORICAL_CURRENT_APPROACHES"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-MV",
+            "DE-NI",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B12-EA.3.2",
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "357a7003-b636-570e-a0bd-6bb63518d2f6",
+            "sourceLandscapeTitle": "DE-BY - Biologie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+            "sourceGoalId": "57f30f58-36b5-5cc6-8ae3-32d20bcdd6fb"
+          }
+        },
+        "type": "atomic"
+      },
+      "prompt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-six-raster-author-root-v1/9dff0360-c2e9-5e43-af8b-87e264281cf7/actual-generator-prompt.de.txt",
+        "sha256": "3c5ddebfb25fcce877f7b04be4fb792d0fa56351914c8e3c30a65536acd6278b",
+        "bytes": 1256
+      },
+      "generatorPrompt": "Erzeuge ein einzelnes didaktisches PNG, quer etwa 16:9, nahe 1600 × 900 Pixel. Freundliche, klare, abstrakte Comicillustration: dunkelblaue weiche Konturen, helle Blau-, Mint-, Apricot- und Gelbtöne, heller Hintergrund, dezente plastische Schattierung. Wenige große Hauptobjekte, auch bei 360 Pixel Bildbreite erkennbar; kein überfülltes Lehrposter. Keine Fotorealistik, keine sterile technische Neugestaltung, keine Logos oder technischen IDs. Das Bild ist eine Orientierung, keine Aufgabe, keine Musterlösung und kein Beleg eines Experiments. Notwendige Beschriftungen sind groß und kurz; keine Kleinschrift. Systematikansätze vergleichen. Zwei große nebeneinanderliegende Vergleichsflächen. Links stehen Fledermaus und Vogel gemeinsam in einer Gruppe mit dem großen Label \"Flügel\"; Katze und Frosch stehen außerhalb dieser reinen Merkmalsgruppe. Rechts ein klarer, wurzelgerichteter Abstammungsbaum mit denselben vier Tieren und dem großen Label \"Verwandtschaft\": zuerst spaltet der Frosch ab, danach der Vogel, zuletzt verzweigt der gemeinsame Säugetierast zu Katze und Fledermaus. Die vier Tiere sind jeweils gleich groß und an vier aktuellen Enden, kein Tier ist Vorfahr eines anderen. Keine Treppenfolge, keine DNA-Helix als Beweis.\n",
+      "captionCandidate": "Ähnlichkeit einzelner Merkmale und gemeinsame Abstammung können zu unterschiedlichen Gruppen führen.",
+      "altTextCandidate": "Links sind Vogel und Fledermaus nach Flügeln gruppiert. Rechts verzweigt ein schematischer Abstammungsbaum zu Frosch, Vogel sowie dem gemeinsamen Säugetierast von Katze und Fledermaus.",
+      "provider": "built-in ChatGPT/Codex image_gen",
+      "model": null,
+      "license": "CC-BY-4.0",
+      "ordinaryPrepareCommand": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "visualization:prepare",
+        "--",
+        "9dff0360-c2e9-5e43-af8b-87e264281cf7",
+        "--landscape",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+        "--subject",
+        "biologie",
+        "--provider",
+        "built-in ChatGPT/Codex image_gen"
+      ],
+      "ordinaryPrepareExit": 0,
+      "ordinaryPreparedMetadata": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-six-raster-author-root-v1/9dff0360-c2e9-5e43-af8b-87e264281cf7/ordinary-prepare.metadata.json",
+        "sha256": "1dd6e74c432cba51e9181e74bed02c72fc09faedf853d04854941f13daafa004",
+        "bytes": 846
+      },
+      "ordinaryPreparedPrompt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-six-raster-author-root-v1/9dff0360-c2e9-5e43-af8b-87e264281cf7/ordinary-prepare.nano-banana-prompt.de.md",
+        "sha256": "23da07658ef89e770be67cfdfa13748bc1822b460d7fc00e65cc9a9a7deb1a03",
+        "bytes": 1793
+      },
+      "imageGenerated": false,
+      "imageApproved": false,
+      "activeImport": false
+    },
+    {
+      "ordinal": 12,
+      "goalId": "632b6042-0c0e-5bb6-a879-f03ad4be6eee",
+      "wholeGoal": {
+        "id": "632b6042-0c0e-5bb6-a879-f03ad4be6eee",
+        "shortKey": "canonical_biology_sek1_life_history_humans_geologically_young",
+        "title": "Modernen Menschen erdgeschichtlich einordnen",
+        "titleEn": "Place Modern Humans in Geological History",
+        "description": "Die lernende Person kann den Verlauf der Geschichte des Lebens skizzieren und verdeutlichen, dass der moderne Mensch eine erdgeschichtlich junge Art ist.",
+        "descriptionEn": "The learner can sketch the history of life and show that modern humans are a geologically young species.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekI"
+        ],
+        "contains": [],
+        "requires": [
+          "5f39afac-897c-5ed3-95b5-89ccf66b2532"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-biology",
+          "demandLevel": "AB1",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_ENTWICKLUNG"
+          ],
+          "phase": "GLOBAL",
+          "area": "Evolution des Menschen",
+          "topicCode": "CANONICAL.BIOLOGY.SEK1.LIFE_HISTORY_HUMANS_GEOLOGICALLY_YOUNG"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BY",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B10.4.1",
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "357a7003-b636-570e-a0bd-6bb63518d2f6",
+            "sourceLandscapeTitle": "DE-BY - Biologie Gymnasium (Bayern, LehrplanPLUS Source-Extraction)",
+            "sourceGoalId": "b957227d-cd28-5d10-8de4-9a487b70a3ec"
+          }
+        },
+        "type": "atomic"
+      },
+      "prompt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-six-raster-author-root-v1/632b6042-0c0e-5bb6-a879-f03ad4be6eee/actual-generator-prompt.de.txt",
+        "sha256": "f9e52c7e6c5f7ec58bc2fc6d6596b07ba4dbf5918e098c4ffc609a70c08d4867",
+        "bytes": 1343
+      },
+      "generatorPrompt": "Erzeuge ein einzelnes didaktisches PNG, quer etwa 16:9, nahe 1600 × 900 Pixel. Freundliche, klare, abstrakte Comicillustration: dunkelblaue weiche Konturen, helle Blau-, Mint-, Apricot- und Gelbtöne, heller Hintergrund, dezente plastische Schattierung. Wenige große Hauptobjekte, auch bei 360 Pixel Bildbreite erkennbar; kein überfülltes Lehrposter. Keine Fotorealistik, keine sterile technische Neugestaltung, keine Logos oder technischen IDs. Das Bild ist eine Orientierung, keine Aufgabe, keine Musterlösung und kein Beleg eines Experiments. Notwendige Beschriftungen sind groß und kurz; keine Kleinschrift. Der moderne Mensch ist erdgeschichtlich eine sehr junge Art. Eine einzige lange, breite horizontale Zeitspur, große Pfeilrichtung links nach rechts. Ganz links einfache mikrobielle Lebensformen, deutlich später ein Fisch und danach ein Dinosaurier; ganz am rechten Ende ein winziger markierter jüngster Abschnitt. Eine große Lupe vergrößert ausschließlich diesen Endabschnitt und zeigt darin zwei freundliche moderne Menschen. Ein gut lesbarer großer Bildhinweis lautet \"Schematische Zeitspur\". Keine Datierungszahlen und kein proportional behaupteter Abstand; kein Mensch neben einem lebenden Dinosaurier. Mikroben und Fische werden nicht als ausgestorben dargestellt, die Symbole markieren frühe Auftretenszeiten.\n",
+      "captionCandidate": "Homo sapiens tritt erst sehr spät in der langen Geschichte des Lebens auf; die Zeitspur ist schematisch.",
+      "altTextCandidate": "Eine schematische Zeitspur zeigt frühe mikrobielle Lebensformen, später Fische und Dinosaurier. Eine Lupe vergrößert nur den jüngsten Endabschnitt mit modernen Menschen.",
+      "provider": "built-in ChatGPT/Codex image_gen",
+      "model": null,
+      "license": "CC-BY-4.0",
+      "ordinaryPrepareCommand": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "visualization:prepare",
+        "--",
+        "632b6042-0c0e-5bb6-a879-f03ad4be6eee",
+        "--landscape",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+        "--subject",
+        "biologie",
+        "--provider",
+        "built-in ChatGPT/Codex image_gen"
+      ],
+      "ordinaryPrepareExit": 0,
+      "ordinaryPreparedMetadata": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-six-raster-author-root-v1/632b6042-0c0e-5bb6-a879-f03ad4be6eee/ordinary-prepare.metadata.json",
+        "sha256": "13f98e91c7794fecb81e1f35b752c7f5a4805e19b104761e763d38d00e24c47e",
+        "bytes": 858
+      },
+      "ordinaryPreparedPrompt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-six-raster-author-root-v1/632b6042-0c0e-5bb6-a879-f03ad4be6eee/ordinary-prepare.nano-banana-prompt.de.md",
+        "sha256": "421c2531d0639e40e6e79d274becaa53505ebc0c63db1749ce7fd446c8c02389",
+        "bytes": 1816
+      },
+      "imageGenerated": false,
+      "imageApproved": false,
+      "activeImport": false
+    },
+    {
+      "ordinal": 15,
+      "goalId": "e3167331-f855-5030-9673-29f55a7b4230",
+      "wholeGoal": {
+        "id": "e3167331-f855-5030-9673-29f55a7b4230",
+        "title": "Fossildaten und Datierung",
+        "titleEn": "Fossil data and dating",
+        "description": "Die lernende Person kann Fossilfunde, Datierungsmethoden und deren Aussagekraft für Stammbäume bewerten.",
+        "descriptionEn": "The learner can evaluate fossil finds, dating methods, and their significance for family trees.",
+        "weight": 1.1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "7008979d-7890-5f7b-ad07-27b8bb597cbe",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-biology",
+          "demandLevel": "AB3",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_ENTWICKLUNG"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+            "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "4367f7eb-6aae-4edb-b5a6-8cb9d1032d8d"
+          }
+        },
+        "type": "atomic"
+      },
+      "prompt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-six-raster-author-root-v1/e3167331-f855-5030-9673-29f55a7b4230/actual-generator-prompt.de.txt",
+        "sha256": "0b2653ed1b5a810e1ddc36e78846f833409dd6709d0f8f45151c1c217a8b8141",
+        "bytes": 1370
+      },
+      "generatorPrompt": "Erzeuge ein einzelnes didaktisches PNG, quer etwa 16:9, nahe 1600 × 900 Pixel. Freundliche, klare, abstrakte Comicillustration: dunkelblaue weiche Konturen, helle Blau-, Mint-, Apricot- und Gelbtöne, heller Hintergrund, dezente plastische Schattierung. Wenige große Hauptobjekte, auch bei 360 Pixel Bildbreite erkennbar; kein überfülltes Lehrposter. Keine Fotorealistik, keine sterile technische Neugestaltung, keine Logos oder technischen IDs. Das Bild ist eine Orientierung, keine Aufgabe, keine Musterlösung und kein Beleg eines Experiments. Notwendige Beschriftungen sind groß und kurz; keine Kleinschrift. Fossildaten und Datierung. Ein großer geologischer Anschnitt mit drei durchgehenden, ungekippten Sedimentschichten; die untere liegt unter den später abgelagerten oberen. Ein korrekt abstrahiertes Ammonitenfossil liegt in einer tieferen Sedimentschicht, ein Muschelfossil höher. Zwischen zwei Sedimentschichten liegt eine schmale deutlich andersfarbige Vulkanascheschicht. Rechts betrachtet eine Forscherin eine Probe dieser Asche im Labor; eine große Uhrikone bezeichnet nur das Datieren der Asche. Eine Lupe verbindet das Fossil mit dem Schichtkontext. Ein einzelner großer Satz \"Alter und Kontext\" ist erlaubt. Keine Zahlen, keine C14-Datierung von Millionen Jahre alten Fossilien, kein Isotopmessgerät misst direkt das Alter jeder Fossilart.\n",
+      "captionCandidate": "Schichtlage und eine datierbare Vulkanascheschicht helfen, Fossilalter und Grenzen der Aussage zu beurteilen.",
+      "altTextCandidate": "Drei Sedimentschichten mit zwei Fossilien und einer Vulkanascheschicht. Eine Forscherin untersucht die Ascheprobe; Lupe und Uhr verknüpfen Fossil, Schichtkontext und Datierung, ohne Zahlen zu behaupten.",
+      "provider": "built-in ChatGPT/Codex image_gen",
+      "model": null,
+      "license": "CC-BY-4.0",
+      "ordinaryPrepareCommand": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "visualization:prepare",
+        "--",
+        "e3167331-f855-5030-9673-29f55a7b4230",
+        "--landscape",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+        "--subject",
+        "biologie",
+        "--provider",
+        "built-in ChatGPT/Codex image_gen"
+      ],
+      "ordinaryPrepareExit": 0,
+      "ordinaryPreparedMetadata": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-six-raster-author-root-v1/e3167331-f855-5030-9673-29f55a7b4230/ordinary-prepare.metadata.json",
+        "sha256": "aee3a86304a0b03bb8ad12f8508c22dae7565d5c44543d8b98e5e9518d552289",
+        "bytes": 792
+      },
+      "ordinaryPreparedPrompt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-six-raster-author-root-v1/e3167331-f855-5030-9673-29f55a7b4230/ordinary-prepare.nano-banana-prompt.de.md",
+        "sha256": "8dc4c276a0d5033383543114f3914eb5937520ac3a44a95ff0dc256f211a4033",
+        "bytes": 1665
+      },
+      "imageGenerated": false,
+      "imageApproved": false,
+      "activeImport": false
+    },
+    {
+      "ordinal": 16,
+      "goalId": "e5f97788-c2ac-5f42-b5a5-55605b563a79",
+      "wholeGoal": {
+        "id": "e5f97788-c2ac-5f42-b5a5-55605b563a79",
+        "title": "Genfluss und Migration",
+        "titleEn": "Gene flow and migration",
+        "description": "Die lernende Person kann Effekte von Migration und Genfluss auf Populationen beurteilen.",
+        "descriptionEn": "The learner can assess the effects of migration and gene flow on populations.",
+        "weight": 1.1,
+        "tags": [
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "0f4f3635-c0e9-517c-9a9d-1635b0d5fab5",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-biology",
+          "demandLevel": "AB3",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_ENTWICKLUNG"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+            "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "8c54f3a8-b8d9-42a9-8c6a-528043770200"
+          }
+        },
+        "type": "atomic"
+      },
+      "prompt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-six-raster-author-root-v1/e5f97788-c2ac-5f42-b5a5-55605b563a79/actual-generator-prompt.de.txt",
+        "sha256": "6c943f68b82f5cd9e7bb51045c3b5704cc3d0114c0b2550af5d26321d3e1bde8",
+        "bytes": 1435
+      },
+      "generatorPrompt": "Erzeuge ein einzelnes didaktisches PNG, quer etwa 16:9, nahe 1600 × 900 Pixel. Freundliche, klare, abstrakte Comicillustration: dunkelblaue weiche Konturen, helle Blau-, Mint-, Apricot- und Gelbtöne, heller Hintergrund, dezente plastische Schattierung. Wenige große Hauptobjekte, auch bei 360 Pixel Bildbreite erkennbar; kein überfülltes Lehrposter. Keine Fotorealistik, keine sterile technische Neugestaltung, keine Logos oder technischen IDs. Das Bild ist eine Orientierung, keine Aufgabe, keine Musterlösung und kein Beleg eines Experiments. Notwendige Beschriftungen sind groß und kurz; keine Kleinschrift. Genfluss durch Migration mit Fortpflanzung. Zwei getrennte große Populationen derselben Käferart, links überwiegend blaue mit wenigen orangefarbenen, rechts überwiegend orangefarbene mit wenigen blauen Käfern. Alle Käfer anatomisch gleich, Farben stehen als Modell für vererbbare Varianten, nicht für verschiedene Arten. Ein einzelner blauer Käfer wandert über eine kleine Brücke von links nach rechts; rechts daneben ein gut erkennbares Elternpaar blauer und orangefarbener Käfer und eine kleine neue Nachkommengruppe mit beiden Modellfarben. Große Beschriftung nur \"Migration + Fortpflanzung\". Kein automatisches Umlackieren wandernder Käfer; keine Gleichsetzung von bloßer Wanderung und bewiesenem Genfluss. Eine kleine vorhandene Farbvariation in beiden Ausgangspopulationen muss sichtbar bleiben.\n",
+      "captionCandidate": "Migration kann durch Fortpflanzung vererbbare Varianten zwischen Populationen verbreiten.",
+      "altTextCandidate": "Zwei Populationen derselben schematischen Käferart mit blauen und orangefarbenen Varianten. Ein blauer Käfer wandert nach rechts; ein dortiges Elternpaar und Nachkommen veranschaulichen die notwendige Weitergabe vererbbarer Varianten.",
+      "provider": "built-in ChatGPT/Codex image_gen",
+      "model": null,
+      "license": "CC-BY-4.0",
+      "ordinaryPrepareCommand": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "visualization:prepare",
+        "--",
+        "e5f97788-c2ac-5f42-b5a5-55605b563a79",
+        "--landscape",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+        "--subject",
+        "biologie",
+        "--provider",
+        "built-in ChatGPT/Codex image_gen"
+      ],
+      "ordinaryPrepareExit": 0,
+      "ordinaryPreparedMetadata": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-six-raster-author-root-v1/e5f97788-c2ac-5f42-b5a5-55605b563a79/ordinary-prepare.metadata.json",
+        "sha256": "9c0d1dbc96fa52910e1d65fb9fa14a77ab5ccc1823b89414bc9238dbf717cfff",
+        "bytes": 771
+      },
+      "ordinaryPreparedPrompt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-six-raster-author-root-v1/e5f97788-c2ac-5f42-b5a5-55605b563a79/ordinary-prepare.nano-banana-prompt.de.md",
+        "sha256": "3030d8bb200e54c20e1e44fde3a2b23bcf12695a44dbc39e1bdabf3a4b7a31ec",
+        "bytes": 1620
+      },
+      "imageGenerated": false,
+      "imageApproved": false,
+      "activeImport": false
+    },
+    {
+      "ordinal": 18,
+      "goalId": "ac40db32-5dc7-5c43-8771-bf805d24aa3b",
+      "wholeGoal": {
+        "id": "ac40db32-5dc7-5c43-8771-bf805d24aa3b",
+        "title": "Theorien vergleichen",
+        "titleEn": "Compare theories",
+        "description": "Die lernende Person kann Darwin/Neodarwinismus mit alternativen Konzepten kontrastieren.",
+        "descriptionEn": "The learner can contrast Darwinism/Neo-Darwinism with alternative concepts.",
+        "weight": 1.05,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "contains": [],
+        "requires": [
+          "002543f9-2d14-5c57-99b4-fb4bf7e53734",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-biology",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_ENTWICKLUNG",
+            "BIO_STEUERUNG_REGELUNG"
+          ],
+          "phase": "Q2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-SH",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+            "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "9a6a1ef7-3934-483c-9ddc-da18de21aaa4"
+          }
+        },
+        "type": "atomic"
+      },
+      "prompt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-six-raster-author-root-v1/ac40db32-5dc7-5c43-8771-bf805d24aa3b/actual-generator-prompt.de.txt",
+        "sha256": "f5b7bc06122350d3ec66ae97e39555cc7464b2cab96ac84f2f695ba39a5c76b8",
+        "bytes": 1555
+      },
+      "generatorPrompt": "Erzeuge ein einzelnes didaktisches PNG, quer etwa 16:9, nahe 1600 × 900 Pixel. Freundliche, klare, abstrakte Comicillustration: dunkelblaue weiche Konturen, helle Blau-, Mint-, Apricot- und Gelbtöne, heller Hintergrund, dezente plastische Schattierung. Wenige große Hauptobjekte, auch bei 360 Pixel Bildbreite erkennbar; kein überfülltes Lehrposter. Keine Fotorealistik, keine sterile technische Neugestaltung, keine Logos oder technischen IDs. Das Bild ist eine Orientierung, keine Aufgabe, keine Musterlösung und kein Beleg eines Experiments. Notwendige Beschriftungen sind groß und kurz; keine Kleinschrift. Evolutionäre Erklärungen anhand von Mechanismen und Belegen vergleichen. Zwei große gleichberechtigte Hypothesentafeln, nicht vier kleine Panels. Links als ausdrücklich historische Behauptung ein einziges Giraffenindividuum, das seinen Hals zu hohen Blättern streckt; großes Label \"Erworben vererbt?\" mit sichtbarem Fragezeichen. Rechts eine Ausgangspopulation von drei Giraffen mit ererbter unterschiedlicher Halslänge und ein kleiner Nachkommenverband, große Labels \"Variation\" und \"Selektion\". In der Mitte eine große Lupe und ein einzelnes schlichtes Chromosomenpaar als Symbol für die Überprüfung der Erblichkeit. Keine direkte Streckung-zu-Vererbung als bestätigter Pfeil, kein langhalsiges Tier wird aus Bedürfnis zielgerichtet erzeugt. Die Illustration darf keine Allgemeinaussage machen, dass jedes erworbene Merkmal stets erblich oder stets unmöglich erblich ist; sie fordert einen evidenzgestützten Vergleich.\n",
+      "captionCandidate": "Historische Erklärungsideen mit erblicher Variation, Selektion und tatsächlichen Belegen vergleichen.",
+      "altTextCandidate": "Zwei Hypothesentafeln vergleichen die historische Frage nach Vererbung erworbener Merkmale mit Variation und Selektion in einer Giraffenpopulation. Lupe und Chromosomenpaar symbolisieren die Prüfung der Erblichkeit; keine Behauptung ist als experimentell bestätigt markiert.",
+      "provider": "built-in ChatGPT/Codex image_gen",
+      "model": null,
+      "license": "CC-BY-4.0",
+      "ordinaryPrepareCommand": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "visualization:prepare",
+        "--",
+        "ac40db32-5dc7-5c43-8771-bf805d24aa3b",
+        "--landscape",
+        "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+        "--subject",
+        "biologie",
+        "--provider",
+        "built-in ChatGPT/Codex image_gen"
+      ],
+      "ordinaryPrepareExit": 0,
+      "ordinaryPreparedMetadata": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-six-raster-author-root-v1/ac40db32-5dc7-5c43-8771-bf805d24aa3b/ordinary-prepare.metadata.json",
+        "sha256": "3514b23c4f78c4c6ec28b382c5d99f3ff83e3d489784bea119896dc3ffc113e7",
+        "bytes": 769
+      },
+      "ordinaryPreparedPrompt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-six-raster-author-root-v1/ac40db32-5dc7-5c43-8771-bf805d24aa3b/ordinary-prepare.nano-banana-prompt.de.md",
+        "sha256": "f0ad1295702f1338cf82af4b53c44e2503ece0eaef9b602b6312ffe658912f5c",
+        "bytes": 1614
+      },
+      "imageGenerated": false,
+      "imageApproved": false,
+      "activeImport": false
+    }
+  ],
+  "format": "PNG, native near16:9/~1600x900; actual original/360/680 review required",
+  "styleReferencesActuallyViewed": [
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/biologie/797a233c-56ed-58a0-b451-5ae5d4bd21bf/797a233c-56ed-58a0-b451-5ae5d4bd21bf.png",
+      "sha256": "6d9e66eae4b02efdf883219274d28b4c54a3a6c11da6f2186d7139c2f4f880da",
+      "bytes": 1482355
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/biologie/22711af8-1184-584c-9707-1192799bfa22/22711af8-1184-584c-9707-1192799bfa22.png",
+      "sha256": "4b3bda6c81dd994ef2e6dda790e5a2dec4eda7e7adeec6af2fd7888e448c61be",
+      "bytes": 1805376
+    }
+  ],
+  "keepExistingGoodAssets": true,
+  "activeWrites": false,
+  "strictGain": 0,
+  "humanApproval": false,
+  "humanTrial": false
+}

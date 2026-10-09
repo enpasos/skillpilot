@@ -1,0 +1,11 @@
+
+> skillpilot@0.0.0 visualization:prepare
+> node ../scripts/prepare_goal_visualization.mjs 430b2b73-641a-5122-bb6d-162b0d1eaf2d --landscape curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-eighteen-whole-author-v1/input/current-canonical479-root23-successor.snapshot.json --subject biologie --provider Built-in ChatGPT/Codex image_gen
+
+Prepared prompt package for: Biologische und kulturelle Evolution des Menschen rekonstruieren
+SkillPilot ID: 430b2b73-641a-5122-bb6d-162b0d1eaf2d
+Prompt: tmp/goal-visualizations/430b2b73-641a-5122-bb6d-162b0d1eaf2d/nano-banana-prompt.de.md
+Metadata: tmp/goal-visualizations/430b2b73-641a-5122-bb6d-162b0d1eaf2d/metadata.json
+
+After generating and downloading the image, import it with:
+npm --prefix app run visualization:import -- 430b2b73-641a-5122-bb6d-162b0d1eaf2d "<downloaded-image-path>"

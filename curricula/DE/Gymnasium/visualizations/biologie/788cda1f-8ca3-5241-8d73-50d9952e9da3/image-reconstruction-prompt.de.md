@@ -1,0 +1,24 @@
+# Bildrekonstruktionsprompt: Untersuchungsbefunde fachübergreifend deuten
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `788cda1f-8ca3-5241-8d73-50d9952e9da3`
+- Titel: Untersuchungsbefunde fachübergreifend deuten
+- Beschreibung: Die lernende Person kann bei der Interpretation biologischer Untersuchungsbefunde fachübergreifende Bezüge herstellen.
+
+## Generator
+
+- Provider: ChatGPT/Codex built-in image_gen
+- Quellbild: `788cda1f-8ca3-5241-8d73-50d9952e9da3.png`
+
+## Zweck
+
+Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptbasis für spätere Korrekturen. Er ist keine fachliche Freigabe und ersetzt nicht den Review.
+
+## Prompt
+
+```text
+Erzeuge eine eigenständige freundliche, abstrahierte, klare Comicillustration für ein Biologie-Lernziel. PNG, quer etwa 16:9, native Größe ungefähr 1600 × 900. Dicke klare Konturen, warme helle Farben, viel lesbare Fläche, passend zu einer bestehenden didaktischen Comicbildlandschaft. Hauptmotiv, große Symbole und wichtige Wörter müssen bei360 Pixel Bildbreite erkennbar bleiben. Keine fotorealistischen Personen, technische CAD-Ästhetik, Prüfungs-/Freigabebadges, IDs oder Kleinschrift.
+
+Eine Lernende hält eine klare Wasserprobe am Bach mit Fischen. Drei große Denkfelder sind Biologie, Chemie, Physik. Biologie zeigt schematisch Wasser vom Fischmaul über die Kiemen und an einer Kiemendeckelöffnung beim Kopf nach außen; kein Pfeil verläuft durch den Bauch oder zum Schwanz. Chemie zeigt klares Wasser und in einem ausdrücklich schematischen Lupenfeld blaue gepaarte Punkte als gelöste Sauerstoffmoleküle, keine makroskopischen Gasblasen. Physik vergleicht gleich große kalte und warme Wassermengen mit mehr beziehungsweise weniger solchen Sauerstoffsymbolen; Thermometer blau und rot. Kein exakter Konzentrationswert.
+```

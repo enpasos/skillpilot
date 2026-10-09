@@ -181,7 +181,7 @@ def run_backend_ci(backend, manifest, reports=None, run=None):
             shutil.rmtree(reports)
         if previous:
             print(f"Running {len(previous)} previously failing backend test selectors first.", flush=True)
-            command = ["./gradlew", "test", "--fail-fast"]
+            command = ["./gradlew", "test", "--fail-fast", "-PbackendFailurePriorityPreflight=true"]
             for name in previous:
                 command.extend(["--tests", name])
             priority_attempted = True

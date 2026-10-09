@@ -1,0 +1,21 @@
+import fs from 'node:fs';
+import {compileCompositionView, collectCompositionProjectionRoleGoalIds} from '/home/enpasos/projects/skillpilot/app/src/utils/authoring/compositionViewAuthoring.ts';
+const E='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-current-twenty-six-native-preparation-author-v1/source-view-author/neutral-twenty-eight-partner-preserving-source-view.author.entry.json';
+const entry=JSON.parse(fs.readFileSync(E,'utf8'));
+const raw=JSON.parse(fs.readFileSync(entry.canonical504CandidateBinding.path,'utf8'));
+const kinds=JSON.parse(fs.readFileSync(entry.existingKindInput.path,'utf8'));
+const kindById=new Map(kinds.decisions.map((d:any)=>[d.goalId,d.semanticKind]));
+const landscape={...raw,goals:raw.goals.map((g:any)=>({...g,semanticKind:kindById.get(g.id)}))};
+const byId=new Map(landscape.goals.map((g:any)=>[g.id,g]));
+const root=landscape.goals.find((g:any)=>g.extendedData?.root===true)||landscape.goals.find((g:any)=>g.id==='442c31c5-c561-5c7a-90bb-2335d779175c');
+const roots=new Map(root?[[landscape.landscapeId,root.id]]:[]);
+const rows=entry.actual16Views.map((v:any)=>{
+ const before=JSON.parse(fs.readFileSync(v.before.path,'utf8')), after=JSON.parse(fs.readFileSync(v.candidate.path,'utf8'));
+ const a=compileCompositionView(before,landscape),b=compileCompositionView(after,landscape);
+ const atom=(view:any)=>[...collectCompositionProjectionRoleGoalIds(view.rootNodes,byId,roots).targetGoalIds].filter((id:any)=>!(byId.get(id) as any)?.contains?.length).sort();
+ const x=atom(before),y=atom(after);
+ return {viewId:v.viewId,scopeBefore:before.scope,scopeAfter:after.scope,normalBeforeErrors:a.findings.filter((f:any)=>f.severity==='error'),normalAfterErrors:b.findings.filter((f:any)=>f.severity==='error'),actualBeforeAtomicTargets:x,actualAfterAtomicTargets:y,atomicTargetsExact:JSON.stringify(x)===JSON.stringify(y),neutralEntryBeforeTargetsExact:JSON.stringify(x)===JSON.stringify(v.actualCurrentWholeAtomicTargetIds),neutralEntryAfterTargetsExact:JSON.stringify(y)===JSON.stringify(v.actualFutureWholeAtomicTargetIds)};
+});
+const result={role:'Independent A actual unchanged normal compiler and projection API check; existing semantic-kind values are technical inputs, no new A judgment; no scientific coverage inferred from counts',rows,totalBeforeErrors:rows.reduce((n:any,r:any)=>n+r.normalBeforeErrors.length,0),totalAfterErrors:rows.reduce((n:any,r:any)=>n+r.normalAfterErrors.length,0),atomicTargetSetsExact:rows.every((r:any)=>r.atomicTargetsExact),neutralEntryTargetsExact:rows.every((r:any)=>r.neutralEntryBeforeTargetsExact&&r.neutralEntryAfterTargetsExact),humanApproval:false,strictGain:0};
+fs.writeFileSync('curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-partner-preserving-views-independent-a-v1/normal-compiler-and-target-sets.actual.json',JSON.stringify(result,null,2)+'\n');
+console.log(JSON.stringify({beforeErrors:result.totalBeforeErrors,afterErrors:result.totalAfterErrors,exact:result.atomicTargetSetsExact,entryExact:result.neutralEntryTargetsExact}));

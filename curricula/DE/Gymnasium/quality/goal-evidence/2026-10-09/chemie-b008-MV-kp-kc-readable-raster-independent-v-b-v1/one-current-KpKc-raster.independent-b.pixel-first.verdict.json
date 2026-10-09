@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "chemie-MV-KpKc-one-actual-raster-independent-b-first-v1",
+  "reviewedAt": "2026-10-09T08:57:41.881039+00:00",
+  "reviewer": "/root/bio_science14_independent_b",
+  "firstJudgmentImmutable": true,
+  "authority": "ai_candidate",
+  "status": "needs_human_review",
+  "E1": true,
+  "G1": true,
+  "actualInputFirst": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-MV-kp-kc-readable-raster-independent-v-b-v1/one-current-KpKc-raster.independent-b.pixel-input.first.freeze.json",
+    "sha256": "1f669ef0e01685b291fea57a5ac39689866cb3d31af19ac2df1e663fbb6627e8",
+    "bytes": 3278
+  },
+  "selectedRaster": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-MV-kp-kc-readable-raster-author-v1/candidate-v2.png",
+    "sha256": "5cf0bef524039b091cdab4ff0ccae96beed2902d74ede8d130bd9fb501e0da2e",
+    "bytes": 1674395,
+    "width": 1672,
+    "height": 941,
+    "format": "PNG"
+  },
+  "actualIndividualViews": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-MV-kp-kc-readable-raster-author-v1/candidate-v2.png",
+      "sha256": "5cf0bef524039b091cdab4ff0ccae96beed2902d74ede8d130bd9fb501e0da2e",
+      "bytes": 1674395,
+      "width": 1672,
+      "height": 941,
+      "format": "PNG"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-MV-kp-kc-readable-raster-author-v1/actual-selected-v2-360.png",
+      "sha256": "bd563e2b40026f535c82ac4b4f6ef9004552af2686bc637cd7c72b0893cff721",
+      "bytes": 83957,
+      "width": 360,
+      "height": 203,
+      "format": "PNG"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-MV-kp-kc-readable-raster-author-v1/actual-selected-v2-680.png",
+      "sha256": "490d6ac3a48a4bf5763bcf126c233f2ecaf355bd9ded57a897a420ee0f1a2595",
+      "bytes": 283839,
+      "width": 680,
+      "height": 383,
+      "format": "PNG"
+    }
+  ],
+  "knownCurrentWholeGoal": {
+    "id": "a8ddb351-3501-5b6d-a908-c82a5d2f14d4",
+    "title": "Kp und Kc verknüpfen",
+    "titleEn": "Link Kp and Kc",
+    "description": "Die lernende Person kann den Zusammenhang zwischen Kp und Kc aus der Zustandsgleichung idealer Gase herleiten, beide Konstanten mit passenden Einheiten umrechnen und die Gültigkeitsgrenzen des Modells begründen.",
+    "descriptionEn": "The learner can derive the relationship between Kp and Kc from the ideal-gas equation, convert between the constants using consistent units, and justify the validity limits of the model.",
+    "weight": 1.1,
+    "tags": [
+      "LK"
+    ],
+    "contains": [],
+    "requires": [
+      "20f92ba0-f7f4-5407-bb96-07e30da9002f"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-chemistry",
+      "demandLevel": "AB3",
+      "processCompetencies": [],
+      "guidingIdeas": [
+        "BC_REAKTION",
+        "BC_ENERGIE"
+      ],
+      "phase": "Q3"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BY",
+        "DE-HE",
+        "DE-MV"
+      ]
+    },
+    "type": "atomic",
+    "examples": []
+  },
+  "decision": "KEEP_selected_actual_candidate_for_independent_B_visual_scope_only",
+  "actualVisualChecks": [
+    {
+      "criterion": "gas-stoichiometric geometry and conservation",
+      "decision": "KEEP",
+      "actualObservation": "The bottom has one connected two-lobed A2 reactant, two spatially separate A products and the explicit gaseous equation A2(g) ⇌ 2 A(g). Two A units on each side; gas molecular coefficients1 and2 yield Δν=+1. The arrow pair has opposite directions. No hidden connection joins the two product particles.",
+      "limit": "Blue and yellow distinguish the A2/A species representations, not different elemental identities; symbols A2/A retain the same A unit."
+    },
+    {
+      "criterion": "ideal-gas and equilibrium-constant convention",
+      "decision": "KEEP",
+      "actualObservation": "Visible banner Ideale Gase · gleiches T; middle pi=ci RT; arrow into Kp=Kc·(RT)^Δν; explicit Unnormierte Produkte and Gas-Koeffizienten beneath. This is the dimensional school convention based on products of unnormalized partial pressures and concentrations at the same temperature.",
+      "limit": "A dimensionless thermodynamic K° needs standard-state factors and is not the displayed unnormalized product convention. Consistent p,c,R units, pure-phase omission and nonideal fugacities are not fully taught by this single image."
+    },
+    {
+      "criterion": "particle counting and markers",
+      "decision": "KEEP",
+      "actualObservation": "The generic vessel contains four blue point particles and three yellow point particles in all three views. It has no equation-state or measured-ratio label. The bottom reaction counts are separately explicit: one A2 and two A. No unlabelled numbers are presented as measured K or equilibrium mole ratios."
+    },
+    {
+      "criterion": "derivation affordance and operative goal relevance DEEN",
+      "decision": "KEEP",
+      "actualObservation": "Replacing each gaseous partial pressure by ci RT explains how reaction coefficient powers combine into Δν. The positive Δν example is visibly subordinate to the general formula. This directly supports the derivation facet of the actual bilingual goal.",
+      "limit": "This is a visualization, not complete task/worked-transfer/rubric evidence for conversion or validity-limit justification."
+    },
+    {
+      "criterion": "layout, style and mobile360",
+      "decision": "KEEP",
+      "actualObservation": "Actual selected 360×203 view individually inspected. Main Kp/Kc formula, pi=ciRT, ideal-gas/same-T banner, Unnormierte Produkte, A2(g) ⇌ 2 A(g), Gas-Koeffizienten and Δν=2−1=1 remain individually readable. High contrast, thick strokes and clean separation prevent competing labels. Small mathematical subscripts are still distinguishable in context."
+    },
+    {
+      "criterion": "desktop680 and original",
+      "decision": "KEEP",
+      "actualObservation": "Actual680×383 and1672×941 individually inspected. The formula exponent/subscripts, symbolic particles and equation remain sharp and distinct, without cropped text or occluded paths. Pressure gauge is a qualitative icon without fake scale or measurement."
+    },
+    {
+      "criterion": "format/perspective/didactic fit",
+      "decision": "KEEP",
+      "actualObservation": "Clean raster teaching diagram with lightly illustrated vessel and species icons, readable left-to-right derivation and balanced example. There is no asserted physical experiment or learner-performance scene and no comic perspective fault."
+    }
+  ],
+  "newPixelFindings": [],
+  "freshCaptionAltPromptProvenanceAuthorOutcomesOrPeerReadBeforePixelFirst": false,
+  "oldJPGOrHistoricalHoldRewritten": false,
+  "secondIndependentVisualReviewPending": true,
+  "actualCurrentNativeAndPBindingReviewPending": true,
+  "wholeSourceOrWholeVApproval": false,
+  "actualRuntimeImportOrQSApproval": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "strictGain": 0,
+  "newScientificClosures": 0,
+  "restoredBindings": 0
+}

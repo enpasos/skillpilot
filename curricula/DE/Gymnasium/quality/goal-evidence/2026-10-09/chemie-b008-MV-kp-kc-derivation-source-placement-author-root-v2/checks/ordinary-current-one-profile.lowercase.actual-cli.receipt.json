@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual ordinary candidate profile materialization/check; initial invalid ID failure retained",
+  "createdAt": "2026-10-09T06:20:26.857153+00:00",
+  "commands": [
+    {
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializePositiveGoalEvidenceCandidates.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-MV-kp-kc-derivation-source-placement-author-root-v2/one-derived-positive-profile.criteria-current-v4.author.config.json",
+        "--candidates",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-MV-kp-kc-derivation-source-placement-author-root-v2/one-derived-positive-profile.criteria-current-v4.author-candidate-set.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-MV-kp-kc-derivation-source-placement-author-root-v2/checks/normal-one-positive-lowercase-1.stdout.actual.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-MV-kp-kc-derivation-source-placement-author-root-v2/checks/normal-one-positive-lowercase-1.stderr.actual.txt"
+    },
+    {
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-MV-kp-kc-derivation-source-placement-author-root-v2/one-derived-positive-profile.criteria-current-v4.author.config.json"
+      ],
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-MV-kp-kc-derivation-source-placement-author-root-v2/checks/normal-one-positive-lowercase-2.stdout.actual.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-MV-kp-kc-derivation-source-placement-author-root-v2/checks/normal-one-positive-lowercase-2.stderr.actual.txt"
+    }
+  ],
+  "closedSchemaAndSemanticsOnly": true,
+  "independentScienceOrNativeOrRasterApproval": false,
+  "activeWrites": 0,
+  "strictGain": 0,
+  "humanApproval": false
+}

@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "argv": [
+    "./node_modules/.bin/tsx",
+    "scripts/materializePositiveGoalEvidenceCandidates.ts",
+    "--config",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/fourteen-whole-positive-understanding.author-candidate.config.json",
+    "--candidates",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/fourteen-whole-profile-candidates.author-candidates.json"
+  ],
+  "cwd": "app",
+  "exitCode": 1,
+  "errorCode": "ENOENT",
+  "actualDiagnostic": "Initial command omitted --write; verification attempted to read the not-yet-created candidate review JSONL. No active source was written. Ordinary --write materialization follows.",
+  "missingPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/fourteen-whole-positive-understanding.author-candidate.review.jsonl",
+  "scientificFinding": false
+}

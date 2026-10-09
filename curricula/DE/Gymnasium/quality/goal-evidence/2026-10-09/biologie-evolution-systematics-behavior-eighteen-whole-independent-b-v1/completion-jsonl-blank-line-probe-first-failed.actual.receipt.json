@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "role": "historical failed local handoff probe; no ordinary validator defect",
+  "createdAt": "2026-10-09T09:48:45.130011+00:00",
+  "scriptPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-systematics-behavior-eighteen-whole-independent-b-v1/complete-independent-review.py",
+  "scriptSHA256": "sha256:8e6885db011fc01e4386f9783e36affc9c5c1f1329698c06887d3d618310373b",
+  "exitCode": 1,
+  "error": "JSONDecodeError Expecting value line1 column1",
+  "cause": "The standard empty scoped card JSONL is one blank newline after ordinary fingerprint serialization. The local generic line parser incorrectly attempted JSON.parse on this blank line. The actual normal memory CLI already accepted it.",
+  "remedy": "Parse each nonblank JSONL record, preserving empty-ledger bytes; no validator or review record changes."
+}

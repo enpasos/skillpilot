@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "reviewId": "chemie-b008-current-one-corrected-independent-v-a-first-v1",
+  "reviewedAt": "2026-10-08T23:15:31.718195+00:00",
+  "reviewer": "independent-v-a",
+  "reviewAuthority": "ai_candidate",
+  "role": "independent actual corrected raster first V judgment before provenance and before pairing",
+  "goalId": "1f354a60-be44-512b-8f8b-f67c8c456035",
+  "goalReadLanguages": [
+    "de",
+    "en"
+  ],
+  "wholeGoalTitle": "Chemische Sachverhalte fachlich diskutieren",
+  "wholeProfileRead": true,
+  "wholeTwoCasesRead": [
+    "upper-scientific-discourse-catalyst-discussion",
+    "upper-scientific-discourse-conductivity-debate"
+  ],
+  "wholeCaseLanguagesRead": [
+    "de",
+    "en"
+  ],
+  "currentNewResourceLinkRead": true,
+  "olderActiveAcceptedMetadataIsNotApprovalOfThisRaster": true,
+  "neutralEntryBinding": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b008-current-one-readability-correction-author-20261009-v1/corrected-one.actual-image-review.entry.json",
+    "sha256": "sha256:eb8250963d2b1c24b75f80445de9e43d2779cbc0b27001c531777b05dc744cce",
+    "bytes": 1163
+  },
+  "neutralWholeGoalProfileCasesAndRasterBinding": {
+    "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b008-current-one-readability-correction-author-20261009-v1/corrected-one-whole-goal-profile-cases-actual-raster.neutral.input.json",
+    "sha256": "sha256:d9e9d3302f0bbd2bc4bd8b25b4b6ad51c021089b28513f082f1429917cb61427",
+    "bytes": 23661
+  },
+  "actualViews": [
+    {
+      "view": "actualSelectedRaster",
+      "binding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b008-current-one-readability-correction-author-20261009-v1/candidate-v2.png",
+        "sha256": "sha256:cff11eb28e56eb08b6007999a4560174b0c5e053ba99eb3c52577dfea0a73a9a",
+        "bytes": 1694005
+      },
+      "format": "PNG",
+      "width": 1672,
+      "height": 940,
+      "actualPixelsVisuallyInspected": true
+    },
+    {
+      "view": "actual360",
+      "binding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b008-current-one-readability-correction-author-20261009-v1/candidate-v2.360px.inspection-only.png",
+        "sha256": "sha256:534d4b9950f2d3cd2feb4322f5e785dae335773f0e3c062e7e46fcf3e5725ae6",
+        "bytes": 112713
+      },
+      "format": "PNG",
+      "width": 360,
+      "height": 202,
+      "actualPixelsVisuallyInspected": true
+    },
+    {
+      "view": "actual680",
+      "binding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-b008-current-one-readability-correction-author-20261009-v1/candidate-v2.680px.inspection-only.png",
+        "sha256": "sha256:d246b9389ab490ee013d1bc80881598a6f99256d0b532cafb334cc62740e7d9d",
+        "bytes": 348084
+      },
+      "format": "PNG",
+      "width": 680,
+      "height": 382,
+      "actualPixelsVisuallyInspected": true
+    }
+  ],
+  "rasterDecision": "PASS/KEEP",
+  "exactNewResourceLinkDecision": "HOLD",
+  "overallBoundVDecision": "HOLD-until-literal-altText-correction",
+  "reviewAreas": {
+    "chemistry": {
+      "passed": true,
+      "reason": "Vinegar acid reacts with carbonate-containing marble, producing gas bubbles and consuming carbonate, so avoiding vinegar cleaner on marble is chemically justified. Bubbles are an observation supporting the supplied acid-carbonate mechanism; the drawing is not an empirical learner result or a balanced reaction equation."
+    },
+    "perspectiveAndPhysicalCoherence": {
+      "passed": true,
+      "reason": "Marble slab, bottle/drop, panels, tables and participants are spatially coherent. Simplified instruments/background marks are decorative, not contradictory measurement diagrams. Five people are actually visible: two on the left and three on the right."
+    },
+    "comicAndLandscapeFormat": {
+      "passed": true,
+      "reason": "Consistent classroom comic style and near16:9 landscape raster1672×940. Diagram arrows connect evidence, reason and justified standpoint; no essential content is cropped."
+    },
+    "wholeGoalOrientation": {
+      "passed": true,
+      "reason": "Group gestures show constructive scientific exchange; the evidence/reason/standpoint chain gives a concrete justified position. It is a goal orientation illustration, not proof that a real responsive dialog or standpoint correction occurred. The two whole catalyst/conductivity cases retain their actual-dialogue demands."
+    },
+    "readabilityOriginal": {
+      "passed": true,
+      "reason": "Title and all three headings plus Blasen, Essig+Carbonat and Nicht geeignet are crisp, high-contrast and spacious."
+    },
+    "readability680": {
+      "passed": true,
+      "reason": "All essential words, panel meanings, bubble observation and unsuitable-cleaner prohibition remain legible."
+    },
+    "readability360": {
+      "passed": true,
+      "reason": "Title, Beleg/Grund/Standpunkt, Blasen, Essig+Carbonat and Nicht geeignet remain directly readable. The three-panel conclusion and bottle/marble/gas symbols remain recognizable."
+    },
+    "newResourceLink": {
+      "passed": false,
+      "reason": "The new link has correct PNG URL, goal ID, CC-BY-4.0, provider declaration and cautious description. Its altText wrongly says Vier Lernende while five people are drawn. Replace Vier by Fünf or use Eine Lerngruppe; no raster regeneration is required."
+    }
+  },
+  "findings": [
+    {
+      "id": "CHEM-V-A-F01",
+      "severity": "metadata-hold",
+      "pointer": "corrected-one-whole-goal-profile-cases-actual-raster.neutral.input.json#/resourceLink/altText",
+      "observed": "Five drawn people; current new altText says four.",
+      "requiredResolution": "Correct only the literal person count in the proposed new resourceLink and regenerate its neutral binding. Keep this exact raster."
+    }
+  ],
+  "provenancePromptReadBeforeFirstSeal": false,
+  "peerVisualVerdictsRead": false,
+  "authorVisualVerdictsRead": false,
+  "DApprovalClaimed": false,
+  "PApprovalClaimed": false,
+  "currentStrictApprovalClaimed": false,
+  "nativeDPApproval": false,
+  "strictCompletionsAdded": 0,
+  "evidenceLevel": "E1",
+  "generationLevel": "G1",
+  "status": "ai_candidate",
+  "reviewStatus": "needs_human_review",
+  "humanApproval": false,
+  "humanTrial": false,
+  "actualLearnerPerformance": false,
+  "activeWrites": []
+}

@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "firstVerdict": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biology-molecular-genetics-eight-to-sixteen-independent-v-a-v1/nine-actual-rasters.pixel-FIRST.independent-A.verdict.json",
+    "sha256": "004a547f8ea36c8820669f84fd1497fc22a060811795cd4317ad2d441d9578a1",
+    "bytes": 53207
+  },
+  "findings": [
+    {
+      "findingId": "V9-A-001",
+      "goalId": "183f3c47-ec20-5b98-8024-77ebd1c48abf",
+      "ordinal": 15,
+      "type": "scientific_chromatid_geometry_and_actual_reconstruction_fidelity",
+      "severity": "hold",
+      "actualSelectedRaster": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-twenty-three-whole-author-v1/images-author-v1/15-183f3c47-ec20-5b98-8024-77ebd1c48abf/candidate-v2.png",
+        "sha256": "e49b9e395854f2ace0989cadf293eac67cd732e3ec8a06cd7cfb3628d3463969",
+        "bytes": 1868652
+      },
+      "originalRegionPixels": [
+        490,
+        205,
+        690,
+        590
+      ],
+      "pixelEvidence": "The outer input correctly shows two duplicated homologues with maternal yellow/green and paternal purple/yellow allele bands; the four right products correctly depict two parental and two recombinant marker combinations. In the central labelled Crossover scene, however, four intact chromatids cannot be followed: only three distal upper arms and two separate lower arms are visible, with the red centromere feeding a broad diagonal arm that fuses into the blue lower arm. The same band scheme places a purple band on this lower red crossing segment although purple marks an upper-arm locus in the input and output. Thus the actual reciprocal exchange between two non-sister chromatids cannot be independently reconstructed from the central geometry.",
+      "firstVerdict": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biology-molecular-genetics-eight-to-sixteen-independent-v-a-v1/nine-actual-rasters.pixel-FIRST.independent-A.verdict.json",
+        "sha256": "004a547f8ea36c8820669f84fd1497fc22a060811795cd4317ad2d441d9578a1",
+        "bytes": 53207
+      },
+      "followupEvidence": "The original/edit prompts require four traceable chromatids and reciprocal non-sister exchange, but this intention is not fully implemented by the selected centre geometry. The reconstruction calls its centre two non-sister chromatids crossing with conserved markers; it overstates actual traceability there. Caption/alt correctly describe the four outer result-marker combinations and centromere-colour convention, which does not repair the missing/merged central paths and misplaced central purple band. HOLD stays for the selected raster and its actual-view reconstruction fidelity.",
+      "requiredBoundedSuccessor": "Draw four separately traceable chromatids through the crossover scene, retaining the two uninvolved sisters and exchanging corresponding distal segments reciprocally between exactly two non-sisters, with every locus/allele marker conserved at matching positions. Update actual-view reconstruction only after seeing new selected pixels. Outer pair/result count, goal/source/material scope and historical versions stay preserved.",
+      "currentNativeApproval": false,
+      "humanApproval": false
+    }
+  ],
+  "advisories": [
+    {
+      "ordinal": 10,
+      "scope": "reconstruction colour vocabulary only",
+      "reason": "Caption and alt correctly retain E2 failure and non-rescue by supplied I; selected actual edit asks only grammar and both corrected labels are present. Reconstruction matches node/causal topology. Its colour words are less exact: it calls substance arrows black although the actual arrows are navy, and gene-B information arrow is purple rather than blue. This is a nonblocking reconstruction-colour advisory; no scientific or image change is justified.",
+      "requiresImageReplacement": false
+    }
+  ],
+  "strictGain": 0,
+  "humanApproval": false
+}

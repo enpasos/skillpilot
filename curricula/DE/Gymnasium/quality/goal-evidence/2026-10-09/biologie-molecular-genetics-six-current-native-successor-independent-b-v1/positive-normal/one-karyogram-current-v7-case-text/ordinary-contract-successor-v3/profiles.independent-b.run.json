@@ -1,0 +1,58 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-molecular-genetics-karyo-v7-positive-independent-b-v3.actual-targeted-review",
+  "bundleFingerprint": "sha256:95dc719b879f57e451ad70f776fbf47e0958b7a7688dcec2236c8d82f2961126",
+  "bookDigest": "sha256:783e25dc51b0c8307c30d49ee76d7d25c3073e2fb2e4b8df7c836b482e1601ae",
+  "provider": "OpenAI Codex agent session",
+  "model": "Codex; exact provider model identifier not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "biology-positive-understanding-evidence-profile-v1",
+  "promptFingerprint": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8",
+  "criteriaFingerprint": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8",
+  "generationParametersFingerprint": "sha256:0675e42ece0c1fdda36f8064f3a8219228a36fc802671264de94bbfde4939789",
+  "independenceGroupId": "biologie-molecular-genetics-twenty-three-current394-native-v1-independent-b.targeted-current-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "22711af8-1184-584c-9707-1192799bfa22"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:783e25dc51b0c8307c30d49ee76d7d25c3073e2fb2e4b8df7c836b482e1601ae"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:fd6cbeed3d4d2a6435f3f4fe3ca1840f6a9ec958882c9c6efafbef250839b8aa"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:1a7c38c21c0f0cc68e7013518d905ca7b015f2577628c016dbfb413334f9c838"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:41ee0b07cb92b5f5ce700dbe0aa857e4d148a6c970e286f65f00ec67f6cd2661"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:1c3407a6006839027b231bb841271468e2a1468895dc7712581a9bbcbcd811f9"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:670367dd3859a31134c83cedf2d24b49a4b1707091a3afd3c8795fcd9ae94c75"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8"
+    }
+  ],
+  "startedAt": "2026-10-09T07:26:34.439964+00:00",
+  "completedAt": "2026-10-09T07:42:27.940148+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:91e2de13e642f42bd48e7a20d9cb880c99da7aa8af23aa813b0af68e294bb735",
+  "toolchainVersion": "codex-independent-b-native6-positive-targeted-v1"
+}

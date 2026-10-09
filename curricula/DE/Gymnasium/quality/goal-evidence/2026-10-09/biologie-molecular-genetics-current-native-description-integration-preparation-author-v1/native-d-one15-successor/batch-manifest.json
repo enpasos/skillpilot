@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-molecular-genetics-reviewed-native-d-20261009-v1-one15-successor",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-current-native-description-integration-preparation-author-v1/native-d-one15-successor.batch.config.json",
+  "configDigest": "sha256:ec61b64e9b3c21db12f64693e68296579142e7170fb6eb35b016dc1db0ee6390",
+  "goalIds": [
+    "183f3c47-ec20-5b98-8024-77ebd1c48abf"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 394,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-one-crossing-over-native-successor-preparation-author-v1/candidate/book.current394.one15-raster-successor.inactive.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-one-crossing-over-native-successor-preparation-author-v1/candidate/canonical.current479.one15-raster-successor.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:03c5b0875d1156e6eb21ca5e8e8015e4d9a713b5e59b664a0e4533a11f6db9a1"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:72c0db60ab064a17f5ef16d079b29bb8494216a91f55cfe28b3ad4d44065f1ad",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:80b1f959c7d68a1799bcd10b3653294646de1207b3c98d0bf8ad85a3ccf3640a",
+    "reviewInputFingerprint": "sha256:dcdb61019cb47c30b2493b803c4fcfee679ae0f47c2916b3abeac82b56e94d7a",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-molecular-genetics-one15-current394-native-successor-v1-campaign-a",
+        "campaignDigest": "sha256:75a243b990549762281ebcf7ec1259304db577fb868235c24c226740236b5ad9",
+        "roundId": "biologie-molecular-genetics-one15-current394-native-successor-v1-independent-a",
+        "independenceGroupId": "biologie-molecular-genetics-one15-current394-native-successor-v1-independent-a",
+        "batchId": "biologie-molecular-genetics-one15-current394-native-successor-v1-independent-a.batch-001",
+        "batchInputFingerprint": "sha256:ea0cc0e0b8c227352500109c2f9546eb62a4c2d18776145203c157d64cd992cf"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-molecular-genetics-one15-current394-native-successor-v1-campaign-b",
+        "campaignDigest": "sha256:f89ffd3381ae4a27ffadfc3ef2c58293e442123ef66b2c704538b5a12ed28f0f",
+        "roundId": "biologie-molecular-genetics-one15-current394-native-successor-v1-independent-b",
+        "independenceGroupId": "biologie-molecular-genetics-one15-current394-native-successor-v1-independent-b",
+        "batchId": "biologie-molecular-genetics-one15-current394-native-successor-v1-independent-b.batch-001",
+        "batchInputFingerprint": "sha256:7258b7bb29cde1ea91a34d8c8c51a5eb6dfa378071846f0bef3e3ce79a015666"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -889,6 +889,16 @@ Rules:
 * Books, evidence profiles, review bundles, and feedback links contain public
   curriculum data only. They must never contain learner state, learner IDs,
   sessions, transcripts, credentials, or private provider traces.
+* Keep temporary execution capsules and dependency caches outside `curricula`.
+  Committable review inputs must use exact file copies or repository-relative
+  links to committable targets, never absolute local paths or ignored scratch
+  targets. Check this with `curriculum_symlink_errors` in
+  `scripts/validate_schemas.py` before sealing a new review package; preserve
+  original evidence bytes when repairing portability.
+* Serialize JSON and JSONL with actual newline characters, then parse the
+  complete written files before sealing. Store raw command output as `.txt`.
+  Correct historical format errors with exact-byte raw archives and additive
+  valid successors; preserve scientific judgments and use normal validation.
 * Runtime and Mastery integration are separate later gates. A prompt-level
   profile cannot by itself prove that a learner understood a goal.
 

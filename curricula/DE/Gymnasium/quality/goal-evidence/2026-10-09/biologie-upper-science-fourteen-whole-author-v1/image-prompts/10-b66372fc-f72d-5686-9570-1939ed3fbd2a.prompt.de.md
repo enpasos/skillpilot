@@ -1,0 +1,11 @@
+Use case: scientific-educational
+Asset type: Lernzielbild für SkillPilot Biologie, notwendiger neuer PNG-Kandidat.
+Aktuelles ganzes Ziel: Datenstrukturen theoriebezogen deuten
+Ganzes Lernziel: Die lernende Person kann in erhobenen oder recherchierten Daten Strukturen, Beziehungen und Trends finden, theoriebezogen erklären und daraus Schlussfolgerungen ziehen.
+Primary request: Datenmuster mit einer biologischen Theorie erklären. Ein großes gut lesbares schematisches Diagramm mit wenigen Punkten zeigt Sauerstoffproduktion einer Wasserpflanze: bei zunehmender Beleuchtung zunächst Anstieg, dann Plateau. Daneben die Pflanze und eine offene Frageblase zum limitierenden Faktor.
+Style/medium: Freundliche, abstrakte, klare comicartige Rasterillustration, passend zur bestehenden SkillPilot-Bildlandschaft, helle ruhige Farben, dunkle deutliche Umrisse, kein Fotorealismus und keine steril-technische Neugestaltung.
+Composition/framing: Ein PNG quer nahe16:9, etwa1600×900 Pixel oder nahe native Generatorgröße. Wenige große Motive mit viel freiem Raum. Hauptmotiv und fachlich entscheidende Details müssen bei360px Bildbreite und680px Bildbreite erkennbar bleiben.
+Text (verbatim): Nur die großen gezielten deutschen Beschriftungen "Licht", "Sauerstoff", "Grenze". Keine weitere Schrift, keine kleinteiligen Tabellen, keine kleingedruckten Achsenwerte.
+Fachliche constraints: Diagramm ist ausdrücklich schematisch, keine erfundenen genauen Messzahlen. Plateau bedeutet möglicher anderer limitierender Faktor; keine universelle unveränderte Naturkurve. Beispiele und Kurven sind schematische Modelle, keine behaupteten empirischen Versuchsergebnisse. Keine neue Kompetenz, kein Freigabe-/Mastery-/QA-Siegel im Bild.
+Actor perspective: Heft-, Tafel-, Mess- und Tablet-Darstellungen sind für die handelnde Person richtig herum angeordnet; Papier darf nicht nur zum externen Betrachter gedreht sein. Falls Schrift in einem Heft bei dieser Perspektive nicht lesbar wäre, nur schematische Zeichen statt lesepflichtiger Schrift.
+Avoid: Überfüllte Bildpanels, Kleinschrift, realistische Gesichter, technische CAD-Ästhetik, SVG-Ersatzzeichnung, Logos, Wasserzeichen, falsche Molekülstrukturen und dekorative fachlich bedeutungslose Pfeile.

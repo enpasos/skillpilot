@@ -1,0 +1,260 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "independent-a",
+  "performedAt": "2026-10-08T23:03:37.806Z",
+  "inputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-whole-author-v1/media/inquiry-finite-model.html",
+  "controls": [
+    {
+      "tag": "SELECT",
+      "id": "scenario",
+      "text": "Keimung / germinationLicht und Sauerstoff / light and oxygen"
+    },
+    {
+      "tag": "BUTTON",
+      "id": "reset",
+      "text": "Ausgangszustand / reset"
+    },
+    {
+      "tag": "BUTTON",
+      "id": "next",
+      "text": "Nächster Modellschritt / next model step"
+    },
+    {
+      "tag": "TEXTAREA",
+      "id": "record",
+      "text": ""
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario": "germination",
+      "stages": [
+        {
+          "modelOnly": true,
+          "scenario": "Keimung / germination",
+          "constants": {
+            "temperature_C": 22,
+            "seeds_per_dish": 20,
+            "germination_root_mm_minimum": 2,
+            "independent_dishes_per_condition": 2
+          },
+          "stages": [
+            {
+              "day": 0,
+              "dry": [
+                0,
+                0
+              ],
+              "moderately_moist": [
+                0,
+                0
+              ],
+              "submerged": [
+                0,
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "modelOnly": true,
+          "scenario": "Keimung / germination",
+          "constants": {
+            "temperature_C": 22,
+            "seeds_per_dish": 20,
+            "germination_root_mm_minimum": 2,
+            "independent_dishes_per_condition": 2
+          },
+          "stages": [
+            {
+              "day": 0,
+              "dry": [
+                0,
+                0
+              ],
+              "moderately_moist": [
+                0,
+                0
+              ],
+              "submerged": [
+                0,
+                0
+              ]
+            },
+            {
+              "day": 2,
+              "dry": [
+                0,
+                1
+              ],
+              "moderately_moist": [
+                8,
+                9
+              ],
+              "submerged": [
+                2,
+                3
+              ]
+            }
+          ]
+        },
+        {
+          "modelOnly": true,
+          "scenario": "Keimung / germination",
+          "constants": {
+            "temperature_C": 22,
+            "seeds_per_dish": 20,
+            "germination_root_mm_minimum": 2,
+            "independent_dishes_per_condition": 2
+          },
+          "stages": [
+            {
+              "day": 0,
+              "dry": [
+                0,
+                0
+              ],
+              "moderately_moist": [
+                0,
+                0
+              ],
+              "submerged": [
+                0,
+                0
+              ]
+            },
+            {
+              "day": 2,
+              "dry": [
+                0,
+                1
+              ],
+              "moderately_moist": [
+                8,
+                9
+              ],
+              "submerged": [
+                2,
+                3
+              ]
+            },
+            {
+              "day": 4,
+              "dry": [
+                1,
+                1
+              ],
+              "moderately_moist": [
+                16,
+                15
+              ],
+              "submerged": [
+                5,
+                6
+              ]
+            }
+          ]
+        }
+      ],
+      "nextDisabled": true
+    },
+    {
+      "scenario": "aquatic_light",
+      "stages": [
+        {
+          "modelOnly": true,
+          "scenario": "Licht und Sauerstoff / light and oxygen",
+          "constants": {
+            "temperature_C": 20,
+            "minutes": 10,
+            "independent_setups_per_condition": 3,
+            "matching_volume_biomass_initial_oxygen": true
+          },
+          "stages": [
+            {
+              "minute": 0,
+              "record": "Record matching initial concentration before exposing endpoints."
+            }
+          ]
+        },
+        {
+          "modelOnly": true,
+          "scenario": "Licht und Sauerstoff / light and oxygen",
+          "constants": {
+            "temperature_C": 20,
+            "minutes": 10,
+            "independent_setups_per_condition": 3,
+            "matching_volume_biomass_initial_oxygen": true
+          },
+          "stages": [
+            {
+              "minute": 0,
+              "record": "Record matching initial concentration before exposing endpoints."
+            },
+            {
+              "minute": 10,
+              "low_light_delta_oxygen_mg_per_L": [
+                0.2,
+                0.3,
+                0.1
+              ],
+              "medium_light_delta_oxygen_mg_per_L": [
+                0.7,
+                0.8,
+                0.6
+              ],
+              "high_light_delta_oxygen_mg_per_L": [
+                0.8,
+                0.9,
+                0.7
+              ]
+            }
+          ]
+        },
+        {
+          "modelOnly": true,
+          "scenario": "Licht und Sauerstoff / light and oxygen",
+          "constants": {
+            "temperature_C": 20,
+            "minutes": 10,
+            "independent_setups_per_condition": 3,
+            "matching_volume_biomass_initial_oxygen": true
+          },
+          "stages": [
+            {
+              "minute": 0,
+              "record": "Record matching initial concentration before exposing endpoints."
+            },
+            {
+              "minute": 10,
+              "low_light_delta_oxygen_mg_per_L": [
+                0.2,
+                0.3,
+                0.1
+              ],
+              "medium_light_delta_oxygen_mg_per_L": [
+                0.7,
+                0.8,
+                0.6
+              ],
+              "high_light_delta_oxygen_mg_per_L": [
+                0.8,
+                0.9,
+                0.7
+              ]
+            },
+            {
+              "disturbance": "not part of the controlled light comparison",
+              "temperature_C": 28,
+              "high_light_delta_oxygen_mg_per_L": 0.4
+            }
+          ]
+        }
+      ],
+      "nextDisabled": true
+    }
+  ],
+  "independentObservation": "Only scenario/reset/next/record controls exist. Water/light conditions cannot be set or varied interactively; all conditions appear together as fixed outputs. No numerical oxygen starting concentrations supplied.",
+  "realExperimentPerformed": false,
+  "humanTrial": false
+}

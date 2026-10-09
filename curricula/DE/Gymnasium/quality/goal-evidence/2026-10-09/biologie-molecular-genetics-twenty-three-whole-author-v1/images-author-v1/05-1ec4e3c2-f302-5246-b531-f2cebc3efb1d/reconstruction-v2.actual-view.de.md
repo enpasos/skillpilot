@@ -1,0 +1,5 @@
+# Rekonstruktion aus dem tatsächlich betrachteten PNG
+
+Querformat-Comic mit links einer türkisfarbenen Bakterienzelle ohne Zellkern, ringförmiger DNA, mRNA, Ribosom, beladenen tRNAs und einer langen farbigen Kette. Rechts eine violette Zelle mit abgegrenztem Kern; im Kern ein deutlich linearer DNA-Doppelhelix-Ausschnitt mit zwei freien Enden. mRNA entsteht dort und wird durch die sichtbare Kernpore nach außen zum Ribosom geführt. Große Labels DNA, mRNA, tRNA, Ribosom, Protein, Kernpore, Zellkern. Unten vier abstrakte Proteinaufgaben: Enzyme mit Reaktionssymbol, Struktur als Faser, Transport mit senkrechtem Pfeil durch einen Kanal in einer horizontalen Membran, Schutz als Antikörpersymbole und Schild. Wenige große Motive und kurze deutsche Labels. Keine echte Zellmaßstabsdarstellung, keine vollständigen chemischen Strukturen.
+
+Dieser Prompt wurde aus der tatsächlichen Originalansicht und den Ansichten mit 360 und 680 Pixeln Breite abgeleitet. Er ist kein ursprünglicher Erzeugungsprompt und wurde nicht zur Erzeugung dieses PNG verwendet.

@@ -1,0 +1,31 @@
+# Lernzielvisualisierung: DNA- und RNA-Strukturmodelle vergleichen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `6744e33f-c810-52b6-b781-2936011de016`
+- Titel: DNA- und RNA-Strukturmodelle vergleichen
+- Beschreibung: Die lernende Person kann ein Modell zum Bau der DNA beschreiben und mit einem entsprechenden Modell zum Bau der RNA vergleichen.
+
+## Generator
+
+- Provider: built-in ChatGPT/Codex image_gen
+- Status: pilot
+- Quellbild: `6744e33f-c810-52b6-b781-2936011de016.png`
+- Public Asset: `/assets/goal-visualizations/biologie/6744e33f-c810-52b6-b781-2936011de016/6744e33f-c810-52b6-b781-2936011de016.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational. New primary PNG candidate for a German Gymnasium goal book. Friendly clear comic-like scientific illustration, restrained pastel background, crisp dark-blue outlines, clean high contrast. Landscape approximately16:9, intended1672×941 or comparable1600×900. Few large coherent motifs, generous whitespace; must remain comprehensible at360and680pixelwidth. German text only, sparse LARGE short labels, no dense prose, tiny formulae, watermark or logos. Scientific symbols/abstract nodes must be explicitly schematic, not invented atomic/molecular detail. All arrows have a genuine role and coherent endpoint; no crossing/ribbonocclusion errors. Any actor reads a display facing them, notebookpagefaceswriter. No depiction of real patient or student data, no performed experiment/clinical claim. Image generation is not approval.
+
+Whole actual goal (retain allscientificbounds): DNA- und RNA-Strukturmodelle vergleichen
+Die lernende Person kann ein Modell zum Bau der DNA beschreiben und mit einem entsprechenden Modell zum Bau der RNA vergleichen.
+The learner can describe a model of DNA structure and compare it with a corresponding model of RNA structure.
+
+Specific visualrole: Two comparable model panels "DNA" and "RNA". Left has a flat simplified antiparallel DNA ladder with continuous blue sugar-phosphate backbones, opposite direction arrows, and four paired bases, only complementary A–T/G–C. Right has a continuous single-stranded coral RNA backbone with four base tabs A,G,U,C. Explicitly abstract nucleotide sugar symbols marked D on DNA and R on RNA; not invented atomic structures. DNA backbone connections run along each strand, inter-base dashed hydrogen-bond links only between bases. Large labels only DNA, RNA, D, R and the sparse correct base letters. No parallel DNA strands, no RNA thymine or DNA ribose. Avoid complicated helix crossings; the actual scientific comparison is clearer as flat model.
+Do not add further claims beyond this illustrative model.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

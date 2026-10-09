@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-v1&quot;,&quot;maxWidthPixels&quot;:1600,&quot;maxHeightPixels&quot;:1200,&quot;jpegQuality&quot;:0.82,&quot;webpQuality&quot;:0.9,&quot;maxBytes&quot;:1500000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Biologie: Molekulargenetik – vollständige Prüfseiten, Teil 1 von 2</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Biologie: Molekulargenetik – vollständige Prüfseiten, Teil 1 von 2</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>12 atomare Lernziele</dt><dd>5 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-4f5d4296002eb1bc70a26646" aria-label="Biologie"><a href="#goal-6744e33f-c810-52b6-b781-2936011de016"><span class="toc-entry-label">Biologie</span></a></h2>
+          <span class="toc-entry-meta"><span>12 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-2b4d73a61ba32a62c1aca0be" aria-label="Genetik und Gentechnik"><a href="#goal-6744e33f-c810-52b6-b781-2936011de016"><span class="toc-entry-label">Genetik&#160;<wbr>und&#160;<wbr>Gentechnik</span></a></h3>
+          <span class="toc-entry-meta"><span>12 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-goal-9eb03a1e-33e2-5a40-9307-7769d5df08e9" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-e13767e8a6e9184b494e2aa5" aria-label="Q1.1 Speicherung und Realisierung genetischer Information"><a href="#goal-6744e33f-c810-52b6-b781-2936011de016"><span class="toc-entry-label">Q1.1&#160;<wbr>Speicherung&#160;<wbr>und&#160;<wbr>Realisierung&#160;<wbr>genetischer&#160;<wbr>Information</span></a></h4>
+          <span class="toc-entry-meta"><span>7 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-goal-96bdf495-2801-57e4-a0da-ce3bf91e402c" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-6701025360c3d48ae46e4012" aria-label="Q1.2 Gene und Gentechnik"><a href="#goal-a515e493-6f90-5371-9470-28a0cf50f087"><span class="toc-entry-label">Q1.2&#160;<wbr>Gene&#160;<wbr>und&#160;<wbr>Gentechnik</span></a></h4>
+          <span class="toc-entry-meta"><span>4 Lernziele</span><span>erste zugehörige Lernzielseite 8</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="structure:canonical-goal-96284354-03ef-5158-afd1-85f38af4c633" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-fd2421061ad95e6c9da05716" aria-label="Q1.3 Humangenetik"><a href="#goal-8e4bfb9e-b176-5e7a-a7db-d6077d71237a"><span class="toc-entry-label">Q1.3&#160;<wbr>Humangenetik</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 12</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-6744e33f-c810-52b6-b781-2936011de016" data-goal-id="6744e33f-c810-52b6-b781-2936011de016" data-page-number="1" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b structure:canonical-goal-9eb03a1e-33e2-5a40-9307-7769d5df08e9" aria-labelledby="goal-6744e33f-c810-52b6-b781-2936011de016-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6744e33f-c810-52b6-b781-2936011de016-title"><a class="goal-self-link" href="#goal-6744e33f-c810-52b6-b781-2936011de016">DNA- und RNA-Strukturmodelle vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6744e33f-c810-52b6-b781-2936011de016</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-2b4d73a61ba32a62c1aca0be">Genetik und Gentechnik</a></li><li><a href="#chapter-e13767e8a6e9184b494e2aa5">Q1.1 Speicherung und Realisierung genetischer Information</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f6cd2f15aa2a191fc896740fde5fa365f35178000f596062f7f45b1be6b100eb" data-rendered-digest="sha256:081b4b1b60efc69bf59b2688d8d80634eb7b5e2c50abdb0ea85b038258c3e79f" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/6744e33f-c810-52b6-b781-2936011de016/6744e33f-c810-52b6-b781-2936011de016.png" alt="Links zwei DNA-Rückgrate mit gegenläufigen Pfeilen und den Paaren A–T, G–C, T–A und C–G. Rechts ein einzelnes RNA-Rückgrat mit A, G, U und C. Zuckerbausteine tragen D beziehungsweise R.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6744e33f-c810-52b6-b781-2936011de016-description-heading">
+        <p class="section-heading" id="goal-6744e33f-c810-52b6-b781-2936011de016-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann ein Modell zum Bau der DNA beschreiben und mit einem entsprechenden Modell zum Bau der RNA vergleichen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>RP:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-6744e33f-c810-52b6-b781-2936011de016" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6744e33f-c810-52b6-b781-2936011de016-requires-heading">
+          <p class="section-heading" id="goal-6744e33f-c810-52b6-b781-2936011de016-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-6744e33f-c810-52b6-b781-2936011de016-reverse-heading">
+          <p class="section-heading" id="goal-6744e33f-c810-52b6-b781-2936011de016-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-e349d8c4-2ba3-5360-bd44-13457e5c0aa3"><span>Genetischen Code in beide Richtungen anwenden</span><code>e349d8c4-2ba3-5360-bd44-13457e5c0aa3</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-6744e33f-c810-52b6-b781-2936011de016-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6744e33f-c810-52b6-b781-2936011de016-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-0daa79f6-8f61-5506-98f9-65db83062ba8" rel="noreferrer noopener"><span>DNA-Aufbau darstellen</span> <code>0daa79f6-8f61-5506-98f9-65db83062ba8</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-6744e33f-c810-52b6-b781-2936011de016-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6744e33f-c810-52b6-b781-2936011de016-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 12</span>
+      <span>Buch-Digest <code>sha256:7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1e228e0766be5fcd6be5e2d5cfbae4254d85a6bcc2c9904ff48a0e1d9264dec3</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-molecular-genetics-twenty-three-current394-native-v1-part-1&amp;edition=curricular-atomic-v1&amp;goalId=6744e33f-c810-52b6-b781-2936011de016&amp;goalFingerprint=sha256%3A1e228e0766be5fcd6be5e2d5cfbae4254d85a6bcc2c9904ff48a0e1d9264dec3&amp;pageFingerprint=sha256%3A458ec0b079c7f3506996eefd7f88a93340d38e8f9412fbbfdf0433512bdf9bde&amp;bookDigest=sha256%3A7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e349d8c4-2ba3-5360-bd44-13457e5c0aa3" data-goal-id="e349d8c4-2ba3-5360-bd44-13457e5c0aa3" data-page-number="2" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b structure:canonical-goal-9eb03a1e-33e2-5a40-9307-7769d5df08e9" aria-labelledby="goal-e349d8c4-2ba3-5360-bd44-13457e5c0aa3-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e349d8c4-2ba3-5360-bd44-13457e5c0aa3-title"><a class="goal-self-link" href="#goal-e349d8c4-2ba3-5360-bd44-13457e5c0aa3">Genetischen Code in beide Richtungen anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e349d8c4-2ba3-5360-bd44-13457e5c0aa3</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-2b4d73a61ba32a62c1aca0be">Genetik und Gentechnik</a></li><li><a href="#chapter-e13767e8a6e9184b494e2aa5">Q1.1 Speicherung und Realisierung genetischer Information</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4287b09809e3280cb5bea29f12c6679306e177e2164cb02f727d486595465bf3" data-rendered-digest="sha256:980a17cf5d1630bc16d7b9832a51181fdb5d7f2df863ec7989b1f0c012f6fb8c" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/e349d8c4-2ba3-5360-bd44-13457e5c0aa3/e349d8c4-2ba3-5360-bd44-13457e5c0aa3.png" alt="ATG GAA und ATG GAG führen zu AUG GAA beziehungsweise AUG GAG. Beide mRNA-Fragmente ergeben Met–Glu. Gelbe Pfeile führen von diesem Fragment zu beiden möglichen DNA-Sequenzen zurück.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e349d8c4-2ba3-5360-bd44-13457e5c0aa3-description-heading">
+        <p class="section-heading" id="goal-e349d8c4-2ba3-5360-bd44-13457e5c0aa3-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aus DNA-Basensequenzen Aminosäuresequenzen ableiten und aus Aminosäuresequenzen mögliche codierende DNA-Basensequenzen rekonstruieren, indem sie den genetischen Code anwendet.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>RP:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-e349d8c4-2ba3-5360-bd44-13457e5c0aa3" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e349d8c4-2ba3-5360-bd44-13457e5c0aa3-requires-heading">
+          <p class="section-heading" id="goal-e349d8c4-2ba3-5360-bd44-13457e5c0aa3-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-6744e33f-c810-52b6-b781-2936011de016"><span>DNA- und RNA-Strukturmodelle vergleichen</span><code>6744e33f-c810-52b6-b781-2936011de016</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-e349d8c4-2ba3-5360-bd44-13457e5c0aa3-reverse-heading">
+          <p class="section-heading" id="goal-e349d8c4-2ba3-5360-bd44-13457e5c0aa3-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-1ec4e3c2-f302-5246-b531-f2cebc3efb1d"><span>Proteinbiosynthese und Lebensbedeutung erklären</span><code>1ec4e3c2-f302-5246-b531-f2cebc3efb1d</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e349d8c4-2ba3-5360-bd44-13457e5c0aa3-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e349d8c4-2ba3-5360-bd44-13457e5c0aa3-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-e349d8c4-2ba3-5360-bd44-13457e5c0aa3-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e349d8c4-2ba3-5360-bd44-13457e5c0aa3-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 12</span>
+      <span>Buch-Digest <code>sha256:7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d1689fe41f2d5f08163cfee661a983b1663e554ee4709bd289efcd97102a9355</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-molecular-genetics-twenty-three-current394-native-v1-part-1&amp;edition=curricular-atomic-v1&amp;goalId=e349d8c4-2ba3-5360-bd44-13457e5c0aa3&amp;goalFingerprint=sha256%3Ad1689fe41f2d5f08163cfee661a983b1663e554ee4709bd289efcd97102a9355&amp;pageFingerprint=sha256%3A786a7c5b26a3516f51098880dbb2a01163c4d4eddc9ba50a6c613fa2a8e1d17a&amp;bookDigest=sha256%3A7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1ec4e3c2-f302-5246-b531-f2cebc3efb1d" data-goal-id="1ec4e3c2-f302-5246-b531-f2cebc3efb1d" data-page-number="3" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b structure:canonical-goal-9eb03a1e-33e2-5a40-9307-7769d5df08e9" aria-labelledby="goal-1ec4e3c2-f302-5246-b531-f2cebc3efb1d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1ec4e3c2-f302-5246-b531-f2cebc3efb1d-title"><a class="goal-self-link" href="#goal-1ec4e3c2-f302-5246-b531-f2cebc3efb1d">Proteinbiosynthese und Lebensbedeutung erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1ec4e3c2-f302-5246-b531-f2cebc3efb1d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-2b4d73a61ba32a62c1aca0be">Genetik und Gentechnik</a></li><li><a href="#chapter-e13767e8a6e9184b494e2aa5">Q1.1 Speicherung und Realisierung genetischer Information</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:652f872f8e27152469714e53e91145c00ba64012a4347df74cdeef9202e75a01" data-rendered-digest="sha256:66b7f73b4970bc68e90f6190f9f398e8426202f472c2cf704e67d2a661fff197" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/1ec4e3c2-f302-5246-b531-f2cebc3efb1d/1ec4e3c2-f302-5246-b531-f2cebc3efb1d.png" alt="Zwei Zellen zeigen DNA→mRNA→Ribosom→Protein. Im Bakterium liegt DNA ringförmig vor; rechts liegt lineare DNA im Kern und mRNA tritt durch die Kernpore zur cytoplasmatischen Translation. Große Nummern und Legende verbinden sechs Mechanismusobjekte. Unten Enzyme, Struktur, Transport und Abwehr.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1ec4e3c2-f302-5246-b531-f2cebc3efb1d-description-heading">
+        <p class="section-heading" id="goal-1ec4e3c2-f302-5246-b531-f2cebc3efb1d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Mechanismus der Proteinbiosynthese beschreiben und die Bedeutung der Proteinbildung für Lebewesen erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>RP:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1ec4e3c2-f302-5246-b531-f2cebc3efb1d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1ec4e3c2-f302-5246-b531-f2cebc3efb1d-requires-heading">
+          <p class="section-heading" id="goal-1ec4e3c2-f302-5246-b531-f2cebc3efb1d-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e349d8c4-2ba3-5360-bd44-13457e5c0aa3"><span>Genetischen Code in beide Richtungen anwenden</span><code>e349d8c4-2ba3-5360-bd44-13457e5c0aa3</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-1ec4e3c2-f302-5246-b531-f2cebc3efb1d-reverse-heading">
+          <p class="section-heading" id="goal-1ec4e3c2-f302-5246-b531-f2cebc3efb1d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-18b3540e-4379-5d13-b3ec-dc7fe21c5e6a"><span>Proteinaufgaben und Genwirkketten für Merkmale erklären</span><code>18b3540e-4379-5d13-b3ec-dc7fe21c5e6a</code><span class="reference-page">S. 4</span></a></li><li><a href="#goal-0eddd781-90aa-5120-a24f-c7e38327162c"><span>Alternatives Spleißen für Proteinvielfalt erklären</span><code>0eddd781-90aa-5120-a24f-c7e38327162c</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-41a52327-75a8-55b4-b924-7968f1bade8d"><span>Virale Vermehrung und Wirts-Proteinbiosynthese erklären</span><code>41a52327-75a8-55b4-b924-7968f1bade8d</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-a9493b6d-5810-5d52-b32c-54ce32fd0dd8"><span>Antisense-RNA als medizinisches Prinzip erläutern</span><code>a9493b6d-5810-5d52-b32c-54ce32fd0dd8</code><span class="reference-page">S. 9</span></a></li><li><a href="#goal-a6d94a96-6a36-57dd-81db-f4bfdc4306ee"><span>Antibiotika-Angriffsorte aus Proteinbiosynthese ableiten</span><code>a6d94a96-6a36-57dd-81db-f4bfdc4306ee</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-1ec4e3c2-f302-5246-b531-f2cebc3efb1d-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1ec4e3c2-f302-5246-b531-f2cebc3efb1d-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-1ec4e3c2-f302-5246-b531-f2cebc3efb1d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1ec4e3c2-f302-5246-b531-f2cebc3efb1d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 12</span>
+      <span>Buch-Digest <code>sha256:7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2ff9259aaf623a0af2b098278279ce0c5c76de7b58fbadb3fb116c5455c646bd</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-molecular-genetics-twenty-three-current394-native-v1-part-1&amp;edition=curricular-atomic-v1&amp;goalId=1ec4e3c2-f302-5246-b531-f2cebc3efb1d&amp;goalFingerprint=sha256%3A2ff9259aaf623a0af2b098278279ce0c5c76de7b58fbadb3fb116c5455c646bd&amp;pageFingerprint=sha256%3Abc0eff6c9ae0552c364f5eab94945c0d03375db148e1ed6fead20341953cc49e&amp;bookDigest=sha256%3A7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-18b3540e-4379-5d13-b3ec-dc7fe21c5e6a" data-goal-id="18b3540e-4379-5d13-b3ec-dc7fe21c5e6a" data-page-number="4" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b structure:canonical-goal-9eb03a1e-33e2-5a40-9307-7769d5df08e9" aria-labelledby="goal-18b3540e-4379-5d13-b3ec-dc7fe21c5e6a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-18b3540e-4379-5d13-b3ec-dc7fe21c5e6a-title"><a class="goal-self-link" href="#goal-18b3540e-4379-5d13-b3ec-dc7fe21c5e6a">Proteinaufgaben und Genwirkketten für Merkmale erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>18b3540e-4379-5d13-b3ec-dc7fe21c5e6a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-2b4d73a61ba32a62c1aca0be">Genetik und Gentechnik</a></li><li><a href="#chapter-e13767e8a6e9184b494e2aa5">Q1.1 Speicherung und Realisierung genetischer Information</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:86068491f04c96e6f08f734531b356e1ccc640b1a59b2739776abb5f6eb95c18" data-rendered-digest="sha256:5fbcbd18b555b8247749db32a13e891705bed6672d0aae598f35623ba5675e37" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/18b3540e-4379-5d13-b3ec-dc7fe21c5e6a/18b3540e-4379-5d13-b3ec-dc7fe21c5e6a.png" alt="Ein durchgehender blauer Pfeil führt von Gen B direkt zu E2, ohne am Zwischenstoff I zu enden. E1 wandelt farbloses S in I um, E2 I in blaues P. Rechts sind stabile Fasern und ein Membrantransportprotein als weitere Funktionsbeispiele dargestellt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-18b3540e-4379-5d13-b3ec-dc7fe21c5e6a-description-heading">
+        <p class="section-heading" id="goal-18b3540e-4379-5d13-b3ec-dc7fe21c5e6a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Aufgaben von Proteinen sowie das Zusammenwirken von Genen in einer Genwirkkette bei der Ausbildung von Merkmalen erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>RP:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-18b3540e-4379-5d13-b3ec-dc7fe21c5e6a" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-18b3540e-4379-5d13-b3ec-dc7fe21c5e6a-requires-heading">
+          <p class="section-heading" id="goal-18b3540e-4379-5d13-b3ec-dc7fe21c5e6a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1ec4e3c2-f302-5246-b531-f2cebc3efb1d"><span>Proteinbiosynthese und Lebensbedeutung erklären</span><code>1ec4e3c2-f302-5246-b531-f2cebc3efb1d</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-18b3540e-4379-5d13-b3ec-dc7fe21c5e6a-reverse-heading">
+          <p class="section-heading" id="goal-18b3540e-4379-5d13-b3ec-dc7fe21c5e6a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-5f01403c-6560-5515-aa76-03860aa52315"><span>Proteine und Genwirkketten für Merkmale erklären</span><code>5f01403c-6560-5515-aa76-03860aa52315</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-18b3540e-4379-5d13-b3ec-dc7fe21c5e6a-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-18b3540e-4379-5d13-b3ec-dc7fe21c5e6a-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-18b3540e-4379-5d13-b3ec-dc7fe21c5e6a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-18b3540e-4379-5d13-b3ec-dc7fe21c5e6a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 12</span>
+      <span>Buch-Digest <code>sha256:7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e02356ea82464213f22b334b9f9e2b74476c9089b87cd6d9424bd14cbddaecec</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-molecular-genetics-twenty-three-current394-native-v1-part-1&amp;edition=curricular-atomic-v1&amp;goalId=18b3540e-4379-5d13-b3ec-dc7fe21c5e6a&amp;goalFingerprint=sha256%3Ae02356ea82464213f22b334b9f9e2b74476c9089b87cd6d9424bd14cbddaecec&amp;pageFingerprint=sha256%3Aa2809d66f684fa7cd62344bf699f7a47bd6c1e63d3e27e087a63780f702f008e&amp;bookDigest=sha256%3A7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0eddd781-90aa-5120-a24f-c7e38327162c" data-goal-id="0eddd781-90aa-5120-a24f-c7e38327162c" data-page-number="5" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b structure:canonical-goal-9eb03a1e-33e2-5a40-9307-7769d5df08e9" aria-labelledby="goal-0eddd781-90aa-5120-a24f-c7e38327162c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-0eddd781-90aa-5120-a24f-c7e38327162c-title"><a class="goal-self-link" href="#goal-0eddd781-90aa-5120-a24f-c7e38327162c">Alternatives Spleißen für Proteinvielfalt erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0eddd781-90aa-5120-a24f-c7e38327162c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-2b4d73a61ba32a62c1aca0be">Genetik und Gentechnik</a></li><li><a href="#chapter-e13767e8a6e9184b494e2aa5">Q1.1 Speicherung und Realisierung genetischer Information</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:c6e6b25a8c87b92673ff17b887cda8b78d1e2b51eb2ae3d447ef5195740b7a8d" data-rendered-digest="sha256:1305fe4efacfb2c83a80de1d5c9612056cc7315772beb2dbf35db45371ced4aa" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/0eddd781-90aa-5120-a24f-c7e38327162c/0eddd781-90aa-5120-a24f-c7e38327162c.png" alt="Aus einer prä-mRNA mit E1, E2, E3 und E4 entstehen zwei reife mRNAs: E1–E2–E4 und E1–E3–E4. Darunter liegen unterschiedliche abstrakte Proteinvarianten mit gemeinsamem Anfang und Ende.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0eddd781-90aa-5120-a24f-c7e38327162c-description-heading">
+        <p class="section-heading" id="goal-0eddd781-90aa-5120-a24f-c7e38327162c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Beitrag alternativen Spleißens zur Proteinvielfalt bei Eukaryoten erklären und die Bedeutung dieser Vielfalt für Selektionsprozesse in der Evolution einordnen, wenn relevante Unterschiede erblich sind und den Fortpflanzungserfolg beeinflussen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-0eddd781-90aa-5120-a24f-c7e38327162c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0eddd781-90aa-5120-a24f-c7e38327162c-requires-heading">
+          <p class="section-heading" id="goal-0eddd781-90aa-5120-a24f-c7e38327162c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1ec4e3c2-f302-5246-b531-f2cebc3efb1d"><span>Proteinbiosynthese und Lebensbedeutung erklären</span><code>1ec4e3c2-f302-5246-b531-f2cebc3efb1d</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-0eddd781-90aa-5120-a24f-c7e38327162c-reverse-heading">
+          <p class="section-heading" id="goal-0eddd781-90aa-5120-a24f-c7e38327162c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-0eddd781-90aa-5120-a24f-c7e38327162c-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0eddd781-90aa-5120-a24f-c7e38327162c-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-0eddd781-90aa-5120-a24f-c7e38327162c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0eddd781-90aa-5120-a24f-c7e38327162c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 12</span>
+      <span>Buch-Digest <code>sha256:7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5c8fb108cd89a87305087c73a4601b69727d23f1cf4d2f35832cbc107d597009</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-molecular-genetics-twenty-three-current394-native-v1-part-1&amp;edition=curricular-atomic-v1&amp;goalId=0eddd781-90aa-5120-a24f-c7e38327162c&amp;goalFingerprint=sha256%3A5c8fb108cd89a87305087c73a4601b69727d23f1cf4d2f35832cbc107d597009&amp;pageFingerprint=sha256%3A9bd50b1715b23e033167a21e4d38f9bb951a06adc8719f3f5358d91e4ae467e4&amp;bookDigest=sha256%3A7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-41a52327-75a8-55b4-b924-7968f1bade8d" data-goal-id="41a52327-75a8-55b4-b924-7968f1bade8d" data-page-number="6" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b structure:canonical-goal-9eb03a1e-33e2-5a40-9307-7769d5df08e9" aria-labelledby="goal-41a52327-75a8-55b4-b924-7968f1bade8d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-41a52327-75a8-55b4-b924-7968f1bade8d-title"><a class="goal-self-link" href="#goal-41a52327-75a8-55b4-b924-7968f1bade8d">Virale Vermehrung und Wirts-Proteinbiosynthese erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>41a52327-75a8-55b4-b924-7968f1bade8d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-2b4d73a61ba32a62c1aca0be">Genetik und Gentechnik</a></li><li><a href="#chapter-e13767e8a6e9184b494e2aa5">Q1.1 Speicherung und Realisierung genetischer Information</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2a8c197409e3ed375d155a1bb3a5eb67d2dfce8ca534434d111e9a5ca10c51ec" data-rendered-digest="sha256:90e6636d65cd524896b046adc6bf8c35756088fb7d28e8bf1b3c2d6c66f27624" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/41a52327-75a8-55b4-b924-7968f1bade8d/41a52327-75a8-55b4-b924-7968f1bade8d.png" alt="Sechs nummerierte Felder zeigen HIV-RNA zu DNA, Integration in die Wirts-DNA, Transkription mit einer Route für genomische RNA und einer Route zur Translation, virale Proteine, Aufbau und Knospung sowie den Übergang vom unreifen zum reifen Partikel. Nur reife HIV-Kapside sind konisch; die dargestellten Partikel enthalten jeweils zwei RNA-Stränge.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-41a52327-75a8-55b4-b924-7968f1bade8d-description-heading">
+        <p class="section-heading" id="goal-41a52327-75a8-55b4-b924-7968f1bade8d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Eingriff von Viren in die Proteinbiosynthese ihres Wirts und den Vermehrungszyklus von Viren beschreiben, um Auswirkungen auf den Wirt und mögliche Therapieansätze zu erläutern.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-41a52327-75a8-55b4-b924-7968f1bade8d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-41a52327-75a8-55b4-b924-7968f1bade8d-requires-heading">
+          <p class="section-heading" id="goal-41a52327-75a8-55b4-b924-7968f1bade8d-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1ec4e3c2-f302-5246-b531-f2cebc3efb1d"><span>Proteinbiosynthese und Lebensbedeutung erklären</span><code>1ec4e3c2-f302-5246-b531-f2cebc3efb1d</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-41a52327-75a8-55b4-b924-7968f1bade8d-reverse-heading">
+          <p class="section-heading" id="goal-41a52327-75a8-55b4-b924-7968f1bade8d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-41a52327-75a8-55b4-b924-7968f1bade8d-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-41a52327-75a8-55b4-b924-7968f1bade8d-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-41a52327-75a8-55b4-b924-7968f1bade8d-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-41a52327-75a8-55b4-b924-7968f1bade8d-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 12</span>
+      <span>Buch-Digest <code>sha256:7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d238ad878be29054758fca2e2e84f6d8c4c593ba9e110754186b75827b125dfd</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-molecular-genetics-twenty-three-current394-native-v1-part-1&amp;edition=curricular-atomic-v1&amp;goalId=41a52327-75a8-55b4-b924-7968f1bade8d&amp;goalFingerprint=sha256%3Ad238ad878be29054758fca2e2e84f6d8c4c593ba9e110754186b75827b125dfd&amp;pageFingerprint=sha256%3A6640ea26538f922dba8c3cc6c0435ad1820f7fc40ab1809df01ea711a1be6e86&amp;bookDigest=sha256%3A7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5f01403c-6560-5515-aa76-03860aa52315" data-goal-id="5f01403c-6560-5515-aa76-03860aa52315" data-page-number="7" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b structure:canonical-goal-9eb03a1e-33e2-5a40-9307-7769d5df08e9" aria-labelledby="goal-5f01403c-6560-5515-aa76-03860aa52315-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5f01403c-6560-5515-aa76-03860aa52315-title"><a class="goal-self-link" href="#goal-5f01403c-6560-5515-aa76-03860aa52315">Proteine und Genwirkketten für Merkmale erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5f01403c-6560-5515-aa76-03860aa52315</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-2b4d73a61ba32a62c1aca0be">Genetik und Gentechnik</a></li><li><a href="#chapter-e13767e8a6e9184b494e2aa5">Q1.1 Speicherung und Realisierung genetischer Information</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:4f441cf416900c04409035c723b9bb3ff5ee828e9fbbd02f14e2cc0859573d7a" data-rendered-digest="sha256:cd07f4c30412ab08cc0894a92f8b935e665ebb49dbcdecdb992c47be89be83ea" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/5f01403c-6560-5515-aa76-03860aa52315/5f01403c-6560-5515-aa76-03860aa52315.png" alt="Oben führen Gen A und Gen B zu E1 und E2. E1 wandelt farbloses S in farbloses I um, E2 I in blaues P. Unten ist E2 gestört: I sammelt sich, die Blüte bleibt ohne blaues Produkt und ein Zusatz von I stellt E2 nicht her.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5f01403c-6560-5515-aa76-03860aa52315-description-heading">
+        <p class="section-heading" id="goal-5f01403c-6560-5515-aa76-03860aa52315-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Aufgaben von Proteinen sowie das Zusammenwirken von Genen in einer Genwirkkette bei der Ausbildung von Merkmalen erläutern und Auswirkungen einer Unterbrechung der Genwirkkette erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · LK</li><li><strong>MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-5f01403c-6560-5515-aa76-03860aa52315" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5f01403c-6560-5515-aa76-03860aa52315-requires-heading">
+          <p class="section-heading" id="goal-5f01403c-6560-5515-aa76-03860aa52315-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-18b3540e-4379-5d13-b3ec-dc7fe21c5e6a"><span>Proteinaufgaben und Genwirkketten für Merkmale erklären</span><code>18b3540e-4379-5d13-b3ec-dc7fe21c5e6a</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-5f01403c-6560-5515-aa76-03860aa52315-reverse-heading">
+          <p class="section-heading" id="goal-5f01403c-6560-5515-aa76-03860aa52315-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-5f01403c-6560-5515-aa76-03860aa52315-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5f01403c-6560-5515-aa76-03860aa52315-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-5f01403c-6560-5515-aa76-03860aa52315-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5f01403c-6560-5515-aa76-03860aa52315-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 12</span>
+      <span>Buch-Digest <code>sha256:7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:6ce73424a7a539c08cab1bc5a627adbf7522967a2ca29801b21586f24131dd3d</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-molecular-genetics-twenty-three-current394-native-v1-part-1&amp;edition=curricular-atomic-v1&amp;goalId=5f01403c-6560-5515-aa76-03860aa52315&amp;goalFingerprint=sha256%3A6ce73424a7a539c08cab1bc5a627adbf7522967a2ca29801b21586f24131dd3d&amp;pageFingerprint=sha256%3A0c095e108d23fafbcef489704623641756c5a546b98771ada60b7d92cd6d6bc7&amp;bookDigest=sha256%3A7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a515e493-6f90-5371-9470-28a0cf50f087" data-goal-id="a515e493-6f90-5371-9470-28a0cf50f087" data-page-number="8" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b structure:canonical-goal-96bdf495-2801-57e4-a0da-ce3bf91e402c" aria-labelledby="goal-a515e493-6f90-5371-9470-28a0cf50f087-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a515e493-6f90-5371-9470-28a0cf50f087-title"><a class="goal-self-link" href="#goal-a515e493-6f90-5371-9470-28a0cf50f087">DNA-Replikation und PCR als natürliche und technische Prozesse vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a515e493-6f90-5371-9470-28a0cf50f087</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-2b4d73a61ba32a62c1aca0be">Genetik und Gentechnik</a></li><li><a href="#chapter-6701025360c3d48ae46e4012">Q1.2 Gene und Gentechnik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:856262c4fe0db82e6d9e61657d2539a70c588ee4247037c7d9635135cfeb19e4" data-rendered-digest="sha256:319920d16e76bc21def78a5732ee9a571a225d738f6e4e9073b34f4a2b35b9b7" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/a515e493-6f90-5371-9470-28a0cf50f087/a515e493-6f90-5371-9470-28a0cf50f087.png" alt="Links öffnet eine Helicase die DNA. Der obere neue Strang wird zur Gabel hin verlängert, der untere davon weg. Rechts sitzen zwei gegengerichtete Primer an verschiedenen Vorlagen; Erhitzen, Abkühlen und Verlängern führen zu mehreren Kopien eines DNA-Abschnitts.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a515e493-6f90-5371-9470-28a0cf50f087-description-heading">
+        <p class="section-heading" id="goal-a515e493-6f90-5371-9470-28a0cf50f087-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die natürliche DNA-Replikation mit der Polymerase-Kettenreaktion vergleichen und an diesem Beispiel Probleme und Lösungen der technischen Umsetzung natürlicher Prozesse erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-a515e493-6f90-5371-9470-28a0cf50f087" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a515e493-6f90-5371-9470-28a0cf50f087-requires-heading">
+          <p class="section-heading" id="goal-a515e493-6f90-5371-9470-28a0cf50f087-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-a515e493-6f90-5371-9470-28a0cf50f087-reverse-heading">
+          <p class="section-heading" id="goal-a515e493-6f90-5371-9470-28a0cf50f087-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-76ad2d40-496b-5fa8-97e8-7711f9859738"><span>DNA-Replikation, PCR und Reparaturenzyme vergleichen</span><code>76ad2d40-496b-5fa8-97e8-7711f9859738</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-a515e493-6f90-5371-9470-28a0cf50f087-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a515e493-6f90-5371-9470-28a0cf50f087-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-0daa79f6-8f61-5506-98f9-65db83062ba8" rel="noreferrer noopener"><span>DNA-Aufbau darstellen</span> <code>0daa79f6-8f61-5506-98f9-65db83062ba8</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0" rel="noreferrer noopener"><span>Gentechnische Methoden anwenden</span> <code>523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-a515e493-6f90-5371-9470-28a0cf50f087-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a515e493-6f90-5371-9470-28a0cf50f087-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 12</span>
+      <span>Buch-Digest <code>sha256:7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9ec0e8384c168a43c28fdfe8e53d6a4074d50072206ff32c24726b7e159fdf19</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-molecular-genetics-twenty-three-current394-native-v1-part-1&amp;edition=curricular-atomic-v1&amp;goalId=a515e493-6f90-5371-9470-28a0cf50f087&amp;goalFingerprint=sha256%3A9ec0e8384c168a43c28fdfe8e53d6a4074d50072206ff32c24726b7e159fdf19&amp;pageFingerprint=sha256%3A7b85cf906da7d6c7ad3f77576f30c8b24bd0436e7f97621abf73e4c39cda0281&amp;bookDigest=sha256%3A7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a9493b6d-5810-5d52-b32c-54ce32fd0dd8" data-goal-id="a9493b6d-5810-5d52-b32c-54ce32fd0dd8" data-page-number="9" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b structure:canonical-goal-96bdf495-2801-57e4-a0da-ce3bf91e402c" aria-labelledby="goal-a9493b6d-5810-5d52-b32c-54ce32fd0dd8-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a9493b6d-5810-5d52-b32c-54ce32fd0dd8-title"><a class="goal-self-link" href="#goal-a9493b6d-5810-5d52-b32c-54ce32fd0dd8">Antisense-RNA als medizinisches Prinzip erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a9493b6d-5810-5d52-b32c-54ce32fd0dd8</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-2b4d73a61ba32a62c1aca0be">Genetik und Gentechnik</a></li><li><a href="#chapter-6701025360c3d48ae46e4012">Q1.2 Gene und Gentechnik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:47073da986d015dabaaf5cd66042e37c8928448b748f6a6ed0701837c7f6bb7b" data-rendered-digest="sha256:71fb098b92e591c79326a95bbca58cbf2f1b83d330efca78cb8dbd3e952a1e93" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/a9493b6d-5810-5d52-b32c-54ce32fd0dd8/a9493b6d-5810-5d52-b32c-54ce32fd0dd8.png" alt="Links wird eine mRNA am Ribosom in ein Protein übersetzt. Rechts bindet eine komplementäre Antisense-RNA an den Startbereich der mRNA, blockiert den dargestellten Ribosomenzugang und führt zu weniger Protein.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a9493b6d-5810-5d52-b32c-54ce32fd0dd8-description-heading">
+        <p class="section-heading" id="goal-a9493b6d-5810-5d52-b32c-54ce32fd0dd8-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Wirkung von Antisense-RNA auf die Proteinbiosynthese erläutern und daraus medizinische Anwendungsmöglichkeiten ableiten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-a9493b6d-5810-5d52-b32c-54ce32fd0dd8" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a9493b6d-5810-5d52-b32c-54ce32fd0dd8-requires-heading">
+          <p class="section-heading" id="goal-a9493b6d-5810-5d52-b32c-54ce32fd0dd8-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1ec4e3c2-f302-5246-b531-f2cebc3efb1d"><span>Proteinbiosynthese und Lebensbedeutung erklären</span><code>1ec4e3c2-f302-5246-b531-f2cebc3efb1d</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a9493b6d-5810-5d52-b32c-54ce32fd0dd8-reverse-heading">
+          <p class="section-heading" id="goal-a9493b6d-5810-5d52-b32c-54ce32fd0dd8-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-a9493b6d-5810-5d52-b32c-54ce32fd0dd8-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a9493b6d-5810-5d52-b32c-54ce32fd0dd8-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-a9493b6d-5810-5d52-b32c-54ce32fd0dd8-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a9493b6d-5810-5d52-b32c-54ce32fd0dd8-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 12</span>
+      <span>Buch-Digest <code>sha256:7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4c78a14791c52115fcb0f9bf53fae04a5d8fd92a9cf632854678ecc6fe27ad8b</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-molecular-genetics-twenty-three-current394-native-v1-part-1&amp;edition=curricular-atomic-v1&amp;goalId=a9493b6d-5810-5d52-b32c-54ce32fd0dd8&amp;goalFingerprint=sha256%3A4c78a14791c52115fcb0f9bf53fae04a5d8fd92a9cf632854678ecc6fe27ad8b&amp;pageFingerprint=sha256%3A3d3c65aafc4fc417142f58684cb4a73cc3414b96a4c445adc06c904a8ebd76c6&amp;bookDigest=sha256%3A7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a6d94a96-6a36-57dd-81db-f4bfdc4306ee" data-goal-id="a6d94a96-6a36-57dd-81db-f4bfdc4306ee" data-page-number="10" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b structure:canonical-goal-96bdf495-2801-57e4-a0da-ce3bf91e402c" aria-labelledby="goal-a6d94a96-6a36-57dd-81db-f4bfdc4306ee-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a6d94a96-6a36-57dd-81db-f4bfdc4306ee-title"><a class="goal-self-link" href="#goal-a6d94a96-6a36-57dd-81db-f4bfdc4306ee">Antibiotika-Angriffsorte aus Proteinbiosynthese ableiten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a6d94a96-6a36-57dd-81db-f4bfdc4306ee</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-2b4d73a61ba32a62c1aca0be">Genetik und Gentechnik</a></li><li><a href="#chapter-6701025360c3d48ae46e4012">Q1.2 Gene und Gentechnik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:447cc4473df6c42e2051a79a8d6a2e35624207db908c6b32f331b32a73186775" data-rendered-digest="sha256:a46bc172e66d1257a30beaa7476e24eeeccfb873ea7ed3c7f9eff0d3ee59bd47" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/a6d94a96-6a36-57dd-81db-f4bfdc4306ee/a6d94a96-6a36-57dd-81db-f4bfdc4306ee.png" alt="Links passt ein Antibiotikumsymbol an ein bakterielles Ribosom aus 50S und 30S. Rechts passt es nicht an das gezeigte cytoplasmatische Ribosom aus 60S und 40S. Die beiden Proteinbildungswege werden getrennt dargestellt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a6d94a96-6a36-57dd-81db-f4bfdc4306ee-description-heading">
+        <p class="section-heading" id="goal-a6d94a96-6a36-57dd-81db-f4bfdc4306ee-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aus Unterschieden zwischen prokaryotischer und eukaryotischer Proteinbiosynthese mögliche Angriffsorte für Antibiotika in Prokaryoten ableiten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-a6d94a96-6a36-57dd-81db-f4bfdc4306ee" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a6d94a96-6a36-57dd-81db-f4bfdc4306ee-requires-heading">
+          <p class="section-heading" id="goal-a6d94a96-6a36-57dd-81db-f4bfdc4306ee-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-1ec4e3c2-f302-5246-b531-f2cebc3efb1d"><span>Proteinbiosynthese und Lebensbedeutung erklären</span><code>1ec4e3c2-f302-5246-b531-f2cebc3efb1d</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a6d94a96-6a36-57dd-81db-f4bfdc4306ee-reverse-heading">
+          <p class="section-heading" id="goal-a6d94a96-6a36-57dd-81db-f4bfdc4306ee-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-a6d94a96-6a36-57dd-81db-f4bfdc4306ee-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a6d94a96-6a36-57dd-81db-f4bfdc4306ee-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-a6d94a96-6a36-57dd-81db-f4bfdc4306ee-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a6d94a96-6a36-57dd-81db-f4bfdc4306ee-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 12</span>
+      <span>Buch-Digest <code>sha256:7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:4e7d9e3c74e3f517ca47b5469f917ae01d6f4e60ed78867322ed588c6ba4db24</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-molecular-genetics-twenty-three-current394-native-v1-part-1&amp;edition=curricular-atomic-v1&amp;goalId=a6d94a96-6a36-57dd-81db-f4bfdc4306ee&amp;goalFingerprint=sha256%3A4e7d9e3c74e3f517ca47b5469f917ae01d6f4e60ed78867322ed588c6ba4db24&amp;pageFingerprint=sha256%3Af6bece6d4e6678478007bba887fd42f98ab9eb4774b2ce2a1ac287d58290e619&amp;bookDigest=sha256%3A7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-76ad2d40-496b-5fa8-97e8-7711f9859738" data-goal-id="76ad2d40-496b-5fa8-97e8-7711f9859738" data-page-number="11" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b structure:canonical-goal-96bdf495-2801-57e4-a0da-ce3bf91e402c" aria-labelledby="goal-76ad2d40-496b-5fa8-97e8-7711f9859738-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-76ad2d40-496b-5fa8-97e8-7711f9859738-title"><a class="goal-self-link" href="#goal-76ad2d40-496b-5fa8-97e8-7711f9859738">DNA-Replikation, PCR und Reparaturenzyme vergleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>76ad2d40-496b-5fa8-97e8-7711f9859738</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-2b4d73a61ba32a62c1aca0be">Genetik und Gentechnik</a></li><li><a href="#chapter-6701025360c3d48ae46e4012">Q1.2 Gene und Gentechnik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e1c61c9e698c7019051aae1e3596a1ebbd07c237358f1bbf27c4f2341a8be166" data-rendered-digest="sha256:efa8d889fe6f5a98a7303bb744e2d121caa63c85d911fd40d084114dbfd21e30" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/76ad2d40-496b-5fa8-97e8-7711f9859738/76ad2d40-496b-5fa8-97e8-7711f9859738.png" alt="Links öffnet eine Helicase DNA, ein neuer Strang entsteht zur Gabel hin und der andere abschnittsweise in Gegenrichtung. In der Mitte verbinden Temperaturzyklen und zwei entgegengesetzte Primer die PCR-Kopie. Rechts wird eine betroffene Base entfernt, nach Vorlage ersetzt und der Strang verbunden.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-76ad2d40-496b-5fa8-97e8-7711f9859738-description-heading">
+        <p class="section-heading" id="goal-76ad2d40-496b-5fa8-97e8-7711f9859738-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den natürlichen Prozess der DNA-Replikation mit der PCR vergleichen, Probleme und Lösungen technischer Umsetzung natürlicher Prozesse erklären und die Bedeutung von Reparaturenzymen bei der natürlichen DNA-Replikation beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. II · G9 · LK</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-76ad2d40-496b-5fa8-97e8-7711f9859738" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-76ad2d40-496b-5fa8-97e8-7711f9859738-requires-heading">
+          <p class="section-heading" id="goal-76ad2d40-496b-5fa8-97e8-7711f9859738-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a515e493-6f90-5371-9470-28a0cf50f087"><span>DNA-Replikation und PCR als natürliche und technische Prozesse vergleichen</span><code>a515e493-6f90-5371-9470-28a0cf50f087</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-76ad2d40-496b-5fa8-97e8-7711f9859738-reverse-heading">
+          <p class="section-heading" id="goal-76ad2d40-496b-5fa8-97e8-7711f9859738-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-76ad2d40-496b-5fa8-97e8-7711f9859738-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-76ad2d40-496b-5fa8-97e8-7711f9859738-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-76ad2d40-496b-5fa8-97e8-7711f9859738-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-76ad2d40-496b-5fa8-97e8-7711f9859738-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 12</span>
+      <span>Buch-Digest <code>sha256:7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e3cd64f65ac8c7e450bd8c9331ebbd9616c4252e1faf57ea9bbdcdec780e88c0</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-molecular-genetics-twenty-three-current394-native-v1-part-1&amp;edition=curricular-atomic-v1&amp;goalId=76ad2d40-496b-5fa8-97e8-7711f9859738&amp;goalFingerprint=sha256%3Ae3cd64f65ac8c7e450bd8c9331ebbd9616c4252e1faf57ea9bbdcdec780e88c0&amp;pageFingerprint=sha256%3A4ab2e00a83ac6b06c56ba1e0006f0842b8f361d4ca7955442146bf2f2b94169b&amp;bookDigest=sha256%3A7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8e4bfb9e-b176-5e7a-a7db-d6077d71237a" data-goal-id="8e4bfb9e-b176-5e7a-a7db-d6077d71237a" data-page-number="12" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b structure:canonical-goal-96284354-03ef-5158-afd1-85f38af4c633" aria-labelledby="goal-8e4bfb9e-b176-5e7a-a7db-d6077d71237a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8e4bfb9e-b176-5e7a-a7db-d6077d71237a-title"><a class="goal-self-link" href="#goal-8e4bfb9e-b176-5e7a-a7db-d6077d71237a">Zellzyklus und biologische Bedeutung erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8e4bfb9e-b176-5e7a-a7db-d6077d71237a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-2b4d73a61ba32a62c1aca0be">Genetik und Gentechnik</a></li><li><a href="#chapter-fd2421061ad95e6c9da05716">Q1.3 Humangenetik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9d0b7408bfd94cef4f8b78ed92062af3402b92c173621edafecdf3c1198d6fd9" data-rendered-digest="sha256:7595cb3c5c945471d525b8f4cec62b47ff5d6336f84f2babc99bf2d48ec21ba6" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/8e4bfb9e-b176-5e7a-a7db-d6077d71237a/8e4bfb9e-b176-5e7a-a7db-d6077d71237a.png" alt="G1 zeigt ein blaues und ein rotes Einzelchromosom. In S wird die DNA verdoppelt; G2 enthält zwei X-Symbole. Mitose und Zellteilung führen zu zwei Zellen mit jeweils einem blauen und einem roten Einzelchromosom. Wachstum, Reparatur und ungeschlechtliche Vermehrung sind als Beispiele dargestellt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8e4bfb9e-b176-5e7a-a7db-d6077d71237a-description-heading">
+        <p class="section-heading" id="goal-8e4bfb9e-b176-5e7a-a7db-d6077d71237a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Phasen des Zellzyklus beschreiben und seine biologische Bedeutung für Wachstum, Reparatur und ungeschlechtliche Reproduktion erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. II · G9 · GK; Sek. II · G9 · LK</li><li><strong>MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-8e4bfb9e-b176-5e7a-a7db-d6077d71237a" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8e4bfb9e-b176-5e7a-a7db-d6077d71237a-requires-heading">
+          <p class="section-heading" id="goal-8e4bfb9e-b176-5e7a-a7db-d6077d71237a-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-8e4bfb9e-b176-5e7a-a7db-d6077d71237a-reverse-heading">
+          <p class="section-heading" id="goal-8e4bfb9e-b176-5e7a-a7db-d6077d71237a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-8e4bfb9e-b176-5e7a-a7db-d6077d71237a-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8e4bfb9e-b176-5e7a-a7db-d6077d71237a-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-0daa79f6-8f61-5506-98f9-65db83062ba8" rel="noreferrer noopener"><span>DNA-Aufbau darstellen</span> <code>0daa79f6-8f61-5506-98f9-65db83062ba8</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-8e4bfb9e-b176-5e7a-a7db-d6077d71237a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8e4bfb9e-b176-5e7a-a7db-d6077d71237a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-ab96bec3-ee34-5209-bcc9-5c7c8280429c" rel="noreferrer noopener"><span>Meiose geschlechtsspezifisch erklären</span> <code>ab96bec3-ee34-5209-bcc9-5c7c8280429c</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 12</span>
+      <span>Buch-Digest <code>sha256:7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c</code></span>
+      <span>Ziel-Fingerprint <code>sha256:95c2740eac9e98cc912b55b1bbc00673a9893a90c2ce67edb05a1d1414d00298</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-molecular-genetics-twenty-three-current394-native-v1-part-1&amp;edition=curricular-atomic-v1&amp;goalId=8e4bfb9e-b176-5e7a-a7db-d6077d71237a&amp;goalFingerprint=sha256%3A95c2740eac9e98cc912b55b1bbc00673a9893a90c2ce67edb05a1d1414d00298&amp;pageFingerprint=sha256%3A593d54e217fe0637ce34a60e94c2992e3f499243d902f1e020494e357df1fa7f&amp;bookDigest=sha256%3A7a688054305767417a2a83491d7bf84106b6738526d4422818a3f746b5a41b9c&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

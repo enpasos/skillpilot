@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "role": "short authored source-mechanism sketches only; no normal P cases or real learner work",
+  "author": "/root/bio_science14_independent_a",
+  "rows": [
+    {
+      "goalId": "0c9fe376-0fbd-5dc1-b8d4-d56d658a00e3",
+      "kind": "synthetic thermodynamic reference calculation, not physical electrolysis",
+      "givenModel": "Zn(s)+Cu2+(aq) -> Zn2+(aq)+Cu(s), n=2, E°cell=1.103V, aZn2+=0.01, aCu2+=1, 298.15K; ideal dilute activities; specified overvoltage losses0.10+0.05V and iR0.02V",
+      "workedResult": {
+        "reversibleGalvanicVoltage_V": 1.1621593496857214,
+        "opposingAppliedThresholdWithGivenLosses_V": 1.3321593496857214
+      },
+      "expectationDe": "Nernst bezieht sich auf die reversible Referenz. Eine hinreichend große Gegenspannung erzwingt die Umkehrung; Stromfluss ist kein Gleichgewicht. Die CuCl2-Beispielpflicht bleibt beim originalen Partner.",
+      "expectationEn": "Nernst refers to the reversible reference. A sufficiently large opposing voltage forces the reverse reaction; current flow is not equilibrium. Keep the CuCl2 example duty in its original partner."
+    },
+    {
+      "goalId": "1a51362e-fd84-5964-89b5-b435772c2149",
+      "kind": "synthetic open-buffer boundary-condition illustration, not blood data",
+      "givenModel": "CO2(g) <=> CO2*(aq), [CO2*]=kH*pCO2; apparent CO2*/HCO3- pKa=6.35, kH=0.034mol L^-1bar^-1; HCO3- concentration explicitly clamped by an external buffer reservoir at0.020mol/L; pCO2 from0.020 to0.040bar; ideal activities approximation",
+      "workedResult": {
+        "initial_pH": 7.818521082957744,
+        "doubledCO2_pH": 7.517491087293763,
+        "delta_pH": -0.30102999566398125
+      },
+      "expectationDe": "Henry-Beziehung und Protolyse nutzen dieselbe CO2*-Größe. Verdopplung des CO2-Drucks senkt unter den angegebenen Randbedingungen den pH um log10(2). Eine geschlossene Stoffbilanz ist damit nicht gelöst; klinische Folgerungen sind unzulässig.",
+      "expectationEn": "Henry partitioning and protolysis share CO2*. Doubling CO2 pressure lowers pH by log10(2) under the stated boundary conditions. This does not solve a closed mass balance and permits no clinical inference."
+    },
+    {
+      "goalId": "8edee6b6-9ead-515e-93f5-feada64522b2",
+      "kind": "formal molecular reaction interpretation only, not an experimental protocol",
+      "givenModel": "CH3MgBr with acetone, then separate protonation of the magnesium-associated tert-butoxide intermediate; represent the polar organomagnesium bond and carbonyl π-electron shift",
+      "workedResult": {
+        "carbonylAdditionProductAfterWorkup": "2-methylpropan-2-ol",
+        "reactionSteps": [
+          "nucleophilic carbon-carbon bond formation at carbonyl carbon",
+          "magnesium-associated alkoxide intermediate",
+          "subsequent protonation"
+        ],
+        "competingProticReagentConsumption": "CH3MgBr + H2O -> CH4 + MgBrOH (schematic stoichiometric representation)"
+      },
+      "expectationDe": "Die Trennung von Addition und Protonierung, Carbonyl-Elektrophilie und Reagenzverbrauch durch protische Stoffe begründen. Dieses eigene Beispiel erfüllt keine spezifische amtliche Aldolbildung.",
+      "expectationEn": "Explain separation of addition and protonation, carbonyl electrophilicity and consumption by protic substances. This authored example does not fulfil the specific official aldol-formation instruction."
+    },
+    {
+      "goalId": "e0d4f08a-3e67-5e2b-9c4a-06468ec5c3dd",
+      "kind": "synthetic standard-state temperature calculation, not measured constants",
+      "givenModel": "same balanced reaction, dimensionless K°1=0.5 at298.15K, constant ΔrH°=+20000J/mol over interval to318.15K, R=8.314462618J/mol/K; no phase transition and negligible ΔCp correction",
+      "workedResult": {
+        "dimensionless_K2": 0.8302978829295147,
+        "endothermic_K_increases": true
+      },
+      "expectationDe": "ln(K2/K1) mit dem Vorzeichen der Enthalpie und Kelvin rechnen; Ergebnis mit Le Chatelier vergleichen. Das Modell ist kein universeller temperaturabhängiger Kc-/Kp-Umrechner.",
+      "expectationEn": "Calculate ln(K2/K1) with the enthalpy sign and Kelvin temperatures; compare with Le Chatelier. This model is not a universal temperature-dependent Kc/Kp converter."
+    },
+    {
+      "goalId": "f0f2c5f8-06f1-5774-a176-d96505727acf",
+      "kind": "synthetic pH-redox boundary model, not a complete real-system Pourbaix data set",
+      "givenModel": "Ox + H+ + e- <=> Red; aOx/aRed=1, E°=0.600V vsSHE, 298.15K, Eh=E°-(2.303RT/F)*pH; pE=Eh/(2.303RT/F) under this convention",
+      "workedResult": {
+        "slope_V_per_pH": -0.0591593496857215,
+        "Eh_at_pH6_V": 0.245043901885671,
+        "pE_at_pH6": 4.142099316294782,
+        "oxidizedSide": "Eh above boundary at fixedpH and specified activities",
+        "reducedSide": "Eh below boundary at fixedpH and specified activities"
+      },
+      "expectationDe": "Grenzlinie und thermodynamische Redoxseite ableiten. Dies ist nur eine Redoxgrenze; für eine vollständige Pourbaix-Karte fehlen weitere Phasen, Löslichkeits-/Protolysegrenzen und Stoffbilanzen. Keine Geschwindigkeit oder Passivierung aus dieser Linie folgern.",
+      "expectationEn": "Derive the boundary and thermodynamic redox side. This is one redox boundary only; a complete Pourbaix map additionally requires phases, solubility/protolysis boundaries and balances. Infer no rate or passivation from this line."
+    }
+  ],
+  "normalPProfilesAuthored": false,
+  "normalPCasesAuthored": false,
+  "independentQA": false,
+  "realExperiment": false,
+  "clinicalProof": false,
+  "humanApproval": false
+}

@@ -1,0 +1,5 @@
+# Rekonstruktion aus dem tatsächlich betrachteten PNG
+
+Breite freundliche Comicgrafik mit einer großen Wirtszelle und erkennbarem Zellkern. Links tritt ein schematisches HIV-Partikel ein. Die beschriftete virale RNA führt über RNA→DNA zu viraler DNA, diese in den Kern zur Integration in Wirts-DNA. Von integrierter DNA entsteht virale mRNA, die zum Wirtsribosom im Zellplasma führt. Abstrakte bunte Proteinsymbole führen weiter zum Zusammenbau an der Membran und zur Knospung unter Neue Viren. Zahlen1–7 ordnen die Hauptschritte. Ein rotes Hemmzeichen zeigt die RNA→DNA-Stelle als mögliches Angriffsziel, ohne Wirksamkeits- oder Behandlungszusage. Organellen und Virusformen sind stark vereinfacht; farbige Punkte repräsentieren abstrakte Proteinkomponenten und keine detaillierten Aminosäuremoleküle.
+
+Dieser Prompt wurde aus der tatsächlichen Originalansicht und den Ansichten mit 360 und 680 Pixeln Breite abgeleitet. Er ist kein ursprünglicher Erzeugungsprompt und wurde nicht zur Erzeugung dieses PNG verwendet.

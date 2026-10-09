@@ -1,0 +1,11 @@
+
+> skillpilot@0.0.0 visualization:prepare
+> node ../scripts/prepare_goal_visualization.mjs 9dff0360-c2e9-5e43-af8b-87e264281cf7 --landscape curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json --subject biologie --provider built-in ChatGPT/Codex image_gen
+
+Prepared prompt package for: Systematikansätze vergleichen und beurteilen
+SkillPilot ID: 9dff0360-c2e9-5e43-af8b-87e264281cf7
+Prompt: tmp/goal-visualizations/9dff0360-c2e9-5e43-af8b-87e264281cf7/nano-banana-prompt.de.md
+Metadata: tmp/goal-visualizations/9dff0360-c2e9-5e43-af8b-87e264281cf7/metadata.json
+
+After generating and downloading the image, import it with:
+npm --prefix app run visualization:import -- 9dff0360-c2e9-5e43-af8b-87e264281cf7 "<downloaded-image-path>"

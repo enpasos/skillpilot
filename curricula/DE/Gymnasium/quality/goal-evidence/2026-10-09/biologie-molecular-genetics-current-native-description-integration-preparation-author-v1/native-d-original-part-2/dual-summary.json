@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:95dc719b879f57e451ad70f776fbf47e0958b7a7688dcec2236c8d82f2961126",
+  "reviewInputFingerprint": "sha256:da0b1676a66fd023b5deb1b12e948798a3ce6b415db684c7c4ebc5777f3a250d",
+  "goalCount": 11,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-campaign-a",
+      "roundId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-a",
+      "independenceGroupId": "biologie-molecular-genetics-twenty-three-current394-native-v1-independent-a",
+      "runIds": [
+        "bio23-current-native-A-part-2-actual-review-v1"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::declaredModelUnexposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-campaign-b",
+      "roundId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b",
+      "independenceGroupId": "biologie-molecular-genetics-twenty-three-current394-native-v1-independent-b",
+      "runIds": [
+        "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review"
+      ],
+      "providers": [
+        "OpenAI Codex agent session"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex agent session::Codex; exact provider model identifier not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 11,
+    "unavailable": 0,
+    "requiresSynthesis": 11
+  },
+  "goals": [
+    {
+      "goalId": "ab96bec3-ee34-5209-bcc9-5c7c8280429c",
+      "firstRecordId": "bio23-current-native-A-part-2-actual-review-v1.ab96bec3-ee34-5209-bcc9-5c7c8280429c",
+      "secondRecordId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review.goal-01",
+      "firstRunId": "bio23-current-native-A-part-2-actual-review-v1",
+      "secondRunId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "22711af8-1184-584c-9707-1192799bfa22",
+      "firstRecordId": "bio23-current-native-A-part-2-actual-review-v1.22711af8-1184-584c-9707-1192799bfa22",
+      "secondRecordId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review.goal-02",
+      "firstRunId": "bio23-current-native-A-part-2-actual-review-v1",
+      "secondRunId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "183f3c47-ec20-5b98-8024-77ebd1c48abf",
+      "firstRecordId": "bio23-current-native-A-part-2-actual-review-v1.183f3c47-ec20-5b98-8024-77ebd1c48abf",
+      "secondRecordId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review.goal-03",
+      "firstRunId": "bio23-current-native-A-part-2-actual-review-v1",
+      "secondRunId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "decision",
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8fb0e4eb-9822-564a-9c2d-f3a16f86a7f6",
+      "firstRecordId": "bio23-current-native-A-part-2-actual-review-v1.8fb0e4eb-9822-564a-9c2d-f3a16f86a7f6",
+      "secondRecordId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review.goal-04",
+      "firstRunId": "bio23-current-native-A-part-2-actual-review-v1",
+      "secondRunId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "4cc92913-386c-5909-9d43-bb30f706ed24",
+      "firstRecordId": "bio23-current-native-A-part-2-actual-review-v1.4cc92913-386c-5909-9d43-bb30f706ed24",
+      "secondRecordId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review.goal-05",
+      "firstRunId": "bio23-current-native-A-part-2-actual-review-v1",
+      "secondRunId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d42c8cf0-9225-5f05-816a-914fc3caa116",
+      "firstRecordId": "bio23-current-native-A-part-2-actual-review-v1.d42c8cf0-9225-5f05-816a-914fc3caa116",
+      "secondRecordId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review.goal-06",
+      "firstRunId": "bio23-current-native-A-part-2-actual-review-v1",
+      "secondRunId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ab489050-c165-5901-b420-bfeb33511eb5",
+      "firstRecordId": "bio23-current-native-A-part-2-actual-review-v1.ab489050-c165-5901-b420-bfeb33511eb5",
+      "secondRecordId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review.goal-07",
+      "firstRunId": "bio23-current-native-A-part-2-actual-review-v1",
+      "secondRunId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6f6ee02f-65f4-5fb4-b859-8f8c8fda0865",
+      "firstRecordId": "bio23-current-native-A-part-2-actual-review-v1.6f6ee02f-65f4-5fb4-b859-8f8c8fda0865",
+      "secondRecordId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review.goal-08",
+      "firstRunId": "bio23-current-native-A-part-2-actual-review-v1",
+      "secondRunId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6f313681-5e31-5c82-b388-336d85ab1663",
+      "firstRecordId": "bio23-current-native-A-part-2-actual-review-v1.6f313681-5e31-5c82-b388-336d85ab1663",
+      "secondRecordId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review.goal-09",
+      "firstRunId": "bio23-current-native-A-part-2-actual-review-v1",
+      "secondRunId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "797a233c-56ed-58a0-b451-5ae5d4bd21bf",
+      "firstRecordId": "bio23-current-native-A-part-2-actual-review-v1.797a233c-56ed-58a0-b451-5ae5d4bd21bf",
+      "secondRecordId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review.goal-10",
+      "firstRunId": "bio23-current-native-A-part-2-actual-review-v1",
+      "secondRunId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2a5b22f5-5ef3-5d95-8f75-21ca76ad1ce2",
+      "firstRecordId": "bio23-current-native-A-part-2-actual-review-v1.2a5b22f5-5ef3-5d95-8f75-21ca76ad1ce2",
+      "secondRecordId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review.goal-11",
+      "firstRunId": "bio23-current-native-A-part-2-actual-review-v1",
+      "secondRunId": "biologie-molecular-genetics-twenty-three-current394-native-v1-part-2-independent-b.actual-native-review",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

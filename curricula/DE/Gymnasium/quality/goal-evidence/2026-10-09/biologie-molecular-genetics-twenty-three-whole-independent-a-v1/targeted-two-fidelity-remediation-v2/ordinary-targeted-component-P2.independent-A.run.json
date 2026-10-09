@@ -1,0 +1,51 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "bio23-targeted-two-fidelity-v2-independent-A-component-P2",
+  "bundleFingerprint": "sha256:e490a1e60f5a810f1ecc59d194bf3fc08bda5b02e67cd549260e0935384cb8da",
+  "bookDigest": "sha256:fec678cff56a9a232d2ce5f1989e4ea0206eb1bf4f4ca4f7175006c282950804",
+  "provider": "OpenAI",
+  "model": "unexposed-by-tooling",
+  "role": "subject_reviewer",
+  "promptFamilyId": "bio23-targeted-two-fidelity-science-component-P2-A-v2",
+  "promptFingerprint": "sha256:6b9298dd7ac1a9592dd8a952cb51f5cf833b2c9f3c5c86a7b8a684f6958c88b3",
+  "criteriaFingerprint": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8",
+  "generationParametersFingerprint": "sha256:1db9c47a90ef52367528c6c3ef3e5340c2ff60aa831d67f785f92d95102acb43",
+  "independenceGroupId": "bio23-targeted-two-fidelity-independent-A",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "0eddd781-90aa-5120-a24f-c7e38327162c",
+    "d42c8cf0-9225-5f05-816a-914fc3caa116"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:fec678cff56a9a232d2ce5f1989e4ea0206eb1bf4f4ca4f7175006c282950804"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:1995d28d276cffc0b451b0388c60906145bfa170550e1ffe9260cb7130378c67"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:6b9298dd7ac1a9592dd8a952cb51f5cf833b2c9f3c5c86a7b8a684f6958c88b3"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:331d50bf11f99e3de56cf4356034ebbc37fe5b6d47d28d1edd167da57915c944"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-10-09T04:25:12.345743+00:00",
+  "completedAt": "2026-10-09T04:32:02.375Z",
+  "status": "completed",
+  "outputDigest": "sha256:306b3af9377e47f16d05ce74dd84288767878f5921d6b0750b6b89d7ca7fea20",
+  "toolchainVersion": "positive-understanding-evidence-v2-targeted-independent-component-materialization"
+}
