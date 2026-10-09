@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Konzentrationsbedingte Gleichgewichtsverschiebungen experimentell untersuchen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `d2d735de-bede-5310-8aeb-8bb7562c7b75`
+- Titel: Konzentrationsbedingte Gleichgewichtsverschiebungen experimentell untersuchen
+- Beschreibung: Die lernende Person kann an einem vorgegebenen homogenen Gleichgewicht eine einzelne Konzentrationsänderung unter den vorgegebenen Sicherheitsbedingungen experimentell untersuchen, Vergleichsbeobachtungen mit einer Referenz protokollieren und die beobachtete Verschiebung mit dem Prinzip von Le Chatelier unter Angabe der Grenzen des verwendeten Modells erklären.
+
+## Generator
+
+- Provider: OpenAI / ChatGPT-Codex built-in image_gen
+- Status: pilot
+- Quellbild: `d2d735de-bede-5310-8aeb-8bb7562c7b75.png`
+- Public Asset: `/assets/goal-visualizations/chemie/d2d735de-bede-5310-8aeb-8bb7562c7b75/d2d735de-bede-5310-8aeb-8bb7562c7b75.png`
+
+## Prompt
+
+```text
+Use case: precise-object-edit / scientific-educational. Correct ONLY the iron(III) reagent colour in this chemistry illustration. The liquid in the prepared reagent bottle labelled Fe³⁺, the liquid inside the dosing pipette, and the two falling drops must be very pale transparent yellow, NOT red or deep orange. The bottle glass may remain amber; clearly distinguish pale yellow reagent contents from amber glass. This dilute prepared iron(III) nitrate reagent does not already contain the red thiocyanate complex. KEEP everything else unchanged: all three red homogeneous test-tube solutions, the deeper red V solution, exact R/K/V and Fe³⁺ labels, equal tube sizes, tray, goggles, title, layout, friendly pale-blue comic style, wide aspect ratio and image size. Do not add any objects, formula, value, text or technical IDs. This is a targeted reagent-colour correction, not a new composition.\n
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

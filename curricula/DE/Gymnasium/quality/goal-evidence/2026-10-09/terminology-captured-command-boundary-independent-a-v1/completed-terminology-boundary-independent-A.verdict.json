@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "contentLicense": "Apache-2.0",
+  "reviewer": "Codex independent A; checker change not authored by reviewer",
+  "reviewedAt": "2026-10-09T14:02:10.644959+00:00",
+  "actualOwnFIRST": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/terminology-captured-command-boundary-independent-a-v1/actual-terminology-boundary-independent-A.technical-FIRST.v2.json",
+    "sha256": "a756cc7915a479e4d6681a1c85c57d4d2ea094c7cf54ad731c0523ec53cfa4cd",
+    "bytes": 7878
+  },
+  "originalUnsealedFIRSTSnapshot": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/terminology-captured-command-boundary-independent-a-v1/actual-terminology-boundary-independent-A.initial-unsealed-source-quotes.json.snapshot",
+    "sha256": "cc1b9d04abb874a9c26be905eb3849fedee11488ffde08dd655d7124cc25d96c",
+    "bytes": 5980
+  },
+  "actualCheckerObservedSnapshot": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/terminology-captured-command-boundary-independent-a-v1/checker.observed-original.ts.snapshot",
+    "sha256": "e5410993782cbef04d4dda6ba11313387065dd3b473e166b787411182abe1b46",
+    "bytes": 27086
+  },
+  "rootNormalPASSObservedOnlyAfterFIRST": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/terminology-captured-command-boundary-independent-a-v1/normal-current-PASS-terminal.exact-observed.json",
+    "sha256": "1156dd41116ca6d8d879ede24fef77fdca81b9d94c096c047e953c1dc17e5f10",
+    "bytes": 1521
+  },
+  "originalEightCasesActuallyExecuted": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/terminology-captured-command-boundary-independent-a-v1/actual-original-eight-cases.independent-a.actual.json",
+    "sha256": "13583da6f499d89ce40b21e2bc7232a0a24506efc73e679323d04cab77d78d05",
+    "bytes": 1433
+  },
+  "ownAdditionalExecutedProbes": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/terminology-captured-command-boundary-independent-a-v1/actual-malformed-argv-boundary.independent-a.actual.json",
+    "sha256": "15be551ae4a5068ca0d376159f62ebae801f5ce9e4aa3570cd832707d4fdc83c",
+    "bytes": 1716
+  },
+  "judgment": "HOLD solely for malformed argv classification; other reviewed policy changes are supported",
+  "findings": [
+    {
+      "id": "TRM-A-ARGV-001",
+      "severity": "medium",
+      "status": "open_executed",
+      "rootCause": "Array.isArray(command.argv) alone does not establish executable argv. Exact path/hash/bytes and integer exit do not repair a structurally invalid command vector.",
+      "actualIncorrectlyExemptedCases": [
+        {
+          "name": "empty argv",
+          "argv": [],
+          "expectedCapture": false,
+          "actualCapture": true,
+          "expectationPassed": false
+        },
+        {
+          "name": "numeric executable argv",
+          "argv": [
+            42
+          ],
+          "expectedCapture": false,
+          "actualCapture": true,
+          "expectationPassed": false
+        },
+        {
+          "name": "null executable argv",
+          "argv": [
+            null
+          ],
+          "expectedCapture": false,
+          "actualCapture": true,
+          "expectationPassed": false
+        },
+        {
+          "name": "empty executable string",
+          "argv": [
+            ""
+          ],
+          "expectedCapture": false,
+          "actualCapture": true,
+          "expectationPassed": false
+        },
+        {
+          "name": "whitespace-only executable string",
+          "argv": [
+            "  "
+          ],
+          "expectedCapture": false,
+          "actualCapture": true,
+          "expectationPassed": false
+        },
+        {
+          "name": "nonstring argument after executable",
+          "argv": [
+            "fixture-command",
+            42
+          ],
+          "expectedCapture": false,
+          "actualCapture": true,
+          "expectationPassed": false
+        }
+      ],
+      "requiredCorrection": "Require nonempty all-string argv and a nonblank argv[0]. Permit empty strings after the executable token, as they are valid process arguments. No directory exemptions, retired-rule relaxation or receipt-filename-only skipping."
+    }
+  ],
+  "otherSupportedBoundaries": {
+    "original8MeaningfulCasesPassed": 8,
+    "historicalOccurrencesActualPathLineColumnSHA": 4,
+    "rulesChanged": 0,
+    "excludedDirectorySetsChanged": 0,
+    "arbitraryFilenameSkipAdded": false,
+    "modifiedHashOrByteCountNotExempted": true,
+    "missingNumericTerminalExitNotExempted": true,
+    "nonarrayArgvNotExempted": true,
+    "plainProviderPromptNotExempted": true,
+    "validFailedCommandCaptureIsData": true,
+    "newAuthoredTermsRemainSubjectToExistingRules": true
+  },
+  "scope": "Technical terminology guard only. Successful current full terminology terminal is confirmed for observed checker bytes; it does not refute the executed additional structural boundary failures. No curriculum/science/human/M7 approval follows.",
+  "activeCheckerWrites": 0,
+  "sourceQuoteTransport": "Original unsealed copied-quote metadata and raw diff are exactly preserved in snapshot archives. Operative FIRST uses exact source locations/hashes; raw git diff uses a genuine argv/exit/bytes/hash stdout receipt. All scientific and technical opinions are unchanged."
+}

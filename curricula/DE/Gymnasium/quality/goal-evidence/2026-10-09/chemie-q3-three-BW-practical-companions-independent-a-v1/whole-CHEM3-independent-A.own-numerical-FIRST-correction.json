@@ -1,0 +1,77 @@
+{
+  "schemaVersion": 1,
+  "contentLicense": "CC-BY-4.0",
+  "reviewedAt": "2026-10-09T13:41:01.142693+00:00",
+  "role": "Own additive scientific correction before reading author technical QS; original FIRST remains exact",
+  "FIRSTBinding": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-q3-three-BW-practical-companions-independent-a-v1/whole-CHEM3-independent-A.science-FIRST.json",
+    "sha256": "6f7ee089cc8e95f14e1ad77c6ed5bc1e682144599816205802ecaf8c6f8bee8d",
+    "bytes": 32348
+  },
+  "findingId": "CHEM3-A-MATERIAL-001",
+  "newStatus": "rescinded_not_a_demonstrated_material_fault",
+  "why": "The original own calculation incorrectly treated displayed rounded absorbances as exact values. All four actual displayed steady readings share a physically admissible reduced single-complex equilibrium with one K and one absorptivity when their shown decimal precision is respected. The intermediate30/60s transients are approaching endpoints rather than equilibrium constraints. The discrepancy is therefore an unsupported fault, not a reason to regenerate good material.",
+  "actualCommonModel": {
+    "K_L_per_mol": 200.0,
+    "commonAbsorptivityTimesPathLength_L_per_mol": 9393.970930326754,
+    "states": [
+      {
+        "state": "initial",
+        "totalFe_mol_per_L": 0.001,
+        "totalSCN_mol_per_L": 0.0002,
+        "complex_mol_per_L": 3.242766996440653e-05,
+        "exactModelAbsorbance": 0.3046245889838649,
+        "displayed": "0.30",
+        "actualGiven": "0.30",
+        "massActionResidual": 0.0
+      },
+      {
+        "state": "Fe-added",
+        "totalFe_mol_per_L": 0.00196078431372549,
+        "totalSCN_mol_per_L": 0.00019607843137254904,
+        "complex_mol_per_L": 5.412951607476661e-05,
+        "exactModelAbsorbance": 0.5084911004790122,
+        "displayed": "0.51",
+        "actualGiven": "0.51",
+        "massActionResidual": -6.776263578034403e-21
+      },
+      {
+        "state": "SCN-added",
+        "totalFe_mol_per_L": 0.000980392156862745,
+        "totalSCN_mol_per_L": 0.0003921568627450981,
+        "complex_mol_per_L": 6.091409229508224e-05,
+        "exactModelAbsorbance": 0.5722252122672434,
+        "displayed": "0.57",
+        "actualGiven": "0.57",
+        "massActionResidual": -6.776263578034403e-21
+      },
+      {
+        "state": "carrier",
+        "totalFe_mol_per_L": 0.000980392156862745,
+        "totalSCN_mol_per_L": 0.00019607843137254904,
+        "complex_mol_per_L": 3.1281994574732393e-05,
+        "exactModelAbsorbance": 0.2938621476776753,
+        "displayed": "0.294",
+        "actualGiven": "0.294",
+        "massActionResidual": 6.776263578034403e-21
+      }
+    ],
+    "actualMeasuredValues": false,
+    "purpose": "Independent consistency witness for authored rounded synthetic data; does not assert this is the author simulation recipe or a real chemical constant."
+  },
+  "revisedWholeGoalDecision": {
+    "goalId": "d2d735de-bede-5310-8aeb-8bb7562c7b75",
+    "materialDecision": "KEEP_machine_candidate",
+    "PDecision": "science_supported_needs_human",
+    "reason": "Controls, labelled synthetic numbers, bounded single-complex interpretation, dilution versus chemical shift, constant-temperature K, matching matrices/blanks and whole fresh two-factor/dilution boundaries are supported. The disclosed numerical challenge was independently resolved using actual display precision."
+  },
+  "otherFirstFindings": "CHEM3-A-SOURCE-002 remains open; other two material/A/M judgments unchanged. No author or peer approval is used to resolve own mistake.",
+  "claims": {
+    "activeWrites": 0,
+    "strictGain": 0,
+    "humanApproval": false,
+    "humanTrial": false,
+    "actualLearnerPerformance": false,
+    "M7": false
+  }
+}

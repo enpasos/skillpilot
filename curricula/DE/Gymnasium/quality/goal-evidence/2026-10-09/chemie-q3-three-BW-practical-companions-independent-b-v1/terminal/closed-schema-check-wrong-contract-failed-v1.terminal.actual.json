@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "label": "closed-schema-check-wrong-contract-failed-v1",
+  "argv": [
+    "python3",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-q3-three-BW-practical-companions-independent-b-v1/check_actual_schemas_and_portability.independent-b.py"
+  ],
+  "executionCwdDiagnostic": "/home/enpasos/projects/skillpilot",
+  "actualExitCode": 1,
+  "observedFailure": "jsonschema.exceptions.ValidationError: '$schema' is a required property",
+  "actualFailingInput": "chemie-q3-three-BW-context-bound-practical-companions-author-v1/candidate/BW-gk.learner-view.inactive-successor.json",
+  "attemptedWrongContract": "contracts/curriculum-package/v1/composition-view.schema.json",
+  "diagnosis": "The curriculum-package closed interchange/export contract was erroneously applied to the existing minimal runtime composition-view input. Production normalizeCompositionView/compileCompositionView validates the actual runtime contract and all5 views already pass. Not a requested source/goal change or quality threshold relaxation.",
+  "toolErrorOutputWasTruncated": true,
+  "reviewScienceChanged": false,
+  "needsAuthorContentCorrection": false
+}

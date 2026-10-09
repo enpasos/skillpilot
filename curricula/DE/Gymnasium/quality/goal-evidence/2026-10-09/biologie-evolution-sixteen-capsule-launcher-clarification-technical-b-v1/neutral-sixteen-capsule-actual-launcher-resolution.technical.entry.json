@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "license": "CC-BY-4.0",
+  "role": "Additive exact executable-resolution clarification; historical actual exit0 receipt preserved",
+  "historicalReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-sixteen-current-inactive-native-comparison-technical-b-v1/checks/P16-existing-real-native-capsule.terminal.actual.json",
+    "sha256": "sha256:0d3289e0a54ffbc9120cc43aec6a97de9d192d1609244826bdb42551f4f9a3fc",
+    "bytes": 1090
+  },
+  "historicalReceiptArgvPresentation": "Executable argv0 was represented repository-relative to the main checkout while cwd was the actual inactive capsule. It was not a capsule-relative executable.",
+  "actualLauncherResolution": {
+    "launcherRepositoryRoot": "main checkout (resolved from repository cwd at runtime)",
+    "launcherRepositoryRelativePath": "app/node_modules/.bin/tsx",
+    "executionWorkingDirectoryRelativeToMainRepository": "tmp/biologie-evolution-native17-current394-capsule",
+    "scriptArgumentRelativeToExecutionDirectory": "app/scripts/positiveGoalEvidenceReview.ts",
+    "ordinaryScriptMainBinding": {
+      "path": "app/scripts/positiveGoalEvidenceReview.ts",
+      "sha256": "sha256:179f602f639479b683c5477462c664dd930a0055960eb6320f3eb33c6d8d9ff6",
+      "bytes": 18781
+    },
+    "ordinaryScriptCapsuleBinding": {
+      "path": "tmp/biologie-evolution-native17-current394-capsule/app/scripts/positiveGoalEvidenceReview.ts",
+      "sha256": "sha256:179f602f639479b683c5477462c664dd930a0055960eb6320f3eb33c6d8d9ff6",
+      "bytes": 18781
+    },
+    "configArgumentRelativeToExecutionDirectory": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-sixteen-current-inactive-native-comparison-technical-b-v1/candidate/P16.inactive.config.json",
+    "mainAndCapsuleConfigBytesExact": true
+  },
+  "currentlyVerifiedExecutionTopology": {
+    "mainRepositoryLauncherExecutable": true,
+    "capsuleOwnRelativeLauncherExists": false,
+    "capsuleNormalScriptByteExactToCurrentOrdinaryCode": true,
+    "noSymlinkIntroduced": true
+  },
+  "recipe": "Resolve the main-checkout launcher to absolute once, then call that resolved executable with ordinary capsule-relative script/config args and cwd set to the inactive capsule. Copy any root-specific current candidate config/material into capsule before running; that future invocation is separate evidence.",
+  "actualNewNormalCheckStarted": false,
+  "newExitCodeClaimed": false,
+  "strictGain": 0,
+  "activeWrites": 0,
+  "createdAt": "2026-10-09T13:22:51.376708+00:00"
+}

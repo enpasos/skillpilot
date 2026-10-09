@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "bio2ae2-current-native-independent-c-20261009-v1",
+  "campaignId": "biologie-one-reviewed-applicability-current-native-v1-campaign-a",
+  "roundId": "biologie-one-reviewed-applicability-current-native-v1-independent-a",
+  "batchId": "biologie-one-reviewed-applicability-current-native-v1-independent-a.batch-001",
+  "batchInputFingerprint": "sha256:09162e9b9db7337f564c7e1f4e805d9fbc40b1b35615e343b5de84cfbe3edd27",
+  "bundleFingerprint": "sha256:de00c41787f8aca1e07d9a9794d48129ba9d0c6a5fc734193af596a4bb1f2ea8",
+  "bookDigest": "sha256:c19345bbf1e6c09b9847d33bb157ee932fc30cc4d8aa9702b36b345880233985",
+  "provider": "OpenAI",
+  "model": "GPT-6 family Codex reviewer C; exact runtime backend and sampling parameters unavailable",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-review-v1",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:48864e94d10bb3e934b18ac562b9a726a253eb49f1f6369d16c2cae2bb6ded83",
+  "independenceGroupId": "biologie-one-reviewed-applicability-current-native-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "2ae2da43-73d5-578f-84f4-be0585a7d8f9"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:22259035e5db3b487c1fcc463fec6166d0abbbf14b5a81042f17d52db0369d42"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:abc6aae982741137cdcdf76629abd4019425ffa9659f7fdedc8a00b4f7cbe48d"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:7d9be976b7a1000d7a081a577f93a4d2f4888e188513126f92ef673291ebf4d5"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:09162e9b9db7337f564c7e1f4e805d9fbc40b1b35615e343b5de84cfbe3edd27"
+    }
+  ],
+  "startedAt": "2026-10-09T15:50:30.540978+00:00",
+  "completedAt": "2026-10-09T15:51:18.100335+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:a1b20565cdd8643526ee71e01b1bc72f47f36a6d407dc73988c14e1767143c28",
+  "toolchainVersion": "genuine-current2ae2-targeted-native-independent-c-FIRST-20261009"
+}

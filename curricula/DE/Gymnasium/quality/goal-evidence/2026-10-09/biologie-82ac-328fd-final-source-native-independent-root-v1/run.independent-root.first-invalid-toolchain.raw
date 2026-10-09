@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-two-source-prerequisite-native-independent-root-20261009-v1",
+  "campaignId": "biologie-two-primary-locator-and-digital-prerequisite-native-v1-campaign-a",
+  "roundId": "biologie-two-primary-locator-and-digital-prerequisite-native-v1-independent-a",
+  "batchId": "biologie-two-primary-locator-and-digital-prerequisite-native-v1-independent-a.batch-001",
+  "batchInputFingerprint": "sha256:0b04b3dbe8895f03548eb2ec4c25caf20b57562410c59e22386e366bb9976369",
+  "bundleFingerprint": "sha256:a74d0038df4977dd8ac1d3e02a09b359d1260bcb1bd0b3746551142b1dd31ce3",
+  "bookDigest": "sha256:7985fd3c8e5e75c7859cb74292c4b4cbac125493eb80db1905c9d95032b13d04",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex; sampling parameters not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-review-v1",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:06324ecd2f0d093d3722679bfd55f3e5f9f81942d7b35e25d22c5fbc667261e8",
+  "independenceGroupId": "biologie-two-primary-locator-and-digital-prerequisite-native-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "82acfbde-9ce8-5658-892e-4dcfb1c3a1f1",
+    "328fd9d3-d3c3-5731-a8da-a909143d3962"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:b3d05dd9b5445d13a5f6de97a1aaebcc98febd76ce094bbaa9e7718d6ccea912"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:48bb279d9a3d440f75b94a45950426a9c89223df0d98377ddd6b6b1cadb9a5ef"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:c45e7c0cdf3c1e7867aead481f5df11fdb8740d8b7bd2f504add3be5bbe7e1a7"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:0b04b3dbe8895f03548eb2ec4c25caf20b57562410c59e22386e366bb9976369"
+    }
+  ],
+  "startedAt": "2026-10-09T14:36:38.000219+00:00",
+  "completedAt": "2026-10-09T14:38:27.604256+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:5ff495b060d8da93479b4b8243e0b7f29fc5ccbaa5aebb1856026694ba752122",
+  "toolchainVersion": "root genuine scoped native/source FIRST then ordinary D2 record validation"
+}

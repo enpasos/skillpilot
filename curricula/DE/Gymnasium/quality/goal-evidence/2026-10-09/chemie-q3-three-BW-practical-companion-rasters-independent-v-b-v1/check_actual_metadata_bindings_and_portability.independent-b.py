@@ -1,0 +1,290 @@
+# SPDX-License-Identifier: Apache-2.0
+"""Scoped technical verification after this reviewer's frozen judgments."""
+import copy
+import hashlib
+import importlib.util
+import json
+from pathlib import Path
+import subprocess
+
+import jsonschema
+from PIL import Image
+
+
+ROOT = Path.cwd()
+OWN = Path(__file__).resolve().parent
+BASE = OWN.parent
+AUTHOR = BASE / 'chemie-q3-three-BW-practical-companion-rasters-author-candidate-v1'
+SUCCESSOR = BASE / 'chemie-q3-three-BW-practical-companion-raster-device-metadata-author-successor-v2'
+SCIENCE = BASE / 'chemie-q3-three-BW-context-bound-practical-companions-author-v1'
+TARGET = 'a0f6ba09-f072-5887-a797-fa369453c62a'
+IDS = ['d2d735de-bede-5310-8aeb-8bb7562c7b75', TARGET,
+       '7b39fa19-fec3-575e-9324-a3226b703358']
+
+
+def load(path):
+    return json.loads(path.read_text())
+
+
+def binding(path):
+    raw = path.read_bytes()
+    return {'path': str(path.relative_to(ROOT)),
+            'sha256': hashlib.sha256(raw).hexdigest(), 'bytes': len(raw)}
+
+
+checked_bindings = {}
+
+
+def verify(row):
+    path = Path(row['path'])
+    assert not path.is_absolute() and '..' not in path.parts, row
+    actual = binding(ROOT / path)
+    assert actual['sha256'] == row['sha256'], row
+    if 'bytes' in row:
+        assert actual['bytes'] == row['bytes'], row
+    assert not (ROOT / path).is_symlink(), row
+    checked_bindings[str(path)] = actual
+    return actual
+
+
+def visit_bindings(value):
+    if isinstance(value, dict):
+        if {'path', 'sha256'} <= value.keys():
+            verify(value)
+        for child in value.values():
+            visit_bindings(child)
+    elif isinstance(value, list):
+        for child in value:
+            visit_bindings(child)
+
+
+def diffs(left, right, path=''):
+    if type(left) is not type(right):
+        return [{'pointer': path, 'before': left, 'after': right}]
+    if isinstance(left, dict):
+        result = []
+        for key in sorted(set(left) | set(right)):
+            result += diffs(left.get(key), right.get(key), path + '/' + key)
+        return result
+    if isinstance(left, list):
+        assert len(left) == len(right), path
+        return [delta for i, (a, b) in enumerate(zip(left, right))
+                for delta in diffs(a, b, path + '/' + str(i))]
+    return [] if left == right else [{'pointer': path, 'before': left, 'after': right}]
+
+
+# Actual preceding pixel judgments are retained byte-exact, not regenerated.
+own_first = OWN / 'three-actual-rasters.independent-b.pixel-FIRST.verdict.json'
+assert binding(own_first)['sha256'] == 'a6fd4c57469220e88ecb7d088715093aae47a5dc1444e86bd2285288d61bc82a'
+own_freeze = OWN / 'three-actual-rasters.independent-b.pixel-FIRST.freeze.json'
+assert binding(own_freeze)['sha256'] == '20b335ba9fe19a56b7572004f66a324c47dde495e1c3e67d6527b9c8dbea55f7'
+visit_bindings(load(own_first))
+visit_bindings(load(OWN / 'three-actual-rasters.independent-b.metadata-targeted-FIRST.verdict.json'))
+
+old = load(AUTHOR / 'candidate/full484-381.with-three-image-candidates.inactive-canonical.json')
+new = load(SUCCESSOR / 'candidate/whole484.only-a0f6-accessibility-device-word.inactive.json')
+assert len(old['goals']) == len(new['goals']) == 484
+model_deltas = diffs(old, new)
+assert len(model_deltas) == 1
+delta = model_deltas[0]
+assert delta['pointer'] == '/goals/482/resourceLinks/0/altText'
+assert new['goals'][482]['id'] == TARGET
+assert delta['after'] == delta['before'].replace('Messpipetten', 'Messspritzen')
+assert delta['before'].count('Messpipetten') == 1
+assert load(SUCCESSOR / 'candidate/whole484.before-word-correction.inactive.json') == old
+
+science_model = load(SCIENCE / 'candidate/full484-381.inactive-canonical.json')
+masked = copy.deepcopy(new)
+science_by = {goal['id']: goal for goal in science_model['goals']}
+resource_changes = []
+for goal in masked['goals']:
+    original = science_by[goal['id']]
+    if goal != original:
+        resource_changes.append(goal['id'])
+        assert goal['id'] in IDS
+        assert goal['resourceLinks'][0]['skillpilotId'] == goal['id']
+        if 'resourceLinks' in original:
+            goal['resourceLinks'] = original['resourceLinks']
+        else:
+            del goal['resourceLinks']
+        assert goal == original
+assert set(resource_changes) == set(IDS) and masked == science_model
+
+old_meta = load(AUTHOR / 'three-selected-assets-and-accessible-metadata.author-candidate.json')
+new_meta = load(SUCCESSOR / 'candidate/three-selected-assets-and-accessible-metadata.device-word-only.successor.json')
+metadata_deltas = diffs(old_meta, new_meta)
+assert {delta['pointer'] for delta in metadata_deltas} == {
+    '/rows/1/actualImageReconstruction/path',
+    '/rows/1/actualImageReconstruction/sha256', '/rows/1/altTextDe'}
+restored_meta = copy.deepcopy(new_meta)
+restored_meta['rows'][1]['actualImageReconstruction'] = old_meta['rows'][1]['actualImageReconstruction']
+restored_meta['rows'][1]['altTextDe'] = old_meta['rows'][1]['altTextDe']
+assert restored_meta == old_meta
+assert new_meta['rows'][1]['altTextDe'] == old_meta['rows'][1]['altTextDe'].replace('Messpipetten', 'Messspritzen')
+
+actual_dimensions = []
+for row in new_meta['rows']:
+    visit_bindings(row)
+    gid = row['goalId']
+    assert gid in IDS
+    assert row['provider'] == 'OpenAI / ChatGPT-Codex built-in image_gen'
+    assert row['modelVersion'] == 'not exposed by built-in tool'
+    assert row['license'] == 'CC-BY-4.0' and row['humanApproval'] is False
+    for name, expected in [('selectedPNG', (1672, 941)),
+                           ('display360', (360, 203)), ('display680', (680, 383))]:
+        path = ROOT / row[name]['path']
+        with Image.open(path) as image:
+            assert image.format == 'PNG' and image.size == expected
+            image.verify()
+        actual_dimensions.append({'goalId': gid, 'role': name,
+                                  'dimensions': list(expected), 'binding': binding(path)})
+    source = AUTHOR / 'source-assets/chemie' / gid
+    if gid == TARGET:
+        source = SUCCESSOR / 'source-assets/chemie' / gid
+    assert (source / (gid + '.png')).read_bytes() == (ROOT / row['selectedPNG']['path']).read_bytes()
+    sidecar = source / 'image-reconstruction-prompt.de.md'
+    reconstruction = (ROOT / row['actualImageReconstruction']['path']).read_text()
+    assert reconstruction.rstrip() in sidecar.read_text()
+    assert (ROOT / row['actualFinalPrompt']['path']).read_text().rstrip() in (source / 'prompt.de.md').read_text()
+    checked_bindings[str(sidecar.relative_to(ROOT))] = binding(sidecar)
+    checked_bindings[str((source / 'prompt.de.md').relative_to(ROOT))] = binding(source / 'prompt.de.md')
+
+old_recon = (AUTHOR / 'prompts' / (TARGET + '.actual-image-reconstruction.de.txt')).read_text()
+new_recon = (SUCCESSOR / 'candidate/a0f6-device-word-only.actual-image-reconstruction.de.txt').read_text()
+assert old_recon.count('Messpipetten') == 1
+assert new_recon == old_recon.replace('Messpipetten', 'Messspritzen')
+old_side = AUTHOR / 'source-assets/chemie' / TARGET / 'image-reconstruction-prompt.de.md'
+new_side = SUCCESSOR / 'source-assets/chemie' / TARGET / 'image-reconstruction-prompt.de.md'
+assert new_side.read_text() == old_side.read_text().replace('Messpipetten', 'Messspritzen')
+assert (AUTHOR / 'source-assets/chemie' / TARGET / 'prompt.de.md').read_bytes() == (SUCCESSOR / 'source-assets/chemie' / TARGET / 'prompt.de.md').read_bytes()
+
+trace_results = []
+prompt_representation_deltas = []
+for path in sorted((AUTHOR / 'generated').rglob('actual-built-in-tool-provider-trace.*.json')):
+    trace = load(path)
+    request_path = path.with_name(path.name.replace('provider-trace', 'request-and-output-hint').replace('.json', '.raw.txt'))
+    request = load(request_path)
+    prompt_path = AUTHOR / trace['actualArguments']['promptPath']
+    assert request['tool'] == trace['tool'] == 'image_gen.imagegen'
+    actual_request_prompt = request['arguments']['prompt']
+    stored_prompt = prompt_path.read_text()
+    if actual_request_prompt != stored_prompt:
+        # Compare and disclose immutable history; the raw request is authoritative.
+        # Do not call this byte equality or silently trim a stored provider input.
+        assert stored_prompt == actual_request_prompt + '\\n'
+        prompt_representation_deltas.append({
+            'goalId': trace['goalId'], 'storedPrompt': binding(prompt_path),
+            'actualRequest': binding(request_path),
+            'storedTrailer': 'literal backslash+n, two extra characters',
+            'actualTransmittedPromptSHA256': hashlib.sha256(actual_request_prompt.encode()).hexdigest(),
+            'actualTransmittedPromptBytes': len(actual_request_prompt.encode()),
+            'substantiveBodyExact': True, 'historicalBytesChanged': False})
+    assert request['arguments']['transparent_background'] is False
+    assert request['output_hint'] == trace['actualOutputHint']
+    assert request['observedToolResponseKeys'] == trace['actualReturnedKeys']
+    assert verify(request['actualImagePNG']) == verify(trace['actualProviderPNGBytes'])
+    for actual, relative in zip(request['arguments'].get('referenced_image_paths', []),
+                                trace['actualArguments'].get('referenced_image_paths', [])):
+        assert Path(actual).resolve() == (AUTHOR / relative).resolve()
+        assert (AUTHOR / relative).is_file()
+    assert len(request['arguments'].get('referenced_image_paths', [])) == len(trace['actualArguments'].get('referenced_image_paths', []))
+    trace_results.append({'trace': binding(path), 'rawRequest': binding(request_path),
+                          'prompt': binding(prompt_path), 'image': trace['actualProviderPNGBytes'],
+                          'scope': 'Author actual-generation history; no own call or pixel approval of rejected attempts'})
+assert len(trace_results) == 6
+assert len(prompt_representation_deltas) == 3
+
+sealed_payload_counts = []
+for path in [AUTHOR / 'three-image-candidate-author.final.freeze.json',
+             SUCCESSOR / 'device-word-only-author.final.freeze.json']:
+    seal = load(path)
+    for row in seal['allOwnPackageFiles']:
+        verify(row)
+    sealed_payload_counts.append({'seal': binding(path), 'payloadCount': len(seal['allOwnPackageFiles'])})
+
+spec = importlib.util.spec_from_file_location('normal_validator', ROOT / 'scripts/validate_schemas.py')
+normal_validator = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(normal_validator)
+runtime_schema = load(ROOT / 'docs/landscape-runtime.schema.json')
+jsonschema.Draft202012Validator.check_schema(runtime_schema)
+for data in [old, new, science_model]:
+    jsonschema.validate(instance=data, schema=runtime_schema)
+
+# These are only packages owned in this assignment chain, not other B reviewers.
+names = [
+    'biologie-evolution-twelve-rasters-independent-v-b-v1',
+    'biologie-evolution-two-material-findings-independent-b-followup-v1',
+    'biologie-evolution-two-semantic-children-independent-b-v1',
+    'biologie-evolution-two-semantic-child-rasters-independent-v-b-v1',
+    'biologie-evolution-seven-source-course-successors-independent-b-v1',
+    'biologie-evolution-current17-and-protected-contexts-native-independent-b-v1',
+    'biologie-evolution-HE-partial-edges-ST-sampling-independent-b-followup-v1',
+    'biologie-evolution-sixteen-current-inactive-native-comparison-technical-b-v1',
+    'biologie-evolution-sixteen-bounded-gate-eligibility-independent-b-addendum-v1',
+    'biologie-evolution-sixteen-capsule-launcher-clarification-technical-b-v1',
+    'biologie-two-child-historical-generator-input-terminology-independent-b-v1',
+    'biologie-source7-five-existing-method-owners-independent-b-v1',
+    'biologie-source7-SN-ST-SekI-82ac-stage-route-independent-b-followup-v1',
+    'biologie-82ac-328fd-final-source-native-independent-b-v1',
+    'biologie-2ae2-9cd0-reviewed-applicability-sync-technical-b-v1',
+    'biologie-2ae2-current-applicability-native-independent-b-v1',
+    'chemie-q3-three-BW-practical-companions-independent-b-v1', OWN.name]
+parsed = []
+jsonl_rows = 0
+for name in names:
+    folder = BASE / name
+    assert folder.is_dir(), folder
+    for path in sorted(folder.rglob('*')):
+        assert not path.is_symlink(), path
+        if path.suffix == '.json':
+            assert normal_validator.validate_file(str(path.relative_to(ROOT)), runtime_schema)
+            parsed.append(binding(path))
+        elif path.suffix == '.jsonl':
+            lines = path.read_text().splitlines()
+            for line in lines:
+                if line.strip():
+                    json.loads(line)
+                    jsonl_rows += 1
+            parsed.append(binding(path))
+for folder in [AUTHOR, SUCCESSOR]:
+    for path in folder.rglob('*.json'):
+        assert normal_validator.validate_file(str(path.relative_to(ROOT)), runtime_schema)
+
+symlink_errors = normal_validator.curriculum_symlink_errors(ROOT)
+assert not symlink_errors, symlink_errors
+ignore_check = subprocess.run(['git', 'check-ignore', '--stdin'], cwd=ROOT,
+    input='\n'.join(checked_bindings).encode() + b'\n', capture_output=True)
+assert ignore_check.returncode == 1 and not ignore_check.stdout, ignore_check.stdout.decode()
+own_paths = [str(path.relative_to(ROOT)) for path in OWN.rglob('*') if path.is_file()]
+ignore_own = subprocess.run(['git', 'check-ignore', '--stdin'], cwd=ROOT,
+    input='\n'.join(own_paths).encode() + b'\n', capture_output=True)
+assert ignore_own.returncode == 1 and not ignore_own.stdout, ignore_own.stdout.decode()
+
+result = {'schemaVersion': 1, 'codeLicense': 'Apache-2.0',
+    'status': 'PASS targeted technical checks after own FIRST',
+    'modelDeltas': model_deltas, 'metadataDeltas': metadata_deltas,
+    'threeResourcesOnlyAgainstReviewedWholeScience': resource_changes,
+    'other481WholeGoalObjectsExact': True, 'all484NonResourceFieldsExact': True,
+    'actualImageDimensionsAndHashBindings': actual_dimensions,
+    'sixActualAuthorGenerationRequestsBound': trace_results,
+    'storedVersusActualTransmittedPromptRepresentationDeltas': prompt_representation_deltas,
+    'authorRawRequestsAuthoritativeForActualPromptText': True,
+    'historicalAuthorSealsRetained': sealed_payload_counts,
+    'closedRuntimeLandscapeSchemasValidated': 3,
+    'normalExistingValidator': binding(ROOT / 'scripts/validate_schemas.py'),
+    'assignedOwnPackageJSONJSONLParsed': parsed, 'parsedOwnFileCount': len(parsed),
+    'parsedJSONLRowCount': jsonl_rows, 'ordinarySchemaScope': names,
+    'allCurrentPortableHashBindings': list(checked_bindings.values()),
+    'ignoredBoundFiles': 0, 'ignoredOwnFiles': 0, 'symlinkErrors': symlink_errors,
+    'noHistoricalScienceReReview': True, 'normalImportRepeated': False,
+    'nativePreparationStarted': False, 'nativeDApproval': False,
+    'currentPResourceRebindApproval': False, 'activeWrites': 0, 'strictGain': 0}
+output = OWN / 'actual-targeted-metadata-word-deltas-schema-and-portability.independent-b.json'
+assert not output.exists(), output
+output.write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
+json.loads(output.read_text())
+print(json.dumps({'status': 'PASS', 'closedRuntimeSchemas': 3,
+    'parsedOwnFiles': len(parsed), 'parsedJSONLRows': jsonl_rows,
+    'verifiedPortableBindings': len(checked_bindings), 'selectedImages': 3,
+    'actualImagesWithDisplays': 9, 'modelDeltas': len(model_deltas),
+    'metadataDeltas': len(metadata_deltas), 'result': binding(output)}))

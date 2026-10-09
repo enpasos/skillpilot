@@ -9,6 +9,9 @@ gradlew text eol=lf
 .java-version text eol=lf
 .nvmrc text eol=lf
 
+# PDFs are binary artifacts, including originals without early NUL bytes.
+*.pdf binary
+
 # Captured official HTML is primary evidence; retain its actual response bytes.
 # Provider whitespace is part of that evidence, not authored formatting.
 *.actual-official.html -text -whitespace

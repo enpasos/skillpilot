@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "role": "Meaningful regression of the actual current raw-output classifier and its exact byte/path bindings",
+  "actualCheckerPath": "app/scripts/checkTerminology.ts",
+  "actualCheckerSha256": "sha256:cff30e5e91e46ce5572600f30ada4a8214f6b35d59db01d7ebfc3bb233db6f45",
+  "results": [
+    {
+      "name": "Filename alone never exempts an unbound raw-looking file",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "Exactly bound genuine failed-command capture is data",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "name": "Exactly bound captured output in a real batch receipt is data",
+      "expected": true,
+      "actual": true
+    },
+    {
+      "name": "Wrong hash cannot exempt new or edited authored wording",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "Wrong byte count cannot exempt a changed capture",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "A plain file binding is not an execution receipt",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "Without an actual terminal exit no exemption",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "Actual authored/provider prompt remains in scope regardless of receipt text",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "Malformed argv remains checked: []",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "Malformed argv remains checked: [42]",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "Malformed argv remains checked: [null]",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "Malformed argv remains checked: [\"\"]",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "Malformed argv remains checked: [\"  \"]",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "Malformed argv remains checked: [\"fixture-command\",42]",
+      "expected": false,
+      "actual": false
+    },
+    {
+      "name": "An executable command may have an actual empty later argument",
+      "expected": true,
+      "actual": true
+    }
+  ],
+  "allPassed": true,
+  "noScientificOrHumanApproval": true
+}

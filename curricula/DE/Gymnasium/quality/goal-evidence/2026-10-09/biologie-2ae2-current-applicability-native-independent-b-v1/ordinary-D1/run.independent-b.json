@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "bio2ae2-current-applicability-native-independent-b-20261009-v1",
+  "campaignId": "biologie-one-reviewed-applicability-current-native-v1-campaign-b",
+  "roundId": "biologie-one-reviewed-applicability-current-native-v1-independent-b",
+  "batchId": "biologie-one-reviewed-applicability-current-native-v1-independent-b.batch-001",
+  "batchInputFingerprint": "sha256:ab22921b306c4171432e3dd816df36ac06a0468d39f6b901e2c5ef0d79c439bc",
+  "bundleFingerprint": "sha256:de00c41787f8aca1e07d9a9794d48129ba9d0c6a5fc734193af596a4bb1f2ea8",
+  "bookDigest": "sha256:c19345bbf1e6c09b9847d33bb157ee932fc30cc4d8aa9702b36b345880233985",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex; runtime sampling parameters not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-review-v1",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:4d51ed05be3908e111454f8f48277c8c18a794e5efca86bdeec4e2403412420c",
+  "independenceGroupId": "biologie-one-reviewed-applicability-current-native-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "2ae2da43-73d5-578f-84f4-be0585a7d8f9"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:22259035e5db3b487c1fcc463fec6166d0abbbf14b5a81042f17d52db0369d42"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:abc6aae982741137cdcdf76629abd4019425ffa9659f7fdedc8a00b4f7cbe48d"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:7d9be976b7a1000d7a081a577f93a4d2f4888e188513126f92ef673291ebf4d5"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:ab22921b306c4171432e3dd816df36ac06a0468d39f6b901e2c5ef0d79c439bc"
+    }
+  ],
+  "startedAt": "2026-10-09T15:52:57.985008+00:00",
+  "completedAt": "2026-10-09T15:54:43.212317+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:deec297b2777b56bbf2741d42e66aa03f88f4c29370afc68664a77e4c63c1626",
+  "toolchainVersion": "genuine-independent-b-scoped-current-D1-native-context-FIRST-20261009"
+}

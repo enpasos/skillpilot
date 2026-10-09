@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "contentLicense": "Apache-2.0",
+  "role": "Genuine independent technical FIRST before root diagnostic/PASS receipts; not author of checker changes",
+  "reviewedAt": "2026-10-09T13:56:28.009389+00:00",
+  "checkerBinding": {
+    "path": "app/scripts/checkTerminology.ts",
+    "sha256": "e5410993782cbef04d4dda6ba11313387065dd3b473e166b787411182abe1b46",
+    "bytes": 27086
+  },
+  "actualGitDiffBinding": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/terminology-captured-command-boundary-independent-a-v1/actual-checker.diff.exact.txt",
+    "sha256": "8881bd1b9d0cea6b48badc3b1fe0742cce4ba849b35dec97301fd41ba678f59d",
+    "bytes": 4844
+  },
+  "actualRegressionDriverBinding": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-biologie-current-commit-checkpoint-root-v1/check-actual-terminology-raw-output-boundary.technical.mts",
+    "sha256": "085aef91eab7dd6ca7b3395dc5ca242fb21f0f57ce1d0643a09e967c5072c62c",
+    "bytes": 3755
+  },
+  "rootDiagnosisReadBeforeFIRST": false,
+  "rootPASSReceiptsReadBeforeFIRST": false,
+  "historicalOccurrences": [
+    {
+      "occurrence": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-child-rasters-author-root-v1/049f06cc-5360-5c99-9e6c-91372a2833b0/actual-generator-prompt.en.md",
+        "line": 1,
+        "column": 202,
+        "found": "learning landscape",
+        "lineSha256": "c5cb3c16c38da048d61c61252215a4460a696c95993810dd80c957586f219cc7"
+      },
+      "actualFullFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-child-rasters-author-root-v1/049f06cc-5360-5c99-9e6c-91372a2833b0/actual-generator-prompt.en.md",
+        "sha256": "cb145b5433ec99a877ce2e47812c54d1eef5092b5b825a366c6def26f3204e5c",
+        "bytes": 1949
+      },
+      "actualLineVerified": true
+    },
+    {
+      "occurrence": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-child-rasters-author-root-v1/prepare-two-proposed-child-rasters.author.py",
+        "line": 37,
+        "column": 205,
+        "found": "learning landscape",
+        "lineSha256": "f240532f624dc124839312d76491ba1c80de045f964309a0916c2b4e06126a08"
+      },
+      "actualFullFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-child-rasters-author-root-v1/prepare-two-proposed-child-rasters.author.py",
+        "sha256": "05ab4209903b99cbf7f349974d108564fdcf6da7f3707b84ec328eebbff42fed",
+        "bytes": 8034
+      },
+      "actualLineVerified": true
+    },
+    {
+      "occurrence": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-child-rasters-author-root-v1/85c16994-7121-5a29-a0f7-86e99d6f8eb7/actual-generator-prompt.en.md",
+        "line": 1,
+        "column": 202,
+        "found": "learning landscape",
+        "lineSha256": "7c14846d98975d9958f1ff343a59c2511a768ff31d59f0b6bbfae385691a54ae"
+      },
+      "actualFullFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-child-rasters-author-root-v1/85c16994-7121-5a29-a0f7-86e99d6f8eb7/actual-generator-prompt.en.md",
+        "sha256": "81c2e322f0c82779b86ecf5234058fde4c8fa3f6d74b1116a540d3a7ecf8e96b",
+        "bytes": 2150
+      },
+      "actualLineVerified": true
+    },
+    {
+      "occurrence": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-child-rasters-author-root-v1/prepare-two-proposed-child-rasters.author.py",
+        "line": 40,
+        "column": 205,
+        "found": "learning landscape",
+        "lineSha256": "771411d14b4f0dde145fe2db474df475b03d22f12e726b6c7c71939fdcbc3224"
+      },
+      "actualFullFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-child-rasters-author-root-v1/prepare-two-proposed-child-rasters.author.py",
+        "sha256": "05ab4209903b99cbf7f349974d108564fdcf6da7f3707b84ec328eebbff42fed",
+        "bytes": 8034
+      },
+      "actualLineVerified": true
+    }
+  ],
+  "staticFindings": [
+    {
+      "id": "TRM-A-ARGV-001",
+      "status": "requires_actual_execution_confirmation",
+      "observation": "Captured-output classifier checks only Array.isArray(command.argv). Empty arrays and arrays of numbers/null or an empty executable token therefore appear eligible despite not specifying an executable argv. The8 cases reject a scalar string but do not exercise these malformed arrays.",
+      "requiredBoundary": "Exact hash/path/byte matches must not exempt a file without a genuine non-empty all-string argv and nonblank executable token. Empty string later arguments are valid and should remain allowed."
+    }
+  ],
+  "otherStaticJudgments": {
+    "retiredRulesUnchanged": true,
+    "excludedDirectorySetsUnchanged": true,
+    "newHistoricalGrandfathering": "Exactly4 individually path/line/column/text/line-SHA256 pinned occurrences; no new directory or whole authored prompt exemption. Actual4 files/lines match.",
+    "rawOutputBoundary": "General sibling terminal receipts and matching UTF8 bytes, SHA256, exact path, stdout/stderr suffix and integer exit field. Brokenhash/bytes/nonarrayargv/noexit/plainprompt cases remain checked by inspection. Validfailed-command output is still captured data.",
+    "scopeCaveat": "Root8-case fixture assertions are executable technical test input, not root diagnosis. Actual implementation is extracted from exact live checker; own execution is still needed."
+  },
+  "nextSteps": "Run the unchanged8 logical cases through a transport-only adapted output/fixture destination in own folder, then malformed-argv probes against the actual current classifier. Read root currentPASS receipt only after own FIRST.",
+  "activeCheckerChanges": 0
+}

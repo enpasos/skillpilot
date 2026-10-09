@@ -1,0 +1,29 @@
+# Lernzielvisualisierung: Leerlaufspannungen galvanischer Zellen experimentell ermitteln
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `7b39fa19-fec3-575e-9324-a3226b703358`
+- Titel: Leerlaufspannungen galvanischer Zellen experimentell ermitteln
+- Beschreibung: Die lernende Person kann eine vorgegebene galvanische Zelle mit geeigneten Halbzellen, einer ionenleitenden Verbindung und einer hochohmigen Spannungsmessung sicher aufbauen und betreiben, Polung und Messbedingungen protokollieren sowie ihre näherungsweise Leerlaufspannung experimentell ermitteln und mit einem für diese Bedingungen angegebenen Vergleichswert begründet vergleichen.
+
+## Generator
+
+- Provider: OpenAI / ChatGPT-Codex built-in image_gen
+- Status: pilot
+- Quellbild: `7b39fa19-fec3-575e-9324-a3226b703358.png`
+- Public Asset: `/assets/goal-visualizations/chemie/7b39fa19-fec3-575e-9324-a3226b703358/7b39fa19-fec3-575e-9324-a3226b703358.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational.
+Create one ORIGINAL friendly, clear comic-style chemistry learning illustration for German senior secondary students. PNG landscape about 16:9, about 1600 x 900 or a close native wide size. Rounded deep-navy outlines, softly shaded transparent glass with pale-blue highlights, warm copper orange, pale ivory and blue background; approachable and abstract, not photorealistic and not sterile technical drafting.
+Subject: a correct Daniell-cell APPROXIMATE OPEN-CIRCUIT VOLTAGE MEASUREMENT with a high-input-impedance DC voltmeter. One large uncluttered apparatus. Left: a separate glass beaker with a grey zinc strip partly immersed in colourless zinc sulfate solution, large label "Zn". Right: a separate glass beaker with an orange copper strip partly immersed in blue copper sulfate solution, large label "Cu". The TWO separated beakers are connected ionically by one continuous inverted-U salt bridge with BOTH open porous ends visibly submerged in the corresponding solutions. The bridge curves clear of the electrodes and never ends outside the liquids. Show only water/glass highlights, no bubbles or precipitates.
+Above and between them place a large simple DC voltmeter, its screen showing ONLY a big "V" without any numerical result. The casing's one large short label is "10 MΩ", denoting high input resistance. A BLACK cable runs continuously from the dry upper part of the Zn strip to the voltmeter black terminal, labelled with a large minus sign "−". A RED cable runs continuously from the dry upper part of the Cu strip to the voltmeter red terminal, labelled with a large plus sign "+". Every wire has only its two actual endpoints, no mysterious junction, short circuit or connection to the salt bridge. Polarity Zn negative and Cu positive. Arrange cables legibly without unnecessary crossings.
+Keep apparatus in a shallow lab spill tray with splash goggles beside it. No power supply, battery, lamp, resistor load, ammeter, electron stream cartoons, numerical voltage, standard-potential claim, formulas, busy arrows, people, hands, logos or technical IDs. The high-impedance instrument only approximates open circuit; do not depict an external load or imply this is a universal standard voltage. The image is orientation to the setup, not a safety manual or evidence that a learner measured a voltage.
+Only text: short heading "Spannung messen", "Zn", "Cu", "V", "10 MΩ", "+", "−". Key apparatus, wire endpoints, both submerged bridge ends and lead polarity must stay clear at only 360 pixels image width; generous space, large main motif, no tiny lettering.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

@@ -1,0 +1,11 @@
+
+> skillpilot@0.0.0 visualization:prepare
+> node ../scripts/prepare_goal_visualization.mjs d2d735de-bede-5310-8aeb-8bb7562c7b75 --landscape=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-q3-three-BW-practical-companion-rasters-author-candidate-v1/candidate/full484-381.before-images.inactive-canonical.json --subject=chemie --provider=OpenAI / ChatGPT-Codex built-in image_gen --review-status=pilot
+
+Prepared prompt package for: Konzentrationsbedingte Gleichgewichtsverschiebungen experimentell untersuchen
+SkillPilot ID: d2d735de-bede-5310-8aeb-8bb7562c7b75
+Prompt: tmp/goal-visualizations/d2d735de-bede-5310-8aeb-8bb7562c7b75/nano-banana-prompt.de.md
+Metadata: tmp/goal-visualizations/d2d735de-bede-5310-8aeb-8bb7562c7b75/metadata.json
+
+After generating and downloading the image, import it with:
+npm --prefix app run visualization:import -- d2d735de-bede-5310-8aeb-8bb7562c7b75 "<downloaded-image-path>"

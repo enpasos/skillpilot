@@ -1,0 +1,21 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Only the ordinary model creation timestamp may differ
++ actual - expected
+
+  [
++   '/digest',
++   '/source/landscapeDigest'
+-   '/generatedAt'
+  ]
+    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-two-reviewed-source-native-integration-root-v1/prepare-and-check-two-committed-applicability-fields.technical.v2.mts:56:8) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [ '/digest', '/source/landscapeDigest' ],
+  expected: [ '/generatedAt' ],
+  operator: 'deepStrictEqual'
+}
+
+Node.js v20.20.2

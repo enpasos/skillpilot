@@ -2,9 +2,12 @@
 
 This directory configures the central deterministic five-gate report for
 Mathematics, Physics, Chemistry, Biology and Economics. Current work targets
-Economics only; the achieved Mathematics and Physics M7 floors remain protected.
+Chemistry and Biology; the achieved Mathematics and Physics M7 floors remain protected.
 
-Current continuation:
+Current Chemistry/Biology continuation:
+[Chemistry 177/378 and Biology 315/394: current reviewed checkpoint, 9 October](../../../../../docs/qa-ci/chemie-biologie-m7-chemie177-biologie315-commit-checkpoint-2026-10-09.md).
+
+Preserved Economics continuation:
 [Economics: active machine-M7 plan and package tracking, 8 October](../../../../../docs/qa-ci/wirtschaft-m7-resumed-2026-10-08.md).
 The [Economics integration and regular goal-book checkpoint](../../../../../docs/qa-ci/wirtschaft-m7-commit-checkpoint-2026-10-08.md)
 records the unchanged 261/311 strict count, five freshly reviewed context

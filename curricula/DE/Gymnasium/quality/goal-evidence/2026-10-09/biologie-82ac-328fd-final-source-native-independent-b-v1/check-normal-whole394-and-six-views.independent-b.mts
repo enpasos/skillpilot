@@ -1,0 +1,82 @@
+// SPDX-License-Identifier: Apache-2.0
+import assert from 'node:assert/strict';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { buildGoalBookSourceAtlasInputs } from '../../../../../../../app/scripts/goalBookSourceAtlasInputs.ts';
+import { buildGoalBookModel, parseAndValidateGoalBookModel, stableGoalBookJson } from '../../../../../../../app/scripts/goalBookModel.ts';
+import { normalizeCanonicalLandscape } from '../../../../../../../app/src/utils/authoring/canonicalAuthoring.ts';
+import { normalizeCompositionView, compileCompositionView, collectCompositionProjectionRoleGoalIds } from '../../../../../../../app/src/utils/authoring/compositionViewAuthoring.ts';
+import { fingerprintGoalDescriptionReviewContext, fingerprintGoalDescriptionReviewPage } from '../../../../../../../app/scripts/validateGoalDescriptionDualRoundResolution.ts';
+import { buildGoalDescriptionCanonicalContext } from '../../../../../../../app/scripts/validateGoalDescriptionReviewCampaign.ts';
+import { buildGoalDescriptionRolloutSubsetModel } from '../../../../../../../app/scripts/materializeGoalDescriptionRolloutBatch.ts';
+const base = 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/';
+const author = base + 'biologie-82ac-nine-lower-jurisdictions-and-SN-ST-digital-prerequisite-source-author-v1/';
+const own = base + 'biologie-82ac-328fd-final-source-native-independent-b-v1/';
+const read = (p: string): any => JSON.parse(readFileSync(p, 'utf8'));
+const hash = (b: string|Buffer) => 'sha256:' + createHash('sha256').update(b).digest('hex');
+const ref = (p: string) => ({ path: p, sha256: hash(readFileSync(p)), bytes: readFileSync(p).length });
+const ids = ['82acfbde-9ce8-5658-892e-4dcfb1c3a1f1','328fd9d3-d3c3-5731-a8da-a909143d3962'];
+const lower = '26aa47b7-e5cc-5131-8980-0ec3271758b6';
+const beforeCfg = read(author+'inputs/whole394-narrow-SNST-source-atlas.exact.config.json');
+const cfg = read(author+'candidate/whole394-final-normal-source-atlas.inactive.config.json');
+const beforeAtlas = buildGoalBookSourceAtlasInputs(beforeCfg, '.');
+const atlas = buildGoalBookSourceAtlasInputs(cfg, '.');
+assert.equal(atlas.receipt.counts.publishedCurricularAtomicGoals,394);
+assert.equal(atlas.receipt.counts.unresolvedSourceScopeDecisions,0);
+const raw = read(cfg.landscapePath), canon = normalizeCanonicalLandscape(raw), map = new Map(canon.goals.map(g => [g.id,g]));
+const oldRaw = read(author+'inputs/whole479-before.exact.json');
+const oldMap = new Map(oldRaw.goals.map((g:any) => [g.id,g]));
+assert.equal(raw.goals.length,479); assert.equal(oldRaw.goals.length,479);
+const canonicalDeltaIds = raw.goals.filter((g:any) => stableGoalBookJson(g)!==stableGoalBookJson(oldMap.get(g.id))).map((g:any)=>g.id);
+assert.deepEqual(canonicalDeltaIds,[ids[1]]);
+const old328 = oldMap.get(ids[1]) as any, new328 = raw.goals.find((g:any)=>g.id===ids[1]);
+const oldWithoutRequires={...old328}, newWithoutRequires={...new328};delete oldWithoutRequires.requires;delete newWithoutRequires.requires;
+assert.deepEqual(oldWithoutRequires,newWithoutRequires);
+assert.deepEqual(new328.requires,old328.requires.filter((id:string)=>id!==ids[0]));
+const checks:any[]=[];
+for (const state of ['SN','ST']) for (const variant of ['active','source7','book-source']) {
+  const p = variant==='book-source' ? Object.keys(atlas.outputs).find(p=>p.endsWith(`source-de-${state.toLowerCase()}-seki.view.json`))! : author+`inputs/views/${state}-${variant}.whole-narrow-proposed.exact.json`;
+  const view=normalizeCompositionView(variant==='book-source'?JSON.parse(atlas.outputs[p]):read(p));
+  const compiled=compileCompositionView(view,canon),roles=collectCompositionProjectionRoleGoalIds(view.rootNodes,map);
+  assert.deepEqual(compiled.findings.filter(f=>f.severity==='error'),[]);
+  assert.equal(roles.targetGoalIds.has(ids[0]),false);assert.equal(roles.prerequisiteOnlyGoalIds.has(ids[0]),false);
+  assert.equal(roles.targetGoalIds.has(ids[1]),true);assert.equal(roles.targetGoalIds.has(lower),true);
+  const residualOwners=[...roles.targetGoalIds].filter(id=>map.get(id)?.requires.some(r=>r.replace(/^.*:/u,'')===ids[0]));
+  assert.deepEqual(residualOwners,[]);
+  checks.push({jurisdiction:state,variant:variant==='active'?'proposed-current-not-active':variant==='source7'?'proposed-source7-successor':'normal-generated-source-book',binding:variant==='book-source'?{path:p,sha256:hash(atlas.outputs[p]),generatedInMemory:true}:ref(p),target82ac:false,prerequisiteOnly82ac:false,target328fd:true,target26aa:true,residual82acPrerequisiteOwners:residualOwners,errors:[]});
+}
+const scopeDeltas=atlas.receipt.scopes.map(s=>{const old=beforeAtlas.receipt.scopes.find(q=>q.key===s.key)!;assert.ok(old);const removed=old.goalIds.filter(id=>!s.goalIds.includes(id)),added=s.goalIds.filter(id=>!old.goalIds.includes(id));assert.deepEqual(removed,[]);assert.deepEqual(added,[]);return{key:s.key,wholeGoalIdsUnchanged:true,goalCount:s.goalIds.length};});
+const bookCfg=read(author+'candidate/whole394-final-normal-book.inactive.config.json'),qa=read(bookCfg.goalVisualizationQaPath),kinds=read(bookCfg.semanticKindLedgerPath);
+const digests:Record<string,string>={};
+for(const row of qa.records)if(row.visualizationState==='available'){
+ const digest=hash(readFileSync(row.publicAssetPath));assert.equal(digest,row.assetSha256);digests[row.imageUrl]=digest;
+}
+const manifest=JSON.parse(atlas.outputs[cfg.manifestPath]);
+const model=buildGoalBookModel({landscape:raw,semanticKindLedger:kinds,goalVisualizationQa:qa,goalVisualizationAssetDigests:digests,compositionViewManifest:manifest,compositionViewSources:manifest.sourcePaths.map((p:string)=>({path:p,view:JSON.parse(atlas.outputs[p])})),navigationView:JSON.parse(atlas.outputs[manifest.navigationViewPath]),durationModelPolicy:read(manifest.durationModelPolicyPath),evidenceReviewSources:[],config:bookCfg});
+parseAndValidateGoalBookModel(model);
+assert.deepEqual(model,read(author+'native/full394-after-source-locator-and-requires.normal-model.actual.json'));
+const oldModel=read(author+'native/full394-before.normal-model.actual.json');assert.equal(oldModel.pages.length,394);assert.equal(model.pages.length,394);
+const wholeDeltaIds=oldModel.pages.filter((p:any)=>stableGoalBookJson(p)!==stableGoalBookJson(model.pages.find(q=>q.goalId===p.goalId))).map((p:any)=>p.goalId);
+assert.deepEqual(new Set(wholeDeltaIds),new Set(ids));
+const input=read(author+'native/actual-two/round-b/description-review-input.json');
+const nativeBindings=input.goals.map((g:any)=>{assert.equal(fingerprintGoalDescriptionReviewPage(g.reviewContext.page),g.pageFingerprint);return{goalId:g.goalId,goalFingerprint:g.goalFingerprint,pageFingerprint:g.pageFingerprint,goalReviewContextFingerprint:fingerprintGoalDescriptionReviewContext(g),wholeReviewedContext:g};});
+const changedFields=wholeDeltaIds.map((id:string)=>{const before=oldModel.pages.find((p:any)=>p.goalId===id),after=model.pages.find(p=>p.goalId===id)!;return{goalId:id,fields:Object.keys(before).filter(k=>stableGoalBookJson(before[k])!==stableGoalBookJson((after as any)[k]))};});
+// Resolve from the existing protected-native input rather than guessing the ID suffix.
+const protectedInputs=read(base+'biologie-evolution-current17-and-protected-contexts-native-preparation-author-v1/native-subsets/protected-source-contexts/round-b/description-review-input.json');
+const protected2ae=protectedInputs.goals.find((g:any)=>g.goalId.startsWith('2ae2da43'));
+if(!protected2ae)throw Error('Missing genuine protected2ae2 native input');
+const originalSubset=read(base+'biologie-evolution-current17-and-protected-contexts-native-preparation-author-v1/native-subsets/protected-source-contexts/book-model.json');
+const currentSubset=buildGoalDescriptionRolloutSubsetModel({baseModel:model,goalIds:protectedInputs.goals.map((g:any)=>g.goalId),bookId:originalSubset.book.id,title:originalSubset.book.title});
+const protectedBindings=protectedInputs.goals.map((template:any)=>{
+ const page=currentSubset.pages.find(p=>p.goalId===template.goalId)!;
+ const current={...template,canonicalContext:buildGoalDescriptionCanonicalContext(map.get(template.goalId)!),reviewContext:{page,evidenceProfile:template.reviewContext.evidenceProfile}};
+ const exact=stableGoalBookJson(current)===stableGoalBookJson(template);
+ if(!ids.includes(template.goalId))assert.equal(exact,true,'Unrelated protected context must remain exact: '+template.goalId);
+ const changes=Object.keys(template.reviewContext.page).filter(k=>stableGoalBookJson(template.reviewContext.page[k])!==stableGoalBookJson((page as any)[k]));
+ return{goalId:template.goalId,pageFingerprint:page.pageFingerprint,contextFingerprint:fingerprintGoalDescriptionReviewContext(current),wholeCurrentNativeContextExact:exact,historicalScienceReused:exact,currentGenuineIndependentTwoGoalReviewRequired:!exact,changedPageFields:changes};
+});
+const after2ae=currentSubset.pages.find(p=>p.goalId===protected2ae.goalId)!;
+assert.deepEqual(after2ae,protected2ae.reviewContext.page);
+const report={schemaVersion:1,license:'CC-BY-4.0',role:'Own ordinary scoped technical checks after own genuine science/native FIRST',normalFunctions:['buildGoalBookSourceAtlasInputs','compileCompositionView','buildGoalBookModel','parseAndValidateGoalBookModel','buildGoalDescriptionRolloutSubsetModel','buildGoalDescriptionCanonicalContext','fingerprintGoalDescriptionReviewContext','fingerprintGoalDescriptionReviewPage'],counts:atlas.receipt.counts,sixActualViewChecks:checks,all24ExistingScopeGoalSetsExact:scopeDeltas,canonical479OneActualRequiresDelta:canonicalDeltaIds,whole394NormalModelExact:true,actualWholeChangedPageIds:wholeDeltaIds,other392WholePagesExact:true,actualChangedPageFields:changedFields,nativeBindings,protected15Bindings:protectedBindings,protected2ae2:{goalId:protected2ae.goalId,wholePageExactlyEqualToGenuinelyReviewedProtectedInput:true,pageFingerprint:fingerprintGoalDescriptionReviewPage(after2ae),previousPageFingerprint:protected2ae.pageFingerprint,contextFingerprint:fingerprintGoalDescriptionReviewContext(protected2ae),previousScientificReviewReused:true,noNewHistoricalReview:true},strictGain:0,activeWrites:0,humanApproval:false,wholeSourceCourseApproval:false};
+writeFileSync(own+'normal-whole394-six-views-and-native-bindings.actual.json',JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify({counts:report.counts,sixViews:checks.length,actualWholePageDeltaIds:wholeDeltaIds,other392Exact:true,nativeBindings:nativeBindings.map((g:any)=>({goalId:g.goalId,pageFingerprint:g.pageFingerprint,contextFingerprint:g.goalReviewContextFingerprint})),protected15ChangedIds:protectedBindings.filter((g:any)=>!g.wholeCurrentNativeContextExact).map((g:any)=>g.goalId),protected15UnchangedContexts:protectedBindings.filter((g:any)=>g.wholeCurrentNativeContextExact).length,protected2ae2Exact:true}));

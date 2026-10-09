@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "workingDirectory": "/home/enpasos/projects/skillpilot",
+  "actualChecks": [
+    {
+      "name": "whole-schema",
+      "argv": [
+        "python",
+        "scripts/validate_schemas.py"
+      ],
+      "startedAt": "2026-10-09T14:24:44.843264+00:00",
+      "completedAt": "2026-10-09T14:26:39.635037+00:00",
+      "elapsedSeconds": 114.79644126200583,
+      "exitCode": 0,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-sixteen-reviewed-active-integration-root-v1/current315-whole-schema.stdout.actual.txt",
+        "sha256": "5396224637593ed5505e4b73d3f492ff5e474ce24bb61dd294746278b1eb06dd",
+        "bytes": 180
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-sixteen-reviewed-active-integration-root-v1/current315-whole-schema.stderr.actual.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "whole-terminology",
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/checkTerminology.ts"
+      ],
+      "startedAt": "2026-10-09T14:26:39.635909+00:00",
+      "completedAt": "2026-10-09T14:27:20.043317+00:00",
+      "elapsedSeconds": 40.40930572600337,
+      "exitCode": 0,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-sixteen-reviewed-active-integration-root-v1/current315-whole-terminology.stdout.actual.txt",
+        "sha256": "603279f1f68bbdbbe6fa9e79df238ba57f085dc56e130607a61fecdd89712370",
+        "bytes": 86
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-sixteen-reviewed-active-integration-root-v1/current315-whole-terminology.stderr.actual.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ]
+}

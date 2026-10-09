@@ -1,0 +1,31 @@
+// SPDX-License-Identifier: Apache-2.0
+import assert from 'node:assert/strict';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {buildGoalDescriptionRolloutSubsetModel} from '../../../../../../../app/scripts/materializeGoalDescriptionRolloutBatch.ts';
+import {buildGoalDescriptionCanonicalContext} from '../../../../../../../app/scripts/validateGoalDescriptionReviewCampaign.ts';
+import {fingerprintGoalDescriptionReviewPage,fingerprintGoalDescriptionReviewContext} from '../../../../../../../app/scripts/validateGoalDescriptionDualRoundResolution.ts';
+import {fingerprintGoalForPositiveEvidence,fingerprintPositiveGoalEvidenceReviewInput,fingerprintPositiveGoalEvidenceProfile,validatePositiveGoalEvidenceRecordSemantics} from '../../../../../../../app/scripts/positiveGoalEvidenceProfileModel.ts';
+const base='curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/',own=base+'biologie-82ac-328fd-final-source-native-independent-b-v1/',author=base+'biologie-82ac-nine-lower-jurisdictions-and-SN-ST-digital-prerequisite-source-author-v1/',native=base+'biologie-evolution-current17-and-protected-contexts-native-preparation-author-v1/';
+const read=(p:string):any=>JSON.parse(readFileSync(p,'utf8'));
+const sha=(b:Buffer)=>'sha256:'+createHash('sha256').update(b).digest('hex');
+const raw=read(author+'candidate/whole479-one-digital-prerequisite-removed.inactive.json'),map=new Map<string,any>(raw.goals.map((g:any)=>[g.id,g]));
+const input=read(native+'native-subsets/protected-source-contexts/round-b/description-review-input.json'),prior=read(native+'native-subsets/protected-source-contexts/book-model.json');
+const current=buildGoalDescriptionRolloutSubsetModel({baseModel:read(author+'native/full394-after-source-locator-and-requires.normal-model.actual.json'),goalIds:input.goals.map((g:any)=>g.goalId),bookId:prior.book.id,title:prior.book.title});
+const rows=input.goals.map((old:any)=>{
+ const page=current.pages.find(p=>p.goalId===old.goalId)!,g=map.get(old.goalId),obj={...old,goalFingerprint:page.goalFingerprint,pageFingerprint:fingerprintGoalDescriptionReviewPage(page),currentTitleDe:g.title,currentTitleEn:g.titleEn,currentDescriptionDe:g.description,currentDescriptionEn:g.descriptionEn,canonicalContext:buildGoalDescriptionCanonicalContext(g),reviewContext:{page,evidenceProfile:old.reviewContext.evidenceProfile}};
+ const exact=JSON.stringify(obj)===JSON.stringify(old);
+ if(old.goalId!=='82acfbde-9ce8-5658-892e-4dcfb1c3a1f1')assert.deepEqual(obj,old);
+ return{goalId:old.goalId,wholeCurrentContext:obj,wholePriorContext:old,wholeCurrentContextExactlyUnchanged:exact,currentPageFingerprint:obj.pageFingerprint,currentGoalReviewContextFingerprint:fingerprintGoalDescriptionReviewContext(obj),previousPageFingerprint:old.pageFingerprint,previousGoalReviewContextFingerprint:fingerprintGoalDescriptionReviewContext(old),scientificHistoricalReviewRestarted:false,changedContextCoveredByOwnGenuineD2:!exact};
+});
+assert.equal(rows.filter((r:any)=>r.wholeCurrentContextExactlyUnchanged).length,14);
+const p=read(author+'inputs/current-whole2ae2-valid-P.exact.json'),record=p.wholeRecord,g=map.get(record.goalId),criteria=sha(readFileSync(p.wholeConfig.reviewCriteriaPath)),resources:Record<string,string>={};
+for(const resource of g.resourceLinks.filter((x:any)=>x.type==='goal-visualization'))resources[resource.url]=sha(readFileSync('app/public'+resource.url));
+assert.equal(record.goalFingerprint,fingerprintGoalForPositiveEvidence(g,'curricularAtomic'));
+assert.equal(record.reviewInputFingerprint,fingerprintPositiveGoalEvidenceReviewInput(g,criteria,resources,'curricularAtomic'));
+assert.equal(record.profileFingerprint,fingerprintPositiveGoalEvidenceProfile(record.profile));
+assert.deepEqual(validatePositiveGoalEvidenceRecordSemantics(record,g,resources,'curricularAtomic'),[]);
+assert.equal(record.status,'needs_human_review');assert.equal(record.reviewAuthority,'ai_candidate');
+const twoAe2=rows.find((r:any)=>r.goalId===record.goalId);assert.ok(twoAe2);assert.equal(twoAe2.wholeCurrentContextExactlyUnchanged,true);
+writeFileSync(own+'protected15.normal-current-scoped-context-comparison-and2ae2-P.actual.json',JSON.stringify({schemaVersion:1,license:'CC-BY-4.0',role:'Additive exact current normal contexts; original technical diagnostic rows remain unchanged',normalFunctions:['buildGoalDescriptionRolloutSubsetModel','buildGoalDescriptionCanonicalContext','fingerprintGoalDescriptionReviewPage','fingerprintGoalDescriptionReviewContext','fingerprintGoalForPositiveEvidence','fingerprintPositiveGoalEvidenceReviewInput','fingerprintPositiveGoalEvidenceProfile','validatePositiveGoalEvidenceRecordSemantics'],rows,actualUnchangedProtectedContexts:14,actualChangedProtectedIds:rows.filter((r:any)=>!r.wholeCurrentContextExactlyUnchanged).map((r:any)=>r.goalId),whole2ae2ExistingPRecordPreserved:record,whole2ae2CurrentResources:resources,whole2ae2PBindingsAndSemanticsValid:true,protected2ae2DReuse:true,newHistoricalScienceReviews:0,newSubjectCompletions:0,humanApproval:false},null,2)+'\n');
+console.log(JSON.stringify({actualUnchangedProtectedContexts:14,actualChangedProtectedIds:rows.filter((r:any)=>!r.wholeCurrentContextExactlyUnchanged).map((r:any)=>r.goalId),twoAe2CurrentPageFingerprint:twoAe2.currentPageFingerprint,twoAe2CurrentContextFingerprint:twoAe2.currentGoalReviewContextFingerprint,twoAe2WholeExistingPBindingsValid:true,newSubjectCompletions:0}));

@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Tier- und Pflanzenarten bestimmen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `0db20819-ee94-54c6-8ecb-aff8c9b7419e`
+- Titel: Tier- und Pflanzenarten bestimmen
+- Beschreibung: Die lernende Person kann unterschiedliche Tier- und Pflanzenarten mithilfe geeigneter Merkmale und Bestimmungshilfen bestimmen.
+
+## Generator
+
+- Provider: built-in ChatGPT/Codex image_gen
+- Status: pilot
+- Quellbild: `0db20819-ee94-54c6-8ecb-aff8c9b7419e.png`
+- Public Asset: `/assets/goal-visualizations/biologie/0db20819-ee94-54c6-8ecb-aff8c9b7419e/0db20819-ee94-54c6-8ecb-aff8c9b7419e.png`
+
+## Prompt
+
+```text
+Erzeuge ein einzelnes didaktisches PNG, quer etwa 16:9, nahe 1600 × 900 Pixel. Freundliche, klare, abstrakte Comicillustration: dunkelblaue weiche Konturen, helle Blau-, Mint-, Apricot- und Gelbtöne, heller Hintergrund, dezente plastische Schattierung. Wenige große Hauptobjekte, auch bei 360 Pixel Bildbreite erkennbar; kein überfülltes Lehrposter. Keine Fotorealistik, keine sterile technische Neugestaltung, keine Logos oder technischen IDs. Das Bild ist eine Orientierung, keine Aufgabe, keine Musterlösung und kein Beleg eines Experiments. Notwendige Beschriftungen sind groß und kurz; keine Kleinschrift. Tier- und Pflanzenarten bestimmen. Zwei große beobachtete Naturgegenstände: links ein gelappter Eichenblattzweig mit passender Eichel, rechts ein naturgetreu abstrahierter Marienkäfer mit sechs Beinen, zwei Fühlern und zwei Flügeldecken. Eine große Lupe hebt die charakteristischen Blatt- beziehungsweise Käfermerkmale hervor. Im Hintergrund eine einfache offene Bestimmungshilfe mit zwei deutlich erkennbaren Bildalternativen je Weg und verzweigten Entscheidungspfaden, ohne lesepflichtige Wörter. Kein aus einem Bild behauptetes sicheres Artnamen-Ergebnis.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

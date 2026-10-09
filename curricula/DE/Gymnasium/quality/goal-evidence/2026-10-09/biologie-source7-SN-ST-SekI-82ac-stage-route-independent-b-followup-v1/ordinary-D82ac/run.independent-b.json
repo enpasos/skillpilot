@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "source7-82ac-targeted-native-independent-b-20261009-v1",
+  "campaignId": "biologie-source7-82ac-stage-route-current-native-v1-campaign-b",
+  "roundId": "biologie-source7-82ac-stage-route-current-native-v1-independent-b",
+  "batchId": "biologie-source7-82ac-stage-route-current-native-v1-independent-b.batch-001",
+  "batchInputFingerprint": "sha256:b502b641138c077e91f38fffbd1700fe7c80a04b36f10da57b0279325f59e7d2",
+  "bundleFingerprint": "sha256:67879724ae8194b66e4a896ecffdac01150e0b9511e5478797267629e31a4c09",
+  "bookDigest": "sha256:a4914a1f6589a7ac807ea676cde055ea8e40caf8603636dcf19c70d4efae0773",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex; runtime sampling parameters not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-review-v1",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:726bcc7fff46708c93c7e1826c282088d64e2a6ec4716ebe33e53a5089f9e302",
+  "independenceGroupId": "biologie-source7-82ac-stage-route-current-native-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "82acfbde-9ce8-5658-892e-4dcfb1c3a1f1"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:26a559877f2a927256cd5a607354e4f01fa1436123e0a96fccd3260a6a9fb988"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:8ba78b1d22d9435e2f3891f8810685153b13541ec75994519e89b017d3320325"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:a5a40c55f5bc99db5863a8a321900bf457b37b5fdcd89392408d3bd7cbd45100"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:b502b641138c077e91f38fffbd1700fe7c80a04b36f10da57b0279325f59e7d2"
+    }
+  ],
+  "startedAt": "2026-10-09T14:06:37.035324+00:00",
+  "completedAt": "2026-10-09T14:17:14.047542+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:adc064ea311fcf8a6cc735d0839b2f3cab0ad150a96c2c75037341fba066107c",
+  "toolchainVersion": "independent-b-source-FIRST-actual-native-HTML-PDF-20261009"
+}

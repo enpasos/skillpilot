@@ -1,0 +1,19 @@
+node:fs:573
+  return binding.open(
+                 ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/app/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json'
+    at Object.openSync (node:fs:573:18)
+    at readFileSync (node:fs:452:35)
+    at read (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-q3-two-corrosion-whole-source-independent-a-v1/check-actual-atlas-and-saved-compositions.technical.mts:17:16)
+    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-q3-two-corrosion-whole-source-independent-a-v1/check-actual-atlas-and-saved-compositions.technical.mts:21:13)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/app/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json'
+}
+
+Node.js v20.20.2

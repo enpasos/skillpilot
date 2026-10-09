@@ -1,0 +1,11 @@
+
+> skillpilot@0.0.0 visualization:prepare
+> node ../scripts/prepare_goal_visualization.mjs a0f6ba09-f072-5887-a797-fa369453c62a --landscape=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-q3-three-BW-practical-companion-rasters-author-candidate-v1/candidate/full484-381.before-images.inactive-canonical.json --subject=chemie --provider=OpenAI / ChatGPT-Codex built-in image_gen --review-status=pilot
+
+Prepared prompt package for: Ein reversibles Austauschmodell zur Gleichgewichtseinstellung durchführen
+SkillPilot ID: a0f6ba09-f072-5887-a797-fa369453c62a
+Prompt: tmp/goal-visualizations/a0f6ba09-f072-5887-a797-fa369453c62a/nano-banana-prompt.de.md
+Metadata: tmp/goal-visualizations/a0f6ba09-f072-5887-a797-fa369453c62a/metadata.json
+
+After generating and downloading the image, import it with:
+npm --prefix app run visualization:import -- a0f6ba09-f072-5887-a797-fa369453c62a "<downloaded-image-path>"

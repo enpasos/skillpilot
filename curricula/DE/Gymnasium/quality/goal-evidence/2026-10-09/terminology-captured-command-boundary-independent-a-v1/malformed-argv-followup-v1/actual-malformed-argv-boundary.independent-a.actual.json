@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "role": "Independent executed malformed argv probes; no active checker changes",
+  "checkerPath": "app/scripts/checkTerminology.ts",
+  "checkerSha256": "sha256:cff30e5e91e46ce5572600f30ada4a8214f6b35d59db01d7ebfc3bb233db6f45",
+  "results": [
+    {
+      "name": "empty argv",
+      "argv": [],
+      "expectedCapture": false,
+      "actualCapture": false,
+      "expectationPassed": true
+    },
+    {
+      "name": "numeric executable argv",
+      "argv": [
+        42
+      ],
+      "expectedCapture": false,
+      "actualCapture": false,
+      "expectationPassed": true
+    },
+    {
+      "name": "null executable argv",
+      "argv": [
+        null
+      ],
+      "expectedCapture": false,
+      "actualCapture": false,
+      "expectationPassed": true
+    },
+    {
+      "name": "empty executable string",
+      "argv": [
+        ""
+      ],
+      "expectedCapture": false,
+      "actualCapture": false,
+      "expectationPassed": true
+    },
+    {
+      "name": "whitespace-only executable string",
+      "argv": [
+        "  "
+      ],
+      "expectedCapture": false,
+      "actualCapture": false,
+      "expectationPassed": true
+    },
+    {
+      "name": "nonstring argument after executable",
+      "argv": [
+        "fixture-command",
+        42
+      ],
+      "expectedCapture": false,
+      "actualCapture": false,
+      "expectationPassed": true
+    },
+    {
+      "name": "valid command with intentionally empty later argument",
+      "argv": [
+        "fixture-command",
+        ""
+      ],
+      "expectedCapture": true,
+      "actualCapture": true,
+      "expectationPassed": true
+    }
+  ],
+  "allPassed": true,
+  "findingId": "TRM-A-ARGV-001",
+  "humanApproval": false
+}

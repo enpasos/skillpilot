@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-09T15:49:14.366752+00:00",
+  "ownPixelFIRSTUnchanged": true,
+  "actualMetadataReadAfterOwnPixelFIRST": true,
+  "records": [
+    {
+      "goalId": "d2d735de-bede-5310-8aeb-8bb7562c7b75",
+      "metadataDecision": "KEEP",
+      "reason": "Alt/reconstruction match actual yellow reagent, red reference/control vs darker intervention; original prompt and actual targeted yellow correction both correctly preserved."
+    },
+    {
+      "goalId": "a0f6ba09-f072-5887-a797-fa369453c62a",
+      "metadataDecision": "HOLD_targeted_noun_only",
+      "findingId": "CHEM3-ROOT-META-001",
+      "reason": "The two visible graduated tools have syringe barrels/flanges/plungers; altTextDe and reconstruction inaccurately call these Messpipetten. Use Messspritzen or graduated transfer syringes. Actual pixels/volumes/arrows are valid KEEP; no image regeneration is needed."
+    },
+    {
+      "goalId": "7b39fa19-fec3-575e-9324-a3226b703358",
+      "metadataDecision": "KEEP",
+      "reason": "Actual salt bridge, high-impedance approximate open-circuit distinction, colors and dry electrode contacts match alt/reconstruction; no fictitious measured voltage."
+    }
+  ],
+  "actualPromptPolicy": "The actual original/final prompt bytes contain no curriculum UUID; requested native wide friendly comic, minimal labels and360 legibility. Built-in source traces declare model identifier unavailable; no invented model identity.",
+  "activeApprovals": 0,
+  "strictGain": 0,
+  "humanApproval": false
+}

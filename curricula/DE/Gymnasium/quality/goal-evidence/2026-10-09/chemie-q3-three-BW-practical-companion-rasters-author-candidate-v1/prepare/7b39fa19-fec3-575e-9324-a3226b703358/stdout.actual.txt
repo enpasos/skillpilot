@@ -1,0 +1,11 @@
+
+> skillpilot@0.0.0 visualization:prepare
+> node ../scripts/prepare_goal_visualization.mjs 7b39fa19-fec3-575e-9324-a3226b703358 --landscape=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-q3-three-BW-practical-companion-rasters-author-candidate-v1/candidate/full484-381.before-images.inactive-canonical.json --subject=chemie --provider=OpenAI / ChatGPT-Codex built-in image_gen --review-status=pilot
+
+Prepared prompt package for: Leerlaufspannungen galvanischer Zellen experimentell ermitteln
+SkillPilot ID: 7b39fa19-fec3-575e-9324-a3226b703358
+Prompt: tmp/goal-visualizations/7b39fa19-fec3-575e-9324-a3226b703358/nano-banana-prompt.de.md
+Metadata: tmp/goal-visualizations/7b39fa19-fec3-575e-9324-a3226b703358/metadata.json
+
+After generating and downloading the image, import it with:
+npm --prefix app run visualization:import -- 7b39fa19-fec3-575e-9324-a3226b703358 "<downloaded-image-path>"

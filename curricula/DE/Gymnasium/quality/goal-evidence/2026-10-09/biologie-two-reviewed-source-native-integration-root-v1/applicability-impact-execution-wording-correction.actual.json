@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "recordedAt": "2026-10-09T15:40:42.428802+00:00",
+  "preservedOriginalExecutions": [
+    "prepare-two-applicability-sync.terminal.actual.json",
+    "prepare-two-applicability-sync-v2.terminal.actual.json",
+    "prepare-two-applicability-sync-v3.terminal.actual.json"
+  ],
+  "actualMeasuredFinalResult": "All394 complete page values and all chapter/source metadata values are exact. Whole BookModel differs only at /source/landscapeDigest and /digest due to the two committed applicability-field changes.",
+  "technicalAssumptionCorrections": [
+    "Initial whole-model equality assertion failed because aggregate transport digests also bind committed applicability metadata.",
+    "Second speculative generatedAt expectation was false; actual measured differences are exactly the two aggregate transport digests.",
+    "The final v3 JSON and assertions correctly record these two differences. Its console phrase whole BookModel/digest unchanged is a retained inaccurate summary line and must not be used as evidence of unchanged aggregate digests."
+  ],
+  "finalAuthoritativeImpactProof": "actual-two-applicability-sync-no-scientific-or-native-deltas.v3.json",
+  "newScientificReview": false,
+  "reviewFingerprintRecordsUpdated": 0,
+  "ordinaryPublicationAggregateDigestRebuildRequired": true
+}

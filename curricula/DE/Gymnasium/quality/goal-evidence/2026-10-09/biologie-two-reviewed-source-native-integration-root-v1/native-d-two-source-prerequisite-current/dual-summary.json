@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:a74d0038df4977dd8ac1d3e02a09b359d1260bcb1bd0b3746551142b1dd31ce3",
+  "reviewInputFingerprint": "sha256:e06f8bf52faa57f3ea60aae07ad7d78e4d0797a40875a7e4d16b858bbe8a9db4",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-two-primary-locator-and-digital-prerequisite-native-v1-campaign-a",
+      "roundId": "biologie-two-primary-locator-and-digital-prerequisite-native-v1-independent-a",
+      "independenceGroupId": "biologie-two-primary-locator-and-digital-prerequisite-native-v1-independent-a",
+      "runIds": [
+        "biologie-two-source-prerequisite-native-independent-root-20261009-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex; sampling parameters not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-two-primary-locator-and-digital-prerequisite-native-v1-campaign-b",
+      "roundId": "biologie-two-primary-locator-and-digital-prerequisite-native-v1-independent-b",
+      "independenceGroupId": "biologie-two-primary-locator-and-digital-prerequisite-native-v1-independent-b",
+      "runIds": [
+        "bio82ac328fd-source-prerequisite-native-independent-b-20261009-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex; runtime sampling parameters not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "82acfbde-9ce8-5658-892e-4dcfb1c3a1f1",
+      "firstRecordId": "biologie-two-source-prerequisite-native-independent-root-20261009-v1.82acfbde-9ce8-5658-892e-4dcfb1c3a1f1",
+      "secondRecordId": "bio82ac328fd-source-prerequisite-native-independent-b-20261009-v1.82acfbde-9ce8-5658-892e-4dcfb1c3a1f1",
+      "firstRunId": "biologie-two-source-prerequisite-native-independent-root-20261009-v1",
+      "secondRunId": "bio82ac328fd-source-prerequisite-native-independent-b-20261009-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "328fd9d3-d3c3-5731-a8da-a909143d3962",
+      "firstRecordId": "biologie-two-source-prerequisite-native-independent-root-20261009-v1.328fd9d3-d3c3-5731-a8da-a909143d3962",
+      "secondRecordId": "bio82ac328fd-source-prerequisite-native-independent-b-20261009-v1.328fd9d3-d3c3-5731-a8da-a909143d3962",
+      "firstRunId": "biologie-two-source-prerequisite-native-independent-root-20261009-v1",
+      "secondRunId": "bio82ac328fd-source-prerequisite-native-independent-b-20261009-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

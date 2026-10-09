@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-two-reviewed-native-d-20261009-v1-two-source-prerequisite-current",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-two-reviewed-source-native-integration-root-v1/native-d-two-source-prerequisite-current.batch.config.json",
+  "configDigest": "sha256:f7f66a12aaffa0f04401aa483bb4dfc846aa415297a3d669115cc44d72ef4113",
+  "goalIds": [
+    "82acfbde-9ce8-5658-892e-4dcfb1c3a1f1",
+    "328fd9d3-d3c3-5731-a8da-a909143d3962"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 394,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-82ac-nine-lower-jurisdictions-and-SN-ST-digital-prerequisite-source-author-v1/candidate/whole394-final-normal-book.inactive.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-82ac-nine-lower-jurisdictions-and-SN-ST-digital-prerequisite-source-author-v1/candidate/whole479-one-digital-prerequisite-removed.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:ff6f1af99d51bf35fe2c5f89344c5b88f0862817657ced819bddd640cdd97a5a"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:7985fd3c8e5e75c7859cb74292c4b4cbac125493eb80db1905c9d95032b13d04",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:a74d0038df4977dd8ac1d3e02a09b359d1260bcb1bd0b3746551142b1dd31ce3",
+    "reviewInputFingerprint": "sha256:e06f8bf52faa57f3ea60aae07ad7d78e4d0797a40875a7e4d16b858bbe8a9db4",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-two-primary-locator-and-digital-prerequisite-native-v1-campaign-a",
+        "campaignDigest": "sha256:f698e2bd4aed4c52f7d9d587038adac08e3dd476e6340e3b045da31fb60c851b",
+        "roundId": "biologie-two-primary-locator-and-digital-prerequisite-native-v1-independent-a",
+        "independenceGroupId": "biologie-two-primary-locator-and-digital-prerequisite-native-v1-independent-a",
+        "batchId": "biologie-two-primary-locator-and-digital-prerequisite-native-v1-independent-a.batch-001",
+        "batchInputFingerprint": "sha256:0b04b3dbe8895f03548eb2ec4c25caf20b57562410c59e22386e366bb9976369"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-two-primary-locator-and-digital-prerequisite-native-v1-campaign-b",
+        "campaignDigest": "sha256:3f2245795013056d698a9a0b353c85d937b6e58befa6be39c44c08b4bec7d666",
+        "roundId": "biologie-two-primary-locator-and-digital-prerequisite-native-v1-independent-b",
+        "independenceGroupId": "biologie-two-primary-locator-and-digital-prerequisite-native-v1-independent-b",
+        "batchId": "biologie-two-primary-locator-and-digital-prerequisite-native-v1-independent-b.batch-001",
+        "batchInputFingerprint": "sha256:de7f5b3bcf2c4bda2630e88d84c1b903f219bacef7628b892d1c21604a5a934e"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

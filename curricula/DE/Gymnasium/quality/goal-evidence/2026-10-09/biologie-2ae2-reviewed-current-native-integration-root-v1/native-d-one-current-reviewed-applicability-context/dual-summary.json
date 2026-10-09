@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:de00c41787f8aca1e07d9a9794d48129ba9d0c6a5fc734193af596a4bb1f2ea8",
+  "reviewInputFingerprint": "sha256:0c636868f3abc16115881c4fa8f97547cd28a3e584522e4389363e02b343e637",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-one-reviewed-applicability-current-native-v1-campaign-a",
+      "roundId": "biologie-one-reviewed-applicability-current-native-v1-independent-a",
+      "independenceGroupId": "biologie-one-reviewed-applicability-current-native-v1-independent-a",
+      "runIds": [
+        "bio2ae2-current-native-independent-c-20261009-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 family Codex reviewer C; exact runtime backend and sampling parameters unavailable::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-one-reviewed-applicability-current-native-v1-campaign-b",
+      "roundId": "biologie-one-reviewed-applicability-current-native-v1-independent-b",
+      "independenceGroupId": "biologie-one-reviewed-applicability-current-native-v1-independent-b",
+      "runIds": [
+        "bio2ae2-current-applicability-native-independent-b-20261009-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex; runtime sampling parameters not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "2ae2da43-73d5-578f-84f4-be0585a7d8f9",
+      "firstRecordId": "bio2ae2-current-native-independent-c-20261009-v1.2ae2da43-73d5-578f-84f4-be0585a7d8f9",
+      "secondRecordId": "bio2ae2-current-applicability-native-independent-b-20261009-v1.2ae2da43-73d5-578f-84f4-be0585a7d8f9",
+      "firstRunId": "bio2ae2-current-native-independent-c-20261009-v1",
+      "secondRunId": "bio2ae2-current-applicability-native-independent-b-20261009-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}
