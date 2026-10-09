@@ -57,6 +57,15 @@ jobs:
         working-directory: ai/gemini/gateway
     steps:
       - uses: actions/checkout@v6
+        with:
+          # Keep every gateway/deployment/download input while avoiding the
+          # curriculum review archive; cone mode also retains root LICENSE.
+          sparse-checkout: |
+            .github/actions/ubuntu-apt
+            ai/gemini/gateway
+            ai/gemini/coach
+            deploy/gemini-v1
+            scripts
       - uses: actions/setup-node@v6
         with:
           node-version: '22.22.0'
