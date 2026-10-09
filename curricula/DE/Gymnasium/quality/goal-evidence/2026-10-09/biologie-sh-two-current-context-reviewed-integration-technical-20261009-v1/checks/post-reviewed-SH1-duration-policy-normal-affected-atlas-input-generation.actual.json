@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "artifactRole": "Actual ordinary affected-atlas input regeneration after reviewed additive policy entry",
+  "completedAt": "2026-10-09T20:38:24.295Z",
+  "changes": [
+    {
+      "bookId": "de-gym-chemie-bundesweit",
+      "normalGeneratorAndVerifier": "PASS",
+      "affectedOutputs": [
+        {
+          "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/source-projection.receipt.json",
+          "beforeSha256": "sha256:91656d841e286ec7e45f392f9c9aba9979b2c2a0c2b6eb30a60cbdc9bf878f46",
+          "afterSha256": "sha256:13e4aa657e63ada7f6b8ca404fc42fe7179945c7c5b272a4beec6c4cc4a069f3",
+          "inputBindingDeltas": [
+            {
+              "path": "curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json",
+              "sha256": "sha256:2b6185cd2c2f257a2410a36617f1d24b6e2e5a19bb40dcdab82d32786b0878d9"
+            }
+          ],
+          "allScopeOutputBindingsAndDecisionsUnchanged": true
+        }
+      ]
+    },
+    {
+      "bookId": "de-gym-biologie-bundesweit",
+      "normalGeneratorAndVerifier": "PASS",
+      "affectedOutputs": [
+        {
+          "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/source-projection.receipt.json",
+          "beforeSha256": "sha256:13a47e173386dade058a135529c2454dcca56b9e0b1c823f3875a7abdd3333f7",
+          "afterSha256": "sha256:bbdc1e0a61251abde95c5b9721f8343022c760f3aaa31f313ff752ff87718916",
+          "inputBindingDeltas": [
+            {
+              "path": "curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json",
+              "sha256": "sha256:2b6185cd2c2f257a2410a36617f1d24b6e2e5a19bb40dcdab82d32786b0878d9"
+            }
+          ],
+          "allScopeOutputBindingsAndDecisionsUnchanged": true
+        }
+      ]
+    }
+  ],
+  "newScientificClosures": 0,
+  "newSourceReview": false,
+  "humanApproval": false,
+  "humanTrial": false
+}

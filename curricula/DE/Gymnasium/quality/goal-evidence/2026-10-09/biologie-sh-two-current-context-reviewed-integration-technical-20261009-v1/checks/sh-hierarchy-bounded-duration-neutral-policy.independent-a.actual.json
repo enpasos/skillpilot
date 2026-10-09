@@ -1,0 +1,1016 @@
+{
+  "schemaVersion": 1,
+  "artifactRole": "independent-machine-targeted-inherited-duration-policy-review",
+  "reviewer": {
+    "id": "/root/d_context_review_a",
+    "provider": "OpenAI",
+    "human": false
+  },
+  "reviewedAt": "2026-10-09T20:22:20.212Z",
+  "decision": "valid_explicit_inherited_projection_policy_entry",
+  "parentPolicyEntry": {
+    "subject": "Biologie",
+    "jurisdiction": "DE-SH",
+    "stage": "SekI",
+    "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_BIOLOGIE_SEKI_FACHANFORDERUNGEN_2023.source-extraction.json",
+    "status": "reviewed",
+    "decision": "duration-neutral-projection",
+    "durationModels": [
+      "G8",
+      "G9"
+    ],
+    "learnerFacingProjection": "duration-neutral-composition-view",
+    "rationale": "The local Schleswig-Holstein biology Fachanforderungen source is represented as one Sek-I curriculum projection; no separate G8/G9 learner-facing tree is derived from this source."
+  },
+  "proposedPolicyEntry": {
+    "subject": "Biologie",
+    "jurisdiction": "DE-SH",
+    "stage": "SekI",
+    "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/source-components/DE_SH_BIOLOGIE_SEKI_HIERARCHY_BOUNDED_20261009_V1.source-extraction.json",
+    "status": "reviewed",
+    "decision": "duration-neutral-projection",
+    "durationModels": [
+      "G8",
+      "G9"
+    ],
+    "learnerFacingProjection": "duration-neutral-composition-view",
+    "evidenceSources": [
+      "https://fachportal.lernnetz.de/sh/faecher/biologie/fachanforderungen.html"
+    ],
+    "rationale": "This bounded hierarchy contribution retains the unchanged official SH Biology 2023 document and complete original GV source row from the parent extraction. It inherits the parent's reviewed duration-neutral G8/G9 learner-facing projection only for the partial GV2/GV6 hierarchy contribution within outgoing Sek-I 2023 cohorts. It grants no coverage for progressively introduced Sek-I 2026 cohorts, no additional grade or course scope, no whole-original-source or course approval, and no human approval. Other obligations of the original GV row remain separate and unchanged."
+  },
+  "sourceIdentity": {
+    "sameSourceLandscapeId": true,
+    "sameOfficialDocumentMetadata": true,
+    "parentSourceGoalCount": 9,
+    "boundedSourceGoalCount": 1,
+    "completeGVSourceRowUnchanged": true,
+    "sourceVersion": "SH Biology 2023"
+  },
+  "scope": {
+    "jurisdiction": "DE-SH",
+    "stage": "SekI",
+    "durationModels": [
+      "G8",
+      "G9"
+    ],
+    "contribution": "partial GV2/GV6 hierarchy contribution",
+    "cohorts": "outgoing Sek-I 2023 cohorts only",
+    "progressiveSekI2026CohortsApproved": false,
+    "extraGradeScope": false,
+    "extraCourseScope": false,
+    "wholeOriginalSourceCoverage": false,
+    "wholeCourseApproval": false,
+    "wholeSourceApproval": false,
+    "humanApproval": false,
+    "humanTrial": false
+  },
+  "officialCurrentCohortVerification": {
+    "url": "https://fachportal.lernnetz.de/sh/faecher/biologie/fachanforderungen.html",
+    "liveReadInThisReview": true,
+    "description": "2026 starts progressively from the first Biology year in 2026/27; 2023 Sek I continues only for outgoing cohorts. This confirms the bounded component qualification."
+  },
+  "normalParserSimulation": {
+    "nodeVersion": "v20.20.2",
+    "mutation": "in-memory append only; no policy file modified",
+    "globalPolicyDigestBefore": "sha256:5b06ff6025c01321964161bfc68ff3b23afdef2bea71dce797bf667863728dd5",
+    "globalPolicyDigestAfterProposedAppend": "sha256:2b09548b189ed0051ddf55987e19456a8f368d644ebc374e21752919d0c58920",
+    "globalDigestChanges": true,
+    "subjects": [
+      {
+        "subject": "Mathematik",
+        "normalParserPassed": true,
+        "effectiveProjectionPolicyUnchanged": true,
+        "beforeDigest": "sha256:87fe3be701afa760288ace50af9f29068c97bdcce3ffb29d3ddf7b63cc1d35af",
+        "afterDigest": "sha256:87fe3be701afa760288ace50af9f29068c97bdcce3ffb29d3ddf7b63cc1d35af"
+      },
+      {
+        "subject": "Chemie",
+        "normalParserPassed": true,
+        "effectiveProjectionPolicyUnchanged": true,
+        "beforeDigest": "sha256:da87110dc86af9fd307e1f365e3e16538edb6c39953850b51738a9e33f61d4f4",
+        "afterDigest": "sha256:da87110dc86af9fd307e1f365e3e16538edb6c39953850b51738a9e33f61d4f4"
+      },
+      {
+        "subject": "Biologie",
+        "normalParserPassed": true,
+        "effectiveProjectionPolicyUnchanged": true,
+        "beforeDigest": "sha256:186d08f3de35c687109354079409f0d8f7862d58977ef084cc32678116fcb06a",
+        "afterDigest": "sha256:186d08f3de35c687109354079409f0d8f7862d58977ef084cc32678116fcb06a"
+      }
+    ]
+  },
+  "descriptionBindings": [
+    {
+      "goalId": "e5f97788-c2ac-5f42-b5a5-55605b563a79",
+      "canonicalContextDigest": "sha256:226dd5d9613a951c7844cb51753e0650cc54db255db894df5cbc8501973e1a4b",
+      "goalReviewContextFingerprint": "sha256:d12cfddb8307c69787b72f8289a912747fc3eceb9e4a8630355f93c2981aa03e",
+      "goalFingerprint": "sha256:3b1da4dd352476bb05678a9f97fed7ce077757e7fb573bac0bbeb80a5c3e3098",
+      "pageFingerprint": "sha256:36de4c6b2cf4a80f29e9dd74ab63373986be9b7fe8b5cdc41ae9d38e73644156",
+      "existingResolutionContextMatches": true,
+      "policyNotPartOfGoalReviewContext": true
+    },
+    {
+      "goalId": "2ae2da43-73d5-578f-84f4-be0585a7d8f9",
+      "canonicalContextDigest": "sha256:d28ed0d533f22bafd30393c9adfa6a38902a8134ce7717a87741da2b20d60c5f",
+      "goalReviewContextFingerprint": "sha256:430e5586fc6a4df3186ff9a82a283a4c4a7a5c40853147a4e532e5477ab3502e",
+      "goalFingerprint": "sha256:1ec1e9af8fbf493f5913f24108d7759f833a473c5979b611987fb24cfe895ebb",
+      "pageFingerprint": "sha256:cbe015d8cc6d49a17c575ec1c33c0ad2679087558c53b80bd2b9738bfb8677ca",
+      "existingResolutionContextMatches": true,
+      "policyNotPartOfGoalReviewContext": true
+    }
+  ],
+  "otherProofConsequences": {
+    "unchangedGoalPageAndDContextBindings": true,
+    "unchangedSourceMappingAndReviewBytes": true,
+    "unchangedEffectiveProjection": true,
+    "rawGlobalPolicyDigestIncludedInBookModels": true,
+    "bookModelDigestFreshnessRequiresRefreshFor": [
+      "Mathematik",
+      "Chemie",
+      "Biologie"
+    ],
+    "notAffectedByThisPolicyFile": [
+      "Physik",
+      "Wirtschaftswissenschaften"
+    ],
+    "entireBookOrBundleDigestsMayChange": true,
+    "existingHistoricalBundlesMustNotBeRewritten": true,
+    "fullBookRegenerationNotRunByReviewer": true,
+    "publicationAcceptanceNotClaimed": true
+  },
+  "inputs": [
+    {
+      "path": "curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json",
+      "sha256": "sha256:e72972b1dc317e09221db6af3ac56b89a960acc2c4bf1adfbbf8cf25ebb8159c",
+      "bytes": 102712
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_BIOLOGIE_SEKI_FACHANFORDERUNGEN_2023.source-extraction.json",
+      "sha256": "sha256:03368008df8b75ceca5cc711620f04cb776b1346dddc1de0334d4bf77cff2c25",
+      "bytes": 13823
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SH/source-components/DE_SH_BIOLOGIE_SEKI_HIERARCHY_BOUNDED_20261009_V1.source-extraction.json",
+      "sha256": "sha256:62c30b5317f67fd0cc12c6181fb77eb4a37e6acfa5eb65e5f0956d1ccd3b95ca",
+      "bytes": 3257
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-math-national-atlas.sources.json",
+      "sha256": "sha256:f5720dbd9a13315cf312a213d23b2ea410eec21c7816baf104722c75801522d8",
+      "bytes": 7436
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-gk.view.json",
+      "sha256": "sha256:3713c0fe7e01aa63e097ca8404d8f44ad2330ff71f13035d5fab1b2bb7bb059e",
+      "bytes": 38277
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-lk.view.json",
+      "sha256": "sha256:923b76c85a0c7c44f13562658bf25f549aaa362c59274b149d40964770cf4b04",
+      "bytes": 37310
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-gk.view.json",
+      "sha256": "sha256:0f420a487ae4911801c86ab34465e9bc2c1f9e40115ee810734af818f4cf5940",
+      "bytes": 15682
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bb-sekii-lk.view.json",
+      "sha256": "sha256:19ab12cc93887735b059e69d74124e5b5ad3b91cfc249aa63160c9addcc0e575",
+      "bytes": 15068
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-gk.view.json",
+      "sha256": "sha256:680c2ad1ee2b8a9b481f2bb0bc1a1dc68432b3e3c336362ef1041d432c6d4a7f",
+      "bytes": 34354
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-lk.view.json",
+      "sha256": "sha256:a8b5074d267168befe97a84463c6d7e70f3644538acd19ed6a3b52b43f516a53",
+      "bytes": 33759
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-gk.view.json",
+      "sha256": "sha256:975eb7e95a6cacd33fd4886674de81fd1f05691e3573d826506ed3f5b683ce6b",
+      "bytes": 15223
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-be-sekii-lk.view.json",
+      "sha256": "sha256:b5657d07db1d8f7bfec34869790f9b7f3fb916e98ef613b17a9ca2c795f83afd",
+      "bytes": 14616
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-gk.view.json",
+      "sha256": "sha256:739d084a68b5cfa101a3c27bddff4a27645cb2e0df56d9e6bbc3aeffabcc281e",
+      "bytes": 46855
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-lk.view.json",
+      "sha256": "sha256:34aa6f9b6fe958d3ca16a117fd2f11382508e308e94be865fa6041a5796d0de2",
+      "bytes": 46515
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-seki.view.json",
+      "sha256": "sha256:b02fad31081e1b1c52a17e5ec45252022b2b551b80f3c60626b6fe93a744dc6a",
+      "bytes": 30136
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-gk.view.json",
+      "sha256": "sha256:8fc2adf9f0d856f9032795d46d834375b6d0ed087e2027da38086f801ae99a63",
+      "bytes": 15176
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-bw-sekii-lk.view.json",
+      "sha256": "sha256:561b3831ff9469511b694fb5797d790547f60d76ef5feef34a1b49adf1f6f077",
+      "bytes": 14186
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-gk.view.json",
+      "sha256": "sha256:49389497fce4b04fdb8bc343df4e5e967d6d038aaf0c8cd8748a1e31661c2743",
+      "bytes": 74005
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-lk.view.json",
+      "sha256": "sha256:790f776520e2efd1bba67a3d99ce666269545c9e52dbda36f7a710bed413849c",
+      "bytes": 99768
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-gk.view.json",
+      "sha256": "sha256:0b1532d50ed05c495e85d4427916c9f76ae219552a93764eeb14677606862f1a",
+      "bytes": 28817
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-by-sekii-lk.view.json",
+      "sha256": "sha256:29b3e85a02f572d24121f8be21cd48ab7560b7b228fe2b909b59e140afe26b03",
+      "bytes": 49036
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-gk.view.json",
+      "sha256": "sha256:32ca9bb6269e402ceabe20094fdfb5b3b6dbe94f77660683cd6a6001cd979966",
+      "bytes": 37240
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-lk.view.json",
+      "sha256": "sha256:af5f14806ec710b2fd472f1da50c9f41f3f083b4d90c8b979e3286e8c93b99a0",
+      "bytes": 36617
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-gk.view.json",
+      "sha256": "sha256:f15d857b0e399aefb71eaa9f3fed7300bcf7d80a352c8bc49e30ff04d787165f",
+      "bytes": 14370
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hb-sekii-lk.view.json",
+      "sha256": "sha256:53d7ec3cf1df2181b423b96cd4ec8ed09ae71ca8692f45e1761077edc720b436",
+      "bytes": 13767
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g8.view.json",
+      "sha256": "sha256:169b0adf4ef09802f910acfe3ef2706838d0a575156d4ba9c952316b34a875c6",
+      "bytes": 70745
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk-g9.view.json",
+      "sha256": "sha256:a33d9519191f2d260b8f16deaf9f70825a98802b111bfe5ac6fab96f1b081938",
+      "bytes": 74096
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-gk.view.json",
+      "sha256": "sha256:378e1d63c3d82165ce45c9233b0a532426f0556d20a49f2bd8c60ac4dc25400e",
+      "bytes": 49956
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g8.view.json",
+      "sha256": "sha256:c77b4bb843a7ec819717d8b7db44b12102e95d4c009bc048a3f23127bf7ef9a8",
+      "bytes": 66234
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk-g9.view.json",
+      "sha256": "sha256:f52a68ee85e375047e7dd51ec051e589b6c99ae44ceff25681914d429845af5a",
+      "bytes": 69585
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-lk.view.json",
+      "sha256": "sha256:1793bf991061f2f7c3cce9758fbafd89b2ba61788f5669416afc0898259b6ca5",
+      "bytes": 45445
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g8.view.json",
+      "sha256": "sha256:1f8a3cac0b91c80fd84cbad72f358f0774d88b8ba4ed23ff59430bf7d661198f",
+      "bytes": 46326
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-seki-g9.view.json",
+      "sha256": "sha256:0a67d241305a7ef4af1abb9276b3e992a050164289560c62c7f4a0aae12a9b2c",
+      "bytes": 51740
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-gk.view.json",
+      "sha256": "sha256:3888f56417b1759afd195cb8098f2115f98c530ce9fe264ae02fd92ebc8da09e",
+      "bytes": 20332
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-he-sekii-lk.view.json",
+      "sha256": "sha256:c410c6c2068539efbd769b2833571fcae8c0460e96689b9992b5b3b37a173271",
+      "bytes": 19940
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-gk.view.json",
+      "sha256": "sha256:d46445592e80b8100f2b075247691aafb51a6a640de64c5804f0e5f4d99fa146",
+      "bytes": 34522
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-lk.view.json",
+      "sha256": "sha256:7307a5de39cf3e5085726470b2a6cf5bd007d6cde610c37c8a3d038bc082e038",
+      "bytes": 34038
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-gk.view.json",
+      "sha256": "sha256:a71c10b4f8e82f30b83a097c9f1857b8a8bb52149374b23ab25c89a51df3206a",
+      "bytes": 14050
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-hh-sekii-lk.view.json",
+      "sha256": "sha256:5a201376f57be9bab522e9cc3f2b63a2fa5f1e5d37f7bf7ac5832d133e6df362",
+      "bytes": 13586
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-gk.view.json",
+      "sha256": "sha256:5e716b384b158ffc1614150a154177767bbfe40a93b553099086c38815a8ad8c",
+      "bytes": 29709
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-lk.view.json",
+      "sha256": "sha256:5b4022df9caacab767f405baccfb58bc6ea9edded9feb6ea439de8bef55b1661",
+      "bytes": 29225
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-gk.view.json",
+      "sha256": "sha256:2a7d49026aa636b8b3c0ea62b8fff3cb6651ca891959e8ad8e6de638c5cf7c59",
+      "bytes": 13855
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-mv-sekii-lk.view.json",
+      "sha256": "sha256:7e0b559342453dc5bacd6b32f896154349a00e42b017f1438b33977dec746627",
+      "bytes": 13391
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-gk.view.json",
+      "sha256": "sha256:3b4b54603c66cd97302712c7659c40d9aa53bca45ac0cbdb12f54dbb35dbdd0e",
+      "bytes": 38064
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-lk.view.json",
+      "sha256": "sha256:3b3023f2c6859abf7060d7e3aee91b3fab1e3057c8cf929a97cc021ca4a21102",
+      "bytes": 37580
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-gk.view.json",
+      "sha256": "sha256:b19567c57d9df6a485921da5c433d52ff7094b981e079a25954bf94161c17dbc",
+      "bytes": 13855
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-ni-sekii-lk.view.json",
+      "sha256": "sha256:899ffe5e9581b63c606560619b6bc26d98680438075f39356449e095fe6792e3",
+      "bytes": 13391
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-gk.view.json",
+      "sha256": "sha256:3adf4f09d42b3ba692dcbcca133a6e93d1b720e174efa57c606910b50dadc227",
+      "bytes": 37115
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-lk.view.json",
+      "sha256": "sha256:6c10bcdf8d3fb93904dd8d3fb13e0e32ffb7e63e8cba64e3684c10acca1b0ede",
+      "bytes": 36664
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-gk.view.json",
+      "sha256": "sha256:264fcbe3931030496eab2f37d2341891fbef0368d64b2167f262e1f2415c3642",
+      "bytes": 13809
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-nw-sekii-lk.view.json",
+      "sha256": "sha256:eca30104f1d57165ca75c18a44a1ff4c4e074c224b21acb071dd8ae2c49f98ea",
+      "bytes": 13378
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g8.view.json",
+      "sha256": "sha256:3c583ac50023bc1388f1eb95a99b41a2e25ee715a6822517a22475aabe375df3",
+      "bytes": 64201
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk-g9.view.json",
+      "sha256": "sha256:91737984ff49111d32f3d7b27449816888c7d7b304c54e2f2e3c97821a7c0194",
+      "bytes": 66787
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-gk.view.json",
+      "sha256": "sha256:7284105abe15065154387e1656fc485554774fdbcd5374faeda0654143c787df",
+      "bytes": 37754
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g8.view.json",
+      "sha256": "sha256:90ddde1f7607cecdf7473080b101e18a4d48600e1ca0be55632702889c87bc03",
+      "bytes": 63728
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk-g9.view.json",
+      "sha256": "sha256:97a08caaa9b136b2d01273e97bb8e4f55eca651018227cf6b4f992e93d3cdc36",
+      "bytes": 66314
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-lk.view.json",
+      "sha256": "sha256:fd0d9302e67f295a068815fe1441b9b46317d487a58df743d6fc5597ada66aff",
+      "bytes": 37281
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g8.view.json",
+      "sha256": "sha256:e32ef68f3f53fda913d631b5fb0a8d0be3cb434c3b174b4e51e27436c2fb0648",
+      "bytes": 40366
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-seki-g9.view.json",
+      "sha256": "sha256:ee6b5174b46a697a413d311b2df3939eaa2b7b918ea0fe5e0038efcb5fa1c64a",
+      "bytes": 42823
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-gk.view.json",
+      "sha256": "sha256:e6f7f7f9fd7169e0fbc82d2761ae4a1b2bf5179d010ccefb7053d3f9e782dd46",
+      "bytes": 13994
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-rp-sekii-lk.view.json",
+      "sha256": "sha256:6bcf8ffe06dab7f3c538cde1e335067f3c8ac4984826191cef95cde59f140242",
+      "bytes": 13525
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g8.view.json",
+      "sha256": "sha256:5a57672da5f6ca80393c877013a324feb7db8e72baef254d1d162a10b446042f",
+      "bytes": 70335
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk-g9.view.json",
+      "sha256": "sha256:57bed3698e21d3f0c5c547a810f3734ae155e190f7d0459f26bbf2fbff8ea49e",
+      "bytes": 71258
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-gk.view.json",
+      "sha256": "sha256:de03556c27836cc4452796ae65187b1dd6f7777b46b74dfdb60f78f224f51645",
+      "bytes": 42222
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g8.view.json",
+      "sha256": "sha256:251b1a123860c7baaa57ce891cd6dfd4aa92b5cad30541fd636e88c9f6c1e0d7",
+      "bytes": 72041
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk-g9.view.json",
+      "sha256": "sha256:75ac64f48c03b9217ca485ba270a48dc055311d4383790b5c2a34fe05482fa12",
+      "bytes": 72646
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-lk.view.json",
+      "sha256": "sha256:c292708beb59a94b440f8e8b74cbe9b08b4562b3815301403697751b82663464",
+      "bytes": 43702
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g8.view.json",
+      "sha256": "sha256:595ded88926fb7993f449cdc630d7d8afdbb41517051b228df282dd3dc8e255a",
+      "bytes": 41262
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-seki-g9.view.json",
+      "sha256": "sha256:22d1805dff1ea8a42889e7e2fedd25f293de977f1ac4ed5dcf17e043f875a93a",
+      "bytes": 42244
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-gk.view.json",
+      "sha256": "sha256:ce10e69d60d0f4ebd5a8bd22d24a8d4498091ba76e165624f991d87e3a8d950b",
+      "bytes": 19469
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sh-sekii-lk.view.json",
+      "sha256": "sha256:549eb1a5363b7014d67d27dff6fd08ca2e0a1e94b9badc1318eb61d5d0c5b452",
+      "bytes": 21114
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-gk.view.json",
+      "sha256": "sha256:35b3ce15a0f5c208e83e31ea78b36f5f55195b663e5b0abbedd173a8410d7930",
+      "bytes": 38296
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-lk.view.json",
+      "sha256": "sha256:5b7e7f0b9c957a1cfc07cb02b521d3f80ccaab6a951e049f8b8ddd78fb487ee0",
+      "bytes": 37677
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-gk.view.json",
+      "sha256": "sha256:27de96d373250803f4a148bf876a1cac8b6a5e877ec7112fe838812754165631",
+      "bytes": 13843
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sl-sekii-lk.view.json",
+      "sha256": "sha256:4adbb8790ae4d6ff694f5da2dd15ac40b0adf96871c40046263b4ec9bf49c119",
+      "bytes": 13228
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-gk.view.json",
+      "sha256": "sha256:5c745de4c9565904563cbd2dad53df8a8ea80361e163085cc9acd7d53a0c863a",
+      "bytes": 37718
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-lk.view.json",
+      "sha256": "sha256:2a5ac172ad974764029183797bcc20bb314bd5fa4dc3bea1602e6b3769b6e10e",
+      "bytes": 37234
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-gk.view.json",
+      "sha256": "sha256:9ea510e0d73cceb33c9b1fd2718ead433e9699e46d12ab244b224cec65140d6e",
+      "bytes": 13855
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-sn-sekii-lk.view.json",
+      "sha256": "sha256:57a613473b5ea90b75eb107ca42cb49fb3349dbaa1c6c998890ef3be1876f35f",
+      "bytes": 13391
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-gk.view.json",
+      "sha256": "sha256:58a319fdc09518baadd6d9359fe1aea0752096322b9f621286591b9ad191421d",
+      "bytes": 37024
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-lk.view.json",
+      "sha256": "sha256:f74fb434f1e63a7f06912edfa5d425d4a032a4dec5a1b636c969f6a772157eec",
+      "bytes": 36401
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-gk.view.json",
+      "sha256": "sha256:e52a645dba2c18ebb433e9ff1721d857c40b5d429d4a5ccece1ef29483261562",
+      "bytes": 13994
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-st-sekii-lk.view.json",
+      "sha256": "sha256:cf21a24e8eac5a93b9fdcc65bb04cb871c2faec76176854277acb1ff4f162483",
+      "bytes": 13391
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-gk.view.json",
+      "sha256": "sha256:cf570eb0b46c81cba0eb508d3ce93edb1c263f44ace1f979e9f8d6f7cc2a21b0",
+      "bytes": 28249
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-lk.view.json",
+      "sha256": "sha256:a1e7d27baea5d21fe5acb953b1e7811ed8b57dacd88320cd38c3ca441a2898ee",
+      "bytes": 27626
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-gk.view.json",
+      "sha256": "sha256:708ecd95f4fef966ddbe61fca9be7d37d0b5de932d41f32b5ffa06acd906fac0",
+      "bytes": 13994
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/mathematik/de-th-sekii-lk.view.json",
+      "sha256": "sha256:ead0e3dbc7d6fc6aab8a974b79ceff5947618a231e15e44e81387dc5430ffd7d",
+      "bytes": 13391
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.sources.json",
+      "sha256": "sha256:3a3b0ee2663de533d8643cffeb71139dd5e969a0bfd34f9b0337d1e9a99743f9",
+      "bytes": 7320
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-bb-seki.view.json",
+      "sha256": "sha256:0b531e627a3f54b788dc97b85c1e74ef33d4cd71e59ab8325957e0184cb56413",
+      "bytes": 10472
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-bb-sekii-gk.view.json",
+      "sha256": "sha256:535e25eca4a9aa72adf1567b9f047f842e87e8a4d84fd665faad1775b1ad7bb7",
+      "bytes": 15951
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-bb-sekii-lk.view.json",
+      "sha256": "sha256:916407f498da6aad3ce01fa43ba9773fe4c3ddc32181bee0486748ce58799bb5",
+      "bytes": 18615
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-be-seki.view.json",
+      "sha256": "sha256:e11ee56544f5c3a5dc73509739183240a27a0cc822692ed0f9982dc800199a32",
+      "bytes": 10472
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-be-sekii-gk.view.json",
+      "sha256": "sha256:8b1be8e1d62fe3034354a1a28ec8c7ea599af0064325b5eb0882f97c0ed5d912",
+      "bytes": 15951
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-be-sekii-lk.view.json",
+      "sha256": "sha256:52023f8cca6e7fb0069c1ff1aefe6b18ff927d4155204827e51b8b241a1be918",
+      "bytes": 18615
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-bw-seki.view.json",
+      "sha256": "sha256:83a29bec3c15e7b84ddd341ffc1e98e2737bbbb153951c1d68d93fcca4dcf44c",
+      "bytes": 11027
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-bw-sekii-gk.view.json",
+      "sha256": "sha256:d5b0784706140f4c8f0ee21774509c2bfe910e7a3836a49b25e3c2a4df90d3d8",
+      "bytes": 6516
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-bw-sekii-lk.view.json",
+      "sha256": "sha256:8f763d6a20b78653af203a3a2cab3e0e5e88e6512a0aaba2316a359cb50eb403",
+      "bytes": 12399
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-by-seki.view.json",
+      "sha256": "sha256:ed29d747ce4372e147cf35d42c9b9c3eda153bbac1df796f82425633dedb399f",
+      "bytes": 10583
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-by-sekii-gk.view.json",
+      "sha256": "sha256:7aefe8d2045fe0a8a54a64a920e549960be30a9ad06b8e61dfe99cfc9b08cada",
+      "bytes": 12843
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-by-sekii-lk.view.json",
+      "sha256": "sha256:e472f56d5b7444d0323df2a5716cab16d30b17f987b5d5e997ed7e3aec554503",
+      "bytes": 16284
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-hb-seki.view.json",
+      "sha256": "sha256:494e57da2af6482afa54016c4887329987f3186fbcaa2ff938c30898e095298f",
+      "bytes": 9806
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-hb-sekii-gk.view.json",
+      "sha256": "sha256:3434f09a0d6c8ef17747899aad1b63ad50042c6345f57b203eed8afc6d93c4e5",
+      "bytes": 16950
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-hb-sekii-lk.view.json",
+      "sha256": "sha256:c793b51cbd320e2bc2363fb888148e160e181aaa1c06782f63d1cc55f9c79de9",
+      "bytes": 20391
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-he-seki.view.json",
+      "sha256": "sha256:4f135c76a42622c7f7dd9af2cad078caa58102d41edd7a95e21ebb225366d62a",
+      "bytes": 7475
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-he-sekii-gk.view.json",
+      "sha256": "sha256:e6ed499f8b680fa93717eeaa0854ced5867d291bc5bae6f5bb954c20087e3474",
+      "bytes": 12954
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-he-sekii-lk.view.json",
+      "sha256": "sha256:dbb9778ef82524b2812c48a7f6ffbbd25560be47614c012392f4a807811fb150",
+      "bytes": 16173
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-hh-seki.view.json",
+      "sha256": "sha256:f9460453407ea2d7ec8410f923291b881c61bc03a564694b4a8ec94c36e371c0",
+      "bytes": 13025
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-hh-sekii-gk.view.json",
+      "sha256": "sha256:c97eafc638de42884876c145d32ad50669f0258b955c95afa69f765a5944bfa7",
+      "bytes": 13620
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-hh-sekii-lk.view.json",
+      "sha256": "sha256:38f719fb8c6ca7f8e32258589301e7041c9cbc64c677d88c83a0dea1617b50de",
+      "bytes": 16284
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-mv-seki.view.json",
+      "sha256": "sha256:9383b4d48fcca7ceb27ddb353e96e0259a782ca6d238e9264967fa4d5e3dc872",
+      "bytes": 14246
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-mv-sekii-gk.view.json",
+      "sha256": "sha256:dad94eedadf008a617a9eb620397a6af04ff2514c2ff62b904efb17e26492c0c",
+      "bytes": 16728
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-mv-sekii-lk.view.json",
+      "sha256": "sha256:7efbde9d767c326d54e6382f0524d7d0fa651b69d8216d08723a391d823c84da",
+      "bytes": 18171
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-ni-seki.view.json",
+      "sha256": "sha256:351549064a7ef7657282427d18983f53853590c98731299d2b43939794d646e6",
+      "bytes": 9695
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-ni-sekii-gk.view.json",
+      "sha256": "sha256:03e7e19140627a9009fd5f87e1bc7470f13b419aefaa35853f497053b316d721",
+      "bytes": 18060
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-ni-sekii-lk.view.json",
+      "sha256": "sha256:75e4588069054b83a1a59ac74efbf3a1046b08c6215d02ad720d6a3a19e11d84",
+      "bytes": 20946
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-nw-seki.view.json",
+      "sha256": "sha256:2f3652ee2dac281c636f42b0280d95384c915da4a3306a996f7b92431d36f41d",
+      "bytes": 10805
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-nw-sekii-gk.view.json",
+      "sha256": "sha256:8a3043caf27af4d60a41c2d2a3efaf0046981d8a15e6e951ad22767dccb88921",
+      "bytes": 12066
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-nw-sekii-lk.view.json",
+      "sha256": "sha256:ea324618d719e5521bf18cb6b60ac7c67c158ac945e6d582b341af021fb63213",
+      "bytes": 13287
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-rp-seki.view.json",
+      "sha256": "sha256:671f2021dc85236b5df31e371f7f5de9130bc3ed61f51fa8d8862034cabb127b",
+      "bytes": 14468
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-rp-sekii-gk.view.json",
+      "sha256": "sha256:88e0a63039f81c2a556c1846428b58316c5641f781b2a49e230302f6ba11b210",
+      "bytes": 9957
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-rp-sekii-lk.view.json",
+      "sha256": "sha256:04e151b27c7a5f432ecb43031c3b0998a8e7d01aaa92f93aac58f18f544d0130",
+      "bytes": 21168
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-sh-seki.view.json",
+      "sha256": "sha256:1faa0d67f785cef8f56242c608088ae1ad2c42411c432d0ed36bea0498381983",
+      "bytes": 14579
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-sh-sekii-gk.view.json",
+      "sha256": "sha256:67c5b4afd0714fad420ed5f7eb953b0b611fcf463af83bc06b53f02276c135d0",
+      "bytes": 19170
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-sh-sekii-lk.view.json",
+      "sha256": "sha256:c6b0cc3b1f47b5d6dd8aa4180294f1255a893d446bc402cb6a9eb32d7a7a988f",
+      "bytes": 19836
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-sl-seki.view.json",
+      "sha256": "sha256:41e11532f7a56faac17cf779c4b4ab327afe86c57a4e3d3a0ee9bb24a0cdc842",
+      "bytes": 10805
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-sl-sekii-gk.view.json",
+      "sha256": "sha256:095d21cfc9693c536d40fecfb25f54079c6accd57e3e36c39672e255f6ff93b1",
+      "bytes": 17616
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-sl-sekii-lk.view.json",
+      "sha256": "sha256:f17bad866baa5bfe7cab9fbfa04675af5a1cf85f02a68a567d4cc344bfc6936f",
+      "bytes": 18837
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-sn-seki.view.json",
+      "sha256": "sha256:58a99c8bd8dfab4fe54ef99168e0671f482893c313374a57890a1df7332ee651",
+      "bytes": 19241
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-sn-sekii-gk.view.json",
+      "sha256": "sha256:b381b7718d1d839561465e7756b64c541ae192d4d590a31ef4d9088c6b4e90cc",
+      "bytes": 15951
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-sn-sekii-lk.view.json",
+      "sha256": "sha256:a36189cab12f5614e6ff0df625532cbc13cd62554d976cc5889bccc9b8e7a272",
+      "bytes": 21390
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-st-seki.view.json",
+      "sha256": "sha256:d79ee68970c65e9033816e85494f1581807298c4e9bccb9c8707a5fa31c2d6d0",
+      "bytes": 17132
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-st-sekii-gk.view.json",
+      "sha256": "sha256:e0f8018c8a5775879cfe8bf606b49ba65e0c3b45bea9443d66433266130f994f",
+      "bytes": 14508
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-st-sekii-lk.view.json",
+      "sha256": "sha256:4bdbb103ad3c1d30946aa3818fc73e6f1b1c87ba4058f56fbdb612fc99ebd2d0",
+      "bytes": 16173
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-th-seki.view.json",
+      "sha256": "sha256:b4e72eb26814e00d2b26122270a390dec0137d44e0c618c5fe0b3f79b03c09a4",
+      "bytes": 15689
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-th-sekii-gk.view.json",
+      "sha256": "sha256:f4029cbf5ae0154596d9d6fe73304732a1fe53faf8d70c55bdc28572748d253f",
+      "bytes": 19392
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-chemistry-national-atlas/de-gym-chemie-bundesweit-source-de-th-sekii-lk.view.json",
+      "sha256": "sha256:0441d264aafa0c4f5ac54c85745a3c9af94b7fa11df1ad3b8715d8370ad91ffd",
+      "bytes": 19392
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-biology-national-atlas.sources.json",
+      "sha256": "sha256:c4169658e625921616af3090675f3cd6a869355ddd921e9d686f1d68321b7ba2",
+      "bytes": 3980
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-bb-seki.view.json",
+      "sha256": "sha256:538bf60b05f49bafb75e060cc27fbf3ea6308fcbd2f943609db1b1a8413b7b6e",
+      "bytes": 14254
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-be-seki.view.json",
+      "sha256": "sha256:e68950b02a17044db13de097cbc1f369a9be6123a8d37e309e72a8033565e93f",
+      "bytes": 14254
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-bw-seki.view.json",
+      "sha256": "sha256:53dc92b6988ad69fecc4792c3060e3bdef9fc94a7a36a47d6400df5211d72345",
+      "bytes": 14476
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-by-seki.view.json",
+      "sha256": "sha256:05cb369db3f759baf45d0c32151fe94e1ef39d5f2d43329dec30fb8420ba4009",
+      "bytes": 10147
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-by-sekii-gk.view.json",
+      "sha256": "sha256:99fd267fb332102f7bb38bf25e625ee22271ab26e210e29c2f0d40298ae1893e",
+      "bytes": 10631
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-by-sekii-lk.view.json",
+      "sha256": "sha256:ca6af10136d77707471a48eb2a4b9fa509939c6237eac78e2d89225de5761a86",
+      "bytes": 13961
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-hb-seki.view.json",
+      "sha256": "sha256:ee9aec49db7f613337f636eb448ffd80adf3f873c2bddd609121c2d236beb6f5",
+      "bytes": 10924
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-he-seki.view.json",
+      "sha256": "sha256:ade5b39227aa50753322b08213268a4441363588677c4ea48042146204e40ed6",
+      "bytes": 7927
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-he-sekii-gk.view.json",
+      "sha256": "sha256:19edcc62a1011c43e9e5e036a9412e0d2ec4e0c9a65538dd704aaa130db40fd2",
+      "bytes": 9521
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-he-sekii-lk.view.json",
+      "sha256": "sha256:2672f8497643b876d36bbb37feef7260e477b467fc95beecfd6dfece90869578",
+      "bytes": 18290
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-hh-seki.view.json",
+      "sha256": "sha256:6c0a546b8b37cd643e1212e7328d52d553bdb9f384f5aaacbb661412dc0a27e3",
+      "bytes": 13255
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-mv-seki.view.json",
+      "sha256": "sha256:07046d64bd56555b4267984624d3656d546f46d2bf7898c8238b3d3a0d590ad3",
+      "bytes": 18583
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-ni-seki.view.json",
+      "sha256": "sha256:447f73a060bc042f658ecea894a98e2bc97b2e6e55febe723a05e9c1faa9a2d8",
+      "bytes": 16141
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-nw-seki.view.json",
+      "sha256": "sha256:4dad24995f04f65eb7f1f5e7bf3ced01afe81afbae98f9ae15f95742e661cc0b",
+      "bytes": 16585
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-rp-seki.view.json",
+      "sha256": "sha256:89185cf8d89c5805a92c833977fa5c04dde748f50d6537a1093863e2fda1d4af",
+      "bytes": 11701
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-sh-seki.view.json",
+      "sha256": "sha256:b8dad2b0c3d30fc88c44a0052d4f7eefe00f66315e381ce652a5c4f9bc5fe2c5",
+      "bytes": 15808
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-sh-sekii-gk.view.json",
+      "sha256": "sha256:5c6fdf532e9e161abff72365c418cb35622a9b9815bfbf2a7c2e73acc1d04fde",
+      "bytes": 641
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-sh-sekii-lk.view.json",
+      "sha256": "sha256:4a3f8d61a4ac6bbee1704c17554d4160a489bf3cda52e645e90046d70d9665be",
+      "bytes": 641
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-sl-seki.view.json",
+      "sha256": "sha256:35aebc16dfbd53b48206c5816105f040e45c33dbf3f50ea3698b7270d7f857f2",
+      "bytes": 7372
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-sn-seki.view.json",
+      "sha256": "sha256:d4d0a57337231a992d0fa1dec639e93fca8c941ab699873ffebf4c654d1d7e40",
+      "bytes": 20248
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-st-seki.view.json",
+      "sha256": "sha256:50fe629f173cbf609b21a9bb9ccdba4ea0c17172dda9153c5246d910789eaef9",
+      "bytes": 19693
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-st-sekii-gk.view.json",
+      "sha256": "sha256:cfc5fc58782e13a60cb8b3394e9c92c4bb290829dd1ef891a31d7bfd57aad2aa",
+      "bytes": 1196
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-st-sekii-lk.view.json",
+      "sha256": "sha256:44b82e035aa6fd6f6f9e4414b6fd72a24e5d395ea8c428ce54142986cc254eca",
+      "bytes": 1196
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/de-gym-biologie-bundesweit-source-de-th-seki.view.json",
+      "sha256": "sha256:cf97895dd68ee6cfb146d78c714d1f5508272440aa8fb18a4dc364bd58afdba3",
+      "bytes": 20581
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "sha256:5ca26b6f9647a25e43d454781b999b63d0fc2691c16debcd7cb4b3750d960f7c",
+      "bytes": 1275944
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-sh-two-current-context-native-preparation-technical-20261009-v1/native/actual-two/round-a/description-review-input.json",
+      "sha256": "sha256:51f01dc2f04b49b9419a6b4e14630725d1bb9c6b5e57068d5f289f8b3f4af69a",
+      "bytes": 11377
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-sh-two-current-context-reviewed-integration-technical-20261009-v1/native-d-two-current-reviewed-bounded-sh-context/resolutions/e5f97788-c2ac-5f42-b5a5-55605b563a79.resolution.json",
+      "sha256": "sha256:faf682bc555cc809df744ae4e41712edf933ad486f4c401e45f185c7e86959b4",
+      "bytes": 7992
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-sh-two-current-context-reviewed-integration-technical-20261009-v1/native-d-two-current-reviewed-bounded-sh-context/resolutions/2ae2da43-73d5-578f-84f4-be0585a7d8f9.resolution.json",
+      "sha256": "sha256:6ba6563f377915a9dec03412dbcd3d671124151b3528938d419f62ba93586e58",
+      "bytes": 8225
+    },
+    {
+      "path": "app/scripts/reportGymnasiumDurationModelReadiness.ts",
+      "sha256": "sha256:020de68ff80b811c6d7d79dd67f579ddc16b2a297546da5347fd4e6a0994ce72",
+      "bytes": 40929
+    },
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "sha256": "sha256:210ebfbe354e19560bc841ba3113e2e12255b6d5b52f27d643c5afcbc68a37cb",
+      "bytes": 113603
+    },
+    {
+      "path": "app/scripts/validateGoalDescriptionReviewCampaign.ts",
+      "sha256": "sha256:59f8f412cbe9be4dc033396581e14960d0b0f12e3b17b5d48c35e5d6fae71e64",
+      "bytes": 35836
+    },
+    {
+      "path": "app/scripts/validateGoalDescriptionDualRoundResolution.ts",
+      "sha256": "sha256:d97c248a17b3eb1be83a58d3f102a47803e5b7fffa61a9af29cd1bc277ec9b4d",
+      "bytes": 47140
+    },
+    {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "sha256:50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd",
+      "bytes": 56784
+    },
+    {
+      "path": "app/src/utils/goalBookPublicationRegistry.ts",
+      "sha256": "sha256:ba827321bda4a7310159156402ee5094cc825d4fe6f43a455d0051eefac9bf86",
+      "bytes": 3171
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-sh-two-current-context-independent-a-20261009-v1/source-primary/SH-official-current-cohort-scope.actual.txt",
+      "sha256": "sha256:1cc67683c074933bc534f55d0dc8654609c1db3e0baf42b25210926baff049be",
+      "bytes": 543
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Biologie_Sekundarstufe_2023_barrierearm.pdf",
+      "sha256": "sha256:11228f1b3b661dc974a5538fd02e115fd25906af840aa7758503f9c88389b23f",
+      "bytes": 2536409
+    }
+  ],
+  "writes": {
+    "sourceFiles": false,
+    "canonicalGoals": false,
+    "reviewRecords": false,
+    "activePolicyLedger": false,
+    "onlyThisAdditiveReviewArtifact": true
+  }
+}

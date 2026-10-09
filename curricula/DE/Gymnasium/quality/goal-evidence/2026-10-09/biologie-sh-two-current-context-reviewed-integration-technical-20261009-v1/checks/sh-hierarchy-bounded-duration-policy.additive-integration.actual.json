@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "artifactRole": "actual-bounded-duration-policy-additive-integration",
+  "parentCommit": "9cac9d6cdac86f070c984d47cd75ab1914e3e641",
+  "policyPath": "curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json",
+  "beforeSha256": "e72972b1dc317e09221db6af3ac56b89a960acc2c4bf1adfbbf8cf25ebb8159c",
+  "after": {
+    "path": "curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json",
+    "sha256": "2b6185cd2c2f257a2410a36617f1d24b6e2e5a19bb40dcdab82d32786b0878d9",
+    "bytes": 103889
+  },
+  "priorDecisionCount": 153,
+  "currentDecisionCount": 154,
+  "allPriorDecisionsUnchanged": true,
+  "addedDecision": {
+    "subject": "Biologie",
+    "jurisdiction": "DE-SH",
+    "stage": "SekI",
+    "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/source-components/DE_SH_BIOLOGIE_SEKI_HIERARCHY_BOUNDED_20261009_V1.source-extraction.json",
+    "status": "reviewed",
+    "decision": "duration-neutral-projection",
+    "durationModels": [
+      "G8",
+      "G9"
+    ],
+    "learnerFacingProjection": "duration-neutral-composition-view",
+    "evidenceSources": [
+      "https://fachportal.lernnetz.de/sh/faecher/biologie/fachanforderungen.html"
+    ],
+    "rationale": "This bounded hierarchy contribution retains the unchanged official SH Biology 2023 document and complete original GV source row from the parent extraction. It inherits the parent's reviewed duration-neutral G8/G9 learner-facing projection only for the partial GV2/GV6 hierarchy contribution within outgoing Sek-I 2023 cohorts. It grants no coverage for progressively introduced Sek-I 2026 cohorts, no additional grade or course scope, no whole-original-source or course approval, and no human approval. Other obligations of the original GV row remain separate and unchanged."
+  },
+  "independentActualReviews": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-sh-two-current-context-reviewed-integration-technical-20261009-v1/checks/sh-hierarchy-bounded-duration-neutral-policy.independent-a.actual.json",
+      "sha256": "86dfd29f9adc171ad85515da7312649711914f0dd2492132a50a457920199edd",
+      "bytes": 48618
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-sh-two-current-context-reviewed-integration-technical-20261009-v1/checks/SH1-duration-policy.independent-b.actual-review.json",
+      "sha256": "9925482fd8a8e53fc752edae60335cbec103341a0957a22881160925da91a312",
+      "bytes": 7069
+    }
+  ],
+  "normalDurationReadiness": {
+    "command": "npm --prefix app run check:m6-duration-policy-readiness",
+    "actualTerminalExitCode": 0,
+    "actualOutput": [
+      "ok docs/qa-ci/status/gymnasium-duration-model-readiness.md",
+      "M6 subjects: 9; source scopes touching Sek I: 140; all source scopes: 265"
+    ],
+    "report": {
+      "path": "docs/qa-ci/status/gymnasium-duration-model-readiness.md",
+      "sha256": "616eef55923c6b27f4c57ed87b91db25a4bc523371bf98f6226f59414b76744b",
+      "bytes": 147102
+    }
+  },
+  "newScientificClosures": 0,
+  "wholeSourceApproval": false,
+  "wholeCourseApproval": false,
+  "humanApproval": false,
+  "historicalReviewWrites": false
+}

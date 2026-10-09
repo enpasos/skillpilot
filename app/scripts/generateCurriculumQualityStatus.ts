@@ -1,6 +1,6 @@
 import { createHash } from 'node:crypto'
-import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
-import { dirname, join, relative, resolve } from 'node:path'
+import { existsSync, mkdirSync, readdirSync, readFileSync, realpathSync, statSync, writeFileSync } from 'node:fs'
+import { dirname, isAbsolute, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { convertLearningGoal } from '../src/goalTypes'
 import type { LearningGoal, SkillLandscape } from '../src/landscapeTypes'
@@ -1366,7 +1366,14 @@ function hasUsableOriginalSourceUrl(value: unknown): value is string {
   }
 }
 
-function sourceDocumentsForExtraction(extraction: SourceExtractionDocument): MappingPipelineSourceDocumentStatus[] {
+function sourceDocumentsForExtraction(
+  extraction: SourceExtractionDocument,
+  repositoryRoot = repoRoot,
+): MappingPipelineSourceDocumentStatus[] {
+  const root = resolve(repositoryRoot)
+  const sourceAvailable = root === repoRoot
+    ? isRepoAvailableSourcePath
+    : createRepositorySourceAvailability(root)
   const rawDocuments = Array.isArray(extraction.sourceDocuments) && extraction.sourceDocuments.length > 0
     ? extraction.sourceDocuments
     : extraction.sourceDocument
@@ -1397,8 +1404,8 @@ function sourceDocumentsForExtraction(extraction: SourceExtractionDocument): Map
       const landingUrl = typeof documentRecord?.landingUrl === 'string' && documentRecord.landingUrl.trim()
         ? documentRecord.landingUrl.trim()
         : undefined
-      const absolutePath = sourcePath ? resolve(repoRoot, sourcePath) : undefined
-      const repoPath = absolutePath ? toRepoPath(absolutePath) : undefined
+      const absolutePath = sourcePath ? resolve(root, sourcePath) : undefined
+      const repoPath = absolutePath ? relative(root, absolutePath).split(/[\\/]/).join('/') : undefined
       return {
         key: typeof documentRecord?.key === 'string' && documentRecord.key.trim() ? documentRecord.key.trim() : undefined,
         title,
@@ -1406,7 +1413,7 @@ function sourceDocumentsForExtraction(extraction: SourceExtractionDocument): Map
         url: rawUrl,
         landingUrl,
         official: typeof documentRecord?.official === 'boolean' ? documentRecord.official : undefined,
-        available: repoPath ? isRepoAvailableSourcePath(repoPath) : false,
+        available: repoPath ? sourceAvailable(repoPath) : false,
         hasUsableUrl: hasUsableOriginalSourceUrl(rawUrl),
       }
     })
@@ -4195,16 +4202,22 @@ function readSourceLandscapeRegistryEntriesById(): Map<string, SourceLandscapeRe
 }
 
 const sourceExtractionGoalIdsByAtomicOnlyCache = new Map<boolean, Map<string, Set<string>>>()
-function readSourceExtractionGoalIdsByLandscapeId(atomicOnly: boolean): Map<string, Set<string>> {
-  const cached = sourceExtractionGoalIdsByAtomicOnlyCache.get(atomicOnly)
+export function readSourceExtractionGoalIdsByLandscapeId(
+  atomicOnly: boolean,
+  extractionRoot = sourceExtractionRoot,
+): Map<string, Set<string>> {
+  const root = resolve(extractionRoot)
+  const useDefaultCache = root === sourceExtractionRoot
+  const cached = useDefaultCache ? sourceExtractionGoalIdsByAtomicOnlyCache.get(atomicOnly) : undefined
   if (cached) return cached
   const result = new Map<string, Set<string>>()
-  if (!existsSync(sourceExtractionRoot)) {
-    sourceExtractionGoalIdsByAtomicOnlyCache.set(atomicOnly, result)
+  if (!existsSync(root)) {
+    if (useDefaultCache) sourceExtractionGoalIdsByAtomicOnlyCache.set(atomicOnly, result)
     return result
   }
 
-  const files = collectFiles(sourceExtractionRoot, (fileName) => /\.source-extraction\.json$/i.test(fileName))
+  const files = collectFiles(root, (fileName) => /\.source-extraction\.json$/i.test(fileName))
+  const componentGoalIds = new Map<string, Set<string>>()
   files.forEach((file) => {
     try {
       const extraction = loadJson<SourceExtractionDocument>(file)
@@ -4215,13 +4228,31 @@ function readSourceExtractionGoalIdsByLandscapeId(atomicOnly: boolean): Map<stri
           .map((goal) => goal.id)
           .filter((goalId): goalId is string => typeof goalId === 'string' && goalId.trim().length > 0),
       )
-      if (goalIds.size > 0) result.set(extraction.sourceLandscapeId, goalIds)
+      if (goalIds.size > 0) {
+        if (relative(root, file).split(/[\\/]/).includes('source-components')) {
+          // Components retain original-source obligations. They augment the
+          // regular inventory and must never replace it with a bounded subset.
+          const sourceGoalIds = componentGoalIds.get(extraction.sourceLandscapeId) ?? new Set<string>()
+          goalIds.forEach((goalId) => sourceGoalIds.add(goalId))
+          componentGoalIds.set(extraction.sourceLandscapeId, sourceGoalIds)
+        } else {
+          // Preserve the existing regular-extraction version selection. Unioning
+          // all historical or author versions would invent a mixed inventory.
+          result.set(extraction.sourceLandscapeId, goalIds)
+        }
+      }
     } catch {
       // Diagnostic source-extraction files should not block the quality dashboard.
     }
   })
 
-  sourceExtractionGoalIdsByAtomicOnlyCache.set(atomicOnly, result)
+  componentGoalIds.forEach((goalIds, landscapeId) => {
+    const sourceGoalIds = result.get(landscapeId) ?? new Set<string>()
+    goalIds.forEach((goalId) => sourceGoalIds.add(goalId))
+    result.set(landscapeId, sourceGoalIds)
+  })
+
+  if (useDefaultCache) sourceExtractionGoalIdsByAtomicOnlyCache.set(atomicOnly, result)
   return result
 }
 
@@ -4809,15 +4840,48 @@ function readSourceExtractionPipelinesByLandscapeId(): Map<string, MappingPipeli
   return result
 }
 
-function createMissingSourceExtractionPipeline(
+export function createMissingSourceExtractionPipeline(
   mappingFile: GoalMappingFile & { file: string },
   registryEntriesById: Map<string, SourceLandscapeRegistryEntry>,
+  repositoryRoot = repoRoot,
 ): MappingPipelineSourceStatus | null {
   if (typeof mappingFile.sourceLandscapeId !== 'string' || !mappingFile.sourceLandscapeId.trim()) return null
+  const root = resolve(repositoryRoot)
   const registryEntry = registryEntriesById.get(mappingFile.sourceLandscapeId)
-  const jurisdiction = normalizeJurisdiction(registryEntry?.jurisdiction) ?? String(registryEntry?.jurisdiction ?? '')
-  const sourceSnapshotPipeline = createSourceSnapshotMappingPipeline(mappingFile, registryEntry, jurisdiction)
-  if (sourceSnapshotPipeline) return sourceSnapshotPipeline
+  let extraction: SourceExtractionDocument | undefined
+  let extractionRepoPath: string | undefined
+  let extractionFailure = 'Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert.'
+  if (typeof mappingFile.sourceExtractionPath === 'string' && mappingFile.sourceExtractionPath.trim()) {
+    const sourcePath = mappingFile.sourceExtractionPath.trim().replace(/\\/g, '/')
+    const absolutePath = resolve(root, sourcePath)
+    const relativePath = relative(root, absolutePath)
+    if (isAbsolute(sourcePath) || relativePath.split(/[\\/]/).includes('..')) {
+      extractionFailure = 'Die Source-Extraction-Referenz liegt nicht innerhalb des Repositorys.'
+    } else {
+      try {
+        const actualRelativePath = relative(realpathSync(root), realpathSync(absolutePath))
+        if (actualRelativePath.split(/[\\/]/).includes('..') || !statSync(absolutePath).isFile()) {
+          extractionFailure = 'Die Source-Extraction-Referenz ist keine Datei innerhalb des Repositorys.'
+        } else {
+          const candidate = loadJson<SourceExtractionDocument>(absolutePath)
+          if (candidate?.sourceLandscapeId !== mappingFile.sourceLandscapeId) {
+            extractionFailure = 'Der referenzierte Extrakt gehört nicht zur Source-ID dieser Mapping-Datei.'
+          } else {
+            extraction = candidate
+            extractionRepoPath = relativePath.split(/[\\/]/).join('/')
+          }
+        }
+      } catch {
+        extractionFailure = 'Der referenzierte Source-Extrakt ist nicht vorhanden oder nicht lesbar.'
+      }
+    }
+  }
+  const jurisdictionValue = registryEntry?.jurisdiction ?? extraction?.jurisdiction
+  const jurisdiction = normalizeJurisdiction(jurisdictionValue) ?? String(jurisdictionValue ?? '')
+  if (!extraction) {
+    const sourceSnapshotPipeline = createSourceSnapshotMappingPipeline(mappingFile, registryEntry, jurisdiction, root)
+    if (sourceSnapshotPipeline) return sourceSnapshotPipeline
+  }
 
   const steps: MappingPipelineStep[] = [
     {
@@ -4829,9 +4893,27 @@ function createMissingSourceExtractionPipeline(
         {
           id: 'source-extraction-file-present',
           label: 'Persistiertes Source-Extraction-Artefakt vorhanden',
-          passed: false,
-          details: 'Für diese Source-Landschaft ist noch keine geprüfte source-extraction-Datei registriert.',
+          passed: extraction !== undefined,
+          details: extraction
+            ? `Referenzierter Extrakt ist vorhanden: ${extractionRepoPath}. Dateiexistenz belegt keine abgeschlossene Pipelineprüfung.`
+            : extractionFailure,
         },
+        ...(extraction ? [
+          {
+            id: 'source-landscape-registered',
+            label: 'Source-Landschaft im Register vorhanden',
+            passed: registryEntry !== undefined,
+            details: registryEntry
+              ? 'Die Source-ID ist registriert; die Registrierung ersetzt keine Pipelineprüfung.'
+              : 'Die referenzierte Source-ID ist nicht im Source-Landschaftsregister enthalten.',
+          },
+          {
+            id: 'source-extraction-review-complete',
+            label: 'Source-Extraction-Pipelineprüfung abgeschlossen',
+            passed: false,
+            details: 'Für diesen referenzierten Extrakt wurde keine abgeschlossene MAPPING-1/2/3-Pipeline geladen. Vorhandene Inhalte oder Mapping-Kanten gewähren keinen Abschluss.',
+          },
+        ] : []),
       ],
     },
     {
@@ -4866,15 +4948,19 @@ function createMissingSourceExtractionPipeline(
 
   return {
     sourceLandscapeId: mappingFile.sourceLandscapeId,
-    title: registryEntry?.title ?? mappingFile.sourceLandscapeId,
+    title: extraction?.title ?? registryEntry?.title ?? extraction?.extractionId ?? mappingFile.sourceLandscapeId,
     jurisdiction,
-    path: mappingFile.file,
-    sourceKind: 'missing-extraction',
+    subject: typeof extraction?.subject === 'string' ? extraction.subject : undefined,
+    stage: typeof extraction?.stage === 'string' ? extraction.stage : undefined,
+    durationModels: extraction ? normalizeDurationModels(extraction.durationModels) : undefined,
+    path: extractionRepoPath ?? mappingFile.file,
+    sourceKind: extraction ? 'source-extraction' : 'missing-extraction',
+    sourceDocuments: extraction ? sourceDocumentsForExtraction(extraction, root) : undefined,
     currentStep: 'MAPPING-1',
     completedSteps: 0,
     totalSteps: steps.length,
-    sourceGoals: 0,
-    passages: 0,
+    sourceGoals: Array.isArray(extraction?.sourceGoals) ? extraction.sourceGoals.length : 0,
+    passages: Array.isArray(extraction?.passages) ? extraction.passages.length : 0,
     steps,
   }
 }
@@ -4883,10 +4969,11 @@ function createSourceSnapshotMappingPipeline(
   mappingFile: GoalMappingFile & { file: string },
   registryEntry: SourceLandscapeRegistryEntry | undefined,
   jurisdiction: string,
+  repositoryRoot = repoRoot,
 ): MappingPipelineSourceStatus | null {
   const candidatePaths = [registryEntry?.sourcePath, registryEntry?.archiveSourcePath]
     .filter((candidate): candidate is string => typeof candidate === 'string' && candidate.trim().length > 0)
-    .map((candidate) => resolve(repoRoot, candidate))
+    .map((candidate) => resolve(repositoryRoot, candidate))
   const sourcePath = candidatePaths.find((candidate) => existsSync(candidate))
   if (!sourcePath) return null
 
@@ -4939,7 +5026,7 @@ function createSourceSnapshotMappingPipeline(
           id: 'source-extraction-file-present',
           label: 'Keine geprüfte Passage-Extraction',
           passed: false,
-          details: `Snapshot-Diagnose ist registriert: ${toRepoPath(sourcePath)}. Diese Spur zählt nicht als abgeschlossene MAPPING-Pipeline, weil keine einzeln extrahierten Originalpassagen vorliegen.`,
+          details: `Snapshot-Diagnose ist registriert: ${relative(repositoryRoot, sourcePath).split(/[\\/]/).join('/')}. Diese Spur zählt nicht als abgeschlossene MAPPING-Pipeline, weil keine einzeln extrahierten Originalpassagen vorliegen.`,
         },
       ],
     },

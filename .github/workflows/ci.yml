@@ -520,6 +520,8 @@ jobs:
         run: npm run test:deep-understanding-rollout
       - name: Test repository source availability
         run: npm run test:repository-source-availability
+      - name: Test source extraction inventory
+        run: npm run test:source-extraction-inventory
       - name: Verify committed curriculum quality status
         run: |
           npm run quality:curriculum-status
