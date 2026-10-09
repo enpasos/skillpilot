@@ -1,0 +1,20 @@
+    private static final TypeReference<Map<String, Object>> MAP_TYPE = new TypeReference<>() {
+    };
+    private static final String COMPOSITION_SYNTHETIC_PREFIX = "composition:";
+    private static final String COMPOSITION_STRUCTURE_SEPARATOR = ":structure:";
+    private static final String COURSE_PROFILE_KEY = "courseProfile";
+    private static final String STAGE_KEY = "stage";
+    private static final String STAGE_CROSS = "CROSSSTAGE";
+    private static final String COURSE_PROFILE_ALL = "ALL";
+    private static final String COURSE_PROFILE_COMBINED = "GK+LK";
+    private static final String COURSE_PROFILE_GK = "GK";
+    private static final String COURSE_PROFILE_LK = "LK";
+    private static final Set<String> LEARNER_SCOPE_DIMENSIONS = Set.of(
+            "schoolForm",
+            "jurisdiction",
+            STAGE_KEY,
+            "durationModel",
+            COURSE_PROFILE_KEY);
+
+    private enum ProjectionRole {
+        TARGET,

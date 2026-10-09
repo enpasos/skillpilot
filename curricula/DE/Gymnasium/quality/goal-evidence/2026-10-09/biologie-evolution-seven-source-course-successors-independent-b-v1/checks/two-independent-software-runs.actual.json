@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "rows": [
+    {
+      "argv": [
+        "python3",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-eighteen-seven-source-course-remediation-author-v1/selection_simulation.py",
+        "--n",
+        "200",
+        "--generations",
+        "5",
+        "--replicates",
+        "40",
+        "--seed",
+        "7300"
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-seven-source-course-successors-independent-b-v1/checks/simulation-200-7300.actual.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-seven-source-course-successors-independent-b-v1/checks/simulation-200-7300.actual.stderr.txt",
+      "exactOriginalAuthorOutputEqual": true,
+      "all120TrajectoriesFullyParsedAndCountMeanValidated": true,
+      "conditions": [
+        {
+          "name": "neutral",
+          "means": [
+            0.5,
+            0.504625,
+            0.50125,
+            0.50475,
+            0.513875,
+            0.523625
+          ],
+          "terminalSampleStddev": 0.087552090721716
+        },
+        {
+          "name": "brown-favoured",
+          "means": [
+            0.5,
+            0.80475,
+            0.941125,
+            0.98375,
+            0.99575,
+            0.999
+          ],
+          "terminalSampleStddev": 0.0023204774044612874
+        },
+        {
+          "name": "light-favoured",
+          "means": [
+            0.5,
+            0.200375,
+            0.056375,
+            0.0145,
+            0.004625,
+            0.001
+          ],
+          "terminalSampleStddev": 0.0023204774044612857
+        }
+      ],
+      "actualSoftwareExecution": true,
+      "actualLearnerPerformance": false,
+      "actualHumanExperiment": false
+    },
+    {
+      "argv": [
+        "python3",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-eighteen-seven-source-course-remediation-author-v1/selection_simulation.py",
+        "--n",
+        "100",
+        "--generations",
+        "5",
+        "--replicates",
+        "40",
+        "--seed",
+        "7301"
+      ],
+      "cwd": ".",
+      "exitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-seven-source-course-successors-independent-b-v1/checks/simulation-100-7301.actual.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-seven-source-course-successors-independent-b-v1/checks/simulation-100-7301.actual.stderr.txt",
+      "exactOriginalAuthorOutputEqual": true,
+      "all120TrajectoriesFullyParsedAndCountMeanValidated": true,
+      "conditions": [
+        {
+          "name": "neutral",
+          "means": [
+            0.5,
+            0.49275,
+            0.5005000000000001,
+            0.497,
+            0.49175,
+            0.486
+          ],
+          "terminalSampleStddev": 0.10757942802103632
+        },
+        {
+          "name": "brown-favoured",
+          "means": [
+            0.5,
+            0.79875,
+            0.93925,
+            0.9795,
+            0.99625,
+            0.99875
+          ],
+          "terminalSampleStddev": 0.0033493206352854213
+        },
+        {
+          "name": "light-favoured",
+          "means": [
+            0.5,
+            0.20475000000000002,
+            0.06375,
+            0.0135,
+            0.0035,
+            0.00125
+          ],
+          "terminalSampleStddev": 0.0040430377003132
+        }
+      ],
+      "actualSoftwareExecution": true,
+      "actualLearnerPerformance": false,
+      "actualHumanExperiment": false
+    }
+  ],
+  "ordinaryActualExitCodes": [
+    0,
+    0
+  ],
+  "totalSyntheticRuns": 240,
+  "scientificInterpretation": "Asexual weighted offspring sampling; drift/control/reversal verified. Inheritance fixed; mutation/recombination/diploid genetics absent. No actual natural or human experiment and no learner evidence.",
+  "license": "CC-BY-4.0"
+}

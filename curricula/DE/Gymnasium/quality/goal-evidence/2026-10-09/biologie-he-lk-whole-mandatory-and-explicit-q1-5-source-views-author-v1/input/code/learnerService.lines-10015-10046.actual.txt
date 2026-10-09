@@ -1,0 +1,32 @@
+    private Map<String, String> deriveCompositionScope(String landscapeId, Map<String, Map<String, Object>> config) {
+        String rootFilterId = readFilterId(config, CANONICAL_GYMNASIUM_ROOT_ID);
+        String landscapeFilterId = readFilterId(config, landscapeId);
+        String jurisdiction = resolveJurisdictionFilter(rootFilterId, landscapeFilterId);
+        String courseProfile = normalizeCourseProfileScope(landscapeFilterId);
+        String stage = inferCompositionStageScope(config, landscapeId);
+        String durationModel = resolveDurationModelScope(
+                readScopeValue(config, landscapeId, "durationModel"),
+                readScopeValue(config, CANONICAL_GYMNASIUM_ROOT_ID, "durationModel"),
+                rootFilterId,
+                landscapeFilterId);
+
+        if (jurisdiction == null && stage == null && courseProfile == null && durationModel == null) {
+            return Collections.emptyMap();
+        }
+
+        Map<String, String> scope = new LinkedHashMap<>();
+        scope.put("schoolForm", "Gymnasium");
+        if (jurisdiction != null) {
+            scope.put("jurisdiction", jurisdiction);
+        }
+        if (stage != null) {
+            scope.put("stage", stage);
+        }
+        if (courseProfile != null && !"SekI".equals(stage)) {
+            scope.put("courseProfile", courseProfile);
+        }
+        if (durationModel != null) {
+            scope.put("durationModel", durationModel);
+        }
+        return scope;
+    }

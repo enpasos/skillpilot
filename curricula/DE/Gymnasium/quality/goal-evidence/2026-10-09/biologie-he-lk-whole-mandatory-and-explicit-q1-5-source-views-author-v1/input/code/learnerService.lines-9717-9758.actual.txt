@@ -1,0 +1,42 @@
+        LinkedHashSet<String> compositionViewIds = new LinkedHashSet<>();
+        LinkedHashSet<String> presentationRootGoalIds = new LinkedHashSet<>();
+        boolean authoritativeCandidateSeen = authoritativeCurriculum;
+        boolean defaultCurriculumViewRequested = authoritativeCurriculum && effectiveConfig.isEmpty();
+        if (defaultCurriculumViewRequested) {
+            Map<String, Object> defaultView = compositionViewService.findDefaultView(curriculumId);
+            if (defaultView != null && !defaultView.isEmpty()) {
+                addCompositionViewId(defaultView, compositionViewIds);
+                addCompositionPresentationRootGoalId(
+                        defaultView,
+                        landscapeService.getById(readString(defaultView.get("landscapeId"))),
+                        presentationRootGoalIds);
+                collectCompositionViewGoalReferences(defaultView.get("rootNodes"), referencedGoals);
+            }
+            authoritativeCandidateSeen = true;
+        }
+        for (SkillLandscape landscape : closure) {
+            if (!isCompositionViewCandidate(curriculumId, landscape, effectiveConfig)) {
+                continue;
+            }
+            boolean authoritative = compositionViewService.isAuthoritativeForLandscape(landscape.getLandscapeId());
+            authoritativeCandidateSeen |= authoritative;
+            if (defaultCurriculumViewRequested && landscape.getLandscapeId().equals(curriculumId)) {
+                continue;
+            }
+            Map<String, String> requestedScope = deriveCompositionScope(landscape.getLandscapeId(), effectiveConfig);
+            if (requestedScope.isEmpty()) {
+                if (!authoritative) {
+                    addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);
+                }
+                continue;
+            }
+            Map<String, Object> matchedView =
+                    compositionViewService.findLearnerScopeView(
+                            landscape.getLandscapeId(),
+                            requestedScope);
+            if (matchedView == null || matchedView.isEmpty()) {
+                if (!authoritative) {
+                    addFilteredLandscapeGoalIds(landscape, allGoals, fallbackGoalIds);
+                }
+                continue;
+            }

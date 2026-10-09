@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 1,
+  "role": "actual-code-and-authored-view-boundary-review-author-candidate",
+  "codeBindings": [
+    {
+      "path": "app/scripts/goalBookSourceAtlasInputs.ts",
+      "sha256": "sha256:0b6761c9847c1a39b49ebba597149b39e78fec791fa64f1179a9e8056fe1f0f5",
+      "bytes": 25775
+    },
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "sha256": "sha256:210ebfbe354e19560bc841ba3113e2e12255b6d5b52f27d643c5afcbc68a37cb",
+      "bytes": 113603
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java",
+      "sha256": "sha256:9a6aa635641b463967211cbc149bfa23d4b3fa24ff78a5350b36c3f05dba3b96",
+      "bytes": 43524
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "sha256": "sha256:6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab",
+      "bytes": 529427
+    }
+  ],
+  "currentBiologyAuthoredViews": [
+    {
+      "binding": {
+        "path": "curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-biology-gk.view.json",
+        "sha256": "sha256:d9b0afaced941bd04dd9ad94b961e63772dba0395311116a6bbdd627c72c6f82",
+        "bytes": 6087
+      },
+      "viewId": "de-de-gym-biology-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "CrossStage",
+        "courseProfile": "GK"
+      }
+    },
+    {
+      "binding": {
+        "path": "curricula/DE/Gymnasium/composition-views/biologie/de-de-gym-seki-biology.view.json",
+        "sha256": "sha256:a126cdf231805adaa7bfe71c2e6d811a7f9ddd67e222acde24901c8231cf8ecb",
+        "bytes": 3374
+      },
+      "viewId": "de-de-gym-seki-biology",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "stage": "SekI"
+      }
+    },
+    {
+      "binding": {
+        "path": "curricula/DE/Gymnasium/composition-views/biologie/de-mv-gym-seki-biology.view.json",
+        "sha256": "sha256:f261e67b3845f58275e5d88bfbbd4aa2a716170bf5b2122febedec9302a6234d",
+        "bytes": 19489
+      },
+      "viewId": "de-mv-gym-seki-biology",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-MV",
+        "stage": "SekI"
+      }
+    },
+    {
+      "binding": {
+        "path": "curricula/DE/Gymnasium/composition-views/biologie/de-sn-gym-seki-biology.view.json",
+        "sha256": "sha256:3e3bc05aa207bf4fb33f57da5614a8aabc3e60871f5281afb43bb9e8c9eedc73",
+        "bytes": 21154
+      },
+      "viewId": "de-sn-gym-seki-biology",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-SN",
+        "stage": "SekI"
+      }
+    },
+    {
+      "binding": {
+        "path": "curricula/DE/Gymnasium/composition-views/biologie/de-st-gym-seki-biology.view.json",
+        "sha256": "sha256:dca8020fd64605cf20f44ef560e92b18af1b0ac594b956ac134ce8da5b259100",
+        "bytes": 20773
+      },
+      "viewId": "de-st-gym-seki-biology",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "SekI"
+      }
+    },
+    {
+      "binding": {
+        "path": "curricula/DE/Gymnasium/composition-views/biologie/de-st-gym-sekii-biology-gk.view.json",
+        "sha256": "sha256:a320f51c260c5b71196212e7aee4ce687a32d000375632c941b279e5a0ca17e6",
+        "bytes": 1208
+      },
+      "viewId": "de-st-gym-sekii-biology-gk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      }
+    },
+    {
+      "binding": {
+        "path": "curricula/DE/Gymnasium/composition-views/biologie/de-st-gym-sekii-biology-lk.view.json",
+        "sha256": "sha256:3980377806d85f60d202279588bf3c314bc0cc739d333434b9fc02ed4bffb812",
+        "bytes": 1208
+      },
+      "viewId": "de-st-gym-sekii-biology-lk",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-ST",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      }
+    },
+    {
+      "binding": {
+        "path": "curricula/DE/Gymnasium/composition-views/biologie/de-th-gym-seki-biology.view.json",
+        "sha256": "sha256:d32f1449dd36bb3b0f8056dff0cb75e25dc7c8dbdbf951272bf7dc18abaf94ce",
+        "bytes": 21376
+      },
+      "viewId": "de-th-gym-seki-biology",
+      "scope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-TH",
+        "stage": "SekI"
+      }
+    }
+  ],
+  "bookCatalogRoot": "app/scripts/config/goal-books",
+  "actualRepositoryLearnerViewRoot": "curricula/DE/Gymnasium/composition-views",
+  "bookSourceAtlasIsPersonalCurriculumDefault": false,
+  "actualCodeReading": "buildGoalBookSourceAtlasInputs output guard limits outputs to app/scripts/config/goal-books. CompositionViewService loads only DE/Gymnasium/composition-views below configured curricula root. Learner scope dimensions schoolForm/jurisdiction/stage/durationModel/courseProfile; no Q1.5 election predicate. LearnerService nonauthoritative unmatched-view branch can retain filtered fallback goals. This static reading is not evidence from private learner sessions.",
+  "currentActualHE_SekII_LKAuthoredLearnerViewExists": false,
+  "currentDefaultLearnerExclusionOfHoxProven": false,
+  "HoxCurrentPrimarySupport": {
+    "HE": {
+      "source": "HE current2025 printed38+40",
+      "role": "Q1.5 chosen topic, LK Homeobox genes plus regulation in development; supplementary Evo-Devo transfer, not universal LK duty",
+      "catalogWitnessAllowed": true,
+      "wholeSourceApproval": false
+    },
+    "BY": {
+      "actualCurrentOfficialPage": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/12/biologie/erhoeht",
+      "actualReading": "B12.2.2 supports regulation, development/specialization, transcription factors, enhancers/silencers and stem cells; whole page has no Hox literal. Development/regulation alone does not discharge the specific whole Evo-Devo goal.",
+      "wholeSpecificHoxSourceProven": false
+    },
+    "MV_SH_BW_NWCurrentConfiguredPdfSearch": {
+      "actualReading": "Configured available original official PDFs were searched after pdftotext -layout for Hox/Homeobox/Homöobox; no matching explicit alternative was found. This is bounded to these configured PDFs, not a universal absence claim.",
+      "wholeSpecificHoxSourceProven": false
+    },
+    "BWOtherActualOfficialSource": {
+      "url": "https://www.bildungsplaene-bw.de/SonBiowiss_OS",
+      "locus": "BPE5.7 and6.1",
+      "support": "Actual Hox complexes/expression and developmental evidence for evolution.",
+      "scope": "Sondergebiete der Biowissenschaften, modular subject of berufliche Gymnasien; not the current ordinary general-Gymnasium biology source scope.",
+      "currentAtlasSourceAdded": false,
+      "reasonNotUsed": "Different subject/program plus selected modules; adding it as ordinary nationwide Gymnasium biology would silently broaden the reviewed scope."
+    }
+  },
+  "bookCatalog394TechnicalCandidate": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-eighteen-seven-source-course-remediation-author-v1/candidate/source-atlas.whole479-book-catalog-with-optional-witness.inputs.json",
+  "mandatoryOnly393DiagnosticIsNotCompleteCatalog": true,
+  "HEExplicitSelectedQ1_5CandidateViewId": "de-he-gym-sekii-biology-lk-Q1-5-explicitly-selected-author-candidate",
+  "HEExplicitSelectedQ1_5CandidateIsAutoRegistered": false,
+  "limitedCorePreviewViewId": "de-he-gym-sekii-biology-lk-limited-Q2-1-source-role-preview-author-candidate",
+  "limitedCorePreviewIsFullHE_LKStandard": false,
+  "otherCurrentHEMandatoryAndElectiveDutyConditionsFullyReviewed": false,
+  "nextConcreteIntegrationStep": "Independently review the optional book witness and actual HE-Q1.5 raw source span. Keep book-catalog394 independent of learner defaults. For a learner default, review all current HE mandatory/elective conditions, author the full ordinary HE-SekII-LK view without unselected elective targets and bind an actual explicit selection route before indexing the Q1.5 candidate. Do not register both same-scope views in the current automatic matcher and call the chosen topic enforced. No compiler or learner runtime was changed in this package.",
+  "sourceAndLearnerWholeCourseApproval": false,
+  "humanApproval": false,
+  "strictGain": 0
+}

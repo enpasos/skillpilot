@@ -1,0 +1,86 @@
+{
+  "blockerId": "HE-OPTIONAL-TOPIC-SELECTION-SCOPE-ABSENT",
+  "kind": "separate_runtime_and_closed_contract_selection_blocker",
+  "schemaBinding": {
+    "path": "contracts/curriculum-package/v1/composition-view.schema.json",
+    "sha256": "sha256:a90e68ba07e141e54789d5dbd3de862a6d98f9fff513e57465efbb02c9fc57a6",
+    "bytes": 4608
+  },
+  "scopePropertiesExactly": [
+    "schoolForm",
+    "jurisdiction",
+    "stage",
+    "courseProfile",
+    "durationModel"
+  ],
+  "additionalScopePropertiesAllowed": false,
+  "actualCodeContexts": [
+    {
+      "original": {
+        "path": "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java",
+        "sha256": "sha256:9a6aa635641b463967211cbc149bfa23d4b3fa24ff78a5350b36c3f05dba3b96",
+        "bytes": 43524
+      },
+      "firstLine": 30,
+      "lastLine": 49,
+      "actualExactContext": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-he-lk-whole-mandatory-and-explicit-q1-5-source-views-author-v1/input/code/compositionService.lines-30-49.actual.txt",
+        "sha256": "sha256:599c797843ef18fa0732784e1863e12c5b13286d8aec2e00a58638ffeb539c3a",
+        "bytes": 950
+      }
+    },
+    {
+      "original": {
+        "path": "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java",
+        "sha256": "sha256:9a6aa635641b463967211cbc149bfa23d4b3fa24ff78a5350b36c3f05dba3b96",
+        "bytes": 43524
+      },
+      "firstLine": 489,
+      "lastLine": 531,
+      "actualExactContext": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-he-lk-whole-mandatory-and-explicit-q1-5-source-views-author-v1/input/code/compositionService.lines-489-531.actual.txt",
+        "sha256": "sha256:5062b5da173afae65c67f31f84ad4965d9be7982104106b4c13be452391cfde5",
+        "bytes": 2376
+      }
+    },
+    {
+      "original": {
+        "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+        "sha256": "sha256:6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab",
+        "bytes": 529427
+      },
+      "firstLine": 9717,
+      "lastLine": 9758,
+      "actualExactContext": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-he-lk-whole-mandatory-and-explicit-q1-5-source-views-author-v1/input/code/learnerService.lines-9717-9758.actual.txt",
+        "sha256": "sha256:455af0839540044a236dfe6cfb460f1b69c5b62d52d68e4b12d903f8e6d95580",
+        "bytes": 2313
+      }
+    },
+    {
+      "original": {
+        "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+        "sha256": "sha256:6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab",
+        "bytes": 529427
+      },
+      "firstLine": 10015,
+      "lastLine": 10046,
+      "actualExactContext": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-he-lk-whole-mandatory-and-explicit-q1-5-source-views-author-v1/input/code/learnerService.lines-10015-10046.actual.txt",
+        "sha256": "sha256:060b4b33f2222ca990790f274170c4ac91661c2b4797a742a229be57f2ddfa42",
+        "bytes": 1487
+      }
+    }
+  ],
+  "actualFinding": "Personal Curriculum derives only schoolForm/jurisdiction/stage/courseProfile/durationModel. No optional-topic selection enters findLearnerScopeView; equal-scope views are sorted by viewId after equal matching scores. That sort is not explicit Q1.5 selection.",
+  "standardAndExplicitQ15CanShareScopeButRuntimeCannotDistinguishSelection": true,
+  "prohibitedWorkarounds": [
+    "No invented LK+Q1.5 course profile.",
+    "No lexicographic viewId as user choice.",
+    "No implicit optional topic duty from LK tags.",
+    "No prerequisiteOnly tagging to hide authored extras."
+  ],
+  "separateBookCatalogBoundary": "A book-local optional catalogue witness can remain partial and explicitly additional; it is not a universal HE learner target or a Personal Curriculum default.",
+  "runtimeOrSchemaChangesPerformed": false,
+  "nextAuthorizedContentWork": "Complete actual mandatory clause/partner matrix independently; keep an explicit selected-topic data variant outside automatic learner indexing until a separately authorised selection mechanism exists."
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual existing ordinary generated notice check after regenerating the affected memory report",
+  "completedAt": "2026-10-09T12:25:48.479848+00:00",
+  "observedGitHubHead": "0d3a4b07bd249f77da44cc7b9a564d5d77265a2e",
+  "observedFailures": [
+    {
+      "runId": 37918861683,
+      "jobId": 113787041310,
+      "step": "Check Generated Documentation Notices",
+      "url": "https://github.com/enpasos/skillpilot/actions/runs/37918861683/job/113787041310"
+    },
+    {
+      "runId": 37918861641,
+      "jobId": 113781645872,
+      "step": "Check Generated Documentation Notices",
+      "url": "https://github.com/enpasos/skillpilot/actions/runs/37918861641/job/113781645872"
+    }
+  ],
+  "actualRootCause": "Generated memory report retained the prior ledger path; current config selects the reviewed Splice1 v2 corpus.",
+  "repairCommand": [
+    "npm",
+    "--prefix",
+    "app",
+    "run",
+    "quality:memory-card-review:report",
+    "--",
+    "--config=curricula/DE/Gymnasium/quality/memory-card-review/canonical-biology-full.config.json"
+  ],
+  "repairScope": "Two generated report references only; existing generator, no validator/workflow/quality-limit changes",
+  "checkCommand": [
+    "npm",
+    "--prefix",
+    "app",
+    "run",
+    "check:generated-doc-notices"
+  ],
+  "exitCode": 0,
+  "checkedGeneratedMarkdownFiles": 33,
+  "generatedReport": {
+    "path": "docs/qa-ci/status/memory-card-review-canonical-biology-full.md",
+    "sha256": "e207e8d30a5efc3793e6e55544d97b6fee3cf7b0e62b6205eebdc443ab415b12",
+    "bytes": 21543
+  },
+  "reviewDecisionsChanged": 0,
+  "strictGain": 0,
+  "newScientificM7Closures": 0,
+  "restoredM7Bindings": 0,
+  "remoteFixVerified": false,
+  "humanApproval": false
+}

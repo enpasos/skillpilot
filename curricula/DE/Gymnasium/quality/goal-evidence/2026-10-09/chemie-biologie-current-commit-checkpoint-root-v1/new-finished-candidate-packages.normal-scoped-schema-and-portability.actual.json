@@ -1,0 +1,661 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-09T11:31:56.173557+00:00",
+  "role": "Normal existing validate_file on finished new candidates plus full JSONL parse and normal repository symlink check; no new exception",
+  "ordinaryValidator": {
+    "path": "scripts/validate_schemas.py",
+    "sha256": "e92ed9b240ec601c6e326d57cd79659414ccadfea88cabe0f63f20bf98246664",
+    "bytes": 26333
+  },
+  "runtimeSchema": {
+    "path": "docs/landscape-runtime.schema.json",
+    "sha256": "d25cf1c930d1a21838264b34d713f32788715089c6b8ff2b7430bdbc6079e59a",
+    "bytes": 27561
+  },
+  "normalValidatorFunctions": [
+    "validate_file",
+    "curriculum_symlink_errors"
+  ],
+  "checkedFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-one-culture-book-perspective-correction-author-root-v1/neutral-one-actual-closed-book-correction.independent-V-followup.entry.json",
+      "sha256": "6d740a5a410afd1ce61820d65d872c0a672786d14e1d59807c4e7041780bce69",
+      "bytes": 2983
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-one-culture-book-perspective-correction-author-root-v1/one-actual-v2-360680-browser-capture.receipt.json",
+      "sha256": "bfbd4c13cfec46b20e5b088eb351f9f3d41c4e31380b54882bd79807142599bb",
+      "bytes": 1364
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-one-culture-book-perspective-correction-author-root-v1/one-book-correction.actual-generation-provenance.json",
+      "sha256": "97c67d56340d1835a80bd85088308b9e3779f86f596fd52b9af80a91781c6073",
+      "bytes": 1993
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-one-culture-book-perspective-correction-author-root-v1/one-book-correction.actual-original-360680.author-QC.json",
+      "sha256": "0bb154a79bcef0f13fa6de5530efe757cb33303b185dac74deffc82a0bd2e97c",
+      "bytes": 1654
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-one-culture-book-perspective-correction-author-root-v1/one-book-perspective-correction.author-input.freeze.json",
+      "sha256": "eee9657036cc161aaf4d23d692f0d30a4b0b909df6e326000fab9ce4abf7eaea",
+      "bytes": 3898
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-one-culture-book-perspective-correction-author-root-v1/one-closed-book-correction.author.final.freeze.json",
+      "sha256": "5770c5acde7b024c8015171c722514083bbcd80366c91e40a91acc4b21ca9fbd",
+      "bytes": 4849
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-one-culture-book-perspective-correction-author-root-v1/one-selected-generated-v2.pixel-FIRST-neutral-input.json",
+      "sha256": "dcb8b82cb72f9b6dc7f9b84716ea9c17bda7c869c1c32c6ab298cdb9d64f49a2",
+      "bytes": 3442
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-one-culture-book-perspective-correction-author-root-v1/one-selected-generated-v2.whole-goal-and-operative-metadata.candidate.json",
+      "sha256": "8446cee7538496357affa64ebf4ae3dafae0343a1dce917724746a4c81027588",
+      "bytes": 9851
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-six-root-raster-current-V-pairing-technical-root-v1/neutral-completed-six-current-raster-candidate-V-pair.entry.json",
+      "sha256": "449319c472155a969c5e617c6db981ff38e8e3f9946ef4335d801d78e08a1307",
+      "bytes": 1312
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-six-root-raster-current-V-pairing-technical-root-v1/six-current-candidate-V-pair.technical.final.freeze.json",
+      "sha256": "595c106d42176538b6b8207dc49b85f47a96621b4467befc3179d9bec04af464",
+      "bytes": 1779
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-six-root-raster-current-V-pairing-technical-root-v1/six-current-candidate-visualizations.genuine-independent-V-pair.actual.json",
+      "sha256": "00f05b316b84618d475d17e501d33ca9c6b5d3c2b8ed889afbc4dff7626f1fb0",
+      "bytes": 57934
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-six-root-raster-current-V-pairing-technical-root-v1/six-existing-independent-V-and-resolved-reconstruction.technical-input.freeze.json",
+      "sha256": "6f77148ddd3e6f41a009397aeb147f83954a140776a395dfe708e341d78b3be3",
+      "bytes": 26851
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-current-raster-V-pairing-technical-root-v1/neutral-completed-twelve-current-raster-candidate-V-pair.entry.json",
+      "sha256": "2947d84ba40d5fbcb4a318c62782ba76a527e81b4cc95901eef4688696296e2e",
+      "bytes": 934
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-current-raster-V-pairing-technical-root-v1/twelve-current-candidate-V-pair.technical.final.freeze.json",
+      "sha256": "8e2d6e8df5e6ebaa139903ecdec400b8fddd75f7c10c04d622b8394573f3bacb",
+      "bytes": 1684
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-current-raster-V-pairing-technical-root-v1/twelve-current-candidate-rasters.genuine-V-pair.actual.json",
+      "sha256": "97c34fa9828faaeeab77f75fdf4c63634e163cbd83c9791bc1d97b5adcdb49de",
+      "bytes": 136221
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-current-raster-V-pairing-technical-root-v1/twelve-genuine-V-and-one-pixel-successor.technical-input.freeze.json",
+      "sha256": "b5bc0126293725be5570c0147ea6805b675153b3cc443e4fcaaaa7fcd850902a",
+      "bytes": 72174
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-a-v1/neutral-completed-twelve-actual-rasters-independent-A.review.entry.json",
+      "sha256": "b4e2e144d63b8cf566f3b351571ce9fe1e37108cb494222c5cb43f49c8f6c587",
+      "bytes": 8726
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-a-v1/one-book-perspective-followup-v1/neutral-completed-one-closed-book-independent-A.followup.entry.json",
+      "sha256": "acf526591f7e4aa5489451331aa317ac747fc8ba4785954746b94d5290de23cf",
+      "bytes": 5008
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-a-v1/one-book-perspective-followup-v1/one-closed-book.actual-pixel-FIRST.freeze.json",
+      "sha256": "04ea044475104c8eeda6717342106c4d16f6a98c73ceb5d6123c90e562ce281d",
+      "bytes": 1276
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-a-v1/one-book-perspective-followup-v1/one-closed-book.actual-pixel-FIRST.verdict.json",
+      "sha256": "c22a72e11a7e7632e8180de1076d02c1d00219d849c33eca17bf515c466fe8d5",
+      "bytes": 6323
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-a-v1/one-book-perspective-followup-v1/one-closed-book.independent-A.followup.final.freeze.json",
+      "sha256": "1df5e6e0dfb795d0ae65f21077938b5c1bf492e69d712a4210fa2cb2fca2156f",
+      "bytes": 3012
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-a-v1/one-book-perspective-followup-v1/one-closed-book.scoped-inputs-and-historical-seal-integrity.actual.json",
+      "sha256": "7cb359dd20c4c7b8ad8afec7ee967b7ddcbbc2ececbc6f10117d5c1301cb9f93",
+      "bytes": 12892
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-a-v1/one-book-perspective-followup-v1/one-closed-book.targeted-full-FIRST.freeze.json",
+      "sha256": "864b02a61c7f300a3039c9fe9cf864ae1057a2311a8d4a2e26371c4dc2090c36",
+      "bytes": 853
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-a-v1/one-book-perspective-followup-v1/one-closed-book.targeted-full-FIRST.verdict.json",
+      "sha256": "1b0660a2f8ed402f5651d51c2c02839479e7e93a3837fa6026c8f38d32f41c27",
+      "bytes": 6481
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-a-v1/own-written-JSON-full-parse-and-input-unchanged.actual.json",
+      "sha256": "e955fa8234e4ef55520726a697a19dd7d6131f7538bd5edfb6c40a5f49c7b69c",
+      "bytes": 3487
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-a-v1/scoped-V-technical.terminal.actual.json",
+      "sha256": "be04a12b9bbcaa01ccdba7fd65b84daf3386ae23e8fb5a31744200f05a6e60d1",
+      "bytes": 919
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-a-v1/twelve-actual-provenance-caption-alt-reconstruction.metadata-input.snapshot.json",
+      "sha256": "277e0f671f68cef50bffafb1f25d11c9b1d80b84f88b0ecad81dd9da3f6c5bd7",
+      "bytes": 54883
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-a-v1/twelve-actual-rasters.independent-A.final.freeze.json",
+      "sha256": "2548ee0119541248c01edbcc3c1e3bbb40ce2734395fe07d66b408e589f276d3",
+      "bytes": 5392
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-a-v1/twelve-actual-rasters.independent-A.full-FIRST.freeze.json",
+      "sha256": "23923dd7d4602467f30a2192daf59925d6c00bae376075cacbe7a424a0ff87f4",
+      "bytes": 939
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-a-v1/twelve-actual-rasters.independent-A.full-FIRST.verdict.json",
+      "sha256": "b0824e41255e3031a9e4691b077beae20189a5ae53b9656c475e1b30cd9cf1e1",
+      "bytes": 127087
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-a-v1/twelve-actual-rasters.independent-A.pixel-FIRST.freeze.json",
+      "sha256": "df1015299da0c0a5f373ce6ef34db8ed35ca5d7ac3fe33a2e0c95bc3ca145f99",
+      "bytes": 920
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-a-v1/twelve-actual-rasters.independent-A.pixel-FIRST.verdict.json",
+      "sha256": "3d74e4b623f5ca52dcdff10105f08f82362e6b78b019fc85b38cc30c9cd0202a",
+      "bytes": 62755
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-a-v1/twelve-pixel-only-input.FIRST.freeze.json",
+      "sha256": "55ec913bd632d13dd82f59a3672f3328645d96e210994b958a3d89cd41b98943",
+      "bytes": 12650
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-a-v1/twelve-scoped-V-bindings-raw-copy-and-portability.actual.json",
+      "sha256": "4bcba063192306228eb7e2e4e29e8c5738cec2da90929879a17cec55c20cd7f6",
+      "bytes": 53304
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-a-v1/twelve-whole-goals-and-actual-raster-bindings.pixel-only.input.json",
+      "sha256": "2be56df1b093b25a57cbdeb867d6174bd3ce3af04c6e3980081d3d5596232f22",
+      "bytes": 46062
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-b-v1/neutral-completed-twelve-current-rasters-independent-b.review.entry.json",
+      "sha256": "60b61fedc8757125b9430d3b693356375bb81d4b858c1593ed24058728342dda",
+      "bytes": 64808
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-b-v1/one-book-perspective-followup-v1/neutral-completed-one-closed-book-independent-b.followup.entry.json",
+      "sha256": "3cec6d7661e5317a32e32ece95bde7a28794281383a4ee2fa625cee7b55347aa",
+      "bytes": 7670
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-b-v1/one-book-perspective-followup-v1/one-closed-book-independent-b.followup.final.freeze.json",
+      "sha256": "810c1d69816eb6df1243df72c6861b26c906ef0bb7e400376ad26eaa742831c5",
+      "bytes": 2494
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-b-v1/one-book-perspective-followup-v1/one-closed-book.independent-b.metadata-FIRST.freeze.json",
+      "sha256": "9c0d89c4f8eb94ab28cfaaa1a10508c2a260420fe8df9dc957a52d9f43528465",
+      "bytes": 944
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-b-v1/one-book-perspective-followup-v1/one-closed-book.independent-b.metadata-and-V.verdict.json",
+      "sha256": "7c3dd1a7ee39e87c178fc1e3a0ac4db57b3ca15e4becdaafc28f8b2c003cc9da",
+      "bytes": 5193
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-b-v1/one-book-perspective-followup-v1/one-closed-book.independent-b.pixel-FIRST.freeze.json",
+      "sha256": "e9a564cd58ba7d7ad283e76cd85217858ec6c5bf74a3be66078da69671f04cfb",
+      "bytes": 2096
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-b-v1/one-book-perspective-followup-v1/one-closed-book.independent-b.pixel-FIRST.verdict.json",
+      "sha256": "243b352df8a69259bce99b73398a4b0aab859ff9f203f40dedd0c0de238b4670",
+      "bytes": 5692
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-b-v1/one-book-perspective-followup-v1/one-closed-book.scoped-binding-portability-and-eleven-reuse.actual.json",
+      "sha256": "768043cd0b5571240f2e8bebd69d94db1f6bdb353aad495208940ceac27715ae",
+      "bytes": 17011
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-b-v1/own-new-JSON.normal-schema-parser-scoped.actual.json",
+      "sha256": "60ffd4cc1028fc732262883d0e1e32485e4a54db6b680cd78c969d65f1631d56",
+      "bytes": 3313
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-b-v1/twelve-actual-rasters.independent-b.metadata-FIRST.freeze.json",
+      "sha256": "94b4d3bda85f5d12544dc5ab3e9a74ad56e3db94fdc60d47cf19096fd1abcdf9",
+      "bytes": 1236
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-b-v1/twelve-actual-rasters.independent-b.metadata-and-V.verdict.json",
+      "sha256": "35c25bb97f25add8c6a67a10f8911bf6b00a348c205a1d5a0e57c82cb1a8cfca",
+      "bytes": 97391
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-b-v1/twelve-actual-rasters.independent-b.pixel-FIRST.freeze.json",
+      "sha256": "1427ee7ca08e42097e387d6276e08f76e984a12ff43e51c6de01d556158e0f02",
+      "bytes": 13063
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-b-v1/twelve-actual-rasters.independent-b.pixel-FIRST.portable-v2.freeze.json",
+      "sha256": "606e5269ddb362b568969c4b3538fa127c4b287c8e6a65456c3ac95524756234",
+      "bytes": 13397
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-b-v1/twelve-actual-rasters.independent-b.pixel-FIRST.portable-v2.verdict.json",
+      "sha256": "60e6dc2d26d573a9cc7bb74f048d1132931e5a79f35b547c6638fab9b021e02f",
+      "bytes": 56106
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-b-v1/twelve-actual-rasters.independent-b.pixel-FIRST.verdict.json",
+      "sha256": "73234aab59c3c02ee6493ef3af1f59c55cf48f412ea6cc6c860157ce24acf19e",
+      "bytes": 55204
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-b-v1/twelve-current-raster-independent-b.final.freeze.json",
+      "sha256": "cd060428a4682c534e1750bc27bbe79eafbbad54521681005e5bc2f46fd57962",
+      "bytes": 2646
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-b-v1/twelve-selected-rasters.actual-metadata-binding-and-portability-check.json",
+      "sha256": "c85bd75b72e49b9170e44351994d0ee7d5037110e9b063eefd5e3fefffafa9e6",
+      "bytes": 46050
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-b-v1/twelve-whole-goals-and-original-display-bindings.pixel-only.input.json",
+      "sha256": "18bc6533f7e4f91d0e966ded41b81f6bedbeec780fa26cadddcc7ab85f4a70a6",
+      "bytes": 41943
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-author-successor-v1/bounded-primary-reference-reading-and-two-author-remedies.json",
+      "sha256": "e79201c1a0bc9b7c7cd3e07b8cad8f5619c62f515a8884a3d17fe6d68ec901ae",
+      "bytes": 173193
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-author-successor-v1/checks/normal-check-P18.terminal.actual.json",
+      "sha256": "932d7f170b983bb8a2b88f0cd95f27c2e4f44ea1f0acd18e80f4745ed6379922",
+      "bytes": 3044
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-author-successor-v1/checks/normal-materialize-P18.terminal.actual.json",
+      "sha256": "2ebf949ab82927ce87f88b7248fb3e9b2415ee478cfb9400597e1bf1a65cad4f",
+      "bytes": 3284
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-author-successor-v1/checks/two-material-successor.scoped-normal-check-summary.actual.json",
+      "sha256": "217b053f26bdf06820fd0a67ca74a4d94cbf25c240942253cceb5dd96d0dd663",
+      "bytes": 1993
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-author-successor-v1/neutral-whole18-two-material-findings-author-successor.targeted-independent-review.entry.json",
+      "sha256": "deafb47c4acd88a9fcd33ff1e325d19d2388571fe6b1b337f2e74c02023cae48",
+      "bytes": 12676
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-author-successor-v1/two-material-corrections.exact-values-and-masked-whole-equality.actual.json",
+      "sha256": "1857d0e8be0505164446375845f520421c18e2f06f49d9d85a6d9a79333d433c",
+      "bytes": 16804
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-author-successor-v1/two-material-successor.author-input-FIRST.freeze.json",
+      "sha256": "3d2f1fcbc9e893abf1817dc2b6a8c13b4ed5f7b3be1b47152556cf1fa4a5b06e",
+      "bytes": 4722
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-author-successor-v1/two-material-successor.author-result-FIRST.freeze.json",
+      "sha256": "293502e3f0bc77cbc6d23c4072620d3788c5aad994ef0a12276f8a16f321735a",
+      "bytes": 3907
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-author-successor-v1/two-material-successor.author.final.freeze.json",
+      "sha256": "cbd3cabb33145e788b1d05286af5f51cf496e69c5f589ffea9f1ff64bfe3e703",
+      "bytes": 6675
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-author-successor-v1/whole18-cases36-two-material-corrections.author-successor.json",
+      "sha256": "1dc7e3e99066eed84dd991993dc712b26c9e026010b72c7a1d6bc2d7c0362309",
+      "bytes": 444674
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-author-successor-v1/whole18-positive-profile-candidate-set.two-material-successor.json",
+      "sha256": "e2b5d464e67f3030395e15355d48199e8f12718bf652da4963fa346f4ef6b832",
+      "bytes": 195913
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-author-successor-v1/whole18-positive.two-material-successor.config.json",
+      "sha256": "a7f7a67ffb9e4da59f3060e986ce2c3145c4d98d3ddfce09d4a9028620d486c4",
+      "bytes": 2257
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-author-successor-v1/whole18-positive.two-material-successor.review.jsonl",
+      "sha256": "836ee549ab8a7196664d76d251921570312bf5f65177ac316ef1427eb6cda240",
+      "bytes": 199229
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-a-followup-v1/final-preparation.digest-format-diagnostic.actual.json",
+      "sha256": "7c25c28868511d285ac619753c195e3893ffddd1d8b49ea13f53e0fafa42884e",
+      "bytes": 1710
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-a-followup-v1/independently-consulted-primary-radiocarbon.references.json",
+      "sha256": "f7ac62fe5e7b7fb3191201e71148a4fd5f7ff128d88abdca711574905e246fa3",
+      "bytes": 1456
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-a-followup-v1/neutral-completed-two-material-corrections-independent-A.followup.entry.json",
+      "sha256": "034296d712298ac5beb9d9165c0c6e527b37b592a2241c8ee5d2107d7a7854ce",
+      "bytes": 3918
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-a-followup-v1/normal-P2.terminal.actual.json",
+      "sha256": "069f8cfcc9b339ea1fe2134f7a4bcdd26e5484ea73ef9b28bea0d55376889ecb",
+      "bytes": 1246
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-a-followup-v1/scoped-bindings-and-status.terminal.actual.json",
+      "sha256": "00d3a2e7d91e8f841ec473ec2cab2b73944e7d03e9525137409bcaee63b3e285",
+      "bytes": 1032
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-a-followup-v1/two-material-corrections.independent-A.final.freeze.json",
+      "sha256": "c197003928e9d97dd0785251a353209d77ba877c9db313ae57d2a2ae3eea999c",
+      "bytes": 7471
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-a-followup-v1/two-material-corrections.independent-A.full-FIRST.freeze.json",
+      "sha256": "7adcd2fa59f1d61a863bdf9c07bef35af528fdbbea2f4be5578f79a8c58347f7",
+      "bytes": 865
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-a-followup-v1/two-material-corrections.independent-A.full-FIRST.verdict.json",
+      "sha256": "c91886152b07a907782a562d7c1d7492efe2a279b4eb2702a1e8929955b57ba2",
+      "bytes": 10082
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-a-followup-v1/two-material-corrections.independent-A.science-FIRST.freeze.json",
+      "sha256": "d8f0cbb165414305ce8b2c1f4615f1afee4410e3c191a72d8cf4b7f6fa7e6431",
+      "bytes": 1426
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-a-followup-v1/two-material-corrections.independent-A.science-FIRST.verdict.json",
+      "sha256": "beb418c1a942805d664f2957014cbaa41b2286f444e53796f0c3577e9f774cef",
+      "bytes": 9039
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-a-followup-v1/two-material-corrections.normal-P2.config.json",
+      "sha256": "85f94526651e4f5d0fc61464428146a123c64e9458db6b45c28eed2fe14848f5",
+      "bytes": 1568
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-a-followup-v1/two-material-corrections.normal-P2.exact-author-candidate-records.jsonl",
+      "sha256": "1e2eb703e0bb1e63a43c18e5c08c91b2c6e577fd95a2f42c122f08b4fe9b6266",
+      "bytes": 22027
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-a-followup-v1/two-material-corrections.scoped-bindings-frame-and-truthful-status.actual.json",
+      "sha256": "43c26511a5c8c6f2ccb9a86ea80097a53cfcfbaf7ff5960cb6494b566dc39af7",
+      "bytes": 30068
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-a-followup-v1/two-whole-goals-profiles-and-four-DEEN-cases.science-only.input.snapshot.json",
+      "sha256": "00c07f0451b9f84dbcb54bf634e64d7404a630c514354b83def3047cd29a1335",
+      "bytes": 48791
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-b-followup-v1/neutral-completed-two-materials-independent-b.followup.entry.json",
+      "sha256": "27c6864e95564940b64518c5b27619e4efc6919db20aea542f543ecc71824882",
+      "bytes": 8336
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-b-followup-v1/normal-check-P2.terminal.actual.json",
+      "sha256": "90ad8007e7c110d10526f8af0233a6eed9dae2da17e2ed63382cbe5e31c3ac7f",
+      "bytes": 1668
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-b-followup-v1/normal-materialize-P2.terminal.actual.json",
+      "sha256": "89cfa24191a6b1c2ab393b0985d8eceabc9765f9ac8116671e8a4c57d211ddd1",
+      "bytes": 1917
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-b-followup-v1/two-materials.independent-b.actual-12-field-diff-and-whole-frame-preservation.json",
+      "sha256": "d6e5fe301652235ef2cf3d6b29b325610c2e9d49c85779003750ba1293c26189",
+      "bytes": 28745
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-b-followup-v1/two-materials.independent-b.bounded-primary-reference-reading.receipt.json",
+      "sha256": "22034cfebaf7caa47d146fa0b069fea9fe48b99845a3120dbe6a9bd1043a0467",
+      "bytes": 2868
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-b-followup-v1/two-materials.independent-b.exact-whole-two-goals-profiles-four-bilingual-cases.input.json",
+      "sha256": "1483d722c241ae792211fb99f2f9d34cc715b25b40ae4e03156f177ace739efc",
+      "bytes": 49887
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-b-followup-v1/two-materials.independent-b.followup.final.freeze.json",
+      "sha256": "04ea2c1778a5c43c6ef776d279a19ecd0f2e98c7385626e1e9eeef674afdd448",
+      "bytes": 7059
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-b-followup-v1/two-materials.independent-b.science-FIRST.freeze.json",
+      "sha256": "b5a8ccf222414287c746794f6a3bf8bc5fa3394d129b665a79099ff58de318b1",
+      "bytes": 2120
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-b-followup-v1/two-materials.independent-b.science-FIRST.verdict.json",
+      "sha256": "10bb78e697a520a45dfa6e3a0f81159d253dce8d24f1497fd9a9791b50c1cb57",
+      "bytes": 12939
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-b-followup-v1/two-materials.independent-b.scoped-P2-binding-schema-and-portability.actual.json",
+      "sha256": "1633379f16d7d06d19d1ecb77fe4bff37d524fb8b552272bb7bb3471914b5ce4",
+      "bytes": 19468
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-b-followup-v1/two-whole-positive-profile-candidate-set.independent-b.scoped-P2.json",
+      "sha256": "766691c6920bec8f670ab34f6666d6076fa1a8194435c9df54c168c42468d031",
+      "bytes": 22236
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-b-followup-v1/two-whole-positive.independent-b.scoped-P2.config.json",
+      "sha256": "10608d736c2bcea571563f4f6a85051c0d88fdc35af77bba8363588c3d1e7808",
+      "bytes": 1562
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-independent-b-followup-v1/two-whole-positive.independent-b.scoped-P2.review.jsonl",
+      "sha256": "c10ea55371f6132160f3b4d6a5b5d0388d5db5ec2fe1056ba527805d9d961e68",
+      "bytes": 22259
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-MV-kp-kc-source-P-AM-whole-pairing-root-v2/neutral-completed-derived-KpKc-genuine-source-P-AM-pair.entry.json",
+      "sha256": "771e6f7d7aa4ed261276ce9727e698c314f0b39dd8a607d8d5054fb3ab4cd51e",
+      "bytes": 953
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-MV-kp-kc-source-P-AM-whole-pairing-root-v2/one-derived-KpKc-source-P-AM-existing-judgments.technical-input.freeze.json",
+      "sha256": "dfbdbf57d82b9978898e72039de723cfa0891b2db55d024a4f0b62d8d4085bff",
+      "bytes": 38397
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-MV-kp-kc-source-P-AM-whole-pairing-root-v2/one-derived-KpKc-source-P-AM-genuine-existing-pair.actual.json",
+      "sha256": "55b3e751d000c799f1da950903f696ac853b4b1a3048f66437e3bebf9316a12c",
+      "bytes": 7184
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-b008-MV-kp-kc-source-P-AM-whole-pairing-root-v2/one-derived-KpKc-source-P-AM-pair.technical.final.freeze.json",
+      "sha256": "9989d8c46cb3de072c7238c04589b9a08bbe798347beaa48d53cba5b8a1f78a0",
+      "bytes": 1907
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-eighteen-current-reviewed-raster-handoff-root-v1/eighteen-reviewed-rasters.technical-input.freeze.json",
+      "sha256": "7e0a164d4f22569d60de34190ad5c0aeed69c3af17ad735b01d9a17f2ec3c7e7",
+      "bytes": 52024
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-eighteen-current-reviewed-raster-handoff-root-v1/eighteen-reviewed-rasters.technical.final.freeze.json",
+      "sha256": "acc4b3175e06629a97097c66a4bdbd4dbd1a3d7a31a82e4c1a592b96f3ea8305",
+      "bytes": 1379
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-eighteen-current-reviewed-raster-handoff-root-v1/neutral-eighteen-current-independently-reviewed-rasters.native-preparation.entry.json",
+      "sha256": "4ef4f9511b3e3cbda5dedf8ab2203d42f93ebcef831a3b746abec2247df68aa3",
+      "bytes": 184686
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-reviewed-pairing-root-v1/neutral-completed-two-material-findings.genuine-pair.entry.json",
+      "sha256": "91587fdefb74265bd3ee316cd3dd3ff5ae59aae96fa2aa5b3798adcc2042b2e6",
+      "bytes": 545
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-reviewed-pairing-root-v1/two-material-findings.actual-independent-followup-pair.json",
+      "sha256": "f63575f5a1e3e5c0a791080a38bc34b71063e295414691523eab2531c68b9490",
+      "bytes": 6730
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-reviewed-pairing-root-v1/two-material-followups.technical-input.freeze.json",
+      "sha256": "ac7b4ceb7e7e25bd3e3f05188170f3ebe7ded470658c97f6036fe5f31f4b1e14",
+      "bytes": 23230
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-material-findings-reviewed-pairing-root-v1/two-material-followups.technical.final.freeze.json",
+      "sha256": "23c65377c267615761cdfb542702dc0fdcb682c38f7361d29db6a663dc4b7b59",
+      "bytes": 1630
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-child-rasters-author-root-v1/049f06cc-5360-5c99-9e6c-91372a2833b0/generation-v1.actual-tool-provenance.json",
+      "sha256": "56decc9c747381ff14ce430a3c25cb4f7166341054cffe53596225ba05e7fd5c",
+      "bytes": 1113
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-child-rasters-author-root-v1/049f06cc-5360-5c99-9e6c-91372a2833b0/ordinary-prepare.terminal.actual.json",
+      "sha256": "d81245056e4b63db7ad092df214019adef161d7e9b65d311b7da15881437c7ba",
+      "bytes": 3323
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-child-rasters-author-root-v1/85c16994-7121-5a29-a0f7-86e99d6f8eb7/generation-v1.actual-tool-provenance.json",
+      "sha256": "d4e648903a04c3a81d38e58642ac02c25979f778dd10e2116c71271d200f339e",
+      "bytes": 1113
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-child-rasters-author-root-v1/85c16994-7121-5a29-a0f7-86e99d6f8eb7/ordinary-prepare.terminal.actual.json",
+      "sha256": "49660258f23f278edfefd7a720f6493512689a0a9bc8c6ea59e02384b4a157ab",
+      "bytes": 3416
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-child-rasters-author-root-v1/inactive-current481-for-ordinary-image-preparation.canonical.json",
+      "sha256": "a82bc020d65a57d29dc566429eecd86ea86ba77f73191883649de8dd849e663b",
+      "bytes": 1261000
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-child-rasters-author-root-v1/neutral-two-actual-proposed-child-rasters.independent-V-review.entry.json",
+      "sha256": "ea7f757e3a1c63243cfec690ff3ee64c0daf3a686ab541b656e29a061e1fc2b3",
+      "bytes": 18268
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-child-rasters-author-root-v1/two-actual-child-rasters.pixel-FIRST-neutral-input.json",
+      "sha256": "04b0ace4fb26ea6b8f37c2f3ed00073390706a5de9779d992eed3520e91f926e",
+      "bytes": 4074
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-child-rasters-author-root-v1/two-actual-v1-360680-browser-capture.receipt.json",
+      "sha256": "8a2dd0d013eb608150749599a807c4d24d29d0060aa0fcf9cb92a7f732ea4e94",
+      "bytes": 3112
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-child-rasters-author-root-v1/two-child-raster-author.input.first.freeze.json",
+      "sha256": "4804a2cc562dde4c2d8667354a8ea0b1f7d27a2e4fe6aa2aa1cddaab5e85b1d9",
+      "bytes": 5752
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-child-rasters-author-root-v1/two-child-raster-author.pre-generation.entry.json",
+      "sha256": "a10af7242a9ee934cd375dde0f5b8af5dfa9f6b2e3af24547ed0a0f09104cb1e",
+      "bytes": 1319
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-child-rasters-author-root-v1/two-generated-child-rasters.author.final.freeze.json",
+      "sha256": "a3e22aeda68ebd403c738f99decc4568bd22f8fc998037e718d9c221e7f08846",
+      "bytes": 8945
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-children-independent-b-v1/neutral-completed-two-semantic-children-independent-b.review.entry.json",
+      "sha256": "4183b76fb47e2cd3965ec8acd03332f1a340772009b0bdf03bfc1c08d6304e2c",
+      "bytes": 4926
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-children-independent-b-v1/normal-proposed-P2.terminal.actual.json",
+      "sha256": "340e7fe98016c66b4e3d09cedee85e8c9a61bb519a1ee4a71b4399da8d07f778",
+      "bytes": 1322
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-children-independent-b-v1/two-children.exact-whole-goals-parent-four-bilingual-cases.input.json",
+      "sha256": "212b3284590c0b47729ed1860236a5d68579349eed25df4057ccc22200e7cf23",
+      "bytes": 65785
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-children-independent-b-v1/two-children.independent-b.complete13-duty22-partner-scope-and-preservation.verdict.json",
+      "sha256": "cab717ec4278d027edd11d5a766e27fb60874686c4ee18c4e9586c57accf95fd",
+      "bytes": 21076
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-children-independent-b-v1/two-children.independent-b.science-A-M-P-FIRST.freeze.json",
+      "sha256": "3e3536b9c7192c313963eb28f7a3134db6b9b45e6bbb6818ee4b8f5cfd4c4246",
+      "bytes": 3332
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-children-independent-b-v1/two-children.independent-b.science-A-M-P-FIRST.verdict.json",
+      "sha256": "b5d8a0f141e55eedfa22c9b07436ecf5a2d32f772038a9bebde3ca34f0a8027b",
+      "bytes": 10710
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-children-independent-b-v1/two-children.post-FIRST-primary-boundary-corroboration.actual.json",
+      "sha256": "a00e1014f584746d70409b59d3efdebbb88f5af79cbf0a027f3d94c4ceb5401f",
+      "bytes": 2575
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-children-independent-b-v1/two-children.scoped-binding-full-JSON-portability-and-ordinary-P.actual.json",
+      "sha256": "bca5fa692ebd08b6203b5aec1e42f8860fcd3480983e41c7e3d17d086631e03f",
+      "bytes": 36464
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-children-independent-b-v1/two-exact-proposed-P.ordinary-schema-semantics-fingerprints.actual.json",
+      "sha256": "3c08d800ced804b71d2af88465d5643ce4a6a6238031aba547e3f43ba44adbd9",
+      "bytes": 4348
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-children-independent-b-v1/two-exact-proposed-whole-P.independent-b.ai-candidate.records.jsonl",
+      "sha256": "ebe766e34ccaa03025201976e12ff59cd6b7179a92ba77a00bc9f5dfac7ecdc1",
+      "bytes": 25828
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-two-semantic-children-independent-b-v1/two-semantic-children.independent-b.final.freeze.json",
+      "sha256": "79518e3eaa51d5a53d0b5dddbf7d4a7b5a9dac349ed572c81380ae7f71fc60d6",
+      "bytes": 6097
+    }
+  ],
+  "normalScopedFileCount": 126,
+  "JSONLRecordsParsed": 24,
+  "schemaErrors": [],
+  "symlinkErrors": [],
+  "gitDiffCheckExitCode": 0,
+  "actualExitCode": 0,
+  "scientificApproval": false,
+  "currentNativeApproval": false,
+  "strictGain": 0,
+  "activeWrites": []
+}

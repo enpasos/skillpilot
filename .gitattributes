@@ -12,6 +12,7 @@ gradlew text eol=lf
 # Captured official HTML is primary evidence; retain its actual response bytes.
 # Provider whitespace is part of that evidence, not authored formatting.
 *.actual-official.html -text -whitespace
+*.actual.html -text -whitespace
 
 # Frozen native review pages retain renderer bytes, including empty-line spacing.
 curricula/**/quality/**/book.html -text -whitespace

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-09T11:20:05.959914+00:00",
+  "initialFinalPreparationExitCode": 1,
+  "initialStage": "Checking unchanged historical image-review seal before any new full verdict/entry/final seal write",
+  "observedCause": "Own comparison helper initially required the sha256: prefix while the already sealed book follow-up expresses the same digest without it. Actual hashes and byte counts were equal.",
+  "correctedComparison": "Accept bare and sha256: digest notation by removing only the fixed prefix before comparison; do not alter hashes, source evidence, historical files, or science-FIRST.",
+  "historicalEvidenceModified": false,
+  "scienceFIRSTModified": false,
+  "allHistoricalImageSealBindingsNowIndependentlyVerifiedExact": [
+    {
+      "seal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-a-v1/twelve-actual-rasters.independent-A.final.freeze.json",
+        "sha256": "sha256:2548ee0119541248c01edbcc3c1e3bbb40ce2734395fe07d66b408e589f276d3",
+        "bytes": 5392
+      },
+      "allListedBindingsStillExact": true,
+      "checkedBindings": 16
+    },
+    {
+      "seal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-twelve-rasters-independent-v-a-v1/one-book-perspective-followup-v1/one-closed-book.independent-A.followup.final.freeze.json",
+        "sha256": "sha256:1df5e6e0dfb795d0ae65f21077938b5c1bf492e69d712a4210fa2cb2fca2156f",
+        "bytes": 3012
+      },
+      "allListedBindingsStillExact": true,
+      "checkedBindings": 8
+    }
+  ],
+  "scientificJudgmentNotDerivedFromThisFormattingCorrection": true,
+  "strictGain": 0
+}

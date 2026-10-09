@@ -1,0 +1,43 @@
+        return findRepositoryMatchingView(landscapeId, requestedScope, false);
+    }
+
+    private Map<String, Object> findRepositoryMatchingView(
+            String landscapeId,
+            Map<String, String> requestedScope,
+            boolean requireExactStage) {
+        Map<String, String> normalizedRequestedScope = normalizeScope(requestedScope);
+        List<ViewMatch> matches = repositoryViewIndex()
+                .byLandscapeId()
+                .getOrDefault(normalizeValue(landscapeId), List.of())
+                .stream()
+                .map(view -> new ViewMatch(
+                        view,
+                        scoreScopeMatch(normalizeScope(asMap(view.get("scope"))), normalizedRequestedScope)))
+                .filter(match -> match.score() != null)
+                .filter(match -> !requireExactStage
+                        || hasExactLearnerAnchorScope(
+                                asMap(match.view().get("scope")),
+                                normalizedRequestedScope))
+                .sorted(Comparator
+                        .<ViewMatch>comparingInt(match -> match.score().scopeSize())
+                        .reversed()
+                        .thenComparingInt(match -> match.score().stageFallbackCount())
+                        .thenComparingInt(match -> match.score().courseFallbackCount())
+                        .thenComparingInt(match -> match.score().coursePreferenceRank())
+                        .thenComparing(match -> asString(match.view().get("viewId"))))
+                .toList();
+        if (matches.isEmpty()) {
+            return null;
+        }
+
+        if (isCombinedCourseProfileRequest(normalizedRequestedScope)) {
+            MatchScore bestScore = matches.get(0).score();
+            List<Map<String, Object>> mergeCandidates = matches.stream()
+                    .filter(match -> match.score().scopeSize() == bestScore.scopeSize())
+                    .filter(match -> match.score().stageFallbackCount() == bestScore.stageFallbackCount())
+                    .filter(match -> match.score().courseFallbackCount() == bestScore.courseFallbackCount())
+                    .map(ViewMatch::view)
+                    .toList();
+            if (mergeCandidates.size() > 1 && bestScore.courseFallbackCount() > 0) {
+                return mergeViews(landscapeId, requestedScope, mergeCandidates);
+            }
