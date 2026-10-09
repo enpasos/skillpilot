@@ -161,9 +161,10 @@ export const testGoalBookSourceAtlasInputs = (): void => {
     ['DE-ST/SekII/GK', 6], ['DE-ST/SekII/LK', 6],
   ])
   // The corrected HE source operator provides no direct gene-flow witness.
-  // The named SH E13/E15 component supplies only this bounded atlas route;
-  // source visibility does not grant a whole-course or human approval.
+  // The independently reviewed SH E13/E15 component supplies only this bounded
+  // supplemental route through its active mapping; no whole-course approval.
   const geneFlowGoalId = 'e5f97788-c2ac-5f42-b5a5-55605b563a79'
+  const geneFlowMappingPath = 'curricula/DE/Gymnasium/mapping/DE-SH/source-components/sh_biology_gene_flow_bounded_source_contribution.reviewed-20261009-v1.review.json'
   assert.deepEqual(biology.receipt.scopes.filter(s => s.goalIds.includes(geneFlowGoalId)).map(s => s.key), [
     'DE-SH/SekII/GK', 'DE-SH/SekII/LK',
   ])
@@ -173,6 +174,8 @@ export const testGoalBookSourceAtlasInputs = (): void => {
     assert.deepEqual(scope.witnesses.map(w => [w.sourceGoalId, w.mappedTargetGoalId, w.coverage, w.profileBasis]), [
       ['sh-biology-sekii-fa2023-e13-e15-migration-genfluss-source-component', geneFlowGoalId, 'direct', 'source-metadata'],
     ], 'Gene flow must retain its exact SH E13/E15 source operator')
+    assert.deepEqual(scope.witnesses.map(w => w.mappingPath), [geneFlowMappingPath],
+      'A book-local author candidate must not replace the active independently reviewed SH mapping')
   }
   for (const key of ['DE-HE/SekII/GK', 'DE-HE/SekII/LK']) {
     const scope = biology.receipt.scopes.find(s => s.key === key)!

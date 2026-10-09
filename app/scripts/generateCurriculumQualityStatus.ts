@@ -1,5 +1,4 @@
 import { createHash } from 'node:crypto'
-import { execFileSync } from 'node:child_process'
 import { existsSync, mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -23,6 +22,7 @@ import {
 import { generateDeepUnderstandingRollout, type DeepUnderstandingRolloutReport } from './reportDeepUnderstandingRollout'
 import { createReviewedRequiresClosureCoverageChecker } from './sourceCoverageEvidence'
 import { shouldRequireCanonicalMathSek1AssessmentEndpoint } from './lib/canonicalMathSek1ReviewedExamRoutes'
+import { createRepositorySourceAvailability } from './repositorySourceAvailability'
 
 type RuleStatus = 'pass' | 'warn' | 'fail' | 'not_configured'
 type MaturityLevel = 'M0' | 'M1' | 'M2' | 'M3' | 'M4' | 'M5' | 'M6' | 'M7'
@@ -1346,35 +1346,7 @@ function loadJson<T>(path: string): T {
   return JSON.parse(readFileSync(path, 'utf8')) as T
 }
 
-let trackedRepoPathsCache: Set<string> | null | undefined
-
-function trackedRepoPaths(): Set<string> | null {
-  if (trackedRepoPathsCache !== undefined) return trackedRepoPathsCache
-  try {
-    const output = execFileSync('git', ['ls-files', '-z'], {
-      cwd: repoRoot,
-      encoding: 'utf8',
-      maxBuffer: 16 * 1024 * 1024,
-      stdio: ['ignore', 'pipe', 'ignore'],
-    })
-    trackedRepoPathsCache = new Set(
-      output
-        .split('\0')
-        .filter((entry) => entry.trim().length > 0)
-        .map((entry) => entry.replace(/\\/g, '/')),
-    )
-  } catch {
-    trackedRepoPathsCache = null
-  }
-  return trackedRepoPathsCache
-}
-
-function isRepoAvailableSourcePath(repoPath: string): boolean {
-  const normalizedPath = repoPath.replace(/\\/g, '/')
-  const trackedPaths = trackedRepoPaths()
-  if (trackedPaths) return trackedPaths.has(normalizedPath)
-  return existsSync(resolve(repoRoot, normalizedPath))
-}
+const isRepoAvailableSourcePath = createRepositorySourceAvailability(repoRoot)
 
 function hasUsableOriginalSourceUrl(value: unknown): value is string {
   if (typeof value !== 'string' || !value.trim()) return false

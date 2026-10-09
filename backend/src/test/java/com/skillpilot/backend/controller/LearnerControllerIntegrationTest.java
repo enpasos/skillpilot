@@ -1493,6 +1493,7 @@ public class LearnerControllerIntegrationTest {
         // from the tested GK projection.
         // SN/ST also replace the investigation target with morphological
         // classification, leaving that replacement neutral for atomic totals.
+        // The bounded SH systematics source adds one morphological target.
         String[][] scopes = {
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BW", "83", "83" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BY", "130", "130" },
@@ -1506,7 +1507,7 @@ public class LearnerControllerIntegrationTest {
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-HH", "78", "78" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-MV", "155", "155" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-NW", "102", "102" },
-                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-SH", "95", "95" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-SH", "96", "96" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-SN", "169", "169" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-ST", "166", "166" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-TH", "171", "171" },
@@ -1621,6 +1622,11 @@ public class LearnerControllerIntegrationTest {
             assertThat(targets).as("morphological classification replaces investigation target for %s %s", jurisdiction, durationModel)
                     .contains("2ae2da43-73d5-578f-84f4-be0585a7d8f9")
                     .doesNotContain("82acfbde-9ce8-5658-892e-4dcfb1c3a1f1");
+        }
+        if ("DE-SH".equals(jurisdiction)) {
+            assertThat(targets).as("bounded SH systematics target for %s", durationModel)
+                    .contains("2ae2da43-73d5-578f-84f4-be0585a7d8f9")
+                    .doesNotContain("e5f97788-c2ac-5f42-b5a5-55605b563a79"); // supplementary SekII, never SekI
         }
     }
 
