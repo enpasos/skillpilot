@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "bio-two-current-sh-context-independent-b-20261009-v1",
+  "campaignId": "biologie-two-current-bounded-sh-context-v1-campaign-b",
+  "roundId": "biologie-two-current-bounded-sh-context-v1-independent-b",
+  "batchId": "biologie-two-current-bounded-sh-context-v1-independent-b.batch-001",
+  "batchInputFingerprint": "sha256:8df4fe78da65428b9b7e4711933282de3f773dabbac93ecf0d20e2402bb75cb3",
+  "bundleFingerprint": "sha256:833234566dcf62b5f4513e7b985445135303aa4ed9a1deac9f29467597f39fc4",
+  "bookDigest": "sha256:d2bf390f111fea3fa9a581f01fdc20c94fefcea062d84481439b212fe1aed3af",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex; runtime sampling parameters not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-review-v1",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:9556fd9c0481471092e0dbde551667e8264298134c33ba4c354e0b234137f153",
+  "independenceGroupId": "biologie-two-current-bounded-sh-context-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "e5f97788-c2ac-5f42-b5a5-55605b563a79",
+    "2ae2da43-73d5-578f-84f4-be0585a7d8f9"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:db7b75abfcb91c5cbe1c12a7eb6d16c587506bda35ec6aece7732586ba8408f8"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:45a74eba16ad679127c351b0a9478798c265b2d2dce6e15c1b62cc3520e55682"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:72cc240271a85ce3b164ed42fc5aae8d0770c59e92d36608972b90c6ef2f6192"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:8df4fe78da65428b9b7e4711933282de3f773dabbac93ecf0d20e2402bb75cb3"
+    }
+  ],
+  "startedAt": "2026-10-09T18:41:06+00:00",
+  "completedAt": "2026-10-09T18:43:42.660899+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:101babcfa9d2331aebef842b0d48413938709935b4333df2d0bcaba362200614",
+  "toolchainVersion": "genuine-independent-B-current-SH-context-D2-20261009"
+}
