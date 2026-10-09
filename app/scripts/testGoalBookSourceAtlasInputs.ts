@@ -152,13 +152,32 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   const biology = checkGoalBookSourceAtlasInputs('app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json', root)
   // Two independently reviewed basic metabolism companions add bounded direct
   // source routes; all earlier current atoms remain in the atlas.
-  assert.deepEqual(biology.receipt.counts, { canonicalCurricularAtomicGoals: 394, publishedCurricularAtomicGoals: 394, sourceViews: 22, unresolvedSourceScopeDecisions: 0, omittedGoals: 0 })
+  assert.deepEqual(biology.receipt.counts, { canonicalCurricularAtomicGoals: 394, publishedCurricularAtomicGoals: 394, sourceViews: 24, unresolvedSourceScopeDecisions: 0, omittedGoals: 0 })
   // Current independent source reviews correct the selected neurobiology
   // scopes and add explicit component routes without closing broad source HOLDs.
   assert.deepEqual(biology.receipt.scopes.filter(s => s.stage === 'SekII').map(s => [s.key, s.goalIds.length]), [
-    ['DE-BY/SekII/GK', 91], ['DE-BY/SekII/LK', 121], ['DE-HE/SekII/GK', 81], ['DE-HE/SekII/LK', 161],
+    ['DE-BY/SekII/GK', 91], ['DE-BY/SekII/LK', 121], ['DE-HE/SekII/GK', 81], ['DE-HE/SekII/LK', 160],
+    ['DE-SH/SekII/GK', 1], ['DE-SH/SekII/LK', 1],
     ['DE-ST/SekII/GK', 6], ['DE-ST/SekII/LK', 6],
   ])
+  // The corrected HE source operator provides no direct gene-flow witness.
+  // The named SH E13/E15 component supplies only this bounded atlas route;
+  // source visibility does not grant a whole-course or human approval.
+  const geneFlowGoalId = 'e5f97788-c2ac-5f42-b5a5-55605b563a79'
+  assert.deepEqual(biology.receipt.scopes.filter(s => s.goalIds.includes(geneFlowGoalId)).map(s => s.key), [
+    'DE-SH/SekII/GK', 'DE-SH/SekII/LK',
+  ])
+  for (const key of ['DE-SH/SekII/GK', 'DE-SH/SekII/LK']) {
+    const scope = biology.receipt.scopes.find(s => s.key === key)!
+    assert.deepEqual(scope.goalIds, [geneFlowGoalId], 'The SH source component must not import the whole evolution branch')
+    assert.deepEqual(scope.witnesses.map(w => [w.sourceGoalId, w.mappedTargetGoalId, w.coverage, w.profileBasis]), [
+      ['sh-biology-sekii-fa2023-e13-e15-migration-genfluss-source-component', geneFlowGoalId, 'direct', 'source-metadata'],
+    ], 'Gene flow must retain its exact SH E13/E15 source operator')
+  }
+  for (const key of ['DE-HE/SekII/GK', 'DE-HE/SekII/LK']) {
+    const scope = biology.receipt.scopes.find(s => s.key === key)!
+    assert.ok(scope.witnesses.every(w => w.goalId !== geneFlowGoalId), 'An authored HE transfer must not be presented as a direct source witness')
+  }
   // The reviewed BY chromatography duty does not cover light-harvesting
   // complex structure/function; retain its removal from both source routes.
   const lightHarvestingGoalId = 'ec782ce3-475e-5628-b3fe-947d72e74a74'
@@ -238,8 +257,26 @@ export const testGoalBookSourceAtlasInputs = (): void => {
     const configPath = `app/scripts/config/goal-books/de-gym-${subject}-national-atlas.inputs.json`
     const config = readGoalBookSourceAtlasInputConfig(configPath, root)
     const snapshotPaths = new Set(config.sourceDocumentSnapshots?.map(snapshot => snapshot.path))
-    // Biology retains all 17 PDF snapshots and the three reviewed HTML sources.
-    assert.equal(snapshotPaths.size, subject === 'biology' ? 20 : 30)
+    // Biology retains the whole-source primary files, all still-used cache
+    // aliases from unchanged component extractions, and three HTML sources.
+    assert.equal(snapshotPaths.size, subject === 'biology' ? 24 : 30)
+    if (subject === 'biology') {
+      const snapshots = new Map(config.sourceDocumentSnapshots?.map(snapshot => [snapshot.path, snapshot]))
+      const primaryDirectory = 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-82ac-nine-lower-jurisdictions-and-SN-ST-digital-prerequisite-source-author-v1/primary'
+      for (const [cachePath, primaryName, expectedSha256] of [
+        ['curricula/DE/Gymnasium/input/BB/lower-secondary/Teil_C_Biologie_2015_11_10.pdf', 'BB-whole-current.original.pdf', 'sha256:e9a386033898659b9c2fe865886f00632403f2242c91e0844afed811a906d1b9'],
+        ['curricula/DE/Gymnasium/input/BE/lower-secondary/Teil_C_Biologie_2015_11_10.pdf', 'BE-whole-current.original.pdf', 'sha256:e9a386033898659b9c2fe865886f00632403f2242c91e0844afed811a906d1b9'],
+        ['curricula/DE/Gymnasium/input/SN/lehrplan-gymnasium-biologie-sachsen-2025.pdf', 'SN-whole-current.original.pdf', 'sha256:bde9c7af4c25fe1c6346abcb544626514a9e5c1d6c2528b2764df15430156252'],
+        ['curricula/DE/Gymnasium/input/ST/FLP_Biologie_Gym_01082022_swd.pdf', 'ST-whole-current.original.pdf', 'sha256:58b106c65a71478a096f31cf8e9743a238a59aec085414ac472ee0ab5da10c38'],
+      ]) {
+        const cache = snapshots.get(cachePath)
+        const primary = snapshots.get(`${primaryDirectory}/${primaryName}`)
+        assert.ok(cache && primary, `Both current source path aliases must remain declared: ${cachePath}`)
+        assert.equal(cache.sha256, expectedSha256)
+        assert.equal(primary.sha256, expectedSha256)
+        assert.equal(cache.url, primary.url, 'Path aliases must identify the same official source document')
+      }
+    }
     const checkoutRoot = mkdtempSync(resolve(tmpdir(), 'skillpilot-atlas-without-downloads-'))
     try {
       // A local ignored file must not conceal a missing deployment input. Copy
