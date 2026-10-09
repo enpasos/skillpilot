@@ -181,7 +181,8 @@ jobs:
     timeout-minutes: 20
     services:
       postgres:
-        image: postgres@sha256:9b1d34adbce1dd07ee6e94b4a2cf698884b89bd44a6c9c12f5da8f3acbfe4957
+        # Official Docker mirror; identical digest, without Docker Hub's anonymous quota.
+        image: public.ecr.aws/docker/library/postgres@sha256:9b1d34adbce1dd07ee6e94b4a2cf698884b89bd44a6c9c12f5da8f3acbfe4957
         env:
           POSTGRES_DB: skillpilot_oauth_test
           POSTGRES_PASSWORD: skillpilot-test-only

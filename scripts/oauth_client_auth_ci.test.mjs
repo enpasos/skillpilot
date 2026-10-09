@@ -6,6 +6,7 @@ import { join } from 'node:path'
 import { test } from 'node:test'
 
 const workflow = readFileSync(new URL('../.github/workflows/oauth-client-authentication.yml', import.meta.url), 'utf8')
+const docsWorkflow = readFileSync(new URL('../.github/workflows/docs_checks.yml', import.meta.url), 'utf8')
 const postgresSuite = 'com.skillpilot.backend.oauth.OAuthClientSecurityPostgresIntegrationTest'
 const reportGuard = workflow.match(/python3 - <<'PY'\n([\s\S]*?)\n          PY/u)?.[1]
   .split('\n').map(line => line.replace(/^ {10}/u, '')).join('\n')
@@ -83,7 +84,11 @@ test('OAuth security covers both providers and requires the real PostgreSQL lane
     'com.skillpilot.backend.oauth.OAuthTokenRevocationBoundaryTest',
     postgresSuite,
   ]) assert.ok(workflow.includes(`--tests '${suite}'`), `Missing security suite ${suite}`)
-  assert.match(workflow, /image: postgres@sha256:[0-9a-f]{64}/u)
+  const postgresImage = /image: (public\.ecr\.aws\/docker\/library\/postgres@sha256:[0-9a-f]{64})\s*$/mu
+  assert.match(workflow, postgresImage)
+  assert.match(docsWorkflow, postgresImage)
+  assert.equal(docsWorkflow.match(postgresImage)[1], workflow.match(postgresImage)[1],
+    'Both PostgreSQL lanes must retain the same immutable official image')
   assert.match(workflow, /SKILLPILOT_OAUTH_POSTGRES_TEST_ENABLED: 'true'/u)
   assert.match(workflow, /SKILLPILOT_OAUTH_TEST_POSTGRES_URL: jdbc:postgresql:\/\/127\.0\.0\.1:5432\/skillpilot_oauth_test/u)
   assert.match(workflow, /SKILLPILOT_OAUTH_TEST_POSTGRES_USER: postgres/u)
