@@ -387,7 +387,9 @@ try {
   await writeFile(positiveSourcePath, `${JSON.stringify(malformedRecord)}\n`)
   const malformedModel = structuredClone(positiveModel)
   malformedModel.source.evidenceReviewSources[0].digest = sha256(stableGoalBookJson([malformedRecord]))
-  const { digest: _oldDigest, ...malformedModelWithoutDigest } = malformedModel
+  const malformedModelWithoutDigest = Object.fromEntries(
+    Object.entries(malformedModel).filter(([key]) => key !== 'digest'),
+  )
   malformedModel.digest = sha256(stableGoalBookJson(malformedModelWithoutDigest))
   await assert.rejects(
     () => buildGoalBookReviewBundle(malformedModel, options),
