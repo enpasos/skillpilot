@@ -20,6 +20,7 @@ const RUN_SCHEMA_PATH = 'contracts/goal-evidence/v1/goal-evidence-ai-run-manifes
 const LEGACY_GOAL_BOOK_MODEL_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-model.schema.json'
 const CURRENT_GOAL_BOOK_MODEL_SCHEMA_PATH = 'contracts/goal-book/v1/goal-book-model-1.1.schema.json'
 const EVIDENCE_PROFILE_SCHEMA_PATH = 'contracts/goal-evidence/v1/goal-evidence-profile.schema.json'
+const POSITIVE_EVIDENCE_PROFILE_SCHEMA_PATH = 'contracts/goal-evidence/v2/goal-evidence-profile.schema.json'
 const INPUT_V2_SCHEMA_PATH = 'contracts/goal-description-review/v2/goal-description-review-input.schema.json'
 const INPUT_V3_SCHEMA_PATH = 'contracts/goal-description-review/v3/goal-description-review-input.schema.json'
 const CAMPAIGN_SCHEMA_PATH = 'contracts/goal-description-review/v2/goal-description-review-campaign.schema.json'
@@ -523,6 +524,7 @@ const createValidators = async () => {
     legacyGoalBookSchema,
     currentGoalBookSchema,
     evidenceProfileSchema,
+    positiveEvidenceProfileSchema,
     inputV2Schema,
     inputV3Schema,
     campaignSchema,
@@ -533,6 +535,7 @@ const createValidators = async () => {
     LEGACY_GOAL_BOOK_MODEL_SCHEMA_PATH,
     CURRENT_GOAL_BOOK_MODEL_SCHEMA_PATH,
     EVIDENCE_PROFILE_SCHEMA_PATH,
+    POSITIVE_EVIDENCE_PROFILE_SCHEMA_PATH,
     INPUT_V2_SCHEMA_PATH,
     INPUT_V3_SCHEMA_PATH,
     CAMPAIGN_SCHEMA_PATH,
@@ -541,6 +544,7 @@ const createValidators = async () => {
   ajv.addSchema(legacyGoalBookSchema)
   ajv.addSchema(currentGoalBookSchema)
   ajv.addSchema(evidenceProfileSchema)
+  ajv.addSchema(positiveEvidenceProfileSchema)
   return {
     ajv,
     validateBundle: ajv.compile(bundleSchema),

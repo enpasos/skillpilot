@@ -3,7 +3,11 @@ import { mkdir, mkdtemp, readFile, rename, rm, writeFile } from 'node:fs/promise
 import { dirname, join, relative, resolve, sep } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import Ajv2020 from 'ajv/dist/2020.js'
-import type { GoalEvidenceReviewRecord } from './goalEvidenceProfileModel'
+import {
+  parseGoalBookEvidenceReviewRecord,
+  type GoalBookEvidenceReviewRecord,
+} from './goalBookEvidenceReviewLoader'
+import type { PositiveGoalEvidenceReviewRecord } from './positiveGoalEvidenceProfileModel'
 import {
   parseAndValidateGoalBookModel,
   stableGoalBookJson,
@@ -80,7 +84,7 @@ export type GoalBookReviewInput = {
   modelDigest: string
   pages: Array<{
     page: GoalBookPage
-    evidenceProfile: GoalEvidenceReviewRecord | null
+    evidenceProfile: GoalBookEvidenceReviewRecord | null
   }>
 }
 
@@ -131,10 +135,13 @@ const parseEvidenceReviewJsonl = (content: string, label: string) => content
   .split(/\r?\n/u)
   .map((line, index) => ({ line: line.trim(), lineNumber: index + 1 }))
   .filter(({ line }) => line !== '')
-  .map(({ line, lineNumber }) => parseJson<GoalEvidenceReviewRecord>(line, `${label}:${lineNumber}`))
+  .map(({ line, lineNumber }) => parseGoalBookEvidenceReviewRecord(
+    parseJson<unknown>(line, `${label}:${lineNumber}`),
+    `${label}:${lineNumber}`,
+  ))
 
 const loadEvidenceRecords = async (model: GoalBookModel) => {
-  const recordsByGoalId = new Map<string, GoalEvidenceReviewRecord>()
+  const recordsByGoalId = new Map<string, GoalBookEvidenceReviewRecord>()
   for (const source of model.source.evidenceReviewSources) {
     const sourcePath = repositoryPath(source.path, 'evidence-review source')
     const text = await readFile(sourcePath, 'utf8')
@@ -171,7 +178,7 @@ const selectPages = (model: GoalBookModel, requestedGoalIds: string[]) => {
 
 const assertEvidenceRecordMatchesPage = (
   page: GoalBookPage,
-  record: GoalEvidenceReviewRecord | undefined,
+  record: GoalBookEvidenceReviewRecord | undefined,
 ) => {
   if (page.evidenceReview === null) {
     if (record) throw new Error(`Goal ${page.goalId} has an unbound evidence-review record`)
@@ -200,10 +207,58 @@ const markdownList = (
     `- ${reference.title} — \`${reference.goalId}\`${reference.pageNumber ? ` (page ${reference.pageNumber})` : ' (outside this book)'}`
   )).join('\n')
 
+const renderPositiveEvidenceProfileMarkdown = (record: PositiveGoalEvidenceReviewRecord) => {
+  const { profile } = record
+  const coverage = profile.coverageExpectations
+  return [
+    '### Evidence-profile candidate',
+    '',
+    `Status: \`${record.status}\`; profile fingerprint: \`${record.profileFingerprint}\``,
+    `Contract: \`${record.profileRuleVersion}\`; authority: \`${record.reviewAuthority}\`; evidence level: \`${record.evidenceLevel}\`; maximum claim scope: \`${record.maximumClaimScope}\``,
+    `Archetype: \`${profile.archetype}\``,
+    '',
+    '**Positive understanding expectations**',
+    '',
+    ...profile.expectations.flatMap((expectation) => [
+      `- \`${expectation.id}\``,
+      `  - Essential understanding (DE): ${expectation.essentialUnderstandingDe}`,
+      `  - Essential understanding (EN): ${expectation.essentialUnderstandingEn}`,
+      `  - Observable performance (DE): ${expectation.observablePerformanceDe}`,
+      `  - Observable performance (EN): ${expectation.observablePerformanceEn}`,
+    ]),
+    '',
+    '**Coverage expectations**',
+    '',
+    `- required expectations: ${coverage.requiredExpectationIds.map((id) => `\`${id}\``).join(', ') || 'None'}`,
+    `- alternative expectation groups: ${coverage.alternativeExpectationGroups.map((ids) => ids.map((id) => `\`${id}\``).join(' or ')).join('; ') || 'None'}`,
+    `- minimum independent demonstrations: ${coverage.minimumIndependentDemonstrations}`,
+    `- fresh variation required: ${coverage.freshVariationRequired}`,
+    `- independent transfer required: ${coverage.independentTransferRequired}`,
+    '',
+    '**Variation axes**',
+    '',
+    ...profile.variationAxes.map((axis) => `- \`${axis.id}\`: ${axis.textDe} / ${axis.textEn}`),
+    '',
+    '**Application cases**',
+    '',
+    ...profile.applicationCaseBriefs.flatMap((item) => [
+      `- \`${item.id}\``,
+      `  - Task demand (DE): ${item.taskDemandDe}`,
+      `  - Task demand (EN): ${item.taskDemandEn}`,
+      `  - Expected performance (DE): ${item.expectedPerformanceDe}`,
+      `  - Expected performance (EN): ${item.expectedPerformanceEn}`,
+      `  - Understanding focus (DE): ${item.understandingFocusDe}`,
+      `  - Understanding focus (EN): ${item.understandingFocusEn}`,
+    ]),
+  ].join('\n')
+}
+
 export const renderGoalBookReviewMarkdown = (input: GoalBookReviewInput) => {
   const sections = input.pages.map(({ page, evidenceProfile }) => {
-    const profile = evidenceProfile?.profile
-    const profileSection = profile
+    const profile = evidenceProfile?.schemaVersion === 1 ? evidenceProfile.profile : undefined
+    const profileSection = evidenceProfile?.schemaVersion === 2
+      ? renderPositiveEvidenceProfileMarkdown(evidenceProfile)
+      : profile
       ? [
           '### Evidence-profile candidate',
           '',

@@ -56,6 +56,10 @@ const EVIDENCE_PROFILE_SCHEMA_PATH = resolve(
   REPOSITORY_ROOT,
   'contracts/goal-evidence/v1/goal-evidence-profile.schema.json',
 )
+const POSITIVE_EVIDENCE_PROFILE_SCHEMA_PATH = resolve(
+  REPOSITORY_ROOT,
+  'contracts/goal-evidence/v2/goal-evidence-profile.schema.json',
+)
 
 type Digest = `sha256:${string}`
 
@@ -636,16 +640,19 @@ const createValidators = async () => {
     legacyGoalBookSchema,
     currentGoalBookSchema,
     evidenceProfileSchema,
+    positiveEvidenceProfileSchema,
   ] = await Promise.all([
     RESOLUTION_SCHEMA_PATH,
     INPUT_V3_SCHEMA_PATH,
     LEGACY_GOAL_BOOK_MODEL_SCHEMA_PATH,
     CURRENT_GOAL_BOOK_MODEL_SCHEMA_PATH,
     EVIDENCE_PROFILE_SCHEMA_PATH,
+    POSITIVE_EVIDENCE_PROFILE_SCHEMA_PATH,
   ].map((path) => readFile(path, 'utf8').then((value) => JSON.parse(value))))
   ajv.addSchema(legacyGoalBookSchema)
   ajv.addSchema(currentGoalBookSchema)
   ajv.addSchema(evidenceProfileSchema)
+  ajv.addSchema(positiveEvidenceProfileSchema)
   return {
     ajv,
     validateResolution: ajv.compile(resolutionSchema),
