@@ -1488,6 +1488,11 @@ public class LearnerControllerIntegrationTest {
         // Scopes containing that branch therefore gain one curricular target.
         // The source-bounded respiration supplement belongs to eight Sek-I
         // jurisdictions; the light/dark-reaction supplement belongs only to SN.
+        // MV/SN/ST/TH exclude the GK systematics-comparison target. The other
+        // two removed evolution targets are LK-only and were already excluded
+        // from the tested GK projection.
+        // SN/ST also replace the investigation target with morphological
+        // classification, leaving that replacement neutral for atomic totals.
         String[][] scopes = {
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BW", "83", "83" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BY", "130", "130" },
@@ -1499,12 +1504,12 @@ public class LearnerControllerIntegrationTest {
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BB", "82", "82" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BE", "82", "82" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-HH", "78", "78" },
-                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-MV", "156", "156" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-MV", "155", "155" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-NW", "102", "102" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-SH", "95", "95" },
-                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-SN", "170", "170" },
-                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-ST", "167", "167" },
-                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-TH", "172", "172" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-SN", "169", "169" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-ST", "166", "166" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-TH", "171", "171" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BB", "83", "83" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BE", "83", "83" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BW", "74", "74" },
@@ -1607,6 +1612,15 @@ public class LearnerControllerIntegrationTest {
         } else {
             assertThat(targets).as("light/dark-reaction target excluded outside SN for %s %s", jurisdiction, durationModel)
                     .doesNotContain(couplingGoal);
+        }
+        if (Set.of("DE-MV", "DE-SN", "DE-ST", "DE-TH").contains(jurisdiction)) {
+            assertThat(targets).as("systematics comparison outside reviewed SekI scope for %s %s", jurisdiction, durationModel)
+                    .doesNotContain("9dff0360-c2e9-5e43-af8b-87e264281cf7");
+        }
+        if (Set.of("DE-SN", "DE-ST").contains(jurisdiction)) {
+            assertThat(targets).as("morphological classification replaces investigation target for %s %s", jurisdiction, durationModel)
+                    .contains("2ae2da43-73d5-578f-84f4-be0585a7d8f9")
+                    .doesNotContain("82acfbde-9ce8-5658-892e-4dcfb1c3a1f1");
         }
     }
 
