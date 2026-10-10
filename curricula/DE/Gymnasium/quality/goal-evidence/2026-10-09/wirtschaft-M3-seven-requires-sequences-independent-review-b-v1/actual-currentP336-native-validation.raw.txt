@@ -1,0 +1,22 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ [
++   '00a4e086-ed5b-5a3f-bcd9-a862d83c60ab: stale reviewInputFingerprint; expected sha256:d45138dd5fc7805c2d6daae50ccf058f3322193f18033a970d8e97f6f4653ee7'
++ ]
+- []
+    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-M3-seven-requires-sequences-independent-review-b-v1/validate_actual_P336_context_bindings.mts:25:10) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [
+    '00a4e086-ed5b-5a3f-bcd9-a862d83c60ab: stale reviewInputFingerprint; expected sha256:d45138dd5fc7805c2d6daae50ccf058f3322193f18033a970d8e97f6f4653ee7'
+  ],
+  expected: [],
+  operator: 'deepStrictEqual'
+}
+
+Node.js v20.20.2

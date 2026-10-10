@@ -1,0 +1,85 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "wirtschaft-current336-D124-v19-b04-actual-qualified-partial-root-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI GPT-6 Codex coordinator /root; machine curriculum QS only",
+  "synthesizedAt": "2026-10-10T09:05:05.573Z",
+  "batch": {
+    "batchId": "wirtschaft-current336-D124-v19-b04",
+    "batchManifestDigest": "sha256:643f19a13ed9c05d0893f1c043feea27eec8d68aff2e5952e6b5bc34d568f489",
+    "configDigest": "sha256:0259edad78c67824f2db9cd14c1fe68c3a64803674920e983808b83e70429812",
+    "bundleFingerprint": "sha256:658b9c596929651e2a8c15dd78b33f06b300b5467aae49cc0d256972bd725090",
+    "bookDigest": "sha256:4e0eab2df7656350975e72b61924eba8bf12b046a61ff347a61e593801c60576",
+    "reviewInputFingerprint": "sha256:4f69d3a7c0a0a2f6ab54b9e4f955aaedf4c94792c22c00596b5211a5f351fa6a",
+    "dualSummaryDigest": "sha256:09b88744f3e92b295cb61ce8a2d3c8983358bca69d21a0c2c6f1c007b40bc149",
+    "canonicalLandscapeDigest": "sha256:4a7d0d0222383a3b1218919ffe333b7962970f4edde86a88f965fd4531511cee"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-current336-D124-v19-b04-a",
+      "campaignDigest": "sha256:d544ed0cc5e3defd027ff9e051a61d7ee6bcf4010580a9a4f69237b6a093dd38",
+      "roundId": "wirtschaft-current336-D124-v19-b04-first-pass-a",
+      "independenceGroupId": "wirtschaft-current336-D124-v19-b04-independent-a",
+      "reviewInputFingerprint": "sha256:4f69d3a7c0a0a2f6ab54b9e4f955aaedf4c94792c22c00596b5211a5f351fa6a",
+      "batchId": "wirtschaft-current336-D124-v19-b04-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:3c506dce5046f4e22316993ffc4c0e07e6cb480c20e9e94b611161f13a4dab2a",
+      "runId": "wirtschaft-current336-D124-v19-b04-independently-executed-a-v1",
+      "runManifestDigest": "sha256:dc009ebd4d7a6fb7ede62faac75049e99b8092b806462124df0690a7e755cb18",
+      "resultsDigest": "sha256:e4f124a848c86279212a8e26985a75db3bd263d3d1d9b0adc7918893772c65f5"
+    },
+    "second": {
+      "campaignId": "wirtschaft-current336-D124-v19-b04-b",
+      "campaignDigest": "sha256:f0b78fd63a13205056407e2a72ec3adc395373e587c02184a544067815880f37",
+      "roundId": "wirtschaft-current336-D124-v19-b04-first-pass-b",
+      "independenceGroupId": "wirtschaft-current336-D124-v19-b04-independent-b",
+      "reviewInputFingerprint": "sha256:4f69d3a7c0a0a2f6ab54b9e4f955aaedf4c94792c22c00596b5211a5f351fa6a",
+      "batchId": "wirtschaft-current336-D124-v19-b04-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:dccb8906b24a41c48e3cad19427f1a9f8607f6dc070e5a8f2bd70ef42fb7722e",
+      "runId": "wirtschaft-current336-D124-b04-independent-b-actual-run-v1",
+      "runManifestDigest": "sha256:6ea3039913bba62787609df984bcb9df239373942698c0678d161a310abf63ef",
+      "resultsDigest": "sha256:4529f4cce45061d40144720febd7fb3140bdb369d18e6f7eb5c040b315e085aa"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "wirtschaft-current336-D124-v19-b04-actual-qualified-partial-root-v1-decision-001",
+      "goalId": "8964ef4b-5056-5449-8a6c-7c5d97f698be",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:00dd81bcd30193e6e5f25491a957642d3bef32c6296f2ccb5b61b40c332e23fd",
+      "pageFingerprint": "sha256:bc518ac1141976b7bd7a0fb226a19c07d4275c73bc9383a1dc04327ad23a0664",
+      "goalReviewContextFingerprint": "sha256:8b18d82d8ac76e49b930376d8de077f6509c2e210f5ad844164ee4232de2324e",
+      "finalText": {
+        "titleDe": "Baustellen- und Inselfertigung vergleichen",
+        "titleEn": "Compare fixed-position and cellular production",
+        "descriptionDe": "Die lernende Person kann Baustellen- und Inselfertigung anhand vorgegebener Produktionsfälle hinsichtlich Arbeitsorganisation und Materialfluss vergleichen und ihre Eignung für das jeweilige Produkt begründen.",
+        "descriptionEn": "The learner can compare fixed-position and cellular production in supplied production cases with regard to work organisation and material flow and explain their suitability for the product."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "current336-D124-b04-a-01-8964ef4b-5056-5449-8a6c-7c5d97f698be",
+          "recordDigest": "sha256:955e22aa68580a47ce6c2f46b97af491917b0f92ad1b3d5d54e692e47df2e200"
+        },
+        "second": {
+          "recordId": "wirtschaft-current336-D124-b04-independent-b-actual-run-v1-8964ef4b-5056-5449-8a6c-7c5d97f698be",
+          "recordDigest": "sha256:e2897ab1fcaeff20d11efd0b99facc620926fcd81ccc2c853b7218047a4f80be"
+        }
+      },
+      "rationaleDe": "Zwei tatsächlich unabhängige ganze DE/EN/P-/Kontext-/Seitenprüfungen stimmen überein. Produktbewegung und Bündelung mehrerer Arbeitsschritte tragen den Vergleich und die Produktpassung. Insel ist keine bloß kleine Fließlinie; koordinierte ortsfeste Montage und bewegliche Module begründen keine universelle Kosten- oder Geschwindigkeitsrangfolge. Gültige alternative Antworten und separate menschliche Gates bleiben erhalten.",
+      "rationaleEn": "Two actual independent whole DE/EN/P, context and page reviews agree. Product movement and grouping several operations ground comparison and product suitability. A cell is not merely a small assembly line; coordinated fixed assembly and movable modules imply no universal cost or speed ranking. Valid alternatives and separate human gates are retained."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "0d8cb18d-7fd9-56f5-8009-8045d44f4127",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "rationaleDe": "Tatsächlicher Beschreibungs- oder Voraussetzungsbefund bleibt offen. Enge Korrektur und aktuelle unabhängige Nachweise sind erforderlich; originalen Dissens erhalten und keinen Abschluss zählen.",
+      "rationaleEn": "An actual description or prerequisite finding remains open. A bounded correction and current independent evidence are required; preserve original dissent and count no closure."
+    }
+  ],
+  "manifestFingerprint": "sha256:78ef5dc27425356e0eeda470c95a23d5d192cd0f2eec9bc9b5c94c7316792a10"
+}

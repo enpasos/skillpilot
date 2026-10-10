@@ -1,0 +1,229 @@
+{
+  "scope": "Two failed Backend test contracts only; measured counts are not new source/stage approvals.",
+  "nativeMethods": [
+    "LearnerService.getFilteredAtomicGoalIds(curriculumId,personalCurriculumJson,null,false)",
+    "private LearnerService.getGoalProjection(curriculumId,personalCurriculumJson,false) invoked reflectively unchanged",
+    "private LearnerService.resolveNodeType(goal) invoked reflectively unchanged",
+    "private LearnerService.computeAtomicStats(visibleGoals,targetGoalIds,Map.of()) invoked reflectively unchanged"
+  ],
+  "rootCurriculumId": "a0e13c56-c25f-4742-9272-3a1a603ee52e",
+  "subjectId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+  "stage": "SekI only",
+  "courseProfile": "GK",
+  "countries": 14,
+  "durationProjections": 28,
+  "currentMeasuredMatrix": [
+    {
+      "country": "DE-BB",
+      "beforeG8": 80,
+      "beforeG9": 80,
+      "measuredG8": 82,
+      "measuredG9": 82,
+      "changed": true
+    },
+    {
+      "country": "DE-BE",
+      "beforeG8": 80,
+      "beforeG9": 80,
+      "measuredG8": 65,
+      "measuredG9": 65,
+      "changed": true
+    },
+    {
+      "country": "DE-BY",
+      "beforeG8": 136,
+      "beforeG9": 136,
+      "measuredG8": 138,
+      "measuredG9": 138,
+      "changed": true
+    },
+    {
+      "country": "DE-HB",
+      "beforeG8": 41,
+      "beforeG9": 41,
+      "measuredG8": 41,
+      "measuredG9": 41,
+      "changed": false
+    },
+    {
+      "country": "DE-HH",
+      "beforeG8": 38,
+      "beforeG9": 38,
+      "measuredG8": 39,
+      "measuredG9": 39,
+      "changed": true
+    },
+    {
+      "country": "DE-MV",
+      "beforeG8": 26,
+      "beforeG9": 26,
+      "measuredG8": 27,
+      "measuredG9": 27,
+      "changed": true
+    },
+    {
+      "country": "DE-NI",
+      "beforeG8": 47,
+      "beforeG9": 47,
+      "measuredG8": 50,
+      "measuredG9": 50,
+      "changed": true
+    },
+    {
+      "country": "DE-NW",
+      "beforeG8": 47,
+      "beforeG9": 47,
+      "measuredG8": 50,
+      "measuredG9": 50,
+      "changed": true
+    },
+    {
+      "country": "DE-RP",
+      "beforeG8": 40,
+      "beforeG9": 40,
+      "measuredG8": 40,
+      "measuredG9": 40,
+      "changed": false
+    },
+    {
+      "country": "DE-SH",
+      "beforeG8": 46,
+      "beforeG9": 46,
+      "measuredG8": 47,
+      "measuredG9": 47,
+      "changed": true
+    },
+    {
+      "country": "DE-SL",
+      "beforeG8": 40,
+      "beforeG9": 40,
+      "measuredG8": 40,
+      "measuredG9": 40,
+      "changed": false
+    },
+    {
+      "country": "DE-SN",
+      "beforeG8": 37,
+      "beforeG9": 37,
+      "measuredG8": 38,
+      "measuredG9": 38,
+      "changed": true
+    },
+    {
+      "country": "DE-ST",
+      "beforeG8": 37,
+      "beforeG9": 37,
+      "measuredG8": 38,
+      "measuredG9": 38,
+      "changed": true
+    },
+    {
+      "country": "DE-TH",
+      "beforeG8": 78,
+      "beforeG9": 78,
+      "measuredG8": 80,
+      "measuredG9": 80,
+      "changed": true
+    }
+  ],
+  "baselineCommit": "454d4b9e6ecec329f1f7424d9ab6e7e9f42cf719",
+  "historicalProbe": "Exact historical non-quality runtime JSONs materialized only under /tmp; immutable historical quality references read from preserved repository; all 28 old expected counts reproduced.",
+  "historicalRuntimeJsonFiles": 2069,
+  "javaVersion": "Amazon Corretto25.0.2.10.1",
+  "commands": [
+    "JAVA_HOME=<native-Corretto> SKILLPILOT_BACKEND_BUILD_DIR=<private-/tmp-build> backend/gradlew --quiet --console=plain --project-cache-dir <private-/tmp-cache> -I <private-classpath.init.gradle> printReadonlyRuntimeClasspath",
+    "javac -cp <original-current-main-runtime-classpath> -d <private-/tmp> ReadOnlyEconomicsSekICounts.java",
+    "java -cp <private-/tmp>:<original-current-main-runtime-classpath> ReadOnlyEconomicsSekICounts <repository>/curricula",
+    "same native java invocation with <private-454d-runtime>/curricula for historical membership comparison"
+  ],
+  "executionOnlyTemporaryPaths": {
+    "scratch": "/tmp/economics-backend-two-test-contracts-xrlzx9vj",
+    "classpathFile": "/tmp/economics-backend-two-test-contracts-xrlzx9vj/native-runtime-classpath.txt"
+  },
+  "repositoriesAndLearnerWrites": 0,
+  "runtimeSourceWrites": 0,
+  "nativeSourceMutation": 0,
+  "inputs": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "sha256": "6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab",
+      "bytes": 529427
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java",
+      "sha256": "9a6aa635641b463967211cbc149bfa23d4b3fa24ff78a5350b36c3f05dba3b96",
+      "bytes": 43524
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/landscape/LandscapeService.java",
+      "sha256": "1159e6a414dde455bed6fb9ee85b7baff435c200252dcfc7ec3df0caae1d29ac",
+      "bytes": 101466
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/landscape/GoalMappingService.java",
+      "sha256": "8d47f42d5254aeb5795ab85c3f5599ddd048b160fdfa3eb322cb6a90a2063fc6",
+      "bytes": 13937
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "db2c839c959c51a3e9f00a5a9c59398f568305b7439ad19674408ab7f54c42b7",
+      "bytes": 5625906
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-seki-economics.view.json",
+      "sha256": "b3987fd6276ab76cb1e5f47689644e8a32ea505dec50f6b0efaea57e15e209db",
+      "bytes": 4095
+    }
+  ],
+  "countTestCandidate": {
+    "activePath": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+    "activeSha256": "9091861b5bf99c91ab6f293190bf8cb4f94317aa614b77271d2abd5ebb5d7890",
+    "candidatePath": "/tmp/economics-backend-two-test-contracts-xrlzx9vj/private-test-candidates/LearnerControllerIntegrationTest.java",
+    "candidateSha256": "77dd6ca12b12995a57887af339fdd34103e0217605f46d7b3eb26805ba28a0d5",
+    "foreignSubjectRowsExact": true,
+    "allMethodBodiesExcept14EconomicsTableRowsExact": true,
+    "integrationReady": false,
+    "reason": "New INFO/PUB SekI scope/source qualification is open and independently delegated to A/C; Root decides final actual HTTP contract after it. Native measurements are exact snapshots only."
+  },
+  "mappingFixtureCandidate": {
+    "activePath": "backend/src/test/java/com/skillpilot/backend/landscape/GoalMappingRepositoryFixtureTest.java",
+    "activeSha256": "a7b322fa99d1e6d278868bec3e430fe53887c260d889074ff1b59251eb407944",
+    "candidatePath": "/tmp/economics-backend-two-test-contracts-xrlzx9vj/private-test-candidates/GoalMappingRepositoryFixtureTest.java",
+    "candidateSha256": "846ce2e8430798c36bc666303c76dfc9573b86b576a1e75a03f2f8837a0bacb9",
+    "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_economics_upper_secondary_to_canonical_economics.json",
+    "mappingSha256": "6604511bc502683fc94d0a5d2f09674fc077c3f41faefed0a73e778631132e16",
+    "actualRows": 228,
+    "exact": 223,
+    "partial": 5,
+    "distinctLegacyIds": 225,
+    "partialTuples": [
+      {
+        "legacyGoalId": "3ba5e23b-5477-4294-9cfc-b39748293128",
+        "canonicalGoalId": "7c72848d-8bc9-58e2-a690-fd17ac650a88",
+        "matchType": "partial"
+      },
+      {
+        "legacyGoalId": "3ba5e23b-5477-4294-9cfc-b39748293128",
+        "canonicalGoalId": "121fea28-9943-575d-9c96-1fb2e3356f32",
+        "matchType": "partial"
+      },
+      {
+        "legacyGoalId": "bbcb306e-567c-498c-9ac0-bb55cc08a9df",
+        "canonicalGoalId": "1826fe19-4d06-5183-9b41-9121ae1cc219",
+        "matchType": "partial"
+      },
+      {
+        "legacyGoalId": "bbcb306e-567c-498c-9ac0-bb55cc08a9df",
+        "canonicalGoalId": "a2fa1186-df35-5954-a9a9-e311a55e218f",
+        "matchType": "partial"
+      },
+      {
+        "legacyGoalId": "bbcb306e-567c-498c-9ac0-bb55cc08a9df",
+        "canonicalGoalId": "df17fd21-e9b7-598f-970e-8f541d059694",
+        "matchType": "partial"
+      }
+    ],
+    "otherWholeTestMethodsExact": true,
+    "approval": "author-candidate; Root independently validates actual final native test"
+  }
+}

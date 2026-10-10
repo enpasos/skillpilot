@@ -1,0 +1,60 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "wirtschaft-current336-D124-v19-b06-independently-executed-a-v1",
+  "campaignId": "wirtschaft-current336-D124-v19-b06-a",
+  "roundId": "wirtschaft-current336-D124-v19-b06-first-pass-a",
+  "batchId": "wirtschaft-current336-D124-v19-b06-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:8abef4ccdb717b3e456ba93c7fb3a21377d231d3e02813c77d93a8b6c55fa785",
+  "bundleFingerprint": "sha256:17d5e2def4cf82e173c442ac2f247a13238384e3d239b89f293e40606db484c8",
+  "bookDigest": "sha256:ed68421a1bc2403d9d046269c082aa2385442827ddf02c298f7faad57430507d",
+  "provider": "OpenAI",
+  "model": "GPT-6 / Codex (precise deployment version not exposed)",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:822187937b07f787f7c3fe08199f359a06093bbf3d231ce10d66e21169c8008a",
+  "generationParametersFingerprint": "sha256:e66d88e7e0e9bdb0c4707b4bbffa5c101a6e3e0bb18ee7a3fb0e2452da22033e",
+  "independenceGroupId": "wirtschaft-current336-D124-v19-b06-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "121fea28-9943-575d-9c96-1fb2e3356f32",
+    "dd38e0c5-d77b-5893-815c-548ea2a84429",
+    "b727bdda-ea96-5acd-b23f-ed94777ba7a0",
+    "eee7217a-c2fb-58b6-ba84-2a8d5235edb5",
+    "fab48742-756b-564d-87ef-cd6f3c75f348",
+    "912ab267-ee00-581b-a31c-dfc0b3587184",
+    "776457c2-8bb3-53b9-838b-a028319175fb"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:30ad385e16d9353456fd22cb81c62f924c535688f7779dc18c0816427ad3646e"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:c460260d805a080b25804748ffbeb0711ba44bdb31a4f5781cb7a330ad79f4fc"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:386b30d0a6e82ca6764b26072a89a361463827ef601cae82fcbac511a0c13162"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:822187937b07f787f7c3fe08199f359a06093bbf3d231ce10d66e21169c8008a"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:8abef4ccdb717b3e456ba93c7fb3a21377d231d3e02813c77d93a8b6c55fa785"
+    }
+  ],
+  "startedAt": "2026-10-10T09:09:34.727465+00:00",
+  "completedAt": "2026-10-10T09:12:44.410760+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:0a678fffb29dfd85e41ac0244731c23d108fb8abaf64ae8f9bca6e715cc77547",
+  "toolchainVersion": "skillpilot-native-description-review-v2"
+}

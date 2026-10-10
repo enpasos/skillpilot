@@ -1,0 +1,24 @@
+node:internal/modules/cjs/loader:1134
+  const err = new Error(message);
+              ^
+
+Error: Cannot find module '../../../../../../../app/scripts/quality-production-readonly-export'
+Require stack:
+- /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-national31-and-two-GK-prerequisites-independent-root-v1/inspect_native_national_and_two_requires.ts
+    at Module._resolveFilename (node:internal/modules/cjs/loader:1134:15)
+    at nextResolveSimple (/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-D46fvsV_.cjs:4:1004)
+    at /home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-D46fvsV_.cjs:3:2630
+    at /home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-D46fvsV_.cjs:3:1542
+    at resolveTsPaths (/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-D46fvsV_.cjs:4:760)
+    at /home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-D46fvsV_.cjs:4:1102
+    at m._resolveFilename (file:///home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-B7jrtLTO.mjs:1:789)
+    at Module._load (node:internal/modules/cjs/loader:975:27)
+    at Module.require (node:internal/modules/cjs/loader:1225:19)
+    at require (node:internal/modules/helpers:177:18) {
+  code: 'MODULE_NOT_FOUND',
+  requireStack: [
+    '/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-national31-and-two-GK-prerequisites-independent-root-v1/inspect_native_national_and_two_requires.ts'
+  ]
+}
+
+Node.js v18.19.1

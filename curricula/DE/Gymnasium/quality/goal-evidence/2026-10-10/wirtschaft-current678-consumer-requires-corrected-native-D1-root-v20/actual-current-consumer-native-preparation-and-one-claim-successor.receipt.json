@@ -1,0 +1,39 @@
+{
+  "kind": "Actual native current consumer preparation with factual primary source; historical special13 partial index preserved",
+  "checks": [
+    {
+      "args": [
+        "/tmp/economics-D124-candidate-ledger-native-root.mts",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-consumer-requires-corrected-native-D1-root-v20/whole-ledger-only-special13-to-current-consumer.INERT-candidate.json"
+      ],
+      "exitCode": 0,
+      "seconds": 0.317
+    },
+    {
+      "args": [
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "prepare",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-consumer-requires-corrected-native-D1-root-v20/current-consumer-v20.config.json"
+      ],
+      "exitCode": 0,
+      "seconds": 2.817
+    },
+    {
+      "args": [
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-consumer-requires-corrected-native-D1-root-v20/current-consumer-v20.config.json"
+      ],
+      "exitCode": 0,
+      "seconds": 0.464
+    }
+  ],
+  "allThreePassed": true,
+  "ledgerBefore": "sha256:6e4b01edacc5e39ea8c59a9340353cbfdd9700fc3b7b9dcca621631c0887a902",
+  "ledgerAfter": "sha256:ad9aa839c9a2b2cf66e339050d76abaa65c4ef1b951bcae8b407320e314b1c0e",
+  "20ClaimsUniqueNativeChecked": true,
+  "newStrictClosures": 0,
+  "twoActualIndependentReviewsStillRequired": true
+}

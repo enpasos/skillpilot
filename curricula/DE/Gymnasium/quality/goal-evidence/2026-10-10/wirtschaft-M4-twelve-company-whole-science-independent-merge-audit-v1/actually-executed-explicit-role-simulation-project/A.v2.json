@@ -1,0 +1,94 @@
+{
+  "version": "A.v2",
+  "executionType": "explicit single-reviewer role simulation; no real interpersonal team claimed",
+  "roles": {
+    "A": "Ana — data checks",
+    "B": "Ben — calculations",
+    "C": "Cora — diagram",
+    "D": "Deniz — integration and approval"
+  },
+  "network": {
+    "durations": {
+      "A": 2,
+      "B": 3,
+      "C": 4,
+      "D": 1
+    },
+    "predecessors": {
+      "A": [],
+      "B": [
+        "A"
+      ],
+      "C": [
+        "A"
+      ],
+      "D": [
+        "B",
+        "C"
+      ]
+    },
+    "earliestStart": {
+      "A": 0,
+      "B": 2,
+      "C": 2,
+      "D": 6
+    },
+    "earliestFinish": {
+      "A": 2,
+      "B": 5,
+      "C": 6,
+      "D": 7
+    },
+    "latestStart": {
+      "D": 6,
+      "C": 2,
+      "B": 3,
+      "A": 0
+    },
+    "latestFinish": {
+      "D": 7,
+      "C": 6,
+      "B": 6,
+      "A": 2
+    },
+    "totalFloat": {
+      "A": 0,
+      "B": 1,
+      "C": 0,
+      "D": 0
+    },
+    "completion": 7,
+    "criticalPaths": [
+      [
+        "A",
+        "C",
+        "D"
+      ]
+    ]
+  },
+  "costs": {
+    "disposable": 20,
+    "reusable": 17
+  },
+  "actualSubjectArtefact": "Kostenbericht bleibt Einweg 20, Mehrweg 17. Geändertes Diagramm-Freigabepaket C dauert 4 Tage; Ende 7 statt 6, kritischer Weg A–C–D. Rechnung bleibt richtig; der bisherige Termin wird nicht gehalten.",
+  "digitalMediumReason": "Readable text/CSV and shared versioned JSON hold the small numerical result, assigned checks, graph and actual changes without specialised software.",
+  "simulationActionsActuallyExecuted": [
+    [
+      "Cora",
+      "Recorded the actual C-duration change 2 to 4 in the shared data."
+    ],
+    [
+      "Deniz",
+      "Recomputed the graph and changed approval to finish 7."
+    ],
+    [
+      "Ben",
+      "Rechecked unchanged costs 20/17."
+    ],
+    [
+      "Ana",
+      "Compared initial and changed completion and signed the deadline-miss evaluation."
+    ]
+  ],
+  "parentSnapshotSHA": "fd8bcfa4c9f9c7066a286b356ab4e1cf0302f53170524bd74492eafba4b3bf0a"
+}

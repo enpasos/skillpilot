@@ -1,0 +1,109 @@
+{
+  "wholeCandidateGoalCount": 568,
+  "canonicalRuntimeSchemaErrors": 0,
+  "nativeGraphErrors": 0,
+  "nativeGraphFindings": [],
+  "actualNativeCQR001": {
+    "id": "CQR-001",
+    "status": "pass",
+    "summary": "Basic graph integrity checks pass.",
+    "metrics": {
+      "goals": 568,
+      "localReferenceIssues": 0
+    }
+  },
+  "before555WholeObjectsExact": true,
+  "new13AllDeclaredTaskScoringFieldsChecked": true,
+  "actualNativeCourseMatches": [
+    {
+      "id": "1fec367d-f9a7-533b-a9e3-a598796acaa0",
+      "GK": true,
+      "LK": true
+    },
+    {
+      "id": "88df8d5d-5af2-5d39-a969-6b9a1473e9ed",
+      "GK": true,
+      "LK": true
+    },
+    {
+      "id": "fcd0dcd9-8a0b-5533-b46e-78e6cdf758df",
+      "GK": true,
+      "LK": true
+    },
+    {
+      "id": "b8350af2-542a-5e62-b729-e44756e9c9e4",
+      "GK": true,
+      "LK": true
+    },
+    {
+      "id": "9be02a13-dad0-531c-8ce1-5629c25005df",
+      "GK": false,
+      "LK": true
+    },
+    {
+      "id": "22dc3a85-5818-5d23-a81f-ed8401247892",
+      "GK": false,
+      "LK": true
+    },
+    {
+      "id": "b34bfa75-3771-5670-83ce-2ecf32f74c43",
+      "GK": false,
+      "LK": true
+    },
+    {
+      "id": "0a8fa166-cce1-558c-a1b9-237bb46b292d",
+      "GK": true,
+      "LK": true
+    },
+    {
+      "id": "8576b291-d7ce-5d30-b578-4d417cfa25a4",
+      "GK": false,
+      "LK": true
+    },
+    {
+      "id": "933e12c4-2d8b-5354-b620-f71e0b4f4bd4",
+      "GK": true,
+      "LK": true
+    },
+    {
+      "id": "64fac140-ab4a-5994-97fe-cb3fef3f78bd",
+      "GK": true,
+      "LK": true
+    },
+    {
+      "id": "f06c0ff1-a49a-57f1-8c7b-572d22a849a6",
+      "GK": true,
+      "LK": true
+    },
+    {
+      "id": "e8d2ff1d-d9ad-5f55-b724-9dba3dfc7a54",
+      "GK": true,
+      "LK": true
+    }
+  ],
+  "sourceOrScopeApproval": false,
+  "actualNativeRequiresNegative": {
+    "id": "CQR-001",
+    "status": "fail",
+    "summary": "2 graph integrity issue(s).",
+    "metrics": {
+      "goals": 568,
+      "localReferenceIssues": 2
+    },
+    "details": [
+      "Q1: Agrarvereinfachung2026 und unterschiedliche EU-Politikfelder [e8d2ff1d-d9ad-5f55-b724-9dba3dfc7a54] requires itself",
+      "Direct requires cycle: e8d2ff1d-d9ad-5f55-b724-9dba3dfc7a54 -> e8d2ff1d-d9ad-5f55-b724-9dba3dfc7a54"
+    ]
+  },
+  "negativeInvalidScoringThresholdTypeErrors": [
+    {
+      "instancePath": "/goals/567/examData/scoring/passingPoints",
+      "schemaPath": "#/properties/examData/properties/scoring/properties/passingPoints/type",
+      "keyword": "type",
+      "params": {
+        "type": "number"
+      },
+      "message": "must be number"
+    }
+  ]
+}

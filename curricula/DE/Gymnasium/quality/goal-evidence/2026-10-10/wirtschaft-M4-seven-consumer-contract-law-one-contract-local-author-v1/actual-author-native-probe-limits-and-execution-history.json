@@ -1,0 +1,25 @@
+{
+  "executionLimits": [
+    {
+      "probe": "canonicalAuthoring validateCanonicalLandscape with nonexistent requires",
+      "result": "only contains is checked there; initial asserted detection failed, no successful detection counted"
+    },
+    {
+      "probe": "same contains validator with requires self-reference",
+      "result": "initial requires detection assertion failed, then standard evaluateGraphIntegrity used; failed attempt not counted as successful"
+    },
+    {
+      "probe": "extra arbitrary scoring field under landscape-runtime.schema",
+      "result": "schema explicitly allows extra metadata; failed closed-field assertion retained, no claimed closed-schema error detection"
+    },
+    {
+      "probe": "first standard graph result serialization",
+      "result": "ReferenceError after tests before receipt; corrected variable name and final run actually completed"
+    }
+  ],
+  "actualFinalStandardNativeGraph": "CQR-001 PASS, real requires-self-cycle negative FAIL",
+  "actualFinalRuntimeSchema": "actual unchanged runtime schema PASS, real nonnumeric passingPoints negative rejected",
+  "runtimeSchemaPermitsMetadata": "No closed-world guarantee asserted from the permissive runtime schema. All new authored goal/exam/scoring fields are declared standard fields.",
+  "checkerChanges": "Only observation export in a private file; production unchanged",
+  "activeWrites": 0
+}

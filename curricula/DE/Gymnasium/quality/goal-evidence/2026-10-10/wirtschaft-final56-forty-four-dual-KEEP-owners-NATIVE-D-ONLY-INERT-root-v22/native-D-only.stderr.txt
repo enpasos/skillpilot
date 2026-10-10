@@ -1,0 +1,8 @@
+file:///home/enpasos/projects/skillpilot/app/[eval1]:11
+fs.writeFileSync(resolve(output,'actual-native-D-only-all-consumed-input-bindings.json'),JSON.stringify({inputs:rows,allExactAfter:true},null,2)+'\n',{flag:'wx'});fs.writeFileSync(resolve(output,'actual-native-44-INERT-candidate-D-ID-difference.receipt.json'),JSON.stringify(result,null,2)+'\n',{flag:'wx'});console.log(JSON.stringify({currentIDs:ids.length,candidateD:ready.size,previousD:previous.size,lost:lost.length,gained:gained.length,ownIndexIssues:own.length,nativeIssues:issues.length,inputs:rows.length,activeWrites:0}));if(ids.length!==336||scope.issues.length||lost.length||own.length)throw Error('candidate D qualification failed');
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            ^
+
+Error: candidate D qualification failed
+    at file:///home/enpasos/projects/skillpilot/app/[eval1]:11:605
+
+Node.js v20.20.2

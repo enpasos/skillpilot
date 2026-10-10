@@ -1,0 +1,28 @@
+# Lernzielvisualisierung: Eine wirtschaftliche Untersuchungsfrage präzisieren
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `d76af11e-7fb3-5e81-a622-9f3642efedaf`
+- Titel: Eine wirtschaftliche Untersuchungsfrage präzisieren
+- Beschreibung: Die lernende Person kann aus bereitgestelltem wirtschaftlichem Material eine beantwortbare Untersuchungsfrage formulieren, den untersuchten Gegenstand und Zusammenhang abgrenzen und erläutern, welche Antwort die Frage tatsächlich verlangt.
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `d76af11e-7fb3-5e81-a622-9f3642efedaf.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/d76af11e-7fb3-5e81-a622-9f3642efedaf/d76af11e-7fb3-5e81-a622-9f3642efedaf.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational.
+Asset: one school economics learning-goal illustration, new raster PNG, landscape about1600x900, a close native16:9 size is acceptable. Friendly abstract clear comic, hand-drawn rounded dark outlines, warm cream background, muted teal/coral/yellow, approachable older teenage or adult characters, generous whitespace. The existing visual style has expressive friendly faces and large simple concrete objects. Avoid photorealism, sterile technical UI, gradients with tiny text, logos or technical IDs.
+Composition must remain clear at360px phone width and680px desktop width. One main idea, only a few large necessary objects. No fine print or long readable documents. Any labels listed below must be large. Put explanatory symbols/text on neutral floating insets, not on actor-held paper facing the outside viewer. Screens, books, notes and tools actually used by a person must face that person correctly. No compulsory caption, curriculum title or mastery/approval badges. The image is orientation, not evidence of a learner performance. No watermark.
+
+Topic: formulate an answerable bounded economic research question from supplied material. A school kiosk has a disposable cup and a reusable cup with large coin/cost symbols. Nearby a large simple calendar represents a limited period. A thoughtful student links these supplied facts into a new large question bubble, shown as their active formulation. Neutral large labels "Gegenstand", "Vergleich", "Zeitraum" accompany the three concrete motifs, leading to a central question mark. No ready task sentence, no numerical result, no claim about environmental superiority, no extra unknown information treated as known. No physical worksheet held toward the viewer. Differentiate this from hypothesis-testing: the image is about delimiting what a question asks.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

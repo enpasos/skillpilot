@@ -1,0 +1,32 @@
+{
+  "decision": "REVISE",
+  "actualWholeOriginal": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-one-pure-Gini-LK-two-actual-transfer-cases-author-b-v1/whole-one-pure-Gini-LK-two-real-transfer-and-ranking-cases.DRAFT-author-v1.json",
+    "sha256": "2a2db5b07aab346602766c50dc465273e3e82d2fc873aeecb174d62b953b6c5f",
+    "bytes": 16193
+  },
+  "wholeCurrentContractOriginalP2ActuallyRead": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-one-pure-Gini-LK-two-actual-transfer-cases-author-b-v1/whole-current424-DEEN-contract-and-original-two-P-cases.exact-author-input.json",
+    "sha256": "36b0856b3c57d2f577ef049f6a915c1b71c2b7cff2e129c873dfbb94f3ebda8f",
+    "bytes": 9883
+  },
+  "actualFindings": [
+    {
+      "field": "examData.solutionContent",
+      "examples": [
+        "1 0,2 0,3 0,4 0",
+        "G=0,2 5",
+        "A=0,3 7 5"
+      ],
+      "reason": "Correct data are rendered as split digit tokens; actual solution no longer states unambiguous sorted incomes, area or Gini."
+    },
+    {
+      "field": "examData.solutionContentEn",
+      "example": "14 threshold rendered as 1 4 of 2 4",
+      "reason": "Threshold and decimal token readability are substantively broken."
+    }
+  ],
+  "tasksAndOriginalContractNotRejected": true,
+  "noActiveWrites": true,
+  "humanApproval": false
+}

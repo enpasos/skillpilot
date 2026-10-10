@@ -1,0 +1,85 @@
+{
+  "executedCheckCount": 12,
+  "checks": [
+    {
+      "name": "GuV café expenses",
+      "actual": "7000",
+      "expected": "7000",
+      "pass": true
+    },
+    {
+      "name": "GuV café profit",
+      "actual": "1000",
+      "expected": "1000",
+      "pass": true
+    },
+    {
+      "name": "Repair expense",
+      "actual": "4900",
+      "expected": "4900",
+      "pass": true
+    },
+    {
+      "name": "Repair loss",
+      "actual": "-400",
+      "expected": "-400",
+      "pass": true
+    },
+    {
+      "name": "Service success",
+      "actual": "70",
+      "expected": "70",
+      "pass": true
+    },
+    {
+      "name": "Depreciation interest",
+      "actual": "-220",
+      "expected": "-220",
+      "pass": true
+    },
+    {
+      "name": "Plan remainder",
+      "actual": "8000",
+      "expected": "8000",
+      "pass": true
+    },
+    {
+      "name": "Stress shortfall",
+      "actual": "-4000",
+      "expected": "-4000",
+      "pass": true
+    },
+    {
+      "name": "Margin",
+      "actual": "1/10",
+      "expected": "1/10",
+      "pass": true
+    },
+    {
+      "name": "Coverage",
+      "actual": "2/5",
+      "expected": "2/5",
+      "pass": true
+    },
+    {
+      "name": "C margin",
+      "actual": "1/10",
+      "expected": "1/10",
+      "pass": true
+    },
+    {
+      "name": "D margin",
+      "actual": "1/20",
+      "expected": "1/20",
+      "pass": true
+    }
+  ],
+  "zeroRevenueMargin": "undefined; no division performed",
+  "doubleEntryCases": {
+    "cashAcquisition": "machine +2000 / bank -2000",
+    "loanAcquisition": "machine +2000 / loan +2000",
+    "repayment": "bank -500 / liability -500",
+    "debtConversion": "supplier -300 / loan +300"
+  },
+  "actualStudentPracticeClaim": false
+}

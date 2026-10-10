@@ -1,0 +1,53 @@
+{
+  "checks": [
+    {
+      "argv": [
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-D56-final-source-current-context-native-preparation-root-v22/configs/current336-final56-b06.config.json",
+        "--write"
+      ],
+      "actualExitCode": 0,
+      "seconds": 0.529
+    },
+    {
+      "argv": [
+        "scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-D56-final-source-current-context-native-preparation-root-v22/configs/current336-final56-b06.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-D56-final-source-current-context-native-preparation-root-v22/native/current336-final56-b06/root-nine-dual-KEEP-separate-P-findings-open.synthesis-authoring.json",
+        "--write"
+      ],
+      "actualExitCode": 0,
+      "seconds": 0.585
+    },
+    {
+      "argv": [
+        "scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-D56-final-source-current-context-native-preparation-root-v22/configs/current336-final56-b06.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-D56-final-source-current-context-native-preparation-root-v22/native/current336-final56-b06/synthesis-decisions.json",
+        "--write"
+      ],
+      "actualExitCode": 0,
+      "seconds": 0.84
+    },
+    {
+      "argv": [
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-D56-final-source-current-context-native-preparation-root-v22/configs/current336-final56-b06.config.json",
+        "--write"
+      ],
+      "actualExitCode": 0,
+      "seconds": 0.865
+    }
+  ],
+  "allFourPassed": true,
+  "activeRegistryWrites": 0,
+  "claimedStrictIncrease": 0
+}

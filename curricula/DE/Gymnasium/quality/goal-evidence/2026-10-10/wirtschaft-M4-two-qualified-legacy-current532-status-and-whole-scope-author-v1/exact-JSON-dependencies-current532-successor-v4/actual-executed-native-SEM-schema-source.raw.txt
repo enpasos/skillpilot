@@ -1,0 +1,16 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import Ajv2020 from 'ajv/dist/2020.js';
+import {fingerprintSemanticKindSourceGoal} from './app/scripts/goalBookModel.ts';
+const [canPath,semPath,planPath,landSchemaPath,viewSchemaPath,outSem,outResult]=process.argv.slice(2);
+const can=JSON.parse(readFileSync(canPath,'utf8')),sem=JSON.parse(readFileSync(semPath,'utf8')),plan=JSON.parse(readFileSync(planPath,'utf8'));
+const ajv=new Ajv2020({allErrors:true,strict:true,strictRequired:false});
+ajv.addKeyword({keyword:'x-skillpilot-listSemantics',schemaType:'string',valid:true});
+ajv.addKeyword({keyword:'x-skillpilot-caseInsensitiveUniqueItems',schemaType:'boolean',type:'array',validate:(enabled:boolean,data:unknown[])=>!enabled||new Set(data.map(x=>typeof x==='string'?x.toLowerCase():JSON.stringify(x))).size===data.length});
+const vg=ajv.compile(JSON.parse(readFileSync(landSchemaPath,'utf8')));if(!vg(can))throw new Error(JSON.stringify(vg.errors));
+const vv=ajv.compile(JSON.parse(readFileSync(viewSchemaPath,'utf8')));let validated=0;
+for(const pair of plan.whole35BeforeAfterViewPairs){if(!pair.addedTargetPracticeReferences.length)continue;const v=JSON.parse(readFileSync('/home/enpasos/projects/skillpilot/'+pair.wholeAfter.path,'utf8'));if(!vv(v))throw new Error(JSON.stringify(vv.errors));validated++;}
+const ids=new Set(['0bd34348-8218-590a-af02-2ad02b8f8779','02b7aef3-49f2-5eb8-b5a3-77930415f673']);const deltas=[];
+for(const row of sem.decisions){if(!ids.has(row.goalId))continue;const before=row.sourceFingerprint;row.sourceFingerprint=fingerprintSemanticKindSourceGoal(can.goals.find(g=>g.id===row.goalId));if(before===row.sourceFingerprint)throw new Error('expected material source FP change');deltas.push({goalId:row.goalId,before,after:row.sourceFingerprint,semanticKind:row.semanticKind,oldWholeDecisionExceptSourceFingerprintExact:true});}
+if(deltas.length!==2)throw new Error('wrong deltas');
+writeFileSync(outSem,JSON.stringify(sem,null,2)+'\n');writeFileSync(outResult,JSON.stringify({canonicalClosedSchemaErrors:0,changedWholeViewsClosedSchemaErrors:0,actualChangedWholeViewsValidated:validated,sourceOnlyDeltas:deltas,all530OtherWholeDecisionRowsExact:true,noNewKindOrScienceApproval:true},null,2)+'\n');
+console.log(JSON.stringify({canonical532ClosedSchemaErrors:0,changed8WholeViewSchemaErrors:0,semanticSourceFpsChanged:2}));

@@ -1,0 +1,36 @@
+import fs from 'node:fs'
+import path from 'node:path'
+import crypto from 'node:crypto'
+import Ajv2020 from 'ajv/dist/2020.js'
+import {validateCanonicalLandscape} from '/home/enpasos/projects/skillpilot/app/src/utils/authoring/canonicalAuthoring.ts'
+const root='/home/enpasos/projects/skillpilot'
+const out=path.join(root,'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-nine-international-trade-finance-one-contract-local-author-v1/distinct-four-actor-and-fair-partial-author-successor-v3')
+const read=(p:string)=>JSON.parse(fs.readFileSync(p,'utf8'))
+const digest=(p:string)=>crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex')
+const schemaPath=path.join(root,'docs/landscape-runtime.schema.json')
+const schema=read(schemaPath)
+const ajv=new Ajv2020({strict:true,strictRequired:false,allErrors:true})
+ajv.addKeyword({keyword:'x-skillpilot-listSemantics',schemaType:'string',valid:true})
+ajv.addKeyword({keyword:'x-skillpilot-caseInsensitiveUniqueItems',schemaType:'boolean',type:'array',validate:(enabled:boolean,items:any[])=>!enabled||new Set(items.map(x=>typeof x==='string'?x.toLowerCase():JSON.stringify(x))).size===items.length})
+const validate=ajv.compile(schema)
+const before=read(path.join(out,'whole-current532-exact-before.inert-input.json'))
+const after=read(path.join(out,'whole-current532-plus-nine-DRAFT-only-no-nav-scope.inert-CAN541.json'))
+const bodies=read(path.join(out,'whole-nine-one-contract-two-case-DEEN24-15.DRAFT-author-candidates.json')).materials
+const valid=validate(after);const closedErrors=JSON.parse(JSON.stringify(validate.errors??[]))
+const canonical=validateCanonicalLandscape(after).filter(x=>x.severity==='error')
+function requiresDiagnostics(frame:any){
+ const by=new Map(frame.goals.map((g:any)=>[g.id,g]));const done=new Set<string>();const stack=new Set<string>();const missing:string[]=[];const cycles:string[]=[];
+ function visit(id:string){if(stack.has(id)){cycles.push(id);return}if(done.has(id))return;stack.add(id);const g:any=by.get(id);for(const ref of g?.requires??[]){if(!by.has(ref))missing.push(id+'→'+ref);else visit(ref)}stack.delete(id);done.add(id)}
+ for(const g of frame.goals)visit(g.id);return{missing,cycles}
+}
+const req=requiresDiagnostics(after)
+const corruptSchema=structuredClone(after);corruptSchema.goals.at(-1).examData.reviewStatus='DRAFT'
+const schemaNegative=!validate(corruptSchema);const schemaNegativeErrors=JSON.parse(JSON.stringify(validate.errors??[]))
+const corruptGraph=structuredClone(after);corruptGraph.goals.at(-1).requires=[corruptGraph.goals.at(-1).id]
+const graphNegative=requiresDiagnostics(corruptGraph)
+const unchangedOld=before.goals.every((g:any,n:number)=>JSON.stringify(g)===JSON.stringify(after.goals[n]))
+const oldHeaderUnchanged=JSON.stringify(Object.fromEntries(Object.entries(before).filter(([k])=>k!=='goals')))===JSON.stringify(Object.fromEntries(Object.entries(after).filter(([k])=>k!=='goals')))
+const result={authorOnly:true,schemaPath:'docs/landscape-runtime.schema.json',schemaSHA:digest(schemaPath),nativeCanonicalSourcePath:'app/src/utils/authoring/canonicalAuthoring.ts',nativeCanonicalSourceSHA:digest(path.join(root,'app/src/utils/authoring/canonicalAuthoring.ts')),actualGoalCount:after.goals.length,newDraftCount:bodies.length,closedSchemaPassed:valid,closedSchemaErrors:closedErrors,nativeContainsTypeErrors:canonical,requiresReferenceCycleDiagnostic:req,old532WholeGoalsExact:unchangedOld,oldHeaderExact:oldHeaderUnchanged,negativeClosedEnum:{detected:schemaNegative,errors:schemaNegativeErrors},negativeActualRequiresSelfCycle:{detected:graphNegative.cycles.length>0,diagnostic:graphNegative},ordinaryPSourceScopeNavChanges:0,scopeApproval:false,wholeScienceApproval:false}
+fs.writeFileSync(path.join(out,'actual-closed-schema-native-contains-and-requires-author-probes.result.json'),JSON.stringify(result,null,2)+'\n')
+console.log(JSON.stringify(result))
+if(!valid||canonical.length||req.missing.length||req.cycles.length||!unchangedOld||!oldHeaderUnchanged||!schemaNegative||!graphNegative.cycles.length)process.exitCode=1

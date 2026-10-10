@@ -1,0 +1,266 @@
+{
+  "role": "Actual stable current678 qualified v21 targeted P/AM/V/source/graph plus normal whole Book/build, preserving incoming remote subjects; formal D still open and no human release claim",
+  "inputGuards": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "41839e18856594db1a98855dbdc88f866c8bd32e51d534d19f1dd967c4ea0b9f",
+      "bytes": 5248022
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "3da743c0287cf9e4b7ea53ebffb71a89015b76ba2737adedfde1703bec4496fe",
+      "bytes": 238988
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-economics-current-canonical.json",
+      "sha256": "645668aa45827a9d8d4a7699d7043f9ab43adb0fd5ccc7c296570df6c913a607",
+      "bytes": 1158
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-one-consumer-existing-orientation-entry-qualified-inert-root-v21/semantic-kinds.only-one-consumer-requires-sourceFP.json",
+      "sha256": "759ff6314e3e6e7c9fd9d0c9a5736692eb2bc6d12c937caefa8516e2008f41d7",
+      "bytes": 218757
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/wirtschaftswissenschaften.qa.json",
+      "sha256": "fc11d424f9fc28b2e608edc73572925d6f75e48efb83590275f9461d72349d08",
+      "bytes": 876255
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_wirtschaft_current125_source_extraction_to_canonical_wirtschaft.review.json",
+      "sha256": "228f85907dd8b7721019451abb2c3f0df4f5763d5babd28bf32c5da40a3d9387",
+      "bytes": 417326
+    }
+  ],
+  "allActiveInputGuardsRemainExact": true,
+  "actualParallelIndependentLanes": [
+    {
+      "lane": "targeted-v21-seven-native-checks",
+      "requiredStages": 7,
+      "commands": [
+        {
+          "label": "graph",
+          "argv": [
+            "npm",
+            "run",
+            "-s",
+            "validate:graph"
+          ],
+          "cwd": "/home/enpasos/projects/skillpilot/app",
+          "actualExitCode": 0,
+          "seconds": 5.906,
+          "stdout": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v21-D25-stable-book-targeted-native-root-v1/graph.stdout.txt",
+            "sha256": "78387e2034e9f78f95762b01ec6ed6c0f6f3aa297e2459f1136663b98841331c",
+            "bytes": 40
+          },
+          "stderr": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v21-D25-stable-book-targeted-native-root-v1/graph.stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          }
+        },
+        {
+          "label": "economics-semantic-atomicity",
+          "argv": [
+            "npm",
+            "run",
+            "-s",
+            "quality:semantic-atomicity:check",
+            "--",
+            "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-one-consumer-existing-orientation-entry-qualified-inert-root-v21/atomicity336.semantic-pointer-only.config.json"
+          ],
+          "cwd": "/home/enpasos/projects/skillpilot/app",
+          "actualExitCode": 0,
+          "seconds": 0.393,
+          "stdout": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v21-D25-stable-book-targeted-native-root-v1/economics-semantic-atomicity.stdout.txt",
+            "sha256": "aec17341ea050a706c2be516532fb0e231d3d4236f7207eed898df4860be9b95",
+            "bytes": 426
+          },
+          "stderr": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v21-D25-stable-book-targeted-native-root-v1/economics-semantic-atomicity.stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          }
+        },
+        {
+          "label": "economics-memory-cards-and34-views",
+          "argv": [
+            "npm",
+            "run",
+            "-s",
+            "quality:memory-card-review:check",
+            "--",
+            "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-one-consumer-existing-orientation-entry-qualified-inert-root-v21/memory336.semantic-pointer-only.config.json"
+          ],
+          "cwd": "/home/enpasos/projects/skillpilot/app",
+          "actualExitCode": 0,
+          "seconds": 0.426,
+          "stdout": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v21-D25-stable-book-targeted-native-root-v1/economics-memory-cards-and34-views.stdout.txt",
+            "sha256": "cdc88798f1fd42e14fa6ab8205ef8c7450e9c6528cc6b70d04fb3b1ccf23e9f6",
+            "bytes": 70144
+          },
+          "stderr": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v21-D25-stable-book-targeted-native-root-v1/economics-memory-cards-and34-views.stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          }
+        },
+        {
+          "label": "goal-visualization-assets",
+          "argv": [
+            "npm",
+            "run",
+            "-s",
+            "check:goal-visualization-assets"
+          ],
+          "cwd": "/home/enpasos/projects/skillpilot/app",
+          "actualExitCode": 0,
+          "seconds": 18.418,
+          "stdout": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v21-D25-stable-book-targeted-native-root-v1/goal-visualization-assets.stdout.txt",
+            "sha256": "9186c0fc9a277b8c5d0645414f7c7e23b2fd5bf7f0b25aba8e770e0e3e0fdfee",
+            "bytes": 75
+          },
+          "stderr": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v21-D25-stable-book-targeted-native-root-v1/goal-visualization-assets.stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          }
+        },
+        {
+          "label": "source-inventory",
+          "argv": [
+            "npm",
+            "run",
+            "-s",
+            "test:source-extraction-inventory"
+          ],
+          "cwd": "/home/enpasos/projects/skillpilot/app",
+          "actualExitCode": 0,
+          "seconds": 0.832,
+          "stdout": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v21-D25-stable-book-targeted-native-root-v1/source-inventory.stdout.txt",
+            "sha256": "51f6cbc4b678724766fd7f33264aa8b8698902fe81550dc8aa7b5aab7f3ba70f",
+            "bytes": 94
+          },
+          "stderr": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v21-D25-stable-book-targeted-native-root-v1/source-inventory.stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          }
+        },
+        {
+          "label": "positive-targeted-16",
+          "argv": [
+            "npm",
+            "run",
+            "-s",
+            "quality:positive-goal-evidence:check",
+            "--",
+            "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-one-consumer-existing-orientation-entry-qualified-inert-root-v21/configs/16.positive.config.json"
+          ],
+          "cwd": "/home/enpasos/projects/skillpilot/app",
+          "actualExitCode": 0,
+          "seconds": 0.517,
+          "stdout": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v21-D25-stable-book-targeted-native-root-v1/positive-targeted-16.stdout.txt",
+            "sha256": "7aa54156642213af777f7f8f833edb68536985f9e05f4a3ce36cbfb08f1eb9bb",
+            "bytes": 316
+          },
+          "stderr": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v21-D25-stable-book-targeted-native-root-v1/positive-targeted-16.stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          }
+        },
+        {
+          "label": "positive-targeted-43",
+          "argv": [
+            "npm",
+            "run",
+            "-s",
+            "quality:positive-goal-evidence:check",
+            "--",
+            "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-one-consumer-existing-orientation-entry-qualified-inert-root-v21/configs/43.positive.config.json"
+          ],
+          "cwd": "/home/enpasos/projects/skillpilot/app",
+          "actualExitCode": 0,
+          "seconds": 0.474,
+          "stdout": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v21-D25-stable-book-targeted-native-root-v1/positive-targeted-43.stdout.txt",
+            "sha256": "50859011fdf74415e68e4992ad37ae1e90c5f12d9c1b30c434cdc9798b7221a6",
+            "bytes": 305
+          },
+          "stderr": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v21-D25-stable-book-targeted-native-root-v1/positive-targeted-43.stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          }
+        }
+      ],
+      "pass": true
+    },
+    {
+      "lane": "book-and-build",
+      "requiredStages": 2,
+      "commands": [
+        {
+          "label": "goal-book-full-pipeline-including-cached-publications",
+          "argv": [
+            "npm",
+            "run",
+            "-s",
+            "test:goal-book-pipeline"
+          ],
+          "cwd": "/home/enpasos/projects/skillpilot/app",
+          "actualExitCode": 0,
+          "seconds": 263.14,
+          "stdout": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v21-D25-stable-book-targeted-native-root-v1/goal-book-full-pipeline-including-cached-publications.stdout.txt",
+            "sha256": "fe4b70cf75a988143e7e27242d717ecbc0aade83100f9c3503ab305bee077d0f",
+            "bytes": 3606
+          },
+          "stderr": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v21-D25-stable-book-targeted-native-root-v1/goal-book-full-pipeline-including-cached-publications.stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          }
+        },
+        {
+          "label": "application-build-local-only",
+          "argv": [
+            "npm",
+            "run",
+            "-s",
+            "build:application"
+          ],
+          "cwd": "/home/enpasos/projects/skillpilot/app",
+          "actualExitCode": 0,
+          "seconds": 102.655,
+          "stdout": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v21-D25-stable-book-targeted-native-root-v1/application-build-local-only.stdout.txt",
+            "sha256": "936cc0166cb303e9403e7276dcecea87bd349e81f951c5c0e685560bf0460cff",
+            "bytes": 17834
+          },
+          "stderr": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v21-D25-stable-book-targeted-native-root-v1/application-build-local-only.stderr.txt",
+            "sha256": "b9f99a1c0f6ff2c022ba306b9d9d1d783a5c37fc4ce62b7547d4bc1abd81cb02",
+            "bytes": 524
+          }
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "allRequiredBookAndBuildStagesPassed": true,
+  "newScientificStrictClosures": 0,
+  "restoredStrictBindings": 0,
+  "strictNet": 0,
+  "runtimePluginPrivacyDeploymentChanges": false,
+  "humanReleaseTrialApproval": false,
+  "imagesGenerated": 0,
+  "commitCreated": false
+}

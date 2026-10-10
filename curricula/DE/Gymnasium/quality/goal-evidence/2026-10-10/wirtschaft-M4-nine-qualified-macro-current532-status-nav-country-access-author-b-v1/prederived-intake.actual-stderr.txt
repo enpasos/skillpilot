@@ -1,0 +1,22 @@
+node:fs:448
+    return binding.readFileUtf8(path, stringToFlags(options.flag));
+                   ^
+
+Error: ENOENT: no such file or directory, open '/tmp/skillpilot-econ-nine-macro532-author-B-avfci92o/capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-plus-d2cc-reviewed-integration-preparation-technical-20261007-v1/memory/current378.real-views.future-active.config.json'
+    at readFileSync (node:fs:448:20)
+    at <anonymous> (/tmp/skillpilot-econ-nine-macro532-author-B-avfci92o/capsule/app/scripts/memoryCardReviewConfigDiscovery.ts:166:31)
+    at Array.map (<anonymous>)
+    at discoverActiveMemoryCardReviewConfigs (/tmp/skillpilot-econ-nine-macro532-author-B-avfci92o/capsule/app/scripts/memoryCardReviewConfigDiscovery.ts:161:28)
+    at loadMemoryReviewOriginReferences (/tmp/skillpilot-econ-nine-macro532-author-B-avfci92o/capsule/app/scripts/applicabilityCompiler.ts:482:23)
+    at buildApplicabilityCompilation (/tmp/skillpilot-econ-nine-macro532-author-B-avfci92o/capsule/app/scripts/applicabilityCompiler.ts:798:55)
+    at run (/tmp/skillpilot-econ-nine-macro532-author-B-avfci92o/capsule/app/scripts/actual_author_macro532_prederived_intake_runner.mts:36:22)
+    at <anonymous> (/tmp/skillpilot-econ-nine-macro532-author-B-avfci92o/capsule/app/scripts/actual_author_macro532_prederived_intake_runner.mts:44:14)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/tmp/skillpilot-econ-nine-macro532-author-B-avfci92o/capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-plus-d2cc-reviewed-integration-preparation-technical-20261007-v1/memory/current378.real-views.future-active.config.json'
+}
+
+Node.js v20.20.2

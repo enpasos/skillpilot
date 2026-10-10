@@ -1,0 +1,30 @@
+from pathlib import Path
+import json,copy,shutil,hashlib,subprocess,uuid
+R=Path('/home/enpasos/projects/skillpilot');O=R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-thirty-existing-foreign-KEEP-E7-global-access-bindings-author-v1/actual-schema-field-name-native-author-successor-v2';O.mkdir(parents=True,exist_ok=False);read=lambda p:json.loads(p.read_text());cap=Path('/tmp/skillpilot-economics-macro12-current504-wxkcpkyv');CAN=Path('curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json');registry=Path('curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json')
+def fp(p):return {'path':str(p.relative_to(R)),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'bytes':p.stat().st_size}
+def wr(n,x):p=O/n;p.parent.mkdir(parents=True,exist_ok=True);assert not p.exists();p.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n');return p
+def ex(p,n):q=O/n;q.parent.mkdir(parents=True,exist_ok=True);assert not q.exists();shutil.copyfile(p,q);return q
+def stage(p,q):q.parent.mkdir(parents=True,exist_ok=True);q.unlink(missing_ok=True);shutil.copyfile(p,q)
+can=ex(R/CAN,'frozen-current518-inputs/whole-activeCAN518.exact.json');assert fp(can)['sha256']=='aea52b23ce1bd5d510fa0d6c256fc7fa4c5e3bddca5736bb54c5c505a6a7e309';reg=ex(R/registry,'frozen-current518-inputs/whole-activeRegistry.exact.json');cfg=read(R/'app/scripts/config/goal-books/de-gym-economics-current-canonical.json');sem=ex(R/cfg['semanticKindLedgerPath'],'frozen-current518-inputs/whole-activeSEM518.exact.json');pfile=ex(R/cfg['evidenceReviewPaths'][0],'frozen-current518-inputs/whole-current336-P685.exact.jsonl');stage(can,cap/CAN);stage(reg,cap/registry);stage(sem,cap/cfg['semanticKindLedgerPath'])
+views=[]
+for p in sorted((R/'curricula/DE/Gymnasium/composition-views/wirtschaft').glob('*.view.json')):
+ q=ex(p,'frozen-current518-inputs/before-views/'+p.name);stage(q,cap/p.relative_to(R));views.append({'activePath':str(p.relative_to(R)),'before':fp(q)})
+cmds=[]
+def run(name):
+ p=O/(name+'.actual-native.json');args=[str(cap/'app/node_modules/.bin/tsx'),str(cap/'native-macro12-current504-intake.ts'),str(p)];r=subprocess.run(args,cwd=cap,capture_output=True,text=True);(O/(name+'.stdout.raw.txt')).write_text(r.stdout);(O/(name+'.stderr.raw.txt')).write_text(r.stderr);cmds.append({'argv':args,'exit':r.returncode,'output':fp(p)if p.exists()else None});assert r.returncode==0,r.stderr;return read(p)
+b=run('before-current518-without30-additional-accesses');goals={g['id']:g for g in read(can)['goals']};E=R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-seven-local-consumer-market-and-law-material-author-v1/seven-foreign-KEEP-status-only-current504-fieldwise-author-successor-v9/whole-seven-E-foreign-science-KEEP.only-reviewStatus-machine-released.inert.json';ids=[g['id']for g in read(E)];assert all(goals[g['id']]==g for g in read(E));trade='1ba25692-14e2-59d3-99c6-ca1d90da1fb6';diff=[]
+for row in views:
+ name=Path(row['activePath']).name
+ if not any(name==f'de-{j}-gym-economics-{course}.view.json'for j in ['by','he','be']for course in ['gk','lk']):continue
+ d=read(R/row['before']['path']);s=d['scope'];isbe=s['jurisdiction']=='DE-BE';add=[trade]if isbe else ids;assert len(d['rootNodes'])==1;node=d['rootNodes'][0];refs=[];judgments=[]
+ for id in add:
+  matches=[x for x in b['allScopeRows']if x['viewPath']==row['activePath']and x['jurisdiction']==s['jurisdiction']];assert len(matches)==1;sc=matches[0];mat=next(x for x in b['materials']if x['id']==id);assert id in sc['expectedTerminalIds']and id not in sc['actualTerminalIds'];assert not mat['unresolvedReferences'];assert set(mat['wholeMaterialPrerequisites'])<=set(sc['visibleAllAtomicIds']);assert set(goals[id]['examData']['coveredGoalIds'])<=set(sc['visibleAllAtomicIds']);assert s['courseProfile']in goals[id]['tags']
+  refs.append({'kind':'goalEntry','goalId':id,'displayLabel':goals[id]['title'],'projectionRole':'target'});judgments.append({'materialId':id,'actualNativeExpected':True,'wholeRequiredAtomicClosure':mat['wholeMaterialPrerequisites'],'wholeExaminedGoals':goals[id]['examData']['coveredGoalIds'],'ordinaryTargetIdsUnaffected':True,'examinedAsPrerequisiteOnly':sorted(set(goals[id]['examData']['coveredGoalIds'])-set(sc['ordinaryTargetIds'])),'fullClosureMissing':[],'courseCompatible':True,'rationale':'Whole foreign-qualified material is actually expected and all complete prerequisites are present. The reference supplies an assessment access; support roles and ordinary country targets stay exact.'})
+ d['viewId']='de-gym-economics-30-existing-whole-material-access-20261010-'+s['jurisdiction'].lower()+'-'+s['courseProfile'].lower();node['children']+=refs;p=wr('whole-six-after-views/'+name,d);stage(p,cap/row['activePath']);diff.append({**row,'after':fp(p),'appendReferences':refs,'currentNativeWholeClosureBindings':judgments})
+assert len(diff)==6 and sum(len(d['appendReferences'])for d in diff)==30
+a=run('after-current518-only30-existing-whole-material-accesses');negrow=next(x for x in diff if Path(x['activePath']).name=='de-be-gym-economics-gk.view.json');d=read(R/negrow['after']['path']);count=0
+for n in d['rootNodes']:
+ children=n.get('children',[]);new=[c for c in children if not(c.get('kind')=='goalEntry'and c.get('goalId')==trade)];count+=len(children)-len(new);n['children']=new
+assert count==1;n=wr('negative-only-remove-new-BEGK-trade-access.json',d);stage(n,cap/negrow['activePath']);neg=run('negative-BEGK-trade-access-drop');stage(R/negrow['after']['path'],cap/negrow['activePath'])
+ix=wr('actual-current518-thirty-accesses-six-views-full-closure-fieldwise-author.index.json',{'role':'AUTHOR_PENDING_FOREIGN_SCOPE_REVIEW','CAN518':fp(can),'SEM518':fp(sem),'P336685':fp(pfile),'registry':fp(reg),'allBeforeViews':views,'wholeChanged6':diff,'appendOnlyReferenceCount':30,'ordinaryAndSourceRoleChanges':0,'activeWrites':0,'nativeCommands':cmds});print(fp(ix))
+for nm,z in [('before',b),('after',a),('negative',neg)]:print(nm,next(r['metrics']for r in z['nativeRules']if r['id']=='CQR-104'))

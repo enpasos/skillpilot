@@ -1,0 +1,20 @@
+{
+  "originalChecker": {
+    "path": "app/scripts/generateCurriculumQualityStatus.ts",
+    "sha256": "656084b7cd9d6cb5324361b927b9f761596c572d7e4f616c7b13da061f4b1336",
+    "bytes": 273652
+  },
+  "originalCompiler": {
+    "path": "app/scripts/applicabilityCompiler.ts",
+    "sha256": "50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd",
+    "bytes": 56784
+  },
+  "nativeHelperSource": "import {readFileSync,writeFileSync} from 'node:fs';\nimport {validateCanonicalLandscape} from './app/src/utils/authoring/canonicalAuthoring.ts';\nimport {buildApplicabilityCompilation} from './app/scripts/applicabilityCompiler.ts';\nimport {routeProfiles,evaluateRouteProfile,ownProjectedScopeRows,collectWholeMaterialPrerequisiteClosure,readJurisdictionCoverageByLandscapeId,evaluateJurisdictionCoverage} from './app/scripts/generateCurriculumQualityStatus.ts';\nconst land=JSON.parse(readFileSync('./curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json','utf8'));\nconst all=buildApplicabilityCompilation(),report=all.reports.find(r=>r.landscapeId===land.landscapeId)!;\nconst profile=routeProfiles.find(p=>p.landscapeId===land.landscapeId)!;\nconst route=evaluateRouteProfile(land,profile,{...all,reports:[report]});\nconst source=evaluateJurisdictionCoverage(readJurisdictionCoverageByLandscapeId(all).get(land.landscapeId));\nconst ids=[\"591b870a-f10b-5b05-baf9-2f7fc40fd74b\", \"58cc062b-31b4-5879-a6c5-4ea60ce9e13c\", \"a47e8fca-3ce1-5edb-90b4-28225b02340a\", \"57984b50-0dbe-4fb1-a020-0f25953a8b74\", \"9a88ee21-93d4-4042-b65c-21e287715433\", \"b851482c-5d7e-4228-aea8-3d277f897297\", \"fe55b4b3-9eca-46ce-a3a6-f7a0a84daf12\", \"44fb56bb-7b5a-4b34-9ca4-c4052f94da89\", \"15aa72ad-9236-5a68-8482-9408db439af2\"];\nconst materials=ids.map(id=>{const g=land.goals.find(g=>g.id===id),c=collectWholeMaterialPrerequisiteClosure(land,id);return {id,directRequires:g.requires,wholeMaterialPrerequisites:[...c.atomicGoalIds],unresolvedReferences:[...c.unresolvedReferences],actualCompiled:report.goals.find(x=>x.goalId===id),actuallyVisibleScopeKeys:ownProjectedScopeRows.filter(r=>r.actualTerminalIds.includes(id)).map(r=>r.viewPath+'|'+r.jurisdiction+'|'+JSON.stringify(r.scopeFilters))};});\nconst graph=validateCanonicalLandscape(land);if(graph.some(g=>g.severity==='error'))throw new Error(JSON.stringify(graph));\nwriteFileSync(process.argv[2],JSON.stringify({goalCount:land.goals.length,graph,compilerSummary:report.summary,compilerGoals:report.goals,nativeRules:route.rules,sourceRule:source,materials,allScopeRows:ownProjectedScopeRows},null,2)+'\\n');\nconsole.log(JSON.stringify({goalCount:land.goals.length,graphErrors:graph.filter(g=>g.severity==='error').length,compilerSummary:report.summary,sourceRule:source,rules:route.rules.map(r=>({id:r.id,status:r.status,metrics:r.metrics}))},null,2));\n",
+  "instrumentation": "Only expose original scope sets/functions and guard main; no evaluator predicate, filters, threshold, source availability or runtime changes.",
+  "candidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-nine-existing-practice-requires-derived-country-metadata-author-v1/postmerge-current496-exact-material-status-baseline-successor-v2/whole-current496.only-nine-existing-practice-applicabilityFromRequires-true.inert.json",
+    "sha256": "28d70ffd3c12f43e6bb6ece157f43cc1538bfe8db2256930499466c36ea7cda6",
+    "bytes": 2282261
+  },
+  "capsuleDependencies": 1182
+}

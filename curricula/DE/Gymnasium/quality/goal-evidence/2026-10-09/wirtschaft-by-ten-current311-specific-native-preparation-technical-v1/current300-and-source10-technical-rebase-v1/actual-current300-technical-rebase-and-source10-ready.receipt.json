@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "role": "isolated Generic10 current300+Source10 technical preparation, pending independent route-A content acceptance before any final D freeze",
+  "at": "2026-10-09T07:05:19.868248+00:00",
+  "physicalIsolate": "/tmp/skillpilot-wirtschaft-generic10-current311-476152vl",
+  "barrier": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/root-final19-individual-synthesis-and-native-closure-20261009-v1/actual-integrated-central-and-targeted-native-checks/actual-current300-central-completion-and-next-candidates-barrier.receipt.json",
+    "sha256": "sha256:1d8c2fc18d4ca005ff115e545ec459082fb8a74edf87a9629e7c867847ec4dfb"
+  },
+  "actualCurrentRootStrict": 300,
+  "currentAtomicDenominator": 311,
+  "selectedCandidateIds": [
+    "8964ef4b-5056-5449-8a6c-7c5d97f698be",
+    "71319337-18ad-5774-8347-4e1a078fc29a",
+    "f90e4741-368b-5524-8053-417d06197c80",
+    "51203e8f-a1f4-5072-8d32-d5b718691592",
+    "f7c051f4-ebb0-5d74-81b1-c1cdb562414f",
+    "772b6d9f-03be-5894-8d61-0269506f398c",
+    "575c08d4-204f-5f78-8f2f-1994db6f19ee",
+    "7a2435f2-0ce7-5179-81a5-2ef5c313e3dd",
+    "5a72a72a-609a-5e60-8a25-4f5048b8b09c",
+    "055ef95c-0b64-5675-8f14-2524c3438009"
+  ],
+  "actualNativeCommands": [
+    {
+      "name": "native-current300-atomicity311-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-by-ten-current311-specific-native-preparation-technical-v1/current300-and-source10-technical-rebase-v1/atomicity.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/tmp/skillpilot-wirtschaft-generic10-current311-476152vl",
+      "startedAt": "2026-10-09T07:01:25.972852+00:00",
+      "completedAt": "2026-10-09T07:01:26.144089+00:00",
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-current300-memory311-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-by-ten-current311-specific-native-preparation-technical-v1/current300-and-source10-technical-rebase-v1/memory.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/tmp/skillpilot-wirtschaft-generic10-current311-476152vl",
+      "startedAt": "2026-10-09T07:01:26.151238+00:00",
+      "completedAt": "2026-10-09T07:01:26.333205+00:00",
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-current300-P10-check",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-by-ten-current311-specific-native-preparation-technical-v1/positive.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/tmp/skillpilot-wirtschaft-generic10-current311-476152vl",
+      "startedAt": "2026-10-09T07:01:26.335867+00:00",
+      "completedAt": "2026-10-09T07:01:26.616972+00:00",
+      "actualExitCode": 0
+    },
+    {
+      "name": "native-current300-QA311-check-after-assets-and-native-order-v3",
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "--subject",
+        "wirtschaftswissenschaften",
+        "--check"
+      ],
+      "cwd": "/tmp/skillpilot-wirtschaft-generic10-current311-476152vl",
+      "startedAt": "2026-10-09T07:04:22.915932+00:00",
+      "completedAt": "2026-10-09T07:04:23.655065+00:00",
+      "actualExitCode": 0
+    }
+  ],
+  "AM301CurrentRootWholeRowsExact": [
+    {
+      "gate": "atomicity",
+      "predecessorCurrentRootConfig": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/atomicity.config.json",
+      "predecessorCurrentRootReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/atomicity.review.jsonl",
+      "predecessorCurrentRootReviewSha256": "sha256:010f19d910dadd9bc4f83421aa173be04910c6fa7921a844dfd138e8390d6f84",
+      "mergedReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-by-ten-current311-specific-native-preparation-technical-v1/current300-and-source10-technical-rebase-v1/atomicity.review.jsonl",
+      "mergedReviewSha256": "sha256:20ef8bfdee14af39f982d9100ff3be8dfe9f2eba128bc65c752a92f3b3b70443",
+      "otherCurrentRoot301WholeLinesExact": true,
+      "newSubstantiveReviewClaim": false
+    },
+    {
+      "gate": "memory",
+      "predecessorCurrentRootConfig": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/memory.config.json",
+      "predecessorCurrentRootReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/memory.review.jsonl",
+      "predecessorCurrentRootReviewSha256": "sha256:4db18d105270e67d58446d3b1bb7d26c944a342a3aefc726c0608cc5559b56e6",
+      "mergedReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-by-ten-current311-specific-native-preparation-technical-v1/current300-and-source10-technical-rebase-v1/memory.review.jsonl",
+      "mergedReviewSha256": "sha256:3763e0ad24189b7ae338bfad93b291d361aeee6f64d972c08bf5fc4547e6d3d4",
+      "otherCurrentRoot301WholeLinesExact": true,
+      "newSubstantiveReviewClaim": false
+    }
+  ],
+  "allOtherCurrentRoot379WholeGoalsExact": true,
+  "allOtherCurrentRoot301QARowsExact": true,
+  "selectedP10ProfilesAnd20CasesUnchanged": true,
+  "Source10BYBoundedPartialPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-by-ten-current311-specific-native-preparation-technical-v1/current300-and-source10-technical-rebase-v1/actual-current-source10-BY-exact-to-bounded-partial.technical-receipt.json",
+  "Source35ForeignCandidateNotIncluded": true,
+  "routeAPacketIncluded": false,
+  "finalDPreparationFrozen": false,
+  "humanApprovalClaim": false,
+  "newStrictClosures": 0,
+  "liveWrites": 0,
+  "next": "Receive independently accepted four route-A endpoints and actual17 delta inclGeneric8964/713; merge only bounded route fields into actualcurrent300+Generic10, inspect true whole311 pages and prepare <=20 blind batches."
+}

@@ -1,0 +1,59 @@
+{
+  "commands": [
+    {
+      "name": "schemas-and-portable-curriculum-links",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/validate_schemas.py"
+      ],
+      "actualExitCode": 0,
+      "seconds": 71.175
+    },
+    {
+      "name": "goal-IDs-UUID",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/validate_goal_ids_uuid.py"
+      ],
+      "actualExitCode": 0,
+      "seconds": 0.862
+    },
+    {
+      "name": "competency-wording",
+      "argv": [
+        "python3",
+        "-B",
+        "scripts/validate_competency_wording.py"
+      ],
+      "actualExitCode": 0,
+      "seconds": 32.877
+    },
+    {
+      "name": "ai-transparency-inventory",
+      "argv": [
+        "npm",
+        "run",
+        "-s",
+        "check:ai-transparency-inventory"
+      ],
+      "actualExitCode": 0,
+      "seconds": 6.454
+    },
+    {
+      "name": "deep-understanding-rollout-contract-regression",
+      "argv": [
+        "npm",
+        "run",
+        "-s",
+        "test:deep-understanding-rollout"
+      ],
+      "actualExitCode": 0,
+      "seconds": 65.805
+    }
+  ],
+  "allFivePassed": true,
+  "newStrict": 0,
+  "commitCreated": false
+}

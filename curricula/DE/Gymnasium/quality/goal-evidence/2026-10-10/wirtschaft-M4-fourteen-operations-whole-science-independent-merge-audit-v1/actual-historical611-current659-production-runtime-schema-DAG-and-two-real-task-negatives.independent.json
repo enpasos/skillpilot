@@ -1,0 +1,50 @@
+{
+  "role": "independent actual unchanged production runtime schema and real required-task-negative; separate historical/current frames",
+  "actualRuntimeSchemaPath": "docs/landscape-runtime.schema.json",
+  "runtimeSchemaSHA": "d25cf1c930d1a21838264b34d713f32788715089c6b8ff2b7430bdbc6079e59a",
+  "frames": [
+    {
+      "input": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-fourteen-operations-whole-science-independent-merge-audit-v1/whole-611-historical597-plus-final-fourteen-DRAFT-only-independent-runtime-schema.inert.json",
+      "sha256": "2bc9bfda4a9729eaf6778ce28b4297f73bd66f744d455aa6d9bf0365b208dca4",
+      "count": 611,
+      "newDrafts14": true,
+      "actualClosedRuntimeSchemaPass": true,
+      "requiresAndContainsDAGPass": true,
+      "actualGermanTaskOmissionRejected": true,
+      "negativeErrors": [
+        {
+          "instancePath": "/goals/605/examData",
+          "schemaPath": "#/properties/examData/required",
+          "keyword": "required",
+          "params": {
+            "missingProperty": "taskContent"
+          },
+          "message": "must have required property 'taskContent'"
+        }
+      ]
+    },
+    {
+      "input": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-fourteen-operations-whole-science-independent-merge-audit-v1/whole-659-current645-plus-final-fourteen-DRAFT-only-independent-runtime-schema.inert.json",
+      "sha256": "1bd7032f0deea4f7637de8fd14b214c6a0d8c7418a15250890bc49ce6d2fadc7",
+      "count": 659,
+      "newDrafts14": true,
+      "actualClosedRuntimeSchemaPass": true,
+      "requiresAndContainsDAGPass": true,
+      "actualGermanTaskOmissionRejected": true,
+      "negativeErrors": [
+        {
+          "instancePath": "/goals/653/examData",
+          "schemaPath": "#/properties/examData/required",
+          "keyword": "required",
+          "params": {
+            "missingProperty": "taskContent"
+          },
+          "message": "must have required property 'taskContent'"
+        }
+      ]
+    }
+  ],
+  "sourceOrScopeCompilerApproval": false,
+  "metadataClosedSchemaClaim": false,
+  "activeWrites": 0
+}

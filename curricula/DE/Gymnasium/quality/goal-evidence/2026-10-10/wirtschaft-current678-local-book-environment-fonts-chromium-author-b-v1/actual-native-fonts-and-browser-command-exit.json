@@ -1,0 +1,23 @@
+{
+  "argv": [
+    "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+    "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+    "/tmp/skillpilot-economics-fonts-browser-proof-B-9l6cqq71/actual-local-existing-font-preflight-and-chromium-proof.mts",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-local-book-environment-fonts-chromium-author-b-v1/actual-native-font-preflight-eight-rendered-browser-faces.json"
+  ],
+  "cwd": "/home/enpasos/projects/skillpilot/app",
+  "environmentOverrides": {
+    "FONTCONFIG_FILE": "/tmp/skillpilot-native-liberation-fonts-4dyn_jva/fonts.conf",
+    "GOAL_BOOK_CHROMIUM_EXECUTABLE_PATH": "/home/enpasos/.cache/ms-playwright/chromium-1217/chrome-linux64/chrome"
+  },
+  "exit": 0,
+  "elapsedSeconds": 1.1273958579986356,
+  "stdout": "{\"nativeFontPreflight\":\"PASS\",\"chromiumVersion\":\"147.0.7727.15\",\"actualBrowserFaces\":8,\"PDFOrBookBuilds\":0}\n",
+  "stderr": "",
+  "actualHelperPath": "/tmp/skillpilot-economics-fonts-browser-proof-B-9l6cqq71/actual-local-existing-font-preflight-and-chromium-proof.mts",
+  "actualHelperSHA256": "01c0b493fbe1a31fa9b1b368ec628bacf0d0906e80eb72ae5992c16be11feaa2",
+  "actualHelperSource": "import { verifyGoalBookPrintFonts } from '/home/enpasos/projects/skillpilot/app/scripts/buildGoalBookPublications.ts'\nimport { chromium } from '/home/enpasos/projects/skillpilot/app/node_modules/playwright/index.mjs'\nimport { writeFile } from 'node:fs/promises'\nconst output = process.argv[2]\nawait verifyGoalBookPrintFonts()\nconst browser = await chromium.launch({ executablePath: process.env.GOAL_BOOK_CHROMIUM_EXECUTABLE_PATH, headless: true })\ntry {\n  const page = await browser.newPage()\n  const rows = ['Arial', 'Courier New'].flatMap((family, familyIndex) => [\n    {style: 'Regular', weight:400, cssStyle:'normal'},\n    {style: 'Bold', weight:700, cssStyle:'normal'},\n    {style: 'Italic', weight:400, cssStyle:'italic'},\n    {style: 'Bold Italic', weight:700, cssStyle:'italic'},\n  ].map((face,index) => ({...face, family, id:`face${familyIndex}-${index}`, expected:familyIndex===0?'Liberation Sans':'Liberation Mono'})))\n  await page.setContent(`<html><body>${rows.map(r=>`<p id=\"${r.id}\" style=\"font-family:'${r.family}';font-weight:${r.weight};font-style:${r.cssStyle}\">Abc 123</p>`).join('')}</body></html>`)\n  await page.evaluate(() => document.fonts.ready)\n  const cdp = await page.context().newCDPSession(page)\n  await cdp.send('DOM.enable'); await cdp.send('CSS.enable')\n  const {root} = await cdp.send('DOM.getDocument')\n  const actualFaces = []\n  for(const row of rows) {\n    const {nodeId} = await cdp.send('DOM.querySelector', {nodeId:root.nodeId, selector:`#${row.id}`})\n    const {fonts} = await cdp.send('CSS.getPlatformFontsForNode', {nodeId})\n    if(fonts.length !== 1 || fonts[0].familyName !== row.expected || fonts[0].glyphCount < 1) throw new Error(JSON.stringify({row,fonts}))\n    actualFaces.push({...row, actualPlatformFonts:fonts})\n  }\n  const result = {role:'LOCAL_ENVIRONMENT_ONLY_NO_BOOK_OR_PDF_BUILD', nativeUnchangedVerifyGoalBookPrintFonts:'PASS', chromiumVersion:browser.version(), executablePath:process.env.GOAL_BOOK_CHROMIUM_EXECUTABLE_PATH, FONTCONFIG_FILE:process.env.FONTCONFIG_FILE, actualBrowserEightFaceBindings:actualFaces, rendererBuildOrPDFFilesCreated:0, activeCurriculumOrRepoCodeWrites:0}\n  await writeFile(output, JSON.stringify(result,null,2)+'\\n')\n  console.log(JSON.stringify({nativeFontPreflight:'PASS', chromiumVersion:result.chromiumVersion, actualBrowserFaces:actualFaces.length, PDFOrBookBuilds:0}))\n} finally { await browser.close() }\n",
+  "builds": 0,
+  "PDFs": 0,
+  "preflightBypass": false
+}

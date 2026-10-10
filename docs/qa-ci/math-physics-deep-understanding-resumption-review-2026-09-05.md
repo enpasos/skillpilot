@@ -11,17 +11,95 @@ Momentaufnahmen. Menschliche Release-Gates bleiben getrennt.
 
 ## Aktuelle Zielverfolgung: ausschließlich Wirtschaftswissenschaften
 
+Der [M6-/CI-Zwischenstand vom 10. Oktober](wirtschaft-m6-ci-checkpoint-2026-10-10.md)
+ist der aktuelle Fortsetzungsstand: **346 curricularAtomic-Ziele,
+D216/P346/A346/M346/V0, streng 0/346**. Der frisch erzeugte zentrale Bericht
+vom 10. Oktober, 22:01 UTC, bestätigt **M6**, **2136/2136 abgedeckte Quellenziele**
+und **0 unbelegte Zuordnungen**. CQR-003, die zentrale Aktualitätsprüfung und
+alle geschützten Untergrenzen bestehen. Die zwischenzeitliche M1-Regression
+der 13 Länder-Sichten bleibt als fehlgeschlagener Lauf erhalten; die gezielt
+betroffenen Quellen- und Rollenbindungen sind unabhängig geprüft korrigiert.
+Der aktuelle Memory-Bericht besteht mit 48 Sichtbereichen; alle 422 erforderlichen
+Ziel-/Scope-Paare haben ihre sichtbaren und targetierten Deck-Knoten. Die betroffenen
+Backend-Prüfungen und die fünf regulären Lernzielbuchpublikationen bestehen lokal.
+CQR-303 und M7 bleiben offen.
+Neue fachliche strenge Abschlüsse 0, wiederhergestellte strenge Bindungen 0;
+gegenüber dem historischen 229/336-Stand ist die strenge Änderung −229.
+Mathematik 807/807 und Physik 478/478 bleiben auf M7. Der nächste Commit startet
+GitHub-CI; der erfolgreiche Gesamtlauf am Abschlusscommit steht noch aus.
+
+### Historischer v22-Zwischenstand, vor dem aktuellen 346-Ziele-Checkpoint
+
 Der [Wirtschaftswissenschaften-M7-Fortsetzungsstand vom 8. Oktober](wirtschaft-m7-resumed-2026-10-08.md)
 dokumentiert den aktuellen Auftrag und die Paketzuständigkeiten. Der aktuelle
-Nenner beträgt 311 curricularAtomic-Ziele; davon sind 261 mit gültigen
-D/P/A/M/V-Nachweisen streng abgeschlossen.
+Nenner beträgt am 10. Oktober 336 curricularAtomic-Ziele. Nach der qualifizierten
+Quellen-, Kontext- und Q1-Routenintegration sind aktuell **229/336 streng
+abgeschlossen (68,2 %), 107 offen; D229/P336/A336/M336/V336**.
+Der [aktuelle zentrale v22-Bericht](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final679-source-core-stable-central-root-v22/actual-final679-curriculum-quality-status.json)
+weist Wirtschaft als **M6** aus; der [tatsächliche Zentral- und Untergrenzenlauf](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final679-source-core-stable-central-root-v22/actual-final679-stable-central-and-ten-floors.exact-input.receipt.json)
+bestätigt alle zehn geschützten Untergrenzen. CQR-303 bleibt mit 5/6 Checks und
+128 aktuellen Befunden offen. Gegenüber dem vorherigen Stand 234 ist das
+strenge Netto -5 durch geänderte Bindungen; neue fachliche strenge Abschlüsse
+werden für dieses Integrationspaket noch nicht behauptet. Genau 56 aktuell
+betroffene Ziel-/Seiten-/Kontexte sind in zwei unabhängigen nativen
+Beschreibungsrunden geprüft; 280 unveränderte Inhalte bleiben außerhalb einer
+fachlichen Neurunde. 44 gemeinsame KEEP-Urteile sind nativ aufgelöst, zwölf
+Ziele bleiben offen. Die gezielte Registryprobe bleibt inaktiv: Sie verliert
+vier zuvor gültige D-Abschlüsse an noch offene historische Indexketten.
+Fünf konkrete P-Befunde werden separat unabhängig korrigiert; Kandidaten
+zählen nicht. Der aktive zentrale Stand bleibt 229/336 und M6.
+Die Quellen-, Kurs-, Projektions- und Übungsroutenprüfungen des qualifizierten
+679-Knoten-Stands bestehen. Das reguläre Wirtschafts-Buchmodell mit 336
+Zielseiten wurde tatsächlich erneuert; vollständiger Buchtest, PDF und Build
+werden am nächsten stabilen Integrationsstand gebündelt frisch geprüft.
+Der ältere vollständige M6-Buch-/Buildcheckpoint gilt nicht als Nachweis für
+die inzwischen geänderten fachlichen Eingaben. Keine neue Bildgenerierung.
+
+Die [neuesten begrenzten Folgepakete](wirtschaft-m7-resumed-2026-10-08.md) haben unabhängig geprüfte Quellenkorrekturen, ganze geänderte Arbeitszeit-/Armutsmaterialien und eine separat geschlossene NAIRU-Kartenkorrektur. Sie zählen noch nicht als strenge Abschlüsse. Tatsächliche BB-Originallektüre belegt drei bislang fehlende Pflichtfacetten und eine offene angebotene Wahlfacette; der neue Quellenkandidat bleibt ausdrücklich unvollständig. Ganze Kurs-/Übungsrollen und aktuelle A/M-/Karten-/Sichtbarkeitsfolger werden vor der nächsten stabilen M2→M6-Integration qualifiziert. Unveränderte gültige Nachweise und historische Artefakte bleiben erhalten; keine neue Bildgenerierung vor M6. **Für diese Folgepakete aktiv weiterhin229/336 M6, neue fachliche strenge Abschlüsse0, Bindungswiederherstellungen0, netto0.**
+
+Die folgenden M6-Checkpoints und früheren Zahlen bleiben als geprüfte
+historische Zwischenstände erhalten:
+Eine zwischenzeitliche v20-Voraussetzungsänderung unterbrach 38
+Motivationsrouten und ließ den tatsächlichen Bericht auf M2 fallen. Dieser
+fehlgeschlagene Stand bleibt erhalten. Der fachfreie bestehende
+Orientierungszugang ist gezielt wiederhergestellt und unabhängig sowie im
+aktuellen Zentralbericht geprüft; die Untergrenze wurde nicht gesenkt.
+Der [gesicherte lokale M6-Checkpoint vor dem Merge](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-commit-ready-machine-checkpoint-root-v1/actual-current678-M6-local-commit-ready-machine-checkpoint.receipt.json)
+enthält 15 bestandene Layer-A-Prüfungen, den normalen vollständigen
+Lernzielbuchtest und Anwendungsbuild sowie Quellen-, Zentral- und
+Untergrenzenprüfungen. Es wurde kein eigener Commit erstellt.
+Die drei folgenden Remote-Commits sind mit erhaltenen Wirtschafts-Nachweisen
+integriert; die betroffenen Inventar-, Regression-, Quellen-, Zentral- und
+Untergrenzenprüfungen bestehen erneut. Auch der [anschließende einzelne Commit](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-origin-one-chem-report-only-followup-root-v1/actual-one-chem-report-only-fast-forward-preserves-local-M6.receipt.json)
+ist integriert: `HEAD = origin/main = 0662b58b`; er änderte ausschließlich zwei
+Chemie-Bildstatusberichte. Auch der anschließende aktuelle normale vollständige
+v21-Buchtest und Anwendungsbuild bestehen. Der [maschinelle M6-Checkpoint mit 211/336](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-v21-D25-current-M6-commit-ready-checkpoint-root-v1/actual-current-v21-M6-local-commit-ready.machine-checkpoint.receipt.json)
+bestätigt alle 15 erforderlichen Layer-A-Prüfungen, die aktuellen 336
+Wirtschafts-Zielseiten und 339 tatsächlichen PDF-Seiten sowie die zehn
+geschützten Untergrenzen. Danach wurden ausschließlich vier beidseitig
+KEEP-geprüfte Beschreibungsindizes und 26 geprüfte Eigentümerfolgen
+integriert; Curriculum, P/A/M/V, Quellen, Karten, Bilder und Buch-/Buildinputs
+blieben unverändert. Der damalige Zentral- und Untergrenzenlauf bestätigt
+234/336 und weiterhin M6. Der [damalige Registry-Folgecheckpoint](https://github.com/enpasos/skillpilot/blob/main/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-v21-D48-M6-registry-only-successor-checkpoint-root-v1/actual-current234-M6-registry-only-successor.machine-checkpoint.receipt.json)
+bindet die frisch bestandene betroffene Registryprüfung und die tatsächlich
+unveränderten Buch-/Buildartefakte; er behauptet keine erneute Ausführung aller
+15 Prüfungen nach der reinen Indexänderung. Kein eigener Commit wurde erstellt.
+Inaktive Reviewkandidaten zählen nicht. P/A/M/V waren jeweils 336
+vollständig. Gegenüber dem v19-Stand
+186/336 waren am damaligen v21-Stand 48 neue fachliche strenge Abschlüsse erreicht, keine
+wiederhergestellten strengen Bindungen; Nettozuwachs +48. Weitere 43 zusätzlich
+formal geprüfte Auflösungen bleiben wegen noch offener historischer
+Indexketten außerhalb der strengen Zählung. Die Qualitätsschwellen bleiben
+unverändert; CQR-303 war dort mit 5/6 Checks und 103 offenen Befunden nicht bestanden.
 Mathematik 807/807 und Physik 478/478 bleiben geschützte M7-Untergrenzen.
 Menschliche Prüfung, Erprobung und Veröffentlichung bleiben getrennt.
 
 Der [Wirtschafts-Integrations- und Lernzielbuchcheckpoint](wirtschaft-m7-commit-checkpoint-2026-10-08.md)
-ergänzt den aktuellen Stand um die Remote-main-Integration, fünf tatsächlich
+bewahrt den historischen Stand vom 8. Oktober mit Remote-main-Integration, fünf tatsächlich
 erneuerte Seiten-/Kontextreviews und das fünfte reguläre Lernzielbuch. Der
-strenge Stand bleibt 261/311; CQR-303 und Quellen-/Kursroutenbefunde bleiben offen.
+damalige strenge Stand von 261/311 ist keine aktuelle Gesamtzahl. Aktuell bestehen
+die Quellen- und Kursroutenregeln; CQR-303 bleibt wegen der offenen
+Beschreibungsnachweise bei 5/6 erforderlichen Checks offen.
 
 ## Aktueller Chemie-/Biologie-Integrationsstand
 

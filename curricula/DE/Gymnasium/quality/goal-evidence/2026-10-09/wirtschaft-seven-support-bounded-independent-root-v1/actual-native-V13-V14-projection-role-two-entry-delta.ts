@@ -1,0 +1,34 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import { collectCompositionProjectionRoleGoalIds } from '/home/enpasos/projects/skillpilot/app/src/utils/authoring/compositionViewAuthoring.ts';
+const root='/home/enpasos/projects/skillpilot';
+const base=`${root}/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-all-open-route-extension-author-20261009-v1`;
+const v13=`${base}/four-reviewed-profile-materials-and-explicit-five-support-scope-author-v13`;
+const v14=`${base}/seven-explicit-profile-support-and-full-fixedpoint-scope-author-v14`;
+const out=`${root}/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-seven-support-bounded-independent-root-v1/actual-native-V13-V14-projection-role-two-entry-delta.receipt.json`;
+if(fs.existsSync(out))throw Error('Do not overwrite evidence');
+const canPath=`${v13}/whole-V13-CAN407-four-exact-Root-machine-released-materials.inert.candidate.json`;
+const goals=JSON.parse(fs.readFileSync(canPath,'utf8')).goals;
+const byId=new Map(goals.map((g:any)=>[g.id,g]));
+const rows=[];
+const handoff=JSON.parse(fs.readFileSync(`${v14}/actual-seven-profile-support-whole-fixedpoint-debt-and-preserved-P311.handoff.receipt.json`,'utf8'));
+const bind=(p:string)=>({path:p.slice(root.length+1),sha256:'sha256:'+crypto.createHash('sha256').update(fs.readFileSync(p)).digest('hex')});
+for(const item of handoff.onlyChangesAfterV13){
+ const afterPath=`${root}/${item.wholeCandidatePath}`;
+ const beforePath=`${handoff.physicalIsolate}/${item.liveRelativeViewPath}`;
+ const current=JSON.parse(fs.readFileSync(afterPath,'utf8'));
+ const exactAdds=item.exactAdditionalEntries;
+ let removed=0;
+ const strip=(nodes:any[]):any[]=>nodes.filter((n:any)=>{if(exactAdds.some((a:any)=>JSON.stringify(a)===JSON.stringify(n))){removed++;return false;}return true;}).map((n:any)=>n.children?{...n,children:strip(n.children)}:n);
+ const reconstructed={...current,rootNodes:strip(current.rootNodes)};
+ if(removed!==2)throw Error('Expected exact two new direct support entries');
+ const reconstructedBytes=JSON.stringify(reconstructed,null,2)+'\n';
+ const exactV13Hash=crypto.createHash('sha256').update(reconstructedBytes).digest('hex')===item.wholeBeforeV13SHA256;
+ if(!exactV13Hash)throw Error('Reconstructing V13 did not preserve all other view fields/ordered nodes');
+ const oldRoles=collectCompositionProjectionRoleGoalIds(reconstructed.rootNodes,byId as any);
+ const newRoles=collectCompositionProjectionRoleGoalIds(current.rootNodes,byId as any);
+ const sorted=(s:Set<string>)=>[...s].sort();
+ rows.push({course:item.course,currentView:bind(afterPath),removedExactlyTwoEntries:removed,reconstructedWholeV13SHA256:item.wholeBeforeV13SHA256,wholeOtherViewExact:exactV13Hash,rawRoleTargetBefore:sorted(oldRoles.targetGoalIds),rawRoleTargetAfter:sorted(newRoles.targetGoalIds),rawSupportBefore:sorted(oldRoles.prerequisiteOnlyGoalIds),rawSupportAfter:sorted(newRoles.prerequisiteOnlyGoalIds),allTwoExplicitSupports:exactAdds.every((a:any)=>newRoles.prerequisiteOnlyGoalIds.has(a.goalId))});
+}
+fs.writeFileSync(out,JSON.stringify({at:new Date().toISOString(),kind:'actual native authored-role delta only; full rendered course closure not approved',CAN:bind(canPath),nativeModel:bind(`${root}/app/src/utils/authoring/compositionViewAuthoring.ts`),results:rows,humanApproval:false,liveStrictNet:0},null,2)+'\n');
+console.log(JSON.stringify(rows.map(r=>({course:r.course,wholeOtherViewExact:r.wholeOtherViewExact,allTwoExplicitSupports:r.allTwoExplicitSupports,rawTargetsBefore:r.rawRoleTargetBefore.length,rawTargetsAfter:r.rawRoleTargetAfter.length,rawSupportsBefore:r.rawSupportBefore.length,rawSupportsAfter:r.rawSupportAfter.length}))));

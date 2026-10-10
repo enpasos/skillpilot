@@ -1,0 +1,971 @@
+{
+  "schemaVersion": 1,
+  "preparedAt": "2026-10-09T06:53:09.436697+00:00",
+  "role": "root actual targeted reviewed integration preflight, no live writes yet",
+  "current311AtomicGoals": 311,
+  "strictBefore": 281,
+  "expectedStrictAfter": 300,
+  "newSubstantiveClosuresExpected": 19,
+  "restoredPreviouslyInvalidStrictClosures": 0,
+  "unchanged281CurrentStrictGoalIds": [
+    "00a4e086-ed5b-5a3f-bcd9-a862d83c60ab",
+    "0242e34e-e2fe-5a0f-8aed-57905c6ebb26",
+    "047ce369-b605-5cc6-8363-c5d288f5e938",
+    "04809186-3f65-579d-b300-af9ed3e100c1",
+    "04c17efe-4451-52bd-8116-1042d1501c41",
+    "04cccbe4-2759-5cf9-8bcc-70edfe244703",
+    "0509ae79-abb4-5e6b-8db2-521c1bccacf4",
+    "053f1522-31a7-583f-85f5-366ed724d3c5",
+    "099086bb-5100-5ce0-8334-0aab8850a48e",
+    "09e58ea8-1920-5600-bd2b-cc1f199d051f",
+    "0b6db337-3fc6-5c30-860d-c8fbd535cb5c",
+    "0d8cb18d-7fd9-56f5-8009-8045d44f4127",
+    "0e397f08-e472-50f4-a05b-81d76dd6d3fa",
+    "0e5b12a1-68bd-5838-8e70-02b3e7f2518a",
+    "0eaf70cd-b7b9-582b-8e77-7002b414d494",
+    "0fda1400-25bc-518f-9dea-848c8104a8d4",
+    "1153a5a3-89b7-567b-8b8f-0128a91cde41",
+    "11c57203-1619-5bba-8905-9c10d7f77d57",
+    "120242ff-f251-54a5-ae30-fc3c22ab6f25",
+    "121fea28-9943-575d-9c96-1fb2e3356f32",
+    "13705b9f-9623-500b-80ba-4574b753a29c",
+    "13b20cee-8977-5b3f-938b-2064e96f2a5b",
+    "13b6317a-d42a-5a13-8358-c85d883cb4c7",
+    "1582ec45-1655-5f7c-a2bd-a3fc00e583fa",
+    "15d18bd1-0ae1-58c8-89fd-623bebe12041",
+    "167bfd78-9202-5599-9325-66d7a1579185",
+    "1826fe19-4d06-5183-9b41-9121ae1cc219",
+    "1bddc795-8aeb-5408-90b3-12e4be51e912",
+    "1c0d950c-c618-583f-bfa7-be1d4e3578b6",
+    "1c92b15e-88c0-5e1d-9d72-30508164f038",
+    "1d38aa8d-c667-5edf-85c1-4111999f03d4",
+    "1d989a89-4b1b-53d3-86ab-dd4986fc5839",
+    "1da809f7-ef85-5a2d-babf-b7639e605653",
+    "1f5c3e82-dc4a-54cc-838e-66e4d434a7b5",
+    "21dc877b-e281-5269-8244-05be788f7771",
+    "21dd1fce-730a-5470-bcc3-76195941ee83",
+    "25278ecf-2e77-556e-9fe6-8f0b954cc680",
+    "26ebbe6e-6512-520d-80a4-2e7e80f29f72",
+    "273809d9-bc31-5c1b-8a58-149dd61d2ba0",
+    "29076abc-83ab-5e01-af81-18b7b3f7cf5a",
+    "2a8b5b56-8c4e-5ed2-81f9-7fea08c98e60",
+    "2aee114f-d0d2-516f-8f95-1b72f707401d",
+    "2ccb9f7e-1512-5970-85a1-71ec42734eb9",
+    "2d8cc4f2-9ee2-5d9c-a019-7d3a1e9a1db2",
+    "2d933a56-3e5f-5f0c-a33d-d314d18a6d26",
+    "335dd31a-2393-5b9d-86a9-92583fd52865",
+    "36ebee6c-ec32-53e2-a5da-f50185e61a55",
+    "3897fc05-a8fc-5045-8d7f-9efeabcd098d",
+    "3a6568d2-9f94-5574-8996-9ebac0bc0b3e",
+    "3ac589b5-f8a5-5192-b81d-ed94cde4177a",
+    "3bcb976d-3e45-5c62-81ac-5ed909df202b",
+    "3bf3a322-c8f6-58ad-a1dc-774b05b15a5a",
+    "3e26fb9e-634c-5454-b11f-1d925201182c",
+    "3ed27350-0257-5690-89d9-5acefeffcf68",
+    "40676995-14fc-55a9-89ae-440b2ee3ab33",
+    "424bae9f-8f2e-5093-a17d-ee5eadb6edde",
+    "43a90b29-abf8-5430-99fa-b92f3768516b",
+    "43acb850-7685-5e53-acf6-6675120120d1",
+    "45430f89-0242-5117-8a40-59af87990d10",
+    "4552c393-5d49-53a7-ad03-fe80b8b63d2f",
+    "45bd0edd-3d4e-55f1-88bf-407c4706e860",
+    "489b6d7b-3647-5809-85b1-4a34660c4fd9",
+    "49a28d4c-6745-5c18-82c1-f836c2a7c7be",
+    "4c185dbe-5c0b-510e-ba67-58c371b6faa6",
+    "4c7c7297-b4bb-56cd-bbfe-85d4cdb784e8",
+    "4cccf0da-a0f4-593a-9bf3-4a68c790af40",
+    "4cd0c6d8-6485-51d0-883d-5d49ac46be70",
+    "4d578b42-8dac-5381-9836-9d7199451c74",
+    "4d64efdb-d8d1-5765-877d-0072d7d5249a",
+    "4fef149e-84c0-59af-b056-0a0bf97dbecd",
+    "50e07b86-428c-5f9c-8c7e-0d0669343af5",
+    "51bcbc9e-7a1c-5caa-9766-9ab97fa72f04",
+    "5262a0ba-0ede-5f47-a6a2-4778d24fc95a",
+    "52e6731e-71e9-53b1-8bb9-b03da445decf",
+    "537a6f0d-0cf9-5a80-82d6-618ec790e7a6",
+    "53829f76-2d9c-5cdd-8521-c249f57f738d",
+    "5394d443-e484-5ddd-bded-03d60ab5b71f",
+    "54049ed4-9364-5564-a55a-3959193d9018",
+    "543bf91f-f6c6-5b1b-ba9e-43de321d8c7f",
+    "550a050a-36bb-5b9e-ae0a-1afc7f9a0df0",
+    "577f0e2d-643a-5a0c-833b-301622a6cb00",
+    "596c02e3-6263-5084-8593-c5f51808326b",
+    "59c95c87-bef0-57e1-8d9a-ad1d5a851fc4",
+    "5ae551bf-942c-5896-b8e0-93aad36fe9b0",
+    "5b5d1d53-71c3-5fbf-b1cf-977c868b60e3",
+    "5b5ed3cb-7c2c-5b0f-a515-c967d8d23644",
+    "5ccb466f-25c7-5802-bb0a-763ca51cdf62",
+    "5e5ed258-dfe5-5ea6-9a40-859e79ef0ce5",
+    "604cde3e-4095-50c3-b712-e6bd7cea4717",
+    "606c4050-d196-509e-9a95-53733d6b06bb",
+    "60ec0ead-a218-563b-8627-58f5cf661fcc",
+    "61da4203-44c1-5e60-8880-5e8a64943675",
+    "625b61ec-8561-5179-b59e-d3742b19c0e2",
+    "641dee8e-9658-5db1-89eb-2353f8322a8a",
+    "643cb9b3-5b7c-59f6-8383-1af413426c88",
+    "645e6ff8-4ddf-5858-bbae-ce20fdc966ac",
+    "648224f4-cc8f-5f41-9cae-6d783cd1ae77",
+    "65d9f38e-d35d-5d84-8b66-3c05e388734f",
+    "6600f5f0-0b30-5458-b144-b2468d897087",
+    "667b75ad-2d20-5f22-ad57-46be5b7c53c7",
+    "66a0d96f-a231-5b36-894e-2ffb16adf7db",
+    "66ca6838-c9b3-5ab3-b47a-6a669bc4c21c",
+    "676684da-5ba2-5c2a-ba7e-a8413915c29c",
+    "682facbf-3c9d-5485-88a3-20f2394ed77f",
+    "685624a0-6839-521c-8228-c5914342bc6e",
+    "6d4a38df-527c-534b-8c0a-c6b546dae5b1",
+    "6de44afa-7f91-5fa4-9292-ec06e86e97a4",
+    "6f1f4654-35ab-5ba6-a329-b19b994e84cc",
+    "6f75cdff-7d32-533b-8fe9-3d003b7af241",
+    "6f96056d-10b0-55a2-89be-659d79f61eb5",
+    "7159ae22-e6ac-54e6-8b62-9b697310cc5f",
+    "7179f558-b05f-5ebd-8799-28ffaaf2da05",
+    "72484041-560f-5ff2-a565-f2edf7464fec",
+    "72bde56f-a752-5bc7-8472-24272c6075a0",
+    "73943ad7-567c-5fd9-97e6-49723fa2f8ca",
+    "73ffee8c-8ad4-595d-8d55-d7da5b44d8bf",
+    "753e5ac0-0375-56b9-a733-75701097b151",
+    "75cdc9a3-4cce-57a1-85e2-87c9994244da",
+    "764e9eca-3392-5eb1-8df6-603356a47fd9",
+    "76a33679-ec6e-5f0e-b3e3-fdbfa4674a3b",
+    "7727b988-e62c-5ebf-8e2f-0c719b13881c",
+    "776457c2-8bb3-53b9-838b-a028319175fb",
+    "77edbcf9-d14d-547e-8a5f-43863a3e300b",
+    "78eeb8fe-fd5c-5d21-81be-75c3990fc4b5",
+    "79d244e0-049e-59e9-a2fb-b8f8670b315a",
+    "79edbe3a-7557-5b3b-a0f2-c31f45b6dad7",
+    "7a3f0ae8-370e-5fc3-afce-09e1f7f35508",
+    "7a55332e-7c1d-531a-8679-e18592e74ea2",
+    "7aef0e2f-ca08-5276-a432-906cdb3313b4",
+    "7c72848d-8bc9-58e2-a690-fd17ac650a88",
+    "7c9efc27-e74f-5a82-bf56-95a9aa21cb94",
+    "7cbcca15-e93b-57ce-8f14-ffd1a557e288",
+    "7d0c69c6-0c67-5221-9ccc-d55e3eb2c303",
+    "7d399b4d-d057-5284-8e2c-6778e023307d",
+    "7d4d7a90-a1d0-5818-8d55-a0c3e995957b",
+    "7d632b0b-60b8-5c33-8094-ef1569b313dc",
+    "7f1d5e9f-65ef-5d1d-83e5-5e2534772720",
+    "7f8f6648-6faa-52c5-9793-3654ef9dc36d",
+    "80c92945-155b-56ea-8aa2-46ee72852303",
+    "8328f308-ce55-54b4-8472-0340cb10ba5c",
+    "83779981-2279-5f96-8ea3-2293e801973f",
+    "84955a75-16b7-50c1-9257-7054d813cd2f",
+    "84f7321d-7fb7-5e3a-ab8f-8690b26929f3",
+    "85cb48e1-2e4c-5367-8437-7b8becace601",
+    "85f0b64f-c385-5a4a-82d2-fcfdf61f48a0",
+    "860ead33-2b4c-5513-8a38-b291dc387f3a",
+    "8768186a-a52c-50b3-a1d7-a56084aa31e0",
+    "87e1971d-d153-59eb-81d9-e361caf83a26",
+    "87ee2b5a-8d10-51e4-a288-539e5ac251ea",
+    "8a382f37-59d9-5e46-906d-1ceb2458c886",
+    "8ad94aeb-81ad-58ce-8792-c691f97efd53",
+    "8adaa076-10ad-5fbf-8a22-247b52046da4",
+    "8b28e36b-79ec-5869-9359-45ff68e28f64",
+    "8c3ebc36-22e6-5c9d-a921-e8b3e679261c",
+    "8c4d53d1-2617-5e5d-9234-f12d19e38322",
+    "8c9f8fb2-18be-5e9c-86bf-3aea14a10b78",
+    "8d44b7e8-4ddc-53b9-88e8-1ab5e48f665d",
+    "8dee6c0a-0f76-5717-87b6-04ec89229371",
+    "8e8a672e-67c6-52dd-8f87-3c1f2e874a3d",
+    "8ebbbe19-43dd-53ff-a6d0-9d94a5973616",
+    "8f0fde77-85c4-5ad5-ba8b-da2efe297854",
+    "8fbd0f7b-839b-5fe5-a257-8e0f6d24751b",
+    "9219c58c-d178-5612-8231-feac373c87df",
+    "9267ad99-f474-5fd7-8b6a-bd03fbc70394",
+    "94264f00-d0b2-564c-8338-747228390c20",
+    "9483b637-9f10-5a0f-bcf9-175ed814ce87",
+    "950caf4f-1082-56bb-84db-b7174ce6c63f",
+    "95f2b860-d21d-5627-8dcd-cd53efd94b7b",
+    "96ab60e8-7645-5c34-84be-62e1c2a3cb16",
+    "96c2c114-8474-5e4c-bfcf-c9e526c8c9ad",
+    "980a3f45-b0ad-500d-8d5b-975948362b68",
+    "98136a27-120d-5278-b9b9-d833c0ea5fc0",
+    "9832485e-8431-58cb-b251-9473da415a5e",
+    "99541aa7-c590-5f5d-8e89-fe2e39da7a9c",
+    "9a1a3f9b-909d-53d3-8851-759c416bd763",
+    "9b6ef4f1-229b-5560-b692-0a6b6de79de7",
+    "9ca0e3c9-005e-5c8d-8157-3642e11f245e",
+    "9cb6bd3b-1ecf-57af-8127-853fc969d7f5",
+    "9df66a0b-eb44-5668-b661-4f09e1d2399f",
+    "9ea7d847-7425-5157-a827-ee5f8c2e8c0a",
+    "9ebddb42-c799-5cf3-bfbc-f611ac66207b",
+    "a0b7eb01-1755-54ae-947d-c6ba21209d3a",
+    "a17899b9-f872-5236-a329-ec1a33d427a3",
+    "a1e0e2fc-e255-5c52-aaa7-eed508228a0b",
+    "a2eda0df-6c5e-5fb5-bc64-8f6127eae50b",
+    "a307a7f1-9f14-50e5-b7ba-1e70c8465ee7",
+    "a5009946-62bb-5e6a-8c92-732d02e8fd70",
+    "a56d5e8d-fd09-5961-ad88-34cfdef00baa",
+    "a60e0541-80e1-5f94-86fd-073f5a00bee8",
+    "a72ddc94-6b38-5c14-8d8b-661472e4dfba",
+    "a773d8a6-3b0d-5ab5-a914-ca234e7fb813",
+    "aa9db8f6-c81e-5247-8f84-5f2b968ab2c4",
+    "ab556d14-b0c0-5630-8ee3-f07877fa28bd",
+    "abb13ea9-615f-5d71-92f9-140ff8b4cbfa",
+    "ac76810e-3f06-570a-b770-8b57acb55d1c",
+    "ae7b3074-2d62-5156-8862-4584c73ff75f",
+    "ae7b709c-6139-5b05-8615-197bff511d9f",
+    "ae91ad7d-82cb-58e2-bf01-5ef6d9fe445b",
+    "af709beb-2a7e-5df0-bc91-f8f0e0cb99f8",
+    "af772e72-57c9-5aab-a500-7fe3ec692abc",
+    "b08b7a2e-e281-5dc8-b79d-5d44032fb6cc",
+    "b0bdd6e9-3b74-51dc-b85e-d35346a5e04c",
+    "b215bd82-2b6b-5b00-8a0b-85c7ff249bc2",
+    "b2419b68-8e21-5cee-8afc-34e3b07d2a87",
+    "b44892ea-32dc-5a91-8bba-2f422af7c6e7",
+    "b456e539-24bb-5ec5-a996-14c9c77b64d0",
+    "b4a82d8d-6311-5575-b222-cbaf6ea90d32",
+    "b727bdda-ea96-5acd-b23f-ed94777ba7a0",
+    "b7633a54-6980-566b-bf8b-262e1841bd7d",
+    "b84f3f68-4d35-5277-9c9d-a6506d147414",
+    "b8c7458a-7642-53bf-b20e-d2a715ff6ed7",
+    "bad728f2-e375-5f98-8f65-511a9e2e6751",
+    "bb7f2a2a-95c3-5375-8323-51a808e945e6",
+    "bc1ebc6a-3c15-547f-92a0-02ddeeafb5e4",
+    "bc3f895f-38d7-534b-998d-8d60fcbbb900",
+    "bd413a7c-775a-5318-813c-0b75578f9a11",
+    "bd9ec397-86ee-58ec-8327-7e1f28550026",
+    "becf0989-ee9f-5c8e-8173-5b8246e7944a",
+    "bf851227-f345-5a6e-9c6a-392d2edd1e91",
+    "c014b11e-66ba-58a6-93f8-b4526d20e3ab",
+    "c3512617-8522-5751-8660-5241a6379790",
+    "c386592a-b259-538c-9929-25775af99b83",
+    "c3cb822e-f219-5a66-9714-db73b50d0487",
+    "c4c5bae8-575a-5a70-ba30-bada55f93abb",
+    "c4f27b51-958c-5416-a2de-d96a6e59e8b5",
+    "c4faf50c-8778-5540-8276-87840cc81e05",
+    "c5272ab8-baa0-570b-9f31-426d1f4460f2",
+    "c7341b02-3da3-50f8-a750-5d10ed7c9958",
+    "c73bc13e-6871-50c3-82d3-90283f1f54ce",
+    "c7b03538-25a2-510b-8fd4-a81bcc3de406",
+    "c7bd5875-b547-5ba6-8b41-122420cf0bf1",
+    "c9847c36-7a66-5cbd-9aee-60f71a8440de",
+    "caf3ceaa-b376-519e-bc36-c3f819082402",
+    "cb21bcbe-755d-5b0d-b02a-be22c9d26e43",
+    "cc57df5b-69fd-5774-90d7-aa5ebd3d1632",
+    "d17ff931-085d-56be-932d-3839b5b88ba8",
+    "d22433a8-fa0a-5db5-b65f-9d47b801f2d9",
+    "d36664f5-1dc2-5e4b-bda0-0a288407d2af",
+    "d3c11bfa-103c-5b58-8183-561e0b076251",
+    "d6c7d2ad-492a-5027-9d72-44117f621b92",
+    "d7332142-0deb-518c-ab51-0e16cb6f0d1f",
+    "d9a3db94-2629-53d0-80c6-801adc0f6641",
+    "da43dd2a-693b-5327-811f-c4c19ee064cd",
+    "da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0",
+    "dae93971-726c-56e5-8044-19dbd40febf7",
+    "dc55f829-9c65-5bde-952c-47f5eacdeb5f",
+    "dd38e0c5-d77b-5893-815c-548ea2a84429",
+    "e20f9304-5048-5e52-89ce-b80e978d1097",
+    "e21158e7-3bc3-51f2-887f-9eb5a8dd6243",
+    "e2ac2cc2-894a-5e61-8acb-f5d88811739d",
+    "e3cd6940-26f0-55a9-a348-4a90c245266c",
+    "e4ae5afd-02dc-538b-9ccb-1b15ca794667",
+    "e5560c43-c25a-5356-a282-c602945219ae",
+    "e5b070d2-daa5-5b8e-8782-32bb8a6865d2",
+    "e7542590-40e7-5d06-99f3-f295be1f9e12",
+    "e7fbbb64-9f10-5d5d-8946-710aedc6794a",
+    "e90586d8-8e0a-5355-87d0-4ecd90dbe021",
+    "e9c42eab-23af-5093-89f6-136f6e01db56",
+    "e9c4ec6b-9a54-579d-818f-87a7d39d4e3c",
+    "ebbce1c2-51b3-5215-8bcb-fbb74affdd62",
+    "ee36cbaf-6a9d-5263-946f-7bb376aa0dfc",
+    "eee7217a-c2fb-58b6-ba84-2a8d5235edb5",
+    "eef95305-c811-50a4-9157-bfd4e5780c24",
+    "f0b0a96f-65ed-5647-a6f8-bfe7aa4a5d91",
+    "f1f73ebe-286a-52e8-a2e1-4383ece6e9ec",
+    "f43676a2-2680-5490-8054-c9798888ad41",
+    "f440efea-9d86-589f-8ff9-18e8d3b2efd3",
+    "f5d76508-c5bb-5782-8b39-2ba21d7fe539",
+    "f6a445cb-50d9-5d22-80af-e669509758b0",
+    "f7034be8-64e9-5f63-9556-d7b8dc59eda7",
+    "f70be9a9-3ec5-52e8-84b0-213f2061856c",
+    "f79decb1-4d32-5d99-b998-e87e34d16527",
+    "f9132615-8166-5e42-ad04-d8b2b75d719d",
+    "fb249488-944c-5123-a21e-5cb9a0431e8b",
+    "fc1d5252-3b01-555e-bcc5-c8ee3d6b48bd",
+    "fcf756f1-7252-54cb-9257-de8259090021",
+    "fd913fec-e64a-5a1a-88f6-724d788ed951",
+    "fed15db6-e700-514d-a65e-6c2a34f1c81a",
+    "ff58f126-4b2c-5928-82ef-575b249b8efe",
+    "ffcc9dc8-6bf0-5ea8-8f4a-95cd8fddd48d",
+    "ffe6ed04-c671-58c6-866c-f9eeba4210e2"
+  ],
+  "onlyAffectedGoalIds": [
+    "1e3af127-4465-504a-8276-b5bf13bf9066",
+    "410e7ab4-a4ef-5090-8d4c-11a28372082d",
+    "44080e8d-f414-54e6-8c63-cd2042fbb40e",
+    "5d8c708f-699b-535d-84c7-a92e67f7bac6",
+    "6e138ab0-4f2b-52f9-8cd6-660051d60fba",
+    "71a3e027-805e-51e6-8ed2-d8bdbc0fdf98",
+    "78e87088-f467-5541-8239-99d24b3958b3",
+    "7a926b77-2fbe-52de-810f-954c054b35c2",
+    "8a453b6b-4f28-54bc-8614-4ec8d5384a85",
+    "941ea650-6f11-55c0-84f3-120246b9d124",
+    "94fe52f5-c5f6-592b-87eb-9a983dc2d78f",
+    "9a5b2913-75d4-59d5-8a10-d255a8af80f4",
+    "9ea1219f-e903-59ac-8475-d0f203b35f9c",
+    "a6a609cb-e8bf-5136-805b-67bddab6b28e",
+    "b5762a90-f132-535b-88ee-29dc7586ee59",
+    "be602e0c-2082-5c1a-808b-ca492ba40f2d",
+    "c87e528a-cca8-5060-87cd-60adb4e54bd6",
+    "d2467bbb-eea0-58a2-8f8b-fbaea060d566",
+    "f0fc29e3-3521-553a-8f6b-33e53a2e6a85"
+  ],
+  "wholeObjectComparisons": {
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json": {
+      "changedGoalIds": [
+        "1e3af127-4465-504a-8276-b5bf13bf9066",
+        "410e7ab4-a4ef-5090-8d4c-11a28372082d",
+        "44080e8d-f414-54e6-8c63-cd2042fbb40e",
+        "5d8c708f-699b-535d-84c7-a92e67f7bac6",
+        "6e138ab0-4f2b-52f9-8cd6-660051d60fba",
+        "71a3e027-805e-51e6-8ed2-d8bdbc0fdf98",
+        "78e87088-f467-5541-8239-99d24b3958b3",
+        "7a926b77-2fbe-52de-810f-954c054b35c2",
+        "8a453b6b-4f28-54bc-8614-4ec8d5384a85",
+        "941ea650-6f11-55c0-84f3-120246b9d124",
+        "94fe52f5-c5f6-592b-87eb-9a983dc2d78f",
+        "9a5b2913-75d4-59d5-8a10-d255a8af80f4",
+        "9ea1219f-e903-59ac-8475-d0f203b35f9c",
+        "a6a609cb-e8bf-5136-805b-67bddab6b28e",
+        "b5762a90-f132-535b-88ee-29dc7586ee59",
+        "be602e0c-2082-5c1a-808b-ca492ba40f2d",
+        "c87e528a-cca8-5060-87cd-60adb4e54bd6",
+        "d2467bbb-eea0-58a2-8f8b-fbaea060d566",
+        "f0fc29e3-3521-553a-8f6b-33e53a2e6a85"
+      ],
+      "otherWholeObjectsUnchanged": 370,
+      "topLevelMetadataUnchanged": true
+    },
+    "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-m7-current-baseline-20261008-v1/wirtschaftswissenschaften.semantic-kinds.json": {
+      "changedGoalIds": [
+        "1e3af127-4465-504a-8276-b5bf13bf9066",
+        "410e7ab4-a4ef-5090-8d4c-11a28372082d",
+        "44080e8d-f414-54e6-8c63-cd2042fbb40e",
+        "5d8c708f-699b-535d-84c7-a92e67f7bac6",
+        "6e138ab0-4f2b-52f9-8cd6-660051d60fba",
+        "71a3e027-805e-51e6-8ed2-d8bdbc0fdf98",
+        "78e87088-f467-5541-8239-99d24b3958b3",
+        "7a926b77-2fbe-52de-810f-954c054b35c2",
+        "8a453b6b-4f28-54bc-8614-4ec8d5384a85",
+        "941ea650-6f11-55c0-84f3-120246b9d124",
+        "94fe52f5-c5f6-592b-87eb-9a983dc2d78f",
+        "9a5b2913-75d4-59d5-8a10-d255a8af80f4",
+        "9ea1219f-e903-59ac-8475-d0f203b35f9c",
+        "a6a609cb-e8bf-5136-805b-67bddab6b28e",
+        "b5762a90-f132-535b-88ee-29dc7586ee59",
+        "be602e0c-2082-5c1a-808b-ca492ba40f2d",
+        "c87e528a-cca8-5060-87cd-60adb4e54bd6",
+        "d2467bbb-eea0-58a2-8f8b-fbaea060d566",
+        "f0fc29e3-3521-553a-8f6b-33e53a2e6a85"
+      ],
+      "otherWholeObjectsUnchanged": 370,
+      "topLevelMetadataUnchanged": true
+    },
+    "curricula/DE/Gymnasium/quality/goal-visualization-qa/wirtschaftswissenschaften.qa.json": {
+      "changedGoalIds": [
+        "1e3af127-4465-504a-8276-b5bf13bf9066",
+        "410e7ab4-a4ef-5090-8d4c-11a28372082d",
+        "44080e8d-f414-54e6-8c63-cd2042fbb40e",
+        "5d8c708f-699b-535d-84c7-a92e67f7bac6",
+        "6e138ab0-4f2b-52f9-8cd6-660051d60fba",
+        "71a3e027-805e-51e6-8ed2-d8bdbc0fdf98",
+        "78e87088-f467-5541-8239-99d24b3958b3",
+        "7a926b77-2fbe-52de-810f-954c054b35c2",
+        "8a453b6b-4f28-54bc-8614-4ec8d5384a85",
+        "941ea650-6f11-55c0-84f3-120246b9d124",
+        "94fe52f5-c5f6-592b-87eb-9a983dc2d78f",
+        "9a5b2913-75d4-59d5-8a10-d255a8af80f4",
+        "9ea1219f-e903-59ac-8475-d0f203b35f9c",
+        "a6a609cb-e8bf-5136-805b-67bddab6b28e",
+        "b5762a90-f132-535b-88ee-29dc7586ee59",
+        "be602e0c-2082-5c1a-808b-ca492ba40f2d",
+        "c87e528a-cca8-5060-87cd-60adb4e54bd6",
+        "d2467bbb-eea0-58a2-8f8b-fbaea060d566",
+        "f0fc29e3-3521-553a-8f6b-33e53a2e6a85"
+      ],
+      "otherWholeObjectsUnchanged": 292,
+      "topLevelMetadataUnchanged": true
+    },
+    "atomicity": {
+      "independentlyReviewedCurrentGoalRows": 19,
+      "other292WholeRowsExact": true
+    },
+    "memory": {
+      "independentlyReviewedCurrentGoalRows": 19,
+      "other292WholeRowsExact": true
+    }
+  },
+  "currentIndependentRecordsRead": 38,
+  "individualBilingualRootSynthesis": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/native-d-final19-ordered-final-v2/synthesis-authoring.json",
+  "nativeSevenCommandsAllActuallyPassed": true,
+  "immutableOriginalInputBindings": 56,
+  "guardedBeforeInputs": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "0de09ec57ccc03c9ffd108d70c34dc299282208cbd2ac72091ae1e3c798cb020"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-m7-current-baseline-20261008-v1/wirtschaftswissenschaften.semantic-kinds.json",
+      "sha256": "af18b2c88f6844ec37e1035feb4158cf26a2971d2fcda839e837ac98a4d64890"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/wirtschaftswissenschaften.qa.json",
+      "sha256": "29d752ff8b5b9a79ea96cac9c3bce8fe1e83cc988738a68b20ea829ccb5879f0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_wirtschaft_und_recht_source_extraction_to_canonical_wirtschaft.review.json",
+      "sha256": "2fc953519865b0cfc1ef934b6964b70a678dd982ae473cff8dbb8f9a53c79211"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_wirtschaft_upper_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+      "sha256": "d2dc08524e33d419d0c5c38c2cc43432c880062680acf70c1a8f3c05bb0149eb"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "0070b2960b06631546b6efc48d97b0e27c23a69c6e006d99cb571a7d05ddfe33"
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-economics-current-canonical.json",
+      "sha256": "3a34a4fff3401ca4fa5bd1465753b96d29bb8db6c6a22f58784e3b4624d4d4d4"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/in-flight-work-ledger.json",
+      "sha256": "2c99a3dc1fac00964e6ce5c52a566f3af1cc68a1d43e522ade0fc49c81e6a40e"
+    }
+  ],
+  "stagedWholeFiles": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "stagedPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/root-final19-individual-synthesis-and-native-closure-20261009-v1/staged/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "ced16a782bd880239011f33731c57cf59d54d02b923c55c31c918492610ebfaa"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-m7-current-baseline-20261008-v1/wirtschaftswissenschaften.semantic-kinds.json",
+      "stagedPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/root-final19-individual-synthesis-and-native-closure-20261009-v1/staged/curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-m7-current-baseline-20261008-v1/wirtschaftswissenschaften.semantic-kinds.json",
+      "sha256": "c25fa794c4d0ef5462f1e418ad1fad1162e6198df1254cc91328c193d93fe425"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/wirtschaftswissenschaften.qa.json",
+      "stagedPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/root-final19-individual-synthesis-and-native-closure-20261009-v1/staged/curricula/DE/Gymnasium/quality/goal-visualization-qa/wirtschaftswissenschaften.qa.json",
+      "sha256": "a19bc181c547713db50ec935f7e91d319a8987feac84273b8e14950795c6def8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_wirtschaft_und_recht_source_extraction_to_canonical_wirtschaft.review.json",
+      "stagedPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/root-final19-individual-synthesis-and-native-closure-20261009-v1/staged/curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_wirtschaft_und_recht_source_extraction_to_canonical_wirtschaft.review.json",
+      "sha256": "fd3d696c369d91da82c0839226307ed6097702256226a264f984ffa04e22e92e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_wirtschaft_upper_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+      "stagedPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/root-final19-individual-synthesis-and-native-closure-20261009-v1/staged/curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_wirtschaft_upper_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+      "sha256": "e826d9de4a233c64d1d5b3a8f950e393b2cb2347ddb5045be44f0b0bd8b62967"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "stagedPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/root-final19-individual-synthesis-and-native-closure-20261009-v1/staged/curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "cea505c53bbe843de103b49f6db0494b352c1eba2ce95af9b9d77f8078cb457e"
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-economics-current-canonical.json",
+      "stagedPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/root-final19-individual-synthesis-and-native-closure-20261009-v1/staged/app/scripts/config/goal-books/de-gym-economics-current-canonical.json",
+      "sha256": "9610c7958ba22fa5ac75131039bff0b179cfef9c7d0d691d30dd9048c1056302"
+    }
+  ],
+  "assetsToCopy": [
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/1e3af127-4465-504a-8276-b5bf13bf9066/1e3af127-4465-504a-8276-b5bf13bf9066.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/1e3af127-4465-504a-8276-b5bf13bf9066/1e3af127-4465-504a-8276-b5bf13bf9066.png",
+      "sha256": "bff5e29e02ad427d2040bbc47055d3c4dbc3b43574e0af7c56bb7d33d2616d1d",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/1e3af127-4465-504a-8276-b5bf13bf9066/1e3af127-4465-504a-8276-b5bf13bf9066.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/app/public/assets/goal-visualizations/wirtschaftswissenschaften/1e3af127-4465-504a-8276-b5bf13bf9066/1e3af127-4465-504a-8276-b5bf13bf9066.png",
+      "sha256": "bff5e29e02ad427d2040bbc47055d3c4dbc3b43574e0af7c56bb7d33d2616d1d",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/1e3af127-4465-504a-8276-b5bf13bf9066/1e3af127-4465-504a-8276-b5bf13bf9066.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/1e3af127-4465-504a-8276-b5bf13bf9066/1e3af127-4465-504a-8276-b5bf13bf9066.png",
+      "sha256": "bff5e29e02ad427d2040bbc47055d3c4dbc3b43574e0af7c56bb7d33d2616d1d",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/1e3af127-4465-504a-8276-b5bf13bf9066/prompt.de.md",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/1e3af127-4465-504a-8276-b5bf13bf9066/prompt.de.md",
+      "sha256": "098ec1acbb8699e7e3d858ea411966e74e54aa3a7957d7cb32d6cdb42424de0c",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/410e7ab4-a4ef-5090-8d4c-11a28372082d/410e7ab4-a4ef-5090-8d4c-11a28372082d.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/410e7ab4-a4ef-5090-8d4c-11a28372082d/410e7ab4-a4ef-5090-8d4c-11a28372082d.png",
+      "sha256": "23f9fc52e4875e1485731f368d039c3db424ef076dee878c2b68bc5667da377b",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/410e7ab4-a4ef-5090-8d4c-11a28372082d/410e7ab4-a4ef-5090-8d4c-11a28372082d.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/app/public/assets/goal-visualizations/wirtschaftswissenschaften/410e7ab4-a4ef-5090-8d4c-11a28372082d/410e7ab4-a4ef-5090-8d4c-11a28372082d.png",
+      "sha256": "23f9fc52e4875e1485731f368d039c3db424ef076dee878c2b68bc5667da377b",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/410e7ab4-a4ef-5090-8d4c-11a28372082d/410e7ab4-a4ef-5090-8d4c-11a28372082d.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/410e7ab4-a4ef-5090-8d4c-11a28372082d/410e7ab4-a4ef-5090-8d4c-11a28372082d.png",
+      "sha256": "23f9fc52e4875e1485731f368d039c3db424ef076dee878c2b68bc5667da377b",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/410e7ab4-a4ef-5090-8d4c-11a28372082d/prompt.de.md",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/410e7ab4-a4ef-5090-8d4c-11a28372082d/prompt.de.md",
+      "sha256": "d377043d82e7fe6f1b88b73b6e32490bf17519fa0fcdcfc65e504d38ae6c344d",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/44080e8d-f414-54e6-8c63-cd2042fbb40e/44080e8d-f414-54e6-8c63-cd2042fbb40e.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/44080e8d-f414-54e6-8c63-cd2042fbb40e/44080e8d-f414-54e6-8c63-cd2042fbb40e.png",
+      "sha256": "40a67ddbb2bc135688acc8effcc80e03e11fc10a00cc9a4d33e75ac18a447909",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/44080e8d-f414-54e6-8c63-cd2042fbb40e/44080e8d-f414-54e6-8c63-cd2042fbb40e.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/app/public/assets/goal-visualizations/wirtschaftswissenschaften/44080e8d-f414-54e6-8c63-cd2042fbb40e/44080e8d-f414-54e6-8c63-cd2042fbb40e.png",
+      "sha256": "40a67ddbb2bc135688acc8effcc80e03e11fc10a00cc9a4d33e75ac18a447909",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/44080e8d-f414-54e6-8c63-cd2042fbb40e/44080e8d-f414-54e6-8c63-cd2042fbb40e.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/44080e8d-f414-54e6-8c63-cd2042fbb40e/44080e8d-f414-54e6-8c63-cd2042fbb40e.png",
+      "sha256": "40a67ddbb2bc135688acc8effcc80e03e11fc10a00cc9a4d33e75ac18a447909",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/44080e8d-f414-54e6-8c63-cd2042fbb40e/prompt.de.md",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/44080e8d-f414-54e6-8c63-cd2042fbb40e/prompt.de.md",
+      "sha256": "04df2dd7d4a550965aa0b6de79e2a44493674fe15f0f27825f9547ed240a1dae",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/5d8c708f-699b-535d-84c7-a92e67f7bac6/5d8c708f-699b-535d-84c7-a92e67f7bac6.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/5d8c708f-699b-535d-84c7-a92e67f7bac6/5d8c708f-699b-535d-84c7-a92e67f7bac6.png",
+      "sha256": "78f15c0e940b1241ce7070f9acc7e715383e5201f792f1b99ff40f5147e8af23",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/5d8c708f-699b-535d-84c7-a92e67f7bac6/5d8c708f-699b-535d-84c7-a92e67f7bac6.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/app/public/assets/goal-visualizations/wirtschaftswissenschaften/5d8c708f-699b-535d-84c7-a92e67f7bac6/5d8c708f-699b-535d-84c7-a92e67f7bac6.png",
+      "sha256": "78f15c0e940b1241ce7070f9acc7e715383e5201f792f1b99ff40f5147e8af23",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/5d8c708f-699b-535d-84c7-a92e67f7bac6/5d8c708f-699b-535d-84c7-a92e67f7bac6.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/5d8c708f-699b-535d-84c7-a92e67f7bac6/5d8c708f-699b-535d-84c7-a92e67f7bac6.png",
+      "sha256": "78f15c0e940b1241ce7070f9acc7e715383e5201f792f1b99ff40f5147e8af23",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/5d8c708f-699b-535d-84c7-a92e67f7bac6/prompt.de.md",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/5d8c708f-699b-535d-84c7-a92e67f7bac6/prompt.de.md",
+      "sha256": "98d4d866f4953cb834bcea921126ed7d4722ad7523a6eca11bbf56841f0c742d",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/6e138ab0-4f2b-52f9-8cd6-660051d60fba/6e138ab0-4f2b-52f9-8cd6-660051d60fba.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/6e138ab0-4f2b-52f9-8cd6-660051d60fba/6e138ab0-4f2b-52f9-8cd6-660051d60fba.png",
+      "sha256": "27448a5b4ae189f2a1b4a47a201879c4cbb68e8a70eb768f43acf41dfb47df21",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/6e138ab0-4f2b-52f9-8cd6-660051d60fba/6e138ab0-4f2b-52f9-8cd6-660051d60fba.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/app/public/assets/goal-visualizations/wirtschaftswissenschaften/6e138ab0-4f2b-52f9-8cd6-660051d60fba/6e138ab0-4f2b-52f9-8cd6-660051d60fba.png",
+      "sha256": "27448a5b4ae189f2a1b4a47a201879c4cbb68e8a70eb768f43acf41dfb47df21",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/6e138ab0-4f2b-52f9-8cd6-660051d60fba/6e138ab0-4f2b-52f9-8cd6-660051d60fba.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/6e138ab0-4f2b-52f9-8cd6-660051d60fba/6e138ab0-4f2b-52f9-8cd6-660051d60fba.png",
+      "sha256": "27448a5b4ae189f2a1b4a47a201879c4cbb68e8a70eb768f43acf41dfb47df21",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/6e138ab0-4f2b-52f9-8cd6-660051d60fba/prompt.de.md",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/6e138ab0-4f2b-52f9-8cd6-660051d60fba/prompt.de.md",
+      "sha256": "59f05f446e50ad86e530a7c62aa409324c0a433197f60592090e0783bc071096",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/71a3e027-805e-51e6-8ed2-d8bdbc0fdf98/71a3e027-805e-51e6-8ed2-d8bdbc0fdf98.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/71a3e027-805e-51e6-8ed2-d8bdbc0fdf98/71a3e027-805e-51e6-8ed2-d8bdbc0fdf98.png",
+      "sha256": "aca322c9e303cac1e08db03315c39651bd69b9ee870d5ee28fa9bcdf567fa1b1",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/71a3e027-805e-51e6-8ed2-d8bdbc0fdf98/71a3e027-805e-51e6-8ed2-d8bdbc0fdf98.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/app/public/assets/goal-visualizations/wirtschaftswissenschaften/71a3e027-805e-51e6-8ed2-d8bdbc0fdf98/71a3e027-805e-51e6-8ed2-d8bdbc0fdf98.png",
+      "sha256": "aca322c9e303cac1e08db03315c39651bd69b9ee870d5ee28fa9bcdf567fa1b1",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/71a3e027-805e-51e6-8ed2-d8bdbc0fdf98/71a3e027-805e-51e6-8ed2-d8bdbc0fdf98.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/71a3e027-805e-51e6-8ed2-d8bdbc0fdf98/71a3e027-805e-51e6-8ed2-d8bdbc0fdf98.png",
+      "sha256": "aca322c9e303cac1e08db03315c39651bd69b9ee870d5ee28fa9bcdf567fa1b1",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/71a3e027-805e-51e6-8ed2-d8bdbc0fdf98/prompt.de.md",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/71a3e027-805e-51e6-8ed2-d8bdbc0fdf98/prompt.de.md",
+      "sha256": "dbcdf1388cfe8e3dde5947b7a20bac3886421bfeada8ae2edab623e7efe769b1",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/78e87088-f467-5541-8239-99d24b3958b3/78e87088-f467-5541-8239-99d24b3958b3.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/78e87088-f467-5541-8239-99d24b3958b3/78e87088-f467-5541-8239-99d24b3958b3.png",
+      "sha256": "9a9a3a06e0caf0c2e52762b2d520b0569027af59b6e7bbedd479a97b04b5ad6d",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/78e87088-f467-5541-8239-99d24b3958b3/78e87088-f467-5541-8239-99d24b3958b3.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/app/public/assets/goal-visualizations/wirtschaftswissenschaften/78e87088-f467-5541-8239-99d24b3958b3/78e87088-f467-5541-8239-99d24b3958b3.png",
+      "sha256": "9a9a3a06e0caf0c2e52762b2d520b0569027af59b6e7bbedd479a97b04b5ad6d",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/78e87088-f467-5541-8239-99d24b3958b3/78e87088-f467-5541-8239-99d24b3958b3.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/78e87088-f467-5541-8239-99d24b3958b3/78e87088-f467-5541-8239-99d24b3958b3.png",
+      "sha256": "9a9a3a06e0caf0c2e52762b2d520b0569027af59b6e7bbedd479a97b04b5ad6d",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/78e87088-f467-5541-8239-99d24b3958b3/prompt.de.md",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/78e87088-f467-5541-8239-99d24b3958b3/prompt.de.md",
+      "sha256": "982a64cb3a17cb1f509398437b431a67889cd2a705f9f79f9bfe50afb4dceea4",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/7a926b77-2fbe-52de-810f-954c054b35c2/7a926b77-2fbe-52de-810f-954c054b35c2.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/7a926b77-2fbe-52de-810f-954c054b35c2/7a926b77-2fbe-52de-810f-954c054b35c2.png",
+      "sha256": "0f3723c65771bd0476c9a81a8e89ebc0f26ac58a659ac2430994642c1d3559d7",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/7a926b77-2fbe-52de-810f-954c054b35c2/7a926b77-2fbe-52de-810f-954c054b35c2.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/app/public/assets/goal-visualizations/wirtschaftswissenschaften/7a926b77-2fbe-52de-810f-954c054b35c2/7a926b77-2fbe-52de-810f-954c054b35c2.png",
+      "sha256": "0f3723c65771bd0476c9a81a8e89ebc0f26ac58a659ac2430994642c1d3559d7",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/7a926b77-2fbe-52de-810f-954c054b35c2/7a926b77-2fbe-52de-810f-954c054b35c2.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/7a926b77-2fbe-52de-810f-954c054b35c2/7a926b77-2fbe-52de-810f-954c054b35c2.png",
+      "sha256": "0f3723c65771bd0476c9a81a8e89ebc0f26ac58a659ac2430994642c1d3559d7",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/7a926b77-2fbe-52de-810f-954c054b35c2/prompt.de.md",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/7a926b77-2fbe-52de-810f-954c054b35c2/prompt.de.md",
+      "sha256": "1e504f2990dedf4a9505f0e9452cea167913ebdcf5a9c1a4fbec6d7696527095",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/8a453b6b-4f28-54bc-8614-4ec8d5384a85/8a453b6b-4f28-54bc-8614-4ec8d5384a85.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/8a453b6b-4f28-54bc-8614-4ec8d5384a85/8a453b6b-4f28-54bc-8614-4ec8d5384a85.png",
+      "sha256": "23fa1e09a2be0cd6a1a9d469f5caf71bd7c79b2529513d5c93c6426556fbccb6",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/8a453b6b-4f28-54bc-8614-4ec8d5384a85/8a453b6b-4f28-54bc-8614-4ec8d5384a85.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/app/public/assets/goal-visualizations/wirtschaftswissenschaften/8a453b6b-4f28-54bc-8614-4ec8d5384a85/8a453b6b-4f28-54bc-8614-4ec8d5384a85.png",
+      "sha256": "23fa1e09a2be0cd6a1a9d469f5caf71bd7c79b2529513d5c93c6426556fbccb6",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/8a453b6b-4f28-54bc-8614-4ec8d5384a85/8a453b6b-4f28-54bc-8614-4ec8d5384a85.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/8a453b6b-4f28-54bc-8614-4ec8d5384a85/8a453b6b-4f28-54bc-8614-4ec8d5384a85.png",
+      "sha256": "23fa1e09a2be0cd6a1a9d469f5caf71bd7c79b2529513d5c93c6426556fbccb6",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/8a453b6b-4f28-54bc-8614-4ec8d5384a85/prompt.de.md",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/8a453b6b-4f28-54bc-8614-4ec8d5384a85/prompt.de.md",
+      "sha256": "032795a51e6909fcb636d081f62dea560caae294128c0603ee2c468f399028c3",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/941ea650-6f11-55c0-84f3-120246b9d124/941ea650-6f11-55c0-84f3-120246b9d124.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/941ea650-6f11-55c0-84f3-120246b9d124/941ea650-6f11-55c0-84f3-120246b9d124.png",
+      "sha256": "ac1479355b5c4afc3bad43fb150b1b224da7eefe59bd61c0f4b3411c93350722",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/941ea650-6f11-55c0-84f3-120246b9d124/941ea650-6f11-55c0-84f3-120246b9d124.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/app/public/assets/goal-visualizations/wirtschaftswissenschaften/941ea650-6f11-55c0-84f3-120246b9d124/941ea650-6f11-55c0-84f3-120246b9d124.png",
+      "sha256": "ac1479355b5c4afc3bad43fb150b1b224da7eefe59bd61c0f4b3411c93350722",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/941ea650-6f11-55c0-84f3-120246b9d124/941ea650-6f11-55c0-84f3-120246b9d124.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/941ea650-6f11-55c0-84f3-120246b9d124/941ea650-6f11-55c0-84f3-120246b9d124.png",
+      "sha256": "ac1479355b5c4afc3bad43fb150b1b224da7eefe59bd61c0f4b3411c93350722",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/941ea650-6f11-55c0-84f3-120246b9d124/prompt.de.md",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/941ea650-6f11-55c0-84f3-120246b9d124/prompt.de.md",
+      "sha256": "7d671690214009f26c2fc72aa6851425407f4a0b3bc252016fdc26fef94b88bf",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/94fe52f5-c5f6-592b-87eb-9a983dc2d78f/94fe52f5-c5f6-592b-87eb-9a983dc2d78f.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/94fe52f5-c5f6-592b-87eb-9a983dc2d78f/94fe52f5-c5f6-592b-87eb-9a983dc2d78f.png",
+      "sha256": "52f29c60d9c0679547ebf22345e6a9a40bb7469edfc62e4cf4faea1b4a675932",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/94fe52f5-c5f6-592b-87eb-9a983dc2d78f/94fe52f5-c5f6-592b-87eb-9a983dc2d78f.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/app/public/assets/goal-visualizations/wirtschaftswissenschaften/94fe52f5-c5f6-592b-87eb-9a983dc2d78f/94fe52f5-c5f6-592b-87eb-9a983dc2d78f.png",
+      "sha256": "52f29c60d9c0679547ebf22345e6a9a40bb7469edfc62e4cf4faea1b4a675932",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/94fe52f5-c5f6-592b-87eb-9a983dc2d78f/94fe52f5-c5f6-592b-87eb-9a983dc2d78f.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/94fe52f5-c5f6-592b-87eb-9a983dc2d78f/94fe52f5-c5f6-592b-87eb-9a983dc2d78f.png",
+      "sha256": "52f29c60d9c0679547ebf22345e6a9a40bb7469edfc62e4cf4faea1b4a675932",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/94fe52f5-c5f6-592b-87eb-9a983dc2d78f/prompt.de.md",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/94fe52f5-c5f6-592b-87eb-9a983dc2d78f/prompt.de.md",
+      "sha256": "7aaecbe106513d98fcdccb2fe361bcb81c309ca65da8e131347552f069332d48",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/9a5b2913-75d4-59d5-8a10-d255a8af80f4/9a5b2913-75d4-59d5-8a10-d255a8af80f4.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/9a5b2913-75d4-59d5-8a10-d255a8af80f4/9a5b2913-75d4-59d5-8a10-d255a8af80f4.png",
+      "sha256": "add59663ad9a9a1527b4c6b1ae7c98635ecbfc4e9a8b0b614b5796dabf3796f3",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/9a5b2913-75d4-59d5-8a10-d255a8af80f4/9a5b2913-75d4-59d5-8a10-d255a8af80f4.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/app/public/assets/goal-visualizations/wirtschaftswissenschaften/9a5b2913-75d4-59d5-8a10-d255a8af80f4/9a5b2913-75d4-59d5-8a10-d255a8af80f4.png",
+      "sha256": "add59663ad9a9a1527b4c6b1ae7c98635ecbfc4e9a8b0b614b5796dabf3796f3",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/9a5b2913-75d4-59d5-8a10-d255a8af80f4/9a5b2913-75d4-59d5-8a10-d255a8af80f4.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/9a5b2913-75d4-59d5-8a10-d255a8af80f4/9a5b2913-75d4-59d5-8a10-d255a8af80f4.png",
+      "sha256": "add59663ad9a9a1527b4c6b1ae7c98635ecbfc4e9a8b0b614b5796dabf3796f3",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/9a5b2913-75d4-59d5-8a10-d255a8af80f4/prompt.de.md",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/9a5b2913-75d4-59d5-8a10-d255a8af80f4/prompt.de.md",
+      "sha256": "ee7422b3009a19ca3635c01afe8e063400ab78ca874dc32097403fc6f6ef6f8f",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/9ea1219f-e903-59ac-8475-d0f203b35f9c/9ea1219f-e903-59ac-8475-d0f203b35f9c.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/9ea1219f-e903-59ac-8475-d0f203b35f9c/9ea1219f-e903-59ac-8475-d0f203b35f9c.png",
+      "sha256": "05cfc68bb2596301a265d5915ce51198fb3557c8be0eb66fded15190d060d7e3",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/9ea1219f-e903-59ac-8475-d0f203b35f9c/9ea1219f-e903-59ac-8475-d0f203b35f9c.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/app/public/assets/goal-visualizations/wirtschaftswissenschaften/9ea1219f-e903-59ac-8475-d0f203b35f9c/9ea1219f-e903-59ac-8475-d0f203b35f9c.png",
+      "sha256": "05cfc68bb2596301a265d5915ce51198fb3557c8be0eb66fded15190d060d7e3",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/9ea1219f-e903-59ac-8475-d0f203b35f9c/9ea1219f-e903-59ac-8475-d0f203b35f9c.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/9ea1219f-e903-59ac-8475-d0f203b35f9c/9ea1219f-e903-59ac-8475-d0f203b35f9c.png",
+      "sha256": "05cfc68bb2596301a265d5915ce51198fb3557c8be0eb66fded15190d060d7e3",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/9ea1219f-e903-59ac-8475-d0f203b35f9c/prompt.de.md",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/9ea1219f-e903-59ac-8475-d0f203b35f9c/prompt.de.md",
+      "sha256": "43c766c7b8298746754b9436755b8da9357ae5ca91de8064e17ba5bfd4d48ecf",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/a6a609cb-e8bf-5136-805b-67bddab6b28e/a6a609cb-e8bf-5136-805b-67bddab6b28e.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/a6a609cb-e8bf-5136-805b-67bddab6b28e/a6a609cb-e8bf-5136-805b-67bddab6b28e.png",
+      "sha256": "76b2ae1d82235b27e345cf00001d09f58250980342f613459368a3aa8b70d082",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/a6a609cb-e8bf-5136-805b-67bddab6b28e/a6a609cb-e8bf-5136-805b-67bddab6b28e.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/app/public/assets/goal-visualizations/wirtschaftswissenschaften/a6a609cb-e8bf-5136-805b-67bddab6b28e/a6a609cb-e8bf-5136-805b-67bddab6b28e.png",
+      "sha256": "76b2ae1d82235b27e345cf00001d09f58250980342f613459368a3aa8b70d082",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/a6a609cb-e8bf-5136-805b-67bddab6b28e/a6a609cb-e8bf-5136-805b-67bddab6b28e.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/a6a609cb-e8bf-5136-805b-67bddab6b28e/a6a609cb-e8bf-5136-805b-67bddab6b28e.png",
+      "sha256": "76b2ae1d82235b27e345cf00001d09f58250980342f613459368a3aa8b70d082",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/a6a609cb-e8bf-5136-805b-67bddab6b28e/prompt.de.md",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/a6a609cb-e8bf-5136-805b-67bddab6b28e/prompt.de.md",
+      "sha256": "382758cd3908a0d1c32dd9ae60042ecb129dde02b28d907749026058205e23c2",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/b5762a90-f132-535b-88ee-29dc7586ee59/b5762a90-f132-535b-88ee-29dc7586ee59.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/b5762a90-f132-535b-88ee-29dc7586ee59/b5762a90-f132-535b-88ee-29dc7586ee59.png",
+      "sha256": "da7cf436a136e22c8fac3cbe3c11b19da9d4c8dbe177401451a588e37fe3a377",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/b5762a90-f132-535b-88ee-29dc7586ee59/b5762a90-f132-535b-88ee-29dc7586ee59.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/app/public/assets/goal-visualizations/wirtschaftswissenschaften/b5762a90-f132-535b-88ee-29dc7586ee59/b5762a90-f132-535b-88ee-29dc7586ee59.png",
+      "sha256": "da7cf436a136e22c8fac3cbe3c11b19da9d4c8dbe177401451a588e37fe3a377",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/b5762a90-f132-535b-88ee-29dc7586ee59/b5762a90-f132-535b-88ee-29dc7586ee59.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/b5762a90-f132-535b-88ee-29dc7586ee59/b5762a90-f132-535b-88ee-29dc7586ee59.png",
+      "sha256": "da7cf436a136e22c8fac3cbe3c11b19da9d4c8dbe177401451a588e37fe3a377",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/b5762a90-f132-535b-88ee-29dc7586ee59/prompt.de.md",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/b5762a90-f132-535b-88ee-29dc7586ee59/prompt.de.md",
+      "sha256": "4f8c8912c7fd453a8b1c1f96b4d80bc365ef711de2f1ee70542a7ee394e767bd",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/be602e0c-2082-5c1a-808b-ca492ba40f2d/be602e0c-2082-5c1a-808b-ca492ba40f2d.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/be602e0c-2082-5c1a-808b-ca492ba40f2d/be602e0c-2082-5c1a-808b-ca492ba40f2d.png",
+      "sha256": "cab816d5730527f645a77d441dd0f09403c507c869eed8e1e842407f8cd2bc0c",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/be602e0c-2082-5c1a-808b-ca492ba40f2d/be602e0c-2082-5c1a-808b-ca492ba40f2d.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/app/public/assets/goal-visualizations/wirtschaftswissenschaften/be602e0c-2082-5c1a-808b-ca492ba40f2d/be602e0c-2082-5c1a-808b-ca492ba40f2d.png",
+      "sha256": "cab816d5730527f645a77d441dd0f09403c507c869eed8e1e842407f8cd2bc0c",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/be602e0c-2082-5c1a-808b-ca492ba40f2d/be602e0c-2082-5c1a-808b-ca492ba40f2d.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/be602e0c-2082-5c1a-808b-ca492ba40f2d/be602e0c-2082-5c1a-808b-ca492ba40f2d.png",
+      "sha256": "cab816d5730527f645a77d441dd0f09403c507c869eed8e1e842407f8cd2bc0c",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/be602e0c-2082-5c1a-808b-ca492ba40f2d/prompt.de.md",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/be602e0c-2082-5c1a-808b-ca492ba40f2d/prompt.de.md",
+      "sha256": "4870120aeaef870b511971860129389c46a75ec53400d262cca3554f3638546f",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/c87e528a-cca8-5060-87cd-60adb4e54bd6/c87e528a-cca8-5060-87cd-60adb4e54bd6.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/c87e528a-cca8-5060-87cd-60adb4e54bd6/c87e528a-cca8-5060-87cd-60adb4e54bd6.png",
+      "sha256": "833e6bf741da0fb0e5a62a2ab34af459cca8efb808b507b1c39ae036834d2c76",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/c87e528a-cca8-5060-87cd-60adb4e54bd6/c87e528a-cca8-5060-87cd-60adb4e54bd6.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/app/public/assets/goal-visualizations/wirtschaftswissenschaften/c87e528a-cca8-5060-87cd-60adb4e54bd6/c87e528a-cca8-5060-87cd-60adb4e54bd6.png",
+      "sha256": "833e6bf741da0fb0e5a62a2ab34af459cca8efb808b507b1c39ae036834d2c76",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/c87e528a-cca8-5060-87cd-60adb4e54bd6/c87e528a-cca8-5060-87cd-60adb4e54bd6.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/c87e528a-cca8-5060-87cd-60adb4e54bd6/c87e528a-cca8-5060-87cd-60adb4e54bd6.png",
+      "sha256": "833e6bf741da0fb0e5a62a2ab34af459cca8efb808b507b1c39ae036834d2c76",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/c87e528a-cca8-5060-87cd-60adb4e54bd6/prompt.de.md",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/c87e528a-cca8-5060-87cd-60adb4e54bd6/prompt.de.md",
+      "sha256": "1f186a20bc6953c038ea84cf0729ce83d7f923248b43f7d27b83782d95d642d5",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/d2467bbb-eea0-58a2-8f8b-fbaea060d566/d2467bbb-eea0-58a2-8f8b-fbaea060d566.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/d2467bbb-eea0-58a2-8f8b-fbaea060d566/d2467bbb-eea0-58a2-8f8b-fbaea060d566.png",
+      "sha256": "f82b16d8262a9cf5142c35147100b5ccf68020a2693174d1cabfc5e1aff52766",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/d2467bbb-eea0-58a2-8f8b-fbaea060d566/d2467bbb-eea0-58a2-8f8b-fbaea060d566.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/app/public/assets/goal-visualizations/wirtschaftswissenschaften/d2467bbb-eea0-58a2-8f8b-fbaea060d566/d2467bbb-eea0-58a2-8f8b-fbaea060d566.png",
+      "sha256": "f82b16d8262a9cf5142c35147100b5ccf68020a2693174d1cabfc5e1aff52766",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/d2467bbb-eea0-58a2-8f8b-fbaea060d566/d2467bbb-eea0-58a2-8f8b-fbaea060d566.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/d2467bbb-eea0-58a2-8f8b-fbaea060d566/d2467bbb-eea0-58a2-8f8b-fbaea060d566.png",
+      "sha256": "f82b16d8262a9cf5142c35147100b5ccf68020a2693174d1cabfc5e1aff52766",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/d2467bbb-eea0-58a2-8f8b-fbaea060d566/prompt.de.md",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/d2467bbb-eea0-58a2-8f8b-fbaea060d566/prompt.de.md",
+      "sha256": "50567ee1c20dcb9e26407e5dba2809a5e47ca532da04d3385b8152bc47835bd3",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/f0fc29e3-3521-553a-8f6b-33e53a2e6a85/f0fc29e3-3521-553a-8f6b-33e53a2e6a85.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/f0fc29e3-3521-553a-8f6b-33e53a2e6a85/f0fc29e3-3521-553a-8f6b-33e53a2e6a85.png",
+      "sha256": "950e7cdb0924af675543b87bbdefb40e27718fbf84e2d9cfadde287a51cd9608",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "app/public/assets/goal-visualizations/wirtschaftswissenschaften/f0fc29e3-3521-553a-8f6b-33e53a2e6a85/f0fc29e3-3521-553a-8f6b-33e53a2e6a85.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/app/public/assets/goal-visualizations/wirtschaftswissenschaften/f0fc29e3-3521-553a-8f6b-33e53a2e6a85/f0fc29e3-3521-553a-8f6b-33e53a2e6a85.png",
+      "sha256": "950e7cdb0924af675543b87bbdefb40e27718fbf84e2d9cfadde287a51cd9608",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/f0fc29e3-3521-553a-8f6b-33e53a2e6a85/f0fc29e3-3521-553a-8f6b-33e53a2e6a85.png",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/backend/src/main/resources/static/assets/goal-visualizations/wirtschaftswissenschaften/f0fc29e3-3521-553a-8f6b-33e53a2e6a85/f0fc29e3-3521-553a-8f6b-33e53a2e6a85.png",
+      "sha256": "950e7cdb0924af675543b87bbdefb40e27718fbf84e2d9cfadde287a51cd9608",
+      "existingRootSameBytes": false
+    },
+    {
+      "path": "curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/f0fc29e3-3521-553a-8f6b-33e53a2e6a85/prompt.de.md",
+      "sourcePath": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o/curricula/DE/Gymnasium/visualizations/wirtschaftswissenschaften/f0fc29e3-3521-553a-8f6b-33e53a2e6a85/prompt.de.md",
+      "sha256": "032fb87f8ca58137591dfbbb7b41123a4968c85f83ece0878d234a8ec0f0ce6c",
+      "existingRootSameBytes": false
+    }
+  ],
+  "protectedMathPhysics": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "76047cec422c555aacd1e04bff597c4f8a70d8ffed5f214ed7412c828bc34898"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/mathematik.semantic-kinds.json",
+      "sha256": "0a76bfb0b6ede403850a930c3486915bd04bc00ce2bed40d6b88eefba3c9a7b0"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json",
+      "sha256": "1c2d1b73ad268357de76e29b4da679d7a05913150cd43323279f8ed7363652c1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "ad764d083e390ab60f808ecbffb363ac914026894e82c09c977425311ec7ea44"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/release-model/physik.semantic-kinds.json",
+      "sha256": "fb766b0a433f5392ab7cbda5d110424b06c596cbae02ac82926681d614574029"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/physik.qa.json",
+      "sha256": "f4bb3494002c6987453dbe21207fff048b4e4919e5fae64d7e110ba0c78bf8cf"
+    }
+  ],
+  "activeForeignLedgerClaims": [
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-004r-d8-corrected-image-current-1-v2.config.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-reviewed-active-integration-checks-technical-20261007-v1/remaining-open/b007-two-current-open-20261007-v2.config.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-09-30/batch-008-global-inquiry-communication-current-9-v1.config.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-010-source-operator-holds-two-current-v3.config.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-011-split-open-current-1-v1.config.json",
+    "curricula/DE/Gymnasium/quality/goal-description-review/chemie/rollout-v1/2026-10-05/batch-012-11bea-structural-scope-hold-current-1-v1.config.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-reviewed-active-integration-checks-technical-20261007-v1/remaining-open/b014-three-current-open-20261007-v2.config.json"
+  ],
+  "ownClaimPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/native-d-final19.ordered.final.batch.successor-v2.config.json",
+  "humanReleaseAndTrialRemainSeparatePending": true,
+  "relevantBerlinAndRouteBlockersStillOpen": true,
+  "M7Achieved": false
+}

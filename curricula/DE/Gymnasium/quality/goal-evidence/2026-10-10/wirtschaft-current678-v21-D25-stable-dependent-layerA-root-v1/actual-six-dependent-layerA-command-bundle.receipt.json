@@ -1,0 +1,73 @@
+{
+  "commands": [
+    {
+      "name": "view-filters",
+      "argv": [
+        "npm",
+        "run",
+        "-s",
+        "validate:view-filters"
+      ],
+      "actualExitCode": 0,
+      "seconds": 7.304
+    },
+    {
+      "name": "composition-views",
+      "argv": [
+        "npm",
+        "run",
+        "-s",
+        "validate:composition-views"
+      ],
+      "actualExitCode": 0,
+      "seconds": 123.699
+    },
+    {
+      "name": "composition-projection-roles",
+      "argv": [
+        "npm",
+        "run",
+        "-s",
+        "test:composition-projection-roles"
+      ],
+      "actualExitCode": 0,
+      "seconds": 8.097
+    },
+    {
+      "name": "course-level-mapping-consistency",
+      "argv": [
+        "npm",
+        "run",
+        "-s",
+        "test:course-level-mapping-consistency"
+      ],
+      "actualExitCode": 0,
+      "seconds": 0.416
+    },
+    {
+      "name": "source-coverage-audit",
+      "argv": [
+        "npm",
+        "run",
+        "-s",
+        "quality:source-coverage-audit:check"
+      ],
+      "actualExitCode": 0,
+      "seconds": 13.829
+    },
+    {
+      "name": "source-landscape-registry",
+      "argv": [
+        "npm",
+        "run",
+        "-s",
+        "check:source-landscape-registry"
+      ],
+      "actualExitCode": 0,
+      "seconds": 0.404
+    }
+  ],
+  "allSixPassed": true,
+  "newStrict": 0,
+  "commitCreated": false
+}

@@ -1,0 +1,55 @@
+{
+  "role": "author_checks_not_independent_science",
+  "works": [
+    {
+      "id": "correct-base-and-proven-variant",
+      "answerDE": "Rücktritt verlangt hier kein Verschulden. Für Ersatz statt Leistung gelten zusätzliche Bedingungen: P hat sich nach § 280 Abs. 1 Satz 2 zu entlasten; K muss nicht erst Fahrlässigkeit P positiv beweisen. Das offene Vertretenmüssen ist deshalb kein automatischer Ausschluss. Die Angabe, Ersatz würde 460 Euro kosten, beweist aber noch nicht den notwendigen tatsächlich kausalen Mehrschaden; 60 Euro sind im Grundfall bedingt. In der Variante sind Fahrlässigkeit und der notwendige kausale Mehrschaden bewiesen: 460 minus 400 sind 60 Euro; die 400 Euro Rückgewähr und 60 Euro Ersatz ergeben zusammen 460, nicht 860. Rücktritt löst die Bindung und gibt den Preis zurück; Ersatz schützt die belegte Erfüllungsposition. Die zusätzlichen Voraussetzungen begrenzen die Haftung des Verkäufers.",
+      "s2CriterionMarks": [
+        2,
+        2,
+        2
+      ],
+      "s2Total": 6
+    },
+    {
+      "id": "fair-partial-no-positive-buyer-fault-proof",
+      "answerDE": "Ich darf P nicht nur deshalb von Ersatz freistellen, weil K keine Fahrlässigkeit belegen kann. § 280 Abs. 1 Satz 2 legt die Entlastung P auf. Zu einer feststehenden zusätzlichen Zahlung fehlen im Grundfall noch gesicherte Tatsachen zum tatsächlichen Schaden. In der bewiesenen Variante beträgt die Differenz 60 Euro. Der Rücktritt betrifft die Rückabwicklung; Ersatz betrifft die ausgebliebene Erfüllung.",
+      "s2CriterionMarks": [
+        2,
+        1,
+        1
+      ],
+      "s2Total": 4,
+      "fairIncompletePerformanceCounts": true
+    },
+    {
+      "id": "wrong-creditor-fault-burden",
+      "answerDE": "K muss zuerst P Fahrlässigkeit beweisen. Weil das im Grundfall offen ist, ist Ersatz allein deshalb ausgeschlossen. In der Variante sind 60 Euro Differenz neben 400 Euro Rückzahlung zu ersetzen, zusammen 460 Euro. Der Rücktritt löst den Kauf, Ersatz sichert die Erfüllungsposition und hat zusätzliche Voraussetzungen.",
+      "s2CriterionMarks": [
+        0,
+        2,
+        2
+      ],
+      "s2Total": 4,
+      "comment": "The wrong burden loses the first criterion; correct calculation/interest reasoning retains its points. No new automatic whole-exam cap or perfect-detail quota is added."
+    }
+  ],
+  "arithmeticChecks": [
+    {
+      "expression": "460-400",
+      "actual": 60,
+      "expected": 60
+    },
+    {
+      "expression": "400+60",
+      "actual": 460,
+      "expected": 460
+    },
+    {
+      "expression": "400+460",
+      "actual": 860,
+      "expected": 860
+    }
+  ],
+  "sourceOrWholeExamApproval": false
+}

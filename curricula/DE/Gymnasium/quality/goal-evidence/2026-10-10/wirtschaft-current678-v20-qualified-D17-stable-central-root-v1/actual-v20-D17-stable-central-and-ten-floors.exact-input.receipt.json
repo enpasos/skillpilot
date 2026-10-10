@@ -1,0 +1,36 @@
+{
+  "kind": "Actual stable current central report after qualified D integration; M7 still open",
+  "inputSHA256": {
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json": "4a7d0d0222383a3b1218919ffe333b7962970f4edde86a88f965fd4531511cee",
+    "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json": "0b2d6d13c917ad2c6a6571f4dafa164e5d428bbdf7f5e6cb3b73ba570cac1d1a",
+    "app/scripts/config/goal-books/de-gym-economics-current-canonical.json": "95616c327277f79ea7a130bf5e653529d30dcb2824beb3a5b83038a11c2f415b",
+    "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_wirtschaft_current125_source_extraction_to_canonical_wirtschaft.review.json": "513e8f88b65f0734388394f95f51979b6859e2a4498968ebc7acfb00c4d4aa6b"
+  },
+  "checks": [
+    {
+      "label": "actual-central-status",
+      "argv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "scripts/generateCurriculumQualityStatus.ts"
+      ],
+      "actualExitCode": 0,
+      "seconds": 98.793
+    },
+    {
+      "label": "actual-ten-protected-floors",
+      "argv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "scripts/checkCurriculumMaturityFloors.ts"
+      ],
+      "actualExitCode": 1,
+      "seconds": 0.196
+    }
+  ],
+  "allTwoPassed": false,
+  "sourceInventoryAndOtherTargetChecks": "wirtschaft-current678-requires-only-v20-five-targeted-native-root-v1/actual-v20-five-targeted-native-checks.receipt.json",
+  "newImages": 0,
+  "ownCommits": 0,
+  "humanReleaseSeparate": true
+}

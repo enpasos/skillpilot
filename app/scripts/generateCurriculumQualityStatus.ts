@@ -961,6 +961,13 @@ const CANONICAL_GYM_ECONOMICS_PRACTICE_CLUSTER_IDS = [
   '5113c64b-405d-5f4b-bae9-70fe530b5e69',
   'f8922e23-f00e-53f7-be2f-1016e2b0ddf2',
   '5982abda-0b0e-51a5-930f-1f58bd757f30',
+  '5317d078-413b-58bb-9262-d57387d51655',
+  'cb53b170-d531-5267-9571-ec57004b0fb3',
+  'f761852b-a0df-5ea6-a033-67bf3fb94ec1',
+  'bc977eaf-b2f0-5cb2-af48-2dff948830af',
+  'a5689d99-1ff6-57d1-b83e-b64c2dad480d',
+  'd2b41a54-0d32-5cee-948f-77954b0c6e79',
+  '86b0ed9d-3809-5402-92ad-89c2f9cbbe76',
 ]
 const CANONICAL_GYM_POLITICS_ECONOMICS_LANDSCAPE_ID = '51b60137-46e8-5498-973e-ea38bb32f327'
 const CANONICAL_GYM_POLITICS_ECONOMICS_MOTIVATION_GOAL_ID = 'b76a024a-55a6-5c77-85cd-b37ef10e5197'
@@ -1219,6 +1226,8 @@ const routeProfiles: RouteProfile[] = [
     motivationAnchorGoalIds: [CANONICAL_GYM_ECONOMICS_MOTIVATION_GOAL_ID],
     terminalAutonomyClusterIds: CANONICAL_GYM_ECONOMICS_PRACTICE_CLUSTER_IDS,
     compositionViewStage: 'CrossStage',
+    compositionViewApplicabilityMode: 'compiled-jurisdiction',
+    compositionViewRoutePathMode: 'visible-atomic',
     goalSelector: (goal) => isAtomicGoal(goal)
       && isCanonicalGymEconomicsGoal(goal)
       && !isMemoryGoal(goal)
@@ -1924,6 +1933,53 @@ function terminalAutonomyGoalsForRouteScope(
     .filter((goal) => isAtomicGoal(goal) && !isMemoryGoal(goal))
 }
 
+/** Complete hard prerequisites of a whole assessment material. Cluster
+ * prerequisites mean all of their atomic descendants; compatibility requires
+ * inherited through actual contains ancestors remain hard gates as well.
+ * Unresolved cross-landscape references are retained for fail-closed scope QA. */
+function collectWholeMaterialPrerequisiteClosure(
+  landscape: SkillLandscape,
+  terminalGoalId: string,
+): { atomicGoalIds: Set<string>; unresolvedReferences: Set<string> } {
+  const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
+  const parentByChild = buildParentByChild(landscape.goals)
+  const inheritedReferences = (goalId: string): string[] => {
+    const references = [...(goalById.get(goalId)?.requires ?? [])]
+    const ancestors = [...(parentByChild.get(goalId) ?? [])]
+    const seenAncestors = new Set<string>()
+    while (ancestors.length > 0) {
+      const ancestorId = ancestors.pop()!
+      if (seenAncestors.has(ancestorId)) continue
+      seenAncestors.add(ancestorId)
+      references.push(...(goalById.get(ancestorId)?.requires ?? []))
+      ancestors.push(...(parentByChild.get(ancestorId) ?? []))
+    }
+    return references
+  }
+  const atomicGoalIds = new Set<string>()
+  const unresolvedReferences = new Set<string>()
+  const seenGoalIds = new Set<string>()
+  const pending = inheritedReferences(terminalGoalId)
+  while (pending.length > 0) {
+    const rawRef = pending.pop()!
+    const ref = parseReference(rawRef, landscape.landscapeId)
+    const goal = ref.landscapeId === landscape.landscapeId ? goalById.get(ref.goalId) : undefined
+    if (!goal) {
+      unresolvedReferences.add(rawRef)
+      continue
+    }
+    if (seenGoalIds.has(goal.id)) continue
+    seenGoalIds.add(goal.id)
+    if (isAtomicGoal(goal)) {
+      atomicGoalIds.add(goal.id)
+    } else {
+      pending.push(...(goal.contains ?? []))
+    }
+    pending.push(...inheritedReferences(goal.id))
+  }
+  return { atomicGoalIds, unresolvedReferences }
+}
+
 function evaluateRouteEndpointCompositionVisibility(
   landscape: SkillLandscape,
   profile: RouteProfile,
@@ -1950,6 +2006,7 @@ function evaluateRouteEndpointCompositionVisibility(
   const enforceProjectionLocalRoutes = profile.compositionViewRoutePathMode === 'visible-atomic'
   const enforceProjectionLocalAssessmentRequires = (
     profile.landscapeId === CANONICAL_GYM_PHYSICS_LANDSCAPE_ID
+    || profile.landscapeId === CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID
   )
   const mathSek1CurricularAtomicGoalIds = profile.profileId === 'canonical-math-sek1'
     ? new Set(loadJson<{ decisions: Array<{
@@ -1973,6 +2030,9 @@ function evaluateRouteEndpointCompositionVisibility(
   const emptyExpectedTerminalScopes: string[] = []
   const invalidStageStructureScopes: string[] = []
   const terminalPrerequisiteClosureScopes: string[] = []
+  const terminalMaterialCoverageBindingScopes: string[] = []
+  const wholeMaterialPrerequisiteClosureScopes: string[] = []
+  const wholeMaterialPrerequisiteClosureByTerminalId = new Map<string, ReturnType<typeof collectWholeMaterialPrerequisiteClosure>>()
   const missingEffectiveMotivationRouteScopes: string[] = []
   const missingDirectMotivationRouteScopes: string[] = []
   const missingEffectiveTerminalRouteScopes: string[] = []
@@ -2005,6 +2065,8 @@ function evaluateRouteEndpointCompositionVisibility(
   let profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute = 0
   let profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute = 0
   let terminalPrerequisiteOccurrencesMissingFromProjection = 0
+  let terminalMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath = 0
+  let wholeMaterialPrerequisiteOccurrencesMissingFromProjection = 0
   let nationalProjectionScopesUsingJurisdictionStageAuthority = 0
   let nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority = 0
   let nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority = 0
@@ -2014,8 +2076,12 @@ function evaluateRouteEndpointCompositionVisibility(
   const selectedGoalIds = new Set(selectedGoals.map((goal) => goal.id))
 
   viewEntries.forEach(({ file, view }) => {
+    // CrossStage explicitly means the entire authored view, including both
+    // school stages. Its root is not inferred from year, phase or display labels.
     const matchingStageStructures = enforceProjectionLocalRoutes
-      ? collectCompositionStageStructures(view.rootNodes, profile.compositionViewStage!)
+      ? profile.compositionViewStage === 'CrossStage'
+        ? view.rootNodes.filter((node) => node.kind === 'structure')
+        : collectCompositionStageStructures(view.rootNodes, profile.compositionViewStage!)
       : []
     const scopedTerminalGoals = terminalAutonomyGoalsForRouteScope(
       goalById,
@@ -2166,6 +2232,14 @@ function evaluateRouteEndpointCompositionVisibility(
         })
       }
       const expectedTerminalGoalIds = scopedTerminalGoals
+        // Whole Economics materials must also match the actual authored course
+        // and duration. Compiled country applicability alone does not imply this.
+        .filter((goal) => profile.landscapeId !== CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID
+          || scopeFilters.length === 0
+          || goalMatchesFilters(
+            convertLearningGoal(goal, { landscapeId: landscape.landscapeId }),
+            scopeFilters,
+          ))
         // An explicit prerequisite-only exam is support, not a route endpoint.
         // A wholly missing exam still fails unless CPV-211's exact prerequisite
         // condition makes it inapplicable in this target projection.
@@ -2194,6 +2268,20 @@ function evaluateRouteEndpointCompositionVisibility(
             .filter((ref) => ref.landscapeId === landscape.landscapeId)
             .every((ref) => authoritativeSupportGoalIds.has(ref.goalId))
         })
+        .filter((goal) => {
+          if (profile.landscapeId !== CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID) return true
+          // An Economics endpoint must assess an actual target in this projection.
+          // A whole assessment may also assess prerequisite-only competencies;
+          // those still need the separate, complete visible prerequisite checks.
+          // Use the assessed contract, not requires: a prerequisite need not
+          // itself be assessed. Missing coverage still fails its binding check.
+          const assessedLocalGoalIds = (goal.examData?.coveredGoalIds ?? [])
+            .map((rawRef) => parseReference(rawRef, landscape.landscapeId))
+            .filter((ref) => ref.landscapeId === landscape.landscapeId)
+            .map((ref) => ref.goalId)
+          return assessedLocalGoalIds.length === 0
+            || assessedLocalGoalIds.some((goalId) => visibleTargetAtomicGoalIds.has(goalId))
+        })
         .map((goal) => goal.id)
       minRequiredTerminalAutonomyGoals = Math.min(
         minRequiredTerminalAutonomyGoals,
@@ -2216,7 +2304,8 @@ function evaluateRouteEndpointCompositionVisibility(
           .filter((terminalId) => {
             const extendedData = goalById.get(terminalId)?.extendedData as Record<string, unknown> | undefined
             const overrides = extendedData?.applicabilityOverrides as Record<string, unknown> | undefined
-            return Array.isArray(overrides?.jurisdiction)
+            return profile.landscapeId === CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID
+              || Array.isArray(overrides?.jurisdiction)
               || (
                 enforceProjectionLocalAssessmentRequires
                 && extendedData?.applicabilityFromRequires === true
@@ -2231,6 +2320,41 @@ function evaluateRouteEndpointCompositionVisibility(
               .filter((goalId) => !visibleAtomicGoalIds.has(goalId))
               .map((goalId) => `${terminalId}->${goalId}`)
           })
+        : []
+      // A whole material's declared assessed competencies cannot be licensed by
+      // a single convenient prerequisite when other assessed competencies are
+      // absent from its actual visible prerequisite route.
+      const hasVisibleMaterialPrerequisitePath = createVisibleAtomicPathChecker(
+        effectiveEdges,
+        visibleAtomicGoalIds,
+      )
+      const terminalMaterialCoverageBindingIssues = enforceProjectionLocalRoutes
+        && profile.landscapeId === CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID
+        ? actualTerminalGoalIds.flatMap((terminalId) => (
+          goalById.get(terminalId)?.examData?.coveredGoalIds ?? []
+        ).flatMap((rawRef) => {
+          const ref = parseReference(rawRef, landscape.landscapeId)
+          return ref.landscapeId !== landscape.landscapeId
+            || !goalById.has(ref.goalId)
+            || !visibleAtomicGoalIds.has(ref.goalId)
+            || !hasVisibleMaterialPrerequisitePath(terminalId, ref.goalId)
+            ? [`${terminalId}->${rawRef}`]
+            : []
+        }))
+        : []
+      const wholeMaterialPrerequisiteClosureIssues = enforceProjectionLocalRoutes
+        && profile.landscapeId === CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID
+        ? actualTerminalGoalIds.flatMap((terminalId) => {
+          let closure = wholeMaterialPrerequisiteClosureByTerminalId.get(terminalId)
+          if (!closure) {
+            closure = collectWholeMaterialPrerequisiteClosure(landscape, terminalId)
+            wholeMaterialPrerequisiteClosureByTerminalId.set(terminalId, closure)
+          }
+          return [
+            ...Array.from(closure.unresolvedReferences),
+            ...Array.from(closure.atomicGoalIds).filter((goalId) => !visibleAtomicGoalIds.has(goalId)),
+          ].map((ref) => `${terminalId}->${ref}`)
+        })
         : []
       const visibleProfileSelectedGoals = selectedGoals.filter((goal) => visibleTargetAtomicGoalIds.has(goal.id))
       const visibleProjectedRouteTargetGoals = enforceProjectionLocalRoutes
@@ -2314,6 +2438,8 @@ function evaluateRouteEndpointCompositionVisibility(
         .filter((goal) => projectedTargetIdsExcludedByProfileSelector.has(goal.id))
         .length
       terminalPrerequisiteOccurrencesMissingFromProjection += missingTerminalPrerequisiteIds.length
+      terminalMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath += terminalMaterialCoverageBindingIssues.length
+      wholeMaterialPrerequisiteOccurrencesMissingFromProjection += wholeMaterialPrerequisiteClosureIssues.length
       goalsMissingEffectiveMotivationRoute.forEach((goal) => uniqueGoalsMissingEffectiveMotivationRoute.add(goal.id))
       goalsMissingDirectMotivationRoute.forEach((goal) => uniqueGoalsMissingDirectMotivationRoute.add(goal.id))
       goalsMissingEffectiveTerminalRoute.forEach((goal) => uniqueGoalsMissingEffectiveTerminalRoute.add(goal.id))
@@ -2345,6 +2471,12 @@ function evaluateRouteEndpointCompositionVisibility(
       }
       if (missingTerminalPrerequisiteIds.length > 0) {
         terminalPrerequisiteClosureScopes.push(`${scopeLabel}: ${missingTerminalPrerequisiteIds.join(', ')}`)
+      }
+      if (wholeMaterialPrerequisiteClosureIssues.length > 0) {
+        wholeMaterialPrerequisiteClosureScopes.push(`${scopeLabel}: ${wholeMaterialPrerequisiteClosureIssues.join(', ')}`)
+      }
+      if (terminalMaterialCoverageBindingIssues.length > 0) {
+        terminalMaterialCoverageBindingScopes.push(`${scopeLabel}: ${terminalMaterialCoverageBindingIssues.join(', ')}`)
       }
       if (goalsMissingEffectiveMotivationRoute.length > 0) {
         missingEffectiveMotivationRouteScopes.push(
@@ -2380,6 +2512,8 @@ function evaluateRouteEndpointCompositionVisibility(
     && unexpectedTerminalScopes.length === 0
     && emptyExpectedTerminalScopes.length === 0
     && terminalPrerequisiteClosureScopes.length === 0
+    && terminalMaterialCoverageBindingScopes.length === 0
+    && wholeMaterialPrerequisiteClosureScopes.length === 0
     && missingEffectiveMotivationRouteScopes.length === 0
     && missingDirectMotivationRouteScopes.length === 0
     && missingEffectiveTerminalRouteScopes.length === 0
@@ -2416,6 +2550,10 @@ function evaluateRouteEndpointCompositionVisibility(
       nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority,
       projectionScopesWithIncompleteExplicitTerminalPrerequisites: terminalPrerequisiteClosureScopes.length,
       explicitTerminalPrerequisiteOccurrencesMissingFromProjection: terminalPrerequisiteOccurrencesMissingFromProjection,
+      projectionScopesWithIncompleteWholeMaterialCoverageBindings: terminalMaterialCoverageBindingScopes.length,
+      wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath: terminalMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath,
+      projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure: wholeMaterialPrerequisiteClosureScopes.length,
+      wholeMaterialPrerequisiteOccurrencesMissingFromProjection,
       uniqueExplicitTerminalPrerequisitesMissingFromProjection: uniqueTerminalPrerequisitesMissingFromProjection.size,
       projectionLocalRouteChecksEnabled: enforceProjectionLocalRoutes ? 1 : 0,
       visibleSelectedAtomicGoalOccurrences,
@@ -2460,6 +2598,8 @@ function evaluateRouteEndpointCompositionVisibility(
       ...missingEffectiveMotivationRouteScopes.map((scope) => `No projection-local effective motivation route: ${scope}`),
       ...missingDirectMotivationRouteScopes.map((scope) => `No projection-local direct motivation route: ${scope}`),
       ...terminalPrerequisiteClosureScopes.map((scope) => `Explicitly scoped terminal prerequisite(s) missing from projection: ${scope}`),
+      ...terminalMaterialCoverageBindingScopes.map((scope) => `Incomplete whole-material competency binding: ${scope}`),
+      ...wholeMaterialPrerequisiteClosureScopes.map((scope) => `Incomplete whole-material hard prerequisite closure: ${scope}`),
     ],
   )
 }
@@ -3990,7 +4130,7 @@ function readCompositionViewFilesForReport(report: CoverageReport): string[] {
   return readCompositionViewFilesForLandscapeId(report.landscapeId)
 }
 
-type CompositionRouteStage = 'SekI' | 'SekII'
+type CompositionRouteStage = 'SekI' | 'SekII' | 'CrossStage'
 
 function compositionStructureStage(node: CompositionViewNode): CompositionRouteStage | null {
   if (node.kind !== 'structure') return null
@@ -4062,12 +4202,13 @@ function collectRenderedAtomicGoalIdsFromCompositionView(
     return visibleGoalIds
   }
   const fullVisibleGoalIds = collectVisibleGoalIds(rootGoalIds)
-  const stageStructureGoalIds = compositionStage
-    ? collectCompositionStageStructures(normalizedView.rootNodes, compositionStage)
+  const restrictToSingleStage = !!compositionStage && compositionStage !== 'CrossStage'
+  const stageStructureGoalIds = restrictToSingleStage
+    ? collectCompositionStageStructures(normalizedView.rootNodes, compositionStage!)
       .map((node) => `composition:${normalizedView.viewId}:structure:${node.id}`)
       .filter((goalId) => goalById.has(goalId))
     : []
-  const visibleGoalIds = compositionStage
+  const visibleGoalIds = restrictToSingleStage
     ? collectVisibleGoalIds(stageStructureGoalIds)
     : fullVisibleGoalIds
 
@@ -4113,7 +4254,7 @@ function collectRenderedAtomicGoalIdsFromCompositionView(
       nodes.forEach((node) => {
         if (node.kind === 'structure') {
           const nodeStage = compositionStructureStage(node)
-          if (compositionStage && nodeStage && nodeStage !== compositionStage) return
+          if (restrictToSingleStage && nodeStage && nodeStage !== compositionStage) return
           collectPrerequisiteOnly(node.children)
           return
         }

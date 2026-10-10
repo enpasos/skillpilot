@@ -1,0 +1,52 @@
+{
+  "phase": "status",
+  "toolchainNodePath": "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+  "remoteGitHubCIClaim": false,
+  "results": [
+    {
+      "name": "current-five-gate-report-json",
+      "command": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/reportDeepUnderstandingRollout.ts",
+        "--format=json"
+      ],
+      "startedAt": "2026-10-10T17:30:03.601296+00:00",
+      "elapsedSeconds": 69.7,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common346-stable-M6-CI-root-v1/status.01.current-five-gate-report-json.raw.txt",
+      "rawOutputSha256": "sha256:289461d9920c20005a749f2ba94eef8816a1e92b1ba23f68c0230edd149e79f7"
+    },
+    {
+      "name": "quality:curriculum-status",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:curriculum-status"
+      ],
+      "startedAt": "2026-10-10T17:31:13.302636+00:00",
+      "elapsedSeconds": 96.411,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common346-stable-M6-CI-root-v1/status.02.quality-curriculum-status.raw.txt",
+      "rawOutputSha256": "sha256:b89a7bf4a2ed5e9649c6332609582a2b2a6a0e19438cb00c36565709d62289d0"
+    },
+    {
+      "name": "quality:curriculum-status:check",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:curriculum-status:check"
+      ],
+      "startedAt": "2026-10-10T17:32:49.714908+00:00",
+      "elapsedSeconds": 88.165,
+      "exitCode": 1,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common346-stable-M6-CI-root-v1/status.03.quality-curriculum-status-check.raw.txt",
+      "rawOutputSha256": "sha256:2d617874bfa6536ec3738571639b0d0cdf5c80864eb918fda9ed064352a87cdf"
+    }
+  ],
+  "phaseComplete": false
+}

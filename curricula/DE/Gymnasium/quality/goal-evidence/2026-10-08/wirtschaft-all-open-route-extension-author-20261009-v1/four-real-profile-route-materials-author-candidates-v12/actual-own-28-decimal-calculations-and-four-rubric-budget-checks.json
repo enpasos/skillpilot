@@ -1,0 +1,237 @@
+{
+  "schemaVersion": 1,
+  "kind": "author-diagnostic-calculation-not-independent-review",
+  "sourceWholeSHA256": "1da3e7c9d60617beb729c72d054bf9b2053ca2c78711f526a1983feeb6378f4c",
+  "actualDecimalChecks": [
+    {
+      "label": "Game k=2 first payoff (0,0)",
+      "expression": "10-0+2*0",
+      "actualDecimal": "10",
+      "expectedDecimal": "10",
+      "equal": true
+    },
+    {
+      "label": "Game k=2 second payoff (0,0)",
+      "expression": "10-0+2*0",
+      "actualDecimal": "10",
+      "expectedDecimal": "10",
+      "equal": true
+    },
+    {
+      "label": "Game k=2 first payoff (10,10)",
+      "expression": "10-10+2*10",
+      "actualDecimal": "20",
+      "expectedDecimal": "20",
+      "equal": true
+    },
+    {
+      "label": "Game k=2 second payoff (10,10)",
+      "expression": "10-10+2*10",
+      "actualDecimal": "20",
+      "expectedDecimal": "20",
+      "equal": true
+    },
+    {
+      "label": "Game k=2 first payoff (0,10)",
+      "expression": "10-0+2*10",
+      "actualDecimal": "30",
+      "expectedDecimal": "30",
+      "equal": true
+    },
+    {
+      "label": "Game k=2 second payoff (0,10)",
+      "expression": "10-10+2*0",
+      "actualDecimal": "0",
+      "expectedDecimal": "0",
+      "equal": true
+    },
+    {
+      "label": "North L/K",
+      "expression": "200/100",
+      "actualDecimal": "2",
+      "expectedDecimal": "2",
+      "equal": true
+    },
+    {
+      "label": "South L/K",
+      "expression": "100/100",
+      "actualDecimal": "1",
+      "expectedDecimal": "1",
+      "equal": true
+    },
+    {
+      "label": "Textile L/K",
+      "expression": "6/1",
+      "actualDecimal": "6",
+      "expectedDecimal": "6",
+      "equal": true
+    },
+    {
+      "label": "Machine L/K",
+      "expression": "2/4",
+      "actualDecimal": "0.5",
+      "expectedDecimal": "0.5",
+      "equal": true
+    },
+    {
+      "label": "Reserve A",
+      "expression": "120 million t / 4 million t/year",
+      "actualDecimal": "30",
+      "expectedDecimal": "30",
+      "equal": true
+    },
+    {
+      "label": "Reserve B",
+      "expression": "150 million t / 5 million t/year",
+      "actualDecimal": "30",
+      "expectedDecimal": "30",
+      "equal": true
+    },
+    {
+      "label": "Reserve C",
+      "expression": "120 million t / 6 million t/year",
+      "actualDecimal": "20",
+      "expectedDecimal": "20",
+      "equal": true
+    },
+    {
+      "label": "Reserve proportional increase",
+      "expression": "(150/120-1)*100",
+      "actualDecimal": "25.00",
+      "expectedDecimal": "25",
+      "equal": true
+    },
+    {
+      "label": "Production proportional increase",
+      "expression": "(5/4-1)*100",
+      "actualDecimal": "25.00",
+      "expectedDecimal": "25",
+      "equal": true
+    },
+    {
+      "label": "Portfolio P scenario 1 return percent",
+      "expression": ".6*(8)+.4*(-2)",
+      "actualDecimal": "4.0",
+      "expectedDecimal": "4",
+      "equal": true
+    },
+    {
+      "label": "Portfolio P scenario 1 end value",
+      "expression": "1000*(1+(4.0)/100)",
+      "actualDecimal": "1040.00",
+      "expectedDecimal": "1040",
+      "equal": true
+    },
+    {
+      "label": "Portfolio P scenario 2 return percent",
+      "expression": ".6*(-6)+.4*(4)",
+      "actualDecimal": "-2.0",
+      "expectedDecimal": "-2",
+      "equal": true
+    },
+    {
+      "label": "Portfolio P scenario 2 end value",
+      "expression": "1000*(1+(-2.0)/100)",
+      "actualDecimal": "980.00",
+      "expectedDecimal": "980",
+      "equal": true
+    },
+    {
+      "label": "Portfolio P scenario 3 return percent",
+      "expression": ".6*(-10)+.4*(-5)",
+      "actualDecimal": "-8.0",
+      "expectedDecimal": "-8",
+      "equal": true
+    },
+    {
+      "label": "Portfolio P scenario 3 end value",
+      "expression": "1000*(1+(-8.0)/100)",
+      "actualDecimal": "920.00",
+      "expectedDecimal": "920",
+      "equal": true
+    },
+    {
+      "label": "Portfolio Q scenario 1 return percent",
+      "expression": ".2*(8)+.8*(-2)",
+      "actualDecimal": "0.0",
+      "expectedDecimal": "0",
+      "equal": true
+    },
+    {
+      "label": "Portfolio Q scenario 1 end value",
+      "expression": "1000*(1+(0.0)/100)",
+      "actualDecimal": "1000.0",
+      "expectedDecimal": "1000",
+      "equal": true
+    },
+    {
+      "label": "Portfolio Q scenario 2 return percent",
+      "expression": ".2*(-6)+.8*(4)",
+      "actualDecimal": "2.0",
+      "expectedDecimal": "2",
+      "equal": true
+    },
+    {
+      "label": "Portfolio Q scenario 2 end value",
+      "expression": "1000*(1+(2.0)/100)",
+      "actualDecimal": "1020.00",
+      "expectedDecimal": "1020",
+      "equal": true
+    },
+    {
+      "label": "Portfolio Q scenario 3 return percent",
+      "expression": ".2*(-10)+.8*(-5)",
+      "actualDecimal": "-6.0",
+      "expectedDecimal": "-6",
+      "equal": true
+    },
+    {
+      "label": "Portfolio Q scenario 3 end value",
+      "expression": "1000*(1+(-6.0)/100)",
+      "actualDecimal": "940.00",
+      "expectedDecimal": "940",
+      "equal": true
+    },
+    {
+      "label": "Published rounded category sum",
+      "expression": "22.4+19.2+52.3+6.2",
+      "actualDecimal": "100.1",
+      "expectedDecimal": "100.1",
+      "equal": true
+    }
+  ],
+  "count": 28,
+  "mismatches": [],
+  "actualRubricBudgetChecks": [
+    {
+      "goalId": "88228c0a-2a1e-5c59-8426-c291e49f3f35",
+      "stepsSum": 24,
+      "maxPoints": 24,
+      "passingPoints": 15,
+      "draftExact": true
+    },
+    {
+      "goalId": "c659edea-7786-59b3-90f3-9c9983388c83",
+      "stepsSum": 24,
+      "maxPoints": 24,
+      "passingPoints": 15,
+      "draftExact": true
+    },
+    {
+      "goalId": "a01084fe-43a3-5327-8887-c8b07777f89f",
+      "stepsSum": 24,
+      "maxPoints": 24,
+      "passingPoints": 15,
+      "draftExact": true
+    },
+    {
+      "goalId": "efbdb94b-e694-53d7-91a7-610e2a1ed1c2",
+      "stepsSum": 24,
+      "maxPoints": 24,
+      "passingPoints": 15,
+      "draftExact": true
+    }
+  ],
+  "qualityApproval": false,
+  "newStrictClosures": 0
+}

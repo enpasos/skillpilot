@@ -1,0 +1,137 @@
+--- reviewed-v3-with-two-REVISE-findings
++++ additive-v4-full-prerequisite-closure
+@@ -1926,6 +1926,53 @@
+     .filter((goal) => isAtomicGoal(goal) && !isMemoryGoal(goal))
+ }
+ 
++/** Complete hard prerequisites of a whole assessment material. Cluster
++ * prerequisites mean all of their atomic descendants; compatibility requires
++ * inherited through actual contains ancestors remain hard gates as well.
++ * Unresolved cross-landscape references are retained for fail-closed scope QA. */
++function collectWholeMaterialPrerequisiteClosure(
++  landscape: SkillLandscape,
++  terminalGoalId: string,
++): { atomicGoalIds: Set<string>; unresolvedReferences: Set<string> } {
++  const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
++  const parentByChild = buildParentByChild(landscape.goals)
++  const inheritedReferences = (goalId: string): string[] => {
++    const references = [...(goalById.get(goalId)?.requires ?? [])]
++    const ancestors = [...(parentByChild.get(goalId) ?? [])]
++    const seenAncestors = new Set<string>()
++    while (ancestors.length > 0) {
++      const ancestorId = ancestors.pop()!
++      if (seenAncestors.has(ancestorId)) continue
++      seenAncestors.add(ancestorId)
++      references.push(...(goalById.get(ancestorId)?.requires ?? []))
++      ancestors.push(...(parentByChild.get(ancestorId) ?? []))
++    }
++    return references
++  }
++  const atomicGoalIds = new Set<string>()
++  const unresolvedReferences = new Set<string>()
++  const seenGoalIds = new Set<string>()
++  const pending = inheritedReferences(terminalGoalId)
++  while (pending.length > 0) {
++    const rawRef = pending.pop()!
++    const ref = parseReference(rawRef, landscape.landscapeId)
++    const goal = ref.landscapeId === landscape.landscapeId ? goalById.get(ref.goalId) : undefined
++    if (!goal) {
++      unresolvedReferences.add(rawRef)
++      continue
++    }
++    if (seenGoalIds.has(goal.id)) continue
++    seenGoalIds.add(goal.id)
++    if (isAtomicGoal(goal)) {
++      atomicGoalIds.add(goal.id)
++    } else {
++      pending.push(...(goal.contains ?? []))
++    }
++    pending.push(...inheritedReferences(goal.id))
++  }
++  return { atomicGoalIds, unresolvedReferences }
++}
++
+ function evaluateRouteEndpointCompositionVisibility(
+   landscape: SkillLandscape,
+   profile: RouteProfile,
+@@ -1977,6 +2024,8 @@
+   const invalidStageStructureScopes: string[] = []
+   const terminalPrerequisiteClosureScopes: string[] = []
+   const terminalMaterialCoverageBindingScopes: string[] = []
++  const wholeMaterialPrerequisiteClosureScopes: string[] = []
++  const wholeMaterialPrerequisiteClosureByTerminalId = new Map<string, ReturnType<typeof collectWholeMaterialPrerequisiteClosure>>()
+   const missingEffectiveMotivationRouteScopes: string[] = []
+   const missingDirectMotivationRouteScopes: string[] = []
+   const missingEffectiveTerminalRouteScopes: string[] = []
+@@ -2010,6 +2059,7 @@
+   let profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute = 0
+   let terminalPrerequisiteOccurrencesMissingFromProjection = 0
+   let terminalMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath = 0
++  let wholeMaterialPrerequisiteOccurrencesMissingFromProjection = 0
+   let nationalProjectionScopesUsingJurisdictionStageAuthority = 0
+   let nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority = 0
+   let nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority = 0
+@@ -2271,6 +2321,20 @@
+             : []
+         }))
+         : []
++      const wholeMaterialPrerequisiteClosureIssues = enforceProjectionLocalRoutes
++        && profile.landscapeId === CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID
++        ? actualTerminalGoalIds.flatMap((terminalId) => {
++          let closure = wholeMaterialPrerequisiteClosureByTerminalId.get(terminalId)
++          if (!closure) {
++            closure = collectWholeMaterialPrerequisiteClosure(landscape, terminalId)
++            wholeMaterialPrerequisiteClosureByTerminalId.set(terminalId, closure)
++          }
++          return [
++            ...Array.from(closure.unresolvedReferences),
++            ...Array.from(closure.atomicGoalIds).filter((goalId) => !visibleAtomicGoalIds.has(goalId)),
++          ].map((ref) => `${terminalId}->${ref}`)
++        })
++        : []
+       const visibleProfileSelectedGoals = selectedGoals.filter((goal) => visibleTargetAtomicGoalIds.has(goal.id))
+       const visibleProjectedRouteTargetGoals = enforceProjectionLocalRoutes
+         ? Array.from(visibleTargetAtomicGoalIds)
+@@ -2354,6 +2418,7 @@
+         .length
+       terminalPrerequisiteOccurrencesMissingFromProjection += missingTerminalPrerequisiteIds.length
+       terminalMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath += terminalMaterialCoverageBindingIssues.length
++      wholeMaterialPrerequisiteOccurrencesMissingFromProjection += wholeMaterialPrerequisiteClosureIssues.length
+       goalsMissingEffectiveMotivationRoute.forEach((goal) => uniqueGoalsMissingEffectiveMotivationRoute.add(goal.id))
+       goalsMissingDirectMotivationRoute.forEach((goal) => uniqueGoalsMissingDirectMotivationRoute.add(goal.id))
+       goalsMissingEffectiveTerminalRoute.forEach((goal) => uniqueGoalsMissingEffectiveTerminalRoute.add(goal.id))
+@@ -2385,6 +2450,9 @@
+       }
+       if (missingTerminalPrerequisiteIds.length > 0) {
+         terminalPrerequisiteClosureScopes.push(`${scopeLabel}: ${missingTerminalPrerequisiteIds.join(', ')}`)
++      }
++      if (wholeMaterialPrerequisiteClosureIssues.length > 0) {
++        wholeMaterialPrerequisiteClosureScopes.push(`${scopeLabel}: ${wholeMaterialPrerequisiteClosureIssues.join(', ')}`)
+       }
+       if (terminalMaterialCoverageBindingIssues.length > 0) {
+         terminalMaterialCoverageBindingScopes.push(`${scopeLabel}: ${terminalMaterialCoverageBindingIssues.join(', ')}`)
+@@ -2424,6 +2492,7 @@
+     && emptyExpectedTerminalScopes.length === 0
+     && terminalPrerequisiteClosureScopes.length === 0
+     && terminalMaterialCoverageBindingScopes.length === 0
++    && wholeMaterialPrerequisiteClosureScopes.length === 0
+     && missingEffectiveMotivationRouteScopes.length === 0
+     && missingDirectMotivationRouteScopes.length === 0
+     && missingEffectiveTerminalRouteScopes.length === 0
+@@ -2462,6 +2531,8 @@
+       explicitTerminalPrerequisiteOccurrencesMissingFromProjection: terminalPrerequisiteOccurrencesMissingFromProjection,
+       projectionScopesWithIncompleteWholeMaterialCoverageBindings: terminalMaterialCoverageBindingScopes.length,
+       wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath: terminalMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath,
++      projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure: wholeMaterialPrerequisiteClosureScopes.length,
++      wholeMaterialPrerequisiteOccurrencesMissingFromProjection,
+       uniqueExplicitTerminalPrerequisitesMissingFromProjection: uniqueTerminalPrerequisitesMissingFromProjection.size,
+       projectionLocalRouteChecksEnabled: enforceProjectionLocalRoutes ? 1 : 0,
+       visibleSelectedAtomicGoalOccurrences,
+@@ -2507,6 +2578,7 @@
+       ...missingDirectMotivationRouteScopes.map((scope) => `No projection-local direct motivation route: ${scope}`),
+       ...terminalPrerequisiteClosureScopes.map((scope) => `Explicitly scoped terminal prerequisite(s) missing from projection: ${scope}`),
+       ...terminalMaterialCoverageBindingScopes.map((scope) => `Incomplete whole-material competency binding: ${scope}`),
++      ...wholeMaterialPrerequisiteClosureScopes.map((scope) => `Incomplete whole-material hard prerequisite closure: ${scope}`),
+     ],
+   )
+ }

@@ -1,0 +1,92 @@
+from pathlib import Path
+import hashlib, json
+R = Path('/home/enpasos/projects/skillpilot')
+Q = R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10'
+O = Q/'wirtschaft-current577-twentytwo-qualified470-central-root-v1'
+A = Q/'wirtschaft-current577-twentytwo-qualified470-active-root-v1'
+def rd(p): return json.loads(p.read_text())
+def binding(p): return {'path':str(p.relative_to(R)), 'sha256':hashlib.sha256(p.read_bytes()).hexdigest(), 'bytes':p.stat().st_size}
+x = rd(O/'actual-current577-curriculum-quality-status.json')
+e = next(s for s in x['curricula'] if s['subject']=='Wirtschaftswissenschaften')
+er = {r['id']:r for r in e['rules']}
+s = next(s for s in e['scopes'] if s['scopeId']=='canonical-economics-crossstage')
+sr = {r['id']:r for r in s['rules']}
+c, n = er['CQR-303']['metrics'], sr['CQR-104']['metrics']
+assert e['goals']==577 and e['maturity']=='M3' and s['maturity']=='M2'
+assert (c['strictComplete'], c['expectedGoals'], c['remaining'])==(187,336,149)
+assert (n['visibleSelectedGoalOccurrencesMissingDirectTerminalRoute'], n['uniqueVisibleSelectedGoalsMissingDirectTerminalRoute'], n['projectionScopesMissingTerminalAutonomyGoals'])==(752,102,0)
+bundle = rd(O/'actual-current577-three-stage-bundle-exact-inputs.receipt.json')
+assert bundle['allThreeStagesPassed'] and all(z['exitCode']==0 for z in bundle['commands'])
+assert all((R/z['stderr']).stat().st_size==0 for z in bundle['commands'])
+assert (O/'floors.stdout.txt').read_text().strip()=='curriculum maturity floors passed: 9 protected curricula'
+protected = []
+for subject,count in [('Mathematik',807),('Physik',478)]:
+    p = next(j for j in x['curricula'] if j['subject']==subject)
+    rr = next(r for r in p['rules'] if r['id']=='CQR-303')
+    cm = rr['metrics']
+    assert p['maturity']=='M7' and rr['status']=='pass'
+    assert cm['strictComplete']==cm['expectedGoals']==count and cm['blockingIssues']==0
+    protected.append({'subject':subject,'maturity':p['maturity'],**{k:cm[k] for k in ['strictComplete','expectedGoals','requiredChecksPassed','requiredChecksTotal','blockingIssues']}})
+assert all(sr[k]['status']=='pass' for k in ['CQR-101','CQR-102','CQR-103','CQR-201','CQR-202','CQR-203'])
+assert er['CQR-301']['status']==er['CQR-302']['status']=='pass'
+source=e['jurisdictionCoverage']
+assert source['sourceCompleteJurisdictions']==16 and source['sourceFullyCoveredOriginalGoals']==2134
+assert source['unsupportedAssignedAtomicGoals']==source['sourceUncoveredOriginalGoals']==0
+actual=rd(A/'actual-current577-twentytwo-foreign-qualified-materials470-accesses-active.receipt.json')
+assert actual['netRestoredRouteBindings']==494 and actual['netFullyRestoredLocalGoalIds']==27
+guards=rd(A/'actual-current577-twentytwo-qualified470-pre-mutation-guards.json')
+assert all(hashlib.sha256((R/z['path']).read_bytes()).hexdigest()==z['sha256'] for z in guards['protectedReadOnlyInputs'])
+summary={
+ 'state':'ACTUAL_STABLE_CURRENT577_CENTRAL_AND_ALL_NINE_FLOORS_GREEN_M4_STILL_OPEN',
+ 'wholeCentral':binding(O/'actual-current577-curriculum-quality-status.json'),
+ 'actualThreeStageBundle':binding(O/'actual-current577-three-stage-bundle-exact-inputs.receipt.json'),
+ 'qualifiedActiveIntegration':binding(A/'actual-current577-twentytwo-foreign-qualified-materials470-accesses-active.receipt.json'),
+ 'wholeForeignCombinedScope':actual['actualCombinedScopeSeal'],
+ 'actualCombined470Native':actual['actualCombined470Native'],
+ 'currentMaturity':e['maturity'],'routeScopeBadge':s['maturity'],
+ 'currentCurricularAtomic':336,'strictCompleted':187,'strictRemaining':149,
+ 'strictNetGain':0,'newScientificCurricularStrictClosures':0,'restoredCurricularStrictBindings':0,
+ 'newWholeMaterialScience':22,'unchangedWholeExistingMaterialScientificReuse':3,
+ 'newPracticeNodes':22,'currentReferenceAdditions':470,
+ 'currentRouteMissingOccurrences':752,'currentRouteMissingUnique':102,
+ 'netRestoredRouteBindings':494,'netRouteClosedUnique':27,
+ 'CQR104ExpectedMaterialScopeBindingsMissing':0,
+ 'CQR104WholeCoverageOrHardClosureMissing':0,
+ 'currentD187P336A336M336V336':True,
+ 'CQR303ChecksPassed':c['requiredChecksPassed'],'CQR303ChecksTotal':c['requiredChecksTotal'],
+ 'CQR303BlockingIssues':c['blockingIssues'],
+ 'allNineProtectedMaturityFloorsPassed':True,'protectedMathPhysics':protected,
+ 'source16Original2134Unsupported0Reverse0':True,
+ 'currentCards66Decks10MemoryReviewScopes34Pass':True,
+ 'allCurrent336AndP685ProfilesInputsStatusesAndAuthoritiesExact':True,
+ 'noNewFoundationOrOrdinaryTargets':True,
+ 'readOnlyProtectedInputs':len(guards['protectedReadOnlyInputs']),
+ 'humanReleaseTrialsRemainSeparateOpen':True,'M6M7Claimed':False,
+ 'imagesGenerated':0,'commitCreated':False,
+ 'next':'Fieldwise current577 plus independently qualified Legal7 and Social13; independent combination scope review. Company12 and FinanceIntegration12 inert author candidates proceed separately. Continue actual M4 before M5/M6, no new images.'}
+p=O/'actual-current577-strict-progress-and-protected-floors.machine-summary.json'
+assert not p.exists()
+p.write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n')
+doc=R/'docs/qa-ci/wirtschaft-m7-resumed-2026-10-08.md'
+doc.write_text(doc.read_text()+'''
+
+## International und Makro integriert: aktueller 577-Stand, 10. Oktober 2026
+
+Der neue tatsächlich ausgeführte Zentralbericht enthält **577 Knoten und unverändert 336 aktuelle curricularAtomic-Ziele**. Wirtschaftswissenschaften bleibt **M3**, der CrossStage-Lernpfad-Scope wegen CQR-104 **M2**. Streng abgeschlossen **187/336**, offen149; **Netto0, neue strenge fachliche curricularAtomic-Abschlüsse0, wiederhergestellte strenge Fünf-Gate-Bindungen0**. M6 bleibt die erforderliche, noch offene Untergrenze für einen commitfähigen Zwischenstand.
+
+Neun ganze International- und dreizehn ganze Makro-Zweifallmaterialien bestehen die getrennte unabhängige fachliche Prüfung und die Länder-/Kurssichtprüfung. **22 neue fachliche Materialabschlüsse**, weiterhin getrennt von curricularAtomic-Abschlüssen. Der tatsächliche Staatsschulden-Perspektivbefund wird durch genau zwei Aufgabenformulierungen berichtigt; die übrigen zwölf ganzen Makrokörper werden mit gültigem Nachweis wiederverwendet. Drei ältere ganze Materialien zu Rechtsfunktionen, Kaufverträgen und Markt-/Unternehmenskonzepten bleiben fachlich unverändert; ihre bestehenden gültigen unabhängigen Prüfungen werden für neun gezielte Zugangsergänzungen erhalten. Keine historische Fachprüfung wird wegen einer neuen Bindung neu gestartet.
+
+Die gemeinsame unabhängige Prüfung führt **vier eigene frische Nativframes** aus, prüft **1.600 vollständige Material-/Scopeentscheidungen** für22 neue und3 alte Materialien,68 aktuelle CrossStage-Sichtschemata und577 native SEM-Eingangsbindungen. Ganze Quellen einschließlich208 ursprünglicher Partial-Mapping-Eingaben, alle64 gewöhnlichen Target-/Support-/Memory-/Orientierungsrollen und6.974 gewöhnliche Targetvorkommen bleiben exakt. Es gibt970 sichtbare ganze Materialbindungen;94 enthalten schon vorhandene `prerequisiteOnly`-Ziele. Das erzeugt keine neue gewöhnliche Ziel- oder Quellenzuordnung und keine neue Foundation. Der echte BE-GK-Entzug des Fair-Trade-Zugangs erzeugt wieder einen fehlenden erwarteten Material-Scope und zwei zusätzliche lokale Routenlücken; der echte Entzug eines verschachtelten bestehenden Supportziels erzeugt zwei Coverage- und vier Pflichtschlussfehler. Die zuvor zu enge Annahme eines direkten Root-Supporteintrags scheitert vor Mutation/Lauf und bleibt als technische Preflightgeschichte erhalten; der tatsächlich verschachtelte Eintrag wird danach fachlich korrekt geprüft.
+
+Die feldweise Integration ergänzt **470 explizite Practice-Targetverweise in34 vorhandenen Sichten**: International162, Makro299, neun bestehende Zugänge9. Genau vier Navigationsobjekte erhalten tatsächliche Kinder-/Zweckfolger; der gemeinsame Q3-Folger enthält die qualifizierten Kinder beider Pakete. Alle übrigen551 alten ganzen Goalobjekte, alle336 gewöhnlichen Verträge und685 ursprünglichen P-Fälle bleiben exakt. SEMv14 ergänzt22 `practiceAssessment`-Entscheidungen und folgt genau vier geänderten alten Navobjekten; alle555 alten Arten bleiben erhalten. Diese technischen Fingerprintfolger sind keine fachlichen Neuprüfungen. Alle43 P-Konfigurationen bestehen nativ mit unveränderten Originalprofilen, Eingangs-Fingerprints, Status `needs_human_review` und Authority `ai_candidate`. Das fünfte reguläre Wirtschaftslernzielbuch folgt dem aktuellen SEM/P. Vollständiger PDF-/Owner-/Layer-A-Build bleibt am stabilen M6-Stand gebündelt; historische Ausgaben bleiben erhalten.
+
+Gemessener gemeinsamer Fortschritt: **1.246→752 lokale Lernpfadlücken,129→102 betroffene Ziel-IDs; netto494 wiederhergestellte Lernpfadbindungen und27 vollständig wiederhergestellte lokale Zielrouten**. Die Einzelwerte244/234/20 werden nicht addiert; ihr rechnerischer Wert498 wäre hier um vier zu hoch. **Alle sechs bislang fehlenden erwarteten Material-Scopes sind jetzt geschlossen**, null erwartete Zugangslücken. M4 ist wegen752 tatsächlichen lokalen Lücken weiterhin offen. Ganze Materialabdeckung, transitive Pflichtvoraussetzungen, Stage-Struktur, Selector-Ausschluss und Motivationsrouten haben null Fehler. Offene übrige Verträge bleiben ausdrücklich offen.
+
+Quelleninventar-Regression, aktueller Zentralbericht und **alle neun geschützten Reifegrad-Untergrenzen bestehen**. Mathematik **807/807 M7** und Physik **478/478 M7** bleiben jeweils6/6 mit0Blockern. Wirtschaft bleibt D187/P336/A336/M336/V336, CQR-3035/6 und123 offenen Diagnosen. Quellen16/16 und2.134/2.134, unbelegte/umgekehrte Bindungen0. CQR-301/302 bestehen;66Karten,10Decks,34Sichten bleiben unverändert. Alle schreibgeschützten Quellen-, Karten-, Bild-QA- und vier anderen Facheingaben bestehen den Integrations-Endguard. Kein neuer Bildlauf, Commit, Push oder menschlicher Release-/Erprobungsanspruch.
+
+Nachweise: [aktueller zentraler577-Bericht](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current577-twentytwo-qualified470-central-root-v1/actual-current577-curriculum-quality-status.json), [tatsächlich ausgeführtes Quellen-/Zentral-/Untergrenzenbündel](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current577-twentytwo-qualified470-central-root-v1/actual-current577-three-stage-bundle-exact-inputs.receipt.json), [aktive feldweise Integration](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current577-twentytwo-qualified470-active-root-v1/actual-current577-twentytwo-foreign-qualified-materials470-accesses-active.receipt.json), [strenger Fortschritt und geschützte Reifegrade](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current577-twentytwo-qualified470-central-root-v1/actual-current577-strict-progress-and-protected-floors.machine-summary.json), [ganze unabhängige kombinierte Scopeprüfung](../../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current577-twentytwo-qualified470-independent-combined-scope-review-v1/actual-final-current577-twentytwo-qualified470-combined-scope-nav-independent-KEEP.handoff.receipt.json).
+
+Auf erneuten ausdrücklichen Auftrag wurde `origin/main` frisch abgerufen und mit `git merge --no-edit origin/main` eingebunden: `Already up to date`, HEAD/Remote weiterhin `ee13896d9832a36a1946143191bdbf62f3ec64ff`. `git diff --check` bestand vor Integration; uncommittete QS-Arbeiten bleiben erhalten. Nächster Schritt: feldweise Recht7/Europa13-Kombination auf577 mit unabhängiger gemeinsamer Prüfung. Parallel entstehen zwölf klar abgegrenzte Unternehmens-/Strategie-/Ethik- und zwölf Finanz-/Integrationskandidaten; sie zählen bis zu fachlicher und Scope-Freigabe nicht als abgeschlossen. In-flight-Beschreibungsrunden bleiben bis M6 getrennt zurückgestellt; keine neue Bildarbeit vorM6.
+''')
+(O/'actual-executed-root-summary-and-resumption-script.raw.txt').write_bytes(Path(__file__).read_bytes())
+print(json.dumps({'summary':binding(p),'strict':187,'current':336,'strictNet':0,'newScienceMaterials':22,'netRoutes':494,'maturity':'M3','allNineFloorsPass':True,'protectedInputs':summary['readOnlyProtectedInputs']}))

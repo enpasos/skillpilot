@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "role": "bounded technical BY-summary and retention-count correction only, no new source or goal review",
+  "at": "2026-10-09T07:07:01.386045+00:00",
+  "physicalIsolate": "/tmp/skillpilot-wirtschaft-generic10-current311-476152vl",
+  "actualCurrentRootMapping": {
+    "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_wirtschaft_und_recht_source_extraction_to_canonical_wirtschaft.review.json",
+    "sha256": "sha256:fd3d696c369d91da82c0839226307ed6097702256226a264f984ffa04e22e92e"
+  },
+  "historicalFirstCandidatePreserved": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-by-ten-current311-specific-native-preparation-technical-v1/current300-and-source10-technical-rebase-v1/current-root-BY-with-only-ten-bounded-partial-tuples.candidate.json",
+    "sha256": "sha256:1c056c5d376ca3f82067d3f1253cc7ea8c487df63c28d4e1e288eaae20d7e68f"
+  },
+  "historicalFirstSourceBindingReceiptPreserved": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-by-ten-current311-specific-native-preparation-technical-v1/current300-and-source10-technical-rebase-v1/actual-current-source10-BY-exact-to-bounded-partial.technical-receipt.json",
+    "sha256": "sha256:f8a61035d9922f6f063407391789fa75aeee4aca0890fa91b04c4ea584fac362"
+  },
+  "currentCorrectedCandidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-by-ten-current311-specific-native-preparation-technical-v1/current300-and-source10-technical-rebase-v1/current-root-BY-with-only-ten-bounded-partial-tuples.summary-corrected-v2.candidate.json",
+    "sha256": "sha256:b2c6af0e70faae2ab3b4ba5980ef301f37ba5634a28123194779b5c6061a3f34"
+  },
+  "summarySemanticsActualCode": {
+    "path": "app/scripts/generateByEconomicsSourceExtraction.ts",
+    "sha256": "sha256:9de3dfdbccfc7cea53aebab6449c157a651e20b2279799eab6f73d7ddf615c4c",
+    "line": 576,
+    "counts": "match types of decisions, not mapping tuples"
+  },
+  "correctedSummary": {
+    "sourceGoals": 184,
+    "reviewedSourceGoals": 184,
+    "seedMappedSourceGoals": 184,
+    "mappedSourceGoals": 184,
+    "needsCanonicalGoal": 0,
+    "exactMappings": 160,
+    "partialMappings": 24,
+    "inheritedMappings": 0
+  },
+  "actualCurrentMappingTuples": 189,
+  "actualSourceDecisionRows": 184,
+  "selectedBoundedTupleChanges": 10,
+  "selectedBoundedDecisionChanges": 10,
+  "allOther179CurrentMappingTuplesWholeExact": true,
+  "allOther174CurrentSourceDecisionsWholeExact": true,
+  "allTenPreviouslyAcceptedBoundedDispositionsAndRationalesWholeUnchanged": true,
+  "allSourceExtractionRowsWholeUnchanged": true,
+  "priorIncorrectClaimsExplicitlySuperseded": [
+    "first candidate partialMappings=29 must be24 under actual BY decision semantics",
+    "first Source10 receipt and technicalReady claim174 other mapping tuples must be179;174 other decisions remains true"
+  ],
+  "Final19Source2CurrentBindingsWholeExact": true,
+  "source35ForeignCandidateIncluded": false,
+  "regionalApplicabilityApprovalClaim": false,
+  "humanApprovalClaim": false,
+  "nativeReviewsRestarted": false,
+  "liveWrites": 0,
+  "newStrictClosures": 0,
+  "finalDPreparationFrozen": false
+}

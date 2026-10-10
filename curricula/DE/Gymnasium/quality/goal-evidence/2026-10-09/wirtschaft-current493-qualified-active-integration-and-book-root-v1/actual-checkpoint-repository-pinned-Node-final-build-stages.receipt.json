@@ -1,0 +1,39 @@
+{
+  "at": "2026-10-09T18:45:44.996368+00:00",
+  "repositoryNodePin": "20.20.2",
+  "earlierWholeBuildCommandExit1DueNode18AfterFiveBooksAndTypeScriptSucceeded": true,
+  "earlierRaw": "actual-checkpoint-full-application-build-with-real-print-fonts-and-registered-five-books.raw.txt",
+  "noRepeatedBookRendering": true,
+  "sameWholeFiveBookArtifactsNativelyReverified": true,
+  "actualStages": [
+    {
+      "stage": "typescript-build",
+      "argv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "node_modules/typescript/bin/tsc",
+        "-b"
+      ],
+      "exitCode": 0
+    },
+    {
+      "stage": "vite-production-build",
+      "argv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "node_modules/vite/bin/vite.js",
+        "build"
+      ],
+      "exitCode": 0
+    },
+    {
+      "stage": "all-five-native-publications-reverified",
+      "argv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "node_modules/tsx/dist/cli.mjs",
+        "scripts/checkGoalBookPublication.ts"
+      ],
+      "exitCode": 1
+    }
+  ],
+  "allRemainingApplicationStagesPassed": false,
+  "noWholeBuildCommandExit0Claim": true
+}

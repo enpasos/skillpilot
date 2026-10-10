@@ -1,0 +1,690 @@
+{
+  "role": "ACTUALLY_EXECUTED_INDEPENDENT_ROOT_ARITHMETIC",
+  "datasets": [
+    {
+      "case": "A-before",
+      "actualData": [
+        10,
+        20,
+        30,
+        40
+      ],
+      "actualSorted": [
+        10,
+        20,
+        30,
+        40
+      ],
+      "total": 100,
+      "actualLorenzY": [
+        "0",
+        "1/10",
+        "3/10",
+        "3/5",
+        "1"
+      ],
+      "area": "3/8",
+      "GiniArea": "1/4",
+      "GiniIndependentPairwise": "1/4"
+    },
+    {
+      "case": "A-transfer",
+      "actualData": [
+        18,
+        20,
+        30,
+        32
+      ],
+      "actualSorted": [
+        18,
+        20,
+        30,
+        32
+      ],
+      "total": 100,
+      "actualLorenzY": [
+        "0",
+        "9/50",
+        "19/50",
+        "17/25",
+        "1"
+      ],
+      "area": "87/200",
+      "GiniArea": "13/100",
+      "GiniIndependentPairwise": "13/100"
+    },
+    {
+      "case": "A-doubled",
+      "actualData": [
+        36,
+        40,
+        60,
+        64
+      ],
+      "actualSorted": [
+        36,
+        40,
+        60,
+        64
+      ],
+      "total": 200,
+      "actualLorenzY": [
+        "0",
+        "9/50",
+        "19/50",
+        "17/25",
+        "1"
+      ],
+      "area": "87/200",
+      "GiniArea": "13/100",
+      "GiniIndependentPairwise": "13/100"
+    },
+    {
+      "case": "B-before",
+      "actualData": [
+        10,
+        10,
+        30,
+        50
+      ],
+      "actualSorted": [
+        10,
+        10,
+        30,
+        50
+      ],
+      "total": 100,
+      "actualLorenzY": [
+        "0",
+        "1/10",
+        "1/5",
+        "1/2",
+        "1"
+      ],
+      "area": "13/40",
+      "GiniArea": "7/20",
+      "GiniIndependentPairwise": "7/20"
+    },
+    {
+      "case": "B-identities-resorted",
+      "actualData": [
+        20,
+        10,
+        30,
+        40
+      ],
+      "actualSorted": [
+        10,
+        20,
+        30,
+        40
+      ],
+      "total": 100,
+      "actualLorenzY": [
+        "0",
+        "1/10",
+        "3/10",
+        "3/5",
+        "1"
+      ],
+      "area": "3/8",
+      "GiniArea": "1/4",
+      "GiniIndependentPairwise": "1/4"
+    },
+    {
+      "case": "C-other-shape",
+      "actualData": [
+        0,
+        20,
+        40,
+        40
+      ],
+      "actualSorted": [
+        0,
+        20,
+        40,
+        40
+      ],
+      "total": 100,
+      "actualLorenzY": [
+        "0",
+        "0",
+        "1/5",
+        "3/5",
+        "1"
+      ],
+      "area": "13/40",
+      "GiniArea": "7/20",
+      "GiniIndependentPairwise": "7/20"
+    },
+    {
+      "case": "P1-original",
+      "actualData": [
+        10,
+        10,
+        20,
+        60
+      ],
+      "actualSorted": [
+        10,
+        10,
+        20,
+        60
+      ],
+      "total": 100,
+      "actualLorenzY": [
+        "0",
+        "1/10",
+        "1/5",
+        "2/5",
+        "1"
+      ],
+      "area": "3/10",
+      "GiniArea": "2/5",
+      "GiniIndependentPairwise": "2/5"
+    },
+    {
+      "case": "P2-transfer",
+      "actualData": [
+        20,
+        10,
+        20,
+        50
+      ],
+      "actualSorted": [
+        10,
+        20,
+        20,
+        50
+      ],
+      "total": 100,
+      "actualLorenzY": [
+        "0",
+        "1/10",
+        "3/10",
+        "1/2",
+        "1"
+      ],
+      "area": "7/20",
+      "GiniArea": "3/10",
+      "GiniIndependentPairwise": "3/10"
+    },
+    {
+      "case": "finite-equal",
+      "actualData": [
+        25,
+        25,
+        25,
+        25
+      ],
+      "actualSorted": [
+        25,
+        25,
+        25,
+        25
+      ],
+      "total": 100,
+      "actualLorenzY": [
+        "0",
+        "1/4",
+        "1/2",
+        "3/4",
+        "1"
+      ],
+      "area": "1/2",
+      "GiniArea": "0",
+      "GiniIndependentPairwise": "0"
+    },
+    {
+      "case": "finite-maximum",
+      "actualData": [
+        0,
+        0,
+        0,
+        100
+      ],
+      "actualSorted": [
+        0,
+        0,
+        0,
+        100
+      ],
+      "total": 100,
+      "actualLorenzY": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "1"
+      ],
+      "area": "1/8",
+      "GiniArea": "3/4",
+      "GiniIndependentPairwise": "3/4"
+    }
+  ],
+  "checks": [
+    {
+      "check": "A-before Lorenz versus independent pairwise Gini",
+      "actual": "1/4",
+      "expected": "1/4",
+      "pass": true
+    },
+    {
+      "check": "A-before expected Gini",
+      "actual": "1/4",
+      "expected": "1/4",
+      "pass": true
+    },
+    {
+      "check": "A-before first cumulative share",
+      "actual": "0",
+      "expected": "0",
+      "pass": true
+    },
+    {
+      "check": "A-before last cumulative share",
+      "actual": "1",
+      "expected": "1",
+      "pass": true
+    },
+    {
+      "check": "A-before ascending",
+      "actual": "[10, 20, 30, 40]",
+      "expected": "[10, 20, 30, 40]",
+      "pass": true
+    },
+    {
+      "check": "A-before nonnegative and finite-bound",
+      "actual": "True",
+      "expected": "True",
+      "pass": true
+    },
+    {
+      "check": "A-transfer Lorenz versus independent pairwise Gini",
+      "actual": "13/100",
+      "expected": "13/100",
+      "pass": true
+    },
+    {
+      "check": "A-transfer expected Gini",
+      "actual": "13/100",
+      "expected": "13/100",
+      "pass": true
+    },
+    {
+      "check": "A-transfer first cumulative share",
+      "actual": "0",
+      "expected": "0",
+      "pass": true
+    },
+    {
+      "check": "A-transfer last cumulative share",
+      "actual": "1",
+      "expected": "1",
+      "pass": true
+    },
+    {
+      "check": "A-transfer ascending",
+      "actual": "[18, 20, 30, 32]",
+      "expected": "[18, 20, 30, 32]",
+      "pass": true
+    },
+    {
+      "check": "A-transfer nonnegative and finite-bound",
+      "actual": "True",
+      "expected": "True",
+      "pass": true
+    },
+    {
+      "check": "A-doubled Lorenz versus independent pairwise Gini",
+      "actual": "13/100",
+      "expected": "13/100",
+      "pass": true
+    },
+    {
+      "check": "A-doubled expected Gini",
+      "actual": "13/100",
+      "expected": "13/100",
+      "pass": true
+    },
+    {
+      "check": "A-doubled first cumulative share",
+      "actual": "0",
+      "expected": "0",
+      "pass": true
+    },
+    {
+      "check": "A-doubled last cumulative share",
+      "actual": "1",
+      "expected": "1",
+      "pass": true
+    },
+    {
+      "check": "A-doubled ascending",
+      "actual": "[36, 40, 60, 64]",
+      "expected": "[36, 40, 60, 64]",
+      "pass": true
+    },
+    {
+      "check": "A-doubled nonnegative and finite-bound",
+      "actual": "True",
+      "expected": "True",
+      "pass": true
+    },
+    {
+      "check": "B-before Lorenz versus independent pairwise Gini",
+      "actual": "7/20",
+      "expected": "7/20",
+      "pass": true
+    },
+    {
+      "check": "B-before expected Gini",
+      "actual": "7/20",
+      "expected": "7/20",
+      "pass": true
+    },
+    {
+      "check": "B-before first cumulative share",
+      "actual": "0",
+      "expected": "0",
+      "pass": true
+    },
+    {
+      "check": "B-before last cumulative share",
+      "actual": "1",
+      "expected": "1",
+      "pass": true
+    },
+    {
+      "check": "B-before ascending",
+      "actual": "[10, 10, 30, 50]",
+      "expected": "[10, 10, 30, 50]",
+      "pass": true
+    },
+    {
+      "check": "B-before nonnegative and finite-bound",
+      "actual": "True",
+      "expected": "True",
+      "pass": true
+    },
+    {
+      "check": "B-identities-resorted Lorenz versus independent pairwise Gini",
+      "actual": "1/4",
+      "expected": "1/4",
+      "pass": true
+    },
+    {
+      "check": "B-identities-resorted expected Gini",
+      "actual": "1/4",
+      "expected": "1/4",
+      "pass": true
+    },
+    {
+      "check": "B-identities-resorted first cumulative share",
+      "actual": "0",
+      "expected": "0",
+      "pass": true
+    },
+    {
+      "check": "B-identities-resorted last cumulative share",
+      "actual": "1",
+      "expected": "1",
+      "pass": true
+    },
+    {
+      "check": "B-identities-resorted ascending",
+      "actual": "[10, 20, 30, 40]",
+      "expected": "[10, 20, 30, 40]",
+      "pass": true
+    },
+    {
+      "check": "B-identities-resorted nonnegative and finite-bound",
+      "actual": "True",
+      "expected": "True",
+      "pass": true
+    },
+    {
+      "check": "C-other-shape Lorenz versus independent pairwise Gini",
+      "actual": "7/20",
+      "expected": "7/20",
+      "pass": true
+    },
+    {
+      "check": "C-other-shape expected Gini",
+      "actual": "7/20",
+      "expected": "7/20",
+      "pass": true
+    },
+    {
+      "check": "C-other-shape first cumulative share",
+      "actual": "0",
+      "expected": "0",
+      "pass": true
+    },
+    {
+      "check": "C-other-shape last cumulative share",
+      "actual": "1",
+      "expected": "1",
+      "pass": true
+    },
+    {
+      "check": "C-other-shape ascending",
+      "actual": "[0, 20, 40, 40]",
+      "expected": "[0, 20, 40, 40]",
+      "pass": true
+    },
+    {
+      "check": "C-other-shape nonnegative and finite-bound",
+      "actual": "True",
+      "expected": "True",
+      "pass": true
+    },
+    {
+      "check": "P1-original Lorenz versus independent pairwise Gini",
+      "actual": "2/5",
+      "expected": "2/5",
+      "pass": true
+    },
+    {
+      "check": "P1-original expected Gini",
+      "actual": "2/5",
+      "expected": "2/5",
+      "pass": true
+    },
+    {
+      "check": "P1-original first cumulative share",
+      "actual": "0",
+      "expected": "0",
+      "pass": true
+    },
+    {
+      "check": "P1-original last cumulative share",
+      "actual": "1",
+      "expected": "1",
+      "pass": true
+    },
+    {
+      "check": "P1-original ascending",
+      "actual": "[10, 10, 20, 60]",
+      "expected": "[10, 10, 20, 60]",
+      "pass": true
+    },
+    {
+      "check": "P1-original nonnegative and finite-bound",
+      "actual": "True",
+      "expected": "True",
+      "pass": true
+    },
+    {
+      "check": "P2-transfer Lorenz versus independent pairwise Gini",
+      "actual": "3/10",
+      "expected": "3/10",
+      "pass": true
+    },
+    {
+      "check": "P2-transfer expected Gini",
+      "actual": "3/10",
+      "expected": "3/10",
+      "pass": true
+    },
+    {
+      "check": "P2-transfer first cumulative share",
+      "actual": "0",
+      "expected": "0",
+      "pass": true
+    },
+    {
+      "check": "P2-transfer last cumulative share",
+      "actual": "1",
+      "expected": "1",
+      "pass": true
+    },
+    {
+      "check": "P2-transfer ascending",
+      "actual": "[10, 20, 20, 50]",
+      "expected": "[10, 20, 20, 50]",
+      "pass": true
+    },
+    {
+      "check": "P2-transfer nonnegative and finite-bound",
+      "actual": "True",
+      "expected": "True",
+      "pass": true
+    },
+    {
+      "check": "finite-equal Lorenz versus independent pairwise Gini",
+      "actual": "0",
+      "expected": "0",
+      "pass": true
+    },
+    {
+      "check": "finite-equal expected Gini",
+      "actual": "0",
+      "expected": "0",
+      "pass": true
+    },
+    {
+      "check": "finite-equal first cumulative share",
+      "actual": "0",
+      "expected": "0",
+      "pass": true
+    },
+    {
+      "check": "finite-equal last cumulative share",
+      "actual": "1",
+      "expected": "1",
+      "pass": true
+    },
+    {
+      "check": "finite-equal ascending",
+      "actual": "[25, 25, 25, 25]",
+      "expected": "[25, 25, 25, 25]",
+      "pass": true
+    },
+    {
+      "check": "finite-equal nonnegative and finite-bound",
+      "actual": "True",
+      "expected": "True",
+      "pass": true
+    },
+    {
+      "check": "finite-maximum Lorenz versus independent pairwise Gini",
+      "actual": "3/4",
+      "expected": "3/4",
+      "pass": true
+    },
+    {
+      "check": "finite-maximum expected Gini",
+      "actual": "3/4",
+      "expected": "3/4",
+      "pass": true
+    },
+    {
+      "check": "finite-maximum first cumulative share",
+      "actual": "0",
+      "expected": "0",
+      "pass": true
+    },
+    {
+      "check": "finite-maximum last cumulative share",
+      "actual": "1",
+      "expected": "1",
+      "pass": true
+    },
+    {
+      "check": "finite-maximum ascending",
+      "actual": "[0, 0, 0, 100]",
+      "expected": "[0, 0, 0, 100]",
+      "pass": true
+    },
+    {
+      "check": "finite-maximum nonnegative and finite-bound",
+      "actual": "True",
+      "expected": "True",
+      "pass": true
+    },
+    {
+      "check": "A total conserved",
+      "actual": "100",
+      "expected": "100",
+      "pass": true
+    },
+    {
+      "check": "B total conserved",
+      "actual": "100",
+      "expected": "100",
+      "pass": true
+    },
+    {
+      "check": "A relative scale invariance",
+      "actual": "13/100",
+      "expected": "13/100",
+      "pass": true
+    },
+    {
+      "check": "B-C same Gini",
+      "actual": "7/20",
+      "expected": "7/20",
+      "pass": true
+    },
+    {
+      "check": "B-C lower quarter C below B",
+      "actual": "True",
+      "expected": "True",
+      "pass": true
+    },
+    {
+      "check": "B-C upper three quarters C above B",
+      "actual": "True",
+      "expected": "True",
+      "pass": true
+    },
+    {
+      "check": "actual household J1-identity versus rank change",
+      "actual": "[10, 20, 30, 40]",
+      "expected": "[10, 20, 30, 40]",
+      "pass": true
+    },
+    {
+      "check": "A area",
+      "actual": "3/8",
+      "expected": "3/8",
+      "pass": true
+    },
+    {
+      "check": "A transfer area",
+      "actual": "87/200",
+      "expected": "87/200",
+      "pass": true
+    },
+    {
+      "check": "B and C area",
+      "actual": "13/40",
+      "expected": "13/40",
+      "pass": true
+    }
+  ],
+  "checksExecuted": 70,
+  "failures": 0,
+  "authorResultsNotImported": true
+}

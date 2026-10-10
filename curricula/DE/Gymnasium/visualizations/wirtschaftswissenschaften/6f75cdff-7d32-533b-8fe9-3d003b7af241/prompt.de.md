@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Akteure des Geld- und Kapitalmarkts analysieren
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `6f75cdff-7d32-533b-8fe9-3d003b7af241`
+- Titel: Akteure des Geld- und Kapitalmarkts analysieren
+- Beschreibung: Die lernende Person kann Akteure des Geld- und Kapitalmarkts im Hinblick auf ihre Bedeutung für die Wirtschaft analysieren.
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `6f75cdff-7d32-533b-8fe9-3d003b7af241.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/6f75cdff-7d32-533b-8fe9-3d003b7af241/6f75cdff-7d32-533b-8fe9-3d003b7af241.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational. Create one original raster PNG economics learning-goal illustration, wide approximately16:9 and1600x900 or near native size. Friendly abstract clear comic, warm ivory, dark clean outlines, rounded shapes, restrained teal/coral/gold, welcoming ordinary people. Three or four spacious main visual groups. Main competence and important details recognizable at360 and680pixels; text ONLY few expressly specified large German labels. No extra headings, tiny labels, microscopic legends, watermarks, signatures, project names, slogans, brands, official emblems, medical crosses/crescents/diamonds, copied logos, photorealism, sterile technical redesign or SVG. Personal notebooks/worksheets and screens must face their actual active users; prefer floating conceptual symbols or openly shared boards. Fictional conditional teaching contexts, no observed learner work, actual latest statistics or current unsupported law. Competence: Akteure des Geld- und Kapitalmarkts analysieren. Die lernende Person kann Akteure des Geld- und Kapitalmarkts im Hinblick auf ihre Bedeutung für die Wirtschaft analysieren. Scene: Distinct financial participant groups, households/savers, enterprises and banks/investors, are linked to two separate conceptual time horizons: a short clock and a long calendar. They consider funding and financial-claim flows tied to economic activity. Only “Geldmarkt”, “Kapitalmarkt”, “Akteure”. No asset always safe, loan always profit, legal currency issuer confusion, real investment recommendation or tiny rates.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

@@ -1,0 +1,1 @@
+../../../../../../wirtschaft-1826-source-scope-and-native34views-AUTHOR-INERT-v3/native-capsule/app/src/utils/authoring/compositionViewAuthoring.ts

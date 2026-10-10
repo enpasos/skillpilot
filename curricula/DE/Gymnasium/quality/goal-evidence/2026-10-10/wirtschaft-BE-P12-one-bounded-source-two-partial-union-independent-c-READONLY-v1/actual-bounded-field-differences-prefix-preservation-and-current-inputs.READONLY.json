@@ -1,0 +1,387 @@
+{
+  "HEADbefore": "05024fa45bdf95f2ea5da54d961bfee727600f23",
+  "inputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_WAT_SEKI_RLP_2015.source-extraction.json",
+      "sha256": "c463243067552540d271304f4b80030a803fd7081033f05f711a0d706b4b778c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_wat_lower_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+      "sha256": "5dc4e83dfaa058b953c367eeffa84b6d63408852dcef99af7c8e23175b557315"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "db2c839c959c51a3e9f00a5a9c59398f568305b7439ad19674408ab7f54c42b7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "0fbd0c964a5d2013c58fefa7791d055614c151b4a0ccf426e99977a2ed265ed1"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BE/lower-secondary/Teil_C_WAT_2015_11_10.pdf",
+      "sha256": "747926234994aaf08abc521a26cbb4921e7d7d6ce7fd88db81ad770d5d539451"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-33.only-final702-sem-pointer.activation-ready.config.json",
+      "sha256": "0b55b0450631f9e0776e87979cf9fb5ad4f4b5738c82b050fd60a715a2de9568"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/33.whole-qualified-common689-native-bindings.INERT.jsonl",
+      "sha256": "46ab6123a923685c2ed07bbf25810ad9a88a1365e086f59415d155aa0a0dcbc9"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-41.only-final702-sem-pointer.activation-ready.config.json",
+      "sha256": "a6298c1e023295974ae440a67f985a6dde893c9da45a872beec7c8d07495c79d"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/41.whole-qualified-common689-native-bindings.INERT.jsonl",
+      "sha256": "41dcf240c7d50d6793a6880bc0cfad2d01f786681949c89db264e2b1c3bca069"
+    }
+  ],
+  "sourceChangedTopLevelFields": [
+    "passages",
+    "expectedTopicCodes",
+    "pipelineStatus",
+    "sourceGoals"
+  ],
+  "mappingChangedTopLevelFields": [
+    "mappings",
+    "decisions",
+    "status",
+    "summary"
+  ],
+  "oldPipelineWholeExactHistory": {
+    "currentStep": "",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliche Berlin-Wirtschaft-Quelle liegt lokal vor",
+            "passed": true,
+            "details": "PDF liegt lokal vor."
+          },
+          {
+            "id": "source-selection-reviewed",
+            "label": "Wirtschaftlich relevante Lehrplanpassagen wurden fachlich abgegrenzt",
+            "passed": true,
+            "details": "Sek I WAT wurde auf wirtschafts- und berufsbezogene Passagen begrenzt."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Aus den ausgewählten Berlin-Passagen wurden Source-Ziele erzeugt",
+            "passed": true,
+            "details": "48 Source-Ziele."
+          },
+          {
+            "id": "source-goal-trace-complete",
+            "label": "Jedes Source-Ziel hat Passage, Source-Span und Quellenreferenz",
+            "passed": true,
+            "details": "Unvollständige Source-Ziele: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "mapping-2-complete",
+            "label": "MAPPING-2 abgeschlossen",
+            "passed": true,
+            "details": "48 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
+          },
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_wat_lower_secondary_source_extraction_to_canonical_wirtschaft.review.json"
+          },
+          {
+            "id": "m3-all-source-goals-reviewed",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "48/48 Source-Ziele reviewed; offen: 0."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "Inhaltlich abgedeckt: 48/48; offene Canonical-Gaps: 0."
+          }
+        ]
+      }
+    ]
+  },
+  "oldMappingStatusAndSummary": {
+    "status": "complete",
+    "summary": {
+      "sourceGoals": 48,
+      "reviewedSourceGoals": 48,
+      "seedMappedSourceGoals": 48,
+      "mappedSourceGoals": 48,
+      "needsCanonicalGoal": 0,
+      "exactMappings": 6,
+      "partialMappings": 42,
+      "inheritedMappings": 0
+    }
+  },
+  "checks": [
+    {
+      "check": "Known explicitly authorized HEAD05024",
+      "passed": true
+    },
+    {
+      "check": "Actual input bytes curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_WAT_SEKI_RLP_2015.source-extraction.json",
+      "passed": true
+    },
+    {
+      "check": "Actual input bytes curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_wat_lower_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+      "passed": true
+    },
+    {
+      "check": "Actual input bytes curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "passed": true
+    },
+    {
+      "check": "Actual input bytes curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "passed": true
+    },
+    {
+      "check": "Actual input bytes curricula/DE/Gymnasium/input/BE/lower-secondary/Teil_C_WAT_2015_11_10.pdf",
+      "passed": true
+    },
+    {
+      "check": "Actual input bytes curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-33.only-final702-sem-pointer.activation-ready.config.json",
+      "passed": true
+    },
+    {
+      "check": "Actual input bytes curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/33.whole-qualified-common689-native-bindings.INERT.jsonl",
+      "passed": true
+    },
+    {
+      "check": "Actual input bytes curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-41.only-final702-sem-pointer.activation-ready.config.json",
+      "passed": true
+    },
+    {
+      "check": "Actual input bytes curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/41.whole-qualified-common689-native-bindings.INERT.jsonl",
+      "passed": true
+    },
+    {
+      "check": "Sealed author artifact bytes actual-P12-boundary-and-four-case-coverage.AUTHOR-PARAPHRASES.json",
+      "passed": true
+    },
+    {
+      "check": "Sealed author artifact bytes before-mapping48-97.exact.json",
+      "passed": true
+    },
+    {
+      "check": "Sealed author artifact bytes before-source48.exact.json",
+      "passed": true
+    },
+    {
+      "check": "Sealed author artifact bytes mapping49-99.two-P12-partial-edges.AUTHOR-CANDIDATE.json",
+      "passed": true
+    },
+    {
+      "check": "Sealed author artifact bytes source49.one-bounded-P12-facet.AUTHOR-CANDIDATE.json",
+      "passed": true
+    },
+    {
+      "check": "Sealed author artifact bytes whole-two-current-P-profiles-four-DEEN-cases.EXACT.json",
+      "passed": true
+    },
+    {
+      "check": "Sealed author artifact bytes whole-two-current-goals.EXACT.json",
+      "passed": true
+    },
+    {
+      "check": "Historical whole source prefix exact sourceGoals",
+      "passed": true
+    },
+    {
+      "check": "Historical whole source prefix exact passages",
+      "passed": true
+    },
+    {
+      "check": "Historical whole mapping prefix exact mappings",
+      "passed": true
+    },
+    {
+      "check": "Historical whole mapping prefix exact decisions",
+      "passed": true
+    },
+    {
+      "check": "Source differences bounded",
+      "passed": true
+    },
+    {
+      "check": "Mapping differences bounded",
+      "passed": true
+    },
+    {
+      "check": "Current total Source49 mapping49/99",
+      "passed": true
+    },
+    {
+      "check": "New bounded own Source and exact parent binding",
+      "passed": true
+    },
+    {
+      "check": "Honest authored paraphrase and limited scope",
+      "passed": true
+    },
+    {
+      "check": "Exactly two new partial edges",
+      "passed": true
+    },
+    {
+      "check": "Actual new decision retains whole limited union and partial",
+      "passed": true
+    },
+    {
+      "check": "Candidate pipeline not falsely complete",
+      "passed": true
+    },
+    {
+      "check": "Counts exact decision6/43 and edges6/93",
+      "passed": true
+    },
+    {
+      "check": "Both whole CAN contracts actually exact",
+      "passed": true
+    },
+    {
+      "check": "Actual current configured profile whole 0d8cb18d-7fd9-56f5-8009-8045d44f4127",
+      "passed": true
+    },
+    {
+      "check": "Current two full DE/EN cases 0d8cb18d-7fd9-56f5-8009-8045d44f4127",
+      "passed": true
+    },
+    {
+      "check": "Human lane unchanged 0d8cb18d-7fd9-56f5-8009-8045d44f4127",
+      "passed": true
+    },
+    {
+      "check": "Actual current configured profile whole 596c02e3-6263-5084-8593-c5f51808326b",
+      "passed": true
+    },
+    {
+      "check": "Current two full DE/EN cases 596c02e3-6263-5084-8593-c5f51808326b",
+      "passed": true
+    },
+    {
+      "check": "Human lane unchanged 596c02e3-6263-5084-8593-c5f51808326b",
+      "passed": true
+    },
+    {
+      "check": "Actual primary Pflicht parent 9/10",
+      "passed": true
+    },
+    {
+      "check": "Actual primary methods/project performance",
+      "passed": true
+    }
+  ],
+  "boundedNewRow": {
+    "id": "be-wat-seki-p12-projektmethoden-g01-ea879d83",
+    "passageId": "be-wat-seki:p12-projektmethoden-wirtschaft",
+    "topicCode": "P12-PROJEKTMETHODEN-WIRTSCHAFT",
+    "bulletIndex": 1,
+    "aspectIndex": 1,
+    "title": "BE P12: Kooperatives Wirtschafts-/Dienstleistungsprojekt mit Projektmethoden und Dokumentation bearbeiten",
+    "description": "Eigene wirtschaftlich abgegrenzte Leistungsparaphrase: Ein ausgewähltes kooperatives Wirtschafts- oder Dienstleistungsprojekt planen, tatsächlich durchführen und fachlich auswerten; dazu grundlegende Projektmanagementmethoden anwenden und den Arbeitsprozess mit bedarfsgerechten fachsprachlichen, grafischen oder multimedialen Darstellungen dokumentieren.",
+    "sourceText": "Ein ausgewähltes kooperatives Wirtschafts- oder Dienstleistungsprojekt planen, tatsächlich durchführen und fachlich auswerten; dazu grundlegende Projektmanagementmethoden anwenden und den Arbeitsprozess mit bedarfsgerechten fachsprachlichen, grafischen oder multimedialen Darstellungen dokumentieren.",
+    "sourceTextForm": "authoredDerivedCompetencyAspect",
+    "sourceSpan": "Original S.41, P12 Klassen9/10: wirtschaftlich abgegrenzte eigene Projektmethoden-Leistungsparaphrase; Pflichtbereich laut Original S.28.",
+    "parentBulletText": "P12 fordert kooperative komplexe Produkte oder Dienstleistungen samt Planung, Herstellung, Bewertung und Dokumentation; Projektmanagement und verschiedene Darstellungen gehören zum Inhalt. Hier wird ausschließlich die wirtschaftliche Projektmethoden-Facette abgeleitet.",
+    "parentBulletTextForm": "authoredBoundarySummary_not_verbatim_original",
+    "sourceRef": "Rahmenlehrplan WAT Berlin-Brandenburg 2015, Original S.28 und41, P12 Klassen9/10. Eigene begrenzte Wirtschafts-/Dienstleistungsprojekt-Facette, keine ganze technisch-innovative P12-Deckung.",
+    "courseLevel": "SekI",
+    "stage": "SekI",
+    "granularity": "authoredSourceAspect",
+    "tags": [
+      "jurisdiction:DE-BE",
+      "subject:Wirtschaft",
+      "stage:SekI",
+      "topic:P12-PROJEKTMETHODEN-WIRTSCHAFT"
+    ],
+    "rawSourceText": "Ein ausgewähltes kooperatives Wirtschafts- oder Dienstleistungsprojekt planen, tatsächlich durchführen und fachlich auswerten; dazu grundlegende Projektmanagementmethoden anwenden und den Arbeitsprozess mit bedarfsgerechten fachsprachlichen, grafischen oder multimedialen Darstellungen dokumentieren.",
+    "rawSourceSpan": "Original S.41, P12 Klassen9/10: wirtschaftlich abgegrenzte eigene Projektmethoden-Leistungsparaphrase; Pflichtbereich laut Original S.28.",
+    "rawParentBulletText": "Eigene begrenzte P12-Zusammenfassung; kein wörtlich extrahierter Original-Bullet.",
+    "rawSourceTextForm": "authoredDerivedCompetencyAspect",
+    "authoredScope": {
+      "jurisdiction": "DE-BE",
+      "stage": "SekI",
+      "yearBands": [
+        "9/10"
+      ],
+      "mandatoryParent": true,
+      "selectedEconomicProject": true,
+      "wholeTechnicalP12CoverageClaim": false,
+      "basis": "Original S.28 Pflichtbereich P12 und Original S.41; ausgewählte wirtschaftliche Umsetzung, keine Pflicht zu genau einem Projektbeispiel oder zu allen P12-Facetten."
+    },
+    "reviewStatus": "author_candidate_pending_independent_source_and_mapping_review"
+  },
+  "boundedNewPassage": {
+    "id": "be-wat-seki:p12-projektmethoden-wirtschaft",
+    "topicCode": "P12-PROJEKTMETHODEN-WIRTSCHAFT",
+    "title": "P12 Klassen9/10: wirtschaftliche Projektmethoden-Facette",
+    "text": "Ein ausgewähltes kooperatives Wirtschafts- oder Dienstleistungsprojekt planen, tatsächlich durchführen und fachlich auswerten; dazu grundlegende Projektmanagementmethoden anwenden und den Arbeitsprozess mit bedarfsgerechten fachsprachlichen, grafischen oder multimedialen Darstellungen dokumentieren.",
+    "textForm": "authoredDerivedBoundarySummary_not_verbatim_original",
+    "page": 41,
+    "sourcePath": "curricula/DE/Gymnasium/input/BE/lower-secondary/Teil_C_WAT_2015_11_10.pdf",
+    "sourceGoalIds": [
+      "be-wat-seki-p12-projektmethoden-g01-ea879d83"
+    ],
+    "sourceSpan": "Original S.41, P12 Klassen9/10: wirtschaftlich abgegrenzte eigene Projektmethoden-Leistungsparaphrase; Pflichtbereich laut Original S.28."
+  },
+  "newEdges": [
+    {
+      "legacyGoalId": "be-wat-seki-p12-projektmethoden-g01-ea879d83",
+      "canonicalGoalId": "0d8cb18d-7fd9-56f5-8009-8045d44f4127",
+      "matchType": "partial",
+      "reviewDecisionId": "be-wat-seki-p12-projektmethoden-g01-ea879d83"
+    },
+    {
+      "legacyGoalId": "be-wat-seki-p12-projektmethoden-g01-ea879d83",
+      "canonicalGoalId": "596c02e3-6263-5084-8593-c5f51808326b",
+      "matchType": "partial",
+      "reviewDecisionId": "be-wat-seki-p12-projektmethoden-g01-ea879d83"
+    }
+  ],
+  "newDecision": {
+    "sourceGoalId": "be-wat-seki-p12-projektmethoden-g01-ea879d83",
+    "topicCode": "P12-PROJEKTMETHODEN-WIRTSCHAFT",
+    "sourceSpan": "Original S.41, P12 Klassen9/10: wirtschaftlich abgegrenzte eigene Projektmethoden-Leistungsparaphrase; Pflichtbereich laut Original S.28.",
+    "decision": "mapped",
+    "canonicalGoalIds": [
+      "0d8cb18d-7fd9-56f5-8009-8045d44f4127",
+      "596c02e3-6263-5084-8593-c5f51808326b"
+    ],
+    "matchType": "partial",
+    "rationale": "AUTHOR-CANDIDATE: Original41/P12 und28/Pflichtbereich erlauben eine ausgewählte kooperative wirtschaftliche Dienstleistung. 0d8 deckt teambezogene Projektmethoden, Rollen, Netzplanung, Anpassung und bedarfsgerechte digitale Dokumentation;596 deckt eigenen Plan, tatsächliche fachliche Ausführung und Auswertung/Revisionsprüfung. Beide sind partial gegenüber dieser einen begrenzten Sourcefacette und erst gemeinsam ihre vorgeschlagene Deckung. Vier ganze aktuelle DE/EN-P-Fälle tatsächlich gelesen. Technische Innovation, technische Herstellung, Ergonomie und die übrige P12-Breite werden nicht als durch die Union abgedeckt behauptet. Aktuelle P-Profile bleiben E1/G1/ai_candidate/needs_human_review. Keine Beobachtung realer Lernender und keine menschliche Freigabe. Unabhängige Quellen-/Mappingprüfung durch C und Root offen.",
+    "reviewedAt": "2026-10-10",
+    "reviewer": "economics_final56_current_round_a; bounded source successor AUTHOR-CANDIDATE, not independent reviewer"
+  }
+}

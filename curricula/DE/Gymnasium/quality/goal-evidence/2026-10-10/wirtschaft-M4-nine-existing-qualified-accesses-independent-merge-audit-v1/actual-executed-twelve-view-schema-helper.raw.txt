@@ -1,0 +1,10 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import Ajv2020 from './app/node_modules/ajv/dist/2020.js';
+const R='/home/enpasos/projects/skillpilot';
+const O=R+'/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-nine-existing-qualified-accesses-independent-merge-audit-v1';
+const H=JSON.parse(readFileSync(R+'/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-nine-existing-qualified-material-access555-root-author-v1/actual-nine-existing-qualified-whole-materials-only-current555-accesses.root-author-handoff.json','utf8'));
+const ajv=new Ajv2020({strict:true,allErrors:true});ajv.addKeyword({keyword:'x-skillpilot-listSemantics',schemaType:'string',valid:true});
+const validate=ajv.compile(JSON.parse(readFileSync(R+'/contracts/curriculum-package/v1/composition-view.schema.json','utf8')));
+const rows=[];for(const r of H.views){for(const kind of ['before','candidate']){const v=JSON.parse(readFileSync(R+'/'+r[kind].path,'utf8'));if(!validate(v))throw Error(JSON.stringify(validate.errors));rows.push({path:r[kind].path,kind,valid:true});}}
+const neg=JSON.parse(readFileSync(R+'/'+H.views[0].candidate.path,'utf8'));neg.rootNodes[0].children.at(-1).projectionRole='wholeSubjectCompulsory';const rejected=!validate(neg);if(!rejected)throw Error('Invalid role accepted');
+writeFileSync(O+'/actual-twelve-closed-whole-view-schemas-and-invalid-role-negative.independent.json',JSON.stringify({productionSchemaUnchanged:true,registeredNonValidationAnnotationOnly:'x-skillpilot-listSemantics',wholeSchemaRows:rows,invalidProjectionRoleNegativeRejected:rejected,negativeErrors:validate.errors},null,2)+'\n');console.log(JSON.stringify({wholeSchemas:rows.length,errors:0,invalidRoleNegativeRejected:rejected}));

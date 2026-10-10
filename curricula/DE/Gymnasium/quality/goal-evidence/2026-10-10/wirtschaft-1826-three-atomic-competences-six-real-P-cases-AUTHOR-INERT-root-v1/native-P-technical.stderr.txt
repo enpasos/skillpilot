@@ -1,0 +1,8 @@
+file:///home/enpasos/projects/skillpilot/app/[eval1]:15
+ if(!schemaValid||nativeSemanticErrors.length)throw Error(JSON.stringify({goalId:goal.id,schemaErrors:validate.errors,nativeSemanticErrors}));
+                                                    ^
+
+Error: {"goalId":"1826fe19-4d06-5183-9b41-9121ae1cc219","schemaErrors":[{"instancePath":"/reviewId","schemaPath":"#/$defs/slug/pattern","keyword":"pattern","params":{"pattern":"^[a-z0-9]+(?:-[a-z0-9]+)*$"},"message":"must match pattern \"^[a-z0-9]+(?:-[a-z0-9]+)*$\""}],"nativeSemanticErrors":[]}
+    at file:///home/enpasos/projects/skillpilot/app/[eval1]:15:53
+
+Node.js v20.20.2

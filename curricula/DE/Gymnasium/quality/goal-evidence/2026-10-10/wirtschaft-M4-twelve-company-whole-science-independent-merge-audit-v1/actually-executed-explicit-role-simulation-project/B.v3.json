@@ -1,0 +1,114 @@
+{
+  "version": "B.v3",
+  "executionType": "explicit single-reviewer role simulation; no real interpersonal team claimed",
+  "roles": {
+    "A": "Ali — requirements",
+    "B": "Bea — costs",
+    "C": "Cem — room",
+    "D": "Dana — materials",
+    "E": "Dana — synthesis with sign-off by all simulated roles"
+  },
+  "network": {
+    "durations": {
+      "A": 1,
+      "B": 2,
+      "C": 3,
+      "D": 1,
+      "E": 1
+    },
+    "predecessors": {
+      "A": [],
+      "B": [
+        "A"
+      ],
+      "C": [
+        "A"
+      ],
+      "D": [
+        "B"
+      ],
+      "E": [
+        "C",
+        "D"
+      ]
+    },
+    "earliestStart": {
+      "A": 0,
+      "B": 1,
+      "C": 1,
+      "D": 3,
+      "E": 4
+    },
+    "earliestFinish": {
+      "A": 1,
+      "B": 3,
+      "C": 4,
+      "D": 4,
+      "E": 5
+    },
+    "latestStart": {
+      "E": 4,
+      "D": 3,
+      "C": 1,
+      "B": 1,
+      "A": 0
+    },
+    "latestFinish": {
+      "E": 5,
+      "D": 4,
+      "C": 4,
+      "B": 3,
+      "A": 1
+    },
+    "totalFloat": {
+      "A": 0,
+      "B": 0,
+      "C": 0,
+      "D": 0,
+      "E": 0
+    },
+    "completion": 5,
+    "criticalPaths": [
+      [
+        "A",
+        "B",
+        "D",
+        "E"
+      ],
+      [
+        "A",
+        "C",
+        "E"
+      ]
+    ]
+  },
+  "costs": {
+    "budget": 60,
+    "printing": 25,
+    "display": 15,
+    "transport": 10,
+    "sum": 50,
+    "reserve": 10
+  },
+  "actualSubjectArtefact": "Informationsstand: Budget 60; Druck 25; Anzeige 15; Transport 10; Summe 50; Reserve 10. Reserve bedeutet noch verfügbares Budget. Vorhandene Anzeige trägt diesen vollständigen Text. Materialdauer D 1; Ende 5 bei Termin 6.",
+  "digitalMediumReason": "Readable text/CSV and shared versioned JSON hold the small numerical result, assigned checks, graph and actual changes without specialised software.",
+  "simulationActionsActuallyExecuted": [
+    [
+      "Bea",
+      "Actually changed printing 35 to 25 and computed sum 50/reserve 10."
+    ],
+    [
+      "Dana",
+      "Actually changed D 4 to 1, recalculated completion and wrote the alternative stand text into display.txt."
+    ],
+    [
+      "Cem",
+      "Compared both paths: A–B–D–E and A–C–E each now take 5."
+    ],
+    [
+      "Ali",
+      "Read the actual display text, checked all given cost labels, reserve meaning and conditional display availability, and approved understandable budget/term result; actual public audience remains untested."
+    ]
+  ],
+  "parentSnapshotSHA": "cbd2584cdc5524a82e6ea61c7763f70e68b7f8649f1d09fc5a5607df4cb2bac7"
+}

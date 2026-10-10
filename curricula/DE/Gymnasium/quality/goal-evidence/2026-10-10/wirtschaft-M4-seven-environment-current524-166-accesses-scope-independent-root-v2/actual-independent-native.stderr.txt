@@ -1,0 +1,649 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected ... Lines skipped
+
+  {
+    compiledApplicability: {
+...
+        dimension: 'jurisdiction',
+        kind: 'child-union',
++       source: '36 visible child goal(s)',
+-       source: '35 visible child goal(s)',
+        value: 'DE-BE'
+      },
+...
+        dimension: 'jurisdiction',
+        kind: 'child-union',
++       source: '45 visible child goal(s)',
+-       source: '44 visible child goal(s)',
+        value: 'DE-BW'
+      },
+...
+        dimension: 'jurisdiction',
+        kind: 'child-union',
++       source: '22 visible child goal(s)',
+-       source: '21 visible child goal(s)',
+        value: 'DE-HB'
+      },
+      {
+        dimension: 'jurisdiction',
+        kind: 'child-union',
++       source: '23 visible child goal(s)',
+-       source: '22 visible child goal(s)',
+        value: 'DE-HB'
+      },
+...
+        dimension: 'jurisdiction',
+        kind: 'child-union',
++       source: '27 visible child goal(s)',
+-       source: '26 visible child goal(s)',
+        value: 'DE-NI'
+...
+    goalType: 'cluster',
+    title: 'Wirtschaftswissenschaften'
+  }
+    at assert (/tmp/skillpilot-economics-current-merged-native-root-_x0aqs8o/app/scripts/rootIndependentEnvironmentCurrent524166NativeV1.ts:14:166)
+    at Object.<anonymous> (/tmp/skillpilot-economics-current-merged-native-root-_x0aqs8o/app/scripts/rootIndependentEnvironmentCurrent524166NativeV1.ts:26:100)
+    at Module._compile (node:internal/modules/cjs/loader:1521:14)
+    at Object.transformer (/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-D46fvsV_.cjs:3:1104)
+    at Module.load (node:internal/modules/cjs/loader:1266:32)
+    at Module._load (node:internal/modules/cjs/loader:1091:12)
+    at cjsLoader (node:internal/modules/esm/translators:298:15)
+    at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:240:7)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: {
+    goalId: '96183c48-b499-54d7-8530-578f6ff40207',
+    title: 'Wirtschaftswissenschaften',
+    goalType: 'cluster',
+    compiledApplicability: {
+      jurisdiction: [
+        'DE-BB', 'DE-BE', 'DE-BW',
+        'DE-BY', 'DE-HB', 'DE-HE',
+        'DE-HH', 'DE-MV', 'DE-NI',
+        'DE-NW', 'DE-RP', 'DE-SH',
+        'DE-SL', 'DE-SN', 'DE-ST',
+        'DE-TH'
+      ]
+    },
+    evidence: [
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-BB',
+        kind: 'child-union',
+        source: '28 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-BB',
+        kind: 'child-union',
+        source: '38 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-BE',
+        kind: 'child-union',
+        source: '24 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-BE',
+        kind: 'child-union',
+        source: '27 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-BE',
+        kind: 'child-union',
+        source: '36 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-BW',
+        kind: 'child-union',
+        source: '32 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-BW',
+        kind: 'child-union',
+        source: '34 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-BW',
+        kind: 'child-union',
+        source: '45 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-BY',
+        kind: 'child-union',
+        source: '41 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-BY',
+        kind: 'child-union',
+        source: '52 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-HB',
+        kind: 'child-union',
+        source: '17 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-HB',
+        kind: 'child-union',
+        source: '18 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-HB',
+        kind: 'child-union',
+        source: '22 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-HB',
+        kind: 'child-union',
+        source: '23 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-HE',
+        kind: 'child-union',
+        source: '50 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-HE',
+        kind: 'child-union',
+        source: '59 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-HH',
+        kind: 'child-union',
+        source: '18 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-HH',
+        kind: 'child-union',
+        source: '19 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-HH',
+        kind: 'child-union',
+        source: '25 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-MV',
+        kind: 'child-union',
+        source: '18 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-MV',
+        kind: 'child-union',
+        source: '19 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-MV',
+        kind: 'child-union',
+        source: '25 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-NI',
+        kind: 'child-union',
+        source: '17 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-NI',
+        kind: 'child-union',
+        source: '19 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-NI',
+        kind: 'child-union',
+        source: '27 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-NW',
+        kind: 'child-union',
+        source: '16 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-NW',
+        kind: 'child-union',
+        source: '17 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-NW',
+        kind: 'child-union',
+        source: '24 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-RP',
+        kind: 'child-union',
+        source: '16 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-RP',
+        kind: 'child-union',
+        source: '17 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-RP',
+        kind: 'child-union',
+        source: '25 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-SH',
+        kind: 'child-union',
+        source: '18 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-SH',
+        kind: 'child-union',
+        source: '19 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-SH',
+        kind: 'child-union',
+        source: '26 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-SL',
+        kind: 'child-union',
+        source: '19 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-SL',
+        kind: 'child-union',
+        source: '20 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-SL',
+        kind: 'child-union',
+        source: '26 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-SN',
+        kind: 'child-union',
+        source: '18 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-SN',
+        kind: 'child-union',
+        source: '19 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-SN',
+        kind: 'child-union',
+        source: '25 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-ST',
+        kind: 'child-union',
+        source: '18 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-ST',
+        kind: 'child-union',
+        source: '19 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-ST',
+        kind: 'child-union',
+        source: '25 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-TH',
+        kind: 'child-union',
+        source: '22 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-TH',
+        kind: 'child-union',
+        source: '23 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-TH',
+        kind: 'child-union',
+        source: '31 visible child goal(s)'
+      }
+    ]
+  },
+  expected: {
+    goalId: '96183c48-b499-54d7-8530-578f6ff40207',
+    title: 'Wirtschaftswissenschaften',
+    goalType: 'cluster',
+    compiledApplicability: {
+      jurisdiction: [
+        'DE-BB', 'DE-BE', 'DE-BW',
+        'DE-BY', 'DE-HB', 'DE-HE',
+        'DE-HH', 'DE-MV', 'DE-NI',
+        'DE-NW', 'DE-RP', 'DE-SH',
+        'DE-SL', 'DE-SN', 'DE-ST',
+        'DE-TH'
+      ]
+    },
+    evidence: [
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-BB',
+        kind: 'child-union',
+        source: '28 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-BB',
+        kind: 'child-union',
+        source: '38 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-BE',
+        kind: 'child-union',
+        source: '24 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-BE',
+        kind: 'child-union',
+        source: '27 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-BE',
+        kind: 'child-union',
+        source: '35 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-BW',
+        kind: 'child-union',
+        source: '32 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-BW',
+        kind: 'child-union',
+        source: '34 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-BW',
+        kind: 'child-union',
+        source: '44 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-BY',
+        kind: 'child-union',
+        source: '41 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-BY',
+        kind: 'child-union',
+        source: '52 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-HB',
+        kind: 'child-union',
+        source: '17 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-HB',
+        kind: 'child-union',
+        source: '18 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-HB',
+        kind: 'child-union',
+        source: '21 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-HB',
+        kind: 'child-union',
+        source: '22 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-HE',
+        kind: 'child-union',
+        source: '50 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-HE',
+        kind: 'child-union',
+        source: '59 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-HH',
+        kind: 'child-union',
+        source: '18 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-HH',
+        kind: 'child-union',
+        source: '19 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-HH',
+        kind: 'child-union',
+        source: '25 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-MV',
+        kind: 'child-union',
+        source: '18 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-MV',
+        kind: 'child-union',
+        source: '19 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-MV',
+        kind: 'child-union',
+        source: '25 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-NI',
+        kind: 'child-union',
+        source: '17 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-NI',
+        kind: 'child-union',
+        source: '19 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-NI',
+        kind: 'child-union',
+        source: '26 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-NW',
+        kind: 'child-union',
+        source: '16 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-NW',
+        kind: 'child-union',
+        source: '17 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-NW',
+        kind: 'child-union',
+        source: '24 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-RP',
+        kind: 'child-union',
+        source: '16 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-RP',
+        kind: 'child-union',
+        source: '17 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-RP',
+        kind: 'child-union',
+        source: '25 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-SH',
+        kind: 'child-union',
+        source: '18 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-SH',
+        kind: 'child-union',
+        source: '19 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-SH',
+        kind: 'child-union',
+        source: '26 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-SL',
+        kind: 'child-union',
+        source: '19 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-SL',
+        kind: 'child-union',
+        source: '20 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-SL',
+        kind: 'child-union',
+        source: '26 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-SN',
+        kind: 'child-union',
+        source: '18 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-SN',
+        kind: 'child-union',
+        source: '19 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-SN',
+        kind: 'child-union',
+        source: '25 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-ST',
+        kind: 'child-union',
+        source: '18 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-ST',
+        kind: 'child-union',
+        source: '19 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-ST',
+        kind: 'child-union',
+        source: '25 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-TH',
+        kind: 'child-union',
+        source: '22 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-TH',
+        kind: 'child-union',
+        source: '23 visible child goal(s)'
+      },
+      {
+        dimension: 'jurisdiction',
+        value: 'DE-TH',
+        kind: 'child-union',
+        source: '31 visible child goal(s)'
+      }
+    ]
+  },
+  operator: 'deepStrictEqual'
+}
+
+Node.js v20.20.2

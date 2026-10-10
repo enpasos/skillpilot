@@ -1,0 +1,101 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "wirtschaft-current336-actual173-native-description-20261009-b03-first-pass-a-reviewer-a-run",
+  "campaignId": "wirtschaft-current336-actual173-native-description-20261009-b03-a",
+  "roundId": "wirtschaft-current336-actual173-native-description-20261009-b03-first-pass-a",
+  "batchId": "wirtschaft-current336-actual173-native-description-20261009-b03-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:a6c7e4ec3e18ffbbe1ff469ad00cd9cbfa5ad1fc8274299381178a8c86fbe38a",
+  "bundleFingerprint": "sha256:8e9e8d2ba344a4a8df999ede6205c19bdc29e9636abb62fc068216af348d2517",
+  "bookDigest": "sha256:95ab20bbb0f372b7d3e743fc1c75af970ce4eb51bd3bcf17e259607aa5ba3ac8",
+  "provider": "OpenAI",
+  "model": "Codex inherited session model",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2-round-a",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:822187937b07f787f7c3fe08199f359a06093bbf3d231ce10d66e21169c8008a",
+  "generationParametersFingerprint": "sha256:069aeabc6c487fcb9098a562dfaedf5afbb37f9bba77df2d5ef9d5e6df0be471",
+  "independenceGroupId": "wirtschaft-current336-actual173-native-description-20261009-b03-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "b727bdda-ea96-5acd-b23f-ed94777ba7a0",
+    "eee7217a-c2fb-58b6-ba84-2a8d5235edb5",
+    "dd38e0c5-d77b-5893-815c-548ea2a84429",
+    "85f0b64f-c385-5a4a-82d2-fcfdf61f48a0",
+    "a5009946-62bb-5e6a-8c92-732d02e8fd70",
+    "c5272ab8-baa0-570b-9f31-426d1f4460f2",
+    "424bae9f-8f2e-5093-a17d-ee5eadb6edde",
+    "7c9efc27-e74f-5a82-bf56-95a9aa21cb94",
+    "09e58ea8-1920-5600-bd2b-cc1f199d051f",
+    "fcf756f1-7252-54cb-9257-de8259090021",
+    "3e26fb9e-634c-5454-b11f-1d925201182c",
+    "9267ad99-f474-5fd7-8b6a-bd03fbc70394",
+    "9ebddb42-c799-5cf3-bfbc-f611ac66207b",
+    "f7034be8-64e9-5f63-9556-d7b8dc59eda7",
+    "cc57df5b-69fd-5774-90d7-aa5ebd3d1632",
+    "84f7321d-7fb7-5e3a-ab8f-8690b26929f3",
+    "b456e539-24bb-5ec5-a996-14c9c77b64d0",
+    "45bd0edd-3d4e-55f1-88bf-407c4706e860",
+    "9ea7d847-7425-5157-a827-ee5f8c2e8c0a",
+    "2a8b5b56-8c4e-5ed2-81f9-7fea08c98e60"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:bb4249aa54b97825b79a074b053d4e27dfb24dedcc641315ce73af37fa2a3a81"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:2294e7cab6f70f56ce0ea4a2c36d5abf506f410a57215fd37d60907a63d8fa94"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:9c0e94e304d6247da72539a3b91b19731748133dc47db3345da48fc9d527431a"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:e53c7f753510b54ccafcff95c4a4a56737f66e64cc41f3ed87a7710d5eb9b168"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:021f39eb514ea02870d1f4cee1b40e1c1916070ef72caab38ded6ddfc7e2a4bc"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:b222ab9e13b6068f658418d191e7f383d9099e636557ee3696664fb4cf3d4558"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:25877a4afe87a355b479f68e041d9ea1fcc8c96eb2481ed0f554fefad5641c62"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:0303e7f8a6292fe37f8137a4d1945ceb8431685ea7fa87dc88aa4726c5d78451"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:822187937b07f787f7c3fe08199f359a06093bbf3d231ce10d66e21169c8008a"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:a6c7e4ec3e18ffbbe1ff469ad00cd9cbfa5ad1fc8274299381178a8c86fbe38a"
+    }
+  ],
+  "startedAt": "2026-10-09T18:28:52.906709Z",
+  "completedAt": "2026-10-09T18:33:38.754107Z",
+  "status": "completed",
+  "outputDigest": "sha256:a8f707c3e01287bf6feaed539247cf7ec7aa4bb0e29aa88814d6dfc028862b4e",
+  "toolchainVersion": "codex-native-description-round-a-20261009-v1"
+}

@@ -1,0 +1,360 @@
+{
+  "schemaVersion": 1,
+  "role": "actual-native-current311-one-source-root-mapping-only-paired-technical-countercheck",
+  "checkedAt": "2026-10-08T20:28:25.521714+00:00",
+  "reviewer": "/root/economics_merge_audit",
+  "reviewAuthority": "technical_author_self_check; two valid older independent substantive Q4 source reviews carried, no new full173 substantive approval",
+  "actualHead": "8c4e995143e1968f2b4ca7f35bbb4e7af7784732",
+  "candidate": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-he173-immutable-source-root-course-binding-author-v1/hessen173-whole-mapping.original-input-explicit-reviewed-LK.candidate.json",
+    "sha256": "sha256:8d72853ad1d40fcba07caab62625a09e37665609e1a5540dd389eb9bccf9b993"
+  },
+  "baseMapping": {
+    "path": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_economics_upper_secondary_source_extraction_to_canonical_economics.review.json",
+    "sha256": "sha256:bc2f676206e93f49e4b1431f583f7f09998e4e53763091cae8ed5abf53f7f05b"
+  },
+  "inertSourceRootSelection": "Existing original 173-row regular HE input, no duplicate file; existing native collector now finds the same173 complete mapping decisions by exact path. One explicit LK decision preserves already accepted primary-source correction.",
+  "nativeImplementationBodySha256": "sha256:964c33119629509b0130a8af76da8f4b1e886510ac7c9262e8a11173d5145c9b",
+  "nativeImplementationChanged": false,
+  "changedNativeImplementationSuffix": "private export-only visibility for narrow read-only probe; actual function bodies unaltered",
+  "ruleOutcomes": [
+    {
+      "id": "CQR-005",
+      "before": {
+        "id": "CQR-005",
+        "status": "warn",
+        "summary": "3 source-goal count plausibility issue(s) need review before this curriculum can be treated as mature.",
+        "metrics": {
+          "sourceExtractionSources": 30,
+          "peerBaselineChecks": 27,
+          "failedPeerBaselineChecks": 3,
+          "granularityChecks": 3,
+          "failedGranularityChecks": 0
+        },
+        "details": [
+          "DE-BB: Wirtschaftswissenschaft Sekundarstufe II (Brandenburg, RLP GOST 2022 Source-Extraction) - 100 Source-Ziele; Vergleich HE/BW SEKII (58); Median 58; zulässiger 30%-Median-Korridor 41-75; Abweichung vom Median 72%.",
+          "DE-BE: Wirtschaftswissenschaft Sekundarstufe II (Berlin, RLP GOST 2022 Source-Extraction) - 100 Source-Ziele; Vergleich HE/BW SEKII (58); Median 58; zulässiger 30%-Median-Korridor 41-75; Abweichung vom Median 72%.",
+          "DE-BY: Wirtschaft und Recht (Bayern, LehrplanPLUS Source-Extraction) - 184 Source-Ziele; Vergleich HE/BW SEKI (43) + SEKII (58); Median 101; zulässiger 30%-Median-Korridor 71-131; Abweichung vom Median 82%."
+        ]
+      },
+      "after": {
+        "id": "CQR-005",
+        "status": "pass",
+        "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+        "metrics": {
+          "sourceExtractionSources": 30,
+          "peerBaselineChecks": 27,
+          "failedPeerBaselineChecks": 0,
+          "granularityChecks": 0,
+          "failedGranularityChecks": 0
+        }
+      }
+    },
+    {
+      "id": "CQR-004",
+      "before": {
+        "id": "CQR-004",
+        "status": "pass",
+        "summary": "Course-level mapping is clean for 352 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+        "metrics": {
+          "configuredMappingFiles": 32,
+          "sourceGoals": 1359,
+          "sourceGoalsWithCourseLevel": 1359,
+          "gkLkSourceGoals": 762,
+          "lkSourceGoals": 442,
+          "unspecifiedSourceGoals": 117,
+          "checkedMappingEdges": 352,
+          "defaultedUnspecifiedMappingEdges": 107,
+          "reviewedCourseLevelExceptions": 0,
+          "mismatches": 0,
+          "missingSourceGoals": 0,
+          "missingTargetGoals": 0,
+          "unmappedCourseLevelSourceGoals": 0
+        }
+      },
+      "after": {
+        "id": "CQR-004",
+        "status": "pass",
+        "summary": "Course-level mapping is clean for 352 upper-secondary source-to-canonical mapping edge(s), including 1 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+        "metrics": {
+          "configuredMappingFiles": 32,
+          "sourceGoals": 1359,
+          "sourceGoalsWithCourseLevel": 1359,
+          "gkLkSourceGoals": 762,
+          "lkSourceGoals": 442,
+          "unspecifiedSourceGoals": 117,
+          "checkedMappingEdges": 352,
+          "defaultedUnspecifiedMappingEdges": 107,
+          "reviewedCourseLevelExceptions": 1,
+          "mismatches": 0,
+          "missingSourceGoals": 0,
+          "missingTargetGoals": 0,
+          "unmappedCourseLevelSourceGoals": 0
+        }
+      }
+    },
+    {
+      "id": "CQR-003",
+      "before": {
+        "id": "CQR-003",
+        "status": "pass",
+        "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+        "metrics": {
+          "totalJurisdictions": 16,
+          "coveredJurisdictions": 16,
+          "sourceBackedJurisdictions": 16,
+          "sourceCompleteJurisdictions": 16,
+          "fullCoverageJurisdictions": 16,
+          "uncoveredJurisdictions": 0,
+          "incompleteJurisdictions": 0,
+          "unsupportedAssignmentJurisdictions": 0,
+          "sourceUnmappedJurisdictions": 0,
+          "unsupportedAssignedAtomicGoals": 0,
+          "unmappedSourceAtomicGoals": 0,
+          "sourceAtomicGoals": 2109,
+          "sourceMappedToViewAtomicGoals": 2109,
+          "sourceOriginalGoals": 2109,
+          "sourceFullyCoveredOriginalGoals": 2109,
+          "sourcePartiallyCoveredOriginalGoals": 0,
+          "sourceUncoveredOriginalGoals": 0,
+          "surrogateBackedAtomicGoals": 94,
+          "partialSourceLinkedAtomicGoals": 0,
+          "warningedJurisdictions": 0,
+          "cleanJurisdictions": 16,
+          "partialJurisdictions": 0,
+          "errorJurisdictions": 0,
+          "minSourceBackedAtomicGoals": 63,
+          "maxVisibleAtomicGoals": 269,
+          "maxSourceBackedAtomicGoals": 269,
+          "totalAtomicGoals": 282
+        }
+      },
+      "after": {
+        "id": "CQR-003",
+        "status": "pass",
+        "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+        "metrics": {
+          "totalJurisdictions": 16,
+          "coveredJurisdictions": 16,
+          "sourceBackedJurisdictions": 16,
+          "sourceCompleteJurisdictions": 16,
+          "fullCoverageJurisdictions": 16,
+          "uncoveredJurisdictions": 0,
+          "incompleteJurisdictions": 0,
+          "unsupportedAssignmentJurisdictions": 0,
+          "sourceUnmappedJurisdictions": 0,
+          "unsupportedAssignedAtomicGoals": 0,
+          "unmappedSourceAtomicGoals": 0,
+          "sourceAtomicGoals": 2109,
+          "sourceMappedToViewAtomicGoals": 2109,
+          "sourceOriginalGoals": 2109,
+          "sourceFullyCoveredOriginalGoals": 2109,
+          "sourcePartiallyCoveredOriginalGoals": 0,
+          "sourceUncoveredOriginalGoals": 0,
+          "surrogateBackedAtomicGoals": 94,
+          "partialSourceLinkedAtomicGoals": 0,
+          "warningedJurisdictions": 0,
+          "cleanJurisdictions": 16,
+          "partialJurisdictions": 0,
+          "errorJurisdictions": 0,
+          "minSourceBackedAtomicGoals": 63,
+          "maxVisibleAtomicGoals": 269,
+          "maxSourceBackedAtomicGoals": 269,
+          "totalAtomicGoals": 282
+        }
+      }
+    },
+    {
+      "id": "CQR-000",
+      "before": {
+        "id": "CQR-000",
+        "status": "pass",
+        "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+        "metrics": {
+          "totalJurisdictions": 16,
+          "completeSourceJurisdictions": 16,
+          "emptySourceJurisdictions": 0,
+          "missingReadableSourceInventoryJurisdictions": 0,
+          "originalSourceUrlIssues": 0,
+          "sourceExtractedGoals": 2109,
+          "sourceOriginalGoals": 2109,
+          "sourceUnregisteredGoals": 0,
+          "sourceExtractedAtomicGoals": 2109,
+          "sourceUnregisteredAtomicGoals": 0
+        }
+      },
+      "after": {
+        "id": "CQR-000",
+        "status": "pass",
+        "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+        "metrics": {
+          "totalJurisdictions": 16,
+          "completeSourceJurisdictions": 16,
+          "emptySourceJurisdictions": 0,
+          "missingReadableSourceInventoryJurisdictions": 0,
+          "originalSourceUrlIssues": 0,
+          "sourceExtractedGoals": 2109,
+          "sourceOriginalGoals": 2109,
+          "sourceUnregisteredGoals": 0,
+          "sourceExtractedAtomicGoals": 2109,
+          "sourceUnregisteredAtomicGoals": 0
+        }
+      }
+    }
+  ],
+  "all16WholeCoverageExactlyEqual": true,
+  "allEconomicsCompilerFindingsExactlyEqual": true,
+  "wholeCurrentCanonical389Untouched": true,
+  "currentCurricularAtomic311Unchanged": true,
+  "actualCountRebinding": "HE173 restored as existing complete HE/BW native cohort member. SekII median(58,173)=115.5; BB100/BE100 stay100, BY184 stays184 and combines SekI43 + SekII115.5=158.5. No new acceptedDeviation, no count or threshold change.",
+  "exactGranularityOfThreePreviouslyFailingSourceCounts": [
+    {
+      "sourceLandscapeId": "936fa4b0-f550-5b6a-895a-d086a3401c6e",
+      "jurisdiction": "DE-BB",
+      "sourceGoalsUnchanged": 100,
+      "sourcePath": "curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_WIRTSCHAFT_SEKII_GOST_2022.source-extraction.json",
+      "sourceWholeSha256": "sha256:d3b6348504396437474f8fc481b8182a9b4a64cba1b6ca6f0b60a3357b0bf573",
+      "actualUnchangedGranularity": {
+        "averageWords": 4.83,
+        "p90Words": 6,
+        "maxWords": 9,
+        "longGoals": 0,
+        "longGoalThreshold": 45,
+        "examples": []
+      },
+      "candidatePeerCheck": [
+        {
+          "id": "source-goal-count-peer-baseline",
+          "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
+          "passed": true,
+          "details": "100 Source-Ziele; Vergleich HE/BW SEKII (58/173); Median 116; zulässiger 30%-Median-Korridor 81-150; Abweichung vom Median -13%."
+        }
+      ]
+    },
+    {
+      "sourceLandscapeId": "3ed24627-4b87-54b7-865f-98a0744fd1a5",
+      "jurisdiction": "DE-BE",
+      "sourceGoalsUnchanged": 100,
+      "sourcePath": "curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_WIRTSCHAFT_SEKII_GOST_2022.source-extraction.json",
+      "sourceWholeSha256": "sha256:f0caaab8e8754b1472e23f7766882e819495e412e090842a851f12db87fa4787",
+      "actualUnchangedGranularity": {
+        "averageWords": 4.83,
+        "p90Words": 6,
+        "maxWords": 9,
+        "longGoals": 0,
+        "longGoalThreshold": 45,
+        "examples": []
+      },
+      "candidatePeerCheck": [
+        {
+          "id": "source-goal-count-peer-baseline",
+          "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
+          "passed": true,
+          "details": "100 Source-Ziele; Vergleich HE/BW SEKII (58/173); Median 116; zulässiger 30%-Median-Korridor 81-150; Abweichung vom Median -13%."
+        }
+      ]
+    },
+    {
+      "sourceLandscapeId": "4959d7df-e430-5c1d-bb7b-873d6252a27f",
+      "jurisdiction": "DE-BY",
+      "sourceGoalsUnchanged": 184,
+      "sourcePath": "curricula/DE/Gymnasium/input/BY/gymnasium/source-extraction/DE_BY_WIRTSCHAFT_UND_RECHT_GYMNASIUM_LEHRPLANPLUS.source-extraction.json",
+      "sourceWholeSha256": "sha256:53462162007b5029a189bfba4675bf46f2ff73f4d8c8fec2ad083ab429404c20",
+      "actualUnchangedGranularity": {
+        "averageWords": 19.679347826086957,
+        "p90Words": 30,
+        "maxWords": 45,
+        "longGoals": 0,
+        "longGoalThreshold": 45,
+        "examples": []
+      },
+      "candidatePeerCheck": [
+        {
+          "id": "source-goal-count-peer-baseline",
+          "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
+          "passed": true,
+          "details": "184 Source-Ziele; Vergleich HE/BW SEKI (43) + SEKII (58/173); Median 159; zulässiger 30%-Median-Korridor 111-206; Abweichung vom Median 16%."
+        }
+      ]
+    }
+  ],
+  "conditionalNativeGranularityChecks": "Existing native implementation emits the3 granularity followups only when count span fails; candidate therefore reports0 granularity checks. This receipt preserves actual unchanged0-long-row metrics from baseline3 native checks; no added or relaxed checker.",
+  "sourceCohortHeterogeneityDisclosure": "HE173 and BY184 are retained authored source-snapshot atoms/passages rather than verbatim official competency bullets. BW58 explicitly uses one official numbered competency expectation per source goal; BB/BE100 use operationalized official competency aspects. Restoring native count plausibility does not claim their extraction granularity is identical, nor independently certify all173/100/184 source mappings. The technical author receipt earlier abbreviated BW58 as snapshot goals; this explicit actual-method clarification supersedes that wording without altering original authored receipt.",
+  "actualReadSourceEvidence": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-course-and-readiness-independent-review-b-v1/independent-complete-bounded-source-course-and-readiness-v2.actual.receipt.json",
+      "sha256": "sha256:a4570c270b7f5f50f246ce19b3c20e2c570bc8fb321ec9c3252969c616e22cd6"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-current-source-positive-AM-root-review-v2/actual-bounded-source-course-P2-AM2-independent-root-review.receipt.json",
+      "sha256": "sha256:b88e4c588bc1c1b14ac6aac91afade5e323487c274e0d86fb004b1309e63e492"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-course-and-readiness-independent-review-b-v1/actual-independent-official-PDF49.printed49.txt",
+      "sha256": "sha256:9e19864ff71a9d1d15471901813e22b744065db096aec598abd184f72d977382"
+    }
+  ],
+  "oldSourceWholeSha256": "sha256:56dcdd7146e24ce45ba4bf80b681e532a57f9917aa4f2a1058dbc4e474b8f689",
+  "oldSourceHashBoundHistoricArtifactsPreserved": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-layer-a-route-memory-scope-candidate-v1/independent-layer-a-review/independent-countercheck.receipt.json",
+      "sha256": "sha256:5e520f05c4815486bbf02021336560da7041b50e402adf04abd16132680069b7"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-eleven-future311-source-layer-impact-technical-v1/bounded-native-source-closure-and-command.actual.json",
+      "sha256": "sha256:893dd0c30140d567ad47ad049eff6382346debd5f71f287df025eeb272a0718c"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-native-preparation-technical-20261008-v1/root-current-nineteen-integration-v1/native-current230-layer-a-v1/actual-native-missing-inputs-completion.receipt.json",
+      "sha256": "sha256:c87c800840f60e241061e1c1b8d2e9f55dff2e4e161b2d50b7ef8fd21ab35e89"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-course-and-readiness-source-author-v1/actual-bounded-source-and-readiness-author-inputs.receipt.json",
+      "sha256": "sha256:2bb2cdeeacc84906f6a2df8bca27e485b02bb638c06735bdb4fab318cf304eea"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-source-supplement-technical-author-resumed-v1/checks/ordinary-capsule-file-discovery.actual-regularization.json",
+      "sha256": "sha256:74ead2c6beee8a26d096e5d02afb465441f1f345a77e3cf7ebd32ef10efc38f8"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-course-and-readiness-independent-review-b-v1/independent-v2-bounded-whole-field-parity.actual.json",
+      "sha256": "sha256:bcfac133d8f307f0afc1992518bbd703be7d8dbf10dfc89b042659fb8a643dee"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q4-migration-current-source-positive-AM-root-review-v2/actual-bounded-source-course-P2-AM2-independent-root-review.receipt.json",
+      "sha256": "sha256:b88e4c588bc1c1b14ac6aac91afade5e323487c274e0d86fb004b1309e63e492"
+    }
+  ],
+  "initialProbeFailuresRetained": [
+    "baseline failed because isolated app/package.json omitted; unchanged actual package and TS config copied",
+    "baseline-v2 ran native computations then output accessor app.findings failed; probe accessor corrected to existing app.reports[].findings, without native logic edits"
+  ],
+  "outputs": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-he173-immutable-source-root-course-binding-author-v1/actual-native-baseline-v3.json",
+      "sha256": "sha256:55150e27422e2498ad0c39cf17744adcb79f6804494f4ab9d22b76d33e74ca95"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-he173-immutable-source-root-course-binding-author-v1/actual-native-one-pointer-one-explicit-LK-candidate-v3.json",
+      "sha256": "sha256:c57202925381678fbc3691ee3e6da9b95da09e7f96143ed8018853d96b87202e"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-he173-immutable-source-root-course-binding-author-v1/actual-native-baseline-v3.command.json",
+      "sha256": "sha256:2150fd7c997c242d6ab6b266ec831c9d0e24b28e705157db2d455f4a2495f5be"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-he173-immutable-source-root-course-binding-author-v1/actual-native-one-pointer-one-explicit-LK-candidate-v3.command.json",
+      "sha256": "sha256:1ed2d9530d349feaae2ba7e2254e5a491d2630aedd793bb582b22f07853b01fc"
+    }
+  ],
+  "independentSuccessorCounterreviewPending": true,
+  "source35SixCandidateMapsActivated": false,
+  "BB2BE2FutureGoalsActivated": false,
+  "strictClosed": 261,
+  "strictDenominator": 311,
+  "newSubstantiveClosures": 0,
+  "restoredActiveBindings": 0,
+  "strictNet": 0,
+  "activeWrites": 0,
+  "humanApprovalClaimed": false
+}

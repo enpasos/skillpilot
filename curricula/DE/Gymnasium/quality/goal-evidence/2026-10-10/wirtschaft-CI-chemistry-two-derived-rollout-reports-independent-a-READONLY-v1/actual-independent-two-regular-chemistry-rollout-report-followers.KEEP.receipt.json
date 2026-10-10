@@ -1,0 +1,2412 @@
+{
+  "role": "independent_actual_derived_output_only_technical_KEEP",
+  "decision": "keep",
+  "startedAt": "2026-10-10T20:42:50.133969+00:00",
+  "completedAt": "2026-10-10T20:42:57.145075+00:00",
+  "HEADBeforeAndEnd": "fbde16db94e4e17400d3939ab61dc38de7614f15",
+  "remoteChemicalScientificStatePreserved": "7fc85cee30efe35eb9f85be8e05be31a92edda1c",
+  "exactOnlyTrackedOutputChanges": [
+    "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.json",
+    "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.md"
+  ],
+  "outputBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.json",
+      "beforeFbdeSha256": "sha256:b747df49cc8034a635c2a4d529b6a348fc3ac7e2b4f461f6075f93374a3d20a1",
+      "actualSha256": "sha256:50033aedcb6e5a6bface88aa1678d0a1ec6f9678e41f548676365b3322f0ae68",
+      "actualBytes": 155591
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.md",
+      "beforeFbdeSha256": "sha256:6ce940816ec5a0a2300401d61302eb1cf477f1ae68f20836576d0691fc6ba878",
+      "actualSha256": "sha256:c78e810dce45c28f8f2d41b9e6703b488ee3fd5afbf617ecd264bcb4f8b6d624",
+      "actualBytes": 10782
+    }
+  ],
+  "nativeRootCommandReceipt": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/CI-chemistry-derived-rollout-report-followup.actual-command-receipts.json",
+    "sha256": "sha256:062694b8cfffca8635db6ff3450428653f37977d279e10d6139924208d918449",
+    "phaseComplete": true,
+    "allSevenCommandsExit0AndActualRawHashMatches": true,
+    "commands": [
+      {
+        "name": "quality:goal-visualization-rollout-status:chemie",
+        "command": [
+          "npm",
+          "--prefix",
+          "app",
+          "run",
+          "quality:goal-visualization-rollout-status:chemie"
+        ],
+        "startedAt": "2026-10-10T20:36:29.160974+00:00",
+        "elapsedSeconds": 0.518,
+        "exitCode": 0,
+        "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/CI-chemistry-derived-rollout-report-followup.01.quality-goal-visualization-rollout-status-chemie.raw.txt",
+        "rawOutputSha256": "8ca62d38d3bcd9f044cf90f50c0a273fcf20544e9b08b5849ddc0985a799a99f",
+        "actualRawBytes": 319,
+        "rawByteHashVerified": true
+      },
+      {
+        "name": "check:goal-visualization-rollout-coverage:chemie",
+        "command": [
+          "npm",
+          "--prefix",
+          "app",
+          "run",
+          "check:goal-visualization-rollout-coverage:chemie"
+        ],
+        "startedAt": "2026-10-10T20:36:29.679482+00:00",
+        "elapsedSeconds": 0.378,
+        "exitCode": 0,
+        "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/CI-chemistry-derived-rollout-report-followup.02.check-goal-visualization-rollout-coverage-chemie.raw.txt",
+        "rawOutputSha256": "832b579949130c7274fb354b8d3e8f6ef0ef96bf98645af0d416d52db18a73a3",
+        "actualRawBytes": 354,
+        "rawByteHashVerified": true
+      },
+      {
+        "name": "test:goal-visualization-rollout-status",
+        "command": [
+          "npm",
+          "--prefix",
+          "app",
+          "run",
+          "test:goal-visualization-rollout-status"
+        ],
+        "startedAt": "2026-10-10T20:36:30.058815+00:00",
+        "elapsedSeconds": 0.347,
+        "exitCode": 0,
+        "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/CI-chemistry-derived-rollout-report-followup.03.test-goal-visualization-rollout-status.raw.txt",
+        "rawOutputSha256": "1e77a1a19b9cf809c1a5130526c1282508c96ae591c557aef89953767e0fca48",
+        "actualRawBytes": 237,
+        "rawByteHashVerified": true
+      },
+      {
+        "name": "docs:generated-status-registry",
+        "command": [
+          "npm",
+          "--prefix",
+          "app",
+          "run",
+          "docs:generated-status-registry"
+        ],
+        "startedAt": "2026-10-10T20:36:30.406438+00:00",
+        "elapsedSeconds": 0.443,
+        "exitCode": 0,
+        "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/CI-chemistry-derived-rollout-report-followup.04.docs-generated-status-registry.raw.txt",
+        "rawOutputSha256": "65e9ae08c8545d9b7d342fbc53947a3177012476690d2911d101842ff3a56cff",
+        "actualRawBytes": 135,
+        "rawByteHashVerified": true
+      },
+      {
+        "name": "check:generated-status-registry",
+        "command": [
+          "npm",
+          "--prefix",
+          "app",
+          "run",
+          "check:generated-status-registry"
+        ],
+        "startedAt": "2026-10-10T20:36:30.849422+00:00",
+        "elapsedSeconds": 0.543,
+        "exitCode": 0,
+        "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/CI-chemistry-derived-rollout-report-followup.05.check-generated-status-registry.raw.txt",
+        "rawOutputSha256": "b9d70d7acf26466f4103877c96568903885fd8497ad661b72e597be4de75c626",
+        "actualRawBytes": 153,
+        "rawByteHashVerified": true
+      },
+      {
+        "name": "check:docs-links",
+        "command": [
+          "npm",
+          "--prefix",
+          "app",
+          "run",
+          "check:docs-links"
+        ],
+        "startedAt": "2026-10-10T20:36:31.392679+00:00",
+        "elapsedSeconds": 0.445,
+        "exitCode": 0,
+        "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/CI-chemistry-derived-rollout-report-followup.06.check-docs-links.raw.txt",
+        "rawOutputSha256": "b0879e78a17a83b3312d5c560f9c00659f492e4ca914929dca563fea82170947",
+        "actualRawBytes": 121,
+        "rawByteHashVerified": true
+      },
+      {
+        "name": "check:docs-indexes",
+        "command": [
+          "npm",
+          "--prefix",
+          "app",
+          "run",
+          "check:docs-indexes"
+        ],
+        "startedAt": "2026-10-10T20:36:31.838241+00:00",
+        "elapsedSeconds": 0.328,
+        "exitCode": 0,
+        "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/CI-chemistry-derived-rollout-report-followup.07.check-docs-indexes.raw.txt",
+        "rawOutputSha256": "2ba0d2aa99b03ea9fd1b2f717a2ad5dfae44e11d2fbb85e8d14551f368c1efe0",
+        "actualRawBytes": 131,
+        "rawByteHashVerified": true
+      }
+    ]
+  },
+  "allProtectedChemistryInputs": {
+    "count": 2420,
+    "bytesActuallyHashed": 2120049315,
+    "manifestPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-CI-chemistry-two-derived-rollout-reports-independent-a-READONLY-v1/actual-all-chemistry-canonical-QA-image-review-and-code-byte-bindings.READONLY.json",
+    "manifestSha256": "sha256:1e5732cdd521e39db2c557133281622d6b90ccffcda254ec44353b35f24df81b",
+    "allCurrentBytesEqualFbde": true,
+    "ChemistryInputsAndItsNativeGeneratorCheckerTestAndPackageEqual7fc": true,
+    "threePreviouslyQualifiedCentralCodeFilesCompareToFbdeOnly": [
+      "app/scripts/generateCurriculumQualityStatus.ts",
+      "app/scripts/testDeepUnderstandingRollout.ts",
+      "app/scripts/testGoalBookReviewBundle.ts"
+    ],
+    "inputPathsExactlyPreserved": true,
+    "changedInputPaths": [],
+    "newVisualReviewOrApprovalClaim": false
+  },
+  "centralStatusRegistryEconomicsAndFloorByteGuards": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "sha256:db2c839c959c51a3e9f00a5a9c59398f568305b7439ad19674408ab7f54c42b7",
+      "bytes": 5625906,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "sha256:0fbd0c964a5d2013c58fefa7791d055614c151b4a0ccf426e99977a2ed265ed1",
+      "bytes": 280077,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-m7-current-baseline-20261008-v1/protected-floor-input-preservation.after-assessments.actual.json",
+      "sha256": "sha256:c6d52a286aea3d25e2faff7a41f69facbe08de4c27dfcdafa5b02ec5199bde60",
+      "bytes": 2144,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/biologie-ni-five-current-adoption-candidate-v3/strict37-floor-preservation.candidate.json",
+      "sha256": "sha256:a5d9397088ea8324559b3d005fe4e0d6c5e0f0b1b0f9b8c57fd3f70f122675d1",
+      "bytes": 3000,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-b010-tf-methylation-integration-v1/integrated-curriculum-status-after-floor-remediation.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-b010-tf-methylation-integration-v1/integrated-curriculum-status-after-floor-remediation.stdout.txt",
+      "sha256": "sha256:e78069b5811e03c2db82f093e9017622bfba3a7b1223ddb22c38378109d48e14",
+      "bytes": 204,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-b010-tf-methylation-integration-v1/integrated-curriculum-status-after-floor-remediation.terminal.receipt.json",
+      "sha256": "sha256:8685586ce1b35d8c563c14f85313cdedd27889d298af21d09ac54cc6acd4a0d6",
+      "bytes": 884,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-b010-tf-methylation-integration-v1/integrated-protected-floors-after-restoration.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-b010-tf-methylation-integration-v1/integrated-protected-floors-after-restoration.stdout.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-b010-tf-methylation-integration-v1/integrated-protected-floors-after-restoration.terminal.receipt.json",
+      "sha256": "sha256:eeaa54896947f7a4c3d8f65671b5b4b637a65ac6c195379b5e0d40d33d439362",
+      "bytes": 877,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-b010-tf-methylation-integration-v1/integrated-protected-maturity-floors.stderr.txt",
+      "sha256": "sha256:ca625fbba03fb351cd514e5099b815e1d28cb0c92c913ac360e499e0c52eb0b3",
+      "bytes": 1256,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-b010-tf-methylation-integration-v1/integrated-protected-maturity-floors.stdout.txt",
+      "sha256": "sha256:1dbaeab210b2355bac0b945f255ecf91802084d61edba6e60e9e9ec47fddfd62",
+      "bytes": 101,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-b010-tf-methylation-integration-v1/integrated-protected-maturity-floors.terminal.receipt.json",
+      "sha256": "sha256:a2a1329cc5754e8958bf4ea5bae04a1807beb687e6fe42353e9591a979f9eda5",
+      "bytes": 859,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-b010-tf-methylation-integration-v1/status-before-floor-remediation.snapshot.json",
+      "sha256": "sha256:f2963cd221f9ee0128ee94348c22e4b29f6defc327daef2467e3019918dc1971",
+      "bytes": 2751289,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/protected-maturity-floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/protected-maturity-floors.stdout.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-checkpoint-v1/protected-maturity-floors.terminal.receipt.json",
+      "sha256": "sha256:b289ef293674f1b7c767dedfa5c801ece7715a9b6c28fb2c272f6fc7a111232b",
+      "bytes": 804,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/nine-maturity-floors.terminal.stdout",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-commit-ready-checkpoint-v1/stable-checkpoint-builds-and-nine-floors.terminal.receipt.json",
+      "sha256": "sha256:1ae550b20019662205aec8f121f25b726649571d3cf80ab6a84102c15b5900ed",
+      "bytes": 4297,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-ni-quantitative-integration-v1/stable-checkpoint-operative-mapping-protected-floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-ni-quantitative-integration-v1/stable-checkpoint-operative-mapping-protected-floors.stdout.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-ni-quantitative-integration-v1/stable-checkpoint-operative-mapping-protected-floors.terminal.receipt.json",
+      "sha256": "sha256:87460aa7935ba0babc39078a09a5a9dd5aefb7efdfec39a864b2a5afd41a861e",
+      "bytes": 505,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-ni-quantitative-integration-v1/stable-checkpoint-protected-maturity-floors.stderr.txt",
+      "sha256": "sha256:b87b96c72ed7737f8c7e2acd636574fecc65ddcbc73acd1d470fd5cde1333d23",
+      "bytes": 3593,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-ni-quantitative-integration-v1/stable-checkpoint-protected-maturity-floors.stdout.txt",
+      "sha256": "sha256:1dbaeab210b2355bac0b945f255ecf91802084d61edba6e60e9e9ec47fddfd62",
+      "bytes": 101,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-ni-quantitative-integration-v1/stable-checkpoint-protected-maturity-floors.terminal.receipt.json",
+      "sha256": "sha256:1fbc720b8edec75279aeed82c7f47f64298bf5819226645352964af40d701a73",
+      "bytes": 505,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-ni-quantitative-integration-v1/stable-final-protected-maturity-floors.stderr.txt",
+      "sha256": "sha256:064ee20fd53f8e2103d1ae476efb38d693127256df1f3cbd291f7a59dee19821",
+      "bytes": 1805,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-ni-quantitative-integration-v1/stable-final-protected-maturity-floors.stdout.txt",
+      "sha256": "sha256:1dbaeab210b2355bac0b945f255ecf91802084d61edba6e60e9e9ec47fddfd62",
+      "bytes": 101,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-ni-quantitative-integration-v1/stable-final-protected-maturity-floors.terminal.receipt.json",
+      "sha256": "sha256:2bffffeaa59e08f90c006da50b088b4465dab93d755f7be36df8659132cf7229",
+      "bytes": 505,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/integrated-protected-maturity-floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/integrated-protected-maturity-floors.stdout.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/integrated-protected-maturity-floors.terminal.receipt.json",
+      "sha256": "sha256:a45c7f5e6991949962724e681fc8427dd91e14038e8d821777aa17fb60677330",
+      "bytes": 849,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/stable-protected-maturity-floors-after-e7.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/stable-protected-maturity-floors-after-e7.stdout.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-biologie-q1-bacteria-e7-integration-v1/stable-protected-maturity-floors-after-e7.terminal.receipt.json",
+      "sha256": "sha256:7f16907aa899f2a314e821db4556e94dcc2fc475e7fa67eb1b8167e651256601",
+      "bytes": 859,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-by-two-current-source-applicability-floor-analysis-v1/README.md",
+      "sha256": "sha256:092a0d0eaa46bdb66116ea091dac53d1428f83e7fca3bd3f94afd2d892708120",
+      "bytes": 5081,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-by-two-current-source-applicability-floor-analysis-v1/all378.canonical-contexts.before.actual.json",
+      "sha256": "sha256:e6e34f63f775c8ee6fadec31e477e39b2a58adf8835ec39c090545ba2fe98988",
+      "bytes": 512057,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-by-two-current-source-applicability-floor-analysis-v1/all378.canonical-contexts.he-only.after.actual.json",
+      "sha256": "sha256:f33e4fe4ddd4573eaeb076dde514991040100e9b21bec292ddd4973373bcfcc5",
+      "bytes": 512019,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-by-two-current-source-applicability-floor-analysis-v1/atlas.before.actual.book-model.json",
+      "sha256": "sha256:f3058510cc3fb1a39033a58f69ed4110694d5e8a8df60d883580ad09c7edab51",
+      "bytes": 2577787,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-by-two-current-source-applicability-floor-analysis-v1/atlas.he-only.after.actual.book-model.json",
+      "sha256": "sha256:a3e7be5a2eac9efcc6278f5357916a8ee5bc3aacc5d18263e8b4fca5a35a5d40",
+      "bytes": 2577787,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-by-two-current-source-applicability-floor-analysis-v1/by-original-operator-boundaries.actual.json",
+      "sha256": "sha256:770e5038e0c50eddfc354f41759ff1971b7b897505fc1c78dd81644adc02d744",
+      "bytes": 14713,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-by-two-current-source-applicability-floor-analysis-v1/current-chemistry-targeted-applicability.actual.json",
+      "sha256": "sha256:0b2cc1b5d14828c6a3a0f97465b3baa6a40f3f569a64c2d1b169a361457b4c7d",
+      "bytes": 18809,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-by-two-current-source-applicability-floor-analysis-v1/full.before.actual.book-model.json",
+      "sha256": "sha256:945dbf6bcfd4d09170754f8614c40ecdf0084f06c1d1c14b1fd54db3f9b80a9c",
+      "bytes": 1445708,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-by-two-current-source-applicability-floor-analysis-v1/full.he-only.after.actual.book-model.json",
+      "sha256": "sha256:0a05928fab1b64de148a90621ee4f6655094f06f974ba6c963ff04d02f5c822c",
+      "bytes": 1445708,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-by-two-current-source-applicability-floor-analysis-v1/inactive-source-applicability-analysis.final.freeze.json",
+      "sha256": "sha256:73b71872c0ea539432782eb4e28134d51666a0e3b290d8e07d5b63859b704cdc",
+      "bytes": 5032,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-by-two-current-source-applicability-floor-analysis-v1/native-comparison.actual-terminal-and-code.receipt.json",
+      "sha256": "sha256:3cd86cc2c90c0b63f83f786f6c97cebc873ab57950309cbddee8ac8eb2029a5f",
+      "bytes": 2997,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-by-two-current-source-applicability-floor-analysis-v1/native-he-only-whole-input-comparison.actual.json",
+      "sha256": "sha256:84c8b25a60d91988a69ca5a2fd4e71e7a25df5e50af4df7d043b3beb23e26b35",
+      "bytes": 3910,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-by-two-current-source-applicability-floor-analysis-v1/prepared-current-d10.before.actual.json",
+      "sha256": "sha256:6bda32437a159c72c36173e0316352c82fd29c6b5e1546debc13ec64f711a23f",
+      "bytes": 55820,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-by-two-current-source-applicability-floor-analysis-v1/prepared-current-d10.he-only.after.actual.json",
+      "sha256": "sha256:4535e187a89a38bc54b8d3c976b90919577b469af3a68d32e9cdc6bc582fe27a",
+      "bytes": 55778,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-by-two-current-source-applicability-floor-analysis-v1/two-he-source-rows.current-unchanged.actual.json",
+      "sha256": "sha256:29b61676a9b1e2801cf217a7d0e1ca339c93144af9aa43ab4753e63a49bc1fd4",
+      "bytes": 2516,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-redox-one-current-integration-v1/maturity-floor-check.terminal.stdout",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-redox-one-current-integration-v1/status-and-nine-maturity-floors.terminal.receipt.json",
+      "sha256": "sha256:afdd50fa4cea0f6e998063d0ab667ba6423e41a227dadec6ac4abd26b6d9143d",
+      "bytes": 2681,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-nine-current-integration-v1/current-status-and-floor-checks.receipt.json",
+      "sha256": "sha256:23643ee94e64030b248e8c59f7637fbd5584604ca386774551480deffdd0fd29",
+      "bytes": 4224,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-stoffmenge-two-corrected-images-current-integration-v1/current-status-and-floor-checks.receipt.json",
+      "sha256": "sha256:2aa9dcc823a45e60eb37e6ba8f17637f335638f5b758fae3a0f41e948405349a",
+      "bytes": 4844,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-biologie-commit-checkpoint-verification-v3/final-current19-strict-and-floor-preservation.actual.json",
+      "sha256": "sha256:7e5135333156583aa343d48634264089dd5ce64872c94262784ac108bc27014e",
+      "bytes": 5006,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-reviewed-active-integration-v1/current-protected-maturity-floors.actual.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-reviewed-active-integration-v1/current-protected-maturity-floors.actual.stdout.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-fifteen-reviewed-integration-plan-author-v1/actual-future-strict-progress-and-protected-floor.receipt.json",
+      "sha256": "sha256:fc536548cbafb61d21c737be6afa200af8b2645730e612935814172faea0f034",
+      "bytes": 7026,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-routes-integration-preparation-v2/stable-floor-metadata-dependencies.physical-copy.actual.json",
+      "sha256": "sha256:5659f27615cee4aaeabe1bb4ead415f553f5f922e4c44fe1ec9a26f80982cbf5",
+      "bytes": 56587,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-current378-routes-integration-preparation-v2/terminal/future-all-nine-maturity-floors.native.actual.receipt.json",
+      "sha256": "sha256:f40f50ac7bf13b99074f7f80576b0c588f33e7a16871545cf731c26794e5dbc8",
+      "bytes": 354,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-q1-he-quantitative-routes-author-candidate-v1/current-376-inputs/app/scripts/config/curriculum-maturity-floor-policy.json",
+      "sha256": "sha256:bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemistry-evidence-watch-checkpoint-review-v1/maturity-floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemistry-evidence-watch-checkpoint-review-v1/maturity-floors.stdout.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemistry-evidence-watch-checkpoint-review-v1/maturity-floors.terminal.receipt.json",
+      "sha256": "sha256:76f5bf595852c8c98b772c60028cd942b71a7a435c3083954a3b20e6a8e63cbf",
+      "bytes": 505,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-human20-reviewed-active-integration-root-v1/protected-floors-after-status-refresh.actual.json",
+      "sha256": "sha256:e62f9c32aeab39cb42b524128891f64e79c5764bd04c7c6c68b90b77ff2afd38",
+      "bytes": 594,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-human20-reviewed-integration-preparation-technical-20261007-v1/before/maturityFloors.json",
+      "sha256": "sha256:bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-reviewed-active-integration-root-v1/current-neuro21-status-and-nine-maturity-floors-check.actual.stderr.txt",
+      "sha256": "sha256:d356fabad4fc9d8011448321ea3b1f2a76e4b3cc4753df4ee326e464c284d02d",
+      "bytes": 2872,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-reviewed-active-integration-root-v1/current-neuro21-status-and-nine-maturity-floors-check.actual.stdout.txt",
+      "sha256": "sha256:d9640c7e2b72a86abc589d36b9e44d3c6dd35428d34029a30f6871bf1360de92",
+      "bytes": 296,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-reviewed-active-integration-root-v1/current-neuro21-status-and-nine-maturity-floors-check.actual.terminal.receipt.json",
+      "sha256": "sha256:58da91d51114902cda2f3ee6f107de63d6bbc52459f15e770fe27baedcc66489",
+      "bytes": 353,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-source-maturity-boundaries-reviewed-integration-root-20261007-v1/reviewed-source-nine-protected-maturity-floors.actual.stderr.txt",
+      "sha256": "sha256:4f0885be3286c1df4a4995c03525a1e2207fcc23ffbf264bc937b2b0d4837328",
+      "bytes": 1066,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-source-maturity-boundaries-reviewed-integration-root-20261007-v1/reviewed-source-nine-protected-maturity-floors.actual.stdout.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-source-maturity-boundaries-reviewed-integration-root-20261007-v1/reviewed-source-nine-protected-maturity-floors.actual.terminal.receipt.json",
+      "sha256": "sha256:9a9ae16941c815078bf4423c74cee2c53e2e0f0287078cf6ed1699cdfb82e9d4",
+      "bytes": 343,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-current-commit-checkpoint-root-v1/current-stable-curriculum-status-check-and-nine-floors.actual.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-current-commit-checkpoint-root-v1/current-stable-curriculum-status-check-and-nine-floors.actual.stdout.txt",
+      "sha256": "sha256:20363a83e28b5d31426bfb566a2246c93ad0216c272d23b6e76d5bafe1e16d9c",
+      "bytes": 353,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-current-commit-checkpoint-root-v1/current-stable-curriculum-status-check-and-nine-floors.actual.terminal.receipt.json",
+      "sha256": "sha256:9e7df7b4e6364e9f1e94765b614052c9cbb2c3de180b79a50977a2f7141e0957",
+      "bytes": 354,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-biologie-ecology34-commit-checkpoint-root-v1/machine-logs/science-checkpoint134-maturity-floors.actual.log.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-reviewed-active-integration-checks-technical-20261007-v1/checks/current-maturity-floors.result.json",
+      "sha256": "sha256:1e91ae2265896f9fe8c59aa4490f4401146267a19147bdb46f89fdfe81d70ad6",
+      "bytes": 896,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-reviewed-active-integration-checks-technical-20261007-v1/checks/current-maturity-floors.stderr.txt",
+      "sha256": "sha256:9326d2fd245137116b3d3dddeca0f9b13aaf809d105ce2112c3080cefc955318",
+      "bytes": 1604,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-reviewed-active-integration-checks-technical-20261007-v1/checks/current-maturity-floors.stdout.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next17-native-description-positive-independent-b-v1/actual-current479-378-whole17-and-protected-floors.receipt.json",
+      "sha256": "sha256:899d53d6f4548159e3f345143547195515aae5dbd568b37859d88ecfb1623250",
+      "bytes": 75596,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next25-reviewed-active-integration-root-v1/curriculum-maturity-floors-check.actual.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next25-reviewed-active-integration-root-v1/curriculum-maturity-floors-check.actual.stdout.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next25-reviewed-active-integration-root-v1/curriculum-maturity-floors-check.actual.terminal.receipt.json",
+      "sha256": "sha256:81ad1b0aafeb1453d680ed6dd791e4495648fdb70b899a544f5d07b284a178a4",
+      "bytes": 235,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next25-reviewed-active-integration-root-v1/curriculum-quality-status-and-floors-final-check.actual.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next25-reviewed-active-integration-root-v1/curriculum-quality-status-and-floors-final-check.actual.stdout.txt",
+      "sha256": "sha256:20363a83e28b5d31426bfb566a2246c93ad0216c272d23b6e76d5bafe1e16d9c",
+      "bytes": 353,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next25-reviewed-active-integration-root-v1/curriculum-quality-status-and-floors-final-check.actual.terminal.receipt.json",
+      "sha256": "sha256:48297307999fab4e318499c854e3f9ad970e4ce684df5eb8050d7fc6445faaab",
+      "bytes": 296,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-reviewed-active-integration-root-resumed-v1/current-protected-maturity-floors.stderr.actual.txt",
+      "sha256": "sha256:13d05abaf5e8750e3ea9973fd1e41e207edbbbc66c1c58f6625dabd6e1c46cf1",
+      "bytes": 2442,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-reviewed-active-integration-root-resumed-v1/current-protected-maturity-floors.stdout.actual.txt",
+      "sha256": "sha256:1dbaeab210b2355bac0b945f255ecf91802084d61edba6e60e9e9ec47fddfd62",
+      "bytes": 101,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-reviewed-active-integration-root-resumed-v1/current-protected-maturity-floors.terminal.actual.json",
+      "sha256": "sha256:435badab4618b19703a8b379a018d63910e8f132de86c08763e8b46fd6fc0145",
+      "bytes": 238,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-reviewed-active-integration-root-resumed-v1/protected-floor-triggered-guarded-rollback.actual.json",
+      "sha256": "sha256:f7e84ce51f71b166dad792051e1da124296fe257d9908a5ad5760fece4456e37",
+      "bytes": 717,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-reviewed-active-integration-root-resumed-v1/rollback-protected-floors.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-reviewed-active-integration-root-resumed-v1/rollback-protected-floors.stdout.actual.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-reviewed-active-integration-root-resumed-v1/rollback-protected-floors.terminal.actual.json",
+      "sha256": "sha256:e6bbd4469d02891534adb4e6219f3f31665dfe91a98339078b2aa3ce7e1b4f1f",
+      "bytes": 238,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-source-supplement-technical-author-resumed-v1/checks/ordinary-protected-maturity-floors-v2.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-source-supplement-technical-author-resumed-v1/checks/ordinary-protected-maturity-floors-v2.stdout.actual.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-source-supplement-technical-author-resumed-v1/checks/ordinary-protected-maturity-floors-v2.terminal.actual.json",
+      "sha256": "sha256:eec5b2a951faf1c53e71cb16c099fa00c912f8b5e7f7ea7173d287e5b44f2cf7",
+      "bytes": 202,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-source-supplement-technical-author-resumed-v1/checks/ordinary-protected-maturity-floors.stderr.actual.txt",
+      "sha256": "sha256:249f66246aa35a6c06b256f8a106ad1195b0aa2d1f627002e40cea9d3f164d90",
+      "bytes": 4397,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-source-supplement-technical-author-resumed-v1/checks/ordinary-protected-maturity-floors.stdout.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-source-supplement-technical-author-resumed-v1/checks/ordinary-protected-maturity-floors.terminal.actual.json",
+      "sha256": "sha256:614b4faff20269f51dc050b670311f7235686b700be74353da32f7a57ef5897a",
+      "bytes": 1005,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-supplement-reviewed-integration-preparation-resumed-v2/checks/dependent-source-CQR003-and-nine-floors.actual.json",
+      "sha256": "sha256:0341311a4848b26a0e2874b7a215247740c87c46bc686d93ff4cb39d958b5c21",
+      "bytes": 5708,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-supplement-reviewed-integration-preparation-resumed-v2/checks/ordinary-all-nine-protected-maturity-floors.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-supplement-reviewed-integration-preparation-resumed-v2/checks/ordinary-all-nine-protected-maturity-floors.stdout.actual.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-basis2-supplement-reviewed-integration-preparation-resumed-v2/checks/ordinary-all-nine-protected-maturity-floors.terminal.actual.json",
+      "sha256": "sha256:c7fef8f5496eccabe4ca94100c89b2e8f4afed30099c9d9fdd0ee257be77b2c2",
+      "bytes": 1078,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-current204-stable-layer-a-root-20261008-v1/nine-protected-maturity-floors.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-current204-stable-layer-a-root-20261008-v1/nine-protected-maturity-floors.stdout.actual.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-current204-stable-layer-a-root-20261008-v1/nine-protected-maturity-floors.terminal.actual.json",
+      "sha256": "sha256:bcd62bc5151168e6f72960a0bd0d86fbf5a3c4a5fd521fb936461dbfad3692ae",
+      "bytes": 993,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-flora-fauna20-reviewed-integration-preparation-technical-20261008-v1/before/floors.json",
+      "sha256": "sha256:bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-flora-fauna20-stable-layer-a-technical-20261008-v1/exact-inputs/nine-maturity-floors-before.exact.json",
+      "sha256": "sha256:bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-flora-fauna20-stable-layer-a-technical-20261008-v1/nine-protected-maturity-floors.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-flora-fauna20-stable-layer-a-technical-20261008-v1/nine-protected-maturity-floors.stdout.actual.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-flora-fauna20-stable-layer-a-technical-20261008-v1/nine-protected-maturity-floors.terminal.actual.json",
+      "sha256": "sha256:527a310870217f229ae2c15ee7146eceeea1cd062f3510fab099261da9e88ff7",
+      "bytes": 975,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-evolution-eighteen-raster-native-author-technical-20261008-v1/before/floors.json",
+      "sha256": "sha256:bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-q4-evolution-eighteen-whole-science-author-20261008-v1/input-snapshots/app/scripts/config/curriculum-maturity-floor-policy.json",
+      "sha256": "sha256:bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-q4-evolution-eighteen-whole-science-independent-a-20261008-v1/input-snapshots/input-snapshots/app/scripts/config/curriculum-maturity-floor-policy.json",
+      "sha256": "sha256:bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he-q4-evolution-eighteen-whole-science-independent-b-20261008-v1/input-snapshots/author/input-snapshots/app/scripts/config/curriculum-maturity-floor-policy.json",
+      "sha256": "sha256:bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he7-foundations-cells-photosynthesis-ten-whole-science-author-20261008-v1/input-snapshots/app/scripts/config/curriculum-maturity-floor-policy.json",
+      "sha256": "sha256:bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he7-ten-reviewed-integration-preparation-technical-20261008-v1/before/floors.json",
+      "sha256": "sha256:bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-contraception-parenthood-scope-preserving-split-author-20261008-v1/input-snapshots/app/scripts/config/curriculum-maturity-floor-policy.json",
+      "sha256": "sha256:bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-eighteen-reviewed-integration-preparation-technical-20261008-v1/before/floors.json",
+      "sha256": "sha256:bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-genetic-method19-reviewed-integration-preparation-technical-20261008-v1/before/floors.json",
+      "sha256": "sha256:bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-he9-split-four-reviewed-integration-preparation-technical-20261008-v1/before/floors.json",
+      "sha256": "sha256:bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-reviewed-integration-root-20261008-v1/current-protected-maturity-floors.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-reviewed-integration-root-20261008-v1/current-protected-maturity-floors.stdout.actual.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-reviewed-integration-root-20261008-v1/current-protected-maturity-floors.terminal.actual.json",
+      "sha256": "sha256:14413bafab43e8ad41b35c962f07d73eafe75bf14a0c77b11e0f516ee0e236e4",
+      "bytes": 859,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-reviewed-integration-root-20261008-v1/current-status-and-protected-floors.actual.json",
+      "sha256": "sha256:85a78074e9999220aee20c828a8b5c0384571f16e9262b952285c486cd580534",
+      "bytes": 3370,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-first-three-reviewed-integration-root-20261008-v1/run-current-status-and-protected-floors.actual.py",
+      "sha256": "sha256:8981cd8114a3857dfb8081a3bd0043800452efe920907017b467c5eac9316229",
+      "bytes": 1972,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-reviewed-integration-root-20261008-v1/stable-protected-maturity-floors.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-reviewed-integration-root-20261008-v1/stable-protected-maturity-floors.stdout.actual.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/biologie-stoffwechsel-nineteen-reviewed-integration-root-20261008-v1/stable-protected-maturity-floors.terminal.actual.json",
+      "sha256": "sha256:558714ff0f551428dc8d18e7def4e13931d0c3eb4568f47d3e9898bc908ba32b",
+      "bytes": 851,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-q3-four-bounded-source-current-author-20261008-v1/before/floors.exact.json",
+      "sha256": "sha256:bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-q3-two-reviewed-active-integration-root-20261008-v1/before/floors.exact.json",
+      "sha256": "sha256:bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-q3-two-reviewed-integration-preparation-technical-20261008-v1/before/floors.exact.json",
+      "sha256": "sha256:bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-q3-two-source-roles-reviewed-active-integration-root-20261008-v1/before/floors.exact.json",
+      "sha256": "sha256:bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-q3-two-source-roles-reviewed-integration-preparation-technical-20261008-v1/before/floors.exact.json",
+      "sha256": "sha256:bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-q3-whole-twenty-raster-native-remediation-technical-20261008-v2/before/floors.json",
+      "sha256": "sha256:bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie175-biologie222-stable-layer-a-root-20261008-v1/nine-protected-maturity-floors.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie175-biologie222-stable-layer-a-root-20261008-v1/nine-protected-maturity-floors.stdout.actual.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie175-biologie222-stable-layer-a-root-20261008-v1/nine-protected-maturity-floors.terminal.actual.json",
+      "sha256": "sha256:38d83fd5f93611f8224e1111ad24381b0b6664f8430bbffd03a2dfab77541f5f",
+      "bytes": 997,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie244-commit-checkpoint-root-20261008-v1/portable-links-and-floors.terminal.actual.json",
+      "sha256": "sha256:5a4354ee0abe6091f4a5168173e17aea9e38212bc58c613cfcea8d0fbd985693",
+      "bytes": 536,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie244-commit-checkpoint-root-20261008-v1/protected-maturity-floors.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie244-commit-checkpoint-root-20261008-v1/protected-maturity-floors.stdout.actual.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-all-nine-protected-maturity-floors.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-all-nine-protected-maturity-floors.stdout.actual.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-all-nine-protected-maturity-floors.terminal.actual.json",
+      "sha256": "sha256:d826d2ff53c29646e08da9aff49fc2c94dbdd9262943da6beb918dad8d6fdb20",
+      "bytes": 833,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-final-all-nine-maturity-floors.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-final-all-nine-maturity-floors.stdout.actual.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie177-biologie262-commit-checkpoint-root-20261008-v1/current-final-all-nine-maturity-floors.terminal.actual.json",
+      "sha256": "sha256:9949f724431ed002f204105feb780bfa0f90a49f7eb3c7419cdc3bb191fcca39",
+      "bytes": 824,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-by-eleven-nine-bounded-current250-integration-handoff-v2/root-apply-actual-v1/current-full-central-protected-floor-check.actual.json",
+      "sha256": "sha256:752fa8267751824957bc4c6760d97f855801b027a2125e6220af2f12f3535916",
+      "bytes": 210313,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e2-twenty-native-preparation-technical-20261008-v2/root-integration-v1/current-full-central-protected-floor-check.actual.json",
+      "sha256": "sha256:662cb376756bfc9f0c1ebdfce2346e64ef385bf87f4ae171777bd20d60063234",
+      "bytes": 198309,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-law-nineteen-native-preparation-technical-20261008-v1/root-current-nineteen-integration-v1/current-full-central-protected-floor-check.actual.json",
+      "sha256": "sha256:d1ea7ca4acc29e67f3418b644bd9bc3a42664632815f1de7b00f71a8af9d2417",
+      "bytes": 208441,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-nineteen-native-preparation-technical-20261008-v1/root-integration-v1/actual-stable-root96-protected-floor-verification.receipt.json",
+      "sha256": "sha256:4d16a7f9f502abf12bf02705a7aaa8ffddcad2a5c49b578119ad7bc48dc4fda3",
+      "bytes": 641,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q2-nineteen-native-preparation-technical-20261008-v1/root-integration-v1/current-full-central-protected-floor-check.actual.json",
+      "sha256": "sha256:8edc2039f5c6126d287b897501acaebb8bc831abb8b594dcd3c680d089b07c82",
+      "bytes": 202006,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-trade-finance-sixteen-native-preparation-technical-20261008-v1/root-current-sixteen-integration-v1/actual-stable-root164-protected-floor-verification.receipt.json",
+      "sha256": "sha256:5a83171ce4c46e670822e0bad6aeae54cbaefa75ff67c4ddff3639e6a0994b77",
+      "bytes": 1324,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-trade-finance-sixteen-native-preparation-technical-20261008-v1/root-current-sixteen-integration-v1/current-full-central-protected-floor-check.actual.json",
+      "sha256": "sha256:b72eaf477abec628928f7ed15b1068ba54072e6b8fd1cb2d3901097295f52596",
+      "bytes": 205274,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft261-current311-regular-book-and-commit-checkpoint-root-v1/post-second-merge-status-check-curriculum-maturity-floors.actual.log.archive.json",
+      "sha256": "sha256:fcef3bc110e0fc015af97a6363925dccf54b464c3a5e407230623118947b85f9",
+      "bytes": 788,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft261-current311-remote-main-integration-checkpoint-root-v1/actual-remote-main-integration-and-protected-floor-check.receipt.json",
+      "sha256": "sha256:192d8bb4d143bb49e2b99b4f9dae45991e3107636001eeb6dfbd386a16bf5e73",
+      "bytes": 2239,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-reviewed-integration-root-v1/checks/current-protected-maturity-floors.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-reviewed-integration-root-v1/checks/current-protected-maturity-floors.stdout.actual.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-molecular-genetics-reviewed-integration-root-v1/checks/current-protected-maturity-floors.terminal.actual.json",
+      "sha256": "sha256:a9615105f0d7c04a67d6850ab6916b7f362d4ca1cb81dd7be8f28ddc3594970a",
+      "bytes": 831,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-two-reviewed-source-native-integration-root-v1/active-protected-maturity-floors.stderr.actual.txt",
+      "sha256": "sha256:4ec1da1986fd18f854e0e0dd7d18318f6b6c83e653c505767c5193713e45b155",
+      "bytes": 1066,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-two-reviewed-source-native-integration-root-v1/active-protected-maturity-floors.stdout.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-two-reviewed-source-native-integration-root-v1/active-protected-maturity-floors.terminal.actual.json",
+      "sha256": "sha256:3b67074caef565c33d2e61ab1bacb288e0386119ed428c1daff445b576a339b1",
+      "bytes": 937,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-two-reviewed-source-native-integration-root-v1/stable-all-nine-protected-maturity-floors.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-two-reviewed-source-native-integration-root-v1/stable-all-nine-protected-maturity-floors.stdout.actual.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-two-reviewed-source-native-integration-root-v1/stable-all-nine-protected-maturity-floors.terminal.actual.json",
+      "sha256": "sha256:d3d253371380414976fb63751c95b5e6eccb45516afb1f72ca986edac260c097",
+      "bytes": 959,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-two-reviewed-source-native-integration-root-v1/stable-protected-maturity-floors.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-two-reviewed-source-native-integration-root-v1/stable-protected-maturity-floors.stdout.actual.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-two-reviewed-source-native-integration-root-v1/stable-protected-maturity-floors.terminal.actual.json",
+      "sha256": "sha256:04fd011dc480b17a6cef1892e3ea6175d9b773e3869a89fc778e6174d90ece0c",
+      "bytes": 941,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-reviewed-integration-root-v1/checks/current-maturity-floors.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-reviewed-integration-root-v1/checks/current-maturity-floors.stdout.actual.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-upper-science-fourteen-reviewed-integration-root-v1/checks/current-maturity-floors.terminal-observed.actual.json",
+      "sha256": "sha256:83c670e14999e007648533af5896c6481da769d3c9f19a09cee5fd8acd0837eb",
+      "bytes": 919,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-biologie-current-commit-checkpoint-root-v1/floors.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-biologie-current-commit-checkpoint-root-v1/floors.stdout.actual.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-biologie-current-commit-checkpoint-root-v1/floors.terminal.actual.json",
+      "sha256": "sha256:4db33b957022b312bd2c9a065475fb8c6b9d837271ed83341e38cf2574716c43",
+      "bytes": 2641,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-M2-standard-source-availability-and-current-boundary-root-v1/actual-reviewed-M2-activation/actual-native-protected-maturity-floors.command-exit.json",
+      "sha256": "sha256:f4302666b3b8995415bdd30a449e69754751db3b9ae15ace9710ef6321ecd8c8",
+      "bytes": 934,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-M2-standard-source-availability-and-current-boundary-root-v1/actual-reviewed-M2-activation/actual-native-protected-maturity-floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-M2-standard-source-availability-and-current-boundary-root-v1/actual-reviewed-M2-activation/actual-native-protected-maturity-floors.stdout.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-M3-reviewed-core494-and-whole-CrossStage-QS-active-integration-root-v1/actual-current-native-protected-floors.command-exit.json",
+      "sha256": "sha256:982b9e9bfb10ffe83cad665807abcfd3fa97b37822db5ab7831157a499548a9e",
+      "bytes": 16,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-M3-reviewed-core494-and-whole-CrossStage-QS-active-integration-root-v1/actual-current-native-protected-floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-M3-reviewed-core494-and-whole-CrossStage-QS-active-integration-root-v1/actual-current-native-protected-floors.stdout.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Source30-orientation-GK-roles-applicability-independent-bounded-integration-review-v1/actual-before-readonly-protected-floor-check.whole-guards.json",
+      "sha256": "sha256:0b545ce726782f7e517c333f7139c4a8ea191ae1f1e464d18c62441ac1a1cea3",
+      "bytes": 1375,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Source30-orientation-GK-roles-applicability-independent-bounded-integration-review-v1/actual-one-protected-floor-check-existing-status-only-and-whole-inputs-unchanged.json",
+      "sha256": "sha256:b0271e2d880ccb04f98025caac5cb26f070514769690253057406899c09cb009",
+      "bytes": 495585,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-Source30-orientation-GK-roles-applicability-independent-bounded-integration-review-v1/actual-one-readonly-protected-floor-check.rawoutput.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-current493-qualified-active-integration-and-book-root-v1/actual-checkpoint-current-status-reproducibility-and-nine-protected-maturity-floors.raw.txt",
+      "sha256": "sha256:20363a83e28b5d31426bfb566a2246c93ad0216c272d23b6e76d5bafe1e16d9c",
+      "bytes": 353,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-current494-qualified-source-routes-memory34-central-integration-root-v1/floors.actual-command-exit.json",
+      "sha256": "sha256:ae5adccebe7d985271e62ff437b41b77c2b067c69041f9a3762a5c7dc7743e59",
+      "bytes": 408,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-current494-qualified-source-routes-memory34-central-integration-root-v1/floors.actual-stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-current494-qualified-source-routes-memory34-central-integration-root-v1/floors.actual-stdout.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-origin-main-merge-independent-protected-audit-v1/actual-central-registry-floor-status-tool-inputs.before.json",
+      "sha256": "sha256:3e2f74fb0d88fadd0e43fa9229e5bf9b0b10b7d98206c101a2837bafde7550e5",
+      "bytes": 93572,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-origin-main-merge-independent-protected-audit-v1/actual-native-floor-policy-and-current-M7-M2-status-scope.json",
+      "sha256": "sha256:dfb093c309c5a6080aa53d88c93bc02bb928ba5bf8a4f434d6f499b9040189d2",
+      "bytes": 3867,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-origin-main-merge-independent-protected-audit-v1/protected-maturity-floors.actual-command.receipt.json",
+      "sha256": "sha256:fb44cad20aea6e397809ba744b48e08e44b1c9477cbe87af8e2e3b0e2abcc642",
+      "bytes": 678,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-origin-main-merge-independent-protected-audit-v1/protected-maturity-floors.stderr.raw-output.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-origin-main-merge-independent-protected-audit-v1/protected-maturity-floors.stdout.raw-output.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-reviewed-integration-technical-portable-successor-v2/checks/current394-Bio8-protected-maturity-floors.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-reviewed-integration-technical-portable-successor-v2/checks/current394-Bio8-protected-maturity-floors.stdout.actual.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-reviewed-integration-technical-portable-successor-v2/checks/current394-Bio8-protected-maturity-floors.terminal.actual.json",
+      "sha256": "sha256:1b25336165be1823cacb19d2928e4b2b2a428e68108f57ada275db00b98aa1d0",
+      "bytes": 708,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-reviewed-active-adoption-technical-root-v1/checks/current327-nine-protected-floors.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-reviewed-active-adoption-technical-root-v1/checks/current327-nine-protected-floors.stdout.actual.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-reviewed-active-adoption-technical-root-v1/checks/current327-nine-protected-floors.terminal.actual.json",
+      "sha256": "sha256:0d0888034b0f13e3031125c9f2c835122e82faa195ae9d19ee95db42c058d3db",
+      "bytes": 668,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/maturity-floors-current335.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/maturity-floors-current335.stdout.actual.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/maturity-floors-current335.terminal.actual.json",
+      "sha256": "sha256:cf6f8e603f482b639382a7c2693c765b37f851cfefa8b85b7a61900ca3fc705b",
+      "bytes": 675,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current335-inactive-integration-technical-20261010-v1/checks/actual-current394-all335-and392-floor-preservation.normal.json",
+      "sha256": "sha256:b03fc989b0534ccee5003adbf4f5bfd9869b6e3db9d1623edb8c64f263a4b671",
+      "bytes": 958,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current335-inactive-integration-technical-20261010-v1/technical-final-current394-floor.mts",
+      "sha256": "sha256:511b18d943eaa80bc335e4f206437179b8cc14d73b6a23e2292d354dd74db02f",
+      "bytes": 3864,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current335-inactive-integration-technical-20261010-v1/terminal/final-current394-normal-model-and335-floor-preservation.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current335-inactive-integration-technical-20261010-v1/terminal/final-current394-normal-model-and335-floor-preservation.stdout.actual.txt",
+      "sha256": "sha256:05388ce9d7998823dfe6210579171429a528cc04e08cf3432e56f8d9403c3639",
+      "bytes": 171,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current335-inactive-integration-technical-20261010-v1/terminal/final-current394-normal-model-and335-floor-preservation.terminal.actual.json",
+      "sha256": "sha256:381991b8ac2d0e0c6e579e7e1c363753d9397b861249f51bb8d2af21521dc5bd",
+      "bytes": 1790,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-dual38-P38-reviewed-inactive-integration-technical-20261010-v1/technical/floor_compare.mts",
+      "sha256": "sha256:69f7ea134fc877d9c6f30ac73e9f2799cbdf3490a62175d2301d5b825311a722",
+      "bytes": 5024,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-seven-BY-source-two-direct-routes-author-20261010-v1/checks/CQR003-CQR102-protected-floor.original-normal.actual.json",
+      "sha256": "sha256:cbe55ccfff44b44a6326f65d5422da0cc218e8a23dcd942b76a39cf9ed8adea7",
+      "bytes": 22630849,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-source7-normal37-reviewed-inactive-j-private-completion-technical-successor-20261010-v2/checks/current-active-all9-protected-floors.confirmed.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-source7-normal37-reviewed-inactive-j-private-completion-technical-successor-20261010-v2/checks/current-active-all9-protected-floors.confirmed.stdout.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-source7-normal37-reviewed-inactive-j-private-completion-technical-successor-20261010-v2/checks/current-active-all9-protected-floors.confirmed.terminal.actual.json",
+      "sha256": "sha256:aaaca43f1169556e489947f573084ba77ce81cc34183c9f1f005ca7778755e53",
+      "bytes": 3254,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-source7-normal37-reviewed-inactive-j-private-completion-technical-successor-20261010-v2/checks/current-active-all9-protected-floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-source7-normal37-reviewed-inactive-j-private-completion-technical-successor-20261010-v2/checks/current-active-all9-protected-floors.stdout.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-current398-reviewed-j-active-root-integration-20261010-v1/checks/commit-normal-maturity-floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-current398-reviewed-j-active-root-integration-20261010-v1/checks/commit-normal-maturity-floors.stdout.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-current398-reviewed-j-active-root-integration-20261010-v1/checks/commit-normal-maturity-floors.terminal.actual.json",
+      "sha256": "sha256:63c349f01f23e8374fc26c842f4a6bb6a30fef4c5e571b399a93e677acd4b35d",
+      "bytes": 885,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-q3-three-reviewed-active-integration-technical-v1/checks/current487-BW3-protected-maturity-floors.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-q3-three-reviewed-active-integration-technical-v1/checks/current487-BW3-protected-maturity-floors.stdout.actual.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-q3-three-reviewed-active-integration-technical-v1/checks/current487-BW3-protected-maturity-floors.terminal.actual.json",
+      "sha256": "sha256:32d1b9ac7f81033a0e45bc111dc2051bc483148062c9929df0c3a1ae9c7a354a",
+      "bytes": 678,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-q3-three-reviewed-active-integration-technical-v1/checks/stable-current381-protected-maturity-floors.stderr.actual.txt",
+      "sha256": "sha256:eb2c2c5a393880efec135abd1464a31f10ecfa9ba8376d3e5866774345cda999",
+      "bytes": 1843,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-q3-three-reviewed-active-integration-technical-v1/checks/stable-current381-protected-maturity-floors.stdout.actual.txt",
+      "sha256": "sha256:1dbaeab210b2355bac0b945f255ecf91802084d61edba6e60e9e9ec47fddfd62",
+      "bytes": 101,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-q3-three-reviewed-active-integration-technical-v1/checks/stable-current381-protected-maturity-floors.terminal.actual.json",
+      "sha256": "sha256:b182645b1bc0e386065560ee4e29817ca1f482e3c760d2a03c71fde3125e8e9c",
+      "bytes": 684,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie206-watch-delta-two-retained-BY-source-bindings-repair-20261010-v1/checks/normal-maturity-floors.stderr.actual.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie206-watch-delta-two-retained-BY-source-bindings-repair-20261010-v1/checks/normal-maturity-floors.stdout.actual.txt",
+      "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+      "bytes": 158,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie206-watch-delta-two-retained-BY-source-bindings-repair-20261010-v1/checks/normal-maturity-floors.terminal.actual.json",
+      "sha256": "sha256:d1b156c45818463b02d2b55bf218630d43ce3e5863bd51faf83e052301654f95",
+      "bytes": 894,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-6482-EU-addendum-whole79d-cases-operators-independent-READONLY-v1/actual-history-current-canonical-registry-and-protected-floor-bindings.READONLY.json",
+      "sha256": "sha256:2146bd4ad43e3f9a9848b8c42842e68d4066ff07dab3d35a475bf98e7add13eb",
+      "bytes": 94170,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-BW43-qualified-duration-Source2135-M6-and-foreign-endguard-independent-c-READONLY-v1/verify-current-root702-qualified-BW43-M6-and-foreign-floor.READONLY.py",
+      "sha256": "sha256:d0d2f2e9f394cde75d6599191717dcbe0fe7ef5eacd995604636fc99993a6abd",
+      "bytes": 14971,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current496-qualified-large-14goals-nineviews-Source1-central-root-v2/floors.actual-command-exit.json",
+      "sha256": "sha256:6712f460ca25f386594fc6bd15eabc79e7af002d634b3bf42b457d244b4b2d86",
+      "bytes": 691,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current496-qualified-large-14goals-nineviews-Source1-central-root-v2/floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current496-qualified-large-14goals-nineviews-Source1-central-root-v2/floors.stdout.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current496-qualified-materials-support-metadata-Source125-central-root-v1/floors.actual-command-exit.json",
+      "sha256": "sha256:9703df6f1f7ef63a41838fe56ad8198786d883dca6e17095c3d716c191234a09",
+      "bytes": 701,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current496-qualified-materials-support-metadata-Source125-central-root-v1/floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current496-qualified-materials-support-metadata-Source125-central-root-v1/floors.stdout.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current499-five-qualified-whole-materials34views-central-root-v1/floors.actual-command-exit.json",
+      "sha256": "sha256:27e5d8973666181677f90e72c680ebcc32609ad6d8a6d63e5b344c3c0359250f",
+      "bytes": 683,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current499-five-qualified-whole-materials34views-central-root-v1/floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current499-five-qualified-whole-materials34views-central-root-v1/floors.stdout.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current504-four-qualified-route-packages-central-root-v1/actual-current504-strict-progress-and-protected-floors.machine-summary.json",
+      "sha256": "sha256:671c2facaa04495d6117b0fe8be9185a47ee0d8644e4ba2c33908e39bf7ae77d",
+      "bytes": 2985,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current504-four-qualified-route-packages-central-root-v1/floors.actual-command-exit.json",
+      "sha256": "sha256:85113466c41cf583ca57d0b1fc8bbba7f8f2122cd4a5a4923307822e0d7689d2",
+      "bytes": 667,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current504-four-qualified-route-packages-central-root-v1/floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current504-four-qualified-route-packages-central-root-v1/floors.stdout.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current518-E7-Glob7-qualified-central-root-v1/actual-current518-strict-progress-and-protected-floors.machine-summary.json",
+      "sha256": "sha256:9dcec4875b8c1f571e73035cdebefbf99d8c87ac7230936ebc130b47f2570319",
+      "bytes": 3042,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current518-E7-Glob7-qualified-central-root-v1/floors.actual-command-exit.json",
+      "sha256": "sha256:9da79983cd42a927590cb9d1a1a883c6c94c3293a96f6bc76066fbbb68054d3f",
+      "bytes": 645,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current518-E7-Glob7-qualified-central-root-v1/floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current518-E7-Glob7-qualified-central-root-v1/floors.stdout.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current524-six-qualified110-central-root-v1/actual-current524-strict-progress-and-protected-floors.machine-summary.json",
+      "sha256": "sha256:44b04d55d33d55729ec606a6a58101969be1f77ee94fa44e314affa7e343ce14",
+      "bytes": 3070,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current524-six-qualified110-central-root-v1/floors.actual-command-exit.json",
+      "sha256": "sha256:1f03e7f8fd635b542b31d661a9c89895eca0997f8ea4d123d4cd324ee7d289d5",
+      "bytes": 641,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current524-six-qualified110-central-root-v1/floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current524-six-qualified110-central-root-v1/floors.stdout.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current532-eight-qualified174-central-root-v1/actual-current532-strict-progress-and-protected-floors.machine-summary.json",
+      "sha256": "sha256:a8ac85a61d92321c4bdae901acf386b7c6ad8d3d34bbde991b4264f8b84be7c3",
+      "bytes": 3161,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current532-eight-qualified174-central-root-v1/floors.actual-command-exit.json",
+      "sha256": "sha256:c5fff38acf50a93fea03a891aa1faf9cc31ab91915f0b0135c13dd46d6993012",
+      "bytes": 645,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current532-eight-qualified174-central-root-v1/floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current532-eight-qualified174-central-root-v1/floors.stdout.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current555-twentythree-qualified477-central-root-v1/actual-current555-strict-progress-and-protected-floors.machine-summary.json",
+      "sha256": "sha256:150ac426797048ef39d27b11fb610465faa03a9606837c9bbd43c6a15a2e00fe",
+      "bytes": 3979,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current555-twentythree-qualified477-central-root-v1/floors.actual-command-exit.json",
+      "sha256": "sha256:1339abec483b05a294ba5cca62edf8a9ab859a4ba641613ae2a761d9ac82de62",
+      "bytes": 657,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current555-twentythree-qualified477-central-root-v1/floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current555-twentythree-qualified477-central-root-v1/floors.stdout.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current577-twentytwo-qualified470-central-root-v1/actual-current577-strict-progress-and-protected-floors.machine-summary.json",
+      "sha256": "sha256:d4752e53f5de4d9801766916d59b4ef3bb499d3358a732d89710a0b75fee1566",
+      "bytes": 3735,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current577-twentytwo-qualified470-central-root-v1/floors.actual-command-exit.json",
+      "sha256": "sha256:86d288f411d7c4875c901399c28036fa713030b38bc9792d82aa2d51a57718f8",
+      "bytes": 653,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current577-twentytwo-qualified470-central-root-v1/floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current577-twentytwo-qualified470-central-root-v1/floors.stdout.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current597-legal-social311-central-root-v1/actual-current597-strict-progress-and-protected-floors.machine-summary.json",
+      "sha256": "sha256:afa42e5c9a23fd7da065f9d7e9dc3591748c2faf234a26431048436afb886cca",
+      "bytes": 3601,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current597-legal-social311-central-root-v1/floors.actual-command-exit.json",
+      "sha256": "sha256:03fa2ed40b114fe00858b5f347a514e0d32cd976fca4c7e9b9497feb86a13c15",
+      "bytes": 639,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current597-legal-social311-central-root-v1/floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current597-legal-social311-central-root-v1/floors.stdout.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current645-company-finance-consumer-labour48-central-root-v1/actual-current645-strict-progress-and-protected-floors.machine-summary.json",
+      "sha256": "sha256:909249caae29e80362ee937bde53218bbf38d29a1f98dae144558517e544f484",
+      "bytes": 3042,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current645-company-finance-consumer-labour48-central-root-v1/floors.actual-command-exit.json",
+      "sha256": "sha256:c14bbe2f2320e9848f7e0b656f8b5095ea0f48eac80dabdc74ace5212d8e7027",
+      "bytes": 675,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current645-company-finance-consumer-labour48-central-root-v1/floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current645-company-finance-consumer-labour48-central-root-v1/floors.stdout.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-final-central-after-qualified-views-inventory-root-v2/floors.actual-command-exit.json",
+      "sha256": "sha256:c9215e2ac79834adbbeb4e3830f3cec99bb9e5eac8e90664062b9ef8929e1a6e",
+      "bytes": 689,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-final-central-after-qualified-views-inventory-root-v2/floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-final-central-after-qualified-views-inventory-root-v2/floors.stdout.txt",
+      "sha256": "sha256:1d2afd57fb6318f5d933f6d3ff5e885b9325e72a5e61249f4c2a8e616cc97433",
+      "bytes": 58,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-floor-and-current-D-diagnostic-root-v1/actual-current678-Economics-M6-floor-protected-all-nine-prior-floors-and-two-M7.json",
+      "sha256": "sha256:7bef4db4a8065a1e39a43588794a9a5fed8871fed82110c0ac318ee0bfb3f0e2",
+      "bytes": 1320,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-floor-and-current-D-diagnostic-root-v1/actual-current678-current149-open-description-goal-IDs.json",
+      "sha256": "sha256:21bf1c27a189545c75feca9d1e8a6878dbe757def0d1db5e4147a812366fb5d0",
+      "bytes": 6261,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-floor-and-current-D-diagnostic-root-v1/actual-current678-economics-only-complete-DPAMV-diagnostic.actual-command-exit.json",
+      "sha256": "sha256:35ff8969c392a3703b4c4c79550be5c2895042bf0d6013b7bd65764ad68616f7",
+      "bytes": 1244,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-floor-and-current-D-diagnostic-root-v1/actual-current678-economics-only-complete-DPAMV-diagnostic.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-floor-and-current-D-diagnostic-root-v1/actual-current678-economics-only-complete-DPAMV-diagnostic.stdout.txt",
+      "sha256": "sha256:febb23012064f295c6954f349465882049a31a5d9be44dc135d32798b61cea46",
+      "bytes": 55174,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-floor-and-current-D-diagnostic-root-v1/actual-current678-economics-only-readonly-registry-slice.json",
+      "sha256": "sha256:3f46b0ce2ec88db954130e7d1ab2b1b2f392c85ad1165335ba6b33292a60de7b",
+      "bytes": 33565,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-floor-and-current-D-diagnostic-root-v1/actual-current678-full-Economics-DPAMV-report-with-all336-IDs187-complete149-open.json",
+      "sha256": "sha256:febb23012064f295c6954f349465882049a31a5d9be44dc135d32798b61cea46",
+      "bytes": 55174,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-floor-and-current-D-diagnostic-root-v1/actual-current678-scoped-diagnostic-current-central-metrics-exact.receipt.json",
+      "sha256": "sha256:35ab2cb739311927a30f429542f1880717ad51d494d0d525bf3519d315224173",
+      "bytes": 2354,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-floor-and-current-D-diagnostic-root-v1/actual-executed-floor-and-scoped-diagnostic-helper.py",
+      "sha256": "sha256:3581ccc348feb1469d6e239693d0cad44166c3aa453609915d7325f5ff360c9d",
+      "bytes": 5956,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-floor-and-current-D-diagnostic-root-v1/actual-ten-protected-floors.actual-command-exit.json",
+      "sha256": "sha256:043af494527a44715b74f287d44fa9487b80aab0b85267f8264c6896b5817c21",
+      "bytes": 939,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-floor-and-current-D-diagnostic-root-v1/actual-ten-protected-floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-floor-and-current-D-diagnostic-root-v1/actual-ten-protected-floors.stdout.txt",
+      "sha256": "sha256:1d2afd57fb6318f5d933f6d3ff5e885b9325e72a5e61249f4c2a8e616cc97433",
+      "bytes": 58,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-floor-and-current-D-diagnostic-root-v1/whole-original-nine-floor-policy-history.before-economics-M6.json",
+      "sha256": "sha256:bcd9383ae3b02b038939c84c89ab48f6a75005b7332a6d2753fa61ba816a7de0",
+      "bytes": 3243,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-post-origin-three-commits-final-central-root-v3/floors.actual-command-exit.json",
+      "sha256": "sha256:bfc1d4a434645fb5a01f76ecc2c5537f7d5d419511df3870b69bb957fe102a8c",
+      "bytes": 677,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-post-origin-three-commits-final-central-root-v3/floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-post-origin-three-commits-final-central-root-v3/floors.stdout.txt",
+      "sha256": "sha256:1d2afd57fb6318f5d933f6d3ff5e885b9325e72a5e61249f4c2a8e616cc97433",
+      "bytes": 58,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-origin-three-commits-M6-protected-integration-root-v1/before/00-curriculum-maturity-floor-policy.json",
+      "sha256": "sha256:37300dcfafc390a364dfd2077d7fcf04b43d2db1826feb8c3225692eba2c3a0e",
+      "bytes": 3774,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-post-merged-four-commits-M6-independent-checkpoint-v1/actual-final-current678-post-merged-four-commits-M6-five-native-PASS-current-Economics-book-and-ten-floors-independent-KEEP.receipt.json",
+      "sha256": "sha256:7493376eed9752ebe337b4b432837fbff7d109a1f5d227d419518227bb5463fd",
+      "bytes": 83519,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-fifteen-v18-stable-central-root-v1/floors.actual-command-exit.json",
+      "sha256": "sha256:0690442110dd6b0f9936be8c10a176214adcf42a359fef92372c6b54bf2c4af7",
+      "bytes": 664,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-fifteen-v18-stable-central-root-v1/floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-fifteen-v18-stable-central-root-v1/floors.stdout.txt",
+      "sha256": "sha256:1d2afd57fb6318f5d933f6d3ff5e885b9325e72a5e61249f4c2a8e616cc97433",
+      "bytes": 58,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v19-current-central-before-D124-root-v1/floors.actual-command-exit.json",
+      "sha256": "sha256:e5b99aef51dde84834e81cf43f010a2bcd8572316aade78c601f7c65a316543e",
+      "bytes": 675,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v19-current-central-before-D124-root-v1/floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-qualified-v19-current-central-before-D124-root-v1/floors.stdout.txt",
+      "sha256": "sha256:1d2afd57fb6318f5d933f6d3ff5e885b9325e72a5e61249f4c2a8e616cc97433",
+      "bytes": 58,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-remaining33-central-root-v1/floors.actual-command-exit.json",
+      "sha256": "sha256:e872622af27a67cfe4592de6c0382e2b0a8b235af1b1810c8580ea2a73070438",
+      "bytes": 631,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-remaining33-central-root-v1/floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-remaining33-central-root-v1/floors.stdout.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-v20-qualified-D17-stable-central-root-v1/actual-ten-protected-floors.stderr.txt",
+      "sha256": "sha256:c36c837b867312f5b2bfdbee4745b1c7fc44e536ca13af4acade7ca8285b71be",
+      "bytes": 21468,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-v20-qualified-D17-stable-central-root-v1/actual-ten-protected-floors.stdout.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-v20-qualified-D17-stable-central-root-v1/actual-v20-D17-stable-central-and-ten-floors.exact-input.receipt.json",
+      "sha256": "sha256:10a96655defbfff08629785a0b78834ef986ea3b35db6aaf51ce074d9e9a3814",
+      "bytes": 1832,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-v21-qualified-D21-stable-central-root-v1/actual-v21-D21-stable-central-and-ten-floors.exact-input.receipt.json",
+      "sha256": "sha256:df201dc657faf41431266e86cba26ccc48cbecdbce4df0a3cb08ba5551b2fa64",
+      "bytes": 8778,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-v21-qualified-D21-stable-central-root-v1/floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-v21-qualified-D21-stable-central-root-v1/floors.stdout.txt",
+      "sha256": "sha256:1d2afd57fb6318f5d933f6d3ff5e885b9325e72a5e61249f4c2a8e616cc97433",
+      "bytes": 58,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-v21-qualified-D25-stable-central-root-v1/actual-v21-D25-stable-central-and-ten-floors.exact-input.receipt.json",
+      "sha256": "sha256:0c04e91457493b6f240bd8122d50f612e1b11a4d2b03786f169b4e7795b2b669",
+      "bytes": 8777,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-v21-qualified-D25-stable-central-root-v1/floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-v21-qualified-D25-stable-central-root-v1/floors.stdout.txt",
+      "sha256": "sha256:1d2afd57fb6318f5d933f6d3ff5e885b9325e72a5e61249f4c2a8e616cc97433",
+      "bytes": 58,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-v21-qualified-D48-stable-central-root-v1/actual-v21-D48-stable-central-and-ten-floors.exact-input.receipt.json",
+      "sha256": "sha256:86590d4c40e31c7994051f7ffebef73fbbae33d24222c4b7e071669aa97077ad",
+      "bytes": 8779,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-v21-qualified-D48-stable-central-root-v1/floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-v21-qualified-D48-stable-central-root-v1/floors.stdout.txt",
+      "sha256": "sha256:1d2afd57fb6318f5d933f6d3ff5e885b9325e72a5e61249f4c2a8e616cc97433",
+      "bytes": 58,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final679-source-core-stable-central-root-v22/actual-final679-stable-central-and-ten-floors.exact-input.receipt.json",
+      "sha256": "sha256:1d7c6bc3885693ec99c0f4cd7554af9ed6e84dd835a168207bd8fe9e9d3eb5f1",
+      "bytes": 9434,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final679-source-core-stable-central-root-v22/actual-ten-floors.stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final679-source-core-stable-central-root-v22/actual-ten-floors.stdout.txt",
+      "sha256": "sha256:1d2afd57fb6318f5d933f6d3ff5e885b9325e72a5e61249f4c2a8e616cc97433",
+      "bytes": 58,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-current346-M6-source-scope-and-foreign-floor-independent-c-READONLY-v1/SEALED-actual-M6-source-scope-and-protected-foreign-floor-independent-KEEP.READONLY.json",
+      "sha256": "sha256:1384bf75504f39cd26d81cc57cf19e341944630f7383910cdbe209b4a928f8b8",
+      "bytes": 2147,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-current346-M6-source-scope-and-foreign-floor-independent-c-READONLY-v1/actual-current702-346-M6-Source2135-BEraw3Pending-and20foreign-floor-independent-KEEP.SEALED.receipt.json",
+      "sha256": "sha256:cc945e9cca7a20271247338379a0e0d11744aee96c806e1dbc00000d2c94cde0",
+      "bytes": 243469,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-current346-M6-source-scope-and-foreign-floor-independent-c-READONLY-v1/preserved-original-foreign20-and807-input-before-baseline.EXACT.json",
+      "sha256": "sha256:05a118b52fad94b42647cec4afdf98b8fbfd1cea05724bc6b156168e613edc4b",
+      "bytes": 3060988,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-current346-M6-source-scope-and-foreign-floor-independent-c-READONLY-v1/review-stable-root702-current346-final-status.READONLY.py",
+      "sha256": "sha256:3f4693ecc1c49d611ce441ab352dffb63059808834611c2c717d69a5a3b33f43",
+      "bytes": 13291,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-current346-strict-IDset-vs229-READONLY-v1/SEALED-existing-native-current346-strict-IDset-loss-and-protected-floors.READONLY.json",
+      "sha256": "sha256:56cf4fea2687fd33822a2a19cbd9ac26c0e78903904dc7ee890d991890fd84b7",
+      "bytes": 1535,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/BW-qualified-final.08.check-curriculum-maturity-floors.raw.txt",
+      "sha256": "sha256:959f6932ca04e96e121ba58bd4878d17b1fe4fe8c52b5f5b82deb86bda94a70d",
+      "bytes": 159,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/remote-7fc-targeted-merge-final.08.check-curriculum-maturity-floors.raw.txt",
+      "sha256": "sha256:959f6932ca04e96e121ba58bd4878d17b1fe4fe8c52b5f5b82deb86bda94a70d",
+      "bytes": 159,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/remote-cd7-merged-M6-qualified-final.09.check-curriculum-maturity-floors.raw.txt",
+      "sha256": "sha256:959f6932ca04e96e121ba58bd4878d17b1fe4fe8c52b5f5b82deb86bda94a70d",
+      "bytes": 159,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-origin-main-122b7645d-current494-integration-root-v1/floors.actual-command-exit.json",
+      "sha256": "sha256:9a50e3ee0bbb9a9cec638c76bb4dbb80bc9f1a7ada5137a83d4d02cf2225bf2a",
+      "bytes": 80,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-origin-main-122b7645d-current494-integration-root-v1/floors.actual-stderr.txt",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-origin-main-122b7645d-current494-integration-root-v1/floors.actual-stdout.txt",
+      "sha256": "sha256:338ff6543891e9d6a82e8bf96d1e99eb5fac6c2ae67e565fc20c5568a1f9405b",
+      "bytes": 57,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/README.md",
+      "sha256": "sha256:5df19e6280a01a0fcf280665cf4a8ce8e857ae8ddd63f20ff3e7dac83601d794",
+      "bytes": 15307,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/codex-write-check",
+      "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.json",
+      "sha256": "sha256:0117ad07ee2e459995bf9d2f4e8740eb16b85b4f116ddcfc9330486577d7fa8b",
+      "bytes": 2783739,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.md",
+      "sha256": "sha256:bcb53cfc244f8d398bd0d94588f2a6b2f86c5dac47cc38a3a595f626cf3e7e30",
+      "bytes": 66186,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-source-coverage-audit.json",
+      "sha256": "sha256:87b3a1dba4543ea1a2e17642cc95232749d7991027050bd8b06dd01123e401c3",
+      "bytes": 213066,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-source-coverage-audit.md",
+      "sha256": "sha256:74c91e6243d398935d6425a7a96025858d988d9b4fe91f314e0bb314e2eec654",
+      "bytes": 5838,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/english-remediation-pilot.md",
+      "sha256": "sha256:da8d4b55bc63e7b01b39dfd1fe856d17caa7889dc638daefb74e42ebdb1df15e",
+      "bytes": 7277,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/goal-source-rationale-coverage.json",
+      "sha256": "sha256:facf4f186b4821c549d830119eda09409bf4f038ee208bb181a3ffab7929838b",
+      "bytes": 1620347,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/goal-source-rationale-coverage.md",
+      "sha256": "sha256:bf1d1cede0b66ae4854c261f6624c29f253d2daa6b1261d9eba2223a44c3f6fe",
+      "bytes": 72036,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/goal-source-rationale-gap-issues.json",
+      "sha256": "sha256:09acfd560a5deb22a133775f8ab0ae303f9e2a112cbf4ee393ec1325dba64e6f",
+      "bytes": 108936,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/goal-source-rationale-gap-issues.md",
+      "sha256": "sha256:cd788a6e54d532e3440d11604e3923d311e43af4a4fea7d4ae1ccb2c5b794e21",
+      "bytes": 26479,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/goal-source-rationale-mapping-batch-01.json",
+      "sha256": "sha256:a877bdb29df759c8bccbd0deb0fdb91a4032f82e672d9e29c2fc72e684f8af6a",
+      "bytes": 46513,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/goal-source-rationale-mapping-batch-01.md",
+      "sha256": "sha256:ef49aeb2ac5435ab061271ca2b04c2f5be90945c9c25ed460be87c37273e1fef",
+      "bytes": 16146,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/goal-source-rationales-math-all-relevant.json",
+      "sha256": "sha256:8a00eaa2c8fc112e1d9da2827364067490d113ab85c151bed68787212dbd69be",
+      "bytes": 34793616,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/goal-source-rationales-mem-examples-plain.json",
+      "sha256": "sha256:c0de4cc14913437e1b9e1739e2ac609de1588b6991c950961e62938c74f4061c",
+      "bytes": 126668,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/goal-source-rationales-mem-examples-plain.md",
+      "sha256": "sha256:b71f51e99b7d844ae67bba08a42aa35a17b93f24e4a75522092d2fc216fae5ed",
+      "bytes": 17038,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/goal-source-rationales-mem-examples.json",
+      "sha256": "sha256:c27fdf60f2e75e6b4f530eb35f7b629cf98db9d7515bc9d2e55e0d428fe3d358",
+      "bytes": 126672,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/goal-source-rationales-mem-examples.md",
+      "sha256": "sha256:57ad865a33dcf9c7ce292ec23ff2e9ae9aaf70f66b9d64622f7bbe9d56622e34",
+      "bytes": 15088,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/goal-source-rationales-poc.json",
+      "sha256": "sha256:5f1464e8239acb554732d99bbfd6316bf8a7037c50cf534c6fbbb3cdf239e4dc",
+      "bytes": 881021,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/goal-source-rationales-poc.md",
+      "sha256": "sha256:f2c754ddc4f33ce9853293c882ed6a8746fe0ba7c189e90af9153240ace6abfc",
+      "bytes": 4173,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/gymnasium-duration-model-readiness.md",
+      "sha256": "sha256:fe0b12e2dbe6835688aad181e29bb0bf7869977f12c33a89d8cf467180b75f27",
+      "bytes": 165274,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/m0-remediation-plan.md",
+      "sha256": "sha256:d37a29157666e930b74094ac2f3e0687a06d2ef59ed54b2f152609621dd730c8",
+      "bytes": 4888,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/mem-sparql-consistency-audit.json",
+      "sha256": "sha256:f6b5ee22548a6c569f84d078d3ee6b9b609ba665430050de1f0c3b374f97b01e",
+      "bytes": 130906,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/mem-sparql-consistency-audit.md",
+      "sha256": "sha256:8e0f5318e017fe748be788a96c746ba812c682187526c68bf1ce94d29796c497",
+      "bytes": 49538,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/mem-sparql-consistency-review-issues.json",
+      "sha256": "sha256:b35a71e90cc5277711d4df6ed2febd3112f652a49d1ea72c1dcb048212fb47bb",
+      "bytes": 73623,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/mem-sparql-consistency-review-issues.md",
+      "sha256": "sha256:908ef3de71429c4df600f9088366ca3c6c36b533640a5b493fbf8d88bfe1cf76",
+      "bytes": 39337,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/memory-card-pilot-biologie.md",
+      "sha256": "sha256:bcb54e15dda7cbbb4694a1d0585d03deca7866b545e9a6fab437842d32cffa86",
+      "bytes": 12730,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/memory-card-review-canonical-biology-full.md",
+      "sha256": "sha256:d994b973355c3a21d120d6f27e8ab9f3c7ecfbd21e0039d37c3aa257c0dc6b42",
+      "bytes": 21624,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/memory-card-review-canonical-chemistry-current378.md",
+      "sha256": "sha256:69e72f9510d5e25ec7d1efa437a74bf28d958ccf5a869c12615946148d06e147",
+      "bytes": 46475,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/memory-card-review-canonical-chemistry-full.md",
+      "sha256": "sha256:7afdbe0fc61d07610f5babaa47292cc1c6258c3a3d0ebf640839ec9b1fb97f7f",
+      "bytes": 46386,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/memory-card-review-canonical-economics-full.md",
+      "sha256": "sha256:48a575b4143e813f86d51e0552efea8812cb9711ff8131a494fb5b281898a5f4",
+      "bytes": 51647,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/memory-card-review-canonical-german-full.md",
+      "sha256": "sha256:b6bdd3837db7813a5fb77c8ec44dfa3a2b22638eb29279876714c1d67bd51346",
+      "bytes": 61923,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/memory-card-review-canonical-history-full.md",
+      "sha256": "sha256:00897e4e92b62f4d68ab733106275e88e679700023d16648fea0c4e24163e446",
+      "bytes": 60422,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/memory-card-review-canonical-informatics-full.md",
+      "sha256": "sha256:bbf2724dfca2457191f913f454e7f12904763e05385c60283826d0a0737d1b38",
+      "bytes": 21480,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/memory-card-review-canonical-latin-full.md",
+      "sha256": "sha256:e0901d0bb502f16880ce5a30d7e69922cd2eecc4517a4710e713ea6c9d8669f9",
+      "bytes": 34015,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/memory-card-review-canonical-math-full.md",
+      "sha256": "sha256:dd4e60fc8aa78db52fd6901b3c065a9e904d36cb4bd74bcda908d0f92c5f45b7",
+      "bytes": 44278,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/memory-card-review-canonical-physics-full.md",
+      "sha256": "sha256:b65093f3c956e05a1d458398c81b39872ff14308db7b2670f7b87508f695d9e7",
+      "bytes": 124958,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/memory-card-review-canonical-politics-economics-full.md",
+      "sha256": "sha256:43a97a2f082cdf4561912ca46f5364e5bdd604707f040669079391816e2c40ab",
+      "bytes": 81862,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/memory-card-review-rollout.md",
+      "sha256": "sha256:e2449e9e73f36466710f099a167627cf980a49c20f8b7b6689e070a4e16a1a81",
+      "bytes": 5994,
+      "wholeBytesExactToFbde": true
+    },
+    {
+      "path": "docs/qa-ci/status/source-verification-de-gymnasium-mathematik-v1.md",
+      "sha256": "sha256:75916c2d22dbace6c7bd85df8ee33f8c45a2179d96c040376f260a4b4b86d6b6",
+      "bytes": 7220,
+      "wholeBytesExactToFbde": true
+    }
+  ],
+  "allOtherTrackedEconomicsInputsExactToFbde": true,
+  "nativeCodeAndThresholdSemantics": {
+    "ordinaryPredicate": "Nonempty contains excludes clusters; exam/memory/tutor, examData, practice/assessment/orientation/recall tags remain excluded. Existing native function unchanged.",
+    "coveragePredicate": "regularUnlinkedGoals must be exactly0; links or genuinely current documented deferral account for ordinary goals. Coverage is not image release.",
+    "releaseMetric": "Only CAN primary link status released or release_approved contributes; actual count remains0. No pilot/accepted promotion.",
+    "qualityDeferralPredicate": "Exact rejected asset hash/archive/concrete finding remains required, no relaxation.",
+    "MathematicsAiQaException": "Existing Mathematics-only exact-byte AI QA lane unchanged, no new Chemistry shortcut.",
+    "ChemistryNativeGeneratorCheckerTestFilesAndPackageScriptsExactTo7fcAndFbde": true,
+    "centralQualityStatusAndDeepUnderstandingAndGoalBookTestsExactToQualifiedFbde": true,
+    "noThresholdOrForeignSubjectGateChange": true
+  },
+  "actualAccounting": {
+    "landscapeGoalsBefore": 487,
+    "landscapeGoalsAfter": 517,
+    "ordinaryBefore": 381,
+    "ordinaryAfter": 398,
+    "ordinaryDelta": "24 already integrated ordinary children minus7 now-cluster IDs =17; six added nonordinary nodes remain excluded",
+    "linkedBefore": 364,
+    "linkedAfter": 381,
+    "linkedDelta": "364+24−7=381",
+    "coveragePercentBefore": 95.5,
+    "coveragePercentAfter": 95.7,
+    "accountedBefore": 381,
+    "accountedAfter": 398,
+    "accountedCoveragePercent": 100,
+    "releaseApprovedBeforeAndAfter": 0,
+    "providerDeferredBeforeAndAfter": 17,
+    "ledgerFilesBeforeAndAfter": 23,
+    "ledgerDecisionCountsWholeExact": {
+      "accepted_corrected_candidate": 32,
+      "accepted_current": 48,
+      "accepted_new_candidate": 276,
+      "accepted_pilot": 59,
+      "accepted_pilot_after_regeneration": 13,
+      "accepted_pilot_after_second_regeneration": 3,
+      "accepted_pilot_after_third_regeneration": 3,
+      "accepted_pilot_after_user_review_correction": 3,
+      "deferred_provider_limitation": 130,
+      "deferred_quality_review": 4,
+      "rejected_after_user_review_replaced": 2,
+      "rejected_regenerated": 33
+    },
+    "acceptedStatusDelta": "123−4 removed accepted cluster rows−1 existing current pilot link=118",
+    "pilotStatusDelta": "224−3 removed pilot cluster rows+24 new pilot rows+1 existing current pilot link=246",
+    "linkedWithoutAcceptedLedgerBefore": 11,
+    "linkedWithoutAcceptedLedgerAfter": 35,
+    "consistencyDelta": "All11 original rows exact plus24 current pilot child rows with no latest decision; the new35-item queue truthfully stays open.",
+    "acceptedReviewWithoutLinkBeforeAndAfter": 0,
+    "qualityQueuesWholeExact": true,
+    "currentBatchAndRequestAndGeneratorWholeExact": true,
+    "markdownMismatchListTruncation": "Regular renderer displays first30 entries and explicitly reports remaining5; full JSON carries all35."
+  },
+  "reviewBoundary": {
+    "newImageGeneration": 0,
+    "imageViewingOrContentReview": 0,
+    "scienceOrSourceScopeReReview": 0,
+    "imageApprovalOrHumanRelease": false,
+    "M7OrRemoteCICompletionClaim": false,
+    "ownBuildsOrGlobalRuns": 0,
+    "activeWrites": 0,
+    "onlyOwnAdditiveEvidenceWritten": true,
+    "D18AndA500CandidateHistoryUnchanged": true
+  }
+}

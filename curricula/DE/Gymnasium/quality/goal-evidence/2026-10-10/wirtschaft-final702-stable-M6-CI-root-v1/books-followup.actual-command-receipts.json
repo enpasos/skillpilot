@@ -1,0 +1,83 @@
+{
+  "phase": "books-followup",
+  "toolchainNodePath": "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+  "remoteGitHubCIClaim": false,
+  "results": [
+    {
+      "name": "build:goal-books",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "build:goal-books"
+      ],
+      "startedAt": "2026-10-10T18:45:22.449917+00:00",
+      "elapsedSeconds": 408.494,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/books-followup.01.build-goal-books.raw.txt",
+      "rawOutputSha256": "cb32ca4b7087d8ca9946be007f96c3c04cf93d657a42ae59804f930bb081a1cb"
+    },
+    {
+      "name": "check:goal-book-publication",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-book-publication"
+      ],
+      "startedAt": "2026-10-10T18:52:10.944733+00:00",
+      "elapsedSeconds": 26.833,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/books-followup.02.check-goal-book-publication.raw.txt",
+      "rawOutputSha256": "4a14a13f34f1e3359525a2e64a44c5b8a128fa5e96e2dedb55c6f859a117756f"
+    },
+    {
+      "name": "test:goal-book-pipeline",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:goal-book-pipeline"
+      ],
+      "startedAt": "2026-10-10T18:52:37.777844+00:00",
+      "elapsedSeconds": 575.778,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/books-followup.03.test-goal-book-pipeline.raw.txt",
+      "rawOutputSha256": "9d8084a4c5c36270af52e236e7046f5a5f16667dc8ea63f68f3a477dca798ee0"
+    },
+    {
+      "name": "lint",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "lint"
+      ],
+      "startedAt": "2026-10-10T19:02:13.556070+00:00",
+      "elapsedSeconds": 34.022,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/books-followup.04.lint.raw.txt",
+      "rawOutputSha256": "c31ee7aee37f3feee12610fa6bfbd1ee3b3252ef1922ddb19febfb56dd5d50bc"
+    },
+    {
+      "name": "build:application",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "build:application"
+      ],
+      "startedAt": "2026-10-10T19:02:47.578852+00:00",
+      "elapsedSeconds": 100.037,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/books-followup.05.build-application.raw.txt",
+      "rawOutputSha256": "9bc37f5aa95c988da9c73dc4e5e19999045653f08b0df663a359e1f23eba75c0"
+    }
+  ],
+  "phaseComplete": true
+}

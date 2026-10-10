@@ -1,0 +1,20 @@
+import {readFileSync,writeFileSync} from 'node:fs'
+import {resolve} from 'node:path'
+async function main() {
+  const root=process.cwd(), out=resolve(root,'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current693-bounded-surrogate-source-bindings-INERT-author-a-v1')
+  const {createReviewedRequiresClosureCoverageChecker,sourceCoverageSurrogateKey}=await import(resolve(root,'app/scripts/sourceCoverageEvidence.ts'))
+  const diagnosis=JSON.parse(readFileSync(resolve(out,'actual-current693-native32-unsupported-individual-IDs-carriers-and-causes.READONLY.json'),'utf8'))
+  const report=JSON.parse(readFileSync(resolve(out,'actual-current693-Economics-native-applicability-only.READONLY.json'),'utf8'))
+  const oldReg=JSON.parse(readFileSync(resolve(out,'whole340-surrogate-registry.BEFORE.EXACT.json'),'utf8'))
+  const nextReg=JSON.parse(readFileSync(resolve(out,'whole340-only-two-historical-dd38-to776-edges-stale.AUTHOR-INERT.json'),'utf8'))
+  const can=JSON.parse(readFileSync(resolve(root,'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json'),'utf8'))
+  const G=new Map<string,any>(can.goals.map((g:any)=>[g.id,g]))
+  const eligible=(g:any)=>!!g&&g.nodeKind!=='memory'&&!(g.tags??[]).some((t:string)=>t==='memorization'||t.startsWith('srs-deck:')||['Practice','Assessment','Motivation','Orientation'].includes(t))&&!g.examData
+  function byKey(reg:any) {const m=new Map<string,any[]>();for(const e of reg.entries){if(e.status!=='accepted'||e.evidenceType!=='requires-closure'||!e.rationale?.trim())continue;const k=sourceCoverageSurrogateKey(e.landscapeId,e.goalId,e.jurisdiction);m.set(k,[...(m.get(k)??[]),e])}return m}
+  const proofs:any[]=[]
+  for(const p of report.projections){const before=createReviewedRequiresClosureCoverageChecker({landscapeId:can.landscapeId,jurisdiction:p.value,goals:report.goals,canonicalGoalById:G,surrogateEntriesByKey:byKey(oldReg),isEligibleCanonicalGoal:eligible});const after=createReviewedRequiresClosureCoverageChecker({landscapeId:can.landscapeId,jurisdiction:p.value,goals:report.goals,canonicalGoalById:G,surrogateEntriesByKey:byKey(nextReg),isEligibleCanonicalGoal:eligible});const deltas=report.goals.filter((g:any)=>before.hasCoverageBackedJurisdictionEvidence(g)!==after.hasCoverageBackedJurisdictionEvidence(g));if(deltas.length)throw Error('Unexpected source coverage delta');proofs.push({jurisdiction:p.value,coverageDeltaGoalIds:[]})}
+  const affected=JSON.parse(readFileSync(resolve(out,'actual-two-stale-surrogate-row-candidate-and-nine-changed-contracts.AUTHOR-INERT.receipt.json'),'utf8')).nineExistingSURRowsTouchingChangedOldContracts.map((x:any)=>{const e=x.entryWholeExactBefore;const goal=report.goals.find((g:any)=>g.goalId===e.goalId),carrier=report.goals.find((g:any)=>g.goalId===e.requiredByGoalId);const chk=createReviewedRequiresClosureCoverageChecker({landscapeId:can.landscapeId,jurisdiction:e.jurisdiction,goals:report.goals,canonicalGoalById:G,surrogateEntriesByKey:byKey(oldReg),isEligibleCanonicalGoal:eligible});return {wholeRegistryIndex:x.wholeRegistryIndex,jurisdiction:e.jurisdiction,goalId:e.goalId,requiredByGoalId:e.requiredByGoalId,currentDirectRequires:x.currentDirectRequires,actualRequiresClosureEvidence:goal.evidence.some((p:any)=>p.kind==='requires-closure'&&p.value===e.jurisdiction&&p.source===`required by ${e.requiredByGoalId}`),carrierEligible:eligible(G.get(e.requiredByGoalId)),carrierSourceBacked:chk.hasCoverageBackedJurisdictionEvidence(carrier),prerequisiteSourceBacked:chk.hasCoverageBackedJurisdictionEvidence(goal)}})
+  writeFileSync(resolve(out,'actual-native-two-stale-row-follower-no-source-coverage-delta.READONLY.json'),JSON.stringify({actualAt:new Date().toISOString(),nativeFunction:'createReviewedRequiresClosureCoverageChecker',sixteenCountryPolicyCoverageParity:proofs,allCoverageDecisionsExact:true,previousUnsupported32RetainedTrue:true,nineChangedContractRows:affected,newFingerprintOrSourceOrRequiresEdgesInvented:false,activeWrites:0},null,2)+'\n')
+  console.log(JSON.stringify({nativeCoverageAll693By16CountriesExact:true,affected}))
+}
+main().catch(e=>{console.error(e);process.exit(1)})

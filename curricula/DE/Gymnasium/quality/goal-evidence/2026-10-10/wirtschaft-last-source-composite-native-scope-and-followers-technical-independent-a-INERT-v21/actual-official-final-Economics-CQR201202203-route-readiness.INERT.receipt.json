@@ -1,0 +1,187 @@
+{
+  "role": "ACTUAL_UNMODIFIED_OFFICIAL_TARGETED_ECONOMICS_ROUTE_AND_AUTONOMY_READINESS_ONLY",
+  "createdAt": "2026-10-10T11:25:26.892Z",
+  "canonicalInputSHA256": "sha256:9ebb706e01e8a895eaa8ba6d17ac7f62b1ab9000e890f0045ba3d2c67355fa21",
+  "candidateBoundRegistrySHA256": "sha256:c017d7b5a3a5e8445ae8654c7d80ae71fb74a49f6366972a310218f7ed54a96d",
+  "wholeCurrentNativeSourceModuleSHA256": "sha256:656084b7cd9d6cb5324361b927b9f761596c572d7e4f616c7b13da061f4b1336",
+  "unmodifiedOriginalWholePrefixBytes": 273652,
+  "actualAppendOnlySuffix": "\nexport { routeProfiles, evaluateRouteProfile };\n",
+  "exportWrapperSHA256": "sha256:4c986a197dcadcb9abfed28e9e2f0c9fd3670d9100cd69fb53590eb111671a63",
+  "nativeScopeProfiles": [
+    {
+      "scopeId": "canonical-economics-crossstage",
+      "label": "Sekundarstufe I/II",
+      "selectedAtomicGoals": 336,
+      "maturity": "M2",
+      "rules": [
+        {
+          "id": "CQR-101",
+          "status": "pass",
+          "summary": "Effective route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 336,
+            "missingMotivationPath": 0,
+            "missingTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-102",
+          "status": "pass",
+          "summary": "Direct atomic route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 336,
+            "missingDirectMotivationPath": 0,
+            "missingDirectTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-103",
+          "status": "pass",
+          "summary": "No scoped cluster-level requires remain.",
+          "metrics": {
+            "scopedClusterRequires": 0
+          }
+        },
+        {
+          "id": "CQR-104",
+          "status": "fail",
+          "summary": "Route endpoints or projection-local routes are missing, unexpected, or not applicability-bound in at least one learner-facing projection scope.",
+          "metrics": {
+            "relevantCompositionViews": 34,
+            "evaluatedProjectionScopes": 64,
+            "requiredMotivationAnchors": 1,
+            "minimumRequiredTerminalAutonomyGoals": 50,
+            "requiredTerminalAutonomyGoals": 254,
+            "projectionScopesMissingMotivationAnchors": 0,
+            "projectionScopesMissingTerminalAutonomyGoals": 0,
+            "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+            "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+            "terminalGoalsMissingCompiledApplicability": 0,
+            "projectionScopesWithInvalidStageStructure": 0,
+            "nationalProjectionScopesUsingJurisdictionStageAuthority": 32,
+            "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+            "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+            "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 452,
+            "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 272,
+            "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 109,
+            "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+            "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+            "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+            "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+            "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+            "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+            "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+            "projectionLocalRouteChecksEnabled": 1,
+            "visibleSelectedAtomicGoalOccurrences": 6962,
+            "visibleProfileSelectedAtomicGoalOccurrences": 6962,
+            "visibleProjectedRouteTargetGoalOccurrences": 6962,
+            "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+            "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+            "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+            "projectionScopesMissingEffectiveMotivationRoutes": 0,
+            "projectionScopesMissingDirectMotivationRoutes": 0,
+            "projectionScopesMissingEffectiveTerminalRoutes": 6,
+            "projectionScopesMissingDirectTerminalRoutes": 6,
+            "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+            "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+            "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 6,
+            "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 6,
+            "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 1,
+            "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 1
+          },
+          "details": [
+            "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/wirtschaft/de-bw-gym-economics-gk.view.json [DE-BW]: 682facbf-3c9d-5485-88a3-20f2394ed77f",
+            "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json [DE-BW]: 682facbf-3c9d-5485-88a3-20f2394ed77f",
+            "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json [DE-TH]: 682facbf-3c9d-5485-88a3-20f2394ed77f",
+            "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-lk.view.json [DE-TH]: 682facbf-3c9d-5485-88a3-20f2394ed77f",
+            "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/wirtschaft/de-th-gym-economics-gk.view.json [DE-TH]: 682facbf-3c9d-5485-88a3-20f2394ed77f",
+            "No projection-local effective terminal route: curricula/DE/Gymnasium/composition-views/wirtschaft/de-th-gym-economics-lk.view.json [DE-TH]: 682facbf-3c9d-5485-88a3-20f2394ed77f",
+            "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/wirtschaft/de-bw-gym-economics-gk.view.json [DE-BW]: 682facbf-3c9d-5485-88a3-20f2394ed77f",
+            "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json [DE-BW]: 682facbf-3c9d-5485-88a3-20f2394ed77f",
+            "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json [DE-TH]: 682facbf-3c9d-5485-88a3-20f2394ed77f",
+            "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-lk.view.json [DE-TH]: 682facbf-3c9d-5485-88a3-20f2394ed77f",
+            "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/wirtschaft/de-th-gym-economics-gk.view.json [DE-TH]: 682facbf-3c9d-5485-88a3-20f2394ed77f",
+            "No projection-local direct terminal route: curricula/DE/Gymnasium/composition-views/wirtschaft/de-th-gym-economics-lk.view.json [DE-TH]: 682facbf-3c9d-5485-88a3-20f2394ed77f"
+          ]
+        },
+        {
+          "id": "CQR-201",
+          "status": "pass",
+          "summary": "All configured terminal autonomy goals have examData.",
+          "metrics": {
+            "terminalAutonomyGoals": 275,
+            "terminalAutonomyGoalsWithExamData": 275,
+            "terminalAutonomyGoalsWithoutExamData": 0
+          }
+        },
+        {
+          "id": "CQR-202",
+          "status": "pass",
+          "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+          "metrics": {
+            "terminalAutonomyGoals": 275,
+            "concreteExamData": 275,
+            "weakExamData": 0
+          }
+        },
+        {
+          "id": "CQR-203",
+          "status": "pass",
+          "summary": "All terminal autonomy examData has release and coverage metadata.",
+          "metrics": {
+            "terminalAutonomyGoals": 275,
+            "releasedCoverageCompleteExamData": 275,
+            "releaseCoverageIncompleteExamData": 0
+          }
+        }
+      ]
+    }
+  ],
+  "actualCQR201202203": [
+    {
+      "id": "CQR-201",
+      "status": "pass",
+      "summary": "All configured terminal autonomy goals have examData.",
+      "metrics": {
+        "terminalAutonomyGoals": 275,
+        "terminalAutonomyGoalsWithExamData": 275,
+        "terminalAutonomyGoalsWithoutExamData": 0
+      }
+    },
+    {
+      "id": "CQR-202",
+      "status": "pass",
+      "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+      "metrics": {
+        "terminalAutonomyGoals": 275,
+        "concreteExamData": 275,
+        "weakExamData": 0
+      }
+    },
+    {
+      "id": "CQR-203",
+      "status": "pass",
+      "summary": "All terminal autonomy examData has release and coverage metadata.",
+      "metrics": {
+        "terminalAutonomyGoals": 275,
+        "releasedCoverageCompleteExamData": 275,
+        "releaseCoverageIncompleteExamData": 0
+      }
+    }
+  ],
+  "nativeCompilerCounterWithCurrentFollowers": {
+    "goals": 678,
+    "errors": 0,
+    "warnings": 0,
+    "diagnostics": 1469
+  },
+  "allCQR201202203Pass": true,
+  "activeWrites": 0,
+  "wholeGlobalQualityBuildOrM6Approval": false
+}

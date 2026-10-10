@@ -1,0 +1,1108 @@
+{
+  "sourceChecks": [
+    {
+      "activePath": "curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_WIRTSCHAFT_SEKII_GOST_2022.source-extraction.json",
+      "sourceLandscapeId": "936fa4b0-f550-5b6a-895a-d086a3401c6e",
+      "sourceGoalCount": 101,
+      "uniqueIDs": true,
+      "retainedPipelineStatusNotSelfPromoted": {
+        "currentStep": "MAPPING-2",
+        "steps": [
+          {
+            "id": "MAPPING-1",
+            "label": "Original-Lehrplanpassagen extrahiert",
+            "status": "incomplete",
+            "dependsOn": [],
+            "checks": [
+              {
+                "id": "source-document-present",
+                "label": "Amtliche Brandenburg-Wirtschaft-Quelle liegt lokal vor",
+                "passed": true,
+                "details": "PDF liegt lokal vor."
+              },
+              {
+                "id": "source-selection-reviewed",
+                "label": "Wirtschaftlich relevante Lehrplanpassagen wurden fachlich abgegrenzt",
+                "passed": false,
+                "details": "101 retained/proposed source IDs. The missing original S.23 performances now have concrete INERT source/goal/practice candidates; full original fidelity and whole coverage await independent qualification. Source counts and routing do not complete M2/M3/M7."
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+            "status": "incomplete",
+            "dependsOn": [
+              "MAPPING-1"
+            ],
+            "checks": [
+              {
+                "id": "source-goals-created",
+                "label": "Aus den ausgewählten Brandenburg-Passagen wurden Source-Ziele erzeugt",
+                "passed": false,
+                "details": "101 retained/proposed source IDs. The missing original S.23 performances now have concrete INERT source/goal/practice candidates; full original fidelity and whole coverage await independent qualification. Source counts and routing do not complete M2/M3/M7."
+              },
+              {
+                "id": "source-goal-trace-complete",
+                "label": "Jedes Source-Ziel hat Passage, Source-Span und Quellenreferenz",
+                "passed": true,
+                "details": "99 vorhandene Source-IDs mit Locator; keine Vollständigkeit der tatsächlich verpflichtenden Originalleistungen bewiesen."
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+            "status": "incomplete",
+            "dependsOn": [
+              "MAPPING-1",
+              "MAPPING-2"
+            ],
+            "checks": [
+              {
+                "id": "mapping-2-complete",
+                "label": "MAPPING-2 abgeschlossen",
+                "passed": false,
+                "details": "101 retained/proposed source IDs. The missing original S.23 performances now have concrete INERT source/goal/practice candidates; full original fidelity and whole coverage await independent qualification. Source counts and routing do not complete M2/M3/M7."
+              },
+              {
+                "id": "m3-review-file-present",
+                "label": "M3-Review-Datei ist vorhanden",
+                "passed": false,
+                "details": "101 retained/proposed source IDs. The missing original S.23 performances now have concrete INERT source/goal/practice candidates; full original fidelity and whole coverage await independent qualification. Source counts and routing do not complete M2/M3/M7."
+              },
+              {
+                "id": "m3-all-source-goals-reviewed",
+                "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                "passed": false,
+                "details": "101 retained/proposed source IDs. The missing original S.23 performances now have concrete INERT source/goal/practice candidates; full original fidelity and whole coverage await independent qualification. Source counts and routing do not complete M2/M3/M7."
+              },
+              {
+                "id": "m3-all-source-goals-covered-by-canonical",
+                "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+                "passed": false,
+                "details": "101 retained/proposed source IDs. The missing original S.23 performances now have concrete INERT source/goal/practice candidates; full original fidelity and whole coverage await independent qualification. Source counts and routing do not complete M2/M3/M7."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_WIRTSCHAFT_SEKII_CURRENT_BERLIN2006_EP2010_AB2022.source-extraction.json",
+      "sourceLandscapeId": "c0713ece-7c59-57bc-bc4d-313d9405e1ad",
+      "sourceGoalCount": 125,
+      "uniqueIDs": true,
+      "retainedPipelineStatusNotSelfPromoted": {
+        "currentStep": "MAPPING-2",
+        "steps": [
+          {
+            "id": "MAPPING-1",
+            "label": "Aktuelle Berliner normative Primärquelle eigenständig erschlossen",
+            "status": "incomplete",
+            "checks": [
+              {
+                "id": "current-primary-version-binding",
+                "passed": false,
+                "details": "Current government primary document identity/captured text and archive2010 inspected; independent current/archive content/course parity remains pending. No false current physical-PDF hash."
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Granularität und vollständige Quellen-/Scope-Bindung unabhängig prüfen",
+            "status": "incomplete",
+            "checks": [
+              {
+                "id": "source-boundary-independent-review",
+                "passed": false,
+                "details": "Author candidate only. Each aspect/course/choice boundary must be independently reviewed; no whole-country approval."
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Zielbindungen und tatsächliche BE-Projektion fachlich schließen",
+            "status": "incomplete",
+            "checks": [
+              {
+                "id": "mapping-independent-review",
+                "passed": false,
+                "details": "Only proposed partial bindings; explicit unmapped source aspects stay open. No semantic full-coverage assertion from partial-edge native counters."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_WIRTSCHAFT_SEKII_KC2024.source-extraction.json",
+      "sourceLandscapeId": "a334a745-1d67-4e1d-86a5-dadc04f144d2",
+      "sourceGoalCount": 173,
+      "uniqueIDs": true,
+      "retainedPipelineStatusNotSelfPromoted": {
+        "version": 1,
+        "currentStep": "",
+        "steps": [
+          {
+            "id": "MAPPING-1",
+            "label": "Original-Lehrplanpassagen extrahiert",
+            "status": "complete",
+            "dependsOn": [],
+            "checks": [
+              {
+                "id": "official-source-present",
+                "label": "Amtliches KC-PDF liegt lokal vor",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-wirtschaftswissenschaften.pdf"
+              },
+              {
+                "id": "structured-source-present",
+                "label": "Strukturierter KC-Snapshot liegt lokal vor",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-json/DE_HES_S_GYM_2_WIRTSCHAFT.de.json.snapshot"
+              },
+              {
+                "id": "topic-passages-extracted",
+                "label": "Wirtschaft-Quellpassagen sind aus dem KC-Snapshot extrahiert",
+                "passed": true,
+                "details": "Erfasst: 20/20 Passagen."
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1"
+            ],
+            "checks": [
+              {
+                "id": "source-goals-created",
+                "label": "Aus den Wirtschaft-Passagen wurden Source-Ziele erzeugt",
+                "passed": true,
+                "details": "173 Source-Ziele."
+              },
+              {
+                "id": "source-goal-ids-unique",
+                "label": "Source-Ziel-IDs sind eindeutig",
+                "passed": true,
+                "details": "Doppelte IDs: -."
+              },
+              {
+                "id": "source-goal-trace-complete",
+                "label": "Jedes Source-Ziel hat Passage, Source-Span und Quellenreferenz",
+                "passed": true,
+                "details": "Unvollstaendige Source-Ziele: -"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1",
+              "MAPPING-2"
+            ],
+            "checks": [
+              {
+                "id": "m3-review-file-present",
+                "label": "M3-Review-Datei ist vorhanden",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_economics_upper_secondary_source_extraction_to_canonical_economics.review.json"
+              },
+              {
+                "id": "m3-review-decisions-reference-source-goals",
+                "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+                "passed": true,
+                "details": "Reviewed Source-Ziele: 173/173."
+              },
+              {
+                "id": "m3-review-targets-exist",
+                "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+                "passed": true,
+                "details": "Unbekannte Canonical-Ziele: -"
+              },
+              {
+                "id": "m3-all-source-goals-reviewed",
+                "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                "passed": true,
+                "details": "173/173 Source-Ziele reviewed; offen: 0."
+              },
+              {
+                "id": "m3-all-source-goals-covered-by-canonical",
+                "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+                "passed": true,
+                "details": "Abgedeckt: 173/173; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_PGW_SEKI_WIRTSCHAFT_BILDUNGSPLAN_2022.source-extraction.json",
+      "sourceLandscapeId": "09d4648c-089b-5358-838c-059c111b797d",
+      "sourceGoalCount": 30,
+      "uniqueIDs": true,
+      "retainedPipelineStatusNotSelfPromoted": {
+        "currentStep": "MAPPING-3",
+        "steps": [
+          {
+            "id": "MAPPING-1",
+            "label": "Original-Lehrplanpassagen extrahiert",
+            "status": "complete",
+            "dependsOn": [],
+            "checks": [
+              {
+                "id": "source-document-present",
+                "label": "Amtliche HH-PGW-Quelle liegt lokal vor",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/input/HH/pgw-gym-seki-2022-data.pdf"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1"
+            ],
+            "checks": [
+              {
+                "id": "source-goals-created",
+                "label": "Aus den ausgewählten HH-Passagen wurden Source-Ziele erzeugt",
+                "passed": true,
+                "details": "30 Source-Ziele."
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+            "status": "incomplete",
+            "dependsOn": [
+              "MAPPING-1",
+              "MAPPING-2"
+            ],
+            "checks": [
+              {
+                "id": "m3-review-file-present",
+                "label": "M3-Review-Datei ist vorhanden",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_pgw_lower_secondary_economics_source_extraction_to_canonical_wirtschaft.review.json"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/input/NI/upper-secondary/source-extraction/DE_NI_POLITIK_WIRTSCHAFT_SEKII_WIRTSCHAFT.source-extraction.json",
+      "sourceLandscapeId": "3794738b-57ac-54fb-8ba9-09d92e33d93d",
+      "sourceGoalCount": 57,
+      "uniqueIDs": true,
+      "retainedPipelineStatusNotSelfPromoted": {
+        "currentStep": "MAPPING-3",
+        "steps": [
+          {
+            "id": "MAPPING-1",
+            "label": "Original-Lehrplanpassagen extrahiert",
+            "status": "complete",
+            "dependsOn": [],
+            "checks": [
+              {
+                "id": "source-document-present",
+                "label": "Amtliche Niedersachsen-Politik-Wirtschaft-Quelle liegt lokal vor",
+                "passed": true,
+                "details": "PDF liegt lokal vor."
+              },
+              {
+                "id": "economic-topic-selection",
+                "label": "Wirtschaftlich relevante Inhaltsbereiche aus Politik-Wirtschaft wurden selektiert",
+                "passed": true,
+                "details": "Politische Passagen werden nicht automatisch in den Wirtschaftskanon übernommen."
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1"
+            ],
+            "checks": [
+              {
+                "id": "source-goals-created",
+                "label": "Aus den ausgewählten Niedersachsen-Passagen wurden Source-Ziele erzeugt",
+                "passed": true,
+                "details": "56 Source-Ziele."
+              },
+              {
+                "id": "source-goal-trace-complete",
+                "label": "Jedes Source-Ziel hat Passage, Source-Span und Quellenreferenz",
+                "passed": true,
+                "details": "Unvollständige Source-Ziele: -"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+            "status": "incomplete",
+            "dependsOn": [
+              "MAPPING-1",
+              "MAPPING-2"
+            ],
+            "checks": [
+              {
+                "id": "mapping-2-complete",
+                "label": "MAPPING-2 abgeschlossen",
+                "passed": true,
+                "details": "56 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
+              },
+              {
+                "id": "m3-review-file-present",
+                "label": "M3-Review-Datei ist vorhanden",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_powi_upper_secondary_economics_source_extraction_to_canonical_wirtschaft.review.json"
+              },
+              {
+                "id": "m3-all-source-goals-reviewed",
+                "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                "passed": false,
+                "details": "Noch offen: 56."
+              },
+              {
+                "id": "m3-all-source-goals-covered-by-canonical",
+                "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+                "passed": false,
+                "details": "M3 noch nicht gestartet."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_WIRTSCHAFT_POLITIK_SEKI_KLP2019_WIRTSCHAFT.source-extraction.json",
+      "sourceLandscapeId": "c08d280e-5e6a-5a1f-8574-0c2a65af32b7",
+      "sourceGoalCount": 60,
+      "uniqueIDs": true,
+      "retainedPipelineStatusNotSelfPromoted": {
+        "currentStep": "MAPPING-3",
+        "steps": [
+          {
+            "id": "MAPPING-1",
+            "label": "Original-Lehrplanpassagen extrahiert",
+            "status": "complete",
+            "dependsOn": [],
+            "checks": [
+              {
+                "id": "source-document-present",
+                "label": "Amtliche NRW-Quelle liegt lokal vor",
+                "passed": true,
+                "details": "PDF liegt lokal vor."
+              },
+              {
+                "id": "economic-topic-selection",
+                "label": "Wirtschaftlich relevante WiPo/Sowi-Kompetenzbereiche wurden selektiert",
+                "passed": true,
+                "details": "Rein politische Kompetenzbereiche werden nicht in den Wirtschaftskanon übernommen."
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1"
+            ],
+            "checks": [
+              {
+                "id": "source-goals-created",
+                "label": "Aus den ausgewählten NRW-Passagen wurden Source-Ziele erzeugt",
+                "passed": true,
+                "details": "60 Source-Ziele."
+              },
+              {
+                "id": "source-goal-trace-complete",
+                "label": "Jedes Source-Ziel hat Passage, Source-Span und Quellenreferenz",
+                "passed": true,
+                "details": "Unvollständige Source-Ziele: -"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+            "status": "incomplete",
+            "dependsOn": [
+              "MAPPING-1",
+              "MAPPING-2"
+            ],
+            "checks": [
+              {
+                "id": "mapping-2-complete",
+                "label": "MAPPING-2 abgeschlossen",
+                "passed": true,
+                "details": "60 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
+              },
+              {
+                "id": "m3-review-file-present",
+                "label": "M3-Review-Datei ist vorhanden",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_wipo_lower_secondary_economics_source_extraction_to_canonical_wirtschaft.review.json"
+              },
+              {
+                "id": "m3-all-source-goals-reviewed",
+                "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                "passed": false,
+                "details": "Noch offen: 60."
+              },
+              {
+                "id": "m3-all-source-goals-covered-by-canonical",
+                "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+                "passed": false,
+                "details": "M3 noch nicht gestartet."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_SOZIALWISSENSCHAFTEN_WIRTSCHAFT_SEKII_KLP.source-extraction.json",
+      "sourceLandscapeId": "42fd433e-bcf1-5d01-8122-4721adfb58a8",
+      "sourceGoalCount": 120,
+      "uniqueIDs": true,
+      "retainedPipelineStatusNotSelfPromoted": {
+        "currentStep": "MAPPING-3",
+        "steps": [
+          {
+            "id": "MAPPING-1",
+            "label": "Original-Lehrplanpassagen extrahiert",
+            "status": "complete",
+            "dependsOn": [],
+            "checks": [
+              {
+                "id": "source-document-present",
+                "label": "Amtliche NRW-Quelle liegt lokal vor",
+                "passed": true,
+                "details": "PDF liegt lokal vor."
+              },
+              {
+                "id": "economic-topic-selection",
+                "label": "Wirtschaftlich relevante WiPo/Sowi-Kompetenzbereiche wurden selektiert",
+                "passed": true,
+                "details": "Rein politische Kompetenzbereiche werden nicht in den Wirtschaftskanon übernommen."
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1"
+            ],
+            "checks": [
+              {
+                "id": "source-goals-created",
+                "label": "Aus den ausgewählten NRW-Passagen wurden Source-Ziele erzeugt",
+                "passed": true,
+                "details": "120 Source-Ziele."
+              },
+              {
+                "id": "source-goal-trace-complete",
+                "label": "Jedes Source-Ziel hat Passage, Source-Span und Quellenreferenz",
+                "passed": true,
+                "details": "Unvollständige Source-Ziele: -"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+            "status": "incomplete",
+            "dependsOn": [
+              "MAPPING-1",
+              "MAPPING-2"
+            ],
+            "checks": [
+              {
+                "id": "mapping-2-complete",
+                "label": "MAPPING-2 abgeschlossen",
+                "passed": true,
+                "details": "120 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
+              },
+              {
+                "id": "m3-review-file-present",
+                "label": "M3-Review-Datei ist vorhanden",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_sowi_wirtschaft_upper_secondary_source_extraction_to_canonical_wirtschaft.review.json"
+              },
+              {
+                "id": "m3-all-source-goals-reviewed",
+                "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+                "passed": false,
+                "details": "Noch offen: 120."
+              },
+              {
+                "id": "m3-all-source-goals-covered-by-canonical",
+                "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
+                "passed": false,
+                "details": "M3 noch nicht gestartet."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_WIRTSCHAFT_POLITIK_SEKII_FACHANFORDERUNGEN_2016.source-extraction.json",
+      "sourceLandscapeId": "8e7b42cc-bb86-5c36-8c26-7f088a0de7c6",
+      "sourceGoalCount": 78,
+      "uniqueIDs": true,
+      "retainedPipelineStatusNotSelfPromoted": {
+        "currentStep": "MAPPING-3",
+        "steps": [
+          {
+            "id": "MAPPING-1",
+            "label": "Original-Lehrplanpassagen extrahiert",
+            "status": "complete",
+            "dependsOn": [],
+            "checks": [
+              {
+                "id": "source-document-present",
+                "label": "Amtliche SH-WiPo-Quelle liegt lokal vor",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/input/SH/Fachanforderungen_Wirtschaft_Politik_Sekundarstufe_2016_barrierearm.pdf"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1"
+            ],
+            "checks": [
+              {
+                "id": "source-goals-created",
+                "label": "Aus den ausgewählten SH-Passagen wurden Source-Ziele erzeugt",
+                "passed": true,
+                "details": "78 Source-Ziele."
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+            "status": "incomplete",
+            "dependsOn": [
+              "MAPPING-1",
+              "MAPPING-2"
+            ],
+            "checks": [
+              {
+                "id": "m3-review-file-present",
+                "label": "M3-Review-Datei ist vorhanden",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_wipo_upper_secondary_economics_source_extraction_to_canonical_wirtschaft.review.json"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_WIRTSCHAFTSLEHRE_SEKII_FACHLEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+      "sourceLandscapeId": "66cc9960-b598-5d52-8643-75051c4d1dc8",
+      "sourceGoalCount": 94,
+      "uniqueIDs": true,
+      "retainedPipelineStatusNotSelfPromoted": {
+        "currentStep": "MAPPING-3",
+        "steps": [
+          {
+            "id": "ORIGINALQUELLEN",
+            "label": "Originalquellen bereitgestellt",
+            "status": "complete",
+            "dependsOn": [],
+            "checks": [
+              {
+                "id": "source-document-present",
+                "label": "Amtlicher Sachsen-Anhalt-Wirtschaftslehre-Fachlehrplan liegt lokal vor",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/input/ST/FLP_Wirtschaftslehre_Gymnasium_01082024.pdf"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-1",
+            "label": "Original-Lehrplanpassagen extrahiert",
+            "status": "complete",
+            "dependsOn": [
+              "ORIGINALQUELLEN"
+            ],
+            "checks": [
+              {
+                "id": "passages-extracted",
+                "label": "Wirtschaftslehre-Passagen wurden aus dem amtlichen Fachlehrplan extrahiert",
+                "passed": true,
+                "details": "8 Passagen."
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1"
+            ],
+            "checks": [
+              {
+                "id": "source-goals-created",
+                "label": "Aus den ausgewählten Sachsen-Anhalt-Passagen wurden Source-Ziele erzeugt",
+                "passed": true,
+                "details": "94 Source-Ziele."
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+            "status": "incomplete",
+            "dependsOn": [
+              "MAPPING-1",
+              "MAPPING-2"
+            ],
+            "checks": [
+              {
+                "id": "m3-review-file-present",
+                "label": "M3-Review-Datei ist vorhanden",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_wirtschaftslehre_upper_secondary_source_extraction_to_canonical_wirtschaft.review.json"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_WIRTSCHAFT_RECHT_SEKII_LEHRPLAN_GYMNASIUM_2012.source-extraction.json",
+      "sourceLandscapeId": "083da5c1-82ad-5c98-8c08-2c5d8f5b2e2c",
+      "sourceGoalCount": 145,
+      "uniqueIDs": true,
+      "retainedPipelineStatusNotSelfPromoted": {
+        "currentStep": "MAPPING-3",
+        "steps": [
+          {
+            "id": "ORIGINALQUELLEN",
+            "label": "Originalquellen bereitgestellt",
+            "status": "complete",
+            "dependsOn": [],
+            "checks": [
+              {
+                "id": "source-document-present",
+                "label": "Amtlicher Thueringer Lehrplan Wirtschaft und Recht liegt lokal vor",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/input/TH/LP_GY_Wirtschaft_und_Recht_2012.pdf"
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-1",
+            "label": "Original-Lehrplanpassagen extrahiert",
+            "status": "complete",
+            "dependsOn": [
+              "ORIGINALQUELLEN"
+            ],
+            "checks": [
+              {
+                "id": "passages-extracted",
+                "label": "Wirtschaft-und-Recht-Passagen wurden aus dem amtlichen Lehrplan extrahiert",
+                "passed": true,
+                "details": "14 Passagen."
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-2",
+            "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+            "status": "complete",
+            "dependsOn": [
+              "MAPPING-1"
+            ],
+            "checks": [
+              {
+                "id": "source-goals-created",
+                "label": "Aus den Thueringer Lehrplanpassagen wurden Source-Ziele erzeugt",
+                "passed": true,
+                "details": "145 Source-Ziele."
+              }
+            ]
+          },
+          {
+            "id": "MAPPING-3",
+            "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+            "status": "incomplete",
+            "dependsOn": [
+              "MAPPING-1",
+              "MAPPING-2"
+            ],
+            "checks": [
+              {
+                "id": "m3-review-file-present",
+                "label": "M3-Review-Datei ist vorhanden",
+                "passed": true,
+                "details": "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_wirtschaft_recht_upper_secondary_source_extraction_to_canonical_wirtschaft.review.json"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "mappingChecks": [
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-BB/lower-secondary/bb_wat_lower_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_WAT_SEKI_RLP_2015.source-extraction.json",
+      "actuallyConsumedSourceCandidate": {
+        "path": "curricula/DE/Gymnasium/input/BB/lower-secondary/source-extraction/DE_BB_WAT_SEKI_RLP_2015.source-extraction.json",
+        "sha256": "sha256:a322b6b7546c9dc57acd53768a56b74d6d75e735dfd2183073f3e22e2c1096c2",
+        "bytes": 81232
+      },
+      "edges": 97,
+      "missingMappedSourceIDs": [],
+      "missingCanonicalTargetIDs": [],
+      "partialEdges": 91,
+      "exactEdges": 6
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-BB/upper-secondary/bb_wirtschaft_upper_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_WIRTSCHAFT_SEKII_GOST_2022.source-extraction.json",
+      "actuallyConsumedSourceCandidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-M6-fieldwise-composition-AUTHOR-INERT-v1/final-source-data/curricula/DE/Gymnasium/input/BB/upper-secondary/source-extraction/DE_BB_WIRTSCHAFT_SEKII_GOST_2022.source-extraction.json",
+        "sha256": "sha256:b29f352236a06ae14f1d75b5258092f7cc0db8325a73bbd692fca7bf151d8f31",
+        "bytes": 171121
+      },
+      "edges": 178,
+      "missingMappedSourceIDs": [],
+      "missingCanonicalTargetIDs": [],
+      "partialEdges": 148,
+      "exactEdges": 30
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_wat_lower_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_WAT_SEKI_RLP_2015.source-extraction.json",
+      "actuallyConsumedSourceCandidate": {
+        "path": "curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_WAT_SEKI_RLP_2015.source-extraction.json",
+        "sha256": "sha256:c463243067552540d271304f4b80030a803fd7081033f05f711a0d706b4b778c",
+        "bytes": 81217
+      },
+      "edges": 97,
+      "missingMappedSourceIDs": [],
+      "missingCanonicalTargetIDs": [],
+      "partialEdges": 91,
+      "exactEdges": 6
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_wirtschaft_current125_source_extraction_to_canonical_wirtschaft.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_WIRTSCHAFT_SEKII_CURRENT_BERLIN2006_EP2010_AB2022.source-extraction.json",
+      "actuallyConsumedSourceCandidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-M6-fieldwise-composition-AUTHOR-INERT-v1/final-source-data/curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_WIRTSCHAFT_SEKII_CURRENT_BERLIN2006_EP2010_AB2022.source-extraction.json",
+        "sha256": "sha256:2dbc40258e095e0460a566b514a67d3e4861e7bf094190f3ef86cd4e428530c2",
+        "bytes": 362608
+      },
+      "edges": 208,
+      "missingMappedSourceIDs": [],
+      "missingCanonicalTargetIDs": [],
+      "partialEdges": 208,
+      "exactEdges": 0
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_wbs_lower_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-methods-bw-four-additional-career-source-locators-author-v2/lower-secondary/DE_BW_WBS_SEKI_BP2016.source-extraction.json",
+      "actuallyConsumedSourceCandidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-methods-bw-four-additional-career-source-locators-author-v2/lower-secondary/DE_BW_WBS_SEKI_BP2016.source-extraction.json",
+        "sha256": "sha256:3b9132f9611f8480763a5398acfdb2af5fe2aa9fb91f104269b872c856884452",
+        "bytes": 108903
+      },
+      "edges": 113,
+      "missingMappedSourceIDs": [],
+      "missingCanonicalTargetIDs": [],
+      "partialEdges": 109,
+      "exactEdges": 4
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_wirtschaft_upper_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-84DD-parent-raw-and-five-locators-ADDENDUM-AUTHOR-INERT-v2/candidates/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-BW-five-current-source-locators-author-v1/upper-secondary/DE_BW_WIRTSCHAFT_SEKII_BP2016.source-extraction.json",
+      "actuallyConsumedSourceCandidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-84DD-parent-raw-and-five-locators-ADDENDUM-AUTHOR-INERT-v2/candidates/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-BW-five-current-source-locators-author-v1/upper-secondary/DE_BW_WIRTSCHAFT_SEKII_BP2016.source-extraction.json",
+        "sha256": "sha256:b3c94ea12ea3516228c5e4cb0d8d85221a207bda74dd3a3b456947cb561ab035",
+        "bytes": 132374
+      },
+      "edges": 161,
+      "missingMappedSourceIDs": [],
+      "missingCanonicalTargetIDs": [],
+      "partialEdges": 155,
+      "exactEdges": 6
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_economics_upper_secondary_source_extraction_to_canonical_economics.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_WIRTSCHAFT_SEKII_KC2024.source-extraction.json",
+      "actuallyConsumedSourceCandidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-M6-fieldwise-composition-AUTHOR-INERT-v1/final-source-data/curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_WIRTSCHAFT_SEKII_KC2024.source-extraction.json",
+        "sha256": "sha256:6ed60fd88e25333753783e1eae09db4021bb046e1a13fc7df5a6401aef8b06f9",
+        "bytes": 231070
+      },
+      "edges": 177,
+      "missingMappedSourceIDs": [],
+      "missingCanonicalTargetIDs": [],
+      "partialEdges": 9,
+      "exactEdges": 168
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_economics_upper_secondary_to_canonical_economics.json",
+      "sourceExtractionPath": null,
+      "actuallyConsumedSourceCandidate": null,
+      "edges": 227,
+      "missingMappedSourceIDs": [],
+      "missingCanonicalTargetIDs": [],
+      "partialEdges": 3,
+      "exactEdges": 224
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-HH/lower-secondary/hh_pgw_lower_secondary_economics_source_extraction_to_canonical_wirtschaft.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_PGW_SEKI_WIRTSCHAFT_BILDUNGSPLAN_2022.source-extraction.json",
+      "actuallyConsumedSourceCandidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-M6-fieldwise-composition-AUTHOR-INERT-v1/final-source-data/curricula/DE/Gymnasium/input/HH/lower-secondary/source-extraction/DE_HH_PGW_SEKI_WIRTSCHAFT_BILDUNGSPLAN_2022.source-extraction.json",
+        "sha256": "sha256:9081f6c2a94cbc724a1270c472d7b601eb42f0e434e69592ede6eb2a88b9e1b9",
+        "bytes": 54644
+      },
+      "edges": 361,
+      "missingMappedSourceIDs": [],
+      "missingCanonicalTargetIDs": [],
+      "partialEdges": 361,
+      "exactEdges": 0
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_sozialkunde_lower_secondary_economics_source_extraction_to_canonical_wirtschaft.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_SOZIALKUNDE_SEKI_WIRTSCHAFT_RAHMENPLAN_2023.source-extraction.json",
+      "actuallyConsumedSourceCandidate": {
+        "path": "curricula/DE/Gymnasium/input/MV/lower-secondary/source-extraction/DE_MV_SOZIALKUNDE_SEKI_WIRTSCHAFT_RAHMENPLAN_2023.source-extraction.json",
+        "sha256": "sha256:b96b676e257dbd1d00702ccca7122e657259fcb09b1d689129f7bd39d316d0c6",
+        "bytes": 125527
+      },
+      "edges": 702,
+      "missingMappedSourceIDs": [],
+      "missingCanonicalTargetIDs": [],
+      "partialEdges": 702,
+      "exactEdges": 0
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-MV/upper-secondary/mv_wirtschaft_upper_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_WIRTSCHAFT_SEKII_RAHMENPLAN_2019.source-extraction.json",
+      "actuallyConsumedSourceCandidate": {
+        "path": "curricula/DE/Gymnasium/input/MV/upper-secondary/source-extraction/DE_MV_WIRTSCHAFT_SEKII_RAHMENPLAN_2019.source-extraction.json",
+        "sha256": "sha256:a6e0db8cc5e919b160b722f6d24a15631c222f38bd3ea083372ef8120b414ad8",
+        "bytes": 151993
+      },
+      "edges": 1268,
+      "missingMappedSourceIDs": [],
+      "missingCanonicalTargetIDs": [],
+      "partialEdges": 1268,
+      "exactEdges": 0
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_powi_lower_secondary_economics_source_extraction_to_canonical_wirtschaft.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_POLITIK_WIRTSCHAFT_SEKI_WIRTSCHAFT.source-extraction.json",
+      "actuallyConsumedSourceCandidate": {
+        "path": "curricula/DE/Gymnasium/input/NI/lower-secondary/source-extraction/DE_NI_POLITIK_WIRTSCHAFT_SEKI_WIRTSCHAFT.source-extraction.json",
+        "sha256": "sha256:506cdf38f0a4ec086ad3c962c3e75045c352dccf7beacd664a005e5d863aaa02",
+        "bytes": 58233
+      },
+      "edges": 76,
+      "missingMappedSourceIDs": [],
+      "missingCanonicalTargetIDs": [],
+      "partialEdges": 76,
+      "exactEdges": 0
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-NI/upper-secondary/ni_powi_upper_secondary_economics_source_extraction_to_canonical_wirtschaft.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NI/upper-secondary/source-extraction/DE_NI_POLITIK_WIRTSCHAFT_SEKII_WIRTSCHAFT.source-extraction.json",
+      "actuallyConsumedSourceCandidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-M6-fieldwise-composition-AUTHOR-INERT-v1/final-source-data/curricula/DE/Gymnasium/input/NI/upper-secondary/source-extraction/DE_NI_POLITIK_WIRTSCHAFT_SEKII_WIRTSCHAFT.source-extraction.json",
+        "sha256": "sha256:d2c91730f2836a2eb266d0e762de7be6e701d6ef8f631fbd9e0c42eec5a87b9d",
+        "bytes": 118918
+      },
+      "edges": 142,
+      "missingMappedSourceIDs": [],
+      "missingCanonicalTargetIDs": [],
+      "partialEdges": 142,
+      "exactEdges": 0
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_wipo_lower_secondary_economics_source_extraction_to_canonical_wirtschaft.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_WIRTSCHAFT_POLITIK_SEKI_KLP2019_WIRTSCHAFT.source-extraction.json",
+      "actuallyConsumedSourceCandidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-M6-fieldwise-composition-AUTHOR-INERT-v1/final-source-data/curricula/DE/Gymnasium/input/NW/lower-secondary/source-extraction/DE_NW_WIRTSCHAFT_POLITIK_SEKI_KLP2019_WIRTSCHAFT.source-extraction.json",
+        "sha256": "sha256:502fe966ce7616d741d9d0eb40be4cd53bb6d174f049e741969f4db61146f7b6",
+        "bytes": 111238
+      },
+      "edges": 529,
+      "missingMappedSourceIDs": [],
+      "missingCanonicalTargetIDs": [],
+      "partialEdges": 529,
+      "exactEdges": 0
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-NW/upper-secondary/nrw_sowi_wirtschaft_upper_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_SOZIALWISSENSCHAFTEN_WIRTSCHAFT_SEKII_KLP.source-extraction.json",
+      "actuallyConsumedSourceCandidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-M6-fieldwise-composition-AUTHOR-INERT-v1/final-source-data/curricula/DE/Gymnasium/input/NW/upper-secondary/source-extraction/DE_NW_SOZIALWISSENSCHAFTEN_WIRTSCHAFT_SEKII_KLP.source-extraction.json",
+        "sha256": "sha256:ddb449dd63bf397eb26809e8b6f31343730f8b93543e3a334766f89029dc001d",
+        "bytes": 225859
+      },
+      "edges": 1136,
+      "missingMappedSourceIDs": [],
+      "missingCanonicalTargetIDs": [],
+      "partialEdges": 1136,
+      "exactEdges": 0
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_wipo_lower_secondary_economics_source_extraction_to_canonical_wirtschaft.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_WIRTSCHAFT_POLITIK_SEKI_FACHANFORDERUNGEN_2016.source-extraction.json",
+      "actuallyConsumedSourceCandidate": {
+        "path": "curricula/DE/Gymnasium/input/SH/lower-secondary/source-extraction/DE_SH_WIRTSCHAFT_POLITIK_SEKI_FACHANFORDERUNGEN_2016.source-extraction.json",
+        "sha256": "sha256:dc7daf3987a9e4b48f9c71e9d1640ff7dc09f2d2b3f16250af13542020a2c220",
+        "bytes": 84067
+      },
+      "edges": 492,
+      "missingMappedSourceIDs": [],
+      "missingCanonicalTargetIDs": [],
+      "partialEdges": 492,
+      "exactEdges": 0
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-SH/upper-secondary/sh_wipo_upper_secondary_economics_source_extraction_to_canonical_wirtschaft.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_WIRTSCHAFT_POLITIK_SEKII_FACHANFORDERUNGEN_2016.source-extraction.json",
+      "actuallyConsumedSourceCandidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-M6-fieldwise-composition-AUTHOR-INERT-v1/final-source-data/curricula/DE/Gymnasium/input/SH/upper-secondary/source-extraction/DE_SH_WIRTSCHAFT_POLITIK_SEKII_FACHANFORDERUNGEN_2016.source-extraction.json",
+        "sha256": "sha256:1d0fd2cb0d2ec82525b4a424ce6de8f0d29bc15fe52403c684fdf74abf7dbac1",
+        "bytes": 137867
+      },
+      "edges": 846,
+      "missingMappedSourceIDs": [],
+      "missingCanonicalTargetIDs": [],
+      "partialEdges": 846,
+      "exactEdges": 0
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-SN/lower-secondary/sn_grw_lower_secondary_economics_source_extraction_to_canonical_wirtschaft.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_GRW_SEKI_WIRTSCHAFT_LEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+      "actuallyConsumedSourceCandidate": {
+        "path": "curricula/DE/Gymnasium/input/SN/lower-secondary/source-extraction/DE_SN_GRW_SEKI_WIRTSCHAFT_LEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+        "sha256": "sha256:599d99c3d42d7b9fc60627e34865a6ad6f7e10183776b65465d62b336291bf9e",
+        "bytes": 120151
+      },
+      "edges": 769,
+      "missingMappedSourceIDs": [],
+      "missingCanonicalTargetIDs": [],
+      "partialEdges": 769,
+      "exactEdges": 0
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-ST/lower-secondary/st_wirtschaftslehre_lower_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_WIRTSCHAFTSLEHRE_SEKI_FACHLEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+      "actuallyConsumedSourceCandidate": {
+        "path": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_WIRTSCHAFTSLEHRE_SEKI_FACHLEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+        "sha256": "sha256:3b57d572d62692bc6aa0699b8f66e9fdc344de0466e0dca7b75702f3bdda8e47",
+        "bytes": 201217
+      },
+      "edges": 978,
+      "missingMappedSourceIDs": [],
+      "missingCanonicalTargetIDs": [],
+      "partialEdges": 978,
+      "exactEdges": 0
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-ST/upper-secondary/st_wirtschaftslehre_upper_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_WIRTSCHAFTSLEHRE_SEKII_FACHLEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+      "actuallyConsumedSourceCandidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-M6-fieldwise-composition-AUTHOR-INERT-v1/final-source-data/curricula/DE/Gymnasium/input/ST/upper-secondary/source-extraction/DE_ST_WIRTSCHAFTSLEHRE_SEKII_FACHLEHRPLAN_GYMNASIUM_2024.source-extraction.json",
+        "sha256": "sha256:3ec53a3755bcf458284e7d25d5b328015c94fdabfbeacf88deea1a00ca0b73d6",
+        "bytes": 170110
+      },
+      "edges": 1206,
+      "missingMappedSourceIDs": [],
+      "missingCanonicalTargetIDs": [],
+      "partialEdges": 1206,
+      "exactEdges": 0
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-TH/lower-secondary/th_wirtschaft_recht_lower_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_WIRTSCHAFT_RECHT_SEKI_LEHRPLAN_GYMNASIUM_2012.source-extraction.json",
+      "actuallyConsumedSourceCandidate": {
+        "path": "curricula/DE/Gymnasium/input/TH/lower-secondary/source-extraction/DE_TH_WIRTSCHAFT_RECHT_SEKI_LEHRPLAN_GYMNASIUM_2012.source-extraction.json",
+        "sha256": "sha256:9376d0423e6265c6972c798d8bfcbf7a94638484a87b297dda3bf05d99157d65",
+        "bytes": 133418
+      },
+      "edges": 603,
+      "missingMappedSourceIDs": [],
+      "missingCanonicalTargetIDs": [],
+      "partialEdges": 603,
+      "exactEdges": 0
+    },
+    {
+      "activePath": "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_wirtschaft_recht_upper_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_WIRTSCHAFT_RECHT_SEKII_LEHRPLAN_GYMNASIUM_2012.source-extraction.json",
+      "actuallyConsumedSourceCandidate": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-M6-fieldwise-composition-AUTHOR-INERT-v1/final-source-data/curricula/DE/Gymnasium/input/TH/upper-secondary/source-extraction/DE_TH_WIRTSCHAFT_RECHT_SEKII_LEHRPLAN_GYMNASIUM_2012.source-extraction.json",
+        "sha256": "sha256:667e04789cdf71ebfa093111c178a2844e48b51ff821f180cf84876bdc370476",
+        "bytes": 237430
+      },
+      "edges": 1079,
+      "missingMappedSourceIDs": [],
+      "missingCanonicalTargetIDs": [],
+      "partialEdges": 1079,
+      "exactEdges": 0
+    }
+  ],
+  "allSourceIDsUnique": true,
+  "allMappedIDsExist": true,
+  "registryBindingsUnmodified": [
+    {
+      "path": "curricula/DE/Gymnasium/provenance/source-landscape-registry.json",
+      "sha256": "sha256:feedb47c6a39877eaab57f5265194907f8ab6fa24315e3cb098ccbbcee82d9f2",
+      "bytes": 201945
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/canonical-goal-surrogate-evidence-registry.json",
+      "sha256": "sha256:817e417df84a22a92023f14e933921850f50ddcabdaff3f483ac564dcb6f8a08",
+      "bytes": 215964
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/source-goal-membership-registry.json",
+      "sha256": "sha256:b3fa299f332be9aec1d15b535187a13ef16fabde9cdc3911f7ff4122375a37a6",
+      "bytes": 1400697
+    }
+  ],
+  "registryNativeContract": {
+    "sourceRegistry": "Native checker validates immutable source/archived IDs; neither source nor surrogate registry has a content-fingerprint field. Existing official PDF/snapshot provenance stays unchanged.",
+    "SUR": "Accepted requires-closure is a scientific dependency claim, not a hash binding. No speculative surrogate authorizations added. Root final native coverage may identify concrete required changes.",
+    "code": [
+      "app/scripts/checkSourceLandscapeRegistry.ts",
+      "app/scripts/generateCurriculumQualityStatus.ts"
+    ]
+  },
+  "scientificSourceCoverageApproval": false
+}

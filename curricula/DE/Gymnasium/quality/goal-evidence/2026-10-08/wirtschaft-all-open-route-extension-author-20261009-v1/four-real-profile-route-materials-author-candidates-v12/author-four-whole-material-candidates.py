@@ -1,0 +1,157 @@
+from pathlib import Path
+import json, uuid, hashlib
+
+ROOT = Path('/home/enpasos/projects/skillpilot')
+BASE = Path('curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-all-open-route-extension-author-20261009-v1/four-real-profile-route-materials-author-candidates-v12')
+OUT = ROOT / BASE
+NS = uuid.UUID('605bdaf6-32d5-56fd-8d92-5a80c2fd2901')
+COURT = ['51203e8f-a1f4-5072-8d32-d5b718691592', '772b6d9f-03be-5894-8d61-0269506f398c']
+ORDER_GAME = ['f7c051f4-ebb0-5d74-81b1-c1cdb562414f', '5a72a72a-609a-5e60-8a25-4f5048b8b09c']
+TRADE_RESERVES = ['575c08d4-204f-5f78-8f2f-1994db6f19ee', '055ef95c-0b64-5675-8f14-2524c3438009']
+PORTFOLIO = ['7a2435f2-0ce7-5179-81a5-2ef5c313e3dd']
+
+def goal(key, title, en, description, description_en, covered, phase, task, solution, steps, strands):
+    gid = str(uuid.uuid5(NS, 'wirtschaft-profile-route-remedy-' + key + '-20261009-v1'))
+    return {'id': gid, 'title': title, 'titleEn': en, 'description': description, 'descriptionEn': description_en,
+        'weight': 1, 'tags': ['GK', 'LK', 'Practice', 'Assessment'], 'contains': [], 'requires': covered,
+        'dimensionTags': {'framework': 'canonical-gymnasium-economics', 'demandLevel': 'AB3', 'phase': phase},
+        'phase': phase, 'type': 'atomic', 'extendedData': {'applicabilityFromRequires': True},
+        'examData': {'reviewStatus': 'draft', 'coveredGoalIds': covered, 'coveredStrands': strands,
+            'demandLevels': ['AB1', 'AB2', 'AB3'], 'taskContent': task.strip() + '\n', 'solutionContent': solution.strip() + '\n',
+            'scoring': {'maxPoints': 24, 'passingPoints': 15, 'steps': [{'id': 's' + str(i+1), 'points': p, 'description': t} for i,(p,t) in enumerate(steps)]}}}
+
+court = goal('court-procedures', 'Profil: Gerichtswege und Verfahrensrollen im Reparaturfall unterscheiden',
+    'Profile: distinguish court branches and procedural roles in repair-related cases',
+    'Die lernende Person kann bereitgestellte Streitfälle anhand vereinfachter Zuständigkeitsregeln Gerichtszweigen zuordnen, Zivilprozess und Strafverfahren nach Zweck, Rollen und grundlegenden Schritten unterscheiden und einen Vorwurf von einem festgestellten Ergebnis abgrenzen.',
+    'The learner can assign supplied disputes to court branches using simplified jurisdiction rules, distinguish civil and criminal proceedings by purpose, roles and basic steps, and distinguish an allegation from an established outcome.', COURT, 'Q1',
+    '''**Material: Fünf getrennte Streitfälle rund um eine fiktive Reparaturwerkstatt**
+
+Alle Personen sind volljährig; Fälle und Beträge sind erfunden. Es geht nur um Gerichtszweig und grundlegende Verfahrenslogik. Die Begründetheit der Ansprüche, örtliche Zuständigkeit, Instanzen, Fristen und Strafzumessung werden nicht geprüft.
+
+**Fälle:** A: Ben verlangt von Nina 300 EUR Ersatz für die angebliche absichtliche Beschädigung seines privaten Fahrrads. Nina bestreitet den Vorgang. B: Eine fest angestellte Mechanikerin verlangt aus ihrem Arbeitsvertrag ausstehenden Lohn vom Arbeitgeber. C: Die Werkstatt greift die öffentlich-rechtliche Ablehnung einer kommunalen Erlaubnis für einen Verkaufsstand an; eine besondere gesetzliche Rechtswegzuweisung ist im Fall ausgeschlossen. D: Ein ehemaliger Mitarbeiter streitet mit der Bundesagentur für Arbeit über verweigertes Arbeitslosengeld. E: Die Inhaberin greift ihren Einkommensteuerbescheid des Finanzamts an; ein Steuerstrafverfahren liegt nicht vor.
+
+**Vereinfachte Regeln, sinngemäß:** Gewöhnliche private Streitigkeiten und Strafsachen gehören grundsätzlich zur ordentlichen Gerichtsbarkeit, soweit kein besonderer Rechtsweg gilt ([§13 GVG](https://www.gesetze-im-internet.de/gvg/__13.html)). Streitigkeiten zwischen Arbeitnehmern und Arbeitgebern aus dem Arbeitsverhältnis gehören zur Arbeitsgerichtsbarkeit ([§2 Abs.1 Nr.3 ArbGG](https://www.gesetze-im-internet.de/arbgg/__2.html)). Öffentlich-rechtliche Streitigkeiten nichtverfassungsrechtlicher Art gehören grundsätzlich zur Verwaltungsgerichtsbarkeit, soweit keine besondere Zuweisung besteht ([§40 Abs.1 VwGO](https://www.gesetze-im-internet.de/vwgo/__40.html)). Arbeitsförderung gehört zur Sozialgerichtsbarkeit ([§51 Abs.1 Nr.4 SGG](https://www.gesetze-im-internet.de/sgg/__51.html)). Streitigkeiten über die hier vom Finanzamt verwaltete Einkommensteuer gehören zur Finanzgerichtsbarkeit ([§33 Abs.1 Nr.1 FGO](https://www.gesetze-im-internet.de/fgo/__33.html)). Entscheidend ist die Streitart, nicht allein ein Geldbetrag oder die Beteiligung einer Behörde.
+
+**Für A sind zwei getrennte Verfahrenswege denkbar:** Im Zivilprozess macht Ben als Kläger einen privaten Ersatzanspruch gegen Nina als Beklagte geltend. Eine Klage wird durch Zustellung der Klageschrift erhoben ([§253 ZPO](https://www.gesetze-im-internet.de/zpo/__253.html)); das Gericht klärt den Streit, erforderlichenfalls mit Beweisen. Eine Einigung oder ein gerichtliches Ergebnis ist möglich. Eine Strafanzeige bedeutet dagegen noch keine festgestellte Straftat. Bei zureichenden Anhaltspunkten wird ermittelt; die Staatsanwaltschaft entscheidet je nach Ergebnis über öffentliche Anklage oder Einstellung ([§152](https://www.gesetze-im-internet.de/stpo/__152.html), [§170 StPO](https://www.gesetze-im-internet.de/stpo/__170.html)). Kommt es zu einer Hauptverhandlung, entscheidet das Strafgericht über den Vorwurf. Der Staat verfolgt die Straftat; Ben ist dadurch nicht der öffentliche Ankläger. Diese Übersicht lässt einzelne Verfahrensabschnitte bewusst aus.
+
+**Aufgaben –24 BE:**
+1. Ordnen Sie A–E jeweils einem Gerichtszweig zu und begründen Sie jeden Fall mit der passenden Regel. **10 BE**
+2. Vergleichen Sie für A Zivilprozess und Strafverfahren nach Zweck und Rollen von Ben, Nina, Staatsanwaltschaft und Gericht. **6 BE**
+3. Ordnen Sie für jeden der zwei Wege drei grundlegende Schritte in eine passende Reihenfolge. Kennzeichnen Sie den Punkt, an dem ein Ergebnis noch offen ist. **4 BE**
+4. Beurteilen Sie: „Weil Anzeige erstattet wurde, muss Nina verurteilt werden und Ben bekommt automatisch300 EUR.“ Trennen Sie die zwei behaupteten Folgen und begründen Sie die Grenzen. **4 BE**''',
+    '''1. A: ordentliche Gerichtsbarkeit, gewöhnlicher privater Ersatzstreit; B: Arbeitsgerichtsbarkeit, Arbeitnehmer-/Arbeitgeberstreit aus dem Arbeitsvertrag; C: Verwaltungsgerichtsbarkeit, öffentlich-rechtliche Erlaubnis und ausgeschlossene Sonderzuweisung; D: Sozialgerichtsbarkeit, Leistung der Arbeitsförderung; E: Finanzgerichtsbarkeit, Einkommensteuerbescheid des Finanzamts. Jeder Gerichtszweig braucht eine fallbezogene Regelbegründung, nicht nur ein Wort. **Je2 BE: zutreffender Zweig1, Regel-/Faktenbezug1;10 BE.**
+
+2. Zivil: Ben ist Kläger, Nina Beklagte; der private Ersatzanspruch wird geklärt. Strafrechtlich ist Nina zunächst Beschuldigte; Ben kann Anzeige erstatten/als Geschädigter beteiligt sein, ist aber nicht die öffentliche Anklagebehörde. Die Staatsanwaltschaft ermittelt/verfolgt und entscheidet über öffentliche Anklage oder Einstellung. Das Gericht entscheidet unabhängig über den jeweiligen Streit/Vorwurf; eine Anklage ist kein Urteil. **6 BE: getrennte Zwecke2, Rollen von Ben/Nina2, Staatsanwaltschaft/Gericht2.**
+
+3. Beispiel Zivil: Zustellung der Klageschrift → gerichtliche Klärung und gegebenenfalls Beweiserhebung → Entscheidung oder Einigung. Beispiel Straf: Ermittlungen → Entscheidung der Staatsanwaltschaft über Anklage/Einstellung → gegebenenfalls gerichtliche Verhandlung/Entscheidung. Die Übersicht ist vereinfacht. Vor dem jeweiligen Abschluss sind Ergebnis und insbesondere Schuldfrage offen. Auch andere mit dem Material vereinbare Formulierungen sind richtig. **4 BE: beide sinnvollen Schrittfolgen je1; offener Ausgang jeweils1.**
+
+4. Eine Anzeige beweist keine Schuld; Ermittlungen können etwa eingestellt werden, und auch eine Anklage führt nicht automatisch zur Verurteilung. Ein privater Ersatzanspruch und dessen Voraussetzungen sind gesondert zu klären. Aus der Anzeige folgt keine automatische Zahlung an Ben; das Material stellt auch keinen bewiesenen Anspruch fest. **4 BE: kein automatischer Schuldnachweis mit Begründung2; privater Anspruch/Zahlung gesondert2.**''',
+    [(10,'Fünf fallbezogene Gerichtszweige je2: Zuordnung1 und Regel-/Sachverhaltsbezug1.'),(6,'Zwecke2; Ben/Nina2; Staatsanwaltschaft und unabhängiges Gericht2.'),(4,'Zwei sinnvolle vereinfachte Schrittfolgen je1; je ein ausdrücklich offener Ausgang1.'),(4,'Anzeige/Anklage ist kein Schuldnachweis2; privater Ersatzanspruch und Zahlung gesondert2.')], ['WW_RECHT'])
+
+order_game = goal('order-and-experiment', 'Profil: Wirtschaftsordnungsmodelle und kooperative Versuchsdaten kritisch vergleichen',
+    'Profile: critically compare economic-order models and cooperation experiment data',
+    'Die lernende Person kann eine bereitgestellte Gemeinwohlökonomie-Konzeption mit der Sozialen Marktwirtschaft anhand von Zielsetzung, Eigentum und Koordination vergleichen und eine bedingte spieltheoretische Vorhersage mit tatsächlich publizierten aggregierten Versuchsdaten unter Beachtung der Modell- und Versuchsbedingungen abgleichen.',
+    'The learner can compare a supplied Economy for the Common Good proposal with the social market economy by objectives, property and coordination, and compare a conditional game-theoretic prediction with published aggregate experimental data while considering model and experimental conditions.', ORDER_GAME, 'Q1',
+    '''**Material1 – zwei ausdrücklich vereinfachte bereitgestellte Konzepte für Reparaturbetriebe:**
+
+S: Die Soziale Marktwirtschaft verbindet wirtschaftliche Freiheit und dezentrale Marktkoordination mit Wettbewerbsregeln und sozialem Ausgleich. Private Eigentümer können Betriebe führen; soziale und ökologische Regeln begrenzen ihre Handlungsmöglichkeiten. G: Die für diese Aufgabe bereitgestellte Gemeinwohlökonomie-Konzeption behält private Betriebe und Marktpreise, ergänzt sie aber um einen öffentlichen Gemeinwohlbericht. Dieser bewertet soziale und ökologische Beiträge; ein vorgeschlagener Vergabevorteil soll Unternehmen mit gutem Bericht begünstigen. Die Auswahl/Prüfung der Kriterien bleibt umstritten. G ist ein bestimmter diskutierbarer Entwurf, keine Behauptung über sämtliche Gemeinwohlökonomie-Konzepte oder ein bereits verwirklichtes Wirtschaftssystem. Quellenkontext: [LehrplanPLUS WR11 WWG,7.1 und7.5](https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/11/wirtschaft-und-recht/wwg); die zwei Kurzkonzepte sind eigenes didaktisches Material.
+
+**Material2 – bedingtes einmaliges Spielmodell:** Zwei Personen erhalten jeweils10 Geldeinheiten. Jede wählt unabhängig eine Übertragung x bzw.y zwischen0 und10 an die andere Person. Eine Übertragung wird beim Empfänger mit k>1 multipliziert. Die eigene Auszahlung lautet10−x+k·y. Beide kennen die Regeln. In der zu prüfenden Modellvorhersage maximiert jede Person ausschließlich ihre eigene Geldzahlung; soziale Ziele, Wiederholung und spätere Gegenleistungen werden ausgeschlossen. Leiten Sie die Vorhersage selbst ab. Bei k=2 können Sie zur Kontrolle Auszahlungen für(x,y)=(0,0),(10,10),(0,10) vergleichen.
+
+**Material3 – tatsächliches publiziertes Aggregat:** Capraro, Jordan und Rand(2014) untersuchten308 Erwachsene in einem anonymen einmaligen Übertragungsspiel mit10 Einheiten und Multiplikatoren2,3,4,5 oder10. Je Person wurde ein Multiplikator zugewiesen; nur Personen mit bestandenen Verständnisfragen nahmen teil. Über alle Gruppen berichtet die Studie:
+
+| Übertragener Anteil | Anteil der Personen |
+| --- | ---: |
+|0%|22,4%|
+|50%|19,2%|
+|100%|52,3%|
+|andere Anteile|6,2%|
+
+Die100,1% in der Summe entstehen durch gerundete veröffentlichte Werte. Es sind publizierte Gruppenwerte, keine Daten von SkillPilot-Lernenden. Quelle: [Capraro/Jordan/Rand, Scientific Reports4,6790, Results und Methods,28.10.2014](https://www.nature.com/articles/srep06790). Abbildung und Originaltext werden nicht übernommen.
+
+**Aufgaben –24 BE:**
+1. Vergleichen Sie S und G anhand von Zielsetzung, Eigentum und Koordination. Begrenzen Sie Ihre Aussagen auf die bereitgestellten Konzepte. **8 BE**
+2. Leiten Sie aus Material2 für jeden festen Wert von y die geldmaximierende Wahl von x und die gemeinsame Modellvorhersage ab. Nutzen Sie eine Kontrollrechnung bei k=2. Nennen Sie die entscheidende Verhaltensannahme. **6 BE**
+3. Vergleichen Sie die Vorhersage mit Material3. Erklären Sie eine mögliche Abweichung und zwei Grenzen der Interpretation, die sich aus Modell oder Versuchsbedingungen ergeben. **6 BE**
+4. Beurteilen Sie: „Die Kooperationszahlen beweisen, dass KonzeptG in einer ganzen Volkswirtschaft besser funktioniert als S.“ **4 BE**''',
+    '''1. S verbindet wirtschaftliche Freiheit und Marktkoordination mit Wettbewerbsregeln und sozialem Ausgleich; G gewichtet im vorgegebenen Entwurf soziale/ökologische Beiträge zusätzlich über Bericht und Vergabevorteil. Beide erlauben hier Privateigentum und Marktpreise. G ist daher im Material keine vollständige staatliche Eigentumsordnung; der zusätzliche Bewertungs-/Vergabemechanismus ist ein relevanter Unterschied. Welche Kriterien gerecht und überprüfbar sind, bleibt offen. Die Aussagen gelten für diesen G-Entwurf; andere Ausprägungen dürfen nicht ohne Materialbeleg gleichgesetzt werden. **8 BE: zwei Zielsetzungen2; Eigentum beider2; Markt/Regeln und Zusatzmechanismus2; ausdrückliche Konzeptbindung2.**
+
+2. Für festes y kostet jede zusätzliche Einheit x die eigene Person eine Einheit: k·y hängt nicht von x ab. Daher maximiert x=0 die eigene Geldzahlung; symmetrisch wählt die andere Person y=0. Vorhersage: beide übertragen nichts. Bei k=2 erhalten beide bei(0,0)10 und bei(10,10)20; bei(0,10) erhält die erste Person30 und die zweite0. Gemeinsamer Mehrertrag macht eigenes Übertragen unter ausschließlich individueller Geldmaximierung nicht dominant. **6 BE: eigener Kosten-/Unabhängigkeitsmechanismus2; beide Nullübertragungen1; richtige Kontrollrechnung2; ausschließlich eigene Geldzahlung als Annahme1.**
+
+3. Nur22,4% übertragen nichts; viele übertragen halb oder alles. Die Vorhersage beschreibt also nicht alle beobachteten Entscheidungen. Soziale Präferenzen oder einfache Fairnessregeln können eine mögliche Erklärung sein; die Tabelle allein identifiziert keine eindeutige Ursache. Erforderliche Grenzen sind etwa die selektierte Erwachsenenstichprobe, einmalige Anonymität, Zusammenfassung verschiedener k-Gruppen und das Ausschließen sozialer Ziele im einfachen Modell. Die Daten zeigen nicht, wie einzelne Personen bei einem anderen k reagieren. **6 BE: konkreter Zahlen-/Vorhersagenvergleich2; mögliche Erklärung mit vorsichtiger Ursachebehauptung2; zwei konkrete Grenzen je1.**
+
+4. Nein. Das Experiment prüft individuelles Übertragen unter bestimmten Labor-/Onlinebedingungen, keinen volkswirtschaftlichen Vergleich dieser zwei Ordnungskonzepte. G wurde dort nicht als Wirtschaftssystem implementiert und S nicht als Kontrollsystem untersucht. Aus Kooperation folgt deshalb weder allgemeine Überlegenheit noch ein kausaler Effekt des Gemeinwohlberichts. Dafür wären andere Fragestellungen und passende Daten nötig. **4 BE: abweichender Untersuchungsgegenstand2; fehlender Vergleich/kausaler Nachweis2.**''',
+    [(8,'Ziele2; Eigentum2; Koordination/Zusatzmechanismus2; Bindung an gegebenen Entwurf2.'),(6,'Eigener marginaler Kostenmechanismus2; Null/Null-Vorhersage1; korrekte Auszahlungskontrolle2; ausschließliche Geldmaximierung1.'),(6,'Konkreter Datenvergleich2; mögliche vorsichtige Erklärung2; zwei begründete Versuchs-/Modellgrenzen je1.'),(4,'Versuchsgegenstand vs Volkswirtschaft2; fehlender Regime-/Kausalvergleich2.')], ['WW_WIRTSCHAFT','WW_GESELLSCHAFT'])
+
+trade_reserves = goal('trade-and-reserves', 'Profil: Handelsmuster und statische Rohstoffreichweiten modellgebunden prüfen',
+    'Profile: assess trade patterns and static reserve lifetimes within model assumptions',
+    'Die lernende Person kann aus relativen Faktorbeständen und Güterintensitäten ein bedingtes Handelsmuster ableiten, statische Rohstoffreichweiten berechnen und beide Modellaussagen von einer festen Vorhersage realer Lieferungen oder Erschöpfung unterscheiden.',
+    'The learner can derive a conditional trade pattern from relative factor endowments and goods intensities, calculate static reserve lifetimes, and distinguish both model claims from fixed predictions of actual deliveries or depletion.', TRADE_RESERVES, 'Q3',
+    '''**Fall: Zwei Modellfragen zur Beschaffung – eigene erfundene Unterrichtsdaten**
+
+Eine fiktive Firma vergleicht eine Erklärung für internationalen Warenaustausch mit einer Kennzahl zur Rohstoffversorgung. Die Modelle beantworten unterschiedliche Fragen; Kapitalausstattung bedeutet hier Maschinenkapazität, nicht Rohstoffreserven.
+
+**Material1 – vereinfachte Faktorproportionenwelt:** Nord besitzt200 Arbeitseinheiten L und100 Einheiten Maschinenkapital K; Süd besitzt100 L und100 K. Ein Textilgut benötigt relativ mehr Arbeit:6 L je1 K. Ein Maschinengut ist kapitalintensiver:2 L je4 K. Für die bedingte Erklärung gelten zwei Länder/zwei Güter, gleiche verfügbare Technologien und Präferenzen, Wettbewerb, keine Handelskosten, gleiche Qualitäten und keine Faktorintensitätsumkehr. Faktoren können innerhalb eines Landes, nicht zwischen den Ländern wechseln. Die Faktorproportionenregel lautet für dieses Modell: Ein Land exportiert tendenziell das Gut, das seinen relativ reichlicher vorhandenen Faktor intensiver nutzt. Es werden keine absoluten Produktionskosten oder tatsächlichen Exportmengen behauptet.
+
+**Material2 – davon unabhängige Rohstoffkennzahl:** Für ein fiktives Rohstoffgebiet sind wirtschaftlich gewinnbare Reserven R und jährliche Förderung P gegeben:
+
+| Szenario | R in Mio.t | P in Mio.t/Jahr |
+| --- | ---: | ---: |
+|A|120|4|
+|B|150|5|
+|C|120|6|
+
+Statische Reichweite=R/P. Sie hält Reserven und jährliche Förderung für die Quotientenbildung konstant. Zukünftige Nachfrage, Preise, Technik und neue Funde sind damit nicht vorhergesagt. Die Szenarien sind Vergleichsrechnungen, keine zeitliche Entwicklung eines tatsächlich beobachteten Gebiets. Quellenkontext: [LehrplanPLUS WR11 WWG,7.3/7.6](https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/11/wirtschaft-und-recht/wwg); die konkrete Operationalisierung und alle Zahlen sind eigenes Modellmaterial.
+
+**Aufgaben –24 BE:**
+1. Berechnen Sie L/K für Nord und Süd sowie für beide Güter. Bestimmen Sie relative Faktorreichtümer und Güterintensitäten. **6 BE**
+2. Erklären Sie das nach Material1 erwartete Handelsmuster mit relativer Ausstattung und Intensität. Nennen Sie zwei tatsächlich vorgegebene Modellannahmen und begrenzen Sie die Aussage auf diese Modellwelt. **6 BE**
+3. Berechnen Sie die statische Reichweite in A–C mit Einheit. Erklären Sie, warum B trotz größerer Reserve dieselbe Reichweite wie A hat. **6 BE**
+4. Prüfen Sie die Aussagen: „Süd muss wegen seiner größeren Kupferreserve Maschinen exportieren“ und „30 Jahre Reichweite beweisen ein genaues Erschöpfungsdatum“. Erklären Sie jeweils den Fehler und eine relevante Informations-/Modellgrenze. **6 BE**''',
+    '''1. Nord L/K=2; Süd L/K=1. Nord ist relativ arbeitsreicher, Süd relativ kapitalreicher, obwohl beide100 K besitzen. Textil L/K=6; Maschinengut L/K=2/4=0,5. Textil ist relativ arbeitsintensiv, das Maschinengut relativ kapitalintensiv. **6 BE: vier richtige Quotienten4; relative Länder-/Güterzuordnung je1.**
+
+2. Nord exportiert im Modell tendenziell Textilien, weil es relativ arbeitsreich ist und Textil Arbeit intensiver nutzt. Süd exportiert tendenziell das kapitalintensive Maschinengut. Das folgt nicht aus absolut mehr K in Süd. Zwei Beispiele für bindende Annahmen sind gemeinsame Technologien und fehlende Handelskosten; ebenso gelten die anderen ausdrücklich gegebenen Annahmen. Die Folgerung ist keine garantierte reale Exportprognose. **6 BE: beide verknüpften Länder-/Gütererklärungen je2; zwei passende Annahmen mit Begrenzung insgesamt2.**
+
+3. A:120/4=30 Jahre; B:150/5=30 Jahre; C:120/6=20 Jahre. R ist in B um25% und P ebenfalls um25% größer als A; der Quotient bleibt daher gleich. Die Einheit ergibt sich aus Mio.t/(Mio.t/Jahr)=Jahre. **6 BE: drei richtige Reichweiten mit Einheit3; richtige Erklärung der proportionalen Veränderung2; Einheitenbegründung1.**
+
+4. Eine größere Kupferreserve Süd ist nicht einmal gegeben. Das Maschinenkapital K in Material1 ist keine Rohstoffreserve R; die Handelsaussage hängt von relativen Faktoren und Intensitäten unter den Modellannahmen ab. Die Reichweite ist ein statischer Quotient, kein Kalenderdatum: Reserven können durch Preise, Technik oder Funde anders bewertet werden und die jährliche Förderung kann sich ändern. Ohne entsprechenden Verlauf ist keine feste reale Erschöpfungszeit bewiesen. **6 BE: fehlender Reservebeleg/Faktorverwechslung2; bedingte Handelsaussage1; statischer Quotient statt Datum1; zwei relevante Veränderungs-/Informationsgrenzen2.**''',
+    [(6,'Vier L/K-Quotienten4; relative Länder-/Güterzuordnung je1.'),(6,'Zwei verknüpfte Handelsmusterbegründungen je2; zwei tatsächliche Annahmen und Modellbindung2.'),(6,'Drei R/P-Werte mit Jahren3; proportionale Veränderung2; Einheitenlogik1.'),(6,'Unbelegte Reserve und K/R-Verwechslung2; Modellbindung1; kein Erschöpfungsdatum1; zwei reale Veränderungsgrenzen2.')], ['WW_WIRTSCHAFT'])
+
+portfolio = goal('portfolio', 'Profil: Gewichtete Portfoliorenditen und Diversifikationsgrenzen auswerten',
+    'Profile: evaluate weighted portfolio returns and diversification limits',
+    'Die lernende Person kann für bereitgestellte Modellportfolios gewichtete Renditen berechnen, gemeinsame Kursbewegungen vergleichen und einen behaupteten Schutz vor Verlusten unter Beachtung der begrenzten Szenariodaten kritisch prüfen.',
+    'The learner can calculate weighted returns for supplied model portfolios, compare joint price movements and critically assess a claimed protection against losses while respecting the limited scenario data.', PORTFOLIO, 'Q1',
+    '''**Material: Zwei fiktive Unterrichtsportfolios, keine reale Anlageentscheidung**
+
+In einer einzigen Periode werden1.000 Recheneinheiten auf zwei modellierte Anlagen A/B verteilt. Portfolio P hält zu Beginn60% A und40% B; Q hält20% A und80% B. Die Anfangsgewichte bleiben für die Renditerechnung maßgeblich; Umschichten, Gebühren und Ausschüttungen sind ausgeschlossen. Die drei Szenarien sind alternative erfundene Kursverläufe, keine zeitliche Folge und keine statistische Stichprobe. Keine Eintrittswahrscheinlichkeiten sind bekannt.
+
+| Szenario | Rendite A | Rendite B |
+| --- | ---: | ---: |
+|I|+8%|−2%|
+|II|−6%|+4%|
+|III|−10%|−5%|
+
+Portfoliorendite=wA·rA+wB·rB; Endwert=1.000·(1+rPortfolio). Ein Lernprojekt legt ausschließlich für die Modellprüfung eine Verlustgrenze von5% in jedem aufgeführten Szenario fest. Das ist kein persönliches Risikoprofil. Quellenkontext: [LehrplanPLUS WR11 WWG,7.4](https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/11/wirtschaft-und-recht/wwg); alle Daten und Portfolios sind eigenes Modellmaterial.
+
+**Aufgaben –24 BE:**
+1. Berechnen Sie für P und Q in I–III jeweils die gewichtete Rendite und den Endwert. **6 BE**
+2. Erklären Sie anhand der gemeinsamen Bewegungen, wann ein Anteil den anderen hier teilweise ausgleicht und warum Diversifikation in III keinen Verlust verhindert. **6 BE**
+3. Prüfen Sie, ob P oder Q die vorgegebene5%-Verlustgrenze in allen drei Szenarien erfüllt. Vergleichen Sie die Ergebnisse, ohne daraus eine reale Empfehlung abzuleiten. **6 BE**
+4. Beurteilen Sie: „Q ist in III besser als P, also ist Q generell sicher und die Tabelle beweist eine dauerhaft negative Korrelation.“ Nennen Sie zwei konkrete fehlende Informationen. **6 BE**''',
+    '''1. P: I0,6·8%+0,4·(−2%)=4%, Endwert1.040; II0,6·(−6%)+0,4·4%=−2%, Endwert980; III0,6·(−10%)+0,4·(−5%)=−8%, Endwert920. Q: I0,2·8%+0,8·(−2%)=0%, Endwert1.000; II0,2·(−6%)+0,8·4%=2%, Endwert1.020; III0,2·(−10%)+0,8·(−5%)=−6%, Endwert940. **Je Kombination1 BE: richtige gewichtete Rendite0,5 und Endwert0,5;6 BE.**
+
+2. In I und II bewegen sich A/B gegensinnig; Gewinne eines Anteils gleichen Verluste des anderen teilweise aus, abhängig von den Gewichten. In III fallen beide: Q verliert weniger als P, weil B hier weniger stark fällt und in Q stärker gewichtet ist. Die Aufteilung verhindert gemeinsame Verluste nicht. **6 BE: Gegensinnigkeit/Gewichte2; beide negativen Bewegungen und Wirkung2; keine Verlustgarantie2.**
+
+3. Keines erfüllt die Grenze in allen drei Fällen: P verliert8% in III, Q6%; beide liegen über5%. Q hat in III den kleineren Verlust, gewinnt aber in I weniger als P. Das rechtfertigt nur den aufgeführten Szenariovergleich. **6 BE: beide Grenzverletzungen mit Zahl je2; mindestens ein begründeter Gewinn-/Verlustvergleich2.**
+
+4. Der kleinere Verlust in III ist keine generelle Sicherheit. Die Tabelle hat weder Wahrscheinlichkeiten noch genügend tatsächlich beobachtete Zeitreihendaten, um eine dauerhafte Korrelation zu schätzen. Es fehlen beispielsweise Eintrittswahrscheinlichkeiten/weitere gemeinsame Kursverläufe und die für eine andere Fragestellung relevante Liquidität oder Kosten. Selbst gute Diversifikation beseitigt nicht jede gemeinsame Marktrisikolage. **6 BE: relative Verbesserung vs Garantie2; fehlender Korrelationsnachweis2; zwei konkrete benötigte Informationen je1.**''',
+    [(6,'Sechs Kombinationen je1: richtige gewichtete Rendite0,5 und Endwert0,5.'),(6,'Gegensinnigkeit/Gewichte2; gemeinsamer Rückgang2; keine Verlustgarantie2.'),(6,'P−8% und Q−6% jeweils oberhalb5%-Grenze je2; begründeter Szenariovergleich2.'),(6,'Keine allgemeine Sicherheitsgarantie2; kein dauerhafter Korrelationsnachweis2; zwei konkrete Informationslücken je1.')], ['WW_WIRTSCHAFT'])
+
+goals = [court, order_game, trade_reserves, portfolio]
+assert len({g for x in goals for g in x['requires']}) == 7
+assert all(sum(s['points'] for s in g['examData']['scoring']['steps']) == 24 for g in goals)
+path = OUT / 'whole-four-profile-route-terminal-DRAFT-goals.author.candidate.json'
+path.write_text(json.dumps(goals, ensure_ascii=False, indent=2) + '\n')
+for index, item in enumerate(goals, 1):
+    (OUT / f'whole-terminal-{index}.DE-EN-and-examData.author.candidate.json').write_text(json.dumps(item, ensure_ascii=False, indent=2) + '\n')
+print(json.dumps({'path': str(BASE/path.name), 'sha256': hashlib.sha256(path.read_bytes()).hexdigest(), 'goalIds': [g['id'] for g in goals], 'coveredGoalCount': 7, 'allStatusDraft': True, 'newStrictClosures': 0}, ensure_ascii=False))

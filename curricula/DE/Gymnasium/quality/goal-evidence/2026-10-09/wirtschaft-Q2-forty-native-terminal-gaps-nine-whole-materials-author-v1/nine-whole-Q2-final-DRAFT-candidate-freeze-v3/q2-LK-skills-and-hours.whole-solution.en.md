@@ -1,0 +1,5 @@
+1. Recognition may help after delays, not immediate40FTE; initial training is long-term, automation task-specific with quality/privacy/setup costs. Combine childcare/conditions, recognition and training, preserving care quality and examining access/source-region effects.
+2. Initially40%; course30vs45suggests−15pp lock-in, not final failure; later70vs60, changes+30/+20, difference10pp. Selection/nonrandom allocation limit causality; completion/recognition/acceptance differ. Use matched comparisons, pretrends, timings/job quality;300,000/60=5,000per accepted clinic job is descriptive, not causal additional-job cost.
+3. Initially8,000hours/200FTE; A6,400/160; B7,680/192, still8FTE below initial rather than40FTE added. Fixed hourly pay means20%less individual gross pay; compensation changes costs. Childcare/rosters may raise participation; decision voice is not automatic pay/profit sharing.
+4.6,000→6,300labour force,+300despite population decline, not guaranteed clinic skills/hours.
+5.Only20of40known job entries,10clinic;15course not jobs and5unknown. Examine lasting qualifications/hours/conditions, not removals; avoid adding overlappingM2observations.

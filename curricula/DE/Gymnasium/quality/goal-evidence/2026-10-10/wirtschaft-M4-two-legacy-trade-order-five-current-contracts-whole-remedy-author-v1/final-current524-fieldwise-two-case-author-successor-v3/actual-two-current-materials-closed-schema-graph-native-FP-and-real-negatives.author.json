@@ -1,0 +1,59 @@
+{
+  "role": "author-technical-probe-not-scientific-approval",
+  "schemaErrors": 0,
+  "graphErrors": 0,
+  "goalCount": 524,
+  "nativeGraph": {
+    "id": "CQR-001",
+    "status": "pass",
+    "summary": "Basic graph integrity checks pass.",
+    "metrics": {
+      "goals": 524,
+      "localReferenceIssues": 0
+    }
+  },
+  "ids": [
+    "0bd34348-8218-590a-af02-2ad02b8f8779",
+    "02b7aef3-49f2-5eb8-b5a3-77930415f673"
+  ],
+  "sourceFingerprints": [
+    {
+      "id": "0bd34348-8218-590a-af02-2ad02b8f8779",
+      "before": "sha256:04f6f2db663fccf24f586e35e1d1a7d70c83b60ce6441b576aed727a3cbcf202",
+      "after": "sha256:ea84a0bbe13dcf5c4d8797264615422f24a6928ea6bd7b43dbb06e16046f73b1",
+      "qualifiedOriginalKindRow": {
+        "goalId": "0bd34348-8218-590a-af02-2ad02b8f8779",
+        "sourceFingerprint": "sha256:04f6f2db663fccf24f586e35e1d1a7d70c83b60ce6441b576aed727a3cbcf202",
+        "semanticKind": "practiceAssessment",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-pilot-practice-assessment"
+      }
+    },
+    {
+      "id": "02b7aef3-49f2-5eb8-b5a3-77930415f673",
+      "before": "sha256:f49987516ff37593472ce8b8aa541d46674624d7c12745a1ec8701fec25cf385",
+      "after": "sha256:9dd5c2e8ccd47fbc060960b4492de2fe6875db6feb868472a41dbb9f78e66b5e",
+      "qualifiedOriginalKindRow": {
+        "goalId": "02b7aef3-49f2-5eb8-b5a3-77930415f673",
+        "sourceFingerprint": "sha256:f49987516ff37593472ce8b8aa541d46674624d7c12745a1ec8701fec25cf385",
+        "semanticKind": "practiceAssessment",
+        "decisionStatus": "authoritative",
+        "decisionBasis": "reviewed-current-pilot-practice-assessment"
+      }
+    }
+  ],
+  "realNegativeSchemaInvalidPassingPointsDetected": true,
+  "realNegativeRequiresCycleDetected": true,
+  "negativeGraph": {
+    "id": "CQR-001",
+    "status": "fail",
+    "summary": "1 graph integrity issue(s).",
+    "metrics": {
+      "goals": 524,
+      "localReferenceIssues": 1
+    },
+    "details": [
+      "Direct requires cycle: 604cde3e-4095-50c3-b712-e6bd7cea4717 -> 02b7aef3-49f2-5eb8-b5a3-77930415f673 -> 604cde3e-4095-50c3-b712-e6bd7cea4717"
+    ]
+  }
+}

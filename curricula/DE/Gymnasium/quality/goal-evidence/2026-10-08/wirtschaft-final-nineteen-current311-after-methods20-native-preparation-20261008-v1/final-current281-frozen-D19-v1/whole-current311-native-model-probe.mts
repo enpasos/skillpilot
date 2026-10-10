@@ -1,0 +1,1 @@
+import{writeFile}from'node:fs/promises';import{loadGoalBookBuildInputs}from'../../../../../../../../app/scripts/goalBookModel.ts';const x=await loadGoalBookBuildInputs(process.argv[2]);await writeFile(process.argv[3],JSON.stringify(x.model,null,2)+'\n',{flag:'wx'});console.log('Native whole311 book loaded; pages='+x.model.pages.length);

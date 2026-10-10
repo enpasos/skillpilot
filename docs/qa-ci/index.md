@@ -44,6 +44,7 @@ Use this page by role: start with the overview documents, then jump to a review 
 
 ## Wirtschaftswissenschaften M7: datierte Arbeitsstände
 
+- [Aktueller M6-Zwischenstand und CI vom 10. Oktober](wirtschaft-m6-ci-checkpoint-2026-10-10.md)
 - [Fortsetzung und aktuelle Paketnachweise vom 8. Oktober](wirtschaft-m7-resumed-2026-10-08.md)
 - [Integrations- und regulärer Lernzielbuchcheckpoint vom 8. Oktober](wirtschaft-m7-commit-checkpoint-2026-10-08.md)
 

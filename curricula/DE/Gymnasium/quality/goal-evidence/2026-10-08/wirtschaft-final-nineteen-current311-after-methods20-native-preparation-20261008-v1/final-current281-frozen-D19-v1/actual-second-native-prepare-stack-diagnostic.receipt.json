@@ -1,0 +1,22 @@
+{
+  "role": "actual-tool-observed-second-prepare-failure-stack-diagnostic",
+  "command": [
+    "app/node_modules/.bin/tsx",
+    "app/scripts/final19PreparationFailureActualStackDiagnostic.mts",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/native-d-final19.ordered.final.batch.config.json"
+  ],
+  "cwd": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o",
+  "actualExecSession": 85752,
+  "actualExitCode": 1,
+  "observedError": "TypeError: Cannot read properties of undefined (reading map)",
+  "actualStackLocation": "app/scripts/exportGoalBookReviewBundle.ts:214:29",
+  "actualCallingStack": [
+    "renderGoalBookReviewMarkdown at exportGoalBookReviewBundle.ts:204:32",
+    "buildGoalBookReviewBundle at exportGoalBookReviewBundle.ts:473:32",
+    "writeBundleDirectory at materializeGoalDescriptionRolloutBatch.ts:565:17",
+    "prepareGoalDescriptionRolloutBatch at materializeGoalDescriptionRolloutBatch.ts:697:20"
+  ],
+  "completedFreezeClaim": false,
+  "newFachreviewClaim": false,
+  "historicalFirstFailureRetained": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/command-native-final19-prepare.actual.json"
+}

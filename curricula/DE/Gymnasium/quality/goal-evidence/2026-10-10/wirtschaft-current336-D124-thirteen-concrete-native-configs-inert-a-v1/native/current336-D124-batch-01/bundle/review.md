@@ -1,0 +1,1032 @@
+# AI review input: Wirtschaftswissenschaften: gezielte aktuelle Beschreibungsprüfung – Methoden/Fachabgrenzung
+
+- Book ID: `de-gym-economics-current336-D124-v19-b01`
+- Book edition: `curricular-atomic-v1`
+- Publication mode: `review`
+- BookModel digest: `sha256:214515fb2dbc09768bc8807b45229d64ac037b97f3df0b546af49e701bda9da9`
+- Selected goals: 13
+
+The PDF and this Markdown are parallel review surfaces. The normalized JSON is authoritative for exact IDs, relationships, fingerprints, and evidence-profile fields.
+
+## Page 1: Eigene wirtschaftliche Ergebnisse zur Kritik stellen
+
+- Full learning-goal ID: `943fd59c-661a-5163-b5a4-c6bb5a983855`
+- Goal fingerprint: `sha256:5d85904bd4acb129107c04138f29fbd38d42a6f385513276db55a3c6335ce2f9`
+- Page fingerprint: `sha256:60ca4321297d9de053c2345350e4d4b78055c4277fe391224305e485655e0bf0`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften > Ergänzende Sach- und Methodenkompetenzen
+
+### Canonical description
+
+Die lernende Person kann ein eigenes wirtschaftliches Ergebnis mit Begründung und verwendeten Annahmen so offenlegen, dass andere es fachlich prüfen können, und auf eine konkrete Rückfrage oder einen begründeten Einwand sachbezogen reagieren.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/943fd59c-661a-5163-b5a4-c6bb5a983855/943fd59c-661a-5163-b5a4-c6bb5a983855.png
+
+- original digest: `sha256:00631e0b3e26717685b7f6c7098600a25429a81b382027f1954912904e2338d3`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Warum Wirtschaftswissenschaften? - Relevanz und Orientierung — `6bf2d1cc-e745-50dd-a617-71c06a6c6945` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Eine eigene wirtschaftliche Untersuchung tatsächlich durchführen und diskutieren — `e44af438-b41e-5142-acd5-5b9922ba7a59` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:976650569b7c2b1d6ccf24602e1a85b0247d72b0aa5ccea8738b7fb02cad78c2`
+Contract: `positive-understanding-evidence-v2`; authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+Archetype: `representation`
+
+**Positive understanding expectations**
+
+- `content-specific-understanding`
+  - Essential understanding (DE): Kritikfähigkeit an eigener wirtschaftlicher Arbeit macht Ergebnis, Begründung und Annahmen prüfbar und bearbeitet einen konkreten fachlichen Einwand. Zustimmung oder bloße kosmetische Produktänderung ersetzt diese Auseinandersetzung nicht.
+  - Essential understanding (EN): Substantive critique of one’s own economic work exposes findings, reasoning and assumptions and responds to a specific subject-based objection. Agreement or cosmetic editing does not substitute for this engagement.
+  - Observable performance (DE): Die lernende Person kann ein eigenes wirtschaftliches Ergebnis mit Begründung und verwendeten Annahmen so offenlegen, dass andere es fachlich prüfen können, und auf eine konkrete Rückfrage oder einen begründeten Einwand sachbezogen reagieren.
+  - Observable performance (EN): The learner can present their own economic finding with its justification and assumptions so others can examine it and respond substantively to a specific question or reasoned objection.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `substantive-case-change`: Eigene Rechnung zur fachlichen Prüfung öffnen und auf den sachlichen Einwand antworten. / Anderer eigener Befund und begründeter Umgang mit einem Nachweiseinwand. / Open an original calculation to critique and answer the substantive objection. / A different original finding with a reasoned response to an evidence objection.
+
+**Application cases**
+
+- `own-cost-result-open-to-objection`
+  - Task demand (DE): Erzeuge zuerst ein eigenes kurzes Kostenurteil aus fiktiven Angaben: bei100Nutzungen kostetEinweg0,20Euro pro Nutzung, Mehrweg12Euro täglich plus0,05Euro je Nutzung. Lege deine Rechnung, Empfehlung und Annahmen für eine sachliche Prüfung offen. Bearbeite danach den ausdrücklich fiktiven Einwand: An einem Tag könnten es nur40Nutzungen sein; gilt deine Begründung dann noch? Reagiere mit nachprüfbarer Rechnung und begrenztem Urteil, ohne echte Gruppenprüfung zu behaupten.
+  - Task demand (EN): First produce your own brief cost finding from fictional data: at100uses disposables cost EUR0.20per use and reusables EUR12daily plus0.05per use. Expose calculation, recommendation and assumptions for examination. Then address the explicitly fictional objection: a day may have only40uses; would your reasoning still hold? Respond with checkable calculations and a bounded judgement, without claiming a real group review.
+  - Expected performance (DE): Die Person macht ihr eigenes20/17Euro-Ergebnis und die100er-Annahme transparent, rechnet auf den konkreten Einwand hin8/14Euro und begründet die Mengenabhängigkeit. Sie korrigiert oder bedingt ihre eigene Empfehlung sachbezogen; das Wiederholen des Einwands oder bloß Danke genügt nicht.
+  - Expected performance (EN): The learner exposes their own EUR20/EUR17finding and100-use assumption, calculates EUR8/EUR14in response to the specific objection and explains volume dependence. They revise or qualify their own recommendation substantively; repeating the objection or merely saying thanks is insufficient.
+  - Understanding focus (DE): Eigene Rechnung zur fachlichen Prüfung öffnen und auf den sachlichen Einwand antworten.
+  - Understanding focus (EN): Open an original calculation to critique and answer the substantive objection.
+- `own-supplier-result-open-to-evidence-question`
+  - Task demand (DE): Erzeuge eine eigene begründete Empfehlung aus fiktivem Material: A12Euro und verlässliche zweitägige Lieferung;B10Euro mit ein bis zehn Tagen; feste Veranstaltung, wenig Lager, keinerlei Arbeitsstandardnachweise. Lege Gründe und Annahmen offen. Antworte auf die fiktive sachliche Rückfrage: Du schreibst, Bsei sozial schlechter; welche Belege rechtfertigen das? Bearbeite genau diesen Punkt und dokumentiere die fachliche Reaktion.
+  - Task demand (EN): Produce your own reasoned recommendation from fictional data:A EUR12with reliable two-day delivery;B EUR10with one-to-ten-day delivery; fixed event, little storage and no labour-standard evidence. Disclose reasons and assumptions. Answer the fictional substantive question: You wrote thatBhas worse labour standards; what evidence supports that? Address that point and document the subject-based response.
+  - Expected performance (DE): Die Person legt die eigene Empfehlung nachvollziehbar offen, trennt fehlende Nachweise von bewiesen schlechteren Standards und korrigiert die unbelegte Aussage oder kennzeichnet sie als offene Recherchefrage. Der Preis-/Terminkonflikt kann weiter begründet werden, ohne den Kritikpunkt zu übergehen.
+  - Expected performance (EN): The learner exposes their recommendation, distinguishes absent evidence from proven worse standards and corrects the unsupported claim or identifies an open research question. The price/timing trade-off may still support a recommendation; the objection cannot be ignored.
+  - Understanding focus (DE): Anderer eigener Befund und begründeter Umgang mit einem Nachweiseinwand.
+  - Understanding focus (EN): A different original finding with a reasoned response to an evidence objection.
+## Page 2: Eigene wirtschaftliche Modellannahmen begründen
+
+- Full learning-goal ID: `df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb`
+- Goal fingerprint: `sha256:c5161a495daa13a8efca9ef956f4c69aa23d418bbf42d0ac3d57950c4bd32af4`
+- Page fingerprint: `sha256:71856d8759c6fac13ad1f66df8cfa519d295b4dda24b897ef9e663f6ce6ff772`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften > Ergänzende Sach- und Methodenkompetenzen
+
+### Canonical description
+
+Die lernende Person kann für einen abgegrenzten wirtschaftlichen Erklärungszweck eine eigene Modellannahme formulieren, ihre Vereinfachung gegenüber dem Fall offenlegen und anhand des Materials prüfen, ob die Annahme für diesen Zweck geeignet ist.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb/df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb.png
+
+- original digest: `sha256:65a5e5a20ee6853f945b6d3b7e2a894613e92e777b56dceff25a607ccb6e9d04`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Warum Wirtschaftswissenschaften? - Relevanz und Orientierung — `6bf2d1cc-e745-50dd-a617-71c06a6c6945` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Eine eigene wirtschaftliche Untersuchung tatsächlich durchführen und diskutieren — `e44af438-b41e-5142-acd5-5b9922ba7a59` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:59976fe7d75fce67064b2bf0a40d7df9abae9d9c07347381a677d42d76ed5f63`
+Contract: `positive-understanding-evidence-v2`; authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+Archetype: `modeling`
+
+**Positive understanding expectations**
+
+- `content-specific-understanding`
+  - Essential understanding (DE): Eine selbst entwickelte Modellannahme vereinfacht für einen angegebenen Zweck. Ihre Eignung folgt aus diesem Zweck und dem Fallmaterial, nicht daraus, dass sie üblich oder rechnerisch bequem ist.
+  - Essential understanding (EN): A self-authored model assumption simplifies for a stated purpose. Its suitability follows from that purpose and the case evidence, not from convention or computational convenience.
+  - Observable performance (DE): Die lernende Person kann für einen abgegrenzten wirtschaftlichen Erklärungszweck eine eigene Modellannahme formulieren, ihre Vereinfachung gegenüber dem Fall offenlegen und anhand des Materials prüfen, ob die Annahme für diesen Zweck geeignet ist.
+  - Observable performance (EN): The learner can formulate an economic model assumption for a defined explanatory purpose, disclose how it simplifies the case and use the material to test its suitability for that purpose.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `substantive-case-change`: Eigene Vereinfachung mit selbstständiger zweckbezogener Bewertung, AB3. / Andere selbst entwickelte Annahme und wirkliche Eignungsprüfung ohne vorgegebene Antwortauswahl. / An original simplification with independent purpose-based evaluation, AB3. / A changed original assumption and real suitability assessment without answer selection.
+- `own-abstraction-source-performance`: Tatsächlich eigener Abstraktionsansatz mit geändertem wirtschaftlichem Kontext und offengelegten Annahmen. / A genuinely self-constructed abstraction in a changed economic setting with explicit assumptions.
+
+**Application cases**
+
+- `own-kiosk-volume-assumption`
+  - Task demand (DE): Ein fiktiver Kiosk möchte die Größenordnung seiner Tageskosten für Mehrweg abschätzen. Vorliegende Tagesmengen sind80,100und120; Kostenregel12Euro plus0,05Euro je Nutzung. Entwickle selbst eine begründete Annahme über die Tagesmenge für einen übersichtlichen Kostenansatz, lege die ausgelassene Streuung offen und prüfe, wofür der Ansatz geeignet ist und wofür nicht. Keine Annahme wird zur Auswahl vorgegeben.
+  - Task demand (EN): A fictional kiosk wants an approximate daily reusable-cup cost. Observed fictional daily volumes are80,100and120; costs are EUR12plus0.05per use. Independently develop a justified volume assumption for a simple cost model, disclose the omitted variation and assess suitable and unsuitable uses. No assumptions are offered as choices.
+  - Expected performance (DE): Eine begründete eigene Annahme kann beispielsweise100Nutzungen als repräsentative Größenordnung setzen. Die Person macht diese Wahl und die tatsächlich ausgelassene80–120-Streuung transparent;17Euro beschreibt dann einen Ansatz, keinen sicheren Tageswert. Sie prüft Eignung für grobe Budgetierung gegenüber ungeeigneter exakter Tagesprognose. Andere materialgestützte eigene Annahmen sind gleichwertig.
+  - Expected performance (EN): A justified self-authored assumption may use100uses as a representative magnitude. The learner discloses that choice and omitted80–120variation; EUR17then describes a model, not a guaranteed daily value. They assess rough-budget suitability versus exact daily prediction. Other case-supported original assumptions are equally valid.
+  - Understanding focus (DE): Eigene Vereinfachung mit selbstständiger zweckbezogener Bewertung, AB3.
+  - Understanding focus (EN): An original simplification with independent purpose-based evaluation, AB3.
+- `own-price-response-model`
+  - Task demand (DE): Ein fiktiver Veranstalter will erklären, warum eine Senkung der Eintrittsgebühr von12auf10Euro nicht alle angesprochenen Personen zur Teilnahme bringt. Das Material beschreibt vier preisempfindliche Personen mit freier Zeit, zwei zeitlich verhinderte und zwei ohne Interesse; keine tatsächliche neue Teilnahme wurde beobachtet. Formuliere selbst eine zweckgerechte Annahme über entscheidungsrelevante Gruppen, offenbare ihre Vereinfachung und prüfe ihre Eignung. Es wird keine fertige Modellannahme geliefert.
+  - Task demand (EN): A fictional organiser wants to explain why reducing admission from EUR12to10does not make everyone attend. The material describes four price-sensitive people with free time, two unavailable and two uninterested; no subsequent attendance was observed. Independently formulate a purpose-appropriate assumption about relevant groups, disclose its simplification and assess suitability. No finished assumption is supplied.
+  - Expected performance (DE): Die Person entwickelt etwa eine Annahme, die Preisreaktionen nur innerhalb der zeitlich verfügbaren interessierten Gruppe betrachtet, und erklärt, dass Zeit/Interesse damit für den Erklärungszweck fest gesetzt werden. Sie begründet mit dem Material die Grenze gegenüber einem Modell aller acht als reine Preisentscheider und trennt bedingte Erklärung von unbelegter Teilnahmeschätzung.
+  - Expected performance (EN): The learner may assume price responses within the available interested group, explaining that time and interest are fixed for this purpose. Case evidence limits a model treating all eight as pure price responders; a conditional explanation differs from an unsupported attendance estimate.
+  - Understanding focus (DE): Andere selbst entwickelte Annahme und wirkliche Eignungsprüfung ohne vorgegebene Antwortauswahl.
+  - Understanding focus (EN): A changed original assumption and real suitability assessment without answer selection.
+- `own-fictional-school-travel-relationship`
+  - Task demand (DE): Arbeite ausschließlich mit dem folgenden fiktiven persönlichen Umfeld; reale private Angaben sind nicht gefragt. Noa fährt in einem Monat an 20 Schultagen mit einem vorhandenen Fahrrad oder mit dem Bus. Ein Bustag kostet 2 Euro. Für die Fahrradwartung werden in diesem Monat 10 Euro angesetzt; andere Haushaltsausgaben gehören nicht zum betrachteten Fahrtbudget von 40 Euro. Vier fiktive Wochen zeigen 2,3,1 und 4 Bustage. Noa möchte erklären, wie die Zahl der Bustage und das Monatsfahrtbudget zusammenhängen. Konstruiere selbst ein übersichtliches wirtschaftliches Erklärungsmodell: benenne Größen und ihre Beziehung, formuliere eine eigene zweckbezogene Annahme, erkläre die Abstraktion vom konkreten Alltag und prüfe ihre Eignung anhand der Wocheninformationen. Nenne mindestens eine relevante ausgelassene Bedingung. Ein weiterer Monat hat wegen einer Baustelle 16 Bustage; prüfe die Grenze deines Ansatzes. Es wird kein fertiges Modell und keine Annahmenauswahl vorgegeben.
+  - Task demand (EN): Use only this fictional personal setting; no real private information is requested. During 20 school days in a month, Noa uses an existing bicycle or the bus. Each bus day costs EUR 2. Bicycle maintenance is budgeted at EUR 10 for that month; other household spending lies outside the travel budget of EUR 40. Four fictional weeks show 2,3,1 and 4 bus days. Noa wants to explain the relationship between bus days and the monthly travel budget. Construct a simple economic explanatory model yourself: identify quantities and their relationship, formulate your own purpose-based assumption, explain the abstraction from everyday details and assess suitability using the weekly information. Identify at least one relevant omitted condition. Another month has 16 bus days because of construction work; test your model boundary. No finished model or assumption choices are supplied.
+  - Expected performance (DE): Die Person entwickelt beispielsweise mit b als Bustagen und C als betrachteten Monatsausgaben unter offengelegter Annahme gleicher Tagespreise und fixer Wartung den eigenen Ansatz C=10+2b für 0≤b≤20. Die beobachteten Wochen liefern insgesamt 10 Bustage und 30 Euro, keine garantierte künftige Anzahl. Für das 40-Euro-Budget gilt dann b≤15;16 Bustage ergeben 42 Euro. Sie erläutert die abstrahierte Beziehung zwischen Konsummenge, Preis, Fixbetrag und knappen Mitteln sowie die eigenen Annahmen: Wetter, freie Zeit, Sicherheit, alternative Tarife und ungleichmäßige Wartung können wichtig sein. Das Modell erklärt bedingt eine Kostenbeziehung, sagt aber weder die tatsächliche Verkehrsmittelwahl noch jede kommende Monatsausgabe sicher voraus. Eine anders begründete eigene Beziehung ist zulässig, wenn Größen, Annahmen und Materialprüfung stimmig sind.
+  - Expected performance (EN): The learner may construct C=10+2b for 0≤b≤20, with b denoting bus days and C the included monthly spending, explicitly assuming a constant day fare and fixed maintenance. The observed weeks total 10 bus days and EUR 30, without guaranteeing a future count. The EUR 40 budget implies b≤15;16 bus days cost EUR 42. They explain the abstraction relating consumption quantity, price, a fixed component and scarce funds, and disclose their own assumptions: weather, available time, safety, alternative tariffs and irregular maintenance may matter. This is a conditional expenditure relationship, neither a certain travel-choice prediction nor a guarantee for every future month. Other justified original relationships are acceptable when quantities, assumptions and evidence checks are coherent.
+  - Understanding focus (DE): Eigene abstrakte wirtschaftliche Beziehung aus einem fiktiven persönlichen Alltag; Annahmen, Variablen und zweckbezogene Vereinfachungskritik statt bloßer Forschungsfrage.
+  - Understanding focus (EN): A self-constructed abstract economic relationship from fictional everyday life; quantities, assumptions and purpose-based criticism of simplification rather than merely a research question.
+- `own-fictional-club-usage-and-fee-model`
+  - Task demand (DE): In einem anderen fiktiven persönlichen Umfeld nutzt Sam einen Jugendclub. Die vorliegende Monatsabrechnung nennt 9 Euro Mitgliedsbeitrag und 2 Euro für jeden Besuch. Drei Beispielmonate mit 2,4 und 6 Besuchen kosteten 13,17 und 21 Euro; sie sind fiktive Falldaten. Sam hat für diesen Monat höchstens 20 Euro vorgesehen und möchte die Beziehung zwischen Nutzung und Ausgaben erklären, ohne alle Freizeitbedürfnisse abzubilden. Entwirf selbst eine eigene Modellannahme und eine passende abstrakte Darstellung mit benannten Größen; lege offen, welche Alltagsbedingungen du vereinfachst. Prüfe die Eignung an den drei Monaten und am Budget. In einem ausdrücklich abweichenden Aktionsmonat sind die ersten beiden Besuche im 9-Euro-Beitrag eingeschlossen. Erkläre anhand eines eigenen angepassten Ansatzes, weshalb dieselbe unkritisch weiterverwendete Beziehung diesen Monat verfehlt; gib die Grenze beider Modelle an. Keine fertige Beziehung wird vorgegeben.
+  - Task demand (EN): In another fictional personal setting, Sam attends a youth club. The monthly bill lists a EUR 9 membership fee and EUR 2 for every visit. Three fictional example months with 2,4 and 6 visits cost EUR 13,17 and 21. Sam has set aside at most EUR 20 for this month and wants to explain usage and expenditure without representing every leisure preference. Develop your own model assumption and an abstract representation with named quantities; disclose which everyday conditions you simplify. Check suitability against the three months and the budget. In a distinctly different promotional month, the first two visits are included in the EUR 9 fee. Use an independently adapted relationship to explain why reusing the original model without qualification misrepresents this month, and state each model boundary. No finished relationship is supplied.
+  - Expected performance (DE): Ein materialgestützter eigener Ansatz ist C=9+2v für eine nichtnegative ganze Besuchszahl v, ausdrücklich unter Annahme unveränderter Tarifbedingungen und unabhängig vom Besuch fälligem Mitgliedsbeitrag. Er erklärt 13/17/21 Euro und ermöglicht bei 20 Euro höchstens 5 Besuche (19 Euro), während 6 Besuche 21 Euro kosten. Im Aktionsmonat kann die Person eigenständig C=9+2 max(0,v−2) entwickeln und die Bedingung der zwei eingeschlossenen Besuche erläutern:2/4/6 Besuche kosten dann 9/13/17 Euro, höchstens 7 Besuche bleiben mit 19 Euro im Budget. Sie zeigt, dass der alte Ansatz dort 4 Euro zu viel ansetzt, sobald v≥2, und für 0/1 Besuch eine andere Abweichung vorliegt. Die Eignung folgt aus dem begrenzten Erklärungszweck und den ausdrücklich unterschiedlichen Regeln. Kein Modell bewertet damit objektiv Sams gesamten Nutzen oder behauptet, Sam werde die maximal bezahlbare Besuchszahl tatsächlich wählen. Andere klar begründete eigene Darstellungen sind gleichwertig.
+  - Expected performance (EN): A case-supported original relationship is C=9+2v for nonnegative integer visits v, explicitly assuming unchanged tariff rules and a membership charge due independently of visits. It explains EUR 13/17/21 and permits at most 5 visits within EUR 20(EUR 19);6 visits cost EUR 21. For the promotional month, the learner may independently develop C=9+2 max(0,v−2), explaining the two included visits:2/4/6 visits cost EUR 9/13/17 and at most 7 visits fit the budget at EUR 19. The former relationship overstates costs by EUR 4 when v≥2, with different discrepancies for 0/1 visit. Suitability depends on the limited explanatory purpose and the distinctly different rules. Neither model objectively measures Sam’s total utility or predicts that Sam will choose the maximum affordable visits. Other clearly justified original representations are equivalent.
+  - Understanding focus (DE): Selbst entwickelte wirtschaftliche Vereinfachung und echte regelabhängige Modellrevision; Kostenrelation ist von persönlichem Nutzen und beobachteter Nachfrage zu trennen.
+  - Understanding focus (EN): An original economic simplification and a real rule-dependent model revision; expenditure relationships differ from personal utility and observed demand.
+## Page 3: Eine prüfbare wirtschaftliche Hypothese formulieren
+
+- Full learning-goal ID: `a04fc1a7-e037-580e-9324-9282f4acebc1`
+- Goal fingerprint: `sha256:42bf2981a9a57d7a1817a4d1796676eee9e01b31fc3bf1c4c4c3278e33917117`
+- Page fingerprint: `sha256:7c3792b3d408f7e365c31dadfac1ad1e6908db5f8f07950faa15099da83f2a25`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften > Ergänzende Sach- und Methodenkompetenzen
+
+### Canonical description
+
+Die lernende Person kann zu einer abgegrenzten wirtschaftlichen Untersuchungsfrage eine prüfbare Hypothese formulieren und benennen, welche beobachtbaren Befunde die Hypothese stützen oder ihr widersprechen würden.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/a04fc1a7-e037-580e-9324-9282f4acebc1/a04fc1a7-e037-580e-9324-9282f4acebc1.png
+
+- original digest: `sha256:df17fe25e8f6675c7d03e20b4b421cb6ea278f3fc37c11c6a45b1c0aa4d399b3`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Warum Wirtschaftswissenschaften? - Relevanz und Orientierung — `6bf2d1cc-e745-50dd-a617-71c06a6c6945` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Eine eigene wirtschaftliche Untersuchung tatsächlich durchführen und diskutieren — `e44af438-b41e-5142-acd5-5b9922ba7a59` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:027df3271c07c62ccbe27022188e2b9b6a19d2463a8fd10be7826603701663a5`
+Contract: `positive-understanding-evidence-v2`; authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+Archetype: `procedure`
+
+**Positive understanding expectations**
+
+- `content-specific-understanding`
+  - Essential understanding (DE): Eine eigene Hypothese ist eine beobachtbar prüfbare wirtschaftliche Behauptung. Stützende und widersprechende Befunde müssen zur selben abgegrenzten Behauptung passen; Bestätigung in einem Fall ist kein universeller Beweis.
+  - Essential understanding (EN): An original hypothesis is an observably testable economic claim. Supporting and contradicting findings must match the same bounded claim; support in one case is not universal proof.
+  - Observable performance (DE): Die lernende Person kann zu einer abgegrenzten wirtschaftlichen Untersuchungsfrage eine prüfbare Hypothese formulieren und benennen, welche beobachtbaren Befunde die Hypothese stützen oder ihr widersprechen würden.
+  - Observable performance (EN): The learner can formulate a testable hypothesis for a defined economic research question and identify observable findings that would support or contradict it.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `substantive-case-change`: Eigene Behauptung und passende mögliche Gegenbefunde. / Andere wirtschaftliche Beziehung und tatsächlich passende Prüfbarkeit. / An original claim and matching potential disconfirming evidence. / A different economic relationship with genuinely matched testability.
+
+**Application cases**
+
+- `own-hypothesis-bus-discount`
+  - Task demand (DE): Die vorgegebene Untersuchungsfrage betrifft die Veränderung der bezahlten Busfahrten in einer fiktiven Woche nach einer Tarifsenkung; Ferien, Linienangebot und sonstige Tarife sind laut Material gleich geblieben. Formuliere selbst eine überprüfbare Hypothese mit Zeitraum und Bezugsgröße und benenne konkrete mögliche Messbefunde, die sie stützen oder widerlegen würden. Keine fertige Hypothese oder tatsächliche Messung wird geliefert. GK arbeitet mit Markierung der Größen, LK ohne diese Hilfe.
+  - Task demand (EN): The supplied question concerns changes in paid bus journeys during a fictional week after a fare reduction; holidays, service and other fares remain unchanged in the material. Independently formulate a testable hypothesis with period and measure, identifying concrete possible observations that support or contradict it. No finished hypothesis or actual measurement is supplied. GK marks the quantities first; LK receives no such help.
+  - Expected performance (DE): Die Person formuliert eine eigene bestimmte Richtung oder andere prüfbare Beziehung, etwa mehr bezahlte Fahrten in der Vergleichswoche, und verknüpft sie mit konsistenten vorher/nachherZählungen. Gleich viele oder weniger Fahrten widersprechen genau einer Steigerungshypothese; unbekannte weitere Ursachen begrenzen kausale Schlussfolgerungen. Das bloße Wort Tarifwirkung ist keine Hypothese.
+  - Expected performance (EN): The learner formulates an original directional or otherwise testable relationship, such as more paid journeys in the comparison week, linking it to consistent before/after counts. Unchanged or lower counts contradict that particular increase claim; unknown causes limit causal conclusions. Fare effect alone is not a hypothesis.
+  - Understanding focus (DE): Eigene Behauptung und passende mögliche Gegenbefunde.
+  - Understanding focus (EN): An original claim and matching potential disconfirming evidence.
+- `own-hypothesis-saving-pattern`
+  - Task demand (DE): Eine vorgegebene Frage untersucht in einer fiktiven Haushaltsgruppe, ob eine Erhöhung des verfügbaren Monatsbudgets bei sonst gleichbleibenden Bedingungen mit veränderter monatlicher Ersparnis zusammenhängt. Formuliere selbst eine überprüfbare Hypothese, lege Budget-/Sparmaß und Vergleichszeitraum fest und erkläre je einen möglichen stützenden und widersprechenden Befund. Es werden keine privaten Haushaltsdaten erhoben; GK-Hinführung/LK-Selbstständigkeit bleiben wie im ersten Fall.
+  - Task demand (EN): A supplied question studies whether increased disposable monthly budgets in a fictional household group, other conditions unchanged, relate to changed monthly saving. Independently formulate a testable hypothesis, specify budget/saving measures and comparison period and explain one possible supporting and contradicting finding. No private household data are collected; GK scaffolding/LK independence remain as in the first case.
+  - Expected performance (DE): Die Person erstellt eine klare eigene prüfbare Aussage und dazu passende hypothetische Befunde, etwa höhere Ersparnis bei höherem Budget versus unveränderte oder geringere Ersparnis. Sie unterscheidet Eurobetrag und Sparquote, sofern relevant, und behandelt hypothetische Befunde nicht als tatsächlich erhoben.
+  - Expected performance (EN): The learner creates a clear original testable claim and matching hypothetical observations, such as higher saving with a higher budget versus unchanged or lower saving. They distinguish monetary saving and saving rate where relevant and do not present hypothetical observations as collected data.
+  - Understanding focus (DE): Andere wirtschaftliche Beziehung und tatsächlich passende Prüfbarkeit.
+  - Understanding focus (EN): A different economic relationship with genuinely matched testability.
+## Page 4: Eine wirtschaftliche Untersuchungsfrage präzisieren
+
+- Full learning-goal ID: `d76af11e-7fb3-5e81-a622-9f3642efedaf`
+- Goal fingerprint: `sha256:bae1b0f588d741e4ee81a729d7e74a3fa2fa42a0882c40b98cfcaaa8b587e207`
+- Page fingerprint: `sha256:fb88f70d8f6d095d419fb3daf9570d50f8213d4bd375597e4a68e45644730023`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften > Ergänzende Sach- und Methodenkompetenzen
+
+### Canonical description
+
+Die lernende Person kann aus bereitgestelltem wirtschaftlichem Material eine beantwortbare Untersuchungsfrage formulieren, den untersuchten Gegenstand und Zusammenhang abgrenzen und erläutern, welche Antwort die Frage tatsächlich verlangt.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/d76af11e-7fb3-5e81-a622-9f3642efedaf/d76af11e-7fb3-5e81-a622-9f3642efedaf.png
+
+- original digest: `sha256:f6d0ced8b92c266daef7df2680205b323da43553603ff853fc4b556cb6639f6f`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Warum Wirtschaftswissenschaften? - Relevanz und Orientierung — `6bf2d1cc-e745-50dd-a617-71c06a6c6945` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Eine eigene wirtschaftliche Untersuchung tatsächlich durchführen und diskutieren — `e44af438-b41e-5142-acd5-5b9922ba7a59` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:24d4bfcff1d88e2c2b2d26e16953512123215efb56d2f2948079688d46e2feee`
+Contract: `positive-understanding-evidence-v2`; authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+Archetype: `procedure`
+
+**Positive understanding expectations**
+
+- `content-specific-understanding`
+  - Essential understanding (DE): Eine eigene wirtschaftliche Untersuchungsfrage grenzt Gegenstand, Beziehung und beantwortbaren Umfang ab. Eine Themenüberschrift oder bereits mitgelieferte Frage ist noch keine eigene Problemformulierung.
+  - Essential understanding (EN): An original economic research question specifies subject, relationship and answerable scope. A topic heading or supplied question is not original problem formulation.
+  - Observable performance (DE): Die lernende Person kann aus bereitgestelltem wirtschaftlichem Material eine beantwortbare Untersuchungsfrage formulieren, den untersuchten Gegenstand und Zusammenhang abgrenzen und erläutern, welche Antwort die Frage tatsächlich verlangt.
+  - Observable performance (EN): The learner can formulate an answerable research question from supplied economic material, delimit its subject and relationship and explain what an answer must establish.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `substantive-case-change`: Eigene Frage aus Material statt Ausführen einer bereits gelieferten Projektfrage. / Anderes Material und eigenständige Abgrenzung von Beantwortbarkeit. / Generate an original question rather than execute a supplied project question. / Changed material and independent delimitation of answerability.
+
+**Application cases**
+
+- `question-from-canteen-records`
+  - Task demand (DE): Material ohne fertige Fragestellung: Ein fiktiver Kiosk verkauft montags100und dienstags40Getränke; Einweg kostet0,20Euro je Verkauf, Mehrweg täglich12Euro plus0,05Euro je Nutzung. Es liegen keine Umwelt-/Nachfragedaten vor. Formuliere selbst eine mit diesen Daten beantwortbare wirtschaftliche Untersuchungsfrage und erkläre Gegenstand, Zeitraum, relevante Beziehung und erforderliche Antwort. GK-Hinführung: Markiere zuerst vorhandene Größen und unbelegte Aussagen; LK ohne diese Hilfsschritte.
+  - Task demand (EN): Material without a finished question: a fictional kiosk sells100drinks on Monday and40on Tuesday; disposables cost EUR0.20per sale, reusables EUR12daily plus0.05per use. No environmental/demand data exist. Independently formulate an answerable economic research question and explain its subject, period, relationship and required answer. GK scaffolding: first identify available quantities and unsupported claims; LK receives no such steps.
+  - Expected performance (DE): Die Person erzeugt eine eigene abgegrenzte Frage, etwa welche Alternative für genau diese beiden geöffneten Tage geringere dokumentierte Geldkosten verursacht. Sie benennt Vergleich, Zeitraum und Kostenmaßstab und schließt eine unbeantwortbare Umweltüberlegenheit aus. Die alternative eigene Frage wird geprüft, nicht aus einer Musterfrage abgeschrieben.
+  - Expected performance (EN): The learner creates a bounded original question, such as which option has lower documented monetary costs across these two open days. Comparison, period and criterion are explicit; unsupported environmental superiority is excluded. Alternative original questions are assessed, not copied from a supplied model.
+  - Understanding focus (DE): Eigene Frage aus Material statt Ausführen einer bereits gelieferten Projektfrage.
+  - Understanding focus (EN): Generate an original question rather than execute a supplied project question.
+- `question-from-delivery-matrix`
+  - Task demand (DE): Ein zweites Material enthält zwei fiktive Lieferanten: A12Euro pro Einheit und feste zweitägige Lieferung;B10Euro und ein bis zehn Tage. Ein Verein hat geringen Lagerplatz, ein festes Veranstaltungsdatum und keine Sozialnachweise. Formuliere ohne vorgegebene Frage eine materialgestützt beantwortbare Untersuchungsfrage; begrenze die Beziehung und erläutere, welche Antwort und welche zusätzliche Information erforderlich wären. GK kann die Materialgrößen zunächst markieren; LK formuliert eigenständig.
+  - Task demand (EN): A second dataset describes fictional suppliers:A EUR12per unit with fixed two-day delivery;B EUR10with one-to-ten-day delivery. An association has limited storage, a fixed event date and no labour-standard evidence. Without a supplied question, formulate an answerable evidence-based research question, delimit the relationship and explain the required answer and any additional information. GK may first mark available quantities; LK formulates independently.
+  - Expected performance (DE): Die Person formuliert beispielsweise eine eigene Frage zum Preis-/Terminsicherheitskonflikt für das konkrete Ereignis, benennt die angebotene Vergleichsgrundlage und fehlende Lieferwahrscheinlichkeiten. Eine pauschale ethische Rangfolge wäre ohne Nachweise nicht beantwortbar; ein Thema Lieferanten allein ist keine Frage.
+  - Expected performance (EN): The learner may formulate an original question on the price/timing-security trade-off for this event, identifying available comparisons and missing delivery probabilities. A blanket ethical ranking lacks evidence; suppliers alone is a topic, not a question.
+  - Understanding focus (DE): Anderes Material und eigenständige Abgrenzung von Beantwortbarkeit.
+  - Understanding focus (EN): Changed material and independent delimitation of answerability.
+## Page 5: Mikro- und makroökonomische Untersuchungsebenen unterscheiden
+
+- Full learning-goal ID: `eee603d5-61d0-58e2-8f74-16de1e311630`
+- Goal fingerprint: `sha256:e69da374428dcce45d85643c94989c64020414cdf8b6420ca58b358cbe792857`
+- Page fingerprint: `sha256:b54452ee498d457d4b5b4e7deb4d5a0789bb20314fa13a94a2d5242d578ef2da`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften > Ergänzende Sach- und Methodenkompetenzen
+
+### Canonical description
+
+Die lernende Person kann in vorgegebenen wirtschaftlichen Fragestellungen die Untersuchung einzelner Akteure oder Märkte von der Untersuchung gesamtwirtschaftlicher Aggregate unterscheiden und erläutern, weshalb eine Aussage auf einer Ebene nicht ohne Begründung auf die andere übertragen werden kann.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/eee603d5-61d0-58e2-8f74-16de1e311630/eee603d5-61d0-58e2-8f74-16de1e311630.png
+
+- original digest: `sha256:009796e8706cb4924ee7e336d93ad94fc1968607fdd7e05b0c8f735ed5591384`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Warum Wirtschaftswissenschaften? - Relevanz und Orientierung — `6bf2d1cc-e745-50dd-a617-71c06a6c6945` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Eine Busentscheidung aus unterschiedlichen Wissenschaftsperspektiven untersuchen — `8d939db2-d929-590a-99ac-82cf3904bc10` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:9660d13b2b85c35e8f4605d389c8a90219f59862fcc5a6bbc02b8b50779fade8`
+Contract: `positive-understanding-evidence-v2`; authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+Archetype: `concept`
+
+**Positive understanding expectations**
+
+- `content-specific-understanding`
+  - Essential understanding (DE): Mikroökonomie untersucht einzelne Akteure oder Märkte, Makroökonomie gesamtwirtschaftliche Aggregate und Beziehungen. Eine plausibel begründete Einzelwirkung kann bei Wechselwirkungen und Aggregation anders ausfallen.
+  - Essential understanding (EN): Microeconomics studies individual actors or markets; macroeconomics studies economy-wide aggregates and relationships. A reasoned individual effect may change through interactions and aggregation.
+  - Observable performance (DE): Die lernende Person kann in vorgegebenen wirtschaftlichen Fragestellungen die Untersuchung einzelner Akteure oder Märkte von der Untersuchung gesamtwirtschaftlicher Aggregate unterscheiden und erläutern, weshalb eine Aussage auf einer Ebene nicht ohne Begründung auf die andere übertragen werden kann.
+  - Observable performance (EN): The learner can distinguish the study of individual actors or markets from the study of economy-wide aggregates in supplied economic questions and explain why a statement at one level cannot automatically be transferred to the other.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `substantive-case-change`: Ebenenwechsel anhand veränderter Einkommensrückwirkungen erklären. / Andere Akteure und gleiche Grenze einer unbegründeten Aggregatübertragung. / Explain a level change through altered income feedback. / Changed actors and the same limit to unsupported aggregate transfer.
+
+**Application cases**
+
+- `one-household-all-households-saving`
+  - Task demand (DE): Ordne zwei Fragen ein: Wie verändert ein einzelner Haushalt bei gleichem Einkommen sein Sparen, wenn er weniger konsumiert? Wie wirkt gleichzeitiger Konsumverzicht vieler Haushalte auf das Gesamteinkommen? Erkläre anhand der im Material gegebenen Bedingung, dass Konsumzahlungen Unternehmenseinnahmen sind, warum die Einzelaussage nicht unverändert übertragen werden darf.
+  - Task demand (EN): Classify two questions: How does one household’s saving change when it consumes less at unchanged income? How can simultaneous spending cuts by many households affect total income? Given that consumption spending is business revenue, explain why the individual statement cannot be transferred unchanged.
+  - Expected performance (DE): Erste Frage mikroökonomisch, zweite makroökonomisch. Die Person erklärt, dass konstantes Einkommen des Einzelhaushalts eine Fallannahme ist, während Rückgang vieler Ausgaben Einnahmen und Einkommen anderer verändert. Sie behauptet weder automatisch mehr Gesamtersparnis noch einen festen Multiplikator.
+  - Expected performance (EN): The first question is microeconomic and the second macroeconomic. Constant individual income is a case assumption; widespread spending cuts can change others’ revenue and income. The learner asserts neither automatically higher aggregate saving nor a fixed multiplier.
+  - Understanding focus (DE): Ebenenwechsel anhand veränderter Einkommensrückwirkungen erklären.
+  - Understanding focus (EN): Explain a level change through altered income feedback.
+- `one-employer-national-wage-cut`
+  - Task demand (DE): FrageA untersucht, ob ein einzelner Betrieb bei konstanten Aufträgen durch geringere Lohnkosten wettbewerbsfähiger wird. FrageB untersucht, wie sinkende Lohneinkommen in der gesamten Wirtschaft auf Konsum und Produktion wirken. Ordne beide Untersuchungsebenen zu und begründe eine Grenze der Übertragung vonAaufB.
+  - Task demand (EN): QuestionA studies whether one firm becomes more competitive with lower wage costs and unchanged orders. QuestionB studies how falling wage income across the economy affects consumption and output. Classify both levels and justify a limit to transferringAtoB.
+  - Expected performance (DE): Die Person unterscheidet mikroökonomische Betriebs-/Marktfrage und makroökonomische Aggregatfrage. Sie benennt die beiAkonstant gesetzte Nachfrage und mögliche Einkommens-/Nachfragerückwirkung beiB, statt nationale Beschäftigungswirkungen allein aus dem Betriebsfall zu beweisen.
+  - Expected performance (EN): The learner separates a microeconomic firm/market question from a macroeconomic aggregate question. They identify unchanged demand inAand possible income/demand feedback inB, rather than proving national employment effects from one firm.
+  - Understanding focus (DE): Andere Akteure und gleiche Grenze einer unbegründeten Aggregatübertragung.
+  - Understanding focus (EN): Changed actors and the same limit to unsupported aggregate transfer.
+## Page 6: Politische Machtbedingungen wirtschaftlichen Handelns analysieren
+
+- Full learning-goal ID: `4c9b844f-a5fb-595b-935f-27cbc66610ae`
+- Goal fingerprint: `sha256:36f9fbcb351c9adc040e61e7c816a134ad62fbe86a7edf792f03bd467e0d0b91`
+- Page fingerprint: `sha256:d3a34e4d9be9c7d563fbe5e6dd46176e8337e9114458cd5b4281eb279192e55b`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften > Ergänzende Sach- und Methodenkompetenzen
+
+### Canonical description
+
+Die lernende Person kann in einem vorgegebenen wirtschaftlichen Entscheidungskonflikt anhand dokumentierter Entscheidungsrechte, Mehrheits- oder Vetobedingungen und Zugangsressourcen analysieren, wie politische Machtverhältnisse wirtschaftliche Handlungsmöglichkeiten beeinflussen, und belegte Wirkungen von bloß behauptetem Einfluss unterscheiden.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/4c9b844f-a5fb-595b-935f-27cbc66610ae/4c9b844f-a5fb-595b-935f-27cbc66610ae.png
+
+- original digest: `sha256:1e8fd933beaac1ded762979fb78caf743f7b3d3e32bb664468e53ec342eab1ca`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Warum Wirtschaftswissenschaften? - Relevanz und Orientierung — `6bf2d1cc-e745-50dd-a617-71c06a6c6945` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Produktentwicklung unter Theorie- und Entscheidungsbedingungen beurteilen — `c948d3c4-3ca6-5cdd-a7e1-82d1389fcf17` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:04941409b53ceb5b077146ac7e3c1c436bb9eaef648d77ce0d1ca3c96c5e9177`
+Contract: `positive-understanding-evidence-v2`; authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+Archetype: `concept`
+
+**Positive understanding expectations**
+
+- `content-specific-understanding`
+  - Essential understanding (DE): Interessen sagen nicht allein, wer sich durchsetzen kann. Dokumentierte Mehrheits-, Veto-, Agenda- und Zugangsbedingungen verändern politische Entscheidungsmöglichkeiten und damit wirtschaftliches Handeln; eine übereinstimmende Forderung beweist keine alleinige kausale Macht.
+  - Essential understanding (EN): Interests alone do not determine enforcement capacity. Documented majority, veto, agenda and access conditions affect political decisions and economic action; a matching demand does not establish sole causal power.
+  - Observable performance (DE): Die Person verfolgt im gegebenen Konflikt einen belegten Mechanismus von Machtbedingungen zur wirtschaftlichen Option, vergleicht eine geänderte Bedingung bei konstanten Interessen und grenzt unbelegte Einflussbehauptungen ab.
+  - Observable performance (EN): The learner traces an evidenced path from power conditions to economic options, compares a changed condition with interests fixed and limits unsupported influence claims.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `power-condition`: Veto gegenüber vorgelagerter Agenda- und Mehrheitskontrolle. / Veto versus preceding agenda and majority control.
+- `evidence`: Protokollierter Mechanismus gegenüber nur übereinstimmender Verbandsforderung. / Recorded mechanism versus merely matching association demands.
+
+**Application cases**
+
+- `fictional-transport-veto-and-investment`
+  - Task demand (DE): Alle Institutionen, Regeln und Zahlen sind ausdrücklich fiktive Unterrichtsmodelle, kein Berliner Kommunalrecht. Ein Rat mit neun Sitzen beschließt eine Lieferverkehrsregel ab fünf Ja-Stimmen; ein weiterer Ausschuss muss der Verkehrsflächenregel zustimmen und hat ein verbindliches Veto. A hat vier Sitze und will Gebühren, B hat drei und will freie Lieferfenster, C hat zwei und erklärt ausdrücklich Zustimmung zu Gebühren nur mit einer Ausnahme für kleine Betriebe. Eine Zustimmung von C zu freien Fenstern ist nicht dokumentiert. Der Ausschuss lehnt zunächst die vorgesehene Alternativroute ab; später akzeptiert er dieselbe ausgearbeitete Route. Für einen Mehrheitsvergleich bleiben die gegebenen Interessen gleich. Ein finanzstarker Händlerverband liefert eine Analyse; kleine Lieferbetriebe haben denselben rechtlichen Einreichungszugang, aber weniger Zeit. Unternehmen warten vor Fahrzeuginvestitionen auf eine gültige Regel. Analysiere A/C und die bloß rechnerische B/C-Möglichkeit sowie die Vetoänderung und ihre wirtschaftlichen Konsequenzen. Trenne mögliche Investitionsplanung von bereits belegtem Beschluss und behaupte keine Lobbywirkung allein aus einem Treffen.
+  - Task demand (EN): All institutions, rules and figures are explicitly fictional teaching models, not Berlin municipal law. A nine-seat council adopts a delivery rule with at least five yes votes; a separate committee must consent to the road-space rule and holds a binding veto. A has four seats and wants fees, B has three and wants free delivery windows, and C has two and expressly consents to fees only with an exemption for small firms. C consent to free windows is not documented. The committee initially rejects the proposed alternative route and later accepts that same developed route. The given interests remain fixed in the majority comparison. A well-funded traders association supplies an analysis; small delivery firms have the same legal submission access but less time. Firms defer vehicle investment pending a valid rule. Analyse A/C, the merely arithmetical B/C possibility, the changed veto and economic consequences. Distinguish possible investment planning from an evidenced adopted rule; do not infer lobbying effects from a meeting alone.
+  - Expected performance (DE): A allein erreicht mit vier keine fünf Stimmen. A/C kann unter der dokumentierten Ausnahmebedingung sechs Stimmen für Gebühren erreichen; dass tatsächlich ein Ratsbeschluss erfolgt ist, steht nicht fest. B/C hätte rechnerisch fünf Sitze, aber C-Zustimmung zu freien Fenstern fehlt: keine belegte Koalition oder beschlossene Alternative. Selbst eine Ratsmehrheit reicht ohne Ausschusszustimmung nicht. Die spätere Zustimmung beseitigt bei gleichbleibenden Interessen diese formale Sperre; eine entsprechende tatsächlich beschlossene Regel könnte dann Liefer- und Investitionsplanung erlauben. Das ist keine Behauptung eines im Material nicht dokumentierten Beschlusses. Analysebudget verbessert mögliche Argumentationsressourcen, ersetzt weder Stimmen noch Veto und beweist keine Lobbykausalität.
+  - Expected performance (EN): A alone has four and lacks the five votes required. A/C can reach six for fees under the documented exemption condition, but an actual council adoption is not established. B/C has five seats arithmetically, yet C consent to free windows is missing: neither a coalition nor an adopted alternative is evidenced. A council majority is insufficient without committee consent. Later consent removes that formal barrier with interests fixed; a corresponding actually adopted rule could then support delivery and investment planning. This does not assert an undocumented adoption. Analysis funding may improve argumentative resources, replacing neither votes nor a veto and proving no lobbying causation.
+  - Understanding focus (DE): Rechnerische Sitzmehrheit ist keine belegte Koalitionszustimmung; Vetoänderung eröffnet eine bedingte wirtschaftliche Option.
+  - Understanding focus (EN): Arithmetical seat majority is not evidenced coalition consent; removing a veto opens a conditional economic option.
+- `fictional-grid-agenda-and-budget-majority`
+  - Task demand (DE): Ein vollständig fiktives Parlament mit zwölf Sitzen entscheidet über Netzausbau. Im angegebenen Modell braucht ein Vorschlag zunächst Ausschussaufnahme auf die Tagesordnung, danach mindestens sieben Ja-Stimmen. D hat sechs Sitze und will schnelle Zulassung, E vier und verlangt strengere Standortprüfung, F zwei und verlangt Zugang für kleine Anbieter. Zunächst blockiert der Vorsitz die Beratung. Protokoll vom fiktiven Modelltag 3. Mai: Aufnahme zur Beratung, noch kein Beschluss. Protokoll vom 10. Mai: alle sechs D- und beide F-Mitglieder stimmen dem konkret formulierten Kompromiss zu; damit acht Ja-Stimmen. Beschlossener Text, wirksam ab 1. Juni desselben Modelljahrs: vollständige Netzausbauanträge erhalten ein einheitliches vereinfachtes Zulassungsverfahren; nach Zulassung angebotene Netzkapazität muss unter denselben veröffentlichten Zugangsbedingungen auch kleinen Anbietern offenstehen. Weder sofortige Zulassung jedes Projekts noch eine konkrete Kostensenkung wird garantiert. Ein Großanbieter hatte die Verfahrensvereinfachung verlangt; das Protokoll begründet das Paket zugleich mit mehreren Studien und F-Zugangsbedingung. Analysiere Agenda, Mehrheit und die belegte Änderung der Genehmigungs-/Marktzugangsplanung. Unterscheide Übereinstimmung einer Forderung von nachgewiesener alleiniger Entscheidungsmacht.
+  - Task demand (EN): An entirely fictional twelve-seat parliament decides grid expansion. Under the stated model a proposal first needs committee agenda admission, then at least seven yes votes. D has six seats and wants rapid approval, E has four and seeks stricter site scrutiny, and F has two and requires access for small providers. The chair initially blocks debate. Minutes for the fictional model date 3 May record agenda admission only, without adoption. Minutes for 10 May record all six D and both F members supporting the specified compromise: eight yes votes. Adopted text, effective on 1 June of that model year: complete grid-expansion applications receive a uniform simplified permitting procedure; network capacity offered after approval must be open to small providers on the same published access conditions. Neither immediate approval of every project nor a particular cost reduction is guaranteed. A major provider had requested simplified permitting; the minutes also justify the package through several studies and the F access condition. Analyse agenda, majority and the evidenced change to permitting and market-access planning. Distinguish matching demands from demonstrated sole decision power.
+  - Expected performance (DE): Am 3. Mai ist Beratung möglich, aber die wirtschaftliche Regel noch nicht beschlossen. D allein hat sechs statt sieben Stimmen; die dokumentierte D/F-Zustimmung erreicht am 10. Mai acht, ohne E-Zustimmung zu unterstellen. Erst der konkret angenommene Text mit Wirksamkeit ab 1. Juni verändert den angegebenen Rahmen: vollständige Anträge können über das vereinfachte Verfahren geplant werden, zugelassene angebotene Kapazität muss kleinen Anbietern zu denselben veröffentlichten Bedingungen offenstehen. Keine sofortige Einzelzulassung, sichere Einsparung oder schon vor 1. Juni geltende Änderung folgt. Anbieterforderung stimmt mit einer Teilregel überein, beweist aber keine alleinige Ursache; Studien, F-Bedingung, Agenda und tatsächliche Stimmen bleiben eigenständige dokumentierte Faktoren.
+  - Expected performance (EN): On 3 May deliberation is possible but no economic rule is adopted. D alone has six rather than seven votes; documented D/F consent reaches eight on 10 May, without assuming E support. Only the specified adopted text effective from 1 June changes the supplied framework: complete applications can be planned through simplified permitting, and approved offered capacity must be open to small providers on the same published terms. Immediate individual approval, guaranteed savings or a change already effective before 1 June does not follow. A provider demand matches part of the rule but proves no sole cause; studies, the F condition, agenda and actual votes remain distinct documented factors.
+  - Understanding focus (DE): Agendaaufnahme, dokumentierter Beschluss und spätere Wirksamkeit sind verschiedene Bedingungen konkreter wirtschaftlicher Handlungsmöglichkeiten.
+  - Understanding focus (EN): Agenda admission, evidenced adoption and later effectiveness are distinct conditions of specific economic options.
+## Page 7: Volkswirtschaftliche Fragestellungen fachlich einordnen
+
+- Full learning-goal ID: `a6a8bf1a-a131-5f17-9113-02a1321899e4`
+- Goal fingerprint: `sha256:0b0838b77630c5b6ed517b431f92fcd34b166e01a197cbb6a25959b274e63f56`
+- Page fingerprint: `sha256:938e6e9ea333364ee36d962426584f7e5e29b000798d0ef2923976b29ae4a37c`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften > Ergänzende Sach- und Methodenkompetenzen
+
+### Canonical description
+
+Die lernende Person kann vorgegebene volkswirtschaftliche Fragestellungen anhand des untersuchten gesamtwirtschaftlichen Problems einem passenden Themenbereich zuordnen und die Zuordnung mit der jeweils betroffenen wirtschaftlichen Beziehung begründen.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/a6a8bf1a-a131-5f17-9113-02a1321899e4/a6a8bf1a-a131-5f17-9113-02a1321899e4.png
+
+- original digest: `sha256:f0b5a909fe647952e6463a480379de48ed44beb86d66fa5ac6ba2585bd17795e`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Warum Wirtschaftswissenschaften? - Relevanz und Orientierung — `6bf2d1cc-e745-50dd-a617-71c06a6c6945` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Finanzkrise, gesamtwirtschaftliche Frage und Insolvenzgründe unterscheiden — `c2cd1cbf-e3c8-59a8-be39-32f90356c36e` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:bd6609f9974284068981b0d3fc5b2f79e622317d25cd92aa2f4e0cc1d39b41a6`
+Contract: `positive-understanding-evidence-v2`; authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+Archetype: `concept`
+
+**Positive understanding expectations**
+
+- `content-specific-understanding`
+  - Essential understanding (DE): Die fachliche Einordnung einer volkswirtschaftlichen Frage folgt dem untersuchten gesamtwirtschaftlichen Zusammenhang. Ein Stichwort allein reicht nicht; das Erklärungsthema muss mit Akteuren und Beziehung begründet werden.
+  - Essential understanding (EN): Classifying an economics question depends on the aggregate relationship investigated. A keyword alone is insufficient; the topic must be justified through actors and the relevant relationship.
+  - Observable performance (DE): Die lernende Person kann vorgegebene volkswirtschaftliche Fragestellungen anhand des untersuchten gesamtwirtschaftlichen Problems einem passenden Themenbereich zuordnen und die Zuordnung mit der jeweils betroffenen wirtschaftlichen Beziehung begründen.
+  - Observable performance (EN): The learner can classify supplied economics questions by the aggregate economic problem they investigate and justify the classification through the relevant economic relationship.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `substantive-case-change`: Vorgegebene GK-Frage über ihren wirtschaftlichen Zusammenhang einordnen. / Anderer gesamtwirtschaftlicher Gegenstand und begründete fachliche Zuordnung. / Classify a supplied GK question through its economic relationship. / A changed aggregate subject with reasoned topic classification.
+
+**Application cases**
+
+- `price-level-wage-share-question`
+  - Task demand (DE): Eine vorgegebene Frage lautet: Wie verändert ein allgemeiner Anstieg der Verbraucherpreise die Kaufkraft gleichbleibender Einkommen in einer Volkswirtschaft? Ordne sie einem passenden wirtschaftlichen Themenbereich zu und begründe die Zuordnung; Gegenstand ist nicht der Preis eines einzelnen Kiosks.
+  - Task demand (EN): The supplied question asks: How does a general increase in consumer prices affect the purchasing power of unchanged incomes across an economy? Classify the economic topic and justify the choice; the subject is not a single kiosk price.
+  - Expected performance (DE): Die Person ordnet Preisniveau/Inflation und reale Kaufkraft ein und begründet die Beziehung zwischen allgemeinem Preisniveau und nominalem Einkommen. Eine reine Aufzählung Geld oder Lohn ohne Zusammenhang reicht nicht.
+  - Expected performance (EN): The learner identifies price level/inflation and real purchasing power, justifying the relationship between the general price level and nominal income. Listing money or wages without that relationship is insufficient.
+  - Understanding focus (DE): Vorgegebene GK-Frage über ihren wirtschaftlichen Zusammenhang einordnen.
+  - Understanding focus (EN): Classify a supplied GK question through its economic relationship.
+- `investment-employment-cycle-question`
+  - Task demand (DE): Die vorgegebene Frage untersucht, weshalb eine sinkende gesamtwirtschaftliche Nachfrage nach Investitionsgütern Beschäftigung und Produktion beeinflussen kann. Ordne das Problem einem passenden Themenbereich zu und erkläre den konkret untersuchten Zusammenhang; keine eigene neue Untersuchungsfrage wird verlangt.
+  - Task demand (EN): The supplied question examines why falling economy-wide demand for investment goods can affect employment and output. Classify the topic and explain the investigated relationship; formulating a new research question is not required.
+  - Expected performance (DE): Die Person benennt Konjunktur/gesamtwirtschaftliche Nachfrage und Beschäftigung und erklärt den Bezug über Aufträge, Produktion und Arbeitsnachfrage. Die begründete Zuordnung darf mehrere sachlich passende Bereiche nennen; nicht jeder konkrete Effekt wird als sicher behauptet.
+  - Expected performance (EN): The learner identifies the business cycle/aggregate demand and employment, explaining links through orders, output and labour demand. More than one justified topic is acceptable; particular effects are not treated as guaranteed.
+  - Understanding focus (DE): Anderer gesamtwirtschaftlicher Gegenstand und begründete fachliche Zuordnung.
+  - Understanding focus (EN): A changed aggregate subject with reasoned topic classification.
+## Page 8: Wirtschaftliche Informationen gezielt recherchieren
+
+- Full learning-goal ID: `b1d7f1ab-371b-5e02-acb3-49f3938b2ba6`
+- Goal fingerprint: `sha256:4d617b298112f3a0d175c61332163bf275b47d8755468a77d0444248347d1007`
+- Page fingerprint: `sha256:063657e95fce20f30dcf01f63aa38b4a230a7a570589c145c7f276f249d0caac`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften > Ergänzende Sach- und Methodenkompetenzen
+
+### Canonical description
+
+Die lernende Person kann aus einer konkreten wirtschaftlichen Fragestellung einen Informationsbedarf ableiten, geeignete zugängliche Quellen selbstständig finden und die ausgewählten Informationen mit Herkunft und Bezug zur Fragestellung nachvollziehbar dokumentieren.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/b1d7f1ab-371b-5e02-acb3-49f3938b2ba6/b1d7f1ab-371b-5e02-acb3-49f3938b2ba6.png
+
+- original digest: `sha256:ca3d674c4bc2a4e9974632c64b0088f5d997b7797d5cd05940c17d9b9b2871d9`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Warum Wirtschaftswissenschaften? - Relevanz und Orientierung — `6bf2d1cc-e745-50dd-a617-71c06a6c6945` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Eine eigene wirtschaftliche Untersuchung tatsächlich durchführen und diskutieren — `e44af438-b41e-5142-acd5-5b9922ba7a59` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:177bc40349959fb1af3e357ad500de23366dfe1bd4fbe36f0dd888cc5c62d353`
+Contract: `positive-understanding-evidence-v2`; authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+Archetype: `procedure`
+
+**Positive understanding expectations**
+
+- `content-specific-understanding`
+  - Essential understanding (DE): Gezielte Recherche beginnt mit einem nachvollziehbaren Informationsbedarf. Selbst gefundene zugängliche Quellen müssen so dokumentiert werden, dass Herkunft, Fundstelle, Stand und Beitrag zur Frage überprüfbar bleiben.
+  - Essential understanding (EN): Focused research begins with explicit information needs. Independently found accessible sources must document origin, locator, date and relevance so their contribution can be checked.
+  - Observable performance (DE): Die lernende Person kann aus einer konkreten wirtschaftlichen Fragestellung einen Informationsbedarf ableiten, geeignete zugängliche Quellen selbstständig finden und die ausgewählten Informationen mit Herkunft und Bezug zur Fragestellung nachvollziehbar dokumentieren.
+  - Observable performance (EN): The learner can derive information needs from a specific economic question, independently find suitable accessible sources and document the selected information with its origin and relevance to the question.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `substantive-case-change`: Selbst gefundene öffentliche Statistik mit dokumentiertem Informationsbedarf. / Anderer Informationsbedarf und eigener dokumentierter Quellenfund. / Independently located public statistics with documented information needs. / A changed information need and independently documented source finding.
+
+**Application cases**
+
+- `find-price-index-method-and-period`
+  - Task demand (DE): Recherchiere selbstständig, wie man für Deutschland die Veränderung der Verbraucherpreise einer ausdrücklich von dir ausgewählten abgeschlossenen Monatsperiode gegenüber dem Vorjahresmonat belegen kann. Leite vor der Suche die benötigten Definitionen und Periodenangaben ab; finde eine öffentlich zugängliche amtliche Ergebnisquelle und eine methodische Erläuterung. Dokumentiere Suchweg, Herausgeber, vollständigeURL, genaueFundstelle, Veröffentlichungs-/Abrufstand und die entnommene Information. Eine fertige Ergebnisquelle oder Rate wird nicht vorgegeben.
+  - Task demand (EN): Independently research how to support the German consumer-price change for one explicitly chosen completed month against the same month a year earlier. Before searching, identify required definitions and periods; find an accessible official results source and methodological explanation. Document search steps, publisher, completeURL, exact locator, publication/access dates and extracted information. Neither a finished results source nor a rate is supplied.
+  - Expected performance (DE): Die Person führt die Suche tatsächlich aus, wählt passende zugängliche amtliche Informationen, nennt eine identische Monats-/Jahresbasis und dokumentiert nachprüfbare Herkunft/Fundstellen statt bloßer Suchtreffer. Sie erklärt die Rolle von Ergebnis und Methodik und unterscheidet vorläufige von endgültigen Angaben. Bewertet wird der wirkliche Rechercheweg; keine im Voraus erfundene Rate oder beobachtete Lernendenleistung.
+  - Expected performance (EN): The learner actually searches, selects accessible official information, uses matching month/year references and records verifiable origin and locators rather than search snippets. They explain results and methodology and distinguish preliminary from final figures. Assessment concerns the actual search process, not a fabricated rate or an assertion of observed learners.
+  - Understanding focus (DE): Selbst gefundene öffentliche Statistik mit dokumentiertem Informationsbedarf.
+  - Understanding focus (EN): Independently located public statistics with documented information needs.
+- `find-legal-trade-name-definition`
+  - Task demand (DE): Ein fiktiver Infotext verwechselt Firma mit dem Betrieb. Bestimme, welche rechtliche Begriffsangabe du zum Prüfen brauchst; finde selbst eine öffentlich zugängliche geltende deutsche Rechtsquelle für Firma und eine präzise Fundstelle. Dokumentiere Suchweg, Norm/Herausgeber,URL, Absatz, Abrufdatum und den Bezug zur Textfrage. Keine echte Person oder Unternehmensakte wird recherchiert.
+  - Task demand (EN): A fictional information text confuses a commercial trading name with the business itself. Determine the legal definition needed, independently find an accessible current German legal source for Firma and identify its exact locator. Document search steps, provision/publisher,URL, subsection, access date and relevance to the question. No real person or company record is investigated.
+  - Expected performance (DE): Die Person findet tatsächlich eine geeignete aktuelle Primärnorm, beispielsweiseHGB17(1), dokumentiert die genaue Fundstelle und erklärt ihren Beitrag zum benötigten Begriff. Sie recherchiert keinen gesamten Handelsregisterfall, gibt eine KI-Zusammenfassung nicht als selbst gefundene Primärquelle aus und grenzt unbekannte weitere Rechtsfragen ab.
+  - Expected performance (EN): The learner actually locates a suitable current primary provision, for exampleHGB17(1), documents its exact locator and explains its contribution to the needed definition. They do not conduct a whole register case, present an AI summary as independently found primary evidence or invent answers to further legal questions.
+  - Understanding focus (DE): Anderer Informationsbedarf und eigener dokumentierter Quellenfund.
+  - Understanding focus (EN): A changed information need and independently documented source finding.
+## Page 9: Wirtschaftliche Positionen dialogisch vertreten
+
+- Full learning-goal ID: `b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0`
+- Goal fingerprint: `sha256:7f0f9e5a826d3aa06a46602654c30e49cce989054e80ad3cd4fe9d8d415d3c7c`
+- Page fingerprint: `sha256:3a09f2877d85bdc879b8a7fd3ea369fd5b72c6c99f1f8dd3e6d52b842887225d`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften > Ergänzende Sach- und Methodenkompetenzen
+
+### Canonical description
+
+Die lernende Person kann in einer vorgegebenen wirtschaftlichen Gesprächssituation einen begründeten Beitrag formulieren, den sachlichen Einwand oder die Rückfrage eines Gegenübers aufgreifen und ihre Antwort an Anlass und Adressaten des Gesprächs ausrichten.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0/b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0.png
+
+- original digest: `sha256:b904a627c03596a73213cd707268f4c0f26d39a2695770322ab310ca36c38d14`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Warum Wirtschaftswissenschaften? - Relevanz und Orientierung — `6bf2d1cc-e745-50dd-a617-71c06a6c6945` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Eine eigene wirtschaftliche Untersuchung tatsächlich durchführen und diskutieren — `e44af438-b41e-5142-acd5-5b9922ba7a59` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:561731ed35b816db56262d7e404f28769b24cedc3eec805ec7491c7f2ba4c7f5`
+Contract: `positive-understanding-evidence-v2`; authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+Archetype: `representation`
+
+**Positive understanding expectations**
+
+- `content-specific-understanding`
+  - Essential understanding (DE): Wirtschaftlicher Dialog beantwortet einen konkreten Beitrag des Gegenübers mit sachlich begründetem Bezug zur Gesprächssituation. Eine fertig geschriebene Position ohne Aufnahme des Einwands ist keine Dialoghandlung.
+  - Essential understanding (EN): Economic dialogue responds to the other participant’s concrete contribution with subject-based reasoning suited to the situation. A prepared position that does not engage with the objection is not dialogue.
+  - Observable performance (DE): Die lernende Person kann in einer vorgegebenen wirtschaftlichen Gesprächssituation einen begründeten Beitrag formulieren, den sachlichen Einwand oder die Rückfrage eines Gegenübers aufgreifen und ihre Antwort an Anlass und Adressaten des Gesprächs ausrichten.
+  - Observable performance (EN): The learner can make a reasoned contribution in a supplied economic discussion, engage with another participant’s substantive objection or question and adapt the response to the occasion and audience.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `substantive-case-change`: Konkrete wirtschaftliche Rückfrage aufnehmen, gemeinsamer GK/LK-Dialogkern. / Anderes Gespräch und echte Antwort auf das Gegenargument, ohne ganze LK-Scopefreigabe. / Engage a concrete economic question, the shared GK/LK dialogue core. / A changed discussion with an actual response to the objection, without full LK-scope approval.
+
+**Application cases**
+
+- `dialogue-kiosk-budget-and-access`
+  - Task demand (DE): Führe einen dokumentierten fiktiven Dialog mit einer Kioskvertretung: Mehrweg kostet bei100Nutzungen17Euro, Einweg20Euro; Rückgabe und Hygiene sind noch ungeklärt. Formuliere deinen begründeten Vorschlag. Das Gegenüber fragt dann: Was machen wir an schwachen Tagen mit40Nutzungen, wenn fixe Kosten trotzdem12Euro betragen? Antworte auf genau die Frage in verständlicher Sprache für die Schulgruppe und begrenze den Vorschlag. Es werden keine echten Personen kontaktiert.
+  - Task demand (EN): Carry out a documented fictional dialogue with a kiosk representative: reusables cost EUR17at100uses and disposables EUR20; returns and hygiene remain uncertain. Make a reasoned proposal. The counterpart then asks: What happens on low-volume days with40uses when fixed costs still equal EUR12? Answer that particular question in language suited to the school group and qualify the proposal. No real person is contacted.
+  - Expected performance (DE): Die Person bezieht den Einwand ausdrücklich auf ihre erste Position, erklärt8Euro gegenüber14Euro am schwachen Tag und formuliert eine passende bedingte Antwort, etwa weitere Mengen-/Hygienedaten vor der Umstellung. Sie bleibt sachlich und adressatengerecht statt das Anfangsurteil nur zu wiederholen.
+  - Expected performance (EN): The learner explicitly connects the objection to their initial position, explains EUR8versus14on a low-volume day and gives a suitable conditional response, such as obtaining volume/hygiene evidence before switching. They remain substantive and audience-appropriate instead of repeating the initial judgement.
+  - Understanding focus (DE): Konkrete wirtschaftliche Rückfrage aufnehmen, gemeinsamer GK/LK-Dialogkern.
+  - Understanding focus (EN): Engage a concrete economic question, the shared GK/LK dialogue core.
+- `dialogue-supplier-price-objection`
+  - Task demand (DE): In einem fiktiven Vereinsgespräch empfiehlst du eine Lieferstrategie beiA12Euro und sicherer zweitägiger Lieferung gegenüberB10Euro und schwankenden Lieferzeiten. Das Gegenüber antwortet: Unser Budget ist knapp; warum sollen wir mehr zahlen? Führe den Dialog fort, nimm die Budgetfrage auf und antworte mit Termin-/Ausfallbezug für dieses Treffen. LK kann zusätzlich Interessen unterschiedlicher Beteiligter begründen; die gesamte LK-Multiperspektivitätsanforderung wird dadurch nicht als freigegeben gezählt.
+  - Task demand (EN): In a fictional association meeting you recommend a supply strategy comparingAat EUR12with reliable two-day delivery andBat EUR10with variable delivery. The counterpart replies: Our budget is tight; why should we pay more? Continue the dialogue, engage the budget question and respond through timing/disruption considerations suited to this meeting. LK may additionally reason through different participants’ interests; full LK multiperspectivity is not counted as approved.
+  - Expected performance (DE): Die Person erkennt den2Euro-Aufpreis an, erklärt dessen bedingten Bezug zur festen Veranstaltung und macht einen anschlussfähigen Vorschlag, etwa Prioritätsmengen oder Klärung der Lieferzuverlässigkeit. Sie ignoriert Budgetinteressen nicht und behauptet keine unbekannte Ausfallwahrscheinlichkeit. Die Antwort knüpft an den tatsächlichen Beitrag an.
+  - Expected performance (EN): The learner acknowledges the EUR2premium, relates it conditionally to the fixed event and offers a responsive proposal such as priority quantities or clarification of reliability. Budget interests are addressed and unknown failure probabilities are not invented. The answer connects to the actual contribution.
+  - Understanding focus (DE): Anderes Gespräch und echte Antwort auf das Gegenargument, ohne ganze LK-Scopefreigabe.
+  - Understanding focus (EN): A changed discussion with an actual response to the objection, without full LK-scope approval.
+## Page 10: Fragestellungen von VWL und BWL unterscheiden
+
+- Full learning-goal ID: `72f45efc-459e-5407-b946-1bb1968135d2`
+- Goal fingerprint: `sha256:72b9f0f456f0d9bb4d05a77ec3bad0d6b956d959133b0fbabd1f03f352c0ce8c`
+- Page fingerprint: `sha256:ca9e645a5d8613050b37cb780b4ca58ba0c286412f075f9f8054310ee1ef828b`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften > Ergänzende Sach- und Methodenkompetenzen
+
+### Canonical description
+
+Die lernende Person kann vorgegebene wirtschaftliche Fragestellungen nach dem jeweiligen Untersuchungsfokus Volkswirtschaftslehre oder Betriebswirtschaftslehre zuordnen, die Zuordnung begründen und erläutern, weshalb derselbe Sachverhalt aus beiden Perspektiven untersucht werden kann.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/72f45efc-459e-5407-b946-1bb1968135d2/72f45efc-459e-5407-b946-1bb1968135d2.png
+
+- original digest: `sha256:9d8f21d9752423509ee689f7a97449cc84ffc332ee0843850e800807b42ad7b1`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Warum Wirtschaftswissenschaften? - Relevanz und Orientierung — `6bf2d1cc-e745-50dd-a617-71c06a6c6945` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- VWL und BWL: denselben Fall nach Untersuchungsfokus einordnen — `61149ae6-fb58-58f3-aeea-2b68e4612cd1` (outside this book)
+- Eine Busentscheidung aus unterschiedlichen Wissenschaftsperspektiven untersuchen — `8d939db2-d929-590a-99ac-82cf3904bc10` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:068cffcc7a4ea05c6b4bf230511e809c83def6dbf03d83f9da792e50652e00a4`
+Contract: `positive-understanding-evidence-v2`; authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+Archetype: `concept`
+
+**Positive understanding expectations**
+
+- `bounded-discipline-understanding`
+  - Essential understanding (DE): BWL fokussiert die Entscheidungen und Prozesse von Unternehmen; VWL erklärt wirtschaftliche Beziehungen und Ressourcenallokation einschließlich Mikro- und Makroökonomie. Ein einzelner Akteur bedeutet nicht automatisch BWL; derselbe Sachverhalt und Datenbestand kann beiden Untersuchungsperspektiven dienen.
+  - Essential understanding (EN): Business administration focuses on firm decisions and processes; economics explains economic relationships and resource allocation, including micro- and macroeconomics. A single actor does not automatically mean business administration; the same situation and dataset can serve both perspectives.
+  - Observable performance (DE): Die Person ordnet Fragen anhand des Untersuchungsfokus zu, begründet die Einordnung und behandelt die Mikroökonomie-/Ein-Akteur-Verwechslung an einem frischen Fall.
+  - Observable performance (EN): The learner classifies questions by investigative focus, justifies the choice and handles the single-actor versus microeconomics misconception in a fresh case.
+
+**Coverage expectations**
+
+- required expectations: `bounded-discipline-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `investigative-focus`: Untersuchungsgegenstand gegenüber Werkzeug oder Datenquelle. / Investigative subject versus tool or data source.
+- `fresh-case`: Veränderter wirtschaftlicher Kontext mit begründeter Einordnung. / A changed economic setting with reasoned classification.
+
+**Application cases**
+
+- `bakery-costs-and-market`
+  - Task demand (DE): Eine fiktive Bäckerei und ein Forschungsteam untersuchen steigende Mehlpreise. Frage A: Wie soll die Bäckerei Einkauf, Produktionsmenge und Finanzierung auf ihre betrieblichen Ziele abstimmen? Frage B: Wie beeinflussen steigende Mehlpreise Angebot und Nachfrage auf dem Brotmarkt? Frage C: Wie verändern betroffene Haushalte ihre Konsumentscheidungen? Ordne die Fragen nach Untersuchungsfokus zu und begründe, warum Frage C trotz Betrachtung einzelner Haushalte volkswirtschaftlich sein kann.
+  - Task demand (EN): A fictional bakery and research group investigate rising flour prices. A: How should the bakery coordinate purchasing, output and finance with its business objectives? B: How do rising flour prices affect supply and demand in the bread market? C: How do affected households change consumption? Classify each question by investigative focus and explain why C can be economics despite studying individual households.
+  - Expected performance (DE): A richtet sich auf Entscheidungen und Prozesse eines Unternehmens und ist betriebswirtschaftlich. B untersucht Marktbeziehungen und ist volkswirtschaftlich. C kann mikroökonomisch sein, wenn sie Haushaltsentscheidungen und deren ökonomische Bedingungen als allgemeinen Untersuchungsgegenstand erklärt. VWL enthält Mikro- und Makroökonomie; einzelner Akteur bedeutet nicht automatisch BWL. Der Sachverhalt Mehlpreise kann beide Perspektiven tragen.
+  - Expected performance (EN): A focuses on one firm’s decisions and processes and is business administration. B studies market relationships and is economics. C can be microeconomics when it explains household choices and their economic conditions as a general research subject. Economics includes micro- and macroeconomics; one actor does not automatically mean business administration. The same flour-price situation supports both perspectives.
+  - Understanding focus (DE): Untersuchungsfokus statt bloße Zahl der dargestellten Akteure zur Zuordnung verwenden.
+  - Understanding focus (EN): Classify by investigative focus rather than the number of depicted actors.
+- `bus-service-shared-subject`
+  - Task demand (DE): Ein fiktiver Busbetrieb plant eine günstigere Tarifvariante. Team A untersucht, welche Tarifgestaltung, Personalplanung und Finanzierung zu den eigenen betrieblichen Zielen passen. Team B untersucht, wie veränderte Ticketpreise und ein kommunaler Zuschuss Verkehrsmittelnachfrage und die Verteilung knapper öffentlicher Mittel beeinflussen. Beide nutzen Daten desselben Betriebs. Unterscheide BWL- und VWL-Perspektive und prüfe die Behauptung: Sobald Unternehmensdaten benutzt werden, ist jede Untersuchung BWL.
+  - Task demand (EN): A fictional bus company considers a cheaper fare. Team A studies fares, staffing and finance against its own objectives. Team B studies how ticket prices and a municipal subsidy affect transport demand and the allocation of scarce public funds. Both use the same company’s data. Distinguish business-administration and economics perspectives and assess the claim that company data always makes a study business administration.
+  - Expected performance (DE): A ist betriebswirtschaftlich wegen des Fokus auf Steuerung des Unternehmens. B ist volkswirtschaftlich wegen des Fokus auf ökonomische Beziehungen, Anreize und Ressourcenallokation über die eigene Betriebssteuerung hinaus. Datenquelle oder Branche allein entscheidet die Zuordnung nicht. Beide Perspektiven können am selben Gegenstand ansetzen und sich ergänzen; begründet dargestellte Überschneidungen sind zulässig.
+  - Expected performance (EN): A is business administration because it focuses on managing the company. B is economics because it focuses on relationships, incentives and resource allocation beyond running that firm. Neither data source nor industry determines the discipline. Both perspectives can study the same subject and complement one another; reasoned overlaps are acceptable.
+  - Understanding focus (DE): Transfer auf denselben Datenbestand bei unterschiedlichem Untersuchungsfokus.
+  - Understanding focus (EN): Transfer to the same dataset under different investigative focuses.
+## Page 11: Wirtschaftswissenschaft im System der Wissenschaften einordnen
+
+- Full learning-goal ID: `f478f85e-87b1-505e-979a-8de1b3141019`
+- Goal fingerprint: `sha256:84c68c6ea75066106166763642c8dab4d422f34397037c46290f13bd006dae8e`
+- Page fingerprint: `sha256:61df5be2e41967d1576e304f93a207b746ee46475447d9bd8b35f52d5ee5b971`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften > Ergänzende Sach- und Methodenkompetenzen
+
+### Canonical description
+
+Die lernende Person kann die Wirtschaftswissenschaft anhand ihrer Untersuchung wirtschaftlichen Handelns in das System der Wissenschaften einordnen und an vorgegebenen Fragestellungen begründen, welche Beiträge benachbarte Disziplinen zur wirtschaftswissenschaftlichen Untersuchung leisten.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/f478f85e-87b1-505e-979a-8de1b3141019/f478f85e-87b1-505e-979a-8de1b3141019.png
+
+- original digest: `sha256:7e5618de45c1a8babac3b2582a7db81bf0a422bd695616d64297a6c4c15bd051`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Warum Wirtschaftswissenschaften? - Relevanz und Orientierung — `6bf2d1cc-e745-50dd-a617-71c06a6c6945` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Eine Busentscheidung aus unterschiedlichen Wissenschaftsperspektiven untersuchen — `8d939db2-d929-590a-99ac-82cf3904bc10` (outside this book)
+- Wirtschaftswissenschaft: Gegenstand, Werkzeug und Nachbardisziplinen — `93f03fe4-3103-520c-910d-0116a6d040f5` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:b3818452113e2c65137e8941a3c7c5a845ab261b4003ddf332815e514e052662`
+Contract: `positive-understanding-evidence-v2`; authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+Archetype: `concept`
+
+**Positive understanding expectations**
+
+- `bounded-discipline-understanding`
+  - Essential understanding (DE): Wirtschaftswissenschaft erklärt wirtschaftliches Handeln von Menschen, Organisationen und Institutionen und wird hier sozialwissenschaftlich eingeordnet. Mathematik, Psychologie, Soziologie, Recht und technische Wissenschaften können beitragen; die Fragestellung bleibt gegenüber Werkzeugen oder Kontextdaten unterscheidbar.
+  - Essential understanding (EN): Economics studies economic behaviour by people, organisations and institutions and is placed here within the social sciences. Mathematics, psychology, sociology, law and technical sciences can contribute; the research question remains distinct from tools or contextual data.
+  - Observable performance (DE): Die Person begründet die Einordnung am wirtschaftlichen Untersuchungsgegenstand und erläutert passende Beiträge von Nachbardisziplinen, ohne Werkzeug und Wissenschaft gleichzusetzen.
+  - Observable performance (EN): The learner justifies the classification by the economic subject and explains relevant neighbouring contributions without equating tool and discipline.
+
+**Coverage expectations**
+
+- required expectations: `bounded-discipline-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `investigative-focus`: Untersuchungsgegenstand gegenüber Werkzeug oder Datenquelle. / Investigative subject versus tool or data source.
+- `fresh-case`: Veränderter wirtschaftlicher Kontext mit begründeter Einordnung. / A changed economic setting with reasoned classification.
+
+**Application cases**
+
+- `bus-fare-research`
+  - Task demand (DE): Eine fiktive Stadt prüft günstigere Bustickets. Forschende untersuchen Budgetentscheidungen und mögliche Nachfrageänderungen; eine andere Gruppe erklärt Gewohnheiten bei der Verkehrsmittelwahl, eine weitere untersucht ungleiche Zugänge und eine vierte misst die technischen Emissionen der Fahrzeuge. Ordne die wirtschaftswissenschaftliche Untersuchung begründet in das Wissenschaftssystem ein. Erläutere zwei relevante Beiträge der Nachbardisziplinen und warum deren Beitrag die wirtschaftswissenschaftliche Fragestellung nicht ersetzt.
+  - Task demand (EN): A fictional city considers cheaper bus tickets. Researchers study budget decisions and possible demand changes; another group explains transport habits, another studies unequal access, and another measures vehicle emissions. Place the economic investigation within the system of sciences, explain two relevant contributions from neighbouring disciplines and why they do not replace the economic question.
+  - Expected performance (DE): Wirtschaftswissenschaft untersucht hier Entscheidungen von Menschen und Institutionen über knappe Mittel und gehört damit zum sozialwissenschaftlichen Bereich. Psychologie kann Gewohnheiten, Soziologie soziale Zugänge und Natur-/Ingenieurwissenschaften technische Emissionen untersuchen. Diese Beiträge liefern andere erklärende Perspektiven oder Daten; sie ersetzen nicht die ökonomische Untersuchung von Budget, Anreizen und Nachfrage. Begründete alternative Nachbardisziplinen sind möglich.
+  - Expected performance (EN): Economics studies choices by people and institutions over scarce resources and belongs here within the social sciences. Psychology can study habits, sociology social access, and natural or engineering sciences emissions. These contributions supply other perspectives or data; they do not replace the economic investigation of budgets, incentives and demand. Reasoned alternative neighbouring disciplines are acceptable.
+  - Understanding focus (DE): Gegenstand der Untersuchung von genutzten Werkzeugen und benachbarten Erklärungen unterscheiden.
+  - Understanding focus (EN): Distinguish the subject of investigation from tools and neighbouring explanations.
+- `repair-choice-disciplinary-transfer`
+  - Task demand (DE): Ein fiktives Reparaturprojekt untersucht, warum Haushalte ein Gerät ersetzen oder reparieren lassen. Eine wirtschaftswissenschaftliche Gruppe untersucht Preise, verfügbares Einkommen und Entscheidungsanreize und nutzt dabei Rechenmodelle und Befragungsdaten. Eine technische Gruppe misst Reparierbarkeit. Eine Person behauptet: Wer Rechenmodelle benutzt, betreibt nur Mathematik; technische Merkmale machen die gesamte Untersuchung zur Naturwissenschaft. Prüfe diese Einordnung und erläutere die Verbindung zwischen den Disziplinen.
+  - Task demand (EN): A fictional repair project studies why households replace or repair a device. An economics group studies prices, available income and incentives using mathematical models and survey data. An engineering group measures repairability. Someone claims that using models makes the work purely mathematics and technical features make the whole study natural science. Assess the classification and explain the connection between disciplines.
+  - Expected performance (DE): Die Einordnung hängt von Fragestellung und Untersuchungsgegenstand ab: Haushaltsentscheidungen und Anreize sind wirtschaftswissenschaftliche, sozialwissenschaftliche Fragen. Mathematik liefert Werkzeuge zur Modellierung, technische Untersuchung Daten über Möglichkeiten und Grenzen. Methoden oder technische Kontextdaten allein machen die wirtschaftswissenschaftliche Untersuchung nicht zur anderen Disziplin; Modelle und Befragungsdaten benötigen begründete Annahmen und überprüfbare Auswertung.
+  - Expected performance (EN): Classification depends on the research question and object: household decisions and incentives are economic questions within social science. Mathematics provides modelling tools and engineering supplies data about feasibility and limits. Tools or technical context alone do not change the discipline; models and survey data need justified assumptions and checkable analysis.
+  - Understanding focus (DE): Frischer Kontext: Wissenschaftsgegenstand trotz interdisziplinärer Methoden begründet einordnen.
+  - Understanding focus (EN): Fresh context: classify a scientific subject despite interdisciplinary methods.
+## Page 12: Gesellschaftstheorien wirtschaftlich charakterisieren
+
+- Full learning-goal ID: `c15aa50c-1890-5079-96ec-6e356904df3c`
+- Goal fingerprint: `sha256:9fa6b84460a477c7fd5918cee66ed7123ede5a7827d71d0fc4495e395a4bcfb5`
+- Page fingerprint: `sha256:bf818d2cdd7060169ed2f7b20a15472bb0fc4ba8d381e4e5725452324d1f9476`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften > Ergänzende Sach- und Methodenkompetenzen
+
+### Canonical description
+
+Die lernende Person kann vorgegebene konkurrierende Gesellschaftstheorien hinsichtlich ihrer Annahmen über Eigentum, wirtschaftliche Koordination und gesellschaftliche Interessen charakterisieren und einen Unterschied für die Erklärung wirtschaftlichen Handelns begründen.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/c15aa50c-1890-5079-96ec-6e356904df3c/c15aa50c-1890-5079-96ec-6e356904df3c.png
+
+- original digest: `sha256:fc9ca4476a997096c64d1be43cef34881854134e94b9e5d360a20261029b449c`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Warum Wirtschaftswissenschaften? - Relevanz und Orientierung — `6bf2d1cc-e745-50dd-a617-71c06a6c6945` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Produktentwicklung unter Theorie- und Entscheidungsbedingungen beurteilen — `c948d3c4-3ca6-5cdd-a7e1-82d1389fcf17` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:1dbcb2e4c89f15284a5635d20c1245a6cfd1602209cb77738fca7c6ed4cb9eec`
+Contract: `positive-understanding-evidence-v2`; authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+Archetype: `concept`
+
+**Positive understanding expectations**
+
+- `content-specific-understanding`
+  - Essential understanding (DE): Konkurrierende Gesellschaftstheorien charakterisieren Eigentum, Koordination und Interessen unterschiedlich. Ein materialbezogener Vergleich erklärt diese Annahmen und ihre Konsequenz für denselben wirtschaftlichen Vorgang; er ist keine Zustimmung oder pauschale historische Erfolgsbehauptung.
+  - Essential understanding (EN): Competing theories of society frame property, coordination and interests differently. An evidence-based comparison explains their assumptions and consequences for the same economic process; it neither demands agreement nor asserts blanket historical success.
+  - Observable performance (DE): Die lernende Person kann vorgegebene konkurrierende Gesellschaftstheorien hinsichtlich ihrer Annahmen über Eigentum, wirtschaftliche Koordination und gesellschaftliche Interessen charakterisieren und einen Unterschied für die Erklärung wirtschaftlichen Handelns begründen.
+  - Observable performance (EN): The learner can characterise supplied competing theories of society by their assumptions about property, economic coordination and social interests and explain a difference relevant to economic behaviour.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `substantive-case-change`: Benannte Theoriemodelle über ökonomische Annahmen charakterisieren, Q3LK. / Andere Handlung, gleiche konkrete Charakterisierungsachsen und ehrliche Modellgrenze. / Characterise named theories through economic assumptions, Q3LK. / A changed act with the same concrete characterisation axes and honest model limits.
+
+**Application cases**
+
+- `society-theories-production-coordination`
+  - Task demand (DE): Bereitgestellt sind ausdrücklich vereinfachte didaktische Modelltexte zu liberaler und marxistisch-leninistischer Gesellschaftstheorie: ModellLbetont Privateigentum an Produktionsmitteln, dezentrale Preis-/Vertragskoordination und individuelle Interessen; ModellMbetont gesellschaftliches Eigentum an Produktionsmitteln, zentrale Planung und behauptete kollektive Klassen-/Gesellschaftsinteressen. Charakterisiere die beiden Texte an diesen Achsen und erkläre einen Unterschied für die Entscheidung, was ein Betrieb produziert. Nicht alle Formen des Liberalismus oder historischen Systeme sind damit beschrieben.
+  - Task demand (EN): Supplied texts are expressly simplified didactic models of liberal and Marxist-Leninist theories:Lemphasises private ownership of production assets, decentralised price/contract coordination and individual interests;Memphasises social ownership, central planning and asserted collective class/social interests. Characterise the texts along these axes and explain a difference for a firm’s output decision. They do not describe all forms of liberalism or every historical system.
+  - Expected performance (DE): Die Person ordnet Eigentumsannahme, Koordinationsmechanismus und Interessenverständnis jedem Modell zutreffend zu. Sie erklärt materialbezogen eine dezentrale Vertrags-/Preisentscheidung gegenüber zentralem Planauftrag und trennt die behauptete Interessenvertretung von einem bewiesenen gesellschaftlichen Ergebnis. Keine ideologische Zustimmung oder Vollhistorie wird verlangt.
+  - Expected performance (EN): The learner correctly identifies each model’s ownership assumptions, coordination and interest framing. They explain a decentralised contract/price decision versus a central plan instruction, distinguishing asserted representation from proven social outcomes. Ideological agreement or a complete history is not required.
+  - Understanding focus (DE): Benannte Theoriemodelle über ökonomische Annahmen charakterisieren, Q3LK.
+  - Understanding focus (EN): Characterise named theories through economic assumptions, Q3LK.
+- `society-theories-investment-interpretation`
+  - Task demand (DE): Ein zweiter fiktiver Modelltext betrachtet eine zusätzliche Maschineninvestition. Ein liberalerModelltyp begründet sie über private Verfügungsrechte, erwartete Nachfrage/Erträge und dezentrale Vertragsentscheidungen; ein marxistisch-leninistischerModelltyp über gesellschaftliche Produktionsmittel und einen verbindlichen gesellschaftlichen Plan. Charakterisiere Eigentum, Koordination und angesprochene Interessen und erkläre, weshalb dieselbe Investition unterschiedlich begründet wird. Die Texte liefern keine empirischen Effizienzdaten.
+  - Task demand (EN): A second fictional text examines an additional machine investment. A liberal model frames it through private control, expected demand/returns and decentralised contracting; a Marxist-Leninist model through socially owned production assets and a binding social plan. Characterise property, coordination and interests and explain the different justification for the same investment. No empirical efficiency evidence is supplied.
+  - Expected performance (DE): Die Person verbindet die andere wirtschaftliche Handlung mit den jeweiligen Annahmen, erläutert den Unterschied zwischen privater Ertragserwartung und planerischem Gesellschaftsziel und begrenzt die Erklärung auf die Modelltexte. Sie behauptet weder belegte Überlegenheit noch dass ein kollektives Ziel tatsächlich konfliktfrei erreicht wird.
+  - Expected performance (EN): The learner links the changed economic act to the respective assumptions, explains private return expectations versus a planned social goal and limits findings to the texts. Neither proven superiority nor conflict-free attainment of a collective aim is asserted.
+  - Understanding focus (DE): Andere Handlung, gleiche konkrete Charakterisierungsachsen und ehrliche Modellgrenze.
+  - Understanding focus (EN): A changed act with the same concrete characterisation axes and honest model limits.
+## Page 13: Spieltheoretische Modellvorhersagen mit Versuchsdaten vergleichen
+
+- Full learning-goal ID: `5a72a72a-609a-5e60-8a25-4f5048b8b09c`
+- Goal fingerprint: `sha256:37f11a9fe833573643849aabe1f2d9bb9f7e3b9dab925f088bc4d432fdc7d68d`
+- Page fingerprint: `sha256:3baf680f0d6eafa0f1851f7240ac9e2945d0b9839a1e24dba0cfbbf612ccf985`
+- Topic path: Wirtschaftswissenschaften > Wirtschaftswissenschaften
+
+### Canonical description
+
+Die lernende Person kann für ein vorgegebenes spieltheoretisches Modell bedingte Handlungsvorhersagen ableiten, diese mit bereitgestellten Versuchsdaten vergleichen und Abweichungen unter Beachtung der Modell- und Versuchsbedingungen einordnen.
+
+### Visualization
+
+/assets/goal-visualizations/wirtschaftswissenschaften/5a72a72a-609a-5e60-8a25-4f5048b8b09c/5a72a72a-609a-5e60-8a25-4f5048b8b09c.png
+
+- original digest: `sha256:1fe09ccd4d21de7284b5136b5d7bf05e2cb4914d875aa693d3f8670a27f2007e`
+- QA status: `review_candidate`
+- approved for public publication: `false`
+
+### Direct prerequisites
+
+- None
+
+### Direct reverse prerequisites
+
+- None
+
+### Prerequisites outside this book
+
+- Spieltheoretische Grundmodelle auf Entscheidungssituationen anwenden — `becf0989-ee9f-5c8e-8173-5b8246e7944a` (outside this book)
+
+### Direct reverse prerequisites outside this book
+
+- Profil: Wirtschaftsordnungsmodelle und kooperative Versuchsdaten kritisch vergleichen — `c659edea-7786-59b3-90f3-9c9983388c83` (outside this book)
+
+### Evidence-profile candidate
+
+Status: `needs_human_review`; profile fingerprint: `sha256:c2245c0dd923d11b1d0b5ca3bad15870b66acdb6e3dc0c36bd7aae99f52edd61`
+Contract: `positive-understanding-evidence-v2`; authority: `ai_candidate`; evidence level: `E1`; maximum claim scope: `G1`
+Archetype: `experiment`
+
+**Positive understanding expectations**
+
+- `content-specific-understanding`
+  - Essential understanding (DE): Eine Spielmodellvorhersage gilt unter bestimmten Auszahlungs-, Informations-, Wiederholungs- und Verhaltensannahmen. Abweichende beobachtete Entscheidungen können mehrere Erklärungen haben. Versuchsdaten beweisen nicht automatisch einen bestimmten psychologischen Mechanismus, und Wiederholung verändert das strategische Modell.
+  - Essential understanding (EN): A game-model prediction holds under assumptions about payoffs, information, repetition and behaviour. Different observed choices may have several explanations. Experimental data do not automatically prove a specific psychological mechanism, and repetition changes the strategic model.
+  - Observable performance (DE): Die Person leitet beste Antworten und Gleichgewicht aus den gegebenen Auszahlungen ab, vergleicht die bedingte Vorhersage mit Daten und erklärt Annahmen- oder Designänderungen als Grenzen der Interpretation.
+  - Observable performance (EN): The learner derives best responses and equilibrium from supplied payoffs, compares the conditional prediction with data and explains assumption/design changes as limits on interpretation.
+
+**Coverage expectations**
+
+- required expectations: `content-specific-understanding`
+- alternative expectation groups: None
+- minimum independent demonstrations: 2
+- fresh variation required: true
+- independent transfer required: true
+
+**Variation axes**
+
+- `repetition`: Einmalige anonymisierte Entscheidung gegenüber wiederholter Interaktion. / An anonymous one-shot decision versus repeated interaction.
+- `inference`: Abweichung beschreiben gegenüber Motive oder Kausalmechanismus beweisen. / Describing differences versus proving motives or a causal mechanism.
+
+**Application cases**
+
+- `one-shot-dilemma-data`
+  - Task demand (DE): Ein fiktives einmaliges Spiel hat CC=(3,3),CD=(0,5),DC=(5,0),DD=(1,1),jeweils Spieler1/2; die bereitgestellte Standardannahme maximiert eigenen Punktnutzen. Von20 individuellen Entscheidungen wählen8 C. Bestimme die Modellvorhersage, berechne den beobachteten C-Anteil und prüfe die Behauptung, die Daten bewiesen eindeutig Altruismus.
+  - Task demand (EN): A fictional one-shot game has CC=(3,3),CD=(0,5),DC=(5,0),DD=(1,1),ordered player1/2; the supplied standard assumption maximises one’s own point payoff. Of20 individual decisions,8choose C. Determine the model prediction, calculate the observed C share and assess whether this definitively proves altruism.
+  - Expected performance (DE): D ist strikt dominant,DD Nash unter der gegebenen Annahme;8/20=40% C widersprechen der reinen Alle-D-Vorhersage. Andere Präferenzen, Verständnis, Erwartungen oder Versuchsbedingungen können relevant sein; aus der Häufigkeit allein folgt kein eindeutiger Motivnachweis.
+  - Expected performance (EN): D is strictly dominant and DD Nash under the assumption;8/20=40%C differ from an all-D prediction. Different preferences, understanding, expectations or experimental conditions may matter; the frequency alone does not identify a unique motive.
+  - Understanding focus (DE): Bedingte Modelllösung und empirische Abweichung ohne psychologischen Automatismus.
+  - Understanding focus (EN): A conditional model solution and empirical difference without a psychological automatic inference.
+- `repeated-interaction-comparison`
+  - Task demand (DE): Ein zweiter fiktiver Versuch nutzt dieselben Runden-Auszahlungen, aber feste Partner, beobachtbare frühere Entscheidungen und unsichere weitere Runden. Der C-Anteil beträgt60%,im einmaligen Vergleich40%; Zufallszuweisung und sonstige Gleichheit sind nicht belegt. Vergleiche Vorhersage und Befund und begrenze einen behaupteten Wiederholungseffekt.
+  - Task demand (EN): A second fictional experiment uses the same stage payoffs but fixed partners, observable previous choices and an uncertain continuation. The C share is60%,versus40% in a one-shot comparison; random assignment and other equivalence are unproven. Compare prediction and evidence and limit a claimed repetition effect.
+  - Expected performance (DE): Die Differenz beträgt20Prozentpunkte, nicht20% relativen Zuwachs. Zukunftsreaktionen können Kooperation bedingt beeinflussen, doch das einmalige Spielmodell lässt sich nicht unverändert übertragen. Ohne Kontroll-/Zuweisungsevidenz beweisen die60% weder alleinige Kausalität noch sichere Kooperation.
+  - Expected performance (EN): The difference is20percentage points, not a20% relative increase. Future responses may influence cooperation conditionally, but the one-shot model cannot be transferred unchanged. Without control/assignment evidence,60% proves neither sole causation nor guaranteed cooperation.
+  - Understanding focus (DE): Frische Wiederholungsstruktur und beschränkte Kausalevidenz.
+  - Understanding focus (EN): A fresh repeated-game structure and limited causal evidence.

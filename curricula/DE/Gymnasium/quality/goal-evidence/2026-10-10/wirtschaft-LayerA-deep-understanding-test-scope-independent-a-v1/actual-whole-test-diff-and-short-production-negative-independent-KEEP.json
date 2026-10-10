@@ -1,0 +1,119 @@
+{
+  "decision": "KEEP",
+  "scope": "Independent technical review of the Economics test-scope expansion only",
+  "wholeCurrentTest": {
+    "path": "app/scripts/testDeepUnderstandingRollout.ts",
+    "sha256": "sha256:d068f568c00b98a9d180cdee27c4ed949b1808788420c40774c16bfa819704df",
+    "bytes": 20394
+  },
+  "wholeOriginalHEADTest": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-LayerA-deep-understanding-test-scope-independent-a-v1/whole-original-HEAD-testDeepUnderstandingRollout.ts.readonly.txt",
+    "sha256": "sha256:d5b8008a3d4a6bbb7fa7553997d90e989628721deebd0cf5a84b80cef1e65ac1",
+    "bytes": 17908
+  },
+  "unchangedEarlierBytes": 14845,
+  "checks": {
+    "wholeOriginalTestRead": true,
+    "wholeCurrentTestRead": true,
+    "allEarlierFixturesWholeByteExactPrefix": true,
+    "mathPhysicsProductionStrictReadyExplicitlyRequired": true,
+    "oldMathPhysicsCurrentCountAndQAHoldsAssertionsRetained": true,
+    "allActualGlobalBlockersAggregated": true,
+    "onlyActualEconomicsDescriptionFailuresPermitted": true,
+    "allSixRequiredCheckIDsExact": true,
+    "noHardcodedEconomicsDenominatorCompleteOrBlockerCount": true,
+    "currentEconomicsIDsUniqueCompletionIDsUniqueAndSubset": true,
+    "fullPAMVRequiredAtCurrentM6": true,
+    "strictIntersectionEqualsDWhenOtherFourGatesAreFull": true,
+    "CQR303AndM6DerivedFromProductionFunctions": true,
+    "noHumanApprovalClaimFromAI": true,
+    "noProductionThresholdChangeByThisTestPatch": true
+  },
+  "ownObservedFixtures": {
+    "kind": "independent-short-production-fixtures",
+    "fullCentralTestRun": false,
+    "scope": {
+      "subject": "wirtschaftswissenschaften",
+      "label": "Fixture Economics",
+      "landscapeId": "independent-econ-fixture",
+      "landscapePath": "fixture.json",
+      "currentGoalIds": [
+        "one",
+        "two"
+      ],
+      "denominator": 2,
+      "strictComplete": 1,
+      "remaining": 1,
+      "percentage": "50.0%",
+      "strictCompleteGoalIds": [
+        "one"
+      ],
+      "deferredVisualizationGoalIds": [],
+      "gates": {
+        "currentDescriptionResolutions": 1,
+        "currentPositiveEvidenceProfiles": 2,
+        "currentSemanticAtomicityDecisions": 2,
+        "currentMemoryReviewDecisions": 2,
+        "currentVisualizationQaRecords": 2
+      },
+      "requiredChecks": [
+        {
+          "id": "semantic-kind-scope",
+          "status": "pass"
+        },
+        {
+          "id": "description-review-validation",
+          "status": "fail"
+        },
+        {
+          "id": "positive-evidence-validation",
+          "status": "pass"
+        },
+        {
+          "id": "semantic-atomicity-check",
+          "status": "pass"
+        },
+        {
+          "id": "memory-card-check",
+          "status": "pass"
+        },
+        {
+          "id": "visualization-freshness-and-approval-check",
+          "status": "pass"
+        }
+      ],
+      "strictCompletionReady": false,
+      "issues": [
+        "The second current description has an unresolved scientific finding."
+      ]
+    },
+    "genuine": {
+      "strictReady": false,
+      "CQR303": "fail",
+      "maturity": "M6"
+    },
+    "observedRejectedCases": [
+      "forgedReadyWithOpenFinding",
+      "duplicateCompletionIDs",
+      "falseFullDCount",
+      "missingVAtM6"
+    ]
+  },
+  "productionFunctionInputs": [
+    {
+      "path": "app/scripts/reportDeepUnderstandingRollout.ts",
+      "sha256": "sha256:b27d00c76f7e0f9dd99169fa26997ad6c9b333a20d30b928512c762cf10bb29d",
+      "bytes": 71502
+    },
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "sha256:656084b7cd9d6cb5324361b927b9f761596c572d7e4f616c7b13da061f4b1336",
+      "bytes": 273652
+    }
+  ],
+  "limitations": [
+    "The reviewer did not run the full deep-understanding test, central report or floor checks. Root must execute the full focused test and final stable central/floor bundle.",
+    "The maturity call uses a lower-gate-passed fixture; it does not prove the current Economics M6 prerequisites.",
+    "This review approves no current description, visualization, human release or M7 result."
+  ]
+}

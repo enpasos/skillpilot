@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Berufserkundung und Erwerbsbiografien reflektieren
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `44080e8d-f414-54e6-8c63-cd2042fbb40e`
+- Titel: Berufserkundung und Erwerbsbiografien reflektieren
+- Beschreibung: Die lernende Person kann Praktikums- und Berufserkundungserfahrungen dokumentieren, beurteilen und mit möglichen Erwerbsbiografien verknüpfen.
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `44080e8d-f414-54e6-8c63-cd2042fbb40e.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/44080e8d-f414-54e6-8c63-cd2042fbb40e/44080e8d-f414-54e6-8c63-cd2042fbb40e.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational. Create one original raster PNG economics learning-goal illustration, wide approximately16:9 and1600x900 or near native size. Friendly abstract clear comic, warm ivory, dark clean outlines, rounded shapes, restrained teal/coral/gold, welcoming ordinary people. Three or four spacious main visual groups. Main competence and important details recognizable at360 and680pixels; text ONLY few expressly specified large German labels. No extra headings, tiny labels, microscopic legends, watermarks, signatures, project names, slogans, brands, official emblems, medical crosses/crescents/diamonds, copied logos, photorealism, sterile technical redesign or SVG. Personal notebooks/worksheets and screens must face their actual active users; prefer floating conceptual symbols or openly shared boards. Fictional conditional teaching contexts, no observed learner work, actual latest statistics or current unsupported law. Competence: Berufserkundung und Erwerbsbiografien reflektieren. Die lernende Person kann Praktikums- und Berufserkundungserfahrungen dokumentieren, beurteilen und mit möglichen Erwerbsbiografien verknüpfen. Scene: One fictional learner compares a meaningful observed work-placement activity with a reflection magnifier and two possible future employment paths. A simple blank observation record has only neutral circles facing either direction; all conceptual content floats visibly shared. Only “Beobachtung”, “Rückblick”, “Möglichkeiten”. No real private work placement, inevitable fixed career or notebook facing away from its acting writer.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

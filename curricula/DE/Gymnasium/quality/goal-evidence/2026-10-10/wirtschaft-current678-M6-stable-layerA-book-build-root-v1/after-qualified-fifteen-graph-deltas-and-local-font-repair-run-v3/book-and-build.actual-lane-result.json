@@ -1,0 +1,30 @@
+{
+  "lane": "book-and-build",
+  "requiredStages": 2,
+  "actuallyRunStages": 1,
+  "allStagesPassed": false,
+  "commands": [
+    {
+      "label": "goal-book-full-pipeline-including-cached-publications",
+      "argv": [
+        "npm",
+        "run",
+        "-s",
+        "test:goal-book-pipeline"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "actualExitCode": 1,
+      "seconds": 4.067,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/after-qualified-fifteen-graph-deltas-and-local-font-repair-run-v3/goal-book-full-pipeline-including-cached-publications.stdout.txt",
+        "sha256": "f083b07fd108307ab2fbdf5868b7512e3ce42d56ceb8893890af14082ee3af54",
+        "bytes": 588
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/after-qualified-fifteen-graph-deltas-and-local-font-repair-run-v3/goal-book-full-pipeline-including-cached-publications.stderr.txt",
+        "sha256": "b3c830059e4a25e8391469dc92a05d0a6214081d7f65575bd90ae0e9193ef05a",
+        "bytes": 21
+      }
+    }
+  ]
+}

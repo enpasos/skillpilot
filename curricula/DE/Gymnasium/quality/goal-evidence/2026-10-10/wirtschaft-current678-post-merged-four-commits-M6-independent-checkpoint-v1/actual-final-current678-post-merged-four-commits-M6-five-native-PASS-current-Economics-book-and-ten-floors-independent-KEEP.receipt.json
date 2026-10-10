@@ -1,0 +1,1928 @@
+{
+  "schemaVersion": 1,
+  "sealedAt": "2026-10-10T08:25:10.685920+00:00",
+  "decision": "BOUNDED_POST_THREE_COMMIT_M6_PLUS_ONE_REPORT_ONLY_SUCCESSOR_KEEP",
+  "scope": "Independent read-only successor M6 checkpoint after three-commit integration and a separate one-commit Chemistry report-only FF. Reuses the actual post-three-commit native commands because every bound quality input is currentexact after the report-only follower. No own active writes or new reviews.",
+  "currentHEAD": "0662b58b63eb44c034e7140f535819c52435c995",
+  "currentOriginMain": "0662b58b63eb44c034e7140f535819c52435c995",
+  "noUnmergedPaths": true,
+  "fourAuthorizedIncomingCommitsActuallyIntegrated": true,
+  "priorThreeCommitPreservation": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-origin-three-commits-shared-union-existing-inventory-independent-audit-v1/actual-final-combined5689-origin-three-commits-whole-preservation-and-eight-inventory-field-independent-KEEP.handoff.json",
+    "sha256": "f0d555dd579f27d1fb9b714a395c7843c401b16e545c8d7d3ce00a213c25a760",
+    "bytes": 4418
+  },
+  "actualOneReportOnlyPreservation": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-origin-one-chem-report-only-followup-root-v1/actual-one-chem-report-only-fast-forward-preserves-local-M6.receipt.json",
+    "sha256": "5dd87c8cacd5909f105cda2c4d59546bca5b857cb1ac2c6a9fdfcc3cb91f6483",
+    "bytes": 4908
+  },
+  "currentActualFivePostmergePASSCommands": [
+    {
+      "lane": "post-three-commit source/central/floors",
+      "commandReceipt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-post-origin-three-commits-final-central-root-v3/source-inventory-regression.actual-command-exit.json",
+        "sha256": "bd9213f88b2d100107a4bc174edc0e19be8634fba479ed5ee86498c92b602b09",
+        "bytes": 719
+      },
+      "actualCommand": {
+        "command": [
+          "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+          "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+          "scripts/testSourceExtractionInventory.ts"
+        ],
+        "cwd": "/home/enpasos/projects/skillpilot/app",
+        "exitCode": 0,
+        "elapsedSeconds": 0.931,
+        "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-post-origin-three-commits-final-central-root-v3/source-inventory-regression.stdout.txt",
+        "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-post-origin-three-commits-final-central-root-v3/source-inventory-regression.stderr.txt"
+      },
+      "fullStdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-post-origin-three-commits-final-central-root-v3/source-inventory-regression.stdout.txt",
+        "sha256": "51f6cbc4b678724766fd7f33264aa8b8698902fe81550dc8aa7b5aab7f3ba70f",
+        "bytes": 94
+      },
+      "fullStderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-post-origin-three-commits-final-central-root-v3/source-inventory-regression.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "actualFullLogsRead": true
+    },
+    {
+      "lane": "post-three-commit source/central/floors",
+      "commandReceipt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-post-origin-three-commits-final-central-root-v3/central.actual-command-exit.json",
+        "sha256": "4c53a8eed9855e27b3d9c8ac1a0c7cb5660ff867630bfe4979d4ef689cec4d49",
+        "bytes": 682
+      },
+      "actualCommand": {
+        "command": [
+          "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+          "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+          "scripts/generateCurriculumQualityStatus.ts"
+        ],
+        "cwd": "/home/enpasos/projects/skillpilot/app",
+        "exitCode": 0,
+        "elapsedSeconds": 96.875,
+        "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-post-origin-three-commits-final-central-root-v3/central.stdout.txt",
+        "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-post-origin-three-commits-final-central-root-v3/central.stderr.txt"
+      },
+      "fullStdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-post-origin-three-commits-final-central-root-v3/central.stdout.txt",
+        "sha256": "389ceee89ed1081de6f1d3d5ad7fdcb5b5500928914a89ab424ec89b103be861",
+        "bytes": 108
+      },
+      "fullStderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-post-origin-three-commits-final-central-root-v3/central.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "actualFullLogsRead": true
+    },
+    {
+      "lane": "post-three-commit source/central/floors",
+      "commandReceipt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-post-origin-three-commits-final-central-root-v3/floors.actual-command-exit.json",
+        "sha256": "bfc1d4a434645fb5a01f76ecc2c5537f7d5d419511df3870b69bb957fe102a8c",
+        "bytes": 677
+      },
+      "actualCommand": {
+        "command": [
+          "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+          "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+          "scripts/checkCurriculumMaturityFloors.ts"
+        ],
+        "cwd": "/home/enpasos/projects/skillpilot/app",
+        "exitCode": 0,
+        "elapsedSeconds": 0.192,
+        "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-post-origin-three-commits-final-central-root-v3/floors.stdout.txt",
+        "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-post-origin-three-commits-final-central-root-v3/floors.stderr.txt"
+      },
+      "fullStdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-post-origin-three-commits-final-central-root-v3/floors.stdout.txt",
+        "sha256": "1d2afd57fb6318f5d933f6d3ff5e885b9325e72a5e61249f4c2a8e616cc97433",
+        "bytes": 58
+      },
+      "fullStderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-post-origin-three-commits-final-central-root-v3/floors.stderr.txt",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "actualFullLogsRead": true
+    },
+    {
+      "lane": "post-three-commit inventory/deep",
+      "commandReceipt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-origin-three-commits-M6-protected-integration-root-v1/actual-postmerge-inventory-and-deep-regression-run-v1/ai-transparency-inventory.actual-command-exit.json",
+        "sha256": "5af3edb53447a32c973c1e44667178955781ddf557513ad2701b654399a1a35b",
+        "bytes": 934
+      },
+      "actualCommand": {
+        "label": "ai-transparency-inventory",
+        "argv": [
+          "npm",
+          "run",
+          "-s",
+          "check:ai-transparency-inventory"
+        ],
+        "cwd": "/home/enpasos/projects/skillpilot/app",
+        "actualExitCode": 0,
+        "seconds": 12.117,
+        "stdout": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-origin-three-commits-M6-protected-integration-root-v1/actual-postmerge-inventory-and-deep-regression-run-v1/ai-transparency-inventory.stdout.txt",
+          "sha256": "53bb0681cacecbdbd0994044601e31686ce7d63a8772ea49812124dcb8cbe342",
+          "bytes": 175
+        },
+        "stderr": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-origin-three-commits-M6-protected-integration-root-v1/actual-postmerge-inventory-and-deep-regression-run-v1/ai-transparency-inventory.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "actualFullLogsRead": true
+    },
+    {
+      "lane": "post-three-commit inventory/deep",
+      "commandReceipt": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-origin-three-commits-M6-protected-integration-root-v1/actual-postmerge-inventory-and-deep-regression-run-v1/deep-understanding-rollout-contract-regression.actual-command-exit.json",
+        "sha256": "4ea912fce410b2740ecfb0e8106c8d33fa72a50df01653724424ad496611472d",
+        "bytes": 997
+      },
+      "actualCommand": {
+        "label": "deep-understanding-rollout-contract-regression",
+        "argv": [
+          "npm",
+          "run",
+          "-s",
+          "test:deep-understanding-rollout"
+        ],
+        "cwd": "/home/enpasos/projects/skillpilot/app",
+        "actualExitCode": 0,
+        "seconds": 66.532,
+        "stdout": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-origin-three-commits-M6-protected-integration-root-v1/actual-postmerge-inventory-and-deep-regression-run-v1/deep-understanding-rollout-contract-regression.stdout.txt",
+          "sha256": "05f6229b71a975a41a194457e0f1dc1fc62789a45a5d581fa66c55113f1c9f9c",
+          "bytes": 220
+        },
+        "stderr": {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-origin-three-commits-M6-protected-integration-root-v1/actual-postmerge-inventory-and-deep-regression-run-v1/deep-understanding-rollout-contract-regression.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0
+        }
+      },
+      "actualFullLogsRead": true
+    }
+  ],
+  "actualPostmergeCentralBundle": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-post-origin-three-commits-final-central-root-v3/actual-current678-three-stage-bundle-exact-inputs.receipt.json",
+    "sha256": "4404e8458260734dc587a3b794c74699c62599604eaae2a43764e2b9562ce150",
+    "bytes": 11964
+  },
+  "actualPostmergeInventoryDeepBundle": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-origin-three-commits-M6-protected-integration-root-v1/actual-postmerge-inventory-and-deep-regression-run-v1/actual-current678-M6-stable-layerA-book-build.machine-bundle.receipt.json",
+    "sha256": "c14fc6dcdd4f23b5723c70f438ee7e165ff450d951855b03551664686a01e88c",
+    "bytes": 12289
+  },
+  "allCurrentNativeInputGuards": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "6bfa382a2b174a1645d883f746ef42c0693813ec2d447561fca3290ca98a0b09",
+      "bytes": 5247711
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "e4f3eb8f6aa1e55160509743a021e67a70bcaeb3b02722e6e5c1baffcfa97c57",
+      "bytes": 218904
+    },
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "656084b7cd9d6cb5324361b927b9f761596c572d7e4f616c7b13da061f4b1336",
+      "bytes": 273652
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "sha256": "1da16f406ca6c3a7363894130bac877ce73c89e6e933dc86f3ca723dc85ed3e5",
+      "bytes": 493081
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+      "sha256": "d385d6873f0b0ea7f61861e4163bc634f64c7c793fd45122a46d6e4dafba4409",
+      "bytes": 291022
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+      "sha256": "3588a10e88164666762d9fe0036c92e598ee41ce9a4e6e02f0987b08f9f5d5bd",
+      "bytes": 185211
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "e6660bb00510aa381e1aa18e264ee4e4d0073c36b740f3a0314dd4f8914f6453",
+      "bytes": 1297405
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "sha256": "76047cec422c555aacd1e04bff597c4f8a70d8ffed5f214ed7412c828bc34898",
+      "bytes": 3714635
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+      "sha256": "70d07b2ffee3a0cbd54d0699b260706e979fca23362b4c05263514b6d3a946ba",
+      "bytes": 391698
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+      "sha256": "c03fbf73879aa72bd668e3a727386d1b2bf796a8e4dc731d5ff0bce43b586a06",
+      "bytes": 913942
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
+      "sha256": "f085a7023c9f65ebcc27ea8f4fcd4c15a29987b2eaa3afc1a61d1c28f9bd0bc9",
+      "bytes": 11801
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+      "sha256": "4f562870ab4bc7e35d6d00ca80780e315d88369b678b261a9c324dce5eb82167",
+      "bytes": 474539
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+      "sha256": "5cf5c67237726bcea09b59b62c2e790576b7fe09ec0beeb3b9b24674aa7ee3f5",
+      "bytes": 116599
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+      "sha256": "f770aeb33e243511411edda453b3f0f9aa406abd9eb925f53de801ce2ee2a3d2",
+      "bytes": 330582
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "de99a87c79fa64f30144232223994635f69c76c88547d0cd40ff3b0fb590a44f",
+      "bytes": 1488185
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
+      "sha256": "91037164f5cfda3d3fd5ae805312fa99c58692334225009f623ce67c5fbee41f",
+      "bytes": 7758
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+      "sha256": "998ffd300c60d31f05e7b3cb8e79e324a2f735a71fbd70be0b8696a8f61863f0",
+      "bytes": 141453
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
+      "sha256": "1ae4bebedc761be3c7a572c6b31dd82c7bb5bef893a15fc5b593bb57db7c1ef0",
+      "bytes": 11870
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+      "sha256": "971bdd01947d57c7785ee5c30dd33ac3107c486206d4c39e8357dc50ae72b77a",
+      "bytes": 599776
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+      "sha256": "a23c7fa7ee8d58aa4bcaf75b4d534dcd7f0efe5593c2ee7fbf11d424f1a7312f",
+      "bytes": 298125
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "sha256": "ad764d083e390ab60f808ecbffb363ac914026894e82c09c977425311ec7ea44",
+      "bytes": 2511173
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+      "sha256": "9c9acd716ca0a4e4bae3a020f93cd180ddb639390783be72a912d94f1cd9a1cf",
+      "bytes": 14113
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
+      "sha256": "be6bfaf34f64c93f2723d0532bcffe218e725248d32ace8be9073f52bbdd9b68",
+      "bytes": 7737
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-th-gym-economics-lk.view.json",
+      "sha256": "e3ce4e8bf327e638f3ca7ecc2d0f27b99394dd930d2e34b9a94318b287c7e10c",
+      "bytes": 85906
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-rp-gym-economics-lk.view.json",
+      "sha256": "acc971afe7a08f7c242c23961d91e4b7425fe29038dda8c378eefa77b394e631",
+      "bytes": 76201
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-by-gym-economics-lk.view.json",
+      "sha256": "f1ebda61322bdb47c5bd946202736ed2f148acaadb43106b87b0b48c33fe37f7",
+      "bytes": 138666
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sn-gym-economics-gk.view.json",
+      "sha256": "5c6856a8b668f06d4881b9ad877c15c8b68efacc44aceca2da6337261fb8032d",
+      "bytes": 44236
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sn-gym-economics-lk.view.json",
+      "sha256": "fc0c65ca635516dc46ffc1e916fdaff0e5b8e9883543addd2c3fe8eac1dfc6e3",
+      "bytes": 64661
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sl-gym-economics-gk.view.json",
+      "sha256": "a4faa6c23a298490f4bfdd699941e9e2c48165bbc53a79e0e17ed13aa93d446a",
+      "bytes": 49068
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-he-gym-economics-lk.view.json",
+      "sha256": "9a7fb0de045b49702b75de9ee0ee113c4e96e47ce4a27e07ac3e1e99aa481809",
+      "bytes": 165768
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-ni-gym-economics-lk.view.json",
+      "sha256": "14174a5cdb731c63f61b9fac2ae389c34323ba5cdc1c8806be7a178e8917f80f",
+      "bytes": 78492
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-bb-gym-economics-gk.view.json",
+      "sha256": "6201832f2014d443640a76d31b8ab392152348be1aa282998e39ff1d7a003762",
+      "bytes": 72611
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-st-gym-economics-gk.view.json",
+      "sha256": "9f5f2a3f5efb4d482ba35521a9bb13e436c2e129ac272304bc6ef592c1141c03",
+      "bytes": 43198
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-bb-gym-economics-lk.view.json",
+      "sha256": "055e926a4ec76beea2116055f5c15e63479f053d809a0d0fe3e5c8f1a1a6e84b",
+      "bytes": 100629
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-hh-gym-economics-lk.view.json",
+      "sha256": "b50c84a1713caeee79ec6b294334994c8d9258ab7cdf934e92a4b5db6c224266",
+      "bytes": 66806
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-nw-gym-economics-lk.view.json",
+      "sha256": "ecb81cbd1f9c41a3249726f2e99229a3799f7a96eee6efd24a565a07a31d8cc2",
+      "bytes": 81559
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-hb-gym-economics-lk.view.json",
+      "sha256": "3405941068b8ee90c6b1d9e33bd557c3eb0f288574200c70689799a55be71c0f",
+      "bytes": 60983
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-lk.view.json",
+      "sha256": "3634575182b911c76b3313ec1ec9fde17ea3026240d1853d076d5bd7da794bfb",
+      "bytes": 18276
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-ni-gym-economics-gk.view.json",
+      "sha256": "b001d16d3e61824ccec879fd0ae435230896ca6d744402387a6d68f7030b276a",
+      "bytes": 53766
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-nw-gym-economics-gk.view.json",
+      "sha256": "8c45bdb1db252fd4c489533bee6cc7f8916552d124b50e63d8c2de7183f184ef",
+      "bytes": 51887
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-bw-gym-economics-lk.view.json",
+      "sha256": "bf04a5b9922fc76cdd580f5db398ae796855f963f52fb1b08c2304b84ade7a5d",
+      "bytes": 110839
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sh-gym-economics-lk.view.json",
+      "sha256": "42f5816c08b7a8cedd5f123286561fb56c1e5f91b2eba5f633c6d1d44887c67f",
+      "bytes": 76633
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-by-gym-economics-gk.view.json",
+      "sha256": "6ebc64542206ae5009292ddf8dac0d13c3a4f0552b8d6394ba4ebfebb1f506bc",
+      "bytes": 94404
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-st-gym-economics-lk.view.json",
+      "sha256": "4b277ec06f1b4ac69dfc4ef98a4d65057082ab51c2f7016e25600eb015a514e7",
+      "bytes": 65361
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-th-gym-economics-gk.view.json",
+      "sha256": "62a0e3f32f44776d7c0dc1fe8613f55cb1a79c2bdb25e18cca611aa89a6e16d9",
+      "bytes": 64560
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-seki-economics.view.json",
+      "sha256": "4144c1b3844c5fda8037d3a67f2c36a1fef3d5dba163820bf1edcdd1bb69f20a",
+      "bytes": 2695
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-be-gym-economics-gk.view.json",
+      "sha256": "1b7b27d3700762b45704ec1e51fd7629034d6a2447e09b0e46051311e1dfa16c",
+      "bytes": 88248
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-he-gym-economics-gk.view.json",
+      "sha256": "cba8b6d9ae547a33d2121917735db48c125b4fc679614517bdd904b0b6e95c99",
+      "bytes": 113773
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-rp-gym-economics-gk.view.json",
+      "sha256": "937de60c962302534c57d945c6b9796360825e5b94333b72724a918abe0b9a42",
+      "bytes": 48795
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json",
+      "sha256": "3eb2f41aed74db65696cba0950230e370152160543dc28f31589d310b1a5a9e5",
+      "bytes": 18271
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-bw-gym-economics-gk.view.json",
+      "sha256": "a3792ef7e00e7d72f4cafac988f6afd80b3295cc2bd42021899bff425ef67ef5",
+      "bytes": 73441
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-mv-gym-economics-lk.view.json",
+      "sha256": "3638bd760807ee8e0c89b57e486ced8b7309cf6056d64d2577bc8a6cced21cd0",
+      "bytes": 60190
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-hh-gym-economics-gk.view.json",
+      "sha256": "fef116373ca93391940cd1a3abcc90e1a88b9f983ef67b95ec124372a3d0d938",
+      "bytes": 44612
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-be-gym-economics-lk.view.json",
+      "sha256": "9fb5fc66771e44b9dc8b3ed1a5f9e2723a4134f693d2deefd1ac4603399570aa",
+      "bytes": 100982
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sl-gym-economics-lk.view.json",
+      "sha256": "d1bdabd9950e8347e52d405aefc2ee53caa46eaef038a0f96b4d212ff4ed5837",
+      "bytes": 75565
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-hb-gym-economics-gk.view.json",
+      "sha256": "ac80cbe128ff7f25609adca138c6ffaa0817e15f3de0d1bdc6f0b46856e0dc3d",
+      "bytes": 40222
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-mv-gym-economics-gk.view.json",
+      "sha256": "a1a8435b62644f076126475ae361720b501fe84a2489951f812580ac20daa902",
+      "bytes": 38298
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sh-gym-economics-gk.view.json",
+      "sha256": "74bc4b42be8d677cbc55c045edc4ee62f9038f8ceee2597f2b77f828da04b766",
+      "bytes": 49200
+    },
+    {
+      "path": "docs/legal/ai-transparency-inventory.json",
+      "sha256": "73b2959d2cd5dec5929f1dd4742d495aef04218b167d293a34395c1049cd9e95",
+      "bytes": 33782
+    },
+    {
+      "path": "app/scripts/testDeepUnderstandingRollout.ts",
+      "sha256": "d068f568c00b98a9d180cdee27c4ed949b1808788420c40774c16bfa819704df",
+      "bytes": 20394
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "6bfa382a2b174a1645d883f746ef42c0693813ec2d447561fca3290ca98a0b09",
+      "bytes": 5247711
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "e4f3eb8f6aa1e55160509743a021e67a70bcaeb3b02722e6e5c1baffcfa97c57",
+      "bytes": 218904
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-economics-current-canonical.json",
+      "sha256": "720f554fdcbafd5d3a71a21773908bdf3f654ee211fb04c29e755b1a59d4883b",
+      "bytes": 1128
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-current678-fifteen-qualified-graph-20261010-v18/wirtschaftswissenschaften.semantic-kinds.json",
+      "sha256": "08f0d327eb6933738e79bedf32c05ae18c9301057d709451693778fc4eff7f5f",
+      "bytes": 218757
+    },
+    {
+      "path": "app/scripts/testDeepUnderstandingRollout.ts",
+      "sha256": "d068f568c00b98a9d180cdee27c4ed949b1808788420c40774c16bfa819704df",
+      "bytes": 20394
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-th-gym-economics-lk.view.json",
+      "sha256": "e3ce4e8bf327e638f3ca7ecc2d0f27b99394dd930d2e34b9a94318b287c7e10c",
+      "bytes": 85906
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-rp-gym-economics-lk.view.json",
+      "sha256": "acc971afe7a08f7c242c23961d91e4b7425fe29038dda8c378eefa77b394e631",
+      "bytes": 76201
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-by-gym-economics-lk.view.json",
+      "sha256": "f1ebda61322bdb47c5bd946202736ed2f148acaadb43106b87b0b48c33fe37f7",
+      "bytes": 138666
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sn-gym-economics-gk.view.json",
+      "sha256": "5c6856a8b668f06d4881b9ad877c15c8b68efacc44aceca2da6337261fb8032d",
+      "bytes": 44236
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sn-gym-economics-lk.view.json",
+      "sha256": "fc0c65ca635516dc46ffc1e916fdaff0e5b8e9883543addd2c3fe8eac1dfc6e3",
+      "bytes": 64661
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sl-gym-economics-gk.view.json",
+      "sha256": "a4faa6c23a298490f4bfdd699941e9e2c48165bbc53a79e0e17ed13aa93d446a",
+      "bytes": 49068
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-he-gym-economics-lk.view.json",
+      "sha256": "9a7fb0de045b49702b75de9ee0ee113c4e96e47ce4a27e07ac3e1e99aa481809",
+      "bytes": 165768
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-ni-gym-economics-lk.view.json",
+      "sha256": "14174a5cdb731c63f61b9fac2ae389c34323ba5cdc1c8806be7a178e8917f80f",
+      "bytes": 78492
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-bb-gym-economics-gk.view.json",
+      "sha256": "6201832f2014d443640a76d31b8ab392152348be1aa282998e39ff1d7a003762",
+      "bytes": 72611
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-st-gym-economics-gk.view.json",
+      "sha256": "9f5f2a3f5efb4d482ba35521a9bb13e436c2e129ac272304bc6ef592c1141c03",
+      "bytes": 43198
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-bb-gym-economics-lk.view.json",
+      "sha256": "055e926a4ec76beea2116055f5c15e63479f053d809a0d0fe3e5c8f1a1a6e84b",
+      "bytes": 100629
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-hh-gym-economics-lk.view.json",
+      "sha256": "b50c84a1713caeee79ec6b294334994c8d9258ab7cdf934e92a4b5db6c224266",
+      "bytes": 66806
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-nw-gym-economics-lk.view.json",
+      "sha256": "ecb81cbd1f9c41a3249726f2e99229a3799f7a96eee6efd24a565a07a31d8cc2",
+      "bytes": 81559
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-hb-gym-economics-lk.view.json",
+      "sha256": "3405941068b8ee90c6b1d9e33bd557c3eb0f288574200c70689799a55be71c0f",
+      "bytes": 60983
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-lk.view.json",
+      "sha256": "3634575182b911c76b3313ec1ec9fde17ea3026240d1853d076d5bd7da794bfb",
+      "bytes": 18276
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-ni-gym-economics-gk.view.json",
+      "sha256": "b001d16d3e61824ccec879fd0ae435230896ca6d744402387a6d68f7030b276a",
+      "bytes": 53766
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-nw-gym-economics-gk.view.json",
+      "sha256": "8c45bdb1db252fd4c489533bee6cc7f8916552d124b50e63d8c2de7183f184ef",
+      "bytes": 51887
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-bw-gym-economics-lk.view.json",
+      "sha256": "bf04a5b9922fc76cdd580f5db398ae796855f963f52fb1b08c2304b84ade7a5d",
+      "bytes": 110839
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sh-gym-economics-lk.view.json",
+      "sha256": "42f5816c08b7a8cedd5f123286561fb56c1e5f91b2eba5f633c6d1d44887c67f",
+      "bytes": 76633
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-by-gym-economics-gk.view.json",
+      "sha256": "6ebc64542206ae5009292ddf8dac0d13c3a4f0552b8d6394ba4ebfebb1f506bc",
+      "bytes": 94404
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-st-gym-economics-lk.view.json",
+      "sha256": "4b277ec06f1b4ac69dfc4ef98a4d65057082ab51c2f7016e25600eb015a514e7",
+      "bytes": 65361
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-th-gym-economics-gk.view.json",
+      "sha256": "62a0e3f32f44776d7c0dc1fe8613f55cb1a79c2bdb25e18cca611aa89a6e16d9",
+      "bytes": 64560
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-seki-economics.view.json",
+      "sha256": "4144c1b3844c5fda8037d3a67f2c36a1fef3d5dba163820bf1edcdd1bb69f20a",
+      "bytes": 2695
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-be-gym-economics-gk.view.json",
+      "sha256": "1b7b27d3700762b45704ec1e51fd7629034d6a2447e09b0e46051311e1dfa16c",
+      "bytes": 88248
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-he-gym-economics-gk.view.json",
+      "sha256": "cba8b6d9ae547a33d2121917735db48c125b4fc679614517bdd904b0b6e95c99",
+      "bytes": 113773
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-rp-gym-economics-gk.view.json",
+      "sha256": "937de60c962302534c57d945c6b9796360825e5b94333b72724a918abe0b9a42",
+      "bytes": 48795
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json",
+      "sha256": "3eb2f41aed74db65696cba0950230e370152160543dc28f31589d310b1a5a9e5",
+      "bytes": 18271
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-bw-gym-economics-gk.view.json",
+      "sha256": "a3792ef7e00e7d72f4cafac988f6afd80b3295cc2bd42021899bff425ef67ef5",
+      "bytes": 73441
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-mv-gym-economics-lk.view.json",
+      "sha256": "3638bd760807ee8e0c89b57e486ced8b7309cf6056d64d2577bc8a6cced21cd0",
+      "bytes": 60190
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-hh-gym-economics-gk.view.json",
+      "sha256": "fef116373ca93391940cd1a3abcc90e1a88b9f983ef67b95ec124372a3d0d938",
+      "bytes": 44612
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-be-gym-economics-lk.view.json",
+      "sha256": "9fb5fc66771e44b9dc8b3ed1a5f9e2723a4134f693d2deefd1ac4603399570aa",
+      "bytes": 100982
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sl-gym-economics-lk.view.json",
+      "sha256": "d1bdabd9950e8347e52d405aefc2ee53caa46eaef038a0f96b4d212ff4ed5837",
+      "bytes": 75565
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-hb-gym-economics-gk.view.json",
+      "sha256": "ac80cbe128ff7f25609adca138c6ffaa0817e15f3de0d1bdc6f0b46856e0dc3d",
+      "bytes": 40222
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-mv-gym-economics-gk.view.json",
+      "sha256": "a1a8435b62644f076126475ae361720b501fe84a2489951f812580ac20daa902",
+      "bytes": 38298
+    },
+    {
+      "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sh-gym-economics-gk.view.json",
+      "sha256": "74bc4b42be8d677cbc55c045edc4ee62f9038f8ceee2597f2b77f828da04b766",
+      "bytes": 49200
+    },
+    {
+      "path": "app/scripts/config/goal-books/navigation/de-gym-economics-current-canonical.view.json",
+      "sha256": "e2f43aa6264ad7dc563f51c262576da5e5231dc53948720043e46c7dbd2953f1",
+      "bytes": 624
+    },
+    {
+      "path": "docs/legal/ai-transparency-inventory.json",
+      "sha256": "73b2959d2cd5dec5929f1dd4742d495aef04218b167d293a34395c1049cd9e95",
+      "bytes": 33782
+    }
+  ],
+  "currentEconomicsCAN": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "sha256": "6bfa382a2b174a1645d883f746ef42c0693813ec2d447561fca3290ca98a0b09",
+    "bytes": 5247711
+  },
+  "currentRegistry": {
+    "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+    "sha256": "e4f3eb8f6aa1e55160509743a021e67a70bcaeb3b02722e6e5c1baffcfa97c57",
+    "bytes": 218904
+  },
+  "currentSemanticLedger": {
+    "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-current678-fifteen-qualified-graph-20261010-v18/wirtschaftswissenschaften.semantic-kinds.json",
+    "sha256": "08f0d327eb6933738e79bedf32c05ae18c9301057d709451693778fc4eff7f5f",
+    "bytes": 218757
+  },
+  "currentInventory": {
+    "path": "docs/legal/ai-transparency-inventory.json",
+    "sha256": "73b2959d2cd5dec5929f1dd4742d495aef04218b167d293a34395c1049cd9e95",
+    "bytes": 33782
+  },
+  "currentCentralSnapshot": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-post-origin-three-commits-final-central-root-v3/actual-current678-curriculum-quality-status.json",
+    "sha256": "ddf220a760395d9cf2d5227c7d16424a43bfe95d64ec4edc57cba523248b2159",
+    "bytes": 2779929
+  },
+  "currentFloorPolicy": {
+    "path": "app/scripts/config/curriculum-maturity-floor-policy.json",
+    "sha256": "37300dcfafc390a364dfd2077d7fcf04b43d2db1826feb8c3225692eba2c3a0e",
+    "bytes": 3774
+  },
+  "allTenFloorObjects": [
+    {
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "frameworkId": "canonical-gymnasium-math",
+      "subject": "Mathematik",
+      "minimumMaturity": "M6",
+      "reason": "Established canonical mathematics maturity baseline with completed semantic-atomicity and memory-card layers."
+    },
+    {
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "frameworkId": "canonical-gymnasium-physics",
+      "subject": "Physik",
+      "minimumMaturity": "M6",
+      "reason": "Established canonical Gymnasium maturity baseline."
+    },
+    {
+      "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+      "frameworkId": "canonical-gymnasium-biology",
+      "subject": "Biologie",
+      "minimumMaturity": "M6",
+      "reason": "Established canonical Gymnasium maturity baseline."
+    },
+    {
+      "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+      "frameworkId": "canonical-gymnasium-chemistry",
+      "subject": "Chemie",
+      "minimumMaturity": "M6",
+      "reason": "Established canonical Gymnasium maturity baseline."
+    },
+    {
+      "landscapeId": "67bd301b-e11a-582d-94ba-4f4b1a4cefff",
+      "frameworkId": "canonical-gymnasium-german",
+      "subject": "Deutsch",
+      "minimumMaturity": "M6",
+      "reason": "Established canonical Gymnasium maturity baseline."
+    },
+    {
+      "landscapeId": "92406d94-e3c1-58ec-b7c6-12122278d25a",
+      "frameworkId": "canonical-gymnasium-history",
+      "subject": "Geschichte",
+      "minimumMaturity": "M6",
+      "reason": "Established canonical Gymnasium maturity baseline."
+    },
+    {
+      "landscapeId": "7d51b38c-a149-5407-bddc-d2ce7878b020",
+      "frameworkId": "canonical-gymnasium-informatics",
+      "subject": "Informatik",
+      "minimumMaturity": "M6",
+      "reason": "Established canonical Gymnasium maturity baseline."
+    },
+    {
+      "landscapeId": "668cf206-941e-51f8-8704-3e8938631235",
+      "frameworkId": "canonical-gymnasium-latin",
+      "subject": "Latein",
+      "minimumMaturity": "M6",
+      "reason": "Established canonical Gymnasium maturity baseline."
+    },
+    {
+      "landscapeId": "51b60137-46e8-5498-973e-ea38bb32f327",
+      "frameworkId": "canonical-gymnasium-politics-economics",
+      "subject": "Politik und Wirtschaft",
+      "minimumMaturity": "M6",
+      "reason": "Established canonical Gymnasium maturity baseline."
+    },
+    {
+      "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+      "frameworkId": "canonical-gymnasium-economics",
+      "subject": "Wirtschaftswissenschaften",
+      "minimumMaturity": "M6",
+      "reason": "Economics M6 restored after the current whole-material route issues were repaired and independently reviewed. The actual central report and source, route, assessment, semantic-atomicity, memory, composition and applicability gates passed on 10 October 2026. M7 and human release/trial gates remain separate."
+    }
+  ],
+  "floorExceptionsAndPreBaselineHistoryExact": true,
+  "currentEconomics": {
+    "maturity": "M6",
+    "curricularAtomicDenominator": 336,
+    "strictComplete": 187,
+    "remainingD": 149,
+    "passedRequiredChecks": 5,
+    "totalRequiredChecks": 6,
+    "nativeBlockingIssues": 123,
+    "sourceCompleteJurisdictions": 16,
+    "wholeSourceAtomsCovered": 2134,
+    "unsupportedSourceTargets": 0,
+    "reverseSourceGaps": 0,
+    "route64Scopes": {
+      "id": "CQR-104",
+      "status": "pass",
+      "summary": "Route endpoints are exactly visible and every visible selected goal stays on a visible atomic route from motivation to a terminal in every relevant learner-facing projection scope.",
+      "metrics": {
+        "relevantCompositionViews": 34,
+        "evaluatedProjectionScopes": 64,
+        "requiredMotivationAnchors": 1,
+        "minimumRequiredTerminalAutonomyGoals": 50,
+        "requiredTerminalAutonomyGoals": 254,
+        "projectionScopesMissingMotivationAnchors": 0,
+        "projectionScopesMissingTerminalAutonomyGoals": 0,
+        "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+        "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+        "terminalGoalsMissingCompiledApplicability": 0,
+        "projectionScopesWithInvalidStageStructure": 0,
+        "nationalProjectionScopesUsingJurisdictionStageAuthority": 32,
+        "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+        "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 465,
+        "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 285,
+        "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 122,
+        "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+        "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+        "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+        "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+        "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+        "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+        "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+        "projectionLocalRouteChecksEnabled": 1,
+        "visibleSelectedAtomicGoalOccurrences": 6974,
+        "visibleProfileSelectedAtomicGoalOccurrences": 6974,
+        "visibleProjectedRouteTargetGoalOccurrences": 6974,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+        "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+        "projectionScopesMissingEffectiveMotivationRoutes": 0,
+        "projectionScopesMissingDirectMotivationRoutes": 0,
+        "projectionScopesMissingEffectiveTerminalRoutes": 0,
+        "projectionScopesMissingDirectTerminalRoutes": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+      }
+    },
+    "activeApplicabilityWarnings": 0,
+    "diagnosticPartialOnlyWarnings": 1457
+  },
+  "protectedMathPhysics": [
+    {
+      "subject": "Mathematik",
+      "maturity": "M7",
+      "metrics": {
+        "expectedGoals": 807,
+        "remaining": 0,
+        "strictComplete": 807,
+        "currentDescriptionResolutions": 807,
+        "currentPositiveEvidenceProfiles": 807,
+        "currentSemanticAtomicityDecisions": 807,
+        "currentMemoryReviewDecisions": 807,
+        "currentVisualizationQaRecords": 807,
+        "deferredVisualizations": 0,
+        "requiredChecksPassed": 6,
+        "requiredChecksTotal": 6,
+        "blockingIssues": 0
+      }
+    },
+    {
+      "subject": "Physik",
+      "maturity": "M7",
+      "metrics": {
+        "expectedGoals": 478,
+        "remaining": 0,
+        "strictComplete": 478,
+        "currentDescriptionResolutions": 478,
+        "currentPositiveEvidenceProfiles": 478,
+        "currentSemanticAtomicityDecisions": 478,
+        "currentMemoryReviewDecisions": 478,
+        "currentVisualizationQaRecords": 478,
+        "deferredVisualizations": 0,
+        "requiredChecksPassed": 6,
+        "requiredChecksTotal": 6,
+        "blockingIssues": 0
+      }
+    }
+  ],
+  "originalTwoStagedBEWholeBytes": [
+    {
+      "path": "curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_WIRTSCHAFT_SEKII_CURRENT_BERLIN2006_EP2010_AB2022.source-extraction.json",
+      "actualIndexSHA256": "963f5b0a737d5520305d15f32a08f0be04029ffcea0d1367cf0ffd5d5794e28d",
+      "wholeCurrent": {
+        "path": "curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_WIRTSCHAFT_SEKII_CURRENT_BERLIN2006_EP2010_AB2022.source-extraction.json",
+        "sha256": "963f5b0a737d5520305d15f32a08f0be04029ffcea0d1367cf0ffd5d5794e28d",
+        "bytes": 361838
+      }
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_wirtschaft_current125_source_extraction_to_canonical_wirtschaft.review.json",
+      "actualIndexSHA256": "e699a3ef20c6abad02e9803d8d6fb55ecf564c26613392c8982964a8687beaac",
+      "wholeCurrent": {
+        "path": "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_wirtschaft_current125_source_extraction_to_canonical_wirtschaft.review.json",
+        "sha256": "e699a3ef20c6abad02e9803d8d6fb55ecf564c26613392c8982964a8687beaac",
+        "bytes": 417373
+      }
+    }
+  ],
+  "premergeWhole20ClosingEvidenceRetained": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-closing-evidence-independent-merge-audit-v1/corrected-readonly-native-digest-comparison-successor-v2/actual-final-current678-M6-closing20-stages-current-book-and-three-incoming-commits-independent-KEEP.handoff.json",
+    "sha256": "24be8074a1f6ce363558941e88eaa65b4131a09a4125dc6da641d13051e7a015",
+    "bytes": 7607
+  },
+  "premergeFullBookAndApplicationBuildPASSReceiptsRetained": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/book-authentic-local-poppler-environment-successor-run-v4/goal-book-full-pipeline-including-cached-publications.actual-command-exit.json",
+      "sha256": "ac0e52624c21b930aa8d0c09110b8089e8ddecf32fab84c87302f334cb6f2a2d",
+      "bytes": 984
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/book-authentic-local-poppler-environment-successor-run-v4/application-build-local-only.actual-command-exit.json",
+      "sha256": "3f11a62eeb6aa33b2bcb0585e3f636e034300c2fd7c8a32919c8e8cc12759112",
+      "bytes": 905
+    }
+  ],
+  "EconomicsExistingBookModelSourceExact": true,
+  "EconomicsExistingBook336AndPhysicalPDF339": {
+    "bookId": "de-gym-wirtschaftswissenschaften-bundesweit",
+    "actualUniqueGoalPages": 336,
+    "actualWholeArtifactHashes": [
+      {
+        "path": "app/public/lernzielbuch/de-gym-wirtschaftswissenschaften-bundesweit.book-model.json",
+        "sha256": "51890a0572312e52c050f0c0bf59b63d23406a3333513e5354128e371c535168",
+        "bytes": 1539621
+      },
+      {
+        "path": "app/public/lernzielbuch/de-gym-wirtschaftswissenschaften-bundesweit.pdf",
+        "sha256": "0b153621d5886a662404893e631fb7581232487ad16f4f9eb89ad20b1eafbbaf",
+        "bytes": 35829484
+      },
+      {
+        "path": "app/public/lernzielbuch/de-gym-wirtschaftswissenschaften-bundesweit.pdf.render-manifest.json",
+        "sha256": "9f0f0af0df28fc4a85eb4a53f41988b17e176ef348c8d0d052ecc6c002660703",
+        "bytes": 459720
+      }
+    ]
+  },
+  "actualReadOnlyBookSourceDigestComparisons": [
+    {
+      "bookId": "de-gym-wirtschaftswissenschaften-bundesweit",
+      "actualExistingGoalPages": 336,
+      "sourceDigests": {
+        "landscapeDigest": {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+          "expected": "sha256:44eddbbc3fa8a8afd2c511de724d3e9474071261e6cba240db7267ea2c2b2d69",
+          "currentActual": "sha256:44eddbbc3fa8a8afd2c511de724d3e9474071261e6cba240db7267ea2c2b2d69"
+        },
+        "compositionViewDigest": {
+          "path": "app/scripts/config/goal-books/navigation/de-gym-economics-current-canonical.view.json",
+          "expected": "sha256:fe7aa4e90d9385aa545d2948510510ac8cd0ac5a1cdebe083914c13cb80f8b0e",
+          "currentActual": "sha256:fe7aa4e90d9385aa545d2948510510ac8cd0ac5a1cdebe083914c13cb80f8b0e"
+        },
+        "semanticKindLedgerDigest": {
+          "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-current678-fifteen-qualified-graph-20261010-v18/wirtschaftswissenschaften.semantic-kinds.json",
+          "expected": "sha256:0c0e6558fd398df648cc21588f414eefce3192d0bf21631ff8a72323958bda04",
+          "currentActual": "sha256:0c0e6558fd398df648cc21588f414eefce3192d0bf21631ff8a72323958bda04"
+        },
+        "goalVisualizationQaDigest": {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/wirtschaftswissenschaften.qa.json",
+          "expected": "sha256:4b332c34d546293b6468ca7fa6332ee7b4541344403bc3eee209aeb5e038d2ac",
+          "currentActual": "sha256:4b332c34d546293b6468ca7fa6332ee7b4541344403bc3eee209aeb5e038d2ac"
+        },
+        "evidence": [
+          {
+            "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-current678-fifteen-qualified-graph-20261010-v18/whole336-original-profiles685-only-ten-qualified-current-input-bindings.jsonl",
+            "expected": "sha256:600327873e2e04682b3549189c908b8ea16dea0e0ed7a1a8273ec819b7dc2121",
+            "currentActual": "sha256:600327873e2e04682b3549189c908b8ea16dea0e0ed7a1a8273ec819b7dc2121"
+          }
+        ]
+      }
+    },
+    {
+      "bookId": "de-gym-chemie-bundesweit",
+      "actualExistingGoalPages": 359,
+      "sourceDigests": {
+        "landscapeDigest": {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+          "expected": "sha256:f68a34e151d064880f938e1be9f86d891fc8227577951fd306d1da33b49a01f0",
+          "currentActual": "sha256:0760575adea563e230a7c1a69a7b5d04fc0efdadbcdb1a4caa84659f66e1276d"
+        },
+        "compositionViewDigest": {
+          "path": "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.sources.json",
+          "expected": "sha256:e3bbb0e0f2cba5f7c3df7f1424bb72cf171e118f2753807b219cfbf1b0ca242c",
+          "currentActual": "sha256:1d3f03e5f85fc9a954c8e074d0501636f5bc9f4664dc14e6d35d085180be21d1"
+        },
+        "semanticKindLedgerDigest": {
+          "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+          "expected": "sha256:f5e53ae8ebfb6f87e8f567b972bd458fa35952f144ca5dd3c81abd7c1e4e40b1",
+          "currentActual": "sha256:78d05dd93c2b69f35565c1fc8c4b0677c15d6706706e66e320d566cfab899ebe"
+        },
+        "goalVisualizationQaDigest": {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json",
+          "expected": "sha256:7b1e5ecac51c1f2da2790deb19b326a2373ce4964711a0dcb40c3e1ad10e7bb6",
+          "currentActual": "sha256:8d3380fd2cad8d90d3286939635c6f67088e155be568b5d23254245b8dc015b8"
+        },
+        "evidence": []
+      }
+    },
+    {
+      "bookId": "de-gym-biologie-bundesweit",
+      "actualExistingGoalPages": 394,
+      "sourceDigests": {
+        "landscapeDigest": {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+          "expected": "sha256:b3919c11789a1e0fc3d10547062b899d462c66bbce8feed342e5fd8c3d4b38aa",
+          "currentActual": "sha256:73ba281ae961fc4f90de0bfded69ea16658f878d5dbd402e512c4dbc9a0edb6a"
+        },
+        "compositionViewDigest": {
+          "path": "app/scripts/config/goal-books/de-gym-biology-national-atlas.sources.json",
+          "expected": "sha256:32d76265535b285c8a9c15461d1d2ea3f55a1f866d1b8ed29e0c43110c6c5cf0",
+          "currentActual": "sha256:32d76265535b285c8a9c15461d1d2ea3f55a1f866d1b8ed29e0c43110c6c5cf0"
+        },
+        "semanticKindLedgerDigest": {
+          "path": "curricula/DE/Gymnasium/quality/goal-book-publication/biologie.semantic-kinds.json",
+          "expected": "sha256:b92ccebd28ed54470acb216a095090fcc7785a1562b4e3f4e0f6be1410da711e",
+          "currentActual": "sha256:8fe43a29032e288efeb329227d9711890027765d3ede83f9041c24051f61a033"
+        },
+        "goalVisualizationQaDigest": {
+          "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/biologie.qa.json",
+          "expected": "sha256:2a00aae10c834ca2143633dcee4a8526582938bf879a6d5b7c1d95dc94568363",
+          "currentActual": "sha256:9f2fde06df566d68c1c9e80ff28a1f68e3999f8397003c9e4494ff6fdff9c5d6"
+        },
+        "evidence": []
+      }
+    }
+  ],
+  "incomingChemistryBiologyBookSourcesChanged": true,
+  "nextFullBuildBoundary": "Root bundles the next ordinary full publication pipeline/application build with qualified v19. Prior Economics336 Model/PDF339 and its source inputs remain exact; the prior full five-subject build is retained as history, not relabeled as a current Chem/Bio build after their incoming source changes.",
+  "actualChecks": 170,
+  "failedChecks": [],
+  "checks": [
+    {
+      "check": "Own combined three-commit guard exactf0d555",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual current HEAD=origin0662 no unmerged paths",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "One followup merge exactly two Chemical report artifacts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object app/scripts/config/curriculum-maturity-floor-policy.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object app/scripts/config/goal-books/de-gym-economics-current-canonical.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object app/scripts/generateCurriculumQualityStatus.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object app/scripts/testDeepUnderstandingRollout.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object app/scripts/testGoalBookReviewBundle.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object contracts/goal-description-review/v2/goal-description-review-input.schema.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_WIRTSCHAFT_SEKII_CURRENT_BERLIN2006_EP2010_AB2022.source-extraction.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_wirtschaft_current125_source_extraction_to_canonical_wirtschaft.review.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object curricula/DE/Gymnasium/mapping/DE-BW/lower-secondary/bw_wbs_lower_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_wirtschaft_upper_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_wirtschaft_und_recht_source_extraction_to_canonical_wirtschaft.review.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_economics_upper_secondary_source_extraction_to_canonical_economics.review.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object curricula/DE/Gymnasium/provenance/canonical-goal-surrogate-evidence-registry.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object curricula/DE/Gymnasium/provenance/source-landscape-registry.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-m7-current-baseline-20261008-v1/wirtschaftswissenschaften.semantic-kinds.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object curricula/DE/Gymnasium/quality/goal-description-review/in-flight-work-ledger.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object curricula/DE/Gymnasium/quality/goal-visualization-qa/wirtschaftswissenschaften.qa.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object docs/legal/ai-transparency-inventory.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object docs/qa-ci/math-physics-deep-understanding-resumption-review-2026-09-05.md",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object docs/qa-ci/status/README.md",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object docs/qa-ci/status/curriculum-quality-status.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object docs/qa-ci/status/curriculum-quality-status.md",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Post-one-commit whole local object docs/qa-ci/wirtschaft-m7-resumed-2026-10-08.md",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Exact27 present tracked Root objects",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact app/scripts/generateCurriculumQualityStatus.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_INFORMATIK.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GRIECHISCH.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ENGLISCH.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MATHEMATIK.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_GESCHICHTE.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLITIKWIRTSCHAFT.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_RUSSISCH.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_FRANZOESISCH.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_MUSIK.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_LATEIN.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_TSCHECHISCH.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_SPANISCH.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_ITALIENISCH.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_DEUTSCH.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHINESISCH.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_PHYSIK.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_POLNISCH.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-th-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-rp-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-by-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-sn-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-sn-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-sl-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-he-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-ni-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-bb-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-st-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-bb-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-hh-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-nw-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-hb-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-ni-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-nw-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-bw-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-sh-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-by-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-st-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-th-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-seki-economics.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-be-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-he-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-rp-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-bw-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-mv-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-hh-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-be-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-sl-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-hb-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-mv-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-sh-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact docs/legal/ai-transparency-inventory.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual source/central/floor input exact app/scripts/testDeepUnderstandingRollout.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Postmerge actual source-inventory-regression exit0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Postmerge actual central exit0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Postmerge actual floors exit0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge ten protected floors",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact app/scripts/config/goal-books/de-gym-economics-current-canonical.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-current678-fifteen-qualified-graph-20261010-v18/wirtschaftswissenschaften.semantic-kinds.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact app/scripts/testDeepUnderstandingRollout.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-th-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-rp-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-by-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-sn-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-sn-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-sl-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-he-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-ni-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-bb-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-st-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-bb-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-hh-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-nw-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-hb-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-ni-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-nw-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-bw-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-sh-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-by-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-st-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-th-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-seki-economics.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-be-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-he-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-rp-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-bw-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-mv-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-hh-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-be-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-sl-gym-economics-lk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-hb-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-mv-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact curricula/DE/Gymnasium/composition-views/wirtschaft/de-sh-gym-economics-gk.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact app/scripts/config/goal-books/navigation/de-gym-economics-current-canonical.view.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge inventory/deep input exact docs/legal/ai-transparency-inventory.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge ai-transparency-inventory stdout hash",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge ai-transparency-inventory stderr hash",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Postmerge actual ai-transparency-inventory exit0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge deep-understanding-rollout-contract-regression stdout hash",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge deep-understanding-rollout-contract-regression stderr hash",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Postmerge actual deep-understanding-rollout-contract-regression exit0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual deep explicit current protected denominators",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Exactly five fresh successful postmerge commands",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual postmerge central currentJSON exact snapshot",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "ActualEconomics M6/336/187/149/5of6/123",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual Economics source16/2134 clean",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual economics64 projection routechecks PASS",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual protected strict Mathematik M7",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual protected strict Physik M7",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Current all10 floor objects/exceptions/history exact premergeM6",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Current original2BE staged and no other paths",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Original staged whole BE blob exact curricula/DE/Gymnasium/input/BE/upper-secondary/source-extraction/DE_BE_WIRTSCHAFT_SEKII_CURRENT_BERLIN2006_EP2010_AB2022.source-extraction.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Original staged whole BE blob exact curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_wirtschaft_current125_source_extraction_to_canonical_wirtschaft.review.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Active Economics CAN6bfa/678 before inertv19",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Qualified whole native8Fieldinventory73b now active",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Actual Economics premerge Book336 artifact exact",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "All336 Economics current page titles/descriptions exact",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Own readonly source-digest comparison exit0",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "Economics Book raw CAN/navigation/SEM/QA/P sources remain exact",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Incoming Chem/Bio old published Book sources actually changed",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Economics original actual Model/PDF/Render artifact exact app/public/lernzielbuch/de-gym-wirtschaftswissenschaften-bundesweit.book-model.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Economics original actual Model/PDF/Render artifact exact app/public/lernzielbuch/de-gym-wirtschaftswissenschaften-bundesweit.pdf",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Economics original actual Model/PDF/Render artifact exact app/public/lernzielbuch/de-gym-wirtschaftswissenschaften-bundesweit.pdf.render-manifest.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Economics actual PDF339/front3/goals336",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Previous20 actual successful stages retained immutable",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Previous normal Book/build actual exits0 retained",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Final exact core+metrics current inputs",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "check": "Final HEAD/origin/no unmerged exact",
+      "pass": true,
+      "detail": null
+    }
+  ],
+  "factsForCurrentDocs": [
+    "HEAD/origin0662b58b, no unmerged paths, original two BE staged paths and blobs preserved. Three incoming curriculum/CI commits plus one report-only Chemistry commit integrated.",
+    "Economics currentCAN678/v18 has machine M6. Strict187/336;149 D goals open;CQR303 five of six checks,123 issues remain. Strict net gain0.",
+    "Postmerge source inventory, central status, ten protected floors, actual inventory and deep-regression commands all exit0. Math807/Physics478 remain strictM7.",
+    "Economics source16/2134 fully covered, unsupported/reverse0, whole local64 projection route checks pass. Existing actual Book336/PDF339 remains Economics-source-exact.",
+    "Merged actual inventory2383 image links/2332 shallow markers,61 decks/745 localized card records/577 uniqueIDs. These measurements are not new image/card/science approvals.",
+    "No new full five-subject build after incoming Chem/Bio changes is claimed. The next build is bundled with v19; bounded descriptions/QA/technical followers remain inert here."
+  ],
+  "reviewerActiveWrites": 0,
+  "reviewerDocsWrites": 0,
+  "reviewerFetchMergeCommitPush": false,
+  "newStrictDClosures": 0,
+  "newImages": 0,
+  "humanReleaseTrialApproval": false,
+  "earlierFailedReceiptsOverwritten": false
+}

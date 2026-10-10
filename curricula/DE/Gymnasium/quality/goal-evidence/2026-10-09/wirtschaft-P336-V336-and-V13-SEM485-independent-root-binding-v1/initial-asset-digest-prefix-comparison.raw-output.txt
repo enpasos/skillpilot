@@ -1,0 +1,27 @@
+node:internal/process/esm_loader:40
+      internalBinding('errors').triggerUncaughtException(
+                                ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
++ actual - expected
+
++ '1c7bb718d6daf28952b774591765a4286db3e628f7cb0c99ccd67a0b9a12a59a'
+- 'sha256:1c7bb718d6daf28952b774591765a4286db3e628f7cb0c99ccd67a0b9a12a59a'
+    at assert (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-P336-V336-and-V13-SEM485-independent-root-binding-v1/inspect_qualified_current_bindings.ts:100:10)
+    at Object.<anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-P336-V336-and-V13-SEM485-independent-root-binding-v1/inspect_qualified_current_bindings.ts:107:42)
+    at Module._compile (node:internal/modules/cjs/loader:1356:14)
+    at Object.transformer (/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-D46fvsV_.cjs:3:1104)
+    at Module.load (node:internal/modules/cjs/loader:1197:32)
+    at Module._load (node:internal/modules/cjs/loader:1013:12)
+    at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:202:29)
+    at ModuleJob.run (node:internal/modules/esm/module_job:195:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:336:24)
+    at async loadESM (node:internal/process/esm_loader:34:7) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: '1c7bb718d6daf28952b774591765a4286db3e628f7cb0c99ccd67a0b9a12a59a',
+  expected: 'sha256:1c7bb718d6daf28952b774591765a4286db3e628f7cb0c99ccd67a0b9a12a59a',
+  operator: 'strictEqual'
+}
+
+Node.js v18.19.1

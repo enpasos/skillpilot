@@ -1,0 +1,13 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import Ajv2020 from '/home/enpasos/projects/skillpilot/app/node_modules/ajv/dist/2020.js';
+import addFormats from '/home/enpasos/projects/skillpilot/app/node_modules/ajv-formats/dist/index.js';
+const R='/home/enpasos/projects/skillpilot',O=R+'/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-twelve-consumer-whole-science-independent-merge-audit-v1';
+const p=O+'/whole-current609-final-twelve-consumer-V5-DRAFT-only-independent-schema-input.inert.json',can=JSON.parse(readFileSync(p,'utf8'));
+const schemaPath=R+'/docs/landscape-runtime.schema.json',raw=readFileSync(schemaPath);
+const ajv=new Ajv2020({strict:true,strictRequired:false,allErrors:true});addFormats(ajv);ajv.addKeyword({keyword:'x-skillpilot-listSemantics',schemaType:'string',valid:true});ajv.addKeyword({keyword:'x-skillpilot-caseInsensitiveUniqueItems',schemaType:'boolean',type:'array',validate:(enabled,data)=>!enabled||new Set(data.map(x=>typeof x==='string'?x.toLowerCase():JSON.stringify(x))).size===data.length});
+const validate=ajv.compile(JSON.parse(raw));if(!validate(can))throw Error(JSON.stringify(validate.errors));
+const negative=structuredClone(can),id='46a69971-38e6-5fda-8a54-2d3178427848',i=negative.goals.findIndex(g=>g.id===id);if(i<0)throw Error('missing bound material');delete negative.goals[i].examData.taskContent;
+const actualMissingRequiredTaskRejected=!validate(negative);if(!actualMissingRequiredTaskRejected)throw Error('actual required German task omission incorrectly accepted');
+const result={role:'INDEPENDENT_ACTUAL_PRODUCTION_RUNTIME_SCHEMA_PLUS_GENUINE_REQUIRED_FIELD_NEGATIVE',inputPath:p.slice(R.length+1),inputSHA256:createHash('sha256').update(readFileSync(p)).digest('hex'),actualUnchangedRuntimeSchemaPath:schemaPath.slice(R.length+1),runtimeSchemaSHA256:createHash('sha256').update(raw).digest('hex'),actualGoalCount:can.goals.length,actualNewDraftMaterialCount:12,schemaValid:true,actualMissingRequiredTaskRejected,negativeErrors:validate.errors,schemaBoundary:'Existing production runtime schema with its declared annotations/formats. Additional metadata is permitted by the actual schema; no complete metadata-closed-schema claim or schema relaxation.',scopeOrWholeCoursePass:false,activeWrites:0};
+writeFileSync(O+'/actual-final609-production-runtime-schema-and-genuine-missing-task-negative.independent.json',JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify({schemaValid:true,goalCount:can.goals.length,actualMissingRequiredTaskRejected}));

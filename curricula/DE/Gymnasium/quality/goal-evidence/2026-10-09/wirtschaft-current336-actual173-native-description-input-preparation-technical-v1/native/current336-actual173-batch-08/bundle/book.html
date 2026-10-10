@@ -1,0 +1,1073 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Wirtschaftswissenschaften: aktuelle Beschreibungsinputs – Paket 8</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Wirtschaftswissenschaften: aktuelle Beschreibungsinputs – Paket 8</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>20 atomare Lernziele</dt><dd>5 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:economics-current-canonical-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-b4dde3c304021f05e1d6d857" aria-label="Wirtschaftswissenschaften"><a href="#goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f"><span class="toc-entry-label">Wirtschaftswissenschaften</span></a></h2>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="goal:96183c48-b499-54d7-8530-578f6ff40207" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-a0dfaba9fba054a714038138" aria-label="Wirtschaftswissenschaften"><a href="#goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f"><span class="toc-entry-label">Wirtschaftswissenschaften</span></a></h3>
+          <span class="toc-entry-meta"><span>20 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:4413d3b1-be94-5675-88b1-8993d1984bab" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-bf8641e14a7afa140de9cf86" aria-label="Berufs- und Studienorientierung"><a href="#goal-8dee6c0a-0f76-5717-87b6-04ec89229371"><span class="toc-entry-label">Berufs-&#160;<wbr>und&#160;<wbr>Studienorientierung</span></a></h4>
+          <span class="toc-entry-meta"><span>4 Lernziele</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:40a49531-6fdd-5e91-8473-84c4577b2e54" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-77be822dced16aaf2ccf98b3" aria-label="Ökonomie und Kultur"><a href="#goal-b5762a90-f132-535b-88ee-29dc7586ee59"><span class="toc-entry-label">Ökonomie&#160;<wbr>und&#160;<wbr>Kultur</span></a></h4>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 6</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:9658d512-618c-56ab-aecf-14aaec1005f4" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-75e3708e304e7e3d4d482e3b" aria-label="Ergänzende Sach- und Methodenkompetenzen"><a href="#goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488"><span class="toc-entry-label">Ergänzende&#160;<wbr>Sach-&#160;<wbr>und&#160;<wbr>Methodenkompetenzen</span></a></h4>
+          <span class="toc-entry-meta"><span>12 Lernziele</span><span>erste zugehörige Lernzielseite 9</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f" data-goal-id="94fe52f5-c5f6-592b-87eb-9a983dc2d78f" data-page-number="1" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207" aria-labelledby="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-title"><a class="goal-self-link" href="#goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f">Komplexe gesamtwirtschaftliche Problemstellungen vernetzt bearbeiten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>94fe52f5-c5f6-592b-87eb-9a983dc2d78f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:52f29c60d9c0679547ebf22345e6a9a40bb7469edfc62e4cf4faea1b4a675932" data-rendered-digest="sha256:666e4b3adf76e040a77ca2112ef3a04634e8f43e7bd7149f7ecdbc019b478e0e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/94fe52f5-c5f6-592b-87eb-9a983dc2d78f/94fe52f5-c5f6-592b-87eb-9a983dc2d78f.png" alt="Eine Gruppe verknüpft Haushalte, Unternehmen, Staat und internationalen Austausch auf einer großen Tafel. Drei gemeinsame Karten zeigen Vernetzung, mögliche Lösungswege und die Abwägung von Umwelt- und Wirtschaftsaspekten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-description-heading">
+        <p class="section-heading" id="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Lösungsansätze für aktuelle komplexe gesamtwirtschaftliche Problemstellungen entwickeln und erörtern, indem sie erworbene Kompetenzen und volkswirtschaftliche Kenntnisse vernetzt anwendet.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-requires-heading">
+          <p class="section-heading" id="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-reverse-heading">
+          <p class="section-heading" id="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-950caf4f-1082-56bb-84db-b7174ce6c63f" rel="noreferrer noopener"><span>Wirtschaftspolitische Maßnahmen perspektivisch bewerten</span> <code>950caf4f-1082-56bb-84db-b7174ce6c63f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-0242e34e-e2fe-5a0f-8aed-57905c6ebb26" rel="noreferrer noopener"><span>EZB-Entscheidungen mandatsbezogen nachvollziehen</span> <code>0242e34e-e2fe-5a0f-8aed-57905c6ebb26</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-4cc4ce1a-4ffc-5d42-9a2d-61b2b4db02ef" rel="noreferrer noopener"><span>Q3: Preis-, Zins- und Geldfragen vernetzt beurteilen</span> <code>4cc4ce1a-4ffc-5d42-9a2d-61b2b4db02ef</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 20</span>
+      <span>Buch-Digest <code>sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511</code></span>
+      <span>Ziel-Fingerprint <code>sha256:06fa60111c8e7ba42de401418908a20326f00bbba996807b831dc4e720e33d9f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-actual173-b08&amp;edition=curricular-atomic-v1&amp;goalId=94fe52f5-c5f6-592b-87eb-9a983dc2d78f&amp;goalFingerprint=sha256%3A06fa60111c8e7ba42de401418908a20326f00bbba996807b831dc4e720e33d9f&amp;pageFingerprint=sha256%3A61783c26e2d3680b62df4a27588adf2cb8d8588b4426f2bac0cb42d28c8ad8b8&amp;bookDigest=sha256%3A15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8dee6c0a-0f76-5717-87b6-04ec89229371" data-goal-id="8dee6c0a-0f76-5717-87b6-04ec89229371" data-page-number="2" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:4413d3b1-be94-5675-88b1-8993d1984bab" aria-labelledby="goal-8dee6c0a-0f76-5717-87b6-04ec89229371-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8dee6c0a-0f76-5717-87b6-04ec89229371-title"><a class="goal-self-link" href="#goal-8dee6c0a-0f76-5717-87b6-04ec89229371">Berufswahlprofil und Anforderungsprofile abgleichen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8dee6c0a-0f76-5717-87b6-04ec89229371</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-bf8641e14a7afa140de9cf86">Berufs- und Studienorientierung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:acf1344da05e44d0bf905c2cab5ee7653f7abdc38305c32da965e50803f74bac" data-rendered-digest="sha256:829a75f39177b04a4f7c4ff316d49defbf9a076e7251da4f77b39931d1da8d7a" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/8dee6c0a-0f76-5717-87b6-04ec89229371/8dee6c0a-0f76-5717-87b6-04ec89229371.png" alt="Eine Person vergleicht Interessen, Werte, Fähigkeiten und Zukunftswünsche mit zwei beispielhaften beruflichen Anforderungsprofilen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8dee6c0a-0f76-5717-87b6-04ec89229371-description-heading">
+        <p class="section-heading" id="goal-8dee6c0a-0f76-5717-87b6-04ec89229371-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann eigene Interessen, Werte, Fähigkeiten und Zukunftsvorstellungen mit Anforderungen der Berufs- und Arbeitswelt vergleichen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8dee6c0a-0f76-5717-87b6-04ec89229371-requires-heading">
+          <p class="section-heading" id="goal-8dee6c0a-0f76-5717-87b6-04ec89229371-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-8dee6c0a-0f76-5717-87b6-04ec89229371-reverse-heading">
+          <p class="section-heading" id="goal-8dee6c0a-0f76-5717-87b6-04ec89229371-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-980a3f45-b0ad-500d-8d5b-975948362b68"><span>Informationswege der Berufs- und Studienorientierung nutzen</span><code>980a3f45-b0ad-500d-8d5b-975948362b68</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-44080e8d-f414-54e6-8c63-cd2042fbb40e"><span>Berufserkundung und Erwerbsbiografien reflektieren</span><code>44080e8d-f414-54e6-8c63-cd2042fbb40e</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-8dee6c0a-0f76-5717-87b6-04ec89229371-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8dee6c0a-0f76-5717-87b6-04ec89229371-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-8dee6c0a-0f76-5717-87b6-04ec89229371-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8dee6c0a-0f76-5717-87b6-04ec89229371-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-b791c88c-4b8c-53ed-907c-b50c946c3b2d" rel="noreferrer noopener"><span>Berufswege vergleichen und vollständige Modellbewerbungen erstellen</span> <code>b791c88c-4b8c-53ed-907c-b50c946c3b2d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 20</span>
+      <span>Buch-Digest <code>sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511</code></span>
+      <span>Ziel-Fingerprint <code>sha256:877d0bc616be225701159f29ba76aa2e79993f1900f3a0ad6a5f94e081ee2590</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-actual173-b08&amp;edition=curricular-atomic-v1&amp;goalId=8dee6c0a-0f76-5717-87b6-04ec89229371&amp;goalFingerprint=sha256%3A877d0bc616be225701159f29ba76aa2e79993f1900f3a0ad6a5f94e081ee2590&amp;pageFingerprint=sha256%3Ae197d686397b39e36e515c7695648107c5186a06a326575f0a79cbf46fc97185&amp;bookDigest=sha256%3A15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-980a3f45-b0ad-500d-8d5b-975948362b68" data-goal-id="980a3f45-b0ad-500d-8d5b-975948362b68" data-page-number="3" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:4413d3b1-be94-5675-88b1-8993d1984bab" aria-labelledby="goal-980a3f45-b0ad-500d-8d5b-975948362b68-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-980a3f45-b0ad-500d-8d5b-975948362b68-title"><a class="goal-self-link" href="#goal-980a3f45-b0ad-500d-8d5b-975948362b68">Informationswege der Berufs- und Studienorientierung nutzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>980a3f45-b0ad-500d-8d5b-975948362b68</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-bf8641e14a7afa140de9cf86">Berufs- und Studienorientierung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6e715a6f739b8802127398b031d114d173e4dc0db620feb8893f505ebb1656da" data-rendered-digest="sha256:2df8fe66b64cd43134a50355d08ebb6f86f0cd205c0ea520bdb5787d212416c0" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/980a3f45-b0ad-500d-8d5b-975948362b68/980a3f45-b0ad-500d-8d5b-975948362b68.png" alt="Eine Person nutzt digitale Information, Beratung und einen Institutionsbesuch; darunter skizziert sie einen eigenen Entwurf mit drei neutralen Kreisen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-980a3f45-b0ad-500d-8d5b-975948362b68-description-heading">
+        <p class="section-heading" id="goal-980a3f45-b0ad-500d-8d5b-975948362b68-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Medien, Beratungsangebote und Institutionen für Berufs- und Studienwahl zielgerichtet nutzen und daraus begründete Zukunftsentwürfe ableiten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-980a3f45-b0ad-500d-8d5b-975948362b68-requires-heading">
+          <p class="section-heading" id="goal-980a3f45-b0ad-500d-8d5b-975948362b68-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8dee6c0a-0f76-5717-87b6-04ec89229371"><span>Berufswahlprofil und Anforderungsprofile abgleichen</span><code>8dee6c0a-0f76-5717-87b6-04ec89229371</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-980a3f45-b0ad-500d-8d5b-975948362b68-reverse-heading">
+          <p class="section-heading" id="goal-980a3f45-b0ad-500d-8d5b-975948362b68-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-9ea1219f-e903-59ac-8475-d0f203b35f9c"><span>Bewerbungsverfahren adressatengerecht vorbereiten</span><code>9ea1219f-e903-59ac-8475-d0f203b35f9c</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-980a3f45-b0ad-500d-8d5b-975948362b68-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-980a3f45-b0ad-500d-8d5b-975948362b68-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-b791c88c-4b8c-53ed-907c-b50c946c3b2d" rel="noreferrer noopener"><span>Berufswege vergleichen und vollständige Modellbewerbungen erstellen</span> <code>b791c88c-4b8c-53ed-907c-b50c946c3b2d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 20</span>
+      <span>Buch-Digest <code>sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3949aaac040d53bf02b7cbd320ae6065c2b821cd8f91d88855a384c8b382936b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-actual173-b08&amp;edition=curricular-atomic-v1&amp;goalId=980a3f45-b0ad-500d-8d5b-975948362b68&amp;goalFingerprint=sha256%3A3949aaac040d53bf02b7cbd320ae6065c2b821cd8f91d88855a384c8b382936b&amp;pageFingerprint=sha256%3Ac0b81e7144bd2902d1df57a70602001b4c8e46ea5e4eff1a59738b5ac5ea8a7a&amp;bookDigest=sha256%3A15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-9ea1219f-e903-59ac-8475-d0f203b35f9c" data-goal-id="9ea1219f-e903-59ac-8475-d0f203b35f9c" data-page-number="4" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:4413d3b1-be94-5675-88b1-8993d1984bab" aria-labelledby="goal-9ea1219f-e903-59ac-8475-d0f203b35f9c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9ea1219f-e903-59ac-8475-d0f203b35f9c-title"><a class="goal-self-link" href="#goal-9ea1219f-e903-59ac-8475-d0f203b35f9c">Bewerbungsverfahren adressatengerecht vorbereiten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9ea1219f-e903-59ac-8475-d0f203b35f9c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-bf8641e14a7afa140de9cf86">Berufs- und Studienorientierung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:05cfc68bb2596301a265d5915ce51198fb3557c8be0eb66fded15190d060d7e3" data-rendered-digest="sha256:f445ed44fee200716b36ade6d3b433217fd77cd176ed3765831a8116f4c90c14" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/9ea1219f-e903-59ac-8475-d0f203b35f9c/9ea1219f-e903-59ac-8475-d0f203b35f9c.png" alt="Eine Person prüft Anforderungen am Laptop. Eine gemeinsame Übersicht zeigt verschiedene Bewerbungsunterlagen und ein Gespräch mit der angesprochenen Person.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9ea1219f-e903-59ac-8475-d0f203b35f9c-description-heading">
+        <p class="section-heading" id="goal-9ea1219f-e903-59ac-8475-d0f203b35f9c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Bewerbungsverfahren analysieren und vollständige Bewerbungsunterlagen adressatengerecht erstellen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9ea1219f-e903-59ac-8475-d0f203b35f9c-requires-heading">
+          <p class="section-heading" id="goal-9ea1219f-e903-59ac-8475-d0f203b35f9c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-980a3f45-b0ad-500d-8d5b-975948362b68"><span>Informationswege der Berufs- und Studienorientierung nutzen</span><code>980a3f45-b0ad-500d-8d5b-975948362b68</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-9ea1219f-e903-59ac-8475-d0f203b35f9c-reverse-heading">
+          <p class="section-heading" id="goal-9ea1219f-e903-59ac-8475-d0f203b35f9c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-9ea1219f-e903-59ac-8475-d0f203b35f9c-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9ea1219f-e903-59ac-8475-d0f203b35f9c-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-b791c88c-4b8c-53ed-907c-b50c946c3b2d" rel="noreferrer noopener"><span>Berufswege vergleichen und vollständige Modellbewerbungen erstellen</span> <code>b791c88c-4b8c-53ed-907c-b50c946c3b2d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 20</span>
+      <span>Buch-Digest <code>sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ba411cd0429f0216783f82ca78b07c19d9de2b85ae00de4e85f20d3bf2da3c17</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-actual173-b08&amp;edition=curricular-atomic-v1&amp;goalId=9ea1219f-e903-59ac-8475-d0f203b35f9c&amp;goalFingerprint=sha256%3Aba411cd0429f0216783f82ca78b07c19d9de2b85ae00de4e85f20d3bf2da3c17&amp;pageFingerprint=sha256%3A6cb594acf37dcc79561c6ee79c1a55e450839f038587725307ca37cb9b9a1b8b&amp;bookDigest=sha256%3A15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-44080e8d-f414-54e6-8c63-cd2042fbb40e" data-goal-id="44080e8d-f414-54e6-8c63-cd2042fbb40e" data-page-number="5" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:4413d3b1-be94-5675-88b1-8993d1984bab" aria-labelledby="goal-44080e8d-f414-54e6-8c63-cd2042fbb40e-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-44080e8d-f414-54e6-8c63-cd2042fbb40e-title"><a class="goal-self-link" href="#goal-44080e8d-f414-54e6-8c63-cd2042fbb40e">Berufserkundung und Erwerbsbiografien reflektieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>44080e8d-f414-54e6-8c63-cd2042fbb40e</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-bf8641e14a7afa140de9cf86">Berufs- und Studienorientierung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:40a67ddbb2bc135688acc8effcc80e03e11fc10a00cc9a4d33e75ac18a447909" data-rendered-digest="sha256:085dde70c7bb80894b3f1f4b744c4f214705bbd6eb9d6d47ce52941585b544ea" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/44080e8d-f414-54e6-8c63-cd2042fbb40e/44080e8d-f414-54e6-8c63-cd2042fbb40e.png" alt="Eine Person blickt mit einer Lupe auf eine Werkstatterfahrung zurück und betrachtet zwei mögliche Arbeitswege: ein Gespräch in der Betreuung und eine Tätigkeit am Laptop.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-44080e8d-f414-54e6-8c63-cd2042fbb40e-description-heading">
+        <p class="section-heading" id="goal-44080e8d-f414-54e6-8c63-cd2042fbb40e-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Praktikums- und Berufserkundungserfahrungen dokumentieren, beurteilen und mit möglichen Erwerbsbiografien verknüpfen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-44080e8d-f414-54e6-8c63-cd2042fbb40e-requires-heading">
+          <p class="section-heading" id="goal-44080e8d-f414-54e6-8c63-cd2042fbb40e-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8dee6c0a-0f76-5717-87b6-04ec89229371"><span>Berufswahlprofil und Anforderungsprofile abgleichen</span><code>8dee6c0a-0f76-5717-87b6-04ec89229371</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-44080e8d-f414-54e6-8c63-cd2042fbb40e-reverse-heading">
+          <p class="section-heading" id="goal-44080e8d-f414-54e6-8c63-cd2042fbb40e-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-44080e8d-f414-54e6-8c63-cd2042fbb40e-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-44080e8d-f414-54e6-8c63-cd2042fbb40e-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-b791c88c-4b8c-53ed-907c-b50c946c3b2d" rel="noreferrer noopener"><span>Berufswege vergleichen und vollständige Modellbewerbungen erstellen</span> <code>b791c88c-4b8c-53ed-907c-b50c946c3b2d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 20</span>
+      <span>Buch-Digest <code>sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511</code></span>
+      <span>Ziel-Fingerprint <code>sha256:9d82e30918623ba20fba2c708a81524d3553206672cbe0954f8825afd2c68bf7</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-actual173-b08&amp;edition=curricular-atomic-v1&amp;goalId=44080e8d-f414-54e6-8c63-cd2042fbb40e&amp;goalFingerprint=sha256%3A9d82e30918623ba20fba2c708a81524d3553206672cbe0954f8825afd2c68bf7&amp;pageFingerprint=sha256%3A112ffba211c7dc809b52c29666fa231731e19c4072ded69ac0c7d70f147acc0a&amp;bookDigest=sha256%3A15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b5762a90-f132-535b-88ee-29dc7586ee59" data-goal-id="b5762a90-f132-535b-88ee-29dc7586ee59" data-page-number="6" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:40a49531-6fdd-5e91-8473-84c4577b2e54" aria-labelledby="goal-b5762a90-f132-535b-88ee-29dc7586ee59-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b5762a90-f132-535b-88ee-29dc7586ee59-title"><a class="goal-self-link" href="#goal-b5762a90-f132-535b-88ee-29dc7586ee59">Ökonomische Perspektiven in Kulturmedien analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b5762a90-f132-535b-88ee-29dc7586ee59</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-77be822dced16aaf2ccf98b3">Ökonomie und Kultur</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:da7cf436a136e22c8fac3cbe3c11b19da9d4c8dbe177401451a588e37fe3a377" data-rendered-digest="sha256:92f3f4ff18dd4fa6426bbf2b100edb227b47bc99f422cc1da60a278ad2636066" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/b5762a90-f132-535b-88ee-29dc7586ee59/b5762a90-f132-535b-88ee-29dc7586ee59.png" alt="Zwei Personen untersuchen einen Film, einen erzählenden Text und ein Sachbuch mit einer ökonomischen Perspektive. Eine große Lupe verbindet darin Geld, Arbeit und Konsum.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b5762a90-f132-535b-88ee-29dc7586ee59-description-heading">
+        <p class="section-heading" id="goal-b5762a90-f132-535b-88ee-29dc7586ee59-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Filme, literarische Texte und Sachbücher unter einer Perspektive ökonomischer Bildung analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b5762a90-f132-535b-88ee-29dc7586ee59-requires-heading">
+          <p class="section-heading" id="goal-b5762a90-f132-535b-88ee-29dc7586ee59-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-b5762a90-f132-535b-88ee-29dc7586ee59-reverse-heading">
+          <p class="section-heading" id="goal-b5762a90-f132-535b-88ee-29dc7586ee59-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-6e138ab0-4f2b-52f9-8cd6-660051d60fba"><span>Handlungsempfehlungen für ökonomisches Verhalten gestalten</span><code>6e138ab0-4f2b-52f9-8cd6-660051d60fba</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-b5762a90-f132-535b-88ee-29dc7586ee59-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b5762a90-f132-535b-88ee-29dc7586ee59-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-bd9ec397-86ee-58ec-8327-7e1f28550026" rel="noreferrer noopener"><span>Wirtschaftspolitische Medienbeiträge beurteilen</span> <code>bd9ec397-86ee-58ec-8327-7e1f28550026</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-b5762a90-f132-535b-88ee-29dc7586ee59-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b5762a90-f132-535b-88ee-29dc7586ee59-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-30ce4a89-90a6-5cb6-b5e4-db8fc4a66d33" rel="noreferrer noopener"><span>Partizipation, Kulturmedien und historischen Austausch analysieren</span> <code>30ce4a89-90a6-5cb6-b5e4-db8fc4a66d33</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 20</span>
+      <span>Buch-Digest <code>sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511</code></span>
+      <span>Ziel-Fingerprint <code>sha256:beda4317da2ac0638921a06f480511ac6df4fcfc1d5f41190a0fdbcc2f352d85</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-actual173-b08&amp;edition=curricular-atomic-v1&amp;goalId=b5762a90-f132-535b-88ee-29dc7586ee59&amp;goalFingerprint=sha256%3Abeda4317da2ac0638921a06f480511ac6df4fcfc1d5f41190a0fdbcc2f352d85&amp;pageFingerprint=sha256%3Af168bf8994a6d7fadb57b33a052c4a060f34a7b37ae4d2f5b795dd98ffa94c88&amp;bookDigest=sha256%3A15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6e138ab0-4f2b-52f9-8cd6-660051d60fba" data-goal-id="6e138ab0-4f2b-52f9-8cd6-660051d60fba" data-page-number="7" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:40a49531-6fdd-5e91-8473-84c4577b2e54" aria-labelledby="goal-6e138ab0-4f2b-52f9-8cd6-660051d60fba-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6e138ab0-4f2b-52f9-8cd6-660051d60fba-title"><a class="goal-self-link" href="#goal-6e138ab0-4f2b-52f9-8cd6-660051d60fba">Handlungsempfehlungen für ökonomisches Verhalten gestalten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6e138ab0-4f2b-52f9-8cd6-660051d60fba</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-77be822dced16aaf2ccf98b3">Ökonomie und Kultur</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:27448a5b4ae189f2a1b4a47a201879c4cbb68e8a70eb768f43acf41dfb47df21" data-rendered-digest="sha256:bc6941aeb4ec0ad646264d462cb46fbea5dc74ccddcd817c6f8cac9868622397" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/6e138ab0-4f2b-52f9-8cd6-660051d60fba/6e138ab0-4f2b-52f9-8cd6-660051d60fba.png" alt="Eine Person stellt an einer Tafel eine Begründung, eine Empfehlung mit wiederverwendbarer Flasche und die angesprochenen Zielgruppen vor. Jüngere und ältere Zuhörende denken über unterschiedliche Interessen nach.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6e138ab0-4f2b-52f9-8cd6-660051d60fba-description-heading">
+        <p class="section-heading" id="goal-6e138ab0-4f2b-52f9-8cd6-660051d60fba-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann begründete Handlungsempfehlungen für ökonomisches Verhalten in einer geeigneten Darstellungsform adressatengerecht gestalten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6e138ab0-4f2b-52f9-8cd6-660051d60fba-requires-heading">
+          <p class="section-heading" id="goal-6e138ab0-4f2b-52f9-8cd6-660051d60fba-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-b5762a90-f132-535b-88ee-29dc7586ee59"><span>Ökonomische Perspektiven in Kulturmedien analysieren</span><code>b5762a90-f132-535b-88ee-29dc7586ee59</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-6e138ab0-4f2b-52f9-8cd6-660051d60fba-reverse-heading">
+          <p class="section-heading" id="goal-6e138ab0-4f2b-52f9-8cd6-660051d60fba-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-6e138ab0-4f2b-52f9-8cd6-660051d60fba-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6e138ab0-4f2b-52f9-8cd6-660051d60fba-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-30ce4a89-90a6-5cb6-b5e4-db8fc4a66d33" rel="noreferrer noopener"><span>Partizipation, Kulturmedien und historischen Austausch analysieren</span> <code>30ce4a89-90a6-5cb6-b5e4-db8fc4a66d33</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 20</span>
+      <span>Buch-Digest <code>sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511</code></span>
+      <span>Ziel-Fingerprint <code>sha256:8604a05257b27863c18ba213bf1b6711763837589eb9c69af70bbc4bf3d6c5e9</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-actual173-b08&amp;edition=curricular-atomic-v1&amp;goalId=6e138ab0-4f2b-52f9-8cd6-660051d60fba&amp;goalFingerprint=sha256%3A8604a05257b27863c18ba213bf1b6711763837589eb9c69af70bbc4bf3d6c5e9&amp;pageFingerprint=sha256%3A825b3667a944053936ded6c2d6fc4947fb3944ea831bb9ef80de5dbe2e2d2cd0&amp;bookDigest=sha256%3A15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1e3af127-4465-504a-8276-b5bf13bf9066" data-goal-id="1e3af127-4465-504a-8276-b5bf13bf9066" data-page-number="8" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:40a49531-6fdd-5e91-8473-84c4577b2e54" aria-labelledby="goal-1e3af127-4465-504a-8276-b5bf13bf9066-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1e3af127-4465-504a-8276-b5bf13bf9066-title"><a class="goal-self-link" href="#goal-1e3af127-4465-504a-8276-b5bf13bf9066">Historische Wirtschaftsprozesse kulturökonomisch analysieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1e3af127-4465-504a-8276-b5bf13bf9066</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-77be822dced16aaf2ccf98b3">Ökonomie und Kultur</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:bff5e29e02ad427d2040bbc47055d3c4dbc3b43574e0af7c56bb7d33d2616d1d" data-rendered-digest="sha256:81a5d201b50f0279323418dd603c5e638e61943ac568a4443231bdbb3b97af69" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/1e3af127-4465-504a-8276-b5bf13bf9066/1e3af127-4465-504a-8276-b5bf13bf9066.png" alt="Zwei Gemeinschaften tauschen Waren; daneben zeigen zwei Bildfenster dasselbe Hafenzentrum im Aufstieg und im späteren Wandel. Beobachtende denken über Quellen, Geld und Beziehungen nach.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1e3af127-4465-504a-8276-b5bf13bf9066-description-heading">
+        <p class="section-heading" id="goal-1e3af127-4465-504a-8276-b5bf13bf9066-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann historische Austauschprozesse sowie Aufstieg und Niedergang von Machtzentren aus ökonomischer Perspektive analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1e3af127-4465-504a-8276-b5bf13bf9066-requires-heading">
+          <p class="section-heading" id="goal-1e3af127-4465-504a-8276-b5bf13bf9066-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-1e3af127-4465-504a-8276-b5bf13bf9066-reverse-heading">
+          <p class="section-heading" id="goal-1e3af127-4465-504a-8276-b5bf13bf9066-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-1e3af127-4465-504a-8276-b5bf13bf9066-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1e3af127-4465-504a-8276-b5bf13bf9066-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-1e3af127-4465-504a-8276-b5bf13bf9066-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1e3af127-4465-504a-8276-b5bf13bf9066-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-30ce4a89-90a6-5cb6-b5e4-db8fc4a66d33" rel="noreferrer noopener"><span>Partizipation, Kulturmedien und historischen Austausch analysieren</span> <code>30ce4a89-90a6-5cb6-b5e4-db8fc4a66d33</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 20</span>
+      <span>Buch-Digest <code>sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511</code></span>
+      <span>Ziel-Fingerprint <code>sha256:8173bfcdb12a11b142b0bfee2422650beb5f199508abc7bfafa11de7bc697e96</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-actual173-b08&amp;edition=curricular-atomic-v1&amp;goalId=1e3af127-4465-504a-8276-b5bf13bf9066&amp;goalFingerprint=sha256%3A8173bfcdb12a11b142b0bfee2422650beb5f199508abc7bfafa11de7bc697e96&amp;pageFingerprint=sha256%3A0aa7be2007d6e788828586eb60fd6e275feaafa2359efc4d7eccc49341c24cbf&amp;bookDigest=sha256%3A15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488" data-goal-id="c6f05990-4c2d-56ce-9412-3a4a4bcfc488" data-page-number="9" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9658d512-618c-56ab-aecf-14aaec1005f4" aria-labelledby="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-title"><a class="goal-self-link" href="#goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488">Nationaleinkommen aus Kreislaufdaten berechnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c6f05990-4c2d-56ce-9412-3a4a4bcfc488</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-75e3708e304e7e3d4d482e3b">Ergänzende Sach- und Methodenkompetenzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:efe26493806bd4a5deb3222b4e8510b34278c5541e68e1be220428d17ebe2116" data-rendered-digest="sha256:b2f443fe0f10c936941498864fcd57dac3cb2118b45dcaffae0495dd8b913522" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/c6f05990-4c2d-56ce-9412-3a4a4bcfc488/c6f05990-4c2d-56ce-9412-3a4a4bcfc488.png" alt="Zwei beispielhafte Einkommensströme fließen zum Inländerhaushalt und in den Primäreinkommenskorb. Transfers und Kredite sind getrennt dargestellt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-description-heading">
+        <p class="section-heading" id="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aus vorgegebenen Kreislaufdaten das im Material eindeutig definierte Nationaleinkommen berechnen, die verwendeten Einkommensbestandteile zuordnen und erklären, welche in den Daten enthaltenen Zahlungen nicht zu dieser Bezugsgröße gehören.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-requires-heading">
+          <p class="section-heading" id="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-reverse-heading">
+          <p class="section-heading" id="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-641dee8e-9658-5db1-89eb-2353f8322a8a" rel="noreferrer noopener"><span>Gesamtwirtschaftliche Zusammenhänge im Kreislaufmodell darstellen</span> <code>641dee8e-9658-5db1-89eb-2353f8322a8a</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-12f6e48c-5a40-56c3-80f4-f1927eaf497c" rel="noreferrer noopener"><span>Kreislauf- und Haushaltsdaten begründet auswerten</span> <code>12f6e48c-5a40-56c3-80f4-f1927eaf497c</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 20</span>
+      <span>Buch-Digest <code>sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d475044adfb956a6979ffa08992cbc2a58d50dff499a3c365603fa373e9f8789</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-actual173-b08&amp;edition=curricular-atomic-v1&amp;goalId=c6f05990-4c2d-56ce-9412-3a4a4bcfc488&amp;goalFingerprint=sha256%3Ad475044adfb956a6979ffa08992cbc2a58d50dff499a3c365603fa373e9f8789&amp;pageFingerprint=sha256%3A5dc58fc6a4d53e566b331525d0b93819ba0c89fd912498201c17e4f92a57a1f2&amp;bookDigest=sha256%3A15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-81ea1a00-5248-5e36-8ca0-3f3f48ac2385" data-goal-id="81ea1a00-5248-5e36-8ca0-3f3f48ac2385" data-page-number="10" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9658d512-618c-56ab-aecf-14aaec1005f4" aria-labelledby="goal-81ea1a00-5248-5e36-8ca0-3f3f48ac2385-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-81ea1a00-5248-5e36-8ca0-3f3f48ac2385-title"><a class="goal-self-link" href="#goal-81ea1a00-5248-5e36-8ca0-3f3f48ac2385">Kreuzpreiselastizität der Nachfrage deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>81ea1a00-5248-5e36-8ca0-3f3f48ac2385</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-75e3708e304e7e3d4d482e3b">Ergänzende Sach- und Methodenkompetenzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d36e2a573f0172232bb4b0da8a8242bc06258278bfb8fde9597b06ed4a06f325" data-rendered-digest="sha256:d29d96fc3535b08663ad31f815fc71d90debbd94ce2db785683c2bd2ec1f4203" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/81ea1a00-5248-5e36-8ca0-3f3f48ac2385/81ea1a00-5248-5e36-8ca0-3f3f48ac2385.png" alt="Zwei Modellfälle: Ein höherer Kaffeepreis geht mit höherer Teenachfrage einher; ein niedrigerer Druckerpreis mit höherer Patronennachfrage. Die Bildpfeile veranschaulichen Substitute und Komplemente.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-81ea1a00-5248-5e36-8ca0-3f3f48ac2385-description-heading">
+        <p class="section-heading" id="goal-81ea1a00-5248-5e36-8ca0-3f3f48ac2385-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in einem vorgegebenen Zwei-Güter-Fall die relative Nachfrageänderung eines Gutes auf die relative Preisänderung des anderen beziehen und die angegebene oder berechnete Kreuzpreiselastizität unter konstant gehaltenen Bedingungen wirtschaftlich interpretieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-81ea1a00-5248-5e36-8ca0-3f3f48ac2385-requires-heading">
+          <p class="section-heading" id="goal-81ea1a00-5248-5e36-8ca0-3f3f48ac2385-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-81ea1a00-5248-5e36-8ca0-3f3f48ac2385-reverse-heading">
+          <p class="section-heading" id="goal-81ea1a00-5248-5e36-8ca0-3f3f48ac2385-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-81ea1a00-5248-5e36-8ca0-3f3f48ac2385-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-81ea1a00-5248-5e36-8ca0-3f3f48ac2385-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-c3512617-8522-5751-8660-5241a6379790" rel="noreferrer noopener"><span>Preisreaktionen anhand von Elastizität erläutern</span> <code>c3512617-8522-5751-8660-5241a6379790</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-81ea1a00-5248-5e36-8ca0-3f3f48ac2385-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-81ea1a00-5248-5e36-8ca0-3f3f48ac2385-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-12f6e48c-5a40-56c3-80f4-f1927eaf497c" rel="noreferrer noopener"><span>Kreislauf- und Haushaltsdaten begründet auswerten</span> <code>12f6e48c-5a40-56c3-80f4-f1927eaf497c</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 20</span>
+      <span>Buch-Digest <code>sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511</code></span>
+      <span>Ziel-Fingerprint <code>sha256:cb73b6499f811ab59426d224dc2fc08bbbe61f91dcfd0a79b8ad368ce59f4167</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-actual173-b08&amp;edition=curricular-atomic-v1&amp;goalId=81ea1a00-5248-5e36-8ca0-3f3f48ac2385&amp;goalFingerprint=sha256%3Acb73b6499f811ab59426d224dc2fc08bbbe61f91dcfd0a79b8ad368ce59f4167&amp;pageFingerprint=sha256%3A03aa9447b10b7513d05bb07795a05ff9b5e90934f21fcfa1b9149aba7f8c7b3f&amp;bookDigest=sha256%3A15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-25393414-3b59-56f9-ae1b-e785d9f8b21b" data-goal-id="25393414-3b59-56f9-ae1b-e785d9f8b21b" data-page-number="11" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9658d512-618c-56ab-aecf-14aaec1005f4" aria-labelledby="goal-25393414-3b59-56f9-ae1b-e785d9f8b21b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-25393414-3b59-56f9-ae1b-e785d9f8b21b-title"><a class="goal-self-link" href="#goal-25393414-3b59-56f9-ae1b-e785d9f8b21b">Einkommenselastizität der Nachfrage deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>25393414-3b59-56f9-ae1b-e785d9f8b21b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-75e3708e304e7e3d4d482e3b">Ergänzende Sach- und Methodenkompetenzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:38fe2535700c29d61c149b6231186e924e9e330fe33a63371badb51c5c7fdf53" data-rendered-digest="sha256:a8f4becac833371b4724ad248132e795422f36036dac01a9c45c876c3ec92fda" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/25393414-3b59-56f9-ae1b-e785d9f8b21b/25393414-3b59-56f9-ae1b-e785d9f8b21b.png" alt="Bei steigendem Einkommen steigt in einem Modellfall die Nachfrage nach einem Gut; in einem anderen Modellfall sinkt sie. Die jeweiligen Packungen bleiben innerhalb eines Falls gleich.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-25393414-3b59-56f9-ae1b-e785d9f8b21b-description-heading">
+        <p class="section-heading" id="goal-25393414-3b59-56f9-ae1b-e785d9f8b21b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in einem vorgegebenen Haushaltsfall die relative Nachfrageänderung eines Gutes auf die relative Einkommensänderung beziehen und die angegebene oder berechnete Einkommenselastizität unter konstant gehaltenen Bedingungen wirtschaftlich interpretieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-25393414-3b59-56f9-ae1b-e785d9f8b21b-requires-heading">
+          <p class="section-heading" id="goal-25393414-3b59-56f9-ae1b-e785d9f8b21b-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-25393414-3b59-56f9-ae1b-e785d9f8b21b-reverse-heading">
+          <p class="section-heading" id="goal-25393414-3b59-56f9-ae1b-e785d9f8b21b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-25393414-3b59-56f9-ae1b-e785d9f8b21b-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-25393414-3b59-56f9-ae1b-e785d9f8b21b-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-c3512617-8522-5751-8660-5241a6379790" rel="noreferrer noopener"><span>Preisreaktionen anhand von Elastizität erläutern</span> <code>c3512617-8522-5751-8660-5241a6379790</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-25393414-3b59-56f9-ae1b-e785d9f8b21b-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-25393414-3b59-56f9-ae1b-e785d9f8b21b-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-12f6e48c-5a40-56c3-80f4-f1927eaf497c" rel="noreferrer noopener"><span>Kreislauf- und Haushaltsdaten begründet auswerten</span> <code>12f6e48c-5a40-56c3-80f4-f1927eaf497c</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 20</span>
+      <span>Buch-Digest <code>sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511</code></span>
+      <span>Ziel-Fingerprint <code>sha256:cc9acdaac955b0574c3abe026d17f55d8ba34d1fd0379dc4966f69107a9f321f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-actual173-b08&amp;edition=curricular-atomic-v1&amp;goalId=25393414-3b59-56f9-ae1b-e785d9f8b21b&amp;goalFingerprint=sha256%3Acc9acdaac955b0574c3abe026d17f55d8ba34d1fd0379dc4966f69107a9f321f&amp;pageFingerprint=sha256%3Af00878b7ac652c33417a0d48b468f0df8133a5c192346ea69643b90644812950&amp;bookDigest=sha256%3A15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a6a8bf1a-a131-5f17-9113-02a1321899e4" data-goal-id="a6a8bf1a-a131-5f17-9113-02a1321899e4" data-page-number="12" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9658d512-618c-56ab-aecf-14aaec1005f4" aria-labelledby="goal-a6a8bf1a-a131-5f17-9113-02a1321899e4-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a6a8bf1a-a131-5f17-9113-02a1321899e4-title"><a class="goal-self-link" href="#goal-a6a8bf1a-a131-5f17-9113-02a1321899e4">Volkswirtschaftliche Fragestellungen fachlich einordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a6a8bf1a-a131-5f17-9113-02a1321899e4</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-75e3708e304e7e3d4d482e3b">Ergänzende Sach- und Methodenkompetenzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f0b5a909fe647952e6463a480379de48ed44beb86d66fa5ac6ba2585bd17795e" data-rendered-digest="sha256:7739c5fd3bf197e51460d90b8b0e1f739abeb8c32c13aa68d16cd467583c1167" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/a6a8bf1a-a131-5f17-9113-02a1321899e4/a6a8bf1a-a131-5f17-9113-02a1321899e4.png" alt="Eine Person ordnet wirtschaftliche Beziehungen den Themen Preisen und Konjunktur zu; Konsumgüter, Einkommen, Produktion und Beschäftigte veranschaulichen die Fragen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a6a8bf1a-a131-5f17-9113-02a1321899e4-description-heading">
+        <p class="section-heading" id="goal-a6a8bf1a-a131-5f17-9113-02a1321899e4-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann vorgegebene volkswirtschaftliche Fragestellungen anhand des untersuchten gesamtwirtschaftlichen Problems einem passenden Themenbereich zuordnen und die Zuordnung mit der jeweils betroffenen wirtschaftlichen Beziehung begründen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a6a8bf1a-a131-5f17-9113-02a1321899e4-requires-heading">
+          <p class="section-heading" id="goal-a6a8bf1a-a131-5f17-9113-02a1321899e4-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-a6a8bf1a-a131-5f17-9113-02a1321899e4-reverse-heading">
+          <p class="section-heading" id="goal-a6a8bf1a-a131-5f17-9113-02a1321899e4-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-a6a8bf1a-a131-5f17-9113-02a1321899e4-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a6a8bf1a-a131-5f17-9113-02a1321899e4-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-a6a8bf1a-a131-5f17-9113-02a1321899e4-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a6a8bf1a-a131-5f17-9113-02a1321899e4-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-c2cd1cbf-e3c8-59a8-be39-32f90356c36e" rel="noreferrer noopener"><span>Finanzkrise, gesamtwirtschaftliche Frage und Insolvenzgründe unterscheiden</span> <code>c2cd1cbf-e3c8-59a8-be39-32f90356c36e</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 20</span>
+      <span>Buch-Digest <code>sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ce433941f1b95fe2c69964eb18b425f105c6b955e7505dfc1a87ca5f20f20e29</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-actual173-b08&amp;edition=curricular-atomic-v1&amp;goalId=a6a8bf1a-a131-5f17-9113-02a1321899e4&amp;goalFingerprint=sha256%3Ace433941f1b95fe2c69964eb18b425f105c6b955e7505dfc1a87ca5f20f20e29&amp;pageFingerprint=sha256%3A11f6ec80ac11969047a60dca72ca43fbc76c2e51600202f1d2560cba12817cc8&amp;bookDigest=sha256%3A15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-eee603d5-61d0-58e2-8f74-16de1e311630" data-goal-id="eee603d5-61d0-58e2-8f74-16de1e311630" data-page-number="13" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9658d512-618c-56ab-aecf-14aaec1005f4" aria-labelledby="goal-eee603d5-61d0-58e2-8f74-16de1e311630-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-eee603d5-61d0-58e2-8f74-16de1e311630-title"><a class="goal-self-link" href="#goal-eee603d5-61d0-58e2-8f74-16de1e311630">Mikro- und makroökonomische Untersuchungsebenen unterscheiden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>eee603d5-61d0-58e2-8f74-16de1e311630</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-75e3708e304e7e3d4d482e3b">Ergänzende Sach- und Methodenkompetenzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:009796e8706cb4924ee7e336d93ad94fc1968607fdd7e05b0c8f735ed5591384" data-rendered-digest="sha256:2a51f307e5ad198a629dc5d813535bf051a765666502685845ff9fe32a5a9315" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/eee603d5-61d0-58e2-8f74-16de1e311630/eee603d5-61d0-58e2-8f74-16de1e311630.png" alt="Links untersucht die Mikroökonomie einzelne Akteure und einen Laden. Rechts untersucht die Makroökonomie die Gesamtwirtschaft. Ein großes Fragezeichen markiert, dass Aussagen nicht automatisch von einer Ebene auf die andere übertragbar sind.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-eee603d5-61d0-58e2-8f74-16de1e311630-description-heading">
+        <p class="section-heading" id="goal-eee603d5-61d0-58e2-8f74-16de1e311630-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in vorgegebenen wirtschaftlichen Fragestellungen die Untersuchung einzelner Akteure oder Märkte von der Untersuchung gesamtwirtschaftlicher Aggregate unterscheiden und erläutern, weshalb eine Aussage auf einer Ebene nicht ohne Begründung auf die andere übertragen werden kann.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-eee603d5-61d0-58e2-8f74-16de1e311630-requires-heading">
+          <p class="section-heading" id="goal-eee603d5-61d0-58e2-8f74-16de1e311630-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-eee603d5-61d0-58e2-8f74-16de1e311630-reverse-heading">
+          <p class="section-heading" id="goal-eee603d5-61d0-58e2-8f74-16de1e311630-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-eee603d5-61d0-58e2-8f74-16de1e311630-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-eee603d5-61d0-58e2-8f74-16de1e311630-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-eee603d5-61d0-58e2-8f74-16de1e311630-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-eee603d5-61d0-58e2-8f74-16de1e311630-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-8d939db2-d929-590a-99ac-82cf3904bc10" rel="noreferrer noopener"><span>Eine Busentscheidung aus unterschiedlichen Wissenschaftsperspektiven untersuchen</span> <code>8d939db2-d929-590a-99ac-82cf3904bc10</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 13 von 20</span>
+      <span>Buch-Digest <code>sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ec41e285f7467563cdc89adf84447bcae0218a089f637b6a0b0e16d2eae6a8c7</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-actual173-b08&amp;edition=curricular-atomic-v1&amp;goalId=eee603d5-61d0-58e2-8f74-16de1e311630&amp;goalFingerprint=sha256%3Aec41e285f7467563cdc89adf84447bcae0218a089f637b6a0b0e16d2eae6a8c7&amp;pageFingerprint=sha256%3Af1b53028c1e8fc059d6d01a8dfe327a43ae9f8ce6e3f13b03609fcc8b9d9f9c7&amp;bookDigest=sha256%3A15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511&amp;page=13" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb" data-goal-id="df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb" data-page-number="14" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9658d512-618c-56ab-aecf-14aaec1005f4" aria-labelledby="goal-df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb-title"><a class="goal-self-link" href="#goal-df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb">Eigene wirtschaftliche Modellannahmen begründen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-75e3708e304e7e3d4d482e3b">Ergänzende Sach- und Methodenkompetenzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:65a5e5a20ee6853f945b6d3b7e2a894613e92e777b56dceff25a607ccb6e9d04" data-rendered-digest="sha256:cd80a74e341ca3d461e5e2fd7c5465147d8227b2fa41b6dd5a3ccf0e7253d190" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb/df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb.png" alt="Ein konkreter Becherfall führt zu einer Modellannahme und deren Prüfung an verschiedenen Bechervarianten. Das Bild zeigt keine fertige Kostenprognose.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb-description-heading">
+        <p class="section-heading" id="goal-df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann für einen abgegrenzten wirtschaftlichen Erklärungszweck eine eigene Modellannahme formulieren, ihre Vereinfachung gegenüber dem Fall offenlegen und anhand des Materials prüfen, ob die Annahme für diesen Zweck geeignet ist.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb-requires-heading">
+          <p class="section-heading" id="goal-df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb-reverse-heading">
+          <p class="section-heading" id="goal-df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-e44af438-b41e-5142-acd5-5b9922ba7a59" rel="noreferrer noopener"><span>Eine eigene wirtschaftliche Untersuchung tatsächlich durchführen und diskutieren</span> <code>e44af438-b41e-5142-acd5-5b9922ba7a59</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 14 von 20</span>
+      <span>Buch-Digest <code>sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511</code></span>
+      <span>Ziel-Fingerprint <code>sha256:12c3823717602788c7f57f27b7b0e072d5a71c6e020aa3449678040e04e99f2f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-actual173-b08&amp;edition=curricular-atomic-v1&amp;goalId=df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb&amp;goalFingerprint=sha256%3A12c3823717602788c7f57f27b7b0e072d5a71c6e020aa3449678040e04e99f2f&amp;pageFingerprint=sha256%3A1c6ce20904be692d33378e5e512fc6a80ffa33e0918b5258d6ee804f2e8cd3b6&amp;bookDigest=sha256%3A15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511&amp;page=14" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b1d7f1ab-371b-5e02-acb3-49f3938b2ba6" data-goal-id="b1d7f1ab-371b-5e02-acb3-49f3938b2ba6" data-page-number="15" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9658d512-618c-56ab-aecf-14aaec1005f4" aria-labelledby="goal-b1d7f1ab-371b-5e02-acb3-49f3938b2ba6-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b1d7f1ab-371b-5e02-acb3-49f3938b2ba6-title"><a class="goal-self-link" href="#goal-b1d7f1ab-371b-5e02-acb3-49f3938b2ba6">Wirtschaftliche Informationen gezielt recherchieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b1d7f1ab-371b-5e02-acb3-49f3938b2ba6</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-75e3708e304e7e3d4d482e3b">Ergänzende Sach- und Methodenkompetenzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:ca3d674c4bc2a4e9974632c64b0088f5d997b7797d5cd05940c17d9b9b2871d9" data-rendered-digest="sha256:ea39eaff86579b72a391ed39dbd2b33e12a5652d740d2154bb0ec9bbee06f71b" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/b1d7f1ab-371b-5e02-acb3-49f3938b2ba6/b1d7f1ab-371b-5e02-acb3-49f3938b2ba6.png" alt="Eine Person recherchiert am richtig ausgerichteten Laptop. Frage, öffentliche Statistik, Nachschlagewerk und dokumentierte Fundstelle zeigen einen nachvollziehbaren Rechercheweg.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b1d7f1ab-371b-5e02-acb3-49f3938b2ba6-description-heading">
+        <p class="section-heading" id="goal-b1d7f1ab-371b-5e02-acb3-49f3938b2ba6-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aus einer konkreten wirtschaftlichen Fragestellung einen Informationsbedarf ableiten, geeignete zugängliche Quellen selbstständig finden und die ausgewählten Informationen mit Herkunft und Bezug zur Fragestellung nachvollziehbar dokumentieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b1d7f1ab-371b-5e02-acb3-49f3938b2ba6-requires-heading">
+          <p class="section-heading" id="goal-b1d7f1ab-371b-5e02-acb3-49f3938b2ba6-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-b1d7f1ab-371b-5e02-acb3-49f3938b2ba6-reverse-heading">
+          <p class="section-heading" id="goal-b1d7f1ab-371b-5e02-acb3-49f3938b2ba6-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-b1d7f1ab-371b-5e02-acb3-49f3938b2ba6-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b1d7f1ab-371b-5e02-acb3-49f3938b2ba6-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-b1d7f1ab-371b-5e02-acb3-49f3938b2ba6-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b1d7f1ab-371b-5e02-acb3-49f3938b2ba6-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-e44af438-b41e-5142-acd5-5b9922ba7a59" rel="noreferrer noopener"><span>Eine eigene wirtschaftliche Untersuchung tatsächlich durchführen und diskutieren</span> <code>e44af438-b41e-5142-acd5-5b9922ba7a59</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 15 von 20</span>
+      <span>Buch-Digest <code>sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0dc7c7a9e6b13325de742aba0706fa443493decf6ed78d592e0ca593ce4b56d1</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-actual173-b08&amp;edition=curricular-atomic-v1&amp;goalId=b1d7f1ab-371b-5e02-acb3-49f3938b2ba6&amp;goalFingerprint=sha256%3A0dc7c7a9e6b13325de742aba0706fa443493decf6ed78d592e0ca593ce4b56d1&amp;pageFingerprint=sha256%3Aedf97fa7bb3f3afbd1becf10cc35cd684a5f37144b4633ef59ad890872b38030&amp;bookDigest=sha256%3A15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511&amp;page=15" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d76af11e-7fb3-5e81-a622-9f3642efedaf" data-goal-id="d76af11e-7fb3-5e81-a622-9f3642efedaf" data-page-number="16" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9658d512-618c-56ab-aecf-14aaec1005f4" aria-labelledby="goal-d76af11e-7fb3-5e81-a622-9f3642efedaf-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d76af11e-7fb3-5e81-a622-9f3642efedaf-title"><a class="goal-self-link" href="#goal-d76af11e-7fb3-5e81-a622-9f3642efedaf">Eine wirtschaftliche Untersuchungsfrage präzisieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d76af11e-7fb3-5e81-a622-9f3642efedaf</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-75e3708e304e7e3d4d482e3b">Ergänzende Sach- und Methodenkompetenzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f6d0ced8b92c266daef7df2680205b323da43553603ff853fc4b556cb6639f6f" data-rendered-digest="sha256:3fdd25a226151becf87716020c95de0fa46083ce0b76efe0f8b623ae2b2a0440" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/d76af11e-7fb3-5e81-a622-9f3642efedaf/d76af11e-7fb3-5e81-a622-9f3642efedaf.png" alt="Gegenstand, Vergleich und begrenzter Zeitraum führen zu einer eigenen wirtschaftlichen Untersuchungsfrage am Beispiel zweier Becheralternativen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d76af11e-7fb3-5e81-a622-9f3642efedaf-description-heading">
+        <p class="section-heading" id="goal-d76af11e-7fb3-5e81-a622-9f3642efedaf-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aus bereitgestelltem wirtschaftlichem Material eine beantwortbare Untersuchungsfrage formulieren, den untersuchten Gegenstand und Zusammenhang abgrenzen und erläutern, welche Antwort die Frage tatsächlich verlangt.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d76af11e-7fb3-5e81-a622-9f3642efedaf-requires-heading">
+          <p class="section-heading" id="goal-d76af11e-7fb3-5e81-a622-9f3642efedaf-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-d76af11e-7fb3-5e81-a622-9f3642efedaf-reverse-heading">
+          <p class="section-heading" id="goal-d76af11e-7fb3-5e81-a622-9f3642efedaf-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-d76af11e-7fb3-5e81-a622-9f3642efedaf-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d76af11e-7fb3-5e81-a622-9f3642efedaf-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-d76af11e-7fb3-5e81-a622-9f3642efedaf-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d76af11e-7fb3-5e81-a622-9f3642efedaf-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-e44af438-b41e-5142-acd5-5b9922ba7a59" rel="noreferrer noopener"><span>Eine eigene wirtschaftliche Untersuchung tatsächlich durchführen und diskutieren</span> <code>e44af438-b41e-5142-acd5-5b9922ba7a59</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 16 von 20</span>
+      <span>Buch-Digest <code>sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511</code></span>
+      <span>Ziel-Fingerprint <code>sha256:0776e8515b697316a47d506e7821587e5be75a87a7a3cd3883a120bfa7c7cfb0</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-actual173-b08&amp;edition=curricular-atomic-v1&amp;goalId=d76af11e-7fb3-5e81-a622-9f3642efedaf&amp;goalFingerprint=sha256%3A0776e8515b697316a47d506e7821587e5be75a87a7a3cd3883a120bfa7c7cfb0&amp;pageFingerprint=sha256%3Af6d79914af773b98b75af780dd8276e90c63409101b1125bce62d770ff787cbc&amp;bookDigest=sha256%3A15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511&amp;page=16" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a04fc1a7-e037-580e-9324-9282f4acebc1" data-goal-id="a04fc1a7-e037-580e-9324-9282f4acebc1" data-page-number="17" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9658d512-618c-56ab-aecf-14aaec1005f4" aria-labelledby="goal-a04fc1a7-e037-580e-9324-9282f4acebc1-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a04fc1a7-e037-580e-9324-9282f4acebc1-title"><a class="goal-self-link" href="#goal-a04fc1a7-e037-580e-9324-9282f4acebc1">Eine prüfbare wirtschaftliche Hypothese formulieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a04fc1a7-e037-580e-9324-9282f4acebc1</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-75e3708e304e7e3d4d482e3b">Ergänzende Sach- und Methodenkompetenzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:df17fe25e8f6675c7d03e20b4b421cb6ea278f3fc37c11c6a45b1c0aa4d399b3" data-rendered-digest="sha256:b4e27d3f4710a5b3fe9481142fd8cd2d7a083aa331cfc038abd84c5083a4ee6d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/a04fc1a7-e037-580e-9324-9282f4acebc1/a04fc1a7-e037-580e-9324-9282f4acebc1.png" alt="Ein fiktiver Busfahrpreis sinkt von2,50 auf2,00Euro. Die denkende Person betrachtet mehr und nicht mehr Fahrten als alternative mögliche Prüfbefunde einer Vermutung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a04fc1a7-e037-580e-9324-9282f4acebc1-description-heading">
+        <p class="section-heading" id="goal-a04fc1a7-e037-580e-9324-9282f4acebc1-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann zu einer abgegrenzten wirtschaftlichen Untersuchungsfrage eine prüfbare Hypothese formulieren und benennen, welche beobachtbaren Befunde die Hypothese stützen oder ihr widersprechen würden.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a04fc1a7-e037-580e-9324-9282f4acebc1-requires-heading">
+          <p class="section-heading" id="goal-a04fc1a7-e037-580e-9324-9282f4acebc1-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-a04fc1a7-e037-580e-9324-9282f4acebc1-reverse-heading">
+          <p class="section-heading" id="goal-a04fc1a7-e037-580e-9324-9282f4acebc1-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-a04fc1a7-e037-580e-9324-9282f4acebc1-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a04fc1a7-e037-580e-9324-9282f4acebc1-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-a04fc1a7-e037-580e-9324-9282f4acebc1-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a04fc1a7-e037-580e-9324-9282f4acebc1-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-e44af438-b41e-5142-acd5-5b9922ba7a59" rel="noreferrer noopener"><span>Eine eigene wirtschaftliche Untersuchung tatsächlich durchführen und diskutieren</span> <code>e44af438-b41e-5142-acd5-5b9922ba7a59</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 17 von 20</span>
+      <span>Buch-Digest <code>sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511</code></span>
+      <span>Ziel-Fingerprint <code>sha256:06ff476acf732636b37ab4da393ec029e8af656a707f0195e35cc48b6c0979e1</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-actual173-b08&amp;edition=curricular-atomic-v1&amp;goalId=a04fc1a7-e037-580e-9324-9282f4acebc1&amp;goalFingerprint=sha256%3A06ff476acf732636b37ab4da393ec029e8af656a707f0195e35cc48b6c0979e1&amp;pageFingerprint=sha256%3A908031caeff0608c566094c1bff2051bc47d714d7380f4db66c7553d991c1285&amp;bookDigest=sha256%3A15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511&amp;page=17" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-943fd59c-661a-5163-b5a4-c6bb5a983855" data-goal-id="943fd59c-661a-5163-b5a4-c6bb5a983855" data-page-number="18" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9658d512-618c-56ab-aecf-14aaec1005f4" aria-labelledby="goal-943fd59c-661a-5163-b5a4-c6bb5a983855-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-943fd59c-661a-5163-b5a4-c6bb5a983855-title"><a class="goal-self-link" href="#goal-943fd59c-661a-5163-b5a4-c6bb5a983855">Eigene wirtschaftliche Ergebnisse zur Kritik stellen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>943fd59c-661a-5163-b5a4-c6bb5a983855</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-75e3708e304e7e3d4d482e3b">Ergänzende Sach- und Methodenkompetenzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:00631e0b3e26717685b7f6c7098600a25429a81b382027f1954912904e2338d3" data-rendered-digest="sha256:dce0b0f33f2f67700c78fa2120974ece435520aa3843102813aa1c00859c51b2" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/943fd59c-661a-5163-b5a4-c6bb5a983855/943fd59c-661a-5163-b5a4-c6bb5a983855.png" alt="Ein eigenes Becherkosten-Ergebnis wird offengelegt. Eine Gesprächspartnerin fragt nach der Mengenannahme; ein Rückpfeil zeigt die sachliche Überprüfung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-943fd59c-661a-5163-b5a4-c6bb5a983855-description-heading">
+        <p class="section-heading" id="goal-943fd59c-661a-5163-b5a4-c6bb5a983855-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann ein eigenes wirtschaftliches Ergebnis mit Begründung und verwendeten Annahmen so offenlegen, dass andere es fachlich prüfen können, und auf eine konkrete Rückfrage oder einen begründeten Einwand sachbezogen reagieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-943fd59c-661a-5163-b5a4-c6bb5a983855-requires-heading">
+          <p class="section-heading" id="goal-943fd59c-661a-5163-b5a4-c6bb5a983855-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-943fd59c-661a-5163-b5a4-c6bb5a983855-reverse-heading">
+          <p class="section-heading" id="goal-943fd59c-661a-5163-b5a4-c6bb5a983855-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-943fd59c-661a-5163-b5a4-c6bb5a983855-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-943fd59c-661a-5163-b5a4-c6bb5a983855-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-943fd59c-661a-5163-b5a4-c6bb5a983855-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-943fd59c-661a-5163-b5a4-c6bb5a983855-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-e44af438-b41e-5142-acd5-5b9922ba7a59" rel="noreferrer noopener"><span>Eine eigene wirtschaftliche Untersuchung tatsächlich durchführen und diskutieren</span> <code>e44af438-b41e-5142-acd5-5b9922ba7a59</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 18 von 20</span>
+      <span>Buch-Digest <code>sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511</code></span>
+      <span>Ziel-Fingerprint <code>sha256:21852adb79ba5134f208f23ac1931577503fc515c6a3b2a5892d0c43bf0145a0</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-actual173-b08&amp;edition=curricular-atomic-v1&amp;goalId=943fd59c-661a-5163-b5a4-c6bb5a983855&amp;goalFingerprint=sha256%3A21852adb79ba5134f208f23ac1931577503fc515c6a3b2a5892d0c43bf0145a0&amp;pageFingerprint=sha256%3Aaebd1b31297d05f1d06f847bf4f5bd1cf0c8f6f8acb3fceba4de7649fc19608a&amp;bookDigest=sha256%3A15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511&amp;page=18" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0" data-goal-id="b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0" data-page-number="19" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9658d512-618c-56ab-aecf-14aaec1005f4" aria-labelledby="goal-b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0-title"><a class="goal-self-link" href="#goal-b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0">Wirtschaftliche Positionen dialogisch vertreten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-75e3708e304e7e3d4d482e3b">Ergänzende Sach- und Methodenkompetenzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b904a627c03596a73213cd707268f4c0f26d39a2695770322ab310ca36c38d14" data-rendered-digest="sha256:a1d683a3aa355cdeb86ddf4a4d497661fa632acbcd24b5424bc3ff497735efde" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0/b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0.png" alt="Der linke Gesprächspartner macht einen Liefer-Vorschlag und antwortet auf die Budget-Rückfrage der rechten Gesprächspartnerin. Die Sprechblasen sind den richtigen Personen zugeordnet.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0-description-heading">
+        <p class="section-heading" id="goal-b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in einer vorgegebenen wirtschaftlichen Gesprächssituation einen begründeten Beitrag formulieren, den sachlichen Einwand oder die Rückfrage eines Gegenübers aufgreifen und ihre Antwort an Anlass und Adressaten des Gesprächs ausrichten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0-requires-heading">
+          <p class="section-heading" id="goal-b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0-reverse-heading">
+          <p class="section-heading" id="goal-b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-e44af438-b41e-5142-acd5-5b9922ba7a59" rel="noreferrer noopener"><span>Eine eigene wirtschaftliche Untersuchung tatsächlich durchführen und diskutieren</span> <code>e44af438-b41e-5142-acd5-5b9922ba7a59</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 19 von 20</span>
+      <span>Buch-Digest <code>sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511</code></span>
+      <span>Ziel-Fingerprint <code>sha256:64c4e8dc18f077a6d3893dbacc36e52a46fba24e4571946340ad65797e7866d6</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-actual173-b08&amp;edition=curricular-atomic-v1&amp;goalId=b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0&amp;goalFingerprint=sha256%3A64c4e8dc18f077a6d3893dbacc36e52a46fba24e4571946340ad65797e7866d6&amp;pageFingerprint=sha256%3A0be9e6746417206197d8b9130027c838623108bc61e58ed4ca619fa396489d7a&amp;bookDigest=sha256%3A15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511&amp;page=19" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-f4fbc4b7-2f2a-5d78-a8da-e501025c1b69" data-goal-id="f4fbc4b7-2f2a-5d78-a8da-e501025c1b69" data-page-number="20" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9658d512-618c-56ab-aecf-14aaec1005f4" aria-labelledby="goal-f4fbc4b7-2f2a-5d78-a8da-e501025c1b69-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-f4fbc4b7-2f2a-5d78-a8da-e501025c1b69-title"><a class="goal-self-link" href="#goal-f4fbc4b7-2f2a-5d78-a8da-e501025c1b69">Kaufmannseigenschaft normgestützt prüfen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>f4fbc4b7-2f2a-5d78-a8da-e501025c1b69</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-75e3708e304e7e3d4d482e3b">Ergänzende Sach- und Methodenkompetenzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:11a708f188686b6bce2be1ab04241859b895b0bb865fe06fccc1a1f267e8e35f" data-rendered-digest="sha256:18ec26f156f3665d18bf14c195b637f9d3235a36bc24e8bd30dc5dc0d8b25c77" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/f4fbc4b7-2f2a-5d78-a8da-e501025c1b69/f4fbc4b7-2f2a-5d78-a8da-e501025c1b69.png" alt="Eine Person prüft mit dem bereitgestellten HGB die Art und den Umfang unterschiedlich organisierter Gewerbefälle. Das Bild gibt keinen automatischen Kaufmannsstatus vor.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-f4fbc4b7-2f2a-5d78-a8da-e501025c1b69-description-heading">
+        <p class="section-heading" id="goal-f4fbc4b7-2f2a-5d78-a8da-e501025c1b69-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in einem vorgegebenen Unternehmensfall anhand bereitgestellter aktueller Rechtsnormen die Kaufmannseigenschaft prüfen und die entscheidenden Fallmerkmale für die begründete Zuordnung nennen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-f4fbc4b7-2f2a-5d78-a8da-e501025c1b69-requires-heading">
+          <p class="section-heading" id="goal-f4fbc4b7-2f2a-5d78-a8da-e501025c1b69-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-f4fbc4b7-2f2a-5d78-a8da-e501025c1b69-reverse-heading">
+          <p class="section-heading" id="goal-f4fbc4b7-2f2a-5d78-a8da-e501025c1b69-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-f4fbc4b7-2f2a-5d78-a8da-e501025c1b69-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f4fbc4b7-2f2a-5d78-a8da-e501025c1b69-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-dae93971-726c-56e5-8044-19dbd40febf7" rel="noreferrer noopener"><span>Rechtsnormen auf konkrete Sachverhalte anwenden</span> <code>dae93971-726c-56e5-8044-19dbd40febf7</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-f4fbc4b7-2f2a-5d78-a8da-e501025c1b69-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-f4fbc4b7-2f2a-5d78-a8da-e501025c1b69-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-8a83f75b-2474-52f2-9085-a1ef0133dd97" rel="noreferrer noopener"><span>Einen Handelsfall anhand der maßgeblichen Normen prüfen</span> <code>8a83f75b-2474-52f2-9085-a1ef0133dd97</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 20 von 20</span>
+      <span>Buch-Digest <code>sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2a5e733ac19e5832e551ebc521320240c81af5cb5c12fb7cb60613ceef4a88a9</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-actual173-b08&amp;edition=curricular-atomic-v1&amp;goalId=f4fbc4b7-2f2a-5d78-a8da-e501025c1b69&amp;goalFingerprint=sha256%3A2a5e733ac19e5832e551ebc521320240c81af5cb5c12fb7cb60613ceef4a88a9&amp;pageFingerprint=sha256%3A188523bbf8eaf9f681acdba0d52d04161841772c80aaa1b49866b5a88c66dc80&amp;bookDigest=sha256%3A15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511&amp;page=20" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

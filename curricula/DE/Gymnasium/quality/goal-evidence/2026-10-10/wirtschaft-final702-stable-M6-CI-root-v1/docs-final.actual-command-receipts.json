@@ -1,0 +1,111 @@
+{
+  "phase": "docs-final",
+  "toolchainNodePath": "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+  "remoteGitHubCIClaim": false,
+  "results": [
+    {
+      "name": "docs:generated-status-registry",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "docs:generated-status-registry"
+      ],
+      "startedAt": "2026-10-10T19:09:42.273116+00:00",
+      "elapsedSeconds": 0.454,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/docs-final.01.docs-generated-status-registry.raw.txt",
+      "rawOutputSha256": "65e9ae08c8545d9b7d342fbc53947a3177012476690d2911d101842ff3a56cff"
+    },
+    {
+      "name": "check:generated-doc-notices",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:generated-doc-notices"
+      ],
+      "startedAt": "2026-10-10T19:09:42.727708+00:00",
+      "elapsedSeconds": 0.418,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/docs-final.02.check-generated-doc-notices.raw.txt",
+      "rawOutputSha256": "26c59b1f654b49747e87e01b207816aeef623ac48c71177f6d7a1b9ed459d2d7"
+    },
+    {
+      "name": "check:generated-status-registry",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:generated-status-registry"
+      ],
+      "startedAt": "2026-10-10T19:09:43.146061+00:00",
+      "elapsedSeconds": 0.527,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/docs-final.03.check-generated-status-registry.raw.txt",
+      "rawOutputSha256": "b9d70d7acf26466f4103877c96568903885fd8497ad661b72e597be4de75c626"
+    },
+    {
+      "name": "check:docs-links",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-links"
+      ],
+      "startedAt": "2026-10-10T19:09:43.673790+00:00",
+      "elapsedSeconds": 0.361,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/docs-final.04.check-docs-links.raw.txt",
+      "rawOutputSha256": "20258fc5f7ef86d63ca004c65b926aa4bfa9207535c9f204574c170dfada7b32"
+    },
+    {
+      "name": "check:docs-indexes",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-indexes"
+      ],
+      "startedAt": "2026-10-10T19:09:44.035613+00:00",
+      "elapsedSeconds": 0.334,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/docs-final.05.check-docs-indexes.raw.txt",
+      "rawOutputSha256": "2ba0d2aa99b03ea9fd1b2f717a2ad5dfae44e11d2fbb85e8d14551f368c1efe0"
+    },
+    {
+      "name": "check:terminology",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:terminology"
+      ],
+      "startedAt": "2026-10-10T19:09:44.370407+00:00",
+      "elapsedSeconds": 35.317,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/docs-final.06.check-terminology.raw.txt",
+      "rawOutputSha256": "2cb84e16aad67f22749b3458cbaa307b680e26f4dd7778fa0a40f6e9d77e3ae6"
+    },
+    {
+      "name": "git-diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "startedAt": "2026-10-10T19:10:19.687714+00:00",
+      "elapsedSeconds": 0.089,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/docs-final.07.git-diff-check.raw.txt",
+      "rawOutputSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "phaseComplete": true
+}

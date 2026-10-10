@@ -1,0 +1,309 @@
+{
+  "decision": "LOCAL_REAL_POPPLER_UTILS_READY_FOR_UNCHANGED_GOAL_BOOK_BUILD",
+  "source": "Existing genuine Ubuntu Poppler24.02.0 utility and library packages preserved in temporary extraction; no new installation",
+  "PATHPrefix": "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/bin",
+  "LD_LIBRARY_PATHPrefix": "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/lib/x86_64-linux-gnu",
+  "keepExistingNode20PATH": true,
+  "keepExistingFONTCONFIG_FILEandGOAL_BOOK_CHROMIUM_EXECUTABLE_PATH": true,
+  "actualSixVersionsAndBinaryHashes": [
+    {
+      "tool": "pdfinfo",
+      "binary": {
+        "path": "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/bin/pdfinfo",
+        "sha256": "b81cc1b1588d7ce8e2c384130c2e5d5d8e339e738e615cbe1ef7dc9819ef2bbe",
+        "bytes": 59928
+      },
+      "argv": [
+        "pdfinfo",
+        "-v"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "pdfinfo version 24.02.0\nCopyright 2005-2024 The Poppler Developers - http://poppler.freedesktop.org\nCopyright 1996-2011, 2022 Glyph & Cog, LLC\n"
+    },
+    {
+      "tool": "pdftohtml",
+      "binary": {
+        "path": "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/bin/pdftohtml",
+        "sha256": "b0fd462f79a9c15c65d0c08d5f576bb37dffc91079f8f28ba801ebda8a101cbf",
+        "bytes": 117160
+      },
+      "argv": [
+        "pdftohtml",
+        "-v"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "pdftohtml version 24.02.0\nCopyright 2005-2024 The Poppler Developers - http://poppler.freedesktop.org\nCopyright 1999-2003 Gueorgui Ovtcharov and Rainer Dorsch\nCopyright 1996-2011, 2022 Glyph & Cog, LLC\n\n"
+    },
+    {
+      "tool": "pdftotext",
+      "binary": {
+        "path": "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/bin/pdftotext",
+        "sha256": "88263e2333fa712d6eadfc69dd2daf826792a67abb14f4d2110673d5f195b154",
+        "bytes": 47640
+      },
+      "argv": [
+        "pdftotext",
+        "-v"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "pdftotext version 24.02.0\nCopyright 2005-2024 The Poppler Developers - http://poppler.freedesktop.org\nCopyright 1996-2011, 2022 Glyph & Cog, LLC\n"
+    },
+    {
+      "tool": "pdffonts",
+      "binary": {
+        "path": "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/bin/pdffonts",
+        "sha256": "fedc384aed587e7c71a9df36f1715d4070de355505b90dc7dbde8d7d171a47d9",
+        "bytes": 23064
+      },
+      "argv": [
+        "pdffonts",
+        "-v"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "pdffonts version 24.02.0\nCopyright 2005-2024 The Poppler Developers - http://poppler.freedesktop.org\nCopyright 1996-2011, 2022 Glyph & Cog, LLC\n"
+    },
+    {
+      "tool": "pdftoppm",
+      "binary": {
+        "path": "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/bin/pdftoppm",
+        "sha256": "ab7c91f0f144335ad7696f4f23aefbd564ef67c099290bd8f813cdbb47cd1e9e",
+        "bytes": 35240
+      },
+      "argv": [
+        "pdftoppm",
+        "-v"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "pdftoppm version 24.02.0\nCopyright 2005-2024 The Poppler Developers - http://poppler.freedesktop.org\nCopyright 1996-2011, 2022 Glyph & Cog, LLC\n"
+    },
+    {
+      "tool": "pdftocairo",
+      "binary": {
+        "path": "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/bin/pdftocairo",
+        "sha256": "4c3f5bd4b4bf28299b3ea0fba476338533f69d9f82a080b71a47fd7f027a71bc",
+        "bytes": 178656
+      },
+      "argv": [
+        "pdftocairo",
+        "-v"
+      ],
+      "exit": 0,
+      "stdout": "",
+      "stderr": "pdftocairo version 24.02.0\nCopyright 2005-2024 The Poppler Developers - http://poppler.freedesktop.org\nCopyright 1996-2011, 2022 Glyph & Cog, LLC\n"
+    }
+  ],
+  "actualFourFullDependencyResolutions": [
+    {
+      "binary": "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/bin/pdfinfo",
+      "argv": [
+        "ldd",
+        "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/bin/pdfinfo"
+      ],
+      "exit": 0,
+      "stdout": "\tlinux-vdso.so.1 (0x0000793fdba8c000)\n\tlibpoppler.so.134 => /tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/lib/x86_64-linux-gnu/libpoppler.so.134 (0x0000793fdb600000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x0000793fdb200000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x0000793fdae00000)\n\tlibfreetype.so.6 => /lib/x86_64-linux-gnu/libfreetype.so.6 (0x0000793fdb9a1000)\n\tlibz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x0000793fdb985000)\n\tlibfontconfig.so.1 => /lib/x86_64-linux-gnu/libfontconfig.so.1 (0x0000793fdb5af000)\n\tlibjpeg.so.8 => /lib/x86_64-linux-gnu/libjpeg.so.8 (0x0000793fdb52c000)\n\tlibcurl-gnutls.so.4 => /lib/x86_64-linux-gnu/libcurl-gnutls.so.4 (0x0000793fdb145000)\n\tlibopenjp2.so.7 => /tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/lib/x86_64-linux-gnu/libopenjp2.so.7 (0x0000793fdb4cb000)\n\tliblcms2.so.2 => /lib/x86_64-linux-gnu/liblcms2.so.2 (0x0000793fdb0e3000)\n\tlibpng16.so.16 => /lib/x86_64-linux-gnu/libpng16.so.16 (0x0000793fdb493000)\n\tlibtiff.so.6 => /lib/x86_64-linux-gnu/libtiff.so.6 (0x0000793fdb056000)\n\tlibnss3.so => /lib/x86_64-linux-gnu/libnss3.so (0x0000793fdacd1000)\n\tlibsmime3.so => /lib/x86_64-linux-gnu/libsmime3.so (0x0000793fdb02d000)\n\tlibplc4.so => /lib/x86_64-linux-gnu/libplc4.so (0x0000793fdb97a000)\n\tlibnspr4.so => /lib/x86_64-linux-gnu/libnspr4.so (0x0000793fdac92000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x0000793fdaba9000)\n\t/lib64/ld-linux-x86-64.so.2 (0x0000793fdba8e000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x0000793fdab7b000)\n\tlibbz2.so.1.0 => /lib/x86_64-linux-gnu/libbz2.so.1.0 (0x0000793fdb47f000)\n\tlibbrotlidec.so.1 => /lib/x86_64-linux-gnu/libbrotlidec.so.1 (0x0000793fdb01f000)\n\tlibexpat.so.1 => /lib/x86_64-linux-gnu/libexpat.so.1 (0x0000793fdab4d000)\n\tlibnghttp2.so.14 => /lib/x86_64-linux-gnu/libnghttp2.so.14 (0x0000793fdab22000)\n\tlibidn2.so.0 => /lib/x86_64-linux-gnu/libidn2.so.0 (0x0000793fdab00000)\n\tlibrtmp.so.1 => /lib/x86_64-linux-gnu/librtmp.so.1 (0x0000793fdaae2000)\n\tlibssh.so.4 => /lib/x86_64-linux-gnu/libssh.so.4 (0x0000793fdaa70000)\n\tlibpsl.so.5 => /lib/x86_64-linux-gnu/libpsl.so.5 (0x0000793fdaa5c000)\n\tlibnettle.so.8 => /lib/x86_64-linux-gnu/libnettle.so.8 (0x0000793fdaa07000)\n\tlibgnutls.so.30 => /lib/x86_64-linux-gnu/libgnutls.so.30 (0x0000793fda80c000)\n\tlibgssapi_krb5.so.2 => /lib/x86_64-linux-gnu/libgssapi_krb5.so.2 (0x0000793fda7b8000)\n\tlibldap.so.2 => /lib/x86_64-linux-gnu/libldap.so.2 (0x0000793fda75a000)\n\tliblber.so.2 => /lib/x86_64-linux-gnu/liblber.so.2 (0x0000793fda74a000)\n\tlibzstd.so.1 => /lib/x86_64-linux-gnu/libzstd.so.1 (0x0000793fda690000)\n\tlibwebp.so.7 => /lib/x86_64-linux-gnu/libwebp.so.7 (0x0000793fda615000)\n\tliblzma.so.5 => /lib/x86_64-linux-gnu/liblzma.so.5 (0x0000793fda5e3000)\n\tlibLerc.so.4 => /lib/x86_64-linux-gnu/libLerc.so.4 (0x0000793fda55c000)\n\tlibjbig.so.0 => /lib/x86_64-linux-gnu/libjbig.so.0 (0x0000793fda54c000)\n\tlibdeflate.so.0 => /lib/x86_64-linux-gnu/libdeflate.so.0 (0x0000793fda539000)\n\tlibnssutil3.so => /lib/x86_64-linux-gnu/libnssutil3.so (0x0000793fda507000)\n\tlibplds4.so => /lib/x86_64-linux-gnu/libplds4.so (0x0000793fdb016000)\n\tlibbrotlicommon.so.1 => /lib/x86_64-linux-gnu/libbrotlicommon.so.1 (0x0000793fda4e4000)\n\tlibunistring.so.5 => /lib/x86_64-linux-gnu/libunistring.so.5 (0x0000793fda337000)\n\tlibhogweed.so.6 => /lib/x86_64-linux-gnu/libhogweed.so.6 (0x0000793fda2ef000)\n\tlibgmp.so.10 => /lib/x86_64-linux-gnu/libgmp.so.10 (0x0000793fda26b000)\n\tlibcrypto.so.3 => /lib/x86_64-linux-gnu/libcrypto.so.3 (0x0000793fd9c00000)\n\tlibp11-kit.so.0 => /lib/x86_64-linux-gnu/libp11-kit.so.0 (0x0000793fd9a5c000)\n\tlibtasn1.so.6 => /lib/x86_64-linux-gnu/libtasn1.so.6 (0x0000793fda255000)\n\tlibkrb5.so.3 => /lib/x86_64-linux-gnu/libkrb5.so.3 (0x0000793fda18c000)\n\tlibk5crypto.so.3 => /lib/x86_64-linux-gnu/libk5crypto.so.3 (0x0000793fda160000)\n\tlibcom_err.so.2 => /lib/x86_64-linux-gnu/libcom_err.so.2 (0x0000793fda158000)\n\tlibkrb5support.so.0 => /lib/x86_64-linux-gnu/libkrb5support.so.0 (0x0000793fda14b000)\n\tlibsasl2.so.2 => /lib/x86_64-linux-gnu/libsasl2.so.2 (0x0000793fda131000)\n\tlibsharpyuv.so.0 => /lib/x86_64-linux-gnu/libsharpyuv.so.0 (0x0000793fda129000)\n\tlibffi.so.8 => /lib/x86_64-linux-gnu/libffi.so.8 (0x0000793fda11d000)\n\tlibkeyutils.so.1 => /lib/x86_64-linux-gnu/libkeyutils.so.1 (0x0000793fda114000)\n\tlibresolv.so.2 => /lib/x86_64-linux-gnu/libresolv.so.2 (0x0000793fd9a4a000)\n",
+      "stderr": ""
+    },
+    {
+      "binary": "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/bin/pdftohtml",
+      "argv": [
+        "ldd",
+        "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/bin/pdftohtml"
+      ],
+      "exit": 0,
+      "stdout": "\tlinux-vdso.so.1 (0x00007a92488c2000)\n\tlibpoppler.so.134 => /tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/lib/x86_64-linux-gnu/libpoppler.so.134 (0x00007a9248400000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007a9248000000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007a92487ab000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007a9247c00000)\n\tlibfreetype.so.6 => /lib/x86_64-linux-gnu/libfreetype.so.6 (0x00007a9248334000)\n\tlibz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007a924878d000)\n\tlibfontconfig.so.1 => /lib/x86_64-linux-gnu/libfontconfig.so.1 (0x00007a92482e3000)\n\tlibjpeg.so.8 => /lib/x86_64-linux-gnu/libjpeg.so.8 (0x00007a9247f7d000)\n\tlibcurl-gnutls.so.4 => /lib/x86_64-linux-gnu/libcurl-gnutls.so.4 (0x00007a9247ec2000)\n\tlibopenjp2.so.7 => /tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/lib/x86_64-linux-gnu/libopenjp2.so.7 (0x00007a9248282000)\n\tliblcms2.so.2 => /lib/x86_64-linux-gnu/liblcms2.so.2 (0x00007a9247e60000)\n\tlibpng16.so.16 => /lib/x86_64-linux-gnu/libpng16.so.16 (0x00007a9247e28000)\n\tlibtiff.so.6 => /lib/x86_64-linux-gnu/libtiff.so.6 (0x00007a9247b73000)\n\tlibnss3.so => /lib/x86_64-linux-gnu/libnss3.so (0x00007a9247a44000)\n\tlibsmime3.so => /lib/x86_64-linux-gnu/libsmime3.so (0x00007a9247a1b000)\n\tlibplc4.so => /lib/x86_64-linux-gnu/libplc4.so (0x00007a9248784000)\n\tlibnspr4.so => /lib/x86_64-linux-gnu/libnspr4.so (0x00007a92479dc000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007a92488c4000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007a92479ae000)\n\tlibbz2.so.1.0 => /lib/x86_64-linux-gnu/libbz2.so.1.0 (0x00007a9247e14000)\n\tlibbrotlidec.so.1 => /lib/x86_64-linux-gnu/libbrotlidec.so.1 (0x00007a9248774000)\n\tlibexpat.so.1 => /lib/x86_64-linux-gnu/libexpat.so.1 (0x00007a9247980000)\n\tlibnghttp2.so.14 => /lib/x86_64-linux-gnu/libnghttp2.so.14 (0x00007a9247955000)\n\tlibidn2.so.0 => /lib/x86_64-linux-gnu/libidn2.so.0 (0x00007a9247933000)\n\tlibrtmp.so.1 => /lib/x86_64-linux-gnu/librtmp.so.1 (0x00007a9247915000)\n\tlibssh.so.4 => /lib/x86_64-linux-gnu/libssh.so.4 (0x00007a92478a3000)\n\tlibpsl.so.5 => /lib/x86_64-linux-gnu/libpsl.so.5 (0x00007a924788f000)\n\tlibnettle.so.8 => /lib/x86_64-linux-gnu/libnettle.so.8 (0x00007a924783a000)\n\tlibgnutls.so.30 => /lib/x86_64-linux-gnu/libgnutls.so.30 (0x00007a924763f000)\n\tlibgssapi_krb5.so.2 => /lib/x86_64-linux-gnu/libgssapi_krb5.so.2 (0x00007a92475eb000)\n\tlibldap.so.2 => /lib/x86_64-linux-gnu/libldap.so.2 (0x00007a924758d000)\n\tliblber.so.2 => /lib/x86_64-linux-gnu/liblber.so.2 (0x00007a924757d000)\n\tlibzstd.so.1 => /lib/x86_64-linux-gnu/libzstd.so.1 (0x00007a92474c3000)\n\tlibwebp.so.7 => /lib/x86_64-linux-gnu/libwebp.so.7 (0x00007a9247448000)\n\tliblzma.so.5 => /lib/x86_64-linux-gnu/liblzma.so.5 (0x00007a9247414000)\n\tlibLerc.so.4 => /lib/x86_64-linux-gnu/libLerc.so.4 (0x00007a924738d000)\n\tlibjbig.so.0 => /lib/x86_64-linux-gnu/libjbig.so.0 (0x00007a924737d000)\n\tlibdeflate.so.0 => /lib/x86_64-linux-gnu/libdeflate.so.0 (0x00007a924736a000)\n\tlibnssutil3.so => /lib/x86_64-linux-gnu/libnssutil3.so (0x00007a9247338000)\n\tlibplds4.so => /lib/x86_64-linux-gnu/libplds4.so (0x00007a9247331000)\n\tlibbrotlicommon.so.1 => /lib/x86_64-linux-gnu/libbrotlicommon.so.1 (0x00007a924730e000)\n\tlibunistring.so.5 => /lib/x86_64-linux-gnu/libunistring.so.5 (0x00007a9247161000)\n\tlibhogweed.so.6 => /lib/x86_64-linux-gnu/libhogweed.so.6 (0x00007a9247119000)\n\tlibgmp.so.10 => /lib/x86_64-linux-gnu/libgmp.so.10 (0x00007a9247095000)\n\tlibcrypto.so.3 => /lib/x86_64-linux-gnu/libcrypto.so.3 (0x00007a9246a00000)\n\tlibp11-kit.so.0 => /lib/x86_64-linux-gnu/libp11-kit.so.0 (0x00007a924685c000)\n\tlibtasn1.so.6 => /lib/x86_64-linux-gnu/libtasn1.so.6 (0x00007a924707d000)\n\tlibkrb5.so.3 => /lib/x86_64-linux-gnu/libkrb5.so.3 (0x00007a9246fb4000)\n\tlibk5crypto.so.3 => /lib/x86_64-linux-gnu/libk5crypto.so.3 (0x00007a9246f88000)\n\tlibcom_err.so.2 => /lib/x86_64-linux-gnu/libcom_err.so.2 (0x00007a9246f80000)\n\tlibkrb5support.so.0 => /lib/x86_64-linux-gnu/libkrb5support.so.0 (0x00007a9246f73000)\n\tlibsasl2.so.2 => /lib/x86_64-linux-gnu/libsasl2.so.2 (0x00007a9246f59000)\n\tlibsharpyuv.so.0 => /lib/x86_64-linux-gnu/libsharpyuv.so.0 (0x00007a9246f51000)\n\tlibffi.so.8 => /lib/x86_64-linux-gnu/libffi.so.8 (0x00007a9246f45000)\n\tlibkeyutils.so.1 => /lib/x86_64-linux-gnu/libkeyutils.so.1 (0x00007a9246f3c000)\n\tlibresolv.so.2 => /lib/x86_64-linux-gnu/libresolv.so.2 (0x00007a9246f2a000)\n",
+      "stderr": ""
+    },
+    {
+      "binary": "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/bin/pdftotext",
+      "argv": [
+        "ldd",
+        "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/bin/pdftotext"
+      ],
+      "exit": 0,
+      "stdout": "\tlinux-vdso.so.1 (0x000074ec72fad000)\n\tlibpoppler.so.134 => /tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/lib/x86_64-linux-gnu/libpoppler.so.134 (0x000074ec72c00000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x000074ec72800000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x000074ec72400000)\n\tlibfreetype.so.6 => /lib/x86_64-linux-gnu/libfreetype.so.6 (0x000074ec72b34000)\n\tlibz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x000074ec72f74000)\n\tlibfontconfig.so.1 => /lib/x86_64-linux-gnu/libfontconfig.so.1 (0x000074ec72ae1000)\n\tlibjpeg.so.8 => /lib/x86_64-linux-gnu/libjpeg.so.8 (0x000074ec7277d000)\n\tlibcurl-gnutls.so.4 => /lib/x86_64-linux-gnu/libcurl-gnutls.so.4 (0x000074ec726c2000)\n\tlibopenjp2.so.7 => /tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/lib/x86_64-linux-gnu/libopenjp2.so.7 (0x000074ec72a80000)\n\tliblcms2.so.2 => /lib/x86_64-linux-gnu/liblcms2.so.2 (0x000074ec72660000)\n\tlibpng16.so.16 => /lib/x86_64-linux-gnu/libpng16.so.16 (0x000074ec72628000)\n\tlibtiff.so.6 => /lib/x86_64-linux-gnu/libtiff.so.6 (0x000074ec72373000)\n\tlibnss3.so => /lib/x86_64-linux-gnu/libnss3.so (0x000074ec72244000)\n\tlibsmime3.so => /lib/x86_64-linux-gnu/libsmime3.so (0x000074ec7221b000)\n\tlibplc4.so => /lib/x86_64-linux-gnu/libplc4.so (0x000074ec72621000)\n\tlibnspr4.so => /lib/x86_64-linux-gnu/libnspr4.so (0x000074ec721dc000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x000074ec720f3000)\n\t/lib64/ld-linux-x86-64.so.2 (0x000074ec72faf000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x000074ec720c5000)\n\tlibbz2.so.1.0 => /lib/x86_64-linux-gnu/libbz2.so.1.0 (0x000074ec720b1000)\n\tlibbrotlidec.so.1 => /lib/x86_64-linux-gnu/libbrotlidec.so.1 (0x000074ec720a3000)\n\tlibexpat.so.1 => /lib/x86_64-linux-gnu/libexpat.so.1 (0x000074ec72075000)\n\tlibnghttp2.so.14 => /lib/x86_64-linux-gnu/libnghttp2.so.14 (0x000074ec7204a000)\n\tlibidn2.so.0 => /lib/x86_64-linux-gnu/libidn2.so.0 (0x000074ec72028000)\n\tlibrtmp.so.1 => /lib/x86_64-linux-gnu/librtmp.so.1 (0x000074ec7200a000)\n\tlibssh.so.4 => /lib/x86_64-linux-gnu/libssh.so.4 (0x000074ec71f98000)\n\tlibpsl.so.5 => /lib/x86_64-linux-gnu/libpsl.so.5 (0x000074ec71f84000)\n\tlibnettle.so.8 => /lib/x86_64-linux-gnu/libnettle.so.8 (0x000074ec71f2f000)\n\tlibgnutls.so.30 => /lib/x86_64-linux-gnu/libgnutls.so.30 (0x000074ec71d34000)\n\tlibgssapi_krb5.so.2 => /lib/x86_64-linux-gnu/libgssapi_krb5.so.2 (0x000074ec71ce0000)\n\tlibldap.so.2 => /lib/x86_64-linux-gnu/libldap.so.2 (0x000074ec71c82000)\n\tliblber.so.2 => /lib/x86_64-linux-gnu/liblber.so.2 (0x000074ec71c72000)\n\tlibzstd.so.1 => /lib/x86_64-linux-gnu/libzstd.so.1 (0x000074ec71bb8000)\n\tlibwebp.so.7 => /lib/x86_64-linux-gnu/libwebp.so.7 (0x000074ec71b3d000)\n\tliblzma.so.5 => /lib/x86_64-linux-gnu/liblzma.so.5 (0x000074ec71b0b000)\n\tlibLerc.so.4 => /lib/x86_64-linux-gnu/libLerc.so.4 (0x000074ec71a84000)\n\tlibjbig.so.0 => /lib/x86_64-linux-gnu/libjbig.so.0 (0x000074ec71a74000)\n\tlibdeflate.so.0 => /lib/x86_64-linux-gnu/libdeflate.so.0 (0x000074ec71a61000)\n\tlibnssutil3.so => /lib/x86_64-linux-gnu/libnssutil3.so (0x000074ec71a2f000)\n\tlibplds4.so => /lib/x86_64-linux-gnu/libplds4.so (0x000074ec71a2a000)\n\tlibbrotlicommon.so.1 => /lib/x86_64-linux-gnu/libbrotlicommon.so.1 (0x000074ec71a07000)\n\tlibunistring.so.5 => /lib/x86_64-linux-gnu/libunistring.so.5 (0x000074ec7185a000)\n\tlibhogweed.so.6 => /lib/x86_64-linux-gnu/libhogweed.so.6 (0x000074ec71812000)\n\tlibgmp.so.10 => /lib/x86_64-linux-gnu/libgmp.so.10 (0x000074ec7178e000)\n\tlibcrypto.so.3 => /lib/x86_64-linux-gnu/libcrypto.so.3 (0x000074ec71200000)\n\tlibp11-kit.so.0 => /lib/x86_64-linux-gnu/libp11-kit.so.0 (0x000074ec7105c000)\n\tlibtasn1.so.6 => /lib/x86_64-linux-gnu/libtasn1.so.6 (0x000074ec71778000)\n\tlibkrb5.so.3 => /lib/x86_64-linux-gnu/libkrb5.so.3 (0x000074ec70f93000)\n\tlibk5crypto.so.3 => /lib/x86_64-linux-gnu/libk5crypto.so.3 (0x000074ec7174c000)\n\tlibcom_err.so.2 => /lib/x86_64-linux-gnu/libcom_err.so.2 (0x000074ec71746000)\n\tlibkrb5support.so.0 => /lib/x86_64-linux-gnu/libkrb5support.so.0 (0x000074ec71739000)\n\tlibsasl2.so.2 => /lib/x86_64-linux-gnu/libsasl2.so.2 (0x000074ec7171f000)\n\tlibsharpyuv.so.0 => /lib/x86_64-linux-gnu/libsharpyuv.so.0 (0x000074ec71717000)\n\tlibffi.so.8 => /lib/x86_64-linux-gnu/libffi.so.8 (0x000074ec70f87000)\n\tlibkeyutils.so.1 => /lib/x86_64-linux-gnu/libkeyutils.so.1 (0x000074ec70f80000)\n\tlibresolv.so.2 => /lib/x86_64-linux-gnu/libresolv.so.2 (0x000074ec70f6e000)\n",
+      "stderr": ""
+    },
+    {
+      "binary": "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/bin/pdffonts",
+      "argv": [
+        "ldd",
+        "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/bin/pdffonts"
+      ],
+      "exit": 0,
+      "stdout": "\tlinux-vdso.so.1 (0x00007116621de000)\n\tlibpoppler.so.134 => /tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/lib/x86_64-linux-gnu/libpoppler.so.134 (0x0000711661e00000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x0000711661a00000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x0000711661600000)\n\tlibfreetype.so.6 => /lib/x86_64-linux-gnu/libfreetype.so.6 (0x0000711661d34000)\n\tlibz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007116621ab000)\n\tlibfontconfig.so.1 => /lib/x86_64-linux-gnu/libfontconfig.so.1 (0x0000711661ce3000)\n\tlibjpeg.so.8 => /lib/x86_64-linux-gnu/libjpeg.so.8 (0x000071166197d000)\n\tlibcurl-gnutls.so.4 => /lib/x86_64-linux-gnu/libcurl-gnutls.so.4 (0x00007116618c2000)\n\tlibopenjp2.so.7 => /tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/lib/x86_64-linux-gnu/libopenjp2.so.7 (0x0000711661c82000)\n\tliblcms2.so.2 => /lib/x86_64-linux-gnu/liblcms2.so.2 (0x0000711661860000)\n\tlibpng16.so.16 => /lib/x86_64-linux-gnu/libpng16.so.16 (0x0000711661828000)\n\tlibtiff.so.6 => /lib/x86_64-linux-gnu/libtiff.so.6 (0x0000711661573000)\n\tlibnss3.so => /lib/x86_64-linux-gnu/libnss3.so (0x0000711661444000)\n\tlibsmime3.so => /lib/x86_64-linux-gnu/libsmime3.so (0x000071166217e000)\n\tlibplc4.so => /lib/x86_64-linux-gnu/libplc4.so (0x0000711662177000)\n\tlibnspr4.so => /lib/x86_64-linux-gnu/libnspr4.so (0x0000711661405000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x000071166131c000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007116621e0000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007116612ee000)\n\tlibbz2.so.1.0 => /lib/x86_64-linux-gnu/libbz2.so.1.0 (0x0000711661814000)\n\tlibbrotlidec.so.1 => /lib/x86_64-linux-gnu/libbrotlidec.so.1 (0x00007116612e0000)\n\tlibexpat.so.1 => /lib/x86_64-linux-gnu/libexpat.so.1 (0x00007116612b2000)\n\tlibnghttp2.so.14 => /lib/x86_64-linux-gnu/libnghttp2.so.14 (0x0000711661287000)\n\tlibidn2.so.0 => /lib/x86_64-linux-gnu/libidn2.so.0 (0x0000711661265000)\n\tlibrtmp.so.1 => /lib/x86_64-linux-gnu/librtmp.so.1 (0x0000711661247000)\n\tlibssh.so.4 => /lib/x86_64-linux-gnu/libssh.so.4 (0x00007116611d5000)\n\tlibpsl.so.5 => /lib/x86_64-linux-gnu/libpsl.so.5 (0x00007116611c1000)\n\tlibnettle.so.8 => /lib/x86_64-linux-gnu/libnettle.so.8 (0x000071166116c000)\n\tlibgnutls.so.30 => /lib/x86_64-linux-gnu/libgnutls.so.30 (0x0000711660f71000)\n\tlibgssapi_krb5.so.2 => /lib/x86_64-linux-gnu/libgssapi_krb5.so.2 (0x0000711660f1d000)\n\tlibldap.so.2 => /lib/x86_64-linux-gnu/libldap.so.2 (0x0000711660ebf000)\n\tliblber.so.2 => /lib/x86_64-linux-gnu/liblber.so.2 (0x0000711660eaf000)\n\tlibzstd.so.1 => /lib/x86_64-linux-gnu/libzstd.so.1 (0x0000711660df5000)\n\tlibwebp.so.7 => /lib/x86_64-linux-gnu/libwebp.so.7 (0x0000711660d7a000)\n\tliblzma.so.5 => /lib/x86_64-linux-gnu/liblzma.so.5 (0x0000711660d46000)\n\tlibLerc.so.4 => /lib/x86_64-linux-gnu/libLerc.so.4 (0x0000711660cbf000)\n\tlibjbig.so.0 => /lib/x86_64-linux-gnu/libjbig.so.0 (0x0000711660caf000)\n\tlibdeflate.so.0 => /lib/x86_64-linux-gnu/libdeflate.so.0 (0x0000711660c9c000)\n\tlibnssutil3.so => /lib/x86_64-linux-gnu/libnssutil3.so (0x0000711660c6a000)\n\tlibplds4.so => /lib/x86_64-linux-gnu/libplds4.so (0x0000711660c63000)\n\tlibbrotlicommon.so.1 => /lib/x86_64-linux-gnu/libbrotlicommon.so.1 (0x0000711660c40000)\n\tlibunistring.so.5 => /lib/x86_64-linux-gnu/libunistring.so.5 (0x0000711660a93000)\n\tlibhogweed.so.6 => /lib/x86_64-linux-gnu/libhogweed.so.6 (0x0000711660a4b000)\n\tlibgmp.so.10 => /lib/x86_64-linux-gnu/libgmp.so.10 (0x00007116609c7000)\n\tlibcrypto.so.3 => /lib/x86_64-linux-gnu/libcrypto.so.3 (0x0000711660400000)\n\tlibp11-kit.so.0 => /lib/x86_64-linux-gnu/libp11-kit.so.0 (0x000071166025c000)\n\tlibtasn1.so.6 => /lib/x86_64-linux-gnu/libtasn1.so.6 (0x00007116609af000)\n\tlibkrb5.so.3 => /lib/x86_64-linux-gnu/libkrb5.so.3 (0x0000711660193000)\n\tlibk5crypto.so.3 => /lib/x86_64-linux-gnu/libk5crypto.so.3 (0x0000711660983000)\n\tlibcom_err.so.2 => /lib/x86_64-linux-gnu/libcom_err.so.2 (0x000071166097b000)\n\tlibkrb5support.so.0 => /lib/x86_64-linux-gnu/libkrb5support.so.0 (0x000071166096e000)\n\tlibsasl2.so.2 => /lib/x86_64-linux-gnu/libsasl2.so.2 (0x0000711660954000)\n\tlibsharpyuv.so.0 => /lib/x86_64-linux-gnu/libsharpyuv.so.0 (0x000071166094c000)\n\tlibffi.so.8 => /lib/x86_64-linux-gnu/libffi.so.8 (0x0000711660940000)\n\tlibkeyutils.so.1 => /lib/x86_64-linux-gnu/libkeyutils.so.1 (0x0000711660937000)\n\tlibresolv.so.2 => /lib/x86_64-linux-gnu/libresolv.so.2 (0x0000711660925000)\n",
+      "stderr": ""
+    }
+  ],
+  "actualExistingPackages": [
+    {
+      "artifact": {
+        "path": "/tmp/skillpilot-native-poppler-56ptay2_/libpoppler134_24.02.0-1ubuntu9.10_amd64.deb",
+        "sha256": "2974536ea4ce7d75e54923b1bab0f251f407d1c291427ddc7c53da65e1c505b7",
+        "bytes": 1114502
+      },
+      "argv": [
+        "dpkg-deb",
+        "--field",
+        "/tmp/skillpilot-native-poppler-56ptay2_/libpoppler134_24.02.0-1ubuntu9.10_amd64.deb",
+        "Package",
+        "Version",
+        "Architecture"
+      ],
+      "exit": 0,
+      "stdout": "Package: libpoppler134\nVersion: 24.02.0-1ubuntu9.10\nArchitecture: amd64\n",
+      "stderr": ""
+    },
+    {
+      "artifact": {
+        "path": "/tmp/skillpilot-native-poppler-56ptay2_/libopenjp2-7_2.5.0-2ubuntu0.5_amd64.deb",
+        "sha256": "24b92ce9c4b306f5370e768024d35ec565792001678b510f0d40b6395b43524f",
+        "bytes": 173572
+      },
+      "argv": [
+        "dpkg-deb",
+        "--field",
+        "/tmp/skillpilot-native-poppler-56ptay2_/libopenjp2-7_2.5.0-2ubuntu0.5_amd64.deb",
+        "Package",
+        "Version",
+        "Architecture"
+      ],
+      "exit": 0,
+      "stdout": "Package: libopenjp2-7\nVersion: 2.5.0-2ubuntu0.5\nArchitecture: amd64\n",
+      "stderr": ""
+    },
+    {
+      "artifact": {
+        "path": "/tmp/skillpilot-native-poppler-56ptay2_/poppler-utils_24.02.0-1ubuntu9.10_amd64.deb",
+        "sha256": "19ce4557ad89350506a0f1c33ad4c5a6aa7469e48c78aacae351a59b43ee20c6",
+        "bytes": 211676
+      },
+      "argv": [
+        "dpkg-deb",
+        "--field",
+        "/tmp/skillpilot-native-poppler-56ptay2_/poppler-utils_24.02.0-1ubuntu9.10_amd64.deb",
+        "Package",
+        "Version",
+        "Architecture"
+      ],
+      "exit": 0,
+      "stdout": "Package: poppler-utils\nVersion: 24.02.0-1ubuntu9.10\nArchitecture: amd64\n",
+      "stderr": ""
+    }
+  ],
+  "actualLocalPopplerAndOpenjpegLibraries": [
+    {
+      "path": "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/lib/x86_64-linux-gnu/libopenjp2.so.2.5.0",
+      "sha256": "19906c0334e8db2137912f83cceed5a03d954a9c12d9781901a9a27f92ce1c4d",
+      "bytes": 391648
+    },
+    {
+      "path": "/tmp/skillpilot-native-poppler-56ptay2_/extracted/usr/lib/x86_64-linux-gnu/libpoppler.so.134.0.0",
+      "sha256": "6b8cd637380019532005c83cb5d35e954eb29bd413ab22fe898c8314372494d7",
+      "bytes": 3617712
+    }
+  ],
+  "readOnlyRuntimePDFInput": {
+    "path": "/tmp/economics-a47-UNGP-primary-4vtarg58.pdf",
+    "sha256": "96b69f97ae6d7b45b033e3e82a0b13a7efde62e66861c0ffef039adb8af647eb",
+    "bytes": 1136477
+  },
+  "actualRequiredPDFInfoDestinationsStructureHTMLAndTextChecks": [
+    {
+      "argv": [
+        "pdfinfo",
+        "/tmp/economics-a47-UNGP-primary-4vtarg58.pdf"
+      ],
+      "exit": 0,
+      "stdoutSHA256": "a69bcbb1816b8199fee9c9f86ee5dfd7c2fb8054720bcabc9c68015e1bdb79b8",
+      "stdoutBytes": 496,
+      "stderr": "",
+      "purpose": "Read-only runtime tool verification on existing cached PDF; no scientific/whole-source approval or PDF rendering; copyrighted page text not copied into evidence"
+    },
+    {
+      "argv": [
+        "pdfinfo",
+        "-dests",
+        "/tmp/economics-a47-UNGP-primary-4vtarg58.pdf"
+      ],
+      "exit": 0,
+      "stdoutSHA256": "d36456f142d5fd763f6ed247b8aca1b7a54f1e8a95832e1138e5de1fcf944a26",
+      "stdoutBytes": 39,
+      "stderr": "",
+      "purpose": "Read-only runtime tool verification on existing cached PDF; no scientific/whole-source approval or PDF rendering; copyrighted page text not copied into evidence"
+    },
+    {
+      "argv": [
+        "pdfinfo",
+        "-struct",
+        "/tmp/economics-a47-UNGP-primary-4vtarg58.pdf"
+      ],
+      "exit": 0,
+      "stdoutSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdoutBytes": 0,
+      "stderr": "",
+      "purpose": "Read-only runtime tool verification on existing cached PDF; no scientific/whole-source approval or PDF rendering; copyrighted page text not copied into evidence"
+    },
+    {
+      "argv": [
+        "pdftohtml",
+        "-f",
+        "1",
+        "-l",
+        "1",
+        "-xml",
+        "-i",
+        "-q",
+        "-stdout",
+        "/tmp/economics-a47-UNGP-primary-4vtarg58.pdf"
+      ],
+      "exit": 0,
+      "stdoutSHA256": "16938e3f353cface7dc2ef95b1f9e9951e94475f8f9f46674ea7bbf40eddcb11",
+      "stdoutBytes": 2936,
+      "stderr": "",
+      "purpose": "Read-only runtime tool verification on existing cached PDF; no scientific/whole-source approval or PDF rendering; copyrighted page text not copied into evidence"
+    },
+    {
+      "argv": [
+        "pdftotext",
+        "-f",
+        "1",
+        "-l",
+        "1",
+        "-layout",
+        "/tmp/economics-a47-UNGP-primary-4vtarg58.pdf",
+        "-"
+      ],
+      "exit": 0,
+      "stdoutSHA256": "62c623f4107b2e4c6a3780cbdc47ad9d8c2ae3cc4bb9486b69e13a004ace3399",
+      "stdoutBytes": 846,
+      "stderr": "Syntax Warning: Invalid Font Weight\n",
+      "purpose": "Read-only runtime tool verification on existing cached PDF; no scientific/whole-source approval or PDF rendering; copyrighted page text not copied into evidence"
+    },
+    {
+      "argv": [
+        "pdffonts",
+        "/tmp/economics-a47-UNGP-primary-4vtarg58.pdf"
+      ],
+      "exit": 0,
+      "stdoutSHA256": "35b0fb3146b3a731d988e0a049f18e8f763420692cecaa6649f966e7213ee758",
+      "stdoutBytes": 1410,
+      "stderr": "Syntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\nSyntax Warning: Invalid Font Weight\n",
+      "purpose": "Read-only runtime tool verification on existing cached PDF; no scientific/whole-source approval or PDF rendering; copyrighted page text not copied into evidence"
+    }
+  ],
+  "normalExistingBuildCommand": "npm run -s test:goal-book-pipeline",
+  "normalWorkingDirectory": "/home/enpasos/projects/skillpilot/app",
+  "newInstallActions": 0,
+  "globalPathOrLibraryChanges": 0,
+  "repoCodeOrCurriculumChanges": 0,
+  "PDFOrBookBuildsStarted": 0,
+  "force": false,
+  "preflightRelaxation": false,
+  "reversal": "Remove these process environment prefixes; original existing local extraction and global environment remain unchanged",
+  "M6OrHumanReleaseClaim": false
+}

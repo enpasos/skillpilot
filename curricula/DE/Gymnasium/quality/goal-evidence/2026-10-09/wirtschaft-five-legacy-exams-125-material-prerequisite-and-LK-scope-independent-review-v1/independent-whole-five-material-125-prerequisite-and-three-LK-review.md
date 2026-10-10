@@ -1,0 +1,20 @@
+Die fünf vollständigen Prüfungsmaterialien erhalten KEEP. Alle125 aktuellen DE/EN-Voraussetzungsverträge wurden gegen Aufgaben, Lösungen und jede Rubrik gelesen:21 notwendige Kanten KEEP,104 begrenzte Entfernungen KEEP. Die drei LK-only-Vorschläge Q1/Q2/Q3 sind durch nichtoptionale Leistungen tatsächlicher aktueller LK-Verträge begründet; Länder-/Gesamtkursrollen werden dadurch nicht freigegeben.
+
+25 unabhängige Rechnungen und fünf Rubriksummen bestehen. Ganze aktuelle BGB434/437/439 wurden mit korrekter ISO8859-1-Dekodierung tatsächlich gelesen, AEUV294 und Ratsrollen über erfolgreiche amtliche Browserquellen, die EZB-Transmissionsseite tatsächlich vollständig. AEUV202-Leerantwort, zweiConsilium403 und die ursprüngliche Robot-Seite bleiben ausdrücklich ungültige Abrufversuche.
+
+Das eingefrorene Export-Profil enthält einen zusätzlich vorgeschlagenen Wirtschafts-Übungscluster5317. Bewertungsfunktionen und Schwellen sind exakt zu aktuellem Produktionscode; der Profilkonstantenwert ist es nicht. Beide Kontexte wurden unabhängig mit nativen Kantenfunktionen auf demselben eingefrorenen CAN407 und exakt gebundenen V14-Kandidatenviews berechnet:
+
+| QS-Profil im eingefrorenen Kandidatenrahmen | registrierte Endpunkte | globale effektive/direkte Lücken | GK lokal | LK lokal |
+| --- | ---: | ---: | ---: | ---: |
+| expliziter5317-Kandidatenvorschlag |41|146/146|91|133|
+| aktuelles Produktionsprofil ohne5317 auf diesem Kandidatenbaum |28|168/168|110|141|
+
+168 ist ein CurrentProduction-CandidateFrame-Befund und kein neuer Live311-Zentralbericht.146 darf ausschließlich als tatsächliche Kandidaten-Probeprofilzahl ausgegeben werden. CQR101 bleibt FAIL undCQR102WARN; keine Gate-Grenze wurde abgesenkt. Unter den exakt gebundenen V14-Views bleibt voller Fixpunktschuldenstand GK7Atome+4Cluster und LK2Atome+4Cluster. Die gescheiterte erste Probe mit heutigen Produktionsviews wird unverändert aufbewahrt; ihr Gleichheitsfehler führte zur korrekten separatenV2 mit tatsächlichen V14-Views.
+
+Der ganze5317-Cluster besitzt keinerequires, liegt direkt am Wirtschaftsroot, hattypecluster, SEMpracticeAssessment und eine Mapping-Inheritance-Boundary. Alle13 aktuellen Materialkörper sind exakt zu unabhängigen Root-KEEP-Snapshots;12 ganzeGoalobjekte ebenfalls,6a5 unterscheidet sich allein durch die spätereLK-Begrenzung. Die22 Registrierungspfad-Unterschiede wurden einzeln tatsächlich auf diese13 materiellen Endpunkte verfolgt. Eine bewusste getrennte Economics-QS-Registrierung ist daher fachlich geeignet;22 weitere Phantommaterialien sind nicht nötig. Dies ist eine Empfehlung für einen getrennt einzufrierenden Konfigurationsnachfolger, keine stille Live-Profilfreigabe. Echter begrenzter Befund: beide Navigationsbeschreibungen nennen nochneun statt tatsächlicher13 und benötigen einen Autor-Nachfolger.
+
+V17 verändert genau fünfGoalobjekte ausschließlichrequires/tags;402 andere ganzeGoalobjekte und sämtliche47examData bleiben exakt. Alle311 P-Quellen/624Fälle und311 ganze Owner-evidenceReview-Objekte werden unverändert erhalten. Tatsächlich104 Ownerseiten ändern sich gegenüberV16,207 bleiben exakt;116 ändern sich gegenüber ursprünglichemD46. Kein neuerD-Freeze und keine Beschreibungsfreigabe aus diesen technischen Bindungen.
+
+73 tatsächliche ganze Eingangsbeobachtungen/73 verschiedene Dateien bleiben vor/nach exakt; eigene JSON-Dokumente sind vollständig mit echten Zeilenumbrüchen parsebar, eigene Dateien werden nicht ignoriert und Curriculum-Symlinkprüfung ist leer. Alte Bewertungen und alle eingefrorenen Autorenstände bleiben unverändert.
+
+Strenger eingefrorener Stand300/311, Nettozuwachs0; neue aktive fachliche Abschlüsse0, wiederhergestellte aktive Bindungen0. SourceWhole125, gesamte Länder-/Kursrollen, finale D-Runden, fehlende Routen und menschliche Release-/Erprobungsgates bleiben getrennt offen. Keine Live-CAN/Mapping/Registry/QA-Schreibvorgänge, keinStaging/Commit, keinRuntime/Plugin/Deployment-Auftrag. Mathematik und Physik bleiben unter ihren bereits geprüften geschütztenM7-Untergrenzen unverändert.

@@ -1,0 +1,9 @@
+# Economics Q2 labour: bounded author text criteria
+
+Actually read all12 whole DE/EN goals and all12 profiles/24bilingual cases. German competence text remains unchanged for11goals;7764 explicitly retains explanation and adds the actual BW source-required case-based judgment. All graph relationships remain unchanged. One titleEn was already correct and is kept; only its descriptionEn is translated. All other11 goals receive genuine title/description translations.
+
+Inspect model assumptions, estimated NAIRU uncertainty, nominal versus real wages and unit costs, headcount versus hours and participation, matching/cyclical causes, plausible counterfactuals, training horizons and barriers, all three skilled-worker strategies, both remuneration perspectives and risk/quality conditions. Work and social participation are described without stereotypes. All conjunctive goal aspects remain required. Current legal materials have actual supplied applicability and reservation conditions; no blanket employment advice is claimed.
+
+The actual BW source judgment operator is now an explicit bounded7764 author proposal in DE/EN/P, with AB3. Its full new whole goal and both entire cases require independent source/translation/positive/A/M impact review before counting. The other3 demandLevel proposals (60ec/a500AB3,85f0AB2) likewise remain inert until independently approved. Current statutory limits bound judgments; normative balancing cannot freely waive them.
+
+These are E1/G1 ai_candidate / needs_human_review expectations, without actual learner evidence or an extra task quota. Two fresh independent demonstrations can be covered by sufficient multistep transfer. Native technical validation is not an independent substantive review. Final media/source/current contextual bindings and two independent D reviews remain required.

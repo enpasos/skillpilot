@@ -1,0 +1,129 @@
+
+> skillpilot@0.0.0 prepare:runtime-assets
+> npm run generate:gymnasium-duration-offerings && npm run deploy:assets && npm run prepare:gemini-skill
+
+
+> skillpilot@0.0.0 generate:gymnasium-duration-offerings
+> tsx scripts/generateGymnasiumDurationOfferings.ts --write
+
+
+> skillpilot@0.0.0 deploy:assets
+> ./node_modules/.bin/tsx ../scripts/deploy_curriculum_decks.ts && ./node_modules/.bin/tsx ../scripts/deploy_exam_assets.ts && ./node_modules/.bin/tsx ../scripts/deploy_goal_visualizations.ts && ./node_modules/.bin/tsx ../scripts/deploy_whitepaper.ts && python3 ../scripts/deploy_story.py
+
+Deployed 112 curriculum deck copy operations to /home/enpasos/projects/skillpilot/app/public/data, /home/enpasos/projects/skillpilot/backend/src/main/resources/static/data
+Starting image deployment...
+Source: /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/input/HE/abi/Mathe/Klausurbeispiel2026_1
+Target: /home/enpasos/projects/skillpilot/app/public/assets/abi/2026_1
+Image deployment completed successfully.
+Deployed 4888 goal visualization asset copy/copies to app/public/assets/goal-visualizations, backend/src/main/resources/static/assets/goal-visualizations
+Starting whitepaper deployment...
+Deployed 57 assets to /home/enpasos/projects/skillpilot/app/public/whitepaper
+Deployed 4 assets to /home/enpasos/projects/skillpilot/app/public/comic1
+Deployed 4 assets to /home/enpasos/projects/skillpilot/app/public/comic2
+Deployed 2 assets to /home/enpasos/projects/skillpilot/app/public/comic3
+Deployment complete. 67 whitepaper assets deployed.
+Deploying Story assets from /home/enpasos/projects/skillpilot/docs/quickstart to /home/enpasos/projects/skillpilot/app/public...
+Removed stale public story asset: comic07.de.png
+Removed stale public story asset: screenshot_01.de.png
+Removed stale public story asset: screenshot_03b.de.png
+Removed stale public story asset: quickstart-01-start.webp
+Removed stale public story asset: screenshot_03.en.png
+Removed stale public story asset: comic_prompts.de.md
+Removed stale public story asset: quickstart-04-launch.webp
+Removed stale public story asset: quickstart-05-prepared-message.webp
+Removed stale public story asset: screenshot_11.en.png
+Removed stale public story asset: screenshot_05.de.png
+Removed stale public story asset: comic03.en.png
+Removed stale public story asset: quickstart-06-coach.webp
+Removed stale public story asset: screenshot_10.en.png
+Removed stale public story asset: screenshot_03a.de.png
+Removed stale public story asset: screenshot_07.en.png
+Removed stale public story asset: screenshot_02.de.png
+Removed stale public story asset: comic06.de.png
+Removed stale public story asset: comic05.de.png
+Removed stale public story asset: story.de.md
+Removed stale public story asset: screenshot_06.en.png
+Removed stale public story asset: screenshot_08.en.png
+Removed stale public story asset: screenshot_12.en.png
+Removed stale public story asset: comic07.en.png
+Removed stale public story asset: quickstart-07-cockpit.webp
+Removed stale public story asset: comic03.de.png
+Removed stale public story asset: screenshot_08.de.png
+Removed stale public story asset: screenshot_03.de.png
+Removed stale public story asset: screenshot_04.de.png
+Removed stale public story asset: comic06.en.png
+Removed stale public story asset: comic01.en.png
+Removed stale public story asset: screenshot_10.de.png
+Removed stale public story asset: screenshot_12.de.png
+Removed stale public story asset: screenshot_06.de.png
+Removed stale public story asset: screenshot_05.en.png
+Removed stale public story asset: comic01.de.png
+Removed stale public story asset: comic05.en.png
+Removed stale public story asset: screenshot_11.de.png
+Removed stale public story asset: quickstart-03-curriculum.webp
+Removed stale public story asset: comic04.de.png
+Removed stale public story asset: comic04.en.png
+Removed stale public story asset: screenshot_02.en.png
+Removed stale public story asset: screenshot_07.de.png
+Removed stale public story asset: quickstart-02-id.webp
+Removed stale public story asset: story.en.md
+Removed stale public story asset: screenshot_04.en.png
+Removed stale public story asset: screenshot_01.en.png
+Removed stale public story asset: comic_prompts.en.md
+Removed stale public story asset: quickstart-08-cards.webp
+Copied: comic07.de.png
+Copied: screenshot_01.de.png
+Copied: screenshot_03b.de.png
+Copied: quickstart-01-start.webp
+Copied: screenshot_03.en.png
+Copied: comic_prompts.de.md
+Copied: quickstart-04-launch.webp
+Copied: quickstart-05-prepared-message.webp
+Copied: screenshot_11.en.png
+Copied: screenshot_05.de.png
+Copied: comic03.en.png
+Copied: quickstart-06-coach.webp
+Copied: screenshot_10.en.png
+Copied: screenshot_03a.de.png
+Copied: screenshot_07.en.png
+Copied: screenshot_02.de.png
+Copied: comic06.de.png
+Copied: comic05.de.png
+Copied: index.md
+Copied: story.de.md
+Copied: screenshot_06.en.png
+Copied: screenshot_08.en.png
+Copied: screenshot_12.en.png
+Copied: comic07.en.png
+Copied: quickstart-07-cockpit.webp
+Copied: comic03.de.png
+Copied: screenshot_08.de.png
+Copied: screenshot_03.de.png
+Copied: screenshot_04.de.png
+Copied: comic06.en.png
+Copied: comic01.en.png
+Copied: screenshot_10.de.png
+Copied: screenshot_12.de.png
+Copied: screenshot_06.de.png
+Copied: screenshot_05.en.png
+Copied: comic01.de.png
+Copied: comic05.en.png
+Copied: screenshot_11.de.png
+Copied: quickstart-03-curriculum.webp
+Copied: comic04.de.png
+Copied: video-production.md
+Copied: comic04.en.png
+Copied: screenshot_02.en.png
+Copied: screenshot_07.de.png
+Copied: quickstart-02-id.webp
+Copied: story.en.md
+Copied: screenshot_04.en.png
+Copied: screenshot_01.en.png
+Copied: comic_prompts.en.md
+Copied: quickstart-08-cards.webp
+Successfully deployed 50 story assets (48 stale public assets removed).
+
+> skillpilot@0.0.0 prepare:gemini-skill
+> python3 ../ai/gemini/coach/scripts/package_skill.py --frontend
+
+{"path": "/home/enpasos/projects/skillpilot/ai/gemini/coach/dist/skillpilot-coach-v1-0.1.0.zip", "sha256": "2a5f5de47cd04345196cd21f0ab4dc4e0b3247b509a9deaaa0e2f8cd74d30a40"}

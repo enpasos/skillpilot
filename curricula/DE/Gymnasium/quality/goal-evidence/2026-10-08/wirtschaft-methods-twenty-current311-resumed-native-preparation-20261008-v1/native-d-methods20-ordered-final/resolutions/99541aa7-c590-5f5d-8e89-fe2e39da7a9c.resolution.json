@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-dual-round-resolution.schema.json",
+  "schemaVersion": 1,
+  "resolutionId": "wirtschaft-methods20-current311-ordered-20261008-v2-resolution-99541aa7-c590-5f5d-8e89-fe2e39da7a9c",
+  "goal": {
+    "goalId": "99541aa7-c590-5f5d-8e89-fe2e39da7a9c",
+    "effectiveSemanticKind": "curricularAtomic",
+    "goalFingerprint": "sha256:c72665957090bd33f1f741e9f1498f722c8f61d678af2372bf6d37eac0b6223b",
+    "pageFingerprint": "sha256:7bc8a8551ad85b70c70694d2d9cb4b7006f634a151a30280879a7d6b7e2a5adc",
+    "goalReviewContextFingerprint": "sha256:2225bd23cb2ba053f5fd1097ebe8ad8216dfeae54e1f9fe514f4e5b4eddfe749",
+    "finalText": {
+      "titleDe": "Wechselkursschwankungen für Haushalte und Unternehmen analysieren",
+      "titleEn": "Analyse exchange-rate fluctuations for households and businesses",
+      "descriptionDe": "Die lernende Person kann Auswirkungen von Wechselkursschwankungen auf private Haushalte und Unternehmen analysieren.",
+      "descriptionEn": "The learner can analyse the effects of exchange-rate fluctuations on private households and businesses."
+    }
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-methods20-current311-ordered-20261008-v2-a",
+      "campaignDigest": "sha256:e675ee9e98a4cae65c0916d3eec0382dd974810a7eff3251897e6bc2d85e0f52",
+      "roundId": "wirtschaft-methods20-current311-ordered-20261008-v2-first-pass-a",
+      "independenceGroupId": "wirtschaft-methods20-current311-ordered-20261008-v2-independent-a",
+      "reviewInputFingerprint": "sha256:82c6b183f752bc68e9f1bb2d394941fcff501cb5c6da5ade48866ec585223979",
+      "goalReviewContextFingerprint": "sha256:2225bd23cb2ba053f5fd1097ebe8ad8216dfeae54e1f9fe514f4e5b4eddfe749",
+      "batchId": "wirtschaft-methods20-current311-ordered-20261008-v2-first-pass-a.batch-001",
+      "runId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1",
+      "runManifestDigest": "sha256:c98774c0dac18a5689fc217b2c1e90d1265aa1ae4be2e23e835f5f2ea7396fd3",
+      "resultsDigest": "sha256:70b82d87f7757eb7c430e88c7decca78a13d02d972e913c145f428927f41e53e",
+      "recordId": "wirtschaft-methods20-current311-final-blind-independent-a-20261008-v1.goal-09",
+      "recordDigest": "sha256:281d291ec42f086ace51dc3213334d262e97e7fe9ae0adcc946988ceb3817d91"
+    },
+    "second": {
+      "campaignId": "wirtschaft-methods20-current311-ordered-20261008-v2-b",
+      "campaignDigest": "sha256:eb6ab1e975bff21b0c655a5c230d51d3f442eb567f123067490df22b94316a43",
+      "roundId": "wirtschaft-methods20-current311-ordered-20261008-v2-first-pass-b",
+      "independenceGroupId": "wirtschaft-methods20-current311-ordered-20261008-v2-independent-b",
+      "reviewInputFingerprint": "sha256:82c6b183f752bc68e9f1bb2d394941fcff501cb5c6da5ade48866ec585223979",
+      "goalReviewContextFingerprint": "sha256:2225bd23cb2ba053f5fd1097ebe8ad8216dfeae54e1f9fe514f4e5b4eddfe749",
+      "batchId": "wirtschaft-methods20-current311-ordered-20261008-v2-first-pass-b.batch-001",
+      "runId": "wirtschaft-methods20-current311-independent-B-20261008-v1",
+      "runManifestDigest": "sha256:1fb487cc554f5aecae906d8e43e512298d6406f09f8009e6991cbd98b50099d6",
+      "resultsDigest": "sha256:43257f70d1db92cf1efb08ef47fb0888e336cbff2e6a809cb1a7190ca5e0afe6",
+      "recordId": "wirtschaft-methods20-current311-independent-B-20261008-v1:99541aa7-c590-5f5d-8e89-fe2e39da7a9c",
+      "recordDigest": "sha256:6db1bd3f230eae47daf3c3b8c47b0158886992294d57336017d647ef61a0c23e"
+    }
+  },
+  "dualSummary": {
+    "validationContract": "goal-description-dual-round-v1",
+    "digest": "sha256:75e61a2bbd4f3df09cd9f80dd0673ef12c990d01254a9c549e6f0ddced135053"
+  },
+  "status": "resolved",
+  "decision": "keep_current",
+  "synthesisDecisionManifest": {
+    "contract": "goal-description-rollout-synthesis-decision-v1",
+    "manifestPath": "synthesis-decisions.json",
+    "manifestId": "wirtschaft-methods20-current311-root-individual-synthesis-20261008-v1",
+    "manifestDigest": "sha256:ac969ad46cdcc16289310efefeb7890a4460e6f72ef42c0115e5bfa9edb38022",
+    "manifestFingerprint": "sha256:0016845b0628e2d410d7ecd6aa4c4e27d61def7174cba5f92d56d648f80dff0c",
+    "decisionId": "wirtschaft-methods20-current311-root-individual-synthesis-20261008-v1-decision-009"
+  },
+  "synthesis": {
+    "synthesisId": "wirtschaft-methods20-current311-root-individual-synthesis-20261008-v1-decision-009",
+    "authority": "ai_synthesis",
+    "synthesizedBy": "/root",
+    "synthesizedAt": "2026-10-08T20:46:43.783Z",
+    "rationaleDe": "A rekonstruiert Wechselkursfolgen aus Quotierung, Zahlungswährung und Verträgen für Haushalt und Unternehmen. Umgekehrte Quotierung und andere Fremdwährungskosten verlangen eine neue Analyse. Pauschale Exportvorteile, sofortige Preisweitergabe oder automatische Absicherung werden nicht unterstellt.",
+    "rationaleEn": "A reconstructs exchange-rate effects from quotations, payment currencies and contracts for households and businesses. Reversed quotations and different foreign-currency costs require fresh analysis. Blanket export benefits, immediate price pass-through or automatic hedging are not assumed.",
+    "understandingEvidence": {
+      "essentialUnderstandingDe": "Wechselkursfolgen ergeben sich aus der Quotierung und der jeweiligen Zahlungs- oder Erlöswährung. Ein Haushalt, ein Importeur und ein Exporteur können unterschiedlich betroffen sein; Preisreaktionen und Absicherung sind zusätzliche Bedingungen.",
+      "essentialUnderstandingEn": "Exchange-rate effects depend on quotation and the currency of payments or receipts. Households, importers and exporters can be affected differently; price responses and hedging are additional conditions.",
+      "observablePerformanceDe": "Die Person rechnet mit ausdrücklich angegebenen Wechselkursen richtungsrichtig um und analysiert getrennt Kosten- und Erlösfolgen für Haushalt und Unternehmen unter den vorgegebenen Vertragsbedingungen.",
+      "observablePerformanceEn": "The learner converts correctly using explicitly quoted exchange rates and separately analyses household and business cost and revenue effects under the supplied contract conditions.",
+      "transferExpectationDe": "Der neue Fall dreht die Quotierung und ändert das Unternehmensrisiko von Fremdwährungserlösen zu Fremdwährungsvorprodukten bei festen Euroverkäufen. Die Person rekonstruiert die Wirkung statt die Faustregel eines früheren Exportfalls zu wiederholen.",
+      "transferExpectationEn": "The new case reverses the quotation and changes business exposure from foreign-currency receipts to foreign-currency inputs with fixed euro sales. The learner reconstructs effects rather than reusing a rule from a previous export case."
+    },
+    "dissent": [
+      {
+        "dissentId": "synthesis-dissent-b6ddfcc82d4e3bebfb0ed4f634e950e0513069d790528ae9071994a941c5ff37",
+        "source": "both",
+        "textDe": "Die beiden aktuellen keep-Reviews unterscheiden sich in understandingEvidence, rationale, evidenceProfileRecommendation; das Manifest wählt ausdrücklich die Evidence-Fassung der ersten Runde.",
+        "textEn": "The two current keep reviews differ in understandingEvidence, rationale, evidenceProfileRecommendation; the manifest explicitly selects the evidence formulation from the first round.",
+        "disposition": "accepted_first"
+      }
+    ],
+    "humanAttestation": null
+  },
+  "resolutionFingerprint": "sha256:913d95ba36eb210bf7df60544db569a2c8c0cf0fd46e3ca914bf4788141af1dc"
+}

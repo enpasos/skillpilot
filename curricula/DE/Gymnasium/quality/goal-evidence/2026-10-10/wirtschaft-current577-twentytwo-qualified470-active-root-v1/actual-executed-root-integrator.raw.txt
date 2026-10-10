@@ -1,0 +1,176 @@
+from pathlib import Path
+import hashlib, json, sys
+
+R = Path('/home/enpasos/projects/skillpilot')
+Q = R / 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10'
+O = Path(Path('/tmp/economics-current577-twentytwo-qualified470-root-candidate-path.txt').read_text().strip())
+A = Q / 'wirtschaft-current577-twentytwo-qualified470-active-root-v1'
+
+def rd(p):
+    return json.loads(p.read_text())
+
+def sha(p):
+    return hashlib.sha256(p.read_bytes()).hexdigest()
+
+def binding(p):
+    return {'path': str(p.relative_to(R)), 'sha256': sha(p), 'bytes': p.stat().st_size}
+
+def checked(x):
+    p = R / x['path']
+    assert sha(p) == x['sha256'], x
+    return p
+
+def bound(x):
+    if isinstance(x, dict):
+        if isinstance(x.get('path'), str) and isinstance(x.get('sha256'), str):
+            yield x
+        for v in x.values():
+            yield from bound(v)
+    elif isinstance(x, list):
+        for v in x:
+            yield from bound(v)
+
+def wr(p, x):
+    assert not p.exists(), p
+    p.write_text(json.dumps(x, ensure_ascii=False, indent=2) + '\n')
+    return binding(p)
+
+# This script is deliberately inert until a separate agent supplies its actual
+# combined scope KEEP and native positive frame. It never substitutes a hash
+# update or an additive forecast for that review.
+sp, np = map(Path, sys.argv[1:3])
+seal, native = rd(sp), rd(np)
+assert seal['decision'] == 'KEEP_BOUNDED_COMBINED_SCOPE_NAV_FUSION_OF_THREE_ACTUALLY_FOREIGN_QUALIFIED_PACKAGES' and seal['activeWrites'] == 0
+ip = Path(Path('/tmp/economics-current577-twentytwo-qualified470-root-final-author-handoff-path.txt').read_text().strip())
+ix = rd(ip)
+assert any(z['path'] == str(ip.relative_to(R)) and z['sha256'] == sha(ip) for z in bound(seal))
+command_evidence = rd(checked(seal['ownActualFourFreshNativeFrames']))
+frames = command_evidence['executedFreshNativeFrames']
+assert len(frames) == 4 and all(frame['actualExit'] == 0 for frame in frames)
+positive = next(frame for frame in frames if frame['name'] == 'after577')
+assert checked(positive['wholeRawReport']) == np
+for frame in frames:
+    checked(frame['wholeRawReport'])
+    assert checked(frame['wholeStderr']).stat().st_size == 0
+assert ix['totalAppendedPracticeTargetRefs'] == 470
+assert len(ix['newQualifiedPracticeGoalIds']) == 22
+assert ix['packageReferenceCounts'] == {'international9': 162, 'macro13': 299, 'existing9Access': 9}
+assert len(ix['foreignScopeReceipts']) == 3 and len(ix['foreignWholeScienceReceipts']) == 2
+f = rd(O / 'actual-v14-SEM577-P336685-book577-technical-only-freeze.json')
+p = rd(O / 'actual-native43-configs-P336-SEM577-all-original-profiles-inputs-statuses.v14-root-PASS.json')
+assert p['records'] == 336 and p['cases'] == 685 and p['SEM577WholeFPsCurrent']
+assert len(p['configs']) == 43 and all(c['errors'] == [] for c in p['configs'])
+assert native['goalCount'] == 577
+assert native['compilerSummary']['errors'] == native['compilerSummary']['warnings'] == 0
+rules = {r['id']: r for r in native['nativeRules']}
+m = rules['CQR-104']['metrics']
+assert all(m[k] == 0 for k in [
+    'projectionScopesMissingMotivationAnchors', 'projectionScopesMissingTerminalAutonomyGoals',
+    'projectionScopesWithUnexpectedTerminalAutonomyGoals', 'projectionScopesWithoutExpectedTerminalAutonomyGoals',
+    'terminalGoalsMissingCompiledApplicability', 'projectionScopesWithInvalidStageStructure',
+    'visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector',
+    'wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath',
+    'wholeMaterialPrerequisiteOccurrencesMissingFromProjection',
+    'visibleSelectedGoalOccurrencesMissingDirectMotivationRoute'])
+assert m['visibleProjectedRouteTargetGoalOccurrences'] == 6974
+assert 0 <= m['visibleSelectedGoalOccurrencesMissingDirectTerminalRoute'] < 1246
+assert 0 <= m['uniqueVisibleSelectedGoalsMissingDirectTerminalRoute'] < 129
+sm = native['sourceRule']['metrics']
+assert native['sourceRule']['status'] == 'pass'
+assert sm['sourceOriginalGoals'] == sm['sourceFullyCoveredOriginalGoals'] == sm['sourceAtomicGoals'] == 2134
+assert sm['totalJurisdictions'] == sm['coveredJurisdictions'] == sm['sourceCompleteJurisdictions'] == 16
+assert all(sm[k] == 0 for k in ['sourceUncoveredOriginalGoals', 'unmappedSourceAtomicGoals', 'unsupportedAssignedAtomicGoals'])
+assert (R / ix['activeCanonicalPath']).read_bytes() == checked(ix['canonicalBefore']).read_bytes()
+qualified = ix['foreignWholeScienceReceipts'] + ix['foreignScopeReceipts'] + [binding(sp)]
+for z in qualified + ix['authorInputIndices'] + [ix['canonicalCandidate'], f['newSEM'], f['newWholeP336'],
+        f['candidateRegistry'], f['candidateBookConfig'], f['oldRegistry'], f['oldBookConfig'], f['oldKindLedger']]:
+    checked(z)
+for v in ix['views']:
+    assert sha(R / v['activePath']) == v['before']['sha256']
+    checked(v['candidate'])
+oldreg, newreg = rd(checked(f['oldRegistry'])), rd(checked(f['candidateRegistry']))
+assert [s for s in oldreg['subjects'] if s['subject'] != 'wirtschaftswissenschaften'] == [s for s in newreg['subjects'] if s['subject'] != 'wirtschaftswissenschaften']
+beforegoals = {g['id']: g for g in rd(checked(ix['canonicalBefore']))['goals']}
+aftergoals = {g['id']: g for g in rd(checked(ix['canonicalCandidate']))['goals']}
+navids = {d['wholeBefore']['id'] for d in ix['actualFourWholeNavDeltas']}
+assert len(beforegoals) == 555 and len(aftergoals) == 577 and len(navids) == 4
+assert all(aftergoals[k] == g for k, g in beforegoals.items() if k not in navids)
+assert set(aftergoals) - set(beforegoals) == set(ix['newQualifiedPracticeGoalIds'])
+paths = {R / 'app/scripts/generateCurriculumQualityStatus.ts',
+    R / 'curricula/DE/Gymnasium/provenance/source-landscape-registry.json',
+    R / 'curricula/DE/Gymnasium/provenance/canonical-goal-surrogate-evidence-registry.json',
+    R / 'curricula/DE/Gymnasium/quality/goal-visualization-qa/wirtschaftswissenschaften.qa.json'}
+for s in oldreg['subjects']:
+    if s['subject'] != 'wirtschaftswissenschaften':
+        paths.update(R / s[k] for k in ['landscapePath', 'semanticKindLedgerPath'])
+for cfg in f['all43ConfigChanges']:
+    paths.add(R / cfg['reviewWholeBytesUnchanged']['path'])
+    paths.add(R / cfg['old']['path'])
+for base in ['curricula/DE/Gymnasium/input', 'curricula/DE/Gymnasium/mapping',
+        'curricula/DE/Gymnasium/memory-decks', 'curricula/DE/Gymnasium/quality/memory-card-review']:
+    paths.update(q for q in (R / base).rglob('*') if q.is_file() and q.suffix in ['.json', '.jsonl'])
+protected = [binding(q) for q in sorted(paths)]
+assert sha(R / 'app/scripts/generateCurriculumQualityStatus.ts') == '656084b7cd9d6cb5324361b927b9f761596c572d7e4f616c7b13da061f4b1336'
+changed = [v for v in ix['views'] if v['candidate']['sha256'] != v['before']['sha256']]
+assert len(changed) == 34 and sum(len(v['addedIds']) for v in ix['views']) == 470
+mutations = [(R / ix['activeCanonicalPath'], checked(ix['canonicalCandidate'])),
+    (checked(f['oldRegistry']), checked(f['candidateRegistry'])),
+    (checked(f['oldBookConfig']), checked(f['candidateBookConfig']))] + [(R / v['activePath'], checked(v['candidate'])) for v in changed]
+assert len(mutations) == 37
+A.mkdir(exist_ok=False)
+backup = A / 'whole-active-before'
+backup.mkdir()
+rows = []
+for i, (ap, cp) in enumerate(mutations):
+    bp = backup / f'{i:02d}-{ap.name}'
+    bp.write_bytes(ap.read_bytes())
+    rows.append({'activePath': str(ap.relative_to(R)), 'wholeBefore': binding(bp), 'qualifiedCandidate': binding(cp)})
+wr(A / 'actual-current577-twentytwo-qualified470-pre-mutation-guards.json', {
+    'mutations': rows, 'foreignWholeScienceScopeAndFinalCombinedFollower': qualified,
+    'protectedReadOnlyInputs': protected, 'actualForeignCombinedScopeSeal': binding(sp),
+    'actualForeignPositive470Native': binding(np),
+    'actualNative43PositiveConfigs': binding(O / 'actual-native43-configs-P336-SEM577-all-original-profiles-inputs-statuses.v14-root-PASS.json'),
+    'wholeCurrent336685ProfilesAndAllOldKindsExact': True, 'humanApproval': False})
+for ap, cp in mutations:
+    ap.write_bytes(cp.read_bytes())
+assert all(sha(R / z['path']) == z['sha256'] for z in protected)
+assert all(ap.read_bytes() == cp.read_bytes() for ap, cp in mutations)
+route_after = m['visibleSelectedGoalOccurrencesMissingDirectTerminalRoute']
+ids_after = m['uniqueVisibleSelectedGoalsMissingDirectTerminalRoute']
+receipt = {
+    'status': 'ACTUAL_TWENTYTWO_FOREIGN_QUALIFIED_MATERIALS470_ACCESS_FIELDWISE_ACTIVE_PENDING_FRESH_CENTRAL',
+    'canonicalNodes': 577, 'currentCurricularAtomic': 336,
+    'newWholeMaterialScientificClosures': 22, 'newPracticeAssessmentGoals': 22,
+    'unchangedWholeExistingMaterialScientificReuse': 3,
+    'newCurricularAtomicStrictClosures': 0, 'restoredCurricularAtomicStrictBindings': 0,
+    'strictNetGainBeforeFreshCentral': 0,
+    'fourNavFieldChanges': ix['actualFourWholeNavDeltas'],
+    'viewsAdditivelyChanged': 34, 'totalNewPracticeTargetRefs': 470,
+    'perPackageReferences': ix['packageReferenceCounts'],
+    'source16Original2134AndUnsupported0Reverse0Exact': True,
+    'all336OrdinaryCanonicalObjectsAndCurrentP685WholeExact': True,
+    'all555OldSemanticKindsExact': True, 'SEMCurrent577OldFingerprintFollowers': 4,
+    'SEMNewQualifiedPracticeRows': 22,
+    'all64Ordinary6974TargetsMemoryOrientationAndOtherSupportExact': True,
+    'selectorExcluded': 0, 'wholePrerequisiteClosureMissing': 0,
+    'currentLocalMissingOccurrencesBefore': 1246, 'currentLocalMissingOccurrencesAfter': route_after,
+    'netRestoredRouteBindings': 1246 - route_after,
+    'currentLocalMissingUniqueBefore': 129, 'currentLocalMissingUniqueAfter': ids_after,
+    'netFullyRestoredLocalGoalIds': 129 - ids_after,
+    'missingExpectedMaterialScopeCount': 0,
+    'noAdditiveForecastCountClaimed': True,
+    'other4SubjectsCANSEMandRegistryEntriesExact': True,
+    'allReadOnlySourceMemoryAndVisualizationEvidenceExact': True,
+    'sourceInventoryCentralAndProtectedFloorsPending': True,
+    'sevenLawAndThirteenSocialCandidatesNotIncluded': True,
+    'M6Reached': False, 'humanReleaseTrialsSeparateOpen': True,
+    'imagesGenerated': 0, 'commitCreated': False, 'historicalArtifactsModified': False,
+    'activeInputs': [binding(ap) for ap, cp in mutations],
+    'qualifiedScienceAndScopeReceipts': qualified,
+    'actualCombinedScopeSeal': binding(sp), 'actualCombined470Native': binding(np)}
+rp = A / 'actual-current577-twentytwo-foreign-qualified-materials470-accesses-active.receipt.json'
+wr(rp, receipt)
+(A / 'actual-executed-root-integrator.raw.txt').write_bytes(Path(__file__).read_bytes())
+Path('/tmp/economics-current577-twentytwo-qualified470-active-root-path.txt').write_text(str(A) + '\n')
+print(json.dumps({'receipt': binding(rp), 'activeFiles': 37, 'activeCAN': binding(R / ix['activeCanonicalPath']),
+    'netRestoredRoutes': 1246 - route_after, 'strictGain': 0, 'remainingLocalGoalIds': ids_after}))

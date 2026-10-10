@@ -1,0 +1,94 @@
+{
+  "role": "actual stable current678 machine M6 closing bundle; no human release/trial approval and no completion of open M7 D lane",
+  "inputGuards": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "237c9bfd2730d916e5e1a453eeb0822113a8a48d2391f8e721c6e693edc6f452",
+      "bytes": 5247651
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "4484f2cac11d4da502d77b262a67f9a58b6fe1dde946e0252a2c5d714e3b37c7",
+      "bytes": 216275
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-economics-current-canonical.json",
+      "sha256": "2a09632489badec3fafdd61d39794a6a916bc85389592d7ea83c9899fad1c0b9",
+      "bytes": 1185
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-current678-international-operations-policy33-20261010-v17/review-note-time-successor-v2/wirtschaftswissenschaften.semantic-kinds.json",
+      "sha256": "35cc7c448b745d13bb51090448efeb6e2e7d04579da0d174cae3a3d2ec169920",
+      "bytes": 218757
+    }
+  ],
+  "allActiveInputGuardsRemainExact": true,
+  "actualParallelIndependentLanes": [
+    {
+      "lane": "layerA",
+      "requiredStages": 15,
+      "commands": [
+        {
+          "label": "graph",
+          "argv": [
+            "npm",
+            "run",
+            "-s",
+            "validate:graph"
+          ],
+          "cwd": "/home/enpasos/projects/skillpilot/app",
+          "actualExitCode": 1,
+          "seconds": 2.342,
+          "stdout": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/current-native-registry-singular-atomicity-key-run-v2/graph.stdout.txt",
+            "sha256": "7b68dc8dcfe7e5268a41d5a534938b1da2f3dc838214fe76c0f4f2716eb901a5",
+            "bytes": 2249
+          },
+          "stderr": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/current-native-registry-singular-atomicity-key-run-v2/graph.stderr.txt",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0
+          }
+        }
+      ],
+      "pass": false
+    },
+    {
+      "lane": "book-and-build",
+      "requiredStages": 2,
+      "commands": [
+        {
+          "label": "goal-book-full-pipeline-including-cached-publications",
+          "argv": [
+            "npm",
+            "run",
+            "-s",
+            "test:goal-book-pipeline"
+          ],
+          "cwd": "/home/enpasos/projects/skillpilot/app",
+          "actualExitCode": 1,
+          "seconds": 3.55,
+          "stdout": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/current-native-registry-singular-atomicity-key-run-v2/goal-book-full-pipeline-including-cached-publications.stdout.txt",
+            "sha256": "78345a2efb12d6569ba6a66f1fa059a7fd98837520a78a15ffbf1e791b6f868f",
+            "bytes": 336
+          },
+          "stderr": {
+            "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-M6-stable-layerA-book-build-root-v1/current-native-registry-singular-atomicity-key-run-v2/goal-book-full-pipeline-including-cached-publications.stderr.txt",
+            "sha256": "72286a3c770d75d4fa3507bbba2733f465ef9bbfc3e024419e870088e976a111",
+            "bytes": 512
+          }
+        }
+      ],
+      "pass": false
+    }
+  ],
+  "allRequiredBundleStagesPassed": false,
+  "newScientificStrictClosures": 0,
+  "restoredStrictBindings": 0,
+  "strictNet": 0,
+  "runtimePluginPrivacyDeploymentChanges": false,
+  "humanReleaseTrialApproval": false,
+  "imagesGenerated": 0,
+  "commitCreated": false
+}
