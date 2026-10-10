@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-three-BW-practical-terminal-context-20261010-v1",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-q3-three-BW-practical-terminal-route-author-candidate-v1/native/three-current-route-context.batch.config.json",
+  "configDigest": "sha256:10f22e6348957ae6daf3cbead60b20026bcb10d7d16080cffd0d2ed7782e5b6a",
+  "goalIds": [
+    "d2d735de-bede-5310-8aeb-8bb7562c7b75",
+    "a0f6ba09-f072-5887-a797-fa369453c62a",
+    "7b39fa19-fec3-575e-9324-a3226b703358"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 381,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-q3-three-BW-practical-terminal-route-author-candidate-v1/native/after381.normal.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-q3-three-BW-practical-terminal-route-author-candidate-v1/candidate/whole487-381-plus-three-practical-terminals.inactive.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:9f8d7d9aecde385e064678edcadf26a2e8540e5db3913fd907332ceba512f3a6"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:4ca07b689ee5a244fcb393a4bb48edc4ef71df7eec67cece987b83d0d3ddbe1d",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:c23c6e0f473face0394ae7fff7d135f8f208d8b1eb855c714c7876b5b5f74f09",
+    "reviewInputFingerprint": "sha256:ab21d43f9a10fcac083385da1ca0e2ef075e8f54c7ee01a1128d75d978c3aaa2",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-three-BW-practical-terminal-context-20261010-v1-a",
+        "campaignDigest": "sha256:e85de5a15abfbe3d953e528cf23d669df274c56bbc639fd3545d5dfba463c7e4",
+        "roundId": "chemie-three-BW-practical-terminal-context-20261010-v1-first-pass-a",
+        "independenceGroupId": "chemie-three-BW-practical-terminal-context-20261010-v1-independent-a",
+        "batchId": "chemie-three-BW-practical-terminal-context-20261010-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:7175ce62b6ca4171630d3ac040357b2bef5eb2cdbc8541688aea0ed99309f157"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-three-BW-practical-terminal-context-20261010-v1-b",
+        "campaignDigest": "sha256:66673082f7e09eed0142174e22e5f07c9c4f026286fe5c306f2028c5a778fbae",
+        "roundId": "chemie-three-BW-practical-terminal-context-20261010-v1-first-pass-b",
+        "independenceGroupId": "chemie-three-BW-practical-terminal-context-20261010-v1-independent-b",
+        "batchId": "chemie-three-BW-practical-terminal-context-20261010-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:84ea1b779f121390dd797141b1efa87d9c4b4656593097321eac4468d84544ab"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

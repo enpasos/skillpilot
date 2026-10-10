@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "SPDX-License-Identifier: Apache-2.0; additive technical ledger shape, no native science or Human approval contract",
+  "title": "source24-edge-review.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "goalId",
+    "sourceGoalId",
+    "wholeCandidateEdge",
+    "wholeChildBodyDigest",
+    "wholeSourceBodyDigest",
+    "sourceSpan",
+    "sourceOccurrencesCount",
+    "semanticVerdict",
+    "rationaleDe",
+    "scopeVerdict",
+    "actualExplicitScopeKeys",
+    "wholeDutyApproval",
+    "wholeCourseApproval",
+    "humanApproval"
+  ],
+  "properties": {
+    "goalId": {
+      "type": "string",
+      "minLength": 0
+    },
+    "sourceGoalId": {
+      "type": "string",
+      "minLength": 0
+    },
+    "wholeCandidateEdge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "legacyGoalId",
+        "canonicalGoalId",
+        "matchType",
+        "reviewDecisionId"
+      ],
+      "properties": {
+        "legacyGoalId": {
+          "type": "string",
+          "minLength": 0
+        },
+        "canonicalGoalId": {
+          "type": "string",
+          "minLength": 0
+        },
+        "matchType": {
+          "const": "partial"
+        },
+        "reviewDecisionId": {
+          "type": "string",
+          "minLength": 0
+        }
+      }
+    },
+    "wholeChildBodyDigest": {
+      "type": "string",
+      "minLength": 0
+    },
+    "wholeSourceBodyDigest": {
+      "type": "string",
+      "minLength": 0
+    },
+    "sourceSpan": {
+      "type": "string",
+      "minLength": 0
+    },
+    "sourceOccurrencesCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "semanticVerdict": {
+      "const": "KEEP_PARTIAL"
+    },
+    "rationaleDe": {
+      "type": "string",
+      "minLength": 0
+    },
+    "scopeVerdict": {
+      "enum": [
+        "HOLD_UNSPECIFIED_C11",
+        "KEEP_EXPLICIT_PARTIAL_SCOPE"
+      ]
+    },
+    "actualExplicitScopeKeys": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 0
+      }
+    },
+    "wholeDutyApproval": {
+      "const": false
+    },
+    "wholeCourseApproval": {
+      "const": false
+    },
+    "humanApproval": {
+      "const": false
+    }
+  }
+}

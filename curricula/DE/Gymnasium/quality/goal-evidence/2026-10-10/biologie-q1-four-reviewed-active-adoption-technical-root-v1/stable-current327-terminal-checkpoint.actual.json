@@ -1,0 +1,684 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-10-10T04:35:05.096477+00:00",
+  "role": "Completed technical checkpoint for four genuinely dual-reviewed biology goals; not a third scientific review",
+  "exactIdGainProof": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-reviewed-active-adoption-technical-root-v1/current327-exact-strict-ID-gain-and-protected-subjects.actual.json",
+    "sha256": "sha256:1e839b9814803ab244e6ece5a8eaf061e174a508042f90fe93442322e9d8b5d6",
+    "bytes": 219842
+  },
+  "preflight528CurrentScienceBindings": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-reviewed-active-adoption-technical-root-v1/adoption.preflight.actual.json",
+    "sha256": "sha256:adc9af4724bb04a084b211524e1aa9a45f1189630e4764d3b41fbf0d0f35ac25",
+    "bytes": 16711
+  },
+  "all14SelectedNormalTerminals": [
+    {
+      "label": "normal-QA4-generation",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-reviewed-active-adoption-technical-root-v1/checks/normal-QA4-generation.terminal.actual.json",
+        "sha256": "sha256:3269bcfaa38938159d54cd37da104a56b0ebdc71d2033e567bd1e6daf301b97b",
+        "bytes": 281
+      },
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "--subject=biologie"
+      ],
+      "exitCode": 0,
+      "durationSeconds": null,
+      "durationClaimed": false
+    },
+    {
+      "label": "current-P4-normal-check",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-reviewed-active-adoption-technical-root-v1/checks/current-P4-normal-check.terminal.actual.json",
+        "sha256": "sha256:8624b597c1539a07ecf77e69c4e09462a5aacf7da9ab80df1f0d884836c211e3",
+        "bytes": 835
+      },
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-risk-ethics-reviewed-integration-technical-v1/positive/P4.future-active.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.49,
+      "durationClaimed": true
+    },
+    {
+      "label": "current-QA4-normal-check",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-reviewed-active-adoption-technical-root-v1/checks/current-QA4-normal-check.terminal.actual.json",
+        "sha256": "sha256:e5ed9bafa91dcb1bec7546be29580ed096e1149fdc31ad22ff3b6047c8eeec12",
+        "bytes": 694
+      },
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "--subject=biologie",
+        "--check"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 2.164,
+      "durationClaimed": true
+    },
+    {
+      "label": "central-current394-four-check",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-reviewed-active-adoption-technical-root-v1/checks/central-current394-four-check.terminal.actual.json",
+        "sha256": "sha256:988b57c689f2ed802748f2f102619b31bc6af00abf09c3b892228217b8a2519d",
+        "bytes": 702
+      },
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/reportDeepUnderstandingRollout.ts",
+        "--mode=check",
+        "--format=json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 139.036,
+      "durationClaimed": true
+    },
+    {
+      "label": "current394-source-atlas-refresh",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-reviewed-active-adoption-technical-root-v1/checks/current394-source-atlas-refresh.terminal.actual.json",
+        "sha256": "sha256:2b346a11ff03064835b3c17c6620459b7fea3c694371ff192362ab73b9288c16",
+        "bytes": 758
+      },
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.844,
+      "durationClaimed": true
+    },
+    {
+      "label": "current327-normal-source-atlas",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-reviewed-active-adoption-technical-root-v1/checks/current327-normal-source-atlas.terminal.actual.json",
+        "sha256": "sha256:fbc29dd41fa870f67e41438457372dd1a29d680c507579ef9325dea4434572ec",
+        "bytes": 771
+      },
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json",
+        "--check"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.842,
+      "durationClaimed": true
+    },
+    {
+      "label": "current327-normal-layer-a",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-reviewed-active-adoption-technical-root-v1/checks/current327-normal-layer-a.terminal.actual.json",
+        "sha256": "sha256:22033a501d1e3ef6ad822154279a3bf4242d89bd42131f04cccb1dc4fbc3dd68",
+        "bytes": 628
+      },
+      "command": [
+        "node",
+        "scripts/check_ai_transparency_inventory.mjs"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 24.77,
+      "durationClaimed": true
+    },
+    {
+      "label": "current327-normal-visualization-assets",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-reviewed-active-adoption-technical-root-v1/checks/current327-normal-visualization-assets.terminal.actual.json",
+        "sha256": "sha256:059d4d2893687a700f2f49841937ac354de87432123be7b89643632866e26d84",
+        "bytes": 680
+      },
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-visualization-assets"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 36.833,
+      "durationClaimed": true
+    },
+    {
+      "label": "current327-full-schemas",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-reviewed-active-adoption-technical-root-v1/checks/current327-full-schemas.terminal.actual.json",
+        "sha256": "sha256:1539f9a6a8672e207b88da9f6745d5af0bacda4d49528c8b51a605813505f667",
+        "bytes": 613
+      },
+      "command": [
+        "python3",
+        "scripts/validate_schemas.py"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 126.476,
+      "durationClaimed": true
+    },
+    {
+      "label": "current327-full-curriculum-status",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-reviewed-active-adoption-technical-root-v1/checks/current327-full-curriculum-status.terminal.actual.json",
+        "sha256": "sha256:eb9d1d3f1326a2f0b07d39d3d9b80127f13ee7a5272ef0da59069e7e33bfa4f1",
+        "bytes": 665
+      },
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:curriculum-status"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 175.673,
+      "durationClaimed": true
+    },
+    {
+      "label": "current327-nine-protected-floors",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-reviewed-active-adoption-technical-root-v1/checks/current327-nine-protected-floors.terminal.actual.json",
+        "sha256": "sha256:0d0888034b0f13e3031125c9f2c835122e82faa195ae9d19ee95db42c058d3db",
+        "bytes": 668
+      },
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:curriculum-maturity-floors"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.459,
+      "durationClaimed": true
+    },
+    {
+      "label": "current327-five-goal-books",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-reviewed-active-adoption-technical-root-v1/checks/current327-five-goal-books.terminal.actual.json",
+        "sha256": "sha256:7b49322d10fde7234b1b089dd4940902bfb3c29ef9fb0141e96df8aa30cf41e5",
+        "bytes": 642
+      },
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "build:goal-books"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 175.517,
+      "durationClaimed": true
+    },
+    {
+      "label": "current327-generated-status-registry",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-reviewed-active-adoption-technical-root-v1/checks/current327-generated-status-registry.terminal.actual.json",
+        "sha256": "sha256:2a9f5f1f1053cb8e192ab4d4c14413d92abfcdf8c3ba5860e7047c8e0af43ed6",
+        "bytes": 675
+      },
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:generated-status-registry"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.716,
+      "durationClaimed": true
+    },
+    {
+      "label": "current327-normal-generated-doc-notices",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-reviewed-active-adoption-technical-root-v1/checks/current327-normal-generated-doc-notices.terminal.actual.json",
+        "sha256": "sha256:abc0a82bde358e6985a5967c95b249378df21327c31163b4d00a5b4268dd886e",
+        "bytes": 677
+      },
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:generated-doc-notices"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.534,
+      "durationClaimed": true
+    }
+  ],
+  "subjects": {
+    "mathematik": {
+      "denominator": 807,
+      "strictComplete": 807,
+      "remaining": 0,
+      "gates": {
+        "currentDescriptionResolutions": 807,
+        "currentPositiveEvidenceProfiles": 807,
+        "currentSemanticAtomicityDecisions": 807,
+        "currentMemoryReviewDecisions": 807,
+        "currentVisualizationQaRecords": 807
+      },
+      "requiredChecks": [
+        {
+          "id": "semantic-kind-scope",
+          "status": "pass"
+        },
+        {
+          "id": "description-review-validation",
+          "status": "pass"
+        },
+        {
+          "id": "positive-evidence-validation",
+          "status": "pass"
+        },
+        {
+          "id": "semantic-atomicity-check",
+          "status": "pass"
+        },
+        {
+          "id": "memory-card-check",
+          "status": "pass"
+        },
+        {
+          "id": "visualization-freshness-and-approval-check",
+          "status": "pass"
+        }
+      ]
+    },
+    "physik": {
+      "denominator": 478,
+      "strictComplete": 478,
+      "remaining": 0,
+      "gates": {
+        "currentDescriptionResolutions": 478,
+        "currentPositiveEvidenceProfiles": 478,
+        "currentSemanticAtomicityDecisions": 478,
+        "currentMemoryReviewDecisions": 478,
+        "currentVisualizationQaRecords": 478
+      },
+      "requiredChecks": [
+        {
+          "id": "semantic-kind-scope",
+          "status": "pass"
+        },
+        {
+          "id": "description-review-validation",
+          "status": "pass"
+        },
+        {
+          "id": "positive-evidence-validation",
+          "status": "pass"
+        },
+        {
+          "id": "semantic-atomicity-check",
+          "status": "pass"
+        },
+        {
+          "id": "memory-card-check",
+          "status": "pass"
+        },
+        {
+          "id": "visualization-freshness-and-approval-check",
+          "status": "pass"
+        }
+      ]
+    },
+    "chemie": {
+      "denominator": 381,
+      "strictComplete": 180,
+      "remaining": 201,
+      "gates": {
+        "currentDescriptionResolutions": 180,
+        "currentPositiveEvidenceProfiles": 180,
+        "currentSemanticAtomicityDecisions": 208,
+        "currentMemoryReviewDecisions": 381,
+        "currentVisualizationQaRecords": 362
+      },
+      "requiredChecks": [
+        {
+          "id": "semantic-kind-scope",
+          "status": "pass"
+        },
+        {
+          "id": "description-review-validation",
+          "status": "pass"
+        },
+        {
+          "id": "positive-evidence-validation",
+          "status": "pass"
+        },
+        {
+          "id": "semantic-atomicity-check",
+          "status": "pass"
+        },
+        {
+          "id": "memory-card-check",
+          "status": "pass"
+        },
+        {
+          "id": "visualization-freshness-and-approval-check",
+          "status": "pass"
+        }
+      ]
+    },
+    "biologie": {
+      "denominator": 394,
+      "strictComplete": 327,
+      "remaining": 67,
+      "gates": {
+        "currentDescriptionResolutions": 327,
+        "currentPositiveEvidenceProfiles": 327,
+        "currentSemanticAtomicityDecisions": 394,
+        "currentMemoryReviewDecisions": 394,
+        "currentVisualizationQaRecords": 327
+      },
+      "requiredChecks": [
+        {
+          "id": "semantic-kind-scope",
+          "status": "pass"
+        },
+        {
+          "id": "description-review-validation",
+          "status": "pass"
+        },
+        {
+          "id": "positive-evidence-validation",
+          "status": "pass"
+        },
+        {
+          "id": "semantic-atomicity-check",
+          "status": "pass"
+        },
+        {
+          "id": "memory-card-check",
+          "status": "pass"
+        },
+        {
+          "id": "visualization-freshness-and-approval-check",
+          "status": "pass"
+        }
+      ]
+    },
+    "wirtschaftswissenschaften": {
+      "denominator": 311,
+      "strictComplete": 261,
+      "remaining": 50,
+      "gates": {
+        "currentDescriptionResolutions": 261,
+        "currentPositiveEvidenceProfiles": 261,
+        "currentSemanticAtomicityDecisions": 311,
+        "currentMemoryReviewDecisions": 311,
+        "currentVisualizationQaRecords": 261
+      },
+      "requiredChecks": [
+        {
+          "id": "semantic-kind-scope",
+          "status": "pass"
+        },
+        {
+          "id": "description-review-validation",
+          "status": "pass"
+        },
+        {
+          "id": "positive-evidence-validation",
+          "status": "pass"
+        },
+        {
+          "id": "semantic-atomicity-check",
+          "status": "pass"
+        },
+        {
+          "id": "memory-card-check",
+          "status": "pass"
+        },
+        {
+          "id": "visualization-freshness-and-approval-check",
+          "status": "pass"
+        }
+      ]
+    }
+  },
+  "currentMaturityAndCQR303": [
+    {
+      "subject": "Biologie",
+      "maturity": "M6",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "warn",
+        "summary": "Deep curriculum QA is incomplete: 327/394 current curricularAtomic goals strictly complete.",
+        "metrics": {
+          "expectedGoals": 394,
+          "remaining": 67,
+          "strictComplete": 327,
+          "currentDescriptionResolutions": 327,
+          "currentPositiveEvidenceProfiles": 327,
+          "currentSemanticAtomicityDecisions": 394,
+          "currentMemoryReviewDecisions": 394,
+          "currentVisualizationQaRecords": 327,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      },
+      "humanTrialBlockingFindings": 1
+    },
+    {
+      "subject": "Chemie",
+      "maturity": "M6",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "warn",
+        "summary": "Deep curriculum QA is incomplete: 180/381 current curricularAtomic goals strictly complete.",
+        "metrics": {
+          "expectedGoals": 381,
+          "remaining": 201,
+          "strictComplete": 180,
+          "currentDescriptionResolutions": 180,
+          "currentPositiveEvidenceProfiles": 180,
+          "currentSemanticAtomicityDecisions": 208,
+          "currentMemoryReviewDecisions": 381,
+          "currentVisualizationQaRecords": 362,
+          "deferredVisualizations": 17,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        },
+        "details": [
+          "17 current goals have deferred necessary visualization work; technical provider deferrals do not complete gate V."
+        ]
+      },
+      "humanTrialBlockingFindings": 0
+    },
+    {
+      "subject": "Mathematik",
+      "maturity": "M7",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 807 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 807,
+          "remaining": 0,
+          "strictComplete": 807,
+          "currentDescriptionResolutions": 807,
+          "currentPositiveEvidenceProfiles": 807,
+          "currentSemanticAtomicityDecisions": 807,
+          "currentMemoryReviewDecisions": 807,
+          "currentVisualizationQaRecords": 807,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      },
+      "humanTrialBlockingFindings": 0
+    },
+    {
+      "subject": "Physik",
+      "maturity": "M7",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 478 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 478,
+          "remaining": 0,
+          "strictComplete": 478,
+          "currentDescriptionResolutions": 478,
+          "currentPositiveEvidenceProfiles": 478,
+          "currentSemanticAtomicityDecisions": 478,
+          "currentMemoryReviewDecisions": 478,
+          "currentVisualizationQaRecords": 478,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      },
+      "humanTrialBlockingFindings": 0
+    }
+  ],
+  "newScientificClosures": 4,
+  "restoredPriorStrictBindings": 0,
+  "netGain": 4,
+  "lostStrictClosures": 0,
+  "allNineProtectedFloorsPass": true,
+  "currentSourceAtlas": {
+    "denominator": 394,
+    "published": 394,
+    "sourceViews": 24,
+    "unresolved": 0,
+    "omitted": 0
+  },
+  "layerA": {
+    "visualizations": 2300,
+    "c2paMarkers": 2249,
+    "otherRuntimeImages": 64,
+    "localizedCardRecords": 731,
+    "audio": 8
+  },
+  "fullSchemas": {
+    "checkedFiles": 56708,
+    "exitCode": 0
+  },
+  "fiveGoalBooks": {
+    "checked": 5,
+    "rendered": 1,
+    "biologyPages": 394,
+    "othersReusedAfterNormalHashChecks": 4
+  },
+  "measuredLayerAChanges": {
+    "count": [
+      2296,
+      2300
+    ],
+    "png": [
+      962,
+      966
+    ],
+    "C2paDetected": [
+      2245,
+      2249
+    ],
+    "actualImageGenProviderCount": [
+      8,
+      12
+    ]
+  },
+  "failedTechnicalCommandAttemptPreserved": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-reviewed-active-adoption-technical-root-v1/checks/status-doc-notices-command-correction.actual.json",
+    "sha256": "sha256:3ee027b868e45269832fbe7fac248c6c6c002d8ce874a8addfe2f0d327931181",
+    "bytes": 656
+  },
+  "globalQualityReportBoundaries": {
+    "ruleStatus": {
+      "pass": 231,
+      "warn": 22,
+      "fail": 4,
+      "not_configured": 65
+    },
+    "unrelatedGlobalFailuresClaimedResolved": false
+  },
+  "activeBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "sha256:89d89aa113cbc5cd7f4733f43be08d0688291712b37f82ec99376e87930bf3bb",
+      "bytes": 1289485
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "sha256": "sha256:de99a87c79fa64f30144232223994635f69c76c88547d0cd40ff3b0fb590a44f",
+      "bytes": 1488185
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "sha256:3fd97e5f1d946a5451314ff511ddf83dc7ef04cff9426ddc6904655c186c315a",
+      "bytes": 204965
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/biologie.semantic-kinds.json",
+      "sha256": "sha256:e614517680f6e5eb5ed03f334fbbd9d153f6d1dddd9f0aa23f0c6387b3aec177",
+      "bytes": 154383
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json",
+      "sha256": "sha256:3d980258bd2440bbdf6db70f6a8d7d2918cf5d9dc1d8f15902bbca518f805867",
+      "bytes": 156464
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/biologie.qa.json",
+      "sha256": "sha256:c3a6e3f213fb9665ef696368d389cb91d3cd1391998065f5811daff7cf3518e2",
+      "bytes": 1035172
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json",
+      "sha256": "sha256:91d9175f6b50d054f1b86e2dbee71012d75bc73cb4035fa99846c3de535dd6d5",
+      "bytes": 901102
+    },
+    {
+      "path": "docs/legal/ai-transparency-inventory.json",
+      "sha256": "sha256:cf9abe7e7be43c9e2475a8fe6cb704c5c1bcce7bf6013d4ad2b6bf42a1a957fb",
+      "bytes": 33739
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json",
+      "sha256": "sha256:f1c6d8128ad71431d4c124f0c5fbd81ee913852dc58b411d6ff97f51a2418335",
+      "bytes": 14890
+    },
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/source-projection.receipt.json",
+      "sha256": "sha256:b343b7299455b4fb9a4df52fa6faec9d67d3be8fc65052e5f31ef8320ada90ef",
+      "bytes": 1078369
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.json",
+      "sha256": "sha256:9f0f54c28fdc1b633eaf1bcd638aef3532d32c1f11b884b4a059e6d172472a17",
+      "bytes": 2777816
+    },
+    {
+      "path": "docs/qa-ci/status/curriculum-quality-status.md",
+      "sha256": "sha256:7b49c337c2bc8a32f6ae489fe24409b9e570877a8d4586b58a8cb48bd95e6bfa",
+      "bytes": 66174
+    }
+  ],
+  "committedMainCI": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-reviewed-active-adoption-technical-root-v1/checks/current327-live-main-ci.terminal-successor.actual.json",
+    "sha256": "sha256:16793c9d6e83a20d7cb13ec00284d0a9dea8868271d02a708254a233b61318d8",
+    "bytes": 7954
+  },
+  "remoteChecksCoverUncommittedM7Worktree": false,
+  "entireParallelCandidateWorktreeCommitReadyClaimed": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "actualLearnerEvidence": false,
+  "goal100Achieved": false
+}

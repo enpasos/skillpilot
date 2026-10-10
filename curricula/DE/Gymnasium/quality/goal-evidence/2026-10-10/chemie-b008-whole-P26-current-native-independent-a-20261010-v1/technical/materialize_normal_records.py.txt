@@ -1,0 +1,146 @@
+import datetime
+import hashlib
+import json
+import pathlib
+
+root = pathlib.Path.cwd()
+base = root / 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10'
+src = base / 'chemie-b008-current-whole-P26-native-continuation-author-20261010-v1'
+out = base / 'chemie-b008-whole-P26-current-native-independent-a-20261010-v1'
+
+def now():
+    return datetime.datetime.now(datetime.timezone.utc).isoformat()
+
+def digest(data):
+    return 'sha256:' + hashlib.sha256(data).hexdigest()
+
+def write_json(path, value):
+    assert not path.exists(), f'Existing artifact must remain unchanged: {path}'
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n')
+
+first_bytes = (out / 'FIRST.current-whole26-description-native.verdict.json').read_bytes()
+assert digest(first_bytes) == 'sha256:4aa2a7ad6d8cafccf7a18a030bb4852610c4e6bdd4b43807c87b40feed0d0172'
+first = json.loads(first_bytes)
+verdicts = {row['goalId']: row for row in first['records']}
+assert len(verdicts) == 26
+parameters = {
+    'schemaVersion': 1,
+    'role': 'Actual independent current native FIRST-A26 review and later normal record serialization; no new historical scientific approval',
+    'provider': 'OpenAI',
+    'model': 'Codex active model; exact deployed model version not exposed',
+    'exactModelVersion': 'unknown; not exposed to this agent',
+    'temperature': 'unknown; not exposed to this agent',
+    'seed': 'unknown; not exposed to this agent',
+    'topP': 'unknown; not exposed to this agent',
+    'otherSamplingParameters': 'unknown; not exposed to this agent',
+    'reviewTaskIdentity': '/root/chemistry_p26_current_native_independent_a',
+    'currentAuthorOrPeerJudgmentsReadBeforeFirst': False,
+    'historicalValidEvidenceRead': 'Exact unchanged valid paired material bodies, P26, prior scientific resolutions and original/360/680 raster proofs were reused and read only in their stated role; current other-run decisions were not read before FIRST.',
+    'blindToCurrentOtherRuns': True,
+    'sealedFirstVerdictDigest': digest(first_bytes),
+    'humanApproval': False,
+    'actualLearnerEvidence': False,
+    'generationFingerprintMeaning': 'Digest of this truthful known/unknown parameter and independence declaration; does not claim unexposed model or sampling settings are known.'
+}
+params_path = out / 'review-runtime-parameters.actual.json'
+write_json(params_path, parameters)
+params_digest = digest(params_path.read_bytes())
+index = []
+for size in (20, 6):
+    normal = src / f'native/current-{size}/round-a'
+    campaign = json.loads((normal / 'description-review-campaign.json').read_text())
+    inputs = json.loads((normal / 'description-review-input.json').read_text())
+    bundle = json.loads((normal / 'review-bundle-manifest.json').read_text())
+    assert len(campaign['batches']) == 1
+    batch = campaign['batches'][0]
+    run_id = f'chemie-b008-whole-P26-current-native-independent-a-20261010-v1-native{size}'
+    input_by_id = {row['goalId']: row for row in inputs['goals']}
+    records = []
+    for goal_id in batch['goalIds']:
+        row = input_by_id[goal_id]
+        verdict = verdicts[goal_id]
+        assert verdict['normalBundleSize'] == size
+        assert verdict['goalFingerprint'] == row['goalFingerprint']
+        assert verdict['pageFingerprint'] == row['pageFingerprint']
+        record = {
+            '$schema': 'https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json',
+            'schemaVersion': 1,
+            'recordId': run_id + '.' + goal_id,
+            'runId': run_id,
+            'campaignId': campaign['campaignId'],
+            'roundId': campaign['roundId'],
+            'bundleFingerprint': campaign['bundleFingerprint'],
+            'bookDigest': campaign['bookDigest'],
+            'goalId': goal_id,
+            'goalFingerprint': row['goalFingerprint'],
+            'pageFingerprint': row['pageFingerprint'],
+            **{field: row[field] for field in ['currentTitleDe', 'currentTitleEn', 'currentDescriptionDe', 'currentDescriptionEn']},
+            'decision': verdict['decision'],
+            'understandingEvidence': verdict['understandingEvidence'],
+            'rationale': verdict['goalSpecificReason'] + ' Die vollständige aktuelle bilinguale Beschreibung und tatsächliche HTML-/PDF-Seite wurden unabhängig geprüft. Unveränderte gültige P-v2-Materialkörper und frühere Original-/360-/680-Bildprüfungen wurden nach belegter Exaktgleichheit wiederverwendet; dies ist keine neue historische Fachfreigabe. KEEP gilt für die konkrete Beschreibungs- und Seitendarstellung. Der aktuelle Source-Compiler bleibt bei 355/398 mit 24 neuen und 19 bisherigen offenen Source-Zielen sowie 496 ungeklärten Scope-Bindungen; effektive Source-/Target-/Kursübernahme ist HOLD. Die zwölf geschützten Kontextänderungen sind ein getrenntes, hier nicht restauriertes Paket. AI-Kandidat, keine menschliche Prüfung/Freigabe/Erprobung oder Lernendenleistung; kein strenger Fortschrittszuwachs.',
+            'evidenceProfileContract': 'positive-understanding-evidence-v2',
+            'evidenceProfileRecommendation': verdict['profileRecommendation'],
+            'recordStatus': 'candidate',
+            'reviewAuthority': 'ai_candidate'
+        }
+        assert all(0 < len(value) <= 4000 for value in record['understandingEvidence'].values())
+        records.append(record)
+    results = out / f'results/current-{size}'
+    results.mkdir(parents=True, exist_ok=False)
+    record_path = results / (batch['batchId'] + '.records.jsonl')
+    record_bytes = (''.join(json.dumps(r, ensure_ascii=False, separators=(',', ':')) + '\n' for r in records)).encode()
+    record_path.write_bytes(record_bytes)
+    assert len(record_bytes.decode().splitlines()) == size
+    run = {
+        '$schema': 'https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json',
+        'schemaVersion': 1,
+        'runId': run_id,
+        'campaignId': campaign['campaignId'],
+        'roundId': campaign['roundId'],
+        'batchId': batch['batchId'],
+        'batchInputFingerprint': batch['batchInputFingerprint'],
+        'bundleFingerprint': campaign['bundleFingerprint'],
+        'bookDigest': campaign['bookDigest'],
+        'provider': 'OpenAI',
+        'model': parameters['model'],
+        'modelVersion': 'Exact deployed version not exposed; unknown',
+        'role': 'subject_reviewer',
+        'promptFamilyId': 'goal-description-understanding-evidence-review-v2',
+        'promptFingerprint': campaign['promptFingerprint'],
+        'criteriaFingerprint': campaign['criteriaFingerprint'],
+        'generationParametersFingerprint': params_digest,
+        'independenceGroupId': campaign['independenceGroupId'],
+        'blindToOtherRuns': True,
+        'goalIds': batch['goalIds'],
+        'inputArtifacts': [{'role': item['role'], 'digest': item['digest']} for item in bundle['artifacts']] + [
+            {'role': 'description_review_batch_input_jsonl', 'digest': batch['batchInputFingerprint']}
+        ],
+        'startedAt': '2026-10-10T02:46:49.962653+00:00',
+        'completedAt': now(),
+        'status': 'completed',
+        'outputDigest': digest(record_bytes),
+        'toolchainVersion': 'skillpilot-normal-native-review-v1'
+    }
+    run_path = results / (batch['batchId'] + '.run.json')
+    write_json(run_path, run)
+    index.append({
+        'bundleSize': size, 'normalCampaign': str((normal / 'description-review-campaign.json').relative_to(root)),
+        'normalInput': str((normal / 'description-review-input.json').relative_to(root)),
+        'normalBundle': str((normal / 'review-bundle-manifest.json').relative_to(root)),
+        'recordsPath': str(record_path.relative_to(root)), 'recordsDigest': digest(record_bytes),
+        'runPath': str(run_path.relative_to(root)), 'runDigest': digest(run_path.read_bytes()),
+        'goalCount': len(records), 'decisions': {'keep': len(records)},
+        'fromImmutableOwnFirst': True,
+        'historicalMaterialScienceReapproval': False,
+        'sourceAdoptionHold': True,
+        'protected12ContextRestoration': False,
+        'currentStrictGain': 0, 'humanApproval': False
+    })
+write_json(out / 'normal-A20-A6-record-materialization.actual.json', {
+    'schemaVersion': 1, 'createdAt': now(), 'ownImmutableFirst': digest(first_bytes),
+    'runtimeParametersFingerprint': params_digest, 'actualResults': index,
+    'activeWrites': [], 'humanApproval': False,
+    'startedAtMeaning': 'Actual measured binding inspection during this independent review, not author preparation; current own full page/wording inspection preceded immutable FIRST. completedAt includes serialization of that completed FIRST.'
+})
+print(json.dumps({'normalRecords': sum(item['goalCount'] for item in index), 'campaigns': len(index), 'firstUnchanged': digest((out / 'FIRST.current-whole26-description-native.verdict.json').read_bytes())}, ensure_ascii=False))

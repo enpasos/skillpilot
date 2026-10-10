@@ -1,0 +1,76 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "current-fcc-one-explicit-technical-dual-synthesis-20261010-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex existing independent A reviewer as technical synthesizer after sealed A/B; no third subject review",
+  "synthesizedAt": "2026-10-10T04:59:23.142Z",
+  "batch": {
+    "batchId": "biologie-insect-fcc-adult-current-native-20261010-v2",
+    "batchManifestDigest": "sha256:78b7369b3b14c2ef079ecec95285d0916b54430b0423f4f9cd98c8cea3f4c74d",
+    "configDigest": "sha256:c2833080ac84e0fdda927e6d541fd8c0e6be1f82133c918fa768e1927a1353c9",
+    "bundleFingerprint": "sha256:722615169e803fd5070d6d302e2f35d9d65b3658f9d59321373a15b548f77648",
+    "bookDigest": "sha256:3ddd40967df53e404d6d392905c0f1e38d3a486aa3949a7bbcbf7c61d5195d52",
+    "reviewInputFingerprint": "sha256:d08af9e20c2c36de3d6421c81bc4073d8359cd12e30a46ea6df4ef6281298ae3",
+    "dualSummaryDigest": "sha256:1dc34deb06801c71199fa353bb21c299c006e647ce6c28a9076fc0bde95d556c",
+    "canonicalLandscapeDigest": "sha256:e6660bb00510aa381e1aa18e264ee4e4d0073c36b740f3a0314dd4f8914f6453"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-insect-fcc-adult-current-native-20261010-v2-a",
+      "campaignDigest": "sha256:e42db8f1ce936b572b53717c77deda012948a826d56bec4d022e1083e34530c9",
+      "roundId": "biologie-insect-fcc-adult-current-native-20261010-v2-first-pass-a",
+      "independenceGroupId": "biologie-insect-fcc-adult-current-native-20261010-v2-independent-a",
+      "reviewInputFingerprint": "sha256:d08af9e20c2c36de3d6421c81bc4073d8359cd12e30a46ea6df4ef6281298ae3",
+      "batchId": "biologie-insect-fcc-adult-current-native-20261010-v2-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:b49b573858664b3f294537212a1a812b555002d0b7af98c6034d9842b20bc726",
+      "runId": "biologie-insect-fcc-adult-current-independent-a-20261010-v2",
+      "runManifestDigest": "sha256:c014fb3dd0951237ffb9ca1e99aff1a7c820dc8a378968f604e1f21e9b459e6d",
+      "resultsDigest": "sha256:4fc4d859ec456d719380d8e7f4239c06e18920e9272330b59711366f42d11922"
+    },
+    "second": {
+      "campaignId": "biologie-insect-fcc-adult-current-native-20261010-v2-b",
+      "campaignDigest": "sha256:27dd5dcd6b36018dfd08500fcffdb6507528b4a67e6eaa2eeebe73bc5346441b",
+      "roundId": "biologie-insect-fcc-adult-current-native-20261010-v2-first-pass-b",
+      "independenceGroupId": "biologie-insect-fcc-adult-current-native-20261010-v2-independent-b",
+      "reviewInputFingerprint": "sha256:d08af9e20c2c36de3d6421c81bc4073d8359cd12e30a46ea6df4ef6281298ae3",
+      "batchId": "biologie-insect-fcc-adult-current-native-20261010-v2-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:d465d406a37af35e6e3937df9abe30fb07f9d87f2d4f03fc1e436b4e53b6bf42",
+      "runId": "biologie-insect-fcc-adult-current-native-20261010-v2-b.independent-b.actual-run",
+      "runManifestDigest": "sha256:586ce070a557fca7443bbe8125e187da72061cd81ac565c6631506d16fd5704a",
+      "resultsDigest": "sha256:01666bfd8f5a6350e483afc7a78bf880f15be6de7d5a20e69b0766c5436d7c21"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "current-fcc-one-technical-dual-fcc20f50-8eb3-5d6c-b37f-5be13c7d314e",
+      "goalId": "fcc20f50-8eb3-5d6c-b37f-5be13c7d314e",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:de5979674bfc5c671b3c7bf392669a365099c474e04c4c62d9ae627fc4418ef3",
+      "pageFingerprint": "sha256:06a9332a33021cb9866e5bd05c567dd24dfe554e0eaa28534e1b8c6048fbbb8b",
+      "goalReviewContextFingerprint": "sha256:227e2c32d121d77b596828e420119b509085aacae28881544b188e54d937aafb",
+      "finalText": {
+        "titleDe": "Individualentwicklung von Insekten und Wirbeltieren vergleichen",
+        "titleEn": "Compare Individual Development of Insects and Vertebrates",
+        "descriptionDe": "Die lernende Person kann Individualentwicklung von Insekten untereinander und mit Wirbeltieren hinsichtlich typischer Merkmale und evolutionärer Angepasstheiten vergleichen.",
+        "descriptionEn": "The learner can compare individual development among insects and with vertebrates in terms of typical traits and evolutionary adaptations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "biologie-insect-fcc-adult-current-independent-a-20261010-v2.fcc20f50-8eb3-5d6c-b37f-5be13c7d314e",
+          "recordDigest": "sha256:cf33947b24e897113280ea5daf30e3d4951009d273c24a94bdbf65e86777c293"
+        },
+        "second": {
+          "recordId": "biologie-insect-fcc-adult-current-native-20261010-v2-b.independent-b.actual-run.fcc20f50-8eb3-5d6c-b37f-5be13c7d314e",
+          "recordDigest": "sha256:7e193dddb29531555675c7012c1cf93b063cc1693d9213095515ae5c32434d79"
+        }
+      },
+      "rationaleDe": "Explizite technische Synthese nach tatsächlichem Vergleich beider versiegelten unabhängigen Records durch den bestehenden A-Reviewer, keine dritte Fachprüfung. Beide aktuell KEEP; die sechs bilingualen A-Nachweisfelder werden wörtlich ausgewählt. Aktuelle A/B sind tatsächlich KEEP nach den neuen Original-/360-/680-Rastern und ganzen HTML/PDF-Seiten: das schwanzlose erwachsene Endtier stimmt mit development-c1 überein. Beide behalten vollständige/unvollständige Insektenmetamorphose, Frosch ohne Puppe, bedingte Nahrungstrennung und das ausdrücklich späte holometabole Modell. Fehlendes Juvenilsignal ohne Häutungssignal bedeutet keine sofortige Puppe; keine Übertragung auf Froschhormone. A-Felder werden wörtlich gewählt, B-Käfer- und Signalbedingungen vollständig gebunden. Der historische Ablock/Bkeep wird hierdurch weder umetikettiert noch rückwirkend freigegeben. Ganze B-Records einschließlich konkreter Fallgrenzen bleiben exakt gebunden. Unveränderte Beschreibung; technische Autoren-P7/P1-ReviewIds werden nicht durch ergänzende unabhängige P-Urteile ersetzt. Kein neuer Whole-Quellen-/Kurs-/A/M- oder Human-Gate und kein aktiver Fortschrittszuwachs.",
+      "rationaleEn": "Explicit technical synthesis after actual comparison of both sealed independent records by the existing A reviewer, not a third subject review. Both currently KEEP; all six bilingual A evidence fields are selected literally. Current A/B genuinely KEEP after viewing the new original/360/680 rasters and whole HTML/PDF pages: the tail-free adult endpoint matches development-c1. Both retain complete/incomplete insect metamorphosis, frogs without a pupa, conditional dietary separation and the explicitly late holometabolous model. Absence of a juvenile signal without a molting signal implies no immediate pupa; no transfer to frog hormones occurs. A's fields are selected literally and B's beetle and signal conditions remain fully bound. Historical Ablock/Bkeep is neither relabeled nor retrospectively approved. Whole B records and their specific case limitations remain exactly bound. Description unchanged; operative technical-author P7/P1 review IDs are not replaced by supplementary independent P judgments. No new whole-source/course/A/M/human gate and no active progress gain."
+    }
+  ],
+  "manifestFingerprint": "sha256:968873bb0a763dcee6159a68edfdff1e2be5935c01208f067e48d9cec3e61cf7"
+}

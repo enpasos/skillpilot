@@ -1,0 +1,21 @@
+{
+  "cmd": [
+    "node",
+    "scripts/prepare_goal_visualization.mjs",
+    "cdd2247b-0ac6-5457-a5b9-26c6d0139906",
+    "--landscape",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-whole-material-and-raster-author-candidate-v1/inputs/whole479-original-authoring-base.exact.json",
+    "--subject",
+    "biologie",
+    "--provider",
+    "image_gen.imagegen",
+    "--review-status",
+    "pilot",
+    "--lang",
+    "de"
+  ],
+  "exitCode": 0,
+  "stdout": "Prepared prompt package for: Enzyme als Stoffwechselregulatoren erklären\nSkillPilot ID: cdd2247b-0ac6-5457-a5b9-26c6d0139906\nPrompt: tmp/goal-visualizations/cdd2247b-0ac6-5457-a5b9-26c6d0139906/nano-banana-prompt.de.md\nMetadata: tmp/goal-visualizations/cdd2247b-0ac6-5457-a5b9-26c6d0139906/metadata.json\n\nAfter generating and downloading the image, import it with:\nnpm --prefix app run visualization:import -- cdd2247b-0ac6-5457-a5b9-26c6d0139906 \"<downloaded-image-path>\"\n",
+  "stderr": "",
+  "activeWrites": false
+}

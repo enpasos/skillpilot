@@ -1,0 +1,27 @@
+# Bildrekonstruktionsprompt: Aktive Bewegung von Insekten als Lebensraumanpassung vergleichen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `fa59721d-fdee-50dd-b0de-0082abd33741`
+- Titel: Aktive Bewegung von Insekten als Lebensraumanpassung vergleichen
+- Beschreibung: Die lernende Person kann die Angepasstheit aktiver Bewegung bei Insekten an verschiedene Lebensräume vergleichen.
+
+## Generator
+
+- Provider: OpenAI / ChatGPT-Codex integrated image_gen tool
+- Quellbild: `fa59721d-fdee-50dd-b0de-0082abd33741.png`
+
+## Zweck
+
+Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptbasis für spätere Korrekturen. Er ist keine fachliche Freigabe und ersetzt nicht den Review.
+
+## Prompt
+
+```text
+Create one scientifically correct German school biology learning illustration, horizontal 16:9, about 1600 by 900 pixels (a nearby native size is acceptable), PNG. Friendly abstract hand-drawn comic style, soft pale blue, cream and light green background, dark navy rounded outlines, warm coral and teal accents, visually matching a cheerful school biology picture book. Large, clear main motifs, generous empty space, no photorealism, no sterile technical CAD, no decorative microscopic clutter. Main scientific relations must remain understandable when the complete picture is reduced to 360 pixels wide. Text only the few German labels explicitly requested, large bold and correctly spelled. No title banner, no IDs, no watermarks, no footnote text, no little explanatory paragraphs. Illustrations are simplified conceptual models and must not imply that all organisms share a single mechanism.
+
+Three spacious connected environmental vignettes with three large correctly formed adult insects, labels exactly "Land", "Wasser", "Luft". On grassy land a grasshopper is jumping with conspicuously large powerful bent hind legs; the other four legs belong to the thorax and one antenna pair is present. In clear water an adult diving beetle swims with a streamlined oval body and large flattened fringed hind legs that act as paddles; show its elytra intact and a small retained air bubble under their back edge. In the pale sky a dragonfly flies with exactly TWO PAIRS of large translucent wings attached to the thorax, six thoracic legs tucked for gripping, long slender abdomen. A discreet thin secondary curved arrow leading from the beetle near the water surface into the air conveys that the ADULT diving beetle can also fly, without drawing a second beetle or implying that it is restricted to water. Draw both dragonfly wing pairs recognizably separate, not one wing pair, and no gills on the adult beetle. Movement arrows show jumping, paddling and flight. No speed numbers or superiority ranking.
+
+Final actual image constraint: Heuschrecke springt an Land, erwachsener Gelbrandkäfer paddelt im Wasser und Libelle fliegt mit zwei Flügelpaaren.
+Die dargestellten Anpassungen schließen weitere Bewegungsformen nicht aus; ein erwachsener Gelbrandkäfer kann ebenfalls fliegen.
+```

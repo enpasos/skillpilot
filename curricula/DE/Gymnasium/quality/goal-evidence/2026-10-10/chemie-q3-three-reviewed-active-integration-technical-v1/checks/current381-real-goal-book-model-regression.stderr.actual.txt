@@ -1,0 +1,19 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: chemistry: mandatory source-atlas input must be Git-tracked: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-q3-three-BW-source-adoption-technical-successor-20261010-v1/sources/whole-BW126-original-operative-document-contract.exact.json
+    at testGoalBookSourceAtlasInputs (/home/enpasos/projects/skillpilot/app/scripts/testGoalBookSourceAtlasInputs.ts:315:16)
+    at testGoalBookInputIsolation (/home/enpasos/projects/skillpilot/app/scripts/testGoalBookInputIsolation.ts:41:3)
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/testGoalBookModel.ts:33:7)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '=='
+}
+
+Node.js v20.20.2

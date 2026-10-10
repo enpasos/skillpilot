@@ -1,0 +1,176 @@
+// SPDX-License-Identifier: Apache-2.0
+// Technical adoption of separately completed, genuine independent reviews.
+import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { dirname } from 'node:path'
+import { spawnSync } from 'node:child_process'
+import { fingerprintSemanticKindSourceGoal, stableGoalBookJson } from '../../app/scripts/goalBookModel.ts'
+
+const base = 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/'
+const own = base + 'biologie-q1-eight-reviewed-integration-technical-portable-successor-v2/'
+const author = base + 'biologie-q1-eight-title-methyl-current-native-technical-author-successor-v2/'
+const source = base + 'biologie-3312-authored-operationalization-primary-source-author-successor-v3/'
+const a = base + 'biologie-q1-eight-title-methyl-current-native-independent-a-20261010-v2/'
+const b = base + 'biologie-q1-eight-current-native-independent-b-20261010-v1/'
+const visual = 'curricula/DE/Gymnasium/quality/goal-visualization-review/'
+const correctedA = visual + 'biologie-q1-995-methyl-cytosine-correction-independent-a-20261010-v1/'
+const correctedB = visual + 'biologie-q1-995-methyl-cytosine-correction-independent-b-root-20261010-v1/'
+const canon = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json'
+const kindsPath = 'curricula/DE/Gymnasium/quality/goal-book-publication/biologie.semantic-kinds.json'
+const registryPath = 'curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json'
+const atlasPath = 'app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json'
+const qaPath = 'curricula/DE/Gymnasium/quality/goal-visualization-qa/biologie.qa.json'
+const titleId = '3312b2bb-bc90-5c0f-a859-4b4f9b8ff117'
+const methylId = '99544494-1825-5fc1-8e23-56f0df808e56'
+const sha = (bytes: Buffer|string) => createHash('sha256').update(bytes).digest('hex')
+const read = (p: string): any => JSON.parse(readFileSync(p, 'utf8'))
+const bind = (p: string) => { const bytes = readFileSync(p); return { path:p,sha256:sha(bytes),bytes:bytes.length } }
+const verify = (v: any): void => {
+  if (Array.isArray(v)) return v.forEach(verify)
+  if (!v || typeof v !== 'object') return
+  if (typeof v.path === 'string' && typeof v.sha256 === 'string') {
+    assert.ok(!v.path.startsWith('/') && !v.path.split('/').includes('..'))
+    const actual = bind(v.path)
+    assert.equal(actual.sha256,v.sha256.replace(/^sha256:/,''),v.path)
+    if (v.bytes !== undefined) assert.equal(actual.bytes,v.bytes,v.path)
+  }
+  Object.values(v).forEach(verify)
+}
+const put = (p: string, value: any, exclusive=true) => {
+  mkdirSync(dirname(p),{recursive:true})
+  writeFileSync(p,Buffer.isBuffer(value)?value:JSON.stringify(value,null,2)+'\n',exclusive?{flag:'wx'}:undefined)
+}
+assert.ok(!existsSync(own+'actual-eight-reviewed-adoption.receipt.json'))
+const entry = read(own+'reviewed-eight-integration.technical.entry.json')
+verify(entry)
+const ids: string[] = entry.goalIds
+assert.equal(ids.length,8)
+const activePaths = [canon,kindsPath,registryPath,atlasPath]
+assert.deepEqual(activePaths.map(bind),entry.activeBeforeBindings)
+const candidate = read(own+'candidate/whole479-eight-reviewed.inactive.json')
+const kinds = read(own+'candidate/whole479-current-semantic-kinds.inactive.json')
+assert.equal(candidate.goals.length,479)
+for (const d of kinds.decisions) {
+  const goal = candidate.goals.find((g:any)=>g.id===d.goalId)
+  assert.equal(d.sourceFingerprint,fingerprintSemanticKindSourceGoal(goal),d.goalId)
+}
+const currentA = read(a+'FIRST.assessments.json')
+const originalB = read(b+'visual-FIRST.independent.verdict.json')
+const correctedVerdictA = read(correctedA+'FIRST.corrected-V995.json')
+const correctedVerdictB = read(correctedB+'FIRST.corrected-V995.actual.json')
+verify(read(correctedA+'FIRST.seal.json'))
+verify(read(correctedB+'independent-b.corrected-V995.final.freeze.json'))
+assert.equal(correctedVerdictA.decision,'KEEP')
+assert.equal(correctedVerdictB.decision,'KEEP')
+const visualRows: any[] = []
+const copies: any[] = []
+for (const id of ids) {
+  const from = author+'assets/biologie/'+id+'/'
+  const image = bind(from+id+'.png')
+  const rowA = currentA.goals.find((g:any)=>g.goalId===id)
+  assert.equal(rowA.V,'KEEP_EXACT_CURRENT_RASTER')
+  const rowB = originalB.verdicts.find((g:any)=>g.goalId===id)
+  let aRecord, bRecord, notesA, notesB
+  if (id===methylId) {
+    assert.equal(image.sha256,correctedVerdictA.actualThreeViews[0].sha256.replace(/^sha256:/,''))
+    assert.equal(image.sha256,correctedVerdictB.actualRasterViews[0].sha256.replace(/^sha256:/,''))
+    aRecord=bind(correctedA+'FIRST.corrected-V995.json')
+    bRecord=bind(correctedB+'FIRST.corrected-V995.actual.json')
+    notesA=correctedVerdictA.findings.map((f:any)=>f.observation).join(' ')
+    notesB=Object.values(correctedVerdictB.scientificChecks).join(' ')
+  } else {
+    assert.equal(rowB.decision,'KEEP')
+    assert.equal(image.sha256,rowA.rasterSightingsExactRetention[0].current.sha256.replace(/^sha256:/,''))
+    assert.equal(image.sha256,rowB.actualOriginalPNG.sha256.replace(/^sha256:/,''))
+    aRecord=bind(a+'FIRST.assessments.json')
+    bRecord=bind(b+'visual-FIRST.independent.verdict.json')
+    notesA=rowA.visualAssessment
+    notesB=rowB.scientificActualPixelAssessment
+  }
+  visualRows.push({goalId:id,asset:image,twoActualIndependentReviews:[aRecord,bRecord],actualOriginal360And680Reviewed:true,notesA,notesB,decision:'KEEP',humanApproval:false})
+  for (const name of [id+'.png','prompt.de.md','image-reconstruction-prompt.de.md','actual-generation.provenance.json','actual-provider-prompt.txt','actual-provider-edit-prompt.txt']) {
+    if (!existsSync(from+name)) continue
+    const destinations = name.endsWith('.png')
+      ? ['curricula/DE/Gymnasium/visualizations/biologie/'+id+'/'+name,'app/public/assets/goal-visualizations/biologie/'+id+'/'+name,'backend/src/main/resources/static/assets/goal-visualizations/biologie/'+id+'/'+name]
+      : ['curricula/DE/Gymnasium/visualizations/biologie/'+id+'/'+name]
+    for (const to of destinations) {
+      if (existsSync(to)) assert.equal(sha(readFileSync(to)),sha(readFileSync(from+name)),to)
+      copies.push({from:bind(from+name),to,alreadyExact:existsSync(to)})
+    }
+  }
+}
+put(own+'visual-eight-actual-independent-pairs.technical.json',{schemaVersion:1,assembledAt:new Date().toISOString(),role:'Technical exact binding of existing actual independent V judgments; no third scientific review',records:visualRows,activeWrites:false,humanApproval:false,strictNetGain:0})
+const sourceEntry=read(source+'neutral-current3312-authored-source-and-native-one.independent-review.entry.json')
+const mappingPath=sourceEntry.neutralWholeFirstInputs.wholeCurrentOperative144MappingCandidate.path
+const mapping=read(mappingPath)
+const extraction=read(mapping.sourceExtractionPath)
+const goal=candidate.goals.find((g:any)=>g.id===titleId)
+const sourceId=goal.extendedData.provenance.sourceGoalId
+const decisions=mapping.decisions.filter((d:any)=>d.sourceGoalId===sourceId && d.decision==='mapped' && d.canonicalGoalIds.includes(titleId))
+const sourceGoals=extraction.sourceGoals.filter((g:any)=>g.id===sourceId)
+assert.equal(decisions.length,1);assert.equal(sourceGoals.length,1)
+const sourceAuditPath=own+'current3312-genuine-dual-reviewed-source-binding.audit.json'
+put(sourceAuditPath,{
+  schemaVersion:1,auditContract:'current-canonical-binding-audit-v1',subject:'Biologie',landscapePath:canon,
+  reviewedAt:new Date().toISOString(),reviewAuthority:'ai_targeted_revalidation',humanApprovalClaim:false,
+  records:[{goalId:titleId,canonicalGoalDigest:sha(stableGoalBookJson(goal)),sourceGoalId:sourceId,mappingPath,
+    sourceDecisionDigest:sha(stableGoalBookJson(decisions[0])),sourceExtractionPath:mapping.sourceExtractionPath,
+    sourceGoalDigest:sha(stableGoalBookJson(sourceGoals[0])),decision:'pass',
+    findingDe:'Technische Bindung der zwei tatsächlichen aktuellen unabhängigen A/B-Quellen- und Native1-Prüfungen:8229 ist ausdrücklich eigene begrenzte Operationalisierung, die einzelne3312-Kante partial. Amtliche HE-Seite40 stützt das Prinzip, nicht eine amtliche Simulationspflicht. Beide haben Original-PDF, phys2/38/40 und aktuelle ganze HTML/PDF-Seite selbst geprüft. Unveränderte Fälle und Transfergrenzen tragen den beschreibenden Zieltext. Keine gesamte Q1.5-, Hox-, Kurs-, Rechts- oder menschliche Freigabe; ursprünglicher B8-Befund bleibt historisch unverändert.'}],
+  actualIndependentScientificReviews:[bind(base+'biologie-3312-authored-source-native-independent-a-20261010-v1/3312-current-source-native.independent-a.actual-FIRST.json'),bind(base+'biologie-3312-authored-source-native-independent-b-20261010-v1/FIRST.independent.verdict.json')],
+  newScientificReviewByTechnicalIntegrator:false,humanTrial:false,
+})
+const nextRegistry=read(own+'candidate/registry.eight-reviewed.future-active.json')
+const bio=nextRegistry.subjects.find((s:any)=>s.subject==='biologie')
+assert.ok(!bio.currentCanonicalBindingAuditGoalIds.includes(titleId))
+bio.currentCanonicalBindingAuditGoalIds.push(titleId)
+bio.currentCanonicalBindingAuditPaths.push(sourceAuditPath)
+put(own+'candidate/registry.eight-reviewed-with-current-source-audit.future-active.json',nextRegistry)
+const beforeQA=read(qaPath)
+put(own+'inputs/qa.before-eight.exact.json',readFileSync(qaPath))
+put(own+'selected-asset-copies.before-adoption.actual.json',{schemaVersion:1,copies,activeWrites:false,originalPNGBytesPreserved:true,inspectionThumbnailsNotRuntimeAssets:true,humanApproval:false})
+const before=activePaths.map(bind).concat([bind(qaPath)])
+for (const copy of copies) {
+  mkdirSync(dirname(copy.to),{recursive:true})
+  writeFileSync(copy.to,readFileSync(copy.from.path))
+  assert.equal(bind(copy.to).sha256,copy.from.sha256)
+}
+put(canon,readFileSync(own+'candidate/whole479-eight-reviewed.inactive.json'),false)
+put(kindsPath,kinds,false)
+put(registryPath,nextRegistry,false)
+put(atlasPath,read(own+'candidate/atlas.future-active.inputs.json'),false)
+const cmd=['app/scripts/generateGoalVisualizationQaLedgers.ts','--subject=biologie']
+const qaRun=spawnSync('app/node_modules/.bin/tsx',cmd,{encoding:'utf8'})
+put(own+'normal-qa-generation.stdout.actual.txt',Buffer.from(qaRun.stdout??''))
+put(own+'normal-qa-generation.stderr.actual.txt',Buffer.from(qaRun.stderr??''))
+put(own+'normal-qa-generation.terminal.actual.json',{schemaVersion:1,completedAt:new Date().toISOString(),command:['app/node_modules/.bin/tsx',...cmd],exitCode:qaRun.status})
+assert.equal(qaRun.status,0)
+const nextQA=read(qaPath)
+for (const row of visualRows) {
+  const target=nextQA.records.find((q:any)=>q.goalId===row.goalId)
+  assert.equal(target.assetSha256,'sha256:'+row.asset.sha256)
+  target.aiApproved='yes'
+  target.aiApprovedAssetSha256=target.assetSha256
+  target.aiReviewedAt=new Date().toISOString()
+  target.aiReviewer='Two actual independent machine reviewers; technical integration only'
+  target.aiNotes='A: '+row.notesA+' B: '+row.notesB+' Actual original,360/680 reviewed; exact independent judgment records: '+row.twoActualIndependentReviews.map((r:any)=>r.path).join('; ')+'. Current native D/P separately reviewed; machine only. No physical handset, human approval/trial, whole source/course/legal approval.'
+  assert.equal(target.humanApproved,'no')
+}
+const oldRecords=new Map(beforeQA.records.map((r:any)=>[r.goalId,r]))
+const changedQA=nextQA.records.filter((r:any)=>stableGoalBookJson(r)!==stableGoalBookJson(oldRecords.get(r.goalId))).map((r:any)=>r.goalId)
+assert.deepEqual([...changedQA].sort(),[...ids].sort())
+put(qaPath,nextQA,false)
+put(own+'actual-eight-reviewed-adoption.receipt.json',{
+  schemaVersion:1,adoptedAt:new Date().toISOString(),role:'Technical active adoption after actual two independent current D/P reviews and actual paired V checks',
+  goalIds:ids,wholeGoalCount:479,curricularAtomicCountBeforeAndAfter:394,changedOldGoalFields:entry.changedOldGoalFields,
+  protected315WholeGoalBodiesExact:true,original393AMLinesExactAndGenuine3312Replacement:true,
+  wholeP8ProfileBodiesAndCasesUnchanged:true,positiveStatus:'ai_candidate / needs_human_review; approved=0',
+  boundedOperative144Only8229AuthoredSourceAnd3312PartialEdge:true,separateHistorical150SelectedOrOverwritten:false,
+  otherSubjectRegistryObjectsExact:true,visualJudgments:bind(own+'visual-eight-actual-independent-pairs.technical.json'),
+  sourceAudit:bind(sourceAuditPath),beforeActiveBindings:before,afterActiveBindings:before.map(b=>bind(b.path)),
+  whole315ProtectedAndOtherSubjectStrictSetsRequireActualCentralConfirmation:true,
+  newScientificClosuresCountPendingCentralConfirmation:true,newStrictCompletionsClaim:0,restoredBindingCount:0,
+  fullCurrentCentralAndMaturityAndLayerAChecksPending:true,humanApproval:false,humanTrial:false,actualLearnerEvidence:false,
+})
+console.log(JSON.stringify({adoptedReviewedEight:true,normalQAGeneration:'PASS',changedQARows:changedQA,denominator:394,strictReportPending:true,humanApproval:false}))

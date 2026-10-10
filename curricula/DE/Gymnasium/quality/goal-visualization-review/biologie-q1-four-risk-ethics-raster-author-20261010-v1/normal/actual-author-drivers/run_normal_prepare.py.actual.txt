@@ -1,0 +1,40 @@
+import hashlib
+import json
+import shutil
+import subprocess
+from datetime import datetime, timezone
+from pathlib import Path
+
+ROOT=Path('/home/enpasos/projects/skillpilot')
+OUT=ROOT/'curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-four-risk-ethics-raster-author-20261010-v1'
+CAP=ROOT/'tmp/bio-four-risk-author-20261010-v1/normal-helper-capsule'
+PROVIDER='OpenAI image generation via Codex built-in image_gen'
+CAP.mkdir(parents=True,exist_ok=False)
+
+def bind(p):
+    b=p.read_bytes()
+    return {'path':p.relative_to(ROOT).as_posix(),'sha256':hashlib.sha256(b).hexdigest(),'bytes':len(b)}
+
+helpers=[]
+for f in ['prepare_goal_visualization.mjs','import_goal_visualization.mjs','goal_visualization_common.mjs','check_goal_visualization_assets.mjs','config/historical-goal-visualization-assets.json']:
+    src=ROOT/'scripts'/f;dst=CAP/'scripts'/f;dst.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(src,dst);assert src.read_bytes()==dst.read_bytes();helpers.append(bind(src))
+history=json.loads((CAP/'scripts/config/historical-goal-visualization-assets.json').read_text())
+for item in history['assets']:
+    for base in ['curricula/DE/Gymnasium/visualizations','app/public/assets/goal-visualizations','backend/src/main/resources/static/assets/goal-visualizations']:
+        src=ROOT/base/item['path'];dst=CAP/base/item['path'];dst.parent.mkdir(parents=True,exist_ok=True);shutil.copyfile(src,dst);assert hashlib.sha256(dst.read_bytes()).hexdigest()==item['sha256']
+land=json.loads((OUT/'inputs/whole479-current-input.exact.json').read_text())
+four=json.loads((OUT/'inputs/four-whole-goal-bodies.exact.json').read_text())['records']
+land['goals']=four
+canon=CAP/'curricula/DE/Gymnasium/canonical/four-current-goals.inactive.json';canon.parent.mkdir(parents=True,exist_ok=True);canon.write_text(json.dumps(land,ensure_ascii=False,indent=2)+'\n')
+normal=OUT/'normal';normal.mkdir()
+for g in four:
+    cmd=['node','scripts/prepare_goal_visualization.mjs',g['id'],'--landscape',str(canon),'--subject','biologie','--lang','de','--provider',PROVIDER,'--review-status','ai_candidate']
+    start=datetime.now(timezone.utc).isoformat();r=subprocess.run(cmd,cwd=CAP,capture_output=True,text=True)
+    prefix=normal/(g['id']+'.prepare')
+    Path(str(prefix)+'.stdout.actual.txt').write_text(r.stdout);Path(str(prefix)+'.stderr.actual.txt').write_text(r.stderr)
+    Path(str(prefix)+'.terminal.actual.json').write_text(json.dumps({'schemaVersion':'1.0','role':'actual-normal-prepare-in-isolated-capsule','command':cmd,'cwd':CAP.relative_to(ROOT).as_posix(),'startedAt':start,'finishedAt':datetime.now(timezone.utc).isoformat(),'exitCode':r.returncode,'helperBindings':helpers,'activeWrites':False},ensure_ascii=False,indent=2)+'\n')
+    assert r.returncode==0,r.stderr
+    shutil.copyfile(CAP/'tmp/goal-visualizations'/g['id']/'nano-banana-prompt.de.md',OUT/'assets/biologie'/g['id']/'normal-prepared-prompt-package.de.md')
+    shutil.copyfile(CAP/'tmp/goal-visualizations'/g['id']/'metadata.json',OUT/'assets/biologie'/g['id']/'normal-prepared-metadata.json')
+(OUT/'normal/prepare-capsule-inputs.actual.json').write_text(json.dumps({'schemaVersion':'1.0','role':'normal-helper-four-goal-capsule-boundary','helperBindings':helpers,'historicalManifestExactCopies':len(history['assets'])*3,'candidateGoalIds':[g['id'] for g in four],'normalPrepareExitZeroCount':4,'checkScope':'only four new asset references plus mandatory historical manifest; not an independent V approval or whole curriculum QA','activeWrites':False},ensure_ascii=False,indent=2)+'\n')
+print(json.dumps({'normalPrepare':'4/4 PASS','capsule':str(CAP.relative_to(ROOT))}))

@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "Apache-2.0 additive own final seal, no scientific or Human gate promotion",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "role",
+    "sealedAt",
+    "finalEntry",
+    "originalFIRSTsUnchanged",
+    "ownCurrentRegularFileBindings",
+    "currentStableRequiredExternalRegularBindings",
+    "pastActiveBeforeStateIsDiagnosticOnly",
+    "originalFCCMaterialDissentPreserved",
+    "currentFCCActualBothKEEP",
+    "activePFullCLIPendingAdoption",
+    "activeWrites",
+    "humanApproval",
+    "newStrictCompletions",
+    "restoredActiveBindings",
+    "strictNetGain"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer"
+    },
+    "role": {
+      "type": "string"
+    },
+    "sealedAt": {
+      "type": "string"
+    },
+    "finalEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "originalFIRSTsUnchanged": {
+      "const": true
+    },
+    "ownCurrentRegularFileBindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "currentStableRequiredExternalRegularBindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "pastActiveBeforeStateIsDiagnosticOnly": {
+      "const": true
+    },
+    "originalFCCMaterialDissentPreserved": {
+      "const": true
+    },
+    "currentFCCActualBothKEEP": {
+      "const": true
+    },
+    "activePFullCLIPendingAdoption": {
+      "const": true
+    },
+    "activeWrites": {
+      "const": false
+    },
+    "humanApproval": {
+      "const": false
+    },
+    "newStrictCompletions": {
+      "type": "integer"
+    },
+    "restoredActiveBindings": {
+      "type": "integer"
+    },
+    "strictNetGain": {
+      "type": "integer"
+    }
+  }
+}

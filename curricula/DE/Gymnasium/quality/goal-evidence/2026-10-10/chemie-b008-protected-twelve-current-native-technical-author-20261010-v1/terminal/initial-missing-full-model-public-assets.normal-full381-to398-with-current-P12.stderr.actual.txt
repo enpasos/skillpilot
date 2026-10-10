@@ -1,0 +1,19 @@
+node:internal/fs/promises:637
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-protected-twelve-native-author/isolated-normal-capsule/app/public/assets/goal-visualizations/chemie/801790f9-be3a-51fe-9b0f-3452c1bba887/801790f9-be3a-51fe-9b0f-3452c1bba887.png'
+    at async open (node:internal/fs/promises:637:25)
+    at async readFile (node:internal/fs/promises:1249:14)
+    at async <anonymous> (/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-protected-twelve-native-author/isolated-normal-capsule/app/scripts/goalBookModel.ts:2594:36)
+    at async Promise.all (index 0)
+    at async loadGoalVisualizationAssetDigests (/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-protected-twelve-native-author/isolated-normal-capsule/app/scripts/goalBookModel.ts:2567:3)
+    at async loadGoalBookBuildInputs (/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-protected-twelve-native-author/isolated-normal-capsule/app/scripts/goalBookModel.ts:2756:41)
+    at async <anonymous> (/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-protected-twelve-native-author/normal_full_models_and_binding_proof.mts:12:14) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-protected-twelve-native-author/isolated-normal-capsule/app/public/assets/goal-visualizations/chemie/801790f9-be3a-51fe-9b0f-3452c1bba887/801790f9-be3a-51fe-9b0f-3452c1bba887.png'
+}
+
+Node.js v20.20.2

@@ -1,0 +1,141 @@
+import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
+import { resolve } from 'node:path'
+import { fingerprintSemanticKindSourceGoal, stableGoalBookJson } from '../../app/scripts/goalBookModel.ts'
+
+const root = resolve('.')
+const base = 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/'
+const author = base + 'chemie-q3-three-BW-practical-terminal-route-author-candidate-v1/'
+const first = base + 'chemie-q3-three-BW-practical-terminal-native-independent-a-20261010-v1/'
+const second = base + 'chemie-q3-three-BW-practical-terminal-route-independent-b-20261010-v1/'
+const dual = base + 'chemie-q3-three-BW-terminal-context-dual-resolution-technical-successor-v1/'
+const out = base + 'chemie-q3-three-reviewed-active-integration-technical-v1/terminal-route-adoption/'
+const canonical = 'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json'
+const semantic = 'curricula/DE/Gymnasium/quality/goal-book-publication/chemie.semantic-kinds.json'
+const registry = 'curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json'
+const originalIndex = base + 'chemie-q3-three-BW-current-native-dual-resolution-technical-candidate-20261010-v1/native-d-three-current/resolution-index.json'
+const replacementIndex = dual + 'native-d-three-current/resolution-index.json'
+const read = (path: string): any => JSON.parse(readFileSync(resolve(root, path), 'utf8'))
+const sha = (bytes: Buffer) => 'sha256:' + createHash('sha256').update(bytes).digest('hex')
+const bind = (path: string) => { const b = readFileSync(path); return { path, sha256: sha(b), bytes: b.length } }
+const verify = (value: any): void => {
+  if (Array.isArray(value)) { value.forEach(verify); return }
+  if (!value || typeof value !== 'object') return
+  if (typeof value.path === 'string' && typeof value.sha256 === 'string') {
+    const actual = bind(value.path)
+    assert.equal(actual.sha256, 'sha256:' + value.sha256.replace(/^sha256:/, ''), value.path)
+    if (value.bytes !== undefined) assert.equal(actual.bytes, value.bytes, value.path)
+  }
+  Object.values(value).forEach(verify)
+}
+assert.equal(existsSync(out), false, 'Preserve any previous adoption evidence')
+verify(read(first + 'independent-a.final.freeze.json'))
+verify(read(second + 'FIRST.independent.final.freeze.json'))
+verify(read(dual + 'terminal-context-dual.technical.final.freeze.json'))
+const verdictA = read(first + 'FIRST.whole-three-tasks-and-current-native.verdict.json')
+const verdictB = read(second + 'FIRST.independent.verdict.json')
+assert.equal(verdictA.decisions.length, 3)
+assert.ok(verdictA.decisions.every((v: any) => v.taskDecision === 'KEEP' && v.currentDescriptionAndNativeDecision === 'KEEP'))
+assert.deepEqual(verdictB.newTaskContentDecisions, ['KEEP', 'KEEP', 'KEEP'])
+assert.deepEqual(verdictB.normalDescriptionContextDecisions, ['keep', 'keep', 'keep'])
+assert.deepEqual(verdictB.findings, [])
+assert.equal(verdictB.normalBRecordValidationActualExit0, true)
+const prior = read(canonical)
+const priorKinds = read(semantic)
+assert.equal(stableGoalBookJson(prior), stableGoalBookJson(read(author + 'inputs/whole484-active-canonical.exact.json')))
+assert.equal(stableGoalBookJson(priorKinds), stableGoalBookJson(read(author + 'inputs/whole484-381-active-semantic-kinds.exact.json')))
+const final = read(author + 'candidate/whole487-381-plus-three-practical-terminals.inactive.json')
+const kinds = read(author + 'candidate/whole487-381.semantic-kinds.inactive.json')
+const entry = read(author + 'neutral-three-BW-practical-terminal-current-native.independent-review.entry.json')
+const assessmentIds: string[] = entry.newAssessmentGoalIds
+const ordinaryIds: string[] = entry.ordinaryGoalIds
+const oldById = new Map(prior.goals.map((g: any) => [g.id, g]))
+const newById = new Map(final.goals.map((g: any) => [g.id, g]))
+assert.equal(prior.goals.length, 484)
+assert.equal(final.goals.length, 487)
+const changedOld = prior.goals.filter((g: any) => stableGoalBookJson(g) !== stableGoalBookJson(newById.get(g.id)))
+assert.deepEqual(changedOld.map((g: any) => g.id), ['8ee41a31-2b8e-5dd5-9496-86aab61cdf27'])
+const parent = newById.get(changedOld[0].id) as any
+const changedParentFields = Object.keys(parent).filter(k => stableGoalBookJson(parent[k]) !== stableGoalBookJson(changedOld[0][k]))
+assert.deepEqual(changedParentFields.sort(), ['applicability', 'contains'])
+const reviewReferences = [
+  bind(first + 'FIRST.whole-three-tasks-and-current-native.verdict.json'),
+  bind(second + 'FIRST.independent.verdict.json'),
+]
+for (const id of assessmentIds) {
+  const goal = newById.get(id) as any
+  assert.equal(oldById.has(id), false)
+  assert.equal(goal.examData.reviewStatus, 'needs_review')
+  const examinedTask = structuredClone(goal.examData)
+  goal.examData.reviewStatus = 'released'
+  goal.examData.reviewNote = 'Machine-only task content readiness after two actual independent whole DE/EN task, solution, rubric and current native-context KEEP reviews. The immutable author source is retained. This does not establish human approval, classroom trial or actual learner execution. Actual verifiable supervised execution remains indispensable to the 10/10 pass.'
+  delete goal.extendedData.authorCandidateBoundary
+  goal.extendedData.machineContentReview = {
+    role: 'Two completed independent current machine task-content reviews',
+    independentCurrentTaskReviews: 2,
+    reviews: reviewReferences,
+    actualLearnerPerformanceClaimed: false,
+    humanReleaseOrTrial: false,
+  }
+  const unchangedTask = structuredClone(goal.examData)
+  unchangedTask.reviewStatus = examinedTask.reviewStatus
+  unchangedTask.reviewNote = examinedTask.reviewNote
+  assert.equal(stableGoalBookJson(unchangedTask), stableGoalBookJson(examinedTask))
+  const decision = kinds.decisions.find((d: any) => d.goalId === id)
+  assert.equal(decision.semanticKind, 'practiceAssessment')
+  decision.sourceFingerprint = fingerprintSemanticKindSourceGoal(goal)
+}
+kinds.sourceLandscapePath = canonical
+for (const decision of kinds.decisions) {
+  assert.equal(decision.sourceFingerprint, fingerprintSemanticKindSourceGoal(newById.get(decision.goalId) as any))
+}
+assert.equal(kinds.counts.curricularAtomic, 381)
+assert.equal(kinds.counts.total, 487)
+for (const id of ordinaryIds) assert.equal(stableGoalBookJson(oldById.get(id)), stableGoalBookJson(newById.get(id)))
+const oldRegistry = read(registry)
+const nextRegistry = structuredClone(oldRegistry)
+const chemistry = nextRegistry.subjects.find((s: any) => s.subject === 'chemie')
+assert.ok(chemistry.resolutionIndexPaths.includes(originalIndex))
+assert.equal(chemistry.resolutionIndexPaths.includes(replacementIndex), false)
+chemistry.resolutionIndexPaths.push(replacementIndex)
+for (const goalId of ordinaryIds) chemistry.resolutionSupersessions.push({ goalId, supersededIndexPath: originalIndex, replacementIndexPath: replacementIndex })
+for (const oldSubject of oldRegistry.subjects.filter((s: any) => s.subject !== 'chemie')) {
+  assert.equal(stableGoalBookJson(oldSubject), stableGoalBookJson(nextRegistry.subjects.find((s: any) => s.subject === oldSubject.subject)))
+}
+const views = ['gk', 'lk'].map(course => {
+  const active = `curricula/DE/Gymnasium/composition-views/chemie/de-bw-${course}.view.json`
+  assert.equal(stableGoalBookJson(read(active)), stableGoalBookJson(read(author + `views/original-de-bw-${course}.view.exact.json`)))
+  return { active, final: read(author + `views/candidate-de-bw-${course}.view.inactive.json`) }
+})
+mkdirSync(out, { recursive: true })
+const put = (path: string, value: any) => writeFileSync(path, JSON.stringify(value, null, 2) + '\n')
+put(out + 'whole484.before-canonical.exact.json', prior)
+put(out + 'whole484-381.before-kinds.exact.json', priorKinds)
+put(out + 'registry.before-context-supersession.exact.json', oldRegistry)
+for (const view of views) put(out + view.active.split('/').at(-1) + '.before.exact.json', read(view.active))
+put(out + 'whole487-381.after-reviewed-machine-release.json', final)
+put(out + 'whole487-381.after-current-semantic-kinds.json', kinds)
+put(out + 'registry.after-context-supersession.json', nextRegistry)
+const before = [canonical, semantic, registry, ...views.map(v => v.active)].map(bind)
+put(canonical, final)
+put(semantic, kinds)
+for (const view of views) put(view.active, view.final)
+put(registry, nextRegistry)
+put(out + 'actual-reviewed-machine-content-and-context-adoption.receipt.json', {
+  schemaVersion: 1, adoptedAt: new Date().toISOString(), role: 'Technical adoption after actual independent A and B',
+  currentContentGoalCountBefore: 381, currentContentGoalCountAfter: 381,
+  canonicalNodesBefore: 484, canonicalNodesAfter: 487, newPracticeAssessmentGoalIds: assessmentIds,
+  changedOldGoalId: changedOld[0].id, changedOldFields: changedParentFields,
+  whole381OrdinaryGoalBodiesExact: true, reviewedTaskAndSolutionAndRubricBodiesExact: true,
+  source126DutiesAnd220EdgesUntouched: true, reviewedImagesUntouched: true,
+  twoActualIndependentCurrentReviews: reviewReferences,
+  machineContentStatus: 'released', currentDescriptionsSupersededAdditively: ordinaryIds,
+  originalResolutionHistoryRetained: bind(originalIndex), replacementResolutionIndex: bind(replacementIndex),
+  otherSubjectRegistryObjectsExact: true, BWNewPracticeTargets: {GK:1,LK:3,SekI:0,HE:0,BY:0},
+  beforeActiveBindings: before, afterActiveBindings: before.map(b => bind(b.path)),
+  restoredBindingCount: 3, newCurricularScientificClosuresThisRouteAdoption: 0, strictNetGainClaim: 0,
+  fullCurrentCentralReportAndMaturityFloorsPending: true,
+  actualLearnerPerformance: false, humanApproval: false, humanReleaseOrTrial: false,
+})
+console.log(JSON.stringify({ adopted: true, nodes: 487, curricularAtomic: 381, newPracticeAssessment: 3, reviewStatus: 'released', affectedCurrentContextIds: ordinaryIds, protectedFloorCheckPending: true }))

@@ -1,0 +1,686 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-10-10T05:48:48.196479+00:00",
+  "role": "Stable technical integration checkpoint after actual completed normal checks; not another scientific review",
+  "exactStrictIDComparison": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/current335-exact-strict-ID-gain-and-protected-subjects.actual.json",
+    "sha256": "sha256:25b13cfb99333bf5a38702cd1a41a7fa2fdb813c80b9ea9b36be2801b2df1f87",
+    "bytes": 222713
+  },
+  "actualReviewedAdoption": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/actual-reviewed-eight-active-adoption.receipt.json",
+    "sha256": "sha256:c8acaac1eabad75ef46f5c05fca6921a42cc1bd427469e2bc8755233d077639d",
+    "bytes": 28701
+  },
+  "requiredSuccessfulNormalTerminals": [
+    {
+      "label": "central-current394-eight-check",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/central-current394-eight-check.terminal.actual.json",
+        "sha256": "sha256:63e3f92b2729b7dd944fb03037c41266f04311025aee2d3efbe0d6550008d354",
+        "bytes": 724
+      },
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/reportDeepUnderstandingRollout.ts",
+        "--mode=check",
+        "--format=json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 135.424,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/central-current394-eight-check.stdout.actual.txt",
+        "sha256": "sha256:4edeeb4ed75b639bd5548a7860a2be4b2c59a2d347f8eda48113ff0f832243e8",
+        "bytes": 220584
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/central-current394-eight-check.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "full-curriculum-status-current335",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/full-curriculum-status-current335.terminal.actual.json",
+        "sha256": "sha256:4b3a9f00b68203e2c9291ade65d6894c2e794e7e84d1e4328dd8c7364c09b953",
+        "bytes": 685
+      },
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:curriculum-status"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 171.658,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/full-curriculum-status-current335.stdout.actual.txt",
+        "sha256": "sha256:235adf6efbe6608f81a811587538d3d120c78c9b0f2ede4241335a0e95d0888e",
+        "bytes": 218494
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/full-curriculum-status-current335.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "maturity-floors-current335",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/maturity-floors-current335.terminal.actual.json",
+        "sha256": "sha256:cf6f8e603f482b639382a7c2693c765b37f851cfefa8b85b7a61900ca3fc705b",
+        "bytes": 675
+      },
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:curriculum-maturity-floors"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.54,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/maturity-floors-current335.stdout.actual.txt",
+        "sha256": "sha256:79eb428ac49e14daefaba0823adafe716335c4fbcaf3adf014213ca25d176ac6",
+        "bytes": 158
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/maturity-floors-current335.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "normal-source-atlas394-active-build",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/normal-source-atlas394-active-build.terminal.actual.json",
+        "sha256": "sha256:70671eb70fb5b694334a0bc221eb60b924dc7335255dd657adb9fdd19cc8ab40",
+        "bytes": 785
+      },
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.77,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/normal-source-atlas394-active-build.stdout.actual.txt",
+        "sha256": "sha256:2aa83ad3ae371a0ed8bd56e1d48db253315d6a4321cda57e937fcf371fe2b06e",
+        "bytes": 176
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/normal-source-atlas394-active-build.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "normal-source-atlas394-active-check",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/normal-source-atlas394-active-check.terminal.actual.json",
+        "sha256": "sha256:ee7830cbe66198f8c4faee870434c8f67ca0c9f15e2e2e06e93af85898e21f28",
+        "bytes": 801
+      },
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json",
+        "--check"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.998,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/normal-source-atlas394-active-check.stdout.actual.txt",
+        "sha256": "sha256:ae52f418b8a70cb9c56e0c9cc4fd4a2b9133ed37442a51fad5b36d9be858f485",
+        "bytes": 171
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/normal-source-atlas394-active-check.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "normal-P7-active-check",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/normal-P7-active-check.terminal.actual.json",
+        "sha256": "sha256:d309b8e3c2e24c264f2c7ab52de83033e02cc9c2d3c68a93ba177901c9a08577",
+        "bytes": 882
+      },
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-frog-adult-targeted-raster-native-author-successor-v2/positive/7-future-active.P.inactive.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.758,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/normal-P7-active-check.stdout.actual.txt",
+        "sha256": "sha256:d00c5fa981cfac5ecc9ac9173cf3a5d5879eebca90f36341cec0e760a3ec4cf3",
+        "bytes": 289
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/normal-P7-active-check.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "normal-P1-active-check",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/normal-P1-active-check.terminal.actual.json",
+        "sha256": "sha256:608caf54d3b7fb68264976d94c10dd21a97fc3ec9d18eca6921ca551adc333b1",
+        "bytes": 882
+      },
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-frog-adult-targeted-raster-native-author-successor-v2/positive/1-future-active.P.inactive.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.693,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/normal-P1-active-check.stdout.actual.txt",
+        "sha256": "sha256:cdab8892e17c7c84d658165b3d3bff32fe882b79062a5fe8c0c2d25def4b11ee",
+        "bytes": 298
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/normal-P1-active-check.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "normal-QA8-current-ledger-check",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/normal-QA8-current-ledger-check.terminal.actual.json",
+        "sha256": "sha256:bd97a668338b883404b549db075d3bd78e681e4f9c9a6c360bbec89d8f381526",
+        "bytes": 728
+      },
+      "command": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "--subject=biologie",
+        "--check"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 2.641,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/normal-QA8-current-ledger-check.stdout.actual.txt",
+        "sha256": "sha256:d5dd066915f98b2427bd60be89081b04791f6d28b0b13da4fa0fdbbbcca23b84",
+        "bytes": 66
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/normal-QA8-current-ledger-check.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "normal-goal-visualization-assets-current2308-check",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/normal-goal-visualization-assets-current2308-check.terminal.actual.json",
+        "sha256": "sha256:1464769207e6ef655fa19b056c5e0c3929a29e085f5ca6174be3185f0082ee90",
+        "bytes": 723
+      },
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-visualization-assets"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 37.31,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/normal-goal-visualization-assets-current2308-check.stdout.actual.txt",
+        "sha256": "sha256:04b904a6fd777155c6ec354a20c0f72335abb04497f2d2a6b2be6a1d7c2d395a",
+        "bytes": 182
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/normal-goal-visualization-assets-current2308-check.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "normal-LayerA-current2308-check",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/normal-LayerA-current2308-check.terminal.actual.json",
+        "sha256": "sha256:7d16470220cf9e5777b7ffaa300aafb668ea99ace796f8d4e305d86e75f68065",
+        "bytes": 661
+      },
+      "command": [
+        "node",
+        "scripts/check_ai_transparency_inventory.mjs"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 25.967,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/normal-LayerA-current2308-check.stdout.actual.txt",
+        "sha256": "sha256:27b843efd2647f794d41da42fa9755e6303e5f05ae8afa60e9d712254e00a566",
+        "bytes": 175
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/normal-LayerA-current2308-check.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "schema-current335",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/schema-current335.terminal.actual.json",
+        "sha256": "sha256:20e3a6a75d57d697979ae1743d3ac78ea1f7be6126c351cb475e3d5d1499e0ca",
+        "bytes": 621
+      },
+      "command": [
+        "python3",
+        "scripts/validate_schemas.py"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 128.378,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/schema-current335.stdout.actual.txt",
+        "sha256": "sha256:b5fb83e1c5d8c6eb45c02bc163fb302b3d9bee045a4de87fbf8376558864ba09",
+        "bytes": 180
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/schema-current335.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "five-goal-books-current335",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/five-goal-books-current335.terminal.actual.json",
+        "sha256": "sha256:7e1546d73966bce698ead9756785b705edccfdbf768cf568d13415600fa9396f",
+        "bytes": 662
+      },
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "build:goal-books"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 181.798,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/five-goal-books-current335.stdout.actual.txt",
+        "sha256": "sha256:6a29e02f8f628566c78e48ab567e0465e9be8f1c70f2226d76654f04a26afded",
+        "bytes": 1007
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/five-goal-books-current335.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "generated-status-current335",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/generated-status-current335.terminal.actual.json",
+        "sha256": "sha256:d47086e7545cb5d14d2148a6adb80d7018a64ec71cec58c2bcc639505efb39ce",
+        "bytes": 677
+      },
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:generated-status-registry"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.822,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/generated-status-current335.stdout.actual.txt",
+        "sha256": "sha256:b9d70d7acf26466f4103877c96568903885fd8497ad661b72e597be4de75c626",
+        "bytes": 153
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/generated-status-current335.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "generated-doc-notices-current335",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/generated-doc-notices-current335.terminal.actual.json",
+        "sha256": "sha256:9b4526b56ef96f56ac7b1ed02900a54fc6f473aeb13e475d1cb6b25b10465d2b",
+        "bytes": 683
+      },
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:generated-doc-notices"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.643,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/generated-doc-notices-current335.stdout.actual.txt",
+        "sha256": "sha256:26c59b1f654b49747e87e01b207816aeef623ac48c71177f6d7a1b9ed459d2d7",
+        "bytes": 149
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/generated-doc-notices-current335.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ],
+  "successfulNormalTerminalCount": 14,
+  "currentStatus": {
+    "path": "docs/qa-ci/status/curriculum-quality-status.json",
+    "sha256": "sha256:50400ea50111cc44231136e5d42bd286991880a5f24c4e2ff639e6ac1fd81665",
+    "bytes": 2777816
+  },
+  "actualMaturityAndCQR303": {
+    "Biologie": {
+      "maturity": "M6",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "warn",
+        "summary": "Deep curriculum QA is incomplete: 335/394 current curricularAtomic goals strictly complete.",
+        "metrics": {
+          "expectedGoals": 394,
+          "remaining": 59,
+          "strictComplete": 335,
+          "currentDescriptionResolutions": 335,
+          "currentPositiveEvidenceProfiles": 335,
+          "currentSemanticAtomicityDecisions": 394,
+          "currentMemoryReviewDecisions": 394,
+          "currentVisualizationQaRecords": 335,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      },
+      "humanTrialBlockingFindings": 1
+    },
+    "Chemie": {
+      "maturity": "M6",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "warn",
+        "summary": "Deep curriculum QA is incomplete: 180/381 current curricularAtomic goals strictly complete.",
+        "metrics": {
+          "expectedGoals": 381,
+          "remaining": 201,
+          "strictComplete": 180,
+          "currentDescriptionResolutions": 180,
+          "currentPositiveEvidenceProfiles": 180,
+          "currentSemanticAtomicityDecisions": 208,
+          "currentMemoryReviewDecisions": 381,
+          "currentVisualizationQaRecords": 362,
+          "deferredVisualizations": 17,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        },
+        "details": [
+          "17 current goals have deferred necessary visualization work; technical provider deferrals do not complete gate V."
+        ]
+      },
+      "humanTrialBlockingFindings": 0
+    },
+    "Mathematik": {
+      "maturity": "M7",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 807 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 807,
+          "remaining": 0,
+          "strictComplete": 807,
+          "currentDescriptionResolutions": 807,
+          "currentPositiveEvidenceProfiles": 807,
+          "currentSemanticAtomicityDecisions": 807,
+          "currentMemoryReviewDecisions": 807,
+          "currentVisualizationQaRecords": 807,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      },
+      "humanTrialBlockingFindings": 0
+    },
+    "Physik": {
+      "maturity": "M7",
+      "CQR303": {
+        "id": "CQR-303",
+        "status": "pass",
+        "summary": "Deep curriculum QA is complete for all 478 current curricularAtomic goals.",
+        "metrics": {
+          "expectedGoals": 478,
+          "remaining": 0,
+          "strictComplete": 478,
+          "currentDescriptionResolutions": 478,
+          "currentPositiveEvidenceProfiles": 478,
+          "currentSemanticAtomicityDecisions": 478,
+          "currentMemoryReviewDecisions": 478,
+          "currentVisualizationQaRecords": 478,
+          "deferredVisualizations": 0,
+          "requiredChecksPassed": 6,
+          "requiredChecksTotal": 6,
+          "blockingIssues": 0
+        }
+      },
+      "humanTrialBlockingFindings": 0
+    }
+  },
+  "allNineProtectedMaturityFloorsPassed": true,
+  "newScientificClosures": 8,
+  "restoredPriorStrictBindings": 0,
+  "strictNetGain": 8,
+  "lostPriorStrictIDs": 0,
+  "sourceAtlas": {
+    "publishedGoals": 394,
+    "scopeViews": 24,
+    "unresolvedScopeDecisions": 0,
+    "omittedGoals": 0
+  },
+  "layerA": {
+    "visualizations": 2308,
+    "C2PAContainerMarkers": 2257,
+    "otherBoundRuntimeImages": 64,
+    "localizedCardRecords": 731,
+    "boundAudioFiles": 8
+  },
+  "schemas": {
+    "normalCheckPassed": true,
+    "checkedFiles": 57404
+  },
+  "fiveGoalBooksVerified": true,
+  "fullStableNormalChecksPending": false,
+  "globalUnrelatedFailuresRemain": [
+    {
+      "landscapeId": "25c6b527-10d6-5d92-9d76-fab23585f29b",
+      "subject": "Italienisch",
+      "rule": {
+        "id": "CQR-000",
+        "status": "fail",
+        "summary": "0/16 declared Bundesland source inventories are readable and fully registered; 0 original source URL issue(s).",
+        "metrics": {
+          "totalJurisdictions": 16,
+          "completeSourceJurisdictions": 0,
+          "emptySourceJurisdictions": 15,
+          "missingReadableSourceInventoryJurisdictions": 1,
+          "originalSourceUrlIssues": 0,
+          "sourceExtractedGoals": 0,
+          "sourceOriginalGoals": 8,
+          "sourceUnregisteredGoals": 0,
+          "sourceExtractedAtomicGoals": 0,
+          "sourceUnregisteredAtomicGoals": 0
+        },
+        "details": [
+          "DE-BY: 8 source original goal(s) are registered, but no readable source inventory goals were extracted",
+          "DE-BW: no source inventory goals are registered or extracted",
+          "DE-HE: no source inventory goals are registered or extracted",
+          "DE-BB: no source inventory goals are registered or extracted",
+          "DE-BE: no source inventory goals are registered or extracted",
+          "DE-NI: no source inventory goals are registered or extracted",
+          "DE-NW: no source inventory goals are registered or extracted",
+          "DE-SH: no source inventory goals are registered or extracted",
+          "DE-HB: no source inventory goals are registered or extracted",
+          "DE-HH: no source inventory goals are registered or extracted",
+          "DE-MV: no source inventory goals are registered or extracted",
+          "DE-RP: no source inventory goals are registered or extracted",
+          "DE-SL: no source inventory goals are registered or extracted",
+          "DE-SN: no source inventory goals are registered or extracted",
+          "DE-ST: no source inventory goals are registered or extracted",
+          "DE-TH: no source inventory goals are registered or extracted"
+        ]
+      }
+    },
+    {
+      "landscapeId": "f145785b-0c44-5246-af66-8a153d202cb9",
+      "subject": "Polnisch",
+      "rule": {
+        "id": "CQR-000",
+        "status": "fail",
+        "summary": "0/16 declared Bundesland source inventories are readable and fully registered; 0 original source URL issue(s).",
+        "metrics": {
+          "totalJurisdictions": 16,
+          "completeSourceJurisdictions": 0,
+          "emptySourceJurisdictions": 15,
+          "missingReadableSourceInventoryJurisdictions": 1,
+          "originalSourceUrlIssues": 0,
+          "sourceExtractedGoals": 0,
+          "sourceOriginalGoals": 5,
+          "sourceUnregisteredGoals": 0,
+          "sourceExtractedAtomicGoals": 0,
+          "sourceUnregisteredAtomicGoals": 0
+        },
+        "details": [
+          "DE-BY: 5 source original goal(s) are registered, but no readable source inventory goals were extracted",
+          "DE-BW: no source inventory goals are registered or extracted",
+          "DE-HE: no source inventory goals are registered or extracted",
+          "DE-BB: no source inventory goals are registered or extracted",
+          "DE-BE: no source inventory goals are registered or extracted",
+          "DE-NI: no source inventory goals are registered or extracted",
+          "DE-NW: no source inventory goals are registered or extracted",
+          "DE-SH: no source inventory goals are registered or extracted",
+          "DE-HB: no source inventory goals are registered or extracted",
+          "DE-HH: no source inventory goals are registered or extracted",
+          "DE-MV: no source inventory goals are registered or extracted",
+          "DE-RP: no source inventory goals are registered or extracted",
+          "DE-SL: no source inventory goals are registered or extracted",
+          "DE-SN: no source inventory goals are registered or extracted",
+          "DE-ST: no source inventory goals are registered or extracted",
+          "DE-TH: no source inventory goals are registered or extracted"
+        ]
+      }
+    },
+    {
+      "landscapeId": "242ba9bd-7ec7-5ec3-a15e-4f0f2b01aa37",
+      "subject": "Russisch",
+      "rule": {
+        "id": "CQR-000",
+        "status": "fail",
+        "summary": "0/16 declared Bundesland source inventories are readable and fully registered; 0 original source URL issue(s).",
+        "metrics": {
+          "totalJurisdictions": 16,
+          "completeSourceJurisdictions": 0,
+          "emptySourceJurisdictions": 15,
+          "missingReadableSourceInventoryJurisdictions": 1,
+          "originalSourceUrlIssues": 0,
+          "sourceExtractedGoals": 0,
+          "sourceOriginalGoals": 8,
+          "sourceUnregisteredGoals": 0,
+          "sourceExtractedAtomicGoals": 0,
+          "sourceUnregisteredAtomicGoals": 0
+        },
+        "details": [
+          "DE-BY: 8 source original goal(s) are registered, but no readable source inventory goals were extracted",
+          "DE-BW: no source inventory goals are registered or extracted",
+          "DE-HE: no source inventory goals are registered or extracted",
+          "DE-BB: no source inventory goals are registered or extracted",
+          "DE-BE: no source inventory goals are registered or extracted",
+          "DE-NI: no source inventory goals are registered or extracted",
+          "DE-NW: no source inventory goals are registered or extracted",
+          "DE-SH: no source inventory goals are registered or extracted",
+          "DE-HB: no source inventory goals are registered or extracted",
+          "DE-HH: no source inventory goals are registered or extracted",
+          "DE-MV: no source inventory goals are registered or extracted",
+          "DE-RP: no source inventory goals are registered or extracted",
+          "DE-SL: no source inventory goals are registered or extracted",
+          "DE-SN: no source inventory goals are registered or extracted",
+          "DE-ST: no source inventory goals are registered or extracted",
+          "DE-TH: no source inventory goals are registered or extracted"
+        ]
+      }
+    },
+    {
+      "landscapeId": "0900df4c-beeb-5542-86f9-bd479c94746a",
+      "subject": "Tschechisch",
+      "rule": {
+        "id": "CQR-000",
+        "status": "fail",
+        "summary": "0/16 declared Bundesland source inventories are readable and fully registered; 0 original source URL issue(s).",
+        "metrics": {
+          "totalJurisdictions": 16,
+          "completeSourceJurisdictions": 0,
+          "emptySourceJurisdictions": 15,
+          "missingReadableSourceInventoryJurisdictions": 1,
+          "originalSourceUrlIssues": 0,
+          "sourceExtractedGoals": 0,
+          "sourceOriginalGoals": 5,
+          "sourceUnregisteredGoals": 0,
+          "sourceExtractedAtomicGoals": 0,
+          "sourceUnregisteredAtomicGoals": 0
+        },
+        "details": [
+          "DE-BY: 5 source original goal(s) are registered, but no readable source inventory goals were extracted",
+          "DE-BW: no source inventory goals are registered or extracted",
+          "DE-HE: no source inventory goals are registered or extracted",
+          "DE-BB: no source inventory goals are registered or extracted",
+          "DE-BE: no source inventory goals are registered or extracted",
+          "DE-NI: no source inventory goals are registered or extracted",
+          "DE-NW: no source inventory goals are registered or extracted",
+          "DE-SH: no source inventory goals are registered or extracted",
+          "DE-HB: no source inventory goals are registered or extracted",
+          "DE-HH: no source inventory goals are registered or extracted",
+          "DE-MV: no source inventory goals are registered or extracted",
+          "DE-RP: no source inventory goals are registered or extracted",
+          "DE-SL: no source inventory goals are registered or extracted",
+          "DE-SN: no source inventory goals are registered or extracted",
+          "DE-ST: no source inventory goals are registered or extracted",
+          "DE-TH: no source inventory goals are registered or extracted"
+        ]
+      }
+    }
+  ],
+  "currentCommittedMainCI": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/checks/main-CI-current-committed-head27.actual.json",
+    "sha256": "sha256:ceaf1e1c0109f3e710aa0b5e45b9cb4fac42c6a19f7a30bddea80dfa0d4e1969",
+    "bytes": 6369
+  },
+  "remoteResultsCoverUncommittedWorktree": false,
+  "committedOrPushedHere": false,
+  "chemistry205of398CandidateRemainsInactiveDueToActualRouteHold": true,
+  "humanApproval": false,
+  "humanTrial": false,
+  "actualLearnerEvidence": false,
+  "humanReleaseGatesPreservedSeparately": true,
+  "document": {
+    "path": "docs/qa-ci/chemie-biologie-m7-chemie180-biologie335-integration-2026-10-10.md",
+    "sha256": "sha256:4a95f61679f42655884cbbe99c5d2f644af661633f9b94ab363f8d901c3019cc",
+    "bytes": 8119
+  }
+}

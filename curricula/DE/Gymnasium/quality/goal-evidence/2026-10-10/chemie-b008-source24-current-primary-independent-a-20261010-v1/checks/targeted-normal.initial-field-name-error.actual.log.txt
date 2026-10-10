@@ -1,0 +1,76 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected
+
++ []
+- [
+-   {
+-     courseLevel: 'unspecified',
+-     passageId: '64e24cec-2ff4-536c-8a16-aa65958162f7',
+-     sourceGoalId: '3d38d996-6769-5594-a27c-3d9fbaa811a6',
+-     sourceRef: 'LehrplanPLUS Bayern Gymnasium Chemie, C8.1.6',
+-     sourceSpan: 'C8.1.6',
+-     tags: [
+-       'jurisdiction:DE-BY',
+-       'stage:SekI',
+-       'courseLevel:unspecified',
+-       'topic:C8.1'
+-     ],
+-     topicCode: 'C8.1'
+-   },
+-   {
+-     courseLevel: 'unspecified',
+-     passageId: '87f80788-2fa0-534d-85cd-19c5f56e088f',
+-     sourceGoalId: 'a008ae82-0102-57c9-8a83-bc10276b0522',
+-     sourceRef: 'LehrplanPLUS Bayern Gymnasium Chemie, C9-HG_SG_MUG_WWG_SWG.1.6',
+-     sourceSpan: 'C9-HG_SG_MUG_WWG_SWG.1.6',
+-     tags: [
+-       'jurisdiction:DE-BY',
+-       'stage:SekI',
+-       'courseLevel:unspecified',
+-       'topic:C9-HG_SG_MUG_WWG_SWG.1'
+-     ],
+-     topicCode: 'C9-HG_SG_MUG_WWG_SWG.1'
+-   }
+- ]
+    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-a-20261010-v1/technical/check-current-source24-normal.mts:55:12) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [],
+  expected: [
+    {
+      sourceGoalId: '3d38d996-6769-5594-a27c-3d9fbaa811a6',
+      passageId: '64e24cec-2ff4-536c-8a16-aa65958162f7',
+      topicCode: 'C8.1',
+      sourceSpan: 'C8.1.6',
+      sourceRef: 'LehrplanPLUS Bayern Gymnasium Chemie, C8.1.6',
+      courseLevel: 'unspecified',
+      tags: [
+        'jurisdiction:DE-BY',
+        'stage:SekI',
+        'courseLevel:unspecified',
+        'topic:C8.1'
+      ]
+    },
+    {
+      sourceGoalId: 'a008ae82-0102-57c9-8a83-bc10276b0522',
+      passageId: '87f80788-2fa0-534d-85cd-19c5f56e088f',
+      topicCode: 'C9-HG_SG_MUG_WWG_SWG.1',
+      sourceSpan: 'C9-HG_SG_MUG_WWG_SWG.1.6',
+      sourceRef: 'LehrplanPLUS Bayern Gymnasium Chemie, C9-HG_SG_MUG_WWG_SWG.1.6',
+      courseLevel: 'unspecified',
+      tags: [
+        'jurisdiction:DE-BY',
+        'stage:SekI',
+        'courseLevel:unspecified',
+        'topic:C9-HG_SG_MUG_WWG_SWG.1'
+      ]
+    }
+  ],
+  operator: 'deepStrictEqual'
+}
+
+Node.js v20.20.2

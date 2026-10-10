@@ -1,0 +1,28 @@
+import { readFileSync, writeFileSync, existsSync } from 'node:fs'
+import { createHash } from 'node:crypto'
+import { fingerprintSemanticKindSourceGoal } from '../../app/scripts/goalBookModel'
+
+const src = 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-protected-twelve-current-native-technical-author-20261010-v1'
+const out = src.replace('technical-author', 'independent-a')
+const read = (path: string) => JSON.parse(readFileSync(path, 'utf8'))
+const bind = (path: string) => ({ path, sha256: `sha256:${createHash('sha256').update(readFileSync(path)).digest('hex')}`, bytes: readFileSync(path).byteLength })
+const inputPath = `${src}/checks/actual-full381-to398-protected180-context-deltas.json`
+const materialPath = `${src}/checks/whole12-old-records-and-current-normal-P-A-M-kind-fingerprints.actual.json`
+const firstPath = `${out}/FIRST.current-protected12-context-native.verdict.json`
+const material = new Map(read(materialPath).rows.map((r: any) => [r.goalId, r]))
+const first = new Map(read(firstPath).records.map((r: any) => [r.goalId, r]))
+const rows = read(inputPath).rows.map((row: any) => {
+  const before = fingerprintSemanticKindSourceGoal(row.wholeExactCurrentGoalBody)
+  const after = fingerprintSemanticKindSourceGoal(row.wholeInactiveCandidateGoalBody)
+  const actual: any = material.get(row.goalId)
+  const own: any = first.get(row.goalId)
+  if (before !== actual.normalBeforeSemanticKindSourceFingerprint || after !== actual.normalAfterSemanticKindSourceFingerprint) {
+    throw new Error(`${row.goalId}: current normal semantic-kind source binding does not match actual neutral inputs`)
+  }
+  return { goalId: row.goalId, normalBeforeSourceFingerprint: before, normalAfterSourceFingerprint: after, sourceBindingChanged: before !== after, ownSemanticDecision: own.semanticKindContextRetention, inheritedWholeSourceApproval: false }
+})
+if (rows.filter((r: any) => r.sourceBindingChanged).length !== 5) throw new Error('Expected the five actual changed source bindings')
+const target = `${out}/checks/normal-current12-kinds5-source-binding-with-own-semantic-decisions.actual.json`
+if (existsSync(target)) throw new Error('Existing immutable receipt must remain unchanged')
+writeFileSync(target, `${JSON.stringify({ schemaVersion: 1, checkedAt: new Date().toISOString(), role: 'Own unchanged normal exported source fingerprint API check combined with already sealed actual semantic context review; no bare hash scientific approval', sourceAPI: bind('app/scripts/goalBookModel.ts'), beforeAfterInput: bind(inputPath), neutralNormalFingerprintInput: bind(materialPath), ownIndependentFirst: bind(firstPath), rows, actualSourceChanges: 5, allBindingsMatch: true, semanticKindRetained: 'curricularAtomic', wholeSourceCourseApproval: false, humanApproval: false, strictGain: 0, activeWrites: [] }, null, 2)}\n`)
+console.log(JSON.stringify({ bindings: rows.length, actualChanges: rows.filter((r: any) => r.sourceBindingChanged).length, allBindingsMatch: true }))

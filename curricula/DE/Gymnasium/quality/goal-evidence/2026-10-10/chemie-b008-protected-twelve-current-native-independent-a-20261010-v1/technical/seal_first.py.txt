@@ -1,0 +1,270 @@
+import datetime
+import hashlib
+import json
+from pathlib import Path
+
+SRC = Path('curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-protected-twelve-current-native-technical-author-20261010-v1')
+OUT = SRC.parent / 'chemie-b008-protected-twelve-current-native-independent-a-20261010-v1'
+
+def sha(p):
+    return 'sha256:' + hashlib.sha256(Path(p).read_bytes()).hexdigest()
+
+def bind(p):
+    p = Path(p)
+    return {'path': str(p), 'sha256': sha(p), 'bytes': p.stat().st_size}
+
+def read(name):
+    return json.loads((SRC / name).read_text())
+
+def write(name, value):
+    p = OUT / name
+    assert not p.exists(), p
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n')
+    json.loads(p.read_text())
+    return p
+
+notes = {
+    '13d4f336-ab16-54a7-9479-c920b458f385': {
+        'context': 'Der neue Nachfolger zur angeleiteten Durchführung verlangt diese Sicherheitsroutine tatsächlich. Eigenes Vorbereiten, Augenschutz, Kennzeichnung und Lehrkraftanweisung bleiben die unveränderte Leistung; eine allgemeine Sicherheitsroutine ersetzt keine versuchsspezifische Gefährdungsbeurteilung. Die grundlegende Laborarbeitsweisen-Voraussetzung bleibt erhalten. Die neue ausgehende Beziehung erklärt eine Lernfolge und behauptet keine bereits ausgeführte oder beherrschte Untersuchung.',
+        'p': 'Modellplatz und neue Spritzersituation prüfen dieselbe situationsgerechte Handlungsroutine. Eigene Vorbereitung und Meldung einer Unklarheit bleiben erforderlich; ein Referenzbild beweist keine tatsächliche sichere Handlung. Der zusätzliche Nachfolger verändert keine der beiden vorhandenen Aufgaben oder ihren Anspruch.',
+        'a': 'Eine situationsbezogene allgemeine Laborsicherheitsroutine bleibt ein einzelnes prüfbares Handlungsprodukt. Der neue Nachfolger wird nicht in dieses Atom hineingenommen.',
+        'm': 'Die kontextgebundene Anwendung wird weiterhin durch sichere Handlungswahl und Begründung verankert. Ein neuer Nachfolger führt keinen abgetrennten Fakten- oder Vokabelbestand ein.',
+        'transferDe': 'Wählt bei neuem unklaren Behälter oder Spritzer die sichere situationsbezogene Handlung und meldet Unsicherheit an die Lehrkraft; startet den neuen Untersuchungsnachfolger erst mit dessen eigener Anleitung.',
+        'transferEn': 'Choose a safe contextual action for a new unclear container or splash, report uncertainty to the teacher, and start the new investigation successor only with its own instructions.'},
+    '9b5d6326-d27c-4ece-8c72-debda705464a': {
+        'context': 'Der allgemeine Modellnachfolger hat Dalton nicht mehr als universelle Voraussetzung; fünf konkrete atom- bzw. reaktionsbezogene Nachfolger bleiben erhalten. Eigene Eingangsanforderung, Text und Quelle des Dalton-Atoms sind unverändert. Eine allgemeine Modellroutine benötigt nicht in jedem Fall die vorherige Dalton-Hypothese; diese Änderung erklärt weder ihre historischen Annahmen noch Massenerhaltung weg.',
+        'p': 'Beobachtete Produktmasse, empirisches Gesetz und erklärende Atomhypothese bleiben verschieden. Isotope bzw. subatomare Erkenntnisse begrenzen historische Modellannahmen, ohne die chemische Atombilanz zu entwerten. Die beiden vollständigen vorhandenen Fälle bleiben unverändert und verlangen weiterhin diese Unterscheidung.',
+        'a': 'Hypothese, Gesetz und Modellgrenzen werden an derselben Dalton-Erklärung unterschieden; das bleibt eine atomare Modellbeurteilung und kein neues allgemeines Modellcluster.',
+        'm': 'Die entfernte allgemeine Nachfolgepflicht verlangt keine neue historische Faktenliste. Hypothese/Gesetz wird im Modell- und Befundvergleich angewandt; die bestehende Entscheidung ohne eigene Memorykarte bleibt passend.',
+        'transferDe': 'Ordnet einen neuen Massenbefund dem empirischen Gesetz und seiner Dalton-Deutung getrennt zu; benennt eine begrenzte historische Annahme statt einen passenden Befund als endgültigen Beweis aller Modellannahmen auszugeben.',
+        'transferEn': 'Assign a new mass observation separately to the empirical law and its Dalton interpretation; identify a bounded historical assumption instead of treating agreement as final proof of all model assumptions.'},
+    '95dc0ee5-a0af-5682-af32-d66e36fbeb50': {
+        'context': 'Der neue fachliche Dialognachfolger setzt die Fachsprachenroutine nachvollziehbar voraus. Symbole als Eingangsvoraussetzung, Teilchen-/Stoffebenen und DE/EN-Leistungsoperatoren bleiben unverändert. Eine neue Nachfolgebeziehung macht die fachsprachliche Beschreibung weder zu einem Dialog- oder Präsentationsatom noch zu einer Quellenkritikkompetenz.',
+        'p': 'Die vorhandenen Fälle unterscheiden NaCl-Ionengitter von Molekülen, hydratisierte Ionen von Natriummetall sowie Indizes, Koeffizienten und Ladungen. Für den späteren Dialog werden diese Bedeutungen benötigt; der Dialog ist hier kein zusätzliches Abschlussprodukt. Beide vollständigen Fälle bleiben gleich.',
+        'a': 'Eine chemische Aussage auf Stoff- und Teilchenebene fachsprachlich korrekt ausdrücken bleibt eine zusammenhängende Routine. Der spätere tatsächliche Austausch ist ein getrenntes Atom.',
+        'm': 'Die Änderung betrifft den Anwendungskontext, keinen neuen Wortschatzsatz. Bedeutungen werden durch die bestehenden Aufgaben verankert; es entsteht kein zusätzlicher Kartenbedarf.',
+        'transferDe': 'Überführt eine neue umgangssprachliche Aussage in eine prüfbare chemische Formulierung und prüft Ionen, Indizes, Koeffizienten und Ladungen; trennt dieses Produkt vom späteren echten Dialog.',
+        'transferEn': 'Convert a new everyday claim into a testable chemical statement and check ions, indices, coefficients and charges; distinguish this product from the later actual dialogue.'},
+    'c0f1bf09-5a70-5006-b1e9-e91f786a63bf': {
+        'context': 'Die chemisch/physikalischen Vorgänge und die Bedeutung von Redoxreaktionen bleiben beide vorausgesetzt. Nur die frühere breite Kompetenz über gesellschaftliche Einflüsse auf Wissenschaft entfällt als harte Voraussetzung. Für das Beschreiben eines chemisch-physikalischen Stoffkreislaufs ist sie nicht universell nötig. Die unveränderte aktuelle Beschreibung verlangt Natur UND Technik; die unveränderte Primärpassage erlaubt Natur ODER Technik. Die beiden bestehenden Fälle decken die anspruchsvollere kanonische Kombination ab, ohne neue Kurs- oder Gesamtquellenfreigabe.',
+        'p': 'Im natürlichen Kohlenstofffall wird molekularer CO2-Transport von Photosynthese und Atmung getrennt; im technischen Kalkfall werden Brennen, Löschen, Carbonatisierung und Transport auseinandergehalten. Atom-Bilanz ist weder geschlossener Energiekreislauf noch Beleg einer klimaneutralen Technik. Die entfernte gesellschaftliche Voraussetzung ist für diese Modellleistungen nicht nötig; beide vollständigen Fälle und ihre Grenzen bleiben unverändert.',
+        'a': 'Eine stoffbilanzierte Kreislaufbeschreibung, die chemische Umwandlung und physikalische Speicherung/Transport verbindet, bleibt ein einzelnes Modellprodukt mit zwei Transferkontexten.',
+        'm': 'Der Wegfall einer gesellschaftlichen Eingangsvoraussetzung fügt keine zu memorierende Stoff- oder Reaktionsliste hinzu. Die aktuelle Leistung bleibt vernetztes Modellverständnis; die vorhandene Entscheidung ohne zusätzliche Karte ist weiterhin begründet.',
+        'transferDe': 'Verfolgt ein Atom bei neuem Speicher- oder Transportweg weiter und trennt unveränderte Stoffbilanz von Energiefluss oder offenen Treibhausgasfolgen. Behauptet keine Sek-I-Kursabdeckung aus der unveränderten Navigationsüberschrift.',
+        'transferEn': 'Follow an atom through a new storage or transport route and separate preserved material balance from energy flow or unresolved greenhouse effects. Do not infer lower-secondary course coverage from an unchanged navigation heading.'},
+    '8ece9beb-9458-5ea1-8e45-9be04670f464': {
+        'context': 'Eigene Voraussetzung und direkter Rohstoff-Nachfolger bleiben dieselben IDs; Reihenfolge, Buchseiten und ausgehende Darstellung ändern sich. Der nachfolgende Nachhaltigkeitsvergleich führt keine neue Systemgrenze in das Brennstoff-Atom ein. Vollständige Verbrennung und verschiedene Energie-Bezugsgrößen bleiben ausdrücklich sein eigener Gegenstand.',
+        'p': 'Beide vorhandenen Fälle vergleichen ausgeglichene Reaktionen sowie Energie pro Masse bzw. nutzbare Energie. Die konkrete Wirkungsgradvariation kann eine Rangfolge verändern; direkte CO2-Zahlen ersetzen keine Lebenszyklusanalyse. Der nachfolgende Nachhaltigkeitskontext ändert keine Messgröße oder Leistungsanforderung dieser unveränderten Fälle.',
+        'a': 'Brennstoffe auf einer begründeten gemeinsamen Energie- und Stoffbasis vergleichen bleibt eine einzelne Auswertungsroutine. Ein späterer Nachhaltigkeitsentscheid wird nicht hinzugenommen.',
+        'm': 'Umgeordnete Nachfolger und Seitennummern schaffen keinen neuen Faktenbestand. Stoffbilanz und Bezugsgrößen werden weiter aufgabenbasiert angewandt; kein neuer Kartensatz erforderlich.',
+        'transferDe': 'Vergleicht einen neuen Brennstoff oder geänderten Wirkungsgrad auf derselben Bezugsmenge und begrenzt das Ergebnis auf die berechnete Größe statt daraus automatisch eine vollständige Nachhaltigkeitsrangfolge zu machen.',
+        'transferEn': 'Compare a new fuel or changed efficiency on the same reference basis and limit the result to the calculated quantity rather than automatically asserting a complete sustainability ranking.'},
+    '5a30273a-98d5-5163-bb16-c250b7ed4e7f': {
+        'context': 'Die Eingangsvoraussetzung zu intermolekularen Wechselwirkungen sowie die gleichen direkten und externen Nachfolger bleiben erhalten. Nur ihre Reihenfolge und die gebundenen Seiten ändern sich. Ein neuer Navigationskontext verlangt weder die Beherrschung jedes Nachfolgestoffes noch einen universellen quantitativen Satz über Schmelzpunkte.',
+        'p': 'Die unveränderten beiden Fälle nutzen Strukturen, Lösungsmittelwahl und Siede-/Schmelzdaten. Beim n-Pentan/Neopentan-Vergleich bleiben Flüssigkeitswechselwirkungen von Packungsinformationen getrennt; ein qualitativer Packungsgrund ist keine neue Kristallstrukturbestimmung. Die aktuelle Nachfolgereihenfolge verändert diese Aussagegrenzen nicht.',
+        'a': 'Struktur, Wechselwirkungen und gegebenenfalls Packungsbefunde zu einer begründeten Eigenschaftsvorhersage verbinden bleibt ein einzelnes Erklärungs- und Vorhersageprodukt.',
+        'm': 'Die aktuellen Beziehungen verlangen keine neue isolierte Stoffliste. Eigenschaftsbeziehungen werden anhand gegebener Strukturen und Daten verstanden, sodass der bisherige Verzicht auf zusätzliche Karten weiterhin passt.',
+        'transferDe': 'Begründet eine neue Lösungsmittelwahl oder Siedeerwartung aus Struktur und Wechselwirkungen und kennzeichnet für eine neue Schmelzfrage fehlende Packungsdaten statt eine Verzweigungsregel ungeprüft zu verallgemeinern.',
+        'transferEn': 'Justify a new solvent choice or boiling expectation from structure and interactions, and flag missing packing data for a new melting question instead of generalising a branching rule without evidence.'},
+    'd4928773-3be8-5cf1-907c-ef07c96751e8': {
+        'context': 'Die eigene Donator-Akzeptor-Voraussetzung bleibt unverändert. Der verlegte Halogenkohlenwasserstoff-Bewertungsnachfolger erhält zusätzliche Quellenkompetenzen, die seine eigene Bewertung betreffen. Dadurch wird dieses Gleichungsatom nicht zu einem Mechanismen-, Recherche- oder Freisetzungsversuchsziel.',
+        'p': 'Die vorhandenen Nettogleichungen erhalten C/H/O/Halogen und Gesamtladung. Im frischen Fehlgleichungsfall ist neutrales Alkoholprodukt von der fälschlich behaupteten Ethoxid/HCl-Kombination zu unterscheiden. Die vorgegebenen Bedingungen erlauben keine allgemeine Behauptung, Substitution müsse stets jede Konkurrenzreaktion dominieren. Nachfolgeränderungen greifen in keine dieser beiden unveränderten Aufgaben ein.',
+        'a': 'Eine passende Nettogleichung formulieren und durch Atom- sowie Ladungsbilanz prüfen bleibt ein einzelnes Symbolisierungsprodukt. Das getrennte spätere Nutzungsurteil wird nicht mitbewertet.',
+        'm': 'Die neue Nachfolgerquellenkette ergänzt keine Reaktionsnamen- oder Mechanismenliste. Bilanzprüfung und Produktbegründung bleiben die geeignete Verankerung ohne zusätzliche eigene Karten.',
+        'transferDe': 'Formuliert für einen neuen passenden Halogenalkan-Hydroxid-Fall die Nettogleichung und prüft Atome und Ladung getrennt; grenzt den vorgegebenen Substitutionsfall von unbewiesenen allgemeinen Mechanismen- oder Konkurrenzbehauptungen ab.',
+        'transferEn': 'Formulate the net equation for a new suitable haloalkane–hydroxide case and check atoms and charge separately; bound the specified substitution case against unproven general mechanism or competition claims.'},
+    '70b34ae7-4481-590c-9a02-516464750832': {
+        'context': 'Carbonsäuren als Eingangsvoraussetzung und derselbe Ester-/Amidkondensationsnachfolger bleiben erhalten; nur dessen Seite und Reihenfolge ändern sich. Die aktuelle Kontextprüfung beansprucht weiterhin nur den belegten Ester-Teilbeitrag der breiteren HE- und BY-Quellengruppen, keine vollständige Mechanismen-/Nomenklaturgruppenfreigabe.',
+        'p': 'Beide vorhandenen Fälle nutzen bereitgestellte experimentelle Daten, Stoffbilanz und geeignete Esterstruktur. Geruch allein identifiziert keinen Ester; einfache Ester sind Akzeptoren und nicht eigene H-Brückendonatoren. Frische Methylbutanoat-Daten prüfen Übertragung; die neue Nachfolgerdarstellung verlangt keine zusätzliche Amidreaktion in diesem Atom.',
+        'a': 'Esterbildung anhand von Daten begründen und Struktur/Eigenschaft damit erklären bleibt die vorhandene zusammenhängende Struktur-Reaktionsroutine, ohne neuen Mechanismen- oder Amidteil.',
+        'm': 'Die geänderten Buchbeziehungen führen keine zusätzliche Nomenklatur- oder Reaktionsliste ein. Die bisherigen daten- und modellgebundenen Leistungen bleiben ohne neue Karte angemessen.',
+        'transferDe': 'Leitet bei einem neuen Alkohol/Carbonsäure-Paar einen passenden Ester aus gegebenen Daten ab, prüft Stoffbilanz und begrenzt Struktur-/Nutzungsaussagen; Geruch oder der spätere Amid-Nachfolger sind kein zusätzlicher Identitätsbeleg.',
+        'transferEn': 'Infer a suitable ester for a new alcohol/carboxylic-acid pair from supplied data, check material balance and bound structure/use claims; smell or the later amide successor is not additional identity evidence.'},
+    'e313c1ee-a617-54ed-adea-c183da1e03d8': {
+        'context': 'Die Stofftrennung bleibt Voraussetzung. Die frühere breite Datenkompetenz wird durch die konkrete Beurteilung von Angemessenheit, Gültigkeit und Reichweite ersetzt; diese neue Voraussetzung verlangt ihrerseits Dokumentation und die grundlegende Auswertung. Rohdatennachvollziehbarkeit oder Deutung gehen somit nicht verloren. Oberstufenspezifische mathematische/digitale Auswertungsprodukte werden nicht als universelle Sek-I-Eingangspflicht importiert.',
+        'p': 'Im Salz/Sand-Fall bleiben 2,40 g/10,00 g = 24,0 %, Rückgewinnung, Trocknung, Leerprobe und Wiederholung auf dieselbe selektive Methode bezogen. Im neuen 20,00 g/18,60 g-Fall sind 7,0 % nur bei begründeter Wasser-Selektivität zulässig; weitere flüchtige Stoffe zerstören diese Behauptung. Die neue Gültigkeitsvoraussetzung stützt genau diese Grenzen. Die vorhandenen fiktiven Daten bleiben didaktische Materialfälle und kein tatsächlich durchgeführter Versuch oder Lernendennachweis.',
+        'a': 'Eine begründete selektive Messmethode mit Berechnung und Zuverlässigkeitsurteil bleibt ein einzelnes quantitatives Methodenprodukt. Die vorausgesetzte allgemeine Datenroutine ist kein zweites Abschlussthema.',
+        'm': 'Die geänderte Voraussetzung verschiebt die methodische Grundlage, fügt aber keinen memorierpflichtigen Stoffbestand hinzu. Bezugsgröße und Selektivitätsprüfung bleiben anhand von Daten anwendbar; eine neue Karte ist nicht erforderlich.',
+        'transferDe': 'Beurteilt für einen neuen störenden löslichen oder flüchtigen Stoff Selektivität, Rückgewinnung und Bezugsgröße und begrenzt den Prozentwert entsprechend. Tatsächliche eigene Durchführung wird nur mit einem echten freigegebenen Protokoll behauptet.',
+        'transferEn': 'For a new interfering soluble or volatile substance, assess selectivity, recovery and reference quantity and bound the percentage accordingly. Claim actual own execution only with a genuine authorised record.'},
+    'a0e8f0f2-24e2-5945-a511-597d32e73796': {
+        'context': 'Brennstoffgrundlagen bleiben erhalten. Die breite alte Quellen-/Argumentfamilie wird durch die untere Informationserschließung ersetzt, die Relevanz, Strukturierung und adressatengerechte Auswertung an der chemischen Frage verlangt. Eine vorgelagerte Fähigkeit mit bereitgestellten ODER selbst recherchierten Informationen ersetzt nicht die im Ziel selbst ausdrücklich geforderte eigene Recherche. Die obere Quellenroutine ist für diesen Einstieg keine universelle Pflicht.',
+        'p': 'Die beiden vorhandenen Fälle trennen gleiche nutzbare Wärme bzw. gleiche Verpackungsfunktion von ungleichen Daten und Grenzen. Fossil ist auf menschlichen Zeitskalen begrenzt; nachwachsend benötigt Zeit, Fläche und weitere Ressourcen und ist nicht automatisch folgenfrei oder biologisch abbaubar. Die Fälle verlangen eigene zusätzliche recherchierte, belegbare Informationen und ein Urteil mit Datenlücke. Die neue Grundvoraussetzung nimmt diese Leistung nicht aus dem Ziel heraus.',
+        'a': 'Ein kriterienbezogener Nachhaltigkeitsvergleich fossiler/nachwachsender Rohstoffe bei benannter Nutzungsfunktion bleibt ein einzelnes Urteilsprodukt mit unterschiedlichen Transferkontexten.',
+        'm': 'Die neue Quellenbasis begründet Informationsverarbeitung und keine zusätzliche Vorratsliste. Der bestehende Fallvergleich mit Belegen und Systemgrenze bleibt passend ohne eigene zusätzliche Memorykarte.',
+        'transferDe': 'Recherchiert für eine veränderte Nutzungsfunktion selbst zusätzliche überprüfbare Angaben und bewertet Klima-, Ressourcen- und soziale Folgen bei gemeinsamer Bezugsgröße; markiert Datenlücken statt aus nachwachsend automatisch nachhaltig zu machen.',
+        'transferEn': 'For a changed use function, research additional verifiable information independently and assess climate, resource and social effects on a common basis; flag gaps instead of equating renewable with sustainable.'},
+    '8b98d8ba-65c6-58d7-92f0-45f4b2456573': {
+        'context': 'Der Rohstoffvergleich bleibt Voraussetzung. Die neue Oberstufen-Informationserschließung verlangt tatsächliche selbstständige analoge UND digitale komplexe Recherche und Belege; die neue Quellenkritik verlangt Aussagenvergleich, Relevanz, Vertrauenswürdigkeit, Urheberschaft und Intention. Beide bauen auf der unteren Informationserschließung auf. Sie ersetzen die breite alte Familie mit passenden engeren Voraussetzungen, ohne das eigene Maßnahmenableiten bereits als beherrscht zu behandeln.',
+        'p': 'Die vollständigen vorhandenen Fälle verlangen aus Befunden eine Einspar- und eine Alternativmaßnahme sowie eigenen ergänzenden Quellenfund und gekennzeichnetes Zitat. Bei Herstellerbehauptung gegenüber Studienmaterial entscheiden Methodik, Daten und Grenzen; kommerzielle Herkunft allein beweist keine Falschheit. Die neue Quellenkette unterstützt dieses Produkt; konkrete Maßnahmen und begründetes Urteil bleiben selbst zu leisten.',
+        'a': 'Die traceable Kette Quellenbefund zu begründeter Einspar-/Alternativmaßnahme bleibt ein einzelnes Entscheidungsprodukt. Vorgegliederte Recherche- und Quellenkritik bleiben getrennte Voraussetzungen, keine hier integrierten neuen Zielatome.',
+        'm': 'Neue Voraussetzungen verlangen methodische Quellenarbeit, keinen zusätzlichen Faktenkatalog im Ziel. Maßnahmen werden aus konkreten Befunden abgeleitet; die vorhandene Entscheidung ohne neue eigene Memorykarte bleibt passend.',
+        'transferDe': 'Prüft bei neuer Herstellerfinanzierung oder anderen Nutzungsdaten gezielt Urheberschaft, Methode und Aussagegrenzen, findet eine eigene zusätzliche Quelle und leitet Maßnahmen mit sauberem Quellen-/Zitatnachweis erneut ab.',
+        'transferEn': 'With new manufacturer funding or different use data, check authorship, method and claim limits specifically, find an own additional source and derive measures again with clear source and quotation attribution.'},
+    '3c9bfa10-9a13-50cc-96c8-6213e28d6c54': {
+        'context': 'Die Halogenalkan-Reaktionsgrundlage und die vorhandene Orientierung bleiben erhalten; die breite alte Quellenfamilie wird durch konkrete komplexe Recherche und Quellenkritik ersetzt. Die neuen Voraussetzungen unterstützen Quellen-/Zitatnachweis und stoffbezogene Nutzen/Freisetzungsfolgenbewertung. Eine Orientierung ist weiterhin keine fachliche Leistungszertifizierung; das Halogenkohlenwasserstoffurteil bleibt selbst erforderlich.',
+        'p': 'Die unveränderten Fälle trennen chlorhaltige FCKW-Ozonwirkung von chlorfreien HFKW-Treibhausfolgen und bewerten konkrete Exposition, Nutzen und kontrollierte Alternativen. Es wird keine Wirkung aller Halogenkohlenwasserstoffe gleichgesetzt und kein echter Freisetzungsversuch oder erfundene Rechtslage behauptet. Eigene ergänzende Quelle, Vertrauen, Zitat und zwei stoffbezogene Wirkungspfade bleiben gefordert; die engere neue Quellenkette nimmt diese Leistungen nicht weg.',
+        'a': 'Eine konkrete Nutzung mit menschlichem und ökologischem Freisetzungsweg quellenbelegt abwägen bleibt ein einzelnes stoffbezogenes Urteil. Recherche und Quellenkritik sind ausdrücklich vorgelagerte Routinen.',
+        'm': 'Die Eingangsänderung macht methodische Quellenprüfung nötig, führt aber keine neue isolierte Halogenstoff-Lernliste ein. Struktur, Exposition und begründeter Vergleich bleiben die vorhandene Verankerung ohne zusätzliche Karten.',
+        'transferDe': 'Unterscheidet bei einem neuen Kältemittel oder veränderter Exposition stoffbezogene Wirkungspfade und prüfbare Nutzen-/Risikobelege, recherchiert selbst und kennzeichnet Quellen und Zitate; vermeidet pauschale Halogenstoff- und Freisetzungsbehauptungen.',
+        'transferEn': 'For a new refrigerant or changed exposure, distinguish substance-specific effect pathways and verifiable benefit/risk evidence, research independently and identify sources and quotations; avoid blanket halogenated-substance or release claims.'},
+}
+
+entry = read('neutral-protected12-whole-current-native-context.independent-review.entry.json')
+assert sha(SRC / 'neutral-protected12-whole-current-native-context.independent-review.entry.json') == 'sha256:ddd00802c414082a041fe3c84383bf8c402c1ecc7692c99130cfc23d9d15fc17'
+assert sha(SRC / 'author.final.freeze.json') == 'sha256:45af0319e923079633fc106f697f73e6a19a263ac90c703359b0fe65ac128f82'
+inputs = read('native/current-12/round-a/description-review-input.json')
+deltas = {r['goalId']: r for r in read('checks/actual-full381-to398-protected180-context-deltas.json')['rows']}
+material = {r['goalId']: r for r in read('checks/whole12-old-records-and-current-normal-P-A-M-kind-fingerprints.actual.json')['rows']}
+html = {r['goalId']: r for r in read('checks/actual-whole12-native-html-captures.technical.json')['captures']}
+pdf = {r['goalId']: r for r in read('checks/actual-whole12-native-pdf-captures.technical.json')['captures']}
+prior = {r['goalId']: r for r in read('inputs/protected/whole12-current-goal-page-context-source-image-and-prior-D-P-bindings.actual.json')['rows']}
+candidate = read('inputs/candidate/current-whole511-398-B008.inactive.json')
+whole_by_id = {g['id']: g for g in candidate['goals']}
+scope = entry['scopeGoalIds']
+assert set(scope) == set(notes) == set(deltas) == set(material) == set(html) == set(pdf) == set(prior)
+five = entry['actualFiveRequiresGoalIds']
+
+# Read-only, bounded diagnosis of the actual changed prerequisite closure.
+closures = []
+for goal_id in five:
+    stack = []
+    visited = set()
+    cycles = []
+    missing = []
+    def visit(node):
+        if node in stack:
+            cycles.append(stack[stack.index(node):] + [node])
+            return
+        if node in visited:
+            return
+        if node not in whole_by_id:
+            missing.append(node)
+            return
+        visited.add(node)
+        stack.append(node)
+        for prerequisite in whole_by_id[node].get('requires', []):
+            visit(prerequisite)
+        stack.pop()
+    visit(goal_id)
+    assert not cycles and not missing, (goal_id, cycles, missing)
+    closures.append({'goalId': goal_id, 'beforeRequires': deltas[goal_id]['wholeExactCurrentGoalBody'].get('requires', []), 'currentRequires': whole_by_id[goal_id].get('requires', []), 'actualRequiresClosureGoalIds': sorted(visited), 'actualCyclePaths': cycles, 'missingReferences': missing, 'scope': 'Only actual changed five transitive prerequisite closures, not an approval of every graph or source mapping.'})
+closure_path = write('FIRST.five-actual-prerequisite-closures.technical.json', {'schemaVersion': 1, 'role': 'Bounded current changed prerequisite closure diagnosis; semantic decisions are separately in own FIRST', 'wholeCandidate': bind(SRC / 'inputs/candidate/current-whole511-398-B008.inactive.json'), 'rows': closures, 'activeWrites': [], 'humanApproval': False})
+
+rows = []
+for row in inputs['goals']:
+    goal_id = row['goalId']
+    note = notes[goal_id]
+    delta = deltas[goal_id]
+    mat = material[goal_id]
+    before = delta['wholeExactCurrentGoalBody']
+    after = delta['wholeInactiveCandidateGoalBody']
+    changed = [k for k in sorted(set(before) | set(after)) if before.get(k) != after.get(k)]
+    assert changed == (['requires'] if goal_id in five else []), (goal_id, changed)
+    old_record = mat['wholeExistingRecord']
+    current_record = mat['wholeCurrentTechnicalCandidateRecord']
+    assert old_record['profile'] == current_record['profile']
+    assert mat['normalBeforeGoalFingerprint'] == mat['normalAfterGoalFingerprint']
+    assert old_record['profileFingerprint'] == current_record['profileFingerprint']
+    assert len(old_record['profile']['applicationCaseBriefs']) == 2
+    assert mat['normalAtomicityFingerprintBefore'] == mat['normalAtomicityFingerprintAfter']
+    assert mat['normalMemoryFingerprintBefore'] == mat['normalMemoryFingerprintAfter']
+    assert mat['wholeExistingAtomicityRecord']['status'] == 'atomic'
+    assert mat['wholeExistingMemoryRecord']['status'] == 'no_memory_needed'
+    assert prior[goal_id]['sameSelectedRasterInBeforeAfter'] is True
+    assert html[goal_id]['goalFingerprint'] == pdf[goal_id]['goalFingerprint'] == row['goalFingerprint']
+    assert html[goal_id]['pageFingerprint'] == pdf[goal_id]['pageFingerprint'] == row['pageFingerprint']
+    expectations = old_record['profile']['expectations']
+    evidence = {
+        'essentialUnderstandingDe': ' '.join(v['essentialUnderstandingDe'] for v in expectations),
+        'essentialUnderstandingEn': ' '.join(v['essentialUnderstandingEn'] for v in expectations),
+        'observablePerformanceDe': ' '.join(v['observablePerformanceDe'] for v in expectations),
+        'observablePerformanceEn': ' '.join(v['observablePerformanceEn'] for v in expectations),
+        'transferCheckDe': note['transferDe'],
+        'transferCheckEn': note['transferEn'],
+    }
+    assert all(0 < len(v) <= 4000 for v in evidence.values())
+    rows.append({
+        'goalId': goal_id, 'decision': 'keep', 'goalSpecificReason': note['context'],
+        'goalFingerprint': row['goalFingerprint'], 'pageFingerprint': row['pageFingerprint'],
+        'bookDigest': inputs['bookDigest'],
+        **{k: row[k] for k in ['currentTitleDe', 'currentTitleEn', 'currentDescriptionDe', 'currentDescriptionEn']},
+        'understandingEvidence': evidence, 'profileRecommendation': 'none',
+        'actualChangedWholeGoalFields': changed,
+        'actualChangedWholePageFields': delta['actualChangedSubstantiveFields'],
+        'beforeRequires': before.get('requires', []), 'currentRequires': after.get('requires', []),
+        'wholeUnchangedOtherGoalFieldsActuallyCompared': True,
+        'wholeBeforeAfterGoalAndPageInput': bind(SRC / 'checks/actual-full381-to398-protected180-context-deltas.json'),
+        'positiveUnderstandingContextReview': {
+            'decision': 'KEEP current context of unchanged scientific profile and two complete operative cases',
+            'ownActualReason': note['p'], 'actualWholeCasesRead': 2,
+            'fiveChangedReviewInput': goal_id in five,
+            'normalBeforeReviewInputFingerprint': mat['normalBeforeReviewInputFingerprint'],
+            'normalAfterReviewInputFingerprint': mat['normalAfterReviewInputFingerprint'],
+            'normalBeforeGoalFingerprint': mat['normalBeforeGoalFingerprint'],
+            'normalAfterGoalFingerprint': mat['normalAfterGoalFingerprint'],
+            'wholeProfileFingerprintUnchanged': old_record['profileFingerprint'],
+            'wholeProfileBodyExact': True,
+            'unchangedStatus': current_record['status'],
+            'unchangedEvidenceLevel': current_record['evidenceLevel'],
+            'unchangedMaximumClaimScope': current_record['maximumClaimScope'],
+            'currentContextHasNowActuallyBeenIndependentlyReviewed': True,
+            'newHistoricalProfileScienceApproval': False,
+            'actualLearnerPerformance': False,
+            'humanApproval': False,
+        },
+        'atomicityContextRetention': {
+            'decision': 'KEEP atomic', 'ownActualReason': note['a'],
+            'beforeFingerprint': mat['normalAtomicityFingerprintBefore'],
+            'afterFingerprint': mat['normalAtomicityFingerprintAfter'],
+            'wholeHistoricalRecordUnchanged': True,
+            'noNewHistoricalAtomicityReviewClaim': True,
+        },
+        'memoryContextRetention': {
+            'decision': 'KEEP no_memory_needed', 'ownActualReason': note['m'],
+            'beforeFingerprint': mat['normalMemoryFingerprintBefore'],
+            'afterFingerprint': mat['normalMemoryFingerprintAfter'],
+            'wholeHistoricalRecordUnchanged': True,
+            'newCardOrVisibilityDutyIntroducedByThisContext': False,
+            'noNewHistoricalMemoryReviewClaim': True,
+        },
+        'semanticKindContextRetention': {
+            'decision': 'KEEP curricularAtomic after actual changed context review' if goal_id in five else 'KEEP exact unchanged historical curricularAtomic binding',
+            'ownActualReason': note['a'],
+            'beforeSourceFingerprint': mat['normalBeforeSemanticKindSourceFingerprint'],
+            'afterSourceFingerprint': mat['normalAfterSemanticKindSourceFingerprint'],
+            'actualSourceFingerprintChange': goal_id in five,
+            'mereHashChangeIsNotScientificReview': True,
+            'newCurricularScopeOrDenominatorApproval': False,
+        },
+        'actualNativePagesSeen': {'fullHtml': html[goal_id]['capture'], 'fullPdf': pdf[goal_id]['capture'], 'physicalPdfPageNumber': pdf[goal_id]['physicalPageNumber'], 'currentWholeBoundRaster': html[goal_id]['wholeBoundOriginalRaster'], 'actualDecodedRaster': html[goal_id]['actualOriginalRasterDecoded'], 'noObservedCurrentWholePageClippingOrRelationMislabelling': True},
+        'rasterDecision': 'KEEP exact unchanged selected bytes and valid prior raster proofs; current page fit actually seen, no new historical visual approval',
+        'sourceContextRetention': {'wholeGoalProvenanceAndSourceFieldsUnchanged': True, 'actualChangedPrerequisiteSemanticContextExamined': True, 'currentFiveBavarianOperatorParagraphsAndActualOccurrencesRead': goal_id in five, 'wholeSourceMappingApproval': False, 'currentWholeSourceAndCourseAdoptionHoldRetained': True},
+        'recordStatus': 'candidate', 'reviewAuthority': 'ai_candidate',
+    })
+
+now = datetime.datetime.now(datetime.timezone.utc).isoformat()
+first = write('FIRST.current-protected12-context-native.verdict.json', {
+    'schemaVersion': 1, 'sealedAt': now,
+    'role': 'Own independent FIRST-A12 on actual current changed native contexts, before reading current author or peer science judgments',
+    'entry': bind(SRC / 'neutral-protected12-whole-current-native-context.independent-review.entry.json'),
+    'authorFreeze': bind(SRC / 'author.final.freeze.json'),
+    'independence': {'taskIdentity': '/root/chemistry_p26_current_native_independent_a', 'candidateOrNative12Author': False, 'currentAuthorScienceJudgmentsRead': False, 'currentPeerFirstOrResolutionJudgmentsRead': False, 'blindToCurrentOtherRuns': True, 'historicalValidEvidenceReadForExactReuse': True, 'parentRoutingHoldsKnown': True, 'model': 'Codex active model; exact deployed model version not exposed', 'samplingParameters': 'Unknown; not exposed. No invented temperature, seed or exact version.', 'previousOwnP26Review': 'Separate already sealed review of changed 26 candidates; no current other-run decision read and no claim that it reviewed these protected12.', 'activeWrites': [], 'humanApproval': False},
+    'actualWholeBilingualBeforeAfterGoalsRead': 12,
+    'actualWholeProfilesAndCasesReadForTargetedContextRetention': {'profiles': 12, 'completeCases': 24},
+    'actualWholeHtmlPagesSeen': 12, 'actualWholePdfPagesSeen': 12,
+    'actualFiveRequiresPReviewInputAndKindSourceChanges': five,
+    'actualAtomicityFingerprintChanges': 0, 'actualMemoryFingerprintChanges': 0,
+    'decisions': {'keep': 12, 'revise': 0, 'split_review': 0, 'block': 0},
+    'records': rows,
+    'readEvidence': [bind(OUT / 'FIRST.neutral-entry-exact-bindings.actual.json'), bind(closure_path), bind(SRC / 'checks/actual-full381-to398-protected180-context-deltas.json'), bind(SRC / 'checks/whole12-old-records-and-current-normal-P-A-M-kind-fingerprints.actual.json'), bind(SRC / 'inputs/protected/whole12-current-goal-page-context-source-image-and-prior-D-P-bindings.actual.json'), bind(SRC / 'inputs/source/whole-current-source-documents-extractions-partners-and-holds.actual-index.json'), bind(SRC / 'checks/actual-whole12-native-html-captures.technical.json'), bind(SRC / 'checks/actual-whole12-native-pdf-captures.technical.json')],
+    'actualPageInspectionMethod': 'All six four-page contact sheets derived from exact 12 full HTML and 12 full PDF captures were actually viewed with view_image. Each sheet source is 2400x910 and presented at 2048x777. Whole bilingual wording, whole before/after objects, links, source contexts and all24 case bodies were separately read in full. Capture derivatives are inspection aids outside curricula, never delivered mobile assets.',
+    'separateHolds': {'wholeSourceCompiler': 'HOLD 355/398, 24 new child omissions plus 19 prior omitted goals retained', 'unresolvedScopeBindings': 496, 'wholeOld1180EdgesPreserved': True, 'wholeSourceCourseOperatorPartnerApproval': False, 'canonical398DenominatorAdoption': False, 'whyKeepDoesNotApproveWholeSource': 'This actual review retains unchanged protected goal source bodies and checks changed prerequisites against the goal operators. It does not approve every broad/partial mapping, partner, complete source family, source view, duration or course. Existing 43 missing source targets and 496 scope holds remain.', 'humanReleaseGatesSeparate': True},
+    'newHistoricalProfileScienceApprovals': 0, 'newRasterApprovals': 0,
+    'newScientificStrictClosures': 0, 'restoredStrictBindings': 0, 'netStrictGain': 0,
+    'strictCountingMeaning': 'Own independently checked candidate contexts are review evidence for later targeted integration. No current registry/resolution merge or central strict report has been changed by this agent.',
+    'humanApproval': False, 'humanTrial': False, 'actualLearnerPerformance': False, 'activeWrites': [],
+})
+write('FIRST.current-protected12-context-native.seal.json', {'schemaVersion': 1, 'sealedAt': now, 'firstVerdict': bind(first), 'role': 'Immutable own FIRST sealed before reading current author/peer science judgments; normal records must serialize these own decisions', 'currentOtherJudgmentsReadBeforeSeal': False, 'activeWrites': [], 'humanApproval': False})
+print(json.dumps({'firstSha256': sha(first), 'keep': 12, 'actualChangedPAndKindContextsReviewed': 5, 'nativePagesSeen': 24, 'sourceHoldsUnchanged': True, 'strictGain': 0}, ensure_ascii=False))

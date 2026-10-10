@@ -1,0 +1,11 @@
+# Independent B12: current protected whole Native context
+
+KEEP 12, BLOCK 0. All twelve complete Before/After German/English goals, twelve unchanged positive-understanding-evidence-v2 profiles and 24 complete cases were read. Every actual current whole HTML and PDF page was seen, including complete rasters and current internal/external cross references.
+
+The five real requires / P review-input / semantic-kind-source changes were assessed scientifically. Existing whole A/M records and their normal fingerprints remain exact: atomic / no_memory_needed for all twelve. These are targeted current context retentions, without restarting or rewriting historical reviews. Five substantive kind decisions remain curricularAtomic after actual scope assessment.
+
+Own FIRST was sealed before any current A12 or author scientific outcome was opened. Original FIRST remains immutable. First normal exports used two incorrect transfer field names; the unchanged checker rejected them. The recorded schema export correction renames those two keys while preserving all values and decisions. Current valid normal outputs are in `normal-b12/results-normal-valid/`; both unchanged normal record and campaign checkers pass. Original rejected exports in `normal-b12/results/` are history and must not be integrated.
+
+All current twelve normal records and one run pass the ordinary schemas. Every own JSON and every complete JSONL is parsed, and the ordinary curriculum_symlink_errors check has zero errors. Exact normal book dependencies are repository-relative references to the frozen technical author's Native12 bundle; its full 572-file freeze and neutral 39 references were verified.
+
+This is an independent AI candidate B12 review, with exact model snapshot and generation settings unexposed. It creates no human approval, learner trial or source/course approval. Source compiler remains 355/398: 24 new and 19 prior omissions (43 total), 496 unresolved duties, original 1180 direct source-partner edges and 1646 historical duties retained. Actual active chemistry remains 487 nodes / 381 curricular atoms, protected strict180; candidate511/398 is inactive. Mathematics807/807 and Physics478/478 remain protected. Active new0, restored0, net0. Both current D12 rounds and integration gates remain a separate operation.

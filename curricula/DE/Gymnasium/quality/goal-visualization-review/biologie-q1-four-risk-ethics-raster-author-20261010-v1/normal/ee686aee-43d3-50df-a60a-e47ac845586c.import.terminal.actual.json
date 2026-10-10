@@ -1,0 +1,62 @@
+{
+  "schemaVersion": "1.0",
+  "role": "actual-normal-helper-run-in-isolated-capsule",
+  "command": [
+    "node",
+    "scripts/import_goal_visualization.mjs",
+    "ee686aee-43d3-50df-a60a-e47ac845586c",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-four-risk-ethics-raster-author-20261010-v1/assets/biologie/ee686aee-43d3-50df-a60a-e47ac845586c/ee686aee-43d3-50df-a60a-e47ac845586c.png",
+    "--landscape",
+    "/home/enpasos/projects/skillpilot/tmp/bio-four-risk-author-20261010-v1/normal-helper-capsule/curricula/DE/Gymnasium/canonical/four-current-goals.inactive.json",
+    "--subject",
+    "biologie",
+    "--lang",
+    "de",
+    "--provider",
+    "OpenAI image generation via Codex built-in image_gen",
+    "--review-status",
+    "ai_candidate",
+    "--license",
+    "CC-BY-4.0",
+    "--description",
+    "Links zeigt eine fiktive Referenzpopulation genau 20 gleich große Kreise, davon einen orange markierten Träger; darunter steht 1 von 20. Rechts ist ein nicht als betroffen markierter Aa-Elternteil mit einem Elternteil unbekannten Genotyps verbunden; das Kind unbekannten Geschlechts trägt ein Fragezeichen. Die Sprechblase Modellrisiko fragt nach der Abschätzung.",
+    "--alt-text",
+    "Links zeigt eine fiktive Referenzpopulation genau 20 gleich große Kreise, davon einen orange markierten Träger; darunter steht 1 von 20. Rechts ist ein nicht als betroffen markierter Aa-Elternteil mit einem Elternteil unbekannten Genotyps verbunden; das Kind unbekannten Geschlechts trägt ein Fragezeichen. Die Sprechblase Modellrisiko fragt nach der Abschätzung.",
+    "--prompt",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-four-risk-ethics-raster-author-20261010-v1/assets/biologie/ee686aee-43d3-50df-a60a-e47ac845586c/actual-provider-prompt.txt",
+    "--reconstruction-prompt",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-four-risk-ethics-raster-author-20261010-v1/assets/biologie/ee686aee-43d3-50df-a60a-e47ac845586c/standalone-reconstruction-prompt.txt"
+  ],
+  "cwd": "tmp/bio-four-risk-author-20261010-v1/normal-helper-capsule",
+  "startedAt": "2026-10-10T02:48:18.506364+00:00",
+  "finishedAt": "2026-10-10T02:48:18.557638+00:00",
+  "exitCode": 0,
+  "helperBindings": [
+    {
+      "path": "scripts/prepare_goal_visualization.mjs",
+      "sha256": "5785aab47d0305bd7bc038c480ff7ef29df5411f84903b3f2637f3742181109e",
+      "bytes": 3755
+    },
+    {
+      "path": "scripts/import_goal_visualization.mjs",
+      "sha256": "8de19e502028c48bf02e656eaef9337490e0f44b2ec8b5430d4e12ebd70697ac",
+      "bytes": 9032
+    },
+    {
+      "path": "scripts/goal_visualization_common.mjs",
+      "sha256": "ed91152f2bc3be33d449e3a405cc55ffc76fea7ba14bed1c85ea01845f7bc23a",
+      "bytes": 9744
+    },
+    {
+      "path": "scripts/check_goal_visualization_assets.mjs",
+      "sha256": "ea319d8cea0e901aa5505aabfb9ff9115fcb3680844837875b16a24ca61d943e",
+      "bytes": 10923
+    },
+    {
+      "path": "scripts/config/historical-goal-visualization-assets.json",
+      "sha256": "20318f3c9d4c50fa45b5d72f310e8581e633537e2326b9cbe0ab777a45daceeb",
+      "bytes": 7353
+    }
+  ],
+  "activeWrites": false
+}

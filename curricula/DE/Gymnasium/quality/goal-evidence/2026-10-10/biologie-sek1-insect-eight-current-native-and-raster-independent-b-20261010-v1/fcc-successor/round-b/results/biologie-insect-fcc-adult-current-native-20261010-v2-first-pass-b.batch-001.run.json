@@ -1,0 +1,83 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-insect-fcc-adult-current-native-20261010-v2-b.independent-b.actual-run",
+  "campaignId": "biologie-insect-fcc-adult-current-native-20261010-v2-b",
+  "roundId": "biologie-insect-fcc-adult-current-native-20261010-v2-first-pass-b",
+  "batchId": "biologie-insect-fcc-adult-current-native-20261010-v2-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:d465d406a37af35e6e3937df9abe30fb07f9d87f2d4f03fc1e436b4e53b6bf42",
+  "bundleFingerprint": "sha256:722615169e803fd5070d6d302e2f35d9d65b3658f9d59321373a15b548f77648",
+  "bookDigest": "sha256:3ddd40967df53e404d6d392905c0f1e38d3a486aa3949a7bbcbf7c61d5195d52",
+  "provider": "OpenAI Codex",
+  "model": "GPT-6",
+  "modelVersion": "Session model identity; exact engine revision not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "biologie-current-native-fcc-adult-independent-b",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:107f174f33fd5ea10f9ef91d15a2a4811f69ed69191d9e3498a1917328500696",
+  "independenceGroupId": "biologie-insect-fcc-adult-current-native-20261010-v2-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "fcc20f50-8eb3-5d6c-b37f-5be13c7d314e"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:23c6701cc1dda98bdb3aa4fbdf1edf2f70a6376efcc6ffe7e87a1b1520c0a6c6"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:bc2dc746f66a53c9f3545d2a7b1c4f14f93d9dd85d2b487fed833ef8fef7e954"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:a7f11db4ea194f38fc5800c23f6aa8a71fc73e3af5b121002119a809e2f6d64d"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:16dda010e9f8d3671823d9ac47592dae2a275f0f27fdfee6dbb3d371fe590d0f"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:e3cfd74a26b4f04ea95a6f923fe83049e30088df1192cd564f528641cb69a301"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:49ea0c06ad8fce1ee1c56a18bb9f712e2afde1e986a20110dc72f1fb09b39e13"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:0a0cb2cd40d39822fec8ca65d9d2762df150c498947a6cde952d00d671eedf65"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:c3114d43c5aebfd00c366fbe134c17f109a926aa0febc1434a95a220e51b2b26"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:d465d406a37af35e6e3937df9abe30fb07f9d87f2d4f03fc1e436b4e53b6bf42"
+    }
+  ],
+  "startedAt": "2026-10-10T04:52:11.401546+00:00",
+  "completedAt": "2026-10-10T04:58:08.991704+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:01666bfd8f5a6350e483afc7a78bf880f15be6de7d5a20e69b0766c5436d7c21",
+  "toolchainVersion": "skillpilot-FCC-adult-targeted-independent-b-20261010-v1"
+}

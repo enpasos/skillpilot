@@ -98,6 +98,11 @@ Use this page by role: start with the overview documents, then jump to a review 
 - [Wissenschafts- und Quellenpakete vom 9. Oktober: aktuelle Nenner, unabhängige Kandidatenreviews und gezielte Bildkorrekturen](chemie-biologie-m7-science-and-source-continuation-2026-10-09.md)
 - [Chemie/Biologie: geprüfter Zwischenstand 177/378 und 315/394](chemie-biologie-m7-chemie177-biologie315-commit-checkpoint-2026-10-09.md)
 - [Geprüfter Zwischenstand vom 9. Oktober: 177/378 Chemie, 299/394 Biologie und fünf erfolgreich gebaute Lernzielbücher](chemie-biologie-m7-chemie177-biologie299-commit-checkpoint-2026-10-09.md)
+- [Chemie: drei BW-Kompetenzen und praktische Endpunkte vom 10. Oktober, 180/381 und 315/394](chemie-biologie-m7-chemie180-biologie315-integration-2026-10-10.md)
+- [Biologie: acht aktuelle Abschlüsse vom 10. Oktober, 323/394](chemie-biologie-m7-chemie180-biologie323-integration-2026-10-10.md)
+- [Biologie: vier aktuelle Abschlüsse vom 10. Oktober, 327/394](chemie-biologie-m7-chemie180-biologie327-integration-2026-10-10.md)
+- [Biologie: acht aktuelle Abschlüsse vom 10. Oktober, 335/394](chemie-biologie-m7-chemie180-biologie335-integration-2026-10-10.md)
+- [Commit-Zwischenstand vom 10. Oktober: 180/381 Chemie, 335/394 Biologie und getrennte offene Kandidaten](chemie-biologie-m7-chemie180-biologie335-commit-checkpoint-2026-10-10.md)
 
 ## Review Lanes
 

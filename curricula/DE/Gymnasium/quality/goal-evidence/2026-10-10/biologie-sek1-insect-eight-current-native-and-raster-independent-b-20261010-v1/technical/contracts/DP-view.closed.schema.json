@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "SPDX-License-Identifier: Apache-2.0. Additive closed actual-review receipt; no native gate/schema modifications.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "goalId",
+    "role",
+    "asset",
+    "actualView",
+    "tool",
+    "detail",
+    "cropped",
+    "viewSequence",
+    "beforeCurrentDPAuthorOrPeerJudgments",
+    "knownSeparateVPeerDifference",
+    "observationDe"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer"
+    },
+    "goalId": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "actualView": {
+      "const": true
+    },
+    "tool": {
+      "type": "string"
+    },
+    "detail": {
+      "type": "string"
+    },
+    "cropped": {
+      "const": false
+    },
+    "viewSequence": {
+      "type": "integer"
+    },
+    "beforeCurrentDPAuthorOrPeerJudgments": {
+      "const": true
+    },
+    "knownSeparateVPeerDifference": {
+      "const": true
+    },
+    "observationDe": {
+      "type": "string"
+    }
+  }
+}

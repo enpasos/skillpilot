@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-10-10T01:06:48.959662+00:00",
+  "normalMeasurementCommand": [
+    "node",
+    "scripts/check_ai_transparency_inventory.mjs",
+    "--emit-layer-a-patch"
+  ],
+  "normalMeasurementExitCode": 0,
+  "changes": [
+    {
+      "field": "artifactClasses.goalVisualizations.canonicalGoalCount",
+      "before": 5942,
+      "after": 5946
+    },
+    {
+      "field": "artifactClasses.goalVisualizations.count",
+      "before": 2285,
+      "after": 2288
+    },
+    {
+      "field": "artifactClasses.goalVisualizations.fileExtensions.png",
+      "before": 951,
+      "after": 954
+    },
+    {
+      "field": "artifactClasses.goalVisualizations.providerCounts.OpenAI / ChatGPT-Codex built-in image_gen",
+      "before": 15,
+      "after": 18
+    },
+    {
+      "field": "artifactClasses.goalVisualizations.c2paStructure.detected",
+      "before": 2234,
+      "after": 2237
+    }
+  ],
+  "reason": "Four actual new canonical nodes and three actual new image links with exact original/source/public/backend bytes. C2PA container detection remains structural evidence only. No licensing, human approval or unrelated inventory metadata changed.",
+  "strictNetGain": 0,
+  "humanApproval": false
+}

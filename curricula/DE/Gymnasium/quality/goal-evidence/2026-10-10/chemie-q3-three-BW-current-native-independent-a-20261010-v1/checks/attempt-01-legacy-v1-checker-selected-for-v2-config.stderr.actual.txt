@@ -1,0 +1,13 @@
+/home/enpasos/projects/skillpilot/app/scripts/goalEvidenceReview.ts:116
+    throw new Error(`Invalid goal-evidence review config: ${ajv.errorsText(validateConfig.errors)}`)
+          ^
+
+
+Error: Invalid goal-evidence review config: data must have required property 'ruleVersion', data must NOT have additional properties, data must NOT have additional properties, data must NOT have additional properties, data must NOT have additional properties, data/$schema must be equal to constant, data/schemaVersion must be equal to constant
+    at main (/home/enpasos/projects/skillpilot/app/scripts/goalEvidenceReview.ts:116:11)
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/goalEvidenceReview.ts:195:1)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v20.20.2

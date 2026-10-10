@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "SPDX-License-Identifier: Apache-2.0. Additive closed actual-review receipt; no native gate/schema modifications.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "createdAt",
+    "role",
+    "peerFinalEntry",
+    "peerFinalFreeze",
+    "peerOriginalEightNativeRationalesActuallyRead",
+    "peerCurrentFCCNativeRationaleActuallyRead",
+    "originalPeerD",
+    "originalOwnD",
+    "originalVKnownPeerDifferenceDe",
+    "originalFCCDifferenceDe",
+    "unchangedSevenMaterialScienceDifferences",
+    "currentFCCMaterialScienceDifferences",
+    "currentFCCBothActualKEEP",
+    "ownFIRSTRewritten",
+    "reviewer",
+    "parentIsScienceProfileAuthorNotThirdReviewer",
+    "wholeSourceCourseLegalHumanApproval",
+    "activeWrites",
+    "strictNetGain"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "peerFinalEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "peerFinalFreeze": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "peerOriginalEightNativeRationalesActuallyRead": {
+      "const": true
+    },
+    "peerCurrentFCCNativeRationaleActuallyRead": {
+      "const": true
+    },
+    "originalPeerD": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "KEEP",
+        "BLOCK"
+      ],
+      "properties": {
+        "KEEP": {
+          "type": "integer"
+        },
+        "BLOCK": {
+          "type": "integer"
+        }
+      }
+    },
+    "originalOwnD": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "KEEP",
+        "BLOCK"
+      ],
+      "properties": {
+        "KEEP": {
+          "type": "integer"
+        },
+        "BLOCK": {
+          "type": "integer"
+        }
+      }
+    },
+    "originalVKnownPeerDifferenceDe": {
+      "type": "string"
+    },
+    "originalFCCDifferenceDe": {
+      "type": "string"
+    },
+    "unchangedSevenMaterialScienceDifferences": {
+      "type": "array",
+      "items": {}
+    },
+    "currentFCCMaterialScienceDifferences": {
+      "type": "array",
+      "items": {}
+    },
+    "currentFCCBothActualKEEP": {
+      "const": true
+    },
+    "ownFIRSTRewritten": {
+      "const": false
+    },
+    "reviewer": {
+      "type": "string"
+    },
+    "parentIsScienceProfileAuthorNotThirdReviewer": {
+      "const": true
+    },
+    "wholeSourceCourseLegalHumanApproval": {
+      "const": false
+    },
+    "activeWrites": {
+      "const": false
+    },
+    "strictNetGain": {
+      "type": "integer"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+# Bildrekonstruktionsprompt: Stofftransport und Stoffaustausch bei Insekten vergleichen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `6ff8baef-ba6f-51ca-adb7-b9f785cf5b35`
+- Titel: Stofftransport und Stoffaustausch bei Insekten vergleichen
+- Beschreibung: Die lernende Person kann Insekten mit Wirbeltieren und ggf. weiteren Wirbellosen hinsichtlich Angepasstheiten zum Stofftransport und Stoffaustausch vergleichen.
+
+## Generator
+
+- Provider: OpenAI / ChatGPT-Codex integrated image_gen tool
+- Quellbild: `6ff8baef-ba6f-51ca-adb7-b9f785cf5b35.png`
+
+## Zweck
+
+Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptbasis für spätere Korrekturen. Er ist keine fachliche Freigabe und ersetzt nicht den Review.
+
+## Prompt
+
+```text
+Create one scientifically correct German school biology learning illustration, horizontal 16:9, about 1600 by 900 pixels (a nearby native size is acceptable), PNG. Friendly abstract hand-drawn comic style, soft pale blue, cream and light green background, dark navy rounded outlines, warm coral and teal accents, visually matching a cheerful school biology picture book. Large, clear main motifs, generous empty space, no photorealism, no sterile technical CAD, no decorative microscopic clutter. Main scientific relations must remain understandable when the complete picture is reduced to 360 pixels wide. Text only the few German labels explicitly requested, large bold and correctly spelled. No title banner, no IDs, no watermarks, no footnote text, no little explanatory paragraphs. Illustrations are simplified conceptual models and must not imply that all organisms share a single mechanism.
+
+Two spacious conceptual comparison panels, labels exactly "Insekt" and "Fisch". Left: side-view friendly grasshopper silhouette with a pale translucent body. A blue arrow from an airy cloud marked "O₂" enters a clearly shown side spiracle, then a blue branching TRACHEAL AIR TUBE directly reaches a big simplified tissue cell. The airway remains separate from the circulating fluid. Beside it a separate warm gold nutrient pathway in the open body cavity comes from the insect gut to tissue, with a small dorsal pumping heart; label only this gold pathway "Nährstoffe". Right: side-view friendly fish silhouette with clearly indicated gills. Blue water arrow brings "O₂" to the gills, then oxygen enters red blood vessels which form a closed loop with a small heart and go to a big tissue cell; label the red loop "Blut". The tissue cells should be big enough to see on a phone. Critical distinction: insect oxygen travels in AIR TUBES directly to tissue, NOT via hemolymph; fish oxygen is transported in BLOOD after gill exchange. The insect gold nutrient route is distinct from blue air. Do not join a blue oxygen arrow to the insect heart/fluid. No lungs, no generalized claim that all aquatic insect stages share this adult land-insect diagram. Keep only these six short labels across the two panels.
+
+Final actual image constraint: Blaue Tracheen führen Sauerstoff direkt zum Insektengewebe; goldene Nährstoffwege bleiben getrennt. Beim Fisch führen Kiemen und Blutkreislauf zum Gewebe.
+Vereinfachtes Modell: Insektenluftweg und Nährstofftransport getrennt; beim Fisch Herz→Kiemen→Gewebe→Herz. Einzelne Labeldetails ergänzen die große farblich getrennte Darstellung.
+```

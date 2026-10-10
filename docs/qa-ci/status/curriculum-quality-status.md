@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-10-09T20:16:56.356Z
+Generated: 2026-10-10T05:41:15.827Z
 Rules version: curriculum-quality-v5
 
 ## Summary
@@ -29,7 +29,7 @@ Rules version: curriculum-quality-v5
 | Curriculum | Maturity | Goals | Atomic | Passage extraction | Bundeslaender | QA scopes | Warn | Fail |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Biologie (Gymnasium, DE) | M6 | 479 | 424 | 17/23 | 16/16 | 1 | 1 | 0 |
-| Chemie (Gymnasium, DE) | M6 | 480 | 410 | 32/32 | 16/16 | 1 | 1 | 0 |
+| Chemie (Gymnasium, DE) | M6 | 487 | 416 | 32/32 | 16/16 | 1 | 1 | 0 |
 | Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Deutsch (Gymnasium, DE) | M6 | 354 | 291 | 31/31 | 16/16 | 1 | 0 | 0 |
 | Englisch (Gymnasium, DE) | M0 | 130 | 104 | 2/2 | 2/16 | 0 | 2 | 0 |
@@ -81,7 +81,7 @@ Rules version: curriculum-quality-v5
 | Chemie (Gymnasium, DE) | DE-BB - Chemie Sekundarstufe I (Brandenburg, RLP 2015 Source-Extraction) | DE-BB | 1/1 URL; local cache 0/1 | 3/3 | - | 12 | 68 | 0 | 68 | 0% | - |  |
 | Chemie (Gymnasium, DE) | DE-BE - Chemie Oberstufe (Berlin, RLP GOST 2022 Source-Extraction) | DE-BE | 1/1 URL; local cache 0/1 | 3/3 | - | 23 | 203 | 100 | 103 | 49% | - |  |
 | Chemie (Gymnasium, DE) | DE-BE - Chemie Sekundarstufe I (Berlin, RLP 2015 Source-Extraction) | DE-BE | 1/1 URL; local cache 0/1 | 3/3 | - | 12 | 68 | 0 | 68 | 0% | - |  |
-| Chemie (Gymnasium, DE) | Chemie Kursstufe (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 13 | 126 | 64 | 62 | 51% | - |  |
+| Chemie (Gymnasium, DE) | Chemie Kursstufe (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 2/3 | MAPPING-3 | 13 | 126 | 0 | 0 | 0% | - |  |
 | Chemie (Gymnasium, DE) | Chemie Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction) | DE-BW | 1/1 URL; local cache 0/1 | 3/3 | - | 6 | 65 | 27 | 38 | 42% | - |  |
 | Chemie (Gymnasium, DE) | DE-BY - Biologisch-chemisches Praktikum Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 URL; local cache 1/1 | 3/3 | - | 14 | 52 | 52 | 0 | 100% | - |  |
 | Chemie (Gymnasium, DE) | DE-BY - Chemie Gymnasium (Bayern, LehrplanPLUS Source-Extraction) | DE-BY | 1/1 URL; local cache 1/1 | 3/3 | - | 54 | 332 | 277 | 55 | 83% | - |  |
@@ -368,7 +368,7 @@ Rules version: curriculum-quality-v5
 | Curriculum | Complete | DE source-view atoms | Raw atoms | Source-backed states | Extracted source goals | Registered source originals | Fully covered originals | Unregistered source goals | Extracted source atoms | Unregistered source atoms | Unsupported assignments | Unmapped source atoms | Partial | Error | Max source-backed view coverage |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Biologie (Gymnasium, DE) | 16/16 | 396 | 424 | 16 | 1014 | 1014 | 1014 | 0 | 1014 | 0 | 0 | 0 | 0 | 0 | 365 (100%) |
-| Chemie (Gymnasium, DE) | 16/16 | 338 | 410 | 16 | 5865 | 5865 | 5865 | 0 | 5865 | 0 | 0 | 0 | 0 | 0 | 336 (100%) |
+| Chemie (Gymnasium, DE) | 16/16 | 338 | 416 | 16 | 5865 | 5865 | 5865 | 0 | 5865 | 0 | 0 | 0 | 0 | 0 | 336 (100%) |
 | Chinesisch (Gymnasium, DE) | 2/16 | 170 | 181 | 2 | 399 | 399 | 399 | 0 | 399 | 0 | 0 | 0 | 0 | 0 | 170 (100%) |
 | Deutsch (Gymnasium, DE) | 16/16 | 268 | 291 | 16 | 6222 | 6222 | 6222 | 0 | 6222 | 0 | 0 | 0 | 0 | 0 | 268 (100%) |
 | Englisch (Gymnasium, DE) | 2/16 | 89 | 104 | 2 | 103 | 103 | 103 | 0 | 103 | 0 | 0 | 0 | 0 | 0 | 89 (100%) |

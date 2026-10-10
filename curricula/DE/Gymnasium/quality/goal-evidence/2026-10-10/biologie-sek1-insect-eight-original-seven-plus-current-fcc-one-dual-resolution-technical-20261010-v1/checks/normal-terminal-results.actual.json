@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 1,
+  "performedAt": "2026-10-10T05:13:39.190676+00:00",
+  "normalCheckersUnchanged": true,
+  "runs": [
+    {
+      "group": "original-eight-seven-resolved-one-historical-deferred",
+      "check": "prepared-check",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/original-eight-seven-resolved-one-historical-deferred/batch.config.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.958,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/checks/original-eight-seven-resolved-one-historical-deferred.prepared-check.actual.log.txt"
+    },
+    {
+      "group": "original-eight-seven-resolved-one-historical-deferred",
+      "check": "dual-summary-check",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/original-eight-seven-resolved-one-historical-deferred/batch.config.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.938,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/checks/original-eight-seven-resolved-one-historical-deferred.dual-summary-check.actual.log.txt"
+    },
+    {
+      "group": "original-eight-seven-resolved-one-historical-deferred",
+      "check": "resolution-materialize",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/original-eight-seven-resolved-one-historical-deferred/batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/original-eight-seven-resolved-one-historical-deferred/synthesis-decisions.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 1.418,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/checks/original-eight-seven-resolved-one-historical-deferred.resolution-materialize.actual.log.txt"
+    },
+    {
+      "group": "original-eight-seven-resolved-one-historical-deferred",
+      "check": "resolution-check",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/original-eight-seven-resolved-one-historical-deferred/batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/original-eight-seven-resolved-one-historical-deferred/synthesis-decisions.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 1.345,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/checks/original-eight-seven-resolved-one-historical-deferred.resolution-check.actual.log.txt"
+    },
+    {
+      "group": "original-eight-seven-resolved-one-historical-deferred",
+      "check": "resolution-index-materialize",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/original-eight-seven-resolved-one-historical-deferred/batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 1.364,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/checks/original-eight-seven-resolved-one-historical-deferred.resolution-index-materialize.actual.log.txt"
+    },
+    {
+      "group": "original-eight-seven-resolved-one-historical-deferred",
+      "check": "resolution-index-check",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/original-eight-seven-resolved-one-historical-deferred/batch.config.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 1.526,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/checks/original-eight-seven-resolved-one-historical-deferred.resolution-index-check.actual.log.txt"
+    },
+    {
+      "group": "current-fcc-one",
+      "check": "prepared-check",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/current-fcc-one/batch.config.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.796,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/checks/current-fcc-one.prepared-check.actual.log.txt"
+    },
+    {
+      "group": "current-fcc-one",
+      "check": "dual-summary-check",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/current-fcc-one/batch.config.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.798,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/checks/current-fcc-one.dual-summary-check.actual.log.txt"
+    },
+    {
+      "group": "current-fcc-one",
+      "check": "resolution-materialize",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/current-fcc-one/batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/current-fcc-one/synthesis-decisions.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 1.05,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/checks/current-fcc-one.resolution-materialize.actual.log.txt"
+    },
+    {
+      "group": "current-fcc-one",
+      "check": "resolution-check",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/current-fcc-one/batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/current-fcc-one/synthesis-decisions.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 1.083,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/checks/current-fcc-one.resolution-check.actual.log.txt"
+    },
+    {
+      "group": "current-fcc-one",
+      "check": "resolution-index-materialize",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/current-fcc-one/batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 1.116,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/checks/current-fcc-one.resolution-index-materialize.actual.log.txt"
+    },
+    {
+      "group": "current-fcc-one",
+      "check": "resolution-index-check",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/current-fcc-one/batch.config.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 1.195,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/checks/current-fcc-one.resolution-index-check.actual.log.txt"
+    }
+  ]
+}

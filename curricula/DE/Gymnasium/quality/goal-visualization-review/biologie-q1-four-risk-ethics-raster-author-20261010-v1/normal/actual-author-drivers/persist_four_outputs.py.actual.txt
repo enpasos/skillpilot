@@ -1,0 +1,25 @@
+import hashlib
+import json
+import re
+import shutil
+from datetime import datetime,timezone
+from pathlib import Path
+from PIL import Image
+
+ROOT=Path('/home/enpasos/projects/skillpilot')
+OUT=ROOT/'curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-four-risk-ethics-raster-author-20261010-v1'
+
+def bind(p):
+    b=p.read_bytes()
+    return {'path':p.relative_to(ROOT).as_posix(),'sha256':hashlib.sha256(b).hexdigest(),'bytes':len(b)}
+
+for item in json.loads((OUT/'actual-generator-output-hints.json').read_text())['entries']:
+    gid=item['goalId'];src=Path(re.search(r'as (/[^\n]+\.png) by default',item['output_hint']).group(1));d=OUT/'assets/biologie'/gid;dst=d/(gid+'.png')
+    assert not dst.exists();shutil.copyfile(src,dst);assert src.read_bytes()==dst.read_bytes()
+    im=Image.open(dst);w,h=im.size;assert im.format=='PNG' and 1.72<=w/h<=1.83
+    views=[]
+    for width in [360,680]:
+        p=d/f'inspection-{width}.png';im.resize((width,round(h*width/w)),Image.Resampling.LANCZOS).save(p);views.append(bind(p))
+    receipt={'schemaVersion':'1.0','goalId':gid,'role':'actual-built-in-imagegen-author-candidate','capturedAt':datetime.now(timezone.utc).isoformat(),'provider':'OpenAI image generation via Codex built-in image_gen','tool':'image_gen.imagegen','modelVersion':'not exposed by the tool','actualOutputHint':item['output_hint'],'generatedSourcePath':str(src),'promptBinding':bind(d/'actual-provider-prompt.txt'),'originalBinding':bind(dst),'dimensions':{'width':w,'height':h},'transparentBackgroundRequested':False,'outputBytesCopiedWithoutEditing':True,'inspectionDerivatives':views,'inspectionDerivativeMethod':'Pillow LANCZOS proportional downscale solely for inspection; original PNG unchanged','imageReferenceInputs':[],'existingStylesActuallyInspected': ['curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-twelve-current-v3-raster-native-author-candidate-v1/assets/biologie/666fb1d1-09a8-55a3-acd5-efe311cac8b0/666fb1d1-09a8-55a3-acd5-efe311cac8b0.png','curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-995-methyl-cytosine-correction-author-20261010-v1/assets/biologie/99544494-1825-5fc1-8e23-56f0df808e56/99544494-1825-5fc1-8e23-56f0df808e56.png'],'generationAttempts':1,'generationIsApproval':False,'independentReview':False,'humanApproval':False,'sourceCourseHoxLegalHoldsPreserved':True,'wholeSourceApproval':False,'activeWrites':False,'contentLicense':'CC-BY-4.0'}
+    (d/'actual-generation.provenance.json').write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\n')
+    print(json.dumps({'goalId':gid,'originalBinding':bind(dst),'dimensions':receipt['dimensions']},ensure_ascii=False))

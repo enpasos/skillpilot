@@ -1,0 +1,422 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "SPDX-License-Identifier: Apache-2.0; additive technical ledger shape, no native science or Human approval contract",
+  "title": "source24-first-review.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "reviewId",
+    "phase",
+    "createdAt",
+    "reviewerRole",
+    "knownContext",
+    "neutralCurrentEntry",
+    "wholeInputCurrentBindings",
+    "actualReadProtocol",
+    "childReviews",
+    "edgeReviews",
+    "independentTechnicalChecks",
+    "summary"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "reviewId": {
+      "type": "string",
+      "minLength": 0
+    },
+    "phase": {
+      "type": "string",
+      "minLength": 0
+    },
+    "createdAt": {
+      "type": "string",
+      "minLength": 0
+    },
+    "reviewerRole": {
+      "type": "string",
+      "minLength": 0
+    },
+    "knownContext": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 0
+      }
+    },
+    "neutralCurrentEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "wholeInputCurrentBindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "actualReadProtocol": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 0
+      }
+    },
+    "childReviews": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "goalId",
+              "retainedParentId",
+              "wholeChildBodyDigest",
+              "wholeRetainedParentBodyDigest",
+              "verdict",
+              "rationaleDe",
+              "partialEdgeCount",
+              "actualExplicitScopeKeys",
+              "sourceScopeUnresolved",
+              "requiresAndReverseRequiresDPApprovalFromThisSourceReview",
+              "nationalWholeSourceApproval",
+              "humanApproval"
+            ],
+            "properties": {
+              "goalId": {
+                "type": "string",
+                "minLength": 0
+              },
+              "retainedParentId": {
+                "type": "string",
+                "minLength": 0
+              },
+              "wholeChildBodyDigest": {
+                "type": "string",
+                "minLength": 0
+              },
+              "wholeRetainedParentBodyDigest": {
+                "type": "string",
+                "minLength": 0
+              },
+              "verdict": {
+                "type": "string",
+                "minLength": 0
+              },
+              "rationaleDe": {
+                "type": "string",
+                "minLength": 0
+              },
+              "partialEdgeCount": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "actualExplicitScopeKeys": {
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 0
+                }
+              },
+              "sourceScopeUnresolved": {
+                "const": false
+              },
+              "requiresAndReverseRequiresDPApprovalFromThisSourceReview": {
+                "const": false
+              },
+              "nationalWholeSourceApproval": {
+                "const": false
+              },
+              "humanApproval": {
+                "const": false
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "goalId",
+              "retainedParentId",
+              "wholeChildBodyDigest",
+              "wholeRetainedParentBodyDigest",
+              "verdict",
+              "rationaleDe",
+              "partialEdgeCount",
+              "actualExplicitScopeKeys",
+              "sourceScopeUnresolved",
+              "requiresAndReverseRequiresDPApprovalFromThisSourceReview",
+              "nationalWholeSourceApproval",
+              "humanApproval"
+            ],
+            "properties": {
+              "goalId": {
+                "type": "string",
+                "minLength": 0
+              },
+              "retainedParentId": {
+                "type": "string",
+                "minLength": 0
+              },
+              "wholeChildBodyDigest": {
+                "type": "string",
+                "minLength": 0
+              },
+              "wholeRetainedParentBodyDigest": {
+                "type": "string",
+                "minLength": 0
+              },
+              "verdict": {
+                "type": "string",
+                "minLength": 0
+              },
+              "rationaleDe": {
+                "type": "string",
+                "minLength": 0
+              },
+              "partialEdgeCount": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "actualExplicitScopeKeys": {
+                "type": "array",
+                "items": {}
+              },
+              "sourceScopeUnresolved": {
+                "const": true
+              },
+              "requiresAndReverseRequiresDPApprovalFromThisSourceReview": {
+                "const": false
+              },
+              "nationalWholeSourceApproval": {
+                "const": false
+              },
+              "humanApproval": {
+                "const": false
+              }
+            }
+          }
+        ]
+      }
+    },
+    "edgeReviews": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "independentTechnicalChecks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "wholeChildren",
+        "wholeSourceBodies",
+        "wholeBYOccurrences",
+        "stOperatorSeparatelyConfirmed",
+        "partialEdgesKept",
+        "explicitlyScopedChildrenKept",
+        "e5a5C11UnspecifiedHold",
+        "c11EdgesRemainWithoutExplicitCourseScope",
+        "originalSourceGoalsExactRetained",
+        "originalEdgesExactRetained",
+        "familyPartnersExactRetained",
+        "originalUnresolvedScopesRetained",
+        "old19OmissionsRetained",
+        "candidateNewOmissionE5a5",
+        "currentActivePublished362Canonical381KeptDistinct",
+        "full398AttemptStillExit1With378Union",
+        "expectedCountChecksSourceUnionNotCanonicalCount",
+        "fivePriorP26RequiresDeltasAndTwelveContextsRequireTheirSeparateCurrentDPReviews",
+        "wholeSourceApproval",
+        "wholeCourseApproval",
+        "legalRightsApproval",
+        "humanApproval",
+        "nativeDPAMVApproval",
+        "strictNew",
+        "strictRestored",
+        "strictNet",
+        "activeWrites"
+      ],
+      "properties": {
+        "wholeChildren": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "wholeSourceBodies": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "wholeBYOccurrences": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "stOperatorSeparatelyConfirmed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "partialEdgesKept": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "explicitlyScopedChildrenKept": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "e5a5C11UnspecifiedHold": {
+          "const": true
+        },
+        "c11EdgesRemainWithoutExplicitCourseScope": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "originalSourceGoalsExactRetained": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "originalEdgesExactRetained": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "familyPartnersExactRetained": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "originalUnresolvedScopesRetained": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "old19OmissionsRetained": {
+          "const": true
+        },
+        "candidateNewOmissionE5a5": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "currentActivePublished362Canonical381KeptDistinct": {
+          "const": true
+        },
+        "full398AttemptStillExit1With378Union": {
+          "const": true
+        },
+        "expectedCountChecksSourceUnionNotCanonicalCount": {
+          "const": true
+        },
+        "fivePriorP26RequiresDeltasAndTwelveContextsRequireTheirSeparateCurrentDPReviews": {
+          "const": true
+        },
+        "wholeSourceApproval": {
+          "const": false
+        },
+        "wholeCourseApproval": {
+          "const": false
+        },
+        "legalRightsApproval": {
+          "const": false
+        },
+        "humanApproval": {
+          "const": false
+        },
+        "nativeDPAMVApproval": {
+          "const": false
+        },
+        "strictNew": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "strictRestored": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "strictNet": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "activeWrites": {
+          "const": false
+        }
+      }
+    }
+  }
+}

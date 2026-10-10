@@ -1,0 +1,930 @@
+{
+  "schemaVersion": 1,
+  "role": "Independent current active technical integration; normal model-only APIs, no full book render",
+  "actualExitCode": 0,
+  "normalApis": [
+    "checkGoalBookSourceAtlasInputs",
+    "buildGoalBookModel",
+    "parseAndValidateGoalBookModel"
+  ],
+  "sourceCounts": {
+    "canonicalCurricularAtomicGoals": 381,
+    "publishedCurricularAtomicGoals": 362,
+    "sourceViews": 48,
+    "unresolvedSourceScopeDecisions": 496,
+    "omittedGoals": 19
+  },
+  "actual50CurrentSourceOutputBytesExactToOwnPriorIndependentReconstruction": true,
+  "whole48ScopeGoalSetsExact": true,
+  "whole496UnresolvedAnd19OmissionsExact": true,
+  "currentFull362PagesExactToOwnPriorIndependentReconstruction": true,
+  "protected172WholeNationalPageBindings": [
+    {
+      "goalId": "018bec90-445f-4a88-b8bc-228f8335dee6",
+      "pageFingerprint": "sha256:1384cd51e5c210c4b2130751a9f9bb9d597f8a5d0db63ae7e95dbeb6388f7dff",
+      "wholePageSha256": "sha256:ba78fd7c8187f0edb2e6b351847aacdefafbcf686649c85c3e67bef568f17e82"
+    },
+    {
+      "goalId": "02634fdd-c8ba-591a-b240-77129b1bebb8",
+      "pageFingerprint": "sha256:bb5e8ccac7be44f430a2ad731f9e7c6a1edcefb0989ec9ad6c6981645050e69a",
+      "wholePageSha256": "sha256:d065bb91e7da8d4957dff1ca068f83bcd4d7bf3b9c14db6ba6ce5b425b10d70e"
+    },
+    {
+      "goalId": "02dc29ae-4046-556a-b048-d64a0feb8f16",
+      "pageFingerprint": "sha256:0f7df6866bae481e0beaa1f546c949ef620e1c5d359c7668074713e77b8c0b12",
+      "wholePageSha256": "sha256:5f80dd26ef4bf04df8098454025d801281c9c88d6395a5feb299ca6ef12a9cae"
+    },
+    {
+      "goalId": "04fa0ba1-eb6e-53c8-93d4-dfa28bb4b162",
+      "pageFingerprint": "sha256:c8a922db99f3653b82c187ad0fa31f77965dce09b2b7a20e89d55b1a55d7c2c4",
+      "wholePageSha256": "sha256:33215e56f68d1b3560819aca863f53ab032097d0f6b371386aa9a94add682bb0"
+    },
+    {
+      "goalId": "0503c975-3934-5206-962e-b1c247de0c12",
+      "pageFingerprint": "sha256:172a5fe350fa462969b3a28710d35fcd08fa57066b128eac57404bbb7a9fcfd7",
+      "wholePageSha256": "sha256:b60ad0234d758981209690d54850b13e61df6089341bb8f9c3733567a524d158"
+    },
+    {
+      "goalId": "0acc8cd2-be6d-567e-a023-1d9e90475510",
+      "pageFingerprint": "sha256:48c95d1e9cbeceb914060243e46b10d3652f6d949d1058af7b29bda4fc324e0b",
+      "wholePageSha256": "sha256:f5753a092d7922266bce87b99f72d831569adfb9f05d593f0e7fe9af2ac1d343"
+    },
+    {
+      "goalId": "0b6a6a15-b355-5be8-abc9-4ef8df11bcb6",
+      "pageFingerprint": "sha256:b44b743aa68b1209cc2d270c4b22ad03edbdac94eec76b47a7c1b5f7c802a697",
+      "wholePageSha256": "sha256:153091386b1d035615200e7766bf9cfcbb7027f4d8b21a25c44c09d4a9455269"
+    },
+    {
+      "goalId": "0bf26276-2780-506c-ac34-35dd44a29409",
+      "pageFingerprint": "sha256:42770ebcc9c994f21f401ce5e247d88d08b1ee692eb05d7f559c76c04621624d",
+      "wholePageSha256": "sha256:eafe7c3381e604413d5befa5d7aa3f1f69daa7f297f62d09f115afb4de49a1b2"
+    },
+    {
+      "goalId": "0d59b62e-d3f9-5969-b961-0c5e26316c04",
+      "pageFingerprint": "sha256:500f73c1f5ae42092db9c2304e8c700dac1f504cc1f4b5e4b2783163aabd275c",
+      "wholePageSha256": "sha256:8a78c8a0e677181c92c7214e8e9706a690e6744be55d8b335483f95a5c826077"
+    },
+    {
+      "goalId": "1286f2fe-89b7-4454-8e11-85b6abd6e278",
+      "pageFingerprint": "sha256:073d7f6a87d893d29d0765c3af1de3bf74d62d459ef65fc1337787f852be93c9",
+      "wholePageSha256": "sha256:f0ef448f3a1c4ec11cabcdbe4784655ae53777d26cf25547aab8ac1ce7872425"
+    },
+    {
+      "goalId": "13d4f336-ab16-54a7-9479-c920b458f385",
+      "pageFingerprint": "sha256:4ae7c673e6fa79686fb38b1aeb0fbb619f73fb6410b44d457417c40fee6ecaa2",
+      "wholePageSha256": "sha256:696fe3f66f9e1f3b831c8d65bbed21b22593c1dcf185004cb17c40bb77f58857"
+    },
+    {
+      "goalId": "16a80de2-b5e0-5467-a9b3-5860730d7d8b",
+      "pageFingerprint": "sha256:94ce63c2f90b7396a0705b8e144d06b185a2814a084b8fe06dba50c5660ef3f3",
+      "wholePageSha256": "sha256:133b11b7b5315350e4808681a9c27733f15a18a87384210f252f46dfb1e10ad5"
+    },
+    {
+      "goalId": "16da6a4d-8e9c-5f5d-b69d-338d67a2d362",
+      "pageFingerprint": "sha256:07ccd398efc984ea4b5a71f56acefba2aee9d54822a6699fd06c8c3bd0eb3b0c",
+      "wholePageSha256": "sha256:41e252fdeeb2e949c7ca2fae0cf90b7b59fedea648635f144166a673af6f6a50"
+    },
+    {
+      "goalId": "17ab1148-7383-5cab-8b91-73aff795f1e4",
+      "pageFingerprint": "sha256:24c09c08f95b4399d0d5ea52161b790246926f98c9dd2098331dba7d7393b70e",
+      "wholePageSha256": "sha256:0aaea6529b8d21c0d20beac2e49c45c7e25cbc3da872c8bff4f37540c3c27f09"
+    },
+    {
+      "goalId": "17acbdec-5274-510f-8588-0eac164ebbe5",
+      "pageFingerprint": "sha256:d3417bdb52baa8d2f7a2a7fbc8bc66930363b3185e83da40ca0a1f2a8c88400a",
+      "wholePageSha256": "sha256:f399d4d6b8faceeacb6a7790e89916a287405c4ca55dbb3aefab5ff8306a7dbf"
+    },
+    {
+      "goalId": "17fe22c4-1248-5f37-9d0c-52ee4571d09f",
+      "pageFingerprint": "sha256:dcc5e57f3e84c0bf775007c905f76f150a7c9f2105ebc161e481ffe5ba81f045",
+      "wholePageSha256": "sha256:0d7525cc443e05337cdfc233b333946d475b3c43059885ee395cb9a87271239d"
+    },
+    {
+      "goalId": "1837690e-cfb1-5b1c-96c8-0fb40d6d5d69",
+      "pageFingerprint": "sha256:f83b60ea86b479ae9a71107bd036c868ef8e28a627f0433bd86606f012fb8e4d",
+      "wholePageSha256": "sha256:3ab56721912e78bb24e0c08e51a40522eb97de9c516f1484650f36ef8be2dcb0"
+    },
+    {
+      "goalId": "199570f4-b3c3-5e12-877d-ced97e9f6968",
+      "pageFingerprint": "sha256:dd476c7220f8ce7da1e6947b8dcfb50b93351add3741b96e02f409a6367e2e7e",
+      "wholePageSha256": "sha256:89a8183371b3b314d910c0d80e3182a483bc4ed4485bbf77ad1a9ef2176f76d1"
+    },
+    {
+      "goalId": "1bdaf7f2-ff3b-455a-a7fb-95a44642762a",
+      "pageFingerprint": "sha256:e44a064e241f350307751f292c8e1ee9bda7c8dd8b23a6d2cfe17d65604b2fb7",
+      "wholePageSha256": "sha256:360b6367d21e34db5fe433f4f1b443b8cd7064d2d310fc5812198ab829a17f48"
+    },
+    {
+      "goalId": "1c1420c2-a8e2-520f-8015-6df637a973bd",
+      "pageFingerprint": "sha256:484a5229ecf54a3db8b56bd04e65a3bca25a3b6e50d7a4759b305a9b8b16b7f8",
+      "wholePageSha256": "sha256:5183d7de79545d5d542630c5ac6d139c6e26934967c05f569f2d1a294123e28b"
+    },
+    {
+      "goalId": "1dc15fa2-fca4-56b0-b5c1-4d215613dde0",
+      "pageFingerprint": "sha256:a1ac4c2cae9e915384fb7097db0ccdf8d8e4dc8329f31551fb341646fcd99c6e",
+      "wholePageSha256": "sha256:55aa3737db88d8a2b3fde1a604c92cecb79c07e895b0063ee7812cabf62f68bd"
+    },
+    {
+      "goalId": "1e5a4b89-69f1-5379-811e-c8ec76faad2a",
+      "pageFingerprint": "sha256:5dc5e99bad4a369675fc77a3eeeeaaaa43d40b63b35f586344fca5e256958d0f",
+      "wholePageSha256": "sha256:17aa83a696d4c353115c653c6a9695deb26f7dc41002aa935c6ba2fb7ca9fa95"
+    },
+    {
+      "goalId": "1f30d81c-8a26-5675-8c0a-1cb82e96d3ba",
+      "pageFingerprint": "sha256:fa784c2611c11a1adb14aa310c3d5bd11bd51ed875b63b199e9edffe6a353dfa",
+      "wholePageSha256": "sha256:96f0c3e2e50e0b87f56505870615fe555ef0b8c8da3809288ccf523a1c23810d"
+    },
+    {
+      "goalId": "1f5ee84f-245a-5a1e-a260-f960f26523e9",
+      "pageFingerprint": "sha256:dc5b4c38ba41a59094c7fd1204b060631b0dce5ce544137be0425e848827d537",
+      "wholePageSha256": "sha256:fec1ba51435e5b97507ebc42cbbd698fb85e9bcd6eee4b3a67588aa1ead01f3e"
+    },
+    {
+      "goalId": "22133f29-ef02-4408-8f8d-2bbea3275d91",
+      "pageFingerprint": "sha256:a57ff68843b16995c2235468d88fa5761041592777cc7c87f77b4c7f517a1b96",
+      "wholePageSha256": "sha256:c9eabe78aad7661588225d5ad4a70809f1dc28c0f2f51ebc9f164277a9dad577"
+    },
+    {
+      "goalId": "23533087-89ea-5f29-8ec1-9f2e01197bb6",
+      "pageFingerprint": "sha256:75cb76740815538052143455a8f3c0f7421dacc71db10503afc1de1b61cb31bb",
+      "wholePageSha256": "sha256:506c1d692a7b1e365331941064c7edb1f86a50dcbec5419caddc050fd6885e2a"
+    },
+    {
+      "goalId": "27e4fe9b-4796-579b-8f7d-06c65fb600c0",
+      "pageFingerprint": "sha256:6899b56ecf26de22fbc17b5793c3f39871a048453f2caa9895937a669771a93a",
+      "wholePageSha256": "sha256:25669eea70167dcbdfd205887f601d840d4eed4e05a928ebd35a1481d26ea590"
+    },
+    {
+      "goalId": "28bb9d15-f865-5843-a035-6066580fea64",
+      "pageFingerprint": "sha256:58a2a347b329a72ab2c82b792709022ae9d55832cbfc0e625ae7e2d8c87ac50f",
+      "wholePageSha256": "sha256:781d3d5d39587e7e6c55a920871e6d60b6bd70c41b1b9b9304ab1c3caecffa35"
+    },
+    {
+      "goalId": "2924f784-5261-54e8-93ee-49ac3b3cd300",
+      "pageFingerprint": "sha256:f5d10cc10dc842f236ab12ad75441b6b66cf0ab0527082591c8648fc5e2e822c",
+      "wholePageSha256": "sha256:a14010b9f8d366ca3599914c823d32f00c7fd6d34ef34a3ce278949f5d764f28"
+    },
+    {
+      "goalId": "2bc1a15b-a677-5612-a564-33e826d11327",
+      "pageFingerprint": "sha256:336e3edd24a421977b5a4fcce45544c62576d079b0465b0f2b8bf71b3a3dd2a0",
+      "wholePageSha256": "sha256:34d4ce349185edec80f12223dc8430140280555e1aff63e8f8088d361b260797"
+    },
+    {
+      "goalId": "2be9e61a-88ea-56fe-8294-ee46e3c9a8ef",
+      "pageFingerprint": "sha256:2d4852603a4460145adf09729b8980e4246a8fc2d115775fa58c233c115c20c4",
+      "wholePageSha256": "sha256:dfd8e3c2bf40bbe9fdf4ae7e7e851eb82e9d3eec4f5ab0c91fec73845da511e3"
+    },
+    {
+      "goalId": "2dae4132-40a9-5ee3-ac0c-11c5d1302f36",
+      "pageFingerprint": "sha256:6a76cb19c055ce248de0d9ffbac4d7441d18c695804809128ea56e687ca2cab5",
+      "wholePageSha256": "sha256:fe5944ac0a8f7a6e978d1fddf62d16706e30ad4e73fc161f96204dfbfef59d15"
+    },
+    {
+      "goalId": "321d801d-28e4-54a2-bd31-8c07bda2f392",
+      "pageFingerprint": "sha256:500aa94a8a4941d3169d3c7e033260a72d92c3dd51836e6b49dd9274271c6e5e",
+      "wholePageSha256": "sha256:eba80cf53f89f08a7808c62d8ff2c77d4be8cbe20079cb987d9a9d22e5762ab1"
+    },
+    {
+      "goalId": "326d45bf-9f77-57d5-a054-93e76b034dd5",
+      "pageFingerprint": "sha256:87ffb6d46e7b20d428f668e85b6689cb8aa5a8f1cb7d8c83df53577f01674978",
+      "wholePageSha256": "sha256:cf8509119dd2a7523e3143dd90bb33a49738232a48586c0b583a834410220f39"
+    },
+    {
+      "goalId": "33e845cc-1a7b-50d5-99b3-8079575c4e6a",
+      "pageFingerprint": "sha256:1e4794a5388ca79b8e3a220a5f93fb5e3a676e8dda3db9cfb078414d31b8c6c4",
+      "wholePageSha256": "sha256:8b396ece7d76f1683123b2275d1ee86d25f6a1c67c6a32901eb443edc560e4ea"
+    },
+    {
+      "goalId": "345fdca9-038f-51e2-9bea-b6ac416a734a",
+      "pageFingerprint": "sha256:b356415b9fd24eeaa21cc8c50bed822e928b5e1663aa8ecbc8e7d2ac2c789741",
+      "wholePageSha256": "sha256:54543b99629fbc1e20440db076c4f828158f06bbf7754af2bb3634cef7c9058d"
+    },
+    {
+      "goalId": "350a394f-e0d4-5e42-8e9a-39da9df33518",
+      "pageFingerprint": "sha256:e4627ad807cc491f838b7fd81c902663b8788f12b263bc5c30e5f5bf56facbd6",
+      "wholePageSha256": "sha256:477151b6efbe14b81233ede24d1ebd60ffd7efbfce4f1ce1c10ffd51095340f4"
+    },
+    {
+      "goalId": "363c5740-8a3c-50b8-8c3a-5548c80c36ea",
+      "pageFingerprint": "sha256:e6026bb6488b88625b6892886819ccade90562e0a8700689876fecf35ba47396",
+      "wholePageSha256": "sha256:eb871dfaf6418bde83bb1b8911de6be3742e49efd6dbb2cff23aa8d8018a726b"
+    },
+    {
+      "goalId": "37b4081a-244a-58d8-b448-88ed83344210",
+      "pageFingerprint": "sha256:011eefc7601afd8a792c7fe11a394667b862c81249957a6db96cae036a1e4cb9",
+      "wholePageSha256": "sha256:2c2bb4da8ae087dfb8c6e9c001727e91bb26a944cd1a8f83c543406ed677c0cc"
+    },
+    {
+      "goalId": "386e28af-505a-5eb9-87fe-9c6946f10433",
+      "pageFingerprint": "sha256:6e065335259b797b3940f3928ab2e8eec6f8ffdbf59eced496776abe5d618835",
+      "wholePageSha256": "sha256:7c13d85da5a98393373dcdab10d66ae16886a37f6d4499ce43fdc14e77726330"
+    },
+    {
+      "goalId": "3899edf4-a809-54b1-8ee7-4e67aa82dc7c",
+      "pageFingerprint": "sha256:ff0771ebb488cfb468532765918db38daeb691dee03fe16d63e26f4bafdab517",
+      "wholePageSha256": "sha256:e64bc0b96dc74c8160fd1570c167f09806aceded0b3400e504097fc844cc1442"
+    },
+    {
+      "goalId": "3bc48951-025c-5144-99b1-924db611a5f9",
+      "pageFingerprint": "sha256:a1b6008c8840b34422fa97b51b5b3b288f3e01330d38019d209070417b0d8579",
+      "wholePageSha256": "sha256:c0c1f687e77f44abbf938da0ccde7f07efd0ba855f022f47676b64d96548ba7c"
+    },
+    {
+      "goalId": "3be2d0b7-c22f-57d4-886a-10fc04a629f5",
+      "pageFingerprint": "sha256:437e7de5d41f2eb2ea7a28ba652597836e3afc193aece3bd2107f8e4b74b5c9a",
+      "wholePageSha256": "sha256:043eb702ef8a572bc6f1fbb6e4cdd166d941b7024bb64ab766348fe583e11e97"
+    },
+    {
+      "goalId": "3c9bfa10-9a13-50cc-96c8-6213e28d6c54",
+      "pageFingerprint": "sha256:454602923dbc5be33f44697265faca8d902d10e068dcb1d5b74e061edb7ec56d",
+      "wholePageSha256": "sha256:be72982e51db0ba4f347532e14b400638568f0ad85420d881444ee8b7ddda6db"
+    },
+    {
+      "goalId": "3d3231f9-039d-5ce5-9e8e-af219c7fee08",
+      "pageFingerprint": "sha256:242753c28622e6ccd9b0e3583f46b583427994679453ce8f057b429295dbe545",
+      "wholePageSha256": "sha256:fe550eee45a3bcd98e1ccccde749f97291582c17614b37e6cc212223bc1f297f"
+    },
+    {
+      "goalId": "3d6699ae-ebbd-5a55-8798-b809a9d74f0a",
+      "pageFingerprint": "sha256:9232e69b2dcf64ffb4c6aa479e093f7df6819bfe06a67fdd7d8da23688ee6134",
+      "wholePageSha256": "sha256:33c5b2a7e81cd434a83d982f5a79dffe41200a10f8a20b8d2749792d9ef212ae"
+    },
+    {
+      "goalId": "3e433dae-99f9-5a95-ad63-d5fa0b5f6836",
+      "pageFingerprint": "sha256:529b5c3b8657bf371dfe9838f96b789399c3928ec3e12f971fb434b338f6b143",
+      "wholePageSha256": "sha256:2f0222dc0678d6669712a34ee1dca47867c175bc9b5a0ef7c92e6d675ded2548"
+    },
+    {
+      "goalId": "3eada74b-25b8-55dc-811a-acb473196f53",
+      "pageFingerprint": "sha256:592852905bd5a852b19aa28f89cbfe8a8b10680217f67995b315c5b46fa4885f",
+      "wholePageSha256": "sha256:f6d436cbc0a20ce100d89f3f5b00522f600f53e49f8c86c9aaf4c4c61795883a"
+    },
+    {
+      "goalId": "3fb7dea4-f832-5e23-b518-68b13a655b92",
+      "pageFingerprint": "sha256:9f63b5aaec5849eca9d266468f92f1f10188c6c7426f0243e86baa886135da81",
+      "wholePageSha256": "sha256:18b942509e3976bcb9dd90f66cb386587d4073add6a15c00e22aa258c7c0cc78"
+    },
+    {
+      "goalId": "41396457-d97b-55f3-9804-2af1bb188e79",
+      "pageFingerprint": "sha256:ea8c4fe6260564c4a908043a37d08a2d5718756756756be4f6c89e4a5534922d",
+      "wholePageSha256": "sha256:aa5455d03f8bee8f9758a445fae348edc2583951f9b5ad6c93eafcd546f41644"
+    },
+    {
+      "goalId": "414489cb-453e-5de4-ab0f-0fc01175e522",
+      "pageFingerprint": "sha256:d5da51399fad5dba2ab9f51a775d764df0a490f128e6f7a7bb874f33ffe37a99",
+      "wholePageSha256": "sha256:4d4cc3128c77ec73401acbfa192ad8f577318b0bdf7cee6378f062549987185a"
+    },
+    {
+      "goalId": "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+      "pageFingerprint": "sha256:541724b677655268f6ef7bd4994adcc50dad79594a40d749b72f780f6025d053",
+      "wholePageSha256": "sha256:c83576e0d15101bda33813d3e48f0ffe90644d7ccb85e47718526955a94d80a0"
+    },
+    {
+      "goalId": "42a84bca-d27e-581f-a43a-eee424f0504d",
+      "pageFingerprint": "sha256:4a6826add10db26448abef00f7096fe4e67468624dfd08a81e725a1013ef85db",
+      "wholePageSha256": "sha256:807d89c106389d75dd8da947bc1dae5ce2e8132929682c3e5840845db9eaf785"
+    },
+    {
+      "goalId": "448815cc-4127-54b7-96bf-e54b3d2a38c5",
+      "pageFingerprint": "sha256:8e297313630c86d5e5322d1ad59eda0bbdba76739b3e316756164d35332b1692",
+      "wholePageSha256": "sha256:e88b0664f0df5c6548c81c1c8896adbe759f030289201d00ca268ca861a14c46"
+    },
+    {
+      "goalId": "4663fd80-1618-5211-8020-18f4b80979fc",
+      "pageFingerprint": "sha256:908d559fa50dbdf9ad05d707039b66eea7e9f3104a3536b62f11e689a02b29c4",
+      "wholePageSha256": "sha256:d3e4310716762bb97ba4baa554a9dd0b688570d9062bbbe60aadfea6d8c6b141"
+    },
+    {
+      "goalId": "49235cbe-6658-5e7e-8bd4-398416bcebdc",
+      "pageFingerprint": "sha256:bb40e49b0ade7c6e5287ecf7353a11984d530b3c1eac77194806dba9b3159566",
+      "wholePageSha256": "sha256:7d54705a652cbd5657f835ecc1acda122853fd8a0b6e16f915ea90714e396b6e"
+    },
+    {
+      "goalId": "4928d5d1-e790-5883-9349-3b03a1c63b99",
+      "pageFingerprint": "sha256:d99e93e2dd109523189a1b8be3880dfc8895f8be8ec73f514416a376c1685bca",
+      "wholePageSha256": "sha256:8669dad746ec71b460b472bd7f6118645af3b9e29a32068bd56c2d33c019a4c8"
+    },
+    {
+      "goalId": "4da0839d-ab6d-53c1-ac21-c9872555ae16",
+      "pageFingerprint": "sha256:63d8d14d5a7942e5018eb6d1022158f647c74ae5c7d2300afbf99b2fa9d87357",
+      "wholePageSha256": "sha256:7761c7078b8e1f72161ab4324f4697d08a8e13015ec6306cc0f1749d93c39d9e"
+    },
+    {
+      "goalId": "4dab7d52-5b89-52ab-a425-17a7707f44c8",
+      "pageFingerprint": "sha256:76dbe79259a1c91b9ff2ef7bd1221a5aaf880667ad9280e790e5b11a02580d80",
+      "wholePageSha256": "sha256:e2a503812ef9006838cc37b1362d1db508d65c936fef2b54f1453e7d05bdc3d8"
+    },
+    {
+      "goalId": "5338b54c-68bc-5892-907c-e025351ffde6",
+      "pageFingerprint": "sha256:949958550e8156266d4fa0144362c143837419dc5cb1b5afa4ad92780195e569",
+      "wholePageSha256": "sha256:ea478e6f55f69d7efe030a223d4e58ba4e9c55ca1ab3a4adac22963ed6374bc9"
+    },
+    {
+      "goalId": "536b48b2-7822-5b7e-9059-ad43400da7e0",
+      "pageFingerprint": "sha256:d8fb74367429776c8e51aec10ea570632c9615cf9a5478e300d255d4934c06f6",
+      "wholePageSha256": "sha256:5ec9a0db78b27d04ebff847ff299a7c28ce8b7f64de68c3cf8000b6a622d6e0a"
+    },
+    {
+      "goalId": "542d88e9-4cd3-5f90-bd20-b50ab030d72a",
+      "pageFingerprint": "sha256:669ecffb02bbd9d18ebfdc87ef36e4ea4de9f565865e25590e4411b1626210e4",
+      "wholePageSha256": "sha256:e4725bc7007259cc36aa38ffaf9cf5d9340326438df943ad70f1ac88291714a7"
+    },
+    {
+      "goalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+      "pageFingerprint": "sha256:0f47234d2fa859a72995b53126e1585d375b4aade282b251fc21a6ba2fc46367",
+      "wholePageSha256": "sha256:2e8284a93842719635ee325c6d1a25601e30f31c000a65bd1c449109b15cf6c2"
+    },
+    {
+      "goalId": "58486300-3f84-5aa1-9ed4-66186af62669",
+      "pageFingerprint": "sha256:922257b0b1a20dd22a19951f6c95f4ccac320554158ed5c030bdaf1353ced98a",
+      "wholePageSha256": "sha256:71b5b5a295d9006a2a6f388910d4569ec7d468194477dfc890b4e339ea3a0962"
+    },
+    {
+      "goalId": "5851b53a-162b-5c17-9269-510ee54ad846",
+      "pageFingerprint": "sha256:23b82231ee7078f2c652ea659177ff8dcafcbdd68b977f849d4a7035eda3a528",
+      "wholePageSha256": "sha256:6361959d7626d6fa3f702948cfc7206c8c4801b7e3ef38b650e5019e5d6745c4"
+    },
+    {
+      "goalId": "597ac03c-d25f-5c34-a87c-52c059c87295",
+      "pageFingerprint": "sha256:c77bea669e7009f0f4e8f768768df9a2e3b13f1195ff18f002c2c3f8a302be4e",
+      "wholePageSha256": "sha256:38947d73be8b800561e1512b3ef64e4ef755c95d52e3e9988ad883564ae16b78"
+    },
+    {
+      "goalId": "5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+      "pageFingerprint": "sha256:9c28e46165cfcd2ce650f3ed3dd7285b9ab1d665f929658f3bd5297ab0697706",
+      "wholePageSha256": "sha256:44e6d931291621590fa65b51c489620911b6b29c75175c565948ea7b1939be66"
+    },
+    {
+      "goalId": "5a709938-e0f5-42b7-94f0-cfded08963a2",
+      "pageFingerprint": "sha256:c865487556f9694130b516ff8acc319b6570feb7f48842eed8fa433016b0e3e6",
+      "wholePageSha256": "sha256:407a9e53e92f56ed3fc5d8f111937113eac5d6218f6359bb935df191a79c23a0"
+    },
+    {
+      "goalId": "5abc5961-6368-52bb-88b9-6a846c3c37a8",
+      "pageFingerprint": "sha256:914e7f4d08d404874eb4b43f0219e9907c09cb9f75ff804cca1303b4474b6c20",
+      "wholePageSha256": "sha256:7658bee8789837d9c88485a1c916efa95adb2eae2736ccbe56a25b4e56b6c674"
+    },
+    {
+      "goalId": "5c4788a7-6760-53dc-894e-e04bca6f8cd9",
+      "pageFingerprint": "sha256:7007dd0007ee5fd350670d8195bfb118ecb7808bea5d1dac39bf193f8f6cede3",
+      "wholePageSha256": "sha256:52343ea572316fc889b4ae656b546ad9cdf300b04056e963a9be5c900a5597e4"
+    },
+    {
+      "goalId": "5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf",
+      "pageFingerprint": "sha256:0d96efdb8a204adb8c7018a2cce2b847050c36a414d8378e55d47bc2835ab9d3",
+      "wholePageSha256": "sha256:6ce05cfb9dcd0dca388f8974b9e843ee5a7e0bfbca4f98142e2b1562a14b10b6"
+    },
+    {
+      "goalId": "5e2eb826-6e60-5273-91d6-c23f6dfa33b1",
+      "pageFingerprint": "sha256:bc02818be5c730cd6bfbd2d5099fc79dfd089cfe548f9bd0f017cfecdd078dc9",
+      "wholePageSha256": "sha256:266fcce79f5fd1f520380451c7f6fd895e90e467a7db4f66810204acdf92c5a4"
+    },
+    {
+      "goalId": "622f09e5-a5bb-5ccf-919f-bae990c7c116",
+      "pageFingerprint": "sha256:fb8cedc8effe83c0d3851381bff112e79fbff71ed380707f140c93c7a15398db",
+      "wholePageSha256": "sha256:c8935b15a277f4a2d8fd25ae8a86d142c6c426503be28ad10d9dce23c2febcec"
+    },
+    {
+      "goalId": "667bc303-e9b8-570b-84f1-61cc8bdfd006",
+      "pageFingerprint": "sha256:d3656037e5127c568a68b26c7590aa75d566b76fdb5eccc9667d8c09ab21d137",
+      "wholePageSha256": "sha256:9209e8e664107dd5e58364b78ea3833f6f1f4cb84485ad01bd6c11ee4c8d2663"
+    },
+    {
+      "goalId": "6765f741-42a6-55c5-a218-81b883b1f5ae",
+      "pageFingerprint": "sha256:9a8407b8eb2a26b31f4e6b4283c32226490c36be87f3b1d1e63432276a594fcb",
+      "wholePageSha256": "sha256:870f8a5fc88451ec14e3134207bd14000deda39c8282f6134e30edf80c328e82"
+    },
+    {
+      "goalId": "67cd332f-9db7-50e1-87f6-172ef3714300",
+      "pageFingerprint": "sha256:01360a1ad905e14666c448e1f9e56e91700aa46d8d63022ed7063fc2de9ead06",
+      "wholePageSha256": "sha256:30c0d1daae17045f57648c00e8cc282375964cdff9249131106bc0545c1245dc"
+    },
+    {
+      "goalId": "6966df95-f125-5ecc-af8e-0442545d9f17",
+      "pageFingerprint": "sha256:a43e278054ef21f8a21b1587252283df2d2a71fc8f64305735050b6e0bb233a5",
+      "wholePageSha256": "sha256:9b38fde585fc79e54f7b3ab1d6767717614f8f993b039ea1c6950ecae0b7398e"
+    },
+    {
+      "goalId": "6b82f80e-f493-5e6b-9709-2d4eca98c137",
+      "pageFingerprint": "sha256:9d7b316d448b2bb3ae310d929271b9926e6452b65889ddb66b239c3b85b13350",
+      "wholePageSha256": "sha256:5af97b3f8946c61edff6982347d37ede69d15c8ca91dfefb2d117457f6747c40"
+    },
+    {
+      "goalId": "707998c1-872d-582d-a2d6-14e7d967cbdb",
+      "pageFingerprint": "sha256:25db1563ed804643e7abb442c56b55eed4824303ce91dc4b505bc9143c7de2ae",
+      "wholePageSha256": "sha256:1a7a7170c6ce0683729cac5be13efc414e3611fd9b9745635a40a985244ed730"
+    },
+    {
+      "goalId": "70b12d1c-abaf-45c6-ae9e-b571e9cbc126",
+      "pageFingerprint": "sha256:42e51b3216efdae63987bc55f18a28670b82d89b78e970734e36c1cd61d10c77",
+      "wholePageSha256": "sha256:0963f1ea616ff4bb31a11ca4120a1fa753514cc4043901e26d32aad1a9391ffe"
+    },
+    {
+      "goalId": "70b34ae7-4481-590c-9a02-516464750832",
+      "pageFingerprint": "sha256:97a9be21d848f735abbce60f096edf699e0a1548f6f1ba197033da243c55ae17",
+      "wholePageSha256": "sha256:a494c38216f54bbed3c90666fdc32f5a0a3af29e3b0a6a513290b440d9b9b378"
+    },
+    {
+      "goalId": "70bcb6bd-b7f8-5e23-b466-f9bc270a9c67",
+      "pageFingerprint": "sha256:a12fc29e5eb06eca1ea4c13e9dfba2b2e1541faf5336d92e7a4a2a0afe10eb40",
+      "wholePageSha256": "sha256:43f0e882466d6cda8d42a53327f2d5dd3c5a336cb7dabb88a97f19a385bd50bc"
+    },
+    {
+      "goalId": "73547696-e225-5f14-839b-c77f54c32bae",
+      "pageFingerprint": "sha256:4a553f2114ac5e01841ab641c35129a8963fe7a281a252be58b6b8cd35cf835a",
+      "wholePageSha256": "sha256:d5698416503b2222f77a0bcd9276260cd034d1af40fec13ea42abd509e2dd619"
+    },
+    {
+      "goalId": "747c5777-07d7-51a9-9be3-7d0d6f51d4e2",
+      "pageFingerprint": "sha256:94970a14002f548ad8ed6de4eb3d7fe58b09360adba45f8369398d1dfc16ef3f",
+      "wholePageSha256": "sha256:5708a6fc531fe41cd48c130ee8b9b989f0b324fbfcf68162589c8766693cd8da"
+    },
+    {
+      "goalId": "78109f6d-c415-52c4-8314-07c0dd888a80",
+      "pageFingerprint": "sha256:06b899d51e885254980579262e797268bc6a762dfcbf701abdc5050e8ac66e41",
+      "wholePageSha256": "sha256:e87fa7c9ec24883db1e8ebe3abe089b65afc73ecaa9f79211cadae1170ffca5b"
+    },
+    {
+      "goalId": "7964cb36-e9b1-5176-9426-a82041a5b72f",
+      "pageFingerprint": "sha256:dbf9ca1f6a4f9647bad6eaa27ee560ffc1461860ee043c3758ebfa245e5ca3fd",
+      "wholePageSha256": "sha256:84d8268827a0da214af1ced4f3ee497992269d5b2f496cb0f253e635a2f1932e"
+    },
+    {
+      "goalId": "7990387d-f254-5d3b-a589-a3e7ed9502a3",
+      "pageFingerprint": "sha256:c7b65af5d996a5d5fb59246f2103b584672c7da7f5e9ba03597a859e2b8ba186",
+      "wholePageSha256": "sha256:43e57965eb42e2526a83be962c8360373f40d11e03125c2f6cc275dda4626fd3"
+    },
+    {
+      "goalId": "79db6d68-b402-5563-a348-f2784fed8867",
+      "pageFingerprint": "sha256:809dc5807557b03ce40d9505abbcbcc66429e2cd07e2ffe173012daec843bf6b",
+      "wholePageSha256": "sha256:3607394c16ac94bc47313975ae950f6279e1b816f755d26ed1cb490133f62af6"
+    },
+    {
+      "goalId": "7a05a1ce-45d3-571e-be51-afcd8dfd33ca",
+      "pageFingerprint": "sha256:2de4fd25093959aafbb71e22a20b53098928947d07f47aa20ab99e8495b9ee51",
+      "wholePageSha256": "sha256:d59783e803dcf81c08613fcbae671f4f5e9b37cbf201d5a034e5af991b9a720f"
+    },
+    {
+      "goalId": "7a36f2a2-a97e-5a0b-a6e1-a80f72137640",
+      "pageFingerprint": "sha256:10cca0f3beba09cf30c74d74dd0b5a34fdeb2282d7301dea9dcefe53262ed1f4",
+      "wholePageSha256": "sha256:bac22ad0bb66803afcb7d3d83e2dfe6755ad0e67f8add4e2974ea539f1e9cfb9"
+    },
+    {
+      "goalId": "85342c52-9722-54b0-8fbb-513d9d648363",
+      "pageFingerprint": "sha256:7f0a06d5fa7bc958ee89f60a26683e496ee6bbb028c026259fac46f73e17a2b0",
+      "wholePageSha256": "sha256:d59e420e1554ad9c6bd104b81fa1c2a271f53bedda7b497693bd8dec0de6468a"
+    },
+    {
+      "goalId": "8576b82b-811a-5e13-b5dc-ec5d42030565",
+      "pageFingerprint": "sha256:a4825d56ca18f6be213c3d0965e32823583faea8565a55e4994f4b2a44bab794",
+      "wholePageSha256": "sha256:526cd7c28e3a5eacfae7a7230fa553140cfa78cb3cb38a83ae3fc011306c273a"
+    },
+    {
+      "goalId": "858d56e0-ab8f-51a4-b07e-7d9d94cab8e2",
+      "pageFingerprint": "sha256:c02d8dbeb3754a0c8d26692da93146112212ef1c88cbe9d2be42d8d5cc476a78",
+      "wholePageSha256": "sha256:df1f1126190fa4f2fc05937911bc34b7602c74e2f8398c97485a590c05bfca0d"
+    },
+    {
+      "goalId": "88ee181f-b2d3-5639-bb5e-3d1a2915171b",
+      "pageFingerprint": "sha256:3493e124d713c43bc6383fb6c6a6148c4ab786a4e71bd6902d089d585f3f3ccb",
+      "wholePageSha256": "sha256:c215ec1765eb8678e8f685344ff56ac962493e001b7915bf1435fd818110fab0"
+    },
+    {
+      "goalId": "8a2ad724-df5e-5986-8de9-560ba43caac2",
+      "pageFingerprint": "sha256:f05ce73eeacd44983950063faeb2a7b116f30613c4b566e2f8abd5e9059d14e8",
+      "wholePageSha256": "sha256:f05241676f01c8474530a6668d2d3b006d63facbd0bfb2f6175162ad18e371de"
+    },
+    {
+      "goalId": "8a491e3b-5d0b-51d3-9b14-0977ec035dd6",
+      "pageFingerprint": "sha256:77e4439f1227737a9aec7df804ea80b74a484989d912caa0019ee99f6429364d",
+      "wholePageSha256": "sha256:06266175264a8fc7cd17352f7299f3eef5757f14b560aa909d0e82afaceefaaa"
+    },
+    {
+      "goalId": "8b98d8ba-65c6-58d7-92f0-45f4b2456573",
+      "pageFingerprint": "sha256:0cd73ffa318deb71e8e8fbf4a62a110a629f794fb78e58a8a0e5c2238affdd3b",
+      "wholePageSha256": "sha256:d801f2c06c9761f2c5aaea852c53b1b79dd09f45efc0012887cac217bcd80159"
+    },
+    {
+      "goalId": "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+      "pageFingerprint": "sha256:fbd5259d3c89b90a812c172b1ed9223da368de7549100f61e32ea6bab42c0db9",
+      "wholePageSha256": "sha256:ff7f8e49b134587fc0b33d1021077a9a0e23112890abea78df5a9b67f7c10446"
+    },
+    {
+      "goalId": "8ece9beb-9458-5ea1-8e45-9be04670f464",
+      "pageFingerprint": "sha256:562fa9412433b76217fdfd6ced948bd618ab435e76f401aed1444b545dba77ce",
+      "wholePageSha256": "sha256:a836403764164ca52547c031a7c88d02d3e7a95bd1d2cbedada29666223d9c31"
+    },
+    {
+      "goalId": "9198b4cf-e454-562f-83f0-b1b74e68765d",
+      "pageFingerprint": "sha256:8776c3a495f926ab724f3b4c1dcc35529e3db35fa48b11f5b73dc568591a668e",
+      "wholePageSha256": "sha256:74557b76ebd4abce2c2bb82abd71714fe2896249c4855205e7812168d8d42180"
+    },
+    {
+      "goalId": "91cd4728-b811-562a-970b-18b81dfb4bdf",
+      "pageFingerprint": "sha256:d6bd436a6a0f169dc9c92ac23c0504ecf95d2eee738700f3d60da0c35b17f2b0",
+      "wholePageSha256": "sha256:74d24286c874a966718722e4b826bfb4decde298a15f964bc53c61a55d6a856e"
+    },
+    {
+      "goalId": "92c99237-1c74-54fc-bf08-9191656afaa6",
+      "pageFingerprint": "sha256:c243143c92b66dbada5e731544ff620dcc57a8d9c5be6ba1e7276bda1ec84024",
+      "wholePageSha256": "sha256:f44c368f878943f3ea374f05e2091a6e234c8ca8f3524dc96faa8ef0c9c4c2dc"
+    },
+    {
+      "goalId": "945d69d5-92a7-5195-8f78-4e56f8e7b633",
+      "pageFingerprint": "sha256:41a12ac25510f07eecc13cc6d343a26ba2f5e22c28608728e762f0be2e1177f1",
+      "wholePageSha256": "sha256:aa1d1f507092cc71de57b125afac907c1c54e8c01376c76b4bed6d10838a7c79"
+    },
+    {
+      "goalId": "950c73c6-4ed1-488a-9267-1142e95e0055",
+      "pageFingerprint": "sha256:37a47eeff80f87f80527a86802b1c05b70569ba691b8f96ebc0b7f12923efd56",
+      "wholePageSha256": "sha256:4132b94489169356ceda0541127866e60befa48f5f940d80bf9cf86fb6c0bda0"
+    },
+    {
+      "goalId": "95dc0ee5-a0af-5682-af32-d66e36fbeb50",
+      "pageFingerprint": "sha256:0a156e751ca3b703c7248cb35a0f2427cdde604ac0c382f45d26f44f4edf5479",
+      "wholePageSha256": "sha256:327367704a2671635b520de8466eb3dc3f6469b63433553aec11bcfaa2e8707f"
+    },
+    {
+      "goalId": "965ca297-5dbf-5e58-b5f0-6559a4433646",
+      "pageFingerprint": "sha256:0019d39a7b28993c2cb928c0d514db0c69800ace9723a167d01b90e19bf71524",
+      "wholePageSha256": "sha256:65095fb9b25f1e0476001d8836252e85d005afc24d1752a7432de0fb4b7d2db6"
+    },
+    {
+      "goalId": "973c12d9-d863-5292-8c68-9c80cdacf9e2",
+      "pageFingerprint": "sha256:bf596b71856a3ee65eeae75a7b809704f1c5f9359e1d3e3514eb0c97c4ba2c79",
+      "wholePageSha256": "sha256:c6dca0e7e875be44fd709b1399a8ece7129074f83adf9dd8a15ad4296bd07e6b"
+    },
+    {
+      "goalId": "9751b6d8-cde3-527b-b37c-babb6cee79d2",
+      "pageFingerprint": "sha256:874f603625aa628e2a905050dfee24279b6879686fd19f0768c5940a35b2a82d",
+      "wholePageSha256": "sha256:bf4698ffcc85f374644cb323b4e56be6c8d1e2764c025025b5c42714f0691f2b"
+    },
+    {
+      "goalId": "988888bb-1f88-55f9-9a44-f3f60469a297",
+      "pageFingerprint": "sha256:b812d5a866981274813f44d90d311c9bcf86af3c1664804e4e05f4398297a2c4",
+      "wholePageSha256": "sha256:79015fdd3d4b9dd18edfd12e52ab085e0cb78a26ea581da8709c138664681c96"
+    },
+    {
+      "goalId": "9b56d01e-c2d7-51d8-b78e-237592c1ed20",
+      "pageFingerprint": "sha256:c495692896c01c086e1043d15aad133249cb3fe4047f4cf9f21be06b519fd614",
+      "wholePageSha256": "sha256:8d1abae7a364aad6e2b8a79152107a1062907b0b616099bc3665046528ec7389"
+    },
+    {
+      "goalId": "9b5d6326-d27c-4ece-8c72-debda705464a",
+      "pageFingerprint": "sha256:4af04df626f657e8bab0908d1090f57f87c7520e9137975d6182ea31ec111b48",
+      "wholePageSha256": "sha256:6f0ad7b01857d6a0a497d163f276dc71a4422ccdad4a651ecfd2fb37e13f4d6d"
+    },
+    {
+      "goalId": "9d97f628-c3ea-5dc0-8723-b17b16297af3",
+      "pageFingerprint": "sha256:f4ad25e5904e16128180f4691a1de963aa5c10ea195b0de82098b67d7c020cde",
+      "wholePageSha256": "sha256:80a24536000ac8e7eb21721d935d44f3b4d795ee0cb81ec2e8a70004167162ff"
+    },
+    {
+      "goalId": "9decc36b-a69a-5599-a9f0-fcebdf0203d8",
+      "pageFingerprint": "sha256:fc332547be192536549e15651a81399e8b8f4910e5ae12b0c2f5d17dac00fd39",
+      "wholePageSha256": "sha256:a3a36252a77b57f2bdcde48c39495dc3be494f96501c4a19114619317635c4a9"
+    },
+    {
+      "goalId": "9e656697-fc05-5aa9-9aca-871af2e89eb7",
+      "pageFingerprint": "sha256:a95236f8e769be8cd462f059299880a14f98d6bdf55d0a90f1a9d78bbcdd9a38",
+      "wholePageSha256": "sha256:626b2b0b4623e2724089521d391dc80e3bcf43d5f19a627236bc2e5616ed7f6a"
+    },
+    {
+      "goalId": "9f0d6d4c-f918-5a44-a9a2-7732c4e338f3",
+      "pageFingerprint": "sha256:711bc7f1f9cbb48fc0aa3e0748c275b0d8ed4eaa2f20fb6a1694c9b1a3e97853",
+      "wholePageSha256": "sha256:1954a04bcefae0dd4cbcdf7bda3c2f0843298c0a7d6e04a839f8f30605e3c644"
+    },
+    {
+      "goalId": "9f355f63-4fb7-5638-9538-6e8a246ec4b2",
+      "pageFingerprint": "sha256:026e68a8927f0b04a9cfa163e331f49c63b76b13223df6d4290b9f44d9dc6fb9",
+      "wholePageSha256": "sha256:c47a546c7b7a9d5d6e0e7dcbfab835aa38c78fe373c3be1fb87740666ac52aa4"
+    },
+    {
+      "goalId": "a0e8f0f2-24e2-5945-a511-597d32e73796",
+      "pageFingerprint": "sha256:6fb759c5fe880e9c5979b7ad018343eaa16b5860cd079659251699124147b287",
+      "wholePageSha256": "sha256:258923ac32e559108c5cf5e6f831b3dd6bddecffde0e37e02e994be6f63d9f3e"
+    },
+    {
+      "goalId": "a138d7bf-163a-59e0-a50a-8438ef4f5168",
+      "pageFingerprint": "sha256:606fa646273f22a8232928b23fbb35b72994715cf8dca4217b6beafd459c049d",
+      "wholePageSha256": "sha256:8caf15e63cfa2eed06b74b2b13a0826cb4c5fddfaeba55459efbad2e78999f90"
+    },
+    {
+      "goalId": "a1632ea9-ca04-4f6a-bed2-06b3aa8d38ca",
+      "pageFingerprint": "sha256:8f03cef4841c2577beaa890c316b4c54a330545c1bed6fd1c871abd265481316",
+      "wholePageSha256": "sha256:acfe0aa9faa6cb0b2a822e0777371e9832611ca5e4a5cd0e4e7d8a0fac61171d"
+    },
+    {
+      "goalId": "a3788e40-b540-5bed-be37-b33053528422",
+      "pageFingerprint": "sha256:5286a018396a954b571b4959c3855f9264ed82f1fc00d20f71a78223047fd798",
+      "wholePageSha256": "sha256:ffe540d9f58265138b84f5abb95d2ba52ad59634d98ced055a82f3a50bd420d2"
+    },
+    {
+      "goalId": "a44af1fa-5988-5b7d-b206-691c6bbf7dd4",
+      "pageFingerprint": "sha256:f85c65fbb9792144ec446fb956c26d671317fd7dcbc91d50e1577e804b43e975",
+      "wholePageSha256": "sha256:56dd9072bc9bcc1fb536eb9a70b773eff752194d51f7aca0ceccd4389d6ed72c"
+    },
+    {
+      "goalId": "a4bac92b-d685-5cb6-94c8-c9b8b878d125",
+      "pageFingerprint": "sha256:c6a63f4b556e2cabaa165512bd75e4048ada92c3bf3d97c07f45b7e1bd2ec3ac",
+      "wholePageSha256": "sha256:6518e7840ca0ca7ea62821121ea627a4ad0fc3a1aa87ffc2ed78f86bc3bb44b2"
+    },
+    {
+      "goalId": "a530ee7d-1002-5f02-ae05-a9d46410ac78",
+      "pageFingerprint": "sha256:936fc59b67b2ba39a780fd7067783977a543f7e66f52d733fdbdbc023fdeff1f",
+      "wholePageSha256": "sha256:2ac0e02e498cd0470427619e31182b130029e864187bd130f09f4e4f0e50fdd4"
+    },
+    {
+      "goalId": "b5086548-169e-5d63-a14a-dabf631fa013",
+      "pageFingerprint": "sha256:a396886a4b5df44ea3b6fb95a5b29bd5b05a543b5eb2de337d01e459ab5c5d25",
+      "wholePageSha256": "sha256:7be587f96731c8f8385871fbaa83a8ca5e7a9b7dc4b6fff97d1ad4793341f8de"
+    },
+    {
+      "goalId": "b759d50d-0e82-5b10-89a2-fe5271106e50",
+      "pageFingerprint": "sha256:81fa7dc3bb516d774c42079021543842b777dda3f2385d0a25cae8beeb60b9f9",
+      "wholePageSha256": "sha256:5e10f1ef61f3356c0b58abf013727e9fa851631c9acdf880c331963deb0adb44"
+    },
+    {
+      "goalId": "b8d3b453-d638-5518-aab0-d84ec2e8567c",
+      "pageFingerprint": "sha256:d13029d3d5cd100f37b38b0b009665ce6a334772c2602061f92956ff6bfad352",
+      "wholePageSha256": "sha256:f2d710b7a2e5a6e66d7366c24b3c7922ae493e9723f351807ae84bb231f8fd50"
+    },
+    {
+      "goalId": "b92bfa45-b500-5647-8fd2-a14b708aaf59",
+      "pageFingerprint": "sha256:ca94a79f42bcf9cbf054c098b3dbaefc0c1cdaa6f89699e4494662e17834db6e",
+      "wholePageSha256": "sha256:c9469b399540b18c969e5029ea5c042038494cb8a8905b54926789fdd478b8cd"
+    },
+    {
+      "goalId": "b95cdf98-fc97-5a94-b133-878922d28156",
+      "pageFingerprint": "sha256:b8df5798927a0afd2978c0bb26aaf0cf08b7de686ea9d9182ca9ab2880ba98e0",
+      "wholePageSha256": "sha256:270cfaa08d8819f116c92a22fea814abc57b4bd1d2b2092ffbdf6436efed6c28"
+    },
+    {
+      "goalId": "bbe038e9-86ed-5ec6-ab33-316758ddb16d",
+      "pageFingerprint": "sha256:8803187ae4630dee20daa5201b97caba4c7ddcb882dc5aff44023b95c9352718",
+      "wholePageSha256": "sha256:32ded9bc433098d7f25dc6c4a85d935e630e5b0e9ee5f76fa3bab540ab5751ca"
+    },
+    {
+      "goalId": "bcf8b24b-3eed-4a36-8fb3-d6bffc1e193a",
+      "pageFingerprint": "sha256:f6fb6175b7178707734da83c995a96b2aa66835c6151d3fcb65a8c12453275ce",
+      "wholePageSha256": "sha256:603dd0d4824e4a7d519cffadfa90e58df25c9b52345b50b97a0957f2e28354a3"
+    },
+    {
+      "goalId": "bd36dc58-c93e-5247-9e82-da2f9e4e2bed",
+      "pageFingerprint": "sha256:75ebc2bd17390c0d9384166205a2e9f275db612d70d922135d7bb3648057eeb0",
+      "wholePageSha256": "sha256:cb1f2377534fd1174a1129cb8887377257101ea215e5b8e6cdcb4c79460f9ffd"
+    },
+    {
+      "goalId": "c0f1bf09-5a70-5006-b1e9-e91f786a63bf",
+      "pageFingerprint": "sha256:3a04607e59e042a7e72597eda1f1f388763ba05d5548067a623da700083881fa",
+      "wholePageSha256": "sha256:d60375f2c48a1f4b4f188f198efc29aae8492e3252bd16567befb410f4cb3afc"
+    },
+    {
+      "goalId": "c441d9e8-d9d9-5e55-a189-a37345541321",
+      "pageFingerprint": "sha256:a02409aa00f9114092d088761703757686acd03fd4b587ed7ac45910c88aed44",
+      "wholePageSha256": "sha256:5800b8fe73d3b357623865286800e6f9f4dd34eecc342b1a54a1fc0535d0b66e"
+    },
+    {
+      "goalId": "c95f6059-d7c2-5bcd-b61e-95e3577efdb2",
+      "pageFingerprint": "sha256:c136a98d12b214ccf3a076cd3d8367ee1468532699381ebbd838f9099f51f811",
+      "wholePageSha256": "sha256:4ebdc100fc95babc3a2fccd150831ac6e99a099d70c848c8964304ab687cc0d6"
+    },
+    {
+      "goalId": "c98683ae-3309-581e-b02b-b10ad703d8a0",
+      "pageFingerprint": "sha256:48f076fe73dd03fa761d6ddb7fbbc649790e02e16ed48d92efc208add59dba60",
+      "wholePageSha256": "sha256:513642fae91e8a2abf187ebf92c7bf68cc6e2c1b3d5eecab361452fae12a9cc0"
+    },
+    {
+      "goalId": "ca216bc6-5205-5b46-abbd-fd5628e4ca5b",
+      "pageFingerprint": "sha256:8cb6a942e52d8c22caf71ca1e8f17ed09687b6386c220a56a40a473c2b35e21f",
+      "wholePageSha256": "sha256:3473d8c1f1eb04fb517ff35f9fb0a8d5ee3afae76ab2f34977ed8026dd6a83ce"
+    },
+    {
+      "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+      "pageFingerprint": "sha256:96f63632ac7f4ec17077f0dc09ab8f0dccd66854eeb082c6cbcd5c471df3cbe9",
+      "wholePageSha256": "sha256:a5b9cc19b222d6f512ea13fe61ed2118ea2a3f52f7a178844104e20f247a74f3"
+    },
+    {
+      "goalId": "d4928773-3be8-5cf1-907c-ef07c96751e8",
+      "pageFingerprint": "sha256:18a4fe7e1e439d49cc6719501e23189f75ad0d2f70c0cc094acd0f1a3a94f1f5",
+      "wholePageSha256": "sha256:315a45374194800f384d68bcd6a819982a119c83f320180bcf63b997a11e0f08"
+    },
+    {
+      "goalId": "d629220a-8c1e-58ee-a6e1-b5f4f10e2e7a",
+      "pageFingerprint": "sha256:b065a20ce7c267053f31729224ca55d44f3ad6178d741e4d4ce00658772cb44c",
+      "wholePageSha256": "sha256:47437518b9ffc3b3adc31c5b5edd6d0816ee8b7ed1bb240cc0f8cb4c5a663930"
+    },
+    {
+      "goalId": "d726e00e-1f87-5ba5-8c79-76ad4022365e",
+      "pageFingerprint": "sha256:8dac4593be3b320542aed4874eae1f8af57ad05b011b1c95f25baf880861aa4b",
+      "wholePageSha256": "sha256:e62d96e2161c6e38f7f08f024580faf918c4e77cfcc6b817f8e50fecd7add271"
+    },
+    {
+      "goalId": "d742ecb0-0795-5446-a95d-9503d4618475",
+      "pageFingerprint": "sha256:08fac65e7199292dd1a81a158911ac5e1e7859b1776876d68b686584a6feeb36",
+      "wholePageSha256": "sha256:96a47774465532d4df7e2425761c99d71065ae8ed95f136708b9db6f6c19c2fb"
+    },
+    {
+      "goalId": "d76b80a2-5156-54f4-b3a1-546beddf0e14",
+      "pageFingerprint": "sha256:0a3fba87d8fc6222461a6842aba48cafc1f23ffbfbf70dba68b1c8e2c56e6f23",
+      "wholePageSha256": "sha256:36a368ccd900a36498d1f10a4c25435cf15364cca59b76b78dc10293414a0e25"
+    },
+    {
+      "goalId": "d9cce642-4f89-57f8-832a-abeb62586195",
+      "pageFingerprint": "sha256:585ddc62e934af613c44d78fd0a85c83129bc88a53c1ad4a142861d9386a561c",
+      "wholePageSha256": "sha256:d9e331fa2b7db6da3c3016b92a96f500b4ff428e0afde04cc122a5d0d27da1a6"
+    },
+    {
+      "goalId": "db66635f-f1d1-5f70-bcc0-fed1ae424e52",
+      "pageFingerprint": "sha256:97715ae478a50632e692f92dd2cc72472d2a7bcedf5c9610f05f986b2752e133",
+      "wholePageSha256": "sha256:512467df3f1145af8d7436bdd8c41709d12f00aff9ca0b748c656419d3f7f00f"
+    },
+    {
+      "goalId": "dd3fc8fe-2316-5fbc-b569-00651c83bc81",
+      "pageFingerprint": "sha256:0bb35b2b541de5587a0ec7281ea26e3899bacdd779cc73969cba8cf7fe813199",
+      "wholePageSha256": "sha256:82ddb61fb365ade093f96cf6f5374dbb25240eed85e160a6ac4307db723a2108"
+    },
+    {
+      "goalId": "dd58c029-176f-5d99-923e-1c1fda6cf58e",
+      "pageFingerprint": "sha256:7050b121d9bb67e953ee104b72a84e53e0206e8172acea44f46ab298e0f35233",
+      "wholePageSha256": "sha256:78a79c395c8411d3ad5bb32ca2a2511771082fc6f2baeda8cf10d48ec1f58729"
+    },
+    {
+      "goalId": "ddb76915-4d63-5375-901d-4e659f5e9b09",
+      "pageFingerprint": "sha256:c8a404cbba525fb3a872c2b9daf64384a5747923b37689165598629b7c1255a9",
+      "wholePageSha256": "sha256:85e3fe0e6d927953afdb53e272215e0fa2631c74381162de8ce1f7bb726dd536"
+    },
+    {
+      "goalId": "e0d05c36-eaac-4c75-8ead-3fd5bdafefca",
+      "pageFingerprint": "sha256:0fec5b5d4b861829e7acf983f7f97874e5888954d30f20db9021b6c2d54a3083",
+      "wholePageSha256": "sha256:8894dba3fc51494b285aaba07167e9ed5965eeefd74b3126f6a317ffc68f81b4"
+    },
+    {
+      "goalId": "e1214210-406e-5075-b83c-086b3972ed66",
+      "pageFingerprint": "sha256:5cfcb0c1e1a81cf4229c271b447c1db70b93a1b403fab5a70f22f81cdb851884",
+      "wholePageSha256": "sha256:956014b93c2a41916cce657213f1291a89bcbf4476f9fbe27d73814bd79f2eff"
+    },
+    {
+      "goalId": "e14abd24-a0e5-5ab5-ade3-a8ae4f49e935",
+      "pageFingerprint": "sha256:4d076a87c2cd381723baebb69c329f6693e8452c3e597f274f96b48858c4ad36",
+      "wholePageSha256": "sha256:d411bcee88351ad89482b1fda411d5acbf390c2da68bea6cabed1f7f1bba566b"
+    },
+    {
+      "goalId": "e313c1ee-a617-54ed-adea-c183da1e03d8",
+      "pageFingerprint": "sha256:05918c42e97849b3e9f591953a789cdc012d2263929551c500f115a9189e0005",
+      "wholePageSha256": "sha256:c7b43cc1f1273c92385f98eebc7b39eee385caedf1d70f3b654a40d771e66707"
+    },
+    {
+      "goalId": "e45c0022-ac0d-5c83-b433-5f68655e382f",
+      "pageFingerprint": "sha256:5513ff23e1fa2c67899c9772ae723e5f2e6c2ac99c352d983f9210b1977ce611",
+      "wholePageSha256": "sha256:6f11e55efd7f1c0dbdb03fef19c512ab34939506291ca1172d8a5b27dcff4b18"
+    },
+    {
+      "goalId": "e5aefd51-2de4-590c-903f-286d043a8c30",
+      "pageFingerprint": "sha256:81c463154a3736611912b213e9637128008dc674328c77b03cb9dbd66ff0ec04",
+      "wholePageSha256": "sha256:026df57474dca20b0001bd0e3b5149d3d6ebbaac42ecd3eab6314da5b9c57e0a"
+    },
+    {
+      "goalId": "e675fa94-6e23-59c0-b376-4340bf44c00e",
+      "pageFingerprint": "sha256:6e21713888f47044c25e2ec9c8474baf4ca1d8dbaa08f609350042a42c8c5411",
+      "wholePageSha256": "sha256:dd9d1038a7c44693dabefbba28e8bad1a2c1c106ac5fc847519438661c3ddd17"
+    },
+    {
+      "goalId": "e74f5301-70d3-5869-bd3d-79a5763a1718",
+      "pageFingerprint": "sha256:f252a2d0c9cf76316b28ce154961e58ca7dc205073c2808567e06b563400d5b9",
+      "wholePageSha256": "sha256:5d4947737ed4d0e3d43ce97b40e68a185c44b78e3572efefec6af8f9f3cb39fa"
+    },
+    {
+      "goalId": "e7c363d4-e02d-4895-8750-ba62c2eb63fe",
+      "pageFingerprint": "sha256:048689f359dedc789db6849d442eaffe45e0b0d10b6df4a1ef56599701648839",
+      "wholePageSha256": "sha256:7ea2aad9ec63852bd50226a33531fc393f903a0c504d52b44f51a1865d90ca13"
+    },
+    {
+      "goalId": "e874ee60-4569-5830-81bf-11f86f0c63ac",
+      "pageFingerprint": "sha256:2b1e13f26dadc8c2ad0da1e830b838cb750d897dab84e54f6beef5ebb4847820",
+      "wholePageSha256": "sha256:be7be896636e244bc07a3082c7c12a91d8831236617e3e6dea82a12cd20eff68"
+    },
+    {
+      "goalId": "e8ec00a8-48d4-5fa3-9f0e-2ae365328a2e",
+      "pageFingerprint": "sha256:0077e32af945bf2b6693cfb32a1ab44011db2b6dfadbf56a89269d9a22071b5e",
+      "wholePageSha256": "sha256:6165098a7b5b2d8242f7a30e66ca672fc5f7b3b5a33f0c64c4814998aa839543"
+    },
+    {
+      "goalId": "e9b61d96-a271-5e69-b872-8c463f822be1",
+      "pageFingerprint": "sha256:6a9c91a0937499b2ef3108515d46ea31f8ca8b07d80ea16399d2eb2fb84fc75b",
+      "wholePageSha256": "sha256:f4448760b2a74d900208b0108fe9bd7282be5c9b4f9a8556e0f1f4728f2cb6a5"
+    },
+    {
+      "goalId": "e9d74940-1e0e-4511-9718-4851f49ad7a5",
+      "pageFingerprint": "sha256:e500c5c4eb496be9d0c0a31425284be20d6b56e2721e0993d0908c220025127b",
+      "wholePageSha256": "sha256:b0d797adbe981a259b04662d63c053ed63b95d14da24dd321fd4309774fcfee9"
+    },
+    {
+      "goalId": "e9ea1606-5018-5a36-9ac2-8359747a65d4",
+      "pageFingerprint": "sha256:d43abe8a3e050433e07e79a6679cb0a52fbb894eea7dd8da0d03be1af50de818",
+      "wholePageSha256": "sha256:3830c8b6f0deb77dff8acb753ccad01f62cf9c52c6d8a6600b2da97a321655b3"
+    },
+    {
+      "goalId": "ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+      "pageFingerprint": "sha256:c352150fef123de67d5e891d7e2d0f0b3aad61c3fb4a2ce52bca6835436172ff",
+      "wholePageSha256": "sha256:a06f8e446b7cb215febdd1be522e979dab8fbed7a057e68fb1514981bacadd3a"
+    },
+    {
+      "goalId": "efa24b77-0f98-5835-9d82-3e539ab20253",
+      "pageFingerprint": "sha256:889c9544f5e7f95cecd3b828cd7c417ee02e61f850ff988f2ae1b32cb78ff91a",
+      "wholePageSha256": "sha256:933c1f0cadd2ec49f0c138d06cd1eb0dbd02ef4491637d1e41313d7b49f5694b"
+    },
+    {
+      "goalId": "f0939f88-a6af-5334-ac4d-5d54732af25a",
+      "pageFingerprint": "sha256:1e15b3d1063c2d21a8f9c549630bb8c579ea31a20591689a09343773d8b4c6d3",
+      "wholePageSha256": "sha256:d16fc9229d178db518bd85fefec289358aed7d90b9d1f34c741fd13b27e95e04"
+    },
+    {
+      "goalId": "f5efab9d-2c61-44ea-b36a-87f873b51fd8",
+      "pageFingerprint": "sha256:b9480985ac3667680138c6dab8bc9882a413848ca2c405891700a55dfa693a99",
+      "wholePageSha256": "sha256:6f631f8619d6e6574410bcd5df3d643f350769d381153c99937f59ce618cd79f"
+    },
+    {
+      "goalId": "f85b4651-50ea-5b42-b193-3465c05257a7",
+      "pageFingerprint": "sha256:a95a1f82256550bd6cec3635ca38b968cf02c644b97f26a1170fc5af2970dd05",
+      "wholePageSha256": "sha256:03e82f5761b61ca7c2aaa46d588f0c944289da7fe3b5ac4d66d0465926b9d347"
+    },
+    {
+      "goalId": "fa203f3a-0e81-5bcb-a4c8-e4374b7f04a3",
+      "pageFingerprint": "sha256:69c5a4bcf2bc8fd1969b028b3c40152204417b99e5e284247ff9638aa9f54813",
+      "wholePageSha256": "sha256:8daa35db43f7a0693bad4009aa9f9f8b09c6b03c844e7d67f44e682057ac47ac"
+    },
+    {
+      "goalId": "fbc5a920-05d6-53c8-9fc0-a5f4e57f2c6d",
+      "pageFingerprint": "sha256:19f9daa1d773b489810f6e704c2a9e33976991631ca15d696b36449ff8ea8378",
+      "wholePageSha256": "sha256:b51684df68c5a2747a2debfe863ba80da3d2ccadf5f35fc99d3576fc7d2a8452"
+    },
+    {
+      "goalId": "fcaf8c9b-bd81-552e-9d91-43649895471e",
+      "pageFingerprint": "sha256:33048590b64ef554b966bd94b8aeeedf62911203c63fb08015c58f1de0dce60b",
+      "wholePageSha256": "sha256:5fb92d28ce50315489e089815c0723c864764304bad9c923dea801e18f5d3780"
+    },
+    {
+      "goalId": "fcc73fb5-7413-557f-aea3-b9692a66ee75",
+      "pageFingerprint": "sha256:0fe826d7702eb9dc6a62545b5bc35c9332091786e67b70b5424f87db53f2fdcc",
+      "wholePageSha256": "sha256:b3c9bc2887186e11395d16b725c3286b43fad2ac381413c498c79d1fe793d5a0"
+    },
+    {
+      "goalId": "fd309753-4d48-5570-a4ec-09dfeb20ff9c",
+      "pageFingerprint": "sha256:3ce634960525752b34d8f2121b4f16369e6707a7b4ac7144e36ae35d0db1aa73",
+      "wholePageSha256": "sha256:bf2167a08d6a0bd769ae91a6952d13cc0f50b638c1747665bebaaacace62ee7e"
+    },
+    {
+      "goalId": "fd7977bf-1d8e-5c5e-9c37-bd76bb2ffeef",
+      "pageFingerprint": "sha256:6858dfa41327b4b2d29d05afc4358126ff59f0cadbb7376a4da4fc9d3fa0f7d2",
+      "wholePageSha256": "sha256:a6496f47dafadf1b0b1340971d608ea28a0826c1431db48d2e49ba783c66b2e2"
+    }
+  ],
+  "protectedFivePreviouslyOmittedStrictGoals": [
+    "057a6826-f599-53b1-bdd1-5a83037a1494",
+    "10f657bc-6044-5fbb-ba8e-6e5ba55d2bc5",
+    "18819a59-2442-530f-a7c3-26755398ec66",
+    "39c85aa0-b01f-56ec-a148-b8009bf650f5",
+    "cdd4ee76-5b37-54ee-b238-63db71205af0"
+  ],
+  "newThreePngBindings": [
+    {
+      "goalId": "a0f6ba09-f072-5887-a797-fa369453c62a",
+      "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/chemie/a0f6ba09-f072-5887-a797-fa369453c62a/a0f6ba09-f072-5887-a797-fa369453c62a.png",
+      "publicAssetPath": "app/public/assets/goal-visualizations/chemie/a0f6ba09-f072-5887-a797-fa369453c62a/a0f6ba09-f072-5887-a797-fa369453c62a.png",
+      "backendPath": "backend/src/main/resources/static/assets/goal-visualizations/chemie/a0f6ba09-f072-5887-a797-fa369453c62a/a0f6ba09-f072-5887-a797-fa369453c62a.png",
+      "sha256": "sha256:fd045b3a6499dad19edbbf0fff748c2e9b2d0c18e058399204dbae661ecd3bc7",
+      "existingMachineApprovalRetained": true,
+      "humanApproval": false,
+      "newVisualReviewClaim": false
+    },
+    {
+      "goalId": "d2d735de-bede-5310-8aeb-8bb7562c7b75",
+      "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/chemie/d2d735de-bede-5310-8aeb-8bb7562c7b75/d2d735de-bede-5310-8aeb-8bb7562c7b75.png",
+      "publicAssetPath": "app/public/assets/goal-visualizations/chemie/d2d735de-bede-5310-8aeb-8bb7562c7b75/d2d735de-bede-5310-8aeb-8bb7562c7b75.png",
+      "backendPath": "backend/src/main/resources/static/assets/goal-visualizations/chemie/d2d735de-bede-5310-8aeb-8bb7562c7b75/d2d735de-bede-5310-8aeb-8bb7562c7b75.png",
+      "sha256": "sha256:becd791c21d8aa1f2b84f72e941db639fca093a961c428d4e90b5f1a43b343c4",
+      "existingMachineApprovalRetained": true,
+      "humanApproval": false,
+      "newVisualReviewClaim": false
+    },
+    {
+      "goalId": "7b39fa19-fec3-575e-9324-a3226b703358",
+      "canonicalAssetPath": "curricula/DE/Gymnasium/visualizations/chemie/7b39fa19-fec3-575e-9324-a3226b703358/7b39fa19-fec3-575e-9324-a3226b703358.png",
+      "publicAssetPath": "app/public/assets/goal-visualizations/chemie/7b39fa19-fec3-575e-9324-a3226b703358/7b39fa19-fec3-575e-9324-a3226b703358.png",
+      "backendPath": "backend/src/main/resources/static/assets/goal-visualizations/chemie/7b39fa19-fec3-575e-9324-a3226b703358/7b39fa19-fec3-575e-9324-a3226b703358.png",
+      "sha256": "sha256:aaaae036375d26854baaad8d268a630b141dffad9f9e4c537b4567a817c849aa",
+      "existingMachineApprovalRetained": true,
+      "humanApproval": false,
+      "newVisualReviewClaim": false
+    }
+  ],
+  "canonicalNativeOnlyDescriptionReviewBoundaryRetained": true,
+  "nationalPageOrRouteApprovalClaim": false,
+  "newScienceReviewClaim": false,
+  "newVisualReviewClaim": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "actualLearnerExperimentClaim": false,
+  "activeWrites": 0
+}

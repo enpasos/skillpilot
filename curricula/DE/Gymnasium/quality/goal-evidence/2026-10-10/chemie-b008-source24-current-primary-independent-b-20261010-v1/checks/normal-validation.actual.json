@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual own normal JSON parse, closed ledger schemas, portability and normal symlink validation",
+  "normalChecker": {
+    "path": "scripts/validate_schemas.py",
+    "sha256": "sha256:e92ed9b240ec601c6e326d57cd79659414ccadfea88cabe0f63f20bf98246664",
+    "bytes": 26333
+  },
+  "normalQualityJSONFilesActuallyParsed": [
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-b-20261010-v1/FINAL.source24.actual.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-b-20261010-v1/FIRST.freeze.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-b-20261010-v1/FIRST.source24.actual.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-b-20261010-v1/checks/current-author-portable-authority.independent.actual.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-b-20261010-v1/checks/current-neutral-bindings.independent.actual.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-b-20261010-v1/checks/current-source-union-and-holds.independent.actual.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-b-20261010-v1/checks/primary-occurrence-literals.independent.actual.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-b-20261010-v1/checks/source24-whole-scope-witnesses.independent.actual.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-b-20261010-v1/checks/whole-original-retention.independent.actual.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-b-20261010-v1/contracts/source24-edge-review.schema.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-b-20261010-v1/contracts/source24-final-review.schema.json",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-b-20261010-v1/contracts/source24-first-review.schema.json"
+  ],
+  "normalJSONParseFailures": [],
+  "closedSchemaChecks": [
+    {
+      "artifact": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-b-20261010-v1/FIRST.source24.actual.json",
+        "sha256": "sha256:f56e714f398d852bd10884248cf1a044c264d7653f25cd363bbaf57f9910aeea",
+        "bytes": 27981
+      },
+      "schema": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-b-20261010-v1/contracts/source24-first-review.schema.json",
+        "sha256": "sha256:699044e9b851b1c488d6701b3a0d6d7b67fbe079d2e63db393436080d216b745",
+        "bytes": 11282
+      },
+      "exitCode": 0
+    },
+    {
+      "artifact": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-b-20261010-v1/FINAL.source24.actual.json",
+        "sha256": "sha256:26948eb6fba6c6113ad151fd5f818dcb7cfa94aebbbdcd83839ff29a5ab368ed",
+        "bytes": 26970
+      },
+      "schema": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-b-20261010-v1/contracts/source24-final-review.schema.json",
+        "sha256": "sha256:a20dd8d23350d6bf201abf0b3cb37db6631b0cf9ab0aea1948e320639aca418a",
+        "bytes": 13840
+      },
+      "exitCode": 0
+    },
+    {
+      "artifact": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-b-20261010-v1/FIRST.edges.actual.jsonl",
+        "sha256": "sha256:dce00a039c214926ff85199b992e5cd345e11537b2919ffd6d553a1274e1b908",
+        "bytes": 58581
+      },
+      "schema": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-b-20261010-v1/contracts/source24-edge-review.schema.json",
+        "sha256": "sha256:c0eaa557cfd773de5c46ab92dad75ba96f26e8865e42aa90eef026edd27015b8",
+        "bytes": 2282
+      },
+      "wholeRowsParsedAndValidated": 63,
+      "exitCode": 0
+    }
+  ],
+  "currentRequiredExactBindingCount": 155,
+  "currentRequiredIgnoredFiles": [],
+  "normalCurriculumSymlinkErrors": [],
+  "ownSymlinkFiles": [],
+  "stdout": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-b-20261010-v1/checks/normal-validation.actual.stdout.txt",
+    "sha256": "sha256:9c5b585463b09d83acb55b0456cad21bd056dbcfb39090d3c1655e8ca8e71da1",
+    "bytes": 247
+  },
+  "exitCode": 0,
+  "actualWhole398CompilerExitCodeStill": 1,
+  "actualWhole398UnionStill": 378,
+  "humanApproval": false,
+  "strictNet": 0
+}

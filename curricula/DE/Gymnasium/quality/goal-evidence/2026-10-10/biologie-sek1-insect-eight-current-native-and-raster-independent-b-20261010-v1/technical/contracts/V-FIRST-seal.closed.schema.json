@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Own additive independent B V-FIRST-seal closed technical receipt; no gate changes",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "sealedAt",
+    "role",
+    "first",
+    "actualViews",
+    "exactInputs",
+    "activeWrites",
+    "strictNetGain",
+    "humanApproval"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer"
+    },
+    "sealedAt": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "first": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "actualViews": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "exactInputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string"
+          },
+          "bytes": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "activeWrites": {
+      "type": "boolean"
+    },
+    "strictNetGain": {
+      "type": "integer"
+    },
+    "humanApproval": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,299 @@
+[
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "chemie-q3-whole20-p-inactive-author-20261008-v1",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "81373fb7-2a4a-5b2c-acd0-b4e775acaa65",
+    "goalFingerprint": "sha256:c981f8c06f043ae85f9c72d29cc31b9123d2ef0695d86f1577aa3ce9d1bd4fb3",
+    "reviewInputFingerprint": "sha256:5a9e5bf8ed84d9d4b44984f2e2cd34eb1d3c7fe2528e31019e01f3dc198eb15b",
+    "profileFingerprint": "sha256:de78e6c744fcb158fb210260853e1c81999e9e1df480b82d2f0e092f34309afe",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-08T02:37:48.593798+00:00",
+    "reviewer": "Codex author; synthetic E1/G1, independent review pending",
+    "reason": "Eine dynamische Gleichgewichtscharakterisierung mit zwei komplementären Modellebenen; Artennachweis, konstante Zusammensetzung und gleiche Raten sind Evidenz derselben Kompetenz. Whole current DE/EN body preserved; 2 full cases and separate fresh transfers. No independent/human approval. All native source roles remain bounded.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "concept",
+      "expectations": [
+        {
+          "id": "whole-duty-1",
+          "essentialUnderstandingDe": "Beide Stoffarten mit Nachweis, nicht nur konstantem Gesamtsignal belegen.",
+          "essentialUnderstandingEn": "Establish both species using the assay, not merely a constant total signal.",
+          "observablePerformanceDe": "Beide Stoffarten mit Nachweis, nicht nur konstantem Gesamtsignal belegen. Zweiter unabhängiger Kontext: Gemeinsamen Stoffzustand mit verschiedenen Startzuständen vergleichen.",
+          "observablePerformanceEn": "Establish both species using the assay, not merely a constant total signal. Second independent context: Compare the common substance state with different starts."
+        },
+        {
+          "id": "whole-duty-2",
+          "essentialUnderstandingDe": "Konstante Stoffebene korrekt darstellen.",
+          "essentialUnderstandingEn": "Represent the constant substance level correctly.",
+          "observablePerformanceDe": "Konstante Stoffebene korrekt darstellen. Zweiter unabhängiger Kontext: Simultane Artenpräsenz belegen.",
+          "observablePerformanceEn": "Represent the constant substance level correctly. Second independent context: Establish simultaneous presence of both species."
+        },
+        {
+          "id": "whole-duty-3",
+          "essentialUnderstandingDe": "12 Hin- und 12 Rückübergänge als dynamisch erklären.",
+          "essentialUnderstandingEn": "Explain the 12 forward and 12 reverse transitions as dynamic.",
+          "observablePerformanceDe": "12 Hin- und 12 Rückübergänge als dynamisch erklären. Zweiter unabhängiger Kontext: Gleiche nicht nuller Teilchenraten begründen.",
+          "observablePerformanceEn": "Explain the 12 forward and 12 reverse transitions as dynamic. Second independent context: Explain equal nonzero particle rates."
+        },
+        {
+          "id": "whole-duty-4",
+          "essentialUnderstandingDe": "Netto null von Stillstand und gleichen Mengen trennen.",
+          "essentialUnderstandingEn": "Distinguish zero net change from stopped reactions and equal amounts.",
+          "observablePerformanceDe": "Netto null von Stillstand und gleichen Mengen trennen. Zweiter unabhängiger Kontext: Makroskopische Konstanz und mikroskopischen Umsatz unterscheiden.",
+          "observablePerformanceEn": "Distinguish zero net change from stopped reactions and equal amounts. Second independent context: Distinguish macroscopic constancy and microscopic turnover."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "whole-duty-1",
+          "whole-duty-2",
+          "whole-duty-3",
+          "whole-duty-4"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "whole-case-material",
+          "textDe": "Geschlossenes Modell mit markierten Teilchen / Zwei Startzusammensetzungen",
+          "textEn": "Closed model with labelled particles / Two starting compositions"
+        },
+        {
+          "id": "independent-transfer",
+          "textDe": "Frische Modellprobe: 20 A, 80 B; 7 Übergänge je Richtung. Ist das Gleichgewicht? Was beweist allein eine konstante Farbe? / Bei einem offenen Gefäß wird B laufend entfernt; A und B bleiben scheinbar konstant, Hinrate 9 und Rückrate 3. Gleicher Befund?",
+          "textEn": "Fresh model sample: 20 A, 80 B; 7 transitions in each direction. Is it equilibrium? What does constant colour alone prove? / In an open vessel B is continually removed; A and B appear constant, with forward rate 9 and reverse rate 3. Is this the same finding?"
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "q3-01-a",
+          "taskDemandDe": "Modell A ⇌ B, geschlossen, konstante Temperatur. Nach 5 und 10 min: jeweils 60 A- und 40 B-Teilchen. Im dazwischenliegenden Zeitfenster werden 12 Übergänge A→B und 12 B→A registriert. Ein validierter artspezifischer Nachweis zeigt A und B in derselben Probe. Alle Zahlen sind synthetisch. Charakterisiere das Gleichgewicht mit einem Stoff- und einem Teilchenmodell. Begründe gleichzeitiges Vorliegen und unterscheide Nettoänderung, Hin- und Rückreaktion. Widerlege „60:40 bedeutet kein Gleichgewicht“. Separat frischer Transfer: Frische Modellprobe: 20 A, 80 B; 7 Übergänge je Richtung. Ist das Gleichgewicht? Was beweist allein eine konstante Farbe?",
+          "expectedPerformanceDe": "Auf Stoffebene bleiben Zusammensetzung und makroskopische Konzentrationen konstant; der Nachweis belegt beide Stoffarten. Auf Teilchenebene laufen beide Richtungen weiter, mit gleicher, nicht nuller Rate. Die Nettoänderung ist null. Gleichgewicht fordert keine gleichen Mengen; 60:40 ist möglich. Das Modell ist kein experimenteller Nachweis realer Reaktionsraten. Transferantwort: Ja im angegebenen geschlossenen Modell: gleiche nicht nuller Raten. Konstante Farbe allein belegt weder beide Arten noch die laufenden Teilchenübergänge. Scoring /10: 2P: Beide Stoffarten mit Nachweis, nicht nur konstantem Gesamtsignal belegen.; 2P: Konstante Stoffebene korrekt darstellen.; 2P: 12 Hin- und 12 Rückübergänge als dynamisch erklären.; 2P: Netto null von Stillstand und gleichen Mengen trennen.; 2P: Ja im angegebenen geschlossenen Modell: gleiche nicht nuller Raten. Konstante Farbe allein belegt weder beide Arten noch die laufenden Teilchenübergänge.",
+          "understandingFocusDe": "Ganzes aktuelles Ziel einschließlich aller Operatoren; keine Punktvergabe für nicht ausgeführte Experimente. Eine dynamische Gleichgewichtscharakterisierung mit zwei komplementären Modellebenen; Artennachweis, konstante Zusammensetzung und gleiche Raten sind Evidenz derselben Kompetenz.",
+          "taskDemandEn": "Model A ⇌ B, closed, constant temperature. At 5 and 10 min there are 60 A and 40 B particles. Between readings, 12 A→B and 12 B→A transitions are recorded. A validated species-specific assay identifies A and B in the same sample. All numbers are synthetic. Characterize equilibrium with substance and particle models. Explain coexistence and distinguish net change, forward and reverse reaction. Refute “60:40 means no equilibrium”. Separate fresh transfer: Fresh model sample: 20 A, 80 B; 7 transitions in each direction. Is it equilibrium? What does constant colour alone prove?",
+          "expectedPerformanceEn": "At substance level composition and macroscopic concentrations remain constant; the assay identifies both species. At particle level both directions continue at equal nonzero rates. Net change is zero. Equilibrium does not require equal amounts; 60:40 is possible. The model is not an experimental measurement of actual reaction rates. Transfer response: Yes in the stated closed model: equal nonzero rates. Constant colour alone establishes neither both species nor continuing particle transitions. Scoring /10: 2P: Establish both species using the assay, not merely a constant total signal.; 2P: Represent the constant substance level correctly.; 2P: Explain the 12 forward and 12 reverse transitions as dynamic.; 2P: Distinguish zero net change from stopped reactions and equal amounts.; 2P: Yes in the stated closed model: equal nonzero rates. Constant colour alone establishes neither both species nor continuing particle transitions.",
+          "understandingFocusEn": "Whole current goal including all operators; explain the evidence, perform the specified calculation or judgment and apply the separate fresh transfer. Synthetic authored work is not actual learner performance."
+        },
+        {
+          "id": "q3-01-b",
+          "taskDemandDe": "Zwei geschlossene A⇌B-Modellgefäße bei gleicher Temperatur enthalten je 100 Teilchen. X beginnt mit 100 A, Y mit 100 B. Beide erreichen 25 A/75 B. Im Endzustand zeigt die Verfolgung einzelner Teilchen je 9 Hin- und Rückübergänge pro Sekunde, und zwei getrennte Nachweise sind positiv. Nutze beide Modellebenen und beide Nachweise, um den gemeinsamen Endzustand zu charakterisieren. Erkläre, warum eine konstante Zusammensetzung nicht das Ende der Reaktionen bedeutet. Separat frischer Transfer: Bei einem offenen Gefäß wird B laufend entfernt; A und B bleiben scheinbar konstant, Hinrate 9 und Rückrate 3. Gleicher Befund?",
+          "expectedPerformanceDe": "Beide Nachweise belegen Edukt und Produkt gleichzeitig. Die Gefäße erreichen dieselbe makroskopische Zusammensetzung trotz verschiedener Startzustände. Weiterlaufende Teilchenübergänge mit gleichen Raten erhalten diese Zusammensetzung; einzelne Teilchen wechseln ihre Art. Der Vergleich stützt das dynamische Modell unter den angegebenen Bedingungen, beweist aber nicht jede reale Reaktion. Transferantwort: Nein: ein stationärer offener Zustand mit Zu-/Abfluss kann konstante Werte zeigen. Ungleiche Reaktionsraten erfüllen hier nicht das geschlossene chemische Gleichgewicht. Scoring /10: 2P: Gemeinsamen Stoffzustand mit verschiedenen Startzuständen vergleichen.; 2P: Simultane Artenpräsenz belegen.; 2P: Gleiche nicht nuller Teilchenraten begründen.; 2P: Makroskopische Konstanz und mikroskopischen Umsatz unterscheiden.; 2P: Nein: ein stationärer offener Zustand mit Zu-/Abfluss kann konstante Werte zeigen. Ungleiche Reaktionsraten erfüllen hier nicht das geschlossene chemische Gleichgewicht.",
+          "understandingFocusDe": "Ganzes aktuelles Ziel einschließlich aller Operatoren; keine Punktvergabe für nicht ausgeführte Experimente. Eine dynamische Gleichgewichtscharakterisierung mit zwei komplementären Modellebenen; Artennachweis, konstante Zusammensetzung und gleiche Raten sind Evidenz derselben Kompetenz.",
+          "taskDemandEn": "Two closed A⇌B model vessels at the same temperature contain 100 particles each. X starts with 100 A, Y with 100 B. Both reach 25 A/75 B. At the endpoint particle tracking records 9 forward and 9 reverse transitions per second, and two separate assays are positive. Use both model levels and both assays to characterize the shared endpoint. Explain why constant composition does not mean reactions have ended. Separate fresh transfer: In an open vessel B is continually removed; A and B appear constant, with forward rate 9 and reverse rate 3. Is this the same finding?",
+          "expectedPerformanceEn": "Both assays establish reactant and product simultaneously. The vessels reach the same macroscopic composition despite different starts. Continuing particle transitions at equal rates maintain that composition; individual particles change species. The comparison supports the dynamic model under the stated conditions, not every actual reaction. Transfer response: No: a steady open state with flows can show constant values. Unequal reaction rates do not satisfy closed chemical equilibrium here. Scoring /10: 2P: Compare the common substance state with different starts.; 2P: Establish simultaneous presence of both species.; 2P: Explain equal nonzero particle rates.; 2P: Distinguish macroscopic constancy and microscopic turnover.; 2P: No: a steady open state with flows can show constant values. Unequal reaction rates do not satisfy closed chemical equilibrium here.",
+          "understandingFocusEn": "Whole current goal including all operators; explain the evidence, perform the specified calculation or judgment and apply the separate fresh transfer. Synthetic authored work is not actual learner performance."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "chemie-q3-whole20-p-inactive-author-20261008-v1",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "5a24dae0-6d33-5227-8d8b-e8f74c2ccc4c",
+    "goalFingerprint": "sha256:dd006cedfd7a0758bddcf358eb6a37c917438cfa5d4fc085ca46eafad86cb6c0",
+    "reviewInputFingerprint": "sha256:c6e046c924c8d66d59ef3e84866eb02af51baac27745064860d434c01aacc67e",
+    "profileFingerprint": "sha256:d5c9681bf0eea681f71e43ec0bb16f38466b76eb8f541e807d84c8064111af59",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-08T02:37:48.593798+00:00",
+    "reviewer": "Codex author; synthetic E1/G1, independent review pending",
+    "reason": "Ein gerichtetes Vorhersagemodell für Gleichgewichtsänderungen; Konzentration, Druck und Temperatur sind kontrollierte Variationen desselben Le-Chatelier-Prinzips. Konzentrations-/Ausbeutebegriffe bleiben getrennt. Whole current DE/EN body preserved; 2 full cases and separate fresh transfers. No independent/human approval. All native source roles remain bounded.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "modeling",
+      "expectations": [
+        {
+          "id": "whole-duty-1",
+          "essentialUnderstandingDe": "Konzentrationsänderungen mit Reaktionsrichtung begründen.",
+          "essentialUnderstandingEn": "Explain concentration changes and reaction direction.",
+          "observablePerformanceDe": "Konzentrationsänderungen mit Reaktionsrichtung begründen. Zweiter unabhängiger Kontext: Endotherme Temperaturreaktion korrekt deuten.",
+          "observablePerformanceEn": "Explain concentration changes and reaction direction. Second independent context: Interpret endothermic temperature response correctly."
+        },
+        {
+          "id": "whole-duty-2",
+          "essentialUnderstandingDe": "Druckeffekt aus Gasstöchiometrie ableiten.",
+          "essentialUnderstandingEn": "Derive pressure effect from gas stoichiometry.",
+          "observablePerformanceDe": "Druckeffekt aus Gasstöchiometrie ableiten. Zweiter unabhängiger Kontext: Umsatzverschiebung von absoluter Konzentration bei Kompression trennen.",
+          "observablePerformanceEn": "Derive pressure effect from gas stoichiometry. Second independent context: Distinguish conversion shift from absolute concentration under compression."
+        },
+        {
+          "id": "whole-duty-3",
+          "essentialUnderstandingDe": "Exothermie und Temperatur richtig verknüpfen.",
+          "essentialUnderstandingEn": "Link exothermicity and temperature correctly.",
+          "observablePerformanceDe": "Exothermie und Temperatur richtig verknüpfen. Zweiter unabhängiger Kontext: Stoffzugabe und gelöstes Alltagsgas erklären.",
+          "observablePerformanceEn": "Link exothermicity and temperature correctly. Second independent context: Explain added species and dissolved everyday gas."
+        },
+        {
+          "id": "whole-duty-4",
+          "essentialUnderstandingDe": "Alltagsübertragung und Geschwindigkeit/Ausbeute trennen.",
+          "essentialUnderstandingEn": "Transfer to everyday equilibrium and distinguish rate/yield.",
+          "observablePerformanceDe": "Alltagsübertragung und Geschwindigkeit/Ausbeute trennen. Zweiter unabhängiger Kontext: Kinetische Schlussfolgerungen begrenzen.",
+          "observablePerformanceEn": "Transfer to everyday equilibrium and distinguish rate/yield. Second independent context: Bound kinetic conclusions."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "whole-duty-1",
+          "whole-duty-2",
+          "whole-duty-3",
+          "whole-duty-4"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "whole-case-material",
+          "textDe": "Ammoniak und Getränkegleichgewicht / Endotherme Gasreaktion und Wasserlösung",
+          "textEn": "Ammonia and drink equilibrium / Endothermic gas reaction and aqueous dissolution"
+        },
+        {
+          "id": "independent-transfer",
+          "textDe": "Frisch: H₂(g)+I₂(g)⇌2HI(g), idealisierte Gasphase. Ändert isotherme Kompression die Gleichgewichtslage? / Frisch: Produktgas wird bei konstantem T und Volumen teilweise entfernt. Was geschieht mit Q und Nettoverlauf?",
+          "textEn": "Fresh: H₂(g)+I₂(g)⇌2HI(g), idealized gas phase. Does isothermal compression shift equilibrium? / Fresh: product gas is partly removed at constant T and volume. What happens to Q and net reaction?"
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "q3-03-a",
+          "taskDemandDe": "N₂(g)+3H₂(g)⇌2NH₃(g), exotherm. Geschlossener idealisierter Synthesereaktor; Druckänderung durch Volumenänderung. Alltagsmodell: CO₂(g)⇌CO₂(aq), Gaslösung hier exotherm. Keine realen Bedienparameter werden verlangt. Begründe für die Synthese Produktentnahme, H₂-Zugabe, Kompression und Erwärmung. Übertrage Konzentrations-/Druck- und Temperatureffekt auf ein geöffnetes warmes Getränk. Trenne höhere Ausbeute von schnellerer Einstellung. Separat frischer Transfer: Frisch: H₂(g)+I₂(g)⇌2HI(g), idealisierte Gasphase. Ändert isotherme Kompression die Gleichgewichtslage?",
+          "expectedPerformanceDe": "NH₃-Entnahme und H₂-Zugabe senken Q und fördern Nettobildung von NH₃. Kompression begünstigt die Seite mit2 statt4 Gasmolen. Erwärmung begünstigt die endotherme Rückreaktion und senkt die NH₃-Gleichgewichtsausbeute, kann aber Reaktionen beschleunigen. Öffnen senkt den CO₂-Partialdruck; Erwärmen verringert im Modell die Löslichkeit, daher entweicht CO₂. Ein Katalysator erhöht nur die Einstellungsgeschwindigkeit. Transferantwort: Nein im idealisierten Modell:2Gasmole auf beiden Seiten; alle Konzentrationen ändern sich, der Quotient bleibt unverändert. Scoring /10: 2P: Konzentrationsänderungen mit Reaktionsrichtung begründen.; 2P: Druckeffekt aus Gasstöchiometrie ableiten.; 2P: Exothermie und Temperatur richtig verknüpfen.; 2P: Alltagsübertragung und Geschwindigkeit/Ausbeute trennen.; 2P: Nein im idealisierten Modell:2Gasmole auf beiden Seiten; alle Konzentrationen ändern sich, der Quotient bleibt unverändert.",
+          "understandingFocusDe": "Ganzes aktuelles Ziel einschließlich aller Operatoren; keine Punktvergabe für nicht ausgeführte Experimente. Ein gerichtetes Vorhersagemodell für Gleichgewichtsänderungen; Konzentration, Druck und Temperatur sind kontrollierte Variationen desselben Le-Chatelier-Prinzips. Konzentrations-/Ausbeutebegriffe bleiben getrennt.",
+          "taskDemandEn": "N₂(g)+3H₂(g)⇌2NH₃(g), exothermic. Closed idealized synthesis reactor; pressure changes by volume changes. Everyday model: CO₂(g)⇌CO₂(aq), gas dissolution assumed exothermic here. No actual operating parameters are requested. Explain product removal, H₂ addition, compression and heating for synthesis. Transfer concentration/pressure and temperature effects to an opened warm drink. Distinguish higher yield from faster equilibration. Separate fresh transfer: Fresh: H₂(g)+I₂(g)⇌2HI(g), idealized gas phase. Does isothermal compression shift equilibrium?",
+          "expectedPerformanceEn": "NH₃ removal and H₂ addition lower Q and promote net NH₃ formation. Compression favours the side with2 rather than4 gas moles. Heating favours the endothermic reverse reaction and lowers NH₃ equilibrium yield while potentially accelerating reactions. Opening lowers CO₂ partial pressure; warming lowers solubility in this model, so CO₂ leaves. A catalyst only accelerates equilibration. Transfer response: No in the idealized model:2gas moles on both sides; all concentrations change but the quotient remains unchanged. Scoring /10: 2P: Explain concentration changes and reaction direction.; 2P: Derive pressure effect from gas stoichiometry.; 2P: Link exothermicity and temperature correctly.; 2P: Transfer to everyday equilibrium and distinguish rate/yield.; 2P: No in the idealized model:2gas moles on both sides; all concentrations change but the quotient remains unchanged.",
+          "understandingFocusEn": "Whole current goal including all operators; explain the evidence, perform the specified calculation or judgment and apply the separate fresh transfer. Synthetic authored work is not actual learner performance."
+        },
+        {
+          "id": "q3-03-b",
+          "taskDemandDe": "Modell N₂O₄(g)⇌2NO₂(g), Hinreaktion endotherm. Zusätzlich gilt als bereitgestelltes Alltagsmodell für ein Gas X: X(g)⇌X(aq), Lösung exotherm. Änderungen werden jeweils einzeln betrachtet. Sage Änderungen der Produktkonzentration bei Erwärmung, Kompression und Zugabe von N₂O₄ nach neuer Einstellung voraus. Erkläre für X die Wirkung höheren Partialdrucks und Abkühlens. Begrenze Aussagen über Reaktionszeit. Separat frischer Transfer: Frisch: Produktgas wird bei konstantem T und Volumen teilweise entfernt. Was geschieht mit Q und Nettoverlauf?",
+          "expectedPerformanceDe": "Erwärmung fördert NO₂, da die Hinreaktion Energie benötigt. Kompression verschiebt den Umsatz zur Ein-Gasmol-Seite N₂O₄; daraus allein folgt keine pauschale Senkung der absoluten NO₂-Konzentration, weil auch das Volumen sinkt. Zugabe von N₂O₄ fördert NO₂-Bildung. Höherer X-Partialdruck und Kühlung begünstigen gelöstes X. Le Chatelier beschreibt Gleichgewicht, keine Dauer bis dahin. Transferantwort: Q sinkt unter K; die Hinreaktion überwiegt bis Q=K. K selbst bleibt bei gleichem T gleich. Scoring /10: 2P: Endotherme Temperaturreaktion korrekt deuten.; 2P: Umsatzverschiebung von absoluter Konzentration bei Kompression trennen.; 2P: Stoffzugabe und gelöstes Alltagsgas erklären.; 2P: Kinetische Schlussfolgerungen begrenzen.; 2P: Q sinkt unter K; die Hinreaktion überwiegt bis Q=K. K selbst bleibt bei gleichem T gleich.",
+          "understandingFocusDe": "Ganzes aktuelles Ziel einschließlich aller Operatoren; keine Punktvergabe für nicht ausgeführte Experimente. Ein gerichtetes Vorhersagemodell für Gleichgewichtsänderungen; Konzentration, Druck und Temperatur sind kontrollierte Variationen desselben Le-Chatelier-Prinzips. Konzentrations-/Ausbeutebegriffe bleiben getrennt.",
+          "taskDemandEn": "Model N₂O₄(g)⇌2NO₂(g), forward reaction endothermic. A supplied everyday model for gas X is X(g)⇌X(aq), exothermic dissolution. Changes are considered separately. Predict product concentration changes after re-equilibration on heating, compression and N₂O₄ addition. Explain effects of higher partial pressure and cooling for X. Bound statements about reaction time. Separate fresh transfer: Fresh: product gas is partly removed at constant T and volume. What happens to Q and net reaction?",
+          "expectedPerformanceEn": "Heating favours NO₂ because the forward reaction requires energy. Compression shifts conversion toward the one-gas-mole side N₂O₄; this alone does not imply lower absolute NO₂ concentration because volume also falls. N₂O₄ addition promotes NO₂ formation. Higher X partial pressure and cooling favour dissolved X. Le Chatelier describes equilibrium, not time to reach it. Transfer response: Q falls below K; forward reaction dominates until Q=K. K itself remains unchanged at the same T. Scoring /10: 2P: Interpret endothermic temperature response correctly.; 2P: Distinguish conversion shift from absolute concentration under compression.; 2P: Explain added species and dissolved everyday gas.; 2P: Bound kinetic conclusions.; 2P: Q falls below K; forward reaction dominates until Q=K. K itself remains unchanged at the same T.",
+          "understandingFocusEn": "Whole current goal including all operators; explain the evidence, perform the specified calculation or judgment and apply the separate fresh transfer. Synthetic authored work is not actual learner performance."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "chemie-q3-whole20-p-inactive-author-20261008-v1",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "goalId": "8be14f15-2258-58e6-ae4e-38953f5d0570",
+    "goalFingerprint": "sha256:12d00039098cf0e21f3da1a23a27bc2e0e84f1e3cda0e70a03aac75e892cb396",
+    "reviewInputFingerprint": "sha256:7740bb2025f24775df832b33f2799a2abb1a62dfa1384f64345d5b7b48e1b5fa",
+    "profileFingerprint": "sha256:fad04e24077833b8ed2a337a0ec5d7de306479b4631904a82ab43c071abab534",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-08T02:37:48.593798+00:00",
+    "reviewer": "Codex author; synthetic E1/G1, independent review pending",
+    "reason": "Eine Spannungsreihen-Vorhersage mit bilanziertem Zellmodell und Standardspannung; Standard/actual sowie Elektronen-/Ionentransport sind notwendige Interpretationsgrenzen. Nernst bleibt beim vorhandenen Partnerziel. Whole current DE/EN body preserved; 2 full cases and separate fresh transfers. No independent/human approval. All native source roles remain bounded.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "modeling",
+      "expectations": [
+        {
+          "id": "whole-duty-1",
+          "essentialUnderstandingDe": "Reduktionspotenziale und freiwillige Richtung richtig interpretieren.",
+          "essentialUnderstandingEn": "Interpret reduction potentials and spontaneous direction correctly.",
+          "observablePerformanceDe": "Reduktionspotenziale und freiwillige Richtung richtig interpretieren. Zweiter unabhängiger Kontext: Negative Vorschlagsrichtung korrekt beurteilen.",
+          "observablePerformanceEn": "Interpret reduction potentials and spontaneous direction correctly. Second independent context: Evaluate negative proposed direction correctly."
+        },
+        {
+          "id": "whole-duty-2",
+          "essentialUnderstandingDe": "Halb-/Gesamtgleichungen und Zellspannung korrekt.",
+          "essentialUnderstandingEn": "Give correct half/total equations and cell voltage.",
+          "observablePerformanceDe": "Halb-/Gesamtgleichungen und Zellspannung korrekt. Zweiter unabhängiger Kontext: Freiwillige Reaktion und1,93V berechnen.",
+          "observablePerformanceEn": "Give correct half/total equations and cell voltage. Second independent context: Calculate spontaneous reaction and1.93V."
+        },
+        {
+          "id": "whole-duty-3",
+          "essentialUnderstandingDe": "Elektroden und äußeren Elektronenfluss erklären.",
+          "essentialUnderstandingEn": "Explain electrodes and external electron flow.",
+          "observablePerformanceDe": "Elektroden und äußeren Elektronenfluss erklären. Zweiter unabhängiger Kontext: Elektroden/Elektronen und Ionentransport getrennt erklären.",
+          "observablePerformanceEn": "Explain electrodes and external electron flow. Second independent context: Explain electrodes/electrons and ion transport separately."
+        },
+        {
+          "id": "whole-duty-4",
+          "essentialUnderstandingDe": "Ionenrichtung und Standard-/Realgrenze unterscheiden.",
+          "essentialUnderstandingEn": "Distinguish ion directions and standard/actual limit.",
+          "observablePerformanceDe": "Ionenrichtung und Standard-/Realgrenze unterscheiden. Zweiter unabhängiger Kontext: Gemessene Spannung an Bedingungen binden.",
+          "observablePerformanceEn": "Distinguish ion directions and standard/actual limit. Second independent context: Bind measured voltage to conditions."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "whole-duty-1",
+          "whole-duty-2",
+          "whole-duty-3",
+          "whole-duty-4"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "whole-case-material",
+          "textDe": "Daniell-Zelle unter Standardbedingungen / Metallaustausch und negative Vorschlagsrichtung",
+          "textEn": "Daniell cell under standard conditions / Metal displacement and negative proposed direction"
+        },
+        {
+          "id": "independent-transfer",
+          "textDe": "Frisch: Cu²⁺/Cu+0,34V und Ag⁺/Ag+0,80V. Reaktion und E°? / Frisch: gleiche Potenzialdifferenz, Reaktion wird formal verdreifacht. Wie ändern sich E° und Elektronenanzahl?",
+          "textEn": "Fresh: Cu²⁺/Cu+0.34V and Ag⁺/Ag+0.80V. Reaction and E°? / Fresh: same potential difference, reaction is formally tripled. How do E° and electron count change?"
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "q3-10-a",
+          "taskDemandDe": "Standard-Reduktionspotenziale bei298K: Zn²⁺/Zn−0,76V,Cu²⁺/Cu+0,34V. Reine Metalle, Aktivitäten gelöster Ionen1; getrennte Halbzellen mit inertem Salzsteg. Interpretiere Spannungsreihe, sage freiwilligen Verlauf voraus, bilanziere Gesamtreaktion und berechne E°. Benenne Anode/Kathode, Elektronenfluss und Salzsteg-Ionenbewegung. Begrenze Aussagen für andere Konzentrationen. Separat frischer Transfer: Frisch: Cu²⁺/Cu+0,34V und Ag⁺/Ag+0,80V. Reaktion und E°?",
+          "expectedPerformanceDe": "Zn oxidiert:Zn→Zn²⁺+2e⁻ an der negativen Anode;Cu²⁺+2e⁻→Cu an positiver Kathode. Gesamt Zn+Cu²⁺→Zn²⁺+Cu;E°=0,34−(−0,76)=1,10V. Elektronen fließen außen Zn→Cu; Anionen des Salzstegs zur Zn-Halbzelle, Kationen zur Cu-Halbzelle. Ionen transportieren Ladung in Lösung, keine Elektronenleitung dort. Reale Konzentrationen/Belastung können Spannung verändern. Transferantwort: Cu+2Ag⁺→Cu²⁺+2Ag;E°=0,46V. Potenziale werden nicht mit dem Faktor2 multipliziert. Scoring /10: 2P: Reduktionspotenziale und freiwillige Richtung richtig interpretieren.; 2P: Halb-/Gesamtgleichungen und Zellspannung korrekt.; 2P: Elektroden und äußeren Elektronenfluss erklären.; 2P: Ionenrichtung und Standard-/Realgrenze unterscheiden.; 2P: Cu+2Ag⁺→Cu²⁺+2Ag;E°=0,46V. Potenziale werden nicht mit dem Faktor2 multipliziert.",
+          "understandingFocusDe": "Ganzes aktuelles Ziel einschließlich aller Operatoren; keine Punktvergabe für nicht ausgeführte Experimente. Eine Spannungsreihen-Vorhersage mit bilanziertem Zellmodell und Standardspannung; Standard/actual sowie Elektronen-/Ionentransport sind notwendige Interpretationsgrenzen. Nernst bleibt beim vorhandenen Partnerziel.",
+          "taskDemandEn": "Standard reduction potentials at298K: Zn²⁺/Zn−0.76V,Cu²⁺/Cu+0.34V. Pure metals, dissolved-ion activities1; separated half-cells with inert salt bridge. Interpret the series, predict spontaneous direction, balance total reaction and calculate E°. State anode/cathode, electron flow and salt-bridge ion movement. Bound claims for other concentrations. Separate fresh transfer: Fresh: Cu²⁺/Cu+0.34V and Ag⁺/Ag+0.80V. Reaction and E°?",
+          "expectedPerformanceEn": "Zn oxidizes:Zn→Zn²⁺+2e⁻ at negative anode;Cu²⁺+2e⁻→Cu at positive cathode. Overall Zn+Cu²⁺→Zn²⁺+Cu;E°=0.34−(−0.76)=1.10V. Electrons flow externally Zn→Cu; salt-bridge anions toward Zn and cations toward Cu half-cell. Ions carry charge in solution, not electrons. Actual concentrations/load can change voltage. Transfer response: Cu+2Ag⁺→Cu²⁺+2Ag;E°=0.46V. Potentials are not multiplied by coefficient2. Scoring /10: 2P: Interpret reduction potentials and spontaneous direction correctly.; 2P: Give correct half/total equations and cell voltage.; 2P: Explain electrodes and external electron flow.; 2P: Distinguish ion directions and standard/actual limit.; 2P: Cu+2Ag⁺→Cu²⁺+2Ag;E°=0.46V. Potentials are not multiplied by coefficient2.",
+          "understandingFocusEn": "Whole current goal including all operators; explain the evidence, perform the specified calculation or judgment and apply the separate fresh transfer. Synthetic authored work is not actual learner performance."
+        },
+        {
+          "id": "q3-10-b",
+          "taskDemandDe": "Standardwerte Mg²⁺/Mg−2,37V,Fe²⁺/Fe−0,44V. Vorgeschlagene Reaktion Fe+Mg²⁺→Fe²⁺+Mg; galvanische Halbzellen werden bei Standardbedingungen gekoppelt. Prüfe Vorschlag, bestimme freiwillige Richtung und E°. Deute Anode, Kathode und beide Ladungstransportwege. Erkläre, warum eine gemessene1,80V den Standardwert nicht automatisch widerlegt. Separat frischer Transfer: Frisch: gleiche Potenzialdifferenz, Reaktion wird formal verdreifacht. Wie ändern sich E° und Elektronenanzahl?",
+          "expectedPerformanceDe": "Vorschlags-E°=−2,37−(−0,44)=−1,93V, daher nicht freiwillig in dieser Richtung. Freiwillig Mg+Fe²⁺→Mg²⁺+Fe mit+1,93V. Mg negative Anode, Fe positive Kathode; Elektronen außen Mg→Fe, Gegenionen ermöglichen Ladungsausgleich innen.1,80V kann anderen Aktivitäten, Innenwiderstand oder Last entsprechen; Messbedingungen müssen geprüft werden. Transferantwort: E° bleibt1,93V; bilanzierte Elektronenzahl steigt2→6. Intensives Potenzial wird nicht skaliert. Scoring /10: 2P: Negative Vorschlagsrichtung korrekt beurteilen.; 2P: Freiwillige Reaktion und1,93V berechnen.; 2P: Elektroden/Elektronen und Ionentransport getrennt erklären.; 2P: Gemessene Spannung an Bedingungen binden.; 2P: E° bleibt1,93V; bilanzierte Elektronenzahl steigt2→6. Intensives Potenzial wird nicht skaliert.",
+          "understandingFocusDe": "Ganzes aktuelles Ziel einschließlich aller Operatoren; keine Punktvergabe für nicht ausgeführte Experimente. Eine Spannungsreihen-Vorhersage mit bilanziertem Zellmodell und Standardspannung; Standard/actual sowie Elektronen-/Ionentransport sind notwendige Interpretationsgrenzen. Nernst bleibt beim vorhandenen Partnerziel.",
+          "taskDemandEn": "Standard values Mg²⁺/Mg−2.37V,Fe²⁺/Fe−0.44V. Proposed reaction Fe+Mg²⁺→Fe²⁺+Mg; galvanic half-cells are connected at standard conditions. Check the proposal, determine spontaneous direction and E°. Interpret anode, cathode and both charge-transport paths. Explain why measured1.80V does not automatically refute the standard value. Separate fresh transfer: Fresh: same potential difference, reaction is formally tripled. How do E° and electron count change?",
+          "expectedPerformanceEn": "Proposed E°=−2.37−(−0.44)=−1.93V, so this direction is not spontaneous. Spontaneous Mg+Fe²⁺→Mg²⁺+Fe gives+1.93V. Mg is negative anode, Fe positive cathode; electrons flow externally Mg→Fe and counterions balance charge internally.1.80V can reflect different activities, internal resistance or load; check measurement conditions. Transfer response: E° stays1.93V; balanced electron count increases2→6. Intensive potential is not scaled. Scoring /10: 2P: Evaluate negative proposed direction correctly.; 2P: Calculate spontaneous reaction and1.93V.; 2P: Explain electrodes/electrons and ion transport separately.; 2P: Bind measured voltage to conditions.; 2P: E° stays1.93V; balanced electron count increases2→6. Intensive potential is not scaled.",
+          "understandingFocusEn": "Whole current goal including all operators; explain the evidence, perform the specified calculation or judgment and apply the separate fresh transfer. Synthetic authored work is not actual learner performance."
+        }
+      ]
+    }
+  }
+]

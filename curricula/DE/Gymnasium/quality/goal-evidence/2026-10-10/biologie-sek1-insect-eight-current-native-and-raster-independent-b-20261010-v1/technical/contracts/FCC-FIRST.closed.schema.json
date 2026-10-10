@@ -1,0 +1,348 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "SPDX-License-Identifier: Apache-2.0. Additive closed actual-review receipt; no native gate/schema modifications.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "createdAt",
+    "role",
+    "reviewer",
+    "goalId",
+    "neutralEntry",
+    "authorFinalFreezeHashVerifiedOnly",
+    "originalOwnVFIRST",
+    "originalOwnDPFIRST",
+    "knownContextDe",
+    "currentSuccessorAuthorReviewJudgmentsRead",
+    "currentSuccessorPeerReviewJudgmentsRead",
+    "normalInputTechnicalAuthorMetadataRead",
+    "actualViews",
+    "actualOriginalViews",
+    "actual360Views",
+    "actual680Views",
+    "actualWholeHTMLViews",
+    "actualWholePDFViews",
+    "wholeUnchangedFCCProfileAndTwoFullCasesDEENRead",
+    "wholeMaterialsTasksWorkedSolutionsRubricsFreshTransfersSolutionsLimitsRead",
+    "exactNeutralBindings",
+    "normalRoundBRecord",
+    "decisions",
+    "findingsDe",
+    "originalFindingUnchanged",
+    "otherSevenReviewRestarted",
+    "blockingFindings",
+    "sourceBoundariesDe",
+    "PStatus",
+    "activeWrites",
+    "historicalWrites",
+    "humanApproval",
+    "humanTrial",
+    "newStrictCompletions",
+    "restoredActiveBindings",
+    "strictNetGain"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "reviewer": {
+      "type": "string"
+    },
+    "goalId": {
+      "type": "string"
+    },
+    "neutralEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "authorFinalFreezeHashVerifiedOnly": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "originalOwnVFIRST": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "originalOwnDPFIRST": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "knownContextDe": {
+      "type": "string"
+    },
+    "currentSuccessorAuthorReviewJudgmentsRead": {
+      "const": false
+    },
+    "currentSuccessorPeerReviewJudgmentsRead": {
+      "const": false
+    },
+    "normalInputTechnicalAuthorMetadataRead": {
+      "const": true
+    },
+    "actualViews": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "actualOriginalViews": {
+      "type": "integer"
+    },
+    "actual360Views": {
+      "type": "integer"
+    },
+    "actual680Views": {
+      "type": "integer"
+    },
+    "actualWholeHTMLViews": {
+      "type": "integer"
+    },
+    "actualWholePDFViews": {
+      "type": "integer"
+    },
+    "wholeUnchangedFCCProfileAndTwoFullCasesDEENRead": {
+      "const": true
+    },
+    "wholeMaterialsTasksWorkedSolutionsRubricsFreshTransfersSolutionsLimitsRead": {
+      "const": true
+    },
+    "exactNeutralBindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "normalRoundBRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "decisions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "V",
+        "D",
+        "P",
+        "nativeRender"
+      ],
+      "properties": {
+        "V": {
+          "type": "string"
+        },
+        "D": {
+          "type": "string"
+        },
+        "P": {
+          "type": "string"
+        },
+        "nativeRender": {
+          "type": "string"
+        }
+      }
+    },
+    "findingsDe": {
+      "type": "string"
+    },
+    "originalFindingUnchanged": {
+      "const": true
+    },
+    "otherSevenReviewRestarted": {
+      "const": false
+    },
+    "blockingFindings": {
+      "type": "array",
+      "items": {}
+    },
+    "sourceBoundariesDe": {
+      "type": "string"
+    },
+    "PStatus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidenceLevel",
+        "maximumClaimScope",
+        "reviewAuthority",
+        "status",
+        "approved"
+      ],
+      "properties": {
+        "evidenceLevel": {
+          "type": "string"
+        },
+        "maximumClaimScope": {
+          "type": "string"
+        },
+        "reviewAuthority": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "approved": {
+          "type": "integer"
+        }
+      }
+    },
+    "activeWrites": {
+      "const": false
+    },
+    "historicalWrites": {
+      "const": false
+    },
+    "humanApproval": {
+      "const": false
+    },
+    "humanTrial": {
+      "const": false
+    },
+    "newStrictCompletions": {
+      "type": "integer"
+    },
+    "restoredActiveBindings": {
+      "type": "integer"
+    },
+    "strictNetGain": {
+      "type": "integer"
+    }
+  }
+}

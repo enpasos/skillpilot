@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Own additive independent B V-FIRST-view closed technical receipt; no gate changes",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "goalId",
+    "assetRole",
+    "asset",
+    "width",
+    "height",
+    "actualView",
+    "tool",
+    "detail",
+    "cropped",
+    "viewSequence",
+    "viewBeforeCurrentAuthorOrPeerJudgments",
+    "observationDe"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer"
+    },
+    "goalId": {
+      "type": "string"
+    },
+    "assetRole": {
+      "enum": [
+        "actualOriginalPNG",
+        "phone360",
+        "pc680"
+      ]
+    },
+    "asset": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "width": {
+      "type": "integer"
+    },
+    "height": {
+      "type": "integer"
+    },
+    "actualView": {
+      "const": true
+    },
+    "tool": {
+      "type": "string"
+    },
+    "detail": {
+      "type": "string"
+    },
+    "cropped": {
+      "const": false
+    },
+    "viewSequence": {
+      "type": "integer"
+    },
+    "viewBeforeCurrentAuthorOrPeerJudgments": {
+      "type": "boolean"
+    },
+    "observationDe": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

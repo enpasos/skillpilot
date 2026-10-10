@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual standard active-asset P CLI readiness check, not scientific review or approval",
+  "command": [
+    "npx",
+    "--prefix",
+    "app",
+    "tsx",
+    "app/scripts/positiveGoalEvidenceReview.ts",
+    "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-current-native-and-raster-independent-b-20261010-v1/positive/current-seven-retained.exact.P.config.json",
+    "--mode=check"
+  ],
+  "config": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-current-native-and-raster-independent-b-20261010-v1/positive/current-seven-retained.exact.P.config.json",
+    "sha256": "sha256:0dc3f7172f50bdbc9ad0bdb2297b9fdc17d67839afc08a64489a40d0f8a20203",
+    "bytes": 1833
+  },
+  "stdout": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-current-native-and-raster-independent-b-20261010-v1/normal/current-seven-retained.exact.P-active-P-CLI-readiness.stdout.actual.txt",
+    "sha256": "sha256:8ef6478290f3471d7d41df36f53a37a4e5fbe743b71128ce5f4be9b67132c56f",
+    "bytes": 3045
+  },
+  "stderr": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-current-native-and-raster-independent-b-20261010-v1/normal/current-seven-retained.exact.P-active-P-CLI-readiness.stderr.actual.txt",
+    "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "exitCode": 1,
+  "activeAssetAdoptionPending": true,
+  "normalExactInactiveAssetSchemaAndSemanticsPassed": true,
+  "reason": "Inactive exact candidate PNGs cannot resolve through standard app/public path before parent adoption. Normal checker unchanged; repeat actual active P CLI after adopting exact assets.",
+  "gateWeakened": false,
+  "activeWrites": false,
+  "humanApproval": false,
+  "strictNetGain": 0
+}

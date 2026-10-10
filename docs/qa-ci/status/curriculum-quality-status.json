@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "rulesVersion": "curriculum-quality-v5",
-  "generatedAt": "2026-10-09T20:16:56.356Z",
+  "generatedAt": "2026-10-10T05:41:15.827Z",
   "generatedBy": "app/scripts/generateCurriculumQualityStatus.ts",
   "sources": {
     "canonicalRoot": "curricula/DE/Gymnasium/canonical",
@@ -3904,16 +3904,16 @@
         {
           "id": "CQR-303",
           "status": "warn",
-          "summary": "Deep curriculum QA is incomplete: 315/394 current curricularAtomic goals strictly complete.",
+          "summary": "Deep curriculum QA is incomplete: 335/394 current curricularAtomic goals strictly complete.",
           "metrics": {
             "expectedGoals": 394,
-            "remaining": 79,
-            "strictComplete": 315,
-            "currentDescriptionResolutions": 315,
-            "currentPositiveEvidenceProfiles": 315,
+            "remaining": 59,
+            "strictComplete": 335,
+            "currentDescriptionResolutions": 335,
+            "currentPositiveEvidenceProfiles": 335,
             "currentSemanticAtomicityDecisions": 394,
             "currentMemoryReviewDecisions": 394,
-            "currentVisualizationQaRecords": 315,
+            "currentVisualizationQaRecords": 335,
             "deferredVisualizations": 0,
             "requiredChecksPassed": 6,
             "requiredChecksTotal": 6,
@@ -3954,14 +3954,14 @@
       "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
       "maturity": "M6",
       "humanTrialBlockingFindings": 0,
-      "goals": 480,
-      "atomicGoals": 410,
-      "clusterGoals": 70,
+      "goals": 487,
+      "atomicGoals": 416,
+      "clusterGoals": 71,
       "jurisdictionCoverage": {
         "dimension": "jurisdiction",
         "totalJurisdictions": 16,
         "totalAtomicGoals": 338,
-        "rawAtomicGoals": 410,
+        "rawAtomicGoals": 416,
         "coveredJurisdictions": 16,
         "sourceBackedJurisdictions": 16,
         "sourceCompleteJurisdictions": 16,
@@ -3991,9 +3991,9 @@
             "jurisdiction": "DE-BW",
             "labelDe": "Baden-Württemberg",
             "labelEn": "Baden-Wuerttemberg",
-            "visibleGoals": 293,
+            "visibleGoals": 301,
             "visibleAtomicGoals": 143,
-            "visibleClusterGoals": 150,
+            "visibleClusterGoals": 158,
             "viewAtomicGoals": 143,
             "sourceBackedAtomicGoals": 143,
             "surrogateBackedAtomicGoals": 0,
@@ -4012,7 +4012,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 115,
+            "diagnosticPartialOnlyWarnings": 116,
             "atomicCoveragePercent": 42.3,
             "sourceBackedCoveragePercent": 100,
             "sourceReverseCoveragePercent": 100,
@@ -4487,12 +4487,12 @@
       },
       "mappingPipeline": {
         "totalSources": 32,
-        "completeSources": 32,
-        "incompleteSources": 0,
+        "completeSources": 31,
+        "incompleteSources": 1,
         "blockedSources": 0,
         "maxCompletedSteps": 3,
         "totalSteps": 3,
-        "currentStep": "",
+        "currentStep": "MAPPING-3",
         "sources": [
           {
             "sourceLandscapeId": "6a3e6947-d950-5619-8db8-2ab9a6ac55c6",
@@ -4607,7 +4607,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "203 Source-Ziele; Vergleich HE/BW SEKII (126/202); Median 164; zulässiger 30%-Median-Korridor 115-213; Abweichung vom Median 24%."
+                    "details": "203 Source-Ziele; Vergleich HE/BW SEKII (202); Median 202; zulässiger 30%-Median-Korridor 142-262; Abweichung vom Median 0%."
                   }
                 ]
               },
@@ -4907,7 +4907,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "203 Source-Ziele; Vergleich HE/BW SEKII (126/202); Median 164; zulässiger 30%-Median-Korridor 115-213; Abweichung vom Median 24%."
+                    "details": "203 Source-Ziele; Vergleich HE/BW SEKII (202); Median 202; zulässiger 30%-Median-Korridor 142-262; Abweichung vom Median 0%."
                   }
                 ]
               },
@@ -5113,16 +5113,16 @@
                 "hasUsableUrl": true
               }
             ],
-            "currentStep": "",
-            "completedSteps": 3,
+            "currentStep": "MAPPING-3",
+            "completedSteps": 2,
             "totalSteps": 3,
             "sourceGoals": 126,
             "passages": 13,
-            "mappedSourceGoals": 126,
-            "unmappedSourceGoals": 0,
+            "mappedSourceGoals": 0,
+            "unmappedSourceGoals": 126,
             "extraMappedGoals": 0,
-            "exactMappings": 64,
-            "partialMappings": 62,
+            "exactMappings": 0,
+            "partialMappings": 0,
             "otherMappings": 0,
             "sourceGoalGranularity": {
               "averageWords": 12.404761904761905,
@@ -5214,7 +5214,7 @@
               {
                 "id": "MAPPING-3",
                 "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
-                "status": "complete",
+                "status": "incomplete",
                 "dependsOn": [
                   "MAPPING-1",
                   "MAPPING-2"
@@ -5229,32 +5229,32 @@
                   {
                     "id": "m3-review-file-present",
                     "label": "M3-Review-Datei ist vorhanden",
-                    "passed": true,
-                    "details": "Review-Datei mit sourceExtractionPath fuer diese Source-Extraction ist vorhanden."
+                    "passed": false,
+                    "details": "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
                   },
                   {
                     "id": "m3-review-decisions-reference-source-goals",
                     "label": "M3-Review-Entscheidungen referenzieren gültige Source-Ziele",
-                    "passed": true,
-                    "details": "Review-Entscheidungen mit unbekannter Source-ID: 0."
+                    "passed": false,
+                    "details": "Noch keine Review-Entscheidungen vorhanden."
                   },
                   {
                     "id": "m3-review-targets-exist",
                     "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
-                    "passed": true,
-                    "details": "Unbekannte Canonical-Ziele in Mappings: 0."
+                    "passed": false,
+                    "details": "Noch keine Canonical-Ziele referenziert."
                   },
                   {
                     "id": "m3-all-source-goals-reviewed",
                     "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
-                    "passed": true,
-                    "details": "126/126 Source-Ziele reviewed; offen: 0."
+                    "passed": false,
+                    "details": "0/126 Source-Ziele reviewed; offen: 126."
                   },
                   {
                     "id": "m3-all-source-goals-covered-by-canonical",
                     "label": "Alle Source-Ziele sind durch SkillPilot-Ziele abgedeckt",
-                    "passed": true,
-                    "details": "Fachlich abgedeckt: 126/126; Mappings: 126/126; verbleibend: 0 explizite Canonical-Gaps, 0 unreviewed."
+                    "passed": false,
+                    "details": "Fachlich abgedeckt: 0/126; Mappings: 0/126; verbleibend: 0 explizite Canonical-Gaps, 126 unreviewed."
                   }
                 ]
               }
@@ -5714,7 +5714,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "332 Source-Ziele; Vergleich HE/BW SEKI (65/122) + SEKII (126/202); Median 258; zulässiger 30%-Median-Korridor 181-334; Abweichung vom Median 29%."
+                    "details": "332 Source-Ziele; Vergleich HE/BW SEKI (65/122) + SEKII (202); Median 296; zulässiger 30%-Median-Korridor 207-384; Abweichung vom Median 12%."
                   }
                 ]
               },
@@ -5848,7 +5848,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "88 Source-Ziele; Vergleich HE/BW SEKII (126/202); Median 164; zulässiger 30%-Median-Korridor 115-213; Abweichung vom Median -46%. Kritisch gepruefte Abweichung: 88 Source-Ziele; Bremen GyO Chemie 2022 ist damit im erwartbaren Korridor gegenueber anderen geprueften Sek-II-Chemie-Spuren (ca. 126-333 Source-Ziele), weil die Bremer Quelle kompakte Themenbereiche statt langer Kompetenzraster fuehrt."
+                    "details": "88 Source-Ziele; Vergleich HE/BW SEKII (202); Median 202; zulässiger 30%-Median-Korridor 142-262; Abweichung vom Median -56%. Kritisch gepruefte Abweichung: 88 Source-Ziele; Bremen GyO Chemie 2022 ist damit im erwartbaren Korridor gegenueber anderen geprueften Sek-II-Chemie-Spuren (ca. 126-333 Source-Ziele), weil die Bremer Quelle kompakte Themenbereiche statt langer Kompetenzraster fuehrt."
                   }
                 ]
               },
@@ -6641,7 +6641,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "97 Source-Ziele; Vergleich HE/BW SEKII (126/202); Median 164; zulässiger 30%-Median-Korridor 115-213; Abweichung vom Median -41%. Kritisch gepruefte Abweichung: 97 Source-Ziele; Hamburg Sek II liegt im Korridor der geprüften direkten Chemie-Sek-II-Inventare BW (126), NW (154), SH (165) und HE (202)."
+                    "details": "97 Source-Ziele; Vergleich HE/BW SEKII (202); Median 202; zulässiger 30%-Median-Korridor 142-262; Abweichung vom Median -52%. Kritisch gepruefte Abweichung: 97 Source-Ziele; Hamburg Sek II liegt im Korridor der geprüften direkten Chemie-Sek-II-Inventare BW (126), NW (154), SH (165) und HE (202)."
                   }
                 ]
               },
@@ -6793,7 +6793,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "122 Source-Ziele; Vergleich HE/BW SEKII (126/202); Median 164; zulässiger 30%-Median-Korridor 115-213; Abweichung vom Median -26%."
+                    "details": "122 Source-Ziele; Vergleich HE/BW SEKII (202); Median 202; zulässiger 30%-Median-Korridor 142-262; Abweichung vom Median -40%. Kritisch gepruefte Abweichung: 122 Source-Ziele; BW/NW/SH/HE/BB/BE/NI/ST Sek-II-Chemie = 126/154/165/202/203/203/333/324 Source-Ziele; MV wird aus den verbindlichen Qualifikationsphasen-Tabellen GK/LK extrahiert."
                   }
                 ]
               },
@@ -7086,7 +7086,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "333 Source-Ziele; Vergleich HE/BW SEKII (126/202); Median 164; zulässiger 30%-Median-Korridor 115-213; Abweichung vom Median 103%. Kritisch gepruefte Abweichung: NI 2022 wird als 333 Einzelkompetenzen in den vier Kompetenzbereichen formuliert; die Abweichung ist gegen das PDF geprüft und nicht durch Anhangs-/Beispielmaterial verursacht."
+                    "details": "333 Source-Ziele; Vergleich HE/BW SEKII (202); Median 202; zulässiger 30%-Median-Korridor 142-262; Abweichung vom Median 65%. Kritisch gepruefte Abweichung: NI 2022 wird als 333 Einzelkompetenzen in den vier Kompetenzbereichen formuliert; die Abweichung ist gegen das PDF geprüft und nicht durch Anhangs-/Beispielmaterial verursacht."
                   }
                 ]
               },
@@ -7409,7 +7409,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "154 Source-Ziele; Vergleich HE/BW SEKII (126/202); Median 164; zulässiger 30%-Median-Korridor 115-213; Abweichung vom Median -6%."
+                    "details": "154 Source-Ziele; Vergleich HE/BW SEKII (202); Median 202; zulässiger 30%-Median-Korridor 142-262; Abweichung vom Median -24%."
                   }
                 ]
               },
@@ -7714,7 +7714,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "325 Source-Ziele; Vergleich HE/BW SEKII (126/202); Median 164; zulässiger 30%-Median-Korridor 115-213; Abweichung vom Median 98%. Kritisch gepruefte Abweichung: 325 Source-Ziele; HE/BW/BB/BE/NI/NW/SH/MV/ST Sek-II-Chemie = 202/126/203/203/333/154/165/122/324 Source-Ziele; RP wird aus den Fachinhalten der MSS-Bausteine ab Kapitel 4.3 extrahiert."
+                    "details": "325 Source-Ziele; Vergleich HE/BW SEKII (202); Median 202; zulässiger 30%-Median-Korridor 142-262; Abweichung vom Median 61%. Kritisch gepruefte Abweichung: 325 Source-Ziele; HE/BW/BB/BE/NI/NW/SH/MV/ST Sek-II-Chemie = 202/126/203/203/333/154/165/122/324 Source-Ziele; RP wird aus den Fachinhalten der MSS-Bausteine ab Kapitel 4.3 extrahiert."
                   }
                 ]
               },
@@ -8025,7 +8025,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "165 Source-Ziele; Vergleich HE/BW SEKII (126/202); Median 164; zulässiger 30%-Median-Korridor 115-213; Abweichung vom Median 1%."
+                    "details": "165 Source-Ziele; Vergleich HE/BW SEKII (202); Median 202; zulässiger 30%-Median-Korridor 142-262; Abweichung vom Median -18%."
                   }
                 ]
               },
@@ -8356,7 +8356,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "712 Source-Ziele; Vergleich HE/BW SEKII (126/202); Median 164; zulässiger 30%-Median-Korridor 115-213; Abweichung vom Median 334%. Kritisch gepruefte Abweichung: 712 Source-Ziele; HE/BW/BB/BE/HH/MV/NI/NW/RP/SH/ST Sek-II-Chemie = 202/126/203/203/75/122/333/154/325/165/324 Source-Ziele. Saarland Sek-II wird aus EP-NW, EP-sprachlich, GK und LK extrahiert; Dopplungen zwischen Kursdokumenten bleiben als Quellenbeleg erhalten."
+                    "details": "712 Source-Ziele; Vergleich HE/BW SEKII (202); Median 202; zulässiger 30%-Median-Korridor 142-262; Abweichung vom Median 252%. Kritisch gepruefte Abweichung: 712 Source-Ziele; HE/BW/BB/BE/HH/MV/NI/NW/RP/SH/ST Sek-II-Chemie = 202/126/203/203/75/122/333/154/325/165/324 Source-Ziele. Saarland Sek-II wird aus EP-NW, EP-sprachlich, GK und LK extrahiert; Dopplungen zwischen Kursdokumenten bleiben als Quellenbeleg erhalten."
                   }
                 ]
               },
@@ -8689,7 +8689,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "302 Source-Ziele; Vergleich HE/BW SEKII (126/202); Median 164; zulässiger 30%-Median-Korridor 115-213; Abweichung vom Median 84%. Kritisch gepruefte Abweichung: 302 Source-Ziele; HE/BW/BB/BE/HH/MV/NI/NW/RP/SH/ST/SL Sek-II-Chemie = 202/126/203/203/75/122/333/154/325/165/324/712 Source-Ziele. Sachsen Sek II trennt GK und LK im selben amtlichen Lehrplan."
+                    "details": "302 Source-Ziele; Vergleich HE/BW SEKII (202); Median 202; zulässiger 30%-Median-Korridor 142-262; Abweichung vom Median 50%. Kritisch gepruefte Abweichung: 302 Source-Ziele; HE/BW/BB/BE/HH/MV/NI/NW/RP/SH/ST/SL Sek-II-Chemie = 202/126/203/203/75/122/333/154/325/165/324/712 Source-Ziele. Sachsen Sek II trennt GK und LK im selben amtlichen Lehrplan."
                   }
                 ]
               },
@@ -9146,7 +9146,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "324 Source-Ziele; Vergleich HE/BW SEKII (126/202); Median 164; zulässiger 30%-Median-Korridor 115-213; Abweichung vom Median 98%. Kritisch gepruefte Abweichung: 324 Source-Ziele; BW/NW/SH/HE/BB/BE/NI Sek-II-Chemie = 126/154/165/202/203/203/333 Source-Ziele; Sachsen-Anhalt fuehrt gAN, eAN und Wahlpflichtfach im selben Fachlehrplan."
+                    "details": "324 Source-Ziele; Vergleich HE/BW SEKII (202); Median 202; zulässiger 30%-Median-Korridor 142-262; Abweichung vom Median 60%. Kritisch gepruefte Abweichung: 324 Source-Ziele; BW/NW/SH/HE/BB/BE/NI Sek-II-Chemie = 126/154/165/202/203/203/333 Source-Ziele; Sachsen-Anhalt fuehrt gAN, eAN und Wahlpflichtfach im selben Fachlehrplan."
                   }
                 ]
               },
@@ -9298,7 +9298,7 @@
                     "id": "source-goal-count-peer-baseline",
                     "label": "Source-Ziel-Anzahl ist gegen den geprüften HE/BW-Median plausibilisiert",
                     "passed": true,
-                    "details": "225 Source-Ziele; Vergleich HE/BW SEKII (126/202); Median 164; zulässiger 30%-Median-Korridor 115-213; Abweichung vom Median 37%. Kritisch gepruefte Abweichung: 225 Source-Ziele; HE/BW/BB/BE/HH/MV/NI/NW/RP/SH/ST/SL/SN Sek-II-Chemie = 202/126/203/203/97/122/333/154/325/165/324/712/302 Source-Ziele. Thueringen Sek II wird aus den Sach- und Methodenkompetenzen der Qualifikationsphase des amtlichen Lehrplans 2024 extrahiert."
+                    "details": "225 Source-Ziele; Vergleich HE/BW SEKII (202); Median 202; zulässiger 30%-Median-Korridor 142-262; Abweichung vom Median 11%."
                   }
                 ]
               },
@@ -9485,7 +9485,7 @@
         {
           "scopeId": "canonical-chemistry-sek2",
           "label": "Sekundarstufe II",
-          "selectedAtomicGoals": 278,
+          "selectedAtomicGoals": 281,
           "maturity": "M4",
           "rules": [
             {
@@ -9493,7 +9493,7 @@
               "status": "pass",
               "summary": "Effective route coverage is complete for the configured scope.",
               "metrics": {
-                "selectedAtomicGoals": 278,
+                "selectedAtomicGoals": 281,
                 "missingMotivationPath": 0,
                 "missingTerminalPath": 0
               }
@@ -9503,7 +9503,7 @@
               "status": "pass",
               "summary": "Direct atomic route coverage is complete for the configured scope.",
               "metrics": {
-                "selectedAtomicGoals": 278,
+                "selectedAtomicGoals": 281,
                 "missingDirectMotivationPath": 0,
                 "missingDirectTerminalPath": 0
               }
@@ -9521,8 +9521,8 @@
               "status": "pass",
               "summary": "All configured terminal autonomy goals have examData.",
               "metrics": {
-                "terminalAutonomyGoals": 16,
-                "terminalAutonomyGoalsWithExamData": 16,
+                "terminalAutonomyGoals": 19,
+                "terminalAutonomyGoalsWithExamData": 19,
                 "terminalAutonomyGoalsWithoutExamData": 0
               }
             },
@@ -9531,8 +9531,8 @@
               "status": "pass",
               "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
               "metrics": {
-                "terminalAutonomyGoals": 16,
-                "concreteExamData": 16,
+                "terminalAutonomyGoals": 19,
+                "concreteExamData": 19,
                 "weakExamData": 0
               }
             },
@@ -9541,8 +9541,8 @@
               "status": "pass",
               "summary": "All terminal autonomy examData has release and coverage metadata.",
               "metrics": {
-                "terminalAutonomyGoals": 16,
-                "releasedCoverageCompleteExamData": 16,
+                "terminalAutonomyGoals": 19,
+                "releasedCoverageCompleteExamData": 19,
                 "releaseCoverageIncompleteExamData": 0
               }
             }
@@ -9555,7 +9555,7 @@
           "status": "pass",
           "summary": "Basic graph integrity checks pass.",
           "metrics": {
-            "goals": 480,
+            "goals": 487,
             "localReferenceIssues": 0
           }
         },
@@ -9621,7 +9621,7 @@
         {
           "id": "CQR-004",
           "status": "pass",
-          "summary": "Course-level mapping is clean for 1590 upper-secondary source-to-canonical mapping edge(s), including 31 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+          "summary": "Course-level mapping is clean for 1589 upper-secondary source-to-canonical mapping edge(s), including 31 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
           "metrics": {
             "configuredMappingFiles": 40,
             "sourceGoals": 3783,
@@ -9629,7 +9629,7 @@
             "gkLkSourceGoals": 1915,
             "lkSourceGoals": 1375,
             "unspecifiedSourceGoals": 406,
-            "checkedMappingEdges": 1590,
+            "checkedMappingEdges": 1589,
             "defaultedUnspecifiedMappingEdges": 172,
             "reviewedCourseLevelExceptions": 31,
             "mismatches": 0,
@@ -9655,9 +9655,9 @@
           "status": "pass",
           "summary": "Semantic atomicity review ledgers are current and fully accepted.",
           "metrics": {
-            "configs": 19,
-            "leafGoals": 205,
-            "atomic": 205,
+            "configs": 20,
+            "leafGoals": 208,
+            "atomic": 208,
             "needsDeveloperReview": 0,
             "nonAtomic": 0,
             "missing": 0,
@@ -9668,11 +9668,11 @@
         {
           "id": "CQR-302",
           "status": "pass",
-          "summary": "Memory-card review is current: 55/378 ordinary atomic goals intentionally use memorization support, 73/73 primary cards are kept with origin traces, all 7 memory goals are traced, and 250 view-visible memory-required goals resolve to visible memory nodes.",
+          "summary": "Memory-card review is current: 55/381 ordinary atomic goals intentionally use memorization support, 73/73 primary cards are kept with origin traces, all 7 memory goals are traced, and 250 view-visible memory-required goals resolve to visible memory nodes.",
           "metrics": {
             "configs": 1,
-            "reviewedGoals": 378,
-            "noMemoryNeeded": 323,
+            "reviewedGoals": 381,
+            "noMemoryNeeded": 326,
             "memoryRequired": 55,
             "needsDeveloperReview": 0,
             "missing": 0,
@@ -9702,22 +9702,22 @@
             "cardRows": 91
           },
           "details": [
-            "canonical-chemistry-full: audit report curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-plus-d2cc-reviewed-integration-preparation-technical-20261007-v1/checks/memory-current378-real-views.future.report.md"
+            "canonical-chemistry-full: audit report curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-q3-three-reviewed-active-integration-technical-v1/checks/memory-current381.normal.report.md"
           ]
         },
         {
           "id": "CQR-303",
           "status": "warn",
-          "summary": "Deep curriculum QA is incomplete: 177/378 current curricularAtomic goals strictly complete.",
+          "summary": "Deep curriculum QA is incomplete: 180/381 current curricularAtomic goals strictly complete.",
           "metrics": {
-            "expectedGoals": 378,
+            "expectedGoals": 381,
             "remaining": 201,
-            "strictComplete": 177,
-            "currentDescriptionResolutions": 177,
-            "currentPositiveEvidenceProfiles": 177,
-            "currentSemanticAtomicityDecisions": 205,
-            "currentMemoryReviewDecisions": 378,
-            "currentVisualizationQaRecords": 359,
+            "strictComplete": 180,
+            "currentDescriptionResolutions": 180,
+            "currentPositiveEvidenceProfiles": 180,
+            "currentSemanticAtomicityDecisions": 208,
+            "currentMemoryReviewDecisions": 381,
+            "currentVisualizationQaRecords": 362,
             "deferredVisualizations": 17,
             "requiredChecksPassed": 6,
             "requiredChecksTotal": 6,
@@ -9742,13 +9742,13 @@
           "metrics": {
             "activeWarnings": 0,
             "rawActiveWarnings": 0,
-            "diagnosticPartialOnlyWarnings": 2240,
+            "diagnosticPartialOnlyWarnings": 2241,
             "acceptedWarnings": 0,
             "obsoleteAcceptedWarnings": 0
           },
           "details": [
-            "non-blocking partial-only applicability diagnostics APV-202: 2240",
-            "diagnostic finding type APV-202: 2240"
+            "non-blocking partial-only applicability diagnostics APV-202: 2241",
+            "diagnostic finding type APV-202: 2241"
           ]
         }
       ]
@@ -25649,7 +25649,7 @@
             "sourceUncoveredOriginalGoals": 0,
             "errors": 0,
             "warnings": 0,
-            "diagnosticPartialOnlyWarnings": 1987,
+            "diagnosticPartialOnlyWarnings": 1988,
             "atomicCoveragePercent": 0,
             "sourceBackedCoveragePercent": 0,
             "sourceReverseCoveragePercent": 0,

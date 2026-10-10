@@ -1,0 +1,57 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-four-risk-ethics-current-native-20261010-v1",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-risk-ethics-current-native-technical-author-20261010-v1/native/four-current-P.prerequisite-safe.batch.config.json",
+  "configDigest": "sha256:4f14ba502e9d67b93bdb878cf2246e695cc8bde765189943e248171513345d01",
+  "goalIds": [
+    "1320b82e-e438-59ff-9d53-ecc9fbacae58",
+    "ee686aee-43d3-50df-a60a-e47ac845586c",
+    "40334348-bd84-5ed9-b76b-5f5b80c2d145",
+    "031fd4f3-906e-5919-ae7f-a2b0b9220604"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 394,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-risk-ethics-current-native-technical-author-20261010-v1/native/after394-current-four.normal.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-four-risk-ethics-current-native-technical-author-20261010-v1/candidate/whole479-current-twelve-raster-links.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:e460d0f22ab0a1073a5e102bb7f6c0cdb9598e3b738f5a83cb0c9af40a4a2802"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:e66d801826e40d472887318af9c174299e560117029832b87c701f24456d7e91",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:bb758e96b55efb7f2efaf99fdb80eff54064633c20b9e0fc92d3846619628f6c",
+    "reviewInputFingerprint": "sha256:4aa1ad97fe8af2e2015dd0fbc02adb3c8d20cc89daf8fd201bd86c6f311bb9b6",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-four-risk-ethics-current-native-20261010-v1-a",
+        "campaignDigest": "sha256:8d9d860686293237350cc3e7e907dd409665bfedfb4a23e0ce4f18e7d47374d0",
+        "roundId": "biologie-four-risk-ethics-current-native-20261010-v1-first-pass-a",
+        "independenceGroupId": "biologie-four-risk-ethics-current-native-20261010-v1-independent-a",
+        "batchId": "biologie-four-risk-ethics-current-native-20261010-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:4d8bd4ec6c6641715daaeee9715b0cb97867e565afbc2c35cccc7ccd7f4825cf"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-four-risk-ethics-current-native-20261010-v1-b",
+        "campaignDigest": "sha256:36c7c58a7c6a7e7f31926cc8047bcac9908c33fd01b8ec217819c5159837bd09",
+        "roundId": "biologie-four-risk-ethics-current-native-20261010-v1-first-pass-b",
+        "independenceGroupId": "biologie-four-risk-ethics-current-native-20261010-v1-independent-b",
+        "batchId": "biologie-four-risk-ethics-current-native-20261010-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:5c7521b3f0c2c06d642677db26a5ba716c2b488528e50cd1e4b4bdbe07a26128"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

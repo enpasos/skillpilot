@@ -1,0 +1,328 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-09T23:42:33.919Z",
+  "role": "technical integration preparation only; former author",
+  "normalDualSummary": {
+    "schemaVersion": 1,
+    "validationContract": "goal-description-dual-round-v1",
+    "automaticAcceptance": false,
+    "bundleFingerprint": "sha256:8052830bb5bb5949281575ec89ebbc1def537c29d819f012807372a1ce7c697c",
+    "reviewInputFingerprint": "sha256:bf21838e40db21539938c21c0ef731d11376f0b97a98a4e68849791749852ac3",
+    "goalCount": 3,
+    "rounds": {
+      "first": {
+        "campaignId": "chemie-three-BW-practical-current-P-native-20261010-v1-a",
+        "roundId": "chemie-three-BW-practical-current-P-native-20261010-v1-first-pass-a",
+        "independenceGroupId": "chemie-three-BW-practical-current-P-native-20261010-v1-independent-a",
+        "runIds": [
+          "chemie-three-BW-current-native-independent-a-20261010-v1"
+        ],
+        "providers": [
+          "OpenAI"
+        ],
+        "modelIdentities": [
+          "OpenAI::Codex active model; exact version not exposed::(unspecified-version)"
+        ]
+      },
+      "second": {
+        "campaignId": "chemie-three-BW-practical-current-P-native-20261010-v1-b",
+        "roundId": "chemie-three-BW-practical-current-P-native-20261010-v1-first-pass-b",
+        "independenceGroupId": "chemie-three-BW-practical-current-P-native-20261010-v1-independent-b",
+        "runIds": [
+          "chemie-three-BW-current-native-independent-b-20261010-v1-run-001"
+        ],
+        "providers": [
+          "OpenAI/Codex"
+        ],
+        "modelIdentities": [
+          "OpenAI/Codex::GPT-6::GPT-6; precise build not exposed"
+        ]
+      }
+    },
+    "diversity": {
+      "policy": "report_only",
+      "sharedProviders": [],
+      "sharedModelIdentities": [],
+      "distinctProviderOrModel": true,
+      "policySatisfied": true
+    },
+    "counts": {
+      "exactAgreement": 0,
+      "disagreement": 3,
+      "unavailable": 0,
+      "requiresSynthesis": 3
+    },
+    "goals": [
+      {
+        "goalId": "d2d735de-bede-5310-8aeb-8bb7562c7b75",
+        "firstRecordId": "chemie-three-BW-current-native-independent-a-20261010-v1.d2d735de-bede-5310-8aeb-8bb7562c7b75",
+        "secondRecordId": "chemie-three-BW-current-native-independent-b-20261010-v1-record-001",
+        "firstRunId": "chemie-three-BW-current-native-independent-a-20261010-v1",
+        "secondRunId": "chemie-three-BW-current-native-independent-b-20261010-v1-run-001",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "a0f6ba09-f072-5887-a797-fa369453c62a",
+        "firstRecordId": "chemie-three-BW-current-native-independent-a-20261010-v1.a0f6ba09-f072-5887-a797-fa369453c62a",
+        "secondRecordId": "chemie-three-BW-current-native-independent-b-20261010-v1-record-002",
+        "firstRunId": "chemie-three-BW-current-native-independent-a-20261010-v1",
+        "secondRunId": "chemie-three-BW-current-native-independent-b-20261010-v1-run-001",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "7b39fa19-fec3-575e-9324-a3226b703358",
+        "firstRecordId": "chemie-three-BW-current-native-independent-a-20261010-v1.7b39fa19-fec3-575e-9324-a3226b703358",
+        "secondRecordId": "chemie-three-BW-current-native-independent-b-20261010-v1-record-003",
+        "firstRunId": "chemie-three-BW-current-native-independent-a-20261010-v1",
+        "secondRunId": "chemie-three-BW-current-native-independent-b-20261010-v1-run-001",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      }
+    ]
+  },
+  "individualResolutions": [
+    {
+      "goalId": "d2d735de-bede-5310-8aeb-8bb7562c7b75",
+      "firstBinding": {
+        "campaignId": "chemie-three-BW-practical-current-P-native-20261010-v1-a",
+        "campaignDigest": "sha256:442ec5c11cf33d601cc9a4ac2ec9888ad70de202ac6e6c92398f147c4f014fc1",
+        "roundId": "chemie-three-BW-practical-current-P-native-20261010-v1-first-pass-a",
+        "independenceGroupId": "chemie-three-BW-practical-current-P-native-20261010-v1-independent-a",
+        "reviewInputFingerprint": "sha256:bf21838e40db21539938c21c0ef731d11376f0b97a98a4e68849791749852ac3",
+        "goalReviewContextFingerprint": "sha256:e564fa450cc1a2f0761debbd26f9742d2e40242582221e820f5c1ed28f4e39f1",
+        "batchId": "chemie-three-BW-practical-current-P-native-20261010-v1-first-pass-a.batch-001",
+        "runId": "chemie-three-BW-current-native-independent-a-20261010-v1",
+        "runManifestDigest": "sha256:53f3f851eea2aef826a302134430cd54833e79a4dc81d64f10f13fd7fb00edb9",
+        "resultsDigest": "sha256:131077316fc239c92370ebf2770eb710072268250ca3a4598379609c1d51ac22",
+        "recordId": "chemie-three-BW-current-native-independent-a-20261010-v1.d2d735de-bede-5310-8aeb-8bb7562c7b75",
+        "recordDigest": "sha256:4ae0565e089e748d65a321c137c85787b6784ee8598fd5d25a31de335aa030c0"
+      },
+      "secondBinding": {
+        "campaignId": "chemie-three-BW-practical-current-P-native-20261010-v1-b",
+        "campaignDigest": "sha256:067a1bf8d970d142bf1fb18203ee2684eb56657d52ff20b8899b082859aaca30",
+        "roundId": "chemie-three-BW-practical-current-P-native-20261010-v1-first-pass-b",
+        "independenceGroupId": "chemie-three-BW-practical-current-P-native-20261010-v1-independent-b",
+        "reviewInputFingerprint": "sha256:bf21838e40db21539938c21c0ef731d11376f0b97a98a4e68849791749852ac3",
+        "goalReviewContextFingerprint": "sha256:e564fa450cc1a2f0761debbd26f9742d2e40242582221e820f5c1ed28f4e39f1",
+        "batchId": "chemie-three-BW-practical-current-P-native-20261010-v1-first-pass-b.batch-001",
+        "runId": "chemie-three-BW-current-native-independent-b-20261010-v1-run-001",
+        "runManifestDigest": "sha256:d73f2fa070c9600fbe0d3e995d7fd4f182ac5598a9bfb504684ee8c1883f3a08",
+        "resultsDigest": "sha256:44c7b2c6ac9d62de326cb57de5288a5518132188c6ee6caa562943b17f740ec3",
+        "recordId": "chemie-three-BW-current-native-independent-b-20261010-v1-record-001",
+        "recordDigest": "sha256:a1228be86fa998b127b847d4dbb194060a9e4483d59e4c8fb5e4a1f22da8df28"
+      },
+      "firstRationaleUnchanged": "KEEP nach tatsächlicher Prüfung der vollständigen DE/EN-Beschreibung, Native-PDF-Seite 3 und unverändertem HTML, Whole381-Ziel-/Vorbedingungskontext, aktuellem P3 und der Original-/360-/680-PNG. Die Beschreibung fordert eine zusammenhängende experimentelle Untersuchung mit kontrollierter Variation, Beobachtung, Protokoll und begrenzter Erklärung; sie ersetzt die Durchführung nicht durch Datenlesen. Primärquelle BW, physische PDF-Seite 27 / gedruckte S. 25, 3.3.2(7), bestätigt den experimentellen Operator für Basisfach und Leistungsfach. Dieses auf homogene Konzentrationsvariation begrenzte Ziel bleibt ein partial-Beitrag zu SOURCE002; Temperatur-, Druck- und übrige ganze Quellenpflichten werden nicht freigegeben. Beide synthetischen P-Fälle enthalten Volumen-/Blindkontrolle, sichere vorgegebene Reagenzien und frischen Transfer. Keine Quellen-, Atomaritäts-, Sprach- oder Bildkorrektur ist für diesen geprüften Native3-Kontext erforderlich.",
+      "secondRationaleUnchanged": "KEEP: Die vollständigen DE/EN-Beschreibungen benennen eine begrenzte echte Untersuchungs-, Protokollierungs- und Erklärleistung an einem vorgegebenen homogenen Gleichgewicht. Die beiden vollständigen Fälle und das gebundene P2-Profil machen kontrollierte Zugabe, Referenz/Volumenkontrolle/Blindwert, begrenzte Le-Chatelier-Deutung und frische Fehlerfälle konkret. Originalraster und aktuelle PDF-Seite 3 passen zu dieser Kompetenz; R/K/V, Farbrelation und Fe3+-Reagenz stimmen mit dem zugänglichen Bildtext überein. Die amtliche Zeile 3.3.2(7), physisch27/gedruckt25, ist breiter: Konzentration bleibt ein partieller Beitrag, keine gesamte Quellen-, Kurs- oder Lernendenfreigabe.",
+      "firstUnderstandingEvidenceUnchanged": {
+        "essentialUnderstandingDe": "Eine kontrollierte Konzentrationsänderung kann die Lage eines homogenen Gleichgewichts verändern. Referenz, gleiche Zugabevolumina und passende Blindwerte trennen den Konzentrationseffekt von Verdünnung und Eigenfarbe; bei gleicher Temperatur bleibt die Gleichgewichtskonstante unverändert. Beobachtung und begrenzte Le-Chatelier-Deutung sind verschiedene Schritte derselben Untersuchung.",
+        "essentialUnderstandingEn": "A controlled concentration change can alter the position of a homogeneous equilibrium. A reference, matched addition volumes, and appropriate blanks distinguish concentration effects from dilution and inherent colour; at fixed temperature the equilibrium constant is unchanged. Observation and a bounded Le Chatelier interpretation are distinct steps of the same investigation.",
+        "observablePerformanceDe": "Die lernende Person dosiert und mischt die vorgeschriebene Einzelvariation unter den angegebenen Schutzbedingungen, protokolliert Ausgangszustand, Referenz und Kontrolle mit gleichen Messbedingungen und erklärt den relativen Farbbefund mit Le Chatelier. Sie benennt Modellgrenzen und unterscheidet die erforderliche beobachtete Durchführung von der vorliegenden synthetischen Ausarbeitung.",
+        "observablePerformanceEn": "The learner doses and mixes the specified single variation under the stated protection conditions, records the initial state, reference, and control under matched measurement conditions, and explains the relative colour observation using Le Chatelier. They state model limitations and distinguish the required observed execution from the supplied synthetic worked material.",
+        "transferExpectationDe": "In einem unabhängig vorgelegten neuen Ansatz erkennt die lernende Person, dass eine schwächere Farbe nach bloßer Verdünnung noch keinen isolierten Nachweis einer chemischen Verschiebung liefert, und schlägt einen passenden Vergleich vor. Bei zusätzlicher Temperaturänderung begrenzt sie die Konzentrationskausalität, statt aus zwei veränderten Faktoren eine eindeutige Ursache abzuleiten.",
+        "transferExpectationEn": "For an independently supplied fresh mixture, the learner recognizes that weaker colour after dilution alone does not isolate a chemical equilibrium shift and proposes an appropriate comparison. When temperature also changes, they limit the concentration-causality claim rather than infer a unique cause from two changed factors."
+      },
+      "secondUnderstandingEvidenceUnchanged": {
+        "essentialUnderstandingDe": "Eine kontrollierte Konzentrationsänderung verändert bei gleicher Temperatur zunächst den Reaktionsquotienten und kann eine Nettoumsetzung bis zum neuen Gleichgewicht auslösen; sie ändert nicht die Gleichgewichtskonstante derselben Reaktion. Farbe muss unter Beachtung von Verdünnung, Eigenfarbe und den Grenzen des vereinfachten Komplexmodells gedeutet werden.",
+        "essentialUnderstandingEn": "At fixed temperature a controlled concentration change initially alters the reaction quotient and can cause net conversion toward a new equilibrium; it does not change the equilibrium constant of the same reaction. Colour must be interpreted with dilution, reagent colour, and the limitations of the simplified complex model in mind.",
+        "observablePerformanceDe": "Die lernende Person führt die vorgegebene sichere Ein-Faktor-Untersuchung durch, protokolliert Referenz und Variation unter vergleichbaren Bedingungen und begründet den beobachteten Unterschied mit Le Chatelier. Sie prüft Volumen- und Farbalternativen und nennt Modellgrenzen; tatsächliches Dosieren, Mischen und Protokollieren müssen beobachtet werden und werden durch synthetische Werte nicht ersetzt.",
+        "observablePerformanceEn": "The learner carries out the specified safe one-factor investigation, records reference and variation under comparable conditions, and explains the observed difference using Le Chatelier. They check volume and colour alternatives and state model limitations; actual dosing, mixing, and recording require observation and are not replaced by synthetic readings.",
+        "transferExpectationDe": "Bei einer frischen geeigneten homogenen Gleichgewichtsprobe mit einem eigengefärbten Zugabereagenz wählt die lernende Person einen passenden Referenz-, Volumen- und Blindvergleich und erklärt, welche Beobachtung eine Konzentrationswirkung stützt. Bei zusätzlicher Temperaturänderung oder bloßer Verdünnung begrenzt sie eine eindeutige Kausalbehauptung.",
+        "transferExpectationEn": "For a fresh suitable homogeneous equilibrium sample with a coloured addition reagent, the learner selects suitable reference, volume, and blank comparisons and explains which observation supports a concentration effect. If temperature also changes or dilution alone occurs, they limit any claim of a unique cause."
+      },
+      "differingFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "normalValidation": {
+        "errors": [],
+        "strictDescriptionComplete": true
+      },
+      "scientificDisputeClaimed": false,
+      "newScientificReviewClaimed": false
+    },
+    {
+      "goalId": "a0f6ba09-f072-5887-a797-fa369453c62a",
+      "firstBinding": {
+        "campaignId": "chemie-three-BW-practical-current-P-native-20261010-v1-a",
+        "campaignDigest": "sha256:442ec5c11cf33d601cc9a4ac2ec9888ad70de202ac6e6c92398f147c4f014fc1",
+        "roundId": "chemie-three-BW-practical-current-P-native-20261010-v1-first-pass-a",
+        "independenceGroupId": "chemie-three-BW-practical-current-P-native-20261010-v1-independent-a",
+        "reviewInputFingerprint": "sha256:bf21838e40db21539938c21c0ef731d11376f0b97a98a4e68849791749852ac3",
+        "goalReviewContextFingerprint": "sha256:426a4a6cf7f40335343d7b885b86f57039f85fcb697deb847cc4a8cfba37ce67",
+        "batchId": "chemie-three-BW-practical-current-P-native-20261010-v1-first-pass-a.batch-001",
+        "runId": "chemie-three-BW-current-native-independent-a-20261010-v1",
+        "runManifestDigest": "sha256:53f3f851eea2aef826a302134430cd54833e79a4dc81d64f10f13fd7fb00edb9",
+        "resultsDigest": "sha256:131077316fc239c92370ebf2770eb710072268250ca3a4598379609c1d51ac22",
+        "recordId": "chemie-three-BW-current-native-independent-a-20261010-v1.a0f6ba09-f072-5887-a797-fa369453c62a",
+        "recordDigest": "sha256:1ac5d7b1de6e67f2103247a1d9922525b12149f852c5b5f52cba08772523949d"
+      },
+      "secondBinding": {
+        "campaignId": "chemie-three-BW-practical-current-P-native-20261010-v1-b",
+        "campaignDigest": "sha256:067a1bf8d970d142bf1fb18203ee2684eb56657d52ff20b8899b082859aaca30",
+        "roundId": "chemie-three-BW-practical-current-P-native-20261010-v1-first-pass-b",
+        "independenceGroupId": "chemie-three-BW-practical-current-P-native-20261010-v1-independent-b",
+        "reviewInputFingerprint": "sha256:bf21838e40db21539938c21c0ef731d11376f0b97a98a4e68849791749852ac3",
+        "goalReviewContextFingerprint": "sha256:426a4a6cf7f40335343d7b885b86f57039f85fcb697deb847cc4a8cfba37ce67",
+        "batchId": "chemie-three-BW-practical-current-P-native-20261010-v1-first-pass-b.batch-001",
+        "runId": "chemie-three-BW-current-native-independent-b-20261010-v1-run-001",
+        "runManifestDigest": "sha256:d73f2fa070c9600fbe0d3e995d7fd4f182ac5598a9bfb504684ee8c1883f3a08",
+        "resultsDigest": "sha256:44c7b2c6ac9d62de326cb57de5288a5518132188c6ee6caa562943b17f740ec3",
+        "recordId": "chemie-three-BW-current-native-independent-b-20261010-v1-record-002",
+        "recordDigest": "sha256:6d2321dbbce98d5720206090d0c1143e6eb8b4cfd0414adff6290956d3521666"
+      },
+      "firstRationaleUnchanged": "KEEP nach tatsächlicher Prüfung von DE/EN-Ziel, Native-PDF-Seite 4 und unverändertem HTML, Whole381-Kontext und aktuellem P3 mit beiden vollständigen Austauschprotokollen. Die Beschreibung grenzt eine integrierte praktische Modellkompetenz ab: regelgetreue Durchführung, Protokoll und Auswertung derselben Gleichgewichtseinstellung. Physische Primär-PDF-Seite 33 / gedruckte S. 31, BW 3.4.2(6), fordert Durchführung und Auswertung im Leistungsfach; eine Basisfach-Durchführung wird nicht behauptet. Beide Transferreihen wurden unabhängig aus den gleichen Rundenanfangswerten nachgerechnet und erhalten 90 mL. Original-/360-/680-PNG mit 30/60 mL und zwei gleichen 10-mL-Pfeilen passt zum modellhaften stationären Beispiel. Aktueller Alttext bezeichnet die gezeichneten Geräte zutreffend als Messspritzen. Gleichheit der Raten wird weder als gleiche Mengen noch als Stillstand oder reale Stoffumwandlung ausgegeben. Der ganze P-Vertrag deckt frische Regel-/Verlustfälle und die Durchführungsvoraussetzung ab; keine lokale Textänderung nötig.",
+      "secondRationaleUnchanged": "KEEP: DE und EN fordern regelgetreue praktische Durchführung, Zeitprotokoll beider Richtungen und eine Auswertung mit weiterlaufenden annähernd gleichen Transfers und ausdrücklich begrenzter chemischer Analogie. Die vollständigen Fälle, nachgerechneten Tabellen und der aktuelle P2-Kontext decken Regelbindung, Gesamtmenge, Mengen/Raten-Unterscheidung und frische Regel-/Verlustfehler ab. Originalraster und PDF-Seite 4 zeigen die passenden ungleichen 30/60mL bei zwei gleichen 10mL-Transfers. Amtliche 3.4.2(6), physisch33/gedruckt31, gehört zum Leistungsfach. Kein Bild oder synthetisches Protokoll belegt eine ausgeführte Lernendenleistung oder den ganzen Kurs.",
+      "firstUnderstandingEvidenceUnchanged": {
+        "essentialUnderstandingDe": "Im vorgegebenen geschlossenen reversiblen Austauschmodell entsteht ein stationärer Zustand, wenn die beiden weiterhin stattfindenden Übertragungen je Runde annähernd gleich sind; die gespeicherten Mengen müssen dabei nicht gleich sein. Die Bestimmung beider Transfers aus demselben Rundenanfang und die Erhaltung der Gesamtmenge legen die Modellregel fest. Wasserübertragung ist eine Analogie und keine chemische Stoffumwandlung.",
+        "essentialUnderstandingEn": "In the specified closed reversible-exchange model, a stationary state arises when both continuing transfers per round are approximately equal; the stored amounts need not be equal. Computing both transfers from the same round-start values and conserving the total define the model rule. Water exchange is an analogy, not chemical conversion.",
+        "observablePerformanceDe": "Die lernende Person führt beide Entnahmen und kreuzweisen Zugaben regelgetreu aus, protokolliert Mengen und beide Transfermengen über die Zeit und prüft die Gesamtmenge sowie die Ableseauflösung. Sie wertet das Plateau anhand weiterhin positiver, annähernd gleicher Transfers aus und erklärt an ihrem Protokoll, weshalb unterschiedliche Mengen, dynamischer Austausch und begrenzte Modellanalogie zusammenpassen.",
+        "observablePerformanceEn": "The learner carries out both withdrawals and crosswise additions according to the rules, records both stored and transferred amounts over time, and checks the total and reading resolution. They interpret the plateau through continuing positive, approximately equal transfers and explain from their record how unequal amounts, dynamic exchange, and a bounded model analogy fit together.",
+        "transferExpectationDe": "Bei einer unabhängig vorgelegten neuen Gruppe mit nachträglich aus der bereits veränderten Rückmenge berechnetem Transfer erkennt die lernende Person die veränderte Modellregel und begründet einen anderen Verlauf. Bei einem Verlust von Wasser prüft sie die Erhaltungsbedingung und erkennt, dass ein späteres Plateau das ursprüngliche geschlossene Modell nicht bestätigt.",
+        "transferExpectationEn": "For an independently presented fresh group calculating reverse transfer from the already changed amount, the learner identifies the altered model rule and explains why the trajectory changes. When water is lost, they check conservation and recognize that a later plateau does not establish the original closed model."
+      },
+      "secondUnderstandingEvidenceUnchanged": {
+        "essentialUnderstandingDe": "Ein geschlossenes reversibles Austauschmodell erreicht innerhalb der Auflösung stationäre Mengen, wenn beide weiterhin positiven Übertragungen annähernd gleich sind. Gleiche Übertragungsraten bedeuten weder gleiche Gesamtmengen noch Stillstand. Der Zusammenhang hängt von den vorgegebenen Regeln ab und bildet keine reale chemische Umwandlung des Wassers nach.",
+        "essentialUnderstandingEn": "A closed reversible exchange model reaches stationary amounts within the measurement resolution when both continuing positive transfers are approximately equal. Equal transfer rates imply neither equal total amounts nor stopped exchange. The relationship depends on the specified rules and does not reproduce an actual chemical transformation of the water.",
+        "observablePerformanceDe": "Die lernende Person bestimmt beide Transfers aus dem gleichen Rundenanfang, führt die getrennten Entnahmen und kreuzweisen Zugaben regelgetreu durch und protokolliert beide Mengen und Richtungen mit Auflösung. Sie prüft die Gesamtmenge, wertet Verlauf und stationären Zustand mit fortgesetzten Transfers aus und benennt die Grenze zwischen materiellem Modell und chemischem Gleichgewicht.",
+        "observablePerformanceEn": "The learner determines both transfers from the same round start, performs the separate withdrawals and crosswise additions according to the rules, and records both amounts and directions with resolution. They check the total amount, interpret the progression and stationary state while transfers continue, and state the distinction between the physical model and chemical equilibrium.",
+        "transferExpectationDe": "Bei einer frischen Vorgabe mit veränderten Transferanteilen begründet die lernende Person das neue stationäre Mengenverhältnis anhand gleicher positiver Transfers. Sie erkennt, dass nachträgliche Neuberechnung des Rücktransfers oder Wasserverlust die ursprünglichen Regeln verändert, und korrigiert Protokoll und Schlussfolgerung statt ein Plateau allein als Gleichgewichtsnachweis zu werten.",
+        "transferExpectationEn": "For a fresh specification with changed transfer fractions, the learner explains the new stationary amount ratio through equal positive transfers. They recognize that recalculating the reverse transfer after the forward addition or losing water changes the original rules, and correct the procedure and inference rather than treating a plateau alone as evidence of equilibrium."
+      },
+      "differingFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "normalValidation": {
+        "errors": [],
+        "strictDescriptionComplete": true
+      },
+      "scientificDisputeClaimed": false,
+      "newScientificReviewClaimed": false
+    },
+    {
+      "goalId": "7b39fa19-fec3-575e-9324-a3226b703358",
+      "firstBinding": {
+        "campaignId": "chemie-three-BW-practical-current-P-native-20261010-v1-a",
+        "campaignDigest": "sha256:442ec5c11cf33d601cc9a4ac2ec9888ad70de202ac6e6c92398f147c4f014fc1",
+        "roundId": "chemie-three-BW-practical-current-P-native-20261010-v1-first-pass-a",
+        "independenceGroupId": "chemie-three-BW-practical-current-P-native-20261010-v1-independent-a",
+        "reviewInputFingerprint": "sha256:bf21838e40db21539938c21c0ef731d11376f0b97a98a4e68849791749852ac3",
+        "goalReviewContextFingerprint": "sha256:adfbf7bc10d988cba4d7110c8fd99fb81287b00f2a6a2f0bf310610e7bda741d",
+        "batchId": "chemie-three-BW-practical-current-P-native-20261010-v1-first-pass-a.batch-001",
+        "runId": "chemie-three-BW-current-native-independent-a-20261010-v1",
+        "runManifestDigest": "sha256:53f3f851eea2aef826a302134430cd54833e79a4dc81d64f10f13fd7fb00edb9",
+        "resultsDigest": "sha256:131077316fc239c92370ebf2770eb710072268250ca3a4598379609c1d51ac22",
+        "recordId": "chemie-three-BW-current-native-independent-a-20261010-v1.7b39fa19-fec3-575e-9324-a3226b703358",
+        "recordDigest": "sha256:261c8b544bb1229c8887d97d61cf93842cf50c520367ded6d56966f722074ae1"
+      },
+      "secondBinding": {
+        "campaignId": "chemie-three-BW-practical-current-P-native-20261010-v1-b",
+        "campaignDigest": "sha256:067a1bf8d970d142bf1fb18203ee2684eb56657d52ff20b8899b082859aaca30",
+        "roundId": "chemie-three-BW-practical-current-P-native-20261010-v1-first-pass-b",
+        "independenceGroupId": "chemie-three-BW-practical-current-P-native-20261010-v1-independent-b",
+        "reviewInputFingerprint": "sha256:bf21838e40db21539938c21c0ef731d11376f0b97a98a4e68849791749852ac3",
+        "goalReviewContextFingerprint": "sha256:adfbf7bc10d988cba4d7110c8fd99fb81287b00f2a6a2f0bf310610e7bda741d",
+        "batchId": "chemie-three-BW-practical-current-P-native-20261010-v1-first-pass-b.batch-001",
+        "runId": "chemie-three-BW-current-native-independent-b-20261010-v1-run-001",
+        "runManifestDigest": "sha256:d73f2fa070c9600fbe0d3e995d7fd4f182ac5598a9bfb504684ee8c1883f3a08",
+        "resultsDigest": "sha256:44c7b2c6ac9d62de326cb57de5288a5518132188c6ee6caa562943b17f740ec3",
+        "recordId": "chemie-three-BW-current-native-independent-b-20261010-v1-record-003",
+        "recordDigest": "sha256:e57f0e7cc707c5f391e8c57d28a63d04f9dae391bab6e0e54feeadae526fd507"
+      },
+      "firstRationaleUnchanged": "KEEP nach tatsächlicher Prüfung des vollständigen DE/EN-Ziels, Native-PDF-Seite 5 und unverändertem HTML, Whole381-/P3-Kontext, Original-/360-/680-PNG und Primär-PDF-Seite 41 / gedruckte S. 39, BW 3.4.7(6) im Leistungsfach. Sicherer Aufbau, Protokoll, Ermittlung und begründeter Vergleich sind zusammengehörige Teile einer experimentellen Zellspannungsbestimmung. Die Beschreibung benennt mit hochohmig und näherungsweise die endliche Messbelastung korrekt und fordert ausdrücklich einen bedingungsspezifischen Vergleich. Die beiden synthetischen Fälle ergeben unabhängig 1,084333… V bzw. 0,423333… V bei jeweils 0,004 V Spannweite; sie belegen keine Ausführung und behaupten keine universellen Standardspannungen. Das tatsächliche Daniell-PNG zeigt richtige Zn-minus-/Cu-plus-Zuordnung, zusammenhängende eingetauchte Salzbrücke, 10-MΩ-Messgerät ohne Zahlenwert und keinen äußeren Last-/Stromquellenzweig. Vorzeichen- und Chloridtransfer sind chemisch sinnvolle neue Fälle. Keine Änderung des geprüften Text-/P-/Bildkontexts nötig.",
+      "secondRationaleUnchanged": "KEEP: Die bilingualen Texte verbinden sicheren realen Zellaufbau, hochohmige Messung, Polungs-/Bedingungsprotokoll und begründeten bedingungsspezifischen Vergleich als eine praktische Messkompetenz. Beide vollständigen Zellfälle, ihre korrekt nachgerechneten Mittelwerte/Streuungen und der aktuelle P2-Kontext unterscheiden Leerlauf-, Last- und Standardbedingungen und bieten relevante frische Anschluss-/Brückenfehler. Das Originalraster und PDF-Seite 5 zeigen passende Zn/Cu-Halbzellen, eintauchende Brücke, richtige Leitungspolung und 10MΩ ohne erfundene Spannungsanzeige. Amtliche 3.4.7(6), physisch41/gedruckt39, ist Leistungsfach; Korrosion, ganze Quelle und tatsächliche Lernendenleistung bleiben außerhalb dieses Urteils.",
+      "firstUnderstandingEvidenceUnchanged": {
+        "essentialUnderstandingDe": "Eine galvanische Zelle benötigt geeignete Halbzellen, elektronische Messleitungen und eine kompatible ionische Verbindung. Das Vorzeichen der Anzeige hängt von der Anschlussrichtung ab; ein hochohmiges Voltmeter nähert Leerlauf an, ohne exakt stromlos zu messen. Ein Vergleichswert gilt nur für die angegebenen Bedingungen und darf nicht ungeprüft mit Standard- oder Lastspannung gleichgesetzt werden.",
+        "essentialUnderstandingEn": "A galvanic cell requires suitable half-cells, electronic measurement leads, and a compatible ionic connection. The reading sign depends on the lead arrangement; a high-impedance voltmeter approximates open circuit without exactly zero current. A reference applies only to its stated conditions and must not be equated without justification with standard or loaded voltage.",
+        "observablePerformanceDe": "Die lernende Person baut die vorgegebene Zelle sicher mit zugehörigen Metall-/Elektrolytpaaren und kompatibler Salzbrücke auf, verbindet und bedient das hochohmige Gleichspannungsmessgerät und protokolliert Polung, Bedingungen und stabilisierte Anzeigen. Sie ermittelt einen begründeten näherungsweisen Leerlaufwert mit Streuung und beurteilt dessen Vereinbarkeit mit dem bedingungsspezifischen Vergleich, statt den synthetischen Wert als ausgeführten Versuch zu behandeln.",
+        "observablePerformanceEn": "The learner safely assembles the specified cell with corresponding metal/electrolyte pairs and a compatible salt bridge, connects and operates the high-impedance DC meter, and records polarity, conditions, and stabilized readings. They determine a justified approximate open-circuit value with spread and evaluate compatibility with the condition-specific reference rather than treat the synthetic value as an executed experiment.",
+        "transferExpectationDe": "An einer unabhängig vorgelegten neuen Messung mit vertauschten Leitungen unterscheidet die lernende Person das geänderte Anzeigevorzeichen von unveränderter galvanischer Polung. Bei einer Silberhalbzelle mit chloridhaltiger Brücke erkennt sie die chemische Änderung durch mögliche AgCl-Fällung und begründet, weshalb der ursprüngliche Vergleichswert und ein bloßes Kabeltauschargument den neuen Befund nicht freigeben.",
+        "transferExpectationEn": "For an independently presented fresh measurement with swapped leads, the learner distinguishes the reversed display sign from unchanged galvanic electrode polarity. For a silver half-cell with a chloride-containing bridge, they recognize the chemical change from possible AgCl precipitation and explain why the original reference and a mere lead-swap argument do not validate the new observation."
+      },
+      "secondUnderstandingEvidenceUnchanged": {
+        "essentialUnderstandingDe": "Eine galvanische Zelle benötigt zugehörige getrennte Halbzellen, eine kompatible ionische Verbindung und eine elektrische Spannungsmessung mit festgehaltener Polungsdefinition. Ein hochohmiges Voltmeter misst wegen seines endlichen Eingangswiderstands nur näherungsweise Leerlauf; der Vergleichswert muss zu den dokumentierten Bedingungen passen.",
+        "essentialUnderstandingEn": "A galvanic cell requires appropriate separated half-cells, a compatible ionic connection, and an electrical voltage measurement with a fixed polarity convention. A high-impedance voltmeter only approximates open-circuit conditions because its input resistance is finite; the reference value must match the documented conditions.",
+        "observablePerformanceDe": "Die lernende Person baut die vorgegebene Zelle sicher mit passender Brücke und hochohmiger Gleichspannungsmessung auf, protokolliert Anschlüsse, Konzentrationen, Temperatur und stabilisierte Anzeigen und wertet Vorzeichen, Mittelwert und Streuung aus. Sie begründet die Vereinbarkeit mit dem angegebenen bedingungsspezifischen Referenzwert und trennt Leerlauf-, Last- und Standardspannung; reale Durchführung muss beobachtet werden.",
+        "observablePerformanceEn": "The learner safely assembles the specified cell with a suitable bridge and high-impedance DC measurement, records connections, concentrations, temperature, and stabilized readings, and evaluates sign, mean, and spread. They justify compatibility with the supplied condition-specific reference and distinguish open-circuit, loaded, and standard voltage; actual execution requires observation.",
+        "transferExpectationDe": "Bei einer frischen Halbzellenkombination überprüft die lernende Person die Kompatibilität der Brücke und die zugehörige Vergleichsbedingung. Sie erklärt bei vertauschten Messleitungen die Vorzeichenänderung ohne eine neue Reaktionsrichtung zu behaupten und erkennt bei Chloridkontakt mit Ag-Ionen eine Änderung der Halbzellenchemie, für die die alte Referenz nicht unverändert gilt.",
+        "transferExpectationEn": "For a fresh half-cell combination, the learner checks bridge compatibility and the corresponding reference conditions. They explain the sign change after swapping meter leads without claiming a new reaction direction, and recognize that chloride contact with silver ions changes half-cell chemistry so the old reference cannot be used unchanged."
+      },
+      "differingFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "normalValidation": {
+        "errors": [],
+        "strictDescriptionComplete": true
+      },
+      "scientificDisputeClaimed": false,
+      "newScientificReviewClaimed": false
+    }
+  ],
+  "standaloneIndexSchemaAndStructure": "PASS",
+  "originalFrozenDeclaredInputsUnchanged": true,
+  "protectedActiveBindingsUnchanged": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-q3-three-BW-current-raster-native-preparation-author-20261010-v1/inputs/current-canonical480.exact.json",
+      "sha256": "sha256:c5e6d0647e057d6a35f61af94f84cf7b87343ddc321fd5d758d84c1f89d68fe6",
+      "bytes": 1424277
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-q3-three-BW-current-raster-native-preparation-author-20261010-v1/candidate/current480-378.semantic-kinds.path-only.json",
+      "sha256": "sha256:68447ff05e4813141ef6deee76c9aa806814eac14b745e59e0559a8b6a9e0de9",
+      "bytes": 154279
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-q3-three-BW-current-raster-native-preparation-author-20261010-v1/inputs/current-visualization-qa.exact.json",
+      "sha256": "sha256:bfce6c472edd26ead4f64fea553faa313dd72efdeb6a9f8608b86176f6eddc68",
+      "bytes": 893389
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "sha256:a77655ed90bccd97e57dbd20d8065123ef3cbd6319798a49ca97200ee2b29fae",
+      "bytes": 201430
+    }
+  ],
+  "declaredInputCount": 289,
+  "activeWrites": [],
+  "newScientificReviews": 0,
+  "integratedStrictCompletions": 0,
+  "restoredActiveBindings": 0,
+  "strictNetGain": 0,
+  "source002": "partial; broader original duties and original edges remain intact",
+  "oldTheoryPages": "Three changed prerequisite contexts remain outside this new-goal D resolution; none were among the protected 177 strict completions.",
+  "openBoundaries": [
+    "corrosion owner",
+    "whole original source duties",
+    "programme and actual BW view integration",
+    "old theory-page changed contexts",
+    "human review, approval and trial"
+  ],
+  "humanApproval": false,
+  "humanTrial": false,
+  "actualLearnerPerformanceClaimed": false,
+  "diversityDisclosure": "Existing report_only policy is unchanged. Exact recorded provider/model labels are reported without treating OpenAI versus OpenAI/Codex as independent provider evidence; A does not expose an exact model version."
+}

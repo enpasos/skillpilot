@@ -1,0 +1,42 @@
+import concurrent.futures
+import datetime
+import hashlib
+import json
+import subprocess
+from pathlib import Path
+
+SRC = Path('curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-protected-twelve-current-native-technical-author-20261010-v1')
+OUT = SRC.parent / 'chemie-b008-protected-twelve-current-native-independent-a-20261010-v1'
+checks = OUT / 'checks'
+checks.mkdir(exist_ok=True)
+
+def bind(path):
+    return {'path': str(path), 'sha256': 'sha256:' + hashlib.sha256(path.read_bytes()).hexdigest(), 'bytes': path.stat().st_size}
+
+normal = SRC / 'native/current-12/round-a'
+commands = [('normal-native-A12', [
+    'app/node_modules/.bin/tsx', 'app/scripts/validateGoalDescriptionReviewCampaignResults.ts',
+    '--bundle', str(normal / 'review-bundle-manifest.json'),
+    '--input', str(normal / 'description-review-input.json'),
+    '--campaign', str(normal / 'description-review-campaign.json'),
+    '--batches-dir', str(normal / 'batches'),
+    '--results-dir', str(OUT / 'results'),
+])]
+for config in sorted((OUT / 'positive').glob('*.normal.config.json')):
+    commands.append((config.stem, ['app/node_modules/.bin/tsx', 'app/scripts/positiveGoalEvidenceReview.ts', '--config=' + str(config), '--mode=check']))
+
+def check(item):
+    label, args = item
+    log = checks / (label + '.actual.log')
+    assert not log.exists(), log
+    started = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    result = subprocess.run(args, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, check=False)
+    log.write_bytes(result.stdout)
+    return {'check': label, 'commandArgs': args, 'startedAt': started, 'completedAt': datetime.datetime.now(datetime.timezone.utc).isoformat(), 'exitCode': result.returncode, 'passed': result.returncode == 0, 'completeTerminalLog': bind(log), 'normalCheckerUnchanged': True}
+
+with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:
+    outcomes = list(pool.map(check, commands))
+receipt = checks / 'normal-A12-P12-targeted-terminal-outcomes.actual.json'
+assert not receipt.exists()
+receipt.write_text(json.dumps({'schemaVersion': 1, 'role': 'Own actual ordinary native A12 and bounded P12 checker terminal outcomes; technical pass does not create human or source approval', 'checks': outcomes, 'allPassed': all(r['passed'] for r in outcomes), 'humanApproval': False, 'activeWrites': [], 'strictGain': 0}, ensure_ascii=False, indent=2) + '\n')
+print(json.dumps({'checks': [{k:r[k] for k in ['check','exitCode','passed']} for r in outcomes], 'allPassed': all(r['passed'] for r in outcomes)}))

@@ -230,7 +230,27 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   // Three reviewed content atoms replace one former compound atom (+2).
   // The source atlas publishes HE LK use and ascorbic-acid analysis; the authored
   // quantitative paraben transfer remains explicitly outside source coverage.
-  assert.deepEqual(chemistry.receipt.counts, { canonicalCurricularAtomicGoals: 378, publishedCurricularAtomicGoals: 359, sourceViews: 48, unresolvedSourceScopeDecisions: 496, omittedGoals: 19 })
+  assert.deepEqual(chemistry.receipt.counts, { canonicalCurricularAtomicGoals: 381, publishedCurricularAtomicGoals: 362, sourceViews: 48, unresolvedSourceScopeDecisions: 496, omittedGoals: 19 })
+  for (const [goalId, sourceGoalId, scopes] of [
+    ['d2d735de-bede-5310-8aeb-8bb7562c7b75', 'bw-chem-sekii-3-3-2-b07-a01-2cd72615', ['DE-BW/SekII/GK', 'DE-BW/SekII/LK']],
+    ['a0f6ba09-f072-5887-a797-fa369453c62a', 'bw-chem-sekii-3-4-2-b06-a01-99efae9b', ['DE-BW/SekII/LK']],
+    ['7b39fa19-fec3-575e-9324-a3226b703358', 'bw-chem-sekii-3-4-7-b06-a01-46c58b93', ['DE-BW/SekII/LK']],
+  ] as const) {
+    assert.deepEqual(chemistry.receipt.scopes.filter(s => s.goalIds.includes(goalId)).map(s => s.key), scopes,
+      'The practical contribution must retain its reviewed BW course scope without importing Sek I or other jurisdictions')
+    assert.deepEqual(chemistry.receipt.scopes.flatMap(s => s.witnesses.filter(w => w.goalId === goalId)
+      .map(w => [s.key, w.sourceGoalId, w.mappedTargetGoalId, w.coverage, w.profileBasis])),
+    scopes.map(scope => [scope, sourceGoalId, goalId, 'direct', 'source-metadata']),
+    'Each practical goal must retain its own direct source operator; direct identity is not full source-clause approval')
+  }
+  const bwPracticalMapping = JSON.parse(readFileSync(resolve(root,
+    'curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json'), 'utf8')) as {
+    mappings: { legacyGoalId: string; canonicalGoalId: string; matchType: string }[]
+  }
+  assert.deepEqual(bwPracticalMapping.mappings.filter(row =>
+    row.legacyGoalId === 'bw-chem-sekii-3-3-2-b07-a01-2cd72615'
+    && row.canonicalGoalId === 'd2d735de-bede-5310-8aeb-8bb7562c7b75').map(row => row.matchType), ['partial'],
+  'The concentration investigation must not become exact coverage of the whole pressure/temperature/concentration duty')
   assert.equal(chemistry.receipt.omittedGoals.filter(g => g.reason === 'unresolved-source-scope').length, 8)
   assert.equal(chemistry.receipt.omittedGoals.filter(g => g.reason === 'no-reviewed-mapped-source-witness').length, 11)
   for (const [goalId, sourceGoalId] of [

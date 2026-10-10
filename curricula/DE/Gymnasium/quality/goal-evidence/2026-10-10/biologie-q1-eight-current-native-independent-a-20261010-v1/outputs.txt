@@ -1,0 +1,70 @@
+$ (/home/enpasos/projects/skillpilot/app) node --import tsx scripts/validateGoalDescriptionReviewCampaign.ts --bundle /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/review-bundle-manifest.json --input /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/description-review-input.json --campaign /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/description-review-campaign.json --run /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-native-independent-a-20261010-v1/normal-campaign-a/results/biologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001.run.json --batch-input /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/batches/biologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001.input.jsonl --records /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-native-independent-a-20261010-v1/normal-campaign-a/results/biologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001.records.jsonl
+Record 1: data/rationale must match pattern "^\S(?:[\s\S]*\S)?$"
+Record 2: data/rationale must match pattern "^\S(?:[\s\S]*\S)?$"
+Record 3: data/rationale must match pattern "^\S(?:[\s\S]*\S)?$"
+Record 4: data/rationale must match pattern "^\S(?:[\s\S]*\S)?$"
+Record 5: data/rationale must match pattern "^\S(?:[\s\S]*\S)?$"
+Record 7: data/rationale must match pattern "^\S(?:[\s\S]*\S)?$"
+Record 8: data/rationale must match pattern "^\S(?:[\s\S]*\S)?$"
+exit_code=1
+
+$ (/home/enpasos/projects/skillpilot/app) node --import tsx scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/review-bundle-manifest.json --input /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/description-review-input.json --campaign /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/description-review-campaign.json --batches-dir /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/batches --results-dir /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-native-independent-a-20261010-v1/normal-campaign-a/results
+biologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001: Record 1: data/rationale must match pattern "^\S(?:[\s\S]*\S)?$"
+biologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001: Record 2: data/rationale must match pattern "^\S(?:[\s\S]*\S)?$"
+biologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001: Record 3: data/rationale must match pattern "^\S(?:[\s\S]*\S)?$"
+biologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001: Record 4: data/rationale must match pattern "^\S(?:[\s\S]*\S)?$"
+biologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001: Record 5: data/rationale must match pattern "^\S(?:[\s\S]*\S)?$"
+biologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001: Record 7: data/rationale must match pattern "^\S(?:[\s\S]*\S)?$"
+biologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001: Record 8: data/rationale must match pattern "^\S(?:[\s\S]*\S)?$"
+exit_code=1
+
+$ (/home/enpasos/projects/skillpilot/app) node --import tsx scripts/positiveGoalEvidenceReview.ts --config=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/positive/eight-current-P.author.config.json --mode=check
+# Positive Goal Evidence Review: biologie-q1-eight-current-v3-raster-native-technical-author-20261010-v1
+Scope: Exactly8 current V3 full scientific profiles with actual author rasters; independent native/image contexts pending
+Configured goals: 8
+Approved: 0
+Needs human review: 8
+Rejected: 0
+Blocking issues: 16
+- 3312b2bb-bc90-5c0f-a859-4b4f9b8ff117: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/3312b2bb-bc90-5c0f-a859-4b4f9b8ff117/3312b2bb-bc90-5c0f-a859-4b4f9b8ff117.png
+- 3312b2bb-bc90-5c0f-a859-4b4f9b8ff117: stale reviewInputFingerprint; expected sha256:8f5c146addf42ec6073adf4f299a7277dc6bdc121bb3dbfb0beb46ffea6b72ce
+- 3b55b551-cd7f-53fb-9bf0-fd8149ac1222: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/3b55b551-cd7f-53fb-9bf0-fd8149ac1222/3b55b551-cd7f-53fb-9bf0-fd8149ac1222.png
+- 3b55b551-cd7f-53fb-9bf0-fd8149ac1222: stale reviewInputFingerprint; expected sha256:cde0b2505d7c39d904e129c7a2bb1a2c550498be37c536dcb2f7ac0e125a99cf
+- 52ecc72a-a65b-53a0-851e-86defe769fa7: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/52ecc72a-a65b-53a0-851e-86defe769fa7/52ecc72a-a65b-53a0-851e-86defe769fa7.png
+- 52ecc72a-a65b-53a0-851e-86defe769fa7: stale reviewInputFingerprint; expected sha256:dae2453b426f919a3deb1137608af0bd2f67dc1c604099a7c8498b474a0b367a
+- 666fb1d1-09a8-55a3-acd5-efe311cac8b0: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/666fb1d1-09a8-55a3-acd5-efe311cac8b0/666fb1d1-09a8-55a3-acd5-efe311cac8b0.png
+- 666fb1d1-09a8-55a3-acd5-efe311cac8b0: stale reviewInputFingerprint; expected sha256:6d41579c7abfa7e2847c5055797bec5b98d9bfb5b0bde7ee28564129708f1c0d
+- 7975e43b-1187-5ae3-a1ab-282fc3c0548c: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/7975e43b-1187-5ae3-a1ab-282fc3c0548c/7975e43b-1187-5ae3-a1ab-282fc3c0548c.png
+- 7975e43b-1187-5ae3-a1ab-282fc3c0548c: stale reviewInputFingerprint; expected sha256:0aaf161fbafd73c163b9e147ccf8fb64bedfb97d495e5f8393ec08b5fa24f965
+- 99544494-1825-5fc1-8e23-56f0df808e56: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/99544494-1825-5fc1-8e23-56f0df808e56/99544494-1825-5fc1-8e23-56f0df808e56.png
+- 99544494-1825-5fc1-8e23-56f0df808e56: stale reviewInputFingerprint; expected sha256:88242c26f004781b9bbb5d243c195cf921dececd21ed2a237e5031a5824bd3f4
+- 3f969b9e-68b0-5442-b8e4-df4e35e83087: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/3f969b9e-68b0-5442-b8e4-df4e35e83087/3f969b9e-68b0-5442-b8e4-df4e35e83087.png
+- 3f969b9e-68b0-5442-b8e4-df4e35e83087: stale reviewInputFingerprint; expected sha256:529056f8aa6d8dd25c4b25cf867adc1667dae3a3968e202ad5e550e4745bd0e3
+- ed4cf96f-e1c9-5784-97f2-8279ff5a31b1: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/ed4cf96f-e1c9-5784-97f2-8279ff5a31b1/ed4cf96f-e1c9-5784-97f2-8279ff5a31b1.png
+- ed4cf96f-e1c9-5784-97f2-8279ff5a31b1: stale reviewInputFingerprint; expected sha256:633b7714bbb11df4f6eac13728c70aa40caf1a1af7ded7a0bbcad10436832393
+exit_code=1
+
+$ (/home/enpasos/projects/skillpilot/app) node --import tsx scripts/validateGoalDescriptionReviewCampaign.ts --bundle /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/review-bundle-manifest.json --input /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/description-review-input.json --campaign /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/description-review-campaign.json --run /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-native-independent-a-20261010-v1/normal-campaign-a/results/biologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001.run.json --batch-input /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/batches/biologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001.input.jsonl --records /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-native-independent-a-20261010-v1/normal-campaign-a/results/biologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001.records.jsonl
+Goal-description review batch valid: 8
+exit_code=0
+
+$ (/home/enpasos/projects/skillpilot/app) node --import tsx scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/review-bundle-manifest.json --input /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/description-review-input.json --campaign /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/description-review-campaign.json --batches-dir /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/batches --results-dir /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-native-independent-a-20261010-v1/normal-campaign-a/results
+Goal-description review campaign results valid: 8
+exit_code=0
+
+$ (/tmp/skillpilot-bio-independent-a-20261010/capsule/app) node --import tsx scripts/positiveGoalEvidenceReview.ts --config=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/positive/eight-current-P.author.config.json --mode=check
+Configured path must stay inside the repository: /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/positive/eight-current-P.author.config.json
+exit_code=1
+
+$ (/tmp/skillpilot-bio-independent-a-20261010/capsule/app) node --import tsx scripts/positiveGoalEvidenceReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/positive/eight-current-P.author.config.json --mode=check
+# Positive Goal Evidence Review: biologie-q1-eight-current-v3-raster-native-technical-author-20261010-v1
+Scope: Exactly8 current V3 full scientific profiles with actual author rasters; independent native/image contexts pending
+Configured goals: 8
+Approved: 0
+Needs human review: 8
+Rejected: 0
+Blocking issues: 0
+exit_code=0
+
+Normal scripts/validate_schemas.py::curriculum_symlink_errors(repository): []
+exit_code=0

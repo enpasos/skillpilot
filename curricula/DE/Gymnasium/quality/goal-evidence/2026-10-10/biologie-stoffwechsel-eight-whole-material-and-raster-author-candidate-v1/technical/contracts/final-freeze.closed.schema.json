@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "role",
+    "sealedAt",
+    "entry",
+    "ownCurrentRegularFileBindings",
+    "currentRegularTechnicalInputBindings",
+    "historicalLiveBeforePathsDiagnosticOnly",
+    "requiredIgnoredPaths",
+    "normalCurriculumSymlinkErrors",
+    "wholeProfiles8Cases16Ready",
+    "currentRaster8AuthorViewed",
+    "normalP8BeforeRasterExitCode",
+    "currentRasterP8AndNative8AndIndependentABPending",
+    "activeWrites",
+    "strictNew",
+    "strictRestored",
+    "strictNet",
+    "humanApproval"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer"
+    },
+    "role": {
+      "type": "string"
+    },
+    "sealedAt": {
+      "type": "string"
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      }
+    },
+    "ownCurrentRegularFileBindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string"
+          },
+          "bytes": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "currentRegularTechnicalInputBindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string"
+          },
+          "bytes": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "historicalLiveBeforePathsDiagnosticOnly": {
+      "type": "boolean"
+    },
+    "requiredIgnoredPaths": {
+      "type": "array",
+      "items": {}
+    },
+    "normalCurriculumSymlinkErrors": {
+      "type": "array",
+      "items": {}
+    },
+    "wholeProfiles8Cases16Ready": {
+      "type": "boolean"
+    },
+    "currentRaster8AuthorViewed": {
+      "type": "boolean"
+    },
+    "normalP8BeforeRasterExitCode": {
+      "type": "integer"
+    },
+    "currentRasterP8AndNative8AndIndependentABPending": {
+      "type": "boolean"
+    },
+    "activeWrites": {
+      "type": "boolean"
+    },
+    "strictNew": {
+      "type": "integer"
+    },
+    "strictRestored": {
+      "type": "integer"
+    },
+    "strictNet": {
+      "type": "integer"
+    },
+    "humanApproval": {
+      "type": "boolean"
+    }
+  }
+}

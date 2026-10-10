@@ -1,0 +1,439 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Own additive independent B V-FIRST-review closed technical receipt; no gate changes",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "createdAt",
+    "role",
+    "reviewer",
+    "neutralEntry",
+    "neutralInputFreeze",
+    "neutralExactInputBindings",
+    "currentWhole479Base",
+    "currentKinds479394",
+    "wholeGoals8Profiles8Cases16DEENActuallyRead",
+    "wholeOriginalBYSourceObjects8Read",
+    "actualViewCount",
+    "viewLedger",
+    "currentAuthorScienceAndRasterJudgmentsReadBeforeFIRST",
+    "currentPeerJudgmentsReadBeforeFIRST",
+    "currentAuthorPromptsReadBeforeFIRST",
+    "providerProvenanceReadAfterAll24ActualViews",
+    "knownProviderMetadataDe",
+    "priorKnownContextDe",
+    "records",
+    "decisions",
+    "formatDe",
+    "sourceAndScopeDe",
+    "humanApproval",
+    "humanTrial",
+    "learnerWork",
+    "wholeSourceCourseLegalClinicalApproval",
+    "activeWrites",
+    "historicalWrites",
+    "newStrictCompletions",
+    "restoredActiveBindings",
+    "strictNetGain",
+    "currentNativeDPApproval"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "reviewer": {
+      "type": "string"
+    },
+    "neutralEntry": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "neutralInputFreeze": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "neutralExactInputBindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string"
+          },
+          "bytes": {
+            "type": "integer"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "currentWhole479Base": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "currentKinds479394": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "wholeGoals8Profiles8Cases16DEENActuallyRead": {
+      "type": "boolean"
+    },
+    "wholeOriginalBYSourceObjects8Read": {
+      "type": "boolean"
+    },
+    "actualViewCount": {
+      "const": 24
+    },
+    "viewLedger": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "currentAuthorScienceAndRasterJudgmentsReadBeforeFIRST": {
+      "type": "boolean"
+    },
+    "currentPeerJudgmentsReadBeforeFIRST": {
+      "type": "boolean"
+    },
+    "currentAuthorPromptsReadBeforeFIRST": {
+      "type": "boolean"
+    },
+    "providerProvenanceReadAfterAll24ActualViews": {
+      "type": "boolean"
+    },
+    "knownProviderMetadataDe": {
+      "type": "string"
+    },
+    "priorKnownContextDe": {
+      "type": "string"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "goalId",
+          "decision",
+          "rasterDecision",
+          "formatDecision",
+          "phone360Decision",
+          "pc680Decision",
+          "friendlyComicDecision",
+          "imageBindings",
+          "actualProviderProvenance",
+          "caseIds",
+          "wholeGoalDEENRead",
+          "wholeProfileAndBothCasesDEENRead",
+          "scienceAndStructureFindingsDe",
+          "phone360AndPc680FindingsDe",
+          "actorPerspectiveDe",
+          "blockingFindings",
+          "requestedEdits"
+        ],
+        "properties": {
+          "goalId": {
+            "type": "string"
+          },
+          "decision": {
+            "enum": [
+              "KEEP",
+              "REVISE",
+              "BLOCK"
+            ]
+          },
+          "rasterDecision": {
+            "type": "string"
+          },
+          "formatDecision": {
+            "type": "string"
+          },
+          "phone360Decision": {
+            "type": "string"
+          },
+          "pc680Decision": {
+            "type": "string"
+          },
+          "friendlyComicDecision": {
+            "type": "string"
+          },
+          "imageBindings": {
+            "type": "object",
+            "required": [
+              "actualOriginalPNG",
+              "phone360",
+              "pc680"
+            ],
+            "properties": {
+              "actualOriginalPNG": {
+                "type": "object",
+                "required": [
+                  "path",
+                  "sha256",
+                  "bytes"
+                ],
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  },
+                  "sha256": {
+                    "type": "string"
+                  },
+                  "bytes": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "phone360": {
+                "type": "object",
+                "required": [
+                  "path",
+                  "sha256",
+                  "bytes"
+                ],
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  },
+                  "sha256": {
+                    "type": "string"
+                  },
+                  "bytes": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": false
+              },
+              "pc680": {
+                "type": "object",
+                "required": [
+                  "path",
+                  "sha256",
+                  "bytes"
+                ],
+                "properties": {
+                  "path": {
+                    "type": "string"
+                  },
+                  "sha256": {
+                    "type": "string"
+                  },
+                  "bytes": {
+                    "type": "integer"
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          },
+          "actualProviderProvenance": {
+            "type": "object",
+            "required": [
+              "path",
+              "sha256",
+              "bytes"
+            ],
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string"
+              },
+              "bytes": {
+                "type": "integer"
+              }
+            },
+            "additionalProperties": false
+          },
+          "caseIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "wholeGoalDEENRead": {
+            "type": "boolean"
+          },
+          "wholeProfileAndBothCasesDEENRead": {
+            "type": "boolean"
+          },
+          "scienceAndStructureFindingsDe": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "phone360AndPc680FindingsDe": {
+            "type": "string"
+          },
+          "actorPerspectiveDe": {
+            "type": "string"
+          },
+          "blockingFindings": {
+            "type": "array",
+            "items": {}
+          },
+          "requestedEdits": {
+            "type": "array",
+            "items": {}
+          }
+        },
+        "additionalProperties": false
+      },
+      "minItems": 8,
+      "maxItems": 8
+    },
+    "decisions": {
+      "type": "object",
+      "required": [
+        "KEEP",
+        "REVISE",
+        "BLOCK"
+      ],
+      "properties": {
+        "KEEP": {
+          "type": "integer"
+        },
+        "REVISE": {
+          "type": "integer"
+        },
+        "BLOCK": {
+          "type": "integer"
+        }
+      },
+      "additionalProperties": false
+    },
+    "formatDe": {
+      "type": "string"
+    },
+    "sourceAndScopeDe": {
+      "type": "string"
+    },
+    "humanApproval": {
+      "type": "boolean"
+    },
+    "humanTrial": {
+      "type": "boolean"
+    },
+    "learnerWork": {
+      "type": "boolean"
+    },
+    "wholeSourceCourseLegalClinicalApproval": {
+      "type": "boolean"
+    },
+    "activeWrites": {
+      "type": "boolean"
+    },
+    "historicalWrites": {
+      "type": "boolean"
+    },
+    "newStrictCompletions": {
+      "type": "integer"
+    },
+    "restoredActiveBindings": {
+      "type": "integer"
+    },
+    "strictNetGain": {
+      "type": "integer"
+    },
+    "currentNativeDPApproval": {
+      "type": "boolean"
+    }
+  },
+  "additionalProperties": false
+}

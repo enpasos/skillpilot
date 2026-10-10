@@ -1,0 +1,31 @@
+{
+  "correctedAt": "2026-10-10T03:45:48.018191+00:00",
+  "unchangedOriginalFIRST": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-protected-twelve-current-native-independent-b-20261010-v1/FIRST.actual-sealed-before-current-peer-or-author-outcomes.json",
+    "sha256": "157616ad96c21a2d4f7999d27152d9ee1227525ef4e641b7925f2245db0a0cbc",
+    "bytes": 2241
+  },
+  "originalFirstAllFilesStillExact": true,
+  "cause": "Own serializer used transferEvidenceDe/En, whereas unchanged normal record schema requires transferExpectationDe/En. First normal checker correctly rejected this mechanical schema error.",
+  "change": "Rename only the two transfer field keys; values, all twelve decisions, positive chains, rationales and actual review observations retained. Export run/record identities and output digest identify the corrected output.",
+  "currentPeerOrAuthorOutcomeRead": false,
+  "originalRejectedNormalExportsRetainedAt": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-protected-twelve-current-native-independent-b-20261010-v1/normal-b12/results",
+  "validNormalResultsDir": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-protected-twelve-current-native-independent-b-20261010-v1/normal-b12/results-normal-valid",
+  "newNormalExports": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-protected-twelve-current-native-independent-b-20261010-v1/normal-b12/results-normal-valid/chemie-b008-protected-twelve-current-native-20261010-v1-first-pass-b.batch-001.records.jsonl",
+      "sha256": "a099d1c6c9a5fe690391f4b4314ebd5ce8d232b9371577fe91a6eaef385df445",
+      "bytes": 43293
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-protected-twelve-current-native-independent-b-20261010-v1/normal-b12/results-normal-valid/chemie-b008-protected-twelve-current-native-20261010-v1-first-pass-b.batch-001.run.json",
+      "sha256": "75e9eed89af07d334d5dd72a91f2e5ac8f8abf62f0b4d94833d7689608e1c4b4",
+      "bytes": 3836
+    }
+  ],
+  "method": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-protected-twelve-current-native-independent-b-20261010-v1/methods/correct_normal_schema_export.py",
+    "sha256": "3f2ce7608bfb0cd9c3a984bc39ef8d37ffcd067ddec1837feedb8a540eb35b2e",
+    "bytes": 2429
+  }
+}

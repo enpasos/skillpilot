@@ -1,0 +1,455 @@
+{
+  "schemaVersion": 1,
+  "completedAt": "2026-10-10T06:10:02.224908+00:00",
+  "role": "Stable commit-ready technical checkpoint; actual selected checks, complete file closure and openly inactive candidates",
+  "baseCommit": "ee13896d9832a36a1946143191bdbf62f3ec64ff",
+  "finalPlannedContentAndCandidateFileManifest": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/FINAL.prospective-content-and-candidate-files.document-complete-v2.actual.json",
+    "sha256": "sha256:304152796dbef682b065fb3bddd7f82caabdc9afa97c0f869ce3b9e04d020b7a",
+    "bytes": 2078026
+  },
+  "successfulNormalTerminals": [
+    {
+      "label": "publication-and-applicability",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/publication-and-applicability.terminal.actual.json",
+        "sha256": "sha256:bf636437f4b35933f21b2af949af9eddc4ac6ffb7ab76b7f79a180b45bb8945a",
+        "bytes": 654
+      },
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:goal-book-publication"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 251.157,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/publication-and-applicability.stdout.actual.txt",
+        "sha256": "sha256:c77faf37a6175086093cc82168b5dca3fa3ef6f8ef7cd6579e9adac9bf9165b8",
+        "bytes": 157
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/publication-and-applicability.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "goal-book-model-source-portability",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/goal-book-model-source-portability.terminal.actual.json",
+        "sha256": "sha256:7db33d68e34cd3f63455a1b22af759a3bfb8803e24b2576dae7ce3655d627fc1",
+        "bytes": 791
+      },
+      "command": [
+        "env",
+        "GIT_INDEX_FILE=/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/commit-source-inputs.prospective.index",
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:goal-book-model"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 120.609,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/goal-book-model-source-portability.stdout.actual.txt",
+        "sha256": "sha256:1c74830740364984deba81b53e0b826a70305dddf92300b3536b762bcca8d6a0",
+        "bytes": 979
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/goal-book-model-source-portability.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "composition-views",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/composition-views.terminal.actual.json",
+        "sha256": "sha256:f7282d8aa4d3464993e7f1b9159c462ac0abd6b8cbd98b804677fcd5aa0f2bfa",
+        "bytes": 630
+      },
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:composition-views"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 271.274,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/composition-views.stdout.actual.txt",
+        "sha256": "sha256:132027b2343a6e6d349886e85d7755d58d4275301280bd54cc468e4c9def4daf",
+        "bytes": 208
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/composition-views.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "composition-projection-roles",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/composition-projection-roles.terminal.actual.json",
+        "sha256": "sha256:77ed7ac7aa78ff37087a3ebbcecf4238fd02252704a2247185b0a625cdecbfb5",
+        "bytes": 658
+      },
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:composition-projection-roles"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 30.866,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/composition-projection-roles.stdout.actual.txt",
+        "sha256": "sha256:aac8f6dd4764c98773bccc630c00ffa8855dd31094805aa0a28a8e27d6ab5d9f",
+        "bytes": 504
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/composition-projection-roles.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "backend-current-publication-and-canonical-projections",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/backend-current-publication-and-canonical-projections.terminal.actual.json",
+        "sha256": "sha256:025fac3c5787bcc5c9e110e2cf32416e80b65b39b71aecc89c0422e088f10544",
+        "bytes": 863
+      },
+      "command": [
+        "./backend/gradlew",
+        "-p",
+        "backend",
+        "test",
+        "--tests",
+        "com.skillpilot.backend.goalfeedback.GoalFeedbackPublishedCatalogTest",
+        "--tests",
+        "com.skillpilot.backend.service.LearnerServiceCanonicalProjectionTest"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 147.952,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/backend-current-publication-and-canonical-projections.stdout.actual.txt",
+        "sha256": "sha256:806d5229ecb50e87acabad4e9eca8ccd4659bd7b85b60d94fa32ab0d2053b76e",
+        "bytes": 14860
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/backend-current-publication-and-canonical-projections.stderr.actual.txt",
+        "sha256": "sha256:d55d372a3b27c12112e26f2b1d6c87e00161e22826b71c809a09a19db9eedc60",
+        "bytes": 656
+      }
+    },
+    {
+      "label": "source-inventory",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/source-inventory.terminal.actual.json",
+        "sha256": "sha256:867e0453819dd041da3afc66cc48df95991485f6e8c709dce6664bd663a95772",
+        "bytes": 632
+      },
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:source-extraction-inventory"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 2.032,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/source-inventory.stdout.actual.txt",
+        "sha256": "sha256:3e010853b52c26add373bb1b1f85bc3740fa3c4f552e21f4758071d59c4c799e",
+        "bytes": 195
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/source-inventory.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "repository-source-availability",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/repository-source-availability.terminal.actual.json",
+        "sha256": "sha256:6318e79a5a0c8a7a1429fad141550969cec32d4bc9e4667807950ba278e9ae86",
+        "bytes": 663
+      },
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:repository-source-availability"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 1.009,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/repository-source-availability.stdout.actual.txt",
+        "sha256": "sha256:9145a48d5379796eeaaad839a16dc67775d0a89539cf9ec5ee818c5336e31e8d",
+        "bytes": 222
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/repository-source-availability.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "docs-links-corrected",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/docs-links-corrected.terminal.actual.json",
+        "sha256": "sha256:14c13426cbc006e0fe083aac34149151ec4ed26fc24f4d67968324fd2e980aef",
+        "bytes": 624
+      },
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-links"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.644,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/docs-links-corrected.stdout.actual.txt",
+        "sha256": "sha256:50a825c5a6d2457f39bf8bb1fd40048cd8800a2194ed0a98e1017e63b305e1bf",
+        "bytes": 121
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/docs-links-corrected.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "docs-indexes-corrected",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/docs-indexes-corrected.terminal.actual.json",
+        "sha256": "sha256:f2e09cb048e952a0eaad4cb7eaea9720c467d452439dd740acd396013621d31b",
+        "bytes": 630
+      },
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-indexes"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.552,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/docs-indexes-corrected.stdout.actual.txt",
+        "sha256": "sha256:2ba0d2aa99b03ea9fd1b2f717a2ad5dfae44e11d2fbb85e8d14551f368c1efe0",
+        "bytes": 131
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/docs-indexes-corrected.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "final-stable-whole-schema",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/final-stable-whole-schema.terminal.actual.json",
+        "sha256": "sha256:b1423dbd11ee130bee28a84716bf22ba520a2c578022aa28aeff32026e00c3e7",
+        "bytes": 612
+      },
+      "command": [
+        "python3",
+        "scripts/validate_schemas.py"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 99.493,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/final-stable-whole-schema.stdout.actual.txt",
+        "sha256": "sha256:eec528f4ce23557e42cbaa8940478970b5c87d21e00af7c792daee73c01ebd2f",
+        "bytes": 180
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/final-stable-whole-schema.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "final-file-set-normal-portable-links",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/final-file-set-normal-portable-links.terminal.actual.json",
+        "sha256": "sha256:7d888bce2cfd563868cae32247e4bb30a643c10f87565ad309d576f2a8c957d9",
+        "bytes": 752
+      },
+      "command": [
+        "python3",
+        "tmp/m7-resumption-20261010/inspect_commit_checkpoint_files.py",
+        "final-complete-prospective-file-set.syntax-and-normal-portability.actual.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 9.043,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/final-file-set-normal-portable-links.stdout.actual.txt",
+        "sha256": "sha256:6b0786c3ea50c6ebf2537d59c73859fdf83a32161e8ce8b326dbf46355fb8f01",
+        "bytes": 208
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/final-file-set-normal-portable-links.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "label": "final-git-diff-check",
+      "terminal": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/final-git-diff-check.terminal.actual.json",
+        "sha256": "sha256:31ccd3a1f5074fb791f0b70b82c2a26ff0ad6269dd5e572ffeac7b54f2eef39c",
+        "bytes": 589
+      },
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.377,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/final-git-diff-check.stdout.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/final-git-diff-check.stderr.actual.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ],
+  "successfulNormalTerminalCount": 12,
+  "activeCurrent335IntegrationSeal": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-active-adoption-technical-root-v1/FINAL.stable-current335.technical.freeze.json",
+    "sha256": "sha256:c2d6f567bf711ea522c2e49300a7bb9d1429e5f3b1f4b85e2c173dd45e716b8d",
+    "bytes": 20668
+  },
+  "actualStrictProgress": {
+    "mathematik": {
+      "denominator": 807,
+      "strictComplete": 807,
+      "percentage": "100.0%",
+      "remaining": 0
+    },
+    "physik": {
+      "denominator": 478,
+      "strictComplete": 478,
+      "percentage": "100.0%",
+      "remaining": 0
+    },
+    "chemie": {
+      "denominator": 381,
+      "strictComplete": 180,
+      "percentage": "47.2%",
+      "remaining": 201
+    },
+    "biologie": {
+      "denominator": 394,
+      "strictComplete": 335,
+      "percentage": "85.0%",
+      "remaining": 59
+    },
+    "wirtschaftswissenschaften": {
+      "denominator": 311,
+      "strictComplete": 261,
+      "percentage": "83.9%",
+      "remaining": 50
+    }
+  },
+  "newScientificChemistryClosuresSinceHEAD": 3,
+  "newScientificBiologyClosuresSinceHEAD": 20,
+  "strictNetGainSinceHEAD": 23,
+  "restoredPriorStrictBindingsCountedAsGain": 0,
+  "lostPriorStrictIDs": 0,
+  "separateChemistryNativeContextRebindingsNotNewScientificClosures": 3,
+  "protectedMathAndPhysicsM7AndNineMaturityFloorsRetained": true,
+  "schemas": {
+    "fullNormalCheckPassed": true,
+    "actualFilesChecked": 57483
+  },
+  "ownNewFinalMetadataJSONValidationRequiredSeparately": true,
+  "backendSelectedTestsPassed": 59,
+  "allFiveGoalBooksVerified": true,
+  "frozenInactiveCandidatePackages": [
+    {
+      "role": "chemistryRoutePartial",
+      "freeze": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-whole22-targeted-current-route-author-checkpoint-20261010-v1/author-checkpoint.final.freeze.json",
+        "sha256": "sha256:f9a502a0d329fac32d81641977c614ee5d7d4817873e51384642f862de607c7d",
+        "bytes": 4004
+      },
+      "verifiedFrozenOwnFiles": 12,
+      "active": false,
+      "strictGain": 0,
+      "independentQAComplete": false
+    },
+    {
+      "role": "biologyWhole8Author",
+      "freeze": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-whole-material-and-raster-author-candidate-v1/author.checkpoint.final.freeze.json",
+        "sha256": "sha256:5b656d1714f2523f53815c3046f6f5e799aff060c460da54613919ac238bff20",
+        "bytes": 49888
+      },
+      "verifiedFrozenOwnFiles": 140,
+      "active": false,
+      "strictGain": 0,
+      "independentQAComplete": false
+    },
+    {
+      "role": "biologyNativePending",
+      "freeze": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current335-native-preparation-pending-technical-20261010-v1/FINAL.current335-before-only-Stoffwechsel8-pending.technical.freeze.json",
+        "sha256": "sha256:06a28681f6bd908baa1ff56f6f55dba4129cc873ba8e0656a149304982f6d254",
+        "bytes": 56966
+      },
+      "verifiedFrozenOwnFiles": 20,
+      "active": false,
+      "strictGain": 0,
+      "independentQAComplete": false
+    }
+  ],
+  "allPackageWritersStopped": true,
+  "currentCommittedMainCI": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/main-CI-final-committed-head.actual.json",
+    "sha256": "sha256:c9523b788abb4d405782ec88ad00c4604165437efd6c82706e83bbaf983ed731",
+    "bytes": 6405
+  },
+  "remoteResultsCoverUncommittedWorktree": false,
+  "initialFailedAndCorrectedTechnicalChecksRetained": [
+    "docs-links",
+    "docs-indexes",
+    "final-complete-file-syntax-portability"
+  ],
+  "initialIncompleteTechnicalFinalizationRetained": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie180-biologie335-commit-checkpoint-technical-root-v1/checks/first-incomplete-final-seal.actual.json",
+    "sha256": "sha256:89bed011f40f1b42f3c73d8a5b0ddcea58db59aaa0990b4b1d978cf6b3991b80",
+    "bytes": 591
+  },
+  "productCheckersSchemasAndQualityLimitsChangedForThisCheckpoint": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "actualLearnerEvidence": false,
+  "separateHumanReleaseGatesRetained": true,
+  "goal100PercentComplete": false,
+  "realGitIndexModifiedByRoot": false,
+  "committedOrPushedByRoot": false,
+  "document": {
+    "path": "docs/qa-ci/chemie-biologie-m7-chemie180-biologie335-commit-checkpoint-2026-10-10.md",
+    "sha256": "sha256:f592fe31d0756a36630b2bf0522a408136a43cb3693692ef94b77ebf4fa6bfc2",
+    "bytes": 6321
+  }
+}

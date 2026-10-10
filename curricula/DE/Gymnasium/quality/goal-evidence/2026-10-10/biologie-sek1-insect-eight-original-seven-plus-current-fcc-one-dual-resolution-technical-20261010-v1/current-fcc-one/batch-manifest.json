@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-insect-fcc-adult-current-native-20261010-v2",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-original-seven-plus-current-fcc-one-dual-resolution-technical-20261010-v1/current-fcc-one/batch.config.json",
+  "configDigest": "sha256:c2833080ac84e0fdda927e6d541fd8c0e6be1f82133c918fa768e1927a1353c9",
+  "goalIds": [
+    "fcc20f50-8eb3-5d6c-b37f-5be13c7d314e"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 394,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-frog-adult-targeted-raster-native-author-successor-v2/native/after394-fcc-adult-P7plusP1.normal.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-frog-adult-targeted-raster-native-author-successor-v2/candidate/whole479-with-eight-rasters-fcc-adult.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:7ac20c82d3fdc935f8996b1c86efb8bf6ed3f49cb2f92ffe26b10ad2dbf48f40"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:3ddd40967df53e404d6d392905c0f1e38d3a486aa3949a7bbcbf7c61d5195d52",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:722615169e803fd5070d6d302e2f35d9d65b3658f9d59321373a15b548f77648",
+    "reviewInputFingerprint": "sha256:d08af9e20c2c36de3d6421c81bc4073d8359cd12e30a46ea6df4ef6281298ae3",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-insect-fcc-adult-current-native-20261010-v2-a",
+        "campaignDigest": "sha256:e42db8f1ce936b572b53717c77deda012948a826d56bec4d022e1083e34530c9",
+        "roundId": "biologie-insect-fcc-adult-current-native-20261010-v2-first-pass-a",
+        "independenceGroupId": "biologie-insect-fcc-adult-current-native-20261010-v2-independent-a",
+        "batchId": "biologie-insect-fcc-adult-current-native-20261010-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:b49b573858664b3f294537212a1a812b555002d0b7af98c6034d9842b20bc726"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-insect-fcc-adult-current-native-20261010-v2-b",
+        "campaignDigest": "sha256:27dd5dcd6b36018dfd08500fcffdb6507528b4a67e6eaa2eeebe73bc5346441b",
+        "roundId": "biologie-insect-fcc-adult-current-native-20261010-v2-first-pass-b",
+        "independenceGroupId": "biologie-insect-fcc-adult-current-native-20261010-v2-independent-b",
+        "batchId": "biologie-insect-fcc-adult-current-native-20261010-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:d465d406a37af35e6e3937df9abe30fb07f9d87f2d4f03fc1e436b4e53b6bf42"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

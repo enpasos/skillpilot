@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 1,
+  "performedAt": "2026-10-10T04:03:31.327680+00:00",
+  "normalCheckersUnchanged": true,
+  "runs": [
+    {
+      "group": "current-20",
+      "check": "prepared-check",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/current-20/batch.config.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.895,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/checks/current-20.prepared-check.actual.log"
+    },
+    {
+      "group": "current-20",
+      "check": "dual-summary-check",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/current-20/batch.config.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.982,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/checks/current-20.dual-summary-check.actual.log"
+    },
+    {
+      "group": "current-20",
+      "check": "resolution-materialize",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/current-20/batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/current-20/synthesis-decisions.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 3.076,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/checks/current-20.resolution-materialize.actual.log"
+    },
+    {
+      "group": "current-20",
+      "check": "resolution-check",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/current-20/batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/current-20/synthesis-decisions.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 3.212,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/checks/current-20.resolution-check.actual.log"
+    },
+    {
+      "group": "current-20",
+      "check": "resolution-index-materialize",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/current-20/batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 3.136,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/checks/current-20.resolution-index-materialize.actual.log"
+    },
+    {
+      "group": "current-20",
+      "check": "resolution-index-check",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/current-20/batch.config.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 3.019,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/checks/current-20.resolution-index-check.actual.log"
+    },
+    {
+      "group": "current-6",
+      "check": "prepared-check",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/current-6/batch.config.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.906,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/checks/current-6.prepared-check.actual.log"
+    },
+    {
+      "group": "current-6",
+      "check": "dual-summary-check",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/current-6/batch.config.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.922,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/checks/current-6.dual-summary-check.actual.log"
+    },
+    {
+      "group": "current-6",
+      "check": "resolution-materialize",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/current-6/batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/current-6/synthesis-decisions.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 1.326,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/checks/current-6.resolution-materialize.actual.log"
+    },
+    {
+      "group": "current-6",
+      "check": "resolution-check",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/current-6/batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/current-6/synthesis-decisions.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 1.258,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/checks/current-6.resolution-check.actual.log"
+    },
+    {
+      "group": "current-6",
+      "check": "resolution-index-materialize",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/current-6/batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 1.299,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/checks/current-6.resolution-index-materialize.actual.log"
+    },
+    {
+      "group": "current-6",
+      "check": "resolution-index-check",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/current-6/batch.config.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 1.326,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/checks/current-6.resolution-index-check.actual.log"
+    },
+    {
+      "group": "protected-12",
+      "check": "prepared-check",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/protected-12/batch.config.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.882,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/checks/protected-12.prepared-check.actual.log"
+    },
+    {
+      "group": "protected-12",
+      "check": "dual-summary-check",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/protected-12/batch.config.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 0.908,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/checks/protected-12.dual-summary-check.actual.log"
+    },
+    {
+      "group": "protected-12",
+      "check": "resolution-materialize",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/protected-12/batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/protected-12/synthesis-decisions.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 1.697,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/checks/protected-12.resolution-materialize.actual.log"
+    },
+    {
+      "group": "protected-12",
+      "check": "resolution-check",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/protected-12/batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/protected-12/synthesis-decisions.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 1.782,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/checks/protected-12.resolution-check.actual.log"
+    },
+    {
+      "group": "protected-12",
+      "check": "resolution-index-materialize",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/protected-12/batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 1.842,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/checks/protected-12.resolution-index-materialize.actual.log"
+    },
+    {
+      "group": "protected-12",
+      "check": "resolution-index-check",
+      "command": [
+        "./app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/protected-12/batch.config.json"
+      ],
+      "exitCode": 0,
+      "durationSeconds": 1.749,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P26-plus-protected12-dual-resolution-technical-20261010-v1/checks/protected-12.resolution-index-check.actual.log"
+    }
+  ]
+}

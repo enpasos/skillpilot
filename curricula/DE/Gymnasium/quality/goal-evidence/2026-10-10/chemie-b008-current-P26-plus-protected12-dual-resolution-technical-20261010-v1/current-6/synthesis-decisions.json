@@ -1,0 +1,216 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "current-6-current-dual-explicit-technical-synthesis-20261010-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex technical synthesis by existing independent reviewer A; no third scientific review",
+  "synthesizedAt": "2026-10-10T03:24:52.213Z",
+  "batch": {
+    "batchId": "chemie-b008-current-whole-P26-native-6-20261010-v1",
+    "batchManifestDigest": "sha256:41615b19d196e00744bdbc6a9fd0c1c0592c70ec7b108f75ac9a57bef7b62576",
+    "configDigest": "sha256:4debd4a563a9957659da46c68cdb97686215902890db04a63ed355d8f009263b",
+    "bundleFingerprint": "sha256:c18fee0e47e3950d795c1e52a2e26947622350204e8ed282e50c79ce621c4826",
+    "bookDigest": "sha256:92d74bfd53ddceb515f2e41fb63ed8209f80073706a5e5c08d2426bc379d1765",
+    "reviewInputFingerprint": "sha256:56fb73a91bf0a6e365bcba9c6276459ce682ba6fafe5363e8b19c4cf0bb94d94",
+    "dualSummaryDigest": "sha256:ebc614a3629d3fef147578fdae0501fc9cf459b1b5898171f15588d12679d0d5",
+    "canonicalLandscapeDigest": "sha256:157e3a13831cff126cdfcfbded4ea35502cbd91f1661401352553059c2bea0f6"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-b008-current-whole-P26-native-6-20261010-v1-a",
+      "campaignDigest": "sha256:3e89891c77646b40837b074536939b65e7828b2b80523b0b2032c98ffeea0fc5",
+      "roundId": "chemie-b008-current-whole-P26-native-6-20261010-v1-first-pass-a",
+      "independenceGroupId": "chemie-b008-current-whole-P26-native-6-20261010-v1-independent-a",
+      "reviewInputFingerprint": "sha256:56fb73a91bf0a6e365bcba9c6276459ce682ba6fafe5363e8b19c4cf0bb94d94",
+      "batchId": "chemie-b008-current-whole-P26-native-6-20261010-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:85de62671024cdc9793efd427f889c84efbf4193b44aec53f41240f07bce4141",
+      "runId": "chemie-b008-whole-P26-current-native-independent-a-20261010-v1-native6",
+      "runManifestDigest": "sha256:2f6c70af30b98024c2350379240c42be265186139e41a84f6276f4eb1e24d642",
+      "resultsDigest": "sha256:7becb6d5abc64503f3ab349e815326ac2a773ffee4d5ce2b2a10e96f38e1c400"
+    },
+    "second": {
+      "campaignId": "chemie-b008-current-whole-P26-native-6-20261010-v1-b",
+      "campaignDigest": "sha256:db282f7ebf396400d053d945160f363f0a76e05c1e45105d0d7dbd597b90f832",
+      "roundId": "chemie-b008-current-whole-P26-native-6-20261010-v1-first-pass-b",
+      "independenceGroupId": "chemie-b008-current-whole-P26-native-6-20261010-v1-independent-b",
+      "reviewInputFingerprint": "sha256:56fb73a91bf0a6e365bcba9c6276459ce682ba6fafe5363e8b19c4cf0bb94d94",
+      "batchId": "chemie-b008-current-whole-P26-native-6-20261010-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:e4fed2a1aae7b18f77c84afc56ae52339d331fb1d12663b129cf5f59acbed043",
+      "runId": "chemie-b008-whole-P26-current-native-independent-b-20261010-v1-normal-b6-run",
+      "runManifestDigest": "sha256:d0b07741721f1364681c344169a8b7c011e505ea56a4ecee5f5fa2a2923fea65",
+      "resultsDigest": "sha256:607af42e4d0dbed55ad9b8afec178b89aab01e36fd1b267784893c56191c8c73"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "current-6-technical-dual-1df17884-96ae-57d7-9da9-dbebd082596f",
+      "goalId": "1df17884-96ae-57d7-9da9-dbebd082596f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:dbff718cc903cbd09032e8f90486b2c22d4f81aff92f04b0baeb7e3716f02de7",
+      "pageFingerprint": "sha256:8cc8d3f45a625ebed3a8b128b0007d086767f7df78b66c0734eb34fcee97be0b",
+      "goalReviewContextFingerprint": "sha256:1bdbda52686edda9e912db6174df1c4f502aa389010bb60e9e59f7125067cecc",
+      "finalText": {
+        "titleDe": "Chemische Handlungsoptionen kriteriengeleitet bewerten",
+        "titleEn": "Evaluate chemical action options using criteria",
+        "descriptionDe": "Die lernende Person kann bei einer chemisch relevanten Alltags- oder Gesellschaftsentscheidung ethische, ökologische, ökonomische, soziale und sicherheitsbezogene Kriterien ableiten, Chancen und Risiken beurteilen, begründete Handlungsoptionen formulieren und mit einer passenden Entscheidungsstrategie abwägen. Sie überprüft Entscheidung, Kriterien und Strategie und reflektiert Möglichkeiten und Grenzen chemischer Sichtweisen.",
+        "descriptionEn": "The learner can derive ethical, environmental, economic, social, and safety-related criteria for a chemistry-related everyday or societal decision, assess opportunities and risks, formulate justified options, and weigh them using a suitable decision strategy. They review the decision, criteria, and strategy and reflect on the possibilities and limits of chemical perspectives."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-whole-P26-current-native-independent-a-20261010-v1-native6.1df17884-96ae-57d7-9da9-dbebd082596f",
+          "recordDigest": "sha256:48abc59e209f2387cd6dbd4d261169696d6afd5b2e4a96bee2136f10fd5fa95a"
+        },
+        "second": {
+          "recordId": "chemie-b008-whole-P26-current-native-independent-b-20261010-v1-normal-b6-run.1df17884-96ae-57d7-9da9-dbebd082596f",
+          "recordDigest": "sha256:ec749ab8cd7eeeecc2135ca64d981ea9d6b16c85ac8455e3af4603d7bc8d2cdc"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende A-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten A-Nachweisfelder werden wörtlich gewählt, um Kompetenz und Fallbeispiele nicht zu einer zusätzlichen Aufgabenquote oder methodischen Pflicht zu verengen. Vergleich: Das Urteil deckt ethische, ökologische, ökonomische, soziale und Sicherheitskriterien ab. Subvention verschiebt Belastung und beseitigt keine Kosten; Fallindikatoren sind nicht addierbar und fiktive Medizininformation ist keine Dosierungsanweisung. Die konkreten B-Befunde bleiben gebunden: KEEP: Alle fünf Perspektiven und die Überprüfung von Kriterien/Strategie sind ausdrücklich erhalten. Die Subvention verschiebt Kosten und beseitigt sie nicht. Zwei statt zehn Zyklen ändern die Modellmasse; heterogene Indikatoren werden nicht addiert. Die fiktive Medizin-Information ist keine Dosierungsentscheidung. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing A reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged A evidence fields are selected literally to avoid narrowing competence and case examples into an extra task quota or method obligation. Comparison: The judgment covers ethical, environmental, economic, social and safety criteria. A subsidy shifts burdens rather than removing costs; case indicators are not additive and fictional medical information is not dosing advice. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current-6-technical-dual-e5a5dcd8-053c-55fd-b5c7-bba93779da53",
+      "goalId": "e5a5dcd8-053c-55fd-b5c7-bba93779da53",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9073c842efd80e56ab3c4b9b4d68470c2867b4f0a94ae5b09570b3f3b0b55eea",
+      "pageFingerprint": "sha256:ed894fed3e04e3918895940f4eb6eb39c4d51e70834d1dfdd609eb7e58373295",
+      "goalReviewContextFingerprint": "sha256:d401265958c0d1274606fe9ff49cfaf61db3ca79bf6982d4ab6714db15c53069",
+      "finalText": {
+        "titleDe": "Einflüsse auf die Entwicklung chemischen Wissens bewerten",
+        "titleEn": "Assess influences on the development of chemical knowledge",
+        "descriptionDe": "Die lernende Person kann an chemischen Beispielen soziale, kulturelle, technologische, historische, ökologische und ökonomische Einflüsse auf die Entwicklung naturwissenschaftlichen Wissens beschreiben und begründet bewerten, ohne empirische Gültigkeit mit gesellschaftlicher Zustimmung gleichzusetzen.",
+        "descriptionEn": "The learner can describe and assess social, cultural, technological, historical, environmental, and economic influences on the development of scientific knowledge using chemistry examples, without equating empirical validity with social approval."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-whole-P26-current-native-independent-a-20261010-v1-native6.e5a5dcd8-053c-55fd-b5c7-bba93779da53",
+          "recordDigest": "sha256:0d47b9a8d9f92d5586f43a1df50ec0407623c4910c5613772a1415bb75635dc8"
+        },
+        "second": {
+          "recordId": "chemie-b008-whole-P26-current-native-independent-b-20261010-v1-normal-b6-run.e5a5dcd8-053c-55fd-b5c7-bba93779da53",
+          "recordDigest": "sha256:ba7a8863cead60eb9981cbe5e93a8d2315ad4c1d132ac510eb39aa176bda41b8"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende A-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten A-Nachweisfelder werden wörtlich gewählt, um Kompetenz und Fallbeispiele nicht zu einer zusätzlichen Aufgabenquote oder methodischen Pflicht zu verengen. Vergleich: Alle sechs gesellschaftlichen, kulturellen, technischen, historischen, ökologischen und ökonomischen Einflüsse bleiben gefordert. Eigene Transferdeutung ist kein historisches Zitat; Finanzierung oder Popularität ersetzt keinen Befund, Source-HOLD bleibt. Die konkreten B-Befunde bleiben gebunden: KEEP: Die sechs Bereiche sind vollständig und prüfbar. Gelieferte historische Quellen und bereits gelesene Originalnotizen werden genutzt; ich behaupte kein heutiges erneutes Weblesen. Eigene Kulturübertragung ist kein historisches Quellenzitat. Zeitgeist oder Finanzierung ersetzen keine empirische Widerlegung; Source-Pflichten bleiben offen. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing A reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged A evidence fields are selected literally to avoid narrowing competence and case examples into an extra task quota or method obligation. Comparison: All six societal, cultural, technical, historical, environmental and economic influences remain required. Own transfer interpretation is not a historical quotation; funding or popularity does not replace evidence and the source hold remains. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current-6-technical-dual-9f892457-c4e5-56da-830c-bf6cac0c98d7",
+      "goalId": "9f892457-c4e5-56da-830c-bf6cac0c98d7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b7df27d84a21ad178404ecd40ff623e2f16904fe7083870db5b282da4f2e8885",
+      "pageFingerprint": "sha256:6a3889e8bf0c99dd2b20ab5a4a092124618d79785eb2955cc2b00722a922538f",
+      "goalReviewContextFingerprint": "sha256:ffa578a0e9fca44a5da8744f01af7e31918ebc79725c30dad7bbaaa6d6d217e5",
+      "finalText": {
+        "titleDe": "Chemische Wirkungen in historischen und aktuellen Zusammenhängen bewerten",
+        "titleEn": "Assess chemical impacts in historical and current contexts",
+        "descriptionDe": "Die lernende Person kann gesellschaftliche und ökologische Bedeutung sowie Auswirkungen chemischer Produkte, Methoden, Verfahren und Erkenntnisse in historischen und aktuellen Zusammenhängen beschreiben und aus ökologischer, ökonomischer und sozialer Nachhaltigkeitsperspektive begründet bewerten. Dabei reflektiert sie auch mögliche Auswirkungen des eigenen Handelns.",
+        "descriptionEn": "The learner can describe the social and environmental significance and impacts of chemical products, methods, processes, and findings in historical and current contexts and assess them with justification from environmental, economic, and social sustainability perspectives. They also reflect on possible impacts of their own actions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-whole-P26-current-native-independent-a-20261010-v1-native6.9f892457-c4e5-56da-830c-bf6cac0c98d7",
+          "recordDigest": "sha256:49faa4c98038cc20dd76183f93e2121b93af262e8281f232c7dc8fcac3d643d0"
+        },
+        "second": {
+          "recordId": "chemie-b008-whole-P26-current-native-independent-b-20261010-v1-normal-b6-run.9f892457-c4e5-56da-830c-bf6cac0c98d7",
+          "recordDigest": "sha256:71d1af8dd521072547a990d897bb9ec2fd5206d3c227d4f54dc7324de67232ee"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende A-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten A-Nachweisfelder werden wörtlich gewählt, um Kompetenz und Fallbeispiele nicht zu einer zusätzlichen Aufgabenquote oder methodischen Pflicht zu verengen. Vergleich: Historische und heutige Folgen bleiben ökologisch, ökonomisch und sozial differenziert. Vergleichsbasis, Zugang, Leckage und Unsicherheit erlauben keine automatische Rangfolge; es wird keine reale Düngung oder Freisetzung gefordert. Die konkreten B-Befunde bleiben gebunden: KEEP: N₂+3H₂⇌2NH₃ bleibt bilanziert; Ertragsgleichheit begrenzt den Modellvergleich. Öffentlicher Zugang verändert soziale Chancen, keine gelieferten Ressourcenwerte. Zusätzliche Leckage kann Vorteile erodieren, ohne eine automatische Rangfolge oder regulatorische Identität zu beweisen. Keine autonome Düngerdosis oder Arbeit an offenen Geräten. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing A reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged A evidence fields are selected literally to avoid narrowing competence and case examples into an extra task quota or method obligation. Comparison: Historical and current effects remain differentiated across environmental, economic and social dimensions. Comparison basis, access, leakage and uncertainty do not imply an automatic ranking; actual fertilization or release is not required. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current-6-technical-dual-1f354a60-be44-512b-8f8b-f67c8c456035",
+      "goalId": "1f354a60-be44-512b-8f8b-f67c8c456035",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:144352c350400f3b537d5a9f4c0bfc74dcb12ece511ce00e1360d6b298dab59b",
+      "pageFingerprint": "sha256:bd26513d57f453931a32e6c05fbda9c97e397b48bc0e1149b54c74f26de28384",
+      "goalReviewContextFingerprint": "sha256:8ebf1a9b1461ca7658e1a6472a1b3b9a9894b1c59c74118ad48ba4f24c7bcfc0",
+      "finalText": {
+        "titleDe": "Chemische Sachverhalte fachlich diskutieren",
+        "titleEn": "Discuss chemical issues scientifically",
+        "descriptionDe": "Die lernende Person kann chemische Sachverhalte fachlich schlüssig erklären, begründet argumentieren, sich konstruktiv austauschen und den eigenen Standpunkt anhand fachlicher Argumente reflektieren oder korrigieren.",
+        "descriptionEn": "The learner can explain chemical issues coherently, argue with justification, exchange ideas constructively, and reflect on or correct their own standpoint using scientific arguments."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-whole-P26-current-native-independent-a-20261010-v1-native6.1f354a60-be44-512b-8f8b-f67c8c456035",
+          "recordDigest": "sha256:60ff1e82186a7444d959d2113f4de173981f5c2af0e9e2b5cf68fecbb103a0a1"
+        },
+        "second": {
+          "recordId": "chemie-b008-whole-P26-current-native-independent-b-20261010-v1-normal-b6-run.1f354a60-be44-512b-8f8b-f67c8c456035",
+          "recordDigest": "sha256:e09b28f7ff30f2cf6fbe3ddc034b0104b53cdbb172e139287ad178d8c4606d5a"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende A-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten A-Nachweisfelder werden wörtlich gewählt, um Kompetenz und Fallbeispiele nicht zu einer zusätzlichen Aufgabenquote oder methodischen Pflicht zu verengen. Vergleich: Wissenschaftlicher Dialog braucht einen tatsächlichen reagierenden Partner und belegte Anpassung. Vorbereiteter eigener Dialogtext ersetzt keinen Austausch; Katalysatorwirkung und neue valide Temperaturkontrolle werden fachlich begrenzt. Die konkreten B-Befunde bleiben gebunden: KEEP: Tatsächlicher responsiver Dialog ist verbindlich, kein vorgefertigtes Protokoll als eigenes Gespräch. Katalyse ändert die Geschwindigkeit und nicht K bei gleicher Temperatur; frühe/gleichgewichtsnahe Werte bleiben getrennt. Neue gültige Daten können den Standpunkt ändern, ohne exakte Salzmasse oder Gesamtunsicherheit vorzutäuschen. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing A reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged A evidence fields are selected literally to avoid narrowing competence and case examples into an extra task quota or method obligation. Comparison: Scientific dialogue requires an actual responding partner and supported adjustment. A prepared self-authored script does not replace an exchange; catalyst effects and a fresh valid temperature control are appropriately bounded. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current-6-technical-dual-6c7ce93c-7675-51da-bc0c-7d0257f7ff7d",
+      "goalId": "6c7ce93c-7675-51da-bc0c-7d0257f7ff7d",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:512f64ab6581d0afea08dee825b7dfcbb2d9375ac6ff1595195d1ba830a96796",
+      "pageFingerprint": "sha256:d869c90ba91177b772fc52d6f853c04b946f3d8aacdc9b935d3cc517f1917e19",
+      "goalReviewContextFingerprint": "sha256:14e5201d5e7e530a564414e6f68f6cc26ad6e274e03e0bd6ef314f9df0becb10",
+      "finalText": {
+        "titleDe": "Chemische Modelle nutzen und kritisch vergleichen",
+        "titleEn": "Use and critically compare chemistry models",
+        "descriptionDe": "Die lernende Person kann für eine chemische Fragestellung hypothesengeleitet geeignete analoge oder digitale Modelle und Simulationen zu Materie, chemischen Reaktionen, Bindungen und Wechselwirkungen auswählen und nutzen, ihre Aussagen mit Beobachtungen und miteinander vergleichen, Grenzen benennen und begründen, weshalb ein Modell hinterfragt oder weiterentwickelt werden muss.",
+        "descriptionEn": "The learner can select and use suitable analogue or digital models and simulations of matter, chemical reactions, bonding and interactions in a hypothesis-guided investigation of a chemical question, compare their predictions with observations and with each other, identify limitations and justify why a model should be questioned or developed further."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-whole-P26-current-native-independent-a-20261010-v1-native6.6c7ce93c-7675-51da-bc0c-7d0257f7ff7d",
+          "recordDigest": "sha256:43f378a4af8a35b3dc7d06c4ea25e4127d85488929b1887aa625e8634a0611a7"
+        },
+        "second": {
+          "recordId": "chemie-b008-whole-P26-current-native-independent-b-20261010-v1-normal-b6-run.6c7ce93c-7675-51da-bc0c-7d0257f7ff7d",
+          "recordDigest": "sha256:ce26fa4662c6c49f35a3adb6f8b819372a66ada92c739471329b3a6c5b77c945"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende A-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten A-Nachweisfelder werden wörtlich gewählt, um Kompetenz und Fallbeispiele nicht zu einer zusätzlichen Aufgabenquote oder methodischen Pflicht zu verengen. Vergleich: Ein tatsächlich erstelltes analoges ODER digitales Modell bleibt methodenoffen. Falls das ursprüngliche digitale Material gewählt wird, gelten seine konkreten Prüfpflichten; Teilquellen zu Software/Partnerarbeit bleiben HOLD. Hydratation, Gitter- und Energiegrenzen sind getrennt. Die konkreten B-Befunde bleiben gebunden: KEEP: Das analoge ODER digitale Modell ist echt erhalten; eine eigene Tabellenkalkulation wird nicht universell verlangt. Der digitale Fall behält Implementierung und sechs Prüfungen. Oδ− zeigt zu Na⁺, Hδ+ zu Cl⁻; neutrale Paarungen sind unentschieden. Hypothese und begründete Kritik sind Pflicht, tatsächliche Weiterentwicklung wird nicht vorgetäuscht. Spezielle Software-/Partnerpflichten bleiben offen. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing A reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged A evidence fields are selected literally to avoid narrowing competence and case examples into an extra task quota or method obligation. Comparison: An actually created analog OR digital model remains method-neutral. If the original digital material is selected, its specific checks apply; partial source duties for software or partner work stay on hold. Hydration, lattice and energy bounds remain separate. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current-6-technical-dual-86d34f1f-692d-5522-a9a4-a71c65b24de7",
+      "goalId": "86d34f1f-692d-5522-a9a4-a71c65b24de7",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:544e2f07a9287f23526faaf6b56a3eb045df8c39cec6773ce5371646a8abf034",
+      "pageFingerprint": "sha256:fb89282b8e32b34e4b7a56f8e07bae01722192817778120a03e6538df184589b",
+      "goalReviewContextFingerprint": "sha256:d533ac844f576bba58b631bfd8358c2d4785503d915e637a8b46257359e98916",
+      "finalText": {
+        "titleDe": "Chemische Modelle theoriegestützt nutzen und kritisch vergleichen",
+        "titleEn": "Use and critically compare chemical models with theory",
+        "descriptionDe": "Die lernende Person kann für chemische Fragestellungen geeignete analoge und digitale Modelle oder Simulationen zu Atombau und Periodizität, chemischen Gleichgewichten, Bindungsverhältnissen und Molekülgeometrien sowie Wechselwirkungen komplexer Moleküle einschließlich Wirkstoff–Rezeptor- und Substrat–Enzym-Beziehungen auswählen und nutzen, Aussagen oder Hypothesen damit prüfen und ihre Aussagekraft, Grenzen und möglichen Weiterentwicklungen anhand von Beobachtungen oder Vergleichen begründen.",
+        "descriptionEn": "For chemical questions, the learner can select and use appropriate analogue and digital models or simulations of atomic structure and periodicity, chemical equilibria, bonding and molecular geometry, and interactions of complex molecules including drug–receptor and substrate–enzyme relationships, test statements or hypotheses and justify their explanatory power, limitations and possible development from observations or comparisons."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-whole-P26-current-native-independent-a-20261010-v1-native6.86d34f1f-692d-5522-a9a4-a71c65b24de7",
+          "recordDigest": "sha256:4d4e0c6c46755253b97d78eedf209a4b0ad6ecf01498fb5a6d30b9e57ed98e3c"
+        },
+        "second": {
+          "recordId": "chemie-b008-whole-P26-current-native-independent-b-20261010-v1-normal-b6-run.86d34f1f-692d-5522-a9a4-a71c65b24de7",
+          "recordDigest": "sha256:814183f0ea4b1830f3179debe98139248488f4a9c8da4d135876ac51fd748bde"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende A-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten A-Nachweisfelder werden wörtlich gewählt, um Kompetenz und Fallbeispiele nicht zu einer zusätzlichen Aufgabenquote oder methodischen Pflicht zu verengen. Vergleich: Periodizität, Gleichgewicht, Bindung und Geometrie komplexer Rezeptor-/Enzymmoleküle bleiben gemeinsam abgedeckt, einschließlich tatsächlicher analoger UND digitaler Modelle. Belegung ist keine Aktivierung; geometrisch falscher Kontakt wird nicht als korrigiert ausgegeben, neues K ist keine Rate. Die konkreten B-Befunde bleiben gebunden: KEEP: Alle gebundenen Teilbereiche bleiben erforderlich; keine Verkürzung auf Molekülgeometrie. Der andere algebraische Zweig führt zu negativer Stoffmenge. Ammoniumkontakt 6,19 Å und neuer OX-Abstand 3,735 Å werden nicht als reparierter Kontakt verkauft. Belegung liefert keine Aktivierung; Enzym bleibt beim Esterumsatz erhalten. Neue K-Werte sagen keine Geschwindigkeit voraus. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing A reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged A evidence fields are selected literally to avoid narrowing competence and case examples into an extra task quota or method obligation. Comparison: Periodicity, equilibrium, bonding and complex receptor/enzyme geometry remain covered together, including actual analog AND digital models. Occupancy is not activation; an incorrect geometric contact is not claimed repaired and a changed K is not a rate. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    }
+  ],
+  "manifestFingerprint": "sha256:207ec0bbe882991c04de27f9faed061f1d5e04a46db6c8032b80b33faea04ed6"
+}

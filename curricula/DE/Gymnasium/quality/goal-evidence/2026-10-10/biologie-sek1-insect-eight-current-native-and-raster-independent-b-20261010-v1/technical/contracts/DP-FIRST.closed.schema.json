@@ -1,0 +1,412 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "SPDX-License-Identifier: Apache-2.0. Additive closed actual-review receipt; no native gate/schema modifications.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "createdAt",
+    "role",
+    "reviewer",
+    "neutralNativeEntry",
+    "authorFinalFreezeHashVerifiedOnly",
+    "ownEarlierVFIRST",
+    "ownEarlierVSeal",
+    "knownBeforeDPFIRSTDe",
+    "currentDPAuthorJudgmentsRead",
+    "currentDPPeerJudgmentsRead",
+    "wholeCurrentGoals8DEENRead",
+    "wholeProfiles8AndSixteenFullCasesDEENRead",
+    "wholeMaterialsTasksWorkedSolutionsRubricsFreshTransfersSolutionsLimitsRead",
+    "actualWholeHTMLViews",
+    "actualWholePDFViews",
+    "actualNativeViews",
+    "normalRoundBRecords",
+    "exactNeutralRequiredBindings",
+    "records",
+    "summary",
+    "separateVOriginalDissentPreserved",
+    "sourceCourseOperatorBoundariesDe",
+    "PStatus",
+    "humanApproval",
+    "humanTrial",
+    "learnerWork",
+    "wholeSourceCourseLegalClinicalApproval",
+    "activeWrites",
+    "historicalWrites",
+    "newStrictCompletions",
+    "restoredActiveBindings",
+    "strictNetGain"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "reviewer": {
+      "type": "string"
+    },
+    "neutralNativeEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "authorFinalFreezeHashVerifiedOnly": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "ownEarlierVFIRST": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "ownEarlierVSeal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "knownBeforeDPFIRSTDe": {
+      "type": "string"
+    },
+    "currentDPAuthorJudgmentsRead": {
+      "const": false
+    },
+    "currentDPPeerJudgmentsRead": {
+      "const": false
+    },
+    "wholeCurrentGoals8DEENRead": {
+      "const": true
+    },
+    "wholeProfiles8AndSixteenFullCasesDEENRead": {
+      "const": true
+    },
+    "wholeMaterialsTasksWorkedSolutionsRubricsFreshTransfersSolutionsLimitsRead": {
+      "const": true
+    },
+    "actualWholeHTMLViews": {
+      "type": "integer"
+    },
+    "actualWholePDFViews": {
+      "type": "integer"
+    },
+    "actualNativeViews": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "normalRoundBRecords": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "exactNeutralRequiredBindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goalId",
+          "Ddecision",
+          "Pdecision",
+          "nativeRenderDecision",
+          "caseIds",
+          "caseBodiesFullyRead",
+          "actualScienceFindingsDe",
+          "understandingEvidence",
+          "blockingDPFindings"
+        ],
+        "properties": {
+          "goalId": {
+            "type": "string"
+          },
+          "Ddecision": {
+            "type": "string"
+          },
+          "Pdecision": {
+            "type": "string"
+          },
+          "nativeRenderDecision": {
+            "type": "string"
+          },
+          "caseIds": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "caseBodiesFullyRead": {
+            "const": true
+          },
+          "actualScienceFindingsDe": {
+            "type": "string"
+          },
+          "understandingEvidence": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "essentialUnderstandingDe",
+              "essentialUnderstandingEn",
+              "observablePerformanceDe",
+              "observablePerformanceEn",
+              "transferExpectationDe",
+              "transferExpectationEn"
+            ],
+            "properties": {
+              "essentialUnderstandingDe": {
+                "type": "string"
+              },
+              "essentialUnderstandingEn": {
+                "type": "string"
+              },
+              "observablePerformanceDe": {
+                "type": "string"
+              },
+              "observablePerformanceEn": {
+                "type": "string"
+              },
+              "transferExpectationDe": {
+                "type": "string"
+              },
+              "transferExpectationEn": {
+                "type": "string"
+              }
+            }
+          },
+          "blockingDPFindings": {
+            "type": "array",
+            "items": {}
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "D_KEEP",
+        "P_KEEP",
+        "DP_REVISE",
+        "DP_BLOCK",
+        "actualWholeNativeViews"
+      ],
+      "properties": {
+        "D_KEEP": {
+          "type": "integer"
+        },
+        "P_KEEP": {
+          "type": "integer"
+        },
+        "DP_REVISE": {
+          "type": "integer"
+        },
+        "DP_BLOCK": {
+          "type": "integer"
+        },
+        "actualWholeNativeViews": {
+          "type": "integer"
+        }
+      }
+    },
+    "separateVOriginalDissentPreserved": {
+      "const": true
+    },
+    "sourceCourseOperatorBoundariesDe": {
+      "type": "string"
+    },
+    "PStatus": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "evidenceLevel",
+        "maximumClaimScope",
+        "reviewAuthority",
+        "status",
+        "approved"
+      ],
+      "properties": {
+        "evidenceLevel": {
+          "type": "string"
+        },
+        "maximumClaimScope": {
+          "type": "string"
+        },
+        "reviewAuthority": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "approved": {
+          "type": "integer"
+        }
+      }
+    },
+    "humanApproval": {
+      "const": false
+    },
+    "humanTrial": {
+      "const": false
+    },
+    "learnerWork": {
+      "const": false
+    },
+    "wholeSourceCourseLegalClinicalApproval": {
+      "const": false
+    },
+    "activeWrites": {
+      "const": false
+    },
+    "historicalWrites": {
+      "const": false
+    },
+    "newStrictCompletions": {
+      "type": "integer"
+    },
+    "restoredActiveBindings": {
+      "type": "integer"
+    },
+    "strictNetGain": {
+      "type": "integer"
+    }
+  }
+}

@@ -1,0 +1,132 @@
+{
+  "schemaVersion": 1,
+  "normalApis": [
+    "buildApplicabilityCompilation",
+    "compileCompositionView",
+    "collectCompositionProjectionRoleGoalIds",
+    "goalMatchesFilters",
+    "evaluateGraphIntegrity",
+    "evaluateTypeConsistency"
+  ],
+  "beforeApplicabilityMetrics": {
+    "goals": 484,
+    "errors": 0,
+    "warnings": 0,
+    "diagnostics": 2241
+  },
+  "afterApplicabilityMetrics": {
+    "goals": 487,
+    "errors": 0,
+    "warnings": 0,
+    "diagnostics": 2241
+  },
+  "newAssessmentApplicability": [
+    {
+      "goalId": "3259bf7f-4af4-58ae-8190-9aec07ec476f",
+      "title": "Konzentrationsvariation praktisch durchführen und auswerten",
+      "goalType": "atomic",
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "assessment-requires",
+          "source": "requires d2d735de-bede-5310-8aeb-8bb7562c7b75"
+        }
+      ]
+    },
+    {
+      "goalId": "e6196381-eab5-5a3e-bb6e-56c6e6e3617f",
+      "title": "Reversiblen Austausch praktisch durchführen und auswerten",
+      "goalType": "atomic",
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "assessment-requires",
+          "source": "requires a0f6ba09-f072-5887-a797-fa369453c62a"
+        }
+      ]
+    },
+    {
+      "goalId": "563f69ed-562f-5544-ab0c-bf0e481928d8",
+      "title": "Galvanische Leerlaufspannung praktisch messen und vergleichen",
+      "goalType": "atomic",
+      "compiledApplicability": {
+        "jurisdiction": [
+          "DE-BW"
+        ]
+      },
+      "evidence": [
+        {
+          "dimension": "jurisdiction",
+          "value": "DE-BW",
+          "kind": "assessment-requires",
+          "source": "requires 7b39fa19-fec3-575e-9324-a3226b703358"
+        }
+      ]
+    }
+  ],
+  "wholeBWViews": [
+    {
+      "courseProfile": "GK",
+      "originalTargets": 150,
+      "candidateTargets": 151,
+      "addedPracticeTargetGoalIds": [
+        "3259bf7f-4af4-58ae-8190-9aec07ec476f"
+      ],
+      "removedTargetGoalIds": [],
+      "ordinaryTargetGoalIdsExact": true,
+      "normalCompositionFindings": [],
+      "duplicateGoalOccurrenceErrors": [],
+      "BWOnlySekII": true
+    },
+    {
+      "courseProfile": "LK",
+      "originalTargets": 170,
+      "candidateTargets": 173,
+      "addedPracticeTargetGoalIds": [
+        "3259bf7f-4af4-58ae-8190-9aec07ec476f",
+        "e6196381-eab5-5a3e-bb6e-56c6e6e3617f",
+        "563f69ed-562f-5544-ab0c-bf0e481928d8"
+      ],
+      "removedTargetGoalIds": [],
+      "ordinaryTargetGoalIdsExact": true,
+      "normalCompositionFindings": [],
+      "duplicateGoalOccurrenceErrors": [],
+      "BWOnlySekII": true
+    }
+  ],
+  "graph": {
+    "id": "CQR-001",
+    "status": "pass",
+    "summary": "Basic graph integrity checks pass.",
+    "metrics": {
+      "goals": 487,
+      "localReferenceIssues": 0
+    }
+  },
+  "types": {
+    "id": "CQR-002",
+    "status": "pass",
+    "summary": "Explicit type metadata matches graph structure.",
+    "metrics": {
+      "mismatches": 0
+    }
+  },
+  "existingWhole484GoalsUnchangedExceptQ3Contains": true,
+  "all381CurricularGoalBodiesExact": true,
+  "curAtomicDenominator": 381,
+  "sourceCoverageApproval": false,
+  "humanApproval": false,
+  "activeWrites": 0
+}

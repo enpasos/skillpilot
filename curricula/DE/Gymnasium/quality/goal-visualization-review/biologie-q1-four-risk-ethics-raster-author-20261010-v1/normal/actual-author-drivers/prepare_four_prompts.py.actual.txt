@@ -1,0 +1,85 @@
+import hashlib
+import json
+import shutil
+import subprocess
+from datetime import datetime, timezone
+from pathlib import Path
+
+ROOT = Path('/home/enpasos/projects/skillpilot')
+OUT = ROOT / 'curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-four-risk-ethics-raster-author-20261010-v1'
+SOURCE = ROOT / 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-technical-author-successor-v2'
+IDS = ['40334348-bd84-5ed9-b76b-5f5b80c2d145', '1320b82e-e438-59ff-9d53-ecc9fbacae58', 'ee686aee-43d3-50df-a60a-e47ac845586c', '031fd4f3-906e-5919-ae7f-a2b0b9220604']
+
+def binding(p):
+    data = p.read_bytes()
+    return {'path': p.relative_to(ROOT).as_posix(), 'sha256': hashlib.sha256(data).hexdigest(), 'bytes': len(data)}
+
+def write(p, data):
+    assert not p.exists(), p
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
+
+OUT.mkdir(parents=True, exist_ok=False)
+inputs = []
+for name, target in [('candidate/whole479-title-methyl-eight-links.inactive.json', 'inputs/whole479-current-input.exact.json'), ('science/whole12-current-V3-materials.exact.json', 'inputs/whole12-current-V3-materials.exact.json'), ('neutral-eight-title-methyl-current-native.independent-review.entry.json', 'inputs/eight-current-neutral-entry.exact.json'), ('author.final.freeze.json', 'inputs/eight-current-author-freeze.exact.json')]:
+    src, dst = SOURCE / name, OUT / target
+    dst.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(src, dst)
+    assert src.read_bytes() == dst.read_bytes()
+    inputs.append({'sourceBinding': binding(src), 'portableExactCopy': binding(dst)})
+landscape = json.loads((OUT / 'inputs/whole479-current-input.exact.json').read_text())
+materials = json.loads((OUT / 'inputs/whole12-current-V3-materials.exact.json').read_text())
+goals = [next(g for g in landscape['goals'] if g['id'] == gid) for gid in IDS]
+science = [next(g for g in materials['goals'] if g['goalId'] == gid) for gid in IDS]
+assert len(landscape['goals']) == 479 and len(materials['goals']) == 12
+assert all(not g.get('resourceLinks') for g in goals)
+write(OUT / 'inputs/four-whole-goal-bodies.exact.json', {'schemaVersion': '1.0', 'role': 'whole-four-exact-current-goal-bodies', 'records': goals})
+write(OUT / 'inputs/four-whole-profiles-and-eight-cases.exact.json', {'schemaVersion': '1.0', 'role': 'whole-four-exact-current-profile-and-case-bodies', 'records': science})
+search_ids = IDS + ['90ad452b-590c-4824-99a1-83b8c171f145', '549f8f6a-0459-462d-914c-f2c2b883ca28', '4c73d4c6-d04e-42bc-9c28-fd0599743ce5', 'b1eb1baa-2859-5fdc-9737-2220be2b6da3']
+files = subprocess.check_output(['rg', '--files', 'curricula', 'app/public/assets/goal-visualizations'], cwd=ROOT, text=True).splitlines()
+matches = [s for s in files if Path(s).suffix.lower() in {'.png', '.jpg', '.jpeg', '.webp'} and any(gid in s for gid in search_ids)]
+write(OUT / 'existing-asset-search.actual.json', {'schemaVersion':'1.0', 'role':'actual-current-and-historical-raster-ID-search', 'performedAt':datetime.now(timezone.utc).isoformat(), 'command':['rg','--files','curricula','app/public/assets/goal-visualizations'], 'searchedCurrentAndProvenanceGoalIds':search_ids, 'matches':matches, 'fileListCount':len(files), 'currentFourResourceLinkCount':0, 'decision':'no-existing-ID-bound-raster-found; generate necessary inactive candidates', 'independentReview':False, 'humanApproval':False})
+assert matches == []
+
+BASE = '''Use case: scientific-educational
+Asset type: inactive SkillPilot German Gymnasium biology learning-goal visualization; orientation only, not a task, answer sheet, medical advice or approval.
+Style/medium: friendly clear abstract comic illustration, rounded shapes, thick smooth dark navy outlines, warm ivory background, teal/light-blue/purple with restrained orange accents, softly shaded flat raster artwork. Match the existing approachable biology image landscape. No photorealism, no sterile technical redesign.
+Composition/framing: one wide landscape PNG near 16:9, about 1600 x 900 pixels or a close native size such as 1672 x 941. Main motifs large with ample whitespace. Essential structure and the few exact large labels must remain visible when the entire image is reduced to 360 px width and 680 px width. Use bold rounded German lettering; no small captions, no title sentence, no watermark, logo, branding or technical ID.
+Constraints: use only the listed exact text. Do not invent medical diagnoses, universal risk predictions, deterministic genes-to-disease statements, real patient records, clinical instructions, or promises of certainty. Create an original illustration, no copied source-page graphics.
+'''
+PROMPTS = {
+IDS[0]: '''Primary request: show the core difference between multiple genetic contributions and additional environmental influence on one trait in a fictional plant model.
+Subject: two separate large contributor regions on the left lead with two distinct arrows to one region on the right containing three stylized potted flowers with identical simple anatomy but different strengths of purple petal pigmentation. The plants are illustrative possible trait variation, not a pedigree or a probability histogram.
+Upper-left contributor region: two different gene-locus symbols, each shown as a pair of plain rounded chromosome rods with one highlighted locus band on each rod; two pairs total. This region has the exact large label "Mehrere Gene". Do not draw X-shaped chromosomes or a DNA helix. Do not number alleles or attach a fixed genotype to any flower.
+Lower-left contributor region: a large sun and water-drop/nutrient motif with exact large label "Umwelt". Its arrow goes to the trait region, never to the chromosome rods: environmental influence must not look like a DNA mutation.
+Right region: the three large flowers and exact heading "Merkmal". Small differences in pigmentation show a range of possible outcomes, with no healthy/ill symbols and no 3:1 or other universal ratio. A single generous-sized unobtrusive "Modell" label identifies the plant scene as schematic.
+Text (verbatim): "Mehrere Gene", "Umwelt", "Merkmal", "Modell".
+Avoid: colored human skin hierarchy, disease labels, ideal/defective people, single-gene determinism, environmental mutation arrows, additive numeric formulas, tiny text or many panels.
+''',
+IDS[1]: '''Primary request: show a single DNA-base-position variation, the need to check measurement quality, and the distinction between a marker and a diagnosis.
+Subject: two generously sized rounded panels side by side. In the left panel, two horizontal single-strand schematic sequence strips have exactly five distinct rounded base tiles each, aligned in five columns. Upper sequence exactly A C G T A; lower sequence exactly A C A T A. Only the THIRD aligned column differs; frame both third tiles with a common orange highlight. These are two compared sequence variants, not complementary strands of one duplex. No connecting base-pair rungs and no helix. Exact large heading "Eine Base" above this panel.
+Right panel: a friendly oversized magnifying glass over two-color measurement dots, and a separate large question mark, representing inspection rather than automatic success. Exact large heading "Qualität?". Do not assign diploid genotypes or claim these few illustrative dots prove an assay threshold or population grouping.
+Across the lower margin, one very large clearly legible statement "Marker ≠ Diagnose". The not-equal symbol must be unmistakable. Keep the same orientation in both compared strips, no reverse-complement error. The variation has no disease icon, no positive-diagnosis stamp and no green acceptance tick.
+Text (verbatim): "Eine Base", "A", "C", "G", "T", "A" in the upper strip; "A", "C", "A", "T", "A" in the lower strip; "Qualität?", "Marker ≠ Diagnose".
+Avoid: six-column strips, mismatches at other columns, calling the two comparison strips complementary DNA, genotyping a person from a single strip, disease prediction or testing advice.
+''',
+IDS[2]: '''Primary request: distinguish an absolute carrier frequency in a suitable reference population from uncertain individual family information used in a genetic risk estimate.
+Subject: two generously sized rounded panels side by side, with a broad clear gap. Left heading "Population". Under it draw EXACTLY TWENTY equal-sized round person-neutral dots in a regular FOUR-ROW by FIVE-COLUMN grid. EXACTLY ONE of these twenty dots is orange and the other nineteen are light teal; all dots have dark navy outlines, no faces, no illness appearance. Exact large label "1 von 20" below the grid. This depicts a supplied fictional carrier frequency only, not twenty related individuals, a disease prevalence or twenty births. No extra decorative dots.
+Right heading "Familie". Draw a minimal two-generation fictional pedigree: one unshaded square parent marked "Aa" and one unshaded circle parent marked "?", joined with a horizontal partner line; one vertical descent line from the midpoint goes to one unshaded diamond child marked "?". Use normal pedigree line connections with no arrowheads and no sibling or cousin ambiguity. The diamond signifies that sex is unspecified. Neither parent nor child is shaded as affected. The known Aa parent is a carrier; the unknown partner remains unknown. Keep the pedigree large and perfectly readable. It is not valid to label that unknown partner as Aa just from the population.
+Lower full-width margin: exact large text "Modellrisiko" with a question mark inside a pale rounded thought bubble. No individual disease conclusion and no zero-risk stamp. The probability must not be depicted as a guaranteed future birth or a deterministic class.
+Text (verbatim): "Population", "1 von 20", "Familie", "Aa", "?", "?", "Modellrisiko".
+Avoid: fewer or more than twenty cohort dots, more than one orange dot, four-child 3:1 family icon, fully shaded sick people, assigning a genotype to the unknown partner, implied Hardy-Weinberg law or clinical recommendations.
+''',
+IDS[3]: '''Primary request: visualize voluntary informed genetic family counseling and a genuine choice among methods, with privacy and uncertainty respected.
+Subject: at left, two friendly abstract adult people sit facing each other in a calm counseling conversation at an uncluttered small round table. They are equal-height participants; neither points commandingly or wears an authority badge. One calm open-hand gesture invites discussion and the other adult has a visible small question-mark speech bubble. No worksheet, handwriting or instruments on the table, so no reversed actor-perspective text.
+At right, show three distinct large rounded option cards arranged vertically, all with equal visual importance and no selected check mark or highlighted preferred card. Top card has a small clear abstract family-pedigree symbol and exact label "Gespräch". Middle card has a magnifying glass identifying ONE marked position in a very simple horizontal DNA/base symbol and exact label "Gezielter Test". Bottom card has several simple parallel sequence-strip symbols with a question mark and exact label "Breites Panel". The cards represent different scopes, not three compulsory steps or promises of diagnosis; no arrows from card to card.
+Across the lower margin put one large bold text "Informierte Wahl". A single friendly large closed-padlock icon near the conversation signifies that family information is protected, without implying a technical security guarantee. The participants' expression is curious and calm, not alarmed, sick, coerced or celebrating a certain result.
+Text (verbatim): "Gespräch", "Gezielter Test", "Breites Panel", "Informierte Wahl". One question mark may appear in the participant bubble and one on the broad-panel card; no other words.
+Avoid: a mandated test, a correct life decision, clinical prognosis, fetus imagery, real patient details, emergency cues, stigmatizing affected people, unilateral disclosure to a family, charts dense with small lettering.
+'''}
+for gid, prompt in PROMPTS.items():
+    d = OUT / 'assets/biologie' / gid
+    d.mkdir(parents=True)
+    (d / 'actual-provider-prompt.txt').write_text(BASE + prompt)
+write(OUT / 'input-and-author-boundaries.json', {'schemaVersion':'1.0', 'role':'inactive-four-raster-author-input-boundary', 'inputBindings':inputs, 'goalIds':IDS, 'whole479GoalsRetained':True, 'whole12ProfilesAnd24CasesRetained':True, 'currentGoalBodiesChanged':False, 'currentEightExistingRasterCandidatesChanged':False, 'sourceCourseHoxAndLegalHoldsRemainOpen':True, 'independentReview':False, 'humanApproval':False, 'activeWrites':False, 'newScientificCompletions':0, 'restoredEvidenceBindings':0, 'strictGain':0, 'contentLicense':'CC-BY-4.0'})
+print(json.dumps({'package':OUT.relative_to(ROOT).as_posix(),'promptCount':4,'existingMatches':matches,'inputBindings':inputs},ensure_ascii=False,indent=2))

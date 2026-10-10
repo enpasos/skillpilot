@@ -1,0 +1,54 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-3312-authored-operationalization-current-native-one-20261010-v3",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-3312-authored-operationalization-primary-source-author-successor-v3/native/current3312-source-only-one.batch.config.json",
+  "configDigest": "sha256:bebb9cfb776ac887dc7105c1b44b5141ab774156ac80e6c4c0efa87aa6e0e3b6",
+  "goalIds": [
+    "3312b2bb-bc90-5c0f-a859-4b4f9b8ff117"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 394,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-3312-authored-operationalization-primary-source-author-successor-v3/native/current-full394-canonical.normal.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-technical-author-successor-v2/candidate/whole479-title-methyl-eight-links.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:0f4475dca345150037b79b417b723bd5f88954432d81c2d3f791057273671a6a"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:3ebc1abe79bf927e6dcf5fa2528f2bcd8e6d20560521a73e5b3c14492e1b642f",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:dea9cfca716b32c52dab8c7138a3c343fcf9efbd205ae34692d1f3328ed1de0b",
+    "reviewInputFingerprint": "sha256:39b7f4d592081e934f77bc540f6aa41b44687ebd3b9f2b5010c4a690bf0bc681",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-3312-authored-operationalization-current-native-one-20261010-v3-a",
+        "campaignDigest": "sha256:790dfe8aac7ce1747867d04386141bc0527cc131895bc3282047b9e8467504d4",
+        "roundId": "biologie-3312-authored-operationalization-current-native-one-20261010-v3-first-pass-a",
+        "independenceGroupId": "biologie-3312-authored-operationalization-current-native-one-20261010-v3-independent-a",
+        "batchId": "biologie-3312-authored-operationalization-current-native-one-20261010-v3-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:f538c3024db79a39618f1caacbcf23627296be3cf57d4f953e607ab231b0a63d"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-3312-authored-operationalization-current-native-one-20261010-v3-b",
+        "campaignDigest": "sha256:296dd9a50a9612eb2ea1efabaf201a97697747be46c3dd804a772389660d812a",
+        "roundId": "biologie-3312-authored-operationalization-current-native-one-20261010-v3-first-pass-b",
+        "independenceGroupId": "biologie-3312-authored-operationalization-current-native-one-20261010-v3-independent-b",
+        "batchId": "biologie-3312-authored-operationalization-current-native-one-20261010-v3-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:fdda739faff42c9f7a9adef26ab772fadbe3e15a497e902951ef17e7302132e2"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

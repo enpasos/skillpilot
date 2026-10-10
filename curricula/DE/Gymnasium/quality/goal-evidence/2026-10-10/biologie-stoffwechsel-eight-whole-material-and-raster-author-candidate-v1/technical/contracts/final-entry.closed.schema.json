@@ -1,0 +1,525 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "role",
+    "createdAt",
+    "goalIds",
+    "wholeScience",
+    "wholeGoals",
+    "wholeSourceObjectsAnd50Witnesses",
+    "originalNeutralInputSnapshot",
+    "originalNeutralFreezeSnapshot",
+    "originalNeutralLiveBeforePathBindingsHistoricalDiagnosticOnly",
+    "immutableOriginalBefore479",
+    "current335Before479",
+    "inactiveOnlyEightResourceLinksWhole479",
+    "wholeKindsCurrent394",
+    "inactiveKindsPathOnly",
+    "actualCurrentSelectedEightRasters",
+    "P8ScientificCandidateSet",
+    "P8BeforeRasterConfig",
+    "P8BeforeRasterRecords",
+    "normalValidation",
+    "authorActualReadiness",
+    "actualPriorWorkInventory",
+    "wholeProfiles",
+    "wholeBilingualCases",
+    "actualAuthorRasterViews",
+    "selectedCurrentRasterViews",
+    "currentDimensionsActual",
+    "sourceBoundaries",
+    "holds",
+    "boundaries",
+    "handoffDe"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer"
+    },
+    "role": {
+      "type": "string"
+    },
+    "createdAt": {
+      "type": "string"
+    },
+    "goalIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "wholeScience": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      }
+    },
+    "wholeGoals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      }
+    },
+    "wholeSourceObjectsAnd50Witnesses": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      }
+    },
+    "originalNeutralInputSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      }
+    },
+    "originalNeutralFreezeSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      }
+    },
+    "originalNeutralLiveBeforePathBindingsHistoricalDiagnosticOnly": {
+      "type": "boolean"
+    },
+    "immutableOriginalBefore479": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      }
+    },
+    "current335Before479": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      }
+    },
+    "inactiveOnlyEightResourceLinksWhole479": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      }
+    },
+    "wholeKindsCurrent394": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      }
+    },
+    "inactiveKindsPathOnly": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      }
+    },
+    "actualCurrentSelectedEightRasters": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      }
+    },
+    "P8ScientificCandidateSet": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      }
+    },
+    "P8BeforeRasterConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      }
+    },
+    "P8BeforeRasterRecords": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      }
+    },
+    "normalValidation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      }
+    },
+    "authorActualReadiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      }
+    },
+    "actualPriorWorkInventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string"
+        },
+        "bytes": {
+          "type": "integer"
+        }
+      }
+    },
+    "wholeProfiles": {
+      "type": "integer"
+    },
+    "wholeBilingualCases": {
+      "type": "integer"
+    },
+    "actualAuthorRasterViews": {
+      "type": "integer"
+    },
+    "selectedCurrentRasterViews": {
+      "type": "integer"
+    },
+    "currentDimensionsActual": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "1672x941",
+        "1672x940"
+      ],
+      "properties": {
+        "1672x941": {
+          "type": "integer"
+        },
+        "1672x940": {
+          "type": "integer"
+        }
+      }
+    },
+    "sourceBoundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "currentWitnesses50Retained",
+        "legacyNullPassages25Retained",
+        "newWholeSourceCourseApproval",
+        "AM394Unchanged"
+      ],
+      "properties": {
+        "currentWitnesses50Retained": {
+          "type": "boolean"
+        },
+        "legacyNullPassages25Retained": {
+          "type": "boolean"
+        },
+        "newWholeSourceCourseApproval": {
+          "type": "boolean"
+        },
+        "AM394Unchanged": {
+          "type": "boolean"
+        }
+      }
+    },
+    "holds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "currentRasterBoundP8Rebind",
+        "wholeNative8HTMLAndPDF",
+        "independentScientificDAndPAndRasterV_A_B",
+        "activeAdoptionQAAndStrictM7"
+      ],
+      "properties": {
+        "currentRasterBoundP8Rebind": {
+          "type": "string"
+        },
+        "wholeNative8HTMLAndPDF": {
+          "type": "string"
+        },
+        "independentScientificDAndPAndRasterV_A_B": {
+          "type": "string"
+        },
+        "activeAdoptionQAAndStrictM7": {
+          "type": "string"
+        }
+      }
+    },
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "PStatus",
+        "PAuthority",
+        "evidenceLevel",
+        "maximumClaimScope",
+        "humanApproved",
+        "learnerEvidence",
+        "activeWrites",
+        "strictNew",
+        "strictRestored",
+        "strictNet"
+      ],
+      "properties": {
+        "PStatus": {
+          "type": "string"
+        },
+        "PAuthority": {
+          "type": "string"
+        },
+        "evidenceLevel": {
+          "type": "string"
+        },
+        "maximumClaimScope": {
+          "type": "string"
+        },
+        "humanApproved": {
+          "type": "integer"
+        },
+        "learnerEvidence": {
+          "type": "boolean"
+        },
+        "activeWrites": {
+          "type": "boolean"
+        },
+        "strictNew": {
+          "type": "integer"
+        },
+        "strictRestored": {
+          "type": "integer"
+        },
+        "strictNet": {
+          "type": "integer"
+        }
+      }
+    },
+    "handoffDe": {
+      "type": "string"
+    }
+  }
+}

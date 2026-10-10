@@ -1,0 +1,21 @@
+{
+  "cmd": [
+    "node",
+    "scripts/prepare_goal_visualization.mjs",
+    "39ba4385-0144-5e20-ba11-e3714756583b",
+    "--landscape",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-whole-material-and-raster-author-candidate-v1/inputs/whole479-original-authoring-base.exact.json",
+    "--subject",
+    "biologie",
+    "--provider",
+    "image_gen.imagegen",
+    "--review-status",
+    "pilot",
+    "--lang",
+    "de"
+  ],
+  "exitCode": 0,
+  "stdout": "Prepared prompt package for: Lebensmittelverderb durch Mikroorganismen erklären\nSkillPilot ID: 39ba4385-0144-5e20-ba11-e3714756583b\nPrompt: tmp/goal-visualizations/39ba4385-0144-5e20-ba11-e3714756583b/nano-banana-prompt.de.md\nMetadata: tmp/goal-visualizations/39ba4385-0144-5e20-ba11-e3714756583b/metadata.json\n\nAfter generating and downloading the image, import it with:\nnpm --prefix app run visualization:import -- 39ba4385-0144-5e20-ba11-e3714756583b \"<downloaded-image-path>\"\n",
+  "stderr": "",
+  "activeWrites": false
+}

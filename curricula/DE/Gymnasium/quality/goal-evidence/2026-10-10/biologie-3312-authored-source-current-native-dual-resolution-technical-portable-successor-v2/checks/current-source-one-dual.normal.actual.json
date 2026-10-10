@@ -1,0 +1,109 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-10T03:20:06.313Z",
+  "normalDual": {
+    "schemaVersion": 1,
+    "validationContract": "goal-description-dual-round-v1",
+    "automaticAcceptance": false,
+    "bundleFingerprint": "sha256:dea9cfca716b32c52dab8c7138a3c343fcf9efbd205ae34692d1f3328ed1de0b",
+    "reviewInputFingerprint": "sha256:39b7f4d592081e934f77bc540f6aa41b44687ebd3b9f2b5010c4a690bf0bc681",
+    "goalCount": 1,
+    "rounds": {
+      "first": {
+        "campaignId": "biologie-3312-authored-operationalization-current-native-one-20261010-v3-a",
+        "roundId": "biologie-3312-authored-operationalization-current-native-one-20261010-v3-first-pass-a",
+        "independenceGroupId": "biologie-3312-authored-operationalization-current-native-one-20261010-v3-independent-a",
+        "runIds": [
+          "biologie3312-bounded-source-native-independent-a-20261010-v1-first"
+        ],
+        "providers": [
+          "OpenAI via Codex"
+        ],
+        "modelIdentities": [
+          "OpenAI via Codex::GPT-6-based Codex agent; exact deployed model/version not exposed::(unspecified-version)"
+        ]
+      },
+      "second": {
+        "campaignId": "biologie-3312-authored-operationalization-current-native-one-20261010-v3-b",
+        "roundId": "biologie-3312-authored-operationalization-current-native-one-20261010-v3-first-pass-b",
+        "independenceGroupId": "biologie-3312-authored-operationalization-current-native-one-20261010-v3-independent-b",
+        "runIds": [
+          "biologie-3312-authored-source-native-independent-b-20261010-v1"
+        ],
+        "providers": [
+          "OpenAI"
+        ],
+        "modelIdentities": [
+          "OpenAI::Codex active model; exact version not exposed::(unspecified-version)"
+        ]
+      }
+    },
+    "diversity": {
+      "policy": "report_only",
+      "sharedProviders": [],
+      "sharedModelIdentities": [],
+      "distinctProviderOrModel": true,
+      "policySatisfied": true
+    },
+    "counts": {
+      "exactAgreement": 0,
+      "disagreement": 1,
+      "unavailable": 0,
+      "requiresSynthesis": 1
+    },
+    "goals": [
+      {
+        "goalId": "3312b2bb-bc90-5c0f-a859-4b4f9b8ff117",
+        "firstRecordId": "biologie3312-bounded-source-native-independent-a-20261010-v1-first-3312b2bb-bc90-5c0f-a859-4b4f9b8ff117",
+        "secondRecordId": "biologie-3312-authored-source-native-independent-b-20261010-v1.3312b2bb-bc90-5c0f-a859-4b4f9b8ff117",
+        "firstRunId": "biologie3312-bounded-source-native-independent-a-20261010-v1-first",
+        "secondRunId": "biologie-3312-authored-source-native-independent-b-20261010-v1",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      }
+    ]
+  },
+  "normalResolutionValidation": {
+    "errors": [],
+    "strictDescriptionComplete": true
+  },
+  "oldB8BlockRewritten": false,
+  "boundedCurrentSourceFindingResolvedOnly": true,
+  "currentNative1SlicingAndNavigationBoundTruthfully": true,
+  "protectedActiveBindingsUnchanged": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+      "sha256": "sha256:5ca26b6f9647a25e43d454781b999b63d0fc2691c16debcd7cb4b3750d960f7c",
+      "bytes": 1275944
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-book-publication/biologie.semantic-kinds.json",
+      "sha256": "sha256:f04a5e8254ef29aa056c3973ae0a0467789648f631c18c53e44f725ba3f59408",
+      "bytes": 154383
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "sha256:5d20837ad1b3dd3ccf3e816eb6898389d23918349e2176ca42a3834b8952850a",
+      "bytes": 203621
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json",
+      "sha256": "sha256:7e59718cc706c7665b81edc59a4508b23631b8630b21e900ae7f7732b31bde6b",
+      "bytes": 14913
+    }
+  ],
+  "wholeSourceCourseLegalApproval": false,
+  "activeWrites": [],
+  "newStrictCompletions": 0,
+  "restoredActiveBindings": 0,
+  "strictNetGain": 0,
+  "humanApproval": false,
+  "humanTrial": false
+}

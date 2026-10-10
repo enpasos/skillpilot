@@ -1,0 +1,80 @@
+{
+  "executionCapsule": "/tmp/skillpilot-bio-independent-a-20261010/capsule",
+  "capsuleOutsideCurricula": true,
+  "exactOriginalImageCopies": 8,
+  "commands": [
+    {
+      "label": "normal-d-batch",
+      "command": "node --import tsx scripts/validateGoalDescriptionReviewCampaign.ts --bundle /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/review-bundle-manifest.json --input /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/description-review-input.json --campaign /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/description-review-campaign.json --run /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-native-independent-a-20261010-v1/normal-campaign-a/results/biologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001.run.json --batch-input /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/batches/biologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001.input.jsonl --records /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-native-independent-a-20261010-v1/normal-campaign-a/results/biologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001.records.jsonl",
+      "chunk_id": "517fac",
+      "wall_time_seconds": 0.584527098,
+      "exit_code": 1,
+      "original_token_count": 114,
+      "output": "Record 1: data/rationale must match pattern \"^\\S(?:[\\s\\S]*\\S)?$\"\nRecord 2: data/rationale must match pattern \"^\\S(?:[\\s\\S]*\\S)?$\"\nRecord 3: data/rationale must match pattern \"^\\S(?:[\\s\\S]*\\S)?$\"\nRecord 4: data/rationale must match pattern \"^\\S(?:[\\s\\S]*\\S)?$\"\nRecord 5: data/rationale must match pattern \"^\\S(?:[\\s\\S]*\\S)?$\"\nRecord 7: data/rationale must match pattern \"^\\S(?:[\\s\\S]*\\S)?$\"\nRecord 8: data/rationale must match pattern \"^\\S(?:[\\s\\S]*\\S)?$\"\n"
+    },
+    {
+      "label": "normal-d-campaign",
+      "command": "node --import tsx scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/review-bundle-manifest.json --input /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/description-review-input.json --campaign /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/description-review-campaign.json --batches-dir /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/batches --results-dir /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-native-independent-a-20261010-v1/normal-campaign-a/results",
+      "chunk_id": "7447dd",
+      "wall_time_seconds": 0.614847462,
+      "exit_code": 1,
+      "original_token_count": 247,
+      "output": "biologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001: Record 1: data/rationale must match pattern \"^\\S(?:[\\s\\S]*\\S)?$\"\nbiologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001: Record 2: data/rationale must match pattern \"^\\S(?:[\\s\\S]*\\S)?$\"\nbiologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001: Record 3: data/rationale must match pattern \"^\\S(?:[\\s\\S]*\\S)?$\"\nbiologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001: Record 4: data/rationale must match pattern \"^\\S(?:[\\s\\S]*\\S)?$\"\nbiologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001: Record 5: data/rationale must match pattern \"^\\S(?:[\\s\\S]*\\S)?$\"\nbiologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001: Record 7: data/rationale must match pattern \"^\\S(?:[\\s\\S]*\\S)?$\"\nbiologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001: Record 8: data/rationale must match pattern \"^\\S(?:[\\s\\S]*\\S)?$\"\n"
+    },
+    {
+      "label": "normal-current-P8",
+      "command": "node --import tsx scripts/positiveGoalEvidenceReview.ts --config=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/positive/eight-current-P.author.config.json --mode=check",
+      "chunk_id": "840659",
+      "wall_time_seconds": 0.357840047,
+      "exit_code": 1,
+      "original_token_count": 857,
+      "output": "# Positive Goal Evidence Review: biologie-q1-eight-current-v3-raster-native-technical-author-20261010-v1\nScope: Exactly8 current V3 full scientific profiles with actual author rasters; independent native/image contexts pending\nConfigured goals: 8\nApproved: 0\nNeeds human review: 8\nRejected: 0\nBlocking issues: 16\n- 3312b2bb-bc90-5c0f-a859-4b4f9b8ff117: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/3312b2bb-bc90-5c0f-a859-4b4f9b8ff117/3312b2bb-bc90-5c0f-a859-4b4f9b8ff117.png\n- 3312b2bb-bc90-5c0f-a859-4b4f9b8ff117: stale reviewInputFingerprint; expected sha256:8f5c146addf42ec6073adf4f299a7277dc6bdc121bb3dbfb0beb46ffea6b72ce\n- 3b55b551-cd7f-53fb-9bf0-fd8149ac1222: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/3b55b551-cd7f-53fb-9bf0-fd8149ac1222/3b55b551-cd7f-53fb-9bf0-fd8149ac1222.png\n- 3b55b551-cd7f-53fb-9bf0-fd8149ac1222: stale reviewInputFingerprint; expected sha256:cde0b2505d7c39d904e129c7a2bb1a2c550498be37c536dcb2f7ac0e125a99cf\n- 52ecc72a-a65b-53a0-851e-86defe769fa7: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/52ecc72a-a65b-53a0-851e-86defe769fa7/52ecc72a-a65b-53a0-851e-86defe769fa7.png\n- 52ecc72a-a65b-53a0-851e-86defe769fa7: stale reviewInputFingerprint; expected sha256:dae2453b426f919a3deb1137608af0bd2f67dc1c604099a7c8498b474a0b367a\n- 666fb1d1-09a8-55a3-acd5-efe311cac8b0: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/666fb1d1-09a8-55a3-acd5-efe311cac8b0/666fb1d1-09a8-55a3-acd5-efe311cac8b0.png\n- 666fb1d1-09a8-55a3-acd5-efe311cac8b0: stale reviewInputFingerprint; expected sha256:6d41579c7abfa7e2847c5055797bec5b98d9bfb5b0bde7ee28564129708f1c0d\n- 7975e43b-1187-5ae3-a1ab-282fc3c0548c: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/7975e43b-1187-5ae3-a1ab-282fc3c0548c/7975e43b-1187-5ae3-a1ab-282fc3c0548c.png\n- 7975e43b-1187-5ae3-a1ab-282fc3c0548c: stale reviewInputFingerprint; expected sha256:0aaf161fbafd73c163b9e147ccf8fb64bedfb97d495e5f8393ec08b5fa24f965\n- 99544494-1825-5fc1-8e23-56f0df808e56: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/99544494-1825-5fc1-8e23-56f0df808e56/99544494-1825-5fc1-8e23-56f0df808e56.png\n- 99544494-1825-5fc1-8e23-56f0df808e56: stale reviewInputFingerprint; expected sha256:88242c26f004781b9bbb5d243c195cf921dececd21ed2a237e5031a5824bd3f4\n- 3f969b9e-68b0-5442-b8e4-df4e35e83087: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/3f969b9e-68b0-5442-b8e4-df4e35e83087/3f969b9e-68b0-5442-b8e4-df4e35e83087.png\n- 3f969b9e-68b0-5442-b8e4-df4e35e83087: stale reviewInputFingerprint; expected sha256:529056f8aa6d8dd25c4b25cf867adc1667dae3a3968e202ad5e550e4745bd0e3\n- ed4cf96f-e1c9-5784-97f2-8279ff5a31b1: goal-visualization asset is missing at /home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/ed4cf96f-e1c9-5784-97f2-8279ff5a31b1/ed4cf96f-e1c9-5784-97f2-8279ff5a31b1.png\n- ed4cf96f-e1c9-5784-97f2-8279ff5a31b1: stale reviewInputFingerprint; expected sha256:633b7714bbb11df4f6eac13728c70aa40caf1a1af7ded7a0bbcad10436832393\n"
+    },
+    {
+      "label": "normal-d-batch-final",
+      "command": "node --import tsx scripts/validateGoalDescriptionReviewCampaign.ts --bundle /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/review-bundle-manifest.json --input /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/description-review-input.json --campaign /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/description-review-campaign.json --run /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-native-independent-a-20261010-v1/normal-campaign-a/results/biologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001.run.json --batch-input /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/batches/biologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001.input.jsonl --records /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-native-independent-a-20261010-v1/normal-campaign-a/results/biologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001.records.jsonl",
+      "workingDirectory": "/home/enpasos/projects/skillpilot/app",
+      "chunk_id": "410a2f",
+      "wall_time_seconds": 0.516569608,
+      "exit_code": 0,
+      "original_token_count": 10,
+      "output": "Goal-description review batch valid: 8\n"
+    },
+    {
+      "label": "normal-d-campaign-final",
+      "command": "node --import tsx scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/review-bundle-manifest.json --input /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/description-review-input.json --campaign /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/description-review-campaign.json --batches-dir /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P/round-a/batches --results-dir /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-native-independent-a-20261010-v1/normal-campaign-a/results",
+      "workingDirectory": "/home/enpasos/projects/skillpilot/app",
+      "chunk_id": "2324da",
+      "wall_time_seconds": 0.540593069,
+      "exit_code": 0,
+      "original_token_count": 13,
+      "output": "Goal-description review campaign results valid: 8\n"
+    },
+    {
+      "label": "normal-current-P8-own-capsule",
+      "command": "node --import tsx scripts/positiveGoalEvidenceReview.ts --config=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/positive/eight-current-P.author.config.json --mode=check",
+      "workingDirectory": "/tmp/skillpilot-bio-independent-a-20261010/capsule/app",
+      "chunk_id": "f3134f",
+      "wall_time_seconds": 0.193936277,
+      "exit_code": 1,
+      "original_token_count": 64,
+      "output": "Configured path must stay inside the repository: /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/positive/eight-current-P.author.config.json\n"
+    },
+    {
+      "label": "normal-current-P8-own-capsule-final",
+      "command": "node --import tsx scripts/positiveGoalEvidenceReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/positive/eight-current-P.author.config.json --mode=check",
+      "workingDirectory": "/tmp/skillpilot-bio-independent-a-20261010/capsule/app",
+      "chunk_id": "91fe82",
+      "wall_time_seconds": 0.251457981,
+      "exit_code": 0,
+      "original_token_count": 78,
+      "output": "# Positive Goal Evidence Review: biologie-q1-eight-current-v3-raster-native-technical-author-20261010-v1\nScope: Exactly8 current V3 full scientific profiles with actual author rasters; independent native/image contexts pending\nConfigured goals: 8\nApproved: 0\nNeeds human review: 8\nRejected: 0\nBlocking issues: 0\n"
+    }
+  ],
+  "finalNormalGateResults": {
+    "descriptionBatch": 0,
+    "descriptionCampaign": 0,
+    "currentP8Capsule": 0
+  },
+  "independentScientificJudgmentIsSeparate": true
+}

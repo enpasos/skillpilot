@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-v1&quot;,&quot;maxWidthPixels&quot;:1600,&quot;maxHeightPixels&quot;:1200,&quot;jpegQuality&quot;:0.82,&quot;webpQuality&quot;:0.9,&quot;maxBytes&quot;:1500000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Chemie – drei unveränderte Praktikumsziele mit aktuellen tatsächlichen Aufgabenkontexten</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Chemie – drei unveränderte Praktikumsziele mit aktuellen tatsächlichen Aufgabenkontexten</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>3 atomare Lernziele</dt><dd>3 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:4ca07b689ee5a244fcb393a4bb48edc4ef71df7eec67cece987b83d0d3ddbe1d</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:chemie-m7-review-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-fd713faf6c8502b7e7241677" aria-label="Chemie – kanonische M7-Prüfsicht"><a href="#goal-d2d735de-bede-5310-8aeb-8bb7562c7b75"><span class="toc-entry-label">Chemie&#160;<wbr>–&#160;<wbr>kanonische&#160;<wbr>M7-Prüfsicht</span></a></h2>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:candidate-chemistry-root" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-65c2c4f07514968236c55557" aria-label="Chemie"><a href="#goal-d2d735de-bede-5310-8aeb-8bb7562c7b75"><span class="toc-entry-label">Chemie</span></a></h3>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:9c4bcccf-a1b0-55ce-924d-79853c4b8c16" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-134158492374a060c634983e" aria-label="Experimentelle Gleichgewichts- und Elektrochemie (BW Sek II)"><a href="#goal-d2d735de-bede-5310-8aeb-8bb7562c7b75"><span class="toc-entry-label">Experimentelle&#160;<wbr>Gleichgewichts-&#160;<wbr>und&#160;<wbr>Elektrochemie&#160;<wbr>(BW&#160;<wbr>Sek&#160;<wbr>II)</span></a></h4>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-d2d735de-bede-5310-8aeb-8bb7562c7b75" data-goal-id="d2d735de-bede-5310-8aeb-8bb7562c7b75" data-page-number="1" data-chapter-ids="structure:chemie-m7-review-root structure:candidate-chemistry-root goal:9c4bcccf-a1b0-55ce-924d-79853c4b8c16" aria-labelledby="goal-d2d735de-bede-5310-8aeb-8bb7562c7b75-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d2d735de-bede-5310-8aeb-8bb7562c7b75-title"><a class="goal-self-link" href="#goal-d2d735de-bede-5310-8aeb-8bb7562c7b75">Konzentrationsbedingte Gleichgewichtsverschiebungen experimentell untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d2d735de-bede-5310-8aeb-8bb7562c7b75</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-65c2c4f07514968236c55557">Chemie</a></li><li><a href="#chapter-134158492374a060c634983e">Experimentelle Gleichgewichts- und Elektrochemie (BW Sek II)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:becd791c21d8aa1f2b84f72e941db639fca093a961c428d4e90b5f1a43b343c4" data-rendered-digest="sha256:4b8c9c2622cddd314b4cf11df7ce274a01885b560c7865944f214fc5bc53be26" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/chemie/d2d735de-bede-5310-8aeb-8bb7562c7b75/d2d735de-bede-5310-8aeb-8bb7562c7b75.png" alt="Drei gleichartige Reagenzgläser R, K und V stehen in einer Auffangwanne. R und K enthalten ähnlich helle rote Lösung, V eine dunklere rote Lösung. Eine Pipette gibt gelbes vorbereitetes Eisen(III)-Reagenz in V; neben dem Aufbau liegen Schutzbrille und beschriftete Reagenzflasche. Die Zeichnung orientiert zum kontrollierten Vergleich und zeigt keine tatsächlich durchgeführte Lernendenmessung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d2d735de-bede-5310-8aeb-8bb7562c7b75-description-heading">
+        <p class="section-heading" id="goal-d2d735de-bede-5310-8aeb-8bb7562c7b75-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an einem vorgegebenen homogenen Gleichgewicht eine einzelne Konzentrationsänderung unter den vorgegebenen Sicherheitsbedingungen experimentell untersuchen, Vergleichsbeobachtungen mit einer Referenz protokollieren und die beobachtete Verschiebung mit dem Prinzip von Le Chatelier unter Angabe der Grenzen des verwendeten Modells erklären.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d2d735de-bede-5310-8aeb-8bb7562c7b75-requires-heading">
+          <p class="section-heading" id="goal-d2d735de-bede-5310-8aeb-8bb7562c7b75-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-d2d735de-bede-5310-8aeb-8bb7562c7b75-reverse-heading">
+          <p class="section-heading" id="goal-d2d735de-bede-5310-8aeb-8bb7562c7b75-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-d2d735de-bede-5310-8aeb-8bb7562c7b75-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d2d735de-bede-5310-8aeb-8bb7562c7b75-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-5a24dae0-6d33-5227-8d8b-e8f74c2ccc4c" rel="noreferrer noopener"><span>Le-Chatelier-Prinzip nutzen</span> <code>5a24dae0-6d33-5227-8d8b-e8f74c2ccc4c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-d2d735de-bede-5310-8aeb-8bb7562c7b75-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d2d735de-bede-5310-8aeb-8bb7562c7b75-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-3259bf7f-4af4-58ae-8190-9aec07ec476f" rel="noreferrer noopener"><span>Konzentrationsvariation praktisch durchführen und auswerten</span> <code>3259bf7f-4af4-58ae-8190-9aec07ec476f</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 3</span>
+      <span>Buch-Digest <code>sha256:4ca07b689ee5a244fcb393a4bb48edc4ef71df7eec67cece987b83d0d3ddbe1d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:ffeb03c916d5823528e30dccafd39d3420a87a15d68d0eaea076b3223e8234d3</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=chemie-three-BW-practical-terminal-context-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=d2d735de-bede-5310-8aeb-8bb7562c7b75&amp;goalFingerprint=sha256%3Affeb03c916d5823528e30dccafd39d3420a87a15d68d0eaea076b3223e8234d3&amp;pageFingerprint=sha256%3Affaf67049f126d86f3efb7c28f9544e3bfd53a8610a8db6494068b96dec2a8bd&amp;bookDigest=sha256%3A4ca07b689ee5a244fcb393a4bb48edc4ef71df7eec67cece987b83d0d3ddbe1d&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a0f6ba09-f072-5887-a797-fa369453c62a" data-goal-id="a0f6ba09-f072-5887-a797-fa369453c62a" data-page-number="2" data-chapter-ids="structure:chemie-m7-review-root structure:candidate-chemistry-root goal:9c4bcccf-a1b0-55ce-924d-79853c4b8c16" aria-labelledby="goal-a0f6ba09-f072-5887-a797-fa369453c62a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a0f6ba09-f072-5887-a797-fa369453c62a-title"><a class="goal-self-link" href="#goal-a0f6ba09-f072-5887-a797-fa369453c62a">Ein reversibles Austauschmodell zur Gleichgewichtseinstellung durchführen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a0f6ba09-f072-5887-a797-fa369453c62a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-65c2c4f07514968236c55557">Chemie</a></li><li><a href="#chapter-134158492374a060c634983e">Experimentelle Gleichgewichts- und Elektrochemie (BW Sek II)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:fd045b3a6499dad19edbbf0fff748c2e9b2d0c18e058399204dbae661ecd3bc7" data-rendered-digest="sha256:c8452df94914b17eddbf92fed6358b3fc5c8c9e86466478c8a1f21490ed252a8" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/chemie/a0f6ba09-f072-5887-a797-fa369453c62a/a0f6ba09-f072-5887-a797-fa369453c62a.png" alt="Austauschmodell mit zwei gleich großen Messzylindern A und B in einer Auffangwanne: A enthält modellhaft 30 mL Wasser, B 60 mL. Zwei gleich breite entgegengesetzte Pfeile sind jeweils mit 10 mL beschriftet; sie veranschaulichen weiterlaufende gleiche Austauschmengen je Runde bei ungleichen Gesamtmengen. Zwei getrennte Messspritzen liegen in der Wanne. Das Wasser bleibt Wasser; dargestellt ist ein Modellzustand, keine reale chemische Umwandlung oder Messleistung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a0f6ba09-f072-5887-a797-fa369453c62a-description-heading">
+        <p class="section-heading" id="goal-a0f6ba09-f072-5887-a797-fa369453c62a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann ein vorgegebenes reversibles Austausch-Modellexperiment regelgetreu durchführen, den zeitlichen Verlauf beider Mengen und beider Übertragungsrichtungen protokollieren und den erreichten stationären Zustand anhand fortbestehender annähernd gleicher Übertragungsraten unter Angabe der Grenzen als Modell eines chemischen Gleichgewichts auswerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a0f6ba09-f072-5887-a797-fa369453c62a-requires-heading">
+          <p class="section-heading" id="goal-a0f6ba09-f072-5887-a797-fa369453c62a-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-a0f6ba09-f072-5887-a797-fa369453c62a-reverse-heading">
+          <p class="section-heading" id="goal-a0f6ba09-f072-5887-a797-fa369453c62a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-a0f6ba09-f072-5887-a797-fa369453c62a-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a0f6ba09-f072-5887-a797-fa369453c62a-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-81373fb7-2a4a-5b2c-acd0-b4e775acaa65" rel="noreferrer noopener"><span>Gleichgewichtsdynamik nachweisen</span> <code>81373fb7-2a4a-5b2c-acd0-b4e775acaa65</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-a0f6ba09-f072-5887-a797-fa369453c62a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a0f6ba09-f072-5887-a797-fa369453c62a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-e6196381-eab5-5a3e-bb6e-56c6e6e3617f" rel="noreferrer noopener"><span>Reversiblen Austausch praktisch durchführen und auswerten</span> <code>e6196381-eab5-5a3e-bb6e-56c6e6e3617f</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 3</span>
+      <span>Buch-Digest <code>sha256:4ca07b689ee5a244fcb393a4bb48edc4ef71df7eec67cece987b83d0d3ddbe1d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:73d22ec9a80b75a3daf1efec2782e4cbbde8321f8be4a0c2372bb35515d52c37</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=chemie-three-BW-practical-terminal-context-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=a0f6ba09-f072-5887-a797-fa369453c62a&amp;goalFingerprint=sha256%3A73d22ec9a80b75a3daf1efec2782e4cbbde8321f8be4a0c2372bb35515d52c37&amp;pageFingerprint=sha256%3Af04f5baaa42dd5b275842339e239d07f9dcb04915bb824c39503ed1d8bca802a&amp;bookDigest=sha256%3A4ca07b689ee5a244fcb393a4bb48edc4ef71df7eec67cece987b83d0d3ddbe1d&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-7b39fa19-fec3-575e-9324-a3226b703358" data-goal-id="7b39fa19-fec3-575e-9324-a3226b703358" data-page-number="3" data-chapter-ids="structure:chemie-m7-review-root structure:candidate-chemistry-root goal:9c4bcccf-a1b0-55ce-924d-79853c4b8c16" aria-labelledby="goal-7b39fa19-fec3-575e-9324-a3226b703358-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-7b39fa19-fec3-575e-9324-a3226b703358-title"><a class="goal-self-link" href="#goal-7b39fa19-fec3-575e-9324-a3226b703358">Leerlaufspannungen galvanischer Zellen experimentell ermitteln</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>7b39fa19-fec3-575e-9324-a3226b703358</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-fd713faf6c8502b7e7241677">Chemie – kanonische M7-Prüfsicht</a></li><li><a href="#chapter-65c2c4f07514968236c55557">Chemie</a></li><li><a href="#chapter-134158492374a060c634983e">Experimentelle Gleichgewichts- und Elektrochemie (BW Sek II)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:aaaae036375d26854baaad8d268a630b141dffad9f9e4c537b4567a817c849aa" data-rendered-digest="sha256:b4562647c17af8b3f9cc4987c6fe7a515447ac8c1eddd52a113bc63080921375" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/chemie/7b39fa19-fec3-575e-9324-a3226b703358/7b39fa19-fec3-575e-9324-a3226b703358.png" alt="Daniell-Zelle in einer Auffangwanne: links ein grauer Zinkstreifen in farbloser Zinksulfatlösung, rechts ein kupferfarbener Streifen in blauer Kupfersulfatlösung. Eine gefüllte U-förmige Salzbrücke taucht mit beiden Enden in die getrennten Lösungen. Die schwarze Messleitung verbindet Zn mit dem Minusanschluss, die rote Cu mit dem Plusanschluss eines Voltmeters mit bezeichnetem Eingangswiderstand 10 MΩ. Das Display zeigt nur V, keinen Messwert. Eine Schutzbrille liegt daneben; keine äußere Last oder Stromquelle ist angeschlossen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-7b39fa19-fec3-575e-9324-a3226b703358-description-heading">
+        <p class="section-heading" id="goal-7b39fa19-fec3-575e-9324-a3226b703358-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann eine vorgegebene galvanische Zelle mit geeigneten Halbzellen, einer ionenleitenden Verbindung und einer hochohmigen Spannungsmessung sicher aufbauen und betreiben, Polung und Messbedingungen protokollieren sowie ihre näherungsweise Leerlaufspannung experimentell ermitteln und mit einem für diese Bedingungen angegebenen Vergleichswert begründet vergleichen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-7b39fa19-fec3-575e-9324-a3226b703358-requires-heading">
+          <p class="section-heading" id="goal-7b39fa19-fec3-575e-9324-a3226b703358-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-7b39fa19-fec3-575e-9324-a3226b703358-reverse-heading">
+          <p class="section-heading" id="goal-7b39fa19-fec3-575e-9324-a3226b703358-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-7b39fa19-fec3-575e-9324-a3226b703358-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7b39fa19-fec3-575e-9324-a3226b703358-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-8be14f15-2258-58e6-ae4e-38953f5d0570" rel="noreferrer noopener"><span>Spannungsreihen nutzen</span> <code>8be14f15-2258-58e6-ae4e-38953f5d0570</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-7b39fa19-fec3-575e-9324-a3226b703358-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-7b39fa19-fec3-575e-9324-a3226b703358-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&amp;edition=curricular-atomic-v1#goal-563f69ed-562f-5544-ab0c-bf0e481928d8" rel="noreferrer noopener"><span>Galvanische Leerlaufspannung praktisch messen und vergleichen</span> <code>563f69ed-562f-5544-ab0c-bf0e481928d8</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 3</span>
+      <span>Buch-Digest <code>sha256:4ca07b689ee5a244fcb393a4bb48edc4ef71df7eec67cece987b83d0d3ddbe1d</code></span>
+      <span>Ziel-Fingerprint <code>sha256:39e97c4b7ad988328428f3532cce90fa84c1dd570e7d182dffa19494812d265a</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=chemie-three-BW-practical-terminal-context-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=7b39fa19-fec3-575e-9324-a3226b703358&amp;goalFingerprint=sha256%3A39e97c4b7ad988328428f3532cce90fa84c1dd570e7d182dffa19494812d265a&amp;pageFingerprint=sha256%3A6d496175933d3e2e6d0a0dcaa072f42f99197869361c399d917333dadcb59c17&amp;bookDigest=sha256%3A4ca07b689ee5a244fcb393a4bb48edc4ef71df7eec67cece987b83d0d3ddbe1d&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

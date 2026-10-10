@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "role": "actual normal reviewer-A executions",
+  "temporaryExecutionOutsideCurricula": true,
+  "records": [
+    {
+      "toolEvidenceKey": "Acurrent0",
+      "cmd": "node --import tsx scripts/semanticAtomicityReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-independent-a-20261010-v2/atomicity-memory/A8.current-independent.config.json --mode=check --write-fingerprints",
+      "chunk_id": "d7821d",
+      "wall_time_seconds": 0.083970071,
+      "exit_code": 0,
+      "original_token_count": 52,
+      "output": "Updated fingerprints in curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-independent-a-20261010-v2/atomicity-memory/A8.current-independent.review.jsonl\n"
+    },
+    {
+      "toolEvidenceKey": "Acurrent1",
+      "cmd": "node --import tsx scripts/memoryCardReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-independent-a-20261010-v2/atomicity-memory/M8.current-independent.config.json --mode=check --write-fingerprints",
+      "chunk_id": "3e4158",
+      "wall_time_seconds": 0.08614708,
+      "exit_code": 0,
+      "original_token_count": 99,
+      "output": "Updated fingerprints in curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-independent-a-20261010-v2/atomicity-memory/M8.current-independent.review.jsonl\nUpdated fingerprints in curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-independent-a-20261010-v2/atomicity-memory/M8.cards.review.jsonl\n"
+    },
+    {
+      "toolEvidenceKey": "Avalidate0",
+      "cmd": "node --import tsx scripts/semanticAtomicityReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-independent-a-20261010-v2/atomicity-memory/A8.current-independent.config.json --mode=check",
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "chunk_id": "585048",
+      "wall_time_seconds": 0.0971345,
+      "exit_code": 0,
+      "original_token_count": 105,
+      "output": "# Semantic Atomicity Review: canonical-biology-full\nScope: Own targeted current eight-goal machine review; seven exact semantic decisions retained and 3312 genuinely reassessed after title correction\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 8\nCurrent reviewed atomic: 8\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\n"
+    },
+    {
+      "toolEvidenceKey": "Avalidate1",
+      "cmd": "node --import tsx scripts/memoryCardReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-independent-a-20261010-v2/atomicity-memory/M8.current-independent.config.json --mode=check",
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "chunk_id": "908f33",
+      "wall_time_seconds": 0.117522429,
+      "exit_code": 0,
+      "original_token_count": 214,
+      "output": "# Memory Card Review: canonical-biology-full\nScope: Own targeted current eight-goal machine review; seven exact semantic decisions retained and 3312 genuinely reassessed after title correction\nRule: memory-card-review-v1\nOrdinary atomic goals in scope: 8\nCurrent no-memory decisions: 8\nCurrent memory-required decisions: 0\nCurrent needs developer review: 0\nMemory goals in scope: 0\nTraced memory goals: 0\nKnown deck IDs: 3\nDeck files: 6\nCard rows: 54\nPrimary cards in scope: 0\nKept primary cards: 0\nCards marked remove: 0\nCards needing developer review: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\nMissing card review records: 0\nStale card review records: 0\nObsolete card review records: 0\nComposition visibility scopes: 0\nMemory-required goals checked in views: 0\nMemory-required goals without visible memory node: 0\n"
+    },
+    {
+      "toolEvidenceKey": "Avalidate2",
+      "cmd": "node --import tsx scripts/validateGoalDescriptionReviewCampaign.ts --bundle curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-technical-author-successor-v2/native/eight-title-methyl-current-P/round-a/review-bundle-manifest.json --input curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-technical-author-successor-v2/native/eight-title-methyl-current-P/round-a/description-review-input.json --campaign curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-technical-author-successor-v2/native/eight-title-methyl-current-P/round-a/description-review-campaign.json --run curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-independent-a-20261010-v2/normal-campaign-a/results/biologie-eight-title-methyl-current-native-20261010-v2-first-pass-a.batch-001.run.json --batch-input curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-technical-author-successor-v2/native/eight-title-methyl-current-P/round-a/batches/biologie-eight-title-methyl-current-native-20261010-v2-first-pass-a.batch-001.input.jsonl --records curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-independent-a-20261010-v2/normal-campaign-a/results/biologie-eight-title-methyl-current-native-20261010-v2-first-pass-a.batch-001.records.jsonl",
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "chunk_id": "729ca2",
+      "wall_time_seconds": 0.16589927,
+      "exit_code": 1,
+      "original_token_count": 71,
+      "output": "ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/app/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-technical-author-successor-v2/native/eight-title-methyl-current-P/round-a/review-bundle-manifest.json'\n"
+    },
+    {
+      "toolEvidenceKey": "Avalidate3",
+      "cmd": "node --import tsx scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-technical-author-successor-v2/native/eight-title-methyl-current-P/round-a/review-bundle-manifest.json --input curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-technical-author-successor-v2/native/eight-title-methyl-current-P/round-a/description-review-input.json --campaign curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-technical-author-successor-v2/native/eight-title-methyl-current-P/round-a/description-review-campaign.json --batches-dir curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-technical-author-successor-v2/native/eight-title-methyl-current-P/round-a/batches --results-dir curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-independent-a-20261010-v2/normal-campaign-a/results",
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "chunk_id": "f1f36b",
+      "wall_time_seconds": 0.180583311,
+      "exit_code": 1,
+      "original_token_count": 71,
+      "output": "ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/app/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-technical-author-successor-v2/native/eight-title-methyl-current-P/round-a/review-bundle-manifest.json'\n"
+    },
+    {
+      "toolEvidenceKey": "AvalidateD0",
+      "cmd": "node --import tsx scripts/validateGoalDescriptionReviewCampaign.ts --bundle /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-technical-author-successor-v2/native/eight-title-methyl-current-P/round-a/review-bundle-manifest.json --input /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-technical-author-successor-v2/native/eight-title-methyl-current-P/round-a/description-review-input.json --campaign /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-technical-author-successor-v2/native/eight-title-methyl-current-P/round-a/description-review-campaign.json --run /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-independent-a-20261010-v2/normal-campaign-a/results/biologie-eight-title-methyl-current-native-20261010-v2-first-pass-a.batch-001.run.json --batch-input /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-technical-author-successor-v2/native/eight-title-methyl-current-P/round-a/batches/biologie-eight-title-methyl-current-native-20261010-v2-first-pass-a.batch-001.input.jsonl --records /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-independent-a-20261010-v2/normal-campaign-a/results/biologie-eight-title-methyl-current-native-20261010-v2-first-pass-a.batch-001.records.jsonl",
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "chunk_id": "3c5648",
+      "wall_time_seconds": 0.41748647,
+      "exit_code": 0,
+      "original_token_count": 10,
+      "output": "Goal-description review batch valid: 8\n"
+    },
+    {
+      "toolEvidenceKey": "AvalidateD1",
+      "cmd": "node --import tsx scripts/validateGoalDescriptionReviewCampaignResults.ts --bundle /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-technical-author-successor-v2/native/eight-title-methyl-current-P/round-a/review-bundle-manifest.json --input /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-technical-author-successor-v2/native/eight-title-methyl-current-P/round-a/description-review-input.json --campaign /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-technical-author-successor-v2/native/eight-title-methyl-current-P/round-a/description-review-campaign.json --batches-dir /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-technical-author-successor-v2/native/eight-title-methyl-current-P/round-a/batches --results-dir /home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-independent-a-20261010-v2/normal-campaign-a/results",
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "chunk_id": "45877b",
+      "wall_time_seconds": 0.444006383,
+      "exit_code": 0,
+      "original_token_count": 13,
+      "output": "Goal-description review campaign results valid: 8\n"
+    },
+    {
+      "toolEvidenceKey": "AvalidateP",
+      "cmd": "node --import tsx scripts/positiveGoalEvidenceReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-title-methyl-current-native-technical-author-successor-v2/positive/eight-current-P.author.config.json --mode=check",
+      "cwd": "/tmp/skillpilot-bio-title-methyl-independent-a-20261010-v2/capsule/app",
+      "chunk_id": "49dbe6",
+      "wall_time_seconds": 0.275033305,
+      "exit_code": 0,
+      "original_token_count": 90,
+      "output": "# Positive Goal Evidence Review: biologie-q1-eight-title-methyl-current-native-technical-author-20261010-v2\nScope: Exactly8 whole V3 scientific profiles with two current3312 title fields and corrected995 raster; targeted AM/current independent native image review pending\nConfigured goals: 8\nApproved: 0\nNeeds human review: 8\nRejected: 0\nBlocking issues: 0\n"
+    }
+  ]
+}

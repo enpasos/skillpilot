@@ -1,0 +1,61 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-insect-eight-current-native-20261010-v1",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-raster-native-technical-author-20261010-v1/native/eight-current-P.prerequisite-safe.batch.config.json",
+  "configDigest": "sha256:764dfb3f9bed1d79d2aa60edb5579874105551a8b4b7686b10980d15afda7e32",
+  "goalIds": [
+    "e1ce88af-3cb7-599a-8a27-fd2ea2f6d492",
+    "fa59721d-fdee-50dd-b0de-0082abd33741",
+    "6ff8baef-ba6f-51ca-adb7-b9f785cf5b35",
+    "64569988-1fbe-5a0b-a685-3a7da99d0229",
+    "47391e58-6937-5a47-bef0-19c6fcd27b4b",
+    "fcc20f50-8eb3-5d6c-b37f-5be13c7d314e",
+    "d74b252b-217f-563c-8263-8062a1442d2e",
+    "62893858-64fb-5789-ad98-51b88e0de133"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 394,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-raster-native-technical-author-20261010-v1/native/after394-insect-eight.normal.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-raster-native-technical-author-20261010-v1/candidate/whole479327-with-eight-raster-links.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:348ed2743b76592bfcc30acdc8e7b75e0cd3286b3b799b03a647a37dc70e0042"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:1d58f43aed99b4720c15af8b0dfdf71fbf0ed837e689f4359e6194a9b66d3037",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:bb4dcea28afbbbb30dc7fd704ede9fc3f24f60f5927e64a5c8ed9b6b84b958c8",
+    "reviewInputFingerprint": "sha256:75eac96c54dc8adbccf138c2a5d72546eca401bfe69400762518582f971f3471",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-insect-eight-current-native-20261010-v1-a",
+        "campaignDigest": "sha256:69d5705736548bb3d72fd787f6469472afcea2f66ef396960a9248be24fe75b7",
+        "roundId": "biologie-insect-eight-current-native-20261010-v1-first-pass-a",
+        "independenceGroupId": "biologie-insect-eight-current-native-20261010-v1-independent-a",
+        "batchId": "biologie-insect-eight-current-native-20261010-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:95fadd098f02571c8bb20df779da8e59399c3ec8cabd8cd2e9a209f53787840b"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-insect-eight-current-native-20261010-v1-b",
+        "campaignDigest": "sha256:50a45fb446c87ca8fc7fa85c8ee8b339419f3a6cc55ffff40cc9856eeaa879eb",
+        "roundId": "biologie-insect-eight-current-native-20261010-v1-first-pass-b",
+        "independenceGroupId": "biologie-insect-eight-current-native-20261010-v1-independent-b",
+        "batchId": "biologie-insect-eight-current-native-20261010-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:95ed4c0cfccefbcb118e47eb17bd7415e834b9b2dc1425082c61765a000590a4"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

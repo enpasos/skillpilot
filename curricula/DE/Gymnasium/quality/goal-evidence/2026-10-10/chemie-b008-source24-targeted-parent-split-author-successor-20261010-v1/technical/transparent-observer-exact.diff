@@ -1,0 +1,18 @@
+--- unchanged-normal-source
++++ source24-read-only-observation
+@@ -1,6 +1,6 @@
+ import assert from 'node:assert/strict'
+ import { createHash } from 'node:crypto'
+-import { existsSync, readFileSync, readdirSync } from 'node:fs'
++import { existsSync, readFileSync, readdirSync, writeFileSync } from 'node:fs'
+ import { dirname, isAbsolute, relative, resolve } from 'node:path'
+ import { fileURLToPath } from 'node:url'
+ import { normalizeCanonicalLandscape } from '../src/utils/authoring/canonicalAuthoring'
+@@ -323,6 +323,7 @@
+     return { key, path, viewId, jurisdiction, stage, durationModel: null, courseProfile: (courseProfile || null) as 'GK' | 'LK' | null, goalIds, witnesses }
+   })
+   for (const jurisdiction of config.expectedJurisdictions) assert.ok(scopes.some(s => s.jurisdiction === jurisdiction && s.stage === 'SekI'), `Missing SekI source coverage: ${jurisdiction}`)
++  writeFileSync(local(repoRoot, 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-targeted-parent-split-author-successor-20261010-v1/checks/actual-normal-whole-source-union-before-unchanged-failing-count-assertion.observed.json'), JSON.stringify({schemaVersion:1,role:'Whole read-only author diagnostic before unchanged ordinary398 count assertion; not compiler PASS or independent source review',actualAtomicGoalIds:sorted(atoms),actualSourceUnionGoalIds:sorted(union),actualMappedAtomicGoalIds:sorted(mappedAtoms),actualUnresolvedAtomicGoalIds:sorted(unresolvedAtoms),actualUnresolvedScopeCount:unresolved.length,actualUnresolvedScopes:unresolved,actualWholeScopes:scopes,wholeOmittedGoalBodies:sorted([...atoms].filter(id=>!union.has(id))).map(goalId=>({goalId,reason:!mappedAtoms.has(goalId)?'no-reviewed-mapped-source-witness':unresolvedAtoms.has(goalId)?'unresolved-source-scope':'no-resolved-source-scope',wholeGoalBody:goals.get(goalId)})),originalBoundInputFiles:[...bindings.entries()].sort(([a],[b])=>compare(a,b)).map(([path,sha256])=>({path,sha256})),expectedWholeCount:config.expectedCurricularAtomicGoalCount,countAssertionKeptUnchanged:true,humanApproval:false,strictGain:0},null,2)+'\n')
+   assert.equal(union.size, config.expectedCurricularAtomicGoalCount, 'Source-supported atlas goal count changed')
+   parseSubjectDurationModelPolicy(durationPolicy, config.subject, config.expectedJurisdictions, scopes)
+ 

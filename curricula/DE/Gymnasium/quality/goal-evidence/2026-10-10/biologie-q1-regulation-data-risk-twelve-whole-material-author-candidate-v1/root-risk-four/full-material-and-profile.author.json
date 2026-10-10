@@ -1,0 +1,684 @@
+{
+  "schemaVersion": 1,
+  "contentLicense": "CC-BY-4.0",
+  "role": "author_candidate",
+  "author": "Codex /root (co-author of these four, not their independent reviewer)",
+  "createdAt": "2026-10-09T23:08:54.673625+00:00",
+  "goals": [
+    {
+      "goalId": "40334348-bd84-5ed9-b76b-5f5b80c2d145",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Mehrere segregierende Gene können gemeinsam ein Merkmal beeinflussen; das Modell einer einzelnen dominant-rezessiven Eigenschaft reicht dann nicht aus.",
+            "essentialUnderstandingEn": "Several segregating genes can jointly influence a trait; a single dominant-recessive trait model is then insufficient.",
+            "observablePerformanceDe": "Die lernende Person leitet aus vorgegebenen Allelwirkungen verschiedene Merkmalsausprägungen ab und erklärt den Beitrag beider Gene.",
+            "observablePerformanceEn": "The learner derives different trait values from supplied allele effects and explains the contribution of both genes."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Multifaktoriell verbindet genetische Beiträge mit Umwelteinflüssen; ein Merkmal oder Risikowert legt den Genotyp und den individuellen Verlauf nicht eindeutig fest.",
+            "essentialUnderstandingEn": "Multifactorial combines genetic contributions with environmental influences; a trait or risk value does not uniquely determine genotype or individual outcome.",
+            "observablePerformanceDe": "Die lernende Person trennt Allelvererbung, Umweltwirkung und modellierte Wahrscheinlichkeit, begründet mögliche gleiche Phänotypen und vermeidet genetischen Determinismus.",
+            "observablePerformanceEn": "The learner distinguishes allele inheritance, environmental effects and modeled probability, explains possible identical phenotypes and avoids genetic determinism."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Neue Kreuzungen oder Gen-Umwelt-Wechselwirkungen verlangen eine neue Erklärung aus den Bedingungen, nicht die Übernahme eines früheren Zahlenverhältnisses.",
+            "essentialUnderstandingEn": "New crosses or gene-environment interactions require a new explanation from the conditions rather than reuse of an earlier ratio.",
+            "observablePerformanceDe": "Die lernende Person bearbeitet beide Fälle und die neue Bedingung selbständig und prüft, welche Modellannahmen weiter gelten.",
+            "observablePerformanceEn": "The learner independently addresses both cases and the new condition and checks which model assumptions still apply."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Genetische Kreuzung gegenüber Umwelt-/Risikomodell",
+            "textEn": "Genetic cross versus environmental/risk model"
+          },
+          {
+            "id": "v2",
+            "textDe": "Additive Beiträge gegenüber Gen-Umwelt-Wechselwirkung",
+            "textEn": "Additive contributions versus gene-environment interaction"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "poly-c1",
+            "taskDemandDe": "Erstelle die 16 gleich wahrscheinlichen Gametenkombinationen und ordne sie den genetischen Pigmentzahlen 0–4 zu. Erkläre, weshalb ein 3:1-Schema für ein einziges Gen nicht genügt. Vergleiche AABb bei N=0 mit AaBb bei N=1: Kann gleiche Farbe einen gleichen Genotyp beweisen?",
+            "taskDemandEn": "Construct the 16 equally likely gamete combinations and classify them by genetic pigment count 0–4. Explain why a single-gene 3:1 scheme is insufficient. Compare AABb at N=0 with AaBb at N=1: can identical color prove identical genotype?",
+            "expectedPerformanceDe": "Aus der Kombination der zwei unabhängigen 1:2:1-Verteilungen AA:Aa:aa und BB:Bb:bb ergeben sich für 0,1,2,3,4 Großbuchstaben 1,4,6,4,1 von 16 Nachkommen. Beispiel: AaBb trägt zwei, AABb drei Einheiten. Das Merkmal hängt von beiden Genen ab; Allele segregieren weiterhin, aber ihr gemeinsamer additiver Phänotyp ist keine einzelne dominant-rezessive Kategorie. AABb/N=0 ergibt 3; AaBb/N=1 ergibt ebenfalls 3. Gleiche Farbe erlaubt daher keinen eindeutigen Genotyp: Umweltwirkung ist keine neue Mutation.",
+            "expectedPerformanceEn": "Combining independent AA:Aa:aa and BB:Bb:bb 1:2:1 distributions gives 1,4,6,4,1 out of 16 offspring with 0,1,2,3,4 uppercase alleles. AaBb contributes two units, AABb three. Both genes influence the trait; alleles still segregate, but the joint additive phenotype is not a single dominant-recessive category. AABb/N=0 gives 3; AaBb/N=1 also gives 3. Identical color therefore does not identify genotype: an environmental effect is not a new mutation.",
+            "understandingFocusDe": "Eigenständig die angegebenen Daten und Modellannahmen verbinden; die frische Veränderung neu begründen und Grenzen benennen.",
+            "understandingFocusEn": "Independently connect the supplied data and model assumptions, justify the fresh change and identify limitations."
+          },
+          {
+            "id": "poly-c2",
+            "taskDemandDe": "Erstelle die Risikotabelle für die vier Genotypen bei E=0 und E=1. Erkläre polygen gegenüber multifaktoriell, die mögliche Rolle geteilter Gene und Umwelten innerhalb einer Familie und warum auch AABB/E=1 keine sichere Erkrankung bedeutet.",
+            "taskDemandEn": "Construct the risk table for the four genotypes at E=0 and E=1. Explain polygenic versus multifactorial inheritance, possible shared genes and environments within a family, and why even AABB/E=1 does not mean certain disease.",
+            "expectedPerformanceDe": "Bei E=0 ergeben sich AABB 30%, AaBB 25%, AaBb 20%, aabb 10%; bei E=1 50%,45%,40%,30%. Zwei Gene tragen bei: polygen. Zusätzlich verändert E das Ergebnis: multifaktoriell. Familienähnlichkeit kann sowohl gemeinsame Allele als auch gemeinsame Umwelt einschließen. 50% ist eine Modellwahrscheinlichkeit, weder ein Beweis für Erkrankung noch für Gesundheit einer Einzelperson. Ein pauschales 3:1-Erkrankungsschema passt nicht zu dieser Konstellation.",
+            "expectedPerformanceEn": "At E=0 the values are AABB 30%, AaBB 25%, AaBb 20%, aabb 10%; at E=1 they are 50%,45%,40%,30%. Two genes contribute: polygenic. E also changes the outcome: multifactorial. Family resemblance can involve shared alleles and shared environment. 50% is a modeled probability, not proof of disease or health in one individual. A universal 3:1 disease ratio does not fit these conditions.",
+            "understandingFocusDe": "Eigenständig die angegebenen Daten und Modellannahmen verbinden; die frische Veränderung neu begründen und Grenzen benennen.",
+            "understandingFocusEn": "Independently connect the supplied data and model assumptions, justify the fresh change and identify limitations."
+          }
+        ]
+      },
+      "cases": [
+        {
+          "id": "poly-c1",
+          "titleDe": "Zwei Pigmentgene und gleiche Phänotypen",
+          "titleEn": "Two pigment genes and identical phenotypes",
+          "syntheticData": true,
+          "materialDe": "Fiktives Pflanzenmodell: zwei ungekoppelte diploide Gene A/a und B/b; jede Großbuchstaben-Kopie liefert eine Pigmenteinheit. Alle Gameten einer AaBb-Pflanze sind AB, Ab, aB und ab, je 1/4. Keine Dominanz, Epistasie oder Selektionsunterschiede; gleiche Kulturbedingungen. Unabhängig davon erhöht der vorgegebene Nährstoffzustand N=1 die gemessene Pigmentzahl um eine Einheit, ohne DNA zu verändern; bei N=0 nicht. Wir betrachten AaBb × AaBb.",
+          "materialEn": "Fictional plant model: two unlinked diploid genes A/a and B/b; each uppercase allele copy contributes one pigment unit. AaBb produces AB, Ab, aB and ab gametes with probability 1/4 each. No dominance, epistasis or selection differences; identical growth conditions. Independently, supplied nutrient state N=1 increases measured pigment by one unit without changing DNA; N=0 does not. Consider AaBb × AaBb.",
+          "taskDe": "Erstelle die 16 gleich wahrscheinlichen Gametenkombinationen und ordne sie den genetischen Pigmentzahlen 0–4 zu. Erkläre, weshalb ein 3:1-Schema für ein einziges Gen nicht genügt. Vergleiche AABb bei N=0 mit AaBb bei N=1: Kann gleiche Farbe einen gleichen Genotyp beweisen?",
+          "taskEn": "Construct the 16 equally likely gamete combinations and classify them by genetic pigment count 0–4. Explain why a single-gene 3:1 scheme is insufficient. Compare AABb at N=0 with AaBb at N=1: can identical color prove identical genotype?",
+          "workedSolutionDe": "Aus der Kombination der zwei unabhängigen 1:2:1-Verteilungen AA:Aa:aa und BB:Bb:bb ergeben sich für 0,1,2,3,4 Großbuchstaben 1,4,6,4,1 von 16 Nachkommen. Beispiel: AaBb trägt zwei, AABb drei Einheiten. Das Merkmal hängt von beiden Genen ab; Allele segregieren weiterhin, aber ihr gemeinsamer additiver Phänotyp ist keine einzelne dominant-rezessive Kategorie. AABb/N=0 ergibt 3; AaBb/N=1 ergibt ebenfalls 3. Gleiche Farbe erlaubt daher keinen eindeutigen Genotyp: Umweltwirkung ist keine neue Mutation.",
+          "workedSolutionEn": "Combining independent AA:Aa:aa and BB:Bb:bb 1:2:1 distributions gives 1,4,6,4,1 out of 16 offspring with 0,1,2,3,4 uppercase alleles. AaBb contributes two units, AABb three. Both genes influence the trait; alleles still segregate, but the joint additive phenotype is not a single dominant-recessive category. AABb/N=0 gives 3; AaBb/N=1 also gives 3. Identical color therefore does not identify genotype: an environmental effect is not a new mutation.",
+          "rubric": [
+            {
+              "id": "poly-c1-r1",
+              "expectationIds": [
+                "e1"
+              ],
+              "criterionDe": "Beiträge beider Gene korrekt aus Gameten oder Allelzahl begründen.",
+              "criterionEn": "Correctly explain both genes using gametes or allele counts."
+            },
+            {
+              "id": "poly-c1-r2",
+              "expectationIds": [
+                "e2"
+              ],
+              "criterionDe": "Umwelt, Genotyp und Ergebnis/Wahrscheinlichkeit trennen; keine deterministische Individualdiagnose.",
+              "criterionEn": "Distinguish environment, genotype and outcome/probability; no deterministic individual diagnosis."
+            },
+            {
+              "id": "poly-c1-r3",
+              "expectationIds": [
+                "e3"
+              ],
+              "criterionDe": "Neue Bedingungen tatsächlich neu auswerten und Grenze benennen.",
+              "criterionEn": "Actually reevaluate the new conditions and state a limitation."
+            }
+          ],
+          "freshTransferDe": "Eine neue Kreuzung Aabb × aaBb erfolgt bei N=0. Leite die Gameten und Pigmentverteilung neu ab. Später bekommen alle Nachkommen N=1. Ändert das die vererbten Allele oder nur die beobachtete Pigmentzahl?",
+          "freshTransferEn": "A new cross Aabb × aaBb is grown at N=0. Derive its gametes and pigment distribution anew. Later all offspring receive N=1. Does this change inherited alleles or only observed pigment?",
+          "freshTransferSolutionDe": "Ab/ab × aB/ab ergibt AaBb, Aabb, aaBb, aabb mit je 1/4: Pigment 2,1,1,0, somit 0:1:2 = 1:2:1. N=1 verschiebt die Messwerte zu 1,2,3, ohne die Genotypverteilung zu ändern. Die frühere Verteilung 1:4:6:4:1 darf nicht übernommen werden.",
+          "freshTransferSolutionEn": "Ab/ab × aB/ab gives AaBb, Aabb, aaBb, aabb with probability 1/4 each: pigment 2,1,1,0, hence 0:1:2 = 1:2:1. N=1 shifts observations to 1,2,3 without changing genotype frequencies. The previous 1:4:6:4:1 distribution cannot be reused.",
+          "limitsDe": "Ein ausdrücklich vereinfachtes additives Modell, keine Behauptung über eine reale Pigmenteigenschaft oder alle polygenen Merkmale; echte Allelwirkungen und Umweltwechselwirkungen können anders sein.",
+          "limitsEn": "An explicitly simplified additive model, not a claim about a real pigment trait or all polygenic traits; real allele effects and environmental interactions can differ."
+        },
+        {
+          "id": "poly-c2",
+          "titleDe": "Viele genetische Beiträge ergeben keine sichere Erkrankung",
+          "titleEn": "Multiple genetic contributions do not determine disease",
+          "syntheticData": true,
+          "materialDe": "Rein synthetischer Erkrankungsendpunkt Z; keine reale Diagnose. Vorgegebenes Zweigenmodell: k ist die Zahl der Großbuchstaben in A/a und B/b, E ist eine Umweltbedingung (0 oder 1). P(Z) in Prozent = 10 + 5k + 20E. AABB hat k=4, AaBB k=3, AaBb k=2, aabb k=0. Genotypen bleiben während der Beobachtung gleich; der Ausdruck ist ein vorgegebenes Unterrichtsmodell, keine aus Patientendaten geschätzte Formel.",
+          "materialEn": "Entirely synthetic disease endpoint Z; no real diagnosis. Supplied two-gene model: k counts uppercase alleles at A/a and B/b; E is an environmental condition (0 or 1). P(Z) in percent = 10 + 5k + 20E. AABB has k=4, AaBB k=3, AaBb k=2, aabb k=0. Genotypes remain unchanged during observation; the expression is a supplied teaching model, not a formula fitted to patient data.",
+          "taskDe": "Erstelle die Risikotabelle für die vier Genotypen bei E=0 und E=1. Erkläre polygen gegenüber multifaktoriell, die mögliche Rolle geteilter Gene und Umwelten innerhalb einer Familie und warum auch AABB/E=1 keine sichere Erkrankung bedeutet.",
+          "taskEn": "Construct the risk table for the four genotypes at E=0 and E=1. Explain polygenic versus multifactorial inheritance, possible shared genes and environments within a family, and why even AABB/E=1 does not mean certain disease.",
+          "workedSolutionDe": "Bei E=0 ergeben sich AABB 30%, AaBB 25%, AaBb 20%, aabb 10%; bei E=1 50%,45%,40%,30%. Zwei Gene tragen bei: polygen. Zusätzlich verändert E das Ergebnis: multifaktoriell. Familienähnlichkeit kann sowohl gemeinsame Allele als auch gemeinsame Umwelt einschließen. 50% ist eine Modellwahrscheinlichkeit, weder ein Beweis für Erkrankung noch für Gesundheit einer Einzelperson. Ein pauschales 3:1-Erkrankungsschema passt nicht zu dieser Konstellation.",
+          "workedSolutionEn": "At E=0 the values are AABB 30%, AaBB 25%, AaBb 20%, aabb 10%; at E=1 they are 50%,45%,40%,30%. Two genes contribute: polygenic. E also changes the outcome: multifactorial. Family resemblance can involve shared alleles and shared environment. 50% is a modeled probability, not proof of disease or health in one individual. A universal 3:1 disease ratio does not fit these conditions.",
+          "rubric": [
+            {
+              "id": "poly-c2-r1",
+              "expectationIds": [
+                "e1"
+              ],
+              "criterionDe": "Beiträge beider Gene korrekt aus Gameten oder Allelzahl begründen.",
+              "criterionEn": "Correctly explain both genes using gametes or allele counts."
+            },
+            {
+              "id": "poly-c2-r2",
+              "expectationIds": [
+                "e2"
+              ],
+              "criterionDe": "Umwelt, Genotyp und Ergebnis/Wahrscheinlichkeit trennen; keine deterministische Individualdiagnose.",
+              "criterionEn": "Distinguish environment, genotype and outcome/probability; no deterministic individual diagnosis."
+            },
+            {
+              "id": "poly-c2-r3",
+              "expectationIds": [
+                "e3"
+              ],
+              "criterionDe": "Neue Bedingungen tatsächlich neu auswerten und Grenze benennen.",
+              "criterionEn": "Actually reevaluate the new conditions and state a limitation."
+            }
+          ],
+          "freshTransferDe": "Eine neue Modellhypothese lautet: Der Umweltbeitrag +20 gilt nur, wenn mindestens ein B vorhanden ist. Vergleiche bei E=1 AABB und aabb mit dem alten Modell und erkläre die Gen-Umwelt-Wechselwirkung. Welche zusätzliche Beobachtung wäre nötig, bevor man dieses neue Modell für eine reale Population verwendet?",
+          "freshTransferEn": "A new model hypothesis says that the environmental +20 contribution applies only when at least one B is present. Compare AABB and aabb at E=1 with the old model and explain the gene-environment interaction. What additional observation is needed before applying this new model to a real population?",
+          "freshTransferSolutionDe": "AABB bleibt 50%; aabb fällt von 30% auf 10%, weil dort kein B vorliegt. Der Umweltbeitrag hängt jetzt vom Genotyp ab; die alte uniforme Erhöhung gilt nicht allgemein. Nötig wären geeignete unabhängige Daten zu den Genotyp-/Umweltgruppen und Prüfung von Alternativerklärungen und Vorhersagegüte; die Unterrichtsformel selbst validiert kein reales Erkrankungsrisiko.",
+          "freshTransferSolutionEn": "AABB remains 50%; aabb changes from 30% to 10% because B is absent. The environmental contribution now depends on genotype; the old uniform increase is not universal. Suitable independent genotype/environment-group data and evaluation of alternative explanations and predictive performance are required; the classroom formula does not validate a real disease risk.",
+          "limitsDe": "Keine Heritabilitäts-, klinische Diagnose- oder Therapieaussage. Effekte, Basisrisiko und Interaktion sind fiktiv festgelegt; es wird keine reale Risikoformel trainiert.",
+          "limitsEn": "No heritability, clinical diagnosis or treatment claim. Effects, baseline risk and interaction are fictional supplied quantities; no real risk model is trained."
+        }
+      ]
+    },
+    {
+      "goalId": "1320b82e-e438-59ff-9d53-ecc9fbacae58",
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Ein SNP unterscheidet eine DNA-Basenposition; der diploide Genotyp folgt nur aus geeigneten orientierten, qualitätsgeprüften Allelsignalen.",
+            "essentialUnderstandingEn": "A SNP varies at one DNA base position; a diploid genotype requires correctly oriented, quality-checked allele signals.",
+            "observablePerformanceDe": "Die lernende Person identifiziert die Position, deutet valide homo-/heterozygote Signale und lässt unzureichende Daten ungeklärt.",
+            "observablePerformanceEn": "The learner identifies the position, interprets valid homozygous/heterozygous signals and leaves insufficient data unresolved."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Eine SNP-Assoziation oder ein Markergenotyp ist nicht automatisch Ursache, sichere Diagnose oder universell übertragbares Erkrankungsrisiko.",
+            "essentialUnderstandingEn": "A SNP association or marker genotype is not automatically a cause, certain diagnosis or universally transferable disease risk.",
+            "observablePerformanceDe": "Die lernende Person wertet die gegebenen Gruppenhäufigkeiten aus, trennt absolute und relative Aussage und prüft eine alternative Erklärung.",
+            "observablePerformanceEn": "The learner evaluates supplied group frequencies, distinguishes absolute and relative conclusions and checks an alternative explanation."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Neue Qualitätsdaten oder eine relevante Gruppeneinteilung können die zulässige Interpretation verändern.",
+            "essentialUnderstandingEn": "New quality data or relevant group stratification can change the permissible interpretation.",
+            "observablePerformanceDe": "Die lernende Person begründet beide Fälle und revidiert ihre Schlussfolgerung an einer neuen Messung oder Vergleichsbedingung selbständig.",
+            "observablePerformanceEn": "The learner justifies both cases and independently updates the conclusion after a new measurement or comparison condition."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Diploides Allelsignal gegenüber Populationsassoziation",
+            "textEn": "Diploid allele signal versus population association"
+          },
+          {
+            "id": "v2",
+            "textDe": "Neue Messqualität, Strangorientierung oder Störfaktorschichtung",
+            "textEn": "New measurement quality, strand orientation or confounder stratification"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "snp-c1",
+            "taskDemandDe": "Lokalisiere und charakterisiere den SNP. Bestimme die unter diesen Regeln vertretbaren Genotypen von P/Q/R und begründe die Rolle der Kontrollen und Molekülzahl. Beurteile die Behauptung: „P enthält die Variante und ist daher krank.“",
+            "taskDemandEn": "Locate and characterize the SNP. Determine the defensible P/Q/R genotypes under these rules and explain controls and molecule count. Evaluate: “P contains the variant and therefore has a disease.”",
+            "expectedPerformanceDe": "Es handelt sich um einen einzelnen G/A-Unterschied an Position 3. P erfüllt 40 Signale und 0,5/0,5: GA. Q erfüllt 30 Signale und Minderanteil 0: GG. R hat nur 10 Signale und 0,8/0,2; weder die Mindestzahl noch der Heterozygotenbereich ist erfüllt: ungeklärt, keine sichere AA/GA/GG-Aussage. Kontrollen prüfen die Funktionsfähigkeit des Assays, ersetzen aber nicht die einzelne Proben-QC. P zeigt Variation, keine hier belegte Erkrankungsdiagnose.",
+            "expectedPerformanceEn": "This is a single G/A difference at position 3. P meets 40 signals and 0.5/0.5: GA. Q meets 30 signals and minor fraction 0: GG. R has only 10 signals and 0.8/0.2; minimum count and heterozygous range are unmet: inconclusive, no certain AA/GA/GG call. Controls assess assay operation but do not replace sample-specific QC. P shows variation, not a supported disease diagnosis.",
+            "understandingFocusDe": "Eigenständig die angegebenen Daten und Modellannahmen verbinden; die frische Veränderung neu begründen und Grenzen benennen.",
+            "understandingFocusEn": "Independently connect the supplied data and model assumptions, justify the fresh change and identify limitations."
+          },
+          {
+            "id": "snp-c2",
+            "taskDemandDe": "Bestimme beobachtete Endpunkthäufigkeiten, relative und absolute Unterschiede. Welche Aussage über Variation/Risikomarker ist vertretbar, welche Ursache oder individuelle Diagnose nicht? Nenne eine gezielte zusätzliche Vergleichsprüfung.",
+            "taskDemandEn": "Calculate observed endpoint frequencies and relative and absolute differences. What variation/risk-marker conclusion is defensible, and what causal or individual diagnosis is not? Specify a targeted additional comparison.",
+            "expectedPerformanceDe": "Mit A: 30/200=15%; ohne A: 10/200=5%. Relatives Verhältnis 3, absoluter Unterschied 10 Prozentpunkte. Es liegt eine Assoziation vor, keine sichere Diagnose: 170 A-Träger zeigen Z nicht und 10 Nichtträger zeigen Z. Ursache, Kopplung zu einer anderen Variante, Umwelt-/Populationsunterschiede und Stichprobenunsicherheit bleiben zu prüfen. Sinnvoll ist ein Vergleich bei gleicher U-Ausprägung sowie unabhängige Replikation; die Zahl allein beweist keine biologische Kausalität.",
+            "expectedPerformanceEn": "With A: 30/200=15%; without A: 10/200=5%. Frequency ratio 3, absolute difference 10 percentage points. This is an association, not a certain diagnosis: 170 A carriers do not show Z and 10 noncarriers do. Causation, linkage to another variant, environmental/population differences and sampling uncertainty remain to be examined. Comparing equal U states and independent replication is useful; the numbers alone do not prove biological causality.",
+            "understandingFocusDe": "Eigenständig die angegebenen Daten und Modellannahmen verbinden; die frische Veränderung neu begründen und Grenzen benennen.",
+            "understandingFocusEn": "Independently connect the supplied data and model assumptions, justify the fresh change and identify limitations."
+          }
+        ]
+      },
+      "cases": [
+        {
+          "id": "snp-c1",
+          "titleDe": "Allelsignale und ein unklarer Messwert",
+          "titleEn": "Allele signals and an inconclusive measurement",
+          "syntheticData": true,
+          "materialDe": "Synthetischer diploider G/A-Marker: referenzierte DNA 5′-ACGTA-3′, Variante 5′-ACATA-3′; Position 3 unterscheidet G/A. Alle Signale sind auf diesen Vorwärtsstrang umgerechnet. Vorgegebene validierte Unterrichts-QC: mindestens 20 unabhängige Molekülsignale; Heterozygotie bei beiden Allelanteilen 0,30–0,70, Homozygotie bei Minderanteil höchstens 0,02; andernfalls keine sichere Zuordnung. Proben: P 20G/20A, Q 30G/0A, R 8G/2A. Kontrollproben GG und GA erfüllen ihre erwarteten Signale. Der Marker hat hier keine bekannte krankheitsverursachende Bedeutung.",
+          "materialEn": "Synthetic diploid G/A marker: reference 5′-ACGTA-3′, variant 5′-ACATA-3′; position 3 differs G/A. All signals are converted to this forward strand. Supplied validated classroom QC: at least 20 independent molecule signals; heterozygous calls require both allele fractions 0.30–0.70, homozygous calls a minor fraction at most 0.02; otherwise no certain assignment. Samples: P 20G/20A, Q 30G/0A, R 8G/2A. GG and GA controls have their expected signals. No disease-causing significance is known for this marker here.",
+          "taskDe": "Lokalisiere und charakterisiere den SNP. Bestimme die unter diesen Regeln vertretbaren Genotypen von P/Q/R und begründe die Rolle der Kontrollen und Molekülzahl. Beurteile die Behauptung: „P enthält die Variante und ist daher krank.“",
+          "taskEn": "Locate and characterize the SNP. Determine the defensible P/Q/R genotypes under these rules and explain controls and molecule count. Evaluate: “P contains the variant and therefore has a disease.”",
+          "workedSolutionDe": "Es handelt sich um einen einzelnen G/A-Unterschied an Position 3. P erfüllt 40 Signale und 0,5/0,5: GA. Q erfüllt 30 Signale und Minderanteil 0: GG. R hat nur 10 Signale und 0,8/0,2; weder die Mindestzahl noch der Heterozygotenbereich ist erfüllt: ungeklärt, keine sichere AA/GA/GG-Aussage. Kontrollen prüfen die Funktionsfähigkeit des Assays, ersetzen aber nicht die einzelne Proben-QC. P zeigt Variation, keine hier belegte Erkrankungsdiagnose.",
+          "workedSolutionEn": "This is a single G/A difference at position 3. P meets 40 signals and 0.5/0.5: GA. Q meets 30 signals and minor fraction 0: GG. R has only 10 signals and 0.8/0.2; minimum count and heterozygous range are unmet: inconclusive, no certain AA/GA/GG call. Controls assess assay operation but do not replace sample-specific QC. P shows variation, not a supported disease diagnosis.",
+          "rubric": [
+            {
+              "id": "snp-c1-r1",
+              "expectationIds": [
+                "e1"
+              ],
+              "criterionDe": "Basenposition und QC-Regeln korrekt anwenden; fehlerhafte Daten nicht sicher genotypisieren.",
+              "criterionEn": "Correctly use base position and QC rules; do not assign a certain genotype to unreliable data."
+            },
+            {
+              "id": "snp-c1-r2",
+              "expectationIds": [
+                "e2"
+              ],
+              "criterionDe": "Markeraussage, Häufigkeit und kausale/klinische Schlussfolgerung auseinanderhalten.",
+              "criterionEn": "Distinguish marker evidence and frequency from causal/clinical conclusions."
+            },
+            {
+              "id": "snp-c1-r3",
+              "expectationIds": [
+                "e3"
+              ],
+              "criterionDe": "Neue Daten ohne Übernahme der alten Aussage neu interpretieren.",
+              "criterionEn": "Reinterpret new data without blindly retaining the old conclusion."
+            }
+          ],
+          "freshTransferDe": "R wird aus einer neuen aliquoten Probe erneut gemessen: 24G/26A bei bestandenen Kontrollen. Eine zusätzliche Probe S liefert nur Rückwärtsstrangsignale 30C/0T; für diese SNP-Position wird ausdrücklich die Komplementzuordnung G↔C und A↔T angegeben. Ordne beide neu ein; was bleibt über eine Krankheit offen?",
+          "freshTransferEn": "R is remeasured from a new aliquot: 24G/26A with passing controls. An additional sample S produces reverse-strand signals 30C/0T; the supplied complement mapping at this SNP position is G↔C and A↔T. Interpret both anew; what remains unknown about disease?",
+          "freshTransferSolutionDe": "R erfüllt nun 50 Signale und Anteile 0,48/0,52: GA unter der gegebenen QC. S entspricht nach Strandumrechnung 30G/0A: GG; C darf nicht als drittes Vorwärtsallel erfunden werden. Keiner dieser Markerbefunde liefert ohne entsprechende funktionelle/klinische Evidenz eine Krankheitsdiagnose.",
+          "freshTransferSolutionEn": "R now meets 50 signals with fractions 0.48/0.52: GA under the supplied QC. After strand conversion S corresponds to 30G/0A: GG; C is not a third forward-strand allele. Neither marker result establishes disease without relevant functional/clinical evidence.",
+          "limitsDe": "QC-Schwellen sind ausdrücklich Modellvorgaben und keine allgemeine Laborrichtlinie; Strand, Referenz, Assay und Krankheitsbedeutung müssen in realen Analysen gesondert validiert sein.",
+          "limitsEn": "QC thresholds are explicit model assumptions, not universal laboratory guidelines; strand, reference, assay and disease significance need separate validation in real analyses."
+        },
+        {
+          "id": "snp-c2",
+          "titleDe": "Assoziation und eine neue Störfaktorprüfung",
+          "titleEn": "Association and a new confounder check",
+          "syntheticData": true,
+          "materialDe": "Synthetische prospektive Beobachtung mit gleichem Nachbeobachtungszeitraum, ohne Aussage über eine reale Erkrankung: 200 Personen mit SNP-Allel A, davon 30 mit Endpunkt Z; 200 ohne A, davon 10 mit Z. Vollständige Nachbeobachtung; die Gruppeneinteilung erfolgte nicht nach Z. Unbekannt ist zunächst die Verteilung eines Umweltfaktors U. Die Daten behaupten keine Zufallszuteilung des Markers.",
+          "materialEn": "Synthetic prospective observation over equal follow-up, with no claim about a real disease: 200 people carrying SNP allele A, 30 with endpoint Z; 200 without A, 10 with Z. Follow-up is complete; groups were not selected by Z. Distribution of environmental factor U is initially unknown. These data do not claim randomized marker assignment.",
+          "taskDe": "Bestimme beobachtete Endpunkthäufigkeiten, relative und absolute Unterschiede. Welche Aussage über Variation/Risikomarker ist vertretbar, welche Ursache oder individuelle Diagnose nicht? Nenne eine gezielte zusätzliche Vergleichsprüfung.",
+          "taskEn": "Calculate observed endpoint frequencies and relative and absolute differences. What variation/risk-marker conclusion is defensible, and what causal or individual diagnosis is not? Specify a targeted additional comparison.",
+          "workedSolutionDe": "Mit A: 30/200=15%; ohne A: 10/200=5%. Relatives Verhältnis 3, absoluter Unterschied 10 Prozentpunkte. Es liegt eine Assoziation vor, keine sichere Diagnose: 170 A-Träger zeigen Z nicht und 10 Nichtträger zeigen Z. Ursache, Kopplung zu einer anderen Variante, Umwelt-/Populationsunterschiede und Stichprobenunsicherheit bleiben zu prüfen. Sinnvoll ist ein Vergleich bei gleicher U-Ausprägung sowie unabhängige Replikation; die Zahl allein beweist keine biologische Kausalität.",
+          "workedSolutionEn": "With A: 30/200=15%; without A: 10/200=5%. Frequency ratio 3, absolute difference 10 percentage points. This is an association, not a certain diagnosis: 170 A carriers do not show Z and 10 noncarriers do. Causation, linkage to another variant, environmental/population differences and sampling uncertainty remain to be examined. Comparing equal U states and independent replication is useful; the numbers alone do not prove biological causality.",
+          "rubric": [
+            {
+              "id": "snp-c2-r1",
+              "expectationIds": [
+                "e1"
+              ],
+              "criterionDe": "Basenposition und QC-Regeln korrekt anwenden; fehlerhafte Daten nicht sicher genotypisieren.",
+              "criterionEn": "Correctly use base position and QC rules; do not assign a certain genotype to unreliable data."
+            },
+            {
+              "id": "snp-c2-r2",
+              "expectationIds": [
+                "e2"
+              ],
+              "criterionDe": "Markeraussage, Häufigkeit und kausale/klinische Schlussfolgerung auseinanderhalten.",
+              "criterionEn": "Distinguish marker evidence and frequency from causal/clinical conclusions."
+            },
+            {
+              "id": "snp-c2-r3",
+              "expectationIds": [
+                "e3"
+              ],
+              "criterionDe": "Neue Daten ohne Übernahme der alten Aussage neu interpretieren.",
+              "criterionEn": "Reinterpret new data without blindly retaining the old conclusion."
+            }
+          ],
+          "freshTransferDe": "Später wird U aufgeschlüsselt: A/U=hoch 150 Personen,30Z; A/U=niedrig 50,0Z; ohne A/U=hoch 50,10Z; ohne A/U=niedrig 150,0Z. Prüfe die Häufigkeiten innerhalb der U-Gruppen und revidiere die Markerinterpretation.",
+          "freshTransferEn": "Later U is resolved: A/high-U 150 people,30Z; A/low-U 50,0Z; no-A/high-U 50,10Z; no-A/low-U 150,0Z. Examine frequencies within U strata and update the marker interpretation.",
+          "freshTransferSolutionDe": "Innerhalb hoch-U: 30/150=20% mit A und 10/50=20% ohne A; innerhalb niedrig-U: in beiden Gruppen 0%. Die ungleiche U-Verteilung kann die gesamte beobachtete 15%-gegen-5%-Assoziation erklären. Ein unabhängiger Beitrag des Markers ist damit aus diesen Daten nicht belegt. Auch 0 beobachtete Fälle beweisen kein exakt null biologisches Risiko; eine andere Population oder Bedingung kann anders sein.",
+          "freshTransferSolutionEn": "Within high-U: 30/150=20% with A and 10/50=20% without A; within low-U both observed frequencies are 0%. Different U distributions can explain the complete observed 15%-versus-5% association. These data do not establish an independent marker contribution. Zero observed events do not prove exactly zero biological risk; another population or condition can differ.",
+          "limitsDe": "Keine klinischen Testeigenschaften oder kausale Schlussfolgerung werden vorausgesetzt; die berechenbaren Häufigkeiten sind beobachtete Modellwerte, keine universelle Vorhersage.",
+          "limitsEn": "No clinical test properties or causal conclusion are assumed; calculable frequencies are observed model values, not universal predictions."
+        }
+      ]
+    },
+    {
+      "goalId": "ee686aee-43d3-50df-a60a-e47ac845586c",
+      "profile": {
+        "archetype": "data",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Im gegebenen Erbmodell bestimmen Genotypen und ihre begründeten Wahrscheinlichkeiten die Risikoabschätzung; gesund bedeutet bei Rezessivität nicht automatisch kein Träger.",
+            "essentialUnderstandingEn": "In the supplied inheritance model, genotypes and justified genotype probabilities determine risk; an unaffected individual is not automatically a noncarrier in recessive inheritance.",
+            "observablePerformanceDe": "Die lernende Person interpretiert den gegebenen Stammbaum und trennt bestätigten Genotyp von aus Phänotypen abgeleiteter Unsicherheit.",
+            "observablePerformanceEn": "The learner interprets the supplied pedigree and distinguishes confirmed genotype from phenotype-based uncertainty."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Eine geeignete Populationshäufigkeit kann ein unbekanntes Partnerrisiko ergänzen, ersetzt aber weder den Stammbaum noch gesicherte individuelle Befunde.",
+            "essentialUnderstandingEn": "A suitable population frequency can inform unknown partner risk but replaces neither the pedigree nor confirmed individual evidence.",
+            "observablePerformanceDe": "Die lernende Person verbindet die passende Trägerhäufigkeit mit der richtigen Mendel-Wahrscheinlichkeit und erklärt Annahmen und Herkunft der Daten.",
+            "observablePerformanceEn": "The learner combines suitable carrier frequency with the correct Mendelian probability and explains assumptions and data origin."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Neue Genotypinformation, Populationseignung oder Bedingungen verändern die zulässige Rechnung; bekannte Erbgänge machen Geburten nicht zu ausgleichenden Serien.",
+            "essentialUnderstandingEn": "New genotype information, population suitability or conditions change the permissible calculation; known inheritance does not make births balancing sequences.",
+            "observablePerformanceDe": "Die lernende Person begründet zwei unabhängige Abschätzungen und passt sie an frische Evidenz an, ohne Modellrisiko als individuelle Diagnose auszugeben.",
+            "observablePerformanceEn": "The learner justifies two independent estimates and updates them using fresh evidence without presenting modeled risk as an individual diagnosis."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Bestätigter Genotyp gegenüber aus Stammbaum bedingter Unsicherheit",
+            "textEn": "Confirmed genotype versus pedigree-conditional uncertainty"
+          },
+          {
+            "id": "v2",
+            "textDe": "Passende Zufallsreferenz, angereicherte Familiengruppe und neue individuelle Evidenz",
+            "textEn": "Suitable random reference, enriched family group and new individual evidence"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "risk-c1",
+            "taskDemandDe": "Erstelle Aa×Aa und Aa×AA und schätze das Z-Risiko eines Kindes aus Stammbaum-/Test- und Populationsinformation ab. Erkläre jede Wahrscheinlichkeit und weshalb „nicht betroffen“ beim Partner keine sichere AA-Zuordnung ist.",
+            "taskDemandEn": "Construct Aa×Aa and Aa×AA and estimate a child’s Z risk from pedigree/test and population information. Explain each probability and why an unaffected partner is not certainly AA.",
+            "expectedPerformanceDe": "Aa×Aa liefert AA1/4,Aa1/2,aa1/4; Aa×AA liefert AA1/2,Aa1/2 und kein aa. Die bekannte Person trägt mit Wahrscheinlichkeit1 a; der Partner ist nach der passenden Referenz mit50/1000=1/20 Träger. Risiko aa=(1/20)×(1/4)=1/80=1,25%. Der Phänotyp schließt aa, aber nicht Aa aus. Dies ist eine Abschätzung unter den vorgegebenen Auswahl- und Erbannahmen.",
+            "expectedPerformanceEn": "Aa×Aa gives AA1/4,Aa1/2,aa1/4; Aa×AA gives AA1/2,Aa1/2 and no aa. The confirmed person is a carrier with probability1; estimated partner carrier probability is50/1000=1/20. Risk aa=(1/20)×(1/4)=1/80=1.25%. Being unaffected excludes aa but not Aa. This is an estimate under supplied sampling and inheritance assumptions.",
+            "understandingFocusDe": "Eigenständig die angegebenen Daten und Modellannahmen verbinden; die frische Veränderung neu begründen und Grenzen benennen.",
+            "understandingFocusEn": "Independently connect the supplied data and model assumptions, justify the fresh change and identify limitations."
+          },
+          {
+            "id": "risk-c2",
+            "taskDemandDe": "Leite die Trägerwahrscheinlichkeit des nicht betroffenen erwachsenen Kindes aus den verbleibenden Genotypfällen ab. Wähle die passende Partnerhäufigkeit und schätze das gemeinsame Kinderrisiko. Erkläre, warum weder 1/2 noch die Trägerquote aus N unkritisch übernommen werden darf.",
+            "taskDemandEn": "Derive the unaffected adult child’s carrier probability from remaining genotype possibilities. Choose appropriate partner frequency and estimate their child’s risk. Explain why neither1/2 nor group N’s carrier frequency can be used uncritically.",
+            "expectedPerformanceDe": "Aa×Aa hat vier gleich wahrscheinliche Allelkombinationen AA,Aa,aA,aa. Unter der bekannten Nichtbetroffenheit entfällt aa; von drei verbleibenden Fällen sind zwei Träger:2/3. Partnerquote aus M=90/900=1/10, nicht300/600 aus der angereicherten Gruppe N. Unter den unabhängigen Modellannahmen ergibt sich(2/3)×(1/10)×(1/4)=1/60≈1,67%.1/2 ist die unbedingte Aa-Wahrscheinlichkeit, nicht die bedingte Wahrscheinlichkeit nach Ausschluss von aa.",
+            "expectedPerformanceEn": "Aa×Aa has four equally likely allele combinations AA,Aa,aA,aa. Known unaffected status excludes aa; two of three remaining cases are carriers:2/3. Suitable partner frequency M=90/900=1/10, not300/600 from enriched group N. Under independent model assumptions risk is(2/3)×(1/10)×(1/4)=1/60≈1.67%.1/2 is the unconditional Aa probability, not the conditional probability after excluding aa.",
+            "understandingFocusDe": "Eigenständig die angegebenen Daten und Modellannahmen verbinden; die frische Veränderung neu begründen und Grenzen benennen.",
+            "understandingFocusEn": "Independently connect the supplied data and model assumptions, justify the fresh change and identify limitations."
+          }
+        ]
+      },
+      "cases": [
+        {
+          "id": "risk-c1",
+          "titleDe": "Bekannter Träger und unbekannter Partner",
+          "titleEn": "Confirmed carrier and an unknown partner",
+          "syntheticData": true,
+          "materialDe": "Synthetisches vollständig penetrantes autosomal-rezessives Modell: aa zeigt Merkmal Z; AA und Aa nicht. Keine Neumutationen. Eine erwachsene Person ist durch einen für das Modell eindeutigen Test Aa. Der nicht verwandte Partner ist nicht untersucht und zeigt Z nicht. Aus einer ausdrücklich geeigneten zufälligen Bezugsgruppe von 1000 ebenfalls nicht betroffenen Erwachsenen sind 50 Aa und950 AA bekannt. Partnerauswahl und Allelweitergabe werden im Modell als unabhängig vorausgesetzt; Familiengeschichte des Partners liefert keine weitere Information.",
+          "materialEn": "Synthetic fully penetrant autosomal-recessive model: aa shows trait Z; AA and Aa do not. No new mutations. An adult has an unambiguous model test result Aa. An unrelated partner is untested and unaffected. An explicitly suitable random reference sample of 1000 unaffected adults contains 50 Aa and950 AA. Partner selection and allele transmission are assumed independent in the model; partner family history adds no information.",
+          "taskDe": "Erstelle Aa×Aa und Aa×AA und schätze das Z-Risiko eines Kindes aus Stammbaum-/Test- und Populationsinformation ab. Erkläre jede Wahrscheinlichkeit und weshalb „nicht betroffen“ beim Partner keine sichere AA-Zuordnung ist.",
+          "taskEn": "Construct Aa×Aa and Aa×AA and estimate a child’s Z risk from pedigree/test and population information. Explain each probability and why an unaffected partner is not certainly AA.",
+          "workedSolutionDe": "Aa×Aa liefert AA1/4,Aa1/2,aa1/4; Aa×AA liefert AA1/2,Aa1/2 und kein aa. Die bekannte Person trägt mit Wahrscheinlichkeit1 a; der Partner ist nach der passenden Referenz mit50/1000=1/20 Träger. Risiko aa=(1/20)×(1/4)=1/80=1,25%. Der Phänotyp schließt aa, aber nicht Aa aus. Dies ist eine Abschätzung unter den vorgegebenen Auswahl- und Erbannahmen.",
+          "workedSolutionEn": "Aa×Aa gives AA1/4,Aa1/2,aa1/4; Aa×AA gives AA1/2,Aa1/2 and no aa. The confirmed person is a carrier with probability1; estimated partner carrier probability is50/1000=1/20. Risk aa=(1/20)×(1/4)=1/80=1.25%. Being unaffected excludes aa but not Aa. This is an estimate under supplied sampling and inheritance assumptions.",
+          "rubric": [
+            {
+              "id": "risk-c1-r1",
+              "expectationIds": [
+                "e1"
+              ],
+              "criterionDe": "Genotypwissen und Stammbauminferenz korrekt trennen.",
+              "criterionEn": "Correctly distinguish genotype knowledge from pedigree inference."
+            },
+            {
+              "id": "risk-c1-r2",
+              "expectationIds": [
+                "e2"
+              ],
+              "criterionDe": "Geeignete Bezugsgruppe, Trägerwahrscheinlichkeit und Kreuzungsrisiko korrekt verknüpfen.",
+              "criterionEn": "Correctly combine suitable reference group, carrier probability and cross risk."
+            },
+            {
+              "id": "risk-c1-r3",
+              "expectationIds": [
+                "e3"
+              ],
+              "criterionDe": "Neue Evidenz und Geburtenunabhängigkeit unter klaren Annahmen korrekt behandeln.",
+              "criterionEn": "Correctly treat new evidence and birth independence under explicit assumptions."
+            }
+          ],
+          "freshTransferDe": "Ein neuer eindeutiger Partnerbefund lautet Aa. Das Paar hat bereits drei nicht betroffene Kinder. Bestimme das Modellrisiko für das nächste Kind und beurteile „jetzt muss ein betroffenes Kind kommen“.",
+          "freshTransferEn": "A new unambiguous partner result is Aa. The couple already has three unaffected children. Determine modeled risk for the next child and evaluate “an affected child must now occur.”",
+          "freshTransferSolutionDe": "Der individuelle Aa-Befund ersetzt die Populationsschätzung: nun Aa×Aa, also1/4=25% pro weiterer Geburt. Bei bekannten Genotypen und unabhängiger Allelweitergabe ändern die drei vorherigen Ausgänge diese Wahrscheinlichkeit nicht; es gibt keinen notwendigen Ausgleich. Die Daten behaupten keinen tatsächlichen Familienbefund.",
+          "freshTransferSolutionEn": "Individual Aa evidence replaces the population estimate: now Aa×Aa, hence1/4=25% for each further birth. Given known genotypes and independent allele transmission, the three previous outcomes do not change this probability; no balancing outcome is required. No real family test result is claimed.",
+          "limitsDe": "Keine klinische Beratung, keine Hardy-Weinberg-Annahme und keine Behauptung, jede reale Erbkrankheit sei vollständig penetrant; reale Testunsicherheit, Neumutationen und Verwandtschaft können die Voraussetzungen ändern.",
+          "limitsEn": "No clinical counseling, no Hardy-Weinberg assumption and no claim that all real genetic conditions are fully penetrant; real test uncertainty, new mutations and relatedness can alter assumptions."
+        },
+        {
+          "id": "risk-c2",
+          "titleDe": "Gesunder Angehöriger und passende Bezugsgruppe",
+          "titleEn": "Unaffected relative and a suitable reference group",
+          "syntheticData": true,
+          "materialDe": "Dasselbe ausdrücklich fiktive autosomal-rezessive Modell mit vollständiger Penetranz und ohne Neumutationen. Zwei nicht betroffene Eltern haben ein aa-Kind; damit müssen beide Aa sein. Ein anderes erwachsenes Kind dieser Eltern zeigt Z nicht, sein Genotyp ist unbekannt. Sein nicht verwandter, ebenfalls nicht betroffener Partner hat keine informative Familiengeschichte. Geeignete Bezugsgruppe M:90 bestätigte Aa unter900 nicht betroffenen Erwachsenen. Eine andere, nicht passende Gruppe N besteht aus ausgewählten Angehörigen betroffener Familien und hat300 Aa unter600. Beide Stichproben sind vollständig ausgewertet; für den Partner ist nur M als zufällige passende Referenz vorausgesetzt.",
+          "materialEn": "The same explicitly fictional fully penetrant autosomal-recessive model without new mutations. Two unaffected parents have an aa child, so both must be Aa. Another adult child is unaffected with unknown genotype. Their unrelated unaffected partner has no informative family history. Suitable group M contains90 confirmed Aa among900 unaffected adults. Different unsuitable group N consists of selected relatives of affected families with300 Aa among600. Both samples are completely evaluated; only M is assumed to be a random suitable reference for this partner.",
+          "taskDe": "Leite die Trägerwahrscheinlichkeit des nicht betroffenen erwachsenen Kindes aus den verbleibenden Genotypfällen ab. Wähle die passende Partnerhäufigkeit und schätze das gemeinsame Kinderrisiko. Erkläre, warum weder 1/2 noch die Trägerquote aus N unkritisch übernommen werden darf.",
+          "taskEn": "Derive the unaffected adult child’s carrier probability from remaining genotype possibilities. Choose appropriate partner frequency and estimate their child’s risk. Explain why neither1/2 nor group N’s carrier frequency can be used uncritically.",
+          "workedSolutionDe": "Aa×Aa hat vier gleich wahrscheinliche Allelkombinationen AA,Aa,aA,aa. Unter der bekannten Nichtbetroffenheit entfällt aa; von drei verbleibenden Fällen sind zwei Träger:2/3. Partnerquote aus M=90/900=1/10, nicht300/600 aus der angereicherten Gruppe N. Unter den unabhängigen Modellannahmen ergibt sich(2/3)×(1/10)×(1/4)=1/60≈1,67%.1/2 ist die unbedingte Aa-Wahrscheinlichkeit, nicht die bedingte Wahrscheinlichkeit nach Ausschluss von aa.",
+          "workedSolutionEn": "Aa×Aa has four equally likely allele combinations AA,Aa,aA,aa. Known unaffected status excludes aa; two of three remaining cases are carriers:2/3. Suitable partner frequency M=90/900=1/10, not300/600 from enriched group N. Under independent model assumptions risk is(2/3)×(1/10)×(1/4)=1/60≈1.67%.1/2 is the unconditional Aa probability, not the conditional probability after excluding aa.",
+          "rubric": [
+            {
+              "id": "risk-c2-r1",
+              "expectationIds": [
+                "e1"
+              ],
+              "criterionDe": "Genotypwissen und Stammbauminferenz korrekt trennen.",
+              "criterionEn": "Correctly distinguish genotype knowledge from pedigree inference."
+            },
+            {
+              "id": "risk-c2-r2",
+              "expectationIds": [
+                "e2"
+              ],
+              "criterionDe": "Geeignete Bezugsgruppe, Trägerwahrscheinlichkeit und Kreuzungsrisiko korrekt verknüpfen.",
+              "criterionEn": "Correctly combine suitable reference group, carrier probability and cross risk."
+            },
+            {
+              "id": "risk-c2-r3",
+              "expectationIds": [
+                "e3"
+              ],
+              "criterionDe": "Neue Evidenz und Geburtenunabhängigkeit unter klaren Annahmen korrekt behandeln.",
+              "criterionEn": "Correctly treat new evidence and birth independence under explicit assumptions."
+            }
+          ],
+          "freshTransferDe": "Die erwachsene Person entscheidet sich später freiwillig für einen im Modell eindeutigen Test und erhält AA. Der Partner bleibt ungetestet. Rechne mit diesem neuen individuellen Befund und erkläre, warum die frühere Stammbaumwahrscheinlichkeit nicht weiter mitmultipliziert wird.",
+          "freshTransferEn": "The adult later voluntarily chooses an unambiguous model test and receives AA. The partner remains untested. Recalculate from this new individual evidence and explain why the earlier pedigree probability is not still multiplied in.",
+          "freshTransferSolutionDe": "Ein bestätigtes AA-Elternteil kann im Modell kein a weitergeben; auch mit Aa-Partner ist aa unmöglich. Das Modellrisiko beträgt0. Das neue eindeutige Genotypwissen ersetzt die frühere2/3-Trägerunsicherheit, statt zusätzlich als Faktor verwendet zu werden. Außerhalb der ausdrücklich ausgeschlossenen Testfehler/Neumutationen ist dies keine universelle medizinische Nullrisiko-Aussage.",
+          "freshTransferSolutionEn": "A confirmed AA parent cannot transmit a in this model; even an Aa partner cannot produce aa. Modeled risk is0. New unambiguous genotype information replaces earlier2/3 carrier uncertainty instead of being multiplied as another factor. Outside explicitly excluded test errors/new mutations this is not a universal medical zero-risk claim.",
+          "limitsDe": "Untersuchung von gegebenen Modelldaten, kein Aufruf zu realen Tests oder Offenlegung familiärer Daten; Genotypgewissheit und passende Populationsauswahl sind hier ausdrücklich geliefert.",
+          "limitsEn": "Analysis of supplied model data, not a request for real testing or family-data disclosure; genotype certainty and suitable population selection are explicitly supplied."
+        }
+      ]
+    },
+    {
+      "goalId": "031fd4f3-906e-5919-ae7f-a2b0b9220604",
+      "profile": {
+        "archetype": "modeling",
+        "expectations": [
+          {
+            "id": "e1",
+            "essentialUnderstandingDe": "Stammbaumanalyse, gezielte Untersuchung einer bekannten familiären Variante und breite Sequenzuntersuchung beantworten unterschiedliche Fragen und haben unterschiedliche Grenzen.",
+            "essentialUnderstandingEn": "Pedigree analysis, targeted testing of a known familial variant and broad sequencing address different questions and have different limitations.",
+            "observablePerformanceDe": "Die lernende Person vergleicht Methoden anhand der gegebenen Erb- und Datenlage und trennt Risikoschätzung, Variantenbefund und klinische Vorhersage.",
+            "observablePerformanceEn": "The learner compares methods using supplied inheritance and data conditions and distinguishes risk estimates, variant results and clinical predictions."
+          },
+          {
+            "id": "e2",
+            "essentialUnderstandingDe": "Eine begründete Beratungsentscheidung verbindet Zuverlässigkeit und Nutzen mit freiwilliger informierter Wahl, Nichtwissen und dem Schutz anderer Familienmitglieder.",
+            "essentialUnderstandingEn": "A justified counseling decision connects reliability and usefulness with voluntary informed choice, not knowing and protection of other family members.",
+            "observablePerformanceDe": "Die lernende Person wägt Vorteile und Nachteile konkret ab, berücksichtigt vorgegebene Wünsche und begründet eine vertretbare Entscheidung statt einen Test oder eine Lebensentscheidung aufzuzwingen.",
+            "observablePerformanceEn": "The learner weighs concrete advantages and disadvantages, considers supplied preferences and justifies a defensible decision rather than imposing a test or life choice."
+          },
+          {
+            "id": "e3",
+            "essentialUnderstandingDe": "Neue Ergebnisunsicherheit, veränderte Informationswünsche oder eine andere genetische Grundlage können die vertretbare Methodenwahl verändern.",
+            "essentialUnderstandingEn": "New result uncertainty, changed information preferences or a different genetic basis can change defensible method choices.",
+            "observablePerformanceDe": "Die lernende Person begründet zwei unterschiedliche Entscheidungssituationen und eine neue Bedingung mit fachlichen und ethischen Argumenten; mehrere sachgerecht begründete Wege sind möglich.",
+            "observablePerformanceEn": "The learner justifies two different decisions and a fresh condition using scientific and ethical arguments; more than one appropriately justified path is possible."
+          }
+        ],
+        "coverageExpectations": {
+          "requiredExpectationIds": [
+            "e1",
+            "e2",
+            "e3"
+          ],
+          "alternativeExpectationGroups": [],
+          "minimumIndependentDemonstrations": 2,
+          "freshVariationRequired": true,
+          "independentTransferRequired": true
+        },
+        "variationAxes": [
+          {
+            "id": "v1",
+            "textDe": "Bekannte monogene Familienvariante gegenüber multifaktorieller Unsicherheit",
+            "textEn": "Known monogenic familial variant versus multifactorial uncertainty"
+          },
+          {
+            "id": "v2",
+            "textDe": "Geänderte Informationswünsche und neue Variantenunsicherheit",
+            "textEn": "Changed information preferences and new variant uncertainty"
+          }
+        ],
+        "applicationCaseBriefs": [
+          {
+            "id": "counsel-c1",
+            "taskDemandDe": "Vergleiche M1–M3: Welche Frage beantwortet jede Methode, welchen Nutzen und welche Nachteile hat sie hier? Formuliere eine begründete, freiwillige Vorgehensentscheidung für P und den Umgang mit dem Geschwister. Benenne ausdrücklich, was die Entscheidung oder ein positiver Befund nicht festlegt.",
+            "taskDemandEn": "Compare M1–M3: what question does each answer, and what benefits and drawbacks does it have here? Formulate a justified voluntary plan for P and handling the sibling’s preference. Explicitly state what the decision or a positive result does not determine.",
+            "expectedPerformanceDe": "M1 ermöglicht Verständnis der 1/2-Vererbung, Wünscheklärung und Grenzenbesprechung, entscheidet aber nicht zwischen D/d und d/d. Bei bestätigtem freiwilligem Informationswunsch ist M2 nach Aufklärung und klarem Ergebnisumfang eine gut begründete begrenzte Option; es kann auch bei M1 geblieben oder ein Test aufgeschoben werden. M3 beantwortet hier mehr als gewünscht, mit Zusatz-/Unklarheitsbelastung ohne gelieferten Zusatznutzen. Das Geschwister wird nicht automatisch informiert oder mitgetestet; dessen eigener Informationswunsch und der Schutz familiärer Angaben werden berücksichtigt. Weder Testwahl noch Variantenbefund bestimmen allein Lebensentscheidungen, Beginn oder Schweregrad. Andere fachlich und ethisch gut begründete Entscheidungen werden akzeptiert.",
+            "expectedPerformanceEn": "M1 enables understanding of 1/2 transmission, clarification of preferences and discussion of limits, but does not distinguish D/d from d/d. With confirmed voluntary desire for information, M2 after explanation and a clear result scope is a defensible bounded option; staying with M1 or postponing testing can also be justified. M3 supplies more than requested, with incidental/uncertain-result burden and no supplied added benefit. The sibling is not automatically informed or tested; their own information preference and protection of family information matter. Neither choosing a test nor finding a variant alone determines life choices, onset or severity. Other scientifically and ethically well-justified decisions are accepted.",
+            "understandingFocusDe": "Eigenständig die angegebenen Daten und Modellannahmen verbinden; die frische Veränderung neu begründen und Grenzen benennen.",
+            "understandingFocusEn": "Independently connect the supplied data and model assumptions, justify the fresh change and identify limitations."
+          },
+          {
+            "id": "counsel-c2",
+            "taskDemandDe": "Vergleiche die hier sinnvollen und nicht begründeten Methoden, absolutes gegenüber relativem beobachtetem Risiko, mögliche Vorteile/Belastungen und Informationswünsche. Begründe eine Vorgehensentscheidung, die sich fachlich von der bekannten monogenen Variante im ersten Fall unterscheidet.",
+            "taskDemandEn": "Compare useful and unsupported methods here, absolute versus relative observed risk, possible benefits/burdens and information preferences. Justify a plan that scientifically differs from the known monogenic variant in the first case.",
+            "expectedPerformanceDe": "4% gegenüber 2% entspricht einem beobachteten Verhältnis 2 und einem Unterschied 2 Prozentpunkte, nicht einer sicheren Erkrankung oder individueller 4%-Vorhersage für Q. Mehrere genetische/Umweltbeiträge und fehlende Referenzpassung machen eine monogene 1/2- oder 1/4-Regel unpassend. M1 kann zuerst die Frage, Familien-/Umweltinformation und freiwilligen Umfang klären. M2 ist ohne identifizierte passende Variante nicht begründet. M3 verlangt nachvollziehbare Aussagekraft, Grenzen- und Ergebnisumfangsklärung; mögliche Zusatz-/Unklarheitsbelastung muss gegen gelieferten Nutzen abgewogen werden. Aufschub/Verzicht oder eine weiterführende freiwillige Fachklärung sind begründbare Wege; familiäre Information wird nicht automatisch geteilt. Keine richtige Lebensentscheidung wird vorgegeben.",
+            "expectedPerformanceEn": "4% versus 2% gives an observed ratio 2 and difference 2 percentage points, not certain disease or a personal 4% prediction for Q. Multiple genetic/environmental contributions and unproven reference applicability make a monogenic 1/2 or 1/4 rule inappropriate. M1 can first clarify the question, family/environment information and voluntary information scope. M2 is unsupported without an identified relevant variant. M3 requires understandable evidence of usefulness and clarification of limits/result scope; possible incidental/uncertain-result burdens must be weighed against supplied benefits. Postponement, declining, or further voluntary specialist clarification can be justified; family information is not automatically shared. No single correct life decision is imposed.",
+            "understandingFocusDe": "Eigenständig die angegebenen Daten und Modellannahmen verbinden; die frische Veränderung neu begründen und Grenzen benennen.",
+            "understandingFocusEn": "Independently connect the supplied data and model assumptions, justify the fresh change and identify limitations."
+          }
+        ]
+      },
+      "cases": [
+        {
+          "id": "counsel-c1",
+          "titleDe": "Bekannte Familienvariante und begrenzter Informationswunsch",
+          "titleEn": "Known familial variant and bounded information preference",
+          "syntheticData": true,
+          "materialDe": "Fiktive erwachsene Person P,24 Jahre. Ein Elternteil trägt eine bestätigte autosomal-dominante Variante D/d; der andere ist d/d. Allelweitergabe ist1/2, der Stammbaum allein zeigt nicht, ob P die Variante trägt. Keine reale Erkrankung ist benannt. P möchte freiwillig genau diese Frage klären, aber keine Informationen über andere genetische Risiken; ein erwachsenes Geschwister möchte nichts erfahren. Methodenbeschreibung: M1 Stammbaum-/Anamnesegespräch liefert eine Wahrscheinlichkeitsabschätzung, keinen DNA-Befund. M2 gezielter Test der bekannten Variante beantwortet bei hier vorausgesetzter technischer Eindeutigkeit nur die D/d-Frage. M3 breite Sequenzuntersuchung kann weitere Varianten unklarer Bedeutung und zusätzliche Informationen erzeugen; sie garantiert keine klare klinische Zukunft. Konkreter Beginn/Schweregrad sind auch bei Variantenbefund nicht geliefert.",
+          "materialEn": "Fictional adult P,24. One parent has a confirmed autosomal-dominant D/d variant, the other is d/d. Transmission probability is1/2; pedigree alone does not establish P’s genotype. No real condition is named. P voluntarily wants this particular question answered, not information about other genetic risks; an adult sibling wants no information. Methods: M1 pedigree/history counseling estimates probability without a DNA result. M2 targeted testing of the known variant answers only the D/d question under supplied technical certainty. M3 broad sequencing can yield variants of uncertain significance and additional information; it does not guarantee a clear clinical future. Onset/severity are not supplied even if a variant is found.",
+          "taskDe": "Vergleiche M1–M3: Welche Frage beantwortet jede Methode, welchen Nutzen und welche Nachteile hat sie hier? Formuliere eine begründete, freiwillige Vorgehensentscheidung für P und den Umgang mit dem Geschwister. Benenne ausdrücklich, was die Entscheidung oder ein positiver Befund nicht festlegt.",
+          "taskEn": "Compare M1–M3: what question does each answer, and what benefits and drawbacks does it have here? Formulate a justified voluntary plan for P and handling the sibling’s preference. Explicitly state what the decision or a positive result does not determine.",
+          "workedSolutionDe": "M1 ermöglicht Verständnis der 1/2-Vererbung, Wünscheklärung und Grenzenbesprechung, entscheidet aber nicht zwischen D/d und d/d. Bei bestätigtem freiwilligem Informationswunsch ist M2 nach Aufklärung und klarem Ergebnisumfang eine gut begründete begrenzte Option; es kann auch bei M1 geblieben oder ein Test aufgeschoben werden. M3 beantwortet hier mehr als gewünscht, mit Zusatz-/Unklarheitsbelastung ohne gelieferten Zusatznutzen. Das Geschwister wird nicht automatisch informiert oder mitgetestet; dessen eigener Informationswunsch und der Schutz familiärer Angaben werden berücksichtigt. Weder Testwahl noch Variantenbefund bestimmen allein Lebensentscheidungen, Beginn oder Schweregrad. Andere fachlich und ethisch gut begründete Entscheidungen werden akzeptiert.",
+          "workedSolutionEn": "M1 enables understanding of 1/2 transmission, clarification of preferences and discussion of limits, but does not distinguish D/d from d/d. With confirmed voluntary desire for information, M2 after explanation and a clear result scope is a defensible bounded option; staying with M1 or postponing testing can also be justified. M3 supplies more than requested, with incidental/uncertain-result burden and no supplied added benefit. The sibling is not automatically informed or tested; their own information preference and protection of family information matter. Neither choosing a test nor finding a variant alone determines life choices, onset or severity. Other scientifically and ethically well-justified decisions are accepted.",
+          "rubric": [
+            {
+              "id": "counsel-c1-r1",
+              "expectationIds": [
+                "e1"
+              ],
+              "criterionDe": "Methoden ziel- und datenbezogen vergleichen, Befund nicht mit sicherer klinischer Zukunft verwechseln.",
+              "criterionEn": "Compare methods against question and data; do not confuse a result with a certain clinical future."
+            },
+            {
+              "id": "counsel-c1-r2",
+              "expectationIds": [
+                "e2"
+              ],
+              "criterionDe": "Nutzen/Belastung, Freiwilligkeit und Informationsgrenzen konkret abwägen; andere begründete Entscheidungen zulassen.",
+              "criterionEn": "Weigh usefulness/burden, voluntary choice and information boundaries concretely; allow other justified decisions."
+            },
+            {
+              "id": "counsel-c1-r3",
+              "expectationIds": [
+                "e3"
+              ],
+              "criterionDe": "Geänderte Grundlage neu prüfen; keine diagnostische Aussage aus einer unsicheren Variante.",
+              "criterionEn": "Reevaluate changed conditions; do not diagnose from an uncertain variant."
+            }
+          ],
+          "freshTransferDe": "Vor einer Untersuchung ändert P den Wunsch: „Ich möchte vorerst nur die Wahrscheinlichkeiten verstehen und keinen persönlichen Variantenbefund.“ Begründe die neue Methodenwahl. Muss die vorherige freiwillige Entscheidung als bindend beibehalten werden?",
+          "freshTransferEn": "Before any investigation P changes preference: “For now I only want to understand probabilities, not receive my personal variant result.” Justify the updated method choice. Must the earlier voluntary decision remain binding?",
+          "freshTransferSolutionDe": "M1 beziehungsweise Aufschub ist nun passend; M2/M3 nicht gegen den aktuellen Wunsch durchführen. Geänderte informierte Wünsche verändern die vertretbare Entscheidung. Die 1/2-Stammbaumabschätzung bleibt unsicher über P, und Nichtwissen darf nicht als fehlendes Verständnis abgewertet werden. Keine konkrete Rechts- oder Behandlungsregel wird aus dem Unterrichtsfall abgeleitet.",
+          "freshTransferSolutionEn": "M1 or postponement now fits; M2/M3 should not be imposed against the current preference. Changed informed preferences change the defensible decision. The 1/2 pedigree estimate remains uncertain for P, and not wanting a result is not lack of understanding. No specific legal or treatment rule is derived from this classroom case.",
+          "limitsDe": "Fiktive ethische Methodenbewertung, kein tatsächlich durchgeführter Test und keine individuelle medizinische Empfehlung; konkrete Gesetze, Testverfahren und Klinikprognosen sind nicht Bestandteil der Angaben.",
+          "limitsEn": "Fictional ethical comparison of methods, no performed test or individual medical recommendation; specific laws, assays and clinical prognoses are not supplied."
+        },
+        {
+          "id": "counsel-c2",
+          "titleDe": "Multifaktorielles Familienrisiko und unklare Varianten",
+          "titleEn": "Multifactorial family risk and uncertain variants",
+          "syntheticData": true,
+          "materialDe": "Fiktive erwachsene Person Q hat zwei Verwandte mit einem ausdrücklich multifaktoriellen Endpunkt Z, ohne bekannte einzelne familiäre krankheitsverursachende Variante. Ein prospektives synthetisches Referenzkollektiv liefert im gleichen Zeitraum beobachtete Häufigkeiten 2% ohne eine SNP-Markergruppe und 4% mit ihr; Passung zu Qs Population und Umweltsituation ist nicht nachgewiesen. Q möchte Nutzen und Unsicherheit verstehen und keine unerwarteten Informationen an Verwandte weitergeben. Methoden: M1 freiwilliges Familien-/Umweltgespräch ordnet Gemeinsamkeiten ein, bestimmt keine persönliche DNA. M2 gezielter Test einer bekannten monogenen Familienvariante würde diese klären, aber eine solche Variante ist hier unbekannt. M3 breiteres genetisches Panel könnte Marker oder Varianten unklarer Bedeutung finden; daraus folgen weder eine sichere Z-Diagnose noch eine im Fall gelieferte Behandlung.",
+          "materialEn": "Fictional adult Q has two relatives with explicitly multifactorial endpoint Z, with no known single familial disease-causing variant. A prospective synthetic reference cohort has observed frequencies 2% without a SNP marker group and 4% with it over the same interval; applicability to Q’s population/environment is unproven. Q wants to understand usefulness and uncertainty without giving unexpected information to relatives. Methods: M1 voluntary family/environment counseling assesses shared conditions without determining personal DNA. M2 targeted testing of a known monogenic familial variant would address that variant, but none is known here. M3 a broader genetic panel might identify markers or variants of uncertain significance; these do not establish certain Z disease or a treatment supplied in this case.",
+          "taskDe": "Vergleiche die hier sinnvollen und nicht begründeten Methoden, absolutes gegenüber relativem beobachtetem Risiko, mögliche Vorteile/Belastungen und Informationswünsche. Begründe eine Vorgehensentscheidung, die sich fachlich von der bekannten monogenen Variante im ersten Fall unterscheidet.",
+          "taskEn": "Compare useful and unsupported methods here, absolute versus relative observed risk, possible benefits/burdens and information preferences. Justify a plan that scientifically differs from the known monogenic variant in the first case.",
+          "workedSolutionDe": "4% gegenüber 2% entspricht einem beobachteten Verhältnis 2 und einem Unterschied 2 Prozentpunkte, nicht einer sicheren Erkrankung oder individueller 4%-Vorhersage für Q. Mehrere genetische/Umweltbeiträge und fehlende Referenzpassung machen eine monogene 1/2- oder 1/4-Regel unpassend. M1 kann zuerst die Frage, Familien-/Umweltinformation und freiwilligen Umfang klären. M2 ist ohne identifizierte passende Variante nicht begründet. M3 verlangt nachvollziehbare Aussagekraft, Grenzen- und Ergebnisumfangsklärung; mögliche Zusatz-/Unklarheitsbelastung muss gegen gelieferten Nutzen abgewogen werden. Aufschub/Verzicht oder eine weiterführende freiwillige Fachklärung sind begründbare Wege; familiäre Information wird nicht automatisch geteilt. Keine richtige Lebensentscheidung wird vorgegeben.",
+          "workedSolutionEn": "4% versus 2% gives an observed ratio 2 and difference 2 percentage points, not certain disease or a personal 4% prediction for Q. Multiple genetic/environmental contributions and unproven reference applicability make a monogenic 1/2 or 1/4 rule inappropriate. M1 can first clarify the question, family/environment information and voluntary information scope. M2 is unsupported without an identified relevant variant. M3 requires understandable evidence of usefulness and clarification of limits/result scope; possible incidental/uncertain-result burdens must be weighed against supplied benefits. Postponement, declining, or further voluntary specialist clarification can be justified; family information is not automatically shared. No single correct life decision is imposed.",
+          "rubric": [
+            {
+              "id": "counsel-c2-r1",
+              "expectationIds": [
+                "e1"
+              ],
+              "criterionDe": "Methoden ziel- und datenbezogen vergleichen, Befund nicht mit sicherer klinischer Zukunft verwechseln.",
+              "criterionEn": "Compare methods against question and data; do not confuse a result with a certain clinical future."
+            },
+            {
+              "id": "counsel-c2-r2",
+              "expectationIds": [
+                "e2"
+              ],
+              "criterionDe": "Nutzen/Belastung, Freiwilligkeit und Informationsgrenzen konkret abwägen; andere begründete Entscheidungen zulassen.",
+              "criterionEn": "Weigh usefulness/burden, voluntary choice and information boundaries concretely; allow other justified decisions."
+            },
+            {
+              "id": "counsel-c2-r3",
+              "expectationIds": [
+                "e3"
+              ],
+              "criterionDe": "Geänderte Grundlage neu prüfen; keine diagnostische Aussage aus einer unsicheren Variante.",
+              "criterionEn": "Reevaluate changed conditions; do not diagnose from an uncertain variant."
+            }
+          ],
+          "freshTransferDe": "Ein später im fiktiven Szenario freiwillig angefordertes Panel meldet „Variante unklarer Bedeutung“, ohne neue Funktions- oder klinische Evidenz. Ein Verwandter verlangt sofortige Bekanntgabe und bezeichnet sie als sichere Z-Ursache. Formuliere eine begründete Antwort und die offene nächste fachliche Frage.",
+          "freshTransferEn": "A later voluntarily requested fictional panel reports a “variant of uncertain significance,” without new functional or clinical evidence. A relative demands immediate disclosure and calls it a certain Z cause. Give a justified response and the next unresolved scientific question.",
+          "freshTransferSolutionDe": "Eine unklare Variante ist keine bestätigte Ursache oder Diagnose; ihre Bedeutung muss wissenschaftlich geklärt werden, ohne ihre Unsicherheit zu verschweigen. Es besteht kein sachlicher Anlass, alle Verwandten als betroffen zu erklären oder ihnen ungefragt Ergebnisse zu übermitteln. Mit Q wird der vereinbarte Informationsumfang besprochen; die offene Frage ist die belastbare funktionelle/klinische Bedeutung und deren Passung zur Fragestellung. Die angebotenen Häufigkeiten oder der Wunsch des Verwandten liefern diese Evidenz nicht.",
+          "freshTransferSolutionEn": "An uncertain variant is not a confirmed cause or diagnosis; significance needs scientific clarification without concealing uncertainty. There is no scientific basis for labeling all relatives affected or sending unsolicited results. The agreed information scope is discussed with Q; the open question is reliable functional/clinical significance and relevance to the question. Supplied frequencies or a relative’s demand do not provide this evidence.",
+          "limitsDe": "Kein reales Panel, keine Behandlungsempfehlung, keine gesetzliche Offenlegungsaussage; Referenzhäufigkeiten sind synthetisch, und individuelle Kalibrierung wird ausdrücklich nicht behauptet.",
+          "limitsEn": "No real panel, treatment recommendation or statutory disclosure claim; reference frequencies are synthetic and individual calibration is explicitly not claimed."
+        }
+      ]
+    }
+  ],
+  "sourceBoundaries": {
+    "wholeSourceApproval": false,
+    "originalDutiesAndPartnersPreserved": true,
+    "HEOperationalizationFindingsRemainOpen": true,
+    "regionalRouteApproval": false,
+    "humanApproval": false,
+    "humanTrial": false,
+    "learnerPerformanceObserved": false
+  },
+  "factualReferences": [
+    {
+      "url": "https://www.genome.gov/genetics-glossary/Polygenic-Trait",
+      "role": "Polygenic/multifactorial distinction; not curricular approval"
+    },
+    {
+      "url": "https://www.genome.gov/genetics-glossary/Single-Nucleotide-Polymorphisms-SNPs",
+      "role": "SNP and marker distinction; not curricular approval"
+    },
+    {
+      "url": "https://medlineplus.gov/genetics/understanding/inheritance/riskassessment/",
+      "role": "Inheritance assumptions and per-pregnancy interpretation; not curricular approval"
+    },
+    {
+      "url": "https://medlineplus.gov/genetics/understanding/consult/reasons/",
+      "role": "Genetic consultation question scope; not curricular approval"
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-b008-protected-twelve-current-native-independent-b-20261010-v1-normal-b12-run",
+  "campaignId": "chemie-b008-protected-twelve-current-native-20261010-v1-b",
+  "roundId": "chemie-b008-protected-twelve-current-native-20261010-v1-first-pass-b",
+  "batchId": "chemie-b008-protected-twelve-current-native-20261010-v1-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:8fdb6cda1f7e0ac2eb8e90a57691a214c0c9a2aaca54a8f14c0514198af8c1a0",
+  "bundleFingerprint": "sha256:c099c3fd1a785f44399347f51f25923915208daae405f0e09e3a925bd559e32f",
+  "bookDigest": "sha256:5bc033baf87c4680dbc914d1471ece1f579ee41da49e84e826da0ea7e7e6cc5c",
+  "provider": "OpenAI",
+  "model": "GPT-6-based Codex; exact deployment identifier and snapshot not exposed",
+  "role": "sequencing_representation_reviewer",
+  "promptFamilyId": "goal-description-review-first-pass-b",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:d5639936e8913b5232353696edafb2b6ef0d7f4c8f1813aac8f0bda78b920429",
+  "independenceGroupId": "chemie-b008-protected-twelve-current-native-20261010-v1-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "13d4f336-ab16-54a7-9479-c920b458f385",
+    "9b5d6326-d27c-4ece-8c72-debda705464a",
+    "95dc0ee5-a0af-5682-af32-d66e36fbeb50",
+    "c0f1bf09-5a70-5006-b1e9-e91f786a63bf",
+    "8ece9beb-9458-5ea1-8e45-9be04670f464",
+    "5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+    "d4928773-3be8-5cf1-907c-ef07c96751e8",
+    "70b34ae7-4481-590c-9a02-516464750832",
+    "e313c1ee-a617-54ed-adea-c183da1e03d8",
+    "a0e8f0f2-24e2-5945-a511-597d32e73796",
+    "8b98d8ba-65c6-58d7-92f0-45f4b2456573",
+    "3c9bfa10-9a13-50cc-96c8-6213e28d6c54"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:51f6e18fe00e7e23ac58bbc1d204434bbbde963afb7cec5ad1a40883006aa2ed"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:6d4295c76bc9bb7de0a4470fb4ebf4aef5934bcad0c2368f5221817f7d2eb04b"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:064c96d872df54052208e6592e1c1dce979476cdebf283c616da71ebb741a80e"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:376c5c58bfd61fc5d5efa0573333fadb87f096144abae2061187e15fb9e518b2"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:f7c722dc8bb20a9e2f20feacaca45574304d0acad967a57b481058e615a201e3"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:33c326ed4196d2b56de0229949d6b570632570b3a75027aa200abc6f11f8897d"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:df712c346e2d1177265a54976d980d7d54a87950ba3a894f0a964ac03a340dae"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:8fdb6cda1f7e0ac2eb8e90a57691a214c0c9a2aaca54a8f14c0514198af8c1a0"
+    }
+  ],
+  "startedAt": "2026-10-10T03:33:47.844941+00:00",
+  "completedAt": "2026-10-10T03:44:53.463266+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:5eefdcbc5df1013fbe555295871ff71193d98cdf08d5c4018e09080fb357f8ce",
+  "toolchainVersion": "skillpilot-goal-description-review-normal-v2"
+}

@@ -1,0 +1,229 @@
+import datetime
+import hashlib
+import importlib.util
+import json
+import shutil
+from pathlib import Path
+import jsonschema
+
+ROOT = Path.cwd()
+SRC = Path('curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-protected-twelve-current-native-technical-author-20261010-v1')
+OUT = SRC.parent / 'chemie-b008-protected-twelve-current-native-independent-a-20261010-v1'
+
+def bind(path):
+    data = path.read_bytes()
+    return {'path': str(path), 'sha256': 'sha256:' + hashlib.sha256(data).hexdigest(), 'bytes': len(data)}
+
+def write(name, data):
+    path = OUT / name
+    assert not path.exists(), path
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
+    return path
+
+def canonical_object_digest(data):
+    return 'sha256:' + hashlib.sha256(json.dumps(data, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+
+first_path = OUT / 'FIRST.current-protected12-context-native.verdict.json'
+assert bind(first_path)['sha256'] == 'sha256:16496f758d42f3e03961b6c1610289dfd4cc718f430f18111b9b17d42d083e44'
+first = json.loads(first_path.read_text())
+first_by_id = {r['goalId']: r for r in first['records']}
+materials_path = SRC / 'checks/whole12-old-records-and-current-normal-P-A-M-kind-fingerprints.actual.json'
+material = {r['goalId']: r for r in json.loads(materials_path.read_text())['rows']}
+checks = json.loads((OUT / 'checks/normal-A12-P12-targeted-terminal-outcomes.actual.json').read_text())
+assert checks['allPassed'] and len(checks['checks']) == 8
+
+rows = []
+for goal_id, row in first_by_id.items():
+    mat = material[goal_id]
+    assert mat['normalAtomicityPayloadBefore'] == mat['normalAtomicityPayloadAfter']
+    assert mat['normalMemoryPayloadBefore'] == mat['normalMemoryPayloadAfter']
+    assert mat['wholeExistingRecord']['profile'] == mat['wholeCurrentTechnicalCandidateRecord']['profile']
+    rows.append({
+        'goalId': goal_id,
+        'wholeExactBeforeAfterAndExistingRecordsInput': bind(materials_path),
+        'wholeExistingPRecordCanonicalObjectDigest': canonical_object_digest(mat['wholeExistingRecord']),
+        'wholeCurrentTechnicalPRecordCanonicalObjectDigest': canonical_object_digest(mat['wholeCurrentTechnicalCandidateRecord']),
+        'wholePProfileBodyCanonicalObjectDigest': canonical_object_digest(mat['wholeExistingRecord']['profile']),
+        'wholeHistoricalARecordCanonicalObjectDigest': canonical_object_digest(mat['wholeExistingAtomicityRecord']),
+        'wholeHistoricalMRecordCanonicalObjectDigest': canonical_object_digest(mat['wholeExistingMemoryRecord']),
+        'actualIndependentCurrentPContextRetention': row['positiveUnderstandingContextReview'],
+        'actualIndependentCurrentAContextRetention': row['atomicityContextRetention'],
+        'actualIndependentCurrentMContextRetention': row['memoryContextRetention'],
+        'actualIndependentCurrentKindContextRetention': row['semanticKindContextRetention'],
+        'existingScientificBodiesRecordsAndStatusesUnchanged': True,
+        'entireHistoricalReviewRestarted': False,
+        'technicalHashRebindAloneIsNotScientificApproval': True,
+        'currentSourceCourseHoldsRemain': True, 'humanApproval': False,
+    })
+write('targeted-P12-A12-M12-and-kinds5-context-retention.actual.json', {
+    'schemaVersion': 1, 'role': 'Actual independent targeted current context retention, backed by own immutable FIRST and normal targeted current contracts. Whole historical scientific records remain unchanged.',
+    'ownFirst': bind(first_path), 'normalTerminalChecks': bind(OUT / 'checks/normal-A12-P12-targeted-terminal-outcomes.actual.json'),
+    'goalCount': 12, 'actualChangedPAndKindsContexts': 5, 'rows': rows,
+    'newHistoricalScientificProfileApprovals': 0,
+    'newHistoricalAtomicityApprovals': 0, 'newHistoricalMemoryApprovals': 0,
+    'allPositiveStatuses': 'needs_human_review / ai_candidate / E1 / G1',
+    'newMemoryCardsNeededByProtectedContext': 0,
+    'memoryVisibilityMeaning': 'All twelve retained goals remain no_memory_needed with no changed Memory payload or goal/deck/card fields. This claims no new card review for other prerequisite or candidate goals.',
+    'wholeSourceCourseApproval': False, 'actualLearnerPerformance': False,
+    'strictGain': 0, 'activeWrites': [], 'humanApproval': False,
+})
+
+# Original exact raster and valid historical machine QA reuse, with no status
+# promotion or new image review claim.
+qa_path = SRC / 'inputs/active-basis/current-whole-active-QA.exact.json'
+qa_by_id = {r['goalId']: r for r in json.loads(qa_path.read_text())['records']}
+asset_path = SRC / 'assets/protected12-exact-current-raster-bindings.actual.json'
+asset_by_id = {r['goalId']: r for r in json.loads(asset_path.read_text())['rows']}
+rasters = []
+for goal_id in first_by_id:
+    qa = qa_by_id[goal_id]
+    asset = asset_by_id[goal_id]
+    selected_digest = asset['wholeSelectedVisualization']['originalDigest']
+    assert qa['aiApproved'] == 'yes'
+    assert qa['aiApprovedAssetSha256'] == qa['assetSha256'] == selected_digest
+    assert qa['humanApproved'] == 'no'
+    bindings = []
+    for name in ['canonicalOriginal', 'publicOriginal', 'wholeExactCanonicalCopy', 'wholeExactPublicCopy']:
+        recorded = asset[name]
+        actual = bind(Path(recorded['path']))
+        assert actual == recorded, (goal_id, name)
+        bindings.append({'role': name, 'actualExactBinding': actual})
+    rasters.append({'goalId': goal_id, 'decision': 'KEEP exact unchanged raster and valid prior machine review', 'wholeExistingQARecordUnchanged': qa, 'currentSelectedDigest': selected_digest, 'actualExactCopies': bindings, 'actualCurrentHtmlAndPdfPageFitSeen': True, 'newOriginalOrMobileImageReviewClaim': False, 'newVisualApproval': False, 'humanApproval': False})
+write('checks/actual-exact12-existing-raster-and-machine-QA-retention.json', {
+    'schemaVersion': 1, 'role': 'Actual exact-byte verification and existing valid machine QA reuse; full new native page fit actually seen in own FIRST. Existing generator/format/aspect ratio retained.',
+    'wholeExistingQALedger': bind(qa_path), 'wholeOriginalAssetBindings': bind(asset_path), 'rows': rasters,
+    'newImages': 0, 'pixelChanges': 0, 'formatConversions': 0, 'newVisualApprovals': 0,
+    'independentWholeImageOr360680ReviewRestarted': False, 'humanApproval': False, 'activeWrites': [],
+})
+
+source_path = SRC.parent / 'chemie-b008-current-whole-P26-native-continuation-author-20261010-v1/source/current-whole-extractions/08-DE_BY_CHEMIE_GYMNASIUM_LEHRPLANPLUS.source-extraction.json'
+source_by_id = {r['id']: r for r in json.loads(source_path.read_text())['sourceGoals']}
+five_sources = {
+    'e313c1ee-a617-54ed-adea-c183da1e03d8': '184523bb-3145-5016-b4ac-0059e0bcf6a1',
+    'c0f1bf09-5a70-5006-b1e9-e91f786a63bf': 'c3cbb00a-ca7a-5865-928c-300b70ee6621',
+    'a0e8f0f2-24e2-5945-a511-597d32e73796': '322b9530-60ee-5051-b932-5d168942a9b6',
+    '8b98d8ba-65c6-58d7-92f0-45f4b2456573': 'c437a381-5887-5b44-8417-23df02168a4f',
+    '3c9bfa10-9a13-50cc-96c8-6213e28d6c54': '437808b5-f0d3-5d8f-a915-b6fd4114d404',
+}
+write('targeted-five-whole-source-operator-contexts.read-and-retained.actual.json', {
+    'schemaVersion': 1, 'role': 'Actual five unchanged whole Bavarian operator paragraphs and source occurrences read for changed prerequisite context; no partial excerpt or whole-source adoption approval',
+    'wholeSourceExtraction': bind(source_path),
+    'ownIndependentFirst': bind(first_path),
+    'rows': [{'goalId': goal_id, 'wholeExistingSourceGoalWithAllOccurrences': source_by_id[source_id], 'currentContextDecision': first_by_id[goal_id]['goalSpecificReason'], 'currentGoalSourceFieldsUnchanged': True} for goal_id, source_id in five_sources.items()],
+    'allWholeOriginalFamiliesAndEdgesRemain': True,
+    'source355of398': 'HOLD', 'newUnmappedChildren': 24, 'priorUnmappedGoals': 19,
+    'totalUnmappedGoals': 43, 'unresolvedScopeBindings': 496,
+    'wholeSourceCourseApproval': False, 'humanApproval': False, 'activeWrites': [],
+})
+
+for script in ['seal_first.py', 'materialize_normal_records.py', 'run_normal_checks.py', 'check_kind_bindings.ts', 'finalize_package.py']:
+    target = OUT / 'technical' / (script + '.txt')
+    assert not target.exists()
+    target.parent.mkdir(exist_ok=True)
+    shutil.copyfile(ROOT / 'tmp/chemie-protected12-native-independent-a' / script, target)
+
+readme = OUT / 'README.de.md'
+assert not readme.exists()
+readme.write_text('''# Chemie B008: unabhängiger aktueller A12-Kontextreview
+
+Eigenständiger FIRST-A12, versiegelt vor aktuellen Autor- oder Peerurteilen.
+Alle zwölf vollständigen Vorher-/Nachher-DE/EN-Ziele, zwölf P-v2-Profilkörper
+mit 24 vollständigen Fällen und tatsächlich zwölf ganze HTML- sowie zwölf
+ganze PDF-Seiten wurden geprüft. Ergebnis: **KEEP 12 aktuelle Kontexte**.
+
+Die fünf echten Voraussetzungsketten sowie ihre P-reviewInput- und
+KindSource-Bindungen wurden einzeln fachlich geprüft. Alle zwölf vorhandenen
+A/M-Entscheidungen bleiben nach begründeter Kontextprüfung erhalten.
+Historische wissenschaftliche Profile, Recordkörper, Statuswerte und Bilder
+bleiben unverändert; das Paket ist keine Wiederholung historischer Freigaben.
+
+Normale A12-Kampagne und sieben gezielte normale P-Verträge: terminal PASS.
+P bleibt `needs_human_review / ai_candidate / E1 / G1`, Approved 0.
+Keine Checker-/Schema-Ausnahmen, keine aktiven Registry-, Laufzeit- oder
+kanonischen Änderungen. Neue fachliche strenge Abschlüsse 0, wiederhergestellte
+strenge Bindungen 0 und Nettozuwachs 0: Integration und zentrale Zählung stehen
+außerhalb dieses unabhängigen Reviewpakets.
+
+Source-Compiler weiterhin HOLD 355/398, 24 neue und 19 bisherige fehlende Ziele,
+496 ungeklärte Scope-Bindungen. Keine gesamte Quellen-, Kurs-, Bundesland-,
+Dauer- oder Nennerfreigabe. Menschliche Prüfung/Freigabe/Erprobung und tatsächliche
+Lernendenleistung werden nicht behauptet. Die exakte Modellversion und die
+Samplingparameter sind nicht exponiert und bleiben ausdrücklich unbekannt.
+''')
+
+spec = importlib.util.spec_from_file_location('normal_validate_schemas', ROOT / 'scripts/validate_schemas.py')
+normal = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(normal)
+runtime_schema = json.loads((ROOT / 'docs/landscape-runtime.schema.json').read_text())
+schema_files = {
+    'record': ROOT / 'contracts/goal-description-review/v1/goal-description-review-record.schema.json',
+    'run': ROOT / 'contracts/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json',
+    'profile': ROOT / 'contracts/goal-evidence/v2/goal-evidence-profile.schema.json',
+    'config': ROOT / 'contracts/goal-evidence/v2/goal-evidence-review-config.schema.json',
+}
+validators = {key: jsonschema.Draft202012Validator(json.loads(path.read_text()), format_checker=jsonschema.FormatChecker()) for key, path in schema_files.items()}
+parsed_json = parsed_jsonl = description_records = p_records = runs = configs = 0
+errors = []
+for path in sorted(OUT.rglob('*')):
+    assert not path.is_symlink(), path
+    if not path.is_file():
+        continue
+    if path.suffix == '.json':
+        value = json.loads(path.read_text())
+        parsed_json += 1
+        assert normal.validate_file(str(path), runtime_schema), path
+        if path.name.endswith('.run.json'):
+            validators['run'].validate(value)
+            runs += 1
+        if path.name.endswith('.normal.config.json'):
+            validators['config'].validate(value)
+            configs += 1
+    elif path.suffix == '.jsonl':
+        data = path.read_bytes()
+        assert data.endswith(b'\n')
+        parsed_jsonl += 1
+        for line in data.decode().splitlines():
+            assert line.strip()
+            record = json.loads(line)
+            if 'positive' in path.parts:
+                validators['profile'].validate(record)
+                assert record == material[record['goalId']]['wholeCurrentTechnicalCandidateRecord']
+                p_records += 1
+            else:
+                validators['record'].validate(record)
+                own = first_by_id[record['goalId']]
+                assert record['decision'] == own['decision']
+                assert record['goalFingerprint'] == own['goalFingerprint']
+                assert record['pageFingerprint'] == own['pageFingerprint']
+                evidence = {k: v for k, v in own['understandingEvidence'].items() if not k.startswith('transferCheck')}
+                evidence['transferExpectationDe'] = own['understandingEvidence']['transferCheckDe']
+                evidence['transferExpectationEn'] = own['understandingEvidence']['transferCheckEn']
+                assert record['understandingEvidence'] == evidence
+                description_records += 1
+assert (description_records, p_records, runs, configs) == (12, 12, 1, 7)
+symlinks = normal.curriculum_symlink_errors(ROOT)
+assert not symlinks, symlinks
+write('checks/scoped-complete-JSON-JSONL-normal-schema-and-portability.actual.json', {
+    'schemaVersion': 1, 'checkedAt': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+    'role': 'Actual full own-package JSON/JSONL parse, unchanged normal schemas and validate_file discovery, literal FIRST-to-record materialization, exact P-record selection and normal curricula symlink portability',
+    'parsedJsonFiles': parsed_json, 'parsedJsonlFiles': parsed_jsonl,
+    'normalSchemaValidatedDescriptionRecords': description_records, 'normalSchemaValidatedPositiveRecords': p_records,
+    'normalSchemaValidatedRuns': runs, 'normalSchemaValidatedPositiveConfigs': configs,
+    'normalSchemas': {key: bind(path.relative_to(ROOT)) for key, path in schema_files.items()},
+    'normalValidateSchemasImplementation': bind(Path('scripts/validate_schemas.py')),
+    'actualCurriculumSymlinkErrors': symlinks, 'errors': errors,
+    'noSchemaOrCheckerExceptionsAdded': True, 'immutableFirst': bind(first_path),
+    'activeWrites': [], 'humanApproval': False, 'strictGain': 0,
+})
+files = [bind(p) for p in sorted(OUT.rglob('*')) if p.is_file()]
+freeze = write('independent-a.final.freeze.json', {
+    'schemaVersion': 1, 'sealedAt': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+    'role': 'Final whole own independent current protected12 context FIRST, normal records/runs and targeted current P/A/M/Kinds/source/raster retentions; machine candidates only',
+    'wholeOwnPackageArtifacts': files,
+    'neutralEntry': bind(SRC / 'neutral-protected12-whole-current-native-context.independent-review.entry.json'),
+    'authorInputFreeze': bind(SRC / 'author.final.freeze.json'), 'ownImmutableFirst': bind(first_path),
+    'actualReviewSummary': {'currentContextKEEP': 12, 'wholeDEENBeforeAfterGoalsRead': 12, 'wholePProfilesRead': 12, 'completePCaseBodiesRead': 24, 'actualWholeHtmlPagesSeen': 12, 'actualWholePdfPagesSeen': 12, 'actualFiveChangedPrerequisitePAndKindContextsReviewed': 5, 'allNormalA12AndP12ChecksPassed': True, 'wholeHistoricalAAndMRetained': 12, 'unchangedOriginalRastersWithExistingExactMachineApprovalRetained': 12, 'newHistoricalProfileOrRasterApprovals': 0, 'sourceHolds': {'mapped': 355, 'required': 398, 'newChildOmissions': 24, 'priorOmissions': 19, 'unresolvedScopeBindings': 496}, 'newScientificStrictClosures': 0, 'restoredStrictBindings': 0, 'netStrictGain': 0, 'wholeSourceCourseOrDenominatorApproval': False, 'humanApproval': False, 'humanTrial': False, 'actualLearnerPerformance': False, 'activeWrites': []},
+    'independence': first['independence'],
+})
+print(json.dumps({'filesBound': len(files), 'parsedJsonFiles': parsed_json, 'parsedJsonlFiles': parsed_jsonl, 'normalDescriptionRecords': description_records, 'normalPositiveRecords': p_records, 'normalPortabilityErrors': len(symlinks), 'finalFreeze': bind(freeze)}, ensure_ascii=False))

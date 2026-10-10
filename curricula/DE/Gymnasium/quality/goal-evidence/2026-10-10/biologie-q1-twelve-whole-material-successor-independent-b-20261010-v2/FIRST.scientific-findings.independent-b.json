@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "role": "Blind independent scientific FIRST findings",
+  "findings": [
+    {
+      "id": "BIO-MAT-B-001",
+      "severity": "blocking_for_whole_current_case_acceptance",
+      "goalId": "ed4cf96f-e1c9-5784-97f2-8279ff5a31b1",
+      "caseId": "bioinformatics-quality-and-database",
+      "inputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-twelve-two-material-targeted-author-successor-v2/candidate/twelve.full-material-and-profile.author.json",
+      "locations": [
+        "goals[9].cases[1].materialDe",
+        "goals[9].cases[1].materialEn",
+        "goals[9].cases[1].taskDe",
+        "goals[9].cases[1].taskEn",
+        "goals[9].cases[1].workedSolutionDe",
+        "goals[9].cases[1].workedSolutionEn",
+        "goals[9].profile.applicationCaseBriefs[1]"
+      ],
+      "actualFindingDe": "Der erste ganze Fall samt Lückentransfer ist korrekt: Mismatchposition5, 11/12, Trefferabdeckung und Identität sowie 12/13 und Score22 stimmen. Im zweiten Fall ist die nach Kürzen verlangte Erhaltung aller85 U-Positionen aber mit den gegebenen Bereichen unmöglich: Die diversen Positionen31–120 umfassen90; Entfernen111–120 lässt80. Mindestens5 der85 aus diesem Bereich ausgerichteten Positionen müssen wegfallen. Der bedingte Satz im Task/Profil/Erwartung löst die widersprüchliche Voraussetzung nicht. Der zweite ganze Fall benötigt einen gezielten DE/EN-Nachfolger mit passenden Positions-/Qualitätsdaten.",
+      "actualFindingEn": "The first complete case and gap transfer are correct: mismatch position5, identities, coverage and score22 check out. In the second case retaining all85 U positions after trimming is impossible under the supplied regions: positions31–120 contain90 diverse bases; removing111–120 leaves80. At least5 aligned positions must be lost. The conditional task/profile/expectation does not resolve that inconsistent premise. The second full case needs a targeted bilingual successor with consistent positional quality data.",
+      "independentCounterproof": {
+        "originalDiversePositions": [
+          31,
+          120
+        ],
+        "removedPositions": [
+          111,
+          120
+        ],
+        "remainingDiversePositions": [
+          31,
+          110
+        ],
+        "remainingDiverseCount": 80,
+        "UOriginalAlignedPositionCount": 85,
+        "minimumAlignedPositionsLost": 5,
+        "possibleRemainingUPositionCounts": [
+          75,
+          80
+        ],
+        "possibleRemainingUCoverageBounds": [
+          0.6818181818181818,
+          0.7272727272727273
+        ],
+        "claimedConditional85Over110CannotBeRealized": true
+      },
+      "requiredRemediation": "Make actual trimmed positions and retained alignment data consistent in DE/EN, then recalculate the actual case and any affected brief; do not merely refresh fingerprints. An explicit alternative is to provide a poor-quality 10-base prefix within the repeat and retain all U positions, if that is the intended case. Preserve the other 11 entire material bodies, all goals and all source partners unchanged.",
+      "retainedValidParts": [
+        "first whole alignment case",
+        "gap transfer",
+        "original U coverage and identity",
+        "larger-database transfer E=1e-11"
+      ],
+      "resolved": false
+    }
+  ],
+  "readAuthorDiagnoses": false,
+  "readTargetedAuthorDelta": false,
+  "readOtherCurrentBiologyReviews": false
+}

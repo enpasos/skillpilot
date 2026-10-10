@@ -1,0 +1,24 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Unused source document snapshot
++ actual - expected
+
+  [
+    'curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_CH_V2.pdf',
+-   'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-q3-three-BW-context-bound-practical-companions-author-v1/primary/official-BW-chemistry-20220325.actual-original.pdf'
+  ]
+    at buildGoalBookSourceAtlasInputs (/home/enpasos/projects/skillpilot/app/scripts/goalBookSourceAtlasInputs.ts:305:10)
+    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-q3-three-BW-current-raster-native-preparation-author-20261010-v1/prepare_current_contexts.author.mts:90:14) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [ 'curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_CH_V2.pdf' ],
+  expected: [
+    'curricula/DE/Gymnasium/input/BW/BP2016BW_ALLG_GYM_CH_V2.pdf',
+    'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/chemie-q3-three-BW-context-bound-practical-companions-author-v1/primary/official-BW-chemistry-20220325.actual-original.pdf'
+  ],
+  operator: 'deepStrictEqual'
+}
+
+Node.js v20.20.2

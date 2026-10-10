@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:bb758e96b55efb7f2efaf99fdb80eff54064633c20b9e0fc92d3846619628f6c",
+  "reviewInputFingerprint": "sha256:4aa1ad97fe8af2e2015dd0fbc02adb3c8d20cc89daf8fd201bd86c6f311bb9b6",
+  "goalCount": 4,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-four-risk-ethics-current-native-20261010-v1-a",
+      "roundId": "biologie-four-risk-ethics-current-native-20261010-v1-first-pass-a",
+      "independenceGroupId": "biologie-four-risk-ethics-current-native-20261010-v1-independent-a",
+      "runIds": [
+        "biologie-four-current-native-independent-a-root-20261010-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex current session; exact model version not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-four-risk-ethics-current-native-20261010-v1-b",
+      "roundId": "biologie-four-risk-ethics-current-native-20261010-v1-first-pass-b",
+      "independenceGroupId": "biologie-four-risk-ethics-current-native-20261010-v1-independent-b",
+      "runIds": [
+        "biologie-four-risk-ethics-current-native-20261010-v1-b.actual-run"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::GPT-6::Current model identity supplied by session; no engine revision exposed"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 4,
+    "unavailable": 0,
+    "requiresSynthesis": 4
+  },
+  "goals": [
+    {
+      "goalId": "1320b82e-e438-59ff-9d53-ecc9fbacae58",
+      "firstRecordId": "biologie-four-current-native-independent-a-root-20261010-v1.record-1",
+      "secondRecordId": "biologie-four-risk-ethics-current-native-20261010-v1-b.actual-run.1320b82e-e438-59ff-9d53-ecc9fbacae58",
+      "firstRunId": "biologie-four-current-native-independent-a-root-20261010-v1",
+      "secondRunId": "biologie-four-risk-ethics-current-native-20261010-v1-b.actual-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "ee686aee-43d3-50df-a60a-e47ac845586c",
+      "firstRecordId": "biologie-four-current-native-independent-a-root-20261010-v1.record-2",
+      "secondRecordId": "biologie-four-risk-ethics-current-native-20261010-v1-b.actual-run.ee686aee-43d3-50df-a60a-e47ac845586c",
+      "firstRunId": "biologie-four-current-native-independent-a-root-20261010-v1",
+      "secondRunId": "biologie-four-risk-ethics-current-native-20261010-v1-b.actual-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "40334348-bd84-5ed9-b76b-5f5b80c2d145",
+      "firstRecordId": "biologie-four-current-native-independent-a-root-20261010-v1.record-3",
+      "secondRecordId": "biologie-four-risk-ethics-current-native-20261010-v1-b.actual-run.40334348-bd84-5ed9-b76b-5f5b80c2d145",
+      "firstRunId": "biologie-four-current-native-independent-a-root-20261010-v1",
+      "secondRunId": "biologie-four-risk-ethics-current-native-20261010-v1-b.actual-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "031fd4f3-906e-5919-ae7f-a2b0b9220604",
+      "firstRecordId": "biologie-four-current-native-independent-a-root-20261010-v1.record-4",
+      "secondRecordId": "biologie-four-risk-ethics-current-native-20261010-v1-b.actual-run.031fd4f3-906e-5919-ae7f-a2b0b9220604",
+      "firstRunId": "biologie-four-current-native-independent-a-root-20261010-v1",
+      "secondRunId": "biologie-four-risk-ethics-current-native-20261010-v1-b.actual-run",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

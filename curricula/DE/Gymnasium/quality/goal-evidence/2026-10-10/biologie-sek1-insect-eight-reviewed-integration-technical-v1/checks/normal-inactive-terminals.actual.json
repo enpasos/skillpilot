@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "performedAt": "2026-10-10T05:24:58.326687+00:00",
+  "normalCheckersUnchanged": true,
+  "activeWrites": false,
+  "runs": [
+    {
+      "check": "normal-model-semantic-source-and-page-retention",
+      "command": [
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-integration-technical-v1/technical/check-normal-model-scopes.mts",
+        "/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/biologie-four-native-technical/isolated-biologie-four-native-h6w6nlaq"
+      ],
+      "workingRootRole": "active read-only root",
+      "exitCode": 0,
+      "durationSeconds": 3.782,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-integration-technical-v1/checks/normal-model-semantic-source-and-page-retention.actual.log.txt"
+    },
+    {
+      "check": "normal-author-P7-future-canonical-path",
+      "command": [
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-frog-adult-targeted-raster-native-author-successor-v2/positive/7-future-active.P.inactive.config.json",
+        "--mode=check"
+      ],
+      "workingRootRole": "ignored existing selective capsule",
+      "exitCode": 0,
+      "durationSeconds": 0.517,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-integration-technical-v1/checks/normal-author-P7-future-canonical-path.actual.log.txt"
+    },
+    {
+      "check": "normal-author-P1-future-canonical-path",
+      "command": [
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-frog-adult-targeted-raster-native-author-successor-v2/positive/1-future-active.P.inactive.config.json",
+        "--mode=check"
+      ],
+      "workingRootRole": "ignored existing selective capsule",
+      "exitCode": 0,
+      "durationSeconds": 0.463,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-integration-technical-v1/checks/normal-author-P1-future-canonical-path.actual.log.txt"
+    },
+    {
+      "check": "normal-eight-QA-metadata-generation-capsule-only",
+      "command": [
+        "app/scripts/generateGoalVisualizationQaLedgers.ts",
+        "--subject=biologie"
+      ],
+      "workingRootRole": "ignored existing selective capsule",
+      "exitCode": 0,
+      "durationSeconds": 1.938,
+      "logPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-sek1-insect-eight-reviewed-integration-technical-v1/checks/normal-eight-QA-metadata-generation-capsule-only.actual.log.txt"
+    }
+  ]
+}

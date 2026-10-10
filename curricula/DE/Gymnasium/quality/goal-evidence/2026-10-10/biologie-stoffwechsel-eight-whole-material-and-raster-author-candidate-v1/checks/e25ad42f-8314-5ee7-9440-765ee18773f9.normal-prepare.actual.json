@@ -1,0 +1,21 @@
+{
+  "cmd": [
+    "node",
+    "scripts/prepare_goal_visualization.mjs",
+    "e25ad42f-8314-5ee7-9440-765ee18773f9",
+    "--landscape",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-whole-material-and-raster-author-candidate-v1/inputs/whole479-original-authoring-base.exact.json",
+    "--subject",
+    "biologie",
+    "--provider",
+    "image_gen.imagegen",
+    "--review-status",
+    "pilot",
+    "--lang",
+    "de"
+  ],
+  "exitCode": 0,
+  "stdout": "Prepared prompt package for: Fette als Energiespeicher bilanzieren\nSkillPilot ID: e25ad42f-8314-5ee7-9440-765ee18773f9\nPrompt: tmp/goal-visualizations/e25ad42f-8314-5ee7-9440-765ee18773f9/nano-banana-prompt.de.md\nMetadata: tmp/goal-visualizations/e25ad42f-8314-5ee7-9440-765ee18773f9/metadata.json\n\nAfter generating and downloading the image, import it with:\nnpm --prefix app run visualization:import -- e25ad42f-8314-5ee7-9440-765ee18773f9 \"<downloaded-image-path>\"\n",
+  "stderr": "",
+  "activeWrites": false
+}

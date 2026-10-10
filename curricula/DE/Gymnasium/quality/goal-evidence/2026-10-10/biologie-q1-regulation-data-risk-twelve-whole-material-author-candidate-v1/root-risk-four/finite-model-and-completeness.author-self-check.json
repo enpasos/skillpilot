@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "role": "author_self_check",
+  "independentReview": false,
+  "scientificOrSourceApproval": false,
+  "humanApproval": false,
+  "strictNetGain": 0,
+  "finiteModelNumericalChecks": [
+    {
+      "case": "poly-c1",
+      "F2_algebra_actual": [
+        1,
+        4,
+        6,
+        4,
+        1
+      ],
+      "F2_total": 16,
+      "new_cross_count": {
+        "2": 1,
+        "1": 2,
+        "0": 1
+      }
+    },
+    {
+      "case": "poly-c2",
+      "supplied_risk_table_pass": true,
+      "interaction_AABB_aabb": [
+        50,
+        10
+      ]
+    },
+    {
+      "case": "snp-c1",
+      "QC_actual_calls": [
+        "GA",
+        "GG",
+        "unclear",
+        "GA",
+        "GG"
+      ],
+      "reverse_complement_at_SNP": "C->G; T->A"
+    },
+    {
+      "case": "snp-c2",
+      "risk_ratio_actual": "3",
+      "risk_difference_actual": "1/10",
+      "stratified_high_U_both": "1/5"
+    },
+    {
+      "case": "risk-c1",
+      "actual_probability": "1/80",
+      "percent": 1.25
+    },
+    {
+      "case": "risk-c2",
+      "actual_probability": "1/60",
+      "percent": 1.6666666666666667
+    },
+    {
+      "case": "counsel-c1/counsel-c2",
+      "monogenic_prior": "1/2",
+      "synthetic_risk_ratio": 2,
+      "synthetic_risk_difference_percentage_points": 2
+    }
+  ],
+  "completeBilingualCaseCount": 8,
+  "actualJSONParse": "pass"
+}

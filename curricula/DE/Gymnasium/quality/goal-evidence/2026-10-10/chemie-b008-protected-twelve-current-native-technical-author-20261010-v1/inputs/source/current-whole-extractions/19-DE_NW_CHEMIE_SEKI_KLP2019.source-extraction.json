@@ -1,0 +1,2832 @@
+{
+  "schemaVersion": 1,
+  "extractionId": "DE-NW-CHEMIE-SEKI-KLP-2019",
+  "title": "DE-NW - Chemie Sekundarstufe I (Nordrhein-Westfalen, KLP 2019 Source-Extraction)",
+  "sourceLandscapeId": "b6869844-53a0-5ba9-8217-614bdba432fd",
+  "jurisdiction": "DE-NW",
+  "subject": "Chemie",
+  "stage": "SekI",
+  "sourceDocument": {
+    "key": "NW-KLP-CHEMIE-SEKI-2019",
+    "title": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019",
+    "path": "curricula/DE/Gymnasium/input/NW/lower-secondary/g9_ch_klp_3415_2019_06_23.pdf",
+    "url": "https://lehrplannavigator.nrw.de/system/files/media/document/file/g9_ch_klp_3415_2019_06_23.pdf",
+    "official": true
+  },
+  "method": {
+    "passageExtraction": "pdftotext -layout; Kapitel 2.2.1/2.2.2 wird nach Inhaltsfeld und Kompetenzbereich segmentiert.",
+    "sourceGoalExtraction": "ein Source-Ziel pro konkretisiertem Kompetenz-Bullet; uebergeordnete Kompetenzlisten, Basiskonzept-Erlaeuterungen und Leistungsbewertungsabschnitte werden nicht als fachliche Source-Ziele gezählt."
+  },
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "details": "79 Source-Ziele; NRW liegt als direktes KLP-Bullet-Inventar unter Niedersachsen (196) und Hessen (122), aber die 10 amtlichen Inhaltsfelder sind vollständig extrahiert."
+    }
+  },
+  "expectedTopicCodes": [
+    "Stufe1-1-stoffe-und-stoffeigenschaften-umgang-mit-fachwissen",
+    "Stufe1-1-stoffe-und-stoffeigenschaften-erkenntnisgewinnung",
+    "Stufe1-1-stoffe-und-stoffeigenschaften-bewertung",
+    "Stufe1-2-chemische-reaktion-umgang-mit-fachwissen",
+    "Stufe1-2-chemische-reaktion-erkenntnisgewinnung",
+    "Stufe1-2-chemische-reaktion-bewertung",
+    "Stufe1-3-verbrennung-umgang-mit-fachwissen",
+    "Stufe1-3-verbrennung-erkenntnisgewinnung",
+    "Stufe1-3-verbrennung-bewertung",
+    "Stufe1-4-metalle-und-metallgewinnung-umgang-mit-fachwissen",
+    "Stufe1-4-metalle-und-metallgewinnung-erkenntnisgewinnung",
+    "Stufe1-4-metalle-und-metallgewinnung-bewertung",
+    "Stufe2-5-elemente-und-ihre-ordnung-umgang-mit-fachwissen",
+    "Stufe2-5-elemente-und-ihre-ordnung-erkenntnisgewinnung",
+    "Stufe2-5-elemente-und-ihre-ordnung-bewertung",
+    "Stufe2-6-salze-und-ionen-umgang-mit-fachwissen",
+    "Stufe2-6-salze-und-ionen-erkenntnisgewinnung",
+    "Stufe2-6-salze-und-ionen-bewertung",
+    "Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen",
+    "Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-erkenntnisgewinnung",
+    "Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-bewertung",
+    "Stufe2-8-molekulverbindungen-umgang-mit-fachwissen",
+    "Stufe2-8-molekulverbindungen-erkenntnisgewinnung",
+    "Stufe2-8-molekulverbindungen-bewertung",
+    "Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen",
+    "Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung",
+    "Stufe2-9-saure-und-alkalische-losungen-bewertung",
+    "Stufe2-10-organische-chemie-umgang-mit-fachwissen",
+    "Stufe2-10-organische-chemie-erkenntnisgewinnung",
+    "Stufe2-10-organische-chemie-bewertung"
+  ],
+  "pipelineStatus": {
+    "currentStep": "MAPPING-3",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliches NRW-Chemie-KLP-PDF liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/NW/lower-secondary/g9_ch_klp_3415_2019_06_23.pdf"
+          },
+          {
+            "id": "expected-topic-coverage",
+            "label": "Alle NRW-Chemie-Kompetenzpassagen wurden extrahiert",
+            "passed": true,
+            "details": "30/30 Passagegruppen."
+          },
+          {
+            "id": "official-source-extraction",
+            "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle statt Legacy-Snapshot",
+            "passed": true,
+            "details": "Quelle: curricula/DE/Gymnasium/input/NW/lower-secondary/g9_ch_klp_3415_2019_06_23.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Source-Ziele aus den amtlichen NRW-Chemie-Kompetenzerwartungen erzeugt",
+            "passed": true,
+            "details": "79 Source-Ziele"
+          },
+          {
+            "id": "source-goal-count-peer-baseline",
+            "label": "Source-Ziel-Anzahl ist gegen geprüfte Chemie-Inventare plausibilisiert",
+            "passed": true,
+            "details": "79 Source-Ziele; NRW liegt als direktes KLP-Bullet-Inventar unter Niedersachsen (196) und Hessen (122), aber die 10 amtlichen Inhaltsfelder sind vollständig extrahiert."
+          },
+          {
+            "id": "source-goal-ids-unique",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -"
+          },
+          {
+            "id": "source-goals-reference-passages",
+            "label": "Jedes Source-Ziel referenziert eine vorhandene Originalpassage",
+            "passed": true,
+            "details": "Ohne Passage: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "mapping-2-complete",
+            "label": "MAPPING-2 abgeschlossen",
+            "passed": true,
+            "details": "79 Source-Ziele liegen vor; MAPPING-3 läuft gegen diese Source-Extraction-IDs."
+          },
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.review.json"
+          },
+          {
+            "id": "m3-all-source-goals-reviewed",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "79/79 Source-Ziele reviewed; offen: 0."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "Abgedeckt: 79/79; keine offenen Canonical-Gaps."
+          }
+        ]
+      }
+    ]
+  },
+  "passages": [
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe1-1-stoffe-und-stoffeigenschaften-umgang-mit-fachwissen",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe1-1-stoffe-und-stoffeigenschaften-umgang-mit-fachwissen",
+      "title": "Erste Stufe: 1: Stoffe und Stoffeigenschaften / Umgang mit Fachwissen",
+      "page": 19,
+      "rawText": "- Reinstoffe aufgrund charakteristischer Eigenschaften (Schmelztemperatur/Siedetemperatur, Dichte, Löslichkeit) identifizieren\n- Stoffe aufgrund ihrer Eigenschaften klassifizieren",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe1-1-stoffe-und-stoffeigenschaften-umgang-mit-fachwissen-001-7fd9e93f",
+        "de-nw-chemie-seki-klp-2019-Stufe1-1-stoffe-und-stoffeigenschaften-umgang-mit-fachwissen-002-84f3f966"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe1-1-stoffe-und-stoffeigenschaften-erkenntnisgewinnung",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe1-1-stoffe-und-stoffeigenschaften-erkenntnisgewinnung",
+      "title": "Erste Stufe: 1: Stoffe und Stoffeigenschaften / Erkenntnisgewinnung",
+      "page": 19,
+      "rawText": "- eine geeignete messbare Stoffeigenschaft experimentell ermitteln\n- Experimente zur Trennung eines Stoffgemisches in Reinstoffe (Filtration, Destillation) unter Nutzung relevanter Stoffeigenschaften planen und sachgerecht durchführen\n- Aggregatzustände und deren Änderungen auf der Grundlage eines einfachen Teilchenmodells erklären",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe1-1-stoffe-und-stoffeigenschaften-erkenntnisgewinnung-001-ed496ca9",
+        "de-nw-chemie-seki-klp-2019-Stufe1-1-stoffe-und-stoffeigenschaften-erkenntnisgewinnung-002-977dc728",
+        "de-nw-chemie-seki-klp-2019-Stufe1-1-stoffe-und-stoffeigenschaften-erkenntnisgewinnung-003-23b3461c"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe1-1-stoffe-und-stoffeigenschaften-bewertung",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe1-1-stoffe-und-stoffeigenschaften-bewertung",
+      "title": "Erste Stufe: 1: Stoffe und Stoffeigenschaften / Bewertung",
+      "page": 19,
+      "rawText": "- die Verwendung ausgewählter Stoffe im Alltag mithilfe ihrer Eigenschaften begründen",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe1-1-stoffe-und-stoffeigenschaften-bewertung-001-bd6971e5"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe1-2-chemische-reaktion-umgang-mit-fachwissen",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe1-2-chemische-reaktion-umgang-mit-fachwissen",
+      "title": "Erste Stufe: 2: Chemische Reaktion / Umgang mit Fachwissen",
+      "page": 20,
+      "rawText": "- chemische Reaktionen an der Bildung von neuen Stoffen mit anderen Eigenschaften und in Abgrenzung zu physikalischen Vorgängen identifizieren\n- chemische Reaktionen in Form von Reaktionsschemata in Worten darstellen\n- bei ausgewählten chemischen Reaktionen die Energieumwandlung der in den Stoffen gespeicherten Energie (chemische Energie) in andere Energieformen begründet angeben\n- bei ausgewählten chemischen Reaktionen die Bedeutung der Aktivierungsenergie zum Auslösen einer Reaktion beschreiben",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe1-2-chemische-reaktion-umgang-mit-fachwissen-001-e3713c40",
+        "de-nw-chemie-seki-klp-2019-Stufe1-2-chemische-reaktion-umgang-mit-fachwissen-002-2e66fc75",
+        "de-nw-chemie-seki-klp-2019-Stufe1-2-chemische-reaktion-umgang-mit-fachwissen-003-b3e69b77",
+        "de-nw-chemie-seki-klp-2019-Stufe1-2-chemische-reaktion-umgang-mit-fachwissen-004-c73c827e"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe1-2-chemische-reaktion-erkenntnisgewinnung",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe1-2-chemische-reaktion-erkenntnisgewinnung",
+      "title": "Erste Stufe: 2: Chemische Reaktion / Erkenntnisgewinnung",
+      "page": 20,
+      "rawText": "- einfache chemische Reaktionen sachgerecht durchführen und auswerten\n- chemische Reaktionen anhand von Stoffund Energieumwandlungen auch im Alltag identifizieren",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe1-2-chemische-reaktion-erkenntnisgewinnung-001-1b8c97cf",
+        "de-nw-chemie-seki-klp-2019-Stufe1-2-chemische-reaktion-erkenntnisgewinnung-002-2455e4f9"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe1-2-chemische-reaktion-bewertung",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe1-2-chemische-reaktion-bewertung",
+      "title": "Erste Stufe: 2: Chemische Reaktion / Bewertung",
+      "page": 20,
+      "rawText": "- die Bedeutung chemischer Reaktionen in der Lebenswelt begründen",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe1-2-chemische-reaktion-bewertung-001-543d3366"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe1-3-verbrennung-umgang-mit-fachwissen",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe1-3-verbrennung-umgang-mit-fachwissen",
+      "title": "Erste Stufe: 3: Verbrennung / Umgang mit Fachwissen",
+      "page": 21,
+      "rawText": "- anhand von Beispielen Reinstoffe in chemische Elemente und Verbindungen einteilen\n- die wichtigsten Bestandteile des Gasgemisches Luft, ihre Eigenschaften und Anteile nennen\n- die Verbrennung als eine chemische Reaktion mit Sauerstoff identifizieren und als Oxidbildung klassifizieren\n- die Analyse und Synthese von Wasser als Beispiel für die Umkehrbarkeit chemischer Reaktionen beschreiben",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe1-3-verbrennung-umgang-mit-fachwissen-001-70eaaa63",
+        "de-nw-chemie-seki-klp-2019-Stufe1-3-verbrennung-umgang-mit-fachwissen-002-d171ec98",
+        "de-nw-chemie-seki-klp-2019-Stufe1-3-verbrennung-umgang-mit-fachwissen-003-84f5c353",
+        "de-nw-chemie-seki-klp-2019-Stufe1-3-verbrennung-umgang-mit-fachwissen-004-1ee3434b"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe1-3-verbrennung-erkenntnisgewinnung",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe1-3-verbrennung-erkenntnisgewinnung",
+      "title": "Erste Stufe: 3: Verbrennung / Erkenntnisgewinnung",
+      "page": 21,
+      "rawText": "- mit einem einfachen Atommodell Massenänderungen bei chemischen Reaktionen mit Sauerstoff erklären\n- Nachweisreaktionen von Gasen (Sauerstoff, Wasserstoff, Kohlenstoffdioxid) und Wasser durchführen\n- den Verbleib von Verbrennungsprodukten (Kohlenstoffdioxid, Wasser) mit dem Gesetz von der Erhaltung der Masse begründen",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe1-3-verbrennung-erkenntnisgewinnung-001-17b217fb",
+        "de-nw-chemie-seki-klp-2019-Stufe1-3-verbrennung-erkenntnisgewinnung-002-defe6c27",
+        "de-nw-chemie-seki-klp-2019-Stufe1-3-verbrennung-erkenntnisgewinnung-003-e4489c07"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe1-3-verbrennung-bewertung",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe1-3-verbrennung-bewertung",
+      "title": "Erste Stufe: 3: Verbrennung / Bewertung",
+      "page": 22,
+      "rawText": "- in vorgegebenen Situationen Handlungsmöglichkeiten zum Umgang mit brennbaren Stoffen zur Brandvorsorge sowie mit offenem Feuer zur Brandbekämpfung bewerten und sich begründet für eine Handlung entscheiden\n- Vorund Nachteile einer ressourcenschonenden Energieversorgung auf Grundlage der Umkehrbarkeit chemischer Reaktionen am Beispiel von Wasser beschreiben",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe1-3-verbrennung-bewertung-001-5bd6054f",
+        "de-nw-chemie-seki-klp-2019-Stufe1-3-verbrennung-bewertung-002-3c267352"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe1-4-metalle-und-metallgewinnung-umgang-mit-fachwissen",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe1-4-metalle-und-metallgewinnung-umgang-mit-fachwissen",
+      "title": "Erste Stufe: 4: Metalle und Metallgewinnung / Umgang mit Fachwissen",
+      "page": 23,
+      "rawText": "- chemische Reaktionen, bei denen Sauerstoff abgegeben wird, als Zerlegung von Oxiden klassifizieren\n- ausgewählte Metalle aufgrund ihrer Reaktionsfähigkeit mit Sauerstoff als edle und unedle Metalle ordnen",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe1-4-metalle-und-metallgewinnung-umgang-mit-fachwissen-001-5803ed42",
+        "de-nw-chemie-seki-klp-2019-Stufe1-4-metalle-und-metallgewinnung-umgang-mit-fachwissen-002-6d443d40"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe1-4-metalle-und-metallgewinnung-erkenntnisgewinnung",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe1-4-metalle-und-metallgewinnung-erkenntnisgewinnung",
+      "title": "Erste Stufe: 4: Metalle und Metallgewinnung / Erkenntnisgewinnung",
+      "page": 23,
+      "rawText": "- Experimente zur Zerlegung von ausgewählten Metalloxiden hypothesengeleitet planen und geeignete Reaktionspartner auswählen\n- Sauerstoffübertragungsreaktionen im Sinne des Donator-Akzeptor-Konzeptes modellhaft erklären\n- ausgewählte Verfahren zur Herstellung von Metallen erläutern und ihre Bedeutung für die gesellschaftliche Entwicklung beschreiben",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe1-4-metalle-und-metallgewinnung-erkenntnisgewinnung-001-759d7610",
+        "de-nw-chemie-seki-klp-2019-Stufe1-4-metalle-und-metallgewinnung-erkenntnisgewinnung-002-11b08bd1",
+        "de-nw-chemie-seki-klp-2019-Stufe1-4-metalle-und-metallgewinnung-erkenntnisgewinnung-003-41986148"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe1-4-metalle-und-metallgewinnung-bewertung",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe1-4-metalle-und-metallgewinnung-bewertung",
+      "title": "Erste Stufe: 4: Metalle und Metallgewinnung / Bewertung",
+      "page": 23,
+      "rawText": "- die Bedeutung des Metallrecyclings im Zusammenhang mit Ressourcenschonung und Energieeinsparung beschreiben und auf dieser Basis das eigene Konsumund Entsorgungsverhalten bewerten\n- Maßnahmen zum Löschen von Metallbränden auf der Grundlage der Sauerstoffübertragungsreaktion begründet auswählen",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe1-4-metalle-und-metallgewinnung-bewertung-001-9298284d",
+        "de-nw-chemie-seki-klp-2019-Stufe1-4-metalle-und-metallgewinnung-bewertung-002-c6ca1db9"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe2-5-elemente-und-ihre-ordnung-umgang-mit-fachwissen",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe2-5-elemente-und-ihre-ordnung-umgang-mit-fachwissen",
+      "title": "Zweite Stufe: 5: Elemente und ihre Ordnung / Umgang mit Fachwissen",
+      "page": 27,
+      "rawText": "- Vorkommen und Nutzen ausgewählter chemischer Elemente und ihrer Verbindungen in Alltag und Umwelt beschreiben\n- chemische Elemente anhand ihrer charakteristischen physikalischen und chemischen Eigenschaften den Elementfamilien zuordnen\n- aus dem Periodensystem der Elemente wesentliche Informationen zum Atombau der Hauptgruppenelemente (Elektronenkonfiguration, Atommasse) herleiten",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe2-5-elemente-und-ihre-ordnung-umgang-mit-fachwissen-001-9ad7fdac",
+        "de-nw-chemie-seki-klp-2019-Stufe2-5-elemente-und-ihre-ordnung-umgang-mit-fachwissen-002-fb14b0c8",
+        "de-nw-chemie-seki-klp-2019-Stufe2-5-elemente-und-ihre-ordnung-umgang-mit-fachwissen-003-ea90d18d"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe2-5-elemente-und-ihre-ordnung-erkenntnisgewinnung",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe2-5-elemente-und-ihre-ordnung-erkenntnisgewinnung",
+      "title": "Zweite Stufe: 5: Elemente und ihre Ordnung / Erkenntnisgewinnung",
+      "page": 27,
+      "rawText": "- physikalische und chemische Eigenschaften von Alkalimetallen, Halogenen und Edelgasen mithilfe ihrer Stellung im Periodensystem begründet vorhersagen\n- die Entwicklung eines differenzierten Kern-Hülle-Modells auf der Grundlage von Experimenten, Beobachtungen und Schlussfolgerungen beschreiben\n- die Aussagekraft verschiedener Kern-Hülle-Modelle beschreiben",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe2-5-elemente-und-ihre-ordnung-erkenntnisgewinnung-001-215987bd",
+        "de-nw-chemie-seki-klp-2019-Stufe2-5-elemente-und-ihre-ordnung-erkenntnisgewinnung-002-e5d5fb5d",
+        "de-nw-chemie-seki-klp-2019-Stufe2-5-elemente-und-ihre-ordnung-erkenntnisgewinnung-003-a7bd7d36"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe2-5-elemente-und-ihre-ordnung-bewertung",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe2-5-elemente-und-ihre-ordnung-bewertung",
+      "title": "Zweite Stufe: 5: Elemente und ihre Ordnung / Bewertung",
+      "page": 28,
+      "rawText": "- vor dem Hintergrund der begrenzten Verfügbarkeit eines chemischen Elements bzw. seiner Verbindungen Handlungsoptionen für ein ressourcenschonendes Konsumverhalten entwickeln",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe2-5-elemente-und-ihre-ordnung-bewertung-001-7df6997b"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe2-6-salze-und-ionen-umgang-mit-fachwissen",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe2-6-salze-und-ionen-umgang-mit-fachwissen",
+      "title": "Zweite Stufe: 6: Salze und Ionen / Umgang mit Fachwissen",
+      "page": 28,
+      "rawText": "- ausgewählte Eigenschaften von Salzen mit ihrem Aufbau aus Ionen und der Ionenbindung erläutern\n- an einem Beispiel die Salzbildung unter Einbezug energetischer Betrachtungen auch mit Angabe einer Reaktionsgleichung in Ionenschreibweise erläutern",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe2-6-salze-und-ionen-umgang-mit-fachwissen-001-34138bdf",
+        "de-nw-chemie-seki-klp-2019-Stufe2-6-salze-und-ionen-umgang-mit-fachwissen-002-1be3714f"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe2-6-salze-und-ionen-erkenntnisgewinnung",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe2-6-salze-und-ionen-erkenntnisgewinnung",
+      "title": "Zweite Stufe: 6: Salze und Ionen / Erkenntnisgewinnung",
+      "page": 29,
+      "rawText": "- den Gehalt von Salzen in einer Lösung durch Eindampfen ermitteln\n- an einem Beispiel das Gesetz der konstanten Massenverhältnisse erklären und eine chemische Verhältnisformel herleiten",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe2-6-salze-und-ionen-erkenntnisgewinnung-001-59f02476",
+        "de-nw-chemie-seki-klp-2019-Stufe2-6-salze-und-ionen-erkenntnisgewinnung-002-8317f69d"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe2-6-salze-und-ionen-bewertung",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe2-6-salze-und-ionen-bewertung",
+      "title": "Zweite Stufe: 6: Salze und Ionen / Bewertung",
+      "page": 29,
+      "rawText": "- unter Umweltund Gesundheitsaspekten die Verwendung von Salzen im Alltag reflektieren",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe2-6-salze-und-ionen-bewertung-001-3b4cd482"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen",
+      "title": "Zweite Stufe: 7: Chemische Reaktionen durch Elektronenübertragung / Umgang mit Fachwissen",
+      "page": 30,
+      "rawText": "- die Abgabe von Elektronen als Oxidation einordnen\n- die Aufnahme von Elektronen als Reduktion einordnen\n- Reaktionen zwischen Metallatomen und Metallionen als Elektronenübertragungsreaktionen deuten und diese auch mithilfe digitaler Animationen und Teilgleichungen erläutern\n- die chemischen Prozesse eines galvanischen Elements und einer Elektrolyse unter dem Aspekt der Umwandlung in Stoffen gespeicherter Energie in elektrische Energie und umgekehrt erläutern\n- den grundlegenden Aufbau und die Funktionsweise einer Batterie, eines Akkumulators und einer Brennstoffzelle beschreiben",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen-001-86178f85",
+        "de-nw-chemie-seki-klp-2019-Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen-002-e3bf186f",
+        "de-nw-chemie-seki-klp-2019-Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen-003-bb3eab1d",
+        "de-nw-chemie-seki-klp-2019-Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen-004-630584ad",
+        "de-nw-chemie-seki-klp-2019-Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen-005-399062b9"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-erkenntnisgewinnung",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-erkenntnisgewinnung",
+      "title": "Zweite Stufe: 7: Chemische Reaktionen durch Elektronenübertragung / Erkenntnisgewinnung",
+      "page": 30,
+      "rawText": "- Experimente planen, die eine Einordnung von Metallionen hinsichtlich ihrer Fähigkeit zur Elektronenaufnahme erlauben und diese sachgerecht durchführen\n- Elektronenübertragungsreaktionen im Sinne des Donator-Akzeptor-Prinzips modellhaft erklären",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-erkenntnisgewinnung-001-ab227817",
+        "de-nw-chemie-seki-klp-2019-Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-erkenntnisgewinnung-002-d676a348"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-bewertung",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-bewertung",
+      "title": "Zweite Stufe: 7: Chemische Reaktionen durch Elektronenübertragung / Bewertung",
+      "page": 30,
+      "rawText": "- Kriterien für den Gebrauch unterschiedlicher elektrochemischer Energiequellen im Alltag reflektieren",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-bewertung-001-6327465f"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe2-8-molekulverbindungen-umgang-mit-fachwissen",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe2-8-molekulverbindungen-umgang-mit-fachwissen",
+      "title": "Zweite Stufe: 8: Molekülverbindungen / Umgang mit Fachwissen",
+      "page": 31,
+      "rawText": "- an ausgewählten Beispielen die Elektronenpaarbindung erläutern\n- mithilfe der Lewis-Schreibweise den Aufbau einfacher Moleküle beschreiben\n- die Synthese eines Industrierohstoffs aus Synthesegas (z.B. Methan oder Ammoniak) auch mit Angabe von Reaktionsgleichungen erläutern",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe2-8-molekulverbindungen-umgang-mit-fachwissen-001-cbdb161c",
+        "de-nw-chemie-seki-klp-2019-Stufe2-8-molekulverbindungen-umgang-mit-fachwissen-002-001433b3",
+        "de-nw-chemie-seki-klp-2019-Stufe2-8-molekulverbindungen-umgang-mit-fachwissen-003-d8b83459"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe2-8-molekulverbindungen-erkenntnisgewinnung",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe2-8-molekulverbindungen-erkenntnisgewinnung",
+      "title": "Zweite Stufe: 8: Molekülverbindungen / Erkenntnisgewinnung",
+      "page": 31,
+      "rawText": "- die räumliche Struktur von Molekülen mit dem Elektronenpaarabstoßungsmodell veranschaulichen\n- die Temperaturänderung beim Lösen von Salzen in Wasser erläutern\n- typische Eigenschaften von Wasser mithilfe des Dipol-Charakters der Wassermoleküle und der Ausbildung von Wasserstoffbrücken zwischen den Molekülen erläutern\n- die Wirkungsweise eines Katalysators modellhaft an der Synthese eines Industrierohstoffs erläutern",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe2-8-molekulverbindungen-erkenntnisgewinnung-001-6261ad8d",
+        "de-nw-chemie-seki-klp-2019-Stufe2-8-molekulverbindungen-erkenntnisgewinnung-002-d0bdd8de",
+        "de-nw-chemie-seki-klp-2019-Stufe2-8-molekulverbindungen-erkenntnisgewinnung-003-c62b102f",
+        "de-nw-chemie-seki-klp-2019-Stufe2-8-molekulverbindungen-erkenntnisgewinnung-004-0dc7db33"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe2-8-molekulverbindungen-bewertung",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe2-8-molekulverbindungen-bewertung",
+      "title": "Zweite Stufe: 8: Molekülverbindungen / Bewertung",
+      "page": 32,
+      "rawText": "- Informationen für ein technisches Verfahren zur Industrierohstoffgewinnung aus Gasen mithilfe digitaler Medien beschaffen und Bewertungskriterien auch unter Berücksichtigung der Energiespeicherung festlegen\n- unterschiedliche Darstellungen von Modellen kleiner Moleküle auch mithilfe einer Software vergleichend gegenüberstellen",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe2-8-molekulverbindungen-bewertung-001-e2ff06c6",
+        "de-nw-chemie-seki-klp-2019-Stufe2-8-molekulverbindungen-bewertung-002-42c2dc75"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen",
+      "title": "Zweite Stufe: 9: Saure und alkalische Lösungen / Umgang mit Fachwissen",
+      "page": 33,
+      "rawText": "- die Eigenschaften von sauren und alkalischen Lösungen mit dem Vorhandensein charakteristischer hydratisierter Ionen erklären\n- Protonendonatoren als Säuren und Protonenakzeptoren als Basen klassifizieren\n- an einfachen Beispielen die Vorgänge der Protonenabgabe und -aufnahme beschreiben\n- Neutralisationsreaktionen und Salzbildungen erläutern",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen-001-9e2e670d",
+        "de-nw-chemie-seki-klp-2019-Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen-002-64c25fe6",
+        "de-nw-chemie-seki-klp-2019-Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen-003-d6769b13",
+        "de-nw-chemie-seki-klp-2019-Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen-004-87074a01"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung",
+      "title": "Zweite Stufe: 9: Saure und alkalische Lösungen / Erkenntnisgewinnung",
+      "page": 33,
+      "rawText": "- charakteristische Eigenschaften von sauren Lösungen (elektrische Leitfähigkeit, Reaktionen mit Metallen, Reaktionen mit Kalk) und alkalischen Lösungen ermitteln und auch unter Angabe von Reaktionsgleichungen erläutern\n- den pH-Wert einer Lösung bestimmen und die pH-Wertskala mithilfe von Verdünnungen ableiten\n- ausgehend von einfachen stöchiometrischen Berechnungen Hypothesen und Reaktionsgleichungen zur Neutralisation von sauren bzw. alkalischen Lösungen aufstellen und experimentell überprüfen\n- eine ausgewählte Neutralisationsreaktion auf Teilchenebene als digitale Präsentation gestalten",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung-001-dc9e3375",
+        "de-nw-chemie-seki-klp-2019-Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung-002-8d524a32",
+        "de-nw-chemie-seki-klp-2019-Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung-003-b4037fbc",
+        "de-nw-chemie-seki-klp-2019-Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung-004-f83b22c8"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-bewertung",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe2-9-saure-und-alkalische-losungen-bewertung",
+      "title": "Zweite Stufe: 9: Saure und alkalische Lösungen / Bewertung",
+      "page": 34,
+      "rawText": "- beim Umgang mit sauren und alkalischen Lösungen Risiken und Nutzen abwägen und angemessene Sicherheitsmaßnahmen begründet auswählen\n- Aussagen zu sauren, alkalischen und neutralen Lösungen in analogen und digitalen Medien kritisch hinterfragen",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe2-9-saure-und-alkalische-losungen-bewertung-001-261e34f9",
+        "de-nw-chemie-seki-klp-2019-Stufe2-9-saure-und-alkalische-losungen-bewertung-002-308318c1"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-umgang-mit-fachwissen",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe2-10-organische-chemie-umgang-mit-fachwissen",
+      "title": "Zweite Stufe: 10: Organische Chemie / Umgang mit Fachwissen",
+      "page": 34,
+      "rawText": "- organische Molekülverbindungen aufgrund ihrer Eigenschaften in Stoffklassen einordnen\n- ausgewählte organische Verbindungen nach der systematischen Nomenklatur benennen\n- Treibhausgase und ihre Ursprünge beschreiben\n- die Abfolge verschiedener Reaktionen in einem Stoffkreislauf erklären\n- die vielseitige Verwendung von Kunststoffen im Alltag mit ihren Eigenschaften begründen",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe2-10-organische-chemie-umgang-mit-fachwissen-001-950fa7fd",
+        "de-nw-chemie-seki-klp-2019-Stufe2-10-organische-chemie-umgang-mit-fachwissen-002-74d8395e",
+        "de-nw-chemie-seki-klp-2019-Stufe2-10-organische-chemie-umgang-mit-fachwissen-003-e30cfeaa",
+        "de-nw-chemie-seki-klp-2019-Stufe2-10-organische-chemie-umgang-mit-fachwissen-004-249c6552",
+        "de-nw-chemie-seki-klp-2019-Stufe2-10-organische-chemie-umgang-mit-fachwissen-005-3662e6af"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-erkenntnisgewinnung",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe2-10-organische-chemie-erkenntnisgewinnung",
+      "title": "Zweite Stufe: 10: Organische Chemie / Erkenntnisgewinnung",
+      "page": 35,
+      "rawText": "- räumliche Strukturen von Kohlenwasserstoffmolekülen auch mithilfe von digitalen Modellen veranschaulichen\n- typische Stoffeigenschaften wie Löslichkeit und Siedetemperatur von ausgewählten Alkanen und Alkanolen ermitteln und mithilfe ihrer Molekülstrukturen und zwischenmolekularen Wechselwirkungen erklären\n- Messdaten von Verbrennungsvorgängen fossiler und regenerativer Energierohstoffe digital beschaffen und vergleichen\n- ausgewählte Eigenschaften von Kunststoffen auf deren makromolekulare Struktur und räumliche Anordnung zurückführen",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe2-10-organische-chemie-erkenntnisgewinnung-001-20c9dabb",
+        "de-nw-chemie-seki-klp-2019-Stufe2-10-organische-chemie-erkenntnisgewinnung-002-00e7e695",
+        "de-nw-chemie-seki-klp-2019-Stufe2-10-organische-chemie-erkenntnisgewinnung-003-7ddf32cf",
+        "de-nw-chemie-seki-klp-2019-Stufe2-10-organische-chemie-erkenntnisgewinnung-004-a5cf00f8"
+      ]
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-bewertung",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "topicCode": "Stufe2-10-organische-chemie-bewertung",
+      "title": "Zweite Stufe: 10: Organische Chemie / Bewertung",
+      "page": 35,
+      "rawText": "- Vorund Nachteile der Nutzung von fossilen und regenerativen Energieträgern unter ökologischen, ökonomischen und ethischen Gesichtspunkten diskutieren\n- am Beispiel eines chemischen Produkts Kriterien hinsichtlich Verwendung, Ökonomie, Recyclingfähigkeit und Umweltverträglichkeit abwägen und im Hinblick auf die Verwendung einen eigenen sachlich fundierten Standpunkt beziehen",
+      "sourceGoalIds": [
+        "de-nw-chemie-seki-klp-2019-Stufe2-10-organische-chemie-bewertung-001-b3f26eec",
+        "de-nw-chemie-seki-klp-2019-Stufe2-10-organische-chemie-bewertung-002-082a150a"
+      ]
+    }
+  ],
+  "sourceGoals": [
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-1-stoffe-und-stoffeigenschaften-umgang-mit-fachwissen-001-7fd9e93f",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-1-stoffe-und-stoffeigenschaften-umgang-mit-fachwissen",
+      "topicCode": "Stufe1-1-stoffe-und-stoffeigenschaften-umgang-mit-fachwissen",
+      "title": "Reinstoffe aufgrund charakteristischer Eigenschaften (Schmelztemperatur/Siedetemperatur, Dichte, Löslichkeit) identifizieren",
+      "description": "Die lernende Person kann Reinstoffe aufgrund charakteristischer Eigenschaften (Schmelztemperatur/Siedetemperatur, Dichte, Löslichkeit) identifizieren.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 1: Stoffe und Stoffeigenschaften, Umgang mit Fachwissen, S. 19.",
+      "sourceText": "Reinstoffe aufgrund charakteristischer Eigenschaften (Schmelztemperatur/Siedetemperatur, Dichte, Löslichkeit) identifizieren",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-1-stoffe-und-stoffeigenschaften-umgang-mit-fachwissen",
+        "label": "Erste Stufe, 1: Stoffe und Stoffeigenschaften, Umgang mit Fachwissen, S. 19: Reinstoffe aufgrund charakteristischer Eigenschaften (Schmelztemperatur/Siedetemperatur, Dichte, Löslichkeit) identifizieren"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:1-stoffe-und-stoffeigenschaften",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-1-stoffe-und-stoffeigenschaften-umgang-mit-fachwissen-002-84f3f966",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-1-stoffe-und-stoffeigenschaften-umgang-mit-fachwissen",
+      "topicCode": "Stufe1-1-stoffe-und-stoffeigenschaften-umgang-mit-fachwissen",
+      "title": "Stoffe aufgrund ihrer Eigenschaften klassifizieren",
+      "description": "Die lernende Person kann Stoffe aufgrund ihrer Eigenschaften klassifizieren.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 1: Stoffe und Stoffeigenschaften, Umgang mit Fachwissen, S. 19.",
+      "sourceText": "Stoffe aufgrund ihrer Eigenschaften klassifizieren",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-1-stoffe-und-stoffeigenschaften-umgang-mit-fachwissen",
+        "label": "Erste Stufe, 1: Stoffe und Stoffeigenschaften, Umgang mit Fachwissen, S. 19: Stoffe aufgrund ihrer Eigenschaften klassifizieren"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:1-stoffe-und-stoffeigenschaften",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-1-stoffe-und-stoffeigenschaften-erkenntnisgewinnung-001-ed496ca9",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-1-stoffe-und-stoffeigenschaften-erkenntnisgewinnung",
+      "topicCode": "Stufe1-1-stoffe-und-stoffeigenschaften-erkenntnisgewinnung",
+      "title": "eine geeignete messbare Stoffeigenschaft experimentell ermitteln",
+      "description": "Die lernende Person kann eine geeignete messbare Stoffeigenschaft experimentell ermitteln.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 1: Stoffe und Stoffeigenschaften, Erkenntnisgewinnung, S. 19.",
+      "sourceText": "eine geeignete messbare Stoffeigenschaft experimentell ermitteln",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-1-stoffe-und-stoffeigenschaften-erkenntnisgewinnung",
+        "label": "Erste Stufe, 1: Stoffe und Stoffeigenschaften, Erkenntnisgewinnung, S. 19: eine geeignete messbare Stoffeigenschaft experimentell ermitteln"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:1-stoffe-und-stoffeigenschaften",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-1-stoffe-und-stoffeigenschaften-erkenntnisgewinnung-002-977dc728",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-1-stoffe-und-stoffeigenschaften-erkenntnisgewinnung",
+      "topicCode": "Stufe1-1-stoffe-und-stoffeigenschaften-erkenntnisgewinnung",
+      "title": "Experimente zur Trennung eines Stoffgemisches in Reinstoffe (Filtration, Destillation) unter Nutzung relevanter Stoffeigenschaften planen und sachgerecht durchführen",
+      "description": "Die lernende Person kann Experimente zur Trennung eines Stoffgemisches in Reinstoffe (Filtration, Destillation) unter Nutzung relevanter Stoffeigenschaften planen und sachgerecht durchführen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 1: Stoffe und Stoffeigenschaften, Erkenntnisgewinnung, S. 19.",
+      "sourceText": "Experimente zur Trennung eines Stoffgemisches in Reinstoffe (Filtration, Destillation) unter Nutzung relevanter Stoffeigenschaften planen und sachgerecht durchführen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-1-stoffe-und-stoffeigenschaften-erkenntnisgewinnung",
+        "label": "Erste Stufe, 1: Stoffe und Stoffeigenschaften, Erkenntnisgewinnung, S. 19: Experimente zur Trennung eines Stoffgemisches in Reinstoffe (Filtration, Destillation) unter Nutzung relevanter Stoffeigenschaften planen und sachgerecht durchführen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:1-stoffe-und-stoffeigenschaften",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-1-stoffe-und-stoffeigenschaften-erkenntnisgewinnung-003-23b3461c",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-1-stoffe-und-stoffeigenschaften-erkenntnisgewinnung",
+      "topicCode": "Stufe1-1-stoffe-und-stoffeigenschaften-erkenntnisgewinnung",
+      "title": "Aggregatzustände und deren Änderungen auf der Grundlage eines einfachen Teilchenmodells erklären",
+      "description": "Die lernende Person kann Aggregatzustände und deren Änderungen auf der Grundlage eines einfachen Teilchenmodells erklären.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 1: Stoffe und Stoffeigenschaften, Erkenntnisgewinnung, S. 19.",
+      "sourceText": "Aggregatzustände und deren Änderungen auf der Grundlage eines einfachen Teilchenmodells erklären",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-1-stoffe-und-stoffeigenschaften-erkenntnisgewinnung",
+        "label": "Erste Stufe, 1: Stoffe und Stoffeigenschaften, Erkenntnisgewinnung, S. 19: Aggregatzustände und deren Änderungen auf der Grundlage eines einfachen Teilchenmodells erklären"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:1-stoffe-und-stoffeigenschaften",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-1-stoffe-und-stoffeigenschaften-bewertung-001-bd6971e5",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-1-stoffe-und-stoffeigenschaften-bewertung",
+      "topicCode": "Stufe1-1-stoffe-und-stoffeigenschaften-bewertung",
+      "title": "die Verwendung ausgewählter Stoffe im Alltag mithilfe ihrer Eigenschaften begründen",
+      "description": "Die lernende Person kann die Verwendung ausgewählter Stoffe im Alltag mithilfe ihrer Eigenschaften begründen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 1: Stoffe und Stoffeigenschaften, Bewertung, S. 19.",
+      "sourceText": "die Verwendung ausgewählter Stoffe im Alltag mithilfe ihrer Eigenschaften begründen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-1-stoffe-und-stoffeigenschaften-bewertung",
+        "label": "Erste Stufe, 1: Stoffe und Stoffeigenschaften, Bewertung, S. 19: die Verwendung ausgewählter Stoffe im Alltag mithilfe ihrer Eigenschaften begründen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:1-stoffe-und-stoffeigenschaften",
+        "competency:bewertung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Bewertung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-2-chemische-reaktion-umgang-mit-fachwissen-001-e3713c40",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-2-chemische-reaktion-umgang-mit-fachwissen",
+      "topicCode": "Stufe1-2-chemische-reaktion-umgang-mit-fachwissen",
+      "title": "chemische Reaktionen an der Bildung von neuen Stoffen mit anderen Eigenschaften und in Abgrenzung zu physikalischen Vorgängen identifizieren",
+      "description": "Die lernende Person kann chemische Reaktionen an der Bildung von neuen Stoffen mit anderen Eigenschaften und in Abgrenzung zu physikalischen Vorgängen identifizieren.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 2: Chemische Reaktion, Umgang mit Fachwissen, S. 20.",
+      "sourceText": "chemische Reaktionen an der Bildung von neuen Stoffen mit anderen Eigenschaften und in Abgrenzung zu physikalischen Vorgängen identifizieren",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-2-chemische-reaktion-umgang-mit-fachwissen",
+        "label": "Erste Stufe, 2: Chemische Reaktion, Umgang mit Fachwissen, S. 20: chemische Reaktionen an der Bildung von neuen Stoffen mit anderen Eigenschaften und in Abgrenzung zu physikalischen Vorgängen identifizieren"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:2-chemische-reaktion",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-2-chemische-reaktion-umgang-mit-fachwissen-002-2e66fc75",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-2-chemische-reaktion-umgang-mit-fachwissen",
+      "topicCode": "Stufe1-2-chemische-reaktion-umgang-mit-fachwissen",
+      "title": "chemische Reaktionen in Form von Reaktionsschemata in Worten darstellen",
+      "description": "Die lernende Person kann chemische Reaktionen in Form von Reaktionsschemata in Worten darstellen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 2: Chemische Reaktion, Umgang mit Fachwissen, S. 20.",
+      "sourceText": "chemische Reaktionen in Form von Reaktionsschemata in Worten darstellen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-2-chemische-reaktion-umgang-mit-fachwissen",
+        "label": "Erste Stufe, 2: Chemische Reaktion, Umgang mit Fachwissen, S. 20: chemische Reaktionen in Form von Reaktionsschemata in Worten darstellen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:2-chemische-reaktion",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-2-chemische-reaktion-umgang-mit-fachwissen-003-b3e69b77",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-2-chemische-reaktion-umgang-mit-fachwissen",
+      "topicCode": "Stufe1-2-chemische-reaktion-umgang-mit-fachwissen",
+      "title": "bei ausgewählten chemischen Reaktionen die Energieumwandlung der in den Stoffen gespeicherten Energie (chemische Energie) in andere Energieformen begründet angeben",
+      "description": "Die lernende Person kann bei ausgewählten chemischen Reaktionen die Energieumwandlung der in den Stoffen gespeicherten Energie (chemische Energie) in andere Energieformen begründet angeben.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 2: Chemische Reaktion, Umgang mit Fachwissen, S. 20.",
+      "sourceText": "bei ausgewählten chemischen Reaktionen die Energieumwandlung der in den Stoffen gespeicherten Energie (chemische Energie) in andere Energieformen begründet angeben",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-2-chemische-reaktion-umgang-mit-fachwissen",
+        "label": "Erste Stufe, 2: Chemische Reaktion, Umgang mit Fachwissen, S. 20: bei ausgewählten chemischen Reaktionen die Energieumwandlung der in den Stoffen gespeicherten Energie (chemische Energie) in andere Energieformen begründet angeben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:2-chemische-reaktion",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-2-chemische-reaktion-umgang-mit-fachwissen-004-c73c827e",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-2-chemische-reaktion-umgang-mit-fachwissen",
+      "topicCode": "Stufe1-2-chemische-reaktion-umgang-mit-fachwissen",
+      "title": "bei ausgewählten chemischen Reaktionen die Bedeutung der Aktivierungsenergie zum Auslösen einer Reaktion beschreiben",
+      "description": "Die lernende Person kann bei ausgewählten chemischen Reaktionen die Bedeutung der Aktivierungsenergie zum Auslösen einer Reaktion beschreiben.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 2: Chemische Reaktion, Umgang mit Fachwissen, S. 20.",
+      "sourceText": "bei ausgewählten chemischen Reaktionen die Bedeutung der Aktivierungsenergie zum Auslösen einer Reaktion beschreiben",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-2-chemische-reaktion-umgang-mit-fachwissen",
+        "label": "Erste Stufe, 2: Chemische Reaktion, Umgang mit Fachwissen, S. 20: bei ausgewählten chemischen Reaktionen die Bedeutung der Aktivierungsenergie zum Auslösen einer Reaktion beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:2-chemische-reaktion",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-2-chemische-reaktion-erkenntnisgewinnung-001-1b8c97cf",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-2-chemische-reaktion-erkenntnisgewinnung",
+      "topicCode": "Stufe1-2-chemische-reaktion-erkenntnisgewinnung",
+      "title": "einfache chemische Reaktionen sachgerecht durchführen und auswerten",
+      "description": "Die lernende Person kann einfache chemische Reaktionen sachgerecht durchführen und auswerten.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 2: Chemische Reaktion, Erkenntnisgewinnung, S. 20.",
+      "sourceText": "einfache chemische Reaktionen sachgerecht durchführen und auswerten",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-2-chemische-reaktion-erkenntnisgewinnung",
+        "label": "Erste Stufe, 2: Chemische Reaktion, Erkenntnisgewinnung, S. 20: einfache chemische Reaktionen sachgerecht durchführen und auswerten"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:2-chemische-reaktion",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-2-chemische-reaktion-erkenntnisgewinnung-002-2455e4f9",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-2-chemische-reaktion-erkenntnisgewinnung",
+      "topicCode": "Stufe1-2-chemische-reaktion-erkenntnisgewinnung",
+      "title": "chemische Reaktionen anhand von Stoffund Energieumwandlungen auch im Alltag identifizieren",
+      "description": "Die lernende Person kann chemische Reaktionen anhand von Stoffund Energieumwandlungen auch im Alltag identifizieren.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 2: Chemische Reaktion, Erkenntnisgewinnung, S. 20.",
+      "sourceText": "chemische Reaktionen anhand von Stoffund Energieumwandlungen auch im Alltag identifizieren",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-2-chemische-reaktion-erkenntnisgewinnung",
+        "label": "Erste Stufe, 2: Chemische Reaktion, Erkenntnisgewinnung, S. 20: chemische Reaktionen anhand von Stoffund Energieumwandlungen auch im Alltag identifizieren"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:2-chemische-reaktion",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-2-chemische-reaktion-bewertung-001-543d3366",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-2-chemische-reaktion-bewertung",
+      "topicCode": "Stufe1-2-chemische-reaktion-bewertung",
+      "title": "die Bedeutung chemischer Reaktionen in der Lebenswelt begründen",
+      "description": "Die lernende Person kann die Bedeutung chemischer Reaktionen in der Lebenswelt begründen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 2: Chemische Reaktion, Bewertung, S. 20.",
+      "sourceText": "die Bedeutung chemischer Reaktionen in der Lebenswelt begründen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-2-chemische-reaktion-bewertung",
+        "label": "Erste Stufe, 2: Chemische Reaktion, Bewertung, S. 20: die Bedeutung chemischer Reaktionen in der Lebenswelt begründen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:2-chemische-reaktion",
+        "competency:bewertung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Bewertung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-3-verbrennung-umgang-mit-fachwissen-001-70eaaa63",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-3-verbrennung-umgang-mit-fachwissen",
+      "topicCode": "Stufe1-3-verbrennung-umgang-mit-fachwissen",
+      "title": "anhand von Beispielen Reinstoffe in chemische Elemente und Verbindungen einteilen",
+      "description": "Die lernende Person kann anhand von Beispielen Reinstoffe in chemische Elemente und Verbindungen einteilen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 3: Verbrennung, Umgang mit Fachwissen, S. 21.",
+      "sourceText": "anhand von Beispielen Reinstoffe in chemische Elemente und Verbindungen einteilen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-3-verbrennung-umgang-mit-fachwissen",
+        "label": "Erste Stufe, 3: Verbrennung, Umgang mit Fachwissen, S. 21: anhand von Beispielen Reinstoffe in chemische Elemente und Verbindungen einteilen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:3-verbrennung",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-3-verbrennung-umgang-mit-fachwissen-002-d171ec98",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-3-verbrennung-umgang-mit-fachwissen",
+      "topicCode": "Stufe1-3-verbrennung-umgang-mit-fachwissen",
+      "title": "die wichtigsten Bestandteile des Gasgemisches Luft, ihre Eigenschaften und Anteile nennen",
+      "description": "Die lernende Person kann die wichtigsten Bestandteile des Gasgemisches Luft, ihre Eigenschaften und Anteile nennen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 3: Verbrennung, Umgang mit Fachwissen, S. 21.",
+      "sourceText": "die wichtigsten Bestandteile des Gasgemisches Luft, ihre Eigenschaften und Anteile nennen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-3-verbrennung-umgang-mit-fachwissen",
+        "label": "Erste Stufe, 3: Verbrennung, Umgang mit Fachwissen, S. 21: die wichtigsten Bestandteile des Gasgemisches Luft, ihre Eigenschaften und Anteile nennen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:3-verbrennung",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-3-verbrennung-umgang-mit-fachwissen-003-84f5c353",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-3-verbrennung-umgang-mit-fachwissen",
+      "topicCode": "Stufe1-3-verbrennung-umgang-mit-fachwissen",
+      "title": "die Verbrennung als eine chemische Reaktion mit Sauerstoff identifizieren und als Oxidbildung klassifizieren",
+      "description": "Die lernende Person kann die Verbrennung als eine chemische Reaktion mit Sauerstoff identifizieren und als Oxidbildung klassifizieren.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 3: Verbrennung, Umgang mit Fachwissen, S. 21.",
+      "sourceText": "die Verbrennung als eine chemische Reaktion mit Sauerstoff identifizieren und als Oxidbildung klassifizieren",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-3-verbrennung-umgang-mit-fachwissen",
+        "label": "Erste Stufe, 3: Verbrennung, Umgang mit Fachwissen, S. 21: die Verbrennung als eine chemische Reaktion mit Sauerstoff identifizieren und als Oxidbildung klassifizieren"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:3-verbrennung",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-3-verbrennung-umgang-mit-fachwissen-004-1ee3434b",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-3-verbrennung-umgang-mit-fachwissen",
+      "topicCode": "Stufe1-3-verbrennung-umgang-mit-fachwissen",
+      "title": "die Analyse und Synthese von Wasser als Beispiel für die Umkehrbarkeit chemischer Reaktionen beschreiben",
+      "description": "Die lernende Person kann die Analyse und Synthese von Wasser als Beispiel für die Umkehrbarkeit chemischer Reaktionen beschreiben.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 3: Verbrennung, Umgang mit Fachwissen, S. 21.",
+      "sourceText": "die Analyse und Synthese von Wasser als Beispiel für die Umkehrbarkeit chemischer Reaktionen beschreiben",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-3-verbrennung-umgang-mit-fachwissen",
+        "label": "Erste Stufe, 3: Verbrennung, Umgang mit Fachwissen, S. 21: die Analyse und Synthese von Wasser als Beispiel für die Umkehrbarkeit chemischer Reaktionen beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:3-verbrennung",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-3-verbrennung-erkenntnisgewinnung-001-17b217fb",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-3-verbrennung-erkenntnisgewinnung",
+      "topicCode": "Stufe1-3-verbrennung-erkenntnisgewinnung",
+      "title": "mit einem einfachen Atommodell Massenänderungen bei chemischen Reaktionen mit Sauerstoff erklären",
+      "description": "Die lernende Person kann mit einem einfachen Atommodell Massenänderungen bei chemischen Reaktionen mit Sauerstoff erklären.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 3: Verbrennung, Erkenntnisgewinnung, S. 21.",
+      "sourceText": "mit einem einfachen Atommodell Massenänderungen bei chemischen Reaktionen mit Sauerstoff erklären",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-3-verbrennung-erkenntnisgewinnung",
+        "label": "Erste Stufe, 3: Verbrennung, Erkenntnisgewinnung, S. 21: mit einem einfachen Atommodell Massenänderungen bei chemischen Reaktionen mit Sauerstoff erklären"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:3-verbrennung",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-3-verbrennung-erkenntnisgewinnung-002-defe6c27",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-3-verbrennung-erkenntnisgewinnung",
+      "topicCode": "Stufe1-3-verbrennung-erkenntnisgewinnung",
+      "title": "Nachweisreaktionen von Gasen (Sauerstoff, Wasserstoff, Kohlenstoffdioxid) und Wasser durchführen",
+      "description": "Die lernende Person kann Nachweisreaktionen von Gasen (Sauerstoff, Wasserstoff, Kohlenstoffdioxid) und Wasser durchführen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 3: Verbrennung, Erkenntnisgewinnung, S. 21.",
+      "sourceText": "Nachweisreaktionen von Gasen (Sauerstoff, Wasserstoff, Kohlenstoffdioxid) und Wasser durchführen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-3-verbrennung-erkenntnisgewinnung",
+        "label": "Erste Stufe, 3: Verbrennung, Erkenntnisgewinnung, S. 21: Nachweisreaktionen von Gasen (Sauerstoff, Wasserstoff, Kohlenstoffdioxid) und Wasser durchführen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:3-verbrennung",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-3-verbrennung-erkenntnisgewinnung-003-e4489c07",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-3-verbrennung-erkenntnisgewinnung",
+      "topicCode": "Stufe1-3-verbrennung-erkenntnisgewinnung",
+      "title": "den Verbleib von Verbrennungsprodukten (Kohlenstoffdioxid, Wasser) mit dem Gesetz von der Erhaltung der Masse begründen",
+      "description": "Die lernende Person kann den Verbleib von Verbrennungsprodukten (Kohlenstoffdioxid, Wasser) mit dem Gesetz von der Erhaltung der Masse begründen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 3: Verbrennung, Erkenntnisgewinnung, S. 21.",
+      "sourceText": "den Verbleib von Verbrennungsprodukten (Kohlenstoffdioxid, Wasser) mit dem Gesetz von der Erhaltung der Masse begründen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-3-verbrennung-erkenntnisgewinnung",
+        "label": "Erste Stufe, 3: Verbrennung, Erkenntnisgewinnung, S. 21: den Verbleib von Verbrennungsprodukten (Kohlenstoffdioxid, Wasser) mit dem Gesetz von der Erhaltung der Masse begründen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:3-verbrennung",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-3-verbrennung-bewertung-001-5bd6054f",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-3-verbrennung-bewertung",
+      "topicCode": "Stufe1-3-verbrennung-bewertung",
+      "title": "in vorgegebenen Situationen Handlungsmöglichkeiten zum Umgang mit brennbaren Stoffen zur Brandvorsorge sowie mit offenem Feuer zur Brandbekämpfung bewerten und sich begründet für eine Handlung entscheiden",
+      "description": "Die lernende Person kann in vorgegebenen Situationen Handlungsmöglichkeiten zum Umgang mit brennbaren Stoffen zur Brandvorsorge sowie mit offenem Feuer zur Brandbekämpfung bewerten und sich begründet für eine Handlung entscheiden.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 3: Verbrennung, Bewertung, S. 22.",
+      "sourceText": "in vorgegebenen Situationen Handlungsmöglichkeiten zum Umgang mit brennbaren Stoffen zur Brandvorsorge sowie mit offenem Feuer zur Brandbekämpfung bewerten und sich begründet für eine Handlung entscheiden",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-3-verbrennung-bewertung",
+        "label": "Erste Stufe, 3: Verbrennung, Bewertung, S. 22: in vorgegebenen Situationen Handlungsmöglichkeiten zum Umgang mit brennbaren Stoffen zur Brandvorsorge sowie mit offenem Feuer zur Brandbekämpfung bewerten und sich begründet für eine Handlung entscheiden"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:3-verbrennung",
+        "competency:bewertung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Bewertung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-3-verbrennung-bewertung-002-3c267352",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-3-verbrennung-bewertung",
+      "topicCode": "Stufe1-3-verbrennung-bewertung",
+      "title": "Vorund Nachteile einer ressourcenschonenden Energieversorgung auf Grundlage der Umkehrbarkeit chemischer Reaktionen am Beispiel von Wasser beschreiben",
+      "description": "Die lernende Person kann Vorund Nachteile einer ressourcenschonenden Energieversorgung auf Grundlage der Umkehrbarkeit chemischer Reaktionen am Beispiel von Wasser beschreiben.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 3: Verbrennung, Bewertung, S. 22.",
+      "sourceText": "Vorund Nachteile einer ressourcenschonenden Energieversorgung auf Grundlage der Umkehrbarkeit chemischer Reaktionen am Beispiel von Wasser beschreiben",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-3-verbrennung-bewertung",
+        "label": "Erste Stufe, 3: Verbrennung, Bewertung, S. 22: Vorund Nachteile einer ressourcenschonenden Energieversorgung auf Grundlage der Umkehrbarkeit chemischer Reaktionen am Beispiel von Wasser beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:3-verbrennung",
+        "competency:bewertung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Bewertung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-4-metalle-und-metallgewinnung-umgang-mit-fachwissen-001-5803ed42",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-4-metalle-und-metallgewinnung-umgang-mit-fachwissen",
+      "topicCode": "Stufe1-4-metalle-und-metallgewinnung-umgang-mit-fachwissen",
+      "title": "chemische Reaktionen, bei denen Sauerstoff abgegeben wird, als Zerlegung von Oxiden klassifizieren",
+      "description": "Die lernende Person kann chemische Reaktionen, bei denen Sauerstoff abgegeben wird, als Zerlegung von Oxiden klassifizieren.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 4: Metalle und Metallgewinnung, Umgang mit Fachwissen, S. 23.",
+      "sourceText": "chemische Reaktionen, bei denen Sauerstoff abgegeben wird, als Zerlegung von Oxiden klassifizieren",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-4-metalle-und-metallgewinnung-umgang-mit-fachwissen",
+        "label": "Erste Stufe, 4: Metalle und Metallgewinnung, Umgang mit Fachwissen, S. 23: chemische Reaktionen, bei denen Sauerstoff abgegeben wird, als Zerlegung von Oxiden klassifizieren"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:4-metalle-und-metallgewinnung",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-4-metalle-und-metallgewinnung-umgang-mit-fachwissen-002-6d443d40",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-4-metalle-und-metallgewinnung-umgang-mit-fachwissen",
+      "topicCode": "Stufe1-4-metalle-und-metallgewinnung-umgang-mit-fachwissen",
+      "title": "ausgewählte Metalle aufgrund ihrer Reaktionsfähigkeit mit Sauerstoff als edle und unedle Metalle ordnen",
+      "description": "Die lernende Person kann ausgewählte Metalle aufgrund ihrer Reaktionsfähigkeit mit Sauerstoff als edle und unedle Metalle ordnen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 4: Metalle und Metallgewinnung, Umgang mit Fachwissen, S. 23.",
+      "sourceText": "ausgewählte Metalle aufgrund ihrer Reaktionsfähigkeit mit Sauerstoff als edle und unedle Metalle ordnen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-4-metalle-und-metallgewinnung-umgang-mit-fachwissen",
+        "label": "Erste Stufe, 4: Metalle und Metallgewinnung, Umgang mit Fachwissen, S. 23: ausgewählte Metalle aufgrund ihrer Reaktionsfähigkeit mit Sauerstoff als edle und unedle Metalle ordnen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:4-metalle-und-metallgewinnung",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-4-metalle-und-metallgewinnung-erkenntnisgewinnung-001-759d7610",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-4-metalle-und-metallgewinnung-erkenntnisgewinnung",
+      "topicCode": "Stufe1-4-metalle-und-metallgewinnung-erkenntnisgewinnung",
+      "title": "Experimente zur Zerlegung von ausgewählten Metalloxiden hypothesengeleitet planen und geeignete Reaktionspartner auswählen",
+      "description": "Die lernende Person kann Experimente zur Zerlegung von ausgewählten Metalloxiden hypothesengeleitet planen und geeignete Reaktionspartner auswählen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 4: Metalle und Metallgewinnung, Erkenntnisgewinnung, S. 23.",
+      "sourceText": "Experimente zur Zerlegung von ausgewählten Metalloxiden hypothesengeleitet planen und geeignete Reaktionspartner auswählen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-4-metalle-und-metallgewinnung-erkenntnisgewinnung",
+        "label": "Erste Stufe, 4: Metalle und Metallgewinnung, Erkenntnisgewinnung, S. 23: Experimente zur Zerlegung von ausgewählten Metalloxiden hypothesengeleitet planen und geeignete Reaktionspartner auswählen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:4-metalle-und-metallgewinnung",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-4-metalle-und-metallgewinnung-erkenntnisgewinnung-002-11b08bd1",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-4-metalle-und-metallgewinnung-erkenntnisgewinnung",
+      "topicCode": "Stufe1-4-metalle-und-metallgewinnung-erkenntnisgewinnung",
+      "title": "Sauerstoffübertragungsreaktionen im Sinne des Donator-Akzeptor-Konzeptes modellhaft erklären",
+      "description": "Die lernende Person kann Sauerstoffübertragungsreaktionen im Sinne des Donator-Akzeptor-Konzeptes modellhaft erklären.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 4: Metalle und Metallgewinnung, Erkenntnisgewinnung, S. 23.",
+      "sourceText": "Sauerstoffübertragungsreaktionen im Sinne des Donator-Akzeptor-Konzeptes modellhaft erklären",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-4-metalle-und-metallgewinnung-erkenntnisgewinnung",
+        "label": "Erste Stufe, 4: Metalle und Metallgewinnung, Erkenntnisgewinnung, S. 23: Sauerstoffübertragungsreaktionen im Sinne des Donator-Akzeptor-Konzeptes modellhaft erklären"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:4-metalle-und-metallgewinnung",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-4-metalle-und-metallgewinnung-erkenntnisgewinnung-003-41986148",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-4-metalle-und-metallgewinnung-erkenntnisgewinnung",
+      "topicCode": "Stufe1-4-metalle-und-metallgewinnung-erkenntnisgewinnung",
+      "title": "ausgewählte Verfahren zur Herstellung von Metallen erläutern und ihre Bedeutung für die gesellschaftliche Entwicklung beschreiben",
+      "description": "Die lernende Person kann ausgewählte Verfahren zur Herstellung von Metallen erläutern und ihre Bedeutung für die gesellschaftliche Entwicklung beschreiben.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 4: Metalle und Metallgewinnung, Erkenntnisgewinnung, S. 23.",
+      "sourceText": "ausgewählte Verfahren zur Herstellung von Metallen erläutern und ihre Bedeutung für die gesellschaftliche Entwicklung beschreiben",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-4-metalle-und-metallgewinnung-erkenntnisgewinnung",
+        "label": "Erste Stufe, 4: Metalle und Metallgewinnung, Erkenntnisgewinnung, S. 23: ausgewählte Verfahren zur Herstellung von Metallen erläutern und ihre Bedeutung für die gesellschaftliche Entwicklung beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:4-metalle-und-metallgewinnung",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-4-metalle-und-metallgewinnung-bewertung-001-9298284d",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-4-metalle-und-metallgewinnung-bewertung",
+      "topicCode": "Stufe1-4-metalle-und-metallgewinnung-bewertung",
+      "title": "die Bedeutung des Metallrecyclings im Zusammenhang mit Ressourcenschonung und Energieeinsparung beschreiben und auf dieser Basis das eigene Konsumund Entsorgungsverhalten bewerten",
+      "description": "Die lernende Person kann die Bedeutung des Metallrecyclings im Zusammenhang mit Ressourcenschonung und Energieeinsparung beschreiben und auf dieser Basis das eigene Konsumund Entsorgungsverhalten bewerten.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 4: Metalle und Metallgewinnung, Bewertung, S. 23.",
+      "sourceText": "die Bedeutung des Metallrecyclings im Zusammenhang mit Ressourcenschonung und Energieeinsparung beschreiben und auf dieser Basis das eigene Konsumund Entsorgungsverhalten bewerten",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-4-metalle-und-metallgewinnung-bewertung",
+        "label": "Erste Stufe, 4: Metalle und Metallgewinnung, Bewertung, S. 23: die Bedeutung des Metallrecyclings im Zusammenhang mit Ressourcenschonung und Energieeinsparung beschreiben und auf dieser Basis das eigene Konsumund Entsorgungsverhalten bewerten"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:4-metalle-und-metallgewinnung",
+        "competency:bewertung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Bewertung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe1-4-metalle-und-metallgewinnung-bewertung-002-c6ca1db9",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-4-metalle-und-metallgewinnung-bewertung",
+      "topicCode": "Stufe1-4-metalle-und-metallgewinnung-bewertung",
+      "title": "Maßnahmen zum Löschen von Metallbränden auf der Grundlage der Sauerstoffübertragungsreaktion begründet auswählen",
+      "description": "Die lernende Person kann Maßnahmen zum Löschen von Metallbränden auf der Grundlage der Sauerstoffübertragungsreaktion begründet auswählen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Erste Stufe, 4: Metalle und Metallgewinnung, Bewertung, S. 23.",
+      "sourceText": "Maßnahmen zum Löschen von Metallbränden auf der Grundlage der Sauerstoffübertragungsreaktion begründet auswählen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe1-4-metalle-und-metallgewinnung-bewertung",
+        "label": "Erste Stufe, 4: Metalle und Metallgewinnung, Bewertung, S. 23: Maßnahmen zum Löschen von Metallbränden auf der Grundlage der Sauerstoffübertragungsreaktion begründet auswählen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe1",
+        "field:4-metalle-und-metallgewinnung",
+        "competency:bewertung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe1",
+        "competency": "Bewertung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-5-elemente-und-ihre-ordnung-umgang-mit-fachwissen-001-9ad7fdac",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-5-elemente-und-ihre-ordnung-umgang-mit-fachwissen",
+      "topicCode": "Stufe2-5-elemente-und-ihre-ordnung-umgang-mit-fachwissen",
+      "title": "Vorkommen und Nutzen ausgewählter chemischer Elemente und ihrer Verbindungen in Alltag und Umwelt beschreiben",
+      "description": "Die lernende Person kann Vorkommen und Nutzen ausgewählter chemischer Elemente und ihrer Verbindungen in Alltag und Umwelt beschreiben.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 5: Elemente und ihre Ordnung, Umgang mit Fachwissen, S. 27.",
+      "sourceText": "Vorkommen und Nutzen ausgewählter chemischer Elemente und ihrer Verbindungen in Alltag und Umwelt beschreiben",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-5-elemente-und-ihre-ordnung-umgang-mit-fachwissen",
+        "label": "Zweite Stufe, 5: Elemente und ihre Ordnung, Umgang mit Fachwissen, S. 27: Vorkommen und Nutzen ausgewählter chemischer Elemente und ihrer Verbindungen in Alltag und Umwelt beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:5-elemente-und-ihre-ordnung",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-5-elemente-und-ihre-ordnung-umgang-mit-fachwissen-002-fb14b0c8",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-5-elemente-und-ihre-ordnung-umgang-mit-fachwissen",
+      "topicCode": "Stufe2-5-elemente-und-ihre-ordnung-umgang-mit-fachwissen",
+      "title": "chemische Elemente anhand ihrer charakteristischen physikalischen und chemischen Eigenschaften den Elementfamilien zuordnen",
+      "description": "Die lernende Person kann chemische Elemente anhand ihrer charakteristischen physikalischen und chemischen Eigenschaften den Elementfamilien zuordnen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 5: Elemente und ihre Ordnung, Umgang mit Fachwissen, S. 27.",
+      "sourceText": "chemische Elemente anhand ihrer charakteristischen physikalischen und chemischen Eigenschaften den Elementfamilien zuordnen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-5-elemente-und-ihre-ordnung-umgang-mit-fachwissen",
+        "label": "Zweite Stufe, 5: Elemente und ihre Ordnung, Umgang mit Fachwissen, S. 27: chemische Elemente anhand ihrer charakteristischen physikalischen und chemischen Eigenschaften den Elementfamilien zuordnen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:5-elemente-und-ihre-ordnung",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-5-elemente-und-ihre-ordnung-umgang-mit-fachwissen-003-ea90d18d",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-5-elemente-und-ihre-ordnung-umgang-mit-fachwissen",
+      "topicCode": "Stufe2-5-elemente-und-ihre-ordnung-umgang-mit-fachwissen",
+      "title": "aus dem Periodensystem der Elemente wesentliche Informationen zum Atombau der Hauptgruppenelemente (Elektronenkonfiguration, Atommasse) herleiten",
+      "description": "Die lernende Person kann aus dem Periodensystem der Elemente wesentliche Informationen zum Atombau der Hauptgruppenelemente (Elektronenkonfiguration, Atommasse) herleiten.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 5: Elemente und ihre Ordnung, Umgang mit Fachwissen, S. 27.",
+      "sourceText": "aus dem Periodensystem der Elemente wesentliche Informationen zum Atombau der Hauptgruppenelemente (Elektronenkonfiguration, Atommasse) herleiten",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-5-elemente-und-ihre-ordnung-umgang-mit-fachwissen",
+        "label": "Zweite Stufe, 5: Elemente und ihre Ordnung, Umgang mit Fachwissen, S. 27: aus dem Periodensystem der Elemente wesentliche Informationen zum Atombau der Hauptgruppenelemente (Elektronenkonfiguration, Atommasse) herleiten"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:5-elemente-und-ihre-ordnung",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-5-elemente-und-ihre-ordnung-erkenntnisgewinnung-001-215987bd",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-5-elemente-und-ihre-ordnung-erkenntnisgewinnung",
+      "topicCode": "Stufe2-5-elemente-und-ihre-ordnung-erkenntnisgewinnung",
+      "title": "physikalische und chemische Eigenschaften von Alkalimetallen, Halogenen und Edelgasen mithilfe ihrer Stellung im Periodensystem begründet vorhersagen",
+      "description": "Die lernende Person kann physikalische und chemische Eigenschaften von Alkalimetallen, Halogenen und Edelgasen mithilfe ihrer Stellung im Periodensystem begründet vorhersagen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 5: Elemente und ihre Ordnung, Erkenntnisgewinnung, S. 27.",
+      "sourceText": "physikalische und chemische Eigenschaften von Alkalimetallen, Halogenen und Edelgasen mithilfe ihrer Stellung im Periodensystem begründet vorhersagen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-5-elemente-und-ihre-ordnung-erkenntnisgewinnung",
+        "label": "Zweite Stufe, 5: Elemente und ihre Ordnung, Erkenntnisgewinnung, S. 27: physikalische und chemische Eigenschaften von Alkalimetallen, Halogenen und Edelgasen mithilfe ihrer Stellung im Periodensystem begründet vorhersagen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:5-elemente-und-ihre-ordnung",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-5-elemente-und-ihre-ordnung-erkenntnisgewinnung-002-e5d5fb5d",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-5-elemente-und-ihre-ordnung-erkenntnisgewinnung",
+      "topicCode": "Stufe2-5-elemente-und-ihre-ordnung-erkenntnisgewinnung",
+      "title": "die Entwicklung eines differenzierten Kern-Hülle-Modells auf der Grundlage von Experimenten, Beobachtungen und Schlussfolgerungen beschreiben",
+      "description": "Die lernende Person kann die Entwicklung eines differenzierten Kern-Hülle-Modells auf der Grundlage von Experimenten, Beobachtungen und Schlussfolgerungen beschreiben.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 5: Elemente und ihre Ordnung, Erkenntnisgewinnung, S. 28.",
+      "sourceText": "die Entwicklung eines differenzierten Kern-Hülle-Modells auf der Grundlage von Experimenten, Beobachtungen und Schlussfolgerungen beschreiben",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-5-elemente-und-ihre-ordnung-erkenntnisgewinnung",
+        "label": "Zweite Stufe, 5: Elemente und ihre Ordnung, Erkenntnisgewinnung, S. 28: die Entwicklung eines differenzierten Kern-Hülle-Modells auf der Grundlage von Experimenten, Beobachtungen und Schlussfolgerungen beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:5-elemente-und-ihre-ordnung",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-5-elemente-und-ihre-ordnung-erkenntnisgewinnung-003-a7bd7d36",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-5-elemente-und-ihre-ordnung-erkenntnisgewinnung",
+      "topicCode": "Stufe2-5-elemente-und-ihre-ordnung-erkenntnisgewinnung",
+      "title": "die Aussagekraft verschiedener Kern-Hülle-Modelle beschreiben",
+      "description": "Die lernende Person kann die Aussagekraft verschiedener Kern-Hülle-Modelle beschreiben.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 5: Elemente und ihre Ordnung, Erkenntnisgewinnung, S. 28.",
+      "sourceText": "die Aussagekraft verschiedener Kern-Hülle-Modelle beschreiben",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-5-elemente-und-ihre-ordnung-erkenntnisgewinnung",
+        "label": "Zweite Stufe, 5: Elemente und ihre Ordnung, Erkenntnisgewinnung, S. 28: die Aussagekraft verschiedener Kern-Hülle-Modelle beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:5-elemente-und-ihre-ordnung",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-5-elemente-und-ihre-ordnung-bewertung-001-7df6997b",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-5-elemente-und-ihre-ordnung-bewertung",
+      "topicCode": "Stufe2-5-elemente-und-ihre-ordnung-bewertung",
+      "title": "vor dem Hintergrund der begrenzten Verfügbarkeit eines chemischen Elements bzw. seiner Verbindungen Handlungsoptionen für ein ressourcenschonendes Konsumverhalten entwickeln",
+      "description": "Die lernende Person kann vor dem Hintergrund der begrenzten Verfügbarkeit eines chemischen Elements bzw. seiner Verbindungen Handlungsoptionen für ein ressourcenschonendes Konsumverhalten entwickeln.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 5: Elemente und ihre Ordnung, Bewertung, S. 28.",
+      "sourceText": "vor dem Hintergrund der begrenzten Verfügbarkeit eines chemischen Elements bzw. seiner Verbindungen Handlungsoptionen für ein ressourcenschonendes Konsumverhalten entwickeln",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-5-elemente-und-ihre-ordnung-bewertung",
+        "label": "Zweite Stufe, 5: Elemente und ihre Ordnung, Bewertung, S. 28: vor dem Hintergrund der begrenzten Verfügbarkeit eines chemischen Elements bzw. seiner Verbindungen Handlungsoptionen für ein ressourcenschonendes Konsumverhalten entwickeln"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:5-elemente-und-ihre-ordnung",
+        "competency:bewertung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Bewertung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-6-salze-und-ionen-umgang-mit-fachwissen-001-34138bdf",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-6-salze-und-ionen-umgang-mit-fachwissen",
+      "topicCode": "Stufe2-6-salze-und-ionen-umgang-mit-fachwissen",
+      "title": "ausgewählte Eigenschaften von Salzen mit ihrem Aufbau aus Ionen und der Ionenbindung erläutern",
+      "description": "Die lernende Person kann ausgewählte Eigenschaften von Salzen mit ihrem Aufbau aus Ionen und der Ionenbindung erläutern.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 6: Salze und Ionen, Umgang mit Fachwissen, S. 28.",
+      "sourceText": "ausgewählte Eigenschaften von Salzen mit ihrem Aufbau aus Ionen und der Ionenbindung erläutern",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-6-salze-und-ionen-umgang-mit-fachwissen",
+        "label": "Zweite Stufe, 6: Salze und Ionen, Umgang mit Fachwissen, S. 28: ausgewählte Eigenschaften von Salzen mit ihrem Aufbau aus Ionen und der Ionenbindung erläutern"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:6-salze-und-ionen",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-6-salze-und-ionen-umgang-mit-fachwissen-002-1be3714f",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-6-salze-und-ionen-umgang-mit-fachwissen",
+      "topicCode": "Stufe2-6-salze-und-ionen-umgang-mit-fachwissen",
+      "title": "an einem Beispiel die Salzbildung unter Einbezug energetischer Betrachtungen auch mit Angabe einer Reaktionsgleichung in Ionenschreibweise erläutern",
+      "description": "Die lernende Person kann an einem Beispiel die Salzbildung unter Einbezug energetischer Betrachtungen auch mit Angabe einer Reaktionsgleichung in Ionenschreibweise erläutern.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 6: Salze und Ionen, Umgang mit Fachwissen, S. 29.",
+      "sourceText": "an einem Beispiel die Salzbildung unter Einbezug energetischer Betrachtungen auch mit Angabe einer Reaktionsgleichung in Ionenschreibweise erläutern",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-6-salze-und-ionen-umgang-mit-fachwissen",
+        "label": "Zweite Stufe, 6: Salze und Ionen, Umgang mit Fachwissen, S. 29: an einem Beispiel die Salzbildung unter Einbezug energetischer Betrachtungen auch mit Angabe einer Reaktionsgleichung in Ionenschreibweise erläutern"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:6-salze-und-ionen",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-6-salze-und-ionen-erkenntnisgewinnung-001-59f02476",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-6-salze-und-ionen-erkenntnisgewinnung",
+      "topicCode": "Stufe2-6-salze-und-ionen-erkenntnisgewinnung",
+      "title": "den Gehalt von Salzen in einer Lösung durch Eindampfen ermitteln",
+      "description": "Die lernende Person kann den Gehalt von Salzen in einer Lösung durch Eindampfen ermitteln.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 6: Salze und Ionen, Erkenntnisgewinnung, S. 29.",
+      "sourceText": "den Gehalt von Salzen in einer Lösung durch Eindampfen ermitteln",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-6-salze-und-ionen-erkenntnisgewinnung",
+        "label": "Zweite Stufe, 6: Salze und Ionen, Erkenntnisgewinnung, S. 29: den Gehalt von Salzen in einer Lösung durch Eindampfen ermitteln"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:6-salze-und-ionen",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-6-salze-und-ionen-erkenntnisgewinnung-002-8317f69d",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-6-salze-und-ionen-erkenntnisgewinnung",
+      "topicCode": "Stufe2-6-salze-und-ionen-erkenntnisgewinnung",
+      "title": "an einem Beispiel das Gesetz der konstanten Massenverhältnisse erklären und eine chemische Verhältnisformel herleiten",
+      "description": "Die lernende Person kann an einem Beispiel das Gesetz der konstanten Massenverhältnisse erklären und eine chemische Verhältnisformel herleiten.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 6: Salze und Ionen, Erkenntnisgewinnung, S. 29.",
+      "sourceText": "an einem Beispiel das Gesetz der konstanten Massenverhältnisse erklären und eine chemische Verhältnisformel herleiten",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-6-salze-und-ionen-erkenntnisgewinnung",
+        "label": "Zweite Stufe, 6: Salze und Ionen, Erkenntnisgewinnung, S. 29: an einem Beispiel das Gesetz der konstanten Massenverhältnisse erklären und eine chemische Verhältnisformel herleiten"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:6-salze-und-ionen",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-6-salze-und-ionen-bewertung-001-3b4cd482",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-6-salze-und-ionen-bewertung",
+      "topicCode": "Stufe2-6-salze-und-ionen-bewertung",
+      "title": "unter Umweltund Gesundheitsaspekten die Verwendung von Salzen im Alltag reflektieren",
+      "description": "Die lernende Person kann unter Umweltund Gesundheitsaspekten die Verwendung von Salzen im Alltag reflektieren.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 6: Salze und Ionen, Bewertung, S. 29.",
+      "sourceText": "unter Umweltund Gesundheitsaspekten die Verwendung von Salzen im Alltag reflektieren",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-6-salze-und-ionen-bewertung",
+        "label": "Zweite Stufe, 6: Salze und Ionen, Bewertung, S. 29: unter Umweltund Gesundheitsaspekten die Verwendung von Salzen im Alltag reflektieren"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:6-salze-und-ionen",
+        "competency:bewertung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Bewertung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen-001-86178f85",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen",
+      "topicCode": "Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen",
+      "title": "die Abgabe von Elektronen als Oxidation einordnen",
+      "description": "Die lernende Person kann die Abgabe von Elektronen als Oxidation einordnen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 7: Chemische Reaktionen durch Elektronenübertragung, Umgang mit Fachwissen, S. 30.",
+      "sourceText": "die Abgabe von Elektronen als Oxidation einordnen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen",
+        "label": "Zweite Stufe, 7: Chemische Reaktionen durch Elektronenübertragung, Umgang mit Fachwissen, S. 30: die Abgabe von Elektronen als Oxidation einordnen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:7-chemische-reaktionen-durch-elektronenubertragung",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen-002-e3bf186f",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen",
+      "topicCode": "Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen",
+      "title": "die Aufnahme von Elektronen als Reduktion einordnen",
+      "description": "Die lernende Person kann die Aufnahme von Elektronen als Reduktion einordnen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 7: Chemische Reaktionen durch Elektronenübertragung, Umgang mit Fachwissen, S. 30.",
+      "sourceText": "die Aufnahme von Elektronen als Reduktion einordnen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen",
+        "label": "Zweite Stufe, 7: Chemische Reaktionen durch Elektronenübertragung, Umgang mit Fachwissen, S. 30: die Aufnahme von Elektronen als Reduktion einordnen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:7-chemische-reaktionen-durch-elektronenubertragung",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen-003-bb3eab1d",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen",
+      "topicCode": "Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen",
+      "title": "Reaktionen zwischen Metallatomen und Metallionen als Elektronenübertragungsreaktionen deuten und diese auch mithilfe digitaler Animationen und Teilgleichungen erläutern",
+      "description": "Die lernende Person kann Reaktionen zwischen Metallatomen und Metallionen als Elektronenübertragungsreaktionen deuten und diese auch mithilfe digitaler Animationen und Teilgleichungen erläutern.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 7: Chemische Reaktionen durch Elektronenübertragung, Umgang mit Fachwissen, S. 30.",
+      "sourceText": "Reaktionen zwischen Metallatomen und Metallionen als Elektronenübertragungsreaktionen deuten und diese auch mithilfe digitaler Animationen und Teilgleichungen erläutern",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen",
+        "label": "Zweite Stufe, 7: Chemische Reaktionen durch Elektronenübertragung, Umgang mit Fachwissen, S. 30: Reaktionen zwischen Metallatomen und Metallionen als Elektronenübertragungsreaktionen deuten und diese auch mithilfe digitaler Animationen und Teilgleichungen erläutern"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:7-chemische-reaktionen-durch-elektronenubertragung",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen-004-630584ad",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen",
+      "topicCode": "Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen",
+      "title": "die chemischen Prozesse eines galvanischen Elements und einer Elektrolyse unter dem Aspekt der Umwandlung in Stoffen gespeicherter Energie in elektrische Energie und umgekehrt erläutern",
+      "description": "Die lernende Person kann die chemischen Prozesse eines galvanischen Elements und einer Elektrolyse unter dem Aspekt der Umwandlung in Stoffen gespeicherter Energie in elektrische Energie und umgekehrt erläutern.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 7: Chemische Reaktionen durch Elektronenübertragung, Umgang mit Fachwissen, S. 30.",
+      "sourceText": "die chemischen Prozesse eines galvanischen Elements und einer Elektrolyse unter dem Aspekt der Umwandlung in Stoffen gespeicherter Energie in elektrische Energie und umgekehrt erläutern",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen",
+        "label": "Zweite Stufe, 7: Chemische Reaktionen durch Elektronenübertragung, Umgang mit Fachwissen, S. 30: die chemischen Prozesse eines galvanischen Elements und einer Elektrolyse unter dem Aspekt der Umwandlung in Stoffen gespeicherter Energie in elektrische Energie und umgekehrt erläutern"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:7-chemische-reaktionen-durch-elektronenubertragung",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen-005-399062b9",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen",
+      "topicCode": "Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen",
+      "title": "den grundlegenden Aufbau und die Funktionsweise einer Batterie, eines Akkumulators und einer Brennstoffzelle beschreiben",
+      "description": "Die lernende Person kann den grundlegenden Aufbau und die Funktionsweise einer Batterie, eines Akkumulators und einer Brennstoffzelle beschreiben.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 7: Chemische Reaktionen durch Elektronenübertragung, Umgang mit Fachwissen, S. 30.",
+      "sourceText": "den grundlegenden Aufbau und die Funktionsweise einer Batterie, eines Akkumulators und einer Brennstoffzelle beschreiben",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-umgang-mit-fachwissen",
+        "label": "Zweite Stufe, 7: Chemische Reaktionen durch Elektronenübertragung, Umgang mit Fachwissen, S. 30: den grundlegenden Aufbau und die Funktionsweise einer Batterie, eines Akkumulators und einer Brennstoffzelle beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:7-chemische-reaktionen-durch-elektronenubertragung",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-erkenntnisgewinnung-001-ab227817",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-erkenntnisgewinnung",
+      "topicCode": "Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-erkenntnisgewinnung",
+      "title": "Experimente planen, die eine Einordnung von Metallionen hinsichtlich ihrer Fähigkeit zur Elektronenaufnahme erlauben und diese sachgerecht durchführen",
+      "description": "Die lernende Person kann Experimente planen, die eine Einordnung von Metallionen hinsichtlich ihrer Fähigkeit zur Elektronenaufnahme erlauben und diese sachgerecht durchführen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 7: Chemische Reaktionen durch Elektronenübertragung, Erkenntnisgewinnung, S. 30.",
+      "sourceText": "Experimente planen, die eine Einordnung von Metallionen hinsichtlich ihrer Fähigkeit zur Elektronenaufnahme erlauben und diese sachgerecht durchführen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-erkenntnisgewinnung",
+        "label": "Zweite Stufe, 7: Chemische Reaktionen durch Elektronenübertragung, Erkenntnisgewinnung, S. 30: Experimente planen, die eine Einordnung von Metallionen hinsichtlich ihrer Fähigkeit zur Elektronenaufnahme erlauben und diese sachgerecht durchführen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:7-chemische-reaktionen-durch-elektronenubertragung",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-erkenntnisgewinnung-002-d676a348",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-erkenntnisgewinnung",
+      "topicCode": "Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-erkenntnisgewinnung",
+      "title": "Elektronenübertragungsreaktionen im Sinne des Donator-Akzeptor-Prinzips modellhaft erklären",
+      "description": "Die lernende Person kann Elektronenübertragungsreaktionen im Sinne des Donator-Akzeptor-Prinzips modellhaft erklären.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 7: Chemische Reaktionen durch Elektronenübertragung, Erkenntnisgewinnung, S. 30.",
+      "sourceText": "Elektronenübertragungsreaktionen im Sinne des Donator-Akzeptor-Prinzips modellhaft erklären",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-erkenntnisgewinnung",
+        "label": "Zweite Stufe, 7: Chemische Reaktionen durch Elektronenübertragung, Erkenntnisgewinnung, S. 30: Elektronenübertragungsreaktionen im Sinne des Donator-Akzeptor-Prinzips modellhaft erklären"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:7-chemische-reaktionen-durch-elektronenubertragung",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-bewertung-001-6327465f",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-bewertung",
+      "topicCode": "Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-bewertung",
+      "title": "Kriterien für den Gebrauch unterschiedlicher elektrochemischer Energiequellen im Alltag reflektieren",
+      "description": "Die lernende Person kann Kriterien für den Gebrauch unterschiedlicher elektrochemischer Energiequellen im Alltag reflektieren.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 7: Chemische Reaktionen durch Elektronenübertragung, Bewertung, S. 30.",
+      "sourceText": "Kriterien für den Gebrauch unterschiedlicher elektrochemischer Energiequellen im Alltag reflektieren",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-7-chemische-reaktionen-durch-elektronenubertragung-bewertung",
+        "label": "Zweite Stufe, 7: Chemische Reaktionen durch Elektronenübertragung, Bewertung, S. 30: Kriterien für den Gebrauch unterschiedlicher elektrochemischer Energiequellen im Alltag reflektieren"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:7-chemische-reaktionen-durch-elektronenubertragung",
+        "competency:bewertung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Bewertung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-8-molekulverbindungen-umgang-mit-fachwissen-001-cbdb161c",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-8-molekulverbindungen-umgang-mit-fachwissen",
+      "topicCode": "Stufe2-8-molekulverbindungen-umgang-mit-fachwissen",
+      "title": "an ausgewählten Beispielen die Elektronenpaarbindung erläutern",
+      "description": "Die lernende Person kann an ausgewählten Beispielen die Elektronenpaarbindung erläutern.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 8: Molekülverbindungen, Umgang mit Fachwissen, S. 31.",
+      "sourceText": "an ausgewählten Beispielen die Elektronenpaarbindung erläutern",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-8-molekulverbindungen-umgang-mit-fachwissen",
+        "label": "Zweite Stufe, 8: Molekülverbindungen, Umgang mit Fachwissen, S. 31: an ausgewählten Beispielen die Elektronenpaarbindung erläutern"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:8-molekulverbindungen",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-8-molekulverbindungen-umgang-mit-fachwissen-002-001433b3",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-8-molekulverbindungen-umgang-mit-fachwissen",
+      "topicCode": "Stufe2-8-molekulverbindungen-umgang-mit-fachwissen",
+      "title": "mithilfe der Lewis-Schreibweise den Aufbau einfacher Moleküle beschreiben",
+      "description": "Die lernende Person kann mithilfe der Lewis-Schreibweise den Aufbau einfacher Moleküle beschreiben.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 8: Molekülverbindungen, Umgang mit Fachwissen, S. 31.",
+      "sourceText": "mithilfe der Lewis-Schreibweise den Aufbau einfacher Moleküle beschreiben",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-8-molekulverbindungen-umgang-mit-fachwissen",
+        "label": "Zweite Stufe, 8: Molekülverbindungen, Umgang mit Fachwissen, S. 31: mithilfe der Lewis-Schreibweise den Aufbau einfacher Moleküle beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:8-molekulverbindungen",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-8-molekulverbindungen-umgang-mit-fachwissen-003-d8b83459",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-8-molekulverbindungen-umgang-mit-fachwissen",
+      "topicCode": "Stufe2-8-molekulverbindungen-umgang-mit-fachwissen",
+      "title": "die Synthese eines Industrierohstoffs aus Synthesegas (z.B. Methan oder Ammoniak) auch mit Angabe von Reaktionsgleichungen erläutern",
+      "description": "Die lernende Person kann die Synthese eines Industrierohstoffs aus Synthesegas (z.B. Methan oder Ammoniak) auch mit Angabe von Reaktionsgleichungen erläutern.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 8: Molekülverbindungen, Umgang mit Fachwissen, S. 31.",
+      "sourceText": "die Synthese eines Industrierohstoffs aus Synthesegas (z.B. Methan oder Ammoniak) auch mit Angabe von Reaktionsgleichungen erläutern",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-8-molekulverbindungen-umgang-mit-fachwissen",
+        "label": "Zweite Stufe, 8: Molekülverbindungen, Umgang mit Fachwissen, S. 31: die Synthese eines Industrierohstoffs aus Synthesegas (z.B. Methan oder Ammoniak) auch mit Angabe von Reaktionsgleichungen erläutern"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:8-molekulverbindungen",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-8-molekulverbindungen-erkenntnisgewinnung-001-6261ad8d",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-8-molekulverbindungen-erkenntnisgewinnung",
+      "topicCode": "Stufe2-8-molekulverbindungen-erkenntnisgewinnung",
+      "title": "die räumliche Struktur von Molekülen mit dem Elektronenpaarabstoßungsmodell veranschaulichen",
+      "description": "Die lernende Person kann die räumliche Struktur von Molekülen mit dem Elektronenpaarabstoßungsmodell veranschaulichen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 8: Molekülverbindungen, Erkenntnisgewinnung, S. 31.",
+      "sourceText": "die räumliche Struktur von Molekülen mit dem Elektronenpaarabstoßungsmodell veranschaulichen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-8-molekulverbindungen-erkenntnisgewinnung",
+        "label": "Zweite Stufe, 8: Molekülverbindungen, Erkenntnisgewinnung, S. 31: die räumliche Struktur von Molekülen mit dem Elektronenpaarabstoßungsmodell veranschaulichen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:8-molekulverbindungen",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-8-molekulverbindungen-erkenntnisgewinnung-002-d0bdd8de",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-8-molekulverbindungen-erkenntnisgewinnung",
+      "topicCode": "Stufe2-8-molekulverbindungen-erkenntnisgewinnung",
+      "title": "die Temperaturänderung beim Lösen von Salzen in Wasser erläutern",
+      "description": "Die lernende Person kann die Temperaturänderung beim Lösen von Salzen in Wasser erläutern.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 8: Molekülverbindungen, Erkenntnisgewinnung, S. 32.",
+      "sourceText": "die Temperaturänderung beim Lösen von Salzen in Wasser erläutern",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-8-molekulverbindungen-erkenntnisgewinnung",
+        "label": "Zweite Stufe, 8: Molekülverbindungen, Erkenntnisgewinnung, S. 32: die Temperaturänderung beim Lösen von Salzen in Wasser erläutern"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:8-molekulverbindungen",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-8-molekulverbindungen-erkenntnisgewinnung-003-c62b102f",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-8-molekulverbindungen-erkenntnisgewinnung",
+      "topicCode": "Stufe2-8-molekulverbindungen-erkenntnisgewinnung",
+      "title": "typische Eigenschaften von Wasser mithilfe des Dipol-Charakters der Wassermoleküle und der Ausbildung von Wasserstoffbrücken zwischen den Molekülen erläutern",
+      "description": "Die lernende Person kann typische Eigenschaften von Wasser mithilfe des Dipol-Charakters der Wassermoleküle und der Ausbildung von Wasserstoffbrücken zwischen den Molekülen erläutern.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 8: Molekülverbindungen, Erkenntnisgewinnung, S. 32.",
+      "sourceText": "typische Eigenschaften von Wasser mithilfe des Dipol-Charakters der Wassermoleküle und der Ausbildung von Wasserstoffbrücken zwischen den Molekülen erläutern",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-8-molekulverbindungen-erkenntnisgewinnung",
+        "label": "Zweite Stufe, 8: Molekülverbindungen, Erkenntnisgewinnung, S. 32: typische Eigenschaften von Wasser mithilfe des Dipol-Charakters der Wassermoleküle und der Ausbildung von Wasserstoffbrücken zwischen den Molekülen erläutern"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:8-molekulverbindungen",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-8-molekulverbindungen-erkenntnisgewinnung-004-0dc7db33",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-8-molekulverbindungen-erkenntnisgewinnung",
+      "topicCode": "Stufe2-8-molekulverbindungen-erkenntnisgewinnung",
+      "title": "die Wirkungsweise eines Katalysators modellhaft an der Synthese eines Industrierohstoffs erläutern",
+      "description": "Die lernende Person kann die Wirkungsweise eines Katalysators modellhaft an der Synthese eines Industrierohstoffs erläutern.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 8: Molekülverbindungen, Erkenntnisgewinnung, S. 32.",
+      "sourceText": "die Wirkungsweise eines Katalysators modellhaft an der Synthese eines Industrierohstoffs erläutern",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-8-molekulverbindungen-erkenntnisgewinnung",
+        "label": "Zweite Stufe, 8: Molekülverbindungen, Erkenntnisgewinnung, S. 32: die Wirkungsweise eines Katalysators modellhaft an der Synthese eines Industrierohstoffs erläutern"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:8-molekulverbindungen",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-8-molekulverbindungen-bewertung-001-e2ff06c6",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-8-molekulverbindungen-bewertung",
+      "topicCode": "Stufe2-8-molekulverbindungen-bewertung",
+      "title": "Informationen für ein technisches Verfahren zur Industrierohstoffgewinnung aus Gasen mithilfe digitaler Medien beschaffen und Bewertungskriterien auch unter Berücksichtigung der Energiespeicherung festlegen",
+      "description": "Die lernende Person kann Informationen für ein technisches Verfahren zur Industrierohstoffgewinnung aus Gasen mithilfe digitaler Medien beschaffen und Bewertungskriterien auch unter Berücksichtigung der Energiespeicherung festlegen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 8: Molekülverbindungen, Bewertung, S. 32.",
+      "sourceText": "Informationen für ein technisches Verfahren zur Industrierohstoffgewinnung aus Gasen mithilfe digitaler Medien beschaffen und Bewertungskriterien auch unter Berücksichtigung der Energiespeicherung festlegen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-8-molekulverbindungen-bewertung",
+        "label": "Zweite Stufe, 8: Molekülverbindungen, Bewertung, S. 32: Informationen für ein technisches Verfahren zur Industrierohstoffgewinnung aus Gasen mithilfe digitaler Medien beschaffen und Bewertungskriterien auch unter Berücksichtigung der Energiespeicherung festlegen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:8-molekulverbindungen",
+        "competency:bewertung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Bewertung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-8-molekulverbindungen-bewertung-002-42c2dc75",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-8-molekulverbindungen-bewertung",
+      "topicCode": "Stufe2-8-molekulverbindungen-bewertung",
+      "title": "unterschiedliche Darstellungen von Modellen kleiner Moleküle auch mithilfe einer Software vergleichend gegenüberstellen",
+      "description": "Die lernende Person kann unterschiedliche Darstellungen von Modellen kleiner Moleküle auch mithilfe einer Software vergleichend gegenüberstellen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 8: Molekülverbindungen, Bewertung, S. 32.",
+      "sourceText": "unterschiedliche Darstellungen von Modellen kleiner Moleküle auch mithilfe einer Software vergleichend gegenüberstellen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-8-molekulverbindungen-bewertung",
+        "label": "Zweite Stufe, 8: Molekülverbindungen, Bewertung, S. 32: unterschiedliche Darstellungen von Modellen kleiner Moleküle auch mithilfe einer Software vergleichend gegenüberstellen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:8-molekulverbindungen",
+        "competency:bewertung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Bewertung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen-001-9e2e670d",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen",
+      "topicCode": "Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen",
+      "title": "die Eigenschaften von sauren und alkalischen Lösungen mit dem Vorhandensein charakteristischer hydratisierter Ionen erklären",
+      "description": "Die lernende Person kann die Eigenschaften von sauren und alkalischen Lösungen mit dem Vorhandensein charakteristischer hydratisierter Ionen erklären.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 9: Saure und alkalische Lösungen, Umgang mit Fachwissen, S. 33.",
+      "sourceText": "die Eigenschaften von sauren und alkalischen Lösungen mit dem Vorhandensein charakteristischer hydratisierter Ionen erklären",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen",
+        "label": "Zweite Stufe, 9: Saure und alkalische Lösungen, Umgang mit Fachwissen, S. 33: die Eigenschaften von sauren und alkalischen Lösungen mit dem Vorhandensein charakteristischer hydratisierter Ionen erklären"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:9-saure-und-alkalische-losungen",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen-002-64c25fe6",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen",
+      "topicCode": "Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen",
+      "title": "Protonendonatoren als Säuren und Protonenakzeptoren als Basen klassifizieren",
+      "description": "Die lernende Person kann Protonendonatoren als Säuren und Protonenakzeptoren als Basen klassifizieren.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 9: Saure und alkalische Lösungen, Umgang mit Fachwissen, S. 33.",
+      "sourceText": "Protonendonatoren als Säuren und Protonenakzeptoren als Basen klassifizieren",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen",
+        "label": "Zweite Stufe, 9: Saure und alkalische Lösungen, Umgang mit Fachwissen, S. 33: Protonendonatoren als Säuren und Protonenakzeptoren als Basen klassifizieren"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:9-saure-und-alkalische-losungen",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen-003-d6769b13",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen",
+      "topicCode": "Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen",
+      "title": "an einfachen Beispielen die Vorgänge der Protonenabgabe und -aufnahme beschreiben",
+      "description": "Die lernende Person kann an einfachen Beispielen die Vorgänge der Protonenabgabe und -aufnahme beschreiben.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 9: Saure und alkalische Lösungen, Umgang mit Fachwissen, S. 33.",
+      "sourceText": "an einfachen Beispielen die Vorgänge der Protonenabgabe und -aufnahme beschreiben",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen",
+        "label": "Zweite Stufe, 9: Saure und alkalische Lösungen, Umgang mit Fachwissen, S. 33: an einfachen Beispielen die Vorgänge der Protonenabgabe und -aufnahme beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:9-saure-und-alkalische-losungen",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen-004-87074a01",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen",
+      "topicCode": "Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen",
+      "title": "Neutralisationsreaktionen und Salzbildungen erläutern",
+      "description": "Die lernende Person kann Neutralisationsreaktionen und Salzbildungen erläutern.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 9: Saure und alkalische Lösungen, Umgang mit Fachwissen, S. 33.",
+      "sourceText": "Neutralisationsreaktionen und Salzbildungen erläutern",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-umgang-mit-fachwissen",
+        "label": "Zweite Stufe, 9: Saure und alkalische Lösungen, Umgang mit Fachwissen, S. 33: Neutralisationsreaktionen und Salzbildungen erläutern"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:9-saure-und-alkalische-losungen",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung-001-dc9e3375",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung",
+      "topicCode": "Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung",
+      "title": "charakteristische Eigenschaften von sauren Lösungen (elektrische Leitfähigkeit, Reaktionen mit Metallen, Reaktionen mit Kalk) und alkalischen Lösungen ermitteln und auch unter Angabe von Reaktionsgleichungen erläutern",
+      "description": "Die lernende Person kann charakteristische Eigenschaften von sauren Lösungen (elektrische Leitfähigkeit, Reaktionen mit Metallen, Reaktionen mit Kalk) und alkalischen Lösungen ermitteln und auch unter Angabe von Reaktionsgleichungen erläutern.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 9: Saure und alkalische Lösungen, Erkenntnisgewinnung, S. 33.",
+      "sourceText": "charakteristische Eigenschaften von sauren Lösungen (elektrische Leitfähigkeit, Reaktionen mit Metallen, Reaktionen mit Kalk) und alkalischen Lösungen ermitteln und auch unter Angabe von Reaktionsgleichungen erläutern",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung",
+        "label": "Zweite Stufe, 9: Saure und alkalische Lösungen, Erkenntnisgewinnung, S. 33: charakteristische Eigenschaften von sauren Lösungen (elektrische Leitfähigkeit, Reaktionen mit Metallen, Reaktionen mit Kalk) und alkalischen Lösungen ermitteln und auch unter Angabe von Reaktionsgleichungen erläutern"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:9-saure-und-alkalische-losungen",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung-002-8d524a32",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung",
+      "topicCode": "Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung",
+      "title": "den pH-Wert einer Lösung bestimmen und die pH-Wertskala mithilfe von Verdünnungen ableiten",
+      "description": "Die lernende Person kann den pH-Wert einer Lösung bestimmen und die pH-Wertskala mithilfe von Verdünnungen ableiten.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 9: Saure und alkalische Lösungen, Erkenntnisgewinnung, S. 33.",
+      "sourceText": "den pH-Wert einer Lösung bestimmen und die pH-Wertskala mithilfe von Verdünnungen ableiten",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung",
+        "label": "Zweite Stufe, 9: Saure und alkalische Lösungen, Erkenntnisgewinnung, S. 33: den pH-Wert einer Lösung bestimmen und die pH-Wertskala mithilfe von Verdünnungen ableiten"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:9-saure-und-alkalische-losungen",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung-003-b4037fbc",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung",
+      "topicCode": "Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung",
+      "title": "ausgehend von einfachen stöchiometrischen Berechnungen Hypothesen und Reaktionsgleichungen zur Neutralisation von sauren bzw. alkalischen Lösungen aufstellen und experimentell überprüfen",
+      "description": "Die lernende Person kann ausgehend von einfachen stöchiometrischen Berechnungen Hypothesen und Reaktionsgleichungen zur Neutralisation von sauren bzw. alkalischen Lösungen aufstellen und experimentell überprüfen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 9: Saure und alkalische Lösungen, Erkenntnisgewinnung, S. 33.",
+      "sourceText": "ausgehend von einfachen stöchiometrischen Berechnungen Hypothesen und Reaktionsgleichungen zur Neutralisation von sauren bzw. alkalischen Lösungen aufstellen und experimentell überprüfen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung",
+        "label": "Zweite Stufe, 9: Saure und alkalische Lösungen, Erkenntnisgewinnung, S. 33: ausgehend von einfachen stöchiometrischen Berechnungen Hypothesen und Reaktionsgleichungen zur Neutralisation von sauren bzw. alkalischen Lösungen aufstellen und experimentell überprüfen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:9-saure-und-alkalische-losungen",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung-004-f83b22c8",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung",
+      "topicCode": "Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung",
+      "title": "eine ausgewählte Neutralisationsreaktion auf Teilchenebene als digitale Präsentation gestalten",
+      "description": "Die lernende Person kann eine ausgewählte Neutralisationsreaktion auf Teilchenebene als digitale Präsentation gestalten.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 9: Saure und alkalische Lösungen, Erkenntnisgewinnung, S. 33.",
+      "sourceText": "eine ausgewählte Neutralisationsreaktion auf Teilchenebene als digitale Präsentation gestalten",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-erkenntnisgewinnung",
+        "label": "Zweite Stufe, 9: Saure und alkalische Lösungen, Erkenntnisgewinnung, S. 33: eine ausgewählte Neutralisationsreaktion auf Teilchenebene als digitale Präsentation gestalten"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:9-saure-und-alkalische-losungen",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-9-saure-und-alkalische-losungen-bewertung-001-261e34f9",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-bewertung",
+      "topicCode": "Stufe2-9-saure-und-alkalische-losungen-bewertung",
+      "title": "beim Umgang mit sauren und alkalischen Lösungen Risiken und Nutzen abwägen und angemessene Sicherheitsmaßnahmen begründet auswählen",
+      "description": "Die lernende Person kann beim Umgang mit sauren und alkalischen Lösungen Risiken und Nutzen abwägen und angemessene Sicherheitsmaßnahmen begründet auswählen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 9: Saure und alkalische Lösungen, Bewertung, S. 34.",
+      "sourceText": "beim Umgang mit sauren und alkalischen Lösungen Risiken und Nutzen abwägen und angemessene Sicherheitsmaßnahmen begründet auswählen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-bewertung",
+        "label": "Zweite Stufe, 9: Saure und alkalische Lösungen, Bewertung, S. 34: beim Umgang mit sauren und alkalischen Lösungen Risiken und Nutzen abwägen und angemessene Sicherheitsmaßnahmen begründet auswählen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:9-saure-und-alkalische-losungen",
+        "competency:bewertung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Bewertung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-9-saure-und-alkalische-losungen-bewertung-002-308318c1",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-bewertung",
+      "topicCode": "Stufe2-9-saure-und-alkalische-losungen-bewertung",
+      "title": "Aussagen zu sauren, alkalischen und neutralen Lösungen in analogen und digitalen Medien kritisch hinterfragen",
+      "description": "Die lernende Person kann Aussagen zu sauren, alkalischen und neutralen Lösungen in analogen und digitalen Medien kritisch hinterfragen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 9: Saure und alkalische Lösungen, Bewertung, S. 34.",
+      "sourceText": "Aussagen zu sauren, alkalischen und neutralen Lösungen in analogen und digitalen Medien kritisch hinterfragen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-9-saure-und-alkalische-losungen-bewertung",
+        "label": "Zweite Stufe, 9: Saure und alkalische Lösungen, Bewertung, S. 34: Aussagen zu sauren, alkalischen und neutralen Lösungen in analogen und digitalen Medien kritisch hinterfragen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:9-saure-und-alkalische-losungen",
+        "competency:bewertung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Bewertung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-10-organische-chemie-umgang-mit-fachwissen-001-950fa7fd",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-umgang-mit-fachwissen",
+      "topicCode": "Stufe2-10-organische-chemie-umgang-mit-fachwissen",
+      "title": "organische Molekülverbindungen aufgrund ihrer Eigenschaften in Stoffklassen einordnen",
+      "description": "Die lernende Person kann organische Molekülverbindungen aufgrund ihrer Eigenschaften in Stoffklassen einordnen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 10: Organische Chemie, Umgang mit Fachwissen, S. 34.",
+      "sourceText": "organische Molekülverbindungen aufgrund ihrer Eigenschaften in Stoffklassen einordnen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-umgang-mit-fachwissen",
+        "label": "Zweite Stufe, 10: Organische Chemie, Umgang mit Fachwissen, S. 34: organische Molekülverbindungen aufgrund ihrer Eigenschaften in Stoffklassen einordnen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:10-organische-chemie",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-10-organische-chemie-umgang-mit-fachwissen-002-74d8395e",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-umgang-mit-fachwissen",
+      "topicCode": "Stufe2-10-organische-chemie-umgang-mit-fachwissen",
+      "title": "ausgewählte organische Verbindungen nach der systematischen Nomenklatur benennen",
+      "description": "Die lernende Person kann ausgewählte organische Verbindungen nach der systematischen Nomenklatur benennen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 10: Organische Chemie, Umgang mit Fachwissen, S. 34.",
+      "sourceText": "ausgewählte organische Verbindungen nach der systematischen Nomenklatur benennen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-umgang-mit-fachwissen",
+        "label": "Zweite Stufe, 10: Organische Chemie, Umgang mit Fachwissen, S. 34: ausgewählte organische Verbindungen nach der systematischen Nomenklatur benennen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:10-organische-chemie",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-10-organische-chemie-umgang-mit-fachwissen-003-e30cfeaa",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-umgang-mit-fachwissen",
+      "topicCode": "Stufe2-10-organische-chemie-umgang-mit-fachwissen",
+      "title": "Treibhausgase und ihre Ursprünge beschreiben",
+      "description": "Die lernende Person kann Treibhausgase und ihre Ursprünge beschreiben.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 10: Organische Chemie, Umgang mit Fachwissen, S. 34.",
+      "sourceText": "Treibhausgase und ihre Ursprünge beschreiben",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-umgang-mit-fachwissen",
+        "label": "Zweite Stufe, 10: Organische Chemie, Umgang mit Fachwissen, S. 34: Treibhausgase und ihre Ursprünge beschreiben"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:10-organische-chemie",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-10-organische-chemie-umgang-mit-fachwissen-004-249c6552",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-umgang-mit-fachwissen",
+      "topicCode": "Stufe2-10-organische-chemie-umgang-mit-fachwissen",
+      "title": "die Abfolge verschiedener Reaktionen in einem Stoffkreislauf erklären",
+      "description": "Die lernende Person kann die Abfolge verschiedener Reaktionen in einem Stoffkreislauf erklären.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 10: Organische Chemie, Umgang mit Fachwissen, S. 34.",
+      "sourceText": "die Abfolge verschiedener Reaktionen in einem Stoffkreislauf erklären",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-umgang-mit-fachwissen",
+        "label": "Zweite Stufe, 10: Organische Chemie, Umgang mit Fachwissen, S. 34: die Abfolge verschiedener Reaktionen in einem Stoffkreislauf erklären"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:10-organische-chemie",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-10-organische-chemie-umgang-mit-fachwissen-005-3662e6af",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-umgang-mit-fachwissen",
+      "topicCode": "Stufe2-10-organische-chemie-umgang-mit-fachwissen",
+      "title": "die vielseitige Verwendung von Kunststoffen im Alltag mit ihren Eigenschaften begründen",
+      "description": "Die lernende Person kann die vielseitige Verwendung von Kunststoffen im Alltag mit ihren Eigenschaften begründen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 10: Organische Chemie, Umgang mit Fachwissen, S. 34.",
+      "sourceText": "die vielseitige Verwendung von Kunststoffen im Alltag mit ihren Eigenschaften begründen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-umgang-mit-fachwissen",
+        "label": "Zweite Stufe, 10: Organische Chemie, Umgang mit Fachwissen, S. 34: die vielseitige Verwendung von Kunststoffen im Alltag mit ihren Eigenschaften begründen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:10-organische-chemie",
+        "competency:umgang-mit-fachwissen",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Umgang mit Fachwissen"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-10-organische-chemie-erkenntnisgewinnung-001-20c9dabb",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-erkenntnisgewinnung",
+      "topicCode": "Stufe2-10-organische-chemie-erkenntnisgewinnung",
+      "title": "räumliche Strukturen von Kohlenwasserstoffmolekülen auch mithilfe von digitalen Modellen veranschaulichen",
+      "description": "Die lernende Person kann räumliche Strukturen von Kohlenwasserstoffmolekülen auch mithilfe von digitalen Modellen veranschaulichen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 10: Organische Chemie, Erkenntnisgewinnung, S. 35.",
+      "sourceText": "räumliche Strukturen von Kohlenwasserstoffmolekülen auch mithilfe von digitalen Modellen veranschaulichen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-erkenntnisgewinnung",
+        "label": "Zweite Stufe, 10: Organische Chemie, Erkenntnisgewinnung, S. 35: räumliche Strukturen von Kohlenwasserstoffmolekülen auch mithilfe von digitalen Modellen veranschaulichen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:10-organische-chemie",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-10-organische-chemie-erkenntnisgewinnung-002-00e7e695",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-erkenntnisgewinnung",
+      "topicCode": "Stufe2-10-organische-chemie-erkenntnisgewinnung",
+      "title": "typische Stoffeigenschaften wie Löslichkeit und Siedetemperatur von ausgewählten Alkanen und Alkanolen ermitteln und mithilfe ihrer Molekülstrukturen und zwischenmolekularen Wechselwirkungen erklären",
+      "description": "Die lernende Person kann typische Stoffeigenschaften wie Löslichkeit und Siedetemperatur von ausgewählten Alkanen und Alkanolen ermitteln und mithilfe ihrer Molekülstrukturen und zwischenmolekularen Wechselwirkungen erklären.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 10: Organische Chemie, Erkenntnisgewinnung, S. 35.",
+      "sourceText": "typische Stoffeigenschaften wie Löslichkeit und Siedetemperatur von ausgewählten Alkanen und Alkanolen ermitteln und mithilfe ihrer Molekülstrukturen und zwischenmolekularen Wechselwirkungen erklären",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-erkenntnisgewinnung",
+        "label": "Zweite Stufe, 10: Organische Chemie, Erkenntnisgewinnung, S. 35: typische Stoffeigenschaften wie Löslichkeit und Siedetemperatur von ausgewählten Alkanen und Alkanolen ermitteln und mithilfe ihrer Molekülstrukturen und zwischenmolekularen Wechselwirkungen erklären"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:10-organische-chemie",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-10-organische-chemie-erkenntnisgewinnung-003-7ddf32cf",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-erkenntnisgewinnung",
+      "topicCode": "Stufe2-10-organische-chemie-erkenntnisgewinnung",
+      "title": "Messdaten von Verbrennungsvorgängen fossiler und regenerativer Energierohstoffe digital beschaffen und vergleichen",
+      "description": "Die lernende Person kann Messdaten von Verbrennungsvorgängen fossiler und regenerativer Energierohstoffe digital beschaffen und vergleichen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 10: Organische Chemie, Erkenntnisgewinnung, S. 35.",
+      "sourceText": "Messdaten von Verbrennungsvorgängen fossiler und regenerativer Energierohstoffe digital beschaffen und vergleichen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-erkenntnisgewinnung",
+        "label": "Zweite Stufe, 10: Organische Chemie, Erkenntnisgewinnung, S. 35: Messdaten von Verbrennungsvorgängen fossiler und regenerativer Energierohstoffe digital beschaffen und vergleichen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:10-organische-chemie",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-10-organische-chemie-erkenntnisgewinnung-004-a5cf00f8",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-erkenntnisgewinnung",
+      "topicCode": "Stufe2-10-organische-chemie-erkenntnisgewinnung",
+      "title": "ausgewählte Eigenschaften von Kunststoffen auf deren makromolekulare Struktur und räumliche Anordnung zurückführen",
+      "description": "Die lernende Person kann ausgewählte Eigenschaften von Kunststoffen auf deren makromolekulare Struktur und räumliche Anordnung zurückführen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 10: Organische Chemie, Erkenntnisgewinnung, S. 35.",
+      "sourceText": "ausgewählte Eigenschaften von Kunststoffen auf deren makromolekulare Struktur und räumliche Anordnung zurückführen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-erkenntnisgewinnung",
+        "label": "Zweite Stufe, 10: Organische Chemie, Erkenntnisgewinnung, S. 35: ausgewählte Eigenschaften von Kunststoffen auf deren makromolekulare Struktur und räumliche Anordnung zurückführen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:10-organische-chemie",
+        "competency:erkenntnisgewinnung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Erkenntnisgewinnung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-10-organische-chemie-bewertung-001-b3f26eec",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-bewertung",
+      "topicCode": "Stufe2-10-organische-chemie-bewertung",
+      "title": "Vorund Nachteile der Nutzung von fossilen und regenerativen Energieträgern unter ökologischen, ökonomischen und ethischen Gesichtspunkten diskutieren",
+      "description": "Die lernende Person kann Vorund Nachteile der Nutzung von fossilen und regenerativen Energieträgern unter ökologischen, ökonomischen und ethischen Gesichtspunkten diskutieren.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 10: Organische Chemie, Bewertung, S. 35.",
+      "sourceText": "Vorund Nachteile der Nutzung von fossilen und regenerativen Energieträgern unter ökologischen, ökonomischen und ethischen Gesichtspunkten diskutieren",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-bewertung",
+        "label": "Zweite Stufe, 10: Organische Chemie, Bewertung, S. 35: Vorund Nachteile der Nutzung von fossilen und regenerativen Energieträgern unter ökologischen, ökonomischen und ethischen Gesichtspunkten diskutieren"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:10-organische-chemie",
+        "competency:bewertung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Bewertung"
+      }
+    },
+    {
+      "id": "de-nw-chemie-seki-klp-2019-Stufe2-10-organische-chemie-bewertung-002-082a150a",
+      "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-bewertung",
+      "topicCode": "Stufe2-10-organische-chemie-bewertung",
+      "title": "am Beispiel eines chemischen Produkts Kriterien hinsichtlich Verwendung, Ökonomie, Recyclingfähigkeit und Umweltverträglichkeit abwägen und im Hinblick auf die Verwendung einen eigenen sachlich fundierten Standpunkt beziehen",
+      "description": "Die lernende Person kann am Beispiel eines chemischen Produkts Kriterien hinsichtlich Verwendung, Ökonomie, Recyclingfähigkeit und Umweltverträglichkeit abwägen und im Hinblick auf die Verwendung einen eigenen sachlich fundierten Standpunkt beziehen.",
+      "sourceDocumentKey": "NW-KLP-CHEMIE-SEKI-2019",
+      "sourceRef": "Nordrhein-Westfalen Kernlehrplan Chemie Sekundarstufe I Gymnasium 2019, Zweite Stufe, 10: Organische Chemie, Bewertung, S. 35.",
+      "sourceText": "am Beispiel eines chemischen Produkts Kriterien hinsichtlich Verwendung, Ökonomie, Recyclingfähigkeit und Umweltverträglichkeit abwägen und im Hinblick auf die Verwendung einen eigenen sachlich fundierten Standpunkt beziehen",
+      "sourceSpan": {
+        "passageId": "de-nw-chemie-seki-klp-2019:Stufe2-10-organische-chemie-bewertung",
+        "label": "Zweite Stufe, 10: Organische Chemie, Bewertung, S. 35: am Beispiel eines chemischen Produkts Kriterien hinsichtlich Verwendung, Ökonomie, Recyclingfähigkeit und Umweltverträglichkeit abwägen und im Hinblick auf die Verwendung einen eigenen sachlich fundierten Standpunkt beziehen"
+      },
+      "courseLevel": "unspecified",
+      "tags": [
+        "subject:Chemie",
+        "jurisdiction:DE-NW",
+        "stage:SekI",
+        "phase:Stufe2",
+        "field:10-organische-chemie",
+        "competency:bewertung",
+        "courseLevel:unspecified"
+      ],
+      "metadata": {
+        "extractionMethod": "pdftotext-layout-official-pdf-concrete-competency-bullet-extraction",
+        "phase": "Stufe2",
+        "competency": "Bewertung"
+      }
+    }
+  ]
+}

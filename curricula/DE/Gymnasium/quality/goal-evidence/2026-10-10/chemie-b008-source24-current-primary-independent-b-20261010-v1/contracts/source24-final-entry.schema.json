@@ -1,0 +1,402 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "SPDX-License-Identifier: Apache-2.0; additive technical ledger shape, no native science or Human approval contract",
+  "title": "source24-final-entry.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "role",
+    "reviewId",
+    "createdAt",
+    "ownFIRSTreview",
+    "ownFIRSTseal",
+    "ownFINALreview",
+    "own63ActualEdgeReviews",
+    "currentAuthorPortableSeal",
+    "neutralCurrentEntry",
+    "normalValidation",
+    "currentRequiredRegularExternalBindings",
+    "normalOwnClosedContracts",
+    "actualSummary",
+    "ordinary398ProbeRemainsOpen",
+    "activeAdoptionAuthorizedByThisPackage",
+    "humanApproval",
+    "strictNet"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "role": {
+      "type": "string",
+      "minLength": 0
+    },
+    "reviewId": {
+      "type": "string",
+      "minLength": 0
+    },
+    "createdAt": {
+      "type": "string",
+      "minLength": 0
+    },
+    "ownFIRSTreview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "ownFIRSTseal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "ownFINALreview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "own63ActualEdgeReviews": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "currentAuthorPortableSeal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "neutralCurrentEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "normalValidation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "currentRequiredRegularExternalBindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "normalOwnClosedContracts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^sha256:[a-f0-9]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "actualSummary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "wholeChildren",
+        "wholeSourceBodies",
+        "wholeBYOccurrences",
+        "stOperatorSeparatelyConfirmed",
+        "partialEdgesKept",
+        "explicitlyScopedChildrenKept",
+        "e5a5C11UnspecifiedHold",
+        "c11EdgesRemainWithoutExplicitCourseScope",
+        "originalSourceGoalsExactRetained",
+        "originalEdgesExactRetained",
+        "familyPartnersExactRetained",
+        "originalUnresolvedScopesRetained",
+        "old19OmissionsRetained",
+        "candidateNewOmissionE5a5",
+        "currentActivePublished362Canonical381KeptDistinct",
+        "full398AttemptStillExit1With378Union",
+        "expectedCountChecksSourceUnionNotCanonicalCount",
+        "fivePriorP26RequiresDeltasAndTwelveContextsRequireTheirSeparateCurrentDPReviews",
+        "wholeSourceApproval",
+        "wholeCourseApproval",
+        "legalRightsApproval",
+        "humanApproval",
+        "nativeDPAMVApproval",
+        "strictNew",
+        "strictRestored",
+        "strictNet",
+        "activeWrites"
+      ],
+      "properties": {
+        "wholeChildren": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "wholeSourceBodies": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "wholeBYOccurrences": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "stOperatorSeparatelyConfirmed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "partialEdgesKept": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "explicitlyScopedChildrenKept": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "e5a5C11UnspecifiedHold": {
+          "const": true
+        },
+        "c11EdgesRemainWithoutExplicitCourseScope": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "originalSourceGoalsExactRetained": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "originalEdgesExactRetained": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "familyPartnersExactRetained": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "originalUnresolvedScopesRetained": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "old19OmissionsRetained": {
+          "const": true
+        },
+        "candidateNewOmissionE5a5": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "currentActivePublished362Canonical381KeptDistinct": {
+          "const": true
+        },
+        "full398AttemptStillExit1With378Union": {
+          "const": true
+        },
+        "expectedCountChecksSourceUnionNotCanonicalCount": {
+          "const": true
+        },
+        "fivePriorP26RequiresDeltasAndTwelveContextsRequireTheirSeparateCurrentDPReviews": {
+          "const": true
+        },
+        "wholeSourceApproval": {
+          "const": false
+        },
+        "wholeCourseApproval": {
+          "const": false
+        },
+        "legalRightsApproval": {
+          "const": false
+        },
+        "humanApproval": {
+          "const": false
+        },
+        "nativeDPAMVApproval": {
+          "const": false
+        },
+        "strictNew": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "strictRestored": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "strictNet": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "activeWrites": {
+          "const": false
+        }
+      }
+    },
+    "ordinary398ProbeRemainsOpen": {
+      "const": true
+    },
+    "activeAdoptionAuthorizedByThisPackage": {
+      "const": false
+    },
+    "humanApproval": {
+      "const": false
+    },
+    "strictNet": {
+      "type": "integer",
+      "minimum": 0
+    }
+  }
+}

@@ -1,0 +1,13 @@
+# Source24: unabhängige Quellenprüfung A
+
+Die eigene fachliche FIRST-Prüfung wurde vor aktuellen Source24-Autoren- oder Peerurteilen versiegelt. Der Reviewer war zuvor A26-/Protected12-Prüfer und technischer D-Synthesizer, aber kein Source24-Nachfolgerautor. Die spätere Peer-FIRST-Nachricht beeinflusst diesen unveränderten Entscheidungsstand nicht.
+
+Tatsächlich geprüft: 24 vollständige aktuelle DE/EN-Kinder, 54 ganze Primäroperatoren und ihre Kontextlernfelder, 131 exakte Occurrence-Metadaten sowie 63 explizite partielle BY-/ST-Kanten. Alle 63 Beiträge sind als fachliche **Teilzuordnung** akzeptiert. 23 Kinder haben begrenzte Quellenkontexte; e5a5/C11 bleibt wegen fehlenden expliziten Kurskontexts auf **HOLD**. G9, Jahrgang 11, kanonische GK/LK-Tags und benachbarte C12-Belege schließen diesen Befund nicht. Keine Freigabe der ganzen Ursprungsoperatoren oder anderer Länder wird daraus abgeleitet.
+
+Die normalen Facet-/Descendant-/Duration-/Receipt-APIs bestehen. Kein generischer Elternbeleg überspringt die 24 Vererbungsgrenzen. Alle 398 bisherigen Native-Seitenkörper bleiben exakt; dieses Reviewmodell konsumiert jedoch keine SourceAtlas-Zuordnung und beweist keine neue Kurs-/Veröffentlichungsfreigabe. Die 180 geschützten Chemie-IDs und ihre Quellen-Sichtbarkeit bleiben erhalten; fünf früher separat geprüfte P26-requires-Änderungen werden nicht als neue Source24-Änderung ausgegeben.
+
+Der tatsächliche unveränderte Vollquellen-Compiler endet mit EXIT 1: **378 != 398**. Der frühere aktive SourceAtlas hat 362 Quellenziele bei 381 curricularAtomic-Zielen; im 398-Kandidaten waren vor Source24 355 Quellenziele und danach 378 enthalten. Der tatsächliche Quellenzuwachs von 23 ist kein strenger M7-Zuwachs. Die bisherigen 19 ausgelassenen Ziele, C11 und sämtliche 496 unaufgelösten Quellenentscheidungen bleiben offen. Alle 32 Originaleingaben, 5865 Quellenpflichten und 21046 ursprünglichen Partnerkanten bleiben erhalten.
+
+Ein anfänglicher technischer Lauf nutzte den falschen Feldnamen occurrences statt sourceOccurrences; sein echtes Fehlerlog bleibt sichtbar. Ausschließlich der technische Zugriff wurde korrigiert. Ein weiterer temporärer Verifier-KeyError pairs wurde auf wholeCurrentMappingExtractionPairs korrigiert. Weder Quellenartefakte noch die fachliche FIRST-Entscheidung wurden dafür geändert.
+
+Der Abschluss bindet den FIRST, echte normale Terminals, die gezielte Schema-/Portabilitätsprüfung und die exakten Eingaben. Historische wissenschaftliche Bewertungen bleiben erhalten. Keine aktiven Änderungen, keine menschliche Prüfung oder Erprobung, kein M7-Abschluss: **strenger Nettozuwachs 0**.

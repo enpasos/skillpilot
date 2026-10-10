@@ -1,0 +1,21 @@
+{
+  "cmd": [
+    "node",
+    "scripts/prepare_goal_visualization.mjs",
+    "8e2244e1-8616-5f24-859f-8e10df1c887b",
+    "--landscape",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-whole-material-and-raster-author-candidate-v1/inputs/whole479-original-authoring-base.exact.json",
+    "--subject",
+    "biologie",
+    "--provider",
+    "image_gen.imagegen",
+    "--review-status",
+    "pilot",
+    "--lang",
+    "de"
+  ],
+  "exitCode": 0,
+  "stdout": "Prepared prompt package for: Gärungswege untersuchen\nSkillPilot ID: 8e2244e1-8616-5f24-859f-8e10df1c887b\nPrompt: tmp/goal-visualizations/8e2244e1-8616-5f24-859f-8e10df1c887b/nano-banana-prompt.de.md\nMetadata: tmp/goal-visualizations/8e2244e1-8616-5f24-859f-8e10df1c887b/metadata.json\n\nAfter generating and downloading the image, import it with:\nnpm --prefix app run visualization:import -- 8e2244e1-8616-5f24-859f-8e10df1c887b \"<downloaded-image-path>\"\n",
+  "stderr": "",
+  "activeWrites": false
+}

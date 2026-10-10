@@ -1,0 +1,323 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "Apache-2.0. Closed own authored full-material container; official P profiles validated separately.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "role",
+    "license",
+    "attribution",
+    "sourceWitnessesReusedWithoutNewSourceReview",
+    "legacyPassageObjectsRetainedAsNull",
+    "records",
+    "humanApproval",
+    "learnerWork",
+    "evidenceLevel",
+    "maximumClaimScope",
+    "reviewAuthority",
+    "status"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer"
+    },
+    "role": {
+      "type": "string"
+    },
+    "license": {
+      "type": "string"
+    },
+    "attribution": {
+      "type": "string"
+    },
+    "sourceWitnessesReusedWithoutNewSourceReview": {
+      "type": "integer"
+    },
+    "legacyPassageObjectsRetainedAsNull": {
+      "type": "integer"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "goalId",
+          "profile",
+          "cases"
+        ],
+        "properties": {
+          "goalId": {
+            "type": "string"
+          },
+          "profile": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "archetype",
+              "expectations",
+              "coverageExpectations",
+              "variationAxes",
+              "applicationCaseBriefs"
+            ],
+            "properties": {
+              "archetype": {
+                "type": "string"
+              },
+              "expectations": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "essentialUnderstandingDe",
+                    "essentialUnderstandingEn",
+                    "observablePerformanceDe",
+                    "observablePerformanceEn"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "essentialUnderstandingDe": {
+                      "type": "string"
+                    },
+                    "essentialUnderstandingEn": {
+                      "type": "string"
+                    },
+                    "observablePerformanceDe": {
+                      "type": "string"
+                    },
+                    "observablePerformanceEn": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "coverageExpectations": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "requiredExpectationIds",
+                  "alternativeExpectationGroups",
+                  "minimumIndependentDemonstrations",
+                  "freshVariationRequired",
+                  "independentTransferRequired"
+                ],
+                "properties": {
+                  "requiredExpectationIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "alternativeExpectationGroups": {
+                    "type": "array",
+                    "items": {}
+                  },
+                  "minimumIndependentDemonstrations": {
+                    "type": "integer"
+                  },
+                  "freshVariationRequired": {
+                    "type": "boolean"
+                  },
+                  "independentTransferRequired": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "variationAxes": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "textDe",
+                    "textEn"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "textDe": {
+                      "type": "string"
+                    },
+                    "textEn": {
+                      "type": "string"
+                    }
+                  }
+                }
+              },
+              "applicationCaseBriefs": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "taskDemandDe",
+                    "taskDemandEn",
+                    "expectedPerformanceDe",
+                    "expectedPerformanceEn",
+                    "understandingFocusDe",
+                    "understandingFocusEn"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "taskDemandDe": {
+                      "type": "string"
+                    },
+                    "taskDemandEn": {
+                      "type": "string"
+                    },
+                    "expectedPerformanceDe": {
+                      "type": "string"
+                    },
+                    "expectedPerformanceEn": {
+                      "type": "string"
+                    },
+                    "understandingFocusDe": {
+                      "type": "string"
+                    },
+                    "understandingFocusEn": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "cases": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "id",
+                "titleDe",
+                "titleEn",
+                "syntheticData",
+                "materialDe",
+                "materialEn",
+                "taskDe",
+                "taskEn",
+                "workedSolutionDe",
+                "workedSolutionEn",
+                "freshTransferDe",
+                "freshTransferEn",
+                "freshTransferSolutionDe",
+                "freshTransferSolutionEn",
+                "limitsDe",
+                "limitsEn",
+                "rubric"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "titleDe": {
+                  "type": "string"
+                },
+                "titleEn": {
+                  "type": "string"
+                },
+                "syntheticData": {
+                  "type": "boolean"
+                },
+                "materialDe": {
+                  "type": "string"
+                },
+                "materialEn": {
+                  "type": "string"
+                },
+                "taskDe": {
+                  "type": "string"
+                },
+                "taskEn": {
+                  "type": "string"
+                },
+                "workedSolutionDe": {
+                  "type": "string"
+                },
+                "workedSolutionEn": {
+                  "type": "string"
+                },
+                "freshTransferDe": {
+                  "type": "string"
+                },
+                "freshTransferEn": {
+                  "type": "string"
+                },
+                "freshTransferSolutionDe": {
+                  "type": "string"
+                },
+                "freshTransferSolutionEn": {
+                  "type": "string"
+                },
+                "limitsDe": {
+                  "type": "string"
+                },
+                "limitsEn": {
+                  "type": "string"
+                },
+                "rubric": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "id",
+                      "expectationIds",
+                      "criterionDe",
+                      "criterionEn"
+                    ],
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "expectationIds": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        }
+                      },
+                      "criterionDe": {
+                        "type": "string"
+                      },
+                      "criterionEn": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "humanApproval": {
+      "type": "boolean"
+    },
+    "learnerWork": {
+      "type": "boolean"
+    },
+    "evidenceLevel": {
+      "type": "string"
+    },
+    "maximumClaimScope": {
+      "type": "string"
+    },
+    "reviewAuthority": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string"
+    }
+  }
+}

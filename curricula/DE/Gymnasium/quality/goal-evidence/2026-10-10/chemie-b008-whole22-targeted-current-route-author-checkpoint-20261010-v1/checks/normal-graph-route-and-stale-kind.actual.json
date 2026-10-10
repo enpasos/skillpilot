@@ -1,0 +1,128 @@
+{
+  "schemaVersion": 1,
+  "wholeGoalCount": 511,
+  "normalWholeRouteEvaluator": "generateCurriculumQualityStatus.ts/evaluateRouteProfile",
+  "completeOriginalCodePreserved": true,
+  "executionExportOnly": true,
+  "changedRulesSelectorsThresholds": 0,
+  "reports": [
+    {
+      "scopeId": "canonical-chemistry-sek2",
+      "label": "Sekundarstufe II",
+      "selectedAtomicGoals": 295,
+      "maturity": "M0",
+      "rules": [
+        {
+          "id": "CQR-101",
+          "status": "fail",
+          "summary": "Effective route coverage has missing route segments.",
+          "metrics": {
+            "selectedAtomicGoals": 295,
+            "missingMotivationPath": 0,
+            "missingTerminalPath": 9
+          },
+          "details": [
+            "No effective terminal path: Chemische Sachverhalte und Arbeitsergebnisse präsentieren [38e30bb9-6145-5da0-80b8-36e3c45e15d0]",
+            "No effective terminal path: Chemische Fragestellungen und Hypothesen theoriegestützt formulieren [503dedcb-0efc-5e6b-bbc9-20761a0951f5]",
+            "No effective terminal path: Chemische Modelle theoriegestützt nutzen und kritisch vergleichen [86d34f1f-692d-5522-a9a4-a71c65b24de7]",
+            "No effective terminal path: Eigene chemische Untersuchungen reflektieren [99d41b0f-e958-54cf-a077-9bed1704a303]",
+            "No effective terminal path: Chemische Daten quantitativ und hypothesenbezogen auswerten [9e3fae29-84d5-5600-bfb3-82d49ea3f1b5]",
+            "No effective terminal path: Chemische Wirkungen in historischen und aktuellen Zusammenhängen bewerten [9f892457-c4e5-56da-830c-bf6cac0c98d7]",
+            "No effective terminal path: Wissenschaftliche Gültigkeitskriterien anwenden [a0080b5f-13ff-56bc-b8ff-2ff6273e2ec1]",
+            "No effective terminal path: Einflüsse auf die Entwicklung chemischen Wissens bewerten [e5a5dcd8-053c-55fd-b5c7-bba93779da53]",
+            "No effective terminal path: Anspruchsvolle chemische Experimente selbstständig durchführen [f79f15c0-e848-5e17-9eb5-26753d35c93b]"
+          ]
+        },
+        {
+          "id": "CQR-102",
+          "status": "warn",
+          "summary": "Direct atomic route coverage still needs migration work.",
+          "metrics": {
+            "selectedAtomicGoals": 295,
+            "missingDirectMotivationPath": 2,
+            "missingDirectTerminalPath": 9
+          },
+          "details": [
+            "No direct atomic motivation path: Chemische Sachverhalte fachlich diskutieren [1f354a60-be44-512b-8f8b-f67c8c456035]",
+            "No direct atomic motivation path: Chemische Modelle theoriegestützt nutzen und kritisch vergleichen [86d34f1f-692d-5522-a9a4-a71c65b24de7]",
+            "No direct atomic terminal path: Chemische Sachverhalte und Arbeitsergebnisse präsentieren [38e30bb9-6145-5da0-80b8-36e3c45e15d0]",
+            "No direct atomic terminal path: Chemische Fragestellungen und Hypothesen theoriegestützt formulieren [503dedcb-0efc-5e6b-bbc9-20761a0951f5]",
+            "No direct atomic terminal path: Chemische Modelle theoriegestützt nutzen und kritisch vergleichen [86d34f1f-692d-5522-a9a4-a71c65b24de7]",
+            "No direct atomic terminal path: Eigene chemische Untersuchungen reflektieren [99d41b0f-e958-54cf-a077-9bed1704a303]",
+            "No direct atomic terminal path: Chemische Daten quantitativ und hypothesenbezogen auswerten [9e3fae29-84d5-5600-bfb3-82d49ea3f1b5]",
+            "No direct atomic terminal path: Chemische Wirkungen in historischen und aktuellen Zusammenhängen bewerten [9f892457-c4e5-56da-830c-bf6cac0c98d7]",
+            "No direct atomic terminal path: Wissenschaftliche Gültigkeitskriterien anwenden [a0080b5f-13ff-56bc-b8ff-2ff6273e2ec1]",
+            "No direct atomic terminal path: Einflüsse auf die Entwicklung chemischen Wissens bewerten [e5a5dcd8-053c-55fd-b5c7-bba93779da53]",
+            "No direct atomic terminal path: Anspruchsvolle chemische Experimente selbstständig durchführen [f79f15c0-e848-5e17-9eb5-26753d35c93b]"
+          ]
+        },
+        {
+          "id": "CQR-103",
+          "status": "pass",
+          "summary": "No scoped cluster-level requires remain.",
+          "metrics": {
+            "scopedClusterRequires": 0
+          }
+        },
+        {
+          "id": "CQR-201",
+          "status": "pass",
+          "summary": "All configured terminal autonomy goals have examData.",
+          "metrics": {
+            "terminalAutonomyGoals": 19,
+            "terminalAutonomyGoalsWithExamData": 19,
+            "terminalAutonomyGoalsWithoutExamData": 0
+          }
+        },
+        {
+          "id": "CQR-202",
+          "status": "pass",
+          "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+          "metrics": {
+            "terminalAutonomyGoals": 19,
+            "concreteExamData": 19,
+            "weakExamData": 0
+          }
+        },
+        {
+          "id": "CQR-203",
+          "status": "pass",
+          "summary": "All terminal autonomy examData has release and coverage metadata.",
+          "metrics": {
+            "terminalAutonomyGoals": 19,
+            "releasedCoverageCompleteExamData": 19,
+            "releaseCoverageIncompleteExamData": 0
+          }
+        }
+      ]
+    }
+  ],
+  "graph": {
+    "id": "CQR-001",
+    "status": "pass",
+    "summary": "Basic graph integrity checks pass.",
+    "metrics": {
+      "goals": 511,
+      "localReferenceIssues": 0
+    }
+  },
+  "types": {
+    "id": "CQR-002",
+    "status": "pass",
+    "summary": "Explicit type metadata matches graph structure.",
+    "metrics": {
+      "mismatches": 0
+    }
+  },
+  "historicalAtomicShapeCount": 398,
+  "actualStaleKindGoalIds": [
+    "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+    "6c7ce93c-7675-51da-bc0c-7d0257f7ff7d",
+    "75e2eff1-f871-5461-9e3f-26d0b333ce2f",
+    "9fc800d1-92d1-5ef6-81c1-33960ae034dd"
+  ],
+  "currentStrictDenominator": null,
+  "fullActiveStatusOrM6FloorPassClaim": false,
+  "activeWrites": [],
+  "strictGain": 0
+}

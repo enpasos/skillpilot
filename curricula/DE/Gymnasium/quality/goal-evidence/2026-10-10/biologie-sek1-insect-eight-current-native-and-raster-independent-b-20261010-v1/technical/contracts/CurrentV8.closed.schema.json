@@ -1,0 +1,644 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$comment": "SPDX-License-Identifier: Apache-2.0. Additive closed actual-review receipt; no native gate/schema modifications.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "role",
+    "records",
+    "allCurrentKEEP",
+    "originalHistoricalOwnKEEP8Unchanged",
+    "originalHistoricalPeerFCCDisagreementPreserved",
+    "humanApproval",
+    "activeWrites",
+    "strictNetGain"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "integer"
+    },
+    "role": {
+      "type": "string"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "goalId",
+              "decision",
+              "reviewBasis",
+              "reviewOrigin",
+              "raster",
+              "phone360",
+              "pc680",
+              "actualOriginalWholeViewed",
+              "actualProportional360Viewed",
+              "actualProportional680Viewed",
+              "cropped",
+              "originalRasterDimensions",
+              "otherSevenReviewRestarted",
+              "findings"
+            ],
+            "properties": {
+              "goalId": {
+                "type": "string"
+              },
+              "decision": {
+                "type": "string"
+              },
+              "reviewBasis": {
+                "type": "string"
+              },
+              "reviewOrigin": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "path",
+                  "sha256",
+                  "bytes"
+                ],
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^sha256:[a-f0-9]{64}$"
+                  },
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "raster": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "path",
+                  "sha256",
+                  "bytes"
+                ],
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^sha256:[a-f0-9]{64}$"
+                  },
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "phone360": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "path",
+                  "sha256",
+                  "bytes"
+                ],
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^sha256:[a-f0-9]{64}$"
+                  },
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "pc680": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "path",
+                  "sha256",
+                  "bytes"
+                ],
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^sha256:[a-f0-9]{64}$"
+                  },
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "actualOriginalWholeViewed": {
+                "const": true
+              },
+              "actualProportional360Viewed": {
+                "const": true
+              },
+              "actualProportional680Viewed": {
+                "const": true
+              },
+              "cropped": {
+                "const": false
+              },
+              "originalRasterDimensions": {
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                }
+              },
+              "otherSevenReviewRestarted": {
+                "const": false
+              },
+              "findings": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "goalId",
+                  "decision",
+                  "rasterDecision",
+                  "formatDecision",
+                  "phone360Decision",
+                  "pc680Decision",
+                  "friendlyComicDecision",
+                  "imageBindings",
+                  "actualProviderProvenance",
+                  "caseIds",
+                  "wholeGoalDEENRead",
+                  "wholeProfileAndBothCasesDEENRead",
+                  "scienceAndStructureFindingsDe",
+                  "phone360AndPc680FindingsDe",
+                  "actorPerspectiveDe",
+                  "blockingFindings",
+                  "requestedEdits"
+                ],
+                "properties": {
+                  "goalId": {
+                    "type": "string"
+                  },
+                  "decision": {
+                    "type": "string"
+                  },
+                  "rasterDecision": {
+                    "type": "string"
+                  },
+                  "formatDecision": {
+                    "type": "string"
+                  },
+                  "phone360Decision": {
+                    "type": "string"
+                  },
+                  "pc680Decision": {
+                    "type": "string"
+                  },
+                  "friendlyComicDecision": {
+                    "type": "string"
+                  },
+                  "imageBindings": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "actualOriginalPNG",
+                      "phone360",
+                      "pc680"
+                    ],
+                    "properties": {
+                      "actualOriginalPNG": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "path",
+                          "sha256",
+                          "bytes"
+                        ],
+                        "properties": {
+                          "path": {
+                            "type": "string",
+                            "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+                          },
+                          "sha256": {
+                            "type": "string",
+                            "pattern": "^sha256:[a-f0-9]{64}$"
+                          },
+                          "bytes": {
+                            "type": "integer",
+                            "minimum": 0
+                          }
+                        }
+                      },
+                      "phone360": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "path",
+                          "sha256",
+                          "bytes"
+                        ],
+                        "properties": {
+                          "path": {
+                            "type": "string",
+                            "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+                          },
+                          "sha256": {
+                            "type": "string",
+                            "pattern": "^sha256:[a-f0-9]{64}$"
+                          },
+                          "bytes": {
+                            "type": "integer",
+                            "minimum": 0
+                          }
+                        }
+                      },
+                      "pc680": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "path",
+                          "sha256",
+                          "bytes"
+                        ],
+                        "properties": {
+                          "path": {
+                            "type": "string",
+                            "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+                          },
+                          "sha256": {
+                            "type": "string",
+                            "pattern": "^sha256:[a-f0-9]{64}$"
+                          },
+                          "bytes": {
+                            "type": "integer",
+                            "minimum": 0
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "actualProviderProvenance": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "path",
+                      "sha256",
+                      "bytes"
+                    ],
+                    "properties": {
+                      "path": {
+                        "type": "string",
+                        "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+                      },
+                      "sha256": {
+                        "type": "string",
+                        "pattern": "^sha256:[a-f0-9]{64}$"
+                      },
+                      "bytes": {
+                        "type": "integer",
+                        "minimum": 0
+                      }
+                    }
+                  },
+                  "caseIds": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "wholeGoalDEENRead": {
+                    "const": true
+                  },
+                  "wholeProfileAndBothCasesDEENRead": {
+                    "const": true
+                  },
+                  "scienceAndStructureFindingsDe": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "phone360AndPc680FindingsDe": {
+                    "type": "string"
+                  },
+                  "actorPerspectiveDe": {
+                    "type": "string"
+                  },
+                  "blockingFindings": {
+                    "type": "array",
+                    "items": {}
+                  },
+                  "requestedEdits": {
+                    "type": "array",
+                    "items": {}
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "goalId",
+              "decision",
+              "reviewBasis",
+              "reviewOrigin",
+              "raster",
+              "phone360",
+              "pc680",
+              "actualOriginalWholeViewed",
+              "actualProportional360Viewed",
+              "actualProportional680Viewed",
+              "cropped",
+              "originalRasterDimensions",
+              "otherSevenReviewRestarted",
+              "findings"
+            ],
+            "properties": {
+              "goalId": {
+                "type": "string"
+              },
+              "decision": {
+                "type": "string"
+              },
+              "reviewBasis": {
+                "type": "string"
+              },
+              "reviewOrigin": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "path",
+                  "sha256",
+                  "bytes"
+                ],
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^sha256:[a-f0-9]{64}$"
+                  },
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "raster": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "path",
+                  "sha256",
+                  "bytes"
+                ],
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^sha256:[a-f0-9]{64}$"
+                  },
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "phone360": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "path",
+                  "sha256",
+                  "bytes"
+                ],
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^sha256:[a-f0-9]{64}$"
+                  },
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "pc680": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "path",
+                  "sha256",
+                  "bytes"
+                ],
+                "properties": {
+                  "path": {
+                    "type": "string",
+                    "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+                  },
+                  "sha256": {
+                    "type": "string",
+                    "pattern": "^sha256:[a-f0-9]{64}$"
+                  },
+                  "bytes": {
+                    "type": "integer",
+                    "minimum": 0
+                  }
+                }
+              },
+              "actualOriginalWholeViewed": {
+                "const": true
+              },
+              "actualProportional360Viewed": {
+                "const": true
+              },
+              "actualProportional680Viewed": {
+                "const": true
+              },
+              "cropped": {
+                "const": false
+              },
+              "originalRasterDimensions": {
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                }
+              },
+              "otherSevenReviewRestarted": {
+                "const": false
+              },
+              "findings": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "actualTargetedViews",
+                  "findingsDe",
+                  "decisions"
+                ],
+                "properties": {
+                  "actualTargetedViews": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "schemaVersion",
+                        "goalId",
+                        "assetRole",
+                        "asset",
+                        "width",
+                        "height",
+                        "actualView",
+                        "tool",
+                        "detail",
+                        "cropped",
+                        "viewSequence",
+                        "knownOriginalVPeerDifference",
+                        "currentSuccessorSubjectAuthorOrPeerJudgmentsRead",
+                        "observationDe"
+                      ],
+                      "properties": {
+                        "schemaVersion": {
+                          "type": "integer"
+                        },
+                        "goalId": {
+                          "type": "string"
+                        },
+                        "assetRole": {
+                          "type": "string"
+                        },
+                        "asset": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "required": [
+                            "path",
+                            "sha256",
+                            "bytes"
+                          ],
+                          "properties": {
+                            "path": {
+                              "type": "string",
+                              "pattern": "^(?!/)(?!.*\\\\)(?!.*(?:^|/)\\.\\.?(/|$))(?!.*//)[A-Za-z0-9._-]+(?:/[A-Za-z0-9._-]+)*$"
+                            },
+                            "sha256": {
+                              "type": "string",
+                              "pattern": "^sha256:[a-f0-9]{64}$"
+                            },
+                            "bytes": {
+                              "type": "integer",
+                              "minimum": 0
+                            }
+                          }
+                        },
+                        "width": {
+                          "type": "integer"
+                        },
+                        "height": {
+                          "type": "integer"
+                        },
+                        "actualView": {
+                          "const": true
+                        },
+                        "tool": {
+                          "type": "string"
+                        },
+                        "detail": {
+                          "type": "string"
+                        },
+                        "cropped": {
+                          "const": false
+                        },
+                        "viewSequence": {
+                          "type": "integer"
+                        },
+                        "knownOriginalVPeerDifference": {
+                          "const": true
+                        },
+                        "currentSuccessorSubjectAuthorOrPeerJudgmentsRead": {
+                          "const": false
+                        },
+                        "observationDe": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  },
+                  "findingsDe": {
+                    "type": "string"
+                  },
+                  "decisions": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "V",
+                      "D",
+                      "P",
+                      "nativeRender"
+                    ],
+                    "properties": {
+                      "V": {
+                        "type": "string"
+                      },
+                      "D": {
+                        "type": "string"
+                      },
+                      "P": {
+                        "type": "string"
+                      },
+                      "nativeRender": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "allCurrentKEEP": {
+      "type": "integer"
+    },
+    "originalHistoricalOwnKEEP8Unchanged": {
+      "const": true
+    },
+    "originalHistoricalPeerFCCDisagreementPreserved": {
+      "const": true
+    },
+    "humanApproval": {
+      "const": false
+    },
+    "activeWrites": {
+      "const": false
+    },
+    "strictNetGain": {
+      "type": "integer"
+    }
+  }
+}

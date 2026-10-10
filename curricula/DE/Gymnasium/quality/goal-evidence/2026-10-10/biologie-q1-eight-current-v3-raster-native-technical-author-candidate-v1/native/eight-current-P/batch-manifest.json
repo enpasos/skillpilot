@@ -1,0 +1,61 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-eight-current-v3-raster-native-20261010-v1",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/eight-current-P.prerequisite-safe.batch.config.json",
+  "configDigest": "sha256:8a090bf16234243fbc26478a868b611739e1e3f0ace2ed75665a88b37bec2f49",
+  "goalIds": [
+    "7975e43b-1187-5ae3-a1ab-282fc3c0548c",
+    "3f969b9e-68b0-5442-b8e4-df4e35e83087",
+    "ed4cf96f-e1c9-5784-97f2-8279ff5a31b1",
+    "52ecc72a-a65b-53a0-851e-86defe769fa7",
+    "3312b2bb-bc90-5c0f-a859-4b4f9b8ff117",
+    "99544494-1825-5fc1-8e23-56f0df808e56",
+    "3b55b551-cd7f-53fb-9bf0-fd8149ac1222",
+    "666fb1d1-09a8-55a3-acd5-efe311cac8b0"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 394,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/native/after394-current-P.normal.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-current-v3-raster-native-technical-author-candidate-v1/candidate/whole479-with-eight-author-raster-links.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:eec0e2a2ae94e3921d308345b3ecf64041681f272ad038d235fd915025366cee"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:648b6e57d0ec326b9115632316a61b29624e6ebec55cc73e7f9f47a5ab9f4dc4",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:734c2cef8f4a61d92c86f8f93573229ec45e4c8cdbeb2c8c2c8d84417f128f37",
+    "reviewInputFingerprint": "sha256:ac7203f1da01deadc551c8ac1359fb53326d8230a9d08f656c12a1f0a3c05b21",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-eight-current-v3-raster-native-20261010-v1-a",
+        "campaignDigest": "sha256:12b05169fbd338b988b668c65a7af4c387e33b2317758c5eee5ab061c209fc75",
+        "roundId": "biologie-eight-current-v3-raster-native-20261010-v1-first-pass-a",
+        "independenceGroupId": "biologie-eight-current-v3-raster-native-20261010-v1-independent-a",
+        "batchId": "biologie-eight-current-v3-raster-native-20261010-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:ec2184c9ed95f64543d98d210f6cb33eac17de80a50b42ffa00bb943b248cb0f"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-eight-current-v3-raster-native-20261010-v1-b",
+        "campaignDigest": "sha256:299c7760a9225aa66638f546c5b7bde54ee8d420f9a7bcab474f2105d56e6e3e",
+        "roundId": "biologie-eight-current-v3-raster-native-20261010-v1-first-pass-b",
+        "independenceGroupId": "biologie-eight-current-v3-raster-native-20261010-v1-independent-b",
+        "batchId": "biologie-eight-current-v3-raster-native-20261010-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:a2493777478c47446027b3785a8fd1552cc51ee7e29626dcb80d87853954c446"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

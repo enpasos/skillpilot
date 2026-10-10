@@ -1,0 +1,15 @@
+node:fs:448
+    return binding.readFileUtf8(path, stringToFlags(options.flag));
+                   ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-P26-native-author/isolated-normal-capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-q3-three-BW-practical-terminal-route-author-candidate-v1/inputs/protected-177-baseline-current-and-strict-ID-sets.exact.json'
+    at readFileSync (node:fs:448:20)
+    at read (/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-P26-native-author/normal_prepare_current_frame.mts:11:35)
+    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-P26-native-author/normal_prepare_current_frame.mts:31:12) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-P26-native-author/isolated-normal-capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-q3-three-BW-practical-terminal-route-author-candidate-v1/inputs/protected-177-baseline-current-and-strict-ID-sets.exact.json'
+}
+
+Node.js v20.20.2

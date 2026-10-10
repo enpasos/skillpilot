@@ -1,0 +1,32 @@
+# Bildrekonstruktionsprompt: SNP-Analysen interpretieren
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `1320b82e-e438-59ff-9d53-ecc9fbacae58`
+- Titel: SNP-Analysen interpretieren
+- Beschreibung: Die lernende Person kann SNP-Analysen für Diagnostik/Variation auswerten.
+
+## Generator
+
+- Provider: OpenAI image generation via Codex built-in image_gen
+- Quellbild: `1320b82e-e438-59ff-9d53-ecc9fbacae58.png`
+
+## Zweck
+
+Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptbasis für spätere Korrekturen. Er ist keine fachliche Freigabe und ersetzt nicht den Review.
+
+## Prompt
+
+```text
+Use case: scientific-educational
+Asset type: inactive SkillPilot German Gymnasium biology learning-goal visualization; orientation only, not a task, answer sheet, medical advice or approval.
+Style/medium: friendly clear abstract comic illustration, rounded shapes, thick smooth dark navy outlines, warm ivory background, teal/light-blue/purple with restrained orange accents, softly shaded flat raster artwork. Match the existing approachable biology image landscape. No photorealism, no sterile technical redesign.
+Composition/framing: one wide landscape PNG near 16:9, about 1600 x 900 pixels or a close native size such as 1672 x 941. Main motifs large with ample whitespace. Essential structure and the few exact large labels must remain visible when the entire image is reduced to 360 px width and 680 px width. Use bold rounded German lettering; no small captions, no title sentence, no watermark, logo, branding or technical ID.
+Constraints: use only the listed exact text. Do not invent medical diagnoses, universal risk predictions, deterministic genes-to-disease statements, real patient records, clinical instructions, or promises of certainty. Create an original illustration, no copied source-page graphics.
+Primary request: show a single DNA-base-position variation, the need to check measurement quality, and the distinction between a marker and a diagnosis.
+Subject: two generously sized rounded panels side by side. In the left panel, two horizontal single-strand schematic sequence strips have exactly five distinct rounded base tiles each, aligned in five columns. Upper sequence exactly A C G T A; lower sequence exactly A C A T A. Only the THIRD aligned column differs; frame both third tiles with a common orange highlight. These are two compared sequence variants, not complementary strands of one duplex. No connecting base-pair rungs and no helix. Exact large heading "Eine Base" above this panel.
+Right panel: a friendly oversized magnifying glass over two-color measurement dots, and a separate large question mark, representing inspection rather than automatic success. Exact large heading "Qualität?". Do not assign diploid genotypes or claim these few illustrative dots prove an assay threshold or population grouping.
+Across the lower margin, one very large clearly legible statement "Marker ≠ Diagnose". The not-equal symbol must be unmistakable. Keep the same orientation in both compared strips, no reverse-complement error. The variation has no disease icon, no positive-diagnosis stamp and no green acceptance tick.
+Text (verbatim): "Eine Base", "A", "C", "G", "T", "A" in the upper strip; "A", "C", "A", "T", "A" in the lower strip; "Qualität?", "Marker ≠ Diagnose".
+Avoid: six-column strips, mismatches at other columns, calling the two comparison strips complementary DNA, genotyping a person from a single strip, disease prediction or testing advice.
+```

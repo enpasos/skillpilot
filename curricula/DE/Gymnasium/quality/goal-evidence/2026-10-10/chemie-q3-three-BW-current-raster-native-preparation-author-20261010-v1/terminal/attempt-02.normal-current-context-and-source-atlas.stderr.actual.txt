@@ -1,0 +1,18 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: Source-supported atlas goal count changed
+
+185 !== 186
+
+    at buildGoalBookSourceAtlasInputs (/home/enpasos/projects/skillpilot/app/scripts/goalBookSourceAtlasInputs.ts:326:10)
+    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-q3-three-BW-current-raster-native-preparation-author-20261010-v1/prepare_current_contexts.author.mts:90:14) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: 185,
+  expected: 186,
+  operator: 'strictEqual'
+}
+
+Node.js v20.20.2

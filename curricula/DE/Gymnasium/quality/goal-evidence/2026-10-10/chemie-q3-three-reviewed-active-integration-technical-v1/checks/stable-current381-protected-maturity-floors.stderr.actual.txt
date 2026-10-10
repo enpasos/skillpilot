@@ -1,0 +1,22 @@
+/home/enpasos/projects/skillpilot/app/scripts/checkCurriculumMaturityFloors.ts:107
+  throw new Error([
+        ^
+
+
+Error: Curriculum maturity regression detected by canonical-gymnasium-maturity-floors-v1.
+Chemie [c436b994-8f44-5134-b9f8-0c9f5d6a5ba0]: current M2 is below protected floor M6
+  canonical-chemistry-sek2 (M0) CQR-101 fail: Effective route coverage has missing route segments.
+    - No effective terminal path: Konzentrationsbedingte Gleichgewichtsverschiebungen experimentell untersuchen [d2d735de-bede-5310-8aeb-8bb7562c7b75]
+    - No effective terminal path: Ein reversibles Austauschmodell zur Gleichgewichtseinstellung durchführen [a0f6ba09-f072-5887-a797-fa369453c62a]
+    - No effective terminal path: Leerlaufspannungen galvanischer Zellen experimentell ermitteln [7b39fa19-fec3-575e-9324-a3226b703358]
+  canonical-chemistry-sek2 (M0) CQR-102 warn: Direct atomic route coverage still needs migration work.
+    - No direct atomic terminal path: Konzentrationsbedingte Gleichgewichtsverschiebungen experimentell untersuchen [d2d735de-bede-5310-8aeb-8bb7562c7b75]
+    - No direct atomic terminal path: Ein reversibles Austauschmodell zur Gleichgewichtseinstellung durchführen [a0f6ba09-f072-5887-a797-fa369453c62a]
+    - No direct atomic terminal path: Leerlaufspannungen galvanischer Zellen experimentell ermitteln [7b39fa19-fec3-575e-9324-a3226b703358]
+Restore the fachliche quality gates or obtain an explicit product-owner decision before changing the protected floor.
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/checkCurriculumMaturityFloors.ts:107:9)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v20.20.2

@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-05-22",
+  "description": "Reviewed Gymnasium G8/G9 duration-model decisions for SkillPilot source-extraction scopes. The policy is about source/projection semantics; canonical goals remain shared.",
+  "decisions": [
+    {
+      "subject": "Chemie",
+      "jurisdiction": "DE-BW",
+      "stage": "SekI",
+      "sourceExtractionPath": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_CHEMIE_SEKI_BP2016_V2.source-extraction.json",
+      "status": "reviewed",
+      "decision": "duration-neutral-projection",
+      "durationModels": [
+        "G8",
+        "G9"
+      ],
+      "learnerFacingProjection": "duration-neutral-composition-view",
+      "rationale": "The local source uses shared Sek-I grade bands; no separate G8/G9 learner-facing projection is required for this source."
+    }
+  ]
+}

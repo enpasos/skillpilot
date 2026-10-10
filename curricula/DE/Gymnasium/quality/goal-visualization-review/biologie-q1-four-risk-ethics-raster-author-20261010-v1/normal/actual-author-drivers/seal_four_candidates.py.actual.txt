@@ -1,0 +1,89 @@
+import hashlib
+import importlib.util
+import json
+import shutil
+from datetime import datetime,timezone
+from pathlib import Path
+import jsonschema
+
+ROOT=Path('/home/enpasos/projects/skillpilot')
+OUT=ROOT/'curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-q1-four-risk-ethics-raster-author-20261010-v1'
+IDS=['40334348-bd84-5ed9-b76b-5f5b80c2d145','1320b82e-e438-59ff-9d53-ecc9fbacae58','ee686aee-43d3-50df-a60a-e47ac845586c','031fd4f3-906e-5919-ae7f-a2b0b9220604']
+
+def bind(p):
+    b=p.read_bytes();return {'path':p.relative_to(ROOT).as_posix(),'sha256':hashlib.sha256(b).hexdigest(),'bytes':len(b)}
+
+def write(p,obj):
+    assert not p.exists(),p;p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(obj,ensure_ascii=False,indent=2)+'\n')
+
+base=json.loads((OUT/'inputs/eight-current-neutral-entry.exact.json').read_text())
+before=json.loads((OUT/'inputs/whole479-current-input.exact.json').read_text())
+after=json.loads((OUT/'candidate/whole479-with-twelve-raster-links.inactive.json').read_text())
+assert len(before['goals'])==479==len(after['goals'])
+changes=[]
+for old,new in zip(before['goals'],after['goals']):
+    if old!=new:
+        stripped=dict(new);links=stripped.pop('resourceLinks');assert stripped==old and old['id'] in IDS and len(links)==1;changes.append(old['id'])
+assert set(changes)==set(IDS)
+for input in json.loads((OUT/'input-and-author-boundaries.json').read_text())['inputBindings']:
+    src=ROOT/input['sourceBinding']['path'];assert bind(src)==input['sourceBinding'];assert (ROOT/input['portableExactCopy']['path']).read_bytes()==src.read_bytes()
+
+# Preserve the executable author recipe as technical text; normal helpers remain unmodified.
+recipes=OUT/'normal/actual-author-drivers'
+recipes.mkdir()
+for name in ['prepare_four_prompts.py','run_normal_prepare.py','persist_four_outputs.py','finish_four_candidates.py','seal_four_candidates.py']:
+    shutil.copyfile(ROOT/'tmp/bio-four-risk-author-20261010-v1'/name,recipes/(name+'.actual.txt'))
+
+entry={
+ 'schemaVersion':1,'contentLicense':'CC-BY-4.0 for own didactic content; Apache-2.0 for technical recipes; third-party source rights remain separate',
+ 'role':'Neutral inactive four current risk/ethics raster author candidates; generation and author sight checks are not independent visual approval',
+ 'createdAt':datetime.now(timezone.utc).isoformat(),'goalIds':IDS,
+ 'neutralWholeFirstInputs':{
+    'whole479CurrentInput':bind(OUT/'inputs/whole479-current-input.exact.json'),
+    'whole479CandidateWithTwelveRasterLinks':bind(OUT/'candidate/whole479-with-twelve-raster-links.inactive.json'),
+    'whole12ProfilesAnd24Cases':bind(OUT/'inputs/whole12-current-V3-materials.exact.json'),
+    'wholeFourGoalBodies':bind(OUT/'inputs/four-whole-goal-bodies.exact.json'),
+    'wholeFourProfilesAndEightCases':bind(OUT/'inputs/four-whole-profiles-and-eight-cases.exact.json'),
+    'existingWholeScopeFrameNeutralEntry':bind(OUT/'inputs/eight-current-neutral-entry.exact.json'),
+    'primaryBoundedScienceBackground':bind(OUT/'sources/primary-background-facts.actual.json'),
+ },
+ 'images': [{'goalId':gid,'originalPNG':bind(OUT/'assets/biologie'/gid/(gid+'.png')),'phone360PNG':bind(OUT/'assets/biologie'/gid/'inspection-360.png'),'desktop680PNG':bind(OUT/'assets/biologie'/gid/'inspection-680.png'),'exactProviderPrompt':bind(OUT/'assets/biologie'/gid/'actual-provider-prompt.txt')} for gid in IDS],
+ 'readOnlyAfterOwnFIRST':{'authorVisualObservations':[bind(OUT/'assets/biologie'/gid/'author-visual-inspection.json') for gid in IDS],'authorGenerationProvenance':[bind(OUT/'assets/biologie'/gid/'actual-generation.provenance.json') for gid in IDS],'normalTechnicalChecks':bind(OUT/'normal/four-normal-import-and-preservation.actual.json')},
+ 'reviewInstructions':'Independently view each actual original PNG and proportional 360/680 PNGs against its complete unchanged goal and complete profile/two bilingual cases before reading author visual observations. Count the population dots; check SNP alignment and one-base mismatch, environmental arrows, pedigree topology/uncertainty and counseling autonomy/method scopes. Reuse unchanged valid science evidence where exact rather than restarting historical reviews. Record actual independent findings and resolution. This image-only candidate supplies no current native four-page D/P review or source/course clearance.',
+ 'preservedHolds':base['preservedHolds'],
+ 'whole479GoalBodiesChangedOnlyByFourNewImageLinks':True,'existingEightRasterCandidatesChanged':False,
+ 'normalPrepareExitZeroCount':4,'normalImportExitZeroCount':4,'normalIsolatedFourAssetCheckExitCode':0,
+ 'currentNativeFourPageReviewsCompleted':0,'independentVisualReviewsCompleted':0,'aiApproved':False,
+ 'newScientificCompletions':0,'restoredActiveBindings':0,'strictNetGain':0,
+ 'wholeSourceCourseApproval':False,'humanApproval':False,'humanTrial':False,'actualLearnerEvidence':False,
+ 'activeWrites':False,'historicalWrites':False,'temporaryExecutionCapsuleOutsideCurricula':True,
+}
+write(OUT/'neutral-four-risk-ethics-raster.independent-review.entry.json',entry)
+(OUT/'README.md').write_text('''# Four inactive biology risk and counseling raster candidates
+
+Four previously unillustrated current goals now have original Codex built-in imagegen PNG candidates, each 1672 × 941 pixels. The actual original and proportional 360/680 views were inspected by their author. Four normal prepares, four normal imports and the isolated four-asset checker passed without changing any normal helper or validator.
+
+Begin independent review with `neutral-four-risk-ethics-raster.independent-review.entry.json`. Inspect the complete goal, profile and cases and actual images before author observations. All 479 goal bodies, 12 profiles and 24 cases are retained; only four candidate resource links are added. The earlier eight image candidates, title correction, sources, partners and unresolved source/course/Hox/legal boundaries remain separate.
+
+This package is inactive. No independent V approval, native four-page D/P review, human release, human trial, clinical recommendation or actual learner performance is claimed. Strict gain, new scientific closures and restored active bindings are all zero. Two independent visual reviews and affected ordinary evidence/page/context checks remain required before integration.
+
+Own didactic material: CC-BY-4.0. Technical recipes: Apache-2.0. Linked primary sources retain their own rights; the package contains bounded paraphrases and no copied source illustrations or full source pages.
+''')
+
+spec=importlib.util.spec_from_file_location('normal_validate_schemas',ROOT/'scripts/validate_schemas.py');normal=importlib.util.module_from_spec(spec);spec.loader.exec_module(normal)
+json_files=sorted(OUT.rglob('*.json'));jsonl_files=sorted(OUT.rglob('*.jsonl'))
+schema=json.loads((ROOT/'docs/landscape-runtime.schema.json').read_text());parsed=[];schema_checked=[]
+for p in json_files:
+    d=json.loads(p.read_text());parsed.append(bind(p))
+    assert normal.validate_file(str(p.relative_to(ROOT)),schema)
+    if p.name in {'whole479-current-input.exact.json','whole479-with-twelve-raster-links.inactive.json'}:
+        jsonschema.validate(d,schema);schema_checked.append(bind(p))
+for p in jsonl_files:
+    for line in p.read_text().splitlines():
+        if line.strip():json.loads(line)
+symlink_errors=normal.curriculum_symlink_errors(ROOT);assert symlink_errors==[],symlink_errors
+write(OUT/'normal/json-schema-and-portability.actual.json',{'schemaVersion':'1.0','role':'actual-full-own-package-JSON-and-normal-portability-check','checkedAt':datetime.now(timezone.utc).isoformat(),'normalValidatorBinding':bind(ROOT/'scripts/validate_schemas.py'),'fullOwnJsonFilesParsed':len(json_files),'fullOwnJsonlFilesParsed':len(jsonl_files),'normalValidateFileAllOwnFilesPassed':True,'explicitWhole479RuntimeSchemaChecks':schema_checked,'curriculumSymlinkErrors':symlink_errors,'allSourceInputBindingsStillExact':True,'noAbsoluteOrTemporaryCurriculumSymlinks':True,'historyAndOtherEightCandidateAssetsUntouched':True,'activeWrites':False,'independentVisualApproval':False})
+files=[p for p in sorted(OUT.rglob('*')) if p.is_file()]
+freeze={'schemaVersion':1,'role':'additive-four-risk-ethics-raster-author-final-freeze','createdAt':datetime.now(timezone.utc).isoformat(),'neutralEntryBinding':bind(OUT/'neutral-four-risk-ethics-raster.independent-review.entry.json'),'bindings':[bind(p) for p in files],'inputBindings':json.loads((OUT/'input-and-author-boundaries.json').read_text())['inputBindings'],'newScientificCompletions':0,'restoredActiveBindings':0,'strictNetGain':0,'independentVisualApproval':False,'humanApproval':False,'activeWrites':False,'historicalWrites':False}
+write(OUT/'author.final.freeze.json',freeze)
+print(json.dumps({'neutralEntry':freeze['neutralEntryBinding'],'finalFreeze':bind(OUT/'author.final.freeze.json'),'frozenFiles':len(files),'explicitWhole479Schemas':'PASS','normalCurriculumSymlinkErrors':symlink_errors,'strictGain':0,'activeWrites':False},ensure_ascii=False,indent=2))

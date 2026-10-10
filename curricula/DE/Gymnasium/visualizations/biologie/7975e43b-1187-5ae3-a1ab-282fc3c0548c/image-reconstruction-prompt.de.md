@@ -1,0 +1,26 @@
+# Bildrekonstruktionsprompt: Genaktivität steuern
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `7975e43b-1187-5ae3-a1ab-282fc3c0548c`
+- Titel: Genaktivität steuern
+- Beschreibung: Die lernende Person kann Beispiele für Genregulation (Operon, epigenetische Mechanismen) erläutern.
+
+## Generator
+
+- Provider: OpenAI image generation via Codex built-in image_gen
+- Quellbild: `7975e43b-1187-5ae3-a1ab-282fc3c0548c.png`
+
+## Zweck
+
+Dieser Alternativprompt beschreibt das erzeugte Bild als eigenständige Promptbasis für spätere Korrekturen. Er ist keine fachliche Freigabe und ersetzt nicht den Review.
+
+## Prompt
+
+```text
+Create one polished educational raster illustration in a friendly abstract comic style. Landscape 16:9, native canvas 1672 by 941 pixels or approximately 1600 by 900 pixels. Warm ivory background, generous whitespace, rounded shapes, thick dark navy outlines, restrained teal, blue and warm orange palette, soft flat shading. This is an orientation image about the stated biological mechanism, not an exercise, solved task or evidence of mastery. Make the essential structure clear on a 360-pixel-wide phone and on a 680-pixel-wide computer. Use very large simple shapes and only the few explicitly requested short labels in a bold highly legible font. No small captions, numbers, data tables, titles about audience or school, watermarks, logos, product interfaces, medical diagnosis, formulae or photorealistic effects. Keep all arrowheads and inhibition end bars unmistakable at their actual target. Do not add decorative connections. No border cropping. Scientific clarity is more important than decoration.
+
+Subject: orient the learner to gene activity control through a generic bacterial operon and a distinct chromatin mechanism. Two spacious side-by-side cards with headings "Operon" and "Chromatin". Operon card: one teal free DNA line contains an orange short operator block followed by three similarly sized turquoise gene blocks connected along the SAME DNA. A large dark-blue repressor fits onto the operator, blocking a pale polymerase icon approaching the gene blocks; label that blue object "Repressor". Do not add lactose, lac names, a complete lac-operon mechanism, or RNA output through the bound repressor. Chromatin card: teal DNA wraps around two orange histone spools, with the second spool repositioned away from a central accessible DNA region, shown by one broad movement arrow; a blue activator is near that open region. Only additional label "Zugang" points to the accessible central DNA. No methylation on/off control, no mutation, no universal automatic expression claim. Distinguish the unwrapped bacterial DNA from the nucleosome-based chromatin. An orange tag or cell border is unnecessary. This is a simple mechanism overview, not an assessment solution.
+
+The final image has a single orange inhibitory line from the blue operator-bound repressor to the pale polymerase, with one T end-bar at polymerase and no bar at the source. It has no grey dashed arrow onward to the genes. Preserve this unambiguous blocking convention.
+```

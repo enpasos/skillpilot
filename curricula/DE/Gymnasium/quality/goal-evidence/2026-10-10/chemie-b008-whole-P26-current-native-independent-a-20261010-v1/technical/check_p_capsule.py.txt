@@ -1,0 +1,96 @@
+import datetime
+import hashlib
+import json
+import pathlib
+import shutil
+import subprocess
+
+root = pathlib.Path.cwd()
+capsule = root / 'tmp/chemie-P26-native-independent-a-p-contract-capsule'
+assert not capsule.exists(), 'Keep previous attempts intact'
+capsule.mkdir(parents=True)
+base = pathlib.Path('curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10')
+src = base / 'chemie-b008-current-whole-P26-native-continuation-author-20261010-v1'
+out = root / base / 'chemie-b008-whole-P26-current-native-independent-a-20261010-v1'
+
+def now():
+    return datetime.datetime.now(datetime.timezone.utc).isoformat()
+
+def digest(data):
+    return 'sha256:' + hashlib.sha256(data).hexdigest()
+
+copies = []
+def copy_exact(source, target):
+    source_path = root / source
+    target_path = capsule / target
+    data = source_path.read_bytes()
+    target_path.parent.mkdir(parents=True, exist_ok=True)
+    assert not target_path.exists()
+    target_path.write_bytes(data)
+    assert target_path.read_bytes() == data
+    copies.append({'originalPath': str(source), 'capsuleRelativePath': str(target), 'sha256': digest(data), 'bytes': len(data), 'actualByteExact': True})
+
+for name in [
+    'app/package.json',
+    'app/scripts/positiveGoalEvidenceReview.ts',
+    'app/scripts/positiveGoalEvidenceProfileModel.ts',
+    'app/scripts/goalEvidenceProfileModel.ts',
+    'app/src/landscapeTypes.ts',
+    'contracts/goal-evidence/v2/goal-evidence-profile.schema.json',
+    'contracts/goal-evidence/v2/goal-evidence-review-config.schema.json',
+    'contracts/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json'
+]:
+    copy_exact(pathlib.Path(name), pathlib.Path(name))
+copied_inputs = set()
+for size in (19, 7):
+    config_path = src / f'positive/current-P{size}-exact-body-normal-reuse.config.json'
+    config = json.loads((root / config_path).read_text())
+    for name in [str(config_path), config['landscapePath'], config['semanticKindLedgerPath'], config['reviewCriteriaPath'], config['reviewPath']]:
+        if name not in copied_inputs:
+            copy_exact(pathlib.Path(name), pathlib.Path(name))
+            copied_inputs.add(name)
+asset_map_path = src / 'assets/whole26-exact-current-raster-origin-and-binding-map.json'
+asset_map = json.loads((root / asset_map_path).read_text())
+for row in asset_map['rows']:
+    source_binding = row['wholeExactSelectedRaster']['ownExactCopy']
+    asset_target = pathlib.Path('app/public') / row['selectedResourceLink']['url'].lstrip('/')
+    assert digest((root / source_binding['path']).read_bytes()) == source_binding['sha256']
+    copy_exact(pathlib.Path(source_binding['path']), asset_target)
+# Dependency resolution only in transient tmp, outside all committed curricula.
+(capsule / 'app/node_modules').symlink_to(root / 'app/node_modules', target_is_directory=True)
+
+outcomes = []
+for size in (19, 7):
+    config_path = src / f'positive/current-P{size}-exact-body-normal-reuse.config.json'
+    command = [str(root / 'app/node_modules/.bin/tsx'), str(capsule / 'app/scripts/positiveGoalEvidenceReview.ts'), '--config=' + str(config_path), '--mode=check']
+    started = now()
+    run = subprocess.run(command, cwd=capsule, capture_output=True)
+    finished = now()
+    terminal = out / 'terminal'
+    terminal.mkdir(exist_ok=True)
+    stream_refs = {}
+    for stream in ('stdout', 'stderr'):
+        data = getattr(run, stream)
+        target = terminal / f'normal-P{size}-exact-reuse-isolated-capsule.{stream}.actual.txt'
+        assert not target.exists()
+        target.write_bytes(data)
+        stream_refs[stream] = {'path': str(target.relative_to(root)), 'sha256': digest(data), 'bytes': len(data)}
+    outcomes.append({'normalChecker': 'app/scripts/positiveGoalEvidenceReview.ts', 'exactOriginalCheckerAndDependenciesCopied': True, 'command': command, 'cwd': str(capsule), 'startedAt': started, 'completedAt': finished, 'exitCode': run.returncode, 'streams': stream_refs, 'configuredGoals': size, 'candidateStatusesUnchanged': 'needs_human_review / ai_candidate / E1 / G1', 'freshScientificApprovals': 0})
+    print(f'P{size} actual capsule exit {run.returncode}')
+    print(run.stdout.decode())
+    print(run.stderr.decode())
+receipt = {
+    'schemaVersion': 1, 'role': 'Normal P19/P7 candidate contract checks with exact undeployed current raster bytes in isolated transient tmp root; no ordinary checker replacement or source modification',
+    'createdAt': now(), 'transientCapsuleDiagnosticOnly': str(capsule),
+    'actualCopiedFiles': copies, 'actualTerminalOutcomes': outcomes,
+    'sourceHolding': '355/398; 24 new children plus 19 prior omissions; 496 unresolved scope bindings remain unapproved',
+    'protected12CurrentContextRestoration': False,
+    'directRootMissingRasterFailuresRetainedAsFailures': True,
+    'imagesGeneratedOrEdited': False,
+    'activeCanonicalRegistryMappingPublicRuntimeWrites': [],
+    'humanApproval': False, 'newStrictClosures': 0, 'restoredStrictBindings': 0, 'netStrictGain': 0
+}
+receipt_path = out / 'checks/normal-P19-P7-exact-reuse-isolated-capsule.actual.json'
+assert not receipt_path.exists()
+receipt_path.write_text(json.dumps(receipt, ensure_ascii=False, indent=2) + '\n')
+assert all(row['exitCode'] == 0 for row in outcomes), 'Normal checker errors remain actionable failures; never adjust proof hashes to hide them'

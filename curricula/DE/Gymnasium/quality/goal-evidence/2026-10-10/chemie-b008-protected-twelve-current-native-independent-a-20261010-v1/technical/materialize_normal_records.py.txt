@@ -1,0 +1,139 @@
+import datetime
+import hashlib
+import json
+from pathlib import Path
+
+SRC = Path('curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-protected-twelve-current-native-technical-author-20261010-v1')
+OUT = SRC.parent / 'chemie-b008-protected-twelve-current-native-independent-a-20261010-v1'
+
+def digest(data):
+    return 'sha256:' + hashlib.sha256(data).hexdigest()
+
+def write(path, value):
+    assert not path.exists(), path
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n')
+
+def bind(path):
+    return {'path': str(path), 'sha256': digest(path.read_bytes()), 'bytes': path.stat().st_size}
+
+first_path = OUT / 'FIRST.current-protected12-context-native.verdict.json'
+first = json.loads(first_path.read_text())
+assert digest(first_path.read_bytes()) == 'sha256:16496f758d42f3e03961b6c1610289dfd4cc718f430f18111b9b17d42d083e44'
+normal = SRC / 'native/current-12/round-a'
+campaign = json.loads((normal / 'description-review-campaign.json').read_text())
+inputs = json.loads((normal / 'description-review-input.json').read_text())
+bundle = json.loads((normal / 'review-bundle-manifest.json').read_text())
+assert len(campaign['batches']) == 1
+batch = campaign['batches'][0]
+verdicts = {row['goalId']: row for row in first['records']}
+input_by_id = {row['goalId']: row for row in inputs['goals']}
+run_id = 'chemie-b008-protected-twelve-current-native-independent-a-20261010-v1-native12'
+parameters = {
+    'schemaVersion': 1,
+    'role': 'Actual independent targeted changed-context FIRST-A12 and later normal record serialization; unchanged valid historical evidence retained without reapproval',
+    'provider': 'OpenAI',
+    'model': 'Codex active model; exact deployed model version not exposed',
+    'exactModelVersion': 'unknown; not exposed to this agent',
+    'temperature': 'unknown; not exposed to this agent',
+    'seed': 'unknown; not exposed to this agent',
+    'topP': 'unknown; not exposed to this agent',
+    'reviewTaskIdentity': '/root/chemistry_p26_current_native_independent_a',
+    'currentAuthorOrPeerScienceJudgmentsReadBeforeFirst': False,
+    'historicalValidEvidenceAndBeforeAfterContextRead': 'Task-authorized targeted continuation: whole exact earlier P/A/M records, case bodies, resolution/source/image bindings and actual changed before/after contexts were read. This is explicit historical reuse, not a claim of blindness to all historical reviews. Current author/peer science judgments were not read before own FIRST.',
+    'blindToCurrentOtherRuns': True,
+    'sealedFirstVerdictDigest': digest(first_path.read_bytes()),
+    'humanApproval': False, 'actualLearnerPerformance': False,
+    'generationFingerprintMeaning': 'Digest of this truthful known/unknown parameter and independence declaration; not proof of unknown sampling settings.'
+}
+parameters_path = OUT / 'review-runtime-parameters.actual.json'
+write(parameters_path, parameters)
+records = []
+for goal_id in batch['goalIds']:
+    row = input_by_id[goal_id]
+    verdict = verdicts[goal_id]
+    assert row['goalFingerprint'] == verdict['goalFingerprint']
+    assert row['pageFingerprint'] == verdict['pageFingerprint']
+    evidence = {k: v for k, v in verdict['understandingEvidence'].items() if not k.startswith('transferCheck')}
+    evidence['transferExpectationDe'] = verdict['understandingEvidence']['transferCheckDe']
+    evidence['transferExpectationEn'] = verdict['understandingEvidence']['transferCheckEn']
+    record = {
+        '$schema': 'https://skillpilot.com/schemas/goal-description-review/v1/goal-description-review-record.schema.json',
+        'schemaVersion': 1,
+        'recordId': run_id + '.' + goal_id,
+        'runId': run_id,
+        'campaignId': campaign['campaignId'], 'roundId': campaign['roundId'],
+        'bundleFingerprint': campaign['bundleFingerprint'], 'bookDigest': campaign['bookDigest'],
+        'goalId': goal_id, 'goalFingerprint': row['goalFingerprint'], 'pageFingerprint': row['pageFingerprint'],
+        **{k: row[k] for k in ['currentTitleDe', 'currentTitleEn', 'currentDescriptionDe', 'currentDescriptionEn']},
+        'decision': verdict['decision'], 'understandingEvidence': evidence,
+        'rationale': verdict['goalSpecificReason'] + ' Eigene aktuelle Kontextprüfung des unveränderten P-v2-Profils und beider vollständigen Fälle: ' + verdict['positiveUnderstandingContextReview']['ownActualReason'] + ' Die vollständigen aktuellen DE/EN-Zielobjekte und die tatsächlich gerenderten ganzen HTML-/PDF-Seiten wurden unabhängig geprüft. Alte gültige P/A/M- und Rasterurteile bleiben unverändert; die betroffenen Voraussetzungsketten wurden fachlich geprüft und nicht nur per Hash angepasst. KEEP betrifft die aktuelle Beschreibung und konkrete Seitendarstellung. Source355/398 mit24 neuen+19 bisherigen offenen Zielen sowie496 ungeklärten Scope-Bindungen bleibt HOLD; keine gesamte Kurs-/Quellenfreigabe. AI-Kandidat, keine Human-Prüfung/Freigabe/Erprobung, keine Lernendenleistung oder strenge Fortschrittszählung.',
+        'evidenceProfileContract': 'positive-understanding-evidence-v2',
+        'evidenceProfileRecommendation': verdict['profileRecommendation'],
+        'recordStatus': 'candidate', 'reviewAuthority': 'ai_candidate',
+    }
+    records.append(record)
+results = OUT / 'results'
+results.mkdir(exist_ok=False)
+records_path = results / (batch['batchId'] + '.records.jsonl')
+records_path.write_text(''.join(json.dumps(r, ensure_ascii=False, separators=(',', ':')) + '\n' for r in records))
+run = {
+    '$schema': 'https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json',
+    'schemaVersion': 1, 'runId': run_id,
+    'campaignId': campaign['campaignId'], 'roundId': campaign['roundId'],
+    'batchId': batch['batchId'], 'batchInputFingerprint': batch['batchInputFingerprint'],
+    'bundleFingerprint': campaign['bundleFingerprint'], 'bookDigest': campaign['bookDigest'],
+    'provider': 'OpenAI', 'model': parameters['model'],
+    'modelVersion': 'Exact deployed version not exposed; unknown',
+    'role': 'subject_reviewer', 'promptFamilyId': 'goal-description-understanding-evidence-review-v2',
+    'promptFingerprint': campaign['promptFingerprint'], 'criteriaFingerprint': campaign['criteriaFingerprint'],
+    'generationParametersFingerprint': digest(parameters_path.read_bytes()),
+    'independenceGroupId': campaign['independenceGroupId'], 'blindToOtherRuns': True,
+    'goalIds': batch['goalIds'],
+    'inputArtifacts': [{'role': a['role'], 'digest': a['digest']} for a in bundle['artifacts']] + [{'role': 'description_review_batch_input_jsonl', 'digest': batch['batchInputFingerprint']}],
+    'startedAt': json.loads((OUT / 'FIRST.neutral-entry-exact-bindings.actual.json').read_text())['checkedAt'],
+    'completedAt': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+    'status': 'completed', 'outputDigest': digest(records_path.read_bytes()),
+    'toolchainVersion': 'skillpilot-normal-native-review-v1',
+}
+run_path = results / (batch['batchId'] + '.run.json')
+write(run_path, run)
+write(OUT / 'normal-A12-record-materialization.actual.json', {
+    'schemaVersion': 1, 'ownImmutableFirst': bind(first_path),
+    'normalInput': bind(normal / 'description-review-input.json'),
+    'normalCampaign': bind(normal / 'description-review-campaign.json'),
+    'normalBundle': bind(normal / 'review-bundle-manifest.json'),
+    'parameters': bind(parameters_path), 'normalRecords': bind(records_path), 'normalRun': bind(run_path),
+    'goalCount': 12, 'decisions': {'keep': 12},
+    'serializationOnlyTransferFieldNames': 'Own FIRST transferCheckDe/En values copied literally into the normal schema transferExpectationDe/En fields; semantic content and decisions unchanged.',
+    'historicalProfileScienceReapproval': False, 'sourceAdoptionHold': True,
+    'strictGain': 0, 'activeWrites': [], 'humanApproval': False,
+})
+
+# Normal bounded P scopes retain the full immutable input files above. Only
+# records in the actually reviewed twelve-goal context scope are selected.
+scope = set(batch['goalIds'])
+selected = []
+for original_path in sorted((SRC / 'positive').glob('*.normal.config.json')):
+    config = json.loads(original_path.read_text())
+    selected_ids = [goal_id for goal_id in config['scope']['goalIds'] if goal_id in scope]
+    if not selected_ids:
+        continue
+    source_records_path = Path(config['reviewPath'])
+    all_records = [json.loads(line) for line in source_records_path.read_text().splitlines() if line.strip()]
+    own_records = [r for r in all_records if r['goalId'] in selected_ids]
+    assert {r['goalId'] for r in own_records} == set(selected_ids)
+    positive = OUT / 'positive'
+    positive.mkdir(exist_ok=True)
+    selected_records_path = positive / original_path.name.replace('.normal.config.json', '.records.jsonl')
+    assert not selected_records_path.exists()
+    selected_records_path.write_text(''.join(json.dumps(r, ensure_ascii=False, separators=(',', ':')) + '\n' for r in own_records))
+    own_config_path = positive / original_path.name
+    original_scope = config['scope']
+    config['scope'] = {'label': 'Actual protected12 targeted current-context retention; exact historical v2 science and statuses preserved; no Human claim', 'goalIds': selected_ids}
+    config['reviewPath'] = str(selected_records_path)
+    write(own_config_path, config)
+    selected.append({'originalWholeNormalConfig': bind(original_path), 'originalWholeInputRecords': bind(source_records_path), 'wholeOriginalScopeRetainedInAuthorPackage': original_scope, 'targetedNormalConfig': bind(own_config_path), 'targetedInputRecords': bind(selected_records_path), 'selectedGoalIds': selected_ids, 'selectedWholeRecordObjectsUnchanged': True})
+assert sum(len(x['selectedGoalIds']) for x in selected) == 12
+write(OUT / 'positive/actual-targeted-normal-P12-scope-selection.json', {'schemaVersion': 1, 'role': 'Ordinary normal config scopes restricted to the actual twelve reviewed contexts; no checker/schema exception and no old record-body mutation', 'wholeOriginalInputsRemainUnchanged': True, 'goalCount': 12, 'normalConfigCount': len(selected), 'rows': selected, 'ownScientificCurrentContextFirst': bind(first_path), 'sourceAdoptionHold': True, 'humanApproval': False, 'activeWrites': [], 'strictGain': 0})
+print(json.dumps({'normalA12Records': len(records), 'normalP12ScopedConfigs': len(selected), 'firstUnchanged': digest(first_path.read_bytes())}))
