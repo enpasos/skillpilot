@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-10-08T13:21:43.539Z
+Generated: 2026-10-10T08:09:51.697Z
 
 Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
@@ -16,11 +16,11 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 480 |
-| Atomare Ziele im Visualisierungs-Scope | 378 |
-| Ziele mit primaerem Visualisierungslink | 361 |
+| Alle Ziele in der Landschaft | 487 |
+| Atomare Ziele im Visualisierungs-Scope | 381 |
+| Ziele mit primaerem Visualisierungslink | 364 |
 | Coverage | 95.5% |
-| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 378 |
+| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 381 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
@@ -30,7 +30,7 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 0 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 8 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 11 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
@@ -42,7 +42,7 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | `ai-reviewed` | 5 |
 | `candidate` | 4 |
 | `pending-independent-actual-review` | 6 |
-| `pilot` | 221 |
+| `pilot` | 224 |
 
 ## Ledger Decisions
 
@@ -131,7 +131,10 @@ Keine Eintraege.
 | `ca216bc6-5205-5b46-abbd-fd5628e4ca5b` | Acidität begründen | `pilot` | `deferred_provider_limitation` |
 | `3d6699ae-ebbd-5a55-8798-b809a9d74f0a` | Ascorbinsäure quantitativ bestimmen (LK) | `pending-independent-actual-review` | - |
 | `27e4fe9b-4796-579b-8f7d-06c65fb600c0` | Blei-Akkumulator beschreiben | `pilot` | `deferred_provider_limitation` |
+| `a0f6ba09-f072-5887-a797-fa369453c62a` | Ein reversibles Austauschmodell zur Gleichgewichtseinstellung durchführen | `pilot` | - |
 | `950c73c6-4ed1-488a-9267-1142e95e0055` | Einfache Ionengitter modellieren und Stoffeigenschaften erklären | `pilot` | `deferred_provider_limitation` |
+| `d2d735de-bede-5310-8aeb-8bb7562c7b75` | Konzentrationsbedingte Gleichgewichtsverschiebungen experimentell untersuchen | `pilot` | - |
+| `7b39fa19-fec3-575e-9324-a3226b703358` | Leerlaufspannungen galvanischer Zellen experimentell ermitteln | `pilot` | - |
 | `10f657bc-6044-5fbb-ba8e-6e5ba55d2bc5` | Redoxbasierte Konservierung | `pending-independent-actual-review` | `deferred_provider_limitation` |
 | `6765f741-42a6-55c5-a218-81b883b1f5ae` | Seifen herstellen | `pilot` | `deferred_provider_limitation` |
 | `0d59b62e-d3f9-5969-b961-0c5e26316c04` | Verwendung von Parabenen beurteilen (LK) | `pending-independent-actual-review` | - |
