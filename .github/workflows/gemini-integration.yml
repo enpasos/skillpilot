@@ -157,6 +157,19 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v6
+        with:
+          # Keep every frontend source and exact import-package input. The
+          # curriculum raster library is checked by the main curriculum jobs;
+          # fetching it here can exhaust the job before these tests even start.
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /*
+            !/*/
+            /.github/actions/ubuntu-apt/
+            /ai/gemini/coach/
+            /app/
+            !/app/public/assets/goal-visualizations/
+            /scripts/
       - uses: actions/setup-node@v6
         with:
           node-version: '22.22.0'
