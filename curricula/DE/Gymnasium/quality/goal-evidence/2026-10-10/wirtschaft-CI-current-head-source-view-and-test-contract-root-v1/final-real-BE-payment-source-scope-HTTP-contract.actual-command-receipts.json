@@ -1,0 +1,39 @@
+{
+  "phase": "final-real-BE-payment-source-scope-HTTP-contract",
+  "results": [
+    {
+      "name": "prepare:runtime-assets",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "prepare:runtime-assets"
+      ],
+      "cwd": ".",
+      "startedAt": "2026-10-10T21:58:53.553805+00:00",
+      "elapsedSeconds": 12.38,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-CI-current-head-source-view-and-test-contract-root-v1/final-real-BE-payment-source-scope-HTTP-contract.01.prepare-runtime-assets.raw.txt",
+      "rawOutputSha256": "eba2356a488541dc5325aa94bb4e5e2c9d591ce84464bfa9c743a153d62aab3f"
+    },
+    {
+      "name": "actual-final-current-source-scope-http-contract",
+      "command": [
+        "./gradlew",
+        "test",
+        "--no-daemon",
+        "--tests",
+        "com.skillpilot.backend.controller.LearnerControllerIntegrationTest.learnerStateUsesReviewedAdditionalM6SekIDurationProjectionForAtomicTotals"
+      ],
+      "cwd": "backend",
+      "startedAt": "2026-10-10T21:59:05.933863+00:00",
+      "elapsedSeconds": 253.104,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-CI-current-head-source-view-and-test-contract-root-v1/final-real-BE-payment-source-scope-HTTP-contract.02.actual-final-current-source-scope-http-contract.raw.txt",
+      "rawOutputSha256": "7b6ca9e4f999a4f2a17e398b1ea61b1d7c45a56fb240d29e806046c6a73978a9"
+    }
+  ],
+  "phaseComplete": true,
+  "remoteGitHubCIClaim": false
+}

@@ -1,0 +1,17 @@
+
+> skillpilot@0.0.0 check:gymnasium-duration-offerings
+> tsx scripts/generateGymnasiumDurationOfferings.ts --check
+
+/home/enpasos/projects/skillpilot/app/scripts/generateGymnasiumDurationOfferings.ts:328
+    throw new Error('Generated Gymnasium duration offerings are out of date. Run npm run generate:gymnasium-duration-offerings.')
+          ^
+
+
+Error: Generated Gymnasium duration offerings are out of date. Run npm run generate:gymnasium-duration-offerings.
+    at main (/home/enpasos/projects/skillpilot/app/scripts/generateGymnasiumDurationOfferings.ts:328:11)
+    at <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/generateGymnasiumDurationOfferings.ts:339:1)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+
+Node.js v20.20.2

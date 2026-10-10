@@ -1,0 +1,1040 @@
+{
+  "status": "INDEPENDENT_READONLY_ACTIVE_DIFF_AND_QUALIFIED_SCOPE_BINDINGS_CHECK",
+  "at": "2026-10-10T22:08:54.836918+00:00",
+  "HEAD": "05024fa45bdf95f2ea5da54d961bfee727600f23",
+  "checks": [
+    {
+      "check": "Tracked active diff stays Economics/two-test/native-report/docs scope",
+      "pass": true,
+      "evidence": {
+        "modifiedPaths": [
+          "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+          "backend/src/test/java/com/skillpilot/backend/landscape/GoalMappingRepositoryFixtureTest.java",
+          "curricula/DE/Gymnasium/composition-views/wirtschaft/de-bb-gym-economics-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/wirtschaft/de-bw-gym-economics-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/wirtschaft/de-by-gym-economics-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/wirtschaft/de-by-gym-economics-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/wirtschaft/de-hb-gym-economics-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/wirtschaft/de-he-gym-economics-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/wirtschaft/de-he-gym-economics-lk.view.json",
+          "curricula/DE/Gymnasium/composition-views/wirtschaft/de-hh-gym-economics-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/wirtschaft/de-mv-gym-economics-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/wirtschaft/de-ni-gym-economics-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/wirtschaft/de-nw-gym-economics-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/wirtschaft/de-rp-gym-economics-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sh-gym-economics-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sl-gym-economics-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sn-gym-economics-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/wirtschaft/de-st-gym-economics-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/wirtschaft/de-th-gym-economics-gk.view.json",
+          "curricula/DE/Gymnasium/composition-views/wirtschaft/de-th-gym-economics-lk.view.json",
+          "curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_WAT_SEKI_RLP_2015.source-extraction.json",
+          "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_wat_lower_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+          "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_economics_upper_secondary_source_extraction_to_canonical_economics.review.json",
+          "curricula/DE/Gymnasium/mapping/DE-HE/upper-secondary/hessen_economics_upper_secondary_to_canonical_economics.json",
+          "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_powi_lower_secondary_economics_source_extraction_to_canonical_wirtschaft.review.json",
+          "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+          "docs/qa-ci/math-physics-deep-understanding-resumption-review-2026-09-05.md",
+          "docs/qa-ci/status/README.md",
+          "docs/qa-ci/status/curriculum-quality-status.json",
+          "docs/qa-ci/status/curriculum-quality-status.md",
+          "docs/qa-ci/status/curriculum-source-coverage-audit.json",
+          "docs/qa-ci/status/curriculum-source-coverage-audit.md",
+          "docs/qa-ci/status/gymnasium-duration-model-readiness.md",
+          "docs/qa-ci/wirtschaft-m6-ci-checkpoint-2026-10-10.md"
+        ],
+        "outsideAllowed": []
+      }
+    },
+    {
+      "check": "Remote8f bytes exact curricula/DE/Gymnasium/quality/deep-understanding-rollout/README.md",
+      "pass": true,
+      "evidence": {
+        "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/README.md",
+        "sha256": "33004236bc616af57c51d97f526023d165328f2475d2e1c85b891f3ba384276a",
+        "remote": "8f84cbf3df941a5e7aacd9c592ce923f0645c667"
+      }
+    },
+    {
+      "check": "Remote8f bytes exact curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.json",
+      "pass": true,
+      "evidence": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.json",
+        "sha256": "90bcced30e8599fb5c39f68eecdbb904238271747ecfe8bf4eb54df995db73d9",
+        "remote": "8f84cbf3df941a5e7aacd9c592ce923f0645c667"
+      }
+    },
+    {
+      "check": "Remote8f bytes exact curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.md",
+      "pass": true,
+      "evidence": {
+        "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.md",
+        "sha256": "3be3121e6529376c7c87ca9111efe7aa321a6c12dadf1ea5e64b879ef78bd5dc",
+        "remote": "8f84cbf3df941a5e7aacd9c592ce923f0645c667"
+      }
+    },
+    {
+      "check": "Registry exactly Economics M48 pointer only",
+      "pass": true,
+      "evidence": {
+        "beforeMemoryPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/memory346.only-final702-sem-pointer.activation-ready.config.json",
+        "afterMemoryPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-CI-current-head-source-view-and-test-contract-root-v1/memory346.only-thirteen-qualified-SekI-visibility-scopes48.ROOT-QUALIFIED.config.json"
+      }
+    },
+    {
+      "check": "CAN SEM A346 M346 Card67 and all47 P profile/config files byte exact HEAD",
+      "pass": true,
+      "evidence": [
+        {
+          "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+          "sha256": "db2c839c959c51a3e9f00a5a9c59398f568305b7439ad19674408ab7f54c42b7",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/semantic702.346-whole-decisions-exact-nine-qualified-practice.AUTHOR-INERT.json",
+          "sha256": "6dd1b33d0a4500810d99e87a01001ba313a5102881b3123d89e6acc355fa7c61",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/atomicity346.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "244d09dc3bbc035f66339e8bced3dbedf260a637171407a88aa9400f540c2d96",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-BB-selected-personal-three-real-atoms-six-cases-local-practice-AUTHOR-INERT-v1/atomicity/atomicity346.343-raw-exact-three-qualified-native.review.jsonl",
+          "sha256": "f2cb8a9d34d7e64f14a350660182e505f87d088d0c0af47b8e183d86185e47e3",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-BB-selected-personal-three-real-atoms-six-cases-local-practice-AUTHOR-INERT-v1/memory/memory346.343-raw-exact-three-qualified-native.review.jsonl",
+          "sha256": "f6b0bf7d7526fae525564552227981c3411d9f807150a4724b212a2f3cbdcf5b",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-M6-fieldwise-composition-AUTHOR-INERT-v1/memory/cards67.63-raw-exact-four-qualified-native.review.jsonl",
+          "sha256": "6571c11538feee1e691bcad4c92ad0f6a553ed21faa54232a28c1fd7a8240355",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-01.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "c268fe636c74e26ba87e800368d4800ac3285d0bde8788d3b308bb6705f4ab20",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/01.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "e89b11d468f0b5e230a07426d9655ff1b010e8fc1b0b660a23ecba3a81ab3d25",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-02.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "46a8ce83ec8e69903d30c3e41d6b41619c54d0ca4dbee7a2bdf9d71aa18acc5b",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/02.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "ca64846f777f2c78dd35e24a42e0c314b5e5f20f2ac83b2153d93b35296847e5",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-03.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "42493c7cd829031b1ac809832601690c1cfb8047c875938a2fd2b91452521023",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/03.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "ac976dbc9c9bc0fa04c50abe6f66aa5131e305b96f2ade0d094f8d11ace73468",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-04.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "9c4a527689715bd3d8208c5b89ad8fa0b1279c6b19ae05814645d83e1b56dd89",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/04.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "48f9c0570e87d594bd7f8e61672d46d8640373e1e2421b39b476608d540dfbb8",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-05.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "3eb84556f3bb443b1aab28aede29e15bd6df8871c5ffc28529e03cf6b2cddb68",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/05.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "c0c7432a2c759d015f82f6319cc5628df67e221c36bf2fd68e25434c7f14468d",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-06.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "174ea9a63d4b5e76616191cda3fc761f2a3340c79543da9329a0854aaaee3c4b",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/06.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "fbe8abd3a2518342c3b92daa32e47407181348099841666acb3153239d4fa146",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-07.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "fa20eb75b9ee13361e96041566317856b4d9bd1bfa85892a98890388390e3561",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/07.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "085d00c8cd604941f916b244b2bdb52d2f9548576a89a1a4845bf263ae6b0d0d",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-08.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "1957150ef3d5751d4618c5863e18602a407c9d01c2fd74df7150301341b136ac",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/08.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "1603d241c4aeea14d0e54ebf29435a2b0702ce40508d13b7453d987723ec5447",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-09.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "a5251e6617009a8e4bf6792305a11c453b68a7f30248e0311bcab3087d76c9bf",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/09.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "f48fe73dbd42511830804b538a368b6f7dd1e0af1ee6531aa17054fd482e2419",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-10.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "f4e910bae399200d3588c6318527f206dc5eb7899578b2f5fa194ba2349beb4f",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/10.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "92034e60098da3b66a0467e33dad57305a02b5731af07a00c96856507dc20e07",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-11.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "0f8a87313f30f97ddcb26efbe9219fd7f57b25fdcbe263265ffc6989e2fb32cd",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/11.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "2b1275beb59329b6eabe98e1a505b7ced9646a9f14d661113b5f1895b422567a",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-12.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "a741358b1975fc7b2ad669edd2d57ba13d568a5b1a89df2b5f93416a58637b98",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/12.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "aad2ac78c1ce7596ba4e908b8ec8d91cfbfafa03b10be065a32c16cdcb36b92d",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-13.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "b03262e29d6ad88802eae915b0e2aef05a76c2ffe3e35d7deb189d7d96b2e551",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/13.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "a69e3fae188a57a981eadb75c5ce702ae7f920cd49f46e75c0bd9863802316db",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-14.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "08576e5e7779b267ffc9b3b6000b101ede60bd3cd76b900489bdc98645ec84ea",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/14.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "3f07328db8428e9648b469726b29bcf74fe186c2b198777d9a8f953ac38c4517",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-15.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "7764183d5251974e8881e67a8056d199550ec261d668f4e94ac4f340d4011939",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/15.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "27fe989e0084d3893688a13f70dc3fd672d94148a9adcb35d159ce9a704cfadc",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-16.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "65431b88e6b827c993adf023434ac03b0ab78cec398ea2dbcc5cb321cf6ac8a9",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/16.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "c3d07b6b5dfcaf6de936cf18f5f895dc84ff2fe51341a38c5c192ed047c3bc0b",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-17.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "266fead73742348afd5bde50a53a06fad5260ca03d1f08e7f9bacd3d4c97d6aa",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/17.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "810dc98cd7a5a4a78bdb85d273da781412e24e3e411375a54ac58e984342469a",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-18.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "86a8ab169d4d89ff2d7f63ab3b0e356b1d350e4e2d0a8d47c53b42635fccad31",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/18.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "acbe4ea9d237cafbb7bec986304c350d8e1d3b3a475ddb79ffa0ad4b077cd6c1",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-19.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "d03da8556b347273e3a0423342050026a894d314cc306b2609847d626525b452",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/19.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "29209a127873e8d016c78bc850a0edb3dabd61824375db18db712d0d966dbaa3",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-20.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "05db50d001a27d41f920bd02f1dd3e8f498d0ae71afecaddfd7e9b5542701aaa",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/20.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "f17892075819f4a03fbf7f1e6515031476847de593222e01ec5532a7bd7272ce",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-21.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "66c064d51d6832103bb7179e72d9d6028293d19b303298c7d903899ddcc22aa0",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/21.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "d538d82f186b3c5a540e3e555a8d787b47bbdb5b981c2e39eaf4d55b5acbf072",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-22.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "e55e16b7de9062672e9c8d0aef9c4fc9cbc3e03e34ead4fefc9ef5f7b98a7d97",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/22.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "1b608260e2ee286e5f315cdf349e4c9eca374686c5cc9175cdd44d02e95b5dc4",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-23.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "f272335468d7fb1b6b4262c92f7f8cdf8b788b76e11307107db9dfa2e89f4387",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/23.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "ef4a80bf4b0fec779682b55b13249015a794d39d581cca51480249f27620d8d8",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-24.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "785f5f589a253abe46d2f471bdef39679fe242a4314683ddbb09c1e81119b9d7",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/24.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "ba0ca31d83ce4ed7aa3457eb5aa48fabe7530d163f38be03cb34b88882cf59e8",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-25.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "489b8589986564592dca2bd03f81bb0a18e05587d4fc063cb0e41199110ff0a4",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/25.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "ed63f11bb42a6e06fad20bd3a2c91927401a2a74d72cc7b7e3ce8f73e38cd6bd",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-26.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "4296876cf46b55e12a9ef5dc3b561c463b2538f8e6fdb1bb302ed0f99bff31f6",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/26.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "0ab929ecec1cd965f799e546a8befd840a263eaa67eb109450c8f5cc1d0d0032",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-27.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "50a374422708c4fca4ce94976eb1d4a59ee174b7ad8d7790b9aeed72f270cb52",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/27.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "69430314c15c0f0c4ee227c3262e5e2a7fefe118d3906ad8f86dc112c5eaa4c5",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-28.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "b1363a4f39526c0ee0369c229eea31e49533ed7d0d984459aee63ca124ce6129",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/28.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "3253b21e32e0ff1b4da9fdf64dad1f2bccd82ed1b75c3bf22e9a5821e63283b6",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-29.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "5d8a6591af22e2d1d387492ee87a2c14039af1c0cb1f2a37122cf725930ca990",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/29.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "7416754f8edb647adda9ec7cc7adcf54735c5217b60d2ab8562fad4358efea9b",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-30.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "2d75c55355d6f00247f7b3a0da043950d44e84c31ffa29ff2029b69d11c960cc",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/30.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "6ca54651f12df8e8b8cc77ea11340c99413aaa878e2fd8726cde30016f08b7df",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-31.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "b172941e11edb71f115ef5406465cb4b3a2a49cd45ae5a9ef85258128f55302f",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/31.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "58774ce213f7816ce3e8b1b88b566807d4708d15c30552d22c9660be45673a8b",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-32.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "21f3fd57b61268e9a2dd72c26af2158ca6cd68074007598e67a3d6b9110661c3",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/32.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "86951f386aa49b79c50e98eaffb3d39e4db03c087ef17907c58f23cda807c7f8",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-33.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "0b55b0450631f9e0776e87979cf9fb5ad4f4b5738c82b050fd60a715a2de9568",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/33.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "46ab6123a923685c2ed07bbf25810ad9a88a1365e086f59415d155aa0a0dcbc9",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-34.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "c5620d20676fd4dc8247cc0cdc3712eef7d5c4e6767b9b8f292604d8b3369ebb",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/34.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "2115417549824188a2d27c03c02f40acc38e54ff7cf933383ec4d0b2f6328cc2",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-35.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "65dcb5a06ec9786aaee9ef986f20c9440597f2b434c1c8272a20e8613e9a4179",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/35.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "f43074c51d729bef548d72813c52e6206453959e0a3c237f0a8a1d929d92e206",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-36.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "d141462a9149057c048d736233ff27cd1d044a2ef987962d78c08452cc7bdc06",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/36.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "38f5a223ce0b5f43945bff56091b78477cd799dfcda8087be8ea6cfc091bba87",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-37.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "f292cb3e6a6c84fed8e69ef96d7e438afb87c2d7765e03157d6142780e6a25fb",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/37.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "42af29198a4c95b8480b367c3c26f683e1728e0b5b5a1e3f786806a7252ef147",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-38.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "45eba67cf830b7c7a21e110aa80667de2483656fcb64d805eae67e8002b548c9",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/38.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "031c8f4092fe7cf9a9c101d56f867a835411423e682bf8b13686355fac909dc5",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-39.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "e127b0d815a95d8db70bcea8756b52c21240f31a84b29de1d79f05153e2da699",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/39.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "e65a6f32a54b810772b6dfe0546cc642a3e49ecfe0e8706fea8bcab81cd43c86",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-40.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "d32f11353d4bd1d352c37768f5635d31e1fd8913e42f74836b76d4245e154048",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/40.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "6a2109be42aa1cf695125f213679874fe447427ae997e7cef05b9cea1756df14",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-41.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "a6298c1e023295974ae440a67f985a6dde893c9da45a872beec7c8d07495c79d",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/41.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "41dcf240c7d50d6793a6880bc0cfad2d01f786681949c89db264e2b1c3bca069",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-42.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "c705c8d1449866ad0bdc31afbd8e1fd45f56277f3a2dac5c048396394e201836",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/42.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "916456a607a5fde34a288456eba34c26920e3053d332fa067cee3aa031c7ab3a",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-43.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "3e0b36b49e37eea11f91af56e0c3a62f4c2c4fbafafc0e019cd67958b9e6aef8",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/43.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "5ef54b539bbc11e2f97c4af25a76c068fe3e615e88f2f9194cf323eb63a82c5d",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-44.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "4f8a037dd9fa618313b338088995fd19fe309dc1dcd0abe00daa9199fbc7d624",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common343-native-P44-Book343-binding-technical-a-INERT-v1/positive/44.whole-qualified-common689-native-bindings.INERT.jsonl",
+          "sha256": "50de3d179020e463acee6716597efdcd460ddfe7ca23c61680923aba6d7425f8",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-native-SEM-346-exact-and48-pointer-followers-AUTHOR-INERT-c-v1/positive-45.only-final702-sem-pointer.activation-ready.config.json",
+          "sha256": "53293fce3f740ba71fd7acc2a8f562b1f8b4364b1fad1246dc26a9edfe9e79cf",
+          "wholeBytesExactHEAD": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common346-native-P45-Book346-binding-technical-a-INERT-v1/positive/45.three-whole-qualified-personal-current-native-bindings.INERT.jsonl",
+          "sha256": "b4e3ed97e61dcfd643ab57cf634399663813f86cd6b422c9411053c219b500c5",
+          "wholeBytesExactHEAD": true
+        }
+      ]
+    },
+    {
+      "check": "Memory config only reportPath and13 append visibility scopes",
+      "pass": true,
+      "evidence": {
+        "oldScopes": 35,
+        "newScopes": 48
+      }
+    },
+    {
+      "check": "All16 Root14 active files including13 SekI Views exact qualifiedAfter",
+      "pass": true,
+      "evidence": [
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-bb-gym-seki-economics.view.json",
+          "actualSHA256": "91b0cfb72dfb33c39243f9a6615be08a6be6aef85b5e074e17e37f1aabd117a5",
+          "qualifiedSHA256": "91b0cfb72dfb33c39243f9a6615be08a6be6aef85b5e074e17e37f1aabd117a5",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-be-gym-seki-economics.view.json",
+          "actualSHA256": "5ee888da2dc3d271556cb8050ae053ea61482c7ff2e74c5205aa7713104cee11",
+          "qualifiedSHA256": "5ee888da2dc3d271556cb8050ae053ea61482c7ff2e74c5205aa7713104cee11",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-bw-gym-seki-economics.view.json",
+          "actualSHA256": "b4f73593b94bbf4888e063d92163a42af6969339c20dd2f48273d63f21197197",
+          "qualifiedSHA256": "b4f73593b94bbf4888e063d92163a42af6969339c20dd2f48273d63f21197197",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-by-gym-seki-economics.view.json",
+          "actualSHA256": "7194fc4c35d504f7adcaef6d44e7b495cf915d3cade1f65c2a9c4ae9f1bae62c",
+          "qualifiedSHA256": "7194fc4c35d504f7adcaef6d44e7b495cf915d3cade1f65c2a9c4ae9f1bae62c",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-he-gym-seki-economics.view.json",
+          "actualSHA256": "28572ef5ee7b9abf3a64e0f0cf6a523e025ab32bcef75271fc535072f7efb6a7",
+          "qualifiedSHA256": "28572ef5ee7b9abf3a64e0f0cf6a523e025ab32bcef75271fc535072f7efb6a7",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-hh-gym-seki-economics.view.json",
+          "actualSHA256": "8b6a9255bb821ea1fab48208a797460af5b0df5aa3867d9440a241e07dac05ad",
+          "qualifiedSHA256": "8b6a9255bb821ea1fab48208a797460af5b0df5aa3867d9440a241e07dac05ad",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-mv-gym-seki-economics.view.json",
+          "actualSHA256": "dfd06f67d2fa1312fa29bf03d0005bf1e5b8663be19f562366528a4e415e0201",
+          "qualifiedSHA256": "dfd06f67d2fa1312fa29bf03d0005bf1e5b8663be19f562366528a4e415e0201",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-ni-gym-seki-economics.view.json",
+          "actualSHA256": "6674be4ed4f25f7a24707735072dc0f5e80c407d7af578f5829a7448cac3583d",
+          "qualifiedSHA256": "6674be4ed4f25f7a24707735072dc0f5e80c407d7af578f5829a7448cac3583d",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-nw-gym-seki-economics.view.json",
+          "actualSHA256": "7a291cd48623809c98cda9fca2d7783f7b49833a31a88f206caaf547e51c8e7c",
+          "qualifiedSHA256": "7a291cd48623809c98cda9fca2d7783f7b49833a31a88f206caaf547e51c8e7c",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sh-gym-seki-economics.view.json",
+          "actualSHA256": "c483bcabd870b4f843d397b89fd7130cf8818742b03963a90486bab3034ff794",
+          "qualifiedSHA256": "c483bcabd870b4f843d397b89fd7130cf8818742b03963a90486bab3034ff794",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sn-gym-seki-economics.view.json",
+          "actualSHA256": "e07c7048f8796ca9027ad5611eba367253f89cb6411ff79da07d2d219bde4272",
+          "qualifiedSHA256": "e07c7048f8796ca9027ad5611eba367253f89cb6411ff79da07d2d219bde4272",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-st-gym-seki-economics.view.json",
+          "actualSHA256": "946476de6bc8ebc91fc2a1bc7f2d8345eb8231d2fa296e34ac0d8b93a7dc9dcd",
+          "qualifiedSHA256": "946476de6bc8ebc91fc2a1bc7f2d8345eb8231d2fa296e34ac0d8b93a7dc9dcd",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-th-gym-seki-economics.view.json",
+          "actualSHA256": "3d5df2947541b2e8961c1d9fda2dcf178eece3a660a53105cc4c6d79d320cfd1",
+          "qualifiedSHA256": "3d5df2947541b2e8961c1d9fda2dcf178eece3a660a53105cc4c6d79d320cfd1",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/input/BE/lower-secondary/source-extraction/DE_BE_WAT_SEKI_RLP_2015.source-extraction.json",
+          "actualSHA256": "0c8e4f41f2b9506d3025d8d1b8a1e6a532229659e607d0fb68525de13d5493b7",
+          "qualifiedSHA256": "0c8e4f41f2b9506d3025d8d1b8a1e6a532229659e607d0fb68525de13d5493b7",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_wat_lower_secondary_source_extraction_to_canonical_wirtschaft.review.json",
+          "actualSHA256": "bf903bb12255ef0576acd0762be5c87a3d3c4653cd15841b64aec5c73eb0c112",
+          "qualifiedSHA256": "bf903bb12255ef0576acd0762be5c87a3d3c4653cd15841b64aec5c73eb0c112",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/mapping/DE-NI/lower-secondary/ni_powi_lower_secondary_economics_source_extraction_to_canonical_wirtschaft.review.json",
+          "actualSHA256": "0fa729d56833a6bffbb87b9358feea8fe8becdb640a65bbf0642fc31d1803329",
+          "qualifiedSHA256": "0fa729d56833a6bffbb87b9358feea8fe8becdb640a65bbf0642fc31d1803329",
+          "exact": true
+        }
+      ]
+    },
+    {
+      "check": "18 GK/LK metadata followers exact qualified copies",
+      "pass": true,
+      "evidence": [
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-bb-gym-economics-gk.view.json",
+          "actualSHA256": "27d1518847b0abf99610fc645907e59fad2b146870ca84879f2b0775bb662c4e",
+          "qualifiedSHA256": "27d1518847b0abf99610fc645907e59fad2b146870ca84879f2b0775bb662c4e",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-bw-gym-economics-gk.view.json",
+          "actualSHA256": "1206c89da8a1903cced8d9dac9a98a9b2da41131bc8fe0ffcdd229eef983137e",
+          "qualifiedSHA256": "1206c89da8a1903cced8d9dac9a98a9b2da41131bc8fe0ffcdd229eef983137e",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-by-gym-economics-gk.view.json",
+          "actualSHA256": "530e0fc4d60448bc8e48a460c0a1170502630ad9721bac94ddefc6f2c58cc337",
+          "qualifiedSHA256": "530e0fc4d60448bc8e48a460c0a1170502630ad9721bac94ddefc6f2c58cc337",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-by-gym-economics-lk.view.json",
+          "actualSHA256": "2fdfd22aa858690f90cb7dd9272c5715478a2cd77ed0d3270fe5c8faa78f820d",
+          "qualifiedSHA256": "2fdfd22aa858690f90cb7dd9272c5715478a2cd77ed0d3270fe5c8faa78f820d",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-hb-gym-economics-gk.view.json",
+          "actualSHA256": "a8b873f91a6fc2af886e84cdba0f4b08b567718655bd0239a70631a0c9d8fa5c",
+          "qualifiedSHA256": "a8b873f91a6fc2af886e84cdba0f4b08b567718655bd0239a70631a0c9d8fa5c",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-he-gym-economics-gk.view.json",
+          "actualSHA256": "d0ec201e82fc8c90a9c715c61c0b0836b33e15aa7aaba192854f21212776678d",
+          "qualifiedSHA256": "d0ec201e82fc8c90a9c715c61c0b0836b33e15aa7aaba192854f21212776678d",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-he-gym-economics-lk.view.json",
+          "actualSHA256": "182441d669d3c78dda72f7385b0e40b4c589abfdb832837f21eb84705149663d",
+          "qualifiedSHA256": "182441d669d3c78dda72f7385b0e40b4c589abfdb832837f21eb84705149663d",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-hh-gym-economics-gk.view.json",
+          "actualSHA256": "d39d47afe18c09c8b5dc11b915284557116d7688ddb1377b885ada9290dd6b0c",
+          "qualifiedSHA256": "d39d47afe18c09c8b5dc11b915284557116d7688ddb1377b885ada9290dd6b0c",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-mv-gym-economics-gk.view.json",
+          "actualSHA256": "1029204df4ba083f1c35745693cc9d437935ae7bd9311fd2f4b7ea22b036e320",
+          "qualifiedSHA256": "1029204df4ba083f1c35745693cc9d437935ae7bd9311fd2f4b7ea22b036e320",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-ni-gym-economics-gk.view.json",
+          "actualSHA256": "4be9802db326c650bcfd45c3b5971d5b81658cea1f41b2948e02a63670bf8c9a",
+          "qualifiedSHA256": "4be9802db326c650bcfd45c3b5971d5b81658cea1f41b2948e02a63670bf8c9a",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-nw-gym-economics-gk.view.json",
+          "actualSHA256": "64b7129ea2329df81c691d677b33d789d0eac1110f9b6f71f0a9eb55671c9587",
+          "qualifiedSHA256": "64b7129ea2329df81c691d677b33d789d0eac1110f9b6f71f0a9eb55671c9587",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-rp-gym-economics-gk.view.json",
+          "actualSHA256": "8a31c663c48c016b503ecbc3ba0d953a3869428d5e27504c6a11083a052b765d",
+          "qualifiedSHA256": "8a31c663c48c016b503ecbc3ba0d953a3869428d5e27504c6a11083a052b765d",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sh-gym-economics-gk.view.json",
+          "actualSHA256": "a48ce7052500d91ed9424ff94c3a8e1425d7081ce44d5a15faf4db3b0b4ab19f",
+          "qualifiedSHA256": "a48ce7052500d91ed9424ff94c3a8e1425d7081ce44d5a15faf4db3b0b4ab19f",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sl-gym-economics-gk.view.json",
+          "actualSHA256": "8d9eb711b2de3a8bf8bed6ea76d88c2dea21eaffd5af9ceef0fbec4c16776401",
+          "qualifiedSHA256": "8d9eb711b2de3a8bf8bed6ea76d88c2dea21eaffd5af9ceef0fbec4c16776401",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sn-gym-economics-gk.view.json",
+          "actualSHA256": "4f8e8d3bd8ccaf5643200c418b7877961cef0622b21c372085ca958522346fe8",
+          "qualifiedSHA256": "4f8e8d3bd8ccaf5643200c418b7877961cef0622b21c372085ca958522346fe8",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-st-gym-economics-gk.view.json",
+          "actualSHA256": "a432fe739cd3ca88298c8cc9d1f7d9aa49d263085e244a2c5241bbe9cf1b953b",
+          "qualifiedSHA256": "a432fe739cd3ca88298c8cc9d1f7d9aa49d263085e244a2c5241bbe9cf1b953b",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-th-gym-economics-gk.view.json",
+          "actualSHA256": "b531df4b33bd358b3470eccd9004d53802d4dceafe30de01f6a10b6065edede8",
+          "qualifiedSHA256": "b531df4b33bd358b3470eccd9004d53802d4dceafe30de01f6a10b6065edede8",
+          "exact": true
+        },
+        {
+          "path": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-th-gym-economics-lk.view.json",
+          "actualSHA256": "4315995bb1dd66d79d34f50638b110fa8563cdc3d85ffe67a1b6b7fc38f50659",
+          "qualifiedSHA256": "4315995bb1dd66d79d34f50638b110fa8563cdc3d85ffe67a1b6b7fc38f50659",
+          "exact": true
+        }
+      ]
+    },
+    {
+      "check": "Only authorized single test method changed learnerStateUsesReviewedAdditionalM6SekIDurationProjectionForAtomicTotals",
+      "pass": true,
+      "evidence": {
+        "path": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+        "method": "learnerStateUsesReviewedAdditionalM6SekIDurationProjectionForAtomicTotals",
+        "sha256": "1a1fdd7b7e8d486be4a70ca13a056923b1527a5acb0e61174417df69d9fb2bfb"
+      }
+    },
+    {
+      "check": "Only authorized single test method changed parsesRepositoryBackedCanonicalEconomicsMappingFixture",
+      "pass": true,
+      "evidence": {
+        "path": "backend/src/test/java/com/skillpilot/backend/landscape/GoalMappingRepositoryFixtureTest.java",
+        "method": "parsesRepositoryBackedCanonicalEconomicsMappingFixture",
+        "sha256": "846ce2e8430798c36bc666303c76dfc9573b86b576a1e75a03f2f8837a0bacb9"
+      }
+    },
+    {
+      "check": "HTTP hard counts14 Economics rows BB79 BE59 and filters preserved",
+      "pass": true,
+      "evidence": {
+        "EconomicsRows": 14
+      }
+    },
+    {
+      "check": "No offering/runtime catalog drop app/src/generated/gymnasiumDurationOfferings.ts",
+      "pass": true,
+      "evidence": {
+        "path": "app/src/generated/gymnasiumDurationOfferings.ts",
+        "sha256": "b0e91aa0220e717b99b3459a953553860b44ae0eaec42843ffe9e643c81e8d43"
+      }
+    },
+    {
+      "check": "No offering/runtime catalog drop app/src/packageConsumer/gymnasiumDurationOfferings.ts",
+      "pass": true,
+      "evidence": {
+        "path": "app/src/packageConsumer/gymnasiumDurationOfferings.ts",
+        "sha256": "fae3953289b3bfd839d9d372b42487e333412b0e1bbd8bd57f7163bd1df32955"
+      }
+    },
+    {
+      "check": "Production/runtime/schema/checker paths unchanged",
+      "pass": true,
+      "evidence": {
+        "command": "git diff --name-only -- app backend/src/main scripts contracts",
+        "changed": false
+      }
+    },
+    {
+      "check": "19 foreign current curriculum records whole exact HEAD",
+      "pass": true,
+      "evidence": {
+        "subjects": [
+          {
+            "subject": "Biologie",
+            "maturity": "M6",
+            "wholeExact": true
+          },
+          {
+            "subject": "Chemie",
+            "maturity": "M6",
+            "wholeExact": true
+          },
+          {
+            "subject": "Chinesisch",
+            "maturity": "M0",
+            "wholeExact": true
+          },
+          {
+            "subject": "Deutsch",
+            "maturity": "M6",
+            "wholeExact": true
+          },
+          {
+            "subject": "Englisch",
+            "maturity": "M0",
+            "wholeExact": true
+          },
+          {
+            "subject": "Französisch",
+            "maturity": "M0",
+            "wholeExact": true
+          },
+          {
+            "subject": "Geschichte",
+            "maturity": "M6",
+            "wholeExact": true
+          },
+          {
+            "subject": "Griechisch",
+            "maturity": "M0",
+            "wholeExact": true
+          },
+          {
+            "subject": "Informatik",
+            "maturity": "M6",
+            "wholeExact": true
+          },
+          {
+            "subject": "Italienisch",
+            "maturity": "M0",
+            "wholeExact": true
+          },
+          {
+            "subject": "Latein",
+            "maturity": "M6",
+            "wholeExact": true
+          },
+          {
+            "subject": "Mathematik",
+            "maturity": "M7",
+            "wholeExact": true
+          },
+          {
+            "subject": "Musik",
+            "maturity": "M0",
+            "wholeExact": true
+          },
+          {
+            "subject": "Physik",
+            "maturity": "M7",
+            "wholeExact": true
+          },
+          {
+            "subject": "Politik und Wirtschaft",
+            "maturity": "M6",
+            "wholeExact": true
+          },
+          {
+            "subject": "Polnisch",
+            "maturity": "M0",
+            "wholeExact": true
+          },
+          {
+            "subject": "Russisch",
+            "maturity": "M0",
+            "wholeExact": true
+          },
+          {
+            "subject": "Spanisch",
+            "maturity": "M0",
+            "wholeExact": true
+          },
+          {
+            "subject": "Tschechisch",
+            "maturity": "M0",
+            "wholeExact": true
+          }
+        ]
+      }
+    },
+    {
+      "check": "Fresh central actual Economics M6/source2136/0 unsupported",
+      "pass": true,
+      "evidence": {
+        "generatedAt": "2026-10-10T22:01:14.366Z",
+        "maturity": "M6",
+        "sourceOriginal": 2136,
+        "sourceFull": 2136,
+        "unsupported": 0,
+        "rules": [
+          {
+            "id": "CQR-001",
+            "status": "pass"
+          },
+          {
+            "id": "CQR-002",
+            "status": "pass"
+          },
+          {
+            "id": "CQR-000",
+            "status": "pass"
+          },
+          {
+            "id": "CQR-003",
+            "status": "pass"
+          },
+          {
+            "id": "CQR-004",
+            "status": "pass"
+          },
+          {
+            "id": "CQR-005",
+            "status": "pass"
+          },
+          {
+            "id": "CQR-301",
+            "status": "pass"
+          },
+          {
+            "id": "CQR-302",
+            "status": "pass"
+          },
+          {
+            "id": "CQR-303",
+            "status": "fail"
+          },
+          {
+            "id": "CQR-401",
+            "status": "pass"
+          },
+          {
+            "id": "CQR-501",
+            "status": "pass"
+          }
+        ]
+      }
+    },
+    {
+      "check": "Lossless portable gzip equals historical whole350MB bytes",
+      "pass": true,
+      "evidence": {
+        "rawPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-CI-current-head-source-view-and-test-contract-root-v1/actual-native35-before-after-ordered-scope-practice-source-quantity-parity.READONLY.json",
+        "rawBytes": 350686722,
+        "gzipPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-CI-current-head-source-view-and-test-contract-root-v1/actual-native35-before-after-ordered-scope-practice-source-quantity-parity.READONLY.json.gz",
+        "gzipBytes": 9337038,
+        "decompressedBytes": 350686722,
+        "decompressedSHA256": "e8018fad3164b3e283a36b75a2c7af9e7046fa3610113b6ef74976c7995b04d5"
+      }
+    },
+    {
+      "check": "350MB raw not tracked/staged in current default index",
+      "pass": true,
+      "evidence": {
+        "rawPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-CI-current-head-source-view-and-test-contract-root-v1/actual-native35-before-after-ordered-scope-practice-source-quantity-parity.READONLY.json",
+        "defaultIndexStageEntries": "",
+        "currentCachedPaths": [],
+        "isolatedTemporaryIndexNotInspected": "Root owns and will supply its final isolated index; this check does not claim any private temporary index contents."
+      }
+    }
+  ],
+  "passed": 19,
+  "failed": 0,
+  "statusCategories": {
+    " M": 34,
+    "??": 52
+  },
+  "activeWrites": 0,
+  "nativeGeneratorOrBackendRuns": 0,
+  "newScientificReviewClaim": false,
+  "newM7DVorHumanApprovalClaim": false,
+  "remoteFinalHeadCIClaim": false,
+  "docsCurrentlyOwnerBeingUpdated": "Economics checkpoint docs are separately owner-authored now; this receipt checks their path scope, not unfinished prose.",
+  "sharedGymnasiumOnlyObservedChange": "Two diagnosticPartialOnlyWarnings counters +1 at jurisdiction rows4/5, all other shared Gymnasium fields exact.",
+  "historicalFulltextOrRawInclusionWarning": "Use explicit allowlist; the350MB raw stays local untracked, gzip9.34MB plus R13 provides lossless evidence."
+}

@@ -1,0 +1,133 @@
+{
+  "sourceGoal": {
+    "id": "be-wat-seki-p6-markt-kreislauf-g01-dfa8e713",
+    "passageId": "be-wat-seki:p6-markt-kreislauf",
+    "topicCode": "P6-MARKT-KREISLAUF",
+    "bulletIndex": 1,
+    "aspectIndex": 1,
+    "title": "BE P6-MARKT-KREISLAUF (1): Rechte und Pflichten aus Rechtsgeschäften im Alltag anwenden.",
+    "description": "Source-Ziel aus Markt, Wirtschaftskreisläufe und politische Rahmenbedingungen: Rechte und Pflichten aus Rechtsgeschäften im Alltag anwenden.",
+    "sourceText": "Rechte und Pflichten aus Rechtsgeschäften im Alltag anwenden.",
+    "sourceSpan": "P6-MARKT-KREISLAUF (1)",
+    "parentBulletText": "Rechte und Pflichten aus Rechtsgeschäften im Alltag anwenden.",
+    "sourceRef": "Rahmenlehrplan Jahrgangsstufen 1-10 Wirtschaft-Arbeit-Technik Berlin-Brandenburg 2015, Markt, Wirtschaftskreisläufe und politische Rahmenbedingungen, S. 29.",
+    "courseLevel": "SekI",
+    "granularity": "officialCompetency",
+    "tags": [
+      "jurisdiction:DE-BE",
+      "subject:Wirtschaft",
+      "stage:SekI",
+      "topic:P6-MARKT-KREISLAUF"
+    ],
+    "rawSourceText": "Rechte und Pflichten aus Rechtsgeschäften im Alltag anwenden.",
+    "rawSourceSpan": "P6-MARKT-KREISLAUF (1)",
+    "rawParentBulletText": "Rechte und Pflichten aus Rechtsgeschäften im Alltag anwenden."
+  },
+  "passage": {
+    "id": "be-wat-seki:p6-markt-kreislauf",
+    "topicCode": "P6-MARKT-KREISLAUF",
+    "title": "Markt, Wirtschaftskreisläufe und politische Rahmenbedingungen",
+    "text": "(1) Rechte und Pflichten aus Rechtsgeschäften im Alltag anwenden.\n(2) Interessen von Anbieterinnen und Anbietern sowie Nachfragenden vergleichen.\n(3) Das ökonomische Prinzip auf Alltagssituationen anwenden.\n(4) Angebot, Nachfrage und Preisbildung erklären und grafisch darstellen.\n(5) Einfache und erweiterte Wirtschaftskreisläufe erklären.\n(6) Grundlagen der Wirtschaftsordnung und die Rolle staatlicher Aktivitäten einordnen.\n(7) Digitalisierung von Märkten und Kaufverhalten analysieren.\n(8) Individuelles Verhalten und politische Rahmenbedingungen in Marktprozessen beurteilen.",
+    "page": 29,
+    "sourcePath": "curricula/DE/Gymnasium/input/BE/lower-secondary/Teil_C_WAT_2015_11_10.pdf",
+    "rawText": "Rechte und Pflichten aus Rechtsgeschäften im Alltag anwenden.\nInteressen von Anbieterinnen und Anbietern sowie Nachfragenden vergleichen.\nDas ökonomische Prinzip auf Alltagssituationen anwenden.\nAngebot, Nachfrage und Preisbildung erklären und grafisch darstellen.\nEinfache und erweiterte Wirtschaftskreisläufe erklären.\nGrundlagen der Wirtschaftsordnung und die Rolle staatlicher Aktivitäten einordnen.\nDigitalisierung von Märkten und Kaufverhalten analysieren.\nIndividuelles Verhalten und politische Rahmenbedingungen in Marktprozessen beurteilen.",
+    "sourceGoalIds": [
+      "be-wat-seki-p6-markt-kreislauf-g01-dfa8e713",
+      "be-wat-seki-p6-markt-kreislauf-g02-47937fae",
+      "be-wat-seki-p6-markt-kreislauf-g03-901cf7dc",
+      "be-wat-seki-p6-markt-kreislauf-g04-7341cb62",
+      "be-wat-seki-p6-markt-kreislauf-g05-1edcfe4a",
+      "be-wat-seki-p6-markt-kreislauf-g06-97cfbc1d",
+      "be-wat-seki-p6-markt-kreislauf-g07-ef98f5c9",
+      "be-wat-seki-p6-markt-kreislauf-g08-28a04135"
+    ]
+  },
+  "pipelineStatus": {
+    "currentStep": "",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliche Berlin-Wirtschaft-Quelle liegt lokal vor",
+            "passed": true,
+            "details": "PDF liegt lokal vor."
+          },
+          {
+            "id": "source-selection-reviewed",
+            "label": "Wirtschaftlich relevante Lehrplanpassagen wurden fachlich abgegrenzt",
+            "passed": true,
+            "details": "48 gültige historische Quellenzeilen und8 Passagen exakt erhalten;1 zusätzliche wirtschaftlich abgegrenzte P12-Facette anhand Original S.28/41 unabhängig von C fachlich qualifiziert. Keine ganze technisch-innovative P12-Deckung."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Aus den ausgewählten Berlin-Passagen wurden Source-Ziele erzeugt",
+            "passed": true,
+            "details": "49 tatsächliche Source-Ziele:48 unveränderte gültige historische und1 neuer unabhängig qualifizierter begrenzter Nachfolger."
+          },
+          {
+            "id": "source-goal-trace-complete",
+            "label": "Jedes Source-Ziel hat Passage, Source-Span und Quellenreferenz",
+            "passed": true,
+            "details": "Unvollständige Source-Ziele: -"
+          },
+          {
+            "id": "p12-source-goal-independently-qualified",
+            "label": "Neue begrenzte P12-SourceGoal unabhängig qualifiziert",
+            "passed": true,
+            "details": "Eine neue begrenzte P12-SourceGoal tatsächlich unabhängig qualifiziert; konkreter Prüfumfang und unveränderte48 Zeilen im gebundenen C-Nachweis erhalten."
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "mapping-2-complete",
+            "label": "MAPPING-2 abgeschlossen",
+            "passed": true,
+            "details": "49 Source-Ziele vorhanden:48 unveränderte gültige historische plus1 unabhängig qualifizierte P12-Facette."
+          },
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-BE/lower-secondary/be_wat_lower_secondary_source_extraction_to_canonical_wirtschaft.review.json"
+          },
+          {
+            "id": "m3-all-source-goals-reviewed",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "49/49 aktuelle Source-Ziele mit gültiger Entscheidung:48 unveränderte Entscheidungen wiederverwendet und1 neue P12-Entscheidung unabhängig qualifiziert. Kein neuer historischer48-Fachreview."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "49/49 aktuelle abgegrenzte Source-Ziele abgedeckt;48 historische Unions exakt erhalten,1 neue begrenzte P12-Union aus0d8 und596 mit2 jeweils partiellen Kanten unabhängig qualifiziert. Keine ganze P12-Deckung."
+          }
+        ]
+      }
+    ]
+  }
+}

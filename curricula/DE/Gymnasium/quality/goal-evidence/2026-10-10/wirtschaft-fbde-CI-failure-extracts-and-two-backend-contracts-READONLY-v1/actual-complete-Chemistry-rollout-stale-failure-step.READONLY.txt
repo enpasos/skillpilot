@@ -1,0 +1,24 @@
+2026-10-10T20:34:56.1023673Z ##[group]Run npm run check:goal-visualization-rollout-coverage
+2026-10-10T20:34:56.1024106Z [36;1mnpm run check:goal-visualization-rollout-coverage[0m
+2026-10-10T20:34:56.1024698Z [36;1mnpm run check:goal-visualization-rollout-coverage:physik[0m
+2026-10-10T20:34:56.1025095Z [36;1mnpm run check:goal-visualization-rollout-coverage:chemie[0m
+2026-10-10T20:34:56.1025474Z [36;1mnpm run check:goal-visualization-qa-coverage-parity[0m
+2026-10-10T20:34:56.1083480Z shell: /usr/bin/bash -e {0}
+2026-10-10T20:34:56.1083635Z ##[endgroup]
+2026-10-10T20:34:56.1755968Z 
+2026-10-10T20:34:56.1756441Z > skillpilot@0.0.0 check:goal-visualization-rollout-coverage
+2026-10-10T20:34:56.1757067Z > tsx scripts/reportGoalVisualizationRolloutStatus.ts --subject=mathematik --check --require-coverage
+2026-10-10T20:34:56.1757400Z 
+2026-10-10T20:34:56.8638821Z curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-rollout-status.md and curricula/DE/Gymnasium/quality/goal-visualization-review/mathematik-rollout-status.json are up to date.
+2026-10-10T20:34:56.9426856Z 
+2026-10-10T20:34:56.9427529Z > skillpilot@0.0.0 check:goal-visualization-rollout-coverage:physik
+2026-10-10T20:34:56.9427996Z > tsx scripts/reportGoalVisualizationRolloutStatus.ts --subject=physik --check --require-coverage
+2026-10-10T20:34:56.9428215Z 
+2026-10-10T20:34:57.1550612Z curricula/DE/Gymnasium/quality/goal-visualization-review/physik-rollout-status.md and curricula/DE/Gymnasium/quality/goal-visualization-review/physik-rollout-status.json are up to date.
+2026-10-10T20:34:57.2298998Z 
+2026-10-10T20:34:57.2299596Z > skillpilot@0.0.0 check:goal-visualization-rollout-coverage:chemie
+2026-10-10T20:34:57.2300297Z > tsx scripts/reportGoalVisualizationRolloutStatus.ts --subject=chemie --check --require-coverage
+2026-10-10T20:34:57.2300668Z 
+2026-10-10T20:34:57.4278056Z curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.json is stale. Run: cd app && npm run quality:goal-visualization-rollout-status:chemie
+2026-10-10T20:34:57.4279660Z curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.md is stale. Run: cd app && npm run quality:goal-visualization-rollout-status:chemie
+2026-10-10T20:34:57.4415912Z ##[error]Process completed with exit code 1.

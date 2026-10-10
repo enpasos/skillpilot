@@ -12,13 +12,21 @@ Momentaufnahmen. Menschliche Release-Gates bleiben getrennt.
 ## Aktuelle Zielverfolgung: ausschließlich Wirtschaftswissenschaften
 
 Der [M6-/CI-Zwischenstand vom 10. Oktober](wirtschaft-m6-ci-checkpoint-2026-10-10.md)
-ist der aktuelle Fortsetzungsstand: **346 curricularAtomic-Ziele, M6,
-D216/P346/A346/M346/V0, streng 0/346**. Alle 2135 ursprünglichen Quellenziele
-sind im aktuellen zentralen Bericht abgedeckt. CQR-303 und M7 bleiben offen.
+ist der aktuelle Fortsetzungsstand: **346 curricularAtomic-Ziele,
+D216/P346/A346/M346/V0, streng 0/346**. Der frisch erzeugte zentrale Bericht
+vom 10. Oktober, 22:01 UTC, bestätigt **M6**, **2136/2136 abgedeckte Quellenziele**
+und **0 unbelegte Zuordnungen**. CQR-003, die zentrale Aktualitätsprüfung und
+alle geschützten Untergrenzen bestehen. Die zwischenzeitliche M1-Regression
+der 13 Länder-Sichten bleibt als fehlgeschlagener Lauf erhalten; die gezielt
+betroffenen Quellen- und Rollenbindungen sind unabhängig geprüft korrigiert.
+Der aktuelle Memory-Bericht besteht mit 48 Sichtbereichen; alle 422 erforderlichen
+Ziel-/Scope-Paare haben ihre sichtbaren und targetierten Deck-Knoten. Die betroffenen
+Backend-Prüfungen und die fünf regulären Lernzielbuchpublikationen bestehen lokal.
+CQR-303 und M7 bleiben offen.
 Neue fachliche strenge Abschlüsse 0, wiederhergestellte strenge Bindungen 0;
 gegenüber dem historischen 229/336-Stand ist die strenge Änderung −229.
-Mathematik 807/807 und Physik 478/478 bleiben auf M7. Der frühe Commit startet
-GitHub-CI; eine grüne CI wird erst nach tatsächlichem Abschluss behauptet.
+Mathematik 807/807 und Physik 478/478 bleiben auf M7. Der nächste Commit startet
+GitHub-CI; der erfolgreiche Gesamtlauf am Abschlusscommit steht noch aus.
 
 ### Historischer v22-Zwischenstand, vor dem aktuellen 346-Ziele-Checkpoint
 

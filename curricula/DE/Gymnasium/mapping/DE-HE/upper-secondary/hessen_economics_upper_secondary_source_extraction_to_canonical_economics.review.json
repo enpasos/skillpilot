@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "reviewId": "DE_HE_WIRTSCHAFT_SEKII_TO_CANONICAL_WIRTSCHAFT_REVIEW-1826-FACET-AUTHOR-INERT-20261010-2",
+  "reviewId": "DE_HE_WIRTSCHAFT_SEKII_TO_CANONICAL_WIRTSCHAFT_REVIEW-1826-FACET-AUTHOR-INERT-20261010-2-Q25-NAIRU-TARIFF-TWO-PARTIAL-AUTHOR-CANDIDATE",
   "sourceLandscapeId": "a334a745-1d67-4e1d-86a5-dadc04f144d2",
   "targetLandscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
   "sourceExtractionPath": "curricula/DE/Gymnasium/input/HE/upper-secondary/source-extraction/DE_HE_WIRTSCHAFT_SEKII_KC2024.source-extraction.json",
@@ -11,8 +11,8 @@
     "seedMappedSourceGoals": 173,
     "mappedSourceGoals": 173,
     "needsCanonicalGoal": 0,
-    "exactMappings": 172,
-    "partialMappings": 1,
+    "exactMappings": 167,
+    "partialMappings": 6,
     "inheritedMappings": 0
   },
   "mappings": [
@@ -193,7 +193,7 @@
     {
       "legacyGoalId": "3ba5e23b-5477-4294-9cfc-b39748293128",
       "canonicalGoalId": "7c72848d-8bc9-58e2-a690-fd17ac650a88",
-      "matchType": "exact",
+      "matchType": "partial",
       "reviewDecisionId": "3ba5e23b-5477-4294-9cfc-b39748293128"
     },
     {
@@ -1089,6 +1089,12 @@
       "reviewDecisionId": "5111dc60-ce30-4bac-b996-712a945afdf6",
       "courseLevelDecision": "LK",
       "courseLevelRationale": "Actual source course/selection and consciously narrower authored canonical offering are distinct. Only this bounded partial source aspect is claimed; no Art4–6 budget-law source mandate or automatic whole Practice target."
+    },
+    {
+      "legacyGoalId": "3ba5e23b-5477-4294-9cfc-b39748293128",
+      "canonicalGoalId": "121fea28-9943-575d-9c96-1fb2e3356f32",
+      "matchType": "partial",
+      "reviewDecisionId": "3ba5e23b-5477-4294-9cfc-b39748293128"
     }
   ],
   "decisions": [
@@ -1475,12 +1481,13 @@
       "sourceSpan": "Q2.5",
       "decision": "mapped",
       "canonicalGoalIds": [
-        "7c72848d-8bc9-58e2-a690-fd17ac650a88"
+        "7c72848d-8bc9-58e2-a690-fd17ac650a88",
+        "121fea28-9943-575d-9c96-1fb2e3356f32"
       ],
-      "matchType": "exact",
-      "rationale": "Bestehendes Hessen-Wirtschaft-Seed-Mapping uebernommen; Canonical-Baseline ist die HE-KC-Konvergenzfassung.",
-      "reviewedAt": "2026-05-13",
-      "reviewer": "Codex"
+      "matchType": "partial",
+      "rationale": "Fachlich geprüfte gemeinsame Deckung der ausdrücklich genannten eigenen Snapshotfacetten NAIRU und Tarifpolitik-Einflüsse: Das aktuelle NAIRU-Ziel erläutert die geschätzte Modellschwelle und begrenzte Schlüsse; das ganze Tarifziel analysiert Kaufkraft, Stückkosten, Nachfrage, Koordination/Erwartungen und explizite Arbeitsmarktmodelle. Jede Einzelkante ist partial; nur die Union trägt beide genannten Facetten. Amtliche HE-Seite 44 Q2.4 nennt Tarifpolitik und Instrumentvergleich, kein wörtliches NAIRU-Bullet. Dies qualifiziert die unveränderte sourceSnapshotGoal-Zeile, keine gesamte amtliche Q2.4-Deckung oder neue Länder-/Kurs-/Stufenpflicht. Unabhängiger Review und historische Einzelkante im verlinkten Beleg; keine menschliche Freigabe oder M7-Abschluss.",
+      "reviewedAt": "2026-10-10T20:52:44.238433+00:00",
+      "reviewer": "Root bounded source integration after independent A review of C candidate; machine curriculum QA"
     },
     {
       "sourceGoalId": "be4aa992-a528-4d56-b643-d308e2deeee8",
@@ -3347,5 +3354,69 @@
       "reviewedAt": "2026-05-13",
       "reviewer": "Codex"
     }
-  ]
+  ],
+  "boundedQ25SourceUnionReview": {
+    "status": "machine_qualified_bounded_snapshot_source_union",
+    "author": "C / OpenAI GPT-6",
+    "authoringReason": "Real narrowed current canonical contract makes retained old exact source binding false for its Tariffacet",
+    "sourceId": "3ba5e23b-5477-4294-9cfc-b39748293128",
+    "singleEdges": "partial",
+    "unionScope": "Only explicitly named NAIRU and Tarifpolitik-Einflüsse of unchanged own legacy sourceSnapshotGoal",
+    "legacyIsOfficialVerbatim": false,
+    "officialPrimaryPDFPage": 44,
+    "officialPrimaryClaims": "BasisGK+LK Q2.4: Tarifvertragsparteien/Tarifpolitik/Tarifautonomie and compare at least two instruments; no literal NAIRU bullet",
+    "wholeCurrentSourceBodiesUnchanged": true,
+    "allOther172DecisionsUnchanged": true,
+    "allOther176EdgesUnchanged": true,
+    "currentMechanicalCounts": {
+      "sourceRows": 173,
+      "uniqueMappedSourceIds": 173,
+      "mappingDecisions": 173,
+      "decisionExact": 167,
+      "decisionPartial": 6,
+      "edges": 178,
+      "edgeExact": 167,
+      "edgePartial": 11
+    },
+    "validHistoricalRowsClaimedNotFreshReviewed": 172,
+    "oneChangedCurrentUnionNeedsIndependentQualification": false,
+    "pipelineCompletionClaimed": false,
+    "historicalWholeSummaryExact": {
+      "sourceGoals": 173,
+      "reviewedSourceGoals": 173,
+      "seedMappedSourceGoals": 173,
+      "mappedSourceGoals": 173,
+      "needsCanonicalGoal": 0,
+      "exactMappings": 172,
+      "partialMappings": 1,
+      "inheritedMappings": 0
+    },
+    "historicalChangedWholeEdgeExact": {
+      "legacyGoalId": "3ba5e23b-5477-4294-9cfc-b39748293128",
+      "canonicalGoalId": "7c72848d-8bc9-58e2-a690-fd17ac650a88",
+      "matchType": "exact",
+      "reviewDecisionId": "3ba5e23b-5477-4294-9cfc-b39748293128"
+    },
+    "historicalChangedWholeDecisionExact": {
+      "sourceGoalId": "3ba5e23b-5477-4294-9cfc-b39748293128",
+      "topicCode": "Q2",
+      "sourceSpan": "Q2.5",
+      "decision": "mapped",
+      "canonicalGoalIds": [
+        "7c72848d-8bc9-58e2-a690-fd17ac650a88"
+      ],
+      "matchType": "exact",
+      "rationale": "Bestehendes Hessen-Wirtschaft-Seed-Mapping uebernommen; Canonical-Baseline ist die HE-KC-Konvergenzfassung.",
+      "reviewedAt": "2026-05-13",
+      "reviewer": "Codex"
+    },
+    "humanApprovalClaimed": false,
+    "sourceScienceSelfApprovalClaimed": false,
+    "independentReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-HE-Q25-two-named-snapshot-facets-source-union-independent-a-READONLY-v1/SEALED-one-HE-named-snapshot-union-two-partial-edges-independent-a-KEEP.READONLY.json",
+    "independentReviewSha256": "32ed868cc8da7b45d290970721400cf7316ea62584545cc4e81391404db54d09",
+    "qualifiedAt": "2026-10-10T20:52:44.238433+00:00",
+    "validHistoricalRowsReused": 172,
+    "newQualifiedSourceDecisions": 1,
+    "newStrictM7Closures": 0
+  }
 }
