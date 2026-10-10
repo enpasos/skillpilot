@@ -156,7 +156,7 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   // Current independent source reviews correct the selected neurobiology
   // scopes and add explicit component routes without closing broad source HOLDs.
   assert.deepEqual(biology.receipt.scopes.filter(s => s.stage === 'SekII').map(s => [s.key, s.goalIds.length]), [
-    ['DE-BY/SekII/GK', 91], ['DE-BY/SekII/LK', 121], ['DE-HE/SekII/GK', 81], ['DE-HE/SekII/LK', 160],
+    ['DE-BY/SekII/GK', 91], ['DE-BY/SekII/LK', 121], ['DE-HE/SekII/GK', 82], ['DE-HE/SekII/LK', 160],
     ['DE-SH/SekII/GK', 1], ['DE-SH/SekII/LK', 1],
     ['DE-ST/SekII/GK', 6], ['DE-ST/SekII/LK', 6],
   ])
@@ -202,6 +202,11 @@ export const testGoalBookSourceAtlasInputs = (): void => {
     ['9d830422-acc7-5fa8-aee9-4dae4cedbf49', ['DE-MV/SekI/']],
     ['d0c3e6a7-581b-57bd-8027-e940c6b77af8', ['DE-MV/SekI/', 'DE-SN/SekI/', 'DE-ST/SekII/GK', 'DE-ST/SekII/LK', 'DE-TH/SekI/']],
     ['aab2a358-b2ee-57a5-a957-8fb9845506b1', ['DE-TH/SekI/']],
+    // HE's reviewed common sensory-organ operator supports these bounded
+    // visual/auditory routes; its brain overview belongs only to LK.
+    ['146d70e0-b494-59fa-b8b6-29da18b36893', ['DE-BY/SekI/', 'DE-HE/SekII/GK', 'DE-HE/SekII/LK']],
+    ['97a15c19-c345-589e-8b3c-9f2b97a60095', ['DE-BY/SekI/', 'DE-HE/SekII/GK', 'DE-HE/SekII/LK']],
+    ['2706c28e-1c21-50de-8a63-c450f5fe8b07', ['DE-BY/SekI/', 'DE-HE/SekII/LK', 'DE-MV/SekI/', 'DE-SN/SekI/', 'DE-ST/SekI/', 'DE-TH/SekI/']],
     ['4f631f78-e13a-58e5-9092-f4db0b8d377a', ['DE-BY/SekII/LK', 'DE-HE/SekII/LK']],
     ['8b23f8fb-555d-5720-b5f2-dd6f28a0e786', ['DE-BY/SekII/LK']],
     ['97b24279-def0-5ce6-8726-a1cac9cd38ad', ['DE-BY/SekII/LK', 'DE-HE/SekII/LK']],
@@ -281,8 +286,8 @@ export const testGoalBookSourceAtlasInputs = (): void => {
     const config = readGoalBookSourceAtlasInputConfig(configPath, root)
     const snapshotPaths = new Set(config.sourceDocumentSnapshots?.map(snapshot => snapshot.path))
     // Biology retains the whole-source primary files, all still-used cache
-    // aliases from unchanged component extractions, and three HTML sources.
-    assert.equal(snapshotPaths.size, subject === 'biology' ? 24 : 30)
+    // aliases from unchanged component extractions, and five HTML sources.
+    assert.equal(snapshotPaths.size, subject === 'biology' ? 26 : 30)
     if (subject === 'biology') {
       const snapshots = new Map(config.sourceDocumentSnapshots?.map(snapshot => [snapshot.path, snapshot]))
       const primaryDirectory = 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-82ac-nine-lower-jurisdictions-and-SN-ST-digital-prerequisite-source-author-v1/primary'
