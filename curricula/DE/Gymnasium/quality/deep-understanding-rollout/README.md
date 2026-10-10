@@ -5,7 +5,11 @@ Mathematics, Physics, Chemistry, Biology and Economics. Current work targets
 Chemistry and Biology; the achieved Mathematics and Physics M7 floors remain protected.
 
 Current Chemistry/Biology continuation:
-[Chemistry 177/378 and Biology 315/394: current reviewed checkpoint, 9 October](../../../../../docs/qa-ci/chemie-biologie-m7-chemie177-biologie315-commit-checkpoint-2026-10-09.md).
+[Chemistry 206/398 and Biology 353/394: reviewed integration, 10 October](../../../../../docs/qa-ci/chemie-biologie-m7-chemie206-biologie353-integration-2026-10-10.md).
+The [subsequent CI/source-binding repair](../../../../../docs/qa-ci/chemie-biologie-m7-chemie206-ci-source-binding-repair-2026-10-10.md)
+restores two previously reviewed Bavarian source bindings without adding strict completions.
+The [9 October checkpoint, Chemistry 177/378 and Biology 315/394](../../../../../docs/qa-ci/chemie-biologie-m7-chemie177-biologie315-commit-checkpoint-2026-10-09.md)
+remains preserved.
 
 Preserved Economics continuation:
 [Economics: active machine-M7 plan and package tracking, 8 October](../../../../../docs/qa-ci/wirtschaft-m7-resumed-2026-10-08.md).
@@ -64,6 +68,26 @@ npm --prefix app run quality:deep-understanding-rollout:check
 npm --prefix app run test:deep-understanding-rollout
 npx --prefix app tsx app/scripts/reportDeepUnderstandingRollout.ts --format=json
 ```
+
+Before integrating a stable checkpoint, also run the existing visualization
+rollout and QA parity checks used by Curriculum CI. A canonical split, changed
+title or image link can make these generated reports stale even when the central
+five-gate report passes. Regenerate only the affected subject's existing report
+when needed; for Chemistry:
+
+```bash
+npm --prefix app run quality:goal-visualization-rollout-status:chemie
+npm --prefix app run check:goal-visualization-rollout-coverage
+npm --prefix app run check:goal-visualization-rollout-coverage:physik
+npm --prefix app run check:goal-visualization-rollout-coverage:chemie
+npm --prefix app run check:goal-visualization-qa-coverage-parity
+```
+
+Report regeneration reflects current goals, links and existing decisions; it
+does not review images or grant approvals. The rollout report's accounted
+coverage includes documented deferred goals, which remain unfinished for gate V
+and M7. Preserve historical reviews and use the central strict intersection for
+completion claims.
 
 The description-resolution, positive-evidence, and semantic-kind checks reuse
 their exported production validators/fingerprint function. Semantic-atomicity

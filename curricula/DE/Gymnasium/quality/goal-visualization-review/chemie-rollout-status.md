@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json`
 > Source of truth: `curricula/DE/Gymnasium/quality/goal-visualization-review`
 
-Generated: 2026-10-10T08:09:51.697Z
+Generated: 2026-10-10T20:20:54.083Z
 
 Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
@@ -16,11 +16,11 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 
 | Metric | Value |
 | --- | --- |
-| Alle Ziele in der Landschaft | 487 |
-| Atomare Ziele im Visualisierungs-Scope | 381 |
-| Ziele mit primaerem Visualisierungslink | 364 |
-| Coverage | 95.5% |
-| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 381 |
+| Alle Ziele in der Landschaft | 517 |
+| Atomare Ziele im Visualisierungs-Scope | 398 |
+| Ziele mit primaerem Visualisierungslink | 381 |
+| Coverage | 95.7% |
+| Durch Asset oder dokumentierte Deferred-Entscheidung erfasste Ziele | 398 |
 | Dokumentierte Coverage | 100.0% |
 | Coverage-Gate | bestanden |
 | Release-approved Visualisierungen | 0 |
@@ -30,19 +30,19 @@ Scope: canonical `DE Gymnasium Chemie`, atomic goal visualizations.
 | Offene Provider-Quota-Ziele | 0 |
 | Provider-Quota-blockierte Ledger | 0 |
 | Regulaere unvisualisierte Ziele ohne Deferred-Status | 0 |
-| Verlinkt ohne akzeptierende Review-Entscheidung | 11 |
+| Verlinkt ohne akzeptierende Review-Entscheidung | 35 |
 | Akzeptierende Review-Entscheidung ohne Link | 0 |
 
 ## Linked Review Status
 
 | Status | Count |
 | --- | --- |
-| `accepted` | 123 |
+| `accepted` | 118 |
 | `ai_candidate` | 2 |
 | `ai-reviewed` | 5 |
 | `candidate` | 4 |
 | `pending-independent-actual-review` | 6 |
-| `pilot` | 224 |
+| `pilot` | 246 |
 
 ## Ledger Decisions
 
@@ -129,16 +129,37 @@ Keine Eintraege.
 | Goal ID | Title | Link status | Latest ledger decision |
 | --- | --- | --- | --- |
 | `ca216bc6-5205-5b46-abbd-fd5628e4ca5b` | Acidität begründen | `pilot` | `deferred_provider_limitation` |
+| `e81a4aed-9695-533e-8eb7-7a0c714346ea` | Angeleitete chemische Untersuchungen sicher durchführen | `pilot` | - |
+| `f79f15c0-e848-5e17-9eb5-26753d35c93b` | Anspruchsvolle chemische Experimente selbstständig durchführen | `pilot` | - |
 | `3d6699ae-ebbd-5a55-8798-b809a9d74f0a` | Ascorbinsäure quantitativ bestimmen (LK) | `pending-independent-actual-review` | - |
 | `27e4fe9b-4796-579b-8f7d-06c65fb600c0` | Blei-Akkumulator beschreiben | `pilot` | `deferred_provider_limitation` |
+| `75e2eff1-f871-5461-9e3f-26d0b333ce2f` | Chemische Alltagsfragen und prüfbare Hypothesen formulieren | `pilot` | - |
+| `7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6` | Chemische Anwendungen und ihre gesellschaftliche Bedeutung diskutieren | `pilot` | - |
+| `6c9adc36-b6d0-57fa-8e02-5e156aebfecc` | Chemische Berufsfelder in eine begründete Berufswahl einbeziehen | `pilot` | - |
+| `7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6` | Chemische Daten auswerten und auf Hypothesen beziehen | `pilot` | - |
+| `9fc800d1-92d1-5ef6-81c1-33960ae034dd` | Chemische Daten nachvollziehbar dokumentieren | `pilot` | - |
+| `9e3fae29-84d5-5600-bfb3-82d49ea3f1b5` | Chemische Daten quantitativ und hypothesenbezogen auswerten | `pilot` | - |
+| `a8800c36-d13c-5f63-962c-cf18c3795c63` | Chemische Erkenntniswege und ihre Reichweite erklären | `pilot` | - |
+| `503dedcb-0efc-5e6b-bbc9-20761a0951f5` | Chemische Fragestellungen und Hypothesen theoriegestützt formulieren | `pilot` | - |
+| `5b1bb5d9-07b1-5ba9-b320-cc97be917c60` | Chemische Informationen aus Quellen erschließen | `pilot` | - |
+| `31781d00-8f20-5041-bd7f-e261b27af162` | Chemische Informationen in geeignete Darstellungen überführen | `pilot` | - |
+| `6c7ce93c-7675-51da-bc0c-7d0257f7ff7d` | Chemische Modelle nutzen und kritisch vergleichen | `pilot` | - |
+| `86d34f1f-692d-5522-a9a4-a71c65b24de7` | Chemische Modelle theoriegestützt nutzen und kritisch vergleichen | `pilot` | - |
+| `431a0f03-f28a-5e56-a61f-000336d0b410` | Chemische Pro- und Kontra-Argumente abwägen | `pilot` | - |
+| `36666b4a-97af-51fc-9983-56cdcc7a8229` | Chemische Quellen und Darstellungen kritisch prüfen | `pilot` | - |
+| `38e30bb9-6145-5da0-80b8-36e3c45e15d0` | Chemische Sachverhalte und Arbeitsergebnisse präsentieren | `pilot` | - |
+| `42391b16-bbae-5c77-84e1-d488e714167b` | Chemische Untersuchungen selbst planen und durchführen | `pilot` | - |
+| `9f892457-c4e5-56da-830c-bf6cac0c98d7` | Chemische Wirkungen in historischen und aktuellen Zusammenhängen bewerten | `pilot` | - |
+| `4aa3a130-b517-5ac5-87b2-147fe432cadd` | Die Aussagekraft chemischer Daten beurteilen | `pilot` | - |
+| `99d41b0f-e958-54cf-a077-9bed1704a303` | Eigene chemische Untersuchungen reflektieren | `pilot` | - |
 | `a0f6ba09-f072-5887-a797-fa369453c62a` | Ein reversibles Austauschmodell zur Gleichgewichtseinstellung durchführen | `pilot` | - |
 | `950c73c6-4ed1-488a-9267-1142e95e0055` | Einfache Ionengitter modellieren und Stoffeigenschaften erklären | `pilot` | `deferred_provider_limitation` |
+| `e5a5dcd8-053c-55fd-b5c7-bba93779da53` | Einflüsse auf die Entwicklung chemischen Wissens bewerten | `pilot` | - |
+| `ac8b6c0f-98b2-5092-806d-d9498efbfa35` | Komplexe chemische Quellen selbstständig erschließen | `pilot` | - |
 | `d2d735de-bede-5310-8aeb-8bb7562c7b75` | Konzentrationsbedingte Gleichgewichtsverschiebungen experimentell untersuchen | `pilot` | - |
 | `7b39fa19-fec3-575e-9324-a3226b703358` | Leerlaufspannungen galvanischer Zellen experimentell ermitteln | `pilot` | - |
-| `10f657bc-6044-5fbb-ba8e-6e5ba55d2bc5` | Redoxbasierte Konservierung | `pending-independent-actual-review` | `deferred_provider_limitation` |
-| `6765f741-42a6-55c5-a218-81b883b1f5ae` | Seifen herstellen | `pilot` | `deferred_provider_limitation` |
-| `0d59b62e-d3f9-5969-b961-0c5e26316c04` | Verwendung von Parabenen beurteilen (LK) | `pending-independent-actual-review` | - |
-| `18819a59-2442-530f-a7c3-26755398ec66` | Vorgegebenen Paraben-Ester quantitativ bestimmen (LK) | `pending-independent-actual-review` | - |
+
+Weitere 5 Eintraege stehen in der JSON-Begleitdatei.
 
 ### Accepted Review Without Link
 
