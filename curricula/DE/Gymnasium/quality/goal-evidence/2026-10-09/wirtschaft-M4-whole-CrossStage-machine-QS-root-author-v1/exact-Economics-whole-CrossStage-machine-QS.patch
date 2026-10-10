@@ -1,0 +1,78 @@
+--- a/app/scripts/generateCurriculumQualityStatus.ts
++++ b/app/scripts/generateCurriculumQualityStatus.ts
+@@ -1226,6 +1226,8 @@
+     motivationAnchorGoalIds: [CANONICAL_GYM_ECONOMICS_MOTIVATION_GOAL_ID],
+     terminalAutonomyClusterIds: CANONICAL_GYM_ECONOMICS_PRACTICE_CLUSTER_IDS,
+     compositionViewStage: 'CrossStage',
++    compositionViewApplicabilityMode: 'compiled-jurisdiction',
++    compositionViewRoutePathMode: 'visible-atomic',
+     goalSelector: (goal) => isAtomicGoal(goal)
+       && isCanonicalGymEconomicsGoal(goal)
+       && !isMemoryGoal(goal)
+@@ -1950,6 +1952,7 @@
+   const enforceProjectionLocalRoutes = profile.compositionViewRoutePathMode === 'visible-atomic'
+   const enforceProjectionLocalAssessmentRequires = (
+     profile.landscapeId === CANONICAL_GYM_PHYSICS_LANDSCAPE_ID
++    || profile.landscapeId === CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID
+   )
+   const mathSek1CurricularAtomicGoalIds = profile.profileId === 'canonical-math-sek1'
+     ? new Set(loadJson<{ decisions: Array<{
+@@ -2014,8 +2017,12 @@
+   const selectedGoalIds = new Set(selectedGoals.map((goal) => goal.id))
+ 
+   viewEntries.forEach(({ file, view }) => {
++    // CrossStage explicitly means the entire authored view, including both
++    // school stages. Its root is not inferred from year, phase or display labels.
+     const matchingStageStructures = enforceProjectionLocalRoutes
+-      ? collectCompositionStageStructures(view.rootNodes, profile.compositionViewStage!)
++      ? profile.compositionViewStage === 'CrossStage'
++        ? view.rootNodes.filter((node) => node.kind === 'structure')
++        : collectCompositionStageStructures(view.rootNodes, profile.compositionViewStage!)
+       : []
+     const scopedTerminalGoals = terminalAutonomyGoalsForRouteScope(
+       goalById,
+@@ -2216,7 +2223,8 @@
+           .filter((terminalId) => {
+             const extendedData = goalById.get(terminalId)?.extendedData as Record<string, unknown> | undefined
+             const overrides = extendedData?.applicabilityOverrides as Record<string, unknown> | undefined
+-            return Array.isArray(overrides?.jurisdiction)
++            return profile.landscapeId === CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID
++              || Array.isArray(overrides?.jurisdiction)
+               || (
+                 enforceProjectionLocalAssessmentRequires
+                 && extendedData?.applicabilityFromRequires === true
+@@ -3990,7 +3998,7 @@
+   return readCompositionViewFilesForLandscapeId(report.landscapeId)
+ }
+ 
+-type CompositionRouteStage = 'SekI' | 'SekII'
++type CompositionRouteStage = 'SekI' | 'SekII' | 'CrossStage'
+ 
+ function compositionStructureStage(node: CompositionViewNode): CompositionRouteStage | null {
+   if (node.kind !== 'structure') return null
+@@ -4062,12 +4070,13 @@
+     return visibleGoalIds
+   }
+   const fullVisibleGoalIds = collectVisibleGoalIds(rootGoalIds)
+-  const stageStructureGoalIds = compositionStage
+-    ? collectCompositionStageStructures(normalizedView.rootNodes, compositionStage)
++  const restrictToSingleStage = !!compositionStage && compositionStage !== 'CrossStage'
++  const stageStructureGoalIds = restrictToSingleStage
++    ? collectCompositionStageStructures(normalizedView.rootNodes, compositionStage!)
+       .map((node) => `composition:${normalizedView.viewId}:structure:${node.id}`)
+       .filter((goalId) => goalById.has(goalId))
+     : []
+-  const visibleGoalIds = compositionStage
++  const visibleGoalIds = restrictToSingleStage
+     ? collectVisibleGoalIds(stageStructureGoalIds)
+     : fullVisibleGoalIds
+ 
+@@ -4113,7 +4122,7 @@
+       nodes.forEach((node) => {
+         if (node.kind === 'structure') {
+           const nodeStage = compositionStructureStage(node)
+-          if (compositionStage && nodeStage && nodeStage !== compositionStage) return
++          if (restrictToSingleStage && nodeStage && nodeStage !== compositionStage) return
+           collectPrerequisiteOnly(node.children)
+           return
+         }

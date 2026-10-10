@@ -1,0 +1,741 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-bounded-atlas-v1&quot;,&quot;maxWidthPixels&quot;:1200,&quot;maxHeightPixels&quot;:800,&quot;jpegQuality&quot;:0.76,&quot;webpQuality&quot;:0.82,&quot;maxBytes&quot;:100000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Wirtschaftswissenschaften: gezielte aktuelle Beschreibungsprüfung – Konjunktur/Geld/Staat</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Wirtschaftswissenschaften: gezielte aktuelle Beschreibungsprüfung – Konjunktur/Geld/Staat</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>12 atomare Lernziele</dt><dd>7 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:economics-current-canonical-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-b4dde3c304021f05e1d6d857" aria-label="Wirtschaftswissenschaften"><a href="#goal-a773d8a6-3b0d-5ab5-a914-ca234e7fb813"><span class="toc-entry-label">Wirtschaftswissenschaften</span></a></h2>
+          <span class="toc-entry-meta"><span>12 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="goal:96183c48-b499-54d7-8530-578f6ff40207" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-a0dfaba9fba054a714038138" aria-label="Wirtschaftswissenschaften"><a href="#goal-a773d8a6-3b0d-5ab5-a914-ca234e7fb813"><span class="toc-entry-label">Wirtschaftswissenschaften</span></a></h3>
+          <span class="toc-entry-meta"><span>12 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-51d12ebcbe6adcd82e288d4c" aria-label="Q2 Wirtschaft und Wirtschaftspolitik"><a href="#goal-a773d8a6-3b0d-5ab5-a914-ca234e7fb813"><span class="toc-entry-label">Q2&#160;<wbr>Wirtschaft&#160;<wbr>und&#160;<wbr>Wirtschaftspolitik</span></a></h4>
+          <span class="toc-entry-meta"><span>8 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:27c157f8-a357-5cec-b054-efd3c65a1fe7" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-cfddfb82b43ba9d85b7a70f2" aria-label="Konjunkturanalyse und -politik"><a href="#goal-a773d8a6-3b0d-5ab5-a914-ca234e7fb813"><span class="toc-entry-label">Konjunkturanalyse&#160;<wbr>und&#160;<wbr>-politik</span></a></h5>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:fa43671d-393b-5663-a7e6-cceed3f466f7" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-d220ca6a7265e9ec4cbe1405" aria-label="Ordnungspolitik und Wettbewerb"><a href="#goal-a0b7eb01-1755-54ae-947d-c6ba21209d3a"><span class="toc-entry-label">Ordnungspolitik&#160;<wbr>und&#160;<wbr>Wettbewerb</span></a></h5>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 8</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:a073b7ae-687a-5b46-8d81-713bc61f573b" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-83ff15342bfae7f22fd4b47d" aria-label="Preisniveaustabilität in der EWU"><a href="#goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3"><span class="toc-entry-label">Preisniveaustabilität&#160;<wbr>in&#160;<wbr>der&#160;<wbr>EWU</span></a></h5>
+          <span class="toc-entry-meta"><span>2 Lernziele</span><span>erste zugehörige Lernzielseite 6</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:9658d512-618c-56ab-aecf-14aaec1005f4" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-75e3708e304e7e3d4d482e3b" aria-label="Ergänzende Sach- und Methodenkompetenzen"><a href="#goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488"><span class="toc-entry-label">Ergänzende&#160;<wbr>Sach-&#160;<wbr>und&#160;<wbr>Methodenkompetenzen</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 12</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-a773d8a6-3b0d-5ab5-a914-ca234e7fb813" data-goal-id="a773d8a6-3b0d-5ab5-a914-ca234e7fb813" data-page-number="1" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:27c157f8-a357-5cec-b054-efd3c65a1fe7" aria-labelledby="goal-a773d8a6-3b0d-5ab5-a914-ca234e7fb813-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a773d8a6-3b0d-5ab5-a914-ca234e7fb813-title"><a class="goal-self-link" href="#goal-a773d8a6-3b0d-5ab5-a914-ca234e7fb813">Konjunkturindikatoren nutzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a773d8a6-3b0d-5ab5-a914-ca234e7fb813</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-cfddfb82b43ba9d85b7a70f2">Konjunkturanalyse und -politik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:ddbd8348f95d997976eaf68ce8c964ae153e453b548d3a7f2681ae713cd1cb9b" data-rendered-digest="sha256:6f4e219bf710a7e95fde87fce5b86cd384457f59366a09b9d360c78a4f8b411f" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/a773d8a6-3b0d-5ab5-a914-ca234e7fb813/a773d8a6-3b0d-5ab5-a914-ca234e7fb813.png" alt="Eine Person betrachtet drei Bildfelder mit Produktion in einer Fabrik, verschiedenen Beschäftigten und einem Warenkorb mit Preissymbolen. Eine schematische Welle verbindet die Felder mit dem Konjunkturzyklus.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a773d8a6-3b0d-5ab5-a914-ca234e7fb813-description-heading">
+        <p class="section-heading" id="goal-a773d8a6-3b0d-5ab5-a914-ca234e7fb813-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann zentrale Indikatoren interpretieren und im Zyklus einordnen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a773d8a6-3b0d-5ab5-a914-ca234e7fb813-requires-heading">
+          <p class="section-heading" id="goal-a773d8a6-3b0d-5ab5-a914-ca234e7fb813-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-a773d8a6-3b0d-5ab5-a914-ca234e7fb813-reverse-heading">
+          <p class="section-heading" id="goal-a773d8a6-3b0d-5ab5-a914-ca234e7fb813-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-bc3f895f-38d7-534b-998d-8d60fcbbb900"><span>Konjunkturmodelle anwenden</span><code>bc3f895f-38d7-534b-998d-8d60fcbbb900</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-550a050a-36bb-5b9e-ae0a-1afc7f9a0df0"><span>Fiskalpolitik und Konjunktur</span><code>550a050a-36bb-5b9e-ae0a-1afc7f9a0df0</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-a773d8a6-3b0d-5ab5-a914-ca234e7fb813-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a773d8a6-3b0d-5ab5-a914-ca234e7fb813-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-a773d8a6-3b0d-5ab5-a914-ca234e7fb813-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a773d8a6-3b0d-5ab5-a914-ca234e7fb813-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-1758e57b-779f-5e16-8f35-47ada351ee2b" rel="noreferrer noopener"><span>Vorschlag B (GK) - Konjunkturpaket, Wettbewerb und Sozialhaushalt</span> <code>1758e57b-779f-5e16-8f35-47ada351ee2b</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-2b1122b9-30c6-5160-b439-fe03cb04e583" rel="noreferrer noopener"><span>Konjunkturindikatoren mit Bezugsgrößen und Zeitverzug lesen</span> <code>2b1122b9-30c6-5160-b439-fe03cb04e583</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-f80d7cbb-e03c-5613-a4b6-8a1bad485385" rel="noreferrer noopener"><span>Q2: Konjunkturbefund, Prognosen und Fiskalpolitik beurteilen</span> <code>f80d7cbb-e03c-5613-a4b6-8a1bad485385</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-mem_de_gym_economics_macro_money_policy" rel="noreferrer noopener"><span>Lernkarten - Makroökonomie, Geld und Wirtschaftspolitik</span> <code>mem_de_gym_economics_macro_money_policy</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-8a382f37-59d9-5e46-906d-1ceb2458c886" rel="noreferrer noopener"><span>Phillips-Kurve und Zielkonflikte</span> <code>8a382f37-59d9-5e46-906d-1ceb2458c886</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 12</span>
+      <span>Buch-Digest <code>sha256:783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480</code></span>
+      <span>Ziel-Fingerprint <code>sha256:77869b3146bee59faa7b8ecc6b0f6c19a31b55004fad87892c776b30a4363f0b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-D124-v19-b07&amp;edition=curricular-atomic-v1&amp;goalId=a773d8a6-3b0d-5ab5-a914-ca234e7fb813&amp;goalFingerprint=sha256%3A77869b3146bee59faa7b8ecc6b0f6c19a31b55004fad87892c776b30a4363f0b&amp;pageFingerprint=sha256%3A0927616849b1e5df93a5400a7460b24c81ac807e5617bdeacfce9a4cb9cb0d98&amp;bookDigest=sha256%3A783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-550a050a-36bb-5b9e-ae0a-1afc7f9a0df0" data-goal-id="550a050a-36bb-5b9e-ae0a-1afc7f9a0df0" data-page-number="2" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:27c157f8-a357-5cec-b054-efd3c65a1fe7" aria-labelledby="goal-550a050a-36bb-5b9e-ae0a-1afc7f9a0df0-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-550a050a-36bb-5b9e-ae0a-1afc7f9a0df0-title"><a class="goal-self-link" href="#goal-550a050a-36bb-5b9e-ae0a-1afc7f9a0df0">Fiskalpolitik und Konjunktur</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>550a050a-36bb-5b9e-ae0a-1afc7f9a0df0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-cfddfb82b43ba9d85b7a70f2">Konjunkturanalyse und -politik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:3fa8ec38ffbd8c5baa071e5a4cf929d24f270fe30e527de72ebb98b3edadec66" data-rendered-digest="sha256:cf36e5440156346855e6609179b795b18380165b3483d215b1dad672fa2f679e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/550a050a-36bb-5b9e-ae0a-1afc7f9a0df0/550a050a-36bb-5b9e-ae0a-1afc7f9a0df0.png" alt="Links steht eine ruhige Werkstatt neben öffentlicher Brückenreparatur, rechts eine beschäftigte Werkstatt neben Zeit-, Haushalts- und Verschuldungssymbolen. Zwei Personen wägen Wirkung und Grenzen der Fiskalpolitik ab.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-550a050a-36bb-5b9e-ae0a-1afc7f9a0df0-description-heading">
+        <p class="section-heading" id="goal-550a050a-36bb-5b9e-ae0a-1afc7f9a0df0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann fiskalpolitische Instrumente im Konjunkturverlauf bewerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-550a050a-36bb-5b9e-ae0a-1afc7f9a0df0-requires-heading">
+          <p class="section-heading" id="goal-550a050a-36bb-5b9e-ae0a-1afc7f9a0df0-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a773d8a6-3b0d-5ab5-a914-ca234e7fb813"><span>Konjunkturindikatoren nutzen</span><code>a773d8a6-3b0d-5ab5-a914-ca234e7fb813</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-550a050a-36bb-5b9e-ae0a-1afc7f9a0df0-reverse-heading">
+          <p class="section-heading" id="goal-550a050a-36bb-5b9e-ae0a-1afc7f9a0df0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-0e5b12a1-68bd-5838-8e70-02b3e7f2518a"><span>Konjunkturprognosen einschätzen</span><code>0e5b12a1-68bd-5838-8e70-02b3e7f2518a</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-550a050a-36bb-5b9e-ae0a-1afc7f9a0df0-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-550a050a-36bb-5b9e-ae0a-1afc7f9a0df0-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-358f8225-5aeb-5f74-ad1c-e6830877e89e" rel="noreferrer noopener"><span>Fiskalpolitik zwischen schneller Hilfe und später Wirkung</span> <code>358f8225-5aeb-5f74-ad1c-e6830877e89e</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-f80d7cbb-e03c-5613-a4b6-8a1bad485385" rel="noreferrer noopener"><span>Q2: Konjunkturbefund, Prognosen und Fiskalpolitik beurteilen</span> <code>f80d7cbb-e03c-5613-a4b6-8a1bad485385</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-b0bdd6e9-3b74-51dc-b85e-d35346a5e04c" rel="noreferrer noopener"><span>Multiplikator- und Crowding-Out-Effekte</span> <code>b0bdd6e9-3b74-51dc-b85e-d35346a5e04c</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 12</span>
+      <span>Buch-Digest <code>sha256:783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a5717a036ab489cf5e6da5a917d82f6b3845912b7ce58f12e5158f85b812fd06</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-D124-v19-b07&amp;edition=curricular-atomic-v1&amp;goalId=550a050a-36bb-5b9e-ae0a-1afc7f9a0df0&amp;goalFingerprint=sha256%3Aa5717a036ab489cf5e6da5a917d82f6b3845912b7ce58f12e5158f85b812fd06&amp;pageFingerprint=sha256%3A39037f9069fbff94a493e9c3aed550cf7b505af1771eea958446276ff6c529ac&amp;bookDigest=sha256%3A783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0e5b12a1-68bd-5838-8e70-02b3e7f2518a" data-goal-id="0e5b12a1-68bd-5838-8e70-02b3e7f2518a" data-page-number="3" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:27c157f8-a357-5cec-b054-efd3c65a1fe7" aria-labelledby="goal-0e5b12a1-68bd-5838-8e70-02b3e7f2518a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-0e5b12a1-68bd-5838-8e70-02b3e7f2518a-title"><a class="goal-self-link" href="#goal-0e5b12a1-68bd-5838-8e70-02b3e7f2518a">Konjunkturprognosen einschätzen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0e5b12a1-68bd-5838-8e70-02b3e7f2518a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-cfddfb82b43ba9d85b7a70f2">Konjunkturanalyse und -politik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:2c22cbad11c0cb69f8d59f41a6a89971aa2ca32abab4b891bdb20990ddd871cb" data-rendered-digest="sha256:4c2e1a03b812a36bcca31bad576c0be1e160257d13de9d696f627614c3c99127" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/0e5b12a1-68bd-5838-8e70-02b3e7f2518a/0e5b12a1-68bd-5838-8e70-02b3e7f2518a.png" alt="Eine vergangene Kurve endet an einer Heute-Markierung und verzweigt sich in drei gestrichelte Zukunftsszenarien. Fabrik, Einkaufswagen und Handelsschiff stehen daneben als mögliche Einflussmotive.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0e5b12a1-68bd-5838-8e70-02b3e7f2518a-description-heading">
+        <p class="section-heading" id="goal-0e5b12a1-68bd-5838-8e70-02b3e7f2518a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Prognoseansätze und Unsicherheiten bewerten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0e5b12a1-68bd-5838-8e70-02b3e7f2518a-requires-heading">
+          <p class="section-heading" id="goal-0e5b12a1-68bd-5838-8e70-02b3e7f2518a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-550a050a-36bb-5b9e-ae0a-1afc7f9a0df0"><span>Fiskalpolitik und Konjunktur</span><code>550a050a-36bb-5b9e-ae0a-1afc7f9a0df0</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-0e5b12a1-68bd-5838-8e70-02b3e7f2518a-reverse-heading">
+          <p class="section-heading" id="goal-0e5b12a1-68bd-5838-8e70-02b3e7f2518a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-0e5b12a1-68bd-5838-8e70-02b3e7f2518a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-0e5b12a1-68bd-5838-8e70-02b3e7f2518a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6a0ce486-7e7a-5b0c-bdae-360d894288ea" rel="noreferrer noopener"><span>Prognosen vergleichen, Fehler erklären und nach einem Schock revidieren</span> <code>6a0ce486-7e7a-5b0c-bdae-360d894288ea</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-f80d7cbb-e03c-5613-a4b6-8a1bad485385" rel="noreferrer noopener"><span>Q2: Konjunkturbefund, Prognosen und Fiskalpolitik beurteilen</span> <code>f80d7cbb-e03c-5613-a4b6-8a1bad485385</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 12</span>
+      <span>Buch-Digest <code>sha256:783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480</code></span>
+      <span>Ziel-Fingerprint <code>sha256:3fc1656bf4ffa8fd742bf7de94cb81dfbfc913d6b2afcd91a53b6e091f98876b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-D124-v19-b07&amp;edition=curricular-atomic-v1&amp;goalId=0e5b12a1-68bd-5838-8e70-02b3e7f2518a&amp;goalFingerprint=sha256%3A3fc1656bf4ffa8fd742bf7de94cb81dfbfc913d6b2afcd91a53b6e091f98876b&amp;pageFingerprint=sha256%3A990f513eea4347967e9bd4e38585fcab31685b0d2e0f9af964371ad001994a91&amp;bookDigest=sha256%3A783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc" data-goal-id="6f1f4654-35ab-5ba6-a329-b19b994e84cc" data-page-number="4" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:27c157f8-a357-5cec-b054-efd3c65a1fe7" aria-labelledby="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-title"><a class="goal-self-link" href="#goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc">Stabilitätsgesetz anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6f1f4654-35ab-5ba6-a329-b19b994e84cc</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-cfddfb82b43ba9d85b7a70f2">Konjunkturanalyse und -politik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b11e00cac87d70a61be97455d3ff094a6818a04b00ca02d95337db7655fe7318" data-rendered-digest="sha256:65eb4c692a40b5e7ade32569ea535c48c3c91ac55b4d2cf2d008cb242fb6e9e4" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/6f1f4654-35ab-5ba6-a329-b19b994e84cc/6f1f4654-35ab-5ba6-a329-b19b994e84cc.png" alt="Vier gleich große Felder zeigen Preise mit Warenkorb, Beschäftigung mit verschiedenen Berufen, Wachstum mit Fabrik und Außenwirtschaft mit Handelssymbolen. Fragezeichen und Verbindungspfeile rahmen mögliche Zielbeziehungen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-description-heading">
+        <p class="section-heading" id="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Ziele des Stabilitäts- und Wachstumsgesetzes auf Fälle anwenden.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-requires-heading">
+          <p class="section-heading" id="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-reverse-heading">
+          <p class="section-heading" id="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6f1f4654-35ab-5ba6-a329-b19b994e84cc-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-7975fc67-3738-5995-9e94-5afbd86e1237" rel="noreferrer noopener"><span>Vier gesetzliche Ziele und zwei widersprüchliche Wirtschaftslagen</span> <code>7975fc67-3738-5995-9e94-5afbd86e1237</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-f80d7cbb-e03c-5613-a4b6-8a1bad485385" rel="noreferrer noopener"><span>Q2: Konjunkturbefund, Prognosen und Fiskalpolitik beurteilen</span> <code>f80d7cbb-e03c-5613-a4b6-8a1bad485385</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-753e5ac0-0375-56b9-a733-75701097b151" rel="noreferrer noopener"><span>Fiskalregeln und Schuldenbremse</span> <code>753e5ac0-0375-56b9-a733-75701097b151</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 12</span>
+      <span>Buch-Digest <code>sha256:783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480</code></span>
+      <span>Ziel-Fingerprint <code>sha256:44e88ead5b20cfff963a4206b850b5a293c1399d0e0a86774a5d14e1dd249cb0</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-D124-v19-b07&amp;edition=curricular-atomic-v1&amp;goalId=6f1f4654-35ab-5ba6-a329-b19b994e84cc&amp;goalFingerprint=sha256%3A44e88ead5b20cfff963a4206b850b5a293c1399d0e0a86774a5d14e1dd249cb0&amp;pageFingerprint=sha256%3A08aa840282c86c80a7d33469e60844162bb971ffea943ce7b52d6cdcd78dc7b4&amp;bookDigest=sha256%3A783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-bc3f895f-38d7-534b-998d-8d60fcbbb900" data-goal-id="bc3f895f-38d7-534b-998d-8d60fcbbb900" data-page-number="5" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:27c157f8-a357-5cec-b054-efd3c65a1fe7" aria-labelledby="goal-bc3f895f-38d7-534b-998d-8d60fcbbb900-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-bc3f895f-38d7-534b-998d-8d60fcbbb900-title"><a class="goal-self-link" href="#goal-bc3f895f-38d7-534b-998d-8d60fcbbb900">Konjunkturmodelle anwenden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>bc3f895f-38d7-534b-998d-8d60fcbbb900</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-cfddfb82b43ba9d85b7a70f2">Konjunkturanalyse und -politik</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:0042ec3efafca7a7a7518cf7a0259e84e71bbe50e83f1d6d8a8e74ea0da66ea6" data-rendered-digest="sha256:847fe06d14e3e1cd30e639cdf317425cfe1956cb0e15803679ed60d89d05878d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/bc3f895f-38d7-534b-998d-8d60fcbbb900/bc3f895f-38d7-534b-998d-8d60fcbbb900.png" alt="Zwischen Haushalt und Unternehmen verlaufen Pfeile für Nachfrage und Einkommen in entgegengesetzten Richtungen. Darunter steht eine staatliche Institution mit offenem Fragezeichen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-bc3f895f-38d7-534b-998d-8d60fcbbb900-description-heading">
+        <p class="section-heading" id="goal-bc3f895f-38d7-534b-998d-8d60fcbbb900-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann einfache Modelle zur Konjunkturanalyse nutzen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-bc3f895f-38d7-534b-998d-8d60fcbbb900-requires-heading">
+          <p class="section-heading" id="goal-bc3f895f-38d7-534b-998d-8d60fcbbb900-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a773d8a6-3b0d-5ab5-a914-ca234e7fb813"><span>Konjunkturindikatoren nutzen</span><code>a773d8a6-3b0d-5ab5-a914-ca234e7fb813</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-bc3f895f-38d7-534b-998d-8d60fcbbb900-reverse-heading">
+          <p class="section-heading" id="goal-bc3f895f-38d7-534b-998d-8d60fcbbb900-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-bc3f895f-38d7-534b-998d-8d60fcbbb900-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-bc3f895f-38d7-534b-998d-8d60fcbbb900-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-34518145-b7a5-56dc-84fc-8e8b063b2456" rel="noreferrer noopener"><span>Inflation und Konjunktur: Modelle und historisches Dossier</span> <code>34518145-b7a5-56dc-84fc-8e8b063b2456</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-b46634e1-30e7-5645-9894-9b92ef81e087" rel="noreferrer noopener"><span>Ölschock, Nachfrage und Kredit: Modelle passend anwenden</span> <code>b46634e1-30e7-5645-9894-9b92ef81e087</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-ebab1f99-acb5-5eff-bf53-8d63c4cbf477" rel="noreferrer noopener"><span>GK: Zwei einfache Konjunkturmodelle vergleichen</span> <code>ebab1f99-acb5-5eff-bf53-8d63c4cbf477</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-ff93ca09-0619-569f-8120-39d22585232a" rel="noreferrer noopener"><span>Vorschlag B (LK) - Stagflation, EZB und Sozialstaat</span> <code>ff93ca09-0619-569f-8120-39d22585232a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-ff58f126-4b2c-5928-82ef-575b249b8efe" rel="noreferrer noopener"><span>Erwartungsbildung und Politikglaubwürdigkeit</span> <code>ff58f126-4b2c-5928-82ef-575b249b8efe</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 12</span>
+      <span>Buch-Digest <code>sha256:783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480</code></span>
+      <span>Ziel-Fingerprint <code>sha256:86177fb1829c583d859c9078512fa2de63a6416929728f2f7833903af742670b</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-D124-v19-b07&amp;edition=curricular-atomic-v1&amp;goalId=bc3f895f-38d7-534b-998d-8d60fcbbb900&amp;goalFingerprint=sha256%3A86177fb1829c583d859c9078512fa2de63a6416929728f2f7833903af742670b&amp;pageFingerprint=sha256%3Afe984425cd01ce17aebc2a3bcc672cc1a10a90166a6229a9335066401c5d6a6c&amp;bookDigest=sha256%3A783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3" data-goal-id="5b5d1d53-71c3-5fbf-b1cf-977c868b60e3" data-page-number="6" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:a073b7ae-687a-5b46-8d81-713bc61f573b" aria-labelledby="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3-title"><a class="goal-self-link" href="#goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3">Geldschöpfung praktisch modellieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5b5d1d53-71c3-5fbf-b1cf-977c868b60e3</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-83ff15342bfae7f22fd4b47d">Preisniveaustabilität in der EWU</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:522a76eb125adc7bdf506d94fb110aeb40218efa64b2c8f72dd440c70a5d23d2" data-rendered-digest="sha256:c4256f4f96060d6f9d477d62889b1f734fc07122da59f91b3ddf4b46d704fada" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/5b5d1d53-71c3-5fbf-b1cf-977c868b60e3/5b5d1d53-71c3-5fbf-b1cf-977c868b60e3.png" alt="Zwei vereinfachte Bilanzen zeigen denselben neuen Kredit: Bei der Bank steigen Kreditforderung auf der Aktivseite und Einlage auf der Passivseite. Beim Kunden steigen Einlage auf der Aktivseite und Schuld auf der Passivseite.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3-description-heading">
+        <p class="section-heading" id="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Geldschöpfung in Bilanzmodellen nachvollziehen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3-requires-heading">
+          <p class="section-heading" id="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3-reverse-heading">
+          <p class="section-heading" id="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5b5d1d53-71c3-5fbf-b1cf-977c868b60e3-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-0d111408-c754-50fa-8cd3-25ec75f6205f" rel="noreferrer noopener"><span>Q2: Kreditgeld, zwischenbankliche Zahlung und Tilgung bilanzieren</span> <code>0d111408-c754-50fa-8cd3-25ec75f6205f</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 12</span>
+      <span>Buch-Digest <code>sha256:783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480</code></span>
+      <span>Ziel-Fingerprint <code>sha256:1f57567b0b43dc8362cfb290c773ce8803167cc661aac9d543bbd4f98006713c</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-D124-v19-b07&amp;edition=curricular-atomic-v1&amp;goalId=5b5d1d53-71c3-5fbf-b1cf-977c868b60e3&amp;goalFingerprint=sha256%3A1f57567b0b43dc8362cfb290c773ce8803167cc661aac9d543bbd4f98006713c&amp;pageFingerprint=sha256%3A00b584349b3712e3570044766fbf1440adec0a3d7d48b4af38f84736057e0dec&amp;bookDigest=sha256%3A783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680" data-goal-id="25278ecf-2e77-556e-9fe6-8f0b954cc680" data-page-number="7" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:a073b7ae-687a-5b46-8d81-713bc61f573b" aria-labelledby="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680-title"><a class="goal-self-link" href="#goal-25278ecf-2e77-556e-9fe6-8f0b954cc680">Inflation in Fallstudien</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>25278ecf-2e77-556e-9fe6-8f0b954cc680</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-83ff15342bfae7f22fd4b47d">Preisniveaustabilität in der EWU</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:7830af5d229835813c140848b8d7116f5efbbccc6fb4001c4e87bb04db375535" data-rendered-digest="sha256:c7edd5850b689d8bfa12e02bf84a3922bd40b9adc0a70717223fdf9eb3ad8d2d" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/25278ecf-2e77-556e-9fe6-8f0b954cc680/25278ecf-2e77-556e-9fe6-8f0b954cc680.png" alt="Zwei Fallfelder zeigen frühere Krisenmotive und ausdrücklich ein heutiges fiktives Szenario mit Energie- und Nachfragemotiven. Gleiche Warenkörbe, ein Fragezeichen und zwei Karten laden zum Materialvergleich und zur Ursachenprüfung ein.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680-description-heading">
+        <p class="section-heading" id="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Inflationsszenarien historisch/aktuell analysieren.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680-requires-heading">
+          <p class="section-heading" id="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680-reverse-heading">
+          <p class="section-heading" id="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-8ebbbe19-43dd-53ff-a6d0-9d94a5973616" rel="noreferrer noopener"><span>Inflationsursachen und -dynamik</span> <code>8ebbbe19-43dd-53ff-a6d0-9d94a5973616</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-25278ecf-2e77-556e-9fe6-8f0b954cc680-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-34518145-b7a5-56dc-84fc-8e8b063b2456" rel="noreferrer noopener"><span>Inflation und Konjunktur: Modelle und historisches Dossier</span> <code>34518145-b7a5-56dc-84fc-8e8b063b2456</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-a56f511b-6e24-58fa-a950-974e1a3b9506" rel="noreferrer noopener"><span>Inflationsdossier, gewichtete Preise und echte Deflation unterscheiden</span> <code>a56f511b-6e24-58fa-a950-974e1a3b9506</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 12</span>
+      <span>Buch-Digest <code>sha256:783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480</code></span>
+      <span>Ziel-Fingerprint <code>sha256:bf59644e88fc3a72578732aec77affec702b43a1eca067f7c4a8a01ee05d13b9</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-D124-v19-b07&amp;edition=curricular-atomic-v1&amp;goalId=25278ecf-2e77-556e-9fe6-8f0b954cc680&amp;goalFingerprint=sha256%3Abf59644e88fc3a72578732aec77affec702b43a1eca067f7c4a8a01ee05d13b9&amp;pageFingerprint=sha256%3A19d3369fefea6cc7b6c045e5d9e1900d67346e57bb1fb5576022d2a90128a7d7&amp;bookDigest=sha256%3A783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a0b7eb01-1755-54ae-947d-c6ba21209d3a" data-goal-id="a0b7eb01-1755-54ae-947d-c6ba21209d3a" data-page-number="8" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:e547677e-17ec-5b89-9ff6-28e36ac64c1f goal:fa43671d-393b-5663-a7e6-cceed3f466f7" aria-labelledby="goal-a0b7eb01-1755-54ae-947d-c6ba21209d3a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a0b7eb01-1755-54ae-947d-c6ba21209d3a-title"><a class="goal-self-link" href="#goal-a0b7eb01-1755-54ae-947d-c6ba21209d3a">Industriepolitik und Subventionen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a0b7eb01-1755-54ae-947d-c6ba21209d3a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-51d12ebcbe6adcd82e288d4c">Q2 Wirtschaft und Wirtschaftspolitik</a></li><li><a href="#chapter-d220ca6a7265e9ec4cbe1405">Ordnungspolitik und Wettbewerb</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:abfca791dd1150704f3258ddfcb59b89383acfb28bcf1d072d114b3a9a64b8c9" data-rendered-digest="sha256:312131ddb71accfed271cbc3b13bfd542e486cd3c8a480b08ff66eb59b502f68" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/a0b7eb01-1755-54ae-947d-c6ba21209d3a/a0b7eb01-1755-54ae-947d-c6ba21209d3a.png" alt="Verkehrswege und qualifizierte Beschäftigte stehen für Standortbedingungen; eine Förderung führt zu einer Fabrik mit Prüfsymbol. Eine Waage mit Nutzen-, Kosten-, Umwelt- und Ressourcenmotiven hält die Abwägung offen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a0b7eb01-1755-54ae-947d-c6ba21209d3a-description-heading">
+        <p class="section-heading" id="goal-a0b7eb01-1755-54ae-947d-c6ba21209d3a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann industriepolitische Eingriffe (Subventionen, Standortpolitik) ordnungspolitisch einordnen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a0b7eb01-1755-54ae-947d-c6ba21209d3a-requires-heading">
+          <p class="section-heading" id="goal-a0b7eb01-1755-54ae-947d-c6ba21209d3a-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-a0b7eb01-1755-54ae-947d-c6ba21209d3a-reverse-heading">
+          <p class="section-heading" id="goal-a0b7eb01-1755-54ae-947d-c6ba21209d3a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-a0b7eb01-1755-54ae-947d-c6ba21209d3a-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a0b7eb01-1755-54ae-947d-c6ba21209d3a-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-9ca0e3c9-005e-5c8d-8157-3642e11f245e" rel="noreferrer noopener"><span>Ordnungspolitische Konzepte vergleichen</span> <code>9ca0e3c9-005e-5c8d-8157-3642e11f245e</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-a0b7eb01-1755-54ae-947d-c6ba21209d3a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a0b7eb01-1755-54ae-947d-c6ba21209d3a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-c919366e-cff5-50a1-b0a6-45fb3072544d" rel="noreferrer noopener"><span>Selektive Förderung und allgemeine Standortbedingungen prüfen</span> <code>c919366e-cff5-50a1-b0a6-45fb3072544d</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-f32592d4-e11d-5b87-841d-346f0859cf35" rel="noreferrer noopener"><span>Wettbewerb und nachhaltige Mobilitätsindustrie</span> <code>f32592d4-e11d-5b87-841d-346f0859cf35</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 12</span>
+      <span>Buch-Digest <code>sha256:783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d20b1b6007b01c201e63646d1b0360a4478ff3d30fb4cdfac6f162099d08bf64</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-D124-v19-b07&amp;edition=curricular-atomic-v1&amp;goalId=a0b7eb01-1755-54ae-947d-c6ba21209d3a&amp;goalFingerprint=sha256%3Ad20b1b6007b01c201e63646d1b0360a4478ff3d30fb4cdfac6f162099d08bf64&amp;pageFingerprint=sha256%3Ae172aeaedbaf640ca859ddb2c2a7c533b986ab4da39f993566e8ec001c824274&amp;bookDigest=sha256%3A783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-b2419b68-8e21-5cee-8afc-34e3b07d2a87" data-goal-id="b2419b68-8e21-5cee-8afc-34e3b07d2a87" data-page-number="9" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207" aria-labelledby="goal-b2419b68-8e21-5cee-8afc-34e3b07d2a87-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-b2419b68-8e21-5cee-8afc-34e3b07d2a87-title"><a class="goal-self-link" href="#goal-b2419b68-8e21-5cee-8afc-34e3b07d2a87">Nutzen und Grenzen volkswirtschaftlicher Modelle an Maßnahmen erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>b2419b68-8e21-5cee-8afc-34e3b07d2a87</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:cd191e0b9525b5d7c25f79d2ea289c9703fa52dbf6ba567c955eab70f2bf323f" data-rendered-digest="sha256:70eb4483ab8dcc6e0442cebea105d01961f162efb4750f786212ef345db0acf3" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/b2419b68-8e21-5cee-8afc-34e3b07d2a87/b2419b68-8e21-5cee-8afc-34e3b07d2a87.png" alt="Eine Gruppe betrachtet ein Modell mit Haushalten, Unternehmen und gegenläufigen Waren- und Geldbeziehungen; Annahmen und äußere Bedingungen zeigen seine Grenzen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-b2419b68-8e21-5cee-8afc-34e3b07d2a87-description-heading">
+        <p class="section-heading" id="goal-b2419b68-8e21-5cee-8afc-34e3b07d2a87-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann an konkreten wirtschaftspolitischen Maßnahmen Nutzen und Grenzen volkswirtschaftlicher Modelle aufzeigen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-b2419b68-8e21-5cee-8afc-34e3b07d2a87-requires-heading">
+          <p class="section-heading" id="goal-b2419b68-8e21-5cee-8afc-34e3b07d2a87-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-b2419b68-8e21-5cee-8afc-34e3b07d2a87-reverse-heading">
+          <p class="section-heading" id="goal-b2419b68-8e21-5cee-8afc-34e3b07d2a87-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-b2419b68-8e21-5cee-8afc-34e3b07d2a87-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b2419b68-8e21-5cee-8afc-34e3b07d2a87-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-b2419b68-8e21-5cee-8afc-34e3b07d2a87-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-b2419b68-8e21-5cee-8afc-34e3b07d2a87-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-8f603e75-a3da-5ec5-94ba-d3c51c7f1906" rel="noreferrer noopener"><span>GK: Zwei Maßnahmen mit einfachen Modellen prüfen</span> <code>8f603e75-a3da-5ec5-94ba-d3c51c7f1906</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-b851482c-5d7e-4228-aea8-3d277f897297" rel="noreferrer noopener"><span>Q2: Investitionspaket, Modellgrenzen und geldpolitische Transmission</span> <code>b851482c-5d7e-4228-aea8-3d277f897297</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-c2eec5be-5a62-52d0-ab8c-8d880cd39b71" rel="noreferrer noopener"><span>Modellnutzen und reale Grenzen: Nachfrage und Qualifikation</span> <code>c2eec5be-5a62-52d0-ab8c-8d880cd39b71</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 12</span>
+      <span>Buch-Digest <code>sha256:783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d488e9360da4d50553b1dbefbc11e93434e3753809ade12c958fd04069210a1f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-D124-v19-b07&amp;edition=curricular-atomic-v1&amp;goalId=b2419b68-8e21-5cee-8afc-34e3b07d2a87&amp;goalFingerprint=sha256%3Ad488e9360da4d50553b1dbefbc11e93434e3753809ade12c958fd04069210a1f&amp;pageFingerprint=sha256%3A10871a258c2f20c6ee3b5a3bac52f1a8dd1a9cf02242cc5d60e7285700f531ab&amp;bookDigest=sha256%3A783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c87e528a-cca8-5060-87cd-60adb4e54bd6" data-goal-id="c87e528a-cca8-5060-87cd-60adb4e54bd6" data-page-number="10" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207" aria-labelledby="goal-c87e528a-cca8-5060-87cd-60adb4e54bd6-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c87e528a-cca8-5060-87cd-60adb4e54bd6-title"><a class="goal-self-link" href="#goal-c87e528a-cca8-5060-87cd-60adb4e54bd6">Aktuelle Fragen zu Geld und Geldpolitik erörtern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c87e528a-cca8-5060-87cd-60adb4e54bd6</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:833e6bf741da0fb0e5a62a2ab34af459cca8efb808b507b1c39ae036834d2c76" data-rendered-digest="sha256:2c503984ab9b766ea0bd4b0805819fafa7c7086bf92591c9950bd61b90f95e81" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/c87e528a-cca8-5060-87cd-60adb4e54bd6/c87e528a-cca8-5060-87cd-60adb4e54bd6.png" alt="Eine Gruppe erörtert Geld, mögliche geldpolitische Wirkungswege und offene Preis-, Umwelt- und Gesellschaftsfragen. Eine Waage steht für die Abwägung; ein Kalender zeigt die fiktive Bilddatierung2025.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c87e528a-cca8-5060-87cd-60adb4e54bd6-description-heading">
+        <p class="section-heading" id="goal-c87e528a-cca8-5060-87cd-60adb4e54bd6-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aktuelle Fragen zu Geld und Geldpolitik fachlich fundiert erörtern.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c87e528a-cca8-5060-87cd-60adb4e54bd6-requires-heading">
+          <p class="section-heading" id="goal-c87e528a-cca8-5060-87cd-60adb4e54bd6-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-c87e528a-cca8-5060-87cd-60adb4e54bd6-reverse-heading">
+          <p class="section-heading" id="goal-c87e528a-cca8-5060-87cd-60adb4e54bd6-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-c87e528a-cca8-5060-87cd-60adb4e54bd6-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c87e528a-cca8-5060-87cd-60adb4e54bd6-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-0242e34e-e2fe-5a0f-8aed-57905c6ebb26" rel="noreferrer noopener"><span>EZB-Entscheidungen mandatsbezogen nachvollziehen</span> <code>0242e34e-e2fe-5a0f-8aed-57905c6ebb26</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-c87e528a-cca8-5060-87cd-60adb4e54bd6-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c87e528a-cca8-5060-87cd-60adb4e54bd6-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-4cc4ce1a-4ffc-5d42-9a2d-61b2b4db02ef" rel="noreferrer noopener"><span>Q3: Preis-, Zins- und Geldfragen vernetzt beurteilen</span> <code>4cc4ce1a-4ffc-5d42-9a2d-61b2b4db02ef</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 12</span>
+      <span>Buch-Digest <code>sha256:783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480</code></span>
+      <span>Ziel-Fingerprint <code>sha256:fd4d98b90b1ceb444c617ef54d5d89197b23c38d5e803676e9cca5c86f50b5e9</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-D124-v19-b07&amp;edition=curricular-atomic-v1&amp;goalId=c87e528a-cca8-5060-87cd-60adb4e54bd6&amp;goalFingerprint=sha256%3Afd4d98b90b1ceb444c617ef54d5d89197b23c38d5e803676e9cca5c86f50b5e9&amp;pageFingerprint=sha256%3Aeff54508e0f717598775efc9a78fe79e043397542d36e6c5fb1bf6adffc83a8b&amp;bookDigest=sha256%3A783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f" data-goal-id="94fe52f5-c5f6-592b-87eb-9a983dc2d78f" data-page-number="11" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207" aria-labelledby="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-title"><a class="goal-self-link" href="#goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f">Komplexe gesamtwirtschaftliche Problemstellungen vernetzt bearbeiten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>94fe52f5-c5f6-592b-87eb-9a983dc2d78f</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:52f29c60d9c0679547ebf22345e6a9a40bb7469edfc62e4cf4faea1b4a675932" data-rendered-digest="sha256:666e4b3adf76e040a77ca2112ef3a04634e8f43e7bd7149f7ecdbc019b478e0e" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/94fe52f5-c5f6-592b-87eb-9a983dc2d78f/94fe52f5-c5f6-592b-87eb-9a983dc2d78f.png" alt="Eine Gruppe verknüpft Haushalte, Unternehmen, Staat und internationalen Austausch auf einer großen Tafel. Drei gemeinsame Karten zeigen Vernetzung, mögliche Lösungswege und die Abwägung von Umwelt- und Wirtschaftsaspekten.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-description-heading">
+        <p class="section-heading" id="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Lösungsansätze für aktuelle komplexe gesamtwirtschaftliche Problemstellungen entwickeln und erörtern, indem sie erworbene Kompetenzen und volkswirtschaftliche Kenntnisse vernetzt anwendet.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-requires-heading">
+          <p class="section-heading" id="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-reverse-heading">
+          <p class="section-heading" id="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-950caf4f-1082-56bb-84db-b7174ce6c63f" rel="noreferrer noopener"><span>Wirtschaftspolitische Maßnahmen perspektivisch bewerten</span> <code>950caf4f-1082-56bb-84db-b7174ce6c63f</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-0242e34e-e2fe-5a0f-8aed-57905c6ebb26" rel="noreferrer noopener"><span>EZB-Entscheidungen mandatsbezogen nachvollziehen</span> <code>0242e34e-e2fe-5a0f-8aed-57905c6ebb26</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-94fe52f5-c5f6-592b-87eb-9a983dc2d78f-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-4cc4ce1a-4ffc-5d42-9a2d-61b2b4db02ef" rel="noreferrer noopener"><span>Q3: Preis-, Zins- und Geldfragen vernetzt beurteilen</span> <code>4cc4ce1a-4ffc-5d42-9a2d-61b2b4db02ef</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-8c865fee-0c51-5d1b-9309-ace5f555f96d" rel="noreferrer noopener"><span>Q3: Vernetzte Energieentlastung und Zahlungsübergang</span> <code>8c865fee-0c51-5d1b-9309-ace5f555f96d</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 12</span>
+      <span>Buch-Digest <code>sha256:783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480</code></span>
+      <span>Ziel-Fingerprint <code>sha256:06fa60111c8e7ba42de401418908a20326f00bbba996807b831dc4e720e33d9f</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-D124-v19-b07&amp;edition=curricular-atomic-v1&amp;goalId=94fe52f5-c5f6-592b-87eb-9a983dc2d78f&amp;goalFingerprint=sha256%3A06fa60111c8e7ba42de401418908a20326f00bbba996807b831dc4e720e33d9f&amp;pageFingerprint=sha256%3A4c71a9d75579a18473e6d679ff962e2ab230f5c2450f262c866bc48b3502aa88&amp;bookDigest=sha256%3A783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488" data-goal-id="c6f05990-4c2d-56ce-9412-3a4a4bcfc488" data-page-number="12" data-chapter-ids="structure:economics-current-canonical-root goal:96183c48-b499-54d7-8530-578f6ff40207 goal:9658d512-618c-56ab-aecf-14aaec1005f4" aria-labelledby="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-title"><a class="goal-self-link" href="#goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488">Nationaleinkommen aus Kreislaufdaten berechnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>c6f05990-4c2d-56ce-9412-3a4a4bcfc488</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-b4dde3c304021f05e1d6d857">Wirtschaftswissenschaften</a></li><li><a href="#chapter-a0dfaba9fba054a714038138">Wirtschaftswissenschaften</a></li><li><a href="#chapter-75e3708e304e7e3d4d482e3b">Ergänzende Sach- und Methodenkompetenzen</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:efe26493806bd4a5deb3222b4e8510b34278c5541e68e1be220428d17ebe2116" data-rendered-digest="sha256:b2f443fe0f10c936941498864fcd57dac3cb2118b45dcaffae0495dd8b913522" data-render-profile="chromium-canvas-bounded-atlas-v1">
+        <img src="/assets/goal-visualizations/wirtschaftswissenschaften/c6f05990-4c2d-56ce-9412-3a4a4bcfc488/c6f05990-4c2d-56ce-9412-3a4a4bcfc488.png" alt="Zwei beispielhafte Einkommensströme fließen zum Inländerhaushalt und in den Primäreinkommenskorb. Transfers und Kredite sind getrennt dargestellt.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-description-heading">
+        <p class="section-heading" id="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann aus vorgegebenen Kreislaufdaten das im Material eindeutig definierte Nationaleinkommen berechnen, die verwendeten Einkommensbestandteile zuordnen und erklären, welche in den Daten enthaltenen Zahlungen nicht zu dieser Bezugsgröße gehören.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-requires-heading">
+          <p class="section-heading" id="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-reverse-heading">
+          <p class="section-heading" id="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-6bf2d1cc-e745-50dd-a617-71c06a6c6945" rel="noreferrer noopener"><span>Warum Wirtschaftswissenschaften? - Relevanz und Orientierung</span> <code>6bf2d1cc-e745-50dd-a617-71c06a6c6945</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-c6f05990-4c2d-56ce-9412-3a4a4bcfc488-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=605bdaf6-32d5-56fd-8d92-5a80c2fd2901&amp;edition=curricular-atomic-v1#goal-12f6e48c-5a40-56c3-80f4-f1927eaf497c" rel="noreferrer noopener"><span>Kreislauf- und Haushaltsdaten begründet auswerten</span> <code>12f6e48c-5a40-56c3-80f4-f1927eaf497c</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 12</span>
+      <span>Buch-Digest <code>sha256:783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d475044adfb956a6979ffa08992cbc2a58d50dff499a3c365603fa373e9f8789</code></span>
+      <a href="https://skillpilot.com/lernziel-feedback?bookId=de-gym-economics-current336-D124-v19-b07&amp;edition=curricular-atomic-v1&amp;goalId=c6f05990-4c2d-56ce-9412-3a4a4bcfc488&amp;goalFingerprint=sha256%3Ad475044adfb956a6979ffa08992cbc2a58d50dff499a3c365603fa373e9f8789&amp;pageFingerprint=sha256%3Acacd1c74e7911ae4ec8b74aaff80d5c903c141d1bbf1cbf949a7f6df4e8eaa73&amp;bookDigest=sha256%3A783a19751d878ee3fa40b1656aa332543ecce8aff0589bbc7fad0c9429981480&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

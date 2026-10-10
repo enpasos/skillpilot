@@ -1,0 +1,30 @@
+import{readFileSync,writeFileSync}from'node:fs';
+import{createHash}from'node:crypto';
+import assert from'node:assert/strict';
+import{fingerprintSemanticKindSourceGoal}from'/home/enpasos/projects/skillpilot/app/scripts/goalBookModel.ts';
+import{fingerprintGoalForEvidence,fingerprintGoalEvidenceReviewInput}from'/home/enpasos/projects/skillpilot/app/scripts/goalEvidenceProfileModel.ts';
+const [R,O]=process.argv.slice(2),rd=(p:string)=>JSON.parse(readFileSync(R+'/'+p,'utf8'));
+const h=rd('curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M6-fifteen-graph-phase-and-one-income-gate-isolated-author-v1/actual-final-fifteen-goal-graph-phase-and-one-income-gate-inert-AUTHOR.handoff.json');
+const b=rd(h.wholeBefore.path),a=rd(h.wholeAfter.path),bg=new Map(b.goals.map((g:any)=>[g.id,g])),ag=new Map(a.goals.map((g:any)=>[g.id,g]));
+const reg=rd('curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json'),s=reg.subjects.find((s:any)=>s.subject==='wirtschaftswissenschaften');
+const old=rd(s.semanticKindLedgerPath),next=rd('curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-current678-fifteen-qualified-graph-20261010-v18/wirtschaftswissenschaften.semantic-kinds.json'),nd=new Map(next.decisions.map((d:any)=>[d.goalId,d]));
+const changed:any[]=[];
+assert.deepEqual(next.counts,old.counts);assert.equal(old.decisions.length,678);assert.equal(next.decisions.length,678);
+for(const d of old.decisions){const n:any=nd.get(d.goalId);assert.equal(d.sourceFingerprint,fingerprintSemanticKindSourceGoal(bg.get(d.goalId) as any));assert.equal(n.sourceFingerprint,fingerprintSemanticKindSourceGoal(ag.get(d.goalId) as any));assert.deepEqual({...n,sourceFingerprint:d.sourceFingerprint},d);if(d.sourceFingerprint!==n.sourceFingerprint)changed.push(d.goalId)}
+assert.equal(changed.length,15);
+const rows=(p:string)=>readFileSync(R+'/'+p,'utf8').trim().split(/\r?\n/).map(l=>JSON.parse(l));
+const prior=rows(rd('app/scripts/config/goal-books/de-gym-economics-current-canonical.json').evidenceReviewPaths[0]);
+const current=rows('curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-current678-fifteen-qualified-graph-20261010-v18/whole336-original-profiles685-only-ten-qualified-current-input-bindings.jsonl');
+const pm=new Map(prior.map((p:any)=>[p.goalId,p])),pChanged:any[]=[];
+assert.equal(prior.length,336);assert.equal(current.length,336);let cases=0;
+for(const n of current){const p:any=pm.get(n.goalId),g:any=ag.get(n.goalId),digests:any={};
+ for(const l of g.resourceLinks??[])if(l.type==='goal-visualization')digests[l.url]='sha256:'+createHash('sha256').update(readFileSync(R+'/app/public'+l.url)).digest('hex');
+ assert.equal(n.goalFingerprint,fingerprintGoalForEvidence(g,n.goalFingerprintRuleVersion,'curricularAtomic'));
+ assert.equal(n.reviewInputFingerprint,fingerprintGoalEvidenceReviewInput(g,n.goalFingerprintRuleVersion,digests,'curricularAtomic'));
+ assert.deepEqual({...n,goalFingerprint:p.goalFingerprint,reviewInputFingerprint:p.reviewInputFingerprint},p);
+ assert.equal(n.status,'needs_human_review');assert.equal(n.reviewAuthority,'ai_candidate');cases+=n.profile.applicationCaseBriefs.length;
+ if(n.goalFingerprint!==p.goalFingerprint||n.reviewInputFingerprint!==p.reviewInputFingerprint)pChanged.push({goalId:n.goalId,goalFingerprintChanged:n.goalFingerprint!==p.goalFingerprint,reviewInputFingerprintChanged:n.reviewInputFingerprint!==p.reviewInputFingerprint});
+}
+assert.equal(pChanged.length,10);assert.equal(cases,685);assert.equal(pChanged.filter(x=>x.goalFingerprintChanged).length,9);
+writeFileSync(O+'/actual-independent-root-official-SEM678-P336685-fifteen-ten-binding-deltas.json',JSON.stringify({reviewer:'/root',scope:'independent technical verification only; semantic delta qualified separately',all678CurrentOfficialSemanticSourceFingerprints:true,actual15SEMChanges:changed,allKindsStatusesBasesExact:true,all336NativeGoalAndInputFingerprintsCurrent:true,actual10Pchanges:pChanged,all336ProfileBodies685CasesProfileFPsStatusAuthorityAndReviewMetaExact:true,all326UnaffectedWholePRecordsExact:true,activeWrites:0,newScientificApprovals:0,humanApproval:false},null,2)+'\n');
+console.log('independent ROOT current official SEM678 and P336/685 exact follower PASS');

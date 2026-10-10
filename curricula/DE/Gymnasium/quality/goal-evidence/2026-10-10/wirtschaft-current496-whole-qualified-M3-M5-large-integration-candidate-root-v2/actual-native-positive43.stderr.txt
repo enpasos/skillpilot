@@ -1,0 +1,31 @@
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-current496-qualified-M3-M5-bindings-20261010-v6/configs/13.positive.config.json["5b5d1d53-71c3-5fbf-b1cf-977c868b60e3: stale reviewInputFingerprint; expected sha256:0f454f11df675f7b021b97df1d1b8459645d74e90e9475dfedfc2c23669ce87c"]
++ actual - expected
+
++ [
++   '5b5d1d53-71c3-5fbf-b1cf-977c868b60e3: stale reviewInputFingerprint; expected sha256:0f454f11df675f7b021b97df1d1b8459645d74e90e9475dfedfc2c23669ce87c'
++ ]
+- []
+    at assert (/tmp/skillpilot-economics-current-merged-native-root-_x0aqs8o/app/scripts/rootQualified496PositiveFollow.ts:1:499)
+    at Object.<anonymous> (/tmp/skillpilot-economics-current-merged-native-root-_x0aqs8o/app/scripts/rootQualified496PositiveFollow.ts:1:1586)
+    at Module._compile (node:internal/modules/cjs/loader:1521:14)
+    at Object.transformer (/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-D46fvsV_.cjs:3:1104)
+    at Module.load (node:internal/modules/cjs/loader:1266:32)
+    at Module._load (node:internal/modules/cjs/loader:1091:12)
+    at cjsLoader (node:internal/modules/esm/translators:298:15)
+    at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:240:7)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [
+    '5b5d1d53-71c3-5fbf-b1cf-977c868b60e3: stale reviewInputFingerprint; expected sha256:0f454f11df675f7b021b97df1d1b8459645d74e90e9475dfedfc2c23669ce87c'
+  ],
+  expected: [],
+  operator: 'deepStrictEqual'
+}
+
+Node.js v20.20.2

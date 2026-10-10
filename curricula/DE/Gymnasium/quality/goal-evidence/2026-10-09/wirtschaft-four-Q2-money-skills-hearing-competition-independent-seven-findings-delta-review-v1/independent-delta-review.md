@@ -1,0 +1,7 @@
+Vier ganze Q2-Nachfolger sind nach gezielter unabhängiger Delta-Prüfung **KEEP**; alle sieben konkreten Befunde aus dem unveränderten Originalreview sind behoben.
+
+Der dritte Geldpolitikwert hat nun einen echten Aufgabeninput. Klinik- und Demografieaufgaben prüfen gleiche Dokumentationszeitnenner und tatsächliche bedingte Tarifwirkungen. Die Anhörung verlangt belegte Nachfrage-/Angebotsmechanismen und komplementäre Entgelt-/Gewinnanteile im ausdrücklich definierten fiktiven Einkommensmodell; Umsatz-/nationale Statistikbehauptungen bleiben ausgeschlossen. Beide Quellenbeilageangaben nennen wahrheitsgemäß Lesehilfen und offizielle Links.
+
+27 eigene gezielte Rechen-/Punktesummenprüfungen bestanden. Acht bisherige ganze Gegenantworten wurden gezielt neu bewertet, zwei unveränderte Verteilungsgegenantworten geschützt und fünf neue ganze Grenzfälle geprüft.20 unveränderte ganze Zielverträge/P-Profile und40historische Fälle sind exakt wiederverwendet. Bestehensgrenzen40/24,44/27,48/29und56/34 bleiben erhalten; reguläre Teilpunkte und alternative richtige Begründungen bleiben möglich.
+
+Nur die eigene inerte Whole4 erhält maschinell released. Die übrigen412Goalobjekte/5Q2-Materialien sind byte-/objektgenau zumV7-Kombinationsstand geschützt; daraus folgt keine eigene Prüfung fremder Materialien. Quellen125-, Kurs-, D/V-, Runtime-/Mastery- und menschliche Gates bleiben separat offen. Strenger aktiver Fortschritt300/311, Netto0; aktive neue Fachabschlüsse0 und wiederhergestellte Bindungen0.

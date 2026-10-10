@@ -1,0 +1,43 @@
+{
+  "commands": [
+    {
+      "stage": "dual-summary",
+      "command": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/configs/current336-D124-batch-13.config.json",
+        "--write"
+      ],
+      "actualExitCode": 0,
+      "seconds": 0.499
+    },
+    {
+      "stage": "synthesis-manifest",
+      "command": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/configs/current336-D124-batch-13.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-D124-special13-only-one-qualified-keep-048-native-resolution-root-v1/actual-only048-synthesis-authoring.json",
+        "--write"
+      ],
+      "actualExitCode": 1,
+      "seconds": 0.494
+    }
+  ],
+  "all4Passed": false,
+  "resolutionCandidateGoals": [
+    "04809186-3f65-579d-b300-af9ed3e100c1"
+  ],
+  "explicitlyDeferred": [
+    "5b5ed3cb-7c2c-5b0f-a515-c967d8d23644"
+  ],
+  "activeRegistryWrites": 0,
+  "newStrictClosuresCounted": 0,
+  "humanApproval": false
+}

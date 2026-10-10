@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:b50da7a733cc84fc32181f191a376ed1ad4202c8e1871308a41adc8c4db03baa",
+  "reviewInputFingerprint": "sha256:36774f6a9312c09e3e8aa9b5fd4a515d779d2f302a968467d37434d4ef2c8429",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-current336-D124-v19-b13-a",
+      "roundId": "wirtschaft-current336-D124-v19-b13-first-pass-a",
+      "independenceGroupId": "wirtschaft-current336-D124-v19-b13-independent-a",
+      "runIds": [
+        "wirtschaft-current336-D124-v19-b13-first-pass-a.batch-001.openai-gpt6-blind-a-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "wirtschaft-current336-D124-v19-b13-b",
+      "roundId": "wirtschaft-current336-D124-v19-b13-first-pass-b",
+      "independenceGroupId": "wirtschaft-current336-D124-v19-b13-independent-b",
+      "runIds": [
+        "wirtschaft-current336-D124-b13-independent-b-actual-run-v1"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::GPT-6 (Codex agent)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "04809186-3f65-579d-b300-af9ed3e100c1",
+      "firstRecordId": "wirtschaft-current336-D124-v19-b13-first-pass-a.batch-001.openai-gpt6-blind-a-v1.goal-1",
+      "secondRecordId": "wirtschaft-current336-D124-b13-independent-b-actual-run-v1.record-001",
+      "firstRunId": "wirtschaft-current336-D124-v19-b13-first-pass-a.batch-001.openai-gpt6-blind-a-v1",
+      "secondRunId": "wirtschaft-current336-D124-b13-independent-b-actual-run-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5b5ed3cb-7c2c-5b0f-a515-c967d8d23644",
+      "firstRecordId": "wirtschaft-current336-D124-v19-b13-first-pass-a.batch-001.openai-gpt6-blind-a-v1.goal-2",
+      "secondRecordId": "wirtschaft-current336-D124-b13-independent-b-actual-run-v1.record-002",
+      "firstRunId": "wirtschaft-current336-D124-v19-b13-first-pass-a.batch-001.openai-gpt6-blind-a-v1",
+      "secondRunId": "wirtschaft-current336-D124-b13-independent-b-actual-run-v1",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

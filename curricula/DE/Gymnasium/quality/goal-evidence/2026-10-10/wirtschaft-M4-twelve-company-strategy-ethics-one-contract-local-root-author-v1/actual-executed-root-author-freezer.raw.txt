@@ -1,0 +1,193 @@
+from pathlib import Path
+from fractions import Fraction as F
+import copy, hashlib, json, runpy, uuid
+
+R=Path('/home/enpasos/projects/skillpilot')
+Q=R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10'
+O=Q/'wirtschaft-M4-twelve-company-strategy-ethics-one-contract-local-root-author-v1'
+INTAKE=Q/'wirtschaft-M4-current555-twelve-company-strategy-ethics-KEEP-first-readonly-intake-independent-a-v1'
+data=runpy.run_path('/tmp/economics-company12-root-authored-datasets-v1.py')['DATA']
+def rd(p):return json.loads(p.read_text())
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def binding(p):return {'path':str(p.relative_to(R)),'sha256':sha(p),'bytes':p.stat().st_size}
+def wr(p,x):
+    assert not p.exists(),p
+    p.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n')
+    return binding(p)
+canpath=R/'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json'
+assert sha(canpath)=='9c451039786812f3a77b4f9eaa26481e8129e0c0ab9468dacd5c30b1fc81da03'
+before=rd(canpath);assert len(before['goals'])==577
+regpath=R/'curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json'
+reg=rd(regpath);subject=next(x for x in reg['subjects']if x['subject']=='wirtschaftswissenschaften')
+profiles={};original_configs=[]
+for path in subject['positiveEvidenceConfigPaths']:
+    cfg=rd(R/path);original_configs.extend([binding(R/path),binding(R/cfg['reviewPath'])])
+    for line in (R/cfg['reviewPath']).read_text().splitlines():
+        if line.strip():
+            p=json.loads(line);assert p['goalId']not in profiles;profiles[p['goalId']]=p
+assert len(profiles)==336 and sum(len(p['profile']['applicationCaseBriefs'])for p in profiles.values())==685
+intakepath=INTAKE/'actual-current555-twelve-whole-company-strategy-ethics-contracts-originalP-and-KEEP-first-scope-closure-intake.readonly.json'
+assert sha(intakepath)=='f0502a542488a6fcfdf90e5203d0d8ab3607d6468621ecac7f34d592b759b31f'
+intake=rd(intakepath);ig={r['goalId']:r for r in intake['actualRows']}
+gmap={g['id']:g for g in before['goals']};assert len(ig)==12
+families={
+ 'abb13':(['Ethische Bewertung tatsächlicher sozialer/ökologischer Geschäftswirkungen','Unterscheidung von Anspruch und Wirkungsnachweis','Umsetzung und Kontrolle aus Betroffenenperspektive'],['Ethical assessment of actual social/environmental business effects','Distinction between claims and impact evidence','Implementation and scrutiny from affected perspectives']),
+ 'a56d':(['Konkrete Anwendung des Folgen-/Nutzenmodells','Konkrete Anwendung des jeweils zweiten Rechte-/Teilhabemodells','Fallbezogene Verbindung und offengelegte normative Gewichtung'],['Concrete use of the consequence/welfare model','Concrete use of the second rights/participation model','Case-based integration and explicit normative weighting']),
+ '65d9':(['Konkreter staatlicher Wirkungsweg und betrieblicher Handlungsspielraum','Fallbezogene Kosten-/Alternativenbewertung','Beurteilung mit öffentlicher Perspektive und benannten Bedingungen'],['Concrete government mechanism and business options','Case-based cost/alternative assessment','Judgment including public purposes and explicit conditions']),
+ '21dc':(['Fallbezogene Unterscheidung Absprache versus Zusammenschluss','Begründeter Wettbewerbsmechanismus anhand Fallbelegen','Funktion passender Prüfung/Maßnahme nach gegebenen Regeln'],['Case-based distinction between coordination and merger','Reasoned competition mechanism using case evidence','Function of fitting scrutiny/action under supplied rules']),
+ '4c7c':(['Eigen-/Fremdkapital samt Zahlungs- und Einflussrechten','Normal-/Belastungsfall mit konkreter Liquiditätsfolge','Unterscheidung Beteiligungsverlust/Gesellschaftsrisiko/persönlicher Garantiehaftung'],['Equity/debt with payment and control rights','Baseline/stress with concrete cash effects','Distinction between equity loss/company risk/personal guarantee exposure']),
+ '43a90':(['Wirkungsweg neue Rahmenbedingung→Prozessanpassung','Kosten-/Auslastungsfolgen anhand gegebener Daten','Qualität/Flexibilität und fallbezogene Grenze'],['Pathway from changed conditions to process adaptation','Cost/utilisation effects from supplied data','Quality/flexibility and a case-specific limit']),
+ '71a3':(['Kaizen-/Lean-Mechanismen konkret unterscheiden','Just-in-Sequence einschließlich tatsächlicher Folge und Zeit','Effizienz/Qualität/Risiko fallbezogen beurteilen'],['Concretely distinguish kaizen/lean mechanisms','Just-in-sequence including actual order and timing','Case-based efficiency/quality/risk assessment']),
+ 'd246':(['Ansoff tatsächlich anwenden','Porter tatsächlich anwenden','Rechtsformwahl mit Einzel-/OHG-/GmbH-Kapital, Haftung und Steuerung','Standortmodell tatsächlich anwenden','Make-or-Buy tatsächlich anwenden und die Modellbefunde verbinden'],['Actually apply Ansoff','Actually apply Porter','Form choice using sole/OHG/GmbH finance, liability and control','Actually apply location analysis','Actually apply make-or-buy and integrate model findings']),
+ '0d8cb':(['Tatsächliche Arbeitsanalyse/-synthese und richtig angewandter Netzplan','Tatsächlich erstelltes fachliches Ergebnisartefakt','Dokumentierte wirkliche Team- oder ausdrücklich benannte Rollenausführung','Passende gemeinsame digitale Dokumentation/Version und tatsächlich ausgeführte Änderung mit Evaluation'],['Actual breakdown/integration and correctly used network','Actually created subject artefact','Documented actual team or explicitly labelled role execution','Suitable shared digital documentation/version and actually executed revision with evaluation']),
+ '645e':(['Konkrete Anwendung der ethischen Konfliktmaßstäbe','Ausführbare Beteiligungs-/Entscheidungs-/Kontrollregel','Begründete finanzierbare Lösung mit konkreter Nachprüfung und Grenze'],['Concrete use of ethical conflict criteria','Workable participation/decision/oversight rule','Reasoned affordable resolution with actual follow-up and limits']),
+ '7a553':(['Geschäfts-/Datenanreiz mit fallbezogenem Nutzen und Risiken','Konkrete Autonomie-/Privatsphärenbewertung und faire Gruppenwirkung','Begründete wirksame Kontrolle/Alternative samt Grenze'],['Business/data incentives with case-based benefits and risks','Concrete autonomy/privacy assessment and fair group effects','Justified effective oversight/alternative with limits']),
+ '36eb':(['Verantwortung, freiwillige Maßnahme und konkret anwendbare Pflicht unterscheiden','Angemessene Sorgfalt/Abhilfe anhand bereitgestellter aktueller Regeln anwenden','Betroffenenwirkung, Nachweis, Kosten und Grenzen konkret bewerten'],['Distinguish responsibility, voluntary action and specifically applicable duties','Apply proportionate diligence/remedy under supplied current rules','Concretely assess affected effects, evidence, cost and limits'])}
+O.mkdir(exist_ok=False)
+owninputs=[];bodies=[];works=[]
+for d in data:
+    g=next(g for g in before['goals']if g['id'].startswith(d['prefix']))
+    p=profiles[g['id']];assert g==ig[g['id']]['wholeCurrentDEENGoal']and p==ig[g['id']]['wholeOriginalP']
+    assert p['status']=='needs_human_review'and p['reviewAuthority']=='ai_candidate'
+    owninputs.append({'wholeCurrentGoal':g,'wholeOriginalPositiveEvidence':p,'retainedWholeMaterialAndRealScopeLimits':ig[g['id']]['existingWholeMaterialRoutesWithExactCountryCourseAndClosureContexts']})
+    fd,fe=families[d['prefix']]
+    boundary_de='**Bewertung:** Wenn über beide Varianten eines der folgenden notwendigen Kompetenzfelder vollständig fehlt oder durchgehend fachlich verfehlt wird: '+ '; '.join(fd)+', höchstens14/24BE. Teilrichtiges und fachlich passendes alternatives Vorgehen zählt; kein perfekter Text, keine vollständige Ideallösung und keine zusätzliche Aufgabenquote sind erforderlich. Norm-/Modellhilfe darf genutzt werden. Eine ausdrücklich benannte Rollensimulation ist beim Projekt zulässig, wird aber nicht als echte Teaminteraktion ausgegeben.'
+    boundary_en='**Assessment:** If across both variants any of the following necessary competence fields is wholly absent or consistently scientifically mistaken: '+ '; '.join(fe)+', maximum14/24marks. Correct partial work and fitting alternatives earn credit; perfect prose, a complete ideal solution and extra task quotas are unnecessary. The supplied norm/model aid may be used. Expressly labelled project role simulation is allowed without representing it as actual team interaction.'
+    td=['**Zwei unabhängige fiktive Fallvarianten —24BE, Bestehensgrenze15.**'];te=['**Two independent fictional case variants —24marks, passing threshold15.**']
+    if d.get('helpDe'):td.append(d['helpDe']);te.append(d['helpEn'])
+    sd=[];se=[];steps=[];index=0;task_rows=[]
+    for ci,ca in enumerate(d['cases']):
+        td.append(('A'if ci==0 else'B')+': '+ca['materialDe']);te.append(('A'if ci==0 else'B')+': '+ca['materialEn'])
+        for t in ca['tasks']:
+            index+=1;sid='s'+str(index)
+            td.append(str(index)+'. '+t['taskDe']+' **4BE**');te.append(str(index)+'. '+t['taskEn']+' **4marks**')
+            sd.append(str(index)+'. '+' '.join(str(k+1)+') '+s+' **1BE**'for k,s in enumerate(t['criteriaDe'])))
+            se.append(str(index)+'. '+' '.join(str(k+1)+') '+s+' **1mark**'for k,s in enumerate(t['criteriaEn'])))
+            steps.append({'id':sid,'points':4,'description':('A'if ci==0 else'B')+': '+t['taskDe'],'descriptionEn':('A'if ci==0 else'B')+': '+t['taskEn']})
+            task_rows.append((sid,t))
+    assert index==6
+    td.append(boundary_de);te.append(boundary_en);sd.append(boundary_de);se.append(boundary_en)
+    phase=g.get('phase',g.get('dimensionTags',{}).get('phase','Katalog'))
+    courses=[s for s in g['tags']if s in ['GK','LK']];assert courses in [['GK','LK'],['LK']]
+    bid=str(uuid.uuid5(uuid.NAMESPACE_URL,'skillpilot:DE_GYM_ECONOMICS_CURRENT_LOCAL_COMPANY_ONE_CONTRACT_20261010_V1:'+g['id']))
+    body={'id':bid,'title':d['titleDe'],'titleEn':d['titleEn'],
+        'description':'Die lernende Person kann zwei unterschiedliche gegebene Fälle zu '+g['title']+' selbstständig fachlich bearbeiten, begründen und kritisch beurteilen.',
+        'descriptionEn':'The learner can independently analyse, justify and critically assess two different supplied cases on '+g['titleEn']+'.',
+        'weight':1,'tags':courses+['Practice','Assessment'],'contains':[],'requires':[g['id']],
+        'type':'atomic','phase':phase,'dimensionTags':{'framework':'canonical-gymnasium-economics','demandLevel':'AB3','phase':phase},
+        'extendedData':{'applicabilityFromRequires':True},
+        'examData':{'reviewStatus':'draft','coveredGoalIds':[g['id']],
+            'coveredStrands':g.get('dimensionTags',{}).get('guidingIdeas')or['WW_WIRTSCHAFT'],
+            'demandLevels':['AB1','AB2','AB3'],'taskContent':'\n\n'.join(td),'taskContentEn':'\n\n'.join(te),
+            'solutionContent':'\n\n'.join(sd),'solutionContentEn':'\n\n'.join(se),
+            'scoring':{'maxPoints':24,'passingPoints':15,'steps':steps}}}
+    bodies.append(body)
+    full={'workId':d['prefix']+'-own-author-full24','goalId':bid,'kind':'OWN_AUTHOR_SELF_CHECK_NOT_INDEPENDENT_REVIEW',
+          'wholeDEWork':[{'step':sid,'actualAnswer':' '.join(t['criteriaDe']),'ownCriterionMarks':[1,1,1,1]}for sid,t in task_rows],
+          'wholeENWork':[{'step':sid,'actualAnswer':' '.join(t['criteriaEn']),'ownCriterionMarks':[1,1,1,1]}for sid,t in task_rows],
+          'rawMarks':24,'wholeEssentialAbsent':False,'awardedMarks':24,'passes':True}
+    partial=copy.deepcopy(full);partial['workId']=d['prefix']+'-own-author-fair-incomplete18';partial['rawMarks']=partial['awardedMarks']=18
+    for i,(sid,t)in enumerate(task_rows):
+        omitted=3
+        # Keep actual evaluation in both project revisions. The role execution
+        # is already present in its performed artefact/coordination steps.
+        if d['prefix']=='0d8cb'and i in [2,5]:omitted=1
+        for language,key in [('De','wholeDEWork'),('En','wholeENWork')]:
+            partial[key][i]['actualAnswer']=' '.join(s for j,s in enumerate(t['criteria'+language])if j!=omitted)
+            partial[key][i]['ownCriterionMarks']=[0 if j==omitted else 1 for j in range(4)]
+    failure={'workId':d['prefix']+'-own-author-whole-core-absence0','goalId':bid,'kind':'OWN_AUTHOR_SELF_CHECK_NOT_INDEPENDENT_REVIEW',
+             'wholeDEAnswer':d['absenceDe'],'wholeENAnswer':d['absenceEn'],
+             'ownCriterionMarks':[[0,0,0,0]for _ in range(6)],'rawMarks':0,'wholeEssentialAbsent':True,'awardedMarks':0,'passes':False}
+    works.extend([full,partial,failure])
+
+# Actual exact-arithmetic checks on authored scenarios, not an independent
+# scientific review and not evidence of a learner's performance.
+numeric=[
+ ('CSR intensity reduction',(F(2)-F(8,5))/2,F(1,5)),('CSR absolute baseline',F(1000)*2,F(2000)),
+ ('CSR absolute successor',F(1500)*F(8,5),F(2400)),('CSR absolute increase',F(400)/2000,F(1,5)),
+ ('CSR data reserve',F(5000)-2000,F(3000)),('Ethics safer reserve',F(13000)-12000,F(1000)),
+ ('Water capacity',F(40)+60,F(100)),('Water infeasible promise',F(80)+40,F(120)),
+ ('Filter2',F(10000)+500*2,F(11000)),('Process2',F(12000)-300*2,F(11400)),
+ ('Filter3',F(10000)+500*3,F(11500)),('Process3',F(12000)-300*3,F(11100)),
+ ('Technology crossover',F(2000)/800,F(5,2)),('Grant own funds',F(6000)-4000,F(2000)),
+ ('Credit baseline',F(22000)-14000,F(8000)),('Credit stress',F(9000)-14000,F(-5000)),
+ ('Guarantee residual',F(10000)-4000,F(6000)),('Changeover line',F(10)*2,F(20)),
+ ('Changeover team',F(10)*F(1,2),F(5)),('Manual500',F(1000)+9*500,F(5500)),
+ ('Auto500',F(6000)+4*500,F(8000)),('Manual1200',F(1000)+9*1200,F(11800)),
+ ('Auto1200',F(6000)+4*1200,F(10800)),('Automation threshold',F(5000)/5,F(1000)),
+ ('Lean before',F(24)+36,F(60)),('Lean after',F(24)+16,F(40)),('Lean fraction reduction',F(20)/60,F(1,3)),
+ ('Furniture capital need',F(35)+5,F(40)),('Furniture capital available',F(30)+20,F(50)),
+ ('Furniture M score',F(3,5)*8+F(2,5)*4,F(32,5)),('Furniture N score',F(3,5)*6+F(2,5)*9,F(36,5)),
+ ('Furniture make',F(8000)+10*1500,F(23000)),('Furniture buy',F(18)*1500,F(27000)),
+ ('Make buy equality',F(8000)/(18-10),F(1000)),('Software P score',F(7,10)*9+F(3,10)*3,F(36,5)),
+ ('Software Q score',F(7,10)*6+F(3,10)*8,F(33,5)),('Software own',F(6000)+4*500,F(8000)),
+ ('Software outside',F(10)*500,F(5000)),('Software equality',F(6000)/(10-4),F(1000)),
+ ('Kiosk disposable',F(100)*F(1,5),F(20)),('Kiosk reusable',F(12)+F(100)*F(1,20),F(17)),
+ ('Kiosk network initial',F(2)+max(F(3),F(2))+1,F(6)),('Kiosk network revision',F(2)+max(F(3),F(4))+1,F(7)),
+ ('Stand budget initial',F(20)+15+10,F(45)),('Stand budget revised',F(35)+15+10,F(60)),
+ ('Stand budget option',F(25)+15+10,F(50)),('Stand network initial',max(F(1)+2+2,F(1)+3)+1,F(6)),
+ ('Stand network revised',max(F(1)+2+4,F(1)+3)+1,F(8)),('Stand network option',max(F(1)+2+1,F(1)+3)+1,F(5)),
+ ('Governance protection',F(50)+10,F(60)),('Governance unfunded plant',F(20)-8,F(12)),
+ ('Ad profile margin',F(12000)-10000,F(2000)),('Ad contextual margin',F(11000)-10000,F(1000)),
+ ('AI X false rejection',F(10)/100,F(1,10)),('AI Y false rejection',F(30)/100,F(3,10)),
+ ('AI accuracy',F(1000-40)/1000,F(24,25)),('AI disparity',F(30)/10,F(3)),
+ ('Supply plan reserve',F(50)-40,F(10)),('Supply remedy reserve',F(40)-30,F(10)),
+ ('Cartel price rises A',F(15)-10,F(5)),('Cartel price rises B',F(15)-12,F(3)),
+ ('Cartel price rises C',F(15)-11,F(4)),('Merger combined share',F(46)+24,F(70)),
+ ('Merger cost relative reduction',F(2)/12,F(1,6))]
+assert all(actual==expected for _,actual,expected in numeric)
+for w in works:
+    assert w['passes']==(w['awardedMarks']>=15)
+    if 'wholeDEWork'in w:
+        assert sum(sum(s['ownCriterionMarks'])for s in w['wholeDEWork'])==w['rawMarks']
+        assert sum(sum(s['ownCriterionMarks'])for s in w['wholeENWork'])==w['rawMarks']
+whole=copy.deepcopy(before);whole['goals'].extend(bodies)
+assert len(whole['goals'])==589 and len({g['id']for g in whole['goals']})==589
+for relation in ['contains','requires']:
+    graph={g['id']:g.get(relation,[])for g in whole['goals']};visiting=set();visited=set()
+    def visit(gid):
+        assert gid in graph and gid not in visiting,(relation,gid)
+        if gid in visited:return
+        visiting.add(gid)
+        for child in graph[gid]:visit(child)
+        visiting.remove(gid);visited.add(gid)
+    for gid in graph:visit(gid)
+bp=O/'whole-twelve-company-strategy-ethics-one-contract-two-case-DEEN24-15.DRAFT-author-candidates-v1.json';bb=wr(bp,bodies)
+wb=wr(O/'whole-current589-twelve-company-DRAFT-no-scope-nav-status-promotion.INERT-author-only.json',whole)
+own=wr(O/'actual-root-whole-twelve-current577-contracts-originalP24-and-retained-whole-closure-intake.json',owninputs)
+wr(O/'actual-root-own-author-thirtysix-whole-DEEN-answer-works-not-independent-review.json',works)
+nb=wr(O/'actual-root-sixtyfour-exact-rational-scenario-author-checks.json',{'actualChecks':len(numeric),'mismatches':0,'checks':[{'case':label,'actual':str(actual),'expected':str(expected)}for label,actual,expected in numeric], 'independentReview':False})
+assert len(numeric)==64
+primary=[('HGB105','https://www.gesetze-im-internet.de/hgb/__105.html','Joint commercial OHG, company can hold rights/debt; not a limited-liability partnership.'),('HGB126','https://www.gesetze-im-internet.de/hgb/__126.html','Personal joint-and-several shareholder liability; agreement limiting it cannot bind third-party creditors.'),('GmbHG13','https://www.gesetze-im-internet.de/gmbhg/__13.html','Company has its own rights; company assets answer for its debt. Additional given guarantee remains a separate basis.'),('LkSG1','https://www.gesetze-im-internet.de/lksg/__1.html','Domestic scope and 1,000 domestic employees from2024; group/agency counting not used in these stipulated cases.'),('LkSG3','https://www.gesetze-im-internet.de/lksg/__3.html','Proportionate diligence uses activity, influence, severity/reversibility/probability and contribution. No new independent civil liability; other liability remains.'),('LkSG4','https://www.gesetze-im-internet.de/lksg/__4.html','Effective risk management with responsibility and consideration of affected interests.'),('LkSG6','https://www.gesetze-im-internet.de/lksg/__6.html','Risk-based implemented preventive purchasing, training and controls; a paper code alone is not implementation.'),('LkSG7','https://www.gesetze-im-internet.de/lksg/__7.html','Prompt remedy, implemented timed direct-supplier plan, suspension as an option; termination conditions and ongoing review distinguished.'),('LkSG8','https://www.gesetze-im-internet.de/lksg/__8.html','Accessible impartial confidential grievances with protection from retaliation and effectiveness review.')]
+pb=wr(O/'actual-nine-primary-norm-reads-own-bounded-paraphrases-no-fulltexts.json',{'readDate':'2026-10-10','actuallyReadPrimaryPages':9,'pages':[{'key':k,'url':u,'ownBoundedParaphrase':s}for k,u,s in primary], 'GmbHG13WebTimeouts':2,'successfulGmbHG13Fallback':'One actual urllib download3906bytes, iso-8859-1 decoded, rawSHA8c301115406158742c14c07fb8aa8a0353039575e27af43cfa75daf0aeb3ef2b; full temporary text actually read; no false web-success claim.', 'noFullPrimaryTextsCommitted':True,'independentReview':False})
+frozen=O/'whole-current577-canonical-before-company-author.exact.json';frozen.write_bytes(canpath.read_bytes())
+inputs=[]
+for path in sorted((R/'curricula/DE/Gymnasium/composition-views/wirtschaft').glob('*.view.json')):
+    d=O/'whole-current577-views';d.mkdir(exist_ok=True);dest=d/path.name;dest.write_bytes(path.read_bytes());inputs.append({'activePath':str(path.relative_to(R)),'immutableBefore':binding(dest)})
+inputs_dir=O/'whole-current577-config-and-original-review-inputs';inputs_dir.mkdir()
+for i,b in enumerate(original_configs+[binding(regpath),binding(R/subject['semanticKindLedgerPath'])]):
+    p=R/b['path'];dest=inputs_dir/(f'{i:03d}-'+p.name);dest.write_bytes(p.read_bytes());assert sha(dest)==b['sha256'];b['immutableSnapshot']=binding(dest)
+assert len(bodies)==12 and len(owninputs)==12 and sum(len(x['wholeOriginalPositiveEvidence']['profile']['applicationCaseBriefs'])for x in owninputs)==24
+assert sha(canpath)==sha(frozen)and all(gmap[x['wholeCurrentGoal']['id']]==x['wholeCurrentGoal']for x in owninputs)
+assert all(sha(R/b['path'])==b['sha256']for b in original_configs)
+hp=O/'actual-final-twelve-company-strategy-ethics-whole-current577-P24-DRAFT-author.handoff.json'
+h={
+ 'role':'OWN_ROOT_INERT_AUTHOR_FREEZE_FOREIGN_WHOLE_SCIENCE_AND_SCOPE_REQUIRED',
+ 'wholeCurrentCanonicalBefore':binding(frozen),'activeCanonicalPath':str(canpath.relative_to(R)),
+ 'readonlyPrior555Intake':binding(intakepath),'ownCurrentWhole12ContractsOriginalP24':own,
+ 'originalConfigReviewInputs':original_configs,'wholeViews':inputs,
+ 'wholeDRAFT12':bb,'wholeInert589NoScopePromotion':wb,'sourceOriginalGoalIds':[x['wholeCurrentGoal']['id']for x in owninputs],
+ 'newGoalIds':[g['id']for g in bodies],'oneContractPerBody':True,'actualCases':24,'actualTasks':72,'maxMarks24Passing15UnchangedPattern':True,
+ 'ownAuthorWholeWorks':36,'ownAuthorCriterionMarksAcrossWholeDEWorks':864,'ownAuthorRationalChecks':nb,
+ 'ownActualNinePrimaryNormReads':pb,'allExistingWholeMaterialsKept':True,
+ 'fourExisting248BindingsAlready577NotRepeated':True,
+ 'all336OriginalProfiles685CasesAndTheirStatusesAuthoritiesInputFPsExact':True,
+ 'DAGContainsAndRequiresBothPass':True,'newScopeRefs':0,'newNavFields':0,'newCards':0,'newImages':0,
+ 'independentScientificApproval':False,'independentScopeApproval':False,
+ 'newStrictScientificClosures':0,'strictNetGain':0,'M4M6Claimed':False,'humanApproval':False,'activeWrites':0,
+ 'next':'Foreign whole-DEEN science including actual near-passing counterworks and fair incomplete solutions; only then separate course/whole-closure/Nav scope authoring and independent qualification.'}
+wr(hp,h)
+(O/'actual-executed-root-author-freezer.raw.txt').write_bytes(Path(__file__).read_bytes())
+(O/'actual-root-authored-twelve-datasets.raw.txt').write_bytes(Path('/tmp/economics-company12-root-authored-datasets-v1.py').read_bytes())
+Path('/tmp/economics-company12-root-author-final-path.txt').write_text(str(hp)+'\n')
+print(json.dumps({'handoff':binding(hp),'wholeDRAFT12':bb,'currentOrdinary':336,'wholePcaseCount':24,'actualAuthorRationalChecks':64,'activeWrites':0}))

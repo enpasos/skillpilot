@@ -1,0 +1,102 @@
+{
+  "cases": [
+    {
+      "case": "one-actual-BB-GK-book-access-removed",
+      "exactRealMaterialScope": {
+        "materialGoalId": "73c49b24-e928-54f4-b4d3-93347d532e5b",
+        "wholeMaterialEligible": true,
+        "currentMaterialVisibleAsTarget": false,
+        "compiledCountryCompatible": true,
+        "courseCompatible": true,
+        "wholeHardPrerequisiteGoalIds": [
+          "04c17efe-4451-52bd-8116-1042d1501c41",
+          "66a0d96f-a231-5b36-894e-2ffb16adf7db",
+          "6bf2d1cc-e745-50dd-a617-71c06a6c6945",
+          "6d4a38df-527c-534b-8c0a-c6b546dae5b1",
+          "aa9db8f6-c81e-5247-8f84-5f2b968ab2c4",
+          "ae7b709c-6139-5b05-8615-197bff511d9f",
+          "c7bd5875-b547-5ba6-8b41-122420cf0bf1"
+        ],
+        "unresolvedReferences": [],
+        "missingWholePrerequisiteGoalIds": [],
+        "coveredChecks": [
+          {
+            "goalId": "04c17efe-4451-52bd-8116-1042d1501c41",
+            "currentLocalVisible": true,
+            "realAtomicPrerequisitePath": true,
+            "ordinaryTarget": true
+          },
+          {
+            "goalId": "66a0d96f-a231-5b36-894e-2ffb16adf7db",
+            "currentLocalVisible": true,
+            "realAtomicPrerequisitePath": true,
+            "ordinaryTarget": true
+          },
+          {
+            "goalId": "c7bd5875-b547-5ba6-8b41-122420cf0bf1",
+            "currentLocalVisible": true,
+            "realAtomicPrerequisitePath": true,
+            "ordinaryTarget": true
+          }
+        ],
+        "requiresOnlyExistingTargetOrSupport": true
+      },
+      "expectation": "Removing exactly this real access leaves its full ordinary/support scope intact but removes actual country and matching national endpoint visibility; raw national subtree cannot bypass country authority.",
+      "actualMatchedExpected": true,
+      "wholeNegativeResultPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-M4-two-reviewed-whole-terminals-exact-country-course-view-access-author-v1/negative-tests/one-actual-BB-GK-book-access-removed/actual-whole-native-negative-result.json",
+      "alreadyOpenWholeCourseCQR104NotUsedAsPositiveClosureProof": true
+    },
+    {
+      "case": "one-actual-BB-GK-book-hard-prerequisite-hidden",
+      "exactRealMaterialScope": {
+        "materialGoalId": "73c49b24-e928-54f4-b4d3-93347d532e5b",
+        "wholeMaterialEligible": false,
+        "currentMaterialVisibleAsTarget": true,
+        "compiledCountryCompatible": true,
+        "courseCompatible": true,
+        "wholeHardPrerequisiteGoalIds": [
+          "04c17efe-4451-52bd-8116-1042d1501c41",
+          "66a0d96f-a231-5b36-894e-2ffb16adf7db",
+          "6bf2d1cc-e745-50dd-a617-71c06a6c6945",
+          "6d4a38df-527c-534b-8c0a-c6b546dae5b1",
+          "aa9db8f6-c81e-5247-8f84-5f2b968ab2c4",
+          "ae7b709c-6139-5b05-8615-197bff511d9f",
+          "c7bd5875-b547-5ba6-8b41-122420cf0bf1"
+        ],
+        "unresolvedReferences": [],
+        "missingWholePrerequisiteGoalIds": [
+          "66a0d96f-a231-5b36-894e-2ffb16adf7db"
+        ],
+        "coveredChecks": [
+          {
+            "goalId": "04c17efe-4451-52bd-8116-1042d1501c41",
+            "currentLocalVisible": true,
+            "realAtomicPrerequisitePath": true,
+            "ordinaryTarget": true
+          },
+          {
+            "goalId": "66a0d96f-a231-5b36-894e-2ffb16adf7db",
+            "currentLocalVisible": false,
+            "realAtomicPrerequisitePath": false,
+            "ordinaryTarget": false
+          },
+          {
+            "goalId": "c7bd5875-b547-5ba6-8b41-122420cf0bf1",
+            "currentLocalVisible": true,
+            "realAtomicPrerequisitePath": true,
+            "ordinaryTarget": true
+          }
+        ],
+        "requiresOnlyExistingTargetOrSupport": true
+      },
+      "expectation": "Visible whole Book material with its actual 66a prerequisite hidden fails the unchanged full material-scope contract; an existing convenient 04c path does not suffice.",
+      "actualMatchedExpected": true,
+      "wholeNegativeResultPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-M4-two-reviewed-whole-terminals-exact-country-course-view-access-author-v1/negative-tests/one-actual-BB-GK-book-hard-prerequisite-hidden/actual-whole-native-negative-result.json",
+      "alreadyOpenWholeCourseCQR104NotUsedAsPositiveClosureProof": true
+    }
+  ],
+  "privateCandidateViewsRestoredWholeExact": true,
+  "productionEdits": 0,
+  "thresholdOrCodeChange": 0,
+  "humanApproval": false
+}

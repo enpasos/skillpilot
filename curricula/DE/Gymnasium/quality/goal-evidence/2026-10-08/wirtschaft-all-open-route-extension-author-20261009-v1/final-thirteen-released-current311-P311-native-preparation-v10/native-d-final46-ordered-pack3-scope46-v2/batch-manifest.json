@@ -1,0 +1,59 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "wirtschaft-final-Generic11-route-context46-current311-20261009-pack3-scope46-v2",
+  "subject": "wirtschaftswissenschaften",
+  "subjectLabel": "Wirtschaftswissenschaften",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-all-open-route-extension-author-20261009-v1/final-thirteen-released-current311-P311-native-preparation-v10/native-d-final46-ordered-pack3.scope46-v2.batch.config.json",
+  "configDigest": "sha256:0b2a1ae1338d8f699ce2d20360341b9f1a5d7e3e9b9950b34d93c3e2e0a6fb4d",
+  "goalIds": [
+    "f7c051f4-ebb0-5d74-81b1-c1cdb562414f",
+    "575c08d4-204f-5f78-8f2f-1994db6f19ee",
+    "7a2435f2-0ce7-5179-81a5-2ef5c313e3dd",
+    "5a72a72a-609a-5e60-8a25-4f5048b8b09c",
+    "055ef95c-0b64-5675-8f14-2524c3438009",
+    "8a453b6b-4f28-54bc-8614-4ec8d5384a85"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 311,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-all-open-route-extension-author-20261009-v1/final-thirteen-released-current311-P311-native-preparation-v10/book-config.current311-all-P311.inert.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "baseBookDigest": "sha256:811b90f99e715f6bfd55727f0a6e44767d75109a2937a10670ee643ada8fcde9"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:a32b2dc05aa3e971c72e373cd3f4794a939ab17e78cfa82bf70fc1ac18a3f624",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:e311f88cec9e4297b7ea32854e2c02dfb2bf4e0e2449814de918866c7ae6c76b",
+    "reviewInputFingerprint": "sha256:9fdff1c9d23347885297ad974ce55ea752062f262e394db06b03cbf7dd5e9bea",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "wirtschaft-final-Generic11-route-context46-current311-20261009-pack3-scope46-v2-a",
+        "campaignDigest": "sha256:23e36f7de6198f7a75bd9c6e44f7b70ac16c95affb46d4c35872c29ffbaf2a2b",
+        "roundId": "wirtschaft-final-Generic11-route-context46-current311-20261009-pack3-scope46-v2-first-pass-a",
+        "independenceGroupId": "wirtschaft-final-Generic11-route-context46-current311-20261009-pack3-scope46-v2-independent-a",
+        "batchId": "wirtschaft-final-Generic11-route-context46-current311-20261009-pack3-scope46-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:5063495490cbd298f98d4ba9f0bf8313b2f137a0385b3806632096ac79d3d917"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "wirtschaft-final-Generic11-route-context46-current311-20261009-pack3-scope46-v2-b",
+        "campaignDigest": "sha256:7658ef3813980ce00d3c75591bc49c932384548165362ce3b09f4939e2febb21",
+        "roundId": "wirtschaft-final-Generic11-route-context46-current311-20261009-pack3-scope46-v2-first-pass-b",
+        "independenceGroupId": "wirtschaft-final-Generic11-route-context46-current311-20261009-pack3-scope46-v2-independent-b",
+        "batchId": "wirtschaft-final-Generic11-route-context46-current311-20261009-pack3-scope46-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:b406032a4d75d67083bfdbd8f9b857aebf26d611dc93e45b8ecd175a1b4d3e5a"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

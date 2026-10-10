@@ -1,0 +1,10 @@
+import { readFileSync, writeFileSync } from 'node:fs'
+import { fingerprintGoal, fingerprintMemoryCard } from './memory-production-readonly-export'
+const R='/home/enpasos/projects/skillpilot';const N=R+'/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-current125-native-mapping-and-explicit-BE-course-author-20261009-v1';const O=R+'/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-four-SourceMemory-current-origin-AM-card-and-BE-visibility-technical-binding-v1';
+const a=JSON.parse(readFileSync(N+'/whole-CAN484-reviewed-eight-Source25-six-bounded-GK-tags-two-source-navigation-placements.author-v8.json','utf8'));
+const config=JSON.parse(readFileSync(R+'/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/memory.config.json','utf8'));
+const rows=readFileSync(R+'/'+config.reviewPath,'utf8').trim().split('\n').map(x=>JSON.parse(x));
+const goals=Object.fromEntries(a.goals.map((g:any)=>[g.id,fingerprintGoal(g,config.ruleVersion)]));
+const cards:any={}; for (const g of a.goals.filter((g:any)=>g.extendedData?.authorCandidate?.deckDraftBinding)) {const d=JSON.parse(readFileSync(R+'/'+g.extendedData.authorCandidate.deckDraftBinding.path,'utf8'));for(const c of d.cards)cards[d.deckId+'::'+c.id]=fingerprintMemoryCard({deckId:d.deckId,cardId:c.id,front:c.front.replace(/\s+/g,' ').trim(),back:c.back.replace(/\s+/g,' ').trim(),category:(c.category??'').replace(/\s+/g,' ').trim(),tags:(c.tags??[]).map((x:string)=>x.replace(/\s+/g,' ').trim())},config.ruleVersion)}
+const stale=rows.filter((x:any)=>x.fingerprint!==goals[x.goalId]).map((x:any)=>({goalId:x.goalId,old:x.fingerprint,current:goals[x.goalId]}));
+writeFileSync(O+'/actual-native-current-goal-card-fingerprints-and-existing311-staleness.json',JSON.stringify({goals,cards,staleExisting311:stale},null,2)+'\n');console.log(JSON.stringify({currentGoals:a.goals.length,existingRows:rows.length,staleExisting311:stale.map((x:any)=>x.goalId)}));

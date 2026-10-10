@@ -1,0 +1,75 @@
+{
+  "role": "UNREVIEWED_AUTHOR_INERT_ONLY_FOUR_OBSERVABLE_LANGUAGE_STRINGS_SUCCESSOR",
+  "predecessorExactInputGuards": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-1826-three-atomic-competences-six-real-P-cases-AUTHOR-INERT-root-v1/three-whole-goal-candidates.INERT.json",
+      "sha256": "sha256:729253f21c8749810ee0ee6a95314cf534fb09933941eb3d056d6a5ea5028c0a",
+      "bytes": 4785
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-1826-three-atomic-competences-six-real-P-cases-AUTHOR-INERT-root-v1/candidate-criteria.md",
+      "sha256": "sha256:8a2e83c57670b75bcc6c64680e487dbff33e6a0b9e21743a6e9bbb02d686a852",
+      "bytes": 1043
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-1826-three-atomic-competences-six-real-P-cases-AUTHOR-INERT-root-v1/three-current-proposed-goal-positive-understanding-evidence-v2.INERT.jsonl",
+      "sha256": "sha256:9cfd95fe3db209bf01680435dd4603cb0777aa376e773a40b1c3a1cdfd1fc0af",
+      "bytes": 26426
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-1826-three-atomic-competences-six-real-P-cases-AUTHOR-INERT-root-v1/six-real-case-positive-authoring-spec.INERT.json",
+      "sha256": "sha256:856f98e3fb3bcf8eeefa2112f7e89b8707642720a0e5bb2781c278512ce4f1fc",
+      "bytes": 26145
+    }
+  ],
+  "allPredecessorsRemainExact": true,
+  "fourActualLanguageStringChanges": [
+    {
+      "goalId": "a2fa1186-df35-5954-a9a9-e311a55e218f",
+      "field": "profile.expectations[0].observablePerformanceDe",
+      "old": "Die Person erklärt aus beiden verschiedenen Materialien die Informationsverteilung, gemeinsame Bewertung, Teilnahmeauswahl und mögliche Rückkopplung; sie zeigt an überprüfbarer Information die Ursache und verwechselt dies nicht mit gegebener nachvertraglicher Verhaltensänderung.",
+      "current": "Die Person erklärt an neuen vorgegebenen Fällen die Informationsverteilung, gemeinsame Bewertung, Teilnahmeauswahl und mögliche Rückkopplung; sie prüft die Informationsursache anhand der gegebenen Bedingungen und grenzt vorvertragliche Auswahl von einem nicht gegebenen nachvertraglichen Verhaltenswechsel ab."
+    },
+    {
+      "goalId": "a2fa1186-df35-5954-a9a9-e311a55e218f",
+      "field": "profile.expectations[0].observablePerformanceEn",
+      "old": "The learner derives information distribution, pooled valuation, participation selection and possible feedback from both distinct materials, uses verifiable information to test the cause and does not confuse it with stipulated post-contract behavioural change.",
+      "current": "The learner explains information distribution, pooled valuation, participation selection and possible feedback in new supplied cases, tests the information cause using the given conditions and distinguishes pre-contract selection from a post-contract behavioural change that is not stipulated."
+    },
+    {
+      "goalId": "df17fd21-e9b7-598f-970e-8f541d059694",
+      "field": "profile.expectations[0].observablePerformanceDe",
+      "old": "Die Person begründet in beiden Materialien die zwei Gütereigenschaften, verbindet sie mit individuellen Beitragsanreizen und möglicher Unterbereitstellung und grenzt einen rivalen ausschließbaren Fall anhand tatsächlicher Nutzungseigenschaften ab.",
+      "current": "Die Person begründet an neuen vorgegebenen Fällen Nicht-Rivalität und Nicht-Ausschließbarkeit, verbindet sie mit individuellen Beitragsanreizen und möglicher Unterbereitstellung und grenzt gegebene rivalisierende beziehungsweise ausschließbare Leistungen anhand ihrer tatsächlichen Nutzungseigenschaften ab."
+    },
+    {
+      "goalId": "df17fd21-e9b7-598f-970e-8f541d059694",
+      "field": "profile.expectations[0].observablePerformanceEn",
+      "old": "The learner establishes both goods properties in both materials, links them to individual contribution incentives and possible underprovision, and distinguishes a rival/excludable case by actual use characteristics.",
+      "current": "The learner establishes non-rivalry and non-excludability in new supplied cases, links them to individual contribution incentives and possible underprovision, and distinguishes supplied rival or excludable services by their actual use characteristics."
+    }
+  ],
+  "nativeRecomputedDerivedFieldsOnly": [
+    "information.profileFingerprint",
+    "publicGood.profileFingerprint"
+  ],
+  "threeGoalsExact": true,
+  "sixWholeCaseBriefsExact": true,
+  "allCoverageSettingsExact": true,
+  "wholeMonopolyPRecordExact": true,
+  "allOtherPFieldsIncludingE1G1StatusAuthorityAndTimeExact": true,
+  "argv": [
+    "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+    "--import",
+    "tsx",
+    "--input-type=module",
+    "--eval",
+    "\nimport fs from 'node:fs';import{resolve}from'node:path';import Ajv2020 from'ajv/dist/2020.js';import addFormats from'ajv-formats';\nconst root=resolve('..'),out=resolve(root,'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-1826-four-observable-strings-no-example-quota-AUTHOR-INERT-v2'),base=resolve(root,'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-1826-three-atomic-competences-six-real-P-cases-AUTHOR-INERT-root-v1');\nconst m=await import('./scripts/positiveGoalEvidenceProfileModel.ts');const records=JSON.parse(fs.readFileSync(resolve(out,'four-observable-strings-author-input.INERT.json'),'utf8'));const prior=fs.readFileSync(resolve(base,'three-current-proposed-goal-positive-understanding-evidence-v2.INERT.jsonl'),'utf8').trim().split('\\n').map(JSON.parse);const goals=JSON.parse(fs.readFileSync(resolve(out,'three-whole-goal-candidates.INERT.json'),'utf8')).goals;const ajv=new Ajv2020({allErrors:true,strict:true});addFormats(ajv);const v=ajv.compile(JSON.parse(fs.readFileSync(resolve(root,'contracts/goal-evidence/v2/goal-evidence-profile.schema.json'),'utf8')));const rows=[];\nfor(const r of records){const old=prior.find(x=>x.goalId===r.goalId);if(r.goalId!=='1826fe19-4d06-5183-9b41-9121ae1cc219')r.profileFingerprint=m.fingerprintPositiveGoalEvidenceProfile(r.profile);const g=goals.find(x=>x.id===r.goalId);const e=m.validatePositiveGoalEvidenceRecordSemantics(r,g,{},'curricularAtomic');if(!v(r)||e.length)throw Error(JSON.stringify({id:r.goalId,schema:v.errors,errors:e}));if(JSON.stringify(old.profile.applicationCaseBriefs)!==JSON.stringify(r.profile.applicationCaseBriefs)||JSON.stringify(old.profile.coverageExpectations)!==JSON.stringify(r.profile.coverageExpectations))throw Error('case or coverage changed');const permitted=new Set(['profile','profileFingerprint']);for(const k of Object.keys(old))if(!permitted.has(k)&&JSON.stringify(old[k])!==JSON.stringify(r[k]))throw Error('other envelope field changed '+k);for(const k of Object.keys(old.profile))if(k!=='expectations'&&JSON.stringify(old.profile[k])!==JSON.stringify(r.profile[k]))throw Error('other profile field changed '+k);for(let i=0;i<old.profile.expectations.length;i++)for(const k of Object.keys(old.profile.expectations[i]))if(!['observablePerformanceDe','observablePerformanceEn'].includes(k)&&old.profile.expectations[i][k]!==r.profile.expectations[i][k])throw Error('other expectation field changed '+k);if(r.goalId==='1826fe19-4d06-5183-9b41-9121ae1cc219'&&JSON.stringify(old)!==JSON.stringify(r))throw Error('monopoly record changed');rows.push({goalId:r.goalId,schemaValid:true,nativeSemanticErrors:e,allCasesAndCoverageExact:true,wholeMonopolyRecordExact:r.goalId==='1826fe19-4d06-5183-9b41-9121ae1cc219'?true:undefined});}\nfs.writeFileSync(resolve(out,'three-positive-v2.only-four-observable-strings-and-two-native-profile-hashes.INERT.jsonl'),records.map(r=>JSON.stringify(r)).join('\\n')+'\\n');fs.writeFileSync(resolve(out,'actual-native-profile-binding-check-only.receipt.json'),JSON.stringify({role:'TECHNICAL_NATIVE_PROFILE_HASH_SCHEMA_AND_EXACT_OTHER_FIELDS_ONLY',rows,scientificApproval:false,activePReady:false,reviewIdAndAuthorityAndAllOtherEnvelopeFieldsExact:true,proposedSemanticKindForFingerprintOnly:'curricularAtomic'},null,2)+'\\n');console.log(JSON.stringify({profiles:records.length,wholeCaseBriefsUnchanged:6,coverageAndOtherFieldsUnchanged:true,technicalOnly:true}));\n"
+  ],
+  "cwd": "app",
+  "actualTechnicalExitCode": 0,
+  "seconds": 0.196,
+  "authorSelfScientificApproval": false,
+  "activeWrites": false,
+  "independentTargetedRootReviewPending": true
+}

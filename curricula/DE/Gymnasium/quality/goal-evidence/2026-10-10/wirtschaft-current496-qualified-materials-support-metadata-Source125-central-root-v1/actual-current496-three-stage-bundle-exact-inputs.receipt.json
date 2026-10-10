@@ -1,0 +1,52 @@
+{
+  "role": "Actual stable current496 integration machine bundle; no fresh D or human release claim",
+  "inputSHA256": {
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json": "ae2bec77e9483af50bd25f782dd287df533b7ddeac859ffe2dc3e3dfc98b4de6",
+    "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json": "32a02b21f6b57fa2f34f27b843b9d5f2e01abaaeee535e801b781903c7bb43fd",
+    "app/scripts/generateCurriculumQualityStatus.ts": "656084b7cd9d6cb5324361b927b9f761596c572d7e4f616c7b13da061f4b1336"
+  },
+  "commands": [
+    {
+      "command": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "scripts/testSourceExtractionInventory.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "exitCode": 0,
+      "elapsedSeconds": 0.741,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current496-qualified-materials-support-metadata-Source125-central-root-v1/source-inventory-regression.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current496-qualified-materials-support-metadata-Source125-central-root-v1/source-inventory-regression.stderr.txt"
+    },
+    {
+      "command": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "scripts/generateCurriculumQualityStatus.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "exitCode": 0,
+      "elapsedSeconds": 94.082,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current496-qualified-materials-support-metadata-Source125-central-root-v1/central.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current496-qualified-materials-support-metadata-Source125-central-root-v1/central.stderr.txt"
+    },
+    {
+      "command": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "scripts/checkCurriculumMaturityFloors.ts"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "exitCode": 0,
+      "elapsedSeconds": 0.184,
+      "stdout": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current496-qualified-materials-support-metadata-Source125-central-root-v1/floors.stdout.txt",
+      "stderr": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current496-qualified-materials-support-metadata-Source125-central-root-v1/floors.stderr.txt"
+    }
+  ],
+  "allThreeStagesPassed": true,
+  "canonicalNodes": 496,
+  "currentCurricularAtomicGoals": 336,
+  "noImagesGenerated": true,
+  "noCommitCreated": true,
+  "historicalArtifactsModified": false
+}

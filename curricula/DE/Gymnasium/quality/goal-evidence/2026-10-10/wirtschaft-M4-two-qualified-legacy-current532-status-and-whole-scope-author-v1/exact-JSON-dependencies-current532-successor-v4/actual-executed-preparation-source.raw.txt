@@ -1,0 +1,61 @@
+from pathlib import Path
+import json,hashlib,copy,shutil,subprocess,os
+R=Path('/home/enpasos/projects/skillpilot');O=R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-two-qualified-legacy-current532-status-and-whole-scope-author-v1/exact-JSON-dependencies-current532-successor-v4';O.mkdir(exist_ok=False)
+CAP=Path('/tmp/skillpilot-economics-macro12-current504-wxkcpkyv')
+cp=Path('curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json');book=Path('app/scripts/config/goal-books/de-gym-economics-current-canonical.json');registry=Path('curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json');sourceRegistry=Path('curricula/DE/Gymnasium/provenance/source-landscape-registry.json')
+def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
+def ref(p):return {'path':str(p.relative_to(R)),'sha256':sha(p),'bytes':p.stat().st_size}
+def write(n,x):p=O/n;p.parent.mkdir(parents=True,exist_ok=True);assert not p.exists();p.write_text(json.dumps(x,ensure_ascii=False,indent=2)+'\n');json.loads(p.read_text());return ref(p)
+def copyinput(p,n):q=O/n;q.parent.mkdir(parents=True,exist_ok=True);assert not q.exists();shutil.copyfile(p,q);return ref(q)
+def stage(src,relative):
+ dst=CAP/relative;dst.parent.mkdir(parents=True,exist_ok=True)
+ if not dst.parent.resolve().is_relative_to(CAP.resolve()):
+  assert src.resolve()==dst.resolve(),'unexpected foreign dependency alias '+str(dst)
+  return dst  # Exact current read-only foreign dependency; never mutate its directory.
+ assert src.absolute()!=dst.absolute(),'identical lexical source/destination '+str(dst)
+ if dst.is_symlink():dst.unlink()
+ assert src.resolve()!=dst.resolve(),'source/destination alias '+str(dst)
+ if dst.exists():dst.unlink()
+ shutil.copyfile(src,dst)
+ return dst
+bookconfig=json.loads((R/book).read_text());sp=Path(bookconfig['semanticKindLedgerPath']);can=json.loads((R/cp).read_text());assert len(can['goals'])==532
+by={g['id']:g for g in can['goals']};S=R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-two-legacy-trade-order-five-current-contracts-whole-remedy-author-v1/final-current524-fieldwise-two-case-author-successor-v3';sfile=S/'whole-two-current-UUIDs-five-contracts-two-case-DRAFT.final-author-v3.json';assert sha(sfile)=='e391f359dc2d5363a3ffec8b9c5240f322036e53144a6bf36d4d099bfeeee12d'
+science=R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-two-real-legacy-order-trade-five-contracts-independent-b-v2/actual-final-two-whole-science-KEEP-execution-sealed.handoff.receipt.json';assert sha(science)=='73deb17abcd9ed523da027077b65b1c94a1a251b39af5c3935d6c18652ea17aa'
+bodies=json.loads(sfile.read_text());released=[];after=copy.deepcopy(can);ag={g['id']:g for g in after['goals']}
+for body in bodies:
+ ident=body['id'];old=by[ident];assert {k:v for k,v in body.items() if k!='examData'}=={k:v for k,v in old.items() if k!='examData'}
+ assert body['requires']==old['requires'] and body['examData']['coveredGoalIds']==old['examData']['coveredGoalIds']
+ x=copy.deepcopy(body);assert x['examData']['reviewStatus']=='draft';x['examData']['reviewStatus']='released';x['examData']['reviewNote']='Machine material release follows independent whole-science KEEP 73deb17abcd9ed523da027077b65b1c94a1a251b39af5c3935d6c18652ea17aa. This is an AI review-bound material status, not human, country/course or source-coverage approval.'
+ ag[ident]['examData']=x['examData'];released.append(x)
+assert all(by[g['id']]==g for g in after['goals'] if g['id'] not in {x['id'] for x in bodies})
+beforeRef=copyinput(R/cp,'whole-current532.before.exact.json');afterRef=write('whole-current532-only-two-foreign-KEEP-examData-machine-released.inert-author.json',after);releaseRef=write('whole-two-e391-foreign-KEEP-only-status-note-successors.inert-author.json',released)
+semref=copyinput(R/sp,'whole-current532-SEM.before.exact.json');regref=copyinput(R/registry,'whole-current-registry.before.exact.json');srref=copyinput(R/sourceRegistry,'whole-current-source-registry.before.exact.json');bookref=copyinput(R/book,'whole-current532-BookConfig.before.exact.json')
+copyinput(science,'whole-foreign-B-Legacy2-KEEP-receipt.exact.json');copyinput(sfile,'whole-two-qualified-DRAFT-bodies.before-status-only.exact.json')
+# Complete path isolation: never write through config or data aliases into the shared repository.
+visited=set();stageRows=[]
+def dependencies(relative):
+ relative=Path(relative);src=R/relative
+ if not src.is_file() or relative in visited:return
+ visited.add(relative);stage(src,relative);stageRows.append(ref(src))
+ if src.suffix!='.json' or 'goal-evidence' in relative.parts:return
+ try:data=json.loads(src.read_text())
+ except Exception:return
+ def walk(x):
+  if isinstance(x,str) and (x.startswith('curricula/') or x.startswith('app/scripts/config/')) and x.endswith(('.json','.jsonl')) and '\n' not in x and ';' not in x and all(len(part)<240 for part in Path(x).parts):
+   pp=R/x
+   if pp.is_file():dependencies(x)
+  elif isinstance(x,dict):
+   for val in x.values():walk(val)
+  elif isinstance(x,list):
+   for val in x:walk(val)
+ walk(data)
+for relative in [cp,registry,sourceRegistry,book,sp,Path('curricula/DE/Gymnasium/provenance/canonical-goal-surrogate-evidence-registry.json')]:dependencies(relative)
+for vp in sorted((R/'curricula/DE/Gymnasium/composition-views/wirtschaft').glob('*.json')):dependencies(vp.relative_to(R))
+assert not (CAP/'app/scripts/config').is_symlink()
+views=[]
+for p in sorted((R/'curricula/DE/Gymnasium/composition-views/wirtschaft').glob('*.json')):views.append({'activePath':str(p.relative_to(R)),'before':copyinput(p,'whole-before-views/'+p.name)})
+write('actual-current532-stage-dependency-isolation-and-input-bindings.json',{'activeCAN':ref(R/cp),'activeSEM':ref(R/sp),'privateCapsuleRoot':str(CAP),'stagedWholeCurrentRepoInputs':stageRows,'wholeFrozenViews':views,'canonicalCandidate':afterRef,'releasedBodies':releaseRef,'actualForeignScience':ref(science),'neverSameFileOrSharedParentWrites':True,'allInputsAreRepoCopiesOrExactRepoRelativeReferences':True})
+write('actual-two-examData-only-and-four-status-note-author-deltas.json',{'materialIds':[x['id'] for x in bodies],'qualifiedWholeBodies':ref(sfile),'foreignWholeScience':ref(science),'machineStatusOnlyFollowerFromQualifiedDRAFT':True,'wholeTasksSolutionsRubricsFactsRequiresCoverageTagsExactToE391':True,'sameUUIDs':True,'sameFiveCurrentOrdinaryContracts':True,'allOther530WholeGoalsExactToCurrent532':True,'allCurrent336P685AndOrdinaryGoalObjectsUnchanged':True,'rootNavFieldsUnchangedAtThisStage':True,'SourceClaimsAndCourseRolesUnchanged':True})
+cmd=[str(CAP/'app/node_modules/.bin/tsx'),str(CAP/'native-macro12-current504-intake.ts'),str(O/'before-current532.actual-native.json')]
+p=subprocess.run(cmd,cwd=CAP,capture_output=True,text=True);(O/'before-current532.stdout.raw.txt').write_text(p.stdout);(O/'before-current532.stderr.raw.txt').write_text(p.stderr);write('actual-before-native-command.json',{'argv':cmd,'cwd':str(CAP),'exitCode':p.returncode,'activeInputsAtFreeze':ref(R/cp)});assert p.returncode==0,p.stderr
+print(json.dumps({'O':str(O),'capsule':str(CAP),'stagedInputs':len(stageRows),'views':len(views),'exit':p.returncode,'after':afterRef},ensure_ascii=False))

@@ -1,0 +1,79 @@
+{
+  "role": "AUTHOR scoring checks, not independent review or learner evidence",
+  "wholeAnswers": [
+    {
+      "id": "whole-bank-profit-confusion",
+      "kind": "complete author counteranswer; fictional, not learner data",
+      "answerDe": "1. Die Aktivposten sind Maschine6000, Vorrat2000, Bank3000, Forderung1000, zusammen12000; Fremdkapital7000, verbleibender Betrag5000. Ich nenne diesen Betrag verfügbares Bargeld, weil Eigenkapital immer Geldbestand ist. Maschine ist Anlagevermögen, die übrigen Posten Umlaufvermögen.\n2. Computer/Bank ist Aktivtausch; neues Darlehen verlängert, Zahlung an Lieferanten verkürzt, Schuldersatz ist Passivtausch. Ich addiere jedoch für jede doppelte Buchung den Betrag nochmals zum Vermögen; doppelt heißt zwei identische Vermögenszugänge. Die vier Vorgangsrichtungen sind +800/−800, +1000/+1000, −400/−400 und −600/+600. Deshalb kann ich keine konsistente Zwischenbilanz angeben.\n3. Leistung900 ist Ertrag und Miete200 Aufwand. Einzug300 ist ebenfalls neuer Ertrag. Abschreibung150 ist kein Aufwand, weil kein Geld gezahlt wurde. Für das Ergebnis nehme ich allein die Bankänderung−100, also Verlust100, und Eigenkapital ist Schlussbank2900. Erfolgskonten sind eine Liste aller Ein- und Auszahlungen. Eine Schlussbilanz kann ich so nicht ausgleichen.\n4. B hat Eröffnungsvermögen6000/Schulden3000. Schlussbank2050 und Forderung400. Darlehenstilgung400 ist Aufwand und Einzug700 neuer Ertrag. Computer bleibt3000, da Abschreibung keine Zahlung ist. B erzielt Gewinn50, weil seine Bank um50 steigt. Eigenkapital ist2050.",
+      "marks": [
+        6,
+        4,
+        2,
+        2
+      ],
+      "markReasons": [
+        "Alle Zahlen/Klassen und Summen korrekt, Residual-/Bargelderklärung falsch:6/8.",
+        "Vier gepaarte Richtungen/Arten korrekt4; doppeltes Prinzip und daraus Zwischenbilanz/EK falsch:4/10.",
+        "Nur Leistung und Miete korrekt; Verlust/EK/Abschluss/Schlussbilanz verfehlt:2/10.",
+        "Eröffnung und zwei isolierte Schlusswerte teilweise; ganze Verlust-/Erfolgserklärung falsch:2/8."
+      ],
+      "capApplied": false,
+      "expectedPass": false,
+      "rawScore": 14,
+      "finalScore": 14,
+      "passingPoints": 22,
+      "actualAuthorScoringPass": false
+    },
+    {
+      "id": "whole-financing-double-count-with-right-profit",
+      "kind": "complete author counteranswer; fictional, not learner data",
+      "answerDe": "1. A hat Maschine6000+Vorrat2000+Bank3000+Forderung1000. Zusätzlich rechne ich Darlehen5000 und Lieferantenmittel2000 auf der Aktivseite dazu:19000. Eigenkapital bleibt5000, Finanzierung zähle ich zusätzlich als Vermögen. Eine ausgeglichene Eröffnungsbilanz kann ich daher nicht zeigen.\n2. Vier Arten und Paare: Computer+800/Bank−800 Aktivtausch; Bank+1000/Darlehen+1000 Verlängerung; Bank−400/Schuld−400 Verkürzung; Lieferant−600/Darlehen+600 Passivtausch. Eigenkapital bleibt zunächst5000. Soll/Haben kenne ich nicht; ich addiere Finanzierung weiter doppelt, somit ist die Zwischenbilanzsumme falsch.\n3. Neue Leistung900 Ertrag, Miete200 Aufwand, alter Forderungseinzug300 kein Ertrag, Abschreibung150 Aufwand ohne Auszahlung. Ergebnis550, Eigenkapital5550. Ertrags-/Aufwandskonten sammeln900 und350 und schließen Ergebnis550 zum Eigenkapital ab. Meine Schlussaktivseite enthält die Finanzierung erneut zusätzlich zu Maschine5850, Computer800, Vorrat2000, Bank2900, Forderung1600 und ist nicht ausgeglichen.\n4. B: Ergebnis−200, EK sinkt um200; Bank2050, Forderung400, Computer2950, Summe5400. Tilgung ist kein Aufwand, Einzug kein Ertrag. Bank+50 ist deshalb kein Gewinn; nicht zahlungswirksame Abschreibung und erfolgsneutrale Zahlungen erklären die Differenz. Meine Eröffnungsbilanz-/Finanzierungsrechnung behält den beschriebenen Doppelzählfehler, sodass ich das richtige Eröffnungs- und Schluss-Eigenkapital nicht konsistent begründen kann.",
+      "marks": [
+        0,
+        5,
+        8,
+        7
+      ],
+      "markReasons": [
+        "Kapitalquelle als zusätzliches Aktivvermögen zerstört gesamte geforderte Bilanzdarstellung; Zahlenliste ohne sachgerechte Gegenüberstellung:0/8.",
+        "Vier richtige gepaarte Vorgänge4, zunächst unverändertesEK1; Prinzip/Zwischenbilanz/keinDoppelzählen falsch:5/10.",
+        "Vier Erfolgszuordnungen4,Ergebnis/EK2,echterAbschluss2;Schlussbilanz0:8/10.",
+        "Verlust/EK-Veränderung nurTeil1,Bestände2,neutraleVorgänge2,Bankwiderlegung2;EröffnungsEK0:7/8."
+      ],
+      "capApplied": false,
+      "expectedPass": false,
+      "rawScore": 20,
+      "finalScore": 20,
+      "passingPoints": 22,
+      "actualAuthorScoringPass": false
+    },
+    {
+      "id": "whole-genuine-imperfect-connected-answer",
+      "kind": "complete author partial-positive answer; fictional, not learner data",
+      "answerDe": "1. Aktiva A: Maschine6000,Vorrat2000,Bank3000,Forderung1000=12000; Schulden7000,EK5000, zusammen12000. EK ist12000−7000, nichtBank3000. Ich lasse Anlage-/Umlaufbezeichnungen und Mittelherkunftsbegriffe weg.\n2. A1 Computer+800/Bank−800 Aktivtausch; A2 Bank+1000/Darlehen+1000 Verlängerung; A3 Bank−400/Lieferant−400 Verkürzung; A4 Lieferant−600/Darlehen+600 Passivtausch. ComputerSoll/BankHaben und LieferantSoll/BankHaben verbinden pro Vorgang gleiche Beträge; der Computer entsteht nicht zweimal. Ich lasse die Zwischenbestandsrechnung und eine eigene EK-Erklärung aus.\n3. Leistung900 ist Ertrag/Forderung, Miete200 Aufwand/Bankabgang, Einzug300 nurBankgegenalteForderung, Abschreibung150 AufwandohneZahlung. Ergebnis900−200−150=550, EK steigt5000→5550. Erfolg wird zum Eigenkapital abgeschlossen; die getrennte Sammelfunktion der Konten erläutere ich nicht. Ich stelle keine vollständige Schlussbilanz auf.\n4. B hat anfangs EK6000−3000=3000; Ertrag100, Aufwand250+50, Verlust200, SchlussEK2800. Aus der vorgegebenen Bankbewegung erhalte ich+50, damit2050. Das ist trotz Verlust positiv: Einzug alter Forderungen und Tilgung ändern Geld/Schulden ohne neuen Ertrag/Aufwand; Abschreibung verursacht Aufwand ohne Zahlung. Ich lasse Forderung,Computer und komplette Schlussbilanz weg.",
+      "marks": [
+        6,
+        6,
+        7,
+        6
+      ],
+      "markReasons": [
+        "Aktivposten ohneKlassen1,Kapitalquellen/EK2,Summen2,Residualerklärung ohneMittelherkunft1:6/8.",
+        "VierPaare/Arten4,zweiSollHaben+EinVorgang2,Zwischenbestände0,gesonderteEK0:6/10.",
+        "VierZuordnungen4,Erfolg/EK2,Abschluss ohnevolleSammelfunktion1,Schlussbilanz0:7/10.",
+        "Eröffnung/Verlust/EK2,unvollständigeBestände0,beideneutraleVorgänge2,begründeteBankwiderlegung2:6/8."
+      ],
+      "capApplied": false,
+      "expectedPass": true,
+      "rawScore": 25,
+      "finalScore": 25,
+      "passingPoints": 22,
+      "actualAuthorScoringPass": true
+    }
+  ],
+  "maximum": 36,
+  "threshold": 22,
+  "noMinimumPerGoalQuota": true,
+  "guardNotArtificiallyAppliedToPartiallyCorrectCounteranswers": true,
+  "selfApproval": false
+}

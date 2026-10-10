@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Rechtliche Regelungen und Rechtsstaatlichkeit beurteilen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `682facbf-3c9d-5485-88a3-20f2394ed77f`
+- Titel: Rechtliche Regelungen und Rechtsstaatlichkeit beurteilen
+- Beschreibung: Die lernende Person kann aktuelle rechtliche Regelungen und Entscheidungen aus öffentlichem und privatem Recht im Hinblick auf Rechtsfunktionen, rechtsstaatliche Prinzipien und gerechten Interessenausgleich beurteilen.
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `682facbf-3c9d-5485-88a3-20f2394ed77f.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/682facbf-3c9d-5485-88a3-20f2394ed77f/682facbf-3c9d-5485-88a3-20f2394ed77f.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational. Create one original raster PNG economics learning-goal illustration, wide approximately16:9 and1600x900 or near native size. Friendly abstract clear comic, warm ivory, dark clean outlines, rounded shapes, restrained teal/coral/gold, welcoming ordinary people. Three or four spacious main visual groups. Main competence and important details recognizable at360 and680pixels; text ONLY few expressly specified large German labels. No extra headings, tiny labels, microscopic legends, watermarks, signatures, project names, slogans, brands, official emblems, medical crosses/crescents/diamonds, copied logos, photorealism, sterile technical redesign or SVG. Personal notebooks/worksheets and screens must face their actual active users; prefer floating conceptual symbols or openly shared boards. Fictional conditional teaching contexts, no observed learner work, actual latest statistics or current unsupported law. Competence: Rechtliche Regelungen und Rechtsstaatlichkeit beurteilen. Die lernende Person kann aktuelle rechtliche Regelungen und Entscheidungen aus öffentlichem und privatem Recht im Hinblick auf Rechtsfunktionen, rechtsstaatliche Prinzipien und gerechten Interessenausgleich beurteilen. Scene: A friendly group weighs public-law and private-law decisions as two distinct plain rule/decision cards on a large shared display. Three neutral icon perspectives represent a predictable rule, a fair procedure and balancing different interests. Only “Regeln”, “Rechtsstaat”, “Interessen”. No specific current statute or legal verdict, official court logo, medical emblem, copied law book pages or all law automatically fair.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

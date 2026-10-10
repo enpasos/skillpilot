@@ -1,0 +1,562 @@
+{
+  "role": "INDEPENDENT_ACTUALLY_EXECUTED_FRACTION_RECALCULATIONS",
+  "actualOwnCheckCount": 79,
+  "checks": [
+    {
+      "name": "Chip A Vorratswochen",
+      "actualExactFraction": "4",
+      "expectedIndependentRecalculation": "4",
+      "unitsAndLimitDe": "Wochen; konstante100 pro Woche",
+      "PASS": true
+    },
+    {
+      "name": "Chip A kurzer Bedarf",
+      "actualExactFraction": "200",
+      "expectedIndependentRecalculation": "200",
+      "unitsAndLimitDe": "Chips",
+      "PASS": true
+    },
+    {
+      "name": "Chip A langer Bedarf",
+      "actualExactFraction": "1000",
+      "expectedIndependentRecalculation": "1000",
+      "unitsAndLimitDe": "Chips",
+      "PASS": true
+    },
+    {
+      "name": "Chip A Fehlbestand",
+      "actualExactFraction": "600",
+      "expectedIndependentRecalculation": "600",
+      "unitsAndLimitDe": "Chips",
+      "PASS": true
+    },
+    {
+      "name": "Chip A Zweitweg Anteil",
+      "actualExactFraction": "3/5",
+      "expectedIndependentRecalculation": "3/5",
+      "unitsAndLimitDe": "erst nach Qualifikation",
+      "PASS": true
+    },
+    {
+      "name": "Chip A Lagerkosten",
+      "actualExactFraction": "400",
+      "expectedIndependentRecalculation": "400",
+      "unitsAndLimitDe": "je Jahr",
+      "PASS": true
+    },
+    {
+      "name": "Chip A Mehrkosten Zweitweg",
+      "actualExactFraction": "120",
+      "expectedIndependentRecalculation": "120",
+      "unitsAndLimitDe": "je Lieferwoche",
+      "PASS": true
+    },
+    {
+      "name": "Chip B Bestand",
+      "actualExactFraction": "2",
+      "expectedIndependentRecalculation": "2",
+      "unitsAndLimitDe": "Wochen",
+      "PASS": true
+    },
+    {
+      "name": "Chip B erweiterter Vorrat",
+      "actualExactFraction": "4",
+      "expectedIndependentRecalculation": "4",
+      "unitsAndLimitDe": "Wochen",
+      "PASS": true
+    },
+    {
+      "name": "Chip B Ereignisbedarf",
+      "actualExactFraction": "480",
+      "expectedIndependentRecalculation": "480",
+      "unitsAndLimitDe": "Chips",
+      "PASS": true
+    },
+    {
+      "name": "Chip B unabhängige Lieferung",
+      "actualExactFraction": "240",
+      "expectedIndependentRecalculation": "240",
+      "unitsAndLimitDe": "Chips",
+      "PASS": true
+    },
+    {
+      "name": "Chip B alterVorrat plusDritter",
+      "actualExactFraction": "400",
+      "expectedIndependentRecalculation": "400",
+      "unitsAndLimitDe": "nicht volle480",
+      "PASS": true
+    },
+    {
+      "name": "Chip B Restlücke",
+      "actualExactFraction": "80",
+      "expectedIndependentRecalculation": "80",
+      "unitsAndLimitDe": "Chips",
+      "PASS": true
+    },
+    {
+      "name": "Chip B Mehrkosten Ereignis",
+      "actualExactFraction": "720",
+      "expectedIndependentRecalculation": "720",
+      "unitsAndLimitDe": "nicht jährlich",
+      "PASS": true
+    },
+    {
+      "name": "Chip B kombinierter Bestand",
+      "actualExactFraction": "560",
+      "expectedIndependentRecalculation": "560",
+      "unitsAndLimitDe": "Chips",
+      "PASS": true
+    },
+    {
+      "name": "Chip B kombinierter Puffer",
+      "actualExactFraction": "80",
+      "expectedIndependentRecalculation": "80",
+      "unitsAndLimitDe": "Chips; keine universelle Risikogarantie",
+      "PASS": true
+    },
+    {
+      "name": "Trade alter InputTransport",
+      "actualExactFraction": "85",
+      "expectedIndependentRecalculation": "85",
+      "unitsAndLimitDe": "fiktive Kosteneinheiten",
+      "PASS": true
+    },
+    {
+      "name": "Trade neuer InputTransport",
+      "actualExactFraction": "103",
+      "expectedIndependentRecalculation": "103",
+      "unitsAndLimitDe": "fiktive Kosteneinheiten",
+      "PASS": true
+    },
+    {
+      "name": "Trade Inputdelta",
+      "actualExactFraction": "15",
+      "expectedIndependentRecalculation": "15",
+      "unitsAndLimitDe": "getrennter Kanal",
+      "PASS": true
+    },
+    {
+      "name": "Trade Transportdelta",
+      "actualExactFraction": "3",
+      "expectedIndependentRecalculation": "3",
+      "unitsAndLimitDe": "getrennter Kanal",
+      "PASS": true
+    },
+    {
+      "name": "Trade Gesamtdelta",
+      "actualExactFraction": "18",
+      "expectedIndependentRecalculation": "18",
+      "unitsAndLimitDe": "keine beobachtete Gesprächauswirkung",
+      "PASS": true
+    },
+    {
+      "name": "Trade relative Kostenänderung",
+      "actualExactFraction": "360/17",
+      "expectedIndependentRecalculation": "360/17",
+      "unitsAndLimitDe": "Prozent, gerundet21,18",
+      "PASS": true
+    },
+    {
+      "name": "Paris Investitionfinanzierung",
+      "actualExactFraction": "12",
+      "expectedIndependentRecalculation": "12",
+      "unitsAndLimitDe": "Mio, nicht laufender Betrieb",
+      "PASS": true
+    },
+    {
+      "name": "Paris Programmebedarf",
+      "actualExactFraction": "13",
+      "expectedIndependentRecalculation": "13",
+      "unitsAndLimitDe": "Mio",
+      "PASS": true
+    },
+    {
+      "name": "Paris Finanzlücke",
+      "actualExactFraction": "3",
+      "expectedIndependentRecalculation": "3",
+      "unitsAndLimitDe": "Mio",
+      "PASS": true
+    },
+    {
+      "name": "Paris neue bewilligte Deckung",
+      "actualExactFraction": "13",
+      "expectedIndependentRecalculation": "13",
+      "unitsAndLimitDe": "Mio, Bewilligung≠Wirkung",
+      "PASS": true
+    },
+    {
+      "name": "Tarif Einfuhrpreis",
+      "actualExactFraction": "60",
+      "expectedIndependentRecalculation": "60",
+      "unitsAndLimitDe": "gesetzte volle Weitergabe",
+      "PASS": true
+    },
+    {
+      "name": "Tarif neue Lücke",
+      "actualExactFraction": "10",
+      "expectedIndependentRecalculation": "10",
+      "unitsAndLimitDe": "pro Stück",
+      "PASS": true
+    },
+    {
+      "name": "Tarif alte Lücke",
+      "actualExactFraction": "20",
+      "expectedIndependentRecalculation": "20",
+      "unitsAndLimitDe": "pro Stück",
+      "PASS": true
+    },
+    {
+      "name": "Tarif Lückenreduktion",
+      "actualExactFraction": "1/2",
+      "expectedIndependentRecalculation": "1/2",
+      "unitsAndLimitDe": "keine Mengen-/Beschäftigungsgarantie",
+      "PASS": true
+    },
+    {
+      "name": "Quote Angebot",
+      "actualExactFraction": "800",
+      "expectedIndependentRecalculation": "800",
+      "unitsAndLimitDe": "höchstens Einheiten",
+      "PASS": true
+    },
+    {
+      "name": "Quote Fehlmenge",
+      "actualExactFraction": "100",
+      "expectedIndependentRecalculation": "100",
+      "unitsAndLimitDe": "mindestens Einheiten",
+      "PASS": true
+    },
+    {
+      "name": "Inklusiv Zusatzinvestition",
+      "actualExactFraction": "13",
+      "expectedIndependentRecalculation": "13",
+      "unitsAndLimitDe": "Mio",
+      "PASS": true
+    },
+    {
+      "name": "Regime ReservenA",
+      "actualExactFraction": "4",
+      "expectedIndependentRecalculation": "4",
+      "unitsAndLimitDe": "Wochen unter konstantem Abfluss",
+      "PASS": true
+    },
+    {
+      "name": "Regime Schuldalt",
+      "actualExactFraction": "200",
+      "expectedIndependentRecalculation": "200",
+      "unitsAndLimitDe": "heimische Geldeinheiten",
+      "PASS": true
+    },
+    {
+      "name": "Regime Schuldneu",
+      "actualExactFraction": "300",
+      "expectedIndependentRecalculation": "300",
+      "unitsAndLimitDe": "heimische Geldeinheiten",
+      "PASS": true
+    },
+    {
+      "name": "Regime Mehrlast",
+      "actualExactFraction": "50",
+      "expectedIndependentRecalculation": "50",
+      "unitsAndLimitDe": "Prozent; Schuld Fremdwährung100 unverändert",
+      "PASS": true
+    },
+    {
+      "name": "Regime ReservenB",
+      "actualExactFraction": "2",
+      "expectedIndependentRecalculation": "2",
+      "unitsAndLimitDe": "Monate",
+      "PASS": true
+    },
+    {
+      "name": "Entwicklung Saldoalt",
+      "actualExactFraction": "7",
+      "expectedIndependentRecalculation": "7",
+      "unitsAndLimitDe": "Mio; engerSaldo≠Gesamtwertschöpfung",
+      "PASS": true
+    },
+    {
+      "name": "Entwicklung Saldoneu",
+      "actualExactFraction": "9",
+      "expectedIndependentRecalculation": "9",
+      "unitsAndLimitDe": "Mio",
+      "PASS": true
+    },
+    {
+      "name": "Entwicklung Saldodelta",
+      "actualExactFraction": "2",
+      "expectedIndependentRecalculation": "2",
+      "unitsAndLimitDe": "Mio; Erlösdelta4 ist etwas anderes",
+      "PASS": true
+    },
+    {
+      "name": "Entwicklung Erlösdelta",
+      "actualExactFraction": "4",
+      "expectedIndependentRecalculation": "4",
+      "unitsAndLimitDe": "Mio",
+      "PASS": true
+    },
+    {
+      "name": "Entwicklung Inputsdelta",
+      "actualExactFraction": "2",
+      "expectedIndependentRecalculation": "2",
+      "unitsAndLimitDe": "Mio",
+      "PASS": true
+    },
+    {
+      "name": "Entwicklung Maschinenpreisdelta",
+      "actualExactFraction": "20",
+      "expectedIndependentRecalculation": "20",
+      "unitsAndLimitDe": "gesetzte Einheiten",
+      "PASS": true
+    },
+    {
+      "name": "Entwicklung Konsumpreisdelta",
+      "actualExactFraction": "10",
+      "expectedIndependentRecalculation": "10",
+      "unitsAndLimitDe": "gesetzte Einheiten",
+      "PASS": true
+    },
+    {
+      "name": "Entwicklung hypothetisch40minus30",
+      "actualExactFraction": "10",
+      "expectedIndependentRecalculation": "10",
+      "unitsAndLimitDe": "kein zeitgleicher beobachteter Nettobestand",
+      "PASS": true
+    },
+    {
+      "name": "Verteilung neuer Preis",
+      "actualExactFraction": "120",
+      "expectedIndependentRecalculation": "120",
+      "unitsAndLimitDe": "pro Tonne",
+      "PASS": true
+    },
+    {
+      "name": "Verteilung100Tonnenneukosten",
+      "actualExactFraction": "12000",
+      "expectedIndependentRecalculation": "12000",
+      "unitsAndLimitDe": "Einheiten",
+      "PASS": true
+    },
+    {
+      "name": "Verteilung100Tonnenaltkosten",
+      "actualExactFraction": "10000",
+      "expectedIndependentRecalculation": "10000",
+      "unitsAndLimitDe": "Einheiten",
+      "PASS": true
+    },
+    {
+      "name": "Verteilung Mehrkosten",
+      "actualExactFraction": "2000",
+      "expectedIndependentRecalculation": "2000",
+      "unitsAndLimitDe": "Einheiten",
+      "PASS": true
+    },
+    {
+      "name": "Verteilung Staatseinnahmen",
+      "actualExactFraction": "20000",
+      "expectedIndependentRecalculation": "20000",
+      "unitsAndLimitDe": "unter gesetzter Menge",
+      "PASS": true
+    },
+    {
+      "name": "Verteilung Privatersparnis",
+      "actualExactFraction": "100000",
+      "expectedIndependentRecalculation": "100000",
+      "unitsAndLimitDe": "jährlich, nicht verfügbarer Staatstransfer",
+      "PASS": true
+    },
+    {
+      "name": "Verteilung Traininggesamt",
+      "actualExactFraction": "60000",
+      "expectedIndependentRecalculation": "60000",
+      "unitsAndLimitDe": "Einheiten",
+      "PASS": true
+    },
+    {
+      "name": "Verteilung Training10finanziert",
+      "actualExactFraction": "20000",
+      "expectedIndependentRecalculation": "20000",
+      "unitsAndLimitDe": "Einheiten",
+      "PASS": true
+    },
+    {
+      "name": "Verteilung Trainingrest",
+      "actualExactFraction": "40000",
+      "expectedIndependentRecalculation": "40000",
+      "unitsAndLimitDe": "Einheiten",
+      "PASS": true
+    },
+    {
+      "name": "Gini Skala100zu1",
+      "actualExactFraction": "3/10",
+      "expectedIndependentRecalculation": "3/10",
+      "unitsAndLimitDe": "0,30; kein Ausgleich Datenjahr/Begriff",
+      "PASS": true
+    },
+    {
+      "name": "Gini gleicheFünf Einkommen",
+      "actualExactFraction": "0",
+      "expectedIndependentRecalculation": "0",
+      "unitsAndLimitDe": "Pairwise sum0: ModellGini0, trotz Armut",
+      "PASS": true
+    },
+    {
+      "name": "HDI Gegenbeispiel ProduktA",
+      "actualExactFraction": "81/200",
+      "expectedIndependentRecalculation": "81/200",
+      "unitsAndLimitDe": "A ersterTeilwert0,5<0,6 aber Produkt0,405>0,216",
+      "PASS": true
+    },
+    {
+      "name": "HDI Gegenbeispiel ProduktB",
+      "actualExactFraction": "27/125",
+      "expectedIndependentRecalculation": "27/125",
+      "unitsAndLimitDe": "monotoneKubikwurzel: Gesamtindex höher beweist nicht jedenTeilwert",
+      "PASS": true
+    },
+    {
+      "name": "Sanktion Lieferlücke",
+      "actualExactFraction": "70",
+      "expectedIndependentRecalculation": "70",
+      "unitsAndLimitDe": "pro Woche, Ersatz in6Monaten kein heutiger Zufluss",
+      "PASS": true
+    },
+    {
+      "name": "Evaluation Veränderung Teilnahme",
+      "actualExactFraction": "30",
+      "expectedIndependentRecalculation": "30",
+      "unitsAndLimitDe": "beobachtet, nicht sicherkausal",
+      "PASS": true
+    },
+    {
+      "name": "Evaluation Veränderung Vergleich",
+      "actualExactFraction": "20",
+      "expectedIndependentRecalculation": "20",
+      "unitsAndLimitDe": "beobachtet",
+      "PASS": true
+    },
+    {
+      "name": "Evaluation Differenzänderung",
+      "actualExactFraction": "10",
+      "expectedIndependentRecalculation": "10",
+      "unitsAndLimitDe": "nur bedingter Vergleichshinweis",
+      "PASS": true
+    },
+    {
+      "name": "Evaluation Teilnehmerkosten",
+      "actualExactFraction": "600",
+      "expectedIndependentRecalculation": "600",
+      "unitsAndLimitDe": "einmalig pro Teilnehmerin, nicht Nutzenbilanz",
+      "PASS": true
+    },
+    {
+      "name": "Evaluation Funktionsquote",
+      "actualExactFraction": "3/5",
+      "expectedIndependentRecalculation": "3/5",
+      "unitsAndLimitDe": "60Prozent",
+      "PASS": true
+    },
+    {
+      "name": "Evaluation Baukostenfunktion",
+      "actualExactFraction": "50000/3",
+      "expectedIndependentRecalculation": "50000/3",
+      "unitsAndLimitDe": "16666,67 Baukosteneinheiten, nicht Euro ohne Kurs",
+      "PASS": true
+    },
+    {
+      "name": "Evaluation Wartung",
+      "actualExactFraction": "600",
+      "expectedIndependentRecalculation": "600",
+      "unitsAndLimitDe": "Euro pro Monat",
+      "PASS": true
+    },
+    {
+      "name": "Rubrik 7c96779b-9d7c-55d6-9f72-158aa7c9616a",
+      "actualExactFraction": "24",
+      "expectedIndependentRecalculation": "24",
+      "unitsAndLimitDe": "sechs tatsächliche Schritte, bestanden15",
+      "PASS": true
+    },
+    {
+      "name": "Rubrik 66f99644-bc67-59ae-9839-077921f94e8d",
+      "actualExactFraction": "24",
+      "expectedIndependentRecalculation": "24",
+      "unitsAndLimitDe": "sechs tatsächliche Schritte, bestanden15",
+      "PASS": true
+    },
+    {
+      "name": "Rubrik 247139ff-b07b-56a4-93c9-ab56348247af",
+      "actualExactFraction": "24",
+      "expectedIndependentRecalculation": "24",
+      "unitsAndLimitDe": "sechs tatsächliche Schritte, bestanden15",
+      "PASS": true
+    },
+    {
+      "name": "Rubrik 1b411f6b-592a-5508-818a-00747930fef2",
+      "actualExactFraction": "24",
+      "expectedIndependentRecalculation": "24",
+      "unitsAndLimitDe": "sechs tatsächliche Schritte, bestanden15",
+      "PASS": true
+    },
+    {
+      "name": "Rubrik c1decd35-40e0-5b6e-a28a-177bf69ad915",
+      "actualExactFraction": "24",
+      "expectedIndependentRecalculation": "24",
+      "unitsAndLimitDe": "sechs tatsächliche Schritte, bestanden15",
+      "PASS": true
+    },
+    {
+      "name": "Rubrik deeee12c-5274-5b0b-8592-ab2fe952a620",
+      "actualExactFraction": "24",
+      "expectedIndependentRecalculation": "24",
+      "unitsAndLimitDe": "sechs tatsächliche Schritte, bestanden15",
+      "PASS": true
+    },
+    {
+      "name": "Rubrik 0ea0ceb5-6107-5c4f-8adf-fc7fb98b48ad",
+      "actualExactFraction": "24",
+      "expectedIndependentRecalculation": "24",
+      "unitsAndLimitDe": "sechs tatsächliche Schritte, bestanden15",
+      "PASS": true
+    },
+    {
+      "name": "Rubrik b8d55c32-5835-5b20-b030-41deeae32655",
+      "actualExactFraction": "24",
+      "expectedIndependentRecalculation": "24",
+      "unitsAndLimitDe": "sechs tatsächliche Schritte, bestanden15",
+      "PASS": true
+    },
+    {
+      "name": "Rubrik 1fba8606-362e-5804-a00a-a108a459da21",
+      "actualExactFraction": "24",
+      "expectedIndependentRecalculation": "24",
+      "unitsAndLimitDe": "sechs tatsächliche Schritte, bestanden15",
+      "PASS": true
+    },
+    {
+      "name": "Rubrik bc543d6c-ec6b-5dbb-bac9-5a13e0f19507",
+      "actualExactFraction": "24",
+      "expectedIndependentRecalculation": "24",
+      "unitsAndLimitDe": "sechs tatsächliche Schritte, bestanden15",
+      "PASS": true
+    },
+    {
+      "name": "Rubrik b568548c-b7e2-5a15-be62-114b698d99c8",
+      "actualExactFraction": "24",
+      "expectedIndependentRecalculation": "24",
+      "unitsAndLimitDe": "sechs tatsächliche Schritte, bestanden15",
+      "PASS": true
+    },
+    {
+      "name": "Rubrik 4ef1adaf-8b9b-5313-b484-225b49f5f577",
+      "actualExactFraction": "24",
+      "expectedIndependentRecalculation": "24",
+      "unitsAndLimitDe": "sechs tatsächliche Schritte, bestanden15",
+      "PASS": true
+    }
+  ],
+  "errors": 0,
+  "fictionalCaseNumbersNeverClaimedAsObservedRealWorldEffects": true,
+  "numericCheckIsNotWholeScienceByItself": true
+}

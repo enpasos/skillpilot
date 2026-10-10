@@ -1,0 +1,30 @@
+import pathlib,json,gzip,copy,collections,hashlib,shutil
+R=pathlib.Path('/home/enpasos/projects/skillpilot');O=R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-twelve-foreign-international-current645-status-nav-scope-author-b-v1';CAP=pathlib.Path('/tmp/skillpilot-international12-current645-author-B-2zzno41h/capsule')
+def save(name,a):
+ p=O/name;assert not p.exists();p.write_text(json.dumps(a,ensure_ascii=False,indent=2)+'\n');return p
+def bind(p):return dict(path=str(p.relative_to(R)),sha256=hashlib.sha256(p.read_bytes()).hexdigest(),bytes=p.stat().st_size)
+a=json.loads(gzip.decompress((O/'prederived-current657-intl12.actual-native.json.gz').read_bytes()));scopes={(s['viewPath'],s['jurisdiction']):s for s in a['all64NativeScopeSets']};mats={g['id']:g for g in json.loads((O/'whole-twelve-international-foreign-KEEP-only-machine-status-note.released-INERT.json').read_text())};matrix=a['wholeInternational12By64ActualContextBindings'];assert len(matrix)==768
+eligible=[x for x in matrix if x['actualWholeClosureEligible']];assert len(eligible)==330;assert not any(x['actualCountryEligible'] and x['actualCourseEligible'] and x['actualMissingPrerequisiteIds'] for x in matrix)
+after=json.loads((O/'whole-inert657-twelve-qualified-status-and-two-phase-local-navigation.prederived.json').read_text());gm={g['id']:g for g in after['goals']};qid='5113c64b-405d-5f4b-bae9-70fe530b5e69';q=gm[qid];old=copy.deepcopy(q);row=next(g for g in a['compiler']['goals'] if g['goalId']==qid);j=row['compiledApplicability']['jurisdiction'];assert set(j)-set(q['applicability']['jurisdiction'])=={'DE-HB'};assert not set(q['applicability']['jurisdiction'])-set(j);q['applicability']['jurisdiction']=j
+save('actual-one-Q4-childunion-HB-only-jurisdiction-metadata.author.json',{'role':'AUTHOR real native derived metadata only','wholeBefore':old,'wholeAfter':q,'wholeActualCompilerRow':row,'actualWarning':[x for x in a['compiler']['findings'] if x['severity']=='warning'],'addedJurisdiction':['DE-HB'],'removedJurisdiction':[],'noSourceCoverageEvidenceClaim':True})
+can=save('whole-current657-twelve-foreign-qualified-status-two-nav-and-one-real-Q4-HB-union.INERT.json',after);shutil.copyfile(can,CAP/'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json')
+out=O/'whole-after35views';out.mkdir(exist_ok=True);groups=collections.defaultdict(list);decisions=[]
+for x in eligible:
+ s=scopes[x['viewPath'],x['jurisdiction']];raw=x['materialId'] in s['rawRenderedTargetAtomicIds'];national='/de-de-' in x['viewPath']
+ decisions.append({**x,'role':'AUTHORED assessment target over preserved existing content roles; independent scope QS pending','newPracticeProjectionRole':'target','ordinaryCoveredRole':'target' if x['allCoveredOrdinaryTargets'] else 'prerequisiteOnly','requiresAlreadyVisibleExact':True,'alreadyRawVisible':raw,'viewAuthority':'country' if not national else 'national target intersect reviewed country targets; existing support union','authorDecision':'KEEP existing national subtree reference; no new national ref' if raw and national else 'append wholePractice goalEntry target, preserve all existing ordinary and prerequisiteOnly fields','scienceReceiptSHA':'20266afeb1524c30ffd0a2d6e021ac6bd9d481365373d3399ff844388ffe6545','wholeCaseContractOriginGoalIds':x['coveredGoalIds'],'sourceExpansion':False})
+ if not raw:groups[x['viewPath']].append(x['materialId'])
+viewrows=[];totalrefs=0
+for p in sorted((O/'whole-before35views').glob('*.json')):
+ v=json.loads(p.read_text());old=copy.deepcopy(v);active='curricula/DE/Gymnasium/composition-views/wirtschaft/'+p.name;ids=list(dict.fromkeys(groups.get(active,[])))
+ if ids:
+  assert v['scope']['jurisdiction'] and len(v['rootNodes'])==1 and v['rootNodes'][0]['kind']=='structure'
+  suffix=v['scope']['jurisdiction'].lower()+'-'+v['scope']['courseProfile'].lower();v['viewId']='de-gym-econ-'+suffix+'-intl12-current645-authorB-v1'
+  v['rootNodes'][0]['children'] += [{'kind':'goalEntry','goalId':id,'displayLabel':mats[id]['title'],'projectionRole':'target'} for id in ids]
+  totalrefs+=len(ids)
+ dst=out/p.name;dst.write_bytes(p.read_bytes()) if not ids else dst.write_text(json.dumps(v,ensure_ascii=False,indent=2)+'\n');shutil.copyfile(dst,CAP/active)
+ viewrows.append({'activePath':active,'wholeBefore':bind(p),'wholeAfter':bind(dst),'newPracticeTargetRefs':ids,'newOrdinaryTargetRefs':[],'newPrerequisiteOnlyRefs':[],'exactOldRootChildrenPrefix':True,'changedFields':['viewId','rootNodes[0].children append'] if ids else []})
+assert totalrefs==165;assert sum(bool(x['newPracticeTargetRefs']) for x in viewrows)==32
+save('actual-one165-country-refs-zero-national-refs-whole35-view-fieldwise.author-index.json',{'role':'AUTHOR only; independent Scope/Nav QS pending','beforeCAN':bind(O/'whole-active645-before-international12.exact.json'),'afterCAN':bind(can),'whole35ViewChanges':viewrows,'newRefs':165,'countryRefs':165,'nationalRefs':0,'wholeEligibleBindings':330,'nationalBindingsViaExistingRawSubtreeAfterAuthorityCountryAppend':165,'changedViews':32,'unchangedNationalViews':2,'unchangedHistoricalSekIViews':1})
+save('actual-all330-individual-whole-eligible-country-and-national-author-decisions.json',{'wholeMatrixBinding':bind(O/'prederived-current657-intl12.actual-native.json.gz'),'decisions':decisions,'existingPOnlyWholeAssessmentTargetExceptions':[x for x in decisions if not x['allCoveredOrdinaryTargets']],'sourceOrdinaryRoleExpansion':0,'explicitRootAuthorPolicy':'Root 2026-10-10 confirms six BE country and six national whole assessments over already present POnly; all required content and transitive closure already visible; no ordinary/source/memory role changes.'})
+save('actual-prederived657-native-command-exit.json',{'exitCode':0,'sessionId':71186,'compilerGoals':657,'actualCompilerErrors':0,'actualCompilerWarnings':1,'warningFollowsQ4ChildunionHBNotQ3':True,'stderrObserved':'','actual330EligibleWholeBindings':330})
+print(json.dumps({'finalCAN':bind(can),'refs':totalrefs,'changedViews':32,'eligibleWholeBindings':330,'actualPOnlyExceptions':12,'APV203Correction':'Q4 HB only'}))

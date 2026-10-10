@@ -1,0 +1,36 @@
+{
+  "checks": [
+    {
+      "args": [
+        "/tmp/economics-D124-candidate-ledger-native-root.mts",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-consumer-existing-orientation-current-native-D1-root-v21/whole-ledger-only-current-consumer-v20-to-v21.INERT-candidate.json"
+      ],
+      "actualExitCode": 0,
+      "seconds": 0.388
+    },
+    {
+      "args": [
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "prepare",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-consumer-existing-orientation-current-native-D1-root-v21/current-consumer-v21.config.json"
+      ],
+      "actualExitCode": 0,
+      "seconds": 2.858
+    },
+    {
+      "args": [
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-consumer-existing-orientation-current-native-D1-root-v21/current-consumer-v21.config.json"
+      ],
+      "actualExitCode": 0,
+      "seconds": 0.466
+    }
+  ],
+  "allThreePassed": true,
+  "newStrictClosures": 0,
+  "twoCurrentIndependentDRoundsStillRequired": true,
+  "preservesSealedV20AndEarlierHistory": true
+}

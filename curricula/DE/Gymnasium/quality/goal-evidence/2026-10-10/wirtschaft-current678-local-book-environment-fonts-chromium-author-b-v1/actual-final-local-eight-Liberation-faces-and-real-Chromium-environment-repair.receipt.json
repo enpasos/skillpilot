@@ -1,0 +1,283 @@
+{
+  "decision": "LOCAL_BUILD_ENVIRONMENT_READY_WITH_UNCHANGED_NATIVE_PREFLIGHT",
+  "scope": "Process-local fontconfig + existing authentic Liberation fonts + actual Playwright Chromium; no curriculum or application code writes",
+  "baselineDefaultArial": {
+    "argv": [
+      "fc-match",
+      "--format",
+      "%{family}\t%{style}\t%{file}\n",
+      "Arial:style=Regular"
+    ],
+    "FONTCONFIG_FILE": "unset",
+    "exit": 0,
+    "stdout": "DejaVu Sans\tBook\t/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf\n",
+    "stderr": ""
+  },
+  "actualEightFCMatchCommands": [
+    {
+      "argv": [
+        "fc-match",
+        "--format",
+        "%{family}\t%{style}\t%{weight}\t%{slant}\t%{file}\n",
+        "Arial:style=Regular"
+      ],
+      "FONTCONFIG_FILE": "/tmp/skillpilot-native-liberation-fonts-4dyn_jva/fonts.conf",
+      "exit": 0,
+      "stdout": "Liberation Sans\tRegular\t80\t0\t/tmp/skillpilot-native-liberation-fonts-4dyn_jva/extracted/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "fc-match",
+        "--format",
+        "%{family}\t%{style}\t%{weight}\t%{slant}\t%{file}\n",
+        "Arial:style=Bold"
+      ],
+      "FONTCONFIG_FILE": "/tmp/skillpilot-native-liberation-fonts-4dyn_jva/fonts.conf",
+      "exit": 0,
+      "stdout": "Liberation Sans\tBold\t200\t0\t/tmp/skillpilot-native-liberation-fonts-4dyn_jva/extracted/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "fc-match",
+        "--format",
+        "%{family}\t%{style}\t%{weight}\t%{slant}\t%{file}\n",
+        "Arial:style=Italic"
+      ],
+      "FONTCONFIG_FILE": "/tmp/skillpilot-native-liberation-fonts-4dyn_jva/fonts.conf",
+      "exit": 0,
+      "stdout": "Liberation Sans\tItalic\t80\t100\t/tmp/skillpilot-native-liberation-fonts-4dyn_jva/extracted/usr/share/fonts/truetype/liberation/LiberationSans-Italic.ttf\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "fc-match",
+        "--format",
+        "%{family}\t%{style}\t%{weight}\t%{slant}\t%{file}\n",
+        "Arial:style=Bold Italic"
+      ],
+      "FONTCONFIG_FILE": "/tmp/skillpilot-native-liberation-fonts-4dyn_jva/fonts.conf",
+      "exit": 0,
+      "stdout": "Liberation Sans\tBold Italic\t200\t100\t/tmp/skillpilot-native-liberation-fonts-4dyn_jva/extracted/usr/share/fonts/truetype/liberation/LiberationSans-BoldItalic.ttf\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "fc-match",
+        "--format",
+        "%{family}\t%{style}\t%{weight}\t%{slant}\t%{file}\n",
+        "Courier New:style=Regular"
+      ],
+      "FONTCONFIG_FILE": "/tmp/skillpilot-native-liberation-fonts-4dyn_jva/fonts.conf",
+      "exit": 0,
+      "stdout": "Liberation Mono\tRegular\t80\t0\t/tmp/skillpilot-native-liberation-fonts-4dyn_jva/extracted/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "fc-match",
+        "--format",
+        "%{family}\t%{style}\t%{weight}\t%{slant}\t%{file}\n",
+        "Courier New:style=Bold"
+      ],
+      "FONTCONFIG_FILE": "/tmp/skillpilot-native-liberation-fonts-4dyn_jva/fonts.conf",
+      "exit": 0,
+      "stdout": "Liberation Mono\tBold\t200\t0\t/tmp/skillpilot-native-liberation-fonts-4dyn_jva/extracted/usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "fc-match",
+        "--format",
+        "%{family}\t%{style}\t%{weight}\t%{slant}\t%{file}\n",
+        "Courier New:style=Italic"
+      ],
+      "FONTCONFIG_FILE": "/tmp/skillpilot-native-liberation-fonts-4dyn_jva/fonts.conf",
+      "exit": 0,
+      "stdout": "Liberation Mono\tItalic\t80\t100\t/tmp/skillpilot-native-liberation-fonts-4dyn_jva/extracted/usr/share/fonts/truetype/liberation/LiberationMono-Italic.ttf\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "fc-match",
+        "--format",
+        "%{family}\t%{style}\t%{weight}\t%{slant}\t%{file}\n",
+        "Courier New:style=Bold Italic"
+      ],
+      "FONTCONFIG_FILE": "/tmp/skillpilot-native-liberation-fonts-4dyn_jva/fonts.conf",
+      "exit": 0,
+      "stdout": "Liberation Mono\tBold Italic\t200\t100\t/tmp/skillpilot-native-liberation-fonts-4dyn_jva/extracted/usr/share/fonts/truetype/liberation/LiberationMono-BoldItalic.ttf\n",
+      "stderr": ""
+    }
+  ],
+  "actualEightFonts": [
+    {
+      "requestedFamily": "Arial",
+      "requestedStyle": "Regular",
+      "actualFamily": "Liberation Sans",
+      "actualStyle": "Regular",
+      "actualWeight": 80,
+      "actualSlant": 0,
+      "actualPhysicalFont": {
+        "path": "/tmp/skillpilot-native-liberation-fonts-4dyn_jva/extracted/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf",
+        "sha256": "4659bc0c58c5028dd488ec928d41d9265db43d9b669fc14ca8b0832daca7b144",
+        "bytes": 410820
+      }
+    },
+    {
+      "requestedFamily": "Arial",
+      "requestedStyle": "Bold",
+      "actualFamily": "Liberation Sans",
+      "actualStyle": "Bold",
+      "actualWeight": 200,
+      "actualSlant": 0,
+      "actualPhysicalFont": {
+        "path": "/tmp/skillpilot-native-liberation-fonts-4dyn_jva/extracted/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+        "sha256": "3973aa5054fb467dd5627245d3dc82e37bf16fe075756156a570455871351582",
+        "bytes": 414568
+      }
+    },
+    {
+      "requestedFamily": "Arial",
+      "requestedStyle": "Italic",
+      "actualFamily": "Liberation Sans",
+      "actualStyle": "Italic",
+      "actualWeight": 80,
+      "actualSlant": 100,
+      "actualPhysicalFont": {
+        "path": "/tmp/skillpilot-native-liberation-fonts-4dyn_jva/extracted/usr/share/fonts/truetype/liberation/LiberationSans-Italic.ttf",
+        "sha256": "830c5fa600505fb4c1a271b4271c53c44bae43f492b2a240d0e98a3a7a380121",
+        "bytes": 415920
+      }
+    },
+    {
+      "requestedFamily": "Arial",
+      "requestedStyle": "Bold Italic",
+      "actualFamily": "Liberation Sans",
+      "actualStyle": "Bold Italic",
+      "actualWeight": 200,
+      "actualSlant": 100,
+      "actualPhysicalFont": {
+        "path": "/tmp/skillpilot-native-liberation-fonts-4dyn_jva/extracted/usr/share/fonts/truetype/liberation/LiberationSans-BoldItalic.ttf",
+        "sha256": "c80fa7f2ffa0e01d4d8dcd6a6d1e43eda665222d1b4db597dde1174c456006cf",
+        "bytes": 409108
+      }
+    },
+    {
+      "requestedFamily": "Courier New",
+      "requestedStyle": "Regular",
+      "actualFamily": "Liberation Mono",
+      "actualStyle": "Regular",
+      "actualWeight": 80,
+      "actualSlant": 0,
+      "actualPhysicalFont": {
+        "path": "/tmp/skillpilot-native-liberation-fonts-4dyn_jva/extracted/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf",
+        "sha256": "395fa5ab8d40c8eba390ced528744ea75a7f69aabf3e68b6f925ca0e39a27370",
+        "bytes": 319624
+      }
+    },
+    {
+      "requestedFamily": "Courier New",
+      "requestedStyle": "Bold",
+      "actualFamily": "Liberation Mono",
+      "actualStyle": "Bold",
+      "actualWeight": 200,
+      "actualSlant": 0,
+      "actualPhysicalFont": {
+        "path": "/tmp/skillpilot-native-liberation-fonts-4dyn_jva/extracted/usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf",
+        "sha256": "626655e94dd82f3f42549daf995c921b0915fa8ab1f4b839559e8892ea41d240",
+        "bytes": 308068
+      }
+    },
+    {
+      "requestedFamily": "Courier New",
+      "requestedStyle": "Italic",
+      "actualFamily": "Liberation Mono",
+      "actualStyle": "Italic",
+      "actualWeight": 80,
+      "actualSlant": 100,
+      "actualPhysicalFont": {
+        "path": "/tmp/skillpilot-native-liberation-fonts-4dyn_jva/extracted/usr/share/fonts/truetype/liberation/LiberationMono-Italic.ttf",
+        "sha256": "a71b2c25c89da05cf0e7c4dbba8d473fdead0b181ae56165217747d2c1f39215",
+        "bytes": 281608
+      }
+    },
+    {
+      "requestedFamily": "Courier New",
+      "requestedStyle": "Bold Italic",
+      "actualFamily": "Liberation Mono",
+      "actualStyle": "Bold Italic",
+      "actualWeight": 200,
+      "actualSlant": 100,
+      "actualPhysicalFont": {
+        "path": "/tmp/skillpilot-native-liberation-fonts-4dyn_jva/extracted/usr/share/fonts/truetype/liberation/LiberationMono-BoldItalic.ttf",
+        "sha256": "15eb161953e3ecc7fc05a3fec8a59e0f4e0a54a4e375736adf8e98d65981f813",
+        "bytes": 284184
+      }
+    }
+  ],
+  "actualLiberationDebianPackage": {
+    "artifact": {
+      "path": "/tmp/skillpilot-native-liberation-fonts-4dyn_jva/fonts-liberation_1%3a2.1.5-3_all.deb",
+      "sha256": "065c2ab1abc9108b17d401016dc594b79750904390f095845c93bb06e1153acc",
+      "bytes": 1603290
+    },
+    "actualInspection": {
+      "argv": [
+        "dpkg-deb",
+        "--field",
+        "/tmp/skillpilot-native-liberation-fonts-4dyn_jva/fonts-liberation_1%3a2.1.5-3_all.deb",
+        "Package",
+        "Version",
+        "Architecture"
+      ],
+      "exit": 0,
+      "stdout": "Package: fonts-liberation\nVersion: 1:2.1.5-3\nArchitecture: all\n",
+      "stderr": ""
+    },
+    "origin": "Existing earlier local Debian package cache; no new network/install action in this repair",
+    "copyright": {
+      "path": "/tmp/skillpilot-native-liberation-fonts-4dyn_jva/extracted/usr/share/doc/fonts-liberation/copyright",
+      "sha256": "f32df582a2aab128c07b2f7e36e7b928dc5f6bd82657b905c04f91459f9e5cf9",
+      "bytes": 5756
+    }
+  },
+  "fontconfigFile": {
+    "path": "/tmp/skillpilot-native-liberation-fonts-4dyn_jva/fonts.conf",
+    "sha256": "79656a5fe069ffd8ebc816c27a984eb36eff49ba9189130bf9ab8d494eca65ec",
+    "bytes": 302
+  },
+  "realChromiumExecutable": {
+    "path": "/home/enpasos/.cache/ms-playwright/chromium-1217/chrome-linux64/chrome",
+    "sha256": "696170a79640ec5b50c7518140ace06c69a49cfb295bf527d4a85e26a12b89a7",
+    "bytes": 273505496
+  },
+  "actualBrowserVersion": "147.0.7727.15",
+  "nativeUnchangedFontPreflightAndEightRenderedFaces": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-local-book-environment-fonts-chromium-author-b-v1/actual-native-font-preflight-eight-rendered-browser-faces.json",
+    "sha256": "fa6d231b86f16c1238a97bb5f79e09baec2ad817b8a48f2e52307d52833eda62",
+    "bytes": 3561
+  },
+  "actualNativeCommand": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current678-local-book-environment-fonts-chromium-author-b-v1/actual-native-fonts-and-browser-command-exit.json",
+    "sha256": "ffe203d45581f1399146186db074ece7a57ed6a35d57f1fc737a3a3bc27b9143",
+    "bytes": 3807
+  },
+  "requiredEnvironmentOverrides": {
+    "FONTCONFIG_FILE": "/tmp/skillpilot-native-liberation-fonts-4dyn_jva/fonts.conf",
+    "GOAL_BOOK_CHROMIUM_EXECUTABLE_PATH": "/home/enpasos/.cache/ms-playwright/chromium-1217/chrome-linux64/chrome"
+  },
+  "normalBuildCommand": "npm run -s test:goal-book-pipeline",
+  "normalBuildWorkingDirectory": "/home/enpasos/projects/skillpilot/app",
+  "retainExistingNode20PATH": true,
+  "reversal": "Remove these two environment overrides from the build process; no system/package/repository changes were made. Existing cached fontconfig/fonts/browser were preserved unchanged.",
+  "newInstallActions": 0,
+  "globalFontconfigChanges": 0,
+  "repoCodeOrCurriculumChanges": 0,
+  "bookOrPDFBuildsStartedByThisAgent": 0,
+  "forceFlags": 0,
+  "preflightBypasses": 0,
+  "humanReleaseOrM6Claim": false,
+  "nextStep": "Root runs the normal authorized build with both environment overrides and records its actual result."
+}

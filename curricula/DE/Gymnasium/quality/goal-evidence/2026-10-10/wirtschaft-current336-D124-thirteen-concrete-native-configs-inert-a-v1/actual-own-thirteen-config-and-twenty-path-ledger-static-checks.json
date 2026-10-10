@@ -1,0 +1,56 @@
+{
+  "validator": "Python jsonschema Draft202012Validator with whole actual repository schemas; native contract reproduced for read-only static claims",
+  "actualSchemas": [
+    {
+      "path": "contracts/goal-description-review/v1/goal-description-rollout-batch-config.schema.json",
+      "sha256": "sha256:f36f619b4155357e429bfd1a7ea03535b4cf5ce89b07006c81a5dda4f5e00655",
+      "bytes": 2045
+    },
+    {
+      "path": "contracts/goal-description-review/v1/goal-description-rollout-in-flight-ledger.schema.json",
+      "sha256": "sha256:3f36926dc19f65d78b6f7fae068bf64100b80a09746f8e66875656e0b29d99d8",
+      "bytes": 989
+    }
+  ],
+  "positive": {
+    "configs": 13,
+    "futureLedgerPaths": 20,
+    "currentDistinctIDs": 124,
+    "regularIDs": 122,
+    "specialIndependentIDs": 2,
+    "preservedChemistryClaims": 7,
+    "retiredEconomicsClaims": 9,
+    "nativeClaimKeysUnique": true
+  },
+  "realStaticMutationNegatives": [
+    {
+      "case": "duplicated_claim",
+      "rejected": true,
+      "reason": "planned exact package IDs required"
+    },
+    {
+      "case": "more_than_twenty",
+      "rejected": true,
+      "reason": "['943fd59c-661a-5163-b5a4-c6bb5a983855', 'df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb', 'a04fc1a7-e037-580e-9324-9282f4acebc1', 'd76af11e-7fb3-5e81-a622-9f3642efedaf', 'eee603d5-61d0-58e2-8f74-16de1e311630', '4c9b844f-a5fb-595b-935f-27cbc66610ae', 'a6a8bf1a-a131-5f17-9113-02a1321899e4', 'b1d7f1ab-371b-5e02-acb3-49f3938b2ba6', 'b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0', '72f45efc-459e-5407-b946-1bb1968135d2', 'f478f85e-87b1-505e-979a-8de1b3141019', 'c15aa50c-1890-5079-96ec-6e356904df3c', '5a72a72a-609a-5e60-8a25-4f5048b8b09c', '00a4e086-ed5b-5a3f-bcd9-a862d83c60ab', '0242e34e-e2fe-5a0f-8aed-57905c6ebb26', '047ce369-b605-5cc6-8363-c5d288f5e938', '04809186-3f65-579d-b300-af9ed3e100c1', '0489aa68-7059-51dd-92bb-6d801c568449', '04c17efe-4451-52bd-8116-1042d1501c41', '04cccbe4-2759-5cf9-8bcc-70edfe244703', '0509ae79-abb4-5e6b-8db2-521c1bccacf4', '053f1522-31a7-583f-85f5-366ed724d3c5', '055ef95c-0b64-5675-8f14-2524c3438009', '099086bb-5100-5ce0-8334-0aab8850a48e', '09e58ea8-1920-5600-bd2b-cc1f199d051f', '0b6db337-3fc6-5c30-860d-c8fbd535cb5c', '0d8cb18d-7fd9-56f5-8009-8045d44f4127', '0e397f08-e472-50f4-a05b-81d76dd6d3fa', '0e5b12a1-68bd-5838-8e70-02b3e7f2518a', '0eaf70cd-b7b9-582b-8e77-7002b414d494', '0fda1400-25bc-518f-9dea-848c8104a8d4', '1153a5a3-89b7-567b-8b8f-0128a91cde41', '11c57203-1619-5bba-8905-9c10d7f77d57', '120242ff-f251-54a5-ae30-fc3c22ab6f25'] is too long"
+    },
+    {
+      "case": "wrong_base_book",
+      "rejected": true,
+      "reason": "production base Book required"
+    },
+    {
+      "case": "different_goal_ID",
+      "rejected": true,
+      "reason": "planned exact package IDs required"
+    },
+    {
+      "case": "foreign_claim_removed",
+      "rejected": true,
+      "reason": "future ledger must preserve exactly seven foreign paths and append precisely thirteen own configs"
+    }
+  ],
+  "nativeLoaderExecuted": false,
+  "nativePrepareExecuted": false,
+  "nativeReviewRoundsExecuted": false,
+  "staticCheckCreatesNoScientificApproval": true
+}

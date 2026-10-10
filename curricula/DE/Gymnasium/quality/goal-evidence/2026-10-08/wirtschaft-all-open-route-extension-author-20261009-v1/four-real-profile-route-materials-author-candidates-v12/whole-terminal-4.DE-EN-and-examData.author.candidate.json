@@ -1,0 +1,70 @@
+{
+  "id": "efbdb94b-e694-53d7-91a7-610e2a1ed1c2",
+  "title": "Profil: Gewichtete Portfoliorenditen und Diversifikationsgrenzen auswerten",
+  "titleEn": "Profile: evaluate weighted portfolio returns and diversification limits",
+  "description": "Die lernende Person kann für bereitgestellte Modellportfolios gewichtete Renditen berechnen, gemeinsame Kursbewegungen vergleichen und einen behaupteten Schutz vor Verlusten unter Beachtung der begrenzten Szenariodaten kritisch prüfen.",
+  "descriptionEn": "The learner can calculate weighted returns for supplied model portfolios, compare joint price movements and critically assess a claimed protection against losses while respecting the limited scenario data.",
+  "weight": 1,
+  "tags": [
+    "GK",
+    "LK",
+    "Practice",
+    "Assessment"
+  ],
+  "contains": [],
+  "requires": [
+    "7a2435f2-0ce7-5179-81a5-2ef5c313e3dd"
+  ],
+  "dimensionTags": {
+    "framework": "canonical-gymnasium-economics",
+    "demandLevel": "AB3",
+    "phase": "Q1"
+  },
+  "phase": "Q1",
+  "type": "atomic",
+  "extendedData": {
+    "applicabilityFromRequires": true
+  },
+  "examData": {
+    "reviewStatus": "draft",
+    "coveredGoalIds": [
+      "7a2435f2-0ce7-5179-81a5-2ef5c313e3dd"
+    ],
+    "coveredStrands": [
+      "WW_WIRTSCHAFT"
+    ],
+    "demandLevels": [
+      "AB1",
+      "AB2",
+      "AB3"
+    ],
+    "taskContent": "**Material: Zwei fiktive Unterrichtsportfolios, keine reale Anlageentscheidung**\n\nIn einer einzigen Periode werden1.000 Recheneinheiten auf zwei modellierte Anlagen A/B verteilt. Portfolio P hält zu Beginn60% A und40% B; Q hält20% A und80% B. Die Anfangsgewichte bleiben für die Renditerechnung maßgeblich; Umschichten, Gebühren und Ausschüttungen sind ausgeschlossen. Die drei Szenarien sind alternative erfundene Kursverläufe, keine zeitliche Folge und keine statistische Stichprobe. Keine Eintrittswahrscheinlichkeiten sind bekannt.\n\n| Szenario | Rendite A | Rendite B |\n| --- | ---: | ---: |\n|I|+8%|−2%|\n|II|−6%|+4%|\n|III|−10%|−5%|\n\nPortfoliorendite=wA·rA+wB·rB; Endwert=1.000·(1+rPortfolio). Ein Lernprojekt legt ausschließlich für die Modellprüfung eine Verlustgrenze von5% in jedem aufgeführten Szenario fest. Das ist kein persönliches Risikoprofil. Quellenkontext: [LehrplanPLUS WR11 WWG,7.4](https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/11/wirtschaft-und-recht/wwg); alle Daten und Portfolios sind eigenes Modellmaterial.\n\n**Aufgaben –24 BE:**\n1. Berechnen Sie für P und Q in I–III jeweils die gewichtete Rendite und den Endwert. **6 BE**\n2. Erklären Sie anhand der gemeinsamen Bewegungen, wann ein Anteil den anderen hier teilweise ausgleicht und warum Diversifikation in III keinen Verlust verhindert. **6 BE**\n3. Prüfen Sie, ob P oder Q die vorgegebene5%-Verlustgrenze in allen drei Szenarien erfüllt. Vergleichen Sie die Ergebnisse, ohne daraus eine reale Empfehlung abzuleiten. **6 BE**\n4. Beurteilen Sie: „Q ist in III besser als P, also ist Q generell sicher und die Tabelle beweist eine dauerhaft negative Korrelation.“ Nennen Sie zwei konkrete fehlende Informationen. **6 BE**\n",
+    "solutionContent": "1. P: I0,6·8%+0,4·(−2%)=4%, Endwert1.040; II0,6·(−6%)+0,4·4%=−2%, Endwert980; III0,6·(−10%)+0,4·(−5%)=−8%, Endwert920. Q: I0,2·8%+0,8·(−2%)=0%, Endwert1.000; II0,2·(−6%)+0,8·4%=2%, Endwert1.020; III0,2·(−10%)+0,8·(−5%)=−6%, Endwert940. **Je Kombination1 BE: richtige gewichtete Rendite0,5 und Endwert0,5;6 BE.**\n\n2. In I und II bewegen sich A/B gegensinnig; Gewinne eines Anteils gleichen Verluste des anderen teilweise aus, abhängig von den Gewichten. In III fallen beide: Q verliert weniger als P, weil B hier weniger stark fällt und in Q stärker gewichtet ist. Die Aufteilung verhindert gemeinsame Verluste nicht. **6 BE: Gegensinnigkeit/Gewichte2; beide negativen Bewegungen und Wirkung2; keine Verlustgarantie2.**\n\n3. Keines erfüllt die Grenze in allen drei Fällen: P verliert8% in III, Q6%; beide liegen über5%. Q hat in III den kleineren Verlust, gewinnt aber in I weniger als P. Das rechtfertigt nur den aufgeführten Szenariovergleich. **6 BE: beide Grenzverletzungen mit Zahl je2; mindestens ein begründeter Gewinn-/Verlustvergleich2.**\n\n4. Der kleinere Verlust in III ist keine generelle Sicherheit. Die Tabelle hat weder Wahrscheinlichkeiten noch genügend tatsächlich beobachtete Zeitreihendaten, um eine dauerhafte Korrelation zu schätzen. Es fehlen beispielsweise Eintrittswahrscheinlichkeiten/weitere gemeinsame Kursverläufe und die für eine andere Fragestellung relevante Liquidität oder Kosten. Selbst gute Diversifikation beseitigt nicht jede gemeinsame Marktrisikolage. **6 BE: relative Verbesserung vs Garantie2; fehlender Korrelationsnachweis2; zwei konkrete benötigte Informationen je1.**\n",
+    "scoring": {
+      "maxPoints": 24,
+      "passingPoints": 15,
+      "steps": [
+        {
+          "id": "s1",
+          "points": 6,
+          "description": "Sechs Kombinationen je1: richtige gewichtete Rendite0,5 und Endwert0,5."
+        },
+        {
+          "id": "s2",
+          "points": 6,
+          "description": "Gegensinnigkeit/Gewichte2; gemeinsamer Rückgang2; keine Verlustgarantie2."
+        },
+        {
+          "id": "s3",
+          "points": 6,
+          "description": "P−8% und Q−6% jeweils oberhalb5%-Grenze je2; begründeter Szenariovergleich2."
+        },
+        {
+          "id": "s4",
+          "points": 6,
+          "description": "Keine allgemeine Sicherheitsgarantie2; kein dauerhafter Korrelationsnachweis2; zwei konkrete Informationslücken je1."
+        }
+      ]
+    }
+  }
+}

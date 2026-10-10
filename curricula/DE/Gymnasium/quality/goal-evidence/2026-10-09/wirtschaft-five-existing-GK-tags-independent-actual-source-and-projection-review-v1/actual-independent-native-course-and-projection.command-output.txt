@@ -1,0 +1,20 @@
+node:fs:596
+  handleErrorFromBinding(ctx);
+  ^
+
+Error: ENOENT: no such file or directory, open '/tmp/economics-five-GK-tags-independent-native/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json'
+    at Object.openSync (node:fs:596:3)
+    at readFileSync (node:fs:464:35)
+    at loadSupportedJurisdictions (/tmp/economics-five-GK-tags-independent-native/app/scripts/applicabilityCompiler.ts:223:27)
+    at <anonymous> (/tmp/economics-five-GK-tags-independent-native/app/scripts/applicabilityCompiler.ts:243:33)
+    at ModuleJob.run (node:internal/modules/esm/module_job:195:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:336:24)
+    at async loadESM (node:internal/process/esm_loader:34:7)
+    at async handleMainPromise (node:internal/modules/run_main:106:12) {
+  errno: -2,
+  syscall: 'open',
+  code: 'ENOENT',
+  path: '/tmp/economics-five-GK-tags-independent-native/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_OVERVIEW.de.json'
+}
+
+Node.js v18.19.1

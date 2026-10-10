@@ -1,0 +1,912 @@
+[
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "wirtschaft-be-source125-twelve-profile-enterprise-remedy-author-v1-readable-v2",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:67cb33f69362d231eb65f9a0d0113905cd50d89a3f43588da59187fb653b66dd",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "goalId": "d76af11e-7fb3-5e81-a622-9f3642efedaf",
+    "goalFingerprint": "PENDING_NATIVE_WHOLE_GOAL_FINGERPRINT",
+    "reviewInputFingerprint": "PENDING_NATIVE_REVIEW_INPUT_FINGERPRINT",
+    "profileFingerprint": "PENDING_NATIVE_PROFILE_FINGERPRINT",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-09T10:52:57.966802+00:00",
+    "reviewer": "/root/economics_merge_audit substantive author; readable candidate successor; independent review pending",
+    "reason": "DE: Vollständiger begrenzter Autoren-Nachfolger mit lesbaren DE-/EN-Fällen und unverändertem Zielvertrag; echte Quellenleistungen werden vorgeschlagen, nicht unabhängig freigegeben. EN: Whole bounded author successor with readable DE/EN cases and unchanged goal contract; actual source performances are proposed, not independently approved.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "procedure",
+      "expectations": [
+        {
+          "id": "content-specific-understanding",
+          "essentialUnderstandingDe": "Eine eigene wirtschaftliche Untersuchungsfrage grenzt Gegenstand, Beziehung und beantwortbaren Umfang ab. Eine Themenüberschrift oder bereits mitgelieferte Frage ist noch keine eigene Problemformulierung.",
+          "essentialUnderstandingEn": "An original economic research question specifies subject, relationship and answerable scope. A topic heading or supplied question is not original problem formulation.",
+          "observablePerformanceDe": "Die lernende Person kann aus bereitgestelltem wirtschaftlichem Material eine beantwortbare Untersuchungsfrage formulieren, den untersuchten Gegenstand und Zusammenhang abgrenzen und erläutern, welche Antwort die Frage tatsächlich verlangt. Die konkreten neuen Fälle ergänzen tatsächlich: Eigene volkswirtschaftliche Untersuchungsfragen aus zwei unterschiedlichen unvorsortierten Rohdossiers, jeweils mit Erklärungs-/Antwortgrenze.",
+          "observablePerformanceEn": "The learner can formulate an answerable research question from supplied economic material, delimit its subject and relationship and explain what an answer must establish. The actual new cases add: Original economic research questions from two different unsorted raw dossiers, each with explicit answer/explanation limits."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "content-specific-understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "actual-source-performance-variation",
+          "textDe": "Eigene volkswirtschaftliche Untersuchungsfragen aus zwei unterschiedlichen unvorsortierten Rohdossiers, jeweils mit Erklärungs-/Antwortgrenze.",
+          "textEn": "Original economic research questions from two different unsorted raw dossiers, each with explicit answer/explanation limits."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "own-macro-question-from-rent-income-material",
+          "taskDemandDe": "Fiktive kommunale Rohdaten ohne fertige Forschungsfrage: Mietindex 100→115, Lohnindex 100→105, Wohnungsbestand 1000→1020, Einwohnerzahl 2000→2100, keine Haushaltsmikrodaten. Ein Pressekommentar erklärt alles allein durch Zuzug. Entwickle eine eigene volkswirtschaftliche Untersuchungsfrage mit Zeitraum, Untersuchungsgegenstand und Beziehung. Erläutere, welche Antwort die vorhandenen Aggregate erlauben und welche zusätzlichen Daten zur Kausalfrage fehlen; LK erhält keine Fragevorlage.",
+          "taskDemandEn": "Fictional municipal raw data with no supplied research question: rent index 100→115, wage index 100→105, homes 1000→1020 and population 2000→2100, with no household microdata. A commentary attributes everything to arrivals. Develop an original economic question specifying period, subject and relationship. Explain what the aggregates allow and what additional evidence a causal question requires; LK receives no question template.",
+          "expectedPerformanceDe": "Die Person formuliert eine eigene makro-/marktbezogene Frage, etwa nach der Veränderung des Verhältnisses typischer Miet- und Lohnentwicklung oder nach zusätzlichen Angebots-/Nachfragebedingungen. Sie begründet Fokus, Vergleich und Antwortmaßstab; 1,15/1,05≈1,095 ist ein Indexverhältnis, keine individuelle Mietquote und kein Beweis einer alleinigen Zuzugsursache. Sie benennt passende fehlende Haushalts-, Bestands-, Qualitäts- oder Zeitdaten.",
+          "expectedPerformanceEn": "The learner creates a macroeconomic or market question, for example about relative rent and wage changes or additional supply and demand conditions, explaining the focus, comparison and answer criterion. The ratio 1.15/1.05≈1.095 is an index ratio, not an individual rent burden or proof of migration as the sole cause. They identify fitting missing household, housing-stock, quality or timing data.",
+          "understandingFocusDe": "Eigenständige VWL-Frage und beantwortbarer Umfang statt Übernahme einer Behauptung.",
+          "understandingFocusEn": "An original economic question with a defensible answer scope."
+        },
+        {
+          "id": "own-macro-question-from-trade-employment-material",
+          "taskDemandDe": "Anderes fiktives Material: Exportaufträge eines Bezirks 100→80, Beschäftigung 1000→950, freie Technikstellen 60, aktive Weiterbildungsteilnahme 20; andere Nachfrage und Bevölkerungsbewegung unbekannt. Entwickle selbst eine wirtschaftliche Frage zur Beziehung von internationaler Nachfrage, Beschäftigung oder Qualifikationsanpassung. Grenze ab, ob du Beschreibung, Erklärung oder Maßnahmenwirkung untersuchen willst, und sage, was eine begründete Antwort zeigen müsste.",
+          "taskDemandEn": "Different fictional material: district export orders 100→80, employment 1000→950, technical vacancies 60 and active training participants 20; other demand and population changes are unknown. Develop your own question relating international demand, employment or skills adaptation. Distinguish a descriptive, explanatory or policy-effect aim and specify what a reasoned answer must establish.",
+          "expectedPerformanceDe": "Die Person entwickelt eine eigenständige VWL-Frage mit einem prüfbaren Zusammenhang und begrenztem Raum/Zeitbezug. Sie unterscheidet Auftragseinbruch, beobachtete Beschäftigung und möglichen Mismatch; Teilnehmerzahl 20 beweist keine 20 neuen Stellen. Sie benennt nötige Vergleichs-/Verlaufsdaten und ersetzt die eigene Frage nicht durch die pauschale Themenüberschrift Globalisierung.",
+          "expectedPerformanceEn": "The learner develops an original economic question with a testable relationship and bounded spatial and time scope. Orders, observed employment and a possible skills mismatch are distinguished; 20 participants do not prove 20 new jobs. They identify needed comparisons and trends rather than substituting the topic label globalisation.",
+          "understandingFocusDe": "Andere volkswirtschaftliche Datenlage mit eigenem Frageprozess.",
+          "understandingFocusEn": "Different macroeconomic material with an original question process."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "wirtschaft-be-source125-twelve-profile-enterprise-remedy-author-v1-readable-v2",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:fb04bfb85c28cf22c67bbfad07788f1778634873158066e082d3556f8739291d",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "goalId": "099086bb-5100-5ce0-8334-0aab8850a48e",
+    "goalFingerprint": "PENDING_NATIVE_WHOLE_GOAL_FINGERPRINT",
+    "reviewInputFingerprint": "PENDING_NATIVE_REVIEW_INPUT_FINGERPRINT",
+    "profileFingerprint": "PENDING_NATIVE_PROFILE_FINGERPRINT",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-09T10:52:57.966816+00:00",
+    "reviewer": "/root/economics_merge_audit substantive author; readable candidate successor; independent review pending",
+    "reason": "DE: Vollständiger begrenzter Autoren-Nachfolger mit lesbaren DE-/EN-Fällen und unverändertem Zielvertrag; echte Quellenleistungen werden vorgeschlagen, nicht unabhängig freigegeben. EN: Whole bounded author successor with readable DE/EN cases and unchanged goal contract; actual source performances are proposed, not independently approved.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "concept",
+      "expectations": [
+        {
+          "id": "content-specific-understanding",
+          "essentialUnderstandingDe": "Eigentum verbindet rechtlich geschützte Verfügungs- und Nutzungsbefugnisse mit gesetzlich bestimmten Grenzen und Sozialbindung. Privateigentum kann Investitions- und Verantwortungsanreize tragen; Eigentumsschutz, Allgemeinwohl und Entschädigung sind zu unterscheiden, statt jede Regel als Enteignung oder Eigentum als schrankenlos zu behandeln.",
+          "essentialUnderstandingEn": "Property combines protected powers to use and dispose with legally defined limits and social obligations. Private ownership can support investment and responsibility incentives; protection,public interest and compensation must be distinguished rather than labelling every restriction expropriation or treating ownership as unlimited.",
+          "observablePerformanceDe": "Die Person analysiert an konkreten Fällen Nutzungsbefugnisse, Grenzen und Wertgrundlagen des Eigentums in der Sozialen Marktwirtschaft anhand bereitgestellter Art.14-GG-Materialien und erklärt Schutz, Sozialbindung und die besondere Enteignungsgrenze getrennt. Die konkreten neuen Fälle ergänzen tatsächlich: Zwei konkrete ausdrücklich fiktive Regelstandsvergleiche zeigen den veränderbaren institutionellen Rahmen, mit aktuellen Art.14-GG-Grenzen statt erfundener Rechtsgeltung.",
+          "observablePerformanceEn": "Using supplied GG article14 material,the learner analyses use rights,limits and values of property in concrete social-market-economy cases and separately explains protection,social obligations and the specific expropriation boundary. The actual new cases add: Two concrete expressly fictional rule comparisons show mutable institutions, with current article 14 limits instead of invented legal validity."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "content-specific-understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "actual-source-performance-variation",
+          "textDe": "Zwei konkrete ausdrücklich fiktive Regelstandsvergleiche zeigen den veränderbaren institutionellen Rahmen, mit aktuellen Art.14-GG-Grenzen statt erfundener Rechtsgeltung.",
+          "textEn": "Two concrete expressly fictional rule comparisons show mutable institutions, with current article 14 limits instead of invented legal validity."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "changed-property-noise-model-and-options",
+          "taskDemandDe": "Aktueller Art.14 GG liegt vollständig vor. Zwei ausdrücklich fiktive zulässigkeitsungeprüfte Modellregelstände für dieselbe Werkstatt: R 1 erlaubt Abendbetrieb bis 22 Uhr unter gegebenem Lärmwert; R 2 nur bis 20 Uhr, bietet aber eine technische Umrüstoption mit Kosten 20 und weiterem Betrieb bis 22 Uhr bei niedrigerem Wert. Eigentum bleibt bei der bisherigen Person. Nachfrage und Umrüstwirksamkeit sind nicht sicher. Analysiere, wie die geänderten Inhalts-/Schrankenregeln wirtschaftliche Optionen und Interessenausgleich verändern; keine echte kommunale Norm oder Verfassungsfreigabe wird behauptet.",
+          "taskDemandEn": "Current GG article 14 is supplied in full. Two expressly fictional rule models, whose legal validity has not been established, concern one workshop: R1 allows evening use until 22:00 under a supplied noise limit; R2 allows use until 20:00 but offers a technical retrofit costing 20 that permits use until 22:00 at a lower limit. Ownership remains unchanged; demand and retrofit effectiveness are uncertain. Analyse how changing property-use rules alters economic options and competing interests. No actual local rule or constitutional approval is asserted.",
+          "expectedPerformanceDe": "Die Person vergleicht tatsächliche Optionsänderung, mögliche Investitions-/Zeit-/Nachbarwirkungen und Schutz/Sozialbindung. Sie erklärt das Eigentum als rechtlich gestalteten institutionellen Rahmen statt unabänderlicher Naturregel. Allgemeine Nutzungsgrenze ist nicht automatisch Enteignung; ein positiver Lärmschutzzweck beweist weder die konkrete Wirksamkeit noch Verfassungsmäßigkeit.",
+          "expectedPerformanceEn": "The learner compares changed options, investment, timing and neighbour effects, and property protection and social obligations. Property is a legally shaped institution rather than an immutable rule. A general use limit is not automatically expropriation; a noise-protection purpose proves neither effectiveness nor constitutionality.",
+          "understandingFocusDe": "Konkrete Normänderung verändert wirtschaftliche Handlungsoptionen innerhalb des Eigentumsrahmens.",
+          "understandingFocusEn": "A concrete rule change alters economic options within property institutions."
+        },
+        {
+          "id": "changed-common-access-model-and-incentives",
+          "taskDemandDe": "Anderes fiktives Grundstücksmodell: R 1 überlässt einen Weg ausschließlich der privaten Eigentümerin; R 2 schreibt unter einer nur im Modell angenommenen gesetzlichen Inhaltsregel einen zeitlich begrenzten öffentlichen Durchgang vor, Eigentum bleibt erhalten. Gegeben sind mögliche Wartungskosten 5, unsicherer Kundenmehrumsatz und Nachbarschaftszugang. Vergleiche Regeln, wirtschaftliche Anreize, Grenzen und Wertgrundlagen mit Art.14(1)/(2). Stelle getrennt dar, was sich ändern würde, wenn das Grundstück dauerhaft für einen öffentlichen Weg entzogen würde: Art.14(3) ist vollständig bereitgestellt, aber konkrete gesetzliche Grundlage/Entschädigung fehlen.",
+          "taskDemandEn": "Another fictional property model: R1 leaves a path exclusively private; R2 requires limited public passage under a legislative use rule assumed only in the model, while ownership remains. Possible maintenance cost 5, uncertain extra customer revenue and neighbour access are given. Compare rules, incentives, limits and values using GG article 14(1) and (2). Separately explain the change if the plot were permanently taken for a public route: article 14(3) is supplied, but a concrete statute and compensation terms are missing.",
+          "expectedPerformanceDe": "Die Person erklärt unterschiedliche private Nutzungs-/Investitions-/Zugangsanreize und soziale Interessen ohne garantierten Nettovorteil. Sie trennt die geänderte Nutzungsordnung vom dauerhaften Entzug und benennt für Letzteren Allgemeinwohl, gesetzliche Grundlage und Entschädigungsregelung. Ungeprüfte Modellnormen werden nicht als gültiges aktuelles deutsches Ortsrecht ausgegeben.",
+          "expectedPerformanceEn": "The learner explains different use, investment and access incentives and social interests without guaranteed net benefits. They distinguish changed use rules from permanent deprivation and identify public interest, legislation and compensation requirements for the latter. Unchecked model rules are not presented as actual current German local law.",
+          "understandingFocusDe": "Andere institutionelle Gestaltungsvariable und klare Eigentums-/Enteignungsgrenze.",
+          "understandingFocusEn": "A different institutional design variable with a clear use and deprivation boundary."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "wirtschaft-be-source125-twelve-profile-enterprise-remedy-author-v1-readable-v2",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:d3701d29fecbb0b559f4023e350556d153572e2ba57666b725ff121961f4603e",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "goalId": "6e138ab0-4f2b-52f9-8cd6-660051d60fba",
+    "goalFingerprint": "PENDING_NATIVE_WHOLE_GOAL_FINGERPRINT",
+    "reviewInputFingerprint": "PENDING_NATIVE_REVIEW_INPUT_FINGERPRINT",
+    "profileFingerprint": "PENDING_NATIVE_PROFILE_FINGERPRINT",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-09T10:52:57.966819+00:00",
+    "reviewer": "/root/economics_merge_audit substantive author; readable candidate successor; independent review pending",
+    "reason": "DE: Vollständiger begrenzter Autoren-Nachfolger mit lesbaren DE-/EN-Fällen und unverändertem Zielvertrag; echte Quellenleistungen werden vorgeschlagen, nicht unabhängig freigegeben. EN: Whole bounded author successor with readable DE/EN cases and unchanged goal contract; actual source performances are proposed, not independently approved.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "representation",
+      "expectations": [
+        {
+          "id": "content-specific-understanding",
+          "essentialUnderstandingDe": "Handlungsempfehlungen verbinden wirtschaftliche Gründe und fallbezogene Bedingungen mit einer zur Zielgruppe passenden Darstellung. Gestaltung ersetzt keine Begründung; Empfehlung und sichere Wirkung sind zu unterscheiden.",
+          "essentialUnderstandingEn": "Recommendations connect economic reasons and conditions to a representation suited to the audience. Design does not replace justification; recommendations differ from guaranteed effects.",
+          "observablePerformanceDe": "Die Person erstellt eigenständig eine adressatengerechte Darstellung mit begründeten Handlungsoptionen, transparenten Annahmen und Grenzen und verändert Inhalt und Form für eine andere Zielgruppe. Die konkreten neuen Fälle ergänzen tatsächlich: Eigene wirtschaftliche Ergebnisse werden in zwei unterschiedlichen Adressatensituationen tatsächlich schriftlich, medienunterstützt und mündlich dargestellt; Simulation bleibt ausdrücklich Simulation.",
+          "observablePerformanceEn": "The learner independently creates an audience-appropriate representation with reasoned options, transparent assumptions and limits, and changes content and form for another audience. The actual new cases add: Own economic results are actually presented in writing, with media and orally to two audiences; simulation remains explicitly simulation."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "content-specific-understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "actual-source-performance-variation",
+          "textDe": "Eigene wirtschaftliche Ergebnisse werden in zwei unterschiedlichen Adressatensituationen tatsächlich schriftlich, medienunterstützt und mündlich dargestellt; Simulation bleibt ausdrücklich Simulation.",
+          "textEn": "Own economic results are actually presented in writing, with media and orally to two audiences; simulation remains explicitly simulation."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "own-oral-and-media-repair-recommendation",
+          "taskDemandDe": "Gegebenes eigenes Ergebnis für einen fiktiven Jugendgruppenfall: Reparatur 35 kann laut Befund ein weiteres Nutzungsjahr ermöglichen; Ersatz 90, Folgeausfälle unsicher. Erstelle selbst eine kurze medienunterstützte Ergebnisdarstellung und eine schriftliche Kurzempfehlung. Trage die Gründe dann tatsächlich mündlich in einer Unterrichts- oder klar bezeichneten Rollen-/Aufnahmesimulation vor; beantworte die Rückfrage, ob 35 Euro eine Garantie seien. Eine bloße Folienabgabe genügt dem mündlichen Teil nicht. Es werden keine echten Dritten kontaktiert.",
+          "taskDemandEn": "A result to be presented is supplied for a fictional youth-group case: repair costing 35 may permit another year of use according to the assessment; replacement costs 90, and further failures are uncertain. Create your own short presentation of the result with media support and a written recommendation. Actually explain the reasons orally in class or an explicitly labelled role or recording simulation, responding to whether 35 is a guarantee. Slides alone do not meet the oral requirement; no external person is contacted.",
+          "expectedPerformanceDe": "Die Person verbindet den 55-Unterschied mit bedingter Nutzungsdauer, Budget/Ressourcen und Unsicherheit. Schrift, Visualisierung und mündliche Erläuterung bleiben fachlich konsistent und für die Gruppe verständlich. Sie antwortet ausdrücklich ohne Garantie; geprüft werden tatsächlich entstandene eigene Darstellungen und Erläuterung, keine behauptete menschliche Erprobung oder Lernendenbeobachtung.",
+          "expectedPerformanceEn": "The learner connects the cost difference of 55 to conditional lifetime, budget, resources and uncertainty. Writing, visual support and oral explanation are consistent and suited to the audience. They answer without promising a guarantee. The required evidence is the learner’s own actual representations and explanation; this candidate does not claim human testing or observed learners.",
+          "understandingFocusDe": "Eigenes Ergebnis tatsächlich mündlich, schriftlich und medienunterstützt adressieren.",
+          "understandingFocusEn": "Communicate a result through an own oral, written and media-supported representation."
+        },
+        {
+          "id": "own-management-brief-and-oral-delivery",
+          "taskDemandDe": "Fiktiver Betrieb: A 12 pro Einheit mit verlässlichen zwei Tagen, B 10 mit ein-bis-zehn Tagen; Bestellung 50, Termin in drei Tagen, Lagerraum gering, konkrete Ausfallwahrscheinlichkeit unbekannt. Erstelle eine eigene schriftliche Entscheidungsvorlage mit einer einfachen Vergleichsgrafik. Erläutere sie mündlich gegenüber einer ausdrücklich simulierten Leitung und beantworte den Einwand, der 100-Euro-Unterschied mache B immer besser. Gestalte Fachsprache/Darstellung anders als im Jugendgruppenfall.",
+          "taskDemandEn": "Fictional firm: A costs 12 per unit with reliable two-day supply; B costs 10 with supply taking one to ten days. Fifty units are needed for an event in three days; storage is limited and no failure probability is given. Create an original written brief with a simple comparison graphic. Explain it orally to expressly simulated management, engaging the claim that the price difference of 100 always makes B better. Adapt the language and form from the youth-group case.",
+          "expectedPerformanceDe": "A 600/B 500 und Differenz 100 bilden nur den Preisvergleich. Die Person stellt Terminrisiko, Lagergrenze, unbekannte Wahrscheinlichkeiten und mögliche priorisierte Mengenstrategie bedingt dar. Eigene schriftliche, mediale und mündliche Gestaltung passt zur Leitung; die Rückfrage wird sachlich beantwortet statt einer sicheren B-Ausfallzahl oder tatsächlichen Firmenfreigabe.",
+          "expectedPerformanceEn": "A costs 600 and B costs 500; the difference of 100 provides only a price comparison. The learner conditionally explains deadlines, storage, unknown probabilities and possible priority quantities. Their written, visual and oral forms fit management; the response invents neither a certain failure by B nor actual firm approval.",
+          "understandingFocusDe": "Andere Zielgruppe und eigene Ergebnispräsentation mit echter Rückfrage.",
+          "understandingFocusEn": "A different audience with an own presentation and a substantive follow-up question."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "wirtschaft-be-source125-twelve-profile-enterprise-remedy-author-v1-readable-v2",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:67cb33f69362d231eb65f9a0d0113905cd50d89a3f43588da59187fb653b66dd",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "goalId": "b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0",
+    "goalFingerprint": "PENDING_NATIVE_WHOLE_GOAL_FINGERPRINT",
+    "reviewInputFingerprint": "PENDING_NATIVE_REVIEW_INPUT_FINGERPRINT",
+    "profileFingerprint": "PENDING_NATIVE_PROFILE_FINGERPRINT",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-09T10:52:57.966820+00:00",
+    "reviewer": "/root/economics_merge_audit substantive author; readable candidate successor; independent review pending",
+    "reason": "DE: Vollständiger begrenzter Autoren-Nachfolger mit lesbaren DE-/EN-Fällen und unverändertem Zielvertrag; echte Quellenleistungen werden vorgeschlagen, nicht unabhängig freigegeben. EN: Whole bounded author successor with readable DE/EN cases and unchanged goal contract; actual source performances are proposed, not independently approved.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "representation",
+      "expectations": [
+        {
+          "id": "content-specific-understanding",
+          "essentialUnderstandingDe": "Wirtschaftlicher Dialog beantwortet einen konkreten Beitrag des Gegenübers mit sachlich begründetem Bezug zur Gesprächssituation. Eine fertig geschriebene Position ohne Aufnahme des Einwands ist keine Dialoghandlung.",
+          "essentialUnderstandingEn": "Economic dialogue responds to the other participant’s concrete contribution with subject-based reasoning suited to the situation. A prepared position that does not engage with the objection is not dialogue.",
+          "observablePerformanceDe": "Die lernende Person kann in einer vorgegebenen wirtschaftlichen Gesprächssituation einen begründeten Beitrag formulieren, den sachlichen Einwand oder die Rückfrage eines Gegenübers aufgreifen und ihre Antwort an Anlass und Adressaten des Gesprächs ausrichten. Die konkreten neuen Fälle ergänzen tatsächlich: Verbindliche sachliche Antworten auf mehrere unterschiedliche Interessenperspektiven in beiden LK-Dialogen.",
+          "observablePerformanceEn": "The learner can make a reasoned contribution in a supplied economic discussion, engage with another participant’s substantive objection or question and adapt the response to the occasion and audience. The actual new cases add: Required substantive responses to different interest perspectives in both LK dialogues."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "content-specific-understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "actual-source-performance-variation",
+          "textDe": "Verbindliche sachliche Antworten auf mehrere unterschiedliche Interessenperspektiven in beiden LK-Dialogen.",
+          "textEn": "Required substantive responses to different interest perspectives in both LK dialogues."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "dialogue-two-economic-perspectives-refill",
+          "taskDemandDe": "Fiktiver dokumentierter Rollendialog: Mehrweg kostet bei 100 Nutzungen 12+0,05·100=17, Einweg 0,20·100=20. Kioskvertretung nennt Budget, Schülerinnenvertretung Rückgabe/Hygiene, Umweltvertretung sagt, Ressourcenwerte fehlen. Formuliere einen begründeten ersten Beitrag und nimm jede der beiden sachlichen Rückfragen auf. LK muss ausdrücklich mindestens zwei dieser Perspektiven in der Antwort miteinander abwägen; GK darf passende Gesprächsimpulse erhalten. Bei 40 Nutzungen sind die fixen 12 weiter fällig.",
+          "taskDemandEn": "Fictional documented role dialogue: reusables cost 12+0.05·100=17 at 100 uses; disposables cost 0.20·100=20. Kiosk representatives raise budgets, pupils raise returns and hygiene, and environmental representatives point out missing resource data. Make an initial reasoned contribution and engage both substantive objections. LK must explicitly compare at least two perspectives; GK may receive prompts. The fixed cost of 12 remains at 40 uses.",
+          "expectedPerformanceDe": "Die Person antwortet auf Budget- und Hygiene-/Ressourceneinwand, erklärt bei 40 Einweg 8 versus Mehrweg 14 und verändert ihre Empfehlung bedingt. LK verknüpft wirtschaftliche Menge/Kosten mit Nutzung-/Schutz-/Umweltperspektive, statt sie nur aufzuzählen oder optional zu erwähnen. Fehlende Umweltwerte bleiben offen; es wird keine echte Person kontaktiert.",
+          "expectedPerformanceEn": "The learner responds to the budget and hygiene or resource objections, explains disposable cost 8 versus reusable cost 14 at 40 uses, and qualifies the proposal. LK connects volume and cost to use, protection or environmental concerns instead of listing optional perspectives. Missing environmental values remain open; no actual third person is contacted.",
+          "understandingFocusDe": "Verpflichtende Multiperspektivität im tatsächlichen sachlichen Dialog.",
+          "understandingFocusEn": "Required comparison of perspectives in a substantive dialogue."
+        },
+        {
+          "id": "dialogue-budget-workers-and-delivery",
+          "taskDemandDe": "Anderer fiktiver Rollendialog: Leitung bevorzugt B 10 statt A 12, Veranstaltungsgruppe benötigt 50 Einheiten in drei Tagen; A verlässlich zwei Tage, B ein bis zehn Tage. Beschäftigtenvertretung nennt Überstunden bei verspäteter Ware, Kassenvertretung knappes Budget. Formuliere eine Position, antworte auf beide Einwände und entwickle eine bedingte Anschlusslösung. LK muss Budget-, Termin- und mindestens eine Beschäftigtenperspektive ausdrücklich verbinden; GK kann Gesprächshilfen erhalten.",
+          "taskDemandEn": "Another fictional role dialogue: management prefers B at 10 over A at 12; the event group needs 50 units in three days. A arrives reliably in two days, B in one to ten days. Worker representatives raise overtime if supply is late, and treasury raises budget limits. State a position, engage both objections and propose a conditional follow-up. LK must explicitly connect budget, timing and a worker perspective; GK may receive prompts.",
+          "expectedPerformanceDe": "Die Person anerkennt 100 Preisunterschied, erklärt Termin-/Arbeitsbelastung ohne erfundene Ausfallwahrscheinlichkeit und begründet etwa priorisierte A-Menge oder Klärung der B-Lieferzusage. Sie nimmt die tatsächlichen Gegenbeiträge auf, gewichtet Kriterien und benennt Bedingungen. Multiperspektivität ist hier tatsächlich gefordert und keine unverbindliche Zusatzoption.",
+          "expectedPerformanceEn": "The learner acknowledges the price difference of 100, explains timing and workload without invented failure probabilities, and may justify a priority quantity from A or clarification of B’s delivery commitment. They engage the actual objections, weigh criteria and state conditions. Comparison of perspectives is required rather than optional.",
+          "understandingFocusDe": "Andere Interessen im tatsächlich fortgeführten Dialog verbinden.",
+          "understandingFocusEn": "Connect different interests in a dialogue that actually responds to objections."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "wirtschaft-be-source125-twelve-profile-enterprise-remedy-author-v1-readable-v2",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:cd965f38a3766b3f3f623a34a59b803b913dd1fd5d4de32ebec1fd139e709ab0",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "goalId": "2ccb9f7e-1512-5970-85a1-71ec42734eb9",
+    "goalFingerprint": "PENDING_NATIVE_WHOLE_GOAL_FINGERPRINT",
+    "reviewInputFingerprint": "PENDING_NATIVE_REVIEW_INPUT_FINGERPRINT",
+    "profileFingerprint": "PENDING_NATIVE_PROFILE_FINGERPRINT",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-09T10:52:57.966821+00:00",
+    "reviewer": "/root/economics_merge_audit substantive author; readable candidate successor; independent review pending",
+    "reason": "DE: Vollständiger begrenzter Autoren-Nachfolger mit lesbaren DE-/EN-Fällen und unverändertem Zielvertrag; echte Quellenleistungen werden vorgeschlagen, nicht unabhängig freigegeben. EN: Whole bounded author successor with readable DE/EN cases and unchanged goal contract; actual source performances are proposed, not independently approved.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "procedure",
+      "expectations": [
+        {
+          "id": "content-specific-understanding",
+          "essentialUnderstandingDe": "Ein Betriebsablauf verbindet Arbeitsschritte, Übergaben und Ressourcen. Einzel-/Varianten-/Massenfertigung sowie Werkstatt-/Fließfertigung passen unterschiedlich zu Menge und Varianten; IT kann Informationen koordinieren, beseitigt aber nicht automatisch physische Engpässe oder Fehler.",
+          "essentialUnderstandingEn": "Workflows connect tasks, handovers and resources. Custom, variant or mass production and workshop or flow arrangements suit volumes and variety differently; IT coordinates information but does not automatically remove physical bottlenecks or errors.",
+          "observablePerformanceDe": "Die Person analysiert in neuen Betriebsbeispielen Schritte und Arbeitsteilung, ordnet die Produktionsgestaltung passend ein und erläutert Nutzen sowie Grenze der gegebenen IT-Unterstützung. Die konkreten neuen Fälle ergänzen tatsächlich: Alle expliziten amtlichen Fertigungsverfahrens-/Gruppen-/Baustellenfacetten in konkreten Prozess- und IT-Fällen, ohne Verfahrenstypen zu vermischen.",
+          "observablePerformanceEn": "In new business cases, the learner analyses steps and divided work, classifies production design and explains benefits and limits of supplied IT support. The actual new cases add: All explicit official production/group/site facets in concrete process and IT cases without conflating dimensions."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "content-specific-understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "actual-source-performance-variation",
+          "textDe": "Alle expliziten amtlichen Fertigungsverfahrens-/Gruppen-/Baustellenfacetten in konkreten Prozess- und IT-Fällen, ohne Verfahrenstypen zu vermischen.",
+          "textEn": "All explicit official production/group/site facets in concrete process and IT cases without conflating dimensions."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "production-quantity-and-flow-design",
+          "taskDemandDe": "Fiktives Dossier mit ausdrücklich gegebenen Modellbegriffen: Einzel=einer kundenspezifischen Ausführung, Sorten=ähnliche Varianten mit gemeinsamem Grundverfahren, Massen=langfristig gleiches standardisiertes Produkt; Werkstatt=Funktionsgruppen, Fließ=Schrittfolge, Gruppenarbeit=Team verantwortet zusammenhängenden Abschnitt. Möbelbetrieb: drei Sondertische in Funktionswerkstätten, Getränkebetrieb: drei Sorten mit Umrüstung auf einer Linie, Schraubenbetrieb: eine Standardschraube in dauerhaft großer Menge. Analysiere Verfahren/Organisation, Übergaben und IT: Auftragsboard zeigt Freigaben, beseitigt aber keinen Lackierengpass; falsche Etikettendaten bleiben ein Fehler.",
+          "taskDemandEn": "Fictional dossier supplies definitions: custom production makes a customer-specific unit; variant production makes similar versions using a common process; mass production repeatedly makes one standard item. Workshops group functions; flow production follows the sequence; group work shares responsibility for a connected stage. The furniture firm makes three custom tables in functional workshops; the bottling firm makes three drinks with line changeovers; the screw firm makes one standard type at sustained large volume. Analyse production, handovers and IT: an order board shows approvals but removes no finishing bottleneck, and wrong label data remain an error.",
+          "expectedPerformanceDe": "Die Person trennt Mengentyp von räumlich-organisatorischer Gestaltung, begründet Einzel-/Sorten-/Massenfertigung am Dossier und vergleicht Flexibilität, Umrüst-/Koordinations- und Wiederholungsbedingungen. Sie erläutert Arbeitsteilung, Gruppenverantwortung und IT-/Datenbegrenzung, statt jede Linie automatisch Massenfertigung oder Digitalisierung fehlerfrei zu nennen.",
+          "expectedPerformanceEn": "The learner separates quantity type from organisation, justifies custom, variant and mass classifications, and compares flexibility, changeovers, coordination and repetition. They explain division of work, shared responsibility and IT or data limits rather than assuming every line is mass production or that digital work is error-free.",
+          "understandingFocusDe": "Explizite Mengentypen und Organisationsprinzipien mit tatsächlichen Unternehmensbeispielen.",
+          "understandingFocusEn": "Explicit quantity types and organisation applied to concrete company cases."
+        },
+        {
+          "id": "construction-site-and-group-work-coordination",
+          "taskDemandDe": "Anderer fiktiver Betrieb baut eine kundenspezifische Halle vor Ort: Das große Produkt bleibt am Standort, mobile Elektrik-/Montage-/Prüfteams kommen zeitlich abgestimmt dazu. Eine autonome Gruppe verantwortet Montage plus Qualitätsprüfung eines Abschnitts; die nächste Gruppe darf erst nach Freigabe beginnen. Ein digitales gemeinsames Plan-/Freigabedokument ist vorgesehen, Netzzugang fällt zeitweise aus. Analysiere Baustellenfertigung, Gruppenarbeit, Arbeitsteilung, Übergaben und einen bedarfsgerechten dokumentierten Ersatzweg; sieh nicht nur eine Variantenlinie.",
+          "taskDemandEn": "Another fictional firm builds a bespoke hall on site: the large product remains there, and electrical, assembly and inspection teams arrive in sequence. One autonomous group is responsible for assembly and quality checking of a section; the next waits for approval. A shared digital plan and approval document is intended, but connectivity fails temporarily. Analyse site production, group work, handovers and a documented fallback rather than treating the case as a variant-production line.",
+          "expectedPerformanceDe": "Die Person erklärt das ortsfeste Produkt bei beweglichen Ressourcen als Baustellenfertigung und die Gruppenverantwortung als andere Organisationsdimension. Sie rekonstruiert Freigabeabhängigkeit und Abstimmung, begründet lokale versionierte Dokumentation mit späterem Abgleich und grenzt IT-Hilfe von tatsächlicher Sicherheit/Kapazität ab. Einzelloser Auftrag, Baustelle und Gruppenarbeit können zusammen auftreten.",
+          "expectedPerformanceEn": "The learner explains site production through a fixed product and mobile resources, and group responsibility as a different dimension. They reconstruct approvals and coordination, justify local versioned records with later reconciliation, and distinguish IT support from actual safety and capacity. A custom job, site production and group work may coexist.",
+          "understandingFocusDe": "Tatsächliche Baustellen-/Gruppenorganisation und geänderte IT-Bedingung.",
+          "understandingFocusEn": "Actual site and group organisation under a changed IT condition."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "wirtschaft-be-source125-twelve-profile-enterprise-remedy-author-v1-readable-v2",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:f49baeb6d1ec793ba8952f106f835129637e1ec98168b8f104514a5526aa2188",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "goalId": "59c95c87-bef0-57e1-8d9a-ad1d5a851fc4",
+    "goalFingerprint": "PENDING_NATIVE_WHOLE_GOAL_FINGERPRINT",
+    "reviewInputFingerprint": "PENDING_NATIVE_REVIEW_INPUT_FINGERPRINT",
+    "profileFingerprint": "PENDING_NATIVE_PROFILE_FINGERPRINT",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-09T10:52:57.966823+00:00",
+    "reviewer": "/root/economics_merge_audit substantive author; readable candidate successor; independent review pending",
+    "reason": "DE: Vollständiger begrenzter Autoren-Nachfolger mit lesbaren DE-/EN-Fällen und unverändertem Zielvertrag; echte Quellenleistungen werden vorgeschlagen, nicht unabhängig freigegeben. EN: Whole bounded author successor with readable DE/EN cases and unchanged goal contract; actual source performances are proposed, not independently approved.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "modeling",
+      "expectations": [
+        {
+          "id": "content-specific-understanding",
+          "essentialUnderstandingDe": "Marktpotenzial ist ein unter expliziten Annahmen möglicher Gesamtabsatz, Marktvolumen der tatsächlich beobachtete Gesamtabsatz und Unternehmensabsatz der eigene Anteil. Ein rechnerisches Potenzial garantiert weder Kaufbereitschaft noch Erreichbarkeit oder zusätzlichen Absatz.",
+          "essentialUnderstandingEn": "Market potential is possible total sales under explicit assumptions, market volume is observed total sales, and company sales are the firm's own share. Calculated potential guarantees neither willingness to buy nor accessibility or additional sales.",
+          "observablePerformanceDe": "Die Person berechnet ein fallbezogen definiertes Marktpotenzial, unterscheidet es von Marktvolumen und Unternehmensabsatz und prüft Annahmen sowie Aussagegrenzen für eine Entscheidung. Die konkreten neuen Fälle ergänzen tatsächlich: Konkrete Primär-/Sekundärforschung mit Methoden-/Stichprobengrenzen und tatsächlicher bedürfnisbezogener Marktsegmentierung im unveränderten Marktanalysevertrag.",
+          "observablePerformanceEn": "The learner calculates market potential using the case definition, distinguishes it from market volume and company sales, and checks assumptions and limitations for a decision. The actual new cases add: Concrete primary/secondary research with sampling/method limits and genuine needs-based segmentation within the unchanged market-analysis contract."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "content-specific-understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "actual-source-performance-variation",
+          "textDe": "Konkrete Primär-/Sekundärforschung mit Methoden-/Stichprobengrenzen und tatsächlicher bedürfnisbezogener Marktsegmentierung im unveränderten Marktanalysevertrag.",
+          "textEn": "Concrete primary/secondary research with sampling/method limits and genuine needs-based segmentation within the unchanged market-analysis contract."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "market-needs-segments-and-primary-secondary-evidence",
+          "taskDemandDe": "Fiktiver Produktmarkt: vorhandenes amtliches Haushaltsregister nennt 1000 geeignete Haushalte, Bedarf höchstens zwei Nachfüllungen pro Jahr, Preis 10. Branchenbericht nennt tatsächlich 1200 Verkäufe aller Anbieter, eigener Absatz 300. Neue eigens für diese Frage gezogene Befragung 100 Haushalte:40 betonen niedrigen Preis/Abholung,60 verlässliche Lieferung; Stichprobenplan und mögliche Nichtantwort sind angegeben. Sekundär=bereits für anderen Zweck erhobenes Material, Primär=eigene neue Erhebung für diese Frage. Analysiere Marktsituation, bedürfnisbezogene Segmente, Methodenbezug und bedingtes Stück-/Umsatzpotenzial; eine geäußerte Präferenz ist kein garantierter Kauf.",
+          "taskDemandEn": "Fictional product market: an existing official household register lists 1000 eligible households, at most two annual refills, and a price of 10. An industry report gives 1200 actual sales by all suppliers and own sales of 300. A new study of 100 households reports 40 prioritising low price and collection, and 60 reliable delivery; sampling and nonresponse conditions are supplied. Secondary means existing material collected for another aim; primary means new data for this question. Analyse the market, needs-based segments, research methods and conditional unit and revenue potential. Stated preferences do not guarantee purchases.",
+          "expectedPerformanceDe": "Unter voller Ausschöpfung 2000 Stück/20000 Umsatzpotenzial,1200 Marktvolumen/300 eigen. Die Person begründet Segmentierung nach unterschiedlichen Bedürfnissen statt bloßer zufälliger Altersgruppen, trennt Register/Branchenbericht von neuer Befragung und prüft Auswahl-/Nichtantwort-/Aussagegrenzen.40/60 der Stichprobe werden nicht ungeprüft zu 400/600 sicheren Käufern oder eigener Absatzchance.",
+          "expectedPerformanceEn": "Full-uptake potential of 2000 units and 20000 revenue differs from market volume of 1200 and own sales of 300. The learner justifies needs-based rather than arbitrary demographic segmentation, separates the register and report from the new survey, and examines sampling and nonresponse limits. The sample counts of 40 and 60 do not automatically imply 400 and 600 guaranteed buyers or own sales.",
+          "understandingFocusDe": "Bedürfnisbezogene Segmente und echte Primär-/Sekundärmethoden begrenzen ein quantifiziertes Marktpotenzial.",
+          "understandingFocusEn": "Needs-based segments and actual primary and secondary methods constrain quantified potential."
+        },
+        {
+          "id": "business-segments-observation-experiment-and-potentials",
+          "taskDemandDe": "Anderer fiktiver B 2 B-Markt: vorhandene Branchenliste 50 Betriebe, höchstens drei Jahresbestellungen zu 500, eigener Zugang 30 Betriebe; Gesamtmarktumsatz 30000, eigener 5000. Neue Interviews nennen für 20 Betriebe kurze Lieferfristen, für 30 technische Beratung. Im neu geplanten randomisierten Preis-/Service-Test erhalten jezehn vergleichbare Betriebe unterschiedliche klar dokumentierte Angebote, ohne gleichzeitige weitere Änderungen; Bestellungen 4/6. Ordne Sekundärliste/Primärinterviews/Experiment ein, analysiere bedürfnisbezogene Segmente und Gesamt-/erreichbares Potenzial samt methodischer Reichweite.",
+          "taskDemandEn": "Another fictional B2B market: an existing industry list names 50 firms, at most three annual orders at 500; the firm can reach 30 customers. Total market revenue is 30000 and own revenue 5000. New interviews identify 20 customers prioritising delivery time and 30 technical support. A new randomised price and service trial assigns documented differing offers to ten comparable firms each, with no other simultaneous changes; orders are 4 and 6. Classify the secondary listing, primary interviews and experiment. Analyse needs-based segments and total and accessible potential, with method limits.",
+          "expectedPerformanceDe": "Gesamtpotenzial 75000 und erreichbar 45000 unter voller Ausschöpfung; kein garantiert eigener Umsatz. Die Person unterscheidet qualitative Bedürfnisaufnahme und kontrollierten Test von vorhandenem Branchenmaterial, erklärt 4/10 gegen 6/10 als kleinen bedingten Testvergleich und prüft Zufall, Repräsentativität und Kombination Preis/Service. Sie schließt weder sicheren Gesamtmarkterfolg noch isolierten Preiseffekt aus einem kombinierten Angebot.",
+          "expectedPerformanceEn": "Total potential of 75000 and accessible potential of 45000 assume full uptake and do not guarantee own revenue. The learner distinguishes needs interviews and controlled testing from an existing list, explains 4/10 versus 6/10 as a small conditional comparison, and checks chance, representativeness and the combined price and service treatment. It establishes neither guaranteed market success nor an isolated price effect.",
+          "understandingFocusDe": "Andere Kundenbedürfnisse und tatsächlich verschiedene Erhebungsverfahren im Potenzialurteil.",
+          "understandingFocusEn": "Different needs and genuinely different research methods applied to potential analysis."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "wirtschaft-be-source125-twelve-profile-enterprise-remedy-author-v1-readable-v2",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:cd965f38a3766b3f3f623a34a59b803b913dd1fd5d4de32ebec1fd139e709ab0",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "goalId": "8c9f8fb2-18be-5e9c-86bf-3aea14a10b78",
+    "goalFingerprint": "PENDING_NATIVE_WHOLE_GOAL_FINGERPRINT",
+    "reviewInputFingerprint": "PENDING_NATIVE_REVIEW_INPUT_FINGERPRINT",
+    "profileFingerprint": "PENDING_NATIVE_PROFILE_FINGERPRINT",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-09T10:52:57.966824+00:00",
+    "reviewer": "/root/economics_merge_audit substantive author; readable candidate successor; independent review pending",
+    "reason": "DE: Vollständiger begrenzter Autoren-Nachfolger mit lesbaren DE-/EN-Fällen und unverändertem Zielvertrag; echte Quellenleistungen werden vorgeschlagen, nicht unabhängig freigegeben. EN: Whole bounded author successor with readable DE/EN cases and unchanged goal contract; actual source performances are proposed, not independently approved.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "concept",
+      "expectations": [
+        {
+          "id": "content-specific-understanding",
+          "essentialUnderstandingDe": "Produkt-, Preis-, Distributions- und Kommunikationsmaßnahmen setzen an unterschiedlichen Marktentscheidungen an. Ihre Ziele und Wirkungen hängen von Ausgestaltung und Zielgruppe ab; mehrere Bereiche können in einer Maßnahme zusammenwirken.",
+          "essentialUnderstandingEn": "Product, price, distribution and communication measures address different market decisions. Objectives and effects depend on design and audience; one measure can combine several areas.",
+          "observablePerformanceDe": "Die Person analysiert in neuen Produktfällen Maßnahmen aus mehreren Marketingbereichen nach Ziel, konkreter Ausgestaltung und Wirkungsweg und erkennt eine bedingte Nebenwirkung. Die konkreten neuen Fälle ergänzen tatsächlich: Zwei vollständige integrierte Marketingfälle mit echter Sortimentsbreite/-tiefe/-ergänzung, markt-/kosten-/präferenzbezogener Preis-, Service-/Konditionenpolitik, Werbekontrolle und direkter/indirekter Absatzlogistik.",
+          "observablePerformanceEn": "In new product cases, the learner analyses measures across marketing areas through objectives, specific design and mechanisms, identifying a conditional side effect. The actual new cases add: Two complete integrated marketing cases with actual assortment breadth/depth/complement, market/cost/preference pricing, service/terms, ad control and direct/indirect distribution."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "content-specific-understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "actual-source-performance-variation",
+          "textDe": "Zwei vollständige integrierte Marketingfälle mit echter Sortimentsbreite/-tiefe/-ergänzung, markt-/kosten-/präferenzbezogener Preis-, Service-/Konditionenpolitik, Werbekontrolle und direkter/indirekter Absatzlogistik.",
+          "textEn": "Two complete integrated marketing cases with actual assortment breadth/depth/complement, market/cost/preference pricing, service/terms, ad control and direct/indirect distribution."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "bicycle-assortment-price-service-distribution-ad-test",
+          "taskDemandDe": "Fiktive Marke: Sortiment umfasst Stadt- und Lastenräder (Breite zwei Gruppen), Stadträder in zwei Größen und Lastenrad in einer (Tiefe). Alternative: dritte Stadtgröße oder neue Kinderradgruppe; Kunden-/Servicekapazität sind ungewiss. Für ein betrachtetes Modell Preis 120, variable Herstellung 70+Service 10, Periodenfix 4000 bei 100 Verkäufen; Einführungsrabatt 10%. Gegeben sind Reparaturservice und Zahlungsziel 30 Tage gegenüber 2%Skonto in fünf Tagen. Direktversand kostet 8 je Bestellung/drei Tage; Händler nimmt 25 Marge, bietet lokalen Service/zwei Tage. Separater Werbetest: Testgruppe Absatz 20→30, Vergleich 20→25, Werbekosten 100, Vergleichsbedingungen offen. Analysiere Produkt-/Sortiments-, Preis-/Konditions-/Service-, Vertriebs-/Logistik- und Kommunikationswirkung nach Zielen und Grenzen.",
+          "taskDemandEn": "Fictional brand: city and cargo bicycles give assortment breadth of two groups; city bikes have two sizes and cargo bikes one. Options add a third city size or a children’s-bike group; customer needs and service capacity remain uncertain. One model sells at 120 with variable manufacturing cost 70 plus service cost 10, and period fixed cost 4000 at 100 sales; an introductory discount is 10%. Repairs and payment in 30 days versus a 2% early-payment discount within five days are supplied. Direct delivery costs 8 per order and takes three days; dealers take a margin of 25 and offer local service and two-day delivery. A separate advertising test reports treated sales 20→30 and comparison sales 20→25, with advertising cost 100 and comparison assumptions open. Analyse assortment, product, price, terms, service, distribution, logistics and communication through objectives and limits.",
+          "expectedPerformanceDe": "Die Person unterscheidet Breiten- von Tiefenerweiterung und ergänzt Service nicht automatisch als neue Warengruppe. Grundbeitrag 40 je Stück deckt bei 100 die 4000 Fixkosten; Rabattpreis 108 führt bei gleicher Menge zu 2800 Beitrag/−1200 Ergebnis. Skonto betrifft Zahlung/Liquidität, Reparatur Zusage/Kapazität; Mengen-/Markt-/Präferenzbedingungen bleiben relevant. Sie erklärt direkte/indirekte Kunden-/Unternehmenswege und erkennt Werbemehrzuwachs fünfstattzehn nur unter Vergleichsannahmen; keine sichere Kausalität oder Absatzgarantie.",
+          "expectedPerformanceEn": "The learner distinguishes assortment breadth and depth and does not automatically count repair service as a new product group. Contribution of 40 covers fixed cost 4000 at 100 sales; discounted price 108 gives contribution 2800 and result −1200 at unchanged volume. Early-payment terms affect liquidity and repair promises affect capacity. Demand, cost and preference conditions remain relevant. They explain direct and indirect channels from customer and company perspectives and treat extra advertising growth of five rather than ten as conditional on comparison assumptions, without guaranteeing causality or sales.",
+          "understandingFocusDe": "Tatsächliche Sortimentsentscheidung, Preis-/Service-/Konditionsdaten, Absatzlogistik und kontrollbedingte Werbung.",
+          "understandingFocusEn": "An actual assortment decision, pricing and service data, distribution and conditional advertising evidence."
+        },
+        {
+          "id": "meal-box-assortment-segment-and-conversion",
+          "taskDemandDe": "Anderes fiktives Sortiment: zwei Gruppen Mittags-/Abendboxen, jevier Menüs. Erweiterung um veganes Menü innerhalb einer Gruppe oder neue Frühstücksgruppe; kleine Haushalte wünschen kleine Portionen, andere zuverlässige Lieferung. Preis 13 je Box, variable 8+Allergie-Service 1, Tagesfix 100 bei 30 Boxen; Zweierbundle 24 kostet 18 variabel. Direktabholung ohne Zustellung versus Händlerlieferung mit Kühlkette und 3 Provisionje Box; Kapazität/Verderblichkeit sind gegeben. Kommunikationstest: Website 100 Besuche/10 Käufe vor,200/15 nach gleichzeitig geänderter Werbung/Rabatt. Analysiere Sortimentsbreite/-tiefe, Markt-/Kosten-/Präferenz-/Service-/Konditionspolitik sowie Absatzlogistik und Werbekontrolle, ohne Effektisolation zu behaupten.",
+          "taskDemandEn": "Different fictional assortment: lunch and dinner groups with four menus each. Options add a vegan menu within one group or a breakfast group; small households prefer small portions and others reliable delivery. Price is 13 per box, variable cost 8 plus allergy service 1, and fixed cost 100 per day at 30 boxes. A two-box bundle priced at 24 costs 18 variably. Direct collection contrasts with dealer delivery, a cold chain and commission 3 per box; capacity and perishability conditions are supplied. Website data show 100 visits and 10 purchases before, and 200 visits and 15 purchases after simultaneous advertising and discount changes. Analyse breadth, depth, market, costs, preferences, service, terms, logistics and advertising control without claiming isolated effects.",
+          "expectedPerformanceDe": "Normal 30 Boxen ergeben 120 Beitrag−100=20, Zweierbundle 6 Beitragpro Bestellung vor Fixkosten. Die Person erklärt möglichen Konflikt Mengenrabatt/kleine Haushalte und breite/neue gegenüber tiefer/variierter Produktgruppe. Abholung/Kühlkette verändern Zugang, Kosten und Verderbrisiko aus beiden Sichten. Kaufquote 10%→7,5%bei höheren absoluten Käufen ist keine Werbeerfolgsgarantie; parallele Preis-/Werbeänderung verhindert den isolierten Wirkungsnachweis.",
+          "expectedPerformanceEn": "Thirty normal boxes give contribution 120 minus fixed cost 100, hence result 20; each two-box order contributes 6 before fixed costs. The learner explains the tension between volume discounts and small households, and a new group versus expansion within a group. Collection and the cold chain change access, cost and spoilage risk from both viewpoints. Conversion falling from 10% to 7.5% alongside more absolute purchases does not guarantee advertising success; concurrent price and advertising changes prevent effect isolation.",
+          "understandingFocusDe": "Andere Bedürfnisse, Sortimentsform und Bezugsgrößen verändern Marketinganalyse.",
+          "understandingFocusEn": "Different needs, assortment and reference measures change marketing analysis."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "wirtschaft-be-source125-twelve-profile-enterprise-remedy-author-v1-readable-v2",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:cd965f38a3766b3f3f623a34a59b803b913dd1fd5d4de32ebec1fd139e709ab0",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "goalId": "6d4a38df-527c-534b-8c0a-c6b546dae5b1",
+    "goalFingerprint": "PENDING_NATIVE_WHOLE_GOAL_FINGERPRINT",
+    "reviewInputFingerprint": "PENDING_NATIVE_REVIEW_INPUT_FINGERPRINT",
+    "profileFingerprint": "PENDING_NATIVE_PROFILE_FINGERPRINT",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-09T10:52:57.966825+00:00",
+    "reviewer": "/root/economics_merge_audit substantive author; readable candidate successor; independent review pending",
+    "reason": "DE: Vollständiger begrenzter Autoren-Nachfolger mit lesbaren DE-/EN-Fällen und unverändertem Zielvertrag; echte Quellenleistungen werden vorgeschlagen, nicht unabhängig freigegeben. EN: Whole bounded author successor with readable DE/EN cases and unchanged goal contract; actual source performances are proposed, not independently approved.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "representation",
+      "expectations": [
+        {
+          "id": "content-specific-understanding",
+          "essentialUnderstandingDe": "Aufbauorganisation ordnet Aufgaben und Verantwortung Bereichen zu; Beschaffung, Leistungserstellung, Absatz und Leitung/Verwaltung wirken zusammen. Ein Organigramm zeigt Verantwortungsbeziehungen, nicht automatisch die gesamte zeitliche Reihenfolge eines Auftrags.",
+          "essentialUnderstandingEn": "An organisational structure allocates tasks and responsibilities to functions; procurement, operations, sales and management/administration interact. An organisation chart represents responsibility, not automatically an order’s entire timeline.",
+          "observablePerformanceDe": "Die Person stellt neue einfache Unternehmensstrukturen mit zentralen Funktionen und nachvollziehbaren Beziehungen dar und erklärt eine konkrete Zusammenarbeit zwischen Bereichen. Die konkreten neuen Fälle ergänzen tatsächlich: Vorgegebene funktionale/divisionale/Einlinien-/Matrix-Typen werden mit Aufgaben, Stellen, Leitung und Spezialisierungs-/Koordinations-/Zentralisierungsprinzipien tatsächlich dargestellt.",
+          "observablePerformanceEn": "The learner represents new simple company structures with key functions and meaningful relations, explaining a specific interaction between functions. The actual new cases add: Supplied functional, divisional, single-line and matrix structures are actually represented with tasks, posts, leadership, specialisation, coordination and centralisation principles."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "content-specific-understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "actual-source-performance-variation",
+          "textDe": "Vorgegebene funktionale/divisionale/Einlinien-/Matrix-Typen werden mit Aufgaben, Stellen, Leitung und Spezialisierungs-/Koordinations-/Zentralisierungsprinzipien tatsächlich dargestellt.",
+          "textEn": "Supplied functional, divisional, single-line and matrix structures are actually represented with tasks, posts, leadership, specialisation, coordination and centralisation principles."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "functional-and-product-division-responsibility",
+          "taskDemandDe": "Fiktiver Hersteller: Einkauf, Produktion, Absatz sowie Personal/Buchhaltung unter Leitung. Modell F gliedert nach Funktionen; Modell P nach zwei Produktgruppen mit je Einkauf, Produktion und Absatz sowie zentraler Verwaltung. Gegeben: Einliniensystem bedeutet je Stelle eine Weisungsstelle, Spezialisierung die Aufteilung nach Aufgaben, Zentralisierung gebündelte Entscheidungen. Stelle beide Grundaufbauten dar und erkläre Verantwortungs- und Informationswege bei einer Kundenänderung, einschließlich Aufgaben, Stellen, Instanzen/Leitung und Prinzipkonflikten. Ein Ablaufdiagramm wird nicht als Hierarchie ausgegeben.",
+          "taskDemandEn": "A fictional manufacturer has procurement, production, sales and personnel or accounting under management. Model F groups functions; model P groups two products with their own procurement, production and sales, plus central administration. Supplied definitions: single-line means one instruction source per post, specialisation divides tasks, and centralisation concentrates decisions. Represent both basic structures and explain the responsibility and information paths for a customer change, including tasks, posts, management and principle trade-offs. A timeline is not a hierarchy.",
+          "expectedPerformanceDe": "Die Person stellt Funktions- und Produktgliederung konsistent dar, erklärt Spezialisierung, Koordination und mögliche doppelte Ressourcen und unterscheidet Aufgabe, Stelle/Person und Weisungsinstanz. Eine Kundenänderung erfordert Abstimmung zwischen Absatz, Produktion und Einkauf; Produktnähe und zentrale Verwaltung sind Gestaltungsoptionen, keine garantierte Effizienz.",
+          "expectedPerformanceEn": "The learner consistently represents functional and product structures, explains specialisation, coordination and possible duplicated resources, and distinguishes task, post, person and instruction authority. A customer change connects sales, production and procurement; proximity to products and central administration are design choices rather than guaranteed efficiency.",
+          "understandingFocusDe": "Tatsächliche Organisationstypen und Prinzipien im Grundaufbau.",
+          "understandingFocusEn": "Actual organisation types and principles in a basic structure."
+        },
+        {
+          "id": "line-versus-matrix-project-responsibility",
+          "taskDemandDe": "Anderer fiktiver IT-Dienst: Funktionen Entwicklung, Support, Vertrieb und Verwaltung; zwei zugleich laufende Kundenprojekte. Modell L hat für jedes Team nur die Funktionsleitung. Modell M verbindet Fach- und Projektleitung mit ausdrücklich vorgegebenen Zuständigkeiten: Fachleitung für Fachstandards/Personal, Projektleitung für Priorität/Termin; Konflikte entscheidet die gemeinsame Leitung nach dokumentierter Abstimmung. Stelle die Strukturen dar und erkläre Elemente, Spezialisierung/Koordination und Kommunikationswege bei konkurrierenden Terminen.",
+          "taskDemandEn": "Another fictional IT service has development, support, sales and administration with two concurrent customer projects. Model L uses only functional leadership; model M combines functional and project leadership with supplied duties: functional leaders own technical standards and personnel, project leaders own priorities and timing, and joint management resolves conflicts after documented coordination. Represent the structures and explain their elements, specialisation, coordination and communication for competing deadlines.",
+          "expectedPerformanceDe": "Die Person erklärt das Einlinienmodell gegenüber dem ausdrücklich zweidimensionalen Matrixmodell, ohne widerspruchsfreie Weisungen zu garantieren. Sie zeichnet beide Verantwortungswege, benennt Rollen trotz gleicher Personen und begründet Abstimmung und Konfliktentscheidung anhand gelieferter Zuständigkeiten. Ein gemeinsamer Terminplan ersetzt nicht die Verantwortungsordnung.",
+          "expectedPerformanceEn": "The learner explains single-line versus explicitly two-dimensional matrix organisation without guaranteeing conflict-free instructions. They draw both responsibility paths, distinguish roles from people and use supplied duties to route coordination and conflicts. A shared schedule does not replace responsibility structures.",
+          "understandingFocusDe": "Andere Dienstleistungs- und Matrixstruktur mit konkreter Zuständigkeitsgrenze.",
+          "understandingFocusEn": "A different service and matrix structure with actual responsibility limits."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "wirtschaft-be-source125-twelve-profile-enterprise-remedy-author-v1-readable-v2",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:fb04bfb85c28cf22c67bbfad07788f1778634873158066e082d3556f8739291d",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "goalId": "0d8cb18d-7fd9-56f5-8009-8045d44f4127",
+    "goalFingerprint": "PENDING_NATIVE_WHOLE_GOAL_FINGERPRINT",
+    "reviewInputFingerprint": "PENDING_NATIVE_REVIEW_INPUT_FINGERPRINT",
+    "profileFingerprint": "PENDING_NATIVE_PROFILE_FINGERPRINT",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-09T10:52:57.966828+00:00",
+    "reviewer": "/root/economics_merge_audit substantive author; readable candidate successor; independent review pending",
+    "reason": "DE: Vollständiger begrenzter Autoren-Nachfolger mit lesbaren DE-/EN-Fällen und unverändertem Zielvertrag; echte Quellenleistungen werden vorgeschlagen, nicht unabhängig freigegeben. EN: Whole bounded author successor with readable DE/EN cases and unchanged goal contract; actual source performances are proposed, not independently approved.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "procedure",
+      "expectations": [
+        {
+          "id": "content-specific-understanding",
+          "essentialUnderstandingDe": "Projektmanagement koordiniert einen gemeinsamen Ergebnisauftrag über überprüfbare Ziele, Arbeitspakete, Zuständigkeiten, Zeitabhängigkeiten und Kommunikation. Digitale Medien werden nach ihrem Beitrag zum konkreten Auftrag ausgewählt; Toolnutzung und ein fertiger Plan ersetzen keine ergebnisbezogene Zusammenarbeit.",
+          "essentialUnderstandingEn": "Project management coordinates a shared result through verifiable objectives, work packages, responsibilities, timing dependencies and communication. Digital media are selected for their contribution to the task; tool use and a completed plan do not replace collaboration towards a result.",
+          "observablePerformanceDe": "Die Person wendet in einer überschaubaren Teamarbeit Rollen, Ablaufplanung und gemeinsame Dokumentation an, bearbeitet einen konkreten Abstimmungs- oder Änderungsfall und begründet Medienwahl sowie Evaluation des gemeinsamen Ergebnisses. Die konkreten neuen Fälle ergänzen tatsächlich: Wirkliche Netzplanstrukturen mit gegebenen Dauern, kritischen Abhängigkeiten, Arbeitsanalyse/-synthese, Team-/Rollenausführung und passender gemeinsamer digitaler Dokumentation.",
+          "observablePerformanceEn": "In a bounded team activity, the learner applies roles, scheduling and joint documentation, handles a concrete coordination or change event and justifies the media choice and evaluation of the shared result. The actual new cases add: Actual networks with supplied durations, critical dependencies, task breakdown and integration, team or role execution and suitable shared digital documentation."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "content-specific-understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "actual-source-performance-variation",
+          "textDe": "Wirkliche Netzplanstrukturen mit gegebenen Dauern, kritischen Abhängigkeiten, Arbeitsanalyse/-synthese, Team-/Rollenausführung und passender gemeinsamer digitaler Dokumentation.",
+          "textEn": "Actual networks with supplied durations, critical dependencies, task breakdown and integration, team or role execution and suitable shared digital documentation."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "actual-team-network-cost-chart-and-delay",
+          "taskDemandDe": "Unterrichtsteam oder ausdrücklich bezeichnete Rollensimulation erstellt einen Kiosk-Kostenbericht. Arbeitsmaterial: 100 Nutzungen, Einweg 0,20 je Nutzung, Mehrweg 12 fix plus 0,05 je Nutzung. Vorgangsknoten-Netzplan in Modell-Tagen ab Zeit 0: A Datenprüfung 2; danach parallel B Kostenrechnung 3 und C Diagramm 2; D Zusammenführung 1 nach B und C. Personen/Vertretungen sind für alle Pakete gegeben; B und C können parallel arbeiten. Zerlegt den Auftrag, zeichnet Netz und Rollen, berechnet frühesten Abschluss und kritischen Weg, führt das Rechen- und Diagrammpaket tatsächlich aus und dokumentiert Medien- und Versionswahl. Dann verlängert ein Freigabeproblem C auf 4 Tage: stimmt eine wirkliche Planänderung ab und aktualisiert Netz und Status.",
+          "taskDemandEn": "A classroom team or expressly labelled role simulation creates a kiosk-cost report. Actual data: 100 uses, disposable cost 0.20 per use, reusable fixed cost 12 plus 0.05 per use. The activity-on-node network uses model days from time 0: A checks data for 2 days; then B calculates for 3 days and C draws a chart for 2 days in parallel; D integrates for 1 day after B and C. Named roles and backups permit parallel work. Break down the task, draw the network and roles, compute earliest completion and the critical path, actually complete the calculation and chart, and record the media and version choice. An approval problem then extends C to 4 days: coordinate and document an actual plan revision.",
+          "expectedPerformanceDe": "Einweg 20 und Mehrweg 17 werden tatsächlich berechnet und dargestellt. Ursprünglich A–B–D=6 und A–C–D=5; frühester Abschluss 6, C hat unter den gegebenen Bedingungen einen Tag Spielraum. Verlängerung von C auf 4 führt zu Abschluss 7 und kritischem Weg A–C–D. Die Person stimmt Rollen und Freigaben im Team- oder Rollendurchlauf ab, wählt ein geeignetes gemeinsames versioniertes Medium und evaluiert das tatsächliche Ergebnis. Ein bloßes Board oder behauptetes Team ist kein ausgeführter Netzplan.",
+          "expectedPerformanceEn": "Disposable cost 20 and reusable cost 17 are actually calculated and charted. Initially A–B–D=6 and A–C–D=5; earliest completion is 6 and C has one day of float under the stated conditions. Extending C to 4 gives completion 7 and critical path A–C–D. The learner coordinates roles and approvals in the team or role simulation, chooses a fitting shared versioned medium and evaluates the actual result. A board alone or asserted teamwork is not an executed network plan.",
+          "understandingFocusDe": "Wirklicher Vorgangsknoten-Netzplan, Arbeitsanalyse und -synthese sowie dokumentierte Ausführung.",
+          "understandingFocusEn": "An actual activity-on-node network with task breakdown, integration and documented execution."
+        },
+        {
+          "id": "actual-team-network-budget-change-and-alternative",
+          "taskDemandDe": "Anderes Unterrichtsteam oder klare Rollensimulation richtet einen fiktiven Informationsstand ein. Budget 60, Druck 20, Anzeige 15, Transport 10. Netz ab 0: A Anforderungen 1; danach B Angebote 2 und C Raumbuchung 3 parallel; D Material 2 nach B; E Aufbau 1 nach C und D. Verteilt Rollen und erstellt wirklich ein kleines fachliches Standartefakt plus digitalen Status- und Kostenplan. Nachträglich steigen Druck auf 35 und D auf 4 Tage: berechnet Termin- und Budgetauswirkung. Eine explizite Alternative ersetzt einen Teil des Drucks durch die vorhandene Digitalanzeige, Druck 25 und D 1; prüft gemeinsam, ob sie Inhalt, Budget und Termin 6 einhält, und dokumentiert wirkliche Änderung und Evaluation.",
+          "taskDemandEn": "Another classroom team or clearly labelled role simulation prepares a fictional information stand. Budget is 60, printing 20, display 15 and transport 10. The network starts at 0: A determines requirements for 1 day; B obtains quotes for 2 days and C books the venue for 3 days in parallel after A; D prepares materials for 2 days after B; E sets up for 1 day after C and D. Assign roles and actually create a bounded subject artefact with a digital status and cost plan. Printing then rises to 35 and D to 4 days: compute the budget and timing effects. An explicit option uses an existing digital display, printing 25 and D of 1 day. Jointly check content, budget and deadline 6, and record the actual revision and evaluation.",
+          "expectedPerformanceDe": "Ursprünglich A–B–D–E=6 gegenüber A–C–E=5, Kosten 45 und Reserve 15. Neuer Druckkostensatz verbraucht die Reserve vollständig, verlängertes D führt zu Abschluss 8 und verfehlt Termin 6. Die Alternative kostet 50, lässt Reserve 10 und schließt bei max(1+2+1,1+3)+1=5 ab, sofern digitale Inhalte und Verfügbarkeit wirklich passen. Die Person erklärt Arbeitsanalyse und -synthese, aktualisierte Abhängigkeiten und Rollen, Medienpassung und Auswertung am erstellten Ergebnis statt eine Toolliste als Projektleistung zu zählen.",
+          "expectedPerformanceEn": "Initially A–B–D–E=6 versus A–C–E=5, with cost 45 and reserve 15. Higher printing cost consumes the reserve, and longer D makes completion 8, missing deadline 6. The alternative costs 50, leaves reserve 10 and finishes at max(1+2+1,1+3)+1=5 if digital content and availability fit. The learner explains task breakdown and integration, updated dependencies and roles, media suitability and evaluation of the actual artefact rather than counting a tool list as project performance.",
+          "understandingFocusDe": "Anderer Netz- und Ressourcenfall mit wirklich dokumentierter gemeinsamer Anpassung.",
+          "understandingFocusEn": "A different network and resource case with an actually documented shared revision."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "wirtschaft-be-source125-twelve-profile-enterprise-remedy-author-v1-readable-v2",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:405f74a6d8de42befd7dd680fae8e1aa4e7bb799dc012988faa2c4a84bf0ee55",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "goalId": "85f0b64f-c385-5a4a-82d2-fcfdf61f48a0",
+    "goalFingerprint": "PENDING_NATIVE_WHOLE_GOAL_FINGERPRINT",
+    "reviewInputFingerprint": "PENDING_NATIVE_REVIEW_INPUT_FINGERPRINT",
+    "profileFingerprint": "PENDING_NATIVE_PROFILE_FINGERPRINT",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-09T10:52:57.966829+00:00",
+    "reviewer": "/root/economics_merge_audit substantive author; readable candidate successor; independent review pending",
+    "reason": "DE: Vollständiger begrenzter Autoren-Nachfolger mit lesbaren DE-/EN-Fällen und unverändertem Zielvertrag; echte Quellenleistungen werden vorgeschlagen, nicht unabhängig freigegeben. EN: Whole bounded author successor with readable DE/EN cases and unchanged goal contract; actual source performances are proposed, not independently approved.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "modeling",
+      "expectations": [
+        {
+          "id": "content-specific-understanding",
+          "essentialUnderstandingDe": "Arbeitsverhältnisse verbinden unterschiedliche Interessen mit rechtlichen Grenzen und organisatorischer Gestaltung. Analyse trennt gewünschte Regelung, geltendes Material, Zuständigkeit und reale Umsetzung; eine effiziente Organisation hebt Schutzregeln nicht auf, und Zustimmung allein beweist keine Rechtmäßigkeit.",
+          "essentialUnderstandingEn": "Employment relationships connect different interests with legal constraints and organisational design. Analysis separates desired arrangements, applicable materials, competence and implementation; efficient organisation does not remove safeguards, and agreement alone does not establish legality.",
+          "observablePerformanceDe": "Die Person analysiert neue Arbeitsfälle mit beiden Interessenperspektiven, wendet die bereitgestellten aktuellen Regeln einschließlich Voraussetzungen und Ausnahmen an und erklärt Folgen der Organisationsform für Schutz, Planbarkeit und Betrieb. Die konkreten neuen Fälle ergänzen tatsächlich: Tatsächliche Arbeitsvertrags-/Tarifvertrags-, Individual-/Kollektiv-, Bindungs-/Geltungs- und Tarifautonomie-Unterscheidungen bleiben mit Interessen und Arbeitsorganisation im unveränderten85f-Vertrag verbunden.",
+          "observablePerformanceEn": "The learner analyses new work cases from both interest perspectives, applies supplied current rules including conditions and exceptions, and explains organisational effects on protection, predictability and the firm. The actual new cases add: Actual employment and collective agreements, individual and collective rules, binding status, scope and bargaining autonomy remain connected to interests and work organisation within the unchanged 85f contract."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "content-specific-understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "actual-source-performance-variation",
+          "textDe": "Tatsächliche Arbeitsvertrags-/Tarifvertrags-, Individual-/Kollektiv-, Bindungs-/Geltungs- und Tarifautonomie-Unterscheidungen bleiben mit Interessen und Arbeitsorganisation im unveränderten 85 f-Vertrag verbunden.",
+          "textEn": "Actual employment and collective agreements, individual and collective rules, binding status, scope and bargaining autonomy remain connected to interests and work organisation within the unchanged 85f contract."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "employment-contract-versus-binding-collective-agreement",
+          "taskDemandDe": "Fiktives Gewerkschaftsmitglied und tarifgebundener Arbeitgeber liegen ausdrücklich im Geltungsbereich eines aktuellen Tarifvertrags. Individueller Arbeitsvertrag: weisungsgebundene Arbeit und 22 Stundenlohn; Tarifminimum 24 für dieselbe Arbeit, keine Öffnungsklausel. Vollständige aktuelle BGB §611a und TVG §§1–4 sind bereitgestellt, keine Ausnahme/Sondergruppe. Analysiere Arbeitgeber- und Arbeitnehmerinteressen und eine Zweischichtorganisation; unterscheide individuelle Vertragsbeziehung und kollektive Normsetzung/Tarifparteien sowie unmittelbare Wirkung. Prüfe alternativ einen freiwilligen individuellen Stundenlohn 26 bei sonst gleichen Bedingungen.",
+          "taskDemandEn": "A fictional union-member employee and collectively bound employer are expressly within the scope of one current collective agreement. The individual employment contract specifies directed work and hourly pay of 22; the collective minimum is 24 for the same work, with no opening clause. Complete current BGB section 611a and TVG sections 1–4 are supplied, with no excluded group or exception. Analyse employer and worker interests and two-shift organisation. Distinguish the individual contractual relationship from collective norm-making, its parties and direct effect. Alternatively examine voluntary individual pay of 26 with otherwise identical conditions.",
+          "expectedPerformanceDe": "Die Person erklärt Arbeits- und Vergütungsbeziehung und die tatsächliche Durchführung statt bloßer Etiketten. Sie trennt den Vertrag zwischen Arbeitnehmer und Arbeitgeber vom Tarifvertrag zwischen Gewerkschaft und Arbeitgeber beziehungsweise Arbeitgeberverband und erklärt beiderseitige Bindung und Geltungsbereich. 22 unterläuft hier die zwingende Norm von 24, 26 ist bei den gegebenen gleichen Bedingungen günstiger. Dies ist keine pauschale Regel für Nichtgebundene. Interessen, Schichten/Planbarkeit und Grenzen bleiben mit diesen Regeln verbunden.",
+          "expectedPerformanceEn": "The learner explains work and pay relations and actual implementation rather than labels, distinguishes the employee–employer contract from the union–employer or employer-association agreement, and checks both parties’ binding status and scope. Pay 22 undercuts the binding minimum of 24 here; 26 is more favourable under otherwise identical conditions. This is not a general rule for all unbound employees. Interests, shift predictability and limits remain linked to the rules.",
+          "understandingFocusDe": "Individuelles und kollektives Arbeitsrecht tatsächlich fallbezogen unterscheiden.",
+          "understandingFocusEn": "Actually distinguish individual from collective labour law in the case."
+        },
+        {
+          "id": "employment-label-and-nonautomatic-tariff-application",
+          "taskDemandDe": "Anderer fiktiver Vertrag heißt Freie Mitarbeit, tatsächlich liegt aber persönliche weisungsgebundene Arbeit mit festen Zeiten/Ort und fremder Organisation vor; alle tatsächlichen Umstände sind angegeben. Arbeitgeber und Person sind im ersten Szenario nicht tarifgebunden, es gibt keine Allgemeinverbindlichkeit und keine Tarifbezugsklausel. Ein öffentlich zugänglicher Branchentarif sieht 25 vor, Vertragsvergütung 23. Zweites ausdrücklich geändertes Szenario: beide sind tarifgebunden, der Geltungsbereich passt und Tarif 25 ist noch gültig. Analysiere Interessen und Arbeitsorganisation mit bereitgestellten BGB §611a und TVG §§1–4; unterscheide Vertragsbezeichnung, gesetzliche Arbeitsbeziehung, Tarifautonomie und tatsächliche Normwirkung.",
+          "taskDemandEn": "A different fictional contract is labelled freelance, but all facts establish personally dependent, directed work with fixed time, place and organisation. Initially neither party is collectively bound, with no general extension or contractual incorporation clause. A publicly accessible industry agreement sets pay 25 and the contract specifies 23. In an explicitly changed scenario, both parties are bound, the agreement covers them and pay 25 remains current. Using BGB section 611a and TVG sections 1–4, analyse interests and organisation and distinguish the label, actual employment relationship, bargaining autonomy and normative effect.",
+          "expectedPerformanceDe": "Gesamtbetrachtung statt Wort Freelance bestimmt nach bereitgestelltem §611a die Arbeitsbeziehung. Ein Branchentarif allein macht ungebundene 23 nicht automatisch aufgrund TVG §4 unwirksam; andere gesetzliche Grenzen werden ohne Material nicht entschieden. Im geänderten Bindungsszenario greift 25 unmittelbar und zwingend unter den gegebenen Voraussetzungen. Die Person erklärt Tarifautonomie als unabhängige kollektive Aushandlung innerhalb gesetzlicher Grenzen und verknüpft Gestaltung, Interessen und Zuständigkeit, statt individuelles Weisungsrecht für freie Tarifsetzung zu halten.",
+          "expectedPerformanceEn": "Under supplied section 611a, the whole actual relationship rather than the freelance label determines employment. An industry agreement alone does not invalidate unbound pay 23 under TVG section 4; other statutory limits remain unassessed without material. In the changed bound scenario, 25 applies directly and mandatorily. The learner explains autonomous collective bargaining within the law and connects organisation, interests and authority rather than treating employer instructions as collective norm-making.",
+          "understandingFocusDe": "Andere Bindungs- und Organisationsbedingungen mit echter Geltungsgrenze.",
+          "understandingFocusEn": "Different binding and organisational conditions with an actual scope boundary."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "wirtschaft-be-source125-twelve-profile-enterprise-remedy-author-v1-readable-v2",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:d3701d29fecbb0b559f4023e350556d153572e2ba57666b725ff121961f4603e",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "goalId": "d2467bbb-eea0-58a2-8f8b-fbaea060d566",
+    "goalFingerprint": "PENDING_NATIVE_WHOLE_GOAL_FINGERPRINT",
+    "reviewInputFingerprint": "PENDING_NATIVE_REVIEW_INPUT_FINGERPRINT",
+    "profileFingerprint": "PENDING_NATIVE_PROFILE_FINGERPRINT",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-09T10:52:57.966830+00:00",
+    "reviewer": "/root/economics_merge_audit substantive author; readable candidate successor; independent review pending",
+    "reason": "DE: Vollständiger begrenzter Autoren-Nachfolger mit lesbaren DE-/EN-Fällen und unverändertem Zielvertrag; echte Quellenleistungen werden vorgeschlagen, nicht unabhängig freigegeben. EN: Whole bounded author successor with readable DE/EN cases and unchanged goal contract; actual source performances are proposed, not independently approved.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "modeling",
+      "expectations": [
+        {
+          "id": "content-specific-understanding",
+          "essentialUnderstandingDe": "Strategiemodelle ordnen Wachstum, Positionierung, Rechtsform, Standort und Wertschöpfung nach unterschiedlichen Fragen. Eine Entscheidung verknüpft ihre Befunde, Annahmen und Zielkonflikte; kein Modell garantiert Erfolg.",
+          "essentialUnderstandingEn": "Strategy models organise growth, positioning, legal form, location and production scope through different questions. A decision connects their findings, assumptions and conflicts; no model guarantees success.",
+          "observablePerformanceDe": "Die Person wendet die gelieferten Ansoff-/Porter-/Rechtsform-/Standort-/Make-or-Buy-Modelle passend an, verknüpft Ergebnisse und beurteilt eine konkrete Entscheidung unter Ressourcen-/Risikolimits. Die konkreten neuen Fälle ergänzen tatsächlich: Einzelunternehmen und je eine Personen-/Kapitalgesellschaft werden mit ausdrücklich gegebenen Kapital-/Haftungs-/Steuerungsbedingungen vertieft; die bestehenden fünf strategischen Modellbezüge bleiben in beiden ganzen Fällen tatsächlich erhalten.",
+          "observablePerformanceEn": "The learner appropriately applies supplied Ansoff/Porter/legal-form/location/make-or-buy models, connects findings and assesses a concrete decision under resource/risk limits. The actual new cases add: A sole enterprise and one partnership and company form are analysed through supplied capital, liability and control conditions; all five existing strategic perspectives remain present in both whole cases."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "content-specific-understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "actual-source-performance-variation",
+          "textDe": "Einzelunternehmen und je eine Personen-/Kapitalgesellschaft werden mit ausdrücklich gegebenen Kapital-/Haftungs-/Steuerungsbedingungen vertieft; die bestehenden fünf strategischen Modellbezüge bleiben in beiden ganzen Fällen tatsächlich erhalten.",
+          "textEn": "A sole enterprise and one partnership and company form are analysed through supplied capital, liability and control conditions; all five existing strategic perspectives remain present in both whole cases."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "sole-partnership-company-and-five-strategy-models",
+          "taskDemandDe": "Fiktiver Möbelbetrieb erhält vollständige Modelldefinitionen: bestehende Möbel in neuem Markt sind Ansoff-Marktentwicklung, neue Produkte Produktentwicklung; Porter-Kostenführerschaft und -Differenzierung sind gegeben. Gründer A hat 30 Kapital, B optional 20; Investition 35 plus Reserve 5. Vergleiche Einzelunternehmen mit persönlicher Inhaberhaftung, OHG als gemeinsames Handelsgewerbe mit persönlicher Gesamtschuldnerhaftung nach HGB §§105/126 und GmbH mit gegebenen erfüllten Gründungsbedingungen und GmbHG §13, ohne persönliche Garantie. Standort M: Arbeitskräfte 8/Logistik 4; N: 6/9; Gewichte 0,6/0,4. M hat Kapazität 1600, N 1000. Make kostet 8000 fix plus 10 je Stück, Buy 18 bei 1500 Stück; reparierbare Qualitätsdifferenzierung braucht Service. Beurteile integriert Rechtsformwahl nach Kapital, Haftung und Steuerung, Wachstum/Positionierung, Standort und Make-or-Buy mit Unsicherheit.",
+          "taskDemandEn": "A fictional furniture firm receives complete Ansoff and Porter model definitions: existing products in a new market mean market development, and new products mean product development; cost leadership and differentiation are distinguished. Founder A has capital 30; B optionally adds 20. Investment need is 35 plus reserve 5. Compare a sole enterprise with the owner’s personal liability, an OHG with joint commercial business and personal joint-and-several liability under HGB sections 105 and 126, and a GmbH with supplied fulfilled formation conditions and GmbHG section 13, without a personal guarantee. Location M scores labour 8 and logistics 4; N scores 6 and 9; weights are 0.6 and 0.4. M has capacity 1600 and N 1000. Making costs fixed 8000 plus 10 per unit; buying costs 18 at volume 1500. Repair-based quality differentiation needs service. Integrate capital, liability and control with growth, positioning, location and make-or-buy under uncertainty.",
+          "expectedPerformanceDe": "A allein mit 30 deckt Bedarf 40 nicht ohne Zusatzmittel. Gemeinsame 50 verändern Finanzierung und Steuerung; persönliche OHG-Haftung unterscheidet sich vom GmbH-Gesellschaftsvermögen, ohne absolute Immunität zu behaupten. Standortscore M 6,4/N 7,2 ist keine Kapazitätsgarantie; Make 23000/Buy 27000, Schwelle 1000. Kapazität und Qualität qualifizieren den Kostenvorteil von 4000. Die Person verknüpft alle fünf Modelle und begründet eine wirtschaftsdatenbezogene Rechtsform- und Strategieoption statt eine Rechtsform allein nach einem Haftungswort auszuwählen.",
+          "expectedPerformanceEn": "A’s 30 alone falls short of the need for 40 without additional funding. Joint capital 50 changes financing and control; OHG personal liability differs from liability based on GmbH assets without implying absolute immunity. Scores M 6.4 and N 7.2 guarantee no capacity. Making costs 23000 versus buying 27000, with threshold 1000; capacity and quality qualify the cost advantage of 4000. The learner links all five models and justifies a legal-form and strategy option from economic data rather than one liability label.",
+          "understandingFocusDe": "Einzelunternehmen und vertiefte Personen- und Kapitalform in einer tatsächlich integrierten wirtschaftlichen Strategie.",
+          "understandingFocusEn": "A sole enterprise and detailed partnership or company choice within an integrated economic strategy."
+        },
+        {
+          "id": "service-firm-legal-form-finance-control-and-strategy",
+          "taskDemandDe": "Anderer fiktiver Softwaredienst: A allein hat 10 Kapital, B kann 30 beisteuern; Bedarf 15 plus vorgegebene Gründungskosten 4 bei GmbH, deren Gründungsvoraussetzungen gegeben und erfüllbar sind. Material liefert Einzel-, OHG- und GmbH-Regeln sowie eine separate persönliche Garantie nur als Option. Vorhandener Service an neue Kundengruppe gegenüber neuem Angebot, Beratungsnische gegenüber Standardangebot; Standort P: Personal 9/Datennähe 3; Q: 6/8; Gewichte 0,7/0,3. Interner Support kostet 6000 fix plus 4 je Fall gegenüber extern 10 bei 500 Fällen; externe Qualität und Abhängigkeit sind unsicher. Beurteile mit allen fünf Modellelementen Finanzierung, Haftung, Kontrolle und Strategie; keine Steuerberatung oder garantierter Geschäftserfolg.",
+          "taskDemandEn": "Another fictional software firm: A alone has capital 10; B can provide 30. Need is 15 plus supplied formation cost 4 for a GmbH whose formation conditions are supplied and feasible. Materials give sole-enterprise, OHG and GmbH rules, with a separate personal guarantee only as an option. Compare an existing service for new customers against a new offer, and a niche with advice against a standard offer. Location P scores personnel 9 and data proximity 3; Q scores 6 and 8; weights are 0.7 and 0.3. Internal support costs fixed 6000 plus 4 per case versus external cost 10 at 500 cases; external quality and dependence are uncertain. Assess financing, liability, control and strategy using all five model elements without claiming guaranteed business success.",
+          "expectedPerformanceDe": "Die Person erklärt unzureichendes Kapital von A allein, gemeinsame Mittel und Leitung, GmbH-Gründungskosten, persönliche OHG-Haftung und den gegebenen separaten Garantievorbehalt. P 7,2/Q 6,6 sowie intern 8000/extern 5000 bei Schwelle 1000 werden richtig verwendet; Qualifikation, Qualität und Abhängigkeit begrenzen das Modellurteil. Sie verbindet Rechtsform, Standort und Make-or-Buy mit Ansoff/Porter und nennt Annahmen, deren Änderung die Wahl verändert.",
+          "expectedPerformanceEn": "The learner explains insufficient capital from A alone, joint funding and control, formation cost, personal OHG liability and the optional guarantee. Scores P 7.2 and Q 6.6, and internal cost 8000 versus external 5000 with threshold 1000, are correct. Skills, quality and dependence qualify the models. They connect legal form, location and make-or-buy to Ansoff and Porter and identify assumptions that could change the choice.",
+          "understandingFocusDe": "Andere Basisdaten verändern die begründete integrierte Rechtsform- und Strategieabwägung.",
+          "understandingFocusEn": "Different data change an integrated legal-form and strategy judgment."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "wirtschaft-be-source125-twelve-profile-enterprise-remedy-author-v1-readable-v2",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:405f74a6d8de42befd7dd680fae8e1aa4e7bb799dc012988faa2c4a84bf0ee55",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "goalId": "a5009946-62bb-5e6a-8c92-732d02e8fd70",
+    "goalFingerprint": "PENDING_NATIVE_WHOLE_GOAL_FINGERPRINT",
+    "reviewInputFingerprint": "PENDING_NATIVE_REVIEW_INPUT_FINGERPRINT",
+    "profileFingerprint": "PENDING_NATIVE_PROFILE_FINGERPRINT",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-09T10:52:57.966832+00:00",
+    "reviewer": "/root/economics_merge_audit substantive author; readable candidate successor; independent review pending",
+    "reason": "DE: Vollständiger begrenzter Autoren-Nachfolger mit lesbaren DE-/EN-Fällen und unverändertem Zielvertrag; echte Quellenleistungen werden vorgeschlagen, nicht unabhängig freigegeben. EN: Whole bounded author successor with readable DE/EN cases and unchanged goal contract; actual source performances are proposed, not independently approved.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "concept",
+      "expectations": [
+        {
+          "id": "content-specific-understanding",
+          "essentialUnderstandingDe": "Entlohnung verteilt Einkommen und Risiko und setzt Anreize unter Mess- und Kontrollbedingungen. Zeitlohn, leistungsbezogene Vergütung und Gewinnbeteiligung belohnen verschiedene Größen; mehr gemessene Stückzahl ist nicht automatisch mehr Qualität. Arbeitgeber- und Arbeitnehmerurteile brauchen transparente Kriterien und vollständige Fallbedingungen.",
+          "essentialUnderstandingEn": "Remuneration allocates income and risk and sets incentives under measurement/control conditions. Time-based pay, performance pay and profit-sharing reward different quantities; more measured units do not automatically mean better quality. Employer and worker judgments need explicit criteria and complete case conditions.",
+          "observablePerformanceDe": "Die Person beurteilt in neuen Fällen mehrere Entlohnungsformen ausdrücklich aus beiden Perspektiven, erklärt Anreiz-, Einkommens-, Risiko- und Verteilungswirkungen und begründet eine bedingte Entscheidung anhand passender Kriterien. Die konkreten neuen Fälle ergänzen tatsächlich: Arbeitsbewertung der Tätigkeit nach gegebenen Qualifikations-/Verantwortungs-/Komplexitätsanforderungen wird von individueller oder Team-Leistungsbewertung getrennt und tatsächlich in beidseitige Entlohnungsurteile einbezogen.",
+          "observablePerformanceEn": "In new cases, the learner assesses multiple remuneration forms explicitly from both perspectives, explains incentive, income, risk and distributional effects, and justifies a conditional decision using fitting criteria. The actual new cases add: Job evaluation through supplied skill, responsibility and complexity requirements is distinguished from individual or team performance and used in remuneration judgments from both sides."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "content-specific-understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "actual-source-performance-variation",
+          "textDe": "Arbeitsbewertung der Tätigkeit nach gegebenen Qualifikations-/Verantwortungs-/Komplexitätsanforderungen wird von individueller oder Team-Leistungsbewertung getrennt und tatsächlich in beidseitige Entlohnungsurteile einbezogen.",
+          "textEn": "Job evaluation through supplied skill, responsibility and complexity requirements is distinguished from individual or team performance and used in remuneration judgments from both sides."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "job-requirements-versus-individual-output-pay",
+          "taskDemandDe": "Fiktiver Entgeltvergleich: Job A verlangt Qualifikation 2, Verantwortung 1 und Komplexität 1, insgesamt 4 Punkte; Job B 3/3/2, insgesamt 8. Gegebene Arbeitsbewertungsregel: Grundstundenlohn 12 plus 2 pro Punkt. Die Anforderungen bewerten die Tätigkeit, nicht die Person. Für acht Stunden in derselben Job A: Zeitlohn 20/Stunde gegenüber 0,50 je akzeptiertem Stück; eine Person 40 Stück/Stunde, eine andere 50; Qualitätsprüfung, Ausschuss und Belastung sind gegeben. Beurteile Arbeitgeber- und Arbeitnehmerperspektive, Arbeitsbewertung gegenüber individueller Leistungsbewertung, Entlohnungsanreize, Einkommen, Risiko und Fairness.",
+          "taskDemandEn": "Fictional pay comparison: job A requires qualification 2, responsibility 1 and complexity 1, totalling 4 points; job B scores 3, 3 and 2, totalling 8. The supplied job-evaluation rule gives a base hourly rate of 12 plus 2 per point. Requirements rate the job, not the individual. For eight hours in the same job A, compare hourly pay 20 with 0.50 per accepted unit: one worker makes 40 units per hour and another 50; quality, rejection and workload conditions are supplied. Assess both sides, job evaluation versus individual performance, incentives, income, risk and fairness.",
+          "expectedPerformanceDe": "Grundlöhne A 20/B 28 folgen Tätigkeitsanforderungen, nicht Tempo; mehr Stücke einer Person machen Job A nicht automatisch zu Job B. Bei A-Referenz ergibt sich Zeitlohn 160 gegenüber Stücklohn 160, bei 50 Stück/Stunde Stücklohn 200 gegenüber Zeitlohn 160. Die Person vergleicht Anreize, Messbarkeit, Belastung/Qualität und Verteilung, unterscheidet Outputunterschiede von einer Arbeitswertgruppe und begründet Schutzbedingungen aus beiden Sichten.",
+          "expectedPerformanceEn": "Base rates A 20 and B 28 follow job requirements, not speed; more units do not turn job A into job B. For A, time pay 160 equals reference piece pay 160; at 50 units per hour piece pay is 200 versus time pay 160. The learner assesses incentives, measurement, workload, quality and distribution, distinguishes output from job grade, and justifies conditions from both sides.",
+          "understandingFocusDe": "Tätigkeitsanforderung ist eine andere Entgeltbasis als persönliche Leistung.",
+          "understandingFocusEn": "Job requirements provide a different pay basis from individual performance."
+        },
+        {
+          "id": "job-responsibility-team-quality-and-profit-risk",
+          "taskDemandDe": "Anderer fiktiver Dienst: Leitungsaufgabe braucht mehr fachliche Qualifikation und Personalverantwortung als Assistenz; beide Tätigkeitsprofile sind gegeben. Individuelle Leistung wird separat an bearbeiteten Fällen und Qualität gemessen. Fünf gleichberechtigte Beschäftigte vergleichen feste Monatszulage 15 je Person, Teamqualitätsbonus 100 insgesamt bei Quote mindestens 95% und Gewinnbeteiligung 10% des positiven Gewinns, geteilt durch fünf. Periode 1: Qualität 96%, Gewinn 1000; Periode 2: Qualität 90%, Gewinn −200 bei Nachfrageeinbruch. Beurteile beide Seiten, Arbeits- und Leistungsbewertung, Einfluss/Messbarkeit, Verteilung und Risiko; der Leitungstitel allein beweist keine konkret gute Leistung.",
+          "taskDemandEn": "A different fictional service supplies job profiles: leadership requires more skills and staff responsibility than assistance; individual performance is measured separately through completed cases and quality. Five equally eligible workers compare a fixed monthly supplement of 15 each, a total team-quality bonus of 100 if quality is at least 95%, and 10% of positive profit divided among five. Period 1 has quality 96% and profit 1000; period 2 has quality 90% and profit −200 after a demand decline. Assess both sides, job evaluation and performance, control, measurement, distribution and risk. A job title alone proves no actual performance.",
+          "expectedPerformanceDe": "Tätigkeitswert und Verantwortung werden von gemessener individueller und Teamleistung getrennt. Periode 1 ergibt je Person Zulage 15, Qualitätsbonus 20 oder Gewinnanteil 20 nach der jeweiligen Regel; Periode 2 nur Zulage 15, bei beiden anderen 0. Gleiche 20 am Anfang bedeuten keine gleichen Anreize oder Risiken. Die Person beurteilt beeinflussbare Qualität, Nachfragerisiko, Team- und Trittbrettfahrerbedingungen, Einkommenssicherheit und Unternehmensflexibilität aus beiden Perspektiven.",
+          "expectedPerformanceEn": "Job value and responsibility are separate from individual and team performance. In period 1, each worker receives fixed supplement 15, quality bonus 20 or profit share 20 under the respective schemes; in period 2 only the fixed scheme pays 15, while both others pay 0 under the supplied rules. Equal initial payments of 20 do not mean equal incentives or risks. The learner assesses controllable quality, demand risk, team and free-rider conditions, income security and firm flexibility from both perspectives.",
+          "understandingFocusDe": "Andere Aufgabenwert-, Team- und Gewinnbedingungen mit tatsächlichen Rechenergebnissen.",
+          "understandingFocusEn": "Different job-value, team and profit conditions with actual calculations."
+        }
+      ]
+    }
+  },
+  {
+    "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+    "schemaVersion": 2,
+    "reviewId": "wirtschaft-be-enterprise-supervisory-participation-author-v1-readable-v2",
+    "goalFingerprintRuleVersion": "goal-evidence-v1",
+    "profileRuleVersion": "positive-understanding-evidence-v2",
+    "reviewCriteriaFingerprint": "sha256:cd965f38a3766b3f3f623a34a59b803b913dd1fd5d4de32ebec1fd139e709ab0",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "goalId": "fab48742-756b-564d-87ef-cd6f3c75f348",
+    "goalFingerprint": "PENDING_NATIVE_WHOLE_GOAL_FINGERPRINT",
+    "reviewInputFingerprint": "PENDING_NATIVE_REVIEW_INPUT_FINGERPRINT",
+    "profileFingerprint": "PENDING_NATIVE_PROFILE_FINGERPRINT",
+    "status": "needs_human_review",
+    "reviewAuthority": "ai_candidate",
+    "reviewedAt": "2026-10-09T10:52:57.966833+00:00",
+    "reviewer": "/root/economics_merge_audit substantive author; readable candidate successor; independent review pending",
+    "reason": "DE: Vollständiger begrenzter Autoren-Nachfolger mit lesbaren DE-/EN-Fällen und unverändertem Zielvertrag; echte Quellenleistungen werden vorgeschlagen, nicht unabhängig freigegeben. EN: Whole bounded author successor with readable DE/EN cases and unchanged goal contract; actual source performances are proposed, not independently approved.",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "reviewRunIds": [],
+    "dissent": [],
+    "profile": {
+      "archetype": "concept",
+      "expectations": [
+        {
+          "id": "content-specific-understanding",
+          "essentialUnderstandingDe": "Betriebsrat und Arbeitnehmerbeteiligung im Aufsichtsrat liegen auf verschiedenen institutionellen Ebenen. Die gewöhnliche paritätische Sitzbesetzung und das Montanmodell unterscheiden sich in zusätzlichen Mitgliedern und Abstimmungsrechten; Sitze oder Branchenbezeichnung allein beweisen weder automatische Mehrheiten noch uneingeschränkte Arbeitnehmerkontrolle.",
+          "essentialUnderstandingEn": "Works councils and worker representation on supervisory boards are different institutional levels. Ordinary parity and the coal-and-steel model differ in additional members and voting rights; seat counts or an industry name establish neither automatic majorities nor unrestricted worker control.",
+          "observablePerformanceDe": "Die lernende Person kann anhand bereitgestellter aktueller Regelungen und Unternehmensdaten die Aufsichtsratsbeteiligung bei gewöhnlicher Unternehmensmitbestimmung und Montanmitbestimmung begründet unterscheiden, unterschiedliche Einflussbedingungen erklären und diese Beteiligung von der Mitbestimmung des Betriebsrats trennen.",
+          "observablePerformanceEn": "The learner can use supplied current rules and company data to distinguish ordinary corporate and coal-and-steel supervisory-board co-determination, explain differing conditions of influence and separate these arrangements from works-council participation."
+        }
+      ],
+      "coverageExpectations": {
+        "requiredExpectationIds": [
+          "content-specific-understanding"
+        ],
+        "alternativeExpectationGroups": [],
+        "minimumIndependentDemonstrations": 2,
+        "freshVariationRequired": true,
+        "independentTransferRequired": true
+      },
+      "variationAxes": [
+        {
+          "id": "institutional-rule-and-given-case",
+          "textDe": "Gegebene gewöhnliche GmbH gegenüber ausdrücklich vollständig normativ erfasstem Montanfall; erneute Stimmengleichheit gegenüber einem eigenständigen weiteren Mitglied.",
+          "textEn": "An ordinary GmbH versus an expressly fully covered Montan case; repeated tied votes versus an independent further member."
+        }
+      ],
+      "applicationCaseBriefs": [
+        {
+          "id": "ordinary-parity-and-repeat-tie-not-works-council",
+          "taskDemandDe": "Fiktive gewöhnliche GmbH mit 2500 regelmäßig Beschäftigten, keine Montan-, Tendenz- oder Konzernausnahme und keine Satzungserweiterung. Vollständige aktuelle MitbestG §§1/7/29 sind gegeben. Für denselben unveränderten Beschlussgegenstand stimmen in der ersten und zweiten Abstimmung jeweils 6 dafür und 6 dagegen. Der Vorsitzende ist gegeben als eines der sechs Anteilseignermitglieder und befürwortet den Vorschlag; der Stellvertreter nimmt das besondere Recht nicht wahr. Erkläre Sitzbesetzung, zusätzliche Vorsitzendenstimme erst bei erneuter Stimmengleichheit und ihre Einflussgrenze. Ein bestehender Betriebsrat hat Dienstplanaufgaben; zeige, warum diese etwas anderes als Aufsichtsratsabstimmungen sind.",
+          "taskDemandEn": "A fictional ordinary GmbH has 2500 regular employees, no Montan, exempt-purpose or group issue, and no enlargement in its articles. Complete current MitbestG sections 1, 7 and 29 are supplied. For the same unchanged proposal, the first and second votes are both 6 for and 6 against. The chair is given as one of the six shareholder members and supports the proposal; the deputy does not exercise this special right. Explain the six-and-six seats, the chair’s second vote only after a repeated tie, and its limits. An existing works council handles duty rosters; distinguish this from supervisory-board voting.",
+          "expectedPerformanceDe": "Die Person leitet unter den gegebenen Voraussetzungen 12 Sitze im Verhältnis 6/6 ab und wendet §29 Abs.2 nicht schon automatisch auf die erste Abstimmung an. Die zusätzliche Vorsitzendenstimme bei erneuter 6/6-Situation ändert das Ergebnis unter den gelieferten Annahmen. Numerische Parität bedeutet keine automatisch gleiche Durchsetzung oder ein Arbeitnehmerveto für jeden Gegenstand. Betriebsrat wird weder Aufsichtsrat noch Tarifpartei; Gegenstands- und Sonderverfahrensgrenzen sind zu beachten.",
+          "expectedPerformanceEn": "The learner derives 12 seats divided six and six under the supplied conditions and does not apply section 29(2) automatically on the first vote. The chair’s additional vote after a repeated six-and-six tie changes the outcome under the supplied assumptions. Seat parity does not guarantee equal influence or a worker veto on every issue. The works council is neither a supervisory board nor a collective-bargaining party; subject-specific and special-procedure limits remain relevant.",
+          "understandingFocusDe": "Gewöhnliche Aufsichtsratsparität und konkrete Abstimmungsgrenze.",
+          "understandingFocusEn": "Ordinary supervisory-board parity and actual voting limits."
+        },
+        {
+          "id": "coal-company-independent-member-and-scope-boundary",
+          "taskDemandDe": "Andere fiktive GmbH fördert überwiegend Steinkohle unter Bergbehördenaufsicht mit 1500 regelmäßig Beschäftigten. Alle weiteren erforderlichen Voraussetzungen nach MontanMitbestG §1 sind ausdrücklich gegeben; keine Nachwirkungs-, Konzern- oder Sondervergrößerungssituation. Aktuelle §§1/4 sind vollständig bereitgestellt. Standardaufsichtsrat mit elf Mitgliedern: vier Anteilseigner plus zusätzliches Mitglied, vier Arbeitnehmer plus zusätzliches Mitglied und ein weiteres Mitglied. Alle zusätzlichen Mitglieder erfüllen §4 Abs.2; alle Mitglieder sind weisungsfrei. Die fünf Mitglieder der ersten Gruppe befürworten den Vorschlag, die fünf der anderen lehnen sachlich ab. Das elfte weist auf gemeinsame Auswirkungen hin, hat aber noch nicht abgestimmt. Erkläre Einfluss und Ungewissheit gegenüber gewöhnlichen Regeln. Ein neu errichtetes anderes Unternehmen mit 800 Beschäftigten ohne Nachwirkung darf nicht allein aus dem Branchennamen unter diese Regel fallen.",
+          "taskDemandEn": "Another fictional GmbH predominantly mines hard coal under mining-authority supervision with 1500 regular employees. All remaining MontanMitbestG section 1 conditions are expressly supplied, with no follow-on effect, group issue or enlarged board. Current sections 1 and 4 are supplied in full. The standard eleven-member board has four shareholder members plus an additional member, four employee members plus an additional member, and one further member. All additional members satisfy section 4(2), and all members are free from instructions. The first group’s five favour the proposal, the other five oppose it; the eleventh notes joint effects but has not voted. Explain influence and uncertainty against ordinary rules. Another newly established firm with 800 employees and no follow-on effect cannot be included by industry name alone.",
+          "expectedPerformanceDe": "Die Person erklärt 5/5 plus eigenständiges weiteres Mitglied und dessen Normbedingungen, ohne es einem verpflichteten Arbeitnehmer- oder Arbeitgeberblock zuzurechnen. Eine nicht dokumentierte Stimme verhindert ein behauptetes Mehrheitsergebnis; Weisungsfreiheit bleibt relevant. Sie prüft über 1000 Beschäftigte plus Rechtsform und sachlichen Rahmen statt Industrie allein, behauptet beim 800-Fall aber keine generelle Freiheit von jeder anderen Unternehmens- oder Betriebsratsbeteiligung. Die Aufsichtsratsleistung belegt keinen ungeprüften Arbeitsdirektor-Wahlprozess; eine weitere verbindliche Quellenfacette ist gesondert unabhängig zu qualifizieren.",
+          "expectedPerformanceEn": "The learner explains five-and-five plus the independent further member and the member’s eligibility without assigning that member to a mandatory worker or employer bloc. No vote is documented, so no majority result is asserted; freedom from instructions matters. They check more than 1000 employees, legal form and material scope rather than industry alone, and do not claim that the 800-employee firm has no other participation rights. This supervisory-board performance does not establish an unexamined executive-appointment procedure; any additional curricular facet must be qualified separately.",
+          "understandingFocusDe": "Montanregel, eigenständiges weiteres Mitglied und ausdrückliche Quellen- und Anwendungsgrenze.",
+          "understandingFocusEn": "Montan rules, an independent further member and explicit scope and coverage limits."
+        }
+      ]
+    }
+  }
+]

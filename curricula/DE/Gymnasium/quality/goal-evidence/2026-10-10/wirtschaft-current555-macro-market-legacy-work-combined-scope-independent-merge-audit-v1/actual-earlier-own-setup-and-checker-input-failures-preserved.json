@@ -1,0 +1,29 @@
+{
+  "failures": [
+    {
+      "step": "private-copy-initial",
+      "condition": "source and destination resolved to same file; prevented copying through a symlink",
+      "activeWrite": false
+    },
+    {
+      "step": "private-copy-second",
+      "condition": "destination parent resolved outside own capsule; prevented write",
+      "activeWrite": false
+    },
+    {
+      "step": "dependency-reader-third",
+      "condition": "path-like review prose exceeded filename length; only real files subsequently selected",
+      "activeWrite": false
+    },
+    {
+      "step": "initial-view-prefix-assert",
+      "condition": "assertion assumed rootNodes append but actual qualified append is within sole structure.children; actual whole old child prefix preserved",
+      "scopeDecision": null
+    },
+    {
+      "step": "initial-strict-schema-compile",
+      "condition": "ajv-formats uri not registered; failed compilation, not a valid schema verdict; actual successor uses ordinary ajv-formats validation",
+      "schemaException": false
+    }
+  ]
+}

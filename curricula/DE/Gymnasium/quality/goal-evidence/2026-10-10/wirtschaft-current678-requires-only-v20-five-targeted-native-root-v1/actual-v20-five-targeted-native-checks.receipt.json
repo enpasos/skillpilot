@@ -1,0 +1,82 @@
+{
+  "kind": "Actual current one-edge correction targeted five independent native checks; no new science or full-build claim",
+  "exactInputGuards": {
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json": "4a7d0d0222383a3b1218919ffe333b7962970f4edde86a88f965fd4531511cee",
+    "curricula/DE/Gymnasium/mapping/DE-BE/upper-secondary/be_wirtschaft_current125_source_extraction_to_canonical_wirtschaft.review.json": "513e8f88b65f0734388394f95f51979b6859e2a4498968ebc7acfb00c4d4aa6b",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-one-consumer-unnecessary-prerequisite-qualified-inert-root-v20/semantic-kinds.only-one-consumer-requires-sourceFP.json": "ea819ef00a9bd762071406b33a89d10bcbdc860e3da0c3a150becbc3732809c0",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-one-consumer-unnecessary-prerequisite-qualified-inert-root-v20/whole336-original685-cases-only-one-consumer-requires-inputFP.jsonl": "46c2a1de21699fa115abb5bf96bf8d71bbbb588e55d5035cfe5780c22ef20699"
+  },
+  "allInputsUnchanged": true,
+  "checks": [
+    {
+      "label": "graph",
+      "argv": [
+        "npm",
+        "run",
+        "-s",
+        "validate:graph"
+      ],
+      "actualExitCode": 0,
+      "seconds": 4.725,
+      "stdoutTail": "\u2705 593 landscape(s) passed validation.\n",
+      "stderrTail": ""
+    },
+    {
+      "label": "positive43",
+      "argv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "scripts/positiveGoalEvidenceReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-one-consumer-unnecessary-prerequisite-qualified-inert-root-v20/configs/43.positive.config.json"
+      ],
+      "actualExitCode": 0,
+      "seconds": 0.44,
+      "stdoutTail": "itive Goal Evidence Review: wirtschaft-two-e-source-rests-two-existing-p-four-case-readable-author-v2\nScope: Exact qualified current positive profiles; technical binding only, separate human release remains pending\nConfigured goals: 1\nApproved: 0\nNeeds human review: 1\nRejected: 0\nBlocking issues: 0\n",
+      "stderrTail": ""
+    },
+    {
+      "label": "atomicity336",
+      "argv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "scripts/semanticAtomicityReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-one-consumer-unnecessary-prerequisite-qualified-inert-root-v20/atomicity336.semantic-pointer-only.config.json"
+      ],
+      "actualExitCode": 0,
+      "seconds": 0.307,
+      "stdoutTail": " plus25 previously foreign-qualified whole judgments; technical adapter only\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 336\nCurrent reviewed atomic: 336\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\n",
+      "stderrTail": ""
+    },
+    {
+      "label": "memory336-cards-views",
+      "argv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "scripts/memoryCardReview.ts",
+        "--mode=check",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-one-consumer-unnecessary-prerequisite-qualified-inert-root-v20/memory336.semantic-pointer-only.config.json"
+      ],
+      "actualExitCode": 0,
+      "seconds": 0.347,
+      "stdoutTail": "en statt pauschale Vorzugswahl. Source: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-q3-trade-finance-sixteen-independent-DEEN-P-AM-review-v1/independent-whole-sixteen-DEEN-P-AM-card-QS.v2.actual.receipt.json. This technical preparer performs no independent substantive review.\n",
+      "stderrTail": ""
+    },
+    {
+      "label": "source-inventory",
+      "argv": [
+        "npm",
+        "run",
+        "-s",
+        "test:source-extraction-inventory"
+      ],
+      "actualExitCode": 0,
+      "seconds": 1.131,
+      "stdoutTail": "Source-extraction component inventory and conservative explicit-reference regressions passed.\n",
+      "stderrTail": ""
+    }
+  ],
+  "allFivePassed": true,
+  "newStrictClosures": 0
+}

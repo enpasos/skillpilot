@@ -1,0 +1,365 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "wirtschaft-current336-D124-v19-b10-actual-qualified-partial-root-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI GPT-6 Codex coordinator /root; machine curriculum QS only",
+  "synthesizedAt": "2026-10-10T09:50:11.181Z",
+  "batch": {
+    "batchId": "wirtschaft-current336-D124-v19-b10",
+    "batchManifestDigest": "sha256:b4d7f8dcb8a178cb37fbd68a6bc1f6eada6853883ffcc81be7df402b7ee98823",
+    "configDigest": "sha256:c9c814d989d189a2dcdba135e4040fed2aefd7b5f6b0300b306d1ccf4c49acb0",
+    "bundleFingerprint": "sha256:803a6db607d701ca39357b84fdf35433a1dc3baca1aa65fc4d06784c6a308579",
+    "bookDigest": "sha256:e552b689c0407a1e94f55a442b5c23e89bab53b4c9564c66a73be9c511911680",
+    "reviewInputFingerprint": "sha256:087d446aa48b0c7867c9330307d9377354c582a249445dfce70c7cad77cb3101",
+    "dualSummaryDigest": "sha256:7baf19a1b4f21f28fedc79b1dc6e6ae768abc4411bb49526cf7eaa12746859bc",
+    "canonicalLandscapeDigest": "sha256:41839e18856594db1a98855dbdc88f866c8bd32e51d534d19f1dd967c4ea0b9f"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-current336-D124-v19-b10-a",
+      "campaignDigest": "sha256:6e23f19061df595fd87139919b67f37537fba068523681b59cdf7fc2a51579dd",
+      "roundId": "wirtschaft-current336-D124-v19-b10-first-pass-a",
+      "independenceGroupId": "wirtschaft-current336-D124-v19-b10-independent-a",
+      "reviewInputFingerprint": "sha256:087d446aa48b0c7867c9330307d9377354c582a249445dfce70c7cad77cb3101",
+      "batchId": "wirtschaft-current336-D124-v19-b10-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:5a6ac77c77443d11dffb6aa02c4217afc149e4aa6f2a6e100b98991ba42dc36f",
+      "runId": "wirtschaft-current336-D124-v19-b10-independently-executed-a-v1",
+      "runManifestDigest": "sha256:f48f6ebf8d66b34fbbc8af55429e005263d9910c75c63bd1f9f819d1fb84343d",
+      "resultsDigest": "sha256:c36bbac446ef497a1c28461f2bdba57cfceb27ce16bcd08f4727ff3dc9eba65a"
+    },
+    "second": {
+      "campaignId": "wirtschaft-current336-D124-v19-b10-b",
+      "campaignDigest": "sha256:84063e0e1bdf7113c4dddbc72aa4a5b8802fbd72d6213dd8a764e6b294ef35de",
+      "roundId": "wirtschaft-current336-D124-v19-b10-first-pass-b",
+      "independenceGroupId": "wirtschaft-current336-D124-v19-b10-independent-b",
+      "reviewInputFingerprint": "sha256:087d446aa48b0c7867c9330307d9377354c582a249445dfce70c7cad77cb3101",
+      "batchId": "wirtschaft-current336-D124-v19-b10-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:098f86c578b05ebbfacef2a213d98fba36733bdfa5562dabf51fae616bde3bac",
+      "runId": "wirtschaft-current336-D124-b10-independent-b-actual-run-v1",
+      "runManifestDigest": "sha256:b370404e6fa7113cb7baeba3cf393497075c714c341bc22555ea093476f39135",
+      "resultsDigest": "sha256:0acc8c2fe9d30ad951f38283e47360e1e7c5890cdbed799df8a82ad78de9a1d6"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "wirtschaft-current336-D124-v19-b10-actual-qualified-partial-root-v1-decision-001",
+      "goalId": "c3cb822e-f219-5a66-9714-db73b50d0487",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f6847b1a5f3908bbde0bf5be86e857d0c3d9c15f03a6576b8d7a94daad284f60",
+      "pageFingerprint": "sha256:5ba491f8f2a07bec28a8be465d7896b54eb4b9274e15158bd27cae2f0a48e621",
+      "goalReviewContextFingerprint": "sha256:d1fa26ab0fb8797d7f3cbb8fa7cfb0585c24e7c5afa7e9ee6e7514c806caf928",
+      "finalText": {
+        "titleDe": "Umweltpolitik im Mehrebenensystem",
+        "titleEn": "Explain environmental policy in a multilevel system",
+        "descriptionDe": "Die lernende Person kann Instrumente und Konflikte der Umweltpolitik beschreiben.",
+        "descriptionEn": "The learner can describe environmental-policy instruments and conflicts."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "current336-D124-b10-a-01-c3cb822e-f219-5a66-9714-db73b50d0487",
+          "recordDigest": "sha256:f72657da6b45734e7e8f5a9e2c15e4e7c14404d90055ec9b4105b8db0f96e1eb"
+        },
+        "second": {
+          "recordId": "wirtschaft-current336-D124-b10-independent-b-actual-run-v1-c3cb822e-f219-5a66-9714-db73b50d0487",
+          "recordDigest": "sha256:5cb6333616e574278c4bf8dc9a7474318b59bed7e640020196a3731e9bbbbc30"
+        }
+      },
+      "rationaleDe": "Koordination der zwei tatsächlich versiegelten unabhängigen ganzen DE/EN/P-, Quellen-, Seiten- und Kontextprüfungen: Instrument, politische Zuständigkeit, räumliche Wirkung und Kostenverteilung unterscheiden sich; gemeinsame Ziele können dezentral umgesetzt werden. Umweltinstrumente verändern erlaubte Handlungen oder Anreize; Zuständigkeit und Wirkungsreichweite bestimmen Koordinationskonflikte. Die beschriebenen Leistungen und fachlich ausreichenden Alternativen stimmen überein; keine zusätzliche Erinnerungs-, Aufgaben- oder menschliche Freigabequote.",
+      "rationaleEn": "Synthesis of the two actually sealed independent whole DE/EN/P, source, page and context reviews: Instruments, policy authority, geographic effects and cost distribution differ; shared aims may be implemented locally. Transfer from a shared emission target and regional enforcement to differing river instruments. The bounded performances and scientifically sufficient alternatives agree. No additional recall, task or human-approval quota is introduced."
+    },
+    {
+      "decisionId": "wirtschaft-current336-D124-v19-b10-actual-qualified-partial-root-v1-decision-002",
+      "goalId": "5262a0ba-0ede-5f47-a6a2-4778d24fc95a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:cd43f154517b912afa904aa6b4789509eb7df32d4de2a68e1f124fceb9d1d30a",
+      "pageFingerprint": "sha256:e82649ac2c8482b6f334d5aafc00bba7da444ca9b976915013d2082db5c6c97f",
+      "goalReviewContextFingerprint": "sha256:4e7fd293b97c8aacb615ef2507593c64722864427ce6c9a7ea07ee57791b7c36",
+      "finalText": {
+        "titleDe": "Wohlstand differenziert messen",
+        "titleEn": "Measure prosperity using different dimensions",
+        "descriptionDe": "Die lernende Person kann BIP, HDI und ökologische Indikatoren unterscheiden und interpretieren.",
+        "descriptionEn": "The learner can distinguish and interpret GDP, the HDI, and ecological indicators."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "current336-D124-b10-a-05-5262a0ba-0ede-5f47-a6a2-4778d24fc95a",
+          "recordDigest": "sha256:c92b94d83e125df3312a8676ee4021513a3824050c1d2a8b47db6e2e26f6d94b"
+        },
+        "second": {
+          "recordId": "wirtschaft-current336-D124-b10-independent-b-actual-run-v1-5262a0ba-0ede-5f47-a6a2-4778d24fc95a",
+          "recordDigest": "sha256:7cc4e39271ed7d6b7dbe32cf794ea906a09f81e2ac0476007066b35411d803c9"
+        }
+      },
+      "rationaleDe": "Koordination der zwei tatsächlich versiegelten unabhängigen ganzen DE/EN/P-, Quellen-, Seiten- und Kontextprüfungen: BIP, HDI und Umweltindikatoren messen unterschiedliche Dimensionen; durchschnittliche Entwicklung erlaubt keine Wohlstandsaussage für jeden Haushalt. BIP, HDI und Umweltmaße erfassen unterschiedliche Dimensionen; Durchschnittswerte beweisen weder Verteilung noch ganzen Wohlstand. Die beschriebenen Leistungen und fachlich ausreichenden Alternativen stimmen überein; keine zusätzliche Erinnerungs-, Aufgaben- oder menschliche Freigabequote.",
+      "rationaleEn": "Synthesis of the two actually sealed independent whole DE/EN/P, source, page and context reviews: GDP, HDI and environmental indicators measure different dimensions; average development permits no claim about every household. Transfer from GDP/HDI/emission comparison to high aggregates with major household differences. The bounded performances and scientifically sufficient alternatives agree. No additional recall, task or human-approval quota is introduced."
+    },
+    {
+      "decisionId": "wirtschaft-current336-D124-v19-b10-actual-qualified-partial-root-v1-decision-003",
+      "goalId": "055ef95c-0b64-5675-8f14-2524c3438009",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:aaf45672742c036524ab9d8d985e30c0359f4d44af396d19dc3c9e4d5ae20ac7",
+      "pageFingerprint": "sha256:025811d3c14aa11bd3990cca84d7a814beef8e74a966e7b451de939dbf62f7c4",
+      "goalReviewContextFingerprint": "sha256:559036af2e29d2b1df2c25afff3b2dc8643bb815282068c7a78a520ef349f34f",
+      "finalText": {
+        "titleDe": "Statische Rohstoffreichweiten berechnen und einordnen",
+        "titleEn": "Calculate and interpret static resource-reserve lifetimes",
+        "descriptionDe": "Die lernende Person kann anhand vorgegebener Reserven und jährlicher Förderung eine statische Rohstoffreichweite berechnen und erläutern, weshalb sie keine feste Vorhersage der Erschöpfung ist.",
+        "descriptionEn": "The learner can calculate a static reserve-to-production lifetime from supplied reserves and annual production and explain why it is not a fixed prediction of exhaustion."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "current336-D124-b10-a-06-055ef95c-0b64-5675-8f14-2524c3438009",
+          "recordDigest": "sha256:77027b6bbe7a1e72fa3b698ca7197cdbe6d9f6a51ced1b31b87720ef9a01443f"
+        },
+        "second": {
+          "recordId": "wirtschaft-current336-D124-b10-independent-b-actual-run-v1-055ef95c-0b64-5675-8f14-2524c3438009",
+          "recordDigest": "sha256:e105b1cf62c2205918d1e18c9fa16103b4785bb260dd2dcde7459692f84f3762"
+        }
+      },
+      "rationaleDe": "Koordination der zwei tatsächlich versiegelten unabhängigen ganzen DE/EN/P-, Quellen-, Seiten- und Kontextprüfungen: Statische Reichweite ist Reservenbestand durch Jahresförderung unter konstanten rechnerischen Größen; Klassifikation, Technik und Nachfrage machen daraus kein Erschöpfungsdatum. Statische Reichweite ist definierte Reserve geteilt durch jährliche Förderung unter konstanten Größen; Kategorie- und Flussänderungen verhindern ein festes Erschöpfungsdatum. Die beschriebenen Leistungen und fachlich ausreichenden Alternativen stimmen überein; keine zusätzliche Erinnerungs-, Aufgaben- oder menschliche Freigabequote.",
+      "rationaleEn": "Synthesis of the two actually sealed independent whole DE/EN/P, source, page and context reviews: Static lifetime divides reserves by annual production under constant calculation assumptions; classification, technology and demand prevent treating it as exhaustion timing. Transfer from120/4=30 to(112+48)/8=20 with a separate88-resource category. The bounded performances and scientifically sufficient alternatives agree. No additional recall, task or human-approval quota is introduced."
+    },
+    {
+      "decisionId": "wirtschaft-current336-D124-v19-b10-actual-qualified-partial-root-v1-decision-004",
+      "goalId": "0489aa68-7059-51dd-92bb-6d801c568449",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:48f269534217eae428931f9e04008e56b83a5ef02947777f4afdc659d78f22e5",
+      "pageFingerprint": "sha256:0aa5f3b429e11686db40fa3fa2d7ee24b9fd69f63f108c35d011df621555c6ef",
+      "goalReviewContextFingerprint": "sha256:6d0790aebb4abf011db0a56924a47e7df0e7a435d17cda4be6d200a82688c77b",
+      "finalText": {
+        "titleDe": "Produktentwicklung im Lebenszyklus analysieren",
+        "titleEn": "Analyse product development within a life cycle",
+        "descriptionDe": "Die lernende Person kann einen vorgegebenen Produktentwicklungsplan im Zusammenhang eines ausdrücklich angegebenen Produktlebenszyklusmodells analysieren, die Beiträge von Forschung und Entwicklung erklären und begründen, wie abgestimmtes überlappendes Arbeiten verschiedener Funktionsbereiche beim Simultaneous Engineering den Entwicklungsverlauf beeinflussen kann.",
+        "descriptionEn": "The learner can analyse a supplied product-development plan within an explicitly stated product-life-cycle model, explain the contributions of research and development, and explain how coordinated overlapping work by different functions in concurrent engineering can affect the development process."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "current336-D124-b10-a-07-0489aa68-7059-51dd-92bb-6d801c568449",
+          "recordDigest": "sha256:d4d965ff49a0d1db4a220b910260fabeddb960a0d9e8179ba493061f6f35ed4d"
+        },
+        "second": {
+          "recordId": "wirtschaft-current336-D124-b10-independent-b-actual-run-v1-0489aa68-7059-51dd-92bb-6d801c568449",
+          "recordDigest": "sha256:73ed8703754869ad8bacdf209dd4e9ffda87e6c0f68a7b6371317ce3cc895791"
+        }
+      },
+      "rationaleDe": "Koordination der zwei tatsächlich versiegelten unabhängigen ganzen DE/EN/P-, Quellen-, Seiten- und Kontextprüfungen: Produktlebenszyklus ist ein vorgegebenes Modell, Forschung gewinnt Erkenntnisse und Entwicklung nutzt sie; koordinierte Überlappung braucht echte Schnittstelleninformationen. Produktlebenszyklus ist ein erklärendes Modell; Forschung und Entwicklung sowie koordinierte Überlappung wirken über Erkenntnisse und Informationsabhängigkeiten. Die beschriebenen Leistungen und fachlich ausreichenden Alternativen stimmen überein; keine zusätzliche Erinnerungs-, Aufgaben- oder menschliche Freigabequote.",
+      "rationaleEn": "Synthesis of the two actually sealed independent whole DE/EN/P, source, page and context reviews: Lifecycle is a supplied model, research gains knowledge and development uses it; coordinated overlap needs actual interface information. Transfer from a supplied maturity-stage improvement to pre-sales launch and a new dimensional change. The bounded performances and scientifically sufficient alternatives agree. No additional recall, task or human-approval quota is introduced."
+    },
+    {
+      "decisionId": "wirtschaft-current336-D124-v19-b10-actual-qualified-partial-root-v1-decision-005",
+      "goalId": "f90e4741-368b-5524-8053-417d06197c80",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:30851058b5af88725c362c2a0be3934d60b8580e5b4fd4facc99d047320795ed",
+      "pageFingerprint": "sha256:1c0fb604fcf6972c7aa7d8c675595e754fbcfb441c27d82ea245e6c129275885",
+      "goalReviewContextFingerprint": "sha256:8fbb0b24e00d734bd5e7e15873d64bf9f68924e4f9d40be0a7c57fc34ce1c05d",
+      "finalText": {
+        "titleDe": "Innovationswirkungen auf Wirtschaft und Gesellschaft analysieren",
+        "titleEn": "Analyse effects of innovation on the economy and society",
+        "descriptionDe": "Die lernende Person kann an vorgegebenen Innovationsfällen Wirkungswege vom Unternehmen zu Wirtschaft und Gesellschaft analysieren und Bedingungen sowie mögliche Zielkonflikte dieser Wirkungen erläutern.",
+        "descriptionEn": "The learner can analyse pathways from business innovation to effects on the economy and society in supplied cases and explain conditions and possible trade-offs."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "current336-D124-b10-a-08-f90e4741-368b-5524-8053-417d06197c80",
+          "recordDigest": "sha256:a8f1f6da7550e0ec51f4d2fcb335e3702de5864cde3cc55cd323b50ec59f0662"
+        },
+        "second": {
+          "recordId": "wirtschaft-current336-D124-b10-independent-b-actual-run-v1-f90e4741-368b-5524-8053-417d06197c80",
+          "recordDigest": "sha256:2fd5314e0a94db45132dc40e27014b11d44ecbb26ec0a2a2d11d23163c136002"
+        }
+      },
+      "rationaleDe": "Koordination der zwei tatsächlich versiegelten unabhängigen ganzen DE/EN/P-, Quellen-, Seiten- und Kontextprüfungen: Direkter Betriebsbefund unterscheidet sich von bedingten Nachfrage-, Qualifikations-, Beschäftigungs- und Umweltfolgen; Innovation garantiert weder Gewinn noch Stellenverlust. Direkte Innovationsbefunde unterscheiden sich von aggregierten Wirkungen; Nachfrage, Qualifikation, Verbreitung und Verteilung bedingen die Übertragung. Die beschriebenen Leistungen und fachlich ausreichenden Alternativen stimmen überein; keine zusätzliche Erinnerungs-, Aufgaben- oder menschliche Freigabequote.",
+      "rationaleEn": "Synthesis of the two actually sealed independent whole DE/EN/P, source, page and context reviews: Direct firm observations differ from conditional demand, skill, employment and environmental effects; innovation guarantees neither gains nor job loss. Transfer from30%less downtime to shared tools with unresolved net effects. The bounded performances and scientifically sufficient alternatives agree. No additional recall, task or human-approval quota is introduced."
+    },
+    {
+      "decisionId": "wirtschaft-current336-D124-v19-b10-actual-qualified-partial-root-v1-decision-006",
+      "goalId": "a56d5e8d-fd09-5961-ad88-34cfdef00baa",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:4403fae232f01110c5c7b01765798867895008faa9b61c0001c5d88ce6d4c708",
+      "pageFingerprint": "sha256:57dc549cfeb5313df44305621fcc88f0126f5ba127ab56d6da20cbdff6876290",
+      "goalReviewContextFingerprint": "sha256:5b25501e592370118c452e70cdd5bb588cc499997811bc0ef3c075901ed0dc83",
+      "finalText": {
+        "titleDe": "Wirtschaftsethische Ansätze anwenden",
+        "titleEn": "Apply economic ethics approaches",
+        "descriptionDe": "Die lernende Person kann ethische Modelle auf Globalisierungsfragen anwenden.",
+        "descriptionEn": "The learner can apply ethical models to questions of globalisation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "current336-D124-b10-a-09-a56d5e8d-fd09-5961-ad88-34cfdef00baa",
+          "recordDigest": "sha256:a29381eccaf0b13e95d0415644b673731f595b4e7773026ccab0259ef8bae6eb"
+        },
+        "second": {
+          "recordId": "wirtschaft-current336-D124-b10-independent-b-actual-run-v1-a56d5e8d-fd09-5961-ad88-34cfdef00baa",
+          "recordDigest": "sha256:781961128c589601626abc39200ec2b483f652e5579429a49143b1ecb85af7bb"
+        }
+      },
+      "rationaleDe": "Koordination der zwei tatsächlich versiegelten unabhängigen ganzen DE/EN/P-, Quellen-, Seiten- und Kontextprüfungen: Folgen, Rechte und Teilhabe liefern unterschiedliche begründete ethische Maßstäbe; Modellnennung allein ist keine fallbezogene Anwendung. Ethische Modelle liefern verschiedene normative Kriterien; Anwendung verbindet Kriterien mit konkreten Folgen, Rechten und Teilhabe statt Modellnamen zu nennen. Die beschriebenen Leistungen und fachlich ausreichenden Alternativen stimmen überein; keine zusätzliche Erinnerungs-, Aufgaben- oder menschliche Freigabequote.",
+      "rationaleEn": "Synthesis of the two actually sealed independent whole DE/EN/P, source, page and context reviews: Consequences, rights and participation provide different ethical criteria; naming a model alone is no case-based application. Transfer from price/workplace protection to export jobs/water access with different affected people. The bounded performances and scientifically sufficient alternatives agree. No additional recall, task or human-approval quota is introduced."
+    },
+    {
+      "decisionId": "wirtschaft-current336-D124-v19-b10-actual-qualified-partial-root-v1-decision-007",
+      "goalId": "abb13ea9-615f-5d71-92f9-140ff8b4cbfa",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0323b2ba16e33bb826fe7c6dac2dacafe4e07bbbf76a599874815db0068ce64d",
+      "pageFingerprint": "sha256:42698e9a58045c784034bbec1b36ed00646ec5a2440d90ad33a9932d0a43b03e",
+      "goalReviewContextFingerprint": "sha256:f15554311f83c6c315952aa34ef04b7ce34cdad8f8f0939daaae512d18d973fd",
+      "finalText": {
+        "titleDe": "Unternehmensethik und CSR",
+        "titleEn": "Business ethics and CSR",
+        "descriptionDe": "Die lernende Person kann CSR-Ansätze und Unternehmensethik im Kontext Globalisierung bewerten.",
+        "descriptionEn": "The learner can assess CSR approaches and business ethics in the context of globalisation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "current336-D124-b10-a-10-abb13ea9-615f-5d71-92f9-140ff8b4cbfa",
+          "recordDigest": "sha256:d5ae35d038656dd81c8760da571f31e47c40c6ddf5ef8d8e007339ae36f09e98"
+        },
+        "second": {
+          "recordId": "wirtschaft-current336-D124-b10-independent-b-actual-run-v1-abb13ea9-615f-5d71-92f9-140ff8b4cbfa",
+          "recordDigest": "sha256:fda7a906463d4fdbc7ff6a1d6fce1259d863dfbf985a68cf8ff0bb7cc7aadbc1"
+        }
+      },
+      "rationaleDe": "Koordination der zwei tatsächlich versiegelten unabhängigen ganzen DE/EN/P-, Quellen-, Seiten- und Kontextprüfungen: CSR prüft Verantwortung im Kerngeschäft, tatsächliche Betroffenenwirkung und Nachweise; Spende, Selbstversprechen und kontrollierte Umsetzung sind verschieden. CSR-Anspruch, Kerngeschäft, tatsächliche Wirkungen und Kontrolle unterscheiden sich; Spenden oder freundliche Werbung ersetzen keine Schutzleistung. Die beschriebenen Leistungen und fachlich ausreichenden Alternativen stimmen überein; keine zusätzliche Erinnerungs-, Aufgaben- oder menschliche Freigabequote.",
+      "rationaleEn": "Synthesis of the two actually sealed independent whole DE/EN/P, source, page and context reviews: CSR examines responsibility in core business, actual effects on people and evidence; donations, self-promises and verified implementation differ. Transfer from charity and supplier pressure to absolute emission measurement versus symbolic advertising. The bounded performances and scientifically sufficient alternatives agree. No additional recall, task or human-approval quota is introduced."
+    },
+    {
+      "decisionId": "wirtschaft-current336-D124-v19-b10-actual-qualified-partial-root-v1-decision-008",
+      "goalId": "36ebee6c-ec32-53e2-a5da-f50185e61a55",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:c9dce6f95081d84c44801ca12a8b24c685cf34f6ca98fa7ad8aaa02c78719876",
+      "pageFingerprint": "sha256:b3a511eef9d95583acee4324cdb65577de2dc36a017262a6aac9ef7dc5dee570",
+      "goalReviewContextFingerprint": "sha256:a5fff7c66493720e696af4e1ae3ceaf09279333df940f6ad272730d8c15f590e",
+      "finalText": {
+        "titleDe": "Unternehmensverantwortung und Lieferkettengesetze",
+        "titleEn": "Corporate responsibility and supply-chain laws",
+        "descriptionDe": "Die lernende Person kann Corporate-Responsibility-Konzepte und Lieferkettengesetze bewerten.",
+        "descriptionEn": "The learner can assess corporate-responsibility concepts and supply-chain laws."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "current336-D124-b10-a-11-36ebee6c-ec32-53e2-a5da-f50185e61a55",
+          "recordDigest": "sha256:54a002ad548620f2ef2ce52e2438a5046f4aba43d44e1668b5ed5680a4f193a1"
+        },
+        "second": {
+          "recordId": "wirtschaft-current336-D124-b10-independent-b-actual-run-v1-36ebee6c-ec32-53e2-a5da-f50185e61a55",
+          "recordDigest": "sha256:be215c5efc49322238dcc845cde0807311de72b4465e05aadb03f9bb7c6ccc5c"
+        }
+      },
+      "rationaleDe": "Koordination der zwei tatsächlich versiegelten unabhängigen ganzen DE/EN/P-, Quellen-, Seiten- und Kontextprüfungen: Normative Verantwortung, freiwillige Maßnahmen und aktuell geltende angemessene Sorgfalt unterscheiden sich; Sorgfalt ist keine allgemeine Lieferketten-Erfolgsgarantie. Normative Verantwortung, freiwillige Praxis und konkret geltende Sorgfalt sind verschieden; angemessene Sorgfalt ist keine Erfolgsgarantie. Die beschriebenen Leistungen und fachlich ausreichenden Alternativen stimmen überein; keine zusätzliche Erinnerungs-, Aufgaben- oder menschliche Freigabequote.",
+      "rationaleEn": "Synthesis of the two actually sealed independent whole DE/EN/P, source, page and context reviews: Normative responsibility, voluntary measures and current proportionate diligence differ; diligence is no general guarantee of supply-chain outcomes. Transfer from a voluntary code to discovered harm and improvement/contractual options. The bounded performances and scientifically sufficient alternatives agree. No additional recall, task or human-approval quota is introduced."
+    },
+    {
+      "decisionId": "wirtschaft-current336-D124-v19-b10-actual-qualified-partial-root-v1-decision-009",
+      "goalId": "f1f73ebe-286a-52e8-a2e1-4383ece6e9ec",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:fbd7a4651e83349f84653f54c4fe9bd676a83a2bb347766ae4fd0a24e2706c9e",
+      "pageFingerprint": "sha256:903258218461c1d8bdbb8d30c13c3da6db625c6155cf96c4b3a0958cde4dd175",
+      "goalReviewContextFingerprint": "sha256:fe97ecbcdd38d44cc0ae1cc8981d0bdb43482b61b028c5deec526b2c2cc7d91a",
+      "finalText": {
+        "titleDe": "Sektorstrukturen eines Entwicklungslandes",
+        "titleEn": "Sector structures of a developing country",
+        "descriptionDe": "Die lernende Person kann sektorale Struktur und Wachstumspfade eines Entwicklungslandes analysieren.",
+        "descriptionEn": "The learner can analyse the sectoral structure and growth paths of a developing country."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "current336-D124-b10-a-13-f1f73ebe-286a-52e8-a2e1-4383ece6e9ec",
+          "recordDigest": "sha256:fa3b2c04d9dbb402f74c9523d111887f40ca0736fdddd423d0409458d1dd049f"
+        },
+        "second": {
+          "recordId": "wirtschaft-current336-D124-b10-independent-b-actual-run-v1-f1f73ebe-286a-52e8-a2e1-4383ece6e9ec",
+          "recordDigest": "sha256:c5401ff2fdcfc846986a49ccd235b688afb4dadb42ba6519d33670cceea48ba4"
+        }
+      },
+      "rationaleDe": "Koordination der zwei tatsächlich versiegelten unabhängigen ganzen DE/EN/P-, Quellen-, Seiten- und Kontextprüfungen: Sektoranteile von Arbeit und Wertschöpfung sind verschieden; Wachstum und Strukturwandel hängen von Produktivität, Qualifikation, Infrastruktur und Teilhabe ab. Sektoranteile an Beschäftigung und Wertschöpfung unterscheiden sich; Strukturwandel kann mit steigendem absolutem Output und ungleichem Zugang einhergehen. Die beschriebenen Leistungen und fachlich ausreichenden Alternativen stimmen überein; keine zusätzliche Erinnerungs-, Aufgaben- oder menschliche Freigabequote.",
+      "rationaleEn": "Synthesis of the two actually sealed independent whole DE/EN/P, source, page and context reviews: Employment and value-added sector shares differ; growth and structural change depend on productivity, skills, infrastructure and inclusion. Transfer from an employment/output gap to a falling agricultural share with growing aggregate output. The bounded performances and scientifically sufficient alternatives agree. No additional recall, task or human-approval quota is introduced."
+    },
+    {
+      "decisionId": "wirtschaft-current336-D124-v19-b10-actual-qualified-partial-root-v1-decision-010",
+      "goalId": "4fef149e-84c0-59af-b056-0a0bf97dbecd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f0a47cfe7e809e8e99bc00560c506c51f44d5c571a880015642047e0454ef5c3",
+      "pageFingerprint": "sha256:1902a450cb32e969649c73ae71435e5e5fd99dec943b28b2460ac852c50d4e85",
+      "goalReviewContextFingerprint": "sha256:4461323ea65ca80b91f32dcd362154262d02b835ace6b229a86d1df047941101",
+      "finalText": {
+        "titleDe": "Inklusive Entwicklung",
+        "titleEn": "Inclusive development",
+        "descriptionDe": "Die lernende Person kann Strategien für inklusive und nachhaltige Entwicklung bewerten.",
+        "descriptionEn": "The learner can assess strategies for inclusive and sustainable development."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "current336-D124-b10-a-15-4fef149e-84c0-59af-b056-0a0bf97dbecd",
+          "recordDigest": "sha256:ae7245300f57cf45e1cef8ffeecc38539bec2bc9ca415c49320773b2efb0e4dc"
+        },
+        "second": {
+          "recordId": "wirtschaft-current336-D124-b10-independent-b-actual-run-v1-4fef149e-84c0-59af-b056-0a0bf97dbecd",
+          "recordDigest": "sha256:332e7acd026878e5b1bf63362207de0c2211e4fa8a8cb44970d3a9fffce2c9a3"
+        }
+      },
+      "rationaleDe": "Koordination der zwei tatsächlich versiegelten unabhängigen ganzen DE/EN/P-, Quellen-, Seiten- und Kontextprüfungen: Inklusion verbindet tatsächlichen bezahlbaren Zugang mit längerfristiger wirtschaftlicher/ökologischer Tragfähigkeit; grünes Durchschnittswachstum reicht nicht. Inklusive Nachhaltigkeit verlangt tatsächlichen Zugang benachteiligter Gruppen und langfristige ökologische/wirtschaftliche Tragfähigkeit, nicht nur Wachstum oder grüne Technik. Die beschriebenen Leistungen und fachlich ausreichenden Alternativen stimmen überein; keine zusätzliche Erinnerungs-, Aufgaben- oder menschliche Freigabequote.",
+      "rationaleEn": "Synthesis of the two actually sealed independent whole DE/EN/P, source, page and context reviews: Inclusion connects actual affordable access to lasting economic/environmental viability; green average growth is insufficient. Transfer from an electricity network/tariffs to farming with women/smallholder access, training/credit/water. The bounded performances and scientifically sufficient alternatives agree. No additional recall, task or human-approval quota is introduced."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "625b61ec-8561-5179-b59e-d3742b19c0e2",
+      "firstDecision": "block",
+      "secondDecision": "keep",
+      "rationaleDe": "Der konkrete Voraussetzungskonflikt oder Anforderungsbereichsbefund bleibt offen: BLOCK nur Taxonomiefeld: Ganze DE/EN-Beschreibung mit bewerten und P-Vertrag sind fachlich richtig. Canonical dimensionTags.demandLevel AB1 im hessen-kc-2024-economics-Vertrag passt nicht zum eigenen begründeten Vergleichsurteil mit Ziel-, Kosten- und Unsicherheitsgewichtung in neuen Fällen; AB3 ist hier angemessen, kein verlangtes Reproduzieren. Amtliche FB-II-Operatorenliste erlaubt kontextabhängige Zuordnung, bewerten aber II–III; mein konkreter Kontext liefert die Begründung. Keine Beschreibungskosmetik oder Punkte-/Leistungssenkung. Bildhandel hat gemeinsame Grenze und verschiedene Kontrollmechanismen. Keine kosmetische Textänderung und kein Abschluss bis zur gezielten Korrektur und aktuellen unabhängigen Prüfung.",
+      "rationaleEn": "The specific prerequisite or demand-level context finding remains unresolved. Preserve the original independent findings; a bounded correction and current independent checks are required. No cosmetic text edit or completion is claimed."
+    },
+    {
+      "goalId": "e3cd6940-26f0-55a9-a348-4a90c245266c",
+      "firstDecision": "block",
+      "secondDecision": "keep",
+      "rationaleDe": "Der konkrete Voraussetzungskonflikt oder Anforderungsbereichsbefund bleibt offen: BLOCK nur Taxonomiefeld: Geeigneter ganzer Text verlangt Ziel-/Interessenkonflikte analysieren, P verlangt eigene Rekonstruktion neuer Wirkungs-/Verteilungszusammenhänge und Kompromissgrenzen. Canonical dimensionTags.demandLevel AB1 ist dafür nicht zutreffend; AB2 passt zu aspektgeleiteter Erschließung, keine automatische AB3-Urteilsquote. Amtliche analysieren-Zuordnung ist I–III kontextabhängig; hier begründen die zwei ganzen P-Leistungen II. Grundlegender Instrument-/Ebenenkontext ist passend. Bildkosten/Zugang und Varianten unterstützen offene Analyse. Keine kosmetische Textänderung und kein Abschluss bis zur gezielten Korrektur und aktuellen unabhängigen Prüfung.",
+      "rationaleEn": "The specific prerequisite or demand-level context finding remains unresolved. Preserve the original independent findings; a bounded correction and current independent checks are required. No cosmetic text edit or completion is claimed."
+    },
+    {
+      "goalId": "bad728f2-e375-5f98-8f65-511a9e2e6751",
+      "firstDecision": "block",
+      "secondDecision": "keep",
+      "rationaleDe": "Der konkrete Voraussetzungskonflikt oder Anforderungsbereichsbefund bleibt offen: BLOCK nur Taxonomiefeld: Beschreibung/P zeigen passende Identifikation und konkrete Erläuterung negativer wie positiver Mechanismen; canonical AB1 im angegebenen Hessen-Rahmen erfasst diese eigenständige neue Anwendung/Begründungsverknüpfung nicht. AB2 ist der minimale passende Schwerpunkt; amtliches erläutern II–III und konkreter P-Kontext, keine Wortautomatismen. Umweltgrundlage bleibt geeignet. Keine Textänderung vorgeschlagen, kein Alltagszahlungseffekt als Externalität bezeichnet. Bildgegrenzter Tausch mit unvergüteter Nachbarfolge passt. Keine kosmetische Textänderung und kein Abschluss bis zur gezielten Korrektur und aktuellen unabhängigen Prüfung.",
+      "rationaleEn": "The specific prerequisite or demand-level context finding remains unresolved. Preserve the original independent findings; a bounded correction and current independent checks are required. No cosmetic text edit or completion is claimed."
+    },
+    {
+      "goalId": "13705b9f-9623-500b-80ba-4574b753a29c",
+      "firstDecision": "block",
+      "secondDecision": "block",
+      "rationaleDe": "Der konkrete Voraussetzungskonflikt oder Anforderungsbereichsbefund bleibt offen: BLOCK ausschließlich an e21158e7. Ganze FairTrade-/Handelsregime-Ziel-/P2 selbst gelesen, verlangt Vertragsprämie/Mindestpreis versus Zoll-/Standardzugang und Nutzungshürden. Meine gesamte Paris/SDG-A/B-Bewertung behandelt Klimawirkung, Finanzierung, Zugang, Anpassungsnutzen und Transparenz ohne diese Handelsregime zu beherrschen. Amtliche UNFCCC-Seite und ausgewählter Agenda2030-Text tatsächlich geprüft; SDG-Ziele sind keine Weltsteuer, Paris besitzt konkrete Verfahrenspflichten ohne automatische lokale Erfolgsgarantie. Aktuelle Seite und DE/EN-Beschreibung passend, eine integrierte Governancebewertung. Keine Quelle/Memory-/Scienceabkürzung; Kante offen, kein authoredcut. Keine kosmetische Textänderung und kein Abschluss bis zur gezielten Korrektur und aktuellen unabhängigen Prüfung.",
+      "rationaleEn": "The specific prerequisite or demand-level context finding remains unresolved. Preserve the original independent findings; a bounded correction and current independent checks are required. No cosmetic text edit or completion is claimed."
+    },
+    {
+      "goalId": "543bf91f-f6c6-5b1b-ba9e-43de321d8c7f",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "rationaleDe": "Der konkrete Voraussetzungskonflikt oder Anforderungsbereichsbefund bleibt offen: BLOCK ausschließlich an f1f73ebe. Ganze vorangehende sektorale DE/EN/P2 tatsächlich gelesen, fordert Landwirtschaft/Industrie/Dienstleistungsanteile, relativeProduktivität und Strukturwachstum. Die vollständige eigene A/B-Arbeit vergleicht Quote/Tiefe, direkte Lückenwirkung, bedingte Produktionsförderung, fehlendes Angebot und Zugang/Finanzierung ohne diese Sektorstrukturen zu analysieren. Die vorliegende Beschreibung und Lage/Zugang/Strategien-Seite sind passend, Indikator-/Strategiebezug eine Einheit. Andere bedingte Kombination zulässig, keine normative Einheitslösung. Kein Zahlen-/Quellen-/MemoryhashalsScience; universelle harteKante bleibt offen. Keine kosmetische Textänderung und kein Abschluss bis zur gezielten Korrektur und aktuellen unabhängigen Prüfung.",
+      "rationaleEn": "The specific prerequisite or demand-level context finding remains unresolved. Preserve the original independent findings; a bounded correction and current independent checks are required. No cosmetic text edit or completion is claimed."
+    }
+  ],
+  "manifestFingerprint": "sha256:02af8d530a705b1a1ec20edae1d472dae637959a52a3b45ae6c6739c801ec09c"
+}

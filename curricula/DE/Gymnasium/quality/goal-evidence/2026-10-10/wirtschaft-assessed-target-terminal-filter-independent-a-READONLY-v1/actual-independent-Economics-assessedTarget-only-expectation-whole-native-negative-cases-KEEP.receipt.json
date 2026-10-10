@@ -1,0 +1,356 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-10T18:25:59.890320+00:00",
+  "decision": "KEEP",
+  "status": "independent_KEEP_bounded_Economics_assessedTarget_terminal_expectation_filter",
+  "reviewer": {
+    "provider": "OpenAI",
+    "model": "GPT-6",
+    "runtime": "Codex",
+    "agent": "economics_final56_current_round_a",
+    "exactModelRevision": "not_exposed",
+    "samplingParameters": "not_exposed"
+  },
+  "actualCode": {
+    "path": "app/scripts/generateCurriculumQualityStatus.ts",
+    "sha256": "514bab03b7c041655e0063a4bf6ecb7ac4cd51edda9581e76182e980aa384957",
+    "bytes": 274591
+  },
+  "actualStagedPredecessorSha256": "656084b7cd9d6cb5324361b927b9f761596c572d7e4f616c7b13da061f4b1336",
+  "actualBoundedFilter": "        .filter((goal) => {\n          if (profile.landscapeId !== CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID) return true\n          // An Economics endpoint must assess an actual target in this projection.\n          // A whole assessment may also assess prerequisite-only competencies;\n          // those still need the separate, complete visible prerequisite checks.\n          // Use the assessed contract, not requires: a prerequisite need not\n          // itself be assessed. Missing coverage still fails its binding check.\n          const assessedLocalGoalIds = (goal.examData?.coveredGoalIds ?? [])\n            .map((rawRef) => parseReference(rawRef, landscape.landscapeId))\n            .filter((ref) => ref.landscapeId === landscape.landscapeId)\n            .map((ref) => ref.goalId)\n          return assessedLocalGoalIds.length === 0\n            || assessedLocalGoalIds.some((goalId) => visibleTargetAtomicGoalIds.has(goalId))\n        })\n",
+  "scopeSemantics": "AGENTS292-296 defines authored target and prerequisiteOnly separately. Only target participates in progress/frontier/completion. Economics mandatory endpoints must assess at least one actual local target in this resolved projection. Whole assessments may additionally assess prerequisiteOnly support, with complete visible prerequisite/coverage bindings required. Merely requiring a target is insufficient if coveredGoalIds assesses only support. No view role is inferred or promoted.",
+  "correctionFromInitialAllAssessedTargetProposal": "The initially discussed every-covered-ID-target condition was too strict for qualified whole mixed materials. The final reviewed SOME predicate preserves those whole contracts; it does not create a subset assessment or waive support coverage. The preliminary stricter predicate was not sealed as KEEP.",
+  "nativeEvidence": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-assessed-target-terminal-filter-independent-a-READONLY-v1/actual-native-thirteen-meaningful-route-predicate-negative-fixtures.READONLY.json",
+    "sha256": "0c2fc502bbd30a4556be9886127dfc5fa52e864a82de961c358aead3f7aebaa9",
+    "bytes": 113153
+  },
+  "actualNativeFixtureCount": 13,
+  "actualNativePassedChecks": 15,
+  "failureCasesPreserved": [
+    "Genuine wholly absent endpoint for assessedTarget remains missing-endpoint failure.",
+    "Visible Practice with only support-only assessed contract remains unexpected-endpoint failure.",
+    "Target+unassessed support prerequisite remains expected; its prerequisite visibility remains mandatory.",
+    "Target+assessed support whole material remains expected when support and full binding exist.",
+    "A convenient target does not license unknown/foreign/invisible assessed coverage; full material binding remains fatal.",
+    "Missing genuine support prerequisite remains a complete material prerequisite closure failure.",
+    "Empty coverage remains expected, with actual native release helper still returning missing coveredGoalIds.",
+    "Math and Physics entire actual native CQR104 fixture results exactly match the staged predecessor."
+  ],
+  "actualOldProjectionMatrix": {
+    "artifact": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final701-eight-whole-local-practices-and-qualified-scope-route-COMPOSITION-INERT-v1/actual-35-missing-expected-endpoint-whole-goal-target-vs-support-only-scope-evidence.READONLY.json",
+      "sha256": "0798e38fd759ed5f0bbc70ff5d27c501cd47a74da484ba5bc2a932be3db700b8",
+      "bytes": 19474
+    },
+    "rows": 35,
+    "pureSupportSingletonOccurrences": 11,
+    "actualAssessedTargetOccurrences": 24,
+    "pureSupportRows": [
+      {
+        "scope": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-bb-gym-economics-lk.view.json",
+        "jurisdiction": "DE-BB",
+        "endpointId": "aa37a896-e8c0-59b9-840b-0711d2b497e2",
+        "requires": [
+          {
+            "goalId": "273809d9-bc31-5c1b-8a58-149dd61d2ba0",
+            "isTarget": false,
+            "isVisible": true
+          }
+        ],
+        "examCoveredGoalIds": [
+          "273809d9-bc31-5c1b-8a58-149dd61d2ba0"
+        ],
+        "allActuallyAssessedPrerequisitesTarget": false,
+        "wholeMaterialPreserved": true
+      },
+      {
+        "scope": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-be-gym-economics-gk.view.json",
+        "jurisdiction": "DE-BE",
+        "endpointId": "88df8d5d-5af2-5d39-a969-6b9a1473e9ed",
+        "requires": [
+          {
+            "goalId": "d17ff931-085d-56be-932d-3839b5b88ba8",
+            "isTarget": false,
+            "isVisible": true
+          }
+        ],
+        "examCoveredGoalIds": [
+          "d17ff931-085d-56be-932d-3839b5b88ba8"
+        ],
+        "allActuallyAssessedPrerequisitesTarget": false,
+        "wholeMaterialPreserved": true
+      },
+      {
+        "scope": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-be-gym-economics-lk.view.json",
+        "jurisdiction": "DE-BE",
+        "endpointId": "88df8d5d-5af2-5d39-a969-6b9a1473e9ed",
+        "requires": [
+          {
+            "goalId": "d17ff931-085d-56be-932d-3839b5b88ba8",
+            "isTarget": false,
+            "isVisible": true
+          }
+        ],
+        "examCoveredGoalIds": [
+          "d17ff931-085d-56be-932d-3839b5b88ba8"
+        ],
+        "allActuallyAssessedPrerequisitesTarget": false,
+        "wholeMaterialPreserved": true
+      },
+      {
+        "scope": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-hb-gym-economics-gk.view.json",
+        "jurisdiction": "DE-HB",
+        "endpointId": "072278ce-e91a-5b55-a5ad-fbfb484a8986",
+        "requires": [
+          {
+            "goalId": "121fea28-9943-575d-9c96-1fb2e3356f32",
+            "isTarget": false,
+            "isVisible": true
+          }
+        ],
+        "examCoveredGoalIds": [
+          "121fea28-9943-575d-9c96-1fb2e3356f32"
+        ],
+        "allActuallyAssessedPrerequisitesTarget": false,
+        "wholeMaterialPreserved": true
+      },
+      {
+        "scope": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-hb-gym-economics-lk.view.json",
+        "jurisdiction": "DE-HB",
+        "endpointId": "072278ce-e91a-5b55-a5ad-fbfb484a8986",
+        "requires": [
+          {
+            "goalId": "121fea28-9943-575d-9c96-1fb2e3356f32",
+            "isTarget": false,
+            "isVisible": true
+          }
+        ],
+        "examCoveredGoalIds": [
+          "121fea28-9943-575d-9c96-1fb2e3356f32"
+        ],
+        "allActuallyAssessedPrerequisitesTarget": false,
+        "wholeMaterialPreserved": true
+      },
+      {
+        "scope": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-mv-gym-economics-lk.view.json",
+        "jurisdiction": "DE-MV",
+        "endpointId": "07444d51-229d-5e7c-bdca-5b33a07a53bc",
+        "requires": [
+          {
+            "goalId": "dae93971-726c-56e5-8044-19dbd40febf7",
+            "isTarget": false,
+            "isVisible": true
+          }
+        ],
+        "examCoveredGoalIds": [
+          "dae93971-726c-56e5-8044-19dbd40febf7"
+        ],
+        "allActuallyAssessedPrerequisitesTarget": false,
+        "wholeMaterialPreserved": true
+      },
+      {
+        "scope": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-ni-gym-economics-lk.view.json",
+        "jurisdiction": "DE-NI",
+        "endpointId": "0d9c1945-2726-5ac6-92d5-a5245f1e5e9e",
+        "requires": [
+          {
+            "goalId": "f9132615-8166-5e42-ad04-d8b2b75d719d",
+            "isTarget": false,
+            "isVisible": true
+          }
+        ],
+        "examCoveredGoalIds": [
+          "f9132615-8166-5e42-ad04-d8b2b75d719d"
+        ],
+        "allActuallyAssessedPrerequisitesTarget": false,
+        "wholeMaterialPreserved": true
+      },
+      {
+        "scope": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-ni-gym-economics-lk.view.json",
+        "jurisdiction": "DE-NI",
+        "endpointId": "1a56a8a7-c81f-5dd2-94ac-93bc6cba8eab",
+        "requires": [
+          {
+            "goalId": "676684da-5ba2-5c2a-ba7e-a8413915c29c",
+            "isTarget": false,
+            "isVisible": true
+          }
+        ],
+        "examCoveredGoalIds": [
+          "676684da-5ba2-5c2a-ba7e-a8413915c29c"
+        ],
+        "allActuallyAssessedPrerequisitesTarget": false,
+        "wholeMaterialPreserved": true
+      },
+      {
+        "scope": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-sh-gym-economics-lk.view.json",
+        "jurisdiction": "DE-SH",
+        "endpointId": "07444d51-229d-5e7c-bdca-5b33a07a53bc",
+        "requires": [
+          {
+            "goalId": "dae93971-726c-56e5-8044-19dbd40febf7",
+            "isTarget": false,
+            "isVisible": true
+          }
+        ],
+        "examCoveredGoalIds": [
+          "dae93971-726c-56e5-8044-19dbd40febf7"
+        ],
+        "allActuallyAssessedPrerequisitesTarget": false,
+        "wholeMaterialPreserved": true
+      },
+      {
+        "scope": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-th-gym-economics-gk.view.json",
+        "jurisdiction": "DE-TH",
+        "endpointId": "072278ce-e91a-5b55-a5ad-fbfb484a8986",
+        "requires": [
+          {
+            "goalId": "121fea28-9943-575d-9c96-1fb2e3356f32",
+            "isTarget": false,
+            "isVisible": true
+          }
+        ],
+        "examCoveredGoalIds": [
+          "121fea28-9943-575d-9c96-1fb2e3356f32"
+        ],
+        "allActuallyAssessedPrerequisitesTarget": false,
+        "wholeMaterialPreserved": true
+      },
+      {
+        "scope": "curricula/DE/Gymnasium/composition-views/wirtschaft/de-th-gym-economics-lk.view.json",
+        "jurisdiction": "DE-TH",
+        "endpointId": "072278ce-e91a-5b55-a5ad-fbfb484a8986",
+        "requires": [
+          {
+            "goalId": "121fea28-9943-575d-9c96-1fb2e3356f32",
+            "isTarget": false,
+            "isVisible": true
+          }
+        ],
+        "examCoveredGoalIds": [
+          "121fea28-9943-575d-9c96-1fb2e3356f32"
+        ],
+        "allActuallyAssessedPrerequisitesTarget": false,
+        "wholeMaterialPreserved": true
+      }
+    ],
+    "meaning": "The11 pure support occurrences should not require their singleton assessment. The24 actually targeted occurrences continue to require appropriate whole endpoints; the predicate supplies no waiver for these actual missing routes."
+  },
+  "wholeMixedExistingExample": {
+    "goalId": "f93f2aed-6a14-5b72-8ca5-27cf7e837a83",
+    "requires": [
+      "7c72848d-8bc9-58e2-a690-fd17ac650a88",
+      "121fea28-9943-575d-9c96-1fb2e3356f32"
+    ],
+    "coveredGoalIds": [
+      "7c72848d-8bc9-58e2-a690-fd17ac650a88",
+      "121fea28-9943-575d-9c96-1fb2e3356f32"
+    ],
+    "independenceBoundary": "Binding fields read, existing whole material qualifications reused; this is no fresh whole f93 content/science review."
+  },
+  "currentOrdinaryGoalProtection": {
+    "actualCount": 346,
+    "allWholeGoalObjectsExactCurrent693VsProspective701": true,
+    "semanticLedger": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-b144-canonical-practice-phase-Q2-bounded-successor-root-v1/semantic693.practice-phase-Q2.AUTHOR-INERT.json",
+      "sha256": "39a7bd213e5d6154636d94747b76267d229688b0cb0ef680449f8179e592a52b",
+      "bytes": 223620
+    }
+  },
+  "priorAuthorshipDisclosure": "Earlier own NAIRU/P and7c scope authorship, plus three new Practice and six source-partial proposals. This independent code review qualifies Root code, not own curricular science, own Source author objects, own Practice cases, or blind D.",
+  "beforeGuards": [
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "514bab03b7c041655e0063a4bf6ecb7ac4cd51edda9581e76182e980aa384957",
+      "bytes": 274591
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "6e96150a39108e6287234eb37bc7dc65426c9acee6013769f8533d777720bb1a",
+      "bytes": 5461486
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "5a5c8562db6c67f9980085d2c524803232f4059a228e2ca2c2cafda1d478e948",
+      "bytes": 257683
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-b144-canonical-practice-phase-Q2-bounded-successor-root-v1/semantic693.practice-phase-Q2.AUTHOR-INERT.json",
+      "sha256": "39a7bd213e5d6154636d94747b76267d229688b0cb0ef680449f8179e592a52b",
+      "bytes": 223620
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final701-eight-whole-local-practices-and-qualified-scope-route-COMPOSITION-INERT-v1/candidate-core/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "04bc48d01e8f4baa5e4754ba1fad3afde5ffbcb392810ac0ad87d117f6112d26",
+      "bytes": 5601451
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final701-eight-whole-local-practices-and-qualified-scope-route-COMPOSITION-INERT-v1/actual-35-missing-expected-endpoint-whole-goal-target-vs-support-only-scope-evidence.READONLY.json",
+      "sha256": "0798e38fd759ed5f0bbc70ff5d27c501cd47a74da484ba5bc2a932be3db700b8",
+      "bytes": 19474
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "b721ab562c3a954e09a9ad9cd35a2edd0316b9867d6ce476001d7e03805b4d5c",
+      "bytes": 130632
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-assessed-target-terminal-filter-independent-a-READONLY-v1/actual-native-thirteen-meaningful-route-predicate-negative-fixtures.READONLY.json",
+      "sha256": "0c2fc502bbd30a4556be9886127dfc5fa52e864a82de961c358aead3f7aebaa9",
+      "bytes": 113153
+    }
+  ],
+  "endGuards": [
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "514bab03b7c041655e0063a4bf6ecb7ac4cd51edda9581e76182e980aa384957",
+      "bytes": 274591
+    },
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "6e96150a39108e6287234eb37bc7dc65426c9acee6013769f8533d777720bb1a",
+      "bytes": 5461486
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "5a5c8562db6c67f9980085d2c524803232f4059a228e2ca2c2cafda1d478e948",
+      "bytes": 257683
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-b144-canonical-practice-phase-Q2-bounded-successor-root-v1/semantic693.practice-phase-Q2.AUTHOR-INERT.json",
+      "sha256": "39a7bd213e5d6154636d94747b76267d229688b0cb0ef680449f8179e592a52b",
+      "bytes": 223620
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final701-eight-whole-local-practices-and-qualified-scope-route-COMPOSITION-INERT-v1/candidate-core/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "04bc48d01e8f4baa5e4754ba1fad3afde5ffbcb392810ac0ad87d117f6112d26",
+      "bytes": 5601451
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final701-eight-whole-local-practices-and-qualified-scope-route-COMPOSITION-INERT-v1/actual-35-missing-expected-endpoint-whole-goal-target-vs-support-only-scope-evidence.READONLY.json",
+      "sha256": "0798e38fd759ed5f0bbc70ff5d27c501cd47a74da484ba5bc2a932be3db700b8",
+      "bytes": 19474
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "b721ab562c3a954e09a9ad9cd35a2edd0316b9867d6ce476001d7e03805b4d5c",
+      "bytes": 130632
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-assessed-target-terminal-filter-independent-a-READONLY-v1/actual-native-thirteen-meaningful-route-predicate-negative-fixtures.READONLY.json",
+      "sha256": "0c2fc502bbd30a4556be9886127dfc5fa52e864a82de961c358aead3f7aebaa9",
+      "bytes": 113153
+    }
+  ],
+  "allExistingCountryCourseAuthorityRequiresVisibleAndWholeClosureChecksUnchanged": true,
+  "strictCompletionThresholdOrGateLogicModified": false,
+  "PAMFullCoverageRequiredUnchanged": true,
+  "DVM7FailuresRemainOpenAllowedAtM6Unchanged": true,
+  "liveMathPhysM7OrFull701PassClaim": false,
+  "longCIOrStatusGeneratorMainInvoked": false,
+  "activeWrites": 0,
+  "humanApproval": false,
+  "M6M7OrCIClaim": false,
+  "DOrVApprovalClaim": false
+}

@@ -1,0 +1,25 @@
+{
+  "role": "INDEPENDENT_ACTUAL_PRODUCTION_RUNTIME_SCHEMA_PLUS_GENUINE_REQUIRED_FIELD_NEGATIVE",
+  "inputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-twelve-consumer-whole-science-independent-merge-audit-v1/whole-current609-final-twelve-consumer-V5-DRAFT-only-independent-schema-input.inert.json",
+  "inputSHA256": "9bf30dc6175190d2966e16d05f4a4fa54414ebd3994ce2eb0c12532af910ad3f",
+  "actualUnchangedRuntimeSchemaPath": "docs/landscape-runtime.schema.json",
+  "runtimeSchemaSHA256": "d25cf1c930d1a21838264b34d713f32788715089c6b8ff2b7430bdbc6079e59a",
+  "actualGoalCount": 609,
+  "actualNewDraftMaterialCount": 12,
+  "schemaValid": true,
+  "actualMissingRequiredTaskRejected": true,
+  "negativeErrors": [
+    {
+      "instancePath": "/goals/600/examData",
+      "schemaPath": "#/properties/examData/required",
+      "keyword": "required",
+      "params": {
+        "missingProperty": "taskContent"
+      },
+      "message": "must have required property 'taskContent'"
+    }
+  ],
+  "schemaBoundary": "Existing production runtime schema with its declared annotations/formats. Additional metadata is permitted by the actual schema; no complete metadata-closed-schema claim or schema relaxation.",
+  "scopeOrWholeCoursePass": false,
+  "activeWrites": 0
+}

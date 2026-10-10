@@ -1,0 +1,51 @@
+{
+  "submission": "Separate negative work only; no positive role-log/snapshots submitted as its evidence.",
+  "soloNetworkA": {
+    "edges": [
+      [
+        "A",
+        "B"
+      ],
+      [
+        "A",
+        "C"
+      ],
+      [
+        "B",
+        "D"
+      ],
+      [
+        "C",
+        "D"
+      ]
+    ],
+    "finish": 6,
+    "changedFinish": 7,
+    "CFloat": 1
+  },
+  "soloNetworkB": {
+    "finish": 6,
+    "changedFinish": 8,
+    "alternativeFinish": 5
+  },
+  "costTableA": [
+    {
+      "kind": "disposable",
+      "uses": 100,
+      "cost": 20
+    },
+    {
+      "kind": "reusable",
+      "uses": 100,
+      "cost": 17
+    }
+  ],
+  "costTableB": [
+    45,
+    60,
+    50
+  ],
+  "textDiagram": "Disposable ####################20; Reusable #################17",
+  "actualTeamOrRolesExecuted": false,
+  "sharedVersionOrTransitionLog": null
+}

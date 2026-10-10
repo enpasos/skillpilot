@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "role": "ACTUAL_FINAL679_STABLE_CENTRAL_AND_PROTECTED_FLOOR_CHECKPOINT_BEFORE_CURRENT_D56",
+  "completedAt": "2026-10-10T12:07:12.950376+00:00",
+  "exactInputGuardsBeforeAndAfter": [
+    {
+      "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+      "sha256": "sha256:9acb07cfc83c3d19d17e3eb4a4356fb9c4fc3b62eb2d7808ff8c269175fa1e9c",
+      "bytes": 5315610
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+      "sha256": "sha256:0ff6c66d25853bb06047f5fa22f8a30295216dd3eb0e3e584a12a1429729d593",
+      "bytes": 257172
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/canonical-goal-surrogate-evidence-registry.json",
+      "sha256": "sha256:817e417df84a22a92023f14e933921850f50ddcabdaff3f483ac564dcb6f8a08",
+      "bytes": 215964
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/source-landscape-registry.json",
+      "sha256": "sha256:feedb47c6a39877eaab57f5265194907f8ab6fa24315e3cb098ccbbcee82d9f2",
+      "bytes": 201945
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-qa/wirtschaftswissenschaften.qa.json",
+      "sha256": "sha256:ec89e7ec608c86813181fae02b7923b55919493f95baec85a7605377f100e248",
+      "bytes": 876796
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-description-review/in-flight-work-ledger.json",
+      "sha256": "sha256:55dce746d8ae7eeba636ab06604ce07dc825a2a97b5a8c5a2aa256ddf251f196",
+      "bytes": 4070
+    },
+    {
+      "path": "app/scripts/config/goal-books/de-gym-economics-current-canonical.json",
+      "sha256": "sha256:e7480a50a48022691f7de042dae4114c9ae90c8e52f502ebd82812d0a0691b74",
+      "bytes": 1387
+    },
+    {
+      "path": "app/public/lernzielbuch/de-gym-wirtschaftswissenschaften-bundesweit.book-model.json",
+      "sha256": "sha256:0692c481be079e6cbb983cdffce4abca18fed8f2a59fa129c91d67f0a82482d0",
+      "bytes": 1536225
+    },
+    {
+      "path": "app/scripts/config/curriculum-maturity-floor-policy.json",
+      "sha256": "sha256:37300dcfafc390a364dfd2077d7fcf04b43d2db1826feb8c3225692eba2c3a0e",
+      "bytes": 3774
+    },
+    {
+      "path": "app/scripts/generateCurriculumQualityStatus.ts",
+      "sha256": "sha256:656084b7cd9d6cb5324361b927b9f761596c572d7e4f616c7b13da061f4b1336",
+      "bytes": 273652
+    },
+    {
+      "path": "app/scripts/checkCurriculumMaturityFloors.ts",
+      "sha256": "sha256:3b4a68687835e8067bfd74514c573dfef68029837f10a458ac5569e54faead5e",
+      "bytes": 4701
+    }
+  ],
+  "allExactInputsUnchangedDuringCheck": true,
+  "actualToolResults": [
+    {
+      "name": "central",
+      "argv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "scripts/generateCurriculumQualityStatus.ts"
+      ],
+      "cwd": "app",
+      "exitCode": 0,
+      "seconds": 95.772,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final679-source-core-stable-central-root-v22/actual-central.stdout.txt",
+        "sha256": "sha256:389ceee89ed1081de6f1d3d5ad7fdcb5b5500928914a89ab424ec89b103be861",
+        "bytes": 108
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final679-source-core-stable-central-root-v22/actual-central.stderr.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    },
+    {
+      "name": "ten-floors",
+      "argv": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/cli.mjs",
+        "scripts/checkCurriculumMaturityFloors.ts"
+      ],
+      "cwd": "app",
+      "exitCode": 0,
+      "seconds": 0.189,
+      "stdout": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final679-source-core-stable-central-root-v22/actual-ten-floors.stdout.txt",
+        "sha256": "sha256:1d2afd57fb6318f5d933f6d3ff5e885b9325e72a5e61249f4c2a8e616cc97433",
+        "bytes": 58
+      },
+      "stderr": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final679-source-core-stable-central-root-v22/actual-ten-floors.stderr.txt",
+        "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "bytes": 0
+      }
+    }
+  ],
+  "economicsMaturity": "M6",
+  "economicsCQR303": {
+    "id": "CQR-303",
+    "status": "fail",
+    "summary": "Deep curriculum QA is incomplete: 229/336 current curricularAtomic goals strictly complete.",
+    "metrics": {
+      "expectedGoals": 336,
+      "remaining": 107,
+      "strictComplete": 229,
+      "currentDescriptionResolutions": 229,
+      "currentPositiveEvidenceProfiles": 336,
+      "currentSemanticAtomicityDecisions": 336,
+      "currentMemoryReviewDecisions": 336,
+      "currentVisualizationQaRecords": 336,
+      "deferredVisualizations": 0,
+      "requiredChecksPassed": 5,
+      "requiredChecksTotal": 6,
+      "blockingIssues": 128
+    },
+    "details": [
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 04809186-3f65-579d-b300-af9ed3e100c1",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 04c17efe-4451-52bd-8116-1042d1501c41",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 053f1522-31a7-583f-85f5-366ed724d3c5",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 09e58ea8-1920-5600-bd2b-cc1f199d051f",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 13b6317a-d42a-5a13-8358-c85d883cb4c7",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 15d18bd1-0ae1-58c8-89fd-623bebe12041",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 1c92b15e-88c0-5e1d-9d72-30508164f038",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 1d989a89-4b1b-53d3-86ab-dd4986fc5839",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 21dc877b-e281-5269-8244-05be788f7771",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 25278ecf-2e77-556e-9fe6-8f0b954cc680",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 2a8b5b56-8c4e-5ed2-81f9-7fea08c98e60",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 2ccb9f7e-1512-5970-85a1-71ec42734eb9",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 36ebee6c-ec32-53e2-a5da-f50185e61a55",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 3897fc05-a8fc-5045-8d7f-9efeabcd098d",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 40676995-14fc-55a9-89ae-440b2ee3ab33",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 424bae9f-8f2e-5093-a17d-ee5eadb6edde",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 4fef149e-84c0-59af-b056-0a0bf97dbecd",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 5262a0ba-0ede-5f47-a6a2-4778d24fc95a",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 52e6731e-71e9-53b1-8bb9-b03da445decf",
+      "wirtschaftswissenschaften: description-resolution supersession lacks an intact old claim and current replacement for 53829f76-2d9c-5cdd-8521-c249f57f738d"
+    ]
+  },
+  "protectedMathAndPhysics": [
+    {
+      "subject": "Mathematik",
+      "landscapeId": "68a8ac50-f5f5-4e24-8aa9-5e408ca01ced",
+      "maturity": "M7"
+    },
+    {
+      "subject": "Physik",
+      "landscapeId": "7f6fc60c-9fcc-4cc2-b07e-f897a1d0338a",
+      "maturity": "M7"
+    }
+  ],
+  "ordinaryDenominator": 336,
+  "actualCurrentIndependentD56StillPending": true,
+  "newStrictScienceOrPureRestorationNotClaimedFromThisIntegration": true,
+  "humanApproval": false,
+  "publication": false,
+  "deployment": false,
+  "fullNormalFiveBookPDFAndBuildFinalBundleStillPending": true,
+  "qualityReport": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final679-source-core-stable-central-root-v22/actual-final679-curriculum-quality-status.json",
+    "sha256": "sha256:3ec28555eb2a126ef2b8c2fe814eac5a0bc0f44092f8241fdffe25843102df80",
+    "bytes": 2779896
+  }
+}

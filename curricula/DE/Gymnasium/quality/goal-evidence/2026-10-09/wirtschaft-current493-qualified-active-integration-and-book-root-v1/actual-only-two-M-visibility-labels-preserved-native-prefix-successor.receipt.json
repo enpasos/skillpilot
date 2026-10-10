@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "writtenAtUtc": "2026-10-09T18:15:56.887114+00:00",
+  "scope": "Only restore the exact two predecessor visibility labels required by native active discovery; no scientific or M7 approval",
+  "originalQualifiedAdapterRetained": {
+    "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-m7-current493-reviewed-20261009-v1/wirtschaftswissenschaften.memory336.config.json",
+    "sha256": "80098d57a427e42e957007d95be678ac2bd012aff504f3f1b6ff73fb4a06401e"
+  },
+  "defaultPredecessor": {
+    "path": "curricula/DE/Gymnasium/quality/memory-card-review/canonical-economics-full.config.json",
+    "sha256": "53305f1b4f2141375491a1636412d421668193de65238d09cd9cc481189dd115"
+  },
+  "additiveActiveSuccessor": {
+    "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-m7-current493-reviewed-20261009-v1/wirtschaftswissenschaften.memory336-preserved-predecessor-visibility-prefix.config.json",
+    "sha256": "05e0ef41f3697105f2717ca16141e9a58eed26ad9f86d9fcf23f243b4b1815db"
+  },
+  "actualOnlyConfigDeltas": [
+    {
+      "pointer": "/visibilityScopes/0/label",
+      "before": "Current qualified national GK pool candidate, real standard public deck bytes",
+      "after": "de-de-gym-economics-gk.view.json"
+    },
+    {
+      "pointer": "/visibilityScopes/1/label",
+      "before": "Current qualified national LK pool candidate, real standard public deck bytes",
+      "after": "de-de-gym-economics-lk.view.json"
+    }
+  ],
+  "sameViewPathsAndAllOtherWholeFields": true,
+  "registryChange": "Only Economics.memoryReviewConfigPath",
+  "requiredVisibilityCoveragePreserved": true,
+  "remainingNativeCheck": "actual discoverActiveMemoryCardReviewConfigs and integrated generation",
+  "newScientificReviews": 0,
+  "newStrictClosures": 0,
+  "humanApproval": false
+}

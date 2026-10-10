@@ -1,0 +1,24 @@
+# Lernzielvisualisierung: Berufswahlprofil und Anforderungsprofile abgleichen
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `8dee6c0a-0f76-5717-87b6-04ec89229371`
+- Titel: Berufswahlprofil und Anforderungsprofile abgleichen
+- Beschreibung: Die lernende Person kann eigene Interessen, Werte, Fähigkeiten und Zukunftsvorstellungen mit Anforderungen der Berufs- und Arbeitswelt vergleichen.
+
+## Generator
+
+- Provider: OpenAI Codex image_gen
+- Status: approved_ai
+- Quellbild: `8dee6c0a-0f76-5717-87b6-04ec89229371.png`
+- Public Asset: `/assets/goal-visualizations/wirtschaftswissenschaften/8dee6c0a-0f76-5717-87b6-04ec89229371/8dee6c0a-0f76-5717-87b6-04ec89229371.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational. Create one original raster PNG economics learning-goal illustration, wide approximately16:9 and1600x900 or near native size. Friendly abstract clear comic, warm ivory, dark clean outlines, rounded shapes, restrained teal/coral/gold, welcoming ordinary people. Three or four spacious main visual groups. Main competence and important details recognizable at360 and680pixels; text ONLY few expressly specified large German labels. No extra headings, tiny labels, microscopic legends, watermarks, signatures, project names, slogans, brands, official emblems, medical crosses/crescents/diamonds, copied logos, photorealism, sterile technical redesign or SVG. Personal notebooks/worksheets and screens must face their actual active users; prefer floating conceptual symbols or openly shared boards. Fictional conditional teaching contexts, no observed learner work, actual latest statistics or current unsupported law. Competence: Berufswahlprofil und Anforderungsprofile abgleichen. Die lernende Person kann eigene Interessen, Werte, Fähigkeiten und Zukunftsvorstellungen mit Anforderungen der Berufs- und Arbeitswelt vergleichen. Scene: One thoughtful fictional learner compares interests, values, abilities and future wishes as large personal-reflection symbols with two distinct work-role requirement motifs. An open comparison question and reversible exploratory path remain visible. Only “Interessen”, “Fähigkeiten”, “Anforderungen”. No fixed personality test, hierarchy of human worth, stereotype by gender, private actual learner data or a job guaranteed by liking its icon.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

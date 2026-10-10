@@ -1,0 +1,148 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "wirtschaft-current336-D124-v19-b03-actual-keeps-partial-root-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI GPT-6 Codex coordinator /root; machine curriculum QS only",
+  "synthesizedAt": "2026-10-10T09:04:03.942Z",
+  "batch": {
+    "batchId": "wirtschaft-current336-D124-v19-b03",
+    "batchManifestDigest": "sha256:31095ee6ec8d877596012e18d4a6969a2dcb4ae3cf8b48778960cd5de0bdf0e4",
+    "configDigest": "sha256:ca59df9cffd508ace7b46ab5677e3300ae9f800978c06a61d15f6b51c108d9fd",
+    "bundleFingerprint": "sha256:2764aa9e7f9f6ff78465bbb5fa305a3b85491310f240dff19a852efebd7b33c7",
+    "bookDigest": "sha256:50229b2b207b72eaefda3bb8e479c6f889e0a915542f332875afd6370e35991f",
+    "reviewInputFingerprint": "sha256:977e1e58d43c86cf8f5db842631579cd085126dfb514cbccf31a4740d0347334",
+    "dualSummaryDigest": "sha256:689853db9b398d1bba1a4f0ada5ce4fd12cb7e5b76b5ce7af1ee1cfc427b8521",
+    "canonicalLandscapeDigest": "sha256:4a7d0d0222383a3b1218919ffe333b7962970f4edde86a88f965fd4531511cee"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-current336-D124-v19-b03-a",
+      "campaignDigest": "sha256:98a4ece7ee72609f0849ce5dca471b2d722198389ca7b2a815add2380c3fc7f4",
+      "roundId": "wirtschaft-current336-D124-v19-b03-first-pass-a",
+      "independenceGroupId": "wirtschaft-current336-D124-v19-b03-independent-a",
+      "reviewInputFingerprint": "sha256:977e1e58d43c86cf8f5db842631579cd085126dfb514cbccf31a4740d0347334",
+      "batchId": "wirtschaft-current336-D124-v19-b03-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:86f78306bbc7c60bbe78fb03fb3e74f577fad132268271fa382ff2958842a4cc",
+      "runId": "wirtschaft-current336-D124-v19-b03-independently-executed-a-v1",
+      "runManifestDigest": "sha256:be63307a7b4b866ceabff393678d92a39b98ad6d65ffbeee852eaa6c03ba4284",
+      "resultsDigest": "sha256:329eb41b35130324bf30e8507016c3ff2ddebbb6eeec91cc5530f3faf525af01"
+    },
+    "second": {
+      "campaignId": "wirtschaft-current336-D124-v19-b03-b",
+      "campaignDigest": "sha256:f0f13e30beec729deb8f4f92c796fab5126cfacc58952add09a97563d14f2b7c",
+      "roundId": "wirtschaft-current336-D124-v19-b03-first-pass-b",
+      "independenceGroupId": "wirtschaft-current336-D124-v19-b03-independent-b",
+      "reviewInputFingerprint": "sha256:977e1e58d43c86cf8f5db842631579cd085126dfb514cbccf31a4740d0347334",
+      "batchId": "wirtschaft-current336-D124-v19-b03-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:0d7cbf5dcd0c58010b285c0eed4e2a9a8f23878f8c81b489e90a408f37bf10b8",
+      "runId": "wirtschaft-current336-D124-b03-independent-b-actual-run-v1",
+      "runManifestDigest": "sha256:74c954c459efc35a3d983fa5be945cd1f3e5e6ff7111344045646086211da57f",
+      "resultsDigest": "sha256:6829ef6b7aba22c5459d963d3f826cc6b1e60771fa6ea63bb4ec48a4e9f04226"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "wirtschaft-current336-D124-v19-b03-actual-keeps-partial-root-v1-decision-001",
+      "goalId": "eef95305-c811-50a4-9157-bfd4e5780c24",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7ebbd3a14a0af5386838d00eebaa22dde1ff34eb09d23b9baf6c0f3bf2519f3f",
+      "pageFingerprint": "sha256:742cdb878b58f2ab856c0deca9c4507bead6cc595850d20ac56a72a56e3437be",
+      "goalReviewContextFingerprint": "sha256:20642ed92bc4842d7177d6230255b0cab47b97c939ea9b3423ce3628848d8959",
+      "finalText": {
+        "titleDe": "Entscheidungsbias im Konsum",
+        "titleEn": "Apply decision-bias concepts to consumption",
+        "descriptionDe": "Die lernende Person kann Konzepte wie Status-quo-Bias, Framing oder Anchoring auf Konsumentscheidungen anwenden.",
+        "descriptionEn": "The learner can apply concepts such as status-quo bias, framing, or anchoring to consumption decisions."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "current336-D124-b03-a-01-eef95305-c811-50a4-9157-bfd4e5780c24",
+          "recordDigest": "sha256:f7125682b2e80f4e3a8d61a2b8e8662b2360fb65e36c7d9682f82a2d126f5a71"
+        },
+        "second": {
+          "recordId": "wirtschaft-current336-D124-b03-independent-b-actual-run-v1-eef95305-c811-50a4-9157-bfd4e5780c24",
+          "recordDigest": "sha256:7eee5eee0b2baa806480bb045f679fa12b2093de115e44cbe6562b65182ff2b2"
+        }
+      },
+      "rationaleDe": "Zwei tatsächliche unabhängige aktuelle DE/EN/P-/Kontext-/Seitenprüfungen stimmen überein. Gleiche Leistung, Kosten und ausdrücklich 30 Tage erlauben den Mechanismenvergleich. Voreinstellung, äquivalenter Rahmen und Anker werden fallbezogen angewandt; ein Biasetikett beweist kein individuelles Motiv. Unterschiedliche gültige Beispielantworten bilden keinen fachlichen Dissens. Menschliche Freigabe und Erprobung bleiben getrennt.",
+      "rationaleEn": "Two actual independent current DE/EN/P, context and page reviews agree. Equal service, costs and explicitly thirty days permit comparison of mechanisms. Defaults, equivalent frames and anchors are applied to the case; a bias label does not prove individual motivation. Different valid example answers are not substantive dissent. Human approval and trials remain separate."
+    },
+    {
+      "decisionId": "wirtschaft-current336-D124-v19-b03-actual-keeps-partial-root-v1-decision-002",
+      "goalId": "83779981-2279-5f96-8ea3-2293e801973f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:217623573b74c82d003dca75e4c477bc6b0c1fd21154ac1da7cc26f1618c7c9e",
+      "pageFingerprint": "sha256:e9af222573d2350efce2e1186b92237aeabf7278856776f093503bfb77470a16",
+      "goalReviewContextFingerprint": "sha256:ada05e2029a0bff62c7878af1c2b010bb2302f38ec5f5105aecc7699b614528a",
+      "finalText": {
+        "titleDe": "Geldentwicklung anhand von Geldeigenschaften erklären",
+        "titleEn": "Explain changes in money using its properties",
+        "descriptionDe": "Die lernende Person kann anhand zweier vorgegebener historischer Geldformen in ihrem zeitlichen Zusammenhang erklären, wie Akzeptanz, Teilbarkeit, Haltbarkeit und Transportfähigkeit die Nutzung als Geld ermöglichen oder begrenzen und einen dargestellten Wandel mitbegründen, ohne ihn als zwangsläufigen Fortschritt zu deuten.",
+        "descriptionEn": "The learner can use two supplied historical forms of money in their temporal context to explain how acceptance, divisibility, durability and portability enable or constrain their use and help explain a depicted change, without treating it as inevitable progress."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "current336-D124-b03-a-04-83779981-2279-5f96-8ea3-2293e801973f",
+          "recordDigest": "sha256:cc5121a40965caa63ebcffa087bc602f2eb9b2cf61968e49f7f249357a78f42a"
+        },
+        "second": {
+          "recordId": "wirtschaft-current336-D124-b03-independent-b-actual-run-v1-83779981-2279-5f96-8ea3-2293e801973f",
+          "recordDigest": "sha256:0da0f4c7d078bc73727f0f4c7a9f63f3a7373bdb6edcb08464e5ae28b362cce7"
+        }
+      },
+      "rationaleDe": "Zwei tatsächliche unabhängige aktuelle DE/EN/P-/Kontext-/Seitenprüfungen stimmen überein. Geldeigenschaften und institutionelles Vertrauen erklären Nutzung im angegebenen historischen Kontext. Stückelung ersetzt kein Zerschneiden, Materialwert ersetzt kein Vertrauen; Münze/Banknote und Reformdossier sind keine zwangsläufige Fortschrittsleiter. Unterschiedliche gültige Beispielantworten bilden keinen fachlichen Dissens. Menschliche Freigabe und Erprobung bleiben getrennt.",
+      "rationaleEn": "Two actual independent current DE/EN/P, context and page reviews agree. Money properties and institutional trust explain use in the supplied historical setting. Denominations do not mean cutting, and material value does not replace trust; coin/note and reform dossiers do not form an inevitable progress ladder. Different valid example answers are not substantive dissent. Human approval and trials remain separate."
+    },
+    {
+      "decisionId": "wirtschaft-current336-D124-v19-b03-actual-keeps-partial-root-v1-decision-003",
+      "goalId": "7a2435f2-0ce7-5179-81a5-2ef5c313e3dd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:f6a86a1f7b48f75d82903c5000ab58ff449f4e4002db2e2f694ae01947e62a47",
+      "pageFingerprint": "sha256:2e6f61f19a1fed1d4ade2dbc1f242ab3a620a1a992318d65f9e3590a4a315ce0",
+      "goalReviewContextFingerprint": "sha256:ad98c643c254e2ecb08c4f60b5b72e699f245f2ddc0bf09eb371348a158f59f9",
+      "finalText": {
+        "titleDe": "Portfoliorendite und Diversifikationsgrenzen erklären",
+        "titleEn": "Explain portfolio returns and the limits of diversification",
+        "descriptionDe": "Die lernende Person kann für vorgegebene Portfolios gewichtete Renditen berechnen und anhand unterschiedlicher gemeinsamer Kursverläufe Möglichkeiten und Grenzen der Diversifikation erklären.",
+        "descriptionEn": "The learner can calculate weighted returns for supplied portfolios and use differing joint price movements to explain the possibilities and limits of diversification."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "current336-D124-b03-a-05-7a2435f2-0ce7-5179-81a5-2ef5c313e3dd",
+          "recordDigest": "sha256:cdb926104227c4ddd945f88e8b4d603b902819e429bdbc22c15526414905a348"
+        },
+        "second": {
+          "recordId": "wirtschaft-current336-D124-b03-independent-b-actual-run-v1-7a2435f2-0ce7-5179-81a5-2ef5c313e3dd",
+          "recordDigest": "sha256:b171f3776d594e375b6e3bb103fd3fd9c8e2aa84ccd3c46b9ee1fb55c888fcf2"
+        }
+      },
+      "rationaleDe": "Zwei tatsächliche unabhängige aktuelle DE/EN/P-/Kontext-/Seitenprüfungen stimmen überein. Anfangsgewichte und gemeinsame Kursverläufe tragen den Portfolio-Modellkern. Beide Runden bestätigen +5/+5 und +15/−15; bloße Anlagenzahl und unbekannte Wahrscheinlichkeiten begründen keine Verlustfreiheit oder vollständige Risikoquote. Unterschiedliche gültige Beispielantworten bilden keinen fachlichen Dissens. Menschliche Freigabe und Erprobung bleiben getrennt.",
+      "rationaleEn": "Two actual independent current DE/EN/P, context and page reviews agree. Initial weights and joint movements carry the portfolio model core. Both rounds confirm +5/+5 and +15/−15; holding count and unknown probabilities do not establish loss protection or a complete risk measure. Different valid example answers are not substantive dissent. Human approval and trials remain separate."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "e9c4ec6b-9a54-579d-818f-87a7d39d4e3c",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "rationaleDe": "Offener tatsächlicher Beschreibungs- oder Voraussetzungsbefund aus mindestens einer unabhängigen Runde. Das Ziel benötigt eine qualifizierte enge fachliche Korrektur und aktuelle Nachprüfung; die originalen Urteile bleiben erhalten. Kein Abschluss.",
+      "rationaleEn": "An actual description or prerequisite finding remains open in at least one independent round. This goal needs a qualified bounded correction and current revalidation; original judgments are preserved. No closure."
+    },
+    {
+      "goalId": "047ce369-b605-5cc6-8363-c5d288f5e938",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "rationaleDe": "Offener tatsächlicher Beschreibungs- oder Voraussetzungsbefund aus mindestens einer unabhängigen Runde. Das Ziel benötigt eine qualifizierte enge fachliche Korrektur und aktuelle Nachprüfung; die originalen Urteile bleiben erhalten. Kein Abschluss.",
+      "rationaleEn": "An actual description or prerequisite finding remains open in at least one independent round. This goal needs a qualified bounded correction and current revalidation; original judgments are preserved. No closure."
+    }
+  ],
+  "manifestFingerprint": "sha256:ac9d40059d3462c4b7a0ff914c45aa0d958bbdbc5019d0edcb3493c62b5c3c91"
+}

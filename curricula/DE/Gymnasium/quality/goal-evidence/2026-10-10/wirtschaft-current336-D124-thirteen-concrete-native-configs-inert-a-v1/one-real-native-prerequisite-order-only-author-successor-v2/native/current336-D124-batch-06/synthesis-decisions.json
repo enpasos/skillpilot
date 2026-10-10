@@ -1,0 +1,141 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "wirtschaft-current336-D124-v19-b06-actual-two-keeps-five-deferred-root-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "OpenAI GPT-6 Codex coordinator /root; machine curriculum QS only",
+  "synthesizedAt": "2026-10-10T09:16:50.349Z",
+  "batch": {
+    "batchId": "wirtschaft-current336-D124-v19-b06",
+    "batchManifestDigest": "sha256:ab9539f424e8bd414507914dfd6f118306ef91a600a47d248efae147c697ef0a",
+    "configDigest": "sha256:05d4f8d1de2f7ff8f7e89a576cb2a92c95a952d9af22825270d2ed672c9575a8",
+    "bundleFingerprint": "sha256:17d5e2def4cf82e173c442ac2f247a13238384e3d239b89f293e40606db484c8",
+    "bookDigest": "sha256:ed68421a1bc2403d9d046269c082aa2385442827ddf02c298f7faad57430507d",
+    "reviewInputFingerprint": "sha256:f339b1d4851604031ebe6b2d49dac0cfb68337d8fc19659828cd479fc2c75e59",
+    "dualSummaryDigest": "sha256:3a7238a5c22c7c2c7da172108e9e5b44c9b1e1d0556513717c63e875572b0716",
+    "canonicalLandscapeDigest": "sha256:4a7d0d0222383a3b1218919ffe333b7962970f4edde86a88f965fd4531511cee"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "wirtschaft-current336-D124-v19-b06-a",
+      "campaignDigest": "sha256:3935c29fc0576ead926feb749c2471ca0b3336a51d737bdf108ddb2db48b2350",
+      "roundId": "wirtschaft-current336-D124-v19-b06-first-pass-a",
+      "independenceGroupId": "wirtschaft-current336-D124-v19-b06-independent-a",
+      "reviewInputFingerprint": "sha256:f339b1d4851604031ebe6b2d49dac0cfb68337d8fc19659828cd479fc2c75e59",
+      "batchId": "wirtschaft-current336-D124-v19-b06-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:8abef4ccdb717b3e456ba93c7fb3a21377d231d3e02813c77d93a8b6c55fa785",
+      "runId": "wirtschaft-current336-D124-v19-b06-independently-executed-a-v1",
+      "runManifestDigest": "sha256:36a8b42fc0206dc7d41b6222495d538e2a18b39c9cf6ac11b558b9c6aec4d389",
+      "resultsDigest": "sha256:0a678fffb29dfd85e41ac0244731c23d108fb8abaf64ae8f9bca6e715cc77547"
+    },
+    "second": {
+      "campaignId": "wirtschaft-current336-D124-v19-b06-b",
+      "campaignDigest": "sha256:5a996ce2c5ea8a1bd75913df73cd16ff112c238bbbf0e7e3b1503da59ad5896e",
+      "roundId": "wirtschaft-current336-D124-v19-b06-first-pass-b",
+      "independenceGroupId": "wirtschaft-current336-D124-v19-b06-independent-b",
+      "reviewInputFingerprint": "sha256:f339b1d4851604031ebe6b2d49dac0cfb68337d8fc19659828cd479fc2c75e59",
+      "batchId": "wirtschaft-current336-D124-v19-b06-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:254838a92d411c1b29f8d0f4431e48620114276c09cee8b6450923a5b53fe3e7",
+      "runId": "wirtschaft-current336-D124-b06-independent-b-actual-run-v1",
+      "runManifestDigest": "sha256:0e5bddbd00470192af3721dc41dbe42509b6b2d56ff3086261b3584093028054",
+      "resultsDigest": "sha256:7b35c507dfe565276f5e2092acb7bbaea0efaf928ba5c7723aa149b7ea3612f8"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "wirtschaft-current336-D124-v19-b06-actual-two-keeps-five-deferred-root-v1-decision-001",
+      "goalId": "b727bdda-ea96-5acd-b23f-ed94777ba7a0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a2b1291760e3e64ea78052324057729424017d4d3381c017dd20e13594e34716",
+      "pageFingerprint": "sha256:d4da90907022156bd2fa78fd2246b735c22cf52dd880d3ffec46834445c83f25",
+      "goalReviewContextFingerprint": "sha256:53b5aff5fd20766bc149e526c9bd32e25826be845020e553adaa24fc130e5b24",
+      "finalText": {
+        "titleDe": "Demografie und Arbeitsmarkt",
+        "titleEn": "Demography and the labour market",
+        "descriptionDe": "Die lernende Person kann demografische Effekte auf Arbeitsmarkt und Tarifpolitik analysieren.",
+        "descriptionEn": "The learner can analyse demographic effects on the labour market and collective bargaining policy."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "current336-D124-b06-a-03-b727bdda-ea96-5acd-b23f-ed94777ba7a0",
+          "recordDigest": "sha256:a53cbdec2ad3d2ed75b3d23cc26d6eb725de6ae7925e38be30f369250f297064"
+        },
+        "second": {
+          "recordId": "wirtschaft-current336-D124-b06-independent-b-actual-run-v1-b727bdda-ea96-5acd-b23f-ed94777ba7a0",
+          "recordDigest": "sha256:4242df6e0b415186ba294c0d4d6c7c17f8d91bd213a2db9a4a7269d287e30dfa"
+        }
+      },
+      "rationaleDe": "Zwei tatsächlich unabhängige ganze aktuelle DE/EN/P-/Kontext-/Seitenprüfungen stimmen überein. Demografische Veränderungen wirken über Beteiligung, Stunden, passende Qualifikation und Ausbildungszeit. Beide Runden bestätigen 700→720 Erwerbspersonen ohne Beschäftigungsidentität oder garantierten Lohnanstieg; der tatsächliche Tarifgrundlagenvorgänger passt zu diesem Tarifpolitikkern. Separate menschliche Prüfung und Erprobung werden nicht behauptet.",
+      "rationaleEn": "Two actual independent whole current DE/EN/P, context and page reviews agree. Demographic change acts through participation, hours, matching skills and training time. Both rounds confirm 700→720 labour-force participants without equating this with employment or guaranteed wage growth; the actual bargaining prerequisite fits this bargaining-policy core. Separate human review and trials are not claimed."
+    },
+    {
+      "decisionId": "wirtschaft-current336-D124-v19-b06-actual-two-keeps-five-deferred-root-v1-decision-002",
+      "goalId": "776457c2-8bb3-53b9-838b-a028319175fb",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:40b5017045a85e5ebd936d8336db66f1bb900f116113746789e479b81754b942",
+      "pageFingerprint": "sha256:9a5466a637cf9b78bb689f8077e1ff2abaff4d705d109c79a7b478c052b2619f",
+      "goalReviewContextFingerprint": "sha256:f8a23b20f23f70c3787d84d4721693bec2c3aa344bb2e19b1061a43a6edd9f27",
+      "finalText": {
+        "titleDe": "Betriebliche Mitbestimmung erklären und beurteilen",
+        "titleEn": "Explain and assess workplace co-determination",
+        "descriptionDe": "Die lernende Person kann Formen und Funktionen betrieblicher Mitbestimmung sowie ihre Bedeutung für Arbeitnehmer und Unternehmen erklären und betriebliche Mitbestimmung in Fallbeispielen anhand bereitgestellter aktueller gesetzlicher Regelungen begründet beurteilen.",
+        "descriptionEn": "The learner can explain the forms and functions of workplace co-determination and its significance for employees and firms, and make a justified assessment of workplace co-determination in case examples using supplied current legal rules."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "current336-D124-b06-a-07-776457c2-8bb3-53b9-838b-a028319175fb",
+          "recordDigest": "sha256:5dea4072fce6ada95fb0ea4b1d722675c443c19d57a7b998d7a8026316979837"
+        },
+        "second": {
+          "recordId": "wirtschaft-current336-D124-b06-independent-b-actual-run-v1-776457c2-8bb3-53b9-838b-a028319175fb",
+          "recordDigest": "sha256:01f3f1a79d170ad93978c01f09e51e76d32deb4d56e1a25790baa6aa523dc563"
+        }
+      },
+      "rationaleDe": "Zwei tatsächlich unabhängige ganze aktuelle DE/EN/P-/Kontext-/Seitenprüfungen stimmen überein. Erklärung und materialgebundenes Urteil integrieren denselben Mitbestimmungsgegenstand. Bereitgestellte aktuelle Regeln begrenzen Informations-, Aufgaben- und Mitentscheidungsrechte; Arbeitnehmerschutz und betriebliche Folgen erlauben verschiedene begründete Gewichte, keine Abwahl gesetzlicher Rechte. Separate menschliche Prüfung und Erprobung werden nicht behauptet.",
+      "rationaleEn": "Two actual independent whole current DE/EN/P, context and page reviews agree. Explanation and an evidence-bound judgement integrate the same co-determination subject. Supplied current rules delimit information, duties and co-decision; employee protection and business consequences allow different reasoned weights, not removal of statutory rights. Separate human review and trials are not claimed."
+    }
+  ],
+  "deferredGoals": [
+    {
+      "goalId": "121fea28-9943-575d-9c96-1fb2e3356f32",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "rationaleDe": "Ein konkreter ganzer Leistungsvergleich aus der unabhängigen Runde belegt eine nicht erforderliche fachliche Voraussetzung. Eine qualifizierte gezielte Relationskorrektur mit erhaltenem fachfreien Einstieg und aktueller Nachprüfung ist erforderlich. Originale Urteile erhalten, kein Abschluss.",
+      "rationaleEn": "A concrete whole-performance comparison in an independent round demonstrates an unnecessary subject prerequisite. A qualified targeted relation correction retaining a subject-free entry and current revalidation is required. Original judgments are retained; no closure."
+    },
+    {
+      "goalId": "dd38e0c5-d77b-5893-815c-548ea2a84429",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "rationaleDe": "Ein konkreter ganzer Leistungsvergleich aus der unabhängigen Runde belegt eine nicht erforderliche fachliche Voraussetzung. Eine qualifizierte gezielte Relationskorrektur mit erhaltenem fachfreien Einstieg und aktueller Nachprüfung ist erforderlich. Originale Urteile erhalten, kein Abschluss.",
+      "rationaleEn": "A concrete whole-performance comparison in an independent round demonstrates an unnecessary subject prerequisite. A qualified targeted relation correction retaining a subject-free entry and current revalidation is required. Original judgments are retained; no closure."
+    },
+    {
+      "goalId": "eee7217a-c2fb-58b6-ba84-2a8d5235edb5",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "rationaleDe": "Ein konkreter ganzer Leistungsvergleich aus der unabhängigen Runde belegt eine nicht erforderliche fachliche Voraussetzung. Eine qualifizierte gezielte Relationskorrektur mit erhaltenem fachfreien Einstieg und aktueller Nachprüfung ist erforderlich. Originale Urteile erhalten, kein Abschluss.",
+      "rationaleEn": "A concrete whole-performance comparison in an independent round demonstrates an unnecessary subject prerequisite. A qualified targeted relation correction retaining a subject-free entry and current revalidation is required. Original judgments are retained; no closure."
+    },
+    {
+      "goalId": "fab48742-756b-564d-87ef-cd6f3c75f348",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "rationaleDe": "Ein konkreter ganzer Leistungsvergleich aus der unabhängigen Runde belegt eine nicht erforderliche fachliche Voraussetzung. Eine qualifizierte gezielte Relationskorrektur mit erhaltenem fachfreien Einstieg und aktueller Nachprüfung ist erforderlich. Originale Urteile erhalten, kein Abschluss.",
+      "rationaleEn": "A concrete whole-performance comparison in an independent round demonstrates an unnecessary subject prerequisite. A qualified targeted relation correction retaining a subject-free entry and current revalidation is required. Original judgments are retained; no closure."
+    },
+    {
+      "goalId": "912ab267-ee00-581b-a31c-dfc0b3587184",
+      "firstDecision": "keep",
+      "secondDecision": "block",
+      "rationaleDe": "Ein konkreter ganzer Leistungsvergleich aus der unabhängigen Runde belegt eine nicht erforderliche fachliche Voraussetzung. Eine qualifizierte gezielte Relationskorrektur mit erhaltenem fachfreien Einstieg und aktueller Nachprüfung ist erforderlich. Originale Urteile erhalten, kein Abschluss.",
+      "rationaleEn": "A concrete whole-performance comparison in an independent round demonstrates an unnecessary subject prerequisite. A qualified targeted relation correction retaining a subject-free entry and current revalidation is required. Original judgments are retained; no closure."
+    }
+  ],
+  "manifestFingerprint": "sha256:6cbe67d8ed20b9039ab76a5d5b2ef0f36ce46f5b08a16f15d0e9e65e035e042c"
+}

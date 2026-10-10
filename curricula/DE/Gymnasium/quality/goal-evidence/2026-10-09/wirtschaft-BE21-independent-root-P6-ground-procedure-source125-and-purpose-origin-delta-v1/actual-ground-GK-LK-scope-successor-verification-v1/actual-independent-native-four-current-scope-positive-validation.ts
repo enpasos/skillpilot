@@ -1,0 +1,14 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import { validatePositiveGoalEvidenceRecordSemantics } from '/home/enpasos/projects/skillpilot/app/scripts/positiveGoalEvidenceProfileModel.ts';
+const root = '/home/enpasos/projects/skillpilot';
+const base = `${root}/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-BE21-source125-ground-GK-LK-actual-binnenkursiv-scope-author-successor-v6`;
+const output = `${root}/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-BE21-independent-root-P6-ground-procedure-source125-and-purpose-origin-delta-v1`;
+const goals = JSON.parse(fs.readFileSync(`${base}/whole-four-final-author-goals-for-native-positive-binder.json`, 'utf8'));
+const records = fs.readFileSync(`${base}/whole-four-positive-v2.exact-three-and-ground-GK-LK-technical-binding.schema-successor-v2.jsonl`, 'utf8').trim().split('\n').map(JSON.parse);
+const results = records.map((record: any) => ({ goalId: record.goalId, errors: validatePositiveGoalEvidenceRecordSemantics(record, goals.find((g: any) => g.id === record.goalId), {}, 'curricularAtomic'), wholeCases: record.profile.applicationCaseBriefs.length }));
+const digest = (path: string) => ({path: path.slice(root.length+1), sha256: `sha256:${crypto.createHash('sha256').update(fs.readFileSync(path)).digest('hex')}`});
+const receipt = {createdAt:new Date().toISOString(), role:'actual independent native four-positive model check, bounded inert contracts only', model:digest(`${root}/app/scripts/positiveGoalEvidenceProfileModel.ts`), inputs:digest(`${base}/whole-four-positive-v2.exact-three-and-ground-GK-LK-technical-binding.schema-successor-v2.jsonl`), results, allErrorsZero:results.every((r:any)=>!r.errors.length), finalSourceScopeApproval:false, nativeCardVisibilityApproval:false, humanApproval:false, liveStrictNetGain:0};
+fs.writeFileSync(`${output}/actual-independent-native-four-current-scope-positive-model-validation.receipt.json`, JSON.stringify(receipt,null,2)+'\n');
+console.log(JSON.stringify({allErrorsZero:receipt.allErrorsZero,results}));
+if (!receipt.allErrorsZero) process.exitCode=1;

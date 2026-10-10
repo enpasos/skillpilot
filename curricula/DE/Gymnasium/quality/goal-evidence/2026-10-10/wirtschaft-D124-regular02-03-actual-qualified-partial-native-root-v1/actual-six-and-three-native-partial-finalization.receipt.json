@@ -1,0 +1,115 @@
+{
+  "checks": [
+    {
+      "batch": "02",
+      "args": [
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/configs/current336-D124-batch-02.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "seconds": 0.511
+    },
+    {
+      "batch": "02",
+      "args": [
+        "scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/configs/current336-D124-batch-02.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/native/current336-D124-batch-02/synthesis-authoring.root-qualified-partial.v1.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "seconds": 0.571
+    },
+    {
+      "batch": "02",
+      "args": [
+        "scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/configs/current336-D124-batch-02.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/native/current336-D124-batch-02/synthesis-decisions.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "seconds": 0.799
+    },
+    {
+      "batch": "02",
+      "args": [
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/configs/current336-D124-batch-02.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "seconds": 0.785
+    },
+    {
+      "batch": "03",
+      "args": [
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/configs/current336-D124-batch-03.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "seconds": 0.482
+    },
+    {
+      "batch": "03",
+      "args": [
+        "scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/configs/current336-D124-batch-03.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/native/current336-D124-batch-03/synthesis-authoring.root-qualified-partial.v1.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "seconds": 0.549
+    },
+    {
+      "batch": "03",
+      "args": [
+        "scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/configs/current336-D124-batch-03.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/native/current336-D124-batch-03/synthesis-decisions.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "seconds": 0.679
+    },
+    {
+      "batch": "03",
+      "args": [
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-current336-D124-thirteen-concrete-native-configs-inert-a-v1/configs/current336-D124-batch-03.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "seconds": 0.654
+    }
+  ],
+  "allEightPassed": true,
+  "resolvedCounts": [
+    6,
+    3
+  ],
+  "deferredCounts": [
+    3,
+    2
+  ],
+  "activeRegistryWrites": 0,
+  "claimedStrictIncrease": 0
+}

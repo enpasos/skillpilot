@@ -1,0 +1,142 @@
+from pathlib import Path
+import json, hashlib, copy, subprocess, shutil, time
+
+R = Path('/home/enpasos/projects/skillpilot')
+Q = R / 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10'
+I = Q / 'wirtschaft-current597-legal-social-qualified577-fieldwise-combined-author-a-v1'
+O = Q / 'wirtschaft-current597-legal-social311-technical-root-followers-v1'
+V = R / 'curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-current597-legal-social311-20261010-v15'
+C = Path(Path('/tmp/skillpilot-economics-current-merged-native-root-path.txt').read_text().strip())
+node = Path('/tmp/skillpilot-checkpoint-native-node-path.txt').read_text().strip()
+
+def rd(p): return json.loads(p.read_text())
+def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+def b(p): return {'path': str(p.relative_to(R)), 'sha256': sha(p), 'bytes': p.stat().st_size}
+def check(x):
+    p = R / x['path']
+    assert sha(p) == x['sha256'] and p.stat().st_size == x['bytes'], x
+    return p
+def wr(p, x):
+    assert not p.exists(), p
+    p.write_text(json.dumps(x, ensure_ascii=False, indent=2) + '\n')
+    return b(p)
+
+hp = I / 'actual-final-current577-to597-legal-social311-fieldwise-combined.AUTHOR-handoff.json'
+h = rd(hp)
+assert h['activeWrites'] == 0
+ip = check(h['wholeAuthorIndex'])
+ix = rd(ip)
+assert len(rd(check(ix['canonicalBefore']))['goals']) == 577
+assert len(rd(check(ix['canonicalCandidate']))['goals']) == 597
+assert len(ix['newMaterialIds']) == 20 and len(ix['exactFiveChangedOldWholeGoalObjects']) == 5
+assert ix['actualTargetReferenceDeltas'] == {'country': 275, 'national': 36, 'total': 311, 'alreadyIdenticalExistingReferencesSkipped': 0}
+can = R / ix['activeCanonicalPath']
+assert can.read_bytes() == check(ix['canonicalBefore']).read_bytes()
+for v in ix['views']:
+    assert (R / v['activePath']).read_bytes() == check(v['before']).read_bytes()
+    check(v['candidate'])
+rp = R / 'curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json'
+reg = rd(rp)
+sub = next(s for s in reg['subjects'] if s['subject'] == 'wirtschaftswissenschaften')
+oldsem = R / sub['semanticKindLedgerPath']
+conditional = check(h['wholeConditional597SEMLedger'])
+newsem = rd(conditional)
+assert newsem['sourceLandscapePath'] == ix['canonicalCandidate']['path']
+assert newsem['counts']['total'] == len(newsem['decisions']) == 597
+assert newsem['counts']['curricularAtomic'] == 336 and newsem['counts']['practiceAssessment'] == 216
+newsem['sourceLandscapePath'] = ix['activeCanonicalPath']
+newsem['ledgerId'] = 'wirtschaft-current597-legal-social311-native-successor-20261010-v15'
+O.mkdir(exist_ok=False)
+bridge = {'canonicalBefore': ix['canonicalBefore'], 'canonicalCandidate': ix['canonicalCandidate'],
+    'oldSemanticLedger': b(oldsem), 'originalConditionalAuthorSEM': b(conditional),
+    'changedOldGoalIds': [d['goalId'] for d in ix['exactFiveChangedOldWholeGoalObjects']],
+    'newQualifiedPracticeGoalIds': ix['newMaterialIds'],
+    'foreignWholeScienceAndIndividualScope': ix['qualifiedPackages'],
+    'wholeFieldwiseAuthorHandoff': b(hp), 'wholeFieldwiseAuthorIndex': b(ip),
+    'role': 'TECHNICAL_SEM_P_BOOK_FOLLOWERS_ONLY_COMBINED_FOREIGN_SCOPE_PENDING'}
+wr(O / 'actual-current597-v15-sem-follower-only-inputs.json', bridge)
+newlocal = O / 'whole597-original577-kinds-twenty-qualified-practice-five-native-sourceFPs.SEM-v15.json'
+wr(newlocal, newsem)
+source = r'''import{readFileSync,writeFileSync}from'node:fs';import{join}from'node:path';import assert from'node:assert/strict';import{fingerprintSemanticKindSourceGoal}from'./goalBookModel.ts';const R='/home/enpasos/projects/skillpilot',O=process.argv[2],ix=JSON.parse(readFileSync(join(O,'actual-current597-v15-sem-follower-only-inputs.json'),'utf8')),old=JSON.parse(readFileSync(join(R,ix.oldSemanticLedger.path),'utf8')),before=JSON.parse(readFileSync(join(R,ix.canonicalBefore.path),'utf8')),after=JSON.parse(readFileSync(join(R,ix.canonicalCandidate.path),'utf8')),next=JSON.parse(readFileSync(join(O,'whole597-original577-kinds-twenty-qualified-practice-five-native-sourceFPs.SEM-v15.json'),'utf8'));const bg=new Map(before.goals.map((g:any)=>[g.id,g])),ag=new Map(after.goals.map((g:any)=>[g.id,g])),nd=new Map(next.decisions.map((d:any)=>[d.goalId,d])),allowed=new Set(ix.changedOldGoalIds),changed:any[]=[];assert.equal(old.decisions.length,577);assert.equal(next.decisions.length,597);assert.equal(next.sourceLandscapePath,'curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json');for(const d of old.decisions){assert.equal(d.sourceFingerprint,fingerprintSemanticKindSourceGoal(bg.get(d.goalId)));const n:any=nd.get(d.goalId);assert.ok(n);const f=fingerprintSemanticKindSourceGoal(ag.get(d.goalId));assert.equal(n.sourceFingerprint,f);assert.deepEqual({...n,sourceFingerprint:d.sourceFingerprint},d);if(f!==d.sourceFingerprint){assert.ok(allowed.has(d.goalId));changed.push({goalId:d.goalId,semanticKind:d.semanticKind,before:d.sourceFingerprint,after:f});}else{assert.deepEqual(ag.get(d.goalId),bg.get(d.goalId));}}assert.equal(changed.length,5);assert.deepEqual(changed.map(x=>x.goalId).sort(),[...allowed].sort());for(const id of ix.newQualifiedPracticeGoalIds){const g:any=ag.get(id),d:any=nd.get(id);assert.ok(!bg.has(id));assert.equal(g.examData.reviewStatus,'released');assert.equal(g.extendedData.applicabilityFromRequires,true);assert.deepEqual(g.requires,g.examData.coveredGoalIds);assert.equal(d.semanticKind,'practiceAssessment');assert.equal(d.decisionStatus,'authoritative');assert.equal(d.decisionBasis,'reviewed-current-pilot-practice-assessment');}assert.equal(next.counts.curricularAtomic,336);assert.equal(next.counts.practiceAssessment,216);for(const d of next.decisions)assert.equal(d.sourceFingerprint,fingerprintSemanticKindSourceGoal(ag.get(d.goalId)));writeFileSync(join(O,'actual-native-SEM597-five-qualified-old-sourceFP-followers-twenty-practice-only.receipt.json'),JSON.stringify({SEM597:true,old577SemanticKindsAndDecisionFieldsExact:true,other572OldObjectsAndBindingsExact:true,changedOldFingerprints:changed,all336OrdinaryObjectsAndFPsExact:true,new20PracticeKinds:true,wholeFieldwiseAuthorHandoff:ix.wholeFieldwiseAuthorHandoff,foreignQualifiedPackages:ix.foreignWholeScienceAndIndividualScope,originalConditionalAuthorSEM:ix.originalConditionalAuthorSEM,onlyAdditionalSEMChanges:['ledgerId','sourceLandscapePath'],combinedInteractionScopeStillRequired:true,noHashOnlyScientificApproval:true,newStrictClosures:0,humanApproval:false,activeWrites:0},null,2)+String.fromCharCode(10));console.log(JSON.stringify({SEM:597,ordinary:336,practice:216,sourceFPFollowers:5}));'''
+sp = C / 'app/scripts/rootCurrent597NativeV15QualifiedSEMFollower.ts'
+assert not sp.exists()
+sp.write_text(source)
+shutil.copyfile(sp, O / sp.name)
+start = time.monotonic()
+with (O/'actual-v15-native-SEM-follower.stdout.txt').open('w') as out, (O/'actual-v15-native-SEM-follower.stderr.txt').open('w') as err:
+    p = subprocess.run([node, str(R/'app/node_modules/tsx/dist/cli.mjs'), str(sp), str(O)], cwd=C, stdout=out, stderr=err)
+wr(O/'actual-v15-native-SEM-follower-command-exit.json', {'exitCode': p.returncode, 'elapsedSeconds': time.monotonic()-start, 'actualScript': b(O/sp.name), 'activeWrites': 0})
+assert p.returncode == 0, (O/'actual-v15-native-SEM-follower.stderr.txt').read_text()
+V.mkdir(exist_ok=False)
+(V/'configs').mkdir()
+sem = V/'wirtschaftswissenschaften.semantic-kinds.json'
+sem.write_bytes(newlocal.read_bytes())
+oldrecords = {}
+newpaths, cfgs = [], []
+for i, path in enumerate(sub['positiveEvidenceConfigPaths'], 1):
+    before = rd(R/path)
+    cfg = copy.deepcopy(before)
+    cfg['semanticKindLedgerPath'] = str(sem.relative_to(R))
+    assert {k for k in cfg if cfg[k] != before[k]} == {'semanticKindLedgerPath'}
+    for l in (R/cfg['reviewPath']).read_text().splitlines():
+        if l.strip():
+            d = json.loads(l)
+            assert d['goalId'] not in oldrecords
+            oldrecords[d['goalId']] = d
+    cp = V/'configs'/f'{i:02d}.positive.config.json'
+    wr(cp,cfg)
+    newpaths.append(str(cp.relative_to(R)))
+    cfgs.append({'old': b(R/path), 'new': b(cp), 'reviewWholeBytesUnchanged': b(R/cfg['reviewPath']), 'onlyFieldChanged':'semanticKindLedgerPath'})
+assert len(newpaths) == 43 and len(oldrecords) == 336
+assert sum(len(x['profile']['applicationCaseBriefs']) for x in oldrecords.values()) == 685
+assert all(x['status']=='needs_human_review' and x['reviewAuthority']=='ai_candidate' for x in oldrecords.values())
+agg = V/'whole-current336-original-positive-profiles685cases-no-profile-or-input-change.jsonl'
+agg.write_text(''.join(json.dumps(oldrecords[k],ensure_ascii=False,separators=(',',':'))+'\n' for k in sorted(oldrecords)))
+assert {d['goalId']: d for d in map(json.loads,agg.read_text().splitlines())} == oldrecords
+nr = copy.deepcopy(reg)
+ns = next(s for s in nr['subjects'] if s['subject']=='wirtschaftswissenschaften')
+ns['semanticKindLedgerPath'] = str(sem.relative_to(R))
+ns['positiveEvidenceConfigPaths'] = newpaths
+assert [s for s in reg['subjects'] if s['subject']!='wirtschaftswissenschaften'] == [s for s in nr['subjects'] if s['subject']!='wirtschaftswissenschaften']
+registry = O/'whole-central-registry-only-Economics-v15-SEM-P-config-pointers.INERT.json'
+wr(registry,nr)
+bp = R/'app/scripts/config/goal-books/de-gym-economics-current-canonical.json'
+assert sha(bp)=='35b5d4aa9081253b0a5f91b3db82410214f01b8ef0c0318134298843ee6fe0cd'
+nb = rd(bp)
+nb['semanticKindLedgerPath'] = str(sem.relative_to(R))
+nb['evidenceReviewPaths'] = [str(agg.relative_to(R))]
+bcp = O/'whole-economics-book-config-current597-v15-SEM-P336.INERT.json'
+wr(bcp,nb)
+f = {'role':'TECHNICAL_FOLLOWERS_OF_TWO_FOREIGN_QUALIFIED_PACKAGES_COMBINED_INTERACTION_SCOPE_STILL_REQUIRED',
+    'wholeAuthorHandoff':b(hp),'wholeAuthorIndex':b(ip),'oldRegistry':b(rp),'oldBookConfig':b(bp),'newSEM':b(sem),
+    'oldKindLedger':b(oldsem),'newPconfigs':newpaths,'all43ConfigChanges':cfgs,
+    'all336OriginalWholeRecordsProfiles685CasesStatusesAuthorityAndInputFingerprintsExact':True,
+    'newWholeP336':b(agg),'candidateRegistry':b(registry),'candidateBookConfig':b(bcp),
+    'other4SubjectsWholeExact':True,'newCurricularAtomicScientificClosures':0,'strictNetGain':0,'humanApproval':False,'activeWrites':0}
+wr(O/'actual-v15-SEM597-P336685-book597-technical-only-freeze.json', f)
+src = (C/'app/scripts/rootCurrent577Positive43WholeOriginalProfilesNativeV14.ts').read_text().replace('v14','v15').replace('V14','V15').replace('SEM577','SEM597').replace('book577','book597').replace('sem.decisions.length,577','sem.decisions.length,597').replace('SEM:577','SEM:597').replace('four reviewed practice navigation sourceFP followers, twentytwo qualified practice kinds','four reviewed practice navigation plus one tag-only existing-material sourceFP followers, twenty qualified practice kinds')
+ps = C/'app/scripts/rootCurrent597Positive43WholeOriginalProfilesNativeV15.ts'
+assert not ps.exists()
+ps.write_text(src)
+shutil.copyfile(ps,O/ps.name)
+capcan = C/ix['activeCanonicalPath']
+assert capcan.resolve().is_relative_to(C.resolve()) and not capcan.samefile(can)
+oldcap = capcan.read_bytes()
+assert len(json.loads(oldcap)['goals']) == 555
+start=time.monotonic()
+try:
+    capcan.write_bytes(check(ix['canonicalCandidate']).read_bytes())
+    with (O/'actual-v15-native43-positive.stdout.txt').open('w') as out, (O/'actual-v15-native43-positive.stderr.txt').open('w') as err:
+        p = subprocess.run([node,str(R/'app/node_modules/tsx/dist/cli.mjs'),str(ps),str(O)],cwd=C/'app',stdout=out,stderr=err)
+    wr(O/'actual-v15-native43-positive-command-exit.json',{'exitCode':p.returncode,'elapsedSeconds':time.monotonic()-start,'actualScript':b(O/ps.name),'privateBeforeCANCount':555,'privateCandidateCANCount':597,'activeWrites':0})
+    assert p.returncode==0,(O/'actual-v15-native43-positive.stderr.txt').read_text()
+finally:
+    capcan.write_bytes(oldcap)
+for c in cfgs:
+    check(c['old']);check(c['reviewWholeBytesUnchanged'])
+assert can.read_bytes()==check(ix['canonicalBefore']).read_bytes()
+check(f['oldRegistry']);check(f['oldBookConfig']);check(f['oldKindLedger'])
+(O/'actual-executed-v15-SEM-P-book-technical-followup-script.raw.txt').write_bytes(Path(__file__).read_bytes())
+Path('/tmp/economics-current597-v15-positive-root-path.txt').write_text(str(V)+'\n')
+Path('/tmp/economics-current597-technical-root-path.txt').write_text(str(O)+'\n')
+print(json.dumps({'newSEM':b(sem),'configs':43,'P336685Exact':True,'native43PASS':b(O/'actual-native43-configs-P336-SEM597-all-original-profiles-inputs-statuses.v15-root-PASS.json'),'bookConfig':b(bcp),'activeWrites':0}))

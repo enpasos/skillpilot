@@ -1,0 +1,9 @@
+
+> skillpilot@0.0.0 build:application
+> npm run build:goal-books && npm run check:goal-book-publication && tsc -b && vite build
+
+
+> skillpilot@0.0.0 build:goal-books
+> tsx scripts/buildGoalBookPublications.ts
+
+Goal-book print font mismatch: Arial (Regular) resolved to DejaVu Sans (Book, weight=80, slant=0); expected Liberation Sans (Regular, weight=80, slant=0). Install the reviewed print fonts: Ubuntu/Debian: sudo apt-get install fonts-liberation fontconfig; Rocky/RHEL/Fedora: sudo dnf install liberation-sans-fonts liberation-mono-fonts fontconfig. Then run fc-cache -f and retry. If these fonts are installed, check fontconfig overrides; the requested families must resolve to Liberation Sans and Liberation Mono.

@@ -1,0 +1,354 @@
+{
+  "productionSchemaUnchanged": true,
+  "registeredNonValidationAnnotationOnly": "x-skillpilot-listSemantics",
+  "wholeSchemaRows": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-nine-existing-qualified-material-access555-root-author-v1/whole-before-views/de-be-gym-economics-gk.view.json",
+      "kind": "before",
+      "valid": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-nine-existing-qualified-material-access555-root-author-v1/whole-after-views/de-be-gym-economics-gk.view.json",
+      "kind": "candidate",
+      "valid": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-nine-existing-qualified-material-access555-root-author-v1/whole-before-views/de-be-gym-economics-lk.view.json",
+      "kind": "before",
+      "valid": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-nine-existing-qualified-material-access555-root-author-v1/whole-after-views/de-be-gym-economics-lk.view.json",
+      "kind": "candidate",
+      "valid": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-nine-existing-qualified-material-access555-root-author-v1/whole-before-views/de-bw-gym-economics-gk.view.json",
+      "kind": "before",
+      "valid": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-nine-existing-qualified-material-access555-root-author-v1/whole-after-views/de-bw-gym-economics-gk.view.json",
+      "kind": "candidate",
+      "valid": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-nine-existing-qualified-material-access555-root-author-v1/whole-before-views/de-bw-gym-economics-lk.view.json",
+      "kind": "before",
+      "valid": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-nine-existing-qualified-material-access555-root-author-v1/whole-after-views/de-bw-gym-economics-lk.view.json",
+      "kind": "candidate",
+      "valid": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-nine-existing-qualified-material-access555-root-author-v1/whole-before-views/de-th-gym-economics-gk.view.json",
+      "kind": "before",
+      "valid": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-nine-existing-qualified-material-access555-root-author-v1/whole-after-views/de-th-gym-economics-gk.view.json",
+      "kind": "candidate",
+      "valid": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-nine-existing-qualified-material-access555-root-author-v1/whole-before-views/de-th-gym-economics-lk.view.json",
+      "kind": "before",
+      "valid": true
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-nine-existing-qualified-material-access555-root-author-v1/whole-after-views/de-th-gym-economics-lk.view.json",
+      "kind": "candidate",
+      "valid": true
+    }
+  ],
+  "invalidProjectionRoleNegativeRejected": true,
+  "negativeErrors": [
+    {
+      "instancePath": "/rootNodes/0/children/42",
+      "schemaPath": "#/required",
+      "keyword": "required",
+      "params": {
+        "missingProperty": "id"
+      },
+      "message": "must have required property 'id'"
+    },
+    {
+      "instancePath": "/rootNodes/0/children/42",
+      "schemaPath": "#/required",
+      "keyword": "required",
+      "params": {
+        "missingProperty": "label"
+      },
+      "message": "must have required property 'label'"
+    },
+    {
+      "instancePath": "/rootNodes/0/children/42",
+      "schemaPath": "#/required",
+      "keyword": "required",
+      "params": {
+        "missingProperty": "children"
+      },
+      "message": "must have required property 'children'"
+    },
+    {
+      "instancePath": "/rootNodes/0/children/42",
+      "schemaPath": "#/additionalProperties",
+      "keyword": "additionalProperties",
+      "params": {
+        "additionalProperty": "goalId"
+      },
+      "message": "must NOT have additional properties"
+    },
+    {
+      "instancePath": "/rootNodes/0/children/42",
+      "schemaPath": "#/additionalProperties",
+      "keyword": "additionalProperties",
+      "params": {
+        "additionalProperty": "displayLabel"
+      },
+      "message": "must NOT have additional properties"
+    },
+    {
+      "instancePath": "/rootNodes/0/children/42",
+      "schemaPath": "#/additionalProperties",
+      "keyword": "additionalProperties",
+      "params": {
+        "additionalProperty": "projectionRole"
+      },
+      "message": "must NOT have additional properties"
+    },
+    {
+      "instancePath": "/rootNodes/0/children/42/kind",
+      "schemaPath": "#/properties/kind/const",
+      "keyword": "const",
+      "params": {
+        "allowedValue": "structure"
+      },
+      "message": "must be equal to constant"
+    },
+    {
+      "instancePath": "/rootNodes/0/children/42/kind",
+      "schemaPath": "#/properties/kind/const",
+      "keyword": "const",
+      "params": {
+        "allowedValue": "canonicalSubtree"
+      },
+      "message": "must be equal to constant"
+    },
+    {
+      "instancePath": "/rootNodes/0/children/42/projectionRole",
+      "schemaPath": "#/$defs/projectionRole/enum",
+      "keyword": "enum",
+      "params": {
+        "allowedValues": [
+          "target",
+          "prerequisiteOnly"
+        ]
+      },
+      "message": "must be equal to one of the allowed values"
+    },
+    {
+      "instancePath": "/rootNodes/0/children/42/projectionRole",
+      "schemaPath": "#/$defs/projectionRole/enum",
+      "keyword": "enum",
+      "params": {
+        "allowedValues": [
+          "target",
+          "prerequisiteOnly"
+        ]
+      },
+      "message": "must be equal to one of the allowed values"
+    },
+    {
+      "instancePath": "/rootNodes/0/children/42",
+      "schemaPath": "#/required",
+      "keyword": "required",
+      "params": {
+        "missingProperty": "landscapeId"
+      },
+      "message": "must have required property 'landscapeId'"
+    },
+    {
+      "instancePath": "/rootNodes/0/children/42",
+      "schemaPath": "#/additionalProperties",
+      "keyword": "additionalProperties",
+      "params": {
+        "additionalProperty": "goalId"
+      },
+      "message": "must NOT have additional properties"
+    },
+    {
+      "instancePath": "/rootNodes/0/children/42",
+      "schemaPath": "#/additionalProperties",
+      "keyword": "additionalProperties",
+      "params": {
+        "additionalProperty": "projectionRole"
+      },
+      "message": "must NOT have additional properties"
+    },
+    {
+      "instancePath": "/rootNodes/0/children/42/kind",
+      "schemaPath": "#/properties/kind/const",
+      "keyword": "const",
+      "params": {
+        "allowedValue": "landscapeEntry"
+      },
+      "message": "must be equal to constant"
+    },
+    {
+      "instancePath": "/rootNodes/0/children/42",
+      "schemaPath": "#/oneOf",
+      "keyword": "oneOf",
+      "params": {
+        "passingSchemas": null
+      },
+      "message": "must match exactly one schema in oneOf"
+    },
+    {
+      "instancePath": "/rootNodes/0",
+      "schemaPath": "#/required",
+      "keyword": "required",
+      "params": {
+        "missingProperty": "goalId"
+      },
+      "message": "must have required property 'goalId'"
+    },
+    {
+      "instancePath": "/rootNodes/0",
+      "schemaPath": "#/additionalProperties",
+      "keyword": "additionalProperties",
+      "params": {
+        "additionalProperty": "id"
+      },
+      "message": "must NOT have additional properties"
+    },
+    {
+      "instancePath": "/rootNodes/0",
+      "schemaPath": "#/additionalProperties",
+      "keyword": "additionalProperties",
+      "params": {
+        "additionalProperty": "label"
+      },
+      "message": "must NOT have additional properties"
+    },
+    {
+      "instancePath": "/rootNodes/0",
+      "schemaPath": "#/additionalProperties",
+      "keyword": "additionalProperties",
+      "params": {
+        "additionalProperty": "children"
+      },
+      "message": "must NOT have additional properties"
+    },
+    {
+      "instancePath": "/rootNodes/0/kind",
+      "schemaPath": "#/properties/kind/const",
+      "keyword": "const",
+      "params": {
+        "allowedValue": "canonicalSubtree"
+      },
+      "message": "must be equal to constant"
+    },
+    {
+      "instancePath": "/rootNodes/0",
+      "schemaPath": "#/required",
+      "keyword": "required",
+      "params": {
+        "missingProperty": "goalId"
+      },
+      "message": "must have required property 'goalId'"
+    },
+    {
+      "instancePath": "/rootNodes/0",
+      "schemaPath": "#/additionalProperties",
+      "keyword": "additionalProperties",
+      "params": {
+        "additionalProperty": "id"
+      },
+      "message": "must NOT have additional properties"
+    },
+    {
+      "instancePath": "/rootNodes/0",
+      "schemaPath": "#/additionalProperties",
+      "keyword": "additionalProperties",
+      "params": {
+        "additionalProperty": "label"
+      },
+      "message": "must NOT have additional properties"
+    },
+    {
+      "instancePath": "/rootNodes/0",
+      "schemaPath": "#/additionalProperties",
+      "keyword": "additionalProperties",
+      "params": {
+        "additionalProperty": "children"
+      },
+      "message": "must NOT have additional properties"
+    },
+    {
+      "instancePath": "/rootNodes/0/kind",
+      "schemaPath": "#/properties/kind/const",
+      "keyword": "const",
+      "params": {
+        "allowedValue": "goalEntry"
+      },
+      "message": "must be equal to constant"
+    },
+    {
+      "instancePath": "/rootNodes/0",
+      "schemaPath": "#/required",
+      "keyword": "required",
+      "params": {
+        "missingProperty": "landscapeId"
+      },
+      "message": "must have required property 'landscapeId'"
+    },
+    {
+      "instancePath": "/rootNodes/0",
+      "schemaPath": "#/additionalProperties",
+      "keyword": "additionalProperties",
+      "params": {
+        "additionalProperty": "id"
+      },
+      "message": "must NOT have additional properties"
+    },
+    {
+      "instancePath": "/rootNodes/0",
+      "schemaPath": "#/additionalProperties",
+      "keyword": "additionalProperties",
+      "params": {
+        "additionalProperty": "label"
+      },
+      "message": "must NOT have additional properties"
+    },
+    {
+      "instancePath": "/rootNodes/0",
+      "schemaPath": "#/additionalProperties",
+      "keyword": "additionalProperties",
+      "params": {
+        "additionalProperty": "children"
+      },
+      "message": "must NOT have additional properties"
+    },
+    {
+      "instancePath": "/rootNodes/0/kind",
+      "schemaPath": "#/properties/kind/const",
+      "keyword": "const",
+      "params": {
+        "allowedValue": "landscapeEntry"
+      },
+      "message": "must be equal to constant"
+    },
+    {
+      "instancePath": "/rootNodes/0",
+      "schemaPath": "#/oneOf",
+      "keyword": "oneOf",
+      "params": {
+        "passingSchemas": null
+      },
+      "message": "must match exactly one schema in oneOf"
+    }
+  ]
+}

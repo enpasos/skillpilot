@@ -1,0 +1,64 @@
+import pathlib,json,hashlib,copy
+R=pathlib.Path('/home/enpasos/projects/skillpilot')
+Q=R/'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10'
+O=Q/'wirtschaft-M4-seven-law-whole-science-independent-root-v1'
+F=O/'one-real-responsibility-presumption-and-damage-boundary-independent-followup-v2'
+F.mkdir(exist_ok=False)
+def read(p):return json.loads(p.read_text())
+def seal(p):
+ b=p.read_bytes();return {'path':str(p.relative_to(R)),'sha256':hashlib.sha256(b).hexdigest(),'bytes':len(b)}
+def put(n,j):
+ p=F/n;p.write_text(json.dumps(j,ensure_ascii=False,indent=2)+'\n');return seal(p)
+parent=O/'actual-original-seven-law-whole-science-six-KEEP-one-REVISE.handoff.receipt.json'
+assert seal(parent)['sha256']=='fde94f842d2d8394d3b9153f3214b83ef1fed5d7e2e1d9a6fd083f27cef981d4'
+p=read(parent)
+for key in ['wholeDRAFT7','wholeCurrentImmutable555','wholeGoalPBindings','ownWholeWorks','ownRecalculations','ownPrimaryReadings','wholeDecisions','unchangedEighthExistingScienceReuse']:
+ assert seal(R/p[key]['path'])==p[key]
+t=Q/'wirtschaft-M4-seven-consumer-contract-law-one-contract-local-author-v1/one-real-responsibility-presumption-and-damage-boundary-author-successor-v2'
+ah=t/'actual-final-one-responsibility-presumption-six-text-fields-author-handoff-v2.json'
+assert seal(ah)['sha256']=='494ea2c43ccde76a05ed241996d943d0210c1f95f77ba9a567546695e7ee5d81'
+h=read(ah);b=R/h['whole7DRAFT']['path'];assert seal(b)==h['whole7DRAFT']
+old=read(R/p['wholeDRAFT7']['path']);new=read(b)
+allowed={f'/materials/5/examData/{k}' for k in ['taskContent','taskContentEn','solutionContent','solutionContentEn']}
+allowed.update({'/materials/5/examData/scoring/steps/1/description','/materials/5/examData/scoring/steps/1/descriptionEn'})
+deltas=[]
+def diff(a,b,path=''):
+ if type(a)!=type(b):deltas.append({'path':path,'old':a,'new':b});return
+ if isinstance(a,dict):
+  assert set(a)==set(b)
+  for k in a:diff(a[k],b[k],path+'/'+k)
+ elif isinstance(a,list):
+  assert len(a)==len(b)
+  for i,(aa,bb) in enumerate(zip(a,b)):diff(aa,bb,path+'/'+str(i))
+ elif a!=b:deltas.append({'path':path,'old':a,'new':b})
+diff(old,new);assert {x['path'] for x in deltas}==allowed and len(deltas)==6
+for i in [0,1,2,3,4,6]:assert old['materials'][i]==new['materials'][i]
+whole=new['materials'][5]
+assert whole['requires']==['87e1971d-d153-59eb-81d9-e361caf83a26']
+assert whole['examData']['coveredGoalIds']==whole['requires']
+assert whole['examData']['reviewStatus']=='draft'
+changeSeal=put('actual-own-six-whole-field-comparisons-and-proof-allocation-remedy-reading.independent-root.json',{'deltas':deltas,'wholeChangedFieldsReadDEEN':True,'otherSixWholeBodiesExact':True,'allOuterGoalCoveredRequiresRubricThresholdsExact':True,'ownContentDecisionDe':'Die sechs geänderten DE/EN-Felder erklären die280Abs1S2-Vermutung,den Entlastungsnachweis vonP und das nur hypothetische Grundfall-Rechenergebnis bei noch nicht feststehendem notwendigen kausalen Mehrschaden. Bewiesene Variante bleibt60Euro, Rückgewähr400Euro plus60Euro und keine Doppelentschädigung. Der frühere positive Käufer-Schuldbeweis wird nicht mehr als Anspruchshindernis benutzt.','resolvedFinding':'RESPONSIBILITY_PRESUMPTION_AND_DAMAGES_BOUNDARY','decision':'KEEP','humanApproval':False})
+w=read(R/p['ownWholeWorks']['path'])['works']
+original=next(x for x in w if x['materialId']==whole['id'] and x['kind']=='full')
+correct=copy.deepcopy(original)
+correct['kind']='targeted-successor-whole-full';correct['materialBinding']=seal(b)
+correct['criterionMarks'][3]['answerDe']='280Abs1S2 vermutet Ps Vertretenmüssen; P muss fehlende Verantwortung darlegen/beweisen und K muss nicht positiv Verschulden beweisen. 460Euro würden im Grundfall nur entstehen: ohne feststehenden notwendigen tatsächlich kausalen Mehrschaden sind60Euro bedingt. Bewiesene Variante ergibt gesondert60Euro statt Doppelentschädigung.'
+correct['criterionMarks'][10]['answerDe']='475dAbs2 ersetzt nur die Fristregel. Verantwortungsvermutung samt Schuldnerentlastung bleibt,ebenso Kausalität und konkret ersatzfähiger Schaden; eine zusätzliche Geldforderung folgt nicht allein aus Fristentbehrlichkeit.'
+partial=copy.deepcopy(correct);partial['kind']='targeted-successor-whole-fair-partial'
+for k in [2,4,6,9]:
+ partial['criterionMarks'][k]['answerDe']=original['criterionMarks'][k]['answerDe'].split('.')[0]+'.'
+ partial['criterionMarks'][k]['points']=1
+ partial['criterionMarks'][k]['manualReason']='Eine tatsächlich richtige Teilbegründung gezeigt,weitere Erklärung fehlt; Verantwortung/Schaden selbst bleiben vollständig.'
+partial['raw']=partial['total']=20;assert sum(x['points'] for x in partial['criterionMarks'])==20
+bad=copy.deepcopy(correct);bad['kind']='targeted-successor-whole-wrong-buyer-proof-burden'
+bad['criterionMarks'][3].update({'answerDe':'K bekommt keinen Schadensersatz,wenn er Ps Fahrlässigkeit nicht beweist; Nichtwissen schließt ihn auch bei gegebenem Schaden aus.','points':0,'manualReason':'Gesetzliche Verantwortungsvermutung und EntlastungspflichtP vollständig verfehlt.'})
+bad['criterionMarks'][10].update({'answerDe':'AuchC muss nach475d stets selbst die SchuldS positiv beweisen; ohne diesen Beweis ist Schadensersatz ausgeschlossen.','points':0,'manualReason':'Derselbe falsche Käufer-Beweislastansatz im zweiten Fall;Fristentbehrlichkeit nicht korrekt von280-Regel getrennt.'})
+bad['criterionMarks'][5].update({'answerDe':'K soll belegten Ersatz für Erfüllungsinteresse bekommen.','points':1,'manualReason':'Käuferfunktion beschrieben,Verantwortlichkeitsgrenze fehlt.'})
+bad['criterionMarks'][11].update({'answerDe':'Verweigerte Abhilfe erlaubt Käuferlösung,geeignete Reparatur berücksichtigt Verkäuferleistung.','points':1,'manualReason':'Interessenfunktion richtig,Verantwortlichkeits-/Entlastungserklärung fehlt.'})
+bad['raw']=18;assert sum(x['points'] for x in bad['criterionMarks'])==18
+bad.update({'wholeCoreAbsent':'fault','wholeManualCoreFinding':'Verantwortlichkeitsregel in beiden Fällen durchgehend falsch; Käufer-Schuldbeweis wird zum Pflichtbestandteil erklärt.','capApplied':True,'total':14,'pass':False})
+worksSeal=put('actual-three-new-own-whole-successor-works36-manual-decisions.independent-root.json',{'works':[correct,partial,bad],'ownWorks':3,'ownCriterionDecisions':36,'authorSuccessorWorksUsedAsOwn':0,'actualFull24Fair20FalseBurden18Capped14':True,'originalOtherSixWorksNotRestarted':True})
+findingSeal=put('actual-one-real-proof-allocation-finding-resolved-and-all-seven-whole-science-KEEP.independent-root.json',{'materialId':whole['id'],'originalFindingStatus':'REVISE_PRESERVED','successorFindingStatus':'RESOLVED_KEEP','wholeIndependentNewTextAndTwoCasesConsidered':True,'allSixEarlierWholeKEEPByteExact':True,'wholeMaterialKEEPCount':7,'sourceBasis':p['ownPrimaryReadings'],'scienceOnlyNoScopeHumanStatusPromotion':True})
+final=put('actual-final-seven-law-whole-DEEN-science-independent-root-KEEP.handoff.receipt.json',{'decision':'KEEP_ALL_SEVEN_WHOLE_SCIENTIFIC_MATERIALS','reviewer':'/root','independentFromBodyAuthor':'/root/economics_merge_audit','wholeMaterialKEEPCount':7,'wholeFinalDRAFT7':seal(b),'authorSuccessorHandoff':seal(ah),'originalReviewHistory':seal(parent),'ownTargetedChangedFields':changeSeal,'ownTargetedWholeWorks':worksSeal,'oneRealResolvedFinding':findingSeal,'wholeCurrentImmutable555':p['wholeCurrentImmutable555'],'wholeGoalOriginalP14Bindings':p['wholeGoalPBindings'],'originalOwnWholeWorks21Marks252':p['ownWholeWorks'],'newOwnWholeWorks3Marks36':worksSeal,'totalOwnWholeWorks24':'21 original +3 genuinely new targeted whole answers; authors43+3 never counted','unchangedEighthWholeScienceReuse':p['unchangedEighthExistingScienceReuse'],'noHistoricalReviewRestart':True,'noOrdinaryProfileOrSourceChanges':True,'scopeMachineReleaseHumanApproval':False,'newStrictClosures':0,'restoredStrictBindings':0,'strictCurrent187of336Unchanged':True,'activeWrites':0,'next':'Scope/Nav author followed by actual independent scope checks and grouped integration.'})
+print(json.dumps(final))
+pathlib.Path('/tmp/economics-seven-law-whole-science-root-path.txt').write_text(str(F)+'\n')

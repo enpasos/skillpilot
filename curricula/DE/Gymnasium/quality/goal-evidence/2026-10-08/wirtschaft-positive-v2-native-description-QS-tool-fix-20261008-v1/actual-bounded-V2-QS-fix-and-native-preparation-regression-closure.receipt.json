@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-08T21:21:28.623943+00:00",
+  "role": "bounded_QS_export_and_closed_description_input_V2_support_no_runtime_change",
+  "files": [
+    {
+      "path": "app/scripts/exportGoalBookReviewBundle.ts",
+      "currentSha256": "a970c07dbe89c5496b9dfdd3a7839918c823357b2907fe83778c68999e79388b",
+      "beforeHeadBackupPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-positive-v2-native-description-QS-tool-fix-20261008-v1/before-head/app/scripts/exportGoalBookReviewBundle.ts",
+      "beforeHeadSha256": "f770c95012deb7aff1cf2f4964ef94b279df5e6d4655fde81c3abdf546e04d03"
+    },
+    {
+      "path": "app/scripts/validateGoalDescriptionReviewCampaign.ts",
+      "currentSha256": "3a99d98a69c60c8e24cfcf40d5f6fe27748715651933176d5f7e6c667b7e1bf9",
+      "beforeHeadBackupPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-positive-v2-native-description-QS-tool-fix-20261008-v1/before-head/app/scripts/validateGoalDescriptionReviewCampaign.ts",
+      "beforeHeadSha256": "59f8f412cbe9be4dc033396581e14960d0b0f12e3b17b5d48c35e5d6fae71e64"
+    },
+    {
+      "path": "app/scripts/validateGoalDescriptionDualRoundResolution.ts",
+      "currentSha256": "4b83f4c6c924527a989e6321a9427a6525a4565f312caf4e4c82699ea7b01136",
+      "beforeHeadBackupPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-positive-v2-native-description-QS-tool-fix-20261008-v1/before-head/app/scripts/validateGoalDescriptionDualRoundResolution.ts",
+      "beforeHeadSha256": "d97c248a17b3eb1be83a58d3f102a47803e5b7fffa61a9af29cd1bc277ec9b4d"
+    },
+    {
+      "path": "contracts/goal-description-review/v2/goal-description-review-input.schema.json",
+      "currentSha256": "f6e5c0a2e8d0d32ccf168f4d38991c1e6c41523856320fcff2ab73df765ad239",
+      "beforeHeadBackupPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-positive-v2-native-description-QS-tool-fix-20261008-v1/before-head/contracts/goal-description-review/v2/goal-description-review-input.schema.json",
+      "beforeHeadSha256": "014165cdd86c3fcd543e5e47e338dc26c0e53e1e1fab5a55cf2faa388bd29053"
+    },
+    {
+      "path": "contracts/goal-description-review/v3/goal-description-review-input.schema.json",
+      "currentSha256": "45333995445f1727c966aea0a3b210379c927329167bd58585264c175ec927c4",
+      "beforeHeadBackupPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-positive-v2-native-description-QS-tool-fix-20261008-v1/before-head/contracts/goal-description-review/v3/goal-description-review-input.schema.json",
+      "beforeHeadSha256": "ecf64d1000670e55e76c0c9609ef2243edaa1bfb6d9685bba52d4badea0f0b13"
+    },
+    {
+      "path": "app/scripts/testGoalBookReviewBundle.ts",
+      "currentSha256": "f037de6a1a2956623eaeecbaaf0f50b6ea9be43f0926be4527b69587c8fa39be",
+      "beforeHeadBackupPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-positive-v2-native-description-QS-tool-fix-20261008-v1/before-head/app/scripts/testGoalBookReviewBundle.ts",
+      "beforeHeadSha256": "35a6a45374b1def6106d7553b90a70b8a224e24f2f0e4680fc4982f17839a702"
+    }
+  ],
+  "failure": "Actual native preparation stopped at legacy profile.facets.map on existing current positive-understanding-evidence-v2. Two original failed preparation logs are retained.",
+  "fix": "Use existing closed V1/V2 profile loader, render whole V2 expectations/coverage/variation and all six original bilingual case fields; register unchanged closed V2 schema in both native description validators and refer to it in both description input contracts.",
+  "unchangedV1MarkdownBodyActuallyCompared": true,
+  "unchangedV1MarkdownBodySha256": "2414d5e398f669631dfbe29fd5b0e183ad58a281cbad0ebac75ee477f3421f72",
+  "closedV2EvidenceSchemaChanged": false,
+  "AIOrHumanStatusUpgraded": false,
+  "historicalFrozenBundlesChanged": false,
+  "schemaMaximum20Changed": false,
+  "actualTargetedTestsPreviouslyObservedTerminalExit0": [
+    "npm run test:goal-book-review-bundle",
+    "npm run test:goal-description-review-contracts",
+    "npm run test:goal-description-dual-round-resolution"
+  ],
+  "correctedTypeScriptCheck": {
+    "command": [
+      "./node_modules/.bin/tsc",
+      "-b"
+    ],
+    "cwd": "app",
+    "actualProcessSession": 22924,
+    "terminalExitCode": 0,
+    "terminalObservationChunk": "d6b271",
+    "originalWrongCwdAttempt": "Root cwd wrongly sought absent root tsconfig; actual TS5083 exit1 retained in tool output, then correct app cwd succeeded."
+  },
+  "actualNativeSuccessorFreeze": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/native-d-final19-current281.prepared-freeze.actual.successor-v2.json",
+    "sha256": "68b3d829544e92198edb9cd7c22c5c2ea88446b9bd0da49efb5dfb5336567556",
+    "actualCommands": [
+      {
+        "name": "native-final19-prepare-successor-v2",
+        "command": [
+          "app/node_modules/.bin/tsx",
+          "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+          "prepare",
+          "--config",
+          "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/native-d-final19.ordered.final.batch.successor-v2.config.json"
+        ],
+        "cwd": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o",
+        "startedAt": "2026-10-08T21:19:01.557121+00:00",
+        "completedAt": "2026-10-08T21:19:10.262190+00:00",
+        "actualExitCode": 0
+      },
+      {
+        "name": "native-final19-check-successor-v2",
+        "command": [
+          "app/node_modules/.bin/tsx",
+          "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+          "check",
+          "--config",
+          "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-final-nineteen-current311-after-methods20-native-preparation-20261008-v1/final-current281-frozen-D19-v1/native-d-final19.ordered.final.batch.successor-v2.config.json"
+        ],
+        "cwd": "/tmp/skillpilot-wirtschaft-final19-after-methods20-current311-b9bogg3o",
+        "startedAt": "2026-10-08T21:19:10.274992+00:00",
+        "completedAt": "2026-10-08T21:19:10.757155+00:00",
+        "actualExitCode": 0
+      }
+    ],
+    "19OriginalV2ProfilesAnd38CasesInBothBlindInputs": true,
+    "completeSixCaseFieldsInMarkdown": true
+  },
+  "strictNewClosures": 0,
+  "humanReleasePending": true
+}

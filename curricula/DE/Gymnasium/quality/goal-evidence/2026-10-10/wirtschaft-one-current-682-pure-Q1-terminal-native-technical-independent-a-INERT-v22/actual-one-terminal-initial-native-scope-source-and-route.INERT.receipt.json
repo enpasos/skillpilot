@@ -1,0 +1,254 @@
+{
+  "role": "ACTUAL_UNCHANGED_NATIVE_NEW_PURE_TERMINAL_COMPILER_SOURCE_COUNTER_AND_ROUTE_NOT_SCIENCE_OR_ACTIVATION",
+  "createdAt": "2026-10-10T11:54:00.551Z",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "phase": "initial",
+  "canonicalSHA256": "sha256:20c68af9d068021aa6a43d440a23663ee784b83b8fcbc6ca5fa592554c289339",
+  "registrySHA256": "sha256:3f1ad177e3c808476dd1c550251d90ca924b765dbf582fcca2aa9864fc3d8297",
+  "originalNativeSourcePrefixSHA256": "sha256:656084b7cd9d6cb5324361b927b9f761596c572d7e4f616c7b13da061f4b1336",
+  "compiler": {
+    "goals": 679,
+    "errors": 0,
+    "warnings": 0,
+    "diagnostics": 1469
+  },
+  "sourceCoverage": {
+    "sourceOriginalGoals": 2134,
+    "sourceAtomicGoals": 2134,
+    "sourceMappedToViewAtomicGoals": 2134,
+    "unmappedSourceAtomicGoals": 0,
+    "unsupportedAssignedAtomicGoals": 0,
+    "sourceCompleteJurisdictions": 16
+  },
+  "courseRule": {
+    "id": "CQR-004",
+    "status": "pass",
+    "summary": "Course-level mapping is clean for 317 upper-secondary source-to-canonical mapping edge(s), including 1 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+    "metrics": {
+      "configuredMappingFiles": 32,
+      "sourceGoals": 1384,
+      "sourceGoalsWithCourseLevel": 1384,
+      "gkLkSourceGoals": 806,
+      "lkSourceGoals": 421,
+      "unspecifiedSourceGoals": 117,
+      "checkedMappingEdges": 317,
+      "defaultedUnspecifiedMappingEdges": 105,
+      "reviewedCourseLevelExceptions": 1,
+      "mismatches": 0,
+      "missingSourceGoals": 0,
+      "missingTargetGoals": 0,
+      "unmappedCourseLevelSourceGoals": 0
+    }
+  },
+  "nativeScopeProfiles": [
+    {
+      "scopeId": "canonical-economics-crossstage",
+      "label": "Sekundarstufe I/II",
+      "selectedAtomicGoals": 336,
+      "maturity": "M4",
+      "rules": [
+        {
+          "id": "CQR-101",
+          "status": "pass",
+          "summary": "Effective route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 336,
+            "missingMotivationPath": 0,
+            "missingTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-102",
+          "status": "pass",
+          "summary": "Direct atomic route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 336,
+            "missingDirectMotivationPath": 0,
+            "missingDirectTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-103",
+          "status": "pass",
+          "summary": "No scoped cluster-level requires remain.",
+          "metrics": {
+            "scopedClusterRequires": 0
+          }
+        },
+        {
+          "id": "CQR-104",
+          "status": "pass",
+          "summary": "Route endpoints are exactly visible and every visible selected goal stays on a visible atomic route from motivation to a terminal in every relevant learner-facing projection scope.",
+          "metrics": {
+            "relevantCompositionViews": 34,
+            "evaluatedProjectionScopes": 64,
+            "requiredMotivationAnchors": 1,
+            "minimumRequiredTerminalAutonomyGoals": 50,
+            "requiredTerminalAutonomyGoals": 255,
+            "projectionScopesMissingMotivationAnchors": 0,
+            "projectionScopesMissingTerminalAutonomyGoals": 0,
+            "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+            "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+            "terminalGoalsMissingCompiledApplicability": 0,
+            "projectionScopesWithInvalidStageStructure": 0,
+            "nationalProjectionScopesUsingJurisdictionStageAuthority": 32,
+            "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+            "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+            "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 452,
+            "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 272,
+            "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 109,
+            "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+            "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+            "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+            "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+            "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+            "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+            "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+            "projectionLocalRouteChecksEnabled": 1,
+            "visibleSelectedAtomicGoalOccurrences": 6962,
+            "visibleProfileSelectedAtomicGoalOccurrences": 6962,
+            "visibleProjectedRouteTargetGoalOccurrences": 6962,
+            "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+            "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+            "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+            "projectionScopesMissingEffectiveMotivationRoutes": 0,
+            "projectionScopesMissingDirectMotivationRoutes": 0,
+            "projectionScopesMissingEffectiveTerminalRoutes": 0,
+            "projectionScopesMissingDirectTerminalRoutes": 0,
+            "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+            "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+            "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+            "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+            "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+            "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+          }
+        },
+        {
+          "id": "CQR-201",
+          "status": "pass",
+          "summary": "All configured terminal autonomy goals have examData.",
+          "metrics": {
+            "terminalAutonomyGoals": 276,
+            "terminalAutonomyGoalsWithExamData": 276,
+            "terminalAutonomyGoalsWithoutExamData": 0
+          }
+        },
+        {
+          "id": "CQR-202",
+          "status": "pass",
+          "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+          "metrics": {
+            "terminalAutonomyGoals": 276,
+            "concreteExamData": 276,
+            "weakExamData": 0
+          }
+        },
+        {
+          "id": "CQR-203",
+          "status": "pass",
+          "summary": "All terminal autonomy examData has release and coverage metadata.",
+          "metrics": {
+            "terminalAutonomyGoals": 276,
+            "releasedCoverageCompleteExamData": 276,
+            "releaseCoverageIncompleteExamData": 0
+          }
+        }
+      ]
+    }
+  ],
+  "CQR104201202203": [
+    {
+      "id": "CQR-104",
+      "status": "pass",
+      "summary": "Route endpoints are exactly visible and every visible selected goal stays on a visible atomic route from motivation to a terminal in every relevant learner-facing projection scope.",
+      "metrics": {
+        "relevantCompositionViews": 34,
+        "evaluatedProjectionScopes": 64,
+        "requiredMotivationAnchors": 1,
+        "minimumRequiredTerminalAutonomyGoals": 50,
+        "requiredTerminalAutonomyGoals": 255,
+        "projectionScopesMissingMotivationAnchors": 0,
+        "projectionScopesMissingTerminalAutonomyGoals": 0,
+        "projectionScopesWithUnexpectedTerminalAutonomyGoals": 0,
+        "projectionScopesWithoutExpectedTerminalAutonomyGoals": 0,
+        "terminalGoalsMissingCompiledApplicability": 0,
+        "projectionScopesWithInvalidStageStructure": 0,
+        "nationalProjectionScopesUsingJurisdictionStageAuthority": 32,
+        "nationalProjectionScopesMissingJurisdictionStageAuthority": 0,
+        "nationalProjectionScopesWithAmbiguousJurisdictionStageAuthority": 0,
+        "nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority": 452,
+        "nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority": 272,
+        "nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority": 109,
+        "projectionScopesWithIncompleteExplicitTerminalPrerequisites": 0,
+        "explicitTerminalPrerequisiteOccurrencesMissingFromProjection": 0,
+        "projectionScopesWithIncompleteWholeMaterialCoverageBindings": 0,
+        "wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath": 0,
+        "projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure": 0,
+        "wholeMaterialPrerequisiteOccurrencesMissingFromProjection": 0,
+        "uniqueExplicitTerminalPrerequisitesMissingFromProjection": 0,
+        "projectionLocalRouteChecksEnabled": 1,
+        "visibleSelectedAtomicGoalOccurrences": 6962,
+        "visibleProfileSelectedAtomicGoalOccurrences": 6962,
+        "visibleProjectedRouteTargetGoalOccurrences": 6962,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedByProfileSelector": 0,
+        "uniqueProjectedRouteTargetsExcludedByProfileSelector": 0,
+        "visibleProjectedRouteTargetGoalOccurrencesExcludedFromRouteChecks": 0,
+        "projectionScopesMissingEffectiveMotivationRoutes": 0,
+        "projectionScopesMissingDirectMotivationRoutes": 0,
+        "projectionScopesMissingEffectiveTerminalRoutes": 0,
+        "projectionScopesMissingDirectTerminalRoutes": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "visibleSelectedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectMotivationRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute": 0,
+        "profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectMotivationRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingEffectiveTerminalRoute": 0,
+        "uniqueVisibleSelectedGoalsMissingDirectTerminalRoute": 0
+      }
+    },
+    {
+      "id": "CQR-201",
+      "status": "pass",
+      "summary": "All configured terminal autonomy goals have examData.",
+      "metrics": {
+        "terminalAutonomyGoals": 276,
+        "terminalAutonomyGoalsWithExamData": 276,
+        "terminalAutonomyGoalsWithoutExamData": 0
+      }
+    },
+    {
+      "id": "CQR-202",
+      "status": "pass",
+      "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+      "metrics": {
+        "terminalAutonomyGoals": 276,
+        "concreteExamData": 276,
+        "weakExamData": 0
+      }
+    },
+    {
+      "id": "CQR-203",
+      "status": "pass",
+      "summary": "All terminal autonomy examData has release and coverage metadata.",
+      "metrics": {
+        "terminalAutonomyGoals": 276,
+        "releasedCoverageCompleteExamData": 276,
+        "releaseCoverageIncompleteExamData": 0
+      }
+    }
+  ],
+  "whole2134SourceScienceReReview": false,
+  "activeWrites": 0
+}

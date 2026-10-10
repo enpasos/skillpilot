@@ -1,0 +1,11 @@
+# Begrenzter aktueller Wettbewerbspaket-Review
+
+Ein ganzer aktuellerP981-P4-NachfolgerKEEP und zwei ganze aktuelle BerlinerMARKET02-QuellenleistungsunionsKEEP. Die gültigen drei historischenP981-Fälle bleiben exakt; drei zusätzliche unveränderte ganze Kompetenz-/P2-Kontexte mit sechs Fällen werden gezielt wiederverwendet. Insgesamt vier Ziele/vierProfile/zehn Fälle, davon ein tatsächlich neuer bilingualer Fall. Historische BLOCK-/REVISE-Urteile bleiben unverändert als Vorgänger.
+
+Alle acht Seiten der echten amtlichen2026-Regierungsantwort und die ganze aktuell gelieferte§32f-Fassung wurden unabhängig gelesen; zusätzlich wurden echte Originalraster derPDF-Seiten1/3 angesehen. Frische Originalbytes stimmen mit beiden Autorhashes überein. Vollständige Originalquellen/Raster bleiben als lokale Arbeitskopien außerhalb des Repositorys; portable Nachweise sind amtliche URLs, ganzeHashes, eigene begrenzte Lesehilfen und konkrete Urteile.
+
+Der neue Fall unterscheidet2023Entwurf/Meinungen, datierteMai2026-Aussagen und heutigeNorm. Ruhen imMai istkeinOktoberergebnis; Rethmann-Anmeldung istkeinStrukturabhilfeerfolg. Instrumentenwahl bleibt bedingt durch echtenMechanismus, Rechtsvoraussetzungen, Beweise und Nebenwirkungen. Eine12-Uhr-Änderungsregel istkeinPreishöchstbetrag. Informationsregeln verlangen Betrachtung der betroffenenMarktstufe, nichtpauschalmehrTransparenz.
+
+EigeneNativeP-Prüfung hat0Fehler mit dem tatsächlichen kanonischenBildhash, drei beobachteten bytegleichenMirrors und exakt drei alten Fällen. Die kanonischecommittablePNG istderpflichtigePrüfinput; erzeugtePublic/Backend-Mirrors sindnuroptionaleBeobachtungen. Kein neuerBildreview. NativeStatusneeds_human_review/ai_candidate/E1/G1 bleibtwahrheitsgemäß.
+
+KEEP betrifft hier ganze einzelneQuellenleistung undP-Inhalt. Keine125Source-Gesamtfreigabe, nativeMappingentscheidung, ganzeKursprojektion, D/V/M-/menschliche oder Masteryfreigabe. Die BerlinerGK/LK-Q3-Quellenzuordnung wird mitgültiger Primärevidenz wiederverwendet, niemals ausfremdenTags oderQ2-Material abgeleitet. GanzeP981Targetrollen und insbesondere ergänzendeBE-Zielrollen bleiben getrennterScopeprüfung vorbehalten. Zentral300/311, strengerNettozuwachs0. KeineLivewrites/Stages/Commits.

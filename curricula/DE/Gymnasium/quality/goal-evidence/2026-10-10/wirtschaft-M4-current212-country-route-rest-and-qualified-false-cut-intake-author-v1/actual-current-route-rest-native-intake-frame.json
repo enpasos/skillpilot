@@ -1,0 +1,35 @@
+{
+  "capsule": "/tmp/skillpilot-economics-current212-route-rest-le60k66m",
+  "checker": {
+    "path": "app/scripts/generateCurriculumQualityStatus.ts",
+    "sha256": "656084b7cd9d6cb5324361b927b9f761596c572d7e4f616c7b13da061f4b1336",
+    "bytes": 273652
+  },
+  "compiler": {
+    "path": "app/scripts/applicabilityCompiler.ts",
+    "sha256": "50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd",
+    "bytes": 56784
+  },
+  "beforeCAN": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-current212-country-route-rest-and-qualified-false-cut-intake-author-v1/whole-current-active-before-bounded-route-intake.exact.json",
+    "sha256": "ae2bec77e9483af50bd25f782dd287df533b7ddeac859ffe2dc3e3dfc98b4de6",
+    "bytes": 2281828
+  },
+  "scenarioSixTwelveCAN": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-current212-country-route-rest-and-qualified-false-cut-intake-author-v1/whole-current-fieldwise-six-flags-twelve-ref-intake.inert.json",
+    "sha256": "280d30449b821e8d589e1d03e641f420484e71fc0e8c1f4366f7ecabe79cace8",
+    "bytes": 2282246
+  },
+  "registry": {
+    "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/de-gymnasium-math-physics.config.json",
+    "sha256": "32a02b21f6b57fa2f34f27b843b9d5f2e01abaaeee535e801b781903c7bb43fd",
+    "bytes": 214427
+  },
+  "semanticLedger": {
+    "path": "curricula/DE/Gymnasium/quality/deep-understanding-rollout/wirtschaft-current496-qualified-M3-materials-20261010-v5/wirtschaftswissenschaften.semantic-kinds.json",
+    "sha256": "d8958e5a147a8af960be3427368141522191bb18585133b69ca2bc119580fdfe",
+    "bytes": 159797
+  },
+  "helperSource": "import {readFileSync,writeFileSync} from 'node:fs';\nimport {validateCanonicalLandscape} from './app/src/utils/authoring/canonicalAuthoring.ts';\nimport {buildApplicabilityCompilation} from './app/scripts/applicabilityCompiler.ts';\nimport {routeProfiles,evaluateRouteProfile,ownProjectedScopeRows,collectWholeMaterialPrerequisiteClosure,readJurisdictionCoverageByLandscapeId,evaluateJurisdictionCoverage} from './app/scripts/generateCurriculumQualityStatus.ts';\nconst land=JSON.parse(readFileSync('./curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json','utf8'));\nconst all=buildApplicabilityCompilation(),report=all.reports.find(r=>r.landscapeId===land.landscapeId)!;\nconst profile=routeProfiles.find(p=>p.landscapeId===land.landscapeId)!;\nconst route=evaluateRouteProfile(land,profile,{...all,reports:[report]});\nconst source=evaluateJurisdictionCoverage(readJurisdictionCoverageByLandscapeId(all).get(land.landscapeId));\nconst ids=[];\nconst materials=ids.map(id=>{const g=land.goals.find(g=>g.id===id),c=collectWholeMaterialPrerequisiteClosure(land,id);return {id,directRequires:g.requires,wholeMaterialPrerequisites:[...c.atomicGoalIds],unresolvedReferences:[...c.unresolvedReferences],actualCompiled:report.goals.find(x=>x.goalId===id),actuallyVisibleScopeKeys:ownProjectedScopeRows.filter(r=>r.actualTerminalIds.includes(id)).map(r=>r.viewPath+'|'+r.jurisdiction+'|'+JSON.stringify(r.scopeFilters))};});\nconst graph=validateCanonicalLandscape(land);if(graph.some(g=>g.severity==='error'))throw new Error(JSON.stringify(graph));\nwriteFileSync(process.argv[2],JSON.stringify({goalCount:land.goals.length,graph,compilerSummary:report.summary,compilerGoals:report.goals,nativeRules:route.rules,sourceRule:source,materials,allScopeRows:ownProjectedScopeRows},null,2)+'\\n');\nconsole.log(JSON.stringify({goalCount:land.goals.length,graphErrors:graph.filter(g=>g.severity==='error').length,compilerSummary:report.summary,sourceRule:source,rules:route.rules.map(r=>({id:r.id,status:r.status,metrics:r.metrics}))},null,2));\n",
+  "instrumentation": "Only capture scope rows and exports; unchanged full native rules, thresholds, source inventory and collector. All actual new views are own capsule only."
+}

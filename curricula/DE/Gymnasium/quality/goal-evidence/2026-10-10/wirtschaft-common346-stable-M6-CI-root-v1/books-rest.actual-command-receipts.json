@@ -1,0 +1,113 @@
+{
+  "phase": "books-rest",
+  "toolchainNodePath": "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+  "remoteGitHubCIClaim": false,
+  "results": [
+    {
+      "name": "check:goal-book-publication",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:goal-book-publication"
+      ],
+      "startedAt": "2026-10-10T17:49:34.024425+00:00",
+      "elapsedSeconds": 26.864,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common346-stable-M6-CI-root-v1/books-rest.01.check-goal-book-publication.raw.txt",
+      "rawOutputSha256": "sha256:aabc16a5b33c7943883b11bf52d98eefc17c012730ab458edb4660c6bf9b2b2f"
+    },
+    {
+      "name": "test:goal-book-pipeline",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:goal-book-pipeline"
+      ],
+      "startedAt": "2026-10-10T17:50:00.888970+00:00",
+      "elapsedSeconds": 211.662,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common346-stable-M6-CI-root-v1/books-rest.02.test-goal-book-pipeline.raw.txt",
+      "rawOutputSha256": "sha256:8d5929bee4546f4d9677ac99c8f3b760004746f4f188282b3c829321d61b36e8"
+    },
+    {
+      "name": "test:goal-book-ui",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:goal-book-ui"
+      ],
+      "startedAt": "2026-10-10T17:53:32.551490+00:00",
+      "elapsedSeconds": 13.076,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common346-stable-M6-CI-root-v1/books-rest.03.test-goal-book-ui.raw.txt",
+      "rawOutputSha256": "sha256:c88d2841f82d76a0d59046aa7fa1d40ccc0a81226591630367c2d5b27c138f62"
+    },
+    {
+      "name": "test:curriculum-quality-ui",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:curriculum-quality-ui"
+      ],
+      "startedAt": "2026-10-10T17:53:45.627681+00:00",
+      "elapsedSeconds": 19.296,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common346-stable-M6-CI-root-v1/books-rest.04.test-curriculum-quality-ui.raw.txt",
+      "rawOutputSha256": "sha256:e4cde80ba78e32ccef5e7b09bed2cd0b848bbba1a29f471e158d469ebd36df88"
+    },
+    {
+      "name": "test:content-materials",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:content-materials"
+      ],
+      "startedAt": "2026-10-10T17:54:04.924523+00:00",
+      "elapsedSeconds": 6.679,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common346-stable-M6-CI-root-v1/books-rest.05.test-content-materials.raw.txt",
+      "rawOutputSha256": "sha256:65896d41ebde4ce9f50780200c3d2e5ca5c8723652940ff6fd9fd663128beb89"
+    },
+    {
+      "name": "lint",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "lint"
+      ],
+      "startedAt": "2026-10-10T17:54:11.604309+00:00",
+      "elapsedSeconds": 33.052,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common346-stable-M6-CI-root-v1/books-rest.06.lint.raw.txt",
+      "rawOutputSha256": "sha256:c31ee7aee37f3feee12610fa6bfbd1ee3b3252ef1922ddb19febfb56dd5d50bc"
+    },
+    {
+      "name": "build:application",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "build:application"
+      ],
+      "startedAt": "2026-10-10T17:54:44.656644+00:00",
+      "elapsedSeconds": 100.249,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common346-stable-M6-CI-root-v1/books-rest.07.build-application.raw.txt",
+      "rawOutputSha256": "sha256:f591c354be41e780cf583f3b293da254a75ecaa1568338cc05e1a4bb7b783b6e"
+    }
+  ],
+  "phaseComplete": true
+}

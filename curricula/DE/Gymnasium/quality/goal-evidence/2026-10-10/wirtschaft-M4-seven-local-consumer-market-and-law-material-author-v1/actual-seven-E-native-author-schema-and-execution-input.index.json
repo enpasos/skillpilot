@@ -1,0 +1,21 @@
+{
+  "role": "AUTHOR_NATIVE_PREPARATION_NOT_FOREIGN_APPROVAL",
+  "schemaErrors506": 0,
+  "old498WholeGoalsExact": true,
+  "one5317ThreeFieldsProposed": true,
+  "ordinary336P685Exact": true,
+  "newPracticeDRAFT7": true,
+  "optionalCapsule": "/tmp/skillpilot-economics-seven-E-native-author-40tkzpo5",
+  "optionalArgv": [
+    "/tmp/skillpilot-economics-seven-E-native-author-40tkzpo5/app/node_modules/.bin/tsx",
+    "/tmp/skillpilot-economics-seven-E-native-author-40tkzpo5/native-seven-E-author506-closure-and-compiler.ts",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-M4-seven-local-consumer-market-and-law-material-author-v1/actual-seven-DRAFT-plus-truthful26-nav-native506-graph-compiler-and-fullclosure.successor-v2.json"
+  ],
+  "helperSource": "import{readFileSync,writeFileSync}from'node:fs';import{validateCanonicalLandscape}from'./app/src/utils/authoring/canonicalAuthoring.ts';import{buildApplicabilityCompilation}from'./app/scripts/applicabilityCompiler.ts';import{collectWholeMaterialPrerequisiteClosure}from'./app/scripts/generateCurriculumQualityStatus.ts';const land=JSON.parse(readFileSync('./curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json','utf8'));const graph=validateCanonicalLandscape(land);const compilation=buildApplicabilityCompilation();const rep=compilation.reports.find(r=>r.landscapeId===land.landscapeId);const materials=land.goals.slice(-7).map(g=>{const c=collectWholeMaterialPrerequisiteClosure(land,g.id);return{wholeGoal:g,actualNativePrerequisiteClosure:[...c.atomicGoalIds],unresolvedReferences:[...c.unresolvedReferences],actualCompiled:rep.goals.find(x=>x.goalId===g.id),releasePending:g.examData.reviewStatus==='draft'};});writeFileSync(process.argv[2],JSON.stringify({goalCount:land.goals.length,graph,compilerSummary:rep.summary,materials,newOrdinaryIds:0,noNavigationNoViewDelta:true,scientificApproval:false},null,2)+'\\n');if(graph.some(x=>x.severity==='error')||rep.summary.errors)process.exit(1);console.log(JSON.stringify({goalCount:land.goals.length,graphErrors:0,compilerSummary:rep.summary,materials:materials.length}));",
+  "actualCheckerSourceBaseSHA": "656084b7cd9d6cb5324361b927b9f761596c572d7e4f616c7b13da061f4b1336",
+  "initialBareAppendActualAPV103Errors": 90,
+  "initialOrphanNegativePreserved": "actual-seven-whole-DRAFT-native-506-graph-compiler-and-fullclosure.json",
+  "counterfactualPublicationOrReleaseClaim": false,
+  "fullSourceCountryCourseQSNotClaimed": true,
+  "sciencePending": true
+}

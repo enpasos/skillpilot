@@ -1,0 +1,202 @@
+{
+  "status": "passed_local_positive_v2_schema_semantics_and_native_fingerprints",
+  "checkedAt": "2026-10-10T13:27:22.969Z",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "runtime": "Codex",
+  "generationParametersFingerprint": "sha256:9a23baf355d15891ccd9b6798a4b3e69974f8f841e94ea754584378f7b370f12",
+  "generationMetadataPath": "generation-metadata.actual.json",
+  "actualToolchain": {
+    "node": "v20.20.2",
+    "tsx": "4.21.0",
+    "ajv": "8.17.1"
+  },
+  "inputArtifacts": [
+    {
+      "path": "contracts/goal-evidence/v2/goal-evidence-profile.schema.json",
+      "digest": "sha256:331d50bf11f99e3de56cf4356034ebbc37fe5b6d47d28d1edd167da57915c944"
+    },
+    {
+      "path": "app/scripts/positiveGoalEvidenceProfileModel.ts",
+      "digest": "sha256:33d3005224e75527fab24fd625d15908716a8e028870625a9a002d39820114a6"
+    },
+    {
+      "path": "app/scripts/goalEvidenceProfileModel.ts",
+      "digest": "sha256:50c932f1bb2e6db266756113dbbb82af9d59e172825d2039cdc9dcd9a10c3a26"
+    }
+  ],
+  "ownNativeRecordChecks": [
+    {
+      "goalId": "648224f4-cc8f-5f41-9cae-6d783cd1ae77",
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindAuthority": "INERT_author_classification_proposal; independentA_open",
+      "goalFingerprint": "sha256:ab5b2d498aa9b4d8314e8f31ed97fe3f577c70777dc2d032b428fddd4e8d56fd",
+      "reviewInputFingerprint": "sha256:004c711266e185c455dada6a20780bbfe74bce7109d811a21b47220492c8d894",
+      "profileFingerprint": "sha256:99b77767fe5112398cab42c64a5aba55f3a881d21ca7ea7c8558f35a9504d800",
+      "inputResourceDigests": {},
+      "bilingualCaseBriefCount": 2,
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": []
+    },
+    {
+      "goalId": "5aaf5abf-5e70-57c6-b030-1d08a35d17b8",
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindAuthority": "INERT_author_classification_proposal; independentA_open",
+      "goalFingerprint": "sha256:666b6d8734d12362664d9bd57aa47807576cad4e05d4e6d1f6ddab86519694b3",
+      "reviewInputFingerprint": "sha256:4d5d33fc969cf536baf62a3b07613efd13b43cc1d7202e2bbd5bc52d57efd114",
+      "profileFingerprint": "sha256:adcfb51e197a71c645373e8e174654de3664d638f69eea06457bf7354ed65d1a",
+      "inputResourceDigests": {},
+      "bilingualCaseBriefCount": 2,
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": []
+    },
+    {
+      "goalId": "79d244e0-049e-59e9-a2fb-b8f8670b315a",
+      "effectiveSemanticKind": "curricularAtomic",
+      "semanticKindAuthority": "actual_current_unchanged_kind; no_new_A_review",
+      "goalFingerprint": "sha256:a005af72b447b21de0b692c034f5dfd2e7e4df38b9fdd652a2d0ef86e2990236",
+      "reviewInputFingerprint": "sha256:722c861ef386dc89bd43cbe695793fe2fcaaa3a44606579d333ba448c951585a",
+      "profileFingerprint": "sha256:bf420e6efbda7a60298b6662c594312e8963c9b6f8cab89bdee7db82c4415035",
+      "inputResourceDigests": {
+        "/assets/goal-visualizations/wirtschaftswissenschaften/79d244e0-049e-59e9-a2fb-b8f8670b315a/79d244e0-049e-59e9-a2fb-b8f8670b315a.png": "sha256:650c3b5db0c6f0be024c7a6f7198f7f18dcd96b74286d5e54af0daeed3b8ba4b"
+      },
+      "bilingualCaseBriefCount": 2,
+      "authority": "ai_candidate",
+      "status": "needs_human_review",
+      "evidenceLevel": "E1",
+      "maximumClaimScope": "G1",
+      "reviewRunIds": []
+    }
+  ],
+  "originalWholeContractBindingChecks": [
+    {
+      "goalId": "682facbf-3c9d-5485-88a3-20f2394ed77f",
+      "status": "passed_local_original_positive_schema_semantics_native_input_and_profile_binding",
+      "actualCurrentEffectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0301a117afe5e0e3fe26ee49b8ab73b4d73685de5b5841504c383a15fc38a74f",
+      "reviewInputFingerprint": "sha256:4ed3dac86075c94be22db8fb198eff57b7551bfe8fed13c4e2e1cffb6bc108de",
+      "profileFingerprint": "sha256:af0e3d9ab97b4402f4cde8ea41bd23ab3b5f5a8842562738c1123b1167eae4ca",
+      "inputResourceDigests": {
+        "/assets/goal-visualizations/wirtschaftswissenschaften/682facbf-3c9d-5485-88a3-20f2394ed77f/682facbf-3c9d-5485-88a3-20f2394ed77f.png": "sha256:858178173d59a65393ccc699178b974c5e0e1a2b57073dbe304b5e0a46a97a5b"
+      },
+      "wholeBookAndConfigRecordIdentical": true,
+      "newContentReviewClaimed": false
+    },
+    {
+      "goalId": "79edbe3a-7557-5b3b-a0f2-c31f45b6dad7",
+      "status": "passed_local_original_positive_schema_semantics_native_input_and_profile_binding",
+      "actualCurrentEffectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7a6828ed20cd07d42b2730e088ec813c132b81c9ed01047cf3f4088134ccb32d",
+      "reviewInputFingerprint": "sha256:87d6a04fd04496cf8a01a1dc2826f4a8083ea08f8da33c6286896af160958a0f",
+      "profileFingerprint": "sha256:6a725cc88ec69805d1dc28b7d516dd1ef0a38e46173b7f26fc1287ed7d2ff6f9",
+      "inputResourceDigests": {
+        "/assets/goal-visualizations/wirtschaftswissenschaften/79edbe3a-7557-5b3b-a0f2-c31f45b6dad7/79edbe3a-7557-5b3b-a0f2-c31f45b6dad7.png": "sha256:6ad6c82fc7faa8c840f1b5557160f9cb15ae20832505abfe18aa9dcf4f0d762e"
+      },
+      "wholeBookAndConfigRecordIdentical": true,
+      "newContentReviewClaimed": false
+    },
+    {
+      "goalId": "85cb48e1-2e4c-5367-8437-7b8becace601",
+      "status": "passed_local_original_positive_schema_semantics_native_input_and_profile_binding",
+      "actualCurrentEffectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0c42f145d93e1942a0ab7b35f0ba3886bda5a814c275ec10e3b8372943961503",
+      "reviewInputFingerprint": "sha256:c36261676a1d7517b81159e5c0f7ab0fd6ecf6609bb361b4e5607f49cacad882",
+      "profileFingerprint": "sha256:3b8083de19f4c636aa4b0d59a0dc3801d9918584e383de2389af2c3c781991b2",
+      "inputResourceDigests": {
+        "/assets/goal-visualizations/wirtschaftswissenschaften/85cb48e1-2e4c-5367-8437-7b8becace601/85cb48e1-2e4c-5367-8437-7b8becace601.png": "sha256:7f9a20d727f62e8ed04dfae6a0f097add598671e683c77698633f7ad06d82533"
+      },
+      "wholeBookAndConfigRecordIdentical": true,
+      "newContentReviewClaimed": false
+    },
+    {
+      "goalId": "753e5ac0-0375-56b9-a733-75701097b151",
+      "status": "passed_local_original_positive_schema_semantics_native_input_and_profile_binding",
+      "actualCurrentEffectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5b5d19301b25584881b52cfb1bf493818bd9c7cf671ada27bbe41e8c999d1971",
+      "reviewInputFingerprint": "sha256:f6a08519f47e3af5d07820f80d72a50a1cb296ee1f28035b11d4c2dfd053db30",
+      "profileFingerprint": "sha256:4e0b658e94ba02086dc6aaac4d232cea24648df36563acb0f799a03402b908fc",
+      "inputResourceDigests": {
+        "/assets/goal-visualizations/wirtschaftswissenschaften/753e5ac0-0375-56b9-a733-75701097b151/753e5ac0-0375-56b9-a733-75701097b151.png": "sha256:2180c982b175e5eff4f2b525199c5e581a6cd94ad4e48125523e68530550bf5f"
+      },
+      "wholeBookAndConfigRecordIdentical": true,
+      "newContentReviewClaimed": false
+    },
+    {
+      "goalId": "79d244e0-049e-59e9-a2fb-b8f8670b315a",
+      "status": "passed_local_original_positive_schema_semantics_native_input_and_profile_binding",
+      "actualCurrentEffectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:a005af72b447b21de0b692c034f5dfd2e7e4df38b9fdd652a2d0ef86e2990236",
+      "reviewInputFingerprint": "sha256:d96b7f92eb3aa9e1a17d299239991d883ff49fed2981da023d243b5d52d30e62",
+      "profileFingerprint": "sha256:3dc3ab3ca112446dc58bece8e8223ab509416dda01d907b20b4fba496ebae65c",
+      "inputResourceDigests": {
+        "/assets/goal-visualizations/wirtschaftswissenschaften/79d244e0-049e-59e9-a2fb-b8f8670b315a/79d244e0-049e-59e9-a2fb-b8f8670b315a.png": "sha256:650c3b5db0c6f0be024c7a6f7198f7f18dcd96b74286d5e54af0daeed3b8ba4b"
+      },
+      "wholeBookAndConfigRecordIdentical": true,
+      "newContentReviewClaimed": false
+    },
+    {
+      "goalId": "c5272ab8-baa0-570b-9f31-426d1f4460f2",
+      "status": "passed_local_original_positive_schema_semantics_native_input_and_profile_binding",
+      "actualCurrentEffectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:9015e943438d02c476902d222c223dfee94f375c7260ddd12cec937e961e5653",
+      "reviewInputFingerprint": "sha256:485086b5e5be2f9ba3c5da4aef9dea85a2004b88cafe0e9f21916fcb3f557528",
+      "profileFingerprint": "sha256:cc57289b63c23e1ab09612a7c069bbc7e4437cece74a097882b9e042f94f07d7",
+      "inputResourceDigests": {
+        "/assets/goal-visualizations/wirtschaftswissenschaften/c5272ab8-baa0-570b-9f31-426d1f4460f2/c5272ab8-baa0-570b-9f31-426d1f4460f2.png": "sha256:a8ea62fab5b6962db6221d5551e62082ecd9c3aa7a2e0626f8f81550ded0c3a3"
+      },
+      "wholeBookAndConfigRecordIdentical": true,
+      "newContentReviewClaimed": false
+    },
+    {
+      "goalId": "648224f4-cc8f-5f41-9cae-6d783cd1ae77",
+      "status": "passed_local_original_positive_schema_semantics_native_input_and_profile_binding",
+      "actualCurrentEffectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0d9824fa76a5d4ce3d04ea4c095a9cc7aa59f05a12cbf59cdebe63926e2c3349",
+      "reviewInputFingerprint": "sha256:cede27aa504477973db4344e8a8f9eed98779e0d044abd65ecc6c61c4c76dba3",
+      "profileFingerprint": "sha256:6097037eafd72bc0ea4210cc72c8f02437e1167260aac30ef3f3e864ab8b7aa5",
+      "inputResourceDigests": {
+        "/assets/goal-visualizations/wirtschaftswissenschaften/648224f4-cc8f-5f41-9cae-6d783cd1ae77/648224f4-cc8f-5f41-9cae-6d783cd1ae77.png": "sha256:eaab334305a7d886c644fbd77a516b93737c8d28d4cc7e7d45c60b3635d7c31c"
+      },
+      "wholeBookAndConfigRecordIdentical": true,
+      "newContentReviewClaimed": false
+    },
+    {
+      "goalId": "9ea7d847-7425-5157-a827-ee5f8c2e8c0a",
+      "status": "passed_local_original_positive_schema_semantics_native_input_and_profile_binding",
+      "actualCurrentEffectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:3f1979d0434fd430be2a11f777d9b3a120d4737b8ede7f9064b39442651cc661",
+      "reviewInputFingerprint": "sha256:c35618c49f24ccd97b75b5d272f83055daefb3951ff40d7daa5fa5b00cb34a8a",
+      "profileFingerprint": "sha256:817ee17ba6a8605ce874780ca7e5b8389a1d195cba66d8faf9e68da5ccfdbe3a",
+      "inputResourceDigests": {
+        "/assets/goal-visualizations/wirtschaftswissenschaften/9ea7d847-7425-5157-a827-ee5f8c2e8c0a/9ea7d847-7425-5157-a827-ee5f8c2e8c0a.png": "sha256:f881c72d31f65e315b2c9f65265b85d68ac3e5cd756351730953951bc72338ab"
+      },
+      "wholeBookAndConfigRecordIdentical": true,
+      "newContentReviewClaimed": false
+    },
+    {
+      "goalId": "b4a82d8d-6311-5575-b222-cbaf6ea90d32",
+      "status": "passed_local_original_positive_schema_semantics_native_input_and_profile_binding",
+      "actualCurrentEffectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:703dc4c722282fcac182719843edae6c4a00d2c61a9fcc1eef8575d357836751",
+      "reviewInputFingerprint": "sha256:17d556a910abea4018e248b880a171c1167ccd1fe454c3a538f1803933d46598",
+      "profileFingerprint": "sha256:477da34d6d7074f7edd83425513b94bc26cacc3a86a9d2692bbd4daa99c9aa4d",
+      "inputResourceDigests": {
+        "/assets/goal-visualizations/wirtschaftswissenschaften/b4a82d8d-6311-5575-b222-cbaf6ea90d32/b4a82d8d-6311-5575-b222-cbaf6ea90d32.png": "sha256:a0a4fb57fdd7a5b5151cb5bedb5d2054501dadb246bfdefe84863a32974a166b"
+      },
+      "wholeBookAndConfigRecordIdentical": true,
+      "newContentReviewClaimed": false
+    }
+  ],
+  "outputJsonDigest": "sha256:9fd582d4ab091d9343dabfc40a23444782f67858c6206fabda982607f7e2912c",
+  "outputJsonlDigest": "sha256:1088f4027e20631f1ae5c5a0f967b436822a7f0885ffea2d719266b04c7d4536",
+  "independentContentReviewClaimed": false,
+  "humanApprovalClaimed": false,
+  "learnerTrialClaimed": false,
+  "activeMutationClaimed": false
+}

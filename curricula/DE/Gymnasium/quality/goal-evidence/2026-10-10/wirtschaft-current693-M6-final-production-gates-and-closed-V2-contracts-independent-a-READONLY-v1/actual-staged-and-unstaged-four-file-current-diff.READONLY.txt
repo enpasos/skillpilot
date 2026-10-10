@@ -1,0 +1,464 @@
+diff --git a/app/scripts/generateCurriculumQualityStatus.ts b/app/scripts/generateCurriculumQualityStatus.ts
+index 86e1e18da..c1dd8f3f8 100644
+--- a/app/scripts/generateCurriculumQualityStatus.ts
++++ b/app/scripts/generateCurriculumQualityStatus.ts
+@@ -961,6 +961,13 @@ const CANONICAL_GYM_ECONOMICS_PRACTICE_CLUSTER_IDS = [
+   '5113c64b-405d-5f4b-bae9-70fe530b5e69',
+   'f8922e23-f00e-53f7-be2f-1016e2b0ddf2',
+   '5982abda-0b0e-51a5-930f-1f58bd757f30',
++  '5317d078-413b-58bb-9262-d57387d51655',
++  'cb53b170-d531-5267-9571-ec57004b0fb3',
++  'f761852b-a0df-5ea6-a033-67bf3fb94ec1',
++  'bc977eaf-b2f0-5cb2-af48-2dff948830af',
++  'a5689d99-1ff6-57d1-b83e-b64c2dad480d',
++  'd2b41a54-0d32-5cee-948f-77954b0c6e79',
++  '86b0ed9d-3809-5402-92ad-89c2f9cbbe76',
+ ]
+ const CANONICAL_GYM_POLITICS_ECONOMICS_LANDSCAPE_ID = '51b60137-46e8-5498-973e-ea38bb32f327'
+ const CANONICAL_GYM_POLITICS_ECONOMICS_MOTIVATION_GOAL_ID = 'b76a024a-55a6-5c77-85cd-b37ef10e5197'
+@@ -1219,6 +1226,8 @@ const routeProfiles: RouteProfile[] = [
+     motivationAnchorGoalIds: [CANONICAL_GYM_ECONOMICS_MOTIVATION_GOAL_ID],
+     terminalAutonomyClusterIds: CANONICAL_GYM_ECONOMICS_PRACTICE_CLUSTER_IDS,
+     compositionViewStage: 'CrossStage',
++    compositionViewApplicabilityMode: 'compiled-jurisdiction',
++    compositionViewRoutePathMode: 'visible-atomic',
+     goalSelector: (goal) => isAtomicGoal(goal)
+       && isCanonicalGymEconomicsGoal(goal)
+       && !isMemoryGoal(goal)
+@@ -1924,6 +1933,53 @@ function terminalAutonomyGoalsForRouteScope(
+     .filter((goal) => isAtomicGoal(goal) && !isMemoryGoal(goal))
+ }
+ 
++/** Complete hard prerequisites of a whole assessment material. Cluster
++ * prerequisites mean all of their atomic descendants; compatibility requires
++ * inherited through actual contains ancestors remain hard gates as well.
++ * Unresolved cross-landscape references are retained for fail-closed scope QA. */
++function collectWholeMaterialPrerequisiteClosure(
++  landscape: SkillLandscape,
++  terminalGoalId: string,
++): { atomicGoalIds: Set<string>; unresolvedReferences: Set<string> } {
++  const goalById = new Map(landscape.goals.map((goal) => [goal.id, goal]))
++  const parentByChild = buildParentByChild(landscape.goals)
++  const inheritedReferences = (goalId: string): string[] => {
++    const references = [...(goalById.get(goalId)?.requires ?? [])]
++    const ancestors = [...(parentByChild.get(goalId) ?? [])]
++    const seenAncestors = new Set<string>()
++    while (ancestors.length > 0) {
++      const ancestorId = ancestors.pop()!
++      if (seenAncestors.has(ancestorId)) continue
++      seenAncestors.add(ancestorId)
++      references.push(...(goalById.get(ancestorId)?.requires ?? []))
++      ancestors.push(...(parentByChild.get(ancestorId) ?? []))
++    }
++    return references
++  }
++  const atomicGoalIds = new Set<string>()
++  const unresolvedReferences = new Set<string>()
++  const seenGoalIds = new Set<string>()
++  const pending = inheritedReferences(terminalGoalId)
++  while (pending.length > 0) {
++    const rawRef = pending.pop()!
++    const ref = parseReference(rawRef, landscape.landscapeId)
++    const goal = ref.landscapeId === landscape.landscapeId ? goalById.get(ref.goalId) : undefined
++    if (!goal) {
++      unresolvedReferences.add(rawRef)
++      continue
++    }
++    if (seenGoalIds.has(goal.id)) continue
++    seenGoalIds.add(goal.id)
++    if (isAtomicGoal(goal)) {
++      atomicGoalIds.add(goal.id)
++    } else {
++      pending.push(...(goal.contains ?? []))
++    }
++    pending.push(...inheritedReferences(goal.id))
++  }
++  return { atomicGoalIds, unresolvedReferences }
++}
++
+ function evaluateRouteEndpointCompositionVisibility(
+   landscape: SkillLandscape,
+   profile: RouteProfile,
+@@ -1950,6 +2006,7 @@ function evaluateRouteEndpointCompositionVisibility(
+   const enforceProjectionLocalRoutes = profile.compositionViewRoutePathMode === 'visible-atomic'
+   const enforceProjectionLocalAssessmentRequires = (
+     profile.landscapeId === CANONICAL_GYM_PHYSICS_LANDSCAPE_ID
++    || profile.landscapeId === CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID
+   )
+   const mathSek1CurricularAtomicGoalIds = profile.profileId === 'canonical-math-sek1'
+     ? new Set(loadJson<{ decisions: Array<{
+@@ -1973,6 +2030,9 @@ function evaluateRouteEndpointCompositionVisibility(
+   const emptyExpectedTerminalScopes: string[] = []
+   const invalidStageStructureScopes: string[] = []
+   const terminalPrerequisiteClosureScopes: string[] = []
++  const terminalMaterialCoverageBindingScopes: string[] = []
++  const wholeMaterialPrerequisiteClosureScopes: string[] = []
++  const wholeMaterialPrerequisiteClosureByTerminalId = new Map<string, ReturnType<typeof collectWholeMaterialPrerequisiteClosure>>()
+   const missingEffectiveMotivationRouteScopes: string[] = []
+   const missingDirectMotivationRouteScopes: string[] = []
+   const missingEffectiveTerminalRouteScopes: string[] = []
+@@ -2005,6 +2065,8 @@ function evaluateRouteEndpointCompositionVisibility(
+   let profileSelectorExcludedGoalOccurrencesMissingEffectiveTerminalRoute = 0
+   let profileSelectorExcludedGoalOccurrencesMissingDirectTerminalRoute = 0
+   let terminalPrerequisiteOccurrencesMissingFromProjection = 0
++  let terminalMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath = 0
++  let wholeMaterialPrerequisiteOccurrencesMissingFromProjection = 0
+   let nationalProjectionScopesUsingJurisdictionStageAuthority = 0
+   let nationalTargetAtomicGoalOccurrencesExcludedByJurisdictionStageAuthority = 0
+   let nationalSelectedGoalOccurrencesExcludedByJurisdictionStageAuthority = 0
+@@ -2014,8 +2076,12 @@ function evaluateRouteEndpointCompositionVisibility(
+   const selectedGoalIds = new Set(selectedGoals.map((goal) => goal.id))
+ 
+   viewEntries.forEach(({ file, view }) => {
++    // CrossStage explicitly means the entire authored view, including both
++    // school stages. Its root is not inferred from year, phase or display labels.
+     const matchingStageStructures = enforceProjectionLocalRoutes
+-      ? collectCompositionStageStructures(view.rootNodes, profile.compositionViewStage!)
++      ? profile.compositionViewStage === 'CrossStage'
++        ? view.rootNodes.filter((node) => node.kind === 'structure')
++        : collectCompositionStageStructures(view.rootNodes, profile.compositionViewStage!)
+       : []
+     const scopedTerminalGoals = terminalAutonomyGoalsForRouteScope(
+       goalById,
+@@ -2166,6 +2232,14 @@ function evaluateRouteEndpointCompositionVisibility(
+         })
+       }
+       const expectedTerminalGoalIds = scopedTerminalGoals
++        // Whole Economics materials must also match the actual authored course
++        // and duration. Compiled country applicability alone does not imply this.
++        .filter((goal) => profile.landscapeId !== CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID
++          || scopeFilters.length === 0
++          || goalMatchesFilters(
++            convertLearningGoal(goal, { landscapeId: landscape.landscapeId }),
++            scopeFilters,
++          ))
+         // An explicit prerequisite-only exam is support, not a route endpoint.
+         // A wholly missing exam still fails unless CPV-211's exact prerequisite
+         // condition makes it inapplicable in this target projection.
+@@ -2216,7 +2290,8 @@ function evaluateRouteEndpointCompositionVisibility(
+           .filter((terminalId) => {
+             const extendedData = goalById.get(terminalId)?.extendedData as Record<string, unknown> | undefined
+             const overrides = extendedData?.applicabilityOverrides as Record<string, unknown> | undefined
+-            return Array.isArray(overrides?.jurisdiction)
++            return profile.landscapeId === CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID
++              || Array.isArray(overrides?.jurisdiction)
+               || (
+                 enforceProjectionLocalAssessmentRequires
+                 && extendedData?.applicabilityFromRequires === true
+@@ -2232,6 +2307,41 @@ function evaluateRouteEndpointCompositionVisibility(
+               .map((goalId) => `${terminalId}->${goalId}`)
+           })
+         : []
++      // A whole material's declared assessed competencies cannot be licensed by
++      // a single convenient prerequisite when other assessed competencies are
++      // absent from its actual visible prerequisite route.
++      const hasVisibleMaterialPrerequisitePath = createVisibleAtomicPathChecker(
++        effectiveEdges,
++        visibleAtomicGoalIds,
++      )
++      const terminalMaterialCoverageBindingIssues = enforceProjectionLocalRoutes
++        && profile.landscapeId === CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID
++        ? actualTerminalGoalIds.flatMap((terminalId) => (
++          goalById.get(terminalId)?.examData?.coveredGoalIds ?? []
++        ).flatMap((rawRef) => {
++          const ref = parseReference(rawRef, landscape.landscapeId)
++          return ref.landscapeId !== landscape.landscapeId
++            || !goalById.has(ref.goalId)
++            || !visibleAtomicGoalIds.has(ref.goalId)
++            || !hasVisibleMaterialPrerequisitePath(terminalId, ref.goalId)
++            ? [`${terminalId}->${rawRef}`]
++            : []
++        }))
++        : []
++      const wholeMaterialPrerequisiteClosureIssues = enforceProjectionLocalRoutes
++        && profile.landscapeId === CANONICAL_GYM_ECONOMICS_LANDSCAPE_ID
++        ? actualTerminalGoalIds.flatMap((terminalId) => {
++          let closure = wholeMaterialPrerequisiteClosureByTerminalId.get(terminalId)
++          if (!closure) {
++            closure = collectWholeMaterialPrerequisiteClosure(landscape, terminalId)
++            wholeMaterialPrerequisiteClosureByTerminalId.set(terminalId, closure)
++          }
++          return [
++            ...Array.from(closure.unresolvedReferences),
++            ...Array.from(closure.atomicGoalIds).filter((goalId) => !visibleAtomicGoalIds.has(goalId)),
++          ].map((ref) => `${terminalId}->${ref}`)
++        })
++        : []
+       const visibleProfileSelectedGoals = selectedGoals.filter((goal) => visibleTargetAtomicGoalIds.has(goal.id))
+       const visibleProjectedRouteTargetGoals = enforceProjectionLocalRoutes
+         ? Array.from(visibleTargetAtomicGoalIds)
+@@ -2314,6 +2424,8 @@ function evaluateRouteEndpointCompositionVisibility(
+         .filter((goal) => projectedTargetIdsExcludedByProfileSelector.has(goal.id))
+         .length
+       terminalPrerequisiteOccurrencesMissingFromProjection += missingTerminalPrerequisiteIds.length
++      terminalMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath += terminalMaterialCoverageBindingIssues.length
++      wholeMaterialPrerequisiteOccurrencesMissingFromProjection += wholeMaterialPrerequisiteClosureIssues.length
+       goalsMissingEffectiveMotivationRoute.forEach((goal) => uniqueGoalsMissingEffectiveMotivationRoute.add(goal.id))
+       goalsMissingDirectMotivationRoute.forEach((goal) => uniqueGoalsMissingDirectMotivationRoute.add(goal.id))
+       goalsMissingEffectiveTerminalRoute.forEach((goal) => uniqueGoalsMissingEffectiveTerminalRoute.add(goal.id))
+@@ -2346,6 +2458,12 @@ function evaluateRouteEndpointCompositionVisibility(
+       if (missingTerminalPrerequisiteIds.length > 0) {
+         terminalPrerequisiteClosureScopes.push(`${scopeLabel}: ${missingTerminalPrerequisiteIds.join(', ')}`)
+       }
++      if (wholeMaterialPrerequisiteClosureIssues.length > 0) {
++        wholeMaterialPrerequisiteClosureScopes.push(`${scopeLabel}: ${wholeMaterialPrerequisiteClosureIssues.join(', ')}`)
++      }
++      if (terminalMaterialCoverageBindingIssues.length > 0) {
++        terminalMaterialCoverageBindingScopes.push(`${scopeLabel}: ${terminalMaterialCoverageBindingIssues.join(', ')}`)
++      }
+       if (goalsMissingEffectiveMotivationRoute.length > 0) {
+         missingEffectiveMotivationRouteScopes.push(
+           `${scopeLabel}: ${goalsMissingEffectiveMotivationRoute.map((goal) => goal.id).join(', ')}`,
+@@ -2380,6 +2498,8 @@ function evaluateRouteEndpointCompositionVisibility(
+     && unexpectedTerminalScopes.length === 0
+     && emptyExpectedTerminalScopes.length === 0
+     && terminalPrerequisiteClosureScopes.length === 0
++    && terminalMaterialCoverageBindingScopes.length === 0
++    && wholeMaterialPrerequisiteClosureScopes.length === 0
+     && missingEffectiveMotivationRouteScopes.length === 0
+     && missingDirectMotivationRouteScopes.length === 0
+     && missingEffectiveTerminalRouteScopes.length === 0
+@@ -2416,6 +2536,10 @@ function evaluateRouteEndpointCompositionVisibility(
+       nationalPrerequisiteOnlyGoalOccurrencesImportedByJurisdictionStageAuthority,
+       projectionScopesWithIncompleteExplicitTerminalPrerequisites: terminalPrerequisiteClosureScopes.length,
+       explicitTerminalPrerequisiteOccurrencesMissingFromProjection: terminalPrerequisiteOccurrencesMissingFromProjection,
++      projectionScopesWithIncompleteWholeMaterialCoverageBindings: terminalMaterialCoverageBindingScopes.length,
++      wholeMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath: terminalMaterialCoveredGoalOccurrencesWithoutVisiblePrerequisitePath,
++      projectionScopesWithIncompleteWholeMaterialPrerequisiteClosure: wholeMaterialPrerequisiteClosureScopes.length,
++      wholeMaterialPrerequisiteOccurrencesMissingFromProjection,
+       uniqueExplicitTerminalPrerequisitesMissingFromProjection: uniqueTerminalPrerequisitesMissingFromProjection.size,
+       projectionLocalRouteChecksEnabled: enforceProjectionLocalRoutes ? 1 : 0,
+       visibleSelectedAtomicGoalOccurrences,
+@@ -2460,6 +2584,8 @@ function evaluateRouteEndpointCompositionVisibility(
+       ...missingEffectiveMotivationRouteScopes.map((scope) => `No projection-local effective motivation route: ${scope}`),
+       ...missingDirectMotivationRouteScopes.map((scope) => `No projection-local direct motivation route: ${scope}`),
+       ...terminalPrerequisiteClosureScopes.map((scope) => `Explicitly scoped terminal prerequisite(s) missing from projection: ${scope}`),
++      ...terminalMaterialCoverageBindingScopes.map((scope) => `Incomplete whole-material competency binding: ${scope}`),
++      ...wholeMaterialPrerequisiteClosureScopes.map((scope) => `Incomplete whole-material hard prerequisite closure: ${scope}`),
+     ],
+   )
+ }
+@@ -3990,7 +4116,7 @@ function readCompositionViewFilesForReport(report: CoverageReport): string[] {
+   return readCompositionViewFilesForLandscapeId(report.landscapeId)
+ }
+ 
+-type CompositionRouteStage = 'SekI' | 'SekII'
++type CompositionRouteStage = 'SekI' | 'SekII' | 'CrossStage'
+ 
+ function compositionStructureStage(node: CompositionViewNode): CompositionRouteStage | null {
+   if (node.kind !== 'structure') return null
+@@ -4062,12 +4188,13 @@ function collectRenderedAtomicGoalIdsFromCompositionView(
+     return visibleGoalIds
+   }
+   const fullVisibleGoalIds = collectVisibleGoalIds(rootGoalIds)
+-  const stageStructureGoalIds = compositionStage
+-    ? collectCompositionStageStructures(normalizedView.rootNodes, compositionStage)
++  const restrictToSingleStage = !!compositionStage && compositionStage !== 'CrossStage'
++  const stageStructureGoalIds = restrictToSingleStage
++    ? collectCompositionStageStructures(normalizedView.rootNodes, compositionStage!)
+       .map((node) => `composition:${normalizedView.viewId}:structure:${node.id}`)
+       .filter((goalId) => goalById.has(goalId))
+     : []
+-  const visibleGoalIds = compositionStage
++  const visibleGoalIds = restrictToSingleStage
+     ? collectVisibleGoalIds(stageStructureGoalIds)
+     : fullVisibleGoalIds
+ 
+@@ -4113,7 +4240,7 @@ function collectRenderedAtomicGoalIdsFromCompositionView(
+       nodes.forEach((node) => {
+         if (node.kind === 'structure') {
+           const nodeStage = compositionStructureStage(node)
+-          if (compositionStage && nodeStage && nodeStage !== compositionStage) return
++          if (restrictToSingleStage && nodeStage && nodeStage !== compositionStage) return
+           collectPrerequisiteOnly(node.children)
+           return
+         }
+diff --git a/app/scripts/testDeepUnderstandingRollout.ts b/app/scripts/testDeepUnderstandingRollout.ts
+index 08ed8a7b5..cfd4ead32 100644
+--- a/app/scripts/testDeepUnderstandingRollout.ts
++++ b/app/scripts/testDeepUnderstandingRollout.ts
+@@ -248,8 +248,10 @@ assert.throws(
+ const report = await generateDeepUnderstandingRollout()
+ const mathematics = report.subjects.find(({ subject }) => subject === 'mathematik')
+ const physics = report.subjects.find(({ subject }) => subject === 'physik')
++const economics = report.subjects.find(({ subject }) => subject === 'wirtschaftswissenschaften')
+ assert.ok(mathematics)
+ assert.ok(physics)
++assert.ok(economics, 'The current Economics rollout must be included in the central report.')
+ const mathQa = JSON.parse(readFileSync(resolve(
+   repositoryRoot,
+   'curricula/DE/Gymnasium/quality/goal-visualization-qa/mathematik.qa.json',
+@@ -264,11 +266,21 @@ const staleEvidenceGoalIds = mathematics.issues.map((issue) => {
+ })
+ assert.ok(staleEvidenceGoalIds.every((goalId) => qualityHoldGoalIds.has(goalId)))
+ assert.equal(new Set(staleEvidenceGoalIds).size, staleEvidenceGoalIds.length)
+-assert.equal(report.blockingIssueCount, staleEvidenceGoalIds.length, 'No unrelated subject may have rollout blockers')
++assert.equal(report.blockingIssueCount, report.subjects.reduce((sum, subject) => sum + subject.issues.length, 0),
++  'The aggregate must include every actual subject blocker.')
++assert.equal(report.blockingIssueCount, staleEvidenceGoalIds.length + economics.issues.length,
++  'Only the explicitly tracked Economics rollout may add blockers to the protected subjects.')
++for (const subject of report.subjects.filter(({ subject }) => !['mathematik', 'wirtschaftswissenschaften'].includes(subject))) {
++  assert.deepEqual(subject.issues, [], `${subject.subject} must retain its existing blocker-free baseline.`)
++}
+ assert.equal(physics.issues.length, 0)
++for (const subject of [mathematics, physics]) {
++  assert.equal(hasStrictDeepUnderstandingCompletion(subject), true,
++    `${subject.subject} must retain M7 for every current curricularAtomic goal.`)
++}
+ assert.ok([...qualityHoldGoalIds].every((goalId) => mathematics.deferredVisualizationGoalIds.includes(goalId)))
+ assert.ok([...qualityHoldGoalIds].every((goalId) => !mathematics.strictCompleteGoalIds.includes(goalId)))
+-for (const subject of [mathematics, physics]) {
++for (const subject of [mathematics, physics, economics]) {
+   assert.ok(subject.denominator && subject.denominator > 0)
+   assert.equal(subject.strictCompleteGoalIds.length, subject.strictComplete)
+   assert.ok(subject.strictComplete <= subject.denominator)
+@@ -279,13 +291,39 @@ for (const subject of [mathematics, physics]) {
+   assert.equal(subject.gates.currentMemoryReviewDecisions, subject.denominator)
+   assert.ok(subject.gates.currentVisualizationQaRecords >= subject.strictComplete)
+   assert.equal(subject.strictCompletionReady, hasStrictDeepUnderstandingCompletion(subject))
+-  assert.deepEqual(
+-    subject.requiredChecks.filter(({ status }) => status === 'fail').map(({ id }) => id),
+-    subject.subject === 'mathematik' && staleEvidenceGoalIds.length > 0 ? ['positive-evidence-validation'] : [],
+-    'Only stale evidence bound to withdrawn quality-held images may remain open',
+-  )
++  const failedChecks = subject.requiredChecks.filter(({ status }) => status === 'fail').map(({ id }) => id)
++  if (subject.subject === 'wirtschaftswissenschaften') {
++    assert.ok(failedChecks.every((id) => ['description-review-validation', 'visualization-freshness-and-approval-check'].includes(id)),
++      'The Economics checkpoint requires current scope/P/A/M; pending D/V must remain M7 failures.')
++  } else {
++    assert.deepEqual(failedChecks,
++      subject.subject === 'mathematik' && staleEvidenceGoalIds.length > 0 ? ['positive-evidence-validation'] : [],
++      'Protected subjects must retain their strict completion checks.')
++  }
+   assert.equal(subject.currentGoalIds.length, subject.denominator)
+   assert.ok(subject.deferredVisualizationGoalIds.every((goalId) => !subject.strictCompleteGoalIds.includes(goalId)))
+ }
+ 
+-console.log(`Deep-understanding rollout self-test passed: strict 5-gate intersection, fail-closed ownership, and live denominators Math=${mathematics.denominator}/Physics=${physics.denominator}.`)
++assert.equal(new Set(economics.currentGoalIds).size, economics.denominator)
++assert.equal(new Set(economics.strictCompleteGoalIds).size, economics.strictComplete)
++assert.deepEqual(economics.requiredChecks.map(({ id }) => id).sort(), [...deepUnderstandingCompletionCheckIds].sort())
++assert.ok(economics.strictCompleteGoalIds.every((goalId) => economics.currentGoalIds.includes(goalId)))
++assert.equal(economics.remaining, economics.denominator! - economics.strictComplete)
++for (const count of [economics.gates.currentPositiveEvidenceProfiles,
++  economics.gates.currentSemanticAtomicityDecisions, economics.gates.currentMemoryReviewDecisions]) {
++  assert.equal(count, economics.denominator, 'The Economics checkpoint retains current P/A/M for every current goal.')
++}
++// M6 does not grant visual approval. Newly split or changed goals can have
++// current A/M/P while their D/V reviews remain open; only their exact five-gate
++// intersection can contribute to M7, as the missing-gate fixtures above prove.
++if (economics.gates.currentVisualizationQaRecords < economics.denominator!) {
++  assert.equal(economics.strictCompletionReady, false)
++  assert.equal(economics.requiredChecks.find(({ id }) => id === 'visualization-freshness-and-approval-check')?.status, 'fail')
++}
++const economicsLandscape = JSON.parse(readFileSync(resolve(repositoryRoot, economics.landscapePath), 'utf8')) as SkillLandscape
++const economicsQa = evaluateDeepUnderstandingQa(economicsLandscape, economics.landscapePath, report)
++assert.equal(economicsQa.status, economics.strictCompletionReady ? 'pass' : 'fail')
++assert.equal(deriveCurriculumMaturity([...coreRules, memoryPassed, economicsQa], routeScopes),
++  economics.strictCompletionReady ? 'M7' : 'M6', 'Open Economics findings must never grant M7.')
++
++console.log(`Deep-understanding rollout self-test passed: strict 5-gate intersection, fail-closed ownership, protected M7 and live denominators Math=${mathematics.denominator}/Physics=${physics.denominator}/Economics=${economics.denominator}.`)
+diff --git a/app/scripts/testGoalBookReviewBundle.ts b/app/scripts/testGoalBookReviewBundle.ts
+index b5f44713a..e353e7c3e 100644
+--- a/app/scripts/testGoalBookReviewBundle.ts
++++ b/app/scripts/testGoalBookReviewBundle.ts
+@@ -11,6 +11,9 @@ import {
+   type ExportOptions,
+ } from './exportGoalBookReviewBundle'
+ import { goalBookFrontMatterPageCount } from './goalBookRenderer'
++import Ajv2020 from 'ajv/dist/2020.js'
++import addFormats from 'ajv-formats'
++import { parseGoalBookEvidenceReviewRecord } from './goalBookEvidenceReviewLoader'
+ import { expectedRecords } from './fixtures/positiveGoalEvidenceCandidates'
+ import {
+   buildGoalDescriptionReviewCampaign,
+@@ -396,6 +399,75 @@ try {
+     /closed goal-evidence schema/u,
+   )
+ 
++  // A real current Economics V2 record previously crashed the exporter at
++  // profile.facets.map. Check complete bilingual material, solution/rubric and
++  // diagnosis text survives rather than accepting an empty V1-shaped fallback.
++  const economicsConfig = JSON.parse(await readFile(new URL(
++    './config/goal-books/de-gym-economics-current-canonical.json', import.meta.url,
++  ), 'utf8')) as { evidenceReviewPaths: string[] }
++  const evidenceText = await readFile(new URL(
++    `../../${economicsConfig.evidenceReviewPaths[0]}`, import.meta.url,
++  ), 'utf8')
++  const positive = parseGoalBookEvidenceReviewRecord(JSON.parse(
++    evidenceText.split(/\r?\n/u).find((line) => line.trim() !== '')!,
++  ), 'current Economics review-markdown regression')
++  assert.equal(positive.schemaVersion, 2)
++  if (positive.schemaVersion !== 2) throw new Error('Expected current V2 input')
++  const originalPositive = JSON.stringify(positive)
++  const economicsPositiveMarkdown = renderGoalBookReviewMarkdown({
++    ...first.input,
++    pages: [{ page: { ...page, goalId: positive.goalId }, evidenceProfile: positive }],
++  })
++  assert.ok(economicsPositiveMarkdown.includes('positive-understanding-evidence-v2'))
++  assert.ok(economicsPositiveMarkdown.includes('needs_human_review'))
++  assert.ok(economicsPositiveMarkdown.includes('ai_candidate'))
++  assert.ok(economicsPositiveMarkdown.includes('maximum claim scope: `G1`'))
++  for (const expectation of positive.profile.expectations) {
++    for (const text of [expectation.essentialUnderstandingDe, expectation.essentialUnderstandingEn,
++      expectation.observablePerformanceDe, expectation.observablePerformanceEn]) {
++      assert.ok(economicsPositiveMarkdown.includes(text), 'A complete bilingual expectation must remain visible')
++    }
++  }
++  for (const item of positive.profile.applicationCaseBriefs) {
++    for (const text of [item.taskDemandDe, item.taskDemandEn, item.expectedPerformanceDe,
++      item.expectedPerformanceEn, item.understandingFocusDe, item.understandingFocusEn]) {
++      assert.ok(economicsPositiveMarkdown.includes(text), 'A complete bilingual application-case field must remain visible')
++    }
++  }
++  assert.equal(JSON.stringify(positive), originalPositive, 'Rendering must not convert or upgrade the original V2 record')
++
++  // Both native description input versions accept the closed V2 contract;
++  // accepting it must not permit V1 fields, missing coverage or AI approval.
++  // Native campaign/resolution checks separately enforce actual page binding.
++  const ajv = new Ajv2020({ allErrors: true, strict: true })
++  addFormats(ajv)
++  for (const path of [
++    'contracts/goal-book/v1/goal-book-model.schema.json',
++    'contracts/goal-book/v1/goal-book-model-1.1.schema.json',
++    'contracts/goal-evidence/v1/goal-evidence-profile.schema.json',
++    'contracts/goal-evidence/v2/goal-evidence-profile.schema.json',
++    'contracts/goal-description-review/v2/goal-description-review-input.schema.json',
++    'contracts/goal-description-review/v3/goal-description-review-input.schema.json',
++  ]) {
++    ajv.addSchema(JSON.parse(await readFile(new URL(`../../${path}`, import.meta.url), 'utf8')))
++  }
++  for (const version of [2, 3]) {
++    const validate = ajv.compile({
++      $ref: `https://skillpilot.com/schemas/goal-description-review/v${version}/goal-description-review-input.schema.json#/$defs/reviewContext`,
++    })
++    assert.equal(validate({ page, evidenceProfile: positive }), true, ajv.errorsText(validate.errors))
++    for (const invalid of [
++      { ...positive, schemaVersion: 1 },
++      { ...positive, schemaVersion: 3 },
++      { ...positive, status: 'approved' },
++      { ...positive, profile: { ...positive.profile, facets: [] } },
++      { ...positive, profile: { ...positive.profile, coverageExpectations: undefined } },
++    ]) {
++      assert.equal(validate({ page, evidenceProfile: invalid }), false,
++        `Description input V${version} must reject a malformed or upgraded V2 profile`)
++    }
++  }
++
+   const staleManifest = JSON.parse(await readFile(
+     pdfManifestPath,
+     'utf8',
+diff --git a/contracts/goal-description-review/v2/goal-description-review-input.schema.json b/contracts/goal-description-review/v2/goal-description-review-input.schema.json
+index 664642aaf..286026586 100644
+--- a/contracts/goal-description-review/v2/goal-description-review-input.schema.json
++++ b/contracts/goal-description-review/v2/goal-description-review-input.schema.json
+@@ -73,6 +73,9 @@
+             {
+               "$ref": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-profile.schema.json"
+             },
++            {
++              "$ref": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json"
++            },
+             { "type": "null" }
+           ]
+         }

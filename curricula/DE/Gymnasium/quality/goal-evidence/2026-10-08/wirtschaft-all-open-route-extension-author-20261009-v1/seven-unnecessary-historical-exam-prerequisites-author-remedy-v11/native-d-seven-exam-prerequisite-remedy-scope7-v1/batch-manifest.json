@@ -1,0 +1,60 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "wirtschaft-seven-exam-prerequisite-remedy-current311-20261009-scope7-v1",
+  "subject": "wirtschaftswissenschaften",
+  "subjectLabel": "Wirtschaftswissenschaften",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-all-open-route-extension-author-20261009-v1/seven-unnecessary-historical-exam-prerequisites-author-remedy-v11/native-d-seven-exam-prerequisite-remedy.scope7-v1.batch.config.json",
+  "configDigest": "sha256:11c985afaa60b3c88e723a521fd1e766516e9535930e1d8c41065c979ae3c94d",
+  "goalIds": [
+    "51203e8f-a1f4-5072-8d32-d5b718691592",
+    "772b6d9f-03be-5894-8d61-0269506f398c",
+    "f7c051f4-ebb0-5d74-81b1-c1cdb562414f",
+    "575c08d4-204f-5f78-8f2f-1994db6f19ee",
+    "7a2435f2-0ce7-5179-81a5-2ef5c313e3dd",
+    "5a72a72a-609a-5e60-8a25-4f5048b8b09c",
+    "055ef95c-0b64-5675-8f14-2524c3438009"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 311,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-all-open-route-extension-author-20261009-v1/seven-unnecessary-historical-exam-prerequisites-author-remedy-v11/book-config.current311-preserved-all-P311.inert.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "baseBookDigest": "sha256:2b48d196af1c826c1a3adbafa3e2be7c8dd14304f24fdb9e10b0675bd7004833"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:c4df82769a9c273a28212ea45c4ca0c29cde8dbd330a3c95bc8cf5ce22b78e5a",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:05f99ebc679272440a28b1adca91bfa153fce5c008a798b1546012a7c51f6b3a",
+    "reviewInputFingerprint": "sha256:1903823a066c484794d9e712faf87bab6489357344c0d429ff31cb435a984814",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "wirtschaft-seven-exam-prerequisite-remedy-current311-20261009-scope7-v1-a",
+        "campaignDigest": "sha256:5f169841cc19d301bd67a4fe6cc325a219d9c11d40adb339f9384c0c5c571bd7",
+        "roundId": "wirtschaft-seven-exam-prerequisite-remedy-current311-20261009-scope7-v1-first-pass-a",
+        "independenceGroupId": "wirtschaft-seven-exam-prerequisite-remedy-current311-20261009-scope7-v1-independent-a",
+        "batchId": "wirtschaft-seven-exam-prerequisite-remedy-current311-20261009-scope7-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:ec31dde7d89a679f6b4374d3053bcef60d047a765afc3b83e694f9d0b93b5e24"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "wirtschaft-seven-exam-prerequisite-remedy-current311-20261009-scope7-v1-b",
+        "campaignDigest": "sha256:6f04aa4d75c2002276c51eac9aa92d6b2782f9a001663958b940bda8d9cc9fde",
+        "roundId": "wirtschaft-seven-exam-prerequisite-remedy-current311-20261009-scope7-v1-first-pass-b",
+        "independenceGroupId": "wirtschaft-seven-exam-prerequisite-remedy-current311-20261009-scope7-v1-independent-b",
+        "batchId": "wirtschaft-seven-exam-prerequisite-remedy-current311-20261009-scope7-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:57247ed5b4eaa9e1af76206a3c1514dc80533a8f263045fee8b3f27e2a3a07e2"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -1,0 +1,28 @@
+
+> skillpilot@0.0.0 validate:view-filters
+> tsx scripts/validateViewFilters.ts
+
+
+Warnings:
+⚠️ [605bdaf6-32d5-56fd-8d92-5a80c2fd2901] [APV-201] 121fea28-9943-575d-9c96-1fb2e3356f32 Goal uses applicability override for DE-HB, DE-TH.
+⚠️ [605bdaf6-32d5-56fd-8d92-5a80c2fd2901] [APV-201] 1826fe19-4d06-5183-9b41-9121ae1cc219 Goal uses applicability override for DE-BY, DE-NI.
+⚠️ [605bdaf6-32d5-56fd-8d92-5a80c2fd2901] [APV-201] 5aaf5abf-5e70-57c6-b030-1d08a35d17b8 Goal uses applicability override for DE-BE, DE-BY, DE-HE, DE-NI, DE-NW, DE-SH.
+⚠️ [605bdaf6-32d5-56fd-8d92-5a80c2fd2901] [APV-201] 776457c2-8bb3-53b9-838b-a028319175fb Goal uses applicability override for DE-MV.
+⚠️ [605bdaf6-32d5-56fd-8d92-5a80c2fd2901] [APV-201] 79d244e0-049e-59e9-a2fb-b8f8670b315a Goal uses applicability override for DE-NI.
+⚠️ [605bdaf6-32d5-56fd-8d92-5a80c2fd2901] [APV-201] a2fa1186-df35-5954-a9a9-e311a55e218f Goal uses applicability override for DE-BB, DE-BY, DE-NI, DE-TH.
+⚠️ [605bdaf6-32d5-56fd-8d92-5a80c2fd2901] [APV-201] a5009946-62bb-5e6a-8c92-732d02e8fd70 Goal uses applicability override for DE-HH, DE-MV, DE-NW, DE-SH, DE-SN, DE-ST.
+⚠️ [605bdaf6-32d5-56fd-8d92-5a80c2fd2901] [APV-201] bad728f2-e375-5f98-8f65-511a9e2e6751 Goal uses applicability override for DE-BB.
+⚠️ [605bdaf6-32d5-56fd-8d92-5a80c2fd2901] [APV-201] da73483a-2c18-5d42-b4f3-6ac6bcd6b5b0 Goal uses applicability override for DE-BE, DE-NI.
+⚠️ [605bdaf6-32d5-56fd-8d92-5a80c2fd2901] [APV-201] dd38e0c5-d77b-5893-815c-548ea2a84429 Goal uses applicability override for DE-BW, DE-HH, DE-NW, DE-SH, DE-SN, DE-ST.
+⚠️ [605bdaf6-32d5-56fd-8d92-5a80c2fd2901] [APV-201] df17fd21-e9b7-598f-970e-8f541d059694 Goal uses applicability override for DE-BB, DE-BY, DE-TH.
+
+0 error(s), 11 warning(s), 27127 diagnostic finding(s), 12 accepted warning(s).
+Diagnostic findings are not warning debt. APV-202 means applicability is backed only by partial mappings; this is useful for mapping-shape review, but not by itself a source-coverage gap.
+Warning types: APV-201: 11
+Warning landscapes: Wirtschaftswissenschaften (Gymnasium, DE): 11
+Diagnostic finding types: APV-202: 27127
+Diagnostic finding landscapes: Mathematik (Gymnasium, DE): 9415, Physik (Gymnasium, DE): 6341, Chemie (Gymnasium, DE): 2241, Geschichte (Gymnasium, DE): 2137, Politik und Wirtschaft (Gymnasium, DE): 1572, Wirtschaftswissenschaften (Gymnasium, DE): 1477, Biologie (Gymnasium, DE): 1374, Informatik (Gymnasium, DE): 1132, Deutsch (Gymnasium, DE): 959, Latein (Gymnasium, DE): 479
+Accepted warning types: APV-203: 10, APV-201: 2
+Validation scope: reviewed canonical DE Gymnasium set (Mathematik, Physik, Chemie, Biologie, Informatik, Deutsch, Englisch, Französisch, Griechisch, Chinesisch, Geschichte, Politik und Wirtschaft, Musik, Latein, Spanisch, Italienisch, Russisch, Polnisch, Tschechisch, Wirtschaft, Overview).
+Accepted warning registry: /home/enpasos/projects/skillpilot/docs/qa-ci/applicability-accepted-warnings.json
+Reports written to /home/enpasos/projects/skillpilot/tmp/applicability

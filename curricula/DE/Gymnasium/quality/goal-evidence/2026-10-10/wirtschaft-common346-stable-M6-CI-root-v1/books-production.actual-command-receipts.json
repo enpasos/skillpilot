@@ -1,0 +1,38 @@
+{
+  "phase": "books-production",
+  "toolchainNodePath": "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+  "remoteGitHubCIClaim": false,
+  "results": [
+    {
+      "name": "reject-tracked-generated-book-publications",
+      "command": [
+        "python3",
+        "-c",
+        "import subprocess; rows=subprocess.check_output(['git','ls-files','app/public/lernzielbuch']).strip(); assert not rows, rows.decode()"
+      ],
+      "startedAt": "2026-10-10T17:25:06.727270+00:00",
+      "elapsedSeconds": 0.039,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common346-stable-M6-CI-root-v1/books-production.01.reject-tracked-generated-book-publications.raw.txt",
+      "rawOutputSha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "build:goal-books",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "build:goal-books",
+        "--",
+        "--force"
+      ],
+      "startedAt": "2026-10-10T17:25:06.766770+00:00",
+      "elapsedSeconds": 418.009,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-common346-stable-M6-CI-root-v1/books-production.02.build-goal-books.raw.txt",
+      "rawOutputSha256": "sha256:d52ef1bd59c513d59fcadc339300597a5957aeb58d005df0115c7188ad19518a"
+    }
+  ],
+  "phaseComplete": true
+}

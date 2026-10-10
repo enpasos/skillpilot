@@ -1,0 +1,35 @@
+{
+  "role": "EXACT_COMMAND_READONLY_ADDITIVE_CLARIFICATION",
+  "predecessorSealSHA256": "sha256:3ec45015e8325a5ec2160cf6654e4367875becc470c7c76fac02a383f86d77d1",
+  "correctedField": "githubWorkflowsRequireGitDiffWhitespaceCheck",
+  "historicalBooleanUsedCooccurrenceNotExactCommand": false,
+  "actualExactGitDiffWhitespaceCheckWorkflowCommands": [],
+  "actualExactWorkflowWhitespaceCheckCommandFound": false,
+  "actualWorkflowCommands": [
+    {
+      "path": ".github/workflows/ci.yml",
+      "line": 179,
+      "text": "git diff --exit-code -- \\"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "line": 529,
+      "text": "git diff --exit-code -- ../docs/qa-ci/status"
+    }
+  ],
+  "actualRootLocalHelperChecks": [
+    {
+      "executionHelperPath": "/tmp/economics_stable_checkpoint346_ci_root.py",
+      "line": 28,
+      "text": "commands.append(['git-diff-check',['git','diff','--check']])"
+    },
+    {
+      "executionHelperPath": "/tmp/economics_stable_checkpoint_ci_root.py",
+      "line": 27,
+      "text": "commands.append(['git-diff-check',['git','diff','--check']])"
+    }
+  ],
+  "currentStatusReadmeValidationCommand": "git diff --check",
+  "cachedCheckIsRootRequestedIndexAuditNotLocatedCurrentWorkflowRequirement": true,
+  "noWhitespaceOrIndexMutation": true
+}

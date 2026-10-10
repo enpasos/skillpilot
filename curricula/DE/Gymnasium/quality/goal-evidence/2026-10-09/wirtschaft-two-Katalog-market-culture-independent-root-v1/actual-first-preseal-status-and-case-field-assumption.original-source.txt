@@ -1,0 +1,289 @@
+from pathlib import Path
+from copy import deepcopy
+from decimal import Decimal as D
+from hashlib import sha256
+from datetime import datetime, timezone
+import json, sys, subprocess
+from jsonschema import Draft202012Validator
+
+OUT = Path(__file__).resolve().parent
+ROOT = next(p for p in OUT.parents if (p / 'AGENTS.md').is_file())
+BASE = OUT.parent
+AUTHOR = BASE / 'wirtschaft-Katalog-seventeen-four-coherent-material-author-v1'
+Q2 = BASE / 'wirtschaft-nine-reviewed-Q2-materials-root-bounded-assembly-v1'
+Q440 = BASE / 'wirtschaft-twelve-reviewed-Q3-Q1-Q4-materials-root-additive-assembly-v1'
+NAMES = [
+    'whole-market-surplus-consumer-culture-integrated-strategy-and-production-four.DRAFT-terminal-goal.author-candidate.json',
+    'whole-participation-actual-film-literature-nonfiction-recommendations-and-historical-trade-four.DRAFT-terminal-goal.author-candidate.json',
+]
+def read(p): return json.loads(p.read_text())
+def bind(p): return {'path': str(p.relative_to(ROOT)), 'sha256': sha256(p.read_bytes()).hexdigest()}
+def write(name, data):
+    p = OUT / name
+    with p.open('x') as f: f.write(json.dumps(data, ensure_ascii=False, indent=2) + '\n')
+    read(p)
+    return bind(p)
+
+paths = [AUTHOR / n for n in NAMES] + [
+    AUTHOR / 'whole-four-Katalog-seventeen-materials.DRAFT-terminal-goals.author-candidate.json',
+    AUTHOR / 'whole-seventeen-current-Katalog-goals-and-retained-positive-records.actual-intake.json',
+    AUTHOR / 'actual-final-four-Katalog-seventeen-whole-material-reviewable-author-handoff.receipt.json',
+    AUTHOR / 'actual-final-four-Katalog-whole-author-freeze.all-reviewable-inputs.actual.json',
+    Q2 / 'whole-CAN425-reviewed-E9-plus-reviewed-Q2-nine-and-one-navigation-candidate.inert.json',
+    Q2 / 'whole-current311-after-reviewed-Q2-nine.native-book-model.json',
+    Q440 / 'whole-CAN440-reviewed-E9-Q2-Q3-Q1-Q4-and-three-navigation-KEEP.inert.json',
+    ROOT / 'docs/landscape-runtime.schema.json',
+]
+assert bind(paths[4])['sha256'] == 'b8ffae0d57a6b4c64a17380c8c92d6ad290b87f366f1c09050ac3773408c6b39'
+assert bind(paths[2])['sha256'] == '2eb8ce1e748f6db3a77a2d58f47555173ea245f883c18fbf362fc3885bc58964'
+materials = [read(p) for p in paths[:2]]
+whole425, book311, whole440 = map(read, paths[6:9])
+current425 = {g['id']: g for g in whole425['goals']}
+current440 = {g['id']: g for g in whole440['goals']}
+pages = {p['goalId']: p for p in book311['pages']}
+intake = read(paths[3])['wholeCurrent17AndRetainedP34Rows']
+ids = [i for g in materials for i in g['requires']]
+assert len(set(ids)) == 8
+selected = [r for r in intake if r['goalId'] in ids]
+assert len(selected) == 8
+source_files = sorted(set(r['nativePositiveSourcePath'] for r in selected))
+paths.extend(ROOT / p for p in source_files)
+guards = [bind(p) for p in paths]
+write('actual-before-whole-author-two-materials-eight-current-contracts-and-native-P16-source.guards.json', guards)
+
+# Parse the complete durable sources before selecting exact reviewed records.
+whole_sources = {}
+for p in source_files:
+    raw = (ROOT / p).read_bytes()
+    whole_sources[p] = (raw.splitlines(), [json.loads(line) for line in raw.splitlines() if line.strip()])
+checks = []
+raw_lines = []
+for r in selected:
+    gid = r['goalId']
+    assert current425[gid] == current440[gid] == r['wholeCurrentCanonicalGoal']
+    raw = whole_sources[r['nativePositiveSourcePath']][0][r['actualOneBasedSourceLine'] - 1]
+    p = json.loads(raw)
+    assert p == r['nativePositiveRecord']
+    assert sha256(raw).hexdigest() == r['wholeRawRecordLineSHA256'].removeprefix('sha256:')
+    assert pages[gid]['goalFingerprint'] == p['goalFingerprint']
+    assert p['status'] == 'ai_candidate' and p['profile']['reviewStatus'] == 'needs_human_review'
+    assert p['evidenceLevel'] == 'E1' and p['maximumClaimScope'] == 'G1'
+    assert len(p['profile']['applicationCases']) == 2
+    raw_lines.append(raw)
+    checks.append({'goalId': gid, 'whole425And440GoalExact': True, 'wholePRecordAndTwoCasesExact': True,
+        'nativeBookGoalFingerprintExact': True, 'sourcePath': r['nativePositiveSourcePath'],
+        'actualOneBasedSourceLine': r['actualOneBasedSourceLine'], 'rawLineSHA256': sha256(raw).hexdigest(),
+        'status': p['status'], 'profileReviewStatus': p['profile']['reviewStatus'],
+        'evidenceLevel': p['evidenceLevel'], 'maximumClaimScope': p['maximumClaimScope'],
+        'substantiveHistoricalPReviewRepeated': False})
+raw_path = OUT / 'eight-current-valid-P16.whole-exact-raw-records.retained.jsonl'
+with raw_path.open('xb') as f: f.write(b'\n'.join(raw_lines) + b'\n')
+write('actual-eight-current-whole-contract-and-P16-exact-retention.checks.json', checks)
+write('whole-eight-current-contracts-semantic-decisions-and-retained-P16.actual-review-input.json', selected)
+
+numeric = []
+def check(label, actual, expected):
+    assert actual == D(str(expected)), (label, actual, expected)
+    numeric.append({'label': label, 'actual': str(actual), 'expected': str(expected), 'passed': True})
+for label, intercept_d, intercept_s, quantity, price, rent, total in [
+    ('baseline', 100, 20, 40, 60, 800, 1600),
+    ('N', 120, 20, 50, 70, 1250, 2500),
+    ('K', 100, 30, 35, 65, '612.5', 1225),
+]:
+    q = (D(intercept_d) - D(intercept_s)) / 2
+    p = D(intercept_s) + q
+    check(label+' q', q, quantity); check(label+' p', p, price)
+    check(label+' demand at q', D(intercept_d) - q, price)
+    check(label+' consumer surplus', (D(intercept_d) - p)*q/2, rent)
+    check(label+' producer surplus', (p-D(intercept_s))*q/2, rent)
+    check(label+' total surplus', ((D(intercept_d)-p)+(p-D(intercept_s)))*q/2, total)
+check('baseline demand point elasticity', -D(60)/D(40), '-1.5')
+check('X old weights', D(4)*D('.6')+D(2)*D('.4'), '3.2')
+check('Y old weights', D(2)*D('.6')+D(5)*D('.4'), '3.2')
+check('X new weights', D(4)*D('.2')+D(2)*D('.8'), '2.4')
+check('Y new weights', D(2)*D('.2')+D(5)*D('.8'), '4.4')
+check('weights sum old', D('.6')+D('.4'), 1)
+check('weights sum new', D('.2')+D('.8'), 1)
+for q, make, buy in [(1500, 23000, 27000), (500, 13000, 9000)]:
+    check(f'make {q}', D(8000)+D(10)*q, make)
+    check(f'buy {q}', D(18)*q, buy)
+    check(f'absolute cost gap {q}', abs(D(buy)-D(make)), 4000)
+check('make buy crossover', D(8000)/(D(18)-D(10)), 1000)
+check('make at crossover', D(8000)+D(10)*1000, 18000)
+check('buy at crossover', D(18)*1000, 18000)
+check('1500 production capacity headroom', D(1600)-D(1500), 100)
+check('500 production capacity headroom', D(1600)-D(500), 1100)
+check('original throughput', D(20)+D(40), 60)
+check('new throughput', D(20)+D(15), 35)
+check('throughput reduction', (D(20)+D(40))-(D(20)+D(15)), 25)
+check('processing unchanged', D(20)-D(20), 0)
+check('baseline productivity', D(80)/D(8), 10)
+check('new productivity', D(100)/D(8), '12.5')
+check('productivity relative change percent', (D(100)/8-D(80)/8)/(D(80)/8)*100, 25)
+check('repair replacement price gap', D(90)-D(35), 55)
+check('supplier unit price gap', D(12)-D(10), 2)
+numeric_binding = write('actual-own-forty-five-Decimal-checks-model-calculations.json', {
+    'independentChecker': '/root', 'count': len(numeric), 'checks': numeric,
+    'suppliedModelNumbersNotRealMarketOrLearnerData': True,
+    'noEmpiricalQualityOrCausalGuaranteeInferred': True})
+
+full_market = '''1. Ohne Zeichnung: Ich werde später drei Diagramme abgeben. Jetzt nur Rechnungen: Ausgang q40,p60,ε−1,5,KR/PR800,total1600. N:q50,p70,KR/PR1250,total2500. K:q35,p65,KR/PR612,5,total1225. Preise informieren über Knappheit, setzen Anreize und koordinieren. N und K verschieben jeweils eine andere Kurve; eine Bewegung auf der unveränderten Kurve folgt daraus. Dreiecke messen nur das gegebene Modell ohne Externalitäten.
+2. Gleiche Bestellroutine und Musikplattform gleichen Abläufe an; angepasste Tischhöhe und lokale Playlist passen Nutzung an. Neu kombinierte Bauform und Rhythmus/Instrumentstil bilden tatsächlich neue Mischformen. Diese Mechanismen können nebeneinander auftreten, nicht bloß eine gemeinsame Marke. Konkrete Beobachtungen erlauben keine pauschalen nationalen Vorlieben.
+3. Bestehendes Produkt/neuer Markt ist Marktentwicklung, neues Produkt/bestehender Markt Produktentwicklung. Reparaturservice differenziert, billige Standardware ist Kostenpositionierung. GmbH ist selbst Schuldner mit Gesellschaftsvermögen; gewöhnliche Gesellschafterrolle schafft keine persönliche Gesellschaftsschuldenhaftung; eine gesonderte Bürgschaft bleibt eigenständig. OHG-Partner haften persönlich und gesamtschuldnerisch. X/Y zuerst3,2/3,2,danach2,4/4,4. Make bei1500=23000,Buy27000,Kapazität1600; bei500 Make13000,Buy9000,Schwelle1000. Bei1500 kann bedingte Differenzierung mit Make Wissen schützen, falls Qualität/Absatz tragfähig; bei500 kann flexibles Buy die Fixkosten vermeiden, schafft aber Abhängigkeit und Wissensrisiko. Rechtsform und Standortgewichte verändern nicht automatisch die Qualität. Alle fünf Perspektiven gehören in die bedingte Entscheidung.
+4. Kaizen ist fortlaufende kleine Verbesserung mit Beschäftigten, Lean untersucht Wartewege/Verschwendung, JIS liefert rot/blau/rot in Montagereihenfolge. Durchlauf60→35,25Minuten weniger, Verarbeitung20gleich. Das belegt hier nur geringere Wartezeit; Fehler/Belastung wurden nicht gemessen. Werkstatt braucht Fehlerfeedback/Schulung, Montage richtige Folge und Lieferstabilität. Ein Puffer mildert Störung, kostet Platz. Kein Konzept garantiert alle Ziele zugleich.'''
+partial_market = '''1. Tatsächliche eigene schematische Skizzen; q waagerecht, p senkrecht, D fallend, S steigend. Die grobe Zeichnung enthält die drei getrennten tatsächlichen Kurvenkreuzungen; Rentenflächen fehlen.
+Ausgang: p ^     D\\     /S      N: p ^    Dn\\    /S      K: p ^    D\\    /Sk
+             \\ /                       \\ /                       \\ /
+         60 --X                      70 --X                      65 --X
+             /\\                        /\\                        /\\
+             +--40--> q                 +--50--> q                 +--35--> q
+Ausgang q40,p60,ε−1,5;Nq50,p70;Kq35,p65. Zu den Renten sage ich nichts. Preise sind bloß algebraische Funktionen; die Gesamtrente wäre die gesamte reale gesellschaftliche Wohlfahrt.
+2. Gleiche Bestellroutine/Musikplattformen sind Homogenisierung, Tischhöhen/örtliche Playlists Lokalisierung, neue verbundene Bauform/Rhythmusstil Kreolisierung. Ich behaupte trotzdem, jede nationale Gruppe müsse exklusiv genau einem solchen Mechanismus angehören.
+3. Ansoff: altProdukt/neuerMarkt=Marktentwicklung; neuProdukt/altMarkt=Produktentwicklung. Porter: Reparaturdifferenzierung versus Standardkosten. X/Y3,2/3,2,neueGewichte2,4/4,4. Make/Buy bei1500 23000/27000,bei50013000/9000;Schwelle1000. GmbH-Gesellschafter haften immer persönlich wie die OHG. Ich verbinde die Modelle nicht zu einem risikogebundenen Schluss.
+4. Kaizen=fortlaufend mit Beschäftigten,Lean=Warteverschwendung,JIS=richtige Folge;60→35,25weniger,20Verarbeitunggleich. Deshalb seien Qualität, Belastung und Liefersicherheit automatisch verbessert; weitere Risiken und Ergänzungen bespreche ich nicht.'''
+full_culture_plan = '''1. Fahrgastverband kann recherchierte Stellungnahme, einzelne Gruppe Papier/digitalen Beitrag bis1November liefern. Der Rat entscheidet20November nach öffentlichem Ausschuss;Petition10000bündelt Anliegen, bindet nicht. Recherchezeit und Internetzugang verteilen reale Einflussmöglichkeiten ungleich. Im zweiten Fall bündeln Gewerkschaft/Verband Arbeitnehmerinteressen, Einzelne bleiben offen zugelassen; Modellgesetzgebungsorgan entscheidet. Eine begründete Stellungnahme plus Organisation kann Zugang stärken, ohne Ergebnisgarantie.
+2. In der tatsächlich gesichteten Prelinger-Sequenz45–75s bewegt sich der Blick entlang Schienen. Pferdefuhrwerk fährt vor uns, querende Autos verdecken zeitweise die Gleise, verschiedene Fahrzeuge beanspruchen denselben Raum. Das erlaubt Infrastruktur-/Koordinationsdeutung, belegt aber weder Einkommen noch Häufigkeit oder vollständige Verkehrsordnung. Monolog ist subjektive Lohn-/Familienzeitabwägung, kein Bevölkerungsbefund. Eigenes Sachkapitel definiert Ausstoß/Stunde:80/8=10,100/8=12,5,25ProzentZuwachs; fiktiver Modellvergleich ohne Lohnaussage oder bewiesene Ursache. Filmische Auswahl, literarische Stimme und definierender Sachtext schaffen verschiedene Aussagegrenzen.
+3. Ich werde später eine Jugendkarte und eine Vereinsvorlage gestalten, habe bisher aber keine erstellt. Rechnerisch90−35=55,12−10=2. Reparatur hat möglichen Nutzungsgewinn und ungewisse Folgefehler; für den Verein zählen Fixtermin/Lager neben Preis. Ich würde bedingte Kriterien und technische/Liefer-/Sozialnachfragen aufnehmen.
+4. Museumquelle beschreibt Fahrtgemeinschaften, Kontore, Privilegien und veränderte Routen/Konkurrenz/Politik. Netzwerke/Schutz können Tauschrisiken senken; neue Standorte und Zugangskonflikte verändern Vorteile. Privilegien schaffen ungleiche Chancen. 16./17.Jahrhundert relativer Wandel, kein genaues Ende allen Handels. Spätere Erfolgsbilder sind selbst historisch; Mehrursachen statt Tugendgarantie.'''
+wrong_culture_actual = '''1. Fahrgastverband, Einzelbeiträge und Petition sind Beteiligungswege. Der Verband hat mehr Recherchezeit, die andere Gruppe weniger Internet. Die10000Petitionsstimmen seien aber schon der bindende Buspreis;zuständig seien ausschließlich die Petenten,Fristen unwichtig. Der zweite Fall sei genauso automatisch beschlossen.
+2. Ich habe die Prelinger45–75s angesehen: vorwärts gerichteter Blick entlang Schienen, Fuhrwerk voraus und ein querendes Auto verdecken Teile. Der Monolog zeigt persönliche Lohn-/Zeitabwägung. Ich behaupte dennoch,der Film beweise gleiche Einkommen und perfektes Risikomanagement. Die Sachminiatur sei eine reale Vollerhebung,Produktivität80/8=8und100/8=10,also20Prozent; alle Medien seien dieselbe objektive Statistik.
+3. Tatsächlich eigene Infokarte an Jugendliche:
+MODELLTIPP:35statt90 – zunächst55Euroweniger! Repariert immer:ein weiteres Jahr ist garantiert und neue Defekte gibt es nie.
+Tatsächlich eigene geordnete Vereinsvorlage:
+Preis: A12,B10,Abstand2proEinheit.
+Optionen: A zuverlässiger Zwei-Tage-Termin; B billiger mit1–10Tagen. Für einen festen Termin würde ich bedingt A wählen,falls der Preis tragbar ist; für flexible Termine B.
+Urteil: Fehlende Sozialnachweise beweisen sicher Arbeitsrechtsverstöße,deshalb ist keine Nachfrage nötig. Weitere Nutzungs- oder Lieferrisiken gibt es nicht.
+4. Die Hanse betrieb Fernhandel. Ihr Erfolg und Niedergang seien jeweils nur angeborene Tugend der Kaufleute,Privilegien gaben allen gleiche Chancen. Quelle und Erklärung seien identisch; an einem exakten Enddatum stoppte sämtlicher Handel. Neue Routen,Konkurrenz und politische Konflikte sind unwichtig.'''
+
+def grades(points, reasons):
+    assert len(points) == len(reasons) == 6
+    return [{'oneBasedAnchor': i+1, 'points': p, 'reasonDe': r} for i,(p,r) in enumerate(zip(points,reasons))]
+counteranswers = [
+    {'id': 'market-plan-only', 'materialGoalId': materials[0]['id'], 'wholeOwnSyntheticSubmission': full_market,
+     'fourStepGrades': [grades([0,1,1,1,1,1], ['Diagramme nur angekündigt; keine Ausführung.','Ausgang/ε richtig.','800/800/1600 richtig.','N/K richtig.','Alle3 Preisfunktionen erklärt.','Verschiebung und Wohlfahrtsgrenze richtig.']),
+        grades([1]*6,['Bestell-/Plattformgleichheit.','Höhen/Playlists.','Neue Bau-/Musikform.','Beide Domänen konkret.','Koexistenz erklärt.','Keine Nationalpauschale.']),
+        grades([1]*6,['Ansoff richtig.','Porter richtig.','GmbH/OHG/Bürgschaft richtig.','Beide Gewichte richtig.','Kosten/Schwelle richtig.','Alle5 Perspektiven bedingt integriert.']),
+        grades([1]*6,['Kaizen richtig.','Lean richtig.','JIS Folge richtig.','60/35/25/20 richtig.','Beide Felder mit Risiken getrennt.','Puffer/Feedback ohne Optimalgarantie.'])],
+     'observableActualRequiredProduction': False, 'actualWholeAssessmentCap': 14, 'expectedRawPoints': 23, 'expectedFinalPoints': 14, 'expectedPass': False},
+    {'id': 'market-actual-imperfect-partial', 'materialGoalId': materials[0]['id'], 'wholeOwnSyntheticSubmission': partial_market,
+     'fourStepGrades': [grades([1,1,0,1,0,0],['Drei tatsächliche q/p-Skizzen mit konsistenten Kreuzungen; grobe Form zulässig.','Ausgang/ε richtig.','Keine Renten.','N/K richtig.','Ökonomische Funktionen falsch.','Gesellschaftliche Wohlfahrt unzulässig gleichgesetzt.']),
+        grades([1,1,1,1,0,0],['Homogenisierung passend.','Lokalisierung passend.','Neue Mischung passend.','Beide Domänen konkret.','Exklusivität falsch.','Nationale Gleichheitspauschale falsch.']),
+        grades([1,1,0,1,1,0],['Ansoff richtig.','Porter richtig.','Persönliche GmbH-Haftung falsch.','Gewichte richtig.','Kosten/Schwelle richtig.','Kein integrierter Risiko-/Ressourcenschluss.']),
+        grades([1,1,1,1,0,0],['Kaizen richtig.','Lean richtig.','JIS richtig.','Zeitberechnung richtig.','Ungeprüfte Qualität/Risiken garantiert.','Kein bedingtes Urteil/Ergänzung.'])],
+     'observableActualRequiredProduction': True, 'actualWholeAssessmentCap': None, 'expectedRawPoints': 15, 'expectedFinalPoints': 15, 'expectedPass': True,
+     'passingAnAssessmentDoesNotCertifyAllIndividualGoalsOrFullMarks': True},
+    {'id': 'culture-design-plan-only', 'materialGoalId': materials[1]['id'], 'wholeOwnSyntheticSubmission': full_culture_plan,
+     'fourStepGrades': [grades([1]*6,['Akteure/Wege konkret.','Rat/Frist richtig.','Artikulation ungleich Beschluss.','Zugang/Ressourcen erklärt.','Arbeitsfall übertragen.','Bedingte Kombination.']),
+        grades([1]*6,['Tatsächlich gesichtete konkrete Filmbelege.','Subjektive Stimme erklärt.','Eigener definierter Modelltext begrenzt.','10/12,5/25 richtig.','Alle3 Formen verglichen.','Keine Einkommens-/Lohn-/Häufigkeitskausalität.']),
+        grades([0,0,1,1,1,0],['Karte nur angekündigt.','Vorlage nur angekündigt.','55/2 richtig.','Ökonomische Kriterien vorhanden.','Unsicherheiten/Nachfragen genannt.','Keine tatsächlich adressatenangepasste Form.']),
+        grades([1]*6,['Fernhandel konkret.','Netzwerke/Rechte.','Mehrere Wandelbedingungen.','Befund/Deutung getrennt.','Relativer Wandel/ungleiche Rechte.','Keine fixe End-/Tugenderklärung.'])],
+     'observableActualRequiredProduction': False, 'actualWholeAssessmentCap': 14, 'expectedRawPoints': 21, 'expectedFinalPoints': 14, 'expectedPass': False},
+    {'id': 'culture-actual-design-with-false-inference', 'materialGoalId': materials[1]['id'], 'wholeOwnSyntheticSubmission': wrong_culture_actual,
+     'fourStepGrades': [grades([1,0,0,1,0,0],['Wege/Akteure genannt.','Zuständigkeit/Frist falsch.','Petition als Beschluss falsch.','Ressourcenunterschied erkannt.','Transfer falsch.','Keine begründete realistische Kombination.']),
+        grades([1,1,0,0,0,0],['Tatsächliche filmische Beobachtung korrekt.','Literarische Subjektivität erkannt.','Fiktive Miniatur zur Vollerhebung umgedeutet.','Rechnungen falsch.','Formen gleichgesetzt.','Unbelegte Einkommens-/Risikoinferenz.']),
+        grades([1,1,1,1,0,0],['Tatsächliche eigene kurze Karte.','Tatsächliche eigene geordnete Vorlage.','55/2 richtig.','Termin-/Preisoptionen bedingt verglichen.','Garantie/Verstoßnachweis falsch; keine Nachfrage.','Täuschende Jugendgarantie und falsche Leitungsevidenz begründen keine passende Sprache.']),
+        grades([1,0,0,0,0,0],['Fernhandel erkannt.','Netzwerkbedingungen verneint.','Wandel monokausal.','Quelle und Deutung gleichgesetzt.','Gleiche Rechte/exaktes Handelsende falsch.','Unbegrenzte Tugenderzählung.'])],
+     'observableActualRequiredProduction': True, 'actualWholeAssessmentCap': None, 'expectedRawPoints': 9, 'expectedFinalPoints': 9, 'expectedPass': False},
+]
+for c in counteranswers:
+    raw = sum(a['points'] for step in c['fourStepGrades'] for a in step)
+    final = min(raw, c['actualWholeAssessmentCap']) if c['actualWholeAssessmentCap'] is not None else raw
+    assert raw == c['expectedRawPoints'] and final == c['expectedFinalPoints']
+    assert (final >= 15) == c['expectedPass']
+    c.update(actualRawPoints=raw, actualFinalPoints=final, actualPassed=final>=15,
+             assessmentPassingThresholdUnchanged=15, fullMarksNotRequired=True,
+             noActualLearnerOrTeacherAcceptanceEvidence=True)
+counter_binding = write('actual-four-own-whole-synthetic-counteranswers-and-individual-24-anchor-grading.json', counteranswers)
+
+source_binding = write('actual-bounded-primary-reading-and-actually-viewed-film-input.receipt.json', {
+    'reviewer': '/root', 'actuallyReadBeforeScientificDecision': True,
+    'primarySources': [
+        {'url':'https://www.gesetze-im-internet.de/gmbhg/__13.html','actualReadScope':'Whole §13 paragraphs1–3','ownFindingDe':'Gesellschaft als eigener Rechtsträger; für Gesellschaftsschulden grundsätzlich Gesellschaftsvermögen. Gewöhnliche Gesellschafterrolle und separate Bürgschaft werden zutreffend unterschieden.'},
+        {'url':'https://www.gesetze-im-internet.de/hgb/__126.html','actualReadScope':'Whole §126','ownFindingDe':'OHG-Gesellschafter persönlich gesamtschuldnerisch; Gegenabrede gegenüber Dritten unwirksam.'},
+        {'url':'https://global.toyota/en/company/vision-and-philosophy/production-system/','actualReadScope':'Main production-system explanatory text covering improvement, quality, flow and just-in-time, not linked corporate resources','ownFindingDe':'Eigene Unternehmensdarstellung stützt die verwendeten Begriffe, ist keine unabhängige Erfolgs-/Qualitätsgarantie; JIS-Reihenfolge wird im eigenen Aufgabenmodell gesondert vorgegeben.'},
+        {'url':'https://www.lean.org/lexicon-terms/kaizen/','actualReadScope':'Introductory definition and process/worker/standardised-improvement explanation through the eight steps; not every linked resource','ownFindingDe':'Fortlaufende Verbesserung mit Beteiligung trägt die verwendete Definition; keine automatische gemeinsame Optimierung aller Kriterien.'},
+        {'url':'https://erfolgsgeschichte.hansemuseum.eu/','actualReadScope':'Entire substantive main narrative, networks/trading offices/privileges,16th–17th-century changes and later success images','ownFindingDe':'Quelle trägt eigene kurze Zusammenfassung von Vernetzung und mehreren Wandelbedingungen. Kein genaues Ende sämtlichen Handels oder monokausale Tugendbehauptung.'},
+    ],
+    'actualArchiveMetadata': {'url':'https://archive.org/metadata/ATripDownMarketStreet_HD','httpStatus':200,
+        'actualResponseSHA256':'6efe5db9ae981692ce2d605ea14504a7d6860f8474a7fa03b19625879f0095ce',
+        'wholeJSONParsed':True,'fieldsActuallyRead':{'identifier':'ATripDownMarketStreet_HD','creator':'Miles Brothers','year':'1906','licenseurl':'http://creativecommons.org/publicdomain/zero/1.0/','collection':'prelinger'},
+        'metadataIsProviderProvenanceNotHumanWorldWideRightsAcceptance':True},
+    'actualFilmViewing': {'copyURL':'https://archive.org/download/ATripDownMarketStreet_HD/ATripDownMarketStreet_HD.mp4',
+        'actualVideoSHA256':'cf6326ca7a75025646112a402a5a141625803880cc745d4f1b3f43b15c86b38d',
+        'actualVideoBytes':65847811,'selectedCopyTime':'00:45–01:15',
+        'actuallyViewedThirtyOneFPSFramesContactSheet':True,'contactSheetSize':[1600,1080],
+        'actualContactSheetSHA256':'9ae40860581857e172c3b665ef0cc82ed66a690dd22cab1b2f39abfe278ff1f3',
+        'ownObservationsDe':'Vorwärts gerichtete schienennahe Perspektive, Fuhrwerk voraus, querende Autos verdecken Gleise im Vordergrund, gemeinsame Raumnutzung. Diese Bilder tragen Infrastruktur-/Koordinationsdeutungen, nicht Einkommen, Verkehrshäufigkeit oder perfekte Ordnung.',
+        'continuousFullFilmOrEveryFrameViewed':False,'LoCCopyByteIdentityOrSameTimeClaimed':False},
+    'LoCFetchLimitation': {'url':'https://www.loc.gov/item/00694408/','actualCurrentDirectFetch':403,
+        'wholeLoCContentOrWorldwideRightsIndependentlyCertified':False,
+        'scopeExplanation':'Author source attribution remains identifiable. Actual archive copy and provider metadata independently read; no substitution of an unavailable film by prose.'},
+    'officialAndFilmWorkingCachesOutsideCurriculaNotCommitted':True,
+    'durableInputUsesOriginalPublicURLHashesAndOwnBoundedObservations':True,
+    'filmUnavailableMeansFilmAssessmentOpen':True,'noSourceReclassificationOrForeignRelicensing':True,
+    'humanSourceRightsQualityOrReleaseApproval':False})
+
+reasons = {
+    ids[0]: ('A','Drei tatsächliche Preis-Mengen-Diagramme, getrennte Nachfrage-/Angebotsänderung, Nachfrageelastizität, beide Renten/Total und drei ökonomische Preisfunktionen decken den ganzen Marktauftrag. Modellgrenze und Ausführungskappe sind fachlich passend.'),
+    ids[1]: ('B','Beide Konsumdomänen verlangen konkrete Angleichung, lokale Anpassung und tatsächliche neue Verbindung; Koexistenz und stereotype Schlussgrenzen werden bewertet.'),
+    ids[2]: ('C','Alle fünf Perspektiven mit zwei Mengen-/Gewichtsfällen werden integriert beurteilt, einschließlich aktueller Rechtsformen, Ressourcen, Wissen, Qualität und Abhängigkeit. Gewichtete Werte sind begründbare Modellentscheidungen.'),
+    ids[3]: ('D','Kaizen, Lean und JIS werden nach Effizienz, Qualität und Risiken für Werkstatt und Sequenzmontage verglichen. Unveränderte Verarbeitung und unbekannte Qualitäts-/Belastungsdaten verhindern automatische Kausalbehauptungen.'),
+    ids[4]: ('A','Beteiligung und Interessenartikulation nach Akteuren, Zuständigkeit, Zeit/Ressourcen und Mechanismen in zwei ausdrücklich fiktiven Verfahren; Zugang, Artikulation und Entscheidung bleiben getrennt.'),
+    ids[5]: ('B','Tatsächlich betrachtete konkrete Filmkopie und literarischer Originalmonolog werden mit ausdrücklich eigener Sachbuch-Unterrichtsminiatur ökonomisch verglichen. Das eigene definierende Kapitel ist kein fremder Forschungsbefund; fehlender Filmzugriff bleibt ein offener Input.'),
+    ids[6]: ('C','Zwei tatsächlich eigene adressatenangepasste Formate sind zwingende Ausführung; Optionen, Rechnungen, Annahmen, Unsicherheiten und Nachrecherche werden bewertet. Ein bloßer Plan besteht nicht, unvollkommene wirkliche Gestaltung kann Teilpunkte erhalten.'),
+    ids[7]: ('D','Quellengebundener Fernhandels-/Netzwerk-/Privilegienbefund und mehrbedingter Aufstieg/Wandel von Handelszentren decken historischen Austausch; relative Bedeutung, ungleiche Rechte und spätere Deutungen werden ausdrücklich begrenzt.'),
+}
+decisions = []
+for g in materials:
+    assert g['examData']['reviewStatus'] == 'draft'
+    assert g['requires'] == g['examData']['coveredGoalIds']
+    assert g['examData']['scoring']['maxPoints'] == 24 and g['examData']['scoring']['passingPoints'] == 15
+    assert sum(s['points'] for s in g['examData']['scoring']['steps']) == 24
+    for gid in g['requires']:
+        part, reason = reasons[gid]
+        decisions.append({'goalId':gid,'materialGoalId':g['id'],'taskPart':part,
+            'decision':'KEEP','wholeCurrentDEENGoalRequiresTagsPhaseSourcesAndResourceLinksActuallyRead':True,
+            'wholeMaterialDEENTaskSolutionAndAllRubricAnchorsActuallyRead':True,
+            'actualWholeContractReasonDe':reason,'requiresDecision':'KEEP minimal exactly scored whole performances',
+            'historicalP16SubstantiveReviewRepeated':False,'wholeSourceOrCourseRolesApproved':False,'humanApproval':False})
+decision_binding = write('eight-individual-whole-performance-and-minimal-requires-independent-KEEP.decisions.json',decisions)
+write('actual-two-whole-DEEN-materials-and-rubric-scientific-KEEP.observations.json',{
+    'reviewer':'/root','originalAuthor':'/root/economics_independent_continuation_a',
+    'independentOfOriginalAuthor':True,'decision':'KEEP','unresolvedScientificFindings':[],
+    'market':'Getrennte Komponenten- und differenzierte Möbelmodelle werden nicht vermischt; alle Rechnungen, Normen und modellgebundenen Kriterien stimmen. Drei tatsächliche Diagramme sind beobachtbare Ausführung; keine zusätzliche vollständige Punktquote.',
+    'culture':'Tatsächlicher Film/Monolog/eigene Sachbuchminiatur decken alle Medienformen. Fiktive Partizipationsverfahren vermeiden echte Politik- oder Privatdaten; tatsächliche eigene Empfehlungen und quellengebundene mehrbedingte Geschichte passen.',
+    'DEEN':'Beide ganzen Sprachfassungen stimmen in Daten, Optionen, Verlangtem, Grenzen, Rubriken und15/24-Schwellwert überein.',
+    'qualifiedCounteranswerResults':[{'id':c['id'],'raw':c['actualRawPoints'],'final':c['actualFinalPoints'],'passed':c['actualPassed']} for c in counteranswers],
+    'passingPartialWorkIntentionallyAllowed':True,'missingExecutionHasSpecificExistingCap':True,
+    'noGoalImageRegenerationOrWholeSourceCourseOrDualDApproval':True,'humanReleaseOrTrialApproval':False})
+released = deepcopy(materials)
+for g in released: g['examData']['reviewStatus']='released'
+for before, after in zip(materials,released):
+    expected=deepcopy(before);expected['examData']['reviewStatus']='released';assert expected==after
+release_binding = write('whole-two-Katalog-market-culture.independently-reviewed-machine-released.inert.json',released)
+testframe=deepcopy(whole440);testframe['goals'].extend(released)
+errs=[{'path':list(e.path),'message':e.message} for e in Draft202012Validator(read(paths[9])).iter_errors(testframe)]
+assert not errs,errs
+sys.path.insert(0,str(ROOT/'scripts'))
+from validate_schemas import curriculum_symlink_errors
+symlinks=curriculum_symlink_errors(ROOT);assert not symlinks,symlinks
+assert guards==[bind(p) for p in paths]
+ignore=subprocess.run(['git','check-ignore','--no-index','--']+[str(p.relative_to(ROOT)) for p in paths+list(OUT.iterdir())],cwd=ROOT,capture_output=True,text=True)
+assert not ignore.stdout.strip(),ignore.stdout
+final=write('actual-final-independent-two-Katalog-market-culture-eight-performances-P16-whole-materials-KEEP.receipt.json',{
+    'at':datetime.now(timezone.utc).isoformat(),'reviewer':'/root','originalAuthor':'/root/economics_independent_continuation_a',
+    'independentOfOriginalAuthor':True,'decision':'KEEP','wholeMaterialBodies':2,'wholePerformanceContracts':8,
+    'retainedWholeNativePRecords':8,'retainedWholeApplicationCases':16,
+    'wholeValidPStatus':'ai_candidate','wholeValidProfileStatus':'needs_human_review','maximumClaimScope':'G1','evidenceLevel':'E1',
+    'ownDecimalChecks':numeric_binding,'actualDecimalCheckCount':len(numeric),
+    'fourWholeSyntheticCounteranswers':counter_binding,'individualWholePerformanceDecisions':decision_binding,
+    'boundedSourcesAndActualFilmViewing':source_binding,'acceptedWholeMaterials':release_binding,
+    'actualReleaseDeltaFields':['examData.reviewStatus'],'whole425And440ContractsExact':True,
+    'originalAuthorWholeArtifactsAndNativePSourcesUnchanged':guards,'wholeInMemory442SchemaErrors':errs,
+    'curriculumSymlinkErrors':symlinks,'ignoredRequiredReplayInputCount':0,
+    'actualNativePracticeAssessmentSourceFingerprintBound':False,
+    'wholeSourceCourseNavigationRegistryAndCurrentDualDApproved':False,
+    'historicalValidPReviewRestarted':False,'humanReleaseRightsQualityOrTrialApproval':False,
+    'newStrictAcademicClosures':0,'restoredStrictBindings':0,'strictNetGain':0,'liveWrites':False,
+    'nextStep':'Bind the two independently decided practiceAssessment kinds with the native helper; combine only four accepted Katalog whole materials and independently reviewed pure navigation with the current440 frame. Freeze book/routes/owner once later course/source/assets are stable.'})
+print(json.dumps({'receipt':final,'wholeMaterialsKEEP':2,'wholeGoalsKEEP':8,'PRecordsRetained':8,'casesRetained':16,'decimalChecks':len(numeric),'counterScores':[c['actualFinalPoints'] for c in counteranswers],'schemaErrors':0,'strictNetGain':0}))

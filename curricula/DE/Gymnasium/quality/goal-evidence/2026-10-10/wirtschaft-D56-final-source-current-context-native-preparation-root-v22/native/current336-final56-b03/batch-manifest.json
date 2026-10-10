@@ -1,0 +1,62 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "wirtschaft-current336-final56-v22-b03",
+  "subject": "wirtschaftswissenschaften",
+  "subjectLabel": "Wirtschaftswissenschaften",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-D56-final-source-current-context-native-preparation-root-v22/configs/current336-final56-b03.config.json",
+  "configDigest": "sha256:f8c1b6a49b3e5f3df05006cadc72e56da7089f487db240d57bae6b8a5b172468",
+  "goalIds": [
+    "753e5ac0-0375-56b9-a733-75701097b151",
+    "7c72848d-8bc9-58e2-a690-fd17ac650a88",
+    "121fea28-9943-575d-9c96-1fb2e3356f32",
+    "b727bdda-ea96-5acd-b23f-ed94777ba7a0",
+    "eee7217a-c2fb-58b6-ba84-2a8d5235edb5",
+    "dd38e0c5-d77b-5893-815c-548ea2a84429",
+    "d17ff931-085d-56be-932d-3839b5b88ba8",
+    "c5272ab8-baa0-570b-9f31-426d1f4460f2",
+    "1582ec45-1655-5f7c-a2bd-a3fc00e583fa"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 336,
+  "source": {
+    "baseGoalBookConfigPath": "app/scripts/config/goal-books/de-gym-economics-current-canonical.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "baseBookDigest": "sha256:6987f683332e22e0d43ca6eed8473d848d09a7a01f7d059a3916691d72aaa164"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:b4506cf6787da5906316c9e01216894f7e2e6b8deed059dbca739b157f6991a2",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:ec95e845bfb078ad81163123cd1c8c6ffb0610e3eecbeaad26b99fc1ff4a5023",
+    "reviewInputFingerprint": "sha256:cc39f9fa5c874c50df98890539b8d5e5a79f1277a54d610bc5053869921aec78",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "wirtschaft-current336-final56-v22-b03-a",
+        "campaignDigest": "sha256:fe8551fa9b27163b37b675c3a3e0dcc155f8854616b8fb47eb540b429e3a3834",
+        "roundId": "wirtschaft-current336-final56-v22-b03-first-pass-a",
+        "independenceGroupId": "wirtschaft-current336-final56-v22-b03-independent-a",
+        "batchId": "wirtschaft-current336-final56-v22-b03-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:875df1eb70bafcaa934ba2dedd75dbb2c67b29d141f661e2b3bb635068d018f2"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "wirtschaft-current336-final56-v22-b03-b",
+        "campaignDigest": "sha256:ce242abb568b4754326055667858bded5a49f454f2083dd30900e819ccdbe17d",
+        "roundId": "wirtschaft-current336-final56-v22-b03-first-pass-b",
+        "independenceGroupId": "wirtschaft-current336-final56-v22-b03-independent-b",
+        "batchId": "wirtschaft-current336-final56-v22-b03-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:279c2fbcd4af4c6e4125abb0c667d0e934e6beb2ff077ee15c55d25788117cf5"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

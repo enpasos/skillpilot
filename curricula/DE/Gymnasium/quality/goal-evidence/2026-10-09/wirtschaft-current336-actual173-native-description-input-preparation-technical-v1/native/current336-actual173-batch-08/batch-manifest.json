@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "wirtschaft-current336-actual173-native-description-20261009-b08",
+  "subject": "wirtschaftswissenschaften",
+  "subjectLabel": "Wirtschaftswissenschaften",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-current336-actual173-native-description-input-preparation-technical-v1/configs/current336-actual173-batch-08.config.json",
+  "configDigest": "sha256:b92f1bfc6e9b7a9990e8930c9b603d1278debf2d14000f79168750af8a367915",
+  "goalIds": [
+    "94fe52f5-c5f6-592b-87eb-9a983dc2d78f",
+    "8dee6c0a-0f76-5717-87b6-04ec89229371",
+    "980a3f45-b0ad-500d-8d5b-975948362b68",
+    "9ea1219f-e903-59ac-8475-d0f203b35f9c",
+    "44080e8d-f414-54e6-8c63-cd2042fbb40e",
+    "b5762a90-f132-535b-88ee-29dc7586ee59",
+    "6e138ab0-4f2b-52f9-8cd6-660051d60fba",
+    "1e3af127-4465-504a-8276-b5bf13bf9066",
+    "c6f05990-4c2d-56ce-9412-3a4a4bcfc488",
+    "81ea1a00-5248-5e36-8ca0-3f3f48ac2385",
+    "25393414-3b59-56f9-ae1b-e785d9f8b21b",
+    "a6a8bf1a-a131-5f17-9113-02a1321899e4",
+    "eee603d5-61d0-58e2-8f74-16de1e311630",
+    "df8db4bd-4e79-5ce1-bd4a-3ed04b17c6fb",
+    "b1d7f1ab-371b-5e02-acb3-49f3938b2ba6",
+    "d76af11e-7fb3-5e81-a622-9f3642efedaf",
+    "a04fc1a7-e037-580e-9324-9282f4acebc1",
+    "943fd59c-661a-5163-b5a4-c6bb5a983855",
+    "b9a46f8e-9732-5bbc-8989-a8f1bf1c7ba0",
+    "f4fbc4b7-2f2a-5d78-a8da-e501025c1b69"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 336,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/wirtschaft-current336-actual173-native-description-input-preparation-technical-v1/freeze/current336-native-base-book.exact-active-copy.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_WIRTSCHAFT.de.json",
+    "landscapeId": "605bdaf6-32d5-56fd-8d92-5a80c2fd2901",
+    "baseBookDigest": "sha256:d71035e2dc7aa8d91951bd75f8645e825c44837562d3b315cca8d86e2f29868b"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:15e41a4c1df836a70c891aedeb0aed63fe5b7e19dff95cce8191269767b45511",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:008102b7505c012a3b2a28bf2e958ee90055f5cd739d94652152e57791f53647",
+    "reviewInputFingerprint": "sha256:06ac2a1ad2d538aabc047cf4a8d68dc270c296bba1735f33035aafb9fabab408",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "wirtschaft-current336-actual173-native-description-20261009-b08-a",
+        "campaignDigest": "sha256:dd11e405771042b6379a3fedb4d408b304a725008d8d31a433b668a2330b5baa",
+        "roundId": "wirtschaft-current336-actual173-native-description-20261009-b08-first-pass-a",
+        "independenceGroupId": "wirtschaft-current336-actual173-native-description-20261009-b08-independent-a",
+        "batchId": "wirtschaft-current336-actual173-native-description-20261009-b08-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:bf0f6d94436a5f9c5e3f7ddc25375dcf126734224228e9a40a2d81c710b9bd89"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "wirtschaft-current336-actual173-native-description-20261009-b08-b",
+        "campaignDigest": "sha256:94b5d7c5872f7ef4afa4db665ecc0de233c771e6f9248396fa704fb9b37d2122",
+        "roundId": "wirtschaft-current336-actual173-native-description-20261009-b08-first-pass-b",
+        "independenceGroupId": "wirtschaft-current336-actual173-native-description-20261009-b08-independent-b",
+        "batchId": "wirtschaft-current336-actual173-native-description-20261009-b08-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:50b6241925ff13fff70a8f4a4d10b9d7ec60761a963688fafc54c2c52677f450"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

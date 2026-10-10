@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "role": "exact-author-arithmetic-check-not-independent-semantic-approval",
+  "arithmetic": "Python Decimal exact, no binary float",
+  "checks": [
+    {
+      "case": "national resident sum",
+      "computed": "650",
+      "expected": "650",
+      "pass": true
+    },
+    {
+      "case": "national scope adjustment",
+      "computed": "960",
+      "expected": "960",
+      "pass": true
+    },
+    {
+      "case": "cross substitute",
+      "computed": "1",
+      "expected": "1",
+      "pass": true
+    },
+    {
+      "case": "cross complement",
+      "computed": "-1.5",
+      "expected": "-1.5",
+      "pass": true
+    },
+    {
+      "case": "income normal",
+      "computed": "0.5",
+      "expected": "0.5",
+      "pass": true
+    },
+    {
+      "case": "income inferior",
+      "computed": "-2",
+      "expected": "-2",
+      "pass": true
+    },
+    {
+      "case": "100 disposable",
+      "computed": "20.0",
+      "expected": "20",
+      "pass": true
+    },
+    {
+      "case": "100 reusable",
+      "computed": "17.00",
+      "expected": "17",
+      "pass": true
+    },
+    {
+      "case": "40 disposable",
+      "computed": "8.0",
+      "expected": "8",
+      "pass": true
+    },
+    {
+      "case": "40 reusable",
+      "computed": "14.00",
+      "expected": "14",
+      "pass": true
+    },
+    {
+      "case": "596 two-day disposables",
+      "computed": "28",
+      "expected": "28",
+      "pass": true
+    },
+    {
+      "case": "596 two-day reusable",
+      "computed": "31",
+      "expected": "31",
+      "pass": true
+    },
+    {
+      "case": "distress first gap",
+      "computed": "4",
+      "expected": "4",
+      "pass": true
+    },
+    {
+      "case": "distress second gap",
+      "computed": "4",
+      "expected": "4",
+      "pass": true
+    }
+  ],
+  "allPass": true,
+  "independentReview": false
+}

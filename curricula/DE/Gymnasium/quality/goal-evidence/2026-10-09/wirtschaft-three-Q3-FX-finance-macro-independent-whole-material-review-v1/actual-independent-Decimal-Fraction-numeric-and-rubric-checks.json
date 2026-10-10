@@ -1,0 +1,596 @@
+{
+  "schemaVersion": 1,
+  "checks": [
+    {
+      "group": "FX",
+      "expression": "weekly A taken",
+      "actualExact": "8",
+      "expectedExact": "8",
+      "result": "PASS"
+    },
+    {
+      "group": "FX",
+      "expression": "A taken two weeks",
+      "actualExact": "16",
+      "expectedExact": "16",
+      "result": "PASS"
+    },
+    {
+      "group": "FX",
+      "expression": "reserves",
+      "actualExact": "4",
+      "expectedExact": "4",
+      "result": "PASS"
+    },
+    {
+      "group": "FX",
+      "expression": "unmet demand",
+      "actualExact": "2",
+      "expectedExact": "2",
+      "result": "PASS"
+    },
+    {
+      "group": "FX",
+      "expression": "old debt A",
+      "actualExact": "20",
+      "expectedExact": "20",
+      "result": "PASS"
+    },
+    {
+      "group": "FX",
+      "expression": "new debt A",
+      "actualExact": "30",
+      "expectedExact": "30",
+      "result": "PASS"
+    },
+    {
+      "group": "FX",
+      "expression": "debt increase",
+      "actualExact": "10",
+      "expectedExact": "10",
+      "result": "PASS"
+    },
+    {
+      "group": "FX",
+      "expression": "debt percent",
+      "actualExact": "50.0",
+      "expectedExact": "50",
+      "result": "PASS"
+    },
+    {
+      "group": "FX",
+      "expression": "Bora before",
+      "actualExact": "100",
+      "expectedExact": "100",
+      "result": "PASS"
+    },
+    {
+      "group": "FX",
+      "expression": "Bora after",
+      "actualExact": "80.0",
+      "expectedExact": "80",
+      "result": "PASS"
+    },
+    {
+      "group": "FX",
+      "expression": "Bora difference",
+      "actualExact": "-20",
+      "expectedExact": "-20",
+      "result": "PASS"
+    },
+    {
+      "group": "FX",
+      "expression": "float gap",
+      "actualExact": "4",
+      "expectedExact": "4",
+      "result": "PASS"
+    },
+    {
+      "group": "FX",
+      "expression": "offset A",
+      "actualExact": "0",
+      "expectedExact": "0",
+      "result": "PASS"
+    },
+    {
+      "group": "FX",
+      "expression": "rate points",
+      "actualExact": "2",
+      "expectedExact": "2",
+      "result": "PASS"
+    },
+    {
+      "group": "FX",
+      "expression": "relative rate percent",
+      "actualExact": "50.0",
+      "expectedExact": "50",
+      "result": "PASS"
+    },
+    {
+      "group": "FX",
+      "expression": "speculative F",
+      "actualExact": "10",
+      "expectedExact": "10",
+      "result": "PASS"
+    },
+    {
+      "group": "FX",
+      "expression": "repayment fixed interest",
+      "actualExact": "2",
+      "expectedExact": "2",
+      "result": "PASS"
+    },
+    {
+      "group": "FX",
+      "expression": "net at3",
+      "actualExact": "8",
+      "expectedExact": "8",
+      "result": "PASS"
+    },
+    {
+      "group": "FX",
+      "expression": "net at2",
+      "actualExact": "-2",
+      "expectedExact": "-2",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "initial net assets",
+      "actualExact": "8",
+      "expectedExact": "8",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "stressed other assets",
+      "actualExact": "92",
+      "expectedExact": "92",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "stressed total",
+      "actualExact": "97",
+      "expectedExact": "97",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "stressed capital",
+      "actualExact": "5",
+      "expectedExact": "5",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "ratio fixed base",
+      "actualExact": "5.00",
+      "expectedExact": "5",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "capital shortfall",
+      "actualExact": "1",
+      "expectedExact": "1",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "liquidity gap",
+      "actualExact": "10",
+      "expectedExact": "10",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "loan assets",
+      "actualExact": "107",
+      "expectedExact": "107",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "loan liabilities",
+      "actualExact": "102",
+      "expectedExact": "102",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "loan equity",
+      "actualExact": "5",
+      "expectedExact": "5",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "owner assets",
+      "actualExact": "101",
+      "expectedExact": "101",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "owner equity",
+      "actualExact": "9",
+      "expectedExact": "9",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "owner cash",
+      "actualExact": "9",
+      "expectedExact": "9",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "owner remaining liquidity gap",
+      "actualExact": "6",
+      "expectedExact": "6",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "loan and owner assets",
+      "actualExact": "111",
+      "expectedExact": "111",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "loan and owner equity",
+      "actualExact": "9",
+      "expectedExact": "9",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "post withdrawal cash combined",
+      "actualExact": "4",
+      "expectedExact": "4",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "forward sale",
+      "actualExact": "250.0",
+      "expectedExact": "250",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "low spot",
+      "actualExact": "200",
+      "expectedExact": "200",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "high spot",
+      "actualExact": "300",
+      "expectedExact": "300",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "low opportunity gain",
+      "actualExact": "50",
+      "expectedExact": "50",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "high opportunity difference",
+      "actualExact": "-50",
+      "expectedExact": "-50",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "low call net",
+      "actualExact": "-4",
+      "expectedExact": "-4",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "high call net",
+      "actualExact": "6",
+      "expectedExact": "6",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "low obligation",
+      "actualExact": "-10",
+      "expectedExact": "-10",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "high obligation",
+      "actualExact": "10",
+      "expectedExact": "10",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "weak capital after loss",
+      "actualExact": "-1",
+      "expectedExact": "-1",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "strong capital after loss",
+      "actualExact": "3",
+      "expectedExact": "3",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "real external group capital",
+      "actualExact": "8",
+      "expectedExact": "8",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "buffer",
+      "actualExact": "20.00",
+      "expectedExact": "20",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "released extra requirement",
+      "actualExact": "0",
+      "expectedExact": "0",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "income cap",
+      "actualExact": "120",
+      "expectedExact": "120",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "excess credit",
+      "actualExact": "40",
+      "expectedExact": "40",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "price percent",
+      "actualExact": "10.0",
+      "expectedExact": "10",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "nominal percent",
+      "actualExact": "5.00",
+      "expectedExact": "5",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "real exact percent",
+      "actualExact": "-50/11",
+      "expectedExact": "-50/11",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "real rounded percent",
+      "actualExact": "-4.55",
+      "expectedExact": "-4.55",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "gross margin old",
+      "actualExact": "40",
+      "expectedExact": "40",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "gross margin new",
+      "actualExact": "32",
+      "expectedExact": "32",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "gross margin absolute change",
+      "actualExact": "-8",
+      "expectedExact": "-8",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "gross margin relative change",
+      "actualExact": "-20.0",
+      "expectedExact": "-20",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "fixed nominal payment",
+      "actualExact": "100",
+      "expectedExact": "100",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "indexed payment",
+      "actualExact": "110.0",
+      "expectedExact": "110",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "fixed loan interest",
+      "actualExact": "30.00",
+      "expectedExact": "30",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "variable interest new",
+      "actualExact": "40.00",
+      "expectedExact": "40",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "interest change",
+      "actualExact": "10",
+      "expectedExact": "10",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "government bond interest",
+      "actualExact": "30.00",
+      "expectedExact": "30",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "25 basis points",
+      "actualExact": "0.25",
+      "expectedExact": "0.25",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "bank initial assets",
+      "actualExact": "140",
+      "expectedExact": "140",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "bank initial counterpart",
+      "actualExact": "140",
+      "expectedExact": "140",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "bank remaining reserves",
+      "actualExact": "10",
+      "expectedExact": "10",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "bank remaining deposits",
+      "actualExact": "90",
+      "expectedExact": "90",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "bank final assets",
+      "actualExact": "130",
+      "expectedExact": "130",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "bank final counterpart",
+      "actualExact": "130",
+      "expectedExact": "130",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "bank equity retained",
+      "actualExact": "40",
+      "expectedExact": "40",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "funding gap U",
+      "actualExact": "10",
+      "expectedExact": "10",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "energy cost per household",
+      "actualExact": "20",
+      "expectedExact": "20",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "community monthly additional cost",
+      "actualExact": "2000",
+      "expectedExact": "2000",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "targeted relief",
+      "actualExact": "5000",
+      "expectedExact": "5000",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "targeted budget",
+      "actualExact": "12000",
+      "expectedExact": "12000",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "broad relief",
+      "actualExact": "6000",
+      "expectedExact": "6000",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "broad budget",
+      "actualExact": "12000",
+      "expectedExact": "12000",
+      "result": "PASS"
+    },
+    {
+      "group": "FX",
+      "expression": "sum of unchanged task point maxima",
+      "actualExact": "30",
+      "expectedExact": "30",
+      "result": "PASS"
+    },
+    {
+      "group": "Finance",
+      "expression": "sum of unchanged task point maxima",
+      "actualExact": "42",
+      "expectedExact": "42",
+      "result": "PASS"
+    },
+    {
+      "group": "Macro",
+      "expression": "sum of unchanged task point maxima",
+      "actualExact": "24",
+      "expectedExact": "24",
+      "result": "PASS"
+    }
+  ],
+  "actualNumericAndRubricCheckCount": 84,
+  "issues": [],
+  "noAuthorComputationImported": true
+}
