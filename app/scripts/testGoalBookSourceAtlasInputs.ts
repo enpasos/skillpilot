@@ -236,6 +236,30 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   // The source atlas publishes HE LK use and ascorbic-acid analysis; the authored
   // quantitative paraben transfer remains explicitly outside source coverage.
   assert.deepEqual(chemistry.receipt.counts, { canonicalCurricularAtomicGoals: 398, publishedCurricularAtomicGoals: 378, sourceViews: 48, unresolvedSourceScopeDecisions: 496, omittedGoals: 20 })
+  // Keep the reviewed C10 child routes when newer process-competency mappings
+  // are integrated. Visibility inherited from their parent cannot replace
+  // these direct, bounded source witnesses.
+  const byChemistryMappingPath = 'curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.review.json'
+  const byChemistryMapping = JSON.parse(readFileSync(resolve(root, byChemistryMappingPath), 'utf8')) as {
+    mappings: { legacyGoalId: string; canonicalGoalId: string; matchType: string }[]
+    decisions: { sourceGoalId: string; canonicalGoalIds: string[] }[]
+  }
+  const bySekI = chemistry.receipt.scopes.find(s => s.key === 'DE-BY/SekI/')!
+  for (const [goalId, sourceGoalId, matchType] of [
+    ['597ac03c-d25f-5c34-a87c-52c059c87295', '7b5310e2-3b69-5a45-8966-f8523ea42fb9', 'partial'],
+    ['9751b6d8-cde3-527b-b37c-babb6cee79d2', '7c68f201-5b73-5b1f-8576-cc1a23fafb83', 'exact'],
+  ] as const) {
+    assert.deepEqual(byChemistryMapping.mappings.filter(row => row.legacyGoalId === sourceGoalId
+      && row.canonicalGoalId === goalId).map(row => row.matchType), [matchType],
+    'A later integration must retain the independently reviewed C10 child mapping')
+    assert.deepEqual(byChemistryMapping.decisions.filter(row => row.sourceGoalId === sourceGoalId)
+      .map(row => row.canonicalGoalIds), [['08b44b8f-e407-5a1f-82dc-e70e598022cf', goalId]],
+    'The source decision must retain its reviewed child without importing its sibling')
+    assert.deepEqual(bySekI.witnesses.filter(w => w.sourceGoalId === sourceGoalId
+      && w.mappedTargetGoalId === goalId).map(w => [w.goalId, w.coverage, w.profileBasis, w.mappingPath]),
+    [[goalId, 'direct', 'source-metadata', byChemistryMappingPath]],
+    'A direct C10 child witness must survive alongside historical parent routing')
+  }
   for (const [goalId, sourceGoalId, scopes] of [
     ['d2d735de-bede-5310-8aeb-8bb7562c7b75', 'bw-chem-sekii-3-3-2-b07-a01-2cd72615', ['DE-BW/SekII/GK', 'DE-BW/SekII/LK']],
     ['a0f6ba09-f072-5887-a797-fa369453c62a', 'bw-chem-sekii-3-4-2-b06-a01-99efae9b', ['DE-BW/SekII/LK']],

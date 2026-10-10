@@ -1,0 +1,63 @@
+{
+  "sourcePathOnlyMutablePhaseReceiptNotHashBound": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/remote-7fc-targeted-merge-final.actual-command-receipts.json",
+  "completedRows": [
+    {
+      "name": "native-chemistry-atlas-regenerate",
+      "command": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json"
+      ],
+      "startedAt": "2026-10-10T19:56:44.259226+00:00",
+      "elapsedSeconds": 0.916,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/remote-7fc-targeted-merge-final.01.native-chemistry-atlas-regenerate.raw.txt",
+      "rawOutputSha256": "148dce18ff108fca9cf355dc7a6907b292df447b60fb5ad804a2b7599fc6b102"
+    },
+    {
+      "name": "native-chemistry-atlas-check",
+      "command": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json",
+        "--check"
+      ],
+      "startedAt": "2026-10-10T19:56:45.175638+00:00",
+      "elapsedSeconds": 0.896,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/remote-7fc-targeted-merge-final.02.native-chemistry-atlas-check.raw.txt",
+      "rawOutputSha256": "daa99e7d9261cb921708a474784c4146c64747b0fedbe8ef017b08c0c0dba3a6"
+    },
+    {
+      "name": "native-atlas-regression",
+      "command": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "-e",
+        "import { testGoalBookSourceAtlasInputs } from \"./app/scripts/testGoalBookSourceAtlasInputs.ts\"; testGoalBookSourceAtlasInputs();"
+      ],
+      "startedAt": "2026-10-10T19:56:46.072305+00:00",
+      "elapsedSeconds": 2.344,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/remote-7fc-targeted-merge-final.03.native-atlas-regression.raw.txt",
+      "rawOutputSha256": "dcdf3d0ec05b843dbca234b9b93921089a5fc01af222ae6fc3483e66034337b8"
+    },
+    {
+      "name": "remote-qualified-chemistry-evidence-watch",
+      "command": [
+        "bash",
+        "scripts/run_canonical_chemistry_evidence_watch.sh"
+      ],
+      "startedAt": "2026-10-10T19:56:48.416625+00:00",
+      "elapsedSeconds": 0.461,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/remote-7fc-targeted-merge-final.04.remote-qualified-chemistry-evidence-watch.raw.txt",
+      "rawOutputSha256": "e82aa0aa93de049d61e4bbd3baaa475470794d54a471d721172ca65a8d6e5f8e"
+    }
+  ],
+  "fullCIOrContinuingCentralReportCompletionClaim": false
+}

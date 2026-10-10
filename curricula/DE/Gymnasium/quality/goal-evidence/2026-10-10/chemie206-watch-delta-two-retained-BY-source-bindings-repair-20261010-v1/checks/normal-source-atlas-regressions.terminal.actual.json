@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "role": "Normal targeted integration check; no new science or human approval",
+  "argv": [
+    "app/node_modules/.bin/tsx",
+    "-e",
+    "import { testGoalBookSourceAtlasInputs } from \"./app/scripts/testGoalBookSourceAtlasInputs.ts\"; testGoalBookSourceAtlasInputs();"
+  ],
+  "actualExitCode": 0,
+  "durationSeconds": 5.212,
+  "stdout": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie206-watch-delta-two-retained-BY-source-bindings-repair-20261010-v1/checks/normal-source-atlas-regressions.stdout.actual.txt",
+    "sha256": "sha256:dcdf3d0ec05b843dbca234b9b93921089a5fc01af222ae6fc3483e66034337b8",
+    "bytes": 164
+  },
+  "stderr": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie206-watch-delta-two-retained-BY-source-bindings-repair-20261010-v1/checks/normal-source-atlas-regressions.stderr.actual.txt",
+    "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  }
+}
