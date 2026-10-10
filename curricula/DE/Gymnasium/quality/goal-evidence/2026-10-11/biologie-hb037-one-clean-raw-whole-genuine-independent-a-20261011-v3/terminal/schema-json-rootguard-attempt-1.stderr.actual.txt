@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/tmp/hb037-independent-a-schema-20261011.py", line 24, in <module>
+    jsonschema.validate(r,s,registry=registry,format_checker=jsonschema.FormatChecker())
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/site-packages/jsonschema/validators.py", line 1332, in validate
+    raise error
+jsonschema.exceptions.ValidationError: 'biologie-hb037-clean-whole-genuine-independent-a-20261011-v3-P' does not match '^[a-z0-9]+(?:-[a-z0-9]+)*$'
+
+Failed validating 'pattern' in schema['properties']['reviewId']:
+    {'type': 'string',
+     'minLength': 1,
+     'maxLength': 100,
+     'pattern': '^[a-z0-9]+(?:-[a-z0-9]+)*$'}
+
+On instance['reviewId']:
+    'biologie-hb037-clean-whole-genuine-independent-a-20261011-v3-P'

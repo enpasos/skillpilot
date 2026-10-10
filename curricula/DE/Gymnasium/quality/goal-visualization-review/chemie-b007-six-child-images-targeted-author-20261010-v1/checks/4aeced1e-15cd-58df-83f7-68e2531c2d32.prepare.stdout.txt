@@ -1,0 +1,11 @@
+
+> skillpilot@0.0.0 visualization:prepare
+> node ../scripts/prepare_goal_visualization.mjs 4aeced1e-15cd-58df-83f7-68e2531c2d32 --landscape curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b007-two-current206-targeted-author-successor-20261010-v1/candidate/canonical.candidate523.inactive.json --subject chemie --provider OpenAI / Codex built-in image_gen --review-status pilot
+
+Prepared prompt package for: Massenanteile berechnen und deuten
+SkillPilot ID: 4aeced1e-15cd-58df-83f7-68e2531c2d32
+Prompt: tmp/goal-visualizations/4aeced1e-15cd-58df-83f7-68e2531c2d32/nano-banana-prompt.de.md
+Metadata: tmp/goal-visualizations/4aeced1e-15cd-58df-83f7-68e2531c2d32/metadata.json
+
+After generating and downloading the image, import it with:
+npm --prefix app run visualization:import -- 4aeced1e-15cd-58df-83f7-68e2531c2d32 "<downloaded-image-path>"

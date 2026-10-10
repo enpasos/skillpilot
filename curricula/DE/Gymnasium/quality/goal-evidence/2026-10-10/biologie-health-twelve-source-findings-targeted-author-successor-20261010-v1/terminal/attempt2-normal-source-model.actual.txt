@@ -1,0 +1,13 @@
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/773a297d-49bf-5c8a-a62a-1bd2558e323c/773a297d-49bf-5c8a-a62a-1bd2558e323c.png'
+    at async open (node:internal/fs/promises:637:25)
+    at async readFile (node:internal/fs/promises:1249:14)
+    at async <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/goalBookModel.ts:2594:36)
+    at async Promise.all (index 89)
+    at async loadGoalVisualizationAssetDigests (/home/enpasos/projects/skillpilot/app/scripts/goalBookModel.ts:2567:3)
+    at async Module.loadGoalBookBuildInputs (/home/enpasos/projects/skillpilot/app/scripts/goalBookModel.ts:2756:41)
+    at async main (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-health-twelve-source-findings-targeted-author-successor-20261010-v1/normal-targeted-source-and-model-checks.ts:76:18) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/773a297d-49bf-5c8a-a62a-1bd2558e323c/773a297d-49bf-5c8a-a62a-1bd2558e323c.png'
+}

@@ -1,0 +1,27 @@
+# Lernzielvisualisierung: Massenanteile berechnen und deuten
+
+## SkillPilot-Ziel
+
+- SkillPilot-ID: `4aeced1e-15cd-58df-83f7-68e2531c2d32`
+- Titel: Massenanteile berechnen und deuten
+- Beschreibung: Die lernende Person kann aus den Massen der Bestandteile den Massenanteil eines Stoffes berechnen und als Anteil an der Gesamtmasse des Gemisches deuten.
+
+## Generator
+
+- Provider: OpenAI / Codex built-in image_gen
+- Status: pilot
+- Quellbild: `4aeced1e-15cd-58df-83f7-68e2531c2d32.png`
+- Public Asset: `/assets/goal-visualizations/chemie/4aeced1e-15cd-58df-83f7-68e2531c2d32/4aeced1e-15cd-58df-83f7-68e2531c2d32.png`
+
+## Prompt
+
+```text
+Use case: scientific-educational.
+Create ONE brand-new PNG learning-goal orientation illustration, landscape about 16:9 and about 1600 x 900 pixels (near native generator size is fine). This is an approachable German school chemistry cartoon, not an assessment or a worked task. Use friendly, clear, abstract comic drawing: thick softly rounded navy outlines, large coherent objects, pale blue and cream background, gentle peach/lilac/teal accents, subtle soft shading, very large rounded dark lettering. Keep the existing friendly school-chemistry image language; no photorealism, no sterile technical dashboard. Objects and the few important words must remain clear when the entire image is displayed at 360 pixels wide and at 680 pixels wide. Keep generous spacing; no small footnotes, dense legends, decorative pseudo-writing, crowded apparatus, technical IDs, logos or watermarks. Only the exact short German text specified below may appear. Draw the actual science correctly; do not let correct text cover a wrong drawing. If people read or write, orient their notes/instruments for the person using them, with a coherent viewpoint.
+Primary idea: mass fraction uses the mass of the chosen component divided by the total mass of the mixture. Provide a simple visual relationship for orientation, not a worksheet.
+Composition: a large friendly rounded bar divided accurately into FIVE equal parts, one lilac part at the left for salt and four blue parts for water. Label the single lilac part with the exact large words "20 g Salz" and the four blue parts together with "80 g Wasser". A clear bracket spanning ALL five equal parts is labeled "100 g gesamt". Underneath, exactly one large simple relation "20 g / 100 g = 20 %". The heading is exactly "Massenanteil". Small supporting objects may be one plain salt dish near the lilac portion and one clear water vessel near the blue portion, but the correctly proportioned five-part mass bar is the main motif. These are masses: do not add milliliters or a volume scale, do not imply a concentration in g/L, do not draw a density conversion or a reaction. The total explicitly includes BOTH salt and water. No extra formula or tiny text; large rounded clear lettering and coherent quantity/proportion depiction.
+```
+
+## Review-Notiz
+
+Dieses Asset muss vor breitem Rollout gegen die Visualisierungs-Checkliste geprüft werden: mathematische Korrektheit, Alters- und Kontextpassung, Textlesbarkeit, Barrierefreiheit und Lizenz-/Copyright-Risiko.

@@ -1,0 +1,180 @@
+{
+  "schemaVersion": 1,
+  "modelOnly": true,
+  "license": "CC-BY-4.0",
+  "data": {
+    "germination": {
+      "constants": {
+        "seeds_per_dish": 20,
+        "independent_dishes": 2,
+        "root_criterion_mm": 2,
+        "same_batch_light_dish_area": true
+      },
+      "temperature_C": [
+        22,
+        28
+      ],
+      "water": [
+        "dry",
+        "moderately_moist",
+        "submerged"
+      ],
+      "observations": {
+        "22": {
+          "dry": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "moderately_moist": [
+            [
+              0,
+              0
+            ],
+            [
+              8,
+              9
+            ],
+            [
+              16,
+              15
+            ]
+          ],
+          "submerged": [
+            [
+              0,
+              0
+            ],
+            [
+              2,
+              3
+            ],
+            [
+              5,
+              6
+            ]
+          ]
+        },
+        "28": {
+          "dry": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          "moderately_moist": [
+            [
+              0,
+              0
+            ],
+            [
+              7,
+              8
+            ],
+            [
+              14,
+              15
+            ]
+          ],
+          "submerged": [
+            [
+              0,
+              0
+            ],
+            [
+              3,
+              4
+            ],
+            [
+              9,
+              10
+            ]
+          ]
+        }
+      }
+    },
+    "aquatic_light": {
+      "constants": {
+        "independent_setups": 3,
+        "plant_mass_relative": 1,
+        "water_volume_L": 1,
+        "measurement_interval_min": 10
+      },
+      "temperature_C": [
+        20,
+        28
+      ],
+      "light": [
+        "low",
+        "medium",
+        "high"
+      ],
+      "initial_oxygen_mg_per_L": [
+        6,
+        7
+      ],
+      "delta_oxygen_mg_per_L": {
+        "20": {
+          "low": [
+            0.2,
+            0.3,
+            0.1
+          ],
+          "medium": [
+            0.7,
+            0.8,
+            0.6
+          ],
+          "high": [
+            0.8,
+            0.9,
+            0.7
+          ]
+        },
+        "28": {
+          "low": [
+            0.1,
+            0.2,
+            0.0
+          ],
+          "medium": [
+            0.4,
+            0.5,
+            0.3
+          ],
+          "high": [
+            0.4,
+            0.5,
+            0.3
+          ]
+        }
+      }
+    },
+    "organ_preparation": {
+      "material": "Approved non-toxic teaching flower; no protected plant collection, blades or chemicals. Fictitious procedure cards only.",
+      "steps": [
+        "Freigegebenes Pflanzenorgan und Arbeitsplatz prüfen / check approved plant organ and workstation",
+        "Mit Pinzette vorsichtig äußere Blütenteile lösen / carefully loosen outer flower parts using forceps",
+        "Freigelegte Staubblätter und Stempel geordnet beobachten / observe exposed stamens and pistil in order",
+        "Beobachtung protokollieren und Arbeitsplatz sachgerecht abschließen / record observations and clean up appropriately"
+      ]
+    }
+  }
+}

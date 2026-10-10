@@ -1,0 +1,11 @@
+
+> skillpilot@0.0.0 visualization:prepare
+> node ../scripts/prepare_goal_visualization.mjs 4b6d1824-20e4-597e-b639-fae401f740f0 --landscape curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b007-two-current206-targeted-author-successor-20261010-v1/candidate/canonical.candidate523.inactive.json --subject chemie --provider OpenAI / Codex built-in image_gen --review-status pilot
+
+Prepared prompt package for: Stoffbezogene Schutzmaßnahmen begründen
+SkillPilot ID: 4b6d1824-20e4-597e-b639-fae401f740f0
+Prompt: tmp/goal-visualizations/4b6d1824-20e4-597e-b639-fae401f740f0/nano-banana-prompt.de.md
+Metadata: tmp/goal-visualizations/4b6d1824-20e4-597e-b639-fae401f740f0/metadata.json
+
+After generating and downloading the image, import it with:
+npm --prefix app run visualization:import -- 4b6d1824-20e4-597e-b639-fae401f740f0 "<downloaded-image-path>"

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "bio8-v4-targeted-genuine-b-P3-20261010-v1",
+  "bundleFingerprint": "sha256:8dde754d809084b3f45ecbc266cb0835733b9ed223f74e2db2266ac0138d26e2",
+  "bookDigest": "sha256:4e73e21c9d5df1ae8d75abf386f37e7f9f45bf941b5f4def73b5f1e2cf5ca159",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "modelVersion": "exact runtime revision not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "positive-understanding-evidence-v2-independent",
+  "promptFingerprint": "sha256:3e5a7435a9b77bbe6fd156de923fb99caa9ea69197b3e9e096c4082dbbbbe9f0",
+  "criteriaFingerprint": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8",
+  "generationParametersFingerprint": "sha256:7d46c96bc21eeb2c3645e67a99afe31b5cc958b6124407e7afcf7a31f635392e",
+  "independenceGroupId": "bio8-v4-targeted-genuine-independent-b-20261010-v1",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "374e6de5-0747-57cb-99e3-e50ccb371124",
+    "9b40dae5-6d89-5714-ac96-373e72a7045e",
+    "430b2b73-641a-5122-bb6d-162b0d1eaf2d"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_prompt",
+      "digest": "sha256:3e5a7435a9b77bbe6fd156de923fb99caa9ea69197b3e9e096c4082dbbbbe9f0"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:8fc89fb1108b4c07a07c8422927fe099e1a2713a04dea56833802715f468752c"
+    }
+  ],
+  "startedAt": "2026-10-10T21:57:51.799928+00:00",
+  "completedAt": "2026-10-10T22:02:52.282762+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:54f7704fdc5ac43a6db26d01d947f4b22e607b009a10285b34f0b293ab24bde1",
+  "toolchainVersion": "skillpilot-goal-description-review-v3"
+}

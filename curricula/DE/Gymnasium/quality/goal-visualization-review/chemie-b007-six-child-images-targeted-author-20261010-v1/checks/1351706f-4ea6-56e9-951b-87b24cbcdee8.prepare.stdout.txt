@@ -1,0 +1,11 @@
+
+> skillpilot@0.0.0 visualization:prepare
+> node ../scripts/prepare_goal_visualization.mjs 1351706f-4ea6-56e9-951b-87b24cbcdee8 --landscape curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b007-two-current206-targeted-author-successor-20261010-v1/candidate/canonical.candidate523.inactive.json --subject chemie --provider OpenAI / Codex built-in image_gen --review-status pilot
+
+Prepared prompt package for: Lösungen nach Arbeitsanweisung herstellen
+SkillPilot ID: 1351706f-4ea6-56e9-951b-87b24cbcdee8
+Prompt: tmp/goal-visualizations/1351706f-4ea6-56e9-951b-87b24cbcdee8/nano-banana-prompt.de.md
+Metadata: tmp/goal-visualizations/1351706f-4ea6-56e9-951b-87b24cbcdee8/metadata.json
+
+After generating and downloading the image, import it with:
+npm --prefix app run visualization:import -- 1351706f-4ea6-56e9-951b-87b24cbcdee8 "<downloaded-image-path>"
