@@ -108,6 +108,7 @@ Use this page by role: start with the overview documents, then jump to a review 
 - [Commit-Zwischenstand vom 10. Oktober: geprüfter Chemiekandidat und unabhängige Biologie-Reviews](chemie-biologie-m7-reviewed-candidates-commit-checkpoint-2026-10-10.md)
 - [Chemie: 26 neue fachliche Abschlüsse vom 10. Oktober, 206/398; Biologie 353/394 erhalten](chemie-biologie-m7-chemie206-biologie353-integration-2026-10-10.md)
 - [Chemie 206/398: zwei gültige BY-Quellenbindungen wiederhergestellt und CI-Fortsetzung](chemie-biologie-m7-chemie206-ci-source-binding-repair-2026-10-10.md)
+- [Commit-Zwischenstand vom 11. Oktober: 206/398 Chemie, 353/394 Biologie und gesicherte Kandidatennachweise](chemie-biologie-m7-chemie206-biologie353-commit-checkpoint-2026-10-11.md)
 
 ## Review Lanes
 

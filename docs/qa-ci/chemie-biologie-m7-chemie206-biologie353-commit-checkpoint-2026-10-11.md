@@ -32,7 +32,7 @@ Der versiegelte Argumentations-Autorenstand enthält Ziele, Quellenkontexte und 
 
 Die vorhandenen guten Überblicksbilder bleiben erhalten. Sechs spezifische Kinderbilder haben zwei unabhängige tatsächliche Sichtprüfungen; normale aktuelle Seiten- und P-Bindungen sind vorbereitet. Die regionale Quellenprojektion bleibt ein Kandidat mit offenen Quellenpflichten. Beschreibungs-, Material-, Atomaritäts-, Memory-/Karten- und betroffene Kontextreviews müssen vor einer strengen Integration vollständig zusammengeführt werden. Bilderzeugung und technisch gültige Quellenprojektion ersetzen diese Prüfungen nicht.
 
-Der regionale technische Nachfolger erzeugt 48 normale Sichten ohne CPV-009-Fehler und erhält die 206 geschützten aktuellen Seiten exakt. Zwei belegte Thüringer Kursangaben werden auf LK begrenzt. Die zusätzliche geschlossene Schemaprüfung der Sichtdateien und die vollständige fachliche Quellenfreigabe bleiben ausdrücklich offen.
+Der regionale technische Nachfolger erzeugt 48 normale Sichten ohne CPV-009-Fehler und erhält die 206 geschützten Seiten gegenüber dem versiegelten v3-Seitenkandidaten exakt. Die bereits im vorherigen Kandidaten geänderten Kontexte benötigen weiterhin gezielte unabhängige Prüfungen. Zwei belegte Thüringer Kursangaben werden auf LK begrenzt. Die zusätzliche geschlossene Schemaprüfung der Sichtdateien und die vollständige fachliche Quellenfreigabe bleiben ausdrücklich offen.
 
 ## Prüfungen und Fortsetzung
 
