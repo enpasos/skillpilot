@@ -1,19 +1,10 @@
 {
   "version": 1,
-  "reviewId": "DE-ST-CHEMIE-SEKI-FACHLEHRPLAN-GYMNASIUM-2022-MAPPING-3-SOURCE-EXTRACTION-1",
+  "reviewId": "chemie-b008-source24-st-bounded-parent-split-author-20261010-v1",
   "sourceLandscapeId": "f9e8b305-d604-55c5-82b0-77a734925371",
   "targetLandscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
   "sourceExtractionPath": "curricula/DE/Gymnasium/input/ST/lower-secondary/source-extraction/DE_ST_CHEMIE_SEKI_FACHLEHRPLAN_GYMNASIUM_2022.source-extraction.json",
-  "status": {
-    "scope": "DE-ST - Chemie Sekundarstufe I (Sachsen-Anhalt, Fachlehrplan Gymnasium 2022 Source-Extraction) / amtliche Source-Extraction",
-    "reviewedSourceGoals": 270,
-    "mappedSourceGoals": 270,
-    "needsViewPlacementReview": 0,
-    "needsCanonicalGoal": 0,
-    "totalSourceGoals": 270,
-    "explicitNeedsCanonicalGoal": 0,
-    "notes": "Das Chemie-Source-Inventar wurde gegen die amtliche Source-Extraction fachlich abgedeckt. MatchType partial bedeutet 1:n-Abdeckung, nicht fachliche Offenheit."
-  },
+  "status": "candidate",
   "mappings": [
     {
       "legacyGoalId": "st-chem-seki-st-schuljahrgange-7-8-chemie-als-naturwissenschaft-beschreiben-001-6e66307b",
@@ -6158,6 +6149,12 @@
       "canonicalGoalId": "945d69d5-92a7-5195-8f78-4e56f8e7b633",
       "matchType": "partial",
       "reviewDecisionId": "st-chem-seki-st-schuljahrgang-10-einfuhrungsphase-technische-verfahren-qualitativ-und-quantitativ-betrachten-270-85e07de4"
+    },
+    {
+      "legacyGoalId": "st-chem-seki-st-schuljahrgange-7-8-chemie-als-naturwissenschaft-beschreiben-005-8890f0b9",
+      "canonicalGoalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+      "matchType": "partial",
+      "reviewDecisionId": "st-chem-seki-st-schuljahrgange-7-8-chemie-als-naturwissenschaft-beschreiben-005-8890f0b9"
     }
   ],
   "decisions": [
@@ -6220,11 +6217,21 @@
       "canonicalGoalIds": [
         "49b13b33-34b7-5e4e-861c-b21082cb9922",
         "91238ba1-5c63-50c7-a4fd-9bbe492c6b61",
-        "c7d4d9f7-d23f-44fc-bf22-3872e0f2b9a0"
+        "c7d4d9f7-d23f-44fc-bf22-3872e0f2b9a0",
+        "e81a4aed-9695-533e-8eb7-7a0c714346ea"
       ],
-      "rationale": "Das amtliche Chemie-Source-Ziel ist inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n beschreibt die Zuordnungsform, nicht eine offene Lücke.",
+      "rationale": "Das amtliche Chemie-Source-Ziel ist inhaltlich durch mehrere kanonische Chemieziele abgedeckt; 1:n beschreibt die Zuordnungsform, nicht eine offene Lücke. Source24-Autorenkandidat (2026-10-10): zusätzliche explizite partial-Beiträge nur an e81a4aed-9695-533e-8eb7-7a0c714346ea. Eigene begrenzte Operationalisierung, noch keine unabhängige Quellenfreigabe; alte vollständige Quellpflicht und sämtliche ursprünglichen Partner bleiben erhalten.",
       "reviewedAt": "2026-05-11",
-      "reviewer": "codex"
+      "reviewer": "codex",
+      "authorCandidateBoundary": {
+        "authorRole": "technical_source_author_with_actual_primary_inspection",
+        "candidateCreatedAt": "2026-10-10",
+        "reviewedOriginalFieldsRetained": true,
+        "newPartialChildContributionsIndependentReviewPending": true,
+        "wholeSourceApproval": false,
+        "wholeCourseApproval": false,
+        "humanApproval": false
+      }
     },
     {
       "sourceGoalId": "st-chem-seki-st-schuljahrgange-7-8-chemie-als-naturwissenschaft-beschreiben-006-09e8dd34",
@@ -10155,5 +10162,56 @@
       "reviewedAt": "2026-05-11",
       "reviewer": "codex"
     }
-  ]
+  ],
+  "note": " Additiver inaktiver Source24-Autorenkandidat: ganze bisherige Pflichten, Entscheidungen und Partnerkanten erhalten; nur explizite begrenzte partial-Kindbeiträge, unabhängige Quellen-A/B-Prüfung offen. Keine ganze Source-/Kurs-/Human-Freigabe.",
+  "source24IndependentBoundedContributionReview": {
+    "role": "Only the author-added explicit partial contributions have completed the current independent A/B source review",
+    "historicalAuthorCandidateDelta": {
+      "newPartialEdges": 1,
+      "originalAllEdgesRetained": true,
+      "newSourceDuties": 0,
+      "sourceExtractionUnmodified": true,
+      "independentReviewPending": true,
+      "wholeSourceApproval": false,
+      "wholeCourseApproval": false,
+      "humanApproval": false
+    },
+    "independentAFirst": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-a-20261010-v1/FIRST.current-source24-primary-and-partial-scope.verdict.json",
+      "sha256": "sha256:476d573d33974fbe4d16381ef310cd3d5708150031e9201fc9d58191cce86dcc",
+      "bytes": 303564
+    },
+    "independentAFinalSeal": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-a-20261010-v1/FINAL.independent-source24-a.freeze.json",
+      "sha256": "sha256:810c1a15766a348ff212d694fae1b6d3c12c369a9e08e37e98ad33ff31151ac4",
+      "bytes": 7362
+    },
+    "independentBFirst": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-b-20261010-v1/FIRST.source24.actual.json",
+      "sha256": "sha256:f56e714f398d852bd10884248cf1a044c264d7653f25cd363bbaf57f9910aeea",
+      "bytes": 27981
+    },
+    "independentBFinalSeal": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-current-primary-independent-b-20261010-v1/independent-b.final.freeze.json",
+      "sha256": "sha256:4f242db1a55a6cb20dbf3cbe865139497a0965cc02c7a0251bd0c4dced44f1bf",
+      "bytes": 60479
+    },
+    "pairedChildDecisions": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-dual-bounded-scope-technical-20261010-v1/paired24-literal-independent-source-decisions.actual.json",
+      "sha256": "sha256:7fb00264a9422d0ae68b970763b285dd2ad586600584b99c75d1f627ac12c97a",
+      "bytes": 36817
+    },
+    "pairedEdgeDecisions": {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-source24-dual-bounded-scope-technical-20261010-v1/paired63-literal-independent-partial-edge-decisions.actual.jsonl",
+      "sha256": "sha256:b8c193e8d766cd3486f5d446025174770af79af4bb09dca2170f7b598bb5766c",
+      "bytes": 83915
+    },
+    "newPartialEdgesReviewed": 1,
+    "independentReviewPending": false,
+    "sourceCourseScopeHeldGoalId": "e5a5dcd8-053c-55fd-b5c7-bba93779da53",
+    "wholeSourceApproval": false,
+    "wholeCourseApproval": false,
+    "humanApproval": false,
+    "strictNetGain": 0
+  }
 }

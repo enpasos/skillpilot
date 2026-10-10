@@ -7,7 +7,7 @@
 > Source of truth: `app/scripts/generateCurriculumQualityStatus.ts`
 > Source of truth: `curricula/`
 
-Generated: 2026-10-10T19:09:03.275Z
+Generated: 2026-10-10T19:29:31.464Z
 Rules version: curriculum-quality-v5
 
 ## Summary
@@ -29,7 +29,7 @@ Rules version: curriculum-quality-v5
 | Curriculum | Maturity | Goals | Atomic | Passage extraction | Bundeslaender | QA scopes | Warn | Fail |
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Biologie (Gymnasium, DE) | M6 | 479 | 424 | 17/23 | 16/16 | 1 | 1 | 0 |
-| Chemie (Gymnasium, DE) | M6 | 487 | 416 | 32/32 | 16/16 | 1 | 1 | 0 |
+| Chemie (Gymnasium, DE) | M6 | 517 | 438 | 32/32 | 16/16 | 1 | 1 | 0 |
 | Chinesisch (Gymnasium, DE) | M0 | 192 | 181 | 2/2 | 2/16 | 0 | 2 | 0 |
 | Deutsch (Gymnasium, DE) | M6 | 354 | 291 | 31/31 | 16/16 | 1 | 0 | 0 |
 | Englisch (Gymnasium, DE) | M0 | 130 | 104 | 2/2 | 2/16 | 0 | 2 | 0 |
@@ -368,7 +368,7 @@ Rules version: curriculum-quality-v5
 | Curriculum | Complete | DE source-view atoms | Raw atoms | Source-backed states | Extracted source goals | Registered source originals | Fully covered originals | Unregistered source goals | Extracted source atoms | Unregistered source atoms | Unsupported assignments | Unmapped source atoms | Partial | Error | Max source-backed view coverage |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Biologie (Gymnasium, DE) | 16/16 | 396 | 424 | 16 | 1014 | 1014 | 1014 | 0 | 1014 | 0 | 0 | 0 | 0 | 0 | 365 (100%) |
-| Chemie (Gymnasium, DE) | 16/16 | 338 | 416 | 16 | 5865 | 5865 | 5865 | 0 | 5865 | 0 | 0 | 0 | 0 | 0 | 336 (100%) |
+| Chemie (Gymnasium, DE) | 16/16 | 338 | 438 | 16 | 5865 | 5865 | 5865 | 0 | 5865 | 0 | 0 | 0 | 0 | 0 | 336 (100%) |
 | Chinesisch (Gymnasium, DE) | 2/16 | 170 | 181 | 2 | 399 | 399 | 399 | 0 | 399 | 0 | 0 | 0 | 0 | 0 | 170 (100%) |
 | Deutsch (Gymnasium, DE) | 16/16 | 268 | 291 | 16 | 6222 | 6222 | 6222 | 0 | 6222 | 0 | 0 | 0 | 0 | 0 | 268 (100%) |
 | Englisch (Gymnasium, DE) | 2/16 | 89 | 104 | 2 | 103 | 103 | 103 | 0 | 103 | 0 | 0 | 0 | 0 | 0 | 89 (100%) |
