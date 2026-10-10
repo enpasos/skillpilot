@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "role": "root tool-observed terminal results; no synthetic command success",
+  "observedAt": "2026-10-10T07:21:05.103487+00:00",
+  "checks": [
+    {
+      "command": [
+        "python3",
+        "scripts/validate_schemas.py"
+      ],
+      "exitCode": 0,
+      "checkedFiles": 57499,
+      "outputFiles": [
+        "checks/whole-schema.stdout.actual.txt",
+        "checks/whole-schema.stderr.actual.txt"
+      ]
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-links"
+      ],
+      "exitCode": 0,
+      "checkedDocuments": 314
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-indexes"
+      ],
+      "exitCode": 0,
+      "checkedIndexes": 8
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:generated-doc-notices"
+      ],
+      "exitCode": 0,
+      "checkedFiles": 33
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:generated-status-registry"
+      ],
+      "exitCode": 0
+    },
+    {
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:terminology"
+      ],
+      "exitCode": 0,
+      "checkedFiles": 96516,
+      "exactReviewedLegacyOccurrences": 48
+    }
+  ],
+  "newScientificClosure": false
+}

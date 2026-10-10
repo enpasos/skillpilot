@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "role": "bounded technical acknowledgement of existing reviewed operative checkpoint; no new scientific review",
+  "completedAt": "2026-10-10T07:16:12.199558+00:00",
+  "mainCheckpoint": "340c8172e39f02c5776bf8a28dce7092be35a08e",
+  "command": [
+    "bash",
+    "scripts/run_canonical_chemistry_evidence_watch.sh"
+  ],
+  "exitCode": 0,
+  "durationSeconds": 0.858082,
+  "changedPaths": [
+    "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-bw-gk.view.json",
+    "curricula/DE/Gymnasium/composition-views/chemie/de-bw-lk.view.json",
+    "curricula/DE/Gymnasium/input/BW/upper-secondary/source-extraction/DE_BW_CHEMIE_SEKII_BP2016_V2.source-extraction.json",
+    "curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json"
+  ],
+  "unchangedCompleteBaselineRecords": 141,
+  "watchedPaths": 146,
+  "watchManifestCheckerWorkflowChanged": false,
+  "baselineBefore": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemistry-evidence-watch-current381-ci-acknowledgement-technical-20261010-v1/before/chemistry-evidence-watch-baseline.json",
+    "sha256": "sha256:8a123428be75d50fc4ead49b013779fd8235e68380365da05522237c833f76bc",
+    "bytes": 44499
+  },
+  "baselineAfter": {
+    "path": "curricula/DE/Gymnasium/provenance/chemistry-evidence-watch-baseline.json",
+    "sha256": "sha256:07420c62a19b8f34ca7fec54b86f001337a3680e8a879a1696e827fc963ce7e3",
+    "bytes": 44499
+  },
+  "stdout": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemistry-evidence-watch-current381-ci-acknowledgement-technical-20261010-v1/checks/full-watch-after-ack.stdout.actual.txt",
+    "sha256": "sha256:e82aa0aa93de049d61e4bbd3baaa475470794d54a471d721172ca65a8d6e5f8e",
+    "bytes": 135
+  },
+  "stderr": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemistry-evidence-watch-current381-ci-acknowledgement-technical-20261010-v1/checks/full-watch-after-ack.stderr.actual.txt",
+    "sha256": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "bytes": 0
+  },
+  "existingScientificIntegration": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-q3-three-reviewed-active-integration-technical-v1/stable-current487-checkpoint/stable-current487-BW3-exact-strict-ID-sets-and-terminal-checks.actual.json",
+    "sha256": "sha256:0a55b8627908b98667c9043dfe3c81aa8af785b9f4f6f11b55c655597f72416e",
+    "bytes": 238326
+  },
+  "sourceAdoption": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-q3-three-BW-source-adoption-technical-successor-20261010-v1/source-adoption.actual.technical.receipt.json",
+    "sha256": "sha256:038993045bc62f862e99681acd6de08d86b817615e20188e96ea39084965fcb7",
+    "bytes": 8924
+  },
+  "newScientificClosures": 0,
+  "restoredStrictBindings": 0,
+  "strictNetGain": 0,
+  "humanApproval": false,
+  "humanTrial": false,
+  "wholeSourceApproval": false,
+  "wholeProgrammeApproval": false,
+  "independentTechnicalComparison": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemistry-evidence-watch-current381-ci-acknowledgement-technical-20261010-v1/checks/independent-five-watch-paths.review.actual.json",
+    "sha256": "sha256:624b8513982d374585fea95f85d4e576509a47d35a3feae69cb98342c98320ac",
+    "bytes": 33871
+  },
+  "historicalOwnFreezeVerification": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemistry-evidence-watch-current381-ci-acknowledgement-technical-20261010-v1/checks/existing-reviewed-freezes.own-bindings.actual.json",
+    "sha256": "sha256:ec911b62827233fffdedf4ad9ed4920e5f83640ff16a587ed9b36aaf886f5a2d",
+    "bytes": 3923
+  },
+  "generatedViewsBefore": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemistry-evidence-watch-current381-ci-acknowledgement-technical-20261010-v1/before/canonical-gymnasium-chemistry-evidence-watch-status.md",
+      "sha256": "sha256:81bd888e642b9c75e31334a967c501a25c3e7af9e3706b06797d47040bb429c4",
+      "bytes": 54340
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemistry-evidence-watch-current381-ci-acknowledgement-technical-20261010-v1/before/canonical-gymnasium-chemistry-evidence-watch-delta.md",
+      "sha256": "sha256:1bcb88011291c832ba9c6ded2685ee2980a2de673dbb44abfbad588cae1f3eb5",
+      "bytes": 1608
+    }
+  ],
+  "generatedViewsAfter": [
+    {
+      "path": "docs/dev/canonical-gymnasium-chemistry-evidence-watch-status.md",
+      "sha256": "sha256:5b7891296cfd26cb31639edb5d2d3439495ef85344c47bc71099239f8066016e",
+      "bytes": 54340
+    },
+    {
+      "path": "docs/dev/canonical-gymnasium-chemistry-evidence-watch-delta.md",
+      "sha256": "sha256:e30371bd78ae1866487b2fd5730015ff75d5029b7ca40847208ddb9c08c5620a",
+      "bytes": 1608
+    }
+  ],
+  "actualDeltaBefore": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemistry-evidence-watch-current381-ci-acknowledgement-technical-20261010-v1/checks/before-watch-delta.actual.json",
+    "sha256": "sha256:0644ede49862c528dc830d21c8299fc8e9d0e4053a07cefa51807f1c2e10cdb9",
+    "bytes": 124906
+  }
+}
