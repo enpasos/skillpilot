@@ -1,0 +1,16 @@
+node:fs:573
+  return binding.open(
+                 ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/biologie-four-native-technical/isolated-biologie-four-native-h6w6nlaq/curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-biologie.pdf'
+    at Object.openSync (node:fs:573:18)
+    at readFileSync (node:fs:452:35)
+    at buildGoalBookSourceAtlasInputs (/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/biologie-four-native-technical/isolated-biologie-four-native-h6w6nlaq/app/scripts/goalBookSourceAtlasInputs.ts:272:33)
+    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-neuro-verhalten-hormone-ten-current343-source-raster-native-technical-preparation-20261010-v1/technical-normal-whole394-P10-source-impact.mts:11:155) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/biologie-four-native-technical/isolated-biologie-four-native-h6w6nlaq/curricula/DE/Gymnasium/input/HE/upper-secondary/kerncurriculum_gymnasiale_oberstufe-biologie.pdf'
+}
+
+Node.js v20.20.2

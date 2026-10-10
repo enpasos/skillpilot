@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-10T10:05:32.491017+00:00",
+  "role": "Additive root independent B operational-content review, after first science seal",
+  "reviewer": "Codex /root; not author of the assessments",
+  "status": "needs_human_review",
+  "reviewAuthority": "ai_candidate",
+  "bindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-phase-local-inquiry-model-society-terminal-author-20261010-v1/candidate/whole517.inactive.terminal-assessment-author.json",
+      "sha256": "sha256:6568038620a0675425f334a7104d189484ff3e76468720611c9a288d02414485",
+      "bytes": 1653245
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-five-terminal-independent-b-substantive-review-20261010-v1/FIRST.five-whole-assessments-and-fourteen-kinds.actual-independent-b.json",
+      "sha256": "sha256:935ca0f6a6b9c138c0a16caaf949b77b093e945bce32c08932d54f90314ef54b",
+      "bytes": 20251
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1McpContractAdapter.java",
+      "sha256": "sha256:68328ce555d191b7540657a915decd8c28e5f2cd63e053915940fda3360ad964",
+      "bytes": 160344
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/landscape/ExamData.java",
+      "sha256": "sha256:28d545feecb8390748509bbad10fd96f116960017f554f5c3208b96a365b352d",
+      "bytes": 4189
+    },
+    {
+      "path": "docs/qa-ci/math-antiderivative-exam-candidate-review-2026-09-28.md",
+      "sha256": "sha256:f94cc6ab95de080e3c4c87cb9b435d46c759bb0731617b903e0270b57f2cb09f",
+      "bytes": 5109
+    }
+  ],
+  "findingId": "SC-01",
+  "findingDe": "Die fünf vorhandenen numerischen Bestehensgrenzen erlauben positive Gesamtsummen bei fehlenden Pflichtleistungen. Aktuell speichert der Claude-Adapter anhand von evaluationCapability und earnedPoints >= passingPoints; die Anweisung unvollständig und extendedData.assessmentEvidenceRequirements erzeugen keine serverseitig geprüften Teilminima. Vor maschinellem released sind wirksame Inhalts-/Rubrik- und Grenzentscheidungen sowie negative Punktszenarien erforderlich.",
+  "actualCodeRead": {
+    "path": "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1McpContractAdapter.java",
+    "startLine": 1860,
+    "endLine": 1891,
+    "scope": "Claude adapter as actually read; no unseen host acceptance asserted"
+  },
+  "firstReviewLimitDe": "Der erhaltene FIRST-Bericht war eine fachliche Prüfung der Kandidatenaufgaben, keine operative Inhaltsfreigabe. Er hielt die Leistungsprüfung offen. Der Befund präzisiert diese offene Prüfung anhand des aktuellen Codes und der tatsächlich berechneten Auslassungsfälle.",
+  "records": [
+    {
+      "goalId": "2f53dea4-1ea9-59ad-bd2d-0492107627ee",
+      "maxPoints": 40,
+      "passingPoints": 24,
+      "negativeWholeStepBounds": [
+        {
+          "omittedStepId": "s1",
+          "omittedWholeStep": "Eigener begründeter Untersuchungsplan",
+          "maximumRemainingPoints": 34,
+          "canReachCurrentPassingPoints": true
+        },
+        {
+          "omittedStepId": "s2",
+          "omittedWholeStep": "Tatsächliche eigene sichere Untersuchung und Rohprotokoll",
+          "maximumRemainingPoints": 32,
+          "canReachCurrentPassingPoints": true
+        },
+        {
+          "omittedStepId": "s3",
+          "omittedWholeStep": "Auswertung und konkrete Reflexion der eigenen Untersuchung",
+          "maximumRemainingPoints": 30,
+          "canReachCurrentPassingPoints": true
+        },
+        {
+          "omittedStepId": "s4",
+          "omittedWholeStep": "Tatsächlich gehaltene eigene adressatengerechte Präsentation",
+          "maximumRemainingPoints": 28,
+          "canReachCurrentPassingPoints": true
+        },
+        {
+          "omittedStepId": "s5",
+          "omittedWholeStep": "Überarbeitung aus tatsächlicher Rückfrage",
+          "maximumRemainingPoints": 36,
+          "canReachCurrentPassingPoints": true
+        }
+      ],
+      "verdict": "REVISE_SC-01",
+      "substepDimensionsAlsoRequireReview": true,
+      "courseScopeHoldPreserved": false
+    },
+    {
+      "goalId": "ab315f52-a9e3-5c1c-a404-7fb1a96a3eaf",
+      "maxPoints": 60,
+      "passingPoints": 36,
+      "negativeWholeStepBounds": [
+        {
+          "omittedStepId": "s1",
+          "omittedWholeStep": "Selbst formulierte theoriegestützte Frage/Hypothese und Gegenbefund",
+          "maximumRemainingPoints": 50,
+          "canReachCurrentPassingPoints": true
+        },
+        {
+          "omittedStepId": "s2",
+          "omittedWholeStep": "Eigene begründete qualitative/quantitative Methodenwahl und Planung",
+          "maximumRemainingPoints": 48,
+          "canReachCurrentPassingPoints": true
+        },
+        {
+          "omittedStepId": "s3",
+          "omittedWholeStep": "Tatsächliche überwiegend selbstständige sichere Durchführung und eigene Rohdaten",
+          "maximumRemainingPoints": 48,
+          "canReachCurrentPassingPoints": true
+        },
+        {
+          "omittedStepId": "s4",
+          "omittedWholeStep": "Eigene mathematische/digitale Auswertung und begründetes Hypothesenurteil",
+          "maximumRemainingPoints": 44,
+          "canReachCurrentPassingPoints": true
+        },
+        {
+          "omittedStepId": "s5",
+          "omittedWholeStep": "Reflexion und konkrete verbesserte Folgeuntersuchung",
+          "maximumRemainingPoints": 50,
+          "canReachCurrentPassingPoints": true
+        }
+      ],
+      "verdict": "REVISE_SC-01",
+      "substepDimensionsAlsoRequireReview": true,
+      "courseScopeHoldPreserved": false
+    },
+    {
+      "goalId": "7bfe515c-e59f-521c-9781-b75e33caf0ec",
+      "maxPoints": 80,
+      "passingPoints": 48,
+      "negativeWholeStepBounds": [
+        {
+          "omittedStepId": "s1",
+          "omittedWholeStep": "Eigene Atombau-/Periodizitäts-Modellwahl, Prüfung und Grenze",
+          "maximumRemainingPoints": 68,
+          "canReachCurrentPassingPoints": true
+        },
+        {
+          "omittedStepId": "s2",
+          "omittedWholeStep": "Eigene Gleichgewichtsmodelle, dynamische Prüfung und Weiterentwicklung",
+          "maximumRemainingPoints": 66,
+          "canReachCurrentPassingPoints": true
+        },
+        {
+          "omittedStepId": "s3",
+          "omittedWholeStep": "Eigene Bindungs-/Geometrie-Modelle, Dipolaussagen und Grenzen",
+          "maximumRemainingPoints": 66,
+          "canReachCurrentPassingPoints": true
+        },
+        {
+          "omittedStepId": "s4",
+          "omittedWholeStep": "Eigene analoge/digitale Rezeptor- UND Enzymmodellprüfung komplexer Moleküle",
+          "maximumRemainingPoints": 60,
+          "canReachCurrentPassingPoints": true
+        },
+        {
+          "omittedStepId": "s5",
+          "omittedWholeStep": "Eigene tatsächliche adressatengerechte Präsentation und Reflexion",
+          "maximumRemainingPoints": 60,
+          "canReachCurrentPassingPoints": true
+        }
+      ],
+      "verdict": "REVISE_SC-01",
+      "substepDimensionsAlsoRequireReview": true,
+      "courseScopeHoldPreserved": false
+    },
+    {
+      "goalId": "b406eff8-3cd9-551b-a913-c6dda7223645",
+      "maxPoints": 50,
+      "passingPoints": 30,
+      "negativeWholeStepBounds": [
+        {
+          "omittedStepId": "s1",
+          "omittedWholeStep": "Alle fünf Gültigkeitskriterien mit Gegenbefund/Fehler-Unterscheidung",
+          "maximumRemainingPoints": 30,
+          "canReachCurrentPassingPoints": true
+        },
+        {
+          "omittedStepId": "s2",
+          "omittedWholeStep": "Historische UND aktuelle gesellschaftliche/ökologische chemische Wirkungen",
+          "maximumRemainingPoints": 40,
+          "canReachCurrentPassingPoints": true
+        },
+        {
+          "omittedStepId": "s3",
+          "omittedWholeStep": "Ökologische, ökonomische UND soziale Nachhaltigkeitsentscheidung samt Grenzen",
+          "maximumRemainingPoints": 35,
+          "canReachCurrentPassingPoints": true
+        },
+        {
+          "omittedStepId": "s4",
+          "omittedWholeStep": "Begründete Reflexion möglichen eigenen Handelns",
+          "maximumRemainingPoints": 45,
+          "canReachCurrentPassingPoints": true
+        }
+      ],
+      "verdict": "REVISE_SC-01",
+      "substepDimensionsAlsoRequireReview": true,
+      "courseScopeHoldPreserved": false
+    },
+    {
+      "goalId": "eed5eda3-2daf-5d48-b935-23dadd622d9b",
+      "maxPoints": 40,
+      "passingPoints": 24,
+      "negativeWholeStepBounds": [
+        {
+          "omittedStepId": "s1",
+          "omittedWholeStep": "Belegter historischer chemischer Erkenntnisweg mit Quellen-/Motivgrenze",
+          "maximumRemainingPoints": 32,
+          "canReachCurrentPassingPoints": true
+        },
+        {
+          "omittedStepId": "s2",
+          "omittedWholeStep": "Alle sechs Einflüsse konkret beschrieben und begründet bewertet",
+          "maximumRemainingPoints": 22,
+          "canReachCurrentPassingPoints": false
+        },
+        {
+          "omittedStepId": "s3",
+          "omittedWholeStep": "Empirische Gültigkeit von Zustimmung unterschieden",
+          "maximumRemainingPoints": 30,
+          "canReachCurrentPassingPoints": true
+        },
+        {
+          "omittedStepId": "s4",
+          "omittedWholeStep": "Prüfbarer nächster Forschungsschritt mit reflektiertem Einfluss",
+          "maximumRemainingPoints": 36,
+          "canReachCurrentPassingPoints": true
+        }
+      ],
+      "verdict": "REVISE_SC-01",
+      "substepDimensionsAlsoRequireReview": true,
+      "courseScopeHoldPreserved": true
+    }
+  ],
+  "A01De": "Unabhängig von SC-01 ist der nach meiner Erstversiegelung mitgeteilte A-01-Befund korrekt: Aufgabe nennt eine Hypothese, Rubrik beide Rezeptor-/Enzymfälle. Alter FIRST wird nicht rückwirkend geändert; gezielter Autoren-Nachfolger und erneute tatsächliche Inhaltsprüfung sind offen.",
+  "remediationRequirementDe": "Keine Runtime-/Schemaerweiterung. Pflichtdimensionen in den tatsächlich ausgelieferten Rubrikbeschreibungen mit Nullregel bei Auslassung verbinden und eine konsistente numerische Schwelle setzen. Für jeden erforderlichen Teil muss auch die maximale Restpunktzahl unter der Grenze liegen. Vorhandene teilweise richtige Leistungen erhalten weiter begründete Teilpunkte, gleichwertige Lösungen bleiben zulässig.",
+  "normalNativeReview": "PENDING",
+  "examReadinessPromotion": false,
+  "C11PSelected": false,
+  "humanApproval": false,
+  "humanTrial": false,
+  "actualLearnerExecution": false,
+  "activeWrites": false,
+  "historicalWrites": false,
+  "strictGain": 0
+}

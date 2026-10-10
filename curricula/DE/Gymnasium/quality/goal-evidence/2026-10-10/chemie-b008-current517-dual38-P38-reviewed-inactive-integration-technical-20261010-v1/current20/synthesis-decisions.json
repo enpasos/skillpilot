@@ -1,0 +1,608 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-synthesis-decision-manifest.schema.json",
+  "schemaVersion": 1,
+  "synthesisContract": "goal-description-rollout-synthesis-decision-v1",
+  "manifestId": "current20-current-dual-explicit-technical-synthesis-20261010-v1",
+  "authority": "ai_synthesis",
+  "synthesizedBy": "Codex technical synthesis by existing independent reviewer B; no third scientific review",
+  "synthesizedAt": "2026-10-10T11:38:01.869Z",
+  "batch": {
+    "batchId": "chemie-b008-current517-current20-native-author-20261010-v1",
+    "batchManifestDigest": "sha256:473f19e6af883b1a9d418d9e01f6bbeb9672da27c9c4b8358b1fa9d903966276",
+    "configDigest": "sha256:cf78bc05d3a83eb3616c0ec9aee5e9ccea4644c90da84e63bb7baeb382c194b7",
+    "bundleFingerprint": "sha256:9b450108954fc0588a5ed5602778313444ed80c91a840105b2e24847c026b98a",
+    "bookDigest": "sha256:b5c6577afe1de11f17278ad3369a2d4f9ceeb8517ff3893d76ffa02ff9376143",
+    "reviewInputFingerprint": "sha256:78843fdbc4af1414a8fe80b8274a26ede95b5903c6a33eb3260e8283f1631171",
+    "dualSummaryDigest": "sha256:97c3d1e30183e939178490ebc29fa903f26317871e902129d616d09cd5ede929",
+    "canonicalLandscapeDigest": "sha256:5d3a6917511dd121e0248455b1a3dc59b1157354a3d6e8de4ab76367d1e8fd62"
+  },
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-b008-current517-current20-native-author-20261010-v1-a",
+      "campaignDigest": "sha256:6ffec85bec990c056a3c581a1afc6cf83fe6ad9cbfd9b0315a118a626cf944a1",
+      "roundId": "chemie-b008-current517-current20-native-author-20261010-v1-first-pass-a",
+      "independenceGroupId": "chemie-b008-current517-current20-native-author-20261010-v1-independent-a",
+      "reviewInputFingerprint": "sha256:78843fdbc4af1414a8fe80b8274a26ede95b5903c6a33eb3260e8283f1631171",
+      "batchId": "chemie-b008-current517-current20-native-author-20261010-v1-first-pass-a.batch-001",
+      "batchInputFingerprint": "sha256:9d741b8dc316e7db58cbb4f79a4e2c61553d10cf1614f6894ba4fb203dd833be",
+      "runId": "chemie-b008-current517-current20-actual-independent-a-20261010-v1",
+      "runManifestDigest": "sha256:ec9ee0886d0fadcfc376a4fd8deed9a34b14ca57241919d5169ac6618be7367c",
+      "resultsDigest": "sha256:429129af38d702e7a253853e993df80917e640ff11ac760385ef203cb9a47969"
+    },
+    "second": {
+      "campaignId": "chemie-b008-current517-current20-native-author-20261010-v1-b",
+      "campaignDigest": "sha256:4124f00a0e7b91b9268c512c03ee4fd039e6918a33a2365287a2a9a57a9fa8f2",
+      "roundId": "chemie-b008-current517-current20-native-author-20261010-v1-first-pass-b",
+      "independenceGroupId": "chemie-b008-current517-current20-native-author-20261010-v1-independent-b",
+      "reviewInputFingerprint": "sha256:78843fdbc4af1414a8fe80b8274a26ede95b5903c6a33eb3260e8283f1631171",
+      "batchId": "chemie-b008-current517-current20-native-author-20261010-v1-first-pass-b.batch-001",
+      "batchInputFingerprint": "sha256:5111377b27a3ee18fac68a41632efe818bf6687dd8aca28d4ebbe9483b4c84fe",
+      "runId": "chemie-current517-current20-independent-b-20261010-v1",
+      "runManifestDigest": "sha256:794d0c895faba185163c6a9b3fef3ffa943aa7e036a0f74e94e469c73af0b43e",
+      "resultsDigest": "sha256:7b552b41ead0f4a7570c8d5a17efdfbadc4cfca43f73a4e8a00fe95d784fcb87"
+    }
+  },
+  "decisions": [
+    {
+      "decisionId": "current20-technical-dual-75e2eff1-f871-5461-9e3f-26d0b333ce2f",
+      "goalId": "75e2eff1-f871-5461-9e3f-26d0b333ce2f",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:24f113b4d6c70c2329545d546f481f485a03f30e19157b50f6c5aa43cd186c6a",
+      "pageFingerprint": "sha256:bad294e83c87b6b4f5b0b4af8e8ff270544b713e64b3c5bab5a7fb7b0b3bf0e8",
+      "goalReviewContextFingerprint": "sha256:78db2f90ca68c2af638415f4a20f3c121da5a7ffaf7ae0ddd5683d78ce8d892c",
+      "finalText": {
+        "titleDe": "Chemische Alltagsfragen und prüfbare Hypothesen formulieren",
+        "titleEn": "Formulate everyday chemical questions and testable hypotheses",
+        "descriptionDe": "Die lernende Person kann zu einem beobachtbaren Alltags- oder Technikphänomen eine chemisch untersuchbare Frage und eine durch Beobachtungen prüfbare Hypothese selbst formulieren, die Hypothese begründen und angeben, welcher erwartbare Befund dafür oder dagegen spräche.",
+        "descriptionEn": "The learner can independently formulate a chemically investigable question and an observation-testable hypothesis about an observable everyday or technological phenomenon, justify the hypothesis and specify an expected finding that would support or contradict it."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-current517-current20-actual-independent-a-20261010-v1.75e2eff1-f871-5461-9e3f-26d0b333ce2f",
+          "recordDigest": "sha256:7b6b09fd8450455ceafe06579606136321468288de8f9d36fedad6b0f67747fd"
+        },
+        "second": {
+          "recordId": "chemie-current517-current20-independent-b-20261010-v1:75e2eff1-f871-5461-9e3f-26d0b333ce2f",
+          "recordDigest": "sha256:be5a6d7ae10a10b0da5f38e3460e06455ba2fed87cbd86508112709d2b46918c"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende B-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten Nachweisfelder der individuell in evidenceRound benannten Runde werden ausdrücklich wörtlich gewählt. Die Auswahl ist je Ziel begründet; KEEP/KEEP ersetzt keine Prüfung. Vergleich: B trennt Vorhersage und Befund ausdrücklich und bietet Körnung ODER Bräunung als Transfer. A ergänzt richtig Rate versus Gleichgewicht; das wird als konkrete Fallgrenze erhalten, keine neue universelle Theorievorbedingung. Orientierung motiviert selbständiges Fragenstellen. Die konkreten B-Befunde bleiben gebunden: Die selbst formulierte prüfbare Frage und bedingte Vorhersage ist der Einstieg, nicht die gesamte Versuchsdurchführung. Orientierung ist als Einstieg tragfähig; Teilchen-/Löse- und Bräunungsimpulse sind in den Fällen gegeben. Kontrollierte Bedingungen und Gegenbefund bleiben verlangt; die Antwort nennt keine eigenen Messungen. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing B reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged evidence fields of the individually named evidenceRound are selected literally. Each selection has its own reason; KEEP/KEEP does not replace appraisal. Comparison: B explicitly separates prediction and finding and permits grain size OR browning transfer. A correctly limits rate versus equilibrium; retain that case limit without imposing a universal theory prerequisite. Orientation motivates independent inquiry. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current20-technical-dual-503dedcb-0efc-5e6b-bbc9-20761a0951f5",
+      "goalId": "503dedcb-0efc-5e6b-bbc9-20761a0951f5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:150c279741ea5efdd881d45ad2cff4f5942c2d9122e6e887dd227c7077cba542",
+      "pageFingerprint": "sha256:190c324b3818232231d2f4f72b339fb0b93a675a24c4413465ed096aa210ba02",
+      "goalReviewContextFingerprint": "sha256:43ee62ef3f20b49367110b442cd2f4d7f0d850e02510740d833da9be006a6acf",
+      "finalText": {
+        "titleDe": "Chemische Fragestellungen und Hypothesen theoriegestützt formulieren",
+        "titleEn": "Formulate chemical questions and hypotheses using theory",
+        "descriptionDe": "Die lernende Person kann aus einer Alltags- oder Techniksituation selbst eine chemisch untersuchbare Fragestellung identifizieren und formulieren, unter Verwendung geeigneter Konzepte oder Theorien eine prüfbare Hypothese selbst formulieren und begründen, daraus einen erwartbaren Befund ableiten und erklären, wie ein geeigneter Gegenbefund der Hypothese widersprechen würde.",
+        "descriptionEn": "The learner can independently identify and formulate a chemically investigable question from an everyday or technological situation, formulate and justify a testable hypothesis using appropriate concepts or theories, derive an expected finding and explain how a suitable counter-finding would contradict the hypothesis."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-current517-current20-actual-independent-a-20261010-v1.503dedcb-0efc-5e6b-bbc9-20761a0951f5",
+          "recordDigest": "sha256:63e1b18757dfa6dd84d8c575fcf7374a926938473e6da070c56c95c1d0d8f8d9"
+        },
+        "second": {
+          "recordId": "chemie-current517-current20-independent-b-20261010-v1:503dedcb-0efc-5e6b-bbc9-20761a0951f5",
+          "recordDigest": "sha256:3aae3f32d60ba87eebdf50e758453f45f3d70e85f92bf3d91f96990c83d20780"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende B-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten Nachweisfelder der individuell in evidenceRound benannten Runde werden ausdrücklich wörtlich gewählt. Die Auswahl ist je Ziel begründet; KEEP/KEEP ersetzt keine Prüfung. Vergleich: A beschreibt den allgemeinen theoriegestützten Übergang ohne ihn auf saure Proben zu begrenzen. B konkretisiert passende Gleichgewichts-/Stoffmengenfälle und echte Gegenbefunde; die zusätzliche Säureprüfung gibt keinen Kurs frei. Die konkreten B-Befunde bleiben gebunden: Aktueller DE/EN-Text und ganzer verknüpfter Seiten-/Kanonkontext passen zu dieser Kompetenz. Theoriegeleitete Hypothesen begründen erwartbare Befunde durch chemische Konzepte und bleiben bei passenden Gegenbefunden prüfbar. Erklärt bei veränderter Verdünnung oder Probe, welcher neue Befund die begründete Vorhersage stützen oder tatsächlich widerlegen könnte. Bestehende gültige wissenschaftliche Entscheidungen werden unverändert übernommen; dieses Urteil prüft den aktuellen Kontext, keine erfundene Lernendenleistung. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing B reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged evidence fields of the individually named evidenceRound are selected literally. Each selection has its own reason; KEEP/KEEP does not replace appraisal. Comparison: A states the general theory-supported transition without restricting it to acidic samples. B adds suitable equilibrium/amount cases and genuine counterevidence; the acid assessment grants no course clearance. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current20-technical-dual-e81a4aed-9695-533e-8eb7-7a0c714346ea",
+      "goalId": "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:92f51b1cba59a6815ef76e9e008073166aafab689c672f39c20e8791e7e6c17d",
+      "pageFingerprint": "sha256:0a353a423844f4d8e125d1c4f6bea1246370403d7b5154b1e9aa0204052a4d64",
+      "goalReviewContextFingerprint": "sha256:867edc954d852fe8774d8e5d989779fc773bba4a5b1d694902b5811cfb1e21bc",
+      "finalText": {
+        "titleDe": "Angeleitete chemische Untersuchungen sicher durchführen",
+        "titleEn": "Carry out guided chemical investigations safely",
+        "descriptionDe": "Die lernende Person kann eine angeleitete chemische Untersuchung zu einem Alltags- oder Technikphänomen sicher durchführen, vorgegebene Einflussgrößen und Arbeitsschritte beachten, Beobachtungen oder Messwerte nachvollziehbar protokollieren und erläutern, wie der Versuch die Ausgangshypothese prüft.",
+        "descriptionEn": "The learner can safely carry out a guided chemical investigation of an everyday or technical phenomenon, follow the specified variables and procedural steps, record observations or measurements transparently, and explain how the experiment tests the initial hypothesis."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-current517-current20-actual-independent-a-20261010-v1.e81a4aed-9695-533e-8eb7-7a0c714346ea",
+          "recordDigest": "sha256:452245f3352b4c7fccf2965d96cd9d8335d8c6b4edbe273f854564fd1cb2ca34"
+        },
+        "second": {
+          "recordId": "chemie-current517-current20-independent-b-20261010-v1:e81a4aed-9695-533e-8eb7-7a0c714346ea",
+          "recordDigest": "sha256:3fc7b509c41de17573d5d89118bd56ba340a954d2be8a6b4a4cae366944c3a54"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende B-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten Nachweisfelder der individuell in evidenceRound benannten Runde werden ausdrücklich wörtlich gewählt. Die Auswahl ist je Ziel begründet; KEEP/KEEP ersetzt keine Prüfung. Vergleich: A verlangt tatsächliche angeleitete sichere Untersuchung und nachvollziehbare Beobachtungen. B ergänzt reale Abweichungen und Hypothesenbezug; bereitgestellte Protokolle bleiben unzureichend für Durchführung. Die konkreten B-Befunde bleiben gebunden: Aktueller DE/EN-Text und ganzer verknüpfter Seiten-/Kanonkontext passen zu dieser Kompetenz. Ein angeleiteter Versuch prüft eine Hypothese nur bei eingehaltenen Sicherheits- und Vergleichsbedingungen und nachvollziehbaren Beobachtungen. Passt bei einer neuen kontrollierten Bedingung das Protokoll sachgerecht an und benennt, welche Vorgabe oder Sicherheitsgrenze weiterhin gilt. Bestehende gültige wissenschaftliche Entscheidungen werden unverändert übernommen; dieses Urteil prüft den aktuellen Kontext, keine erfundene Lernendenleistung. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing B reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged evidence fields of the individually named evidenceRound are selected literally. Each selection has its own reason; KEEP/KEEP does not replace appraisal. Comparison: A requires actual guided safe investigation and traceable observations. B adds real deviations and hypothesis linkage; supplied records remain insufficient to prove execution. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current20-technical-dual-42391b16-bbae-5c77-84e1-d488e714167b",
+      "goalId": "42391b16-bbae-5c77-84e1-d488e714167b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:ee5f0c28ebdcefb244e282c65781c135430a0e3cf9d8441a82f1cc03097a6164",
+      "pageFingerprint": "sha256:270af4051eaaa9458869b36028e7d87ba359c95e2a5c1e9a6d78e620a7f5543f",
+      "goalReviewContextFingerprint": "sha256:1c752fd820c94914bf7edce3411fa590f4068c91b38bd9c9aa7ce97538709fd4",
+      "finalText": {
+        "titleDe": "Chemische Untersuchungen selbst planen und durchführen",
+        "titleEn": "Plan and carry out chemical investigations independently",
+        "descriptionDe": "Die lernende Person kann einfache qualitative und quantitative Untersuchungen zur Prüfung chemischer Hypothesen selbst planen, geeignete Einflussgrößen und Vergleichsbedingungen wählen, geeignete Arbeitstechniken sicher anwenden und die tatsächlich ausgeführten Untersuchungen nachvollziehbar protokollieren.",
+        "descriptionEn": "The learner can independently plan simple qualitative and quantitative investigations to test chemical hypotheses, select appropriate variables and comparison conditions, use suitable working techniques safely and record the investigations actually performed."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-current517-current20-actual-independent-a-20261010-v1.42391b16-bbae-5c77-84e1-d488e714167b",
+          "recordDigest": "sha256:3d521dc44e6df5996761682d7200976661fb6297c05c0d3f6ccd0b311ebf760a"
+        },
+        "second": {
+          "recordId": "chemie-current517-current20-independent-b-20261010-v1:42391b16-bbae-5c77-84e1-d488e714167b",
+          "recordDigest": "sha256:05514cc20fb7875d4c2fa6067807f3e6cd5b1c5d3e149cec1ef2deb6dff5ab84"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende B-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten Nachweisfelder der individuell in evidenceRound benannten Runde werden ausdrücklich wörtlich gewählt. Die Auswahl ist je Ziel begründet; KEEP/KEEP ersetzt keine Prüfung. Vergleich: Die präzisierte A-Ausgabe verlangt eigene Planung und tatsächliche qualitative UND quantitative Untersuchungen. B betont Kontrollen und Rohprotokoll; Sicherheit und Ausführung können durch Dateninterpretation nicht ersetzt werden. Die konkreten B-Befunde bleiben gebunden: Aktueller DE/EN-Text und ganzer verknüpfter Seiten-/Kanonkontext passen zu dieser Kompetenz. Eine selbst geplante chemische Untersuchung verbindet Fragestellung, geeignete qualitative und quantitative Methoden, Kontrollen und sichere Ausführung. Ändert bei einer neuen Probe oder Messgrenze die Methode begründet und zeigt, welche Kontrollen die Hypothesenprüfung noch tragen. Bestehende gültige wissenschaftliche Entscheidungen werden unverändert übernommen; dieses Urteil prüft den aktuellen Kontext, keine erfundene Lernendenleistung. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing B reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged evidence fields of the individually named evidenceRound are selected literally. Each selection has its own reason; KEEP/KEEP does not replace appraisal. Comparison: Refined A requires independent planning and actual qualitative AND quantitative investigations. B emphasises controls and raw records; interpreting data cannot replace safety and execution. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current20-technical-dual-f79f15c0-e848-5e17-9eb5-26753d35c93b",
+      "goalId": "f79f15c0-e848-5e17-9eb5-26753d35c93b",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:7fbda887bd502458a1f81ff9c2a7668f1a9793347dc537a8b20793002f80cbc4",
+      "pageFingerprint": "sha256:487da33a3ba80794a67e44e0efcbe9ec891e9a9befbf735ef3364cc175b9f927",
+      "goalReviewContextFingerprint": "sha256:a3c2ba73cd53e552efdaff6e984f9f805846a2538abef13580730fdcc315904d",
+      "finalText": {
+        "titleDe": "Anspruchsvolle chemische Experimente selbstständig durchführen",
+        "titleEn": "Carry out advanced chemical experiments independently",
+        "descriptionDe": "Die lernende Person kann hypothesengeleitete qualitative und quantitative Experimente überwiegend selbstständig planen, geeignete Analysenmethoden wählen, unter den Sicherheitsbestimmungen tatsächlich durchführen und nachvollziehbar protokollieren.",
+        "descriptionEn": "The learner can largely independently plan hypothesis-guided qualitative and quantitative experiments, select suitable analytical methods, actually perform them under the safety requirements and document them transparently."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-current517-current20-actual-independent-a-20261010-v1.f79f15c0-e848-5e17-9eb5-26753d35c93b",
+          "recordDigest": "sha256:c7185de0d7c9035dd5d510b52344dddf97612391aab0b49299e9b4ec7fc585c1"
+        },
+        "second": {
+          "recordId": "chemie-current517-current20-independent-b-20261010-v1:f79f15c0-e848-5e17-9eb5-26753d35c93b",
+          "recordDigest": "sha256:2c5c14d1aa830edea4043087258f9e4021c9338a0b3d1cfb7f4f5bd6c7c7429e"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende B-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten Nachweisfelder der individuell in evidenceRound benannten Runde werden ausdrücklich wörtlich gewählt. Die Auswahl ist je Ziel begründet; KEEP/KEEP ersetzt keine Prüfung. Vergleich: A bewahrt anspruchsvollere Analyse allgemein und tatsächlich; B konkretisiert Säure/Endpunkt und Betreuung. Beide Verfahrensarten und eigene Leistungsprodukte bleiben nötig, der konkrete Endpunkt wird keine allgemeine Zielquote. Die konkreten B-Befunde bleiben gebunden: Aktueller DE/EN-Text und ganzer verknüpfter Seiten-/Kanonkontext passen zu dieser Kompetenz. Anspruchsvolle Analytik benötigt eine hypothesenbezogene Auswahl qualitativer und quantitativer Techniken und tatsächliche sichere Ausführung. Wählt für eine veränderte saure Probe oder einen abweichenden Endpunkt eine begründete methodische Anpassung und hält deren Grenzen fest. Bestehende gültige wissenschaftliche Entscheidungen werden unverändert übernommen; dieses Urteil prüft den aktuellen Kontext, keine erfundene Lernendenleistung. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing B reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged evidence fields of the individually named evidenceRound are selected literally. Each selection has its own reason; KEEP/KEEP does not replace appraisal. Comparison: A preserves general advanced and actual analysis; B specifies acid/endpoint and supervision. Both method types and own work remain required; the endpoint example becomes no general quota. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current20-technical-dual-9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+      "goalId": "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2aa9dab12809d30dca3bf4003bc71d9f861e08289a7c0b9270df816f9a6d1012",
+      "pageFingerprint": "sha256:f22c619d1d9620fbec838a577e5758772db5109779a4931741e20c479ab5a97b",
+      "goalReviewContextFingerprint": "sha256:1ec427593ecd5da28a39b5370bd7c2ba27fcb53e0555a19efccddd77dc61dccd",
+      "finalText": {
+        "titleDe": "Chemische Daten nachvollziehbar dokumentieren",
+        "titleEn": "Document chemical data transparently",
+        "descriptionDe": "Die lernende Person kann experimentell erhobene oder recherchierte chemische Daten strukturiert und nachvollziehbar dokumentieren, Größen und Einheiten, Herkunft und relevante Untersuchungsbedingungen angeben sowie beobachtende Beschreibung und deutende Erklärung unterscheiden.",
+        "descriptionEn": "The learner can document experimental or researched chemical data in a structured and transparent way, identify quantities, units, provenance, and relevant investigation conditions, and distinguish descriptive observation from explanatory interpretation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-current517-current20-actual-independent-a-20261010-v1.9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+          "recordDigest": "sha256:0c062469018e17e8c5e8133f0d30a3eeabdf31dbbe601342bcebb47909ee8895"
+        },
+        "second": {
+          "recordId": "chemie-current517-current20-independent-b-20261010-v1:9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+          "recordDigest": "sha256:d9371f0bee57685861282b8a57c3b841fe1cf575186f9760f5b2d7fe99ade034"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende B-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten Nachweisfelder der individuell in evidenceRound benannten Runde werden ausdrücklich wörtlich gewählt. Die Auswahl ist je Ziel begründet; KEEP/KEEP ersetzt keine Prüfung. Vergleich: B hält Rohdaten, Herkunft und versionierte Rechnung besonders klar auseinander. A ergänzt die exakten D2-Faktoren und Auflösung-versus-Unsicherheit. R2 ist neues Ereignis, fehlende alte Metadaten bleiben offen; eigene Erhebung wird nicht behauptet. Die konkreten B-Befunde bleiben gebunden: R1/R2 sind bereitgestellte Daten mit offener Herkunfts-/Zeitinformation. Die Person muss selbst strukturieren und fehlende Metadaten offen lassen. Eine vorherige eigene Untersuchung ist deshalb für diese Dokumentationsroute nicht notwendig. Kalibration/Einheiten werden bereitgestellt; Faktor-2/4-Korrektur bleibt nachvollziehbare Dokumentation. Diese Route belegt keine eigene Erhebung. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing B reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged evidence fields of the individually named evidenceRound are selected literally. Each selection has its own reason; KEEP/KEEP does not replace appraisal. Comparison: B most clearly separates raw data, provenance and versioned calculation. A adds exact D2 factors and resolution versus uncertainty. R2 is a new event, old missing metadata stays open; no own collection is claimed. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current20-technical-dual-7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+      "goalId": "7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:afe23ba7646722dc98db2ac6ba1182b7416971532c2e37c3ed7965f84fb26fca",
+      "pageFingerprint": "sha256:3e7e032a423f94f467589f31bf8b1cfe79538e38826255b43be9521647f7c101",
+      "goalReviewContextFingerprint": "sha256:3f76bf32c92f07c3914c51c85a8485e68f66b2013d42ac66062a5d2275640072",
+      "finalText": {
+        "titleDe": "Chemische Daten auswerten und auf Hypothesen beziehen",
+        "titleEn": "Evaluate chemical data and relate them to hypotheses",
+        "descriptionDe": "Die lernende Person kann erhobene oder recherchierte chemische Daten in geeigneten Tabellen oder Diagrammen auswerten, erkennbare Trends und Beziehungen erläutern und begründen, inwiefern die Daten die Ausgangshypothese stützen oder ihr widersprechen.",
+        "descriptionEn": "The learner can evaluate experimental or researched chemical data in suitable tables or diagrams, explain observable trends and relationships, and justify how the data support or contradict the initial hypothesis."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-current517-current20-actual-independent-a-20261010-v1.7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+          "recordDigest": "sha256:5b6db4c0e4efece3ba420e4ad42cae258fb68a9ccb8fc6baaa13bc4ec9823aae"
+        },
+        "second": {
+          "recordId": "chemie-current517-current20-independent-b-20261010-v1:7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+          "recordDigest": "sha256:957971fd67e6fa598bc98d451eee5852879fb7a0dbed783a7725a0ef5fdfc8c8"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende B-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten Nachweisfelder der individuell in evidenceRound benannten Runde werden ausdrücklich wörtlich gewählt. Die Auswahl ist je Ziel begründet; KEEP/KEEP ersetzt keine Prüfung. Vergleich: A bindet strukturierte Aufbereitung und Hypothesenbezug ohne zusätzliche Darstellungsquote. B liefert passende Tabellen-/Graphbeispiele und Gegenbefundtransfer; Streuung und fehlende Kontrolle begrenzen den Schluss. Die konkreten B-Befunde bleiben gebunden: Aktueller DE/EN-Text und ganzer verknüpfter Seiten-/Kanonkontext passen zu dieser Kompetenz. Tabellen und Diagramme machen chemische Trends unter definierten Bedingungen sichtbar; ihre Beziehung zur Hypothese benötigt eine begründete Interpretation. Beurteilt bei einer veränderten Vergleichsbedingung oder auffälligen Datenreihe, ob dieselbe Deutung noch zulässig ist. Bestehende gültige wissenschaftliche Entscheidungen werden unverändert übernommen; dieses Urteil prüft den aktuellen Kontext, keine erfundene Lernendenleistung. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing B reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged evidence fields of the individually named evidenceRound are selected literally. Each selection has its own reason; KEEP/KEEP does not replace appraisal. Comparison: A binds structured preparation and hypothesis linkage without an extra representation quota. B supplies suitable tables/graphs and counterevidence transfer; scatter and missing controls limit inference. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current20-technical-dual-9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+      "goalId": "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:408619305cdd19bcf108fe040dbfa37123e63ff33125ff45729764238cd6bcdf",
+      "pageFingerprint": "sha256:c8c4c289064e32d761eb512e01da9eed26e66c60240a99fb15e88421c4b682c5",
+      "goalReviewContextFingerprint": "sha256:0ba71b2c75d8a88f8a2fe895b9db8d1d0c92628ba77f8afb11c57f4f7f4a631e",
+      "finalText": {
+        "titleDe": "Chemische Daten quantitativ und hypothesenbezogen auswerten",
+        "titleEn": "Evaluate chemical data quantitatively in relation to hypotheses",
+        "descriptionDe": "Die lernende Person kann für eine chemische Fragestellung geeignete mathematische Auswertungsverfahren und digitale Werkzeuge auswählen und begründet anwenden, quantitative Zusammenhänge unter Beachtung der Untersuchungsbedingungen interpretieren und daraus fachübergreifend begründete Schlüsse zur Stützung oder Falsifizierung der Ausgangshypothese ziehen.",
+        "descriptionEn": "The learner can select and apply suitable mathematical analysis methods and digital tools with justification for a chemical question, interpret quantitative relationships while accounting for the investigation conditions, and derive justified interdisciplinary conclusions that support or falsify the initial hypothesis."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-current517-current20-actual-independent-a-20261010-v1.9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+          "recordDigest": "sha256:623f7ca02779e799aaa3691876d593ea6f7812f5aa94f548e866e25161719c72"
+        },
+        "second": {
+          "recordId": "chemie-current517-current20-independent-b-20261010-v1:9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+          "recordDigest": "sha256:5112b421e2818e4eb8493f91760147af05878030fcf0e3a9deb50134ea07dbf9"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende B-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten Nachweisfelder der individuell in evidenceRound benannten Runde werden ausdrücklich wörtlich gewählt. Die Auswahl ist je Ziel begründet; KEEP/KEEP ersetzt keine Prüfung. Vergleich: A nennt ausdrücklich erhobene ODER recherchierte Daten und mathematisch-digitale fachübergreifende Prüfung. B ergänzt nachvollziehbare Rechnung/Einheiten und systematische Störung. Eine fertige Grafik erfüllt die eigene digitale Anwendung nicht. Die konkreten B-Befunde bleiben gebunden: Aktueller DE/EN-Text und ganzer verknüpfter Seiten-/Kanonkontext passen zu dieser Kompetenz. Quantitative chemische Auswertung verbindet geeignete mathematische Verfahren und digitale Werkzeuge mit Bedingungen und Hypothesenprüfung. Prüft nach veränderter Verdünnung oder systematischer Messstörung, welche Skalierung oder Schlussfolgerung unter den neuen Bedingungen gilt. Bestehende gültige wissenschaftliche Entscheidungen werden unverändert übernommen; dieses Urteil prüft den aktuellen Kontext, keine erfundene Lernendenleistung. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing B reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged evidence fields of the individually named evidenceRound are selected literally. Each selection has its own reason; KEEP/KEEP does not replace appraisal. Comparison: A explicitly permits collected OR researched data and cross-disciplinary mathematical/digital evaluation. B adds traceable calculation/units and systematic disturbance. A supplied graph cannot satisfy own digital application. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current20-technical-dual-4aa3a130-b517-5ac5-87b2-147fe432cadd",
+      "goalId": "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:e66d637f6a24d6598da4d720f9f9cd4308c43541fb974bc6a72d856c6c04acdd",
+      "pageFingerprint": "sha256:6e8eb0f5db7c28a0f9543dc5a1953d0d23cefe5cc025aa3ecb13f83325f507e8",
+      "goalReviewContextFingerprint": "sha256:87613b7fd42772a28d93ddb5379853ae70f940ecbbea2730449ae5d0188bb280",
+      "finalText": {
+        "titleDe": "Die Aussagekraft chemischer Daten beurteilen",
+        "titleEn": "Assess the evidential value of chemical data",
+        "descriptionDe": "Die lernende Person kann die Angemessenheit, Gültigkeit und Tragweite erhobener oder recherchierter chemischer Daten beurteilen, mögliche Mess- und Verfahrensfehler anhand der Untersuchungsbedingungen begründen und erklären, welche Schlussfolgerungen die Daten tragen und welche nicht.",
+        "descriptionEn": "The learner can assess the suitability, validity, and reach of experimental or researched chemical data, justify possible measurement and procedural errors using the investigation conditions, and explain which conclusions the data support and which they do not."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-current517-current20-actual-independent-a-20261010-v1.4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "recordDigest": "sha256:d5578b07cbacc5d7200753dd230339e9a674875f879e16570ec668fcc5f084f9"
+        },
+        "second": {
+          "recordId": "chemie-current517-current20-independent-b-20261010-v1:4aa3a130-b517-5ac5-87b2-147fe432cadd",
+          "recordDigest": "sha256:3ac54a524bab6d794430166e6ceef7b71c87e8d277d93cf8d64b8721a4d0aee4"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende B-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten Nachweisfelder der individuell in evidenceRound benannten Runde werden ausdrücklich wörtlich gewählt. Die Auswahl ist je Ziel begründet; KEEP/KEEP ersetzt keine Prüfung. Vergleich: A erhält Fehlerprüfung und erlaubte Schlussfolgerung über erhobene/recherchierte Daten. B konkretisiert Auflösung und Probenbehandlung; neuer Widerspruch ist nur bei zuverlässiger Methode belastbarer Gegenbefund. Die konkreten B-Befunde bleiben gebunden: Aktueller DE/EN-Text und ganzer verknüpfter Seiten-/Kanonkontext passen zu dieser Kompetenz. Die Aussagekraft chemischer Daten hängt von Fragestellung, Messverfahren, Bedingungen und Fehlerquellen ab. Unterscheidet bei einem widersprechenden neuen Wert belastbares Gegenwissen von einem unzuverlässigen oder unpassenden Messverfahren. Bestehende gültige wissenschaftliche Entscheidungen werden unverändert übernommen; dieses Urteil prüft den aktuellen Kontext, keine erfundene Lernendenleistung. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing B reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged evidence fields of the individually named evidenceRound are selected literally. Each selection has its own reason; KEEP/KEEP does not replace appraisal. Comparison: A preserves error appraisal and warranted inference for collected/researched data. B specifies resolution and sample handling; a new contradiction is reliable counterevidence only with a reliable method. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current20-technical-dual-a8800c36-d13c-5f63-962c-cf18c3795c63",
+      "goalId": "a8800c36-d13c-5f63-962c-cf18c3795c63",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b7fcb0bf294ec17da0bdf822629b0499aec3e84e6ad50aa799fbc1dbda843ed7",
+      "pageFingerprint": "sha256:2520da6445c9a3ec8587b0b3f422e820c17ad6e5dd4b937cfcb8f88c61cb925f",
+      "goalReviewContextFingerprint": "sha256:1d41e7cc03655bf59be2e3c597d32aeff04850beefe91e844c48957cf457a502",
+      "finalText": {
+        "titleDe": "Chemische Erkenntniswege und ihre Reichweite erklären",
+        "titleEn": "Explain chemical inquiry processes and their reach",
+        "descriptionDe": "Die lernende Person kann an einem vorgegebenen chemischen Erkenntnisweg erklären, wie Fragestellung, Methoden, Beobachtungen und Interpretation zusammenwirken, welche Fragen damit chemisch beantwortbar sind und welche Unsicherheiten oder Grenzen bestehen.",
+        "descriptionEn": "The learner can explain how questions, methods, observations, and interpretation work together in a given chemical inquiry process, which questions can be answered chemically through it, and which uncertainties or limitations remain."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-current517-current20-actual-independent-a-20261010-v1.a8800c36-d13c-5f63-962c-cf18c3795c63",
+          "recordDigest": "sha256:2609e17d03fd29ca80f006eb278445342bffbb52996f821fc0ee005e14fb79e8"
+        },
+        "second": {
+          "recordId": "chemie-current517-current20-independent-b-20261010-v1:a8800c36-d13c-5f63-962c-cf18c3795c63",
+          "recordDigest": "sha256:9b9e0aaa6496d4100735d4fd5e41f87e653f2a76daee3463a1101ea1c2283bd7"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende B-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten Nachweisfelder der individuell in evidenceRound benannten Runde werden ausdrücklich wörtlich gewählt. Die Auswahl ist je Ziel begründet; KEEP/KEEP ersetzt keine Prüfung. Vergleich: A bezeichnet ausdrücklich eine vorliegende Untersuchung und deren Reichweite. B ergänzt Beobachtung-Deutung-Zuordnung. Eigene experimentelle Durchführung bleibt im getrennten 99d4-Ziel und wird hier nicht hinzugefügt. Die konkreten B-Befunde bleiben gebunden: Aktueller DE/EN-Text und ganzer verknüpfter Seiten-/Kanonkontext passen zu dieser Kompetenz. Chemische Erkenntnis entsteht aus dem Zusammenwirken von Frage, Methode, Beobachtung und Interpretation innerhalb eines begrenzten Geltungsbereichs. Überträgt diese Zuordnung auf einen neuen chemischen Befund und kennzeichnet die neue Unsicherheit oder Reichweitengrenze. Bestehende gültige wissenschaftliche Entscheidungen werden unverändert übernommen; dieses Urteil prüft den aktuellen Kontext, keine erfundene Lernendenleistung. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing B reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged evidence fields of the individually named evidenceRound are selected literally. Each selection has its own reason; KEEP/KEEP does not replace appraisal. Comparison: A explicitly concerns a supplied investigation and its reach. B adds observation-to-interpretation linkage. Own experimental execution remains in separate 99d4 and is not added here. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current20-technical-dual-99d41b0f-e958-54cf-a077-9bed1704a303",
+      "goalId": "99d41b0f-e958-54cf-a077-9bed1704a303",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:546357ed3d2196f07d1715bd98562fae53e9cb8224fd688b9af82b6aa9549e12",
+      "pageFingerprint": "sha256:fc02f49ca90a0ee690b60a2eaa4d0558f8effd18048af7c7d0d919a698faa776",
+      "goalReviewContextFingerprint": "sha256:58628da9e880c51cc2a89653431d41dd1f135f8215c2203828fa137edad62269",
+      "finalText": {
+        "titleDe": "Eigene chemische Untersuchungen reflektieren",
+        "titleEn": "Reflect on chemical investigations of one's own",
+        "descriptionDe": "Die lernende Person kann die Ergebnisse einer eigenen chemischen Untersuchung auf ihre Ausgangsfrage und Hypothese beziehen, die angewandten Methoden und Vorgehensweisen begründen, erkennbare Unsicherheiten oder Grenzen erläutern und konkrete Verbesserungen für eine weitere Untersuchung ableiten.",
+        "descriptionEn": "The learner can relate the results of a chemical investigation of their own to its initial question and hypothesis, justify the methods and procedures used, explain observable uncertainties or limitations, and derive concrete improvements for a further investigation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-current517-current20-actual-independent-a-20261010-v1.99d41b0f-e958-54cf-a077-9bed1704a303",
+          "recordDigest": "sha256:55e3b9087262d4e52dabfc86120196baa79edd00601a0725c352e4ef79268715"
+        },
+        "second": {
+          "recordId": "chemie-current517-current20-independent-b-20261010-v1:99d41b0f-e958-54cf-a077-9bed1704a303",
+          "recordDigest": "sha256:441195dd8a2c41f7adc473ffe38fdb640b2093db7d8d6216b832286d335bb544"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende B-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten Nachweisfelder der individuell in evidenceRound benannten Runde werden ausdrücklich wörtlich gewählt. Die Auswahl ist je Ziel begründet; KEEP/KEEP ersetzt keine Prüfung. Vergleich: A verlangt echte eigene Untersuchung, kritische Reflexion und passende Verbesserung ohne feste Zahl. Bs zwei Unsicherheiten sind Fallbeispiel, keine zusätzliche universelle Quote; echte Rohdaten bleiben gebunden. Die konkreten B-Befunde bleiben gebunden: Aktueller DE/EN-Text und ganzer verknüpfter Seiten-/Kanonkontext passen zu dieser Kompetenz. Reflexion eigener Forschung verbindet tatsächliche eigene Ergebnisse mit der ursprünglichen Hypothese, Methodenwahl und konkreten Grenzen. Entwickelt für eine neue Kontrollbedingung einen verbesserten Plan und erklärt, welche konkrete Unsicherheit er vermindert. Bestehende gültige wissenschaftliche Entscheidungen werden unverändert übernommen; dieses Urteil prüft den aktuellen Kontext, keine erfundene Lernendenleistung. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing B reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged evidence fields of the individually named evidenceRound are selected literally. Each selection has its own reason; KEEP/KEEP does not replace appraisal. Comparison: A requires an actual own investigation, critical reflection and suitable improvement without a fixed count. B’s two uncertainties are a case example, not a universal quota; real raw data remains required. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current20-technical-dual-a0080b5f-13ff-56bc-b8ff-2ff6273e2ec1",
+      "goalId": "a0080b5f-13ff-56bc-b8ff-2ff6273e2ec1",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:b1ba1482ef851375cda4d58ccf4d968172e798c50f7f7d55f5015bd43648baa4",
+      "pageFingerprint": "sha256:67216f600fee189375929c18d6bb7344c6c6a645cfeb63618830961e36964efa",
+      "goalReviewContextFingerprint": "sha256:e52b9588468c4c28e2dfeca51f01c0de1e093d41eba8b2b16ec6b8cf31c93d26",
+      "finalText": {
+        "titleDe": "Wissenschaftliche Gültigkeitskriterien anwenden",
+        "titleEn": "Apply criteria of scientific validity",
+        "descriptionDe": "Die lernende Person kann die Gültigkeit chemischer Erkenntnisse und die Möglichkeiten und Grenzen des Erkenntnisgewinnungsprozesses anhand von Reproduzierbarkeit, Falsifizierbarkeit, Intersubjektivität, logischer Konsistenz und Vorläufigkeit begründet reflektieren. Dabei unterscheidet sie belastbare Gegenbefunde von fehlgeschlagener Durchführung oder unzuverlässiger Messung.",
+        "descriptionEn": "The learner can reflect with justification on the validity of chemical findings and the possibilities and limits of inquiry using reproducibility, falsifiability, intersubjectivity, logical consistency, and provisionality. They distinguish robust counterevidence from failed procedures or unreliable measurements."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-current517-current20-actual-independent-a-20261010-v1.a0080b5f-13ff-56bc-b8ff-2ff6273e2ec1",
+          "recordDigest": "sha256:fbe18310d4644541b79dd73037eacb935757b1eb1eb11d36d25418eb9937a7bc"
+        },
+        "second": {
+          "recordId": "chemie-current517-current20-independent-b-20261010-v1:a0080b5f-13ff-56bc-b8ff-2ff6273e2ec1",
+          "recordDigest": "sha256:6a5b55ecc8c61eeda9460896bdb0d0e0769226a6fa377ebf97def312cf009660"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende B-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten Nachweisfelder der individuell in evidenceRound benannten Runde werden ausdrücklich wörtlich gewählt. Die Auswahl ist je Ziel begründet; KEEP/KEEP ersetzt keine Prüfung. Vergleich: Die präzisierte A-Ausgabe benennt exakt alle fünf gültigen erkenntnistheoretischen Kriterien. B konkretisiert Ammoniak, Sensorfehler und Ergebnisauswahl. Alle fünf bleiben unersetzbar, konkrete Messfehler sind keine Falsifikation. Die konkreten B-Befunde bleiben gebunden: Aktueller DE/EN-Text und ganzer verknüpfter Seiten-/Kanonkontext passen zu dieser Kompetenz. Reproduzierbarkeit, Falsifizierbarkeit, Intersubjektivität, Konsistenz und Vorläufigkeit begründen wissenschaftliche Gültigkeit ohne fehlerhafte Messungen als Gegenbeweis auszugeben. Beurteilt eine neue Ergebnisauswahl oder unabhängige Messreihe mit denselben Kriterien und erklärt die verbleibende Vorläufigkeit. Bestehende gültige wissenschaftliche Entscheidungen werden unverändert übernommen; dieses Urteil prüft den aktuellen Kontext, keine erfundene Lernendenleistung. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing B reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged evidence fields of the individually named evidenceRound are selected literally. Each selection has its own reason; KEEP/KEEP does not replace appraisal. Comparison: Refined A names all five actual epistemic validity criteria exactly. B specifies ammonia, sensor faults and result selection. All five remain mandatory; measurement faults are no falsification. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current20-technical-dual-5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+      "goalId": "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:93fd43fc3d160be0229abf4469a3b9ba2e28f9e061c49ece39c5e5bb5883ec19",
+      "pageFingerprint": "sha256:6b710bb398aa015ef8791b1d7a694ef96add3a6591bab093f2c25869f1f807ff",
+      "goalReviewContextFingerprint": "sha256:4389f590080557d336ad48637e0a67d442fd5fe0e53b95485abc621a4e40660d",
+      "finalText": {
+        "titleDe": "Chemische Informationen aus Quellen erschließen",
+        "titleEn": "Extract chemical information from sources",
+        "descriptionDe": "Die lernende Person kann zur Beantwortung einer chemischen Frage relevante Informationen aus vorgegebenen oder selbst recherchierten Texten, Bildern und anderen Darstellungen auswählen, fachlich strukturieren, adressaten- und situationsgerecht auswerten und die verwendeten Quellen angeben.",
+        "descriptionEn": "The learner can select relevant information from given or independently researched texts, images, and other representations to answer a chemical question, structure it scientifically, evaluate it for the audience and situation, and identify the sources used."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-current517-current20-actual-independent-a-20261010-v1.5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+          "recordDigest": "sha256:03ceb42249437475b6f278f2980eea8a7939790268b305c94924acc6d8cf36cc"
+        },
+        "second": {
+          "recordId": "chemie-current517-current20-independent-b-20261010-v1:5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+          "recordDigest": "sha256:573402b5441c9a4b3d7dfa9bd9f2f0d86b71fdf058c68bf56d399e9b424e4cac"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende B-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten Nachweisfelder der individuell in evidenceRound benannten Runde werden ausdrücklich wörtlich gewählt. Die Auswahl ist je Ziel begründet; KEEP/KEEP ersetzt keine Prüfung. Vergleich: A bewahrt gegebene ODER eigene Quellen im allgemeinen Ziel. B hält die recherchierte C9-NTG-Route mit echter Suche/Öffnen/Lesen/Zitieren fest. Dieser UND-Sonderweg bleibt gebunden; Verpackungsmasse beweist keine Ökobilanz. Die konkreten B-Befunde bleiben gebunden: Die Quellen enthalten die benötigten chemischen Aussagen und Bezugsgrößen. Quellenerschließung kann nach Orientierung beginnen, ohne schon die ganze obere Recherchekompetenz vorauszusetzen. Das kanonische ODER bleibt erhalten; auf BY C9 NTG verlangt die zusätzliche Route tatsächlich vorgegebene UND selbst recherchierte, geöffnete und gelesene Quellen sowie eigenes Such-/Zitierprodukt. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing B reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged evidence fields of the individually named evidenceRound are selected literally. Each selection has its own reason; KEEP/KEEP does not replace appraisal. Comparison: A preserves supplied OR own sources in the general goal. B binds the research-specific C9 NTG route to actual searching/opening/reading/citing. That AND condition remains bound; packaging mass proves no life-cycle balance. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current20-technical-dual-ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+      "goalId": "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:d509f4b7baa78ce966bec044816fe8c357d6f849136484f2a67706748890cf46",
+      "pageFingerprint": "sha256:8e7f1c646668c4483c3283f6e775148ea62173976fbc475392c0a3b3acd2ab92",
+      "goalReviewContextFingerprint": "sha256:64a36debe20355d1d7e6141abd858d8e3b0cae46298e9fc6eec6eaed00e0df8f",
+      "finalText": {
+        "titleDe": "Komplexe chemische Quellen selbstständig erschließen",
+        "titleEn": "Independently interpret complex chemistry sources",
+        "descriptionDe": "Die lernende Person kann zu chemischen oder pharmazeutischen Fragen selbstständig in analogen und digitalen Medien recherchieren, relevante Informationen und Daten auch aus komplexen Darstellungen auswählen, strukturieren und interpretieren, daraus fachliche Schlussfolgerungen ableiten sowie Quellen belegen und Zitate kennzeichnen.",
+        "descriptionEn": "The learner can independently research chemical or pharmaceutical questions in analogue and digital media, select, structure, and interpret relevant information and data from complex representations, derive scientific conclusions, cite sources, and mark quotations."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-current517-current20-actual-independent-a-20261010-v1.ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+          "recordDigest": "sha256:70c279c98bf871c775dcf1b96ca8d8b6edd555807d6792ca957b435a002edb5b"
+        },
+        "second": {
+          "recordId": "chemie-current517-current20-independent-b-20261010-v1:ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+          "recordDigest": "sha256:38b5d312abf68277eda3079d79dd76ece42c02a31e5c7b37f781f91b24e00f08"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende B-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten Nachweisfelder der individuell in evidenceRound benannten Runde werden ausdrücklich wörtlich gewählt. Die Auswahl ist je Ziel begründet; KEEP/KEEP ersetzt keine Prüfung. Vergleich: B konkretisiert selbständiges Finden und Lesen sowie Trennung von Schluss, Paraphrase und Zitat. A bewahrt den analogen UND digitalen Quellenumfang; beide bleiben erforderlich, kein geliefertes Quellenblatt ersetzt Recherche. Die konkreten B-Befunde bleiben gebunden: Aktueller DE/EN-Text und ganzer verknüpfter Seiten-/Kanonkontext passen zu dieser Kompetenz. Selbstständige Recherche in komplexen analogen und digitalen Quellen benötigt fachliche Auswahl, Interpretation und nachvollziehbare Belege. Überträgt die Recherche auf eine neue chemische oder pharmazeutische Frage und prüft geänderte Quellenqualität und Aussagegrenzen. Bestehende gültige wissenschaftliche Entscheidungen werden unverändert übernommen; dieses Urteil prüft den aktuellen Kontext, keine erfundene Lernendenleistung. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing B reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged evidence fields of the individually named evidenceRound are selected literally. Each selection has its own reason; KEEP/KEEP does not replace appraisal. Comparison: B specifies independent finding/reading and separation of conclusion, paraphrase and quotation. A retains analogue AND digital sources; both remain required, and supplied source sheets cannot replace research. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current20-technical-dual-36666b4a-97af-51fc-9983-56cdcc7a8229",
+      "goalId": "36666b4a-97af-51fc-9983-56cdcc7a8229",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:48040c2af3eea2a65f19a4c76c20b2e420d1a46fa65da7e35c3f06c4732cea4b",
+      "pageFingerprint": "sha256:4dd2e576945ea61bd4234a69571be03f2a3cd70ff151f1300a6eec8e5203364d",
+      "goalReviewContextFingerprint": "sha256:0a99e77ec7d6180c9043ba822de710887becb64f663e456fa7e69b8271ff5def",
+      "finalText": {
+        "titleDe": "Chemische Quellen und Darstellungen kritisch prüfen",
+        "titleEn": "Critically assess chemistry sources and representations",
+        "descriptionDe": "Die lernende Person kann analoge und digitale Quellen oder Darstellungsformen zu chemischen Sachverhalten hinsichtlich ihrer Aussagen, fachlichen Relevanz, Vertrauenswürdigkeit, Urheberschaft und Intention vergleichen und ihre Eignung und Validität für eine konkrete Frage begründet beurteilen.",
+        "descriptionEn": "The learner can compare analogue and digital sources or representations of chemical issues in terms of their claims, scientific relevance, trustworthiness, authorship, and intention, and justify their suitability and validity for a specific question."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-current517-current20-actual-independent-a-20261010-v1.36666b4a-97af-51fc-9983-56cdcc7a8229",
+          "recordDigest": "sha256:926f7015e5221e65e5a740bc2c527f1ec154ae97874659829a2252696041cff5"
+        },
+        "second": {
+          "recordId": "chemie-current517-current20-independent-b-20261010-v1:36666b4a-97af-51fc-9983-56cdcc7a8229",
+          "recordDigest": "sha256:6cee90c66e7f4532d48a4f61482675a7e14507598b8d74aaf0a07d1e5707e9fd"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende B-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten Nachweisfelder der individuell in evidenceRound benannten Runde werden ausdrücklich wörtlich gewählt. Die Auswahl ist je Ziel begründet; KEEP/KEEP ersetzt keine Prüfung. Vergleich: A unterscheidet Interessenbindung von automatischer Verwerfung des Befunds. B ergänzt fachliche Belege und Popularität-versus-Gegenwissen. Unternehmens-/Institutionengeschichte bleibt erkennbare Quellenrolle ohne Neutralitätsgarantie. Die konkreten B-Befunde bleiben gebunden: Aktueller DE/EN-Text und ganzer verknüpfter Seiten-/Kanonkontext passen zu dieser Kompetenz. Vertrauenswürdigkeit einer chemischen Quelle folgt aus fachlicher Relevanz, nachvollziehbaren Belegen, Urheberschaft und Intention. Prüft einen neuen widersprechenden Beitrag und unterscheidet Popularität oder Werbung von nachvollziehbarem chemischem Gegenbefund. Bestehende gültige wissenschaftliche Entscheidungen werden unverändert übernommen; dieses Urteil prüft den aktuellen Kontext, keine erfundene Lernendenleistung. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing B reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged evidence fields of the individually named evidenceRound are selected literally. Each selection has its own reason; KEEP/KEEP does not replace appraisal. Comparison: A distinguishes an interest connection from automatic dismissal of findings. B adds scientific evidence and popularity versus counterevidence. Company/institution history retains a visible source role without guaranteed neutrality. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current20-technical-dual-431a0f03-f28a-5e56-a61f-000336d0b410",
+      "goalId": "431a0f03-f28a-5e56-a61f-000336d0b410",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:6ddcfd8416fa7d7295255874133e3eab40d19427f1a99abdffb703da778e9ea5",
+      "pageFingerprint": "sha256:349b9d115bb1bd992a7ded5af2eb9eb0037435f5946f2cfba28fa7b755192a2b",
+      "goalReviewContextFingerprint": "sha256:beb34e0ba41ec665fafd118726c124711a721ae16efc9c0a3df734069d16b889",
+      "finalText": {
+        "titleDe": "Chemische Pro- und Kontra-Argumente abwägen",
+        "titleEn": "Weigh arguments for and against chemical claims",
+        "descriptionDe": "Die lernende Person kann zu einem chemischen Sachverhalt relevante Bewertungskriterien recherchieren oder erkennen, fachlich belegte Pro- und Kontra-Argumente selbst finden, sie mit bereitgestellten Argumenten vergleichen und deren Gewicht kriteriengeleitet begründet abwägen.",
+        "descriptionEn": "The learner can research or identify relevant assessment criteria for a chemical issue, independently find scientifically supported arguments for and against, compare them with supplied arguments and weigh them with justified reference to the criteria."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-current517-current20-actual-independent-a-20261010-v1.431a0f03-f28a-5e56-a61f-000336d0b410",
+          "recordDigest": "sha256:6ce7e3b1f674b79fb01f63725c2b549df85ca37d4949d8883860790e7302312c"
+        },
+        "second": {
+          "recordId": "chemie-current517-current20-independent-b-20261010-v1:431a0f03-f28a-5e56-a61f-000336d0b410",
+          "recordDigest": "sha256:f9a979125a0e8b15c79919c0047ce89c9a913ce505a7b030c6d55c486199dd73"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende B-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten Nachweisfelder der individuell in evidenceRound benannten Runde werden ausdrücklich wörtlich gewählt. Die Auswahl ist je Ziel begründet; KEEP/KEEP ersetzt keine Prüfung. Vergleich: B verlangt eigene belegte Pro/Contra-Argumente und Vergleich mit gegebenen Argumenten. A betont offene Gewichtung; noch keine vollständige Handlungsentscheidung oder eigene empirische Durchführung wird daraus beansprucht. Die konkreten B-Befunde bleiben gebunden: Aktueller DE/EN-Text und ganzer verknüpfter Seiten-/Kanonkontext passen zu dieser Kompetenz. Chemische Pro- und Kontra-Argumente benötigen fachliche Belege und transparente Bewertungskriterien; ihre Gewichtung ist begründungspflichtig. Begründet bei einer neuen Zielsetzung oder Information, welche Gewichtung sich ändert und welche fachliche Grundlage bestehen bleibt. Bestehende gültige wissenschaftliche Entscheidungen werden unverändert übernommen; dieses Urteil prüft den aktuellen Kontext, keine erfundene Lernendenleistung. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing B reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged evidence fields of the individually named evidenceRound are selected literally. Each selection has its own reason; KEEP/KEEP does not replace appraisal. Comparison: B requires own supported pro/con arguments and comparison with supplied ones. A emphasises transparent weighting; this claims neither a complete action decision nor own empirical execution. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current20-technical-dual-31781d00-8f20-5041-bd7f-e261b27af162",
+      "goalId": "31781d00-8f20-5041-bd7f-e261b27af162",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:2798bbc4ba797d5ae01ed0532a783b53087294e1ffe2ccd725671b65ce7e7ace",
+      "pageFingerprint": "sha256:e1fc8d449512cd205496cff2e180c4f4e67b9d659f632d569eb2c98342fe0c80",
+      "goalReviewContextFingerprint": "sha256:378dfd7b12f0bd91f2c08097e5bc68355fa572d6df152e479420a1af827779dc",
+      "finalText": {
+        "titleDe": "Chemische Informationen in geeignete Darstellungen überführen",
+        "titleEn": "Transform chemical information into suitable representations",
+        "descriptionDe": "Die lernende Person kann chemische Informationen sach-, adressaten- und situationsgerecht in eine geeignete Darstellungsform überführen, dabei Fachsprache und Bezugsgrößen korrekt verwenden und die Darstellungswahl sowie erhaltene und begrenzte Aussagen begründen.",
+        "descriptionEn": "The learner can transform chemical information into a representation suited to its content, audience and situation, use scientific language and reference quantities correctly and justify the choice and the statements retained or limited by that representation."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-current517-current20-actual-independent-a-20261010-v1.31781d00-8f20-5041-bd7f-e261b27af162",
+          "recordDigest": "sha256:256c7f6425bcb9de942e8437cbd95c3e26d0eecc05a22c0110630d497185ee74"
+        },
+        "second": {
+          "recordId": "chemie-current517-current20-independent-b-20261010-v1:31781d00-8f20-5041-bd7f-e261b27af162",
+          "recordDigest": "sha256:c0ba5bd96843fbfc026b19dbf0a7474f263d5e803c03e628044e34a46526f47d"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende B-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten Nachweisfelder der individuell in evidenceRound benannten Runde werden ausdrücklich wörtlich gewählt. Die Auswahl ist je Ziel begründet; KEEP/KEEP ersetzt keine Prüfung. Vergleich: B macht die selbständige Überführung in geeignete alternative Darstellung beobachtbar. A sichert Referenzgrößen und Aussagegrenzen; keine analoge UND digitale Präsentationspflicht wird aus dem nachfolgenden 38-Ziel vorgezogen. Die konkreten B-Befunde bleiben gebunden: Aktueller DE/EN-Text und ganzer verknüpfter Seiten-/Kanonkontext passen zu dieser Kompetenz. Eine Darstellungswahl erhält relevante chemische Aussagen und Bezugsgrößen entsprechend Inhalt, Adressat und Situation. Erstellt für eine neue Zielgruppe eine alternative Darstellung und begründet, welche Aussage trotz Vereinfachung unverändert bleibt. Bestehende gültige wissenschaftliche Entscheidungen werden unverändert übernommen; dieses Urteil prüft den aktuellen Kontext, keine erfundene Lernendenleistung. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing B reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged evidence fields of the individually named evidenceRound are selected literally. Each selection has its own reason; KEEP/KEEP does not replace appraisal. Comparison: B makes independent transformation into a suitable alternative representation observable. A safeguards reference quantities and limits; later analogue AND digital presentation duties are not moved forward. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current20-technical-dual-38e30bb9-6145-5da0-80b8-36e3c45e15d0",
+      "goalId": "38e30bb9-6145-5da0-80b8-36e3c45e15d0",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:09c77abf64066cc6cb598a78decb9b90a0c654601d995bc0a502529b1dba9084",
+      "pageFingerprint": "sha256:0a451d814f6efa060eedc82c8b85b960acc47ded94d84d96651db1a905d24662",
+      "goalReviewContextFingerprint": "sha256:ac87c606671a5d709ce707dcd9b42406a764703d921b78a04cdc17ce86863e9d",
+      "finalText": {
+        "titleDe": "Chemische Sachverhalte und Arbeitsergebnisse präsentieren",
+        "titleEn": "Present chemical subject matter and work results",
+        "descriptionDe": "Die lernende Person kann chemische Sachverhalte sowie eigene Lern- oder Arbeitsergebnisse mit geeigneten analogen und digitalen Medien sach-, adressaten- und situationsgerecht präsentieren und die Wahl von Darstellung, Aufbau und Medium begründen.",
+        "descriptionEn": "The learner can present chemical subject matter and their own learning or work results using suitable analogue and digital media in a way appropriate to the content, audience and situation, and justify the representation, structure and medium."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "first",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-current517-current20-actual-independent-a-20261010-v1.38e30bb9-6145-5da0-80b8-36e3c45e15d0",
+          "recordDigest": "sha256:c92c0557efd1842e4fee466999a1486cdc6ea6a372829c7059845d600c32ba67"
+        },
+        "second": {
+          "recordId": "chemie-current517-current20-independent-b-20261010-v1:38e30bb9-6145-5da0-80b8-36e3c45e15d0",
+          "recordDigest": "sha256:05c124f1f0d2e70d8ee613a97a01a0038b0f6eac16d2776993034da2f5a8adb1"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende B-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten Nachweisfelder der individuell in evidenceRound benannten Runde werden ausdrücklich wörtlich gewählt. Die Auswahl ist je Ziel begründet; KEEP/KEEP ersetzt keine Prüfung. Vergleich: A bewahrt tatsächliche eigene analoge UND digitale Präsentation und fachliche Fragen. B konkretisiert echte Zuhörer/Rückfragen; Musterbilder oder gedruckte Beispiele erfüllen keine Präsentationsleistung. Die konkreten B-Befunde bleiben gebunden: Aktueller DE/EN-Text und ganzer verknüpfter Seiten-/Kanonkontext passen zu dieser Kompetenz. Eine fachliche Präsentation verbindet eigene Arbeitsergebnisse mit begründeter analoger und digitaler Medienwahl für tatsächliche Zuhörer. Überarbeitet aufgrund einer tatsächlichen Rückfrage eine Darstellung und erhält dabei fachliche Aussage und Reichweite. Bestehende gültige wissenschaftliche Entscheidungen werden unverändert übernommen; dieses Urteil prüft den aktuellen Kontext, keine erfundene Lernendenleistung. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing B reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged evidence fields of the individually named evidenceRound are selected literally. Each selection has its own reason; KEEP/KEEP does not replace appraisal. Comparison: A preserves actual own analogue AND digital presentation and scientific questions. B specifies real listeners/questions; example images or printed examples prove no presentation performance. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current20-technical-dual-7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6",
+      "goalId": "7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:5dfa0a7e6ce7ba85e71cba28ce8379619eded217571b43633d30188cd49e634a",
+      "pageFingerprint": "sha256:07cbdeba711ec93b938f597bc5209f4edb853099b6c49549e35551e10957f411",
+      "goalReviewContextFingerprint": "sha256:4ef95cd708170fad692852bc1a0364e3da4777016021c5a4a1f344d47517d648",
+      "finalText": {
+        "titleDe": "Chemische Anwendungen und ihre gesellschaftliche Bedeutung diskutieren",
+        "titleEn": "Discuss chemical applications and their social significance",
+        "descriptionDe": "Die lernende Person kann Aufgaben und Anwendungsbereiche der Chemie an konkreten Beispielen beschreiben und ihre Bedeutung für Gesellschaft, Mensch und Umwelt fachlich begründet diskutieren.",
+        "descriptionEn": "The learner can describe tasks and application areas of chemistry using concrete examples and discuss their significance for society, people, and the environment with scientific justification."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-current517-current20-actual-independent-a-20261010-v1.7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6",
+          "recordDigest": "sha256:c0b4f2d0b299e8196118d4c9efce6ba48f90c59f6175f1daef9358f5fdd88919"
+        },
+        "second": {
+          "recordId": "chemie-current517-current20-independent-b-20261010-v1:7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6",
+          "recordDigest": "sha256:bd6c0c025ba92dd1ef32755998abdb35e62282ed13a11117d1dadb842455d92e"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende B-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten Nachweisfelder der individuell in evidenceRound benannten Runde werden ausdrücklich wörtlich gewählt. Die Auswahl ist je Ziel begründet; KEEP/KEEP ersetzt keine Prüfung. Vergleich: B beschreibt Nutzen und Grenzen als begründete Diskussion, passend zum Titeloperator. A bindet Chemie und Menschen-/Umweltfolgen. Kein Berufsabschluss oder pauschales Werturteil wird aus Anwendungen abgeleitet. Die konkreten B-Befunde bleiben gebunden: Aktueller DE/EN-Text und ganzer verknüpfter Seiten-/Kanonkontext passen zu dieser Kompetenz. Chemische Anwendungen erfüllen konkrete Aufgaben und haben begründbar unterschiedliche Bedeutungen für Mensch, Gesellschaft und Umwelt. Vergleicht eine neue Anwendung oder Nutzungssituation und erklärt, welche chemischen und gesellschaftlichen Bedingungen die Bewertung verändern. Bestehende gültige wissenschaftliche Entscheidungen werden unverändert übernommen; dieses Urteil prüft den aktuellen Kontext, keine erfundene Lernendenleistung. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing B reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged evidence fields of the individually named evidenceRound are selected literally. Each selection has its own reason; KEEP/KEEP does not replace appraisal. Comparison: B presents benefits/limits as justified discussion, fitting the title operator. A links chemistry to human/environmental effects. Applications imply neither career qualification nor blanket value judgments. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    },
+    {
+      "decisionId": "current20-technical-dual-6c9adc36-b6d0-57fa-8e02-5e156aebfecc",
+      "goalId": "6c9adc36-b6d0-57fa-8e02-5e156aebfecc",
+      "effectiveSemanticKind": "curricularAtomic",
+      "goalFingerprint": "sha256:0891c34d743bf02ee8ffbcb380066674d144b5fe001c531ec00b35db320d3f97",
+      "pageFingerprint": "sha256:b480c6693dc5d52f6a74da6cf28123343bcc5e2613451792050ee1184cb25b14",
+      "goalReviewContextFingerprint": "sha256:ae8e61a1c363780e3a1227013e7f33a9c4597eabbf0c1ac27c0b49c507773cf6",
+      "finalText": {
+        "titleDe": "Chemische Berufsfelder in eine begründete Berufswahl einbeziehen",
+        "titleEn": "Include chemistry career fields in informed career decisions",
+        "descriptionDe": "Die lernende Person kann vielfältige chemische Berufsfelder anhand ihrer Aufgaben, Anwendungsbereiche und Anforderungen vergleichen, ihren Zusammenhang mit chemischen Anwendungen und gesellschaftlichen Entwicklungen erläutern und diese Informationen in eine begründete Berufsorientierung oder Berufswahl einbeziehen.",
+        "descriptionEn": "The learner can compare diverse chemical occupations in terms of their tasks, fields of application, and requirements, explain their connection with chemical applications and social developments, and use this information for justified career orientation or a career choice."
+      },
+      "resolutionDecision": "keep_current",
+      "evidenceRound": "second",
+      "records": {
+        "first": {
+          "recordId": "chemie-b008-current517-current20-actual-independent-a-20261010-v1.6c9adc36-b6d0-57fa-8e02-5e156aebfecc",
+          "recordDigest": "sha256:483d9280a6520cc3ef8ff9ce115be606558b7bbd7d975c6dcdd51de5883bc29d"
+        },
+        "second": {
+          "recordId": "chemie-current517-current20-independent-b-20261010-v1:6c9adc36-b6d0-57fa-8e02-5e156aebfecc",
+          "recordDigest": "sha256:7a505e687cf23d79037192bb44e06ffa6c82bac1b9b8796b35b061d473644838"
+        }
+      },
+      "rationaleDe": "Technische explizite Synthese der versiegelten unabhängigen FIRST-A/B nach eigener vollständiger Sichtung beider aktuellen Records; beteiligt ist der bestehende B-Reviewer, kein dritter Fachreview. Beide entscheiden KEEP. Die sechs unveränderten Nachweisfelder der individuell in evidenceRound benannten Runde werden ausdrücklich wörtlich gewählt. Die Auswahl ist je Ziel begründet; KEEP/KEEP ersetzt keine Prüfung. Vergleich: B vermeidet eine starre Zweiberufequote und erhält belegte Tätigkeiten, Anforderungen und persönliche Orientierung. As Vergleich bleibt geeignetes Beispiel; guided choice belegt keine Berufsqualifikation oder Erprobung. Die konkreten B-Befunde bleiben gebunden: Aktueller DE/EN-Text und ganzer verknüpfter Seiten-/Kanonkontext passen zu dieser Kompetenz. Chemische Berufsfelder verbinden fachliche Aufgaben, Anforderungen und Anwendungen mit gesellschaftlicher Entwicklung und persönlicher Berufsorientierung. Prüft bei einem neuen Berufsfeld oder veränderten Interessenschwerpunkt, welche Anforderungen und gesellschaftlichen Bezüge die Wahl beeinflussen. Bestehende gültige wissenschaftliche Entscheidungen werden unverändert übernommen; dieses Urteil prüft den aktuellen Kontext, keine erfundene Lernendenleistung. Aktuelle Beschreibung unverändert. Getrennte Source-/Kurs-/Partnerpflichten und sämtliche Whole-Source-HOLDs bleiben offen; keine menschliche Freigabe und kein aktiver M7-Zuwachs.",
+      "rationaleEn": "Explicit technical synthesis of sealed independent FIRST-A/B after actual full reading of both current records; the existing B reviewer performs this synthesis, not a third subject review. Both decide KEEP. The six unchanged evidence fields of the individually named evidenceRound are selected literally. Each selection has its own reason; KEEP/KEEP does not replace appraisal. Comparison: B avoids a fixed two-career quota while retaining supported activities, requirements and personal orientation. A’s comparison remains a suitable example; guided choice proves no professional qualification or trial. The exact B record, its bilingual evidence and its specific rationale remain bound and preserved as reviewed conditions. Current description unchanged. Separate source, course and partner duties and every whole-source hold remain open; no human approval and no active M7 gain."
+    }
+  ],
+  "manifestFingerprint": "sha256:5ae0a1ef9cdc2ce3853fa8b1c954888e63f9ac321873b06c1b8ea9f39f36e31a"
+}

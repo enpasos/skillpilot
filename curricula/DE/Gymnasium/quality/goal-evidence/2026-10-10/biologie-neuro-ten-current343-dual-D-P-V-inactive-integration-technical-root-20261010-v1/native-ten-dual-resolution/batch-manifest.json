@@ -1,0 +1,63 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-technical-successor-20261010-v2/native/ten-current-native.prerequisite-safe.batch.config.json",
+  "configDigest": "sha256:9d64b83faba1c9033e1895764daa111e018818b6040ae0a42419c0850b7aa85d",
+  "goalIds": [
+    "9499943f-89b7-54e3-9fe2-e90404beaa4a",
+    "2706c28e-1c21-50de-8a63-c450f5fe8b07",
+    "a7eee23c-a5d0-5101-937a-ca441764cabf",
+    "146d70e0-b494-59fa-b8b6-29da18b36893",
+    "97a15c19-c345-589e-8b3c-9f2b97a60095",
+    "5670e999-922c-5862-ba77-2d93667badd4",
+    "1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5",
+    "3d822550-c14a-52ee-9908-6bcb873afdd6",
+    "5dd66bfd-616f-5a2a-be7c-49aaf12581a0",
+    "5a5eeff5-ae97-5b5b-bc80-df03eba8e095"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 394,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-technical-successor-20261010-v2/native/current394-after.normal.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-technical-successor-20261010-v2/candidate/current479-only-ten-resourceLinks.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:939d518a9ffcf9d1d1a20b354383f46df4c7b5f9c8b26acaeb004adb02af05d8"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:748f0e114722bf66f8867040c6e625ab380f8b063c076ec797627748d8bd879d",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:bf675a3a035577dc523e0d6019953eefa573312865e76b07dc6684693bcd3b10",
+    "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-a",
+        "campaignDigest": "sha256:a27fc9b81aabc2de06a0ac2066c40ae0dc940b770cec00979d8ab9da85622770",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-a",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:8d7dca138711317a8d145042bd1d9341e638cfe44e8a83a0031d3e9629342de5"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-b",
+        "campaignDigest": "sha256:fd0b057f98d9ef5811bf641e9d1203a469faeeb85594d2f839cc5177c605c111",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-b",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:5f899ef90d7d787016b793bd5759b94018936d91363d956b56524c1a174c02ce"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

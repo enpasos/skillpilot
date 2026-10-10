@@ -1,0 +1,61 @@
+{
+  "archetype": "procedure",
+  "expectations": [
+    {
+      "id": "vector-cloning-functions",
+      "essentialUnderstandingDe": "Plasmide sind mögliche DNA-Träger; Replikation, Aufnahme und passende Identifizierung erlauben eine begründete Klonierungsstrategie.",
+      "essentialUnderstandingEn": "Plasmids can carry DNA; replication, uptake and suitable identification support a justified cloning strategy.",
+      "observablePerformanceDe": "Beschreibt Insert, Vektor, Wirt und Kopierung am gegebenen Konstrukt und verfolgt DNA-Klonierung getrennt vom Produkt.",
+      "observablePerformanceEn": "Describes insert, vector, host and copying in the supplied construct and tracks DNA cloning separately from product formation."
+    },
+    {
+      "id": "expression-system-compatibility",
+      "essentialUnderstandingDe": "Expressionssysteme benötigen eine passende Kombination aus codierender DNA, Regulationssignalen und Wirtsfunktionen.",
+      "essentialUnderstandingEn": "Expression systems need a compatible combination of coding DNA, regulatory signals and host functions.",
+      "observablePerformanceDe": "Erklärt das gegebene Proteinprodukt bzw. sein Ausbleiben und begründet, warum Plasmidkopien allein keine Expression beweisen.",
+      "observablePerformanceEn": "Explains production or absence of the given protein and why plasmid copies alone do not prove expression."
+    }
+  ],
+  "coverageExpectations": {
+    "requiredExpectationIds": [
+      "vector-cloning-functions",
+      "expression-system-compatibility"
+    ],
+    "alternativeExpectationGroups": [],
+    "minimumIndependentDemonstrations": 2,
+    "freshVariationRequired": true,
+    "independentTransferRequired": true
+  },
+  "variationAxes": [
+    {
+      "id": "distinct-content-contexts",
+      "textDe": "KopiervektorK gegenüber ExpressionsvektorE und WirtsvergleichH1/H2 mit unterschiedlicher Promotorerkennung.",
+      "textEn": "Cloning vectorK versus expression vectorE and hostsH1/H2 with different promoter recognition."
+    },
+    {
+      "id": "fresh-content-premise",
+      "textDe": "Inaktivierte codierende Sequenz trotzPlasmidkopien gegenüber ungeklärter Proteinverarbeitung trotzpassendem Promotor.",
+      "textEn": "Inactivated coding sequence despite copies versus unresolved processing despite a compatible promoter."
+    }
+  ],
+  "applicationCaseBriefs": [
+    {
+      "id": "cloning-versus-expression-plasmid",
+      "taskDemandDe": "Zwei vereinfachte Plasmidkarten enthalten denselben intronfreien Protein-Code und eine für den bakteriellen Wirt geeignete Replikationsfunktion. Vektor K trägt nur Kopierungs-/Identifikationsfunktionen; laut Karte fehlen wirksame Expressionssignale. Vektor E besitzt zusätzlich einen im Wirt funktionierenden Promotor. Beide werden aufgenommen und als DNA kopiert, nur E produziert im Modell das gewünschte Protein.\n\nBeschreibe die Plasmide, ihre Klonierungsstrategie und beide Expressionssysteme. Erkläre, welche Beobachtung DNA-Klonierung belegt und welche zusätzlich Expression belegt.\n\nFrische Variation: Die zweite Karte zeigt nun viele E-Plasmidkopien, aber eine Mutation hat die codierende Sequenz inaktiviert. Bleibt die Schlussfolgerung zum Protein bestehen?",
+      "taskDemandEn": "Two simplified plasmid cards carry the same intron-free protein code and a bacterial-host-compatible replication function. K has copying/identification functions only; the card lacks effective expression signals. E additionally has a promoter functional in that host. Both are taken up and copied as DNA; only E produces the desired protein in the model.\n\nDescribe plasmids, the cloning strategy and both expression systems. Explain what establishes DNA cloning and what additionally establishes expression.\n\nFresh variation: The second card now shows many E copies but a mutation inactivates the coding sequence. Does the protein conclusion still follow?",
+      "expectedPerformanceDe": "Das Insert liegt im jeweiligen Plasmid, das nach Aufnahme mit passenden Wirtsfunktionen vervielfältigt wird. Identifizierte Nachkommen mit Kopien tragen einen Zellklon bzw. vermehren das DNA-Konstrukt. Für E liefert der passende Promotor die zusätzliche Expressionsbedingung; die beobachtete Proteinbildung stützt die Expression. K kann DNA kopieren, ohne das gewünschte Protein zu bilden. Klonieren und Exprimieren sind verschiedene Leistungen; beide verlangen ein geeignetes Wirt/Vektor-Zusammenspiel.\n\nTransfer: DNA-Klonierung kann fortbestehen; eine funktionsfähige codierende Information fehlt jedoch. Viele Kopien und ein passender Promotor garantieren kein intaktes Proteinprodukt.",
+      "expectedPerformanceEn": "The insert is carried by each plasmid, which is copied after uptake through compatible host functions. Identified descendants with copies form a carrier-cell clone or amplify the DNA construct. E has the extra functional-promoter condition; observed protein production supports expression. K can copy DNA without producing the desired protein. Cloning and expression are distinct functions, both requiring host/vector compatibility.\n\nTransfer: DNA cloning can continue, but functional coding information is missing. Many copies and a matching promoter do not guarantee an intact protein product.",
+      "understandingFocusDe": "Plasmide sind mögliche DNA-Träger; Replikation, Aufnahme und passende Identifizierung erlauben eine begründete Klonierungsstrategie. Expressionssysteme benötigen eine passende Kombination aus codierender DNA, Regulationssignalen und Wirtsfunktionen.",
+      "understandingFocusEn": "Plasmids can carry DNA; replication, uptake and suitable identification support a justified cloning strategy. Expression systems need a compatible combination of coding DNA, regulatory signals and host functions."
+    },
+    {
+      "id": "changed-host-expression-system",
+      "taskDemandDe": "Vektor V trägt ein intaktes Insert und einen Promotor, der laut Karte nur im eukaryotischen Wirtsmodell H1 erkannt wird. Die angegebene DNA-Erhaltung gelingt in H1 und H2; in H2 wird der Promotor nicht erkannt. Genexpression benötigt im Modell zusätzlich Transkription und Translation. Es liegt eine Vergleichskarte vor, kein ausgeführter Transfer.\n\nBeschreibe Vektorrolle, mögliche DNA-Vermehrung/Klonierung und eine passende Expressionsstrategie. Unterscheide nach den Angaben die beiden Wirte und begründe eine Wahl für Proteinproduktion.\n\nFrische Variation: Ein ausgetauschter Promotor wird nun auch in H2 erkannt, jedoch liefert die Karte keine Information zur Proteinverarbeitung. Kann man identische funktionsfähige Endprodukte in beiden Wirten behaupten?",
+      "taskDemandEn": "Vector V carries an intact insert and a promoter recognized only in eukaryotic host model H1 according to the card. Stated DNA maintenance succeeds in H1 and H2; H2 does not recognize the promoter. Expression additionally needs transcription and translation in the model. This is a comparison card, not performed transfer.\n\nDescribe vector role, possible DNA maintenance/cloning and a suitable expression strategy. Distinguish the two hosts and justify a production choice using the supplied facts.\n\nFresh variation: A replacement promoter is now recognized in H2, but the card supplies no protein-processing evidence. Can identical functional final products in both hosts be asserted?",
+      "expectedPerformanceDe": "V transportiert und erhält das Insert nach den angegebenen Bedingungen. DNA-Erhaltung allein besagt noch nicht, dass das Insert exprimiert wird. H1 erkennt den Promotor und ist bei ebenfalls passenden Transkriptions-/Translationsbedingungen die begründete Wahl. H2 kann das Konstrukt besitzen, ohne diese Expression zu leisten. Eine Klonierungsstrategie muss kompatible DNA-Vermehrung und Identifizierung berücksichtigen; für ein Expressionssystem kommen passende Regulations- und Wirtsfunktionen hinzu.\n\nTransfer: Die Promotorlücke ist geschlossen, mögliche Verarbeitung oder Faltung ist aber nicht geklärt. Passende Transkription allein beweist kein identisches funktionsfähiges Endprodukt.",
+      "expectedPerformanceEn": "V carries and maintains the insert under stated conditions. Maintenance alone does not establish expression. H1 recognizes the promoter and is the justified choice if transcription/translation are also suitable. H2 may contain the construct without that expression. Cloning needs compatible DNA multiplication and identification; expression additionally needs regulatory and host compatibility.\n\nTransfer: The promoter gap is closed, but processing or folding is unresolved. Suitable transcription alone does not establish identical functional final products.",
+      "understandingFocusDe": "Plasmide sind mögliche DNA-Träger; Replikation, Aufnahme und passende Identifizierung erlauben eine begründete Klonierungsstrategie. Expressionssysteme benötigen eine passende Kombination aus codierender DNA, Regulationssignalen und Wirtsfunktionen.",
+      "understandingFocusEn": "Plasmids can carry DNA; replication, uptake and suitable identification support a justified cloning strategy. Expression systems need a compatible combination of coding DNA, regulatory signals and host functions."
+    }
+  ]
+}

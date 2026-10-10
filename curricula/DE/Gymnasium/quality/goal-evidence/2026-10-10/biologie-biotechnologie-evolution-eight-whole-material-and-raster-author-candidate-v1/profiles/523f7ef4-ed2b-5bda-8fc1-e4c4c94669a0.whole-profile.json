@@ -1,0 +1,61 @@
+{
+  "archetype": "procedure",
+  "expectations": [
+    {
+      "id": "distinct-method-functions",
+      "essentialUnderstandingDe": "Restriktionsenzyme schneiden DNA an erkannten Stellen, PCR vervielfältigt einen durch Primer begrenzten Abschnitt, ein Gel trennt Fragmente nach Größe.",
+      "essentialUnderstandingEn": "Restriction enzymes cut DNA at recognized sites, PCR amplifies a primer-defined region and a gel separates fragments by size.",
+      "observablePerformanceDe": "Erklärt alle drei Methoden im zusammenhängenden Materialfall und ordnet jede beobachtete Wirkung der passenden Methode zu.",
+      "observablePerformanceEn": "Explains all three methods in the connected case and assigns each observed effect to its method."
+    },
+    {
+      "id": "result-interpretation-limits",
+      "essentialUnderstandingDe": "Bandenpositionen zeigen relative Fragmentlängen unter gegebenen Bedingungen; gleiche Länge oder PCR-Signal beweist allein keine identische DNA-Sequenz.",
+      "essentialUnderstandingEn": "Bands indicate relative fragment length under given conditions; equal length or a PCR signal alone proves no identical sequence.",
+      "observablePerformanceDe": "Leitet erwartete Schnitt-/PCR-/Gelmuster ab und grenzt aus fehlendem oder unerwartetem Signal mögliche Ursachen ein.",
+      "observablePerformanceEn": "Infers expected digest/PCR/gel patterns and bounds possible causes of missing or unexpected signals."
+    }
+  ],
+  "coverageExpectations": {
+    "requiredExpectationIds": [
+      "distinct-method-functions",
+      "result-interpretation-limits"
+    ],
+    "alternativeExpectationGroups": [],
+    "minimumIndependentDemonstrations": 2,
+    "freshVariationRequired": true,
+    "independentTransferRequired": true
+  },
+  "variationAxes": [
+    {
+      "id": "distinct-content-contexts",
+      "textDe": "Gegebene Schnittposition400 von1000bp und primerbegrenzte200bp gegenüber300/700bp-Gelmuster und Kontrollsignalen.",
+      "textEn": "Given400-of1000bp cut and primer-bounded200bp versus300/700bp gel patterns and control signals."
+    },
+    {
+      "id": "fresh-content-premise",
+      "textDe": "Fehlende Restriktionsstelle bei passenden Primern gegenüber ausgefallener Positivkontrolle.",
+      "textEn": "Missing restriction site with matching primers versus failed positive control."
+    }
+  ],
+  "applicationCaseBriefs": [
+    {
+      "id": "three-tools-dna-size-model",
+      "taskDemandDe": "Didaktische DNA-Karte: Ein lineares 1000-bp-Stück besitzt eine einzige Erkennungsstelle für Enzym R bei Position 400. Die gegebene PCR-Primerpaarung begrenzt ein anderes 200-bp-Zielstück. In einem Gel wandern DNA-Fragmente von den oberen Taschen zum Pluspol; kleinere Fragmente kommen bei gleichen Bedingungen weiter. Das sind synthetische Daten, keine tatsächliche Laborarbeit.\n\nErläutere Restriktion, PCR und Gel-Analyse an der Karte. Welche Stücke und Bandenpositionen erwartest du bei vollständigem R-Schnitt und bei spezifischer PCR? Prüfe die Behauptung, das Gel kopiere DNA.\n\nFrische Variation: Ein neues gleich langes 1000-bp-Stück besitzt keine R-Erkennungsstelle, aber unveränderte Primerbindestellen. Wie ändern sich die beiden Ergebnisse?",
+      "taskDemandEn": "Teaching DNA card: a linear 1000-bp fragment has one site for enzyme R at position 400. The supplied PCR primer pair bounds a different 200-bp target. In a gel DNA travels from the upper wells toward the positive electrode; smaller fragments migrate further under identical conditions. These are synthetic data, not actual laboratory work.\n\nExplain restriction, PCR and gel analysis using the card. What products/band positions are expected for complete R digestion and specific PCR? Assess the claim that a gel copies DNA.\n\nFresh variation: Another 1000-bp piece lacks the R site but retains the primer-binding sites. How do the two results change?",
+      "expectedPerformanceDe": "R schneidet an seiner Erkennungsstelle und liefert 400 und 600 bp. PCR erzeugt viele Kopien des primerbegrenzten 200-bp-Abschnitts, nicht des ganzen 1000-bp-Stücks. Bei einem gemeinsamen Größenvergleich liegt die 200-bp-Bande weiter vom Start entfernt als 400 bp und diese weiter als 600 bp. Das Gel trennt vorhandene DNA; es vervielfältigt sie nicht. Restriktion, Vervielfältigung und Trennung sind verschiedene Funktionen. Das Modell erklärt die Methoden, es behauptet keine ausgeführte Manipulation.\n\nTransfer: Bei R bleibt das lineare 1000-bp-Stück ungeschnitten; die PCR kann weiterhin das 200-bp-Ziel vervielfältigen. Gleiches Ausgangsmaß erzwingt keine gleiche Erkennungssequenz.",
+      "expectedPerformanceEn": "R cuts at its recognition site, yielding 400 and 600 bp. PCR makes many copies of the primer-bounded 200-bp region, not the whole 1000-bp piece. In a size comparison the 200-bp band is farther from the start than 400 bp, which is farther than 600 bp. The gel separates existing DNA and does not amplify it. Cutting, amplification and separation have distinct roles. This explains methods without claiming a performed manipulation.\n\nTransfer: R leaves the linear 1000-bp piece intact; PCR can still amplify the 200-bp target. Equal initial size does not imply an identical recognition sequence.",
+      "understandingFocusDe": "Restriktionsenzyme schneiden DNA an erkannten Stellen, PCR vervielfältigt einen durch Primer begrenzten Abschnitt, ein Gel trennt Fragmente nach Größe. Bandenpositionen zeigen relative Fragmentlängen unter gegebenen Bedingungen; gleiche Länge oder PCR-Signal beweist allein keine identische DNA-Sequenz.",
+      "understandingFocusEn": "Restriction enzymes cut DNA at recognized sites, PCR amplifies a primer-defined region and a gel separates fragments by size. Bands indicate relative fragment length under given conditions; equal length or a PCR signal alone proves no identical sequence."
+    },
+    {
+      "id": "three-tools-controls-discrimination",
+      "taskDemandDe": "Vier gelesene Modellspuren: Größenmarker 100/300/700 bp; vollständiger Restriktionsansatz X mit 300- und 700-bp-Banden; spezifischer PCR-Ansatz Y mit einer 300-bp-Bande; Negativkontrolle ohne DNA mit einer unerwarteten 300-bp-Bande. Die tatsächliche Basenfolge ist nicht bekannt. Gleiche Gelbedingungen und ein lineares DNA-Modell sind vorgegeben.\n\nErkläre die drei Methodenfunktionen und interpretiere X, Y und die Kontrolle. Was kann aus den gleichen 300-bp-Positionen geschlossen werden, was nicht?\n\nFrische Variation: Frische Karte: Die Negativkontrolle ist leer; eine Positivkontrolle mit bekannt passendem Ziel ist aber ebenfalls leer. Die Probe zeigt keine Bande. Welche Schlussfolgerung ist jetzt zulässig?",
+      "taskDemandEn": "Four model lanes: size marker 100/300/700 bp; complete restriction reaction X has 300- and 700-bp bands; specific PCR reaction Y has one 300-bp band; the no-template negative control has an unexpected 300-bp band. Actual sequences are unknown. Gel conditions are equal and a linear DNA model is stipulated.\n\nExplain the three method functions and interpret X, Y and the control. What does matching 300-bp migration establish and what does it not?\n\nFresh variation: Fresh card: the negative control is empty, but a positive control containing a matching target is also empty. The sample shows no band. What can now be concluded?",
+      "expectedPerformanceDe": "X passt zu einem vollständigen Schnitt eines linearen 1000-bp-Ausgangsstücks in 300 und 700 bp. Y passt zu PCR-Kopien eines 300-bp-Ziels. Der Marker erlaubt eine Größenzuordnung; die gemeinsame Position beweist keine identische Sequenz von X und Y. Das Kontrollsignal spricht etwa für Kontamination und schwächt eine sichere Probenzuordnung; ohne weitere Kontrolle ist weder die echte Probe noch eine bestimmte Fehlerquelle eindeutig identifiziert. Das Gel hat die Produkte nur getrennt, Restriktion erzeugte Schnittstücke, PCR vervielfältigte DNA.\n\nTransfer: Das System hat die erwartete Positivreaktion nicht nachgewiesen. Ein technischer Ausfall bleibt möglich; die leere Probe beweist daher nicht, dass ihr Zielstück fehlt. Eine passende Fehlersuche und wieder funktionierende Kontrolle sind nötig.",
+      "expectedPerformanceEn": "X fits complete digestion of a linear 1000-bp precursor into 300 and 700 bp. Y fits PCR copies of a 300-bp target. The marker supports size assignment; matching positions do not establish identical X/Y sequence. The control signal suggests a possibility such as contamination and weakens confident sample attribution; neither a true sample result nor a particular cause is uniquely identified without more controls. The gel separated products, restriction generated fragments, PCR amplified DNA.\n\nTransfer: The system failed to show its expected positive reaction. Technical failure remains possible; therefore the empty sample does not prove target absence. Troubleshooting and a functioning positive control are required.",
+      "understandingFocusDe": "Restriktionsenzyme schneiden DNA an erkannten Stellen, PCR vervielfältigt einen durch Primer begrenzten Abschnitt, ein Gel trennt Fragmente nach Größe. Bandenpositionen zeigen relative Fragmentlängen unter gegebenen Bedingungen; gleiche Länge oder PCR-Signal beweist allein keine identische DNA-Sequenz.",
+      "understandingFocusEn": "Restriction enzymes cut DNA at recognized sites, PCR amplifies a primer-defined region and a gel separates fragments by size. Bands indicate relative fragment length under given conditions; equal length or a PCR signal alone proves no identical sequence."
+    }
+  ]
+}

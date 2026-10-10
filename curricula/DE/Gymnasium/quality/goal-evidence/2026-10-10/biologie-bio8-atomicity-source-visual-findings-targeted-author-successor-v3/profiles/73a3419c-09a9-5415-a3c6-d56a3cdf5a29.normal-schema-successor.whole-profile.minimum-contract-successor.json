@@ -1,0 +1,48 @@
+{
+  "archetype": "procedure",
+  "expectations": [
+    {
+      "id": "recognition-fragments",
+      "essentialUnderstandingDe": "Eine passende Erkennungssequenz bestimmt den Schnitt; Fragmente bleiben Teile der Ausgangs-DNA.",
+      "essentialUnderstandingEn": "A compatible recognition sequence determines cleavage; fragments remain parts of the original DNA.",
+      "observablePerformanceDe": "Erklärt die Erkennung, rekonstruiert Fragmente und begründet geänderte Ergebnisse bei einer verlorenen Erkennungsstelle.",
+      "observablePerformanceEn": "Explains recognition, reconstructs fragments, and reasons about changed results after losing a recognition site."
+    }
+  ],
+  "coverageExpectations": {
+    "requiredExpectationIds": [
+      "recognition-fragments"
+    ],
+    "alternativeExpectationGroups": [],
+    "minimumIndependentDemonstrations": 2,
+    "freshVariationRequired": true,
+    "independentTransferRequired": true
+  },
+  "variationAxes": [
+    {
+      "id": "changed-premise",
+      "textDe": "Verschiedene belegte Ausgangsbedingungen und eine neue kausal relevante Voraussetzung je Fall.",
+      "textEn": "Different demonstrated initial conditions and one fresh causally relevant premise in each case."
+    }
+  ],
+  "applicationCaseBriefs": [
+    {
+      "id": "restriction-single-site-linear",
+      "taskDemandDe": "Ein lineares DNA-Modell ist 1000 bp lang. Enzym R erkennt genau eine Stelle bei Position 400 und schneidet dort vollständig beide Stränge. Die Längen dienen nur dem Modell.\n\nErkläre die Sequenzabhängigkeit des Schnitts und leite die Fragmente begründet ab. Wird dabei DNA vervielfältigt?\n\nFrische Variation: Ein gleich langes Stück hat eine veränderte Erkennungssequenz, die R nicht erkennt. Was folgt?",
+      "taskDemandEn": "A linear DNA model is 1000 bp long. Enzyme R recognizes one site at position 400 and completely cuts both strands there. Lengths are teaching-model data.\n\nExplain sequence-dependent cutting and infer the fragments with reasons. Is DNA amplified?\n\nFresh variation: An equally long fragment has an altered recognition sequence not recognized by R. What follows?",
+      "expectedPerformanceDe": "R bindet an eine passende Erkennungssequenz und trennt dort die DNA. Die Stücke sind 400 und 600 bp lang und ergeben zusammen die 1000 bp des Ausgangsstücks. Spaltung erzeugt Fragmente aus vorhandener DNA; sie erzeugt keine zusätzlichen Kopien.\n\nTransfer: R schneidet dieses Stück an der genannten Stelle nicht; Länge allein bestimmt keine Erkennung. Unter den Modellangaben bleibt es 1000 bp lang.",
+      "expectedPerformanceEn": "R binds a compatible recognition sequence and separates the DNA there. Fragments are 400 and 600 bp and sum to the original 1000 bp. Cleavage splits existing DNA without producing additional copies.\n\nTransfer: R does not cut this site; length alone does not determine recognition. Given the model, the fragment remains 1000 bp.",
+      "understandingFocusDe": "Eine passende Erkennungssequenz bestimmt den Schnitt; Fragmente bleiben Teile der Ausgangs-DNA.",
+      "understandingFocusEn": "A compatible recognition sequence determines cleavage; fragments remain parts of the original DNA."
+    },
+    {
+      "id": "restriction-two-sites-linear",
+      "taskDemandDe": "Lineare 1200-bp-DNA hat zwei passende R-Stellen bei Position 300 und 900. Der Schnitt ist vollständig; weitere R-Stellen gibt es nicht.\n\nLeite Anzahl und Länge der Fragmente ab und erkläre, warum die Zahl der Schnittstellen zählt.\n\nFrische Variation: Jetzt ist nur die Stelle bei 900 so verändert, dass R sie nicht erkennt. Rekonstruiere das neue Ergebnis.",
+      "taskDemandEn": "Linear 1200-bp DNA has compatible R sites at positions 300 and 900. Digestion is complete with no other R sites.\n\nInfer number and length of fragments and explain why the number of cutting sites matters.\n\nFresh variation: Only the site at 900 is now altered so that R does not recognize it. Reconstruct the new result.",
+      "expectedPerformanceDe": "Zwei Schnitte an einer linearen DNA erzeugen drei Stücke: 300 bp bis zur ersten Stelle, 600 bp zwischen beiden Stellen und 300 bp bis zum Ende. Die gleiche Enzymart kann mehrere passende Sequenzen erkennen; sie wählt nicht zufällig eine Stelle.\n\nTransfer: Nur bei 300 wird geschnitten. Es entstehen 300 und 900 bp. Ein entfallener Erkennungsschnitt verbindet die zuvor getrennten letzten beiden Abschnitte im verbleibenden Stück.",
+      "expectedPerformanceEn": "Two cuts in linear DNA produce three fragments: 300 bp to the first site, 600 bp between sites, and 300 bp to the end. The same enzyme can recognize several compatible sequences instead of selecting a random position.\n\nTransfer: Only position 300 is cut, yielding 300 and 900 bp. Losing one recognition site leaves the previously separate final segments joined in the remaining fragment.",
+      "understandingFocusDe": "Eine passende Erkennungssequenz bestimmt den Schnitt; Fragmente bleiben Teile der Ausgangs-DNA.",
+      "understandingFocusEn": "A compatible recognition sequence determines cleavage; fragments remain parts of the original DNA."
+    }
+  ]
+}

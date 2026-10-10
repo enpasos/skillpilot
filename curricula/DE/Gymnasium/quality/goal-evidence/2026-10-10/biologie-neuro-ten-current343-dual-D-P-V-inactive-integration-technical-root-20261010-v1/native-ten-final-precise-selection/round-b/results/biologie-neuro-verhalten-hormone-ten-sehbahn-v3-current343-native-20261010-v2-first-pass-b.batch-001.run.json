@@ -1,0 +1,68 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+  "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-b",
+  "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b",
+  "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:5f899ef90d7d787016b793bd5759b94018936d91363d956b56524c1a174c02ce",
+  "bundleFingerprint": "sha256:bf675a3a035577dc523e0d6019953eefa573312865e76b07dc6684693bcd3b10",
+  "bookDigest": "sha256:748f0e114722bf66f8867040c6e625ab380f8b063c076ec797627748d8bd879d",
+  "provider": "OpenAI",
+  "model": "Codex GPT-6 agent",
+  "modelVersion": "Exact runtime revision not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-review-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:deaaa0b97806c124f6bd716e3804aa57a3f5aa0536e57e2dbba1cdf72c2acc9d",
+  "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "9499943f-89b7-54e3-9fe2-e90404beaa4a",
+    "2706c28e-1c21-50de-8a63-c450f5fe8b07",
+    "a7eee23c-a5d0-5101-937a-ca441764cabf",
+    "146d70e0-b494-59fa-b8b6-29da18b36893",
+    "97a15c19-c345-589e-8b3c-9f2b97a60095",
+    "5670e999-922c-5862-ba77-2d93667badd4",
+    "1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5",
+    "3d822550-c14a-52ee-9908-6bcb873afdd6",
+    "5dd66bfd-616f-5a2a-be7c-49aaf12581a0",
+    "5a5eeff5-ae97-5b5b-bc80-df03eba8e095"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:1eff2b604d1f9816520dc5865f465f672a4c252b7adbc984517f83641ff4d657"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:167deab3d4668e51ba24d4f6fe9395b22275c6294492cc67b33ca6edb3a35ace"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:a634ccf926b6dec959b167f150fe33ef6c895061309c371bbde10ea2c590dc19"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:5aa99182bfb756e265aebddd6e741a75816fc9e426cbe2d810f170f131e3cc13"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:5f899ef90d7d787016b793bd5759b94018936d91363d956b56524c1a174c02ce"
+    }
+  ],
+  "startedAt": "2026-10-10T11:45:21.025490+00:00",
+  "completedAt": "2026-10-10T11:52:37.797025+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:684935ec26f9dbf2c9047416567db0fd5033ccce9c1e28874d7d8ba21cb5d827",
+  "toolchainVersion": "skillpilot-normal-description-review-v2"
+}

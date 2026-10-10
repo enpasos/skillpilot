@@ -1,0 +1,224 @@
+{
+  "schemaVersion": 1,
+  "role": "AUTHOR bounded data experiment, not independent review",
+  "normalCompilerErrors": [],
+  "normalCompilerFindings": [],
+  "actualCompilableTargetIds": [
+    "e5a5dcd8-053c-55fd-b5c7-bba93779da53",
+    "eed5eda3-2daf-5d48-b935-23dadd622d9b"
+  ],
+  "prerequisiteOnlyIds": [
+    "36666b4a-97af-51fc-9983-56cdcc7a8229",
+    "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+    "7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+    "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+    "a8800c36-d13c-5f63-962c-cf18c3795c63",
+    "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+  ],
+  "actualCommittedScopeDerivationAndSelection": [
+    {
+      "inputFilterDiagnosticOnly": "NTG",
+      "actualDerivedNormalScope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "SekII"
+      },
+      "normalNTGViewScopeMatch": null
+    },
+    {
+      "inputFilterDiagnosticOnly": "NTG11",
+      "actualDerivedNormalScope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "SekII"
+      },
+      "normalNTGViewScopeMatch": null
+    },
+    {
+      "inputFilterDiagnosticOnly": "GK",
+      "actualDerivedNormalScope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "SekII",
+        "courseProfile": "GK"
+      },
+      "normalNTGViewScopeMatch": null
+    },
+    {
+      "inputFilterDiagnosticOnly": "LK",
+      "actualDerivedNormalScope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "SekII",
+        "courseProfile": "LK"
+      },
+      "normalNTGViewScopeMatch": null
+    },
+    {
+      "inputFilterDiagnosticOnly": "ALL",
+      "actualDerivedNormalScope": {
+        "schoolForm": "Gymnasium",
+        "jurisdiction": "DE-BY",
+        "stage": "SekII",
+        "courseProfile": "GK+LK"
+      },
+      "normalNTGViewScopeMatch": null
+    }
+  ],
+  "artificialDirectNTGRequestCanMatch": true,
+  "artificialRequestIsNotNormalCommittedScopeProof": true,
+  "genericBYStageViewMatchesUnrestrictedGKAndLK": [
+    {
+      "inputFilter": "GK",
+      "score": {
+        "scopeSize": 3,
+        "courseFallbackCount": 0,
+        "coursePreferenceRank": 0
+      }
+    },
+    {
+      "inputFilter": "LK",
+      "score": {
+        "scopeSize": 3,
+        "courseFallbackCount": 0,
+        "coursePreferenceRank": 0
+      }
+    }
+  ],
+  "actualNormalPlacementResults": [
+    {
+      "filters": [
+        "DE-BY"
+      ],
+      "syntheticProgramAnchors": [
+        {
+          "id": "synthetic:c436b994-8f44-5134-b9f8-0c9f5d6a5ba0:program-unit:by-ntg-j11-inactive-author-year",
+          "contains": []
+        },
+        {
+          "id": "synthetic:c436b994-8f44-5134-b9f8-0c9f5d6a5ba0:program-unit:by-ntg-inactive-author-track",
+          "contains": [
+            "synthetic:c436b994-8f44-5134-b9f8-0c9f5d6a5ba0:program-unit:by-ntg-j11-inactive-author-year"
+          ]
+        }
+      ],
+      "targetIdsAttachedThroughProposedPlacement": []
+    },
+    {
+      "filters": [
+        "DE-BY",
+        "SekII",
+        "GK"
+      ],
+      "syntheticProgramAnchors": [
+        {
+          "id": "synthetic:c436b994-8f44-5134-b9f8-0c9f5d6a5ba0:program-unit:by-ntg-j11-inactive-author-year",
+          "contains": []
+        },
+        {
+          "id": "synthetic:c436b994-8f44-5134-b9f8-0c9f5d6a5ba0:program-unit:by-ntg-inactive-author-track",
+          "contains": [
+            "synthetic:c436b994-8f44-5134-b9f8-0c9f5d6a5ba0:program-unit:by-ntg-j11-inactive-author-year"
+          ]
+        }
+      ],
+      "targetIdsAttachedThroughProposedPlacement": []
+    },
+    {
+      "filters": [
+        "DE-BY",
+        "NTG"
+      ],
+      "syntheticProgramAnchors": [],
+      "targetIdsAttachedThroughProposedPlacement": []
+    },
+    {
+      "filters": [
+        "DE-BY",
+        "NTG",
+        "J11"
+      ],
+      "syntheticProgramAnchors": [],
+      "targetIdsAttachedThroughProposedPlacement": []
+    }
+  ],
+  "unknownGenericPlacementContextDoesNotConstrainKnownFilters": true,
+  "actualCanonicalParentGuard": "Both current goals have explicit non-root canonical parents. Normal applyGoalPlacementProjection retains those authored parents and therefore attaches neither goal through the proposed placement, even though known BY/SekII/GK filters create empty programme anchors without checking the extra NTG/year context keys.",
+  "actualC11SourceFacet": {
+    "stage": [
+      "SekII"
+    ],
+    "courseProfile": [],
+    "officialCourseLevel": "unspecified",
+    "actualNormalSourceScoped": false
+  },
+  "normalSourceFiles": [
+    {
+      "path": "app/src/utils/authoring/compositionViewAuthoring.ts",
+      "sha256": "sha256:d7ee9ab670d2d73a3ed82700c2bca2dee3f2da6c8e9517120c5c45acac0d84a7",
+      "bytes": 22096
+    },
+    {
+      "path": "app/src/utils/authoring/canonicalAuthoring.ts",
+      "sha256": "sha256:3199f2803cf29646872eee927b6bad47831f09e519f33ca061efc022acc31e43",
+      "bytes": 12606
+    },
+    {
+      "path": "app/src/utils/compositionViewRuntime.ts",
+      "sha256": "sha256:ed65b0b28ecca6c9c17f8152440681af998b8dd193e7826316d5fd12a51c3fa9",
+      "bytes": 31680
+    },
+    {
+      "path": "app/src/utils/learnerCompositionScopeMatching.ts",
+      "sha256": "sha256:9aaf7a2da264244faa993f8e58c6dc1a4e12b61b5e23c3beeded1bb97fcc71a8",
+      "bytes": 4101
+    },
+    {
+      "path": "app/src/utils/goalPlacementProjection.ts",
+      "sha256": "sha256:bd52486a44aec069eb097d673e101ed3fd5c2700838634be0e3a11f0bdbe5a1c",
+      "bytes": 14068
+    },
+    {
+      "path": "app/src/utils/personalCurriculumStageScope.ts",
+      "sha256": "sha256:3871c47c0b59634b4fc0417da7a15d807cb26fa619b7e46f0b037a489ee20eec",
+      "bytes": 9065
+    },
+    {
+      "path": "app/src/goalTypes.ts",
+      "sha256": "sha256:39729848b30c743b52450c78bfc9158f7507abc2c4c80e325e1c9a9ae1e5c362",
+      "bytes": 4097
+    },
+    {
+      "path": "app/scripts/goalBookSourceAtlasInputs.ts",
+      "sha256": "sha256:0b6761c9847c1a39b49ebba597149b39e78fec791fa64f1179a9e8056fe1f0f5",
+      "bytes": 25775
+    },
+    {
+      "path": "app/scripts/applicabilityCompiler.ts",
+      "sha256": "sha256:50f4a09007cece8119c53f665b6442e028e4ffb3910fda7b377e60f8cb6c81dd",
+      "bytes": 56784
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/CompositionViewService.java",
+      "sha256": "sha256:9a6aa635641b463967211cbc149bfa23d4b3fa24ff78a5350b36c3f05dba3b96",
+      "bytes": 43524
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/LearnerService.java",
+      "sha256": "sha256:6feb500671761d9bf4d90e36aefb4517009d278a2b2193bee3307aafdd180bab",
+      "bytes": 529427
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/service/CurriculaService.java",
+      "sha256": "sha256:05f980bbb6f9156fba02f66a5365a09886d6b48b3c59eb126465c23082e0225f",
+      "bytes": 59095
+    }
+  ],
+  "exactRemainingBoundary": "No current normal committed selector or closed composition dimension expresses both NTG training direction and programme year11. Unknown placement filters fail closed, extra generic context keys do not constrain known filters, and existing authored non-root parents prevent this placement route. The normal source atlas author fallback remains limited to BB/BE; course-unspecified C11 has no scoped witness.",
+  "sourceMetadataEdited": false,
+  "currentPSelected": false,
+  "currentC11CourseHold": "HOLD",
+  "independentApproval": false,
+  "operativeWrites": [],
+  "runtimeOrUXChanges": []
+}

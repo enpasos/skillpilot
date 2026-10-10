@@ -1,0 +1,17 @@
+{
+  "argv": [
+    "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+    "app/scripts/buildGoalBookSourceAtlasInputs.ts",
+    "--config",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-seven-BY-source-two-direct-routes-author-20261010-v1/source-atlas/current517-bounded378.author.inputs.json"
+  ],
+  "capsuleRoot": "/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-P26-native-author/isolated-normal-capsule",
+  "actualExitCode": 1,
+  "completedAt": "2026-10-10T12:49:56.036416+00:00",
+  "durationSeconds": 1.1177521730423905,
+  "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-seven-BY-source-two-direct-routes-author-20261010-v1/checks/source-atlas-build.stdout.log",
+  "stderr": "node:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Generated atlas inputs must remain book-local: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-seven-BY-source-two-direct-routes-author-20261010-v1/source-atlas/generated/source-views/de-gym-chemie-bundesweit-source-de-bb-seki.view.json\n    at put (/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-P26-native-author/isolated-normal-capsule/app/scripts/goalBookSourceAtlasInputs.ts:309:12)\n    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-P26-native-author/isolated-normal-capsule/app/scripts/goalBookSourceAtlasInputs.ts:322:5)\n    at Array.map (<anonymous>)\n    at buildGoalBookSourceAtlasInputs (/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-P26-native-author/isolated-normal-capsule/app/scripts/goalBookSourceAtlasInputs.ts:314:82)\n    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-P26-native-author/isolated-normal-capsule/app/scripts/buildGoalBookSourceAtlasInputs.ts:11:88)\n    at Object.<anonymous> (/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-P26-native-author/isolated-normal-capsule/app/scripts/buildGoalBookSourceAtlasInputs.ts:17:124)\n    at Module._compile (node:internal/modules/cjs/loader:1521:14)\n    at Object.transformer (/home/enpasos/projects/skillpilot/app/node_modules/tsx/dist/register-D46fvsV_.cjs:3:1104)\n    at Module.load (node:internal/modules/cjs/loader:1266:32)\n    at Module._load (node:internal/modules/cjs/loader:1091:12) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '=='\n}\n\nNode.js v20.20.2\n",
+  "normalToolsUnchanged": true,
+  "role": "SOURCE/route AUTHOR machine checks; current independent review pending",
+  "activeWrites": []
+}

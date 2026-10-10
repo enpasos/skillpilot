@@ -1,0 +1,72 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-bio8-four-successors-nineteen-current396-native-20261010-v3-final",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-atomicity-source-visual-findings-targeted-author-successor-v3/native/nineteen-final-current-native.prerequisite-safe.batch.config.json",
+  "configDigest": "sha256:cdda288fa494033eb1b40601fa5e7fc5866cc5b5e26ea763ca3926c3d11666a5",
+  "goalIds": [
+    "0daa79f6-8f61-5506-98f9-65db83062ba8",
+    "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+    "73a3419c-09a9-5415-a3c6-d56a3cdf5a29",
+    "a3f483ce-126e-595c-999c-aa4d95106221",
+    "8eb86a82-122d-5cae-8f80-bb2850b29c2f",
+    "a515e493-6f90-5371-9470-28a0cf50f087",
+    "528a3cd3-4a4d-550d-939a-8dc8656446e4",
+    "374e6de5-0747-57cb-99e3-e50ccb371124",
+    "9540a95d-5ca5-527c-918f-d702e99be07a",
+    "8f6933b1-6e02-5512-acf2-a90a7fb9cb75",
+    "ceb54223-197c-5289-a9c6-19358912e144",
+    "27b22c33-908c-5fa8-9d9f-a08aff8da143",
+    "9b40dae5-6d89-5714-ac96-373e72a7045e",
+    "4a8a6cec-a2cc-56fe-b3ab-7ca017f640cf",
+    "632b6042-0c0e-5bb6-a879-f03ad4be6eee",
+    "5c7f0085-7ca8-5a67-bc87-57319acec749",
+    "430b2b73-641a-5122-bb6d-162b0d1eaf2d",
+    "80235254-ca58-5ba0-9319-b842350d6eb2",
+    "7d2da9ab-aed0-562b-a99a-840825fca009"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 396,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-atomicity-source-visual-findings-targeted-author-successor-v3/native/whole396-final-fossil-image.normal.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-atomicity-source-visual-findings-targeted-author-successor-v3/candidate/whole483-final-fossil-image-substantive-successor.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:c7826ad2d72d43fa5e262d178c1b70be6a2611a91d37e6b0ae55ae48cf1bb143"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:79af21696ed0c5a282c896d824719da252b41f675d52cd62fbd97c21e85e3010",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:c44804315a52f8152b18f48ec8020d94e1a2d567f78abd61048faac9f73f59d4",
+    "reviewInputFingerprint": "sha256:a66673d8d7df36ca00e6d21684d29dec6aa97d4929618fbfa388d99f18ccb904",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-bio8-four-successors-nineteen-current396-native-20261010-v3-final-a",
+        "campaignDigest": "sha256:9f25441a17bca92565b44b21bd5671b358130af216ce5cb80355cece466e83c2",
+        "roundId": "biologie-bio8-four-successors-nineteen-current396-native-20261010-v3-final-first-pass-a",
+        "independenceGroupId": "biologie-bio8-four-successors-nineteen-current396-native-20261010-v3-final-independent-a",
+        "batchId": "biologie-bio8-four-successors-nineteen-current396-native-20261010-v3-final-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:c561b349fb7457463bbdf9a1132c275d95a4ac88af322b77fb548d0506382d6c"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-bio8-four-successors-nineteen-current396-native-20261010-v3-final-b",
+        "campaignDigest": "sha256:bcd269c7ef03ab688aebbc722e1e6492078a1e669e7ffe9c665ec540fad7e07f",
+        "roundId": "biologie-bio8-four-successors-nineteen-current396-native-20261010-v3-final-first-pass-b",
+        "independenceGroupId": "biologie-bio8-four-successors-nineteen-current396-native-20261010-v3-final-independent-b",
+        "batchId": "biologie-bio8-four-successors-nineteen-current396-native-20261010-v3-final-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:b980efad07fe45e46f9fda32efbc6cc2b75ef22e1ffd315bbdd88aa01c55352d"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

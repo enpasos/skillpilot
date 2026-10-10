@@ -111,6 +111,32 @@ interface GrandfatheredOccurrence {
  * the check until the occurrence is reviewed again.
  */
 const grandfatheredOccurrences: GrandfatheredOccurrence[] = [
+  // Preserve the exact licensing wording in three sealed, inactive B008 author records.
+  // These are historical records; current authored prose still uses Skill-Landschaft.
+  {
+    ruleId: 'TRM-001',
+    path: 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-five-assessments-sc01-sum-gate-author-successor-20261010-v1/README.md',
+    line: 38,
+    column: 24,
+    found: 'Wissenslandschaft',
+    lineSha256: '879fa08dc97bd7343131e5f9c22cad49b0e068a87750666bbec8c0b3b4fe8f47',
+  },
+  {
+    ruleId: 'TRM-001',
+    path: 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-modelportfolio-a01-targeted-author-successor-20261010-v1/README.md',
+    line: 18,
+    column: 13,
+    found: 'Wissenslandschaft',
+    lineSha256: '0ae2b3144ab44fc64043a0c3f85bbde2afbe1beeb234f4b4c9e3c8bdbc032d24',
+  },
+  {
+    ruleId: 'TRM-001',
+    path: 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-phase-local-inquiry-model-society-terminal-author-20261010-v1/README.md',
+    line: 47,
+    column: 24,
+    found: 'Wissenslandschaft',
+    lineSha256: '1ea2be380922657b51b2d7ace3fb39e3564d47ada17e6bc73da4c17fa8017e17',
+  },
   // Preserve four exact actual submitted child-image prompts and their literal dated preparation inputs.
   // Provenance reviewed in biologie-two-child-historical-generator-input-terminology-independent-b-v1.
   {

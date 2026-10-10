@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/finalize_stoff8_current_native_v2.py", line 10, in <module>
+    rows=read(P/'inputs/eight-current-raster-bindings.neutral.json')['records'];ids=[r['goalId'] for r in rows];source=read(P/'sources/eight-source-objects-fifty-witnesses.exact.json');assert len(source['wholeOriginalCurrentSourceRows'])==8;assert sum(len(x['allOriginalDirectSourceWitnesses']) for x in source['wholeOriginalCurrentSourceRows'])==50;assert source['unchangedExistingSourceRowsWithoutSeparatePassageObjects']==25
+                                                                                                                                                                                                                                                                                                                                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

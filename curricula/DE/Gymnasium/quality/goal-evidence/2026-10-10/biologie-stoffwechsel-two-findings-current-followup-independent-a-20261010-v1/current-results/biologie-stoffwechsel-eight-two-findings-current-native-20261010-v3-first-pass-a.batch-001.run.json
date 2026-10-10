@@ -1,0 +1,61 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+  "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-a",
+  "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a",
+  "batchId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:6a866c2ab56a1fbd5f233493a93c7e60bd1439f02864d97cb9a16475ba6daa02",
+  "bundleFingerprint": "sha256:231f3f21d18f76be785a21f8adaaeb46886e30463364bc8444ffeebc15fe30f2",
+  "bookDigest": "sha256:7a31e525a17940f06d860e2429f31c6626f424a2cdabc9f4ecef16654a556d5d",
+  "provider": "OpenAI Codex",
+  "model": "GPT-6 Codex; precise runtime model version not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:c93368f33a073ef209e0db05c3fb61c54979a70d0cb3bd1d586efbc1ed58b2cd",
+  "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "1c3470ae-83f8-52e9-98ae-b0a712755b66",
+    "8e2244e1-8616-5f24-859f-8e10df1c887b",
+    "e467ee54-7773-595f-ac1c-a60a5b7be2cf",
+    "cdd2247b-0ac6-5457-a5b9-26c6d0139906",
+    "db9f83a4-90b0-5601-a734-46b40a1cf0e4",
+    "e25ad42f-8314-5ee7-9440-765ee18773f9",
+    "2c60c8ad-04d3-5395-8a27-400646eb1612",
+    "39ba4385-0144-5e20-ba11-e3714756583b"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:6a866c2ab56a1fbd5f233493a93c7e60bd1439f02864d97cb9a16475ba6daa02"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:74e83cb8d564eac9a763303c9de909e154c0faf0521523c92a773d80db1e5eb3"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:6c76476f235ae86ec6f95cf74be8d51b91e1932ff704a0912ace3056e107b672"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:f9f4c7c39268c422c3e794c6bf36077bc34922d2d220c053c6a344c9b936e660"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    }
+  ],
+  "startedAt": "2026-10-10T09:57:38.605700+00:00",
+  "completedAt": "2026-10-10T09:57:38.608816+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:f56fe0a33c56de7952d3d65d2e19b260f393c450dd2159b7787b813dc010f050",
+  "toolchainVersion": "goal-description-understanding-evidence-v2"
+}

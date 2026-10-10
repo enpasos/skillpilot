@@ -1,0 +1,64 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-biotech-evolution-eleven-current353-native-20261010-v1",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-biotechnologie-evolution-eight-current353-source-raster-native-technical-preparation-20261010-v1/native/eleven-current-native.prerequisite-safe.batch.config.json",
+  "configDigest": "sha256:33147ef3a5235d99e13fce056911512c934da30ec445a8b901522252bd10447f",
+  "goalIds": [
+    "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+    "523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
+    "a515e493-6f90-5371-9470-28a0cf50f087",
+    "d11b3b18-deec-5d1a-bff6-512cddf595a2",
+    "8f6933b1-6e02-5512-acf2-a90a7fb9cb75",
+    "528a3cd3-4a4d-550d-939a-8dc8656446e4",
+    "a3f483ce-126e-595c-999c-aa4d95106221",
+    "27b22c33-908c-5fa8-9d9f-a08aff8da143",
+    "9b40dae5-6d89-5714-ac96-373e72a7045e",
+    "4a8a6cec-a2cc-56fe-b3ab-7ca017f640cf",
+    "430b2b73-641a-5122-bb6d-162b0d1eaf2d"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 394,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-biotechnologie-evolution-eight-current353-source-raster-native-technical-preparation-20261010-v1/native/whole394-after.normal.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-biotechnologie-evolution-eight-current353-source-raster-native-technical-preparation-20261010-v1/candidate/whole479-only-eight-author-deltas.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:b5e45c997a073b2c2b9a66842efee70450dbd134850780aa642fbefb3158c05b"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:b34bb97399ce328fff0761ec40a7ca3b45b1d5dcb05856c4f8f525cf6f251553",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:a302488215f51cecdc22cfa8915397b99576be59f144e72269739930500d32e9",
+    "reviewInputFingerprint": "sha256:4d9fc7ff73883ae256803e2078154b7602d191c094a22980f8533dc20a3c829b",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-biotech-evolution-eleven-current353-native-20261010-v1-a",
+        "campaignDigest": "sha256:62fb3e945c14a1671ef1dc4a6d5595d004169357de1f656f6fbd38e105cec450",
+        "roundId": "biologie-biotech-evolution-eleven-current353-native-20261010-v1-first-pass-a",
+        "independenceGroupId": "biologie-biotech-evolution-eleven-current353-native-20261010-v1-independent-a",
+        "batchId": "biologie-biotech-evolution-eleven-current353-native-20261010-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:374d48a0cb60b92bebed8597badc9c41de4ef04b56ec80e20f8807690c24ced3"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-biotech-evolution-eleven-current353-native-20261010-v1-b",
+        "campaignDigest": "sha256:ced9e7a27f5b4cc2913b1793f1cfcc7d64f444c9b09ae11419ba5ef95855be2b",
+        "roundId": "biologie-biotech-evolution-eleven-current353-native-20261010-v1-first-pass-b",
+        "independenceGroupId": "biologie-biotech-evolution-eleven-current353-native-20261010-v1-independent-b",
+        "batchId": "biologie-biotech-evolution-eleven-current353-native-20261010-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:ec1162b02d9f1e7bbabde14614dedd520e1ee021eb800f28ef1aec3ab3e960e1"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

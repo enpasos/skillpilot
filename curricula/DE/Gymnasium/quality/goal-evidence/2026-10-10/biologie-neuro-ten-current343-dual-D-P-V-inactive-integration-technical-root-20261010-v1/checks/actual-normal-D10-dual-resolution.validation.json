@@ -1,0 +1,784 @@
+{
+  "schemaVersion": 1,
+  "normalD10DualSummary": {
+    "schemaVersion": 1,
+    "validationContract": "goal-description-dual-round-v1",
+    "automaticAcceptance": false,
+    "bundleFingerprint": "sha256:bf675a3a035577dc523e0d6019953eefa573312865e76b07dc6684693bcd3b10",
+    "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+    "goalCount": 10,
+    "rounds": {
+      "first": {
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-a",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-a",
+        "runIds": [
+          "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001"
+        ],
+        "providers": [
+          "OpenAI Codex"
+        ],
+        "modelIdentities": [
+          "OpenAI Codex::GPT-6 Codex; precise runtime model version not exposed::(unspecified-version)"
+        ]
+      },
+      "second": {
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-b",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-b",
+        "runIds": [
+          "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001"
+        ],
+        "providers": [
+          "OpenAI"
+        ],
+        "modelIdentities": [
+          "OpenAI::Codex GPT-6 agent::Exact runtime revision not exposed"
+        ]
+      }
+    },
+    "diversity": {
+      "policy": "report_only",
+      "sharedProviders": [],
+      "sharedModelIdentities": [],
+      "distinctProviderOrModel": true,
+      "policySatisfied": true
+    },
+    "counts": {
+      "exactAgreement": 0,
+      "disagreement": 10,
+      "unavailable": 0,
+      "requiresSynthesis": 10
+    },
+    "goals": [
+      {
+        "goalId": "9499943f-89b7-54e3-9fe2-e90404beaa4a",
+        "firstRecordId": "bio10-current-v3-A.9499943f-89b7-54e3-9fe2-e90404beaa4a",
+        "secondRecordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.9499943f.D",
+        "firstRunId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "secondRunId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "2706c28e-1c21-50de-8a63-c450f5fe8b07",
+        "firstRecordId": "bio10-current-v3-A.2706c28e-1c21-50de-8a63-c450f5fe8b07",
+        "secondRecordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.2706c28e.D",
+        "firstRunId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "secondRunId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "a7eee23c-a5d0-5101-937a-ca441764cabf",
+        "firstRecordId": "bio10-current-v3-A.a7eee23c-a5d0-5101-937a-ca441764cabf",
+        "secondRecordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.a7eee23c.D",
+        "firstRunId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "secondRunId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "146d70e0-b494-59fa-b8b6-29da18b36893",
+        "firstRecordId": "bio10-current-v3-A.146d70e0-b494-59fa-b8b6-29da18b36893",
+        "secondRecordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.146d70e0.D",
+        "firstRunId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "secondRunId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "97a15c19-c345-589e-8b3c-9f2b97a60095",
+        "firstRecordId": "bio10-current-v3-A.97a15c19-c345-589e-8b3c-9f2b97a60095",
+        "secondRecordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.97a15c19.D",
+        "firstRunId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "secondRunId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "5670e999-922c-5862-ba77-2d93667badd4",
+        "firstRecordId": "bio10-current-v3-A.5670e999-922c-5862-ba77-2d93667badd4",
+        "secondRecordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.5670e999.D",
+        "firstRunId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "secondRunId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5",
+        "firstRecordId": "bio10-current-v3-A.1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5",
+        "secondRecordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.1f3cdf59.D",
+        "firstRunId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "secondRunId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "3d822550-c14a-52ee-9908-6bcb873afdd6",
+        "firstRecordId": "bio10-current-v3-A.3d822550-c14a-52ee-9908-6bcb873afdd6",
+        "secondRecordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.3d822550.D",
+        "firstRunId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "secondRunId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "5dd66bfd-616f-5a2a-be7c-49aaf12581a0",
+        "firstRecordId": "bio10-current-v3-A.5dd66bfd-616f-5a2a-be7c-49aaf12581a0",
+        "secondRecordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.5dd66bfd.D",
+        "firstRunId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "secondRunId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "5a5eeff5-ae97-5b5b-bc80-df03eba8e095",
+        "firstRecordId": "bio10-current-v3-A.5a5eeff5-ae97-5b5b-bc80-df03eba8e095",
+        "secondRecordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.5a5eeff5.D",
+        "firstRunId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "secondRunId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      }
+    ]
+  },
+  "actualWholeIndependentReviewsAndResolutionChecks": [
+    {
+      "goalId": "9499943f-89b7-54e3-9fe2-e90404beaa4a",
+      "firstBinding": {
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-a",
+        "campaignDigest": "sha256:a27fc9b81aabc2de06a0ac2066c40ae0dc940b770cec00979d8ab9da85622770",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-a",
+        "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+        "goalReviewContextFingerprint": "sha256:1f90eb91a1c60f581e99dbcec31c07183a2952c2b3e6cfeae3b5b80bdf65ccd8",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "runId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "runManifestDigest": "sha256:9c1a5e506c95bbfd6884728f00fd15f1e08a1d3e18bcae7a564ef5eb84d314a4",
+        "resultsDigest": "sha256:34fffcef66d433dc064debe27e7545aa1e896f9b7a9e188962d5ac100f30f415",
+        "recordId": "bio10-current-v3-A.9499943f-89b7-54e3-9fe2-e90404beaa4a",
+        "recordDigest": "sha256:927ece7de198e63cf16cd552feb8e577f1a99797f7c1a2f12b3535469f67d977"
+      },
+      "secondBinding": {
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-b",
+        "campaignDigest": "sha256:fd0b057f98d9ef5811bf641e9d1203a469faeeb85594d2f839cc5177c605c111",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-b",
+        "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+        "goalReviewContextFingerprint": "sha256:1f90eb91a1c60f581e99dbcec31c07183a2952c2b3e6cfeae3b5b80bdf65ccd8",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b.batch-001",
+        "runId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+        "runManifestDigest": "sha256:c5e4707dd97098ac68ecd6bf120e85d5384c7724015d148e5c592c48d0d752a7",
+        "resultsDigest": "sha256:684935ec26f9dbf2c9047416567db0fd5033ccce9c1e28874d7d8ba21cb5d827",
+        "recordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.9499943f.D",
+        "recordDigest": "sha256:6344feecfb902acf83f608d0c81e5c6c00b734aeead361aa4ff1b3f3beb7742e"
+      },
+      "firstWholeRationale": "Controlled optics/mechanics distinguish physical model from living receptor/perception; eye/ear structure-function comparison coherent. Tatsächliche aktuelle ganze HTML/PDF-Seite und kanonischer DE/EN-/P-Kontext geprüft: präziser Leistungsoperator, eigener Transfer, keine Beschreibungskorrektur erforderlich. Die begrenzte Quellenpräzisierung ist keine neue Kursfreigabe.",
+      "secondWholeRationale": "KEEP: Erläutern ausgewählter Struktur-Funktions-Beziehungen ist verständlich, prüfbar und DE/EN gleich. Eigene Modellplanung macht die Erklärung beobachtbar, erweitert sie nicht zur behaupteten tatsächlichen Versuchsdurchführung. Zwei Organmodelle sind die authored Auswahl; HE nur ein Organ wird dadurch nicht als offizielle Doppelpflicht ausgegeben.",
+      "firstUnderstanding": {
+        "essentialUnderstandingDe": "Auge und Ohr verbinden reizaufnehmende Strukturen mit jeweils unterschiedlichen mechanischen und nervösen Funktionen; Reizleitung und Transduktion sind getrennte Schritte.",
+        "essentialUnderstandingEn": "Eye and ear link stimulus-receiving structures with distinct mechanical and neural functions; transmission and transduction are separate stages.",
+        "observablePerformanceDe": "Erklärt Linse, Netzhaut und Sehnerv sowie Trommelfell, Gehörknöchelchen, Haarzellen und afferenten Nerv anhand zweier kontrollierter Organmodelle.",
+        "observablePerformanceEn": "Explains lens, retina and optic nerve alongside eardrum, ossicles, hair cells and the afferent nerve using two controlled organ models.",
+        "transferExpectationDe": "Begründet bei veränderter Blendenöffnung oder einer blockierten Übertragung, welche Modellbeobachtung sich ändern kann und welche reale Wahrnehmung damit nicht bewiesen ist.",
+        "transferExpectationEn": "For a changed aperture or blocked transmission, justifies which model observation may change and which real perception the model does not establish."
+      },
+      "secondUnderstanding": {
+        "essentialUnderstandingDe": "Strukturen ausgewählter Sinnesorgane ermöglichen mechanische Reizaufnahme und neuronale Transduktion; ein physikalisches Modell kann nur seine tatsächlich enthaltenen Funktionen erklären.",
+        "essentialUnderstandingEn": "Structures of selected sense organs enable mechanical reception and neural transduction; a physical model can explain only functions actually included in it.",
+        "observablePerformanceDe": "Die lernende Person erläutert am Auge Optik und Netzhaut sowie am Ohr Membran, Hebel und Haarzellen und plant kontrollierte Änderungen an Linsen- und Membranmodellen mit begründeter Messgröße.",
+        "observablePerformanceEn": "The learner explains optics and retina in the eye and membrane, lever and hair cells in the ear, and plans controlled changes in lens and membrane models with a justified measurement.",
+        "transferExpectationDe": "Sie trennt bei veränderter Helligkeit einen helleren unscharfen Fleck von verbessertem Fokus und unterscheidet bessere mechanische Übertragung eines Ohrmodells von nachgewiesener neuronaler Hörleistung.",
+        "transferExpectationEn": "They distinguish a brighter blurred spot from improved focus when brightness changes and separate stronger mechanical transmission in an ear model from demonstrated neural hearing performance."
+      },
+      "selectedSecondUnderstandingUnchanged": true,
+      "normalValidation": {
+        "errors": [],
+        "strictDescriptionComplete": true
+      },
+      "sourceAdjudicationSeparate": true,
+      "humanApproval": false
+    },
+    {
+      "goalId": "2706c28e-1c21-50de-8a63-c450f5fe8b07",
+      "firstBinding": {
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-a",
+        "campaignDigest": "sha256:a27fc9b81aabc2de06a0ac2066c40ae0dc940b770cec00979d8ab9da85622770",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-a",
+        "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+        "goalReviewContextFingerprint": "sha256:3111820d84a6fa8c96a28de6ef00ab2798d33cae03565c3735a56e8d3fce1fdd",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "runId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "runManifestDigest": "sha256:9c1a5e506c95bbfd6884728f00fd15f1e08a1d3e18bcae7a564ef5eb84d314a4",
+        "resultsDigest": "sha256:34fffcef66d433dc064debe27e7545aa1e896f9b7a9e188962d5ac100f30f415",
+        "recordId": "bio10-current-v3-A.2706c28e-1c21-50de-8a63-c450f5fe8b07",
+        "recordDigest": "sha256:fe93099ee85d0c4fe38813c3cb38790d3fde832ed20649fe04e1afb1eb46da4a"
+      },
+      "secondBinding": {
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-b",
+        "campaignDigest": "sha256:fd0b057f98d9ef5811bf641e9d1203a469faeeb85594d2f839cc5177c605c111",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-b",
+        "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+        "goalReviewContextFingerprint": "sha256:3111820d84a6fa8c96a28de6ef00ab2798d33cae03565c3735a56e8d3fce1fdd",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b.batch-001",
+        "runId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+        "runManifestDigest": "sha256:c5e4707dd97098ac68ecd6bf120e85d5384c7724015d148e5c592c48d0d752a7",
+        "resultsDigest": "sha256:684935ec26f9dbf2c9047416567db0fd5033ccce9c1e28874d7d8ba21cb5d827",
+        "recordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.2706c28e.D",
+        "recordDigest": "sha256:9d2655e42b9ec311fc8075cdcc755811eed74496c3ffdcf36a8db3823c972529"
+      },
+      "firstWholeRationale": "Network/module processing and attention alternative without diagnostic localization; changed connection is fresh transfer. Tatsächliche aktuelle ganze HTML/PDF-Seite und kanonischer DE/EN-/P-Kontext geprüft: präziser Leistungsoperator, eigener Transfer, keine Beschreibungskorrektur erforderlich. Die begrenzte Quellenpräzisierung ist keine neue Kursfreigabe.",
+      "secondWholeRationale": "KEEP: DE und EN verlangen Deutung statt bloßer Nennung eines Gehirnzentrums. Netzwerkunterbrechung und Gedächtnissituation operationalisieren dieselbe datenbegrenzte funktionale Deutung. Neue Kanten-/Aufmerksamkeitsvarianten gehen über Wiederholung der Musterlösung hinaus. Der breite HE-LK-Überblick belegt nicht jede detaillierte Netzwerk- oder GK-Einstufung.",
+      "firstUnderstanding": {
+        "essentialUnderstandingDe": "Verbunden arbeitende Hirnareale ermöglichen Erkennen, Handlungsplanung und Gedächtnis; ein unterbrochener Knoten und eine unterbrochene Verbindung können verschiedene Leistungen beeinträchtigen.",
+        "essentialUnderstandingEn": "Connected brain areas support recognition, action planning and memory; blocking a node and blocking a connection may impair different performances.",
+        "observablePerformanceDe": "Deutet die vorgegebenen Netzwerk- und Gedächtnisbefunde mit kausalen Ablaufskizzen und unterscheidet Erkennensausfall von ausbleibender Ausführung.",
+        "observablePerformanceEn": "Interprets the supplied network and memory observations with causal flow diagrams and distinguishes recognition failure from missing execution.",
+        "transferExpectationDe": "Vergleicht eine neue Verbindungsunterbrechung oder eine Aufmerksamkeitserklärung, ohne aus Modellbefunden eine individuelle neurologische Diagnose abzuleiten.",
+        "transferExpectationEn": "Compares a new connection interruption or an attention explanation without deriving an individual neurological diagnosis from model findings."
+      },
+      "secondUnderstanding": {
+        "essentialUnderstandingDe": "Gehirnleistungen beruhen auf kooperierenden Verarbeitungsschritten; erhaltene Teilfunktionen und gezielte Unterbrechungen begrenzen die Zuordnung zu Netzwerken.",
+        "essentialUnderstandingEn": "Brain performance depends on cooperating processing stages; preserved components and stipulated interruptions constrain what can be attributed to networks.",
+        "observablePerformanceDe": "Die lernende Person deutet das S-R-P-C-Modell über Wahrnehmen, Erkennen, Planen und Ausführen und trennt beim H-Modell neue episodische Speicherung von Aufmerksamkeit und vorhandener Erinnerung.",
+        "observablePerformanceEn": "The learner interprets the S-R-P-C model through perceiving, recognizing, planning and executing, and distinguishes new episodic encoding from attention and existing memory in the H model.",
+        "transferExpectationDe": "Sie begründet die Wirkung einer neuen P-C-Unterbrechung und prüft bei gemeinsam schlechter neuer und vertrauter Leistung die Alternative Ablenkung anhand eines kontrollierten Vergleichs.",
+        "transferExpectationEn": "They justify the consequence of a new P-C interruption and examine distraction as an alternative when both new and familiar performance decline, using a controlled comparison."
+      },
+      "selectedSecondUnderstandingUnchanged": true,
+      "normalValidation": {
+        "errors": [],
+        "strictDescriptionComplete": true
+      },
+      "sourceAdjudicationSeparate": true,
+      "humanApproval": false
+    },
+    {
+      "goalId": "a7eee23c-a5d0-5101-937a-ca441764cabf",
+      "firstBinding": {
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-a",
+        "campaignDigest": "sha256:a27fc9b81aabc2de06a0ac2066c40ae0dc940b770cec00979d8ab9da85622770",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-a",
+        "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+        "goalReviewContextFingerprint": "sha256:88383ca43424b9f2aa39626d31526fdfdbb5a3a20051880ef5cb03933eaad240",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "runId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "runManifestDigest": "sha256:9c1a5e506c95bbfd6884728f00fd15f1e08a1d3e18bcae7a564ef5eb84d314a4",
+        "resultsDigest": "sha256:34fffcef66d433dc064debe27e7545aa1e896f9b7a9e188962d5ac100f30f415",
+        "recordId": "bio10-current-v3-A.a7eee23c-a5d0-5101-937a-ca441764cabf",
+        "recordDigest": "sha256:07d53a0dfc1d718b1a16f38b4f5d7ec7a1c85d3afdd6b68b2f1b93a37874cce2"
+      },
+      "secondBinding": {
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-b",
+        "campaignDigest": "sha256:fd0b057f98d9ef5811bf641e9d1203a469faeeb85594d2f839cc5177c605c111",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-b",
+        "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+        "goalReviewContextFingerprint": "sha256:88383ca43424b9f2aa39626d31526fdfdbb5a3a20051880ef5cb03933eaad240",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b.batch-001",
+        "runId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+        "runManifestDigest": "sha256:c5e4707dd97098ac68ecd6bf120e85d5384c7724015d148e5c592c48d0d752a7",
+        "resultsDigest": "sha256:684935ec26f9dbf2c9047416567db0fd5033ccce9c1e28874d7d8ba21cb5d827",
+        "recordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.a7eee23c.D",
+        "recordDigest": "sha256:ec3c8f40343cbc2b13de4c5661dec2be9d2da2e854e6a7dda7c70f11d6f42baf"
+      },
+      "firstWholeRationale": "Major/internal brain overview and cooperative functions coherent, distinct from detailed processing interpretation. Tatsächliche aktuelle ganze HTML/PDF-Seite und kanonischer DE/EN-/P-Kontext geprüft: präziser Leistungsoperator, eigener Transfer, keine Beschreibungskorrektur erforderlich. Die begrenzte Quellenpräzisierung ist keine neue Kursfreigabe.",
+      "secondWholeRationale": "KEEP: Überblick und Funktionszuordnung sind in beiden Sprachen gleich. Groblage und typische Beiträge sind gemeinsam eine funktionale Karte; Handlungsvarianten erfordern Zusammenarbeit statt Wortliste. Innerer Thalamus/Hypothalamus/Hippocampus sind begrenzte authored Vertiefung. HE Q2.4 LK ist der passende Überblick, keine Zulassung aller Kursprofile.",
+      "firstUnderstanding": {
+        "essentialUnderstandingDe": "Großhirn, Kleinhirn, Hirnstamm und ausgewählte innere Bereiche haben unterschiedliche Beiträge, die bei alltäglichen Leistungen zusammenwirken.",
+        "essentialUnderstandingEn": "Cerebrum, cerebellum, brainstem and selected inner regions contribute differently while cooperating in everyday performance.",
+        "observablePerformanceDe": "Ordnet Hauptbereiche räumlich richtig und erklärt Wahrnehmung, Koordination, grundlegende Regulation sowie Thalamus, Hypothalamus und Hippocampus auf Überblicksniveau.",
+        "observablePerformanceEn": "Locates the main regions correctly and gives an overview of perception, coordination, basic regulation, thalamus, hypothalamus and hippocampus.",
+        "transferExpectationDe": "Erläutert für eine neue Hunger- oder Navigationssituation passende regionale Beiträge, ohne eine gesamte Leistung ausschließlich einem Zentrum zuzuweisen.",
+        "transferExpectationEn": "Explains relevant regional contributions for a new hunger or navigation situation without assigning the entire performance exclusively to one center."
+      },
+      "secondUnderstanding": {
+        "essentialUnderstandingDe": "Gehirnregionen haben typische funktionale Schwerpunkte und arbeiten zusammen; ihre grobe räumliche Lage bestimmt keine exklusive Zuordnung komplexer Handlungen.",
+        "essentialUnderstandingEn": "Brain regions have typical functional emphases and cooperate; their broad spatial locations do not establish exclusive assignment of complex actions.",
+        "observablePerformanceDe": "Die lernende Person ordnet Großhirn, Kleinhirn und Hirnstamm in der Übersicht und erklärt beim Radfahren kooperierende Wahrnehmung, Koordination und autonome Regulation sowie Funktionen innerer Strukturen.",
+        "observablePerformanceEn": "The learner places cerebrum, cerebellum and brainstem in an overview and explains cooperating perception, coordination and autonomic regulation during cycling, alongside functions of internal structures.",
+        "transferExpectationDe": "Sie erklärt beim stillen Lesen oder bei neuer Navigation zur Nahrung eine andere Zusammenarbeit und grenzt hippocampale Beteiligung an neuer episodischer Erinnerung von exklusiver Speicherung aller Erinnerungen ab.",
+        "transferExpectationEn": "They explain a different pattern of cooperation during silent reading or new navigation to food, and distinguish hippocampal involvement in new episodic memory from exclusive storage of all memories."
+      },
+      "selectedSecondUnderstandingUnchanged": true,
+      "normalValidation": {
+        "errors": [],
+        "strictDescriptionComplete": true
+      },
+      "sourceAdjudicationSeparate": true,
+      "humanApproval": false
+    },
+    {
+      "goalId": "146d70e0-b494-59fa-b8b6-29da18b36893",
+      "firstBinding": {
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-a",
+        "campaignDigest": "sha256:a27fc9b81aabc2de06a0ac2066c40ae0dc940b770cec00979d8ab9da85622770",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-a",
+        "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+        "goalReviewContextFingerprint": "sha256:823a890570dc20324416afff486036668a12b0dcdca00d3be88371daa902223f",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "runId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "runManifestDigest": "sha256:9c1a5e506c95bbfd6884728f00fd15f1e08a1d3e18bcae7a564ef5eb84d314a4",
+        "resultsDigest": "sha256:34fffcef66d433dc064debe27e7545aa1e896f9b7a9e188962d5ac100f30f415",
+        "recordId": "bio10-current-v3-A.146d70e0-b494-59fa-b8b6-29da18b36893",
+        "recordDigest": "sha256:858b423c08ea2e776ff2188b1c7c6993925a6eb9b105372767bc598d86006eab"
+      },
+      "secondBinding": {
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-b",
+        "campaignDigest": "sha256:fd0b057f98d9ef5811bf641e9d1203a469faeeb85594d2f839cc5177c605c111",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-b",
+        "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+        "goalReviewContextFingerprint": "sha256:823a890570dc20324416afff486036668a12b0dcdca00d3be88371daa902223f",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b.batch-001",
+        "runId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+        "runManifestDigest": "sha256:c5e4707dd97098ac68ecd6bf120e85d5384c7724015d148e5c592c48d0d752a7",
+        "resultsDigest": "sha256:684935ec26f9dbf2c9047416567db0fd5033ccce9c1e28874d7d8ba21cb5d827",
+        "recordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.146d70e0.D",
+        "recordDigest": "sha256:2c20ef192dcbbecbaf743f0ac4d88b162c3093dab88c24f4053f78a2462208af"
+      },
+      "firstWholeRationale": "Correct partial crossing and hemifield interruption inference; selected v2 retinal focus at optic-nerve exit remains actual V hold. Tatsächliche aktuelle ganze HTML/PDF-Seite und kanonischer DE/EN-/P-Kontext geprüft: präziser Leistungsoperator, eigener Transfer, keine Beschreibungskorrektur erforderlich. Die begrenzte Quellenpräzisierung ist keine neue Kursfreigabe.",
+      "secondWholeRationale": "KEEP: Der knappe DE/EN-Text benennt dieselbe erklärbare Hauptbahn. Kreuzungslogik und Relais sind gemeinsam ein kausales Wegmodell. Beide vollständigen Fälle und die Gegenfeld-/Tractusvarianten liefern getrennte Anwendungsmöglichkeiten. Die BY-B8.2.2-exact-Zuordnung ist sachlich unzutreffend und bleibt ein separater Quellenbefund; KEEP bestätigt keine Quellen- oder Kursvollständigkeit.",
+      "firstUnderstanding": {
+        "essentialUnderstandingDe": "Ein Gesichtsfeld wird nach retinaler Transduktion über teilweise kreuzende nasale und ungekreuzte temporale Fasern, thalamisches Relais und Sehstrahlung dem kontralateralen visuellen Cortex zugeleitet.",
+        "essentialUnderstandingEn": "Following retinal transduction, a visual field reaches the contralateral visual cortex through crossing nasal and uncrossed temporal fibers, a thalamic relay and optic radiations.",
+        "observablePerformanceDe": "Zeichnet einen begründeten Signalweg und unterscheidet den Ausfall eines Sehnervs, gekreuzter Fasern und eines Tractus opticus im gegebenen Modell.",
+        "observablePerformanceEn": "Draws a justified signal route and distinguishes the effects of blocking an optic nerve, crossing fibers and an optic tract in the supplied model.",
+        "transferExpectationDe": "Leitet für die spiegelbildliche Gesichtsfeldseite oder eine neu benannte Leitungsunterbrechung den betroffenen Weg neu her; der Empfangspunkt liegt nicht am blinden Fleck.",
+        "transferExpectationEn": "Derives the route again for the mirrored visual field or a newly specified interruption; the reception point does not lie on the blind spot."
+      },
+      "secondUnderstanding": {
+        "essentialUnderstandingDe": "Die Sehbahn überführt retinale Transduktion in afferente Information; die partielle Kreuzung sortiert Gesichtsfelder, und thalamisch-kortikale Stationen verarbeiten die Hauptbahn.",
+        "essentialUnderstandingEn": "The visual pathway turns retinal transduction into afferent information; partial crossing sorts visual hemifields and thalamic and cortical stations process the principal pathway.",
+        "observablePerformanceDe": "Die lernende Person ordnet Rezeptor, Bipolar- und Ganglienzelle, Sehnerv, Chiasma, CGL, Sehstrahlung und Sehrinde und verfolgt das rechte Gesichtsfeld aus beiden Augen zur linken Sehrinde.",
+        "observablePerformanceEn": "The learner orders receptor, bipolar and ganglion cells, optic nerve, chiasm, LGN, optic radiation and visual cortex, and traces the right hemifield from both eyes to left visual cortex.",
+        "transferExpectationDe": "Sie zeichnet das linke Gesichtsfeld ohne Modellkarten und unterscheidet eine Unterbrechung vor dem Chiasma von einer Unterbrechung des linken Tractus anhand der fehlenden Information.",
+        "transferExpectationEn": "They trace the left hemifield without model cards and distinguish a prechiasmal interruption from interruption of the left optic tract using the information that would be lost."
+      },
+      "selectedSecondUnderstandingUnchanged": true,
+      "normalValidation": {
+        "errors": [],
+        "strictDescriptionComplete": true
+      },
+      "sourceAdjudicationSeparate": true,
+      "humanApproval": false
+    },
+    {
+      "goalId": "97a15c19-c345-589e-8b3c-9f2b97a60095",
+      "firstBinding": {
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-a",
+        "campaignDigest": "sha256:a27fc9b81aabc2de06a0ac2066c40ae0dc940b770cec00979d8ab9da85622770",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-a",
+        "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+        "goalReviewContextFingerprint": "sha256:b9cbcc4f8fd977fdc67091a74d9bacf9d71ec687a1ff58f0dce4ff8b53ed4586",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "runId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "runManifestDigest": "sha256:9c1a5e506c95bbfd6884728f00fd15f1e08a1d3e18bcae7a564ef5eb84d314a4",
+        "resultsDigest": "sha256:34fffcef66d433dc064debe27e7545aa1e896f9b7a9e188962d5ac100f30f415",
+        "recordId": "bio10-current-v3-A.97a15c19-c345-589e-8b3c-9f2b97a60095",
+        "recordDigest": "sha256:ec673a16a753bc085807fd905ced0fef8378bc42ed8ba2cabe71f563f88a1862"
+      },
+      "secondBinding": {
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-b",
+        "campaignDigest": "sha256:fd0b057f98d9ef5811bf641e9d1203a469faeeb85594d2f839cc5177c605c111",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-b",
+        "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+        "goalReviewContextFingerprint": "sha256:b9cbcc4f8fd977fdc67091a74d9bacf9d71ec687a1ff58f0dce4ff8b53ed4586",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b.batch-001",
+        "runId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+        "runManifestDigest": "sha256:c5e4707dd97098ac68ecd6bf120e85d5384c7724015d148e5c592c48d0d752a7",
+        "resultsDigest": "sha256:684935ec26f9dbf2c9047416567db0fd5033ccce9c1e28874d7d8ba21cb5d827",
+        "recordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.97a15c19.D",
+        "recordDigest": "sha256:0e8e8fdbce6f3ae5995b69eee44bdaac627625ffe668568e506eb78c05b1b11f"
+      },
+      "firstWholeRationale": "Mechanical-to-graded-receptor-to-afferent transition, cochlear frequency place and bilateral central input correct; introductory raster omits relays requiring whole native context. Tatsächliche aktuelle ganze HTML/PDF-Seite und kanonischer DE/EN-/P-Kontext geprüft: präziser Leistungsoperator, eigener Transfer, keine Beschreibungskorrektur erforderlich. Die begrenzte Quellenpräzisierung ist keine neue Kursfreigabe.",
+      "secondWholeRationale": "KEEP: DE/EN markieren denselben Schall-Verarbeitungsweg. Mechanik, Transduktion und zentraler Verlauf sind funktionale Schritte, deren Unterschied die Fälle prüfen. Basis/Apex und einseitiger Ausfall sind neue Anwendungen. Eine Hörstörung wird nicht diagnostiziert; HE ein Sinnesorgan belegt keine vollständige authored Stationspflicht.",
+      "firstUnderstanding": {
+        "essentialUnderstandingDe": "Mechanische Schallübertragung und Haarzell-Rezeptorpotentiale gehen über synaptische afferente Aktionspotentiale in eine über Relais beidseitig verarbeitete Hörbahn über.",
+        "essentialUnderstandingEn": "Mechanical sound transmission and hair-cell receptor potentials lead through synaptic afferent action potentials into an auditory pathway processed bilaterally through relays.",
+        "observablePerformanceDe": "Erklärt den Weg über Außenohr, Trommelfell, Gehörknöchelchen, Cochlea, Haarzellen und zentrale Relais und ordnet hohe bzw. tiefe Frequenzen begründet zu.",
+        "observablePerformanceEn": "Explains the route through outer ear, eardrum, ossicles, cochlea, hair cells and central relays and justifies high and low frequency locations.",
+        "transferExpectationDe": "Vergleicht eine neu blockierte mechanische oder synaptische Stufe und begrenzt Aussagen zu zentralen Ausfällen durch die beidseitige Verschaltung.",
+        "transferExpectationEn": "Compares a newly blocked mechanical or synaptic stage and limits claims about central failure in light of bilateral processing."
+      },
+      "secondUnderstanding": {
+        "essentialUnderstandingDe": "Das Ohr überträgt Schall zunächst mechanisch und transduziert Haarbündelbewegung in elektrische Information; zentrale Stationen verarbeiten beidseitige Hörinformation und Frequenzorte.",
+        "essentialUnderstandingEn": "The ear first transmits sound mechanically and transduces hair-bundle movement into electrical information; central stations process bilateral auditory input and frequency location.",
+        "observablePerformanceDe": "Die lernende Person ordnet Trommelfell, Gehörknöchelchen, Cochlea, Haarzelle, afferente Faser, Hirnstamm, Thalamus und Hörrinde und erklärt, weshalb ein Haarzellsynapsenblock trotz Mechanik afferente AP verhindert.",
+        "observablePerformanceEn": "The learner orders eardrum, ossicles, cochlea, hair cell, afferent fiber, brainstem, thalamus and auditory cortex and explains why a hair-cell synaptic block prevents afferent AP despite intact mechanics.",
+        "transferExpectationDe": "Sie vergleicht neue periphere und zentrale Unterbrechungen sowie Basis-/Apex-Erregung und begrenzt Folgerungen aus einseitigem Inputverlust aufgrund beidseitiger zentraler Verschaltung.",
+        "transferExpectationEn": "They compare new peripheral and central interruptions and base/apex excitation, and constrain conclusions from unilateral input loss because central pathways receive bilateral information."
+      },
+      "selectedSecondUnderstandingUnchanged": true,
+      "normalValidation": {
+        "errors": [],
+        "strictDescriptionComplete": true
+      },
+      "sourceAdjudicationSeparate": true,
+      "humanApproval": false
+    },
+    {
+      "goalId": "5670e999-922c-5862-ba77-2d93667badd4",
+      "firstBinding": {
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-a",
+        "campaignDigest": "sha256:a27fc9b81aabc2de06a0ac2066c40ae0dc940b770cec00979d8ab9da85622770",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-a",
+        "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+        "goalReviewContextFingerprint": "sha256:f14181ec2a0cb6ebee73fcf11f0fafbb6a6d2ab205de3807aa4b8bfb9dabbbf0",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "runId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "runManifestDigest": "sha256:9c1a5e506c95bbfd6884728f00fd15f1e08a1d3e18bcae7a564ef5eb84d314a4",
+        "resultsDigest": "sha256:34fffcef66d433dc064debe27e7545aa1e896f9b7a9e188962d5ac100f30f415",
+        "recordId": "bio10-current-v3-A.5670e999-922c-5862-ba77-2d93667badd4",
+        "recordDigest": "sha256:5b379ae537cd0ea50fdf226da3901280159831e3b80e0f7876d03ed6cab02e50"
+      },
+      "secondBinding": {
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-b",
+        "campaignDigest": "sha256:fd0b057f98d9ef5811bf641e9d1203a469faeeb85594d2f839cc5177c605c111",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-b",
+        "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+        "goalReviewContextFingerprint": "sha256:f14181ec2a0cb6ebee73fcf11f0fafbb6a6d2ab205de3807aa4b8bfb9dabbbf0",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b.batch-001",
+        "runId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+        "runManifestDigest": "sha256:c5e4707dd97098ac68ecd6bf120e85d5384c7724015d148e5c592c48d0d752a7",
+        "resultsDigest": "sha256:684935ec26f9dbf2c9047416567db0fd5033ccce9c1e28874d7d8ba21cb5d827",
+        "recordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.5670e999.D",
+        "recordDigest": "sha256:9b0fd8e76612c29e43dc45cd3c5614921878a03aa613235e64507880a8ef622a"
+      },
+      "firstWholeRationale": "Nociception/reflex/report/personal pain distinguished; descending inhibition/facilitation and sensitization bounded. Tatsächliche aktuelle ganze HTML/PDF-Seite und kanonischer DE/EN-/P-Kontext geprüft: präziser Leistungsoperator, eigener Transfer, keine Beschreibungskorrektur erforderlich. Die begrenzte Quellenpräzisierung ist keine neue Kursfreigabe.",
+      "secondWholeRationale": "KEEP: Die Beschreibung bindet Nozizeption und Schmerzmodulation an denselben Informationsprozess. Reflexzeitmodell und synaptisches Eingangs-/Ausgangsmodell zeigen echte Unterscheidungs- und Transferleistung. Zeiten und Einheiten sind ausdrücklich erfunden. Der HE-Nachweis ist auf synaptische Prinzipien begrenzt, nicht ein offizielles komplettes Nozizeptionsziel.",
+      "firstUnderstanding": {
+        "essentialUnderstandingDe": "Nozizeptive Signale, spinale Reflexe und subjektives Schmerzerleben sind unterscheidbar; periphere und zentrale Verarbeitung einschließlich absteigender Modulation beeinflussen den Informationsfluss.",
+        "essentialUnderstandingEn": "Nociceptive signals, spinal reflexes and subjective pain experience are distinct; peripheral and central processing including descending modulation affect information flow.",
+        "observablePerformanceDe": "Erklärt einen Reflex-/Berichtsvergleich und deutet unterschiedliche spinale Ausgänge bei gleichem Eingang mit einer begrenzten Modulationsskizze.",
+        "observablePerformanceEn": "Explains a reflex/report comparison and interprets different spinal outputs for the same input using a bounded modulation diagram.",
+        "transferExpectationDe": "Prüft eine neue Verstärkung bei unverändertem Eingang als mögliche Sensitivierung, ohne synthetische Signalwerte als Schmerzskala oder Diagnose auszugeben.",
+        "transferExpectationEn": "Examines new amplification with unchanged input as possible sensitization without treating synthetic signal values as a pain scale or diagnosis."
+      },
+      "secondUnderstanding": {
+        "essentialUnderstandingDe": "Nozizeptive Reizaufnahme, aufsteigende Verarbeitung, Reflex und subjektiver Schmerz sind unterscheidbar; absteigende Einflüsse können synaptische Weiterleitung hemmen oder erleichtern.",
+        "essentialUnderstandingEn": "Nociceptive reception, ascending processing, reflex and subjective pain can be distinguished; descending influences can inhibit or facilitate synaptic transmission.",
+        "observablePerformanceDe": "Die lernende Person zeichnet Aufstieg und Abstieg, erklärt den früheren Reflex ohne Gleichsetzung mit bewusstem Schmerz und deutet Ausgangsunterschiede bei identischem modelliertem Eingang.",
+        "observablePerformanceEn": "The learner draws ascending and descending routes, explains an earlier reflex without equating it with conscious pain, and interprets output differences at the same modeled input.",
+        "transferExpectationDe": "Sie erklärt einen höheren Ausgang bei gleichem Eingang als mögliche zentrale Verstärkung und benennt, weshalb der Modellwert keine individuelle Schmerzstärke und keine Diagnose ist.",
+        "transferExpectationEn": "They explain higher output at unchanged input as possible central amplification and state why a model value is neither an individual pain rating nor a diagnosis."
+      },
+      "selectedSecondUnderstandingUnchanged": true,
+      "normalValidation": {
+        "errors": [],
+        "strictDescriptionComplete": true
+      },
+      "sourceAdjudicationSeparate": true,
+      "humanApproval": false
+    },
+    {
+      "goalId": "1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5",
+      "firstBinding": {
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-a",
+        "campaignDigest": "sha256:a27fc9b81aabc2de06a0ac2066c40ae0dc940b770cec00979d8ab9da85622770",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-a",
+        "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+        "goalReviewContextFingerprint": "sha256:661b8baeb2216f8362ac0d720fb14c91c6d0e61b05b9df9064e4a10a0570777f",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "runId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "runManifestDigest": "sha256:9c1a5e506c95bbfd6884728f00fd15f1e08a1d3e18bcae7a564ef5eb84d314a4",
+        "resultsDigest": "sha256:34fffcef66d433dc064debe27e7545aa1e896f9b7a9e188962d5ac100f30f415",
+        "recordId": "bio10-current-v3-A.1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5",
+        "recordDigest": "sha256:c96ae374a54ab1279eb59895ca1c9e44060be721aded230192bb22a429108317"
+      },
+      "secondBinding": {
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-b",
+        "campaignDigest": "sha256:fd0b057f98d9ef5811bf641e9d1203a469faeeb85594d2f839cc5177c605c111",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-b",
+        "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+        "goalReviewContextFingerprint": "sha256:661b8baeb2216f8362ac0d720fb14c91c6d0e61b05b9df9064e4a10a0570777f",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b.batch-001",
+        "runId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+        "runManifestDigest": "sha256:c5e4707dd97098ac68ecd6bf120e85d5384c7724015d148e5c592c48d0d752a7",
+        "resultsDigest": "sha256:684935ec26f9dbf2c9047416567db0fd5033ccce9c1e28874d7d8ba21cb5d827",
+        "recordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.1f3cdf59.D",
+        "recordDigest": "sha256:ac932d7cacd8573a6ccfa6632a76f29b090b2d07e15207acb1b59d0821fb4a08"
+      },
+      "firstWholeRationale": "Pancreatic signals, tissue-dependent uptake, hepatic glucagon release, type1/type2 mechanisms and multifactorial risk coherent; v2 distinguishes hormone and glucose paths. Tatsächliche aktuelle ganze HTML/PDF-Seite und kanonischer DE/EN-/P-Kontext geprüft: präziser Leistungsoperator, eigener Transfer, keine Beschreibungskorrektur erforderlich. Die begrenzte Quellenpräzisierung ist keine neue Kursfreigabe.",
+      "secondWholeRationale": "KEEP: Die Regelkompetenz verbindet Normalfunktion mit begründeter Störungsanwendung. Diabetesmechanismen und begrenzte multifaktorielle Risikofolgerung konkretisieren die Regulation, verlangen weder Therapieplanung noch individuelle klinische Bewertung. Die frischen Varianten prüfen Kompensation und Konfundierung. Breite Quellen inklusive Therapieaspekten bleiben partial.",
+      "firstUnderstanding": {
+        "essentialUnderstandingDe": "Insulin und Glucagon regeln über Zielgewebe den Glukosespiegel mit negativer Rückkopplung; Typ-1-Betazellverlust und Typ-2-Insulinresistenz sind unterschiedliche Mechanismen.",
+        "essentialUnderstandingEn": "Insulin and glucagon regulate glucose through target tissues and negative feedback; type 1 beta-cell loss and type 2 insulin resistance are different mechanisms.",
+        "observablePerformanceDe": "Erstellt zwei begründete Regelkreise mit Hormonsignalen, Leberfreisetzung und angemessener Aufnahme und beurteilt die begrenzte Aussagekraft vorgelegter Risikodaten.",
+        "observablePerformanceEn": "Constructs two justified feedback loops with hormonal signals, hepatic release and appropriate uptake and evaluates the limited meaning of the supplied risk data.",
+        "transferExpectationDe": "Vergleicht bei geändertem Zielgewebe-Ansprechen den Rückkopplungsverlauf und trennt multifaktorielle Risikoassoziationen von individuellen Ursachen und Schuldzuweisungen.",
+        "transferExpectationEn": "Compares feedback after changed target-tissue response and separates multifactorial risk associations from individual causation and blame."
+      },
+      "secondUnderstanding": {
+        "essentialUnderstandingDe": "Insulin und Glukagon koppeln Blutzucker an passende Zielgewebereaktionen und negative Rückkopplung; Insulinmangel und verminderte Insulinwirkung stören dieses System auf verschiedene Weise.",
+        "essentialUnderstandingEn": "Insulin and glucagon couple blood glucose to appropriate target-tissue responses and negative feedback; lack of insulin and reduced insulin responsiveness disrupt this system differently.",
+        "observablePerformanceDe": "Die lernende Person zeichnet nach hoher beziehungsweise niedriger Glucose die Regelketten, trennt hormonelles Signal von Glucosetransport und deutet Typ1-Betazellverlust gegenüber Typ2-Resistenz mit begrenzter Kompensation.",
+        "observablePerformanceEn": "The learner draws regulation chains after high or low glucose, separates hormonal signaling from glucose transport, and interprets type1 beta-cell loss versus type2 resistance with limited compensation.",
+        "transferExpectationDe": "Sie erklärt vorübergehend kompensierte Resistenz und prüft bei einer neuen familiären Aktivitätsassoziation weitere Einflussfaktoren, ohne daraus individuelle Diagnose, sichere Vorhersage oder Schuld abzuleiten.",
+        "transferExpectationEn": "They explain temporarily compensated resistance and examine other influences in a new family-activity association without deriving an individual diagnosis, certain prediction or blame."
+      },
+      "selectedSecondUnderstandingUnchanged": true,
+      "normalValidation": {
+        "errors": [],
+        "strictDescriptionComplete": true
+      },
+      "sourceAdjudicationSeparate": true,
+      "humanApproval": false
+    },
+    {
+      "goalId": "3d822550-c14a-52ee-9908-6bcb873afdd6",
+      "firstBinding": {
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-a",
+        "campaignDigest": "sha256:a27fc9b81aabc2de06a0ac2066c40ae0dc940b770cec00979d8ab9da85622770",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-a",
+        "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+        "goalReviewContextFingerprint": "sha256:be1f30c9fb4362412c198d8eff32f5ca4edc211e6a435f790f614179a04ba88a",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "runId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "runManifestDigest": "sha256:9c1a5e506c95bbfd6884728f00fd15f1e08a1d3e18bcae7a564ef5eb84d314a4",
+        "resultsDigest": "sha256:34fffcef66d433dc064debe27e7545aa1e896f9b7a9e188962d5ac100f30f415",
+        "recordId": "bio10-current-v3-A.3d822550-c14a-52ee-9908-6bcb873afdd6",
+        "recordDigest": "sha256:037b04fa8756e175bfb25e12c718d6e06d3027f5eb49444d3c76d7d3cc61bc31"
+      },
+      "secondBinding": {
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-b",
+        "campaignDigest": "sha256:fd0b057f98d9ef5811bf641e9d1203a469faeeb85594d2f839cc5177c605c111",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-b",
+        "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+        "goalReviewContextFingerprint": "sha256:be1f30c9fb4362412c198d8eff32f5ca4edc211e6a435f790f614179a04ba88a",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b.batch-001",
+        "runId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+        "runManifestDigest": "sha256:c5e4707dd97098ac68ecd6bf120e85d5384c7724015d148e5c592c48d0d752a7",
+        "resultsDigest": "sha256:684935ec26f9dbf2c9047416567db0fd5033ccce9c1e28874d7d8ba21cb5d827",
+        "recordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.3d822550.D",
+        "recordDigest": "sha256:8d9e7b2209f3e956ffac925c83ce31d025c6dc31a8b9aea375cb208f9b291dd8"
+      },
+      "firstWholeRationale": "Stimulus/state factorial contrasts, repeats and distance/shape confound transfer coherent; actual v2 corrects weather-as-internal-factor and participant paper orientation. Tatsächliche aktuelle ganze HTML/PDF-Seite und kanonischer DE/EN-/P-Kontext geprüft: präziser Leistungsoperator, eigener Transfer, keine Beschreibungskorrektur erforderlich. Die begrenzte Quellenpräzisierung ist keine neue Kursfreigabe.",
+      "secondWholeRationale": "KEEP: Der ausführlichere DE/EN-Text ist angemessen für eine experimentelle Kompetenz mit Auswertung und Planung. Die beiden Fälle verhindern angeboren/immer/aggressiv-Überinterpretation. Eine frische Distanz- beziehungsweise Merkmalskontrolle verlangt eigenes Handeln am Modell. Zahlen bleiben synthetisch, keine Tierintervention oder echte Durchführung behauptet.",
+      "firstUnderstanding": {
+        "essentialUnderstandingDe": "Beobachtetes Verhalten hängt von reaktionsauslösenden Reizen und innerem Zustand ab; kontrollierte Attrappenvergleiche können ihre Beiträge begrenzt untersuchen.",
+        "essentialUnderstandingEn": "Observed behavior depends on triggering stimuli and internal state; controlled dummy comparisons can investigate their contributions within limits.",
+        "observablePerformanceDe": "Vergleicht vorgegebene Reaktionsdaten mit definiertem Verhalten, passenden Kontrollen und konstanten Attrappenmerkmalen und stellt einen nachvollziehbaren Versuchsplan auf.",
+        "observablePerformanceEn": "Compares supplied response data using defined behavior, suitable controls and constant dummy features and constructs a reproducible experimental plan.",
+        "transferExpectationDe": "Erkennt im neuen Abstand- oder Formvergleich den Störfaktor und plant eine kontrollierte Variation statt allen Tieren dieselbe Absicht zuzuschreiben.",
+        "transferExpectationEn": "Recognizes the confound in a new distance or shape comparison and plans a controlled variation rather than assigning the same intention to every animal."
+      },
+      "secondUnderstanding": {
+        "essentialUnderstandingDe": "Attrappenversuche isolieren Reizmerkmale und prüfen beobachtbares Verhalten unter kontrollierten inneren und äußeren Bedingungen; Reaktionshäufigkeit ist keine Absichtsdiagnose.",
+        "essentialUnderstandingEn": "Dummy experiments isolate stimulus features and examine observable behavior under controlled internal and external conditions; response frequency is not an intention diagnosis.",
+        "observablePerformanceDe": "Die lernende Person vergleicht rote und graue Fischattrappen in zwei Zuständen und prüft bei Vogelattrappen Form und Fleck als zusammen veränderte Merkmale; sie formuliert Kontrollen, Wiederholungen und eine Beobachtungsgröße.",
+        "observablePerformanceEn": "The learner compares red and gray fish dummies in two states and identifies shape and spot as jointly changed features in bird dummies; they specify controls, repetition and an observable outcome.",
+        "transferExpectationDe": "Sie erkennt die neue Distanzänderung als Störvariable und entwirft einen Vergleich, der jeweils nur ein Reizmerkmal verändert und Reihenfolge beziehungsweise Zustand kontrolliert.",
+        "transferExpectationEn": "They identify a new distance change as a confound and design a comparison varying only one stimulus feature while controlling order and state."
+      },
+      "selectedSecondUnderstandingUnchanged": true,
+      "normalValidation": {
+        "errors": [],
+        "strictDescriptionComplete": true
+      },
+      "sourceAdjudicationSeparate": true,
+      "humanApproval": false
+    },
+    {
+      "goalId": "5dd66bfd-616f-5a2a-be7c-49aaf12581a0",
+      "firstBinding": {
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-a",
+        "campaignDigest": "sha256:a27fc9b81aabc2de06a0ac2066c40ae0dc940b770cec00979d8ab9da85622770",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-a",
+        "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+        "goalReviewContextFingerprint": "sha256:aa9aa5fa902b7190327f081f2e3e89f1a1b89fd83ae5e7bd412e3d3d0768a072",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "runId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "runManifestDigest": "sha256:9c1a5e506c95bbfd6884728f00fd15f1e08a1d3e18bcae7a564ef5eb84d314a4",
+        "resultsDigest": "sha256:34fffcef66d433dc064debe27e7545aa1e896f9b7a9e188962d5ac100f30f415",
+        "recordId": "bio10-current-v3-A.5dd66bfd-616f-5a2a-be7c-49aaf12581a0",
+        "recordDigest": "sha256:dd4c0ff4bd7f29ecf1e7c3e230bd82a62a69f22fca8f8fd9bd2a12ecf18d2fad"
+      },
+      "secondBinding": {
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-b",
+        "campaignDigest": "sha256:fd0b057f98d9ef5811bf641e9d1203a469faeeb85594d2f839cc5177c605c111",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-b",
+        "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+        "goalReviewContextFingerprint": "sha256:aa9aa5fa902b7190327f081f2e3e89f1a1b89fd83ae5e7bd412e3d3d0768a072",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b.batch-001",
+        "runId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+        "runManifestDigest": "sha256:c5e4707dd97098ac68ecd6bf120e85d5384c7724015d148e5c592c48d0d752a7",
+        "resultsDigest": "sha256:684935ec26f9dbf2c9047416567db0fd5033ccce9c1e28874d7d8ba21cb5d827",
+        "recordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.5dd66bfd.D",
+        "recordDigest": "sha256:7b19ca00467681799b77bcd1f4a15f6eb52c8edc6b1b5aff2956baf380221aad"
+      },
+      "firstWholeRationale": "Matched rearing and training data support graded hereditary/acquired contributions; first observation, prenatal factors and age confounding remain limits. Tatsächliche aktuelle ganze HTML/PDF-Seite und kanonischer DE/EN-/P-Kontext geprüft: präziser Leistungsoperator, eigener Transfer, keine Beschreibungskorrektur erforderlich. Die begrenzte Quellenpräzisierung ist keine neue Kursfreigabe.",
+      "secondWholeRationale": "KEEP: DE/EN verlangen ein begründetes Urteil über Beiträge, keine absolute Trennung in genetisch oder erworben. Herkunft trotz gleicher Aufzucht und kontrolliertes Training sind zwei verschiedene Belegarten; neue Aufzucht-/Alterskonflikte begrenzen das Urteil. Der Text benötigt keine zusätzliche Genetik- oder Vererbungsberechnung.",
+      "firstUnderstanding": {
+        "essentialUnderstandingDe": "Herkunft, Aufzucht und Training können verschiedene Beiträge zur Verhaltensausprägung stützen; Anlage und Erfahrung wirken zusammen und lassen sich nicht durch einen einzelnen Vergleich vollständig trennen.",
+        "essentialUnderstandingEn": "Origin, rearing and training can support different contributions to behavior; predisposition and experience interact and cannot be fully separated by a single comparison.",
+        "observablePerformanceDe": "Beurteilt Aufzucht- und Trainingsdaten mit abgestuften Schlussfolgerungen, konstanten Bedingungen und ausdrücklich benannten alternativen Ursachen.",
+        "observablePerformanceEn": "Evaluates rearing and training data using graded conclusions, constant conditions and explicitly named alternative causes.",
+        "transferExpectationDe": "Erklärt bei neuer Alters- oder Aufzuchtvariation die verringerte kausale Aussagekraft und vermeidet absolute genetische oder reine Lerndetermination.",
+        "transferExpectationEn": "Explains reduced causal interpretability after a new age or rearing variation and avoids absolute genetic or exclusively learned determination."
+      },
+      "secondUnderstanding": {
+        "essentialUnderstandingDe": "Anlage und Erfahrung können gemeinsam Verhalten beeinflussen; Herkunfts- und Trainingsassoziationen unterscheiden Beiträge, beweisen aber ohne kontrollierte Alternativen keine reine genetische Ursache.",
+        "essentialUnderstandingEn": "Disposition and experience can jointly affect behavior; origin and training associations distinguish contributions but cannot establish a purely genetic cause without controlled alternatives.",
+        "observablePerformanceDe": "Die lernende Person beurteilt gemeinsame Aufzucht mit verschiedenen Herkunftsgruppen und Training gegenüber untrainiertem Vergleich und begründet, was die beobachteten Häufigkeiten zulassen.",
+        "observablePerformanceEn": "The learner evaluates common rearing with different origin groups and training against an untrained comparison, and justifies what the observed frequencies support.",
+        "transferExpectationDe": "Sie erkennt neue unterschiedliche Aufzucht oder höheres Alter der trainierten Gruppe als Alternativerklärung und fordert einen passenden kontrollierten Vergleich statt einer entweder-oder-Zuordnung.",
+        "transferExpectationEn": "They identify newly differing rearing conditions or older age in the trained group as alternative explanations and request a suitable controlled comparison instead of an either-or attribution."
+      },
+      "selectedSecondUnderstandingUnchanged": true,
+      "normalValidation": {
+        "errors": [],
+        "strictDescriptionComplete": true
+      },
+      "sourceAdjudicationSeparate": true,
+      "humanApproval": false
+    },
+    {
+      "goalId": "5a5eeff5-ae97-5b5b-bc80-df03eba8e095",
+      "firstBinding": {
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-a",
+        "campaignDigest": "sha256:a27fc9b81aabc2de06a0ac2066c40ae0dc940b770cec00979d8ab9da85622770",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-a",
+        "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+        "goalReviewContextFingerprint": "sha256:5e15d078a608d7c0b1ecf3185651b1546db996027143ecb16ef2a927b30e3b30",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "runId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+        "runManifestDigest": "sha256:9c1a5e506c95bbfd6884728f00fd15f1e08a1d3e18bcae7a564ef5eb84d314a4",
+        "resultsDigest": "sha256:34fffcef66d433dc064debe27e7545aa1e896f9b7a9e188962d5ac100f30f415",
+        "recordId": "bio10-current-v3-A.5a5eeff5-ae97-5b5b-bc80-df03eba8e095",
+        "recordDigest": "sha256:933d3a4a2dfeca5f095baf9a252bdcba140c79ba7fd85cb7c657562433ca7952"
+      },
+      "secondBinding": {
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-b",
+        "campaignDigest": "sha256:fd0b057f98d9ef5811bf641e9d1203a469faeeb85594d2f839cc5177c605c111",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-b",
+        "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+        "goalReviewContextFingerprint": "sha256:5e15d078a608d7c0b1ecf3185651b1546db996027143ecb16ef2a927b30e3b30",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b.batch-001",
+        "runId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+        "runManifestDigest": "sha256:c5e4707dd97098ac68ecd6bf120e85d5384c7724015d148e5c592c48d0d752a7",
+        "resultsDigest": "sha256:684935ec26f9dbf2c9047416567db0fd5033ccce9c1e28874d7d8ba21cb5d827",
+        "recordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.5a5eeff5.D",
+        "recordDigest": "sha256:43e39438b608ec31adcb17cf56013c9cf0e7b19474d5ac7e3927841590bddb4e"
+      },
+      "firstWholeRationale": "Paired/unpaired and contingent/yoked controls, baseline, event matching and relocation support plan assessment without trials or universal species ranking. Tatsächliche aktuelle ganze HTML/PDF-Seite und kanonischer DE/EN-/P-Kontext geprüft: präziser Leistungsoperator, eigener Transfer, keine Beschreibungskorrektur erforderlich. Die begrenzte Quellenpräzisierung ist keine neue Kursfreigabe.",
+      "secondWholeRationale": "KEEP: Der Text beschreibt nachvollziehbar eine Planungskompetenz über klassische und operante Lernbeziehungen. Zwei unterschiedliche Kontingenzen verlangen passende eigene Kontrollentwürfe, neue Kontrolländerung und Ortswechsel prüfen Transfer. Mensch-/Tiervergleich wird begrenzt und nicht als Intelligenzrangfolge oder tatsächlich durchgeführter Versuch ausgegeben.",
+      "firstUnderstanding": {
+        "essentialUnderstandingDe": "Klassische Paarung und operante Kontingenz begründen unterschiedliche Lernpläne; Kontrolle und Ausgangsmessung trennen Lernen von Wiederholung, Gewöhnung oder Positionspräferenz.",
+        "essentialUnderstandingEn": "Classical pairing and operant contingency support different learning designs; controls and baseline measurements distinguish learning from repetition, habituation or position preference.",
+        "observablePerformanceDe": "Plant einen gepaarten/unpaarigen Reizvergleich und einen kontingenten/nichtkontingenten Folgenvergleich mit Messkriterium, konstanten Bedingungen, Replikation und begrenztem fairen Artvergleich.",
+        "observablePerformanceEn": "Plans a paired/unpaired stimulus comparison and a contingent/noncontingent consequence comparison with a measurement criterion, constant conditions, replication and a bounded fair species comparison.",
+        "transferExpectationDe": "Prüft eine ebenfalls ansteigende Kontrolle oder eine neue Positionspräferenz und passt den Plan so an, dass die Schlussfolgerung über Lernen weiterhin begründet ist.",
+        "transferExpectationEn": "Examines a rising control or a new position preference and adapts the design so that a conclusion about learning remains justified."
+      },
+      "secondUnderstanding": {
+        "essentialUnderstandingDe": "Klassische Konditionierung verbindet Ereignisse, operante Konditionierung verknüpft Handlung und Konsequenz; passende Kontrollen trennen diese Zusammenhänge von bloßer Wiederholung und Kontextpräferenz.",
+        "essentialUnderstandingEn": "Classical conditioning associates events, whereas operant conditioning links an action to a consequence; suitable controls separate these relations from repetition and context preference.",
+        "observablePerformanceDe": "Die lernende Person plant gepaarte gegenüber ungepaarten Ton-Ereignis-Durchgängen mit gleichen Häufigkeiten und einen Handlungspunkt-Vergleich mit zeitgleichen handlungsunabhängigen Punkten.",
+        "observablePerformanceEn": "The learner plans paired versus unpaired tone-event trials with equal frequencies and an action-contingent point comparison against equal timed action-independent points.",
+        "transferExpectationDe": "Sie prüft eine Änderung auch in der Kontrollgruppe als mögliche allgemeine Aktivierung und nutzt neue A/B-Orte, um gelerntes Handlungssignal von Ortspräferenz zu unterscheiden.",
+        "transferExpectationEn": "They examine change in the control group as possible general arousal and use new A/B locations to distinguish a learned action cue from location preference."
+      },
+      "selectedSecondUnderstandingUnchanged": true,
+      "normalValidation": {
+        "errors": [],
+        "strictDescriptionComplete": true
+      },
+      "sourceAdjudicationSeparate": true,
+      "humanApproval": false
+    }
+  ],
+  "allTenStrictDescriptionComplete": true,
+  "scientificReviewsByIntegrator": 0,
+  "currentSourceFindingAdjudicationStillSeparate": true,
+  "humanApproval": false,
+  "activeStrictGain": 0,
+  "activeWrites": []
+}

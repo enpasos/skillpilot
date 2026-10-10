@@ -1,0 +1,9 @@
+/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-neuro-verhalten-hormone-ten-current343-source-raster-native-technical-preparation-20261010-v1/technical-normal-whole394-P10-source-impact.mts:9
+const orig=rows('positive/ten-before-raster.original-records.exact.jsonl'),cur=rows('positive/ten-current-raster.P.pending.review.jsonl'),science=read('science/ten-whole-profiles-twenty-cases.exact.json'),raster=read('inputs/ten-current-raster-bindings.neutral.json');assert.equal(cur.length,10);assert.equal(science.records.length,10);assert.equal(science.records.reduce((n:number,r:any)=>n+r.cases.length,0),20);
+                                                                                                                                                                                                                                                                                                                                     ^
+
+
+TypeError: Cannot read properties of undefined (reading 'length')
+    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-neuro-verhalten-hormone-ten-current343-source-raster-native-technical-preparation-20261010-v1/technical-normal-whole394-P10-source-impact.mts:9:326)
+
+Node.js v20.20.2

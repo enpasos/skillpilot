@@ -1,0 +1,11 @@
+# Bio10: current343 technical native/source/raster preparation
+
+This is an inactive technical successor on actual current whole479 SHA8726e38f, preserving335 plus the adopted Stoffwechsel8. Only10 resourceLinks and6 HE sourcegoal proposals are current changes;469 other goals,384 other whole394 page bodies,343 protected pages,138 other HE sourcegoals and original41 witness history remain exact. The normal wholeHE file successor changes path/digest metadata for129 protected source targets, whose semantic witness/scope contents are unchanged. Normal GK projection changes only openBio10; it is explicitly no new course clearance.
+
+Normal P10 materialize/reproduce/check and actual native10 prepare/check/captures passed. E1/G1, needs_human_review, reviewAuthority ai_candidate, approved0 and literal AUTHOR reviewID/profile/case semantics are exact. All10 whole HTML/PDF pages were captured with literal goal identity;12 physical PDF pages include2 frontmatter. Ordinary round-a/b inputs are pending for genuine independent judgments. No technical or image generation is approval.
+
+Root reported an independent A visual finding on selected Sehbahn146-v2: light focus coincides with blind-spot/nerve exit. This goal stays V/integration HOLD. The current bytes and captures are frozen truthfully for review; a later targeted PNG successor remains pending. The technical owner supplies no finding adjudication and authored no Bio10 science or raster.
+
+All41 current source witnesses bind actual committable primary bytes. Twenty distinct copied primarybyte files cover27 normal/history cachealiases; old cache spellings and19 historical author-local input paths are not portable file claims. Existing normal snapshot aliases and official URLs remain unchanged. Older sealed Stoffwechselv2 portability claim was inaccurate and corrected in a separate sealed successor; history is retained. The actual own first key/primary-link/shared-snapshot failures and successful corrections are retained as terminal records.
+
+No active canonical/QA/registry/source/public/backend/Git/GitHub write, strict gain0, human approval/trial false. Technical scripts Apache-2.0; own didactic content CC-BY-4.0; third-party rights unchanged.

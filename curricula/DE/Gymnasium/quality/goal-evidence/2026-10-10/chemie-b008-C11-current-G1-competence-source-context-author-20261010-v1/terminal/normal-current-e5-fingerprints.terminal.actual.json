@@ -1,0 +1,13 @@
+{
+  "argv": [
+    "app/node_modules/.bin/tsx",
+    "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-C11-current-G1-competence-source-context-author-20261010-v1/technical/current_e5_normal_fingerprints.mts"
+  ],
+  "startedAt": "2026-10-10T11:02:55.840521+00:00",
+  "actualExitCode": 1,
+  "durationSeconds": 0.2899888989923056,
+  "stdout": "",
+  "stderr": "node:fs:2380\n    return binding.writeFileUtf8(\n                   ^\n\nError: ENOENT: no such file or directory, open 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-C11-current-G1-competence-source-context-author-20261010-v1/checks/current-e5-normal-positive-fingerprint-and-whole-profile-exactness.json'\n    at Object.writeFileSync (node:fs:2380:20)\n    at put (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-C11-current-G1-competence-source-context-author-20261010-v1/technical/current_e5_normal_fingerprints.mts:6:165)\n    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-C11-current-G1-competence-source-context-author-20261010-v1/technical/current_e5_normal_fingerprints.mts:12:1)\n    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)\n    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {\n  errno: -2,\n  code: 'ENOENT',\n  syscall: 'open',\n  path: 'curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-C11-current-G1-competence-source-context-author-20261010-v1/checks/current-e5-normal-positive-fingerprint-and-whole-profile-exactness.json'\n}\n\nNode.js v20.20.2\n",
+  "activeWrites": [],
+  "independentApproval": false
+}

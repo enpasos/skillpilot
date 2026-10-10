@@ -1,0 +1,47 @@
+<!-- SPDX-License-Identifier: CC-BY-4.0 -->
+# Wie chemische Forschungsfragen und Wege entstehen
+
+Diese materialgestützte Aufgabe bezieht sich auf den Kompetenzbereich C11.1.11 der bayerischen Jahrgangsstufe 11 am naturwissenschaftlich-technologischen Gymnasium (NTG). Für andere Schulzweige oder Kurszuordnungen wird damit keine Geltung beansprucht. Bearbeitungszeit: 60 Minuten.
+
+## Material 1: Historischer Bezug
+
+Die BASF-Unternehmenschronik beschreibt, wie ein Team um Carl Bosch ab 1908 Habers Laborverfahren zur Ammoniaksynthese industriell umsetzte; 1913 wurde eine Anlage in Oppau in Betrieb genommen. Die Quelle betont Zusammenarbeit von wissenschaftlicher Forschung und Industrie sowie die Herstellung von Düngemitteln. [BASF, „1913 / First Ammonia Synthesis Plant“](https://www.basf.com/global/en/who-we-are/history/chronology/1902-1924/1913). Diese kurze Paraphrase ist ein begrenzter historischer Beleg; die Quelle belegt nicht jede gesellschaftliche Motivation einzelner Beteiligter.
+
+## Material 2: Ausdrücklich erfundenes Forschungsszenario
+
+Ein heutiger fiktiver Forschungsverbund will untersuchen, wie eine Ammoniak-Herstellungsroute bei gleicher Produktqualität weniger Energie und Ressourcen benötigt. Verschiedene Beteiligte bieten finanzielle Mittel und Erwartungen an:
+
+- Betriebe verlangen bezahlbare Produkte und planbare Lieferungen; ein Fördervertrag belohnt einen geringeren Energiebedarf, nicht einen bestimmten Versuchsausgang.
+- Eine kommunale Gruppe fordert weniger Emissionen und geringere Belastung von Gewässern. Sie verlangt, Herstellung und spätere Anwendung getrennt zu betrachten.
+- In einer öffentlichen Debatte unterscheiden sich kulturell geprägte Vorstellungen guter Landwirtschaft und angemessener Ernährung. Einige bevorzugen technische Optimierung, andere veränderte Nutzungsmuster; beide beeinflussen, welche Fragen sie wichtig finden.
+- Ein neues Messinstrument kann Zwischenprodukte verfolgen, die zuvor nicht ausreichend beobachtbar waren. Ein verfügbares Rechenmodell liefert prüfbare Vorhersagen; seine Grenzen sind dokumentiert.
+- Der Verbund bezieht sich auf die historische Verbindung zwischen Labor, industrieller Anlage und Düngemitteln, möchte heutige Wertvorstellungen aber nicht ungeprüft auf alle historischen Beteiligten übertragen.
+
+Das Szenario illustriert mögliche Einflüsse. Es beschreibt keine tatsächlichen Personen, Förderverträge, Forschungsergebnisse oder historischen Absichten.
+
+## Material 3: Konstruierte wissenschaftliche Behauptungen
+
+Behauptung A lautet: „Das neue Verfahren benötigt pro gleicher Produktmenge weniger Energie.“ Zwei unabhängige Gruppen berichten bei dokumentierter gleicher Systemgrenze einen niedrigeren Energiebedarf, legen Mess- und Auswerteschritte offen und benennen Unsicherheiten. Behauptung B lautet: „Unser bevorzugtes Verfahren ist wissenschaftlich richtig, weil die meisten Beteiligten es wünschen.“ Eine kleinere Gruppe erzielt einen gegenteiligen Messwert, kann aber wegen eines defekten Sensors die Messbedingungen nicht rekonstruieren. Alle Angaben sind konstruiertes Unterrichtsmaterial.
+
+## Aufgaben
+
+1. Erläutern Sie am chemischen Beispiel den Weg von Laborwissen zu industrieller Ammoniaksynthese anhand von Material 1. Trennen Sie belegte historische Aussagen von plausiblen, aber hier nicht belegten Motiven. Erklären Sie mindestens einen Zusammenhang zwischen verfügbarem Wissen, technischer Möglichkeit und weiterer Forschung. (8 BE)
+2. Beschreiben und bewerten Sie **soziale, kulturelle, technologische, historische, ökologische und ökonomische** Einflüsse auf Fragen, Mittel und Wege chemischer Wissensentwicklung anhand von Material 2. Verwenden Sie für jede Dimension einen konkreten Bezug. Zeigen Sie sowohl eine mögliche Hilfe als auch eine mögliche Begrenzung durch solche Einflüsse. Mindestens ein Spannungsverhältnis muss chemisch konkret begründet werden. Die Aufzählung der sechs Wörter genügt nicht. (18 BE)
+3. Unterscheiden Sie die empirische Gültigkeit chemischer Aussagen von gesellschaftlicher Zustimmung anhand von Material 3. Begründen Sie, was die Befunde zu A tragen, was der defekte Sensor offenlässt und warum B die empirische Behauptung nicht prüft. Beurteilen Sie zugleich, welche legitime Rolle gesellschaftliche Werte bei Themenwahl und Anwendung haben können. (10 BE)
+4. Entwerfen Sie eine begründete nächste Forschungsfrage und einen prüfbaren nächsten Schritt für den Verbund. Benennen Sie einen Einfluss, der Ihre Themenwahl prägt, und eine Vorkehrung, die eine Ergebnisentscheidung nach Wunsch verhindert. (4 BE)
+
+40 BE insgesamt; Bestehensgrenze 37 BE. Die sechs Einflussdimensionen und die Trennung von empirischer Gültigkeit und Zustimmung sind Pflichtbestandteile. Wird ein Pflichtbestandteil vollständig ausgelassen, ist die Aufgabe unvollständig und kann nicht positiv abgeschlossen werden. Diese fachliche Aufgabenbearbeitung löst die offene offizielle C11-Kursplatzierung nicht und behauptet keine Quellenvollständigkeit oder Human Approval.
+
+## Verbindliche Punktbewertung der Pflichtteile
+
+Die folgenden Nullregeln gelten für den jeweils **ganzen** Bewertungsabschnitt, auch wenn andere Leistungen in diesem Abschnitt vorhanden sind. Vollständig fehlend bedeutet: Zu der bezeichneten Dimension liegt keine substanzielle verlangte Bearbeitung bzw. kein tatsächlicher eigener Leistungsbeleg vor. Eine vorhandene, aber fachlich noch unvollkommene Bearbeitung ist damit nicht gleichgesetzt; dafür gelten weiterhin die Teilpunkte des ursprünglichen fachlichen Erwartungshorizonts. Gleichwertige alternative Methoden und Lösungen erhalten dieselben Punkte. Erfindungen oder fremde Leistungen werden nicht als eigene Arbeit bewertet.
+
+**s1 (8 BE):** Belegter historischer chemischer Erkenntnisweg mit Quellen-/Motivgrenze. 0 BE für diesen gesamten Schritt, sobald mindestens eine der folgenden Pflichtleistungen oder Pflichtdimensionen vollständig fehlt: „belegter historischer chemischer Erkenntnisweg mit Trennung unbelegter Motive“. Das Fehlen darf nicht durch andere Teilpunkte dieses Schritts ausgeglichen werden. Sind alle Pflichtdimensionen substanziell vorhanden, werden für fachlich unvollkommene Ausführungen weiterhin die ursprünglichen Teilpunkte nach Qualität vergeben; gleichwertige alternative Lösungen sind zulässig. Eine bloße Namensnennung, ein fremdes Produkt oder ein erfundener Leistungsbeleg ersetzt keine eigene verlangte Leistung.
+
+**s2 (18 BE):** Alle sechs Einflüsse konkret beschrieben und begründet bewertet. 0 BE für diesen gesamten Schritt, sobald mindestens eine der folgenden Pflichtleistungen oder Pflichtdimensionen vollständig fehlt: „konkrete Beschreibung und Bewertung sozialer Einflüsse“; „konkrete Beschreibung und Bewertung kultureller Einflüsse“; „konkrete Beschreibung und Bewertung technologischer Einflüsse“; „konkrete Beschreibung und Bewertung historischer Einflüsse“; „konkrete Beschreibung und Bewertung ökologischer Einflüsse“; „konkrete Beschreibung und Bewertung ökonomischer Einflüsse“. Das Fehlen darf nicht durch andere Teilpunkte dieses Schritts ausgeglichen werden. Sind alle Pflichtdimensionen substanziell vorhanden, werden für fachlich unvollkommene Ausführungen weiterhin die ursprünglichen Teilpunkte nach Qualität vergeben; gleichwertige alternative Lösungen sind zulässig. Eine bloße Namensnennung, ein fremdes Produkt oder ein erfundener Leistungsbeleg ersetzt keine eigene verlangte Leistung.
+
+**s3 (10 BE):** Empirische Gültigkeit von Zustimmung unterschieden. 0 BE für diesen gesamten Schritt, sobald mindestens eine der folgenden Pflichtleistungen oder Pflichtdimensionen vollständig fehlt: „materialbezogene Unterscheidung empirischer Gültigkeit von gesellschaftlicher Zustimmung“. Das Fehlen darf nicht durch andere Teilpunkte dieses Schritts ausgeglichen werden. Sind alle Pflichtdimensionen substanziell vorhanden, werden für fachlich unvollkommene Ausführungen weiterhin die ursprünglichen Teilpunkte nach Qualität vergeben; gleichwertige alternative Lösungen sind zulässig. Eine bloße Namensnennung, ein fremdes Produkt oder ein erfundener Leistungsbeleg ersetzt keine eigene verlangte Leistung.
+
+**s4 (4 BE):** Prüfbarer nächster Forschungsschritt mit reflektiertem Einfluss. 0 BE für diesen gesamten Schritt, sobald mindestens eine der folgenden Pflichtleistungen oder Pflichtdimensionen vollständig fehlt: „eigene prüfbare nächste chemische Forschungsfrage mit begründetem nächsten Schritt und reflektiertem Einfluss“. Das Fehlen darf nicht durch andere Teilpunkte dieses Schritts ausgeglichen werden. Sind alle Pflichtdimensionen substanziell vorhanden, werden für fachlich unvollkommene Ausführungen weiterhin die ursprünglichen Teilpunkte nach Qualität vergeben; gleichwertige alternative Lösungen sind zulässig. Eine bloße Namensnennung, ein fremdes Produkt oder ein erfundener Leistungsbeleg ersetzt keine eigene verlangte Leistung.
+
+Bei einem wegen fehlender Pflichtleistung mit 0 BE bewerteten Abschnitt können selbst bei voller Punktzahl in allen anderen Abschnitten höchstens 36 von 40 BE erreicht werden. Bestehen erfordert 37 BE. Die hohe Grenze hält die Pflichtteile mit den vorhandenen gebündelten Bewertungsschritten unverzichtbar. Die tatsächlich vergebene Gesamtpunktzahl muss aus diesen Regeln und den belegten Leistungen nachvollziehbar berechnet werden; eine Rückmeldung „unvollständig“ allein ersetzt die Punkteberechnung nicht.

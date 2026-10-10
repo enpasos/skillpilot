@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "argv": [
+    "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-machine-content-native-readiness-author-20261010-v1/technical/normal_current517_scoped_checks.mts",
+    "--root",
+    "/home/enpasos/projects/skillpilot",
+    "--capsule",
+    "/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-P26-native-author/isolated-normal-capsule"
+  ],
+  "startedAt": "2026-10-10T10:38:46.191957+00:00",
+  "completedAt": "2026-10-10T10:39:10.387848+00:00",
+  "actualExitCode": 1,
+  "stdout": "",
+  "stderr": "node:fs:448\n    return binding.readFileUtf8(path, stringToFlags(options.flag));\n                   ^\n\nError: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-P26-native-author/isolated-normal-capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-reviewed-integration-technical-portable-successor-v2/candidate/A394.future-active.config.json'\n    at readFileSync (node:fs:448:20)\n    at loadJson (/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-P26-native-author/isolated-normal-capsule/app/scripts/generateCurriculumQualityStatus.current517-author-technical-exports.ts:1346:21)\n    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-P26-native-author/isolated-normal-capsule/app/scripts/generateCurriculumQualityStatus.current517-author-technical-exports.ts:3368:22)\n    at Array.map (<anonymous>)\n    at Object.readSemanticConfigs (/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-P26-native-author/isolated-normal-capsule/app/scripts/generateCurriculumQualityStatus.current517-author-technical-exports.ts:3367:57)\n    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-machine-content-native-readiness-author-20261010-v1/technical/normal_current517_scoped_checks.mts:9:171) {\n  errno: -2,\n  code: 'ENOENT',\n  syscall: 'open',\n  path: '/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-P26-native-author/isolated-normal-capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-q1-eight-reviewed-integration-technical-portable-successor-v2/candidate/A394.future-active.config.json'\n}\n\nNode.js v20.20.2\n",
+  "activeWrites": []
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-current517-normal-annotation-routes-affected20-1-author-native-20261010-v1",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-normal32-annotation-materialized-native-context-author-20261010-v1/native/affected20-1.normal-rollout.batch.config.json",
+  "configDigest": "sha256:643a8f21baf65865b1d9610c67304ddc8c7102dfc381bf693ae07cc456e35b28",
+  "goalIds": [
+    "f4d5a02d-711b-5a6b-a41d-971359c1f64d",
+    "2fdd759f-8349-5f7e-b29a-6ac7fb0299f9",
+    "75e2eff1-f871-5461-9e3f-26d0b333ce2f",
+    "503dedcb-0efc-5e6b-bbc9-20761a0951f5",
+    "e81a4aed-9695-533e-8eb7-7a0c714346ea",
+    "42391b16-bbae-5c77-84e1-d488e714167b",
+    "f79f15c0-e848-5e17-9eb5-26753d35c93b",
+    "9fc800d1-92d1-5ef6-81c1-33960ae034dd",
+    "7d9fcc7f-1c20-5d5b-9cf6-05f6b624dab6",
+    "9e3fae29-84d5-5600-bfb3-82d49ea3f1b5",
+    "4aa3a130-b517-5ac5-87b2-147fe432cadd",
+    "a8800c36-d13c-5f63-962c-cf18c3795c63",
+    "99d41b0f-e958-54cf-a077-9bed1704a303",
+    "5b1bb5d9-07b1-5ba9-b320-cc97be917c60",
+    "ac8b6c0f-98b2-5092-806d-d9498efbfa35",
+    "36666b4a-97af-51fc-9983-56cdcc7a8229",
+    "431a0f03-f28a-5e56-a61f-000336d0b410",
+    "31781d00-8f20-5041-bd7f-e261b27af162",
+    "38e30bb9-6145-5da0-80b8-36e3c45e15d0",
+    "7f140b34-ed26-59e7-8ad2-ccb6b56bc9d6"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 398,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-normal32-annotation-materialized-native-context-author-20261010-v1/native/current398-whole-normal.author-model.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-normal32-annotation-materialized-native-context-author-20261010-v1/candidate/whole517.normal32-materialized.author-candidate.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:7c3ff7a8fc01bf205a6db0d204e2736b047a27218458183e0f81b86efafd77a4"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:48535ebecbcbadfb3b65e224cd2d4bcb7c62176089482aec82198a8a2359822d",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:517c75843aeca70f965642b67f61be2c0deb660c55781fca7862656a62769231",
+    "reviewInputFingerprint": "sha256:e7e1b09f340d684171d576b1ab3e181b3b8371895a06c8b8ec27d780de48d7a6",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-current517-normal-annotation-routes-affected20-1-author-native-20261010-v1-a",
+        "campaignDigest": "sha256:c43c016de22b4a7950bc2d40fceb7e09e46db2506049e210048bc3252689f68a",
+        "roundId": "chemie-current517-normal-annotation-routes-affected20-1-author-native-20261010-v1-first-pass-a",
+        "independenceGroupId": "chemie-current517-normal-annotation-routes-affected20-1-author-native-20261010-v1-independent-a",
+        "batchId": "chemie-current517-normal-annotation-routes-affected20-1-author-native-20261010-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:e223f292e1feb3f0ebae0dcfe8c95561138edfdd6e4d1f98747dba163922b36b"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-current517-normal-annotation-routes-affected20-1-author-native-20261010-v1-b",
+        "campaignDigest": "sha256:9a5a3cfbe8d4eaf1c730a7a25732d7fcbf94c35223882659da136bc8a134e8d0",
+        "roundId": "chemie-current517-normal-annotation-routes-affected20-1-author-native-20261010-v1-first-pass-b",
+        "independenceGroupId": "chemie-current517-normal-annotation-routes-affected20-1-author-native-20261010-v1-independent-b",
+        "batchId": "chemie-current517-normal-annotation-routes-affected20-1-author-native-20261010-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:3168dac20f64c55a4e749e4cf4eba213cf61410eaf84e641a95e17b4eb1399a5"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

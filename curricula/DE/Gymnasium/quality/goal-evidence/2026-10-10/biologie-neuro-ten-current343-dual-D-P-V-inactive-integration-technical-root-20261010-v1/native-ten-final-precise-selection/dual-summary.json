@@ -1,0 +1,213 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:bf675a3a035577dc523e0d6019953eefa573312865e76b07dc6684693bcd3b10",
+  "reviewInputFingerprint": "sha256:ec9271b8537f3a5dbb1fcddaff701a60dd16751e4ea8f0df4480871429378f88",
+  "goalCount": 10,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-a",
+      "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a",
+      "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-a",
+      "runIds": [
+        "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::GPT-6 Codex; precise runtime model version not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-b",
+      "roundId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-b",
+      "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-independent-b",
+      "runIds": [
+        "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex GPT-6 agent::Exact runtime revision not exposed"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 10,
+    "unavailable": 0,
+    "requiresSynthesis": 10
+  },
+  "goals": [
+    {
+      "goalId": "9499943f-89b7-54e3-9fe2-e90404beaa4a",
+      "firstRecordId": "bio10-current-v3-A.9499943f-89b7-54e3-9fe2-e90404beaa4a",
+      "secondRecordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.9499943f.D",
+      "firstRunId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+      "secondRunId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2706c28e-1c21-50de-8a63-c450f5fe8b07",
+      "firstRecordId": "bio10-current-v3-A.2706c28e-1c21-50de-8a63-c450f5fe8b07",
+      "secondRecordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.2706c28e.D",
+      "firstRunId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+      "secondRunId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a7eee23c-a5d0-5101-937a-ca441764cabf",
+      "firstRecordId": "bio10-current-v3-A.a7eee23c-a5d0-5101-937a-ca441764cabf",
+      "secondRecordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.a7eee23c.D",
+      "firstRunId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+      "secondRunId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "146d70e0-b494-59fa-b8b6-29da18b36893",
+      "firstRecordId": "bio10-current-v3-A.146d70e0-b494-59fa-b8b6-29da18b36893",
+      "secondRecordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.146d70e0.D",
+      "firstRunId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+      "secondRunId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "97a15c19-c345-589e-8b3c-9f2b97a60095",
+      "firstRecordId": "bio10-current-v3-A.97a15c19-c345-589e-8b3c-9f2b97a60095",
+      "secondRecordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.97a15c19.D",
+      "firstRunId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+      "secondRunId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5670e999-922c-5862-ba77-2d93667badd4",
+      "firstRecordId": "bio10-current-v3-A.5670e999-922c-5862-ba77-2d93667badd4",
+      "secondRecordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.5670e999.D",
+      "firstRunId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+      "secondRunId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5",
+      "firstRecordId": "bio10-current-v3-A.1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5",
+      "secondRecordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.1f3cdf59.D",
+      "firstRunId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+      "secondRunId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3d822550-c14a-52ee-9908-6bcb873afdd6",
+      "firstRecordId": "bio10-current-v3-A.3d822550-c14a-52ee-9908-6bcb873afdd6",
+      "secondRecordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.3d822550.D",
+      "firstRunId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+      "secondRunId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5dd66bfd-616f-5a2a-be7c-49aaf12581a0",
+      "firstRecordId": "bio10-current-v3-A.5dd66bfd-616f-5a2a-be7c-49aaf12581a0",
+      "secondRecordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.5dd66bfd.D",
+      "firstRunId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+      "secondRunId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "5a5eeff5-ae97-5b5b-bc80-df03eba8e095",
+      "firstRecordId": "bio10-current-v3-A.5a5eeff5-ae97-5b5b-bc80-df03eba8e095",
+      "secondRecordId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.5a5eeff5.D",
+      "firstRunId": "biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-20261010-v2-first-pass-a.batch-001",
+      "secondRunId": "biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1.round-b.run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

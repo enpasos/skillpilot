@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "purpose": "Explicitly rejected AUTHOR data specimen, never a valid adoption input",
+  "schema": {
+    "path": "contracts/curriculum-package/v1/composition-view.schema.json",
+    "sha256": "sha256:a90e68ba07e141e54789d5dbd3de862a6d98f9fff513e57465efbb02c9fc57a6",
+    "bytes": 4608
+  },
+  "specimen": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-C11-NTG-bounded-layer-a-proposal-author-20261010-v1/rejected-projection-experiments/explicit-track-year.NOT-VALID-composition-view.json",
+    "sha256": "sha256:727ca1e948902afc3a99c56b40b748ddc013b10f1746184b03b566cc57b070ea",
+    "bytes": 2546
+  },
+  "actualErrors": [
+    {
+      "path": [
+        "scope"
+      ],
+      "message": "Additional properties are not allowed ('programmeYear', 'trainingDirection' were unexpected)"
+    }
+  ],
+  "closedScopeDimensions": [
+    "schoolForm",
+    "jurisdiction",
+    "stage",
+    "courseProfile",
+    "durationModel"
+  ],
+  "trainingDirectionAndProgrammeYearSupported": false,
+  "checkerException": false
+}

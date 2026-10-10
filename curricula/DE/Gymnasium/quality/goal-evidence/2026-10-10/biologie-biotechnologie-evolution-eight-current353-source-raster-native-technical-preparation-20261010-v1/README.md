@@ -1,0 +1,7 @@
+# Bio8 / Native11: inactive technical current353 preparation
+
+Eight complete author candidates,16 full cases,8 current PNGs and three neighboring current contexts are prepared with the unchanged normal tooling. All471 other whole479 goals and383 unchanged whole394 page bodies remain exact. The three neighbors change only displayed dependency titles; their old whole P/A/M/image science is retained. Native11 has11 actual HTML/PDF captures,13 physical PDF pages including2 frontmatter, and ordinary independent A/B input campaigns with no review records.
+
+Seven HE author corrections are merged into the existing ROOT six Neuro source corrections; BY root eight actual-primary bindings and Sehbahn partial are retained. HE-GK scope removes only the two open523/d11 goals. Same-PDF primary aliases are explicitly normalized to existing current Stand2025 metadata; actual source text/LK/partial/optional/practical HOLDs are unchanged. All source/course claims remain independently pending.
+
+Three changed semantic fingerprints in the inactive kind ledger prepare classification only; they supply no fresh semantic-atomicity or Memory judgments. Human evolution430 remains an explicit AND atomicity boundary HOLD. P8 stays needs_human_review / ai_candidate / E1 / G1 / approved0; no human, learner performance, laboratory, release, publication or deployment acceptance is claimed. Strict active gain0; no active or historical write. Technical scripts Apache-2.0, own didactic content CC-BY-4.0, third-party source rights retained.

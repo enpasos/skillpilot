@@ -1,0 +1,16 @@
+node:fs:573
+  return binding.open(
+                 ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/biologie-four-native-technical/isolated-biologie-four-native-h6w6nlaq/curricula/DE/Gymnasium/input/HE/lower-secondary/source-json/DE_HES_S_GYM_1_BIOLOGIE.de.json.snapshot'
+    at Object.openSync (node:fs:573:18)
+    at readFileSync (node:fs:452:35)
+    at buildGoalBookSourceAtlasInputs (/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/biologie-four-native-technical/isolated-biologie-four-native-h6w6nlaq/app/scripts/goalBookSourceAtlasInputs.ts:272:33)
+    at <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current-raster-native-technical-preparation-20261010-v2/technical-normal-model-and-source-check.mts:25:9) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/biologie-four-native-technical/isolated-biologie-four-native-h6w6nlaq/curricula/DE/Gymnasium/input/HE/lower-secondary/source-json/DE_HES_S_GYM_1_BIOLOGIE.de.json.snapshot'
+}
+
+Node.js v20.20.2

@@ -1,0 +1,705 @@
+{
+  "schemaVersion": 1,
+  "checkedAt": "2026-10-10T10:17:50.954Z",
+  "normalSourceEquality": [
+    {
+      "path": "app/scripts/goalBookModel.ts",
+      "sha256": "sha256:210ebfbe354e19560bc841ba3113e2e12255b6d5b52f27d643c5afcbc68a37cb",
+      "bytes": 113603,
+      "executionSourceByteExact": true
+    },
+    {
+      "path": "app/scripts/validateGoalDescriptionReviewCampaignResults.ts",
+      "sha256": "sha256:36f2ac8ab823cd70f4402deb5f4c96d2399f719f90dfa4a95916467b52962df8",
+      "bytes": 10382,
+      "executionSourceByteExact": true
+    },
+    {
+      "path": "app/scripts/validateGoalDescriptionReviewDualRound.ts",
+      "sha256": "sha256:e3558c12a93cc680fb6898b36bb6a2de0ff44ed5bdca98f9f512955602b6b670",
+      "bytes": 14282,
+      "executionSourceByteExact": true
+    },
+    {
+      "path": "app/scripts/validateGoalDescriptionDualRoundResolution.ts",
+      "sha256": "sha256:4b83f4c6c924527a989e6321a9427a6525a4565f312caf4e4c82699ea7b01136",
+      "bytes": 47407,
+      "executionSourceByteExact": true
+    },
+    {
+      "path": "app/scripts/reportDeepUnderstandingRollout.ts",
+      "sha256": "sha256:b27d00c76f7e0f9dd99169fa26997ad6c9b333a20d30b928512c762cf10bb29d",
+      "bytes": 71502,
+      "executionSourceByteExact": true
+    }
+  ],
+  "completedActualIndependentA": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-two-findings-current-followup-independent-a-20261010-v1/final-current-native-eight-independent.A.json",
+    "sha256": "sha256:7a7a0abfb72b656c2921d584c4ad3290033acd9f56c032d85b6ae44082b87ac6",
+    "bytes": 64498
+  },
+  "completedActualIndependentB": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current-v3-independent-b-v1/independent-b.completed.entry.json",
+    "sha256": "sha256:11b41e60765cedecf28b5de273a36e20b96a2cbe264e56d248d9b2ea22185445",
+    "bytes": 6458
+  },
+  "freshBNumericNarrativeCorrection": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current-v3-independent-b-v1/FIRST.blind.scientific-review.numeric-correction.json",
+    "sha256": "sha256:f846300007a7f06eabbf1df9cc45ac1cba9b3ff3b5f1dacfab90d79e60ead16a",
+    "bytes": 1095
+  },
+  "normalDualSummary": {
+    "schemaVersion": 1,
+    "validationContract": "goal-description-dual-round-v1",
+    "automaticAcceptance": false,
+    "bundleFingerprint": "sha256:231f3f21d18f76be785a21f8adaaeb46886e30463364bc8444ffeebc15fe30f2",
+    "reviewInputFingerprint": "sha256:036285838c67a61bc201ffd1cb2cc0f74a0b49c9c25487effe7543408130ae19",
+    "goalCount": 8,
+    "rounds": {
+      "first": {
+        "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-a",
+        "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a",
+        "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-a",
+        "runIds": [
+          "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001"
+        ],
+        "providers": [
+          "OpenAI Codex"
+        ],
+        "modelIdentities": [
+          "OpenAI Codex::GPT-6 Codex; precise runtime model version not exposed::(unspecified-version)"
+        ]
+      },
+      "second": {
+        "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-b",
+        "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b",
+        "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-b",
+        "runIds": [
+          "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001"
+        ],
+        "providers": [
+          "OpenAI"
+        ],
+        "modelIdentities": [
+          "OpenAI::Codex GPT-6 agent; exact runtime model revision not exposed::(unspecified-version)"
+        ]
+      }
+    },
+    "diversity": {
+      "policy": "report_only",
+      "sharedProviders": [],
+      "sharedModelIdentities": [],
+      "distinctProviderOrModel": true,
+      "policySatisfied": true
+    },
+    "counts": {
+      "exactAgreement": 0,
+      "disagreement": 8,
+      "unavailable": 0,
+      "requiresSynthesis": 8
+    },
+    "goals": [
+      {
+        "goalId": "1c3470ae-83f8-52e9-98ae-b0a712755b66",
+        "firstRecordId": "stoffwechsel8-native-v3-targeted-a:1c3470ae-83f8-52e9-98ae-b0a712755b66",
+        "secondRecordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:1c3470ae-83f8-52e9-98ae-b0a712755b66",
+        "firstRunId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "secondRunId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "8e2244e1-8616-5f24-859f-8e10df1c887b",
+        "firstRecordId": "stoffwechsel8-native-v3-targeted-a:8e2244e1-8616-5f24-859f-8e10df1c887b",
+        "secondRecordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:8e2244e1-8616-5f24-859f-8e10df1c887b",
+        "firstRunId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "secondRunId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "e467ee54-7773-595f-ac1c-a60a5b7be2cf",
+        "firstRecordId": "stoffwechsel8-native-v3-targeted-a:e467ee54-7773-595f-ac1c-a60a5b7be2cf",
+        "secondRecordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:e467ee54-7773-595f-ac1c-a60a5b7be2cf",
+        "firstRunId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "secondRunId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "cdd2247b-0ac6-5457-a5b9-26c6d0139906",
+        "firstRecordId": "stoffwechsel8-native-v3-targeted-a:cdd2247b-0ac6-5457-a5b9-26c6d0139906",
+        "secondRecordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:cdd2247b-0ac6-5457-a5b9-26c6d0139906",
+        "firstRunId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "secondRunId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "db9f83a4-90b0-5601-a734-46b40a1cf0e4",
+        "firstRecordId": "stoffwechsel8-native-v3-targeted-a:db9f83a4-90b0-5601-a734-46b40a1cf0e4",
+        "secondRecordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:db9f83a4-90b0-5601-a734-46b40a1cf0e4",
+        "firstRunId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "secondRunId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "e25ad42f-8314-5ee7-9440-765ee18773f9",
+        "firstRecordId": "stoffwechsel8-native-v3-targeted-a:e25ad42f-8314-5ee7-9440-765ee18773f9",
+        "secondRecordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:e25ad42f-8314-5ee7-9440-765ee18773f9",
+        "firstRunId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "secondRunId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "2c60c8ad-04d3-5395-8a27-400646eb1612",
+        "firstRecordId": "stoffwechsel8-native-v3-targeted-a:2c60c8ad-04d3-5395-8a27-400646eb1612",
+        "secondRecordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:2c60c8ad-04d3-5395-8a27-400646eb1612",
+        "firstRunId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "secondRunId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "39ba4385-0144-5e20-ba11-e3714756583b",
+        "firstRecordId": "stoffwechsel8-native-v3-targeted-a:39ba4385-0144-5e20-ba11-e3714756583b",
+        "secondRecordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:39ba4385-0144-5e20-ba11-e3714756583b",
+        "firstRunId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "secondRunId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      }
+    ]
+  },
+  "normalIndividualResolutions": [
+    {
+      "goalId": "1c3470ae-83f8-52e9-98ae-b0a712755b66",
+      "firstBinding": {
+        "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-a",
+        "campaignDigest": "sha256:deaabea246023d6dfb5f4e85e21fb1a724dc29370891a4593ae870916ae4782c",
+        "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a",
+        "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-a",
+        "reviewInputFingerprint": "sha256:036285838c67a61bc201ffd1cb2cc0f74a0b49c9c25487effe7543408130ae19",
+        "goalReviewContextFingerprint": "sha256:4f4afe59428e8cd1d165c2ee8fa6bde42b9e8b4f446feab32a71c9e7e94d1614",
+        "batchId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "runId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "runManifestDigest": "sha256:e450b5da2cda93f7965878b802e7afd3084c285926679d2643931e0dc9419d0b",
+        "resultsDigest": "sha256:f56fe0a33c56de7952d3d65d2e19b260f393c450dd2159b7787b813dc010f050",
+        "recordId": "stoffwechsel8-native-v3-targeted-a:1c3470ae-83f8-52e9-98ae-b0a712755b66",
+        "recordDigest": "sha256:4fff5f38dd3edeacaa849d592ac98026cc203fbf3d01758b2c00b38f857a6989"
+      },
+      "secondBinding": {
+        "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-b",
+        "campaignDigest": "sha256:7da649ba672f9240174d6715718f772adb3182c98cf245156235e2efae25634a",
+        "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b",
+        "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-b",
+        "reviewInputFingerprint": "sha256:036285838c67a61bc201ffd1cb2cc0f74a0b49c9c25487effe7543408130ae19",
+        "goalReviewContextFingerprint": "sha256:4f4afe59428e8cd1d165c2ee8fa6bde42b9e8b4f446feab32a71c9e7e94d1614",
+        "batchId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b.batch-001",
+        "runId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+        "runManifestDigest": "sha256:e1cc8e132c9079d5ec17f0dfa3b7150e5bcad93125979f74f5ad706616298253",
+        "resultsDigest": "sha256:fef94a1901a291408d6ecbd0bf7d8813869d00c02e410aed415838e0b8a7cbbb",
+        "recordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:1c3470ae-83f8-52e9-98ae-b0a712755b66",
+        "recordDigest": "sha256:cf6c9fe65ff86ac548eeb67a0978bd4f7611a8b42246e1b61f9f31e3320d272b"
+      },
+      "firstWholeRationale": "KEEP. Das Ziel beschreibt eine einheitliche Gewebebeobachtung, die beiden Sprachen stimmen überein. Die zwei vollständigen Fälle prüfen sichere Vorbereitung, Verband, Maßstab und Beobachtung/Deutung; 500/5=100µm und 180/3=60µm sind korrekt. Zwiebel ohne Chloroplasten und grünes Blatt bilden einen sachhaltigen Transfer. Die eigene versiegelte fachliche Erstprüfung bleibt gültig: gesamter current Native8-Seiten-/D-Kontext, Profilrecord und Bild sind exakt unverändert. Der aktuelle ganze HTML-Artikel unterscheidet sich nur im gemeinsamen Buch-Digest/Feedbacklink; tatsächliche Capture-Pixel unterscheiden sich nur im Digest-Footer. Aktuelle Bindung wird erhalten, kein neuer fachlicher Abschluss behauptet.",
+      "secondWholeRationale": "Fresh independent B reviewed complete current bilingual goal, profile, both whole materials/tasks/worked solutions/fresh transfers/rubrics, source/operator/course witnesses, authoritative semantic kind and current A/M reasons, and actual original/360/680 plus whole HTML/PDF. HE KC G9 7.1.2 observe/describe is covered by both microscopy cases. The 22 inherited direct source witnesses include broader cellular structure/method rows; this atom does not certify all content of those broader rows or newly authenticate retained NULL passage objects. A single observation-and-description competence is assessed across tissues, rather than separate unrelated cell theory goals. The given scale, guided observations and evidence-based interpretation demand understanding rather than a standalone recall deck.",
+      "firstWholeUnderstandingEvidence": {
+        "essentialUnderstandingDe": "Benachbarte Pflanzenzellen bilden einen Gewebeverband. Sichtbare Zellwände, gefärbte Kerne und gegebenenfalls Chloroplasten sind von bloßen Strukturannahmen zu unterscheiden; eine nicht aufgelöste Membran fehlt deshalb nicht.",
+        "essentialUnderstandingEn": "Neighbouring plant cells form tissue. Visible cell walls, stained nuclei and, where present, chloroplasts must be distinguished from inferred structures; an unresolved membrane is not thereby absent.",
+        "observablePerformanceDe": "Die lernende Person beschreibt und dokumentiert mehrere angrenzende Zellen mit geeigneter Präparation, Fokussierung und Maßstab, schätzt deren Größe und trennt Beobachtungen von Deutungen.",
+        "observablePerformanceEn": "The learner describes and records several adjoining cells using suitable preparation, focus and scale, estimates their size and separates observations from interpretations.",
+        "transferExpectationDe": "An einem frisch vorgelegten grünen Blattverband erklärt die lernende Person den Unterschied zur nichtgrünen Zwiebel-Bulbenepidermis und bewertet, welche Aussagen bei unscharfer Überlagerung noch zulässig sind.",
+        "transferExpectationEn": "Given fresh green leaf tissue, the learner explains its difference from non-green onion bulb epidermis and assesses which statements remain justified when layers overlap out of focus."
+      },
+      "secondWholeUnderstandingEvidence": {
+        "essentialUnderstandingDe": "Pflanzenzellen bilden im Gewebe direkt benachbarte Verbände. Sichtbare gemeinsame Begrenzungen und Zellkerne sind von der Deutung unsichtbarer Membranen und von Chloroplastenvorkommen verschiedener Gewebe zu unterscheiden.",
+        "essentialUnderstandingEn": "Plant cells form directly adjacent associations in tissue. Visible shared boundaries and nuclei must be distinguished from interpretation of unresolved membranes and chloroplast occurrence in different tissues.",
+        "observablePerformanceDe": "Die lernende Person präpariert bzw. plant eine geeignete dünne Lage, fokussiert schonend und dokumentiert mehrere benachbarte Zellen; sie beschreibt tatsächlich erkennbare Strukturen, nutzt den gegebenen Maßstab und kennzeichnet die Grenzen ihrer Deutung.",
+        "observablePerformanceEn": "The learner prepares or plans a suitable thin layer, focuses carefully and records several adjacent cells; they describe genuinely visible structures, use the supplied scale and mark limits of interpretation.",
+        "transferExpectationDe": "Bei einem unabhängig vorgelegten Wurzelpräparat oder unscharfen Blattbild begründet die Person, welche Aussagen über Zellverband und Chloroplasten die Sicht tatsächlich trägt; sie passt Präparation und Dokumentation an, ohne fehlende Sichtbarkeit als fehlende Struktur zu behandeln.",
+        "transferExpectationEn": "For an independently presented root preparation or blurred leaf image, the learner justifies which statements about cell association and chloroplasts the observation supports; they adapt preparation and documentation without treating invisibility as absence."
+      },
+      "differingFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "normalCurrentValidation": {
+        "errors": [],
+        "strictDescriptionComplete": true
+      },
+      "newScientificReviewClaimed": false
+    },
+    {
+      "goalId": "8e2244e1-8616-5f24-859f-8e10df1c887b",
+      "firstBinding": {
+        "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-a",
+        "campaignDigest": "sha256:deaabea246023d6dfb5f4e85e21fb1a724dc29370891a4593ae870916ae4782c",
+        "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a",
+        "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-a",
+        "reviewInputFingerprint": "sha256:036285838c67a61bc201ffd1cb2cc0f74a0b49c9c25487effe7543408130ae19",
+        "goalReviewContextFingerprint": "sha256:c14d2a19e657256e29cd13a0a1245bf59780f7c332523fd808bea43248f8ccf3",
+        "batchId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "runId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "runManifestDigest": "sha256:e450b5da2cda93f7965878b802e7afd3084c285926679d2643931e0dc9419d0b",
+        "resultsDigest": "sha256:f56fe0a33c56de7952d3d65d2e19b260f393c450dd2159b7787b813dc010f050",
+        "recordId": "stoffwechsel8-native-v3-targeted-a:8e2244e1-8616-5f24-859f-8e10df1c887b",
+        "recordDigest": "sha256:85d7a79c7724252b6401d040e55dcc34bbc3507627d8263179e8718bf2733c7f"
+      },
+      "secondBinding": {
+        "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-b",
+        "campaignDigest": "sha256:7da649ba672f9240174d6715718f772adb3182c98cf245156235e2efae25634a",
+        "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b",
+        "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-b",
+        "reviewInputFingerprint": "sha256:036285838c67a61bc201ffd1cb2cc0f74a0b49c9c25487effe7543408130ae19",
+        "goalReviewContextFingerprint": "sha256:c14d2a19e657256e29cd13a0a1245bf59780f7c332523fd808bea43248f8ccf3",
+        "batchId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b.batch-001",
+        "runId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+        "runManifestDigest": "sha256:e1cc8e132c9079d5ec17f0dfa3b7150e5bcad93125979f74f5ad706616298253",
+        "resultsDigest": "sha256:fef94a1901a291408d6ecbd0bf7d8813869d00c02e410aed415838e0b8a7cbbb",
+        "recordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:8e2244e1-8616-5f24-859f-8e10df1c887b",
+        "recordDigest": "sha256:f82f79a2040ea5667d03afd6554622cbbe69929ef746bd26921cd93f880406ed"
+      },
+      "firstWholeRationale": "KEEP. Die kurze DE/EN-Beschreibung bleibt quelltreu und zusammenhängend. Im vollständig gelesenen c1-Nachfolger ist der versiegelte P-Mengenbefund fachlich behoben:20,0ml×80mmol/l=1,60mmol Ethanol, im1:1-Modell40,32ml trockenes Gesamt-CO2 bei30°C/1bar;38ml entsprechen94,25% innerhalb der ausdrücklich angenommenen90–100%-Grenze. Alle sechs Einzelpaare und Kontrollmittel wurden unabhängig gerechnet. Material, Aufgabe, Lösung, Profilbrief und Rubrik binden identische Bedingungen. Der unveränderte c2 bleibt gültig. Aktuelle ganze HTML/PDF-Seite und vollständige P-/Kontextbindungen wurden gelesen. Synthese, Labordurchführung und reale Rückgewinnung sind ausdrücklich getrennt.",
+      "secondWholeRationale": "Fresh independent B reviewed complete current bilingual goal, profile, both whole materials/tasks/worked solutions/fresh transfers/rubrics, source/operator/course witnesses, authoritative semantic kind and current A/M reasons, and actual original/360/680 plus whole HTML/PDF. HE Q3.2.8 LK includes explanation and experimental inquiry, addressed by complete safe planning/data cases as AI candidate evidence only. BY EA.3.12 LK and GA.3.9 GK_LK support the bounded anaerobic ATP explanation. The broader BY theory occurrence does not certify the full Hessian experimental demand in every course. Explaining fermentation while investigating discriminating evidence is one integrated fermentation competence. The two routes are compared within that competence, not an unrelated conjunction. Given equations and control evidence require reasoning rather than a recall-only card set. Existing LK weight 1.1 is preserved.",
+      "firstWholeUnderstandingEvidence": {
+        "essentialUnderstandingDe": "Alkoholische und homolaktische Gärung regenerieren NAD+ für die Glykolyse; die zwei Netto-ATP stammen aus der Glykolyse. Alkoholische Gärung erzeugt Ethanol und CO2, homolaktische Gärung Lactat ohne CO2.",
+        "essentialUnderstandingEn": "Alcoholic and homolactic fermentation regenerate NAD+ for glycolysis; the two net ATP arise from glycolysis. Alcoholic fermentation produces ethanol and CO2, while homolactic fermentation produces lactate without CO2.",
+        "observablePerformanceDe": "Die lernende Person erklärt die beiden Wege, plant sichere kontrollierte Untersuchungen mit geeigneten Schulstämmen und unterscheidet Substratumsatz, Gas, pH und spezifische Produktnachweise samt Aussagegrenzen.",
+        "observablePerformanceEn": "The learner explains both pathways, plans safe controlled investigations using suitable school strains and distinguishes substrate conversion, gas, pH and specific product measurements with their limitations.",
+        "transferExpectationDe": "Bei einem frischen Ansatz mit anderer Zuckerart oder anderem Gärungstyp begründet die lernende Person geeignete Kontrollen und erklärt, weshalb Gas allein keine sichere alkoholische Gärungsdiagnose liefert.",
+        "transferExpectationEn": "For a fresh preparation with another sugar or fermentation type, the learner justifies suitable controls and explains why gas alone cannot reliably diagnose alcoholic fermentation."
+      },
+      "secondWholeUnderstandingEvidence": {
+        "essentialUnderstandingDe": "Gärung ermöglicht die Fortsetzung der Glykolyse durch Regeneration von NAD+; ihr Netto-ATP stammt aus der Glykolyse. Alkoholische und ausdrücklich homolaktische Gärung unterscheiden sich in Produkten und CO₂-Bilanz; pH-Abnahme oder Gas allein identifiziert keinen Weg.",
+        "essentialUnderstandingEn": "Fermentation permits glycolysis to continue by regenerating NAD+; its net ATP comes from glycolysis. Alcoholic and explicitly homolactic fermentation differ in products and carbon-dioxide balance; falling pH or gas alone does not identify a route.",
+        "observablePerformanceDe": "Die Person erklärt die Stoff- und Redoxbilanz, plant geeignete Vergleichs- und Leeransätze und deutet die ausdrücklich synthetischen Ethanol-, korrigierten Gas- und Lactatdaten. Sie rechnet Konzentration mit Flüssigkeitsvolumen zu Stoffmenge um und prüft den modellierten 1:1- beziehungsweise 2:1-Produktbezug.",
+        "observablePerformanceEn": "The learner explains matter and redox balance, plans suitable comparisons and blanks, and interprets explicitly synthetic ethanol, corrected gas and lactate data. They convert concentration and liquid volume to amount and test the modelled 1:1 or 2:1 product relation.",
+        "transferExpectationDe": "Für einen frischen belüfteten Ansatz mit CO₂ ohne Ethanol oder einen nicht als homofermentativ bestimmten Starter prüft die Person konkurrierende Erklärungen und verlangt spezifische Produktdaten; sie überträgt die Modellgrenzen statt Rohgas oder Säure allein als Gärungsnachweis zu verwenden.",
+        "transferExpectationEn": "For a fresh aerated preparation with carbon dioxide but no ethanol, or a starter not identified as homofermentative, the learner tests competing explanations and requires specific product data; they transfer model limits rather than using raw gas or acidity alone as fermentation proof."
+      },
+      "differingFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "normalCurrentValidation": {
+        "errors": [],
+        "strictDescriptionComplete": true
+      },
+      "newScientificReviewClaimed": false
+    },
+    {
+      "goalId": "e467ee54-7773-595f-ac1c-a60a5b7be2cf",
+      "firstBinding": {
+        "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-a",
+        "campaignDigest": "sha256:deaabea246023d6dfb5f4e85e21fb1a724dc29370891a4593ae870916ae4782c",
+        "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a",
+        "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-a",
+        "reviewInputFingerprint": "sha256:036285838c67a61bc201ffd1cb2cc0f74a0b49c9c25487effe7543408130ae19",
+        "goalReviewContextFingerprint": "sha256:5ebafce8922e2552d45eed740986bfe2f97a4bc2fd6f48d7cb026a27afa965b9",
+        "batchId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "runId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "runManifestDigest": "sha256:e450b5da2cda93f7965878b802e7afd3084c285926679d2643931e0dc9419d0b",
+        "resultsDigest": "sha256:f56fe0a33c56de7952d3d65d2e19b260f393c450dd2159b7787b813dc010f050",
+        "recordId": "stoffwechsel8-native-v3-targeted-a:e467ee54-7773-595f-ac1c-a60a5b7be2cf",
+        "recordDigest": "sha256:d4ab1b5c8e8b0281cf82aca5422d53d40a83c713c1b36399b9d3cefdfa76199d"
+      },
+      "secondBinding": {
+        "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-b",
+        "campaignDigest": "sha256:7da649ba672f9240174d6715718f772adb3182c98cf245156235e2efae25634a",
+        "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b",
+        "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-b",
+        "reviewInputFingerprint": "sha256:036285838c67a61bc201ffd1cb2cc0f74a0b49c9c25487effe7543408130ae19",
+        "goalReviewContextFingerprint": "sha256:5ebafce8922e2552d45eed740986bfe2f97a4bc2fd6f48d7cb026a27afa965b9",
+        "batchId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b.batch-001",
+        "runId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+        "runManifestDigest": "sha256:e1cc8e132c9079d5ec17f0dfa3b7150e5bcad93125979f74f5ad706616298253",
+        "resultsDigest": "sha256:fef94a1901a291408d6ecbd0bf7d8813869d00c02e410aed415838e0b8a7cbbb",
+        "recordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:e467ee54-7773-595f-ac1c-a60a5b7be2cf",
+        "recordDigest": "sha256:14653469c9cbf919618ac1dd68c8659ff43c2d499293411821c4e71602f6ba0c"
+      },
+      "firstWholeRationale": "KEEP. Der autonome Planungsanspruch aus B13-EA.3.10 und beide ganzen bilingualen Fälle bleiben fachlich richtig. Der versiegelte V-Erstbefund zur zum Betrachter gedrehten Heftschrift wurde zielgerichtet durch Entfernung des Zusatzhefts behoben. Ich habe das tatsächliche neue PNG in Original/360/680 und die aktuelle ganze HTML/PDF-Seite gesehen; gleiche Temperaturstufen, Mengen und Zeitbedingungen bleiben klar. Aktuelle P-/Bild-/Native8-/Whole394-Bindungen wurden geprüft; kein neuer fachlicher Blocker. Das ist ein maschineller Kandidatenreview, keine menschliche Freigabe.",
+      "secondWholeRationale": "Fresh independent B reviewed complete current bilingual goal, profile, both whole materials/tasks/worked solutions/fresh transfers/rubrics, source/operator/course witnesses, authoritative semantic kind and current A/M reasons, and actual original/360/680 plus whole HTML/PDF. BY B13-EA.3.10 is LK and uses independent planning/hypothesis/operator demand, genuinely met by the full cases. No GA source requirement is manufactured from canonical shared technical labels. The image is introductory planning, not proof that a complete gas-collection apparatus was physically executed. Planning a controlled enzyme experiment is one assessable method competence including the necessary hypothesis, control and evaluation steps. Supplied material supports design/interpretation, so no independent memory deck is required.",
+      "firstWholeUnderstandingEvidence": {
+        "essentialUnderstandingDe": "Eine Hypothese zur Wirkung eines Außenfaktors auf Enzymaktivität braucht einen kontrollierten Vergleich, einen passenden zeitbezogenen Aktivitätsindikator und eine begründete Trennung von verändertem Faktor und konstanten Bedingungen.",
+        "essentialUnderstandingEn": "A hypothesis about an external factor affecting enzyme activity requires a controlled comparison, a suitable rate indicator and a justified distinction between the changed factor and constant conditions.",
+        "observablePerformanceDe": "Die lernende Person plant selbstständig Vergleichsstufen, konstante Mengen und Zeiten, Negativkontrolle, Wiederholungen und sichere Durchführung; sie wertet einen vorgelegten synthetischen Vorversuch begrenzt aus, ohne ihn als eigenen Versuch auszugeben.",
+        "observablePerformanceEn": "The learner independently plans comparison levels, constant quantities and times, a negative control, repetitions and safe procedures; they interpret a supplied synthetic pilot within its limits without claiming to have performed it.",
+        "transferExpectationDe": "Für einen anderen Außenfaktor, etwa pH statt Temperatur, entwickelt die lernende Person einen frischen kontrollierten Plan und erklärt, welche Störvariablen und Messbedingungen neu zu prüfen sind.",
+        "transferExpectationEn": "For another external factor, such as pH instead of temperature, the learner develops a fresh controlled plan and explains which confounding variables and measurement conditions require new checks."
+      },
+      "secondWholeUnderstandingEvidence": {
+        "essentialUnderstandingDe": "Enzymaktivität hängt unter anderem von Temperatur und pH ab. Ein aussagekräftiger Versuch ändert einen Faktor bei kontrollierten übrigen Bedingungen; vergleichbare Anfangsraten, Leeransätze und unabhängige Wiederholungen begrenzen alternative Erklärungen.",
+        "essentialUnderstandingEn": "Enzyme activity depends, among other factors, on temperature and pH. An informative experiment varies one factor while controlling the others; comparable initial rates, blanks and independent repetitions constrain alternative explanations.",
+        "observablePerformanceDe": "Die Person formuliert eigenständig eine Hypothese und einen durchführbaren sicheren Vergleich, legt Enzym-, Substrat-, Volumen- und Zeitkontrollen fest und wertet Wiederholungen als zeitbezogene Aktivität mit Streuung aus; sie unterscheidet Messsignal von universeller Enzymkonstante.",
+        "observablePerformanceEn": "The learner independently formulates a hypothesis and feasible safe comparison, fixes enzyme, substrate, volume and timing controls, and evaluates repetitions as time-based activity with variation; they distinguish a measurement signal from a universal enzyme constant.",
+        "transferExpectationDe": "Bei einer neuen Farbinterferenz, Verdünnung oder Rückführung nach Erhitzung entwirft die Person einen zusätzlichen Kontrollvergleich, der pH-Wirkung, Messartefakt und reversible beziehungsweise bleibende Aktivitätsänderung unterscheidet; bloßes Zahlenwechseln genügt nicht.",
+        "transferExpectationEn": "For a fresh colour interference, dilution or return after heating, the learner designs an additional controlled comparison distinguishing pH effects, measurement artefacts and reversible versus persistent activity change; a mere number swap is insufficient."
+      },
+      "differingFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "normalCurrentValidation": {
+        "errors": [],
+        "strictDescriptionComplete": true
+      },
+      "newScientificReviewClaimed": false
+    },
+    {
+      "goalId": "cdd2247b-0ac6-5457-a5b9-26c6d0139906",
+      "firstBinding": {
+        "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-a",
+        "campaignDigest": "sha256:deaabea246023d6dfb5f4e85e21fb1a724dc29370891a4593ae870916ae4782c",
+        "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a",
+        "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-a",
+        "reviewInputFingerprint": "sha256:036285838c67a61bc201ffd1cb2cc0f74a0b49c9c25487effe7543408130ae19",
+        "goalReviewContextFingerprint": "sha256:077eee9f251c549aafb83e9418e040400690958b331bb18f00cb58761e58d3f3",
+        "batchId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "runId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "runManifestDigest": "sha256:e450b5da2cda93f7965878b802e7afd3084c285926679d2643931e0dc9419d0b",
+        "resultsDigest": "sha256:f56fe0a33c56de7952d3d65d2e19b260f393c450dd2159b7787b813dc010f050",
+        "recordId": "stoffwechsel8-native-v3-targeted-a:cdd2247b-0ac6-5457-a5b9-26c6d0139906",
+        "recordDigest": "sha256:e60392c4027126e75a6a451c0e0cc3844f5920a674576e128305510f6585de35"
+      },
+      "secondBinding": {
+        "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-b",
+        "campaignDigest": "sha256:7da649ba672f9240174d6715718f772adb3182c98cf245156235e2efae25634a",
+        "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b",
+        "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-b",
+        "reviewInputFingerprint": "sha256:036285838c67a61bc201ffd1cb2cc0f74a0b49c9c25487effe7543408130ae19",
+        "goalReviewContextFingerprint": "sha256:077eee9f251c549aafb83e9418e040400690958b331bb18f00cb58761e58d3f3",
+        "batchId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b.batch-001",
+        "runId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+        "runManifestDigest": "sha256:e1cc8e132c9079d5ec17f0dfa3b7150e5bcad93125979f74f5ad706616298253",
+        "resultsDigest": "sha256:fef94a1901a291408d6ecbd0bf7d8813869d00c02e410aed415838e0b8a7cbbb",
+        "recordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:cdd2247b-0ac6-5457-a5b9-26c6d0139906",
+        "recordDigest": "sha256:df6e1344a13230079be71d2cf7f95270e5bf8185cc14e8868fa989f5f8f53ec1"
+      },
+      "firstWholeRationale": "KEEP. Die Beschreibung umfasst die zusammenhängende Regulation, keine Sammlung unabhängiger Kompetenzen. Die ganzen Fälle unterscheiden regulatorische von aktiven Stellen und Aktivität von Enzymmenge; negative Rückkopplung, 75% Ratenabnahme, Varianten und Erholung tragen die Erklärung. Eine nachgeschaltete Blockade wird nicht als unveränderter Gesamtfluss verkannt. Die eigene versiegelte fachliche Erstprüfung bleibt gültig: gesamter current Native8-Seiten-/D-Kontext, Profilrecord und Bild sind exakt unverändert. Der aktuelle ganze HTML-Artikel unterscheidet sich nur im gemeinsamen Buch-Digest/Feedbacklink; tatsächliche Capture-Pixel unterscheiden sich nur im Digest-Footer. Aktuelle Bindung wird erhalten, kein neuer fachlicher Abschluss behauptet.",
+      "secondWholeRationale": "Fresh independent B reviewed complete current bilingual goal, profile, both whole materials/tasks/worked solutions/fresh transfers/rubrics, source/operator/course witnesses, authoritative semantic kind and current A/M reasons, and actual original/360/680 plus whole HTML/PDF. BY merged B13-EA.3.11 LK and B13-GA.3.8 GK_LK operator/course occurrences remain distinct in the source witness; feedback regulation and physiological significance are covered without changing the course mapping. Enzyme-level regulation explains one metabolic-control competence; testing quantity versus activity is a causal discriminator for that competence. The task assesses mechanistic understanding and is not a standalone memory objective.",
+      "firstWholeUnderstandingEvidence": {
+        "essentialUnderstandingDe": "Enzyme regulieren Stoffwechsel durch Änderungen ihrer Aktivität. Bei negativer Rückkopplung beeinflusst ein Endprodukt eine regulatorische Stelle; gleichbleibende Enzymmenge bedeutet nicht gleichbleibende Aktivität.",
+        "essentialUnderstandingEn": "Enzymes regulate metabolism through changes in activity. In negative feedback an end product influences a regulatory site; constant enzyme quantity does not imply constant activity.",
+        "observablePerformanceDe": "Die lernende Person erklärt eine vorgelegte Enzymkette mit getrennten aktiven und regulatorischen Stellen, berechnet Änderungen der Reaktionsrate und begründet die Aussagekraft von Regulatorvarianten und Erholung.",
+        "observablePerformanceEn": "The learner explains a supplied enzyme chain with separate active and regulatory sites, calculates reaction-rate changes and justifies what regulator variants and recovery can establish.",
+        "transferExpectationDe": "In einer frischen Kette mit verändertem Regulator oder nachgeschalteter Blockade unterscheidet die lernende Person die erste Enzymreaktion vom Gesamtfluss und vermeidet zielgerichtete Absichten als Erklärung.",
+        "transferExpectationEn": "In a fresh chain with a changed regulator or downstream block, the learner distinguishes the first enzyme reaction from overall flux and avoids explaining regulation through purposeful cellular intentions."
+      },
+      "secondWholeUnderstandingEvidence": {
+        "essentialUnderstandingDe": "Die Regulation einer frühen Enzymreaktion beeinflusst Stoffwechselwege. Endprodukthemmung kann über eine eigene allosterische Bindestelle erfolgen; reversible Aktivitätsänderung, geänderte Enzymmenge und Zerstörung des Enzyms sind verschiedene Erklärungen.",
+        "essentialUnderstandingEn": "Regulation of an early enzyme reaction affects metabolic pathways. End-product inhibition can act through a separate allosteric binding site; reversible activity change, changed enzyme amount and enzyme destruction are different explanations.",
+        "observablePerformanceDe": "Die Person erklärt eine Rückkopplung vom Endprodukt zum frühen Enzym, vergleicht Aktivität bei konstanter Enzymmenge und begründet mit Rückkehr- und Kontrollwerten, ob eine reversible Regulation statt einer Mengenänderung vorliegt.",
+        "observablePerformanceEn": "The learner explains feedback from end product to an early enzyme, compares activity at constant enzyme amount, and uses return and control values to justify reversible regulation rather than an amount change.",
+        "transferExpectationDe": "Bei einem neu blockierten späteren Reaktionsschritt oder geänderter Substratmenge trennt die Person E1-Aktivität vom gesamten Stofffluss und plant den passenden Vergleich; sie erkennt, welche Schlussfolgerung die bisherigen Daten nicht erlauben.",
+        "transferExpectationEn": "For a newly blocked downstream step or changed substrate amount, the learner distinguishes E1 activity from total pathway flux and plans the relevant comparison; they identify conclusions unsupported by the existing data."
+      },
+      "differingFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "normalCurrentValidation": {
+        "errors": [],
+        "strictDescriptionComplete": true
+      },
+      "newScientificReviewClaimed": false
+    },
+    {
+      "goalId": "db9f83a4-90b0-5601-a734-46b40a1cf0e4",
+      "firstBinding": {
+        "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-a",
+        "campaignDigest": "sha256:deaabea246023d6dfb5f4e85e21fb1a724dc29370891a4593ae870916ae4782c",
+        "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a",
+        "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-a",
+        "reviewInputFingerprint": "sha256:036285838c67a61bc201ffd1cb2cc0f74a0b49c9c25487effe7543408130ae19",
+        "goalReviewContextFingerprint": "sha256:02e350f794091ebe2c4d6e060886dbfc960ce7827ca81182fc7d2d12a06eca7b",
+        "batchId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "runId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "runManifestDigest": "sha256:e450b5da2cda93f7965878b802e7afd3084c285926679d2643931e0dc9419d0b",
+        "resultsDigest": "sha256:f56fe0a33c56de7952d3d65d2e19b260f393c450dd2159b7787b813dc010f050",
+        "recordId": "stoffwechsel8-native-v3-targeted-a:db9f83a4-90b0-5601-a734-46b40a1cf0e4",
+        "recordDigest": "sha256:99bd77719ebc6817e7c4fe4761135c614947cc903f058860478995fd10dc0260"
+      },
+      "secondBinding": {
+        "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-b",
+        "campaignDigest": "sha256:7da649ba672f9240174d6715718f772adb3182c98cf245156235e2efae25634a",
+        "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b",
+        "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-b",
+        "reviewInputFingerprint": "sha256:036285838c67a61bc201ffd1cb2cc0f74a0b49c9c25487effe7543408130ae19",
+        "goalReviewContextFingerprint": "sha256:02e350f794091ebe2c4d6e060886dbfc960ce7827ca81182fc7d2d12a06eca7b",
+        "batchId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b.batch-001",
+        "runId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+        "runManifestDigest": "sha256:e1cc8e132c9079d5ec17f0dfa3b7150e5bcad93125979f74f5ad706616298253",
+        "resultsDigest": "sha256:fef94a1901a291408d6ecbd0bf7d8813869d00c02e410aed415838e0b8a7cbbb",
+        "recordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:db9f83a4-90b0-5601-a734-46b40a1cf0e4",
+        "recordDigest": "sha256:9ce0983c12b97ef215b209d6af178e1fce8084735d67b254415d66a3c678a94e"
+      },
+      "firstWholeRationale": "KEEP. Bilanzvergleich und begründete Bedingungen sind eine zusammenhängende Kompetenz. Die ganzen Fälle binden 30/32ATP ausdrücklich als Modelle, nicht universal38; Mischbilanz 132ATP/24O2/24CO2/12Lactat ist korrekt. Energiesymbole im Bild sind qualitative Zeichen und keine ATP-Skala. Die eigene versiegelte fachliche Erstprüfung bleibt gültig: gesamter current Native8-Seiten-/D-Kontext, Profilrecord und Bild sind exakt unverändert. Der aktuelle ganze HTML-Artikel unterscheidet sich nur im gemeinsamen Buch-Digest/Feedbacklink; tatsächliche Capture-Pixel unterscheiden sich nur im Digest-Footer. Aktuelle Bindung wird erhalten, kein neuer fachlicher Abschluss behauptet.",
+      "secondWholeRationale": "Fresh independent B reviewed complete current bilingual goal, profile, both whole materials/tasks/worked solutions/fresh transfers/rubrics, source/operator/course witnesses, authoritative semantic kind and current A/M reasons, and actual original/360/680 plus whole HTML/PDF. BY merged EA.3.14 LK and GA.3.11 GK_LK expressly compares matter/energy balances and metabolic routes under conditions. Both cases and fresh transfers meet this bounded operator without assuming a universal ATP count. Comparing glucose routes by balances is one assessable comparison competence. Provided equations, conditions and ATP conventions avoid making equation recall itself a separate memorization gate.",
+      "firstWholeUnderstandingEvidence": {
+        "essentialUnderstandingDe": "Aerober und homolaktischer Glucoseabbau unterscheiden sich in Produkten, Sauerstoffbedarf und ATP-Ausbeute. Eine Bilanz setzt ein ausdrücklich genanntes Modell voraus; verfügbare Atmungsmaschinerie und Kopplung sind neben Sauerstoff entscheidend.",
+        "essentialUnderstandingEn": "Aerobic and homolactic glucose breakdown differ in products, oxygen demand and ATP yield. Balances require an explicitly stated model; available respiratory machinery and coupling matter as well as oxygen.",
+        "observablePerformanceDe": "Die lernende Person erstellt ausgeglichene Stoffgleichungen, berechnet ATP, Sauerstoff und Produkte im vorgegebenen 30- oder 32-ATP-Modell und erklärt den höheren Glucosebedarf bei homolaktischem Abbau.",
+        "observablePerformanceEn": "The learner constructs balanced matter equations, calculates ATP, oxygen and products in the supplied 30- or 32-ATP model and explains the greater glucose requirement for homolactic breakdown.",
+        "transferExpectationDe": "Für einen frischen Mischfall mit begrenztem Sauerstoff oder gestörter Kopplung bestimmt die lernende Person Teilbilanzen und begründet, warum Sauerstoffzufuhr allein keine universelle Umschaltung erzwingt.",
+        "transferExpectationEn": "For a fresh mixed case with limited oxygen or impaired coupling, the learner determines partial balances and justifies why oxygen supply alone does not force a universal switch."
+      },
+      "secondWholeUnderstandingEvidence": {
+        "essentialUnderstandingDe": "Aerober Abbau und definierte anaerobe Gärungswege erhalten die Atombilanz, besitzen aber unterschiedliche Produkte und ATP-Ausbeuten. Sauerstoffangebot, Zellorganellen und Kopplungsannahmen beeinflussen, welcher Weg und welche Energiebilanz möglich sind.",
+        "essentialUnderstandingEn": "Aerobic breakdown and defined anaerobic fermentation routes conserve atoms but have different products and ATP yields. Oxygen availability, cellular organelles and coupling assumptions affect the possible route and energy balance.",
+        "observablePerformanceDe": "Die Person bilanziert die gegebenen Glucosegleichungen, vergleicht Netto-ATP pro Glucose unter der ausdrücklich angegebenen Konvention und berechnet Stoff- und ATP-Flüsse einer gemischten Modellpopulation; sie erklärt die Rolle von Sauerstoff und Mitochondrien.",
+        "observablePerformanceEn": "The learner balances supplied glucose equations, compares net ATP per glucose under the explicitly stated convention, and calculates matter and ATP flows of a mixed model population; they explain the roles of oxygen and mitochondria.",
+        "transferExpectationDe": "In einem frischen Modell mit fehlenden Mitochondrien trotz Sauerstoff oder mit entkoppelter Atmung begründet die Person, welche ursprüngliche ATP-Annahme nicht mehr gilt und welche weiteren Angaben erforderlich sind; sie setzt Sauerstoffangebot nicht mit garantierter aerober ATP-Ausbeute gleich.",
+        "transferExpectationEn": "In a fresh model with absent mitochondria despite oxygen, or with uncoupled respiration, the learner explains which original ATP assumption no longer holds and what further data are required; they do not equate oxygen availability with a guaranteed aerobic ATP yield."
+      },
+      "differingFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "normalCurrentValidation": {
+        "errors": [],
+        "strictDescriptionComplete": true
+      },
+      "newScientificReviewClaimed": false
+    },
+    {
+      "goalId": "e25ad42f-8314-5ee7-9440-765ee18773f9",
+      "firstBinding": {
+        "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-a",
+        "campaignDigest": "sha256:deaabea246023d6dfb5f4e85e21fb1a724dc29370891a4593ae870916ae4782c",
+        "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a",
+        "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-a",
+        "reviewInputFingerprint": "sha256:036285838c67a61bc201ffd1cb2cc0f74a0b49c9c25487effe7543408130ae19",
+        "goalReviewContextFingerprint": "sha256:8f4c05152c7219fdf5e43fd296819763406ba921c3ef9f20f6d1d6ed5ca2cb1a",
+        "batchId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "runId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "runManifestDigest": "sha256:e450b5da2cda93f7965878b802e7afd3084c285926679d2643931e0dc9419d0b",
+        "resultsDigest": "sha256:f56fe0a33c56de7952d3d65d2e19b260f393c450dd2159b7787b813dc010f050",
+        "recordId": "stoffwechsel8-native-v3-targeted-a:e25ad42f-8314-5ee7-9440-765ee18773f9",
+        "recordDigest": "sha256:9d6e37e4d495d7abfeba9e6527b96f9dab7263407a6a73710f84dfcc499f95b9"
+      },
+      "secondBinding": {
+        "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-b",
+        "campaignDigest": "sha256:7da649ba672f9240174d6715718f772adb3182c98cf245156235e2efae25634a",
+        "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b",
+        "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-b",
+        "reviewInputFingerprint": "sha256:036285838c67a61bc201ffd1cb2cc0f74a0b49c9c25487effe7543408130ae19",
+        "goalReviewContextFingerprint": "sha256:8f4c05152c7219fdf5e43fd296819763406ba921c3ef9f20f6d1d6ed5ca2cb1a",
+        "batchId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b.batch-001",
+        "runId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+        "runManifestDigest": "sha256:e1cc8e132c9079d5ec17f0dfa3b7150e5bcad93125979f74f5ad706616298253",
+        "resultsDigest": "sha256:fef94a1901a291408d6ecbd0bf7d8813869d00c02e410aed415838e0b8a7cbbb",
+        "recordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:e25ad42f-8314-5ee7-9440-765ee18773f9",
+        "recordDigest": "sha256:39956fb4d9a68338e4d1f552f7f915ca6503f8e87a3136be8f941104d6aa9a1e"
+      },
+      "firstWholeRationale": "KEEP. Stoff- und Energievergleich begründet die eine Speicherkompetenz aus B13-EA.3.15. Beide vollständigen Fälle trennen Gramm/Mol, 17/37kJ je Gramm und ATP: Palmitat106 mit einmaligem -2, Glucose30, 106/256 gegen30/180, Wasserbindung und geänderte Modellfaktoren sind nachvollziehbar. Kein 106-Ertrag wird allen Fetten zugeschrieben. Die eigene versiegelte fachliche Erstprüfung bleibt gültig: gesamter current Native8-Seiten-/D-Kontext, Profilrecord und Bild sind exakt unverändert. Der aktuelle ganze HTML-Artikel unterscheidet sich nur im gemeinsamen Buch-Digest/Feedbacklink; tatsächliche Capture-Pixel unterscheiden sich nur im Digest-Footer. Aktuelle Bindung wird erhalten, kein neuer fachlicher Abschluss behauptet.",
+      "secondWholeRationale": "Fresh independent B reviewed complete current bilingual goal, profile, both whole materials/tasks/worked solutions/fresh transfers/rubrics, source/operator/course witnesses, authoritative semantic kind and current A/M reasons, and actual original/360/680 plus whole HTML/PDF. BY B13-EA.3.15 is specifically LK and asks comparison of glucose/fat balances and energy storage. This supports the existing bounded goal; no GA requirement is added. Balance comparison and explanation of storage advantage answer one causal comparison question. Stoichiometry and given conventions are used for understanding, not a required standalone recall deck.",
+      "firstWholeUnderstandingEvidence": {
+        "essentialUnderstandingDe": "Die besondere Speichereignung von Fetten beruht auf höherer Energiedichte und geringer Hydratation. Vergleiche pro Gramm, pro Mol und pro hydratisierter Speichermasse beantworten unterschiedliche Fragen; Nahrungsenergie und modellierte ATP-Erträge sind verschieden.",
+        "essentialUnderstandingEn": "The storage advantage of fats reflects greater energy density and limited hydration. Comparisons per gram, per mole and per hydrated storage mass answer different questions; food energy differs from modelled ATP yields.",
+        "observablePerformanceDe": "Die lernende Person bilanziert Glucose und Palmitinsäure, berechnet im benannten Modell Netto-ATP einschließlich einmaligem Aktivierungsabzug, normiert auf faire Bezugsgrößen und erklärt den Einfluss gebundenen Wassers.",
+        "observablePerformanceEn": "The learner balances glucose and palmitic acid, calculates net ATP in the specified model with one activation deduction, normalises to fair reference quantities and explains the effect of associated water.",
+        "transferExpectationDe": "Bei geänderten ATP-Faktoren oder Wasseranteilen rechnet die lernende Person einen frischen Vergleich und begründet, welche Speicherfolgerung erhalten bleibt und wo das einzelne Fettsäuremodell begrenzt ist.",
+        "transferExpectationEn": "With changed ATP factors or water proportions, the learner recalculates a fresh comparison and justifies which storage conclusion remains and where the single-fatty-acid model is limited."
+      },
+      "secondWholeUnderstandingEvidence": {
+        "essentialUnderstandingDe": "Fett und Glucose müssen bei gleicher Bezugsgröße verglichen werden. Stärker reduzierte Kohlenstoffverbindungen und wasserarme Speicherung tragen zur hohen Energiedichte von Fett bei; Nahrungsenergie, ATP-Modell und Masse eines hydratisierten Speichers sind unterschiedliche Größen.",
+        "essentialUnderstandingEn": "Fat and glucose must be compared on the same reference basis. More reduced carbon compounds and water-poor storage contribute to fat energy density; food energy, an ATP model and hydrated-store mass are distinct quantities.",
+        "observablePerformanceDe": "Die Person prüft Glucose- und Palmitat-Stoffbilanzen, berechnet ATP mit vorgegebenen Kopplungswerten und einmaliger Aktivierung und normiert auf gleiche Masse. Sie erklärt den Vergleich eines hydratisierten Glykogenspeichers mit Fett, ohne ATP-Verhältnis und Nahrungsenergieverhältnis zu vermischen.",
+        "observablePerformanceEn": "The learner checks glucose and palmitate matter balances, calculates ATP from supplied coupling values and a single activation cost, and normalises to equal mass. They explain the comparison of hydrated glycogen storage with fat without mixing ATP and food-energy ratios.",
+        "transferExpectationDe": "Bei neuen Kopplungswerten oder einem anderen Wasseranteil des Speichers berechnet und begründet die Person den veränderten Vergleich; sie begrenzt Palmitat als Stellvertreter und überträgt dessen exakte Bilanz nicht pauschal auf jedes Fett oder schnellere Energiebereitstellung.",
+        "transferExpectationEn": "With fresh coupling values or a different store water content, the learner calculates and justifies the changed comparison; they bound palmitate as a representative and do not generalise its exact balance to every fat or to faster energy delivery."
+      },
+      "differingFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "normalCurrentValidation": {
+        "errors": [],
+        "strictDescriptionComplete": true
+      },
+      "newScientificReviewClaimed": false
+    },
+    {
+      "goalId": "2c60c8ad-04d3-5395-8a27-400646eb1612",
+      "firstBinding": {
+        "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-a",
+        "campaignDigest": "sha256:deaabea246023d6dfb5f4e85e21fb1a724dc29370891a4593ae870916ae4782c",
+        "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a",
+        "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-a",
+        "reviewInputFingerprint": "sha256:036285838c67a61bc201ffd1cb2cc0f74a0b49c9c25487effe7543408130ae19",
+        "goalReviewContextFingerprint": "sha256:19b8ebf7fa7e44952a883efc2e2ceef495a0e7b056d85b8dff9fa730e5b096d2",
+        "batchId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "runId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "runManifestDigest": "sha256:e450b5da2cda93f7965878b802e7afd3084c285926679d2643931e0dc9419d0b",
+        "resultsDigest": "sha256:f56fe0a33c56de7952d3d65d2e19b260f393c450dd2159b7787b813dc010f050",
+        "recordId": "stoffwechsel8-native-v3-targeted-a:2c60c8ad-04d3-5395-8a27-400646eb1612",
+        "recordDigest": "sha256:f25b8130dab6629f73208034273df32989615fcb6095604afd6f689a9e7c6f82"
+      },
+      "secondBinding": {
+        "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-b",
+        "campaignDigest": "sha256:7da649ba672f9240174d6715718f772adb3182c98cf245156235e2efae25634a",
+        "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b",
+        "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-b",
+        "reviewInputFingerprint": "sha256:036285838c67a61bc201ffd1cb2cc0f74a0b49c9c25487effe7543408130ae19",
+        "goalReviewContextFingerprint": "sha256:19b8ebf7fa7e44952a883efc2e2ceef495a0e7b056d85b8dff9fa730e5b096d2",
+        "batchId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b.batch-001",
+        "runId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+        "runManifestDigest": "sha256:e1cc8e132c9079d5ec17f0dfa3b7150e5bcad93125979f74f5ad706616298253",
+        "resultsDigest": "sha256:fef94a1901a291408d6ecbd0bf7d8813869d00c02e410aed415838e0b8a7cbbb",
+        "recordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:2c60c8ad-04d3-5395-8a27-400646eb1612",
+        "recordDigest": "sha256:8a7ee117b6302c0d1f12d3e39e9e1986bd5dc7305e812f244bb781edc76eabb4"
+      },
+      "firstWholeRationale": "KEEP. Der aktuelle Quellpunkt B10.3.1 und die bilingualen Beschreibungen begrenzen das Ziel auf den Menschen als offenes System. Die Stoffbilanz 3,6kg=3,6kg und Energie 9000=8500+500kJ sind konsistent; eine Reserveänderung von -2000kJ wird getrennt von Tagesmasse erklärt. Keine medizinische Empfehlung wird behauptet. Die eigene versiegelte fachliche Erstprüfung bleibt gültig: gesamter current Native8-Seiten-/D-Kontext, Profilrecord und Bild sind exakt unverändert. Der aktuelle ganze HTML-Artikel unterscheidet sich nur im gemeinsamen Buch-Digest/Feedbacklink; tatsächliche Capture-Pixel unterscheiden sich nur im Digest-Footer. Aktuelle Bindung wird erhalten, kein neuer fachlicher Abschluss behauptet.",
+      "secondWholeRationale": "Fresh independent B reviewed complete current bilingual goal, profile, both whole materials/tasks/worked solutions/fresh transfers/rubrics, source/operator/course witnesses, authoritative semantic kind and current A/M reasons, and actual original/360/680 plus whole HTML/PDF. BY B10.3.1 explicitly addresses matter/energy exchanges and the need for energy and building materials. The 17 direct witnesses contain broader nutrition/transport/metabolism fields; approval is bounded to the open-system atom and does not claim every blood, hormone or digestive objective. Explaining need for food as energy and building material is one integrated open-system explanation. Matter/energy reasoning with supplied data is not a discrete memorization goal.",
+      "firstWholeUnderstandingEvidence": {
+        "essentialUnderstandingDe": "Der Mensch tauscht Stoffe und Energie mit seiner Umgebung aus. Nahrung liefert Energieträger und Baustoffe; Wasser und Sauerstoff sind keine kalorischen Brennstoffe, und Wärme ist Energieabgabe statt Stoffabgabe.",
+        "essentialUnderstandingEn": "Humans exchange matter and energy with their surroundings. Food supplies energy carriers and building materials; water and oxygen are not caloric fuels, and heat is an energy output rather than matter output.",
+        "observablePerformanceDe": "Die lernende Person ordnet Aufnahme und Abgabe einer begründeten Systemgrenze zu, berechnet getrennte Massen- und Energiebilanzen und erklärt Erhaltung sowie mögliche Reserveänderungen.",
+        "observablePerformanceEn": "The learner assigns inputs and outputs to a justified system boundary, calculates separate mass and energy balances and explains conservation and possible changes in reserves.",
+        "transferExpectationDe": "Bei veränderter Belastung oder Systemgrenze deutet die lernende Person eine frische Bilanz und erklärt, warum ausgeglichene Tagesmasse keine ausgeglichene Energiereserve beweist.",
+        "transferExpectationEn": "For a changed activity level or system boundary, the learner interprets a fresh balance and explains why balanced daily mass does not prove balanced energy reserves."
+      },
+      "secondWholeUnderstandingEvidence": {
+        "essentialUnderstandingDe": "Der Mensch tauscht Stoffe und Energie mit der Umgebung aus. Energiebedarf und Bedarf an Baustoffen sind verschiedene Funktionen der Nahrung; stabile Körpermasse schließt laufende Stoffflüsse nicht aus, und Wärme ist keine zusätzliche Masse.",
+        "essentialUnderstandingEn": "Humans exchange matter and energy with the environment. Energy needs and building-material needs are distinct functions of food; stable body mass does not exclude ongoing matter flow, and heat is not additional mass.",
+        "observablePerformanceDe": "Die Person ordnet Nahrung, Wasser, Sauerstoff und Ausscheidungen den Stoffflüssen zu, bilanziert die gegebenen Massen getrennt von Wärme und Arbeit und begründet, weshalb kalorienreiche Nahrung allein keine ausreichenden Baustoffe garantiert.",
+        "observablePerformanceEn": "The learner assigns food, water, oxygen and excretions to matter flows, balances supplied masses separately from heat and work, and explains why calorie-rich food alone does not guarantee sufficient building materials.",
+        "transferExpectationDe": "Für ein neues Aktivitäts- und Ernährungsmodell mit Energiedefizit oder Masseänderung leitet die Person begrenzte Aussagen über Austausch und Reserven ab; sie weist die Behauptung zurück, jede Massezunahme sei unmittelbar Fett oder Energieversorgung ersetze Baustoffversorgung.",
+        "transferExpectationEn": "For a new activity and nutrition model with an energy deficit or mass change, the learner derives bounded statements about exchange and reserves; they reject the claims that every mass gain is immediately fat or that energy supply replaces building-material supply."
+      },
+      "differingFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "normalCurrentValidation": {
+        "errors": [],
+        "strictDescriptionComplete": true
+      },
+      "newScientificReviewClaimed": false
+    },
+    {
+      "goalId": "39ba4385-0144-5e20-ba11-e3714756583b",
+      "firstBinding": {
+        "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-a",
+        "campaignDigest": "sha256:deaabea246023d6dfb5f4e85e21fb1a724dc29370891a4593ae870916ae4782c",
+        "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a",
+        "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-a",
+        "reviewInputFingerprint": "sha256:036285838c67a61bc201ffd1cb2cc0f74a0b49c9c25487effe7543408130ae19",
+        "goalReviewContextFingerprint": "sha256:28bf2e987d948fef04a696e8cb383fac82f880caa3b8b3b40077741636969cae",
+        "batchId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "runId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "runManifestDigest": "sha256:e450b5da2cda93f7965878b802e7afd3084c285926679d2643931e0dc9419d0b",
+        "resultsDigest": "sha256:f56fe0a33c56de7952d3d65d2e19b260f393c450dd2159b7787b813dc010f050",
+        "recordId": "stoffwechsel8-native-v3-targeted-a:39ba4385-0144-5e20-ba11-e3714756583b",
+        "recordDigest": "sha256:be743cfc2dd2b418410f774d68c852d40a170097283f8736de7145efaacccd93"
+      },
+      "secondBinding": {
+        "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-b",
+        "campaignDigest": "sha256:7da649ba672f9240174d6715718f772adb3182c98cf245156235e2efae25634a",
+        "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b",
+        "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-b",
+        "reviewInputFingerprint": "sha256:036285838c67a61bc201ffd1cb2cc0f74a0b49c9c25487effe7543408130ae19",
+        "goalReviewContextFingerprint": "sha256:28bf2e987d948fef04a696e8cb383fac82f880caa3b8b3b40077741636969cae",
+        "batchId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b.batch-001",
+        "runId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+        "runManifestDigest": "sha256:e1cc8e132c9079d5ec17f0dfa3b7150e5bcad93125979f74f5ad706616298253",
+        "resultsDigest": "sha256:fef94a1901a291408d6ecbd0bf7d8813869d00c02e410aed415838e0b8a7cbbb",
+        "recordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:39ba4385-0144-5e20-ba11-e3714756583b",
+        "recordDigest": "sha256:71be815fd201c005b941c16582a86f9c4be999182f577044658f858db49f62d7"
+      },
+      "firstWholeRationale": "KEEP. Stoffwechsel, Vermehrung und Ausbreitung tragen die zusammenhängende Ableitung von Lebensmittelhygiene. Die ganzen Fälle begrenzen synthetische Wachstumswerte und nichtbiologische Fluoreszenzmarker. Kälte ist nicht Sterilisation; unauffällige Lebensmittel gelten nicht als sicher. Keine unsichere Kultur oder Verkostung wird gefordert. Die eigene versiegelte fachliche Erstprüfung bleibt gültig: gesamter current Native8-Seiten-/D-Kontext, Profilrecord und Bild sind exakt unverändert. Der aktuelle ganze HTML-Artikel unterscheidet sich nur im gemeinsamen Buch-Digest/Feedbacklink; tatsächliche Capture-Pixel unterscheiden sich nur im Digest-Footer. Aktuelle Bindung wird erhalten, kein neuer fachlicher Abschluss behauptet.",
+      "secondWholeRationale": "Fresh independent B reviewed complete current bilingual goal, profile, both whole materials/tasks/worked solutions/fresh transfers/rubrics, source/operator/course witnesses, authoritative semantic kind and current A/M reasons, and actual original/360/680 plus whole HTML/PDF. BY B9.2.2 directly asks explanation from metabolism/reproduction/spread and derivation of hygiene. The five source witnesses include four broader retained NULL passage representations for MV/SN/ST/TH; no complete microbiology syllabus or new primary authentication is claimed. Explaining spoilage and deriving hygiene from those mechanisms is one linked causal competence. The task uses evidence and route reasoning rather than a separate memorization goal.",
+      "firstWholeUnderstandingEvidence": {
+        "essentialUnderstandingDe": "Mikroorganismen können Stoffe umsetzen, sich vermehren und zwischen Lebensmitteln sowie Kontaktflächen verbreiten. Kühlen bremst Wachstum, Trennen begrenzt Übertragung und Reinigen entfernt Belastung; Sichtbarkeit und Verderb beweisen weder Gefährlichkeit noch Sicherheit.",
+        "essentialUnderstandingEn": "Microorganisms can transform substances, reproduce and spread between food and contact surfaces. Cooling slows growth, separation limits transfer and cleaning removes contamination; appearance and spoilage establish neither danger nor safety.",
+        "observablePerformanceDe": "Die lernende Person deutet vorgelegte synthetische Wachstums- und Transferdaten, unterscheidet Stoffwechsel von Vermehrung und leitet begründete Hygienemaßnahmen ab, ohne Markerflächen als Keimzahlen oder Reinigen als Sterilisieren auszugeben.",
+        "observablePerformanceEn": "The learner interprets supplied synthetic growth and transfer data, distinguishes metabolism from reproduction and derives justified hygiene measures without treating marker areas as microbial counts or cleaning as sterilisation.",
+        "transferExpectationDe": "Für eine frische Kontaktkette oder unterbrochene Kühlung begründet die lernende Person geeignete Maßnahmen und benennt Grenzen von Geruch und Aussehen, ohne unbekannte Lebensmittel zu kultivieren oder zu verkosten.",
+        "transferExpectationEn": "For a fresh contact chain or interrupted cooling, the learner justifies suitable measures and states the limitations of smell and appearance without culturing or tasting unknown food."
+      },
+      "secondWholeUnderstandingEvidence": {
+        "essentialUnderstandingDe": "Mikrobieller Stoffwechsel und Vermehrung können Lebensmittel verändern; Übertragung durch Hände und Geräte ist ein eigener Mechanismus. Kühlen, Trennen und Reinigen wirken an unterschiedlichen Stellen, ohne Sterilität oder Sicherheit aus Geruch und Aussehen zu garantieren.",
+        "essentialUnderstandingEn": "Microbial metabolism and multiplication can change food; transmission through hands and utensils is a separate mechanism. Cooling, separation and cleaning act at different points without guaranteeing sterility or safety from smell and appearance.",
+        "observablePerformanceDe": "Die Person erklärt die Verbindung von Nährstoffnutzung, Vermehrung und Verderb, vergleicht die synthetischen warmen und gekühlten Daten und zeichnet den Übertragungsweg der Marker-Simulation. Sie begründet jede Hygienemaßnahme passend und unterscheidet Markertransport, Keimvermehrung und Krankheitserreger.",
+        "observablePerformanceEn": "The learner explains the link between nutrient use, multiplication and spoilage, compares synthetic warm and cooled data, and traces the marker-simulation transfer route. They justify each hygiene measure appropriately and distinguish marker transport, microbial multiplication and pathogens.",
+        "transferExpectationDe": "Für eine neue direkte Handübertragung am getrennten Brett vorbei oder unauffällige Lebensmittelbelastung benennt die Person die verbleibende Lücke und passende Schutzmaßnahme; sie macht aus geringerem Markersignal, Kühlung oder fehlendem Geruch keinen Sicherheitsnachweis.",
+        "transferExpectationEn": "For fresh direct hand transmission bypassing the separate board, or unobtrusive food contamination, the learner identifies the remaining gap and appropriate protection; they do not turn reduced marker signal, cooling or absent smell into safety proof."
+      },
+      "differingFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "normalCurrentValidation": {
+        "errors": [],
+        "strictDescriptionComplete": true
+      },
+      "newScientificReviewClaimed": false
+    }
+  ],
+  "normalStandaloneIndexSchemaAndStructure": "PASS",
+  "all8StrictDescriptionComplete": true,
+  "activeWriteGuardsUnchanged": true,
+  "newIndependentScientificReviews": 0,
+  "humanApproval": false,
+  "strictActiveGain": 0,
+  "activeWrites": []
+}

@@ -1,0 +1,80 @@
+[
+  {
+    "name": "normal-full-D10-campaign",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "validate:goal-description-review-campaign",
+      "--",
+      "--bundle",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-technical-successor-20261010-v2/native/ten-current-native/bundle/manifest.json",
+      "--input",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-technical-successor-20261010-v2/native/ten-current-native/round-b/description-review-input.json",
+      "--campaign",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-technical-successor-20261010-v2/native/ten-current-native/round-b/description-review-campaign.json",
+      "--batches-dir",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-neuro-verhalten-hormone-ten-sehbahn-v3-current343-native-technical-successor-20261010-v2/native/ten-current-native/round-b/batches",
+      "--results-dir",
+      "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1/results"
+    ],
+    "startedAt": "2026-10-10T11:56:00.165590+00:00",
+    "completedAt": "2026-10-10T11:56:00.991069+00:00",
+    "terminalExitCode": 0,
+    "stdoutAndStderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1/normal-full-D10-campaign.terminal.txt",
+    "actualTerminalObserved": true
+  },
+  {
+    "name": "normal-targeted-A10",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "quality:semantic-atomicity:check",
+      "--",
+      "--config=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1/A10.targeted-normal.config.json"
+    ],
+    "startedAt": "2026-10-10T11:56:00.991211+00:00",
+    "completedAt": "2026-10-10T11:56:01.421045+00:00",
+    "terminalExitCode": 0,
+    "stdoutAndStderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1/normal-targeted-A10.terminal.txt",
+    "actualTerminalObserved": true
+  },
+  {
+    "name": "normal-targeted-M10",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "quality:memory-card-review:check",
+      "--",
+      "--config=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1/M10.targeted-normal.config.json"
+    ],
+    "startedAt": "2026-10-10T11:56:01.421177+00:00",
+    "completedAt": "2026-10-10T11:56:01.850085+00:00",
+    "terminalExitCode": 1,
+    "stdoutAndStderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1/normal-targeted-M10.terminal.txt",
+    "actualTerminalObserved": true
+  },
+  {
+    "name": "normal-targeted-M10-scoped-card-ledger",
+    "argv": [
+      "npm",
+      "--prefix",
+      "app",
+      "run",
+      "quality:memory-card-review:check",
+      "--",
+      "--config=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1/M10.targeted-normal.config.json"
+    ],
+    "startedAt": "2026-10-10T11:56:41.198443+00:00",
+    "completedAt": "2026-10-10T11:56:41.613000+00:00",
+    "terminalExitCode": 0,
+    "stdoutAndStderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-neuro-verhalten-hormone-ten-current-v3-independent-b-20261010-v1/normal-targeted-M10-scoped-card-ledger.terminal.txt",
+    "actualTerminalObserved": true,
+    "scopeCorrection": "Initial M10 config reused all-domain card ledger, producing obsolete-card errors for unrelated cards. Explicit empty scoped ledger is justified by targeted actual origin-card count=0 for these ten goals. Original failed receipt/log retained."
+  }
+]

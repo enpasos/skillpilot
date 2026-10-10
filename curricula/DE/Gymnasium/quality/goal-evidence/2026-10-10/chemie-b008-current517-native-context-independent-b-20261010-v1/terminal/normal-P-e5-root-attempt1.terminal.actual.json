@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "actualExitCode": 1,
+  "command": "app/node_modules/.bin/tsx app/scripts/positiveGoalEvidenceReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-native-context-independent-b-20261010-v1/positive/current-e5-G1.independent-b.normal.config.json --mode=check",
+  "blockingIssues": [
+    "Unpublished exact e5 image is absent from operative app/public path; the normal P checker resolves public assets relative to its own source root.",
+    "Without the e5 image bytes, the expected reviewInputFingerprint differs. The fingerprint is not changed to the missing-resource result."
+  ],
+  "nextStep": "Use an isolated exact-copy capsule with the neutral author's bound existing resource alias; no operative asset write or validator changes.",
+  "rulesChanges": 0,
+  "activeWrites": [],
+  "humanApproval": false
+}

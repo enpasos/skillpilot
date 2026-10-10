@@ -103,6 +103,8 @@ Use this page by role: start with the overview documents, then jump to a review 
 - [Biologie: vier aktuelle Abschlüsse vom 10. Oktober, 327/394](chemie-biologie-m7-chemie180-biologie327-integration-2026-10-10.md)
 - [Biologie: acht aktuelle Abschlüsse vom 10. Oktober, 335/394](chemie-biologie-m7-chemie180-biologie335-integration-2026-10-10.md)
 - [Commit-Zwischenstand vom 10. Oktober: 180/381 Chemie, 335/394 Biologie und getrennte offene Kandidaten](chemie-biologie-m7-chemie180-biologie335-commit-checkpoint-2026-10-10.md)
+- [Biologie: acht weitere aktuelle Abschlüsse vom 10. Oktober, 343/394](chemie-biologie-m7-chemie180-biologie343-integration-2026-10-10.md)
+- [Biologie: zehn weitere aktuelle Abschlüsse vom 10. Oktober, 353/394](chemie-biologie-m7-chemie180-biologie353-integration-2026-10-10.md)
 
 ## Review Lanes
 

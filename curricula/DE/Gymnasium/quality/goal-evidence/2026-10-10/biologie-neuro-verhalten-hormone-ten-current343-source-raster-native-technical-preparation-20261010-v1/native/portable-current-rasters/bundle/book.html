@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-v1&quot;,&quot;maxWidthPixels&quot;:1600,&quot;maxHeightPixels&quot;:1200,&quot;jpegQuality&quot;:0.82,&quot;webpQuality&quot;:0.9,&quot;maxBytes&quot;:1500000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Biologie – zehn aktuelle Prüfseiten: Neurobiologie, Verhalten und Hormone</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Biologie – zehn aktuelle Prüfseiten: Neurobiologie, Verhalten und Hormone</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>10 atomare Lernziele</dt><dd>6 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:97fc8393dd3a1aab18e93c65d6e2737c5a93fdc99bf535fbf9f01783606b4957</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:biologie-canonical-native-author-review-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-ec2f89f652584af55402a3b6" aria-label="Biologie – kanonische maschinelle Prüfsicht"><a href="#goal-9499943f-89b7-54e3-9fe2-e90404beaa4a"><span class="toc-entry-label">Biologie&#160;<wbr>–&#160;<wbr>kanonische&#160;<wbr>maschinelle&#160;<wbr>Prüfsicht</span></a></h2>
+          <span class="toc-entry-meta"><span>10 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="goal:e8d54127-d42e-51f5-bfa5-51d826069f95" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-e35b58df5ecbb68b42c77ce2" aria-label="Biologie"><a href="#goal-9499943f-89b7-54e3-9fe2-e90404beaa4a"><span class="toc-entry-label">Biologie</span></a></h3>
+          <span class="toc-entry-meta"><span>10 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:d23951c2-4791-5a91-a2de-b72a421a4536" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-317e9ebf311eefad83f8eecc" aria-label="Evolution &amp; Neurobiologie"><a href="#goal-9499943f-89b7-54e3-9fe2-e90404beaa4a"><span class="toc-entry-label">Evolution&#160;<wbr>&amp;&#160;<wbr>Neurobiologie</span></a></h4>
+          <span class="toc-entry-meta"><span>6 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:7e6b9185-f261-5c76-961a-c61e1cc4ef8d" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-a3f2ec5e66058cf14de6ef3d" aria-label="Q2.4 Sinnesorgane und Gehirn"><a href="#goal-9499943f-89b7-54e3-9fe2-e90404beaa4a"><span class="toc-entry-label">Q2.4&#160;<wbr>Sinnesorgane&#160;<wbr>und&#160;<wbr>Gehirn</span></a></h5>
+          <span class="toc-entry-meta"><span>6 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:2a8aa38d-5064-5ed0-8d3a-43955c7fbf2e" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-89c4efe8183978ea50540996" aria-label="Hormonelle Regulation und Gesundheit (Sek I)"><a href="#goal-1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5"><span class="toc-entry-label">Hormonelle&#160;<wbr>Regulation&#160;<wbr>und&#160;<wbr>Gesundheit&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 7</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:26a16d5d-f178-5018-b792-039737c66ce7" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-496b6267ab0ff6b6b61d1631" aria-label="Verhalten und Lernen (Sek I)"><a href="#goal-3d822550-c14a-52ee-9908-6bcb873afdd6"><span class="toc-entry-label">Verhalten&#160;<wbr>und&#160;<wbr>Lernen&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h4>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 8</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-9499943f-89b7-54e3-9fe2-e90404beaa4a" data-goal-id="9499943f-89b7-54e3-9fe2-e90404beaa4a" data-page-number="1" data-chapter-ids="structure:biologie-canonical-native-author-review-root goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:7e6b9185-f261-5c76-961a-c61e1cc4ef8d" aria-labelledby="goal-9499943f-89b7-54e3-9fe2-e90404beaa4a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-9499943f-89b7-54e3-9fe2-e90404beaa4a-title"><a class="goal-self-link" href="#goal-9499943f-89b7-54e3-9fe2-e90404beaa4a">Sinnesorgane untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>9499943f-89b7-54e3-9fe2-e90404beaa4a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ec2f89f652584af55402a3b6">Biologie – kanonische maschinelle Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-a3f2ec5e66058cf14de6ef3d">Q2.4 Sinnesorgane und Gehirn</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d00f2cc5515908143ced0c9dccf5e42f8ad4da018c3b20b35fed4101be9dddca" data-rendered-digest="sha256:610d3d7b4be24f0f66a23a7e276c2ba39e96d0b0463a37c5b5886dbc42b9fc63" data-render-profile="chromium-canvas-v1">
+        <img src="../../../../biologie-neuro-verhalten-hormone-ten-whole-material-and-raster-author-candidate-v1/assets/9499943f-89b7-54e3-9fe2-e90404beaa4a.v2.original.png" alt="Didaktische Visualisierung zum Lernziel &quot;Sinnesorgane untersuchen&quot;. Die lernende Person kann Aufbau und Funktionsweise ausgewählter Sinnesorgane erläutern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-9499943f-89b7-54e3-9fe2-e90404beaa4a-description-heading">
+        <p class="section-heading" id="goal-9499943f-89b7-54e3-9fe2-e90404beaa4a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Aufbau und Funktionsweise ausgewählter Sinnesorgane erläutern.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-9499943f-89b7-54e3-9fe2-e90404beaa4a-requires-heading">
+          <p class="section-heading" id="goal-9499943f-89b7-54e3-9fe2-e90404beaa4a-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-9499943f-89b7-54e3-9fe2-e90404beaa4a-reverse-heading">
+          <p class="section-heading" id="goal-9499943f-89b7-54e3-9fe2-e90404beaa4a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-2706c28e-1c21-50de-8a63-c450f5fe8b07"><span>Gehirnprozesse deuten</span><code>2706c28e-1c21-50de-8a63-c450f5fe8b07</code><span class="reference-page">S. 2</span></a></li><li><a href="#goal-a7eee23c-a5d0-5101-937a-ca441764cabf"><span>Gehirnaufbau und -funktion</span><code>a7eee23c-a5d0-5101-937a-ca441764cabf</code><span class="reference-page">S. 3</span></a></li><li><a href="#goal-97a15c19-c345-589e-8b3c-9f2b97a60095"><span>Hörbahn und Schallverarbeitung</span><code>97a15c19-c345-589e-8b3c-9f2b97a60095</code><span class="reference-page">S. 5</span></a></li><li><a href="#goal-5670e999-922c-5862-ba77-2d93667badd4"><span>Nozizeption und Schmerzmodulation</span><code>5670e999-922c-5862-ba77-2d93667badd4</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-9499943f-89b7-54e3-9fe2-e90404beaa4a-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9499943f-89b7-54e3-9fe2-e90404beaa4a-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-ff1bf88f-2413-5668-a071-ce9fc499cba3" rel="noreferrer noopener"><span>Erregende chemische Synapsen erklären</span> <code>ff1bf88f-2413-5668-a071-ce9fc499cba3</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-9499943f-89b7-54e3-9fe2-e90404beaa4a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-9499943f-89b7-54e3-9fe2-e90404beaa4a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 10</span>
+      <span>Buch-Digest <code>sha256:97fc8393dd3a1aab18e93c65d6e2737c5a93fdc99bf535fbf9f01783606b4957</code></span>
+      <span>Ziel-Fingerprint <code>sha256:541a27d429331456cf7d271a6c3ca69ecd16e836e445548fe1c0ef4d8ba636de</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-neuro-verhalten-hormone-ten-current343-native-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=9499943f-89b7-54e3-9fe2-e90404beaa4a&amp;goalFingerprint=sha256%3A541a27d429331456cf7d271a6c3ca69ecd16e836e445548fe1c0ef4d8ba636de&amp;pageFingerprint=sha256%3Ae7a9a893222c29023f9059c0ccbb09997b6e191a51ef91826f69b1f0bc501a53&amp;bookDigest=sha256%3A97fc8393dd3a1aab18e93c65d6e2737c5a93fdc99bf535fbf9f01783606b4957&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2706c28e-1c21-50de-8a63-c450f5fe8b07" data-goal-id="2706c28e-1c21-50de-8a63-c450f5fe8b07" data-page-number="2" data-chapter-ids="structure:biologie-canonical-native-author-review-root goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:7e6b9185-f261-5c76-961a-c61e1cc4ef8d" aria-labelledby="goal-2706c28e-1c21-50de-8a63-c450f5fe8b07-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-2706c28e-1c21-50de-8a63-c450f5fe8b07-title"><a class="goal-self-link" href="#goal-2706c28e-1c21-50de-8a63-c450f5fe8b07">Gehirnprozesse deuten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2706c28e-1c21-50de-8a63-c450f5fe8b07</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ec2f89f652584af55402a3b6">Biologie – kanonische maschinelle Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-a3f2ec5e66058cf14de6ef3d">Q2.4 Sinnesorgane und Gehirn</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b5f3bd9237201eb87b23c503552fafebc02f04a6fceb85960d78a03738acc06e" data-rendered-digest="sha256:73e698e62e8ac2f90cbea8f82aa85e0a60bd410b4de8f16eb05cd627f483e580" data-render-profile="chromium-canvas-v1">
+        <img src="../../../../biologie-neuro-verhalten-hormone-ten-whole-material-and-raster-author-candidate-v1/assets/2706c28e-1c21-50de-8a63-c450f5fe8b07.v2.original.png" alt="Didaktische Visualisierung zum Lernziel &quot;Gehirnprozesse deuten&quot;. Die lernende Person kann Verarbeitung in Hirnarealen und mögliche Störungen erläutern.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2706c28e-1c21-50de-8a63-c450f5fe8b07-description-heading">
+        <p class="section-heading" id="goal-2706c28e-1c21-50de-8a63-c450f5fe8b07-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Verarbeitung in Hirnarealen und mögliche Störungen erläutern.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2706c28e-1c21-50de-8a63-c450f5fe8b07-requires-heading">
+          <p class="section-heading" id="goal-2706c28e-1c21-50de-8a63-c450f5fe8b07-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-9499943f-89b7-54e3-9fe2-e90404beaa4a"><span>Sinnesorgane untersuchen</span><code>9499943f-89b7-54e3-9fe2-e90404beaa4a</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-2706c28e-1c21-50de-8a63-c450f5fe8b07-reverse-heading">
+          <p class="section-heading" id="goal-2706c28e-1c21-50de-8a63-c450f5fe8b07-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-146d70e0-b494-59fa-b8b6-29da18b36893"><span>Sehbahn und Verarbeitung</span><code>146d70e0-b494-59fa-b8b6-29da18b36893</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2706c28e-1c21-50de-8a63-c450f5fe8b07-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2706c28e-1c21-50de-8a63-c450f5fe8b07-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-2706c28e-1c21-50de-8a63-c450f5fe8b07-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2706c28e-1c21-50de-8a63-c450f5fe8b07-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-55045aec-e044-52db-8866-2a8b889079f7" rel="noreferrer noopener"><span>Reaktionszeit, Synapsen und Koffein</span> <code>55045aec-e044-52db-8866-2a8b889079f7</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 10</span>
+      <span>Buch-Digest <code>sha256:97fc8393dd3a1aab18e93c65d6e2737c5a93fdc99bf535fbf9f01783606b4957</code></span>
+      <span>Ziel-Fingerprint <code>sha256:76a2a2c6e61391be2729f591557248afd0076954a75529f2b71849d85b0817c8</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-neuro-verhalten-hormone-ten-current343-native-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=2706c28e-1c21-50de-8a63-c450f5fe8b07&amp;goalFingerprint=sha256%3A76a2a2c6e61391be2729f591557248afd0076954a75529f2b71849d85b0817c8&amp;pageFingerprint=sha256%3Af320bc30c03d16f6161f86a1c70223047066f98c8adc32eee1c2b310b930469e&amp;bookDigest=sha256%3A97fc8393dd3a1aab18e93c65d6e2737c5a93fdc99bf535fbf9f01783606b4957&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a7eee23c-a5d0-5101-937a-ca441764cabf" data-goal-id="a7eee23c-a5d0-5101-937a-ca441764cabf" data-page-number="3" data-chapter-ids="structure:biologie-canonical-native-author-review-root goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:7e6b9185-f261-5c76-961a-c61e1cc4ef8d" aria-labelledby="goal-a7eee23c-a5d0-5101-937a-ca441764cabf-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a7eee23c-a5d0-5101-937a-ca441764cabf-title"><a class="goal-self-link" href="#goal-a7eee23c-a5d0-5101-937a-ca441764cabf">Gehirnaufbau und -funktion</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a7eee23c-a5d0-5101-937a-ca441764cabf</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ec2f89f652584af55402a3b6">Biologie – kanonische maschinelle Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-a3f2ec5e66058cf14de6ef3d">Q2.4 Sinnesorgane und Gehirn</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:74685cddfbe5e136bc133ddaf82e1278cf1d50918c1b02aa00490210d2324b0b" data-rendered-digest="sha256:6cdfaf8b9eabc43c728526566f8b2d111f81bf1c52986b56d3f89409e6acde65" data-render-profile="chromium-canvas-v1">
+        <img src="../../../../biologie-neuro-verhalten-hormone-ten-whole-material-and-raster-author-candidate-v1/assets/a7eee23c-a5d0-5101-937a-ca441764cabf.original.png" alt="Didaktische Visualisierung zum Lernziel &quot;Gehirnaufbau und -funktion&quot;. Die lernende Person kann wesentliche Hirnareale und ihre Funktionen überblicksartig beschreiben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a7eee23c-a5d0-5101-937a-ca441764cabf-description-heading">
+        <p class="section-heading" id="goal-a7eee23c-a5d0-5101-937a-ca441764cabf-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann wesentliche Hirnareale und ihre Funktionen überblicksartig beschreiben.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a7eee23c-a5d0-5101-937a-ca441764cabf-requires-heading">
+          <p class="section-heading" id="goal-a7eee23c-a5d0-5101-937a-ca441764cabf-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-9499943f-89b7-54e3-9fe2-e90404beaa4a"><span>Sinnesorgane untersuchen</span><code>9499943f-89b7-54e3-9fe2-e90404beaa4a</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a7eee23c-a5d0-5101-937a-ca441764cabf-reverse-heading">
+          <p class="section-heading" id="goal-a7eee23c-a5d0-5101-937a-ca441764cabf-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-a7eee23c-a5d0-5101-937a-ca441764cabf-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a7eee23c-a5d0-5101-937a-ca441764cabf-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-a7eee23c-a5d0-5101-937a-ca441764cabf-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-a7eee23c-a5d0-5101-937a-ca441764cabf-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 10</span>
+      <span>Buch-Digest <code>sha256:97fc8393dd3a1aab18e93c65d6e2737c5a93fdc99bf535fbf9f01783606b4957</code></span>
+      <span>Ziel-Fingerprint <code>sha256:79af2e455f4dad9ad19e4e45fe163775e15501f03ac942ef38b1c91589804861</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-neuro-verhalten-hormone-ten-current343-native-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=a7eee23c-a5d0-5101-937a-ca441764cabf&amp;goalFingerprint=sha256%3A79af2e455f4dad9ad19e4e45fe163775e15501f03ac942ef38b1c91589804861&amp;pageFingerprint=sha256%3Aaff9215d9caf5ba4e719fb0ce0630d3a62c43788550937f61d2dbadee91a930c&amp;bookDigest=sha256%3A97fc8393dd3a1aab18e93c65d6e2737c5a93fdc99bf535fbf9f01783606b4957&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-146d70e0-b494-59fa-b8b6-29da18b36893" data-goal-id="146d70e0-b494-59fa-b8b6-29da18b36893" data-page-number="4" data-chapter-ids="structure:biologie-canonical-native-author-review-root goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:7e6b9185-f261-5c76-961a-c61e1cc4ef8d" aria-labelledby="goal-146d70e0-b494-59fa-b8b6-29da18b36893-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-146d70e0-b494-59fa-b8b6-29da18b36893-title"><a class="goal-self-link" href="#goal-146d70e0-b494-59fa-b8b6-29da18b36893">Sehbahn und Verarbeitung</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>146d70e0-b494-59fa-b8b6-29da18b36893</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ec2f89f652584af55402a3b6">Biologie – kanonische maschinelle Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-a3f2ec5e66058cf14de6ef3d">Q2.4 Sinnesorgane und Gehirn</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:ff35063f884e57d888e016c33afec483cfcc8d570c3d3a5c19bcf49a78cd5b0e" data-rendered-digest="sha256:3beaa65fb25422f19b3d087c67bdbb546870e6029b7bf18dba37cfbfc12a9339" data-render-profile="chromium-canvas-v1">
+        <img src="../../../../biologie-neuro-verhalten-hormone-ten-whole-material-and-raster-author-candidate-v1/assets/146d70e0-b494-59fa-b8b6-29da18b36893.v2.original.png" alt="Didaktische Visualisierung zum Lernziel &quot;Sehbahn und Verarbeitung&quot;. Die lernende Person kann Signalverarbeitung vom Auge bis zum visuellen Cortex nachzeichnen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-146d70e0-b494-59fa-b8b6-29da18b36893-description-heading">
+        <p class="section-heading" id="goal-146d70e0-b494-59fa-b8b6-29da18b36893-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Signalverarbeitung vom Auge bis zum visuellen Cortex nachzeichnen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-146d70e0-b494-59fa-b8b6-29da18b36893-requires-heading">
+          <p class="section-heading" id="goal-146d70e0-b494-59fa-b8b6-29da18b36893-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-2706c28e-1c21-50de-8a63-c450f5fe8b07"><span>Gehirnprozesse deuten</span><code>2706c28e-1c21-50de-8a63-c450f5fe8b07</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-146d70e0-b494-59fa-b8b6-29da18b36893-reverse-heading">
+          <p class="section-heading" id="goal-146d70e0-b494-59fa-b8b6-29da18b36893-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-146d70e0-b494-59fa-b8b6-29da18b36893-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-146d70e0-b494-59fa-b8b6-29da18b36893-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-146d70e0-b494-59fa-b8b6-29da18b36893-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-146d70e0-b494-59fa-b8b6-29da18b36893-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 10</span>
+      <span>Buch-Digest <code>sha256:97fc8393dd3a1aab18e93c65d6e2737c5a93fdc99bf535fbf9f01783606b4957</code></span>
+      <span>Ziel-Fingerprint <code>sha256:62e874e3fb435c5ed3808bc8a375c58de3c9f47b3a1a63f8239c1727fe830da4</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-neuro-verhalten-hormone-ten-current343-native-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=146d70e0-b494-59fa-b8b6-29da18b36893&amp;goalFingerprint=sha256%3A62e874e3fb435c5ed3808bc8a375c58de3c9f47b3a1a63f8239c1727fe830da4&amp;pageFingerprint=sha256%3A8d4e2f8a96dafacc9473f41a6bf27aa5119f9ebf4df9282e72514368ae7f0bb2&amp;bookDigest=sha256%3A97fc8393dd3a1aab18e93c65d6e2737c5a93fdc99bf535fbf9f01783606b4957&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-97a15c19-c345-589e-8b3c-9f2b97a60095" data-goal-id="97a15c19-c345-589e-8b3c-9f2b97a60095" data-page-number="5" data-chapter-ids="structure:biologie-canonical-native-author-review-root goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:7e6b9185-f261-5c76-961a-c61e1cc4ef8d" aria-labelledby="goal-97a15c19-c345-589e-8b3c-9f2b97a60095-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-97a15c19-c345-589e-8b3c-9f2b97a60095-title"><a class="goal-self-link" href="#goal-97a15c19-c345-589e-8b3c-9f2b97a60095">Hörbahn und Schallverarbeitung</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>97a15c19-c345-589e-8b3c-9f2b97a60095</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ec2f89f652584af55402a3b6">Biologie – kanonische maschinelle Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-a3f2ec5e66058cf14de6ef3d">Q2.4 Sinnesorgane und Gehirn</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:d551710383e63ec2c6c3318f0c33404f87cfeb3bbbc5dcc7e6682072f8be97c6" data-rendered-digest="sha256:6e283a719ebc1a1a5106cadcc20091c7765c04cd12aca671c8fd6bbb13e97007" data-render-profile="chromium-canvas-v1">
+        <img src="../../../../biologie-neuro-verhalten-hormone-ten-whole-material-and-raster-author-candidate-v1/assets/97a15c19-c345-589e-8b3c-9f2b97a60095.original.png" alt="Didaktische Visualisierung zum Lernziel &quot;Hörbahn und Schallverarbeitung&quot;. Die lernende Person kann Schalltransduktion und Verarbeitung bis zum auditorischen Cortex erklären.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-97a15c19-c345-589e-8b3c-9f2b97a60095-description-heading">
+        <p class="section-heading" id="goal-97a15c19-c345-589e-8b3c-9f2b97a60095-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Schalltransduktion und Verarbeitung bis zum auditorischen Cortex erklären.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-97a15c19-c345-589e-8b3c-9f2b97a60095-requires-heading">
+          <p class="section-heading" id="goal-97a15c19-c345-589e-8b3c-9f2b97a60095-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-9499943f-89b7-54e3-9fe2-e90404beaa4a"><span>Sinnesorgane untersuchen</span><code>9499943f-89b7-54e3-9fe2-e90404beaa4a</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-97a15c19-c345-589e-8b3c-9f2b97a60095-reverse-heading">
+          <p class="section-heading" id="goal-97a15c19-c345-589e-8b3c-9f2b97a60095-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-97a15c19-c345-589e-8b3c-9f2b97a60095-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-97a15c19-c345-589e-8b3c-9f2b97a60095-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-97a15c19-c345-589e-8b3c-9f2b97a60095-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-97a15c19-c345-589e-8b3c-9f2b97a60095-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 10</span>
+      <span>Buch-Digest <code>sha256:97fc8393dd3a1aab18e93c65d6e2737c5a93fdc99bf535fbf9f01783606b4957</code></span>
+      <span>Ziel-Fingerprint <code>sha256:50aadd8677a60e03f7657b141393ad31be56800e4f2ed72f209a44c518af7105</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-neuro-verhalten-hormone-ten-current343-native-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=97a15c19-c345-589e-8b3c-9f2b97a60095&amp;goalFingerprint=sha256%3A50aadd8677a60e03f7657b141393ad31be56800e4f2ed72f209a44c518af7105&amp;pageFingerprint=sha256%3Aece9a3a8f8f2dfcafbb814e4d5f7bf5a65ff9565905c430737bcda97d31272b9&amp;bookDigest=sha256%3A97fc8393dd3a1aab18e93c65d6e2737c5a93fdc99bf535fbf9f01783606b4957&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5670e999-922c-5862-ba77-2d93667badd4" data-goal-id="5670e999-922c-5862-ba77-2d93667badd4" data-page-number="6" data-chapter-ids="structure:biologie-canonical-native-author-review-root goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:d23951c2-4791-5a91-a2de-b72a421a4536 goal:7e6b9185-f261-5c76-961a-c61e1cc4ef8d" aria-labelledby="goal-5670e999-922c-5862-ba77-2d93667badd4-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5670e999-922c-5862-ba77-2d93667badd4-title"><a class="goal-self-link" href="#goal-5670e999-922c-5862-ba77-2d93667badd4">Nozizeption und Schmerzmodulation</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5670e999-922c-5862-ba77-2d93667badd4</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ec2f89f652584af55402a3b6">Biologie – kanonische maschinelle Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-317e9ebf311eefad83f8eecc">Evolution &amp; Neurobiologie</a></li><li><a href="#chapter-a3f2ec5e66058cf14de6ef3d">Q2.4 Sinnesorgane und Gehirn</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9ff939d61f1662f5bc2f4f9120f0ab41d8a15bf6c607fbd33c769c1fce800f16" data-rendered-digest="sha256:b6189dfee195c5edba163a163a9859cfb116b3437d7df19b979850b67d7a397e" data-render-profile="chromium-canvas-v1">
+        <img src="../../../../biologie-neuro-verhalten-hormone-ten-whole-material-and-raster-author-candidate-v1/assets/5670e999-922c-5862-ba77-2d93667badd4.original.png" alt="Didaktische Visualisierung zum Lernziel &quot;Nozizeption und Schmerzmodulation&quot;. Die lernende Person kann periphere und zentrale Mechanismen der Schmerzverarbeitung und -modulation erklären.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5670e999-922c-5862-ba77-2d93667badd4-description-heading">
+        <p class="section-heading" id="goal-5670e999-922c-5862-ba77-2d93667badd4-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann periphere und zentrale Mechanismen der Schmerzverarbeitung und -modulation erklären.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5670e999-922c-5862-ba77-2d93667badd4-requires-heading">
+          <p class="section-heading" id="goal-5670e999-922c-5862-ba77-2d93667badd4-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-9499943f-89b7-54e3-9fe2-e90404beaa4a"><span>Sinnesorgane untersuchen</span><code>9499943f-89b7-54e3-9fe2-e90404beaa4a</code><span class="reference-page">S. 1</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-5670e999-922c-5862-ba77-2d93667badd4-reverse-heading">
+          <p class="section-heading" id="goal-5670e999-922c-5862-ba77-2d93667badd4-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-5670e999-922c-5862-ba77-2d93667badd4-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5670e999-922c-5862-ba77-2d93667badd4-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-5670e999-922c-5862-ba77-2d93667badd4-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-5670e999-922c-5862-ba77-2d93667badd4-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 10</span>
+      <span>Buch-Digest <code>sha256:97fc8393dd3a1aab18e93c65d6e2737c5a93fdc99bf535fbf9f01783606b4957</code></span>
+      <span>Ziel-Fingerprint <code>sha256:db99a83e5ed642713e1240e8a4163573951d43e8d7037330c014b80295df54f5</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-neuro-verhalten-hormone-ten-current343-native-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=5670e999-922c-5862-ba77-2d93667badd4&amp;goalFingerprint=sha256%3Adb99a83e5ed642713e1240e8a4163573951d43e8d7037330c014b80295df54f5&amp;pageFingerprint=sha256%3A103cbbb16aea9de2ca1787f378ba55577a7fdbba38a2183d90d171cfd56566ab&amp;bookDigest=sha256%3A97fc8393dd3a1aab18e93c65d6e2737c5a93fdc99bf535fbf9f01783606b4957&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5" data-goal-id="1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5" data-page-number="7" data-chapter-ids="structure:biologie-canonical-native-author-review-root goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:2a8aa38d-5064-5ed0-8d3a-43955c7fbf2e" aria-labelledby="goal-1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5-title"><a class="goal-self-link" href="#goal-1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5">Blutzucker hormonell regulieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ec2f89f652584af55402a3b6">Biologie – kanonische maschinelle Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-89c4efe8183978ea50540996">Hormonelle Regulation und Gesundheit (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9b2793683a3c2821b6125a70f3d69bcdaab6c6c0c56506a8fba60a4e10abde2d" data-rendered-digest="sha256:e4f6e28386b146ff8303c0bac8ca06e1698877dab80c103bb475a6e6e6a0e3a6" data-render-profile="chromium-canvas-v1">
+        <img src="../../../../biologie-neuro-verhalten-hormone-ten-whole-material-and-raster-author-candidate-v1/assets/1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5.v2.original.png" alt="Didaktische Visualisierung zum Lernziel &quot;Blutzucker hormonell regulieren&quot;. Die lernende Person kann die hormonelle Regulation des Blutzuckerspiegels erläutern und Zusammenhänge zwischen Lebensgewohnheiten, Veranlagung und Diabetes erklären.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5-description-heading">
+        <p class="section-heading" id="goal-1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die hormonelle Regulation des Blutzuckerspiegels erläutern und Zusammenhänge zwischen Lebensgewohnheiten, Veranlagung und Diabetes erklären.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5-requires-heading">
+          <p class="section-heading" id="goal-1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5-reverse-heading">
+          <p class="section-heading" id="goal-1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-c25a1bc9-c664-53d7-b2d8-500741da773c" rel="noreferrer noopener"><span>Ernährung und Verdauung</span> <code>c25a1bc9-c664-53d7-b2d8-500741da773c</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 10</span>
+      <span>Buch-Digest <code>sha256:97fc8393dd3a1aab18e93c65d6e2737c5a93fdc99bf535fbf9f01783606b4957</code></span>
+      <span>Ziel-Fingerprint <code>sha256:51d0b3f8d8d6ccb73256ee602c90814c2f8339ca2195d0979c0421f96b14d355</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-neuro-verhalten-hormone-ten-current343-native-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5&amp;goalFingerprint=sha256%3A51d0b3f8d8d6ccb73256ee602c90814c2f8339ca2195d0979c0421f96b14d355&amp;pageFingerprint=sha256%3Ae038e0765b7a58554a44b3676437e53a803b15b6c21d5b8b1e5949e4a472dfa7&amp;bookDigest=sha256%3A97fc8393dd3a1aab18e93c65d6e2737c5a93fdc99bf535fbf9f01783606b4957&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3d822550-c14a-52ee-9908-6bcb873afdd6" data-goal-id="3d822550-c14a-52ee-9908-6bcb873afdd6" data-page-number="8" data-chapter-ids="structure:biologie-canonical-native-author-review-root goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:26a16d5d-f178-5018-b792-039737c66ce7" aria-labelledby="goal-3d822550-c14a-52ee-9908-6bcb873afdd6-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-3d822550-c14a-52ee-9908-6bcb873afdd6-title"><a class="goal-self-link" href="#goal-3d822550-c14a-52ee-9908-6bcb873afdd6">Verhalten mit Attrappenversuchen untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3d822550-c14a-52ee-9908-6bcb873afdd6</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ec2f89f652584af55402a3b6">Biologie – kanonische maschinelle Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-496b6267ab0ff6b6b61d1631">Verhalten und Lernen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:14765bc583bd7dcc8b5b5d3216e3c1d4629326cbf3846739d8f453cd80f3a2eb" data-rendered-digest="sha256:5be3ba0db12df3a2e7062d529bb199714fb62db0db05c209511dc0155d716382" data-render-profile="chromium-canvas-v1">
+        <img src="../../../../biologie-neuro-verhalten-hormone-ten-whole-material-and-raster-author-candidate-v1/assets/3d822550-c14a-52ee-9908-6bcb873afdd6.v2.original.png" alt="Didaktische Visualisierung zum Lernziel &quot;Verhalten mit Attrappenversuchen untersuchen&quot;. Die lernende Person kann einfache Verhaltensweisen beobachten, vergleichen und mit Attrappenversuchen als Zusammenspiel innerer Faktoren und reaktionsauslösender Reize beschreiben.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3d822550-c14a-52ee-9908-6bcb873afdd6-description-heading">
+        <p class="section-heading" id="goal-3d822550-c14a-52ee-9908-6bcb873afdd6-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann einfache Verhaltensweisen beobachten, vergleichen und mit Attrappenversuchen als Zusammenspiel innerer Faktoren und reaktionsauslösender Reize beschreiben.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3d822550-c14a-52ee-9908-6bcb873afdd6-requires-heading">
+          <p class="section-heading" id="goal-3d822550-c14a-52ee-9908-6bcb873afdd6-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-3d822550-c14a-52ee-9908-6bcb873afdd6-reverse-heading">
+          <p class="section-heading" id="goal-3d822550-c14a-52ee-9908-6bcb873afdd6-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-5dd66bfd-616f-5a2a-be7c-49aaf12581a0"><span>Genetische und erworbene Verhaltensanteile beurteilen</span><code>5dd66bfd-616f-5a2a-be7c-49aaf12581a0</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-3d822550-c14a-52ee-9908-6bcb873afdd6-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-3d822550-c14a-52ee-9908-6bcb873afdd6-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-9263ee6c-bf62-531c-bb09-78a4a51b8ed7" rel="noreferrer noopener"><span>Ethogramm erstellen</span> <code>9263ee6c-bf62-531c-bb09-78a4a51b8ed7</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 10</span>
+      <span>Buch-Digest <code>sha256:97fc8393dd3a1aab18e93c65d6e2737c5a93fdc99bf535fbf9f01783606b4957</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5270ffd26ca5c608c08381fb7220f223a97f20cb5bd612c1f2bc0d44e33a532b</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-neuro-verhalten-hormone-ten-current343-native-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=3d822550-c14a-52ee-9908-6bcb873afdd6&amp;goalFingerprint=sha256%3A5270ffd26ca5c608c08381fb7220f223a97f20cb5bd612c1f2bc0d44e33a532b&amp;pageFingerprint=sha256%3A7f6fee3100007fefc5ea3d4dd060fb8bb817ea176fb7c239162510581221316f&amp;bookDigest=sha256%3A97fc8393dd3a1aab18e93c65d6e2737c5a93fdc99bf535fbf9f01783606b4957&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5dd66bfd-616f-5a2a-be7c-49aaf12581a0" data-goal-id="5dd66bfd-616f-5a2a-be7c-49aaf12581a0" data-page-number="9" data-chapter-ids="structure:biologie-canonical-native-author-review-root goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:26a16d5d-f178-5018-b792-039737c66ce7" aria-labelledby="goal-5dd66bfd-616f-5a2a-be7c-49aaf12581a0-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5dd66bfd-616f-5a2a-be7c-49aaf12581a0-title"><a class="goal-self-link" href="#goal-5dd66bfd-616f-5a2a-be7c-49aaf12581a0">Genetische und erworbene Verhaltensanteile beurteilen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5dd66bfd-616f-5a2a-be7c-49aaf12581a0</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ec2f89f652584af55402a3b6">Biologie – kanonische maschinelle Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-496b6267ab0ff6b6b61d1631">Verhalten und Lernen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:1cd59e1ad7243951d79b3c0b53c3fe2d3e9f33c25898ea6248813e3138100ff1" data-rendered-digest="sha256:5c11483851e5481ac79f4895e9a5c439a66828d05e082ea52f45c49a96ae5aa1" data-render-profile="chromium-canvas-v1">
+        <img src="../../../../biologie-neuro-verhalten-hormone-ten-whole-material-and-raster-author-candidate-v1/assets/5dd66bfd-616f-5a2a-be7c-49aaf12581a0.original.png" alt="Didaktische Visualisierung zum Lernziel &quot;Genetische und erworbene Verhaltensanteile beurteilen&quot;. Die lernende Person kann Daten aus Verhaltensbeobachtungen nutzen, um zu beurteilen, ob eine Verhaltensweise vor allem genetisch bedingt oder erworben ist.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5dd66bfd-616f-5a2a-be7c-49aaf12581a0-description-heading">
+        <p class="section-heading" id="goal-5dd66bfd-616f-5a2a-be7c-49aaf12581a0-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Daten aus Verhaltensbeobachtungen nutzen, um zu beurteilen, ob eine Verhaltensweise vor allem genetisch bedingt oder erworben ist.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5dd66bfd-616f-5a2a-be7c-49aaf12581a0-requires-heading">
+          <p class="section-heading" id="goal-5dd66bfd-616f-5a2a-be7c-49aaf12581a0-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-3d822550-c14a-52ee-9908-6bcb873afdd6"><span>Verhalten mit Attrappenversuchen untersuchen</span><code>3d822550-c14a-52ee-9908-6bcb873afdd6</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-5dd66bfd-616f-5a2a-be7c-49aaf12581a0-reverse-heading">
+          <p class="section-heading" id="goal-5dd66bfd-616f-5a2a-be7c-49aaf12581a0-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-5a5eeff5-ae97-5b5b-bc80-df03eba8e095"><span>Konditionierung experimentell planen</span><code>5a5eeff5-ae97-5b5b-bc80-df03eba8e095</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 10</span>
+      <span>Buch-Digest <code>sha256:97fc8393dd3a1aab18e93c65d6e2737c5a93fdc99bf535fbf9f01783606b4957</code></span>
+      <span>Ziel-Fingerprint <code>sha256:6d4ba06fb0e05f26ed4eeed9940c84c28732c8260ed013aa9ec1be1b0fb22a62</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-neuro-verhalten-hormone-ten-current343-native-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=5dd66bfd-616f-5a2a-be7c-49aaf12581a0&amp;goalFingerprint=sha256%3A6d4ba06fb0e05f26ed4eeed9940c84c28732c8260ed013aa9ec1be1b0fb22a62&amp;pageFingerprint=sha256%3A8752f63ab2aa90e35c9b0d541e53e1dfeb274f2e8e6c116a3b6dd4bca93b88ff&amp;bookDigest=sha256%3A97fc8393dd3a1aab18e93c65d6e2737c5a93fdc99bf535fbf9f01783606b4957&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-5a5eeff5-ae97-5b5b-bc80-df03eba8e095" data-goal-id="5a5eeff5-ae97-5b5b-bc80-df03eba8e095" data-page-number="10" data-chapter-ids="structure:biologie-canonical-native-author-review-root goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:26a16d5d-f178-5018-b792-039737c66ce7" aria-labelledby="goal-5a5eeff5-ae97-5b5b-bc80-df03eba8e095-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-5a5eeff5-ae97-5b5b-bc80-df03eba8e095-title"><a class="goal-self-link" href="#goal-5a5eeff5-ae97-5b5b-bc80-df03eba8e095">Konditionierung experimentell planen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>5a5eeff5-ae97-5b5b-bc80-df03eba8e095</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ec2f89f652584af55402a3b6">Biologie – kanonische maschinelle Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-496b6267ab0ff6b6b61d1631">Verhalten und Lernen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:eab384480535858d4cbf80ac6a096d0742c592893c5c83c008ac727b066b6a31" data-rendered-digest="sha256:5b731a355bd02aeb6de2aa73e61672fa29ac8498aaadd5559b329d1e0bc32f51" data-render-profile="chromium-canvas-v1">
+        <img src="../../../../biologie-neuro-verhalten-hormone-ten-whole-material-and-raster-author-candidate-v1/assets/5a5eeff5-ae97-5b5b-bc80-df03eba8e095.v2.original.png" alt="Didaktische Visualisierung zum Lernziel &quot;Konditionierung experimentell planen&quot;. Die lernende Person kann Experimente zur Konditionierung planen, um die Beeinflussbarkeit von Verhalten durch Umweltfaktoren zu untersuchen und Lernfähigkeit bei Menschen und anderen Lebewesen zu vergleichen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-5a5eeff5-ae97-5b5b-bc80-df03eba8e095-description-heading">
+        <p class="section-heading" id="goal-5a5eeff5-ae97-5b5b-bc80-df03eba8e095-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Experimente zur Konditionierung planen, um die Beeinflussbarkeit von Verhalten durch Umweltfaktoren zu untersuchen und Lernfähigkeit bei Menschen und anderen Lebewesen zu vergleichen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-5a5eeff5-ae97-5b5b-bc80-df03eba8e095-requires-heading">
+          <p class="section-heading" id="goal-5a5eeff5-ae97-5b5b-bc80-df03eba8e095-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-5dd66bfd-616f-5a2a-be7c-49aaf12581a0"><span>Genetische und erworbene Verhaltensanteile beurteilen</span><code>5dd66bfd-616f-5a2a-be7c-49aaf12581a0</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-5a5eeff5-ae97-5b5b-bc80-df03eba8e095-reverse-heading">
+          <p class="section-heading" id="goal-5a5eeff5-ae97-5b5b-bc80-df03eba8e095-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 10</span>
+      <span>Buch-Digest <code>sha256:97fc8393dd3a1aab18e93c65d6e2737c5a93fdc99bf535fbf9f01783606b4957</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d0d790cfc0c357497561d18e95e9357edaab99c1304e4c28ab2d4a7b80eecde4</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-neuro-verhalten-hormone-ten-current343-native-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=5a5eeff5-ae97-5b5b-bc80-df03eba8e095&amp;goalFingerprint=sha256%3Ad0d790cfc0c357497561d18e95e9357edaab99c1304e4c28ab2d4a7b80eecde4&amp;pageFingerprint=sha256%3A877d71040907d8b5ae0f882fd7a30697da27ca2ad58e855fb961e9eb2b05d330&amp;bookDigest=sha256%3A97fc8393dd3a1aab18e93c65d6e2737c5a93fdc99bf535fbf9f01783606b4957&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

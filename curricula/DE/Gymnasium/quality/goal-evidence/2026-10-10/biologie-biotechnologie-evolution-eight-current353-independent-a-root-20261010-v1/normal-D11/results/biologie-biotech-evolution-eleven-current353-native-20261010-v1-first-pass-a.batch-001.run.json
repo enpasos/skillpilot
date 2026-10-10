@@ -1,0 +1,64 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-biotech-evolution-eleven-current353-native-20261010-v1-first-pass-a.batch-001",
+  "campaignId": "biologie-biotech-evolution-eleven-current353-native-20261010-v1-a",
+  "roundId": "biologie-biotech-evolution-eleven-current353-native-20261010-v1-first-pass-a",
+  "batchId": "biologie-biotech-evolution-eleven-current353-native-20261010-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:374d48a0cb60b92bebed8597badc9c41de4ef04b56ec80e20f8807690c24ced3",
+  "bundleFingerprint": "sha256:a302488215f51cecdc22cfa8915397b99576be59f144e72269739930500d32e9",
+  "bookDigest": "sha256:b34bb97399ce328fff0761ec40a7ca3b45b1d5dcb05856c4f8f525cf6f251553",
+  "provider": "OpenAI Codex",
+  "model": "GPT-6 Codex; precise runtime revision not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:607232934cae4d7fdc0402e22502ed830cb2fd2b64ee179813b069fe419eabb7",
+  "independenceGroupId": "biologie-biotech-evolution-eleven-current353-native-20261010-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+    "523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
+    "a515e493-6f90-5371-9470-28a0cf50f087",
+    "d11b3b18-deec-5d1a-bff6-512cddf595a2",
+    "8f6933b1-6e02-5512-acf2-a90a7fb9cb75",
+    "528a3cd3-4a4d-550d-939a-8dc8656446e4",
+    "a3f483ce-126e-595c-999c-aa4d95106221",
+    "27b22c33-908c-5fa8-9d9f-a08aff8da143",
+    "9b40dae5-6d89-5714-ac96-373e72a7045e",
+    "4a8a6cec-a2cc-56fe-b3ab-7ca017f640cf",
+    "430b2b73-641a-5122-bb6d-162b0d1eaf2d"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:374d48a0cb60b92bebed8597badc9c41de4ef04b56ec80e20f8807690c24ced3"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:ba91fc57c721ea7b5e942a7d42eef6d4659c0cf778156b478d50f7eeb1505ba0"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:6b2e0248e025c1d9234454f7375ce5c76df7ebfeb6f25ce323bea77286cd9fac"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:1fadad42a724831d8d104eb7f81472cdf4ff3b97c031f59c1307a3bf6790f502"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    }
+  ],
+  "startedAt": "2026-10-10T13:08:12.017451+00:00",
+  "completedAt": "2026-10-10T13:28:00.365116+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:e11a203987194fcff2a37cfbb483b07bcabc1c48a53901382b296e217409c73c",
+  "toolchainVersion": "goal-description-understanding-evidence-v2"
+}

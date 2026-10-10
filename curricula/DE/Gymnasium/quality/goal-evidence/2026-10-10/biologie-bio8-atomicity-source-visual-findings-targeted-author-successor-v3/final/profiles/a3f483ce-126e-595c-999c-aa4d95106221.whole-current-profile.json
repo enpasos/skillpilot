@@ -1,0 +1,61 @@
+{
+  "archetype": "procedure",
+  "expectations": [
+    {
+      "id": "cycle-and-target",
+      "essentialUnderstandingDe": "PCR verbindet Strangtrennung, passende Primerbindung und DNA-Polymerase-Verlängerung; die Primer begrenzen das gezielt vervielfältigte DNA-Gebiet.",
+      "essentialUnderstandingEn": "PCR combines strand separation, matching primer binding and DNA-polymerase extension; primers delimit the selectively amplified region.",
+      "observablePerformanceDe": "Beschreibt die drei Schritte, antiparallele Verlängerungsrichtungen und die Kopierung eines bestimmten Zielabschnitts.",
+      "observablePerformanceEn": "Describes the three steps, opposite extension directions and copying of a specified target region."
+    },
+    {
+      "id": "applications-and-controls",
+      "essentialUnderstandingDe": "Vervielfältigte DNA erleichtert nachfolgende Untersuchung, aber Kontrollen und Zielfassung begrenzen die Aussage.",
+      "essentialUnderstandingEn": "Amplified DNA enables subsequent analysis, but controls and target choice bound the inference.",
+      "observablePerformanceDe": "Erläutert die Verwendung im gegebenen Analysefall und passt die Schlussfolgerung bei Kontamination, fehlender Kontrolle oder geänderter Bindestelle an.",
+      "observablePerformanceEn": "Explains the supplied analytical use and revises conclusions for contamination, failed controls or changed binding sites."
+    }
+  ],
+  "coverageExpectations": {
+    "requiredExpectationIds": [
+      "cycle-and-target",
+      "applications-and-controls"
+    ],
+    "alternativeExpectationGroups": [],
+    "minimumIndependentDemonstrations": 2,
+    "freshVariationRequired": true,
+    "independentTransferRequired": true
+  },
+  "variationAxes": [
+    {
+      "id": "distinct-content-contexts",
+      "textDe": "150bp-Ziel mit gegenläufigen Primerverlängerungen gegenüber kontrolliertem Ziel-DNA-Nachweis in einer Wasserprobe.",
+      "textEn": "150bp target with opposite primer extensions versus controlled target-DNA detection in a water sample."
+    },
+    {
+      "id": "fresh-content-premise",
+      "textDe": "Nach außen zeigende Primer gegenüber neu positiver vorlagenfreier Kontrolle; Folgerungen eigenständig anpassen.",
+      "textEn": "Outward-pointing primers versus newly positive no-template control; revise inference independently."
+    }
+  ],
+  "applicationCaseBriefs": [
+    {
+      "id": "pcr-target-cycle-analysis",
+      "taskDemandDe": "Ein Modell zeigt zwei komplementäre DNA-Stränge und ein Primerpaar, das einen 150-bp-Abschnitt begrenzt. Die Primer binden an gegenüberliegenden Strängen an entgegengesetzten Enden; Verlängerung führt in den gewählten Abschnitt hinein. Ein Zyklus umfasst Trennung, Primerbindung und Verlängerung durch DNA-Polymerase. Wiederholung erhöht die Zahl der Zielkopien. Danach soll das Zielstück größenanalytisch untersucht werden.\n\nBeschreibe Prinzip und Anwendung der PCR. Ordne die drei Zyklusschritte, erkläre die Rolle beider Primer und unterscheide Vervielfältigung vom späteren Größennachweis.\n\nFrische Variation: Ein neues Primerpaar bindet an dieselben Vorlagen, seine verlängerbaren Enden zeigen jedoch voneinander weg aus dem gewählten Bereich. Ist dieser Bereich durch diese Paarung wie zuvor begrenzt?",
+      "taskDemandEn": "A model shows complementary DNA strands and primers delimiting a 150-bp region. Primers bind opposite strands at opposite ends; extension proceeds into the chosen region. A cycle includes separation, primer binding and DNA-polymerase extension. Repetition increases target-copy number. Subsequent analysis examines its size.\n\nDescribe PCR principle and application. Order the three cycle stages, explain both primers and distinguish amplification from subsequent size detection.\n\nFresh variation: A new primer pair binds the same templates but its extendable ends point away from each other and out of the chosen region. Is that region delimited as before?",
+      "expectedPerformanceDe": "Strangtrennung macht die Vorlagen zugänglich. Passende Primer binden an den gegenüberliegenden Vorlagen; Polymerase verlängert von den Primerenden aus in 5′→3′-Richtung. Wegen der antiparallelen Vorlagen laufen die beiden Verlängerungen räumlich gegensinnig in den Zielbereich. Wiederholte Zyklen vervielfältigen gezielt die primerbegrenzte DNA, im idealen Modell annähernd verdoppelnd; reale Effizienz ist nicht unbegrenzt. Mehr Kopien erleichtern Untersuchung. PCR selbst ist nicht die Geltrennung und vervielfältigt keine Proteine.\n\nTransfer: Nein: Die Verlängerungsrichtungen begrenzen den gewünschten inneren Abschnitt nicht wie zuvor. Bloße Bindung zweier Primer genügt nicht; Bindestellen und Orientierung müssen zum Ziel passen.",
+      "expectedPerformanceEn": "Separation exposes templates. Matching primers bind opposite templates; polymerase extends from primer ends in the 5′→3′ direction. Antiparallel templates make the extensions spatially opposite, into the target. Repeated cycles selectively amplify primer-bounded DNA, approximately doubling in an ideal model; real efficiency is not unlimited. Copies facilitate analysis. PCR is not gel separation and does not amplify proteins.\n\nTransfer: No: the extension directions do not delimit the intended internal region as before. Two primers merely binding is insufficient; position and orientation must fit the target.",
+      "understandingFocusDe": "PCR verbindet Strangtrennung, passende Primerbindung und DNA-Polymerase-Verlängerung; die Primer begrenzen das gezielt vervielfältigte DNA-Gebiet. Vervielfältigte DNA erleichtert nachfolgende Untersuchung, aber Kontrollen und Zielfassung begrenzen die Aussage.",
+      "understandingFocusEn": "PCR combines strand separation, matching primer binding and DNA-polymerase extension; primers delimit the selectively amplified region. Amplified DNA enables subsequent analysis, but controls and target choice bound the inference."
+    },
+    {
+      "id": "pcr-monitoring-controls",
+      "taskDemandDe": "Didaktischer Nachweisfall ohne diagnostische Freigabe: Ein spezifisches Primerpaar soll ein gegebenes DNA-Ziel im Wasserprobenmaterial vervielfältigen. Die Positivkontrolle enthält das passende Ziel, die Negativkontrolle keine Vorlage. Ergebnis: Positivkontrolle und Probe zeigen das erwartete Zielsignal; Negativkontrolle bleibt leer. Der Nachweis betrifft nur die untersuchte DNA, nicht automatisch lebende Organismen oder einen Gesundheitsbefund.\n\nErläutere die PCR-Anwendung mithilfe ihres Zyklus und der Kontrollen. Welche Aussage tragen diese Ergebnisse, welche stärkere Behauptung tragen sie nicht?\n\nFrische Variation: Frische Daten: Nun zeigt auch die vorlagenfreie Negativkontrolle das erwartete Signal, während die Probe weiterhin positiv ist. Wie ändern sich die zulässigen Aussagen?",
+      "taskDemandEn": "Teaching detection case without diagnostic approval: specific primers amplify a stipulated DNA target in a water sample. The positive control contains matching target; the negative control has no template. Positive control and sample show the expected signal, negative control is empty. This detects tested DNA, not necessarily living organisms or a health condition.\n\nExplain this PCR application through the cycle and controls. What inference do the results support and what stronger claim do they not support?\n\nFresh variation: Fresh data: the no-template negative control now also shows the expected signal, while the sample remains positive. How do justified conclusions change?",
+      "expectedPerformanceDe": "Die Zyklen aus Strangtrennung, Primerbindung und Verlängerung vervielfältigen passendes Zielmaterial, sodass ein Signal untersucht werden kann. Die funktionierende Positivkontrolle stützt die grundsätzliche Nachweisfähigkeit; die leere Negativkontrolle zeigt keinen Kontaminationsnachweis in diesem Kontrollansatz. Das Probesignal ist mit vorhandener Ziel-DNA vereinbar. Daraus folgt nicht automatisch, dass ein bestimmter Organismus lebend vorhanden ist, seine Menge exakt bekannt ist oder eine gesundheitliche Bewertung zulässig wäre.\n\nTransfer: Kontamination oder eine andere unspezifische Signalquelle ist zu klären. Das Probesignal kann nicht mehr sicher ausschließlich der Probe zugeordnet werden; eine unveränderte Nachweisbehauptung wäre überzogen. Eine erneute kontrollierte Prüfung ist nötig.",
+      "expectedPerformanceEn": "Cycles of separation, primer binding and extension amplify matching target for detection. The working positive control supports assay functionality; the empty negative control does not show contamination in that control. The sample signal is compatible with target DNA. It does not automatically establish a living organism, an exact quantity or an authorized health assessment.\n\nTransfer: Contamination or another nonspecific source needs clarification. The sample signal can no longer confidently be attributed solely to its sample; repeating the unchanged detection claim would overstate evidence. Controlled rechecking is needed.",
+      "understandingFocusDe": "PCR verbindet Strangtrennung, passende Primerbindung und DNA-Polymerase-Verlängerung; die Primer begrenzen das gezielt vervielfältigte DNA-Gebiet. Vervielfältigte DNA erleichtert nachfolgende Untersuchung, aber Kontrollen und Zielfassung begrenzen die Aussage.",
+      "understandingFocusEn": "PCR combines strand separation, matching primer binding and DNA-polymerase extension; primers delimit the selectively amplified region. Amplified DNA enables subsequent analysis, but controls and target choice bound the inference."
+    }
+  ]
+}

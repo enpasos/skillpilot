@@ -1,0 +1,89 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+  "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-b",
+  "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b",
+  "batchId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:f2a2747e04067332dfa337f05dfc3556b34ace5ebce38e5004c6daaa2f993fd3",
+  "bundleFingerprint": "sha256:231f3f21d18f76be785a21f8adaaeb46886e30463364bc8444ffeebc15fe30f2",
+  "bookDigest": "sha256:7a31e525a17940f06d860e2429f31c6626f424a2cdabc9f4ecef16654a556d5d",
+  "provider": "OpenAI",
+  "model": "Codex GPT-6 agent; exact runtime model revision not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "skillpilot-goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:27dfe7aaea2f5411e338989995625cab792b34ddae1a8e3977de17000cee4371",
+  "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "1c3470ae-83f8-52e9-98ae-b0a712755b66",
+    "8e2244e1-8616-5f24-859f-8e10df1c887b",
+    "e467ee54-7773-595f-ac1c-a60a5b7be2cf",
+    "cdd2247b-0ac6-5457-a5b9-26c6d0139906",
+    "db9f83a4-90b0-5601-a734-46b40a1cf0e4",
+    "e25ad42f-8314-5ee7-9440-765ee18773f9",
+    "2c60c8ad-04d3-5395-8a27-400646eb1612",
+    "39ba4385-0144-5e20-ba11-e3714756583b"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:74e83cb8d564eac9a763303c9de909e154c0faf0521523c92a773d80db1e5eb3"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:f9f4c7c39268c422c3e794c6bf36077bc34922d2d220c053c6a344c9b936e660"
+    },
+    {
+      "role": "book_pdf_render_manifest",
+      "digest": "sha256:837a26282c98ce0578914cb783105e74a888dfc338e50a671b9ccbc44eb2283d"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:6c76476f235ae86ec6f95cf74be8d51b91e1932ff704a0912ace3056e107b672"
+    },
+    {
+      "role": "book_html_render_manifest",
+      "digest": "sha256:2b1807b060dbc64d297c4ce1e02f938656a4f715abf49c02ce6760b367476bb1"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:b1d410462d0a69777ab1e0cd23890e5f4d223b29555aded4e7d58f6e4f7b0bf4"
+    },
+    {
+      "role": "review_input_jsonl",
+      "digest": "sha256:4dbf51100a1d6497549d9b4b9ff75352b47414edce7a8b02d15f282a5497532d"
+    },
+    {
+      "role": "review_markdown",
+      "digest": "sha256:6f027006273cfabf20f041c49509ca485f47ca5c2e95a939f7e07bc945d7e8ba"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:f2a2747e04067332dfa337f05dfc3556b34ace5ebce38e5004c6daaa2f993fd3"
+    }
+  ],
+  "startedAt": "2026-10-10T10:05:23.206565+00:00",
+  "completedAt": "2026-10-10T10:08:39.904910+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:fef94a1901a291408d6ecbd0bf7d8813869d00c02e410aed415838e0b8a7cbbb",
+  "toolchainVersion": "skillpilot-independent-agent-current-native-v3"
+}

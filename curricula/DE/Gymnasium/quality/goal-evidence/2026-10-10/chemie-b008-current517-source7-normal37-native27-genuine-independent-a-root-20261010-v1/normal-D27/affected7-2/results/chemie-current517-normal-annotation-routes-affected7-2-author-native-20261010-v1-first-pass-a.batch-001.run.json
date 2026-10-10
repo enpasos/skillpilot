@@ -1,0 +1,60 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-current517-normal-annotation-routes-affected7-2-author-native-20261010-v1-first-pass-a.batch-001",
+  "campaignId": "chemie-current517-normal-annotation-routes-affected7-2-author-native-20261010-v1-a",
+  "roundId": "chemie-current517-normal-annotation-routes-affected7-2-author-native-20261010-v1-first-pass-a",
+  "batchId": "chemie-current517-normal-annotation-routes-affected7-2-author-native-20261010-v1-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:24f033efd4206a701b3872a0ab32c5572ce65c529dd64c1165a02b7dbff9bd04",
+  "bundleFingerprint": "sha256:8b453bbe267eb85a9248d3985ecdd672ada447fbec37f1a65e518b9bb7bc868f",
+  "bookDigest": "sha256:ee855643a5d76272b7aa440a1b9850cdf37cf2d777e31b881f0aae373a207740",
+  "provider": "OpenAI Codex",
+  "model": "GPT-6 Codex; precise runtime revision not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:c14444e02f9d984922e0155567ac0698e33d23c98462679c41cc979b691644f5",
+  "independenceGroupId": "chemie-current517-normal-annotation-routes-affected7-2-author-native-20261010-v1-independent-a",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "6c9adc36-b6d0-57fa-8e02-5e156aebfecc",
+    "1df17884-96ae-57d7-9da9-dbebd082596f",
+    "e5a5dcd8-053c-55fd-b5c7-bba93779da53",
+    "9f892457-c4e5-56da-830c-bf6cac0c98d7",
+    "1f354a60-be44-512b-8f8b-f67c8c456035",
+    "6c7ce93c-7675-51da-bc0c-7d0257f7ff7d",
+    "86d34f1f-692d-5522-a9a4-a71c65b24de7"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:24f033efd4206a701b3872a0ab32c5572ce65c529dd64c1165a02b7dbff9bd04"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:d57acd8cfb2d837de7c64c9f6ef2f791fcb99876283e5b2c4168ea0777beb962"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:1300f4c6aed381409cbcc1506d9d6e4013a8394b688eebcc7d72f7336c31d53b"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:6ebccd7c6c04116e339a78b3366418d993937eedc99f9ab84e318d5982e2fdf4"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    }
+  ],
+  "startedAt": "2026-10-10T14:09:12.335627+00:00",
+  "completedAt": "2026-10-10T14:09:12.335627+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:801571fc39667cea30f9acdd9f3af0e6fe557e0f7a5f62bf4c2f2b945285031f",
+  "toolchainVersion": "goal-description-understanding-evidence-v2"
+}

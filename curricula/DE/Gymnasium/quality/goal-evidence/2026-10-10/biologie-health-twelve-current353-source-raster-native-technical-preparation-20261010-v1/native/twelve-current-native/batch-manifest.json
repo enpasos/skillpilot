@@ -1,0 +1,65 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-health-twelve-current353-native-20261010-v1",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-health-twelve-current353-source-raster-native-technical-preparation-20261010-v1/native/twelve-current-prerequisite-safe.batch.config.json",
+  "configDigest": "sha256:1dec374b785ee9abc8c43e39f20b74990566ad4e65e3a77d1fbc5a63b8e2894f",
+  "goalIds": [
+    "63856e48-8ed9-5942-8a1d-1d53ad29416d",
+    "6add2bde-b647-577d-a899-6fd62497656a",
+    "6de6ad3b-1099-5f51-848d-96de4119ed01",
+    "91f62a7b-3b6a-5918-94ca-3f345f1f6584",
+    "3c0f5267-4837-5c99-aa6d-bfb41ff70980",
+    "a6f2bcaf-df2d-5144-aa8f-49396b12d31b",
+    "848334f3-c719-55d9-b5f4-42836e0d876a",
+    "17dc9671-3280-566c-b9ec-27437864e0ab",
+    "a6f57e17-9f0c-5327-91bc-c6f31ff375a2",
+    "773a297d-49bf-5c8a-a62a-1bd2558e323c",
+    "0e1065b9-9d1d-5299-b900-32c74d352e56",
+    "d6727804-a8d4-5438-9b98-4aea8e7f4f80"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 394,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-health-twelve-current353-source-raster-native-technical-preparation-20261010-v1/native/current394-after.normal.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-health-twelve-current353-source-raster-native-technical-preparation-20261010-v1/candidate/current479-only-twelve-resourceLinks.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:64785393bab9c8178a2ca9d8affc6a6d953bdaa17142f008085b4f68010a0416"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:aeb82cc2ad664ae910d3df0d724d7ff1d48000a15bf995945cdd51952a312d58",
+    "reviewInputFingerprint": "sha256:0592da261420d6076452e3581a5cca2dc645dda2137b93ec32ac61599dead956",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-health-twelve-current353-native-20261010-v1-a",
+        "campaignDigest": "sha256:9e9ee683ea0e02bb2e0fb9895fbddb8278d2276ec9aba830af358e71d03a4bfb",
+        "roundId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a",
+        "independenceGroupId": "biologie-health-twelve-current353-native-20261010-v1-independent-a",
+        "batchId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:8480f48af372b14c4023c9a5e90222e7e3bdda11ca9c4b3e22dd4b943e80dbd4"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-health-twelve-current353-native-20261010-v1-b",
+        "campaignDigest": "sha256:b2ea1efe91d0f961d497ee10be19e676534555533a6590d105a497677f7172ab",
+        "roundId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-b",
+        "independenceGroupId": "biologie-health-twelve-current353-native-20261010-v1-independent-b",
+        "batchId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:1ae9d549797450255cb4a6acac7c4ec6e37698b2169f2d97ea6880749b8cdf0b"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

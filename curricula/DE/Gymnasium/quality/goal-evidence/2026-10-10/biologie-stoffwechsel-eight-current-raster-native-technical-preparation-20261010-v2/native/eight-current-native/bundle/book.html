@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-v1&quot;,&quot;maxWidthPixels&quot;:1600,&quot;maxHeightPixels&quot;:1200,&quot;jpegQuality&quot;:0.82,&quot;webpQuality&quot;:0.9,&quot;maxBytes&quot;:1500000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Biologie – acht Stoffwechsel-Prüfseiten mit aktuellen Bildern</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Biologie – acht Stoffwechsel-Prüfseiten mit aktuellen Bildern</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>8 atomare Lernziele</dt><dd>7 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:f7f3801583ccb55c57d615e317c59e71a1f954a2d6b54a4af8577b726fe5e6bd</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:biologie-canonical-native-author-review-root" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-ec2f89f652584af55402a3b6" aria-label="Biologie – kanonische maschinelle Prüfsicht"><a href="#goal-1c3470ae-83f8-52e9-98ae-b0a712755b66"><span class="toc-entry-label">Biologie&#160;<wbr>–&#160;<wbr>kanonische&#160;<wbr>maschinelle&#160;<wbr>Prüfsicht</span></a></h2>
+          <span class="toc-entry-meta"><span>8 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="goal:e8d54127-d42e-51f5-bfa5-51d826069f95" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-e35b58df5ecbb68b42c77ce2" aria-label="Biologie"><a href="#goal-1c3470ae-83f8-52e9-98ae-b0a712755b66"><span class="toc-entry-label">Biologie</span></a></h3>
+          <span class="toc-entry-meta"><span>8 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:b530a382-2786-5794-8821-3e01a62d88fd" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-f6f70d877b5c7ffda09c95bc" aria-label="Biologische Grundlagen (Sek I)"><a href="#goal-1c3470ae-83f8-52e9-98ae-b0a712755b66"><span class="toc-entry-label">Biologische&#160;<wbr>Grundlagen&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:cbde2ff0-3488-55ef-a652-e0c0aa7937cb" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-290a22afa08156aa8fd29e76" aria-label="Ökologie &amp; Stoffwechsel"><a href="#goal-8e2244e1-8616-5f24-859f-8e10df1c887b"><span class="toc-entry-label">Ökologie&#160;<wbr>&amp;&#160;<wbr>Stoffwechsel</span></a></h4>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:3" data-chapter-id="goal:c7f2fc89-543d-5ad1-9875-d6fcedf0d1fb" data-chapter-depth="3">
+          <h5 class="toc-entry-heading" id="chapter-82f07451f8dd041b1c1cd92c" aria-label="Q3.2 Grundlegende Stoffwechselprozesse: Fotosynthese und Grundlagen der Zellatmung"><a href="#goal-8e2244e1-8616-5f24-859f-8e10df1c887b"><span class="toc-entry-label">Q3.2&#160;<wbr>Grundlegende&#160;<wbr>Stoffwechselprozesse:&#160;<wbr>Fotosynthese&#160;<wbr>und&#160;<wbr>Grundlagen&#160;<wbr>der&#160;<wbr>Zellatmung</span></a></h5>
+          <span class="toc-entry-meta"><span>5 Lernziele</span><span>erste zugehörige Lernzielseite 2</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:30e93515-f535-5ca4-9ed2-8fdf41838772" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-96b3a05f1de8aac8a81fac07" aria-label="Säugetiere und menschlicher Körper (Sek I)"><a href="#goal-2c60c8ad-04d3-5395-8a27-400646eb1612"><span class="toc-entry-label">Säugetiere&#160;<wbr>und&#160;<wbr>menschlicher&#160;<wbr>Körper&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 7</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:2" data-chapter-id="goal:ede65598-4fa7-591f-af79-2fa7564b6ec0" data-chapter-depth="2">
+          <h4 class="toc-entry-heading" id="chapter-31ce31c0928f3ec31d390154" aria-label="Mikroorganismen, Lebensmittel und Biotechnologie (Sek I)"><a href="#goal-39ba4385-0144-5e20-ba11-e3714756583b"><span class="toc-entry-label">Mikroorganismen,&#160;<wbr>Lebensmittel&#160;<wbr>und&#160;<wbr>Biotechnologie&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h4>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 8</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-1c3470ae-83f8-52e9-98ae-b0a712755b66" data-goal-id="1c3470ae-83f8-52e9-98ae-b0a712755b66" data-page-number="1" data-chapter-ids="structure:biologie-canonical-native-author-review-root goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:b530a382-2786-5794-8821-3e01a62d88fd" aria-labelledby="goal-1c3470ae-83f8-52e9-98ae-b0a712755b66-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-1c3470ae-83f8-52e9-98ae-b0a712755b66-title"><a class="goal-self-link" href="#goal-1c3470ae-83f8-52e9-98ae-b0a712755b66">Pflanzenzellen im Gewebe</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>1c3470ae-83f8-52e9-98ae-b0a712755b66</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ec2f89f652584af55402a3b6">Biologie – kanonische maschinelle Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-f6f70d877b5c7ffda09c95bc">Biologische Grundlagen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:880c4e0a4bd11ea23c7be247ae4044ad8d3691f98530be952363d0c00a11b4fc" data-rendered-digest="sha256:0b7119a2813a5e1e5e60fbc4fad2e330f3847d8d0df7197e73383870e92877ae" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/1c3470ae-83f8-52e9-98ae-b0a712755b66/1c3470ae-83f8-52e9-98ae-b0a712755b66.png" alt="Schematischer Pflanzenzellverband mit Zwiebel- und Blattgewebe am Lichtmikroskop.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-1c3470ae-83f8-52e9-98ae-b0a712755b66-description-heading">
+        <p class="section-heading" id="goal-1c3470ae-83f8-52e9-98ae-b0a712755b66-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Pflanzenzellen im Gewebeverband beobachten und beschreiben.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-1c3470ae-83f8-52e9-98ae-b0a712755b66-requires-heading">
+          <p class="section-heading" id="goal-1c3470ae-83f8-52e9-98ae-b0a712755b66-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-1c3470ae-83f8-52e9-98ae-b0a712755b66-reverse-heading">
+          <p class="section-heading" id="goal-1c3470ae-83f8-52e9-98ae-b0a712755b66-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-1c3470ae-83f8-52e9-98ae-b0a712755b66-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-1c3470ae-83f8-52e9-98ae-b0a712755b66-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-91df35c7-e384-50d6-bb3a-37e74a6086f1" rel="noreferrer noopener"><span>Mikroskop sachgerecht nutzen</span> <code>91df35c7-e384-50d6-bb3a-37e74a6086f1</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 8</span>
+      <span>Buch-Digest <code>sha256:f7f3801583ccb55c57d615e317c59e71a1f954a2d6b54a4af8577b726fe5e6bd</code></span>
+      <span>Ziel-Fingerprint <code>sha256:bd40ac49f231fc64bad754840502b4f9c2783a9170ec2077e3bc1fb452c65628</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-stoffwechsel-eight-current-native-20261010-v2&amp;edition=curricular-atomic-v1&amp;goalId=1c3470ae-83f8-52e9-98ae-b0a712755b66&amp;goalFingerprint=sha256%3Abd40ac49f231fc64bad754840502b4f9c2783a9170ec2077e3bc1fb452c65628&amp;pageFingerprint=sha256%3A43a727a8d03f754973d81176841ed569995aefea91e87fffdc042892210e887d&amp;bookDigest=sha256%3Af7f3801583ccb55c57d615e317c59e71a1f954a2d6b54a4af8577b726fe5e6bd&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-8e2244e1-8616-5f24-859f-8e10df1c887b" data-goal-id="8e2244e1-8616-5f24-859f-8e10df1c887b" data-page-number="2" data-chapter-ids="structure:biologie-canonical-native-author-review-root goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:cbde2ff0-3488-55ef-a652-e0c0aa7937cb goal:c7f2fc89-543d-5ad1-9875-d6fcedf0d1fb" aria-labelledby="goal-8e2244e1-8616-5f24-859f-8e10df1c887b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-8e2244e1-8616-5f24-859f-8e10df1c887b-title"><a class="goal-self-link" href="#goal-8e2244e1-8616-5f24-859f-8e10df1c887b">Gärungswege untersuchen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>8e2244e1-8616-5f24-859f-8e10df1c887b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ec2f89f652584af55402a3b6">Biologie – kanonische maschinelle Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-290a22afa08156aa8fd29e76">Ökologie &amp; Stoffwechsel</a></li><li><a href="#chapter-82f07451f8dd041b1c1cd92c">Q3.2 Grundlegende Stoffwechselprozesse: Fotosynthese und Grundlagen der Zellatmung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:574d61e636f87954e0c04c6cbddeb78d6709c43e9d9509f7fd27d4c4dfd4296a" data-rendered-digest="sha256:2cc09b5d3f38858f964d24a410a31034166086a8178ee3b793d88f958e6ed5bc" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/8e2244e1-8616-5f24-859f-8e10df1c887b/8e2244e1-8616-5f24-859f-8e10df1c887b.png" alt="Gärungsuntersuchung mit Hefe/CO₂ und einem homolaktischen Modell mit pH-/Lactatkontext.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-8e2244e1-8616-5f24-859f-8e10df1c887b-description-heading">
+        <p class="section-heading" id="goal-8e2244e1-8616-5f24-859f-8e10df1c887b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann alkoholische und Milchsäuregärung erklären und experimentell untersuchen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-8e2244e1-8616-5f24-859f-8e10df1c887b-requires-heading">
+          <p class="section-heading" id="goal-8e2244e1-8616-5f24-859f-8e10df1c887b-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-8e2244e1-8616-5f24-859f-8e10df1c887b-reverse-heading">
+          <p class="section-heading" id="goal-8e2244e1-8616-5f24-859f-8e10df1c887b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-db9f83a4-90b0-5601-a734-46b40a1cf0e4"><span>Aeroben und anaeroben Glucoseabbau bilanzieren</span><code>db9f83a4-90b0-5601-a734-46b40a1cf0e4</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-8e2244e1-8616-5f24-859f-8e10df1c887b-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8e2244e1-8616-5f24-859f-8e10df1c887b-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-135447a0-5d55-564a-afc3-3e3fbed77819" rel="noreferrer noopener"><span>Grundlagen der Zellatmung</span> <code>135447a0-5d55-564a-afc3-3e3fbed77819</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-8e2244e1-8616-5f24-859f-8e10df1c887b-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-8e2244e1-8616-5f24-859f-8e10df1c887b-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-280bab15-94e8-59fb-9359-c1c0f8384b2a" rel="noreferrer noopener"><span>Fachpraktische Stoffwechselarbeit</span> <code>280bab15-94e8-59fb-9359-c1c0f8384b2a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 8</span>
+      <span>Buch-Digest <code>sha256:f7f3801583ccb55c57d615e317c59e71a1f954a2d6b54a4af8577b726fe5e6bd</code></span>
+      <span>Ziel-Fingerprint <code>sha256:6bb7c05defa8492ae8518b39115e399c02f925546e105521e68da36c09e015ab</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-stoffwechsel-eight-current-native-20261010-v2&amp;edition=curricular-atomic-v1&amp;goalId=8e2244e1-8616-5f24-859f-8e10df1c887b&amp;goalFingerprint=sha256%3A6bb7c05defa8492ae8518b39115e399c02f925546e105521e68da36c09e015ab&amp;pageFingerprint=sha256%3A142d42ee4dcab88bb3e9d751fb1e08e5e2a4c3b0e37abc0128fd463127297a72&amp;bookDigest=sha256%3Af7f3801583ccb55c57d615e317c59e71a1f954a2d6b54a4af8577b726fe5e6bd&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e467ee54-7773-595f-ac1c-a60a5b7be2cf" data-goal-id="e467ee54-7773-595f-ac1c-a60a5b7be2cf" data-page-number="3" data-chapter-ids="structure:biologie-canonical-native-author-review-root goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:cbde2ff0-3488-55ef-a652-e0c0aa7937cb goal:c7f2fc89-543d-5ad1-9875-d6fcedf0d1fb" aria-labelledby="goal-e467ee54-7773-595f-ac1c-a60a5b7be2cf-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e467ee54-7773-595f-ac1c-a60a5b7be2cf-title"><a class="goal-self-link" href="#goal-e467ee54-7773-595f-ac1c-a60a5b7be2cf">Experimente zur Enzymaktivität planen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e467ee54-7773-595f-ac1c-a60a5b7be2cf</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ec2f89f652584af55402a3b6">Biologie – kanonische maschinelle Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-290a22afa08156aa8fd29e76">Ökologie &amp; Stoffwechsel</a></li><li><a href="#chapter-82f07451f8dd041b1c1cd92c">Q3.2 Grundlegende Stoffwechselprozesse: Fotosynthese und Grundlagen der Zellatmung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:da7df8823b666384fc45ed6ed94701709cf3462e5378f30517598cc18d75ff2a" data-rendered-digest="sha256:666fdd48beea3dc2a630046eeb32f0110abb59cef4ec79f0b4a5cfcb4a8f073f" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/e467ee54-7773-595f-ac1c-a60a5b7be2cf/e467ee54-7773-595f-ac1c-a60a5b7be2cf.png" alt="Kontrollierte Planung eines Temperaturvergleichs mit gleichen Enzym-, Substrat- und Flüssigkeitsmengen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e467ee54-7773-595f-ac1c-a60a5b7be2cf-description-heading">
+        <p class="section-heading" id="goal-e467ee54-7773-595f-ac1c-a60a5b7be2cf-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann selbstständig Experimente planen, um Hypothesen zur Beeinflussung der Enzymaktivität durch unterschiedliche Außenfaktoren zu prüfen.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e467ee54-7773-595f-ac1c-a60a5b7be2cf-requires-heading">
+          <p class="section-heading" id="goal-e467ee54-7773-595f-ac1c-a60a5b7be2cf-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-e467ee54-7773-595f-ac1c-a60a5b7be2cf-reverse-heading">
+          <p class="section-heading" id="goal-e467ee54-7773-595f-ac1c-a60a5b7be2cf-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-cdd2247b-0ac6-5457-a5b9-26c6d0139906"><span>Enzyme als Stoffwechselregulatoren erklären</span><code>cdd2247b-0ac6-5457-a5b9-26c6d0139906</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e467ee54-7773-595f-ac1c-a60a5b7be2cf-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e467ee54-7773-595f-ac1c-a60a5b7be2cf-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-f539fe51-1f6f-5e04-abfe-af3d2e4d2aad" rel="noreferrer noopener"><span>Temperaturabhängigkeit der Enzymaktivität deuten</span> <code>f539fe51-1f6f-5e04-abfe-af3d2e4d2aad</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-e467ee54-7773-595f-ac1c-a60a5b7be2cf-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e467ee54-7773-595f-ac1c-a60a5b7be2cf-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 8</span>
+      <span>Buch-Digest <code>sha256:f7f3801583ccb55c57d615e317c59e71a1f954a2d6b54a4af8577b726fe5e6bd</code></span>
+      <span>Ziel-Fingerprint <code>sha256:61fe86e9b716331193f7988a4ae000574bce41af2950abf66552420c835ef02a</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-stoffwechsel-eight-current-native-20261010-v2&amp;edition=curricular-atomic-v1&amp;goalId=e467ee54-7773-595f-ac1c-a60a5b7be2cf&amp;goalFingerprint=sha256%3A61fe86e9b716331193f7988a4ae000574bce41af2950abf66552420c835ef02a&amp;pageFingerprint=sha256%3Aee82e9a28fb588d9d1218294f9d59475a053f44ccdf5fb2a37212a670776473d&amp;bookDigest=sha256%3Af7f3801583ccb55c57d615e317c59e71a1f954a2d6b54a4af8577b726fe5e6bd&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-cdd2247b-0ac6-5457-a5b9-26c6d0139906" data-goal-id="cdd2247b-0ac6-5457-a5b9-26c6d0139906" data-page-number="4" data-chapter-ids="structure:biologie-canonical-native-author-review-root goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:cbde2ff0-3488-55ef-a652-e0c0aa7937cb goal:c7f2fc89-543d-5ad1-9875-d6fcedf0d1fb" aria-labelledby="goal-cdd2247b-0ac6-5457-a5b9-26c6d0139906-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-cdd2247b-0ac6-5457-a5b9-26c6d0139906-title"><a class="goal-self-link" href="#goal-cdd2247b-0ac6-5457-a5b9-26c6d0139906">Enzyme als Stoffwechselregulatoren erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>cdd2247b-0ac6-5457-a5b9-26c6d0139906</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ec2f89f652584af55402a3b6">Biologie – kanonische maschinelle Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-290a22afa08156aa8fd29e76">Ökologie &amp; Stoffwechsel</a></li><li><a href="#chapter-82f07451f8dd041b1c1cd92c">Q3.2 Grundlegende Stoffwechselprozesse: Fotosynthese und Grundlagen der Zellatmung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:976b3df903b034e4d74f870e1c459eb0d2d9c95e4475d983ddb8482d35391416" data-rendered-digest="sha256:71974a24ff15716d60bfeead943f06b84b5149f0b9704b69f97fff44b2c66bb9" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/cdd2247b-0ac6-5457-a5b9-26c6d0139906/cdd2247b-0ac6-5457-a5b9-26c6d0139906.png" alt="Schematische Enzymkette mit Rückkopplung eines Endprodukts an eine getrennte regulatorische Bindungsstelle.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-cdd2247b-0ac6-5457-a5b9-26c6d0139906-description-heading">
+        <p class="section-heading" id="goal-cdd2247b-0ac6-5457-a5b9-26c6d0139906-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Bedeutung von Enzymen für eine bedarfsgerechte Regulation des Stoffwechsels erklären.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-cdd2247b-0ac6-5457-a5b9-26c6d0139906-requires-heading">
+          <p class="section-heading" id="goal-cdd2247b-0ac6-5457-a5b9-26c6d0139906-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-e467ee54-7773-595f-ac1c-a60a5b7be2cf"><span>Experimente zur Enzymaktivität planen</span><code>e467ee54-7773-595f-ac1c-a60a5b7be2cf</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-cdd2247b-0ac6-5457-a5b9-26c6d0139906-reverse-heading">
+          <p class="section-heading" id="goal-cdd2247b-0ac6-5457-a5b9-26c6d0139906-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-cdd2247b-0ac6-5457-a5b9-26c6d0139906-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-cdd2247b-0ac6-5457-a5b9-26c6d0139906-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-cdd2247b-0ac6-5457-a5b9-26c6d0139906-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-cdd2247b-0ac6-5457-a5b9-26c6d0139906-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 8</span>
+      <span>Buch-Digest <code>sha256:f7f3801583ccb55c57d615e317c59e71a1f954a2d6b54a4af8577b726fe5e6bd</code></span>
+      <span>Ziel-Fingerprint <code>sha256:a4960d04e54c2a505ff995e8d4ae2f4a14d7c3916d0529bc496b1aa58e17c911</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-stoffwechsel-eight-current-native-20261010-v2&amp;edition=curricular-atomic-v1&amp;goalId=cdd2247b-0ac6-5457-a5b9-26c6d0139906&amp;goalFingerprint=sha256%3Aa4960d04e54c2a505ff995e8d4ae2f4a14d7c3916d0529bc496b1aa58e17c911&amp;pageFingerprint=sha256%3A48dc158f153f6503600ca4c67b5853f3cfd80e48c2aa8686548555462b91c01d&amp;bookDigest=sha256%3Af7f3801583ccb55c57d615e317c59e71a1f954a2d6b54a4af8577b726fe5e6bd&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-db9f83a4-90b0-5601-a734-46b40a1cf0e4" data-goal-id="db9f83a4-90b0-5601-a734-46b40a1cf0e4" data-page-number="5" data-chapter-ids="structure:biologie-canonical-native-author-review-root goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:cbde2ff0-3488-55ef-a652-e0c0aa7937cb goal:c7f2fc89-543d-5ad1-9875-d6fcedf0d1fb" aria-labelledby="goal-db9f83a4-90b0-5601-a734-46b40a1cf0e4-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-db9f83a4-90b0-5601-a734-46b40a1cf0e4-title"><a class="goal-self-link" href="#goal-db9f83a4-90b0-5601-a734-46b40a1cf0e4">Aeroben und anaeroben Glucoseabbau bilanzieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>db9f83a4-90b0-5601-a734-46b40a1cf0e4</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ec2f89f652584af55402a3b6">Biologie – kanonische maschinelle Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-290a22afa08156aa8fd29e76">Ökologie &amp; Stoffwechsel</a></li><li><a href="#chapter-82f07451f8dd041b1c1cd92c">Q3.2 Grundlegende Stoffwechselprozesse: Fotosynthese und Grundlagen der Zellatmung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:815c0aa091ad949b4582e52fc013edae282fa83651ecb180a1b37609fab6b30a" data-rendered-digest="sha256:3d2fb9bd7b36d42d0cbf10701536fedaecb206ac07085f0e692e3b7aba9898a6" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/db9f83a4-90b0-5601-a734-46b40a1cf0e4/db9f83a4-90b0-5601-a734-46b40a1cf0e4.png" alt="Qualitativer Vergleich aerober und homolaktischer Glucosewege; Energiesymbole sind keine ATP-Zahlen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-db9f83a4-90b0-5601-a734-46b40a1cf0e4-description-heading">
+        <p class="section-heading" id="goal-db9f83a4-90b0-5601-a734-46b40a1cf0e4-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Stoff- und Energiebilanzen des aeroben und anaeroben Glucoseabbaus vergleichen und erklären, unter welchen Bedingungen die jeweiligen Abbauwege begünstigt werden.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-db9f83a4-90b0-5601-a734-46b40a1cf0e4-requires-heading">
+          <p class="section-heading" id="goal-db9f83a4-90b0-5601-a734-46b40a1cf0e4-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-8e2244e1-8616-5f24-859f-8e10df1c887b"><span>Gärungswege untersuchen</span><code>8e2244e1-8616-5f24-859f-8e10df1c887b</code><span class="reference-page">S. 2</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-db9f83a4-90b0-5601-a734-46b40a1cf0e4-reverse-heading">
+          <p class="section-heading" id="goal-db9f83a4-90b0-5601-a734-46b40a1cf0e4-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-e25ad42f-8314-5ee7-9440-765ee18773f9"><span>Fette als Energiespeicher bilanzieren</span><code>e25ad42f-8314-5ee7-9440-765ee18773f9</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-db9f83a4-90b0-5601-a734-46b40a1cf0e4-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-db9f83a4-90b0-5601-a734-46b40a1cf0e4-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-135447a0-5d55-564a-afc3-3e3fbed77819" rel="noreferrer noopener"><span>Grundlagen der Zellatmung</span> <code>135447a0-5d55-564a-afc3-3e3fbed77819</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-db9f83a4-90b0-5601-a734-46b40a1cf0e4-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-db9f83a4-90b0-5601-a734-46b40a1cf0e4-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 8</span>
+      <span>Buch-Digest <code>sha256:f7f3801583ccb55c57d615e317c59e71a1f954a2d6b54a4af8577b726fe5e6bd</code></span>
+      <span>Ziel-Fingerprint <code>sha256:aaddaa61798ad5c02a319b8228307609ce0ff1d0e01562e85479fcc092817dcf</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-stoffwechsel-eight-current-native-20261010-v2&amp;edition=curricular-atomic-v1&amp;goalId=db9f83a4-90b0-5601-a734-46b40a1cf0e4&amp;goalFingerprint=sha256%3Aaaddaa61798ad5c02a319b8228307609ce0ff1d0e01562e85479fcc092817dcf&amp;pageFingerprint=sha256%3Ada5282e313b56a0c03404d5622e5554649fbae6a0cc7ace99b970272d48a4867&amp;bookDigest=sha256%3Af7f3801583ccb55c57d615e317c59e71a1f954a2d6b54a4af8577b726fe5e6bd&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-e25ad42f-8314-5ee7-9440-765ee18773f9" data-goal-id="e25ad42f-8314-5ee7-9440-765ee18773f9" data-page-number="6" data-chapter-ids="structure:biologie-canonical-native-author-review-root goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:cbde2ff0-3488-55ef-a652-e0c0aa7937cb goal:c7f2fc89-543d-5ad1-9875-d6fcedf0d1fb" aria-labelledby="goal-e25ad42f-8314-5ee7-9440-765ee18773f9-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-e25ad42f-8314-5ee7-9440-765ee18773f9-title"><a class="goal-self-link" href="#goal-e25ad42f-8314-5ee7-9440-765ee18773f9">Fette als Energiespeicher bilanzieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>e25ad42f-8314-5ee7-9440-765ee18773f9</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ec2f89f652584af55402a3b6">Biologie – kanonische maschinelle Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-290a22afa08156aa8fd29e76">Ökologie &amp; Stoffwechsel</a></li><li><a href="#chapter-82f07451f8dd041b1c1cd92c">Q3.2 Grundlegende Stoffwechselprozesse: Fotosynthese und Grundlagen der Zellatmung</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:f7f297cb45d0ea9042fcea92adae957de3857ded6e658572efaf3a835d01506c" data-rendered-digest="sha256:fb723124c5430db66473b3ac71125278b8d6beb5c66ce9936fbe5563c68de1eb" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/e25ad42f-8314-5ee7-9440-765ee18773f9/e25ad42f-8314-5ee7-9440-765ee18773f9.png" alt="Gerundete Lebensmittelenergie bei gleicher Masse:1gKohlenhydrate17kJ und1gFett37kJ. Balken sind qualitativ.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-e25ad42f-8314-5ee7-9440-765ee18773f9-description-heading">
+        <p class="section-heading" id="goal-e25ad42f-8314-5ee7-9440-765ee18773f9-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Stoff- und Energiebilanzen des aeroben Abbaus von Glucose und Fetten vergleichen und die besondere Eignung von Fetten als Energiespeicher erklären.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-e25ad42f-8314-5ee7-9440-765ee18773f9-requires-heading">
+          <p class="section-heading" id="goal-e25ad42f-8314-5ee7-9440-765ee18773f9-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-db9f83a4-90b0-5601-a734-46b40a1cf0e4"><span>Aeroben und anaeroben Glucoseabbau bilanzieren</span><code>db9f83a4-90b0-5601-a734-46b40a1cf0e4</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-e25ad42f-8314-5ee7-9440-765ee18773f9-reverse-heading">
+          <p class="section-heading" id="goal-e25ad42f-8314-5ee7-9440-765ee18773f9-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-e25ad42f-8314-5ee7-9440-765ee18773f9-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e25ad42f-8314-5ee7-9440-765ee18773f9-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c" rel="noreferrer noopener"><span>Warum Biologie? - Relevanz und Orientierung</span> <code>2d451684-6e53-565e-a987-f362da919d2c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-e25ad42f-8314-5ee7-9440-765ee18773f9-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-e25ad42f-8314-5ee7-9440-765ee18773f9-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a" rel="noreferrer noopener"><span>Sek-II-Abschlussaufgaben Biologie bearbeiten</span> <code>1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 8</span>
+      <span>Buch-Digest <code>sha256:f7f3801583ccb55c57d615e317c59e71a1f954a2d6b54a4af8577b726fe5e6bd</code></span>
+      <span>Ziel-Fingerprint <code>sha256:8d8eb51149179adf02f7c41ab850ece4843affc90f72d8c7a466b8ad66351334</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-stoffwechsel-eight-current-native-20261010-v2&amp;edition=curricular-atomic-v1&amp;goalId=e25ad42f-8314-5ee7-9440-765ee18773f9&amp;goalFingerprint=sha256%3A8d8eb51149179adf02f7c41ab850ece4843affc90f72d8c7a466b8ad66351334&amp;pageFingerprint=sha256%3A83f5374edd9ee25cbd881b5fcee1512202a1cdb5880ef26d4dc5a2d7f35bf55b&amp;bookDigest=sha256%3Af7f3801583ccb55c57d615e317c59e71a1f954a2d6b54a4af8577b726fe5e6bd&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-2c60c8ad-04d3-5395-8a27-400646eb1612" data-goal-id="2c60c8ad-04d3-5395-8a27-400646eb1612" data-page-number="7" data-chapter-ids="structure:biologie-canonical-native-author-review-root goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:30e93515-f535-5ca4-9ed2-8fdf41838772" aria-labelledby="goal-2c60c8ad-04d3-5395-8a27-400646eb1612-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-2c60c8ad-04d3-5395-8a27-400646eb1612-title"><a class="goal-self-link" href="#goal-2c60c8ad-04d3-5395-8a27-400646eb1612">Menschen als offenes Stoffwechselsystem beschreiben</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>2c60c8ad-04d3-5395-8a27-400646eb1612</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ec2f89f652584af55402a3b6">Biologie – kanonische maschinelle Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-96b3a05f1de8aac8a81fac07">Säugetiere und menschlicher Körper (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:b7ddaa0539c071a16bcb56a6fd8e73c6ee08dabe9043fd43d2a76fece11657d8" data-rendered-digest="sha256:f91b1f6a0ec77dfc9a44dc0855a7c454f0cd162d3a7cc4d9933910dd343cd32a" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/2c60c8ad-04d3-5395-8a27-400646eb1612/2c60c8ad-04d3-5395-8a27-400646eb1612.png" alt="Mensch als offenes System mit Stoffaufnahme, Stoffabgabe und Wärmeabgabe.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-2c60c8ad-04d3-5395-8a27-400646eb1612-description-heading">
+        <p class="section-heading" id="goal-2c60c8ad-04d3-5395-8a27-400646eb1612-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann den Menschen als offenes System beschreiben, das für Stoffwechsel und Überleben Energieträger und Baustoffe aufnimmt.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-2c60c8ad-04d3-5395-8a27-400646eb1612-requires-heading">
+          <p class="section-heading" id="goal-2c60c8ad-04d3-5395-8a27-400646eb1612-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-2c60c8ad-04d3-5395-8a27-400646eb1612-reverse-heading">
+          <p class="section-heading" id="goal-2c60c8ad-04d3-5395-8a27-400646eb1612-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-2c60c8ad-04d3-5395-8a27-400646eb1612-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2c60c8ad-04d3-5395-8a27-400646eb1612-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-c25a1bc9-c664-53d7-b2d8-500741da773c" rel="noreferrer noopener"><span>Ernährung und Verdauung</span> <code>c25a1bc9-c664-53d7-b2d8-500741da773c</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-2c60c8ad-04d3-5395-8a27-400646eb1612-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-2c60c8ad-04d3-5395-8a27-400646eb1612-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-bb6fb806-ee15-5881-8529-2425cadfb5a1" rel="noreferrer noopener"><span>Nahrungsbestandteile molekular zuordnen</span> <code>bb6fb806-ee15-5881-8529-2425cadfb5a1</code></a></li><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-8f9dc189-e875-56dd-bd97-996c8bf0cdc4" rel="noreferrer noopener"><span>Glucoseabbau und ATP erläutern</span> <code>8f9dc189-e875-56dd-bd97-996c8bf0cdc4</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 8</span>
+      <span>Buch-Digest <code>sha256:f7f3801583ccb55c57d615e317c59e71a1f954a2d6b54a4af8577b726fe5e6bd</code></span>
+      <span>Ziel-Fingerprint <code>sha256:6720e7e00d77f5f923dbef31f581628dcd9631185895a77e95ede0b1f754b102</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-stoffwechsel-eight-current-native-20261010-v2&amp;edition=curricular-atomic-v1&amp;goalId=2c60c8ad-04d3-5395-8a27-400646eb1612&amp;goalFingerprint=sha256%3A6720e7e00d77f5f923dbef31f581628dcd9631185895a77e95ede0b1f754b102&amp;pageFingerprint=sha256%3A4948d22d24fdcff5a0b8e851444dfec0ee8f4ea3bd269a7e7bf23b50591fe244&amp;bookDigest=sha256%3Af7f3801583ccb55c57d615e317c59e71a1f954a2d6b54a4af8577b726fe5e6bd&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-39ba4385-0144-5e20-ba11-e3714756583b" data-goal-id="39ba4385-0144-5e20-ba11-e3714756583b" data-page-number="8" data-chapter-ids="structure:biologie-canonical-native-author-review-root goal:e8d54127-d42e-51f5-bfa5-51d826069f95 goal:ede65598-4fa7-591f-af79-2fa7564b6ec0" aria-labelledby="goal-39ba4385-0144-5e20-ba11-e3714756583b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-39ba4385-0144-5e20-ba11-e3714756583b-title"><a class="goal-self-link" href="#goal-39ba4385-0144-5e20-ba11-e3714756583b">Lebensmittelverderb durch Mikroorganismen erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>39ba4385-0144-5e20-ba11-e3714756583b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-ec2f89f652584af55402a3b6">Biologie – kanonische maschinelle Prüfsicht</a></li><li><a href="#chapter-e35b58df5ecbb68b42c77ce2">Biologie</a></li><li><a href="#chapter-31ce31c0928f3ec31d390154">Mikroorganismen, Lebensmittel und Biotechnologie (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:bd3a311bc503943c83da69cefc390f81144fc267320e94e1eb7acfcd8b8e52cd" data-rendered-digest="sha256:e8de0e52b888f77913e33e65638999d1adf7c68a612a3c5a62ce3e8975427bf1" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/39ba4385-0144-5e20-ba11-e3714756583b/39ba4385-0144-5e20-ba11-e3714756583b.png" alt="Hygiene durch Kühlen, Trennen und Reinigen; Mikroben sind vergrößerte schematische Symbole.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-39ba4385-0144-5e20-ba11-e3714756583b-description-heading">
+        <p class="section-heading" id="goal-39ba4385-0144-5e20-ba11-e3714756583b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Lebensmittelverderb mithilfe von Stoffwechsel, Fortpflanzung und Ausbreitung von Mikroorganismen erklären und daraus Regeln der Lebensmittelhygiene ableiten.</p>
+        
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-39ba4385-0144-5e20-ba11-e3714756583b-requires-heading">
+          <p class="section-heading" id="goal-39ba4385-0144-5e20-ba11-e3714756583b-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-39ba4385-0144-5e20-ba11-e3714756583b-reverse-heading">
+          <p class="section-heading" id="goal-39ba4385-0144-5e20-ba11-e3714756583b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-39ba4385-0144-5e20-ba11-e3714756583b-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-39ba4385-0144-5e20-ba11-e3714756583b-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-4a8a6cec-a2cc-56fe-b3ab-7ca017f640cf" rel="noreferrer noopener"><span>Biotechnologische Nutzbarkeit von Mikroorganismen erklären</span> <code>4a8a6cec-a2cc-56fe-b3ab-7ca017f640cf</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-39ba4385-0144-5e20-ba11-e3714756583b-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-39ba4385-0144-5e20-ba11-e3714756583b-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-640306a2-7d58-5192-9676-58f492978790" rel="noreferrer noopener"><span>Konservierungsmethoden und Lebensmittelqualität vergleichen</span> <code>640306a2-7d58-5192-9676-58f492978790</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 8</span>
+      <span>Buch-Digest <code>sha256:f7f3801583ccb55c57d615e317c59e71a1f954a2d6b54a4af8577b726fe5e6bd</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2c2c9f8ad41d1c8dbca21fdeb772c1b438229e49e33ce116b2eeebf0ba61e752</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-stoffwechsel-eight-current-native-20261010-v2&amp;edition=curricular-atomic-v1&amp;goalId=39ba4385-0144-5e20-ba11-e3714756583b&amp;goalFingerprint=sha256%3A2c2c9f8ad41d1c8dbca21fdeb772c1b438229e49e33ce116b2eeebf0ba61e752&amp;pageFingerprint=sha256%3A07ccab8ddb527b30ccebdd4a6a7f8f9b9c14f1f4c5f8c97e594d27eeb044ccfa&amp;bookDigest=sha256%3Af7f3801583ccb55c57d615e317c59e71a1f954a2d6b54a4af8577b726fe5e6bd&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

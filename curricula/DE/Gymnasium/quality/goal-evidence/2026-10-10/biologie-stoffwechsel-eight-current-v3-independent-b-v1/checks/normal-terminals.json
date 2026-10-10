@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "artifactKind": "actual-normal-validator-terminal-receipts",
+  "terminals": [
+    {
+      "name": "normal-batch",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:goal-description-review",
+        "--",
+        "--bundle",
+        "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current-v3-independent-b-v1/normal-round-b/review-bundle-manifest.json",
+        "--input",
+        "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current-v3-independent-b-v1/normal-round-b/description-review-input.json",
+        "--campaign",
+        "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current-v3-independent-b-v1/normal-round-b/description-review-campaign.json",
+        "--run",
+        "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current-v3-independent-b-v1/normal-round-b/results/biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b.batch-001.run.json",
+        "--batch-input",
+        "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current-v3-independent-b-v1/normal-round-b/batches/biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b.batch-001.input.jsonl",
+        "--records",
+        "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current-v3-independent-b-v1/normal-round-b/results/biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b.batch-001.records.jsonl"
+      ],
+      "startedAt": "2026-10-10T10:09:07.609780+00:00",
+      "completedAt": "2026-10-10T10:09:08.378128+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current-v3-independent-b-v1/checks/normal-batch.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current-v3-independent-b-v1/checks/normal-batch.stderr.txt"
+    },
+    {
+      "name": "normal-campaign",
+      "argv": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:goal-description-review-campaign",
+        "--",
+        "--bundle",
+        "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current-v3-independent-b-v1/normal-round-b/review-bundle-manifest.json",
+        "--input",
+        "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current-v3-independent-b-v1/normal-round-b/description-review-input.json",
+        "--campaign",
+        "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current-v3-independent-b-v1/normal-round-b/description-review-campaign.json",
+        "--batches-dir",
+        "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current-v3-independent-b-v1/normal-round-b/batches",
+        "--results-dir",
+        "../curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current-v3-independent-b-v1/normal-round-b/results"
+      ],
+      "startedAt": "2026-10-10T10:09:08.378185+00:00",
+      "completedAt": "2026-10-10T10:09:09.145609+00:00",
+      "actualExitCode": 0,
+      "stdoutPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current-v3-independent-b-v1/checks/normal-campaign.stdout.txt",
+      "stderrPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current-v3-independent-b-v1/checks/normal-campaign.stderr.txt"
+    }
+  ]
+}

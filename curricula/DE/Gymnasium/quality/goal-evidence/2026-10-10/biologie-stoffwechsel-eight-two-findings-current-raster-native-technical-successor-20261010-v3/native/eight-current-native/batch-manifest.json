@@ -1,0 +1,61 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-two-findings-current-raster-native-technical-successor-20261010-v3/native/eight-current-native.prerequisite-safe.batch.config.json",
+  "configDigest": "sha256:8e5053370d1de0fd82b8041097c6a0e98d897aa10845bb8288746f404154a8a5",
+  "goalIds": [
+    "1c3470ae-83f8-52e9-98ae-b0a712755b66",
+    "8e2244e1-8616-5f24-859f-8e10df1c887b",
+    "e467ee54-7773-595f-ac1c-a60a5b7be2cf",
+    "cdd2247b-0ac6-5457-a5b9-26c6d0139906",
+    "db9f83a4-90b0-5601-a734-46b40a1cf0e4",
+    "e25ad42f-8314-5ee7-9440-765ee18773f9",
+    "2c60c8ad-04d3-5395-8a27-400646eb1612",
+    "39ba4385-0144-5e20-ba11-e3714756583b"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 394,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-two-findings-current-raster-native-technical-successor-20261010-v3/native/current394-after.normal.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-two-findings-current-raster-native-technical-successor-20261010-v3/candidate/current479-only-eight-resourceLinks.inactive.exact.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:440e7bdb1f15b0bfa4224808e38e6c79987c9a5cb72c0e1ffe09f4623da09462"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:7a31e525a17940f06d860e2429f31c6626f424a2cdabc9f4ecef16654a556d5d",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:231f3f21d18f76be785a21f8adaaeb46886e30463364bc8444ffeebc15fe30f2",
+    "reviewInputFingerprint": "sha256:036285838c67a61bc201ffd1cb2cc0f74a0b49c9c25487effe7543408130ae19",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-a",
+        "campaignDigest": "sha256:deaabea246023d6dfb5f4e85e21fb1a724dc29370891a4593ae870916ae4782c",
+        "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a",
+        "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-a",
+        "batchId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:6a866c2ab56a1fbd5f233493a93c7e60bd1439f02864d97cb9a16475ba6daa02"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-b",
+        "campaignDigest": "sha256:7da649ba672f9240174d6715718f772adb3182c98cf245156235e2efae25634a",
+        "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b",
+        "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-b",
+        "batchId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:f2a2747e04067332dfa337f05dfc3556b34ace5ebce38e5004c6daaa2f993fd3"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

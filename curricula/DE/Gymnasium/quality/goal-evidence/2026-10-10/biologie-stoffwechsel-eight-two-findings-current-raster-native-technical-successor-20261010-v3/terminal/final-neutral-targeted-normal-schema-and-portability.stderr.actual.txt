@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/complete_stoff8_v3_neutral_inputs.py", line 26, in <module>
+    err=m.curriculum_symlink_errors(R);assert not err,err;external=json.loads((R/P/'inputs/all-current-portable-external-bindings.exact.json').read_text())['bindings'];files=[f.relative_to(R) for f in (R/P).rglob('*') if f.is_file()]+[pathlib.Path(r['path']) for r in external];ignored=subprocess.run(['git','check-ignore','--stdin'],cwd=R,input='\n'.join(map(str,files))+'\n',capture_output=True,text=True);assert ignored.returncode==1,ignored.stdout
+                                                                                                                                                                                                                                                                                                                                                                                                                               ^^^^^^^^^^^^^^^^^^^^^
+AssertionError: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/biologie-neuro21-source-maturity-boundaries-independent-a-candidate-20261007-v1/primary/BY13-EA.official.current.html
+

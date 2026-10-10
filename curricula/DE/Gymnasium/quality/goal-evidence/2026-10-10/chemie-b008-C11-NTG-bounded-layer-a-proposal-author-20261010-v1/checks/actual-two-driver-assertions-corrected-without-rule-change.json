@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "failedActualTerminals": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-C11-NTG-bounded-layer-a-proposal-author-20261010-v1/terminal/normal-C11-scope-and-placement.terminal.actual.json",
+      "sha256": "sha256:2552e284f9b4c271d2e2fda863fcd716db4549e68f56dfef622aeb7790f5ac1e",
+      "bytes": 1288
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-C11-NTG-bounded-layer-a-proposal-author-20261010-v1/terminal/normal-C11-scope-and-placement-corrected.terminal.actual.json",
+      "sha256": "sha256:a9d774063c797ed9fee6dbb62a871ced753aaf37b3fbd8bc049419d49b437e35",
+      "bytes": 1287
+    }
+  ],
+  "firstActualSource": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-C11-NTG-bounded-layer-a-proposal-author-20261010-v1/technical-first-scope-envelope-assertion.actual.mts",
+    "sha256": "sha256:9916d0726fe6750312caaf0048b6329f9d3d3ed5da324b0a9bc8b5f75c38df1c",
+    "bytes": 7582
+  },
+  "firstActualError": "The driver passed the runtime envelope, including landscapeId, as a constrained scope. The normal scope matcher correctly rejects that extra dimension. Corrected driver separates landscapeId from the scope map.",
+  "secondActualSource": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-C11-NTG-bounded-layer-a-proposal-author-20261010-v1/technical-second-canonical-parent-assertion.actual.mts",
+    "sha256": "sha256:97f7dec9050e5f983d4fff87574ea323604ffe699b74a85fa7fa932081ff24db",
+    "bytes": 7702
+  },
+  "secondActualError": "The driver assumed the proposed placement would attach both goals. The actual normal placement retains explicit non-root authored parents, so neither goal is attached. The final report records this real additional limitation.",
+  "successfulActualTerminal": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-C11-NTG-bounded-layer-a-proposal-author-20261010-v1/terminal/normal-C11-scope-and-placement-actual-parent-guard.terminal.actual.json",
+    "sha256": "sha256:ee9a7ec4cb35d3a9ae0db34ac0807faf85272962aef5c05d4d357aeb90757c8b",
+    "bytes": 1317
+  },
+  "normalCodeOrCheckerEdited": false,
+  "unsealedRejectedPlacementFilenameClarified": true,
+  "scienceOrApprovalChanged": false
+}

@@ -1,0 +1,61 @@
+{
+  "archetype": "procedure",
+  "expectations": [
+    {
+      "id": "foreign-dna-route",
+      "essentialUnderstandingDe": "Ein passender Vektor kann Fremd-DNA in eine geeignete Wirtszelle übertragen; Plasmid- und Viruswege sind Alternativen mit unterschiedlichen Voraussetzungen.",
+      "essentialUnderstandingEn": "A suitable vector can deliver foreign DNA to an appropriate host; plasmid and viral routes are alternatives with different requirements.",
+      "observablePerformanceDe": "Erläutert am gegebenen Modell das Zusammenfügen bzw. Verpacken, die Übertragung und die Rolle von Vektor und Wirt.",
+      "observablePerformanceEn": "Explains assembly/packaging, delivery and vector/host roles in the supplied model."
+    },
+    {
+      "id": "clonal-copy-distinction",
+      "essentialUnderstandingDe": "Klonierung bezeichnet hier die Vermehrung gleicher rekombinanter DNA bzw. davon tragender Zellklone; Übertragung bedeutet nicht automatisch Chromosomenintegration oder Expression.",
+      "essentialUnderstandingEn": "Cloning here multiplies identical recombinant DNA or carrier-cell clones; delivery does not automatically mean chromosomal integration or expression.",
+      "observablePerformanceDe": "Verfolgt Fremd-DNA und ihre Kopien und unterscheidet Aufnahme, stabile Weitergabe, Integration und Proteinbildung.",
+      "observablePerformanceEn": "Tracks foreign DNA/copies and distinguishes uptake, stable inheritance, integration and protein production."
+    }
+  ],
+  "coverageExpectations": {
+    "requiredExpectationIds": [
+      "foreign-dna-route",
+      "clonal-copy-distinction"
+    ],
+    "alternativeExpectationGroups": [],
+    "minimumIndependentDemonstrations": 2,
+    "freshVariationRequired": true,
+    "independentTransferRequired": true
+  },
+  "variationAxes": [
+    {
+      "id": "distinct-content-contexts",
+      "textDe": "Plasmidaufnahme mit eigenständiger Kopierung gegenüber nichtvermehrungsfähigem Virusvektor mit vorübergehender Fremd-DNA.",
+      "textEn": "Plasmid uptake with independent copying versus nonreplicating viral vector with temporary foreign DNA."
+    },
+    {
+      "id": "fresh-content-premise",
+      "textDe": "Verlust der Replikationsfunktion gegenüber neu belegter stabiler Integration/Weitergabe; Aufnahme und Zellklon unterscheiden.",
+      "textEn": "Lost replication function versus newly established stable integration/inheritance; distinguish uptake from a carrier-cell clone."
+    }
+  ],
+  "applicationCaseBriefs": [
+    {
+      "id": "plasmid-introduction-clones",
+      "taskDemandDe": "Konstruiertes Modell: Ein geeigneter bakterieller Plasmidvektor enthält eine Replikationsfunktion. Ein längeres Fremd-DNA-Stück wird in den Ring eingefügt; eine Wirtszelle nimmt den vollständigen rekombinanten Ring auf. Laut Karte wird der Ring bei Zellvermehrung kopiert und an Tochterzellen weitergegeben. Er bleibt vom Bakterienchromosom getrennt; Proteinbildung ist nicht untersucht.\n\nErläutere am Modell, wie Fremd-DNA mit einem Plasmid in die Wirtszelle gelangt und Klonierung zustande kommt. Prüfe: Einbringen bedeutet immer Einbau ins Wirtschromosom und sofortige Proteinbildung.\n\nFrische Variation: Das Fremd-DNA-Stück bleibt erhalten, aber eine neue Vektorkarte verliert die funktionierende Replikationsstelle. Die Aufnahme gelingt einmalig. Ist eine stabile Klonierung durch viele Zellgenerationen gesichert?",
+      "taskDemandEn": "Constructed model: a suitable bacterial plasmid vector has a replication function. A longer foreign-DNA segment is inserted into the ring; a host takes up the complete recombinant ring. The card states that it is copied and passed to daughter cells. It remains separate from the bacterial chromosome; protein production was not tested.\n\nExplain how plasmid delivery introduces foreign DNA and how cloning occurs in this model. Assess: delivery always means integration into the host chromosome and immediate protein production.\n\nFresh variation: The insert is retained but a new vector lacks a functional replication origin. One-time uptake succeeds. Is stable cloning through many cell generations established?",
+      "expectedPerformanceDe": "Das rekombinante Plasmid ist der Träger der eingefügten Fremd-DNA. Durch Aufnahme kommt der Träger in die Wirtszelle. Mit der gegebenen Replikation und Zellvermehrung entstehen DNA-Kopien und Zellklone mit diesem Konstrukt. Laut Material bleibt das Plasmid eigenständig; Übertragung und Chromosomenintegration sind somit nicht dasselbe. Expression braucht weitere passende Bedingungen und wurde hier nicht belegt. Dies ist eine Erklärung einer Modellübertragung, keine durchgeführte Transformation.\n\nTransfer: Einmalige Aufnahme ist belegt; dauerhafte Vervielfältigung/Weitergabe dieses selbständigen Plasmids ist ohne passende Replikation nicht gesichert. Aufnahme allein ersetzt keinen Stabilitätsnachweis.",
+      "expectedPerformanceEn": "The recombinant plasmid carries the foreign insert. Uptake brings the carrier into the host. Given replication and cell division yield DNA copies and cell clones containing it. The plasmid remains separate according to the material, so delivery and chromosomal integration are distinct. Expression requires further suitable conditions and is untested here. This explains modeled delivery, not a performed transformation.\n\nTransfer: One-time uptake is established; sustained copying/transmission of this separate plasmid is not guaranteed without suitable replication. Uptake alone does not establish stability.",
+      "understandingFocusDe": "Ein passender Vektor kann Fremd-DNA in eine geeignete Wirtszelle übertragen; Plasmid- und Viruswege sind Alternativen mit unterschiedlichen Voraussetzungen. Klonierung bezeichnet hier die Vermehrung gleicher rekombinanter DNA bzw. davon tragender Zellklone; Übertragung bedeutet nicht automatisch Chromosomenintegration oder Expression.",
+      "understandingFocusEn": "A suitable vector can deliver foreign DNA to an appropriate host; plasmid and viral routes are alternatives with different requirements. Cloning here multiplies identical recombinant DNA or carrier-cell clones; delivery does not automatically mean chromosomal integration or expression."
+    },
+    {
+      "id": "viral-vector-specified-limit",
+      "taskDemandDe": "Schematische Materialkarte: Ein veränderter Virusvektor trägt Fremd-DNA und kann sie in den angegebenen Zelltyp übertragen. Der hier vorgegebene Vektor ist nicht selbst vermehrungsfähig; die übertragene DNA bleibt im Modell vorübergehend außerhalb der Chromosomen. Ein anderes Kontrollmodell mit Plasmid erlaubt DNA-Kopierung und Weitergabe in Bakterien. Es werden weder reale Infektionen noch gentechnische Versuche ausgeführt.\n\nErkläre den Virusweg als Alternative zum Plasmid und begrenze die Aussage, jeder erfolgreiche Transfer sei schon stabile Klonierung. Unterscheide Träger, DNA, Wirtszelle und Zellklon.\n\nFrische Variation: Eine ergänzte Karte belegt nun stabile Integration der übertragenen DNA in eine Wirtszelle und Weitergabe an deren Tochterzellen. Welche Klonierungsaussage wird zusätzlich möglich?",
+      "taskDemandEn": "Schematic card: a modified viral vector carries foreign DNA and can deliver it to the specified cell type. This stipulated vector cannot reproduce itself; the transferred DNA remains temporarily outside chromosomes in the model. A separate plasmid control supports copying and inheritance in bacteria. No actual infection or genetic engineering is performed.\n\nExplain viral delivery as an alternative to plasmids and bound the claim that any successful transfer is stable cloning. Distinguish carrier, DNA, host and cell clone.\n\nFresh variation: An added card establishes stable integration in one host and inheritance by its daughter cells. What additional cloning claim becomes possible?",
+      "expectedPerformanceDe": "Der Virusvektor vermittelt die Aufnahme der Fremd-DNA in den angegebenen Zelltyp. Das Prinzip der Trägerübertragung ähnelt dem Plasmidweg, seine konkreten Eigenschaften sind aber anders. Das Material belegt nur vorübergehende DNA-Präsenz und keine eigenständige Vektorvermehrung oder stabile Weitergabe. Klonierung braucht darüber hinaus gesicherte Kopierung bzw. passende Zellklon-Vermehrung. Nicht alle Virusvektoren verhalten sich gleich; insbesondere Integration folgt hier nicht aus dem Wort Virus.\n\nTransfer: Bei Vermehrung dieser Zelle kann nun ein Zellklon mit stabil weitergegebener Fremd-DNA entstehen. Das belegt noch keine gleiche Proteinproduktion in jeder Tochter und keinen frei vermehrungsfähigen Virus.",
+      "expectedPerformanceEn": "The viral vector enables delivery into the specified cells. Carrier-mediated introduction resembles the plasmid principle but the specified properties differ. The card establishes temporary DNA presence, not autonomous vector reproduction or stable inheritance. Cloning additionally needs established copying or suitable expansion of carrier-cell clones. Viral vectors are not all identical; integration does not follow here simply from the word virus.\n\nTransfer: Expansion of that cell can now produce a clone with stably inherited foreign DNA. This still proves neither equal protein production in every daughter nor autonomous viral replication.",
+      "understandingFocusDe": "Ein passender Vektor kann Fremd-DNA in eine geeignete Wirtszelle übertragen; Plasmid- und Viruswege sind Alternativen mit unterschiedlichen Voraussetzungen. Klonierung bezeichnet hier die Vermehrung gleicher rekombinanter DNA bzw. davon tragender Zellklone; Übertragung bedeutet nicht automatisch Chromosomenintegration oder Expression.",
+      "understandingFocusEn": "A suitable vector can deliver foreign DNA to an appropriate host; plasmid and viral routes are alternatives with different requirements. Cloning here multiplies identical recombinant DNA or carrier-cell clones; delivery does not automatically mean chromosomal integration or expression."
+    }
+  ]
+}

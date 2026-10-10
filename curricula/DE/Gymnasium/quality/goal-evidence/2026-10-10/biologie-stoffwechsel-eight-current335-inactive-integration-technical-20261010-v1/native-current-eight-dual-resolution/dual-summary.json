@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:231f3f21d18f76be785a21f8adaaeb46886e30463364bc8444ffeebc15fe30f2",
+  "reviewInputFingerprint": "sha256:036285838c67a61bc201ffd1cb2cc0f74a0b49c9c25487effe7543408130ae19",
+  "goalCount": 8,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-a",
+      "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a",
+      "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-a",
+      "runIds": [
+        "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::GPT-6 Codex; precise runtime model version not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-b",
+      "roundId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-b",
+      "independenceGroupId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-independent-b",
+      "runIds": [
+        "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::Codex GPT-6 agent; exact runtime model revision not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 8,
+    "unavailable": 0,
+    "requiresSynthesis": 8
+  },
+  "goals": [
+    {
+      "goalId": "1c3470ae-83f8-52e9-98ae-b0a712755b66",
+      "firstRecordId": "stoffwechsel8-native-v3-targeted-a:1c3470ae-83f8-52e9-98ae-b0a712755b66",
+      "secondRecordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:1c3470ae-83f8-52e9-98ae-b0a712755b66",
+      "firstRunId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+      "secondRunId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8e2244e1-8616-5f24-859f-8e10df1c887b",
+      "firstRecordId": "stoffwechsel8-native-v3-targeted-a:8e2244e1-8616-5f24-859f-8e10df1c887b",
+      "secondRecordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:8e2244e1-8616-5f24-859f-8e10df1c887b",
+      "firstRunId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+      "secondRunId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e467ee54-7773-595f-ac1c-a60a5b7be2cf",
+      "firstRecordId": "stoffwechsel8-native-v3-targeted-a:e467ee54-7773-595f-ac1c-a60a5b7be2cf",
+      "secondRecordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:e467ee54-7773-595f-ac1c-a60a5b7be2cf",
+      "firstRunId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+      "secondRunId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "cdd2247b-0ac6-5457-a5b9-26c6d0139906",
+      "firstRecordId": "stoffwechsel8-native-v3-targeted-a:cdd2247b-0ac6-5457-a5b9-26c6d0139906",
+      "secondRecordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:cdd2247b-0ac6-5457-a5b9-26c6d0139906",
+      "firstRunId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+      "secondRunId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "db9f83a4-90b0-5601-a734-46b40a1cf0e4",
+      "firstRecordId": "stoffwechsel8-native-v3-targeted-a:db9f83a4-90b0-5601-a734-46b40a1cf0e4",
+      "secondRecordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:db9f83a4-90b0-5601-a734-46b40a1cf0e4",
+      "firstRunId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+      "secondRunId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "e25ad42f-8314-5ee7-9440-765ee18773f9",
+      "firstRecordId": "stoffwechsel8-native-v3-targeted-a:e25ad42f-8314-5ee7-9440-765ee18773f9",
+      "secondRecordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:e25ad42f-8314-5ee7-9440-765ee18773f9",
+      "firstRunId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+      "secondRunId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "2c60c8ad-04d3-5395-8a27-400646eb1612",
+      "firstRecordId": "stoffwechsel8-native-v3-targeted-a:2c60c8ad-04d3-5395-8a27-400646eb1612",
+      "secondRecordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:2c60c8ad-04d3-5395-8a27-400646eb1612",
+      "firstRunId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+      "secondRunId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "39ba4385-0144-5e20-ba11-e3714756583b",
+      "firstRecordId": "stoffwechsel8-native-v3-targeted-a:39ba4385-0144-5e20-ba11-e3714756583b",
+      "secondRecordId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001:39ba4385-0144-5e20-ba11-e3714756583b",
+      "firstRunId": "biologie-stoffwechsel-eight-two-findings-current-native-20261010-v3-first-pass-a.batch-001",
+      "secondRunId": "biologie-stoffwechsel-current-v3-independent-b-20261010-run-001",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

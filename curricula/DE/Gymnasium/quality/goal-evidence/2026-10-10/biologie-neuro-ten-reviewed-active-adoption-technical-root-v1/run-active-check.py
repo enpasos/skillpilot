@@ -1,0 +1,9 @@
+# SPDX-License-Identifier: Apache-2.0
+import pathlib,json,subprocess,datetime,time,sys
+R=pathlib.Path('/home/enpasos/projects/skillpilot');O=pathlib.Path('curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-neuro-ten-reviewed-active-adoption-technical-root-v1');name=sys.argv[1];commands={'central':['app/node_modules/.bin/tsx','app/scripts/reportDeepUnderstandingRollout.ts','--mode=check','--format=json'],'assets':['node','scripts/check_goal_visualization_assets.mjs'],'inventory-measured':['node','scripts/check_ai_transparency_inventory.mjs','--emit-layer-a-patch'],'inventory':['node','scripts/check_ai_transparency_inventory.mjs'],'source-atlas':['app/node_modules/.bin/tsx','app/scripts/buildGoalBookSourceAtlasInputs.ts','--config','app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json','--check']};cmd=commands[name];p=R/O/'checks';p.mkdir(exist_ok=True);start=datetime.datetime.now(datetime.timezone.utc).isoformat();t=time.time();x=subprocess.run(cmd,cwd=R,capture_output=True,text=True)
+for suffix,body in [('stdout.actual.txt',x.stdout),('stderr.actual.txt',x.stderr)]:f=p/(name+'.'+suffix);assert not f.exists();f.write_text(body)
+f=p/(name+'.terminal.actual.json');assert not f.exists();f.write_text(json.dumps({'schemaVersion':1,'command':cmd,'startedAt':start,'durationSeconds':time.time()-t,'exitCode':x.returncode,'stdoutPath':str((p/(name+'.stdout.actual.txt')).relative_to(R)),'stderrPath':str((p/(name+'.stderr.actual.txt')).relative_to(R))},indent=2)+'\n');print(json.dumps({'check':name,'exitCode':x.returncode,'durationSeconds':round(time.time()-t,2)}))
+if name=='central' and x.stdout:
+ j=json.loads(x.stdout);print(json.dumps({'blockingIssues':j['blockingIssueCount'],'subjects':[(s['subject'],s['strictComplete'],s['denominator'],len(s['issues'])) for s in j['subjects']]}))
+elif name!='inventory-measured':print(x.stdout[-1200:])
+print(x.stderr[-1200:]);sys.exit(x.returncode)

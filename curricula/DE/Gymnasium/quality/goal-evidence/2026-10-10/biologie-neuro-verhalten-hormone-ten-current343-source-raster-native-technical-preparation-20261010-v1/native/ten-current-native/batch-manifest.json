@@ -1,0 +1,63 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-neuro-verhalten-hormone-ten-current343-native-20261010-v1",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-neuro-verhalten-hormone-ten-current343-source-raster-native-technical-preparation-20261010-v1/native/ten-current-native.prerequisite-safe.batch.config.json",
+  "configDigest": "sha256:6d2dc45e2a68f534d9e59ee23a8c23c7db407dec512f4ce89868d21eed08c1ab",
+  "goalIds": [
+    "9499943f-89b7-54e3-9fe2-e90404beaa4a",
+    "2706c28e-1c21-50de-8a63-c450f5fe8b07",
+    "a7eee23c-a5d0-5101-937a-ca441764cabf",
+    "146d70e0-b494-59fa-b8b6-29da18b36893",
+    "97a15c19-c345-589e-8b3c-9f2b97a60095",
+    "5670e999-922c-5862-ba77-2d93667badd4",
+    "1f3cdf59-05e0-5d45-ae74-3d2d1a2c31a5",
+    "3d822550-c14a-52ee-9908-6bcb873afdd6",
+    "5dd66bfd-616f-5a2a-be7c-49aaf12581a0",
+    "5a5eeff5-ae97-5b5b-bc80-df03eba8e095"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 394,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-neuro-verhalten-hormone-ten-current343-source-raster-native-technical-preparation-20261010-v1/native/current394-after.normal.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-neuro-verhalten-hormone-ten-current343-source-raster-native-technical-preparation-20261010-v1/candidate/current479-only-ten-resourceLinks.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:2a6676b971d6d0411213f64c64c5f0035198e860b9980afec525c915b2d9c3e7"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:97fc8393dd3a1aab18e93c65d6e2737c5a93fdc99bf535fbf9f01783606b4957",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:83c3c61252e99ecf5be65059f9215266ac9d74679c777a1b7ffd2880e3f401a9",
+    "reviewInputFingerprint": "sha256:15548566420091bbbf49521214f9601c239d005b918200b65fa2733d228c78e5",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-current343-native-20261010-v1-a",
+        "campaignDigest": "sha256:12640d7f7ebfde8699a129d3d87415f949f1a271c6456f8c2aa5fb45329dc9d5",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-current343-native-20261010-v1-first-pass-a",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-current343-native-20261010-v1-independent-a",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-current343-native-20261010-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:adc33348994e20f0057956a1d5c659e522781aff14026b3da86940a2520a90ac"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-neuro-verhalten-hormone-ten-current343-native-20261010-v1-b",
+        "campaignDigest": "sha256:e6edb445b7e4e3306fad42aa267c04bc615698f07520b08d2ad8f889c30c4ffb",
+        "roundId": "biologie-neuro-verhalten-hormone-ten-current343-native-20261010-v1-first-pass-b",
+        "independenceGroupId": "biologie-neuro-verhalten-hormone-ten-current343-native-20261010-v1-independent-b",
+        "batchId": "biologie-neuro-verhalten-hormone-ten-current343-native-20261010-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:0b6eaf95350ec9c39321dd6049cf52419487741b70e4fc4d26594e1145bf8aed"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

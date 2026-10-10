@@ -1,0 +1,294 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual normal affected chemistry technical evaluator; no full active status or M7 floor claim",
+  "completeOriginalRulesPreserved": true,
+  "normalRuleBodyChanges": 0,
+  "wholeGoalCount": 517,
+  "routes": [
+    {
+      "scopeId": "canonical-chemistry-sek2",
+      "label": "Sekundarstufe II",
+      "selectedAtomicGoals": 295,
+      "maturity": "M1",
+      "rules": [
+        {
+          "id": "CQR-101",
+          "status": "pass",
+          "summary": "Effective route coverage is complete for the configured scope.",
+          "metrics": {
+            "selectedAtomicGoals": 295,
+            "missingMotivationPath": 0,
+            "missingTerminalPath": 0
+          }
+        },
+        {
+          "id": "CQR-102",
+          "status": "warn",
+          "summary": "Direct atomic route coverage still needs migration work.",
+          "metrics": {
+            "selectedAtomicGoals": 295,
+            "missingDirectMotivationPath": 2,
+            "missingDirectTerminalPath": 0
+          },
+          "details": [
+            "No direct atomic motivation path: Chemische Sachverhalte fachlich diskutieren [1f354a60-be44-512b-8f8b-f67c8c456035]",
+            "No direct atomic motivation path: Chemische Modelle theoriegestützt nutzen und kritisch vergleichen [86d34f1f-692d-5522-a9a4-a71c65b24de7]"
+          ]
+        },
+        {
+          "id": "CQR-103",
+          "status": "pass",
+          "summary": "No scoped cluster-level requires remain.",
+          "metrics": {
+            "scopedClusterRequires": 0
+          }
+        },
+        {
+          "id": "CQR-201",
+          "status": "pass",
+          "summary": "All configured terminal autonomy goals have examData.",
+          "metrics": {
+            "terminalAutonomyGoals": 23,
+            "terminalAutonomyGoalsWithExamData": 23,
+            "terminalAutonomyGoalsWithoutExamData": 0
+          }
+        },
+        {
+          "id": "CQR-202",
+          "status": "pass",
+          "summary": "All terminal autonomy examData is concrete enough for hard exam mode.",
+          "metrics": {
+            "terminalAutonomyGoals": 23,
+            "concreteExamData": 23,
+            "weakExamData": 0
+          }
+        },
+        {
+          "id": "CQR-203",
+          "status": "pass",
+          "summary": "All terminal autonomy examData has release and coverage metadata.",
+          "metrics": {
+            "terminalAutonomyGoals": 23,
+            "releasedCoverageCompleteExamData": 23,
+            "releaseCoverageIncompleteExamData": 0
+          }
+        }
+      ]
+    }
+  ],
+  "layerARulesExceptDPAIntersection": [
+    {
+      "id": "CQR-001",
+      "status": "pass",
+      "summary": "Basic graph integrity checks pass.",
+      "metrics": {
+        "goals": 517,
+        "localReferenceIssues": 0
+      }
+    },
+    {
+      "id": "CQR-002",
+      "status": "pass",
+      "summary": "Explicit type metadata matches graph structure.",
+      "metrics": {
+        "mismatches": 0
+      }
+    },
+    {
+      "id": "CQR-000",
+      "status": "pass",
+      "summary": "All 16 declared Bundesland source inventories are readable, linked to official source URLs, and fully registered.",
+      "metrics": {
+        "totalJurisdictions": 16,
+        "completeSourceJurisdictions": 16,
+        "emptySourceJurisdictions": 0,
+        "missingReadableSourceInventoryJurisdictions": 0,
+        "originalSourceUrlIssues": 0,
+        "sourceExtractedGoals": 5865,
+        "sourceOriginalGoals": 5865,
+        "sourceUnregisteredGoals": 0,
+        "sourceExtractedAtomicGoals": 5865,
+        "sourceUnregisteredAtomicGoals": 0
+      }
+    },
+    {
+      "id": "CQR-003",
+      "status": "fail",
+      "summary": "15/16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+      "metrics": {
+        "totalJurisdictions": 16,
+        "coveredJurisdictions": 16,
+        "sourceBackedJurisdictions": 16,
+        "sourceCompleteJurisdictions": 15,
+        "fullCoverageJurisdictions": 15,
+        "uncoveredJurisdictions": 0,
+        "incompleteJurisdictions": 0,
+        "unsupportedAssignmentJurisdictions": 0,
+        "sourceUnmappedJurisdictions": 1,
+        "unsupportedAssignedAtomicGoals": 0,
+        "unmappedSourceAtomicGoals": 7,
+        "sourceAtomicGoals": 5865,
+        "sourceMappedToViewAtomicGoals": 5858,
+        "sourceOriginalGoals": 5865,
+        "sourceFullyCoveredOriginalGoals": 5858,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 7,
+        "surrogateBackedAtomicGoals": 0,
+        "partialSourceLinkedAtomicGoals": 0,
+        "warningedJurisdictions": 0,
+        "cleanJurisdictions": 15,
+        "partialJurisdictions": 0,
+        "errorJurisdictions": 1,
+        "minSourceBackedAtomicGoals": 99,
+        "maxVisibleAtomicGoals": 336,
+        "maxSourceBackedAtomicGoals": 336,
+        "totalAtomicGoals": 338
+      },
+      "details": [
+        "DE-BY: 7 source Lehrplan atom(s) do not map into the Bundesland view"
+      ]
+    },
+    {
+      "id": "CQR-004",
+      "status": "pass",
+      "summary": "Course-level mapping is clean for 1589 upper-secondary source-to-canonical mapping edge(s), including 31 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+      "metrics": {
+        "configuredMappingFiles": 40,
+        "sourceGoals": 3783,
+        "sourceGoalsWithCourseLevel": 3783,
+        "gkLkSourceGoals": 1915,
+        "lkSourceGoals": 1375,
+        "unspecifiedSourceGoals": 406,
+        "checkedMappingEdges": 1589,
+        "defaultedUnspecifiedMappingEdges": 172,
+        "reviewedCourseLevelExceptions": 31,
+        "mismatches": 0,
+        "missingSourceGoals": 0,
+        "missingTargetGoals": 0,
+        "unmappedCourseLevelSourceGoals": 0
+      }
+    },
+    {
+      "id": "CQR-005",
+      "status": "pass",
+      "summary": "Source-goal counts are inside the configured peer-baseline corridor or explicitly reviewed.",
+      "metrics": {
+        "sourceExtractionSources": 32,
+        "peerBaselineChecks": 27,
+        "failedPeerBaselineChecks": 0,
+        "granularityChecks": 0,
+        "failedGranularityChecks": 0
+      }
+    },
+    {
+      "id": "CQR-301",
+      "status": "pass",
+      "summary": "Semantic atomicity review ledgers are current and fully accepted.",
+      "metrics": {
+        "configs": 21,
+        "leafGoals": 225,
+        "atomic": 225,
+        "needsDeveloperReview": 0,
+        "nonAtomic": 0,
+        "missing": 0,
+        "stale": 0,
+        "obsolete": 0
+      }
+    },
+    {
+      "id": "CQR-302",
+      "status": "pass",
+      "summary": "Memory-card review is current: 55/398 ordinary atomic goals intentionally use memorization support, 73/73 primary cards are kept with origin traces, all 7 memory goals are traced, and 250 view-visible memory-required goals resolve to visible memory nodes.",
+      "metrics": {
+        "configs": 1,
+        "reviewedGoals": 398,
+        "noMemoryNeeded": 343,
+        "memoryRequired": 55,
+        "needsDeveloperReview": 0,
+        "missing": 0,
+        "stale": 0,
+        "obsolete": 0,
+        "duplicateRecords": 0,
+        "invalidRecords": 0,
+        "primaryCards": 73,
+        "keptCards": 73,
+        "cardsMarkedRemove": 0,
+        "cardNeedsDeveloperReview": 0,
+        "missingCardReviews": 0,
+        "staleCardReviews": 0,
+        "obsoleteCardReviews": 0,
+        "duplicateCardReviewRecords": 0,
+        "invalidCardReviewRecords": 0,
+        "untracedMemoryRequiredGoals": 0,
+        "visibilityScopes": 7,
+        "visibilityCheckedMemoryRequiredGoals": 250,
+        "visibilityMissingVisibleMemoryGoals": 0,
+        "visibilityErrors": 0,
+        "memoryGoals": 7,
+        "tracedMemoryGoals": 7,
+        "untracedMemoryGoals": 0,
+        "deckIds": 7,
+        "deckFiles": 8,
+        "cardRows": 91
+      },
+      "details": [
+        "canonical-chemistry-full: audit report curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P25-protected12-source24-inactive-integration-technical-20261010-v1/checks/current398-memory.normal.report.md"
+      ]
+    },
+    {
+      "id": "CQR-401",
+      "status": "pass",
+      "summary": "37 composition view(s) are registered.",
+      "metrics": {
+        "compositionViews": 37
+      }
+    },
+    {
+      "id": "CQR-501",
+      "status": "warn",
+      "summary": "34 active and 0 obsolete accepted applicability warning(s) need review; 2201 partial-only diagnostic finding(s) are non-blocking.",
+      "metrics": {
+        "activeWarnings": 34,
+        "rawActiveWarnings": 34,
+        "diagnosticPartialOnlyWarnings": 2201,
+        "acceptedWarnings": 0,
+        "obsoleteAcceptedWarnings": 0
+      },
+      "details": [
+        "non-blocking partial-only applicability diagnostics APV-202: 2201",
+        "active warning type APV-203: 34",
+        "diagnostic finding type APV-202: 2201"
+      ]
+    }
+  ],
+  "normalChemistryConfigSelection": {
+    "completeSemanticAtomicityConfigPaths": [
+      "curricula/DE/Gymnasium/quality/semantic-atomicity/chemie-energy-four-current-20261005-v1/canonical-chemistry-ephase-fossil-fuels.config.json",
+      "curricula/DE/Gymnasium/quality/semantic-atomicity/chemie-energy13-current-20261005-v1/canonical-chemistry-ephase-mobile-energy-converters.config.json",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-four-native-atomicity-memory-integration-preparation-author-v1/future-active-configs/canonical-chemistry-ephase-organic-intro.config.json",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-plus-d2cc-reviewed-integration-preparation-technical-20261007-v1/atomicity/3.residual.future-active.config.json",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P25-protected12-source24-inactive-integration-technical-20261010-v1/atomicity/05-residual.future-active.config.json",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next25-reviewed-integration-preparation-root-v1/atomicity/quantum-rules.future-active.config.json",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-quantitative-reviewed-integration-candidate-v1/a-acids-derivatives.config.json",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-06/chemie-current-four-native-atomicity-memory-integration-preparation-author-v1/future-active-configs/canonical-chemistry-q1-alkanols-carbonyls.config.json",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-next25-reviewed-integration-preparation-root-v1/atomicity/orbitals.future-active.config.json",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-quantitative-reviewed-integration-candidate-v1/a-preservatives.config.json",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-q1-quantitative-reviewed-integration-candidate-v1/a-soaps.config.json",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-nine-reviewed-integration-candidate-v4/a-element-groups-contexts-exact-residual.config.json",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-plus-d2cc-reviewed-integration-preparation-technical-20261007-v1/atomicity/12.residual.future-active.config.json",
+      "curricula/DE/Gymnasium/quality/semantic-atomicity/2026-10-01/chemie-b009-three-current-v3/config.json",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-final18-native-paired-integration-preparation-technical-20261007-v1/atomicity/canonical-chemistry-sek1-symbols-stoichiometry.future-active.config.json",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-05/chemie-b010-nine-reviewed-integration-candidate-v4/a-five.config.json",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-four-plus-d2cc-reviewed-integration-preparation-technical-20261007-v1/atomicity/current-two.future-active.config.json",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-q3-two-reviewed-integration-preparation-technical-20261008-v1/atomicity/current-two.future-active.config.json",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/chemie-q3-two-source-roles-reviewed-integration-preparation-technical-20261008-v1/atomicity/current-two.future-active.config.json",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-q3-three-reviewed-active-integration-technical-v1/atomicity/current-three.config.json",
+      "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P25-protected12-source24-inactive-integration-technical-20261010-v1/atomicity/current26.future-active.config.json"
+    ],
+    "memoryReviewConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P25-protected12-source24-inactive-integration-technical-20261010-v1/memory/current398-with-actual-2fdd-Memory-successor.future-active.config.json",
+    "otherSubjectsNotEvaluated": true
+  },
+  "deepIntersectionSeparatelyChecked": true,
+  "activeWrites": [],
+  "humanApproval": false
+}

@@ -1,0 +1,721 @@
+<!doctype html>
+<html lang="de-DE">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="skillpilot-goal-book-renderer" content="goal-book-renderer-v2">
+  <meta name="skillpilot-goal-book-print-profile" content="{&quot;version&quot;:&quot;chromium-canvas-v1&quot;,&quot;maxWidthPixels&quot;:1600,&quot;maxHeightPixels&quot;:1200,&quot;jpegQuality&quot;:0.82,&quot;webpQuality&quot;:0.9,&quot;maxBytes&quot;:1500000}">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'unsafe-inline'; font-src 'none'; connect-src 'none'; media-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Biologie – zwölf aktuelle Prüfseiten zu Gesundheit, Sexualität und Sucht</title>
+  <style>
+    @page { size: A4 portrait; margin: 0; }
+    :root {
+      color-scheme: light;
+      font-family: Arial, Helvetica, sans-serif;
+      --goal-visualization-row-height: 106mm;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; background: #e7edf5; color: #172238; }
+    body { counter-reset: goal-page; }
+    .front-matter-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 16mm 16mm 11mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: hidden;
+      print-color-adjust: exact;
+    }
+    .cover-page {
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 6mm;
+      padding: 23mm 19mm 14mm;
+      background: linear-gradient(145deg, #f7fbff 0%, #fff 58%, #eef7fc 100%);
+    }
+    .cover-rule { width: 26mm; height: 2.2mm; border-radius: 2mm; background: #0878b9; }
+    .cover-kicker { margin: 10mm 0 0; color: #0871aa; font-size: 13pt; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .cover-page h1 { max-width: 164mm; margin: 0; color: #132036; font-size: 32pt; line-height: 1.12; hyphens: none; overflow-wrap: normal; word-break: normal; text-wrap: balance; }
+    .cover-view { margin: 0; color: #435a78; font-size: 17pt; line-height: 1.3; }
+    .cover-facts { align-self: end; margin: 0; display: grid; gap: 3mm; }
+    .cover-facts div { display: grid; grid-template-columns: minmax(45mm, auto) minmax(0, 1fr); gap: 5mm; padding-top: 2.5mm; border-top: 0.3mm solid #c6d8e8; }
+    .cover-facts dt, .cover-facts dd { margin: 0; color: #4b617d; font-size: 8.5pt; }
+    .cover-facts dt { font-weight: 700; }
+    .cover-facts dd { min-width: 0; overflow-wrap: anywhere; }
+    .cover-contents-link { justify-self: start; padding: 2.5mm 4mm; border-radius: 2mm; background: #0878b9; color: #fff; font-size: 10pt; font-weight: 700; text-decoration: none; }
+    .contents-page { grid-template-rows: auto minmax(0, 1fr) auto; gap: 4mm; }
+    .contents-header { min-width: 0; }
+    .contents-title { margin: 0; color: #132036; font-size: 23pt; font-weight: 700; line-height: 1.12; }
+    .contents-header > p:not(.contents-title) { max-width: 168mm; margin: 2.5mm 0 0; color: #54647c; font-size: 8pt; line-height: 1.3; }
+    .toc-tree { min-width: 0; min-height: 0; display: grid; align-content: start; gap: 0.65mm; }
+    .toc-entry { min-width: 0; margin: 0; padding: 1.15mm 1.5mm 1.15mm calc((var(--toc-depth) * 5mm) + 1.5mm); border-bottom: 0.2mm solid #d7e2ec; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 3mm; color: #16304e; font-size: 8.2pt; line-height: 1.14; }
+    .toc-entry-heading { min-width: 0; margin: 0; color: inherit; font: inherit; }
+    .toc-entry-heading > a { color: inherit; text-decoration: none; }
+    .toc-entry-label { min-width: 0; font-weight: 700; hyphens: none; overflow-wrap: anywhere; word-break: normal; }
+    .toc-entry-meta { align-self: start; display: flex; gap: 2.5mm; color: #5a6c82; font-size: 6.5pt; font-weight: 400; white-space: nowrap; }
+    .front-matter-footer { align-self: end; padding-top: 2mm; border-top: 0.25mm solid #d6dee9; display: flex; justify-content: space-between; gap: 4mm; color: #5b6a80; font-size: 6.5pt; }
+    .front-matter-footer a { color: #075c9d; font-weight: 700; }
+    .goal-page {
+      width: 210mm;
+      height: 297mm;
+      padding: 8mm 10mm 6mm;
+      margin: 0 auto 8mm;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 3mm;
+      break-after: page;
+      page-break-after: always;
+      break-inside: avoid;
+      page-break-inside: avoid;
+      overflow: auto;
+      counter-increment: goal-page;
+      print-color-adjust: exact;
+    }
+    .goal-page:last-child { break-after: auto; page-break-after: auto; }
+    .goal-header { min-width: 0; }
+    .breadcrumbs ol { display: flex; flex-wrap: wrap; gap: 1.5mm; margin: 2mm 0 0; padding: 0; list-style: none; color: #54647c; font-size: 9pt; }
+    .breadcrumbs a { color: inherit; text-decoration-color: #a9b9ca; text-underline-offset: 0.5mm; }
+    .breadcrumbs li:not(:last-child)::after { content: "›"; padding-left: 1.5mm; }
+    .goal-title { margin: 0; padding-right: 4mm; font-size: 23pt; line-height: 1.12; color: #132036; }
+    .goal-self-link { color: inherit; text-decoration: none; }
+    .goal-id { margin: 1mm 0 0; color: #4d5e77; font-size: 7pt; }
+    .goal-id span { font-weight: 700; }
+    code { overflow-wrap: anywhere; font: inherit; font-family: "Courier New", Courier, monospace; }
+    .goal-body {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      grid-template-rows: var(--goal-visualization-row-height) auto minmax(0, 1fr);
+      grid-template-areas: "visual" "description" "relations";
+      gap: 3mm;
+    }
+    .goal-visualization {
+      grid-area: visual;
+      height: var(--goal-visualization-row-height);
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .goal-visualization img { display: block; width: 100%; height: 100%; object-fit: contain; }
+    .goal-visualization--missing { color: #66768c; font-size: 12pt; border: 0.35mm dashed #ccd7e5; border-radius: 3mm; }
+    .goal-description { grid-area: description; min-width: 0; }
+    .section-heading { margin: 0 0 0.8mm; color: #243956; font-size: 9pt; font-weight: 700; }
+    .section-heading--small { margin: 1mm 0 0.5mm; font-size: 7.5pt; }
+    .goal-description p { margin: 0; font-size: 11pt; line-height: 1.3; hyphens: auto; }
+    .goal-applicability { margin-top: 1.2mm; }
+    .goal-description .goal-applicability .section-heading { margin: 0 0 0.5mm; font-size: 7.5pt; line-height: 1.1; }
+    .goal-applicability ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.35mm; }
+    .goal-applicability li { color: #425875; font-size: 6.6pt; line-height: 1.12; }
+    .goal-applicability strong { color: #243956; }
+    .goal-applicability .applicability-more { font-style: italic; }
+    .goal-applicability > a { color: #075c9d; font-size: 6.2pt; font-weight: 700; }
+    .goal-relations { grid-area: relations; min-width: 0; min-height: 0; align-self: stretch; display: grid; align-content: start; gap: 1mm; }
+    .reference-list, .external-references ul { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(43mm, 1fr)); gap: 0.7mm; }
+    .reference-list a {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 0.2mm 1mm;
+      padding: 0.55mm 1mm;
+      color: #074f8c;
+      border: 0.25mm solid #bdd5e8;
+      border-radius: 1.5mm;
+      text-decoration: none;
+      background: #f6fbff;
+      font-size: 7.2pt;
+      line-height: 1.08;
+    }
+    .reference-list a span:first-child { font-weight: 700; }
+    .reference-list a code { grid-column: 1; color: #52657d; font-size: 4.8pt; line-height: 1.05; }
+    .reference-page { grid-column: 2; grid-row: 1 / span 2; align-self: center; white-space: nowrap; font-size: 7pt; }
+    .empty-reference-list { margin: 0; color: #63728a; font-size: 7.5pt; }
+    .external-references li { color: #52657d; font-size: 6.5pt; line-height: 1.1; }
+    .external-references code { font-size: 4.8pt; }
+    .external-references a { color: #075c9d; text-decoration: underline; }
+    .goal-page--dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .reference-list a { padding: 0.4mm 0.7mm; font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .reference-list a code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-list a code { display: none; }
+    .goal-page--dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(30mm, 1fr)); gap: 0.4mm; }
+    .goal-page--dense-relations .external-references li { font-size: 6.1pt; line-height: 1.04; }
+    .goal-page--dense-relations .external-references code { font-size: 4.1pt; line-height: 1; }
+    .goal-page--dense-relations .reference-page { font-size: 5.8pt; }
+    .goal-page--very-dense-relations .reference-list { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .goal-relations { gap: 0.4mm; }
+    .goal-page--very-dense-relations .reference-list a { padding: 0.2mm 0.4mm; font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-list a code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references ul { grid-template-columns: repeat(auto-fit, minmax(25mm, 1fr)); gap: 0.3mm; }
+    .goal-page--very-dense-relations .external-references li { font-size: 4.5pt; line-height: 1; }
+    .goal-page--very-dense-relations .external-references code { font-size: 3.3pt; line-height: 1; }
+    .goal-page--very-dense-relations .section-heading--small { margin: 0.4mm 0 0.3mm; font-size: 6pt; line-height: 1; }
+    .goal-page--very-dense-relations .reference-page { font-size: 4.2pt; }
+    .goal-footer {
+      min-width: 0;
+      padding-top: 1mm;
+      border-top: 0.25mm solid #d6dee9;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) auto;
+      gap: 2mm;
+      align-items: center;
+      color: #5b6a80;
+      font-size: 5pt;
+    }
+    .goal-footer span { min-width: 0; overflow-wrap: anywhere; }
+    .goal-footer a { color: #075c9d; font-weight: 700; white-space: nowrap; }
+    @media print {
+      html, body { background: #fff; }
+      .front-matter-page,
+      .goal-page { margin: 0; overflow: hidden; }
+    }
+  </style>
+  
+</head>
+<body>
+<section class="front-matter-page cover-page" id="book-cover" data-front-matter-page="1" aria-labelledby="book-title">
+    <div class="cover-rule" aria-hidden="true"></div>
+    <p class="cover-kicker">Lernzielbuch</p>
+    <h1 id="book-title">Biologie – zwölf aktuelle Prüfseiten zu Gesundheit, Sexualität und Sucht</h1>
+    <p class="cover-view">Kanonische Kapitelsicht</p>
+    <dl class="cover-facts">
+      <div><dt>12 atomare Lernziele</dt><dd>4 Kapitel</dd></div>
+      <div><dt>curricular-atomic-v1</dt><dd><code>sha256:5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916</code></dd></div>
+    </dl>
+    <a class="cover-contents-link" href="#contents">Zur Gliederung</a>
+    <footer class="front-matter-footer"><span>Vorspann 1 von 2</span></footer>
+  </section>
+<section class="front-matter-page contents-page" data-front-matter-page="2" aria-labelledby="contents">
+        <header class="contents-header">
+          <p class="contents-title" id="contents">Gliederung</p>
+          <p>Die Gliederung dient der Navigation. Die Lernzielseiten bleiben didaktisch nach ihren Voraussetzungen geordnet und bilden daher keine künstlichen Kapitelblöcke.</p>
+        </header>
+        <nav class="toc-tree" aria-label="Gliederung"><div class="toc-entry" style="--toc-depth:0" data-chapter-id="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95" data-chapter-depth="0">
+          <h2 class="toc-entry-heading" id="chapter-4f5d4296002eb1bc70a26646" aria-label="Biologie"><a href="#goal-63856e48-8ed9-5942-8a1d-1d53ad29416d"><span class="toc-entry-label">Biologie</span></a></h2>
+          <span class="toc-entry-meta"><span>12 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-9a22b3bd-2cff-5e1d-813c-bdeef4f24533" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-6f2ecb20adf20d3d630f383e" aria-label="Biologische Arbeitsweisen und Bewertung (Sek I)"><a href="#goal-6de6ad3b-1099-5f51-848d-96de4119ed01"><span class="toc-entry-label">Biologische&#160;<wbr>Arbeitsweisen&#160;<wbr>und&#160;<wbr>Bewertung&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h3>
+          <span class="toc-entry-meta"><span>1 Lernziel</span><span>erste zugehörige Lernzielseite 3</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-a13a7d2b-a11b-5d34-b29e-88cf786ca983" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-f4b85c873f06f0b9c2eee7c9" aria-label="Sexualität, Entwicklung und Verantwortung (Sek I)"><a href="#goal-63856e48-8ed9-5942-8a1d-1d53ad29416d"><span class="toc-entry-label">Sexualität,&#160;<wbr>Entwicklung&#160;<wbr>und&#160;<wbr>Verantwortung&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h3>
+          <span class="toc-entry-meta"><span>8 Lernziele</span><span>erste zugehörige Lernzielseite 1</span></span>
+        </div>
+<div class="toc-entry" style="--toc-depth:1" data-chapter-id="structure:canonical-goal-70ad51a7-9042-581b-8fca-a42d089e1fbd" data-chapter-depth="1">
+          <h3 class="toc-entry-heading" id="chapter-467f212c419491bfa3df394a" aria-label="Suchtgefahren und Lebenskompetenzen (Sek I)"><a href="#goal-a6f57e17-9f0c-5327-91bc-c6f31ff375a2"><span class="toc-entry-label">Suchtgefahren&#160;<wbr>und&#160;<wbr>Lebenskompetenzen&#160;<wbr>(Sek&#160;<wbr>I)</span></a></h3>
+          <span class="toc-entry-meta"><span>3 Lernziele</span><span>erste zugehörige Lernzielseite 9</span></span>
+        </div></nav>
+        <footer class="front-matter-footer">
+          <a href="#book-cover">Zum Titel</a>
+          <span>Vorspann 2 von 2</span>
+        </footer>
+      </section>
+<article class="goal-page" id="goal-63856e48-8ed9-5942-8a1d-1d53ad29416d" data-goal-id="63856e48-8ed9-5942-8a1d-1d53ad29416d" data-page-number="1" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-a13a7d2b-a11b-5d34-b29e-88cf786ca983" aria-labelledby="goal-63856e48-8ed9-5942-8a1d-1d53ad29416d-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-63856e48-8ed9-5942-8a1d-1d53ad29416d-title"><a class="goal-self-link" href="#goal-63856e48-8ed9-5942-8a1d-1d53ad29416d">Sexuell übertragbare Erkrankungen vermeiden</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>63856e48-8ed9-5942-8a1d-1d53ad29416d</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-f4b85c873f06f0b9c2eee7c9">Sexualität, Entwicklung und Verantwortung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:7cc78713cfdee8d76201d1f2b72d19479ffbe0dd293caec6d4f8a62cd7d012ca" data-rendered-digest="sha256:6838330221b0e056315e7ef12882fd9fd998e46ec39a9f41bacd9bcc6981884f" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/63856e48-8ed9-5942-8a1d-1d53ad29416d/63856e48-8ed9-5942-8a1d-1d53ad29416d.png" alt="Kontakt/Erreger, großes Schutzsymbol mit Kondom und Impfung, vertrauliche Beratung. Symbolische Schutzmöglichkeiten reduzieren Risiken. Impfungen betreffen bestimmte Erreger, nicht jede STI; Hautkontakte können Barrieren umgehen. Der graue Beratungspfeil ist keine neue Ansteckungsroute. Kleine Pflasterglyphen tragen keine fachliche Aussage.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-63856e48-8ed9-5942-8a1d-1d53ad29416d-description-heading">
+        <p class="section-heading" id="goal-63856e48-8ed9-5942-8a1d-1d53ad29416d-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann sexuell übertragbare Erkrankungen und Übertragungswege erklären, um sich und andere vor Infektionen zu schützen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-63856e48-8ed9-5942-8a1d-1d53ad29416d" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-63856e48-8ed9-5942-8a1d-1d53ad29416d-requires-heading">
+          <p class="section-heading" id="goal-63856e48-8ed9-5942-8a1d-1d53ad29416d-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-63856e48-8ed9-5942-8a1d-1d53ad29416d-reverse-heading">
+          <p class="section-heading" id="goal-63856e48-8ed9-5942-8a1d-1d53ad29416d-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-63856e48-8ed9-5942-8a1d-1d53ad29416d-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-63856e48-8ed9-5942-8a1d-1d53ad29416d-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-7b09d025-8465-505e-b196-61e1811309db" rel="noreferrer noopener"><span>Verantwortungsbewusst handeln</span> <code>7b09d025-8465-505e-b196-61e1811309db</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 1 von 12</span>
+      <span>Buch-Digest <code>sha256:5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916</code></span>
+      <span>Ziel-Fingerprint <code>sha256:22b43bdf3c6e02df4518531684f4365c5f3b6c2c8b6467c3ebd9df46c2e79c6c</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-health-twelve-current353-native-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=63856e48-8ed9-5942-8a1d-1d53ad29416d&amp;goalFingerprint=sha256%3A22b43bdf3c6e02df4518531684f4365c5f3b6c2c8b6467c3ebd9df46c2e79c6c&amp;pageFingerprint=sha256%3A10913090d19d65ebd396f53b13ff2a455900b78b8f9fd6ed734e70f1660f4180&amp;bookDigest=sha256%3A5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916&amp;page=1" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6add2bde-b647-577d-a899-6fd62497656a" data-goal-id="6add2bde-b647-577d-a899-6fd62497656a" data-page-number="2" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-a13a7d2b-a11b-5d34-b29e-88cf786ca983" aria-labelledby="goal-6add2bde-b647-577d-a899-6fd62497656a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6add2bde-b647-577d-a899-6fd62497656a-title"><a class="goal-self-link" href="#goal-6add2bde-b647-577d-a899-6fd62497656a">Sexuelle Selbstbestimmung und Medienbilder beurteilen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6add2bde-b647-577d-a899-6fd62497656a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-f4b85c873f06f0b9c2eee7c9">Sexualität, Entwicklung und Verantwortung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:1a3479cef6eb6f066ab681fd25bd4f572c3ff2aebee4c38b9692ae8712f3d87e" data-rendered-digest="sha256:9e2aa68b7caef1beb168ffadde73c71d1c8d62ff2e988cbecec3004f28721c41" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/6add2bde-b647-577d-a899-6fd62497656a/6add2bde-b647-577d-a899-6fd62497656a.png" alt="Eine Person setzt eine sichtbare Grenze; Gespräch, Würde/Privatsphäre und bearbeitete Medienbilder als Kontext. Kreuze kritisieren aufgezwungene oder bearbeitete Medienideale, keine echten Körper oder Menschen. Personen können ihren Körper selbstbestimmt präsentieren. Tablet ist nach außen vorgestelltes Medienmaterial ohne lesepflichtigen Text.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6add2bde-b647-577d-a899-6fd62497656a-description-heading">
+        <p class="section-heading" id="goal-6add2bde-b647-577d-a899-6fd62497656a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Verhaltensweisen mit Blick auf sexuelle Selbstbestimmung, persönliche Würde und freie Entfaltung beurteilen und mediale Rollen-, Körper- und Sexualitätsbilder kritisch hinterfragen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NW:</strong> Sek. I · G9</li><li><strong>HB, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-6add2bde-b647-577d-a899-6fd62497656a" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6add2bde-b647-577d-a899-6fd62497656a-requires-heading">
+          <p class="section-heading" id="goal-6add2bde-b647-577d-a899-6fd62497656a-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-6add2bde-b647-577d-a899-6fd62497656a-reverse-heading">
+          <p class="section-heading" id="goal-6add2bde-b647-577d-a899-6fd62497656a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-6add2bde-b647-577d-a899-6fd62497656a-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6add2bde-b647-577d-a899-6fd62497656a-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-4b7fdc2c-9dbe-5439-8d84-295abc240eec" rel="noreferrer noopener"><span>Sexualverhalten reflektieren</span> <code>4b7fdc2c-9dbe-5439-8d84-295abc240eec</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 2 von 12</span>
+      <span>Buch-Digest <code>sha256:5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916</code></span>
+      <span>Ziel-Fingerprint <code>sha256:76017dd4eed9351da3c551c8d223cd89b33e600b8e033b17891a305764fbe864</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-health-twelve-current353-native-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=6add2bde-b647-577d-a899-6fd62497656a&amp;goalFingerprint=sha256%3A76017dd4eed9351da3c551c8d223cd89b33e600b8e033b17891a305764fbe864&amp;pageFingerprint=sha256%3Aea734b90c65b9a0a6e4f0b41eef339be742afdb61ed284f130b1f7241a624160&amp;bookDigest=sha256%3A5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916&amp;page=2" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-6de6ad3b-1099-5f51-848d-96de4119ed01" data-goal-id="6de6ad3b-1099-5f51-848d-96de4119ed01" data-page-number="3" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-9a22b3bd-2cff-5e1d-813c-bdeef4f24533" aria-labelledby="goal-6de6ad3b-1099-5f51-848d-96de4119ed01-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-6de6ad3b-1099-5f51-848d-96de4119ed01-title"><a class="goal-self-link" href="#goal-6de6ad3b-1099-5f51-848d-96de4119ed01">Gesundheitsbezogene Verhaltensweisen abwägen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>6de6ad3b-1099-5f51-848d-96de4119ed01</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-6f2ecb20adf20d3d630f383e">Biologische Arbeitsweisen und Bewertung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:85d7bea5703ec7d999a0e4a47139cecc9e10f840136b2c65642ecc4881b7e7c0" data-rendered-digest="sha256:d763eae2afd20ba644b1a2f3f759eeecb53e5c495c12c94f2400a2fd132b1915" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/6de6ad3b-1099-5f51-848d-96de4119ed01/6de6ad3b-1099-5f51-848d-96de4119ed01.png" alt="Abwägen mit großer Waage: Erholung, Bewegung, Ernährung, Kontakte und Zeit/Alltagsaufgaben. Waage ist eine Entscheidungsmetapher, keine messbare Gesundheitsmenge. Keine Uhrzeit-, Gewichts- oder Ernährungsnorm und kein Heilversprechen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-6de6ad3b-1099-5f51-848d-96de4119ed01-description-heading">
+        <p class="section-heading" id="goal-6de6ad3b-1099-5f51-848d-96de4119ed01-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Folgen eigener und fremder Verhaltensweisen für Gesundheit abwägen und begründete Entscheidungen zur Gesunderhaltung treffen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NI, NW:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-6de6ad3b-1099-5f51-848d-96de4119ed01" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-6de6ad3b-1099-5f51-848d-96de4119ed01-requires-heading">
+          <p class="section-heading" id="goal-6de6ad3b-1099-5f51-848d-96de4119ed01-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-6de6ad3b-1099-5f51-848d-96de4119ed01-reverse-heading">
+          <p class="section-heading" id="goal-6de6ad3b-1099-5f51-848d-96de4119ed01-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-a6f57e17-9f0c-5327-91bc-c6f31ff375a2"><span>Grenze zwischen Genuss und Sucht erläutern</span><code>a6f57e17-9f0c-5327-91bc-c6f31ff375a2</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-6de6ad3b-1099-5f51-848d-96de4119ed01-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-6de6ad3b-1099-5f51-848d-96de4119ed01-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-5a47f591-f2ac-5457-872a-22c89c2dbe93" rel="noreferrer noopener"><span>Quellen zu biologischen Fragestellungen auswerten</span> <code>5a47f591-f2ac-5457-872a-22c89c2dbe93</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 3 von 12</span>
+      <span>Buch-Digest <code>sha256:5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916</code></span>
+      <span>Ziel-Fingerprint <code>sha256:cd2acd045cf127d669a5ef584ddeb2fd35ff81983957e1f5191abf9c135c34aa</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-health-twelve-current353-native-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=6de6ad3b-1099-5f51-848d-96de4119ed01&amp;goalFingerprint=sha256%3Acd2acd045cf127d669a5ef584ddeb2fd35ff81983957e1f5191abf9c135c34aa&amp;pageFingerprint=sha256%3Aef7c74e437f9da47b236aa4dea5849a244923cf2675302f57ad14377ca2d7319&amp;bookDigest=sha256%3A5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916&amp;page=3" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-91f62a7b-3b6a-5918-94ca-3f345f1f6584" data-goal-id="91f62a7b-3b6a-5918-94ca-3f345f1f6584" data-page-number="4" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-a13a7d2b-a11b-5d34-b29e-88cf786ca983" aria-labelledby="goal-91f62a7b-3b6a-5918-94ca-3f345f1f6584-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-91f62a7b-3b6a-5918-94ca-3f345f1f6584-title"><a class="goal-self-link" href="#goal-91f62a7b-3b6a-5918-94ca-3f345f1f6584">Veränderungen in der Pubertät</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>91f62a7b-3b6a-5918-94ca-3f345f1f6584</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-f4b85c873f06f0b9c2eee7c9">Sexualität, Entwicklung und Verantwortung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e619a0d420ca305fa62167c1310b6c8d568a3d076c2c0019190c4c34951ced1e" data-rendered-digest="sha256:393d4830ba7aeb7dfe164e24df230c85af774cf77addc66ffc546431e72d7a6a" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/91f62a7b-3b6a-5918-94ca-3f345f1f6584/91f62a7b-3b6a-5918-94ca-3f345f1f6584.png" alt="Vollständig bekleidete junge Menschen, große Symbole für Wachstum, Haut, Stimme und Körperhaar, variable Entwicklung. Kein Körperranking, kein fixes Alter und keine Identität/Orientierung aus Merkmalen. Größen im Bild sind keine Diagnose und nicht allein Geschlechtsmerkmale.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-91f62a7b-3b6a-5918-94ca-3f345f1f6584-description-heading">
+        <p class="section-heading" id="goal-91f62a7b-3b6a-5918-94ca-3f345f1f6584-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann körperliche Veränderungen und Geschlechtsmerkmale in der Pubertät beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-91f62a7b-3b6a-5918-94ca-3f345f1f6584" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-91f62a7b-3b6a-5918-94ca-3f345f1f6584-requires-heading">
+          <p class="section-heading" id="goal-91f62a7b-3b6a-5918-94ca-3f345f1f6584-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-91f62a7b-3b6a-5918-94ca-3f345f1f6584-reverse-heading">
+          <p class="section-heading" id="goal-91f62a7b-3b6a-5918-94ca-3f345f1f6584-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-a6f2bcaf-df2d-5144-aa8f-49396b12d31b"><span>Fortpflanzung und Entwicklung</span><code>a6f2bcaf-df2d-5144-aa8f-49396b12d31b</code><span class="reference-page">S. 6</span></a></li><li><a href="#goal-3c0f5267-4837-5c99-aa6d-bfb41ff70980"><span>Pubertät als Entwicklungsprozess einordnen</span><code>3c0f5267-4837-5c99-aa6d-bfb41ff70980</code><span class="reference-page">S. 5</span></a></li></ul>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-91f62a7b-3b6a-5918-94ca-3f345f1f6584-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-91f62a7b-3b6a-5918-94ca-3f345f1f6584-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-b530a382-2786-5794-8821-3e01a62d88fd" rel="noreferrer noopener"><span>Biologische Grundlagen (Sek I)</span> <code>b530a382-2786-5794-8821-3e01a62d88fd</code></a></li></ul>
+    </section>
+        
+    <section class="external-references" aria-labelledby="goal-91f62a7b-3b6a-5918-94ca-3f345f1f6584-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-91f62a7b-3b6a-5918-94ca-3f345f1f6584-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-249f4c5d-fd23-57c7-ac62-773d62c33b49" rel="noreferrer noopener"><span>Hormonale Steuerung</span> <code>249f4c5d-fd23-57c7-ac62-773d62c33b49</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 4 von 12</span>
+      <span>Buch-Digest <code>sha256:5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916</code></span>
+      <span>Ziel-Fingerprint <code>sha256:2cae4fc4d8dc348dc38d3ca6f0bc342f5fffb2b89e2988a802377a6bfedae14e</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-health-twelve-current353-native-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=91f62a7b-3b6a-5918-94ca-3f345f1f6584&amp;goalFingerprint=sha256%3A2cae4fc4d8dc348dc38d3ca6f0bc342f5fffb2b89e2988a802377a6bfedae14e&amp;pageFingerprint=sha256%3A3356235ef39b33ef52b96b37e6190e784758f386785ed14a1d9631951ffa18cf&amp;bookDigest=sha256%3A5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916&amp;page=4" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-3c0f5267-4837-5c99-aa6d-bfb41ff70980" data-goal-id="3c0f5267-4837-5c99-aa6d-bfb41ff70980" data-page-number="5" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-a13a7d2b-a11b-5d34-b29e-88cf786ca983" aria-labelledby="goal-3c0f5267-4837-5c99-aa6d-bfb41ff70980-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-3c0f5267-4837-5c99-aa6d-bfb41ff70980-title"><a class="goal-self-link" href="#goal-3c0f5267-4837-5c99-aa6d-bfb41ff70980">Pubertät als Entwicklungsprozess einordnen</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>3c0f5267-4837-5c99-aa6d-bfb41ff70980</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-f4b85c873f06f0b9c2eee7c9">Sexualität, Entwicklung und Verantwortung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:6964b8a77e21fac80b5af21056851a9f591c337363a85e21ed5f5af9e6b7d58c" data-rendered-digest="sha256:19bc524bef279d3b04c908fbd8d0542fa02063aa0c3ad13bb7b192dff6e58b7d" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/3c0f5267-4837-5c99-aa6d-bfb41ff70980/3c0f5267-4837-5c99-aa6d-bfb41ff70980.png" alt="Wachstum und nachdenkliches Gespräch über ein präsentiertes, sichtbar bearbeitetes Medienbild. Tablet wird nach außen präsentiert, nicht als von der handelnden Person gelesenes Heft oder Messblatt dargestellt; keine Schrift. Unterschiedliche Entwicklung, kein fester Alters-/Körpermaßstab. Pflanzen sind eine Metapher, keine Hormonmessung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-3c0f5267-4837-5c99-aa6d-bfb41ff70980-description-heading">
+        <p class="section-heading" id="goal-3c0f5267-4837-5c99-aa6d-bfb41ff70980-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann psychische und körperliche Veränderungen in der Pubertät als biologischen Entwicklungsprozess charakterisieren und mediale Vorstellungen von Sexualität und Schönheit einordnen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NW:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-3c0f5267-4837-5c99-aa6d-bfb41ff70980" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-3c0f5267-4837-5c99-aa6d-bfb41ff70980-requires-heading">
+          <p class="section-heading" id="goal-3c0f5267-4837-5c99-aa6d-bfb41ff70980-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-91f62a7b-3b6a-5918-94ca-3f345f1f6584"><span>Veränderungen in der Pubertät</span><code>91f62a7b-3b6a-5918-94ca-3f345f1f6584</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-3c0f5267-4837-5c99-aa6d-bfb41ff70980-reverse-heading">
+          <p class="section-heading" id="goal-3c0f5267-4837-5c99-aa6d-bfb41ff70980-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 5 von 12</span>
+      <span>Buch-Digest <code>sha256:5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916</code></span>
+      <span>Ziel-Fingerprint <code>sha256:115ecadd3f950f26d161be19aebbaabf32b9a791b956abec277068e8117357ff</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-health-twelve-current353-native-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=3c0f5267-4837-5c99-aa6d-bfb41ff70980&amp;goalFingerprint=sha256%3A115ecadd3f950f26d161be19aebbaabf32b9a791b956abec277068e8117357ff&amp;pageFingerprint=sha256%3A45b18302f1d56f7654b7746259bd23176d9ac506ff4c5e73bf02edf3860dac91&amp;bookDigest=sha256%3A5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916&amp;page=5" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a6f2bcaf-df2d-5144-aa8f-49396b12d31b" data-goal-id="a6f2bcaf-df2d-5144-aa8f-49396b12d31b" data-page-number="6" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-a13a7d2b-a11b-5d34-b29e-88cf786ca983" aria-labelledby="goal-a6f2bcaf-df2d-5144-aa8f-49396b12d31b-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a6f2bcaf-df2d-5144-aa8f-49396b12d31b-title"><a class="goal-self-link" href="#goal-a6f2bcaf-df2d-5144-aa8f-49396b12d31b">Fortpflanzung und Entwicklung</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a6f2bcaf-df2d-5144-aa8f-49396b12d31b</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-f4b85c873f06f0b9c2eee7c9">Sexualität, Entwicklung und Verantwortung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:e5ec03d003517439b360ddd9a12cbf6eea96220929d98aeeff8fac324628a234" data-rendered-digest="sha256:c4e583496ac40c2f23598db2567a60c1214dd0842d91112cae7d5a36fed9d35b" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/a6f2bcaf-df2d-5144-aa8f-49396b12d31b/a6f2bcaf-df2d-5144-aa8f-49396b12d31b.png" alt="v2: Drei getrennte Zeitfenster: Befruchtung im Eileiter; Zweizell-/Vierzell-/Blastozystenstufen; nur ein späterer eingewachsener Embryo im Fruchtwassersack. v1 verworfen: gleichzeitige frühe und spätere Einnistung ohne Zeittrennung plus abgebrochener Übergang. v2 beseitigt diese konkrete Mehrdeutigkeit. Schematische Vergrößerungen, mittleres Zeitfenster ohne anatomischen Ortsanspruch, nicht maßstäblich. Kein gemeinsamer mütterlich-kindlicher Blutpool.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a6f2bcaf-df2d-5144-aa8f-49396b12d31b-description-heading">
+        <p class="section-heading" id="goal-a6f2bcaf-df2d-5144-aa8f-49396b12d31b-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Zeugung, Empfängnis und pränatale Entwicklung erklären.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-a6f2bcaf-df2d-5144-aa8f-49396b12d31b" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a6f2bcaf-df2d-5144-aa8f-49396b12d31b-requires-heading">
+          <p class="section-heading" id="goal-a6f2bcaf-df2d-5144-aa8f-49396b12d31b-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-91f62a7b-3b6a-5918-94ca-3f345f1f6584"><span>Veränderungen in der Pubertät</span><code>91f62a7b-3b6a-5918-94ca-3f345f1f6584</code><span class="reference-page">S. 4</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a6f2bcaf-df2d-5144-aa8f-49396b12d31b-reverse-heading">
+          <p class="section-heading" id="goal-a6f2bcaf-df2d-5144-aa8f-49396b12d31b-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-848334f3-c719-55d9-b5f4-42836e0d876a"><span>Schwangerschaft und Geburt</span><code>848334f3-c719-55d9-b5f4-42836e0d876a</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 6 von 12</span>
+      <span>Buch-Digest <code>sha256:5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916</code></span>
+      <span>Ziel-Fingerprint <code>sha256:d97020ca6fde93dd1561bf886cb7187260fcf3fb906f8f81b4b0307357c9123d</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-health-twelve-current353-native-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=a6f2bcaf-df2d-5144-aa8f-49396b12d31b&amp;goalFingerprint=sha256%3Ad97020ca6fde93dd1561bf886cb7187260fcf3fb906f8f81b4b0307357c9123d&amp;pageFingerprint=sha256%3A0620da469671f52923a666ca944ced1d354c8fe38d3252ffccc78c7ea9443fb0&amp;bookDigest=sha256%3A5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916&amp;page=6" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-848334f3-c719-55d9-b5f4-42836e0d876a" data-goal-id="848334f3-c719-55d9-b5f4-42836e0d876a" data-page-number="7" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-a13a7d2b-a11b-5d34-b29e-88cf786ca983" aria-labelledby="goal-848334f3-c719-55d9-b5f4-42836e0d876a-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-848334f3-c719-55d9-b5f4-42836e0d876a-title"><a class="goal-self-link" href="#goal-848334f3-c719-55d9-b5f4-42836e0d876a">Schwangerschaft und Geburt</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>848334f3-c719-55d9-b5f4-42836e0d876a</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-f4b85c873f06f0b9c2eee7c9">Sexualität, Entwicklung und Verantwortung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:73d7925bd94817cf22981d5eb4edfd74f4f5c6f802ad1d081cd6c19d85ceae57" data-rendered-digest="sha256:14595384f704145291d552fa076e66f76661886f7dbd0b1ee4c57e2a7228e7d7" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/848334f3-c719-55d9-b5f4-42836e0d876a/848334f3-c719-55d9-b5f4-42836e0d876a.png" alt="Zeitliche Folge früher/später Schwangerschaft und Versorgung nach Geburt, große freundliche Figuren. Symbolische Überblicksdarstellung ergänzt die genaue P-Zeitfolge und Geburtsphasen. Kein maßstäblicher Embryonalbefund, keine Aussage, dass alle Schwangerschaften so verlaufen.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-848334f3-c719-55d9-b5f4-42836e0d876a-description-heading">
+        <p class="section-heading" id="goal-848334f3-c719-55d9-b5f4-42836e0d876a-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Schwangerschaftsverlauf und Geburt beschreiben sowie Risiken benennen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>HE, NI, NW:</strong> Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-848334f3-c719-55d9-b5f4-42836e0d876a" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-848334f3-c719-55d9-b5f4-42836e0d876a-requires-heading">
+          <p class="section-heading" id="goal-848334f3-c719-55d9-b5f4-42836e0d876a-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a6f2bcaf-df2d-5144-aa8f-49396b12d31b"><span>Fortpflanzung und Entwicklung</span><code>a6f2bcaf-df2d-5144-aa8f-49396b12d31b</code><span class="reference-page">S. 6</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-848334f3-c719-55d9-b5f4-42836e0d876a-reverse-heading">
+          <p class="section-heading" id="goal-848334f3-c719-55d9-b5f4-42836e0d876a-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-17dc9671-3280-566c-b9ec-27437864e0ab"><span>Verhalten vor und während der Schwangerschaft bewerten</span><code>17dc9671-3280-566c-b9ec-27437864e0ab</code><span class="reference-page">S. 8</span></a></li></ul>
+        </section>
+        
+        
+    <section class="external-references" aria-labelledby="goal-848334f3-c719-55d9-b5f4-42836e0d876a-external-reverse-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-848334f3-c719-55d9-b5f4-42836e0d876a-external-reverse-prerequisites-heading">Direkt aufbauende Ziele außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-7b09d025-8465-505e-b196-61e1811309db" rel="noreferrer noopener"><span>Verantwortungsbewusst handeln</span> <code>7b09d025-8465-505e-b196-61e1811309db</code></a></li></ul>
+    </section>
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 7 von 12</span>
+      <span>Buch-Digest <code>sha256:5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916</code></span>
+      <span>Ziel-Fingerprint <code>sha256:5d548c9902179d6244df1ceb7ad49f4bd8e7c6aea23f2e1a8f4cd1f581b043ef</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-health-twelve-current353-native-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=848334f3-c719-55d9-b5f4-42836e0d876a&amp;goalFingerprint=sha256%3A5d548c9902179d6244df1ceb7ad49f4bd8e7c6aea23f2e1a8f4cd1f581b043ef&amp;pageFingerprint=sha256%3A7139b3eb7bc8014b92a4bd9c211f2b0a110b7f33329519207abcd0d06ff600d3&amp;bookDigest=sha256%3A5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916&amp;page=7" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-17dc9671-3280-566c-b9ec-27437864e0ab" data-goal-id="17dc9671-3280-566c-b9ec-27437864e0ab" data-page-number="8" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-a13a7d2b-a11b-5d34-b29e-88cf786ca983" aria-labelledby="goal-17dc9671-3280-566c-b9ec-27437864e0ab-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-17dc9671-3280-566c-b9ec-27437864e0ab-title"><a class="goal-self-link" href="#goal-17dc9671-3280-566c-b9ec-27437864e0ab">Verhalten vor und während der Schwangerschaft bewerten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>17dc9671-3280-566c-b9ec-27437864e0ab</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-f4b85c873f06f0b9c2eee7c9">Sexualität, Entwicklung und Verantwortung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:9d72cda8bc7380747e999256a0d8a10e2fcabfc86ace5ec98eef4013e0b4af93" data-rendered-digest="sha256:8b7f3ccf1e4e339dfcefe74754dbd1edce513f7b8d992264581b4702fccc2576" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/17dc9671-3280-566c-b9ec-27437864e0ab/17dc9671-3280-566c-b9ec-27437864e0ab.png" alt="Beratung vor/bei Schwangerschaft, Ernährung, Unterstützung und Meiden von Alkohol/Tabak. Vollständig bekleidete Erwachsene. Symbolische Prävention ohne Dosierung oder individuelle Prognose; Gesundheitsfaktoren sind keine Schuldzuweisung an Schwangere.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-17dc9671-3280-566c-b9ec-27437864e0ab-description-heading">
+        <p class="section-heading" id="goal-17dc9671-3280-566c-b9ec-27437864e0ab-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann Verhaltensweisen im Vorfeld und während der Schwangerschaft im Hinblick auf mögliche gesundheitliche Folgen für das Kind bewerten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. I · G9</li><li><strong>HH, MV, SN, ST, TH:</strong> Sek. I · G8</li><li><strong>RP:</strong> Sek. I · G8; Sek. I · G9</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-17dc9671-3280-566c-b9ec-27437864e0ab" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-17dc9671-3280-566c-b9ec-27437864e0ab-requires-heading">
+          <p class="section-heading" id="goal-17dc9671-3280-566c-b9ec-27437864e0ab-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-848334f3-c719-55d9-b5f4-42836e0d876a"><span>Schwangerschaft und Geburt</span><code>848334f3-c719-55d9-b5f4-42836e0d876a</code><span class="reference-page">S. 7</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-17dc9671-3280-566c-b9ec-27437864e0ab-reverse-heading">
+          <p class="section-heading" id="goal-17dc9671-3280-566c-b9ec-27437864e0ab-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 8 von 12</span>
+      <span>Buch-Digest <code>sha256:5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916</code></span>
+      <span>Ziel-Fingerprint <code>sha256:fb08ce93444aac2bd42be00cbc4d05237eaed2a2cd5f362ad150510c1b81e964</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-health-twelve-current353-native-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=17dc9671-3280-566c-b9ec-27437864e0ab&amp;goalFingerprint=sha256%3Afb08ce93444aac2bd42be00cbc4d05237eaed2a2cd5f362ad150510c1b81e964&amp;pageFingerprint=sha256%3A16071ad29aba3a1cec9d410894a84cb5bf7ebac28b30775619c184fbb6f4ef74&amp;bookDigest=sha256%3A5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916&amp;page=8" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-a6f57e17-9f0c-5327-91bc-c6f31ff375a2" data-goal-id="a6f57e17-9f0c-5327-91bc-c6f31ff375a2" data-page-number="9" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-70ad51a7-9042-581b-8fca-a42d089e1fbd" aria-labelledby="goal-a6f57e17-9f0c-5327-91bc-c6f31ff375a2-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-a6f57e17-9f0c-5327-91bc-c6f31ff375a2-title"><a class="goal-self-link" href="#goal-a6f57e17-9f0c-5327-91bc-c6f31ff375a2">Grenze zwischen Genuss und Sucht erläutern</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>a6f57e17-9f0c-5327-91bc-c6f31ff375a2</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-467f212c419491bfa3df394a">Suchtgefahren und Lebenskompetenzen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:96d286efdfe7f1e2e6bd01fac36839e61a526c58e40062ef806fc8c5de652c77" data-rendered-digest="sha256:4425bdcb14e7d248d841a4121796cbc0cde0203a30228cf6a71c98ae8a177214" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/a6f57e17-9f0c-5327-91bc-c6f31ff375a2/a6f57e17-9f0c-5327-91bc-c6f31ff375a2.png" alt="Vergleich genussvoller kontrollierter Nutzung mit wiederholtem Verhalten und Schlaf-/Alltagsfolgen; unterstützendes Gespräch. Der Vergleich fordert Fragen zu Kontrolle und Folgen, keine Diagnose anhand gezeichneter Uhrzeit oder einheitlicher Tagesdauer. Keine private Offenlegung nötig.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-a6f57e17-9f0c-5327-91bc-c6f31ff375a2-description-heading">
+        <p class="section-heading" id="goal-a6f57e17-9f0c-5327-91bc-c6f31ff375a2-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Grenze zwischen Genuss und Sucht erläutern und eigene Suchtrisiken bewusst wahrnehmen.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-a6f57e17-9f0c-5327-91bc-c6f31ff375a2" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-a6f57e17-9f0c-5327-91bc-c6f31ff375a2-requires-heading">
+          <p class="section-heading" id="goal-a6f57e17-9f0c-5327-91bc-c6f31ff375a2-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-6de6ad3b-1099-5f51-848d-96de4119ed01"><span>Gesundheitsbezogene Verhaltensweisen abwägen</span><code>6de6ad3b-1099-5f51-848d-96de4119ed01</code><span class="reference-page">S. 3</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-a6f57e17-9f0c-5327-91bc-c6f31ff375a2-reverse-heading">
+          <p class="section-heading" id="goal-a6f57e17-9f0c-5327-91bc-c6f31ff375a2-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-773a297d-49bf-5c8a-a62a-1bd2558e323c"><span>Entstehung und Folgen von Sucht erklären</span><code>773a297d-49bf-5c8a-a62a-1bd2558e323c</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 9 von 12</span>
+      <span>Buch-Digest <code>sha256:5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916</code></span>
+      <span>Ziel-Fingerprint <code>sha256:47a14d1dbb93659d418c6b9b90c073d8a58c5a29a28c68473df0413a209f9887</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-health-twelve-current353-native-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=a6f57e17-9f0c-5327-91bc-c6f31ff375a2&amp;goalFingerprint=sha256%3A47a14d1dbb93659d418c6b9b90c073d8a58c5a29a28c68473df0413a209f9887&amp;pageFingerprint=sha256%3A9993675619394a0bcb6576c52e61c84c07616855789e74b904e0428de633ee35&amp;bookDigest=sha256%3A5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916&amp;page=9" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-773a297d-49bf-5c8a-a62a-1bd2558e323c" data-goal-id="773a297d-49bf-5c8a-a62a-1bd2558e323c" data-page-number="10" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-70ad51a7-9042-581b-8fca-a42d089e1fbd" aria-labelledby="goal-773a297d-49bf-5c8a-a62a-1bd2558e323c-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-773a297d-49bf-5c8a-a62a-1bd2558e323c-title"><a class="goal-self-link" href="#goal-773a297d-49bf-5c8a-a62a-1bd2558e323c">Entstehung und Folgen von Sucht erklären</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>773a297d-49bf-5c8a-a62a-1bd2558e323c</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-467f212c419491bfa3df394a">Suchtgefahren und Lebenskompetenzen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:09b2381cf7fd3cc52c72c9962db4b7cc4dfe639d2f26279c493ba420f0b33f37" data-rendered-digest="sha256:873535adf9f2e30e971304f78249fddad748063be4c59de6a2e17995ec251cc7" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/773a297d-49bf-5c8a-a62a-1bd2558e323c/773a297d-49bf-5c8a-a62a-1bd2558e323c.png" alt="Großer Hinweisreiz-Verhalten-Belohnungs-Kreislauf mit möglichen Schlaffolgen und Unterstützung. Gehirnstern ist ein Belohnungssymbol, kein anatomisch abgegrenztes Suchtzentrum. Ein Handybild bezeichnet keine Diagnose jeder Smartphone-Nutzung. Pfeile sind vereinfachtes Mehrfaktorenmodell, nicht zwangsläufige Entwicklung.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-773a297d-49bf-5c8a-a62a-1bd2558e323c-description-heading">
+        <p class="section-heading" id="goal-773a297d-49bf-5c8a-a62a-1bd2558e323c-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann mithilfe von Modellen die Entstehung von Suchtverhalten erklären und Folgen für Betroffene beschreiben.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-773a297d-49bf-5c8a-a62a-1bd2558e323c" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-773a297d-49bf-5c8a-a62a-1bd2558e323c-requires-heading">
+          <p class="section-heading" id="goal-773a297d-49bf-5c8a-a62a-1bd2558e323c-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-a6f57e17-9f0c-5327-91bc-c6f31ff375a2"><span>Grenze zwischen Genuss und Sucht erläutern</span><code>a6f57e17-9f0c-5327-91bc-c6f31ff375a2</code><span class="reference-page">S. 9</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-773a297d-49bf-5c8a-a62a-1bd2558e323c-reverse-heading">
+          <p class="section-heading" id="goal-773a297d-49bf-5c8a-a62a-1bd2558e323c-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <ul class="reference-list"><li><a href="#goal-0e1065b9-9d1d-5299-b900-32c74d352e56"><span>Lebenskompetenzen zur Suchtprävention ableiten</span><code>0e1065b9-9d1d-5299-b900-32c74d352e56</code><span class="reference-page">S. 11</span></a></li></ul>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 10 von 12</span>
+      <span>Buch-Digest <code>sha256:5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916</code></span>
+      <span>Ziel-Fingerprint <code>sha256:11b0807106dce7598333a15643c9f6a478ce2e384dfcb2071dfed2f5a07fd22b</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-health-twelve-current353-native-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=773a297d-49bf-5c8a-a62a-1bd2558e323c&amp;goalFingerprint=sha256%3A11b0807106dce7598333a15643c9f6a478ce2e384dfcb2071dfed2f5a07fd22b&amp;pageFingerprint=sha256%3A535c022d8dc3fe944a59a7f228837bc204ee8703e4a2ab8f5635ca78ee61c581&amp;bookDigest=sha256%3A5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916&amp;page=10" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-0e1065b9-9d1d-5299-b900-32c74d352e56" data-goal-id="0e1065b9-9d1d-5299-b900-32c74d352e56" data-page-number="11" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-70ad51a7-9042-581b-8fca-a42d089e1fbd" aria-labelledby="goal-0e1065b9-9d1d-5299-b900-32c74d352e56-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-0e1065b9-9d1d-5299-b900-32c74d352e56-title"><a class="goal-self-link" href="#goal-0e1065b9-9d1d-5299-b900-32c74d352e56">Lebenskompetenzen zur Suchtprävention ableiten</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>0e1065b9-9d1d-5299-b900-32c74d352e56</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-467f212c419491bfa3df394a">Suchtgefahren und Lebenskompetenzen (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:257d5174ed775a5d001473258874db3639ac2aad5e7c33ea5ebedca2f49214a6" data-rendered-digest="sha256:0b5ee34cb26c1387b29cd658df21d1ad492ea1357de64502ac601d4730f433cf" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/0e1065b9-9d1d-5299-b900-32c74d352e56/0e1065b9-9d1d-5299-b900-32c74d352e56.png" alt="Mehrere Bewältigungswege: Planen, Gespräch, Bewegung und Musik. Hauptfigur und vier große Gedankenbilder sichtbar. Das Vordergrundheft ist nur leer/liniert und aus der Arbeitssituation verwendbar; kein lesepflichtiger Text. Symbole sind Bewältigungsbeispiele, keine Suchtfreiheitsgarantie.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-0e1065b9-9d1d-5299-b900-32c74d352e56-description-heading">
+        <p class="section-heading" id="goal-0e1065b9-9d1d-5299-b900-32c74d352e56-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann die Bedeutung von Lebenskompetenzen für Alltagsbewältigung, Zufriedenheit und Suchtprävention erklären und Strategien für die eigene Persönlichkeitsentwicklung ableiten.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BY:</strong> Sek. I · G9</li><li><strong>HB, HH, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-0e1065b9-9d1d-5299-b900-32c74d352e56" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-0e1065b9-9d1d-5299-b900-32c74d352e56-requires-heading">
+          <p class="section-heading" id="goal-0e1065b9-9d1d-5299-b900-32c74d352e56-requires-heading">Direkte Vorbedingungen</p>
+          <ul class="reference-list"><li><a href="#goal-773a297d-49bf-5c8a-a62a-1bd2558e323c"><span>Entstehung und Folgen von Sucht erklären</span><code>773a297d-49bf-5c8a-a62a-1bd2558e323c</code><span class="reference-page">S. 10</span></a></li></ul>
+        </section>
+        <section aria-labelledby="goal-0e1065b9-9d1d-5299-b900-32c74d352e56-reverse-heading">
+          <p class="section-heading" id="goal-0e1065b9-9d1d-5299-b900-32c74d352e56-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 11 von 12</span>
+      <span>Buch-Digest <code>sha256:5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916</code></span>
+      <span>Ziel-Fingerprint <code>sha256:e3030cd238f390f2f8f14bbfafb627dc6ee78cd2249290b11e913362bbb0106d</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-health-twelve-current353-native-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=0e1065b9-9d1d-5299-b900-32c74d352e56&amp;goalFingerprint=sha256%3Ae3030cd238f390f2f8f14bbfafb627dc6ee78cd2249290b11e913362bbb0106d&amp;pageFingerprint=sha256%3Ab14c94953283f202e1e5c1b63a6f922f4307c0b3beeb678ebb8a8bd1d14f04d9&amp;bookDigest=sha256%3A5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916&amp;page=11" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+<article class="goal-page" id="goal-d6727804-a8d4-5438-9b98-4aea8e7f4f80" data-goal-id="d6727804-a8d4-5438-9b98-4aea8e7f4f80" data-page-number="12" data-chapter-ids="structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95 structure:canonical-goal-a13a7d2b-a11b-5d34-b29e-88cf786ca983" aria-labelledby="goal-d6727804-a8d4-5438-9b98-4aea8e7f4f80-title">
+    <header class="goal-header">
+      <h2 class="goal-title" id="goal-d6727804-a8d4-5438-9b98-4aea8e7f4f80-title"><a class="goal-self-link" href="#goal-d6727804-a8d4-5438-9b98-4aea8e7f4f80">Respektvoll über Sexualität kommunizieren</a></h2>
+      <p class="goal-id"><span>Lernziel-ID</span> <code>d6727804-a8d4-5438-9b98-4aea8e7f4f80</code></p>
+      <nav class="breadcrumbs" aria-label="Themenpfad"><ol><li><a href="#chapter-4f5d4296002eb1bc70a26646">Biologie</a></li><li><a href="#chapter-f4b85c873f06f0b9c2eee7c9">Sexualität, Entwicklung und Verantwortung (Sek I)</a></li></ol></nav>
+    </header>
+    <div class="goal-body">
+      <figure class="goal-visualization" data-original-digest="sha256:cb389334904715c8b52d1c7199f0c585571f477cc69ef0666fb601c3f938b19a" data-rendered-digest="sha256:d9481132968b1c7759c4a071c3cae99475c4856e8dcbe5e624c22310f96f609b" data-render-profile="chromium-canvas-v1">
+        <img src="/assets/goal-visualizations/biologie/d6727804-a8d4-5438-9b98-4aea8e7f4f80/d6727804-a8d4-5438-9b98-4aea8e7f4f80.png" alt="Klare Grenze, Zuhören, respektvolles Gespräch, Privatsphäre und Zurückweisung abwertender Sprache. Freundliche unterstützende Szene; kein Zwang zu Konfrontation oder Bericht persönlicher Erfahrung. Reaktion und Sprache bleiben situationsabhängig.">
+      </figure>
+      <section class="goal-description" aria-labelledby="goal-d6727804-a8d4-5438-9b98-4aea8e7f4f80-description-heading">
+        <p class="section-heading" id="goal-d6727804-a8d4-5438-9b98-4aea8e7f4f80-description-heading">Lernzielbeschreibung</p>
+        <p>Die lernende Person kann in medizinischen, gesellschaftlichen und partnerschaftlichen Kontexten respektvoll über Sexualität kommunizieren und auf sexualisierte Belästigung, Gewalt oder abwertende Sprache angemessen reagieren.</p>
+        <div class="goal-applicability">
+    <p class="section-heading section-heading--small">Geltung</p>
+    <ul><li><strong>BB, BE, BW, RP, SH, SL:</strong> Sek. I · G8; Sek. I · G9</li><li><strong>BY, NW:</strong> Sek. I · G9</li><li><strong>HB, MV, SN, ST, TH:</strong> Sek. I · G8</li></ul>
+    <a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-d6727804-a8d4-5438-9b98-4aea8e7f4f80" rel="noreferrer noopener">Vollständige Geltungsmatrix im Online-Atlas</a>
+  </div>
+      </section>
+      <div class="goal-relations">
+        <section aria-labelledby="goal-d6727804-a8d4-5438-9b98-4aea8e7f4f80-requires-heading">
+          <p class="section-heading" id="goal-d6727804-a8d4-5438-9b98-4aea8e7f4f80-requires-heading">Direkte Vorbedingungen</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        <section aria-labelledby="goal-d6727804-a8d4-5438-9b98-4aea8e7f4f80-reverse-heading">
+          <p class="section-heading" id="goal-d6727804-a8d4-5438-9b98-4aea8e7f4f80-reverse-heading">Wird direkt vorausgesetzt von</p>
+          <p class="empty-reference-list">Keine</p>
+        </section>
+        
+    <section class="external-references" aria-labelledby="goal-d6727804-a8d4-5438-9b98-4aea8e7f4f80-external-prerequisites-heading">
+      <p class="section-heading section-heading--small" id="goal-d6727804-a8d4-5438-9b98-4aea8e7f4f80-external-prerequisites-heading">Vorbedingungen außerhalb dieses Buchs</p>
+      <ul><li><a href="https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&amp;edition=curricular-atomic-v1#goal-4b7fdc2c-9dbe-5439-8d84-295abc240eec" rel="noreferrer noopener"><span>Sexualverhalten reflektieren</span> <code>4b7fdc2c-9dbe-5439-8d84-295abc240eec</code></a></li></ul>
+    </section>
+        
+      </div>
+    </div>
+    <footer class="goal-footer">
+      <span>Lernzielseite 12 von 12</span>
+      <span>Buch-Digest <code>sha256:5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916</code></span>
+      <span>Ziel-Fingerprint <code>sha256:07e877f8b3d54bb686d2670382e7b5cfb24e0ebf7d0559c2db4d6bedbf9b5df5</code></span>
+      <a href="https://skillpilot.com/feedback?bookId=biologie-health-twelve-current353-native-20261010-v1&amp;edition=curricular-atomic-v1&amp;goalId=d6727804-a8d4-5438-9b98-4aea8e7f4f80&amp;goalFingerprint=sha256%3A07e877f8b3d54bb686d2670382e7b5cfb24e0ebf7d0559c2db4d6bedbf9b5df5&amp;pageFingerprint=sha256%3A045a579d6d6d2ffad9ec2a1dbdd214ff16cb7a7cb538627d39cba02dd2272840&amp;bookDigest=sha256%3A5be3762e0309c028937600d01f5b87edb3ad86ec7a3c2d4063c98a50333c9916&amp;page=12" rel="noreferrer noopener">Feedback zu diesem Lernziel</a>
+    </footer>
+  </article>
+</body>
+</html>

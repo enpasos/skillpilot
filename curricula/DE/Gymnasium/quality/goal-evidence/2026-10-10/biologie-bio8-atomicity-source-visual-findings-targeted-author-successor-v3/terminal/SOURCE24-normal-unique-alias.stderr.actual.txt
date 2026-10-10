@@ -1,0 +1,19 @@
+node:fs:573
+  return binding.open(
+                 ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/tmp/m7-bio8-findings-v3-author-isolated-capsule/curricula/DE/Gymnasium/input/BB/lower-secondary/Teil_C_Biologie_2015_11_10.pdf'
+    at Object.openSync (node:fs:573:18)
+    at readFileSync (node:fs:452:35)
+    at buildGoalBookSourceAtlasInputs (/home/enpasos/projects/skillpilot/tmp/m7-bio8-findings-v3-author-isolated-capsule/app/scripts/goalBookSourceAtlasInputs.ts:272:33)
+    at <anonymous> (/home/enpasos/projects/skillpilot/tmp/m7-bio8-findings-v3-author-isolated-capsule/app/scripts/buildGoalBookSourceAtlasInputs.ts:11:88)
+    at ModuleJob.run (node:internal/modules/esm/module_job:325:25)
+    at async ModuleLoader.import (node:internal/modules/esm/loader:606:24)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/tmp/m7-bio8-findings-v3-author-isolated-capsule/curricula/DE/Gymnasium/input/BB/lower-secondary/Teil_C_Biologie_2015_11_10.pdf'
+}
+
+Node.js v20.20.2

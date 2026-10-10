@@ -1,0 +1,270 @@
+{
+  "schemaVersion": 1,
+  "role": "Independently computed existing-rule omissions; source-backed effect analysis, not actual host mastery writes",
+  "createdAt": "2026-10-10T10:16:10.922757+00:00",
+  "sourceBindings": [
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/connectors/claude/v1/mcp/ClaudeV1McpContractAdapter.java",
+      "sha256": "68328ce555d191b7540657a915decd8c28e5f2cd63e053915940fda3360ad964",
+      "bytes": 160344
+    },
+    {
+      "path": "backend/src/main/java/com/skillpilot/backend/landscape/ExamData.java",
+      "sha256": "28d545feecb8390748509bbad10fd96f116960017f554f5c3208b96a365b352d",
+      "bytes": 4189
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-modelportfolio-a01-targeted-author-successor-20261010-v1/candidate/whole517.inactive.modelportfolio-A01-author-successor.json",
+      "sha256": "8a4bcc2a8c1cfdabbbced5a5340451b4a94821304190222d07ae256b3d91c8a0",
+      "bytes": 1653278
+    }
+  ],
+  "sourceSubstantivelyRead": [
+    "applyExamMasteryRules full method",
+    "requireValidExamEvaluation full method",
+    "ExamData.Scoring full class",
+    "ExamData.Step full class"
+  ],
+  "currentRuleSemantics": "Valid evaluation capability and finite in-range earnedPoints are required; mastery gate compares only earnedPoints to passingPoints. Scoring/Step have no additional essential-component fields. An honest coach must follow rubric, but the server gate alone cannot enforce prose-only missing components.",
+  "knownPriorRootSC01Reported": true,
+  "newCurrentPeerScoringReviewRead": false,
+  "cases": [
+    {
+      "goalId": "2f53dea4-1ea9-59ad-bd2d-0492107627ee",
+      "omittedEntireStepId": "s1",
+      "omittedWholeStepDescription": "Eigener begründeter Untersuchungsplan",
+      "omittedPoints": 6,
+      "earnedAggregatePoints": 34,
+      "passingPoints": 24,
+      "passesExistingNumericGate": true,
+      "realRuntimeOrHostInvoked": false
+    },
+    {
+      "goalId": "2f53dea4-1ea9-59ad-bd2d-0492107627ee",
+      "omittedEntireStepId": "s2",
+      "omittedWholeStepDescription": "Tatsächliche eigene sichere Untersuchung und Rohprotokoll",
+      "omittedPoints": 8,
+      "earnedAggregatePoints": 32,
+      "passingPoints": 24,
+      "passesExistingNumericGate": true,
+      "realRuntimeOrHostInvoked": false
+    },
+    {
+      "goalId": "2f53dea4-1ea9-59ad-bd2d-0492107627ee",
+      "omittedEntireStepId": "s3",
+      "omittedWholeStepDescription": "Auswertung und konkrete Reflexion der eigenen Untersuchung",
+      "omittedPoints": 10,
+      "earnedAggregatePoints": 30,
+      "passingPoints": 24,
+      "passesExistingNumericGate": true,
+      "realRuntimeOrHostInvoked": false
+    },
+    {
+      "goalId": "2f53dea4-1ea9-59ad-bd2d-0492107627ee",
+      "omittedEntireStepId": "s4",
+      "omittedWholeStepDescription": "Tatsächlich gehaltene eigene adressatengerechte Präsentation",
+      "omittedPoints": 12,
+      "earnedAggregatePoints": 28,
+      "passingPoints": 24,
+      "passesExistingNumericGate": true,
+      "realRuntimeOrHostInvoked": false
+    },
+    {
+      "goalId": "2f53dea4-1ea9-59ad-bd2d-0492107627ee",
+      "omittedEntireStepId": "s5",
+      "omittedWholeStepDescription": "Überarbeitung aus tatsächlicher Rückfrage",
+      "omittedPoints": 4,
+      "earnedAggregatePoints": 36,
+      "passingPoints": 24,
+      "passesExistingNumericGate": true,
+      "realRuntimeOrHostInvoked": false
+    },
+    {
+      "goalId": "ab315f52-a9e3-5c1c-a404-7fb1a96a3eaf",
+      "omittedEntireStepId": "s1",
+      "omittedWholeStepDescription": "Selbst formulierte theoriegestützte Frage/Hypothese und Gegenbefund",
+      "omittedPoints": 10,
+      "earnedAggregatePoints": 50,
+      "passingPoints": 36,
+      "passesExistingNumericGate": true,
+      "realRuntimeOrHostInvoked": false
+    },
+    {
+      "goalId": "ab315f52-a9e3-5c1c-a404-7fb1a96a3eaf",
+      "omittedEntireStepId": "s2",
+      "omittedWholeStepDescription": "Eigene begründete qualitative/quantitative Methodenwahl und Planung",
+      "omittedPoints": 12,
+      "earnedAggregatePoints": 48,
+      "passingPoints": 36,
+      "passesExistingNumericGate": true,
+      "realRuntimeOrHostInvoked": false
+    },
+    {
+      "goalId": "ab315f52-a9e3-5c1c-a404-7fb1a96a3eaf",
+      "omittedEntireStepId": "s3",
+      "omittedWholeStepDescription": "Tatsächliche überwiegend selbstständige sichere Durchführung und eigene Rohdaten",
+      "omittedPoints": 12,
+      "earnedAggregatePoints": 48,
+      "passingPoints": 36,
+      "passesExistingNumericGate": true,
+      "realRuntimeOrHostInvoked": false
+    },
+    {
+      "goalId": "ab315f52-a9e3-5c1c-a404-7fb1a96a3eaf",
+      "omittedEntireStepId": "s4",
+      "omittedWholeStepDescription": "Eigene mathematische/digitale Auswertung und begründetes Hypothesenurteil",
+      "omittedPoints": 16,
+      "earnedAggregatePoints": 44,
+      "passingPoints": 36,
+      "passesExistingNumericGate": true,
+      "realRuntimeOrHostInvoked": false
+    },
+    {
+      "goalId": "ab315f52-a9e3-5c1c-a404-7fb1a96a3eaf",
+      "omittedEntireStepId": "s5",
+      "omittedWholeStepDescription": "Reflexion und konkrete verbesserte Folgeuntersuchung",
+      "omittedPoints": 10,
+      "earnedAggregatePoints": 50,
+      "passingPoints": 36,
+      "passesExistingNumericGate": true,
+      "realRuntimeOrHostInvoked": false
+    },
+    {
+      "goalId": "7bfe515c-e59f-521c-9781-b75e33caf0ec",
+      "omittedEntireStepId": "s1",
+      "omittedWholeStepDescription": "Eigene Atombau-/Periodizitäts-Modellwahl, Prüfung und Grenze",
+      "omittedPoints": 12,
+      "earnedAggregatePoints": 68,
+      "passingPoints": 48,
+      "passesExistingNumericGate": true,
+      "realRuntimeOrHostInvoked": false
+    },
+    {
+      "goalId": "7bfe515c-e59f-521c-9781-b75e33caf0ec",
+      "omittedEntireStepId": "s2",
+      "omittedWholeStepDescription": "Eigene Gleichgewichtsmodelle, dynamische Prüfung und Weiterentwicklung",
+      "omittedPoints": 14,
+      "earnedAggregatePoints": 66,
+      "passingPoints": 48,
+      "passesExistingNumericGate": true,
+      "realRuntimeOrHostInvoked": false
+    },
+    {
+      "goalId": "7bfe515c-e59f-521c-9781-b75e33caf0ec",
+      "omittedEntireStepId": "s3",
+      "omittedWholeStepDescription": "Eigene Bindungs-/Geometrie-Modelle, Dipolaussagen und Grenzen",
+      "omittedPoints": 14,
+      "earnedAggregatePoints": 66,
+      "passingPoints": 48,
+      "passesExistingNumericGate": true,
+      "realRuntimeOrHostInvoked": false
+    },
+    {
+      "goalId": "7bfe515c-e59f-521c-9781-b75e33caf0ec",
+      "omittedEntireStepId": "s4",
+      "omittedWholeStepDescription": "Eigene analoge/digitale Rezeptor- UND Enzymmodellprüfung komplexer Moleküle",
+      "omittedPoints": 20,
+      "earnedAggregatePoints": 60,
+      "passingPoints": 48,
+      "passesExistingNumericGate": true,
+      "realRuntimeOrHostInvoked": false
+    },
+    {
+      "goalId": "7bfe515c-e59f-521c-9781-b75e33caf0ec",
+      "omittedEntireStepId": "s5",
+      "omittedWholeStepDescription": "Eigene tatsächliche adressatengerechte Präsentation und Reflexion",
+      "omittedPoints": 20,
+      "earnedAggregatePoints": 60,
+      "passingPoints": 48,
+      "passesExistingNumericGate": true,
+      "realRuntimeOrHostInvoked": false
+    },
+    {
+      "goalId": "b406eff8-3cd9-551b-a913-c6dda7223645",
+      "omittedEntireStepId": "s1",
+      "omittedWholeStepDescription": "Alle fünf Gültigkeitskriterien mit Gegenbefund/Fehler-Unterscheidung",
+      "omittedPoints": 20,
+      "earnedAggregatePoints": 30,
+      "passingPoints": 30,
+      "passesExistingNumericGate": true,
+      "realRuntimeOrHostInvoked": false
+    },
+    {
+      "goalId": "b406eff8-3cd9-551b-a913-c6dda7223645",
+      "omittedEntireStepId": "s2",
+      "omittedWholeStepDescription": "Historische UND aktuelle gesellschaftliche/ökologische chemische Wirkungen",
+      "omittedPoints": 10,
+      "earnedAggregatePoints": 40,
+      "passingPoints": 30,
+      "passesExistingNumericGate": true,
+      "realRuntimeOrHostInvoked": false
+    },
+    {
+      "goalId": "b406eff8-3cd9-551b-a913-c6dda7223645",
+      "omittedEntireStepId": "s3",
+      "omittedWholeStepDescription": "Ökologische, ökonomische UND soziale Nachhaltigkeitsentscheidung samt Grenzen",
+      "omittedPoints": 15,
+      "earnedAggregatePoints": 35,
+      "passingPoints": 30,
+      "passesExistingNumericGate": true,
+      "realRuntimeOrHostInvoked": false
+    },
+    {
+      "goalId": "b406eff8-3cd9-551b-a913-c6dda7223645",
+      "omittedEntireStepId": "s4",
+      "omittedWholeStepDescription": "Begründete Reflexion möglichen eigenen Handelns",
+      "omittedPoints": 5,
+      "earnedAggregatePoints": 45,
+      "passingPoints": 30,
+      "passesExistingNumericGate": true,
+      "realRuntimeOrHostInvoked": false
+    },
+    {
+      "goalId": "eed5eda3-2daf-5d48-b935-23dadd622d9b",
+      "omittedEntireStepId": "s1",
+      "omittedWholeStepDescription": "Belegter historischer chemischer Erkenntnisweg mit Quellen-/Motivgrenze",
+      "omittedPoints": 8,
+      "earnedAggregatePoints": 32,
+      "passingPoints": 24,
+      "passesExistingNumericGate": true,
+      "realRuntimeOrHostInvoked": false
+    },
+    {
+      "goalId": "eed5eda3-2daf-5d48-b935-23dadd622d9b",
+      "omittedEntireStepId": "s2",
+      "omittedWholeStepDescription": "Alle sechs Einflüsse konkret beschrieben und begründet bewertet",
+      "omittedPoints": 18,
+      "earnedAggregatePoints": 22,
+      "passingPoints": 24,
+      "passesExistingNumericGate": false,
+      "realRuntimeOrHostInvoked": false
+    },
+    {
+      "goalId": "eed5eda3-2daf-5d48-b935-23dadd622d9b",
+      "omittedEntireStepId": "s3",
+      "omittedWholeStepDescription": "Empirische Gültigkeit von Zustimmung unterschieden",
+      "omittedPoints": 10,
+      "earnedAggregatePoints": 30,
+      "passingPoints": 24,
+      "passesExistingNumericGate": true,
+      "realRuntimeOrHostInvoked": false
+    },
+    {
+      "goalId": "eed5eda3-2daf-5d48-b935-23dadd622d9b",
+      "omittedEntireStepId": "s4",
+      "omittedWholeStepDescription": "Prüfbarer nächster Forschungsschritt mit reflektiertem Einfluss",
+      "omittedPoints": 4,
+      "earnedAggregatePoints": 36,
+      "passingPoints": 24,
+      "passesExistingNumericGate": true,
+      "realRuntimeOrHostInvoked": false
+    }
+  ],
+  "entireStepCases": 23,
+  "entireStepOmissionsPassingAggregateGate": 22,
+  "currentScoringSuccessorFinalInput": "NOT YET RECEIVED; no verdict on unsealed candidate",
+  "activeWrites": [],
+  "humanApproval": false,
+  "actualLearnerOrHostExecutionClaimed": false,
+  "netStrictGain": 0
+}

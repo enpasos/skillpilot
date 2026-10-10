@@ -1,0 +1,29 @@
+# Biologie: zwölf Kandidaten zu Gesundheit, Sexualität und Sucht
+
+Eigene Autorenkandidaten für das bestehende M7-Ziel, nicht integriert und nicht abgeschlossen. Inhalt CC-BY-4.0; eigene technische Skripte Apache-2.0. Menschliche Prüfung/Freigabe/Erprobung sind offen. **Strenger Nettozuwachs:0; neue fachliche Abschlüsse:0; wiederhergestellte operative Bindungen:0.**
+
+## Ausgang und Materialien
+
+Die zwölf ganzen aktuellen DE/EN-Zielobjekte wurden unverändert aus dem neutralen 33er-Paket übernommen. Der gezielte normale semantische Fingerprint-Check bestätigt ihre aktuelle `curricularAtomic`-Zuordnung und die genaue Übereinstimmung mit dem derzeitigen kanonischen Ziel. Der eigene ganze479-Goal-/394-Kind-Snapshot ist nur Autorenbaseline; er darf kein neueres operatives Ganzpaket ersetzen.
+
+- `science/twelve-whole-profiles-and-twenty-four-cases.author.json`:12 Profile,36 individuelle Erwartungen,24 vollständige DE/EN-Materialien/Aufgaben/Lösungen/Rubriken/frische Transfers und individuelle Atomaritäts-/Memory-Begründungen. Keine neuen Karten oder Sichtbarkeitsänderungen vorgeschlagen; alle zwölf aktuellen Ziele ohne Memorization-/Deck-Tag.
+- Normale P-v2-Dateien im selben Verzeichnis:12 `needs_human_review`, `ai_candidate`, `E1/G1`; approved0, technische Blocker0. Noch keine aktuelle Bild-/Native-Bindung behauptet: Autor-P-Konfiguration prüft bewusst das originale Ressourcenuniversum ohne Bilder. Nach zwölf fehlenden Bildern werden die tatsächlich betroffenen P-/Native-Bindungen normal erstellt und unabhängig geprüft.
+- `assets/twelve-actual-original-and-mobile-desktop-author-observations.json`:alle zwölf gewählten Originale und jeweils proportional360/680 tatsächlich fachlich und visuell angesehen. Native1672×941PNG, freundlich/abstrakt/comicartig. Keine guten bestehenden Bilder ersetzt; für alle zwölf war das vorhandene Ressourcen-/Bilduniversum tatsächlich leer. Reproduktion nutzt gezielt korrigiertes v2 mit getrennten Zeitstufen; v1 bleibt dokumentierte abgelehnte Geschichte. Prompts und tatsächliche Erzeugungsreceipts in `prompts/`. Erzeugung oder Autorenansicht ist keine unabhängige Visualisierungsfreigabe.
+- `science/factual-boundaries-and-author-reference-note.md`:fachliche Hintergrundquellen und Grenzen, insbesondere asymptomatische STI, Impf-/Barrieregrenzen, Schwangerschaftsrisiken ohne Individualdiagnose, keine eigenständige Medikamentenänderung/Entzugsanleitung, Pubertätsvariation, getrennte maternale/fetale Kreisläufe und kontextbezogene freiwillige Zustimmung. Alle Fälle fiktiv und ohne private Angaben.
+
+## Gezielte Quellenkandidaten
+
+`sources/187-witnesses-98-source-goals.actual-primary-and-additive-deltas.author.json` bindet187 vorhandene Witnesses zu98 individuellen Source-Goal-Objekten an17 echte Primärdokumente. Tatsächliche ausgewählte ganze PDF-Seiten und HTML-Lernbereiche wurden gelesen; strukturierte Synthesen/NULL-Raw-Text werden nicht als amtlicher Wortlaut ausgegeben. Ganze Kurse, GK/LK und praktische Erprobung bleiben außerhalb einer neuen Freigabe.
+
+- Drei HE6.1-Unterpunkt-Aliase:die eigentliche offizielle Seite ist gedruckte13/physische14. Nominale verbindliche Inhalte werden als `authoredOperationalization` mit tatsächlicher Primärbindung beschrieben; die drei betroffenen direkten `exact`-Paare sind als `partial` vorgeschlagen. Die Alias-IDs bleiben stabil, eigene ganze Beschreibungen unverändert.
+- BY8 und BY10:tatsächliche offizielle HTML-Kompetenzseite statt abgeleitetem JSON unter einem HTML-Namen. Quelloperatoren wortgleich erhalten; lokale Bullet-Indizes ausdrücklich keine amtlichen Unterpunktnummern. Der aktuelle Root-BY8-Primär-Key wird wiederverwendet.
+- Gezielte Entfernung genau eines SL-Paares `sl-biology-seki-nw56-2012-pfl5-004-c265b417`→`a6f2bcaf-df2d-5144-aa8f-49396b12d31b`:Fruchtformen, Samenverbreitung und vegetative Pflanzenvermehrung sind keine direkte Leistung zur menschlichen Empfängnis/pränatalen Entwicklung. Andere Ziele dieses Quelloperators und echte SL-SEX6-Paare bleiben erhalten; Prüfung der danach tatsächlichen Anwendbarkeit/Quellenabdeckung ist erforderlich. Ein anderes Pflanzengameten-Paar bleibt nur begrenzte gemeinsame Teilidee, keine ganze Humanentwicklung.
+- Das tatsächlich gelesene Bremen-PDF enthält die Einschränkung auf Jahrgänge5–9 aus2022. Historische J10-Überschriften begründen keine erneute J10-Freigabe. Bestehende Reduction-/Scope-Policies erhalten.
+
+**Integration ausschließlich additiv**:genannte Feldänderungen und neue Actual-Primary-Descriptoren auf die neuesten operativen Source-Objekte anwenden. Neuere Root-Neuro8-/HE6-Nachfolger, sämtliche anderen Ziele/Occurrences, historische Descriptoren und bestehende Policies bleiben erhalten. Die alten ganzen31-Pair-Snapshots sind Eingangsevidenz, kein Ersatz für den aktuellen Source-Atlas.
+
+## Nachgewiesene Technik und nächster Schritt
+
+`checks/actual-targeted-author-validation.json` enthält tatsächliche Befehle, Ausgaben, Zeiten und Exitcodes. Normale Schema-Funktion, normale semantische Fingerprint-Funktion und normaler P-v2-Prüfer bestehen; alle eigenen und tatsächlich verwendeten Primärdateien sind regulär und versionierbar. Ignorierte PDFs/HTML wurden ohne neue Ignorier-Ausnahmen bytegenau in die vorhandenen `bundle/book.pdf`-/`bundle/book.html`-Pfade verlegt; keine Symlink-Kapsel oder Fulltext-Ersatzkopie.
+
+Nächster Schritt:andere Agents prüfen unabhängig die zwölf ganzen Texte und Materialien, alle tatsächlichen Original-/Handy-/PC-Bilder und die gezielten Quellenbefunde. Technische Vorbereitung bindet dabei P/Native an den dann tatsächlichen Gesamtstand. Erst danach können geprüfte Ergebnisse integriert und als D/P/A/M/V abgeschlossen gezählt werden. Mathematik-/Physik-M7, andere Biologie-Seiten und getrennte menschliche Gates bleiben geschützt. Keine Ganzbuilds, aktive Registrierung, Git-/GitHub-, Runtime-, Datenschutz-, Sicherheits-, Plugin- oder UI-Änderungen in diesem Autorenpaket.

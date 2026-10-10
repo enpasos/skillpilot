@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "argv": [
+    "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-machine-content-native-readiness-author-20261010-v1/technical/final_learner_copy_normal_bindings.mts",
+    "--root",
+    "/home/enpasos/projects/skillpilot",
+    "--capsule",
+    "/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-P26-native-author/isolated-normal-capsule"
+  ],
+  "startedAt": "2026-10-10T10:50:24.459980+00:00",
+  "completedAt": "2026-10-10T10:50:25.116047+00:00",
+  "actualExitCode": 1,
+  "stdout": "",
+  "stderr": "node:internal/fs/promises:637\n  return new FileHandle(await PromisePrototypeThen(\n                        ^\n\nError: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-P26-native-author/isolated-normal-capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-machine-content-native-readiness-author-20261010-v1/candidate/whole517.inactive.machine-content-final-learner-copy-author.json'\n    at async open (node:internal/fs/promises:637:25)\n    at async readFile (node:internal/fs/promises:1249:14)\n    at async Promise.all (index 0)\n    at async Object.loadGoalBookBuildInputs (/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-P26-native-author/isolated-normal-capsule/app/scripts/goalBookModel.ts:2705:7)\n    at async <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-machine-content-native-readiness-author-20261010-v1/technical/final_learner_copy_normal_bindings.mts:14:14) {\n  errno: -2,\n  code: 'ENOENT',\n  syscall: 'open',\n  path: '/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/chemistry-b008-P26-native-author/isolated-normal-capsule/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-machine-content-native-readiness-author-20261010-v1/candidate/whole517.inactive.machine-content-final-learner-copy-author.json'\n}\n\nNode.js v20.20.2\n",
+  "activeWrites": []
+}

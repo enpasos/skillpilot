@@ -1,0 +1,8 @@
+{
+  "schemaVersion": 1,
+  "actualExitCode": 1,
+  "error": "AssertionError expected one SourceAtlas witness coverage change",
+  "cause": "Technical driver incorrectly assumed coverage uses exact/partial. Actual unchanged coverage direct/inherited is relationship locality; exact/partial remains mapping matchType. Normal SourceAtlas itself and current394 native check already passed EXIT0.",
+  "correction": "Assert all SourceAtlas witness semantics exact and independently assert exactly one mapping matchType exact to partial. No source text, normal checker, candidate mapping or goal changed to accommodate failed assertion.",
+  "independentApproval": false
+}

@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/finalize_stoff8_current_native_v2.py", line 55, in <module>
+    files=[f for f in (R/P).rglob('*') if f.is_file()];ignored=subprocess.run(['git','check-ignore','--stdin'],cwd=R,input='\n'.join(str(f.relative_to(R)) for f in files)+'\n',capture_output=True,text=True);assert ignored.returncode==1,ignored.stdout
+                                                                                                                                                                                                                      ^^^^^^^^^^^^^^^^^^^^^
+AssertionError: curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-stoffwechsel-eight-current-raster-native-technical-preparation-20261010-v2/native/portable-current-rasters/book.html
+
