@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-health-two-targeted-native-20261010-v2",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-health-twelve-two-targeted-metadata-raster-native-technical-successor-20261010-v2/native/two-targeted-current.batch.config.json",
+  "configDigest": "sha256:99e398013ab8a96c70418f18e9db2fc553f3571df2a73f3799125ac9467818d0",
+  "goalIds": [
+    "6add2bde-b647-577d-a899-6fd62497656a",
+    "a6f2bcaf-df2d-5144-aa8f-49396b12d31b"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 394,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-health-twelve-two-targeted-metadata-raster-native-technical-successor-20261010-v2/native/current394-two-targeted.normal.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-health-twelve-two-targeted-metadata-raster-native-technical-successor-20261010-v2/candidate/current479-only-two-visual-metadata.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:edc32d30fc31a2106b9a1457de1f14f400334fdaa5683a1c560a91d6fea8e82e"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:7acb11a5c4ded511c0cf6baeb6542bbe11eee463d037d67460455d54124e02aa",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:e9e226eabb03df8991050def2266df77744e97977b3fad8d128cd8eea3aec850",
+    "reviewInputFingerprint": "sha256:fbd43b6e98fc84045254fde4b3c764a4cfcd1d5ef811f5c4ddae22f66173211e",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-health-two-targeted-native-20261010-v2-a",
+        "campaignDigest": "sha256:a6d1714ff6bbba5932f61b692002130aa7b6cadb77a6a98ad3e198571626b135",
+        "roundId": "biologie-health-two-targeted-native-20261010-v2-first-pass-a",
+        "independenceGroupId": "biologie-health-two-targeted-native-20261010-v2-independent-a",
+        "batchId": "biologie-health-two-targeted-native-20261010-v2-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:b14eba6f87593f8206cc96957532a5a47b57b26215fbfa7cc984eb5e84139e44"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-health-two-targeted-native-20261010-v2-b",
+        "campaignDigest": "sha256:e2260213ea8782ab4d293fb9bc737eb92ec21dae7b7f60057d811ff8f27b156b",
+        "roundId": "biologie-health-two-targeted-native-20261010-v2-first-pass-b",
+        "independenceGroupId": "biologie-health-two-targeted-native-20261010-v2-independent-b",
+        "batchId": "biologie-health-two-targeted-native-20261010-v2-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:94af50c21cf19f7d46146123e938e37d6001a8c2341f3a7f549fd86b0d034977"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

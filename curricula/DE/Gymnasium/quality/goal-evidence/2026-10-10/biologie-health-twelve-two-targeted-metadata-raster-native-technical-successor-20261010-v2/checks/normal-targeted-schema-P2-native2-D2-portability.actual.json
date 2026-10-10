@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-10-10T17:19:52.927943+00:00",
+  "role": "Actual targeted normal schema and tool-returned validations; technical only",
+  "normalSchemaFunctions": "scripts/validate_schemas.py:validate_file/curriculum_symlink_errors",
+  "jsonFiles": 61,
+  "normalD2SchemaRecords": 2,
+  "symlinkErrors": [],
+  "toolReturnedNormalResults": {
+    "P2Materialize": {
+      "exitCode": 0,
+      "profiles": 2
+    },
+    "P2ReproduceAndEmbeddedNormalPositiveCheck": {
+      "exitCode": 0,
+      "profiles": 2
+    },
+    "normalPortableNativePrepare": {
+      "exitCode": 0,
+      "goals": 2
+    },
+    "normalPortableNativeCheck": {
+      "exitCode": 0,
+      "goals": 2
+    },
+    "normalD2CampaignValidator": {
+      "exitCode": 0,
+      "stdout": "Goal-description review campaign results valid: 2\n"
+    }
+  },
+  "humanApproval": false,
+  "strictGain": 0
+}
