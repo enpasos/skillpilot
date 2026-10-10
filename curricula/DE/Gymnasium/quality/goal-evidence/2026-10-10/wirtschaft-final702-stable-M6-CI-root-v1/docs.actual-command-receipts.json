@@ -1,0 +1,68 @@
+{
+  "phase": "docs",
+  "toolchainNodePath": "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+  "remoteGitHubCIClaim": false,
+  "results": [
+    {
+      "name": "docs:generated-status-registry",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "docs:generated-status-registry"
+      ],
+      "startedAt": "2026-10-10T18:46:27.215861+00:00",
+      "elapsedSeconds": 0.47,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/docs.01.docs-generated-status-registry.raw.txt",
+      "rawOutputSha256": "65e9ae08c8545d9b7d342fbc53947a3177012476690d2911d101842ff3a56cff"
+    },
+    {
+      "name": "check:generated-doc-notices",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:generated-doc-notices"
+      ],
+      "startedAt": "2026-10-10T18:46:27.686114+00:00",
+      "elapsedSeconds": 0.435,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/docs.02.check-generated-doc-notices.raw.txt",
+      "rawOutputSha256": "26c59b1f654b49747e87e01b207816aeef623ac48c71177f6d7a1b9ed459d2d7"
+    },
+    {
+      "name": "check:generated-status-registry",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:generated-status-registry"
+      ],
+      "startedAt": "2026-10-10T18:46:28.121655+00:00",
+      "elapsedSeconds": 0.581,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/docs.03.check-generated-status-registry.raw.txt",
+      "rawOutputSha256": "b9d70d7acf26466f4103877c96568903885fd8497ad661b72e597be4de75c626"
+    },
+    {
+      "name": "check:docs-links",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:docs-links"
+      ],
+      "startedAt": "2026-10-10T18:46:28.703197+00:00",
+      "elapsedSeconds": 0.457,
+      "exitCode": 1,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/docs.04.check-docs-links.raw.txt",
+      "rawOutputSha256": "c8c0ea19eb34bdb0cc0479d0db2a27210ee95fc878c3c7dec0437671b000678d"
+    }
+  ],
+  "phaseComplete": false
+}

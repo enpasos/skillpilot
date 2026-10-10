@@ -39,8 +39,8 @@ Dieser Report ist eine menschenlesbare Audit-Sicht auf die Memory-Review-Ledger.
 
 | Scope | View | Visible goals | Visible memory goals | Checked memory-required goals | Missing visible memory goals |
 | --- | --- | --- | --- | --- | --- |
-| de-de-gym-economics-gk.view.json | `curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json` | 689 | 10 | 66 | 0 |
-| de-de-gym-economics-lk.view.json | `curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-lk.view.json` | 682 | 10 | 66 | 0 |
+| de-de-gym-economics-gk.view.json | `curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-gk.view.json` | 688 | 10 | 66 | 0 |
+| de-de-gym-economics-lk.view.json | `curricula/DE/Gymnasium/composition-views/wirtschaft/de-de-gym-economics-lk.view.json` | 681 | 10 | 66 | 0 |
 | de-bb-gym-economics-gk.view.json | `curricula/DE/Gymnasium/composition-views/wirtschaft/de-bb-gym-economics-gk.view.json` | 216 | 5 | 31 | 0 |
 | de-bb-gym-economics-lk.view.json | `curricula/DE/Gymnasium/composition-views/wirtschaft/de-bb-gym-economics-lk.view.json` | 332 | 6 | 41 | 0 |
 | de-be-gym-economics-gk.view.json | `curricula/DE/Gymnasium/composition-views/wirtschaft/de-be-gym-economics-gk.view.json` | 257 | 8 | 29 | 0 |

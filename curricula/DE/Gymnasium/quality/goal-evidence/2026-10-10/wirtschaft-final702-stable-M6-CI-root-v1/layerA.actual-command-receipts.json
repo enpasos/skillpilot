@@ -1,0 +1,151 @@
+{
+  "phase": "layerA",
+  "toolchainNodePath": "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+  "remoteGitHubCIClaim": false,
+  "results": [
+    {
+      "name": "prepare:runtime-assets",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "prepare:runtime-assets"
+      ],
+      "startedAt": "2026-10-10T18:34:45.986703+00:00",
+      "elapsedSeconds": 10.976,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/layerA.01.prepare-runtime-assets.raw.txt",
+      "rawOutputSha256": "da4e71c6d656a8281bed9de35f3257e7ba458621e03b9d38e7492a9f7bf3cd73"
+    },
+    {
+      "name": "validate_schemas.py",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/validate_schemas.py"
+      ],
+      "startedAt": "2026-10-10T18:34:56.962759+00:00",
+      "elapsedSeconds": 81.224,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/layerA.02.validate_schemas.py.raw.txt",
+      "rawOutputSha256": "04b28db986c9bc11d051739a37c3448c6d42beb2ab325f3050ccc263f3bf73db"
+    },
+    {
+      "name": "validate_goal_ids_uuid.py",
+      "command": [
+        "python3",
+        "-B",
+        "scripts/validate_goal_ids_uuid.py"
+      ],
+      "startedAt": "2026-10-10T18:36:18.187637+00:00",
+      "elapsedSeconds": 1.573,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/layerA.03.validate_goal_ids_uuid.py.raw.txt",
+      "rawOutputSha256": "6a1204731efb1c657289194f1d041bbd330debf627f41819ff64b5349067a657"
+    },
+    {
+      "name": "curriculum-spelling",
+      "command": [
+        "node",
+        "scripts/check_curriculum_spelling.mjs"
+      ],
+      "startedAt": "2026-10-10T18:36:19.761415+00:00",
+      "elapsedSeconds": 0.096,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/layerA.04.curriculum-spelling.raw.txt",
+      "rawOutputSha256": "706e8b7abc1d901f391cb41b74993c9f322b4dc2456eafcfa4ca4ced47dfd943"
+    },
+    {
+      "name": "validate:graph",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:graph"
+      ],
+      "startedAt": "2026-10-10T18:36:19.858173+00:00",
+      "elapsedSeconds": 2.19,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/layerA.05.validate-graph.raw.txt",
+      "rawOutputSha256": "9fdd107cb87b98d8c5d227e8852ebec29c43741d2b54f6fd9ed46d116eaedfe7"
+    },
+    {
+      "name": "test:exam-markdown",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:exam-markdown"
+      ],
+      "startedAt": "2026-10-10T18:36:22.048981+00:00",
+      "elapsedSeconds": 0.609,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/layerA.06.test-exam-markdown.raw.txt",
+      "rawOutputSha256": "0789648ab9b2cc9f14fad8018ef52f0339c65dfbeb93688f64dcd0ab4ba1c091"
+    },
+    {
+      "name": "test:hard-learning-routes",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "test:hard-learning-routes"
+      ],
+      "startedAt": "2026-10-10T18:36:22.658421+00:00",
+      "elapsedSeconds": 0.359,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/layerA.07.test-hard-learning-routes.raw.txt",
+      "rawOutputSha256": "1378e961297a2d97abfc39cd33526d91903ea1999d842f939433ac70f3bd588a"
+    },
+    {
+      "name": "validate:view-filters",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:view-filters"
+      ],
+      "startedAt": "2026-10-10T18:36:23.018172+00:00",
+      "elapsedSeconds": 7.686,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/layerA.08.validate-view-filters.raw.txt",
+      "rawOutputSha256": "7e6dd738f0a1744f909ec2b65ff94033e8853dcdc759adaed09f3ef2dc74fbd2"
+    },
+    {
+      "name": "check:source-landscape-registry",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:source-landscape-registry"
+      ],
+      "startedAt": "2026-10-10T18:36:30.704242+00:00",
+      "elapsedSeconds": 0.383,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/layerA.09.check-source-landscape-registry.raw.txt",
+      "rawOutputSha256": "9f4a9ce2fc283b40c2c04ac14af9fb64db7893d7695fc82afe1488c7ebb17653"
+    },
+    {
+      "name": "validate:composition-views",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "validate:composition-views"
+      ],
+      "startedAt": "2026-10-10T18:36:31.087799+00:00",
+      "elapsedSeconds": 135.683,
+      "exitCode": 1,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/layerA.10.validate-composition-views.raw.txt",
+      "rawOutputSha256": "8dc769d4035fd15f31ab13f43f814d2e54265952973bb114aaeeb7bde0c9507b"
+    }
+  ],
+  "phaseComplete": false
+}

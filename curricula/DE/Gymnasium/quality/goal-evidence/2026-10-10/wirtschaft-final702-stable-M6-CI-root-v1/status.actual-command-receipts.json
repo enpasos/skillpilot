@@ -1,0 +1,67 @@
+{
+  "phase": "status",
+  "toolchainNodePath": "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+  "remoteGitHubCIClaim": false,
+  "results": [
+    {
+      "name": "current-five-gate-report-json",
+      "command": [
+        "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "app/scripts/reportDeepUnderstandingRollout.ts",
+        "--format=json"
+      ],
+      "startedAt": "2026-10-10T18:33:57.593895+00:00",
+      "elapsedSeconds": 76.953,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/status.01.current-five-gate-report-json.raw.txt",
+      "rawOutputSha256": "289461d9920c20005a749f2ba94eef8816a1e92b1ba23f68c0230edd149e79f7"
+    },
+    {
+      "name": "quality:curriculum-status",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:curriculum-status"
+      ],
+      "startedAt": "2026-10-10T18:35:14.547976+00:00",
+      "elapsedSeconds": 106.854,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/status.02.quality-curriculum-status.raw.txt",
+      "rawOutputSha256": "45a71b7c6acaa0d762e8428331d3fe8d9830dd0464eac0151cc81fdaa7343033"
+    },
+    {
+      "name": "quality:curriculum-status:check",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:curriculum-status:check"
+      ],
+      "startedAt": "2026-10-10T18:37:01.402392+00:00",
+      "elapsedSeconds": 100.057,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/status.03.quality-curriculum-status-check.raw.txt",
+      "rawOutputSha256": "96f88b8f602efe66e9084adbec9011f980adf487b549fae9d280e3d4ed39faee"
+    },
+    {
+      "name": "check:m6-duration-policy-readiness",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "check:m6-duration-policy-readiness"
+      ],
+      "startedAt": "2026-10-10T18:38:41.460251+00:00",
+      "elapsedSeconds": 1.308,
+      "exitCode": 1,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/status.04.check-m6-duration-policy-readiness.raw.txt",
+      "rawOutputSha256": "810d69d46b51cb57196d90527329ec3da89aaa8d7e69ef049302da7426a505a3"
+    }
+  ],
+  "phaseComplete": false
+}

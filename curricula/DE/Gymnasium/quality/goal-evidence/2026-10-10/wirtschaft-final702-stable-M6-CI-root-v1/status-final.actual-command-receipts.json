@@ -1,0 +1,38 @@
+{
+  "phase": "status-final",
+  "toolchainNodePath": "/tmp/skillpilot-checkpoint-native-node-8zpgjgml/npm-cache/_npx/185e25162edaacfb/node_modules/node/bin/node",
+  "remoteGitHubCIClaim": false,
+  "results": [
+    {
+      "name": "quality:curriculum-status",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:curriculum-status"
+      ],
+      "startedAt": "2026-10-10T18:54:50.483388+00:00",
+      "elapsedSeconds": 107.68,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/status-final.01.quality-curriculum-status.raw.txt",
+      "rawOutputSha256": "45a71b7c6acaa0d762e8428331d3fe8d9830dd0464eac0151cc81fdaa7343033"
+    },
+    {
+      "name": "quality:curriculum-status:check",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "quality:curriculum-status:check"
+      ],
+      "startedAt": "2026-10-10T18:56:38.164025+00:00",
+      "elapsedSeconds": 100.937,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/status-final.02.quality-curriculum-status-check.raw.txt",
+      "rawOutputSha256": "96f88b8f602efe66e9084adbec9011f980adf487b549fae9d280e3d4ed39faee"
+    }
+  ],
+  "phaseComplete": true
+}

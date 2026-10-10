@@ -1,0 +1,150 @@
+{
+  "role": "AUTHOR_INERT_technical_native_probe_not_independent_science",
+  "method": "Original QA module executed at virtual original module URL; only candidate exact alias source bytes, whole Source43/policy JSON read overlays and in-memory report write interception. Native functions and CLI gate predicates unchanged.",
+  "runs": [
+    {
+      "label": "negative-exact-alias-oldSource-oldPolicy",
+      "argv": [
+        "--write",
+        "--require-reviewed-subject=Wirtschaftswissenschaften",
+        "--require-reviewed-m6"
+      ],
+      "exitCode": 1,
+      "stdout": [
+        "changed docs/qa-ci/status/gymnasium-duration-model-readiness.md",
+        "M6 subjects: 10; source scopes touching Sek I: 155; all source scopes: 295"
+      ],
+      "stderr": [
+        "Wirtschaftswissenschaften has unreviewed G8/G9 duration-model source scopes:",
+        "- DE-BW SekI: open:needs-duration-review (curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_WBS_SEKI_BP2016.source-extraction.json)"
+      ],
+      "writeInterceptions": [
+        {
+          "path": "docs/qa-ci/status/gymnasium-duration-model-readiness.md",
+          "sha256": "6de475bc7d90a783ccccd8b620ebdb6466bbb70d245eabd1a6c825fdcd31efeb",
+          "bytes": 163832
+        }
+      ],
+      "reportSha256": "6de475bc7d90a783ccccd8b620ebdb6466bbb70d245eabd1a6c825fdcd31efeb"
+    },
+    {
+      "label": "negative-exact-alias-G8-rootMetadata-noPolicy",
+      "argv": [
+        "--write",
+        "--require-reviewed-subject=Wirtschaftswissenschaften",
+        "--require-reviewed-m6"
+      ],
+      "exitCode": 1,
+      "stdout": [
+        "changed docs/qa-ci/status/gymnasium-duration-model-readiness.md",
+        "M6 subjects: 10; source scopes touching Sek I: 155; all source scopes: 295"
+      ],
+      "stderr": [
+        "Wirtschaftswissenschaften has unreviewed G8/G9 duration-model source scopes:",
+        "- DE-BW SekI: open:single-duration-needs-policy (curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_WBS_SEKI_BP2016.source-extraction.json)"
+      ],
+      "writeInterceptions": [
+        {
+          "path": "docs/qa-ci/status/gymnasium-duration-model-readiness.md",
+          "sha256": "0406cb23f8aba0dc3f576a40fafeb0d825c84e55131ea1c40c7dda7bf437060a",
+          "bytes": 163841
+        }
+      ],
+      "reportSha256": "0406cb23f8aba0dc3f576a40fafeb0d825c84e55131ea1c40c7dda7bf437060a"
+    },
+    {
+      "label": "candidate-exact-alias-G8-rootMetadata-one-sourcePolicy",
+      "argv": [
+        "--write",
+        "--require-reviewed-subject=Wirtschaftswissenschaften",
+        "--require-reviewed-m6"
+      ],
+      "exitCode": 0,
+      "stdout": [
+        "changed docs/qa-ci/status/gymnasium-duration-model-readiness.md",
+        "M6 subjects: 10; source scopes touching Sek I: 155; all source scopes: 295"
+      ],
+      "stderr": [],
+      "writeInterceptions": [
+        {
+          "path": "docs/qa-ci/status/gymnasium-duration-model-readiness.md",
+          "sha256": "fe0b12e2dbe6835688aad181e29bb0bf7869977f12c33a89d8cf467180b75f27",
+          "bytes": 165274
+        }
+      ],
+      "reportSha256": "fe0b12e2dbe6835688aad181e29bb0bf7869977f12c33a89d8cf467180b75f27"
+    },
+    {
+      "label": "candidate-native-check-against-inMemory-generatedReport",
+      "argv": [
+        "--write",
+        "--require-reviewed-subject=Wirtschaftswissenschaften",
+        "--require-reviewed-m6",
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdout": [
+        "ok docs/qa-ci/status/gymnasium-duration-model-readiness.md",
+        "M6 subjects: 10; source scopes touching Sek I: 155; all source scopes: 295"
+      ],
+      "stderr": [],
+      "writeInterceptions": [],
+      "reportSha256": "fe0b12e2dbe6835688aad181e29bb0bf7869977f12c33a89d8cf467180b75f27"
+    }
+  ],
+  "actualEconomicsSourceRows": 30,
+  "actualEconomicsSourceGoalCount": 2135,
+  "actualBW43Rows": [
+    "| Wirtschaftswissenschaften | `DE-BW` | SekI | single-duration-source (G8) | G8 | - | 43 | Wirtschaft / Berufs- und Studienorientierung Sekundarstufe I (Baden-Wuerttemberg, BP2016 Source-Extraction) | `curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_WBS_SEKI_BP2016.source-extraction.json` | Edition-bound decision for this retained BP2016 WBS source only: the official Gymnasium subject plan dated 23 March 2016 took effect on 1 August 2016 for the stated incoming cohorts and specifies its content standards in the combined Klassen 8/9/10 band. The 43 unchanged extracted source goals and their existing Klassen8-10 tags are treated as legacy G8-compatible source evidence. The current ministry timetable distinguishes WBS across G8 classes 8-10 (1, 1, 2 weekly hours) from the new G9 classes 8-11 (1, 1, 1, 1); these shared hour totals do not establish equal content or year placement. This policy introduces no new duration-specific learner-facing tree and does not certify current or incoming new-G9 WBS curriculum fidelity, a class-11 placement, a G9 source extraction, or runtime/view availability. Historic G9 model-school use of BP2016 is not denied, but no reviewed G9 placement is derived from this bounded retained extraction. Current G9 source/cohort qualification remains separate. All source competencies, original passage texts, source IDs, mappings, ordinary goals and course/projection roles remain unchanged. | https://www.bildungsplaene-bw.de/site/bildungsplan-rebrush2024/get/documents/lsbw/export-pdf/depot-pdf/ALLG/BP2016BW_ALLG_GYM_WBS.pdf<br>https://km.baden-wuerttemberg.de/de/schule/gymnasium/bildungsplan-2016-faecher-und-kontingentstundentafel |"
+  ],
+  "allForeignReportRowsExact": true,
+  "activeInputGuardsBefore": [
+    {
+      "path": "app/scripts/reportGymnasiumDurationModelReadiness.ts",
+      "sha256": "020de68ff80b811c6d7d79dd67f579ddc16b2a297546da5347fd4e6a0994ce72",
+      "bytes": 40929
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_WBS_SEKI_BP2016.source-extraction.json",
+      "sha256": "5bd6d7e835772006bea291328a6e5e7f4ec172426f626b4582f516304ef65434",
+      "bytes": 108903
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json",
+      "sha256": "2b6185cd2c2f257a2410a36617f1d24b6e2e5a19bb40dcdab82d32786b0878d9",
+      "bytes": 103889
+    },
+    {
+      "path": "app/src/generated/gymnasiumDurationOfferings.ts",
+      "sha256": "4c4981f2d46cb9c5aab1c4893cd687b1a4ae186e7d745e1f064a58a02786163b",
+      "bytes": 29323
+    }
+  ],
+  "activeInputGuardsAfter": [
+    {
+      "path": "app/scripts/reportGymnasiumDurationModelReadiness.ts",
+      "sha256": "020de68ff80b811c6d7d79dd67f579ddc16b2a297546da5347fd4e6a0994ce72",
+      "bytes": 40929
+    },
+    {
+      "path": "curricula/DE/Gymnasium/input/BW/lower-secondary/source-extraction/DE_BW_WBS_SEKI_BP2016.source-extraction.json",
+      "sha256": "5bd6d7e835772006bea291328a6e5e7f4ec172426f626b4582f516304ef65434",
+      "bytes": 108903
+    },
+    {
+      "path": "curricula/DE/Gymnasium/provenance/gymnasium-duration-model-policy.json",
+      "sha256": "2b6185cd2c2f257a2410a36617f1d24b6e2e5a19bb40dcdab82d32786b0878d9",
+      "bytes": 103889
+    },
+    {
+      "path": "app/src/generated/gymnasiumDurationOfferings.ts",
+      "sha256": "4c4981f2d46cb9c5aab1c4893cd687b1a4ae186e7d745e1f064a58a02786163b",
+      "bytes": 29323
+    }
+  ],
+  "activeInputWholeByteParity": true,
+  "activeWrites": 0,
+  "actualGeneratedRuntimeOfferingsUnchanged": true,
+  "conditionalCandidatePolicyReviewedFlag": true,
+  "independentScientificApprovalClaim": false
+}
