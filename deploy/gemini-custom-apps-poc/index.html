@@ -1,0 +1,4918 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://enpasos.github.io/skillpilot/deploy/gemini-custom-apps-poc/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Gemini Custom apps: isolierter technischer PoC - SkillPilot</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#gemini-custom-apps-isolierter-technischer-poc" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SkillPilot" class="md-header__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SkillPilot
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Gemini Custom apps: isolierter technischer PoC
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="deep-purple"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SkillPilot" class="md-nav__button md-logo" aria-label="SkillPilot" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    SkillPilot
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/enpasos/skillpilot" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    enpasos/skillpilot
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../quickstart/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quickstart
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quickstart
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../quickstart/story.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../whitepaper/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Whitepaper
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Whitepaper
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.en/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    English (EN)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../whitepaper/whitepaper.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deutsch (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../concept/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Concept
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Concept
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/glossary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Glossary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/levels-of-personalization/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Levels of Personalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/curriculum-quality-and-human-trial/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum-Qualität: QS-Reifegrade und menschliche Erprobung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/portable-agent-runtime-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Architekturkonzept: Austauschbarer MCP Host
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Skill Graph
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/graph-definition/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Definition
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/general-goal-system-and-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    General Goal System And Migration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/node-types/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Node Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/view-projection-and-goal-placement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    View Projection And Goal Placement
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/source-and-resource-links/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Source And Resource Links
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/atomic-goal-visualizations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Goal Visualizations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/human-readable-source-rationales/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Human-Readable Source Rationales
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/canonical-gymnasium-rollout/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium Rollout Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/dual-curriculum-package-releases/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Releases
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/skill-graph/mem-fwu-roundtrip-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runtime Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Runtime Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/learning-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/daily-learning-progress/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tagesfortschritt
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/import-export-workflow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Import/Export Workflow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/client-state-sync/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Client-State Sync
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/provider-neutral-coach-boundary/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kommunikationsvertrag ChatClient/Backend
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/skillpilot-owned-coach-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach-Architektur (Plugin, Skill, MCP-App)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-plugin-versioning-and-lifecycle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI-Plugin: Versionierung und Lebenszyklus
+  
+
+    
+      <br>
+      <small>MCP-API, dedizierte hashgebundene MCP-Apps-UIs, Skills und Lifecycle</small>
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--Verbindliche Architekturgrundlage"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-oauth-learner-session-architecture/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OAuth-Appbindung und 24h-Lernsession
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/openai-mcp-coach-behavioral-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Verhaltensintegration des MCP-Lerncoaches
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-visible-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Visible Session Flow (Rollback)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/runtime-workflows/chatgpt-startcode-session-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT Startcode Session Flow (Legacy)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Didactic
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Didactic
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/unified-learning-plan-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Einheitlicher Lernplanstatus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/feynman-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Feynman Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/learning-velocity/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Velocity
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../concept/didactic/frontier-goal-selection-strategies-autopilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autopilot & Frontier Goal Selection Strategies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../production-pipelines/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Production Pipelines
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Production Pipelines
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skill-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/curriculum-package-provisioning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Provisioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/skillpilot-subject-export-package/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Subject Export Package
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/mem-fwu-roundtrip/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM/FWU Roundtrip Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/exam-example/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Exam Example
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../production-pipelines/seki-math-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sek-I Mathematics Exam
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../qa-ci/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    QA & CI
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    QA & CI
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/ci/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Quality
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Curriculum Quality
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-maturity-and-routes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reifegrade, QA-Scopes und CQR-Regeln
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-quality-dashboard/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dashboard Status Layer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-mapping-workbench/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Mapping Workbench
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-readiness/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-release-model-conformance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Release Model Conformance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/dual-curriculum-release-contracts/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Release Contracts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/curriculum-quality-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Current Status Snapshot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Review Lanes
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Review Lanes
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/graph-validation-rules/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Validation Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/relation-checks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Relation Checks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/atomic-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Atomic Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/requires-review-process/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Requires Review Process
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/semantic-atomicity-review/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Semantic Atomicity Review
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/curriculum-package-human-review-gates/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Package Human Review Gates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Audit
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/mem-sparql-consistency-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MEM SPARQL Consistency Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/goal-source-rationales-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Goal Source Rationales Runbook
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champions
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Champions
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/champion-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Champion Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/four-level-champion-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Four-level Champion Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/abi26-mathe-deeplink-mvp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Abi 2026 Mathe Deeplink MVP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../qa-ci/status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Generated Status Artifacts
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deploy
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deploy
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openai-mcp-coach-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ChatGPT-App „SkillPilot Coach v1“
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openai-plugin-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coach DE v1: Release, Rollback, Stilllegung
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openai-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot ChatGPT Experimental Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gemini-integration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gemini Integration (Controlled Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-coach-beta/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Coach (Paused Beta)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-connector-v1-user-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-connector-v1-user-guide.de/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector (DE)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-connector-v1-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Connector v1 Release
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-personal-marketplace-release/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SkillPilot Claude Personal Marketplace
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../claude-support-readiness-runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Claude Marketplace Support Readiness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../security/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Security
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/data-privacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Privacy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../security/openai-mcp-client-binding/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OpenAI MCP Client Binding
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../legal/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Legal
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Legal
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../legal/ki-verordnung-compliance-stand-2026-07-29/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    KI-Verordnung Compliance Stand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../dev/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dev
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Dev
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/documentation-guidelines/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Documentation Guidelines
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/landscape-json-field-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Landscape JSON Field Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/skill-graph-minimal-schema-runtime-fallback-and-math-pilot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skill Graph Minimal Schema, Runtime Fallback, And Math Pilot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_5" id="__nav_10_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Editors
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Editors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/curriculum-authoring-editors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Curriculum Authoring Editors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/graph-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Graph Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/flashcard-editor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Flashcard Editor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/my-goals-node-ordering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Meine Lernziele Node Ordering (Design)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_6" id="__nav_10_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Platform
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Platform
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/liquibase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database (Liquibase)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/auto-update/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Auto-Update
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_10_7" id="__nav_10_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Canonical Gymnasium
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_10_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Canonical Gymnasium
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-implementation-plan/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Implementation Plan
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-math-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Math Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-physics-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physics Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/canonical-gymnasium-chemistry-bundeslaender-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chemistry Bundeslaender Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev/dual-curriculum-package-implementation-status/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dual Curriculum Package Implementation Status
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#ergebnis-und-ziel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Ergebnis und Ziel
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dokumentierte-voraussetzungen-und-offene-hypothesen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Dokumentierte Voraussetzungen und offene Hypothesen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#umfang-des-canary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Umfang des Canary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arbeitsfolge-und-entscheidungsgrenzen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arbeitsfolge und Entscheidungsgrenzen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acceptance-matrix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Acceptance-Matrix
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#historischer-befund-der-verfugbaren-umgebung-am-5-oktober-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Historischer Befund der verfügbaren Umgebung am 5. Oktober 2026
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nachweisfuhrung" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nachweisführung
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Nachweisführung">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#browserubergabe-am-6-oktober-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Browserübergabe am 6. Oktober 2026
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#us-route-und-nutzbare-custom-app-eingabe-am-6-oktober-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        US-Route und nutzbare Custom-app-Eingabe am 6. Oktober 2026
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tatsachliche-gemini-verbindung-und-erster-chatversuch-am-6-oktober-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tatsächliche Gemini-Verbindung und erster Chatversuch am 6. Oktober 2026
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="gemini-custom-apps-isolierter-technischer-poc">Gemini Custom apps: isolierter technischer PoC</h1>
+<p>Stand: <strong>6. Oktober 2026</strong>. Auftrag:
+<a href="https://github.com/enpasos/skillpilot/issues/70">Issue #70</a> und der ausdrückliche
+Wunsch des Product Owners, den PoC selbstständig zu planen und umzusetzen.
+Diese technische Betriebsdokumentation fällt gemäß <a href="https://github.com/enpasos/skillpilot/blob/main/LICENSING.md">LICENSING.md</a>
+unter <strong>Apache-2.0</strong>.</p>
+<h2 id="ergebnis-und-ziel">Ergebnis und Ziel</h2>
+<p><strong>Der technische MCP-Durchstich funktioniert; die Fortsetzung in einem neuen
+Chat ist noch nicht zuverlässig nachgewiesen. Die PoC-Bewertung ist abgeschlossen.</strong> Der PoC unter
+<a href="https://github.com/enpasos/skillpilot/tree/main/ai/gemini/poc"><code>ai/gemini/poc</code></a> enthält einen kleinen, getrennten
+MCP-Canary. Er soll feststellen, ob die normale Gemini-Web-App einen eigenen
+MCP-Server verbinden, seine Werkzeuge erkennen und eine bestätigte synthetische
+Schreibaktion ausführen kann. Lokale Protokolltests beantworten diese
+Hostfrage nicht. Am <strong>6. Oktober 2026</strong> funktionierten im angemeldeten,
+englischen Gemini-Consumer-Web-Testbrowser über den gemessenen US-Netzwerkweg
+die erste OAuth-Verbindung und native MCP-Werkzeug-Discovery. Die drei
+Werkzeugnamen waren im Save-custom-app-Dialog sichtbar; die App wurde als
+<strong>SkillPilot PoC</strong> gespeichert. Der erste Chat-Leseversuch scheiterte mit
+Tokenantwort <strong>400</strong> und MCP-Antwort <strong>401</strong>, bevor ein <code>tools/call</code> ankam.
+Ein Reconnect zeigte einen Refresh-Request ohne erforderliches <code>resource</code>;
+die ausdrücklich aktivierte Korrektur bestand anschließend den Host-Retest.
+Status/Context und eine passende Modellantwort waren erfolgreich, eine
+abgelehnte Schreibfreigabe ließ den Zustand unverändert. An der neuen gültigen
+Origin bestand anschließend auch eine manuell bestätigte Schreibaktion samt
+Persistenznachweis: Zustand <strong>0 → 1</strong>. Ein tatsächlicher Replay behielt
+Zustand 1 und den identischen Receipt. Der erste Versuch in einem neuen Chat
+meldete hingegen bei gültiger Origin und erfolgreicher nativer Discovery
+Werkzeug-Nichtverfügbarkeit ohne <code>tools/call</code>; der erneute Versuch scheiterte
+ebenfalls vor einem Tool-Aufruf. Die Ursache ist unbestätigt. Frühere Versuche
+gegen eine ungültig gewordene
+Tunneladresse sind <strong>TRANSPORT_CONFOUNDED</strong>, kein Nachweis eines Gemini-Fehlers.
+Ein vollständiger Lernfluss und Beta-Reife sind damit nicht nachgewiesen.</p>
+<p>Der erste Nachweis verwendet ausschließlich Testzustand. Er ist kein
+SkillPilot-Lernablauf, speichert keine reale Mastery und verwendet weder Gemini
+API noch Gemini CLI. Ein neuer Kurs und die öffentliche Beta folgen erst nach
+den vorgelagerten technischen Nachweisen. Ausführungsbefehle und die genaue
+Konfiguration stehen im Runbook des PoC-Verzeichnisses.</p>
+<h2 id="dokumentierte-voraussetzungen-und-offene-hypothesen">Dokumentierte Voraussetzungen und offene Hypothesen</h2>
+<p>Google nennt für Custom apps: USA, mindestens 18 Jahre, persönliches Konto,
+Englisch und aktives Keep Activity. Einrichtung: Web-App → Connected Apps →
+Custom apps → MCP-URL; ohne DCR ist die Eingabe von Credentials unter Advanced
+features vorgesehen. <code>@</code> wählt die App gezielt. Schreibaktionen verlangen
+manuelle Bestätigung. Die Consumer-Hilfe nennt keine genaue Callback-URL,
+Clientauthentifizierung oder MCP-Revision. Diese Parameter sind zu messen.
+<a href="https://support.google.com/gemini/answer/17209137?hl=en">Google: Custom apps</a></p>
+<p>Der eigene US-Testweg wurde am <strong>6. Oktober 2026</strong> im bestehenden angemeldeten
+Browser mit nutzbarer Custom-app-URL-Eingabe beobachtet. Die Meldung des
+Maintainers, Mullvad gestartet zu haben, und die gemessene US-Netzwerkroute sind
+getrennte Befunde. Eine US-IP allein beweist weder Kontoberechtigung noch
+Freischaltung; die Einrichtung wurde deshalb zusätzlich in der UI geprüft.
+Die geprüften Quellen belegen keine
+spezielle Google-Freigabe dieses Entwicklungswegs. Anbieterbedingungen und
+tatsächlich angezeigte Hinweise bleiben ein eigenständiger Prüfpunkt; daraus
+werden keine Konto-, Standort- oder Providerentscheidungen abgeleitet.
+<a href="https://policies.google.com/terms?hl=en-US">Google Terms of Service</a></p>
+<p>Skills lassen sich als <code>SKILL.md</code> beziehungsweise ZIP mit dieser Datei im
+Hauptverzeichnis importieren. Namen verwenden Kleinbuchstaben und Bindestriche.
+Dateiänderungen erfordern einen Reupload; Skill-Scripts dürfen keine externen
+Webanfragen ausführen. Ein Skill ersetzt deshalb die MCP-Verbindung nicht.
+<a href="https://support.google.com/gemini/answer/17094296?hl=en">Google: Skills</a></p>
+<p>Für einen geschützten HTTP-PoC dient der MCP-Standard als technische Grundlage:
+Resource- und Authorization-Server-Metadaten, S256 PKCE, exakte Redirect-Bindung,
+resource/Audience-Bindung und Bearer-Prüfung pro Anfrage. Refresh und Widerruf
+sind gesondert zu prüfen. DCR ist im aktuellen Standard für Kompatibilität
+erhalten; daraus folgt keine bestätigte Gemini-CIMD-Unterstützung.
+<a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/authorization">MCP Authorization, 2026-07-28</a></p>
+<p>Die lokale Implementation muss ihre tatsächlich unterstützte Protokollrevision
+ausweisen. Der tatsächliche Gemini-Trace vom 6. Oktober bestätigt native
+Streamable-HTTP-Discovery und Chat-Werkzeugaufrufe mit <strong>2025-11-25</strong>.
+Die zuverlässige Wiederaufnahme in einem neuen Chat bleibt gesondert zu prüfen.
+Technische Beschreibungen
+von Gemini Enterprise, API oder CLI belegen keine Eigenschaften der normalen
+Gemini-Web-App. <a href="https://modelcontextprotocol.io/specification/2026-07-28/basic/transports">MCP Transports</a></p>
+<h2 id="umfang-des-canary">Umfang des Canary</h2>
+<p>Der Canary besitzt genau drei fachlich kleine Werkzeugrollen:</p>
+<table>
+<thead>
+<tr>
+<th>Werkzeugrolle</th>
+<th>Zweck</th>
+<th>Zustandswirkung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Status</td>
+<td>Build-/PoC-Identität und eine korrelierbare Antwort prüfen</td>
+<td>Keine</td>
+</tr>
+<tr>
+<td>Context</td>
+<td>Den ausschließlich synthetischen Testkontext lesen</td>
+<td>Keine</td>
+</tr>
+<tr>
+<td>Completion</td>
+<td>Einen synthetischen Abschluss nachvollziehbar speichern</td>
+<td>Schreibend; echte Hostbestätigung zu testen</td>
+</tr>
+</tbody>
+</table>
+<p>Das Completion-Werkzeug bleibt in MCP ausdrücklich schreibend deklariert. Ein
+erfolgreicher HTTP-Aufruf oder eine Chatbehauptung reicht als Speichernachweis
+nicht: Der geprüfte Testzustand muss sich genau wie vorgesehen ändern. Eine
+abgelehnte Hostfreigabe darf ihn nicht ändern. Wiederholte Aufrufe dürfen keine
+zweite Buchung erzeugen.</p>
+<p>Der Prozess besitzt eine eigene Gemini-Testbindung und arbeitet außerhalb der
+bestehenden Providerendpunkte. OAuth-App-Zugang und die synthetische
+Testsession bleiben getrennt. Weder produktive Lernendenkennungen noch echte
+Lernstände gehören in diesen Durchstich. Die vorhandenen OpenAI-/Claude-
+Authentifizierungs- und Sessiongrenzen werden dafür nicht geändert.</p>
+<p>Der Canary ist noch kein vollständiger Backendadapter. Eine synthetische
+Completion beweist weder didaktische Evidenzbewertung noch reale Mastery,
+Lernsession-Fortsetzung oder den SkillPilot-Coach. Diese Nachweise sind Teil
+des späteren gemeinsamen Backendadapters.</p>
+<h2 id="arbeitsfolge-und-entscheidungsgrenzen">Arbeitsfolge und Entscheidungsgrenzen</h2>
+<ol>
+<li><strong>Eigener interaktiver Zugang.</strong> Der Maintainer prüft mit seinem persönlichen
+   Testkonto die tatsächliche Custom-apps-Einrichtung zunächst ohne VPN und
+   anschließend, sofern ein eigener US-VPN-Zugang vorhanden ist, im vorgesehenen
+   US-Testkontext. Ein neuer Login beziehungsweise eine neue Browsersitzung
+   prüft Reproduzierbarkeit. Konto-/Spracheinstellungen und Keep Activity werden
+   als Voraussetzungen betrachtet; der PoC verändert sie nicht automatisch.</li>
+<li><strong>Canary in der normalen Gemini-Web-App.</strong> Erst bei sichtbarer Einrichtung
+   werden der getrennte Testserver verbunden, Discovery und Status/Context
+   korreliert und die synthetische Completion einschließlich Ablehnung,
+   Wiederholung und anschließender Zustandsprüfung getestet. Die tatsächlich
+   angeforderten OAuth-Parameter werden bereinigt erfasst. Unbekannte Parameter
+   werden nicht durch das Lockern vorhandener Providergrenzen akzeptiert.</li>
+<li><strong>Gemeinsamer Backendadapter.</strong> Erst nach erfolgreichem Canary wird die
+   vorhandene SkillPilot-Fachlogik über einen getrennten Gemini-Providerzugang
+   angebunden. Dann folgen echte Testlernstände, Verständnisnachweis,
+   bestätigte Speicherung, neuer Chat, Sessionablauf, Erneuerung und Widerruf.</li>
+<li><strong>Demonstrator und Beta.</strong> Erst nach dem vollständigen Lernfluss folgen ein
+   begrenzter englischer Demonstrator, Sicherheitsprüfung, US-Onboarding ohne
+   VPN und der zusätzliche Test eines berechtigten US-Nutzers. Ein externer
+   US-Test ersetzt den eigenen Maintainer-Test nicht. Veröffentlichung bleibt
+   eine getrennte Operation.</li>
+</ol>
+<p>Fehlende UI-Freischaltung wird als Zugangsbefund erfasst. Sie ist kein
+SkillPilot-Serverfehler und wird nicht mit einer API-Demo übergangen. Ein
+bestätigter Canary ermöglicht die Arbeit am Backendadapter; er gibt noch
+keine vollständige Lernintegration oder Beta frei.</p>
+<h2 id="acceptance-matrix">Acceptance-Matrix</h2>
+<p><code>NOT_RUN</code> bedeutet: kein tatsächlicher Hosttest durchgeführt. <code>PASS</code> erfordert
+den Nachweis der jeweiligen Zeile. <code>FAIL_OBSERVED</code> bezeichnet einen tatsächlich
+gescheiterten Versuch und behauptet noch keine Ursache.
+<code>TRANSPORT_CONFOUNDED</code> bedeutet, dass eine ungültige Tunneladresse die
+Hostbewertung verhindert. <code>FAIL_OBSERVED_CHAT_DISPATCH</code> erfasst eine
+Modell-Nichtverfügbarkeit ohne Tool-Aufruf bei erfolgreicher nativer Verbindung;
+die Ursache bleibt unbestätigt. Lokale Tests besitzen eine eigene Bewertung und
+setzen niemals eine Hostzeile auf <code>PASS</code>.</p>
+<table>
+<thead>
+<tr>
+<th>Ebene</th>
+<th>Prüfung</th>
+<th>Erforderlicher Nachweis</th>
+<th>Status am 05.10.2026 (historisch)</th>
+<th>Status am 06.10.2026</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Hostzugang</td>
+<td>Persönliches Testkonto ohne VPN</td>
+<td>Angemeldete UI und tatsächliche Sichtbarkeit der Custom-apps-Einrichtung</td>
+<td>NOT_RUN</td>
+<td>NOT_RUN; im DE-Kontext nur Überschrift beobachtet</td>
+</tr>
+<tr>
+<td>Hostzugang</td>
+<td>Eigener US-VPN-Testweg</td>
+<td>Derselbe Kontokontext, geprüfter Ausgang und tatsächlich nutzbare Einrichtung</td>
+<td>NOT_RUN</td>
+<td>PASS: US-Route und URL-Eingabe beobachtet; Mullvad owner-reported</td>
+</tr>
+<tr>
+<td>Hostzugang</td>
+<td>Reproduzierbarkeit</td>
+<td>Erneuter Login/neue Browsersitzung mit gleichem Ergebnis</td>
+<td>NOT_RUN</td>
+<td>NOT_RUN</td>
+</tr>
+<tr>
+<td>Canary/Host</td>
+<td>Erste Verbindung und OAuth</td>
+<td>Korrelierter Discovery-/Autorisierungs-/Tokenablauf mit realem Gemini</td>
+<td>NOT_RUN</td>
+<td>PASS: <code>/token</code> 200 um 00:23:52 UTC; kein Nachweis dauerhafter Tokenfunktion</td>
+</tr>
+<tr>
+<td>Canary/Host</td>
+<td>Werkzeug-Discovery</td>
+<td>Native <code>initialize</code>/<code>tools/list</code> und drei Werkzeugnamen im tatsächlichen Hostdialog</td>
+<td>NOT_RUN</td>
+<td>PASS: 00:23:53–54 UTC, Revision 2025-11-25; App gespeichert</td>
+</tr>
+<tr>
+<td>Canary/Host</td>
+<td>Read im Chat</td>
+<td>Status/Context liefern korrelierte Serverantworten</td>
+<td>NOT_RUN</td>
+<td>PASS: 00:31:35–36 UTC, Zustand 0 und passende Modellantwort; ursprünglicher Fehler separat dokumentiert</td>
+</tr>
+<tr>
+<td>Canary/Host</td>
+<td>Refresh</td>
+<td>Korrelierter Refresh-Grant mit unveränderter Resource-/Client-Bindung</td>
+<td>NOT_RUN</td>
+<td>PASS: 00:31:16 UTC mit expliziter Omission-Option; strikter Ausgangsversuch scheiterte</td>
+</tr>
+<tr>
+<td>Canary/Host</td>
+<td>Bestätigte Completion</td>
+<td>Gemini zeigt Schreibfreigabe; nach Zustimmung ändert sich ausschließlich der Testzustand</td>
+<td>NOT_RUN</td>
+<td>PASS: Allow 00:44:30 UTC, Completion 00:44:33.823 UTC mit Zustand 1; frischer Store-/Disk-Nachweis 00:44:51 UTC</td>
+</tr>
+<tr>
+<td>Canary/Host</td>
+<td>Abgelehnte Completion</td>
+<td>Ablehnung ohne Completion-Buchung</td>
+<td>NOT_RUN</td>
+<td>PASS: 00:32:26 UTC, UI-Ablehnung und Zustand 0 → 0; kein Completion-Aufruf</td>
+</tr>
+<tr>
+<td>Canary/Host</td>
+<td>Frische App/Pro-Modell</td>
+<td>Gültige Testadresse und korrelierter Read im neuen Einrichtungskontext</td>
+<td>NOT_RUN</td>
+<td>PASS an neuer Origin: Status/Context 00:43:35–47 UTC; vorherige alte-URL-Versuche TRANSPORT_CONFOUNDED</td>
+</tr>
+<tr>
+<td>Canary/Host</td>
+<td>Wiederholung</td>
+<td>Kein doppelter Abschluss; identischer Receipt beim tatsächlichen Replay</td>
+<td>NOT_RUN</td>
+<td>PASS: Allow 00:45:43 UTC, Completion 00:45:47.233 UTC mit Zustand 1; identischer Disk-Receipt 00:45:48.695 UTC</td>
+</tr>
+<tr>
+<td>Canary/Host</td>
+<td>Unterbrochener Write</td>
+<td>Definierter Zustand nach Unterbrechung eines tatsächlichen Schreibaufrufs</td>
+<td>NOT_RUN</td>
+<td>NOT_RUN</td>
+</tr>
+<tr>
+<td>Canary/Host</td>
+<td>Neuer Chat</td>
+<td>Synthetischen gespeicherten Testzustand erneut über die verbundene App lesen</td>
+<td>NOT_RUN</td>
+<td>FAIL_OBSERVED_CHAT_DISPATCH: 00:46:23–25 und 00:48:35–36 UTC, native Discovery 200, Modellfehler und kein <code>tools/call</code>; Ursache unbestätigt</td>
+</tr>
+<tr>
+<td>Adapter/Host, später</td>
+<td>Vollständiger Lernfluss</td>
+<td>Verständnisnachweis und tatsächliche SkillPilot-Testmastery samt Session-Fortsetzung</td>
+<td>NOT_RUN</td>
+<td>NOT_RUN</td>
+</tr>
+<tr>
+<td>Adapter/Host, später</td>
+<td>Session-/Tokenlebenszyklus</td>
+<td>Tatsächliche Erneuerung, Widerruf und vorgesehene Sessionwiederherstellung</td>
+<td>NOT_RUN</td>
+<td>NOT_RUN</td>
+</tr>
+<tr>
+<td>Beta, später</td>
+<td>Frisches US-Onboarding</td>
+<td>Berechtigter US-Nutzer verbindet und lernt ohne VPN anhand der Anleitung</td>
+<td>NOT_RUN</td>
+<td>NOT_RUN</td>
+</tr>
+</tbody>
+</table>
+<p>Die zugehörigen lokalen Prüffelder sind: Discovery/Transport, gültiger
+OAuth-Ablauf, abgewiesene falsche Credentials/Redirects/Audience/PKCE,
+Testsession-Isolation, tatsächliche synthetische Persistenz und idempotente
+Wiederholung. <strong>Aktuelle lokale Ergebnisse am 6. Oktober: PASS — 36/36 Tests</strong>,
+ausgeführt mit Node 22.22.0 und MCP
+SDK 1.30.0; am 5. Oktober waren es <strong>27 Tests</strong>. Darunter: acht gleichzeitige
+identische Writes mit genau einem Receipt, Wiederherstellung aus der Datei nach App-/Store-Neustart,
+24-Stunden-Expiry und die exakte Ein-Stunden-Grenze, zusätzlicher Freitext,
+abgewiesene große/ungültige JSON-Inputs und ein real blockierter Disk-Commit
+ohne falschen Erfolg. Fünf Proxytests belegen die Sperre des Operatorzugangs.</p>
+<p>Der automatisierte lokale und der automatisierte öffentliche HTTPS-Durchstich
+vom <strong>5. Oktober 2026</strong> haben <strong>PASS_LOCAL_ONLY</strong> beziehungsweise
+<strong>PASS_HTTPS_ONLY</strong>: Consent, S256,
+Tokenaustausch, MCP-Discovery, unabhängige Testsession, tatsächlich gespeicherter
+Marker, exakter Replay und nachfolgender Read waren erfolgreich. Beide Reports
+tragen ausdrücklich <code>actualGeminiHost: false</code>. Der öffentliche Proxy antwortet
+auf <code>/operator/sessions</code> mit 404. Die tatsächliche Gemini-OAuth-/Discovery-
+Verbindung vom 6. Oktober ist separat belegt. Der ursprüngliche Chat-Lesefehler
+wurde nach der begrenzten Refresh-Korrektur durch erfolgreiche echte Reads
+abgelöst. Der aktuelle lokale Smoke vom <strong>6. Oktober, 00:34:08 UTC</strong> ist
+<strong>PASS_LOCAL_ONLY</strong>, weiterhin <code>actualGeminiHost: false</code>. Lokale und
+automatisierte HTTPS-Writes belegen weder Gemini-Schreibfreigabe noch
+Gemini-Persistenz.</p>
+<p>Die temporäre HTTPS-Testadresse und Start-/Stoppbefehle stehen im
+<a href="https://github.com/enpasos/skillpilot/blob/main/ai/gemini/poc/README.md">PoC-Runbook</a>. Der Loopback-Callback dient
+ausschließlich dem automatisierten Test. Die tatsächliche Google-Callback-URI
+ist exakt und ausschließlich privat gepinnt: Ihr Ursprung ist
+<code>https://oauth-redirect.googleusercontent.com</code>, ihr <code>user_bound_custom-mcp</code>-
+Pfad enthält eine Kontokennung und wird deshalb nicht veröffentlicht.
+Ein fester dauerhafter Hostname ist für den PoC nicht erforderlich. Die
+temporäre HTTPS-Origin samt OAuth-Issuer/Ressource und die Callback-Bindung
+müssen innerhalb eines Testfensters stabil bleiben; ein Tunnelwechsel verlangt
+Neukonfiguration und erneute Verbindung der Custom app. Tunnel-Erreichbarkeit
+ist kein US-VPN-Zugang. Historische OpenAI-Artefakte bestehen den Review-History-Checker;
+17 bestehende OAuth-CI-/Release-Evidenztests bestehen ebenfalls. Produktive
+Providerdateien wurden nicht geändert.</p>
+<p>Der bereinigte <a href="../gemini-custom-apps-poc-evidence-2026-10-05.json">Nachweis mit Quellhashes</a>
+bindet diese Ergebnisse an den getesteten lokalen PoC-Stand und das
+reproduzierbare Skill-Archiv. Er enthält keine privaten State-Dateien,
+Credentials oder Chatinhalte.</p>
+<h2 id="historischer-befund-der-verfugbaren-umgebung-am-5-oktober-2026">Historischer Befund der verfügbaren Umgebung am 5. Oktober 2026</h2>
+<p>Read-only geprüft am <strong>5. Oktober 2026, etwa 21:15 MESZ</strong>:</p>
+<ul>
+<li>Eine Netzwerk-Geoprobe meldete <strong>Deutschland/Hessen</strong>. Es wurde kein
+  US-Netzwerktest durchgeführt.</li>
+<li>In den geprüften Pfaden und Prozessen wurde kein nutzbarer VPN-Zugang
+  beziehungsweise keine VPN-Konfiguration gefunden.</li>
+<li>Ein ausführbarer Chromium ist im Playwright-Cache vorhanden. Es wurde kein
+  angemeldetes persönliches Google-Testprofil gefunden; das vorhandene
+  <code>google-chrome-for-testing</code>-Konfigurationsverzeichnis enthielt nur Crash Reports.</li>
+<li>Eine echte Chromium-Navigation mit temporärem, abgemeldetem Profil zu
+  <code>https://gemini.google.com/app</code> lud mit Titel <strong>Google Gemini</strong> und sichtbarem
+  <strong>Sign in</strong>. Custom apps wurden darin nicht nachgewiesen; es gab keine
+  Browserfehlerseite.</li>
+<li>Ein öffentlicher, unauthentifizierter HTTP-Aufruf derselben Seite war
+  erfolgreich. Das belegt Seitenzugriff, keine Kontofreischaltung.</li>
+</ul>
+<p>Der angemeldete DE-/US-VPN-Vergleich war zu diesem Zeitpunkt deshalb
+<strong>NOT_RUN</strong>. Es fehlte ein nutzbarer eigener interaktiver Kontozugang samt
+US-Testnetzwerk. Daraus folgt
+kein Urteil über die Berechtigung des Maintainer-Kontos, keine Behauptung, dass
+Custom apps für dieses Konto gesperrt seien, und keine bestätigte oder
+widerlegte Gemini-Kompatibilität des Canary.</p>
+<p>Die anschließende Zugangsprüfung bezog auch den Windows-Host ein: Ein Edge-
+Executable ist vorhanden, lässt sich aus dieser Umgebung aber nicht starten
+(<code>Exec format error</code>, keine nutzbare Windows-Interop). Die üblichen Browser-
+Debug-Endpunkte auf 9222/9223 waren weder auf Loopback noch am Host-Gateway
+erreichbar. Es wurden keine Cookies, Passwörter oder Browserprofilinhalte
+ausgelesen. Ein eventuell vorhandenes angemeldetes Windows-Konto bleibt damit
+unzugänglich; seine Berechtigung und eine mögliche Windows-VPN-Konfiguration
+sind weiterhin nicht beurteilt. Der erneute öffentliche Health-/Metadaten-
+Check des vorbereiteten Testservers war erfolgreich. Die unabhängige Code-
+und Runbook-Prüfung fand keine konkrete weitere Implementierungslücke, die
+ohne tatsächlichen Gemini-Trace eine zusätzliche Änderung rechtfertigt.</p>
+<h2 id="nachweisfuhrung">Nachweisführung</h2>
+<h3 id="browserubergabe-am-6-oktober-2026">Browserübergabe am 6. Oktober 2026</h3>
+<p>Auf die Nachfrage zur Auflösung der Blockierung wurde ein zusätzlicher
+nutzbarer Weg gefunden: WSLg ist verfügbar. Ein separates sichtbares Chromium-
+Testfenster wurde mit einem eigenen Profil unter dem ignorierten
+<code>tmp/gemini-poc/browser-profile/</code> und ausschließlich lokalem Debug-Port 9222
+geöffnet. Die Browsersteuerung über diesen Port ist tatsächlich bestätigt.
+Windows-Interop ist für diesen Weg nicht erforderlich. Eine Google-Anmeldung
+oder US-Verfügbarkeit wird dadurch noch nicht behauptet.</p>
+<p>Der Maintainer übernimmt die persönliche Anmeldung einschließlich einer
+eventuellen Mehrfaktorprüfung direkt im Fenster. Passwörter und Tokens gehören
+nicht in den Chat. Nach der Anmeldung lässt sich zunächst die DE-Baseline
+prüfen, anschließend mit dem vom Maintainer verbundenen US-VPN der gleiche
+Browser erneut. Die anschließenden Prüfungen des tatsächlichen Netzzugangs und
+der Custom-apps-Sichtbarkeit sind unten dokumentiert.</p>
+<p>Anschließend meldete der Maintainer die abgeschlossene Anmeldung. Im tatsächlich
+steuerbaren Browser waren Gemini-Einstellungen und die Seite Connected Apps
+zugänglich. <code>hl=en</code> an der Gemini-URL stellte die UI auf Englisch um;
+<code>html lang="en"</code> und der sichtbare Settings-Button wurden geprüft. Damit wurde
+keine globale Google-Kontosprache verändert. Auf der Connected-Apps-Seite ist
+die Überschrift Custom apps sichtbar. Zu diesem Zeitpunkt war die nutzbare
+Einrichtung noch nicht getestet; die Netzwerkprobe des Workspace meldete DE.</p>
+<h3 id="us-route-und-nutzbare-custom-app-eingabe-am-6-oktober-2026">US-Route und nutzbare Custom-app-Eingabe am 6. Oktober 2026</h3>
+<p>Der Maintainer meldete anschließend, Mullvad VPN gestartet zu haben. Im selben
+angemeldeten Linux-Chromium über CDP auf Loopback-Port 9222 meldete eine
+HTTPS-Cloudflare-Geoprobe <strong>US</strong>. Eine unabhängige Netzwerkprobe aus der Shell
+meldete ebenfalls <strong>US</strong>. Diese Messungen belegen den US-Netzwerkweg;
+der verwendete VPN-Anbieter ist owner-reported.</p>
+<p>Nach erneutem Laden von <code>https://gemini.google.com/apps?hl=en</code> und Anklicken
+des Chips <strong>Custom apps</strong> zeigte die englische UI ein tatsächliches
+<code>INPUT</code> mit <code>aria-label="Add a custom app link to get started"</code>,
+<code>placeholder="https://your-app-link.com/mcp"</code> sowie einen <strong>Next</strong>-Button.
+<code>html lang="en"</code> war bestätigt. Damit ist die nutzbare Custom-app-URL-Eingabe
+im bestehenden angemeldeten US-Testkontext beobachtet. Ein neuer Login oder
+eine neue Browsersitzung wurde für diesen Nachweis nicht durchgeführt.
+Nach <strong>Next</strong> erschien außerdem der Dialog <strong>Connect to an MCP server</strong> mit
+<strong>Additional settings</strong> und <strong>Show more</strong>. Das ist ein weiterer
+Einrichtungsbefund, noch kein tatsächlicher OAuth-Ablauf.</p>
+<p>Dieser UI-Befund lag vor der späteren OAuth-/Discovery-Verbindung. Die
+Eingabemaske allein beweist keine Gemini-Kompatibilität des Canary.</p>
+<p>Bei der Wiederherstellung des temporären öffentlichen HTTPS-Testwegs antwortete
+die alte Quick-Tunnel-Adresse mit <strong>HTTP 530</strong>. Auch ein neu gestarteter
+Quick Tunnel lieferte <strong>530</strong>; seine erforderliche Transportprüfung über Port
+7844 hatte noch kein <code>PASS</code>. Dies ist ein temporärer Tunnel-/Transportbefund,
+kein Gemini-Verbindungs- oder OAuth-Ergebnis. Anschließend wurde der öffentliche
+Testweg über einen temporären anonymen localhost.run-SSH-Tunnel auf Port 22
+wiederhergestellt: Health antwortete mit <strong>200</strong>, <code>/operator/sessions</code> mit
+<strong>404</strong>. Der vollständige automatisierte HTTPS-Durchstich vom
+<strong>6. Oktober 2026, 00:05:06.291 UTC</strong> erreichte <strong>PASS_HTTPS_ONLY</strong> mit
+MCP-Revision <code>2025-11-25</code>, synthetischem Zustandswechsel <code>0 → 1</code> und exaktem
+idempotentem Replay. Der Report trägt <code>actualGeminiHost: false</code>; er ist kein
+Gemini-Hosttest. Die historischen automatisierten HTTPS-Ergebnisse vom
+5. Oktober bleiben erhalten.</p>
+<h3 id="tatsachliche-gemini-verbindung-und-erster-chatversuch-am-6-oktober-2026">Tatsächliche Gemini-Verbindung und erster Chatversuch am 6. Oktober 2026</h3>
+<p>Die folgenden Beobachtungen stammen aus der normalen angemeldeten,
+englischen Gemini-Consumer-Web-App im bestehenden US-Testkontext, nicht aus
+dem automatisierten MCP-Client:</p>
+<ul>
+<li><strong>00:23:52 UTC:</strong> Gemini authentifizierte sich mit dem explizit gewählten
+  <code>client_secret_post</code>-Profil; <code>/token</code> antwortete <strong>200</strong>.</li>
+<li><strong>00:23:53–54 UTC:</strong> Native MCP-Anfragen für <code>initialize</code>,
+  <code>notifications/initialized</code> und <code>tools/list</code> waren erfolgreich;
+  die Protokollrevision war <strong>2025-11-25</strong>. Der Save-custom-app-Dialog zeigte
+  <code>get_skillpilot_poc_status</code>, <code>get_skillpilot_poc_context</code> und
+  <code>record_skillpilot_poc_completion</code>. Die App wurde als <strong>SkillPilot PoC</strong>
+  gespeichert.</li>
+<li><strong>00:25:22 UTC:</strong> Beim ersten Chat-Leseversuch wurde die Post-
+  Clientauthentifizierung erneut akzeptiert, der Tokenendpunkt antwortete
+  jedoch <strong>400</strong> und <code>/mcp</code> <strong>401</strong>. Der Chat meldete Nichtverfügbarkeit.
+  Es kam kein <code>tools/call</code> an; eine erfolgreiche Status-/Context-Antwort im
+  Chat ist damit nicht nachgewiesen.</li>
+<li><strong>00:29:22 UTC:</strong> Ein tatsächlicher Reconnect grenzte die Ursache ein:
+  Der <code>authorization_code</code>-Austausch mit vorhandenem <code>resource</code> antwortete
+  <strong>200</strong>. Unmittelbar danach akzeptierte der Server erneut die Post-
+  Clientauthentifizierung, wies aber den <code>refresh_token</code>-Grant ohne <code>resource</code>
+  mit <strong><code>invalid_grant</code></strong>, bereinigtem Grund <strong><code>resource_missing</code></strong> und
+  <strong>400</strong> ab; <code>/mcp</code> antwortete anschließend <strong>401</strong>. Dieser Befund belegt
+  eine Abweichung des beobachteten Gemini-Refresh-Requests, keinen Fehler
+  der Client-Credentials.</li>
+<li><strong>00:31:16 UTC:</strong> Mit ausdrücklich aktivierter
+  <code>POC_ALLOW_REFRESH_RESOURCE_OMISSION=1</code> funktionierte der reale Post-Refresh
+  ohne Resource-Parameter. Der Grant behielt seine ursprüngliche Audience.</li>
+<li><strong>00:31:35–36 UTC:</strong> Tatsächliche Status-/Context-Werkzeugaufrufe antworteten
+  erfolgreich; Context zeigte Zustand <strong>0</strong>, das Modell gab eine passende
+  Antwort. Weitere native Context-Reads, unter anderem um <strong>00:34:10 UTC</strong>,
+  waren ebenfalls erfolgreich.</li>
+<li><strong>00:32:26 UTC:</strong> Der Test lehnte die tatsächliche Gemini-Schreibfreigabe
+  in der UI ab. Der synthetische Zustand blieb <strong>0 → 0</strong>; kein Completion-
+  Werkzeugaufruf beziehungsweise Abschluss wurde gebucht. Das ist <strong>PASS</strong>
+  für die Ablehnung. Tatsächliche Context-Reads um <strong>00:32:58.804 UTC</strong> und
+  <strong>00:34:10.514 UTC</strong> bestätigten weiterhin Zustand 0.</li>
+<li>Beim anschließenden Versuch im selben Chat lieferte Context erneut <strong>200</strong>.
+  Danach zeigte das Modell Nichtverfügbarkeit beziehungsweise blieb hängen;
+  der Versuch wurde unterbrochen. Es kam kein Write an. Diese Beobachtung
+  grenzt die weitere Ursache nicht abschließend ein.</li>
+<li>Nach späteren Versuchen mit frischer App beziehungsweise Pro-Modell lag der
+  letzte native Serveraufruf bei <strong>00:39:17 UTC</strong>. Um <strong>00:41–42 UTC</strong> lieferte
+  Health an der alten Origin <code>https://d487fefc13b041.lhr.life</code> <strong>502</strong>; der
+  SSH-Tunnel kündigte <code>https://840518030c40a1.lhr.life</code> als neue Origin an.
+  Die erfolglosen Versuche gegen die alte URL sind <strong>TRANSPORT_CONFOUNDED</strong>
+  und lassen sich nicht Gemini zuschreiben. Ein dauerhafter Hostname ist dafür
+  nicht erforderlich; die tatsächlich gültige URL muss pro Testfenster stabil
+  bleiben und vor jedem Test geprüft werden.</li>
+<li><strong>00:42:36 UTC:</strong> An der neuen Origin wurde ein tatsächlicher S256-Callback
+  beobachtet und nach der erwarteten Ablehnung des unbekannten Callbacks exakt
+  privat gepinnt. <strong>00:42:43–46 UTC:</strong> Codeaustausch, Refresh und native
+  Werkzeug-Discovery waren erfolgreich, die App wurde gespeichert. Der
+  anschließende Pro-Modell-Read ist unten gesondert belegt.</li>
+<li><strong>00:43:35 UTC / 00:43:47 UTC:</strong> An der neuen Origin waren tatsächliche
+  Status- und Context-Aufrufe im UI-Modus <strong>Pro</strong> (Menübezeichnung
+  <strong>3.1 Pro</strong>) erfolgreich; Context zeigte zunächst Zustand <strong>0</strong>.</li>
+<li><strong>00:44:30 UTC:</strong> Nach einer expliziten App-Ansprache mit frischem Context
+  und Zustimmung zeigte Gemini die manuelle Schreibfreigabe; <strong>Allow</strong> wurde
+  angeklickt. <strong>00:44:33.823 UTC:</strong> Der tatsächliche Completion-Werkzeugaufruf
+  erreichte <strong>200</strong>, Zustand <strong>1</strong>. <strong>00:44:51 UTC:</strong> Ein frischer Store und
+  die persistierte Datei bestätigten <code>completed: true</code>, <code>stateVersion: 1</code>
+  und den gespeicherten Receipt mit <code>savedAt</code> <strong>00:44:33.822 UTC</strong>.</li>
+<li><strong>00:45:43 UTC:</strong> Eine zweite manuelle <strong>Allow</strong>-Bestätigung autorisierte
+  den Replay. <strong>00:45:47.233 UTC:</strong> Der tatsächliche Completion-Aufruf
+  antwortete erneut mit <strong>200</strong>, weiterhin Zustand <strong>1</strong>.
+  <strong>00:45:48.695 UTC:</strong> Der Disk-Vergleich bestätigte den identischen
+  ursprünglichen Receipt und unveränderte Version 1; das Modell berichtete
+  ebenfalls Version 1 und denselben Receipt. Replay ist damit <strong>PASS</strong>.</li>
+<li><strong>00:46:23–25 UTC:</strong> Der erste Versuch in einem neuen Chat an der weiterhin
+  gültigen Origin erreichte native <code>initialize</code>/<code>tools/list</code> mit <strong>200</strong>;
+  das Modell meldete Werkzeug-Nichtverfügbarkeit, ohne dass ein <code>tools/call</code>
+  ankam. Das ist <strong>FAIL_OBSERVED_CHAT_DISPATCH</strong> mit unbestätigter Ursache,
+  kein Erfolg der Chat-Fortsetzung.</li>
+<li><strong>00:48:35–36 UTC:</strong> Der einmalige erneute Context-Versuch im selben
+  frischen Chat verwendete eine natürliche Context-Anfrage mit expliziter
+  App-Ansprache und zwei Sekunden Wartezeit nach der Auswahl. Native
+  <code>initialize</code>/<code>tools/list</code> antworteten erneut mit <strong>200</strong>; das Modell meldete
+  einen allgemeinen Fehler, wiederum ohne <code>tools/call</code>. Damit bleibt die
+  Wiederaufnahme in einem neuen Chat <strong>FAIL_OBSERVED_CHAT_DISPATCH</strong>;
+  die konkrete Ursache ist nicht nachgewiesen.</li>
+</ul>
+<p>Die gemessenen Abweichungen während der Einrichtung wurden ausschließlich im
+isolierten PoC korrigiert. Googles OAuth-<code>state</code> von <strong>1166–1168 Zeichen</strong> passt
+nun in die weiterhin begrenzte Spanne von <strong>8–4096 Zeichen</strong>.
+<code>Referrer-Policy: strict-origin</code> auf der Autorisierungsseite erlaubt dem
+Chromium-Consent-POST eine gültige gleichursprüngliche <code>Origin</code>; fremde
+Consent-Ursprünge werden weiterhin abgewiesen. Ein Browser mit explizitem
+HTML-Accept erhält nach Consent einen geschützten einzelnen Link
+<strong>Weiter zu Gemini</strong> auf den exakten Callback. Sein Anklicken vermeidet
+Googles mehrstufige Weiterleitung als Formularnavigation unter
+<code>form-action 'self'</code>; der CSP bleibt erhalten. Nicht-HTML-Clients behalten
+den 302-Ablauf mit denselben Consent-/Callback-/PKCE-/Scope-/Resource-Prüfungen.</p>
+<p>Die Clientauthentifizierung ist ein fest gewähltes Profil:
+<code>client_secret_basic</code> bleibt der Standard; der tatsächliche Gemini-Lauf nutzt
+<code>POC_CLIENT_AUTH_METHOD=client_secret_post</code>. Metadaten weisen genau die gewählte
+Methode aus, abweichende Methoden erhalten keinen automatischen Fallback.
+Bereinigte Traces erfassen begrenzte Authentifizierungsmethoden und bekannte
+MCP-Methoden/Revisionen ohne OAuth-Queries, Tokens oder Roh-Callback.</p>
+<p>MCP <strong>2025-11-25</strong> verlangt <code>resource</code> in Autorisierungs- und Tokenanfragen;
+der beobachtete Gemini-Refresh erfüllt diese Clientanforderung nicht.
+<a href="https://modelcontextprotocol.io/specification/2025-11-25/basic/authorization#resource-parameter-implementation">MCP: Resource Parameter Implementation</a>
+Die begrenzte Interoperabilitätskorrektur ist als explizite, standardmäßig
+deaktivierte Option <code>allowRefreshResourceOmission</code> implementiert
+(<code>POC_ALLOW_REFRESH_RESOURCE_OMISSION=1</code>); die private <code>connection.json</code>
+vermerkt den booleschen Wert. Ausschließlich ein vollständig
+fehlender <code>resource</code>-Parameter bei einem gültigen, demselben Client gebundenen
+Refresh-Grant darf dann dessen einzige ursprünglich freigegebene Audience
+beibehalten. Falsche, leere, fehlerhafte oder doppelte Resource-Parameter werden
+weiterhin abgewiesen; Autorisierung und Codeaustausch bleiben strikt.
+Scope-, Ablauf-, Rotation-, Replay- und Widerrufsprüfungen bleiben erhalten.
+Die Policy stützt sich auf die Resource-Bindung ursprünglicher Grants nach
+<a href="https://www.rfc-editor.org/rfc/rfc8707.html#section-2.2">RFC 8707 §2.2</a>.
+Sie ist ein begrenzter OAuth-Interoperabilitätsweg und kein Nachweis von
+Geminis MCP-Konformität. Der tatsächliche Host-Retest der Korrektur bestand
+um <strong>00:31:16 UTC</strong>; der aktuelle vollständige lokale Teststand ist oben
+separat erfasst.</p>
+<p>OAuth, korrigierter Refresh, Werkzeug-Discovery, Chat-Reads, abgelehnte
+Completion, bestätigte Completion samt Persistenz und exakter Replay sind
+damit <strong>PASS</strong>.
+Der technische Gemini-Kernweg ist mit dem Post-Profil und der begrenzten
+Refresh-Option nachgewiesen; die vollständige Acceptance-Matrix bleibt
+<strong>NOT_PROVEN</strong>. Der erste neue Chat scheiterte trotz nativer Verbindung;
+auch der erneute Versuch scheiterte vor dem Tool-Aufruf. Unterbrochener Write
+und Widerruf bleiben
+<strong>NOT_RUN</strong>. Frühere frische App-/Pro-Modell-Versuche an der alten Origin sind
+<strong>TRANSPORT_CONFOUNDED</strong>. Die frühere Nichtverfügbarkeit nach einem gültigen
+Context 200 hat keine bestätigte Ursache und wird nicht der Ablehnung
+zugeschrieben.</p>
+<p>Die technische PoC-Bewertung ist damit abgeschlossen. Sie beendet nicht
+Issue #70 oder eine vollständige Gemini-Integration. Frischer Login,
+vollständiger Lernfluss und US-Beta-Onboarding bleiben außerhalb dieses
+Durchstichs <strong>NOT_RUN</strong>.
+Das optionale Skill-Archiv ist unverändert; sein Import und tatsächlicher
+Einsatz in Gemini bleiben ebenfalls <strong>NOT_RUN</strong>.</p>
+<p>Hostnachweise enthalten Datum, Host-/Modellbezeichnung, PoC-Build und
+Protokollrevision, Testfall, bereinigte Request-Korrelation und den tatsächlichen
+Testzustand vor/nach der Aktion. UI-Sichtbarkeit, Serveraufruf und gespeicherter
+Zustand sind eigenständige Nachweise. Für einen erfolgreichen Test müssen die
+zugehörigen Beobachtungen zusammenpassen.</p>
+<p>Keine Roh-Callback-URIs mit Google-Kontokennung, Tokens, Client-Secrets,
+Google-Kontoadressen, dauerhaften Lernendenkennungen oder persönlichen
+Chatdaten veröffentlichen. Keine
+Geburtsdaten oder Altersnachweise sammeln; die Anbieter-Voraussetzung wird
+nicht als neue SkillPilot-Datenerhebung umgesetzt. Testmaterial bleibt
+synthetisch. Ein lokaler automatischer Client ist im Protokoll ausdrücklich
+als solcher gekennzeichnet und wird nie als Gemini-Web-Host geführt.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.indexes", "navigation.sections", "navigation.top", "content.code.copy"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
