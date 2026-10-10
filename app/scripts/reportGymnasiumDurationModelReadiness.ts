@@ -146,6 +146,7 @@ const subjectAliases = new Map<string, string>([
   ['WIRTSCHAFT RECHT', 'Wirtschaftswissenschaften'],
   ['WIRTSCHAFT UND RECHT', 'Wirtschaftswissenschaften'],
   ['WIRTSCHAFTSLEHRE', 'Wirtschaftswissenschaften'],
+  ['WIRTSCHAFT / BERUFS UND STUDIENORIENTIERUNG', 'Wirtschaftswissenschaften'],
   ['WIRTSCHAFT', 'Wirtschaftswissenschaften'],
   ['WBS', 'Wirtschaftswissenschaften'],
   ['WAT', 'Wirtschaftswissenschaften'],

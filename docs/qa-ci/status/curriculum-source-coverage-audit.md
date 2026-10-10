@@ -8,7 +8,7 @@
 > Source of truth: `curricula/DE/Gymnasium/canonical/`
 > Source of truth: `curricula/DE/Gymnasium/provenance/canonical-goal-surrogate-evidence-registry.json`
 
-Generated: 2026-10-10T18:45:52.728Z
+Generated: 2026-10-10T19:07:11.724Z
 
 This audit separates inhaltliche Abdeckung from passgenaue Zuordnung. `provenance`, reviewed `mapping` entries including `partial`, and explicitly reviewed requires-closure surrogate entries count as Lehrplan evidence; `partial` mappings remain visible as quality warnings. `override`, `child-union`, automatic `requires-closure`, and `assessment-requires` do not count as source coverage.
 

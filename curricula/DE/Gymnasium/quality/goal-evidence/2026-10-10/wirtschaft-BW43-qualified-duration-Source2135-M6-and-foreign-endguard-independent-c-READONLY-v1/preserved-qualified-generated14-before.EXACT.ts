@@ -120,9 +120,6 @@ export const GYMNASIUM_DURATION_OFFERINGS = {
       'G8',
       'G9'
     ],
-    'DE-BW': [
-      'G8'
-    ],
     'DE-BY': [
       'G9'
     ],
@@ -831,12 +828,9 @@ export const GYMNASIUM_CONTENT_OFFERINGS = {
     },
     'DE-BW': {
       'stages': [
-        'SekI',
         'CrossStage'
       ],
-      'durationModels': [
-        'G8'
-      ]
+      'durationModels': []
     },
     'DE-BY': {
       'stages': [
