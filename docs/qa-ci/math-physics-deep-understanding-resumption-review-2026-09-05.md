@@ -1,5 +1,14 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
+## Aktuelle Chemie-/Biologie-Fortsetzung vom 10. Oktober
+
+Der [aktive Integrationsstand 206/398 Chemie und 353/394 Biologie](chemie-biologie-m7-chemie206-biologie353-integration-2026-10-10.md)
+setzt den aktuellen Chemie-/Biologie-Auftrag fort. Er enthält 26 neue fachliche
+Chemieabschlüsse und fünf wiederhergestellte Bindungen bereits abgeschlossener
+Ziele. Mathematik 807/807 und Physik 478/478 bleiben geschützte M7-Untergrenzen.
+Die folgenden früheren Auftrags- und Zahlenstände bleiben historische
+Momentaufnahmen. Menschliche Release-Gates bleiben getrennt.
+
 ## Aktuelle Zielverfolgung: ausschließlich Wirtschaftswissenschaften
 
 Der [Wirtschaftswissenschaften-M7-Fortsetzungsstand vom 8. Oktober](wirtschaft-m7-resumed-2026-10-08.md)
