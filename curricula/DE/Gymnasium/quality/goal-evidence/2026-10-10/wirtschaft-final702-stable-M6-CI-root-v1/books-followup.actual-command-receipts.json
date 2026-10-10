@@ -47,7 +47,37 @@
       "exitCode": 0,
       "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/books-followup.03.test-goal-book-pipeline.raw.txt",
       "rawOutputSha256": "9d8084a4c5c36270af52e236e7046f5a5f16667dc8ea63f68f3a477dca798ee0"
+    },
+    {
+      "name": "lint",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "lint"
+      ],
+      "startedAt": "2026-10-10T19:02:13.556070+00:00",
+      "elapsedSeconds": 34.022,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/books-followup.04.lint.raw.txt",
+      "rawOutputSha256": "c31ee7aee37f3feee12610fa6bfbd1ee3b3252ef1922ddb19febfb56dd5d50bc"
+    },
+    {
+      "name": "build:application",
+      "command": [
+        "npm",
+        "--prefix",
+        "app",
+        "run",
+        "build:application"
+      ],
+      "startedAt": "2026-10-10T19:02:47.578852+00:00",
+      "elapsedSeconds": 100.037,
+      "exitCode": 0,
+      "rawOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/wirtschaft-final702-stable-M6-CI-root-v1/books-followup.05.build-application.raw.txt",
+      "rawOutputSha256": "9bc37f5aa95c988da9c73dc4e5e19999045653f08b0df663a359e1f23eba75c0"
     }
   ],
-  "phaseComplete": false
+  "phaseComplete": true
 }
