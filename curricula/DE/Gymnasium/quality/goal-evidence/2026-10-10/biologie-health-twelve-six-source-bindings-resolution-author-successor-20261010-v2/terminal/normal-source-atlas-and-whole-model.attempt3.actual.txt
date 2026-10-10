@@ -1,0 +1,71 @@
+AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
++ actual - expected ... Lines skipped
+
+  [
+    {
+...
+        },
+        {
++         jurisdiction: 'DE-MV',
+-         jurisdiction: 'DE-HH',
+          scopes: [
+            {
+...
+        },
+        {
++         jurisdiction: 'DE-SN',
+-         jurisdiction: 'DE-MV',
+          scopes: [
+            {
+...
+        },
+        {
++         jurisdiction: 'DE-ST',
+-         jurisdiction: 'DE-SN',
+          scopes: [
+            {
+...
+        },
+        {
++         jurisdiction: 'DE-TH',
+-         jurisdiction: 'DE-ST',
+          scopes: [
+            {
+...
+          ]
+        }
++     ],
++     breadcrumbs: [
++       'Biologie',
++       'Suchtgefahren und Lebenskompetenzen (Sek I)'
++     ],
++     chapterIds: [
++       'structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95',
++       'structure:canonical-goal-70ad51a7-9042-581b-8fca-a42d089e1fbd'
++     ],
++     description: 'Die lernende Person kann die Grenze zwischen Genuss und Sucht erläutern und eigene Suchtrisiken bewusst wahrnehmen.',
++     evidenceReview: {
++       evidenceLevel: 'E1',
+...
+-       {
+-         jurisdiction: 'DE-TH',
+-         scopes: [
+-           {
+-             courseProfile: null,
+-             durationModel: 'G8',
+-             stage: 'SekI'
+-           }
+-         ]
+-       }
+-     ],
+-     breadcrumbs: [
+...
+    at main (/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/bio12-six-resolution-author-work/normal.ts:95:53) {
+  generatedMessage: true,
+  code: 'ERR_ASSERTION',
+  actual: [Array],
+  expected: [Array],
+  operator: 'deepStrictEqual'
+}
+
+ACTUAL_PROCESS_EXIT_CODE=1

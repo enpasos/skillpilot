@@ -1,0 +1,20 @@
+
+node:internal/modules/run_main:123
+    triggerUncaughtException(
+    ^
+Error: Transform failed with 1 error:
+/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/bio-hb037-one-gap-author-work/normal.ts:69:767: ERROR: Expected "}" but found "-"
+    at failureErrorWithLog (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:1467:15)
+    at /home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:736:50
+    at responseCallbacks.<computed> (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:603:9)
+    at handleIncomingPacket (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:658:12)
+    at Socket.readFromStdout (/home/enpasos/projects/skillpilot/app/node_modules/esbuild/lib/main.js:581:7)
+    at Socket.emit (node:events:524:28)
+    at addChunk (node:internal/streams/readable:561:12)
+    at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+    at Readable.push (node:internal/streams/readable:392:5)
+    at Pipe.onStreamRead (node:internal/stream_base_commons:191:23) {
+  name: 'TransformError'
+}
+
+Node.js v20.20.2

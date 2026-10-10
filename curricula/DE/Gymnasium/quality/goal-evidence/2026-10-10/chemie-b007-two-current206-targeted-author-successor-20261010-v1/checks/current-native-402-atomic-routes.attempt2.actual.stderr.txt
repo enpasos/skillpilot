@@ -1,0 +1,13 @@
+/home/enpasos/projects/skillpilot/app/scripts/goalBookModel.ts:437
+  throw new Error(`Goal-book model: ${message}`)
+        ^
+
+
+Error: Goal-book model: semantic-kind ledger violates its closed JSON Schema: data must have required property 'profileFormatVersion'; data must have required property 'version'; data must have required property 'description'; data must have required property 'releaseModelContractVersion'; data must have required property 'source'; data must have required property 'coreBinding'; data must have required property 'namespaceBindings'; data must have required property 'applicationVocabulary'; data must have required property 'semanticKindDecisions'; data must have required property 'semanticKinds'; data must have required property 'mappings'; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data must NOT have additional properties; data/documentType must be equal to constant; data/decisions/517/decisionBasis must be equal to one of the allowed values; data/decisions/518/decisionBasis must be equal to one of the allowed values; data/decisions/519/decisionBasis must be equal to one of the allowed values; data/decisions/520/decisionBasis must be equal to one of the allowed values; data/decisions/521/decisionBasis must be equal to one of the allowed values; data/decisions/522/decisionBasis must be equal to one of the allowed values; data must match exactly one schema in oneOf.
+    at fail (/home/enpasos/projects/skillpilot/app/scripts/goalBookModel.ts:437:9)
+    at parseSemanticKindLedger (/home/enpasos/projects/skillpilot/app/scripts/goalBookModel.ts:793:5)
+    at buildGoalBookModel (/home/enpasos/projects/skillpilot/app/scripts/goalBookModel.ts:1872:30)
+    at loadGoalBookBuildInputs (/home/enpasos/projects/skillpilot/app/scripts/goalBookModel.ts:2760:17)
+    at async <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b007-two-current206-targeted-author-successor-20261010-v1/check-current-atomic-routes-and-native-contexts.mts:139:24)
+
+Node.js v20.20.2

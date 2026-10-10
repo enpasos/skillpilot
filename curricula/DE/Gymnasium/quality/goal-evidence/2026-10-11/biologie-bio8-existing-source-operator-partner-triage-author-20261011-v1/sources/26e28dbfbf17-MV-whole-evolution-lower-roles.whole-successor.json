@@ -1,0 +1,326 @@
+{
+  "schemaVersion": 1,
+  "sourceLandscapeId": "b8af8cde-68e3-5fb6-8bfb-99372267fdaf",
+  "title": "Biologie Sekundarstufe I (Mecklenburg-Vorpommern Rahmenplan 2022 Source-Extraction)",
+  "subject": "Biologie",
+  "schoolType": "Gymnasium/Gesamtschule",
+  "stage": "Sekundarstufe I",
+  "jurisdiction": "DE-MV",
+  "sourceDocument": {
+    "key": "DE-MV-BIOLOGIE-SEKI-RAHMENPLAN-2022",
+    "title": "Rahmenplan für den Sekundarbereich I Gymnasium/Gesamtschule Biologie, Mecklenburg-Vorpommern 2022",
+    "url": "https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_BIO_Gym_Ges_7-10.pdf",
+    "path": "curricula/DE/Gymnasium/input/MV/Biologie_Gymnasium_Gesamtschule_7_10.pdf",
+    "localPath": "curricula/DE/Gymnasium/input/MV/Biologie_Gymnasium_Gesamtschule_7_10.pdf",
+    "official": true,
+    "effectiveFrom": "2022-08-01",
+    "publisher": "Ministerium für Bildung und Kindertagesförderung Mecklenburg-Vorpommern"
+  },
+  "extractionNotes": "Reviewed source extraction from the official MV Biology lower-secondary Rahmenplan. Source goals follow the standards and year-level content blocks and map to existing canonical Biology atomics without duplicating canonical goals.",
+  "qualityReview": {
+    "sourceGoalCountPeerBaseline": {
+      "accepted": true,
+      "details": "12 Source-Ziele; MV Biologie Sek I ist als jahrgangsbezogener Rahmenplan mit Prozessstandards und elf Inhaltsbloecken fuer Klassen 7-10 formuliert."
+    }
+  },
+  "pipelineStatus": {
+    "currentStep": "",
+    "steps": [
+      {
+        "id": "MAPPING-1",
+        "label": "Original-Lehrplanpassagen extrahiert",
+        "status": "complete",
+        "dependsOn": [],
+        "checks": [
+          {
+            "id": "source-document-present",
+            "label": "Amtliches MV-Biologie-PDF liegt lokal vor",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/input/MV/Biologie_Gymnasium_Gesamtschule_7_10.pdf"
+          },
+          {
+            "id": "expected-topic-coverage",
+            "label": "Alle MV-Biologie-Standards und Inhaltsbloecke wurden extrahiert",
+            "passed": true,
+            "details": "12/12 Bereiche: Prozessstandards, Klasse 7 Mikroorganismen/Ernaehrung/Sexualerziehung, Klasse 8 Stoffwechsel/Immunitaet/Sinne-Nerven-Sucht, Klasse 9 Oekologie/Planet im Wandel, Klasse 10 Cytologie/Genetik/Evolution."
+          },
+          {
+            "id": "official-source-extraction",
+            "label": "Passage-Extraction basiert auf amtlicher PDF-Quelle",
+            "passed": true,
+            "details": "https://www.bildung-mv.de/export/sites/bildungsserver/.galleries/dokumente/unterricht/rahmenplaene/RP_BIO_Gym_Ges_7-10.pdf"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-2",
+        "label": "Source-Ziele aus Lehrplanpassagen erstellt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1"
+        ],
+        "checks": [
+          {
+            "id": "source-goals-created",
+            "label": "Source-Ziele aus den MV-Biologie-Lehrplanpassagen erzeugt",
+            "passed": true,
+            "details": "12 Source-Ziele"
+          },
+          {
+            "id": "source-goal-count-peer-baseline",
+            "label": "Source-Ziel-Anzahl ist gegen die MV-Dokumentstruktur plausibilisiert",
+            "passed": true,
+            "details": "Ein Source-Ziel pro Standard- bzw. jahrgangsbezogenem Themenblock."
+          },
+          {
+            "id": "source-goal-ids-unique",
+            "label": "Source-Ziel-IDs sind eindeutig",
+            "passed": true,
+            "details": "Doppelte IDs: -"
+          }
+        ]
+      },
+      {
+        "id": "MAPPING-3",
+        "label": "Source-Ziele auf SkillPilot-Ziele gemappt",
+        "status": "complete",
+        "dependsOn": [
+          "MAPPING-1",
+          "MAPPING-2"
+        ],
+        "checks": [
+          {
+            "id": "mapping-2-complete",
+            "label": "MAPPING-2 abgeschlossen",
+            "passed": true,
+            "details": "12 Source-Ziele liegen vor."
+          },
+          {
+            "id": "m3-review-file-present",
+            "label": "M3-Review-Datei ist vorhanden",
+            "passed": true,
+            "details": "curricula/DE/Gymnasium/mapping/DE-MV/lower-secondary/mv_biology_lower_secondary_source_extraction_to_canonical_biology.review.json"
+          },
+          {
+            "id": "m3-review-decisions-reference-source-goals",
+            "label": "M3-Review-Entscheidungen referenzieren gueltige Source-Ziele",
+            "passed": true,
+            "details": "Wird aus der Review-Datei berechnet."
+          },
+          {
+            "id": "m3-review-targets-exist",
+            "label": "M3-Review-Ziele referenzieren vorhandene Canonical-Ziele",
+            "passed": true,
+            "details": "Wird aus der Review-Datei berechnet."
+          },
+          {
+            "id": "m3-all-source-goals-reviewed",
+            "label": "Alle Source-Ziele haben eine fachliche M3-Entscheidung",
+            "passed": true,
+            "details": "Wird aus der Review-Datei berechnet."
+          },
+          {
+            "id": "m3-all-source-goals-covered-by-canonical",
+            "label": "Alle Source-Ziele sind inhaltlich durch SkillPilot-Ziele abgedeckt",
+            "passed": true,
+            "details": "Wird aus der Review-Datei berechnet."
+          }
+        ]
+      }
+    ]
+  },
+  "sourceGoals": [
+    {
+      "id": "mv-biology-seki-rahmenplan-2022-pb-01-biologische-fach-erkenntnis-kommunikations-und-bewertungskompetenzen-anwenden",
+      "title": "Biologische Fach-, Erkenntnis-, Kommunikations- und Bewertungskompetenzen anwenden",
+      "description": "Die lernende Person kann biologische Systeme fachlich beschreiben, Untersuchungen planen und auswerten, Modelle und Quellen nutzen, Ergebnisse adressatengerecht kommunizieren und biologische Sachverhalte gesundheits-, umwelt- und nachhaltigkeitsbezogen bewerten.",
+      "type": "atomic",
+      "sourceRef": "Rahmenplan Biologie Gymnasium/Gesamtschule Mecklenburg-Vorpommern 7-10, Erprobungsfassung 2022, Kapitel 3.1, Standards",
+      "sourceDocumentKey": "DE-MV-BIOLOGIE-SEKI-RAHMENPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/MV/Biologie_Gymnasium_Gesamtschule_7_10.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-MV",
+        "topic:PB"
+      ]
+    },
+    {
+      "id": "mv-biology-seki-rahmenplan-2022-j7-mikroorganismen-02-mikroorganismen-hefen-bakterien-und-viren-einordnen",
+      "title": "Mikroorganismen, Hefen, Bakterien und Viren einordnen",
+      "description": "Die lernende Person kann Hefen mikroskopieren, Bakterien und Viren unterscheiden, Mikroorganismen als Destruenten, Krankheitserreger sowie in Lebensmittelherstellung und Biotechnologie erklären.",
+      "type": "atomic",
+      "sourceRef": "Rahmenplan Biologie Mecklenburg-Vorpommern 7-10, Kapitel 3.3, Klasse 7, Mikroorganismen",
+      "sourceDocumentKey": "DE-MV-BIOLOGIE-SEKI-RAHMENPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/MV/Biologie_Gymnasium_Gesamtschule_7_10.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-MV",
+        "topic:J7-MIKROORGANISMEN"
+      ]
+    },
+    {
+      "id": "mv-biology-seki-rahmenplan-2022-j7-ernaehrung-verdauung-03-nahrstoffe-ausgewogene-ernahrung-und-verdauung-erklaren",
+      "title": "Nährstoffe, ausgewogene Ernährung und Verdauung erklären",
+      "description": "Die lernende Person kann Nährstoffgruppen und Nachweise beschreiben, ausgewogene Ernährung begründen, Verdauungsorgane, Enzymwirkung, Resorption und Energiegewinnung als Teil des menschlichen Stoffwechsels erklären.",
+      "type": "atomic",
+      "sourceRef": "Rahmenplan Biologie Mecklenburg-Vorpommern 7-10, Kapitel 3.3, Klasse 7, Ernährung und Verdauung",
+      "sourceDocumentKey": "DE-MV-BIOLOGIE-SEKI-RAHMENPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/MV/Biologie_Gymnasium_Gesamtschule_7_10.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-MV",
+        "topic:J7-ERNÄHRUNG-VERDAUUNG"
+      ]
+    },
+    {
+      "id": "mv-biology-seki-rahmenplan-2022-j7-sexualerziehung-04-pubertat-fortpflanzung-schwangerschaft-verhutung-und-sexuelle-gesundheit-erklaren",
+      "title": "Pubertät, Fortpflanzung, Schwangerschaft, Verhütung und sexuelle Gesundheit erklären",
+      "description": "Die lernende Person kann körperliche und soziale Veränderungen der Pubertät, Fortpflanzungsorgane, Menstruationszyklus, Schwangerschaft, Geburt, Verhütung, sexuell übertragbare Erkrankungen und verantwortungsbewusstes Sexualverhalten erklären und bewerten.",
+      "type": "atomic",
+      "sourceRef": "Rahmenplan Biologie Mecklenburg-Vorpommern 7-10, Kapitel 3.3, Klasse 7, Sexualerziehung",
+      "sourceDocumentKey": "DE-MV-BIOLOGIE-SEKI-RAHMENPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/MV/Biologie_Gymnasium_Gesamtschule_7_10.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-MV",
+        "topic:J7-SEXUALERZIEHUNG"
+      ]
+    },
+    {
+      "id": "mv-biology-seki-rahmenplan-2022-j8-stoffwechsel-atmung-kreislauf-05-assimilation-dissimilation-atmung-blut-und-kreislauf-erklaren",
+      "title": "Assimilation, Dissimilation, Atmung, Blut und Kreislauf erklären",
+      "description": "Die lernende Person kann Fotosynthese, Zellatmung, Gärung, Diffusion, Osmose, Bau und Funktion von Lunge, Herz, Blutgefäßen, Blutbestandteilen, Blutgerinnung und Blutgruppen im Zusammenhang menschlicher Stoffwechselprozesse erklären.",
+      "type": "atomic",
+      "sourceRef": "Rahmenplan Biologie Mecklenburg-Vorpommern 7-10, Kapitel 3.3, Klasse 8, Stoffwechsel, Atmung und Kreislauf",
+      "sourceDocumentKey": "DE-MV-BIOLOGIE-SEKI-RAHMENPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/MV/Biologie_Gymnasium_Gesamtschule_7_10.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-MV",
+        "topic:J8-STOFFWECHSEL-ATMUNG-KREISLAUF"
+      ]
+    },
+    {
+      "id": "mv-biology-seki-rahmenplan-2022-j8-immunitaet-06-infektionen-immunabwehr-und-immunisierung-erklaren",
+      "title": "Infektionen, Immunabwehr und Immunisierung erklären",
+      "description": "Die lernende Person kann bakterielle und virale Infektionen, unspezifische und spezifische Immunabwehr, Immunität sowie aktive und passive Immunisierung erklären und gesundheitsbezogen beurteilen.",
+      "type": "atomic",
+      "sourceRef": "Rahmenplan Biologie Mecklenburg-Vorpommern 7-10, Kapitel 3.3, Klasse 8, Viren, Immunität und Immunisierung",
+      "sourceDocumentKey": "DE-MV-BIOLOGIE-SEKI-RAHMENPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/MV/Biologie_Gymnasium_Gesamtschule_7_10.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-MV",
+        "topic:J8-IMMUNITÄT"
+      ]
+    },
+    {
+      "id": "mv-biology-seki-rahmenplan-2022-j8-sinne-nerven-sucht-07-sinnesorgane-nervensystem-lernen-und-suchtpravention-erklaren",
+      "title": "Sinnesorgane, Nervensystem, Lernen und Suchtprävention erklären",
+      "description": "Die lernende Person kann Reiz-Reaktions-Ketten, Auge und Sinneswahrnehmung, Neuron, Erregungsübertragung, Zentralnervensystem, Reflexe, Lernen, Gedächtnis sowie Drogenwirkungen und Suchtprävention erklären.",
+      "type": "atomic",
+      "sourceRef": "Rahmenplan Biologie Mecklenburg-Vorpommern 7-10, Kapitel 3.3, Klasse 8, Sinnesorgane, Nervensystem und Sucht",
+      "sourceDocumentKey": "DE-MV-BIOLOGIE-SEKI-RAHMENPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/MV/Biologie_Gymnasium_Gesamtschule_7_10.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-MV",
+        "topic:J8-SINNE-NERVEN-SUCHT"
+      ]
+    },
+    {
+      "id": "mv-biology-seki-rahmenplan-2022-j9-oekologie-08-okologische-grundbegriffe-umweltfaktoren-okosysteme-und-stoffkreislaufe-erklaren",
+      "title": "Ökologische Grundbegriffe, Umweltfaktoren, Ökosysteme und Stoffkreisläufe erklären",
+      "description": "Die lernende Person kann Art, Population, Biotop, Biozönose, Ökosystem, abiotische und biotische Faktoren, Toleranzkurven, ökologische Potenz, Angepasstheiten, Symbiose, Parasitismus, trophische Beziehungen, Stoffkreisläufe und praktische Ökosystemuntersuchungen erklären.",
+      "type": "atomic",
+      "sourceRef": "Rahmenplan Biologie Mecklenburg-Vorpommern 7-10, Kapitel 3.3, Klasse 9, Ökologie",
+      "sourceDocumentKey": "DE-MV-BIOLOGIE-SEKI-RAHMENPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/MV/Biologie_Gymnasium_Gesamtschule_7_10.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-MV",
+        "topic:J9-ÖKOLOGIE"
+      ]
+    },
+    {
+      "id": "mv-biology-seki-rahmenplan-2022-j9-planet-wandel-09-menschliche-eingriffe-klimaschutz-und-biodiversitat-nachhaltig-bewerten",
+      "title": "Menschliche Eingriffe, Klimaschutz und Biodiversität nachhaltig bewerten",
+      "description": "Die lernende Person kann Umwelt- und Klimaschutz, Müll, Rodung, erneuerbare Energien, Mobilität, Pestizide, Biodiversitätsverlust und nachhaltige Handlungsmöglichkeiten biologisch begründen und bewerten.",
+      "type": "atomic",
+      "sourceRef": "Rahmenplan Biologie Mecklenburg-Vorpommern 7-10, Kapitel 3.3, Klasse 9, Der Planet Erde verändert sich",
+      "sourceDocumentKey": "DE-MV-BIOLOGIE-SEKI-RAHMENPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/MV/Biologie_Gymnasium_Gesamtschule_7_10.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-MV",
+        "topic:J9-PLANET-WANDEL"
+      ]
+    },
+    {
+      "id": "mv-biology-seki-rahmenplan-2022-j10-zytologie-biomolekuele-10-zellen-zellbestandteile-und-biologische-molekule-erklaren",
+      "title": "Zellen, Zellbestandteile und biologische Moleküle erklären",
+      "description": "Die lernende Person kann Zellbestandteile licht- und elektronenmikroskopisch einordnen, pflanzliche, tierische und bakterielle Zellen vergleichen, Organisationsebenen beschreiben, Präparate mikroskopieren sowie Kohlenhydrate, Lipide und Proteine als Zellbestandteile erklären.",
+      "type": "atomic",
+      "sourceRef": "Rahmenplan Biologie Mecklenburg-Vorpommern 7-10, Kapitel 3.3, Klasse 10, Cytologie und Zellbestandteile",
+      "sourceDocumentKey": "DE-MV-BIOLOGIE-SEKI-RAHMENPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/MV/Biologie_Gymnasium_Gesamtschule_7_10.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-MV",
+        "topic:J10-ZYTOLOGIE-BIOMOLEKÜLE"
+      ]
+    },
+    {
+      "id": "mv-biology-seki-rahmenplan-2022-j10-genetik-11-chromosomen-dna-proteinbiosynthese-zellteilung-mendel-genetik-und-mutationen-erklaren",
+      "title": "Chromosomen, DNA, Proteinbiosynthese, Zellteilung, Mendel-Genetik und Mutationen erklären",
+      "description": "Die lernende Person kann Chromosomen, Karyogramme, DNA, RNA, genetischen Code, Proteinbiosynthese, Zellzyklus, Replikation, Mitose, Meiose, Mendelsche Regeln, Erbgänge, Modifikation, Mutation, Mutagene, genetische Erkrankungen und Stammbäume erklären und bewerten.",
+      "type": "atomic",
+      "sourceRef": "Rahmenplan Biologie Mecklenburg-Vorpommern 7-10, Kapitel 3.3, Klasse 10, Molekulargenetik und klassische Genetik",
+      "sourceDocumentKey": "DE-MV-BIOLOGIE-SEKI-RAHMENPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/MV/Biologie_Gymnasium_Gesamtschule_7_10.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-MV",
+        "topic:J10-GENETIK"
+      ]
+    },
+    {
+      "id": "mv-biology-seki-rahmenplan-2022-j10-evolution-12-entstehung-des-lebens-evolutionstheorien-evolutionsfaktoren-und-menschwerdung-erklaren",
+      "title": "Entstehung des Lebens, Evolutionstheorien, Evolutionsfaktoren und Menschwerdung erklären",
+      "description": "Die lernende Person kann Ursprung von Erde und Leben, Kompartimentierung, Mehrzelligkeit, Lamarck, Darwin-Wallace, synthetische Evolutionstheorie, Evolutionsfaktoren, homologe und analoge Organe, Fossilien sowie die Evolution des modernen Menschen erklären.",
+      "type": "atomic",
+      "sourceRef": "Rahmenplan Biologie Mecklenburg-Vorpommern 7-10, Kapitel 3.3, Klasse 10, Evolution",
+      "sourceDocumentKey": "DE-MV-BIOLOGIE-SEKI-RAHMENPLAN-2022",
+      "sourcePath": "curricula/DE/Gymnasium/input/MV/Biologie_Gymnasium_Gesamtschule_7_10.pdf",
+      "tags": [
+        "source-extraction",
+        "subject:Biologie",
+        "phase:SekI",
+        "jurisdiction:DE-MV",
+        "topic:J10-EVOLUTION"
+      ]
+    }
+  ]
+}

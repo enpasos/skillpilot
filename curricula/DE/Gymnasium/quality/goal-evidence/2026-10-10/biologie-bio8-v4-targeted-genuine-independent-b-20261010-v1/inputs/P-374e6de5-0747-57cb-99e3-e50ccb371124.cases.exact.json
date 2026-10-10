@@ -1,0 +1,66 @@
+[
+  {
+    "caseId": "expression-compatible-promoter-host",
+    "materialDe": "Zwei Wirte enthalten denselben intakten intronfreien Protein-Code in einem Plasmid. H1 erkennt dessen Promotor und besitzt passende Transkriptions- und Translationsfunktionen. H2 erkennt den Promotor nicht. Nur H1 zeigt im Modell mRNA und das codierte Protein. DNA-Erhaltung ist für beide belegt.",
+    "materialEn": "Two hosts contain the same intact intron-free protein code in a plasmid. H1 recognizes its promoter and has compatible transcription and translation functions. H2 does not recognize the promoter. Only H1 shows mRNA and encoded protein; both retain the DNA.",
+    "taskDe": "Erkläre den Unterschied der Proteinbildung mit dem Vektor-Wirt-Zusammenspiel. Was belegt vorhandene DNA allein?",
+    "taskEn": "Explain different protein production using vector-host compatibility. What does DNA presence alone establish?",
+    "workedResponseDe": "Das funktionierende Signal erlaubt in H1 Transkription; passende Translation setzt die mRNA in das codierte Protein um. In H2 fehlt die Signal-Erkennung. DNA-Erhaltung zeigt nur die Anwesenheit des Konstrukts; sie beweist weder mRNA noch Proteinbildung.",
+    "workedResponseEn": "A functional signal permits H1 transcription and compatible translation converts mRNA into the encoded protein. H2 lacks signal recognition. DNA retention shows construct presence without proving mRNA or protein production.",
+    "freshTransferTaskDe": "Ein neuer Promotor wird auch in H2 erkannt und mRNA ist nachgewiesen. Eine blockierte Translation ist aber belegt. Folgt Proteinbildung?",
+    "freshTransferTaskEn": "A replacement promoter is recognized in H2 and mRNA is demonstrated, but translation is blocked. Does protein production follow?",
+    "workedFreshTransferDe": "Nein. Die erste Lücke ist geschlossen, doch fehlende Translation verhindert die gegebene Proteinbildung. Passende Transkription allein reicht nicht.",
+    "workedFreshTransferEn": "No. The first gap is resolved, but absent translation prevents this protein production. Compatible transcription alone is insufficient.",
+    "materialStatus": "constructed_synthetic_didactic_material",
+    "actualExperimentPerformed": false,
+    "actualLearnerPerformance": false,
+    "rubric": [
+      {
+        "expectationId": "compatible-expression",
+        "criterionDe": "Erklärt einen gegebenen Expressionsunterschied und grenzt Proteinbildung bzw. Funktionsfähigkeit bei geänderten Signalen, Translation oder Code ein.",
+        "criterionEn": "Explains a supplied expression difference and bounds protein production or functionality under changed signals, translation, or code.",
+        "rubricScope": "count_only_aspects_actually_demonstrated_in_this_case",
+        "actualEvidenceLocations": [
+          "workedResponseDe",
+          "workedResponseEn",
+          "workedFreshTransferDe",
+          "workedFreshTransferEn"
+        ],
+        "rubricNoteDe": "Eine hinreichende eigenständige Leistung kann genügen; keine zusätzliche Fallquote. Musterlösungen sind keine Lernendenleistung.",
+        "rubricNoteEn": "Sufficient independent performance can suffice without another-case quota. Worked responses are not learner performance."
+      }
+    ]
+  },
+  {
+    "caseId": "expression-intact-code-processing-limit",
+    "materialDe": "Wirt E erkennt den Promotor und transkribiert den intakten Code. Ein Proteinprodukt ist nachgewiesen; ob es für die vorgesehene Nutzung richtig gefaltet und verarbeitet ist, ist nicht untersucht. Wirt K trägt denselben Code ohne wirksames Expressionssignal und zeigt nur DNA.",
+    "materialEn": "Host E recognizes the promoter and transcribes the intact code. A protein product is demonstrated, but folding and processing required for intended use are untested. Host K contains the same code without an effective expression signal and shows DNA only.",
+    "taskDe": "Erkläre das belegte Expressionssystem und begrenze die Aussage, das fertige funktionsfähige Endprodukt sei schon gesichert.",
+    "taskEn": "Explain the demonstrated expression system and bound the claim that a functional final product is established.",
+    "workedResponseDe": "E bietet passende Signale und Wirtsfunktionen bis zur beobachteten Proteinbildung. K bietet dies im Modell nicht. Die Proteinbildung ist in E belegt, die Funktionsfähigkeit des Nutzprodukts mangels Verarbeitungs-/Faltungsbeleg offen. Kopien der DNA beweisen sie nicht.",
+    "workedResponseEn": "E supplies compatible signals and host functions through observed protein production, while K does not in the model. E protein production is demonstrated, but intended final functionality remains open without folding or processing evidence. DNA copies do not prove it.",
+    "freshTransferTaskDe": "Ein mutierter Code bleibt im Plasmid erhalten; laut Zusatzkarte endet seine Translation vorzeitig. Was ändert sich trotz passendem Promotor?",
+    "freshTransferTaskEn": "A mutated code is retained in the plasmid; an added card establishes premature translation termination. What changes despite a compatible promoter?",
+    "workedFreshTransferDe": "Transkription kann möglich bleiben, aber der intakte Protein-Code fehlt. Das vorgesehene vollständige Protein folgt nicht aus einem passenden Promotor und vorhandener DNA.",
+    "workedFreshTransferEn": "Transcription may remain possible, but intact protein coding information is lost. A compatible promoter and DNA presence do not establish the intended complete protein.",
+    "materialStatus": "constructed_synthetic_didactic_material",
+    "actualExperimentPerformed": false,
+    "actualLearnerPerformance": false,
+    "rubric": [
+      {
+        "expectationId": "compatible-expression",
+        "criterionDe": "Erklärt einen gegebenen Expressionsunterschied und grenzt Proteinbildung bzw. Funktionsfähigkeit bei geänderten Signalen, Translation oder Code ein.",
+        "criterionEn": "Explains a supplied expression difference and bounds protein production or functionality under changed signals, translation, or code.",
+        "rubricScope": "count_only_aspects_actually_demonstrated_in_this_case",
+        "actualEvidenceLocations": [
+          "workedResponseDe",
+          "workedResponseEn",
+          "workedFreshTransferDe",
+          "workedFreshTransferEn"
+        ],
+        "rubricNoteDe": "Eine hinreichende eigenständige Leistung kann genügen; keine zusätzliche Fallquote. Musterlösungen sind keine Lernendenleistung.",
+        "rubricNoteEn": "Sufficient independent performance can suffice without another-case quota. Worked responses are not learner performance."
+      }
+    ]
+  }
+]

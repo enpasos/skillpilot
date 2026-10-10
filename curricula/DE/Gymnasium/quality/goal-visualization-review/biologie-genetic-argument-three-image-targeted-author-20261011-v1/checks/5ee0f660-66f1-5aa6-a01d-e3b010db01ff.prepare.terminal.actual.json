@@ -1,0 +1,68 @@
+{
+  "command": [
+    "node",
+    "/home/enpasos/projects/skillpilot/scripts/prepare_goal_visualization.mjs",
+    "5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+    "--landscape",
+    "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "--subject",
+    "biologie",
+    "--provider",
+    "OpenAI image_gen (Codex built-in)",
+    "--review-status",
+    "pilot"
+  ],
+  "startedAt": "2026-10-10T22:17:43.251798+00:00",
+  "completedAt": "2026-10-10T22:17:43.303790+00:00",
+  "exitCode": 0,
+  "normalHelper": {
+    "path": "scripts/prepare_goal_visualization.mjs",
+    "sha256": "sha256:5785aab47d0305bd7bc038c480ff7ef29df5411f84903b3f2637f3742181109e",
+    "bytes": 3755
+  },
+  "wholeGoal": {
+    "id": "5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+    "title": "Ethische Perspektiven diskutieren",
+    "titleEn": "Discuss ethical perspectives",
+    "description": "Die lernende Person kann Positionen zu Gentechnikfällen begründen.",
+    "descriptionEn": "The learner can justify positions on genetic engineering cases.",
+    "weight": 1,
+    "tags": [
+      "GK",
+      "LK"
+    ],
+    "contains": [],
+    "requires": [
+      "9540a95d-5ca5-527c-918f-d702e99be07a",
+      "2d451684-6e53-565e-a987-f362da919d2c"
+    ],
+    "dimensionTags": {
+      "framework": "hessen-kc-2024-biology",
+      "demandLevel": "AB2",
+      "processCompetencies": [],
+      "guidingIdeas": [
+        "BIO_STRUKTUR_FUNKTION",
+        "BIO_STEUERUNG_REGELUNG",
+        "BIO_ENTWICKLUNG"
+      ],
+      "phase": "Q1"
+    },
+    "applicability": {
+      "jurisdiction": [
+        "DE-BY",
+        "DE-HE",
+        "DE-RP"
+      ]
+    },
+    "extendedData": {
+      "provenance": {
+        "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+        "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+        "sourceGoalId": "49581d2e-221a-4fe6-ba8a-d21e395319b6"
+      }
+    },
+    "type": "atomic"
+  },
+  "activeWrites": [],
+  "independentApproval": false
+}

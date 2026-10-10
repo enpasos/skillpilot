@@ -1,0 +1,1 @@
+Independent B: read the exact current whole bilingual positive profiles and two full material-task-worked-response-rubric-fresh-transfer cases. Preserve unchanged science, review corrected fossil case semantics and current resource bindings. E1/G1 machine candidates are not human or learner evidence. Seal FIRST before validators. No prior judgments.

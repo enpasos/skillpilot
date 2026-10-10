@@ -1,0 +1,19 @@
+node:internal/fs/promises:637
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/430b2b73-641a-5122-bb6d-162b0d1eaf2d/430b2b73-641a-5122-bb6d-162b0d1eaf2d.png'
+    at async open (node:internal/fs/promises:637:25)
+    at async readFile (node:internal/fs/promises:1249:14)
+    at async <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/goalBookModel.ts:2594:36)
+    at async Promise.all (index 52)
+    at async loadGoalVisualizationAssetDigests (/home/enpasos/projects/skillpilot/app/scripts/goalBookModel.ts:2567:3)
+    at async loadGoalBookBuildInputs (/home/enpasos/projects/skillpilot/app/scripts/goalBookModel.ts:2756:41)
+    at async <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/author-bind-normal.mts:44:15) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/430b2b73-641a-5122-bb6d-162b0d1eaf2d/430b2b73-641a-5122-bb6d-162b0d1eaf2d.png'
+}
+
+Node.js v20.20.2

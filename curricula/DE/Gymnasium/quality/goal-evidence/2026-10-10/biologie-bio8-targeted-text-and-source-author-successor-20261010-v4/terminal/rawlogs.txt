@@ -1,0 +1,144 @@
+
+COMMAND ["app/node_modules/.bin/tsx", "app/scripts/positiveGoalEvidenceReview.ts", "--mode=check", "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/positive/ten-current-author.pending.config.json"]
+EXIT 0
+STDOUT
+# Positive Goal Evidence Review: biologie-bio8-substantive-four-author-20261010-v3
+Scope: Substantive four-new atom successor and retained whole Bio8 P products; author only, independent reviews pending
+Configured goals: 10
+Approved: 0
+Needs human review: 10
+Rejected: 0
+Blocking issues: 0
+
+STDERR
+
+COMMAND ["python3", "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/author-current-raster-bindings.py"]
+EXIT 0
+STDOUT
+{"currentRastersVerified": 363, "current2ae2ActualSHA256": "sha256:ccf0f0741658a5dcdb12bc7f3b1e547123efe0e76877bd9a0933c6ea2d95fba3", "historical2ae2ActualByteMismatch": false, "newIndependentVisualJudgments": 0}
+
+STDERR
+
+COMMAND ["node", "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/capture-native-affected.mjs"]
+EXIT 0
+STDOUT
+{"actualHTMLPages":3,"actualPDFPages":3,"loadedExactRasterCopies":3,"wholePageIdentitiesConfirmed":true,"scientificApproval":false}
+
+STDERR
+
+COMMAND ["app/node_modules/.bin/tsx", "app/scripts/materializeGoalDescriptionRolloutBatch.ts", "check", "--config", "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/native/affected-current-native.batch.config.json"]
+EXIT 0
+STDOUT
+Standalone goal-description batch valid: biologie-bio8-targeted-text-source-image-native-20261010-v4; goals=3
+
+STDERR
+
+COMMAND ["app/node_modules/.bin/tsx", "app/scripts/materializeGoalDescriptionRolloutBatch.ts", "prepare", "--config", "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/native/affected-current-native.batch.config.json"]
+EXIT 0
+STDOUT
+Standalone goal-description batch prepared: biologie-bio8-targeted-text-source-image-native-20261010-v4; goals=3; model=sha256:4e73e21c9d5df1ae8d75abf386f37e7f9f45bf941b5f4def73b5f1e2cf5ca159; bundle=sha256:8dde754d809084b3f45ecbc266cb0835733b9ed223f74e2db2266ac0138d26e2
+
+STDERR
+
+COMMAND ["app/node_modules/.bin/tsx", "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/author-bind-normal.mts"]
+EXIT 0
+STDOUT
+{"wholeGoals":483,"wholePages":396,"changedPages":["374e6de5-0747-57cb-99e3-e50ccb371124","9b40dae5-6d89-5714-ac96-373e72a7045e","430b2b73-641a-5122-bb6d-162b0d1eaf2d"],"PBindingChanges":["374e6de5-0747-57cb-99e3-e50ccb371124","430b2b73-641a-5122-bb6d-162b0d1eaf2d","9b40dae5-6d89-5714-ac96-373e72a7045e"],"sourceScopes":24,"sourceCounts":{"canonicalCurricularAtomicGoals":396,"publishedCurricularAtomicGoals":396,"sourceViews":24,"unresolvedSourceScopeDecisions":0,"omittedGoals":0},"newIndependentScienceJudgments":0}
+
+STDERR
+
+COMMAND ["app/node_modules/.bin/tsx", "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/author-bind-normal.mts"]
+EXIT 1
+STDOUT
+
+STDERR
+node:internal/fs/promises:637
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: ENOENT: no such file or directory, open '/home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/430b2b73-641a-5122-bb6d-162b0d1eaf2d/430b2b73-641a-5122-bb6d-162b0d1eaf2d.png'
+    at async open (node:internal/fs/promises:637:25)
+    at async readFile (node:internal/fs/promises:1249:14)
+    at async <anonymous> (/home/enpasos/projects/skillpilot/app/scripts/goalBookModel.ts:2594:36)
+    at async Promise.all (index 52)
+    at async loadGoalVisualizationAssetDigests (/home/enpasos/projects/skillpilot/app/scripts/goalBookModel.ts:2567:3)
+    at async loadGoalBookBuildInputs (/home/enpasos/projects/skillpilot/app/scripts/goalBookModel.ts:2756:41)
+    at async <anonymous> (/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/author-bind-normal.mts:44:15) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/home/enpasos/projects/skillpilot/app/public/assets/goal-visualizations/biologie/430b2b73-641a-5122-bb6d-162b0d1eaf2d/430b2b73-641a-5122-bb6d-162b0d1eaf2d.png'
+}
+
+Node.js v20.20.2
+
+COMMAND ["python", "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/author-practical-contract-scope.py"]
+EXIT 0
+STDOUT
+{"actualPrimaryPDFsRead": 8, "actualPrimaryHTMLsRead": 2, "jurisdictionContractQualifications": 7, "blanketHumanHold": false, "humanTrialClaimed": false}
+
+STDERR
+
+COMMAND ["python", "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/author-practical-contract-scope.py"]
+EXIT 0
+STDOUT
+{"actualPrimaryPDFsRead": 8, "jurisdictionContractQualifications": 7, "blanketHumanHold": false, "humanTrialClaimed": false}
+
+STDERR
+
+COMMAND ["python", "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/author-preservation-and-source-bindings.py"]
+EXIT 1
+STDOUT
+
+STDERR
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/author-preservation-and-source-bindings.py", line 84, in <module>
+    assert len(rows)==35 and len(pairs)==31
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
+
+COMMAND ["python", "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/author-preservation-and-source-bindings.py"]
+EXIT 0
+STDOUT
+{"protected353GoalsQAPagesSourceWitnessesExact": true, "whole483DAG": {"contains": {"acyclic": true, "wholeGoalsVisited": 483}, "requires": {"acyclic": true, "wholeGoalsVisited": 483}}, "scopeDeltas": [{"scope": ["DE-MV", "SekI", ""], "addedGoalIds": ["80235254-ca58-5ba0-9319-b842350d6eb2"], "removedGoalIds": []}], "whole31Pairs": 31, "wholeDirectOperators": 35, "PProfilesExact9Corrected1": true, "strictGain": 0}
+
+STDERR
+
+COMMAND ["python", "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/author-preservation-and-source-bindings.py"]
+EXIT 1
+STDOUT
+
+STDERR
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/author-preservation-and-source-bindings.py", line 37, in <module>
+    assert scope_deltas==[{'scope':['DE-MV','SekI',''],'addedGoalIds':['80235254-ca58-5ba0-9319-b842350d6eb2'],'removedGoalIds':[]}],scope_deltas
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: [{'scope': ['DE-MV', 'SekI', None], 'addedGoalIds': ['80235254-ca58-5ba0-9319-b842350d6eb2'], 'removedGoalIds': []}]
+
+COMMAND ["python", "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/author-incorporate-root-image.py", "--selected-png", "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-bio8-expression-mobile-legibility-targeted-author-20261010-v1/images/374e6de5-0747-57cb-99e3-e50ccb371124/374e6de5-0747-57cb-99e3-e50ccb371124.png", "--whole-goal", "curricula/DE/Gymnasium/quality/goal-visualization-review/biologie-bio8-expression-mobile-legibility-targeted-author-20261010-v1/candidate/whole483-with-legible-expression-image.inactive.json"]
+EXIT 0
+STDOUT
+{"V374RasterSHA256": "sha256:17766c235f94d98bde07cf891624d9bb019ead4c6da944cc96e3227a02d67e0f", "whole483Candidate": {"path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/candidate/whole483-final-text-source-image.inactive.json", "sha256": "sha256:7ca2a6a7f0395199448088cf798162226b811686b4e37a84413f1f352ef30238", "bytes": 1332303}, "newIndependentVApproval": false}
+
+STDERR
+
+COMMAND ["python", "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/check-portability-and-schema.py"]
+EXIT 0
+STDOUT
+{"whole483RuntimeSchemaErrors": 0, "normalCurriculumSymlinkErrors": 0, "ownRegularCommittableFiles": 155, "JSON_JSONLParsed": 101, "actualNativeCorrectedEnglishBound": true, "PASS": true}
+
+STDERR
+
+COMMAND ["python3", "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/check-portability-and-schema.py"]
+EXIT 0
+STDOUT
+{"whole483RuntimeSchemaErrors": 0, "normalCurriculumSymlinkErrors": 0, "ownRegularCommittableFiles": 167, "JSON_JSONLParsed": 107, "actualNativeCorrectedEnglishBound": true, "PASS": true}
+
+STDERR
+
+COMMAND ["python", "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/check-portability-and-schema.py"]
+EXIT 0
+STDOUT
+{"whole483RuntimeSchemaErrors": 0, "normalCurriculumSymlinkErrors": 0, "ownRegularCommittableFiles": 144, "JSON_JSONLParsed": 96, "actualNativeCorrectedEnglishBound": true, "PASS": true}
+
+STDERR

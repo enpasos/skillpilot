@@ -24,6 +24,13 @@ curricula/**/quality/**/primary/*.snapshot -text -whitespace
 curricula/**/quality/**/read-primary/*.txt -text -whitespace
 curricula/**/quality/**/terminal/*.actual.txt -text -whitespace
 
+# Hash-bound review materials retain the CSV writer's actual line endings.
+curricula/**/quality/**/materials/*.csv -text -whitespace
+
+# Verbatim review instructions and captured generation records are evidence.
+curricula/**/quality/**/inputs/AGENTS*.md -whitespace
+curricula/**/quality/**/generation-*.actual.json -whitespace
+
 # Frozen native review pages retain renderer bytes, including empty-line spacing.
 curricula/**/quality/**/book.html -text -whitespace
 

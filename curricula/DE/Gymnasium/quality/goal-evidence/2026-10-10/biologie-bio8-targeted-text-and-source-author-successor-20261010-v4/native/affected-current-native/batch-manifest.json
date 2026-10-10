@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-bio8-targeted-text-source-image-native-20261010-v4",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/native/affected-current-native.batch.config.json",
+  "configDigest": "sha256:513a18dfabdc310dfe537a8c4bf699c99921f324ab24e409cc4c15505318b9cc",
+  "goalIds": [
+    "374e6de5-0747-57cb-99e3-e50ccb371124",
+    "9b40dae5-6d89-5714-ac96-373e72a7045e",
+    "430b2b73-641a-5122-bb6d-162b0d1eaf2d"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 396,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/native/whole396.normal.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/biologie-bio8-targeted-text-and-source-author-successor-20261010-v4/candidate/whole483-final-text-source-image.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:4b5e70adeaf24040bdbcddb8e25aa55a9e0f490b4e5d2bed92c2067e74b48bf1"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:4e73e21c9d5df1ae8d75abf386f37e7f9f45bf941b5f4def73b5f1e2cf5ca159",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:8dde754d809084b3f45ecbc266cb0835733b9ed223f74e2db2266ac0138d26e2",
+    "reviewInputFingerprint": "sha256:26a00a02937258addac5ddaa9e04825d6487d83f6bea2360858890767569b446",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-bio8-targeted-text-source-image-native-20261010-v4-a",
+        "campaignDigest": "sha256:b4f72985b33a015fcc3f1bd764478c628f041d6322430126305fc6056a3ff047",
+        "roundId": "biologie-bio8-targeted-text-source-image-native-20261010-v4-first-pass-a",
+        "independenceGroupId": "biologie-bio8-targeted-text-source-image-native-20261010-v4-independent-a",
+        "batchId": "biologie-bio8-targeted-text-source-image-native-20261010-v4-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:86769c3e124c18fc420f65c0a707b816c98fe9919e2bb2f2b36d8b66a3dc37b6"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-bio8-targeted-text-source-image-native-20261010-v4-b",
+        "campaignDigest": "sha256:c2d4ab911d6a5d47536df07787715e11b0afb75c5bb9dee5df9674cbb8cfcff2",
+        "roundId": "biologie-bio8-targeted-text-source-image-native-20261010-v4-first-pass-b",
+        "independenceGroupId": "biologie-bio8-targeted-text-source-image-native-20261010-v4-independent-b",
+        "batchId": "biologie-bio8-targeted-text-source-image-native-20261010-v4-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:14cb636455418d229377c9956f3d0caaa300768f46ee69de2c7647518a1542e9"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

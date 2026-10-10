@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/tmp/m7-resumption-20261010/bio12-six-resolution-author-work/contexts.py", line 52, in <module>
+    sourcecontexts.append({'sourceGoalId':sid,'beforeMapping':ref(oldcfg['mappingPaths'][index]),'afterMapping':ref(mp),'beforeExtraction':ref(om['sourceExtractionPath']),'afterExtraction':ref(m['sourceExtractionPath']),'wholeBeforeSourceGoal':bg,'wholeAfterSourceGoal':g,'wholeBeforeSourceDecisions':olddec,'wholeAfterSourceDecisions':newdec,'wholeActualPassage':next(z for z in x['passages'] if z['id']==g['passageId']),'wholeBeforeMappingRecords':[z for z in om['mappings'] if z['legacyGoalId']==sid],'wholeAfterMappingRecords':[z for z in m['mappings'] if z['legacyGoalId']==sid],'wholeCurrentBeforeCanonicalPartners':[goals[id] for id in sorted(beforetargets)],'wholeCurrentAfterCanonicalPartners':[goals[id] for id in sorted(aftertargets)],'remainingOtherPartnersNewlyApproved':False})
+                                                                                                                                                                                                                                                                                                                                                                                            ~^^^^^^^^^^^^
+KeyError: 'passages'
+
+ACTUAL_PROCESS_EXIT_CODE=1
