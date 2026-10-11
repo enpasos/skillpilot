@@ -184,13 +184,25 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   const flowerOnlySource = biology.receipt.scopes.find(s => s.key === 'DE-SL/SekI/')!
   assert.ok(flowerOnlySource.goalIds.includes('4e12ba43-a58c-5611-8c43-3cc0c8465e33'), 'Other reviewed routes still cover animal development')
   assert.ok(flowerOnlySource.witnesses.every(w => w.goalId !== '4e12ba43-a58c-5611-8c43-3cc0c8465e33' || w.sourceGoalId !== 'sl-biology-seki-nw56-2012-pfl5-003-b5650cc6'), 'A flower operator must not cover animal development')
-  // Current independent source reviews correct the selected neurobiology
-  // scopes and add explicit component routes without closing broad source HOLDs.
+  // Current independent source reviews correct the selected neurobiology and
+  // genetic-method scopes without closing broad source HOLDs. HE Q1.2 vector
+  // methods are an elevated-course operator, so their old GK route is removed.
   assert.deepEqual(biology.receipt.scopes.filter(s => s.stage === 'SekII').map(s => [s.key, s.goalIds.length]), [
-    ['DE-BY/SekII/GK', 91], ['DE-BY/SekII/LK', 121], ['DE-HE/SekII/GK', 82], ['DE-HE/SekII/LK', 160],
+    ['DE-BY/SekII/GK', 91], ['DE-BY/SekII/LK', 121], ['DE-HE/SekII/GK', 81], ['DE-HE/SekII/LK', 160],
     ['DE-SH/SekII/GK', 1], ['DE-SH/SekII/LK', 1],
     ['DE-ST/SekII/GK', 6], ['DE-ST/SekII/LK', 6],
   ])
+  const heVectorGoalId = 'd11b3b18-deec-5d1a-bff6-512cddf595a2'
+  const heVectorSourceGoalId = '46f4ea54-367f-4f40-b3f2-0d7fd4dff90e'
+  const heGk = biology.receipt.scopes.find(s => s.key === 'DE-HE/SekII/GK')!
+  const heLk = biology.receipt.scopes.find(s => s.key === 'DE-HE/SekII/LK')!
+  assert.ok(!heGk.goalIds.includes(heVectorGoalId), 'HE Q1.2 LK vector methods must not create a GK target')
+  assert.ok(heGk.witnesses.every(w => w.sourceGoalId !== heVectorSourceGoalId), 'The elevated-course source must provide no GK witness')
+  assert.ok(heLk.goalIds.includes(heVectorGoalId), 'The independently reviewed HE LK route must remain available')
+  assert.deepEqual(heLk.witnesses.filter(w => w.goalId === heVectorGoalId).map(w => [w.sourceGoalId, w.mappedTargetGoalId, w.mappingPath]), [[
+    heVectorSourceGoalId, heVectorGoalId,
+    'curricula/DE/Gymnasium/mapping/DE-HE/source-components/biologie-genetic-three-current395-source-context-reviewed-20261011-v3.review.json',
+  ]], 'Retain the exact bounded HE source contribution without whole-course approval')
   // The corrected HE source operator provides no direct gene-flow witness.
   // The independently reviewed SH E13/E15 component supplies only this bounded
   // supplemental route through its active mapping; no whole-course approval.

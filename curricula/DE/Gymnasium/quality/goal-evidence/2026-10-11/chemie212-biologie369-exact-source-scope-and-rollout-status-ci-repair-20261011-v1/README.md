@@ -1,0 +1,3 @@
+# Technical checkpoint CI repair
+
+The prior GitHub main run exposed a stale Biology HE/GK regression count and a Chemistry visualization rollout report generated before the reviewed B007 checkpoint. The exact scope delta removes only the unsupported GK vector-method route; the canonical goal object remains unchanged and its reviewed LK route is explicitly protected by the test. The normal generated Chemistry report was refreshed. No science goal, review decision, quality gate or human approval was changed. Actual targeted normal checks and full normal schema output are preserved here. GitHub terminal results remain a separate gate.

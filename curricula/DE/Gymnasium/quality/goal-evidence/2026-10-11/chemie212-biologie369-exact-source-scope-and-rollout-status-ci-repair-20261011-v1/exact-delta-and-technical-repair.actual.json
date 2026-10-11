@@ -1,0 +1,72 @@
+{
+  "recordType": "targeted-normal-source-atlas-test-and-generated-status-ci-repair-v1",
+  "createdAtUTC": "2026-10-11T15:01:18.099255+00:00",
+  "failedHead": "577096a6bb2d7254e20c265571e497b726d788b4",
+  "failedRun": 38146008040,
+  "failure": {
+    "frontend": "HE/SekII/GK expected stale 82, actual normal receipt 81",
+    "curriculum": "Chemistry normal visualization rollout status predates reviewed B007 integration"
+  },
+  "actualSourceScopeChangesSinceCheckpointParent": [
+    {
+      "scope": "DE-HE/SekII/GK",
+      "oldCount": 82,
+      "currentCount": 81,
+      "addedGoalIds": [],
+      "removedGoalIds": [
+        "d11b3b18-deec-5d1a-bff6-512cddf595a2"
+      ]
+    },
+    {
+      "scope": "DE-RP/SekI/",
+      "oldCount": 101,
+      "currentCount": 98,
+      "addedGoalIds": [],
+      "removedGoalIds": [
+        "523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
+        "d11b3b18-deec-5d1a-bff6-512cddf595a2",
+        "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b"
+      ]
+    }
+  ],
+  "canonicalVectorGoalObjectUnchanged": true,
+  "currentSourceVectorRow": {
+    "sourceGoalId": "46f4ea54-367f-4f40-b3f2-0d7fd4dff90e",
+    "goalId": "d11b3b18-deec-5d1a-bff6-512cddf595a2",
+    "officialLocator": "HE KC2024 Biologie, Q1.2 elevated-course/LK Gentechnik bullet, physical/printed page39",
+    "courseLevel": "LK",
+    "mappingPath": "curricula/DE/Gymnasium/mapping/DE-HE/source-components/biologie-genetic-three-current395-source-context-reviewed-20261011-v3.review.json",
+    "wholeSourceApproval": false
+  },
+  "repair": "Update exact count and add assertions preserving the LK contribution while rejecting the unsupported GK route. Generate unchanged normal Chemistry V rollout report.",
+  "newScienceClosures": 0,
+  "restoredScienceBindings": 0,
+  "qualityThresholdChanges": 0,
+  "activeScienceEdits": 0,
+  "checks": {
+    "sourceAtlasRegression": "PASS actual exported function invoked; mandatory inputs Git-tracked",
+    "chemieRolloutStatus": "PASS normal --subject=chemie --check",
+    "schema": "PASS normal scripts/validate_schemas.py",
+    "gitDiffCheck": "PASS"
+  },
+  "humanApproval": false,
+  "humanTrial": false,
+  "bindings": [
+    {
+      "path": "app/scripts/config/goal-books/source-views/de-gym-biology-national-atlas/source-projection.receipt.json",
+      "sha256": "sha256:bdcfd12000057b733a877c5b001bd92a06835d0133d1aa7ab9eed53c4ac055aa"
+    },
+    {
+      "path": "app/scripts/testGoalBookSourceAtlasInputs.ts",
+      "sha256": "sha256:2eef6c11b687b0dc7229f268bc6620d010c2deaae02a8574aebbb346224efe34"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.json",
+      "sha256": "sha256:37038d8038f6ed489a32825ae9c169d26a9c1972ded8990cb648c2afe4155b89"
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-visualization-review/chemie-rollout-status.md",
+      "sha256": "sha256:80908975e1e40920913d82af93ca3c0f490df6644d377f1a74aadbf09e6e9b7c"
+    }
+  ]
+}
