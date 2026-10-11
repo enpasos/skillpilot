@@ -1,0 +1,428 @@
+{
+  "recordType": "reviewed-delta-technical-binding-v1",
+  "createdAtUTC": "2026-10-11T14:01:06.390731+00:00",
+  "basisHead": "76f9ff2026077872aed93a3fa7f31f069282b1c0",
+  "baselineHead": "9ec9814596f38853dc2d10fcea2f2d99ff1db90f",
+  "scope": "Technical adoption of already independently reviewed B007 source, canonical and HE-view deltas; no new scientific review or completion",
+  "baselineOriginal": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-current-reviewed-watch-baseline-ci-repair-20261011-v1/baseline.before.original.json",
+    "sha256": "03495cbe2050498ac663853fa836a779cb0c43be456baee303dea6c9b8a28871",
+    "bytes": 44499
+  },
+  "watchDelta": {
+    "changedPaths": [
+      "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_CHEMIE.de.json",
+      "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+      "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json"
+    ],
+    "addedPaths": [
+      "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.m7-b010-five-prospective-20261005-v1.b007-normal-source-scope-20261011-v1.review.json",
+      "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json"
+    ],
+    "removedPaths": [],
+    "unchangedPathCount": 143
+  },
+  "canonicalDelta": {
+    "newGoals": [
+      {
+        "goalId": "4b6d1824-20e4-597e-b639-fae401f740f0",
+        "title": "Stoffbezogene Schutzmaßnahmen begründen"
+      },
+      {
+        "goalId": "805a2f58-29ce-55d0-8a85-42ee486239b3",
+        "title": "Vorgegebene Entsorgungswege begründet auswählen"
+      },
+      {
+        "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+        "title": "Lösungen nach Arbeitsanweisung herstellen"
+      },
+      {
+        "goalId": "413040cd-ba74-5227-948c-a778b0bd0f56",
+        "title": "Löslichkeit und Sättigung aus Daten erklären"
+      },
+      {
+        "goalId": "4aeced1e-15cd-58df-83f7-68e2531c2d32",
+        "title": "Massenanteile berechnen und deuten"
+      },
+      {
+        "goalId": "49d42c38-419c-5048-b7e9-860645dd122d",
+        "title": "Volumenanteile berechnen und deuten"
+      }
+    ],
+    "changedGoals": [
+      {
+        "goalId": "018bec90-445f-4a88-b8bc-228f8335dee6",
+        "title": "Leitfähigkeit von Stoffen vergleichen",
+        "fieldDeltas": {
+          "requires": {
+            "before": [
+              "53fd1bfd-facb-54ae-b2dc-f667ed1414fc"
+            ],
+            "after": [
+              "1351706f-4ea6-56e9-951b-87b24cbcdee8"
+            ]
+          }
+        }
+      },
+      {
+        "goalId": "10ce2814-8796-5633-9bed-f6990d039b91",
+        "title": "Teilchenmodell für Stoff- und Lösungsvorgänge nutzen",
+        "fieldDeltas": {
+          "requires": {
+            "before": [
+              "326d45bf-9f77-57d5-a054-93e76b034dd5",
+              "53fd1bfd-facb-54ae-b2dc-f667ed1414fc"
+            ],
+            "after": [
+              "326d45bf-9f77-57d5-a054-93e76b034dd5"
+            ]
+          }
+        }
+      },
+      {
+        "goalId": "1e372b97-6f1c-596c-8a8b-fc03193d784a",
+        "title": "Lernkarten - Chemische Grundlagen",
+        "fieldDeltas": {
+          "extendedData": {
+            "before": {
+              "vocabularySource": "/data/de_gymnasium_chemistry_flashcards_basics_seki.de.json"
+            },
+            "after": {
+              "vocabularySource": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-six-child-targeted-memory-visibility-source-author-successor-20261011-v6/memory/de_gymnasium_chemistry_flashcards_basics_seki.de.json"
+            }
+          }
+        }
+      },
+      {
+        "goalId": "5338b54c-68bc-5892-907c-e025351ffde6",
+        "title": "Lösungsvorgänge mit dem Teilchenmodell beschreiben",
+        "fieldDeltas": {
+          "requires": {
+            "before": [
+              "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+              "988888bb-1f88-55f9-9a44-f3f60469a297"
+            ],
+            "after": [
+              "988888bb-1f88-55f9-9a44-f3f60469a297"
+            ]
+          }
+        }
+      },
+      {
+        "goalId": "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+        "title": "Lösungen und Löslichkeit beschreiben",
+        "fieldDeltas": {
+          "contains": {
+            "before": [],
+            "after": [
+              "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+              "413040cd-ba74-5227-948c-a778b0bd0f56",
+              "4aeced1e-15cd-58df-83f7-68e2531c2d32",
+              "49d42c38-419c-5048-b7e9-860645dd122d"
+            ]
+          },
+          "requires": {
+            "before": [
+              "326d45bf-9f77-57d5-a054-93e76b034dd5"
+            ],
+            "after": []
+          },
+          "type": {
+            "before": "atomic",
+            "after": "cluster"
+          },
+          "weight": {
+            "before": 1,
+            "after": 4
+          }
+        }
+      },
+      {
+        "goalId": "5abc5961-6368-52bb-88b9-6a846c3c37a8",
+        "title": "Lösen von Salzen energetisch erklären",
+        "fieldDeltas": {
+          "requires": {
+            "before": [
+              "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+              "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+              "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e"
+            ],
+            "after": [
+              "5338b54c-68bc-5892-907c-e025351ffde6",
+              "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+              "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e"
+            ]
+          }
+        }
+      },
+      {
+        "goalId": "7be6f951-a614-52dc-94d3-2ce0d33765ff",
+        "title": "Umgang und Entsorgung von Chemikalien begründen",
+        "fieldDeltas": {
+          "contains": {
+            "before": [],
+            "after": [
+              "4b6d1824-20e4-597e-b639-fae401f740f0",
+              "805a2f58-29ce-55d0-8a85-42ee486239b3"
+            ]
+          },
+          "requires": {
+            "before": [
+              "9e656697-fc05-5aa9-9aca-871af2e89eb7"
+            ],
+            "after": []
+          },
+          "type": {
+            "before": "atomic",
+            "after": "cluster"
+          },
+          "weight": {
+            "before": 1,
+            "after": 2
+          }
+        }
+      },
+      {
+        "goalId": "a44af1fa-5988-5b7d-b206-691c6bbf7dd4",
+        "title": "Ionen nachweisen und Salzzusammensetzung bestimmen",
+        "fieldDeltas": {
+          "applicability": {
+            "before": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-NI",
+                "DE-NW"
+              ]
+            },
+            "after": {
+              "jurisdiction": [
+                "DE-BB",
+                "DE-BE",
+                "DE-BW",
+                "DE-BY",
+                "DE-HB",
+                "DE-HE",
+                "DE-NI",
+                "DE-NW",
+                "DE-TH"
+              ]
+            }
+          }
+        }
+      },
+      {
+        "goalId": "d2ccd1d5-56f7-583f-9724-e97441367f91",
+        "title": "Saure, alkalische und neutrale Lösungen unterscheiden",
+        "fieldDeltas": {
+          "requires": {
+            "before": [
+              "53fd1bfd-facb-54ae-b2dc-f667ed1414fc"
+            ],
+            "after": [
+              "1351706f-4ea6-56e9-951b-87b24cbcdee8"
+            ]
+          }
+        }
+      },
+      {
+        "goalId": "ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+        "title": "Gefahrenpotenziale beurteilen und reduzieren",
+        "fieldDeltas": {
+          "requires": {
+            "before": [
+              "7be6f951-a614-52dc-94d3-2ce0d33765ff"
+            ],
+            "after": [
+              "4b6d1824-20e4-597e-b639-fae401f740f0"
+            ]
+          }
+        }
+      },
+      {
+        "goalId": "f1ed86f0-534d-57d7-8952-a004a331cc54",
+        "title": "Lösungen berechnen und pH bestimmen",
+        "fieldDeltas": {
+          "requires": {
+            "before": [
+              "28bb9d15-f865-5843-a035-6066580fea64",
+              "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+              "d2ccd1d5-56f7-583f-9724-e97441367f91"
+            ],
+            "after": [
+              "28bb9d15-f865-5843-a035-6066580fea64",
+              "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+              "d2ccd1d5-56f7-583f-9724-e97441367f91"
+            ]
+          }
+        }
+      }
+    ],
+    "removedGoals": [],
+    "otherLandscapeKeysChanged": []
+  },
+  "independentPriorReviewAndNativeAdoptionBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-targeted-genuine-independent-a-20261011-v1/FIRST.independent-conclusions.json",
+      "sha256": "addfc4afa960637334e4d5e0c0ef492b89cc8bb5c9109a888b359473c9b6d183",
+      "bytes": 85254
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-targeted-genuine-independent-b-20261011-v1/FIRST.independent-conclusions.json",
+      "sha256": "d4154eec7d37f4811609781446a836b3d566095d046d6f3979b21c96a0459fd0",
+      "bytes": 33056
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/native-D14/resolution-index.json",
+      "sha256": "d36dd1c62b3b3041b53a04a09590bc86b7458be3b9fae1aff6ba81be98c3cd9e",
+      "bytes": 9764
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-normal-source-and-HE-mandatory-scope-genuine-independent-b-v1/FINAL.independent-source-scope-D413-verdicts.json",
+      "sha256": "f9971c4dbe8b0676d8cd120a60b0e72ab10722d254134f3e46fbae8357a48f44",
+      "bytes": 9141
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-413-HE-required-view-and-source-D-context-targeted-independent-a-20261011-v1/FIRST.actual-neutral-author-supplement-independent-a.json",
+      "sha256": "11dbdff475977403c36d65826d3910e82e7fd52a5223c79aa9d3324993b29a72",
+      "bytes": 34641
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-four-materialized-applicability-D-context-root-preparation-20261011-v1/checks/exact-independent-D4-adoption.actual.json",
+      "sha256": "e929f6fc95ba97e383a115338215b2f94db5be8a42ecd91d5899d52e024bb7a1",
+      "bytes": 3251
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-root-normal-final-integration-20261011-v1/checks/current-active-all-five-protected-strict-ID-sets.actual.json",
+      "sha256": "6b51f1cf818b71e261f5e535c6c4a72d0a24f0d5356ad9b4dcafa322f76cbf26",
+      "bytes": 1788
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-stable-biologie369-checkpoint-dependency-qs-20261011-v1/FINAL.portability-and-published135.technical.actual.json",
+      "sha256": "6f5edba8539958c328e7bb49c5cc4736f1a69c49fe50c5dcb121ea6fdc3b3a81",
+      "bytes": 7678
+    }
+  ],
+  "addedMappingCurrentBindings": [
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "sha256": "013601c226cbe6e6022fd7d2c38011de084be96f4fbbf4ba5cf8531926cfd8ec",
+      "bytes": 344443
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.m7-b010-five-prospective-20261005-v1.b007-normal-source-scope-20261011-v1.review.json",
+      "sha256": "e339fd269e2dba73ee230d9f05441e8b7e54a5e9579dd886f12f15c1b670136a",
+      "bytes": 117651
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "sha256": "ef9e4098995a37921bca159508164f93dc7a0b7a2693bed3b84b69a3bcf0c030",
+      "bytes": 290908
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "sha256": "b91d181481db26061430b80cdf38df0f0a32d687d20911c40508cf336d702687",
+      "bytes": 258259
+    },
+    {
+      "path": "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "sha256": "7d7ef68aca98ad88a76b318c4d31c61f11b4f4fb52398ba5c5e03e97a0b022dc",
+      "bytes": 491428
+    }
+  ],
+  "remainingSourceScopeDuties": 496,
+  "omittedCanonicalGoals": 20,
+  "humanApproval": false,
+  "humanTrial": false,
+  "newScientificClosures": 0,
+  "normalActiveMappingAndHEScopeCopiesMatchReviewedNeutralInputs": [
+    {
+      "operativePath": "curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "reviewedNeutralCandidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-normal-source-and-HE-mandatory-scope-root-author-20261011-v1/candidate/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "sha256": "013601c226cbe6e6022fd7d2c38011de084be96f4fbbf4ba5cf8531926cfd8ec",
+      "byteExact": true,
+      "scientificOnlyEdits": [
+        {
+          "sourceGoalId": "d6ad6ab1-1c9a-5101-9b26-d2ed456d3089",
+          "canonicalGoalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+          "matchType": "partial",
+          "scientificScope": "prescribed practical component only; independent source acceptance pending"
+        }
+      ]
+    },
+    {
+      "operativePath": "curricula/DE/Gymnasium/mapping/DE-HE/lower-secondary/hessen_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.m7-b010-five-prospective-20261005-v1.b007-normal-source-scope-20261011-v1.review.json",
+      "reviewedNeutralCandidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-normal-source-and-HE-mandatory-scope-root-author-20261011-v1/candidate/mapping/DE-HE/lower-secondary/hessen_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.m7-b010-five-prospective-20261005-v1.b007-normal-source-scope-20261011-v1.review.json",
+      "sha256": "e339fd269e2dba73ee230d9f05441e8b7e54a5e9579dd886f12f15c1b670136a",
+      "byteExact": true,
+      "scientificOnlyEdits": []
+    },
+    {
+      "operativePath": "curricula/DE/Gymnasium/mapping/DE-NW/lower-secondary/nrw_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "reviewedNeutralCandidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-normal-source-and-HE-mandatory-scope-root-author-20261011-v1/candidate/mapping/DE-NW/lower-secondary/nrw_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "sha256": "ef9e4098995a37921bca159508164f93dc7a0b7a2693bed3b84b69a3bcf0c030",
+      "byteExact": true,
+      "scientificOnlyEdits": []
+    },
+    {
+      "operativePath": "curricula/DE/Gymnasium/mapping/DE-SH/lower-secondary/sh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "reviewedNeutralCandidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-normal-source-and-HE-mandatory-scope-root-author-20261011-v1/candidate/mapping/DE-SH/lower-secondary/sh_chemistry_lower_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "sha256": "b91d181481db26061430b80cdf38df0f0a32d687d20911c40508cf336d702687",
+      "byteExact": true,
+      "scientificOnlyEdits": []
+    },
+    {
+      "operativePath": "curricula/DE/Gymnasium/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "reviewedNeutralCandidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-normal-source-and-HE-mandatory-scope-root-author-20261011-v1/candidate/mapping/DE-TH/upper-secondary/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json",
+      "sha256": "7d7ef68aca98ad88a76b318c4d31c61f11b4f4fb52398ba5c5e03e97a0b022dc",
+      "byteExact": true,
+      "scientificOnlyEdits": [
+        {
+          "sourceGoalId": "th-chem-sekii-th-ch-sekii-4-1-3-loslichkeitsgleichgewichte-067-01-ab4ff945",
+          "onlyChangedField": "decision",
+          "before": "needs_canonical_goal",
+          "after": "needsCanonicalGoal",
+          "remainingDuty": "unchanged actual fractional precipitation content or experiment, no target added"
+        },
+        {
+          "sourceGoalId": "th-chem-sekii-th-ch-sekii-4-1-3-loslichkeitsgleichgewichte-069-01-e282522f",
+          "onlyChangedField": "decision",
+          "before": "needs_canonical_goal",
+          "after": "needsCanonicalGoal",
+          "remainingDuty": "unchanged actual fractional precipitation content or experiment, no target added"
+        }
+      ]
+    },
+    {
+      "operativePath": "curricula/DE/Gymnasium/composition-views/chemie/de-he-gk.view.json",
+      "reviewedNeutralCandidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-normal-source-and-HE-mandatory-scope-root-author-20261011-v1/candidate/composition-views/de-he-gk.view.json",
+      "sha256": "3ad4b599c9c98667a64725d61f084d0a13710360cccf5cbf3c5b7e28ec3b0b4c",
+      "byteExact": true,
+      "scopeDelta": {
+        "removed": [
+          "413040cd-ba74-5227-948c-a778b0bd0f56"
+        ],
+        "added": []
+      }
+    },
+    {
+      "operativePath": "curricula/DE/Gymnasium/composition-views/chemie/de-he-lk.view.json",
+      "reviewedNeutralCandidatePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-normal-source-and-HE-mandatory-scope-root-author-20261011-v1/candidate/composition-views/de-he-lk.view.json",
+      "sha256": "091cdff7f56824f86c900389b41bf7b478a40691e6ec77e7aec48294a6e5c712",
+      "byteExact": true,
+      "scopeDelta": {
+        "removed": [
+          "413040cd-ba74-5227-948c-a778b0bd0f56"
+        ],
+        "added": []
+      }
+    }
+  ]
+}
