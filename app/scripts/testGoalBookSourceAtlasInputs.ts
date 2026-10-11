@@ -6,6 +6,7 @@ import { tmpdir } from 'node:os'
 import { dirname, relative, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { fingerprintSemanticKindSourceGoal } from './goalBookModel'
+import { verifyGoalBookSourceAtlasInputs } from './checkGoalBookPublication'
 import {
   buildGoalBookSourceAtlasInputs,
   checkGoalBookSourceAtlasInputs,
@@ -117,8 +118,21 @@ export const testGoalBookSourceAtlasInputs = (): void => {
       writeFileSync(resolve(fixtureRoot, path), bytes)
     }
     checkGoalBookSourceAtlasInputs('config.json', fixtureRoot)
+    write('book.inputs.json', config)
+    write('book.json', {
+      bookId: config.bookId,
+      landscapePath: config.landscapePath,
+      semanticKindLedgerPath: config.semanticKindLedgerPath,
+      compositionViewManifestPath: config.manifestPath,
+    })
+    const publication = { bookId: config.bookId, configPath: resolve(fixtureRoot, 'book.json') }
+    verifyGoalBookSourceAtlasInputs(publication, fixtureRoot)
     write('doc.txt', 'changed bytes')
     assert.throws(() => checkGoalBookSourceAtlasInputs('config.json', fixtureRoot), /Stale generated atlas input/)
+    assert.throws(() => verifyGoalBookSourceAtlasInputs(publication, fixtureRoot), (error: unknown) =>
+      error instanceof Error && error.message.includes('Stale generated atlas input:')
+      && error.message.includes('source-projection.receipt.json') && error.message.length < 500,
+    'publication preflight rejects stale source bindings before rendering with a bounded file-specific error')
     write('doc.txt', 'fixture source bytes')
     write('source.json', { ...source, stage: 'SekII' })
     assert.throws(() => buildGoalBookSourceAtlasInputs(config, fixtureRoot), /Source-scope uncertainty changed/)

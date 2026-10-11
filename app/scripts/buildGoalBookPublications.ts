@@ -15,6 +15,7 @@ import { MAX_GOAL_BOOK_ORIGINAL_SOURCES_BYTES, parseGoalBookOriginalSources } fr
 import {
   goalBookPublicationPaths,
   parseGoalBookPublicationIndex,
+  verifyGoalBookSourceAtlasInputs,
   verifyPublishedGoalBook,
   type GoalBookPublicationIndex,
 } from './checkGoalBookPublication'
@@ -209,6 +210,9 @@ export const buildGoalBookPublications = async (options: GoalBookPublicationsBui
   }
   let stagingDirectory: string | undefined
   try {
+    for (const definition of GOAL_BOOK_PUBLICATION_REGISTRY) {
+      verifyGoalBookSourceAtlasInputs(goalBookPublicationPaths(definition, outputDirectory))
+    }
     const environmentDigest = await renderEnvironmentDigest(executablePath)
     const previousCache = await readGoalBookBuildCache(outputDirectory)
     const nextCache: GoalBookBuildCache = { schemaVersion: 1, books: {} }

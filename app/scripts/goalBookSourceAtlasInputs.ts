@@ -367,7 +367,7 @@ export const checkGoalBookSourceAtlasInputs = (configPath: string, repoRoot = RE
   const result = buildGoalBookSourceAtlasInputs(config, repoRoot)
   for (const [path, expected] of Object.entries(result.outputs)) {
     assert.ok(existsSync(local(repoRoot, path)), `Missing generated atlas input: ${path}`)
-    assert.equal(readFileSync(local(repoRoot, path), 'utf8'), expected, `Stale generated atlas input: ${path}`)
+    assert.ok(readFileSync(local(repoRoot, path), 'utf8') === expected, `Stale generated atlas input: ${path}`)
   }
   const expectedNames = sorted(Object.keys(result.outputs).filter(p => dirname(p) === config.outputDirectory).map(p => p.slice(config.outputDirectory.length + 1)))
   assert.deepEqual(readdirSync(local(repoRoot, config.outputDirectory)).sort(compare), expectedNames, 'Unexpected/stale atlas source projection files')

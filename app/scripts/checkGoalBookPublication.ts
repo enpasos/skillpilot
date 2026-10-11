@@ -1,4 +1,5 @@
 import { createHash } from 'node:crypto'
+import { readFileSync } from 'node:fs'
 import { readFile } from 'node:fs/promises'
 import { relative, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
@@ -304,8 +305,10 @@ export const assertGoalBookSourceAtlasConfigBinding = (
   }
 }
 
-export const verifyPublishedGoalBook = async (
-  paths: GoalBookPublicationPaths = defaultGoalBookPublicationPaths,
+/** The same strict source checks run before rendering and at final publication verification. */
+export const verifyGoalBookSourceAtlasInputs = (
+  paths: Pick<GoalBookPublicationPaths, 'bookId' | 'configPath'>,
+  repositoryRoot = REPOSITORY_ROOT,
 ) => {
   const sourceAtlasDefinition = goalBookDefinitionById(paths.bookId)
   const needsSourceAtlasInputs = sourceAtlasDefinition?.subject === 'chemistry'
@@ -313,14 +316,25 @@ export const verifyPublishedGoalBook = async (
   if (needsSourceAtlasInputs && !paths.configPath.endsWith('.json')) {
     fail('source-derived atlas config must have a JSON input companion')
   }
-  const companionPath = relative(REPOSITORY_ROOT, paths.configPath).replace(/\.json$/u, '.inputs.json')
+  const companionPath = relative(repositoryRoot, paths.configPath).replace(/\.json$/u, '.inputs.json')
   const sourceAtlasConfig = needsSourceAtlasInputs
-    ? readGoalBookSourceAtlasInputConfig(companionPath, REPOSITORY_ROOT) : null
+    ? readGoalBookSourceAtlasInputConfig(companionPath, repositoryRoot) : null
+  if (sourceAtlasConfig) {
+    assertGoalBookSourceAtlasConfigBinding(sourceAtlasConfig,
+      JSON.parse(readFileSync(paths.configPath, 'utf8')) as GoalBookConfigFile)
+  }
   const sourceAtlasInputs = sourceAtlasConfig
-    ? checkGoalBookSourceAtlasInputs(companionPath, REPOSITORY_ROOT) : null
+    ? checkGoalBookSourceAtlasInputs(companionPath, repositoryRoot) : null
   if (sourceAtlasInputs && sourceAtlasInputs.receipt.bookId !== paths.bookId) {
     fail('source-derived atlas input companion belongs to a different book')
   }
+  return { sourceAtlasConfig, sourceAtlasInputs }
+}
+
+export const verifyPublishedGoalBook = async (
+  paths: GoalBookPublicationPaths = defaultGoalBookPublicationPaths,
+) => {
+  const { sourceAtlasConfig, sourceAtlasInputs } = verifyGoalBookSourceAtlasInputs(paths)
   const [
     indexRaw,
     publishedModelRaw,
