@@ -146,6 +146,7 @@ class LearnerServiceCanonicalProjectionTest {
     private static final String CANONICAL_CHEMISTRY_SEK1_SEPARATION_ID = "5a709938-e0f5-42b7-94f0-cfded08963a2";
     private static final String CANONICAL_CHEMISTRY_SEK1_STATES_ID = "326d45bf-9f77-57d5-a054-93e76b034dd5";
     private static final String CANONICAL_CHEMISTRY_SEK1_SOLUTIONS_ID = "53fd1bfd-facb-54ae-b2dc-f667ed1414fc";
+    private static final String CANONICAL_CHEMISTRY_SEK1_SOLUTION_PREPARATION_ID = "1351706f-4ea6-56e9-951b-87b24cbcdee8";
     private static final String CANONICAL_CHEMISTRY_SEK1_ACID_BASE_ID = "d2ccd1d5-56f7-583f-9724-e97441367f91";
     private static final String CANONICAL_CHEMISTRY_SEK1_REACTIONS_CLUSTER_ID = "a00d302b-7762-4b9d-a6d7-de0c58b35540";
     private static final String CANONICAL_CHEMISTRY_SEK1_REACTION_CHARACTERISTICS_ID = "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566";
@@ -551,6 +552,14 @@ class LearnerServiceCanonicalProjectionTest {
         learner.setSelectedCurriculum(CANONICAL_CHEMISTRY_ID);
         when(plannedGoalRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(new PlannedGoal(learner, CANONICAL_CHEMISTRY_SEK1_CLUSTER_ID)));
+        // The former solutions atom is now a cluster. Its preparation child
+        // requires lab safety; knowing substance properties alone is insufficient.
+        when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
+                .thenReturn(List.of(new Mastery(learner, LEGACY_SEK1_CHEMISTRY_SUBSTANCES_ID, 1.0)));
+        assertThat(learnerService.getRichFrontier(LEARNER_ID))
+                .extracting(FrontierGoal::id)
+                .doesNotContain(CANONICAL_CHEMISTRY_SEK1_SOLUTION_PREPARATION_ID);
+
         when(masteryRepository.findByLearner_SkillpilotId(LEARNER_ID))
                 .thenReturn(List.of(
                         new Mastery(learner, LEGACY_SEK1_CHEMISTRY_WORKING_METHODS_ID, 1.0),
@@ -560,8 +569,8 @@ class LearnerServiceCanonicalProjectionTest {
 
         assertThat(frontier)
                 .extracting(FrontierGoal::id)
-                .contains(CANONICAL_CHEMISTRY_SEK1_HAZARDS_ID, CANONICAL_CHEMISTRY_SEK1_SEPARATION_ID, CANONICAL_CHEMISTRY_SEK1_STATES_ID)
-                .doesNotContain(CANONICAL_CHEMISTRY_SEK1_SOLUTIONS_ID);
+                .contains(CANONICAL_CHEMISTRY_SEK1_HAZARDS_ID, CANONICAL_CHEMISTRY_SEK1_SEPARATION_ID,
+                        CANONICAL_CHEMISTRY_SEK1_STATES_ID, CANONICAL_CHEMISTRY_SEK1_SOLUTION_PREPARATION_ID);
     }
 
     @Test

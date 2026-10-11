@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:0373f1bcdededfa5bde7196fb9a1edd8e6a568190e42ee3dd8be33fc9664488a",
+  "reviewInputFingerprint": "sha256:339d03148f1a64c516af93af42d8bacafcafe901a0852a972986f0d65d808e8e",
+  "goalCount": 7,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-current379-boundary7-direct-PCR-technical-context-first-pass-20261011-v2-a",
+      "roundId": "biologie-current379-boundary7-direct-PCR-technical-context-first-pass-20261011-v2-first-pass-a",
+      "independenceGroupId": "biologie-current379-boundary7-direct-PCR-technical-context-first-pass-20261011-v2-independent-a",
+      "runIds": [
+        "biologie-current379-seven-fresh-context-independent-a2-actual-run-20261011-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex agent; exact serving model identifier unavailable::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-current379-boundary7-direct-PCR-technical-context-first-pass-20261011-v2-b",
+      "roundId": "biologie-current379-boundary7-direct-PCR-technical-context-first-pass-20261011-v2-first-pass-b",
+      "independenceGroupId": "biologie-current379-boundary7-direct-PCR-technical-context-first-pass-20261011-v2-independent-b",
+      "runIds": [
+        "biologie-current379-current7-technical-context-genuine-b-20261011-v1.normal-D7"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 Codex; exact model deployment version not exposed::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [
+      "OpenAI"
+    ],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 7,
+    "unavailable": 0,
+    "requiresSynthesis": 7
+  },
+  "goals": [
+    {
+      "goalId": "528a3cd3-4a4d-550d-939a-8dc8656446e4",
+      "firstRecordId": "biologie-current379-seven-fresh-context-independent-a2-actual-run-20261011-v1:528a3cd3-4a4d-550d-939a-8dc8656446e4",
+      "secondRecordId": "biologie-current379-current7-technical-context-genuine-b-20261011-v1.normal-D7.01",
+      "firstRunId": "biologie-current379-seven-fresh-context-independent-a2-actual-run-20261011-v1",
+      "secondRunId": "biologie-current379-current7-technical-context-genuine-b-20261011-v1.normal-D7",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a3f483ce-126e-595c-999c-aa4d95106221",
+      "firstRecordId": "biologie-current379-seven-fresh-context-independent-a2-actual-run-20261011-v1:a3f483ce-126e-595c-999c-aa4d95106221",
+      "secondRecordId": "biologie-current379-current7-technical-context-genuine-b-20261011-v1.normal-D7.02",
+      "firstRunId": "biologie-current379-seven-fresh-context-independent-a2-actual-run-20261011-v1",
+      "secondRunId": "biologie-current379-current7-technical-context-genuine-b-20261011-v1.normal-D7",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "8eb86a82-122d-5cae-8f80-bb2850b29c2f",
+      "firstRecordId": "biologie-current379-seven-fresh-context-independent-a2-actual-run-20261011-v1:8eb86a82-122d-5cae-8f80-bb2850b29c2f",
+      "secondRecordId": "biologie-current379-current7-technical-context-genuine-b-20261011-v1.normal-D7.03",
+      "firstRunId": "biologie-current379-seven-fresh-context-independent-a2-actual-run-20261011-v1",
+      "secondRunId": "biologie-current379-current7-technical-context-genuine-b-20261011-v1.normal-D7",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "73a3419c-09a9-5415-a3c6-d56a3cdf5a29",
+      "firstRecordId": "biologie-current379-seven-fresh-context-independent-a2-actual-run-20261011-v1:73a3419c-09a9-5415-a3c6-d56a3cdf5a29",
+      "secondRecordId": "biologie-current379-current7-technical-context-genuine-b-20261011-v1.normal-D7.04",
+      "firstRunId": "biologie-current379-seven-fresh-context-independent-a2-actual-run-20261011-v1",
+      "secondRunId": "biologie-current379-current7-technical-context-genuine-b-20261011-v1.normal-D7",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "374e6de5-0747-57cb-99e3-e50ccb371124",
+      "firstRecordId": "biologie-current379-seven-fresh-context-independent-a2-actual-run-20261011-v1:374e6de5-0747-57cb-99e3-e50ccb371124",
+      "secondRecordId": "biologie-current379-current7-technical-context-genuine-b-20261011-v1.normal-D7.05",
+      "firstRunId": "biologie-current379-seven-fresh-context-independent-a2-actual-run-20261011-v1",
+      "secondRunId": "biologie-current379-current7-technical-context-genuine-b-20261011-v1.normal-D7",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "80235254-ca58-5ba0-9319-b842350d6eb2",
+      "firstRecordId": "biologie-current379-seven-fresh-context-independent-a2-actual-run-20261011-v1:80235254-ca58-5ba0-9319-b842350d6eb2",
+      "secondRecordId": "biologie-current379-current7-technical-context-genuine-b-20261011-v1.normal-D7.06",
+      "firstRunId": "biologie-current379-seven-fresh-context-independent-a2-actual-run-20261011-v1",
+      "secondRunId": "biologie-current379-current7-technical-context-genuine-b-20261011-v1.normal-D7",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "7d2da9ab-aed0-562b-a99a-840825fca009",
+      "firstRecordId": "biologie-current379-seven-fresh-context-independent-a2-actual-run-20261011-v1:7d2da9ab-aed0-562b-a99a-840825fca009",
+      "secondRecordId": "biologie-current379-current7-technical-context-genuine-b-20261011-v1.normal-D7.07",
+      "firstRunId": "biologie-current379-seven-fresh-context-independent-a2-actual-run-20261011-v1",
+      "secondRunId": "biologie-current379-current7-technical-context-genuine-b-20261011-v1.normal-D7",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

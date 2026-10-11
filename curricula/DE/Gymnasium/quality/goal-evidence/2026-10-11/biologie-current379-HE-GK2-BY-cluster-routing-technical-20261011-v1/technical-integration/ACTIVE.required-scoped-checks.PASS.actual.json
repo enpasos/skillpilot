@@ -1,0 +1,93 @@
+{
+  "commands": [
+    {
+      "name": "sourceAtlas",
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/buildGoalBookSourceAtlasInputs.ts",
+        "--config",
+        "app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json",
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdout": "PASS source atlas inputs: {\"canonicalCurricularAtomicGoals\":397,\"publishedCurricularAtomicGoals\":397,\"sourceViews\":24,\"unresolvedSourceScopeDecisions\":0,\"omittedGoals\":0}\n",
+      "stderr": ""
+    },
+    {
+      "name": "sourceAtlasRegression",
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/testGoalBookSourceAtlasInputs.ts"
+      ],
+      "exitCode": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "D7Prepared",
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-current379-HE-GK2-BY-cluster-routing-technical-20261011-v1/native/boundary-BY-direct-PCR-current397-native7.batch.config.json"
+      ],
+      "exitCode": 0,
+      "stdout": "Standalone goal-description batch valid: biologie-current379-boundary7-direct-PCR-technical-context-first-pass-20261011-v2; goals=7\n",
+      "stderr": ""
+    },
+    {
+      "name": "D7Finalized",
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-current379-HE-GK2-BY-cluster-routing-technical-20261011-v1/native/boundary-BY-direct-PCR-current397-native7.batch.config.json"
+      ],
+      "exitCode": 0,
+      "stdout": "Standalone resolution index valid: biologie-current379-boundary7-direct-PCR-technical-context-first-pass-20261011-v2; strict=7/7; live denominator owned by central report\n",
+      "stderr": ""
+    },
+    {
+      "name": "P10Current",
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-current369-v6-dual-reviewed-active-integration-technical-20261011-v1/positive/P10.active-namespace.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdout": "# Positive Goal Evidence Review: biologie-bio8-substantive-four-author-20261010-v3\nScope: Ten genuine A/B KEEP whole profiles, twenty complete bilingual cases; first active adoption, E1/G1 AI candidates\nConfigured goals: 10\nApproved: 0\nNeeds human review: 10\nRejected: 0\nBlocking issues: 0\n",
+      "stderr": ""
+    },
+    {
+      "name": "QAUnchanged",
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/generateGoalVisualizationQaLedgers.ts",
+        "--subject=biologie",
+        "--check"
+      ],
+      "exitCode": 0,
+      "stdout": "Goal visualization QA ledgers are up to date (1 subject file(s)).\n",
+      "stderr": ""
+    }
+  ],
+  "normalD7": 7,
+  "normalAtlasPublishedAtoms": 397,
+  "scienceGain": 0,
+  "sourceUnionOperatorHumanApproval": false
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-current379-seven-context-binding-targeted-independent-a-checkpoint-20261011-v1",
+  "campaignId": "biologie-current379-boundary7-direct-PCR-technical-context-first-pass-20261011-v2-a",
+  "roundId": "biologie-current379-boundary7-direct-PCR-technical-context-first-pass-20261011-v2-first-pass-a",
+  "batchId": "biologie-current379-boundary7-direct-PCR-technical-context-first-pass-20261011-v2-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:ec9de7faf4af0b27a1409d3ca094e60b2ecb9c905ef959d7533605bb1ac88248",
+  "bundleFingerprint": "sha256:0373f1bcdededfa5bde7196fb9a1edd8e6a568190e42ee3dd8be33fc9664488a",
+  "bookDigest": "sha256:47c894c339b9a6c29f5922052163afd3590a169ddb8da78904b392381f4f0c17",
+  "provider": "OpenAI",
+  "model": "Codex GPT-6 family; exact backend model and version not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:ef7840a72d9608ef99251405337f2e193bacf9c6e0524467528799879fbf8c3a",
+  "independenceGroupId": "biologie-current379-boundary7-direct-PCR-technical-context-first-pass-20261011-v2-independent-a",
+  "blindToOtherRuns": false,
+  "goalIds": [
+    "528a3cd3-4a4d-550d-939a-8dc8656446e4",
+    "a3f483ce-126e-595c-999c-aa4d95106221",
+    "8eb86a82-122d-5cae-8f80-bb2850b29c2f",
+    "73a3419c-09a9-5415-a3c6-d56a3cdf5a29",
+    "374e6de5-0747-57cb-99e3-e50ccb371124",
+    "80235254-ca58-5ba0-9319-b842350d6eb2",
+    "7d2da9ab-aed0-562b-a99a-840825fca009"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:a2c43190904a3c40d98e0fe201b5f18dd024e21da17bd7362fca126ca6cb40df"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:ec9de7faf4af0b27a1409d3ca094e60b2ecb9c905ef959d7533605bb1ac88248"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:97269116e17a3eda4195d1e3fd08d09585f7366b29b84fd519e3f367afb21712"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:8af9833b32b9a51c3b0c3152bd9c45bb7ec1837910fa60343723c3d3665041b8"
+    }
+  ],
+  "startedAt": "2026-10-11T17:13:29.596223+00:00",
+  "completedAt": "2026-10-11T17:32:09.830776+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:bb931f8404268c1292fee83ab781a6dd5a22abaf2f35f3e03ff16f7d91df8690",
+  "toolchainVersion": "codex-own-peer-aware-targeted-context-supplement-v1"
+}

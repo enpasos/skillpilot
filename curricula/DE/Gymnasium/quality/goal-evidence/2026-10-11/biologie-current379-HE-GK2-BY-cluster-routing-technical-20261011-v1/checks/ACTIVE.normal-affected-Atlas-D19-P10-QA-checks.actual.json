@@ -1,0 +1,62 @@
+{
+  "role": "Actual normal scoped affected checks after authorized active route adoption; no new scientific vote",
+  "commands": [
+    {
+      "name": "atlas",
+      "command": "node --import tsx scripts/buildGoalBookSourceAtlasInputs.ts --config app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json --check",
+      "result": {
+        "chunk_id": "900a1e",
+        "wall_time_seconds": 0.768327741,
+        "exit_code": 0,
+        "original_token_count": 43,
+        "output": "PASS source atlas inputs: {\"canonicalCurricularAtomicGoals\":397,\"publishedCurricularAtomicGoals\":397,\"sourceViews\":24,\"unresolvedSourceScopeDecisions\":0,\"omittedGoals\":0}\n"
+      }
+    },
+    {
+      "name": "atlasRegression",
+      "command": "node --import tsx scripts/testGoalBookSourceAtlasInputs.ts",
+      "result": {
+        "chunk_id": "f36f2a",
+        "wall_time_seconds": 0.25375766,
+        "exit_code": 0,
+        "original_token_count": 0,
+        "output": ""
+      }
+    },
+    {
+      "name": "nativeD19",
+      "command": "node --import tsx scripts/materializeGoalDescriptionRolloutBatch.ts check --config curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-current369-v6-dual-reviewed-active-integration-technical-20261011-v1/description/native-D19.technical.config.json",
+      "result": {
+        "chunk_id": "30b427",
+        "wall_time_seconds": 0.906311016,
+        "exit_code": 0,
+        "original_token_count": 31,
+        "output": "Standalone goal-description batch valid: biologie-Bio8-current369-Bio3-combined-native19-first-pass-20261011-v6; goals=19\n"
+      }
+    },
+    {
+      "name": "P10",
+      "command": "node --import tsx scripts/positiveGoalEvidenceReview.ts --config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-current369-v6-dual-reviewed-active-integration-technical-20261011-v1/positive/P10.active-namespace.config.json --mode=check",
+      "result": {
+        "chunk_id": "b538b6",
+        "wall_time_seconds": 0.439982946,
+        "exit_code": 0,
+        "original_token_count": 73,
+        "output": "# Positive Goal Evidence Review: biologie-bio8-substantive-four-author-20261010-v3\nScope: Ten genuine A/B KEEP whole profiles, twenty complete bilingual cases; first active adoption, E1/G1 AI candidates\nConfigured goals: 10\nApproved: 0\nNeeds human review: 10\nRejected: 0\nBlocking issues: 0\n"
+      }
+    },
+    {
+      "name": "QA",
+      "command": "node --import tsx scripts/generateGoalVisualizationQaLedgers.ts --subject=biologie --check",
+      "result": {
+        "chunk_id": "a3db3f",
+        "wall_time_seconds": 0.0000097,
+        "exit_code": 0,
+        "original_token_count": 17,
+        "output": "Goal visualization QA ledgers are up to date (1 subject file(s)).\n"
+      }
+    }
+  ],
+  "newSourceReview": false,
+  "humanApproval": false
+}

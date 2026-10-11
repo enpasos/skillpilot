@@ -20,8 +20,10 @@ gradlew text eol=lf
 # Captured primary-source excerpts and raw terminal output retain exact bytes.
 # Their whitespace belongs to the source/tool, not authored documentation.
 curricula/**/quality/**/primary/*.txt -text -whitespace
+curricula/**/quality/**/primary/*.html -text -whitespace
 curricula/**/quality/**/primary/*.snapshot -text -whitespace
 curricula/**/quality/**/read-primary/*.txt -text -whitespace
+curricula/**/quality/**/source-readonly/*.txt -text -whitespace
 curricula/**/quality/**/*.actual.txt -text -whitespace
 
 # Hash-bound review materials retain the CSV writer's actual line endings.
@@ -32,12 +34,18 @@ curricula/**/quality/**/inputs/AGENTS*.md -whitespace
 curricula/**/quality/**/generation-*.actual.json -whitespace
 
 # Frozen native review pages retain renderer bytes, including empty-line spacing.
+curricula/**/quality/**/native/**/*.html -text -whitespace
+curricula/**/quality/**/inspected-exact-native/**/*.html -text -whitespace
 curricula/**/quality/**/book.html -text -whitespace
 curricula/**/quality/**/*.normal-renderer.html -text -whitespace
 
 # Native validation reports are captured tool outputs; preserve their sealed bytes.
 curricula/**/quality/**/*.normal.report.md -text -whitespace
 curricula/**/quality/**/*.normal.actual.report.md -text -whitespace
+
+# Captured check logs and JUnit reports retain their exact tool-output bytes.
+curricula/**/quality/**/checks/**/*.log -text -whitespace
+curricula/**/quality/**/checks/**/*.xml -text -whitespace
 
 # Preserve exact line endings in these hash-bound captured source bytes.
 curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-law-and-contract-twenty-bilingual-positive-author-v1/actual-primary-norm-inputs/by-police-nuernberg-20250325.actual.bytes -text

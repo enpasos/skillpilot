@@ -1494,14 +1494,19 @@ public class LearnerControllerIntegrationTest {
         // SN/ST also replace the investigation target with morphological
         // classification, leaving that replacement neutral for atomic totals.
         // The bounded SH systematics source adds one morphological target.
+        // Reviewed BY B10.4 and RP TF12 sources add cultural evolution in
+        // Sek I; RP TF12 also adds ancestry-based explanations of behaviour.
+        // Reviewed Chemistry B007 splits lab safety and solutions into atoms.
+        // The applicable child targets differ by jurisdiction; keep explicit
+        // totals for both duration models instead of counting the former clusters.
         String[][] scopes = {
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BW", "83", "83" },
-                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BY", "130", "130" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BY", "131", "131" },
                 // Reviewed HB reflection target adds one atom in both duration models.
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-HB", "99", "99" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-HE", "130", "130" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-NI", "109", "109" },
-                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-RP", "78", "78" },
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-RP", "80", "80" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-SL", "61", "61" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BB", "82", "82" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BE", "82", "82" },
@@ -1512,22 +1517,22 @@ public class LearnerControllerIntegrationTest {
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-SN", "169", "169" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-ST", "166", "166" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-TH", "171", "171" },
-                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BB", "83", "83" },
-                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BE", "83", "83" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BB", "84", "84" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BE", "84", "84" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BW", "74", "74" },
-                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BY", "89", "89" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-BY", "90", "90" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-HB", "74", "74" },
-                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-HE", "89", "89" },
-                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-HH", "58", "58" },
-                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-MV", "57", "57" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-HE", "92", "92" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-HH", "59", "59" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-MV", "58", "58" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-NI", "78", "78" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-NW", "59", "59" },
                 { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-RP", "58", "58" },
-                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SH", "58", "58" },
-                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SL", "58", "58" },
-                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SN", "58", "58" },
-                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-ST", "58", "58" },
-                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-TH", "58", "58" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SH", "59", "59" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SL", "59", "59" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-SN", "59", "59" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-ST", "59", "59" },
+                { "Chemie", CANONICAL_CHEMISTRY_ID, "DE-TH", "61", "61" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-BW", "151", "151" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-BY", "111", "111" },
                 { "Physik", CANONICAL_PHYSICS_ID, "DE-HB", "142", "142" },
@@ -1603,6 +1608,18 @@ public class LearnerControllerIntegrationTest {
         String respirationGoal = "0f50cad3-8c4e-5bc4-8833-3a1ecdd71d38";
         String couplingGoal = "32483d30-2162-50a5-a6cc-05b7f2467ab1";
         String disgustReflectionGoal = "55036b74-af78-5217-9e43-c5bdc975c958";
+        if (Set.of("DE-BY", "DE-RP").contains(jurisdiction)) {
+            assertThat(targets).as("reviewed cultural evolution target for %s %s", jurisdiction, durationModel)
+                    .contains("80235254-ca58-5ba0-9319-b842350d6eb2")
+                    .doesNotContain(
+                            "73a3419c-09a9-5415-a3c6-d56a3cdf5a29", // restriction: separate SekII source
+                            "a3f483ce-126e-595c-999c-aa4d95106221", // PCR
+                            "8eb86a82-122d-5cae-8f80-bb2850b29c2f"); // gel electrophoresis
+        }
+        if ("DE-RP".equals(jurisdiction)) {
+            assertThat(targets).as("reviewed RP ancestry and behaviour target for %s", durationModel)
+                    .contains("7d2da9ab-aed0-562b-a99a-840825fca009");
+        }
         if ("DE-HB".equals(jurisdiction)) {
             assertThat(targets).as("HB natural-object reflection target for %s", durationModel)
                     .contains(disgustReflectionGoal);

@@ -1,0 +1,50 @@
+{
+  "recordedAt": "2026-10-11T16:09:13.011905+00:00",
+  "purpose": "targeted backend regression repair verification before Biology379 stable checkpoint",
+  "baseGitCommit": "1bf87af74c7ca08dbc3a3aeaa85f4d7027862a60",
+  "exitCode": 0,
+  "javaVersion": "openjdk version \"25.0.2\" 2026-01-20 LTS\nOpenJDK Runtime Environment Corretto-25.0.2.10.1 (build 25.0.2+10-LTS)\nOpenJDK 64-Bit Server VM Corretto-25.0.2.10.1 (build 25.0.2+10-LTS, mixed mode, sharing)\n",
+  "duration": "1m48s",
+  "tests": [
+    {
+      "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.controller.LearnerControllerIntegrationTest.xml",
+      "sha256": "6050d21464482b76d794434780e2257a6a29bc52844c4be8fac32bd65b115b14",
+      "name": "com.skillpilot.backend.controller.LearnerControllerIntegrationTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "path": "backend/build/test-results/test/TEST-com.skillpilot.backend.service.LearnerServiceCanonicalProjectionTest.xml",
+      "sha256": "80b6bd42f7003dad3f9525b5bbe2625ec421afd8182b3902d02dfda08440ebbb",
+      "name": "com.skillpilot.backend.service.LearnerServiceCanonicalProjectionTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "reviewedFiles": [
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+      "sha256": "c0bff7617aec4f120bf89d1077612a2538479b040d7fab0e53416d186c39b3f2"
+    },
+    {
+      "path": "backend/src/test/java/com/skillpilot/backend/service/LearnerServiceCanonicalProjectionTest.java",
+      "sha256": "7646ab1d4b8ae2bc1eda245ef31dae1841b218b7570db8a65de8ee8f86640c8c"
+    }
+  ],
+  "localResourceQualification": "Local processResources excluded generated static/** using an untracked tmp init script because only4GB storage remained; these state/projection/frontier tests load actual current ../curricula. Full unmodified resource/build/test suite must pass remotely on the pushed commit.",
+  "log": {
+    "path": "tmp/biologie379-backend-targeted-v2.actual.log",
+    "sha256": "a9ef1f25c5b3ad447940008d766dd434558ad45906243faf357792add5d6ea47"
+  },
+  "notClaimed": [
+    "full backend check",
+    "GitHub CI pass",
+    "runtime deployment",
+    "Biology M7",
+    "human approval"
+  ]
+}

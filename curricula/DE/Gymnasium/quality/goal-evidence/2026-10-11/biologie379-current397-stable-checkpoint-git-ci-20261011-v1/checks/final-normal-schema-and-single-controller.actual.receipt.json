@@ -1,0 +1,46 @@
+{
+  "role": "Actual targeted controller regression after final seven-context/source/assessment visibility adoption; local qualification only",
+  "createdAt": "2026-10-11T17:50:19.226463+00:00",
+  "normalSchemaCommand": [
+    "python",
+    "scripts/validate_schemas.py"
+  ],
+  "normalSchemaExitCode": 0,
+  "normalSchemaLog": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie379-current397-stable-checkpoint-git-ci-20261011-v1/checks/final-normal-schemas.actual.txt",
+    "sha256": "66ad9668f34948dbc1bcf8ef5810b87135321fa496bcb6dfcc5648bab6246ba7",
+    "bytes": 180
+  },
+  "targetedTestExitCode": 0,
+  "tests": 1,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "testName": "learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals()",
+  "junit": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie379-current397-stable-checkpoint-git-ci-20261011-v1/checks/final-single-controller.actual.xml",
+    "sha256": "3ee05ec5ebf19420c57495eeb9552e9760fcb03920e8ad1601d1eb2fffe1b1e1",
+    "bytes": 3173801
+  },
+  "log": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie379-current397-stable-checkpoint-git-ci-20261011-v1/checks/biologie379-final-single-controller.actual.log",
+    "sha256": "8a9b7d7fa010f45ec12e30346498381ac90e0652cbafce1ef298846af15074c8",
+    "bytes": 8705
+  },
+  "backendControllerSource": {
+    "path": "backend/src/test/java/com/skillpilot/backend/controller/LearnerControllerIntegrationTest.java",
+    "sha256": "c0bff7617aec4f120bf89d1077612a2538479b040d7fab0e53416d186c39b3f2",
+    "bytes": 114858
+  },
+  "canonical": {
+    "path": "curricula/DE/Gymnasium/canonical/DE_DEU_S_GYM_CANONICAL_BIOLOGIE.de.json",
+    "sha256": "e469773e735f756d74a1c1bd7ad4eaa9d78eab5520efedeb0c01152a7f0d5fae",
+    "bytes": 1353793
+  },
+  "jdk": "Corretto25.0.2+10-LTS actual checked",
+  "localResourceQualification": "tmp init only excludes generated static/** while executing real Controller test; normal full resources/check test remains required on GitHub",
+  "normalValidatorChanged": false,
+  "normalQualityGatesWeakened": false,
+  "remoteCIPassed": false,
+  "humanApproval": false
+}

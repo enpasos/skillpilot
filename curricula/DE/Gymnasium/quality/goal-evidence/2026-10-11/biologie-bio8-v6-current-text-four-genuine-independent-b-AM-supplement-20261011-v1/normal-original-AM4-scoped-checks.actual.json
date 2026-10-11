@@ -1,0 +1,36 @@
+{
+  "commands": [
+    {
+      "lane": "A",
+      "argv": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "/home/enpasos/projects/skillpilot/app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-v6-current-text-four-genuine-independent-b-AM-supplement-20261011-v1/A4.original.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdout": "# Semantic Atomicity Review: biologie-Bio8-v6-four-current-text-genuine-independent-b-a-continuation-20261011-v1\nScope: Four actually changed current Bio8v6 text bindings; original independent B scoped continuation\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 4\nCurrent reviewed atomic: 4\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\n",
+      "stderr": ""
+    },
+    {
+      "lane": "M",
+      "argv": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "/home/enpasos/projects/skillpilot/app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-v6-current-text-four-genuine-independent-b-AM-supplement-20261011-v1/M4.original.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdout": "# Memory Card Review: biologie-Bio8-v6-four-current-text-genuine-independent-b-m-continuation-20261011-v1\nScope: Four actually changed current Bio8v6 text bindings; original independent B scoped continuation\nRule: memory-card-review-v1\nOrdinary atomic goals in scope: 4\nCurrent no-memory decisions: 4\nCurrent memory-required decisions: 0\nCurrent needs developer review: 0\nMemory goals in scope: 0\nTraced memory goals: 0\nKnown deck IDs: 3\nDeck files: 6\nCard rows: 54\nPrimary cards in scope: 0\nKept primary cards: 0\nCards marked remove: 0\nCards needing developer review: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\nMissing card review records: 0\nStale card review records: 0\nObsolete card review records: 0\nComposition visibility scopes: 0\nMemory-required goals checked in views: 0\nMemory-required goals without visible memory node: 0\n",
+      "stderr": ""
+    }
+  ],
+  "normalHelpersUnmodified": true,
+  "oldOriginalBSealUnmodified": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-current369-v6-genuine-independent-b-20261011-v1/original-independent-b.freeze.json",
+    "bytes": 30957,
+    "sha256": "sha256:c93312f6092c4ddd37cc209b4a8421769f485fcf0abafc0cb0d836c3e88e4e7f"
+  },
+  "newIndependentVote": false,
+  "activeWrites": false
+}

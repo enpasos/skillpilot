@@ -1,0 +1,1 @@
+Technically join the two sealed genuine whole-profile reviews. Preserve all exact P10 profiles/cases/fingerprints and AI-candidate E1/G1 status. This is a non-blind synthesizer adoption, never a new independent vote. Disclose actual A aggregate-peer metadata. Preserve Source/operator/Human holds.

@@ -1,0 +1,118 @@
+{
+  "role": "Actual normal status generated with regular readonly source inputs and own mutable candidate canonical/kinds/Atlas; no helper or gate changes",
+  "candidateMaturity": "M6",
+  "normalRules": {
+    "CQR-003": {
+      "id": "CQR-003",
+      "status": "pass",
+      "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+      "metrics": {
+        "totalJurisdictions": 16,
+        "coveredJurisdictions": 16,
+        "sourceBackedJurisdictions": 16,
+        "sourceCompleteJurisdictions": 16,
+        "fullCoverageJurisdictions": 16,
+        "uncoveredJurisdictions": 0,
+        "incompleteJurisdictions": 0,
+        "unsupportedAssignmentJurisdictions": 0,
+        "sourceUnmappedJurisdictions": 0,
+        "unsupportedAssignedAtomicGoals": 0,
+        "unmappedSourceAtomicGoals": 0,
+        "sourceAtomicGoals": 1024,
+        "sourceMappedToViewAtomicGoals": 1024,
+        "sourceOriginalGoals": 1024,
+        "sourceFullyCoveredOriginalGoals": 1024,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 0,
+        "surrogateBackedAtomicGoals": 4,
+        "partialSourceLinkedAtomicGoals": 0,
+        "warningedJurisdictions": 0,
+        "cleanJurisdictions": 16,
+        "partialJurisdictions": 0,
+        "errorJurisdictions": 0,
+        "minSourceBackedAtomicGoals": 62,
+        "maxVisibleAtomicGoals": 365,
+        "maxSourceBackedAtomicGoals": 365,
+        "totalAtomicGoals": 399
+      }
+    },
+    "CQR-004": {
+      "id": "CQR-004",
+      "status": "pass",
+      "summary": "Course-level mapping is clean for 1249 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+      "metrics": {
+        "configuredMappingFiles": 65,
+        "sourceGoals": 1049,
+        "sourceGoalsWithCourseLevel": 1049,
+        "gkLkSourceGoals": 490,
+        "lkSourceGoals": 559,
+        "unspecifiedSourceGoals": 6,
+        "checkedMappingEdges": 1249,
+        "defaultedUnspecifiedMappingEdges": 0,
+        "reviewedCourseLevelExceptions": 0,
+        "mismatches": 0,
+        "missingSourceGoals": 0,
+        "missingTargetGoals": 0,
+        "unmappedCourseLevelSourceGoals": 0
+      }
+    },
+    "CQR-501": {
+      "id": "CQR-501",
+      "status": "pass",
+      "summary": "No active applicability warning debt is visible.",
+      "metrics": {
+        "activeWarnings": 0,
+        "rawActiveWarnings": 0,
+        "diagnosticPartialOnlyWarnings": 1380,
+        "acceptedWarnings": 0,
+        "obsoleteAcceptedWarnings": 0
+      },
+      "details": [
+        "non-blocking partial-only applicability diagnostics APV-202: 1380",
+        "diagnostic finding type APV-202: 1380"
+      ]
+    }
+  },
+  "maturityFloorsPass": true,
+  "deepQAStillRequiresActualCurrentSevenContextDualContinuation": true,
+  "preContinuationCQR303Diagnostic": {
+    "id": "CQR-303",
+    "status": "fail",
+    "summary": "Deep curriculum QA is incomplete: 364/397 current curricularAtomic goals strictly complete.",
+    "metrics": {
+      "expectedGoals": 397,
+      "remaining": 33,
+      "strictComplete": 364,
+      "currentDescriptionResolutions": 364,
+      "currentPositiveEvidenceProfiles": 379,
+      "currentSemanticAtomicityDecisions": 397,
+      "currentMemoryReviewDecisions": 397,
+      "currentVisualizationQaRecords": 379,
+      "deferredVisualizations": 0,
+      "requiredChecksPassed": 5,
+      "requiredChecksTotal": 6,
+      "blockingIssues": 16
+    },
+    "details": [
+      "biologie: description-resolution supersession lacks an intact old claim and current replacement for 0daa79f6-8f61-5506-98f9-65db83062ba8",
+      "biologie: description-resolution supersession lacks an intact old claim and current replacement for 475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+      "biologie: description-resolution supersession lacks an intact old claim and current replacement for 5c7f0085-7ca8-5a67-bc87-57319acec749",
+      "biologie: description-resolution supersession lacks an intact old claim and current replacement for 632b6042-0c0e-5bb6-a879-f03ad4be6eee",
+      "biologie: description-resolution supersession lacks an intact old claim and current replacement for 8eb86a82-122d-5cae-8f80-bb2850b29c2f",
+      "biologie: description-resolution supersession lacks an intact old claim and current replacement for 8f6933b1-6e02-5512-acf2-a90a7fb9cb75",
+      "biologie: description-resolution supersession lacks an intact old claim and current replacement for 9540a95d-5ca5-527c-918f-d702e99be07a",
+      "biologie: description-resolution supersession lacks an intact old claim and current replacement for a515e493-6f90-5371-9470-28a0cf50f087",
+      "biologie: description-resolution supersession lacks an intact old claim and current replacement for ceb54223-197c-5289-a9c6-19358912e144",
+      "biologie:biologie-Bio8-current369-Bio3-combined-native19-first-pass-20261011-v6-strict-resolutions: 374e6de5-0747-57cb-99e3-e50ccb371124: Current V3 context for 374e6de5-0747-57cb-99e3-e50ccb371124 disagrees with the canonical goal",
+      "biologie:biologie-Bio8-current369-Bio3-combined-native19-first-pass-20261011-v6-strict-resolutions: 528a3cd3-4a4d-550d-939a-8dc8656446e4: Current V3 context for 528a3cd3-4a4d-550d-939a-8dc8656446e4 disagrees with the canonical goal",
+      "biologie:biologie-Bio8-current369-Bio3-combined-native19-first-pass-20261011-v6-strict-resolutions: 73a3419c-09a9-5415-a3c6-d56a3cdf5a29: Current V3 context for 73a3419c-09a9-5415-a3c6-d56a3cdf5a29 disagrees with the canonical goal",
+      "biologie:biologie-Bio8-current369-Bio3-combined-native19-first-pass-20261011-v6-strict-resolutions: 7d2da9ab-aed0-562b-a99a-840825fca009: Current V3 context for 7d2da9ab-aed0-562b-a99a-840825fca009 disagrees with the canonical goal",
+      "biologie:biologie-Bio8-current369-Bio3-combined-native19-first-pass-20261011-v6-strict-resolutions: 80235254-ca58-5ba0-9319-b842350d6eb2: Current V3 context for 80235254-ca58-5ba0-9319-b842350d6eb2 disagrees with the canonical goal",
+      "biologie:biologie-Bio8-current369-Bio3-combined-native19-first-pass-20261011-v6-strict-resolutions: 8eb86a82-122d-5cae-8f80-bb2850b29c2f: Current V3 context for 8eb86a82-122d-5cae-8f80-bb2850b29c2f disagrees with the canonical goal",
+      "biologie:biologie-Bio8-current369-Bio3-combined-native19-first-pass-20261011-v6-strict-resolutions: a3f483ce-126e-595c-999c-aa4d95106221: Current V3 context for a3f483ce-126e-595c-999c-aa4d95106221 disagrees with the canonical goal"
+    ]
+  },
+  "allOriginalOperatorHumanAndFullSourceHoldsRemainSeparate": true,
+  "sourceOriginals1024DoNotEqualCurricularAtoms397": true,
+  "activeWrites": 0
+}

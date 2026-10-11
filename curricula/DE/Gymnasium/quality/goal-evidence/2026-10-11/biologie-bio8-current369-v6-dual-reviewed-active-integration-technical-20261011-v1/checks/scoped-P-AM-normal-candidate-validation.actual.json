@@ -1,0 +1,84 @@
+{
+  "commands": [
+    {
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-current369-v6-dual-reviewed-active-integration-technical-20261011-v1/positive/P10.active-namespace.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdout": "# Positive Goal Evidence Review: biologie-bio8-substantive-four-author-20261010-v3\nScope: Ten genuine A/B KEEP whole profiles, twenty complete bilingual cases; first active adoption, E1/G1 AI candidates\nConfigured goals: 10\nApproved: 0\nNeeds human review: 10\nRejected: 0\nBlocking issues: 0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-current369-v6-dual-reviewed-active-integration-technical-20261011-v1/positive/protected-owner-01.current-binding.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdout": "# Positive Goal Evidence Review: biologie-m7-q1-three-revisions-current-20260930-v1\nScope: Two unchanged existing whole native records; original scientific review and date retained exactly.\nConfigured goals: 2\nApproved: 0\nNeeds human review: 2\nRejected: 0\nBlocking issues: 0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-current369-v6-dual-reviewed-active-integration-technical-20261011-v1/positive/protected-owner-02.current-binding.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdout": "# Positive Goal Evidence Review: bio23-one15-native-current-p23-independent-a-v1\nScope: 22 exact original Molecular P records, unchanged historic scientific/run binding; current a515 prerequisite route adopted separately\nConfigured goals: 22\nApproved: 0\nNeeds human review: 22\nRejected: 0\nBlocking issues: 0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-current369-v6-dual-reviewed-active-integration-technical-20261011-v1/positive/protected-a515.only-current-binding.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdout": "# Positive Goal Evidence Review: bio23-one15-native-current-p23-independent-a-v1\nScope: One existing whole a515 P profile: requires-only current input binding, no new scientific text\nConfigured goals: 1\nApproved: 0\nNeeds human review: 1\nRejected: 0\nBlocking issues: 0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-current369-v6-dual-reviewed-active-integration-technical-20261011-v1/atomicity-memory/A397.active.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdout": "# Semantic Atomicity Review: canonical-biology-full\nScope: Canonical biology full landscape\nRule: semantic-atomicity-v1\nContent leaf goals in scope: 397\nCurrent reviewed atomic: 397\nCurrent needs developer review: 0\nCurrent non-atomic: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-current369-v6-dual-reviewed-active-integration-technical-20261011-v1/atomicity-memory/M397.active.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdout": "# Memory Card Review: canonical-biology-full\nScope: Canonical biology full landscape\nRule: memory-card-review-v1\nOrdinary atomic goals in scope: 397\nCurrent no-memory decisions: 387\nCurrent memory-required decisions: 10\nCurrent needs developer review: 0\nMemory goals in scope: 3\nTraced memory goals: 3\nKnown deck IDs: 3\nDeck files: 6\nCard rows: 54\nPrimary cards in scope: 27\nKept primary cards: 27\nCards marked remove: 0\nCards needing developer review: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\nMissing card review records: 0\nStale card review records: 0\nObsolete card review records: 0\nComposition visibility scopes: 8\nMemory-required goals checked in views: 37\nMemory-required goals without visible memory node: 0\n\nMemory-required decisions\n- Bau der Pflanzenzelle beschreiben [e0d04e58-1591-5230-bfa6-5c685b56d25b]: Memory-Anteil streng begrenzt auf kompakte biologische Kennzeichen, Zell-, Blüten- und Blutbestandteile, die RGT-Regel oder Chromosomenbegriffe; Erklären, Modellieren und Anwenden bleiben Teil des normalen Lernziels.\n- Bau des Blutes [480146f6-4749-52e3-a5e5-d08629e0c38f]: Memory-Anteil streng begrenzt auf kompakte biologische Kennzeichen, Zell-, Blüten- und Blutbestandteile, die RGT-Regel oder Chromosomenbegriffe; Erklären, Modellieren und Anwenden bleiben Teil des normalen Lernziels.\n- Blütenaufbau und Funktion [be06115e-96e8-537e-b18a-313056e6cbe8]: Memory-Anteil streng begrenzt auf kompakte biologische Kennzeichen, Zell-, Blüten- und Blutbestandteile, die RGT-Regel oder Chromosomenbegriffe; Erklären, Modellieren und Anwenden bleiben Teil des normalen Lernziels.\n- Heimische Laubbäume kennen und erkennen [87ce1746-9904-56ad-9705-ffabbd918c5b]: NI89 FW7 Ende6: Die vier stabilen Namen-Merkmal-Zuordnungen sind sachgerechter Recallstoff. Enges Vierkarten-Deck ergänzt das Erkennen an frischen Ansichten, ersetzt dieses aber nicht.\n- Karyogramm und Chromosomenfehler [74740709-fc77-5a54-88a6-bb14c3777941]: Memory-Anteil streng begrenzt auf kompakte biologische Kennzeichen, Zell-, Blüten- und Blutbestandteile, die RGT-Regel oder Chromosomenbegriffe; Erklären, Modellieren und Anwenden bleiben Teil des normalen Lernziels.\n- Kennzeichen des Lebens erläutern [11e90f71-a9a4-5a57-b619-ad5d81e81f96]: Die Karte biology_core_001 hält sechs kompakte Kennzeichen des Lebens abrufbar; die fachliche Erklärung an beobachteten Lebewesen bleibt Zielinhalt. Die Organisationskarte biology_core_002 wird nach dem Split nicht mehr diesem Ziel zugerechnet.\n- Kennzeichen von Lebewesen ordnen [55bdfb1d-5c14-5b1c-bc8e-4ab428ef59ba]: Memory-Anteil streng begrenzt auf kompakte biologische Kennzeichen, Zell-, Blüten- und Blutbestandteile, die RGT-Regel oder Chromosomenbegriffe; Erklären, Modellieren und Anwenden bleiben Teil des normalen Lernziels.\n- Merkmale und Gemeinsamkeiten der fünf Wirbeltiergruppen nennen [9425347d-25bd-5095-9198-7574f255c938]: NI91 FW8 Ende6: Die kompakten gruppenspezifischen Merkmale und der gemeinsame Skelettbezug sind stabiler elementarer Recallstoff; sechs schmale Karten vermeiden einen versteckten zweiten Taxonomiekurs.\n- Organisationsstufen eines Vielzellers erläutern [d71e2310-2331-5e66-b7df-c2807fccb329]: Die Karte biology_core_002 hält die Reihenfolge Zelle–Gewebe–Organ–Organsystem–Organismus abrufbar; das erläuterte Verhältnis an einem Vielzeller bleibt fachliche Leistung des neuen Zieles.\n- RGT-Regel anwenden [e566ae2f-1294-55c0-ba4c-6aeb4954118c]: Memory-Anteil streng begrenzt auf kompakte biologische Kennzeichen, Zell-, Blüten- und Blutbestandteile, die RGT-Regel oder Chromosomenbegriffe; Erklären, Modellieren und Anwenden bleiben Teil des normalen Lernziels.\n",
+      "stderr": ""
+    }
+  ],
+  "activeWrites": 0,
+  "newIndependentReview": false
+}

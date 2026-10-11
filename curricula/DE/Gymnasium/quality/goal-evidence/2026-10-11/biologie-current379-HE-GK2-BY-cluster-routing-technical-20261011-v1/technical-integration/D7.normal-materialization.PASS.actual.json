@@ -1,0 +1,98 @@
+{
+  "commands": [
+    {
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-current379-HE-GK2-BY-cluster-routing-technical-20261011-v1/native/boundary-BY-direct-PCR-current397-native7.batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "Standalone dual summary materialized: biologie-current379-boundary7-direct-PCR-technical-context-first-pass-20261011-v2; goals=7; requiresSynthesis=7\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-current379-HE-GK2-BY-cluster-routing-technical-20261011-v1/native/boundary-BY-direct-PCR-current397-native7.batch.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-current379-HE-GK2-BY-cluster-routing-technical-20261011-v1/native/boundary-BY-direct-PCR-current397-native7/synthesis-authoring.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "Standalone synthesis manifest materialized: biologie-current379-boundary7-direct-PCR-technical-context-first-pass-20261011-v2; decisions=7; fingerprint=sha256:3f8906220189595fb1411f5265866dd9d01f99f99c7b103ebf5c4bea40fdc12f\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-current379-HE-GK2-BY-cluster-routing-technical-20261011-v1/native/boundary-BY-direct-PCR-current397-native7.batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-current379-HE-GK2-BY-cluster-routing-technical-20261011-v1/native/boundary-BY-direct-PCR-current397-native7/synthesis-decisions.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "Standalone manifest-bound resolutions materialized: biologie-current379-boundary7-direct-PCR-technical-context-first-pass-20261011-v2; strict=7/7; deferred=0; manifest=sha256:3f8906220189595fb1411f5265866dd9d01f99f99c7b103ebf5c4bea40fdc12f\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-current379-HE-GK2-BY-cluster-routing-technical-20261011-v1/native/boundary-BY-direct-PCR-current397-native7.batch.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "Standalone resolution index materialized: biologie-current379-boundary7-direct-PCR-technical-context-first-pass-20261011-v2; strict=7/7; live denominator owned by central report\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-current379-HE-GK2-BY-cluster-routing-technical-20261011-v1/native/boundary-BY-direct-PCR-current397-native7.batch.config.json"
+      ],
+      "exitCode": 0,
+      "stdout": "Standalone goal-description batch valid: biologie-current379-boundary7-direct-PCR-technical-context-first-pass-20261011-v2; goals=7\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-current379-HE-GK2-BY-cluster-routing-technical-20261011-v1/native/boundary-BY-direct-PCR-current397-native7.batch.config.json"
+      ],
+      "exitCode": 0,
+      "stdout": "Standalone resolution index valid: biologie-current379-boundary7-direct-PCR-technical-context-first-pass-20261011-v2; strict=7/7; live denominator owned by central report\n",
+      "stderr": ""
+    }
+  ],
+  "genuineNormalDualCurrent7": true,
+  "strictCurrent7": 7,
+  "gain": 0,
+  "activeWrites": 0
+}

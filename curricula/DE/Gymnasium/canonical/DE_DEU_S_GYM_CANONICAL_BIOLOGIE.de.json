@@ -4101,13 +4101,10 @@
         "8f6933b1-6e02-5512-acf2-a90a7fb9cb75",
         "5b2571d9-f079-52b2-b21b-8f389c7409f4",
         "49dbe8fa-7c4a-5ef5-9cd7-a40b60bf88dd",
-        "528a3cd3-4a4d-550d-939a-8dc8656446e4",
         "50108500-7958-5954-b493-e89273649f8f",
         "ceb54223-197c-5289-a9c6-19358912e144",
         "946ce2e7-c30d-5670-839d-003b0619c284",
         "0ac51522-352c-50d1-8b95-8d3992b4db15",
-        "a3f483ce-126e-595c-999c-aa4d95106221",
-        "8eb86a82-122d-5cae-8f80-bb2850b29c2f",
         "3f969b9e-68b0-5442-b8e4-df4e35e83087",
         "ed4cf96f-e1c9-5784-97f2-8279ff5a31b1",
         "1320b82e-e438-59ff-9d53-ecc9fbacae58",
@@ -4151,20 +4148,21 @@
     },
     {
       "id": "523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
-      "title": "Gentechnische Methoden anwenden",
-      "titleEn": "Apply genetic engineering methods",
-      "description": "Die lernende Person kann Restriktionsenzyme, PCR und Gel-Analyse erläutern.",
-      "descriptionEn": "The learner can explain restriction enzymes, PCR, and gel analysis.",
-      "weight": 1,
+      "title": "Gentechnische Methoden erläutern",
+      "titleEn": "Explain genetic engineering methods",
+      "description": "Cluster für getrennte Kompetenzen zur sequenzspezifischen DNA-Spaltung, zur PCR und zur Gel-Auswertung.",
+      "descriptionEn": "Cluster for separate competencies in sequence-specific DNA cleavage, PCR, and gel interpretation.",
+      "weight": 3,
       "tags": [
         "GK",
         "LK"
       ],
-      "contains": [],
-      "requires": [
-        "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
-        "2d451684-6e53-565e-a987-f362da919d2c"
+      "contains": [
+        "73a3419c-09a9-5415-a3c6-d56a3cdf5a29",
+        "a3f483ce-126e-595c-999c-aa4d95106221",
+        "8eb86a82-122d-5cae-8f80-bb2850b29c2f"
       ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-biology",
         "demandLevel": "AB2",
@@ -4179,8 +4177,7 @@
       "applicability": {
         "jurisdiction": [
           "DE-BY",
-          "DE-HE",
-          "DE-RP"
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -4190,24 +4187,24 @@
           "sourceGoalId": "b12fe158-e505-4896-8189-28c3209756c3"
         }
       },
-      "type": "atomic"
+      "type": "cluster"
     },
     {
       "id": "d11b3b18-deec-5d1a-bff6-512cddf595a2",
       "title": "Vektoren und Transformation",
       "titleEn": "Vectors and transformation",
-      "description": "Die lernende Person kann Plasmide, Klonierungsstrategien und Expressionssysteme beschreiben.",
-      "descriptionEn": "The learner can describe plasmids, cloning strategies, and expression systems.",
-      "weight": 1,
+      "description": "Cluster für getrennte Kompetenzen zum vektorvermittelten DNA-Transfer mit Klonierung und zur rekombinanten Proteinexpression.",
+      "descriptionEn": "Cluster for separate competencies in vector-mediated DNA transfer and cloning, and recombinant protein expression.",
+      "weight": 2,
       "tags": [
         "GK",
         "LK"
       ],
-      "contains": [],
-      "requires": [
-        "523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
-        "2d451684-6e53-565e-a987-f362da919d2c"
+      "contains": [
+        "528a3cd3-4a4d-550d-939a-8dc8656446e4",
+        "374e6de5-0747-57cb-99e3-e50ccb371124"
       ],
+      "requires": [],
       "dimensionTags": {
         "framework": "hessen-kc-2024-biology",
         "demandLevel": "AB2",
@@ -4222,8 +4219,7 @@
       "applicability": {
         "jurisdiction": [
           "DE-BY",
-          "DE-HE",
-          "DE-RP"
+          "DE-HE"
         ]
       },
       "extendedData": {
@@ -4233,7 +4229,7 @@
           "sourceGoalId": "46f4ea54-367f-4f40-b3f2-0d7fd4dff90e"
         }
       },
-      "type": "atomic"
+      "type": "cluster"
     },
     {
       "id": "9540a95d-5ca5-527c-918f-d702e99be07a",
@@ -6819,7 +6815,7 @@
       ],
       "contains": [],
       "requires": [
-        "523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
+        "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
         "2d451684-6e53-565e-a987-f362da919d2c"
       ],
       "dimensionTags": {
@@ -6997,16 +6993,16 @@
     {
       "id": "528a3cd3-4a4d-550d-939a-8dc8656446e4",
       "title": "DNA gezielt verändern",
-      "titleEn": "Modify DNA extensively",
-      "description": "Die lernende Person kann Fremd-DNA mithilfe von Plasmiden oder Viren in Wirtszellen einbringen und Klonierungen erklären.",
-      "descriptionEn": "The learner can explain the introduction of foreign DNA into host cells using plasmids or viruses and cloning.",
+      "titleEn": "Modify DNA selectively",
+      "description": "Die lernende Person kann anhand eines Modells das Einbringen von Fremd-DNA mithilfe von Plasmiden oder Viren in Wirtszellen erläutern und Klonierungen erklären.",
+      "descriptionEn": "The learner can use a model to explain the introduction of foreign DNA into host cells using plasmids or viruses and explain cloning.",
       "weight": 1,
       "tags": [
         "LK"
       ],
       "contains": [],
       "requires": [
-        "d11b3b18-deec-5d1a-bff6-512cddf595a2",
+        "0daa79f6-8f61-5506-98f9-65db83062ba8",
         "2d451684-6e53-565e-a987-f362da919d2c"
       ],
       "dimensionTags": {
@@ -7031,9 +7027,26 @@
           "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
           "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
           "sourceGoalId": "0668587d-ef5f-4a14-b1bc-01f51cba16f1"
-        }
+        },
+        "applicabilityMappingInheritance": "boundary"
       },
-      "type": "atomic"
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "528a3cd3-4a4d-550d-939a-8dc8656446e4",
+          "title": "Visualisierung: DNA gezielt verändern",
+          "url": "/assets/goal-visualizations/biologie/528a3cd3-4a4d-550d-939a-8dc8656446e4/528a3cd3-4a4d-550d-939a-8dc8656446e4.png",
+          "provider": "OpenAI image_gen (Codex built-in)",
+          "description": "Comicartige Visualisierung zum Lernziel: DNA gezielt verändern.",
+          "altText": "Ein längeres Fremdgen liegt in einem geschlossenen Plasmid; nach Aufnahme trägt jede Tochterbakterie dessen Kopie getrennt vom Chromosom.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "50108500-7958-5954-b493-e89273649f8f",
@@ -7088,7 +7101,7 @@
       ],
       "contains": [],
       "requires": [
-        "d11b3b18-deec-5d1a-bff6-512cddf595a2",
+        "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
         "2d451684-6e53-565e-a987-f362da919d2c"
       ],
       "dimensionTags": {
@@ -7371,7 +7384,23 @@
           "sourceGoalId": "377e1671-40e7-492a-97a6-3d73da326527"
         }
       },
-      "type": "atomic"
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "27b22c33-908c-5fa8-9d9f-a08aff8da143",
+          "title": "Visualisierung: Biotechnologische Medikamentenproduktion",
+          "url": "/assets/goal-visualizations/biologie/27b22c33-908c-5fa8-9d9f-a08aff8da143/27b22c33-908c-5fa8-9d9f-a08aff8da143.png",
+          "provider": "OpenAI image_gen (Codex built-in)",
+          "description": "Comicartige Visualisierung zum Lernziel: Biotechnologische Medikamentenproduktion.",
+          "altText": "Ein Genabschnitt in einem Plasmid, Produktionsbakterien im Bioreaktor und gereinigtes Protein zeigen die biotechnologische Herstellung eines Proteinmedikaments.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "302c6d6d-bf10-5dbc-adda-65e4b5c63e49",
@@ -9329,7 +9358,7 @@
       "id": "a3f483ce-126e-595c-999c-aa4d95106221",
       "title": "PCR einsetzen",
       "titleEn": "Use PCR",
-      "description": "Die lernende Person kann Prinzip und Anwendungen der Polymerase-Kettenreaction beschreiben.",
+      "description": "Die lernende Person kann Prinzip und Anwendungen der Polymerase-Kettenreaktion beschreiben.",
       "descriptionEn": "The learner can describe the principle and applications of the polymerase chain reaction.",
       "weight": 1,
       "tags": [
@@ -9338,7 +9367,7 @@
       ],
       "contains": [],
       "requires": [
-        "523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
+        "0daa79f6-8f61-5506-98f9-65db83062ba8",
         "2d451684-6e53-565e-a987-f362da919d2c"
       ],
       "dimensionTags": {
@@ -9363,9 +9392,26 @@
           "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
           "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
           "sourceGoalId": "51983683-14c8-4624-b5be-5a895d6780f1"
-        }
+        },
+        "applicabilityMappingInheritance": "boundary"
       },
-      "type": "atomic"
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "a3f483ce-126e-595c-999c-aa4d95106221",
+          "title": "Visualisierung: PCR einsetzen",
+          "url": "/assets/goal-visualizations/biologie/a3f483ce-126e-595c-999c-aa4d95106221/a3f483ce-126e-595c-999c-aa4d95106221.png",
+          "provider": "OpenAI image_gen (Codex built-in)",
+          "description": "Comicartige Visualisierung zum Lernziel: PCR einsetzen.",
+          "altText": "PCR-Zyklus mit Strangtrennung, zwei nach innen gerichteten Primern und gegenläufiger DNA-Kopierung vervielfältigt einen ausgewählten DNA-Bereich.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "8eb86a82-122d-5cae-8f80-bb2850b29c2f",
@@ -9405,7 +9451,8 @@
           "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
           "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
           "sourceGoalId": "b5e1cdfd-34ff-4c05-976c-ee69ec041fdb"
-        }
+        },
+        "applicabilityMappingInheritance": "boundary"
       },
       "type": "atomic",
       "resourceLinks": [
@@ -10117,7 +10164,7 @@
       "title": "Evo-Devo Perspektiven",
       "titleEn": "Evo-Devo perspectives",
       "description": "Die lernende Person kann Entwicklungsgenetik (Hox-Gene, Genregulation) für Evolutionsprozesse einordnen.",
-      "descriptionEn": "The learner can classify developmental genetics (Hox genes, gene regulation) for evolutionary processes.",
+      "descriptionEn": "The learner can relate developmental genetics (Hox genes, gene regulation) to evolutionary processes.",
       "weight": 1.1,
       "tags": [
         "LK"
@@ -10150,7 +10197,23 @@
           "sourceGoalId": "27a5dc02-e359-4433-87ac-a49e020839ea"
         }
       },
-      "type": "atomic"
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "9b40dae5-6d89-5714-ac96-373e72a7045e",
+          "title": "Visualisierung: Evo-Devo Perspektiven",
+          "url": "/assets/goal-visualizations/biologie/9b40dae5-6d89-5714-ac96-373e72a7045e/9b40dae5-6d89-5714-ac96-373e72a7045e.png",
+          "provider": "Retained existing original raster; exact provider provenance bound in author inputs",
+          "description": "Comicartige Visualisierung zum Lernziel: Evo-Devo Perspektiven.",
+          "altText": "Hox-Gene und räumliche sowie zeitliche Genregulation werden mit Entwicklungs- und möglichen Variationsmustern verknüpft.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "c9a06264-cce2-54dd-9604-46dd5949f02e",
@@ -13268,7 +13331,14 @@
       "applicability": {
         "jurisdiction": [
           "DE-BY",
-          "DE-HE"
+          "DE-HE",
+          "DE-MV",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
         ]
       },
       "extendedData": {
@@ -13277,7 +13347,8 @@
           "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
           "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
           "sourceGoalId": "8446545d-48d6-408e-802a-53db598121bf"
-        }
+        },
+        "applicabilityFromRequires": true
       },
       "examData": {
         "reviewStatus": "released",
@@ -13442,7 +13513,14 @@
       "applicability": {
         "jurisdiction": [
           "DE-BY",
-          "DE-HE"
+          "DE-HE",
+          "DE-MV",
+          "DE-NW",
+          "DE-RP",
+          "DE-SH",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
         ]
       },
       "extendedData": {
@@ -14345,8 +14423,11 @@
         "0daa79f6-8f61-5506-98f9-65db83062ba8",
         "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
         "7975e43b-1187-5ae3-a1ab-282fc3c0548c",
-        "523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
-        "d11b3b18-deec-5d1a-bff6-512cddf595a2",
+        "73a3419c-09a9-5415-a3c6-d56a3cdf5a29",
+        "a3f483ce-126e-595c-999c-aa4d95106221",
+        "8eb86a82-122d-5cae-8f80-bb2850b29c2f",
+        "528a3cd3-4a4d-550d-939a-8dc8656446e4",
+        "374e6de5-0747-57cb-99e3-e50ccb371124",
         "9540a95d-5ca5-527c-918f-d702e99be07a",
         "440854be-7f06-5678-91cb-ba8dcab56959",
         "e36bebef-d7e3-57d0-bf01-236799d41cb7",
@@ -14377,7 +14458,6 @@
         "8f6933b1-6e02-5512-acf2-a90a7fb9cb75",
         "5b2571d9-f079-52b2-b21b-8f389c7409f4",
         "49dbe8fa-7c4a-5ef5-9cd7-a40b60bf88dd",
-        "528a3cd3-4a4d-550d-939a-8dc8656446e4",
         "50108500-7958-5954-b493-e89273649f8f",
         "ceb54223-197c-5289-a9c6-19358912e144",
         "7f76ff0b-218b-568d-91df-20bbe2b156e2",
@@ -14415,8 +14495,6 @@
         "9f73b963-5fac-5a90-a993-d7b7c0cc8526",
         "946ce2e7-c30d-5670-839d-003b0619c284",
         "0ac51522-352c-50d1-8b95-8d3992b4db15",
-        "a3f483ce-126e-595c-999c-aa4d95106221",
-        "8eb86a82-122d-5cae-8f80-bb2850b29c2f",
         "73b66ead-e44a-5486-98e3-1fb3f99620a6",
         "3891b735-9d0d-5eef-b653-6ad58b9181f6",
         "10a8dac7-65c8-5f85-a944-3e2a7d2c6028",
@@ -14886,7 +14964,13 @@
       "applicability": {
         "jurisdiction": [
           "DE-BY",
-          "DE-HE"
+          "DE-HE",
+          "DE-MV",
+          "DE-NW",
+          "DE-SH",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
         ]
       },
       "extendedData": {
@@ -14895,7 +14979,8 @@
           "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
           "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
           "sourceGoalId": "041c4717-770b-4183-9d72-7d66c88e6615"
-        }
+        },
+        "applicabilityFromRequires": true
       },
       "examData": {
         "taskContent": "**Kontext:**\n\nIn einer humangenetischen Beratungsstelle wird eine Familie betreut, in der ein Kind an Mukoviszidose erkrankt ist. Für die weitere Familienplanung werden Stammbaumdaten, ein vereinfachter Gentest und eine Fachnotiz zur Wirkung der Mutation ausgewertet.\n\n**Material 1 (Familienausschnitt):**\n\n- Jana: gesund\n- Tarek: gesund\n- Kind Lea: Mukoviszidose\n- Kind Milan: gesund\n- Janas Bruder: gesund\n- Tareks Schwester: gesund\n\n**Material 2 (vereinfachter Gentest am CFTR-Gen):**\n\n- Allel F: Bande bei 280 bp\n- mutiertes Allel f: Bande bei 190 bp\n- Jana: 280 bp und 190 bp\n- Tarek: 280 bp und 190 bp\n- Lea: nur 190 bp\n- Milan: 280 bp und 190 bp\n\n**Material 3 (Fachnotiz):**\n\nDie Mutation im CFTR-Gen fuehrt dazu, dass ein Chloridkanal in Zellmembranen fehlerhaft aufgebaut wird. In den Epithelzellen der Atemwege wird dadurch weniger Chlorid transportiert; Wasser folgt osmotisch schlechter, und der Schleim bleibt zaeh.\n\n**Aufgaben:**\n\n1. Analysieren Sie Material 1 und 2. Leiten Sie den Erbgang ab und bestimmen Sie die wahrscheinlichen Genotypen von Jana, Tarek, Lea und Milan. (6 BE)\n2. Erklären Sie ausgehend von Material 3, wie die Mutation über Proteinbiosynthese und Proteinfunktion zu den typischen Symptomen fuehrt. (7 BE)\n3. Beurteilen Sie, welche Aussagekraft der vorliegende Gentest für eine Beratung vor einer weiteren Schwangerschaft besitzt. Gehen Sie auf Chancen und Grenzen ein. (6 BE)\n4. Erklären Sie, warum genetische Beratung neben dem molekularen Befund auch Familienanamnese und Aufklärung über Wahrscheinlichkeiten einbeziehen muss. (6 BE)",
@@ -15168,7 +15253,13 @@
       "applicability": {
         "jurisdiction": [
           "DE-BY",
-          "DE-HE"
+          "DE-HE",
+          "DE-MV",
+          "DE-NW",
+          "DE-SH",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
         ]
       },
       "extendedData": {
@@ -15177,7 +15268,8 @@
           "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
           "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
           "sourceGoalId": "0b2ff060-47e9-4371-8288-c1d56eac93d8"
-        }
+        },
+        "applicabilityFromRequires": true
       },
       "examData": {
         "taskContent": "**Kontext:**\n\nEine Forschungsgruppe entwickelt einen CRISPR/Cas-Ansatz, um eine Punktmutation in einem Gen für ein Membranprotein zu korrigieren. Für die fachliche Bewertung liegen Sequenzausschnitte, Expressionsdaten und Off-Target-Hinweise vor.\n\n**Material 1 (Sequenzausschnitt des Zielgens):**\n\n- Wildtyp: ... ATG GAA CCT TGG **C**AA GGT ...\n- erkrankungsrelevante Variante: ... ATG GAA CCT TGG **T**AA GGT ...\n- mögliche guide-RNA bindet direkt vor einem PAM-Motiv\n\n**Material 2 (mRNA-Mengen in Zellen):**\n\n- gesunde Vergleichszellen: 100 %\n- Zellen mit Punktmutation: 96 %\n- behandelte Zellen nach CRISPR-Versuch: 94 %\n\n**Material 3 (Proteinbefund):**\n\n- Wildtyp-Protein: korrekt in der Membran nachweisbar\n- mutiertes Protein: stark vermindert in der Membran nachweisbar\n- nach erfolgreicher Korrektur: Membransignal nimmt zu\n\n**Material 4 (Off-Target-Hinweis):**\n\n- ein zweiter Genabschnitt zeigt 18 von 20 Basen Übereinstimmung mit der guide-RNA\n- dieser Abschnitt liegt in einem Gen, das in Leberzellen aktiv ist\n\n**Aufgaben:**\n\n1. Analysieren Sie Material 1. Erläutern Sie, warum die Punktmutation trotz nahezu unveränderter mRNA-Menge gravierende Folgen für das Protein haben kann. (6 BE)\n2. Werten Sie Material 2 und 3 gemeinsam aus und beurteilen Sie, auf welcher Ebene die Hauptwirkung der Mutation und der Korrektur sichtbar wird. (7 BE)\n3. Erklären Sie das Prinzip des CRISPR/Cas-Verfahrens für die gezielte Korrektur der Punktmutation. Beziehen Sie guide-RNA, Zielsequenz und Reparatur ein. (6 BE)\n4. Bewerten Sie mit Material 4 die Chancen und Risiken des Verfahrens für eine spätere medizinische Anwendung. (6 BE)",
@@ -15389,7 +15481,8 @@
           "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
           "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
           "sourceGoalId": "27b10ba8-0745-42eb-96cc-03364c4bfd35"
-        }
+        },
+        "applicabilityFromRequires": true
       },
       "examData": {
         "taskContent": "**Kontext:**\n\nEin Landkreis entwickelt ein Biodiversitaetsprogramm für eine intensiv genutzte Agrarlandschaft. Bewertet werden Daten zum Verhalten von Wildbienen, zur genetischen Vielfalt einer seltenen Ackerwildkrautart und zu drei Managementoptionen.\n\n**Material 1 (Beobachtungen zu Wildbienen):**\n\n- auf Flaechen mit Bluestreifen: deutlich laengere Aufenthaltsdauer pro Suchflug\n- auf Flaechen ohne Bluestreifen: haeufige Suchfluege mit kurzem Aufenthalt\n- zwischen weit entfernten Teilhabitaten wird nur selten gependelt\n\n**Material 2 (genetische Vielfalt der Ackerwildkrautart):**\n\n- grosses Verbundgebiet: 9 Allelvarianten an einem Marker\n- isoliertes Teilgebiet Nord: 4 Allelvarianten\n- isoliertes Teilgebiet Sued: 3 Allelvarianten\n\n**Material 3 (Managementoptionen):**\n\nA. Bluestreifen nur an einzelnen Randstellen anlegen\nB. Verbund aus Bluestreifen und ungespritzten Saeumen zwischen Teilflaechen schaffen\nC. Schwerpunkt ausschliesslich auf Ertragssteigerung durch intensivere Bewirtschaftung legen\n\n**Material 4 (Konfliktlage):**\n\nLandwirte fordern geringe Produktionsverluste, Naturschutzgruppen verlangen mehr Verbundstrukturen, die Kommune moechte Foerdermittel möglichst zielgerichtet einsetzen.\n\n**Aufgaben:**\n\n1. Analysieren Sie mit Material 1, welche Bedeutung das Verhalten der Wildbienen für den Austausch zwischen Teilhabitaten hat. (6 BE)\n2. Erläutern Sie mit Material 2, warum geringe genetische Vielfalt für isolierte Populationen problematisch sein kann. (6 BE)\n3. Vergleichen Sie die Managementoptionen A bis C aus biologischer Sicht. Beziehen Sie Populationen, Genfluss und Biodiversitaet ein. (7 BE)\n4. Bewerten Sie, welche Strategie unter den Bedingungen aus Material 4 biologisch am tragfähigsten ist und wie Zielkonflikte begründet abgewogen werden können. (6 BE)",
@@ -15452,7 +15545,13 @@
       "applicability": {
         "jurisdiction": [
           "DE-BY",
-          "DE-HE"
+          "DE-HE",
+          "DE-MV",
+          "DE-NW",
+          "DE-SH",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
         ]
       },
       "release": {
@@ -15499,7 +15598,13 @@
       "applicability": {
         "jurisdiction": [
           "DE-BY",
-          "DE-HE"
+          "DE-HE",
+          "DE-MV",
+          "DE-NW",
+          "DE-SH",
+          "DE-SN",
+          "DE-ST",
+          "DE-TH"
         ]
       },
       "release": {
@@ -16479,7 +16584,23 @@
           "sourceGoalId": "dc5044f4-bf54-5642-8201-49dcf8dce9e1"
         }
       },
-      "type": "atomic"
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "4a8a6cec-a2cc-56fe-b3ab-7ca017f640cf",
+          "title": "Visualisierung: Biotechnologische Nutzbarkeit von Mikroorganismen erklären",
+          "url": "/assets/goal-visualizations/biologie/4a8a6cec-a2cc-56fe-b3ab-7ca017f640cf/4a8a6cec-a2cc-56fe-b3ab-7ca017f640cf.png",
+          "provider": "OpenAI / Codex built-in image_gen; targeted wall/membrane correction",
+          "description": "Hefezellmodell mit getrennt markierter äußerer Zellwand und innerer Zellmembran; Knospung und Zuckerumsetzung zu CO₂ und Ethanol erklären die Nutzbarkeit.",
+          "altText": "Drei Comicfelder zeigen eine Hefezelle mit außen liegender Zellwand, davon getrennt innen liegender Zellmembran und Zellkern, anschließend Knospung sowie Zuckerumsetzung zu CO₂ und Ethanol mit Teiglockerung.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "39ba4385-0144-5e20-ba11-e3714756583b",
@@ -21307,7 +21428,9 @@
       "contains": [
         "632b6042-0c0e-5bb6-a879-f03ad4be6eee",
         "5c7f0085-7ca8-5a67-bc87-57319acec749",
-        "430b2b73-641a-5122-bb6d-162b0d1eaf2d"
+        "430b2b73-641a-5122-bb6d-162b0d1eaf2d",
+        "80235254-ca58-5ba0-9319-b842350d6eb2",
+        "7d2da9ab-aed0-562b-a99a-840825fca009"
       ],
       "requires": [
         "b530a382-2786-5794-8821-3e01a62d88fd"
@@ -21500,10 +21623,10 @@
     {
       "id": "430b2b73-641a-5122-bb6d-162b0d1eaf2d",
       "shortKey": "canonical_biology_sek1_human_evolution_fossils_cultural_evolution",
-      "title": "Biologische und kulturelle Evolution des Menschen rekonstruieren",
-      "titleEn": "Reconstruct Biological and Cultural Human Evolution",
-      "description": "Die lernende Person kann aus Merkmalen fossiler Funde Hypothesen zur biologischen Evolution des modernen Menschen ableiten, eine zeitliche Reihenfolge rekonstruieren und die Bedeutung kultureller Evolution für den heutigen Menschen analysieren.",
-      "descriptionEn": "The learner can derive hypotheses about biological human evolution from fossil traits, reconstruct a chronological sequence, and analyze the importance of cultural evolution for humans today.",
+      "title": "Biologische Evolution des Menschen aus Fossilien rekonstruieren",
+      "titleEn": "Reconstruct Biological Human Evolution from Fossils",
+      "description": "Die lernende Person kann aus Merkmalen fossiler Funde begründete Hypothesen zur biologischen Evolution des modernen Menschen ableiten, um eine zeitliche Reihenfolge zu rekonstruieren und deren Aussagegrenzen zu erläutern.",
+      "descriptionEn": "The learner can derive reasoned hypotheses about biological human evolution from fossil traits to reconstruct a chronology and explain its evidential limits.",
       "weight": 1,
       "tags": [
         "GK",
@@ -21551,7 +21674,23 @@
           "sourceGoalId": "791145f3-650f-5e1a-84f7-2619aceb6a6a"
         }
       },
-      "type": "atomic"
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "430b2b73-641a-5122-bb6d-162b0d1eaf2d",
+          "title": "Visualisierung: Biologische Evolution des Menschen aus Fossilien rekonstruieren",
+          "url": "/assets/goal-visualizations/biologie/430b2b73-641a-5122-bb6d-162b0d1eaf2d/430b2b73-641a-5122-bb6d-162b0d1eaf2d.png",
+          "provider": "Retained existing original raster; exact provider provenance bound in author inputs",
+          "description": "Fossilbefunde und relative Zeitlage stützen begrenzte, durch neue Funde veränderbare Verwandtschaftshypothesen.",
+          "altText": "Drei Comicfelder zeigen datierbare Schädel- und Beckenfossilien, einen verzweigten Stammbaum mit offenen Zuordnungen und einen neuen Fossilbefund, der zwei alternative Verwandtschaftshypothesen unterscheiden könnte. Keine kulturelle Evolutionsleistung und keine lineare menschliche Fortschrittsleiter.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
     },
     {
       "id": "1abf08d7-6fc1-5705-b2d4-21cb44ceeba0",
@@ -28585,7 +28724,7 @@
       "contains": [],
       "requires": [
         "0daa79f6-8f61-5506-98f9-65db83062ba8",
-        "523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
+        "a3f483ce-126e-595c-999c-aa4d95106221",
         "2d451684-6e53-565e-a987-f362da919d2c"
       ],
       "dimensionTags": {
@@ -31553,6 +31692,271 @@
           "provider": "OpenAI image_gen (Codex built-in)",
           "description": "Ein erfundenes Beispiel zeigt eine Ekelreaktion beim Betrachten eines Regenwurms und eine überlegte Umgangsweise mit Abstand.",
           "altText": "Zwei Comicszenen zeigen dieselbe Jugendliche an einer Laubstelle mit einem Regenwurm. Links nimmt sie mit zurückgenommenen Händen ihr unangenehmes Gefühl wahr. Rechts beobachtet sie das unveränderte Tier aus größerem Abstand. Die Gedankenblasen lauten: Das ist mir unangenehm. und Ich beobachte mit Abstand. Niemand berührt das Tier; das Beispiel verlangt keine eigene Ekelreaktion.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "73a3419c-09a9-5415-a3c6-d56a3cdf5a29",
+      "title": "Sequenzspezifische DNA-Spaltung erklären",
+      "titleEn": "Explain Sequence-Specific DNA Cleavage",
+      "description": "Die lernende Person kann erklären, wie ein Restriktionsenzym DNA an seiner Erkennungssequenz spaltet, und daraus die entstehenden Fragmente in einem gegebenen DNA-Modell begründet ableiten.",
+      "descriptionEn": "The learner can explain how a restriction enzyme cleaves DNA at its recognition sequence and use this to infer the resulting fragments in a supplied DNA model.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "0daa79f6-8f61-5506-98f9-65db83062ba8"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-biology",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BIO_STRUKTUR_FUNKTION",
+          "BIO_STEUERUNG_REGELUNG",
+          "BIO_ENTWICKLUNG"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "authorSuccessor": {
+          "role": "author_not_independent_reviewer",
+          "sourceOwnerGoalIds": [
+            "523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0"
+          ],
+          "createdAt": "2026-10-10T13:46:34.016270+00:00",
+          "atomicityReview": "PENDING",
+          "memoryReview": "PENDING",
+          "humanApproval": false
+        },
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "73a3419c-09a9-5415-a3c6-d56a3cdf5a29",
+          "title": "Visualisierung: Sequenzspezifische DNA-Spaltung erklären",
+          "url": "/assets/goal-visualizations/biologie/73a3419c-09a9-5415-a3c6-d56a3cdf5a29/73a3419c-09a9-5415-a3c6-d56a3cdf5a29.png",
+          "provider": "OpenAI / Codex built-in image_gen",
+          "description": "Comicartige didaktische Visualisierung: Sequenzspezifische DNA-Spaltung erklären",
+          "altText": "Die lernende Person kann erklären, wie ein Restriktionsenzym DNA an seiner Erkennungssequenz spaltet, und daraus die entstehenden Fragmente in einem gegebenen DNA-Modell begründet ableiten.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "shortKey": "canonical_biology_sequence_specific_restriction"
+    },
+    {
+      "id": "374e6de5-0747-57cb-99e3-e50ccb371124",
+      "title": "Passende Bedingungen für rekombinante Proteinexpression erklären",
+      "titleEn": "Explain Compatible Conditions for Recombinant Protein Expression",
+      "description": "Die lernende Person kann an einem gegebenen Vektor-Wirt-Modell erklären, welche passenden Expressionssignale und Wirtsfunktionen zur Bildung des codierten Proteins nötig sind und weshalb die Anwesenheit der DNA allein diese Bildung nicht belegt.",
+      "descriptionEn": "The learner can explain in a supplied vector-host model which compatible expression signals and host functions are needed to produce the encoded protein and why DNA presence alone does not establish that production.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "475eebb4-4eb0-524f-b1ec-4a672bf856d2"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-biology",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BIO_STRUKTUR_FUNKTION",
+          "BIO_STEUERUNG_REGELUNG",
+          "BIO_ENTWICKLUNG"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-HE"
+        ]
+      },
+      "extendedData": {
+        "authorSuccessor": {
+          "role": "author_not_independent_reviewer",
+          "sourceOwnerGoalIds": [
+            "d11b3b18-deec-5d1a-bff6-512cddf595a2"
+          ],
+          "createdAt": "2026-10-10T13:46:34.016270+00:00",
+          "atomicityReview": "PENDING",
+          "memoryReview": "PENDING",
+          "humanApproval": false
+        },
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "374e6de5-0747-57cb-99e3-e50ccb371124",
+          "title": "Visualisierung: Passende Bedingungen für rekombinante Proteinexpression erklären",
+          "url": "/assets/goal-visualizations/biologie/374e6de5-0747-57cb-99e3-e50ccb371124/374e6de5-0747-57cb-99e3-e50ccb371124.png",
+          "provider": "OpenAI / Codex built-in image_gen",
+          "description": "Comicartige Gegenüberstellung: Ein passendes Promotorsignal ermöglicht die Bildung eines Zielproteins; DNA-Präsenz allein belegt sie nicht.",
+          "altText": "Zwei schematische bakterielle Wirtszellen enthalten dasselbe Plasmid. Links wird sein Promotorsignal erkannt: mRNA wird am Ribosom in ein Zielprotein übersetzt. Rechts stoppt die nicht erkannte Signalstelle die Expression des eingefügten Gens; die DNA ist vorhanden, aber kein Zielprotein entsteht.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ],
+      "shortKey": "canonical_biology_recombinant_expression_compatibility"
+    },
+    {
+      "id": "80235254-ca58-5ba0-9319-b842350d6eb2",
+      "shortKey": "canonical_biology_cultural_evolution_current_environment",
+      "title": "Heutige Wirkungen kultureller Evolution analysieren",
+      "titleEn": "Analyze Present Effects of Cultural Evolution",
+      "description": "Die lernende Person kann an einem gegebenen Beispiel analysieren, wie sozial weitergegebenes Wissen und erlernte Verfahren das Leben heutiger Menschen und ihre Umwelt verändern, und kulturelle Weitergabe von genetischer Vererbung unterscheiden.",
+      "descriptionEn": "The learner can analyze in a supplied example how socially transmitted knowledge and learned practices change the lives of humans today and their environment, distinguishing cultural transmission from genetic inheritance.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "contains": [],
+      "requires": [],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-biology",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BIO_ENTWICKLUNG",
+          "BIO_INFORMATION_KOMMUNIKATION"
+        ],
+        "phase": "GLOBAL",
+        "area": "Evolution des Menschen",
+        "topicCode": "CANONICAL.BIOLOGY.SEK1.HUMAN_EVOLUTION_FOSSILS_CULTURAL_EVOLUTION"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-RP",
+          "DE-SN",
+          "DE-TH",
+          "DE-MV"
+        ]
+      },
+      "sourceRef": "LehrplanPLUS Bayern Gymnasium Biologie, B10.4.3",
+      "extendedData": {
+        "authorSuccessor": {
+          "role": "author_not_independent_reviewer",
+          "sourceOwnerGoalIds": [
+            "430b2b73-641a-5122-bb6d-162b0d1eaf2d"
+          ],
+          "createdAt": "2026-10-10T13:46:34.016270+00:00",
+          "atomicityReview": "PENDING",
+          "memoryReview": "PENDING",
+          "humanApproval": false
+        },
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "80235254-ca58-5ba0-9319-b842350d6eb2",
+          "title": "Visualisierung: Heutige Wirkungen kultureller Evolution analysieren",
+          "url": "/assets/goal-visualizations/biologie/80235254-ca58-5ba0-9319-b842350d6eb2/80235254-ca58-5ba0-9319-b842350d6eb2.png",
+          "provider": "OpenAI / Codex built-in image_gen",
+          "description": "Comicartige didaktische Visualisierung: Heutige Wirkungen kultureller Evolution analysieren",
+          "altText": "Die lernende Person kann an einem gegebenen Beispiel analysieren, wie sozial weitergegebenes Wissen und erlernte Verfahren das Leben heutiger Menschen und ihre Umwelt verändern, und kulturelle Weitergabe von genetischer Vererbung unterscheiden.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "7d2da9ab-aed0-562b-a99a-840825fca009",
+      "shortKey": "canonical_biology_seki_ancestry_selected_human_behaviour",
+      "title": "Menschliches Verhalten aus Abstammung erklären",
+      "titleEn": "Explain human behaviour using ancestry",
+      "description": "Die lernende Person kann bei einer ausgewählten menschlichen Verhaltensweise Kenntnisse zur Abstammung des Menschen nutzen, um eine evolutionäre Funktionserklärung mit dem unmittelbaren Auslöser zu verknüpfen, und erläutern, warum eine plausible Funktionserklärung allein kein Nachweis einer konkreten Anpassung ist.",
+      "descriptionEn": "The learner can use knowledge of human ancestry to connect an evolutionary functional explanation of a selected human behaviour with its immediate trigger, and explain why a plausible functional account alone does not prove a particular adaptation.",
+      "type": "atomic",
+      "contains": [],
+      "requires": [
+        "632b6042-0c0e-5bb6-a879-f03ad4be6eee"
+      ],
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK",
+        "canonical",
+        "SekI"
+      ],
+      "dimensionTags": {
+        "framework": "canonical-gymnasium-biology",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BIO_ENTWICKLUNG"
+        ],
+        "phase": "GLOBAL",
+        "area": "Evolution und menschliches Verhalten",
+        "topicCode": "CANONICAL.BIOLOGY.SEK1.ANCESTRY_SELECTED_HUMAN_BEHAVIOUR"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-RP"
+        ]
+      },
+      "sourceRef": "RP Rahmenlehrplan Biologie2014, TF12, Druckseite46 / phys48, Wissen über Abstammung zur Erklärung ausgewählter menschlicher Verhaltensweisen",
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "1fcb0808-0a16-5f33-8124-97c345f9903c",
+          "sourceGoalIds": [
+            "rp-bio-seki-rp-bio-seki-2014-tf12-biologische-anthropologie-002-b40bf47b"
+          ]
+        },
+        "authorCandidate": {
+          "package": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-09/biologie-evolution-eighteen-seven-source-course-remediation-author-v1",
+          "candidateKey": "ancestry_selected_human_behaviour",
+          "independentReviews": "pending",
+          "semanticAtomicityReview": "pending",
+          "humanApproval": false
+        },
+        "applicabilityMappingInheritance": "boundary"
+      },
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "7d2da9ab-aed0-562b-a99a-840825fca009",
+          "title": "Visualisierung: Menschliches Verhalten aus Abstammung erklären",
+          "url": "/assets/goal-visualizations/biologie/7d2da9ab-aed0-562b-a99a-840825fca009/7d2da9ab-aed0-562b-a99a-840825fca009.png",
+          "provider": "OpenAI / Codex built-in image_gen",
+          "description": "Abstammungswissen verbindet einen unmittelbaren Auslöser mit einer begrenzten Hypothese zur früheren Funktion; plausible Funktion benötigt Belege.",
+          "altText": "Drei Comicfelder zeigen einen plötzlichen Laut als Auslöser, eine rasche menschliche Rückweichreaktion und eine mögliche Schutzfunktion bei körperlicher Gefahr. Gemeinsame Abstammung und ein Fragezeichen kennzeichnen eine prüfbare Evolutionshypothese, keine bewiesene historische Ursache.",
           "lang": "de",
           "license": "CC-BY-4.0",
           "reviewStatus": "pilot"

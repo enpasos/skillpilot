@@ -150,9 +150,9 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   }
 
   const biology = checkGoalBookSourceAtlasInputs('app/scripts/config/goal-books/de-gym-biology-national-atlas.inputs.json', root)
-  // HB037 adds one independently reviewed reflection goal with a bounded
-  // Bremen route; every earlier current atom remains in the atlas.
-  assert.deepEqual(biology.receipt.counts, { canonicalCurricularAtomicGoals: 395, publishedCurricularAtomicGoals: 395, sourceViews: 24, unresolvedSourceScopeDecisions: 0, omittedGoals: 0 })
+  // The reviewed current universe has four new atoms and two former atoms
+  // converted to clusters. The source atlas must publish the current397 atoms.
+  assert.deepEqual(biology.receipt.counts, { canonicalCurricularAtomicGoals: 397, publishedCurricularAtomicGoals: 397, sourceViews: 24, unresolvedSourceScopeDecisions: 0, omittedGoals: 0 })
   const reflectionGoalId = '55036b74-af78-5217-9e43-c5bdc975c958'
   const hbReflectionSourceId = 'hb-biology-seki-bp2006-2022-3-1-koerperleistungen-gesundheit-037-a47d64cd'
   const hbAddictionSourceId = 'hb-biology-seki-bp2006-2022-3-2-sinne-wahrnehmung-051-a74ab90c'
@@ -188,21 +188,24 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   // genetic-method scopes without closing broad source HOLDs. HE Q1.2 vector
   // methods are an elevated-course operator, so their old GK route is removed.
   assert.deepEqual(biology.receipt.scopes.filter(s => s.stage === 'SekII').map(s => [s.key, s.goalIds.length]), [
-    ['DE-BY/SekII/GK', 91], ['DE-BY/SekII/LK', 121], ['DE-HE/SekII/GK', 81], ['DE-HE/SekII/LK', 160],
+    ['DE-BY/SekII/GK', 92], ['DE-BY/SekII/LK', 122], ['DE-HE/SekII/GK', 80], ['DE-HE/SekII/LK', 160],
     ['DE-SH/SekII/GK', 1], ['DE-SH/SekII/LK', 1],
     ['DE-ST/SekII/GK', 6], ['DE-ST/SekII/LK', 6],
   ])
-  const heVectorGoalId = 'd11b3b18-deec-5d1a-bff6-512cddf595a2'
+  const heVectorGoalId = '528a3cd3-4a4d-550d-939a-8dc8656446e4'
   const heVectorSourceGoalId = '46f4ea54-367f-4f40-b3f2-0d7fd4dff90e'
   const heGk = biology.receipt.scopes.find(s => s.key === 'DE-HE/SekII/GK')!
   const heLk = biology.receipt.scopes.find(s => s.key === 'DE-HE/SekII/LK')!
   assert.ok(!heGk.goalIds.includes(heVectorGoalId), 'HE Q1.2 LK vector methods must not create a GK target')
   assert.ok(heGk.witnesses.every(w => w.sourceGoalId !== heVectorSourceGoalId), 'The elevated-course source must provide no GK witness')
   assert.ok(heLk.goalIds.includes(heVectorGoalId), 'The independently reviewed HE LK route must remain available')
-  assert.deepEqual(heLk.witnesses.filter(w => w.goalId === heVectorGoalId).map(w => [w.sourceGoalId, w.mappedTargetGoalId, w.mappingPath]), [[
+  assert.deepEqual(heLk.witnesses.filter(w => w.goalId === heVectorGoalId && w.sourceGoalId === heVectorSourceGoalId).map(w => [w.sourceGoalId, w.mappedTargetGoalId, w.mappingPath]), [[
     heVectorSourceGoalId, heVectorGoalId,
-    'curricula/DE/Gymnasium/mapping/DE-HE/source-components/biologie-genetic-three-current395-source-context-reviewed-20261011-v3.review.json',
+    'curricula/DE/Gymnasium/mapping/DE-HE/source-components/biologie-bio8-current397-dual-reviewed-20261011-v6.review.json',
   ]], 'Retain the exact bounded HE source contribution without whole-course approval')
+  for (const formerAtomId of ['523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0', 'd11b3b18-deec-5d1a-bff6-512cddf595a2']) {
+    assert.ok(biology.receipt.scopes.every(s => !s.goalIds.includes(formerAtomId)), 'A current cluster must never be published as a curricular atomic target')
+  }
   // The corrected HE source operator provides no direct gene-flow witness.
   // The independently reviewed SH E13/E15 component supplies only this bounded
   // supplemental route through its active mapping; no whole-course approval.
@@ -260,9 +263,28 @@ export const testGoalBookSourceAtlasInputs = (): void => {
     ['a46cafde-7359-5249-8754-19aaa3174ba4', ['DE-BY/SekII/LK', 'DE-HE/SekII/LK']],
     ['c9a06264-cce2-54dd-9604-46dd5949f02e', ['DE-BY/SekII/LK', 'DE-HE/SekII/LK']],
     ['f6280154-d57c-599c-94bf-73313005a6df', ['DE-BY/SekII/GK', 'DE-BY/SekII/LK', 'DE-HE/SekII/GK', 'DE-HE/SekII/LK']],
+    // BY names the PCR mechanism within its replication/PCR comparison.
+    ['a3f483ce-126e-595c-999c-aa4d95106221', ['DE-BY/SekII/GK', 'DE-BY/SekII/LK', 'DE-HE/SekII/GK', 'DE-HE/SekII/LK']],
   ] as const) {
     assert.deepEqual(biology.receipt.scopes.filter(s => s.goalIds.includes(goalId)).map(s => s.key), expectedScopes, `${goalId}: exact independently reviewed source scope`)
     assert.ok(biology.receipt.scopes.flatMap(s => s.witnesses.filter(w => w.goalId === goalId)).every(w => w.coverage === 'direct'), `${goalId}: no inherited source-coverage claim`)
+  }
+  const pcrGoalId = 'a3f483ce-126e-595c-999c-aa4d95106221'
+  const byPcrSourceGoalId = '2170fbb3-d82f-56d1-bf7e-03f1cf9a3146'
+  const byBiologyMappingPath = 'curricula/DE/Gymnasium/mapping/DE-BY/source-components/biologie-bio8-current397-dual-reviewed-20261011-v6.review.json'
+  const byBiologyMapping = JSON.parse(readFileSync(resolve(root, byBiologyMappingPath), 'utf8')) as {
+    mappings: { legacyGoalId: string; canonicalGoalId: string; matchType: string }[]
+  }
+  assert.deepEqual(byBiologyMapping.mappings.filter(row => row.canonicalGoalId === pcrGoalId)
+    .map(row => [row.legacyGoalId, row.canonicalGoalId, row.matchType]), [
+    [byPcrSourceGoalId, pcrGoalId, 'partial'],
+  ], 'BY PCR requires its explicit mechanism contribution; broad method mappings cannot supply it')
+  for (const key of ['DE-BY/SekII/GK', 'DE-BY/SekII/LK']) {
+    const scope = biology.receipt.scopes.find(s => s.key === key)!
+    assert.deepEqual(scope.witnesses.filter(w => w.goalId === pcrGoalId)
+      .map(w => [w.sourceGoalId, w.mappedTargetGoalId, w.coverage, w.profileBasis, w.mappingPath]), [
+      [byPcrSourceGoalId, pcrGoalId, 'direct', 'source-metadata', byBiologyMappingPath],
+    ], 'Retain the direct PCR-principle witness without inherited or complete-comparison coverage')
   }
   // The reviewed gel-method binding adds this existing atom to both BY profiles.
   const gelGoalId = '8eb86a82-122d-5cae-8f80-bb2850b29c2f'

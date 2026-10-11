@@ -1,0 +1,98 @@
+{
+  "role": "Normal actual fresh blind A plus exact original B technical adoption",
+  "commands": [
+    {
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-current369-v6-dual-reviewed-active-integration-technical-20261011-v1/description/native-D19.technical.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "Standalone dual summary materialized: biologie-Bio8-current369-Bio3-combined-native19-first-pass-20261011-v6; goals=19; requiresSynthesis=19\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-current369-v6-dual-reviewed-active-integration-technical-20261011-v1/description/native-D19.technical.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-current369-v6-dual-reviewed-active-integration-technical-20261011-v1/description/native-D19/synthesis-authoring.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "Standalone synthesis manifest materialized: biologie-Bio8-current369-Bio3-combined-native19-first-pass-20261011-v6; decisions=19; fingerprint=sha256:ac2eaa2c541e5f2bf28d55498bbe7149ac8044c10e5bad17e3e798e671832244\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-current369-v6-dual-reviewed-active-integration-technical-20261011-v1/description/native-D19.technical.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-current369-v6-dual-reviewed-active-integration-technical-20261011-v1/description/native-D19/synthesis-decisions.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "Standalone manifest-bound resolutions materialized: biologie-Bio8-current369-Bio3-combined-native19-first-pass-20261011-v6; strict=19/19; deferred=0; manifest=sha256:ac2eaa2c541e5f2bf28d55498bbe7149ac8044c10e5bad17e3e798e671832244\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-current369-v6-dual-reviewed-active-integration-technical-20261011-v1/description/native-D19.technical.config.json",
+        "--write"
+      ],
+      "exitCode": 0,
+      "stdout": "Standalone resolution index materialized: biologie-Bio8-current369-Bio3-combined-native19-first-pass-20261011-v6; strict=19/19; live denominator owned by central report\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "check",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-current369-v6-dual-reviewed-active-integration-technical-20261011-v1/description/native-D19.technical.config.json"
+      ],
+      "exitCode": 0,
+      "stdout": "Standalone goal-description batch valid: biologie-Bio8-current369-Bio3-combined-native19-first-pass-20261011-v6; goals=19\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "--import",
+        "tsx",
+        "scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-current369-v6-dual-reviewed-active-integration-technical-20261011-v1/description/native-D19.technical.config.json"
+      ],
+      "exitCode": 0,
+      "stdout": "Standalone resolution index valid: biologie-Bio8-current369-Bio3-combined-native19-first-pass-20261011-v6; strict=19/19; live denominator owned by central report\n",
+      "stderr": ""
+    }
+  ],
+  "originalNonBlindRootACountsForNativeFirstPass": false,
+  "newIndependentVoteByIntegrator": false,
+  "activeWrites": 0
+}

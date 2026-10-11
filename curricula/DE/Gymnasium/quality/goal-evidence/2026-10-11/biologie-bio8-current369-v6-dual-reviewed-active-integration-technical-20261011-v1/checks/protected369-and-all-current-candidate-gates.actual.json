@@ -1,0 +1,47 @@
+{
+  "command": [
+    "node",
+    "--import",
+    "tsx",
+    "scripts/reportDeepUnderstandingRollout.ts",
+    "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-bio8-current369-v6-dual-reviewed-active-integration-technical-20261011-v1/candidate/whole-current-registry.only-Bio-delta.final.json",
+    "--mode=check",
+    "--format=json"
+  ],
+  "exitCode": 0,
+  "stderr": "",
+  "BioStrict": 379,
+  "BioDenominator": 397,
+  "BioIssues": [],
+  "protected369Missing": [],
+  "otherSubjectCurrentStrict": [
+    {
+      "subject": "mathematik",
+      "strict": 807,
+      "denominator": 807,
+      "issues": 0
+    },
+    {
+      "subject": "physik",
+      "strict": 478,
+      "denominator": 478,
+      "issues": 0
+    },
+    {
+      "subject": "chemie",
+      "strict": 212,
+      "denominator": 402,
+      "issues": 0
+    },
+    {
+      "subject": "wirtschaftswissenschaften",
+      "strict": 346,
+      "denominator": 346,
+      "issues": 0
+    }
+  ],
+  "activeWrites": 0,
+  "sourceUnionApproval": false,
+  "operatorExecutionApproval": false,
+  "humanApproval": false
+}

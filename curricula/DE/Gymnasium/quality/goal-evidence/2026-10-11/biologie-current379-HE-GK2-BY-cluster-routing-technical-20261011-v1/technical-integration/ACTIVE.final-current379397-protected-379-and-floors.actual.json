@@ -1,0 +1,134 @@
+{
+  "centralExitCode": 0,
+  "statusExitCode": 0,
+  "floorsExitCode": 0,
+  "strict": 379,
+  "denominator": 397,
+  "issues": [],
+  "protected379Lost": [],
+  "newScientificGainThisContinuation": 0,
+  "Bio8PreviouslyReviewedNewScientificGain": 10,
+  "Bio8DenominatorIncrease": 2,
+  "normalRules": {
+    "CQR-003": {
+      "id": "CQR-003",
+      "status": "pass",
+      "summary": "All 16 declared Bundesland projection(s) have source-backed atom-level view coverage, no unsupported assignments, and complete source-to-view mapping.",
+      "metrics": {
+        "totalJurisdictions": 16,
+        "coveredJurisdictions": 16,
+        "sourceBackedJurisdictions": 16,
+        "sourceCompleteJurisdictions": 16,
+        "fullCoverageJurisdictions": 16,
+        "uncoveredJurisdictions": 0,
+        "incompleteJurisdictions": 0,
+        "unsupportedAssignmentJurisdictions": 0,
+        "sourceUnmappedJurisdictions": 0,
+        "unsupportedAssignedAtomicGoals": 0,
+        "unmappedSourceAtomicGoals": 0,
+        "sourceAtomicGoals": 1024,
+        "sourceMappedToViewAtomicGoals": 1024,
+        "sourceOriginalGoals": 1024,
+        "sourceFullyCoveredOriginalGoals": 1024,
+        "sourcePartiallyCoveredOriginalGoals": 0,
+        "sourceUncoveredOriginalGoals": 0,
+        "surrogateBackedAtomicGoals": 4,
+        "partialSourceLinkedAtomicGoals": 0,
+        "warningedJurisdictions": 0,
+        "cleanJurisdictions": 16,
+        "partialJurisdictions": 0,
+        "errorJurisdictions": 0,
+        "minSourceBackedAtomicGoals": 62,
+        "maxVisibleAtomicGoals": 365,
+        "maxSourceBackedAtomicGoals": 365,
+        "totalAtomicGoals": 399
+      }
+    },
+    "CQR-004": {
+      "id": "CQR-004",
+      "status": "pass",
+      "summary": "Course-level mapping is clean for 1249 upper-secondary source-to-canonical mapping edge(s), including 0 reviewed course-level exception(s); unspecified upper-secondary source goals default to GK/LK unless explicitly reviewed.",
+      "metrics": {
+        "configuredMappingFiles": 65,
+        "sourceGoals": 1049,
+        "sourceGoalsWithCourseLevel": 1049,
+        "gkLkSourceGoals": 490,
+        "lkSourceGoals": 559,
+        "unspecifiedSourceGoals": 6,
+        "checkedMappingEdges": 1249,
+        "defaultedUnspecifiedMappingEdges": 0,
+        "reviewedCourseLevelExceptions": 0,
+        "mismatches": 0,
+        "missingSourceGoals": 0,
+        "missingTargetGoals": 0,
+        "unmappedCourseLevelSourceGoals": 0
+      }
+    },
+    "CQR-501": {
+      "id": "CQR-501",
+      "status": "pass",
+      "summary": "No active applicability warning debt is visible.",
+      "metrics": {
+        "activeWarnings": 0,
+        "rawActiveWarnings": 0,
+        "diagnosticPartialOnlyWarnings": 1380,
+        "acceptedWarnings": 0,
+        "obsoleteAcceptedWarnings": 0
+      },
+      "details": [
+        "non-blocking partial-only applicability diagnostics APV-202: 1380",
+        "diagnostic finding type APV-202: 1380"
+      ]
+    },
+    "CQR-303": {
+      "id": "CQR-303",
+      "status": "warn",
+      "summary": "Deep curriculum QA is incomplete: 379/397 current curricularAtomic goals strictly complete.",
+      "metrics": {
+        "expectedGoals": 397,
+        "remaining": 18,
+        "strictComplete": 379,
+        "currentDescriptionResolutions": 379,
+        "currentPositiveEvidenceProfiles": 379,
+        "currentSemanticAtomicityDecisions": 397,
+        "currentMemoryReviewDecisions": 397,
+        "currentVisualizationQaRecords": 379,
+        "deferredVisualizations": 0,
+        "requiredChecksPassed": 6,
+        "requiredChecksTotal": 6,
+        "blockingIssues": 0
+      }
+    }
+  },
+  "BioMaturity": "M6",
+  "otherSubjects": [
+    {
+      "subject": "mathematik",
+      "strict": 807,
+      "denominator": 807,
+      "issues": 0
+    },
+    {
+      "subject": "physik",
+      "strict": 478,
+      "denominator": 478,
+      "issues": 0
+    },
+    {
+      "subject": "chemie",
+      "strict": 212,
+      "denominator": 402,
+      "issues": 0
+    },
+    {
+      "subject": "wirtschaftswissenschaften",
+      "strict": 346,
+      "denominator": 346,
+      "issues": 0
+    }
+  ],
+  "normalCurrentD19SupersessionChainsCheckedThroughCentral": true,
+  "sourceUnionApproval": false,
+  "operatorExecutionApproval": false,
+  "humanApproval": false
+}

@@ -1,0 +1,12 @@
+{
+  "role": "Prepared concrete targeted projection regression; execution pending final active metadata adoption",
+  "javaExecutable": "tmp/ci-fix-37812953926/local-runtime-profile/toolchain/corretto-25.0.2/bin/java",
+  "actualJavaVersionOutput": "openjdk version \"25.0.2\" 2026-01-20 LTS\nOpenJDK Runtime Environment Corretto-25.0.2.10.1 (build 25.0.2+10-LTS)\nOpenJDK 64-Bit Server VM Corretto-25.0.2.10.1 (build 25.0.2+10-LTS, mixed mode, sharing)\n",
+  "localOnlyInitPath": "tmp/biologie379-backend-targeted-local.init.gradle",
+  "localOnlyInitSHA256": "ddc09e5df63f94c58008e2f170fe70a1966f3997f4c57d9a977167c4d7bf3784",
+  "localOnlyInitText": "gradle.projectsEvaluated {\n    gradle.rootProject.tasks.named('processResources').configure {\n        // Local projection/state tests do not serve generated static media.\n        // The complete unmodified resource/build gate runs on GitHub.\n        exclude('static/**')\n    }\n}\n",
+  "qualifiedResourceExclusion": "Only generated static web resources excluded to avoid duplicating multi-GB frontend artifacts on low disk; full normal GitHub resource/test gate remains required",
+  "test": "com.skillpilot.backend.controller.LearnerControllerIntegrationTest.learnerStateUsesReviewedScienceSekIDurationProjectionForAtomicTotals",
+  "localTestPassed": false,
+  "remoteCIPassed": false
+}
