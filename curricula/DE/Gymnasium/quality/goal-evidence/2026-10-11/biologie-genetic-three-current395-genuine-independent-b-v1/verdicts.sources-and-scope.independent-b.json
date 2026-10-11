@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "checkedAtUTC": "2026-10-11T07:42:22.930210+00:00",
+  "reviewAuthority": "ai_candidate",
+  "status": "needs_human_review",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "sourcesActuallyRead": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-argument-three-current395-neutral-integration-preparation-b-20261011-v1/sources/primary/RP-whole-current.original.pdf",
+      "sha256": "sha256:307f5d841072a1a34d846554c7397c9b8355a9c05d49c8c223ccd9c64d877350",
+      "independentlyRasterReadPhysicalPages": [
+        46
+      ],
+      "printedPages": [
+        44
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-argument-three-current395-neutral-integration-preparation-b-20261011-v1/sources/primary/HE-whole-current.original.pdf",
+      "sha256": "sha256:52c278d6f5a7383361631d5251550c42222f13e1bbe2aa16d39ca3b12c5e1558",
+      "independentlyRasterReadPhysicalPages": [
+        39
+      ],
+      "printedPages": [
+        39
+      ]
+    }
+  ],
+  "findings": [
+    {
+      "findingId": "B-SOURCE-RP-LOCATOR",
+      "status": "open_current_binding",
+      "affectedGoalIds": [
+        "9540a95d-5ca5-527c-918f-d702e99be07a",
+        "5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+        "0f9318ec-90eb-5381-b670-8fb2f2789c3d"
+      ],
+      "observed": "Bound RP sourceGoal 003 names printed p.43. Independent original-PDF text and rendered physical p.46 show the argumentation clause on printed p.44.",
+      "proposedCorrection": "sourceRef RP-BIO-SEKI-2014 S.44 only for sourceGoal003",
+      "inactiveCorrectionInspected": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-argument-three-current395-neutral-integration-preparation-b-20261011-v1/sources/proposed-RP-whole-current-only003-sourceRef44.json",
+        "sha256": "sha256:ef7c69d44ef906f385f3c50ec7201c5926e908765f84a6f70ea46a40bc908a9c",
+        "differences": [
+          {
+            "path": "/sourceGoals/42/sourceRef",
+            "before": "RP-BIO-SEKI-2014 S. 43",
+            "after": "RP-BIO-SEKI-2014 S. 44"
+          }
+        ],
+        "onlySourceRefChanged": true
+      },
+      "closedOnActiveBinding": false,
+      "fullSourceOperatorClosure": false
+    },
+    {
+      "findingId": "B-SOURCE-HE-OPERATIONALISATION-SCOPE",
+      "status": "HOLD",
+      "affectedGoalIds": [
+        "9540a95d-5ca5-527c-918f-d702e99be07a",
+        "5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+        "0f9318ec-90eb-5381-b670-8fb2f2789c3d"
+      ],
+      "observed": "Frozen HE sourceGoals classify the three authored goal sentences as officialCompetency and map them exact. Original printed/physical p.39 contains Q1.2 LK vector/cloning/GMO content and Q1.4 PID ethics for GK/LK, then CRISPR/Cas and Gentechnik: Risiken und Chancen for LK. It does not contain the three verbatim generic learner sentences. HE GK validity of the generic applications target and generic ethics scope beyond PID are not proved by these bindings. The modern LK risk-discussion core is supported, but not the extraction claim of a verbatim official goal.",
+      "closureRequires": "Precisely mark authored operationalisation versus actual source wording, bind correct source passage/course scope and independently review any resulting mapping or visibility correction.",
+      "noFullHEClosure": true
+    },
+    {
+      "findingId": "B-SOURCE-RP-OPERATOR",
+      "status": "HOLD",
+      "affectedGoalIds": [
+        "9540a95d-5ca5-527c-918f-d702e99be07a",
+        "5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+        "0f9318ec-90eb-5381-b670-8fb2f2789c3d"
+      ],
+      "observed": "RP sourceGoal003 has six canonical partial mappings. Three complete material-based argumentation profiles/case pairs are suitable E1/G1 candidates and preserve discussion/justification; this bounded three-goal review does not clear the entire biotechnology source clause, remaining mapped goals, regional selection or implementation.",
+      "sourceOperatorCompletionApproved": false
+    },
+    {
+      "findingId": "B-SCOPE-BY-ABSENCE",
+      "status": "HOLD",
+      "affectedGoalIds": [
+        "9540a95d-5ca5-527c-918f-d702e99be07a",
+        "5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+        "0f9318ec-90eb-5381-b670-8fb2f2789c3d"
+      ],
+      "observed": "All three raw canonical jurisdiction lists include DE-BY. Independent compilation of all24 bound source views exposes none of them as BY target or prerequisiteOnly; the bound whole BY mapping has no rows for them. Actual395 and native3 pages therefore correctly show HE/RP only.",
+      "prohibitedInference": "Raw applicability and linked biological scenarios do not prove BY source coverage or target visibility.",
+      "effectiveBYTargetClaimApproved": false
+    },
+    {
+      "findingId": "B-CONTEXT-ORIENTATION-LANGUAGE",
+      "status": "open_external_context",
+      "affectedGoalIds": [
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "contextForGoalIds": [
+        "9540a95d-5ca5-527c-918f-d702e99be07a",
+        "5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+        "0f9318ec-90eb-5381-b670-8fb2f2789c3d"
+      ],
+      "observed": "The shared external orientation prerequisite has German text that explicitly neither requires nor tests subject details and asks only interest or wish to continue. Its English description still requires explaining why the domain matters and how the curriculum produces durable competence; the English title retains Biologie. These DE/EN contracts are not equivalent.",
+      "outsideThreeCurricularAtomicScientificScope": true,
+      "currentThreeProfileValidityRevoked": false,
+      "closureRequires": "Correct only the external orientation English/title wording and independently verify the affected current context; no local edit or closure performed."
+    },
+    {
+      "findingId": "B-ACTIVE-ASSET-PUBLICATION",
+      "status": "HOLD_active_adoption",
+      "affectedGoalIds": [
+        "9540a95d-5ca5-527c-918f-d702e99be07a",
+        "5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+        "0f9318ec-90eb-5381-b670-8fb2f2789c3d"
+      ],
+      "observed": "Workspace normal P3 check cannot resolve the three candidate image URLs under app/public; it reports missing assets plus null-digest stale inputs. The isolated tmp capsule with byte-exact current frozen images and unchanged normal tools passes.",
+      "localCandidateTupleValidated": true,
+      "activePublicationOrDeploymentProved": false
+    }
+  ],
+  "actualLearnerPerformance": false,
+  "actualExperimentPerformed": false,
+  "humanApproval": false,
+  "canonicalFilesModified": false,
+  "sourceBindingsModified": false,
+  "old397AuthorPeerOutcomesUsedToDecide": false,
+  "parallelCurrent395AResultsRead": false
+}

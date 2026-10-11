@@ -1,0 +1,19 @@
+{
+  "initialNativePrepareAttempts": [
+    {
+      "exitCode": 1,
+      "error": "Goal f53 visualization resolves outside the public root"
+    }
+  ],
+  "cause": "The initial bounded tmp public tree linked an existing f53 directory outside the renderer public root; normal renderer correctly rejected it.",
+  "repair": "Only the tmp directory link was replaced by a regular directory and exact original image file.",
+  "unintendedIdenticalByteWrite": {
+    "path": "app/public/assets/goal-visualizations/biologie/f53d0a0b-d9b8-5012-92b5-3a021ab6c30b/f53d0a0b-d9b8-5012-92b5-3a021ab6c30b.png",
+    "assetSha256": "sha256:b048a5df0863b5db84407ff7b8b62e30f6c73a163d794b239ae67005ceae45ac",
+    "contentChanged": false,
+    "modificationTimeMayHaveChanged": true
+  },
+  "activeCanonicalOrRegistryWrite": false,
+  "existingImageRegenerated": false,
+  "nativeFailureWasNotSwallowed": true
+}

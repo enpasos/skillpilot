@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "reviewer": "Codex genuine independent B; nonauthor",
+  "createdAtUTC": "2026-10-11T10:06:38.922630+00:00",
+  "authority": "ai_candidate",
+  "recordStatus": "candidate",
+  "humanApproval": false,
+  "humanTrial": false,
+  "learnerExecutionClaim": false,
+  "sourceUnionApproval": false,
+  "currentAJudgmentsRead": false,
+  "newScientificReviewCount": {
+    "descriptionGoals": 1,
+    "newSourceEdges": 1,
+    "newWholeMandatoryScopeViews": 2,
+    "newImageReviews": 0,
+    "newFullHistoricalReviews": 0
+  },
+  "decisions": [
+    {
+      "item": "BY135 new direct source edge",
+      "decision": "KEEP_PARTIAL",
+      "sourceGoalId": "d6ad6ab1-1c9a-5101-9b26-d2ed456d3089",
+      "canonicalGoalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+      "matchType": "partial",
+      "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+      "actualPrimarySources": [
+        {
+          "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/10/chemie/ch",
+          "locators": [
+            "C10 LB1 competence2: self planned execution and documentation",
+            "C10 LB1 contents: preparation of defined-concentration solutions",
+            "C10 LB4 competence8 and contents: acid/base concentration calculations and preparation"
+          ]
+        },
+        {
+          "url": "https://www.lehrplanplus.bayern.de/fachlehrplan/gymnasium/10/chemie/ch-ntg",
+          "locators": [
+            "C10 LB1 competence2: working techniques and documentation",
+            "C10 LB1 contents: standard-solution preparation",
+            "C10 LB2 competence9 and contents: acid/base concentration calculations and preparation"
+          ]
+        }
+      ],
+      "reasonDe": "Die Herstellung einer Lösung ist in beiden amtlichen Profilkontexten ausdrücklich enthalten. 135 kann den angeleiteten praktischen Herstellungs- und Dokumentationsanteil beitragen. Der registrierte d6ad-Quellensatz fordert dabei Berechnungen zu definierten sauren/basischen Stoffmengenkonzentrationen; die Kante erfüllt diesen Quellensatz nicht vollständig. Homogene Lösung nach bereitgestellter Arbeitsanweisung setzt weder selbständige Planung noch Konzentrationsrechnung voraus. Die neue edge und das zusätzliche canonicalGoalId wurden fachlich unabhängig geprüft; die historische Ganzzeilenrationale wird nicht erneut freigegeben.",
+      "remainingHolds": [
+        "source-row calculation and precise defined concentration",
+        "independent experiment planning and evaluation under LB1",
+        "complete acid/base source content",
+        "authentic performed experiment or suitable case execution cannot be inferred from these review files"
+      ]
+    },
+    {
+      "item": "HE mandatory GK and LK whole views",
+      "decision": "KEEP",
+      "reasonDe": "HE phys12/Druck11 ordnet Lösungsvorbereitung sowie Massen-/Volumenanteile dem Pflichtinhalt zu; phys13/Druck12 nennt Sättigung/Temperaturabhängigkeit fakultativ. Die beiden neuen whole views entfernen genau 413 als atomaren Pflicht-Target ohne neue prerequisiteOnly-Klassifikation oder fakultative Target-Erweiterung. Die normalen Laufzeitfunktionen bestätigen unveränderte requires/effectiveRequires/inheritedRequires für sämtliche anderen erhaltenen Ziele und alle sieben sichtbaren Memory-Ziele. Die zwei breiten canonical Cluster 3588/53fd sind in der view durch Strukturknoten mit fachlich passenden Labels ersetzt; sie sind nicht aus der canonical Landschaft gelöscht.",
+      "evidence": "checks/normal-operative-P-M-A-and-HE-runtime-bindings.actual.json"
+    },
+    {
+      "item": "raw413 jurisdiction HE to TH",
+      "decision": "KEEP",
+      "reasonDe": "Der tatsächliche Atlas enthält nur TH/SekII/LK. TH phys49/Druck44 rechte erhöhte-Niveau-Spalte belegt begrenzte Beiträge zu gesättigter Flüssigkeit mit Bodensatz und zur Sättigungsgrenze. HE-Pflichtsichten tragen Sättigung nicht; das fakultative HE-Original bleibt sichtbar als Primärbefund, ohne daraus neue Pflicht oder optional Target zu autorisieren. Raw-SekI/GK-LK-Tags sind generische canonical Kontexte, kein TH-Kursnachweis. Effective TH/LK wird durch tatsächliche SOURCE-Metadaten und normale Atlasableitung nachgewiesen.",
+      "remainingHolds": [
+        "TH MWG and solubility product derivation/calculation beyond413",
+        "TH common-ion and complexation content beyond413",
+        "TH actual fractional precipitation practical duty"
+      ]
+    },
+    {
+      "item": "two TH empty needsCanonicalGoal duties",
+      "decision": "KEEP_TECHNICAL_ONLY",
+      "reasonDe": "Ganze TH-mapping-Differenz besteht exakt aus zwei decision-Schreibweisen. Source-ID067/069, leere canonicalGoalIds und Gründe bleiben unverändert. Die tatsächlichen fraktionierte-Fällung-Pflichten werden nicht einer neuen competence zugeordnet oder abgeschlossen."
+    },
+    {
+      "item": "D413 description current canonical/source382 context",
+      "decision": "KEEP",
+      "normalRecord": "D1-results/description-records.jsonl",
+      "normalRun": "D1-results/run-manifest.json",
+      "normalValidation": "checks/normal-D1-campaign-and-results.actual.json",
+      "goalReviewContextFingerprint": "sha256:1975a5ecfab0456bc188bb1d4e04ac60a12fa36caadcbe6f3d420d8c1cd8bf3a",
+      "reasonDe": "Ganzer DE/EN-Text und aktueller Kontext tatsächlich gelesen; vorausgesetzte Bedingungen, gelöste Menge/Rest/zusätzliche Kapazität und klare gesättigte Grenzfälle sind korrekt getrennt. Whole native HTML goal article und PDF phys3 tatsächlich betrachtet. Der gemeinsame D1-Review-only-Subset aus whole402 ist kein source-union book. Separater normal source382 Join ist gebunden und 413 dort TH/LK-only; seine aktuelle Seiten-FP e1cee1a bleibt identisch. Kein MWG/KL-Verfahren oder echte Versuchsdurchführung wird hinzuerfunden."
+    },
+    {
+      "item": "operative P/M/A/V bodies and affected bindings",
+      "decision": "RETAIN_VALID_UNCHANGED",
+      "reasonDe": "Normal P6 check hat keine Fehler und bewahrt needs_human_review/ai_candidate E1/G1. Normale A6 und M402 checks bestehen; die tatsächliche neue HE Sicht bewahrt gesamte andere Prereqs/Memoryvisibility. Normaler QA-Generator in memory liefert byte-exakt denselben 0f119-Ledger; public/canonical Originalbilder135/413 stimmen exakt mit der bestehenden AI approval digest überein. Keine neue Bildfreigabe und keine Human-Freigabe."
+    }
+  ],
+  "normalChecks": {
+    "CQR003": "PASS zero unsupported",
+    "CQR004": "PASS zero mismatches/unmapped-course-duties",
+    "sourceAtlas": {
+      "canonical402": 402,
+      "published382": 382,
+      "scopes48": 48,
+      "unresolvedSourceScope496": 496,
+      "omitted20": 20,
+      "BYonlyAddition": "135 -> BY/SekI count97 to98",
+      "other47Scopes": "identical after explicitly declared operative-to-candidate mapping paths"
+    },
+    "P6": "PASS zero errors",
+    "A6": "PASS zero stale/missing",
+    "M402": "PASS zero blockers",
+    "V": "exact normal derived412-ledger unchanged; affected asset and AI-binding bytes exact",
+    "D1": "PASS zero campaign/record/run errors"
+  },
+  "resolvedFindings": [
+    {
+      "id": "B-CQR-discovery",
+      "status": "RESOLVED_IN_INACTIVE_CANDIDATE",
+      "actualCorrection": "Five whole additive successor files discoverable under ordinary mapping tree in readonly overlay; historical files preserved",
+      "proof": "normal CQR003/004 functions actually PASS"
+    },
+    {
+      "id": "B-BY135-no-direct-source",
+      "status": "RESOLVED_IN_INACTIVE_CANDIDATE_FOR_PARTIAL_ONLY",
+      "actualCorrection": "Root-authored registered d6ad to135 partial edge actually independently checked against current official primary contexts"
+    },
+    {
+      "id": "B-HE413-wrong-mandatory-target",
+      "status": "RESOLVED_IN_INACTIVE_CANDIDATE",
+      "actualCorrection": "Whole new HE2 views and raw413TH scope remove actualHE mandatoryTarget; allotheratoms/prereqs/memory retain"
+    },
+    {
+      "id": "B-TH-needsCanonicalGoal-spelling",
+      "status": "RESOLVED_TECHNICAL_IN_INACTIVE_CANDIDATE",
+      "actualCorrection": "Two empty duties use recognized normal disposition; the duties remain OPEN"
+    }
+  ],
+  "integrationGates": [
+    "Root byte-exact integration of the eight neutral candidates only after actual independent Source A and B judgments",
+    "Root copies this one B record/run exactly to shared round-b/results and finalizes genuine A+B through normal dual-round resolution/current canonical-context bindings",
+    "Preserve all old mapping history; new successors additive under ordinary mapping tree; explicit sourceAtlas copies or exact successors bound honestly",
+    "Rebuild only normal affected sourceAtlas/book metadata and affected BY135 page/context binding; 413 source382 page itself exact; retain valid P/M/A/V bodies and existing AI asset approvals",
+    "Run normal source/view/quality/current binding and central scoped checks after adoption; machine CQR PASS is not full scientific source-union clearance",
+    "Retain496 source-scope debt,20 omitted goals,all unfulfilled TH/BY operator/source clauses,ai_candidate/needs_human_review E1/G1 and Human gates"
+  ]
+}

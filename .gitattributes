@@ -33,6 +33,11 @@ curricula/**/quality/**/generation-*.actual.json -whitespace
 
 # Frozen native review pages retain renderer bytes, including empty-line spacing.
 curricula/**/quality/**/book.html -text -whitespace
+curricula/**/quality/**/*.normal-renderer.html -text -whitespace
+
+# Native validation reports are captured tool outputs; preserve their sealed bytes.
+curricula/**/quality/**/*.normal.report.md -text -whitespace
+curricula/**/quality/**/*.normal.actual.report.md -text -whitespace
 
 # Preserve exact line endings in these hash-bound captured source bytes.
 curricula/DE/Gymnasium/quality/goal-evidence/2026-10-08/wirtschaft-e-law-and-contract-twenty-bilingual-positive-author-v1/actual-primary-norm-inputs/by-police-nuernberg-20250325.actual.bytes -text

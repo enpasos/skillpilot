@@ -1,0 +1,44 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-genetic-three-combined-current395-independent-a-run-20261011",
+  "bundleFingerprint": "sha256:17fbed53afd37c9ada0bc5cc899c4b8ed4d52e52f1dc9fd02f991efd9225a8a4",
+  "bookDigest": "sha256:3642aa40cd76728e865765b32a7af33ba5e032600cb43dd95c902a43849f07d5",
+  "provider": "OpenAI / Codex",
+  "model": "GPT-6-based Codex session; exact model build not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "biologie-targeted-source-positive-understanding-evidence-v2",
+  "promptFingerprint": "sha256:075a179a66d0f7f0d2ba7021c96a00639638289f2126199382626376c33a134c",
+  "criteriaFingerprint": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8",
+  "generationParametersFingerprint": "sha256:2b0db55ac9d15d22fc1024b44fe1073be9f662e2ce3101a27cbc3994781abaf0",
+  "independenceGroupId": "biologie-combined-current395-genuine-independent-a-20261011",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "9540a95d-5ca5-527c-918f-d702e99be07a",
+    "5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+    "0f9318ec-90eb-5381-b670-8fb2f2789c3d"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:3642aa40cd76728e865765b32a7af33ba5e032600cb43dd95c902a43849f07d5"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:d17a1fea3252c81aa89908f1a3c38a492c665c70a15daed40f2d0207cbebab10"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:075a179a66d0f7f0d2ba7021c96a00639638289f2126199382626376c33a134c"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8"
+    }
+  ],
+  "startedAt": "2026-10-11T09:10:31.329749+00:00",
+  "completedAt": "2026-10-11T09:15:12.021213+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:5cca224c34b7a22b17bf17873a1ab04a3b33069bb9950050c91d06b9e07210c8",
+  "toolchainVersion": "skillpilot-positive-understanding-evidence-v2-current"
+}

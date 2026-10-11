@@ -1,0 +1,899 @@
+{
+  "createdAtUTC": "2026-10-11T08:13:07.206Z",
+  "scope": "Three additional real prerequisite deltas outside original selected31; full-profile scientific context adoption, never a hash-only review",
+  "rows": [
+    {
+      "goalId": "018bec90-445f-4a88-b8bc-228f8335dee6",
+      "originalConfig": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-source7-normal37-D27-P2-reviewed-inactive-integration-j-technical-20261010-v1/future-active-configs/positive-retained-05.portable.config.json",
+      "originalReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/canonical-chemistry-positive-understanding-evidence-b006-ions-atoms-bonding-current-6-v3.review.jsonl",
+      "originalReviewSha256": "sha256:7b70a8adfe22b16e610bb3602d74434a5bebb06abeacc2b7360b3968580e1cf8",
+      "originalWholeRecord": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "canonical-chemistry-positive-evidence-b006-ions-atoms-bonding-current-6-v3",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "018bec90-445f-4a88-b8bc-228f8335dee6",
+        "goalFingerprint": "sha256:48b31d2af3d8bad4d8bca60b9f2207bd26e94f4a5f47ac324424b3c19f0561f6",
+        "reviewInputFingerprint": "sha256:1759ce1daace82f22a1c2148df74595dbc5468281cd54f18de23e01a92ba4c00",
+        "profileFingerprint": "sha256:3512822c8cd4a05573a8fb3b0e81b5f6762d9e9c34c27571b5ccef852a611ace",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-09-30T18:30:40Z",
+        "reviewer": "codex-gpt-6-chemistry-b006-positive-profile-author",
+        "reason": "Leitfähigkeit wird mit Stoffzustand und beweglichen Ladungsträgern erklärt; Salzschmelzen bleiben ausschließlich Papierdaten. Zwei eigenständige neue Fälle prüfen positiven Transfer und die Modellgrenze. KI-Kandidat; needs_human_review, keine menschliche Freigabe.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [],
+        "profile": {
+          "archetype": "data",
+          "expectations": [
+            {
+              "id": "b006-018bec90-core",
+              "essentialUnderstandingDe": "Ein Leiter braucht bewegliche Ladungsträger. In Metallfestkörpern sind Elektronen beweglich, in Salzschmelzen und Salzlösungen Ionen; feste Ionengitter und Zuckerlösungen besitzen unter den gegebenen Bedingungen keine ausreichend beweglichen Ladungsträger.",
+              "essentialUnderstandingEn": "Conduction requires mobile charge carriers. Metal solids have mobile electrons, molten and dissolved salts have mobile ions; fixed ionic lattices and sugar solution lack sufficiently mobile carriers under the given conditions.",
+              "observablePerformanceDe": "Die lernende Person vergleicht vorgegebene Leitfähigkeitsdaten, ordnet Leiter/Nichtleiter bei gleichem Messaufbau ein und begründet Unterschiede auf Teilchenebene; bloß „flüssig“ reicht nicht.",
+              "observablePerformanceEn": "The learner compares supplied conductivity data, classifies conductors/nonconductors under the same test setup and explains particle-level differences; being liquid alone is insufficient."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "b006-018bec90-core"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "state",
+              "textDe": "Festes Salz, Salzlösung und Schmelze unterscheiden Beweglichkeit vorhandener Ionen.",
+              "textEn": "Solid salt, solution and melt differ in mobility of existing ions."
+            },
+            {
+              "id": "substance",
+              "textDe": "Metall, Salz und molekulare Zuckerlösung verlangen verschiedene Ladungsträgerannahmen.",
+              "textEn": "Metal, salt and molecular sugar solution require different carrier explanations."
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "copper-salt-sugar-data",
+              "taskDemandDe": "Ein einheitlicher Niederspannungs-Messaufbau liefert für Kupferdraht hohe, festes NaCl sehr geringe, 0,1 mol/L NaCl-Lösung hohe und gleich konzentrierte Zuckerlösung sehr geringe Leitfähigkeit. Ordne und begründe; Messwerte sind vorgegeben.",
+              "taskDemandEn": "A common low-voltage setup gives high conductivity for copper wire, very low for solid NaCl, high for 0.1 mol/L NaCl solution and very low for equally concentrated sugar solution. Classify and explain from supplied data.",
+              "expectedPerformanceDe": "Kupfer: mobile Elektronen; NaCl fest: Ionen ortsgebunden; NaCl gelöst: Na+ und Cl− beweglich; Zucker bleibt molekular, die Flüssigkeit allein erklärt Leitung nicht.",
+              "expectedPerformanceEn": "Copper: mobile electrons; solid NaCl: fixed ions; dissolved NaCl: mobile Na+ and Cl−; sugar remains molecular, and liquid state alone does not explain conduction.",
+              "understandingFocusDe": "Stoff- und Zustandsvergleich trennt Beobachtung von Modell.",
+              "understandingFocusEn": "Substance and state comparison separates observation from model."
+            },
+            {
+              "id": "molten-salt-paper-transfer",
+              "taskDemandDe": "Ein neuer Papierdatensatz vergleicht festes und geschmolzenes KBr sowie reines Ethanol: nur die Schmelze zeigt deutliches Leiten. Erkläre ohne praktisches Erhitzen, warum Wasser nicht nötig ist und Ethanol trotz Flüssigkeit kaum leitet.",
+              "taskDemandEn": "A fresh paper data set compares solid and molten KBr with pure ethanol: only the melt conducts appreciably. Without practical heating, explain why water is unnecessary and liquid ethanol scarcely conducts.",
+              "expectedPerformanceDe": "In der KBr-Schmelze sind K+ und Br− beweglich, im Feststoff nicht; Ethanol besteht überwiegend aus neutralen Molekülen. Kein Wasser als angeblicher Ionenerzeuger.",
+              "expectedPerformanceEn": "K+ and Br− move in the KBr melt but not the solid; ethanol mostly consists of neutral molecules. Water is not falsely invoked as creating the ions.",
+              "understandingFocusDe": "Neue Schmelze testet den Ladungsträgermechanismus unabhängig vom Bild.",
+              "understandingFocusEn": "A fresh melt tests the carrier mechanism independently of the image."
+            }
+          ]
+        }
+      },
+      "currentWholeRecord": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "chemie-b007-v7-current-context-018bec90",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "018bec90-445f-4a88-b8bc-228f8335dee6",
+        "goalFingerprint": "sha256:48b31d2af3d8bad4d8bca60b9f2207bd26e94f4a5f47ac324424b3c19f0561f6",
+        "reviewInputFingerprint": "sha256:2778ca6dbdef0e051be4242032dc3b9f8ab313ef9ae17815bc00528655761c5e",
+        "profileFingerprint": "sha256:3512822c8cd4a05573a8fb3b0e81b5f6762d9e9c34c27571b5ccef852a611ace",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-10-11T08:13:07.173Z",
+        "reviewer": "Codex root; targeted current prerequisite-context adoption after whole DE/EN profile and case inspection",
+        "reason": "Current-context adoption after reading the whole bilingual existing profile and both whole supplied-data case briefs: preparation1351706f replaces the bundled solutions parent. Conductivity still assesses mobile electrons in copper, fixed versus mobile Na/Cl ions, neutral sugar, and the independent paper-only KBr-melt/ethanol transfer. Preparing a solution is prior context; no experimental heating/conductivity execution is claimed. Goal and whole performance/rubric profile are unchanged. Current D14 genuine A/B independently review this exact prerequisite context; original P science/status retained, no fresh blind review or human approval.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [],
+        "profile": {
+          "archetype": "data",
+          "expectations": [
+            {
+              "id": "b006-018bec90-core",
+              "essentialUnderstandingDe": "Ein Leiter braucht bewegliche Ladungsträger. In Metallfestkörpern sind Elektronen beweglich, in Salzschmelzen und Salzlösungen Ionen; feste Ionengitter und Zuckerlösungen besitzen unter den gegebenen Bedingungen keine ausreichend beweglichen Ladungsträger.",
+              "essentialUnderstandingEn": "Conduction requires mobile charge carriers. Metal solids have mobile electrons, molten and dissolved salts have mobile ions; fixed ionic lattices and sugar solution lack sufficiently mobile carriers under the given conditions.",
+              "observablePerformanceDe": "Die lernende Person vergleicht vorgegebene Leitfähigkeitsdaten, ordnet Leiter/Nichtleiter bei gleichem Messaufbau ein und begründet Unterschiede auf Teilchenebene; bloß „flüssig“ reicht nicht.",
+              "observablePerformanceEn": "The learner compares supplied conductivity data, classifies conductors/nonconductors under the same test setup and explains particle-level differences; being liquid alone is insufficient."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "b006-018bec90-core"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "state",
+              "textDe": "Festes Salz, Salzlösung und Schmelze unterscheiden Beweglichkeit vorhandener Ionen.",
+              "textEn": "Solid salt, solution and melt differ in mobility of existing ions."
+            },
+            {
+              "id": "substance",
+              "textDe": "Metall, Salz und molekulare Zuckerlösung verlangen verschiedene Ladungsträgerannahmen.",
+              "textEn": "Metal, salt and molecular sugar solution require different carrier explanations."
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "copper-salt-sugar-data",
+              "taskDemandDe": "Ein einheitlicher Niederspannungs-Messaufbau liefert für Kupferdraht hohe, festes NaCl sehr geringe, 0,1 mol/L NaCl-Lösung hohe und gleich konzentrierte Zuckerlösung sehr geringe Leitfähigkeit. Ordne und begründe; Messwerte sind vorgegeben.",
+              "taskDemandEn": "A common low-voltage setup gives high conductivity for copper wire, very low for solid NaCl, high for 0.1 mol/L NaCl solution and very low for equally concentrated sugar solution. Classify and explain from supplied data.",
+              "expectedPerformanceDe": "Kupfer: mobile Elektronen; NaCl fest: Ionen ortsgebunden; NaCl gelöst: Na+ und Cl− beweglich; Zucker bleibt molekular, die Flüssigkeit allein erklärt Leitung nicht.",
+              "expectedPerformanceEn": "Copper: mobile electrons; solid NaCl: fixed ions; dissolved NaCl: mobile Na+ and Cl−; sugar remains molecular, and liquid state alone does not explain conduction.",
+              "understandingFocusDe": "Stoff- und Zustandsvergleich trennt Beobachtung von Modell.",
+              "understandingFocusEn": "Substance and state comparison separates observation from model."
+            },
+            {
+              "id": "molten-salt-paper-transfer",
+              "taskDemandDe": "Ein neuer Papierdatensatz vergleicht festes und geschmolzenes KBr sowie reines Ethanol: nur die Schmelze zeigt deutliches Leiten. Erkläre ohne praktisches Erhitzen, warum Wasser nicht nötig ist und Ethanol trotz Flüssigkeit kaum leitet.",
+              "taskDemandEn": "A fresh paper data set compares solid and molten KBr with pure ethanol: only the melt conducts appreciably. Without practical heating, explain why water is unnecessary and liquid ethanol scarcely conducts.",
+              "expectedPerformanceDe": "In der KBr-Schmelze sind K+ und Br− beweglich, im Feststoff nicht; Ethanol besteht überwiegend aus neutralen Molekülen. Kein Wasser als angeblicher Ionenerzeuger.",
+              "expectedPerformanceEn": "K+ and Br− move in the KBr melt but not the solid; ethanol mostly consists of neutral molecules. Water is not falsely invoked as creating the ions.",
+              "understandingFocusDe": "Neue Schmelze testet den Ladungsträgermechanismus unabhängig vom Bild.",
+              "understandingFocusEn": "A fresh melt tests the carrier mechanism independently of the image."
+            }
+          ]
+        }
+      },
+      "oldRequires": [
+        "53fd1bfd-facb-54ae-b2dc-f667ed1414fc"
+      ],
+      "newRequires": [
+        "1351706f-4ea6-56e9-951b-87b24cbcdee8"
+      ],
+      "wholeCurrentGoal": {
+        "id": "018bec90-445f-4a88-b8bc-228f8335dee6",
+        "shortKey": "canonical_chemistry_sek1_conductivity",
+        "title": "Leitfähigkeit von Stoffen vergleichen",
+        "titleEn": "Compare conductivity of substances",
+        "description": "Die lernende Person kann feste, flüssige und gelöste Stoffe im Hinblick auf elektrische Leitfähigkeit vergleichen und Leiter sowie Nichtleiter fachlich unterscheiden.",
+        "descriptionEn": "The learner can compare solid, liquid, and dissolved substances with respect to electrical conductivity and distinguish conductors from insulators.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekI"
+        ],
+        "contains": [],
+        "requires": [
+          "1351706f-4ea6-56e9-951b-87b24cbcdee8"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK1_EXPERIMENTIEREN",
+            "PK2_MODELLIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION"
+          ],
+          "phase": "GLOBAL",
+          "area": "Ionen und Elektrolyse",
+          "topicCode": "CANONICAL.CHEMISTRY.SEK1.CONDUCTIVITY"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+            "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+            "sourceGoalId": "33e281e4-db5b-4c3c-b04e-73ceaf38170c"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "018bec90-445f-4a88-b8bc-228f8335dee6",
+            "title": "Visualisierung: Leitfähigkeit von Stoffen vergleichen",
+            "url": "/assets/goal-visualizations/chemie/018bec90-445f-4a88-b8bc-228f8335dee6/018bec90-445f-4a88-b8bc-228f8335dee6.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Leitfähigkeit von Stoffen vergleichen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Leitfähigkeit von Stoffen vergleichen\". Die lernende Person kann feste, flüssige und gelöste Stoffe im Hinblick auf elektrische Leitfähigkeit vergleichen und Leiter sowie Nichtleiter fachlich unterscheiden.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "accepted"
+          }
+        ]
+      },
+      "wholeGoalAndProfileFingerprintUnchanged": true,
+      "originalInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:48b31d2af3d8bad4d8bca60b9f2207bd26e94f4a5f47ac324424b3c19f0561f6",
+          "requires": [
+            "53fd1bfd-facb-54ae-b2dc-f667ed1414fc"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/chemie/018bec90-445f-4a88-b8bc-228f8335dee6/018bec90-445f-4a88-b8bc-228f8335dee6.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Leitfähigkeit von Stoffen vergleichen\". Die lernende Person kann feste, flüssige und gelöste Stoffe im Hinblick auf elektrische Leitfähigkeit vergleichen und Leiter sowie Nichtleiter fachlich unterscheiden.",
+              "reviewStatus": "accepted",
+              "digest": "sha256:ea2edb9651968aa69ea461942ce49dc943fa7b9e7a1bc35a6246c7c470af7f1e"
+            }
+          ]
+        }
+      },
+      "currentInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:48b31d2af3d8bad4d8bca60b9f2207bd26e94f4a5f47ac324424b3c19f0561f6",
+          "requires": [
+            "1351706f-4ea6-56e9-951b-87b24cbcdee8"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/chemie/018bec90-445f-4a88-b8bc-228f8335dee6/018bec90-445f-4a88-b8bc-228f8335dee6.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Leitfähigkeit von Stoffen vergleichen\". Die lernende Person kann feste, flüssige und gelöste Stoffe im Hinblick auf elektrische Leitfähigkeit vergleichen und Leiter sowie Nichtleiter fachlich unterscheiden.",
+              "reviewStatus": "accepted",
+              "digest": "sha256:ea2edb9651968aa69ea461942ce49dc943fa7b9e7a1bc35a6246c7c470af7f1e"
+            }
+          ]
+        }
+      },
+      "scientificContextDecision": "Current-context adoption after reading the whole bilingual existing profile and both whole supplied-data case briefs: preparation1351706f replaces the bundled solutions parent. Conductivity still assesses mobile electrons in copper, fixed versus mobile Na/Cl ions, neutral sugar, and the independent paper-only KBr-melt/ethanol transfer. Preparing a solution is prior context; no experimental heating/conductivity execution is claimed. Goal and whole performance/rubric profile are unchanged. Current D14 genuine A/B independently review this exact prerequisite context; original P science/status retained, no fresh blind review or human approval."
+    },
+    {
+      "goalId": "5338b54c-68bc-5892-907c-e025351ffde6",
+      "originalConfig": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-source7-normal37-D27-P2-reviewed-inactive-integration-j-technical-20261010-v1/future-active-configs/positive-retained-07.portable.config.json",
+      "originalReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current-P25-protected12-source24-inactive-integration-technical-20261010-v1/positive/07-protected-residual.exact.jsonl",
+      "originalReviewSha256": "sha256:bf93d5339078f91ed40a1d4708a7ee2cc4134829d8f5bacd73a2052bb5c8a83b",
+      "originalWholeRecord": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "canonical-chemistry-positive-evidence-b004-sek1-foundations-current-7-v5",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "5338b54c-68bc-5892-907c-e025351ffde6",
+        "goalFingerprint": "sha256:a6c505d84c675f0875b443243e8acf1879917816c56a626dceae0913578689dc",
+        "reviewInputFingerprint": "sha256:91d5b2b06d135088d3f0cb374eaa7970b46dfd76ff220f886bde2b3d2a9258ae",
+        "profileFingerprint": "sha256:ff622eab970930ccf257a05cbf7aeb17057925727ed3945b49d7d414324fed3c",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-09-30T20:31:00Z",
+        "reviewer": "codex-gpt-6-chemistry-b004-p-v5-stage-bounded-correction",
+        "reason": "Zwei unterschiedliche gelöste Stoffarten verhindern ein unzulässiges Einheitsbild; Erhaltung und Verteilung bilden die gemeinsame Modellleistung. Zwei voneinander unabhängige Fälle prüfen eine neue Darstellung oder Situation, die nicht aus dem vorhandenen Bild ablesbar ist. KI-Kandidat bleibt needs_human_review; keine menschliche Freigabe.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [],
+        "profile": {
+          "archetype": "representation",
+          "expectations": [
+            {
+              "id": "b004-5338b54c-core",
+              "essentialUnderstandingDe": "Beim Lösen verteilen sich gelöste Teilchen im Lösungsmittel, statt zu verschwinden. Molekulare Stoffe können als Moleküle bleiben; geeignete Ionenkristalle liefern beim Lösen Ionen. Eine klare Lösung kann weiterhin gelösten Stoff enthalten.",
+              "essentialUnderstandingEn": "During dissolution, solute particles disperse in the solvent rather than vanish. Molecular solutes can remain molecules; suitable ionic crystals yield ions when dissolved. A clear solution can still contain solute.",
+              "observablePerformanceDe": "Die lernende Person zeichnet vor und nach dem Lösen eine passende Teilchenverteilung, bewahrt die Stoffmenge und unterscheidet gelöste Moleküle von Ionen.",
+              "observablePerformanceEn": "The learner draws an appropriate before-and-after particle distribution, conserves the solute amount and distinguishes dissolved molecules from ions."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "b004-5338b54c-core"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "solute",
+              "textDe": "Molekularer Zucker und ionisches Salz werden unterschieden.",
+              "textEn": "Molecular sugar and ionic salt are distinguished."
+            },
+            {
+              "id": "observation",
+              "textDe": "Unsichtbarkeit und Trennung durch Filtern werden fachlich gedeutet.",
+              "textEn": "Invisibility and filtration are interpreted scientifically."
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "sugar-water-particles",
+              "taskDemandDe": "Ein neues Teilchenbild zeigt Zuckerkristalle vor dem Mischen mit Wasser. Zeichne eine klare Zuckerlösung: Wo sind die Zuckermoleküle, und was geschieht mit ihrer Anzahl?",
+              "taskDemandEn": "A fresh particle diagram shows sugar crystals before mixing with water. Draw a clear sugar solution: where are the sugar molecules and what happens to their number?",
+              "expectedPerformanceDe": "Die lernende Person verteilt unveränderte Zuckermoleküle zwischen Wassermolekülen und erhält ihre Anzahl; sie erklärt Klarheit ohne chemisches Verschwinden.",
+              "expectedPerformanceEn": "The learner distributes unchanged sugar molecules among water molecules and conserves their number; clarity does not mean chemical disappearance.",
+              "understandingFocusDe": "Molekulares Lösen als Teilchenverteilung.",
+              "understandingFocusEn": "Molecular dissolution as particle distribution."
+            },
+            {
+              "id": "fresh-salt-filter-model",
+              "taskDemandDe": "Ein neuer Papierfall zeigt NaCl-Kristalle, Wasser und danach eine klare Lösung, die durch Papierfilter läuft. Skizziere passende gelöste Teilchen und sage voraus, warum der Filter das Salz nicht wie Sand zurückhält. Keine Durchführung.",
+              "taskDemandEn": "A fresh paper case shows NaCl crystals, water and then a clear solution passing through paper filter. Sketch suitable dissolved particles and predict why the filter does not retain the salt like sand. No experiment is requested.",
+              "expectedPerformanceDe": "Die lernende Person zeigt getrennte Na+ und Cl−-Ionen im Wasser im richtigen Verhältnis, keine verschwundenen Atome und kein Herausfiltern wie grobe unlösliche Sandkörner; sie behauptet nicht, die Ionen seien zu H2O geworden.",
+              "expectedPerformanceEn": "The learner shows separate Na+ and Cl− ions in water in the correct ratio, no vanished atoms and no retention like coarse insoluble sand; they do not claim the ions became H2O.",
+              "understandingFocusDe": "Ionisches Lösen und Filtergrenze als Transfer.",
+              "understandingFocusEn": "Ionic dissolution and filter limit as transfer."
+            }
+          ]
+        }
+      },
+      "currentWholeRecord": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "chemie-b007-v7-current-context-5338b54c",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "5338b54c-68bc-5892-907c-e025351ffde6",
+        "goalFingerprint": "sha256:a6c505d84c675f0875b443243e8acf1879917816c56a626dceae0913578689dc",
+        "reviewInputFingerprint": "sha256:bca0b06538b77e246d7044a3a040b5384073db9668e0dd9819a70e6fdf2f9924",
+        "profileFingerprint": "sha256:ff622eab970930ccf257a05cbf7aeb17057925727ed3945b49d7d414324fed3c",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-10-11T08:13:07.180Z",
+        "reviewer": "Codex root; targeted current prerequisite-context adoption after whole DE/EN profile and case inspection",
+        "reason": "Current-context adoption after reading the whole bilingual existing profile and both whole supplied-model case briefs: the former bundled solutions prerequisite53fd1bfd is removed, while reactions988888bb remains. This goal introduces particle-level dissolution; solute amount/particles must be conserved, molecular sugar stays molecular, Na/Cl ions are distinguished, and the independent paper-filter transfer rules out retaining dissolved salt like sand. Requiring prior mastery of the full preparation/concentration/solubility bundle was not necessary to interpret these supplied model cases. Goal and whole performance profile are unchanged. Exact current D14 genuine A/B context decisions retained; no fresh blind/human approval.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [],
+        "profile": {
+          "archetype": "representation",
+          "expectations": [
+            {
+              "id": "b004-5338b54c-core",
+              "essentialUnderstandingDe": "Beim Lösen verteilen sich gelöste Teilchen im Lösungsmittel, statt zu verschwinden. Molekulare Stoffe können als Moleküle bleiben; geeignete Ionenkristalle liefern beim Lösen Ionen. Eine klare Lösung kann weiterhin gelösten Stoff enthalten.",
+              "essentialUnderstandingEn": "During dissolution, solute particles disperse in the solvent rather than vanish. Molecular solutes can remain molecules; suitable ionic crystals yield ions when dissolved. A clear solution can still contain solute.",
+              "observablePerformanceDe": "Die lernende Person zeichnet vor und nach dem Lösen eine passende Teilchenverteilung, bewahrt die Stoffmenge und unterscheidet gelöste Moleküle von Ionen.",
+              "observablePerformanceEn": "The learner draws an appropriate before-and-after particle distribution, conserves the solute amount and distinguishes dissolved molecules from ions."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "b004-5338b54c-core"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "solute",
+              "textDe": "Molekularer Zucker und ionisches Salz werden unterschieden.",
+              "textEn": "Molecular sugar and ionic salt are distinguished."
+            },
+            {
+              "id": "observation",
+              "textDe": "Unsichtbarkeit und Trennung durch Filtern werden fachlich gedeutet.",
+              "textEn": "Invisibility and filtration are interpreted scientifically."
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "sugar-water-particles",
+              "taskDemandDe": "Ein neues Teilchenbild zeigt Zuckerkristalle vor dem Mischen mit Wasser. Zeichne eine klare Zuckerlösung: Wo sind die Zuckermoleküle, und was geschieht mit ihrer Anzahl?",
+              "taskDemandEn": "A fresh particle diagram shows sugar crystals before mixing with water. Draw a clear sugar solution: where are the sugar molecules and what happens to their number?",
+              "expectedPerformanceDe": "Die lernende Person verteilt unveränderte Zuckermoleküle zwischen Wassermolekülen und erhält ihre Anzahl; sie erklärt Klarheit ohne chemisches Verschwinden.",
+              "expectedPerformanceEn": "The learner distributes unchanged sugar molecules among water molecules and conserves their number; clarity does not mean chemical disappearance.",
+              "understandingFocusDe": "Molekulares Lösen als Teilchenverteilung.",
+              "understandingFocusEn": "Molecular dissolution as particle distribution."
+            },
+            {
+              "id": "fresh-salt-filter-model",
+              "taskDemandDe": "Ein neuer Papierfall zeigt NaCl-Kristalle, Wasser und danach eine klare Lösung, die durch Papierfilter läuft. Skizziere passende gelöste Teilchen und sage voraus, warum der Filter das Salz nicht wie Sand zurückhält. Keine Durchführung.",
+              "taskDemandEn": "A fresh paper case shows NaCl crystals, water and then a clear solution passing through paper filter. Sketch suitable dissolved particles and predict why the filter does not retain the salt like sand. No experiment is requested.",
+              "expectedPerformanceDe": "Die lernende Person zeigt getrennte Na+ und Cl−-Ionen im Wasser im richtigen Verhältnis, keine verschwundenen Atome und kein Herausfiltern wie grobe unlösliche Sandkörner; sie behauptet nicht, die Ionen seien zu H2O geworden.",
+              "expectedPerformanceEn": "The learner shows separate Na+ and Cl− ions in water in the correct ratio, no vanished atoms and no retention like coarse insoluble sand; they do not claim the ions became H2O.",
+              "understandingFocusDe": "Ionisches Lösen und Filtergrenze als Transfer.",
+              "understandingFocusEn": "Ionic dissolution and filter limit as transfer."
+            }
+          ]
+        }
+      },
+      "oldRequires": [
+        "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+        "988888bb-1f88-55f9-9a44-f3f60469a297"
+      ],
+      "newRequires": [
+        "988888bb-1f88-55f9-9a44-f3f60469a297"
+      ],
+      "wholeCurrentGoal": {
+        "id": "5338b54c-68bc-5892-907c-e025351ffde6",
+        "shortKey": "canonical_chemistry_sek1_particle_model_solution_processes",
+        "title": "Lösungsvorgänge mit dem Teilchenmodell beschreiben",
+        "titleEn": "Describe dissolution processes with the particle model",
+        "description": "Die lernende Person kann Lösungsvorgänge mit dem Teilchenmodell beschreiben.",
+        "descriptionEn": "The learner can describe dissolution processes using the particle model.",
+        "phase": "GLOBAL",
+        "area": "Stoffe und Teilchen",
+        "level": 2,
+        "core": true,
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "SekI",
+          "canonical"
+        ],
+        "requires": [
+          "988888bb-1f88-55f9-9a44-f3f60469a297"
+        ],
+        "contains": [],
+        "examples": [],
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-NI"
+          ]
+        },
+        "type": "atomic",
+        "topicCode": "Chemie Sek I - Teilchenmodell",
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU"
+          ],
+          "phase": "GLOBAL",
+          "area": "Stoffe und Teilchen",
+          "topicCode": "CANONICAL.CHEMISTRY.SEK1.PARTICLE_MODEL.SOLUTION_PROCESSES"
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeTitle": "Chemie Sekundarstufe I (Baden-Wuerttemberg, BP2016 V2 Source-Extraction)",
+            "sourceGoalId": "bw-chem-seki-3-2-1-2-b03-a01-1f9ce38a",
+            "sourceGoalTitle": "BW 3.2.1.2 (3): mithilfe eines geeigneten Teilchenmodells (Stoffteilchen) Aggregatzustände, Lösungsvorgänge, Dif...",
+            "sourceRef": "Bildungsplan 2016 Gymnasium Chemie Baden-Wuerttemberg, 3.2.1.2 (3), S. 16.",
+            "sourceSpan": "3.2.1.2 (3)",
+            "splitFromCanonicalGoalId": "10ce2814-8796-5633-9bed-f6990d039b91",
+            "splitReviewId": "canonical-chemistry-sek1-foundations"
+          }
+        },
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "5338b54c-68bc-5892-907c-e025351ffde6",
+            "title": "Visualisierung: Lösungsvorgänge mit dem Teilchenmodell beschreiben",
+            "url": "/assets/goal-visualizations/chemie/5338b54c-68bc-5892-907c-e025351ffde6/5338b54c-68bc-5892-907c-e025351ffde6.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Lösungsvorgänge mit dem Teilchenmodell beschreiben.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Lösungsvorgänge mit dem Teilchenmodell beschreiben\". Die lernende Person kann Lösungsvorgänge mit dem Teilchenmodell beschreiben.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "wholeGoalAndProfileFingerprintUnchanged": true,
+      "originalInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:a6c505d84c675f0875b443243e8acf1879917816c56a626dceae0913578689dc",
+          "requires": [
+            "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+            "988888bb-1f88-55f9-9a44-f3f60469a297"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/chemie/5338b54c-68bc-5892-907c-e025351ffde6/5338b54c-68bc-5892-907c-e025351ffde6.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Lösungsvorgänge mit dem Teilchenmodell beschreiben\". Die lernende Person kann Lösungsvorgänge mit dem Teilchenmodell beschreiben.",
+              "reviewStatus": "pilot",
+              "digest": "sha256:4958160414480714f31937dc52a046b4fd5fb880c84293bfb46f0f02de63ed0f"
+            }
+          ]
+        }
+      },
+      "currentInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:a6c505d84c675f0875b443243e8acf1879917816c56a626dceae0913578689dc",
+          "requires": [
+            "988888bb-1f88-55f9-9a44-f3f60469a297"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/chemie/5338b54c-68bc-5892-907c-e025351ffde6/5338b54c-68bc-5892-907c-e025351ffde6.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Lösungsvorgänge mit dem Teilchenmodell beschreiben\". Die lernende Person kann Lösungsvorgänge mit dem Teilchenmodell beschreiben.",
+              "reviewStatus": "pilot",
+              "digest": "sha256:4958160414480714f31937dc52a046b4fd5fb880c84293bfb46f0f02de63ed0f"
+            }
+          ]
+        }
+      },
+      "scientificContextDecision": "Current-context adoption after reading the whole bilingual existing profile and both whole supplied-model case briefs: the former bundled solutions prerequisite53fd1bfd is removed, while reactions988888bb remains. This goal introduces particle-level dissolution; solute amount/particles must be conserved, molecular sugar stays molecular, Na/Cl ions are distinguished, and the independent paper-filter transfer rules out retaining dissolved salt like sand. Requiring prior mastery of the full preparation/concentration/solubility bundle was not necessary to interpret these supplied model cases. Goal and whole performance profile are unchanged. Exact current D14 genuine A/B context decisions retained; no fresh blind/human approval."
+    },
+    {
+      "goalId": "5abc5961-6368-52bb-88b9-6a846c3c37a8",
+      "originalConfig": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b008-current517-source7-normal37-D27-P2-reviewed-inactive-integration-j-technical-20261010-v1/future-active-configs/positive-retained-29.portable.config.json",
+      "originalReviewPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-07/chemie-c441-positive-retained23-technical-preparation-author-v1/positive23.exact-retained-independent-b.review.jsonl",
+      "originalReviewSha256": "sha256:f8f032004d2087c0b61650bc77067d586e6141b9afccbdb0207c467319f3ee25",
+      "originalWholeRecord": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "chemie-next25-current-positive-independent-b-v2",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "5abc5961-6368-52bb-88b9-6a846c3c37a8",
+        "goalFingerprint": "sha256:754fcd77069e02bb867ccc3ee8a98245f786986ba7b9cffac27d76408a64e7b0",
+        "reviewInputFingerprint": "sha256:94dc1ea5377aaf140ce1fba171b28add39d103deaf5536e1d8a0337c55f30d0c",
+        "profileFingerprint": "sha256:bf70bcc084babadd4fb9e28eb3ed9c577f25c3ea2bd35656fb4484916a11e833",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-10-06T22:41:42.060434+00:00",
+        "reviewer": "Codex independent chemistry P-B",
+        "reason": "Eigenständige ganze DE/EN-Profil- und Materialprüfung an aktuellen nativen Seiten. NaCl illustrative dissolution787−783=+4kJ/mol;0.1mol→+0.4kJ. Fresh case700−740=−40;0.05mol→−2. Water oxygen towards cations/H towards anions; enthalpy alone does not fix solubility.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [
+          "chemie-next25-final-native-independent-p-b-v2"
+        ],
+        "dissent": [],
+        "profile": {
+          "archetype": "data",
+          "expectations": [
+            {
+              "id": "content-specific-understanding",
+              "essentialUnderstandingDe": "Beim Lösen werden Gitterionen getrennt und von passend orientierten Wassermolekülen hydratisiert; endotherme Gittertrennung und exotherme Hydratation werden mit konsistenten Vorzeichen addiert.",
+              "essentialUnderstandingEn": "Dissolution separates lattice ions and hydrates them with appropriately oriented water molecules; endothermic lattice separation and exothermic hydration are added with consistent signs.",
+              "observablePerformanceDe": "O-Seite zu Na+, H-Seiten zu Cl−; hydratisierte Ionen beweglich.787−783=+4kJ/mol,0,10×4=+0,40kJ Aufnahme. Das Lösen ist im gegebenen Modell leicht endotherm; ohne weitere Daten folgt keine exakte Temperaturabsenkung.",
+              "observablePerformanceEn": "O side towards Na+, H sides towards Cl−; hydrated ions are mobile.787−783=+4kJ/mol;0.10×4=+0.40kJ absorbed. Dissolution is slightly endothermic in this model; no exact temperature fall follows without further data."
+            },
+            {
+              "id": "fresh-transfer-and-model-boundary",
+              "essentialUnderstandingDe": "Das illustrative Modell liefert keine reale Salzidentität; ausΔH allein folgen weder Sättigungskonzentration noch die Entropiebilanz.",
+              "essentialUnderstandingEn": "The illustrative model identifies no real salt;ΔH alone gives neither saturation concentration nor entropy balance.",
+              "observablePerformanceDe": "700−740=−40kJ/mol,0,05×(−40)=−2kJ Freisetzung. Hydratation überwiegt hier Trennungsaufwand. Positivionen ziehen O-Enden, Negativionen H-Enden an. Die Person trennt Enthalpiebilanz von einer vollständigen Gleichgewichts-/Löslichkeitsentscheidung.",
+              "observablePerformanceEn": "700−740=−40kJ/mol;0.05×(−40)=−2kJ released. Hydration outweighs separation here. Positive ions attract O ends and negative ions H ends. The learner distinguishes enthalpy balance from a full equilibrium/solubility decision."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "content-specific-understanding",
+              "fresh-transfer-and-model-boundary"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "specific-material-variation",
+              "textDe": "Schwach endotherme gegenüber exothermer vorgegebener Lösebilanz; Betrag, Stoffmenge und Wasserorientierung.",
+              "textEn": "Weakly endothermic versus exothermic supplied dissolution balance; magnitude, amount and water orientation."
+            },
+            {
+              "id": "specific-model-limit",
+              "textDe": "Das illustrative Modell liefert keine reale Salzidentität; ausΔH allein folgen weder Sättigungskonzentration noch die Entropiebilanz.",
+              "textEn": "The illustrative model identifies no real salt;ΔH alone gives neither saturation concentration nor entropy balance."
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "chem-next25-5abc5961-case-1",
+              "taskDemandDe": "Schulmodell für NaCl-Lösen:ΔH Gittertrennung=+787, gesamte Hydratation=−783 kJ/mol. O-Seite des Wassersδ−, H-Seitenδ+. Es werden0,10mol betrachtet; Wärmeverluste im Rechenmodell vernachlässigt. Keine gemessene Temperaturkurve wird behauptet. Beschreibe das Teilchenmodell einschließlich Wasserorientierung. BerechneΔH Lösen und die Wärmebilanz für0,10mol und deute das Vorzeichen.",
+              "taskDemandEn": "School model for NaCl dissolution:lattice separationΔH=+787, total hydration=−783 kJ/mol. Water’s O sideδ−, H sidesδ+. Consider0.10mol; heat losses ignored in calculation. No measured temperature curve is claimed. Describe the particle model including water orientation. Calculate dissolutionΔH and heat balance for0.10mol; interpret the sign.",
+              "expectedPerformanceDe": "O-Seite zu Na+, H-Seiten zu Cl−; hydratisierte Ionen beweglich.787−783=+4kJ/mol,0,10×4=+0,40kJ Aufnahme. Das Lösen ist im gegebenen Modell leicht endotherm; ohne weitere Daten folgt keine exakte Temperaturabsenkung.",
+              "expectedPerformanceEn": "O side towards Na+, H sides towards Cl−; hydrated ions are mobile.787−783=+4kJ/mol;0.10×4=+0.40kJ absorbed. Dissolution is slightly endothermic in this model; no exact temperature fall follows without further data.",
+              "understandingFocusDe": "Positive Gittertrennungsenergie und negative Gitterbildungsenergie bezeichnen entgegengesetzte Vorgänge und dürfen nicht mit demselben Vorzeichen eingesetzt werden.",
+              "understandingFocusEn": "Positive lattice separation and negative lattice formation describe opposite processes and cannot use the same sign."
+            },
+            {
+              "id": "chem-next25-5abc5961-case-2",
+              "taskDemandDe": "Frischer fiktiver Salzmodellfall S mit einwertigen Kationen/Anionen:Trennung+700, Hydratation−740kJ/mol;0,05mol. Der Text behauptet „weil Lösen Energie kostet, kühlt jede Salzlösung ab“. Widerlege die Behauptung durch Bilanz und korrektes Teilchenmodell. Gib die Grenze einer Aussage über tatsächliche Löslichkeit an.",
+              "taskDemandEn": "Fresh fictional salt model S with monovalent cations/anions:separation+700, hydration−740kJ/mol;0.05mol. A text claims “dissolution costs energy, so every salt solution cools”. Refute the claim using the balance and a correct particle model. State a limit on conclusions about actual solubility.",
+              "expectedPerformanceDe": "700−740=−40kJ/mol,0,05×(−40)=−2kJ Freisetzung. Hydratation überwiegt hier Trennungsaufwand. Positivionen ziehen O-Enden, Negativionen H-Enden an. Die Person trennt Enthalpiebilanz von einer vollständigen Gleichgewichts-/Löslichkeitsentscheidung.",
+              "expectedPerformanceEn": "700−740=−40kJ/mol;0.05×(−40)=−2kJ released. Hydration outweighs separation here. Positive ions attract O ends and negative ions H ends. The learner distinguishes enthalpy balance from a full equilibrium/solubility decision.",
+              "understandingFocusDe": "Das illustrative Modell liefert keine reale Salzidentität; ausΔH allein folgen weder Sättigungskonzentration noch die Entropiebilanz.",
+              "understandingFocusEn": "The illustrative model identifies no real salt;ΔH alone gives neither saturation concentration nor entropy balance."
+            }
+          ]
+        }
+      },
+      "currentWholeRecord": {
+        "$schema": "https://skillpilot.com/schemas/goal-evidence/v2/goal-evidence-profile.schema.json",
+        "schemaVersion": 2,
+        "reviewId": "chemie-b007-v7-current-context-5abc5961",
+        "goalFingerprintRuleVersion": "goal-evidence-v1",
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+        "goalId": "5abc5961-6368-52bb-88b9-6a846c3c37a8",
+        "goalFingerprint": "sha256:754fcd77069e02bb867ccc3ee8a98245f786986ba7b9cffac27d76408a64e7b0",
+        "reviewInputFingerprint": "sha256:358ced8e2cd065e6cbf2407766da898cb30968be1f2a7afd2cd8645568f392c7",
+        "profileFingerprint": "sha256:bf70bcc084babadd4fb9e28eb3ed9c577f25c3ea2bd35656fb4484916a11e833",
+        "status": "needs_human_review",
+        "reviewAuthority": "ai_candidate",
+        "reviewedAt": "2026-10-11T08:13:07.197Z",
+        "reviewer": "Codex root; targeted current prerequisite-context adoption after whole DE/EN profile and case inspection",
+        "reason": "Current-context adoption after reading the whole bilingual existing profile and both whole school-model case briefs: basic dissolution5338b54c replaces bundled solutions53fd1bfd, while ion and bonding prerequisites4285d84a/eb7537dd remain. Those prerequisites support the unchanged hydration model: O toward cations/H toward anions, +787-783=+4kJ/mol and0.10mol gives+0.40kJ, fresh fictional +700-740=-40kJ/mol and0.05mol gives-2kJ. Enthalpy alone cannot establish solubility, entropy or an exact temperature fall, and supplied values do not certify real execution. Goal and whole profile/cases are unchanged. Existing independently reviewed P science and exact current D14 A/B context judgments retained; current targeted adoption, no fresh blind/human approval.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewRunIds": [],
+        "dissent": [],
+        "profile": {
+          "archetype": "data",
+          "expectations": [
+            {
+              "id": "content-specific-understanding",
+              "essentialUnderstandingDe": "Beim Lösen werden Gitterionen getrennt und von passend orientierten Wassermolekülen hydratisiert; endotherme Gittertrennung und exotherme Hydratation werden mit konsistenten Vorzeichen addiert.",
+              "essentialUnderstandingEn": "Dissolution separates lattice ions and hydrates them with appropriately oriented water molecules; endothermic lattice separation and exothermic hydration are added with consistent signs.",
+              "observablePerformanceDe": "O-Seite zu Na+, H-Seiten zu Cl−; hydratisierte Ionen beweglich.787−783=+4kJ/mol,0,10×4=+0,40kJ Aufnahme. Das Lösen ist im gegebenen Modell leicht endotherm; ohne weitere Daten folgt keine exakte Temperaturabsenkung.",
+              "observablePerformanceEn": "O side towards Na+, H sides towards Cl−; hydrated ions are mobile.787−783=+4kJ/mol;0.10×4=+0.40kJ absorbed. Dissolution is slightly endothermic in this model; no exact temperature fall follows without further data."
+            },
+            {
+              "id": "fresh-transfer-and-model-boundary",
+              "essentialUnderstandingDe": "Das illustrative Modell liefert keine reale Salzidentität; ausΔH allein folgen weder Sättigungskonzentration noch die Entropiebilanz.",
+              "essentialUnderstandingEn": "The illustrative model identifies no real salt;ΔH alone gives neither saturation concentration nor entropy balance.",
+              "observablePerformanceDe": "700−740=−40kJ/mol,0,05×(−40)=−2kJ Freisetzung. Hydratation überwiegt hier Trennungsaufwand. Positivionen ziehen O-Enden, Negativionen H-Enden an. Die Person trennt Enthalpiebilanz von einer vollständigen Gleichgewichts-/Löslichkeitsentscheidung.",
+              "observablePerformanceEn": "700−740=−40kJ/mol;0.05×(−40)=−2kJ released. Hydration outweighs separation here. Positive ions attract O ends and negative ions H ends. The learner distinguishes enthalpy balance from a full equilibrium/solubility decision."
+            }
+          ],
+          "coverageExpectations": {
+            "requiredExpectationIds": [
+              "content-specific-understanding",
+              "fresh-transfer-and-model-boundary"
+            ],
+            "alternativeExpectationGroups": [],
+            "minimumIndependentDemonstrations": 2,
+            "freshVariationRequired": true,
+            "independentTransferRequired": true
+          },
+          "variationAxes": [
+            {
+              "id": "specific-material-variation",
+              "textDe": "Schwach endotherme gegenüber exothermer vorgegebener Lösebilanz; Betrag, Stoffmenge und Wasserorientierung.",
+              "textEn": "Weakly endothermic versus exothermic supplied dissolution balance; magnitude, amount and water orientation."
+            },
+            {
+              "id": "specific-model-limit",
+              "textDe": "Das illustrative Modell liefert keine reale Salzidentität; ausΔH allein folgen weder Sättigungskonzentration noch die Entropiebilanz.",
+              "textEn": "The illustrative model identifies no real salt;ΔH alone gives neither saturation concentration nor entropy balance."
+            }
+          ],
+          "applicationCaseBriefs": [
+            {
+              "id": "chem-next25-5abc5961-case-1",
+              "taskDemandDe": "Schulmodell für NaCl-Lösen:ΔH Gittertrennung=+787, gesamte Hydratation=−783 kJ/mol. O-Seite des Wassersδ−, H-Seitenδ+. Es werden0,10mol betrachtet; Wärmeverluste im Rechenmodell vernachlässigt. Keine gemessene Temperaturkurve wird behauptet. Beschreibe das Teilchenmodell einschließlich Wasserorientierung. BerechneΔH Lösen und die Wärmebilanz für0,10mol und deute das Vorzeichen.",
+              "taskDemandEn": "School model for NaCl dissolution:lattice separationΔH=+787, total hydration=−783 kJ/mol. Water’s O sideδ−, H sidesδ+. Consider0.10mol; heat losses ignored in calculation. No measured temperature curve is claimed. Describe the particle model including water orientation. Calculate dissolutionΔH and heat balance for0.10mol; interpret the sign.",
+              "expectedPerformanceDe": "O-Seite zu Na+, H-Seiten zu Cl−; hydratisierte Ionen beweglich.787−783=+4kJ/mol,0,10×4=+0,40kJ Aufnahme. Das Lösen ist im gegebenen Modell leicht endotherm; ohne weitere Daten folgt keine exakte Temperaturabsenkung.",
+              "expectedPerformanceEn": "O side towards Na+, H sides towards Cl−; hydrated ions are mobile.787−783=+4kJ/mol;0.10×4=+0.40kJ absorbed. Dissolution is slightly endothermic in this model; no exact temperature fall follows without further data.",
+              "understandingFocusDe": "Positive Gittertrennungsenergie und negative Gitterbildungsenergie bezeichnen entgegengesetzte Vorgänge und dürfen nicht mit demselben Vorzeichen eingesetzt werden.",
+              "understandingFocusEn": "Positive lattice separation and negative lattice formation describe opposite processes and cannot use the same sign."
+            },
+            {
+              "id": "chem-next25-5abc5961-case-2",
+              "taskDemandDe": "Frischer fiktiver Salzmodellfall S mit einwertigen Kationen/Anionen:Trennung+700, Hydratation−740kJ/mol;0,05mol. Der Text behauptet „weil Lösen Energie kostet, kühlt jede Salzlösung ab“. Widerlege die Behauptung durch Bilanz und korrektes Teilchenmodell. Gib die Grenze einer Aussage über tatsächliche Löslichkeit an.",
+              "taskDemandEn": "Fresh fictional salt model S with monovalent cations/anions:separation+700, hydration−740kJ/mol;0.05mol. A text claims “dissolution costs energy, so every salt solution cools”. Refute the claim using the balance and a correct particle model. State a limit on conclusions about actual solubility.",
+              "expectedPerformanceDe": "700−740=−40kJ/mol,0,05×(−40)=−2kJ Freisetzung. Hydratation überwiegt hier Trennungsaufwand. Positivionen ziehen O-Enden, Negativionen H-Enden an. Die Person trennt Enthalpiebilanz von einer vollständigen Gleichgewichts-/Löslichkeitsentscheidung.",
+              "expectedPerformanceEn": "700−740=−40kJ/mol;0.05×(−40)=−2kJ released. Hydration outweighs separation here. Positive ions attract O ends and negative ions H ends. The learner distinguishes enthalpy balance from a full equilibrium/solubility decision.",
+              "understandingFocusDe": "Das illustrative Modell liefert keine reale Salzidentität; ausΔH allein folgen weder Sättigungskonzentration noch die Entropiebilanz.",
+              "understandingFocusEn": "The illustrative model identifies no real salt;ΔH alone gives neither saturation concentration nor entropy balance."
+            }
+          ]
+        }
+      },
+      "oldRequires": [
+        "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+        "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+        "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e"
+      ],
+      "newRequires": [
+        "5338b54c-68bc-5892-907c-e025351ffde6",
+        "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+        "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e"
+      ],
+      "wholeCurrentGoal": {
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekI"
+        ],
+        "contains": [],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK3_MATHEMATISIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_ENERGIE"
+          ],
+          "phase": "GLOBAL",
+          "area": "Stoffeigenschaften",
+          "topicCode": "CANONICAL.CHEMISTRY.SEK1.SALT_DISSOLUTION_ENERGY_BALANCE"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-NI"
+          ]
+        },
+        "type": "atomic",
+        "id": "5abc5961-6368-52bb-88b9-6a846c3c37a8",
+        "shortKey": "canonical_chemistry_sek1_salt_dissolution_energy_balance",
+        "title": "Lösen von Salzen energetisch erklären",
+        "titleEn": "Explain salt dissolution energetically",
+        "description": "Die lernende Person kann den Lösevorgang von Salzen auf Teilchenebene beschreiben und die beteiligten Energiebeiträge, insbesondere Gitter- und Hydratationsenergie, qualitativ und quantitativ betrachten.",
+        "descriptionEn": "The learner can describe the dissolution of salts at particle level and consider the involved energy contributions, especially lattice and hydration energy, qualitatively and quantitatively.",
+        "requires": [
+          "5338b54c-68bc-5892-907c-e025351ffde6",
+          "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+          "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e"
+        ],
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "1b7943c5-ad06-56d0-b41d-0e9f5679f2bd"
+          }
+        },
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "5abc5961-6368-52bb-88b9-6a846c3c37a8",
+            "title": "Visualisierung: Lösen von Salzen energetisch erklären",
+            "url": "/assets/goal-visualizations/chemie/5abc5961-6368-52bb-88b9-6a846c3c37a8/5abc5961-6368-52bb-88b9-6a846c3c37a8.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Lösen von Salzen energetisch erklären.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Lösen von Salzen energetisch erklären\". Die lernende Person kann den Lösevorgang von Salzen auf Teilchenebene beschreiben und die beteiligten Energiebeiträge, insbesondere Gitter- und Hydratationsenergie, qualitativ und quantitativ betrachten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "accepted"
+          }
+        ]
+      },
+      "wholeGoalAndProfileFingerprintUnchanged": true,
+      "originalInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:754fcd77069e02bb867ccc3ee8a98245f786986ba7b9cffac27d76408a64e7b0",
+          "requires": [
+            "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+            "53fd1bfd-facb-54ae-b2dc-f667ed1414fc",
+            "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/chemie/5abc5961-6368-52bb-88b9-6a846c3c37a8/5abc5961-6368-52bb-88b9-6a846c3c37a8.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Lösen von Salzen energetisch erklären\". Die lernende Person kann den Lösevorgang von Salzen auf Teilchenebene beschreiben und die beteiligten Energiebeiträge, insbesondere Gitter- und Hydratationsenergie, qualitativ und quantitativ betrachten.",
+              "reviewStatus": "accepted",
+              "digest": "sha256:2d5dc03531c142f0fee2142be0e77c9e0bef64ea5ff50a57449bd90687fe27e0"
+            }
+          ]
+        }
+      },
+      "currentInputPayload": {
+        "profileSchemaVersion": 2,
+        "profileRuleVersion": "positive-understanding-evidence-v2",
+        "reviewCriteriaFingerprint": "sha256:4ed61d2a8c7eb84dd13315427d46989b4750f58620481e19023b145935025835",
+        "goalInput": {
+          "ruleVersion": "goal-evidence-v1",
+          "goalFingerprint": "sha256:754fcd77069e02bb867ccc3ee8a98245f786986ba7b9cffac27d76408a64e7b0",
+          "requires": [
+            "4285d84a-2c9a-4d51-8250-8bed4daf2d2e",
+            "5338b54c-68bc-5892-907c-e025351ffde6",
+            "eb7537dd-d11b-50e9-a6d7-51a78e96fc4e"
+          ],
+          "contains": [],
+          "examples": [],
+          "goalVisualizations": [
+            {
+              "role": "primary",
+              "url": "/assets/goal-visualizations/chemie/5abc5961-6368-52bb-88b9-6a846c3c37a8/5abc5961-6368-52bb-88b9-6a846c3c37a8.jpg",
+              "altText": "Didaktische Visualisierung zum Lernziel \"Lösen von Salzen energetisch erklären\". Die lernende Person kann den Lösevorgang von Salzen auf Teilchenebene beschreiben und die beteiligten Energiebeiträge, insbesondere Gitter- und Hydratationsenergie, qualitativ und quantitativ betrachten.",
+              "reviewStatus": "accepted",
+              "digest": "sha256:2d5dc03531c142f0fee2142be0e77c9e0bef64ea5ff50a57449bd90687fe27e0"
+            }
+          ]
+        }
+      },
+      "scientificContextDecision": "Current-context adoption after reading the whole bilingual existing profile and both whole school-model case briefs: basic dissolution5338b54c replaces bundled solutions53fd1bfd, while ion and bonding prerequisites4285d84a/eb7537dd remain. Those prerequisites support the unchanged hydration model: O toward cations/H toward anions, +787-783=+4kJ/mol and0.10mol gives+0.40kJ, fresh fictional +700-740=-40kJ/mol and0.05mol gives-2kJ. Enthalpy alone cannot establish solubility, entropy or an exact temperature fall, and supplied values do not certify real execution. Goal and whole profile/cases are unchanged. Existing independently reviewed P science and exact current D14 A/B context judgments retained; current targeted adoption, no fresh blind/human approval.",
+      "historicalRunIdsRetainedInOriginalProofOnly": [
+        "chemie-next25-final-native-independent-p-b-v2"
+      ],
+      "currentAdoptionRunClaim": "No newly manifest-bound run claimed; targeted root context inspection explicitly recorded"
+    }
+  ],
+  "strictGainClaimed": 0,
+  "humanApproved": 0
+}

@@ -266,11 +266,12 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   // Three reviewed content atoms replace one former compound atom (+2).
   // The source atlas publishes HE LK use and ascorbic-acid analysis; the authored
   // quantitative paraben transfer remains explicitly outside source coverage.
-  assert.deepEqual(chemistry.receipt.counts, { canonicalCurricularAtomicGoals: 398, publishedCurricularAtomicGoals: 378, sourceViews: 48, unresolvedSourceScopeDecisions: 496, omittedGoals: 20 })
+  // B007 adds six reviewed content atoms in place of two compound atoms (+4).
+  assert.deepEqual(chemistry.receipt.counts, { canonicalCurricularAtomicGoals: 402, publishedCurricularAtomicGoals: 382, sourceViews: 48, unresolvedSourceScopeDecisions: 496, omittedGoals: 20 })
   // Keep the reviewed C10 child routes when newer process-competency mappings
   // are integrated. Visibility inherited from their parent cannot replace
   // these direct, bounded source witnesses.
-  const byChemistryMappingPath = 'curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.review.json'
+  const byChemistryMappingPath = 'curricula/DE/Gymnasium/mapping/DE-BY/gymnasium/bavaria_chemistry_source_extraction_to_canonical_chemistry.b007-normal-source-scope-20261011-v1.review.json'
   const byChemistryMapping = JSON.parse(readFileSync(resolve(root, byChemistryMappingPath), 'utf8')) as {
     mappings: { legacyGoalId: string; canonicalGoalId: string; matchType: string }[]
     decisions: { sourceGoalId: string; canonicalGoalIds: string[] }[]
@@ -303,6 +304,15 @@ export const testGoalBookSourceAtlasInputs = (): void => {
     scopes.map(scope => [scope, sourceGoalId, goalId, 'direct', 'source-metadata']),
     'Each practical goal must retain its own direct source operator; direct identity is not full source-clause approval')
   }
+  const prescribedSolutionGoalId = '1351706f-4ea6-56e9-951b-87b24cbcdee8'
+  const prescribedSolutionSourceId = 'd6ad6ab1-1c9a-5101-9b26-d2ed456d3089'
+  assert.deepEqual(byChemistryMapping.mappings.filter(row => row.legacyGoalId === prescribedSolutionSourceId
+    && row.canonicalGoalId === prescribedSolutionGoalId).map(row => row.matchType), ['partial'],
+  'The prescribed practical component must retain direct partial source support without claiming calculation or the whole source clause')
+  assert.deepEqual(bySekI.witnesses.filter(w => w.sourceGoalId === prescribedSolutionSourceId
+    && w.mappedTargetGoalId === prescribedSolutionGoalId).map(w => [w.goalId, w.coverage, w.profileBasis, w.mappingPath]),
+  [[prescribedSolutionGoalId, 'direct', 'source-metadata', byChemistryMappingPath]],
+  'A prerequisite closure must not replace the prescribed practical component source witness')
   const bwPracticalMapping = JSON.parse(readFileSync(resolve(root,
     'curricula/DE/Gymnasium/mapping/DE-BW/upper-secondary/bw_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json'), 'utf8')) as {
     mappings: { legacyGoalId: string; canonicalGoalId: string; matchType: string }[]
@@ -337,7 +347,7 @@ export const testGoalBookSourceAtlasInputs = (): void => {
   assert.ok(chemistry.receipt.scopes.every(s => !s.goalIds.includes(formerCompoundGoalId)), 'The former compound atom is now a cluster, not an atlas atom')
   assert.ok(chemistry.receipt.omittedGoals.every(g => g.goalId !== formerCompoundGoalId))
   assert.deepEqual(chemistry.receipt.scopes.filter(s => s.jurisdiction === 'DE-BY' || (s.jurisdiction === 'DE-HE' && s.stage === 'SekII')).map(s => [s.key, s.goalIds.length]), [
-    ['DE-BY/SekI/', 96], ['DE-BY/SekII/GK', 117], ['DE-BY/SekII/LK', 148], ['DE-HE/SekII/GK', 112], ['DE-HE/SekII/LK', 141],
+    ['DE-BY/SekI/', 98], ['DE-BY/SekII/GK', 117], ['DE-BY/SekII/LK', 148], ['DE-HE/SekII/GK', 112], ['DE-HE/SekII/LK', 141],
   ], 'Reviewed Chemistry routes must retain their exact BY/HE source scopes')
   assert.deepEqual([...new Set(chemistry.receipt.scopes.flatMap(s => s.witnesses.filter(w => w.profileBasis === 'authored-view').map(() => s.jurisdiction)))].sort(), ['DE-BB', 'DE-BE'])
   // Every grouped witness expands back to the exact original provenance record.

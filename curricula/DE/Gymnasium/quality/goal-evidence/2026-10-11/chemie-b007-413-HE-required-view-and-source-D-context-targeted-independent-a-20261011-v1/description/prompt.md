@@ -1,0 +1,3 @@
+# Targeted independent A successor: current 413 source, HE required views and D context
+
+This is the continuation of my own actual frozen HE/TH primary-source and BY135 reviews. Root supplied neutral candidate corrections; no current peer B judgments were read. Evaluate the complete current 413 DE/EN text, whole402/source382 page and canonical/prerequisite/reverse/source context scientifically. Retain good exact P/image/memory bodies. Keep actual TH whole-source calculation/experiment duties and HE facultative boundary open. Judge only raw413 HE-to-TH, exact HE2 compulsory-view exclusion, one BY135 partial practical edge and two empty TH duty enum spellings. No new optional HE targets or prerequisiteOnly. Machine candidates only.

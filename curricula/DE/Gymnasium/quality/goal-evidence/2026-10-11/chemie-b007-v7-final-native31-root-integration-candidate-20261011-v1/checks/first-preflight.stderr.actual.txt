@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-final-native31-root-integration-candidate-20261011-v1/scripts/prepare-inactive-candidate.py", line 169, in <module>
+    {'initialize': initialize, 'import': import_images}[sys.argv[1]]()
+  File "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-final-native31-root-integration-candidate-20261011-v1/scripts/prepare-inactive-candidate.py", line 111, in initialize
+    if isinstance(value, str) and (ROOT / value).is_file():
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/pathlib.py", line 892, in is_file
+    return S_ISREG(self.stat().st_mode)
+                   ^^^^^^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/pathlib.py", line 840, in stat
+    return os.stat(self, follow_symlinks=follow_symlinks)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 36] File name too long: '/home/enpasos/projects/skillpilot/The official HE E.1 source requires structure and function of organelles in an electron-microscope cell image; the current goal and positive evidence assess a generic cell model only. A fresh targeted description and evidence review is required. Historical resolution remains unchanged.'

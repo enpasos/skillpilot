@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "normalTool": "app/scripts/generateGoalVisualizationQaLedgers.ts --subject=chemie --check",
+  "mode": "Unchanged normal checker in memory with only QA-read substitution and denied writes",
+  "records": [
+    {
+      "label": "immutable_original_c13_stale",
+      "inputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-root-normal-final-integration-20261011-v1/checks/active-qa412-before-normal-order.actual.json",
+      "exitCode": 1,
+      "output": "Goal visualization QA ledger(s) are stale:\n- curricula/DE/Gymnasium/quality/goal-visualization-qa/chemie.qa.json\n",
+      "activeWrites": 0
+    },
+    {
+      "label": "normal_derived_0f119_PASS",
+      "inputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-active-qa-freshness-readonly-diagnosis-20261011-v1/derived-normal-chemie.qa.candidate.json",
+      "exitCode": 0,
+      "output": "Goal visualization QA ledgers are up to date (1 subject file(s)).\n",
+      "activeWrites": 0
+    }
+  ]
+}

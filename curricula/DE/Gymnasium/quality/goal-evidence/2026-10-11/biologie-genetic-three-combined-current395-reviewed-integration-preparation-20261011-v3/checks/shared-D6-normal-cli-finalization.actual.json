@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "role": "Actual standard scoped CLI operations, using unchanged normal helpers in an external small capsule",
+  "commands": [
+    {
+      "helper": "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+      "operation": "summarize --write",
+      "exitCode": 0,
+      "actualStdout": "Standalone dual summary materialized: biologie-current395-shared-native-D6-first-pass-20261011-v3; goals=6; requiresSynthesis=6",
+      "output": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-three-combined-current395-reviewed-integration-preparation-20261011-v3/description/shared-native-D6/dual-summary.json",
+        "bytes": 6488,
+        "sha256": "sha256:59714819d0d3652f0ed33ef08b396662f8a0b59298fdff37d11d4908b5379f49"
+      }
+    },
+    {
+      "helper": "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+      "operation": "normal manifest authoring --write",
+      "exitCode": 0,
+      "actualStdout": "Standalone synthesis manifest materialized: biologie-current395-shared-native-D6-first-pass-20261011-v3; decisions=6; fingerprint=sha256:68d7a9c193e11f2e7f154a33652306afbaf4fc22239a981f7b92eb0060607a69",
+      "output": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-three-combined-current395-reviewed-integration-preparation-20261011-v3/description/shared-native-D6/synthesis-decisions.json",
+        "bytes": 18334,
+        "sha256": "sha256:cb6866b72b15bde8c91ec0339421e17eb94c6b4354b81117d60dd3acb3c72174"
+      }
+    },
+    {
+      "helper": "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+      "operation": "normal manifest-bound whole resolutions --write",
+      "exitCode": 0,
+      "actualStdout": "Standalone manifest-bound resolutions materialized: biologie-current395-shared-native-D6-first-pass-20261011-v3; strict=6/6; deferred=0; manifest=sha256:68d7a9c193e11f2e7f154a33652306afbaf4fc22239a981f7b92eb0060607a69",
+      "outputs": [
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-three-combined-current395-reviewed-integration-preparation-20261011-v3/description/shared-native-D6/resolutions/0f9318ec-90eb-5381-b670-8fb2f2789c3d.resolution.json",
+          "bytes": 7820,
+          "sha256": "sha256:682b48990d8dc49dafe8d1adccce1fe73bf29c8d16039f7d60b35711b5c57dbb"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-three-combined-current395-reviewed-integration-preparation-20261011-v3/description/shared-native-D6/resolutions/523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0.resolution.json",
+          "bytes": 7535,
+          "sha256": "sha256:b02a4d4324e19350fb08a6655a9cedc6951aa17a2aa89b4a26706113231810dd"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-three-combined-current395-reviewed-integration-preparation-20261011-v3/description/shared-native-D6/resolutions/5ee0f660-66f1-5aa6-a01d-e3b010db01ff.resolution.json",
+          "bytes": 7711,
+          "sha256": "sha256:9d6a2fa01b5e137d32bffae89f821a8340e8fd65262792c14862e5482c8a8b21"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-three-combined-current395-reviewed-integration-preparation-20261011-v3/description/shared-native-D6/resolutions/9540a95d-5ca5-527c-918f-d702e99be07a.resolution.json",
+          "bytes": 7664,
+          "sha256": "sha256:8bf04f1b1ca2090e66a6f91a744af023810cae4a0ebb7ab7ced08d8d52007255"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-three-combined-current395-reviewed-integration-preparation-20261011-v3/description/shared-native-D6/resolutions/d11b3b18-deec-5d1a-bff6-512cddf595a2.resolution.json",
+          "bytes": 7670,
+          "sha256": "sha256:0edbdee5465e2de3ea4782ae111ce5a611a173d64426cda8a1791ba483fdc504"
+        },
+        {
+          "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-three-combined-current395-reviewed-integration-preparation-20261011-v3/description/shared-native-D6/resolutions/f53d0a0b-d9b8-5012-92b5-3a021ab6c30b.resolution.json",
+          "bytes": 7940,
+          "sha256": "sha256:6d0d33beb7d96196649be3d587a455809de9cd34bae61bf3c392dcd692bee459"
+        }
+      ]
+    },
+    {
+      "helper": "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+      "operation": "finalize --write",
+      "exitCode": 0,
+      "actualStdout": "Standalone resolution index materialized: biologie-current395-shared-native-D6-first-pass-20261011-v3; strict=6/6; live denominator owned by central report",
+      "output": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-three-combined-current395-reviewed-integration-preparation-20261011-v3/description/shared-native-D6/resolution-index.json",
+        "bytes": 4488,
+        "sha256": "sha256:785b857614eb4816c98db6c55838e0328441288bcb4f7add6ba39fec31d4ab83"
+      }
+    }
+  ],
+  "unchangedHelperBindings": [
+    {
+      "repositorySource": {
+        "path": "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "bytes": 64228,
+        "sha256": "sha256:eff84dcf0d823c15b0827cb898b30d44f29c7ee219b67b4d2505b134536529cf"
+      },
+      "capsuleHelperBytesExact": true
+    },
+    {
+      "repositorySource": {
+        "path": "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "bytes": 12440,
+        "sha256": "sha256:02b70b61d59542869626caedfa875c4b291c6c9c741d570a982ac82c3b0e99cc"
+      },
+      "capsuleHelperBytesExact": true
+    },
+    {
+      "repositorySource": {
+        "path": "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "bytes": 14700,
+        "sha256": "sha256:85f7cd520d172e4619bfbc3224a64358b30fbb5a524c9a8bef500fe6cc2f5404"
+      },
+      "capsuleHelperBytesExact": true
+    }
+  ],
+  "repairedTechnicalAttemptErrors": [
+    {
+      "error": "First seal check assumed repository-relative A file paths",
+      "actualCause": "A own immutable seal intentionally has package-relative paths; B has repository-relative paths",
+      "fix": "Resolve A rows relative to its sealed package; all33 A and37 B bytes checked before any raw-output adoption"
+    },
+    {
+      "error": "First CLI launch addressed absent capsule-root node_modules",
+      "fix": "Use existing capsule app/node_modules/.bin/tsx; original helpers then ran normally"
+    },
+    {
+      "error": "First separate Orientation wrapper at capsule root could not resolve ajv",
+      "fix": "Place wrapper under external capsule app, using unchanged installed normal Ajv2020 schema tooling; two schemas and253 bindings actually passed"
+    }
+  ],
+  "newScientificOrIndependentReviewByAdopter": false,
+  "newHumanApproval": false,
+  "activeSourceCanonicalRegistryQAHelperGitWrites": false,
+  "strictGainActivated": 0
+}

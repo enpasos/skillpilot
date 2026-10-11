@@ -1,0 +1,69 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:8018fed25c391e7e99b0dac14ec1727f267d855905adaf9b96773811ca5cf077",
+  "reviewInputFingerprint": "sha256:e79f63e2828818a54fea0e51d1c98391fe0224b826a04daeb9e8d14237bc7266",
+  "goalCount": 1,
+  "rounds": {
+    "first": {
+      "campaignId": "chemie-b007-413-current402-TH-source-HE-mandatory-scope-targeted-root-20261011-v1-a",
+      "roundId": "chemie-b007-413-current402-TH-source-HE-mandatory-scope-targeted-root-20261011-v1-first-pass-a",
+      "independenceGroupId": "chemie-b007-413-current402-TH-source-HE-mandatory-scope-targeted-root-20261011-v1-independent-a",
+      "runIds": [
+        "chemie-b007-413-common-native-D1-genuine-independent-a-20261011"
+      ],
+      "providers": [
+        "OpenAI / Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI / Codex::GPT-6-based Codex session; exact model build not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "chemie-b007-413-current402-TH-source-HE-mandatory-scope-targeted-root-20261011-v1-b",
+      "roundId": "chemie-b007-413-current402-TH-source-HE-mandatory-scope-targeted-root-20261011-v1-first-pass-b",
+      "independenceGroupId": "chemie-b007-413-current402-TH-source-HE-mandatory-scope-targeted-root-20261011-v1-independent-b",
+      "runIds": [
+        "chemie-b007-413-current402-TH-HE-targeted-genuine-b-run-20261011-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 1,
+    "unavailable": 0,
+    "requiresSynthesis": 1
+  },
+  "goals": [
+    {
+      "goalId": "413040cd-ba74-5227-948c-a778b0bd0f56",
+      "firstRecordId": "chemie-b007-413-common-native-D1-genuine-independent-a-20261011:413040cd-ba74-5227-948c-a778b0bd0f56",
+      "secondRecordId": "chemie-b007-413-current402-TH-HE-targeted-genuine-b-record-20261011-v1",
+      "firstRunId": "chemie-b007-413-common-native-D1-genuine-independent-a-20261011",
+      "secondRunId": "chemie-b007-413-current402-TH-HE-targeted-genuine-b-run-20261011-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

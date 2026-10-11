@@ -1,0 +1,103 @@
+{
+  "scope": "Exact stage-to-normal whole382 page comparison and additive capture preparation",
+  "inputs": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-final-native31-root-integration-candidate-20261011-v1/native/source382.normal.book-model.json",
+      "bytes": 2698075,
+      "sha256": "sha256:cf0c0ccb62606b85f08a9fc91b2b54b6f70a5f301aeb09b2b4ea0788e225e0c3"
+    },
+    {
+      "path": "app/public/lernzielbuch/de-gym-chemie-bundesweit.book-model.json",
+      "bytes": 2689958,
+      "sha256": "sha256:9663cb8431f9f079104df56798e8833c20441f2b6653f6deacb3bde2eea9f8b0"
+    }
+  ],
+  "pageCount": 382,
+  "wholePageBodiesUnchanged": 376,
+  "changedPages": [
+    {
+      "goalId": "4b6d1824-20e4-597e-b639-fae401f740f0",
+      "changedFields": [
+        "evidenceReview",
+        "pageFingerprint"
+      ]
+    },
+    {
+      "goalId": "805a2f58-29ce-55d0-8a85-42ee486239b3",
+      "changedFields": [
+        "evidenceReview",
+        "pageFingerprint"
+      ]
+    },
+    {
+      "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+      "changedFields": [
+        "evidenceReview",
+        "pageFingerprint"
+      ]
+    },
+    {
+      "goalId": "413040cd-ba74-5227-948c-a778b0bd0f56",
+      "changedFields": [
+        "applicability",
+        "evidenceReview",
+        "pageFingerprint"
+      ]
+    },
+    {
+      "goalId": "4aeced1e-15cd-58df-83f7-68e2531c2d32",
+      "changedFields": [
+        "evidenceReview",
+        "pageFingerprint"
+      ]
+    },
+    {
+      "goalId": "49d42c38-419c-5048-b7e9-860645dd122d",
+      "changedFields": [
+        "evidenceReview",
+        "pageFingerprint"
+      ]
+    }
+  ],
+  "reason": "Normal book has no candidate P-summary; solubility goal retains only the actual mandatory TH/LK binding. Optional HE material is not promoted to compulsory applicability.",
+  "captureRoutines": [
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-final-native31-root-page-inspection-20261011-v1/scripts/check-complete-pages.py",
+        "bytes": 4788,
+        "sha256": "sha256:c32472188f3e50caf3d7bfa626592273e1e481cc642e24e379879013d20f91a0"
+      },
+      "derivative": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-root-normal-final-integration-20261011-v1/scripts/check-current-complete-pages.py",
+        "bytes": 4839,
+        "sha256": "sha256:aadcd8d402137fa78e0a87170451bfe6b1b4f602eb7f01acf29cea663b341b69"
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-final-native31-root-page-inspection-20261011-v1/scripts/capture-complete-pages.mjs",
+        "bytes": 11220,
+        "sha256": "sha256:6d7dc03a314be50b9266ac4f85a07698310a6313beb874ff25895cb76919811f"
+      },
+      "derivative": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-root-normal-final-integration-20261011-v1/scripts/capture-current-six-html-pages.mjs",
+        "bytes": 11225,
+        "sha256": "sha256:123daf1bd452407dbbe53a4aa5502a1872c046e3a2a35ee0cbfdeec36641f0cc"
+      }
+    },
+    {
+      "source": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-final-native31-root-page-inspection-20261011-v1/scripts/capture-pdf-pages.py",
+        "bytes": 1925,
+        "sha256": "sha256:a3ba8789450aec9997b1695b0c446c6ce1e2ea6300cc4e2a01fb52ee4603f49b"
+      },
+      "derivative": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-root-normal-final-integration-20261011-v1/scripts/capture-current-six-pdf-pages.py",
+        "bytes": 1982,
+        "sha256": "sha256:956105c2e0d03ab9a01b0dc36972e1b8ea0bc073cc0e9f91340bf0d3ee2374f4"
+      }
+    }
+  ],
+  "scientificApproval": false,
+  "humanApproval": false
+}

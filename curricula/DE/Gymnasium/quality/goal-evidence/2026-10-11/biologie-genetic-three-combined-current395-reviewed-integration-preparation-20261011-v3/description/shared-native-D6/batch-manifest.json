@@ -1,0 +1,59 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-current395-shared-native-D6-first-pass-20261011-v3",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-three-combined-current395-reviewed-integration-preparation-20261011-v3/description/shared-native-D6.inactive.batch.config.json",
+  "configDigest": "sha256:a13df777214467ba55fef0ef2d77c81cf56c8f5151eef32d1a695b9651dceca8",
+  "goalIds": [
+    "523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
+    "d11b3b18-deec-5d1a-bff6-512cddf595a2",
+    "9540a95d-5ca5-527c-918f-d702e99be07a",
+    "5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+    "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+    "0f9318ec-90eb-5381-b670-8fb2f2789c3d"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 395,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-three-combined-current395-reviewed-integration-preparation-20261011-v3/native/whole395.normal-book.inactive.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-three-combined-current395-reviewed-integration-preparation-20261011-v3/candidate/whole480.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:9b2c9f3c6a20529b80672542e1bf476b4698b80858cc395f9937dc121f8f1ca8"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:8dcf00b2ee0550507dd9f22d5ca184cec99dec0465464d3d4d51d4a880068e14",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:4825d11c9eefb1c66d3873f38ed02a12a56e50eaf3de1e5c0e67bbe08bce5881",
+    "reviewInputFingerprint": "sha256:3ed84bb614d978266e9c139c3fc3fd0d8f01bd74e6c039d068f710bb1faf1bd0",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-current395-shared-native-D6-first-pass-20261011-v3-a",
+        "campaignDigest": "sha256:2a3182bdde1258660b560c8fcbcf1f55d1b2dabcf744c8f524fec66e9828f8c4",
+        "roundId": "biologie-current395-shared-native-D6-first-pass-20261011-v3-first-pass-a",
+        "independenceGroupId": "biologie-current395-shared-native-D6-first-pass-20261011-v3-independent-a",
+        "batchId": "biologie-current395-shared-native-D6-first-pass-20261011-v3-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:e2af72ce0788b1c8e1f5ed8e67915be90c8cd24838e662a4b65295599d98d7d7"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-current395-shared-native-D6-first-pass-20261011-v3-b",
+        "campaignDigest": "sha256:014ca23756dbad997be138c2d70a8880a53066ada65c844eae2e13c71ccd82b9",
+        "roundId": "biologie-current395-shared-native-D6-first-pass-20261011-v3-first-pass-b",
+        "independenceGroupId": "biologie-current395-shared-native-D6-first-pass-20261011-v3-independent-b",
+        "batchId": "biologie-current395-shared-native-D6-first-pass-20261011-v3-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:9a4706fba93bcfc4d75549293356cf699e6454edfb21e3e699d9e3586caf06ae"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

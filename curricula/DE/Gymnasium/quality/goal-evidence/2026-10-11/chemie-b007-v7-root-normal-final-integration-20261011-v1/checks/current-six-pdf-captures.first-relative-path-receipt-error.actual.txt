@@ -1,0 +1,13 @@
+Captured physical PDF page 8: 4b6d1824-20e4-597e-b639-fae401f740f0
+Captured physical PDF page 9: 805a2f58-29ce-55d0-8a85-42ee486239b3
+Captured physical PDF page 14: 1351706f-4ea6-56e9-951b-87b24cbcdee8
+Captured physical PDF page 15: 413040cd-ba74-5227-948c-a778b0bd0f56
+Captured physical PDF page 16: 4aeced1e-15cd-58df-83f7-68e2531c2d32
+Captured physical PDF page 17: 49d42c38-419c-5048-b7e9-860645dd122d
+Traceback (most recent call last):
+  File "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-root-normal-final-integration-20261011-v1/scripts/capture-current-six-pdf-pages.py", line 40, in <module>
+    'sourcePDF': {'path': str(PDF.relative_to(pathlib.Path.cwd())), 'sha256': digest(PDF)},
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/enpasos/.pyenv/versions/3.12.9/lib/python3.12/pathlib.py", line 682, in relative_to
+    raise ValueError(f"{str(self)!r} is not in the subpath of {str(other)!r}")
+ValueError: 'app/public/lernzielbuch/de-gym-chemie-bundesweit.pdf' is not in the subpath of '/home/enpasos/projects/skillpilot'

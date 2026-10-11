@@ -1,0 +1,81 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-book/v1/goal-book-review-bundle.schema.json",
+  "schemaVersion": 1,
+  "bookModelDigest": "sha256:4615953e840cc95c2e8fc9448d901c3d1d065192b2d90d052a96aafb5012bceb",
+  "bookModelSchemaVersion": "1.1.0",
+  "bookId": "chemie-413-HE-source-scope-current402-independent-a",
+  "bookEdition": "curricular-atomic-v1",
+  "publicationMode": "review",
+  "feedbackBaseUrl": "https://skillpilot.com/feedback",
+  "locale": "de-DE",
+  "selectedGoalCount": 1,
+  "goals": [
+    {
+      "goalId": "413040cd-ba74-5227-948c-a778b0bd0f56",
+      "pageNumber": 11,
+      "goalFingerprint": "sha256:928b4de7f04bf78b3fc6178b54d20bc86f60b65f53c3f4102e50ba0ddceedaf7",
+      "pageFingerprint": "sha256:9e8311d6956a965916591ece6b0a2eb384e538f7074e8fcced58b5c589971fe3",
+      "evidenceReview": {
+        "reviewId": "chemie-b007-six-scoring-binding-author-v7",
+        "status": "needs_human_review",
+        "reviewInputFingerprint": "sha256:3753b4c7a63f6ba5dea6ae7eb8b47cba687065ea97bc01834f01218e3a2b837e",
+        "profileFingerprint": "sha256:5d2165ed50a7def9e404465d2e2fbad92e7a73ad491d837bf885cc0f3e47ec12",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1"
+      }
+    }
+  ],
+  "promptFingerprint": "sha256:b605e35bcc4e7720e0015a7f33916bdb03dc966fb79649476505f055342d0682",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "artifacts": [
+    {
+      "role": "book_model",
+      "path": "book-model.json",
+      "digest": "sha256:d8c1876f264e06a15ca44d01cda4a54d95ad836b6e07780c4004937a53993666",
+      "bytes": 1283395
+    },
+    {
+      "role": "review_input_json",
+      "path": "review-input.json",
+      "digest": "sha256:1b847e404b5120347bd8b5f74c6785cf53cdeb3c69d63876ae8135e7c842ba54",
+      "bytes": 10896
+    },
+    {
+      "role": "review_prompt",
+      "path": "prompt.md",
+      "digest": "sha256:b605e35bcc4e7720e0015a7f33916bdb03dc966fb79649476505f055342d0682",
+      "bytes": 740
+    },
+    {
+      "role": "review_criteria",
+      "path": "criteria.md",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+      "bytes": 2948
+    },
+    {
+      "role": "review_markdown",
+      "path": "actual-whole-source-page-context.md",
+      "digest": "sha256:4eb35c80fabaf53ac6207693ea3a604996d2c1f072c0df841d7a6ea64b896dc9",
+      "bytes": 31388
+    },
+    {
+      "role": "run_manifest_schema",
+      "path": "contracts/goal-evidence-ai-run-manifest.schema.json",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6",
+      "bytes": 3886
+    },
+    {
+      "role": "finding_schema",
+      "path": "contracts/goal-evidence-finding.schema.json",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9",
+      "bytes": 3613
+    }
+  ],
+  "reviewPolicy": {
+    "blindIndependentFirstPass": true,
+    "modelVotesGrantReleaseAuthority": false,
+    "humanApprovalRequired": true,
+    "learnerDataAllowed": false
+  },
+  "bundleFingerprint": "sha256:e9817a269942f9ce70cfa4dcfb1971d879c3e4b316792bcfde9597a5e26a99d0"
+}

@@ -1,0 +1,48 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-current395-orientation-targeted-genuine-b-20261011-v1",
+  "campaignId": "biologie-current395-orientation-two-EN-fields-first-pass-b-20261011-v3",
+  "roundId": "biologie-current395-orientation-first-pass-b-20261011-v3",
+  "bundleFingerprint": "sha256:7dc930f2b960cf315ead15286a38f8484ed53faedcebc2cbbea735e2ab1aaeea",
+  "bookDigest": "sha256:9b2c9f3c6a20529b80672542e1bf476b4698b80858cc395f9937dc121f8f1ca8",
+  "provider": "OpenAI",
+  "model": "GPT-6",
+  "role": "subject_reviewer",
+  "promptFamilyId": "separate-current-orientation-first-pass-v1",
+  "promptFingerprint": "sha256:1a87631d6008a8adcffc9a06f9bef63d95f0641d0da7a0be5efaf3b9c5ee297c",
+  "criteriaFingerprint": "sha256:cb7b9a1e817f0545e962b81f9a4f3780cb202b6f48c5522f743ad45c2c8f84f8",
+  "generationParametersFingerprint": "sha256:b3ef9ae8e4f3db11029da9617143fbb3be8e870a5687f01f41d83df9585868a5",
+  "independenceGroupId": "biologie-current395-orientation-genuine-independent-b-20261011-v3",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "2d451684-6e53-565e-a987-f362da919d2c"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "review_input_json",
+      "digest": "sha256:4e227dbe7cad01265c5e339e90adb337fd5d36d675fa22ac0e1f6977404a6f99"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:1a87631d6008a8adcffc9a06f9bef63d95f0641d0da7a0be5efaf3b9c5ee297c"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:cb7b9a1e817f0545e962b81f9a4f3780cb202b6f48c5522f743ad45c2c8f84f8"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:a2b0ed69994330213f1634e6b66513cb9387a688ff900531ae491de42672dd48"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-10-11T10:20:46.417817+00:00",
+  "completedAt": "2026-10-11T10:29:22.296512+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:70cf45c81187f564c9baf52374c56b1a86407275fbed708da2854ab51ca84240",
+  "toolchainVersion": "skillpilot-separate-current-orientation-targeted-independent-b-v1"
+}

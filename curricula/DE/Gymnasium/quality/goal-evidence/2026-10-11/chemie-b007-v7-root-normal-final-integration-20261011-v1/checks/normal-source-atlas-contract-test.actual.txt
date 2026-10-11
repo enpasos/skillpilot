@@ -1,0 +1,44 @@
+node:assert:90
+  throw new AssertionError(obj);
+  ^
+
+AssertionError [ERR_ASSERTION]: Reviewed Chemistry routes must retain their exact BY/HE source scopes
++ actual - expected ... Lines skipped
+
+  [
+    [
+      'DE-BY/SekI/',
++     97
+-     96
+    ],
+...
+      141
+    ]
+  ]
+    at testGoalBookSourceAtlasInputs (/home/enpasos/projects/skillpilot/app/scripts/testGoalBookSourceAtlasInputs.ts:340:10)
+    at [eval]:2:72
+    at runScriptInThisContext (node:internal/vm:209:10)
+    at node:internal/process/execution:118:14
+    at [eval]-wrapper:6:24
+    at runScript (node:internal/process/execution:101:62)
+    at asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:11) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [
+    [ 'DE-BY/SekI/', 97 ],
+    [ 'DE-BY/SekII/GK', 117 ],
+    [ 'DE-BY/SekII/LK', 148 ],
+    [ 'DE-HE/SekII/GK', 112 ],
+    [ 'DE-HE/SekII/LK', 141 ]
+  ],
+  expected: [
+    [ 'DE-BY/SekI/', 96 ],
+    [ 'DE-BY/SekII/GK', 117 ],
+    [ 'DE-BY/SekII/LK', 148 ],
+    [ 'DE-HE/SekII/GK', 112 ],
+    [ 'DE-HE/SekII/LK', 141 ]
+  ],
+  operator: 'deepStrictEqual'
+}
+
+Node.js v20.20.2

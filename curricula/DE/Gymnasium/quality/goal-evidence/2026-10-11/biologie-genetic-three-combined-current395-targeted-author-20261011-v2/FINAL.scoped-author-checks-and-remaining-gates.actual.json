@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-11T08:57:37.109724+00:00",
+  "role": "targeted combined successor author only",
+  "states": {
+    "reviewAuthority": "ai_candidate",
+    "status": "needs_human_review",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "authorOnly": true,
+    "independentReview": false,
+    "humanApproval": false,
+    "humanTrial": false,
+    "sourceUnionApproval": false,
+    "operatorCompletionApproval": false,
+    "activeAdoption": false,
+    "strictGain": 0
+  },
+  "commandsAndNormalFunctions": [
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "/tmp/skillpilot-bio-combined-author-phase1.ts"
+      ],
+      "exitCode": 0,
+      "normalFunctions": [
+        "fingerprintSemanticKindSourceGoal",
+        "buildGoalBookSourceAtlasInputs",
+        "generateDeepUnderstandingRollout"
+      ]
+    },
+    {
+      "command": [
+        "python3",
+        "/tmp/skillpilot-bio-combined-normal-p.py"
+      ],
+      "exitCode": 0,
+      "normalCommandsInsideSmallExternalCapsule": [
+        "materializePositiveGoalEvidenceCandidates.ts --write",
+        "materializePositiveGoalEvidenceCandidates.ts (byte verify + reviewPositiveGoalEvidenceConfig)"
+      ],
+      "capsuleDeleted": true,
+      "modifiedProductionHelpers": false
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "/tmp/skillpilot-bio-combined-author-phase2.ts"
+      ],
+      "exitCode": 0,
+      "normalFunctions": [
+        "buildGoalBookModel",
+        "parseAndValidateGoalBookModel",
+        "buildGoalBookOriginalSources",
+        "goalEvidenceReviewInputPayload",
+        "fingerprintPositiveGoalEvidenceReviewInput",
+        "validatePositiveGoalEvidenceRecordSemantics",
+        "buildGoalDescriptionCanonicalContext"
+      ]
+    },
+    {
+      "command": [
+        "node",
+        "app/node_modules/tsx/dist/cli.mjs",
+        "/tmp/skillpilot-bio-combined-author-phase3.ts"
+      ],
+      "exitCode": 0,
+      "normalFunctions": [
+        "validatePositiveGoalEvidenceRecordSemantics",
+        "generateDeepUnderstandingRollout"
+      ],
+      "unchangedSourceSchemaOwner": "app/scripts/buildSkillpilotExportPackage.ts#SOURCE_EXTRACTION_SCHEMA",
+      "sourceSchemaValidator": "Ajv2020 strict=true, allowUnionTypes=true to accept the existing normal schema union"
+    }
+  ],
+  "earlierTechnicalAttempts": [
+    {
+      "check": "Frozen complete model byte guard",
+      "finding": "Only source.durationModelPolicyDigest and model.digest differed; actual global policy added the concurrent Chemistry row. All 395 pages and all chapters exact; Biology policy decisions exact. Actual diagnostic preserved.",
+      "diagnostic": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-three-combined-current395-targeted-author-20261011-v2/checks/shared-duration-policy-concurrent-chemistry-baseline-diagnostic.actual.json"
+    },
+    {
+      "check": "Normal source schema first compile",
+      "finding": "Ajv strictTypes required allowUnionTypes for the existing schema integer|string union; only local validation settings changed, schema and helpers unchanged."
+    }
+  ],
+  "whole395ModelDigest": "sha256:3642aa40cd76728e865765b32a7af33ba5e032600cb43dd95c902a43849f07d5",
+  "whole395Pages": 395,
+  "changedWholePages": 6,
+  "changedWholeSourceSemanticContexts": 6,
+  "rawEvidenceIdScopePayloadChanges": 295,
+  "PInputChangedGoalIds": [
+    "2d451684-6e53-565e-a987-f362da919d2c",
+    "9540a95d-5ca5-527c-918f-d702e99be07a",
+    "0f9318ec-90eb-5381-b670-8fb2f2789c3d"
+  ],
+  "DWholeContextChangedGoalIds": [
+    "2d451684-6e53-565e-a987-f362da919d2c",
+    "523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
+    "d11b3b18-deec-5d1a-bff6-512cddf595a2",
+    "9540a95d-5ca5-527c-918f-d702e99be07a",
+    "5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+    "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+    "0f9318ec-90eb-5381-b670-8fb2f2789c3d"
+  ],
+  "changedSourceViews": 2,
+  "currentActiveBiologyStrict": 366,
+  "currentActiveBiologyDenominator": 395,
+  "currentActiveBiologyIssues": 0,
+  "protected366CanonicalOrPInputChanges": [],
+  "protected366ChangedPageSourceContexts": [
+    "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b"
+  ],
+  "protectedF53WholeContextReviewPending": true,
+  "newCurrentRenderedHTMLPDFPrepared": false,
+  "newIndependentReviewsClaimed": 0,
+  "activeScienceGain": 0
+}

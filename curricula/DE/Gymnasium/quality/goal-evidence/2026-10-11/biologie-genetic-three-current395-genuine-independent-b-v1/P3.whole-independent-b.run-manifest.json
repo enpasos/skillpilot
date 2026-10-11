@@ -1,0 +1,52 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-genetic-three-current395-independent-b-p3-20261011-v1",
+  "bundleFingerprint": "sha256:bedc5aaaf0b329e5ee4f30ec1eb25712d98f15c52e124596e284e7251acb16e9",
+  "bookDigest": "sha256:df5280b3df28e0af1f485e12a7e63141480cc4f15c71aa9d8972b149f0e13d7c",
+  "provider": "OpenAI",
+  "model": "GPT-6 Codex; exact serving version not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "positive-understanding-evidence-v2",
+  "promptFingerprint": "sha256:f164aaa2f0c5af439aa62ec9dc333ac01282c6c66c3cffdf37d7d994861e3f29",
+  "criteriaFingerprint": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8",
+  "generationParametersFingerprint": "sha256:7fe60992bf87e506a3fe61390ed32f6be0b7e2a40cb2ad5aecfa7bb990d39709",
+  "independenceGroupId": "biologie-genetic-three-current395-genuine-independent-b-v1",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "9540a95d-5ca5-527c-918f-d702e99be07a",
+    "5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+    "0f9318ec-90eb-5381-b670-8fb2f2789c3d"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:ea682ecb54d1f37a1c56cf02d44a96ec2382afb5140ac8380dd4c34296f34ace"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:3a27ae7b696987e4b371f5c58ed805b623f569eed4687e1f235dfb25a13be1e3"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:df5280b3df28e0af1f485e12a7e63141480cc4f15c71aa9d8972b149f0e13d7c"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:f2d1a2efc872e31aee5c9fa4045ce1892aca7639c25806b9d3a51d45fddfe323"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:f164aaa2f0c5af439aa62ec9dc333ac01282c6c66c3cffdf37d7d994861e3f29"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:0044fd2e91cc0058cff1e2399ea2b88844027651f7542a77051af90a2ca03aa8"
+    }
+  ],
+  "startedAt": "2026-10-11T07:29:54.460405+00:00",
+  "completedAt": "2026-10-11T07:47:45.330306+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:8d77f7d20b2b17f86def535256bb210f45c70f67e4588707781fe71e72386007",
+  "toolchainVersion": "skillpilot-current395-independent-b-20261011-v1"
+}

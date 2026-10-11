@@ -1,0 +1,159 @@
+{
+  "errors": [
+    "Dual rounds must bind the identical complete review-bundle manifest",
+    "Dual rounds must bind the identical complete description-review input",
+    "Dual rounds must cover identical goals in the same deterministic order",
+    "Second dual-review campaign must be a first_pass"
+  ],
+  "summary": {
+    "schemaVersion": 1,
+    "validationContract": "goal-description-dual-round-v1",
+    "automaticAcceptance": false,
+    "bundleFingerprint": "sha256:09cb0ec1584bad4c464b8781a738f2b5fca3d9e343c235d14f1aaa089c6a4ce6",
+    "reviewInputFingerprint": "sha256:89d217740ef65ccb3bc7a6fb300b2eaeccc644f13275d24208e7a05f896e72bc",
+    "goalCount": 6,
+    "rounds": {
+      "first": {
+        "campaignId": "biologie-combined395-targeted-independent-a",
+        "roundId": "biologie-combined395-targeted-a",
+        "independenceGroupId": "biologie-combined395-targeted-genuine-independent-a",
+        "runIds": [
+          "biologie-combined395-current-D6-independent-a-run-20261011"
+        ],
+        "providers": [
+          "OpenAI / Codex"
+        ],
+        "modelIdentities": [
+          "OpenAI / Codex::GPT-6-based Codex session; exact model build not exposed::(unspecified-version)"
+        ]
+      },
+      "second": {
+        "campaignId": "biologie-combined-current395-targeted-independent-b-context6",
+        "roundId": "biologie-combined-b-first-pass-20261011-v1",
+        "independenceGroupId": "biologie-genetic-three-combined-current395-genuine-targeted-independent-b-v1",
+        "runIds": [
+          "biologie-combined-independent-b-d6-20261011-v1"
+        ],
+        "providers": [
+          "OpenAI / Codex"
+        ],
+        "modelIdentities": [
+          "OpenAI / Codex::GPT-6 inherited agent; exact serving identifier not exposed::(unspecified-version)"
+        ]
+      }
+    },
+    "diversity": {
+      "policy": "report_only",
+      "sharedProviders": [
+        "OpenAI / Codex"
+      ],
+      "sharedModelIdentities": [],
+      "distinctProviderOrModel": true,
+      "policySatisfied": true
+    },
+    "counts": {
+      "exactAgreement": 0,
+      "disagreement": 6,
+      "unavailable": 0,
+      "requiresSynthesis": 6
+    },
+    "goals": [
+      {
+        "goalId": "9540a95d-5ca5-527c-918f-d702e99be07a",
+        "firstRecordId": "biologie-combined395-current-D6-independent-a-run-20261011:9540a95d-5ca5-527c-918f-d702e99be07a",
+        "secondRecordId": "biologie-combined-independent-b-d6-20261011-v1:9540a95d-5ca5-527c-918f-d702e99be07a",
+        "firstRunId": "biologie-combined395-current-D6-independent-a-run-20261011",
+        "secondRunId": "biologie-combined-independent-b-d6-20261011-v1",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+        "firstRecordId": "biologie-combined395-current-D6-independent-a-run-20261011:5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+        "secondRecordId": "biologie-combined-independent-b-d6-20261011-v1:5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+        "firstRunId": "biologie-combined395-current-D6-independent-a-run-20261011",
+        "secondRunId": "biologie-combined-independent-b-d6-20261011-v1",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "0f9318ec-90eb-5381-b670-8fb2f2789c3d",
+        "firstRecordId": "biologie-combined395-current-D6-independent-a-run-20261011:0f9318ec-90eb-5381-b670-8fb2f2789c3d",
+        "secondRecordId": "biologie-combined-independent-b-d6-20261011-v1:0f9318ec-90eb-5381-b670-8fb2f2789c3d",
+        "firstRunId": "biologie-combined395-current-D6-independent-a-run-20261011",
+        "secondRunId": "biologie-combined-independent-b-d6-20261011-v1",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
+        "firstRecordId": "biologie-combined395-current-D6-independent-a-run-20261011:523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
+        "secondRecordId": "biologie-combined-independent-b-d6-20261011-v1:523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
+        "firstRunId": "biologie-combined395-current-D6-independent-a-run-20261011",
+        "secondRunId": "biologie-combined-independent-b-d6-20261011-v1",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "d11b3b18-deec-5d1a-bff6-512cddf595a2",
+        "firstRecordId": "biologie-combined395-current-D6-independent-a-run-20261011:d11b3b18-deec-5d1a-bff6-512cddf595a2",
+        "secondRecordId": "biologie-combined-independent-b-d6-20261011-v1:d11b3b18-deec-5d1a-bff6-512cddf595a2",
+        "firstRunId": "biologie-combined395-current-D6-independent-a-run-20261011",
+        "secondRunId": "biologie-combined-independent-b-d6-20261011-v1",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      },
+      {
+        "goalId": "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+        "firstRecordId": "biologie-combined395-current-D6-independent-a-run-20261011:f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+        "secondRecordId": "biologie-combined-independent-b-d6-20261011-v1:f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+        "firstRunId": "biologie-combined395-current-D6-independent-a-run-20261011",
+        "secondRunId": "biologie-combined-independent-b-d6-20261011-v1",
+        "firstDecision": "keep",
+        "secondDecision": "keep",
+        "agreement": "disagreement",
+        "disagreementFields": [
+          "understandingEvidence",
+          "rationale"
+        ],
+        "requiresSynthesis": true,
+        "automaticAcceptance": false
+      }
+    ]
+  }
+}

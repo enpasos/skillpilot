@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "cause": "Only records array ordering differs: six reviewed children were appended after old406; normal generator sorts by title de-DE numeric/base then goalId. No record field, approval, asset hash, content or metadata difference. There is no global derived-fingerprint field in this QA format.",
+  "actualOriginalNormalCheck": "FAIL_stale reproduced on immutablec13 bytes with zero active writes",
+  "actualNormalCandidateCheck": "PASS reproduced with virtual QA-read of exact0f119 normal derived bytes and zero active writes",
+  "normalCurrentPContextCheck": "Own unchanged normal checker PASS for sixnew and three actually affected oldP records; all goal/input/profile fingerprint bindings valid. Existing central normal report also passes description214, positive212, atomicity229, memory402; its sole failure was QA byte freshness.",
+  "existingActual40HTML40PDF": "Existing actual inspection records and all80 capture hashes/fingerprints were verified unchanged; no new science/pixel approval is asserted.",
+  "minimalCorrection": "Run app/node_modules/.bin/tsx app/scripts/generateGoalVisualizationQaLedgers.ts --subjects=chemie once after preserving c13 input. It produces exact0f119 bytes; assert412 per-goal records equal before/after and zero approval/asset/content-field delta. Root has now performed the authorized planned ordering action separately.",
+  "verificationCommands": [
+    "app/node_modules/.bin/tsx app/scripts/generateGoalVisualizationQaLedgers.ts --subjects=chemie --check",
+    "app/node_modules/.bin/tsx app/scripts/checkGoalVisualizationQaApprovalCoverage.ts --subjects=chemie",
+    "Run the existing normal central report with its active config and output only to a new evidence file; compare preserved206 oldstrict and expected212 candidate/current intersections."
+  ],
+  "additionalBindingRule": "File-byte-bound book/QA source digests legitimately change after sorting. Recompute only derived artifacts actually bound to the QA file digest with normal tools; preserve exact existing semantic goal/page/profile/context fingerprints and science/visual review decisions wherever they are unchanged. A global book/source digest change alone is not a new scientific verdict.",
+  "scope": "Read-only diagnosis; root performs integration. No Q3A judgment read, no active/helper/Git mutations by reviewer, no human approval or source-union closure."
+}

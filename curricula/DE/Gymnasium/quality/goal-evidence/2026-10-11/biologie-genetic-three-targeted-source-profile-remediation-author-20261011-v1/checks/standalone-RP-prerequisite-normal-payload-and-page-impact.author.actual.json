@@ -1,0 +1,1017 @@
+{
+  "normalFunctions": [
+    "buildGoalBookModel",
+    "parseAndValidateGoalBookModel",
+    "buildGoalDescriptionCanonicalContext",
+    "goalEvidenceReviewInputPayload",
+    "fingerprintPositiveGoalEvidenceReviewInput",
+    "fingerprintSemanticKindSourceGoal"
+  ],
+  "hypotheticalOnly": true,
+  "inMemoryLedgerRebindings": [
+    {
+      "goalId": "9540a95d-5ca5-527c-918f-d702e99be07a",
+      "before": "sha256:8be8dec3b589a443c241f84c56899a801911e142f5361c9238b1ca6371fbf684",
+      "after": "sha256:807cb3227c4146973b5cc2438e7c6aef2a262a6f656c9d836135ed4f2d26ba2c"
+    },
+    {
+      "goalId": "0f9318ec-90eb-5381-b670-8fb2f2789c3d",
+      "before": "sha256:c64c90d2c14a9015b25aeb8e2cfba9fdfcd92ea94b4e99fa9d5b196c645bdfb0",
+      "after": "sha256:e52d7ded46460b2e7c834435c8722410982acee130bd803186d2edc36bcdf7f5"
+    }
+  ],
+  "inMemoryPRecordRebindings": [
+    {
+      "goalId": "9540a95d-5ca5-527c-918f-d702e99be07a",
+      "reviewInputFingerprint": "sha256:14b4ad502095dc26a4cc8c10bda9c451c2b420a8dcf9a3d0dd57e4fe4cb942e4"
+    },
+    {
+      "goalId": "0f9318ec-90eb-5381-b670-8fb2f2789c3d",
+      "reviewInputFingerprint": "sha256:95a521c2db59e4db85fe9e3f859a53f9348aca94cbe3e91aca48afc5c1bd0bec"
+    }
+  ],
+  "canonicalDeltas": [
+    {
+      "goalId": "9540a95d-5ca5-527c-918f-d702e99be07a",
+      "goalEvidenceInputChanged": true,
+      "normalCanonicalContextBefore": {
+        "shortKey": null,
+        "phase": null,
+        "core": null,
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-biology",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_STRUKTUR_FUNKTION",
+            "BIO_STEUERUNG_REGELUNG",
+            "BIO_ENTWICKLUNG"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-RP"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": null,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "d11b3b18-deec-5d1a-bff6-512cddf595a2",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "normalCanonicalContextAfter": {
+        "shortKey": null,
+        "phase": null,
+        "core": null,
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-biology",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_STRUKTUR_FUNKTION",
+            "BIO_STEUERUNG_REGELUNG",
+            "BIO_ENTWICKLUNG"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-RP"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": null,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "contains": [],
+        "examples": []
+      }
+    },
+    {
+      "goalId": "0f9318ec-90eb-5381-b670-8fb2f2789c3d",
+      "goalEvidenceInputChanged": true,
+      "normalCanonicalContextBefore": {
+        "shortKey": null,
+        "phase": null,
+        "core": null,
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-biology",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_STRUKTUR_FUNKTION",
+            "BIO_STEUERUNG_REGELUNG",
+            "BIO_ENTWICKLUNG"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-RP"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": null,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "contains": [],
+        "examples": []
+      },
+      "normalCanonicalContextAfter": {
+        "shortKey": null,
+        "phase": null,
+        "core": null,
+        "weight": 1,
+        "tags": [
+          "LK"
+        ],
+        "competencyRefs": [],
+        "sourceRef": null,
+        "dimensionTags": {
+          "framework": "hessen-kc-2024-biology",
+          "demandLevel": "AB2",
+          "processCompetencies": [],
+          "guidingIdeas": [
+            "BIO_STRUKTUR_FUNKTION",
+            "BIO_STEUERUNG_REGELUNG",
+            "BIO_ENTWICKLUNG"
+          ],
+          "phase": "Q1"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BY",
+            "DE-HE",
+            "DE-RP"
+          ]
+        },
+        "type": "atomic",
+        "nodeKind": null,
+        "semanticAtomic": null,
+        "semanticKind": null,
+        "applicabilitySemantics": {
+          "fromRequires": null,
+          "mappingInheritance": null,
+          "projection": null
+        },
+        "requires": [
+          "9540a95d-5ca5-527c-918f-d702e99be07a",
+          "2d451684-6e53-565e-a987-f362da919d2c"
+        ],
+        "contains": [],
+        "examples": []
+      }
+    }
+  ],
+  "pageCount": 395,
+  "changedPageCount": 4,
+  "changedPages": [
+    {
+      "goalId": "d11b3b18-deec-5d1a-bff6-512cddf595a2",
+      "before": {
+        "pageNumber": 103,
+        "navigationOrder": 102,
+        "treeOrder": 116,
+        "goalId": "d11b3b18-deec-5d1a-bff6-512cddf595a2",
+        "anchor": "goal-d11b3b18-deec-5d1a-bff6-512cddf595a2",
+        "title": "Vektoren und Transformation",
+        "description": "Die lernende Person kann Plasmide, Klonierungsstrategien und Expressionssysteme beschreiben.",
+        "breadcrumbs": [
+          "Biologie",
+          "Genetik und Gentechnik",
+          "Q1.2 Gene und Gentechnik"
+        ],
+        "chapterIds": [
+          "structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95",
+          "structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b",
+          "structure:canonical-goal-96bdf495-2801-57e4-a0da-ce3bf91e402c"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          }
+        ],
+        "requires": [
+          {
+            "goalId": "523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
+            "title": "Gentechnische Methoden anwenden",
+            "anchor": "goal-523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
+            "pageNumber": 101
+          }
+        ],
+        "reverseRequires": [
+          {
+            "goalId": "9540a95d-5ca5-527c-918f-d702e99be07a",
+            "title": "Anwendungen reflektieren",
+            "anchor": "goal-9540a95d-5ca5-527c-918f-d702e99be07a",
+            "pageNumber": 104
+          },
+          {
+            "goalId": "528a3cd3-4a4d-550d-939a-8dc8656446e4",
+            "title": "DNA gezielt verändern",
+            "anchor": "goal-528a3cd3-4a4d-550d-939a-8dc8656446e4",
+            "pageNumber": 108
+          },
+          {
+            "goalId": "ceb54223-197c-5289-a9c6-19358912e144",
+            "title": "RNA-Interferenz erklären",
+            "anchor": "goal-ceb54223-197c-5289-a9c6-19358912e144",
+            "pageNumber": 110
+          }
+        ],
+        "externalPrerequisites": [
+          {
+            "goalId": "2d451684-6e53-565e-a987-f362da919d2c",
+            "title": "Warum Biologie? - Relevanz und Orientierung",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a",
+            "title": "Sek-II-Abschlussaufgaben Biologie bearbeiten",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+          }
+        ],
+        "visualization": null,
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:3dbee52377d30af075bab5103c2cc397ba27d430d93087c90df8f962a9430ae5",
+        "pageFingerprint": "sha256:e6b048e5789007cea2e8968ec9d5be59707b27acafa4c72b7210bb9c798a4d14"
+      },
+      "after": {
+        "pageNumber": 103,
+        "navigationOrder": 102,
+        "treeOrder": 116,
+        "goalId": "d11b3b18-deec-5d1a-bff6-512cddf595a2",
+        "anchor": "goal-d11b3b18-deec-5d1a-bff6-512cddf595a2",
+        "title": "Vektoren und Transformation",
+        "description": "Die lernende Person kann Plasmide, Klonierungsstrategien und Expressionssysteme beschreiben.",
+        "breadcrumbs": [
+          "Biologie",
+          "Genetik und Gentechnik",
+          "Q1.2 Gene und Gentechnik"
+        ],
+        "chapterIds": [
+          "structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95",
+          "structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b",
+          "structure:canonical-goal-96bdf495-2801-57e4-a0da-ce3bf91e402c"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          }
+        ],
+        "requires": [
+          {
+            "goalId": "523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
+            "title": "Gentechnische Methoden anwenden",
+            "anchor": "goal-523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
+            "pageNumber": 101
+          }
+        ],
+        "reverseRequires": [
+          {
+            "goalId": "528a3cd3-4a4d-550d-939a-8dc8656446e4",
+            "title": "DNA gezielt verändern",
+            "anchor": "goal-528a3cd3-4a4d-550d-939a-8dc8656446e4",
+            "pageNumber": 108
+          },
+          {
+            "goalId": "ceb54223-197c-5289-a9c6-19358912e144",
+            "title": "RNA-Interferenz erklären",
+            "anchor": "goal-ceb54223-197c-5289-a9c6-19358912e144",
+            "pageNumber": 110
+          }
+        ],
+        "externalPrerequisites": [
+          {
+            "goalId": "2d451684-6e53-565e-a987-f362da919d2c",
+            "title": "Warum Biologie? - Relevanz und Orientierung",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a",
+            "title": "Sek-II-Abschlussaufgaben Biologie bearbeiten",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+          }
+        ],
+        "visualization": null,
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:3dbee52377d30af075bab5103c2cc397ba27d430d93087c90df8f962a9430ae5",
+        "pageFingerprint": "sha256:f07e96216a9c094514f7da71d76c01b44dde7b5c3f54eef87a6298bf43f0d8f7"
+      }
+    },
+    {
+      "goalId": "9540a95d-5ca5-527c-918f-d702e99be07a",
+      "before": {
+        "pageNumber": 104,
+        "navigationOrder": 103,
+        "treeOrder": 117,
+        "goalId": "9540a95d-5ca5-527c-918f-d702e99be07a",
+        "anchor": "goal-9540a95d-5ca5-527c-918f-d702e99be07a",
+        "title": "Anwendungen reflektieren",
+        "description": "Die lernende Person kann Chancen und Risiken gentechnischer Anwendungen diskutieren.",
+        "breadcrumbs": [
+          "Biologie",
+          "Genetik und Gentechnik",
+          "Q1.2 Gene und Gentechnik"
+        ],
+        "chapterIds": [
+          "structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95",
+          "structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b",
+          "structure:canonical-goal-96bdf495-2801-57e4-a0da-ce3bf91e402c"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          }
+        ],
+        "requires": [
+          {
+            "goalId": "d11b3b18-deec-5d1a-bff6-512cddf595a2",
+            "title": "Vektoren und Transformation",
+            "anchor": "goal-d11b3b18-deec-5d1a-bff6-512cddf595a2",
+            "pageNumber": 103
+          }
+        ],
+        "reverseRequires": [
+          {
+            "goalId": "5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+            "title": "Ethische Perspektiven diskutieren",
+            "anchor": "goal-5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+            "pageNumber": 130
+          },
+          {
+            "goalId": "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+            "title": "CRISPR/Cas erläutern",
+            "anchor": "goal-f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+            "pageNumber": 132
+          }
+        ],
+        "externalPrerequisites": [
+          {
+            "goalId": "2d451684-6e53-565e-a987-f362da919d2c",
+            "title": "Warum Biologie? - Relevanz und Orientierung",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a",
+            "title": "Sek-II-Abschlussaufgaben Biologie bearbeiten",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Anwendungen reflektieren",
+          "url": "/assets/goal-visualizations/biologie/9540a95d-5ca5-527c-918f-d702e99be07a/9540a95d-5ca5-527c-918f-d702e99be07a.png",
+          "altText": "Eine nachdenkliche Jugendliche sitzt zwischen gleich großen Bereichen Chancen und Risiken. Unter Chancen stehen symbolisch eine Pflanze bei Trockenheit und eine Ernteschale. Unter Risiken sieht man eine Pflanzenlupe, weitere Pflanzen, ein Insekt und ein Fragezeichen. Ihre Gedankenblase lautet Was zeigt die Evidenz? Die Symbole zeigen mögliche Prüffragen, keine nachgewiesenen Wirkungen.",
+          "originalDigest": "sha256:92341f96d3b9f00f0145eb968dedbdc405019a377aee35b5e8a6679249f2f703",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": {
+          "reviewId": "biologie-genetic-three-targeted-source-profile-remediation-author-20261011-v1",
+          "status": "needs_human_review",
+          "reviewInputFingerprint": "sha256:591087d35411c9bd24731ee3d204c877394a463736dedc275dd4ec5771965ec0",
+          "profileFingerprint": "sha256:049bae2d3dc71062707f904eb7e285aa5554aa208b36ab7538dd6458a68d7242",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1"
+        },
+        "goalFingerprint": "sha256:cb34b65ae5b26774eef06583cbf16c98f985f95d21e56abb8eff67de02a1f27d",
+        "pageFingerprint": "sha256:d46ea86aec1c5bba4c9a62f538ea7543f0813ca286f1d1a16118f9affcf47355"
+      },
+      "after": {
+        "pageNumber": 104,
+        "navigationOrder": 103,
+        "treeOrder": 117,
+        "goalId": "9540a95d-5ca5-527c-918f-d702e99be07a",
+        "anchor": "goal-9540a95d-5ca5-527c-918f-d702e99be07a",
+        "title": "Anwendungen reflektieren",
+        "description": "Die lernende Person kann Chancen und Risiken gentechnischer Anwendungen diskutieren.",
+        "breadcrumbs": [
+          "Biologie",
+          "Genetik und Gentechnik",
+          "Q1.2 Gene und Gentechnik"
+        ],
+        "chapterIds": [
+          "structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95",
+          "structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b",
+          "structure:canonical-goal-96bdf495-2801-57e4-a0da-ce3bf91e402c"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          }
+        ],
+        "requires": [],
+        "reverseRequires": [
+          {
+            "goalId": "5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+            "title": "Ethische Perspektiven diskutieren",
+            "anchor": "goal-5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+            "pageNumber": 130
+          },
+          {
+            "goalId": "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+            "title": "CRISPR/Cas erläutern",
+            "anchor": "goal-f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+            "pageNumber": 132
+          },
+          {
+            "goalId": "0f9318ec-90eb-5381-b670-8fb2f2789c3d",
+            "title": "Gentechnik-Risiken reflektieren",
+            "anchor": "goal-0f9318ec-90eb-5381-b670-8fb2f2789c3d",
+            "pageNumber": 133
+          }
+        ],
+        "externalPrerequisites": [
+          {
+            "goalId": "2d451684-6e53-565e-a987-f362da919d2c",
+            "title": "Warum Biologie? - Relevanz und Orientierung",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a",
+            "title": "Sek-II-Abschlussaufgaben Biologie bearbeiten",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Anwendungen reflektieren",
+          "url": "/assets/goal-visualizations/biologie/9540a95d-5ca5-527c-918f-d702e99be07a/9540a95d-5ca5-527c-918f-d702e99be07a.png",
+          "altText": "Eine nachdenkliche Jugendliche sitzt zwischen gleich großen Bereichen Chancen und Risiken. Unter Chancen stehen symbolisch eine Pflanze bei Trockenheit und eine Ernteschale. Unter Risiken sieht man eine Pflanzenlupe, weitere Pflanzen, ein Insekt und ein Fragezeichen. Ihre Gedankenblase lautet Was zeigt die Evidenz? Die Symbole zeigen mögliche Prüffragen, keine nachgewiesenen Wirkungen.",
+          "originalDigest": "sha256:92341f96d3b9f00f0145eb968dedbdc405019a377aee35b5e8a6679249f2f703",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": {
+          "reviewId": "biologie-genetic-three-targeted-source-profile-remediation-author-20261011-v1",
+          "status": "needs_human_review",
+          "reviewInputFingerprint": "sha256:14b4ad502095dc26a4cc8c10bda9c451c2b420a8dcf9a3d0dd57e4fe4cb942e4",
+          "profileFingerprint": "sha256:049bae2d3dc71062707f904eb7e285aa5554aa208b36ab7538dd6458a68d7242",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1"
+        },
+        "goalFingerprint": "sha256:cb34b65ae5b26774eef06583cbf16c98f985f95d21e56abb8eff67de02a1f27d",
+        "pageFingerprint": "sha256:9e6abb333fd37a9111e8470b41edfefa3d438cc35ce556c6f93df70f94ea5f4e"
+      }
+    },
+    {
+      "goalId": "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+      "before": {
+        "pageNumber": 132,
+        "navigationOrder": 141,
+        "treeOrder": 157,
+        "goalId": "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+        "anchor": "goal-f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+        "title": "CRISPR/Cas erläutern",
+        "description": "Die lernende Person kann Funktionsweise und Einsatz der CRISPR/Cas-Methode beschreiben.",
+        "breadcrumbs": [
+          "Biologie",
+          "Genetik und Gentechnik",
+          "Q1.4 Anwendungsgebiete der Gentechnik und ihre gesellschaftlichen Herausforderungen"
+        ],
+        "chapterIds": [
+          "structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95",
+          "structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b",
+          "structure:canonical-goal-ff5405a2-d329-580f-88ed-da184d06375e"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          }
+        ],
+        "requires": [
+          {
+            "goalId": "9540a95d-5ca5-527c-918f-d702e99be07a",
+            "title": "Anwendungen reflektieren",
+            "anchor": "goal-9540a95d-5ca5-527c-918f-d702e99be07a",
+            "pageNumber": 104
+          }
+        ],
+        "reverseRequires": [
+          {
+            "goalId": "0f9318ec-90eb-5381-b670-8fb2f2789c3d",
+            "title": "Gentechnik-Risiken reflektieren",
+            "anchor": "goal-0f9318ec-90eb-5381-b670-8fb2f2789c3d",
+            "pageNumber": 133
+          },
+          {
+            "goalId": "27b22c33-908c-5fa8-9d9f-a08aff8da143",
+            "title": "Biotechnologische Medikamentenproduktion",
+            "anchor": "goal-27b22c33-908c-5fa8-9d9f-a08aff8da143",
+            "pageNumber": 134
+          }
+        ],
+        "externalPrerequisites": [
+          {
+            "goalId": "2d451684-6e53-565e-a987-f362da919d2c",
+            "title": "Warum Biologie? - Relevanz und Orientierung",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a",
+            "title": "Sek-II-Abschlussaufgaben Biologie bearbeiten",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: CRISPR/Cas erläutern",
+          "url": "/assets/goal-visualizations/biologie/f53d0a0b-d9b8-5012-92b5-3a021ab6c30b/f53d0a0b-d9b8-5012-92b5-3a021ab6c30b.png",
+          "altText": "Eine Leit-RNA führt Cas9 zu einer passenden DNA-Stelle neben einem markierten PAM; beide DNA-Stränge werden geschnitten. Das Bild zeigt keine Reparatur und keinen garantierten präzisen Editiereffekt.",
+          "originalDigest": "sha256:b048a5df0863b5db84407ff7b8b62e30f6c73a163d794b239ae67005ceae45ac",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:595115e302ad0e30c85b53383eaba67b31f4a834f006c227b4c0a6001ead46b8",
+        "pageFingerprint": "sha256:214f685c4e002a037021c942ae4299dac278d2766571f59fd7dbbc964ac3b123"
+      },
+      "after": {
+        "pageNumber": 132,
+        "navigationOrder": 141,
+        "treeOrder": 157,
+        "goalId": "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+        "anchor": "goal-f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+        "title": "CRISPR/Cas erläutern",
+        "description": "Die lernende Person kann Funktionsweise und Einsatz der CRISPR/Cas-Methode beschreiben.",
+        "breadcrumbs": [
+          "Biologie",
+          "Genetik und Gentechnik",
+          "Q1.4 Anwendungsgebiete der Gentechnik und ihre gesellschaftlichen Herausforderungen"
+        ],
+        "chapterIds": [
+          "structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95",
+          "structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b",
+          "structure:canonical-goal-ff5405a2-d329-580f-88ed-da184d06375e"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          }
+        ],
+        "requires": [
+          {
+            "goalId": "9540a95d-5ca5-527c-918f-d702e99be07a",
+            "title": "Anwendungen reflektieren",
+            "anchor": "goal-9540a95d-5ca5-527c-918f-d702e99be07a",
+            "pageNumber": 104
+          }
+        ],
+        "reverseRequires": [
+          {
+            "goalId": "27b22c33-908c-5fa8-9d9f-a08aff8da143",
+            "title": "Biotechnologische Medikamentenproduktion",
+            "anchor": "goal-27b22c33-908c-5fa8-9d9f-a08aff8da143",
+            "pageNumber": 134
+          }
+        ],
+        "externalPrerequisites": [
+          {
+            "goalId": "2d451684-6e53-565e-a987-f362da919d2c",
+            "title": "Warum Biologie? - Relevanz und Orientierung",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a",
+            "title": "Sek-II-Abschlussaufgaben Biologie bearbeiten",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: CRISPR/Cas erläutern",
+          "url": "/assets/goal-visualizations/biologie/f53d0a0b-d9b8-5012-92b5-3a021ab6c30b/f53d0a0b-d9b8-5012-92b5-3a021ab6c30b.png",
+          "altText": "Eine Leit-RNA führt Cas9 zu einer passenden DNA-Stelle neben einem markierten PAM; beide DNA-Stränge werden geschnitten. Das Bild zeigt keine Reparatur und keinen garantierten präzisen Editiereffekt.",
+          "originalDigest": "sha256:b048a5df0863b5db84407ff7b8b62e30f6c73a163d794b239ae67005ceae45ac",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:595115e302ad0e30c85b53383eaba67b31f4a834f006c227b4c0a6001ead46b8",
+        "pageFingerprint": "sha256:283323f6298f185d218e03ab3e61a36c989073e6bb5e40a412e85de2f6b14d64"
+      }
+    },
+    {
+      "goalId": "0f9318ec-90eb-5381-b670-8fb2f2789c3d",
+      "before": {
+        "pageNumber": 133,
+        "navigationOrder": 142,
+        "treeOrder": 158,
+        "goalId": "0f9318ec-90eb-5381-b670-8fb2f2789c3d",
+        "anchor": "goal-0f9318ec-90eb-5381-b670-8fb2f2789c3d",
+        "title": "Gentechnik-Risiken reflektieren",
+        "description": "Die lernende Person kann Chancen und Risiken moderner Gentechnik diskutieren.",
+        "breadcrumbs": [
+          "Biologie",
+          "Genetik und Gentechnik",
+          "Q1.4 Anwendungsgebiete der Gentechnik und ihre gesellschaftlichen Herausforderungen"
+        ],
+        "chapterIds": [
+          "structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95",
+          "structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b",
+          "structure:canonical-goal-ff5405a2-d329-580f-88ed-da184d06375e"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          }
+        ],
+        "requires": [
+          {
+            "goalId": "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+            "title": "CRISPR/Cas erläutern",
+            "anchor": "goal-f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+            "pageNumber": 132
+          }
+        ],
+        "reverseRequires": [],
+        "externalPrerequisites": [
+          {
+            "goalId": "2d451684-6e53-565e-a987-f362da919d2c",
+            "title": "Warum Biologie? - Relevanz und Orientierung",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a",
+            "title": "Sek-II-Abschlussaufgaben Biologie bearbeiten",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Gentechnik-Risiken reflektieren",
+          "url": "/assets/goal-visualizations/biologie/0f9318ec-90eb-5381-b670-8fb2f2789c3d/0f9318ec-90eb-5381-b670-8fb2f2789c3d.png",
+          "altText": "Eine Jugendliche blickt auf ein gerades Erbgut-Leitersymbol mit zwei durchgehenden Bändern und vollständigen verbindenden Sprossen. Auch der Lupenausschnitt zeigt beide Bänder und vollständig verbundene Sprossen. Daneben steht eine Kulturpflanze. Die großen Texte lauten Gezielte Änderung, Nutzen? und Risiken? Ein Fragezeichen erinnert an noch zu prüfende Auswirkungen. Das Band enthält keine Sequenz oder Genmarkierung; die Motive behaupten keine tatsächlichen Ertragsänderungen.",
+          "originalDigest": "sha256:e9e361d91d6b2d1ea014fa76db006907c0dbccc94ea36b7aeb4cd3cc5f3ac8e0",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": {
+          "reviewId": "biologie-genetic-three-targeted-source-profile-remediation-author-20261011-v1",
+          "status": "needs_human_review",
+          "reviewInputFingerprint": "sha256:26c5e9dce6fb294129b1b0705e94b70967fcfd064093fb6e27037274cb4d39aa",
+          "profileFingerprint": "sha256:6184a29c462720506c92750d19a913753205ad6cd8cff17b4ac917b09e54828f",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1"
+        },
+        "goalFingerprint": "sha256:549000cebe80705b9fe083cffc8433bab1b60794d9c31396bddd3c19fa39a512",
+        "pageFingerprint": "sha256:ea6b181990dbce15aae5247373ff1f9fc51edfbeb2ae12713a0f1e7315e4d203"
+      },
+      "after": {
+        "pageNumber": 133,
+        "navigationOrder": 142,
+        "treeOrder": 158,
+        "goalId": "0f9318ec-90eb-5381-b670-8fb2f2789c3d",
+        "anchor": "goal-0f9318ec-90eb-5381-b670-8fb2f2789c3d",
+        "title": "Gentechnik-Risiken reflektieren",
+        "description": "Die lernende Person kann Chancen und Risiken moderner Gentechnik diskutieren.",
+        "breadcrumbs": [
+          "Biologie",
+          "Genetik und Gentechnik",
+          "Q1.4 Anwendungsgebiete der Gentechnik und ihre gesellschaftlichen Herausforderungen"
+        ],
+        "chapterIds": [
+          "structure:canonical-goal-e8d54127-d42e-51f5-bfa5-51d826069f95",
+          "structure:canonical-goal-3ae95c96-e058-5045-b5e7-a613b8086f8b",
+          "structure:canonical-goal-ff5405a2-d329-580f-88ed-da184d06375e"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          }
+        ],
+        "requires": [
+          {
+            "goalId": "9540a95d-5ca5-527c-918f-d702e99be07a",
+            "title": "Anwendungen reflektieren",
+            "anchor": "goal-9540a95d-5ca5-527c-918f-d702e99be07a",
+            "pageNumber": 104
+          }
+        ],
+        "reverseRequires": [],
+        "externalPrerequisites": [
+          {
+            "goalId": "2d451684-6e53-565e-a987-f362da919d2c",
+            "title": "Warum Biologie? - Relevanz und Orientierung",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-2d451684-6e53-565e-a987-f362da919d2c"
+          }
+        ],
+        "externalReverseRequires": [
+          {
+            "goalId": "1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a",
+            "title": "Sek-II-Abschlussaufgaben Biologie bearbeiten",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=08a43a1b-d97e-522c-9dfa-c950a493364e&edition=curricular-atomic-v1#goal-1cfb2f8b-d44b-57f4-aae0-c5d9f55a1c6a"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Gentechnik-Risiken reflektieren",
+          "url": "/assets/goal-visualizations/biologie/0f9318ec-90eb-5381-b670-8fb2f2789c3d/0f9318ec-90eb-5381-b670-8fb2f2789c3d.png",
+          "altText": "Eine Jugendliche blickt auf ein gerades Erbgut-Leitersymbol mit zwei durchgehenden Bändern und vollständigen verbindenden Sprossen. Auch der Lupenausschnitt zeigt beide Bänder und vollständig verbundene Sprossen. Daneben steht eine Kulturpflanze. Die großen Texte lauten Gezielte Änderung, Nutzen? und Risiken? Ein Fragezeichen erinnert an noch zu prüfende Auswirkungen. Das Band enthält keine Sequenz oder Genmarkierung; die Motive behaupten keine tatsächlichen Ertragsänderungen.",
+          "originalDigest": "sha256:e9e361d91d6b2d1ea014fa76db006907c0dbccc94ea36b7aeb4cd3cc5f3ac8e0",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": {
+          "reviewId": "biologie-genetic-three-targeted-source-profile-remediation-author-20261011-v1",
+          "status": "needs_human_review",
+          "reviewInputFingerprint": "sha256:95a521c2db59e4db85fe9e3f859a53f9348aca94cbe3e91aca48afc5c1bd0bec",
+          "profileFingerprint": "sha256:6184a29c462720506c92750d19a913753205ad6cd8cff17b4ac917b09e54828f",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1"
+        },
+        "goalFingerprint": "sha256:549000cebe80705b9fe083cffc8433bab1b60794d9c31396bddd3c19fa39a512",
+        "pageFingerprint": "sha256:c9748ef26e5e2b948a42e49cf13e2931f4b79b1a5d2017d7f964acdecafe08ea"
+      }
+    }
+  ],
+  "requiresOrContainsCycle": false,
+  "activeAdoption": false,
+  "independentReview": false,
+  "humanApproval": false
+}

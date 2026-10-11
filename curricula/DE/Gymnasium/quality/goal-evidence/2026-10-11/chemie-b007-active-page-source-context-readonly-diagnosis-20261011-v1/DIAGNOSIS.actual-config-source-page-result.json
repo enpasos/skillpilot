@@ -1,0 +1,460 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-11T09:02:35.089923+00:00",
+  "role": "independent-reviewer-b-readonly-diagnostic",
+  "newScientificReview": false,
+  "newReviewCount": 0,
+  "normalChecks": [
+    {
+      "command": "cd app && ./node_modules/.bin/tsx scripts/buildGoalBookSourceAtlasInputs.ts --config app/scripts/config/goal-books/de-gym-chemistry-national-atlas.inputs.json --check",
+      "exitCode": 0,
+      "result": "PASS",
+      "counts": {
+        "canonicalCurricularAtomicGoals": 402,
+        "publishedCurricularAtomicGoals": 382,
+        "sourceViews": 48,
+        "unresolvedSourceScopeDecisions": 496,
+        "omittedGoals": 20
+      }
+    },
+    {
+      "function": "app/scripts/goalBookSourceAtlasInputs.ts#buildGoalBookSourceAtlasInputs (pure; no outputs written)",
+      "executions": 2,
+      "writeOutputs": false,
+      "result": "active and stage-normal-helper both yield DE-TH/SekII/LK, two same direct source witnesses"
+    },
+    {
+      "function": "parseAndValidateGoalBookModel",
+      "models": [
+        "active382",
+        "stage382"
+      ],
+      "result": "PASS both"
+    }
+  ],
+  "bookContext": {
+    "activeBookPath": "app/public/lernzielbuch/de-gym-chemie-bundesweit.book-model.json",
+    "activeBookSha256": "sha256:9663cb8431f9f079104df56798e8833c20441f2b6653f6deacb3bde2eea9f8b0",
+    "stageBookPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-final-native31-root-integration-candidate-20261011-v1/native/source382.normal.book-model.json",
+    "stageBookSha256": "sha256:cf0c0ccb62606b85f08a9fc91b2b54b6f70a5f301aeb09b2b4ea0788e225e0c3",
+    "activeEvidenceReviewPaths": [],
+    "activeEvidenceReviewSources": [],
+    "stageEvidenceReviewSources": [
+      {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-targeted-scoring-source-binding-author-successor-20261011-v7/review-inputs/six-P.author-targeted-v7.jsonl",
+        "digest": "sha256:813bab0037387eb4871e379c966169647aded3590eaeec0ab715b25e7e98c397"
+      }
+    ],
+    "actualMechanism": "goalBookModel.ts parseEvidenceReviewSources requires exactly configured paths; empty paths produce empty summaryByGoalId, and page builder uses summaryByGoalId.get(goalId) ?? null. This is book review-context configuration, not proof of absent runtime P publication.",
+    "changedPages": [
+      {
+        "goalId": "4b6d1824-20e4-597e-b639-fae401f740f0",
+        "changedFields": [
+          "evidenceReview",
+          "pageFingerprint"
+        ],
+        "goalFingerprintUnchanged": true,
+        "beforeApplicability": [
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          }
+        ],
+        "afterApplicability": [
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": "G9",
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          }
+        ],
+        "beforeEvidence": {
+          "reviewId": "chemie-b007-six-scoring-binding-author-v7",
+          "status": "needs_human_review",
+          "reviewInputFingerprint": "sha256:c341a395135617e41134949e40f0f3f00a327f728371074fc85a045e93435126",
+          "profileFingerprint": "sha256:69deeb23d2cd0221a0ab4bb953bfd8994d9cf7f2b9c6103004efd7f3bed91317",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1"
+        },
+        "afterEvidence": null
+      },
+      {
+        "goalId": "805a2f58-29ce-55d0-8a85-42ee486239b3",
+        "changedFields": [
+          "evidenceReview",
+          "pageFingerprint"
+        ],
+        "goalFingerprintUnchanged": true,
+        "beforeApplicability": [
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          }
+        ],
+        "afterApplicability": [
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          }
+        ],
+        "beforeEvidence": {
+          "reviewId": "chemie-b007-six-scoring-binding-author-v7",
+          "status": "needs_human_review",
+          "reviewInputFingerprint": "sha256:1f0865258843c9585fea0b3fbb9ffdc97d5f0049cf6e541692029a022b58607b",
+          "profileFingerprint": "sha256:11429248d76a59afec5ae7d00e9c38d53674f4d23697d7bd13a3badfea9cf62c",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1"
+        },
+        "afterEvidence": null
+      },
+      {
+        "goalId": "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+        "changedFields": [
+          "evidenceReview",
+          "pageFingerprint"
+        ],
+        "goalFingerprintUnchanged": true,
+        "beforeApplicability": [
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          }
+        ],
+        "afterApplicability": [
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          }
+        ],
+        "beforeEvidence": {
+          "reviewId": "chemie-b007-six-scoring-binding-author-v7",
+          "status": "needs_human_review",
+          "reviewInputFingerprint": "sha256:fd3dd406cf85a3fde9595a39408abf46184d8c383afc9e71b6b12856628239e8",
+          "profileFingerprint": "sha256:62942d5f1df3669c8b0fa7c043af3a1b2e7f22c7d14f1192f9af96c9efab7f40",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1"
+        },
+        "afterEvidence": null
+      },
+      {
+        "goalId": "413040cd-ba74-5227-948c-a778b0bd0f56",
+        "changedFields": [
+          "applicability",
+          "evidenceReview",
+          "pageFingerprint"
+        ],
+        "goalFingerprintUnchanged": true,
+        "beforeApplicability": [
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "afterApplicability": [
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "beforeEvidence": {
+          "reviewId": "chemie-b007-six-scoring-binding-author-v7",
+          "status": "needs_human_review",
+          "reviewInputFingerprint": "sha256:3753b4c7a63f6ba5dea6ae7eb8b47cba687065ea97bc01834f01218e3a2b837e",
+          "profileFingerprint": "sha256:5d2165ed50a7def9e404465d2e2fbad92e7a73ad491d837bf885cc0f3e47ec12",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1"
+        },
+        "afterEvidence": null
+      },
+      {
+        "goalId": "4aeced1e-15cd-58df-83f7-68e2531c2d32",
+        "changedFields": [
+          "evidenceReview",
+          "pageFingerprint"
+        ],
+        "goalFingerprintUnchanged": true,
+        "beforeApplicability": [
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          }
+        ],
+        "afterApplicability": [
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          }
+        ],
+        "beforeEvidence": {
+          "reviewId": "chemie-b007-six-scoring-binding-author-v7",
+          "status": "needs_human_review",
+          "reviewInputFingerprint": "sha256:bb645252cf67ecaa846bcf87744ad56f8b3627856ef87265e09803d1ec1b9b46",
+          "profileFingerprint": "sha256:fba8ca76b49b53696e0d779da61c1566cbd235cd4726e34fb8ac461cb780ec1c",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1"
+        },
+        "afterEvidence": null
+      },
+      {
+        "goalId": "49d42c38-419c-5048-b7e9-860645dd122d",
+        "changedFields": [
+          "evidenceReview",
+          "pageFingerprint"
+        ],
+        "goalFingerprintUnchanged": true,
+        "beforeApplicability": [
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          }
+        ],
+        "afterApplicability": [
+          {
+            "jurisdiction": "DE-HE",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          }
+        ],
+        "beforeEvidence": {
+          "reviewId": "chemie-b007-six-scoring-binding-author-v7",
+          "status": "needs_human_review",
+          "reviewInputFingerprint": "sha256:f3d0c9c447064b97eb6fd273950a231fefa159db1688c62f228e7226734e40c7",
+          "profileFingerprint": "sha256:1ba52c40012090013d0dfe5181c46201ec50cc555991285f6b8af478b89f4322",
+          "evidenceLevel": "E1",
+          "maximumClaimScope": "G1"
+        },
+        "afterEvidence": null
+      }
+    ],
+    "other376PagesSemanticallyIdentical": true,
+    "all382GoalFingerprintsUnchanged": true
+  },
+  "scope413": {
+    "conclusion": "No active mapper adoption gap. Stage HE/SekI/G9 was a manually added optional closed-carrier view entry outside both normal mapper outputs. Active DE-TH/SekII/LK follows the registered direct Source bindings.",
+    "normalActiveScope": "DE-TH/SekII/LK",
+    "normalStageHelperScope": "DE-TH/SekII/LK",
+    "childApplicabilityMappingInheritance": "boundary",
+    "normalParentAtomicDescendants": [],
+    "rawAuthoredApplicability": {
+      "jurisdiction": [
+        "DE-HE"
+      ]
+    },
+    "rawAuthoredApplicabilityIsSourceWitness": false,
+    "actualOptionalHESourceExists": true,
+    "optionalHEExplicitRegisteredSourceGoalOrDirectMappingFor413": false,
+    "THPrimaryColumnVerified": true
+  },
+  "integrationGates": [
+    {
+      "gate": "Preserve normal Source scope",
+      "action": "Keep 413 at DE-TH/SekII/LK for this integration. Do not broaden the mandatory HE b05 mapping or remove child inheritance boundaries for stage parity."
+    },
+    {
+      "gate": "If optional HE visibility is deliberately wanted later",
+      "action": "Create and independently review an explicit optional HE source-extraction row and bounded partial mapping, plus the optional selection/applicability semantics. The historical stage-only view entry alone cannot close this source gate."
+    },
+    {
+      "gate": "Book evidence summary is a separate explicit publication choice",
+      "action": "Keep evidenceReviewPaths=[] if intentional. If current reviewed P summaries should be displayed, bind the exact validated review source in the book config and regenerate through normal tools; retain ai_candidate/needs_human_review E1/G1. Do not infer runtime publication status from this field."
+    },
+    {
+      "gate": "Changed rendered page context",
+      "action": "Generate the actual selected successor pages from the decided book config and inspect affected full HTML/PDF pages. Stage pixel inspection does not automatically bind to changed scope/evidence/page fingerprints; preserve identical scientific goal and asset verdicts. Recheck equality after any chosen P summary binding before deciding which pages need inspection."
+    },
+    {
+      "gate": "Independent historical results",
+      "action": "Keep historical stage records unchanged. Append this diagnosis as a source-context supersession explanation, no new scientific review count, no Human approval or Source-union clearance."
+    }
+  ],
+  "sourceUnionClaim": "HOLD beyond these actual bounded bindings; no all-source completion claim."
+}

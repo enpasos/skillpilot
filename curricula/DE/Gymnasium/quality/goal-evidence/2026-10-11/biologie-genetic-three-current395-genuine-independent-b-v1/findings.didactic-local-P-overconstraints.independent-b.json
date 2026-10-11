@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-11T07:47:45.330306+00:00",
+  "reviewAuthority": "ai_candidate",
+  "status": "needs_human_review",
+  "evidenceLevel": "E1",
+  "maximumClaimScope": "G1",
+  "findings": [
+    {
+      "findingId": "B-P-APPLICATION-RUBRIC-FORCED-CHANGE",
+      "status": "open",
+      "goalId": "9540a95d-5ca5-527c-918f-d702e99be07a",
+      "artifactPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-argument-three-current395-neutral-integration-preparation-b-20261011-v1/positive/cases/9540a95d-5ca5-527c-918f-d702e99be07a.whole-two-cases.de-en.json",
+      "artifactSha256": "sha256:82451d1dbe6e83fefd4b2af31460526abecdf6b028d8c3bcfcf485d319296715",
+      "caseId": "application-contained-protein",
+      "jsonLocations": [
+        "/records/1/mandatoryCoverageCriteria/3/mandatoryCriterionDe",
+        "/records/1/mandatoryCoverageCriteria/3/mandatoryCriterionEn"
+      ],
+      "observedDe": "Begründet Bedingungen einer Position, beantwortet den DNA-Einwand fachlich und verändert die Empfehlung beim Transfer auf offene Freisetzung.",
+      "observedEn": "Justifies conditions for a position, responds scientifically to the DNA objection and changes the recommendation in the transfer to environmental release.",
+      "defect": "Mandatory change of recommendation excludes a learner who already provisionally rejects contained production on the supplied uncertainty and consistently rejects open release after reassessing its additional exposure. The exact goal, task, profile and acceptableAlternatives allow coherent different positions. Fresh transfer must require an updated weighing and justified change or retention, not force a new stance.",
+      "requiredCorrectionDe": "Begründet Bedingungen einer Position, beantwortet den DNA-Einwand fachlich und begründet beim Transfer auf offene Freisetzung die neue Abwägung sowie eine Änderung oder Beibehaltung der Empfehlung.",
+      "requiredCorrectionEn": "Justifies conditions for a position, responds scientifically to the DNA objection and, in the transfer to environmental release, explains the updated weighing and a change or retention of the recommendation.",
+      "profileCoreChangeRequired": false,
+      "authorInputModified": false,
+      "closed": false
+    },
+    {
+      "findingId": "B-P-MODERN-PROFILE-FORCED-CHANGE",
+      "status": "open",
+      "goalId": "0f9318ec-90eb-5381-b670-8fb2f2789c3d",
+      "artifactPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-argument-three-current395-neutral-integration-preparation-b-20261011-v1/positive/profiles/0f9318ec-90eb-5381-b670-8fb2f2789c3d.whole.profile.json",
+      "artifactSha256": "sha256:052e62802b74841de287b4623756486c355606e4803f4b9b146b22848eacaf74",
+      "caseId": "modern-edited-crop",
+      "jsonLocations": [
+        "/applicationCaseBriefs/1/expectedPerformanceDe",
+        "/applicationCaseBriefs/1/expectedPerformanceEn"
+      ],
+      "observedDe": "Die lernende Person erklärt den Erregereintritt, diskutiert beabsichtigte Nebenfolgen und Pollenwege, begrenzt negative Zusatzstellenbefunde, vergleicht konventionelle Züchtung und verändert ihre Empfehlung bei seltenem Erreger und fehlendem Wildverwandten.",
+      "observedEn": "The learner explains pathogen entry, discusses secondary consequences of the intended edit and pollen routes, bounds negative alternative-location findings, compares conventional breeding and changes the recommendation with a rare pathogen and no wild relative.",
+      "defect": "The unchanged uncertainty and growth disadvantage can justify maintaining a cautious no-release recommendation while the risk weights and benefit change. Profile essential expectation says biological conditions can change the decision; the full-case rubric correctly requires transferred risk routes. The profile brief overconstrains this competence by requiring a changed recommendation.",
+      "requiredCorrectionDe": "Die lernende Person erklärt den Erregereintritt, diskutiert beabsichtigte Nebenfolgen und Pollenwege, begrenzt negative Zusatzstellenbefunde, vergleicht konventionelle Züchtung und begründet bei seltenem Erreger und fehlendem Wildverwandten die neue Abwägung sowie eine Änderung oder Beibehaltung ihrer Empfehlung.",
+      "requiredCorrectionEn": "The learner explains pathogen entry, discusses secondary consequences of the intended edit and pollen routes, bounds negative alternative-location findings, compares conventional breeding and, with a rare pathogen and no wild relative, explains the updated weighing and a change or retention of the recommendation.",
+      "profileFingerprintMustBeRecomputedAfterCorrection": true,
+      "authorInputModified": false,
+      "closed": false
+    }
+  ],
+  "actualCorrectionsApplied": false,
+  "requiresActualCorrectionAndFreshAffectedBindingVerificationBeforeClosure": true
+}

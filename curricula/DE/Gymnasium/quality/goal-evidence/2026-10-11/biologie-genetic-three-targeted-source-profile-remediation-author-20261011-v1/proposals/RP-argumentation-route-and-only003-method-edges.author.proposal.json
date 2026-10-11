@@ -1,0 +1,236 @@
+{
+  "schemaVersion": 1,
+  "states": {
+    "reviewAuthority": "ai_candidate",
+    "status": "needs_human_review",
+    "evidenceLevel": "E1",
+    "maximumClaimScope": "G1",
+    "authorOnly": true,
+    "humanApproval": false,
+    "activeAdoption": false
+  },
+  "baseLandscape": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-argument-three-current395-neutral-integration-preparation-b-20261011-v1/candidate/whole480-only-three-reviewed-image-links.inactive.json",
+    "sha256": "sha256:67f00ffd46dd8943bd01587347e9eac918f7d9f65456e37a519654e381a665b7",
+    "bytes": 1334757
+  },
+  "exactRequiresOverlays": [
+    {
+      "goalId": "9540a95d-5ca5-527c-918f-d702e99be07a",
+      "field": "requires",
+      "before": [
+        "d11b3b18-deec-5d1a-bff6-512cddf595a2",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "proposed": [
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "reasonDe": "Die vollständigen Anwendungsmaterialien liefern Gen→Protein→Eigenschaft und Expositionsmodell. Selbstständige Diskussion benötigt deren fachgerechte Auswertung, nicht vorgängige mastery von Vektoren/Klonierungsstrategien/Expressionssystemen; diese bleiben eigenständige Ziele. Grundkonzepte werden aus dem Material erschlossen und in der Diskussion geprüft."
+    },
+    {
+      "goalId": "0f9318ec-90eb-5381-b670-8fb2f2789c3d",
+      "field": "requires",
+      "before": [
+        "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "proposed": [
+        "9540a95d-5ca5-527c-918f-d702e99be07a",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "reasonDe": "Die beiden modernen Fälle liefern Änderungsmodell, Ziel-/Funktionsbefunde und Unsicherheiten ausdrücklich. Die Diskussionskompetenz baut auf anwendungsbezogener Abwägung auf; vollständige autonome Methodenerklärung darf ein gesondertes LK-Ziel bleiben. Die CRISPR-Mastery wird nicht durch dieses Ziel vergeben."
+    }
+  ],
+  "unchangedEthicsRoute": {
+    "goalId": "5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+    "requires": [
+      "9540a95d-5ca5-527c-918f-d702e99be07a",
+      "2d451684-6e53-565e-a987-f362da919d2c"
+    ]
+  },
+  "directContextNeighbours": [
+    {
+      "id": "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+      "title": "CRISPR/Cas erläutern",
+      "titleEn": "Explain CRISPR/Cas",
+      "description": "Die lernende Person kann Funktionsweise und Einsatz der CRISPR/Cas-Methode beschreiben.",
+      "descriptionEn": "The learner can describe the mode of action and application of the CRISPR/Cas method.",
+      "weight": 1,
+      "tags": [
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "9540a95d-5ca5-527c-918f-d702e99be07a",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-biology",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BIO_STRUKTUR_FUNKTION",
+          "BIO_STEUERUNG_REGELUNG",
+          "BIO_ENTWICKLUNG"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE",
+          "DE-RP"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+          "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "555fcd3f-a90e-444d-8aa9-b0dcb3de74e9"
+        }
+      },
+      "type": "atomic",
+      "resourceLinks": [
+        {
+          "type": "goal-visualization",
+          "resourceType": "image",
+          "role": "primary",
+          "skillpilotId": "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+          "title": "Visualisierung: CRISPR/Cas erläutern",
+          "url": "/assets/goal-visualizations/biologie/f53d0a0b-d9b8-5012-92b5-3a021ab6c30b/f53d0a0b-d9b8-5012-92b5-3a021ab6c30b.png",
+          "provider": "OpenAI image_gen (Codex built-in)",
+          "description": "Comicartiges Modell eines Cas9-Schnitts an DNA nahe einer PAM-Stelle.",
+          "altText": "Eine Leit-RNA führt Cas9 zu einer passenden DNA-Stelle neben einem markierten PAM; beide DNA-Stränge werden geschnitten. Das Bild zeigt keine Reparatur und keinen garantierten präzisen Editiereffekt.",
+          "lang": "de",
+          "license": "CC-BY-4.0",
+          "reviewStatus": "pilot"
+        }
+      ]
+    },
+    {
+      "id": "523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
+      "title": "Gentechnische Methoden anwenden",
+      "titleEn": "Apply genetic engineering methods",
+      "description": "Die lernende Person kann Restriktionsenzyme, PCR und Gel-Analyse erläutern.",
+      "descriptionEn": "The learner can explain restriction enzymes, PCR, and gel analysis.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "475eebb4-4eb0-524f-b1ec-4a672bf856d2",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-biology",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BIO_STRUKTUR_FUNKTION",
+          "BIO_STEUERUNG_REGELUNG",
+          "BIO_ENTWICKLUNG"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE",
+          "DE-RP"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+          "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "b12fe158-e505-4896-8189-28c3209756c3"
+        }
+      },
+      "type": "atomic"
+    },
+    {
+      "id": "d11b3b18-deec-5d1a-bff6-512cddf595a2",
+      "title": "Vektoren und Transformation",
+      "titleEn": "Vectors and transformation",
+      "description": "Die lernende Person kann Plasmide, Klonierungsstrategien und Expressionssysteme beschreiben.",
+      "descriptionEn": "The learner can describe plasmids, cloning strategies, and expression systems.",
+      "weight": 1,
+      "tags": [
+        "GK",
+        "LK"
+      ],
+      "contains": [],
+      "requires": [
+        "523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
+        "2d451684-6e53-565e-a987-f362da919d2c"
+      ],
+      "dimensionTags": {
+        "framework": "hessen-kc-2024-biology",
+        "demandLevel": "AB2",
+        "processCompetencies": [],
+        "guidingIdeas": [
+          "BIO_STRUKTUR_FUNKTION",
+          "BIO_STEUERUNG_REGELUNG",
+          "BIO_ENTWICKLUNG"
+        ],
+        "phase": "Q1"
+      },
+      "applicability": {
+        "jurisdiction": [
+          "DE-BY",
+          "DE-HE",
+          "DE-RP"
+        ]
+      },
+      "extendedData": {
+        "provenance": {
+          "sourceLandscapeId": "3e56aa75-c76c-4de5-883b-0aac98297846",
+          "sourceLandscapeTitle": "Biologie Oberstufe (Hessen, KC 2024)",
+          "sourceGoalId": "46f4ea54-367f-4f40-b3f2-0d7fd4dff90e"
+        }
+      },
+      "type": "atomic"
+    }
+  ],
+  "primaryRP": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-argument-three-current395-neutral-integration-preparation-b-20261011-v1/sources/primary/RP-whole-current.original.pdf",
+    "sha256": "sha256:307f5d841072a1a34d846554c7397c9b8355a9c05d49c8c223ccd9c64d877350",
+    "bytes": 17378996
+  },
+  "printedPages": [
+    44,
+    45
+  ],
+  "physicalPages": [
+    46,
+    47
+  ],
+  "sourceBoundariesDe": "RP TF11 wählt aktuelle, relevante, interessengerechte Anwendungen aus. S.44 verlangt Grundverständnis und Überblick über biotechnologische Methoden und schließt Vertiefung molekularbiologischer Einzelheiten aus. Die Modelle der sechs vollständigen Fälle tragen die drei Diskussionsziele. Der Argumentationsoperator allein trägt keine obligatorische Detailmastery von PCR/Elektrophorese, Vektoren/Klonierung oder CRISPR; deren gesonderte tatsächlich belegte HE/LK-Ziele bleiben gültig. Ein supplied model ist Material für die fachlich korrekte Argumentation, kein Nachweis, dass seine Methode autonom beherrscht wird.",
+  "projectionRoleOrApplicabilityEdits": [],
+  "mappingProposal": {
+    "sourceGoalId": "rp-bio-seki-rp-bio-seki-2014-tf11-biowissenschaften-und-gesellschaft-003-8927c877",
+    "beforeCanonicalGoalIds": [
+      "0f9318ec-90eb-5381-b670-8fb2f2789c3d",
+      "5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+      "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+      "523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
+      "d11b3b18-deec-5d1a-bff6-512cddf595a2",
+      "9540a95d-5ca5-527c-918f-d702e99be07a"
+    ],
+    "proposedCanonicalGoalIds": [
+      "9540a95d-5ca5-527c-918f-d702e99be07a",
+      "5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+      "0f9318ec-90eb-5381-b670-8fb2f2789c3d"
+    ],
+    "removeOnlyUnsupported003MethodContributions": [
+      "f53d0a0b-d9b8-5012-92b5-3a021ab6c30b",
+      "523f7ef4-ed2b-5bda-8fc1-e4c4c94669a0",
+      "d11b3b18-deec-5d1a-bff6-512cddf595a2"
+    ],
+    "proposedMatchType": "partial",
+    "reasonDe": "Nur die drei Argumentations-/Bewertungsziele leisten einen begrenzten materialgestützten Beitrag zu diesem TF11-Argumentationsoperator. Die drei technischen Methodenbeiträge werden aus ausschließlich dieser003-Zeile vorgeschlagen entfernt, weil S.44 keine solche Detailpflicht begründet. Andere Quellenzeilen und Scope-Entscheidungen bleiben gesondert zu prüfen; weder die Auswahl der Anwendungsgebiete noch Operator-/Source-Union-Vollständigkeit sind damit freigegeben."
+  },
+  "activationConstraintDe": "Keine automatische Übernahme: tatsächliche D-/Page-/Frontier-/Source-/P-Bindungsänderungen mit normalen Funktionen messen, betroffene Nachbarn unabhängig prüfen, geschützte366-Bindungen erhalten oder vor Übernahme gezielt erneuern."
+}

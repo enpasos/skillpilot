@@ -1,0 +1,53 @@
+{
+  "atUTC": "2026-10-11T10:05:00.140271+00:00",
+  "result": "PASS",
+  "commands": [
+    {
+      "argv": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "app/scripts/validateGoalDescriptionReviewCampaign.ts",
+        "--bundle",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-normal-source-scope-413-dual-integration-root-20261011-v1/native-D1/round-a/review-bundle-manifest.json",
+        "--input",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-normal-source-scope-413-dual-integration-root-20261011-v1/native-D1/round-a/description-review-input.json",
+        "--campaign",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-normal-source-scope-413-dual-integration-root-20261011-v1/native-D1/round-a/description-review-campaign.json",
+        "--run",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-413-HE-required-view-and-source-D-context-targeted-independent-a-20261011-v1/shared-root-D1-round-a/D413.common-root.independent-a.run.json",
+        "--batch-input",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-normal-source-scope-413-dual-integration-root-20261011-v1/native-D1/round-a/batches/chemie-b007-413-current402-TH-source-HE-mandatory-scope-targeted-root-20261011-v1-first-pass-a.batch-001.input.jsonl",
+        "--records",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-413-HE-required-view-and-source-D-context-targeted-independent-a-20261011-v1/shared-root-D1-round-a/D413.common-root.independent-a.records.jsonl"
+      ],
+      "exitCode": 0,
+      "stdout": "Goal-description review batch valid: 1\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "app/scripts/validateGoalEvidenceFindings.ts",
+        "--bundle",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-normal-source-scope-413-dual-integration-root-20261011-v1/native-D1/round-a/review-bundle-manifest.json",
+        "--run",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-413-HE-required-view-and-source-D-context-targeted-independent-a-20261011-v1/shared-root-D1-round-a/D413.common-root.findings.independent-a.run.json",
+        "--findings",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-413-HE-required-view-and-source-D-context-targeted-independent-a-20261011-v1/shared-root-D1-round-a/D413.common-root.findings.independent-a.jsonl"
+      ],
+      "exitCode": 0,
+      "stdout": "Goal-evidence findings valid: 2\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/home/enpasos/projects/skillpilot/app/node_modules/.bin/tsx",
+        "app/scripts/memoryCardReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-413-HE-required-view-and-source-D-context-targeted-independent-a-20261011-v1/memory/413.targeted.inactive.config.json",
+        "--mode=check"
+      ],
+      "exitCode": 0,
+      "stdout": "# Memory Card Review: canonical-chemistry-full\nScope: 413 exact current context and scope transport only\nRule: memory-card-review-v1\nOrdinary atomic goals in scope: 1\nCurrent no-memory decisions: 1\nCurrent memory-required decisions: 0\nCurrent needs developer review: 0\nMemory goals in scope: 0\nTraced memory goals: 0\nKnown deck IDs: 7\nDeck files: 8\nCard rows: 93\nPrimary cards in scope: 0\nKept primary cards: 0\nCards marked remove: 0\nCards needing developer review: 0\nMissing review records: 0\nStale review records: 0\nObsolete review records: 0\nMissing card review records: 0\nStale card review records: 0\nObsolete card review records: 0\nComposition visibility scopes: 3\nMemory-required goals checked in views: 0\nMemory-required goals without visible memory node: 0\n",
+      "stderr": ""
+    }
+  ]
+}

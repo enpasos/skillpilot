@@ -1,0 +1,23 @@
+import json,pathlib,hashlib,datetime
+base=pathlib.Path('curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11');a=base/'biologie-genetic-three-combined-current395-reviewed-integration-preparation-20261011-v3';b=base/'biologie-genetic-three-current395-shared-native-D6-targeted-independent-b-v1'; old=base/'biologie-genetic-three-combined-current395-targeted-author-20261011-v2'; own=base/'biologie-genetic-three-combined-current395-genuine-targeted-independent-b-v1'
+def read(p):return json.loads(p.read_text())
+def dif(x,y,p=''):
+ if type(x)!=type(y):return[p]
+ if isinstance(x,dict):return sum([dif(x[k],y[k],p+'/'+k) if k in x and k in y else[p+'/'+k] for k in sorted(set(x)|set(y))],[])
+ if isinstance(x,list):
+  if len(x)!=len(y):return[p+':length']
+  return sum([dif(u,v,p+'/'+str(i)) for i,(u,v) in enumerate(zip(x,y))],[])
+ return [] if x==y else[p]
+c=read(a/'inputs/shared-native-D6.whole-current395-neutral-context.json');o=read(old/'inputs/FINAL.neutral-whole395-combined-three-and-direct-context.join.json');oldrows={r['wholeGoal']['id']:r for r in o['threeWholeGoalTuples']+o['directAffectedContextNeighbours']};ni=read(a/'description/shared-native-D6/round-b/description-review-input.json');oi=read(own/'D6.actual-combined-context.input.json'); oldi={r['goalId']:r for r in oi['goals']};newi={r['goalId']:r for r in ni['goals']}; report=[]
+for r in c['rows']:
+ gid=r['wholeGoal']['id']; q=oldrows[gid]; row={'goalId':gid,'wholeCanonicalEqual':r['wholeGoal']==q['wholeGoal'],'whole395PageDifferences':dif(q['whole395Page'],r['whole395Page']),'canonicalDContextEqual':r['canonicalDContext']==q['canonicalDContext'],'normalPInputEqual':r['normalPInput']==q['normalPInput'],'wholeCasesEqual':r['wholeCases']==q['wholeCases'],'allDirectWholeSourceContributionsEqual':r['allDirectWholeSourceContributions']==q['allDirectWholeSourceContributions'],'normalOriginalSourcePayloadDifferences':dif(q['normalOriginalSourcePayload'],r['normalOriginalSourcePayload']),'whole395SourcePageFP':r['whole395Page']['pageFingerprint'],'oldWhole395SourcePageFP':q['whole395Page']['pageFingerprint'],'newNativeSubsetPageFP':r['nativeSubsetPage']['pageFingerprint'],'nativeSubsetChangedFieldsActuallyComputed':dif(r['whole395Page'],r['nativeSubsetPage']),'nativeReviewInputDifferencesFromOwnV2':dif(oldi[gid],newi[gid]),'imageKeepBindingDifferences':dif(q['imageKeepBinding'],r['imageKeepBinding']),'protected366Equal':r['currentProtected366']==q['currentProtected366']}
+ if r['positiveRecord'] is not None:
+  row['positiveProfileEqual']=r['positiveRecord']['profile']==q['positiveRecord']['profile']; row['positiveProfileFileEqual']=read(a/f'positive/profiles/{gid}.whole.profile.json')==read(old/f'positive/profiles/{gid}.whole.profile.json');row['caseFileByteEqual']=(a/f'positive/cases/{gid}.whole-two-cases.de-en.json').read_bytes()==(old/f'positive/cases/{gid}.whole-two-cases.de-en.json').read_bytes()
+ report.append(row)
+ori=read(a/'orientation/neutral-whole-current-orientation.input.json'); wholemodel=read(a/'native/whole395.normal-model.inactive.json'); oldmodel=read(old/'native/whole395.combined.normal-model.author.actual.json'); sources=read(a/'sources/whole395.normal-original-sources.inactive.json');oldsource=read(old/'sources/whole395.normal-original-sources.combined.actual.json'); inputs=read(b/'FIRST.actual-neutral-shared-inputs.json');declared=read(a/'FIRST.shared-neutral-D6-and-orientation-input-manifest.json');imgs=[]
+for r in c['rows']:
+ ib=r['imageKeepBinding'];
+ if ib:
+  p=pathlib.Path(ib['path']);data=p.read_bytes();sha='sha256:'+hashlib.sha256(data).hexdigest(); imgs.append({'goalId':r['wholeGoal']['id'],'path':str(p),'actualSHA256':sha,'declaredSHA256':ib['sha256'],'matches':sha==ib['sha256'],'oldBindingEqual':ib==oldrows[r['wholeGoal']['id']]['imageKeepBinding']})
+out={'schemaVersion':1,'createdAtUTC':datetime.datetime.now(datetime.timezone.utc).isoformat(),'priorOwnBSeal':'sha256:60f3d97dfdfa772862d8cc213d24f15e96afac2506c4ffccb495f0555ad89192','rows':report,'whole395ModelDifferences':dif(oldmodel,wholemodel),'wholeOriginalSourcePayloadDifferences':dif(oldsource,sources),'orientationWholeCurrentEqualsPriorOwnReviewedAuthorV2':ori['wholeCurrentGoal']==o['orientationWholeGoal'],'orientationDirectRequiresConsumersEqualPriorV2':ori['directRequiresConsumers']==o['orientationDirectRequiresConsumers'],'actualImages':imgs,'peerReviewBodiesRead':False,'onlyOwnEarlierReviewPermittedByRoot':True,'sourceUnionApproval':False,'humanApproval':False}
+(b/'checks/actual-whole-context-and-native-subset-deltas.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n');print(json.dumps(out,ensure_ascii=False,indent=2))

@@ -1,0 +1,3 @@
+# Separate genuine first-pass orientation audit
+
+Read the exact neutral orientation input and both current bilingual motivational fields. Check the whole motivational goal, current semantic classification, and the exact direct dependency impact. Use your own sealed earlier result only as historical evidence; no peer outputs are supplied. This is a fresh bounded first-pass confirmation of the current two-field successor. Do not infer content mastery, a curricularAtomic page, a P-profile duty, source-operator completion, or Human Approval from orientation. Write your own current KEEP or concrete REVISE findings and a completed original AI-run manifest with exact input, prompt, criteria and output digests.
