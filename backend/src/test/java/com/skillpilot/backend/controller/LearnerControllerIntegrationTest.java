@@ -1497,7 +1497,8 @@ public class LearnerControllerIntegrationTest {
         String[][] scopes = {
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BW", "83", "83" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-BY", "130", "130" },
-                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-HB", "98", "98" },
+                // Reviewed HB reflection target adds one atom in both duration models.
+                { "Biologie", CANONICAL_BIOLOGY_ID, "DE-HB", "99", "99" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-HE", "130", "130" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-NI", "109", "109" },
                 { "Biologie", CANONICAL_BIOLOGY_ID, "DE-RP", "78", "78" },
@@ -1601,6 +1602,14 @@ public class LearnerControllerIntegrationTest {
                 CANONICAL_GYMNASIUM_ROOT_ID, learner.getPersonalCurriculum(), null, false);
         String respirationGoal = "0f50cad3-8c4e-5bc4-8833-3a1ecdd71d38";
         String couplingGoal = "32483d30-2162-50a5-a6cc-05b7f2467ab1";
+        String disgustReflectionGoal = "55036b74-af78-5217-9e43-c5bdc975c958";
+        if ("DE-HB".equals(jurisdiction)) {
+            assertThat(targets).as("HB natural-object reflection target for %s", durationModel)
+                    .contains(disgustReflectionGoal);
+        } else {
+            assertThat(targets).as("natural-object reflection target excluded outside HB for %s %s", jurisdiction, durationModel)
+                    .doesNotContain(disgustReflectionGoal);
+        }
         if (Set.of("DE-BB", "DE-BE", "DE-MV", "DE-NW", "DE-SH", "DE-SN", "DE-ST", "DE-TH").contains(jurisdiction)) {
             assertThat(targets).as("source-bounded respiration target for %s %s", jurisdiction, durationModel)
                     .contains(respirationGoal);
