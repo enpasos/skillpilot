@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:4f2b297b21659c964e345b82a0234121d3083756f7c2f63156880a3003793a01",
+  "reviewInputFingerprint": "sha256:2a92ec716af61e13c634f0b8f3222967d8c1be1f0c66da1332a21171d744728a",
+  "goalCount": 2,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-health-HH-two-current-context-20261011-v1-a",
+      "roundId": "biologie-health-HH-two-current-context-20261011-v1-first-pass-a",
+      "independenceGroupId": "biologie-health-HH-two-current-context-20261011-v1-independent-a",
+      "runIds": [
+        "biologie-HH-two-current-context-genuine-independent-a-20261011-v1"
+      ],
+      "providers": [
+        "OpenAI API"
+      ],
+      "modelIdentities": [
+        "OpenAI API::GPT-6 (system-declared family; exact serving identifier not exposed)::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-health-HH-two-current-context-20261011-v1-b",
+      "roundId": "biologie-health-HH-two-current-context-20261011-v1-first-pass-b",
+      "independenceGroupId": "biologie-health-HH-two-current-context-20261011-v1-independent-b",
+      "runIds": [
+        "biologie-health-HH-two-genuine-independent-b-20261011-v1"
+      ],
+      "providers": [
+        "OpenAI"
+      ],
+      "modelIdentities": [
+        "OpenAI::GPT-6 (identity exposed by session instructions; exact model build unavailable)::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 2,
+    "unavailable": 0,
+    "requiresSynthesis": 2
+  },
+  "goals": [
+    {
+      "goalId": "0e1065b9-9d1d-5299-b900-32c74d352e56",
+      "firstRecordId": "biologie-HH-two-current-context-genuine-independent-a-20261011-v1.0e1065b9-9d1d-5299-b900-32c74d352e56",
+      "secondRecordId": "biologie-health-HH-two-genuine-independent-b-20261011-v1.0e1065b9-9d1d-5299-b900-32c74d352e56",
+      "firstRunId": "biologie-HH-two-current-context-genuine-independent-a-20261011-v1",
+      "secondRunId": "biologie-health-HH-two-genuine-independent-b-20261011-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a6f57e17-9f0c-5327-91bc-c6f31ff375a2",
+      "firstRecordId": "biologie-HH-two-current-context-genuine-independent-a-20261011-v1.a6f57e17-9f0c-5327-91bc-c6f31ff375a2",
+      "secondRecordId": "biologie-health-HH-two-genuine-independent-b-20261011-v1.a6f57e17-9f0c-5327-91bc-c6f31ff375a2",
+      "firstRunId": "biologie-HH-two-current-context-genuine-independent-a-20261011-v1",
+      "secondRunId": "biologie-health-HH-two-genuine-independent-b-20261011-v1",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}

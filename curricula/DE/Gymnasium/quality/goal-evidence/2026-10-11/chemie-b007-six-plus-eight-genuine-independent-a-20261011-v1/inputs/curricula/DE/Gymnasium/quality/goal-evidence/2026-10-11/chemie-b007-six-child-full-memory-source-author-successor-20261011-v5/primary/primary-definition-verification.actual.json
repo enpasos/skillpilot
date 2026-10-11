@@ -1,0 +1,189 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-10T23:41:47.858920+00:00",
+  "reviewScope": "Read-only primary definition verification for the two actual author candidate card bodies; no candidate, active, schema, helper, Git or GitHub changes.",
+  "candidateBinding": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-10/chemie-b007-two-current206-targeted-author-successor-20261010-v1/materials/two-whole-primary-cards.de-en.unchanged.json",
+    "bytes": 4764,
+    "sha256": "32458dac7005037d50e0f07f96437ad1a7bf89df2a2dfdeaf9b9868f2020bcb5",
+    "cardLocalKeys": [
+      "mass_fraction_definition",
+      "volume_fraction_definition"
+    ]
+  },
+  "verifiedPrimaryAccess": {
+    "iupacGreenBook3": {
+      "retrievedAtUTC": "2026-10-10T23:41:46.773054+00:00",
+      "url": "https://iupac.org/wp-content/uploads/2019/05/IUPAC-GB3-2012-2ndPrinting-PDFsearchable.pdf",
+      "status": 200,
+      "finalUrl": "https://iupac.org/wp-content/uploads/2019/05/IUPAC-GB3-2012-2ndPrinting-PDFsearchable.pdf",
+      "contentType": "application/pdf",
+      "bytes": 1543264,
+      "sha256": "dc9cf52d6cf333d58ba48546baba0e8f99d6650895daa886caf1543eea8352ed",
+      "requestUserAgent": "Mozilla/5.0",
+      "bodySaved": false
+    },
+    "nistSiGuide8": {
+      "retrievedAtUTC": "2026-10-10T23:41:47.188218+00:00",
+      "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-8",
+      "status": 200,
+      "finalUrl": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-8",
+      "contentType": "text/html; charset=UTF-8",
+      "bytes": 116833,
+      "sha256": "6856fcce2f378d682f5de7294e53c14c2c5e2e3ae469252f16ca701980599af9",
+      "requestUserAgent": "Mozilla/5.0",
+      "bodySaved": false
+    }
+  },
+  "primaryFacts": [
+    {
+      "claim": "Mass fraction is constituent mass divided by the sum of the masses of all constituents, including the named constituent.",
+      "formula": "w_i = m_i / sum_j m_j",
+      "primarySourceKey": "iupacGreenBook3",
+      "locator": {
+        "section": "2.10 General chemistry",
+        "printedPage": 47,
+        "pdfPageNumber1Based": 61,
+        "pdfPageIndex0Based": 60
+      },
+      "unit": "1",
+      "supportType": "defining table formula and SI unit; all constituents confirmed by NIST mass-of-mixture definition in section 8.6.10"
+    },
+    {
+      "claim": "Volume fraction uses constituent volumes prior to mixing, divided by their sum.",
+      "formula": "phi_i = V_i / sum_j V_j",
+      "primarySourceKey": "iupacGreenBook3",
+      "locator": {
+        "section": "2.10 General chemistry, volume-fraction table row and note (9)",
+        "printedPage": 48,
+        "pdfPageNumber1Based": 62,
+        "pdfPageIndex0Based": 61
+      },
+      "unit": "1",
+      "shortExactExcerpt": "the volumes of appropriate components prior to mixing",
+      "supportType": "defining table formula and explicit note (9)"
+    },
+    {
+      "claim": "Using a measured final mixture volume as the denominator changes the reference quantity; no additivity assumption is required by the IUPAC volume-fraction definition.",
+      "primarySourceKey": "iupacGreenBook3",
+      "locator": {
+        "printedPage": 48,
+        "pdfPageNumber1Based": 62,
+        "notes": [
+          9,
+          13
+        ]
+      },
+      "supportType": "explicit derivation from prior-to-mixing definition and separate mixture-volume V in concentration rows; no numerical contraction claim checked"
+    },
+    {
+      "claim": "Both fractions have dimension one. Percent has value 10^-2, so a fraction f is written numerically as 100*f followed by percent.",
+      "primarySourceKey": "iupacGreenBook3",
+      "locator": {
+        "section": "3.10 and 3.10.1",
+        "printedPage": 97,
+        "pdfPageNumber1Based": 111,
+        "pdfPageIndex0Based": 110
+      },
+      "supportType": "dimensionless-quantity discussion, fractions named, percent table value"
+    },
+    {
+      "claim": "The pure-substance molar volumes used for volume fraction refer to the same temperature and pressure; summation includes all substances.",
+      "primarySourceKey": "nistSiGuide8",
+      "locator": {
+        "section": "8.6.6 Volume fraction of B"
+      },
+      "shortExactExcerpt": "at the same temperature and pressure",
+      "supportType": "explicit official NIST definition; equivalence to V_i/sum_j V_j follows with V_i=n_i*V_m,i and x_i=n_i/sum_j n_j"
+    }
+  ],
+  "cardAssessment": {
+    "mass_fraction_definition": {
+      "scientificCore": "correct",
+      "dimensionless": "correct",
+      "percentConversion": "correct",
+      "exactTextRemedyRequired": false
+    },
+    "volume_fraction_definition": {
+      "scientificCore": "correct IUPAC pre-mixing definition",
+      "dimensionless": "correct",
+      "percentConversion": "correct",
+      "denominatorVersusFinalVolume": "correct",
+      "temperatureStatement": "correct; same-pressure condition missing from the general unqualified formulation",
+      "recommendedUnpublishedSuccessorRemedy": {
+        "deReplace": "bei gleicher Temperatur vor dem Mischen bestimmten",
+        "deWith": "bei gleicher Temperatur und gleichem Druck vor dem Mischen bestimmten",
+        "enReplace": "before mixing at the same temperature",
+        "enWith": "before mixing at the same temperature and pressure"
+      },
+      "existingCandidateChanged": false
+    }
+  },
+  "observedAccessFailures": [
+    {
+      "atUTC": "2026-10-10T23:39:15.267561+00:00",
+      "url": "https://goldbook.iupac.org/terms/view/M03722",
+      "method": "urllib with Mozilla/5.0",
+      "failure": "HTTP 403 Forbidden"
+    },
+    {
+      "atUTC": "2026-10-10T23:39:15.458465+00:00",
+      "url": "https://goldbook.iupac.org/terms/view/V06643",
+      "method": "urllib with Mozilla/5.0",
+      "failure": "HTTP 403 Forbidden"
+    },
+    {
+      "atUTC": "2026-10-10T23:39:15.576451+00:00",
+      "url": "https://old.goldbook.iupac.org/html/M/M03722.html",
+      "method": "urllib with Mozilla/5.0",
+      "failure": "SSLV3_ALERT_HANDSHAKE_FAILURE"
+    },
+    {
+      "atUTC": "2026-10-10T23:39:15.673372+00:00",
+      "url": "https://old.goldbook.iupac.org/html/V/V06643.html",
+      "method": "urllib with Mozilla/5.0",
+      "failure": "SSLV3_ALERT_HANDSHAKE_FAILURE"
+    },
+    {
+      "atUTC": "2026-10-10T23:39:15.863550+00:00",
+      "url": "https://publications.iupac.org/pac/pdf/2008/pdf/8002x0233.pdf",
+      "method": "urllib with Mozilla/5.0",
+      "failure": "HTTP 403 Forbidden"
+    },
+    {
+      "observedUTCWindow": [
+        "2026-10-10T23:38:49+00:00",
+        "2026-10-10T23:40:47+00:00"
+      ],
+      "method": "web.open",
+      "failures": "Gold Book /view, /plain and V06643/html:403; old.goldbook two HTML entries:502; publications.iupac.org PAC2008 PDF and media.iupac.org GreenBook PDF:403"
+    },
+    {
+      "observedUTCWindow": [
+        "2026-10-10T23:39:30+00:00",
+        "2026-10-10T23:40:00+00:00"
+      ],
+      "url": "https://iupac.org/wp-content/uploads/2019/05/IUPAC-GB3-2012-2ndPrinting-PDFsearchable.pdf",
+      "method": "urllib default Python user agent",
+      "failure": "HTTP403; standard Mozilla/5.0 request succeeded200"
+    }
+  ],
+  "rightsBoundary": {
+    "ownCandidateLicenseExpression": "CC-BY-4.0",
+    "ownCandidateLicenseScope": "Authored card text and arrangement only, as recorded by candidate; not a grant for official-source republication.",
+    "officialSourceLicenseDetermination": "Not performed. Official publication facts and short evidentiary excerpts used only; no entire source PDF or extracted PDF text retained here.",
+    "humanApproval": false,
+    "humanTrial": false,
+    "legalApproval": false
+  },
+  "readOnlyStatus": {
+    "trackedChangesObservedBeforeScratchWrite": false,
+    "activeWrites": false,
+    "candidateWrites": false,
+    "gitOrGitHubWrites": false,
+    "savedFiles": [
+      "primary-definition-verification.json",
+      "primary-definition-verification.md"
+    ]
+  }
+}

@@ -6,6 +6,20 @@ abgeschlossen, 100 %, CQR-303 PASS**. Alle sechs erforderlichen Checks bestehen;
 es gibt keine relevanten M7-Blocker, offenen Ziele oder vertagten Bilder.
 Maßgeblich sind die aktuellen Ziel-IDs und ihre gültigen Nachweise.
 
+Der anschließend tatsächlich erzeugte Integrationsbericht vom **11. Oktober
+2026, 01:36:58 UTC** bestätigt nach Übernahme von `origin/main` bis
+`b68f8e5b5798` erneut **346/346, M7, CQR-303 PASS, sechs erfolgreiche Checks
+und keine Economics-Blocker**. Die Economics-Registry und die gebundenen
+fachlichen Nachweisdateien bleiben vollständig gleich zu `9067bb2c`; der Nettogewinn
+dieser Main-Integration beträgt deshalb 0. Die neue Biologiezeile wird aus
+Main übernommen; die 19 anderen fremden Zeilen bleiben vollständig gleich
+zum vorherigen M7-Stand. Mathematik 807/807 und Physik 478/478 bleiben M7.
+Die ursprünglichen Abschlussbelege unten dokumentieren weiterhin ihren
+jeweils datierten Stand. Die aktuelle Buchableitung, das gemessene gemeinsame
+Bildinventar, der bestehende Deep-Understanding-Test, Berichtaktualität,
+Reifegrad-Untergrenzen und Quellenabdeckung bestehen auch nach der Integration.
+Die GitHub-CI wird am neuen integrierten Commit gesondert gemessen.
+
 | Gate | Aktuell gültig |
 | --- | ---: |
 | D: zwei unabhängige Beschreibungsreviews mit aufgelösten Befunden | 346/346 |
@@ -99,6 +113,7 @@ und Erprobungsgates bleiben separat und werden durch M7 nicht ersetzt.
 Nachweise:
 
 - [Aktueller zentraler Bericht](status/curriculum-quality-status.md)
+- [Main-Integration mit unveränderten Economics-Nachweisen und tatsächlichen aktuellen Prüfungen](https://github.com/enpasos/skillpilot/blob/codex/economics-m7-2026-10-11/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-M7-current346-final-machine-closure-root-v1/main-b68-integration/actual-main-b68-current346-preservation-and-native-checks.receipt.json)
 - [Unveränderlicher tatsächlicher M7-Abschluss mit aktuellen IDs und Prüfungsbelegen](https://github.com/enpasos/skillpilot/blob/codex/economics-m7-2026-10-11/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-M7-current346-final-machine-closure-root-v1/02-actual-central-current346-CQR303-M7-protected-floor-and-final-native-checks.receipt.json)
 - [Letzte qualifizierte Registryaktivierung und getrennte Gewinne](https://github.com/enpasos/skillpilot/blob/codex/economics-m7-2026-10-11/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-sixth-M7-twenty-qualified-context-owner-integration-root-v1/06-actual-final-twenty-qualified-context-owner-registry-activation-ready346.receipt.json)
 - [Unabhängige Quellen-, Kurs-, P- und Voraussetzungskontexte](https://github.com/enpasos/skillpilot/blob/codex/economics-m7-2026-10-11/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/wirtschaft-fourteen-existing-D-pair-source-course-prerequisite-current-context-independent-c-READONLY-v1/SEALED-fourteen-valid-original-D-pairs-current-P30-source-course-prerequisite-context-KEEP.READONLY.json)

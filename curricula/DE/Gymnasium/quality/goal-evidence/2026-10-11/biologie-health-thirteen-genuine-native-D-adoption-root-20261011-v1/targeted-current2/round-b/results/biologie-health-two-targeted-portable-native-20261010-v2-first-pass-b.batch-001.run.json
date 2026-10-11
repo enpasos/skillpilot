@@ -1,0 +1,55 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "biologie-health-two-targeted-portable-current-genuine-b-20261010-v2",
+  "campaignId": "biologie-health-two-targeted-portable-native-20261010-v2-b",
+  "roundId": "biologie-health-two-targeted-portable-native-20261010-v2-first-pass-b",
+  "batchId": "biologie-health-two-targeted-portable-native-20261010-v2-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:02dfb2186b5018c3f5a73bfe96d66b28fb579a0659975045027af56f56729561",
+  "bundleFingerprint": "sha256:2a08484be6cb32f2dc2061ce70df29d483e9e3128ccadca2feae74c2dacd4d90",
+  "bookDigest": "sha256:0a8534b2aba62362e4bdf53bbb69d7e407ebe9f395ec3b8b70fc7e591c703f28",
+  "provider": "openai",
+  "model": "gpt-6.1-sol",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-understanding-evidence-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f",
+  "generationParametersFingerprint": "sha256:54171e1764982d32c2bb457f944c5a480f635be58d49178cbefe849fdb4adb8f",
+  "independenceGroupId": "biologie-health-two-targeted-portable-native-20261010-v2-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "6add2bde-b647-577d-a899-6fd62497656a",
+    "a6f2bcaf-df2d-5144-aa8f-49396b12d31b"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:02dfb2186b5018c3f5a73bfe96d66b28fb579a0659975045027af56f56729561"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:689cfa25db3a2e324bf32c1479b91b5f5e368a382011b6d05dc5dd3496fec577"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:273628826c0da99a20f6616b20806393511301876b6e4b9f578987874651b0b7"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:04910a30d286ae0beddc4025683575c825efcd117a80577b33bc34ae008e0d4e"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:9814d027699b481eaf05116d1e5c375926535c9a732d946f756d328b5401d69f"
+    }
+  ],
+  "startedAt": "2026-10-10T17:22:28.883Z",
+  "completedAt": "2026-10-10T17:26:33.886Z",
+  "status": "completed",
+  "outputDigest": "sha256:d22445628cd1a43340e88954d004a735ba5ef3bf069a17b9e720a02cf303b612",
+  "toolchainVersion": "goal-description-understanding-evidence-v2"
+}

@@ -1,0 +1,257 @@
+{
+  "schemaVersion": 1,
+  "validationContract": "goal-description-dual-round-v1",
+  "automaticAcceptance": false,
+  "bundleFingerprint": "sha256:aeb82cc2ad664ae910d3df0d724d7ff1d48000a15bf995945cdd51952a312d58",
+  "reviewInputFingerprint": "sha256:0592da261420d6076452e3581a5cca2dc645dda2137b93ec32ac61599dead956",
+  "goalCount": 12,
+  "rounds": {
+    "first": {
+      "campaignId": "biologie-health-twelve-current353-native-20261010-v1-a",
+      "roundId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a",
+      "independenceGroupId": "biologie-health-twelve-current353-native-20261010-v1-independent-a",
+      "runIds": [
+        "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001"
+      ],
+      "providers": [
+        "OpenAI Codex"
+      ],
+      "modelIdentities": [
+        "OpenAI Codex::GPT-6 Codex; precise runtime revision not exposed::(unspecified-version)"
+      ]
+    },
+    "second": {
+      "campaignId": "biologie-health-twelve-current353-native-20261010-v1-b",
+      "roundId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-b",
+      "independenceGroupId": "biologie-health-twelve-current353-native-20261010-v1-independent-b",
+      "runIds": [
+        "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST"
+      ],
+      "providers": [
+        "openai"
+      ],
+      "modelIdentities": [
+        "openai::gpt-6.1-sol::(unspecified-version)"
+      ]
+    }
+  },
+  "diversity": {
+    "policy": "report_only",
+    "sharedProviders": [],
+    "sharedModelIdentities": [],
+    "distinctProviderOrModel": true,
+    "policySatisfied": true
+  },
+  "counts": {
+    "exactAgreement": 0,
+    "disagreement": 12,
+    "unavailable": 0,
+    "requiresSynthesis": 12
+  },
+  "goals": [
+    {
+      "goalId": "63856e48-8ed9-5942-8a1d-1d53ad29416d",
+      "firstRecordId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001:63856e48-8ed9-5942-8a1d-1d53ad29416d",
+      "secondRecordId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST.63856e48-8ed9-5942-8a1d-1d53ad29416d",
+      "firstRunId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001",
+      "secondRunId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6add2bde-b647-577d-a899-6fd62497656a",
+      "firstRecordId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001:6add2bde-b647-577d-a899-6fd62497656a",
+      "secondRecordId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST.6add2bde-b647-577d-a899-6fd62497656a",
+      "firstRunId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001",
+      "secondRunId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "6de6ad3b-1099-5f51-848d-96de4119ed01",
+      "firstRecordId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001:6de6ad3b-1099-5f51-848d-96de4119ed01",
+      "secondRecordId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST.6de6ad3b-1099-5f51-848d-96de4119ed01",
+      "firstRunId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001",
+      "secondRunId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "91f62a7b-3b6a-5918-94ca-3f345f1f6584",
+      "firstRecordId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001:91f62a7b-3b6a-5918-94ca-3f345f1f6584",
+      "secondRecordId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST.91f62a7b-3b6a-5918-94ca-3f345f1f6584",
+      "firstRunId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001",
+      "secondRunId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "3c0f5267-4837-5c99-aa6d-bfb41ff70980",
+      "firstRecordId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001:3c0f5267-4837-5c99-aa6d-bfb41ff70980",
+      "secondRecordId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST.3c0f5267-4837-5c99-aa6d-bfb41ff70980",
+      "firstRunId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001",
+      "secondRunId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a6f2bcaf-df2d-5144-aa8f-49396b12d31b",
+      "firstRecordId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001:a6f2bcaf-df2d-5144-aa8f-49396b12d31b",
+      "secondRecordId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST.a6f2bcaf-df2d-5144-aa8f-49396b12d31b",
+      "firstRunId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001",
+      "secondRunId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "848334f3-c719-55d9-b5f4-42836e0d876a",
+      "firstRecordId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001:848334f3-c719-55d9-b5f4-42836e0d876a",
+      "secondRecordId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST.848334f3-c719-55d9-b5f4-42836e0d876a",
+      "firstRunId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001",
+      "secondRunId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "17dc9671-3280-566c-b9ec-27437864e0ab",
+      "firstRecordId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001:17dc9671-3280-566c-b9ec-27437864e0ab",
+      "secondRecordId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST.17dc9671-3280-566c-b9ec-27437864e0ab",
+      "firstRunId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001",
+      "secondRunId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "a6f57e17-9f0c-5327-91bc-c6f31ff375a2",
+      "firstRecordId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001:a6f57e17-9f0c-5327-91bc-c6f31ff375a2",
+      "secondRecordId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST.a6f57e17-9f0c-5327-91bc-c6f31ff375a2",
+      "firstRunId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001",
+      "secondRunId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "773a297d-49bf-5c8a-a62a-1bd2558e323c",
+      "firstRecordId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001:773a297d-49bf-5c8a-a62a-1bd2558e323c",
+      "secondRecordId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST.773a297d-49bf-5c8a-a62a-1bd2558e323c",
+      "firstRunId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001",
+      "secondRunId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "0e1065b9-9d1d-5299-b900-32c74d352e56",
+      "firstRecordId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001:0e1065b9-9d1d-5299-b900-32c74d352e56",
+      "secondRecordId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST.0e1065b9-9d1d-5299-b900-32c74d352e56",
+      "firstRunId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001",
+      "secondRunId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    },
+    {
+      "goalId": "d6727804-a8d4-5438-9b98-4aea8e7f4f80",
+      "firstRecordId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001:d6727804-a8d4-5438-9b98-4aea8e7f4f80",
+      "secondRecordId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST.d6727804-a8d4-5438-9b98-4aea8e7f4f80",
+      "firstRunId": "biologie-health-twelve-current353-native-20261010-v1-first-pass-a.batch-001",
+      "secondRunId": "biologie-health-twelve-current353-genuine-independent-b-fresh-20261010-v1-FIRST",
+      "firstDecision": "keep",
+      "secondDecision": "keep",
+      "agreement": "disagreement",
+      "disagreementFields": [
+        "understandingEvidence",
+        "rationale",
+        "evidenceProfileRecommendation"
+      ],
+      "requiresSynthesis": true,
+      "automaticAcceptance": false
+    }
+  ]
+}
