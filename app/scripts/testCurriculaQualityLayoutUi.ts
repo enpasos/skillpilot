@@ -252,15 +252,34 @@ try {
       ['Physik', 'de-gym-physik-bundesweit'],
       ['Chemie', 'de-gym-chemie-bundesweit'],
       ['Biologie', 'de-gym-biologie-bundesweit'],
+      ['Wirtschaftswissenschaften', 'de-gym-wirtschaftswissenschaften-bundesweit'],
     ] as const
-    assert(await feedback.getByTestId('curricula-feedback-subject').count() === 4, 'all four sciences have an explicit feedback entry')
+    const feedbackCards = feedback.getByTestId('curricula-feedback-subject')
+    assert(await feedbackCards.count() === 5, 'all five subjects have an explicit feedback entry')
     for (const [subject, bookId] of subjects) {
       const subjectCard = feedback.getByTestId('curricula-feedback-subject').filter({ has: page.getByRole('heading', { name: subject, exact: true }) })
-      assert(goalBookDefinitionById(bookId), `${subject} has its national book in the publication registry`)
+      assert(goalBookDefinitionById(bookId), `${subject} has its book in the publication registry`)
       const link = subjectCard.getByRole('link', { name: `${subject}: Lernziele öffnen`, exact: true })
       assert(await link.getAttribute('href') === goalBookRoute(bookId), `${subject} opens its registered goal book, not an unbound feedback form`)
       assert(await subjectCard.locator('p').count() === 0, `${subject} entry shows only the subject and opening action, without scope details`)
     }
+    const feedbackGeometry = await feedbackCards.evaluateAll((elements) => elements.map((element) => {
+      const box = element.getBoundingClientRect()
+      return {
+        left: Math.round(box.left),
+        contained: element.scrollWidth <= element.clientWidth
+          && Array.from(element.children).every((child) => {
+            const childBox = child.getBoundingClientRect()
+            return child.scrollWidth <= child.clientWidth
+              && childBox.left >= box.left && childBox.right <= box.right
+          }),
+      }
+    }))
+    assert(feedbackGeometry.every(({ contained }) => contained),
+      `feedback headings and actions stay inside all five cards at ${expected.width}px`)
+    const feedbackColumns = expected.width >= 1024 ? 3 : expected.width >= 640 ? 2 : 1
+    assert(new Set(feedbackGeometry.map(({ left }) => left)).size === feedbackColumns,
+      `feedback cards use ${feedbackColumns} readable columns at ${expected.width}px`)
     assert(await feedback.getByText('Issues und Pull Requests sind dort möglich.', { exact: false }).count() === 1, 'GitHub copy states the available actions without migration wording')
     assert(await feedback.getByText('Für weitere Curricula ohne direkten Feedbackeinstieg nutze ebenfalls GitHub und nenne das Curriculum und das Thema.', { exact: true }).count() === 1, 'other curricula retain an explicit and honest GitHub fallback')
     assert(
@@ -349,6 +368,7 @@ try {
       assert(await page.getByRole('button', { name: 'Connect with GitHub', exact: true }).isVisible(), 'English Champion registration keeps the same action')
       assert(await card.getByText('Learning progress', { exact: true }).count() === 1, 'English learning progress remains visible')
       assert(await feedback.getByRole('link', { name: 'Mathematics: Open learning goals', exact: true }).getAttribute('href') === goalBookRoute('de-gym-mathematik-bundesweit'), 'English feedback uses the same actual mathematics book')
+      assert(await feedback.getByRole('link', { name: 'Economics: Open learning goals', exact: true }).getAttribute('href') === goalBookRoute('de-gym-wirtschaftswissenschaften-bundesweit'), 'English feedback opens the registered Economics book')
     }
 
     await page.close()
