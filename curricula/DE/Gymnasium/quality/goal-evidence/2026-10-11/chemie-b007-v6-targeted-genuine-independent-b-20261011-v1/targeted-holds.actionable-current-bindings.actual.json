@@ -1,0 +1,1571 @@
+{
+  "schemaVersion": 1,
+  "createdAtUTC": "2026-10-11T01:23:46.645165+00:00",
+  "currentFIRSTBinding": {
+    "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v6-targeted-genuine-independent-b-20261011-v1/FIRST.independent-findings.frozen.json",
+    "bytes": 214407,
+    "sha256": "sha256:c43bda3784f732ab24bd269f914d359832454adab18009c8e0fd44a23bc888f7"
+  },
+  "decision": "HOLD_TARGETED_SCORING_AND_SOURCE_BINDINGS",
+  "actions": [
+    {
+      "frozenFinding": {
+        "findingId": "b007-v6-b-P-volume-scoring-identity",
+        "goalId": "49d42c38-419c-5048-b7e9-860645dd122d",
+        "sourceGoalId": null,
+        "field": "cases[11].assessmentCriteria[3].criterionLocalKey and assessmentCriteria[4].criterionLocalKey",
+        "verdict": "HOLD",
+        "severity": "medium",
+        "anchoredObservation": "The homogeneous-region criterion and the fresh incomplete-report criterion both carry volume-fraction-contraction-no-denominator-swap-criterion-4, despite different mandatory texts.",
+        "minimalCounterexample": "A criterion-4 result can refer to rejecting a separate 40-mL region or identifying missing V(B). A keyed score/report cannot unambiguously identify which mandatory aspect was met. Both array entries survive JSON parsing; no existing consumer overwrite is claimed.",
+        "proposedLocalChange": "Give the added information-structure criterion its own stable criterion-5 key and rebind the changed whole-case file. Keep the scientifically correct task, solution and required status.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewAuthority": "ai_candidate",
+        "findingStatus": "candidate",
+        "humanApproved": false
+      },
+      "currentFirstBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v6-targeted-genuine-independent-b-20261011-v1/FIRST.independent-findings.frozen.json",
+        "bytes": 214407,
+        "sha256": "sha256:c43bda3784f732ab24bd269f914d359832454adab18009c8e0fd44a23bc888f7"
+      },
+      "currentGoalId": "49d42c38-419c-5048-b7e9-860645dd122d",
+      "wholeCaseInputBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-six-child-targeted-memory-visibility-source-author-successor-20261011-v6/review-inputs/twelve-whole-cases.de-en.targeted-v6.json",
+        "bytes": 95100,
+        "sha256": "sha256:8de13c148691d9597d4df0d272d2cfce149c98bc73fe46986a07be2eaaec6434"
+      },
+      "caseLocalKey": "volume-fraction-contraction-no-denominator-swap",
+      "exactConflictingRequiredCriteria": [
+        {
+          "criterionLocalKey": "volume-fraction-contraction-no-denominator-swap-criterion-4",
+          "required": true,
+          "text": {
+            "de": "Der Anteil wird nicht als abgetrennter Teilraum im homogenen Gemisch missverstanden.",
+            "en": "The fraction is not mistaken for a separate region within the homogeneous mixture."
+          },
+          "binding": "same routine essential understanding"
+        },
+        {
+          "criterionLocalKey": "volume-fraction-contraction-no-denominator-swap-criterion-4",
+          "required": true,
+          "text": {
+            "de": "Der frische unvollständige Bericht wird als unzureichend erkannt; die fehlende Eingangsmenge wird benannt, der verfügbare Endvolumenquotient nicht als φ akzeptiert und nach der Datenergänzung korrekt neu berechnet.",
+            "en": "The fresh incomplete record is recognized as insufficient; missing input volume is identified, the available final-volume ratio is not accepted as φ, and the fraction is correctly calculated once the missing data are supplied."
+          },
+          "binding": "same routine essential understanding, changed information structure"
+        }
+      ],
+      "futureAuthoringBoundary": "In a new inactive successor, rename the added criterion to its own criterion-5 and rebind whole-case and affected P/page tuples. Keep task, solution and required criterion content."
+    },
+    {
+      "frozenFinding": {
+        "findingId": "b007-v6-b-TH-gas-068-01",
+        "goalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+        "sourceGoalId": "th-chem-sekii-th-ch-sekii-4-1-3-loslichkeitsgleichgewichte-068-01-be2a0ab5",
+        "field": "TH mappingPairs sourceGoalId/canonicalGoalId/matchType=partial; current canonical description; source382 applicability witness",
+        "verdict": "HOLD",
+        "severity": "high",
+        "anchoredObservation": "The precise TH row requires the six ions Cl−, Br−, I−, SO4²−, Ag+ and Ba²+ via precipitation; the current mapped atom requires detecting O2, CO2 and H2 with simple gas tests.",
+        "minimalCounterexample": "A learner performs all six precipitation tests but never performs glowing-splint, limewater or hydrogen testing. The TH row does not cover the current gas-identification goal.",
+        "proposedLocalChange": "Retain the old pair as historical input if necessary; remove it from current positive source witnesses or replace it with a genuinely reviewed precipitation/ion-identification partner. Do not alter the retained gas-goal scientific body.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewAuthority": "ai_candidate",
+        "findingStatus": "candidate",
+        "humanApproved": false
+      },
+      "currentFirstBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v6-targeted-genuine-independent-b-20261011-v1/FIRST.independent-findings.frozen.json",
+        "bytes": 214407,
+        "sha256": "sha256:c43bda3784f732ab24bd269f914d359832454adab18009c8e0fd44a23bc888f7"
+      },
+      "currentGoalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+      "actualMappingFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-six-child-targeted-memory-visibility-source-author-successor-20261011-v6/candidate/mapping-successors/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "bytes": 499115,
+        "sha256": "sha256:fb278abf9063f9497b6ccbe9c1a7b8596e422d6ead0f48dcc41530504c19178e"
+      },
+      "exactCurrentMappingPair": {
+        "legacyGoalId": "th-chem-sekii-th-ch-sekii-4-1-3-loslichkeitsgleichgewichte-068-01-be2a0ab5",
+        "canonicalGoalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+        "matchType": "partial",
+        "reviewDecisionId": "th-chem-sekii-th-ch-sekii-4-1-3-loslichkeitsgleichgewichte-068-01-be2a0ab5"
+      },
+      "exactCurrentSourceGoal": {
+        "id": "th-chem-sekii-th-ch-sekii-4-1-3-loslichkeitsgleichgewichte-068-01-be2a0ab5",
+        "passageId": "th-chemistry-sekii:th-ch-sekii-4-1-3-loslichkeitsgleichgewichte",
+        "topicCode": "TH-CH-SekII-4.1.3-loslichkeitsgleichgewichte",
+        "bulletIndex": 68,
+        "aspectIndex": 1,
+        "title": "qualitative Nachweisreaktionen für die Ionen Cl−, Br−, I−, SO4²−, Ag+ und Ba²+ beschreiben und die Reaktionsgleichungen formulieren",
+        "description": "Die lernende Person kann qualitative Nachweisreaktionen für die Ionen Cl−, Br−, I−, SO4²−, Ag+ und Ba²+ beschreiben und die Reaktionsgleichungen formulieren.",
+        "sourceText": "qualitative Nachweisreaktionen für die Ionen Cl−, Br−, I−, SO4²−, Ag+ und Ba²+ beschreiben und die Reaktionsgleichungen formulieren",
+        "sourceSpan": "Qualifikationsphase, 4.1.3 Kinetik und chemisches Gleichgewicht, Löslichkeitsgleichgewichte, Druck-S. 44, PDF-S. 49, rechte Spalte: zusätzlich erhöhtes Anforderungsniveau",
+        "parentBulletText": "qualitative Nachweisreaktionen für die Ionen Cl−, Br−, I−, SO4²−, Ag+ und Ba²+ beschreiben und die Reaktionsgleichungen formulieren",
+        "sourceRef": "Lehrplan Gymnasium Chemie Thueringen 2024, Qualifikationsphase, 4.1.3 Kinetik und chemisches Gleichgewicht, Löslichkeitsgleichgewichte, Druck-S. 44, PDF-S. 49, rechte Spalte: zusätzlich erhöhtes Anforderungsniveau",
+        "courseLevel": "LK",
+        "granularity": "officialCompetencyRow",
+        "tags": [
+          "source:thueringen",
+          "subject:Chemie",
+          "stage:SekII",
+          "section:4.1.3",
+          "topic:th-ch-sekii-4-1-3-loslichkeitsgleichgewichte",
+          "course:LK",
+          "sourceDocument:TH-CH-2024"
+        ],
+        "rawSourceText": "qualitative Nachweisreaktionen für die Ionen Cl−, Br−, I−, SO4²−, Ag+ und Ba²+ beschreiben und die Reaktionsgleichungen formulieren",
+        "rawSourceSpan": "Qualifikationsphase, 4.1.3 Kinetik und chemisches Gleichgewicht, Löslichkeitsgleichgewichte, Druck-S. 44, PDF-S. 49, rechte Spalte: zusätzlich erhöhtes Anforderungsniveau",
+        "rawParentBulletText": "qualitative Nachweisreaktionen für die Ionen Cl−, Br−, I−, SO4²−, Ag+ und Ba²+ beschreiben und die Reaktionsgleichungen formulieren"
+      },
+      "exactCurrentCanonicalGoal": {
+        "id": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+        "shortKey": "canonical_chemistry_sek1_gas_detection_o2_co2_h2",
+        "title": "Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen",
+        "titleEn": "Detect oxygen, carbon dioxide, and hydrogen",
+        "description": "Die lernende Person kann Sauerstoff, Kohlenstoffdioxid und Wasserstoff mithilfe einfacher Nachweisreaktionen identifizieren und die Beobachtungen fachlich deuten.",
+        "descriptionEn": "The learner can identify oxygen, carbon dioxide, and hydrogen using simple detection reactions and interpret the observations chemically.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekI"
+        ],
+        "contains": [],
+        "requires": [
+          "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+          "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK1_EXPERIMENTIEREN",
+            "PK2_MODELLIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION"
+          ],
+          "phase": "GLOBAL",
+          "area": "Grundlagen",
+          "topicCode": "CANONICAL.CHEMISTRY.SEK1.GAS_DETECTION_O2_CO2_H2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "8cdc267f-febe-58b8-a018-3f856b543d43"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+            "title": "Visualisierung: Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen",
+            "url": "/assets/goal-visualizations/chemie/580b3616-f121-5d82-ac6b-fc24f145fbdc/580b3616-f121-5d82-ac6b-fc24f145fbdc.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen\". Die lernende Person kann Sauerstoff, Kohlenstoffdioxid und Wasserstoff mithilfe einfacher Nachweisreaktionen identifizieren und die Beobachtungen fachlich deuten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "accepted"
+          }
+        ]
+      },
+      "currentWhole402Page": {
+        "pageNumber": 25,
+        "navigationOrder": 14,
+        "treeOrder": 20,
+        "goalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+        "shortKey": "canonical_chemistry_sek1_gas_detection_o2_co2_h2",
+        "anchor": "goal-580b3616-f121-5d82-ac6b-fc24f145fbdc",
+        "title": "Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen",
+        "description": "Die lernende Person kann Sauerstoff, Kohlenstoffdioxid und Wasserstoff mithilfe einfacher Nachweisreaktionen identifizieren und die Beobachtungen fachlich deuten.",
+        "breadcrumbs": [
+          "Chemie",
+          "Chemische Grundlagen (Sek I)"
+        ],
+        "chapterIds": [
+          "goal:442c31c5-c561-5c7a-90bb-2335d779175c",
+          "goal:3588c15e-adbe-5b81-b3a7-10da20574e3d"
+        ],
+        "requires": [
+          {
+            "goalId": "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+            "title": "Chemische Reaktionen von physikalischen Vorgängen unterscheiden",
+            "anchor": "goal-8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+            "pageNumber": 24
+          }
+        ],
+        "reverseRequires": [],
+        "externalPrerequisites": [
+          {
+            "goalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+            "title": "Arbeitsweisen der Chemie anwenden",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-266a2b2a-9ee2-52f6-ae09-59343da9a60b"
+          }
+        ],
+        "externalReverseRequires": [],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen",
+          "url": "/assets/goal-visualizations/chemie/580b3616-f121-5d82-ac6b-fc24f145fbdc/580b3616-f121-5d82-ac6b-fc24f145fbdc.jpg",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen\". Die lernende Person kann Sauerstoff, Kohlenstoffdioxid und Wasserstoff mithilfe einfacher Nachweisreaktionen identifizieren und die Beobachtungen fachlich deuten.",
+          "originalDigest": "sha256:d8de810a8fbd5dd184a0d69115d0a0999228edffffcf14b2b10e20d7e4b86f33",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:afc82985c112c5bbc2aadd3a2be4980f2f6f5ed085053c736f3c99540ae812d7",
+        "pageFingerprint": "sha256:f57dd3bda3327c333855c0104f5209427f804dca8924334500f1fa66ba76b800"
+      },
+      "currentSource382Page": {
+        "pageNumber": 25,
+        "navigationOrder": 14,
+        "treeOrder": 20,
+        "goalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+        "shortKey": "canonical_chemistry_sek1_gas_detection_o2_co2_h2",
+        "anchor": "goal-580b3616-f121-5d82-ac6b-fc24f145fbdc",
+        "title": "Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen",
+        "description": "Die lernende Person kann Sauerstoff, Kohlenstoffdioxid und Wasserstoff mithilfe einfacher Nachweisreaktionen identifizieren und die Beobachtungen fachlich deuten.",
+        "breadcrumbs": [
+          "Chemie",
+          "Chemische Grundlagen (Sek I)"
+        ],
+        "chapterIds": [
+          "structure:canonical-goal-442c31c5-c561-5c7a-90bb-2335d779175c",
+          "structure:canonical-goal-3588c15e-adbe-5b81-b3a7-10da20574e3d"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BB",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BE",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BW",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HB",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-MV",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NI",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SL",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SN",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-ST",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "requires": [
+          {
+            "goalId": "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+            "title": "Chemische Reaktionen von physikalischen Vorgängen unterscheiden",
+            "anchor": "goal-8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+            "pageNumber": 24
+          }
+        ],
+        "reverseRequires": [],
+        "externalPrerequisites": [
+          {
+            "goalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+            "title": "Arbeitsweisen der Chemie anwenden",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-266a2b2a-9ee2-52f6-ae09-59343da9a60b"
+          }
+        ],
+        "externalReverseRequires": [],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen",
+          "url": "/assets/goal-visualizations/chemie/580b3616-f121-5d82-ac6b-fc24f145fbdc/580b3616-f121-5d82-ac6b-fc24f145fbdc.jpg",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen\". Die lernende Person kann Sauerstoff, Kohlenstoffdioxid und Wasserstoff mithilfe einfacher Nachweisreaktionen identifizieren und die Beobachtungen fachlich deuten.",
+          "originalDigest": "sha256:d8de810a8fbd5dd184a0d69115d0a0999228edffffcf14b2b10e20d7e4b86f33",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:afc82985c112c5bbc2aadd3a2be4980f2f6f5ed085053c736f3c99540ae812d7",
+        "pageFingerprint": "sha256:93a98def2734e926a4cf57a3f7b0e5e374dd4e6efcda2c0094f1cf12bba59958"
+      },
+      "currentWholeFields": [
+        "mappings[].legacyGoalId (neutral pair sourceGoalId)",
+        "mappings[].canonicalGoalId",
+        "mappings[].matchType",
+        "current canonical title/description",
+        "source courseLevel/sourceSpan/sourceText",
+        "derived positive source382 applicability witness"
+      ],
+      "futureAuthoringBoundary": "Author a new inactive successor. Keep this frozen v6 input and FIRST intact; retire inappropriate positive witnesses without rewriting unchanged scientific goal bodies."
+    },
+    {
+      "frozenFinding": {
+        "findingId": "b007-v6-b-TH-gas-069-02",
+        "goalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+        "sourceGoalId": "th-chem-sekii-th-ch-sekii-4-1-3-loslichkeitsgleichgewichte-069-02-6465eb52",
+        "field": "TH mappingPairs sourceGoalId/canonicalGoalId/matchType=partial; current canonical description; source382 applicability witness",
+        "verdict": "HOLD",
+        "severity": "high",
+        "anchoredObservation": "The precise TH row requires the six ions Cl−, Br−, I−, SO4²−, Ag+ and Ba²+ via precipitation; the current mapped atom requires detecting O2, CO2 and H2 with simple gas tests.",
+        "minimalCounterexample": "A learner performs all six precipitation tests but never performs glowing-splint, limewater or hydrogen testing. The TH row does not cover the current gas-identification goal.",
+        "proposedLocalChange": "Retain the old pair as historical input if necessary; remove it from current positive source witnesses or replace it with a genuinely reviewed precipitation/ion-identification partner. Do not alter the retained gas-goal scientific body.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewAuthority": "ai_candidate",
+        "findingStatus": "candidate",
+        "humanApproved": false
+      },
+      "currentFirstBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v6-targeted-genuine-independent-b-20261011-v1/FIRST.independent-findings.frozen.json",
+        "bytes": 214407,
+        "sha256": "sha256:c43bda3784f732ab24bd269f914d359832454adab18009c8e0fd44a23bc888f7"
+      },
+      "currentGoalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+      "actualMappingFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-six-child-targeted-memory-visibility-source-author-successor-20261011-v6/candidate/mapping-successors/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "bytes": 499115,
+        "sha256": "sha256:fb278abf9063f9497b6ccbe9c1a7b8596e422d6ead0f48dcc41530504c19178e"
+      },
+      "exactCurrentMappingPair": {
+        "legacyGoalId": "th-chem-sekii-th-ch-sekii-4-1-3-loslichkeitsgleichgewichte-069-02-6465eb52",
+        "canonicalGoalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+        "matchType": "partial",
+        "reviewDecisionId": "th-chem-sekii-th-ch-sekii-4-1-3-loslichkeitsgleichgewichte-069-02-6465eb52"
+      },
+      "exactCurrentSourceGoal": {
+        "id": "th-chem-sekii-th-ch-sekii-4-1-3-loslichkeitsgleichgewichte-069-02-6465eb52",
+        "passageId": "th-chemistry-sekii:th-ch-sekii-4-1-3-loslichkeitsgleichgewichte",
+        "topicCode": "TH-CH-SekII-4.1.3-loslichkeitsgleichgewichte",
+        "bulletIndex": 69,
+        "aspectIndex": 2,
+        "title": "im Schülerexperiment: die Ionen Cl−, Br−, I−, SO4²−, Ag+ und Ba²+ durch Fällungsreaktion nachweisen",
+        "description": "Die lernende Person kann im Schülerexperiment: die Ionen Cl−, Br−, I−, SO4²−, Ag+ und Ba²+ durch Fällungsreaktion nachweisen.",
+        "sourceText": "im Schülerexperiment: die Ionen Cl−, Br−, I−, SO4²−, Ag+ und Ba²+ durch Fällungsreaktion nachweisen",
+        "sourceSpan": "Qualifikationsphase, 4.1.3 Kinetik und chemisches Gleichgewicht, Löslichkeitsgleichgewichte, Druck-S. 44, PDF-S. 49, rechte Spalte: zusätzlich erhöhtes Anforderungsniveau",
+        "parentBulletText": "im Schülerexperiment",
+        "sourceRef": "Lehrplan Gymnasium Chemie Thueringen 2024, Qualifikationsphase, 4.1.3 Kinetik und chemisches Gleichgewicht, Löslichkeitsgleichgewichte, Druck-S. 44, PDF-S. 49, rechte Spalte: zusätzlich erhöhtes Anforderungsniveau",
+        "courseLevel": "LK",
+        "granularity": "officialCompetencyAspect",
+        "tags": [
+          "source:thueringen",
+          "subject:Chemie",
+          "stage:SekII",
+          "section:4.1.3",
+          "topic:th-ch-sekii-4-1-3-loslichkeitsgleichgewichte",
+          "course:LK",
+          "sourceDocument:TH-CH-2024"
+        ],
+        "rawSourceText": "im Schülerexperiment: die Ionen Cl−, Br−, I−, SO4²−, Ag+ und Ba²+ durch Fällungsreaktion nachweisen",
+        "rawSourceSpan": "Qualifikationsphase, 4.1.3 Kinetik und chemisches Gleichgewicht, Löslichkeitsgleichgewichte, Druck-S. 44, PDF-S. 49, rechte Spalte: zusätzlich erhöhtes Anforderungsniveau",
+        "rawParentBulletText": "im Schülerexperiment"
+      },
+      "exactCurrentCanonicalGoal": {
+        "id": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+        "shortKey": "canonical_chemistry_sek1_gas_detection_o2_co2_h2",
+        "title": "Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen",
+        "titleEn": "Detect oxygen, carbon dioxide, and hydrogen",
+        "description": "Die lernende Person kann Sauerstoff, Kohlenstoffdioxid und Wasserstoff mithilfe einfacher Nachweisreaktionen identifizieren und die Beobachtungen fachlich deuten.",
+        "descriptionEn": "The learner can identify oxygen, carbon dioxide, and hydrogen using simple detection reactions and interpret the observations chemically.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekI"
+        ],
+        "contains": [],
+        "requires": [
+          "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+          "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK1_EXPERIMENTIEREN",
+            "PK2_MODELLIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU",
+            "BC_REAKTION"
+          ],
+          "phase": "GLOBAL",
+          "area": "Grundlagen",
+          "topicCode": "CANONICAL.CHEMISTRY.SEK1.GAS_DETECTION_O2_CO2_H2"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "ff1ca997-b6cc-5ece-8e13-5498b4bbf808",
+            "sourceLandscapeTitle": "Chemie Gymnasium (Bayern, LehrplanPLUS)",
+            "sourceGoalId": "8cdc267f-febe-58b8-a018-3f856b543d43"
+          }
+        },
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+            "title": "Visualisierung: Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen",
+            "url": "/assets/goal-visualizations/chemie/580b3616-f121-5d82-ac6b-fc24f145fbdc/580b3616-f121-5d82-ac6b-fc24f145fbdc.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen\". Die lernende Person kann Sauerstoff, Kohlenstoffdioxid und Wasserstoff mithilfe einfacher Nachweisreaktionen identifizieren und die Beobachtungen fachlich deuten.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "accepted"
+          }
+        ]
+      },
+      "currentWhole402Page": {
+        "pageNumber": 25,
+        "navigationOrder": 14,
+        "treeOrder": 20,
+        "goalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+        "shortKey": "canonical_chemistry_sek1_gas_detection_o2_co2_h2",
+        "anchor": "goal-580b3616-f121-5d82-ac6b-fc24f145fbdc",
+        "title": "Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen",
+        "description": "Die lernende Person kann Sauerstoff, Kohlenstoffdioxid und Wasserstoff mithilfe einfacher Nachweisreaktionen identifizieren und die Beobachtungen fachlich deuten.",
+        "breadcrumbs": [
+          "Chemie",
+          "Chemische Grundlagen (Sek I)"
+        ],
+        "chapterIds": [
+          "goal:442c31c5-c561-5c7a-90bb-2335d779175c",
+          "goal:3588c15e-adbe-5b81-b3a7-10da20574e3d"
+        ],
+        "requires": [
+          {
+            "goalId": "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+            "title": "Chemische Reaktionen von physikalischen Vorgängen unterscheiden",
+            "anchor": "goal-8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+            "pageNumber": 24
+          }
+        ],
+        "reverseRequires": [],
+        "externalPrerequisites": [
+          {
+            "goalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+            "title": "Arbeitsweisen der Chemie anwenden",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-266a2b2a-9ee2-52f6-ae09-59343da9a60b"
+          }
+        ],
+        "externalReverseRequires": [],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen",
+          "url": "/assets/goal-visualizations/chemie/580b3616-f121-5d82-ac6b-fc24f145fbdc/580b3616-f121-5d82-ac6b-fc24f145fbdc.jpg",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen\". Die lernende Person kann Sauerstoff, Kohlenstoffdioxid und Wasserstoff mithilfe einfacher Nachweisreaktionen identifizieren und die Beobachtungen fachlich deuten.",
+          "originalDigest": "sha256:d8de810a8fbd5dd184a0d69115d0a0999228edffffcf14b2b10e20d7e4b86f33",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:afc82985c112c5bbc2aadd3a2be4980f2f6f5ed085053c736f3c99540ae812d7",
+        "pageFingerprint": "sha256:f57dd3bda3327c333855c0104f5209427f804dca8924334500f1fa66ba76b800"
+      },
+      "currentSource382Page": {
+        "pageNumber": 25,
+        "navigationOrder": 14,
+        "treeOrder": 20,
+        "goalId": "580b3616-f121-5d82-ac6b-fc24f145fbdc",
+        "shortKey": "canonical_chemistry_sek1_gas_detection_o2_co2_h2",
+        "anchor": "goal-580b3616-f121-5d82-ac6b-fc24f145fbdc",
+        "title": "Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen",
+        "description": "Die lernende Person kann Sauerstoff, Kohlenstoffdioxid und Wasserstoff mithilfe einfacher Nachweisreaktionen identifizieren und die Beobachtungen fachlich deuten.",
+        "breadcrumbs": [
+          "Chemie",
+          "Chemische Grundlagen (Sek I)"
+        ],
+        "chapterIds": [
+          "structure:canonical-goal-442c31c5-c561-5c7a-90bb-2335d779175c",
+          "structure:canonical-goal-3588c15e-adbe-5b81-b3a7-10da20574e3d"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BB",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BE",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BW",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-BY",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HB",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-HH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-MV",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NI",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NW",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SH",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SL",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G9",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SN",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-ST",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "requires": [
+          {
+            "goalId": "8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+            "title": "Chemische Reaktionen von physikalischen Vorgängen unterscheiden",
+            "anchor": "goal-8d4ef102-e6a6-4d2e-bb6b-e707d3f2e566",
+            "pageNumber": 24
+          }
+        ],
+        "reverseRequires": [],
+        "externalPrerequisites": [
+          {
+            "goalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+            "title": "Arbeitsweisen der Chemie anwenden",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-266a2b2a-9ee2-52f6-ae09-59343da9a60b"
+          }
+        ],
+        "externalReverseRequires": [],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen",
+          "url": "/assets/goal-visualizations/chemie/580b3616-f121-5d82-ac6b-fc24f145fbdc/580b3616-f121-5d82-ac6b-fc24f145fbdc.jpg",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Sauerstoff, Kohlenstoffdioxid und Wasserstoff nachweisen\". Die lernende Person kann Sauerstoff, Kohlenstoffdioxid und Wasserstoff mithilfe einfacher Nachweisreaktionen identifizieren und die Beobachtungen fachlich deuten.",
+          "originalDigest": "sha256:d8de810a8fbd5dd184a0d69115d0a0999228edffffcf14b2b10e20d7e4b86f33",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:afc82985c112c5bbc2aadd3a2be4980f2f6f5ed085053c736f3c99540ae812d7",
+        "pageFingerprint": "sha256:93a98def2734e926a4cf57a3f7b0e5e374dd4e6efcda2c0094f1cf12bba59958"
+      },
+      "currentWholeFields": [
+        "mappings[].legacyGoalId (neutral pair sourceGoalId)",
+        "mappings[].canonicalGoalId",
+        "mappings[].matchType",
+        "current canonical title/description",
+        "source courseLevel/sourceSpan/sourceText",
+        "derived positive source382 applicability witness"
+      ],
+      "futureAuthoringBoundary": "Author a new inactive successor. Keep this frozen v6 input and FIRST intact; retire inappropriate positive witnesses without rewriting unchanged scientific goal bodies."
+    },
+    {
+      "frozenFinding": {
+        "findingId": "b007-v6-b-TH-silver-nanopackaging",
+        "goalId": "afa7dae7-9378-5687-aa8d-69a04afaa0d8",
+        "sourceGoalId": "th-chem-sekii-th-ch-sekii-4-1-3-loslichkeitsgleichgewichte-067-01-ab4ff945",
+        "field": "TH mappingPairs sourceGoalId/canonicalGoalId/matchType=partial; current canonical description; source382 applicability witness",
+        "verdict": "HOLD",
+        "severity": "high",
+        "anchoredObservation": "Fractional precipitation of silver halides is currently paired to silver nanoparticles in antimicrobial polyolefin packaging and benefit-risk assessment.",
+        "minimalCounterexample": "Ordering silver-halide precipitation by solubility does not require any nanosilver, polyolefin packaging or antimicrobial benefit-risk performance. Shared word silver does not supply source support.",
+        "proposedLocalChange": "Remove the current positive witness for the nanosilver-packaging atom or author a reviewed fractional-precipitation goal; preserve the prior pair as history and the unchanged packaging scientific body.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewAuthority": "ai_candidate",
+        "findingStatus": "candidate",
+        "humanApproved": false
+      },
+      "currentFirstBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v6-targeted-genuine-independent-b-20261011-v1/FIRST.independent-findings.frozen.json",
+        "bytes": 214407,
+        "sha256": "sha256:c43bda3784f732ab24bd269f914d359832454adab18009c8e0fd44a23bc888f7"
+      },
+      "currentGoalId": "afa7dae7-9378-5687-aa8d-69a04afaa0d8",
+      "actualMappingFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-six-child-targeted-memory-visibility-source-author-successor-20261011-v6/candidate/mapping-successors/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "bytes": 499115,
+        "sha256": "sha256:fb278abf9063f9497b6ccbe9c1a7b8596e422d6ead0f48dcc41530504c19178e"
+      },
+      "exactCurrentMappingPair": {
+        "legacyGoalId": "th-chem-sekii-th-ch-sekii-4-1-3-loslichkeitsgleichgewichte-067-01-ab4ff945",
+        "canonicalGoalId": "afa7dae7-9378-5687-aa8d-69a04afaa0d8",
+        "matchType": "partial",
+        "reviewDecisionId": "th-chem-sekii-th-ch-sekii-4-1-3-loslichkeitsgleichgewichte-067-01-ab4ff945"
+      },
+      "exactCurrentSourceGoal": {
+        "id": "th-chem-sekii-th-ch-sekii-4-1-3-loslichkeitsgleichgewichte-067-01-ab4ff945",
+        "passageId": "th-chemistry-sekii:th-ch-sekii-4-1-3-loslichkeitsgleichgewichte",
+        "topicCode": "TH-CH-SekII-4.1.3-loslichkeitsgleichgewichte",
+        "bulletIndex": 67,
+        "aspectIndex": 1,
+        "title": "die fraktionierte Fällung am Beispiel der Silberhalogenide erläutern",
+        "description": "Die lernende Person kann die fraktionierte Fällung am Beispiel der Silberhalogenide erläutern.",
+        "sourceText": "die fraktionierte Fällung am Beispiel der Silberhalogenide erläutern",
+        "sourceSpan": "Qualifikationsphase, 4.1.3 Kinetik und chemisches Gleichgewicht, Löslichkeitsgleichgewichte, Druck-S. 44, PDF-S. 49, rechte Spalte: zusätzlich erhöhtes Anforderungsniveau",
+        "parentBulletText": "die fraktionierte Fällung am Beispiel der Silberhalogenide erläutern",
+        "sourceRef": "Lehrplan Gymnasium Chemie Thueringen 2024, Qualifikationsphase, 4.1.3 Kinetik und chemisches Gleichgewicht, Löslichkeitsgleichgewichte, Druck-S. 44, PDF-S. 49, rechte Spalte: zusätzlich erhöhtes Anforderungsniveau",
+        "courseLevel": "LK",
+        "granularity": "officialCompetencyRow",
+        "tags": [
+          "source:thueringen",
+          "subject:Chemie",
+          "stage:SekII",
+          "section:4.1.3",
+          "topic:th-ch-sekii-4-1-3-loslichkeitsgleichgewichte",
+          "course:LK",
+          "sourceDocument:TH-CH-2024"
+        ],
+        "rawSourceText": "die fraktionierte Fällung am Beispiel der Silberhalogenide erläutern",
+        "rawSourceSpan": "Qualifikationsphase, 4.1.3 Kinetik und chemisches Gleichgewicht, Löslichkeitsgleichgewichte, Druck-S. 44, PDF-S. 49, rechte Spalte: zusätzlich erhöhtes Anforderungsniveau",
+        "rawParentBulletText": "die fraktionierte Fällung am Beispiel der Silberhalogenide erläutern"
+      },
+      "exactCurrentCanonicalGoal": {
+        "id": "afa7dae7-9378-5687-aa8d-69a04afaa0d8",
+        "shortKey": "canonical_chemistry_q2_silver_nanoparticles",
+        "title": "Nanostrukturierte Silberwerkstoffe einordnen",
+        "titleEn": "Classify nanostructured silver materials",
+        "description": "Die lernende Person kann Nanostrukturen und Nanomaterialien am Beispiel von Silber-Nanopartikeln in antimikrobiellen Polyolefin-Verpackungen beschreiben und Nutzen-Risiko-Bezüge herstellen.",
+        "descriptionEn": "The learner can describe nanostructures and nanomaterials using silver nanoparticles in antimicrobial polyolefin packaging as an example and establish benefit-risk relationships.",
+        "weight": 1,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB2",
+          "processCompetencies": [
+            "PK2_MODELLIEREN",
+            "PK4_KOMMUNIZIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_AUFBAU"
+          ],
+          "phase": "Q2",
+          "area": "Kunststoffchemie",
+          "topicCode": "CANONICAL.CHEMISTRY.Q2.SILVER_NANOPARTICLES"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BW",
+            "DE-BY",
+            "DE-HE",
+            "DE-NI",
+            "DE-RP",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "2f391ba2-ba1e-40e4-a8d2-dff049516c13",
+            "sourceLandscapeTitle": "Chemie Oberstufe (Hessen, KC 2024)",
+            "sourceGoalId": "he-chem-sekii-q2-2-b06-a01-f1814d99"
+          }
+        },
+        "contains": [],
+        "requires": [
+          "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+          "5a30273a-98d5-5163-bb16-c250b7ed4e7f"
+        ],
+        "type": "atomic",
+        "examples": [],
+        "resourceLinks": [
+          {
+            "type": "goal-visualization",
+            "resourceType": "image",
+            "role": "primary",
+            "skillpilotId": "afa7dae7-9378-5687-aa8d-69a04afaa0d8",
+            "title": "Visualisierung: Nanostrukturierte Silberwerkstoffe einordnen",
+            "url": "/assets/goal-visualizations/chemie/afa7dae7-9378-5687-aa8d-69a04afaa0d8/afa7dae7-9378-5687-aa8d-69a04afaa0d8.jpg",
+            "provider": "Google Gemini / Nano Banana Pro",
+            "description": "Visualisierung zum Lernziel: Nanostrukturierte Silberwerkstoffe einordnen.",
+            "altText": "Didaktische Visualisierung zum Lernziel \"Nanostrukturierte Silberwerkstoffe einordnen\". Die lernende Person kann Nanostrukturen und Nanomaterialien am Beispiel von Silber-Nanopartikeln in antimikrobiellen Polyolefin-Verpackungen beschreiben und Nutzen-Risiko-Bezüge herstellen.",
+            "lang": "de",
+            "license": "AI-generated, SkillPilot-curated",
+            "reviewStatus": "pilot"
+          }
+        ]
+      },
+      "currentWhole402Page": {
+        "pageNumber": 217,
+        "navigationOrder": 241,
+        "treeOrder": 290,
+        "goalId": "afa7dae7-9378-5687-aa8d-69a04afaa0d8",
+        "shortKey": "canonical_chemistry_q2_silver_nanoparticles",
+        "anchor": "goal-afa7dae7-9378-5687-aa8d-69a04afaa0d8",
+        "title": "Nanostrukturierte Silberwerkstoffe einordnen",
+        "description": "Die lernende Person kann Nanostrukturen und Nanomaterialien am Beispiel von Silber-Nanopartikeln in antimikrobiellen Polyolefin-Verpackungen beschreiben und Nutzen-Risiko-Bezüge herstellen.",
+        "breadcrumbs": [
+          "Chemie",
+          "Naturstoffe und Synthesechemie",
+          "Q2.2 Grundlagen der Kunststoffchemie"
+        ],
+        "chapterIds": [
+          "goal:442c31c5-c561-5c7a-90bb-2335d779175c",
+          "goal:ae683d59-06a5-59be-87b5-b8648fd138c8",
+          "goal:afad3a68-c643-5c49-8583-e5d8b1d8b56c"
+        ],
+        "requires": [
+          {
+            "goalId": "5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+            "title": "Struktur-Eigenschafts-Zusammenhänge ableiten",
+            "anchor": "goal-5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+            "pageNumber": 125
+          },
+          {
+            "goalId": "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+            "title": "Kunststoffe einteilen",
+            "anchor": "goal-3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+            "pageNumber": 213
+          }
+        ],
+        "reverseRequires": [],
+        "externalPrerequisites": [],
+        "externalReverseRequires": [
+          {
+            "goalId": "14577339-9e0c-5b44-8e47-91e1a4947367",
+            "title": "Sek-II-Abschlussaufgaben Chemie bearbeiten",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Nanostrukturierte Silberwerkstoffe einordnen",
+          "url": "/assets/goal-visualizations/chemie/afa7dae7-9378-5687-aa8d-69a04afaa0d8/afa7dae7-9378-5687-aa8d-69a04afaa0d8.jpg",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Nanostrukturierte Silberwerkstoffe einordnen\". Die lernende Person kann Nanostrukturen und Nanomaterialien am Beispiel von Silber-Nanopartikeln in antimikrobiellen Polyolefin-Verpackungen beschreiben und Nutzen-Risiko-Bezüge herstellen.",
+          "originalDigest": "sha256:51bdc9a6991382a10b88342b0fab1b8364bdc7e85667e347b0c3ce50f67a0b75",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:35cd7033f24e76b9b430947f5582bacfdde1ba8277d4f3258796698fe94c70fd",
+        "pageFingerprint": "sha256:d7e0feaf29c86a3cda4829a5a8692274458e005e5375ea67e98605ed5e0384b6"
+      },
+      "currentSource382Page": {
+        "pageNumber": 211,
+        "navigationOrder": 235,
+        "treeOrder": 284,
+        "goalId": "afa7dae7-9378-5687-aa8d-69a04afaa0d8",
+        "shortKey": "canonical_chemistry_q2_silver_nanoparticles",
+        "anchor": "goal-afa7dae7-9378-5687-aa8d-69a04afaa0d8",
+        "title": "Nanostrukturierte Silberwerkstoffe einordnen",
+        "description": "Die lernende Person kann Nanostrukturen und Nanomaterialien am Beispiel von Silber-Nanopartikeln in antimikrobiellen Polyolefin-Verpackungen beschreiben und Nutzen-Risiko-Bezüge herstellen.",
+        "breadcrumbs": [
+          "Chemie",
+          "Naturstoffe und Synthesechemie",
+          "Q2.2 Grundlagen der Kunststoffchemie"
+        ],
+        "chapterIds": [
+          "structure:canonical-goal-442c31c5-c561-5c7a-90bb-2335d779175c",
+          "structure:canonical-goal-ae683d59-06a5-59be-87b5-b8648fd138c8",
+          "structure:canonical-goal-afad3a68-c643-5c49-8583-e5d8b1d8b56c"
+        ],
+        "applicability": [
+          {
+            "jurisdiction": "DE-BW",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-NI",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-RP",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-SN",
+            "scopes": [
+              {
+                "stage": "SekI",
+                "durationModel": "G8",
+                "courseProfile": null
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-ST",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          },
+          {
+            "jurisdiction": "DE-TH",
+            "scopes": [
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "GK"
+              },
+              {
+                "stage": "SekII",
+                "durationModel": null,
+                "courseProfile": "LK"
+              }
+            ]
+          }
+        ],
+        "requires": [
+          {
+            "goalId": "5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+            "title": "Struktur-Eigenschafts-Zusammenhänge ableiten",
+            "anchor": "goal-5a30273a-98d5-5163-bb16-c250b7ed4e7f",
+            "pageNumber": 125
+          },
+          {
+            "goalId": "3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+            "title": "Kunststoffe einteilen",
+            "anchor": "goal-3e9eb5d0-3407-5a1e-9492-ad87f98d303d",
+            "pageNumber": 207
+          }
+        ],
+        "reverseRequires": [],
+        "externalPrerequisites": [],
+        "externalReverseRequires": [
+          {
+            "goalId": "14577339-9e0c-5b44-8e47-91e1a4947367",
+            "title": "Sek-II-Abschlussaufgaben Chemie bearbeiten",
+            "canonicalUrl": "https://skillpilot.com/lernzielbuch?landscape=c436b994-8f44-5134-b9f8-0c9f5d6a5ba0&edition=curricular-atomic-v1#goal-14577339-9e0c-5b44-8e47-91e1a4947367"
+          }
+        ],
+        "visualization": {
+          "resourceType": "image",
+          "title": "Visualisierung: Nanostrukturierte Silberwerkstoffe einordnen",
+          "url": "/assets/goal-visualizations/chemie/afa7dae7-9378-5687-aa8d-69a04afaa0d8/afa7dae7-9378-5687-aa8d-69a04afaa0d8.jpg",
+          "altText": "Didaktische Visualisierung zum Lernziel \"Nanostrukturierte Silberwerkstoffe einordnen\". Die lernende Person kann Nanostrukturen und Nanomaterialien am Beispiel von Silber-Nanopartikeln in antimikrobiellen Polyolefin-Verpackungen beschreiben und Nutzen-Risiko-Bezüge herstellen.",
+          "originalDigest": "sha256:51bdc9a6991382a10b88342b0fab1b8364bdc7e85667e347b0c3ce50f67a0b75",
+          "qaStatus": "review_candidate",
+          "approvedForPublication": false
+        },
+        "evidenceReview": null,
+        "goalFingerprint": "sha256:35cd7033f24e76b9b430947f5582bacfdde1ba8277d4f3258796698fe94c70fd",
+        "pageFingerprint": "sha256:3dda40382d92d87f3eeb68e010de9dc53743ce42df627542b11892e8eea55bbf"
+      },
+      "currentWholeFields": [
+        "mappings[].legacyGoalId (neutral pair sourceGoalId)",
+        "mappings[].canonicalGoalId",
+        "mappings[].matchType",
+        "current canonical title/description",
+        "source courseLevel/sourceSpan/sourceText",
+        "derived positive source382 applicability witness"
+      ],
+      "futureAuthoringBoundary": "Author a new inactive successor. Keep this frozen v6 input and FIRST intact; retire inappropriate positive witnesses without rewriting unchanged scientific goal bodies."
+    },
+    {
+      "frozenFinding": {
+        "findingId": "b007-v6-b-TH-exact-general-lab-cluster",
+        "goalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+        "sourceGoalId": "th-chem-sekii-th-ch-sekii-4-1-3-loslichkeitsgleichgewichte-069-01-e282522f",
+        "field": "TH mappingPairs matchType=exact mapped to cluster 266a…; contains inherited safety/laboratory-method witnesses",
+        "verdict": "HOLD",
+        "severity": "high",
+        "anchoredObservation": "The source specifies performing one fractional precipitation experiment; the pair declares exact with the general Arbeitsweisen der Chemie cluster whose descendants are general laboratory methods and safety rules.",
+        "minimalCounterexample": "A specific precipitation experiment can exercise some general routines, but is neither an exact description of that cluster nor proof of the complete six-ion experiment row.",
+        "proposedLocalChange": "Rejudge this as bounded partial methodological support, with explicit inherited support limits, or bind an actual precipitation goal. Do not retain an unqualified exact source-coverage claim.",
+        "evidenceLevel": "E1",
+        "maximumClaimScope": "G1",
+        "reviewAuthority": "ai_candidate",
+        "findingStatus": "candidate",
+        "humanApproved": false
+      },
+      "currentFirstBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v6-targeted-genuine-independent-b-20261011-v1/FIRST.independent-findings.frozen.json",
+        "bytes": 214407,
+        "sha256": "sha256:c43bda3784f732ab24bd269f914d359832454adab18009c8e0fd44a23bc888f7"
+      },
+      "currentGoalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+      "actualMappingFileBinding": {
+        "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-six-child-targeted-memory-visibility-source-author-successor-20261011-v6/candidate/mapping-successors/th_chemistry_upper_secondary_source_extraction_to_canonical_chemistry.review.json",
+        "bytes": 499115,
+        "sha256": "sha256:fb278abf9063f9497b6ccbe9c1a7b8596e422d6ead0f48dcc41530504c19178e"
+      },
+      "exactCurrentMappingPair": {
+        "legacyGoalId": "th-chem-sekii-th-ch-sekii-4-1-3-loslichkeitsgleichgewichte-069-01-e282522f",
+        "canonicalGoalId": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+        "matchType": "exact",
+        "reviewDecisionId": "th-chem-sekii-th-ch-sekii-4-1-3-loslichkeitsgleichgewichte-069-01-e282522f"
+      },
+      "exactCurrentSourceGoal": {
+        "id": "th-chem-sekii-th-ch-sekii-4-1-3-loslichkeitsgleichgewichte-069-01-e282522f",
+        "passageId": "th-chemistry-sekii:th-ch-sekii-4-1-3-loslichkeitsgleichgewichte",
+        "topicCode": "TH-CH-SekII-4.1.3-loslichkeitsgleichgewichte",
+        "bulletIndex": 69,
+        "aspectIndex": 1,
+        "title": "im Schülerexperiment: eine fraktionierte Fällung durchführen",
+        "description": "Die lernende Person kann im Schülerexperiment: eine fraktionierte Fällung durchführen.",
+        "sourceText": "im Schülerexperiment: eine fraktionierte Fällung durchführen,",
+        "sourceSpan": "Qualifikationsphase, 4.1.3 Kinetik und chemisches Gleichgewicht, Löslichkeitsgleichgewichte, Druck-S. 44, PDF-S. 49, rechte Spalte: zusätzlich erhöhtes Anforderungsniveau",
+        "parentBulletText": "im Schülerexperiment",
+        "sourceRef": "Lehrplan Gymnasium Chemie Thueringen 2024, Qualifikationsphase, 4.1.3 Kinetik und chemisches Gleichgewicht, Löslichkeitsgleichgewichte, Druck-S. 44, PDF-S. 49, rechte Spalte: zusätzlich erhöhtes Anforderungsniveau",
+        "courseLevel": "LK",
+        "granularity": "officialCompetencyAspect",
+        "tags": [
+          "source:thueringen",
+          "subject:Chemie",
+          "stage:SekII",
+          "section:4.1.3",
+          "topic:th-ch-sekii-4-1-3-loslichkeitsgleichgewichte",
+          "course:LK",
+          "sourceDocument:TH-CH-2024"
+        ],
+        "rawSourceText": "im Schülerexperiment: eine fraktionierte Fällung durchführen,",
+        "rawSourceSpan": "Qualifikationsphase, 4.1.3 Kinetik und chemisches Gleichgewicht, Löslichkeitsgleichgewichte, Druck-S. 44, PDF-S. 49, rechte Spalte: zusätzlich erhöhtes Anforderungsniveau",
+        "rawParentBulletText": "im Schülerexperiment"
+      },
+      "exactCurrentCanonicalGoal": {
+        "id": "266a2b2a-9ee2-52f6-ae09-59343da9a60b",
+        "shortKey": "canonical_chemistry_sek1_working_methods",
+        "title": "Arbeitsweisen der Chemie anwenden",
+        "titleEn": "Apply chemistry working methods",
+        "description": "Cluster für grundlegende chemische Laborarbeitsweisen und allgemeine Sicherheitsregeln in der Sekundarstufe I.",
+        "descriptionEn": "Cluster for basic chemistry laboratory methods and general safety rules in lower secondary.",
+        "weight": 2,
+        "tags": [
+          "GK",
+          "LK",
+          "canonical",
+          "SekI"
+        ],
+        "contains": [
+          "416dfd33-8b43-5c49-903c-9847b95e4208",
+          "13d4f336-ab16-54a7-9479-c920b458f385"
+        ],
+        "requires": [
+          "a9c22adc-b543-5b0c-a2d8-3189facdff08"
+        ],
+        "dimensionTags": {
+          "framework": "canonical-gymnasium-chemistry",
+          "demandLevel": "AB1",
+          "processCompetencies": [
+            "PK1_EXPERIMENTIEREN"
+          ],
+          "guidingIdeas": [
+            "BC_REAKTION"
+          ],
+          "phase": "GLOBAL",
+          "area": "Grundlagen",
+          "topicCode": "CANONICAL.CHEMISTRY.SEK1.WORKING_METHODS"
+        },
+        "applicability": {
+          "jurisdiction": [
+            "DE-BB",
+            "DE-BE",
+            "DE-BW",
+            "DE-BY",
+            "DE-HB",
+            "DE-HE",
+            "DE-HH",
+            "DE-MV",
+            "DE-NI",
+            "DE-NW",
+            "DE-RP",
+            "DE-SH",
+            "DE-SL",
+            "DE-SN",
+            "DE-ST",
+            "DE-TH"
+          ]
+        },
+        "extendedData": {
+          "provenance": {
+            "sourceLandscapeId": "bea90c22-b9c5-4c0c-9b10-89d875f50772",
+            "sourceLandscapeTitle": "Chemie Sekundarstufe I (Hessen, G9)",
+            "sourceGoalId": "8476c11a-9c9a-4d4c-b1eb-9977d9fe4558"
+          }
+        },
+        "type": "cluster",
+        "examples": []
+      },
+      "currentWhole402Page": null,
+      "currentSource382Page": null,
+      "currentWholeFields": [
+        "mappings[].legacyGoalId (neutral pair sourceGoalId)",
+        "mappings[].canonicalGoalId",
+        "mappings[].matchType",
+        "current canonical title/description",
+        "source courseLevel/sourceSpan/sourceText",
+        "derived positive source382 applicability witness"
+      ],
+      "futureAuthoringBoundary": "Author a new inactive successor. Keep this frozen v6 input and FIRST intact; retire inappropriate positive witnesses without rewriting unchanged scientific goal bodies."
+    }
+  ],
+  "newJudgmentsBeyondFrozenFIRST": 0,
+  "activeMutation": false,
+  "humanApprovedCount": 0,
+  "strictGain": 0
+}

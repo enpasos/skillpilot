@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "chemie-q3-three-png-native-author-v5",
+  "subject": "chemie",
+  "subjectLabel": "Chemie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-potential-interval-transfer-boundary-P3-native-author-successor-20261011-v5/native/current398-native3.complete-review-universe.author.batch.config.json",
+  "configDigest": "sha256:ae9f7a5f9dc7f88e84c79dbdfef903553efa30605730f87f4df9579a2cfa2218",
+  "goalIds": [
+    "81373fb7-2a4a-5b2c-acd0-b4e775acaa65",
+    "8be14f15-2258-58e6-ae4e-38953f5d0570",
+    "c8844ac6-c414-5a0e-9fcd-7d0a82177d09"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 398,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-potential-interval-transfer-boundary-P3-native-author-successor-20261011-v5/native/current398.complete-review-universe.book.author.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-potential-interval-transfer-boundary-P3-native-author-successor-20261011-v5/inputs/current517.canonical-three-PNG.inactive.json",
+    "landscapeId": "c436b994-8f44-5134-b9f8-0c9f5d6a5ba0",
+    "baseBookDigest": "sha256:93bd031adc50d90f17286c4c72e541dc8c76fc0a947f998e053ac4959dca5d33"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:b927ab691342cc9d0f8af288668ba4250719385fb46685f4a57850f242b7625e",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:ebf22812769bbe00b02bcd6dc29349230f593193ebc4801a94aec10a34905325",
+    "reviewInputFingerprint": "sha256:1267e3b52892e8af3cc467babdcfe9b43521b4f3f96f45ad977f7f0fce275d94",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "chemie-q3-three-png-native-author-v5-a",
+        "campaignDigest": "sha256:75d162cd0ad6ea8132054ad235c7e24a42505c1deae1ee431d1d493cc5d0c790",
+        "roundId": "chemie-q3-three-png-native-author-v5-first-pass-a",
+        "independenceGroupId": "chemie-q3-three-png-native-author-v5-independent-a",
+        "batchId": "chemie-q3-three-png-native-author-v5-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:02941c7f2e88f5fdbda3fd854cbc5c3b7f752719ef520f3fdf834d2f150ded01"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "chemie-q3-three-png-native-author-v5-b",
+        "campaignDigest": "sha256:2ead812a2968aedb0d2edda0ac87b5a822506f01ede6e12f93d3fe4eff8ddf78",
+        "roundId": "chemie-q3-three-png-native-author-v5-first-pass-b",
+        "independenceGroupId": "chemie-q3-three-png-native-author-v5-independent-b",
+        "batchId": "chemie-q3-three-png-native-author-v5-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:d0e75fdc01f6e7ad0d6f8f0683c349b09496a72834ae9e2a4617d900d75f4bf1"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

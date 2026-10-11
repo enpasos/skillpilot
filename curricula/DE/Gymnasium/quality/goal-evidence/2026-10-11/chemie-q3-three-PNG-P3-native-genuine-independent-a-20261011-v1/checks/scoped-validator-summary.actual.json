@@ -1,0 +1,145 @@
+{
+  "createdAtUTC": "2026-10-11T02:43:56.218346+00:00",
+  "checks": [
+    {
+      "command": [
+        "node_modules/.bin/tsx",
+        "scripts/validateGoalDescriptionReviewCampaign.ts",
+        "--bundle",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-author-successor-20261011-v4/native/current398-native3.complete-review-universe.author-batch/bundle/manifest.json",
+        "--input",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-author-successor-20261011-v4/native/current398-native3.complete-review-universe.author-batch/round-a/description-review-input.json",
+        "--campaign",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-author-successor-20261011-v4/native/current398-native3.complete-review-universe.author-batch/round-a/description-review-campaign.json",
+        "--run",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-genuine-independent-a-20261011-v1/description/D3.independent-a.normal.run.json",
+        "--batch-input",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-author-successor-20261011-v4/native/current398-native3.complete-review-universe.author-batch/round-a/batches/chemie-q3-three-png-native-author-v4-first-pass-a.batch-001.input.jsonl",
+        "--records",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-genuine-independent-a-20261011-v1/description/D3.independent-a.normal.records.jsonl"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "exitCode": 1,
+      "completedAtUTC": "2026-10-11T02:40:28.881187+00:00",
+      "check": "D3-normal",
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-genuine-independent-a-20261011-v1/checks/D3-normal.actual.txt",
+      "interpretation": "Initial run metadata failed planned campaign independence-group contract; preserved; corrected by matching the actual planned independent-A group, not validator changes. Final D3 PASS."
+    },
+    {
+      "command": [
+        "node_modules/.bin/tsx",
+        "scripts/validateGoalDescriptionReviewCampaign.ts",
+        "--bundle",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-author-successor-20261011-v4/native/current398-native3.complete-review-universe.author-batch/bundle/manifest.json",
+        "--input",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-author-successor-20261011-v4/native/current398-native3.complete-review-universe.author-batch/round-a/description-review-input.json",
+        "--campaign",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-author-successor-20261011-v4/native/current398-native3.complete-review-universe.author-batch/round-a/description-review-campaign.json",
+        "--run",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-genuine-independent-a-20261011-v1/description/D3.independent-a.normal.run.json",
+        "--batch-input",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-author-successor-20261011-v4/native/current398-native3.complete-review-universe.author-batch/round-a/batches/chemie-q3-three-png-native-author-v4-first-pass-a.batch-001.input.jsonl",
+        "--records",
+        "/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-genuine-independent-a-20261011-v1/description/D3.independent-a.normal.records.jsonl"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "exitCode": 0,
+      "completedAtUTC": "2026-10-11T02:41:15.180117+00:00",
+      "check": "D3-normal-final",
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-genuine-independent-a-20261011-v1/checks/D3-normal-final.actual.txt",
+      "interpretation": "PASS with ordinary unchanged validator and scoped current bindings"
+    },
+    {
+      "command": [
+        "node_modules/.bin/tsx",
+        "scripts/positiveGoalEvidenceReview.ts",
+        "--config=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-genuine-independent-a-20261011-v1/positive/P3.independent-a.normal.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "exitCode": 1,
+      "completedAtUTC": "2026-10-11T02:40:29.484583+00:00",
+      "check": "P3-direct-inactive",
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-genuine-independent-a-20261011-v1/checks/P3-direct-inactive.actual.txt",
+      "interpretation": "Expected inactive missing public PNG/stale resource context diagnostic: six issues. Preserved; no copying into active asset paths."
+    },
+    {
+      "command": [
+        "node_modules/.bin/tsx",
+        "scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-genuine-independent-a-20261011-v1/positive/P3.independent-a.normal.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/tmp/chemie-q3-native-genuine-a-20261011-v1/capsule/app",
+      "exitCode": 0,
+      "completedAtUTC": "2026-10-11T02:41:15.892465+00:00",
+      "check": "P3-capsule-normal",
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-genuine-independent-a-20261011-v1/checks/P3-capsule-normal.actual.txt",
+      "interpretation": "PASS with ordinary unchanged validator and scoped current bindings"
+    },
+    {
+      "command": [
+        "node_modules/.bin/tsx",
+        "scripts/semanticAtomicityReview.ts",
+        "--config=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-genuine-independent-a-20261011-v1/atomicity/A3.independent-a.normal.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "exitCode": 0,
+      "completedAtUTC": "2026-10-11T02:40:29.926665+00:00",
+      "check": "A3-normal",
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-genuine-independent-a-20261011-v1/checks/A3-normal.actual.txt",
+      "interpretation": "PASS with ordinary unchanged validator and scoped current bindings"
+    },
+    {
+      "command": [
+        "node_modules/.bin/tsx",
+        "scripts/memoryCardReview.ts",
+        "--config=/home/enpasos/projects/skillpilot/curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-genuine-independent-a-20261011-v1/memory/M3-plus-Q3-card-lineage.normal.config.json",
+        "--mode=check"
+      ],
+      "cwd": "/home/enpasos/projects/skillpilot/app",
+      "exitCode": 0,
+      "completedAtUTC": "2026-10-11T02:40:30.380081+00:00",
+      "check": "M3-card-lineage-normal",
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-genuine-independent-a-20261011-v1/checks/M3-card-lineage-normal.actual.txt",
+      "interpretation": "PASS with ordinary unchanged validator and scoped current bindings"
+    },
+    {
+      "command": [
+        "node",
+        "scripts/check_goal_visualization_assets.mjs"
+      ],
+      "cwd": "/tmp/chemie-q3-native-genuine-a-20261011-v1/capsule",
+      "exitCode": 0,
+      "completedAtUTC": "2026-10-11T02:41:16.102529+00:00",
+      "check": "V3-assets-normal",
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-genuine-independent-a-20261011-v1/checks/V3-assets-normal.actual.txt",
+      "interpretation": "Mechanical exact copies/path/prompt check PASS; does not certify visual correctness."
+    },
+    {
+      "command": [
+        "node_modules/.bin/tsx",
+        "scripts/checkGoalVisualizationQaApprovalCoverage.ts",
+        "--subjects=chemie"
+      ],
+      "cwd": "/tmp/chemie-q3-native-genuine-a-20261011-v1/capsule/app",
+      "exitCode": 1,
+      "completedAtUTC": "2026-10-11T02:41:16.580799+00:00",
+      "check": "V3-approval-held-expected",
+      "actualOutputPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-q3-three-PNG-P3-native-genuine-independent-a-20261011-v1/checks/V3-approval-held-expected.actual.txt",
+      "interpretation": "Expected single held-image failure for8be14f15; two AI KEEP candidates, no human approval."
+    }
+  ],
+  "D3FinalPass": true,
+  "P3CapsulePassApproved0NeedsHuman3": true,
+  "newScopedA3Pass": true,
+  "M3RetainedPlusNecessaryCardLineagePass": true,
+  "V3MechanicalAssetsPass": true,
+  "VApprovalOverall": "HOLD; normal checker actually fails one8be14f15 entry as intended",
+  "native3Overall": "HOLD",
+  "wholeSourceClosure": "HOLD; no new source mapping clearances",
+  "humanApproval": 0,
+  "strictGain": 0,
+  "activeWrites": false
+}

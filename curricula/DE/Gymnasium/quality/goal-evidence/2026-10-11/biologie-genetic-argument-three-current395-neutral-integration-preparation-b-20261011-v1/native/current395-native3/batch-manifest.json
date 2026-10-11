@@ -1,0 +1,56 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-description-review/v1/goal-description-rollout-batch-manifest.schema.json",
+  "schemaVersion": 1,
+  "validationContract": "goal-description-rollout-batch-v1",
+  "batchId": "biologie-genetic-argument-three-current395-neutral-native3-20261011-v1",
+  "subject": "biologie",
+  "subjectLabel": "Biologie",
+  "configPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-argument-three-current395-neutral-integration-preparation-b-20261011-v1/native/current395-native3.batch.config.json",
+  "configDigest": "sha256:0057adbcbad7ff8e0327179bfd17482ac9e92a7ead2f3b6f2148d9d2992612db",
+  "goalIds": [
+    "9540a95d-5ca5-527c-918f-d702e99be07a",
+    "5ee0f660-66f1-5aa6-a01d-e3b010db01ff",
+    "0f9318ec-90eb-5381-b670-8fb2f2789c3d"
+  ],
+  "curriculumAtomicDenominatorAtPreparation": 395,
+  "source": {
+    "baseGoalBookConfigPath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-argument-three-current395-neutral-integration-preparation-b-20261011-v1/native/whole395.normal-book.config.json",
+    "landscapePath": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/biologie-genetic-argument-three-current395-neutral-integration-preparation-b-20261011-v1/candidate/whole480-only-three-reviewed-image-links.inactive.json",
+    "landscapeId": "08a43a1b-d97e-522c-9dfa-c950a493364e",
+    "baseBookDigest": "sha256:30a993fd0ca8964f506267360aa9f19d5227de2908ab507d7cbbce57e359733b"
+  },
+  "artifacts": {
+    "bundleDirectory": "bundle",
+    "bookModelPath": "bundle/book-model.json",
+    "bookModelDigest": "sha256:df5280b3df28e0af1f485e12a7e63141480cc4f15c71aa9d8972b149f0e13d7c",
+    "bundleManifestPath": "bundle/manifest.json",
+    "bundleFingerprint": "sha256:bedc5aaaf0b329e5ee4f30ec1eb25712d98f15c52e124596e284e7251acb16e9",
+    "reviewInputFingerprint": "sha256:0a90ca57650d9bd0edd07cad58fc7f3ad302ad3824990d4e1078f01d63881972",
+    "rounds": {
+      "first": {
+        "directory": "round-a",
+        "campaignId": "biologie-genetic-argument-three-current395-neutral-native3-20261011-v1-a",
+        "campaignDigest": "sha256:9a73dd8508720c042df4bb0174245090e9a87f0ea75d91d14cf7719c0e7a1657",
+        "roundId": "biologie-genetic-argument-three-current395-neutral-native3-20261011-v1-first-pass-a",
+        "independenceGroupId": "biologie-genetic-argument-three-current395-neutral-native3-20261011-v1-independent-a",
+        "batchId": "biologie-genetic-argument-three-current395-neutral-native3-20261011-v1-first-pass-a.batch-001",
+        "batchInputFingerprint": "sha256:2dbb5460bb5e558a418083a7e754405c84f17b5202c3e537e3d1bf0e3e98f4ca"
+      },
+      "second": {
+        "directory": "round-b",
+        "campaignId": "biologie-genetic-argument-three-current395-neutral-native3-20261011-v1-b",
+        "campaignDigest": "sha256:52bf8e4e9c1bd30773c06047b9a1083d4cfda737eca7409becdc629f1d9a0efd",
+        "roundId": "biologie-genetic-argument-three-current395-neutral-native3-20261011-v1-first-pass-b",
+        "independenceGroupId": "biologie-genetic-argument-three-current395-neutral-native3-20261011-v1-independent-b",
+        "batchId": "biologie-genetic-argument-three-current395-neutral-native3-20261011-v1-first-pass-b.batch-001",
+        "batchInputFingerprint": "sha256:cc995f2199e8e8998adf8750436a34cd0b52eedb8cf8f4cf0d32cd2185853b9f"
+      }
+    }
+  },
+  "reviewPolicy": {
+    "oneBatchPerRound": true,
+    "blindIndependentFirstPass": true,
+    "aiRecordsAreCandidatesOnly": true,
+    "automaticAcceptance": false
+  }
+}

@@ -5,6 +5,11 @@ Mathematics, Physics, Chemistry, Biology and Economics. Current work targets
 Chemistry and Biology; the achieved Mathematics and Physics M7 floors remain protected.
 
 Current Chemistry/Biology continuation:
+[Biology 366/395 and Chemistry 206/398: 13 reviewed biology completions, 11 October](../../../../../docs/qa-ci/chemie-biologie-m7-biologie366-health-integration-2026-10-11.md).
+The [subsequent inactive evidence checkpoint](../../../../../docs/qa-ci/chemie-biologie-m7-inactive-evidence-github-checkpoint-2026-10-11.md)
+preserves candidate packages and unresolved review findings without adding strict completions.
+
+Previous Chemistry/Biology continuation:
 [Chemistry 206/398 and Biology 353/394: reviewed integration, 10 October](../../../../../docs/qa-ci/chemie-biologie-m7-chemie206-biologie353-integration-2026-10-10.md).
 The [subsequent CI/source-binding repair](../../../../../docs/qa-ci/chemie-biologie-m7-chemie206-ci-source-binding-repair-2026-10-10.md)
 restores two previously reviewed Bavarian source bindings without adding strict completions.

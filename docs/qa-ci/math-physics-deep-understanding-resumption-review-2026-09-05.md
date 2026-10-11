@@ -1,5 +1,16 @@
 # Mathematik/Physik: Wiederaufnahme- und Effizienzreview vom 5. September 2026
 
+## Aktuelle Chemie-/Biologie-Fortsetzung vom 11. Oktober
+
+Der [Integrationsstand mit 366/395 Biologie und 206/398 Chemie](chemie-biologie-m7-biologie366-health-integration-2026-10-11.md)
+enthält 13 weitere fachliche Biologieabschlüsse. Der anschließende
+[inaktive Nachweis-Checkpoint](chemie-biologie-m7-inactive-evidence-github-checkpoint-2026-10-11.md)
+sichert die vorbereiteten Pakete und offenen unabhängigen Prüfungen mit
+Nettozuwachs 0. Mathematik-M7, Physik-M7 und der parallel erreichte
+Wirtschaft-M7 bleiben erhalten. Die folgenden früheren Auftragsstände und
+separaten Fachfortsetzungen bleiben als Historie erhalten; der aktuelle
+Chemie-/Biologie-Auftrag wird durch sie nicht ersetzt.
+
 ## Aktuelle Chemie-/Biologie-Fortsetzung vom 10. Oktober
 
 Der [aktive Integrationsstand 206/398 Chemie und 353/394 Biologie](chemie-biologie-m7-chemie206-biologie353-integration-2026-10-10.md)

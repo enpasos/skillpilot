@@ -1,0 +1,17 @@
+node:internal/fs/promises:637
+  return new FileHandle(await PromisePrototypeThen(
+                        ^
+
+Error: ENOENT: no such file or directory, open '/tmp/skillpilot-b-bio395-prep/curricula/DE/Gymnasium/quality/goal-evidence/prompts/biology-goal-description-understanding-evidence-review-criteria-v2.md'
+    at async open (node:internal/fs/promises:637:25)
+    at async readFile (node:internal/fs/promises:1249:14)
+    at async Promise.all (index 6)
+    at async buildGoalBookReviewBundle (/tmp/skillpilot-b-bio395-prep/app/scripts/exportGoalBookReviewBundle.ts:466:7)
+    at async <anonymous> (/tmp/skillpilot-b-bio395-prep/app/scripts/bio395NeutralPrepare.ts:38:13) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: '/tmp/skillpilot-b-bio395-prep/curricula/DE/Gymnasium/quality/goal-evidence/prompts/biology-goal-description-understanding-evidence-review-criteria-v2.md'
+}
+
+Node.js v20.20.2

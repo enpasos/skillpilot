@@ -1,0 +1,68 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-q3-three-png-native-genuine-a-20261011-v1-description",
+  "campaignId": "chemie-q3-three-png-native-author-v4-a",
+  "roundId": "chemie-q3-three-png-native-author-v4-first-pass-a",
+  "batchId": "chemie-q3-three-png-native-author-v4-first-pass-a.batch-001",
+  "batchInputFingerprint": "sha256:2cba186f745a225682e69730b925decf5515f07352129952c5d906a94ae51d85",
+  "bundleFingerprint": "sha256:488e88089e4234c69028586b52e3671f5ca63169f29d7b8129163b50c0ee980b",
+  "bookDigest": "sha256:3139fe9d7e7dd09e40c1a0b8da0432809e4e00e2a4dbd59ce030a7837941b3d2",
+  "provider": "OpenAI interactive Codex agent session",
+  "model": "GPT-6 Codex agent session; exact underlying runtime model version not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-review-v1",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:53fb8754d5f2622cf0bccc98af3f48c680202655f96273739c915fb224b50bd2",
+  "independenceGroupId": "chemie-q3-genuine-independent-a-20261011-v1",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "81373fb7-2a4a-5b2c-acd0-b4e775acaa65",
+    "8be14f15-2258-58e6-ae4e-38953f5d0570",
+    "c8844ac6-c414-5a0e-9fcd-7d0a82177d09"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_model",
+      "digest": "sha256:db33461c28808d89994c300eaba8d460bf587ce9aae170fce0aa11b6badaf2cf"
+    },
+    {
+      "role": "book_pdf",
+      "digest": "sha256:7ce069272bb82f1fabfa90ded795343be59aa910cb63e93213f869694f9f2216"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:b06b53293553458d758839ccf15ec7f474adb5444e3fd082248c67fa0a3933e9"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:9c21b3779d5a9e8acbfd262b3d4666661253e3a2d6ebdb5b1ba628ba75540b9b"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:2cba186f745a225682e69730b925decf5515f07352129952c5d906a94ae51d85"
+    }
+  ],
+  "startedAt": "2026-10-11T02:35:53.580725+00:00",
+  "completedAt": "2026-10-11T02:40:10.714415+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:0e6a8f023fd571d80114e97d6d4247cdb65951dfd74ca44640b3f8d4ad318738",
+  "toolchainVersion": "skillpilot-existing-description-review-contracts-v1"
+}

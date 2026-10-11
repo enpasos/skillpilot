@@ -1,0 +1,79 @@
+{
+  "$schema": "https://skillpilot.com/schemas/goal-evidence/v1/goal-evidence-ai-run-manifest.schema.json",
+  "schemaVersion": 1,
+  "runId": "chemie-b007-v6-targeted-genuine-independent-b-20261011-v1",
+  "campaignId": "chemie-b007-six-plus-eight-current402-native-author-preparation-v6-b",
+  "roundId": "chemie-b007-six-plus-eight-current402-native-author-preparation-v6-first-pass-b",
+  "batchId": "chemie-b007-six-plus-eight-current402-native-author-preparation-v6-first-pass-b.batch-001",
+  "batchInputFingerprint": "sha256:52834f7930ed04e080ecf512dffdfed343da17a60beea4cb82f27b7e88a04571",
+  "bundleFingerprint": "sha256:7eec496ee904d1c7de969c8119407f969663cca51dfb9c2d892e9dfd555f2aad",
+  "bookDigest": "sha256:cb5de42ed750b3035d426565bd275f73d67f94e0d5b0b9c3441d6677923d33f6",
+  "provider": "OpenAI Codex interactive agent",
+  "model": "GPT-6 Codex agent session; exact underlying runtime model version not exposed",
+  "role": "subject_reviewer",
+  "promptFamilyId": "goal-description-review-positive-understanding-v2",
+  "promptFingerprint": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b",
+  "criteriaFingerprint": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be",
+  "generationParametersFingerprint": "sha256:dbf897883b2a2e4259aca8d1bc5e98fda1dd058c2b38aa7572a96ac1a7ec899c",
+  "independenceGroupId": "chemie-b007-six-plus-eight-current402-native-author-preparation-v6-independent-b",
+  "blindToOtherRuns": true,
+  "goalIds": [
+    "4b6d1824-20e4-597e-b639-fae401f740f0",
+    "805a2f58-29ce-55d0-8a85-42ee486239b3",
+    "ebaae4f5-cc13-5493-98b1-10e1abeb638f",
+    "1351706f-4ea6-56e9-951b-87b24cbcdee8",
+    "413040cd-ba74-5227-948c-a778b0bd0f56",
+    "4aeced1e-15cd-58df-83f7-68e2531c2d32",
+    "49d42c38-419c-5048-b7e9-860645dd122d",
+    "d2ccd1d5-56f7-583f-9724-e97441367f91",
+    "988888bb-1f88-55f9-9a44-f3f60469a297",
+    "5338b54c-68bc-5892-907c-e025351ffde6",
+    "5dd180f1-f1c8-5f76-9c9a-ea3fc3d921bf",
+    "78109f6d-c415-52c4-8314-07c0dd888a80",
+    "018bec90-445f-4a88-b8bc-228f8335dee6",
+    "5abc5961-6368-52bb-88b9-6a846c3c37a8"
+  ],
+  "inputArtifacts": [
+    {
+      "role": "book_pdf",
+      "digest": "sha256:3e91f0f75828f3a64a178765d1f4cf2123932b2d019e5fab5b4d51a2e7cb7ab1"
+    },
+    {
+      "role": "book_html",
+      "digest": "sha256:23f09b8635c353fcca09faf9695e0711934367eec677fd8cb2e4331375efff71"
+    },
+    {
+      "role": "book_model",
+      "digest": "sha256:c3e12221534035403a33261fe1d58234c40400a8878267791a59174359ced6f0"
+    },
+    {
+      "role": "review_input_json",
+      "digest": "sha256:2c86541acb008eae938becf986c0b8517537ad826130a94b5dec62983f608d58"
+    },
+    {
+      "role": "review_prompt",
+      "digest": "sha256:b58605a08b1570635cee845d8aa295d13ad861ae20a8e8000360e020bbe0a10b"
+    },
+    {
+      "role": "review_criteria",
+      "digest": "sha256:14b9fe5db2b527baad6e5e488b2e2909f2eeaaeb8d9106a7c072ec6c2d4f12be"
+    },
+    {
+      "role": "description_review_batch_input_jsonl",
+      "digest": "sha256:52834f7930ed04e080ecf512dffdfed343da17a60beea4cb82f27b7e88a04571"
+    },
+    {
+      "role": "finding_schema",
+      "digest": "sha256:2e9a3460eb7a2ddb52562a402a26508f270043462af6a1f84baa2dbf5597d5e9"
+    },
+    {
+      "role": "run_manifest_schema",
+      "digest": "sha256:b2baeb015cd0a1382e4e7dd30e0ef72548fe35157d4d6813d06a561309cca9a6"
+    }
+  ],
+  "startedAt": "2026-10-11T01:19:26.854762+00:00",
+  "completedAt": "2026-10-11T01:19:26.984315+00:00",
+  "status": "completed",
+  "outputDigest": "sha256:1533659e8d15dfd8e828111f21f042178b4b604b31b13dad69d8d5a9f531652a",
+  "toolchainVersion": "codex-targeted-independent-chemistry-review-b-v1"
+}

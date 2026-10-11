@@ -1,0 +1,198 @@
+{
+  "createdAtUTC": "2026-10-11T05:43:58.373753+00:00",
+  "normalCurrentD14": {
+    "dualSummary": 0,
+    "synthesisManifest": 0,
+    "resolutions": 0,
+    "finalize": 0,
+    "strictDescriptionComplete": 14,
+    "registered": false
+  },
+  "normalCurrentP2": {
+    "d2cc": 0,
+    "ebaa": 0,
+    "approved": 0,
+    "needsHumanReview": 2
+  },
+  "normalCurrentA6": {
+    "exitCode": 0,
+    "atomic": 6
+  },
+  "normalCurrent31AndOwnerChains": {
+    "exitCode": 0,
+    "ordinaryDChanges": 2,
+    "ordinaryPChanges": 2,
+    "ownerChainIssues": 0
+  },
+  "normalPortability": {
+    "curriculumSymlinkErrors": 0,
+    "allInputsRegular": true,
+    "originalAuthorityBoundFilesVerifiedExact": 246
+  },
+  "retainedInitialDiagnostics": [
+    {
+      "name": "D14-normal-index",
+      "reason": "Wrong CLI mode rejected; corrected to normal finalize"
+    },
+    {
+      "name": "P2-initial-id-format",
+      "reason": "Uppercase P2 reviewId rejected; corrected own metadata to lowercase under the unchanged closed schema"
+    }
+  ],
+  "actualReceipts": [
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/checks/A6-normal.terminal.actual.json",
+      "exitCode": 0,
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/semanticAtomicityReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/configs/six-A.inactive.config.json",
+        "--mode=check"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/checks/D14-current-resolutions.terminal.actual.json",
+      "exitCode": 0,
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutResolutions.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/configs/native-D14.batch.config.json",
+        "--synthesis-manifest",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/native-D14/synthesis-decisions.json",
+        "--write"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/checks/D14-dual-summary.terminal.actual.json",
+      "exitCode": 0,
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "summarize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/configs/native-D14.batch.config.json",
+        "--write"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/checks/D14-explicit-synthesis.terminal.actual.json",
+      "exitCode": 0,
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutSynthesisManifest.ts",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/configs/native-D14.batch.config.json",
+        "--authoring",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/native-D14/synthesis-authoring.json",
+        "--write"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/checks/D14-normal-finalize.terminal.actual.json",
+      "exitCode": 0,
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "finalize",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/configs/native-D14.batch.config.json",
+        "--write"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/checks/D14-normal-index.terminal.actual.json",
+      "exitCode": 1,
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/materializeGoalDescriptionRolloutBatch.ts",
+        "index",
+        "--config",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/configs/native-D14.batch.config.json",
+        "--write"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/checks/P2-d2cc.initial-id-format-failure.terminal.actual.json",
+      "exitCode": 1,
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/configs/P2-d2cc.inactive.config.json",
+        "--mode=check"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/checks/P2-d2cc.terminal.actual.json",
+      "exitCode": 0,
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/configs/P2-d2cc.inactive.config.json",
+        "--mode=check"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/checks/P2-ebaa.initial-id-format-failure.terminal.actual.json",
+      "exitCode": 1,
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/configs/P2-ebaa.inactive.config.json",
+        "--mode=check"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/checks/P2-ebaa.terminal.actual.json",
+      "exitCode": 0,
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "app/scripts/positiveGoalEvidenceReview.ts",
+        "--config=curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/configs/P2-ebaa.inactive.config.json",
+        "--mode=check"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/checks/current31-and-owners-normal.terminal.actual.json",
+      "exitCode": 0,
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "/tmp/chemie-b007-goal100-preparation/current-input-check.ts"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/checks/portable-current31-and-owners-normal.terminal.actual.json",
+      "exitCode": 0,
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/scripts/check-current31-and-owner-chains.ts"
+      ]
+    },
+    {
+      "path": "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/checks/readonly-portable-current31-and-owners-normal.terminal.actual.json",
+      "exitCode": 0,
+      "argv": [
+        "app/node_modules/.bin/tsx",
+        "curricula/DE/Gymnasium/quality/goal-evidence/2026-10-11/chemie-b007-v7-D2-P2-native31-integration-preparation-20261011-v1/scripts/check-current31-and-owner-chains.ts"
+      ]
+    }
+  ],
+  "futureNative31": {
+    "status": "pending",
+    "normalFinalRendererAndWholePageInspection": "root-owned",
+    "preparedSupplementalChecker": "scripts/check-final-native31.py",
+    "mechanicalCheckerNotYetRunOnFinalNative": true
+  },
+  "ordinaryV6": "pending AI-QA adoption and exact runtime copies; no approval added",
+  "fullCentral206AndBio366ProtectionCheck": "root-owned and not run here",
+  "sourceHOLDs": 13,
+  "fractionalCanonicalGaps": 2,
+  "sourceOmissions": 20,
+  "unresolvedSourceScopes": 496,
+  "historicalFullScienceRereviews": 0,
+  "newBlindIndependentReviews": 0,
+  "activeWrites": false,
+  "GitMutations": false,
+  "strictGain": 0,
+  "humanApproved": 0
+}
